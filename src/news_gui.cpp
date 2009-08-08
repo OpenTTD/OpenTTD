@@ -779,43 +779,69 @@ enum MessageHistoryWidgets {
 };
 
 struct MessageHistoryWindow : Window {
-	MessageHistoryWindow(const WindowDesc *desc) : Window(desc)
-	{
-		this->vscroll.cap = 10;
-		this->vscroll.count = _total_news;
-		this->resize.step_height = 12;
-		this->resize.height = this->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
-		this->resize.step_width = 1;
-		this->resize.width = 200; // can't make window any smaller than 200 pixel
+	static const int top_spacing;    ///< Additional spacing at the top of the #MHW_BACKGROUND widget.
+	static const int bottom_spacing; ///< Additional spacing at the bottom of the #MHW_BACKGROUND widget.
 
-		this->FindWindowPlacementAndResize(desc);
+	int line_height; /// < Height of a single line in the news histoy window including spacing.
+	int date_width;  /// < Width needed for the date part.
+
+	MessageHistoryWindow(const WindowDesc *desc) : Window()
+	{
+		this->InitNested(desc); // Initializes 'this->line_height' and 'this->date_width'.
+		this->vscroll.cap = (this->nested_array[MHW_BACKGROUND]->current_y - this->top_spacing - this->bottom_spacing) / this->line_height;
+		OnInvalidateData(0);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget == MHW_BACKGROUND) {
+			this->line_height = FONT_HEIGHT_NORMAL + 2;
+			resize->height = this->line_height;
+
+			SetDParam(0, ConvertYMDToDate(2024, 7, 28));
+			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
+
+			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
+			size->width = max(200u, size->width); // At least 200 pixels wide.
+		}
 	}
 
 	virtual void OnPaint()
 	{
-		int y = 19;
-
-		SetVScrollCount(this, _total_news);
+		OnInvalidateData(0);
 		this->DrawWidgets();
+	}
 
-		if (_total_news == 0) return;
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != MHW_BACKGROUND || _total_news == 0) return;
 
+		/* Find the first news item to display. */
 		NewsItem *ni = _latest_news;
 		for (int n = this->vscroll.pos; n > 0; n--) {
 			ni = ni->prev;
 			if (ni == NULL) return;
 		}
 
+		/* Fill the widget with news items. */
+		int y = r.top + this->top_spacing;
+		const int date_left = r.left + WD_FRAMETEXT_LEFT;       // Left edge of dates
+		const int news_left = date_left + this->date_width + 5; // Left edge of news items
 		for (int n = this->vscroll.cap; n > 0; n--) {
 			SetDParam(0, ni->date);
-			DrawString(4, 82, y, STR_SHORT_DATE);
+			DrawString(date_left, news_left, y, STR_SHORT_DATE);
 
-			DrawNewsString(82, y, TC_WHITE, ni, this->width - 95);
-			y += 12;
+			DrawNewsString(news_left, y, TC_WHITE, ni, r.right - WD_FRAMETEXT_RIGHT - news_left);
+			y += this->line_height;
 
 			ni = ni->prev;
 			if (ni == NULL) return;
 		}
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		SetVScrollCount(this, _total_news);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -824,7 +850,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == NULL) return;
 
-			for (int n = (pt.y - 19) / 12 + this->vscroll.pos; n > 0; n--) {
+			for (int n = (pt.y - this->nested_array[MHW_BACKGROUND]->pos_y - WD_FRAMERECT_TOP) / this->line_height + this->vscroll.pos; n > 0; n--) {
 				ni = ni->prev;
 				if (ni == NULL) return;
 			}
@@ -835,32 +861,26 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / 12;
+		this->vscroll.cap += delta.y / this->line_height;
+		OnInvalidateData(0);
 	}
 };
 
-static const Widget _message_history_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,     STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_BROWN,    11,   387,     0,    13, STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   388,   399,     0,    13, 0x0,                 STR_TOOLTIP_STICKY},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   387,    14,   139, 0x0,                 STR_MESSAGE_HISTORY_TOOLTIP},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   388,   399,    14,   127, 0x0,                 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   388,   399,   128,   139, 0x0,                 STR_TOOLTIP_RESIZE},
-{   WIDGETS_END},
-};
+const int MessageHistoryWindow::top_spacing = WD_FRAMERECT_TOP + 4;
+const int MessageHistoryWindow::bottom_spacing = WD_FRAMERECT_BOTTOM;
 
 static const NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, MHW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, MHW_CAPTION), SetMinimalSize(377, 14), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, MHW_CAPTION), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, MHW_STICKYBOX), SetMinimalSize(12, 14), SetDataTip(0x0, STR_TOOLTIP_STICKY),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, MHW_BACKGROUND), SetMinimalSize(388, 125), SetDataTip(0x0, STR_MESSAGE_HISTORY_TOOLTIP), SetResize(1, 12),
+		NWidget(WWT_PANEL, COLOUR_BROWN, MHW_BACKGROUND), SetMinimalSize(200, 125), SetDataTip(0x0, STR_MESSAGE_HISTORY_TOOLTIP), SetResize(1, 12),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, MHW_SCROLLBAR), SetMinimalSize(12, 114), SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST), SetResize(0, 1),
+			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, MHW_SCROLLBAR), SetFill(0, 1), SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST), SetResize(0, 1),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, MHW_RESIZEBOX), SetMinimalSize(12, 12), SetDataTip(0x0, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
@@ -870,8 +890,7 @@ static const WindowDesc _message_history_desc(
 	240, 22, 400, 140, 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_message_history_widgets,
-	_nested_message_history, lengthof(_nested_message_history)
+	NULL, _nested_message_history, lengthof(_nested_message_history)
 );
 
 /** Display window with news messages history */
