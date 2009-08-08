@@ -29,7 +29,7 @@ void Subsidy::AwardTo(CompanyID company)
 	assert(!this->IsAwarded());
 
 	this->awarded = company;
-	this->remaining = 12;
+	this->remaining = SUBSIDY_CONTRACT_MONTHS;
 
 	char *company_name = MallocT<char>(MAX_LENGTH_COMPANY_NAME_BYTES);
 	SetDParam(0, company);
@@ -192,10 +192,13 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 	fr->distance = UINT_MAX;
 
 	fr->from = from = Town::GetRandom();
-	if (from == NULL || from->population < 400 || from->pct_pass_transported > 42) return;
+	if (from == NULL || from->population < SUBSIDY_PAX_MIN_POPULATION ||
+			from->pct_pass_transported > SUBSIDY_MAX_PCT_TRANSPORTED) {
+		return;
+	}
 
 	fr->to = to = Town::GetRandom();
-	if (from == to || to == NULL || to->population < 400) return;
+	if (from == to || to == NULL || to->population < SUBSIDY_PAX_MIN_POPULATION) return;
 
 	fr->distance = DistanceManhattan(from->xy, to->xy);
 }
@@ -225,7 +228,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	/* Quit if no production in this industry
 	 * or if the cargo type is passengers
 	 * or if the pct transported is already large enough */
-	if (total == 0 || trans > 42 || cargo == CT_INVALID) return;
+	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || cargo == CT_INVALID) return;
 
 	const CargoSpec *cs = CargoSpec::Get(cargo);
 	if (cs->town_effect == TE_PASSENGERS) return;
@@ -237,7 +240,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		Town *t = Town::GetRandom();
 
 		/* Only want big towns */
-		if (t == NULL || t->population < 900) return;
+		if (t == NULL || t->population < SUBSIDY_CARGO_MIN_POPULATION) return;
 
 		fr->distance = DistanceManhattan(i->xy, t->xy);
 		fr->to = t;
@@ -305,7 +308,7 @@ void SubsidyMonthlyLoop()
 		do {
 			FoundRoute fr;
 			FindSubsidyPassengerRoute(&fr);
-			if (fr.distance <= 70) {
+			if (fr.distance <= SUBSIDY_MAX_DISTANCE) {
 				s->cargo_type = CT_PASSENGERS;
 				s->src_type = s->dst_type = ST_TOWN;
 				s->src = ((Town *)fr.from)->index;
@@ -313,7 +316,7 @@ void SubsidyMonthlyLoop()
 				goto add_subsidy;
 			}
 			FindSubsidyCargoRoute(&fr);
-			if (fr.distance <= 70) {
+			if (fr.distance <= SUBSIDY_MAX_DISTANCE) {
 				s->cargo_type = fr.cargo;
 				s->src_type = ST_INDUSTRY;
 				s->src = ((Industry *)fr.from)->index;
@@ -329,7 +332,7 @@ void SubsidyMonthlyLoop()
 				}
 	add_subsidy:
 				if (!CheckSubsidyDuplicate(s)) {
-					s->remaining = 12;
+					s->remaining = SUBSIDY_OFFER_MONTHS;
 					Pair reftype = SetupSubsidyDecodeParam(s, 0);
 					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 					SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);

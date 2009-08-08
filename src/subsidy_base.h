@@ -85,6 +85,16 @@ struct Subsidy {
 	static void Clean();
 };
 
+/** Constants related to subsidies */
+enum {
+	SUBSIDY_OFFER_MONTHS         =  12, ///< Duration of subsidy offer
+	SUBSIDY_CONTRACT_MONTHS      =  12, ///< Duration of subsidy after awarding
+	SUBSIDY_PAX_MIN_POPULATION   = 400, ///< Min. population of towns for subsidised pax route
+	SUBSIDY_CARGO_MIN_POPULATION = 900, ///< Min. population of destination town for cargo route
+	SUBSIDY_MAX_PCT_TRANSPORTED  =  42, ///< Subsidy will be created only for towns/industries with less % transported
+	SUBSIDY_MAX_DISTANCE         =  70, ///< Max. length of subsidised route (DistanceManhattan)
+};
+
 #define FOR_ALL_SUBSIDIES_FROM(var, start) for (size_t subsidy_index = start; var = NULL, subsidy_index < Subsidy::GetArraySize(); subsidy_index++) \
 		if ((var = Subsidy::Get(subsidy_index))->IsValid())
 #define FOR_ALL_SUBSIDIES(var) FOR_ALL_SUBSIDIES_FROM(var, 0)

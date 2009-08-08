@@ -1875,7 +1875,7 @@ bool AfterLoadGame()
 		Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
 			/* Convert only nonawarded subsidies. The original source and destination town/industry
-			 * anymore for awarded subsidies, so invalidate them. */
+			 * can't be determined anymore for awarded subsidies, so invalidate them. */
 			if (s->remaining < 12) {
 				s->remaining = 12 - s->remaining; // convert "age" to "remaining"
 				s->awarded = INVALID_COMPANY; // not awarded to anyone
