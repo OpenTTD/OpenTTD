@@ -864,12 +864,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} teraz prijima {STRING} a {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponuka dotacie skoncila:{}{}Preprava {STRING.g} z {STRING} do {STRING} uz nebude dotovana.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Dotacia ukoncena:{}{}Preprava {STRING.g} z {STRING2} do {STRING2} uz viac nebude dotovana.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Dotacia ukoncena:{}{}Preprava {STRING.g} z {STRING} do {STRING} uz viac nebude dotovana.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Ponuka dotacie:{}{}Prva preprava {STRING.g} z {STRING} do {STRING} bude dotovana miestnou spravou!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING2} do {STRING2} bude buduci rok o 50% vynosnejsia!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotácia udelená spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING2} to {STRING2} bude budúci rok 2x výnosnejšia!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING2} do {STRING2} bude buduci rok 3x vynosnejsia!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING2} do {STRING2} bude buduci rok 4x vynosnejsia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude buduci rok o 50% vynosnejsia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotácia udelená spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} to {STRING} bude budúci rok 2x výnosnejšia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude buduci rok 3x vynosnejsia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude buduci rok 4x vynosnejsia!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}V meste {TOWN} zavladol dopravny chaos!{}{}Rekonstrukcia ciest financovana {STRING} prinesie 6 mesiacov utrpenia pre motoristov!
 
@@ -2464,7 +2464,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponuknut
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}Ziadne
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}V sucasnosti poskytovane dotacie:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING2} do {STRING2}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknut na trasu pre centrovanie pohladu na tovaren/mesto
 
 # Station list window

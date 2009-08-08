@@ -798,12 +798,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} acepta ahora {STRING} y {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferta de subvención terminada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvención retirada:{}{}Servicio de {STRING} desde {STRING2} a {STRING2} ya no está subvencionado.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvención retirada:{}{}Servicio de {STRING} desde {STRING} a {STRING} ya no está subvencionado.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Se ofrece subvención en la línea:{}{}El primer {STRING} que cubra la línea desde {STRING} a {STRING} recibirá una subvención durante un año por parte de las autoridades locales!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING2} a {STRING2} pagará el 50% más durante un año!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING2} a {STRING2} pagará tasa doble durante un año!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING2} a {STRING2} pagará tasa triple durante un año!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING2} a {STRING2} pagará tasa cuádruple durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará el 50% más durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará tasa doble durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará tasa triple durante un año!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará tasa cuádruple durante un año!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
 
@@ -2398,7 +2398,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Se ofrec
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} (antes de {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}Ninguna
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Líneas ya subvencionadas:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING2} a {STRING2}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Haga click sobre el servicio para centrar la vista en la industria/pueblo
 
 # Station list window

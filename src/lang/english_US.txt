@@ -797,12 +797,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} now accepts {STRING} and {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidy withdrawn:{}{}{STRING} service from {STRING2} to {STRING2} is no longer subsidized.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidy withdrawn:{}{}{STRING} service from {STRING} to {STRING} is no longer subsidized.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Service subsidy offered:{}{}First {STRING} service from {STRING} to {STRING} will attract a year's subsidy from the local authority!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING2} to {STRING2} will pay 50% extra for the next year!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING2} to {STRING2} will pay double rates for the next year!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING2} to {STRING2} will pay triple rates for the next year!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING2} to {STRING2} will pay quadruple rates for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING} to {STRING} will pay 50% extra for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING} to {STRING} will pay double rates for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING} to {STRING} will pay triple rates for the next year!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STRING} to {STRING} will pay quadruple rates for the next year!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding program funded by {STRING} brings 6 months of misery to motorists!
 
@@ -2397,7 +2397,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidie
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} from {STRING} to {STRING}{YELLOW} (by {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}None
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Services already subsidized:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} from {STRING2} to {STRING2}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} from {STRING} to {STRING}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to center view on industry/town
 
 # Station list window

@@ -794,12 +794,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{1:STRIN
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE} {2:STRING} ו {NBSP}{1:STRING}  החלה לקבל {NBSP}{0:STATION}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}.פג תוקפה של הצעה למתן סובסידיה{}{}{NBSP}לא תזכה עוד לסבסוד{NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} הובלת
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}.פג תוקפה של  סובסידיה{}{}{NBSP}לא תסובסד עוד{NBSP} {2:STRING2} ל {NBSP}{1:STRING2} מ {NBSP}{0:STRING} הובלת
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}.פג תוקפה של  סובסידיה{}{}{NBSP}לא תסובסד עוד{NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} הובלת
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}.הצעה למתן סובסידיה{}{}{NBSP}!יזכה לסובסידיה בת שנה מהרשות המקומית {NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} שירות הובלה ראשון של
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 50% לשנה הקרובה{NBSP} {3:STRING2} ל {NBSP}{2:STRING2} מ{NBSP}{1:STRING} הובלת
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 100% לשנה הקרובה{NBSP} {3:STRING2} ל {NBSP}{2:STRING2} מ{NBSP}{1:STRING} הובלת
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 200% לשנה הקרובה{NBSP} {3:STRING2} ל {NBSP}{2:STRING2} מ{NBSP}{1:STRING} הובלת
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 300% לשנה הקרובה{NBSP} {3:STRING2} ל {NBSP}{2:STRING2} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 50% לשנה הקרובה{NBSP} {3:STRING} ל {NBSP}{2:STRING} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 100% לשנה הקרובה{NBSP} {3:STRING} ל {NBSP}{2:STRING} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 200% לשנה הקרובה{NBSP} {3:STRING} ל {NBSP}{2:STRING} מ{NBSP}{1:STRING} הובלת
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 300% לשנה הקרובה{NBSP} {3:STRING} ל {NBSP}{2:STRING} מ{NBSP}{1:STRING} הובלת
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}!{TOWN} פקקי תנועה ענקיים ב{NBSP} {}{} !מביאה לקטסטרופת תנועה לשישה חודשים {STRING} תכנית לשיפוץ מקיף של הכבישים במימון
 
