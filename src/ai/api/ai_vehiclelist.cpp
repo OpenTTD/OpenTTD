@@ -19,7 +19,7 @@ AIVehicleList::AIVehicleList()
 
 AIVehicleList_Station::AIVehicleList_Station(StationID station_id)
 {
-	if (!AIStation::IsValidStation(station_id)) return;
+	if (!AIBaseStation::IsValidBaseStation(station_id)) return;
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -27,7 +27,7 @@ AIVehicleList_Station::AIVehicleList_Station(StationID station_id)
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == station_id) {
+				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
 					this->AddItem(v->index);
 					break;
 				}

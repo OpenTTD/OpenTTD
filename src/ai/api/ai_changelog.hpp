@@ -31,6 +31,7 @@
  * \li WAYPOINT_INVALID is now deprecated, use STATION_INVALID instead
  * \li AIs can create subclasses of API classes and use API constants as part
  *     of their own constants
+ * \li AIVehicleList_Station now also works for waypoints
  *
  * \b 0.7.3
  *

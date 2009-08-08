@@ -27,7 +27,8 @@ public:
 	static const char *GetClassName() { return "AIVehicleList_Station"; }
 
 	/**
-	 * @param station_id The station to get the list of vehicles that have orders to him from.
+	 * @param station_id The station to get the list of vehicles from, which have orders to it.
+	 * @pre AIBaseStation::IsValidBaseStation(station_id)
 	 */
 	AIVehicleList_Station(StationID station_id);
 };
