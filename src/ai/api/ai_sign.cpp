@@ -3,6 +3,7 @@
 /** @file ai_sign.cpp Implementation of AISign. */
 
 #include "ai_sign.hpp"
+#include "ai_log.hpp"
 #include "table/strings.h"
 #include "../ai_instance.hpp"
 #include "../../command_func.h"

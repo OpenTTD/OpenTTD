@@ -5,6 +5,7 @@
 #include "ai_tile.hpp"
 #include "ai_map.hpp"
 #include "ai_town.hpp"
+#include "ai_log.hpp"
 #include "../../station_func.h"
 #include "../../company_func.h"
 #include "../../road_map.h"
