@@ -192,11 +192,10 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 	fr->distance = UINT_MAX;
 
 	fr->from = from = Town::GetRandom();
-	if (from == NULL || from->population < 400) return;
+	if (from == NULL || from->population < 400 || from->pct_pass_transported > 42) return;
 
 	fr->to = to = Town::GetRandom();
-	if (from == to || to == NULL || to->population < 400 || to->pct_pass_transported > 42)
-		return;
+	if (from == to || to == NULL || to->population < 400) return;
 
 	fr->distance = DistanceManhattan(from->xy, to->xy);
 }
