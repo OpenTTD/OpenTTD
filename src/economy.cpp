@@ -332,12 +332,13 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->awarded == old_owner) {
 			if (new_owner == INVALID_OWNER) {
-				DeleteSubsidy(s);
+				delete s;
 			} else {
 				s->awarded = new_owner;
 			}
 		}
 	}
+	if (new_owner == INVALID_OWNER) RebuildSubsidisedSourceAndDestinationCache();
 
 	/* Take care of rating in towns */
 	FOR_ALL_TOWNS(t) {

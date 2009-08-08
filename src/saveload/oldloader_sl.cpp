@@ -1477,7 +1477,10 @@ static const OldChunks subsidy_chunk[] = {
 
 static bool LoadOldSubsidy(LoadgameState *ls, int num)
 {
-	return LoadChunk(ls, &Subsidy::array[num], subsidy_chunk);
+	Subsidy *s = new (num) Subsidy();
+	bool ret = LoadChunk(ls, s, subsidy_chunk);
+	if (s->cargo_type == CT_INVALID) delete s;
+	return ret;
 }
 
 static const OldChunks game_difficulty_chunk[] = {

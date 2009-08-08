@@ -1902,7 +1902,7 @@ bool AfterLoadGame()
 				}
 			}
 			/* Awarded subsidy or invalid source/destination, invalidate */
-			s->cargo_type = CT_INVALID;
+			delete s;
 		}
 	}
 

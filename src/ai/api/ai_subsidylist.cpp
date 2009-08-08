@@ -10,6 +10,6 @@ AISubsidyList::AISubsidyList()
 {
 	const Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		this->AddItem(s->Index());
+		this->AddItem(s->index);
 	}
 }

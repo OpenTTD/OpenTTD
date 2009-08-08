@@ -15,10 +15,12 @@
 #include "window_func.h"
 #include "subsidy_base.h"
 #include "subsidy_func.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 
-/* static */ Subsidy Subsidy::array[MAX_COMPANIES];
+SubsidyPool _subsidy_pool("Subsidy");
+INSTANTIATE_POOL_METHODS(Subsidy)
 
 /**
  * Marks subsidy as awarded, creates news and AI event
@@ -46,36 +48,9 @@ void Subsidy::AwardTo(CompanyID company)
 		(NewsReferenceType)reftype.a, this->src, (NewsReferenceType)reftype.b, this->dst,
 		company_name
 	);
-	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->Index()));
+	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->index));
 
 	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
-}
-
-/**
- * Allocates one subsidy
- * @return pointer to first invalid subsidy, NULL if there is none
- */
-/* static */ Subsidy *Subsidy::AllocateItem()
-{
-	for (Subsidy *s = Subsidy::array; s < endof(Subsidy::array); s++) {
-		if (!s->IsValid()) {
-			s->awarded = INVALID_COMPANY;
-			return s;
-		}
-	}
-
-	return NULL;
-}
-
-/**
- * Resets the array of subsidies marking all invalid
- */
-/* static */ void Subsidy::Clean()
-{
-	memset(Subsidy::array, 0, sizeof(Subsidy::array));
-	for (Subsidy *s = Subsidy::array; s < endof(Subsidy::array); s++) {
-		s->cargo_type = CT_INVALID;
-	}
 }
 
 /**
@@ -83,7 +58,7 @@ void Subsidy::AwardTo(CompanyID company)
  */
 void InitializeSubsidies()
 {
-	Subsidy::Clean();
+	_subsidy_pool.CleanPool();
 }
 
 Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
@@ -157,12 +132,6 @@ void RebuildSubsidisedSourceAndDestinationCache()
 	}
 }
 
-void DeleteSubsidy(Subsidy *s)
-{
-	s->cargo_type = CT_INVALID;
-	RebuildSubsidisedSourceAndDestinationCache();
-}
-
 void DeleteSubsidyWith(SourceType type, SourceID index)
 {
 	bool dirty = false;
@@ -170,12 +139,15 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
 		if ((s->src_type == type && s->src == index) || (s->dst_type == type && s->dst == index)) {
-			s->cargo_type = CT_INVALID;
+			delete s;
 			dirty = true;
 		}
 	}
 
-	if (dirty) InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+	if (dirty) {
+		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+		RebuildSubsidisedSourceAndDestinationCache();
+	}
 }
 
 struct FoundRoute {
@@ -267,7 +239,7 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 		if (s != ss && ss->cargo_type == s->cargo_type &&
 				ss->src_type == s->src_type && ss->src == s->src &&
 				ss->dst_type == s->dst_type && ss->dst == s->dst) {
-			s->cargo_type = CT_INVALID;
+			delete s;
 			return true;
 		}
 	}
@@ -285,30 +257,29 @@ void SubsidyMonthlyLoop()
 			if (!s->IsAwarded()) {
 				Pair reftype = SetupSubsidyDecodeParam(s, 1);
 				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
-				AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s->Index()));
+				AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s->index));
 			} else {
 				if (s->awarded == _local_company) {
 					Pair reftype = SetupSubsidyDecodeParam(s, 1);
 					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				}
-				AI::BroadcastNewEvent(new AIEventSubsidyExpired(s->Index()));
+				AI::BroadcastNewEvent(new AIEventSubsidyExpired(s->index));
 			}
-			DeleteSubsidy(s);
+			delete s;
 			modified = true;
 		}
 	}
 
-	/* 25% chance to go on */
-	if (Chance16(1, 4)) {
-		/*  Find a free slot*/
-		s = Subsidy::AllocateItem();
-		if (s == NULL) goto no_add;
+	if (modified) RebuildSubsidisedSourceAndDestinationCache();
 
+	/* 25% chance to go on */
+	if (Subsidy::CanAllocateItem() && Chance16(1, 4)) {
 		uint n = 1000;
 		do {
 			FoundRoute fr;
 			FindSubsidyPassengerRoute(&fr);
 			if (fr.distance <= SUBSIDY_MAX_DISTANCE) {
+				s = new Subsidy();
 				s->cargo_type = CT_PASSENGERS;
 				s->src_type = s->dst_type = ST_TOWN;
 				s->src = ((Town *)fr.from)->index;
@@ -317,6 +288,7 @@ void SubsidyMonthlyLoop()
 			}
 			FindSubsidyCargoRoute(&fr);
 			if (fr.distance <= SUBSIDY_MAX_DISTANCE) {
+				s = new Subsidy();
 				s->cargo_type = fr.cargo;
 				s->src_type = ST_INDUSTRY;
 				s->src = ((Industry *)fr.from)->index;
@@ -333,20 +305,20 @@ void SubsidyMonthlyLoop()
 	add_subsidy:
 				if (!CheckSubsidyDuplicate(s)) {
 					s->remaining = SUBSIDY_OFFER_MONTHS;
+					s->awarded = INVALID_COMPANY;
 					Pair reftype = SetupSubsidyDecodeParam(s, 0);
 					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 					SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 					SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
-					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->Index()));
+					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->index));
 					modified = true;
 					break;
 				}
 			}
 		} while (n--);
 	}
-no_add:;
-	if (modified)
-		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+
+	if (modified) InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
 /**

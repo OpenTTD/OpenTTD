@@ -24,7 +24,7 @@ void Save_SUBS()
 {
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		SlSetArrayIndex(s->Index());
+		SlSetArrayIndex(s->index);
 		SlObject(s, _subsidies_desc);
 	}
 }
@@ -33,7 +33,8 @@ void Load_SUBS()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		SlObject(&Subsidy::array[index], _subsidies_desc);
+		Subsidy *s = new (index) Subsidy();
+		SlObject(s, _subsidies_desc);
 	}
 }
 
