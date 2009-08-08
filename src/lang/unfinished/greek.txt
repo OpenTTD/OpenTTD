@@ -234,6 +234,10 @@ STR_BUTTON_OK                                                   :{BLACK}Εντά
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Μήκος: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Περιοχή: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Μήκος: {NUM}{}Υψομετρική διαφορά: {NUM} μ
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περιοχή: {NUM} x {NUM}{}Υψομετρική διαφορά: {NUM} m
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
@@ -388,6 +392,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκε�
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Κατασκευή αεροδρομίου
 ############ range ends here
 
 ############ range for landscaping menu starts
@@ -518,9 +523,28 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Πρόεδρο�
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Μεγιστάνας
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Λεπτομέριες
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Οχήματα:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Σταθμοί:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Ελάχ. κέρδος:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Παραδόθηκαν:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Εμπορεύματα:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Χρήματα:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνειο:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων; αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τραίνου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκε τα τελευταία τέσσερα τετράμηνα
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Το ποσό των χρημάτων που έχει πάρει η εταιρία ως δάνειο
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Συνολικοί πόντοι από τους δυνατούς πόντους
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Τζουκμπόξ Jazz
@@ -635,6 +659,8 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Χιόνι
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή ονομάτων πόλεων στο χάρτη
+STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στην τρέχουσα θέση
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Απενεργοποίηση όλων
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ενεργοποίηση όλων
@@ -678,10 +704,18 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Επι�
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Γενικές πληροφορίες
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τραίνο φτάνει στο στάθμο{STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .}Το πρώτο φορτηγό φτάνει στο σταθμό {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο εμπορευτικό τραμ φτάνει στο σταθμό {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροπλάνο φτάνει στο αεροδρόμιο {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Σύγκρουση Τραίνων!{}{COMMA} σκοτώθηκαν σε φωτιά μετά την σύγκρουση
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε φωτιά μετά από σύγκρουση με τραίνο
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Σύγκρουση Οχήματος!{}{COMMA} σκοτώθηκαν σε φωτιά μετά από σύγκρουση με τραίνο
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Συντριβή αεροπλάνου!{}{COMMA} σκοτώθηκαν στο αεροδρόμιο {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Συντριβή Αεροπλάνου!{} Τελείωσαν τα καύσιμα του, {COMMA} σκοτώθηκαν
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Ατύχημα με ζέπελιν στο {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Όχημα καταστράφηκε σε σύγκρουση με ΑΤΙΑ!
@@ -717,9 +751,15 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στο {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} η παραγωγή στο εργοστάσιο {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στο/στη {INDUSTRY} μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} η παραγωγή στο εργοστάσιο {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} περιμένει στο ναυπήγειο
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} περιμένει στο υπόστεγο αεροπλάνων
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -738,6 +778,9 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κ
 
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Το νέο {STRING} είναι πλεόν διαθέσιμο!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Το νέο {STRING} είναι πλέον διαθέσιμο!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING} ούτε {STRING}
@@ -891,6 +934,7 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γ�
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προεπισκόπιση: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Λίρες (£) στο νόμισμά σας
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλαγή παραμέτρων προσαρμοσμένου νομίσματος
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Βαθμός Δυσκολίας
@@ -969,6 +1013,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικ�
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετικό
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρικό
 
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Αυτή η ενέργεια άλλαξε το επίπεδο δυσκολίας στο προσαρμοσμένο
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
@@ -1231,6 +1276,7 @@ STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δ�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού
@@ -1340,6 +1386,18 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Θηλυ
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Επιλογή θηλυκών προσώπων
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Νέο Πρόσωπο
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Δημιουργία τυχαίου προσώπου
+STR_FACE_ADVANCED                                               :{BLACK}Προχωρημένη
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Προχωρημένη επιλογή προσώπου.
+STR_FACE_SIMPLE                                                 :{BLACK}Απλή
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Απλή επιλογή προσώπου.
+STR_FACE_LOAD                                                   :{BLACK}Φόρτωση
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Φόρτωση αγαπημένου προσώπου
+STR_FACE_LOAD_DONE                                              :{WHITE}Το αγαπημένο πρόσωπο έχει φορτωθεί από το αρχείο ρυθμίσεων του OpenTTD
+STR_FACE_FACECODE                                               :{BLACK}Αρ. προσώπου παίκτη
+STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
+STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκεύτει ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
+STR_FACE_EUROPEAN                                               :{BLACK}Ευρωπαϊκό
 STR_FACE_NOSE                                                   :Μύτη:
 STR_FACE_LIPS                                                   :Χείλια:
 STR_FACE_MOUSTACHE                                              :Μουστάκι:
@@ -1629,7 +1687,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Ο δι
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}Κατέβασμα περιεχόμενου
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Τύπος
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Τύπος περιεχόμενου
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Όνομα
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Επιλογή όλων
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλέξτε αναβαθμίσεις
@@ -1657,6 +1717,7 @@ STR_CONTENT_DETAIL_TAGS                                         :{SILVER}ετι�
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD είναι χτισμένο χωρίς την υποστηριξη "zlib"...
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Βασικά γραφικά
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Βιβλιοθήκη AI
@@ -1677,6 +1738,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... αρ
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Δεν μπορεί να γίνει η αποσυμπίεση του κατεβασμένου αρχείου
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις διαφάνειας
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
@@ -1734,6 +1796,7 @@ STR_STATION_CLASS_DFLT                                          :Εξ ορισμ
 STR_STATION_CLASS_WAYP                                          :Σημείο καθοδηγήσης
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή σηματοδότη
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας
@@ -1799,15 +1862,24 @@ STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Επιλ
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Λιμάνι
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Αεροδρόμια
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Επιλογή μεγέθους/τύπου αεροδρομίου
 
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Μικρό
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Πόλης
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Μητροπολιτικό αεροδρόμιο
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Διεθνές αεροδρόμιο
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Ελικοδρόμιο
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Υπόστεγο ελικοπτέρων
 STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Στάθμος ελικοπτέρων
 
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Μικρά αεροδρόμια
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Μεγάλα αεροδρόμια
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Ελικοδρόμια
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Παραγόμενος θόρυβος: {GOLD}{COMMA}
 
@@ -1835,6 +1907,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Τοπο
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Αύξηση περιοχής για χαμήλωμα/ανύψωση γης
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Μείωση περιοχής για χαμήλωμα/ανύψωση γης
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Δημιουργία τυχαίου εδάφους
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Δημιουργία νέου σεναρίου
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Επαναφορά τοπίου
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Αφαίρεση όλων των ιδιοκτησιών παικτών από το χάρτη
 
@@ -1873,6 +1946,7 @@ STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Πολλές τ
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Γέμισε τον χάρτη με τυχαίες τοποθετημένες βιομηχανίες
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Κόστος: {YELLOW}{CURRENCY}
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Κατασκευή
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Χρηματοδότηση
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Πληροφορίες Περιοχής Εδάφους
@@ -1888,6 +1962,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Τοπι
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Κανένα
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Συντεταγμένες: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Κατασκευή: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτό Εμπόρευμα: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
@@ -1996,19 +2071,41 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Αποθ
 
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Δημιουργία Κόσμου
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Διάσταση χάρτη:
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθ. πόλεων:
+STR_MAPGEN_DATE                                                 :{BLACK}Ημερομήνια:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ. βιομηχανιών:
 STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαία δημιουργία
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Επίπεδο θάλασσας:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Ομαλότητα:
 STR_MAPGEN_GENERATE                                             :{WHITE}Δημιουργία
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Άκρες χάρτη:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Βορειοδυτικά
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Βορειοανατολικά
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Νοτιοανατολικά
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Νοτιοδυτικά
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Μέγεθος: {ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Τύπος Σεναρίου
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Επίπεδο έδαφος
 
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}Δημιουργία Κόσμου...
+STR_GENERATION_ABORT                                            :{BLACK}Ματαίωση
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% ολοκληρώθηκε
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
@@ -2266,11 +2363,18 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Απαι
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Εμπόρευμα σε αναμονή:
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Παράγει: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Παράγει: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής
 
 # Vehicle lists
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Τραίν{P ο α}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Πλοί{P ο α}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροπλάνο
 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY} (προηγούμενο έτος: {CURRENCY})
@@ -2305,7 +2409,17 @@ STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα α�
 
 # Build vehicle window
 
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Νέα Πλοία
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Νέα Αεροπλάνα
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY}{BLACK} Βάρος: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Ιπποδύναμη: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Κόστος λειτουργίας: {GOLD}{CURRENCY}/χρ
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Σχεδιασμένο: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόνια
+STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 
 
 

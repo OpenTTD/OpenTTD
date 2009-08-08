@@ -3086,8 +3086,8 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman ç
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Sefer yok
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Gezi (zamanlı değil)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} için gezi
-STR_TIMETABLE_STAY_FOR                                          :{STRING} için bekle
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} boyunca yol al
+STR_TIMETABLE_STAY_FOR                                          :{STRING} bekle
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ve şuraya sefer yap: {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} gün
 STR_TIMETABLE_TICKS                                             :{COMMA} birim
