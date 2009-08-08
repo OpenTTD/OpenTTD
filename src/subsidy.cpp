@@ -297,11 +297,11 @@ void SubsidyMonthlyLoop()
 				{
 					const CargoSpec *cs = CargoSpec::Get(fr.cargo);
 					if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
-						s->dst_type = ST_INDUSTRY;
-						s->dst = ((Industry *)fr.to)->index;
-					} else {
 						s->dst_type = ST_TOWN;
 						s->dst = ((Town *)fr.to)->index;
+					} else {
+						s->dst_type = ST_INDUSTRY;
+						s->dst = ((Industry *)fr.to)->index;
 					}
 				}
 	add_subsidy:
