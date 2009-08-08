@@ -745,12 +745,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Ο στ�
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING} και {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STATION} προς {STATION} δεν χρηματοδοτείται πια.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STRING2} προς {STRING2} δεν χρηματοδοτείται πια.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται 50% παραπάνω για ένα έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται διπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τριπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τετραπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING2} προς το σταθμό {STRING2} θα χρεώνεται 50% παραπάνω για ένα έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING2} προς το σταθμό {STRING2} θα χρεώνεται διπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING2} προς το σταθμό {STRING2} θα χρεώνεται τριπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING2} προς το σταθμό {STRING2} θα χρεώνεται τετραπλά για το επόμενο έτος!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα επανακατασκευής των δρόμων από την εταιρεία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 
@@ -2123,7 +2123,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Τρέχ
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} από {STRING} πρός {STRING}{YELLOW} (έως {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}Κανένα
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από το σταθμό {STATION} προς το σταθμό {STATION}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από το σταθμό {STRING2} προς το σταθμό {STRING2}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
 
 # Station list window

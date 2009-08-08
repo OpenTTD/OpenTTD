@@ -618,10 +618,10 @@ STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
 
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tambahan 50% untuk tahun hadapan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar dua kali ganda untuk tahun hadapan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tiga kali ganda untuk tahun hadapan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar empat kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING2} ke {STRING2} akan dibayar tambahan 50% untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING2} ke {STRING2} akan dibayar dua kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING2} ke {STRING2} akan dibayar tiga kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING2} ke {STRING2} akan dibayar empat kali ganda untuk tahun hadapan!
 
 
 # Extra view window

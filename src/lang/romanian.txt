@@ -797,12 +797,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} acceptă acum {STRING} si {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai primi subvenţie
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ofertă închisă:{}{}Transportul de {STRING} de la {STATION} la {STATION} nu va mai fi subvenţionat
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ofertă închisă:{}{}Transportul de {STRING} de la {STRING2} la {STRING2} nu va mai fi subvenţionat
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subvenţie oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenţie pe un an din partea autorităţilor locale
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări cu 50% mai mari timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări duble timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări triple timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări de patru ori mai mari timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING2} la {STRING2} va aduce încasări cu 50% mai mari timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING2} la {STRING2} va aduce încasări duble timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING2} la {STRING2} va aduce încasări triple timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING2} la {STRING2} va aduce încasări de patru ori mai mari timp de un an!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanţat de {STRING} pentru reconstrucţia străzilor aduce 6 luni de haos participanţilor la trafic!
 
@@ -2397,7 +2397,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvenţ
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de la {STRING} la {STRING}{YELLOW} (după {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- nici una
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subvenţii acordate la ora actuală:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STATION} la {STATION}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STRING2} la {STRING2}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe informatie pentru a centra imaginea pe industrie/oras
 
 # Station list window

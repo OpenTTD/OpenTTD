@@ -797,12 +797,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} вече приема {STRING} и {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Предложението за субсидия изтече:{}{}Превоз на {STRING} от {STRING} до {STRING} няма да спечели субсидия.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Изтеглена субсидия:{}{}Превоз на {STRING} от {STATION} до {STATION} вече не се субсидира.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Изтеглена субсидия:{}{}Превоз на {STRING} от {STRING2} до {STRING2} вече не се субсидира.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Предложена субсидия:{}{}Първият превоз на {STRING} от {STRING} до {STRING} ще спечели едногодишна субсидия от местните власти!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} спечели субсидия!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща с 50% повече през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща двойно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща тройно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STATION} до {STATION} ще се заплаща четворно през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} спечели субсидия!{}{}Превоз на {STRING} от {STRING2} до {STRING2} ще се заплаща с 50% повече през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STRING2} до {STRING2} ще се заплаща двойно през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STRING2} до {STRING2} ще се заплаща тройно през следващата година!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}{STRING} спечели субсидия!!{}{}Превоз на {STRING} от {STRING2} до {STRING2} ще се заплаща четворно през следващата година!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Хаос на трафика в {TOWN}!{}{}Програмата за пътна реконструкция, финансирана от {STRING}, доведе до 6 месеца мизерия за мотористите!
 
@@ -2332,7 +2332,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Субс
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} от {STRING} до {STRING}{YELLOW} (от{DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}Николко
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидирани превози на:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} от {STATION} до {STATION}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} от {STRING2} до {STRING2}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни върху услугата, за да се фокусира върху индустрията/града
 
 # Station list window
