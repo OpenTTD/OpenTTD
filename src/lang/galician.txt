@@ -739,7 +739,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} foi pechada polos acreedores e vendéronse tódalas posesións!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}¡Lanzada unha nova compañía de transporte!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}¡{STRING} comeza a construción cerca de {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} comprada por  {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}¡{STRING} comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}¡Nova {STRING} en construción cerca de {TOWN}!
@@ -975,7 +975,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Actitud
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ningún
-STR_NUM_VERY_LOW                                                :Moi baixo
+STR_NUM_VERY_LOW                                                :Moi Baixo
 STR_NUM_LOW                                                     :Baixo
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alto

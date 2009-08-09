@@ -297,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏{}以修改地形、设置地貌等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示 声音/音乐 控制菜单
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}显示最新消息新闻,消息选项,消息历史
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}查询地块信息
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地块信息查询，控制台，AI调试，截图，关于OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}保存场景，读取场景，放弃场景等
@@ -2042,7 +2042,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}建设
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}清除费用：{LTBLUE}N/A 不能清除
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}清除费用：{RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除时确认收入： {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除收入： {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :无
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}产权所属：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}道路所属：{LTBLUE}{STRING}

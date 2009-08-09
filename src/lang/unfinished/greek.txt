@@ -2508,8 +2508,13 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} χρό�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μεγ. ταχύτητα: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_S} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μεγ. Ταχύτητα: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_S} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μεγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μεγ. Ε.Δ: {LTBLUE}{FORCE}
 
 
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}μέρες{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
@@ -2949,6 +2954,8 @@ STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν �
 
 
 
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Το όχημα δεν είναι διαθέσιμο
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Το πλοίο δεν είναι διαθέσιμο
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Αεροσκάφος μη διαθέσιμο
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
@@ -2960,6 +2967,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν �
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται το όχημα να αλάξει πορεία...
 
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Αεροπλάνο είναι σε πτήση
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Δεν υπάρχει χώρος για εντολές
@@ -2979,6 +2987,7 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Αδύν
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...πολύ μακριά από τον προηγούμενο προορισμό
 
 # Timetable related errors
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Αυτό το όχημα δεν σταματάει σε αυτό το σταθμό.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...πάρα πολλοί σηματοδότες
@@ -3165,6 +3174,17 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Φορτηγό 
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Φορτηγό Χαλκού
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Φορτηγό Μαλλιού της Γριάς
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Φορτηγό ζαχαρωτών
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Δεξαμενόπλοιο MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Δεξαμενόπλοιο CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Επιβατηγό πλοίο MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Επιβατηγό πλοίο FFP Passenger
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Hovercraft Bakewell 300
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Επιβατηγό πλοίο Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Επιβατηγό πλοίο Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Πλοίο εμπορευμάτων Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Πλοίο εμπορευμάτων Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Πλοίο εμπορευμάτων Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Πλοίο εμπορευμάτων Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -3217,6 +3237,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_BUOY_NAME                                            :{TOWN} Σημαδούρα
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Σημαδούρα #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Ομάδα {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Σημείο καθοδηγήσης {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Σημείο καθοδηγήσης #{COMMA}
@@ -3225,6 +3246,7 @@ STR_UNKNOWN_STATION                                             :άγνωστο�
 STR_DEFAULT_SIGN_NAME                                           :Πινακίδα
 STR_COMPANY_SOMEONE                                             :κάποιος{SKIP}{SKIP}
 
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Θεατής, {SKIP}{STRING}
 
 # Viewport strings

@@ -172,6 +172,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکل
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}آبادیوں کے نام دکھائے جائیں
 ############ range ends here
 
 ############ range for file menu starts
