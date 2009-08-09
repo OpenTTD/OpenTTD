@@ -21,6 +21,8 @@ struct MixerChannel {
 	/* Mixing volume */
 	int volume_left;
 	int volume_right;
+
+	bool is16bit;
 };
 
 static MixerChannel _channels[8];
@@ -34,6 +36,46 @@ static uint32 _play_rate = 11025;
  */
 static const int MAX_VOLUME = 128 * 128;
 
+static void mix_int16(MixerChannel *sc, int16 *buffer, uint samples)
+{
+	int16 *b;
+	uint32 frac_pos;
+	uint32 frac_speed;
+	int volume_left;
+	int volume_right;
+
+	if (samples > sc->samples_left) samples = sc->samples_left;
+	sc->samples_left -= samples;
+	assert(samples > 0);
+
+	b = (int16*)sc->memory + sc->pos;
+	frac_pos = sc->frac_pos;
+	frac_speed = sc->frac_speed;
+	volume_left = sc->volume_left;
+	volume_right = sc->volume_right;
+
+	if (frac_speed == 0x10000) {
+		/* Special case when frac_speed is 0x10000 */
+		do {
+			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 16), -MAX_VOLUME, MAX_VOLUME);
+			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> 16), -MAX_VOLUME, MAX_VOLUME);
+			b++;
+			buffer += 2;
+		} while (--samples > 0);
+	} else {
+		do {
+			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 16), -MAX_VOLUME, MAX_VOLUME);
+			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> 16), -MAX_VOLUME, MAX_VOLUME);
+			buffer += 2;
+			frac_pos += frac_speed;
+			b += frac_pos >> 16;
+			frac_pos &= 0xffff;
+		} while (--samples > 0);
+	}
+
+	sc->frac_pos = frac_pos;
+	sc->pos = b - (int16*)sc->memory;
+}
 
 static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 {
@@ -93,7 +135,11 @@ void MxMixSamples(void *buffer, uint samples)
 	/* Mix each channel */
 	for (mc = _channels; mc != endof(_channels); mc++) {
 		if (mc->active) {
-			mix_int8_to_int16(mc, (int16*)buffer, samples);
+			if (mc->is16bit) {
+				mix_int16(mc, (int16*)buffer, samples);
+			} else {
+				mix_int8_to_int16(mc, (int16*)buffer, samples);
+			}
 			if (mc->samples_left == 0) MxCloseChannel(mc);
 		}
 	}
@@ -110,7 +156,7 @@ MixerChannel *MxAllocateChannel()
 	return NULL;
 }
 
-void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate)
+void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, bool is16bit)
 {
 	mc->memory = mem;
 	mc->frac_pos = 0;
@@ -124,7 +170,10 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate)
 		rate = (rate >> 1) + 1;
 	}
 
-	mc->samples_left = (uint)size * _play_rate / rate;
+	int div = is16bit ? 2 : 1;
+
+	mc->samples_left = (uint)size * _play_rate / rate / div;
+	mc->is16bit = is16bit;
 }
 
 void MxSetChannelVolume(MixerChannel *mc, uint left, uint right)

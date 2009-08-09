@@ -25,7 +25,7 @@ const char *SoundDriver_SDL::Start(const char * const *parm)
 	const char *s = SdlOpen(SDL_INIT_AUDIO);
 	if (s != NULL) return s;
 
-	spec.freq = GetDriverParamInt(parm, "hz", 11025);
+	spec.freq = GetDriverParamInt(parm, "hz", 44100);
 	spec.format = AUDIO_S16SYS;
 	spec.channels = 2;
 	spec.samples = 512;

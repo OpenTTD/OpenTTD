@@ -29,7 +29,12 @@ static void OpenBankFile(const char *filename)
 
 	FioOpenFile(SOUND_SLOT, filename);
 	size_t pos = FioGetPos();
-	uint count = FioReadDword() / 8;
+	uint count = FioReadDword();
+
+	/* The new format has the highest bit always set */
+	bool new_format = HasBit(count, 31);
+	ClrBit(count, 31);
+	count /= 8;
 
 	/* Simple check for the correct number of original sounds. */
 	if (count != ORIGINAL_SAMPLE_COUNT) {
@@ -44,7 +49,7 @@ static void OpenBankFile(const char *filename)
 
 	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
 		_original_sounds[i].file_slot = SOUND_SLOT;
-		_original_sounds[i].file_offset = FioReadDword() + pos;
+		_original_sounds[i].file_offset = GB(FioReadDword(), 0, 31) + pos;
 		_original_sounds[i].file_size = FioReadDword();
 	}
 
@@ -56,7 +61,7 @@ static void OpenBankFile(const char *filename)
 
 		/* Check for special case, see else case */
 		FioReadBlock(name, FioReadByte()); // Read the name of the sound
-		if (strcmp(name, "Corrupt sound") != 0) {
+		if (new_format || strcmp(name, "Corrupt sound") != 0) {
 			FioSeekTo(12, SEEK_CUR); // Skip past RIFF header
 
 			/* Read riff tags */
@@ -66,11 +71,11 @@ static void OpenBankFile(const char *filename)
 
 				if (tag == ' tmf') {
 					FioReadWord(); // wFormatTag
-					sound->channels = FioReadWord(); // wChannels
-					FioReadDword();   // samples per second
-					sound->rate = 11025; // seems like all samples should be played at this rate.
-					FioReadDword();   // avg bytes per second
-					FioReadWord();    // alignment
+					sound->channels = FioReadWord();        // wChannels
+					sound->rate     = FioReadDword();       // samples per second
+					if (!new_format) sound->rate = 11025;   // seems like all old samples should be played at this rate.
+					FioReadDword();                         // avg bytes per second
+					FioReadWord();                          // alignment
 					sound->bits_per_sample = FioReadByte(); // bits per sample
 					FioSeekTo(size - (2 + 2 + 4 + 4 + 2 + 1), SEEK_CUR);
 				} else if (tag == 'atad') {
@@ -109,13 +114,18 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 	FioSeekToFile(sound->file_slot, sound->file_offset);
 	FioReadBlock(mem, sound->file_size);
 
-	for (uint i = 0; i != sound->file_size; i++) {
-		mem[i] += -128; // Convert unsigned sound data to signed
+	/* 16-bit PCM WAV files should be signed by default */
+	if (sound->bits_per_sample == 8) {
+		for (uint i = 0; i != sound->file_size; i++) {
+			mem[i] += -128; // Convert unsigned sound data to signed
+		}
 	}
 
-	assert(sound->bits_per_sample == 8 && sound->channels == 1 && sound->file_size != 0 && sound->rate != 0);
+	assert(sound->bits_per_sample == 8 || sound->bits_per_sample == 16);
+	assert(sound->channels == 1);
+	assert(sound->file_size != 0 && sound->rate != 0);
 
-	MxSetChannelRawSrc(mc, mem, sound->file_size, sound->rate);
+	MxSetChannelRawSrc(mc, mem, sound->file_size, sound->rate, sound->bits_per_sample == 16);
 
 	return true;
 }

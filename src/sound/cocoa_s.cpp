@@ -47,7 +47,7 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 	requestedDesc.mFormatID = kAudioFormatLinearPCM;
 	requestedDesc.mFormatFlags = kLinearPCMFormatFlagIsPacked;
 	requestedDesc.mChannelsPerFrame = 2;
-	requestedDesc.mSampleRate = GetDriverParamInt(parm, "hz", 11025);
+	requestedDesc.mSampleRate = GetDriverParamInt(parm, "hz", 44100);
 
 	requestedDesc.mBitsPerChannel = 16;
 	requestedDesc.mFormatFlags |= kLinearPCMFormatFlagIsSignedInteger;
