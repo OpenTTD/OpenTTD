@@ -649,6 +649,9 @@ enum AIDebugWindowWidgets {
  * Window with everything an AI prints via AILog.
  */
 struct AIDebugWindow : public Window {
+	static const int top_offset;    ///< Offset of the text at the top of the #AID_WIDGET_LOG_PANEL.
+	static const int bottom_offset; ///< Offset of the text at the bottom of the #AID_WIDGET_LOG_PANEL.
+
 	static CompanyID ai_debug_company;
 	int redraw_timer;
 	int last_vscroll_pos;
@@ -656,7 +659,7 @@ struct AIDebugWindow : public Window {
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
-		this->vscroll.cap = 14;
+		this->vscroll.cap = 14; // Minimal number of lines in the log panel.
 
 		this->InitNested(desc, number);
 		/* Disable the companies who are not active or not an AI */
@@ -676,7 +679,7 @@ struct AIDebugWindow : public Window {
 	{
 		if (widget == AID_WIDGET_LOG_PANEL) {
 			resize->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			size->height = this->vscroll.cap * resize->height;
+			size->height = this->vscroll.cap * resize->height + this->top_offset + this->bottom_offset;
 		}
 	}
 
@@ -803,7 +806,7 @@ struct AIDebugWindow : public Window {
 				_current_company = old_company;
 				if (log == NULL) return;
 
-				int y = 6;
+				int y = this->top_offset;
 				for (int i = this->vscroll.pos; i < (this->vscroll.cap + this->vscroll.pos) && i < log->used; i++) {
 					uint pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 					if (log->lines[pos] == NULL) break;
@@ -870,6 +873,8 @@ struct AIDebugWindow : public Window {
 	}
 };
 
+const int AIDebugWindow::top_offset = WD_FRAMERECT_TOP + 2;
+const int AIDebugWindow::bottom_offset = WD_FRAMERECT_BOTTOM;
 CompanyID AIDebugWindow::ai_debug_company = INVALID_COMPANY;
 
 static const NWidgetPart _nested_ai_debug_widgets[] = {
