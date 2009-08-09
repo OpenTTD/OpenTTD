@@ -806,7 +806,10 @@ static void ParseFile(const char *file, bool english)
 	FILE *in;
 	char buf[2048];
 
-	_translation = strcmp(file, _file) != 0;
+	/* Only look at the final filename to determine whether it's be base language or not */
+	const char *cur_file = strrchr(_file, PATHSEPCHAR);
+	const char *next_file = strrchr(file, PATHSEPCHAR);
+	_translation = next_file != NULL && cur_file != NULL && strcmp(cur_file, next_file) != 0;
 	_file = file;
 
 	/* For each new file we parse, reset the genders, and language codes */
