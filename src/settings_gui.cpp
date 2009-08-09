@@ -24,7 +24,7 @@
 #include "widgets/dropdown_func.h"
 #include "station_func.h"
 #include "highscore.h"
-#include "gfxinit.h"
+#include "base_media_base.h"
 #include "company_base.h"
 #include "company_func.h"
 #include <map>
@@ -153,12 +153,12 @@ static void ShowCustCurrency();
 
 static void ShowGraphicsSetMenu(Window *w)
 {
-	int n = GetNumGraphicsSets();
-	int current = GetIndexOfCurrentGraphicsSet();
+	int n = BaseGraphics::GetNumSets();
+	int current = BaseGraphics::GetIndexOfUsedSet();
 
 	DropDownList *list = new DropDownList();
 	for (int i = 0; i < n; i++) {
-		list->push_back(new DropDownListCharStringItem(GetGraphicsSetName(i), i, (_game_mode == GM_MENU) ? false : (current != i)));
+		list->push_back(new DropDownListCharStringItem(BaseGraphics::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (current != i)));
 	}
 
 	ShowDropDownList(w, list, current, GOW_BASE_GRF_DROPDOWN);
@@ -194,8 +194,8 @@ struct GameOptionsWindow : Window {
 			case GOW_LANG_DROPDOWN:       SetDParam(0, SPECSTR_LANGUAGE_START + _dynlang.curr); break;
 			case GOW_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
 			case GOW_SCREENSHOT_DROPDOWN: SetDParam(0, SPECSTR_SCREENSHOT_START + _cur_screenshot_format); break;
-			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, GetGraphicsSetName(GetIndexOfCurrentGraphicsSet())); break;
-			case GOW_BASE_GRF_STATUS:     SetDParam(0, GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet())); break;
+			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
+			case GOW_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumMissing()); break;
 		}
 	}
 
@@ -208,7 +208,7 @@ struct GameOptionsWindow : Window {
 	{
 		if (widget != GOW_BASE_GRF_DESCRIPTION) return;
 
-		SetDParamStr(0, GetGraphicsSetDescription(GetIndexOfCurrentGraphicsSet()));
+		SetDParamStr(0, BaseGraphics::GetUsedSet()->description);
 		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
 	}
 
@@ -217,8 +217,8 @@ struct GameOptionsWindow : Window {
 		if (widget != GOW_BASE_GRF_DESCRIPTION) return;
 
 		/* Find the biggest description for the default size. */
-		for (int i = 0; i < GetNumGraphicsSets(); i++) {
-			SetDParamStr(0, GetGraphicsSetDescription(i));
+		for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
+			SetDParamStr(0, BaseGraphics::GetSet(i)->description);
 			size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
 		}
 	}
@@ -348,12 +348,12 @@ struct GameOptionsWindow : Window {
 
 			case GOW_BASE_GRF_DROPDOWN:
 				if (_game_mode == GM_MENU) {
-					const char *name = GetGraphicsSetName(index);
+					const char *name = BaseGraphics::GetSet(index)->name;
 
-					free(_ini_graphics_set);
-					_ini_graphics_set = strdup(name);
+					free(const_cast<char *>(BaseGraphics::ini_set));
+					BaseGraphics::ini_set = strdup(name);
 
-					SetGraphicsSet(name);
+					BaseGraphics::SetSet(name);
 					this->reload = true;
 					this->SetDirty();
 					this->OnInvalidateData(0);
@@ -366,7 +366,7 @@ struct GameOptionsWindow : Window {
 	{
 		this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
 
-		bool missing_files = GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet()) == 0;
+		bool missing_files = BaseGraphics::GetUsedSet()->GetNumMissing() == 0;
 		this->nested_array[GOW_BASE_GRF_STATUS]->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL);
 	}
 };

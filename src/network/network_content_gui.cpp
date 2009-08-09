@@ -11,7 +11,7 @@
 #include "../window_gui.h"
 #include "../gui.h"
 #include "../ai/ai.hpp"
-#include "../gfxinit.h"
+#include "../base_media_base.h"
 #include "../sortlist_type.h"
 #include "../querystring_gui.h"
 #include  "network_content.h"
@@ -92,7 +92,7 @@ public:
 					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:
-					FindGraphicsSets();
+					BaseGraphics::FindSets();
 					break;
 
 				case CONTENT_TYPE_NEWGRF:

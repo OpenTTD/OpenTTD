@@ -825,6 +825,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\base_media_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\base_media_func.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\base_station_base.h"
 				>
 			</File>

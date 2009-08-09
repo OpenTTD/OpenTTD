@@ -12,6 +12,7 @@
 #include "../window_func.h"
 #include "../gui.h"
 #include "../variables.h"
+#include "../base_media_base.h"
 #include "network_content.h"
 
 #include "table/strings.h"
@@ -21,7 +22,6 @@
 #endif
 
 extern bool TarListAddFile(const char *filename);
-extern bool HasGraphicsSet(const ContentInfo *ci, bool md5sum);
 extern bool HasScenario(const ContentInfo *ci, bool md5sum);
 ClientNetworkContentSocketHandler _network_content_client;
 
@@ -79,7 +79,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 			break;
 
 		case CONTENT_TYPE_BASE_GRAPHICS:
-			proc = HasGraphicsSet;
+			proc = BaseGraphics::HasSet;
 			break;
 
 		case CONTENT_TYPE_AI:

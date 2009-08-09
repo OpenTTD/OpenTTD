@@ -21,6 +21,7 @@
 #include "sound_func.h"
 #include "window_func.h"
 
+#include "base_media_base.h"
 #include "saveload/saveload.h"
 #include "landscape.h"
 #include "company_func.h"
@@ -183,7 +184,7 @@ static void ShowHelp()
 	);
 
 	/* List the graphics packs */
-	p = GetGraphicsSetsList(p, lastof(buf));
+	p = BaseGraphics::GetSetsList(p, lastof(buf));
 
 	/* List the drivers */
 	p = VideoDriverFactoryBase::GetDriversInfo(p, lastof(buf));
@@ -524,7 +525,7 @@ int ttd_main(int argc, char *argv[])
 			 * We can't do them earlier because then we can't show it on
 			 * the debug console as that hasn't been configured yet. */
 			DeterminePaths(argv[0]);
-			FindGraphicsSets();
+			BaseGraphics::FindSets();
 			ShowHelp();
 			return 0;
 		}
@@ -536,7 +537,7 @@ int ttd_main(int argc, char *argv[])
 #endif
 
 	DeterminePaths(argv[0]);
-	FindGraphicsSets();
+	BaseGraphics::FindSets();
 
 #if defined(UNIX) && !defined(__MORPHOS__)
 	/* We must fork here, or we'll end up without some resources we need (like sockets) */
@@ -593,8 +594,8 @@ int ttd_main(int argc, char *argv[])
 	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
 
-	if (graphics_set == NULL && _ini_graphics_set != NULL) graphics_set = strdup(_ini_graphics_set);
-	if (!SetGraphicsSet(graphics_set)) {
+	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
+	if (!BaseGraphics::SetSet(graphics_set)) {
 		StrEmpty(graphics_set) ?
 			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
 			usererror("Failed to select requested graphics set '%s'", graphics_set);
@@ -727,7 +728,7 @@ int ttd_main(int argc, char *argv[])
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
 
-	free(_ini_graphics_set);
+	free(const_cast<char *>(BaseGraphics::ini_set));
 	free(_ini_musicdriver);
 	free(_ini_sounddriver);
 	free(_ini_videodriver);

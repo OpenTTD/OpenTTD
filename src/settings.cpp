@@ -48,7 +48,7 @@
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "blitter/factory.hpp"
-#include "gfxinit.h"
+#include "base_media_base.h"
 #include "gamelog.h"
 #include "station_func.h"
 #include "map_type.h"
