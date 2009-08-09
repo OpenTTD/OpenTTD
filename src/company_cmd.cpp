@@ -523,10 +523,12 @@ void CompaniesYearlyLoop()
 /** Change engine renewal parameters
  * @param tile unused
  * @param flags operation to perform
- * @param
- * - p1 bits 16-31 = engine group
- * - p2 bits  0-15 = old engine type
- * - p2 bits 16-31 = new engine type
+ * @param p1 packed data
+ *   - bits 16-31 = engine group
+ * @param p2 packed data
+ *   - bits  0-15 = old engine type
+ *   - bits 16-31 = new engine type
+ * @param text unused
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -554,7 +556,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 /**
  * Fill the CompanyNewsInformation struct with the required data.
- * @param p the current company.
+ * @param c the current company.
  * @param other the other company.
  */
 void CompanyNewsInformation::FillData(const Company *c, const Company *other)
