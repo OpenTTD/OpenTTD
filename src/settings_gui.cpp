@@ -824,7 +824,7 @@ void SettingEntry::Init(byte level, bool last_field)
 /** Recursively close all folds of sub-pages */
 void SettingEntry::FoldAll()
 {
-	switch(this->flags & SEF_KIND_MASK) {
+	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			break;
 
@@ -940,7 +940,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int 
 		x += LEVEL_WIDTH;
 	}
 
-	switch(this->flags & SEF_KIND_MASK) {
+	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			if (cur_row >= first_row) {
 				DrawSetting(settings_ptr, this->d.entry.setting, x, y, max_x, this->flags & SEF_BUTTONS_MASK);

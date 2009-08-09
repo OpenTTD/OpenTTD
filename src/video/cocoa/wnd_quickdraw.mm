@@ -502,7 +502,7 @@ inline void WindowQuickdrawSubdriver::BlitToView(int left, int top, int right, i
 {
 	switch (device_depth) {
 		case 32:
-			switch(buffer_depth) {
+			switch (buffer_depth) {
 				case 32:
 					Blit32ToView32(left, top, right, bottom);
 					break;

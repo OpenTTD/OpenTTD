@@ -2119,7 +2119,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			/* Get the custom message if any */
 			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grffile->grfid, GB(GetRegister(0x100), 0, 16));
 			res = GB(res, 0, 4);
-			switch(res) {
+			switch (res) {
 				default: NOT_REACHED();
 				case 0x0: break;                  // Do nothing, but show the custom message if any
 				case 0x1: div = 1; break;         // Halve industry production. If production reaches the quarter of the default, the industry is closed instead.

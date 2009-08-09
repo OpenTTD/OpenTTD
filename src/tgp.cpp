@@ -439,7 +439,7 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 		/* Transform height into 0..1 space */
 		fheight = (double)(*h - h_min) / (double)(h_max - h_min);
 		/* Apply sine transform depending on landscape type */
-		switch(_settings_game.game_creation.landscape) {
+		switch (_settings_game.game_creation.landscape) {
 			case LT_TOYLAND:
 			case LT_TEMPERATE:
 				/* Move and scale 0..1 into -1..+1 */

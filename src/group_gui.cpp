@@ -427,7 +427,7 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		switch(widget) {
+		switch (widget) {
 			case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
 				this->vehicles.ToggleSortOrder();
 				this->SetDirty();

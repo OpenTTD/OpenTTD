@@ -618,7 +618,7 @@ public:
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		switch(widget) {
+		switch (widget) {
 			case TDW_SORTNAME:
 				if (this->towns.SortType() == 0) this->DrawSortButtonState(widget, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 				break;

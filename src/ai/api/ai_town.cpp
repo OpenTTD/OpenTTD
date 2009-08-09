@@ -64,7 +64,7 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	switch(AICargo::GetTownEffect(cargo_id)) {
+	switch (AICargo::GetTownEffect(cargo_id)) {
 		case AICargo::TE_PASSENGERS: return t->act_pass;
 		case AICargo::TE_MAIL:       return t->act_mail;
 		default: return -1;
@@ -78,7 +78,7 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	switch(AICargo::GetTownEffect(cargo_id)) {
+	switch (AICargo::GetTownEffect(cargo_id)) {
 		case AICargo::TE_PASSENGERS: return t->pct_pass_transported;
 		case AICargo::TE_MAIL:       return t->pct_mail_transported;
 		default: return -1;
@@ -92,7 +92,7 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	switch(AICargo::GetTownEffect(cargo_id)) {
+	switch (AICargo::GetTownEffect(cargo_id)) {
 		case AICargo::TE_PASSENGERS: return t->max_pass;
 		case AICargo::TE_MAIL:       return t->max_mail;
 		default: return -1;
