@@ -615,7 +615,7 @@ public:
 
 				if (x >= 10) {
 					/* Increase button clicked */
-					val = min(val + sdb->interval, sdb->max);
+					val = min(val + sdb->interval, (int32)sdb->max);
 					this->clicked_increase = true;
 				} else {
 					/* Decrease button clicked */

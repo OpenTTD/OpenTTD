@@ -47,7 +47,7 @@ static void UpdateWaypointOrder(Order *o)
 	for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
 		if (wp->index != o->GetDestination()) continue;
 
-		o->SetDestination(wp->new_index);
+		o->SetDestination((DestinationID)wp->new_index);
 		return;
 	}
 }
