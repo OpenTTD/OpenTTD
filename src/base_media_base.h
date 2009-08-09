@@ -7,6 +7,10 @@
 
 #include "fileio_func.h"
 
+/* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
+struct IniFile;
+struct ContentInfo;
+
 /** Structure holding filename and MD5 information about a single file */
 struct MD5File {
 	const char *filename;        ///< filename
@@ -67,7 +71,7 @@ struct BaseSet {
 	 * @param path     the path to this ini file (for filenames)
 	 * @return true if loading was successful.
 	 */
-	bool FillSetDetails(struct IniFile *ini, const char *path);
+	bool FillSetDetails(IniFile *ini, const char *path);
 };
 
 /**
@@ -149,7 +153,7 @@ public:
 	 * @param md5sum whether to check the MD5 checksum
 	 * @return true iff we have an set matching.
 	 */
-	static bool HasSet(const struct ContentInfo *ci, bool md5sum);
+	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
 
