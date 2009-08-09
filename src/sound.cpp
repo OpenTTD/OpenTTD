@@ -13,6 +13,10 @@
 #include "vehicle_base.h"
 #include "debug.h"
 
+/* The type of set we're replacing */
+#define SET_TYPE "sounds"
+#include "base_media_func.h"
+
 static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
 MusicFileSettings msf;
 
@@ -116,10 +120,10 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 	return true;
 }
 
-bool SoundInitialize(const char *filename)
+void InitializeSound()
 {
-	OpenBankFile(filename);
-	return true;
+	DEBUG(misc, 1, "Loading sound effects...");
+	OpenBankFile(BaseSounds::GetUsedSet()->files->filename);
 }
 
 /* Low level sound player */
@@ -242,3 +246,34 @@ void SndPlayFx(SoundID sound)
 {
 	StartSound(sound, 0, msf.effect_vol);
 }
+
+INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<SoundsSet>, SoundsSet)
+
+/** Names corresponding to the sound set's files */
+template <class T, size_t Tnum_files>
+/* static */ const char *BaseSet<T, Tnum_files>::file_names[Tnum_files] = { "samples" };
+
+template <class Tbase_set>
+/* static */ const char *BaseMedia<Tbase_set>::GetExtension()
+{
+	return ".obs"; // OpenTTD Base Sounds
+}
+
+template <class Tbase_set>
+/* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
+{
+	if (BaseMedia<Tbase_set>::used_set != NULL) return true;
+
+	const Tbase_set *best = BaseMedia<Tbase_set>::available_sets;
+	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
+		if (best->found_files < c->found_files ||
+				(best->found_files == c->found_files &&
+					(best->shortname == c->shortname && best->version < c->version))) {
+			best = c;
+		}
+	}
+
+	BaseMedia<Tbase_set>::used_set = best;
+	return BaseMedia<Tbase_set>::used_set != NULL;
+}
+

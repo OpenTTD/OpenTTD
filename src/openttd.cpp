@@ -177,6 +177,7 @@ static void ShowHelp()
 		"                        Default value (2) lets OpenTTD use the palette\n"
 		"                          specified in graphics set file (see below)\n"
 		"  -I graphics_set     = Force the graphics set (see below)\n"
+		"  -S sounds_set       = Force the sounds set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
 		"  -x                  = Do not automatically save to config file on exit\n"
 		"\n",
@@ -185,6 +186,9 @@ static void ShowHelp()
 
 	/* List the graphics packs */
 	p = BaseGraphics::GetSetsList(p, lastof(buf));
+
+	/* List the sounds packs */
+	p = BaseSounds::GetSetsList(p, lastof(buf));
 
 	/* List the drivers */
 	p = VideoDriverFactoryBase::GetDriversInfo(p, lastof(buf));
@@ -401,6 +405,7 @@ int ttd_main(int argc, char *argv[])
 	char *videodriver = NULL;
 	char *blitter = NULL;
 	char *graphics_set = NULL;
+	char *sounds_set = NULL;
 	Dimension resolution = {0, 0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
@@ -426,7 +431,7 @@ int ttd_main(int argc, char *argv[])
 	 *   a letter means: it accepts that param (e.g.: -h)
 	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
-	optformat = "m:s:v:b:hD::n::ei::I:t:d::r:g::G:c:xl:p:P:"
+	optformat = "m:s:v:b:hD::n::ei::I:S:t:d::r:g::G:c:xl:p:P:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -437,6 +442,7 @@ int ttd_main(int argc, char *argv[])
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch (i) {
 		case 'I': free(graphics_set); graphics_set = strdup(mgo.opt); break;
+		case 'S': free(sounds_set); sounds_set = strdup(mgo.opt); break;
 		case 'm': free(musicdriver); musicdriver = strdup(mgo.opt); break;
 		case 's': free(sounddriver); sounddriver = strdup(mgo.opt); break;
 		case 'v': free(videodriver); videodriver = strdup(mgo.opt); break;
@@ -526,6 +532,7 @@ int ttd_main(int argc, char *argv[])
 			 * the debug console as that hasn't been configured yet. */
 			DeterminePaths(argv[0]);
 			BaseGraphics::FindSets();
+			BaseSounds::FindSets();
 			ShowHelp();
 			return 0;
 		}
@@ -538,6 +545,7 @@ int ttd_main(int argc, char *argv[])
 
 	DeterminePaths(argv[0]);
 	BaseGraphics::FindSets();
+	BaseSounds::FindSets();
 
 #if defined(UNIX) && !defined(__MORPHOS__)
 	/* We must fork here, or we'll end up without some resources we need (like sockets) */
@@ -584,15 +592,22 @@ int ttd_main(int argc, char *argv[])
 	/* initialize all variables that are allocated dynamically */
 	InitializeDynamicVariables();
 
-	/* Sample catalogue */
-	DEBUG(misc, 1, "Loading sound effects...");
-	SoundInitialize("sample.cat");
-
 	/* Initialize FreeType */
 	InitFreeType();
 
 	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
+
+	/* Look for the sounds before the graphics. Otherwise none would be set and
+	 * the first initialisation of the video happens on the wrong data. Now it
+	 * can do the first initialisation right. */
+	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = strdup(BaseSounds::ini_set);
+	if (!BaseSounds::SetSet(sounds_set)) {
+		StrEmpty(sounds_set) ?
+			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD.") :
+			usererror("Failed to select requested sounds set '%s'", sounds_set);
+	}
+	free(sounds_set);
 
 	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
 	if (!BaseGraphics::SetSet(graphics_set)) {
@@ -729,6 +744,7 @@ int ttd_main(int argc, char *argv[])
 	ShutdownGame();
 
 	free(const_cast<char *>(BaseGraphics::ini_set));
+	free(const_cast<char *>(BaseSounds::ini_set));
 	free(_ini_musicdriver);
 	free(_ini_sounddriver);
 	free(_ini_videodriver);

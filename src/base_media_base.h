@@ -75,7 +75,7 @@ struct BaseSet {
 };
 
 /**
- * Base for all base media (graphics, sound)
+ * Base for all base media (graphics, sounds)
  * @tparam Tbase_set the real set we're going to be
  */
 template <class Tbase_set>
@@ -192,6 +192,23 @@ public:
 	 * Determine the palette of the current graphics set.
 	 */
 	static void DeterminePalette();
+};
+
+/** All data of a sounds set. */
+struct SoundsSet : BaseSet<SoundsSet, 1> {
+	/**
+	 * Is this set useable? Are enough files found to think it exists.
+	 * @return true if it's useable.
+	 */
+	bool IsUseable() const
+	{
+		return this->found_files > 0;
+	}
+};
+
+/** All data/functions related with replacing the base sounds */
+class BaseSounds : public BaseMedia<SoundsSet> {
+public:
 };
 
 #endif /* BASE_MEDIA_BASE_H */

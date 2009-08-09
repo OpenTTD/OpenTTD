@@ -30,6 +30,7 @@
 extern TileIndex _cur_tileloop_tile;
 extern void MakeNewgameSettingsLive();
 
+void InitializeSound();
 void InitializeVehicles();
 void InitializeDepots();
 void InitializeEngineRenews();
@@ -70,6 +71,8 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_cur_tileloop_tile = 0;
 	_thd.redsq = INVALID_TILE;
 	if (reset_settings) MakeNewgameSettingsLive();
+
+	InitializeSound();
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));

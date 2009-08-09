@@ -30,7 +30,6 @@ const byte *_palette_remap = NULL;
 /** Palette map to go from the _use_palette to the !_use_palette */
 const byte *_palette_reverse_remap = NULL;
 
-#include "table/files.h"
 #include "table/landscape_sprite.h"
 
 static const SpriteID * const _landscape_spriteindexes[] = {
@@ -94,6 +93,8 @@ static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int 
  */
 void CheckExternalFiles()
 {
+	if (BaseGraphics::GetUsedSet() == NULL || BaseSounds::GetUsedSet() == NULL) return;
+
 	BaseGraphics::DeterminePalette();
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
@@ -111,13 +112,9 @@ void CheckExternalFiles()
 		}
 	}
 
-	bool sound = false;
-	for (uint i = 0; !sound && i < lengthof(_sound_sets); i++) {
-		sound = _sound_sets[i].CheckMD5();
-	}
-
-	if (!sound) {
-		add_pos += seprintf(add_pos, last, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
+	const SoundsSet *sounds_set = BaseSounds::GetUsedSet();
+	if (!sounds_set->files->CheckMD5()) {
+		add_pos += seprintf(add_pos, last, "Your '%s' file is corrupted or missing! %s\n", sounds_set->files->filename, sounds_set->files->missing_warning);
 	}
 
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);

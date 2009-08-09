@@ -95,6 +95,10 @@ public:
 					BaseGraphics::FindSets();
 					break;
 
+				case CONTENT_TYPE_BASE_SOUNDS:
+					BaseSounds::FindSets();
+					break;
+
 				case CONTENT_TYPE_NEWGRF:
 					ScanNewGRFFiles();
 					/* Yes... these are the NewGRF windows */

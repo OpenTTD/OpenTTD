@@ -1,0 +1,56 @@
+;
+; Example file for the OpenTTD Base Sound replacement sets.
+; This file consists of basically two different parts:
+;  * metadata
+;  * information about the files
+;
+; Metadata contains information about the name and version
+; of the sound set.
+;
+; == Getting started ==
+; - you can't add comments after values
+; - you have to fill the MD5 checksum for each file
+; - you may not miss any of the metadata or files items
+; - `openttd -h` lists all sound replacements sets it found to be correct
+; - `openttd -d grf=1` shows warnings/errors when parsing an .obs file
+; - `openttd -S <name>` starts OpenTTD with the given set (case sensitive)
+; - adding `soundsset = <name>` to the misc section of openttd.cfg makes
+;   OpenTTD start with that sound set by default
+; - there is a command line tool for all platforms called md5sum that can
+;   create the MD5 checksum you need.
+; - all files specified in this file are search relatively to the path where
+;   this file is found, i.e. if the sound files are in a subdir you have
+;   to add that subdir to the names in this file to! It will NOT search for
+;   a file named like specified in here.
+
+[metadata]
+; the name of the pack, preferably less than 16 characters
+name         = example
+; the short name (4 characters), used to identify this set
+shortname    = XMPL
+; the version of this sound set (read as single integer)
+version      = 0
+; a fairly short description of the set
+description  = foo
+
+; The files section lists the files that replace sprites.
+; The file names are case sensitive.
+[files]
+; file with the samples
+samples      = SAMPLES.CAT
+
+; The md5s section lists the MD5 checksum for the files that replace them.
+; Note that the list of files is case sensitive. Each file listed in the
+; files section must be listed here with it's MD5 checksum, otherwise you
+; will get a lot of warnings when starting OpenTTD.
+[md5s]
+SAMPLES.CAT  = 422ea3dd074d2859bb51639a6e0e85da
+
+; The origin section provides the possibility to put and extra line into
+; the warning that a file is missing/corrupt. This can be used to tell
+; them where to find it. It works on the filename specified in the
+; files section and if that is not found it will fall back to the default
+; as shown below here.
+[origin]
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
+SAMPLES.CAT  = You can find it also on your Transport Tycoon Deluxe CD-ROM.

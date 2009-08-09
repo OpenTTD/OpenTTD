@@ -52,6 +52,7 @@ endif
 	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/"*.grf            "$(DATA_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/"*.obg            "$(DATA_DIR)/"
+	$(Q)cp "$(BIN_DIR)/data/"*.obs            "$(DATA_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/opntitle.dat"     "$(DATA_DIR)/"
 	$(Q)cp "$(BIN_DIR)/lang/"*.lng            "$(LANG_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/readme.txt"           "$(BUNDLE_DIR)/"

@@ -2249,10 +2249,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\table\files.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\table\genland.h"
 				>
 			</File>

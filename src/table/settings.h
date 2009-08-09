@@ -238,6 +238,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	 SDTG_BOOL("news_ticker_sound",          S, 0, _news_ticker_sound,     true,    STR_NULL, NULL),
 	 SDTG_BOOL("fullscreen",                 S, 0, _fullscreen,           false,    STR_NULL, NULL),
 	  SDTG_STR("graphicsset",      SLE_STRQ, S, 0, BaseGraphics::ini_set,  NULL,    STR_NULL, NULL),
+	  SDTG_STR("soundsset",        SLE_STRQ, S, 0, BaseSounds::ini_set,    NULL,    STR_NULL, NULL),
 	  SDTG_STR("videodriver",      SLE_STRQ, S, 0, _ini_videodriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("musicdriver",      SLE_STRQ, S, 0, _ini_musicdriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("sounddriver",      SLE_STRQ, S, 0, _ini_sounddriver,       NULL,    STR_NULL, NULL),

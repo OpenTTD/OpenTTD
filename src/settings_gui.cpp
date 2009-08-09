@@ -123,6 +123,9 @@ enum GameOptionsWidgets {
 	GOW_BASE_GRF_DROPDOWN,   ///< Use to select a base GRF
 	GOW_BASE_GRF_STATUS,     ///< Info about missing files etc.
 	GOW_BASE_GRF_DESCRIPTION,///< Description of selected base GRF
+	GOW_BASE_SFX_FRAME,      ///< Base SFX selection frame
+	GOW_BASE_SFX_DROPDOWN,   ///< Use to select a base SFX
+	GOW_BASE_SFX_DESCRIPTION,///< Description of selected base SFX
 };
 
 /**
@@ -151,17 +154,18 @@ static void ShowTownnameDropdown(Window *w, int sel)
 
 static void ShowCustCurrency();
 
-static void ShowGraphicsSetMenu(Window *w)
+template <class T>
+static void ShowSetMenu(Window *w, int widget)
 {
-	int n = BaseGraphics::GetNumSets();
-	int current = BaseGraphics::GetIndexOfUsedSet();
+	int n = T::GetNumSets();
+	int current = T::GetIndexOfUsedSet();
 
 	DropDownList *list = new DropDownList();
 	for (int i = 0; i < n; i++) {
-		list->push_back(new DropDownListCharStringItem(BaseGraphics::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (current != i)));
+		list->push_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (current != i)));
 	}
 
-	ShowDropDownList(w, list, current, GOW_BASE_GRF_DROPDOWN);
+	ShowDropDownList(w, list, current, widget);
 }
 
 struct GameOptionsWindow : Window {
@@ -196,6 +200,7 @@ struct GameOptionsWindow : Window {
 			case GOW_SCREENSHOT_DROPDOWN: SetDParam(0, SPECSTR_SCREENSHOT_START + _cur_screenshot_format); break;
 			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case GOW_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumMissing()); break;
+			case GOW_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
 		}
 	}
 
@@ -206,20 +211,37 @@ struct GameOptionsWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != GOW_BASE_GRF_DESCRIPTION) return;
+		switch (widget) {
+			case GOW_BASE_GRF_DESCRIPTION:
+				SetDParamStr(0, BaseGraphics::GetUsedSet()->description);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				break;
 
-		SetDParamStr(0, BaseGraphics::GetUsedSet()->description);
-		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+			case GOW_BASE_SFX_DESCRIPTION:
+				SetDParamStr(0, BaseSounds::GetUsedSet()->description);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				break;
+		}
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget != GOW_BASE_GRF_DESCRIPTION) return;
+		switch (widget) {
+			case GOW_BASE_GRF_DESCRIPTION:
+				/* Find the biggest description for the default size. */
+				for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
+					SetDParamStr(0, BaseGraphics::GetSet(i)->description);
+					size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
+				}
+				break;
 
-		/* Find the biggest description for the default size. */
-		for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
-			SetDParamStr(0, BaseGraphics::GetSet(i)->description);
-			size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
+			case GOW_BASE_SFX_DESCRIPTION:
+				/* Find the biggest description for the default size. */
+				for (int i = 0; i < BaseSounds::GetNumSets(); i++) {
+					SetDParamStr(0, BaseSounds::GetSet(i)->description);
+					size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
+				}
+				break;
 		}
 	}
 
@@ -288,8 +310,33 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GOW_BASE_GRF_DROPDOWN:
-				ShowGraphicsSetMenu(this);
+				ShowSetMenu<BaseGraphics>(this, GOW_BASE_GRF_DROPDOWN);
 				break;
+
+			case GOW_BASE_SFX_DROPDOWN:
+				ShowSetMenu<BaseSounds>(this, GOW_BASE_SFX_DROPDOWN);
+				break;
+		}
+	}
+
+	/**
+	 * Set the base media set.
+	 * @param index the index of the media set
+	 * @tparam T class of media set
+	 */
+	template <class T>
+	void SetMediaSet(int index)
+	{
+		if (_game_mode == GM_MENU) {
+			const char *name = T::GetSet(index)->name;
+
+			free(const_cast<char *>(T::ini_set));
+			T::ini_set = strdup(name);
+
+			T::SetSet(name);
+			this->reload = true;
+			this->SetDirty();
+			this->OnInvalidateData(0);
 		}
 	}
 
@@ -347,17 +394,11 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GOW_BASE_GRF_DROPDOWN:
-				if (_game_mode == GM_MENU) {
-					const char *name = BaseGraphics::GetSet(index)->name;
+				this->SetMediaSet<BaseGraphics>(index);
+				break;
 
-					free(const_cast<char *>(BaseGraphics::ini_set));
-					BaseGraphics::ini_set = strdup(name);
-
-					BaseGraphics::SetSet(name);
-					this->reload = true;
-					this->SetDirty();
-					this->OnInvalidateData(0);
-				}
+			case GOW_BASE_SFX_DROPDOWN:
+				this->SetMediaSet<BaseSounds>(index);
 				break;
 		}
 	}
@@ -420,6 +461,14 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL), SetPadding(14, 0, 0, 0),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetPadding(6, 10, 10, 10),
+		EndContainer(),
+
+		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_SFX_FRAME), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL),
+			NWidget(NWID_HORIZONTAL), SetPIP(10, 30, 10),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_SFX_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP), SetPadding(14, 0, 0, 0),
+				NWidget(NWID_SPACER), SetFill(true, false),
+			EndContainer(),
+			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_SFX_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetPadding(6, 10, 10, 10),
 		EndContainer(),
 	EndContainer(),
 };

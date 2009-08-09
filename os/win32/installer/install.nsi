@@ -111,6 +111,7 @@ Section "!OpenTTD" Section1
 	SetOutPath "$INSTDIR\data\"
 	File ${PATH_ROOT}bin\data\*.grf
 	File ${PATH_ROOT}bin\data\*.obg
+	File ${PATH_ROOT}bin\data\*.obs
 	File ${PATH_ROOT}bin\data\opntitle.dat
 
 	; Copy the scripts
@@ -134,6 +135,7 @@ Section "!OpenTTD" Section1
 	Delete "$INSTDIR\*.lng"
 	Delete "$INSTDIR\*.grf"
 	Delete "$INSTDIR\*.obg"
+	Delete "$INSTDIR\*.obs"
 	Delete "$INSTDIR\sample.cat"
 	Delete "$INSTDIR\ttd.exe"
 
@@ -272,6 +274,8 @@ Section "Uninstall"
 	Delete "$INSTDIR\data\orig_win.obg"
 	Delete "$INSTDIR\data\orig_dos.obg"
 	Delete "$INSTDIR\data\orig_dos_de.obg"
+	Delete "$INSTDIR\data\orig_win.obs"
+	Delete "$INSTDIR\data\orig_dos.obs"
 
 	Delete "$INSTDIR\data\sample.cat"
 	; Windows Data files

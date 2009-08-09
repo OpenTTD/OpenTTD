@@ -511,7 +511,6 @@ table/clear_land.h
 table/control_codes.h
 table/elrail_data.h
 table/engines.h
-table/files.h
 table/genland.h
 table/industry_land.h
 table/landscape_sprite.h
