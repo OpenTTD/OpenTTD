@@ -44,6 +44,7 @@ struct Case {
 
 static bool _masterlang;
 static bool _translated;
+static bool _translation; ///< Is the current file actually a translation or not
 static const char *_file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings, _show_todo;
@@ -620,14 +621,18 @@ static const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 		return FindCmd("STRING", 6);
 	}
 
-	if (strcmp(a->cmd, "SKIP") == 0) return NULL;
-
 	return a;
 }
 
 
 static bool CheckCommandsMatch(char *a, char *b, const char *name)
 {
+	/* If we're not translating, i.e. we're compiling the base language,
+	 * it is pointless to do all these checks as it'll always be correct.
+	 * After all, all checks are based on the base language.
+	 */
+	if (!_translation) return true;
+
 	ParsedCommandStruct templ;
 	ParsedCommandStruct lang;
 	bool result = true;
@@ -663,9 +668,9 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 	/* if we reach here, all non consumer commands match up.
 	 * Check if the non consumer commands match up also. */
 	for (uint i = 0; i < lengthof(templ.cmd); i++) {
-		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
+		if (TranslateCmdForCompare(templ.cmd[i]) != lang.cmd[i]) {
 			strgen_warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
-				lang.cmd[i]  == NULL ? "<empty>" : lang.cmd[i]->cmd,
+				lang.cmd[i]  == NULL ? "<empty>" : TranslateCmdForCompare(lang.cmd[i])->cmd,
 				templ.cmd[i] == NULL ? "<empty>" : templ.cmd[i]->cmd);
 			result = false;
 		}
@@ -801,6 +806,7 @@ static void ParseFile(const char *file, bool english)
 	FILE *in;
 	char buf[2048];
 
+	_translation = strcmp(file, _file) != 0;
 	_file = file;
 
 	/* For each new file we parse, reset the genders, and language codes */
