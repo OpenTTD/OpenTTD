@@ -917,6 +917,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择�
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 文件{}未找到或不正确
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}关于基本图组的额外信息
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
 # Custom currency window
@@ -1710,7 +1711,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :游戏暂停 (玩家太少)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :游戏继续 (玩家数目达到要求)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :游戏暂停 (连接玩家)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :游戏继续 (玩家链入)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :游戏继续 (玩家已链入)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :游戏继续 (玩家链入失败)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :离开

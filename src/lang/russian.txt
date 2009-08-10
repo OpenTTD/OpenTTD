@@ -1062,6 +1062,11 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбр
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о базовом наборе графики
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Основной набор звуков
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Выберите основной набор звуков для использования
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP.m                             :{BLACK}Выберите основной набор звуков
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о наборе основных звуков
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой полноэкранного режима
 
 # Custom currency window
@@ -1685,7 +1690,7 @@ STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Запу
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Загрузка игры
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Продолжить ранее сохранённую сетевую игру (проверьте, что подсоединились прежним игроком)
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите ваше имя для сетевой игры
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите название серера для сетевой игры
 
 # Network game languages
 ############ Leave those lines in this order!!
@@ -1929,6 +1934,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Сцена
 STR_CONTENT_TYPE_SCENARIO.acc                                   :{G=m}сценарий
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Карта высот
 STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :{G=f}карту высот
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Основные звуки
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загрузка контента...
@@ -2773,10 +2779,10 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новы
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Новый монорельс
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Новый магниторельс
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Поезда
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Новый поезд
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Новая машина
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Покупка кораблей
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Новый
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Новый корабль
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Новый авиатранспорт
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}

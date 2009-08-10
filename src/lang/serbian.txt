@@ -1099,6 +1099,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberit
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} datotek{P a e a} nedostaj{P e u e}/neispravn{P a o o}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnom skupu grafika
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Osnovni skup zvukova
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Označite osnovni skup zvukova za upotrebu
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatni podaci o osnovnom skupu zvukova
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspešno prebacivanje u ceo ekran
 
 # Custom currency window
@@ -1952,6 +1956,7 @@ STR_CONTENT_TYPE_AI                                             :VI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :VI biblioteke
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Osnovni zvukovi
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Preuzimanje dodataka...

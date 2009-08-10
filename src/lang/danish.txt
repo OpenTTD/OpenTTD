@@ -917,6 +917,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg de
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Yderligere information om basis-grafiksættet
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-lydsæt
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vælg basis-lydsættet der skal bruges
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Mere information om basis-lydsættet
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fuldskærmstilstand fejlede
 
 # Custom currency window
@@ -1770,6 +1774,7 @@ STR_CONTENT_TYPE_AI                                             :Computerspiller
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Computerspiller-resourcefil
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarie
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Højdekort
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basislyde
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloader indhold...

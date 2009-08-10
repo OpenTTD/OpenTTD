@@ -297,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Membangu
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Buka toolbar lansekap untuk menaik-turunkan tanah, menanam pohon, dsb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Tampilkan jendela suara/musik
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Tampilkan pesan/berita terkini, tampilkan pilihan berita
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasi area daratan
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasi area daratan, konsol, AI debug, pengambilan gambar, dan tentang OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Simpan, buka, batalkan, keluar editor skenario
@@ -723,7 +723,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Kecelakaan pada Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Bencana Zeppelin di {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Kendaraan hancur pada kecelakaan 'UFO'!
@@ -784,7 +784,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} kehilangan arah.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Gagal menghentikan {VEHICLE} untuk mengubah kargonya
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti karena proses ubah kargonya gagal
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Peremajaan {VEHICLE} gagal{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} jenis baru telah diluncurkan!
@@ -916,6 +916,10 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Graf
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} berkas hilang atau rusak
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informasi tambahan tentang set grafik dasar
+
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set suara dasar
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pilih set suara dasar yang digunakan
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informasi tambahan tentang set suara dasar
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus layar penuh gagal
 
@@ -1488,7 +1492,7 @@ STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF 
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Bergabung
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Cek server
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Periksa lagi  status server
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Periksa lagi status server
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Cari server
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cari jaringan server
@@ -1770,6 +1774,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Perpustakaan AI
 STR_CONTENT_TYPE_SCENARIO                                       :Skenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Peta Ketinggian
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Suara dasar
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Mengunduh konten...

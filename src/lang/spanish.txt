@@ -918,6 +918,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccio
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichero perdido/corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional acerca de este fichero de gráficos
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sonidos base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleccionar conjunto de sonidos base a emplear
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre el conjunto de sonidos base
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo de pantalla completa ha fallado
 
 # Custom currency window
@@ -1765,12 +1769,13 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ¡No es posible descargar contenido!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos básicos
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos base
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Librería de IAs
 STR_CONTENT_TYPE_SCENARIO                                       :Escenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sonidos base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contenido...

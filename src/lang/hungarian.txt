@@ -951,6 +951,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kiválas
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Kiegészítő információ az alap grafikus szettről
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Hang alapcsomag
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Válaszd ki a használandó alap hang szettet
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}További információk az alap hang szettről
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljesképernyős módra váltás sikertelen
 
 # Custom currency window
@@ -1804,6 +1808,7 @@ STR_CONTENT_TYPE_AI                                             :MI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :MI könyvtár
 STR_CONTENT_TYPE_SCENARIO                                       :Térkép
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Magasságtérkép
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Alap hangok
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Tartalom letöltése...

@@ -297,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construe
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar nivell, plantar arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies, mostra les opcions de missatges
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació del terreny
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació del terreny, terminal, depuració IA, captures de pantalla, Quant a OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Desa l'escenari, carrega un escenari, abandona l'editor d'escenaris, sortir
@@ -378,7 +378,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financia una no
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcció de Ferrocarril
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de Ferrocarril Elèctric
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de ferrocarril elèctric
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcció de Monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcció de Maglev
 ############ range ends here
@@ -389,7 +389,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcció de
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcció de vies d'aigua
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcció de canals
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -415,10 +415,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de Mi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de l'àrea de terreny
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Canvia a Terminal
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Canvia al terminal
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Còpia de Pantalla (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Còpia de Pantalla Gran (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla Gegant (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a 'OpenTTD'
 ############ range ends here
 
@@ -753,7 +753,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Recessió Mundial!{}{}Economistes experts temen que l'economia es desplomi!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recessió Acabada!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}S'ha acabat la recessió!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} incrementa la producció!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova veta de carbó trobada a {INDUSTRY}!{}Es preveu doblar la producció!
@@ -784,7 +784,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} està perdut.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :El benefici del {WHITE}{VEHICLE} l'any passat va ser de {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'ordre de remodelació fallida ha parat el {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}El {VEHICLE} s'ha parat perquè l'ordre de remodelació ha fallat
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}L'autorenovació ha fallat en el {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nou/Nova {STRING} disponible!
@@ -799,10 +799,10 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvenció retirada:{}{}{STRING} des de {STRING} fins a {STRING} ja no està subvencionat.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} rebrà un 50% addicional durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} percebrà el doble de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} percebrà el triple de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} percebrà el quàdruple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenció pel servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} rebrà un 50% addicional durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenció per servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el doble de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenció per servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el triple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenció per servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el quàdruple de la tarifa durant el pròxim any!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Caos de trànsit en  {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {STRING} porta 6 mesos de misèria als motoristes!
 
@@ -915,7 +915,11 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Seleccio
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics bàsics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics bàsics a utilitzar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arxiu{P "" s} faltant{P "" s}/corromput{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació adicional sobre el conjunt de gràfics base
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el conjunt de gràfics bàsics
+
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Joc de sons bàsics
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un joc de sons bàsics a utilitzar
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació additional sobre el joc de sons bàsics
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El mode en pantalla completa ha fallat
 
@@ -978,7 +982,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Actitud
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Cap
-STR_NUM_VERY_LOW                                                :Molt baix
+STR_NUM_VERY_LOW                                                :Molt Baix
 STR_NUM_LOW                                                     :Baix
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alt
@@ -1342,13 +1346,13 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugant 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construeix mentre el joc està en pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tindran (freqüents) accidents en els aeroports petits: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canvia el clima: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tindran accidents (freqüents) en els aeroports petits: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canvia el clima: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :paisatge temperat
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :paisatge subàrtic
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :paisatge subtropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :paisatge de joguines
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació de valors de producció: {ORANGE}{STRING}
 
 # Livery window
@@ -1624,7 +1628,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Llista de Clients
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Espectador
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Companyia
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova companyia
 
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :(cap)
@@ -1764,12 +1768,13 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... no és possible descarregar continguts!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gràfics base
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gràfics bàsics
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Llibreria IA
 STR_CONTENT_TYPE_SCENARIO                                       :Escenari
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa d'alçades
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons bàsics
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarregant contingut...
@@ -1928,13 +1933,13 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientac
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecciona l'orientació de l'estació de tramvies de mercaderies
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcció de vies d'aigua
-STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vies d'aigua
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcció de canals
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canals
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canals.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per construir i revisar vaixells)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa boia, que pot ser útil per marques de ruta addicionals
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa una boia que pot ser útil per fer punts de control addicionals
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeducte
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineix l'àrea d'aigua.{}Fa un canal, excepte si CTRL està polsat al nivell del mar, llavors s'inundaran els voltants
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Posa rius.
@@ -2240,7 +2245,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Passant 
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparant el joc
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Extensions NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paràmetres NewGRF
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa predef.
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Desa la llista actual com a predefinició
@@ -2614,7 +2619,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nous Tre
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nous Trens Monorail
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nous Trens Maglev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vehicles amb Vies
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nous Vehicles sobre vies
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nous Vehicles
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nous Vaixells
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nou Avió
@@ -3211,13 +3216,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Massa pr
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No tens prou diners - et fan falta {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Es necessita un terreny pla
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreny inclinat en direcció incorrecta
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No es pot fer això....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Això no es pot fer...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}L'edifici s'ha d'enderrocar primer
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No es pot netejar l'àrea....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...lloc inadequat
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...ja construït
-STR_ERROR_OWNED_BY                                              :{WHITE}...propietat de {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...l'àrea és propietat d'una altra companyia
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No es pot netejar aquesta àrea...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lloc inadequat
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ja construït
+STR_ERROR_OWNED_BY                                              :{WHITE}... propietat de {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'àrea és propietat d'una altra companyia
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nom ha de ser únic
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} en el camí
 
@@ -3241,10 +3246,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja �
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}No es pot canviar el nom de la companyia...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}No es pot canviar el nom de president...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...màxim import permès del préstec és {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... el màxim import permès del préstec és {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}No pots demanar més diners...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...No queda préstec per amortitzar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} necessari
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... No queda préstec per amortitzar
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} necessaris
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No es pot amortitzar préstec...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No es poden regalar els diners deixats pel banc...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No pots comprar la companyia...
@@ -3257,9 +3262,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Aquesta 
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossible construir poblacions
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot reanomenar la població...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...massa prop del límit del mapa
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...massa prop d'una altra població
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...massa poblacions
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... massa prop del límit del mapa
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...no queda espai al mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El poble no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Pobles.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
@@ -3269,14 +3274,14 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es po
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...massa prop d'altres indústries
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...has de construir la població primer
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...només un permès per població
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...només es pot construir en àrees de selva tropical
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...només es pot construir en àrees de desert
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...només es pot construir en poblacions
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...només es pot situar prop dels límits del mapa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...els boscos només es poden plantar sota la cota de neu
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... primer has de construir la població
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... només un permès per població
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... només es pot construir en poblacions de més de 1200 hab.
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... només es pot construir en àrees de selva tropical
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... només es pot construir en àrees de desert
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... només es pot construir en poblacions
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... només es pot situar prop dels límits del mapa
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... els boscos només es poden plantar sota la cota de neu
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Aquí no es pot construir una estació de tren...
@@ -3288,7 +3293,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Aquí no
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Aquí no es pot construir un aeroport...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...estació massa extensa
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estació massa extensa
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...estacions no uniformes desactivades
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Massa estacions/àrees de càrrega
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Hi ha massa parts d'estacions de tren
@@ -3328,7 +3333,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No es po
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Aquí no es pot treure punt de control de tren...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primer s'ha de treure la via punt de control
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boia en el camí
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boia en el camí
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...boia en ús!
 
 # Depot related errors
@@ -3338,7 +3343,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Aquí no
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Aquí no es pot construir una drassana...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren s'ha de parar dins de la cotxera
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...s'ha de parar dins d'una cotxera
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... s'ha de parar dins d'una cotxera
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}El vaixell s'ha de parar a la drassana
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'avió s'ha de parar a l'hangar
 
@@ -3385,13 +3390,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No puc t
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Aquí no es poden construir canals...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Aquí no es pot construir una resclosa...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Aquí no es poden posar rius...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...s'han de construir dins l'aigua
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...No es pot construir dins l'aigua
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... s'han de construir sobre l'aigua
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... no es pot construir sobre l'aigua
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Has de demolir el canal primer
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Aquí no es pot construir un aqüeducte...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...aquí ja hi ha arbres
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... aquí ja hi ha arbres
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Aquí no es poden plantar arbres...
 
 # Bridge related errors
@@ -3401,7 +3406,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}No es po
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les capçaleres del pont no són al mateix nivell
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El pont és massa baix pel terreny
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i final han d'estar en línia recta
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...els extrems del pont han d'estar tots dos a terra
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...
@@ -3413,12 +3418,12 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossib
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecte en el camí
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...seu en el camí
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... seu de la companyia en el camí
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No pots comprar aquesta àrea de terreny...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...ja és propietat teva!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ja és propietat teva!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}No puc crear el  grup...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}No es pot crear el grup...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}No puc eliminar aquest grup...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}No puc canviar el nom del grup...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}No puc eliminar tots els vehicles d'aquest grup...
@@ -3495,13 +3500,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}No es po
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossible moure aquesta ordre...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossible saltar l'ordre actual...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossible saltar l'ordre seleccionada...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}el vehicle no pot anar a totes les estacions
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}el vehicle no pot anar a aquesta estació
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un vehicle que comparteix aquesta ordre no pot anar a aquesta estació
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... el vehicle no pot anar a totes les estacions
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... el vehicle no pot anar a aquesta estació
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicle que comparteix aquesta ordre no pot anar a aquesta estació
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}No es pot compartir la llista d'ordres...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}No es pot copiar la llista d'ordres...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...massa lluny del destí previ
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... massa lluny del destí previ
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...
@@ -3509,7 +3514,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Els vehi
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Aquest vehicle no para en aquesta estació.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...massa senyals
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... massa senyals
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Aquí no es pot situar una senyal...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No es pot canviar el nom del senyal...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}La senyal no es pot esborrar...

@@ -918,6 +918,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zu benut
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fehlende/ fehlerhafte Datei{P "" en}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Zusatzinformationen zu den Basisgrafiken
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basissounds
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Zu benutzendes Set an Basissounds auswählen
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Zusatzinformationen zu den Basissounds
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Vollbildmodus nicht möglich
 
 # Custom currency window
@@ -1771,6 +1775,7 @@ STR_CONTENT_TYPE_AI                                             :{G=w}KI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=w}KI-Bibliothek
 STR_CONTENT_TYPE_SCENARIO                                       :{G=n}Szenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=w}Reliefkarte
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basissound
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lade Erweiterungen herunter...
