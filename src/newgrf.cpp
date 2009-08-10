@@ -320,7 +320,9 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 
 	if (str == STR_NULL) return STR_EMPTY;
 
-	return str;
+	DEBUG(grf, 0, "Unknown StringID 0x%04X remapped to STR_EMPTY. Please open a Feature Request if you need it", str);
+
+	return STR_EMPTY;
 }
 
 static inline uint8 MapDOSColour(uint8 colour)
