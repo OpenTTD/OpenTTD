@@ -36,6 +36,19 @@ static uint32 _play_rate = 11025;
  */
 static const int MAX_VOLUME = 128 * 128;
 
+/**
+ * Perform the rate conversion between the input and output.
+ * @param b the buffer to read the data from
+ * @param frac_pos the position from the begin of the buffer till the next element
+ * @tparam T the size of the buffer (8 or 16 bits)
+ * @return the converted value.
+ */
+template <typename T>
+static int RateConversion(T *b, int frac_pos)
+{
+	return ((b[0] * ((1 << 16) - frac_pos)) + (b[1] * frac_pos)) >> 16;
+}
+
 static void mix_int16(MixerChannel *sc, int16 *buffer, uint samples)
 {
 	int16 *b;
@@ -64,8 +77,9 @@ static void mix_int16(MixerChannel *sc, int16 *buffer, uint samples)
 		} while (--samples > 0);
 	} else {
 		do {
-			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 16), -MAX_VOLUME, MAX_VOLUME);
-			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> 16), -MAX_VOLUME, MAX_VOLUME);
+			int data = RateConversion(b, frac_pos);
+			buffer[0] = Clamp(buffer[0] + (data * volume_left  >> 16), -MAX_VOLUME, MAX_VOLUME);
+			buffer[1] = Clamp(buffer[1] + (data * volume_right >> 16), -MAX_VOLUME, MAX_VOLUME);
 			buffer += 2;
 			frac_pos += frac_speed;
 			b += frac_pos >> 16;
@@ -105,8 +119,9 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 		} while (--samples > 0);
 	} else {
 		do {
-			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 8), -MAX_VOLUME, MAX_VOLUME);
-			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
+			int data = RateConversion(b, frac_pos);
+			buffer[0] = Clamp(buffer[0] + (data * volume_left  >> 8), -MAX_VOLUME, MAX_VOLUME);
+			buffer[1] = Clamp(buffer[1] + (data * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
 			buffer += 2;
 			frac_pos += frac_speed;
 			b += frac_pos >> 16;

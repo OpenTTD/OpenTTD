@@ -109,7 +109,11 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 
 	if (sound->file_size == 0) return false;
 
-	int8 *mem = MallocT<int8>(sound->file_size);
+	int8 *mem = MallocT<int8>(sound->file_size + 2);
+	/* Add two extra bytes so rate conversion can read these
+	 * without reading out of it's input buffer. */
+	mem[sound->file_size    ] = 0;
+	mem[sound->file_size + 1] = 0;
 
 	FioSeekToFile(sound->file_slot, sound->file_offset);
 	FioReadBlock(mem, sound->file_size);
