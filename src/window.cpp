@@ -2663,6 +2663,24 @@ void SetHScrollCount(Window *w, int num)
 	if (num < w->hscroll.pos) w->hscroll.pos = num;
 }
 
+
+/**
+ * Switches viewports following vehicles, which get autoreplaced
+ * @param from_index the old vehicle ID
+ * @param to_index the new vehicle ID
+ */
+void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index)
+{
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		if (w->viewport != NULL && w->viewport->follow_vehicle == from_index) {
+			w->viewport->follow_vehicle = to_index;
+			w->SetDirty();
+		}
+	}
+}
+
+
 /**
  * Relocate all windows to fit the new size of the game application screen
  * @param neww New width of the game application screen

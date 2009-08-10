@@ -17,6 +17,15 @@ static inline void AddCompanyNewsItem(StringID string, NewsSubtype subtype, Comp
 	AddNewsItem(string, subtype, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, cni);
 }
 
+/**
+ * Adds a newsitem referencing a vehicle.
+ *
+ * @warning
+ * Be careful!
+ * Vehicles are a special case, as news are kept when vehicles are autoreplaced/renewed.
+ * You have to make sure, #ChangeVehicleNews catches the DParams of your message.
+ * This is NOT ensured by the references.
+ */
 static inline void AddVehicleNewsItem(StringID string, NewsSubtype subtype, VehicleID vehicle, StationID station = INVALID_STATION)
 {
 	AddNewsItem(string, subtype, NR_VEHICLE, vehicle, station == INVALID_STATION ? NR_NONE : NR_STATION, station);

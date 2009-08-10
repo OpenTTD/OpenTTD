@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "company_func.h"
-#include "vehicle_gui.h"
 #include "train.h"
 #include "rail.h"
 #include "command_func.h"
@@ -17,6 +16,10 @@
 #include "core/alloc_func.hpp"
 
 #include "table/strings.h"
+
+extern void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index);
+extern void ChangeVehicleNews(VehicleID from_index, VehicleID to_index);
+extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
 
 /** Figure out if two engines got at least one type of cargo in common (refitting if needed)
  * @param engine_a one of the EngineIDs
@@ -332,8 +335,10 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 		/* Copy other things which cannot be copied by a command and which shall not stay resetted from the build vehicle command */
 		new_head->CopyVehicleConfigAndStatistics(old_head);
 
-		/* Switch vehicle windows to the new vehicle, so they are not closed when the old vehicle is sold */
+		/* Switch vehicle windows/news to the new vehicle, so they are not closed/deleted when the old vehicle is sold */
+		ChangeVehicleViewports(old_head->index, new_head->index);
 		ChangeVehicleViewWindow(old_head->index, new_head->index);
+		ChangeVehicleNews(old_head->index, new_head->index);
 	}
 
 	return cost;

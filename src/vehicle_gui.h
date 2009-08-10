@@ -78,10 +78,6 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationI
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile);
 
 
-/* ChangeVehicleViewWindow() moves all windows for one vehicle to another vehicle.
- * For ease of use it can be called with both Vehicle pointers and VehicleIDs. */
-void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
-
 static inline uint GetVehicleListHeight(VehicleType type)
 {
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;

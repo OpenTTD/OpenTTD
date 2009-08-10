@@ -68,6 +68,12 @@ enum NewsMode {
 
 /**
  * References to objects in news.
+ *
+ * @warning
+ * Be careful!
+ * Vehicles are a special case, as news are kept when vehicles are autoreplaced/renewed.
+ * You have to make sure, #ChangeVehicleNews catches the DParams of your message.
+ * This is NOT ensured by the references.
  */
 enum NewsReferenceType {
 	NR_NONE,      ///< Empty reference
