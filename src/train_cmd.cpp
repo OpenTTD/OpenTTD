@@ -1910,8 +1910,8 @@ static void ReverseTrainDirection(Train *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	/* Clear path reservation in front. */
-	FreeTrainTrackReservation(v);
+	/* Clear path reservation in front if train is not stuck. */
+	if (!HasBit(v->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(v);
 
 	/* Check if we were approaching a rail/road-crossing */
 	TileIndex crossing = TrainApproachingCrossingTile(v);
@@ -3510,11 +3510,10 @@ static void SetVehicleCrashed(Train *v)
 {
 	if (v->crash_anim_pos != 0) return;
 
-	/* Free a possible path reservation and try to mark all tiles occupied by the train reserved. */
 	if (v->IsFrontEngine()) {
-		/* Remove all reservations, also the ones currently under the train
-		 * and any railway station paltform reservation. */
-		FreeTrainTrackReservation(v);
+		/* Remove the reserved path in front of the train if it is not stuck.
+		 * Also clear all reserved tracks the train is currently on. */
+		if (!HasBit(v->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(v);
 		for (const Train *u = v; u != NULL; u = u->Next()) {
 			ClearPathReservation(u, u->tile, u->GetVehicleTrackdir());
 			if (IsTileType(u->tile, MP_TUNNELBRIDGE)) {
