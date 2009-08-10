@@ -106,7 +106,7 @@ void CheckExternalFiles()
 	char *add_pos = error_msg;
 	const char *last = lastof(error_msg);
 
-	for (uint i = 0; i < lengthof(used_set->files); i++) {
+	for (uint i = 0; i < MAX_GFT; i++) {
 		if (!used_set->files[i].CheckMD5()) {
 			add_pos += seprintf(add_pos, last, "Your '%s' file is corrupted or missing! %s\n", used_set->files[i].filename, used_set->files[i].missing_warning);
 		}
@@ -231,8 +231,11 @@ bool MD5File::CheckMD5() const
 }
 
 /** Names corresponding to the GraphicsFileType */
+const char *_graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
+
+/** Implementation */
 template <class T, size_t Tnum_files>
-/* static */ const char *BaseSet<T, Tnum_files>::file_names[Tnum_files] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
+/* static */ const char **BaseSet<T, Tnum_files>::file_names = _graphics_file_names;
 
 extern void UpdateNewGRFConfigPalette();
 

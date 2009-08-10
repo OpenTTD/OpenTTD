@@ -31,7 +31,7 @@ struct BaseSet {
 	static const size_t NUM_FILES = Tnum_files;
 
 	/** Internal names of the files in this set. */
-	static const char *file_names[Tnum_files];
+	static const char **file_names;
 
 	const char *name;          ///< The name of the base set
 	const char *description;   ///< Description of the base set
