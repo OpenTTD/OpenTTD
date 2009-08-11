@@ -292,7 +292,7 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 	/* We have some changes in our cargo strings, resulting in some missing. */
 	TEXID_TO_STRINGID(0x000E, 0x002D, STR_CARGO_PLURAL_NOTHING);
 	TEXID_TO_STRINGID(0x002E, 0x004D, STR_CARGO_SINGULAR_NOTHING);
-	if (str >= 0x004E && str <= 0x006D) str = units_volume[str - 0x004E];
+	if (str >= 0x004E && str <= 0x006D) return units_volume[str - 0x004E];
 	TEXID_TO_STRINGID(0x006E, 0x008D, STR_QUANTITY_NOTHING);
 	TEXID_TO_STRINGID(0x008E, 0x00AD, STR_ABBREV_NOTHING);
 
