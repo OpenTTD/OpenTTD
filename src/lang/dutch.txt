@@ -297,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bouw vli
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Toon geluid/muziekscherm
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Toon laatste (nieuws)bericht, toon berichtinstellingen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, console, AI-debug, screenshots, over OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sla scenario op, open scenario, scenario-editor verlaten, afsluiten
@@ -306,9 +306,9 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Verplaats startdatum 1 jaar terug
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Verplaats startdatum 1 jaar vooruit
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Toon kaart, dorpenlijst
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschapproductie
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadproductie
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrieproductie
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschapsontwikkeling
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadsontwikkeling
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrie-ontwikkeling
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Wegenbouw
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bomen
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plaats bord
@@ -784,7 +784,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is verdwaald.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Order ombouwen mislukt gestopt {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gestopt omdat een ombouworder is mislukt
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisch vernieuwen mislukt bij {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nieuw {STRING} nu beschikbaar!
@@ -1146,7 +1146,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31e dec 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren wanneer je een nieuw spel start: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren als je een nieuw spel start: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Uit
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eigen bedrijf
@@ -1228,8 +1228,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midden
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Rechts
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vensterklikradius: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vensterklikradius: {ORANGE}uit
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Venster soft limiet (niet-sticky): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Venster soft limiet (niet-sticky): {ORANGE}uit
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximaal vensteraantal (niet-sticky): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximaal vensteraantal (niet-sticky): {ORANGE}uit
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Groeisnelheid steden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Niet
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langzaam
@@ -1346,7 +1346,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet vliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Verander klimaat: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gematigd landschap
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarctisch landschap
@@ -1870,12 +1870,12 @@ STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinat
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routeseinen (semafoor){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (semafoor){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electric){}Groen wanneer er meer dan een groen exit-sein is in het volgende traject. Anders is deze rood.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in het volgende traject. Anders is deze rood.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, Ctrl+klik schakelt tussen de bestaande varianten.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Als geselecteerd zal door te klikken op een bestaand seintype het sein worden omgebouwd naar het geselecteerde seintype en varianten, Ctrl+klik schakelt tussen de bestaande varianten.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Seinsleepdichtheid
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verklein seinsleepdichtheid
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Vergroot seinsleepdichtheid
@@ -1980,7 +1980,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Maakt ge
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Landhoogte gelijk maken
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land egaliseren
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik
 
 # Tree planting window (last two for SE only)
@@ -2008,10 +2008,10 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Verwijde
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je zeker dat je alle eigendommen van een speler van de kaart wilt verwijderen?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Dorpsproductie
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Dorpsontwikkeling
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuw dorp
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Bouw nieuw dorp
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurige dorp
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurig dorp
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bouw dorp op willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Bedek de kaart met willekeurig geplaatste steden
@@ -2026,7 +2026,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Steden groeien sneller dan gewone dorpen{}Afhankelijk van instellingen, zijn ze groter als ze gemaakt worden
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Wegpatroon
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecteer het wegpatroon voor deze stad
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Kies het wegpatroon voor deze stad
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Origineel
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Verbeterd
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 raster
@@ -2050,15 +2050,15 @@ STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Sloopkos
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Omzet na verwijdering: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :(geen)
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigenaar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Weg eigenaar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramspoor eigenaar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Spoor eigenaar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Wegeigenaar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramspooreigenaar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Spooreigenaar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationklasse: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Station type: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde goederen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2074,21 +2074,21 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestijn
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoor
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoor met normale seinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Spoor met begin-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Spoor met beginseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Spoor met uitgangseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Spoor met combinatieseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Spoor met routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Spoor met eenrichtingsrouteseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoor met normale en begin-seinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoor met nromale en uitgangs-signalen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoor met normale en combinatie-signalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoor met normale en beginseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoor met normale en uitgangssignalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoor met normale en combinatiesignalen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Spoor met normale en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Spoor met normale en eenrichtingsrouteseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoor met begin- en uitgangs- signalen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoor met begin- en combinatie- signalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoor met begin- en uitgangssignalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoor met begin- en combinatiesignalen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Spoor met begin- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Spoor met begin- en eenrichtingsrouteseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoor met uitgangs- en combinatie- signalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoor met uitgangs- en combinatiesignalen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Spoor met uitgangs- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Spoor met begin- en eenrichtingsrouteseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Spoor met combinatie- en routeseinen
@@ -2100,7 +2100,7 @@ STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Weg
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Weg met straatlantaarns
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Weg met bomenrij
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garage
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Gelijke weg/spoorweg kruising
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Gelijkvloerse weg-spoorwegkruising
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramspoor
 
 # Houses come directly from their building names
@@ -2108,7 +2108,7 @@ STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (in aa
 
 STR_LAI_TREE_NAME_TREES                                         :Bomen
 STR_LAI_TREE_NAME_RAINFOREST                                    :Tropisch bos
-STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactus planten
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactusplanten
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Treinstation
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
@@ -2129,30 +2129,30 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dok
 # Industries come directly from their industry names
 
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Spoortunnel
-STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Weg tunnel
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Wegtunnel
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangende spoorweg brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stalen spoor brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantilever spoorweg brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Gewapend betonnen hangende spoorweg brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten spoorweg brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen spoorweg brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Kokervormige spoorweg brug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangende spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stalen spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantilever spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Gewapendbetonnen hangende spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Kokervormige spoorbrug
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangende weg brug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stalen vlakke weg brug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen cantilever weg brug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Gewapend betonnen hangende weg brug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten weg brug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen weg brug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Kokervormige weg brug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangende wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stalen vlakke wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen cantilever wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Gewapendbetonnen hangende wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Kokervormige wegbrug
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aquaduct
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Zender
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Vuurtoren
 STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Bedrijfshoofdkwartier
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Door een bedrijf opgekocht terrein
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Terrein in bedrijfseigendom
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Over OpenTTD
@@ -2163,10 +2163,10 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spel Opslaan
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spel Laden
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Scenario opslaan
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario openen
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Scenario Opslaan
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario Openen
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hoogtekaart
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar/laadmap te gaan
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar-/laadmap te gaan
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vrij
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lijst van schijven, mappen, en opgeslagen spellen
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Huidige gekozen naam voor opgeslagen spel
@@ -2178,23 +2178,23 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sla het 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Typ een naam voor het op te slaan spel
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wereld maken
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wereldontwikkeling
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Mapgrootte:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal Industrieën:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal industrieën:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwlijn:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwlijn één omhoog
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwlijn één naar beneden
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwlijnhoogte één omhoog
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwlijnhoogte één omlaag
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Willekeurig getal:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik voor een willekeurig getal
 STR_MAPGEN_RANDOM                                               :{BLACK}Willekeurig maken
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Wijzig het willekeurige getal voor terrein creatie
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land generator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bos algoritme:
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Wijzig het willekeurige getal voor terreinontwikkeling
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zee niveau:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zeeniveau:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maak aan
 
@@ -2211,7 +2211,7 @@ STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Willekeu
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmatig
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Aantal graden hoogtekaart:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Hoogtekaart naam:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Hoogtekaartnaam:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Grootte: {ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Geef een willekeurige seed op
@@ -2224,54 +2224,54 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Vlak lan
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer een vlakke kaart
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Willekeurig land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van platte grond:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Maak de hoogte van plat land een lager
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Maak de hoogte van plat land een hoger
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Maak de hoogte van plat land één lager
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Maak de hoogte van plat land één hoger
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander hoogte van vlak land
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Wereld creëren
+STR_GENERATION_WORLD                                            :{WHITE}Wereld ontwikkelen
 STR_GENERATION_ABORT                                            :{BLACK}Stop
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Stop Wereld Generatie
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Stop Wereldontwikkeling
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je zeker dat je de actie wilt stoppen?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereld maken
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bos plaatsing
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Onverplaatsbare generatie
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ruig en
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Onverplaatsbare ontwikkeling
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel aan het configureren
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met vlakken
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbereiden spel
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF instellingen
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-instellingen
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laad de geselecteerd voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Bewaar voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Bewaar de huidige lijst als voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Kies een naam voor deze voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Verwijder voorkeursinstelling
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Verwijder de geselecteerde voorkeursinstelling
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Verwijder de gekozen voorkeursinstelling
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Toevoegen
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Voeg een NewGRF bestand toe aan te lijst
+STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Voeg een NewGRF-bestand toe aan te lijst
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Verwijderen
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Verwijder de geselecteerde NewGRF bestanden van de lijst
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Verwijder de geselecteerde NewGRF-bestanden van de lijst
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naar Boven
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF bestand naar boven
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar boven
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar Beneden
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF bestand naar beneden
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet omzetten
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerd NewGRF bestand.{}Gebruik deze mogelijkheid wanneer de afbeeldingen er paars uit zien in het spel, van dit NewGRF bestand
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerde NewGRF-bestand.{}Gebruik deze mogelijkheid als de afbeeldingen van dit NewGRF-bestand er paars uit zien in het spel
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Wijzigingen doorvoeren
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Zoek ontbrekende inhoud online
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Controleer of de ontbrekende inhoud online te vinden is
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Bestandsnaam: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF-ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING}
@@ -2280,46 +2280,46 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Geen inf
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Bestand niet gevonden
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uitgeschakeld
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF parameters ingeven
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-parameters ingeven
 
 # NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Beschikbare NewGRF bestanden
-STR_NEWGRF_ADD_FILE                                             :{BLACK}voeg toe aan selectie
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Voeg het geselecteerde NewGRF bestand toe aan je configuratie
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Beschikbare NewGRF-bestanden
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Voeg toe aan selectie
+STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Voeg het geselecteerde NewGRF-bestand toe aan je configuratie
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Bestanden opnieuw lezen
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Werk de lijst van beschikbare NewGRF bestanden bij
+STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Werk de lijst van beschikbare NewGRF-bestanden bij
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritiek: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} werkt niet met de TTDPatch versie, gerapporteerd door OpenTTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} werkt niet met de TTDPatch-versie, gerapporteerd door OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} is voor de {STRING} versie van TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} is ontwikkeld voor {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Ongeldige parameter voor {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} moet geladen zijn voor {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} moet geladen zijn na {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} heeft OpenTTD versie {STRING} of beter nodig.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF bestand is bedoelt voor het vertalen van
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF-bestand is bedoelt voor het vertalen van
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn te veel NewGRFs geladen.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} als statisch NewGRF met {STRING} kan desyncs veroorzaken.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte tekening
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende aktie 0 waarde.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte afbeelding
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Action 0-waarde.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige sprite. Alle ongeldige sprites worden getoond als een rood vraagteken (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8' elementen.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere Action 8-elementen.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit dan OpenTTD laten crashen.{}Weet je het heel zeker?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF-ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibel GRF geladen)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF bestand(en) zijn uitgeschakeld
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF bestand(en)
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF-bestand(en) zijn uitgeschakeld
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF-bestand(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
 
 # NewGRF 'it's broken' warnings
@@ -2328,7 +2328,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het vera
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen metNewGRFs. Het spel kan desync krijgen of crash.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' geeft onjuiste informatie.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}vracht/ombouw informatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door autovernieuw/-vervang
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door autovernieuw/-vervang
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback.
 
 # Sign list window
@@ -2413,7 +2413,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Kies alle faciliteiten
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Kies alle vrachttypen (inclusief niet wachtende vracht)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Kies alle vrachttypen (inclusief niet-wachtende vracht)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Er wacht geen vracht van enig type
 
 # Station view window
@@ -2456,7 +2456,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem station
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander naam controlepost
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander boei naam
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander naam boei
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam controlepost aanpassen
 
@@ -2466,10 +2466,10 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Uitgaven
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Bouwkosten
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nieuwe voertuigen
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trein brandstofkosten
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Wegvoertuig brandstofkosten
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Vliegtuig brandstofkosten
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schip brandstofkosten
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Treinbrandstofkosten
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Wegvoertuigbrandstofkosten
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Vliegtuigbrandstofkosten
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schipbrandstofkosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Eigendomsonderhoud
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Treininkomsten
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Wegvoertuiginkomsten
@@ -2504,10 +2504,10 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Geen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Bedrijfswaarde: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% eigendom van {COMPANY})
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bouw HQ
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Bekijk HQ
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bouw bedrijfshoofdkwartier
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Bekijk bedrijfshoofdkwartier
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bouw bedrijfshoofdkwartier / bekijk bedrijfshoofdkwartier
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verplaats HQ
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verplaats bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nieuw gezicht
@@ -2534,7 +2534,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrie namen - klik op naam om scherm te centreren op industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - klik op naam om scherm te centreren op industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2616,8 +2616,8 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem 
 # Build vehicle window
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nieuwe railvoertuigen
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nieuwe elektrische railvoertuigen
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nieuwe monorail railvoertuigen
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nieuwe zweef railvoertuigen
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nieuwe monorailrailvoertuigen
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nieuwe zweefrailvoertuigen
 
 STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Railvoertuigen
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nieuwe wegvoertuigen
@@ -2637,8 +2637,8 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herindeel naar: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vracht typen
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Om te bouwen voor: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrachttypen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Trekkracht: {GOLD}{FORCE}
 
@@ -2683,7 +2683,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor info., sleep voertuig om toe toevoegen/verwijderen van trein
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig om voor toevoegen/verwijderen van trein
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - klik op wegvoertuig voor informatie
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - klik op schip voor informatie
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
@@ -2750,12 +2750,12 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Je staa
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Bericht van voertuigenfabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}We hebben zojuist een nieuwe {STRING} ontworpen - ben je geïnteresseerd in een jaar lang exclusief gebruik van dit voertuig, zodat we kunnen zien of het goed werkt voordat we het wereldwijd beschikbaar maken?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorweg locomotief
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorlocomotief
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :wegvoertuig
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :vliegtuig
 STR_ENGINE_PREVIEW_SHIP                                         :schip
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail locomotief
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :zweef locomotief
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillocomotief
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :zweeflocomotief
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosten: {CURRENCY} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO}, {CARGO}{}Gebruikskosten: {CURRENCY}/yr
@@ -2783,12 +2783,12 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel t
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een railtype waar je locomotieven voor wilt selecteren
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt selecteren
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
 STR_REPLACE_RAIL_VEHICLES                                       :Railvoertuigen
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische railvoertuigen
-STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail railvoertuigen
-STR_REPLACE_MAGLEV_VEHICLES                                     :Zweef railvoertuigen
+STR_REPLACE_MONORAIL_VEHICLES                                   :Monorailvoertuigen
+STR_REPLACE_MAGLEV_VEHICLES                                     :Zweefrailvoertuigen
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
@@ -2949,7 +2949,7 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Wegvoert
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schip ombouwen
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Vliegtuig ombouwen
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pas trein aan om het geselecteerde goederentype te kunnen vervoeren
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Bouw trein om om het geselecteerde goederentype te kunnen vervoeren
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Bouw wegvoertuig om zodat het geselecteerde goederentype vervoerd kan worden
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Bouw schip om zodat het geselecteerde goederentype vervoerd kan worden
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Bouw vliegtuig om zodat het geselecteerde goederentype vervoerd kan worden
@@ -2974,19 +2974,19 @@ STR_ORDER_GO_VIA                                                :Ga via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ga non-stop via
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Verander het stop-gedrag van de geselecteerde order
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle vracht vol laden
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden wanneer beschikbaar
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle vracht volladen
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden indien beschikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Volledig laden
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Volledig één soort vracht laden
 STR_ORDER_DROP_NO_LOADING                                       :Niet laden
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Verander het laad-gedrag van de geselecteerde order
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles lossen
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Ontladen wanneer geaccepteerd
-STR_ORDER_DROP_UNLOAD                                           :Alles ontladen
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Lossen indien geaccepteerd
+STR_ORDER_DROP_UNLOAD                                           :Alles lossen
 STR_ORDER_DROP_TRANSFER                                         :Transfer
-STR_ORDER_DROP_NO_UNLOADING                                     :Niet ontladen
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander het ontlaad-gedrag van de geselecteerde order
+STR_ORDER_DROP_NO_UNLOADING                                     :Niet lossen
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander het losgedrag van de geselecteerde order
 
 STR_ORDER_REFIT                                                 :{BLACK}Ombouwen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl+klik om ombouw instructie te verwijderen
@@ -2997,7 +2997,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Onderhoud wanne
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sla deze order over tenzij onderhoud nodig is
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig info voor basis springen wanneer
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig info voor basisspringen wanneer
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laad percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum snelheid
@@ -3059,17 +3059,17 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_FULL_LOAD                                             :(Volledig laden)
 STR_ORDER_FULL_LOAD_ANY                                         :(Volledig laden één soort vracht)
 STR_ORDER_NO_LOAD                                               :(Niet laden)
-STR_ORDER_UNLOAD                                                :(Ontladen en vracht meenemen)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Ontladen en wacht tot volledig vol)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Ontladen en wacht tot één soort vracht vol)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Ontladen en vertrek leeg)
+STR_ORDER_UNLOAD                                                :(Lossen en vracht meenemen)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lossen en wacht tot volledig vol)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lossen en wacht tot één soort vracht vol)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Lossen en vertrek leeg)
 STR_ORDER_TRANSFER                                              :(Transfer en neem vracht mee)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer en wacht tot volledig vol)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer en wacht tot één soort vol)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer en vertrek leeg)
-STR_ORDER_NO_UNLOAD                                             :(Niet ontladen en neem vracht mee)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet ontladen en wacht tot volledig vol)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet ontladen en wacht tot één soort vol)
+STR_ORDER_NO_UNLOAD                                             :(Niet lossen en neem vracht mee)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en wacht tot volledig vol)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en wacht tot één soort vol)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[vlak bij einde]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
@@ -3112,7 +3112,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijde
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset teller
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de teller zodat het voertuig toch op tijd is
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto aanvullen
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aanvullen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
 
 # AI debug window
@@ -3184,11 +3184,11 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Kapotte savegam
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Opgeslagen spel hoort bij een nieuwere versie
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Bestand is niet leesbaar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Bestand is niet schrijfbaar
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integriteits controle mislukt
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data-integriteitscontrole mislukt
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tram-ondersteuning. Alle trams zijn verwijderd.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Map maken afgebroken...{}... geen geschikte dorplokaties
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartmaken afgebroken...{}... geen geschikte dorpslokaties
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... er is geen stad in dit scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan landschap uit PNG niet laden...
@@ -3199,8 +3199,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er g
 STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit de BMP niet laden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type foto niet omzetten.
 
-STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaal waarschuwing
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwaarschuwing
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot succesvol opgeslagen als '{STRING}'
@@ -3236,7 +3236,7 @@ STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ontdekt 
 # Leveling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan het land hier niet verhogen...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan het land hier niet verlagen...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan land hier niet gelijk maken...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan land hier niet egaliseren...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Graafwerkzaamheden zouden tunnel beschadigen
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Reeds op zeeniveau
 STR_ERROR_TOO_HIGH                                              :{WHITE}Te hoog
@@ -3347,7 +3347,7 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schip moet gestopt zijn binnen een dok
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtuig moet gestopt zijn in een hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden als ze gestopt zijn binnen een depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan de richting van het voertuig niet omdraaien...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
@@ -3480,7 +3480,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te veel 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onderhoudsinterval niet aanpassen...
 
 STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Kan verwoest voertuig niet verkopen...
-STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Kan vernietigd voortuig niet aanpassen...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Kan vernietigd voortuig niet ombouwen...
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het signaal laten passeren bij gevaar...
@@ -3553,7 +3553,7 @@ STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Winkelcentrum
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Theepothuis
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Varkensbank
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Spaarvarken
 
 ##id 0x4800
 # industry names
@@ -3664,95 +3664,95 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektrisch)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passagiers rijtuig
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Post wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kolen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olie tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vee wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Goederen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Graan wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Hout wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :IJzererts wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Staal wagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passagiersrijtuig
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kolenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olietanker
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Veewagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Goederenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Graanwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Houtwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :IJzerertswagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Staalwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Gepantserde wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Voedsel wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Papier wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Kopererts wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Water tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Fruit wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Rubber wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Suiker wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Suikerspin wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Toffee wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Bellen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cola tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Snoep wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Speelgoed wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Batterij wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Frisdrank wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastic wagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Voedselwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Papierwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Koperertswagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Watertanker
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Fruitwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Rubberwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Suikerwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Suikerspinnenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Toffeewagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Bellenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Colatanker
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Snoepwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Speelgoedwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Batterijwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Frisdrankwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plasticwagon
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passagiers rijtuig
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Post wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kolen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olie tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vee wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Goederen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Graan wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Hout wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :IJzererts wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Staal wagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passagiersrijtuig
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Postwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kolenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olietanker
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Veewagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Goederenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Graanwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Houtwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :IJzerertswagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Staalwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Gepantserde wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Voedsel wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Papier wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Kopererts wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Water tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Fruit wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Rubber wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Suiker wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Suikerspin wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Toffee wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Bellen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Cola tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Snoep wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Speelgoed wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Batterij wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Frisdrank wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastic wagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Voedselwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Papierwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Koperertswagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Watertanker
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Fruitwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Rubberwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Suikerwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Suikerspinnenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Toffeewagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Bellenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Colatanker
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Snoepwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Speelgoedwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Batterijwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Frisdrankwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plasticwagon
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagiers rijtuig
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Post wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kolen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olie tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Vee wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Goederen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Graan wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Hout wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :IJzererts wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Staal wagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagiersrijtuig
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kolenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olietanker
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Veewagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Goederenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Graanwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Houtwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :IJzerertswagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Staalwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Gepantserde wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Voedsel wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Papier wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Kopererts wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Water tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Fruit wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Rubber wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Suiker wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Suikerspin wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Toffee wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Bellen wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Cola tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Snoep wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Speelgoed wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batterij wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Frisdrank wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastic wagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Voedselwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Papierwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Koperertswagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Watertanker
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Fruitwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Rubberwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Suikerwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Suikerspinnenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Toffeewagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Bellenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Colatanker
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Snoepwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Speelgoedwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batterijwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Frisdrankwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plasticwagon
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Bus
@@ -3760,89 +3760,89 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Sup
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Bus
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kolen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kolen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kolen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Post Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Post Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Post Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Post Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Post Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Post Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Olie Tanker
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Olie Tanker
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Olie Tanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kolentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kolentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kolentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Olietanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Olietanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Olietanker
 STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Veewagen
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Veewagen
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Veewagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Goederen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Goederen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Goederen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Graan Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Graan Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Graan Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Hout Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Hout Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Hout Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS IJzererts Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl IJzererts Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy IJzererts Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Staal Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Staal Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Staal Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Goederentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Goederentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Goederentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Graantruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Graantruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Graantruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Houttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Houttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Houttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS IJzerertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl IJzerertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy IJzerertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Staaltruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Staaltruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Staaltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Gepantserde Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Gepantserde Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Gepantserde Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Voedsel Wagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Voedsel Wagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Voedsel Wagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Papier Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Papier Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Papier Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Kopererts Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Kopererts Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Kopererts Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Water Tanker
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Water Tanker
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Water Tanker
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruit Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruit Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Fruit Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Rubber Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Rubber Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Rubber Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Suiker Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Suiker Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Suiker Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Cola Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Cola Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Cola Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Suikerspin Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Suikerspin Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Suikerspin Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffee Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Toffee Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Toffee Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Speelgoed Wagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Speelgoed Wagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Speelgoed Wagen
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Snoep Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Snoep Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Snoep Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Batterij Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Batterij Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Batterij Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Frisdrank Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Frisdrank Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Frisdrank Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastic Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastic Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastic Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bellen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Bellen Truck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bellen Truck
-STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Olie Tanker
-STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Olie Tanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Voedselwagen
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Voedselwagen
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Voedselwagen
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Papiertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Papiertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Papiertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Koperertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Koperertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Koperertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Watertanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Watertanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Watertanker
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruittruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruittruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Fruittruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Rubbertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Rubbertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Rubbertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Suikertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Suikertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Suikertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Colatruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Colatruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Colatruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Suikerspinnentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Suikerspinnentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Suikerspinnentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffeetruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Toffeetruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Toffeetruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Speelgoedwagen
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Speelgoedwagen
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Speelgoedwagen
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Snoeptruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Snoeptruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Snoeptruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Batterijtruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Batterijtruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Batterijtruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Frisdranktruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Frisdranktruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Frisdranktruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastictruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastictruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastictruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bellentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Bellentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bellentruck
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Olietanker
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Olietanker
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Veerboot
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Veerboot
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft

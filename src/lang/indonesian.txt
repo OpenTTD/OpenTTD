@@ -1753,7 +1753,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Anda ti
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Anda memilih ini untuk diunduh
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Keterkaitan ini terpilih untuk diunduh
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sudah dimiliki
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Konten tidak diketahui dan tidak dapat diunduh di OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Konten ini tidak diketahui dan tidak dapat diunduh di OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah penggantian dari  {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nama: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versi: {WHITE}{STRING}
@@ -1864,17 +1864,17 @@ STR_STATION_CLASS_WAYP                                          :Waypoint
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Pemilihan Sinyal
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinyal Blok (semaphore){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinyal Masuk (semaphore){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur  berikutnya. Jika tidak, akan berwarna merah
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinyal Masuk(semaphore){}Akan berwarna hijau jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada jalur berikutnya. Jika tidak, akan berwarna merah
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinyal Keluar (semaphore){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinyal Kombo (semaphore){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (elektris){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinyal Masuk (elektris){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur  berikutnya. Jika tidak, akan berwarna merah
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinyal Masuk (elektris){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur berikutnya. Jika tidak, akan berwarna merah
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinyal Keluar (elektris){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Kerapatan Sinyal
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Kurangi kerapatan sinyal
@@ -2165,7 +2165,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Simpan P
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Buka Permainan
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Simpan Skenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Buka Skenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Buka peta  Heightmap
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Buka peta Heightmap
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik disini untuk langsung mengarah ke folder asal simpan/buka saat ini.
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} bebas
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Daftar drive, direktori dan berkas permainan tersimpan
@@ -2683,7 +2683,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kendaraan{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta Api - klik untuk info kereta, drag kendaraan untuk menambah atau membuang dari rangkaian
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik pada pesawat untuk informasi
@@ -3145,7 +3145,7 @@ STR_AI_LIST_VERSION                                             :{BLACK}Versi: {
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terapkan
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih AI yg  disorot
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih AI yg disorot
 STR_AI_LIST_CANCEL                                              :{BLACK}Batal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan mengubah AI
 
@@ -3218,7 +3218,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Daratan 
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Kemiringan daratan tidak sesuai
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak bisa
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bangunan harus dihancurkan terlebih dahulu
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak dapat membersihkan area ini....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak dapat menghancurkan area ini....
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...lokasi tidak sesuai
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...sudah dibangun
 STR_ERROR_OWNED_BY                                              :{WHITE}...dimiliki oleh {STRING}

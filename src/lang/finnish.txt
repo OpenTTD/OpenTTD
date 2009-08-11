@@ -297,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Rakenna 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Avaa maastonmuokkaustyökalupalkki maan kohottamiseen/madaltamiseen, puiden istuttamiseen, jne.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näytä ääni- ja musiikkiasetukset
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset.
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-aluetiedot
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-aluetiedot, konsoli, tekoälyn virheenjäljitys, tietoja OpenTTD:stä
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, hylkää skenaariomuokkain, lopeta.
@@ -418,7 +418,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn virheenjäljitys
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Valtava kuvakaapp. (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Valtava kuvakaapp. (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
 ############ range ends here
 
@@ -723,7 +723,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}{STATION}: Ilmalaivaonnettomuus!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Ajoneuvo tuhoitui törmäyksessä UFO:n kanssa!
@@ -916,6 +916,10 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgra
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuttuva/korruptoitunut tiedosto{P "" ja}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusgrafiikoista
+
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Perusäänet
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Valitse käytettävät perusäänet
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusäänistä
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuvatila ei toimi
 
@@ -1770,6 +1774,7 @@ STR_CONTENT_TYPE_AI                                             :Tekoäly
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Tekoäly kirjasto
 STR_CONTENT_TYPE_SCENARIO                                       :Skenaario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Korkeuskartta
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Perusäänet
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ladataan sisältöä...
@@ -3214,10 +3219,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa viet
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ei onnistu....
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus täytyy purkaa ensin.
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...maasto on sopimaton.
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...se on jo rakennettu.
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...maasto on sopimaton
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}...se on jo rakennettu
 STR_ERROR_OWNED_BY                                              :{WHITE}...omistaja: {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...alueen omistaa toinen yhtiö.
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alueen omistaa toinen yhtiö
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nimen täytyy olla uniikki
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} on tiellä.
 
@@ -3241,10 +3246,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... alue
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Yhtiön nimeä ei voi muuttaa...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Pääjohtajan nimeä ei voi muuttaa...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...suurin sallittu lainan suuruus on {CURRENCY}.
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... suurin sallittu lainan suuruus on {CURRENCY}.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Lisälainan otto ei onnistu...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...ei lainaa maksettavana.
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...tarvitaan {CURRENCY}.
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ei lainaa maksettavana.
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... tarvitaan {CURRENCY}.
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Lainaa ei voi lyhentää...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Pankista lainattua rahaa ei voi antaa pois...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Yhtiötä ei voi ostaa...
@@ -3257,9 +3262,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Tällä 
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kaupunkeja ei voi rakentaa
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kaupungin nimeä ei voi vaihtaa.
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kaupunkia ei voi rakentaa tähän...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...liian lähellä kartan reunaa.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...liian lähellä toista kaupunkia.
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...liian monta kaupunkia.
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liian lähellä kartan reunaa.
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kaupunkia.
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kaupunkia.
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...kartalla ei ole enää tilaa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kaupunki ei rakenna teitä. Voit sallia teiden rakentamisen valikosta Lisäasetukset->Talous->Kaupungit.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tietyöt ovat käynnissä.
@@ -3269,14 +3274,14 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisu
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...liian lähellä toista teollisuutta.
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...kaupunki pitää rakentaa ensin.
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...vain yksi on sallittu kaupunkia kohden.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...voidaan rakentaa vain sademetsäalueisiin.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...voidaan rakentaa vain aavikkoalueisiin.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...voidaan rakentaa vain kaupunkeihin.
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...voidaan asettaa vain kartan reunoille.
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...metsää voi istuttaa vain lumirajan yläpuolelle.
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... kaupunki pitää rakentaa ensin.
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kaupunkia kohden.
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... voidaan rakentaa vain sademetsäalueisiin
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... voidaan rakentaa vain aavikkoalueisiin
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... voidaan rakentaa vain kaupunkeihin.
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... voidaan asettaa vain kartan reunoille
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsää voi istuttaa vain lumirajan yläpuolelle
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Rautatieasemaa ei voi rakentaa.
@@ -3288,7 +3293,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Satamaa 
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lentokenttää ei voi rakentaa...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Liitä yhteen useampi asema/lastausalue.
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...asema liian levittäytynyt.
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... asema liian levittäytynyt
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...epäsymmetriset asemat poissa käytöstä.
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian monta asemaa ja lastausaluetta.
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
@@ -3328,7 +3333,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipi
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Junien reittipistettä ei voi poistaa...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Junaradan reittipiste täytyy poistaa ensin
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...poiju on tiellä.
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poiju on tiellä
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...poiju on käytössä!
 
 # Depot related errors
@@ -3338,7 +3343,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tähän 
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa ei voi rakentaa.
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... sen pitää olla pysähtyneenä huoltoasemalle
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Laivan pitää olla pysähdyksissä telakalla.
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lentokoneen pitää olla pysähdyksissä lentokonehallissa.
 
@@ -3385,13 +3390,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tästä 
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanaalia ei voi rakentaa tähän...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Sulkua ei voi rakentaa tähän...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tähän ei voi asettaa jokea...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...se pitää rakentaa veteen.
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...veteen ei voi rakentaa.
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... se pitää rakentaa veteen.
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... veteen ei voi rakentaa.
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanava täytyy purkaa ensin
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tähän ei voi rakentaa akveduktia...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...tässä on jo puu.
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... tässä on jo puu.
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Puuta ei voi istuttaa.
 
 # Bridge related errors
@@ -3401,7 +3406,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ei voi a
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillan päät eivät ole samalla korkeudella
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Silta on liian matalalla maastoa varten
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Alku- ja päätepisteen pitää olla linjassa.
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...sillan molempien päiden pitää sijaita maalla.
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... sillan molempien päiden pitää sijaita maalla.
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...
@@ -3413,9 +3418,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Maata ei
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekti on tiellä.
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...yhtiön päärakennus on tiellä.
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yhtiön päärakennus on tiellä.
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Maa-aluetta ei voi hankkia...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...omistat sen jo!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... omistat sen jo!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ei voi luoda ryhmää.
@@ -3495,13 +3500,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Pysähdy
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Tätä riviä ei voi siirtää.
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Tätä riviä ei voi ohittaa.
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Tähän riviin ei voi siirtyä.
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}kulkuneuvo ei pääse kaikille asemille
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}kulkuneuvo ei pääse tälle asemalle
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}kulkuneuvo, jonka kanssa aikataulu on jaettu, ei pääse tälle asemalle
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kulkuneuvo ei pääse kaikille asemille
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kulkuneuvo ei pääse tälle asemalle
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kulkuneuvo, jonka kanssa aikataulu on jaettu, ei pääse tälle asemalle
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Aikataulua ei voi jakaa...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Aikataulua ei voi kopioida...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...liian kaukana edellisestä määränpäästä
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liian kaukana edellisestä määränpäästä
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.
@@ -3509,7 +3514,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kulkuneu
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Tämä ajoneuvo ei pysähdy tällä asemalla.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...liian monta kylttiä.
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liian monta kylttiä.
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kylttiä ei voi sijoittaa.
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kyltin nimeä ei voi muuttaa.
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kylttiä ei voi poistaa...

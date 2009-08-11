@@ -226,7 +226,7 @@ STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Baki masa hayat
 STR_SORT_BY_FACILITY                                            :Jenis stesen
-STR_SORT_BY_ENGINE_ID                                           :ID Enjin  (aturan klasik)
+STR_SORT_BY_ENGINE_ID                                           :ID Enjin (susunan klasik)
 STR_SORT_BY_COST                                                :Kos
 STR_SORT_BY_POWER                                               :Tenaga
 STR_SORT_BY_INTRO_DATE                                          :Tarikh Pengenalan
@@ -709,6 +709,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih se
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fail hilang/rosak{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set bunyi asas
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pilih set bunyi asas untuk digunakan
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set bunyi asas ini
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skrin penuh gagal
 
 # Custom currency window
@@ -983,6 +987,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambungan terhi
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pengingkatan
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bunyi asas
 
 # Content downloading progress window
 
