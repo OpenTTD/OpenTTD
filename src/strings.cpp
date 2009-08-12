@@ -252,13 +252,16 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 		id++;
 	}
 
+	const char *decimal_separator = _settings_game.locale.digit_decimal_separator;
+	if (decimal_separator == NULL) decimal_separator = _langpack->digit_decimal_separator;
+
 	if (number < 1024) {
 		id = 0;
 		buff += seprintf(buff, last, "%i", (int)number);
 	} else if (number < 1024 * 10) {
-		buff += seprintf(buff, last, "%i.%02i", (int)number / 1024, (int)(number % 1024) * 100 / 1024);
+		buff += seprintf(buff, last, "%i%s%02i", (int)number / 1024, decimal_separator, (int)(number % 1024) * 100 / 1024);
 	} else if (number < 1024 * 100) {
-		buff += seprintf(buff, last, "%i.%01i", (int)number / 1024, (int)(number % 1024) * 10 / 1024);
+		buff += seprintf(buff, last, "%i%s%01i", (int)number / 1024, decimal_separator, (int)(number % 1024) * 10 / 1024);
 	} else {
 		assert(number < 1024 * 1024);
 		buff += seprintf(buff, last, "%i", (int)number / 1024);

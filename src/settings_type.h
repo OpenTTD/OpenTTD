@@ -103,6 +103,7 @@ struct LocaleSettings {
 	byte   units;                            ///< unit system we show everything
 	char  *digit_group_separator;            ///< thousand separator for non-currencies
 	char  *digit_group_separator_currency;   ///< thousand separator for currencies
+	char  *digit_decimal_separator;          ///< decimal separator
 };
 
 /** All settings related to the network. */

@@ -5,6 +5,7 @@
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##decimalsep ,
 ##winlangid 0x0000
 ##grflangid 0x05
 ##case n

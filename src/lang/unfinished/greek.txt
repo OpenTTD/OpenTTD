@@ -5,6 +5,7 @@
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##decimalsep ,
 ##winlangid 0x0408
 ##grflangid 0x1e
 ##gender m f n

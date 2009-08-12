@@ -18,6 +18,8 @@ struct LanguagePackHeader {
 	char digit_group_separator[8];
 	/** Thousand separator used for currencies */
 	char digit_group_separator_currency[8];
+	/** Decimal separator */
+	char digit_decimal_separator[8];
 	byte plural_form;   ///< plural form index
 	byte text_dir;      ///< default direction of the text
 	/**

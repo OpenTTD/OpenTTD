@@ -5,6 +5,7 @@
 ##textdir ltr
 ##digitsep {NBSP}
 ##digitsepcur {NBSP}
+##decimalsep ,
 ##winlangid 0x0405
 ##grflangid 0x15
 ##gender m f n

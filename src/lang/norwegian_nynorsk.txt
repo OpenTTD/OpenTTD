@@ -5,6 +5,7 @@
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##decimalsep ,
 ##winlangid 0x0814
 ##grflangid 0x0e
 ##gender masculine feminine neuter

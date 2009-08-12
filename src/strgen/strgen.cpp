@@ -74,6 +74,7 @@ static uint32 _hash;
 static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
 static char _lang_digit_group_separator[8];
 static char _lang_digit_group_separator_currency[8];
+static char _lang_digit_decimal_separator[8];
 static byte _lang_pluralform;
 static byte _lang_textdir;
 static uint16 _lang_winlangid;
@@ -533,6 +534,9 @@ static void HandlePragma(char *str)
 	} else if (!memcmp(str, "digitsepcur ", 12)) {
 		str += 12;
 		strecpy(_lang_digit_group_separator_currency, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_group_separator_currency));
+	} else if (!memcmp(str, "decimalsep ", 11)) {
+		str += 11;
+		strecpy(_lang_digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_decimal_separator));
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = strtol(buf, NULL, 16);
@@ -817,6 +821,7 @@ static void ParseFile(const char *file, bool english)
 	_lang_name[0] = _lang_ownname[0] = _lang_isocode[0] = '\0';
 	strecpy(_lang_digit_group_separator, ",", lastof(_lang_digit_group_separator));
 	strecpy(_lang_digit_group_separator_currency, ",", lastof(_lang_digit_group_separator_currency));
+	strecpy(_lang_digit_decimal_separator, ".", lastof(_lang_digit_decimal_separator));
 	_lang_textdir = TD_LTR;
 	_lang_winlangid = 0x0000; // neutral language code
 	_lang_newgrflangid = 0; // standard english
@@ -1069,6 +1074,7 @@ static void WriteLangfile(const char *filename)
 	strecpy(hdr.isocode, _lang_isocode, lastof(hdr.isocode));
 	strecpy(hdr.digit_group_separator, _lang_digit_group_separator, lastof(hdr.digit_group_separator));
 	strecpy(hdr.digit_group_separator_currency, _lang_digit_group_separator_currency, lastof(hdr.digit_group_separator_currency));
+	strecpy(hdr.digit_decimal_separator, _lang_digit_decimal_separator, lastof(hdr.digit_decimal_separator));
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 

@@ -186,6 +186,7 @@ static const char *_pragmas[][4] = {
 	{ "textdir",     "tl",  "ltr",    "Text direction. Either ltr (left-to-right) or rtl (right-to-left)" },
 	{ "digitsep",    "td",  ",",      "Digit grouping separator for non-currency numbers" },
 	{ "digitsepcur", "td",  ",",      "Digit grouping seprarator for currency numbers" },
+	{ "decimalsep",  "td",  ".",      "Decimal separator" },
 	{ "winlangid",   "x2",  "0x0000", "Language ID for Windows" },
 	{ "grflangid",   "x1",  "0x00",   "Language ID for NewGRFs" },
 	{ "gender",      "tag", "",       "List of genders" },

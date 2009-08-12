@@ -5,6 +5,7 @@
 ##textdir rtl
 ##digitsep ٬
 ##digitsepcur ٬
+##decimalsep ٫
 ##winlangid 0x0420
 ##grflangid 0x5c
 ##gender m f
