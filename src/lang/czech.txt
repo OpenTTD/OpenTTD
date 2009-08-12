@@ -399,8 +399,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavení graf
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavení průhlednosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Zobrazení jmen měst
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Zobrazení jmen stanic
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Zobrazení stavědel
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Zobrazení popisku
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Zobrazení jmen směrování
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Zobrazení popisků
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Plné animace
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Plné detaily
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Průhledné budovy
@@ -487,7 +487,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobrazit nebo skrýt konzoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Obrovský screenshot (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Obrovský screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 ############ range ends here
 
@@ -985,6 +985,7 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základn
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvolte základní sadu grafiky
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chybějící{P "" "" ch}/poškozen{P ý é ých} soubor{P "" y ů}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě grafiky
+
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Selhalo přepnutí na celou obrazovku
 
@@ -3342,7 +3343,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... je p
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... může být budováno jen v pralesech
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... může být budováno jen v poušti
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... můze být budováno jen ve městech
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... může být budováno jen ve městech
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... může být umístěno pouze poblíž okrajů mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... lesy lze vysadit jen nad sněhovou čáru
 

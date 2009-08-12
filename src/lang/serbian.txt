@@ -16,7 +16,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(nedefinisana niska znakova)
+STR_UNDEFINED                                                   :(nedefinisani niz znakova)
 STR_JUST_NOTHING                                                :Ništa
 
 # Cargo related strings
@@ -189,7 +189,7 @@ STR_CARGO_SINGULAR_MAIZE                                        :kukuruz
 STR_CARGO_SINGULAR_MAIZE.big                                    :Kukuruz
 STR_CARGO_SINGULAR_MAIZE.gen                                    :kukuruza
 STR_CARGO_SINGULAR_MAIZE.aku                                    :kukuruz
-STR_CARGO_SINGULAR_FRUIT                                        :VoÄe
+STR_CARGO_SINGULAR_FRUIT                                        :voće
 STR_CARGO_SINGULAR_FRUIT.big                                    :Voće
 STR_CARGO_SINGULAR_FRUIT.aku                                    :voće
 STR_CARGO_SINGULAR_DIAMOND                                      :dijamant
@@ -271,7 +271,7 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
 STR_QUANTITY_GRAIN                                              :{WEIGHT} žitarica
 STR_QUANTITY_WOOD                                               :{WEIGHT} drva
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} železne rude
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rude gvožđa
 STR_QUANTITY_STEEL                                              :{WEIGHT} čelika
 STR_QUANTITY_VALUABLES                                          :{COMMA} džak{P "" a ova} dragocenosti
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bakarne rude
@@ -333,8 +333,8 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :putnike
-STR_BAGS                                                        :džakove
+STR_PASSENGERS                                                  :putnika
+STR_BAGS                                                        :džakova
 STR_TONS                                                        :tona
 STR_LITERS                                                      :litara
 STR_ITEMS                                                       :komada
@@ -417,8 +417,8 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područj
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Naseljenost
-STR_SORT_BY_NAME                                                :{BLACK}Ime
+STR_SORT_BY_POPULATION                                          :{BLACK}Naseljenosti
+STR_SORT_BY_NAME                                                :{BLACK}Imenu
 STR_SORT_BY_DATE                                                :{BLACK}Datumu
 STR_SORT_BY_PRODUCTION                                          :Proizvodnji
 STR_SORT_BY_TYPE                                                :Vrsti
@@ -439,19 +439,19 @@ STR_SORT_BY_WAITING                                             :Vrednosti tovar
 STR_SORT_BY_RATING_MAX                                          :Najvišoj oceni tereta
 STR_SORT_BY_RATING_MIN                                          :Najnižoj oceni tereta
 STR_SORT_BY_ENGINE_ID                                           :ID mašine (standardno)
-STR_SORT_BY_COST                                                :Cena
-STR_SORT_BY_POWER                                               :Snaga
-STR_SORT_BY_INTRO_DATE                                          :Datum proizvodnje
-STR_SORT_BY_RUNNING_COST                                        :Troškovi održavanja
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snaga/Troškovi održavanja
-STR_SORT_BY_CARGO_CAPACITY                                      :Kapacitet tovara
+STR_SORT_BY_COST                                                :Ceni
+STR_SORT_BY_POWER                                               :Snazi
+STR_SORT_BY_INTRO_DATE                                          :Datumu uvođenja
+STR_SORT_BY_RUNNING_COST                                        :Troškovima održavanja
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovima održavanja
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapacitetu tovara
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziraj igru
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ubrzavanje partije
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ubrzavanje igre
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcije
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sačuvaj poziciju, prekini igru, izađi
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži mape, dodatne poglede, spisak znakova
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži mapu, dodatne poglede, spisak znakova
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži popis naselja
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži spisak svih stanica kompanije
@@ -473,7 +473,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradnj
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvorite traku sa oblikovanje reljefa kako bi ste posadili drveće, uzdigli/snizili zemljište, itd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Prikaži prozor za zvuk i muziku
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Prikaži poslednju poruku/izveštaj, prikaži opcije poruka
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o zemljištu
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o zemljištu, konzola, debag veštačke inteligencije, slika sa ekrana, o OpenTTD-u
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sačuvaj scenario, učitaj scenario, napusti editor, izađi
@@ -492,7 +492,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavlj
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sačuvaj scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenario
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Teret visina
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku mapu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Napusti editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Napusti
@@ -501,17 +501,17 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Napusti
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje težine
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredan Postavljanje
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Postavljanje
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Providnost Opcije
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Detaljna podešavanja
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Prikazana imena naselja
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Prikazana imena stanica
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Prikazana imena putanja
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Prikazani znakovi
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Puna animacija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Svi detalji
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Providne zgrade
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Banner stajalište znak
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparentne zgrade
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparentni znakovi stanica
 ############ range ends here
 
 ############ range for file menu starts
@@ -523,8 +523,8 @@ STR_FILE_MENU_EXIT                                              :Izađi
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa sveta
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatni gledište
-STR_MAP_MENU_SIGN_LIST                                          :Znak Foil
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatno gledište
+STR_MAP_MENU_SIGN_LIST                                          :Lista Znakova
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis naselja
 ############ both ranges ends here
@@ -591,8 +591,8 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Istorija Obave�
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemljištu
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mijenjati Utešiti
-STR_ABOUT_MENU_AI_DEBUG                                         :umjetni inteligencija ukloniti tehničke greške
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isključi konzolu
+STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije
 STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku u velikom formatu (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O OpenTTD-u
@@ -728,7 +728,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Jedinica
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Broj vrsta tereta dostavljenih u proteklom tromesečju
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Količina novca koju ova kompanija ima u banci
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Količina novca koju ova kompanije je pozajmila
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Ukupno bodova od nejviše mogućih
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Ukupno bodova od najviše mogućih
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Džez džuboks
@@ -1728,7 +1728,7 @@ STR_NETWORK_LANG_ENGLISH                                        :Engleski
 STR_NETWORK_LANG_GERMAN                                         :Nemački
 STR_NETWORK_LANG_FRENCH                                         :Francuski
 STR_NETWORK_LANG_BRAZILIAN                                      :Brazilski
-STR_NETWORK_LANG_BULGARIAN                                      :Bugraski
+STR_NETWORK_LANG_BULGARIAN                                      :Bugarski
 STR_NETWORK_LANG_CHINESE                                        :Kineski
 STR_NETWORK_LANG_CZECH                                          :Češki
 STR_NETWORK_LANG_DANISH                                         :Danski
@@ -3309,7 +3309,7 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automats
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjava raspored sa vrednostima iz sledećeg putovanja (Ctrl+Klik za zadržavanje vremena čekanja)
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}VI Korekcija
+STR_AI_DEBUG                                                    :{WHITE}Korekcija veštačke inteligencije
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naziv VI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
@@ -3917,7 +3917,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagon za Plasti
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :{G=ženski}Lev1 'Leviathan' (Electrična)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :{G=ženski}Lev2 'Cyclops' (Električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :{G=ženski}Lev3 'Pegasus' (Electrična)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :{G=ženski}Lev4 'Chimaera' (Electrična)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :{G=ženski}Lev4 'Chimaera' (Električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Putnička Kola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Poštanski Vagon

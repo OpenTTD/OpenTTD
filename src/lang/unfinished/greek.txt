@@ -504,6 +504,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ενναλαγή γραφήματος τύπου φορτίου
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών για τις επιδόσεις
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Γραφήματα κλειδιού εταιρείας
@@ -524,6 +525,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Πρόεδρο�
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Μεγιστάνας
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Λεπτομερείς επιδόσεις
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Λεπτομέριες
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -533,6 +535,8 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Οχήματα:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Σταθμοί:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Ελάχ. κέρδος:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ελάχ. εισόδημα:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Μεγ. εισόδημα:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Παραδόθηκαν:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Εμπορεύματα:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Χρήματα:
@@ -541,6 +545,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνο
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων; αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τραίνου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (για όλα τα οχήματα παλιότερα των 2 ετών)
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκε τα τελευταία τέσσερα τετράμηνα
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
@@ -777,6 +782,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Το νέο {STRING} είναι πλεόν διαθέσιμο!
@@ -908,6 +914,10 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασι
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} αρχείο που λείπε ή είναι κατεστραμμένο{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ γραφικών
+
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Σετ βασικών ήχων
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Επιλέξτε τους βασικούς ήχους που θα χρησιμοποιήσετε
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με τους βασικούς ήχους
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Πλήρεις Οθόνη απέτυχε
 
@@ -1395,13 +1405,35 @@ STR_FACE_LOAD                                                   :{BLACK}Φόρτ
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Φόρτωση αγαπημένου προσώπου
 STR_FACE_LOAD_DONE                                              :{WHITE}Το αγαπημένο πρόσωπο έχει φορτωθεί από το αρχείο ρυθμίσεων του OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Αρ. προσώπου παίκτη
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Εμφάνιση και/ή επιλογή του αριθμου προσωπου του παίκτη
+STR_FACE_FACECODE_SET                                           :{WHITE}Ο νέος αριθμός προσώπου έχει οριστεί
+STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο αριθμός προσώπου του παίκτη - πρέπει να είναι αριθμητικός μεταξύ του 0 και του 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
 STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκεύτει ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Ευρωπαϊκό
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Επιλογή ευρωπαϊκών προσώπων
+STR_FACE_AFRICAN                                                :{BLACK}Αφρικάνικο
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Επιλογή αφρικάνικων προσώπων
+STR_FACE_YES                                                    :Ναι
+STR_FACE_NO                                                     :Όχι
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ενεργοποίηση μουστακιού ή σκουλαρικιού
+STR_FACE_HAIR                                                   :Μαλλί:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Αλλάξτε μαλλί
+STR_FACE_EYEBROWS                                               :Φρύδια:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Αλλάξτε φρύδια
+STR_FACE_EYECOLOUR                                              :Χρώμα ματιών:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Αλλάξτε χρώμα ματιών
+STR_FACE_GLASSES                                                :Γυαλιά:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Βάλτε γυαλιά
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Αλλάξτε γυαλιά
 STR_FACE_NOSE                                                   :Μύτη:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Αλλάξτε μύτη
 STR_FACE_LIPS                                                   :Χείλια:
 STR_FACE_MOUSTACHE                                              :Μουστάκι:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Αλλάξτε χείλια ή μουστάκι
+STR_FACE_JACKET                                                 :Σακάκι:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Αλλάξτε σακάκι
 STR_FACE_COLLAR                                                 :Κολλάρο:
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Αλλαγή κολλάρου
 STR_FACE_TIE                                                    :Γραβάτα:
@@ -1655,6 +1687,7 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Πρόβλημ�
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Δεν είναι δυνατή η φορτώση του χάρτη
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Η σύνδεση χάθηκε
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Λάθος πρωτόκολλου
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Αναντιστοιχία NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Μη εξουσιοδοτημένο
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :λήψη περίεργων πακέτων
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :λάθος έκδοση
@@ -1692,8 +1725,12 @@ STR_CONTENT_TITLE                                               :{WHITE}Κατέ
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Τύπος
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Τύπος περιεχόμενου
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Όνομα
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Το όνομα του περιεχομένου
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Κάντε κλικ σε μια γράμμη για να δείτε λεπτομέριες{} Κάντε κλικ στο κουτάκι για το επιλέξετε για κατέβασμα
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Επιλογή όλων
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Μαρκάρισμα όλων των περιοχομένων για κατέβασμα
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλέξτε αναβαθμίσεις
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπάρχωντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Κατέβασμα
@@ -1723,6 +1760,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Βιβλιοθήκη AI
 STR_CONTENT_TYPE_SCENARIO                                       :Σενάριο
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Βασικοί ήχοι
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Κατέβασμα περιεχόμενου...
@@ -1740,6 +1778,14 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Δεν �
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις διαφάνειας
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες των σταθμών. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας για τα δέντρα. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Εναλλαγή διαφάνιας για τα σπίτια. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για τις βιομηχανίες. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλλαγή διαφάνιας για τα κτήρια όπως σταθμοί, αμαξοστάσια και waypoints. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνιας για τις γέφυρες. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για κτήρια όπως φάροι και κεραίες. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα να είναι αόρατα αντίς διάφανα
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
@@ -1754,6 +1800,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Προμ
 STR_JOIN_STATION_CAPTION                                        :{BLACK}Ενώστε σταθμό
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Χτίστε ένα ξεχωριστό σταθμό
 
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Χτήσιμο ενός ξεχωριστού σημείου καθοδήγησης
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Κατασκευή Σιδηρόδρομου
@@ -1833,6 +1880,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομού(τραμ)
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Προσανατοισμός Σταθμού Οχημάτων
@@ -1846,11 +1894,15 @@ STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Επιλ
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Προς. Στάσης Λεωφορείου
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Επιλέξτε τον προσανατολισμό του χώρου φόρτωσης φορτηγών
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Προσανατολισμός επιβατικού σταθμού τραμ
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Επιλέξτε τον προσανατολισμό του επιβατικού στάθμου τραμ
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσανατολισμός εμπορευτικού σταθμού τραμ
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλέξτε τον προσανατολισμό του εμπορευτικού στάθμου τραμ
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Δημιουργία καναλιών.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή Υδατοφράκτη
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για κατασκευή και επισκευή πλοίων)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Προσδιορισμός θαλάσσιας επιφάνειας.{}Δημιουργία καναλιού, εκτός εάν το πλήκτρο CTRL είναι κρατημένο στο επίπεδο της θάλασσας, όπου θα πλημμυρίσει τις παρακείμενες περιοχές.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Τοποθέτησε ποτάμια
@@ -1943,6 +1995,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Τυχα
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Χρηματοδότηση νέας βιομηχανίας
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Επιλέξτε την κατάλληλη βιομηχανία από την λίστα
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Πολλές τυχαίες βιομηχανίες
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Γέμισε τον χάρτη με τυχαίες τοποθετημένες βιομηχανίες
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Κόστος: {YELLOW}{CURRENCY}
@@ -1963,6 +2016,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Τοπι
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Κανένα
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Συντεταγμένες: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Κατασκευή: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Τύπος σταθμού: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτό Εμπόρευμα: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -1989,6 +2043,11 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Κομμάτι 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και μονόδρομης τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Κομμάτι σιδηρόδρομου με προ και εξόδου σηματοδότες
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Κομμάτι σιδηρόδρομου με προ και συνδιασμένους σηματοδότες
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Κομμάτι σιδηρόδρομου με σηματοδότες προ και μονόδρομης τροχιάς
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Κομμάτι σιδηρόδρομου με εξόδου και συνδιασμένους σηματοδότες
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Κομμάτι σιδηρόδρομου με σηματοδότες εξόδου και μονόδρομης τροχιάς
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Κομμάτι σιδηρόδρομου με σηματοδότες συνδιασμένους και μονόδρομης τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Αμαξοστάσιο
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
@@ -2070,6 +2129,7 @@ STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Διαγ
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Αποθήκευση
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Αποθήκευση παιχνιδιού, χρησιμοποιώντας το επιλεγμένο όνομα
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστε το όνομα του σωσμένου παιχνιδιού
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Δημιουργία Κόσμου
@@ -2079,6 +2139,7 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθ
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομήνια:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ. βιομηχανιών:
 STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαία δημιουργία
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Επίπεδο θάλασσας:
@@ -2091,7 +2152,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Βορε
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Βορειοανατολικά
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Νοτιοανατολικά
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Νοτιοδυτικά
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ελεύθερη μορφή
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Τυχαία
 
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Μέγεθος: {ORANGE}{NUM} x {NUM}
 
@@ -2100,13 +2164,24 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλα
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Τύπος Σεναρίου
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Επίπεδο έδαφος
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Δημιουρία επίπεδου εδάφους
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Τυχαίο έδαφος
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Ύψος επίπεδης γης:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφου μια κάτω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφου μια πάνω
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Αλλαγή του ύψους του επίπεδου εδαφους
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Δημιουργία Κόσμου...
 STR_GENERATION_ABORT                                            :{BLACK}Ματαίωση
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ακύρωση της Δημιουργίας Κόσμου
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Θέλετε σίγουρα να ακυρώσετε την δημιουργία;
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% ολοκληρώθηκε
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία Κόσμου
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία Δέντρων
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
@@ -2482,6 +2557,7 @@ STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Αναπ
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή
 
 
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομεριών τραίνου
 
 
 # Messages in the start stop button in the vehicle view

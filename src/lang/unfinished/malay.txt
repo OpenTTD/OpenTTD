@@ -121,6 +121,7 @@ STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PEN
 STR_ABBREV_COAL                                                 :{TINYFONT}BA
 STR_ABBREV_MAIL                                                 :{TINYFONT}SR
 STR_ABBREV_OIL                                                  :{TINYFONT}MI

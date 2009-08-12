@@ -913,10 +913,11 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇�
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}畫面擷取檔案格式
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}選擇畫面擷取檔案格式
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇使用的基礎圖片組
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基礎圖組
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基礎圖組
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎圖形集的額外資訊
+
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}無法切換全螢幕模式
 
@@ -1765,12 +1766,13 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 不支援內容下載功能！
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基本圖形
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基礎圖集
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 函式庫
 STR_CONTENT_TYPE_SCENARIO                                       :場景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度圖
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :基礎音效
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下載內容中...
@@ -3023,7 +3025,7 @@ STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}插入�
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共用這份指令的交通工具
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :前往 {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :經過 {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :前往 {WAYPOINT} 不停靠
 
 STR_ORDER_SERVICE_AT                                            :前往維護
