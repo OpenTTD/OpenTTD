@@ -486,8 +486,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 void RoadVehicle::MarkDirty()
 {
 	for (Vehicle *v = this; v != NULL; v = v->Next()) {
-		v->cur_image = v->GetImage(v->direction);
-		MarkSingleVehicleDirty(v);
+		v->UpdateViewport(false, false);
 	}
 }
 
@@ -536,7 +535,7 @@ static void DeleteLastRoadVeh(Vehicle *v)
 	delete v;
 }
 
-static byte SetRoadVehPosition(Vehicle *v, int x, int y)
+static byte SetRoadVehPosition(Vehicle *v, int x, int y, bool turned)
 {
 	byte new_z, old_z;
 
@@ -548,7 +547,7 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 	old_z = v->z_pos;
 	v->z_pos = new_z;
 
-	VehicleMove(v, true);
+	v->UpdateViewport(true, turned);
 	return old_z;
 }
 
@@ -562,9 +561,7 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 		uint32 r = Random();
 
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
-		v->UpdateDeltaXY(v->direction);
-		v->cur_image = v->GetImage(v->direction);
-		SetRoadVehPosition(v, v->x_pos, v->y_pos);
+		SetRoadVehPosition(v, v->x_pos, v->y_pos, true);
 	} while ((v = v->Next()) != NULL);
 }
 
@@ -1256,8 +1253,7 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 	v->u.road.state = tdir;
 	v->u.road.frame = RVC_DEPOT_START_FRAME;
 
-	v->UpdateDeltaXY(v->direction);
-	SetRoadVehPosition(v, x, y);
+	SetRoadVehPosition(v, x, y, true);
 
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
@@ -1384,8 +1380,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 
 		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
-			v->UpdateDeltaXY(v->direction);
-			SetRoadVehPosition(v, gp.x, gp.y);
+			SetRoadVehPosition(v, gp.x, gp.y, true);
 			return true;
 		}
 
@@ -1530,8 +1525,7 @@ again:
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->UpdateDeltaXY(v->direction);
-		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
+		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, true));
 		return true;
 	}
 
@@ -1595,8 +1589,7 @@ again:
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->UpdateDeltaXY(v->direction);
-		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
+		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, true));
 		return true;
 	}
 
@@ -1635,8 +1628,7 @@ again:
 		v->cur_speed -= (v->cur_speed >> 2);
 		if (old_dir != v->u.road.state) {
 			/* The vehicle is in a road stop */
-			v->UpdateDeltaXY(v->direction);
-			SetRoadVehPosition(v, v->x_pos, v->y_pos);
+			SetRoadVehPosition(v, v->x_pos, v->y_pos, true);
 			/* Note, return here means that the frame counter is not incremented
 			 * for vehicles changing direction in a road stop. This causes frames to
 			 * be repeated. (XXX) Is this intended? */
@@ -1683,7 +1675,7 @@ again:
 						v->u.road.slot_age = 14;
 
 						v->u.road.frame++;
-						RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
+						RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, false));
 						return true;
 					}
 				}
@@ -1758,8 +1750,7 @@ again:
 	 * in a depot or entered a tunnel/bridge */
 	if (!HasBit(r, VETS_ENTERED_WORMHOLE)) v->u.road.frame++;
 
-	v->UpdateDeltaXY(v->direction);
-	RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
+	RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, true));
 	return true;
 }
 
@@ -1818,9 +1809,7 @@ static void RoadVehController(Vehicle *v)
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
 
-		uint16 old_image = u->cur_image;
-		u->cur_image = u->GetImage(u->direction);
-		if (old_image != u->cur_image) VehicleMove(u, true);
+		u->UpdateViewport(false, false);
 	}
 
 	if (v->progress == 0) v->progress = j;

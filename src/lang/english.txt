@@ -3270,7 +3270,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Click to
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {VEHICLE}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}{VEHICLE} stopped because an ordered refit failed
 
 ############ Lists rail types
 

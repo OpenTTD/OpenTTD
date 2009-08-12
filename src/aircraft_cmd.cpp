@@ -706,10 +706,8 @@ void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	v->y_pos = y;
 	v->z_pos = z;
 
-	v->cur_image = v->GetImage(v->direction);
+	v->UpdateViewport(true, false);
 	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v);
-
-	VehicleMove(v, true);
 
 	Vehicle *u = v->Next();
 
@@ -1293,9 +1291,8 @@ TileIndex Aircraft::GetOrderStationLocation(StationID station)
 
 void Aircraft::MarkDirty()
 {
-	this->cur_image = this->GetImage(this->direction);
+	this->UpdateViewport(false, false);
 	if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
-	MarkSingleVehicleDirty(this);
 }
 
 static void CrashAirplane(Vehicle *v)

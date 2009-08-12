@@ -211,8 +211,7 @@ static void HandleBrokenShip(Vehicle *v)
 
 void Ship::MarkDirty()
 {
-	this->cur_image = this->GetImage(this->direction);
-	MarkSingleVehicleDirty(this);
+	this->UpdateViewport(false, false);
 }
 
 static void PlayShipSound(const Vehicle *v)
@@ -265,9 +264,7 @@ void Ship::UpdateDeltaXY(Direction direction)
 
 void RecalcShipStuff(Vehicle *v)
 {
-	v->UpdateDeltaXY(v->direction);
-	v->cur_image = v->GetImage(v->direction);
-	v->MarkDirty();
+	v->UpdateViewport(false, true);
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 }
 
@@ -693,9 +690,7 @@ static void ShipController(Vehicle *v)
 	v->z_pos = GetSlopeZ(gp.x, gp.y);
 
 getout:
-	v->UpdateDeltaXY(dir);
-	v->cur_image = v->GetImage(dir);
-	VehicleMove(v, true);
+	v->UpdateViewport(true, true);
 	return;
 
 reverse_direction:

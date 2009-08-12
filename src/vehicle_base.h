@@ -462,6 +462,21 @@ public:
 	virtual void OnNewDay() {};
 
 	/**
+	 * Update vehicle sprite- and position caches
+	 * @param moved Was the vehicle moved?
+	 * @param turned Did the vehicle direction change?
+	 */
+	inline void UpdateViewport(bool moved, bool turned)
+	{
+		extern void VehicleMove(Vehicle *v, bool update_viewport);
+
+		if (turned) this->UpdateDeltaXY(this->direction);
+		SpriteID old_image = this->cur_image;
+		this->cur_image = this->GetImage(this->direction);
+		if (moved || this->cur_image != old_image) VehicleMove(this, true);
+	}
+
+	/**
 	 * Gets the running cost of a vehicle  that can be sent into SetDParam for string processing.
 	 * @return the vehicle's running cost
 	 */
