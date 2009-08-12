@@ -58,6 +58,7 @@ struct Case {
 
 static bool _masterlang;
 static bool _translated;
+static bool _translation; ///< Is the current file actually a translation or not
 static const char *_file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings, _show_todo;
@@ -348,9 +349,10 @@ static void EmitWordList(const char * const *words, uint nw)
 	uint j;
 
 	PutByte(nw);
-	for (i = 0; i < nw; i++) PutByte(strlen(words[i]));
+	for (i = 0; i < nw; i++) PutByte(strlen(words[i]) + 1);
 	for (i = 0; i < nw; i++) {
 		for (j = 0; words[i][j] != '\0'; j++) PutByte(words[i][j]);
+		PutByte(0);
 	}
 }
 
@@ -755,14 +757,18 @@ static const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 		return FindCmd("STRING", 6);
 	}
 
-	if (strcmp(a->cmd, "SKIP") == 0) return NULL;
-
 	return a;
 }
 
 
 static bool CheckCommandsMatch(char *a, char *b, const char *name)
 {
+	/* If we're not translating, i.e. we're compiling the base language,
+	 * it is pointless to do all these checks as it'll always be correct.
+	 * After all, all checks are based on the base language.
+	 */
+	if (!_translation) return true;
+
 	ParsedCommandStruct templ;
 	ParsedCommandStruct lang;
 	uint i, j;
@@ -799,9 +805,9 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 	/* if we reach here, all non consumer commands match up.
 	 * Check if the non consumer commands match up also. */
 	for (i = 0; i < lengthof(templ.cmd); i++) {
-		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
+		if (TranslateCmdForCompare(templ.cmd[i]) != lang.cmd[i]) {
 			strgen_warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
-				lang.cmd[i]  == NULL ? "<empty>" : lang.cmd[i]->cmd,
+				lang.cmd[i]  == NULL ? "<empty>" : TranslateCmdForCompare(lang.cmd[i])->cmd,
 				templ.cmd[i] == NULL ? "<empty>" : templ.cmd[i]->cmd);
 			result = false;
 		}
@@ -938,6 +944,10 @@ static void ParseFile(const char *file, bool english)
 	FILE *in;
 	char buf[2048];
 
+	/* Only look at the final filename to determine whether it's be base language or not */
+	const char *cur_file = strrchr(_file, PATHSEPCHAR);
+	const char *next_file = strrchr(file, PATHSEPCHAR);
+	_translation = next_file != NULL && cur_file != NULL && strcmp(cur_file, next_file) != 0;
 	_file = file;
 
 	/* For each new file we parse, reset the genders, and language codes */

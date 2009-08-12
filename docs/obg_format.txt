@@ -26,7 +26,7 @@
 [metadata]
 ; the name of the pack, preferably less than 16 characters
 name         = example
-; the short name (4 characters), used to identify this set within NewGRFs
+; the short name (4 characters), used to identify this set
 shortname    = XMPL
 ; the version of this graphics set (read as single integer)
 version      = 0

@@ -74,7 +74,7 @@ bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(gw_done_proc *proc);
 void GenerateWorldSetAbortCallback(gw_abort_proc *proc);
 void WaitTillGeneratedWorld();
-void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y);
+void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_settings = true);
 void AbortGeneratingWorld();
 bool IsGeneratingWorldAborted();
 void HandleGeneratingWorldAbortion();

@@ -495,22 +495,19 @@ static int DeterminePluralForm(int64 count)
 	}
 }
 
-static const char *ParseStringChoice(const char *b, uint form, char *dst, int *dstlen)
+static const char *ParseStringChoice(const char *b, uint form, char **dst, const char *last)
 {
 	/* <NUM> {Length of each string} {each string} */
 	uint n = (byte)*b++;
-	uint pos, i, mylen = 0, mypos = 0;
+	uint pos, i, mypos = 0;
 
 	for (i = pos = 0; i != n; i++) {
 		uint len = (byte)*b++;
-		if (i == form) {
-			mypos = pos;
-			mylen = len;
-		}
+		if (i == form) mypos = pos;
 		pos += len;
 	}
-	*dstlen = mylen;
-	memcpy(dst, b + mypos, mylen);
+
+	*dst += seprintf(*dst, last, "%s", b + mypos);
 	return b + pos;
 }
 
@@ -752,7 +749,6 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 
 			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 				const char *s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
-				int len;
 				int gender = 0;
 				if (s != NULL) {
 					wchar_t c = Utf8Consume(&s);
@@ -766,8 +762,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 					/* Does this string have a gender, if so, set it */
 					if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
 				}
-				str = ParseStringChoice(str, gender, buff, &len);
-				buff += len;
+				str = ParseStringChoice(str, gender, &buff, last);
 				break;
 			}
 
@@ -866,9 +861,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 
 			case SCC_PLURAL_LIST: { // {P}
 				int64 v = argv_orig[(byte)*str++]; // contains the number that determines plural
-				int len;
-				str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
-				buff += len;
+				str = ParseStringChoice(str, DeterminePluralForm(v), &buff, last);
 				break;
 			}
 

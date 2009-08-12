@@ -423,6 +423,7 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	random_bits &= ~object.reseed;
 	random_bits |= new_random_bits & object.reseed;
 	SetIndustryRandomBits(tile, random_bits);
+	MarkTileDirtyByTile(tile);
 }
 
 void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)

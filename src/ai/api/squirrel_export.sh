@@ -2,6 +2,10 @@
 
 # $Id$
 
+# Set neutral locale so sort behaves the same everywhere
+LC_ALL=C
+export LC_ALL
+
 # We really need gawk for this!
 AWK=gawk
 

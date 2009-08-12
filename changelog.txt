@@ -117,7 +117,7 @@
 - Add: [NoAI] AIAirport::GetPrice, returning the building cost of an airport (r16252)
 - Add: [NoAI] Two new error codes to AITile: ERR_AREA_ALREADY_FLAT and ERR_EXCAVATION_WOULD_DAMAGE (r16171)
 - Add: [NoAI] AITile::Get(Min|Max|Corner)Height (r16166)
-- Add: [NoAI] Several functions to AIOrder to check the what kind of order an order is [FS#2801] (r16165)
+- Add: [NoAI] Several functions to AIOrder to check the what kind of order an order is and AIVehicle.SendVehicleToDepotForServicing [FS#2801] (r16165)
 - Add: [NoAI] UseAsRandomAI as function in info.nut. When an AI returns false, it will never be chosen as random AI (r16113)
 - Add: [NoAI] AIOF_STOP_IN_DEPOT to the orderflags in AIOrder to allow stop-in-depot orders (r16107)
 - Add: [NoAI] GetURL() as possible function to info.nut. If AIs implement it, that url is shown when the AI crashes and also in the AI selection window [FS#2808] (r16093)
