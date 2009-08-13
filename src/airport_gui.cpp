@@ -90,9 +90,9 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget - ATW_AIRPORT >= 0) {
-			_build_air_button_proc[widget - ATW_AIRPORT](this);
-		}
+		if (!IsInsideBS(widget, ATW_AIRPORT, lengthof(_build_air_button_proc))) return;
+
+		_build_air_button_proc[widget - ATW_AIRPORT](this);
 	}
 
 
