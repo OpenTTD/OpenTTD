@@ -36,7 +36,7 @@ description  = foo
 ; The files section lists the files that replace sprites.
 ; The file names are case sensitive.
 [files]
-; file with the samples
+; The file with the samples. Must contain exactly 73 samples.
 samples      = SAMPLES.CAT
 
 ; The md5s section lists the MD5 checksum for the files that replace them.

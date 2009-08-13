@@ -49,6 +49,8 @@ tropical     = TRGH.GRF
 ; GRF file with extra toyland sprites
 toyland      = TRGT.GRF
 ; NewGRF file using Actions 5, 7, 9 and A to replace sprites
+; Must use a GRF ID starting with FF so it cannot be selected from
+; the in-game NewGRF list and (thus) be loaded twice.
 extra        = OPENTTDD.GRF
 
 ; The md5s section lists the MD5 checksum for the files that replace them.
