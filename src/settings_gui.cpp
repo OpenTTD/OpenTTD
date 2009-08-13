@@ -235,6 +235,17 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case GOW_BASE_GRF_STATUS:
+				/* Find the biggest description for the default size. */
+				for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
+					uint missing_files = BaseGraphics::GetSet(i)->GetNumMissing();
+					if (missing_files == 0) continue;
+
+					SetDParam(0, missing_files);
+					*size = maxdim(*size, GetStringBoundingBox(STR_GAME_OPTIONS_BASE_GRF_STATUS));
+				}
+				break;
+
 			case GOW_BASE_SFX_DESCRIPTION:
 				/* Find the biggest description for the default size. */
 				for (int i = 0; i < BaseSounds::GetNumSets(); i++) {
@@ -458,7 +469,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_GAME_OPTIONS_BASE_GRF, STR_NULL),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 30, 10),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP), SetPadding(14, 0, 0, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL), SetPadding(14, 0, 0, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetPadding(14, 0, 0, 0),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetPadding(6, 10, 10, 10),
 		EndContainer(),
