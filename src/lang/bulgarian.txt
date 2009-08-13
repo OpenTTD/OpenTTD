@@ -213,6 +213,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Избери вида на сортирането (намаляващо/нарастващо)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Избери критерий за сортиране
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Избери критерии за филтриране
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортирай по
 STR_BUTTON_LOCATION                                             :{BLACK}Позиция
 STR_BUTTON_RENAME                                               :{BLACK}Преименувай
@@ -299,7 +300,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Пост
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Отворете ивицата с инструменти за тераформиране за да повишавате/понижавате земя, засаждате дърва, и др.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Покажи прозореца за звук/музика
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Покажи последното съобщение/новини, покажи настройките на съобщенията
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация за земята
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация за земята, конзолата, ИИ дебъг, екранни снимки, за OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Запис, зареждане на сценарий, затваряне на редактора, изход
@@ -418,7 +419,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация за терена
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Показване/скриване на конзола
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :ИИ дебъг
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Огромен Screenshot (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'OpenTTD'
@@ -785,7 +786,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} се е загубил.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :Прихода на {WHITE}{VEHICLE} миналата година е бил {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Провалена задача за преоборудване спря {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спря поради провалена задача за преоборудване
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE} Неуспешна автоматична замяна на  {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Нов {STRING} е на разположение!
@@ -915,6 +916,12 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Избо
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Изберете базов графичен набор
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} липсващи/повредени файлове
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Допълнителна информация за базовия графичен пакет
+
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базов звуков пакет
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Избери базовия звуков пакет
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Допълнителна информация за базовите звуци
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Проблем при включване на режим "цял екран"
 
@@ -930,6 +937,9 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Над�
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Преобразуване в евро: {ORANGE}никога
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Сложи година за преминаване в Евро
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Премини в Евро по-рано
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Премини в Евро по-късно
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на парична единица
@@ -1025,6 +1035,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тер�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Много дълги влакове: {ORANGE}{STRING.p}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модел на ускорение на влаковете: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Оригинален
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалистичен
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрана 90 градусови завои: {ORANGE}{STRING.f}{LTBLUE} (трябва NPF)
@@ -1048,6 +1059,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Фин�
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :близо до края
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :среда
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :далечния край
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Местене на екрана когато мишката е в края: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
@@ -1059,6 +1071,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Ско�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Няколко NewGRF алгоритъма едновременно: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има преовцни средства.
 
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждение при загубен влак: {ORANGE}{STRING.n}
@@ -1068,6 +1081,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :включен,
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :включен
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Предупреждение ако превозното средство е на загуба: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ПС не губят валидност: {ORANGE}{STRING.n}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматично поднови превозното средство, когато остарее: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Подновяване {ORANGE}{STRING}{LTBLUE} месеца преди/след амортизацията на ПС
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Минимална сума за начало на подновяване: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Продължителност на съобщенията за грешки: {ORANGE}{STRING} сек.
@@ -1091,6 +1105,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Зав�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрно на часовниковата стрелка
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Височина на картата за плосък сценарий: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Разреши тераформирането на терена в краищата на картата: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. разпръснатост на станция: {ORANGE}{STRING} {RED}Внимание: високите стойности забавят играта
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Автоматичен сервиз на хеликоптерите при кацане на хелипад: {ORANGE}{STRING}
@@ -1143,6 +1158,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :последн�
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :най-използваните
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Покажи запазените линии/пътища: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Запази инстументите активни след употреба: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групирай разходите във финансовия прозорец на компанията: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Строене при липса на подходящи ПС: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове на играч: {ORANGE}{STRING}
@@ -1155,6 +1171,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Пре�
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Премахване на летателните апарати за компютърния играч: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Премахване на корабите за компютърния играч: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Позволи ИИ в мрежова игра: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}{STRING} дни/%
@@ -1171,6 +1188,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Без 
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветни нови се появяват през: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Разреши плавна икономика (повече по-малки промени): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разреши купуване на акции от други компании: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Поставяне семафори всеки: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Поставяне на семафори преди: {ORANGE}{STRING} година
@@ -1210,6 +1228,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Много бъ
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Премахване на абсурдни разклонения при строене на пътища: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строене
@@ -1222,6 +1241,7 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Вза�
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Обработката на товари
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автоматично подновяване
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Влакове
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Градове
@@ -1267,6 +1287,7 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Отво
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Нова игра, използвайки височинна карта като терен
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Започни нова игра, използвайки предварително моделиран карта-свят
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Създай свой собствен карта-свят
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Започни мрежова игра
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Избери "умерен" климат на картата
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Избери "зимен" климат на картата
@@ -1583,6 +1604,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Свал
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Сваляне инфо за компанията..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} клиент{P "" и} срещу вас
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} изтеглени
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Изключване
 
@@ -1727,6 +1749,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI библиотека
 STR_CONTENT_TYPE_SCENARIO                                       :Сценарий
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Базови звуци
 
 # Content downloading progress window
 
@@ -2810,6 +2833,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име �
 STR_VEHICLE_INFO_AGE                                            :{COMMA} годин{P а и} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} годин{P а и} ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
 
 
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Капацитет: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
@@ -3039,6 +3063,7 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}През
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Конфигурация
+STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Вскчки ИИ, който ще се заредят в следващата игра
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Човешки играч
 STR_AI_CONFIG_RANDOM_AI                                         :Случаен AI
 
@@ -3048,6 +3073,7 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конф
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Конфигурирайте параметрите на AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Налични ИИ
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Кликнете за да изберете AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
@@ -3096,6 +3122,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Неуспеш�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Играта бе записана във версия без поддръжка на трамваи. Всички трамваи са изтрити.
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Правенето на карта е прекратено...{}... няма подходящи места за градове
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...няма град в този сценарий
 
 STR_ERROR_PNGMAP                                                :{WHITE}Не може да зареди терена от PNG...

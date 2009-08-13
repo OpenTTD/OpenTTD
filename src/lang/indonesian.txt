@@ -3267,7 +3267,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...terla
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...terlalu banyak kota
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...tidak ada lagi ruang tersisa dalam peta
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan pada menu  Pengaturan Lanjutan->Ekonomi->Kota.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan jalan pada menu Pengaturan Lanjutan->Ekonomi->Kota.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
 
 # Industry related errors
@@ -3294,7 +3294,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tidak dapat membangun bandara disini...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}berdempetan dengan lebih dari satu stasiun yang telah ada
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...Stasiun terlalu membentang/melebar
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasiun terlalu membentang/melebar
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...Stasiun tidak seragam tidak aktif
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlalu banyak stasiun/area bongkar muat
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlalu banyak bag. stasiun
@@ -3334,7 +3334,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Tidak da
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tidak dapat menghapus waypoint kereta disini...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Harus membongkar rel waypoint terlebih dahulu
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...pelampung ada di jalan
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... terhalang pelampung
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...Pelampung sedang digunakan!
 
 # Depot related errors
@@ -3344,7 +3344,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tidak dapat membangun galangan kapal disini...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam depo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...harus dihentikan didalam bengkel bus/truk
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan didalam bengkel kendaraan
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal harus berhenti di galangan
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Pesawat harus berhenti di hangar
 
@@ -3392,7 +3392,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Tidak dapat membangun lock disini...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tidak dapat menempatkan sungai disini...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...harus dibangun di atas air
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Tidak dapat membangun di atas air
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... tidak dapat membangun di atas air
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Harus menghancurkan kanal terlebih dahulu
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tidak dapat membangun jembatan air disini...
 
@@ -3501,9 +3501,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Tidak da
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Tidak dapat memindah perintah ini...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Tidak dapat melewatkan perintah terpakai...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Tidak dapat melewatkan perintah terpilih...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}Kendaraan tdk dpt menuju semua stasiun
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}kendaraan tdk dpt menuju stasiun tsb
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}kendaraan berperintah sama tdk dpt menuju stasiun tsb
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kendaraan tidak dapat menuju ke semua stasiun
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kendaraan tidak dapat menuju ke stasiun tersebut
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kendaraan yang berbagi tujuan yang sama tidak dapat menuju stasiun tersebut
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Tidak dapat berbagi perintah...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Tidak dapat meniru perintah...
@@ -3512,10 +3512,10 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terla
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kendaran hanya dapat menunggu di stasiun
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kendaraan ini tidak  berhenti pada stasiun ini.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kendaraan ini tidak berhenti pada stasiun ini.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...terlalu banyak tanda
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... terlalu banyak tanda
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Tidak dapat meletakkan tanda disini...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Tidak dapat mengubah nama pengenal...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tidak dapat menghapus tanda...

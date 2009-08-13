@@ -416,10 +416,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :消息历史
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图 (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :大型截图 (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :大范围截图 (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 ############ range ends here
 

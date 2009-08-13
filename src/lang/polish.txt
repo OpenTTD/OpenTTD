@@ -1297,6 +1297,10 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Główny
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wybierz główny zestaw grafik do użycia
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o grafice
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Podstawowy zestaw dźwięków
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Wybierz podstawowy zestaw dźwięków aby użyć
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o zestawie podstawowych dźwięków
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomienie trybu pelnoekranowego nie powiodlo sie
 
 # Custom currency window
@@ -2147,6 +2151,7 @@ STR_CONTENT_TYPE_AI                                             :SI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteka SI
 STR_CONTENT_TYPE_SCENARIO                                       :Scenariusz
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa wysokościowa
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Podstawowe dźwięki
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ściąganie...
@@ -2700,6 +2705,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
@@ -2857,7 +2863,7 @@ STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENC
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pożyczka {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki. Ctrl+Klik spłaca maksymalną możliwą kwotę pożyczki
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zwrot {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Zwróć cześć pożyczki
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Zwróć cześć pożyczki. Ctrl+Kliknięcie zwraca największą możliwą sumę
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2989,13 +2995,13 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nowe ele
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nowe pociągi jednoszynowe
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nowe pociągi MagLev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Pojazdy szynowe
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nowe Pojazdy Szynowe
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nowy pojazd drogowy
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nowe statki
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nowy samolot
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty użytkowania: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Pojemność: {GOLD}{CARGO} {STRING}
@@ -3003,7 +3009,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymalna niezawodność: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemność: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
@@ -3053,7 +3059,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} pojazd{P "" y ów}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - klik na pociągu po info, przeciągnij pojazd/wagon aby dodać
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - kliknij na pociągu aby uzyskać informacje, przeciągnij pojazd/wagon aby dodać/usunąć z pociągu
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - klik na pojeździe po więcej informacji
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij aby uzyskać informacje o statku
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - klik na samolocie aby uzyskać informacje
@@ -3700,6 +3706,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Należy 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy najpierw usunąć lotnisko
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Sąsiaduje z więcej niż jednym istniejący punktem trasy
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Za blisko do innego punktu nawigacyjnego
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj punktu orientacyjnego...

@@ -918,6 +918,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇�
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎圖形集的額外資訊
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基礎音效組
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}無法切換全螢幕模式
 
@@ -1814,6 +1815,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供應�
 STR_JOIN_STATION_CAPTION                                        :{BLACK}合併車站
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}建造獨立車站
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}聯合路徑
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}建立個別路徑
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}鋪設鐵路
@@ -2404,6 +2407,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站�
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 選擇多個項目
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - 車站 {COMMA} 座
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 無 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}選擇所有設施
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}選擇所有貨物種類 (包含沒在等待的貨物)
@@ -2446,6 +2450,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}顯示�
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :修改車站／載貨區名稱
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將路徑置於畫面中央
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改號誌站名稱
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
