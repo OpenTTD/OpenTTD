@@ -298,7 +298,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}興建�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打開地形工具列、提升／降低地面、 植樹等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}顯示音效／背景音樂視窗
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}顯示上次訊息／新聞報告、顯示訊息 選項
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊，操控介面，人工智慧調試，截圖， 關於 OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}儲存場景、載入場景、離開編輯器、結束

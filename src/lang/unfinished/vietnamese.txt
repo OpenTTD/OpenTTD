@@ -192,6 +192,9 @@ STR_BUTTON_SORT_BY                                              :{BLACK}Sắp x�
 STR_BUTTON_LOCATION                                             :{BLACK}Vị trí
 STR_BUTTON_RENAME                                               :{BLACK}Đổi tên
 
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn lên/xuống
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn sang trái/phải
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
@@ -199,8 +202,14 @@ STR_BUTTON_CANCEL                                               :{BLACK}Thôi
 STR_BUTTON_OK                                                   :{BLACK}Đồng ý
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Chiều dài: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Diện tích: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Chiều dài: {NUM}{}Chênh lệch độ cao: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Diện tích: {NUM} x {NUM}{}Chênh lệch độ cao: {NUM} m
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
@@ -222,15 +231,21 @@ STR_SORT_BY_VALUE                                               :Giá trị
 STR_SORT_BY_LENGTH                                              :Chiều dài
 STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
 STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
+STR_SORT_BY_WAITING                                             :Giá trị hàng hoá đang đợi
+STR_SORT_BY_RATING_MAX                                          :Đánh giá mức hàng hoá cao nhất
+STR_SORT_BY_RATING_MIN                                          :Đánh giá mức hàng hoá thấp nhất
+STR_SORT_BY_ENGINE_ID                                           :ID Máy (sắp xếp thông thường)
 STR_SORT_BY_COST                                                :Chi phí
 STR_SORT_BY_POWER                                               :Lực
 STR_SORT_BY_INTRO_DATE                                          :Ngày giới thiệu
 STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Năng lượng/Chi phí chạy
-STR_SORT_BY_CARGO_CAPACITY                                      :Dung lượng toa xe
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Chi phí Năng lượng/Chạy
+STR_SORT_BY_CARGO_CAPACITY                                      :Khả năng chở hàng
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Game tua nhanh
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tuỳ chọn
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thành phố
@@ -250,20 +265,26 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Tùy chọn tr�
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập cao cấp
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập độ trong suốt
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Hiển thị địa danh
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Hiển thị tên thành phố
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Hiển thị tên nhà ga
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Hiển thị ký hiệu
+STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animation đầy đủ
+STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Chi tiết
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Không hiện nhà cửa
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Không hiện biển hiệu nhà ga
 ############ range ends here
 
 ############ range for file menu starts
-STR_FILE_MENU_SAVE_GAME                                         :Lưu trò chơi
-STR_FILE_MENU_LOAD_GAME                                         :Tải trò chơi
-STR_FILE_MENU_QUIT_GAME                                         :Thoát trò chơi
+STR_FILE_MENU_SAVE_GAME                                         :Lưu game
+STR_FILE_MENU_LOAD_GAME                                         :Tải game
+STR_FILE_MENU_QUIT_GAME                                         :Bỏ game
 STR_FILE_MENU_EXIT                                              :Thoát
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thành phố
 ############ both ranges ends here
 
 ############ range for subsidies menu starts
@@ -272,7 +293,7 @@ STR_FILE_MENU_EXIT                                              :Thoát
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Biều đồ lợi nhuận hoạt động
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Biểu đồ thu nhập
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ toa xe phân phối
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ hàng hoá phân phối
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Biểu đồ lịch sử năng suất
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Biểu đồ giá trị công ty
 ############ range ends here
@@ -485,6 +506,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Ngôn ng
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Toàn màn hình
+
 
 
 
@@ -928,16 +950,33 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARG
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 
 
-STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Toa xe
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Hàng hoá
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Hiện chi tiết hàng hoá đang chở
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Thông tin
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Hiện thông tin chi tiết về tàu
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Sức chứa
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Hiện sức chứa của từng phương tiện
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tổng số toa xe
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Xem tổng sức chứa của tàu, phân chia bởi loại hàng hoá
 
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức chứa: {LTBLUE}
 
 # Vehicle refit
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Thay mới)
+STR_REFIT_TITLE                                                 :{GOLD}Chọn loại hàng hoá để chở:
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO}{}{BLACK}Chi phi thay mới: {GOLD}{CURRENCY}
 
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Chọn loại hàng mà tàu sẽ vận chuyển
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Chọn loại hàng mà xe sẽ vận chuyển
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Chọn loại hàng mà tàu thuỷ sẽ vận chuyển
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Chọn loại hàng mà máy bay sẽ vận chuyển
 
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Thay mới tàu
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Thay mới xe
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Thay mới tàu thuỷ
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Thay mới máy bay
 
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Thay mới tàu để vận chuyển loại hàng hoá đang được tô sáng
 
 # Order view
 
@@ -1009,7 +1048,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Tin nh�
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Vượt qua giới hạn bản đồ
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Quá gần mép bản đồ
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Yêu cầu nền đất phẳng
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không thể làm việc này....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không làm thế này được....
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Không thể dọn dẹp khu vực này....
 STR_ERROR_OWNED_BY                                              :{WHITE}...sở hữu bởi {STRING}
 
@@ -1023,7 +1062,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}...sở 
 # Town related errors
 
 # Industry related errors
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ có thể được xây trong thành phố
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ xây được ở trong thành phố
 
 # Station construction related errors
 

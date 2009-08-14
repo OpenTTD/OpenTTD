@@ -89,7 +89,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Αναψυκτ�
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} επιβάτης{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} επιβάτ{P ης ες}
 STR_QUANTITY_COAL                                               :{WEIGHT} άνθρακα
 STR_QUANTITY_MAIL                                               :{COMMA} σάκο{P ς ι} με αλληλογραφία
 STR_QUANTITY_OIL                                                :{VOLUME} πετρελαίου
@@ -98,7 +98,7 @@ STR_QUANTITY_GOODS                                              :{COMMA} κιβ�
 STR_QUANTITY_GRAIN                                              :{WEIGHT} σιτηρών
 STR_QUANTITY_WOOD                                               :{WEIGHT} ξύλου
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} μεταλλεύματος σιδήρου
-STR_QUANTITY_STEEL                                              :{WEIGHT} ατσαλιού
+STR_QUANTITY_STEEL                                              :{WEIGHT} χάλυβα
 STR_QUANTITY_VALUABLES                                          :{COMMA} τσάντ{P α ες} με τιμαλφή
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} μεταλλεύματος χαλκού
 STR_QUANTITY_MAIZE                                              :{WEIGHT} καλαμποκιού
@@ -133,7 +133,7 @@ STR_ABBREV_GOODS                                                :{TINYFONT}ΧΡ
 STR_ABBREV_GRAIN                                                :{TINYFONT}ΣΡ
 STR_ABBREV_WOOD                                                 :{TINYFONT}ΞΛ
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}ΣΜ
-STR_ABBREV_STEEL                                                :{TINYFONT}ΑΣ
+STR_ABBREV_STEEL                                                :{TINYFONT}ΧΒ
 STR_ABBREV_VALUABLES                                            :{TINYFONT}ΤΜ
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ΧΜ
 STR_ABBREV_MAIZE                                                :{TINYFONT}ΚΛ
@@ -391,6 +391,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκε�
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Κατασκευή καναλιού νερού
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -1444,7 +1445,7 @@ STR_FACE_EARRING                                                :Σκουλαρ�
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλαγή γραβάτας ή σκουλαρικιού
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παιχτών
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Σύνδεση:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Επιλέξτε μεταξύ παιχνιδιού στο ίντερνετ η τοπικού (LAN) παιχνιδιού
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
@@ -1512,7 +1513,7 @@ STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Δημιουρ�
 STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Ίντερνετ
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Ίντερνετ (αναγγελία)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} συμμετ{P έχων εχόντων}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} εταιρί{P α ες}
@@ -1588,7 +1589,7 @@ STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Από�
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Οχήματα: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Σταθμοί: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Παίχτες: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Παίκτες: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Νέα εταιρία
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Δημιουργία νέας εταιρίας
@@ -1611,7 +1612,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Κ
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ανεύρεση πληροφοριών του παιχνιδιού..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύρεση πληροφοριών της εταρίας...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Συμμετέχοντες{P "" s} είναι πριν από σας
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} συμπαίχτ{P ης ες} είναι πριν από σας
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} κατέβηκαν μέχρι τώρα
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
@@ -1857,13 +1858,13 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλ
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας Δρόμου
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Επιλογή γέφυρας - κάντε κλικ στην γέφυρα της προτίμησής σας για κατασκευή
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ατσάλινη, με Αναρτήσεις
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Με Δοκούς, Ατσάλινη
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Κρεμαστή, Ατσάλινη
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ατσάλινη με Αναρτήσεις
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ατσάλινη Με Δοκούς
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ατσάλινη Κρεμαστή
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Με αναρτήσεις, Τσιμεντένια
 STR_BRIDGE_NAME_WOODEN                                          :Ξύλινη
 STR_BRIDGE_NAME_CONCRETE                                        :Τσιμεντένια
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Φυσούνα, Ατσάλινη
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Ατσάλινη Φυσούνας
 STR_BRIDGE_TUBULAR_SILICON                                      :Σωλήνας, Σιλικόνη
 
 
@@ -1905,6 +1906,8 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσ
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλέξτε τον προσανατολισμό του εμπορευτικού στάθμου τραμ
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Κατασκευή καναλιού νερού
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανάλια νερού
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Δημιουργία καναλιών.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή Υδατοφράκτη
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για κατασκευή και επισκευή πλοίων)
@@ -1932,12 +1935,15 @@ STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Μικρ
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Πόλης
 STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Μητροπολιτικό αεροδρόμιο
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Διεθνές αεροδρόμιο
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Ταξιδιωτικό
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Διηπειρωτικό
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Ελικοδρόμιο
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Υπόστεγο ελικοπτέρων
 STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Στάθμος ελικοπτέρων
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Μικρά αεροδρόμια
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Μεγάλα αεροδρόμια
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Κομβίκα αεροδρόμια
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Ελικοδρόμια
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Παραγόμενος θόρυβος: {GOLD}{COMMA}
@@ -2005,6 +2011,7 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Επιλ
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Πολλές τυχαίες βιομηχανίες
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Γέμισε τον χάρτη με τυχαίες τοποθετημένες βιομηχανίες
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Κόστος: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Προβλέψη
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Κατασκευή
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Χρηματοδότηση
 
@@ -2220,11 +2227,17 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} δεν θα δουλέψει με την έκδοση του TTDPatch οπώς αναφέρει το OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} είναι για την έκδοση {STRING} του TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Λάθος παράμετρος για το {STRING}: Παράμετρος {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} πρέπει να φόρτωθει πριν από το {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} πρέπει να φόρτωθει μετά από το {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} απαιτεί έκδοση OpenTTD {STRING} ή μεγαλύτερη.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
+STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
@@ -2308,7 +2321,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντ
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα εικόνας
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα αντικείμενα
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμός{P "" s}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμ{P ός οί}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Κανένα -
@@ -2480,6 +2493,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Στείλε σ
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Στείλε στο υπόστεγο
 
 
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοίνες εντόλες του {COMMA} {P οχήματος οχημάτων}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Όλα τα τραίνα
@@ -2526,6 +2540,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Χωρη
 # Depot window
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P όχημα οχήματα}{STRING}
 
 
 
@@ -2827,6 +2842,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Το αποθη
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Το αρχείο δεν είναι για διάβασμα
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Το αρχείο δεν είναι για γράψιμο
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος ακεραιότητας δεδομένων απέτυχε
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χώρις υποστήριξη τροχιόδρομου. Όλα τα τραμ έχει αφαιρεθεί
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}...Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
@@ -2840,6 +2856,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... άπ
 STR_ERROR_BMPMAP                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από το ΒΜΡ...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... αδύνατη η μετατροπή του τύπου εικόνας
 
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλάγη μεγέθους του πηγαίου χάρτη δεν συνίσταται. Να προχωρήσω με την δημιουργία;
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Φωτογραφία εικόνας αποθηκεύθηκε επιτυχώς ώς '{STRING}'
@@ -2928,6 +2945,8 @@ STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Αδύν
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Αδύνατο να χτιστεί στάση φορτηγών...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Δεν μπορεί να χτιστεί επιβατικός σταθμός τραμ...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Δεν μπορεί να χτιστεί σταθμός τραμ...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Δεν μπορεί να χτιστεί λιμένας εδώ...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν μπορεί να χτιστεί αεροδρόμιο εδώ...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ο σταθμός είναι υπερβολικά απλωμένος
@@ -2941,11 +2960,16 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Πολύ
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Πολύ κοντά σε άλλο αεροδρόμιο
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Αδύνατο να μετονομαστεί ο σταθμός...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... αυτός είναι δρόμος ιδιόκτητος από την πόλη
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ο δρόμος βλέπει σε λάθος κατεύθυνση
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Πρέπει πρώτα να αφαίρεσετε τον σταθμό σιδηροδρομου
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Αδύνατο να αφαιρεθεί η στάση λεωφορείων...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Δεν μπορεί να αφαιρεθεί ο στάθμος φορτηγών...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Δεν μπορεί να αφαιρεθεί η στάση επιβατών τραμ...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Δεν μπορεί να αφαιρεθεί ο στάθμος εμπορευμάτων τραμ...
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Πρέπει να κατεδαφιστεί ο σιδηροδρομικός σταθμός πρώτα
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
@@ -2956,6 +2980,8 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Πρέπ
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Πρέπει να κατεδαφιστεί το αεροδρόμιο πρώτα
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}προστίθεται σε περισσότερο από ένα υπάρχον σημείο καθοδήγησης
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Πολύ κοντά σε άλλο σημείο καθοδήγησης
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Αδύνατο να χτιστεί σημείο πορείας τρένου εδώ...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Δεν μπορεί να τοποθετηθεί σημαδούρα εδώ...
@@ -3045,12 +3071,31 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... εί
 # Generic vehicle errors
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Δεν μπορεί να υποστεί μετατροπή το όχημα δρόμου...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Δεν μπορεί να υποστεί μετατροπή το πλοίο...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Δεν μπορεί να υποστεί μετατροπή το αεροπλάνο...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Δεν μπορεί να ονομαστεί το τραίνο...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Δεν μπορεί να ονομαστεί το όχημα δρόμου...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Δεν μπορεί να ονομαστεί το πλοίο...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Δεν μπορεί να ονομαστεί το αεροπλάνο...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το τραίνο...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το όχημα δρόμου...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το πλοίο...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το αεροπλάνο...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Δεν μπορεί να στάλει το τραίνο στο αμαξοστάσιο...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Δεν μπορεί να στάλει το όχημα δρόμου στο αμαξοστάσιο...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Δεν μπορεί να στάλει το πλοίο στο ναυπηγείο...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να στάλει το αεροπλάνο στο υπόστεγο...
 
 
 
-
-
-
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Δεν μπορεί να πωληθεί το όχημα σιδηρόδρομου...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Δεν μπορεί να πωληθεί το όχημα δρόμου...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Δεν μπορεί να πωληθεί το πλοίο...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Δεν μπορεί να πωληθεί το αεροπλάνο...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Το όχημα δεν είναι διαθέσιμο
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Το όχημα δεν είναι διαθέσιμο
@@ -3060,9 +3105,13 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Αερο
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
 
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Δεν μπορεί να πωληθεί κατεστραμμένο όχημα...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Δεν μπορεί να μετατραπεί κατεστραμμένο όχημα...
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τραίνο να περάσει σήμα κινδύνου...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τραίνου...
+STR_ERROR_TRAIN_START_NO_CATENARY                               :Αυτό το τραίνο στερείται σύνδεσης, έτσι το τραίνο δεν μπορεί να ξεκινήσει
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται το όχημα να αλάξει πορεία...
 
@@ -3249,11 +3298,11 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Βαγόνι Α
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Φορτηγό Σιτηρών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Νταλικά Ξυλείας
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Φορτηγό Σιδήρου
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Νταλίκα Χάλυβα
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Βαγόνι Χάλυβα
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Τεθωρακισμένο Βαγόνι
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Βαγόνι Τροφίμων
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Νταλίκα Χαρτιού
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Φορτηγό Χαλκού
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Βαγόνι Χαλκού
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Βυτίο Νερού
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Νταλικά Φρούτων
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Νταλίκα Λάστιχου
@@ -3272,12 +3321,24 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Φορτηγό Σιτηρών
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Φορτηγό Σιδήρου
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Φορτηγό Χαλκού
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Βαγόνι Χάλυβα
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Βαγόνι Χαλκού
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Φορτηγό Μαλλιού της Γριάς
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Φορτηγό ζαχαρωτών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Βαγόνι Χάλυβα
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Βαγόνι Χαλκού
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Φορτηγο χάλυβα Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Φορτηγο χάλυβα Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Φορτηγο χάλυβα Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Θωρακισμένο φορτηγό Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Φορτηγό Χαρτιού Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Φορτηγό Χαρτιού Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Φορτηγό Χαρτιού MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Φορτηγό Χαλκού MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Φορτηγό Χαλκού Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Φορτηγό Χαλκού Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Βυτίο νερού Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Βυτίο νερού Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Βυτίο νερού MPS
