@@ -194,13 +194,14 @@ void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
 }
 
 /**
- * Raise all buttons of the window
+ * Raise the buttons of the window.
+ * @param autoraise Raise only the push buttons of the window.
  */
-void Window::RaiseButtons()
+void Window::RaiseButtons(bool autoraise)
 {
 	if (this->widget != NULL) {
 		for (uint i = 0; i < this->widget_count; i++) {
-			if (this->IsWidgetLowered(i)) {
+			if ((!autoraise || (this->widget[i].type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->InvalidateWidget(i);
 			}
@@ -208,7 +209,7 @@ void Window::RaiseButtons()
 	}
 	if (this->nested_array != NULL) {
 		for (uint i = 0; i < this->nested_array_size; i++) {
-			if (this->nested_array[i] != NULL && this->IsWidgetLowered(i)) {
+			if (this->nested_array[i] != NULL && (!autoraise || (this->nested_array[i]->type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->InvalidateWidget(i);
 			}
@@ -1422,7 +1423,7 @@ static void DecreaseWindowCounters()
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		if ((w->flags4 & WF_TIMEOUT_MASK) && !(--w->flags4 & WF_TIMEOUT_MASK)) {
 			w->OnTimeout();
-			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons();
+			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons(true);
 		}
 	}
 }

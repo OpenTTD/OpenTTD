@@ -502,7 +502,7 @@ public:
 	void HandleButtonClick(byte widget);
 	const Widget *GetWidgetOfType(WidgetType widget_type) const;
 
-	void RaiseButtons();
+	void RaiseButtons(bool autoraise = false);
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
 	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
