@@ -923,9 +923,21 @@ void ShowMessageHistory()
 	new MessageHistoryWindow(&_message_history_desc);
 }
 
+/** Constants in the message options window. */
+enum MessageOptionsSpace {
+	MOS_WIDG_PER_SETTING      = 4,  ///< Number of widgets needed for each news category, starting at widget #WIDGET_NEWSOPT_START_OPTION.
 
-/** News settings window widget offset constants */
-enum NewsSettingsWidgets {
+	MOS_LEFT_EDGE             = 6,  ///< Number of pixels between left edge of the window and the options buttons column.
+	MOS_COLUMN_SPACING        = 4,  ///< Number of pixels between the buttons and the description columns.
+	MOS_RIGHT_EDGE            = 6,  ///< Number of pixels between right edge of the window and the options descriptions column.
+	MOS_BUTTON_SPACE          = 10, ///< Additional space in the button with the option value (for better looks).
+
+	MOS_ABOVE_GLOBAL_SETTINGS = 6,  ///< Number of vertical pixels between the categories and the global options.
+	MOS_BOTTOM_EDGE           = 6,  ///< Number of pixels between bottom edge of the window and bottom of the global options.
+};
+
+/** Message options widget numbers. */
+enum MessageOptionWidgets {
 	WIDGET_NEWSOPT_CLOSEBOX,          ///< Close box.
 	WIDGET_NEWSOPT_CAPTION,           ///< Caption.
 	WIDGET_NEWSOPT_BACKGROUND,        ///< Background widget.
@@ -935,19 +947,19 @@ enum NewsSettingsWidgets {
 	WIDGET_NEWSOPT_SOUNDTICKER,       ///< Button for (de)activating sound on events.
 	WIDGET_NEWSOPT_SOUNDTICKER_LABEL, ///< Label of the soundticker button,
 
-	WIDGET_NEWSOPT_START_OPTION,      ///< First widget that is part of a group [<] .. [.]
+	WIDGET_NEWSOPT_START_OPTION,      ///< First widget that is part of a group [<][label][>] [description]
+	WIDGET_NEWSOPT_END_OPTION = WIDGET_NEWSOPT_START_OPTION + NT_END * MOS_WIDG_PER_SETTING, ///< First widget after the groups.
 };
 
 struct MessageOptionsWindow : Window {
 	static const StringID message_opt[]; ///< Message report options, 'off', 'summary', or 'full'.
 	int state; ///< Option value for setting all categories at once.
 
-	MessageOptionsWindow(const WindowDesc *desc) : Window(desc)
+	MessageOptionsWindow(const WindowDesc *desc) : Window()
 	{
-		NewsDisplay all_val;
-
+		this->InitNested(desc);
 		/* Set up the initial disabled buttons in the case of 'off' or 'full' */
-		all_val = _news_type_data[0].display;
+		NewsDisplay all_val = _news_type_data[0].display;
 		for (int i = 0; i < NT_END; i++) {
 			this->SetMessageButtonStates(_news_type_data[i].display, i);
 			/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
@@ -956,8 +968,6 @@ struct MessageOptionsWindow : Window {
 		/* If all values are the same value, the ALL-button will take over this value */
 		this->state = all_val;
 		this->OnInvalidateData(0);
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	/**
@@ -970,7 +980,7 @@ struct MessageOptionsWindow : Window {
 	 */
 	void SetMessageButtonStates(byte value, int element)
 	{
-		element *= NB_WIDG_PER_SETTING;
+		element *= MOS_WIDG_PER_SETTING;
 
 		this->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION, value == 0);
 		this->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
@@ -979,18 +989,54 @@ struct MessageOptionsWindow : Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
 
-		/* Draw the string of each setting on each button. */
-		for (int i = 0; i < NT_END; i++) {
-			DrawString(this->widget[WIDGET_NEWSOPT_START_OPTION + 1].left, this->widget[WIDGET_NEWSOPT_START_OPTION + 1].right,
-					this->widget[WIDGET_NEWSOPT_START_OPTION + NB_WIDG_PER_SETTING * i + 1].top + 1, this->message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget >= WIDGET_NEWSOPT_START_OPTION && widget < WIDGET_NEWSOPT_END_OPTION && (widget -  WIDGET_NEWSOPT_START_OPTION) % MOS_WIDG_PER_SETTING == 1) {
+			/* Draw the string of each setting on each button. */
+			int i = (widget -  WIDGET_NEWSOPT_START_OPTION) / MOS_WIDG_PER_SETTING;
+			DrawString(r.left, r.right, r.top + 2, this->message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget >= WIDGET_NEWSOPT_START_OPTION && widget < WIDGET_NEWSOPT_END_OPTION) {
+			/* Height is the biggest widget height in a row. */
+			size->height = FONT_HEIGHT_NORMAL + max(WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
+
+			/* Compute width for the label widget only. */
+			if ((widget - WIDGET_NEWSOPT_START_OPTION) % MOS_WIDG_PER_SETTING == 1) {
+				Dimension d = {0, 0};
+				for (const StringID *str = message_opt; *str != INVALID_STRING_ID; str++) d = maxdim(d, GetStringBoundingBox(*str));
+				size->width = d.width + padding.width + MOS_BUTTON_SPACE; // A bit extra for better looks.
+			}
+			return;
+		}
+
+		/* Size computations for global message options. */
+		if (widget == WIDGET_NEWSOPT_DROP_SUMMARY || widget == WIDGET_NEWSOPT_LABEL_SUMMARY || widget == WIDGET_NEWSOPT_SOUNDTICKER || widget == WIDGET_NEWSOPT_SOUNDTICKER_LABEL) {
+			/* Height is the biggest widget height in a row. */
+			size->height = FONT_HEIGHT_NORMAL + max(WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM);
+
+			if (widget == WIDGET_NEWSOPT_DROP_SUMMARY) {
+				Dimension d = {0, 0};
+				for (const StringID *str = message_opt; *str != INVALID_STRING_ID; str++) d = maxdim(d, GetStringBoundingBox(*str));
+				size->width = d.width + padding.width + MOS_BUTTON_SPACE; // A bit extra for better looks.
+			}
+			else if (widget == WIDGET_NEWSOPT_SOUNDTICKER) {
+				size->width += MOS_BUTTON_SPACE; // A bit extra for better looks.
+			}
+			return;
 		}
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
 		/* Update the dropdown value for 'set all categories'. */
-		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = this->message_opt[this->state];
+		this->nested_array[WIDGET_NEWSOPT_DROP_SUMMARY]->widget_data = this->message_opt[this->state];
+
 		/* Update widget to reflect the value of the #_news_ticker_sound variable. */
 		this->SetWidgetLoweredState(WIDGET_NEWSOPT_SOUNDTICKER, _news_ticker_sound);
 	}
@@ -1009,10 +1055,10 @@ struct MessageOptionsWindow : Window {
 				break;
 
 			default: { // Clicked on the [<] .. [>] widgets
-				int wid = widget - WIDGET_NEWSOPT_START_OPTION;
-				if (wid >= 0 && wid < (NB_WIDG_PER_SETTING * NT_END)) {
-					int element = wid / NB_WIDG_PER_SETTING;
-					byte val = (_news_type_data[element].display + ((wid % NB_WIDG_PER_SETTING) ? 1 : -1)) % 3;
+				if (widget >= WIDGET_NEWSOPT_START_OPTION && widget < WIDGET_NEWSOPT_END_OPTION) {
+					int wid = widget - WIDGET_NEWSOPT_START_OPTION;
+					int element = wid / MOS_WIDG_PER_SETTING;
+					byte val = (_news_type_data[element].display + ((wid % MOS_WIDG_PER_SETTING) ? 1 : -1)) % 3;
 
 					this->SetMessageButtonStates(val, element);
 					_news_type_data[element].display = (NewsDisplay)val;
@@ -1038,102 +1084,9 @@ struct MessageOptionsWindow : Window {
 
 const StringID MessageOptionsWindow::message_opt[] = {STR_NEWS_MESSAGES_OFF, STR_NEWS_MESSAGES_SUMMARY, STR_NEWS_MESSAGES_FULL, INVALID_STRING_ID};
 
-/*
- * The news settings window widgets
- *
- * Main part of the window is a list of news setting lines, one for each news category.
- * Each line is constructed by an expansion of the \c NEWS_SETTINGS_LINE macro
- */
-
-/**
- * Macro to construct one news setting line in the news - settings window.
- * One line consists of four widgets, namely
- * - A [<] button
- * - A [...] label
- * - A [>] button
- * - A text label describing the news category
- * Horizontal positions of the widgets are hard coded, vertical start position is (\a basey + \a linenum * \c NEWS_SETTING_BASELINE_SKIP).
- * Height of one line is 12, with the text label shifted 1 pixel down.
- *
- * First line should be widget number WIDGET_NEWSOPT_START_OPTION
- *
- * @param basey: Base Y coordinate
- * @param linenum: Count, news - setting is the \a linenum - th line
- */
-#define NEWS_SETTINGS_LINE(basey, linenum) \
-	{ WWT_PUSHIMGBTN, RESIZE_NONE, COLOUR_YELLOW, \
-	    4,  12,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
-	  SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, \
-	{ WWT_PUSHTXTBTN, RESIZE_NONE, COLOUR_YELLOW, \
-	   13,  89,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
-	  STR_EMPTY, STR_NULL}, \
-	{ WWT_PUSHIMGBTN, RESIZE_NONE, COLOUR_YELLOW, \
-	   90,  98,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
-	  SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, \
-        { WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW, \
-	  103, 409,  basey + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
-	  _news_type_data[linenum].description, STR_NULL}
-
-static const int NEWS_SETTING_BASELINE_SKIP = 12; ///< Distance between two news-setting lines, should be at least 12
-
-
-static const Widget _message_options_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE, COLOUR_BROWN,   0,  10,  0, 13,
-	STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},
-{  WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,  11, 409,  0, 13,
-	STR_NEWS_MESSAGE_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{    WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,   0, 409, 14, 64 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	0x0,                      STR_NULL},
-
-/* Text at the top of the main panel, in black */
-{    WWT_LABEL, RESIZE_NONE, COLOUR_BROWN,
-	  0, 409, 14, 27,
-	STR_NEWS_MESSAGE_TYPES,   STR_NULL},
-
-/* General drop down and sound button, widgets WIDGET_NEWSOPT_BTN_SUMMARY and WIDGET_NEWSOPT_DROP_SUMMARY */
-{  WWT_DROPDOWN, RESIZE_NONE, COLOUR_YELLOW,
-	  4,  98,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	0x0, STR_NULL},
-
-{      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
-	103, 409,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	STR_NEWS_MESSAGES_ALL, STR_NULL},
-
-/* Below is widget WIDGET_NEWSOPT_SOUNDTICKER */
-{ WWT_TEXTBTN_2, RESIZE_NONE, COLOUR_YELLOW,
-	  4,  98,  46 + NT_END * NEWS_SETTING_BASELINE_SKIP,  57 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	STR_STATION_BUILD_COVERAGE_OFF,  STR_NULL},
-
-{      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
-	103, 409,  46 + NT_END * NEWS_SETTING_BASELINE_SKIP,  57 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	STR_NEWS_MESSAGES_SOUND, STR_NULL},
-
-/* List of news-setting lines (4 widgets for each line).
- * First widget must be number WIDGET_NEWSOPT_START_OPTION
- */
-NEWS_SETTINGS_LINE(28, NT_ARRIVAL_COMPANY),
-NEWS_SETTINGS_LINE(28, NT_ARRIVAL_OTHER),
-NEWS_SETTINGS_LINE(28, NT_ACCIDENT),
-NEWS_SETTINGS_LINE(28, NT_COMPANY_INFO),
-NEWS_SETTINGS_LINE(28, NT_INDUSTRY_OPEN),
-NEWS_SETTINGS_LINE(28, NT_INDUSTRY_CLOSE),
-NEWS_SETTINGS_LINE(28, NT_ECONOMY),
-NEWS_SETTINGS_LINE(28, NT_INDUSTRY_COMPANY),
-NEWS_SETTINGS_LINE(28, NT_INDUSTRY_OTHER),
-NEWS_SETTINGS_LINE(28, NT_INDUSTRY_NOBODY),
-NEWS_SETTINGS_LINE(28, NT_ADVICE),
-NEWS_SETTINGS_LINE(28, NT_NEW_VEHICLES),
-NEWS_SETTINGS_LINE(28, NT_ACCEPTANCE),
-NEWS_SETTINGS_LINE(28, NT_SUBSIDIES),
-NEWS_SETTINGS_LINE(28, NT_GENERAL),
-
-{   WIDGETS_END},
-};
-
 /** Make a column with the buttons for changing each news category setting, and the global settings. */
 static NWidgetBase *MakeButtonsColumn(int *biggest_index)
 {
-	const int NEWS_SETTING_HEIGHT = 12; // Height of one line.
 	NWidgetVertical *vert_buttons = new NWidgetVertical;
 
 	/* Top-part of the column, one row for each new category. */
@@ -1142,33 +1095,33 @@ static NWidgetBase *MakeButtonsColumn(int *biggest_index)
 		NWidgetHorizontal *hor = new NWidgetHorizontal;
 		/* [<] button. */
 		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum, SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
-		leaf->SetMinimalSize(9, NEWS_SETTING_HEIGHT);
+		leaf->SetFill(true, true);
 		hor->Add(leaf);
 		/* Label. */
 		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_YELLOW, widnum + 1, STR_EMPTY, STR_NULL);
-		leaf->SetMinimalSize(77, NEWS_SETTING_HEIGHT);
+		leaf->SetFill(true, true);
 		hor->Add(leaf);
 		/* [>] button. */
 		leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum + 2, SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
-		leaf->SetMinimalSize(9, NEWS_SETTING_HEIGHT);
+		leaf->SetFill(true, true);
 		hor->Add(leaf);
 		vert_buttons->Add(hor);
 
-		widnum += NB_WIDG_PER_SETTING;
+		widnum += MOS_WIDG_PER_SETTING;
 	}
-	*biggest_index = widnum - NB_WIDG_PER_SETTING + 2;
+	*biggest_index = widnum - MOS_WIDG_PER_SETTING + 2;
 
 	/* Space between the category buttons and the global settings buttons. */
-	NWidgetSpacer *spacer = new NWidgetSpacer(0, 6);
+	NWidgetSpacer *spacer = new NWidgetSpacer(0, MOS_ABOVE_GLOBAL_SETTINGS);
 	vert_buttons->Add(spacer);
 
 	/* Bottom part of the column with buttons for global changes. */
-	NWidgetLeaf *leaf = new NWidgetLeaf(WWT_DROPDOWN, COLOUR_YELLOW, WIDGET_NEWSOPT_DROP_SUMMARY, 0x0, STR_NULL);
-	leaf->SetMinimalSize(95, NEWS_SETTING_HEIGHT);
+	NWidgetLeaf *leaf = new NWidgetLeaf(WWT_DROPDOWN, COLOUR_YELLOW, WIDGET_NEWSOPT_DROP_SUMMARY, STR_EMPTY, STR_NULL);
+	leaf->SetFill(true, true);
 	vert_buttons->Add(leaf);
 
 	leaf = new NWidgetLeaf(WWT_TEXTBTN_2, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER, STR_STATION_BUILD_COVERAGE_OFF, STR_NULL);
-	leaf->SetMinimalSize(95, NEWS_SETTING_HEIGHT);
+	leaf->SetFill(true, true);
 	vert_buttons->Add(leaf);
 
 	*biggest_index = max(*biggest_index, max<int>(WIDGET_NEWSOPT_DROP_SUMMARY, WIDGET_NEWSOPT_SOUNDTICKER));
@@ -1178,7 +1131,6 @@ static NWidgetBase *MakeButtonsColumn(int *biggest_index)
 /** Make a column with descriptions for each news category and the global settings. */
 static NWidgetBase *MakeDescriptionColumn(int *biggest_index)
 {
-	const int NEWS_SETTING_HEIGHT = 12; // Height of one line.
 	NWidgetVertical *vert_desc = new NWidgetVertical;
 
 	/* Top-part of the column, one row for each new category. */
@@ -1188,7 +1140,6 @@ static NWidgetBase *MakeDescriptionColumn(int *biggest_index)
 
 		/* Descriptive text. */
 		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, widnum + 3, _news_type_data[i].description, STR_NULL);
-		leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
 		hor->Add(leaf);
 		/* Filling empty space to push text to the left. */
 		NWidgetSpacer *spacer = new NWidgetSpacer(0, 0);
@@ -1196,18 +1147,17 @@ static NWidgetBase *MakeDescriptionColumn(int *biggest_index)
 		hor->Add(spacer);
 		vert_desc->Add(hor);
 
-		widnum += NB_WIDG_PER_SETTING;
+		widnum += MOS_WIDG_PER_SETTING;
 	}
-	*biggest_index = widnum - NB_WIDG_PER_SETTING + 3;
+	*biggest_index = widnum - MOS_WIDG_PER_SETTING + 3;
 
 	/* Space between the category descriptions and the global settings descriptions. */
-	NWidgetSpacer *spacer = new NWidgetSpacer(0, 6);
+	NWidgetSpacer *spacer = new NWidgetSpacer(0, MOS_ABOVE_GLOBAL_SETTINGS);
 	vert_desc->Add(spacer);
 
 	/* Bottom part of the column with descriptions of global changes. */
 	NWidgetHorizontal *hor = new NWidgetHorizontal;
 	NWidgetLeaf *leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_LABEL_SUMMARY, STR_NEWS_MESSAGES_ALL, STR_NULL);
-	leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
 	hor->Add(leaf);
 	/* Filling empty space to push text to the left. */
 	spacer = new NWidgetSpacer(0, 0);
@@ -1217,7 +1167,6 @@ static NWidgetBase *MakeDescriptionColumn(int *biggest_index)
 
 	hor = new NWidgetHorizontal;
 	leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER_LABEL, STR_NEWS_MESSAGES_SOUND, STR_NULL);
-	leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
 	hor->Add(leaf);
 	/* Filling empty space to push text to the left. */
 	spacer = new NWidgetSpacer(0, 0);
@@ -1235,23 +1184,27 @@ static const NWidgetPart _nested_message_options_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WIDGET_NEWSOPT_CAPTION), SetDataTip(STR_NEWS_MESSAGE_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WIDGET_NEWSOPT_BACKGROUND),
-		NWidget(WWT_LABEL, COLOUR_BROWN, WIDGET_NEWSOPT_LABEL), SetMinimalSize(410, 14), SetDataTip(STR_NEWS_MESSAGE_TYPES, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
-			NWidgetFunction(MakeButtonsColumn),
-			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
-			NWidgetFunction(MakeDescriptionColumn),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(WWT_LABEL, COLOUR_BROWN, WIDGET_NEWSOPT_LABEL), SetMinimalSize(0, 14), SetDataTip(STR_NEWS_MESSAGE_TYPES, STR_NULL),
+			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(MOS_LEFT_EDGE, 0),
+			NWidgetFunction(MakeButtonsColumn),
+			NWidget(NWID_SPACER), SetMinimalSize(MOS_COLUMN_SPACING, 0),
+			NWidgetFunction(MakeDescriptionColumn),
+			NWidget(NWID_SPACER), SetMinimalSize(MOS_RIGHT_EDGE, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, MOS_BOTTOM_EDGE),
 	EndContainer(),
 };
 
 static const WindowDesc _message_options_desc(
-	270,  22,  410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	           410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	270,  22,  0, 0, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_message_options_widgets, _nested_message_options_widgets, lengthof(_nested_message_options_widgets)
+	NULL, _nested_message_options_widgets, lengthof(_nested_message_options_widgets)
 );
 
 void ShowMessageOptions()
