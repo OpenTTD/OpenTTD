@@ -592,7 +592,7 @@ void WindowQuartzSubdriver::Draw()
 	/* Build the region of dirty rectangles */
 	for (i = 0; i < num_dirty_rects; i++) {
 		/* We only need to blit in indexed mode since in 32bpp mode the game draws directly to the image. */
-		if(buffer_depth == 8) {
+		if (buffer_depth == 8) {
 			BlitIndexedToView32(
 				dirty_rects[i].left,
 				dirty_rects[i].top,

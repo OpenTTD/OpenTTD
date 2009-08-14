@@ -1104,7 +1104,7 @@ void NWidgetCore::StoreWidgets(Widget *widgets, int length, bool left_moving, bo
 	/* Compute vertical resizing. */
 	if (top_moving) {
 		flags |= RESIZE_TB; // Only 1 widget can resize in the widget array.
-	} else if(this->resize_y > 0) {
+	} else if (this->resize_y > 0) {
 		flags |= RESIZE_BOTTOM;
 	}
 	/* Compute horizontal resizing. */

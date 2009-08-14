@@ -852,9 +852,9 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				VehicleOrderID order_id = order->GetConditionSkipToOrder();
 				if (order_id == moving_order) {
 					order_id = target_order;
-				} else if(order_id > moving_order && order_id <= target_order) {
+				} else if (order_id > moving_order && order_id <= target_order) {
 					order_id--;
-				} else if(order_id < moving_order && order_id >= target_order) {
+				} else if (order_id < moving_order && order_id >= target_order) {
 					order_id++;
 				}
 				order->SetConditionSkipToOrder(order_id);

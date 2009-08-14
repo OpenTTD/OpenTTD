@@ -1869,7 +1869,7 @@ static bool HandleScrollbarScrolling()
 			if (w->flags4 & WF_HSCROLL) {
 				sb = &w->hscroll;
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
-			} else if (w->flags4 & WF_SCROLL2){
+			} else if (w->flags4 & WF_SCROLL2) {
 				sb = &w->vscroll2;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			} else {

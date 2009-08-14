@@ -112,7 +112,7 @@ static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
 		free(ai->ai_addr);
 		free(ai);
 		ai = next;
-	} while(ai != NULL);
+	} while (ai != NULL);
 }
 #define freeaddrinfo OTTDfreeaddrinfo
 #endif /* __MINGW32__ && __CYGWIN__ */

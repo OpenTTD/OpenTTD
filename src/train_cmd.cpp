@@ -2239,7 +2239,7 @@ static TrainFindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 			/* search in the forward direction first. */
 			DiagDirection i = TrainExitDir(v->direction, v->track);
 			NewTrainPathfind(v->tile, 0, v->compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
-			if (tfdd.best_length == UINT_MAX){
+			if (tfdd.best_length == UINT_MAX) {
 				tfdd.reverse = true;
 				/* search in backwards direction */
 				i = TrainExitDir(ReverseDir(v->direction), v->track);

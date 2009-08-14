@@ -94,7 +94,7 @@ static inline RoadBits MirrorRoadBits(RoadBits r)
  */
 static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
 {
-	for (; rot > (DiagDirDiff)0; rot--){
+	for (; rot > (DiagDirDiff)0; rot--) {
 		r = (RoadBits)(GB(r, 0, 1) << 3 | GB(r, 1, 3));
 	}
 	return r;

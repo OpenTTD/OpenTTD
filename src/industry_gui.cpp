@@ -143,7 +143,7 @@ class BuildIndustryWindow : public Window {
 		 */
 		for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
 			indsp = GetIndustrySpec(ind);
-			if (indsp->enabled){
+			if (indsp->enabled) {
 				/* Rule is that editor mode loads all industries.
 				 * In game mode, all non raw industries are loaded too
 				 * and raw ones are loaded only when setting allows it */
