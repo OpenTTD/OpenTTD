@@ -938,9 +938,8 @@ enum NewsSettingsWidgets {
 	WIDGET_NEWSOPT_START_OPTION,      ///< First widget that is part of a group [<] .. [.]
 };
 
-static const StringID _message_opt[] = {STR_NEWS_MESSAGES_OFF, STR_NEWS_MESSAGES_SUMMARY, STR_NEWS_MESSAGES_FULL, INVALID_STRING_ID};
-
 struct MessageOptionsWindow : Window {
+	static const StringID message_opt[]; ///< Message report options, 'off', 'summary', or 'full'.
 	int state; ///< Option value for setting all categories at once.
 
 	MessageOptionsWindow(const WindowDesc *desc) : Window(desc)
@@ -980,13 +979,13 @@ struct MessageOptionsWindow : Window {
 	{
 		if (_news_ticker_sound) this->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
 
-		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = _message_opt[this->state];
+		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = this->message_opt[this->state];
 		this->DrawWidgets();
 
 		/* Draw the string of each setting on each button. */
 		for (int i = 0; i < NT_END; i++) {
 			DrawString(this->widget[WIDGET_NEWSOPT_START_OPTION + 1].left, this->widget[WIDGET_NEWSOPT_START_OPTION + 1].right,
-					this->widget[WIDGET_NEWSOPT_START_OPTION + NB_WIDG_PER_SETTING * i + 1].top + 1, _message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
+					this->widget[WIDGET_NEWSOPT_START_OPTION + NB_WIDG_PER_SETTING * i + 1].top + 1, this->message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
 		}
 	}
 
@@ -994,7 +993,7 @@ struct MessageOptionsWindow : Window {
 	{
 		switch (widget) {
 			case WIDGET_NEWSOPT_DROP_SUMMARY: // Dropdown menu for all settings
-				ShowDropDownMenu(this, _message_opt, this->state, WIDGET_NEWSOPT_DROP_SUMMARY, 0, 0);
+				ShowDropDownMenu(this, this->message_opt, this->state, WIDGET_NEWSOPT_DROP_SUMMARY, 0, 0);
 				break;
 
 			case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
@@ -1030,6 +1029,7 @@ struct MessageOptionsWindow : Window {
 	}
 };
 
+const StringID MessageOptionsWindow::message_opt[] = {STR_NEWS_MESSAGES_OFF, STR_NEWS_MESSAGES_SUMMARY, STR_NEWS_MESSAGES_FULL, INVALID_STRING_ID};
 
 /*
  * The news settings window widgets
