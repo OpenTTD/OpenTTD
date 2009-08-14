@@ -26,8 +26,6 @@
 
 #include "table/strings.h"
 
-#define NB_WIDG_PER_SETTING 4
-
 NewsItem _statusbar_news_item;
 bool _news_ticker_sound; ///< Make a ticker sound when a news item is published.
 
