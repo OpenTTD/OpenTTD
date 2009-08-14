@@ -11,10 +11,12 @@ by the number below on http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version of /trunk.
 
-Bugs for 0.7.1
+Bugs for 0.7.2
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+- 3057	Road vehicle sometimes 'forget' the need for servicing
+- 3040	Not all alternatives are always shown in the "Join station" list
 - 2955	With path signals depots are less likely to be visited
 - 2891	Ignore signal does not keep the train running when in path signalled block till the next signal
 - 2769	No offer for buying bankrupt AIs

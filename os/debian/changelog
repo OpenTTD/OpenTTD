@@ -5,47 +5,65 @@ openttd (0.8~svn-1) UNRELEASED; urgency=low
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 03 Sep 2008 18:56:04 +0200
 
+openttd (0.7.2) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 01 Aug 2009 00:19:43 +0200
+
+openttd (0.7.2~RC2) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Tue, 21 Jul 2009 20:25:56 +0200
+
+openttd (0.7.2~RC1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 15 Jul 2009 22:25:56 +0200
+
 openttd (0.7.1) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Tue, 09 Jun 2008 01:34:56 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Tue, 09 Jun 2009 01:34:56 +0200
 
 openttd (0.7.1~RC3) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 03 Jun 2008 15:34:56 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 03 Jun 2009 15:34:56 +0200
 
 openttd (0.7.1~RC2) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 21 Mar 2008 14:34:56 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 21 Mar 2009 14:34:56 +0200
 
 openttd (0.7.1~RC1) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 11 Mar 2008 17:34:56 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 11 Mar 2009 17:34:56 +0200
 
 openttd (0.7.0) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 01 Apr 2008 13:37:42 +0000
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 01 Apr 2009 13:37:42 +0000
 
 openttd (0.7.0~RC2) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 23 Mar 2008 00:42:00 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 23 Mar 2009 00:42:00 +0200
 
 openttd (0.7.0~RC1) unstable; urgency=low
 
   * New upstream release.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 16 Mar 2008 00:07:00 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 16 Mar 2009 00:07:00 +0200
 
 openttd (0.7.0~beta2) unstable; urgency=low
 

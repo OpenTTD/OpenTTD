@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2009-06-09
-Release version: 0.7.1
+Last updated:    2009-08-01
+Release version: 0.7.2
 ------------------------------------------------------------------------
 
 
@@ -191,6 +191,9 @@ the following sections).
 Do NOT copy files included with OpenTTD into "shared" directories (explained in
 the following sections) as sooner or later you will run into graphical glitches
 when using other versions of the game.
+
+If you want AIs use the in-game content downloader to download some or download
+some from the internet and place them in the ai/ directory.
 
 4.2) OpenTTD directories
 ---- -------------------------------

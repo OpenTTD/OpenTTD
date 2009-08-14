@@ -7,10 +7,13 @@
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself
 #
+# Note: for (at least) CentOS '#' comments end '\' continue command on new line.
+#       So place all '#' commented parameters of e.g. configure to the end.
+#
 #-------------------------------------------------------------------------------
 
 Name:          openttd
-Version:       0.7.0
+Version:       0.7.2
 Release:       1%{?dist}
 
 Group:         Amusements/Games
@@ -18,7 +21,7 @@ License:       GPLv2
 URL:           http://www.openttd.org
 Summary:       OpenTTD is an Open Source clone of Chris Sawyer's Transport Tycoon Deluxe
 
-Source:        %{name}-%{version}.tar.bz2
+Source:        %{name}-%{version}-source.tar.bz2
 
 Requires:      fontconfig
 Requires:      libicu
@@ -76,22 +79,23 @@ download of the game.
 	--prefix-dir="%{_prefix}" \
 	--binary-dir="bin" \
 	--binary-name="%{name}" \
-#	--menu-name="OpenTTD" \
-#	--data-dir="share\games\%{name}" \
-#	--doc-dir="share\doc\%{name}" \
-#	--icon-dir="share/pixmaps" \
-#	--icon-theme-dir="share/icons/hicolor" \
-#	--man-dir="share/man/man6" \
-#	--menu-dir="share/applications" \
 	--enable-debug=0 \
-#	--menu_group="Game;" \
 	--with-sdl \
 	--with-zlib \
 	--with-png \
 	--with-freetype \
 	--with-fontconfig \
 	--with-icu \
-	--enable-strip
+	--enable-strip \
+#	--menu_group="Game;" \
+#	--menu-name="OpenTTD" \
+#	--data-dir="share\games\%{name}" \
+#	--doc-dir="share\doc\%{name}" \
+#	--icon-dir="share/pixmaps" \
+#	--icon-theme-dir="share/icons/hicolor" \
+#	--man-dir="share/man/man6" \
+#	--menu-dir="share/applications"
+
 make %{?_smp_mflags}
 
 %install
@@ -101,11 +105,11 @@ make install INSTALL_DIR="%{buildroot}"
 # Validate menu entrys (vendor specific)
 %if %{_vendor} == "redhat" || %{_vendor}=="fedora"
 desktop-file-install \
-#	--delete-original \
 	--vendor="%{_vendor}" \
 	--remove-key Version \
 	--dir="%{buildroot}/%{_datadir}/applications/" \
-	"%{buildroot}/%{_datadir}/applications/%{name}.desktop"
+	"%{buildroot}/%{_datadir}/applications/%{name}.desktop" \
+#	--delete-original
 %endif
 
 %clean
@@ -148,7 +152,8 @@ fi
 %{_datadir}/doc/%{name}/*
 %{_datadir}/games/%{name}/lang/*
 %{_datadir}/games/%{name}/data/*
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/games/%{name}/scripts/*
+%{_datadir}/applications/*%{name}.desktop
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %doc %{_mandir}/man6/%{name}.6.gz
