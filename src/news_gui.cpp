@@ -1123,43 +1123,103 @@ NEWS_SETTINGS_LINE(28, NT_GENERAL),
 {   WIDGETS_END},
 };
 
-/**
- * Make nested widget tree for the news settings.
- * @param biggest_index Storage for collecting the biggest index used in the returned tree.
- * @return Panel with rows of news settings.
- * @postcond \c *biggest_index contains the largest used index in the tree.
- */
-static NWidgetBase *MakeNewsSettingLines(int *biggest_index)
+/** Make a column with the buttons for changing each news category setting, and the global settings. */
+static NWidgetBase *MakeButtonsColumn(int *biggest_index)
 {
 	const int NEWS_SETTING_HEIGHT = 12; // Height of one line.
-	NWidgetVertical *vert = new NWidgetVertical;
+	NWidgetVertical *vert_buttons = new NWidgetVertical;
 
+	/* Top-part of the column, one row for each new category. */
 	int widnum = WIDGET_NEWSOPT_START_OPTION;
 	for (int i = 0; i < NT_END; i++) {
 		NWidgetHorizontal *hor = new NWidgetHorizontal;
-		hor->SetPIP(4, 0, 0);
 		/* [<] button. */
-		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum++, SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum, SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 		leaf->SetMinimalSize(9, NEWS_SETTING_HEIGHT);
 		hor->Add(leaf);
 		/* Label. */
-		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_YELLOW, widnum++, STR_EMPTY, STR_NULL);
+		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_YELLOW, widnum + 1, STR_EMPTY, STR_NULL);
 		leaf->SetMinimalSize(77, NEWS_SETTING_HEIGHT);
 		hor->Add(leaf);
 		/* [>] button. */
-		leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum++, SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+		leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum + 2, SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 		leaf->SetMinimalSize(9, NEWS_SETTING_HEIGHT);
 		hor->Add(leaf);
-		/* Descriptive text. */
-		leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, widnum++, _news_type_data[i].description, STR_NULL);
-		leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
-		leaf->SetPadding(0, 0, 0, 4);
-		hor->Add(leaf);
+		vert_buttons->Add(hor);
 
-		vert->Add(hor);
+		widnum += NB_WIDG_PER_SETTING;
 	}
-	*biggest_index = widnum - 1;
-	return vert;
+	*biggest_index = widnum - NB_WIDG_PER_SETTING + 2;
+
+	/* Space between the category buttons and the global settings buttons. */
+	NWidgetSpacer *spacer = new NWidgetSpacer(0, 6);
+	vert_buttons->Add(spacer);
+
+	/* Bottom part of the column with buttons for global changes. */
+	NWidgetLeaf *leaf = new NWidgetLeaf(WWT_DROPDOWN, COLOUR_YELLOW, WIDGET_NEWSOPT_DROP_SUMMARY, 0x0, STR_NULL);
+	leaf->SetMinimalSize(95, NEWS_SETTING_HEIGHT);
+	vert_buttons->Add(leaf);
+
+	leaf = new NWidgetLeaf(WWT_TEXTBTN_2, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER, STR_STATION_BUILD_COVERAGE_OFF, STR_NULL);
+	leaf->SetMinimalSize(95, NEWS_SETTING_HEIGHT);
+	vert_buttons->Add(leaf);
+
+	*biggest_index = max(*biggest_index, max<int>(WIDGET_NEWSOPT_DROP_SUMMARY, WIDGET_NEWSOPT_SOUNDTICKER));
+	return vert_buttons;
+}
+
+/** Make a column with descriptions for each news category and the global settings. */
+static NWidgetBase *MakeDescriptionColumn(int *biggest_index)
+{
+	const int NEWS_SETTING_HEIGHT = 12; // Height of one line.
+	NWidgetVertical *vert_desc = new NWidgetVertical;
+
+	/* Top-part of the column, one row for each new category. */
+	int widnum = WIDGET_NEWSOPT_START_OPTION;
+	for (int i = 0; i < NT_END; i++) {
+		NWidgetHorizontal *hor = new NWidgetHorizontal;
+
+		/* Descriptive text. */
+		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, widnum + 3, _news_type_data[i].description, STR_NULL);
+		leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
+		hor->Add(leaf);
+		/* Filling empty space to push text to the left. */
+		NWidgetSpacer *spacer = new NWidgetSpacer(0, 0);
+		spacer->SetFill(true, false);
+		hor->Add(spacer);
+		vert_desc->Add(hor);
+
+		widnum += NB_WIDG_PER_SETTING;
+	}
+	*biggest_index = widnum - NB_WIDG_PER_SETTING + 3;
+
+	/* Space between the category descriptions and the global settings descriptions. */
+	NWidgetSpacer *spacer = new NWidgetSpacer(0, 6);
+	vert_desc->Add(spacer);
+
+	/* Bottom part of the column with descriptions of global changes. */
+	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetLeaf *leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_LABEL_SUMMARY, STR_NEWS_MESSAGES_ALL, STR_NULL);
+	leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
+	hor->Add(leaf);
+	/* Filling empty space to push text to the left. */
+	spacer = new NWidgetSpacer(0, 0);
+	spacer->SetFill(true, false);
+	hor->Add(spacer);
+	vert_desc->Add(hor);
+
+	hor = new NWidgetHorizontal;
+	leaf = new NWidgetLeaf(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER_LABEL, STR_NEWS_MESSAGES_SOUND, STR_NULL);
+	leaf->SetMinimalSize(307, NEWS_SETTING_HEIGHT);
+	hor->Add(leaf);
+	/* Filling empty space to push text to the left. */
+	spacer = new NWidgetSpacer(0, 0);
+	leaf->SetFill(true, false);
+	hor->Add(spacer);
+	vert_desc->Add(hor);
+
+	*biggest_index = max(*biggest_index, max<int>(WIDGET_NEWSOPT_LABEL_SUMMARY, WIDGET_NEWSOPT_SOUNDTICKER_LABEL));
+	return vert_desc;
 }
 
 static const NWidgetPart _nested_message_options_widgets[] = {
@@ -1169,17 +1229,11 @@ static const NWidgetPart _nested_message_options_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WIDGET_NEWSOPT_BACKGROUND),
 		NWidget(WWT_LABEL, COLOUR_BROWN, WIDGET_NEWSOPT_LABEL), SetMinimalSize(410, 14), SetDataTip(STR_NEWS_MESSAGE_TYPES, STR_NULL),
-		NWidgetFunction(MakeNewsSettingLines),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-		NWidget(NWID_VERTICAL),
-			NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 0, 4),
-				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WIDGET_NEWSOPT_DROP_SUMMARY), SetMinimalSize(95, 12), SetDataTip(0x0, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_LABEL_SUMMARY), SetMinimalSize(307, 12), SetDataTip(STR_NEWS_MESSAGES_ALL, STR_NULL), SetPadding(0, 0, 0, 4),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 0, 4),
-				NWidget(WWT_TEXTBTN_2, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER), SetMinimalSize(95, 12), SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER_LABEL), SetMinimalSize(307, 12), SetDataTip(STR_NEWS_MESSAGES_SOUND, STR_NULL), SetPadding(0, 0, 0, 4),
-			EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
+			NWidgetFunction(MakeButtonsColumn),
+			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
+			NWidgetFunction(MakeDescriptionColumn),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 	EndContainer(),
