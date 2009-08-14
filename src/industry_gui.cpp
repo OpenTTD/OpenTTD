@@ -32,10 +32,11 @@
 
 bool _ignore_restrictions;
 
+/** Cargo suffix type (for which window is it requested) */
 enum CargoSuffixType {
-	CST_FUND,
-	CST_VIEW,
-	CST_DIR,
+	CST_FUND,  ///< Fund-industry window
+	CST_VIEW,  ///< View-industry window
+	CST_DIR,   ///< Industry-directory window
 };
 
 /**
@@ -46,7 +47,7 @@ enum CargoSuffixType {
  * - 02 - third accepted cargo type
  * - 03 - first produced cargo type
  * - 04 - second produced cargo type
- * @param cst the cargo suffix type (for which window is it requested)
+ * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
  * @param ind the industry (NULL if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec

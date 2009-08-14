@@ -29,7 +29,7 @@
 #define NB_WIDG_PER_SETTING 4
 
 NewsItem _statusbar_news_item;
-bool _news_ticker_sound;
+bool _news_ticker_sound; ///< Make a ticker sound when a news item is published.
 
 static uint MIN_NEWS_AMOUNT = 30;           ///< prefered minimum amount of news messages
 static uint _total_news = 0;                ///< current number of news items
@@ -941,7 +941,7 @@ enum NewsSettingsWidgets {
 static const StringID _message_opt[] = {STR_NEWS_MESSAGES_OFF, STR_NEWS_MESSAGES_SUMMARY, STR_NEWS_MESSAGES_FULL, INVALID_STRING_ID};
 
 struct MessageOptionsWindow : Window {
-	int state;
+	int state; ///< Option value for setting all categories at once.
 
 	MessageOptionsWindow(const WindowDesc *desc) : Window(desc)
 	{

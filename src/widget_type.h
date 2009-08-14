@@ -617,7 +617,7 @@ struct NWidgetPart {
 /**
  * Widget part function for setting the resize step.
  * @param dx Horizontal resize step. 0 means no horizontal resizing.
- * @param dy Vertical resize step. 0 means no horizontal resizing.
+ * @param dy Vertical resize step. 0 means no vertical resizing.
  * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetResize(int16 dx, int16 dy)

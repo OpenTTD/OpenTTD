@@ -825,7 +825,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 
 
 /**
- * @defgroup NestedWidgets Hierarchical widgets.
+ * @defgroup NestedWidgets Hierarchical widgets
  * Hierarchical widgets, also known as nested widgets, are widgets stored in a tree. At the leafs of the tree are (mostly) the 'real' widgets
  * visible to the user. At higher levels, widgets get organized in container widgets, until all widgets of the window are merged.
  *

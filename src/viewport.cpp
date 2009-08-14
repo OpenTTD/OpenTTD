@@ -2121,6 +2121,10 @@ void SetRedErrorSquare(TileIndex tile)
 	}
 }
 
+/** Highlight \a w by \a h tiles at the cursor.
+ * @param w Width of the highlighted tiles rectangle.
+ * @param h Height of the highlighted tiles rectangle.
+ */
 void SetTileSelectSize(int w, int h)
 {
 	_thd.new_size.x = w * TILE_SIZE;

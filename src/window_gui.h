@@ -188,10 +188,11 @@ struct ResizeInfo {
 	uint step_height; ///< Step-size of height resize changes
 };
 
+/** State of a sort direction button. */
 enum SortButtonState {
-	SBS_OFF,
-	SBS_DOWN,
-	SBS_UP,
+	SBS_OFF,  ///< Do not sort (with this button).
+	SBS_DOWN, ///< Sort ascending.
+	SBS_UP,   ///< Sort descending.
 };
 
 /**

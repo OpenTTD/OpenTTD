@@ -77,9 +77,9 @@ static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 };
 
 struct DropdownWindow : Window {
-	WindowClass parent_wnd_class;
-	WindowNumber parent_wnd_num;
-	byte parent_button;
+	WindowClass parent_wnd_class; ///< Parent window class.
+	WindowNumber parent_wnd_num;  ///< Parent window number.
+	byte parent_button;           ///< Parent widget number where the window is dropped from.
 	DropDownList *list;
 	int selected_index;
 	byte click_delay;
@@ -388,6 +388,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 /**
  * Delete the drop-down menu from window \a pw
  * @param pw Parent window of the drop-down menu window
+ * @return Parent widget number if the drop-down was found and closed, \c -1 if the window was not found.
  */
 int HideDropDownMenu(Window *pw)
 {
