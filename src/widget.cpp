@@ -2320,7 +2320,7 @@ bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report)
 	}
 
 	bool same = true;
-	for(int idx = 0; ; idx++) {
+	for (int idx = 0; ; idx++) {
 		const Widget *ow = orig + idx;
 		const Widget *gw = gen + idx;
 

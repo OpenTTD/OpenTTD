@@ -117,7 +117,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 	int num = 2;
 	INTERFACE_INFO *ifo = CallocT<INTERFACE_INFO>(num);
 
-	for(;;) {
+	for (;;) {
 		if (WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, ifo, num * sizeof(*ifo), &len, NULL, NULL) == 0) break;
 		free(ifo);
 		if (WSAGetLastError() != WSAEFAULT) {

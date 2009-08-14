@@ -15,7 +15,7 @@ struct CCrc32
 
 		uint8 *begin = (uint8*)pBuffer;
 		uint8 *end = begin + nCount;
-		for(uint8 *cur = begin; cur < end; cur++)
+		for (uint8 *cur = begin; cur < end; cur++)
 			crc = (crc >> 8) ^ pTable[cur[0] ^ (uint8)(crc & 0xff)];
 		crc ^= 0xffffffff;
 

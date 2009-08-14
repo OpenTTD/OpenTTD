@@ -464,7 +464,7 @@ static const PathNode *FindSafePosition(PathNode *path, const Train *v)
 	/* If there is no signal, reserve the whole path. */
 	PathNode *sig = path;
 
-	for(; path->parent != NULL; path = path->parent) {
+	for (; path->parent != NULL; path = path->parent) {
 		if (IsSafeWaitingPosition(v, path->node.tile, path->node.direction, true, _settings_game.pf.forbid_90_deg)) {
 			sig = path;
 		}
