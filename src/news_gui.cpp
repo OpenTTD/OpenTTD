@@ -955,6 +955,7 @@ struct MessageOptionsWindow : Window {
 		}
 		/* If all values are the same value, the ALL-button will take over this value */
 		this->state = all_val;
+		this->OnInvalidateData(0);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -977,9 +978,6 @@ struct MessageOptionsWindow : Window {
 
 	virtual void OnPaint()
 	{
-		if (_news_ticker_sound) this->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
-
-		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = this->message_opt[this->state];
 		this->DrawWidgets();
 
 		/* Draw the string of each setting on each button. */
@@ -987,6 +985,14 @@ struct MessageOptionsWindow : Window {
 			DrawString(this->widget[WIDGET_NEWSOPT_START_OPTION + 1].left, this->widget[WIDGET_NEWSOPT_START_OPTION + 1].right,
 					this->widget[WIDGET_NEWSOPT_START_OPTION + NB_WIDG_PER_SETTING * i + 1].top + 1, this->message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
 		}
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		/* Update the dropdown value for 'set all categories'. */
+		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = this->message_opt[this->state];
+		/* Update widget to reflect the value of the #_news_ticker_sound variable. */
+		this->SetWidgetLoweredState(WIDGET_NEWSOPT_SOUNDTICKER, _news_ticker_sound);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -998,7 +1004,7 @@ struct MessageOptionsWindow : Window {
 
 			case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
 				_news_ticker_sound ^= 1;
-				this->ToggleWidgetLoweredState(widget);
+				this->OnInvalidateData(0);
 				this->InvalidateWidget(widget);
 				break;
 
@@ -1025,6 +1031,7 @@ struct MessageOptionsWindow : Window {
 			this->SetMessageButtonStates(index, i);
 			_news_type_data[i].display = (NewsDisplay)index;
 		}
+		this->OnInvalidateData(0);
 		this->SetDirty();
 	}
 };
