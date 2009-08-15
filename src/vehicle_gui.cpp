@@ -793,11 +793,12 @@ static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection
 
 /**
  * Draw all the vehicle list items.
- * @param x the position from where to draw the items.
  * @param selected_vehicle the vehicle that is to be selected
  */
-void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehicle)
+void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
 {
+	int left = this->widget[VLW_WIDGET_LIST].left + WD_MATRIX_LEFT;
+	int right = this->widget[VLW_WIDGET_LIST].right - WD_MATRIX_RIGHT;
 	int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
 	uint max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
 	for (uint i = this->vscroll.pos; i < max; ++i) {
@@ -807,20 +808,20 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
-		DrawVehicleImage(v, x + 19, y + 6, selected_vehicle, this->widget[VLW_WIDGET_LIST].right - this->widget[VLW_WIDGET_LIST].left - 20, 0);
-		DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y + this->resize.step_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		DrawVehicleImage(v, left + 19, y + 5, selected_vehicle, right - left + 1 - 19, 0);
+		DrawString(left + 19, right, y + this->resize.step_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		if (v->name != NULL) {
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->index);
-			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_TINY_BLACK_VEHICLE);
+			DrawString(left + 19, right, y, STR_TINY_BLACK_VEHICLE);
 		} else if (v->group_id != DEFAULT_GROUP) {
 			/* The vehicle has no name, but is member of a group, so print group name */
 			SetDParam(0, v->group_id);
-			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_TINT_GROUP, TC_BLACK);
+			DrawString(left + 19, right, y, STR_TINT_GROUP, TC_BLACK);
 		}
 
-		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, this->widget[VLW_WIDGET_LIST].right, y);
+		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, left + 138, right, y);
 
 		if (v->IsInDepot()) {
 			str = STR_BLUE_COMMA;
@@ -829,9 +830,9 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		}
 
 		SetDParam(0, v->unitnumber);
-		DrawString(x, this->widget[VLW_WIDGET_LIST].right, y + 2, str);
+		DrawString(left, right, y + 2, str);
 
-		DrawVehicleProfitButton(v, x, y + 13);
+		DrawVehicleProfitButton(v, left, y + 13);
 
 		y += this->resize.step_height;
 	}
@@ -911,7 +912,6 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 	virtual void OnPaint()
 	{
-		int x = 2;
 		const Owner owner = this->owner;
 		const uint16 window_type = this->window_number & VLW_MASK;
 		const uint16 index = GB(this->window_number, 16, 16);
@@ -991,7 +991,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		this->DrawVehicleListItems(x,  INVALID_VEHICLE);
+		this->DrawVehicleListItems(INVALID_VEHICLE);
 	}
 
 	virtual void OnClick(Point pt, int widget)

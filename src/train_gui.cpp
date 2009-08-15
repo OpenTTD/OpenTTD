@@ -70,7 +70,7 @@ void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_w
 	int highlight_l = 0;
 	int highlight_r = 0;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, x - 2, y - 1, max_width + 1, 14)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, x, y, max_width, 14)) return;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;

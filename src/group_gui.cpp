@@ -322,7 +322,6 @@ public:
 	virtual void OnPaint()
 	{
 		const Owner owner = (Owner)GB(this->window_number, 0, 8);
-		int x = this->widget[GRP_WIDGET_LIST_VEHICLE].left + 2;
 		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
 		int max;
 		int i;
@@ -422,7 +421,7 @@ public:
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		this->DrawVehicleListItems(x, this->vehicle_sel);
+		this->DrawVehicleListItems(this->vehicle_sel);
 	}
 
 	virtual void OnClick(Point pt, int widget)

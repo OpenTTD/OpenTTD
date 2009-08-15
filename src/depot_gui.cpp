@@ -271,7 +271,7 @@ struct DepotWindow : Window {
 				free_wagon = u->IsFreeWagon();
 
 				uint x_space = free_wagon ? TRAININFO_DEFAULT_VEHICLE_WIDTH : 0;
-				DrawTrainImage(u, x + 21 + x_space, sprite_y, this->sel, this->hscroll.cap + 4 - x_space, this->hscroll.pos);
+				DrawTrainImage(u, x + 24 + x_space, sprite_y - 1, this->sel, this->hscroll.cap - x_space, this->hscroll.pos);
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
 				SetDParam(0, (u->tcache.cached_total_length + 7) / 8);

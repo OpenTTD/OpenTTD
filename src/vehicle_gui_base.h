@@ -10,9 +10,9 @@
 /** Start of functions regarding vehicle list windows */
 enum {
 	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_TINY  = 13,
-	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 39,
+	PLY_WND_PRC__SIZE_OF_ROW_TINY  = 13,  ///< Height of rows in group list
+	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,  ///< Height of rows in train/roadvehicle list
+	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 39,  ///< Height of rows in ship/aircraft list
 };
 
 typedef GUIList<const Vehicle*> GUIVehicleList;
@@ -30,7 +30,7 @@ struct BaseVehicleListWindow: public Window {
 		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
 	}
 
-	void DrawVehicleListItems(int x, VehicleID selected_vehicle);
+	void DrawVehicleListItems(VehicleID selected_vehicle);
 	void SortVehicleList();
 	void BuildVehicleList(Owner owner, uint16 index, uint16 window_type);
 };
