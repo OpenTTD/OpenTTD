@@ -96,6 +96,11 @@ bundle_zip: bundle
 	$(Q)mkdir -p "$(BUNDLES_DIR)"
 	$(Q)cd "$(BUNDLE_DIR)" && zip -r $(shell if test -z "$(VERBOSE)"; then echo '-q'; fi) "$(BUNDLES_DIR)/$(BUNDLE_NAME).zip" .
 
+bundle_7z: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).7z'
+	$(Q)mkdir -p "$(BUNDLES_DIR)"
+	$(Q)cd "$(BUNDLE_DIR)" && 7z a "$(BUNDLES_DIR)/$(BUNDLE_NAME).7z" .
+
 bundle_gzip: bundle
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).tar.gz'
 	$(Q)mkdir -p "$(BUNDLES_DIR)/.gzip/$(BUNDLE_NAME)"
