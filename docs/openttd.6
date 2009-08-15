@@ -11,7 +11,7 @@
 .Op Fl a Ar ai
 .Op Fl b Ar blitter
 .Op Fl c Ar config_file
-.Op Fl d Ar [level | cat=lvl[, ...]]
+.Op Fl d Ar [level | cat=lvl[,...]]
 .Op Fl D Ar [host][:port]
 .Op Fl g Ar [savegame]
 .Op Fl G Ar seed
@@ -24,6 +24,7 @@
 .Op Fl P Ar password
 .Op Fl r Ar widthxheight
 .Op Fl s Ar driver
+.Op Fl S Ar soundset
 .Op Fl t Ar year
 .Op Fl v Ar driver
 .Sh OPTIONS
@@ -31,16 +32,18 @@
 .It Fl a Ar ai
 Set the AI, see
 .Fl h
+for a full list
 .It Fl b Ar blitter
 Set the blitter, see
 .Fl h
+for a full list
 .It Fl c Ar config_file
 Use 'config_file' instead of 'openttd.cfg'
 .It Fl d Ar [level]
 Set debug verbosity for all categories to
 .Ar level
 or 1 if omitted
-.It Fl d Ar cat=level[, ...]
+.It Fl d Ar cat=level[,...]
 Set debug verbosity for a specific category
 .It Fl D Ar [host][:port]
 Start a dedicated server. Sets network debug level to 6. If you want to change this, use
@@ -52,28 +55,33 @@ Seed the pseudo random number generator
 .It Fl e
 Start in world editor mode
 .It Fl f
-Fork into background (dedicated only, see
+Fork into background (dedicated server only, see
 .Fl D )
 .It Fl g Ar [savegame]
 Load
 .Ar savegame
-at start or start a new game if omitted
+at start or start a new game if omitted. The
+.Ar savegame
+must be either absolute or relative to the current path or one of the search paths.
 .It Fl h
-Display a summary of all options and available AIs, blitters, drivers and graphic sets
+Display a summary of all options and lists all the available AIs, blitters, sound, music and video drivers, graphics sets and sound sets.
 .It Fl i Ar palette
-Set the palette, see
-.Fl h
+Set the palette. '0' for the DOS palette, '1' for the Windows palette and '2' to autodetect (default).
+
+The palette depends where the base graphics set originated from. If it came from the Transport Tycoon Deluxe for DOS it has the DOS palette, if it came from the Windows version of Transport Tycoon Deluxe it has the Windows palette. All others likely have the Windows palette as that is the most used palette.
 .It Fl I Ar graphicsset
 Set the graphics set, see
 .Fl h
+for a full list
 .It Fl l Ar host[:port]
 Redirect DEBUG(), See
 .Fl D
 .It Fl m Ar driver
 Set the music driver, see
 .Fl h
+for a full list
 .It Fl n Ar host[:port][#player]
-Join a network game, optionally specify player to play as and port to connect to
+Join a network game, optionally specify a port to connect to and player to play as
 .It Fl p Ar password
 Password used to join server. Only useful with
 .Fl n
@@ -85,11 +93,17 @@ Set the resolution
 .It Fl s Ar driver
 Set the sound driver, see
 .Fl h
+for a full list
+.It Fl S Ar soundset
+Set the sound set, see
+.Fl h
+for a full list
 .It Fl t Ar year
 Set the starting year
 .It Fl v Ar driver
 Set the video driver, see
 .Fl h
+for a full list
 .It Fl x
 Do not automatically save to config file on exit
 .El
