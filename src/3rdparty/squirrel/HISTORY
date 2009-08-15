@@ -1,3 +1,17 @@
+***version 2.2.3 stable***
+-added sq_getfunctioninfo
+-added compile time flag SQUSEDOUBLE to use double precision floats
+-added global slot _floatsize_ int the base lib to recognize single precision and double precision builds
+-sq_wakeupvm can now resume the vm with an exception
+-added sqstd_format
+-generators can now be instantiated by calling sq_call() or closure.call()
+-fixed a bug in sqstd_printcallstack(thx takayuki_h)
+-fixed modulo by zero(thx jup)
+-fixed negative enums and constants
+-fixed generator crash bug if invoked as tail call (thx Mr.Accident)
+-fixed some minor bug
+
+***2008-09-24          ***
 ***version 2.2.2 stable***
 -fixed some behaviour inconsistencies in thread.call() and thread.wakeup() (thx Mr.Accident)
 -fixed coroutine error propagation

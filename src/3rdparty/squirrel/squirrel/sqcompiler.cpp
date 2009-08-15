@@ -1110,6 +1110,23 @@ public:
 			case TK_STRING_LITERAL:
 				val = _fs->CreateString(_lex._svalue,_lex._longstr.size()-1);
 				break;
+			case '-':
+				Lex();
+				switch(_token)
+				{
+				case TK_INTEGER:
+					val._type = OT_INTEGER;
+					val._unVal.nInteger = -_lex._nvalue;
+				break;
+				case TK_FLOAT:
+					val._type = OT_FLOAT;
+					val._unVal.fFloat = -_lex._fvalue;
+				break;
+				default:
+					Error(_SC("scalar expected : integer,float"));
+					val._type = OT_NULL; // Silent compile-warning
+				}
+				break;
 			default:
 				Error(_SC("scalar expected : integer,float or string"));
 				val._type = OT_NULL; // Silent compile-warning

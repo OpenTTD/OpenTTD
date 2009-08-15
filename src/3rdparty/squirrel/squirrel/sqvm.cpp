@@ -17,6 +17,21 @@
 
 #define TOP() (_stack._vals[_top-1])
 
+#define CLEARSTACK(_last_top) { if((_last_top) >= _top) ClearStack(_last_top); }
+void SQVM::ClearStack(SQInteger last_top)
+{
+	SQObjectType tOldType;
+	SQObjectValue unOldVal;
+	while (last_top >= _top) {
+		SQObjectPtr &o = _stack._vals[last_top--];
+		tOldType = o._type;
+		unOldVal = o._unVal;
+		o._type = OT_NULL;
+		o._unVal.pUserPointer = NULL;
+		__Release(tOldType,unOldVal);
+	}
+}
+
 bool SQVM::BW_OP(SQUnsignedInteger op,SQObjectPtr &trg,const SQObjectPtr &o1,const SQObjectPtr &o2)
 {
 	SQInteger res;
@@ -50,7 +65,9 @@ bool SQVM::ARITH_OP(SQUnsignedInteger op,SQObjectPtr &trg,const SQObjectPtr &o1,
 					res = i1 / i2;
 					break;
 				case '*': res = i1 * i2; break;
-				case '%': res = i1 % i2; break;
+				case '%': if(i2 == 0) { Raise_Error(_SC("modulo by zero")); return false; }
+					res = i1 % i2;
+					break;
 				default: res = 0xDEADBEEF;
 				}
 				trg = res;
@@ -288,12 +305,10 @@ void SQVM::TypeOf(const SQObjectPtr &obj1,SQObjectPtr &dest)
 bool SQVM::Init(SQVM *friendvm, SQInteger stacksize)
 {
 	_stack.resize(stacksize);
-	//_callsstack.reserve(4);
 	_alloccallsstacksize = 4;
 	_callstackdata.resize(_alloccallsstacksize);
 	_callsstacksize = 0;
 	_callsstack = &_callstackdata[0];
-	//_callsstack = (CallInfo*)sq_malloc(_alloccallsstacksize*sizeof(CallInfo));
 	_stackbase = 0;
 	_top = 0;
 	if(!friendvm)
@@ -672,20 +687,34 @@ bool SQVM::Execute(SQObjectPtr &closure, SQInteger target, SQInteger nargs, SQIn
 	bool ct_tailcall;
 
 	switch(et) {
-		case ET_CALL:
-			if(!StartCall(_closure(closure), _top - nargs, nargs, stackbase, false)) {
+		case ET_CALL: {
+			SQInteger last_top = _top;
+			temp_reg = closure;
+			if(!StartCall(_closure(temp_reg), _top - nargs, nargs, stackbase, false)) {
 				//call the handler if there are no calls in the stack, if not relies on the previous node
 				if(ci == NULL) CallErrorHandler(_lasterror);
 				return false;
 			}
+			if (_funcproto(_closure(temp_reg)->_function)->_bgenerator) {
+				//SQFunctionProto *f = _funcproto(_closure(temp_reg)->_function);
+				SQGenerator *gen = SQGenerator::Create(_ss(this), _closure(temp_reg));
+				_GUARD(gen->Yield(this));
+				Return(1, ci->_target, temp_reg);
+				outres = gen;
+				CLEARSTACK(last_top);
+				return true;
+			}
 			ci->_root = SQTrue;
+					  }
 			break;
 		case ET_RESUME_GENERATOR: _generator(closure)->Resume(this, target); ci->_root = SQTrue; traps += ci->_etraps; break;
 		case ET_RESUME_VM:
+		case ET_RESUME_THROW_VM:
 			traps = _suspended_traps;
 			ci->_root = _suspended_root;
 			ci->_vargs = _suspend_varargs;
 			_suspended = SQFalse;
+			if(et  == ET_RESUME_THROW_VM) { SQ_THROW(); }
 			break;
 		case ET_RESUME_OPENTTD:
 			traps = _suspended_traps;
@@ -716,7 +745,7 @@ exception_restore:
 			case _OP_DLOAD: TARGET = ci->_literals[arg1]; STK(arg2) = ci->_literals[arg3];continue;
 			case _OP_TAILCALL:
 				temp_reg = STK(arg1);
-				if (type(temp_reg) == OT_CLOSURE){
+				if (type(temp_reg) == OT_CLOSURE && !_funcproto(_closure(temp_reg)->_function)->_bgenerator){
 					ct_tailcall = true;
 					if(ci->_vargs.size) PopVarArgs(ci->_vargs);
 					for (SQInteger i = 0; i < arg3; i++) STK(i) = STK(arg2 + i);
@@ -741,7 +770,7 @@ common_call:
 							_GUARD(gen->Yield(this));
 							Return(1, ct_target, clo);
 							STK(ct_target) = gen;
-							while (last_top >= _top) _stack._vals[last_top--].Null();
+							CLEARSTACK(last_top);
 							continue;
 						}
 						}
@@ -1022,7 +1051,7 @@ exception_trap:
 						_stackbase = et._stackbase;
 						_stack._vals[_stackbase+et._extarget] = currerror;
 						_etraps.pop_back(); traps--; ci->_etraps--;
-						while(last_top >= _top) _stack._vals[last_top--].Null();
+						CLEARSTACK(last_top);
 						goto exception_restore;
 					}
 					//if is a native closure
@@ -1050,7 +1079,7 @@ exception_trap:
 				if( (ci && type(ci->_closure) != OT_CLOSURE) || exitafterthisone) break;
 			} while(_callsstacksize);
 
-			while(last_top >= _top) _stack._vals[last_top--].Null();
+			CLEARSTACK(last_top);
 		}
 		_lasterror = currerror;
 		return false;
@@ -1062,8 +1091,6 @@ bool SQVM::CreateClassInstance(SQClass *theclass, SQObjectPtr &inst, SQObjectPtr
 {
 	inst = theclass->CreateInstance();
 	if(!theclass->Get(_ss(this)->_constructoridx,constructor)) {
-		//if(!Call(constr,nargs,stackbase,constr,false))
-		//	return false;
 		constructor = _null_;
 	}
 	return true;

@@ -53,7 +53,7 @@ struct SQVM : public CHAINABLE_OBJ
 
 typedef sqvector<CallInfo> CallInfoVec;
 public:
-	enum ExecutionType { ET_CALL, ET_RESUME_GENERATOR, ET_RESUME_VM, ET_RESUME_OPENTTD };
+	enum ExecutionType { ET_CALL, ET_RESUME_GENERATOR, ET_RESUME_VM, ET_RESUME_THROW_VM, ET_RESUME_OPENTTD };
 	SQVM(SQSharedState *ss);
 	~SQVM();
 	bool Init(SQVM *friendvm, SQInteger stacksize);
@@ -108,6 +108,7 @@ public:
 	_INLINE bool PLOCAL_INC(SQInteger op,SQObjectPtr &target, SQObjectPtr &a, SQObjectPtr &incr);
 	_INLINE bool DerefInc(SQInteger op,SQObjectPtr &target, SQObjectPtr &self, SQObjectPtr &key, SQObjectPtr &incr, bool postfix);
 	void PopVarArgs(VarArgs &vargs);
+	void ClearStack(SQInteger last_top);
 #ifdef _DEBUG_DUMP
 	void dumpstack(SQInteger stackbase=-1, bool dumpall = false);
 #endif

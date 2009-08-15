@@ -277,6 +277,9 @@ void sq_base_register(HSQUIRRELVM v)
 	sq_pushstring(v,_SC("_intsize_"),-1);
 	sq_pushinteger(v,sizeof(SQInteger));
 	sq_createslot(v,-3);
+	sq_pushstring(v,_SC("_floatsize_"),-1);
+	sq_pushinteger(v,sizeof(SQFloat));
+	sq_createslot(v,-3);
 	sq_pop(v,1);
 }
 
@@ -815,7 +818,7 @@ static SQInteger thread_wakeup(HSQUIRRELVM v)
 		if(wakeupret) {
 			sq_move(thread,v,2);
 		}
-		if(SQ_SUCCEEDED(sq_wakeupvm(thread,wakeupret,SQTrue,SQFalse))) {
+		if(SQ_SUCCEEDED(sq_wakeupvm(thread,wakeupret,SQTrue,SQTrue,SQFalse))) {
 			sq_move(v,thread,-1);
 			sq_pop(thread,1); //pop retval
 			if(sq_getvmstate(thread) == SQ_VMSTATE_IDLE) {

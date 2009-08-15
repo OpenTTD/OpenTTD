@@ -9,6 +9,7 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 	if(pf) {
 		SQStackInfos si;
 		SQInteger i;
+		SQBool b;
 		SQFloat f;
 		const SQChar *s;
 		SQInteger level=1; //1 is to skip this function that is level 0
@@ -83,8 +84,8 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 					pf(v,_SC("[%s] WEAKREF\n"),name);
 					break;
 				case OT_BOOL:{
-					sq_getinteger(v,-1,&i);
-					pf(v,_SC("[%s] %s\n"),name,i?_SC("true"):_SC("false"));
+					sq_getbool(v,-1,&b);
+					pf(v,_SC("[%s] %s\n"),name,b?_SC("true"):_SC("false"));
 							 }
 					break;
 				default: assert(0); break;

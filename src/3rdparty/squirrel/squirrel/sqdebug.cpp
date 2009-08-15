@@ -9,6 +9,23 @@
 #include "sqclosure.h"
 #include "sqstring.h"
 
+SQRESULT sq_getfunctioninfo(HSQUIRRELVM v,SQInteger level,SQFunctionInfo *fi)
+{
+	SQInteger cssize = v->_callsstacksize;
+	if (cssize > level) {
+		SQVM::CallInfo &ci = v->_callsstack[cssize-level-1];
+		if(sq_isclosure(ci._closure)) {
+			SQClosure *c = _closure(ci._closure);
+			SQFunctionProto *proto = _funcproto(c->_function);
+			fi->funcid = proto;
+			fi->name = type(proto->_name) == OT_STRING?_stringval(proto->_name):_SC("unknown");
+			fi->source = type(proto->_name) == OT_STRING?_stringval(proto->_sourcename):_SC("unknown");
+			return SQ_OK;
+		}
+	}
+	return sq_throwerror(v,_SC("the object is not a closure"));
+}
+
 SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
 {
 	SQInteger cssize = v->_callsstacksize;

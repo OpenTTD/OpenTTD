@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2003-2008 Alberto Demichelis
+Copyright (c) 2003-2009 Alberto Demichelis
 
 This software is provided 'as-is', without any
 express or implied warranty. In no event will the
@@ -68,7 +68,24 @@ typedef unsigned int SQHash; /*should be the same size of a pointer*/
 #endif
 
 
+#ifdef SQUSEDOUBLE
+typedef double SQFloat;
+#else
 typedef float SQFloat;
+#endif
+
+#if defined(SQUSEDOUBLE) && !defined(_SQ64)
+#ifdef _MSC_VER
+typedef __int64 SQRawObjectVal; //must be 64bits
+#else
+typedef long SQRawObjectVal; //must be 64bits
+#endif
+#define SQ_OBJECT_RAWINIT() { _unVal.raw = 0; }
+#else
+typedef SQUnsignedInteger SQRawObjectVal; //is 32 bits on 32 bits builds and 64 bits otherwise
+#define SQ_OBJECT_RAWINIT()
+#endif
+
 typedef void* SQUserPointer;
 typedef SQUnsignedInteger SQBool;
 typedef SQInteger SQRESULT;
@@ -159,8 +176,8 @@ typedef char SQChar;
 #define MAX_CHAR 0xFF
 #endif
 
-#define SQUIRREL_VERSION	_SC("Squirrel 2.2.2 stable - With custom OpenTTD modifications")
-#define SQUIRREL_COPYRIGHT	_SC("Copyright (C) 2003-2008 Alberto Demichelis")
+#define SQUIRREL_VERSION	_SC("Squirrel 2.2.3 stable - With custom OpenTTD modifications")
+#define SQUIRREL_COPYRIGHT	_SC("Copyright (C) 2003-2009 Alberto Demichelis")
 #define SQUIRREL_AUTHOR		_SC("Alberto Demichelis")
 
 #define SQ_VMSTATE_IDLE			0
@@ -240,6 +257,7 @@ typedef union tagSQObjectValue
 	struct SQClass *pClass;
 	struct SQInstance *pInstance;
 	struct SQWeakRef *pWeakRef;
+	SQRawObjectVal raw;
 }SQObjectValue;
 
 
@@ -274,6 +292,13 @@ typedef struct tagSQRegFunction{
 	const SQChar *typemask;
 }SQRegFunction;
 
+typedef struct tagSQFunctionInfo {
+	SQUserPointer funcid;
+	const SQChar *name;
+	const SQChar *source;
+}SQFunctionInfo;
+
+
 /*vm*/
 SQUIRREL_API bool sq_can_suspend(HSQUIRRELVM v);
 SQUIRREL_API HSQUIRRELVM sq_open(SQInteger initialstacksize);
@@ -286,7 +311,7 @@ SQUIRREL_API void sq_setprintfunc(HSQUIRRELVM v, SQPRINTFUNCTION printfunc);
 SQUIRREL_API SQPRINTFUNCTION sq_getprintfunc(HSQUIRRELVM v);
 SQUIRREL_API SQRESULT sq_suspendvm(HSQUIRRELVM v);
 SQUIRREL_API bool sq_resumecatch(HSQUIRRELVM v, int suspend = -1);
-SQUIRREL_API SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool resumedret,SQBool retval,SQBool raiseerror);
+SQUIRREL_API SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool resumedret,SQBool retval,SQBool raiseerror,SQBool throwerror);
 SQUIRREL_API SQInteger sq_getvmstate(HSQUIRRELVM v);
 
 /*compiler*/
@@ -337,6 +362,7 @@ SQUIRREL_API SQRESULT sq_settypetag(HSQUIRRELVM v,SQInteger idx,SQUserPointer ty
 SQUIRREL_API SQRESULT sq_gettypetag(HSQUIRRELVM v,SQInteger idx,SQUserPointer *typetag);
 SQUIRREL_API void sq_setreleasehook(HSQUIRRELVM v,SQInteger idx,SQRELEASEHOOK hook);
 SQUIRREL_API SQChar *sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize);
+SQUIRREL_API SQRESULT sq_getfunctioninfo(HSQUIRRELVM v,SQInteger idx,SQFunctionInfo *fi);
 SQUIRREL_API SQRESULT sq_getclosureinfo(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger *nparams,SQUnsignedInteger *nfreevars);
 SQUIRREL_API SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,const SQChar *name);
 SQUIRREL_API SQRESULT sq_setinstanceup(HSQUIRRELVM v, SQInteger idx, SQUserPointer p);

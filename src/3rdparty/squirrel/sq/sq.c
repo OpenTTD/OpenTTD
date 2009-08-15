@@ -59,6 +59,9 @@ void printfunc(HSQUIRRELVM v,const SQChar *s,...)
 void PrintVersionInfos()
 {
 	scfprintf(stdout,_SC("%s %s (%d bits)\n"),SQUIRREL_VERSION,SQUIRREL_COPYRIGHT,sizeof(SQInteger)*8);
+	if(sizeof(SQFloat) != sizeof(float)) {
+		scfprintf(stdout,_SC("[%d bits floats]\n"),sizeof(SQFloat)*8);
+	}
 }
 
 void PrintUsage()
