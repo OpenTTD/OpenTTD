@@ -375,6 +375,7 @@ AIAbstractList::AIAbstractList()
 	this->sorter_type    = SORT_BY_VALUE;
 	this->sort_ascending = false;
 	this->initialized    = false;
+	this->modifications  = 0;
 }
 
 AIAbstractList::~AIAbstractList()
@@ -389,6 +390,8 @@ bool AIAbstractList::HasItem(int32 item)
 
 void AIAbstractList::Clear()
 {
+	this->modifications++;
+
 	this->items.clear();
 	this->buckets.clear();
 	this->sorter->End();
@@ -396,6 +399,8 @@ void AIAbstractList::Clear()
 
 void AIAbstractList::AddItem(int32 item)
 {
+	this->modifications++;
+
 	if (this->HasItem(item)) return;
 
 	this->items[item] = 0;
@@ -404,6 +409,8 @@ void AIAbstractList::AddItem(int32 item)
 
 void AIAbstractList::RemoveItem(int32 item)
 {
+	this->modifications++;
+
 	if (!this->HasItem(item)) return;
 
 	int32 value = this->GetValue(item);
@@ -457,6 +464,8 @@ int32 AIAbstractList::GetValue(int32 item)
 
 bool AIAbstractList::SetValue(int32 item, int32 value)
 {
+	this->modifications++;
+
 	if (!this->HasItem(item)) return false;
 
 	int32 value_old = this->GetValue(item);
@@ -472,6 +481,8 @@ bool AIAbstractList::SetValue(int32 item, int32 value)
 
 void AIAbstractList::Sort(SorterType sorter, bool ascending)
 {
+	this->modifications++;
+
 	if (sorter != SORT_BY_VALUE && sorter != SORT_BY_ITEM) return;
 	if (sorter == this->sorter_type && ascending == this->sort_ascending) return;
 
@@ -506,6 +517,8 @@ void AIAbstractList::AddList(AIAbstractList *list)
 
 void AIAbstractList::RemoveAboveValue(int32 value)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second > value) this->items.erase(iter);
@@ -519,6 +532,8 @@ void AIAbstractList::RemoveAboveValue(int32 value)
 
 void AIAbstractList::RemoveBelowValue(int32 value)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second < value) this->items.erase(iter);
@@ -532,6 +547,8 @@ void AIAbstractList::RemoveBelowValue(int32 value)
 
 void AIAbstractList::RemoveBetweenValue(int32 start, int32 end)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second > start && (*iter).second < end) this->items.erase(iter);
@@ -545,6 +562,8 @@ void AIAbstractList::RemoveBetweenValue(int32 start, int32 end)
 
 void AIAbstractList::RemoveValue(int32 value)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second == value) this->items.erase(iter);
@@ -558,6 +577,8 @@ void AIAbstractList::RemoveValue(int32 value)
 
 void AIAbstractList::RemoveTop(int32 count)
 {
+	this->modifications++;
+
 	if (!this->sort_ascending) {
 		this->Sort(this->sorter_type, !this->sort_ascending);
 		this->RemoveBottom(count);
@@ -593,6 +614,8 @@ void AIAbstractList::RemoveTop(int32 count)
 
 void AIAbstractList::RemoveBottom(int32 count)
 {
+	this->modifications++;
+
 	if (!this->sort_ascending) {
 		this->Sort(this->sorter_type, !this->sort_ascending);
 		this->RemoveTop(count);
@@ -627,6 +650,8 @@ void AIAbstractList::RemoveBottom(int32 count)
 
 void AIAbstractList::RemoveList(AIAbstractList *list)
 {
+	this->modifications++;
+
 	AIAbstractListMap *list_items = &list->items;
 	for (AIAbstractListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
 		this->RemoveItem((*iter).first);
@@ -635,6 +660,8 @@ void AIAbstractList::RemoveList(AIAbstractList *list)
 
 void AIAbstractList::KeepAboveValue(int32 value)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second <= value) this->items.erase(iter);
@@ -648,6 +675,8 @@ void AIAbstractList::KeepAboveValue(int32 value)
 
 void AIAbstractList::KeepBelowValue(int32 value)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second >= value) this->items.erase(iter);
@@ -661,6 +690,8 @@ void AIAbstractList::KeepBelowValue(int32 value)
 
 void AIAbstractList::KeepBetweenValue(int32 start, int32 end)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second <= start || (*iter).second >= end) this->items.erase(iter);
@@ -674,6 +705,8 @@ void AIAbstractList::KeepBetweenValue(int32 start, int32 end)
 
 void AIAbstractList::KeepValue(int32 value)
 {
+	this->modifications++;
+
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second != value) this->items.erase(iter);
@@ -687,16 +720,22 @@ void AIAbstractList::KeepValue(int32 value)
 
 void AIAbstractList::KeepTop(int32 count)
 {
+	this->modifications++;
+
 	this->RemoveBottom(this->Count() - count);
 }
 
 void AIAbstractList::KeepBottom(int32 count)
 {
+	this->modifications++;
+
 	this->RemoveTop(this->Count() - count);
 }
 
 void AIAbstractList::KeepList(AIAbstractList *list)
 {
+	this->modifications++;
+
 	AIAbstractList tmp;
 	for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
 		tmp.AddItem((*iter).first);
@@ -746,6 +785,8 @@ SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm)
 
 SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 {
+	this->modifications++;
+
 	/* The first parameter is the instance of AIAbstractList. */
 	int nparam = sq_gettop(vm) - 1;
 
@@ -771,6 +812,10 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 
 	/* Walk all items, and query the result */
 	this->buckets.clear();
+
+	/* Check for changing of items. */
+	int begin_modification_count = this->modifications;
+
 	for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
 		/* Push the root table as instance object, this is what squirrel does for meta-functions. */
 		sq_pushroottable(vm);
@@ -806,6 +851,15 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 				AIObject::SetAllowDoCommand(backup_allow);
 				return sq_throwerror(vm, _SC("return value of valuator is not valid (not integer/bool)"));
 			}
+		}
+
+		/* Was something changed? */
+		if (begin_modification_count != this->modifications) {
+			/* See below for explanation. The extra pop is the return value. */
+			sq_pop(vm, nparam + 4);
+
+			AIObject::SetAllowDoCommand(backup_allow);
+			return sq_throwerror(vm, _SC("modifying valuated list outside of valuator function"));
 		}
 
 		(*iter).second = (int32)value;
