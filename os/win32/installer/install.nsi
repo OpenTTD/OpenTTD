@@ -1,11 +1,14 @@
 !define APPNAME "OpenTTD"   ; Define application name
-!define APPVERSION "0.7.2"  ; Define application version
-!define APPVERSIONINTERNAL "0.7.2.0" ; Define application version in X.X.X.X
+!define APPVERSION "0.8.0"  ; Define application version
+!define APPVERSIONINTERNAL "0.8.0.0" ; Define application version in X.X.X.X
 !define INSTALLERVERSION 65 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !include ${VERSION_INCLUDE}
 
 !define APPURLLINK "http://www.openttd.org"
 !define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
+
+!define OPENGFX_BASE_VERSION "0.7.0"
+!define OPENSFX_BASE_VERSION "0.8.0"
 
 !define MUI_ICON "..\..\..\media\openttd.ico"
 !define MUI_UNICON "..\..\..\media\openttd.ico"
@@ -160,8 +163,51 @@ Section "!OpenTTD" Section1
 SectionEnd
 
 ;----------------------------------------------------------------------------------
+; OpenGFX files install section. Downloads OpenGFX and installs it
+Section "Download free Graphics" Section3
+	SetOverwrite try
+
+	NSISdl::download "http://binaries.openttd.org/installer/opengfx-${OPENGFX_BASE_VERSION}.tar.7z" "$INSTDIR\data\opengfx.tar.7z"
+	Pop $R0 ;Get the return value
+	StrCmp $R0 "success" +3
+		MessageBox MB_OK "Downloading of OpenGFX failed"
+		Goto Done
+
+	; Let's extract the files
+	SetOutPath "$INSTDIR\data\"
+	NSIS7z::Extract "$INSTDIR\data\opengfx.tar.7z"
+
+	Delete "$INSTDIR\data\opengfx.tar.7z"
+	SetOutPath "$INSTDIR\"
+Done:
+
+SectionEnd
+
+;----------------------------------------------------------------------------------
+; OpenSFX files install section. Downloads OpenSFX and installs it
+Section "Download free Sounds" Section4
+	SetOverwrite try
+
+	NSISdl::download "http://binaries.openttd.org/installer/opensfx-${OPENSFX_BASE_VERSION}.tar.7z" "$INSTDIR\data\opensfx.tar.7z"
+	Pop $R0 ;Get the return value
+	StrCmp $R0 "success" +3
+		MessageBox MB_OK "Downloading of OpenSFX failed"
+		Goto Done
+
+	; Let's extract the files
+	SetOutPath "$INSTDIR\data\"
+	NSIS7z::Extract "$INSTDIR\data\opensfx.tar.7z"
+
+	Delete "$INSTDIR\data\opensfx.tar.7z"
+	SetOutPath "$INSTDIR\"
+Done:
+
+SectionEnd
+
+;----------------------------------------------------------------------------------
 ; TTDLX files install section. Copies all needed TTDLX files from CD or install dir
-Section "Copy Game Graphics" Section2
+Section /o "Copy Game Graphics" Section2
+	SetOverwrite try
 	; Let's copy the files with size approximation
 	SetOutPath "$INSTDIR\gm"
 	CopyFiles "$CDDRIVE\gm\*.gm" "$INSTDIR\gm\" 1028
@@ -190,8 +236,10 @@ SectionEnd
 
 ; Modern install component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section1} "OpenTTD is a fully functional clone of TTD and is very playable."
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics. Requires TTD (for Windows)."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section1} "OpenTTD is a fully functional clone of Transport Tycoon Deluxe and is very playable. You need at least one of the game graphics and sound sets installed"
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section3} "Download the free OpenGFX game graphics. This download is about 3 MiB."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section4} "Download the free OpenSFX game sounds. This download is about 7 MiB."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics and sounds from the Transport Tycoon Deluxe CD."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;-----------------------------------------------
@@ -287,6 +335,10 @@ Section "Uninstall"
 
 	; Music
 	Delete "$INSTDIR\gm\*.gm"
+
+	; Downloaded OpenGFX/OpenSFX
+	Delete "$INSTDIR\data\opengfx.tar"
+	Delete "$INSTDIR\data\opensfx.tar"
 
 	; Language files
 	Delete "$INSTDIR\lang\*.lng"
@@ -429,9 +481,12 @@ Var OLDVERSION
 Var UninstallString
 
 ;-----------------------------------------------------------------------------------
-; NSIS Initialize function, determin if we are going to install/upgrade or uninstall
+; NSIS Initialize function, determine if we are going to install/upgrade or uninstall
 Function .onInit
 	StrCpy $SHORTCUTS "OpenTTD"
+
+	SectionSetSize ${Section3} 6144
+	SectionSetSize ${Section4} 10240
 
 	SectionSetFlags 0 17
 
@@ -454,6 +509,8 @@ WelcomeToSetup:
 		"Welcome to ${APPNAMEANDVERSION} Setup.$\n \
 		This will allow you to upgrade from version $OLDVERSION."
 	SectionSetFlags ${Section2} 0x80 ; set bit 7
+	SectionSetFlags ${Section3} 0x80 ; set bit 7
+	SectionSetFlags ${Section4} 0x80 ; set bit 7
 	Goto FinishCallback
 
 VersionsAreEqual:
