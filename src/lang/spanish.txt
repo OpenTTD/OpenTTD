@@ -1170,7 +1170,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ver vías reservadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Mantener activas las herramientas de construcción tras su uso: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Costos de grupo en la ventana de finanzás: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Costos de grupo en la ventana de finanzas: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
@@ -1622,7 +1622,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Recibien
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} delante de usted
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} descargados
 
-STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectado
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Teclee la contraseña
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduce contraseña
@@ -1973,7 +1973,7 @@ STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heliesta
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeropuerto pequeño
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeropuerto grande
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centro del aeropuerto
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Aeropuerto central
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Aeropuerto helicopteros
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruido generado: {GOLD}{COMMA}

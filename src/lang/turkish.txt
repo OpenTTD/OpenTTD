@@ -919,6 +919,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanı
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} kayıp/bozuk dosya
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Temel ses kümesi
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kullanılacak temel ses kümesini seçin
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Temel ses kümesiyle ilgili ilave bilgiler
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekran modu başarısız
 
 # Custom currency window
@@ -1772,6 +1776,7 @@ STR_CONTENT_TYPE_AI                                             :YZ
 STR_CONTENT_TYPE_AI_LIBRARY                                     :YZ kütüphanesi
 STR_CONTENT_TYPE_SCENARIO                                       :Senaryo
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Yükseklik haritası
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Temel sesler
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}İçerik indiriliyor...
@@ -2576,7 +2581,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bu araç
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Listeyi yönet
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Listedeki tüm araçlara talimat ver
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Araçları Değiştir
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Bakıma İçin Gönder
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Bakıma Gönder
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Gara Gönder
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Garaja Gönder

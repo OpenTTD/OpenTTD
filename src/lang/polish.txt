@@ -1295,6 +1295,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Wybierz 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Główny zestaw grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wybierz główny zestaw grafik do użycia
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} brak/uszkodzony plik{P "" i ów}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o grafice
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Podstawowy zestaw dźwięków
@@ -1607,6 +1608,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Wyśrodkowane
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Z prawej strony
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciągania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciągania okien: {ORANGE}niedostępne
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Miękkie ograniczenie okna: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Miękkie ograniczenie okna: {ORANGE} wyłączone
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Szybkość rozwoju miast: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Brak
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Mała

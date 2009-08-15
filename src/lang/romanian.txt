@@ -15,7 +15,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(sir nedefinit)
-STR_JUST_NOTHING                                                :nimic
+STR_JUST_NOTHING                                                :Nimic
 
 # Cargo related strings
 # Plural cargo name
@@ -259,6 +259,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valoare
 STR_SORT_BY_LENGTH                                              :Lungime
 STR_SORT_BY_LIFE_TIME                                           :Durată de viaţă rămasă
+STR_SORT_BY_TIMETABLE_DELAY                                     :Înârzieri
 STR_SORT_BY_FACILITY                                            :Tipul de statie
 STR_SORT_BY_WAITING                                             :Valoarea mărfii în aşteptare
 STR_SORT_BY_RATING_MAX                                          :Cel mai mare rating
@@ -298,7 +299,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Afiseaza instrumentele pentru modelarea terenului, plantarea copacilor, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Afişează fereastra pentru configurarea sunetului/muzicii
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afiseaza ultimul mesaj (ultima stire) si optiunile pentru mesaje
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatii despre teren
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatii despre teren, consola, depanare IA, capturi ecran, despre OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvează/încarcă scenariu, abandonează editorul, ieşire din joc
@@ -331,7 +332,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setari Newgrf
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiuni transparenţă
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Afişează numele oraşelor
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Afişează numele staţiilor
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Afisare puncte de tranzit
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Afisare nume puncte de tranzit
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Afişează semnele de pe hartă
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animaţie completă
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detalii grafice complete
@@ -417,7 +418,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii despre teren
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consola On/Off
-STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenta Artificială
+STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţa Artificială
 STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
@@ -724,7 +725,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Accident rutier!{}Şoferul decedat în urma coliziunii cu un tren
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Accident rutier!{}{COMMA} victime în urma coliziunii cu un tren
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Accident aviatic!{}{COMMA} victime în urma prăbuşirii de la {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Accident aerian!{}Aeronava in pana de combustibil, {COMMA} victime in urma dezastrulu!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Accident aerian!{}Aeronava rămasă fără combustibil, {COMMA} victime în urma dezastrulu!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Accident de zepelin la{STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Autovehicul distrus în urma coliziunii cu un OZN!
@@ -732,7 +733,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrică de conserve distrusă în condiţii misterioase lângă {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}Un OZN a aterizat lângă {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Prăbuşirea unei mine de cărbune lângă {TOWN} provoacă daune majore!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundatii!{}Se estimeaza cel putin {COMMA}  victime!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundaţii!{}Se estimează cel puţin {COMMA} victime!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Companie de transport cu probleme!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} va fi vândută dacă situaţia financiară nu se va îmbunătăţi curând!
@@ -785,7 +786,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} s-a rătăcit.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Profitul {VEHICLE} pe anul precedent a fost de {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Ajustarea eronată a ordinelor a cauzat oprirea  {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Ajustarea eronată a ordinelor a cauzat oprirea {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoreînore eşuată pentru {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Un nou tip de {STRING} este acum disponibil!
@@ -918,6 +919,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectea
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fişier{P "" "e"} lipsă/corupt{P "" e}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informaţii adiţionale despre setul grafic de bază
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sunete de bază
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selectează un set de sunete pentru a fi folosit în joc
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informaţii adiţionale despre setul de sunete de bază
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Comutarea in ecran-complet a esuat
 
 # Custom currency window
@@ -979,7 +984,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Reacţi
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :zero
-STR_NUM_VERY_LOW                                                :Foarte putine
+STR_NUM_VERY_LOW                                                :Foarte puţine
 STR_NUM_LOW                                                     :scăzut
 STR_NUM_NORMAL                                                  :normal
 STR_NUM_HIGH                                                    :ridicat
@@ -1344,12 +1349,12 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldoze
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construieşte în modul pauză: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioanele cu reacţie nu se vor prăbuşi (frecvent) pe aeroporturile mici: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Schimbă peisajul: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Schimbă peisajul: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :peisajul temperat
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :peisajul sub-arctic
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :peisajul sub-tropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :peisajul 'tara jucãriilor'
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbă data: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbă data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activeaza accesul la valorile de productie: {ORANGE}{STRING}
 
 # Livery window
@@ -1750,7 +1755,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Aceast�
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Această resursă a fost selectată pentru descărcare
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Aceasă dependinţă a fost selectată pentru descărcare
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Deja ai această resursă
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Acestă resursă este necunoscută si nu poate fi descărcată in OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Acestă resursă este necunoscută şi nu poate fi descărcată în OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Acestă resursă este un înlocuitor pentru un/o {STRING} existent/ă
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nume: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versiune: {WHITE}{STRING}
@@ -1771,6 +1776,7 @@ STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Libarie IA
 STR_CONTENT_TYPE_SCENARIO                                       :Scenariu
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hartă topografică
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Set sunet de bază
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarc resursele...
@@ -1929,7 +1935,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientar
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Alege orientarea platformei de tramvai
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Constructie rute acvatice
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcţie rute acvatice
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Rute acvatice
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construieşte canale
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construieşte ecluză
@@ -2241,7 +2247,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initiali
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregatesc jocul
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări Newgrf
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări NewGRF
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Incarcă presetarea selectată
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvează presetare
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvează lista curentă ca presetare
@@ -2481,9 +2487,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Credite
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Limită credit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Împrumută {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Împrumută o nouă sumă de bani
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Împrumută o nouă sumă de bani. Ctrl-click pentru a împrumuta suma maximă posibilă
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Plăteşte înapoi {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Plăteşte înapoi o parte din credite
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Plăteşte înapoi o parte din credite. Ctrl-click pentru a plăti cât de mult permit finanţele
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2679,7 +2685,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - clic pe tren pentru informaţii, mută vehiculele pentru adăugare-scoatere din tren
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - clic pe tren pentru informaţii, mută vehiculele pentru adăugare/scoatere din tren
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic pe vehicul pentru informatii
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Nave - clic pe o navă pentru informaţii
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
@@ -3259,7 +3265,7 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nu pot c
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nu se poate redenumi oraşul...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Nu se poate construi un oraş aici...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...prea aproape de marginea hărţii
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...prea aproape de alt oras
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...prea aproape de alt oraş
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...prea multe oraşe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nu mai este loc pe hartă
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
@@ -3271,9 +3277,9 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nu se po
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Acest tip de industrie nu se poate construi aici...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...prea aproape de altă industrie
 STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...mai întâi trebuie creat un oraş
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...un singur obiectiv de acest tip este permis într-un oraş
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...Se poate construi doar în oraşe cu populaţia de cel puţin 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...se poate construi doar in padurile ecuatoriale
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...un singur obiectiv de acest tip este permis per oraş
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...se poate construi doar în oraşe cu populaţia de cel puţin 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...se poate construi doar in padurile tropicale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...se poate construi doar în zonele de deşert
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...se poate construi doar în oraşe
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...se poate construi doar la marginea hărţii
@@ -3289,7 +3295,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nu pot c
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nu se poate construi un aeroport aici...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Este adiacentă mai multor staţii
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...staţie prea mare
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...staţie prea întinsă
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...staţiile neuniforme nu sunt permise
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prea multe staţii
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Staţia are prea multe componente
@@ -3387,7 +3393,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nu pot c
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nu se poate construi o ecluză aici...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nu pot plasa râuri aici...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...trebuie construit pe apă
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Nu se poate construi pe apă
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...nu se poate construi pe apă
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Trebuie sa demolezi canalul inainte
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nu pot construi apeductul aici...
 
@@ -3496,13 +3502,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nu se po
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nu pot muta acest ordin...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nu pot renunta la comanda actuala...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nu pot sări la ordinul selectat...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}vehicolul nu poate ajunge la toate staţiile
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}vehicolul nu poate ajunge la acea staţie
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un vehicol care are acest ordin nu poate ajunge la acea staţie
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... vehiculul nu poate ajunge la toate staţiile
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehiculul nu poate ajunge la acea staţie
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicul care are acest ordin nu poate ajunge la acea staţie
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nu se poate trece la comenzi sincronizate...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nu pot copia lista de comenzi...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...prea departe de destinaţia precedentă
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prea departe de destinaţia precedentă
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nu pot programa vehiculul...
@@ -3510,7 +3516,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vehicule
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Acest vehicul nu are oprire în această staţie.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...prea multe semne
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prea multe semne
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nu se poate plasa un semn aici...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nu se poate schimba numele semnului...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nu pot sterge semnul...
