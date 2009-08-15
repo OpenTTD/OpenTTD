@@ -71,10 +71,6 @@ Page custom SelectCDEnter SelectCDExit ": TTD folder"
 
 !insertmacro MUI_PAGE_INSTFILES
 
-;-----------------------------------------------------
-; New custom page to show UNICODE and MSLU information
-Page custom ShowWarningsPage
-
 !define MUI_FINISHPAGE_TITLE_3LINES
 !define MUI_FINISHPAGE_RUN_TEXT "Run ${APPNAMEANDVERSION} now!"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
@@ -134,8 +130,6 @@ Section "!OpenTTD" Section1
 	; Delete old files from the main dir. they are now placed in data/ and lang/
 	Delete "$INSTDIR\*.lng"
 	Delete "$INSTDIR\*.grf"
-	Delete "$INSTDIR\*.obg"
-	Delete "$INSTDIR\*.obs"
 	Delete "$INSTDIR\sample.cat"
 	Delete "$INSTDIR\ttd.exe"
 
@@ -374,23 +368,6 @@ Function DisableBack
 	!insertmacro MUI_INSTALLOPTIONS_WRITE "ioSpecial.ini" "Settings" "BackEnabled" "0"
 WinNT:
 	ClearErrors
-FunctionEnd
-
-;----------------------------------------------------------------------------------
-; Custom page function to show notices for running OpenTTD (only for win32 systems)
-; We have extracted this custom page as Notice in the .onInit function
-Function ShowWarningsPage
-	Call GetWindowsVersion
-	Pop $R0
-	; Don't show the UNICODE notice if the installer is run on Win9x systems
-	StrCmp $R0 "win9x" 0 WinNT
-	Abort
-WinNT:
-	!insertmacro MUI_HEADER_TEXT "Installation Complete" "Important notices for OpenTTD usage."
-	!insertmacro MUI_INSTALLOPTIONS_EXTRACT_AS "notice.ini" "Notice"
-	!insertmacro MUI_INSTALLOPTIONS_INITDIALOG "Notice"
-	ClearErrors
-	!insertmacro MUI_INSTALLOPTIONS_SHOW
 FunctionEnd
 
 ;-------------------------------------------------------------------------------
