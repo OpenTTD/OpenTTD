@@ -54,8 +54,9 @@ if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
 	# Make sure we don't lock config.cache
 	cat config.cache | sed 's@\\ @\\\\ @g' > cache.tmp
 	sh cache.tmp
+	RET=$?
 	rm -f cache.tmp
-	exit $?
+	exit $RET
 fi
 
 set_default

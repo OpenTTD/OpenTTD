@@ -50,7 +50,9 @@ bool SQVM::ARITH_OP(SQUnsignedInteger op,SQObjectPtr &trg,const SQObjectPtr &o1,
 					res = i1 / i2;
 					break;
 				case '*': res = i1 * i2; break;
-				case '%': res = i1 % i2; break;
+				case '%': if(i2 == 0) { Raise_Error(_SC("modulo by zero")); return false; }
+					res = i1 % i2;
+					break;
 				default: res = 0xDEADBEEF;
 				}
 				trg = res;

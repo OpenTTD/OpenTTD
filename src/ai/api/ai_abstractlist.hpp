@@ -31,10 +31,11 @@ public:
 	static const bool SORT_DESCENDING = false;
 
 private:
-	AIAbstractListSorter *sorter;
-	SorterType sorter_type;
-	bool sort_ascending;
-	bool initialized;
+	AIAbstractListSorter *sorter; //!< Sorting algorithm
+	SorterType sorter_type;       //!< Sorting type
+	bool sort_ascending;          //!< Whether to sort ascending or descending
+	bool initialized;             //!< Whether an iteration has been started
+	int modifications;            //!< Number of modification that has been done. To prevent changing data while valuating.
 
 public:
 	typedef std::set<int32> AIItemList;                       //!< The list of items inside the bucket
@@ -251,6 +252,8 @@ public:
 	 * @param valuator_function The function which will be doing the valuation.
 	 * @param params The params to give to the valuators (minus the first param,
 	 *  which is always the index-value we are valuating).
+	 * @note You may not add, remove or change (setting the value of) items while
+	 *  valuating. You may also not (re)sort while valuating.
 	 * @note You can write your own valuators and use them. Just remember that
 	 *  the first parameter should be the index-value, and it should return
 	 *  an integer.
