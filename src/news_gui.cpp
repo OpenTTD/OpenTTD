@@ -254,7 +254,7 @@ struct NewsWindow : Window {
 				break;
 			}
 
-			default:
+			case NM_SMALL:
 				this->DrawWidgets();
 				if (!(this->ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
@@ -265,6 +265,8 @@ struct NewsWindow : Window {
 					DrawStringMultiLine(2, this->width - 2, 64, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				}
 				break;
+
+			default: NOT_REACHED();
 		}
 	}
 
@@ -443,7 +445,7 @@ static void ShowNewspaper(NewsItem *ni)
 			}
 			break;
 
-		default:
+		case NM_SMALL:
 			_news_type0_desc.top = top;
 			w = new NewsWindow(&_news_type0_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
@@ -451,6 +453,8 @@ static void ShowNewspaper(NewsItem *ni)
 					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			}
 			break;
+
+		default: NOT_REACHED();
 	}
 }
 
