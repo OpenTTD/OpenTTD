@@ -924,6 +924,18 @@ struct DepotWindow : Window {
 		_cursor.vehchain = false;
 	}
 
+	virtual void OnTimeout()
+	{
+		if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL)) {
+			this->RaiseWidget(DEPOT_WIDGET_SELL);
+			this->InvalidateWidget(DEPOT_WIDGET_SELL);
+		}
+		if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL_CHAIN)) {
+			this->RaiseWidget(DEPOT_WIDGET_SELL_CHAIN);
+			this->InvalidateWidget(DEPOT_WIDGET_SELL_CHAIN);
+		}
+	}
+
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
