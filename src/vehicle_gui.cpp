@@ -51,6 +51,7 @@ static GUIVehicleList::SortFunction VehicleModelSorter;
 static GUIVehicleList::SortFunction VehicleValueSorter;
 static GUIVehicleList::SortFunction VehicleLengthSorter;
 static GUIVehicleList::SortFunction VehicleTimeToLiveSorter;
+static GUIVehicleList::SortFunction VehicleTimetableDelaySorter;
 
 GUIVehicleList::SortFunction * const BaseVehicleListWindow::vehicle_sorter_funcs[] = {
 	&VehicleNumberSorter,
@@ -65,6 +66,7 @@ GUIVehicleList::SortFunction * const BaseVehicleListWindow::vehicle_sorter_funcs
 	&VehicleValueSorter,
 	&VehicleLengthSorter,
 	&VehicleTimeToLiveSorter,
+	&VehicleTimetableDelaySorter,
 };
 
 const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
@@ -80,6 +82,7 @@ const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
 	STR_SORT_BY_VALUE,
 	STR_SORT_BY_LENGTH,
 	STR_SORT_BY_LIFE_TIME,
+	STR_SORT_BY_TIMETABLE_DELAY,
 	INVALID_STRING_ID
 };
 
@@ -623,6 +626,13 @@ static int CDECL VehicleLengthSorter(const Vehicle * const *a, const Vehicle * c
 static int CDECL VehicleTimeToLiveSorter(const Vehicle * const *a, const Vehicle * const *b)
 {
 	int r = ClampToI32(((*a)->max_age - (*a)->age) - ((*b)->max_age - (*b)->age));
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
+}
+
+/** Sort vehicles by the timetable delay */
+static int CDECL VehicleTimetableDelaySorter(const Vehicle * const *a, const Vehicle * const *b)
+{
+	int r = (*a)->lateness_counter - (*b)->lateness_counter;
 	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
