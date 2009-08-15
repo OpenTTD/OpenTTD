@@ -110,6 +110,13 @@ bundle_bzip2: bundle
 	$(Q)cd "$(BUNDLES_DIR)/.bzip2" && tar -jc$(shell if test -n "$(VERBOSE)"; then echo 'v'; fi)f "$(BUNDLES_DIR)/$(BUNDLE_NAME).tar.bz2" "$(BUNDLE_NAME)"
 	$(Q)rm -rf   "$(BUNDLES_DIR)/.bzip2"
 
+bundle_lzma: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).tar.lzma'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.lzma/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.lzma/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.lzma" && tar --lzma -c$(shell if test -n "$(VERBOSE)"; then echo 'v'; fi)f "$(BUNDLES_DIR)/$(BUNDLE_NAME).tar.lzma" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.lzma"
+
 bundle_lha: bundle
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).lha'
 	$(Q)mkdir -p "$(BUNDLES_DIR)/.lha/$(BUNDLE_NAME)"
