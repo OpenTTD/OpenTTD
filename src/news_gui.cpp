@@ -123,25 +123,25 @@ struct NewsSubtypeData {
  * Data common to all news items of a given subtype (actual data)
  */
 static const NewsSubtypeData _news_subtype_data[] = {
-	/* type,               display_mode, flags,                  callback */
-	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,     NULL                    }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_VIEWPORT, NULL                    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NM_SMALL,    NF_VIEWPORT, NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,     DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NM_SMALL,    NF_VIEWPORT, NULL                    }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,     NULL                    }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,     NULL                    }, ///< NS_GENERAL
+	/* type,               display_mode, flags,              callback */
+	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_NONE, NULL                    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_NONE, NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         NM_THIN,     NF_NONE, NULL                    }, ///< NS_ACCIDENT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NM_SMALL,    NF_NONE, NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE, DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NM_SMALL,    NF_NONE, NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_GENERAL
 };
 
 assert_compile(lengthof(_news_subtype_data) == NS_END);
@@ -231,7 +231,7 @@ struct NewsWindow : Window {
 				SetDParam(0, this->ni->date);
 				DrawString(2, this->width - 2, 1, STR_DATE_LONG_SMALL, TC_FROMSTRING, SA_RIGHT);
 
-				if (!(this->ni->flags & NF_VIEWPORT)) {
+				if (display_mode == NM_NORMAL) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 					DrawStringMultiLine(2, this->width - 2, 20, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				} else {
@@ -256,14 +256,9 @@ struct NewsWindow : Window {
 
 			case NM_SMALL:
 				this->DrawWidgets();
-				if (!(this->ni->flags & NF_VIEWPORT)) {
-					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, 278, 38, this->ni->string_id, SA_CENTER);
-				} else {
-					this->DrawViewport();
-					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, this->width - 2, 64, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
-				}
+				this->DrawViewport();
+				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				DrawStringMultiLine(2, this->width - 2, 64, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				break;
 
 			default: NOT_REACHED();
@@ -430,28 +425,22 @@ static void ShowNewspaper(NewsItem *ni)
 		case NM_NORMAL:
 			_normal_news_desc.top = top;
 			w = new NewsWindow(&_normal_news_desc, ni);
-			if (ni->flags & NF_VIEWPORT) {
-				InitializeWindowViewport(w, 2, 58, 426, 110,
-					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
-			}
 			break;
 
 		case NM_THIN:
 			_thin_news_desc.top = top;
 			w = new NewsWindow(&_thin_news_desc, ni);
-			if (ni->flags & NF_VIEWPORT) {
-				InitializeWindowViewport(w, 2, 58, 426, 70,
+
+			InitializeWindowViewport(w, 2, 58, 426, 70,
 					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
-			}
 			break;
 
 		case NM_SMALL:
 			_smalll_news_desc.top = top;
 			w = new NewsWindow(&_smalll_news_desc, ni);
-			if (ni->flags & NF_VIEWPORT) {
-				InitializeWindowViewport(w, 3, 17, 274, 47,
+
+			InitializeWindowViewport(w, 3, 17, 274, 47,
 					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
-			}
 			break;
 
 		default: NOT_REACHED();

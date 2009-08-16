@@ -61,9 +61,9 @@ enum NewsSubtype {
  * News mode.
  */
 enum NewsMode {
-	NM_SMALL    = 0, ///< Show only a small popup informing us about vehicle age for example
-	NM_NORMAL   = 1, ///< Show a simple news message (height 170 pixels)
-	NM_THIN     = 2, ///< Show a simple news message (height 130 pixels)
+	NM_SMALL    = 0, ///< Show only a small popup informing us about vehicle age for example, with a viewport.
+	NM_NORMAL   = 1, ///< Show a simple news message without viewport (height 170 pixels).
+	NM_THIN     = 2, ///< Show a simple news message with a viewport (height 130 pixels).
 };
 
 /**
@@ -87,12 +87,11 @@ enum NewsReferenceType {
 
 /**
  * Various OR-able news-item flags.
- * note: NF_INCOLOUR is set automatically if needed
+ * @note #NF_INCOLOUR is set automatically if needed.
  */
 enum NewsFlag {
 	NF_NONE      = 0,      ///< No flag is set.
-	NF_VIEWPORT  = 1 << 1, ///< Does the news message have a viewport? (ingame picture of happening)
-	NF_INCOLOUR  = 1 << 2, ///< Show the newsmessage in colour, otherwise it defaults to black & white
+	NF_INCOLOUR  = 1 << 0, ///< Show the newsmessage in colour, otherwise it defaults to black & white.
 };
 DECLARE_ENUM_AS_BIT_SET(NewsFlag);
 
