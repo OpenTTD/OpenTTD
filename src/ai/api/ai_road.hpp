@@ -134,6 +134,7 @@ public:
 	  * center of the second tile.
 	 * @param tile_from The source tile.
 	 * @param tile_to The destination tile.
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @pre AIMap::IsValidTile(tile_from).
 	 * @pre AIMap::IsValidTile(tile_to).
 	 * @pre 'tile_from' and 'tile_to' are directly neighbouring tiles.
@@ -197,6 +198,7 @@ public:
 	 * Count how many neighbours are road.
 	 * @param tile The tile to check on.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @return 0 means no neighbour road; max value is 4.
 	 */
 	static int32 GetNeighbourRoadCount(TileIndex tile);
@@ -237,6 +239,7 @@ public:
 	 * @pre 'start' and 'end' are in a straight line, i.e.
 	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
 	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @exception AIError::ERR_ALREADY_BUILT
 	 * @exception AIError::ERR_LAND_SLOPED_WRONG
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
@@ -284,6 +287,7 @@ public:
 	 * @pre 'start' and 'end' are in a straight line, i.e.
 	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
 	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @exception AIError::ERR_ALREADY_BUILT
 	 * @exception AIError::ERR_LAND_SLOPED_WRONG
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
@@ -328,6 +332,7 @@ public:
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre AIMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @return Whether the road depot has been/can be build or not.
@@ -344,6 +349,7 @@ public:
 	 * @pre AIMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
@@ -367,6 +373,7 @@ public:
 	 * @pre AIMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
@@ -389,6 +396,7 @@ public:
 	 * @pre 'start' and 'end' are in a straight line, i.e.
 	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
 	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
@@ -406,6 +414,7 @@ public:
 	 * @pre 'start' and 'end' are in a straight line, i.e.
 	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
 	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
