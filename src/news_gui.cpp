@@ -178,10 +178,11 @@ enum NewsTypeWidgets {
 	NTW_VIEWPORT, ///< Viewport in window. Only used in type0-news.
 };
 
+/** Window class displaying a news item. */
 struct NewsWindow : Window {
-	uint16 chat_height;
-	NewsItem *ni;
-	static uint duration;
+	uint16 chat_height;   ///< Height of the chat window.
+	NewsItem *ni;         ///< News item to display.
+	static uint duration; ///< Remaining time for showing current news message (may only be accessed while a news item is displayed).
 
 	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(desc), ni(ni)
 	{
@@ -325,7 +326,7 @@ struct NewsWindow : Window {
 	}
 };
 
-/* static */ uint NewsWindow::duration; ///< Remaining time for showing current news message
+/* static */ uint NewsWindow::duration = 0; // Instance creation.
 
 
 static const Widget _normal_news_widgets[] = {
@@ -470,6 +471,7 @@ void InitNewsItemStructs()
 	_latest_news = NULL;
 	_forced_news = NULL;
 	_current_news = NULL;
+	NewsWindow::duration = 0;
 }
 
 /**
