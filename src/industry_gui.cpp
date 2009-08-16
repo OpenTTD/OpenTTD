@@ -664,7 +664,7 @@ public:
 		Industry *i = Industry::Get(this->window_number);
 		int line = this->editbox_line;
 
-		i->production_rate[line] = ClampU(atoi(str), 0, 255);
+		i->production_rate[line] = ClampU(atoi(str) / 8, 0, 255);
 		UpdateIndustryProduction(i);
 		this->SetDirty();
 	}
