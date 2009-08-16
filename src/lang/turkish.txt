@@ -260,6 +260,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Fiyat
 STR_SORT_BY_LENGTH                                              :Uzunluk
 STR_SORT_BY_LIFE_TIME                                           :Kalan ömür
+STR_SORT_BY_TIMETABLE_DELAY                                     :Zaman çizelgesi gecikmesi
 STR_SORT_BY_FACILITY                                            :İstasyon türü
 STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
 STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
@@ -2979,7 +2980,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Seçili 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Bir kargoyu tam yükle
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Mümkünse yükle
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Tüm kargoyu yükle
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Her kargoyu yükle
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Bir kargoyu yükle
 STR_ORDER_DROP_NO_LOADING                                       :Yükleme yapma
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Seçili emrin doldurma davranışını değiştir
 

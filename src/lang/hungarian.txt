@@ -292,6 +292,7 @@ STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Érték
 STR_SORT_BY_LENGTH                                              :Hossz
 STR_SORT_BY_LIFE_TIME                                           :Élettartamból hátralévő idő
+STR_SORT_BY_TIMETABLE_DELAY                                     :Menetrendi késés
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
 STR_SORT_BY_RATING_MAX                                          :Legtöbb áru szerint
@@ -331,7 +332,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülő
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj növeléshez/csökkentéshez, faültetéshez, stb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hang/zene beállítás
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír, üzenetek beállításai
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, konzol, MI debug, képmentések, az OpenTTD-ről
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Pálya betöltése, mentése, kilépés a szerkesztőből, kilépés
@@ -449,10 +450,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Előző üzenet
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-információ
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás Konzolra
-STR_ABOUT_MENU_AI_DEBUG                                         :MI nyomkövetés
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
+STR_ABOUT_MENU_AI_DEBUG                                         :MI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Óriás képmentés (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Óriás képmentés (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az  'OpenTTD'-ről
 ############ range ends here
 
@@ -758,7 +759,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lezuhant egy repülőgép!{}{COMMA} ember halt meg a zuhanás után {STATION} állomáson
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Repülő baleset!{}A repülőnek elfogyott az üzemanyaga, {COMMA} ember halt meg a zuhanásban!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Légibaleset!{}A repülőnek elfogyott az üzemanyaga, {COMMA} ember halt meg a lezuhanásban!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelinbaleset {STATION} közelében!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}'UFO' ütközés pusztított el egy közúti járművet!
@@ -771,7 +772,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Egy szállítási cég bajban van!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} csődöt jelent vagy el kell adni, ha teljesítménye nem nő hamarosan!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Szállítási cégek egyesülése!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}  céget felvásárolta {STRING}  {CURRENCY}-ért!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} céget felvásárolta {STRING} {CURRENCY}-ért!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Csőd!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} céget bezáratták a hitelezői és minden vagyonát elárverezték!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Új szállítási vállalatot alapítottak!
@@ -2654,7 +2655,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Új vill
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Új egysínű járművek
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Új MagLev járművek
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vasúti járművek
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Új vasúti járművek
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Új közúti járművek
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Új hajók
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Új repülőgépek
@@ -2718,7 +2719,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} jármű{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a járműveket
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a járműveket a vonatba/vonatból
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints egy járműre az adataihoz
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints egy hajóra az adataihoz
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
@@ -3253,7 +3254,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Sima tal
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Rossz irányba lejt a föld
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nem teheted ezt...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Előbb le kell rombolnod az épületet
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nem tisztíthatod meg a területet...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nem tisztíthatod meg ezt a területet...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...nem alkalmas rá a hely
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...már van itt
 STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING} tulajdona
@@ -3281,9 +3282,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... már
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nem változtathatod meg a cég nevét...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem változtathatod meg az elnök nevét...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY} a megengedett legnagyobb kölcsön
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY} a megengedett legnagyobb kölcsön.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nem kölcsönözhetsz több pénzt...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...már visszatörlesztetted az összeset
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...nincs visszafizetendő kölcsönöd
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} kellene hozzá
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nem törleszthetsz a kölcsönből...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...
@@ -3431,7 +3432,7 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}A csator
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ide nem lehet akvaduktot építeni...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...már van itt
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...már van itt fa
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Nem ültethetsz ide fát...
 
 # Bridge related errors
@@ -3535,9 +3536,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nem mód
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Úticél mozgatása nem lehetséges...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nem lehet átugrani a jelenlegi úticélt...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nem lehet a kiválasztott úticélra ugrani...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}a jármű nem mehet az összes állomásra
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}a jármű nem tud a megadott állomásra menni
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra menni
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}...a jármű nem tud az összes állomásra menni
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}...a jármű nem tud a megadott állomásra menni
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra menni
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nem lehet megosztani a menetrendet...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nem lehet másolni a menetrendet...

@@ -259,6 +259,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Sisa masa pakai
+STR_SORT_BY_TIMETABLE_DELAY                                     :Penundaan jadwal
 STR_SORT_BY_FACILITY                                            :Tipe Stasiun
 STR_SORT_BY_WAITING                                             :Nilai tunggu kargo
 STR_SORT_BY_RATING_MAX                                          :Rating kargo tertinggi

@@ -259,6 +259,7 @@ STR_SORT_BY_MODEL                                               :Malli
 STR_SORT_BY_VALUE                                               :Arvo
 STR_SORT_BY_LENGTH                                              :Pituus
 STR_SORT_BY_LIFE_TIME                                           :Jäljelläoleva elinikä
+STR_SORT_BY_TIMETABLE_DELAY                                     :Aikataulun viive
 STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Korkein rahtiluokitus
@@ -3222,7 +3223,7 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää....
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...maasto on sopimaton
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...se on jo rakennettu
-STR_ERROR_OWNED_BY                                              :{WHITE}...omistaja: {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}... omistaja: {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alueen omistaa toinen yhtiö
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nimen täytyy olla uniikki
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} on tiellä.

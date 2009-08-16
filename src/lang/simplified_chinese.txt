@@ -259,6 +259,7 @@ STR_SORT_BY_MODEL                                               :型号
 STR_SORT_BY_VALUE                                               :价值
 STR_SORT_BY_LENGTH                                              :长度
 STR_SORT_BY_LIFE_TIME                                           :剩余寿命年限
+STR_SORT_BY_TIMETABLE_DELAY                                     :晚点
 STR_SORT_BY_FACILITY                                            :车站类型
 STR_SORT_BY_WAITING                                             :等待的货物数量
 STR_SORT_BY_RATING_MAX                                          :车站中最高的货物评价
@@ -419,7 +420,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图 (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :大范围截图 (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图 (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 ############ range ends here
 
@@ -918,6 +919,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择�
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 文件{}未找到或不正确
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}关于基本图组的额外信息
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基础音效组
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}选择要使用的基础音效组
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}有关基础音效组的附加信息
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
@@ -1772,6 +1776,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 库
 STR_CONTENT_TYPE_SCENARIO                                       :场景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度图
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :基本音效
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下载中...

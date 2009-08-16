@@ -260,6 +260,7 @@ STR_SORT_BY_MODEL                                               :Modèle
 STR_SORT_BY_VALUE                                               :Valeur
 STR_SORT_BY_LENGTH                                              :Longueur
 STR_SORT_BY_LIFE_TIME                                           :Durée de vie restante
+STR_SORT_BY_TIMETABLE_DELAY                                     :Retard sur l'horaire
 STR_SORT_BY_FACILITY                                            :Type de station
 STR_SORT_BY_WAITING                                             :Marchandise en attente
 STR_SORT_BY_RATING_MAX                                          :Plus grande notation de marchandise
@@ -2557,7 +2558,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produit:
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produit: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production (multiple de 8, max. 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Train{P "" s}
@@ -2633,7 +2634,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Concu en: {GOLD}{NUM}{BLACK}Durée de vie: {GOLD}{COMMA} ans
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité Max.: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Vitesse: {GOLD}{VELOCITY}

@@ -259,6 +259,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
 STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Resterende levensverwachting
+STR_SORT_BY_TIMETABLE_DELAY                                     :Vertraging in dienstregeling
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Waarde van wachtende vracht
 STR_SORT_BY_RATING_MAX                                          :Hoogste vrachtwaardering
@@ -499,7 +500,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheden
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedrijfsprestatiescore (maximale score=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedrijfswaarde
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingsverhouding Vracht
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingsverhouding vracht
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dagen onderweg
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling voor het leveren van 10 eenheden (of 10,000 liter) aan vracht over een afstand van 20 vakjes
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schakel grafiek voor vrachttype aan/uit
@@ -2135,7 +2136,7 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Wegtunnel
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangende spoorbrug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stalen spoorbrug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantilever spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Gewapendbetonnen hangende spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Gewapend betonnen hangende spoorbrug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten spoorbrug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen spoorbrug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Kokervormige spoorbrug
@@ -2143,7 +2144,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Kokervormige sp
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangende wegbrug
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stalen vlakke wegbrug
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen cantilever wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Gewapendbetonnen hangende wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Gewapend betonnen hangende wegbrug
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten wegbrug
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen wegbrug
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Kokervormige wegbrug
@@ -2556,7 +2557,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Producee
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produceert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander productie
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander productie (veelvoud van 8, maximaal 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trein{P "" en}

@@ -385,6 +385,7 @@ STR_SORT_BY_MODEL                                               :Модель
 STR_SORT_BY_VALUE                                               :Стоимость
 STR_SORT_BY_LENGTH                                              :Длина
 STR_SORT_BY_LIFE_TIME                                           :Оставшийся срок службы
+STR_SORT_BY_TIMETABLE_DELAY                                     :Отставание от графика
 STR_SORT_BY_FACILITY                                            :Тип станции
 STR_SORT_BY_WAITING                                             :Кол-во товара на станции
 STR_SORT_BY_RATING_MAX                                          :Наивысший рейтинг
@@ -2716,7 +2717,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Прои
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Производит: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность (кратно 8, до 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поезд{P "" а ов}

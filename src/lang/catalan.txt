@@ -2556,7 +2556,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produeix
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produeix: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvia producció (múltiple de 8, fins a 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trens

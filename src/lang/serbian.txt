@@ -434,6 +434,7 @@ STR_SORT_BY_MODEL                                               :Modelu
 STR_SORT_BY_VALUE                                               :Vrednosti
 STR_SORT_BY_LENGTH                                              :Dužini
 STR_SORT_BY_LIFE_TIME                                           :Preostalom životnom veku
+STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje u rasporedu
 STR_SORT_BY_FACILITY                                            :Vrsti stanice
 STR_SORT_BY_WAITING                                             :Vrednosti tovara na čekanju
 STR_SORT_BY_RATING_MAX                                          :Najvišoj oceni tereta
@@ -451,7 +452,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziraj
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ubrzavanje igre
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcije
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sačuvaj poziciju, prekini igru, izađi
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži mapu, dodatne poglede, spisak znakova
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikazuje kartu, dodatne poglede, spisak znakova
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži popis naselja
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži spisak svih stanica kompanije
@@ -459,7 +460,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži opšte podatke kompanije
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tabele lige kompanija
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiranje izgradnje nove industrije, spisak svih industrija
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiranje izgradnje nove fabrike, spisak svih fabrika
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova kompanije
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži spisak svih drumskih vozila kompanije
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži spisak svih brodova kompanije
@@ -481,7 +482,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenarija
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pomeranje datuma početka za jednu godinu unapred
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikaži mape, popis naselja
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikazuje kartu, popis naselja
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generisanje reljefa
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generator naselja
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generator industrija
@@ -492,7 +493,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavlj
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sačuvaj scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenario
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku mapu
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku kartu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Napusti editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Napusti
@@ -516,13 +517,13 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transp
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Sačuvaj igru
-STR_FILE_MENU_LOAD_GAME                                         :Učitaj igru
+STR_FILE_MENU_LOAD_GAME                                         :Učitaj partiju
 STR_FILE_MENU_QUIT_GAME                                         :Napusti igru
 STR_FILE_MENU_EXIT                                              :Izađi
 ############ range ends here
 
 ############ range for map menu starts
-STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa sveta
+STR_MAP_MENU_MAP_OF_WORLD                                       :Karta sveta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatno gledište
 STR_MAP_MENU_SIGN_LIST                                          :Lista Znakova
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
@@ -548,8 +549,8 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljan pregle
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Spisak Industrija
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje izgradnje nove industrije
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Spisak fabrika
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje izgradnje nove fabrike
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -800,20 +801,20 @@ STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME}, vlasnik kompanije {COMPANY} je dostigao status '{STRING}'!
 
 # Smallmap window
-STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Karta - {STRING}
 
-STR_SMALLMAP_TYPE_CONTOURS                                      :Konture
+STR_SMALLMAP_TYPE_CONTOURS                                      :Reljef
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vozila
-STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrije
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :Fabrike
 STR_SMALLMAP_TYPE_ROUTES                                        :Rute
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetacija
 STR_SMALLMAP_TYPE_OWNERS                                        :Vlasnici
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Prikaži konture tla na mapi
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Prikaži vozila na mapi
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Prikaži industrije na mapi
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Prikaži transportne rute na mapi
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Prikaži vegetaciju na mapi
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Prikaži vlasnike zemljišta na mapi
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Prikazuje reljef na karti
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Prikazuje vozila na karti
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Prikazuje fabrike na karti
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Prikazuje putne rute na karti
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Prikazuje vegetaciju na karti
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Prikazuje kompanije na karti
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Putevi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Pruge
@@ -849,12 +850,12 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Pustinja
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sneg
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Uključi/isključi imena naselja na mapi
-STR_SMALLMAP_CENTER                                             :{BLACK}Pozicioniraj mapu na trenutnu poziciju
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Prikazuje imena naselja na karti
+STR_SMALLMAP_CENTER                                             :{BLACK}Pozicionira kartu na trenutnu poziciju
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sva zabranjena
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sva dozvoljena
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sva sakrivena
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sva prikazana
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Prikaži poslednju poruku ili izveštaj
@@ -882,8 +883,8 @@ STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Dolazak
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Dolazak prvog vozila na suparničku stanicu
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Udesi/nepogode
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informacije o kompaniji
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Otvaranje nove industrije
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zatvaranje industrije
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Otvaranje nove fabrike
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zatvaranje fabrike
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Promene u ekonomiji
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Promene u proizvodnji usluženih industrija
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Promene u proizvodnji industrija usluženih konkurencijom
@@ -936,7 +937,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Evropska Monetarna Unija!{}{}Euro je uveden kao jedina valuta za uobičajne transakcije u vašoj zemlji!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Svetska recesija!{}{}Finansijski eksperti se plaše najgoreg dok ekonomija slabi sve više!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesija završena!{}{}Preokret u trgovini pruža podršku industriji dok ekonomija jača!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesija završena!{}{}Preokret u trgovini pruža podršku industrijama dok ekonomija jača!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} povećava proizvodnju!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Pronađena nova žila uglja u {INDUSTRY}!{}Očekuje se duplo veća proizvodnja!
@@ -1148,7 +1149,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sačuvaj
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalan broj suparnika: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Broj naselja: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Broj industrija: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Broj fabrika: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimalna početna pozajmica: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Početna interesna kamata: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Troškovi održavanja vozila: {ORANGE}{STRING}
@@ -1281,7 +1282,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazi
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator zemljišta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalni
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Neveća udaljenost Naftnih Rafinerija od ivica mape {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Neveća udaljenost Naftnih Rafinerija od ivica terena {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Nivo snežnog pokrivača: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Vrste terena (samo za TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravničarski
@@ -1292,11 +1293,11 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakav
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalan
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređen
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija visinske mape: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija visinske karte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Suprotno okretanju skazaljke na satu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ka okretanju skazaljke na satu
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visina ravne mape je: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Dozvoljena izmena reljefa na ivicama mape: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visina ravnog terena je: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Dozvoljena izmena reljefa na ivicama terena: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedan ili više sektora na severnoj ivici nije prazan
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedn ili više sektora na jednoj od ivica nije voda
 
@@ -1312,8 +1313,8 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :Samo sopstvene
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Svih
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Slanje poruka svojoj ekipi sa <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Uloga točkića na mišu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Promena velicine mape
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Pomeranje mape
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Promena uvećanja terena
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Pomeranje terena
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nikakva
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Osetljivost točkića: {ORANGE}{STRING}
 
@@ -1455,20 +1456,20 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalno {BLU
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nepreporučuje se)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-veličina mape: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-veličina mape: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-veličina terena: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-veličina terena: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promena vrednosti
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nova igra
-STR_INTRO_LOAD_GAME                                             :{BLACK}Učitaj igru
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Igraj scenario
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Igra Visina
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor scenarija
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Mrežna igra
+STR_INTRO_NEW_GAME                                              :{BLACK}Nova Partija
+STR_INTRO_LOAD_GAME                                             :{BLACK}Učitavanje Partije
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Partija sa Scenarijom
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Partija sa Visinskom kartom
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor Scenarija
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Partija preko Mreže
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
 STR_INTRO_DIFFICULTY                                            :{BLACK}Težina igre: ({STRING})
@@ -1478,25 +1479,25 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak D
 STR_INTRO_AI_SETTINGS                                           :{BLACK}VI Podešavanja
 STR_INTRO_QUIT                                                  :{BLACK}Napusti
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitaj staru poziciju
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start jedan nov igra , pomoću jedan visina ace krajolik
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Započni novu igru, koristeći prethodno prilagođen scenario
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kreiraj svet/scenario u igri po svom ukusu
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Pokreće mrežnu igru sa više igrača
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitavanje stare pozicije
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pokreće novu partiju, koristeći visinsku kartu kao teren
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Započinje novu partiju, koristeći prethodno napravljen scenario
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kreiranje sveta/scenarija u igri po svom ukusu
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Pokreće mrežnu partiju sa više igrača
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Izbor umerenog klimatskog pojasa
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Izbor subpolarnog klimatskog pojasa
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izbor suptropskog klimatskog pojasa
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izbor 'zemlje igračaka'
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži opcije igre
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikaži opcije težine igre
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikazuje opcije igre
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikazuje opcije težine igre
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikazuje prozor sa detaljnim podešavanjima
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuje NewGRF podešavanja
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikazuje VI podešavanja
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napusti 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Izađi
@@ -1526,7 +1527,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Štiklir
 STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo ćete prevariti vaše saradnike. Imajte na umu da će takav loš postupak biti trajno upamćen.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Dodati još {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Upravljanje kompanijom: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklonite industrije, nepokretnosti): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklonite fabrike, nepokretnosti): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli mogu da se ukrštaju: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Moguća gradnja dok je pauzirano: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Veliki avioni se neće (često) rušiti kod malih aerodorma: {ORANGE} {STRING}
@@ -1646,8 +1647,8 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Igrači
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Priključeno igrača / najviše igrača{}Aktivnio kompanija / najviše kompanija
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Veličina mape
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Veličina mape u partiji{}Kliknite da bi pređali po veličini
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Veličina terena
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Veličina terena u partiji{}Klikom će se poređati po veličini
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Trenutni datum u partiji
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Godina
@@ -1662,7 +1663,7 @@ STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}PODACI 
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Igrača: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jezik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Klima: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Veličina mape: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Veličina terena: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzija servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Početni datum: {WHITE}{DATE_SHORT}
@@ -1694,8 +1695,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Naziv pa
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Naziv partije će se prikazati na spisku izbora mrežnih partija drugih igrača
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi lozinku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Odaberite mapu:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Koju mapu želite da igrate?
+STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Odaberite teren:
+STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Na kom terenu želite da igrate?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Nasumično generisanje nove igre
 
 STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
@@ -1715,7 +1716,7 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi ig
 STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Pokreni partiju
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnom mapom, ili scenarijom
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnim terenom, ili scenarijom
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Učitaj Partiju
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavlja ranije sačuvanu mrežnu partiju (proverite da li ste postavljeni igrač kao ranije)
 
@@ -1793,7 +1794,7 @@ STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Poveziva
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Spajam se..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Čekam odobrenje..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Čekam..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Skidam mapu..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Preuzimanje terena..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Obrađujem podatke..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Prijavljujem se..
 
@@ -1876,7 +1877,7 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Varanja 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opšta greška
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desinhronizacija
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :neuspešno učitavanje mape
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :neuspešno učitavanje terena
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :veza je izgubljena
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolna greška
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :neusaglašenost NewGRF-a
@@ -1927,7 +1928,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Otkazuje preuzimanje svih dodataka
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Unes filter teksta
 STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po ključu/nazivu:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po oznaci/nazivu:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Započinje preuzimanje odabranih dodataka
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna količina za preuzimanje: {WHITE}{BYTES}
@@ -1946,7 +1947,7 @@ STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Vrsta: 
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Veličina: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označeno zbog: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zavisnosti: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Ključne reči: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Oznake: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je napravljen bez podrške za "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... preuzimanje dodataka nije moguće!
 
@@ -2119,7 +2120,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Odaberit
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Izgradnja plovnih kanala
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni kanali
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Izgradite kanale.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Izgradite brane
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Izgradnja prevodnica
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Gradi brodski depo (za kupovinu i servisiranje brodova)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Gradi pristanište
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavite bovu kako bi služila kao putokaz
@@ -2183,9 +2184,9 @@ STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Postavi 
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Uvećaj područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generiši nov nasumičan teren
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Napravi novi scenarijo
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Napravi novi scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Obnovi reljef
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ukoni sve objekte u vlasništvu igrača na mapi
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Uklanja sve objekte u vlasništvu igrača sa terena
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Obnovi reljef
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li sigurno želite da uklonite sve objekte u vlasništvu igrača?
@@ -2197,7 +2198,7 @@ STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Podigni 
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nasumično naselje
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Izgradi naselje na nasumičnoj lokaciji
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mnogo nasumičnih naselja
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popunite mapu sa nasumično rasporđenim naseljima
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popunjava teren sa nasumično rasporđenim naseljima
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Veličina naselja:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Malo
@@ -2219,8 +2220,8 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Slučaja
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansiranje izgradnje nove industrije
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Izaberite odgovarajuću fabriku sa spiska
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mnogo nasumičnih industrija
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Popunite mapu sa nasumično rasporđenim industrijama
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mnogo nasumičnih fabrika
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Popunjava teren sa nasumično rasporđenim fabrikama
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Trošak: {YELLOW}{CURRENCY}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Istraži
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Izgradi
@@ -2304,7 +2305,7 @@ STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Putanja
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Voda
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
-STR_LAI_WATER_DESCRIPTION_LOCK                                  :Brana
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Prevodnica
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Reka
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Obala
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Brodski hangar
@@ -2345,10 +2346,10 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Sačuvaj poziciju
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Učitaj igru
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Učitavanje Partije
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sačuvaj scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj scenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Visinske mape
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Visinske karte
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako bi ste otišli u uobičajni direktorijum za čuvanje pozicije
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} slobodno
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Spisak diskova, direktorijuma, i fajlova sa sačuvanim pozicijama
@@ -2362,7 +2363,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Unesite 
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Svet stvaranje
-STR_MAPGEN_MAPSIZE                                              :{BLACK}Veličina mapa:
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Veličina terena:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Broj naselja:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -2382,19 +2383,19 @@ STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Postepen
 STR_MAPGEN_GENERATE                                             :{WHITE}Generiši
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Ivice mape:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Ivice terena:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Severozapad
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Severoistok
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Jugoistok
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Jugozapad
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Zemlja
-STR_MAPGEN_BORDER_WATER                                         :{BLACK}Voda
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Kopno
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}More
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Proizvoljno
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Proizvoljno
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Podešeno
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotacija visinske mape:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv visinske mape:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotacija visinske karte:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv visinske karte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Unos nove vrednosti klice
@@ -2586,7 +2587,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Nema
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Odobrene subvencije:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} između stanica {STRING} i {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na uslugu centrira pogled na industriju/naselje
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom na uslugu prebacuje se na lokaciju fabrike/naselja
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena stanica - klik na ime centrira pogled na stanicu
@@ -2723,7 +2724,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena fa
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Prošlomesečna proizvodnja:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportovano)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centriraj glavni pogled na lokaciju industrije
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuje na lokaciju fabrike
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potražuje: {YELLOW}{STRING}{STRING}
@@ -3381,7 +3382,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritet poda
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partija je sačuvana u vreziji bez podrške za tramvaje. Svi tramvaji su uklonjeni.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kreiranje mape otkazano...{}...nepostoje prikladne lokacije za naselja
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kreiranje terena otkazano...{}...nepostoje prikladne lokacije za naselja
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...nepostoji nijedno naselje u ovom scenariju
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ne može se naparaviti reljef iz PNG slike...
@@ -3393,7 +3394,7 @@ STR_ERROR_BMPMAP                                                :{WHITE}Ne može
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ne može se preraditi vrsta slike.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preterana promena veličine mape nije preporučljiva. Da li da se nastavi generisanje?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preterana promena veličine karte nije preporučljiva. Da li da se nastavi generisanje?
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je snimljena pod imenom '{STRING}'
@@ -3404,8 +3405,8 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Poruka
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING} je poslao/la poruku
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Izvan mape
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Previše je blizu ivici mape
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Izvan terena
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Previše je blizu ivici terena
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nema dovoljno novca - potrebno je {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Neophodno je ravno tlo
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren je nagnut na lošu stranu
@@ -3455,15 +3456,15 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ova komp
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne mogu da napravim naselje
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Naselje nije moguće preimenovati...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Ovde je nemoguće izgraditi naselje...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...previše blizu ivici mape
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...previše blizu ivici terena
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...drugo naselje je previše blizu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...previše naselja
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...više ne postoji slobodnog prostora na mapi
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...više ne postoji slobodnog prostora na terenu
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Naselje neće graditi kolovoze. Možete uključiti gradnju kolovoza preko Napredna Podešavalja->Ekonomija->Naselja.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Putni radovi u toku
 
 # Industry related errors
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemoguće generisanje industrija...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemoguće generisanje fabrika...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE} {STRING} je nemoguće izgraditi ovde...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nije moguće ovde izgraditi taj tip industrije...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...previše blizu druge fabrike
@@ -3473,7 +3474,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...dozvo
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...gradnja je dozvoljena samo u pustinjskim oblastima
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...gradnja je dozvoljena samo u naseljima
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...može biti postavljeno samo blizu ivica mape
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...može biti postavljeno samo blizu ivica terena
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...šuma može biti posađena samo iznad linije snega
 
 # Station construction related errors
@@ -3581,7 +3582,7 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nemoguć
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovde je nemoguća izgradnja kanala...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovde je nemoguća izgradnja brane...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovde nije moguće izgraditi prevodnicu...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovde je nemoguće postavljanje reke...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...mora biti izgrađen na vodi
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Ne može se graditi na vodi
@@ -3606,7 +3607,7 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nije mog
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lokacija neadekvatna za ulaz tunela
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Potrebno je prvo uništiti tunel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Drugi tunel je na putu
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio van okvira mape
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio van okvira terena
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nije moguće iskopati drugi kraj tunela
 
 # Unmovable related errors
