@@ -359,7 +359,7 @@ public:
 
 	/**
 	 * Builds a drive-through road bus or truck station.
-	 * @param tile Place to build the depot.
+	 * @param tile Place to build the station.
 	 * @param front A tile on the same axis with 'tile' as the station shall be oriented.
 	 * @param road_veh_type Whether to build a truck or bus station.
 	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
