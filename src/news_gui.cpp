@@ -190,7 +190,6 @@ struct NewsWindow : Window {
 		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
 		this->chat_height = (w != NULL) ? w->height : 0;
 
-		this->ni = _forced_news == NULL ? _current_news : _forced_news;
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
 		this->FindWindowPlacementAndResize(desc);
