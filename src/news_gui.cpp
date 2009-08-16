@@ -193,6 +193,24 @@ struct NewsWindow : Window {
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
 		this->FindWindowPlacementAndResize(desc);
+
+		const NewsMode display_mode = _news_subtype_data[this->ni->subtype].display_mode;
+		switch (display_mode) {
+			case NM_NORMAL:
+				break;
+
+			case NM_THIN:
+				InitializeWindowViewport(this, 2, 58, 426, 70,
+					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
+				break;
+
+			case NM_SMALL:
+				InitializeWindowViewport(this, 3, 17, 274, 47,
+					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	void DrawNewsBorder()
@@ -430,17 +448,11 @@ static void ShowNewspaper(NewsItem *ni)
 		case NM_THIN:
 			_thin_news_desc.top = top;
 			w = new NewsWindow(&_thin_news_desc, ni);
-
-			InitializeWindowViewport(w, 2, 58, 426, 70,
-					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			break;
 
 		case NM_SMALL:
 			_smalll_news_desc.top = top;
 			w = new NewsWindow(&_smalll_news_desc, ni);
-
-			InitializeWindowViewport(w, 3, 17, 274, 47,
-					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			break;
 
 		default: NOT_REACHED();
