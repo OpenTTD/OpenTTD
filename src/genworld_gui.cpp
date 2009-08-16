@@ -789,6 +789,17 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		}
 	}
 
+	virtual void OnTimeout()
+	{
+		static const int raise_widgets[] = {GLAND_START_DATE_DOWN, GLAND_START_DATE_UP, GLAND_SNOW_LEVEL_UP, GLAND_SNOW_LEVEL_DOWN, WIDGET_LIST_END};
+		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
+			if (this->IsWidgetLowered(*widget)) {
+				this->RaiseWidget(*widget);
+				this->InvalidateWidget(*widget);
+			}
+		}
+	}
+
 	virtual void OnMouseLoop()
 	{
 		this->HandleEditBox(GLAND_RANDOM_EDITBOX);
