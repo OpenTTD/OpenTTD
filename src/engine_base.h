@@ -49,7 +49,22 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	Engine(VehicleType type, EngineID base);
 	~Engine();
 
-	CargoID GetDefaultCargoType() const;
+	/**
+	 * Determines the default cargo type of an engine.
+	 *
+	 * Usually a valid cargo is returned, even though the vehicle has zero capacity, and can therefore not carry anything. But the cargotype is still used
+	 * for livery selection etc..
+	 *
+	 * Vehicles with CT_INVALID as default cargo are usally not available, but it can appear as default cargo of articulated parts.
+	 *
+	 * @return The default cargo type.
+	 * @see CanCarryCargo
+	 */
+	CargoID GetDefaultCargoType() const
+	{
+		return this->info.cargo_type;
+	}
+
 	bool CanCarryCargo() const;
 	uint GetDisplayDefaultCapacity() const;
 	Money GetRunningCost() const;

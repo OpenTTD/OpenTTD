@@ -44,7 +44,6 @@ struct RailVehicleInfo {
 	byte running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
 	byte capacity;                  ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
-	CargoID cargo_type;
 	byte ai_rank;
 	byte ai_passenger_only;         ///< Bit value to tell AI that this engine is for passenger use only
 	uint16 pow_wag_power;           ///< Extra power applied to consist if wagon should be powered
@@ -59,7 +58,6 @@ struct ShipVehicleInfo {
 	byte image_index;
 	byte cost_factor;
 	uint16 max_speed;
-	CargoID cargo_type;
 	uint16 capacity;
 	byte running_cost;
 	SoundID sfx;
@@ -95,7 +93,6 @@ struct RoadVehicleInfo {
 	SoundID sfx;
 	uint16 max_speed;        ///< Maximum speed in mph/3.2 units
 	byte capacity;
-	CargoID cargo_type;
 	uint8 weight;            ///< Weight in 1/4t units
 	uint8 power;             ///< Power in 10hp units
 	uint8 tractive_effort;   ///< Coefficient of tractive effort
@@ -112,6 +109,7 @@ struct EngineInfo {
 	byte decay_speed;
 	byte load_amount;
 	byte climates;
+	CargoID cargo_type;
 	uint32 refit_mask;
 	byte refit_cost;
 	byte misc_flags;

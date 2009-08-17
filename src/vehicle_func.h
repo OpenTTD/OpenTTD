@@ -36,7 +36,6 @@ void ResetVehiclePosHash();
 void ResetVehicleColourMap();
 
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
-CargoID FindFirstRefittableCargo(EngineID engine_type);
 CommandCost GetRefitCost(EngineID engine_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);

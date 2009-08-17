@@ -687,23 +687,6 @@ bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 	return HasBit(EngInfo(engine_type)->refit_mask, cid_to);
 }
 
-/** Find the first cargo type that an engine can be refitted to.
- * @param engine_type Which engine to find cargo for.
- * @return A climate dependent cargo type. CT_INVALID is returned if not refittable.
- */
-CargoID FindFirstRefittableCargo(EngineID engine_type)
-{
-	uint32 refit_mask = EngInfo(engine_type)->refit_mask;
-
-	if (refit_mask != 0) {
-		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			if (HasBit(refit_mask, cid)) return cid;
-		}
-	}
-
-	return CT_INVALID;
-}
-
 /** Learn the price of refitting a certain engine
  * @param engine_type Which engine to refit
  * @return Price for refitting

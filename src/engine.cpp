@@ -120,36 +120,6 @@ Engine::~Engine()
 }
 
 /**
- * Determines the default cargo type of an engine.
- *
- * Usually a valid cargo is returned, even though the vehicle has zero capacity, and can therefore not carry anything. But the cargotype is still used
- * for livery selection etc..
- *
- * Vehicles with CT_INVALID as default cargo are usally not available, but it can appear as default cargo of articulated parts.
- *
- * @return The default cargo type.
- * @see CanCarryCargo
- */
-CargoID Engine::GetDefaultCargoType() const
-{
-	switch (this->type) {
-		case VEH_TRAIN:
-			return this->u.rail.cargo_type;
-
-		case VEH_ROAD:
-			return this->u.road.cargo_type;
-
-		case VEH_SHIP:
-			return this->u.ship.cargo_type;
-
-		case VEH_AIRCRAFT:
-			return FindFirstRefittableCargo(this->index);
-
-		default: NOT_REACHED();
-	}
-}
-
-/**
  * Determines whether an engine can carry something.
  * A vehicle cannot carry anything if its capacity is zero, or none of the possible cargos is available in the climate.
  * @return true if the vehicle can carry something.

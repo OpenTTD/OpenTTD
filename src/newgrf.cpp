@@ -614,12 +614,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 ctype = grf_load_byte(&buf);
 
 				if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
-					rvi->cargo_type = ctype;
+					ei->cargo_type = ctype;
 				} else if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
-					rvi->cargo_type = CT_INVALID;
+					ei->cargo_type = CT_INVALID;
 				} else {
-					rvi->cargo_type = CT_INVALID;
+					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
 				}
 			} break;
@@ -815,11 +815,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 cargo = grf_load_byte(&buf);
 
 				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
-					rvi->cargo_type = cargo;
+					ei->cargo_type = cargo;
 				} else if (cargo == 0xFF) {
-					rvi->cargo_type = CT_INVALID;
+					ei->cargo_type = CT_INVALID;
 				} else {
-					rvi->cargo_type = CT_INVALID;
+					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
 			} break;
@@ -937,11 +937,11 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 cargo = grf_load_byte(&buf);
 
 				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
-					svi->cargo_type = cargo;
+					ei->cargo_type = cargo;
 				} else if (cargo == 0xFF) {
-					svi->cargo_type = CT_INVALID;
+					ei->cargo_type = CT_INVALID;
 				} else {
-					svi->cargo_type = CT_INVALID;
+					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
 			} break;
@@ -5751,32 +5751,9 @@ static void CalculateRefitMasks()
 		ei->refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
-		 * cargo type. Apparently cargo_type isn't a common property... */
-		switch (e->type) {
-			default: NOT_REACHED();
-			case VEH_AIRCRAFT:
-				if (FindFirstRefittableCargo(engine) == CT_INVALID) ei->climates = 0x80;
-				break;
-
-			case VEH_TRAIN: {
-				RailVehicleInfo *rvi = &e->u.rail;
-				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
-				if (rvi->cargo_type == CT_INVALID) ei->climates = 0x80;
-				break;
-			}
-			case VEH_ROAD: {
-				RoadVehicleInfo *rvi = &e->u.road;
-				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
-				if (rvi->cargo_type == CT_INVALID) ei->climates = 0x80;
-				break;
-			}
-			case VEH_SHIP: {
-				ShipVehicleInfo *svi = &e->u.ship;
-				if (svi->cargo_type == CT_INVALID) svi->cargo_type = FindFirstRefittableCargo(engine);
-				if (svi->cargo_type == CT_INVALID) ei->climates = 0x80;
-				break;
-			}
-		}
+		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
+		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
+		if (ei->cargo_type == CT_INVALID) ei->climates = 0x80;
 	}
 }
 
