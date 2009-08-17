@@ -1171,7 +1171,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ver vías reservadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Mantener activas las herramientas de construcción tras su uso: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Costos de grupo en la ventana de finanzas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar costes en la ventana de finanzas: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}

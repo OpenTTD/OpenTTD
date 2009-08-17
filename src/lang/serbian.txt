@@ -493,7 +493,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavlj
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sačuvaj scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenario
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku kartu
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj elevacionu kartu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Napusti editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Napusti
@@ -1293,7 +1293,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakav
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalan
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređen
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija visinske karte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija elevacione karte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Suprotno okretanju skazaljke na satu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ka okretanju skazaljke na satu
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visina ravnog terena je: {ORANGE}{STRING}
@@ -1467,7 +1467,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova Partija
 STR_INTRO_LOAD_GAME                                             :{BLACK}Učitavanje Partije
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Partija sa Scenarijom
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Partija sa Visinskom kartom
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Partija sa Elevacionom kartom
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor Scenarija
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Partija preko Mreže
 
@@ -1481,7 +1481,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Napusti
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitavanje stare pozicije
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pokreće novu partiju, koristeći visinsku kartu kao teren
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pokreće novu partiju, koristeći elevacionu kartu kao teren
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Započinje novu partiju, koristeći prethodno napravljen scenario
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kreiranje sveta/scenarija u igri po svom ukusu
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Pokreće mrežnu partiju sa više igrača
@@ -1585,7 +1585,7 @@ STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izbor mu
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Žensko
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Izbor ženskog lica
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Novo lice
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generiši novo lice
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Nasumično izabira novo lice
 STR_FACE_ADVANCED                                               :{BLACK}Napredno
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Napredni odabir lica.
 STR_FACE_SIMPLE                                                 :{BLACK}Jednostavno
@@ -1957,7 +1957,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :VI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :VI biblioteke
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Elevaciona karta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Osnovni zvukovi
 
 # Content downloading progress window
@@ -2183,7 +2183,7 @@ STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiš
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Postavi predajnik
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Uvećaj područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji područje koje treba sniziti/povisiti
-STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generiši nov nasumičan teren
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Pravi zemljište nasumičnog reljefa
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Napravi novi scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Obnovi reljef
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Uklanja sve objekte u vlasništvu igrača sa terena
@@ -2349,7 +2349,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Sačuvaj
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Učitavanje Partije
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sačuvaj scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj scenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Visinske karte
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Elevacione karte
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako bi ste otišli u uobičajni direktorijum za čuvanje pozicije
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} slobodno
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Spisak diskova, direktorijuma, i fajlova sa sačuvanim pozicijama
@@ -2380,7 +2380,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorita
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivo mora:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Postepenost:
-STR_MAPGEN_GENERATE                                             :{WHITE}Generiši
+STR_MAPGEN_GENERATE                                             :{WHITE}Napravi
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Ivice terena:
@@ -2394,8 +2394,8 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Proizvol
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Proizvoljno
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Podešeno
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotacija visinske karte:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv visinske karte:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Orjentacija elevacione karte:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv elevacione karte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Unos nove vrednosti klice
@@ -2405,7 +2405,7 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Promena 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Vrsta scenarija
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Ravan teren
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generiše ravan teren
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Postavlja ravano zemljište
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Proizvoljan oblik terena
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Visina ravnog terena:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Smanjuje visinu ravnog terena za jedan

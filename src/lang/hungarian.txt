@@ -452,7 +452,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-inform
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Óriás képmentés (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az  'OpenTTD'-ről
 ############ range ends here
@@ -2591,7 +2591,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: 
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása (8-tól 2040-ig)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} vonatai - {COMMA}

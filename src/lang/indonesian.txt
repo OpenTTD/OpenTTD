@@ -2557,7 +2557,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Menghasi
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi (kelipatan 8, hingga 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Kereta Api
