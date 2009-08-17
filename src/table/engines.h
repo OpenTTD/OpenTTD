@@ -325,7 +325,6 @@ static const EngineInfo _orig_engine_info[] = {
 	MA( 23832,  20,  20,  99,       Y), // 252 Flashbang Wizzer
 	MA( 13575,  20,  20,  40, T|A|S  ), // 253 Tricario Helicopter
 	MA( 28215,  20,  20,  30, T|A|S  ), // 254 Guru X2 Helicopter
-	MK( 13575,  20,  20,  99,       Y), // 255
 };
 #undef Y
 #undef S
