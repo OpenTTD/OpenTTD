@@ -1113,7 +1113,7 @@ extern "C" {
 #  define LZO_SIZEOF___INT64        8
 #elif defined(LZO_ARCH_I386) && defined(LZO_CC_WATCOMC) && (__WATCOMC__ >= 1100)
 #  define LZO_SIZEOF___INT64        8
-#elif definedLZO_CC_WATCOMC) && defined(_INTEGRAL_MAX_BITS) && (_INTEGRAL_MAX_BITS == 64)
+#elif defined(LZO_CC_WATCOMC) && defined(_INTEGRAL_MAX_BITS) && (_INTEGRAL_MAX_BITS == 64)
 #  define LZO_SIZEOF___INT64        8
 #elif (defined(LZO_OS_OS400) || defined(__OS400__)) && defined(__LLP64_IFC__)
 #  define LZO_SIZEOF_LONG_LONG      8
