@@ -44,7 +44,6 @@ struct RailVehicleInfo {
 	byte running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
 	byte capacity;                  ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
-	byte ai_rank;
 	byte ai_passenger_only;         ///< Bit value to tell AI that this engine is for passenger use only
 	uint16 pow_wag_power;           ///< Extra power applied to consist if wagon should be powered
 	byte pow_wag_weight;            ///< Extra weight applied to consist if wagon should be powered

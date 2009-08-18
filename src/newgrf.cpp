@@ -633,7 +633,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x18: // AI rank
-				rvi->ai_rank = grf_load_byte(&buf);
+				grfmsg(2, "RailVehicleChangeInfo: Property 0x18 'AI rank' not used by NoAI, ignored.");
+				grf_load_byte(&buf);
 				break;
 
 			case 0x19: { // Engine traction type
