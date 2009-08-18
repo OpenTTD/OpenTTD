@@ -202,10 +202,8 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
  * the intialization of the windows and caches quite some bugs
  * had been made.
  * Moving this out of there is both cleaner and less bug-prone.
- *
- * @return true if everything went according to plan, otherwise false.
  */
-static bool InitializeWindowsAndCaches()
+static void InitializeWindowsAndCaches()
 {
 	/* Initialize windows */
 	ResetWindowSystem();
@@ -239,8 +237,6 @@ static bool InitializeWindowsAndCaches()
 	UpdateAirportsNoise();
 
 	CheckTrainsLengths();
-
-	return true;
 }
 
 typedef void (CDECL *SignalHandlerPointer)(int);
@@ -1910,10 +1906,10 @@ bool AfterLoadGame()
 
 	GamelogPrintDebug(1);
 
-	bool ret = InitializeWindowsAndCaches();
+	InitializeWindowsAndCaches();
 	/* Restore the signals */
 	ResetSignalHandlers();
-	return ret;
+	return true;
 }
 
 /** Reload all NewGRF files during a running game. This is a cut-down
