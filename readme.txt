@@ -1,5 +1,5 @@
 OpenTTD README
-Last updated:    2009-08-01
+Last updated:    2009-08-18
 Release version: 0.7.2
 ------------------------------------------------------------------------
 
@@ -480,7 +480,7 @@ Inactive Developers:
   Tamás Faragó (Darkvater)       - Ex-Lead coder
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
   Jonathan Coome (Maedhros)      - High priest of the NewGRF Temple
-  Attila Bán (MiHaMiX)           - WebTranslator, Nightlies, Wiki and bugtracker host
+  Attila Bán (MiHaMiX)           - WebTranslator 1 and 2
   Christoph Mallon (Tron)        - Programmer, code correctness police
 
 Retired Developers:
@@ -488,7 +488,7 @@ Retired Developers:
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
   Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
   Benedikt Brüggemeier (skidd13) - Bug fixer and code reworker
-  Patric Stout (TrueLight)       - Programmer, webhoster (0.3 - pre0.7)
+  Patric Stout (TrueLight)       - Programmer (0.3 - pre0.7), sys op (active)
 
 Thanks to:
   Josef Drexler                  - For his great work on TTDPatch.
@@ -501,6 +501,7 @@ Thanks to:
   Christian Rosentreter (tokai)  - MorphOS / AmigaOS port
   Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
   Alberto Demichelis             - Squirrel scripting language
+  Markus F.X.J. Oberhumer        - MiniLZO for loading old savegames
   Michael Blunck                 - For revolutionizing TTD with awesome graphics
   George                         - Canal graphics
   David Dallaston (Pikka)        - Tram tracks
