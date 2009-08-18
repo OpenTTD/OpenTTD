@@ -126,6 +126,10 @@ endif
 
 # Find the deps via GCC. Rarely wrong, but a bit slow
 
+$(OBJS_C:%.o=%.d): %.d: $(SRC_DIR)/%.c $(FILE_DEP)
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.c=%.c)'
+	$(Q)$(CC_HOST) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
+
 $(OBJS_CPP:%.o=%.d): %.d: $(SRC_DIR)/%.cpp $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_HOST) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
@@ -213,6 +217,10 @@ endif
 
 
 # Compile all the files according to the targets
+
+$(OBJS_C): %.o: $(SRC_DIR)/%.c $(DEP_MASK) $(FILE_DEP)
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
+	$(Q)$(CC_HOST) $(CFLAGS) -c -o $@ $<
 
 $(OBJS_CPP): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'

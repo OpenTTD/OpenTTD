@@ -1178,7 +1178,7 @@ static void SlFixPointers()
  *******************************************/
 #define LZO_SIZE 8192
 
-#include "../minilzo.h"
+#include "../3rdparty/minilzo/minilzo.h"
 
 static size_t ReadLZO()
 {

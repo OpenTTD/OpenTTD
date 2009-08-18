@@ -35,7 +35,6 @@ ini.cpp
 landscape.cpp
 map.cpp
 md5.cpp
-minilzo.cpp
 misc.cpp
 mixer.cpp
 music.cpp
@@ -206,11 +205,9 @@ ini_type.h
 landscape.h
 landscape_type.h
 livery.h
-lzoconf.h
 map_func.h
 map_type.h
 md5.h
-minilzo.h
 mixer.h
 music.h
 namegen_func.h
@@ -533,6 +530,11 @@ table/tree_land.h
 table/unicode.h
 table/unmovable_land.h
 table/water_land.h
+
+# MiniLZO
+3rdparty/minilzo/lzoconf.h
+3rdparty/minilzo/minilzo.c
+3rdparty/minilzo/minilzo.h
 
 # Script
 script/fake_squirrel_types.hpp
