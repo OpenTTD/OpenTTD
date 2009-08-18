@@ -30,12 +30,8 @@ void SQAISubsidy_Register(Squirrel *engine) {
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetAwardedTo,        "GetAwardedTo",        2, ".i");
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetExpireDate,       "GetExpireDate",       2, ".i");
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetCargoType,        "GetCargoType",        2, ".i");
-	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::SourceIsTown,        "SourceIsTown",        2, ".i");
-	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetSource,           "GetSource",           2, ".i");
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetSourceType,       "GetSourceType",       2, ".i");
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetSourceIndex,      "GetSourceIndex",      2, ".i");
-	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::DestinationIsTown,   "DestinationIsTown",   2, ".i");
-	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetDestination,      "GetDestination",      2, ".i");
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetDestinationType,  "GetDestinationType",  2, ".i");
 	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetDestinationIndex, "GetDestinationIndex", 2, ".i");
 

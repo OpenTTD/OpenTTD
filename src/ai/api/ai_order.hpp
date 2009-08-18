@@ -404,11 +404,6 @@ public:
 	static bool SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
 
 	/**
-	 * @Deprecated, use SetOrderFlags instead.
-	 */
-	static bool ChangeOrder(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
-
-	/**
 	 * Move an order inside the orderlist
 	 * @param vehicle_id The vehicle to move the orders.
 	 * @param order_position_move The order to move.

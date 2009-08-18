@@ -28,13 +28,12 @@ void SQAISign_Register(Squirrel *engine) {
 
 	AIError::RegisterErrorMapString(AISign::ERR_SIGN_TOO_MANY_SIGNS, "ERR_SIGN_TOO_MANY_SIGNS");
 
-	SQAISign.DefSQStaticMethod(engine, &AISign::GetMaxSignID, "GetMaxSignID", 1, ".");
-	SQAISign.DefSQStaticMethod(engine, &AISign::IsValidSign,  "IsValidSign",  2, ".i");
-	SQAISign.DefSQStaticMethod(engine, &AISign::SetName,      "SetName",      3, ".is");
-	SQAISign.DefSQStaticMethod(engine, &AISign::GetName,      "GetName",      2, ".i");
-	SQAISign.DefSQStaticMethod(engine, &AISign::GetLocation,  "GetLocation",  2, ".i");
-	SQAISign.DefSQStaticMethod(engine, &AISign::BuildSign,    "BuildSign",    3, ".is");
-	SQAISign.DefSQStaticMethod(engine, &AISign::RemoveSign,   "RemoveSign",   2, ".i");
+	SQAISign.DefSQStaticMethod(engine, &AISign::IsValidSign, "IsValidSign", 2, ".i");
+	SQAISign.DefSQStaticMethod(engine, &AISign::SetName,     "SetName",     3, ".is");
+	SQAISign.DefSQStaticMethod(engine, &AISign::GetName,     "GetName",     2, ".i");
+	SQAISign.DefSQStaticMethod(engine, &AISign::GetLocation, "GetLocation", 2, ".i");
+	SQAISign.DefSQStaticMethod(engine, &AISign::BuildSign,   "BuildSign",   3, ".is");
+	SQAISign.DefSQStaticMethod(engine, &AISign::RemoveSign,  "RemoveSign",  2, ".i");
 
 	SQAISign.PostRegister(engine);
 }

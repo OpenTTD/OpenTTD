@@ -476,12 +476,6 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 	return AIOrder::_SetOrderFlags();
 }
 
-/* static */ bool AIOrder::ChangeOrder(VehicleID vehicle_id, OrderPosition order_position, AIOrder::AIOrderFlags order_flags)
-{
-	AILog::Warning("AIOrder::ChangeOrder is deprecated and will be removed soon, please use AIOrder::SetOrderFlags instead.");
-	return SetOrderFlags(vehicle_id, order_position, order_flags);
-}
-
 /* static */ bool AIOrder::MoveOrder(VehicleID vehicle_id, OrderPosition order_position_move, OrderPosition order_position_target)
 {
 	order_position_move   = AIOrder::ResolveOrderPosition(vehicle_id, order_position_move);

@@ -67,7 +67,7 @@ void SQAITile_Register(Squirrel *engine) {
 
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_HIGH);
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_LOW);
-	AIError::RegisterErrorMap(STR_ERROR_ALREADY_LEVELLED,              AITile::ERR_AREA_ALREADY_FLAT);
+	AIError::RegisterErrorMap(STR_ERROR_ALREADY_LEVELLED,        AITile::ERR_AREA_ALREADY_FLAT);
 	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE, AITile::ERR_EXCAVATION_WOULD_DAMAGE);
 
 	AIError::RegisterErrorMapString(AITile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
@@ -90,7 +90,6 @@ void SQAITile_Register(Squirrel *engine) {
 	SQAITile.DefSQStaticMethod(engine, &AITile::IsDesertTile,               "IsDesertTile",               2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetSlope,                   "GetSlope",                   2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetComplementSlope,         "GetComplementSlope",         2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetHeight,                  "GetHeight",                  2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetMinHeight,               "GetMinHeight",               2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetMaxHeight,               "GetMaxHeight",               2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetCornerHeight,            "GetCornerHeight",            3, ".ii");

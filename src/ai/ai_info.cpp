@@ -12,6 +12,7 @@
 #include "ai_scanner.hpp"
 #include "../settings_type.h"
 #include "../openttd.h"
+#include "../debug.h"
 
 AIConfigItem _start_date_config = {
 	"start_date",
@@ -40,6 +41,11 @@ AILibrary::~AILibrary()
 	info->base = ((AIScanner *)Squirrel::GetGlobalPointer(vm));
 
 	return 0;
+}
+
+static bool CheckAPIVersion(const char *api_version)
+{
+	return strcmp(api_version, "0.7") == 0 || strcmp(api_version, "0.8") == 0;
 }
 
 /* static */ SQInteger AIInfo::Constructor(HSQUIRRELVM vm)
@@ -72,6 +78,16 @@ AILibrary::~AILibrary()
 	} else {
 		info->use_as_random = true;
 	}
+	/* Try to get the API version the AI is written for. */
+	if (info->engine->MethodExists(*info->SQ_instance, "GetAPIVersion")) {
+		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version)) return SQ_ERROR;
+		if (!CheckAPIVersion(info->api_version)) {
+			DEBUG(ai, 1, "Loading info.nut from (%s.%d): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
+			return SQ_ERROR;
+		}
+	} else {
+		info->api_version = strdup("0.7");
+	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, NULL);
@@ -86,6 +102,7 @@ AILibrary::~AILibrary()
 	SQUserPointer instance;
 	sq_getinstanceup(vm, 2, &instance, 0);
 	AIInfo *info = (AIInfo *)instance;
+	info->api_version = NULL;
 
 	SQInteger res = AIFileInfo::Constructor(vm, info);
 	if (res != 0) return res;
@@ -116,6 +133,7 @@ AIInfo::~AIInfo()
 		}
 	}
 	this->config_list.clear();
+	free((void*)this->api_version);
 }
 
 bool AIInfo::CanLoadFromVersion(int version) const

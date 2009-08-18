@@ -70,27 +70,6 @@ public:
 	static CargoID GetCargoType(SubsidyID subsidy_id);
 
 	/**
-	 * Is the source of the subsidy a town or an industry.
-	 * @param subsidy_id The SubsidyID to check.
-	 * @pre IsValidSubsidy(subsidy_id) && !IsAwarded(subsidy_id).
-	 * @return True if the source is a town, false if it is an industry.
-	 * @deprecated Use GetSourceType() instead.
-	 */
-	static bool SourceIsTown(SubsidyID subsidy_id);
-
-	/**
-	 * Return the source TownID/IndustryID/StationID the subsidy is for.
-	 * \li IsAwarded(subsidy_id) -> return INVALID_STATION.
-	 * \li !IsAwarded(subsidy_id) && SourceIsTown(subsidy_id) -> return the TownID.
-	 * \li !IsAwarded(subsidy_id) && !SourceIsTown(subsidy_id) -> return the IndustryID.
-	 * @param subsidy_id The SubsidyID to check.
-	 * @pre IsValidSubsidy(subsidy_id).
-	 * @return One of TownID/IndustryID/INVALID_STATION.
-	 * @deprecated Use GetSourceIndex() instead.
-	 */
-	static int32 GetSource(SubsidyID subsidy_id);
-
-	/**
 	 * Returns the type of source of subsidy.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
@@ -107,27 +86,6 @@ public:
 	 * @return One of TownID/IndustryID.
 	 */
 	static int32 GetSourceIndex(SubsidyID subsidy_id);
-
-	/**
-	 * Is the destination of the subsidy a town or an industry.
-	 * @param subsidy_id The SubsidyID to check.
-	 * @pre IsValidSubsidy(subsidy_id) && !IsAwarded(subsidy_id).
-	 * @return True if the destination is a town, false if it is an industry.
-	 * @deprecated Use GetDestinationType() instead.
-	 */
-	static bool DestinationIsTown(SubsidyID subsidy_id);
-
-	/**
-	 * Return the destination TownID/IndustryID/StationID the subsidy is for.
-	 * \li IsAwarded(subsidy_id) -> return INVALID_STATION.
-	 * \li !IsAwarded(subsidy_id) && DestinationIsTown(subsidy_id) -> return the TownID.
-	 * \li !IsAwarded(subsidy_id) && !DestinationIsTown(subsidy_id) -> return the IndustryID.
-	 * @param subsidy_id the SubsidyID to check.
-	 * @pre IsValidSubsidy(subsidy_id).
-	 * @return One of TownID/IndustryID/INVALID_STATION.
-	 * @deprecated Use GetDestinationIndex() instead.
-	 */
-	static int32 GetDestination(SubsidyID subsidy_id);
 
 	/**
 	 * Returns the type of destination of subsidy.

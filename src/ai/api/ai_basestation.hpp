@@ -23,7 +23,6 @@ public:
 		STATION_NEW = 0xFFFD,           //!< Build a new station
 		STATION_JOIN_ADJACENT = 0xFFFE, //!< Join an neighbouring station if one exists
 		STATION_INVALID = 0xFFFF,       //!< Invalid station id.
-		WAYPOINT_INVALID = 0xFFFF,      //!< @deprecated Use STATION_INVALID instead.
 	};
 
 	/**

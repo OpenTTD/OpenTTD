@@ -233,16 +233,6 @@ public:
 	static Slope GetComplementSlope(Slope slope);
 
 	/**
-	 * Get the height of the north corner of a tile.
-	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
-	 * @deprecated This function is deprecated and might be removed in future versions of the API. Use GetMinHeight(), GetMaxHeight() or GetCornerHeight() instead.
-	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @return The height of the north corner of the tile, ranging from 0 to 15.
-	 */
-	static int32 GetHeight(TileIndex tile);
-
-	/**
 	 * Get the minimal height on a tile.
 	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
 	 * @param tile The tile to check on.

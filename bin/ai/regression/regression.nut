@@ -1204,7 +1204,7 @@ function Regression::TileList()
 	list.AddRectangle(34436, 256 * 2 + 34436 + 8);
 	print("  Count():             " + list.Count());
 
-	list.Valuate(AITile.GetHeight);
+	list.Valuate(AITile.GetCornerHeight, AITile.CORNER_N);
 	print("  Height():            done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");

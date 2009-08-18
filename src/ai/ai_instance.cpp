@@ -80,6 +80,8 @@
 
 #undef DEFINE_SCRIPT_FILES
 
+#include "../fileio_func.h"
+
 AIStorage::~AIStorage()
 {
 	/* Free our pointers */
@@ -120,6 +122,11 @@ AIInstance::AIInstance(AIInfo *info) :
 
 	/* Register the API functions and classes */
 	this->RegisterAPI();
+
+	if (!this->LoadCompatibilityScripts(info->GetAPIVersion())) {
+		this->Died();
+		return;
+	}
 
 	/* Load and execute the script for this AI */
 	const char *main_script = info->GetMainScript();
@@ -237,6 +244,28 @@ void AIInstance::RegisterAPI()
 	SQAIWaypointList_Vehicle_Register(this->engine);
 
 	this->engine->SetGlobalPointer(this->engine);
+}
+
+bool AIInstance::LoadCompatibilityScripts(const char *api_version)
+{
+	char script_name[32];
+	seprintf(script_name, lastof(script_name), "compat_%s.nut", api_version);
+	char buf[MAX_PATH];
+	Searchpath sp;
+	FOR_ALL_SEARCHPATHS(sp) {
+		FioAppendDirectory(buf, MAX_PATH, sp, AI_DIR);
+		ttd_strlcat(buf, script_name, MAX_PATH);
+		if (!FileExists(buf)) continue;
+
+		if (this->engine->LoadScript(buf)) return true;
+
+		AILog::Error("Failed to load API compatibility script");
+		DEBUG(ai, 0, "Error compiling / running API compatibility script: %s", buf);
+		return false;
+	}
+
+	AILog::Warning("API compatibility script not found");
+	return true;
 }
 
 void AIInstance::Continue()

@@ -29,14 +29,6 @@ public:
 	};
 
 	/**
-	 * Gets the maximum sign index; there are no valid signs with a higher index.
-	 * @deprecated This function is deprecated and might be removed in future versions of the API. Use AISignList() instead.
-	 * @return The maximum sign index.
-	 * @post Return value is always non-negative.
-	 */
-	static SignID GetMaxSignID();
-
-	/**
 	 * Checks whether the given sign index is valid.
 	 * @param sign_id The index to check.
 	 * @return True if and only if the sign is valid.

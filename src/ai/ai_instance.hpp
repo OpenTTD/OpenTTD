@@ -131,6 +131,11 @@ private:
 	void RegisterAPI();
 
 	/**
+	 * Load squirrel scipts to emulate an older API.
+	 */
+	bool LoadCompatibilityScripts(const char *api_version);
+
+	/**
 	 * Tell the AI it died.
 	 */
 	void Died();

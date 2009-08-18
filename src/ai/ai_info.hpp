@@ -99,10 +99,16 @@ public:
 	 */
 	bool UseAsRandomAI() const { return this->use_as_random; }
 
+	/**
+	 * Get the API version this AI is written for.
+	 */
+	const char *GetAPIVersion() const { return this->api_version; }
+
 private:
 	AIConfigItemList config_list;
 	int min_loadable_version;
 	bool use_as_random;
+	const char *api_version;
 };
 
 class AILibrary : public AIFileInfo {

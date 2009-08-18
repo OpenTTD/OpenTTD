@@ -14,12 +14,6 @@
 #include "../../tile_map.h"
 #include "../../company_func.h"
 
-/* static */ SignID AISign::GetMaxSignID()
-{
-	AILog::Warning("AISign::GetMaxSignID is deprecated and will be removed soon, please use AISignList instead.");
-	return (SignID)::Sign::GetPoolSize();
-}
-
 /* static */ bool AISign::IsValidSign(SignID sign_id)
 {
 	const Sign *si = ::Sign::GetIfValid(sign_id);
