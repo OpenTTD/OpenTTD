@@ -2557,7 +2557,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produce:
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia (multiplu de 8, până la 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P "" uri}
@@ -2565,7 +2565,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Nav{P ă e}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenuri - apasă aici pentru informaţii despre trenuri
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenuri - click pe un trn pentru detalii
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autovehicule - clic pe vehicul pentru informatii
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Nave - click pe navă pentru informaţii
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii

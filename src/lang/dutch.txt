@@ -3221,7 +3221,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landhell
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan dit niet uitvoeren...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebouw moet eerst gesloopt worden
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan dit gebied niet ontruimen...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... locatie ongeschikt
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lokatie ongeschikt
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reeds gebouwd
 STR_ERROR_OWNED_BY                                              :{WHITE}... is eigendom van {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf
@@ -3268,7 +3268,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te d
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een ander dorp
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpen
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Het dorps bouwd geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Dorpen.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Het dorp bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Dorpen.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Er wordt aan de weg gewerkt
 
 # Industry related errors
@@ -3289,7 +3289,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... boss
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan hier geen treinstation bouwen...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan hier geen bushalte bouwen...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan hier geen vrachtwagenlaadhal bouwen...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan geen passagiers tram station bouwen...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan geen passagierstramstation bouwen...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan geen vrachttramhalte bouwen...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan hier geen haven bouwen...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan vliegveld hier niet bouwen...
@@ -3302,7 +3302,7 @@ STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel 
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadhallen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te dicht bij een ander station
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te dicht bij een andere (laad)station
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te dicht bij een ander (laad)station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan station niet hernoemen...
@@ -3314,7 +3314,7 @@ STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan deel
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Treinstation moet eerst verwijderd worden
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan busstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrachtwagenlaadhal niet verwijderen...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan passagiers tram station niet verwijderen...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan passagierstramstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan vrachttramhalte niet verwijderen...
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Verwijder eerst treinstation
@@ -3329,11 +3329,11 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Verwijde
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Voegt meer dan één bestaande controlepost samen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Te dicht bij een andere controlepost
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan hier geen trein controlepost bouwen...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan hier geen treincontrolepost bouwen...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan boei hier niet plaatsen...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan naam controlepost niet aanpassen...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan hier trein controlepost niet weghalen...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan hier treincontrolepost niet weghalen...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Controlepost moet eerst verwijderd worden
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boei in de weg
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boei is in gebruik!
@@ -3345,7 +3345,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan hier
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan dok hier niet bouwen...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet gestopt zijn in depot
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestopt zijn binnen een wegvoertuig depot
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestopt zijn binnen een wegvoertuigdepot
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schip moet gestopt zijn binnen een dok
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtuig moet gestopt zijn in een hangar
 
@@ -3360,18 +3360,18 @@ STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}De achte
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan geen route naar lokale depot vinden
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan geen lokaal depot vinden
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerd depot type
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerd depot-type
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang na het vervangen
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Geen automatisch vervang/vernieuw regels opgegeven.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(onvoldoende geld)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onmogelijke spoorcombinatie
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen bruikbaar spoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bestaand spoor moet eerst weggehaald worden
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Eenrichtingsverkeer of de weg is geblokkeerd
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Weg is eenrichtingsverkeer of geblokkeerd
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan hier geen seinen plaatsen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan hier geen spoor leggen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan hier geen spoor weghalen...
@@ -3398,7 +3398,7 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Het kana
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan hier geen aquaduct bouwen...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}.... er staat hier al een boom
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... er staat hier al een boom
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan hier geen boom planten...
 
 # Bridge related errors
@@ -3406,7 +3406,7 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kan hier
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Brug moet eerst afgebroken worden
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan niet beginnen en eindigen op dezelfde plaats
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Begin van bruggen niet op hetzelfde niveau
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is de laag voor dit terrein
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag voor dit terrein
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moeten op een lijn staan
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... uiteinden van brug moeten beiden op land zijn
 

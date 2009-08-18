@@ -14,6 +14,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(undefined string)
 STR_JUST_NOTHING                                                :ไม่มีอะไร
 
 # Cargo related strings
@@ -118,6 +119,7 @@ STR_QUANTITY_TOFFEE                                             :ลูกอม
 STR_QUANTITY_BATTERIES                                          :ุ่ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME}
 STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
+STR_QUANTITY_N_A                                                :N/A{SKIP}
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -207,12 +209,19 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลู�
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
 # Common window strings
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}	
+เลือกเรียงลำดับ (descending/ascending)
+STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}เลือกเกณฑ์การเรียงลำดับ
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}	
+เลือกเกณฑ์การกรอง
 STR_BUTTON_SORT_BY                                              :{BLACK}เรียงตาม
 STR_BUTTON_LOCATION                                             :{BLACK}ที่ตั้ง
 STR_BUTTON_RENAME                                               :{BLACK}เปลี่ยนชื่อ
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}หัวของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
+STR_TOOLTIP_STICKY                                              :{BLACK}มาร์คหน้าต่างนี้เป็น uncloseable โดย 'ปิดทั้งหมดของ Windows' คีย์
+STR_TOOLTIP_RESIZE                                              :{BLACK}คลิกค้างแล้วลากเพื่อเปลี่ยนขนาดของหน้าต่าง
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการขึ้นลง
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำลายสิ่งก่อสร้างและอื่นๆ ในพื้นที่ช่องนั้น
 
@@ -224,24 +233,42 @@ STR_BUTTON_OK                                                   :{BLACK}ตก�
 # On screen keyboard window
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}ความยาว: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}ขอบเขต: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}ความยาว: {NUM}{}ความแตกต่างของคสามสูง: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}ขอบเขต: {NUM} x {NUM}{}ความแตกต่างของคสามสูง: {NUM} m
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}ประชากร
 STR_SORT_BY_NAME                                                :{BLACK}ชื่อ
 STR_SORT_BY_DATE                                                :{BLACK}วันที่
+STR_SORT_BY_PRODUCTION                                          :ผลิตภัณฑ์
 STR_SORT_BY_TYPE                                                :ประเภท
+STR_SORT_BY_TRANSPORTED                                         :การขนส่ง
+STR_SORT_BY_NUMBER                                              :หมายเลข
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
 STR_SORT_BY_AGE                                                 :อายุ
+STR_SORT_BY_RELIABILITY                                         :ความเชื่อถือได้
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :การรวบรวมสินค้าแต่ละประเภท
 STR_SORT_BY_MAX_SPEED                                           :ความเร็วสูงสุด
 STR_SORT_BY_MODEL                                               :รุ่น
 STR_SORT_BY_VALUE                                               :มูลค่า
 STR_SORT_BY_LENGTH                                              :ความยาว
 STR_SORT_BY_LIFE_TIME                                           :อายุการใช้งานคงเหลือ
+STR_SORT_BY_TIMETABLE_DELAY                                     :เวลาอาจถูกทำให้ช้า
 STR_SORT_BY_FACILITY                                            :ประเภทสถานี
+STR_SORT_BY_WAITING                                             :กำลังรอสินค้ามูลค่า
+STR_SORT_BY_RATING_MAX                                          :สินค้าคะแนนสูงสุด
+STR_SORT_BY_RATING_MIN                                          :สินค้าคะแนนต่ำสุด
+STR_SORT_BY_ENGINE_ID                                           :EngineID (classic sort)
 STR_SORT_BY_COST                                                :ราคา
+STR_SORT_BY_POWER                                               :พลังงาน
 STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัวจำหน่าย
+STR_SORT_BY_RUNNING_COST                                        :ต้นทุน
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
+STR_SORT_BY_CARGO_CAPACITY                                      :ความสามารถของการบรรทุก
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
@@ -249,11 +276,14 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตั�
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}แสดงทำเนียบชื่อเมือง
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}แสดงเงินสมทบ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}แสดงรายการสถานีขนส่งของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}แสดงข้อมูลทางการเงินของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}แสดงข้อมูลทั่วไปของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}แสดงกราฟทั้งหลาย
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}แสดงตารางอันดับบริษัท
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}กองทุนอุตสาหกรรมก่อสร้างใหม่หรือรายการทั้งหมดอุตสาหกรรม	
+กองทุนอุตสาหกรรมก่อสร้างใหม่หรือรายการทั้งหมดอุตสาหกรรม
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แสดงรายการรถไฟของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท
@@ -264,20 +294,30 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}สร�
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}สร้างถนน
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}สร้างท่าเรือ
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}สร้างสนามบิน
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}เปิด landscaping แถบเครื่องมือเพื่อเพิ่ม / ลดแผ่นดินพืชไม้ฯลฯ
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}แสดงหน้าต่างดนตรี
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}แสดงข้อความล่าสุด/รายงานข่าว, แสดงตัวเลือกข้อความ
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}	
+บันทึกสถานการณ์,โหลดสถานการณ์,ละทิ้งสถานการณ์บรรณาธิการ,เลิก
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมสร้างฉาก
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}	
+ย้ายวันที่เริ่มต้นย้อนกลับ 1 ปี
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}	
+ย้ายไปข้างหน้าวันที่เริ่มต้น 1 ปี
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}แสดงแผนที่และทำเนียบชื่อเมือง
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}สร้างภูมิทัศน์
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}สร้างเมือง
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}สร้างอุตสาหกรรม
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}ก่อสร้างถนน
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}พืชไม้
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}สถานที่ลงชื่อ
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกสถานการณ์
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -389,6 +429,9 @@ STR_MONTH_ABBREV_OCT                                            :ต.ค.
 STR_MONTH_ABBREV_NOV                                            :พ.ย.
 STR_MONTH_ABBREV_DEC                                            :ธ.ค.
 
+STR_MONTH_JAN                                                   :มกราคม
+STR_MONTH_FEB                                                   :กุมภาพันธ์
+STR_MONTH_MAR                                                   :มีนาคม
 STR_MONTH_APR                                                   :เมษายน
 STR_MONTH_MAY                                                   :พฤษภาคม
 STR_MONTH_JUN                                                   :มิถุนายน
@@ -401,11 +444,15 @@ STR_MONTH_DEC                                                   :ธันวา
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}คำไขปัญหา
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}กราฟแสดงรายได้
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}หน่วยงานการจัดส่งสินค้า
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}คะแนนประสิทธิภาพของบริษัท (maximum rating=1000)
 
 
 
@@ -621,24 +668,61 @@ STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :โรมาเ
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :ปิด
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :ทุกๆเดือน
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :ทุก 3 เดือน
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :ทุก 6 เดือน
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :ทุก 12 เดือน
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}ภาษา
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}เลือกภาษาที่จะใช้
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}เต็มหน้าจอ
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}	
+ทำเครื่องหมายที่ช่องนี้เพื่อเล่น OpenTTD fullscreen โหมด
+ทำเครื่องหมายที่ช่องนี้เพื่อเล่น OpenTTD fullscreen โหมด
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}ความละเอียดของหน้าจอ
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เลือกความละเอียดของหน้าจอที่จะใช้
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}รูปแบบภาพหน้าจอ
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}เลือกรูปแบบหน้าจอที่จะใช้
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ตั้งฐานกราฟิก
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}	
+เลือกและตั้งค่าฐานกราฟิกที่จะใช้
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}สร้างข้อมูลเพิ่มเติมเกี่ยวกับฐานกราฟิก
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ปรับเสียง
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}ปรับและเลือกเสียงที่จะใช้
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}ปรับข้อมูลเพิ่มเติมเกี่ยวกับโหมดเสียง
+
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscreen โหมดล้มเหลว
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}สกุลเงิน
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}อัตราแลกเปลี่ยน: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ลดจํานวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}	
+เพิ่มจำนวนเงินในสกุลเงินหนึ่งปอนด์ (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}	
+กำหนดอัตราแลกเปลี่ยนของสกุลเงินหนึ่งปอนด์ (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}	
+เครื่องแยกแร่: {ORANGE}{2:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}ตั้งเครื่องสกัดสำหรับสกุลเงินของคุณ
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}คำนำหน้า: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}คำเสริมท้าย: {ORANGE}{4:STRING}
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}เปลี่ยนเป็นเงินสกุลยูโร: {ORANGE}{5:NUM}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}ตั้งปีเพื่อเปลี่ยนสกุลเงินเป็นยูโร
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}แสดงตัวอย่าง: {ORANGE}{6:CURRENCY}
 
 # Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}	
+ระดับความยาก
 
 ############ range for difficulty levels starts
 ############ range for difficulty levels ends
@@ -688,11 +772,16 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โป�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}เล่นหลายคน
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตั้งค่าเกม
-STR_INTRO_DIFFICULTY                                            :{BLACK}ระดับความยาก ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}ความยาก ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}	
+ตรวจสอบเนื้อหาออนไลน์
 STR_INTRO_QUIT                                                  :{BLACK}ออก
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}เปิดเกมที่บันทึกไว้
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}เริ่มเกมใหม่โดยใช้ heightmap เป็นภูมิประเทศ
 
 
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออกจากเกม 'OpenTTD'
@@ -723,6 +812,14 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}แน�
 # Livery window
 
 
+STR_LIVERY_BUS                                                  :รถบัส
+STR_LIVERY_TRUCK                                                :รถบรรทุก
+STR_LIVERY_FREIGHT_SHIP                                         :การขนส่งด้วยเรือ
+STR_LIVERY_HELICOPTER                                           :เฮลิคอปเตอร์
+STR_LIVERY_SMALL_PLANE                                          :เครื่องบินขนาดเล็ก
+STR_LIVERY_LARGE_PLANE                                          :เครื่องบินขนาดใหญ่
+STR_LIVERY_PASSENGER_TRAM                                       :ผู้โดยสารรถราง
+STR_LIVERY_FREIGHT_TRAM                                         :การขนส่งด้วยรถราง
 
 # Face selection window
 
@@ -784,6 +881,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}แน�
 # Content downloading window
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :เสียง
 
 # Content downloading progress window
 
@@ -858,7 +956,7 @@ STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ก่�
 # Fund new industry window
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}ข้อมูลที่ดิน
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}ข้อมูลพื้นที่
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :ไม่กำหนด
