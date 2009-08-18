@@ -2333,6 +2333,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\3rdparty\minilzo\lzodefs.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\3rdparty\minilzo\minilzo.c"
 				>
 			</File>

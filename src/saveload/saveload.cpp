@@ -1185,7 +1185,7 @@ static size_t ReadLZO()
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	uint32 tmp[2];
 	uint32 size;
-	uint len;
+	lzo_uint len;
 
 	/* Read header*/
 	if (fread(tmp, sizeof(tmp), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "File read failed");
@@ -1217,10 +1217,10 @@ static void WriteLZO(size_t size)
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	byte wrkmem[sizeof(byte*) * 4096];
-	uint outlen;
+	lzo_uint outlen;
 
 	lzo1x_1_compress(_sl.buf, (lzo_uint)size, out + sizeof(uint32) * 2, &outlen, wrkmem);
-	((uint32*)out)[1] = TO_BE32(outlen);
+	((uint32*)out)[1] = TO_BE32((uint32)outlen);
 	((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
 	if (fwrite(out, outlen + sizeof(uint32) * 2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }

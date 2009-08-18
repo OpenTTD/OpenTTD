@@ -533,6 +533,7 @@ table/water_land.h
 
 # MiniLZO
 3rdparty/minilzo/lzoconf.h
+3rdparty/minilzo/lzodefs.h
 3rdparty/minilzo/minilzo.c
 3rdparty/minilzo/minilzo.h
 
