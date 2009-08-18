@@ -1330,9 +1330,9 @@ extern "C" {
 #endif
 #endif
 #if !defined(__lzo_gnuc_extension__)
-#if (LZO_CC_GNUC >= 0x020800ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x020800ul)
 #  define __lzo_gnuc_extension__    __extension__
-#elif (LZO_CC_LLVM || LZO_CC_PATHSCALE)
+#elif defined(LZO_CC_LLVM) || defined(LZO_CC_PATHSCALE)
 #  define __lzo_gnuc_extension__    __extension__
 #else
 #  define __lzo_gnuc_extension__
@@ -1354,11 +1354,11 @@ extern "C" {
 #  define __lzo_HAVE_alignof 1
 #endif
 #if !defined(__lzo_constructor)
-#if (LZO_CC_GNUC >= 0x030400ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030400ul)
 #  define __lzo_constructor     __attribute__((__constructor__,__used__))
-#elif (LZO_CC_GNUC >= 0x020700ul)
+#elif defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x020700ul)
 #  define __lzo_constructor     __attribute__((__constructor__))
-#elif (LZO_CC_LLVM || LZO_CC_PATHSCALE)
+#elif defined(LZO_CC_LLVM) || defined(LZO_CC_PATHSCALE)
 #  define __lzo_constructor     __attribute__((__constructor__))
 #endif
 #endif
@@ -1366,11 +1366,11 @@ extern "C" {
 #  define __lzo_HAVE_constructor 1
 #endif
 #if !defined(__lzo_destructor)
-#if (LZO_CC_GNUC >= 0x030400ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030400ul)
 #  define __lzo_destructor      __attribute__((__destructor__,__used__))
-#elif (LZO_CC_GNUC >= 0x020700ul)
+#elif defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x020700ul)
 #  define __lzo_destructor      __attribute__((__destructor__))
-#elif (LZO_CC_LLVM || LZO_CC_PATHSCALE)
+#elif defined(LZO_CC_LLVM) || defined(LZO_CC_PATHSCALE)
 #  define __lzo_destructor      __attribute__((__destructor__))
 #endif
 #endif
@@ -1406,7 +1406,7 @@ extern "C" {
 #  define __lzo_inline
 #endif
 #if !defined(__lzo_forceinline)
-#if (LZO_CC_GNUC >= 0x030200ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030200ul)
 #  define __lzo_forceinline     __inline__ __attribute__((__always_inline__))
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 450) && defined(LZO_CC_SYNTAX_MSC)
 #  define __lzo_forceinline     __forceinline
@@ -1426,7 +1426,7 @@ extern "C" {
 #if !defined(__lzo_noinline)
 #if 1 && defined(LZO_ARCH_I386) && (LZO_CC_GNUC >= 0x040000ul) && (LZO_CC_GNUC < 0x040003ul)
 #  define __lzo_noinline        __attribute__((__noinline__,__used__))
-#elif (LZO_CC_GNUC >= 0x030200ul)
+#elif defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030200ul)
 #  define __lzo_noinline        __attribute__((__noinline__))
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 600) && defined(LZO_CC_SYNTAX_MSC)
 #  define __lzo_noinline        __declspec(noinline)
@@ -1436,7 +1436,7 @@ extern "C" {
 #  define __lzo_noinline        __attribute__((__noinline__))
 #elif defined(LZO_CC_MSC) && (_MSC_VER >= 1300)
 #  define __lzo_noinline        __declspec(noinline)
-#elif defined(LZO_CC_MWERKS) && (__MWERKS__ >= 0x3200) && (defined(LZO_OS_WIN32) || (defined(LZO_OS_WIN64))
+#elif defined(LZO_CC_MWERKS) && (__MWERKS__ >= 0x3200) && (defined(LZO_OS_WIN32) || (defined(LZO_OS_WIN64)))
 #  if defined(__cplusplus)
 #  else
 #    define __lzo_noinline      __declspec(noinline)
@@ -1452,7 +1452,7 @@ extern "C" {
 #  error "this should not happen"
 #endif
 #if !defined(__lzo_noreturn)
-#if (LZO_CC_GNUC >= 0x020700ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x020700ul)
 #  define __lzo_noreturn        __attribute__((__noreturn__))
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 450) && defined(LZO_CC_SYNTAX_MSC)
 #  define __lzo_noreturn        __declspec(noreturn)
@@ -1470,7 +1470,7 @@ extern "C" {
 #  define __lzo_noreturn
 #endif
 #if !defined(__lzo_nothrow)
-#if (LZO_CC_GNUC >= 0x030300ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030300ul)
 #  define __lzo_nothrow         __attribute__((__nothrow__))
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 450) && defined(LZO_CC_SYNTAX_MSC) && defined(__cplusplus)
 #  define __lzo_nothrow         __declspec(nothrow)
@@ -1488,7 +1488,7 @@ extern "C" {
 #  define __lzo_nothrow
 #endif
 #if !defined(__lzo_restrict)
-#if (LZO_CC_GNUC >= 0x030400ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030400ul)
 #  define __lzo_restrict        __restrict__
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 600) && defined(LZO_CC_SYNTAX_GNUC)
 #  define __lzo_restrict        __restrict__
@@ -1504,7 +1504,7 @@ extern "C" {
 #  define __lzo_restrict
 #endif
 #if !defined(__lzo_likely) && !defined(__lzo_unlikely)
-#if (LZO_CC_GNUC >= 0x030200ul)
+#if defined(LZO_CC_GNUC) && (LZO_CC_GNUC >= 0x030200ul)
 #  define __lzo_likely(e)       (__builtin_expect(!!(e),1))
 #  define __lzo_unlikely(e)     (__builtin_expect(!!(e),0))
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 800)

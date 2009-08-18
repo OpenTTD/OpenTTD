@@ -1925,7 +1925,7 @@ extern "C" {
 #    define lzo_uintptr_t       unsigned long
 #  elif (LZO_SIZEOF_INT == LZO_SIZEOF_VOID_P)
 #    define lzo_uintptr_t       unsigned int
-#  elif (LZO_SIZEOF_LONG_LONG == LZO_SIZEOF_VOID_P)
+#  elif defined(LZO_SIZEOF_LONG_LONG) && (LZO_SIZEOF_LONG_LONG == LZO_SIZEOF_VOID_P)
 #    define lzo_uintptr_t       unsigned long long
 #  else
 #    define lzo_uintptr_t       size_t
@@ -2481,7 +2481,7 @@ __lzo_init_v2(unsigned v, int s1, int s2, int s3, int s4, int s5,
     int r;
 
 #if defined(__LZO_IN_MINILZO)
-#elif (LZO_CC_MSC && ((_MSC_VER) < 700))
+#elif defined(LZO_CC_MSC) && ((_MSC_VER) < 700)
 #else
 #define ACC_WANT_ACC_CHK_CH 1
 #undef ACCCHK_ASSERT
