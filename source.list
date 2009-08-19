@@ -808,7 +808,6 @@ misc/dbg_helpers.h
 misc/fixedsizearray.hpp
 misc/hashtable.hpp
 misc/str.hpp
-misc/strapi.hpp
 
 # Network Core
 network/core/address.cpp

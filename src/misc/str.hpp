@@ -7,125 +7,65 @@
 
 #include <errno.h>
 #include <stdarg.h>
-#include "strapi.hpp"
+#include "../string_func.h"
 
-/** Blob based string. */
-template <typename Tchar, bool TcaseInsensitive>
-struct CStrT : public CBlobT<Tchar>
+/** Blob based case sensitive ANSI/UTF-8 string */
+struct CStrA : public CBlobT<char>
 {
-	typedef CBlobT<Tchar> base;                    ///< base class
-	typedef CStrApiT<Tchar, TcaseInsensitive> Api; ///< string API abstraction layer
-	typedef typename base::bsize_t bsize_t;        ///< size type inherited from blob
-	typedef typename base::OnTransfer OnTransfer;  ///< temporary 'transfer ownership' object type
+	typedef CBlobT<char> base;                    ///< base class
 
-	/** Construction from C zero ended string. */
-	FORCEINLINE CStrT(const Tchar *str = NULL)
+	/** Create an empty CStrT */
+	FORCEINLINE CStrA()
 	{
-		AppendStr(str);
-	}
-
-	/** Construction from C string and given number of characters. */
-	FORCEINLINE CStrT(const Tchar *str, bsize_t num_chars) : base(str, num_chars)
-	{
-		base::FixTail();
-	}
-
-	/** Construction from C string determined by 'begin' and 'end' pointers. */
-	FORCEINLINE CStrT(const Tchar *str, const Tchar *end)
-		: base(str, end - str)
-	{
-		base::FixTail();
-	}
-
-	/** Construction from blob contents. */
-	FORCEINLINE CStrT(const CBlobBaseSimple& src)
-		: base(src)
-	{
-		base::FixTail();
-	}
-
-	/** Copy constructor. */
-	FORCEINLINE CStrT(const CStrT& src)
-		: base(src)
-	{
-		base::FixTail();
 	}
 
 	/** Take over ownership constructor */
-	FORCEINLINE CStrT(const OnTransfer& ot)
+	FORCEINLINE CStrA(const OnTransfer& ot)
 		: base(ot)
 	{
 	}
 
 	/** Grow the actual buffer and fix the trailing zero at the end. */
-	FORCEINLINE Tchar *GrowSizeNC(bsize_t count)
+	FORCEINLINE char *GrowSizeNC(bsize_t count)
 	{
-		Tchar *ret = base::GrowSizeNC(count);
+		char *ret = base::GrowSizeNC(count);
 		base::FixTail();
 		return ret;
 	}
 
 	/** Append zero-ended C string. */
-	FORCEINLINE void AppendStr(const Tchar *str)
+	FORCEINLINE void AppendStr(const char *str)
 	{
-		if (str != NULL && str[0] != '\0') {
-			base::Append(str, (bsize_t)Api::StrLen(str));
-			base::FixTail();
-		}
-	}
-
-	/** Append another CStrT or blob. */
-	FORCEINLINE void Append(const CBlobBaseSimple& src)
-	{
-		if (src.RawSize() > 0) {
-			base::AppendRaw(src);
+		if (!StrEmpty(str)) {
+			base::Append(str, strlen(str));
 			base::FixTail();
 		}
 	}
 
 	/** Assignment from C string. */
-	FORCEINLINE CStrT& operator = (const Tchar *src)
+	FORCEINLINE CStrA& operator = (const char *src)
 	{
 		base::Clear();
 		AppendStr(src);
 		return *this;
 	}
 
-	/** Assignment from another CStrT or blob. */
-	FORCEINLINE CStrT& operator = (const CBlobBaseSimple& src)
-	{
-		base::Clear();
-		base::AppendRaw(src);
-		base::FixTail();
-		return *this;
-	}
-
-	/** Assignment from another CStrT or blob. */
-	FORCEINLINE CStrT& operator = (const CStrT& src)
-	{
-		base::Clear();
-		base::AppendRaw(src);
-		base::FixTail();
-		return *this;
-	}
-
 	/** Lower-than operator (to support stl collections) */
-	FORCEINLINE bool operator < (const CStrT &other) const
+	FORCEINLINE bool operator < (const CStrA &other) const
 	{
-		return (Api::StrCmp(base::Data(), other.Data()) < 0);
+		return strcmp(base::Data(), other.Data()) < 0;
 	}
 
 	/** Add formated string (like vsprintf) at the end of existing contents. */
-	int AddFormatL(const Tchar *format, va_list args)
+	int AddFormatL(const char *format, va_list args)
 	{
-		bsize_t addSize = Api::StrLen(format);
-		if (addSize < 16) addSize = 16;
+		bsize_t addSize = max<size_t>(strlen(format), 16);
 		addSize += addSize / 2;
 		int ret;
 		int err = 0;
 		for (;;) {
-			Tchar *buf = MakeFreeSpace(addSize);
-			ret = Api::SPrintFL(buf, base::GetReserve(), format, args);
+			char *buf = MakeFreeSpace(addSize);
+			ret = vsnprintf(buf, base::GetReserve(), format, args);
 			if (ret >= base::GetReserve()) {
 				/* Greater return than given count means needed buffer size. */
 				addSize = ret + 1;
@@ -152,7 +92,7 @@ struct CStrT : public CBlobT<Tchar>
 	}
 
 	/** Add formated string (like sprintf) at the end of existing contents. */
-	int AddFormat(const Tchar *format, ...)
+	int AddFormat(const char *format, ...)
 	{
 		va_list args;
 		va_start(args, format);
@@ -161,16 +101,8 @@ struct CStrT : public CBlobT<Tchar>
 		return ret;
 	}
 
-	/** Assign formated string (like vsprintf). */
-	int FormatL(const Tchar *format, va_list args)
-	{
-		base::Free();
-		int ret = AddFormatL(format, args);
-		return ret;
-	}
-
 	/** Assign formated string (like sprintf). */
-	int Format(const Tchar *format, ...)
+	int Format(const char *format, ...)
 	{
 		base::Free();
 		va_list args;
@@ -180,12 +112,5 @@ struct CStrT : public CBlobT<Tchar>
 		return ret;
 	}
 };
-
-typedef CStrT<char   , false> CStrA;   ///< Case sensitive ANSI/UTF-8 string
-typedef CStrT<char   , true > CStrCiA; ///< Case insensitive ANSI/UTF-8 string
-#if defined(HAS_WCHAR)
-typedef CStrT<wchar_t, false> CStrW;   ///< Case sensitive unicode string
-typedef CStrT<wchar_t, true > CStrCiW; ///< Case insensitive unicode string
-#endif /* HAS_WCHAR */
 
 #endif /* STR_HPP */

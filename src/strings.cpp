@@ -719,7 +719,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				const char *s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
 				int gender = 0;
 				if (s != NULL) {
-					wchar_t c = Utf8Consume(&s);
+					WChar c = Utf8Consume(&s);
 					/* Switch case is always put before genders, so remove those bits */
 					if (c == SCC_SWITCH_CASE) {
 						/* Skip to the last (i.e. default) case */

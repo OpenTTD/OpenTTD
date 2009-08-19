@@ -365,11 +365,6 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 	#define _stricmp strcasecmp
 #endif
 
-#if !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__) && !defined(__DJGPP__)
-	/* NDS, MorphOS & OpenBSD don't know wchars, the rest does :( */
-	#define HAS_WCHAR
-#endif /* !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__) */
-
 #if !defined(MAX_PATH)
 	#define MAX_PATH 260
 #endif
