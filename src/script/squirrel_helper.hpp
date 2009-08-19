@@ -96,8 +96,18 @@ namespace SQConvert {
 	template <> inline int16       GetParam(ForceType<int16>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline int32       GetParam(ForceType<int32>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline bool        GetParam(ForceType<bool>        , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; }
-	template <> inline const char *GetParam(ForceType<const char *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { const SQChar *tmp; sq_getstring     (vm, index, &tmp); char *tmp_str = strdup(FS2OTTD(tmp)); *ptr->Append() = (void *)tmp_str; str_validate(tmp_str, tmp_str + strlen(tmp_str)); return tmp_str; }
 	template <> inline void       *GetParam(ForceType<void *>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; }
+	template <> inline const char *GetParam(ForceType<const char *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
+	{
+		sq_tostring(vm, index);
+		const SQChar *tmp;
+		sq_getstring(vm, -1, &tmp);
+		char *tmp_str = strdup(FS2OTTD(tmp));
+		sq_poptop(vm);
+		*ptr->Append() = (void *)tmp_str;
+		str_validate(tmp_str, tmp_str + strlen(tmp_str));
+		return tmp_str;
+	}
 
 	template <> inline Array      *GetParam(ForceType<Array *>,      HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
 	{

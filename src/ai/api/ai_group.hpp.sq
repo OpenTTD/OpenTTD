@@ -29,7 +29,7 @@ void SQAIGroup_Register(Squirrel *engine) {
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::CreateGroup,                 "CreateGroup",                 2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::DeleteGroup,                 "DeleteGroup",                 2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetVehicleType,              "GetVehicleType",              2, ".i");
-	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetName,                     "SetName",                     3, ".is");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetName,                     "SetName",                     3, ".i.");
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetName,                     "GetName",                     2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableAutoReplaceProtection, "EnableAutoReplaceProtection", 3, ".ib");
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetAutoReplaceProtection,    "GetAutoReplaceProtection",    2, ".i");

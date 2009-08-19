@@ -27,7 +27,7 @@ void SQAIBaseStation_Register(Squirrel *engine) {
 
 	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::IsValidBaseStation,  "IsValidBaseStation",  2, ".i");
 	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetName,             "GetName",             2, ".i");
-	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::SetName,             "SetName",             3, ".is");
+	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::SetName,             "SetName",             3, ".i.");
 	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetLocation,         "GetLocation",         2, ".i");
 	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetConstructionDate, "GetConstructionDate", 2, ".i");
 

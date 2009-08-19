@@ -375,7 +375,7 @@ BEGIN {
 		sub("^[ 	]*", "", params[len])
 		if (match(params[len], "\\*") || match(params[len], "&")) {
 			if (match(params[len], "^char")) {
-				types = types "s"
+				types = types "."
 			} else if (match(params[len], "^void")) {
 				types = types "p"
 			} else if (match(params[len], "^Array")) {
