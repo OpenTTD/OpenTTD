@@ -53,15 +53,15 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_INVALID,                       "VS_INVALID");
 
 	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME,                           AIVehicle::ERR_VEHICLE_TOO_MANY);
-	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_AVAILABLE,                                    AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE,                                AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_SHIP_NOT_AVAILABLE,                                        AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE,                                AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_AVAILABLE,                              AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE,                          AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	AIError::RegisterErrorMap(STR_ERROR_SHIP_NOT_AVAILABLE,                                  AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	AIError::RegisterErrorMap(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE,                          AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_TRAIN,                                   AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE,                            AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_SHIP,                                    AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_AIRCRAFT,                                AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE,                                    AIVehicle::ERR_VEHICLE_WRONG_DEPOT);
+	AIError::RegisterErrorMap(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE,                              AIVehicle::ERR_VEHICLE_WRONG_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT,                           AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT,                    AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT,                            AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
@@ -78,14 +78,14 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE,                            AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_SHIP,                                    AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_AIRCRAFT,                                AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE,                             AIVehicle::ERR_VEHICLE_IS_DESTROYED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE,                              AIVehicle::ERR_VEHICLE_IS_DESTROYED);
+	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE,                       AIVehicle::ERR_VEHICLE_IS_DESTROYED);
+	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE,                        AIVehicle::ERR_VEHICLE_IS_DESTROYED);
 	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED,                            AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT,           AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_TRAIN_MUST_BE_STOPPED,                                     AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT,                       AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT,                               AIVehicle::ERR_VEHICLE_IN_FLIGHT);
-	AIError::RegisterErrorMap(STR_ERROR_TRAIN_START_NO_CATENARY,                                   AIVehicle::ERR_VEHICLE_NO_POWER);
+	AIError::RegisterErrorMap(STR_ERROR_TRAIN_START_NO_CATENARY,                             AIVehicle::ERR_VEHICLE_NO_POWER);
 
 	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_TOO_MANY,             "ERR_VEHICLE_TOO_MANY");
 	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_NOT_AVAILABLE,        "ERR_VEHICLE_NOT_AVAILABLE");

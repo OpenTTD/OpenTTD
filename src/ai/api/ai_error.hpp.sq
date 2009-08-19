@@ -69,7 +69,7 @@ void SQAIError_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST,            AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_BUOY_IN_THE_WAY,                            AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST,                   AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY,                                AIError::ERR_AREA_NOT_CLEAR);
+	AIError::RegisterErrorMap(STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY,                AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_COMPANY_HEADQUARTERS_IN,                    AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_OBJECT_IN_THE_WAY,                          AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_MUST_REMOVE_ROAD_FIRST,                     AIError::ERR_AREA_NOT_CLEAR);
@@ -79,7 +79,7 @@ void SQAIError_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE,                    AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER,                   AIError::ERR_OWNED_BY_ANOTHER_COMPANY);
 	AIError::RegisterErrorMap(STR_ERROR_OWNED_BY,                                   AIError::ERR_OWNED_BY_ANOTHER_COMPANY);
-	AIError::RegisterErrorMap(STR_ERROR_NAME_MUST_BE_UNIQUE,                              AIError::ERR_NAME_IS_NOT_UNIQUE);
+	AIError::RegisterErrorMap(STR_ERROR_NAME_MUST_BE_UNIQUE,                        AIError::ERR_NAME_IS_NOT_UNIQUE);
 	AIError::RegisterErrorMap(STR_ERROR_FLAT_LAND_REQUIRED,                         AIError::ERR_FLAT_LAND_REQUIRED);
 	AIError::RegisterErrorMap(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION,             AIError::ERR_LAND_SLOPED_WRONG);
 	AIError::RegisterErrorMap(STR_ERROR_TRAIN_IN_THE_WAY,                           AIError::ERR_VEHICLE_IN_THE_WAY);

@@ -24,7 +24,7 @@ if [ -z "$1" ]; then
 			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" | "ai_changelog.hpp" ) continue;
 		esac
 		${AWK} -f squirrel_export.awk ${f} > ${f}.tmp
-		if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' -b ${f}.tmp ${f}.sq 2> /dev/null || echo boo`" ]; then
+		if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' ${f}.tmp ${f}.sq 2> /dev/null || echo boo`" ]; then
 			mv ${f}.tmp ${f}.sq
 			echo "Updated: ${f}.sq"
 			svn add ${f}.sq > /dev/null 2>&1
@@ -36,7 +36,7 @@ if [ -z "$1" ]; then
 	done
 else
 	${AWK} -f squirrel_export.awk $1 > $1.tmp
-	if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' -b $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
+	if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
 		mv $1.tmp $1.sq
 		echo "Updated: $1.sq"
 		svn add $1.sq > /dev/null 2>&1
@@ -99,7 +99,7 @@ echo "
 
 ${AWK} -f ${f}.awk ${f} > ${f}.tmp
 
-if ! [ -f "${f}" ] || [ -n "`diff -I '$Id' -b ${f} ${f}.tmp 2> /dev/null || echo boo`" ]; then
+if ! [ -f "${f}" ] || [ -n "`diff -I '$Id' ${f} ${f}.tmp 2> /dev/null || echo boo`" ]; then
 	mv ${f}.tmp ${f}
 	echo "Updated: ${f}"
 else
