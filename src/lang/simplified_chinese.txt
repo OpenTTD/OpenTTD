@@ -708,7 +708,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}自家�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}对手公司服务的工业产量变化信息
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}其它工业产量变化信息
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}对于企业车辆的建议及信息
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新的车辆类型
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新车型
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}货物接受情况变更
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}财政补贴
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}综合信息
@@ -786,7 +786,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}重新填充调度计划失败，停止了 {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}新 {STRING} 上市了！
@@ -1342,7 +1342,7 @@ STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}你确�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
 STR_CHEATS_TOOLTIP                                              :{BLACK}标志您是否用过此作弊选项的单选框
-STR_CHEATS_WARNING                                              :{BLACK}警告！你将要背叛你的盟友，这将被永久记录！
+STR_CHEATS_WARNING                                              :{BLACK}注意！作弊是不光彩的！所有作弊都将被记录下来！
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY} 现金
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施或不可移除物)： {ORANGE}{STRING}
@@ -2621,7 +2621,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}购买�
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}购买单轨列车
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}购买磁悬浮列车
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列车
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}新列车
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}购买汽车
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}购买船只
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}购买飞机
@@ -2817,7 +2817,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}命令�
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改装列车以装载另一类型的货物
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改装汽车以运载其他货物
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改装船只以装载其他货物
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改装船只以装载其他类型货物
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改装飞机装载货物的类型
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}命令列车调头
@@ -3050,7 +3050,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :汽车车库
 STR_ORDER_SHIP_DEPOT                                            :船坞
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING}  {STATION}  机库
+STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} 机库
 
 STR_ORDER_REFIT_ORDER                                           :(改装为 {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(改装为{STRING}并停留)
@@ -3123,7 +3123,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI名称
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}关闭AI并重启AI
 
-STR_ERROR_AI_NO_AI_FOUND                                        :找不到可使用的AI。这个AI只是一个演示而不会有任何动作，{}您可以通过“在线查找扩展包”功能下载AI程序。
+STR_ERROR_AI_NO_AI_FOUND                                        :找不到可使用的AI。{}这个AI只是一个演示而不会有任何动作，{}您可以通过“在线查找扩展包”功能下载AI程序。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}一个运行中的 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者。
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI调试窗口只对服务器可用
 
@@ -3220,11 +3220,11 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}需要�
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地倾斜的方向不对
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能这样做……
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须先摧毁建筑
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除这个区域……
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}地点不合适
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}已经建好了……
-STR_ERROR_OWNED_BY                                              :{WHITE}归 {STRING} 所有
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}此区域由另一公司所有……
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...地点不合适
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已经建好了
+STR_ERROR_OWNED_BY                                              :{WHITE} 归 {STRING} 所有
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}目标位置有 {STRING}
 

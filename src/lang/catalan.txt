@@ -762,7 +762,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Noves reserves de petroli trobades a {INDUSTRY}!{}Es preveu doblar la producció!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Sistemes de conreu millorats a {INDUSTRY} fan preveure doblar la producció!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}La producció de {STRING} a {INDUSTRY} creix un {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} la producció es redueix un 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}La producció de {INDUSTRY} es redueix un 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Una plaga d'insectes provoca el caos a {INDUSTRY}!{}La producció es redueix un 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%!
 
@@ -784,7 +784,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} s'està fent molt vell i necessita ser substituït urgentment
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} està perdut.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :El benefici del {WHITE}{VEHICLE} l'any passat va ser de {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}El benefici del {VEHICLE} l'any passat va ser de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}El {VEHICLE} s'ha parat perquè l'ordre de remodelació ha fallat
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}L'autorenovació ha fallat en el {VEHICLE}{}{STRING}

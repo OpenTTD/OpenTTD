@@ -638,6 +638,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
 STR_SORT_BY_LENGTH                                              :Dlugosc
 STR_SORT_BY_LIFE_TIME                                           :Pozostaly czas zycia
+STR_SORT_BY_TIMETABLE_DELAY                                     :Opóźnienie rozkładu jazdy
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
 STR_SORT_BY_RATING_MAX                                          :Towar najwyższej wartości
@@ -1027,8 +1028,8 @@ STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Statki
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Samoloty
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Trasy transportowe
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}{G=m}Las
-STR_SMALLMAP_LEGENDA_FOREST.d                                   :{BLACK}{TINYFONT}{G=m}Lasu
+STR_SMALLMAP_LEGENDA_FOREST                                     :{G=m}{TINYFONT}{BLACK}Las
+STR_SMALLMAP_LEGENDA_FOREST.d                                   :{G=m}{BLACK}{TINYFONT}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Stacja kolejowa
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Załadunek ciężarówek
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Przystanek
@@ -1443,6 +1444,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Zawsze 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Pokazuj sygnały po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansów na koniec roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nowe polecenia sa domyslnie 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Rozkazy nowego pociągu kończą się domyślnie na {ORANGE}{STRING}{LTBLUE} peronu
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :blisko końca
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :środek
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :daleko od końca
@@ -2708,6 +2710,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji.
 
 # Sign list window
@@ -2934,7 +2937,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuj
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji (wielokrotność 8, do 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Pociąg{P "" i ów}
@@ -3679,7 +3682,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nie moż
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Przylega do więcej niż jednej stacji
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stacja zbyt rozległa
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...niejednorodne  są niedostępne
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... niejednorodne stacje są niedostępne
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Za duzo stacji
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Za dużo części stacji kolejowej
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Za dużo przystankow autobusowych
@@ -3718,7 +3721,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie moż
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw punkt nawigacyjny
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boja na drodze
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na drodze
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...boja w użyciu!
 
 # Depot related errors
@@ -3728,7 +3731,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie można tutaj wybudować stoczni...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Pociąg musi być zatrzymany w zajezdni
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...musi być zatrzymany w zajezdni samochodowej
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi być zatrzymany w zajezdni samochodowej
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Statek musi być zatrzymany w stoczni
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Samolot musi być zatrzymany w hangarze
 
@@ -3775,13 +3778,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nie można budować tutaj kanału...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nie można budować tutaj śluzy...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}NIe mozna tutaj umieścić rzeki...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...musi być wybudowane na wodzie
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Nie można wybudować na wodzie
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musi być wybudowane na wodzie
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można wybudować na wodzie
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Należy najpierw usunąć kanał
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie można zbudować tutaj akweduktu...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...drzewo już tu jest
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drzewo już tu jest
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Nie można posadzić drzewa...
 
 # Bridge related errors
@@ -3791,7 +3794,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nie moż
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Początki mostu nie są na tej samej wysokości
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most jest za nisko dla tego terenu
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Początek i koniec muszą być w jednej linii
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...końce mostu muszą znajdować się na lądzie
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... końce mostu muszą znajdować się na lądzie
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj wybudować tunelu...
@@ -3803,9 +3806,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nie moż
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiekt na drodze
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...siedziba firmy na drodze
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siedziba firmy na drodze
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nie możesz nabyć tego terenu...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...to już jest Twoje!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... to już jest Twoje!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie można stworzyć grupy...
@@ -3885,13 +3888,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nie moż
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nie można przenieść tego zadania...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nie można pominąć obecnego zadania...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie można przejść do wybranego zadania...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}pojazd nie może jechać do wszystkich stacji
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}pojazd nie może jechać do tej stacji
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}pojazd dzielący ten rozkaz nie może jechać do tej stacji
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... pojazd nie może jechać do wszystkich stacji
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... pojazd nie może jechać do tej stacji
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... pojazd dzielący ten rozkaz nie może jechać do tej stacji
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nie można współdzielić poleceń...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nie można skopiować listy poleceń...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...zbyt daleko od poprzedniego celu
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zbyt daleko od poprzedniego celu
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
@@ -3899,7 +3902,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Pojazdy 
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...zbyt wiele napisów
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zbyt wiele napisów
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nie można umieścić napisu...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nie możesz zmienić nazwy napisu...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nie można usunąć znaku...
@@ -4328,7 +4331,7 @@ STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Pkt. kontrolny {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. kontrolny  {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. kontrolny {TOWN} #{COMMA}
 
 STR_UNKNOWN_STATION                                             :Nieznana stacja
 STR_DEFAULT_SIGN_NAME                                           :Napis
