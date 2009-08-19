@@ -1107,6 +1107,10 @@ void PrepareUnload(Vehicle *front_v)
 static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 {
 	assert(v->current_order.IsType(OT_LOADING));
+
+	/* When we've finished loading we're just staying here till the timetable 'runs' out */
+	if (HasBit(v->vehicle_flags, VF_LOADING_FINISHED)) return;
+
 	assert(v->load_unload_time_rem != 0);
 
 	/* We have not waited enough time till the next round of loading/unloading */
