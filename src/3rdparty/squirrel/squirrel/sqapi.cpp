@@ -1012,6 +1012,14 @@ bool sq_resumecatch(HSQUIRRELVM v, int suspend)
 	return v->Execute(_null_, v->_top, -1, -1, ret, SQTrue, SQVM::ET_RESUME_OPENTTD);
 }
 
+bool sq_resumeerror(HSQUIRRELVM v)
+{
+	SQObjectPtr ret;
+	v->_can_suspend = true;
+	v->_ops_till_suspend = 1;
+	return v->Execute(_null_, v->_top, -1, -1, ret, SQTrue, SQVM::ET_RESUME_THROW_VM);
+}
+
 void sq_setreleasehook(HSQUIRRELVM v,SQInteger idx,SQRELEASEHOOK hook)
 {
 	if(sq_gettop(v) >= 1){

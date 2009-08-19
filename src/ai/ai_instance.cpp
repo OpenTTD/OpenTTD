@@ -352,6 +352,10 @@ void AIInstance::GameLoop()
 		} catch (AI_VMSuspend e) {
 			this->suspend  = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
+		} catch (AI_FatalError e) {
+			this->engine->ThrowError(e.GetErrorMessage());
+			this->engine->ResumeError();
+			this->Died();
 		}
 
 		this->is_started = true;
@@ -368,6 +372,10 @@ void AIInstance::GameLoop()
 	} catch (AI_VMSuspend e) {
 		this->suspend  = e.GetSuspendTime();
 		this->callback = e.GetSuspendCallback();
+	} catch (AI_FatalError e) {
+		this->engine->ThrowError(e.GetErrorMessage());
+		this->engine->ResumeError();
+		this->Died();
 	}
 }
 

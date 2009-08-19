@@ -191,8 +191,7 @@ int AIObject::GetCallbackVariable(int index)
 bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, AISuspendCallbackProc *callback)
 {
 	if (AIObject::GetAllowDoCommand() == false) {
-		AILog::Error("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.\n");
-		return false;
+		throw AI_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
 	CommandCost res;

@@ -311,6 +311,7 @@ SQUIRREL_API void sq_setprintfunc(HSQUIRRELVM v, SQPRINTFUNCTION printfunc);
 SQUIRREL_API SQPRINTFUNCTION sq_getprintfunc(HSQUIRRELVM v);
 SQUIRREL_API SQRESULT sq_suspendvm(HSQUIRRELVM v);
 SQUIRREL_API bool sq_resumecatch(HSQUIRRELVM v, int suspend = -1);
+SQUIRREL_API bool sq_resumeerror(HSQUIRRELVM v);
 SQUIRREL_API SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool resumedret,SQBool retval,SQBool raiseerror,SQBool throwerror);
 SQUIRREL_API SQInteger sq_getvmstate(HSQUIRRELVM v);
 
