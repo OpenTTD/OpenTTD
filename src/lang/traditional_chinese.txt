@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Chinese (Traditional)
 ##ownname 繁體中文
 ##isocode zh_TW

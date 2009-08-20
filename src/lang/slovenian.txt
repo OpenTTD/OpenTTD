@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Slovenian
 ##ownname Slovenščina
 ##isocode sl_SL

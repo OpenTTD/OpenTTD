@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Frisian
 ##ownname Frysk
 ##isocode fy_NL

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Hebrew
 ##ownname עברית
 ##isocode he_IL

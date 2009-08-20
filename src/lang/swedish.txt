@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Swedish
 ##ownname Svenska
 ##isocode sv_SE

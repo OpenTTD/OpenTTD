@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Galician
 ##ownname Galego
 ##isocode gl_ES

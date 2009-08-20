@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Czech
 ##ownname Čeština
 ##isocode cs_CZ

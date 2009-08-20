@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Russian
 ##ownname Русский
 ##isocode ru_RU

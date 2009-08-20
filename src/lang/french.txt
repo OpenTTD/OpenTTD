@@ -1,3 +1,5 @@
+# $Id$
+
 ##name French
 ##ownname Français
 ##isocode fr_FR

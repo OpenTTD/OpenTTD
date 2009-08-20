@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Greek
 ##ownname Ελληνικά
 ##isocode el_GR

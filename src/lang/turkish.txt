@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Turkish
 ##ownname Türkçe
 ##isocode tr_TR

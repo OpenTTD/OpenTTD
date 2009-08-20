@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Indonesian
 ##ownname Bahasa Indonesia
 ##isocode id_ID

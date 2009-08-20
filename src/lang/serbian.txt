@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Serbian
 ##ownname Srpski
 ##isocode sr_RS

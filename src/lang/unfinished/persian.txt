@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Persian
 ##ownname فارسی
 ##isocode fa_IR

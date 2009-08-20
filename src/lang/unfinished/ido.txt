@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Ido
 ##ownname Ido
 ##isocode io_IO

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Urdu
 ##ownname Urdu
 ##isocode ur_PK

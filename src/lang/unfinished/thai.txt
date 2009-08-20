@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Thai
 ##ownname Thai
 ##isocode th_TH

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Ukrainian
 ##ownname Українська
 ##isocode uk_UA

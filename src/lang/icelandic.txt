@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Icelandic
 ##ownname Íslenska
 ##isocode is_IS

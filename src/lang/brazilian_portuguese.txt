@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Portuguese (Brazilian)
 ##ownname Português (BR)
 ##isocode pt_BR

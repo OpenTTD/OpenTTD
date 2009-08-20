@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Korean
 ##ownname 한국어
 ##isocode ko_KR

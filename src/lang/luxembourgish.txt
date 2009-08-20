@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Luxembourgish
 ##ownname Lëtzebuergesch
 ##isocode lb_LU

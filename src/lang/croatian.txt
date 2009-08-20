@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Croatian
 ##ownname Hrvatski
 ##isocode hr_HR

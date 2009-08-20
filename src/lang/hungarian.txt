@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Hungarian
 ##ownname Magyar
 ##isocode hu_HU

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Danish
 ##ownname Dansk
 ##isocode da_DA

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Arabic (Egypt)
 ##ownname Arabic (Egypt)
 ##isocode ar_EG

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Norwegian (Nynorsk)
 ##ownname Norsk, Nynorsk
 ##isocode nn_NO

@@ -1,3 +1,5 @@
+# $Id$
+
 ##name Polish
 ##ownname Polski
 ##isocode pl_PL
