@@ -602,11 +602,25 @@ void AIInstance::Save()
 		/* We don't want to be interrupted during the save function. */
 		bool backup_allow = AIObject::GetAllowDoCommand();
 		AIObject::SetAllowDoCommand(false);
-		if (!this->engine->CallMethod(*this->instance, "Save", &savedata)) {
-			/* The script crashed in the Save function. We can't kill
-			 * it here, but do so in the next AI tick. */
+		try {
+			if (!this->engine->CallMethod(*this->instance, "Save", &savedata)) {
+				/* The script crashed in the Save function. We can't kill
+				 * it here, but do so in the next AI tick. */
+				SaveEmpty();
+				this->engine->CrashOccurred();
+				return;
+			}
+		} catch (AI_FatalError e) {
+			/* If we don't mark the AI as dead here cleaning up the squirrel
+			 * stack could throw AI_FatalError again. */
+			this->is_dead = true;
+			this->engine->ThrowError(e.GetErrorMessage());
+			this->engine->ResumeError();
 			SaveEmpty();
-			this->engine->CrashOccurred();
+			/* We can't kill the AI here, so mark it as crashed (not dead) and
+			 * kill it in the next AI tick. */
+			this->is_dead = false;
+			this->engine->CrashOccured();
 			return;
 		}
 		AIObject::SetAllowDoCommand(backup_allow);
