@@ -221,8 +221,12 @@ void ShowOSErrorBox(const char *buf, bool system)
 	 * this is the native and nicest way to do this on OSX */
 	ShowMacDialog( buf, "See readme for more info\nMost likely you are missing files from the original TTD", "Quit" );
 #else
-	/* all systems, but OSX */
-	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
+	/* All unix systems, except OSX. Only use escape codes on a TTY. */
+	if (isatty(fileno(stderr))) {
+		fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
+	} else {
+		fprintf(stderr, "Error: %s\n", buf);
+	}
 #endif
 }
 

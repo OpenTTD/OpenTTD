@@ -1,7 +1,6 @@
 # $Id$
 # http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.1.html
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 Version=1.1
 Name=!!MENU_NAME!!
