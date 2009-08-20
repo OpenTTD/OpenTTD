@@ -240,8 +240,11 @@ public:
 	{
 		if (MaxRawSize() > 0 && num_bytes > 0) {
 			assert(num_bytes <= RawSize());
-			if (num_bytes < RawSize()) RawSizeRef() -= num_bytes;
-			else RawSizeRef() = 0;
+			if (num_bytes < RawSize()) {
+				RawSizeRef() -= num_bytes;
+			} else {
+				RawSizeRef() = 0;
+			}
 		}
 	}
 

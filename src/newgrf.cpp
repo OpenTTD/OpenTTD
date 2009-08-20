@@ -3397,10 +3397,10 @@ static void FeatureNewName(byte *buf, size_t len)
 	 * B veh-type      see action 0 (as 00..07, + 0A
 	 *                 But IF veh-type = 48, then generic text
 	 * B language-id   If bit 6 is set, This is the extended language scheme,
-	                   with up to 64 language.
-	                   Otherwise, it is a mapping where set bits have meaning
-	                   0 = american, 1 = english, 2 = german, 3 = french, 4 = spanish
-	                   Bit 7 set means this is a generic text, not a vehicle one (or else)
+	 *                 with up to 64 language.
+	 *                 Otherwise, it is a mapping where set bits have meaning
+	 *                 0 = american, 1 = english, 2 = german, 3 = french, 4 = spanish
+	 *                 Bit 7 set means this is a generic text, not a vehicle one (or else)
 	 * B num-veh       number of vehicles which are getting a new name
 	 * B/W offset      number of the first vehicle that gets a new name
 	 *                 Byte : ID of vehicle to change

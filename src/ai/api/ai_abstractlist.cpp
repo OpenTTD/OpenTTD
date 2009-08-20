@@ -489,13 +489,19 @@ void AIAbstractList::Sort(SorterType sorter, bool ascending)
 	delete this->sorter;
 	switch (sorter) {
 		case SORT_BY_ITEM:
-			if (ascending) this->sorter = new AIAbstractListSorterItemAscending(this);
-			else           this->sorter = new AIAbstractListSorterItemDescending(this);
+			if (ascending) {
+				this->sorter = new AIAbstractListSorterItemAscending(this);
+			} else {
+				this->sorter = new AIAbstractListSorterItemDescending(this);
+			}
 			break;
 
 		case SORT_BY_VALUE:
-			if (ascending) this->sorter = new AIAbstractListSorterValueAscending(this);
-			else           this->sorter = new AIAbstractListSorterValueDescending(this);
+			if (ascending) {
+				this->sorter = new AIAbstractListSorterValueAscending(this);
+			} else {
+				this->sorter = new AIAbstractListSorterValueDescending(this);
+			}
 			break;
 
 		default:

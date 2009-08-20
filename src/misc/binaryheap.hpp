@@ -185,8 +185,7 @@ inline void CBinaryHeapT<Titem_>::RemoveByIdx(int idx)
 		}
 		/* move parent to the proper place */
 		if (m_size > 0) m_items[gap] = &last;
-	}
-	else {
+	} else {
 		assert(idx == m_size);
 		m_size--;
 	}

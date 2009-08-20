@@ -1028,8 +1028,7 @@ struct MessageOptionsWindow : Window {
 				Dimension d = {0, 0};
 				for (const StringID *str = message_opt; *str != INVALID_STRING_ID; str++) d = maxdim(d, GetStringBoundingBox(*str));
 				size->width = d.width + padding.width + MOS_BUTTON_SPACE; // A bit extra for better looks.
-			}
-			else if (widget == WIDGET_NEWSOPT_SOUNDTICKER) {
+			} else if (widget == WIDGET_NEWSOPT_SOUNDTICKER) {
 				size->width += MOS_BUTTON_SPACE; // A bit extra for better looks.
 			}
 			return;

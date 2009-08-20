@@ -102,11 +102,14 @@ const char *FiosBrowseTo(const FiosItem *item)
 				s[0] = '\0'; // Remove last path separator character, so we can go up one level.
 			}
 			s = strrchr(path, PATHSEPCHAR);
-			if (s != NULL) s[1] = '\0'; // go up a directory
+			if (s != NULL) {
+				s[1] = '\0'; // go up a directory
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
 			/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
-			else if ((s = strrchr(path, ':')) != NULL) s[1] = '\0';
+			} else if ((s = strrchr(path, ':')) != NULL) {
+				s[1] = '\0';
 #endif
+			}
 			break;
 		}
 

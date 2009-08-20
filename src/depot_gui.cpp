@@ -152,7 +152,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 	if (wagon == NULL) {
 		if (head != NULL) wagon = head->Last();
-	} else  {
+	} else {
 		wagon = wagon->Previous();
 		if (wagon == NULL) return;
 	}

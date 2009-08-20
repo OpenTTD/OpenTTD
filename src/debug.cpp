@@ -69,7 +69,8 @@ static void debug_print(const char *dbg, const char *buf)
 
 		snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
-	} else
+		return;
+	}
 #endif /* ENABLE_NETWORK */
 	if (strcmp(dbg, "desync") != 0) {
 #if defined(WINCE)

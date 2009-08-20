@@ -491,16 +491,16 @@ static void ReadTTDPatchFlags()
 	/* TTDPatch misuses _old_map3 for flags.. read them! */
 	_old_vehicle_multiplier = _old_map3[0];
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
-	and 1 becomes 2. The rest of the values are okay */
+	 * and 1 becomes 2. The rest of the values are okay */
 	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
 
 	_old_vehicle_names = MallocT<StringID>(_old_vehicle_multiplier * 850);
 
 	/* TTDPatch increases the Vehicle-part in the middle of the game,
-	so if the multipler is anything else but 1, the assert fails..
-	bump the assert value so it doesn't!
-	(1 multipler == 850 vehicles
-	1 vehicle   == 128 bytes */
+	 * so if the multipler is anything else but 1, the assert fails..
+	 * bump the assert value so it doesn't!
+	 * (1 multipler == 850 vehicles
+	 * 1 vehicle   == 128 bytes */
 	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 
 	for (uint i = 0; i < 17; i++) { // check tile 0, too

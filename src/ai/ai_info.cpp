@@ -198,7 +198,7 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.hard_value = res;
 			items |= 0x040;
-		}  else if (strcmp(key, "random_deviation") == 0) {
+		} else if (strcmp(key, "random_deviation") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.random_deviation = res;
