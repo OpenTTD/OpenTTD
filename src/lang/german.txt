@@ -3042,7 +3042,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Fahre über {WA
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Fahre ohne Halt über {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Falls nötig, Wartung in
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt Zwecks Wartung zu
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt zwecks Wartung zu
 
 STR_ORDER_NEAREST_DEPOT                                         :nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar

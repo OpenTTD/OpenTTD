@@ -298,7 +298,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att bla höja/sänka land, plantera träd, osv
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, AI debug, skärmdumpar, om OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spara scenario, öppna scenario, avbryt scenarioeditor, avsluta
@@ -417,9 +417,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehisto
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debuggning
+STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk Screenshot (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk skärmdump(Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 ############ range ends here
 
@@ -785,7 +785,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} är vilse.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s vinst förra året var {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Order att förändra frakttyp stoppades {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppades för att en beordrad förändring av frakttyp misslyckades
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoförnya misslyckades på {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING} tillgänglig!
@@ -917,6 +917,7 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad/korrumperad fil{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om bas-grafik settet
+
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskärmsläge misslyckades
 
@@ -2615,7 +2616,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nya elek
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nytt monorailfordon
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nytt maglevfordon
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Rälsfordon
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nya Rälsfordon
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nytt Vägfordon
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nytt skepp
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nytt flygplan
@@ -2811,7 +2812,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tvinga t
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Anpassa tåg för att bära annan godstyp
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Anpassa vägfordon till att bära en annan sorts last
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Anpassa godsskepp att frakta en annan godstyp
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Anpassa skepp till att frakta en annan godstyp
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Anpassa flygplan att frakta en annan godstyp
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt tågets riktning
@@ -3080,7 +3081,7 @@ STR_INVALID_ORDER                                               :{RED} (Ogiltig 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tidtabell)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Order
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Byt till  ordervyn
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Byt till ordervyn
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidstabell - klicka på en order för att markera den.
 

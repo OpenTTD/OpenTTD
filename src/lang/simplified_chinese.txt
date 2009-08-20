@@ -1943,7 +1943,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造�
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设水渠
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}修建运河  当地形处于海平面时{}按住 Ctrl键 可以定义水域
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}修建运河{}当地形处于海平面时{}按住 Ctrl键 可以定义水域
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}放置河流
 
 # Ship depot construction window
@@ -3248,7 +3248,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已�
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}不能为公司更名……
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}不能更改总裁的名字……
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}最大贷款额度是{CURRENCY}……
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}不能再贷款了……
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}没有要偿还的贷款了
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}需要{CURRENCY}
@@ -3345,7 +3345,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}此处�
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}不能在这里建造船坞……
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列车必须停在一个车库中
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...必须完全停在一个车库中
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}……必须完全停在一个车库中
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船只必须停靠在船坞内。
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飞机必须在机库中停止
 
@@ -3422,7 +3422,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}隧道�
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}目标处有其他物体
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}目标处有公司总部
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能购买这个地块！
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}它已经是你的了！
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}你已经拥有此地块！
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}无法新建分组……

@@ -366,7 +366,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Stavět 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otevřít nástrojovou lištu na úpravu terénu, výsadbu stromů, atd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ukázat zvukové/hudební okno
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Ukázat poslední zprávu nebo článek, možnosti zpráv
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informace o zemi
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informace o území, konzole, debug AI, snímek obrazovky, O aplikaci OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložit mapu, otevřít mapu, opustit editor map, ukončit...
@@ -853,7 +853,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} se ztratil.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} - loňský zisk {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Kvůli selhání příkazu na změnu nákladu stojí {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stojí kvůli selhání příkazu na změnu nákladu
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Obnovení selhalo pro {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G á ý é} {STRING} k dispozici!
@@ -2614,7 +2614,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuj
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci (násobky 8, až do 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} vlak{P "" y ů}
@@ -2678,7 +2678,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nové el
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nové lokomotivy a vagony pro monorail
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nové lokomotivy a vagony Maglev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Železniční vozidla
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nová železniční vozidla
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nová silniční vozidla
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nové lodě
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nové letadlo
@@ -2742,7 +2742,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo la el}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - stiskni na vlaku pro info, přesuň vagon pro přidání či odebrání z vlaku
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - klikni na vlak pro info, přesuň vagon pro přidání či odebrání z vlaku
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidla - stiskni vozidlo pro informace
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lodě - informace získáš klepnutím na jméno lodi
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letadlo - klepni na letadlo pro informace
@@ -3280,9 +3280,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Moc blí
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nedostatek peněz - je potřeba {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Je potřeba plochá země
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Země skloněna nesprávným směrem
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tohle neumůžeš udělat...
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tohle nelze provést...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Budova musí být nejprve zničena
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nemůžeš vyčistit tuto oblast...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nelze vyčistit tuto oblast...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nepoužitelné místo
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... již vystavěno
 STR_ERROR_OWNED_BY                                              :{WHITE}... vlastněno {STRING}
@@ -3451,7 +3451,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Zde nemo
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Zde nemohu postavit zdymadlo...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Zde nelze vytvořit řeku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musí být postaven na vodě
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nemohu stavět na vodě
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nelze stavět na vodě
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Nejprve je třeba zničit průplav
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tady není možné postavit akvadukt...
 
@@ -3480,7 +3480,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemohu v
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V cestě je objekt
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... v cestě je ředitelství společnosti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nelze zakoupit tento pozemek...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... již ji vlastníš!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... již vlastníš!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nelze vytvořit skupinu...
@@ -3559,7 +3559,7 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nemohu t
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nelze přesunout tento příkaz...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nelze přeskočit současný příkaz...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nelze přeskočit na označený příkaz...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}prostředek se nedostane do všech stanic
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE} prostředek se nedostane do všech stanic
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}do této stanice se prostředek nedostane
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}do této stanice se prostředek sdílející tento příkaz nedostane
 
