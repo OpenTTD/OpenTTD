@@ -102,7 +102,7 @@ void SQAIVehicle_Register(Squirrel *engine) {
 
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsValidVehicle,                 "IsValidVehicle",                 2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetNumWagons,                   "GetNumWagons",                   2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SetName,                        "SetName",                        3, ".is");
+	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SetName,                        "SetName",                        3, ".i.");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetName,                        "GetName",                        2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetLocation,                    "GetLocation",                    2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetEngineType,                  "GetEngineType",                  2, ".i");

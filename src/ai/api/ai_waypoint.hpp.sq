@@ -26,7 +26,7 @@ void SQAIWaypoint_Register(Squirrel *engine) {
 	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::IsValidWaypoint, "IsValidWaypoint", 2, ".i");
 	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::GetWaypointID,   "GetWaypointID",   2, ".i");
 	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::GetName,         "GetName",         2, ".i");
-	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::SetName,         "SetName",         3, ".is");
+	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::SetName,         "SetName",         3, ".i.");
 	SQAIWaypoint.DefSQStaticMethod(engine, &AIWaypoint::GetLocation,     "GetLocation",     2, ".i");
 
 	SQAIWaypoint.PostRegister(engine);

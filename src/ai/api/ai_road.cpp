@@ -75,6 +75,7 @@
 {
 	if (!::IsValidTile(t1)) return false;
 	if (!::IsValidTile(t2)) return false;
+	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
 	/* Tiles not neighbouring */
 	if ((abs((int)::TileX(t1) - (int)::TileX(t2)) + abs((int)::TileY(t1) - (int)::TileY(t2))) != 1) return false;
@@ -421,6 +422,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 /* static */ int32 AIRoad::GetNeighbourRoadCount(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
+	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
 	::RoadTypes rts = ::RoadTypeToRoadTypes((::RoadType)GetCurrentRoadType());
 	int32 neighbour = 0;
@@ -461,6 +463,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::IsValidTile(end));
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
 	EnforcePrecondition(false, !one_way || AIObject::GetRoadType() == ::ROADTYPE_ROAD);
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
 	return AIObject::DoCommand(end, start, (::TileY(start) != ::TileY(end) ? 4 : 0) | (((start < end) == !full) ? 1 : 2) | (AIObject::GetRoadType() << 3) | ((one_way ? 1 : 0) << 5), CMD_BUILD_LONG_ROAD);
 }
@@ -491,6 +494,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
 	uint entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? 1 : 3) : (::TileX(tile) < ::TileX(front) ? 2 : 0);
 
@@ -505,6 +509,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
 	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
 	EnforcePrecondition(false, road_veh_type == ROADVEHTYPE_BUS || road_veh_type == ROADVEHTYPE_TRUCK);
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
 	uint entrance_dir;
 	if (drive_through) {
@@ -536,6 +541,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, ::IsValidTile(end));
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
 	return AIObject::DoCommand(end, start, (::TileY(start) != ::TileY(end) ? 4 : 0) | (start < end ? 1 : 2) | (AIObject::GetRoadType() << 3), CMD_REMOVE_LONG_ROAD);
 }
@@ -545,6 +551,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, ::IsValidTile(end));
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
 	return AIObject::DoCommand(end, start, (::TileY(start) != ::TileY(end) ? 4 : 0) | (start < end ? 2 : 1) | (AIObject::GetRoadType() << 3), CMD_REMOVE_LONG_ROAD);
 }
