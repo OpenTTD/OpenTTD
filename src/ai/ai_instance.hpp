@@ -18,7 +18,7 @@ public:
 	AI_VMSuspend(int time, AISuspendCallbackProc *callback) :
 		time(time),
 		callback(callback)
-		{}
+	{}
 
 	int GetSuspendTime() { return time; }
 	AISuspendCallbackProc *GetSuspendCallback() { return callback; }
@@ -26,6 +26,21 @@ public:
 private:
 	int time;
 	AISuspendCallbackProc *callback;
+};
+
+/**
+ * A throw-class that is given when the AI made a fatal error.
+ */
+class AI_FatalError {
+public:
+	AI_FatalError(const char *msg) :
+		msg(msg)
+	{}
+
+	const char *GetErrorMessage() { return msg; }
+
+private:
+	const char *msg;
 };
 
 class AIInstance {
@@ -79,6 +94,11 @@ public:
 	 * Get the controller attached to the instance.
 	 */
 	class AIController *GetController() { return controller; }
+
+	/**
+	 * Return the "this AI died" value
+	 */
+	inline bool IsDead() { return this->is_dead; }
 
 	/**
 	 * Call the AI Save function and save all data in the savegame.

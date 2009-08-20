@@ -53,7 +53,7 @@ struct SQVM : public CHAINABLE_OBJ
 
 typedef sqvector<CallInfo> CallInfoVec;
 public:
-	enum ExecutionType { ET_CALL, ET_RESUME_GENERATOR, ET_RESUME_VM, ET_RESUME_OPENTTD };
+	enum ExecutionType { ET_CALL, ET_RESUME_GENERATOR, ET_RESUME_VM, ET_RESUME_THROW_VM, ET_RESUME_OPENTTD };
 	SQVM(SQSharedState *ss);
 	~SQVM();
 	bool Init(SQVM *friendvm, SQInteger stacksize);

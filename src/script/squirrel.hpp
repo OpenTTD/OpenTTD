@@ -107,6 +107,11 @@ public:
 	bool Resume(int suspend = -1);
 
 	/**
+	 * Resume the VM with an error so it prints a stack trace.
+	 */
+	void ResumeError();
+
+	/**
 	 * Tell the VM to do a garbage collection run.
 	 */
 	void CollectGarbage();

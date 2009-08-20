@@ -187,6 +187,12 @@ bool Squirrel::Resume(int suspend)
 	return this->vm->_suspended != 0;
 }
 
+void Squirrel::ResumeError()
+{
+	assert(!this->crashed);
+	sq_resumeerror(this->vm);
+}
+
 void Squirrel::CollectGarbage()
 {
 	sq_collectgarbage(this->vm);

@@ -684,10 +684,12 @@ bool SQVM::Execute(SQObjectPtr &closure, SQInteger target, SQInteger nargs, SQIn
 			break;
 		case ET_RESUME_GENERATOR: _generator(closure)->Resume(this, target); ci->_root = SQTrue; traps += ci->_etraps; break;
 		case ET_RESUME_VM:
+		case ET_RESUME_THROW_VM:
 			traps = _suspended_traps;
 			ci->_root = _suspended_root;
 			ci->_vargs = _suspend_varargs;
 			_suspended = SQFalse;
+			if(et  == ET_RESUME_THROW_VM) { SQ_THROW(); }
 			break;
 		case ET_RESUME_OPENTTD:
 			traps = _suspended_traps;
