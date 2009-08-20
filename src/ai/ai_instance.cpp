@@ -620,7 +620,7 @@ void AIInstance::Save()
 			/* We can't kill the AI here, so mark it as crashed (not dead) and
 			 * kill it in the next AI tick. */
 			this->is_dead = false;
-			this->engine->CrashOccured();
+			this->engine->CrashOccurred();
 			return;
 		}
 		AIObject::SetAllowDoCommand(backup_allow);
