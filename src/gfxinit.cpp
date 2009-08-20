@@ -85,7 +85,6 @@ static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int 
 	LoadSpritesIndexed(file_index, &sprite_id, index_tbl);
 }
 
-
 /**
  * Checks whether the MD5 checksums of the files are correct.
  *
@@ -111,25 +110,24 @@ void CheckExternalFiles()
 	char *add_pos = error_msg;
 	const char *last = lastof(error_msg);
 
-	if (used_set->GetNumMissing() != 0) {
+	if (used_set->GetNumInvalid() != 0) {
 		/* Not all files were loaded succesfully, see which ones */
 		add_pos += seprintf(add_pos, last, "Trying to load graphics set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one.\n\nThe following files are corrupted or missing:\n", used_set->name);
 		for (uint i = 0; i < GraphicsSet::NUM_FILES; i++) {
-			if (!used_set->files[i].CheckMD5()) {
-				add_pos += seprintf(add_pos, last, "\t%s (%s)\n", used_set->files[i].filename, used_set->files[i].missing_warning);
-			}
+			MD5File::ChecksumResult res = used_set->files[i].CheckMD5();
+			if (res != MD5File::CR_MATCH) add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", used_set->files[i].filename, res == MD5File::CR_MISMATCH ? "corrupt" : "missing", used_set->files[i].missing_warning);
 		}
 		add_pos += seprintf(add_pos, last, "\n");
 	}
 
 	const SoundsSet *sounds_set = BaseSounds::GetUsedSet();
-	if (sounds_set->GetNumMissing() != 0) {
+	if (sounds_set->GetNumInvalid() != 0) {
 		add_pos += seprintf(add_pos, last, "Trying to load sound set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one.\n\nThe following files are corrupted or missing:\n", sounds_set->name);
 
 		assert_compile(SoundsSet::NUM_FILES == 1);
 		/* No need to loop each file, as long as there is only a single
 		 * sound file. */
-		add_pos += seprintf(add_pos, last, "\t%s (%s)\n", sounds_set->files->filename, sounds_set->files->missing_warning);
+		add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", sounds_set->files->filename, sounds_set->files->CheckMD5() == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
 	}
 
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
@@ -218,31 +216,32 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path)
 
 /**
  * Calculate and check the MD5 hash of the supplied filename.
- * @return true if the checksum is correct.
+ * @return
+ *  CR_MATCH if the MD5 hash matches
+ *  CR_MISMATCH if the MD5 does not match
+ *  CR_NO_FILE if the file misses
  */
-bool MD5File::CheckMD5() const
+MD5File::ChecksumResult MD5File::CheckMD5() const
 {
 	size_t size;
 	FILE *f = FioFOpenFile(this->filename, "rb", DATA_DIR, &size);
 
-	if (f != NULL) {
-		Md5 checksum;
-		uint8 buffer[1024];
-		uint8 digest[16];
-		size_t len;
+	if (f == NULL) return CR_NO_FILE;
 
-		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
-			size -= len;
-			checksum.Append(buffer, len);
-		}
+	Md5 checksum;
+	uint8 buffer[1024];
+	uint8 digest[16];
+	size_t len;
 
-		FioFCloseFile(f);
-
-		checksum.Finish(digest);
-		return memcmp(this->hash, digest, sizeof(this->hash)) == 0;
-	} else { // file not found
-		return false;
+	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+		size -= len;
+		checksum.Append(buffer, len);
 	}
+
+	FioFCloseFile(f);
+
+	checksum.Finish(digest);
+	return memcmp(this->hash, digest, sizeof(this->hash)) == 0 ? CR_MATCH : CR_MISMATCH;
 }
 
 /** Names corresponding to the GraphicsFileType */
@@ -287,10 +286,14 @@ template <class Tbase_set>
 {
 	if (BaseMedia<Tbase_set>::used_set != NULL) return true;
 
-	const Tbase_set *best = BaseMedia<Tbase_set>::available_sets;
+	const Tbase_set *best = NULL;
 	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
-		if (best->found_files < c->found_files ||
-				(best->found_files == c->found_files && (
+		/* Skip unuseable sets */
+		if (c->GetNumMissing() != 0) continue;
+
+		if (best == NULL ||
+				best->valid_files < c->valid_files ||
+				(best->valid_files == c->valid_files && (
 					(best->shortname == c->shortname && best->version < c->version) ||
 					(best->palette != _use_palette && c->palette == _use_palette)))) {
 			best = c;

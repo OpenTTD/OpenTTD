@@ -199,7 +199,7 @@ struct GameOptionsWindow : Window {
 			case GOW_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
 			case GOW_SCREENSHOT_DROPDOWN: SetDParam(0, SPECSTR_SCREENSHOT_START + _cur_screenshot_format); break;
 			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
-			case GOW_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumMissing()); break;
+			case GOW_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
 			case GOW_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
 		}
 	}
@@ -238,10 +238,10 @@ struct GameOptionsWindow : Window {
 			case GOW_BASE_GRF_STATUS:
 				/* Find the biggest description for the default size. */
 				for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
-					uint missing_files = BaseGraphics::GetSet(i)->GetNumMissing();
-					if (missing_files == 0) continue;
+					uint invalid_files = BaseGraphics::GetSet(i)->GetNumInvalid();
+					if (invalid_files == 0) continue;
 
-					SetDParam(0, missing_files);
+					SetDParam(0, invalid_files);
 					*size = maxdim(*size, GetStringBoundingBox(STR_GAME_OPTIONS_BASE_GRF_STATUS));
 				}
 				break;

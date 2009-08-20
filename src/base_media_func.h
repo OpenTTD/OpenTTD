@@ -95,7 +95,17 @@ bool BaseSet<T, Tnum_files>::FillSetDetails(IniFile *ini, const char *path)
 			file->missing_warning = strdup(item->value);
 		}
 
-		if (file->CheckMD5()) this->found_files++;
+		switch (file->CheckMD5()) {
+			case MD5File::CR_MATCH:
+				this->valid_files++;
+				/* FALL THROUGH */
+			case MD5File::CR_MISMATCH:
+				this->found_files++;
+				break;
+
+			case MD5File::CR_NO_FILE:
+				break;
+		}
 	}
 
 	return true;
@@ -129,8 +139,8 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length)
 		}
 		if (duplicate != NULL) {
 			/* The more complete set takes precedence over the version number. */
-			if ((duplicate->found_files == set->found_files && duplicate->version >= set->version) ||
-					duplicate->found_files > set->found_files) {
+			if ((duplicate->valid_files == set->valid_files && duplicate->version >= set->version) ||
+					duplicate->valid_files > set->valid_files) {
 				DEBUG(grf, 1, "Not adding %s (%i) as base " SET_TYPE " set (duplicate)", set->name, set->version);
 				delete set;
 			} else {
@@ -191,12 +201,15 @@ template <class Tbase_set>
 {
 	p += seprintf(p, last, "List of " SET_TYPE " sets:\n");
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
-		if (!s->IsUseable()) continue;
-
 		p += seprintf(p, last, "%18s: %s", s->name, s->description);
-		int missing = s->GetNumMissing();
-		if (missing != 0) {
-			p += seprintf(p, last, " (missing %i file%s)\n", missing, missing == 1 ? "" : "s");
+		int invalid = s->GetNumInvalid();
+		if (invalid != 0) {
+			int missing = s->GetNumMissing();
+			if (missing == 0) {
+				p += seprintf(p, last, " (%i corrupt file%s)\n", invalid, invalid == 1 ? "" : "s");
+			} else {
+				p += seprintf(p, last, " (unuseable: %i missing file%s)\n", missing, missing == 1 ? "" : "s");
+			}
 		} else {
 			p += seprintf(p, last, "\n");
 		}
@@ -213,7 +226,7 @@ template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
 {
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
-		if (!s->IsUseable()) continue;
+		if (s->GetNumMissing() != 0) continue;
 
 		if (s->shortname != ci->unique_id) continue;
 		if (!md5sum) return true;
@@ -246,7 +259,7 @@ template <class Tbase_set>
 {
 	int n = 0;
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
-		if (s != BaseMedia<Tbase_set>::used_set && !s->IsUseable()) continue;
+		if (s != BaseMedia<Tbase_set>::used_set && s->GetNumMissing() != 0) continue;
 		n++;
 	}
 	return n;
@@ -258,7 +271,7 @@ template <class Tbase_set>
 	int n = 0;
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
 		if (s == BaseMedia<Tbase_set>::used_set) return n;
-		if (!s->IsUseable()) continue;
+		if (s->GetNumMissing() != 0) continue;
 		n++;
 	}
 	return -1;
@@ -268,7 +281,7 @@ template <class Tbase_set>
 /* static */ const Tbase_set *BaseMedia<Tbase_set>::GetSet(int index)
 {
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
-		if (s != BaseMedia<Tbase_set>::used_set && !s->IsUseable()) continue;
+		if (s != BaseMedia<Tbase_set>::used_set && s->GetNumMissing() != 0) continue;
 		if (index == 0) return s;
 		index--;
 	}

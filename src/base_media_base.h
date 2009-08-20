@@ -13,11 +13,18 @@ struct ContentInfo;
 
 /** Structure holding filename and MD5 information about a single file */
 struct MD5File {
+	/** The result of a checksum check */
+	enum ChecksumResult {
+		CR_MATCH,    ///< The file did exist and the md5 checksum did match
+		CR_MISMATCH, ///< The file did exist, just the md5 checksum did not match
+		CR_NO_FILE,  ///< The file did not exist
+	};
+
 	const char *filename;        ///< filename
 	uint8 hash[16];              ///< md5 sum of the file
 	const char *missing_warning; ///< warning when this file is missing
 
-	bool CheckMD5() const;
+	ChecksumResult CheckMD5() const;
 };
 
 /**
@@ -40,6 +47,7 @@ struct BaseSet {
 
 	MD5File files[NUM_FILES];  ///< All files part of this set
 	uint found_files;          ///< Number of the files that could be found
+	uint valid_files;          ///< Number of the files that could be found and are valid
 
 	T *next;                   ///< The next base set in this list
 
@@ -63,6 +71,16 @@ struct BaseSet {
 	int GetNumMissing() const
 	{
 		return Tnum_files - this->found_files;
+	}
+
+	/**
+	 * Get the number of invalid files.
+	 * @note a missing file is invalid too!
+	 * @return the number
+	 */
+	int GetNumInvalid() const
+	{
+		return Tnum_files - this->valid_files;
 	}
 
 	/**
@@ -172,16 +190,6 @@ enum GraphicsFileType {
 struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT> {
 	PaletteType palette;       ///< Palette of this graphics set
 
-	/**
-	 * Is this set useable? Are enough files found to think it exists.
-	 * @return true if it's useable.
-	 */
-	bool IsUseable() const
-	{
-		/* Do not find 'only' openttd[dw].grf */
-		return this->found_files > 1;
-	}
-
 	bool FillSetDetails(struct IniFile *ini, const char *path);
 };
 
@@ -196,14 +204,6 @@ public:
 
 /** All data of a sounds set. */
 struct SoundsSet : BaseSet<SoundsSet, 1> {
-	/**
-	 * Is this set useable? Are enough files found to think it exists.
-	 * @return true if it's useable.
-	 */
-	bool IsUseable() const
-	{
-		return this->found_files > 0;
-	}
 };
 
 /** All data/functions related with replacing the base sounds */

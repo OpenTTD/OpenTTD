@@ -281,10 +281,14 @@ template <class Tbase_set>
 {
 	if (BaseMedia<Tbase_set>::used_set != NULL) return true;
 
-	const Tbase_set *best = BaseMedia<Tbase_set>::available_sets;
+	const Tbase_set *best = NULL;
 	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
-		if (best->found_files < c->found_files ||
-				(best->found_files == c->found_files &&
+		/* Skip unuseable sets */
+		if (c->GetNumMissing() != 0) continue;
+
+		if (best == NULL ||
+				best->valid_files < c->valid_files ||
+				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {
 			best = c;
 		}
