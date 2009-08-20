@@ -564,10 +564,6 @@ int ttd_main(int argc, char *argv[])
 	/* initialize all variables that are allocated dynamically */
 	InitializeDynamicVariables();
 
-	/* Sample catalogue */
-	DEBUG(misc, 1, "Loading sound effects...");
-	SoundInitialize("sample.cat");
-
 	/* Initialize FreeType */
 	InitFreeType();
 
@@ -580,6 +576,10 @@ int ttd_main(int argc, char *argv[])
 			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
 			usererror("Failed to select requested graphics set '%s'", graphics_set);
 	}
+
+	/* Sample catalogue */
+	DEBUG(misc, 1, "Loading sound effects...");
+	SoundInitialize("sample.cat");
 
 	/* Initialize game palette */
 	GfxInitPalettes();

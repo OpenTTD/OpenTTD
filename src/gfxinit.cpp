@@ -229,16 +229,26 @@ void CheckExternalFiles()
 
 	DEBUG(grf, 1, "Using the %s base graphics set with the %s palette", _used_graphics_set->name, _use_palette == PAL_DOS ? "DOS" : "Windows");
 
-	static const size_t ERROR_MESSAGE_LENGTH = 128;
-	char error_msg[ERROR_MESSAGE_LENGTH * (MAX_GFT + 1)];
+	static const size_t ERROR_MESSAGE_LENGTH = 256;
+	static const size_t MISSING_FILE_MESSAGE_LENGTH = 128;
+
+	/* Allocate for a message for each missing file and for one error
+	 * message per set.
+	 */
+	char error_msg[MISSING_FILE_MESSAGE_LENGTH * (MAX_GFT + 1) + 2 * ERROR_MESSAGE_LENGTH];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
 	const char *last = lastof(error_msg);
 
-	for (uint i = 0; i < lengthof(_used_graphics_set->files); i++) {
-		if (!FileMD5(_used_graphics_set->files[i])) {
-			add_pos += seprintf(add_pos, last, "Your '%s' file is corrupted or missing! %s\n", _used_graphics_set->files[i].filename, _used_graphics_set->files[i].missing_warning);
+	if (_used_graphics_set->found_grfs != MAX_GFT) {
+		/* Not all files were loaded succesfully, see which ones */
+		add_pos += seprintf(add_pos, last, "Trying to load graphics set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one.\n\nThe following files are corrupted or missing:\n", _used_graphics_set->name);
+		for (uint i = 0; i < lengthof(_used_graphics_set->files); i++) {
+			if (!FileMD5(_used_graphics_set->files[i])) {
+				add_pos += seprintf(add_pos, last, "\t%s (%s)\n", _used_graphics_set->files[i].filename, _used_graphics_set->files[i].missing_warning);
+			}
 		}
+		add_pos += seprintf(add_pos, last, "\n");
 	}
 
 	bool sound = false;
@@ -247,7 +257,8 @@ void CheckExternalFiles()
 	}
 
 	if (!sound) {
-		add_pos += seprintf(add_pos, last, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
+		add_pos += seprintf(add_pos, last, "Trying to load sound set, but it is incomplete. The game will probably not run correctly until you properly install this set or select another one.\n\nThe following files are corrupted or missing:\n");
+		add_pos += seprintf(add_pos, last, "\tsample.cat (You can find it on your Transport Tycoon Deluxe CD-ROM.)\n");
 	}
 
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
