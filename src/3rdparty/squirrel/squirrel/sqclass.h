@@ -128,7 +128,17 @@ public:
 	}
 	void Release() {
 		_uiRef++;
-		if (_hook) { _hook(_userpointer,0);}
+		try {
+			if (_hook) { _hook(_userpointer,0);}
+		} catch (...) {
+			_uiRef--;
+			if (_uiRef == 0) {
+				SQInteger size = _memsize;
+				this->~SQInstance();
+				SQ_FREE(this, size);
+			}
+			throw;
+		}
 		_uiRef--;
 		if(_uiRef > 0) return;
 		SQInteger size = _memsize;
