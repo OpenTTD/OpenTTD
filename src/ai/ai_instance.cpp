@@ -606,6 +606,7 @@ void AIInstance::Save()
 			/* The script crashed in the Save function. We can't kill
 			 * it here, but do so in the next AI tick. */
 			SaveEmpty();
+			this->engine->CrashOccurred();
 			return;
 		}
 		AIObject::SetAllowDoCommand(backup_allow);
