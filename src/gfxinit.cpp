@@ -100,21 +100,36 @@ void CheckExternalFiles()
 
 	DEBUG(grf, 1, "Using the %s base graphics set with the %s palette", used_set->name, _use_palette == PAL_DOS ? "DOS" : "Windows");
 
-	static const size_t ERROR_MESSAGE_LENGTH = 128;
-	char error_msg[ERROR_MESSAGE_LENGTH * (MAX_GFT + 1)];
+	static const size_t ERROR_MESSAGE_LENGTH = 256;
+	static const size_t MISSING_FILE_MESSAGE_LENGTH = 128;
+
+	/* Allocate for a message for each missing file and for one error
+	 * message per set.
+	 */
+	char error_msg[MISSING_FILE_MESSAGE_LENGTH * (GraphicsSet::NUM_FILES + SoundsSet::NUM_FILES) + 2 * ERROR_MESSAGE_LENGTH];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
 	const char *last = lastof(error_msg);
 
-	for (uint i = 0; i < MAX_GFT; i++) {
-		if (!used_set->files[i].CheckMD5()) {
-			add_pos += seprintf(add_pos, last, "Your '%s' file is corrupted or missing! %s\n", used_set->files[i].filename, used_set->files[i].missing_warning);
+	if (used_set->GetNumMissing() != 0) {
+		/* Not all files were loaded succesfully, see which ones */
+		add_pos += seprintf(add_pos, last, "Trying to load graphics set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one.\n\nThe following files are corrupted or missing:\n", used_set->name);
+		for (uint i = 0; i < GraphicsSet::NUM_FILES; i++) {
+			if (!used_set->files[i].CheckMD5()) {
+				add_pos += seprintf(add_pos, last, "\t%s (%s)\n", used_set->files[i].filename, used_set->files[i].missing_warning);
+			}
 		}
+		add_pos += seprintf(add_pos, last, "\n");
 	}
 
 	const SoundsSet *sounds_set = BaseSounds::GetUsedSet();
-	if (!sounds_set->files->CheckMD5()) {
-		add_pos += seprintf(add_pos, last, "Your '%s' file is corrupted or missing! %s\n", sounds_set->files->filename, sounds_set->files->missing_warning);
+	if (sounds_set->GetNumMissing() != 0) {
+		add_pos += seprintf(add_pos, last, "Trying to load sound set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one.\n\nThe following files are corrupted or missing:\n", sounds_set->name);
+
+		assert_compile(SoundsSet::NUM_FILES == 1);
+		/* No need to loop each file, as long as there is only a single
+		 * sound file. */
+		add_pos += seprintf(add_pos, last, "\t%s (%s)\n", sounds_set->files->filename, sounds_set->files->missing_warning);
 	}
 
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
