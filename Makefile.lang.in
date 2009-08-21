@@ -14,6 +14,7 @@ LANGS_SRC    = $(shell ls $(LANG_DIR)/*.txt)
 LANGS        = $(LANGS_SRC:$(LANG_DIR)/%.txt=%.lng)
 CXX_BUILD    = !!CXX_BUILD!!
 CFLAGS_BUILD = !!CFLAGS_BUILD!!
+LDFLAGS_BUILD= !!LDFLAGS_BUILD!!
 STRGEN_FLAGS = !!STRGEN_FLAGS!!
 STAGE        = !!STAGE!!
 LANG_SUPPRESS= !!LANG_SUPPRESS!!
@@ -59,7 +60,7 @@ lang/english.txt: $(LANG_DIR)/english.txt
 
 $(STRGEN): alloc_func.o string.o strgen.o
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) $^ -o $@
+	$(Q)$(CXX_BUILD) $(LDFLAGS_BUILD) $^ -o $@
 
 table/strings.h: lang/english.txt $(STRGEN)
 	$(E) '$(STAGE) Generating $@'

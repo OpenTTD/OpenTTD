@@ -1102,6 +1102,8 @@ make_compiler_cflags() {
 make_cflags_and_ldflags() {
 	# General CFlags for BUILD
 	CFLAGS_BUILD=""
+	#LDFLAGS for BUILD
+	LDFLAGS_BUILD=""
 	# General CFlags for HOST
 	CFLAGS="$CFLAGS -D$os"
 	# Libs to compile. In fact this is just LDFLAGS
@@ -1162,12 +1164,12 @@ make_cflags_and_ldflags() {
 		fi
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
 			flags="$flags -mno-cygwin"
-			LDFLAGS="$LDFLAGS -mno-cygwin"
-		fi
-
-		if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ]; then
-			LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
+			LDFLAGS="$LDFLAGS -mno-cygwin -Wl,--subsystem,windows"
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
+
+			if [ $cc_version -ge 44 ]; then
+				LDFLAGS_BUILD="$LDFLAGS_BUILD -static-libgcc"
+			fi
 		fi
 	fi
 
@@ -2648,6 +2650,7 @@ make_sed() {
 		s@!!STRGEN_FLAGS!!@$strgen_flags@g;
 		s@!!LIBS!!@$LIBS@g;
 		s@!!LDFLAGS!!@$T_LDFLAGS@g;
+		s@!!LDFLAGS_BUILD!!@$LDFLAGS_BUILD@g;
 		s@!!BIN_DIR!!@$BIN_DIR@g;
 		s@!!ROOT_DIR!!@$ROOT_DIR@g;
 		s@!!MEDIA_DIR!!@$MEDIA_DIR@g;
