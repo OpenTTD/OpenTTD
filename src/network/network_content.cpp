@@ -612,7 +612,7 @@ void ClientNetworkContentSocketHandler::UnselectAll()
 {
 	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
 		ContentInfo *ci = *iter;
-		if (ci->IsSelected()) ci->state = ContentInfo::UNSELECTED;
+		if (ci->IsSelected() && ci->state != ContentInfo::ALREADY_HERE) ci->state = ContentInfo::UNSELECTED;
 	}
 }
 
