@@ -1,5 +1,3 @@
-# $Id$
-
 ##name Russian
 ##ownname Русский
 ##isocode ru_RU
@@ -12,6 +10,8 @@
 ##grflangid 0x07
 ##gender m f n p
 ##case m f n p nom gen dat acc abl pre
+# $Id$
+
 
 #
 
@@ -545,7 +545,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация о земле
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Переключатель Консоли
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Отладка ИИ
 STR_ABOUT_MENU_SCREENSHOT                                       :Снимок экрана (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Полный снимок экрана (Ctrl-G)

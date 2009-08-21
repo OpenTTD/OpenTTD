@@ -1,5 +1,3 @@
-# $Id$
-
 ##name Swedish
 ##ownname Svenska
 ##isocode sv_SE
@@ -10,6 +8,8 @@
 ##decimalsep ,
 ##winlangid 0x081d
 ##grflangid 0x2e
+# $Id$
+
 
 #
 
@@ -1768,12 +1768,13 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ladda ned innehåll är inte möjligt!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Standardgrafikinställningar
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafikpaket
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :Datorspelare
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Datorspelarbibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Höjdkarta
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Ljudpaket
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laddar ned innehåll...
@@ -3265,7 +3266,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...för 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...för nära en annan stad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...för många städer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...det finns ingen plats kvar på kartan
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avanserade Inställningar  ->Ekonomi->Städer.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avancerade Inställningar -> Ekonomi -> Städer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 
 # Industry related errors
@@ -3390,7 +3391,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan inte bygga slussar här...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan inte placera flod här...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...måste byggas på vatten
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Kan inte bygga på vatten
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...kan inte bygga på vatten
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Måste först ta bort kanalen
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan inte bygga akvedukt här...
 
@@ -3405,7 +3406,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan inte
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broändar ej på samma höjd
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bro är för låg för terrängen
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- och slutpunkt måste ligga i linje
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...brons ändar måste båda vara på land
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...brons båda ändar måste vara på land
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...
@@ -3417,7 +3418,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan inte
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt i vägen
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...företagets huvudkontor i vägen
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...huvudkontor i vägen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan inte köpa denna mark...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...du äger den redan!
 
@@ -3499,9 +3500,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kan inte
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan inte flytta denna order...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan inte hoppa över nuvarande order...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan inte hoppa över till vald order...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}fordonet kan inte komma fram till alla stationer
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}fordonet kan inte komma fram till denna station
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}ett fordon som delar denna order kan inte komma till denna station
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}...fordonet kan inte nå alla stationer
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}...fordonet kan inte komma fram till denna station
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...ett fordon som delar denna order kan inte komma till denna station
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan inte dela orderlistan...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan inte kopiera orderlistan...

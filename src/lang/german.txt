@@ -1,5 +1,3 @@
-# $Id$
-
 ##name German
 ##ownname Deutsch
 ##isocode de_DE
@@ -11,6 +9,8 @@
 ##winlangid 0x0407
 ##grflangid 0x02
 ##gender m w n p
+# $Id$
+
 
 #
 
@@ -2560,7 +2560,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produzie
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produziert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern (vielfache von 8, bis 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P ug üge}
