@@ -15,6 +15,7 @@ CFLAGS       = !!CFLAGS!!
 CFLAGS_BUILD = !!CFLAGS_BUILD!!
 LIBS         = !!LIBS!!
 LDFLAGS      = !!LDFLAGS!!
+LDFLAGS_BUILD= !!LDFLAGS_BUILD!!
 ROOT_DIR     = !!ROOT_DIR!!
 BIN_DIR      = !!BIN_DIR!!
 LANG_DIR     = !!LANG_DIR!!
@@ -163,7 +164,7 @@ ifeq ("$(SRC_OBJS_DIR)/$(DEPEND)","$(MAKEDEPEND)")
 DEP := $(MAKEDEPEND)
 $(SRC_OBJS_DIR)/$(DEPEND): $(SRC_DIR)/depend/depend.cpp
 	$(E) '$(STAGE) Compiling and linking $(DEPEND)'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(LDFLAGS_BUILD) -o $@ $<
 endif
 
 # Make sure that only 'make depend' ALWAYS triggers a recheck
