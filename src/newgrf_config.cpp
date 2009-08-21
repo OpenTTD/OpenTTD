@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "md5.h"
+#include "3rdparty/md5/md5.h"
 #include "newgrf.h"
 #include "string_func.h"
 #include "gamelog.h"

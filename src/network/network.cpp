@@ -22,7 +22,7 @@
 #include "core/host.h"
 #include "network_gui.h"
 #include "../console_func.h"
-#include "../md5.h"
+#include "../3rdparty/md5/md5.h"
 #include "../core/random_func.hpp"
 #include "../window_func.h"
 #include "../string_func.h"

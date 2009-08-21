@@ -14,7 +14,7 @@
 #include "../command_func.h"
 #include "../console_func.h"
 #include "../fileio_func.h"
-#include "../md5.h"
+#include "../3rdparty/md5/md5.h"
 #include "../strings_func.h"
 #include "../window_func.h"
 #include "../string_func.h"

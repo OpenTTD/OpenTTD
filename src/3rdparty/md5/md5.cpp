@@ -56,9 +56,9 @@
   1999-05-03 lpd Original version.
  */
 
-#include "stdafx.h"
-#include "core/bitmath_func.hpp"
-#include "core/endian_func.hpp"
+#include "../../stdafx.h"
+#include "../../core/bitmath_func.hpp"
+#include "../../core/endian_func.hpp"
 #include "md5.h"
 
 #define T_MASK ((uint32)~0)

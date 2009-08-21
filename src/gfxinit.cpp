@@ -8,7 +8,7 @@
 #include "fileio_func.h"
 #include "fios.h"
 #include "newgrf.h"
-#include "md5.h"
+#include "3rdparty/md5/md5.h"
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "settings_type.h"

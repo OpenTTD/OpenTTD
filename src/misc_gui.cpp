@@ -381,6 +381,7 @@ struct AboutWindow : public Window {
 			"",
 			"  Alberto Demichelis - Squirrel scripting language © 2003-2008",
 			"  Markus F.X.J. Oberhumer - (Mini)LZO for loading old savegames © 1996-2008",
+			"  L. Peter Deutsch - MD5 implementation © 1999, 2000, 2002",
 			"  Michael Blunck - Pre-Signals and Semaphores © 2003",
 			"  George - Canal/Lock graphics © 2003-2004",
 			"  David Dallaston - Tram tracks",

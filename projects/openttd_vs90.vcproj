@@ -593,10 +593,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\md5.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\misc.cpp"
 				>
 			</File>
@@ -1110,10 +1106,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\map_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\md5.h"
 				>
 			</File>
 			<File
@@ -2322,6 +2314,18 @@
 			</File>
 			<File
 				RelativePath=".\..\src\table\water_land.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="MD5"
+			>
+			<File
+				RelativePath=".\..\src\3rdparty\md5\md5.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\md5\md5.h"
 				>
 			</File>
 		</Filter>

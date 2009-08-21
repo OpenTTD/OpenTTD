@@ -523,7 +523,7 @@ void FiosGetHeightmapList(SaveLoadDialogMode mode)
 #if defined(ENABLE_NETWORK)
 #include "core/smallvec_type.hpp"
 #include "network/network_content.h"
-#include "md5.h"
+#include "3rdparty/md5/md5.h"
 
 /** Basic data to distinguish a scenario. Used in the server list window */
 struct ScenarioIdentifier {

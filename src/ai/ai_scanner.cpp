@@ -334,7 +334,7 @@ char *AIScanner::GetAIConsoleList(char *p, const char *last)
 
 #if defined(ENABLE_NETWORK)
 #include "../network/network_content.h"
-#include "../md5.h"
+#include "../3rdparty/md5/md5.h"
 #include "../tar_type.h"
 
 /** Helper for creating a MD5sum of all files within of an AI. */

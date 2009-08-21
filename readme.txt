@@ -502,6 +502,7 @@ Thanks to:
   Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
   Alberto Demichelis             - Squirrel scripting language
   Markus F.X.J. Oberhumer        - MiniLZO for loading old savegames
+  L. Peter Deutsch               - MD5 implementation
   Michael Blunck                 - For revolutionizing TTD with awesome graphics
   George                         - Canal graphics
   David Dallaston (Pikka)        - Tram tracks
