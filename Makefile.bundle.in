@@ -29,10 +29,12 @@ endif
 
 # An OSX application bundle needs the data files, lang files and openttd executable in a different location.
 ifdef OSXAPP
+AI_DIR   = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/ai
 DATA_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/data
 LANG_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/lang
 TTD_DIR  = $(BUNDLE_DIR)/$(OSXAPP)/Contents/MacOS
 else
+AI_DIR   = $(BUNDLE_DIR)/ai
 DATA_DIR = $(BUNDLE_DIR)/data
 LANG_DIR = $(BUNDLE_DIR)/lang
 TTD_DIR  = $(BUNDLE_DIR)
@@ -42,6 +44,7 @@ bundle: all
 	@echo '[BUNDLE] Constructing bundle'
 	$(Q)rm -rf   "$(BUNDLE_DIR)"
 	$(Q)mkdir -p "$(BUNDLE_DIR)"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/ai"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/docs"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
@@ -57,6 +60,7 @@ ifdef OSXAPP
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
 endif
 	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
+	$(Q)cp "$(BIN_DIR)/ai/"compat_*.nut       "$(AI_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/"*.grf            "$(DATA_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/"*.obg            "$(DATA_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/"*.obs            "$(DATA_DIR)/"
@@ -159,6 +163,7 @@ install: bundle
 	$(Q)install -d "$(INSTALL_BINARY_DIR)"
 	$(Q)install -d "$(INSTALL_ICON_DIR)"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/ai"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/data"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/scripts"
@@ -169,6 +174,7 @@ else
 	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)/${BINARY_NAME}"
 endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/lang/"* "$(INSTALL_DATA_DIR)/lang"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/ai/"* "$(INSTALL_DATA_DIR)/ai"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/scripts/"* "$(INSTALL_DATA_DIR)/scripts"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(INSTALL_DOC_DIR)"

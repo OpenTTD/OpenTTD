@@ -106,6 +106,10 @@ Section "!OpenTTD" Section1
 	SetOutPath "$INSTDIR\lang\"
 	File ${PATH_ROOT}bin\lang\*.lng
 
+	; Copy AI files
+	SetOutPath "$INSTDIR\ai\"
+	File ${PATH_ROOT}bin\ai\compat_*.nut
+
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
 	File ${PATH_ROOT}bin\data\*.grf
@@ -297,6 +301,9 @@ Section "Uninstall"
 	Delete "$INSTDIR\hs.dat"
 	Delete "$INSTDIR\cached_sprites.*"
 	Delete "$INSTDIR\save\autosave\network*.tmp" ; temporary network file
+
+	; AI files
+	Delete "$INSTDIR\ai\compat_*.nut"
 
 	; Data files
 	Delete "$INSTDIR\data\opntitle.dat"
