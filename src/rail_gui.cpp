@@ -806,7 +806,7 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile)
 	{
-		DoCommand(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		DoCommand(tile, _cur_railtype, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
