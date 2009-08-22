@@ -44,11 +44,11 @@ bundle: all
 	@echo '[BUNDLE] Constructing bundle'
 	$(Q)rm -rf   "$(BUNDLE_DIR)"
 	$(Q)mkdir -p "$(BUNDLE_DIR)"
-	$(Q)mkdir -p "$(BUNDLE_DIR)/ai"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/docs"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
+	$(Q)mkdir -p "$(AI_DIR)"
 	$(Q)mkdir -p "$(DATA_DIR)"
 	$(Q)mkdir -p "$(LANG_DIR)"
 ifdef OSXAPP
