@@ -267,6 +267,7 @@ STR_SORT_BY_MODEL                                               :Μοντέλο
 STR_SORT_BY_VALUE                                               :Αξία
 STR_SORT_BY_LENGTH                                              :Μήκος
 STR_SORT_BY_LIFE_TIME                                           :Υπόλοιπη διάρκεια ζωής
+STR_SORT_BY_TIMETABLE_DELAY                                     :Καθυστέρηση προγραμματισμού
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
@@ -325,7 +326,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Τοπο
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Αποθήκευση σεναρίου
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Φόρτωση σεναρίου
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Φόρτωση heightmap
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Φόρτωση χάρτη υψομετρίας
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος από το πρόγραμμα επεξεργασίας
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
@@ -1115,7 +1116,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Αλγ�
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικό
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Περιστροφή Heightmap: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Περιστροφή χάρτη υψομετρίας: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετη Φορά Ρολογιού
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {ORANGE}{STRING}
@@ -1287,7 +1288,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Νέο Παιχνίδι
 STR_INTRO_LOAD_GAME                                             :{BLACK}Φόρτωση Παιχνιδιού
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παιξτε το Σενάριο
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε Heightmap
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε υψομετρίκο χάρτη
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Διαμόρφωση Σεναρίου
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Πολοί παίκτες
 
@@ -1301,7 +1302,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Έξοδ
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας heightmap για χάρτη
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας χάρτη υψομετρίας
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Έναρξη παιχνιδιού με πολλούς παίκτες
@@ -1415,6 +1416,7 @@ STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Φόρτ
 STR_FACE_LOAD_DONE                                              :{WHITE}Το αγαπημένο πρόσωπο έχει φορτωθεί από το αρχείο ρυθμίσεων του OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Αρ. προσώπου παίκτη
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Εμφάνιση και/ή επιλογή του αριθμου προσωπου του παίκτη
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Προβολη και/ή ορισμός αριθμού προσώπου παίκτη
 STR_FACE_FACECODE_SET                                           :{WHITE}Ο νέος αριθμός προσώπου έχει οριστεί
 STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο αριθμός προσώπου του παίκτη - πρέπει να είναι αριθμητικός μεταξύ του 0 και του 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
@@ -1743,6 +1745,7 @@ STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Μαρκ
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλέξτε αναβαθμίσεις
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπάρχωντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
 STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Κατέβασμα
@@ -1773,6 +1776,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Βιβλιοθήκη AI
 STR_CONTENT_TYPE_SCENARIO                                       :Σενάριο
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Χάρτης Υψομετρίας
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Βασικοί ήχοι
 
 # Content downloading progress window
@@ -1859,6 +1863,9 @@ STR_STATION_CLASS_WAYP                                          :Σημείο κ
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή σηματοδότη
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Πυκνότητα σηματοδοτών με σύρσιμο
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση πυκνότητας σηματοδοτών με σύρσιμο
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση πυκνότητας σηματοδοτών με σύρσιμο
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας
@@ -2139,7 +2146,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Αποθ
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Φόρτωση Παιχνιδιού
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθήκευση Σεναρίου
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Φόρτωση Σεναρίου
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Φόρτωση Heightmap
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Φόρτωση χάρτη υψομετρίας
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Κάντε κλίκ εδώ για να πάτε στον τρέχων φάκελλο αποθήκευσης
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ελεύθερα
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Λίστα δίσκων, φακέλλων και αποθηκευμένων παιχνιδιών
@@ -2158,6 +2165,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθ. πόλεων:
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομήνια:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ. βιομηχανιών:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού μια πάνω
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού μια κάτω
 STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαία δημιουργία
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
@@ -2177,8 +2187,11 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Τυχαία
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Μέγεθος: {ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 
 # SE Map generation
@@ -2187,8 +2200,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Επίπ
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Δημιουρία επίπεδου εδάφους
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Τυχαίο έδαφος
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Ύψος επίπεδης γης:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφου μια κάτω
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφου μια πάνω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους μια κάτω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους μια πάνω
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Αλλαγή του ύψους του επίπεδου εδαφους
 
@@ -2201,6 +2214,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία Κόσμου
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία Δέντρων
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Δημιουργία μη μετακινούμενων
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριου και πετρώδους περιοχής
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
 # NewGRF settings
@@ -2209,6 +2225,11 @@ STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Πρόσ
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Πρόσθεσε ένα αρχείο NewGRF στη λίστα
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Αφαίρεσε
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Αφαίρεσε ένα αρχείο NewGRF από τη λίστα
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετακίνηση πάνω
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση κάτω
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα άρχεια NewGRF που είναι εγκατεστημένα. Κάντε κλικ σε ένα αρχείο για αλλάξετε τις παραμέτρους του
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Εναλλαγή παλέτας
@@ -2226,8 +2247,12 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παρά
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Δεν υπάρχουν διαθέσιμες πληροφορίες
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
 
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
 
 # NewGRF add window
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Διαθέσιμα αρχεία NewGRF
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Προσθήκη στην επιλόγη
+STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωση σας
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2254,12 +2279,19 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσ
 # NewGRF 'it's broken' warnings
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρένο'{VEHICLE}' που ανήκει στην '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το Παιχνίδι μπορεί ν΄αποσυγχρονιστεί ή να κρασάρει.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευή για την μηχανή '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει να ανακατασκευάσει σώστα
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόγχο στην ανακοίνωση παραγωγής.
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Αλλαγή κειμένου πινακίδας
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Πηγαίνετε στην επόμενη πινακίδα
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Πηγαίνετε στη προηγούμενη πινακίδα
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστε ένα όνομα για την πινακίδα
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
@@ -2373,10 +2405,12 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφά
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Μετονομασία περιοχής σταθμού/φόρτωσης
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της είκονας στη τοποθεσία του σημείου καθοδήγησης
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Αλλαγή ονόματος σημαδούρας
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου καθοδήγησης
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Οικονομικά {BLACK}{COMPANYNUM}
@@ -2473,13 +2507,18 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Παρά
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Παράγει: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής (πολλαπλάσιο του 8, μέχρι το 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Τραίν{P ο α}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P Όχημα Οχήματα} δρόμου
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Πλοί{P ο α}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροπλάνο
 
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τραίνα- Κάντε κλικ στο τραίνο για πληροφορίες
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Όχηματα δρόμου - κάντε κλικ στο όχημα για πληροφορίες
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - κάντε κλικ στο πλοίο για πληροφορίες
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροπλάνα - κάντε κλικ στο αεροπλάνο για πληροφορίες
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY} (προηγούμενο έτος: {CURRENCY})
 
@@ -2863,6 +2902,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... άπ
 STR_ERROR_BMPMAP                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από το ΒΜΡ...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... αδύνατη η μετατροπή του τύπου εικόνας
 
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Προειδοποιήση κλίμακας
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλάγη μεγέθους του πηγαίου χάρτη δεν συνίσταται. Να προχωρήσω με την δημιουργία;
 
 # Screenshot related messages

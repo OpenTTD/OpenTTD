@@ -305,7 +305,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Adeiladu
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Agor y bar offer tirweddu er mwyn codi neu ostwng tir, plannu coed ayb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Dangos y ffenestr Sain/Cerddoriaeth
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Dangos Neges/Adroddiad newyddion ddiwethaf, Dangos Dewisiadau Negeseuon
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gwybodaeth am yr ardal tir
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gwybodaeth am yr ardal tir, debwg yr AI, lluniau sgrin, amdan OpeenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gadael y golygydd senario, cau
@@ -338,7 +338,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Gosodiadau NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Dewisiadau tryloywder
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Dangos enwau trefi
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Dangos enwau gorsafoedd
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Dangos Pwyntiau Llwybro
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Dangos Pwyntiau Llwybrau
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Dangos arwyddion
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animeiddiad llawn
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Manylder llawn
@@ -792,7 +792,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Mae {VEH
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE} Mae {VEHICLE} ar goll.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd methiant yr ailffitio {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} newydd yn awr ar gael!
@@ -925,6 +925,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Dewiswch
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ar goll/corrupted file{P "" iau}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}gwybodaeth ychwanegol am y set sall graffeg
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd y modd sgrin llawn
 
 # Custom currency window
@@ -986,7 +987,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Agwedd 
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Dim
-STR_NUM_VERY_LOW                                                :Isel iawn
+STR_NUM_VERY_LOW                                                :STR_NUM_ISEL_IAWN
 STR_NUM_LOW                                                     :Isel
 STR_NUM_NORMAL                                                  :Arferol
 STR_NUM_HIGH                                                    :Anodd
@@ -1150,7 +1151,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hir (31fed Rhag
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :byr(31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth  gychwyn gêm newydd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth gychwyn gêm newydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Defnyddio'r rhestr cerbydau uwch {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :I ffwrdd
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eich cwmni
@@ -2552,7 +2553,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Cynhyrch
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Cynhyrchu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch (multiple of 8, up to 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tr{P "ên" au}

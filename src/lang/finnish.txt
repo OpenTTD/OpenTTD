@@ -2564,7 +2564,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Tuottaa:
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Aloita tuotanto
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040 asti)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} junaa

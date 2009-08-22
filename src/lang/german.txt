@@ -2565,7 +2565,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produzie
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produziert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern (vielfache von 8, bis 2040)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern (Vielfache von 8, bis 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P ug üge}
@@ -3048,7 +3048,7 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fah
 STR_ORDER_GO_TO_WAYPOINT                                        :Fahre über {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Fahre ohne Halt über {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Falls nötig, Wartung in
+STR_ORDER_SERVICE_AT                                            :Falls nötig, fahre zwecks Wartung zu
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt zwecks Wartung zu
 
 STR_ORDER_NEAREST_DEPOT                                         :nächsten
