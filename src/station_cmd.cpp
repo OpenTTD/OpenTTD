@@ -426,6 +426,8 @@ void Station::UpdateVirtCoord()
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
 	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION);
+
+	InvalidateWindow(WC_STATION_VIEW, this->index);
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */

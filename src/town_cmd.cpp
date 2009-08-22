@@ -338,6 +338,8 @@ void Town::UpdateVirtCoord()
 	SetDParam(1, this->population);
 	this->sign.UpdatePosition(pt.x, pt.y - 24,
 		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN);
+
+	InvalidateWindow(WC_TOWN_VIEW, this->index);
 }
 
 /** Update the virtual coords needed to draw the town sign for all towns. */
