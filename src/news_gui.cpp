@@ -399,7 +399,7 @@ static WindowDesc _thin_news_desc(
 	_thin_news_widgets, _nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
 );
 
-static const Widget _smalll_news_widgets[] = {
+static const Widget _small_news_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   279,    14,    86, 0x0,                      STR_NULL},
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,    11,   279,     0,    13, STR_NEWS_MESSAGE_CAPTION, STR_NULL},
@@ -407,7 +407,7 @@ static const Widget _smalll_news_widgets[] = {
 {   WIDGETS_END},
 };
 
-static NWidgetPart _nested_smalll_news_widgets[] = {
+static NWidgetPart _nested_small_news_widgets[] = {
 	/* Caption + close box */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
@@ -429,12 +429,12 @@ static NWidgetPart _nested_smalll_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _smalll_news_desc(
+static WindowDesc _small_news_desc(
 	WDP_CENTER, 476, 280, 87, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_smalll_news_widgets,
-	_nested_smalll_news_widgets, lengthof(_nested_smalll_news_widgets)
+	_small_news_widgets,
+	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
 );
 
 
@@ -458,8 +458,8 @@ static void ShowNewspaper(NewsItem *ni)
 			break;
 
 		case NM_SMALL:
-			_smalll_news_desc.top = top;
-			w = new NewsWindow(&_smalll_news_desc, ni);
+			_small_news_desc.top = top;
+			w = new NewsWindow(&_small_news_desc, ni);
 			break;
 
 		default: NOT_REACHED();
