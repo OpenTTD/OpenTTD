@@ -119,6 +119,9 @@ AIInstance::AIInstance(AIInfo *info) :
 	/* Register the AIController */
 	SQAIController_Register(this->engine);
 
+	/* Register the API functions and classes */
+	this->RegisterAPI();
+
 	/* Load and execute the script for this AI */
 	const char *main_script = info->GetMainScript();
 	if (strcmp(main_script, "%_dummy") == 0) {
@@ -135,9 +138,6 @@ AIInstance::AIInstance(AIInfo *info) :
 		this->Died();
 		return;
 	}
-
-	/* Register the API functions and classes */
-	this->RegisterAPI();
 }
 
 AIInstance::~AIInstance()
