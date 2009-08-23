@@ -266,6 +266,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_LENGTH                                              :Længde
 STR_SORT_BY_LIFE_TIME                                           :Resterende levetid
+STR_SORT_BY_TIMETABLE_DELAY                                     :Køreplans forsinkelse
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
 STR_SORT_BY_RATING_MAX                                          :Højeste værdi af last
@@ -305,7 +306,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byg luft
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åbn landskabsværktøjslinjen for at hæve/sænke terræn, plante træer, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikvindue
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis seneste besked/nyhedsrapport, vis beskedvalg
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information, konsol, debug af kunstig intelligens, tag billede, om OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Gem scenarie, hent scenarie, forlad scenarie editoren, afslut
@@ -760,7 +761,7 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Mangel på træer i nærheden får {STRING} til at lukke omgående!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel i dit land!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Global lavkonjuktur!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} øger produktionen!
@@ -792,7 +793,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} er faret vild.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s indtjening sidste år var {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Ombygningsordre stoppet pga. fejl {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi en ombygnings ordre fejlede
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisk fornyelse mislykkedes for {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING} er nu tilgængelig!
@@ -1354,13 +1355,13 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke styrte (ofte) i små lufthavne: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skift klima: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke styrte (ofte) i små lufthavne: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skift klima: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempereret klima
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktisk klima
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropisk klima
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Legetøjsland
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
 
 # Livery window
@@ -2563,7 +2564,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Producer
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Producerer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion (multipla af 8, op til 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog
@@ -2691,7 +2692,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køretøj{P "" er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klik på et tog for information, træk vogn/lokomotiv for at fjerne/tilføje det til toget
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køretøjer - klik på et køretøj for mere information
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skibe - klik på et skib for information
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fly - klik på et fly for information
@@ -3229,8 +3230,8 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Det er n
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikke rydde området....
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...upassende placering
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...allerede bygget
-STR_ERROR_OWNED_BY                                              :{WHITE}...ejes af {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...området ejes af et andet selskab
+STR_ERROR_OWNED_BY                                              :{WHITE}... ejes af {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ejes af et andet selskab
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} i vejen
 
@@ -3254,10 +3255,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... alle
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke ændre selskabets navn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikke ændre direktørens navn...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maksimale størrelse af lån er {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimale størrelse af lån er {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan ikke låne flere penge...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...ingen lån at tilbagebetale
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} krævet
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ingen lån at tilbagebetale
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} krævet
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikke tilbagebetale lån...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Du kan ikke forære penge væk, som du har lånt i banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke købe selskab...
@@ -3270,9 +3271,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dette se
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke bygge nogen byer
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikke omdøbe byen...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kan ikke bygge en by her...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...for tæt på kanten af kortet
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...for tæt på en anden by
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...for mange byer
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for tæt på kanten af kortet
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for tæt på en anden by
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...der er ikke mere plads på kortet
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen vil ikke kunne bygge veje. Du kan tillade byer at bygge veje via Avancerede indstillinger->Økonomi->Byer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vejarbejde i gang
@@ -3282,14 +3283,14 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikke bygge {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikke bygge denne industritype her...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...for tæt på en anden industribygning
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...det er nødvendigt at bygge en by først
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...kun en tilladt per by
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan kun bygges i byer med mindst 1200 indbyggere
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kan kun bygges i regnskovsområder
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kan kun bygges i ørkenområder
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kan kun bygges i byer
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kan kun placeres nær kanten af kortet
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...skov kan kun plantes over snelinjen
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... det er nødvendigt at bygge en by først
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... kun en tilladt per by
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan kun bygges i byer med mindst 1200 indbyggere
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan kun bygges i regnskovsområder
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan kun bygges i ørkenområder
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan kun bygges i byer
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan kun placeres nær kanten af kortet
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skov kan kun plantes over snelinjen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikke bygge en banegård her...
@@ -3301,7 +3302,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke bygge en lufthavn her...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stationen er for spredt
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen er for spredt
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...ikke-uniforme stationer er slået fra
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stationer/fragtcentraler
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Banegården er i for mange dele
@@ -3341,7 +3342,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne kontrolsted for tog her...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbane rutepunktet skal fjernes først
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...der er en bøje i vejen
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug!
 
 # Depot related errors
@@ -3351,7 +3352,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke bygge en skibsdok her...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...skal være stoppet inde i et værksted først
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... skal være stoppet inde i et værksted først
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skibet skal være stoppet i dok
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flyet skal være stoppet i en hangar
 
@@ -3398,13 +3399,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge en kanal her...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan ikke bygge en sluse her...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan ikke placere floder her...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...skal bygges på vand
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...kan ikke bygge på vand
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... skal bygges på vand
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan ikke bygge på vand
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal må fjernes først
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikke bygge akvædukt her...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...der er allerede træer her
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... der er allerede træer her
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan ikke plante træer her...
 
 # Bridge related errors
@@ -3414,7 +3415,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikke
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brohoveder er ikke i samme niveau
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er for lav til terrænet
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- og slutposition skal være på linje
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...begge ender af en bro skal være på land
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... begge ender af en bro skal være på land
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...
@@ -3426,9 +3427,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Det er u
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Der er et objekt i vejen
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...selskabets hovedkontor i vejen
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... selskabets hovedkontor i vejen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke købe dette landområde...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...du ejer det allerede!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du ejer det allerede!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikke oprette gruppe...
@@ -3508,13 +3509,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kan ikke
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan ikke flytte denne ordre...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan ikke springe over nuværende ordre...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan ikke springe over valgt ordre...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}køretøj kan ikke køre til alle stationer
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}køretøj kan ikke køre til denne station
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}et køretøj, der deler denne ordre, kan ikke køre til den station
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... køretøj kan ikke køre til alle stationer
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... køretøj kan ikke køre til denne station
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... et køretøj, der deler denne ordre, kan ikke køre til den station
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan ikke dele ordreliste...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikke kopiere ordreliste...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt fra forrige destination
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... for langt fra forrige destination
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikke lave køreplan for transportmiddel...
@@ -3522,7 +3523,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transpor
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette transportmiddel stopper ikke ved denne station.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...for mange skilte
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for mange skilte
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan ikke placere skilt her...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikke ændre navnet på skiltet...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikke slette skilt...

@@ -266,6 +266,7 @@ STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Comprimento
 STR_SORT_BY_LIFE_TIME                                           :Restante tempo de vida
+STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso do horário
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Maior carga
@@ -2563,7 +2564,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produz: 
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produz: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção (múltiplo de 8, até 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Comboios

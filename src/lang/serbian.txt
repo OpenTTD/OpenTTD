@@ -572,7 +572,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Izgradnja magne
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Izgradnja puta
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Izgradnja  tramvajske pruge
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Izgradnja tramvajske pruge
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -2737,9 +2737,9 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuje na lokaciju fabrike
 
 ############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potražuje: {YELLOW}{STRING.gen}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Potražuje: {YELLOW}{STRING.gen}{STRING}, {STRING.gen}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Potražuje: {YELLOW}{STRING.gen}{STRING}, {STRING.gen}{STRING}, {STRING.gen}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}, {STRING.aku}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}, {STRING.aku}{STRING}, {STRING.aku}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
