@@ -164,9 +164,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'generate game' and 'load game' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GENERATE_GAME), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetPadding(0, 0, 0, 10), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_LOAD_GAME), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetPadding(0, 10, 0, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
@@ -174,9 +174,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'play scenario' and 'play heightmap' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_HEIGHTMAP), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetPadding(0, 10, 0, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
@@ -184,28 +184,28 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'edit scenario' and 'play multiplayer' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetPadding(0, 0, 0, 10), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_NETWORK), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetPadding(0, 10, 0, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 
 		/* climate selection buttons */
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(true, false),
 			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TEMPERATE_LANDSCAPE), SetMinimalSize(77, 55),
 								SetDataTip(SPR_SELECT_TEMPERATE, STR_INTRO_TOOLTIP_TEMPERATE),
-			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(true, false),
 			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_ARCTIC_LANDSCAPE), SetMinimalSize(77, 55),
 								SetDataTip(SPR_SELECT_SUB_ARCTIC, STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE),
-			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(true, false),
 			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TROPIC_LANDSCAPE), SetMinimalSize(77, 55),
 								SetDataTip(SPR_SELECT_SUB_TROPICAL, STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE),
-			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(true, false),
 			NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TOYLAND_LANDSCAPE), SetMinimalSize(77, 55),
 								SetDataTip(SPR_SELECT_TOYLAND, STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
@@ -213,9 +213,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'game options' and 'difficulty options' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_OPTIONS), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_DIFFICULTIES), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_DIFFICULTY, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_DIFFICULTY, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS), SetPadding(0, 10, 0, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
@@ -223,9 +223,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'advanced settings' and 'newgrf settings' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_ADVANCED_SETTINGS, STR_INTRO_TOOLTIP_ADVANCED_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_ADVANCED_SETTINGS, STR_INTRO_TOOLTIP_ADVANCED_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
@@ -233,9 +233,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'online content' and 'ai settings' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetPadding(0, 0, 0, 10), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_AI_SETTINGS), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),

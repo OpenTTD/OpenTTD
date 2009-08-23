@@ -473,9 +473,9 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(1, 1), SetFill(false, false),
-				NWidget(NWID_SPACER), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetFill(true, false),
 			EndContainer(),
-			NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
+			NWidget(NWID_SPACER), SetFill(true, true), SetResize(0, 1),
 		EndContainer(),
 	EndContainer(),
 };

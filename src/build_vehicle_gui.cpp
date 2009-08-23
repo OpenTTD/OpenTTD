@@ -74,7 +74,7 @@ static const Widget _build_vehicle_widgets[] = {
 static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CAPTION), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CAPTION), SetFill(true, false), SetResize(1, 0), SetDataTip(0x0, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST_CONTROL),
 		/* Sort order + criteria button row. */
@@ -84,7 +84,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 		EndContainer(),
 		/* Filter criteria row. */
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(NWID_SPACER), SetFill(true, false),
 			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_TOOLTIP_FILTER_CRITERIA),
 		EndContainer(),
 	EndContainer(),

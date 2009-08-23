@@ -804,7 +804,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, SNGRFS_APPLY_CHANGES), SetMinimalSize(100, 12), SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, SNGRFS_CONTENT_DOWNLOAD), SetFill(1, 0), SetMinimalSize(288, 12), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, SNGRFS_CONTENT_DOWNLOAD), SetFill(true, false), SetMinimalSize(288, 12), SetResize(1, 0),
 													SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, SNGRFS_RESIZE),
 	EndContainer(),

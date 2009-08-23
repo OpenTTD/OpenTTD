@@ -144,7 +144,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_CREATE_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_CREATE_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_DELETE_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_DELETE_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_RENAME_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_RENAME_TOOLTIP),
-				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY1), SetMinimalSize(92, 25), SetFill(1, 0), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY1), SetMinimalSize(92, 25), SetFill(true, false), EndContainer(),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_REPLACE_PROTECTION), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_REPLACE_PROTECTION_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY2), SetMinimalSize(12, 25), EndContainer(),
 			EndContainer(),
