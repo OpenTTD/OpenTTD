@@ -2315,7 +2315,7 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF 
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {STRING} como NewGRF estático con {STRING} puede causar desincronizaciones.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propiedad Acción 0 desconocida.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acción 0 con propiedad desconocida.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar un ID incorrecto
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene un sprite corrupto. Todos los sprites corruptos serán mostrados como un interrogante rojo (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene múltiples entradas Action 8.

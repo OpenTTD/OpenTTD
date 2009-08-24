@@ -381,7 +381,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailed perfor
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industry Directory
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industry directory
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fund new industry
 ############ range ends here
 
@@ -424,8 +424,8 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message History
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area information
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle Console
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
+STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giant Screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
@@ -2564,7 +2564,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produces
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produces: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production (multiple of 8, up to 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Train{P "" s}

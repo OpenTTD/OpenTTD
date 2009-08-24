@@ -308,7 +308,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Būvēt 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atvērt aiznavas rīkjoslu, lai mainītu zemes līmeni, stādīt kokus utt.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rādīt skaņas/mūzikas logu
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Parādīt pēdējo ziņojumu/ziņu rādīšanas režīmus
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemes pleķi
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemesgabalu, konsole, MI atkļūdošana, ekrānšāviņi, par OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenārija redaktoru, beigt
@@ -341,7 +341,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF opcijas
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības uzstādījumi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Rādīt pilsētu nosaukumus
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Rādīt staciju nosaukumus
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Rādīt ceļazīmes
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Rādīt maršruta punktu nosaukumus
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Rādīt zīmes
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Pilna animācija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Visas detaļas
@@ -389,7 +389,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansēt jaunu
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Dzelzceļa būvēšana
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektriskā dzelzceļa būve
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrizētā dzelzceļa būvēšana
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Viensliedes būvēšana
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magleva būvēšana
 ############ range ends here
@@ -427,9 +427,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ziņu vēsture
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Zemes gabala informācija
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Atļaut konsoli
-STR_ABOUT_MENU_AI_DEBUG                                         :AI lāgošana
+STR_ABOUT_MENU_AI_DEBUG                                         :MI atkļūdošana
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrāna kopija (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Liela ekrāna kopija (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Lielais ekrānšāviņš (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Par 'OpenTTD'
 ############ range ends here
 
@@ -557,8 +557,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kopā:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Transportl. sk. (kravas mašīnas, vilcieni, kuģi un lidaparāti)
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Staciju daļu skaits. Katra stacijas daļa tiek skaitīta, pat ja tās ir savienotas kā viena stacija
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Transportlīdzekļa peļņa, kuram ir mazākie ienākumi (vairāk par 2 gadiem)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Sapelnītais naudas daudzums mēnesī ar vismazāko  peļņu pēdējos 12 ceturkšņos
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Sapelnītais naudas daudzums mēnesī ar vislielāko  peļņu pēdējos 12 ceturkšņos
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Sapelnītais naudas daudzums mēnesī ar vismazāko peļņu pēdējos 12 ceturkšņos
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Sapelnītais naudas daudzums mēnesī ar vislielāko peļņu pēdējos 12 ceturkšņos
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Objektu skaits, kas nogādāti pēdējos 4 ceturkšņos
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Kravu skaits, kas nogādāti pēdējā ceturksnī
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Naudas daudzums kompānijai, kas atrodas bankā
@@ -624,7 +624,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Moguls
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Gadsimta supervecis
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} sasnieguši  '{STRING}' statusu!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} sasniegusi '{STRING}' statusu!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} no {COMPANY} sasnieguši '{STRING}' statusu!
 
 # Smallmap window
@@ -734,7 +734,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Autotransporta avārija!{}{COMMA} mirst pēc sadursmes ar vilcienu
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lidmašīna nogāzusies!{}{COMMA} iet bojā ugunī {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lidaparāta avārija!{}Lidaparātam pietrūka degviela, {COMMA} miruši!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lidaparāta avārija!{}Lidaparātam beidzās degviela, {COMMA} bojāgājušie!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Dirižabļa nelaimes gadījums {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Mašīna gājusi bojā satriecoties ar UFO!
@@ -763,8 +763,8 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Tuvumā esošo koku iztrūkums izraisa {STRING} tūlītēju darbības pārtraukšanu!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Eiropas naudas apvienība!{}{}Eiro ir ieviests, kā vienīgā valūta jūsu valstī!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Pasaule ieslīgst recesijā!{}{}Ekonomika atrodas smagā krīzes stāvoklī!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesija beigusies!{}{}Tirdzniecības apjomu pieaugums dod pārliecību par ekonomikas nostiprināšanos!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Krīze pasaulē!{}{}Finanšu eksperti ekonomikai paredz sliktākos attīstības scenārijus!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Krīze ir beigusies!{}{}Tirdzniecības apjomu pieaugums dod pārliecību par ekonomikas nostiprināšanos!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} palielina ražošanas apjomu!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Atklāts jauns ogļu slānis {INDUSTRY}!{}Paredzams ogļu ieguves apjoma dubultošanās!
@@ -795,7 +795,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} ir apmaldījies
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} iepriekšējā gada ienākumi bija {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Salabotā maršruta kļūda apstādināta {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo tā pārkonfigurācijas rīkojums izgāzās
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoatjaunošanas kļūda {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Jauns {STRING} tagad pieejams!
@@ -1357,13 +1357,13 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlē
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maģiskais buldozers (nojauc industrijas, nenojaucamos): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneļi drīkst krustoties: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Būvniecība pauzes režīmā: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktīvās lidmašīnas neavarēs (bieži) mazajās lidostās: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Klimata maiņa: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktīvās lidmašīnas mazajās lidostās neavarēs (bieži): {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Nomainīt klimatu: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Mērenais klimats
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktiskais klimats
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropiskais klimats
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Rotaļlietu zeme
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Datuma maiņa: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Nomainīt datumu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ļauj izmainīt produkcijas vērtības: {ORANGE}{STRING}
 
 # Livery window
@@ -1487,14 +1487,14 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik, lai izvēlētos serveri, kurā Jūs spēlējāt pagāšreiz
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPĒLES INFORMĀCIJA
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Valoda:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Attēlu komplekts:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartes izmērs:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Servera versija:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Servera adrese:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Sākuma datums:  {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Šībrīža datums:  {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Valoda: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Grafikas kopa: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartes izmērs: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Servera versija: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Servera adrese: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Sākuma datums: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Šībrīža datums: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Aizsargāts ar paroli!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVERIS NAV TIEŠSAISTĒ
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVERIS IR PILNS
@@ -1592,20 +1592,20 @@ STR_NETWORK_LANG_LATVIAN                                        :Latviešu
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Tīkla spēles vestibils
 
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Gatavojos pievienoties:   {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Gatavojos pievienoties: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Spēlē esošo kompāniju saraksts. Jūs varat vai nu pievienoties kādai, vai arī sākt jaunu, ja ir brīvs kompānijas slots
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}KOMPĀNIJAS INFO
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Kompānijas nosaukums:  {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Atklāšana:  {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Uzņēmuma vērtība:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Šībrīža bilance:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Ienākumi pērn:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Veiktspēja:  {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Kompānijas nosaukums: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Atklāšana: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Uzņēmuma vērtība: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Šībrīža bilance: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Ienākumi pērn: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Veiktspēja: {WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Satiksmes līdzekļi:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stacijas:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spēlētāji:  {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Satiksmes līdzekļi: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stacijas: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spēlētāji: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Jauna kompānija
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Izveidot jaunu kompāniju
@@ -1639,7 +1639,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmu
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientu saraksts
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Skatīt
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauna Kompānija
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauna kompānija
 
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :(neviens)
@@ -1764,7 +1764,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jūs ne
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jūs esat šo iezīmējuši lejupielādei
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Šis atkarīgais materiāls ir iezīmēts lejupielādei.
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jums jau šis ir.
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šī materiāla saturs ir nezināms, tādēļ nav iespejams to lejupielādēt OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šī materiāla saturs ir nezināms, tādēļ to nav iespejams lejupielādēt OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Jau esoša aizvietošanai{STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Vārds: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versija: {WHITE}{STRING}
@@ -1877,12 +1877,12 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signāla
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloķēt signālu(semafors){}Šis ir pats vienkāršākais signāla veids, kas ļauj vienlaicīgi tikai vienam vilcienam atrasties uz sliedēm.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ievade-Signāls (semafors){}Žaļš kamēr ie viena vai vairākas zaļas izejas- signāls no sekojošas sekcijas vai sliedes. Citādi signāls būs sarkans.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signāls-Izeja (semaphore){}Uzvedas tāpat kā bloķēšanas signāls, bet nepieciešams labot ievades krāsu un sakombinēt pirmssignālus.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signāls-komibētais (semaphore){}  Kombinētais signāls darbojas gan kā izejas, gan ieejas signāls. Tas ļauj radīt lielus pirmssignālu tīklus.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signāls-komibētais (semaphore){} Kombinētais signāls darbojas gan kā izejas, gan ieejas signāls. Tas ļauj radīt lielus pirmssignālu tīklus.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Ceļa signāls (semaphore){}Ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens rezervējis drošu apstāšanās punktu. Standart ceļa signāli var tikt padots no muguras.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Viena veida ceļa signāls (semaphore){}Viena veida ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens rezervējis drošu apstāšanās punktu.Šis signāls nevar tikt padots no muguras.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloķējoš signāls (elektrisks){}Šis ir pamata signāls,kas ļauj vienlaicīgi tikai vienam vilcienam atrasties uz konkrētajām sliedēm, vai bloka.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Izejas zignāls (electric){}Zaļš līdz parādās vēl viena zaļā izeja-signāls no konkrētām sekcijas sliedēm. Citādi tas parādās sarkans.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izejas-Signāls (electric){}Izturas tā pat kā bloka signāls, bet nepieciešamības gadījumā var pārvērsties korektā  izejas krāsā arī kominētajiem signāliem.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izejas-Signāls (electric){}Uzvedas tā pat kā bloka signāls, bet ir nepieciešams ieejas un kombinēto signālu pareizai darbībai.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombo-signāls (electric){}Kominētais signāls darbojas kā ieejas un izejas signāls.tas ļauj radīt lielu signālu tīklu.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Ceļa-Signāls (electric){}Ceļa signāls ļaj vairāk kā vienam vilcienam iebraukt signāla blokā tājā pat laikā,ja vien ir pieejams drošs apstāšanās ceļš. Standarta signāls var tikt izvietots no mugurpuses
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Viena ceļa signāls (electric){}Signāls ļauj vairākiem vilcieniem iebraukt signāla blokā, ja vien rodams drošs apstāšanās ceļš.šis signāls nav izvietojams no muguras.
@@ -2241,7 +2241,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Par vien
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}mainiet zemes augstumu
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Izveido pasauli...
+STR_GENERATION_WORLD                                            :{WHITE}Pasaules radīšana...
 STR_GENERATION_ABORT                                            :{BLACK}Atcelt
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Atcelt pasaules radīšanu
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vai tu patiešām vēlies atcelt radīšanu?
@@ -2305,7 +2305,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdinājums: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nedarbosies kopā ar  TTDPatch versiju pēc OpenTTD ziņojuma.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nedarbosies kopā ar TTDPatch versiju pēc OpenTTD ziņojuma.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} ir priekš {STRING} TTD versijas.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} ir izgatavots, lai lietotu kopā ar {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Nepareizs parametrs priekš {STRING}: parametrs {STRING} ({NUM})
@@ -2398,14 +2398,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansēt jauna
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Nopirkt vienīgā pārvadātāja tiesības
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Dot kukuli pašvaldībai
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Veikt mazu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu.{}  Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Veikt vidēju reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu.{}  Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Veikt lielu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu.{}  Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Finansēt ceļu remontdarbus. Rada satiksmes traucējumus līdz pat pusgadam.{}  Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Uzbūvēt statuju par godu savam uzņēmumam.{} Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Finansēt jaunu komercplatību būvēšanu šajā pilsētā.{}  Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Pirkt vienīgā pārvadātāja statusu uz vienu gadu. Pašvaldība atļaus pasažieriem un kravas pārvešanai izmanto tkai jūsu uzņēmuma stacijas.{} Izmaksā: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Piekukuļot vietējo pašvaldību lai paceltu reitingu riskējot saņemt lielu sodu.{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Veikt mazu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savai kompānijai.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Veikt vidēju reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savai kompānijai.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Veikt lielu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savai kompānijai.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Finansēt ceļu remontdarbus. Rada satiksmes traucējumus līdz pat pusgadam.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Uzbūvēt statuju par godu savam uzņēmumam.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Finansēt jaunu komercēku būvniecību šajā pilsētā.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Pirkt eksluzīvas 1 gada tiesības uz kravu un pasažieru transportēšanu. Pašvaldība atļaus pasažieriem un kravas pārvešanai izmantot tkai jūsu uzņēmuma stacijas.{}Izmaksas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Piekukuļot vietējo pašvaldību lai paceltu reitingu, riskējot saņemt lielu sodu.{}Izmaksas: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsīdijas
@@ -2493,12 +2493,12 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Kopā:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankas bilance
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Aizdevums
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Pieejamais aizdevums:  {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Pieejamais aizdevums: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Aizņemties {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Palielināt aizdevuma apmēru
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Palielināt aizdevuma apmēru. Ctrl+Klikšķis lai aizņemtos cik daudz vien iespējams
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Atmaksāt {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Atmaksāt aizdevuma daļu
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Atmaksāt aizdevuma daļu. Ctrl+Klikšķis atmaksā cik daudz vien iespējams
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2566,7 +2566,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Ražo: {
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Ražo: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju (dalāmais ar 8, līdz pat 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vilcien{P s i a}
@@ -2630,13 +2630,13 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Jauni El
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Jauni vilcieni
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Jauni vilcieni
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vilcieni
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Jauni vilcieni
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Jauni transportl.
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Jauni kuģi
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Jauns lidaparāts
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums: {GOLD}{VELOCITY}{BLACK}   Jauda: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums: {GOLD}{VELOCITY}{BLACK} Jauda: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ātrums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Ekspluatācijas izmaksas: {GOLD}{CURRENCY}/gadā
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpība: {GOLD}{CARGO} {STRING}
@@ -2644,7 +2644,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(pārveidojams)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ražots: {GOLD}{NUM}{BLACK} Termiņš: {GOLD}{COMMA} gadi
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. uzticamība: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Ātrums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpība: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Svars: {GOLD}+{WEIGHT_S}
@@ -2694,7 +2694,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} transportlīdzek{P lis ļi ļu}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vilcieni - klik uz vilciena priekš informācijas, velc vagonu, lai pievienotu/atvienotu vilcienam
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vilcieni - klikšķināt uz vilciena informācijas iegūšanai, vilkt sastāva daļu, lai pievienotu/atvienotu no vilciena
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Transportlīdzekļi - klik uz tā, priekš informācijas
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kuģi - uzspied uz kuģa priekš informācijas
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lidaparāts - klikot uz lidaparāta, lai iegūtu info

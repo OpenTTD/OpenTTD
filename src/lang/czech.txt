@@ -863,9 +863,9 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stojí kvůli selhání příkazu na změnu nákladu
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Obnovení selhalo pro {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G á ý é} {STRING} k dispozici!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G ý á é} {STRING} k dispozici!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G á ý é} {STRING} k dispozici!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G ý á é} {STRING} k dispozici!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} už dále nepřijímá {STRING.acc}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} už dále nepřijímá {STRING.acc} nebo {STRING.acc}
@@ -2480,6 +2480,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jména s
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Podržením Ctrl můžeš označit více položek
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nic -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Označit všechny druhy stanic
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Označit všechny druhy komodit (včetne žádného čekajícího nákladu)
@@ -2815,7 +2816,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chceš 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ou ý é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ý ou é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.dat                      :
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :{G=f}lokomotivu
