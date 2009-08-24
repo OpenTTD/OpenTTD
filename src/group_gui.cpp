@@ -174,9 +174,10 @@ static const NWidgetPart _nested_group_widgets[] = {
 
 class VehicleGroupWindow : public BaseVehicleListWindow {
 private:
-	GroupID group_sel;
-	VehicleID vehicle_sel;
-	GUIGroupList groups;
+	GroupID group_sel;     ///< Selected group
+	VehicleID vehicle_sel; ///< Selected vehicle
+	GroupID group_rename;  ///< Group being renamed, INVALID_GROUP if none
+	GUIGroupList groups;   ///< List of groups
 
 	/**
 	 * (Re)Build the group list.
@@ -268,6 +269,7 @@ public:
 
 		this->group_sel = ALL_GROUP;
 		this->vehicle_sel = INVALID_VEHICLE;
+		this->group_rename = INVALID_GROUP;
 
 		this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips   = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
 		this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
@@ -317,6 +319,11 @@ public:
 		} else {
 			this->vehicles.ForceResort();
 			this->groups.ForceResort();
+		}
+
+		if (this->group_rename != INVALID_GROUP && !Group::IsValidID(this->group_rename)) {
+			DeleteWindowByClass(WC_QUERY_STRING);
+			this->group_rename = INVALID_GROUP;
 		}
 
 		if (!(IsAllGroupID(this->group_sel) || IsDefaultGroupID(this->group_sel) || Group::IsValidID(this->group_sel))) {
@@ -510,6 +517,7 @@ public:
 				assert(Group::IsValidID(this->group_sel));
 
 				const Group *g = Group::Get(this->group_sel);
+				this->group_rename = this->group_sel;
 
 				SetDParam(0, g->index);
 				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
@@ -605,9 +613,8 @@ public:
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (str == NULL) return;
-
-		DoCommandP(0, this->group_sel, 0, CMD_RENAME_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_RENAME), NULL, str);
+		if (str != NULL) DoCommandP(0, this->group_rename, 0, CMD_RENAME_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_RENAME), NULL, str);
+		this->group_rename = INVALID_GROUP;
 	}
 
 	virtual void OnResize(Point delta)
