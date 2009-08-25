@@ -2826,7 +2826,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespies
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Pielāgot vilcienu citas kravas pārvadāšanai
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Nomainīt ceļu transportlīdzekļa kravas veidu
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Pārveidot kravas kuģi, lai varētu pārvietot citu kravas tipu
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Pārkonfigurēt kuģi citam kravas tipam
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pārbūvēt lidaparātu citam kravas veidam
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Apgriezt vilcienu
@@ -3124,7 +3124,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nomest k
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju,lai transportlīdzeklis būtu laikā
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aizpildīšana
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (CTRL-click lai mēģinātu paturēt gaidīšanas laikus)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (CTRL-kikšķis lai mēģinātu paturēt gaidīšanas laikus)
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
@@ -3227,13 +3227,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Pārāk 
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nepietiek naudas - nepieciešams {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Zemei jābūt līdzenai
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Nogāze ir uz nepareizo pusi
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tā nevar darīt....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nav iespējams tā izdarīt....
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Vispirms jānojauc ēka
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Šo laukumu nevar nolīdzināt...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...vieta nav piemērota
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...jau uzbūvēts
-STR_ERROR_OWNED_BY                                              :{WHITE}...pieder {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...zemes gabals pieder citam uzņēmumam
+STR_ERROR_OWNED_BY                                              :{WHITE}... pieder {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam jābūt unikālam
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} traucē
 
@@ -3257,9 +3257,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ir j
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nevar mainīt uzņēmuma nosaukumu..
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nevar mainīt vadītāja vārdu..
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maksimāli pieļaujamais kredīta apjoms ir {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimāli pieļaujamais aizņēmuma apjoms ir {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nevar aizņemties vairāk naudu...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...visi kredīti atmaksāti
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... visi aizņēmumi atmaksāti
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} nepieciešams
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nevar atmaksāt aizdevumu...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankas aizdoto naudu, nevar dot prom...
@@ -3273,9 +3273,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Šī kom
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nevar uzbūvēt pilsētas
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nevar pārsaukt pilsētu...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Te nevar būvēt jaunu pilsētu...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...pārāk tuvu kartes malai
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...pārāk tuvu citai pilsētai
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...pārāk daudz pilsētu
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... pārāk tuvu kartes malai
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... pārāk tuvu citai pilsētai
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... pārāk daudz pilsētu
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...uz kartes nav vairāk vietas
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Pilsēta ceļus nebūvēs. Jūs varat iespējot ceļu būvi caur Papildus iestatījumiem -> Ekonomika -> Pilsētas.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek ceļa remonts
@@ -3285,14 +3285,14 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nevar iz
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Šeit nevar būvēt {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Šeit nevar būvēt šī tipa rūpnīcu...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...pārāk tuvu citai rūpnīcai
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...vispirms jāuzceļ pilsēta
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...pilsētā atļauts tikai viens(a)
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...atļauts būvēt tikai pilsētās ar iedzīvotāju skaitu vismaz 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...var celt tikai mežu apgabalos
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...var celt tikai tuksnešainos apgabalos
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...var celt tikai pilsētās
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...drīkst novietot tikai pie kartes stūriem
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...mežus atļauts stādīt tikai virs sniega līnijas
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... vispirms jāuzceļ pilsēta
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... pilsētā atļauts tikai viens(a)
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... atļauts būvēt tikai pilsētās ar iedzīvotāju skaitu vismaz 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... var celt tikai mežu apgabalos
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... var celt tikai tuksnešainos apgabalos
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... var celt tikai pilsētās
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... var tikt izvietots tikai pie kartes malām
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... mežus var stādīt tikai virs sniega līnijas
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Šeit nevar uzcelt dzelzceļa staciju...
@@ -3304,7 +3304,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nevar uz
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit nevar būvēt lidostu...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Piekļaujas vairāk par vienu staciju/iekraušanas zonu
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stacija ir pārāk izplesta
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacija ir pārāk izplesta
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...neregulāras stacijas atspējotas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk daudz staciju/iekraušanas zonu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE} Pārāk daudz dzelzceļastacijas daļu
@@ -3344,7 +3344,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nevar p�
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nevar šeit noņemt vilcienu kontrolpunktu...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vispirms vajag noņemt dzelzceļa maršruta punktu
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boja traucē
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ceļā boja
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...boja jau tiek lietota!
 
 # Depot related errors
@@ -3354,7 +3354,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Šeit na
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Šeit nevar būvēt ķuģu depo...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...jābūt apstādinātam depo iekšpusē
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... jābūt apstādinātam depo iekšpusē
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kuģim jābūt apstādinātam depo
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lidaparātu var apturēt angārā
 
@@ -3401,13 +3401,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No šeji
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nedrīkst šeit būvēt kanālus...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nevar šeit būvēt slūžas...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Upes šeit likt nevar...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...jābūvē uz ūdens
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Nevar būvēt uz ūdens
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... jābūvē uz ūdens
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nevar būvēt uz ūdens
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Vispirms jānojauc kanāls
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Šeit nevar uzbūvēt akveduktu...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...šeit jau aug koks
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... šeit jau aug koks
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Šeit nevar iestādīt koku..
 
 # Bridge related errors
@@ -3417,7 +3417,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nevar s�
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Tilta gali nav vienā līmenī
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tilts ir pārāk zems priekš šī zemes veida
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Sākumam un beigām jābūt uz vienas līnijas
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...abiem tilta galiem jābūt uz zemes
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abiem tilta galiem jābūt uz zemes
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Šeit nevar būvēt tuneli
@@ -3429,9 +3429,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nevar iz
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Traucējošs objekts
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...traucē uzņēmuma birojs
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... traucē uzņēmuma birojs
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nevar nopirkt šo zemes pleķi...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...tev jau tā pieder!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... tev jau tā pieder!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nevar izveidot grupu...
@@ -3511,13 +3511,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Šo rīk
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nevar pārvietot šo rīkojumu...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Pašreizējo rīkojumu nevar izlaist...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Izvēlēto rīkojumu nevar izlaist...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}tansportalīdzeklis nedodas uz visām stacijām
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}transportlīdzeklis nevar doties uz šo staciju
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}transportlīdzeklis, kas dala šo maršrutu nespēj doties uz norādīto staciju
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... transportlīdzeklis netiek uz visām stacijām
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... transportlīdzeklis netiek uz šo staciju
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... transportlīdzeklis, kam kopīgs šis rīkojums, nespēj doties uz norādīto staciju
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nevar dalīties ar rīkojumu sarakstu...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nevar kopēt rīkojumu sarakstu...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...pārāk tāla no iepriekšējā punkta
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... pārāk tāla no iepriekšējā punkta
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nav iespējams panākt, ka transportalīdzeklis iekļaujas sarakstā
@@ -3525,7 +3525,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transpor
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Šis transportl. šajā stacijā nestāsies
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...pārāk daudz zīmju
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... pārāk daudz zīmju
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Šeit nevar novietot zīmi...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nevar izmainīt zīmes vārdu...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nevar dzēst zīmi...
