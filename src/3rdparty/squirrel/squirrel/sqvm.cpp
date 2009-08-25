@@ -774,9 +774,8 @@ common_call:
 							_GUARD(gen->Yield(this));
 							Return(1, ct_target, clo);
 							STK(ct_target) = gen;
-							CLEARSTACK(last_top);
-							continue;
 						}
+						CLEARSTACK(last_top);
 						}
 						continue;
 					case OT_NATIVECLOSURE: {
