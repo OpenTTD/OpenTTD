@@ -61,6 +61,9 @@ CommandCallback CcBuildShip;
 CommandCallback CcBuildWagon;
 CommandCallback CcBuildLoco;
 
+/* group_gui.cpp */
+CommandCallback CcCreateGroup;
+
 /* ai/ai_core.cpp */
 CommandCallback CcAI;
 
@@ -89,6 +92,7 @@ CommandCallback *_callback_table[] = {
 	/* 0x15 */ CcAI,
 	/* 0x16 */ CcCloneVehicle,
 	/* 0x17 */ CcGiveMoney,
+	/* 0x18 */ CcCreateGroup,
 };
 
 const int _callback_table_count = lengthof(_callback_table);
