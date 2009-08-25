@@ -926,6 +926,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota gru
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} týnd{P "" ar} eða ónýt{P "" ar} skrá{P "" r}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Frekari upplýsingar um grunngrafíkpakkann
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Skjáfyllihamur brást
 
 # Custom currency window

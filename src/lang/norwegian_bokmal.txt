@@ -925,6 +925,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg gra
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/korrupt fil{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om grafikksettet
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjerm modus mislykkes
 
 # Custom currency window

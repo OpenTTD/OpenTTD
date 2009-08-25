@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pasirink
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Bazinis grafikos rinkinys
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Viso ekrano nustatymas nepavyko
 
 # Custom currency window

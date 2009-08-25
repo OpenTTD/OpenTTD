@@ -920,6 +920,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} verlore / korrupte ler{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Addisioneel informasie oor die basis grapfieke stel
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Volskerm metode gedop
 
 # Custom currency window

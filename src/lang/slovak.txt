@@ -992,6 +992,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvoľte 
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnom grafickom sete
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
 # Custom currency window

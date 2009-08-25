@@ -730,6 +730,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Eltse 12 moanne
 
 
 
+
 # Custom currency window
 
 

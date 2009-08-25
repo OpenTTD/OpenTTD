@@ -920,6 +920,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel kva 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel basis-grafikksett som skal nyttast
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
 
 # Custom currency window

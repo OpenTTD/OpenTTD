@@ -914,6 +914,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu 
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta/koruptita dosiero{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza grafikaro
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekrana moduso fiaskis
 
 # Custom currency window

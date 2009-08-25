@@ -967,6 +967,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi o
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e e} /okvarjen{P a i e e} datotek{P a i e e}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnem kompletu grafik
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Celozaslonski način spodletel
 
 # Custom currency window

@@ -922,6 +922,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccio
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo{P "" s} inexistente{P "" s}/erróneo{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre o conxunto de gráficos básico
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}O modo de pantalla completa fallou
 
 # Custom currency window

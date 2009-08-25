@@ -920,6 +920,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר �
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}סט גרפיקה בסיסי
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל בשינויי למסך מלא
 
 # Custom currency window

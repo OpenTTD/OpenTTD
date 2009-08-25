@@ -926,6 +926,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecion
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo faltando/corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o set de gráficos base
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Falha no modo de tela cheia
 
 # Custom currency window

@@ -926,6 +926,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용�
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
 
 # Custom currency window
