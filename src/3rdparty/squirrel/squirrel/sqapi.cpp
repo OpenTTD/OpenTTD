@@ -834,7 +834,7 @@ SQRESULT sq_getdelegate(HSQUIRRELVM v,SQInteger idx)
 		}
 		v->Push(SQObjectPtr(_delegable(self)->_delegate));
 		break;
-	default: return sq_throwerror(v,_SC("wrong type"));
+	default: return sq_throwerror(v,_SC("wrong type")); break;
 	}
 	return SQ_OK;
 
