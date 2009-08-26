@@ -39,11 +39,11 @@ AISubsidy.SourceIsTown <- function(subsidy_id)
 AISubsidy.GetSource <- function(subsidy_id)
 {
 	AILog.Warning("AISubsidy::GetSource is deprecated and will be removed soon, please use AISubsidy::GetSourceIndex instead.");
-	if (!AISubsidy.IsValidSubsidy(subsidy_id)) return AIBaseStation.INVALID_STATION;
+	if (!AISubsidy.IsValidSubsidy(subsidy_id)) return AIBaseStation.STATION_INVALID;
 
 	if (AISubsidy.IsAwarded(subsidy_id)) {
-		AILog.Error("AISubsidy::GetSource returned INVALID_STATION due to internal changes in the Subsidy logic.");
-		return AIBaseStation.INVALID_STATION;
+		AILog.Error("AISubsidy::GetSource returned STATION_INVALID due to internal changes in the Subsidy logic.");
+		return AIBaseStation.STATION_INVALID;
 	}
 
 	return AISubsidy.GetSourceIndex(subsidy_id);
@@ -60,11 +60,11 @@ AISubsidy.DestinationIsTown <- function(subsidy_id)
 AISubsidy.GetDestination <- function(subsidy_id)
 {
 	AILog.Warning("AISubsidy::GetDestination is deprecated and will be removed soon, please use AISubsidy::GetDestinationIndex instead.");
-	if (!AISubsidy.IsValidSubsidy(subsidy_id)) return AIBaseStation.INVALID_STATION;
+	if (!AISubsidy.IsValidSubsidy(subsidy_id)) return AIBaseStation.STATION_INVALID;
 
 	if (AISubsidy.IsAwarded(subsidy_id)) {
-		AILog.Error("AISubsidy::GetDestination returned INVALID_STATION due to internal changes in the Subsidy logic.");
-		return AIBaseStation.INVALID_STATION;
+		AILog.Error("AISubsidy::GetDestination returned STATION_INVALID due to internal changes in the Subsidy logic.");
+		return AIBaseStation.STATION_INVALID;
 	}
 
 	return AISubsidy.GetDestinationIndex(subsidy_id);
