@@ -100,10 +100,12 @@ public:
 
 				case CONTENT_TYPE_BASE_GRAPHICS:
 					BaseGraphics::FindSets();
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
 					break;
 
 				case CONTENT_TYPE_BASE_SOUNDS:
 					BaseSounds::FindSets();
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
 					break;
 
 				case CONTENT_TYPE_NEWGRF:
