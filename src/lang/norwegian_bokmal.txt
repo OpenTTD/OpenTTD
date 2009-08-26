@@ -305,7 +305,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åpne verktøylinjen for å heve/senke land, plante trær, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikkinnstillinger
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis siste melding/nyhet, vis meldingsinnstillinger
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om felt
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om felt, konsoll, AI feilsøking, skjermdumper, om OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lagre scenario, laste inn scenario, forlate redigeringsprogrammet, avslutte
@@ -424,9 +424,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere meldi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om felt
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 ############ range ends here
 
@@ -792,7 +792,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} har kjørt seg vill
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s inntekt i fjord var {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Ordre gjentilpasnings feil stoppet {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet på grunn av at en ombygningsordre feilet
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Kunne ikke autofornye {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING} nå tilgjengelig!
@@ -1352,7 +1352,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk 
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krysse hverandre: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillat bygging i pausemodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke krasje (regelmessig) på små flyplasser: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Endre klima: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Endre klima: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperert landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :subarktisk landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtropisk landskap
@@ -2557,7 +2557,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produser
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produserer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon (multiplum av 8, opptil 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog

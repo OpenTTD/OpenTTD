@@ -493,9 +493,9 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pomeranje datuma početka za jednu godinu unapred
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikazuje kartu, popis naselja
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generisanje reljefa
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generator naselja
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generator industrija
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Oblikovanje reljefa
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stvaranje naselja
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Stvaranje fabrika
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Izgradnja puteva
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadnja drveća
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavljanje znaka
@@ -506,7 +506,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenari
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj elevacionu kartu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Napusti editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Napusti
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -1177,10 +1177,10 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stav gr
 
 STR_NONE                                                        :Nijedan
 STR_NUM_VERY_LOW                                                :Veoma mali
-STR_NUM_LOW                                                     :niski
-STR_NUM_NORMAL                                                  :normalni
-STR_NUM_HIGH                                                    :visoki
-STR_NUM_CUSTOM                                                  :Prilagođen
+STR_NUM_LOW                                                     :Mali
+STR_NUM_NORMAL                                                  :Normalan
+STR_NUM_HIGH                                                    :Veliki
+STR_NUM_CUSTOM                                                  :Podešen
 
 STR_AI_SPEED_VERY_SLOW                                          :jako spora
 STR_AI_SPEED_SLOW                                               :spora
@@ -1189,9 +1189,9 @@ STR_AI_SPEED_FAST                                               :brza
 STR_AI_SPEED_VERY_FAST                                          :jako brza
 
 STR_SEA_LEVEL_VERY_LOW                                          :Vrlo Niska
-STR_SEA_LEVEL_LOW                                               :niski
-STR_SEA_LEVEL_MEDIUM                                            :srednji
-STR_SEA_LEVEL_HIGH                                              :visoki
+STR_SEA_LEVEL_LOW                                               :Niska
+STR_SEA_LEVEL_MEDIUM                                            :Srednja
+STR_SEA_LEVEL_HIGH                                              :Visoka
 
 STR_DISASTER_NONE                                               :nema
 STR_DISASTER_REDUCED                                            :redukovani
@@ -1202,10 +1202,10 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
-STR_TERRAIN_TYPE_VERY_FLAT                                      :veoma ravan
-STR_TERRAIN_TYPE_FLAT                                           :prilično ravan
-STR_TERRAIN_TYPE_HILLY                                          :brdovit
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :planinski
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Ravničarski
+STR_TERRAIN_TYPE_FLAT                                           :Brdski
+STR_TERRAIN_TYPE_HILLY                                          :Brdskio-planinski
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Planinski
 
 STR_ECONOMY_STEADY                                              :ujednačena
 STR_ECONOMY_FLUCTUATING                                         :promenljiva
@@ -1289,20 +1289,20 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Najmanj
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dužina ispisa poruka o grešci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator zemljišta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalni
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Oblikovanje reljefa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalno
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Neveća udaljenost Naftnih Rafinerija od ivica terena {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Nivo snežnog pokrivača: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Vrste terena (samo za TerraGenesis) : {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravničarski
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Brežuljkasti
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Planinski
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Kršni
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algoritam posađivanja drveća: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakav
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalan
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređen
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravnomerana
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Malo Valovita
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Valovita
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Vrlo Valovita
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Posađivanje drveća: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakavo
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalano
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređeno
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija elevacione karte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Suprotno okretanju skazaljke na satu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ka okretanju skazaljke na satu
@@ -1355,8 +1355,8 @@ STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Zadrža
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Podešena vrsta pruge (posle učitavanja/nove partije): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Klasična Pruga
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrificirana Pruga
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Jednošinska pruga
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Jednošinska Pruga
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev Pruga
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prva dostupna
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Zadnja dostupna
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najčešće korišćena
@@ -1378,7 +1378,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Računa
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvoljena VI u mrežnoj partiji: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Najviše operacija pre suspenzije VI: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentimaČ {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}nema
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dana/%
@@ -1487,7 +1487,7 @@ STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredna
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
 STR_INTRO_AI_SETTINGS                                           :{BLACK}VI Podešavanja
-STR_INTRO_QUIT                                                  :{BLACK}Napusti
+STR_INTRO_QUIT                                                  :{BLACK}Izađi
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitavanje stare pozicije
@@ -1561,7 +1561,7 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izaberit
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izaberite dodatnu boju za označenu kategoriju
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Označite kategoriju za izmenu boje, ili više njih koristeći Ctrl+Klik. Kliknite na kvadratić kako biste aktivirali korišćenje boje
 
-STR_LIVERY_DEFAULT                                              :Generalne Boje
+STR_LIVERY_DEFAULT                                              :Uobičajne Boje
 STR_LIVERY_STEAM                                                :Parna Lokomotiva
 STR_LIVERY_DIESEL                                               :Dizel Lokomotiva
 STR_LIVERY_ELECTRIC                                             :Električna Lokomotiva
@@ -1707,7 +1707,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi 
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Odaberite teren:
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Na kom terenu želite da igrate?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Nasumično generisanje nove igre
+STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Stvaranje nove proizvoljne partije
 
 STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
@@ -2186,7 +2186,7 @@ STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nasumič
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadi drveće nasumično preko čitavog reljefa
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator terena
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Oblikovanje reljefa
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Postavi stenovita područja na reljef
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Postavi svetionik
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiši pustinjsku oblast.{}Pritisni i drži Ctrl da je ukloniš
@@ -2202,7 +2202,7 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Obnovi r
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li sigurno želite da uklonite sve objekte u vlasništvu igrača?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generator naselja
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stvaranje naselja
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Novo naselje
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Podigni novo naselje
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nasumično naselje
@@ -2219,12 +2219,12 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izbor ve
 STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi rasti brže nego pravilan gradski stanovništvo{}Ovisno o postavljanje , oni biti veći našto valjan
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Grad cesta raspored:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Izabrati cesta raspored iskorišten umjesto današji grad
-STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalan
-STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bolji rub ceste
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rešetka
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 rešetka
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Mreža puteva u naselju:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Izbor plana mreže puteva u naselju
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalano
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Napredno
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 mreža
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 mreža
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Slučajan
 
 # Fund new industry window
@@ -2384,8 +2384,8 @@ STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširu
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Klica Proizvoljnosti:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Sa klikom se unosi nova vrednos klice
 STR_MAPGEN_RANDOM                                               :{BLACK}Proizvoljno
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Promena klice prizvoljnosti Generatora Terena
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator zemljišta:
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Promena klice proizvoljnosti za Oblikovanje Reljefa
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritam za drveća:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivo mora:
@@ -2424,10 +2424,10 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Povećav
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Promena visine ravnog terena
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Generisanje sveta...
+STR_GENERATION_WORLD                                            :{WHITE}Stvaranje Sveta...
 STR_GENERATION_ABORT                                            :{BLACK}Prekini
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Prekida generisanje sveta
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Da li stvarno želite da prekinete generisanje?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Prekid Stvaranja Sveta
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Da li stvarno želite da prekinete stvaranje?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% završeno
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Stvaranje sveta
@@ -3474,7 +3474,7 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Naselje 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Putni radovi u toku
 
 # Industry related errors
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemoguće generisanje fabrika...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemoguće stvaranje fabrika...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE} {STRING} je nemoguće izgraditi ovde...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nije moguće ovde izgraditi taj tip industrije...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...previše blizu druge fabrike

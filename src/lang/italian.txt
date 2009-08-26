@@ -268,6 +268,7 @@ STR_SORT_BY_MODEL                                               :Modello
 STR_SORT_BY_VALUE                                               :Valore
 STR_SORT_BY_LENGTH                                              :Lunghezza
 STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
+STR_SORT_BY_TIMETABLE_DELAY                                     :Ritardo sull'orario
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
 STR_SORT_BY_WAITING                                             :Merci in attesa
 STR_SORT_BY_RATING_MAX                                          :Valutazione maggiore
@@ -307,7 +308,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruis
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra suoni/musica
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra l'ultimo messaggio/notizia, mostra le opzioni dei messaggi
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno, console, debug IA, screenshot, informazioni su OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salva scenario, carica scenario, abbandona l'editor di scenari, esci
@@ -428,7 +429,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Apri/chiudi console
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (CTRL+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot Gigante (CTRL+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot gigante (CTRL+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informazioni su 'OpenTTD'
 ############ range ends here
 
@@ -762,7 +763,7 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}La mancanza di alberi vicini costringe la {STRING} ad imminente chiusura!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Unione Monetaria Europea!{}{}È stato introdotto l'Euro come unica moneta per le transazioni quotidiane nel nostro Paese!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Recessione mondiale!{}{}Il crollo dell'economia porta gli analisti finanziari a temere il peggio!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Recessione globale!{}{}Il crollo dell'economia porta gli analisti a temere il peggio!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recessione finita!{}{}La ripresa del commercio da fiducia alle industrie e rafforza l'economia!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} incrementa la produzione!
@@ -794,7 +795,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} si è perso
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profitto di {VEHICLE} per l'anno scorso è stato {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Il fallito riadattamento ha fermato {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del fallimento di un ordine di riadattamento
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} fallito
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o a} {STRING} disponibile!
@@ -927,6 +928,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selezion
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} file mancant{P e i}/corrott{P o i}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sullo stile grafico di base
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pacchetto sonoro di base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleziona il pacchetto sonoro di base da utilizzare
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sul pacchetto sonoro di base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Attivazione modalità schermo intero fallita
 
@@ -1781,6 +1785,7 @@ STR_CONTENT_TYPE_AI                                             :{G=f}IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Libreria IA
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Heightmap
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Suoni base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Download dei contenuti...
@@ -2561,7 +2566,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produce:
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione (multiplo di 8, fino a 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tren{P 2 o i}
@@ -2821,7 +2826,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forza il
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Riadatta il treno per trasportare un carico differente
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Riadatta l'automezzo per trasportare un tipo di carico differente
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Riadatta il mercantile per permettere il trasporto di un tipo di carico differente
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Riadatta la nave per permettere il trasporto di un tipo di carico differente
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Riadatta l'aeromobile per trasportare un tipo di carico differente
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverte la direzione del treno
@@ -3222,13 +3227,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Troppo v
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Denaro insufficiente - servono {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Richiesto terreno pianeggiante
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinato nella direzione sbagliata
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Non è possibile farlo....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossibile farlo....
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}L'edificio deve essere demolito prima
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossibile ripulire l'area....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...sito inadatto
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...già costruito
-STR_ERROR_OWNED_BY                                              :{WHITE}...posseduto da {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...l'area appartiene a un'altra compagnia
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sito inadatto
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... già costruito
+STR_ERROR_OWNED_BY                                              :{WHITE}... posseduto da {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'area appartiene a un'altra compagnia
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Il nome deve essere univoco
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} di mezzo
 
@@ -3252,10 +3257,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}...già 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Impossibile cambiare il nome della compagnia...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Impossibile cambiare il nome del presidente...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...il prestito massimo concesso è di {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... il prestito massimo concesso è di {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossibile chiedere in prestito altro denaro...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...debito già estinto
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} richiesti
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... debito già estinto
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} richiesti
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossibile ripagare il prestito...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossibile donare denaro prestato dalla banca...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossibile comprare la compagnia...
@@ -3268,9 +3273,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Questa c
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossibile costruire città
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossibile rinominare la città...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Impossibile costruire una città qui...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...troppo vicino al bordo della mappa
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...troppo vicino ad un'altra città
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...troppe città
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... troppo vicino al bordo della mappa
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...non c'è altro spazio sulla mappa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
@@ -3280,14 +3285,14 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossibile costruire {STRING} qui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossibile costruire l'industria qui...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...troppo vicina ad un'altra industria
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...bisogna prima costruire una città
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...ne è ammessa solo una per città
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...può essere costruita solo nella foresta pluviale
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...può essere costruita solo in aree desertiche
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...può essere costruito solo in città
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...può essere posizionata solo vicino ai bordi della mappa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...una foresta può essere piantata solo in una zona innevata
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... bisogna prima costruire una città
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ne è ammessa solo una per città
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... può essere costruita solo in città con almeno 1.200 abitanti
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... può essere costruita solo nella foresta pluviale
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... può essere costruita solo in aree desertiche
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... può essere costruito solo in città
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... può essere posizionata solo vicino ai bordi della mappa
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo in una zona innevata
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossibile costruire la stazione qui...
@@ -3299,7 +3304,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Impossibile costruire un aeroporto qui...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Farebbe parte di due o più stazioni/aree di carico
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stazione troppo estesa
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stazione troppo estesa
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...stazioni non uniformi disabilitate
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Troppe stazioni/aree di carico
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stazione composta da troppe parti
@@ -3339,7 +3344,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boa di mezzo
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boa di mezzo
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...la boa è in uso!
 
 # Depot related errors
@@ -3349,7 +3354,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossibile costruire il deposito navale qui...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Il treno deve essere fermo in un deposito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...deve essere fermo nel deposito automezzi
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve essere fermo nel deposito automezzi
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}La nave deve essere ferma nel deposito
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'aeromobile deve essere fermo nell'hangar
 
@@ -3396,13 +3401,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossibile costruire qui il canale...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossibile costruire qui le chiuse...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossibile creare un fiume qui...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...deve essere costruito sull'acqua
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...impossibile costruire sull'acqua
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... deve essere costruito sull'acqua
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... impossibile costruire sull'acqua
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Bisogna demolire il canale prima
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossibile costruire un acquedotto qui...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...albero già qui
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... albero già presente
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Impossibile piantare l'albero qui...
 
 # Bridge related errors
@@ -3412,7 +3417,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Impossib
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Le estremità del ponte non sono allo stesso livello
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Il ponte è troppo basso per il terreno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inizio e fine devono essere allineati
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...gli estremi del ponte devono trovarsi entrambi sul terreno
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... gli estremi del ponte devono trovarsi entrambi sul terreno
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossibile costruire il tunnel qui...
@@ -3424,9 +3429,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossib
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Oggetto di mezzo
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...sede della compagnia di mezzo
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede della compagnia di mezzo
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Impossibile acquistare quest'area di terreno...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...lo possiedi già!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... già posseduto!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossibile creare il gruppo...
@@ -3506,13 +3511,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Impossib
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossibile spostare questo ordine...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossibile saltare l'ordine corrente...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossibile saltare all'ordine selezionato...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}il veicolo non può utilizzare tutte le stazioni
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}il veicolo non può utilizzare questa stazione
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un veicolo che condivide l'ordine non può utilizzare questa stazione
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... il veicolo non può utilizzare tutte le stazioni
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... il veicolo non può utilizzare questa stazione
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un veicolo che condivide l'ordine non può utilizzare questa stazione
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossibile condividere la lista degli ordini...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Impossibile copiare la lista degli ordini...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...troppo lontano dalla destinazione precedente
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... troppo lontano dalla destinazione precedente
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossibile dare un orario al veicolo...
@@ -3520,7 +3525,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}I veicol
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Il veicolo non ferma a questa stazione.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...troppi cartelli
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... troppi cartelli
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossibile piazzare il cartello qui...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossibile modificare il testo del cartello...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossibile eliminare il cartello...

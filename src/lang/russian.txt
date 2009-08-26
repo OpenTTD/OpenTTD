@@ -3864,7 +3864,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Вагон для сахарной ваты
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Вагон для ирисок
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон для пузырьков
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цистерна (кола)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цистерна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Вагон для конфет
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон для игрушек
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батареек
@@ -3926,7 +3926,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Вагон для сахарной ваты
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Вагон для ирисок
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Вагон для пузырьков
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Цистерна колы
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Цистерна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Вагон для конфет
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Вагон для игрушек
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Вагон для батареек
