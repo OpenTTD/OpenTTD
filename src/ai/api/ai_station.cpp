@@ -48,7 +48,7 @@
 	if (!IsValidStation(station_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
-	return ::Station::Get(station_id)->goods[cargo_id].rating * 101 >> 8;
+	return ::ToPercent8(::Station::Get(station_id)->goods[cargo_id].rating);
 }
 
 /* static */ int32 AIStation::GetCoverageRadius(AIStation::StationType station_type)

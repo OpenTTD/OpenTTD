@@ -69,3 +69,10 @@ AISubsidy.GetDestination <- function(subsidy_id)
 
 	return AISubsidy.GetDestinationIndex(subsidy_id);
 }
+
+AITown.GetMaxProduction <- function(town_id, cargo_id)
+{
+	AILog.Warning("AITown::GetMaxProduction is deprecated and will be removed soon, please use AITown::GetLastMonthProduction instead.");
+	AILog.Warning("Also note that behaviour of AITown::GetLastMonthProduction has slightly changed.");
+	return AITown.GetLastMonthProduction(town_id, cargo_id);
+}

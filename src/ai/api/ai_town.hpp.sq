@@ -65,7 +65,6 @@ void SQAITown_Register(Squirrel *engine) {
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetLocation,                "GetLocation",                2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthProduction,     "GetLastMonthProduction",     3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthTransported,    "GetLastMonthTransported",    3, ".ii");
-	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxProduction,           "GetMaxProduction",           3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");

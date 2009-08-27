@@ -35,6 +35,7 @@
  * \li AISubsidy::GetSource
  * \li AISubsidy::DestinationIsTown
  * \li AISubsidy::GetDestination
+ * \li AITown::GetMaxProduction
  * \li AIWaypoint::WAYPOINT_INVALID
  *
  * Other changes:
