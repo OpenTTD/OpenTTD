@@ -1252,7 +1252,7 @@
     GetCargoType():     255
     CanRefitCargo():    false
     GetCapacity():      -1
-    GetReliability():   79
+    GetReliability():   80
     GetMaxSpeed():      112
     GetPrice():         41
     GetMaxAge():        7686
@@ -1270,7 +1270,7 @@
     GetCargoType():     255
     CanRefitCargo():    false
     GetCapacity():      -1
-    GetReliability():   83
+    GetReliability():   84
     GetMaxSpeed():      128
     GetPrice():         61
     GetMaxAge():        7320
@@ -3322,7 +3322,7 @@
     GetCargoType():     1
     CanRefitCargo():    true
     GetCapacity():      20
-    GetReliability():   76
+    GetReliability():   77
     GetMaxSpeed():      48
     GetPrice():         347
     GetMaxAge():        5490
@@ -3376,7 +3376,7 @@
     GetCargoType():     2
     CanRefitCargo():    false
     GetCapacity():      22
-    GetReliability():   91
+    GetReliability():   92
     GetMaxSpeed():      48
     GetPrice():         370
     GetMaxAge():        5490
@@ -3484,7 +3484,7 @@
     GetCargoType():     3
     CanRefitCargo():    false
     GetCapacity():      21
-    GetReliability():   97
+    GetReliability():   98
     GetMaxSpeed():      48
     GetPrice():         354
     GetMaxAge():        5490
@@ -3538,7 +3538,7 @@
     GetCargoType():     4
     CanRefitCargo():    false
     GetCapacity():      14
-    GetReliability():   96
+    GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         337
     GetMaxAge():        5490
@@ -3592,7 +3592,7 @@
     GetCargoType():     5
     CanRefitCargo():    false
     GetCapacity():      14
-    GetReliability():   86
+    GetReliability():   87
     GetMaxSpeed():      48
     GetPrice():         344
     GetMaxAge():        5490
@@ -3646,7 +3646,7 @@
     GetCargoType():     6
     CanRefitCargo():    false
     GetCapacity():      20
-    GetReliability():   96
+    GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         366
     GetMaxAge():        5490
@@ -3700,7 +3700,7 @@
     GetCargoType():     7
     CanRefitCargo():    false
     GetCapacity():      20
-    GetReliability():   97
+    GetReliability():   98
     GetMaxSpeed():      48
     GetPrice():         379
     GetMaxAge():        5490
@@ -3754,7 +3754,7 @@
     GetCargoType():     8
     CanRefitCargo():    false
     GetCapacity():      22
-    GetReliability():   96
+    GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         389
     GetMaxAge():        5490
@@ -3808,7 +3808,7 @@
     GetCargoType():     9
     CanRefitCargo():    false
     GetCapacity():      15
-    GetReliability():   81
+    GetReliability():   82
     GetMaxSpeed():      48
     GetPrice():         360
     GetMaxAge():        5490
@@ -3862,7 +3862,7 @@
     GetCargoType():     10
     CanRefitCargo():    false
     GetCapacity():      12
-    GetReliability():   75
+    GetReliability():   76
     GetMaxSpeed():      48
     GetPrice():         466
     GetMaxAge():        5490
@@ -4780,7 +4780,7 @@
     GetCargoType():     3
     CanRefitCargo():    false
     GetCapacity():      220
-    GetReliability():   98
+    GetReliability():   99
     GetMaxSpeed():      24
     GetPrice():         515
     GetMaxAge():        10980
@@ -4816,7 +4816,7 @@
     GetCargoType():     0
     CanRefitCargo():    false
     GetCapacity():      100
-    GetReliability():   87
+    GetReliability():   88
     GetMaxSpeed():      32
     GetPrice():         309
     GetMaxAge():        10980
@@ -5050,7 +5050,7 @@
     GetCargoType():     0
     CanRefitCargo():    false
     GetCapacity():      30
-    GetReliability():   76
+    GetReliability():   77
     GetMaxSpeed():      238
     GetPrice():         48
     GetMaxAge():        10980
@@ -5757,17 +5757,17 @@
     135 => 14
     153 => 12
   Reliability ListDump:
-    144 => 97
-    132 => 97
-    147 => 96
-    141 => 96
-    135 => 96
-    126 => 91
-    138 => 86
-    150 => 81
+    144 => 98
+    132 => 98
+    147 => 97
+    141 => 97
+    135 => 97
+    126 => 92
+    138 => 87
+    150 => 82
     116 => 78
-    123 => 76
-    153 => 75
+    123 => 77
+    153 => 76
   MaxSpeed ListDump:
     116 => 56
     153 => 48
@@ -7090,9 +7090,9 @@
   GetBankBalance():     805063
 
 --AIBuoyList--
-  Count():              1
+  Count():             1
   Location ListDump:
-  28481
+    28481
 
   RemoveWaterDepot():   true
   RemoveDock():         true

@@ -438,5 +438,5 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return v->reliability * 100 >> 16;
+	return ::ToPercent16(v->reliability);
 }

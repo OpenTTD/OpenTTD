@@ -99,7 +99,7 @@
 	if (!IsValidEngine(engine_id)) return -1;
 	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
-	return (::Engine::Get(engine_id)->reliability * 100 >> 16);
+	return ::ToPercent16(::Engine::Get(engine_id)->reliability);
 }
 
 /* static */ int32 AIEngine::GetMaxSpeed(EngineID engine_id)

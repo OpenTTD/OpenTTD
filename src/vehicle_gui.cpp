@@ -1424,7 +1424,7 @@ struct VehicleDetailsWindow : Window {
 		DrawString(2, this->width - 2, 35, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		/* Draw breakdown & reliability */
-		SetDParam(0, v->reliability * 100 >> 16);
+		SetDParam(0, ToPercent16(v->reliability));
 		SetDParam(1, v->breakdowns_since_last_service);
 		DrawString(2, this->width - 2, 45, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
 

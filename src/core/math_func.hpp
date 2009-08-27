@@ -269,6 +269,28 @@ static FORCEINLINE void Swap(T &a, T &b)
 	b = t;
 }
 
+/**
+ * Converts a "fract" value 0..255 to "percent" value 0..100
+ * @param i value to convert, range 0..255
+ * @return value in range 0..100
+ */
+static FORCEINLINE uint ToPercent8(uint i)
+{
+	assert(i < 256);
+	return i * 101 >> 8;
+}
+
+/**
+ * Converts a "fract" value 0..65535 to "percent" value 0..100
+ * @param i value to convert, range 0..65535
+ * @return value in range 0..100
+ */
+static FORCEINLINE uint ToPercent16(uint i)
+{
+	assert(i < 65536);
+	return i * 101 >> 16;
+}
+
 int LeastCommonMultiple(int a, int b);
 int GreatestCommonDivisor(int a, int b);
 

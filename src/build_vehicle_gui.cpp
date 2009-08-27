@@ -691,7 +691,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 		y += FONT_HEIGHT_NORMAL;
 
 		/* Reliability */
-		SetDParam(0, e->reliability * 100 >> 16);
+		SetDParam(0, ToPercent16(e->reliability));
 		DrawString(left, right, y, STR_PURCHASE_INFO_RELIABILITY);
 		y += FONT_HEIGHT_NORMAL;
 	}

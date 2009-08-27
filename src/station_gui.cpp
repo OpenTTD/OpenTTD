@@ -954,7 +954,7 @@ struct StationViewWindow : public Window {
 				if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
 
 				SetDParam(0, cs->name);
-				SetDParam(2, ge->rating * 101 >> 8);
+				SetDParam(2, ToPercent8(ge->rating));
 				SetDParam(1, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
 				DrawString(this->widget[SVW_ACCEPTLIST].left + 8, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATING);
 				y += 10;

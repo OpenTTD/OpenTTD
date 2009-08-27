@@ -554,7 +554,7 @@ public:
 			SetDParam(1, i->last_month_production[j]);
 			SetDParam(2, GetCargoSuffix(j + 3, CST_VIEW, i, i->type, ind));
 
-			SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
+			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
 			uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
 			DrawString(x, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
@@ -833,7 +833,7 @@ protected:
 		assert(id < lengthof(i->produced_cargo));
 
 		if (i->produced_cargo[id] == CT_INVALID) return 101;
-		return i->last_month_pct_transported[id] * 100 >> 8;
+		return ToPercent8(i->last_month_pct_transported[id]);
 	}
 
 	/**
@@ -968,7 +968,7 @@ public:
 			/* Transported productions */
 			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 				if (i->produced_cargo[j] == CT_INVALID) continue;
-				SetDParam(p++, i->last_month_pct_transported[j] * 100 >> 8);
+				SetDParam(p++, ToPercent8(i->last_month_pct_transported[j]));
 			}
 
 			/* Drawing the right string */

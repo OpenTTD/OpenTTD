@@ -1630,7 +1630,7 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 
 	switch (order->GetConditionVariable()) {
 		case OCV_LOAD_PERCENTAGE:  skip_order = OrderConditionCompare(occ, CalcPercentVehicleFilled(v, NULL), value); break;
-		case OCV_RELIABILITY:      skip_order = OrderConditionCompare(occ, v->reliability * 100 >> 16,        value); break;
+		case OCV_RELIABILITY:      skip_order = OrderConditionCompare(occ, ToPercent16(v->reliability),       value); break;
 		case OCV_MAX_SPEED:        skip_order = OrderConditionCompare(occ, v->GetDisplayMaxSpeed() * 10 / 16, value); break;
 		case OCV_AGE:              skip_order = OrderConditionCompare(occ, v->age / DAYS_IN_LEAP_YEAR,        value); break;
 		case OCV_REQUIRES_SERVICE: skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
