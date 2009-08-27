@@ -176,6 +176,18 @@ public:
 	static int32 GetLastMonthTransported(TownID town_id, CargoID cargo_id);
 
 	/**
+	 * Get the percentage of transported production of the given cargo at a town.
+	 * @param town_id The index of the town.
+	 * @param cargo_id The index of the cargo.
+	 * @pre IsValidTown(town_id).
+	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre AICargo::GetTownEffect(cargo_id) == TE_PASSENGERS || AICargo::GetTownEffect(cargo_id) == TE_MAIL.
+	 * @return The percentage of given cargo transported from this town last month.
+	 * @post Return value is always non-negative.
+	 */
+	static int32 GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
+
+	/**
 	 * Get the manhattan distance from the tile to the AITown::GetLocation()
 	 *  of the town.
 	 * @param town_id The town to get the distance to.
