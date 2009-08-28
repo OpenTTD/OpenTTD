@@ -493,6 +493,11 @@ bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
 				/* don't allow recursive delete of all remaining items */
 				duplicate->next = NULL;
 
+				/* If the duplicate set is currently used (due to rescanning this can happen)
+				 * update the currently used set to the new one. This will 'lie' about the
+				 * version number until a new game is started which isn't a big problem */
+				if (_used_graphics_set == duplicate) _used_graphics_set = graphics;
+
 				DEBUG(grf, 1, "Removing %s (%i) as base graphics set (duplicate)", duplicate->name, duplicate->version);
 				delete duplicate;
 				ret = true;

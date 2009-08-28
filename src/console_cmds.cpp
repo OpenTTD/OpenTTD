@@ -1018,7 +1018,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 	}
 
 	/* Start a new AI company */
-	DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
+	DoCommandP(0, 1, INVALID_COMPANY, CMD_COMPANY_CTRL);
 
 	return true;
 }
@@ -1054,7 +1054,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
 	DoCommandP(0, 2, company_id, CMD_COMPANY_CTRL);
-	DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
+	DoCommandP(0, 1, company_id, CMD_COMPANY_CTRL);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;

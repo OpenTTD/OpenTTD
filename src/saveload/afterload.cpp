@@ -11,6 +11,7 @@
 #include "../roadveh.h"
 #include "../string_func.h"
 #include "../gamelog.h"
+#include "../gamelog_internal.h"
 #include "../network/network.h"
 #include "../gfxinit.h"
 #include "../functions.h"
@@ -38,7 +39,7 @@
 #include <signal.h>
 
 extern StringID _switch_mode_errorstr;
-extern Company *DoStartupNewCompany(bool is_ai);
+extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void InitializeRailGUI();
 
 /**
@@ -267,6 +268,24 @@ static void ResetSignalHandlers()
 }
 
 /**
+ * Try to find the overridden GRF identifier of the given GRF.
+ * @param c the GRF to get the 'previous' version of.
+ * @return the GRF identifier or \a c if none could be found.
+ */
+static const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig *c)
+{
+	const LoggedAction *la = &_gamelog_action[_gamelog_actions - 1];
+	if (la->at != GLAT_LOAD) return c;
+
+	const LoggedChange *lcend = &la->change[la->changes];
+	for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
+		if (lc->ct == GLCT_GRFCOMPAT && lc->grfcompat.grfid == c->grfid) return &lc->grfcompat;
+	}
+
+	return c;
+}
+
+/**
  * Signal handler used to give a user a more useful report for crashes during
  * the savegame loading process; especially when there's problems with the
  * NewGRFs that are required by the savegame.
@@ -291,16 +310,17 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			"savegame still crashes when all NewGRFs are found you should file a\n"
 			"bug report. The missing NewGRFs are:\n");
 
-	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		if (HasBit(c->flags, GCF_COMPATIBLE)) {
+			const GRFIdentifier *replaced = GetOverriddenIdentifier(c);
 			char buf[40];
-			md5sumToString(buf, lastof(buf), c->md5sum);
-			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s. Tried another NewGRF with same GRF ID\n", BSWAP32(c->grfid), c->filename, buf);
+			md5sumToString(buf, lastof(buf), replaced->md5sum);
+			p += seprintf(p, lastof(buffer), "NewGRF %08X (checksum %s) not found.\n  Loaded NewGRF \"%s\" with same GRF ID instead.\n", BSWAP32(c->grfid), buf, c->filename);
 		}
 		if (c->status == GCS_NOT_FOUND) {
 			char buf[40];
 			md5sumToString(buf, lastof(buf), c->md5sum);
-			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s\n", BSWAP32(c->grfid), c->filename, buf);
+			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s.\n", BSWAP32(c->grfid), c->filename, buf);
 		}
 	}
 

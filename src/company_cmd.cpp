@@ -420,16 +420,23 @@ void ResetCompanyLivery(Company *c)
  * Create a new company and sets all company variables default values
  *
  * @param is_ai is a ai company?
+ * @param company CompanyID to use for the new company
  * @return the company struct
  */
-Company *DoStartupNewCompany(bool is_ai)
+Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 {
 	if (ActiveCompanyCount() == MAX_COMPANIES || !Company::CanAllocateItem()) return NULL;
 
 	/* we have to generate colour before this company is valid */
 	Colours colour = GenerateCompanyColour();
 
-	Company *c = new Company(STR_SV_UNNAMED, is_ai);
+	Company *c;
+	if (company == INVALID_COMPANY) {
+		c = new Company(STR_SV_UNNAMED, is_ai);
+	} else {
+		if (IsValidCompanyID(company)) return NULL;
+		c = new (company) Company(STR_SV_UNNAMED, is_ai);
+	}
 
 	c->colour = colour;
 
@@ -486,7 +493,7 @@ static void MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
+		DoCommandP(0, 1, INVALID_COMPANY, CMD_COMPANY_CTRL);
 	}
 }
 
@@ -700,6 +707,7 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  * - p1 = 3 - merge two companies together. merge #1 with #2. Identified by p2
  * @param p2 various functionality, dictated by p1
  * - p1 = 0 - ClientID of the newly created client
+ * - p1 = 1 - CompanyID to start AI (INVALID_COMPANY for first available)
  * - p1 = 2 - CompanyID of the that is getting deleted
  * - p1 = 3 - #1 p2 = (bit  0-15) - company to merge (p2 & 0xFFFF)
  *          - #2 p2 = (bit 16-31) - company to be merged into ((p2>>16)&0xFFFF)
@@ -815,7 +823,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case 1: // Make a new AI company
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			DoStartupNewCompany(true);
+			if (p2 != INVALID_COMPANY && (p2 >= MAX_COMPANIES || IsValidCompanyID((CompanyID)p2))) return CMD_ERROR;
+			DoStartupNewCompany(true, (CompanyID)p2);
 			break;
 
 		case 2: { // Delete a company

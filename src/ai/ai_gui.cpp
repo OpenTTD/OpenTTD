@@ -742,7 +742,7 @@ struct AIDebugWindow : public Window {
 		if (widget == AID_WIDGET_RELOAD_TOGGLE && !this->IsWidgetDisabled(widget)) {
 			/* First kill the company of the AI, then start a new one. This should start the current AI again */
 			DoCommandP(0, 2, ai_debug_company, CMD_COMPANY_CTRL);
-			DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
+			DoCommandP(0, 1, ai_debug_company, CMD_COMPANY_CTRL);
 		}
 	}
 
