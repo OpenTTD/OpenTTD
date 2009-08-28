@@ -293,10 +293,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Display 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Display graphs
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Display company league table
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fund construction of new industry or list all industries
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Display list of company's trains
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Display list of company's road vehicles
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Display list of company's ships
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Display list of company's aircraft
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Display list of company's trains. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Display list of company's road vehicles. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Display list of company's ships. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Display list of company's aircraft. Ctrl+Click toggles opening the group/vehicle list
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom the view in
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom the view out
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Build railway track
@@ -1839,7 +1839,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build ra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for building and servicing trains)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convert rail to waypoint. Ctrl enables joining waypoints
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railway station. Ctrl enables joining stations
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build railway signals
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build railway signals. Ctrl toggles semaphore/light signals{}Dragging builds signals along a straight stretch of rail. Ctrl builds signals till the next junction{}Ctrl+Click toggles opening the signal selection window
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build railway bridge
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railway tunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railway track and signals
@@ -3038,7 +3038,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Go To
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl makes station orders 'full load any cargo', waypoint orders 'non-stop' and depot orders 'service'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insert an advanced order
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Show all vehicles that share this schedule
