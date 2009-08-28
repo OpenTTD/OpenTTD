@@ -768,7 +768,7 @@ struct TooltipsWindow : public Window
 		for (uint arg = 0; arg < this->paramcount; arg++) {
 			SetDParam(arg, this->params[arg]);
 		}
-		DrawStringMultiLine(1, this->width - 1, 0, this->height, this->string_id, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(3, this->width - 3, 0, this->height, this->string_id, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnMouseLoop()
@@ -797,14 +797,13 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	char buffer[512];
 	GetString(buffer, str, lastof(buffer));
 
-	Dimension br = GetStringBoundingBox(buffer);
-	br.width += 6; br.height += 4; // increase slightly to have some space around the box
+	Dimension br;
+	br.width  = min(GetStringBoundingBox(buffer).width, 194);
+	br.height = GetStringHeight(str, br.width);
 
-	/* Cut tooltip length to 200 pixels max, wrap to new line if longer */
-	if (br.width > 200) {
-		br.height += ((br.width - 4) / 176) * 10;
-		br.width = 200;
-	}
+	/* increase slightly to have some space around the box */
+	br.width += 6;
+	br.height += 4;
 
 	/* Correctly position the tooltip position, watch out for window and cursor size
 	 * Clamp value to below main toolbar and above statusbar. If tooltip would
