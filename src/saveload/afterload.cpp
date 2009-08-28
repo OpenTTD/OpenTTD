@@ -49,7 +49,7 @@
 #include <signal.h>
 
 extern StringID _switch_mode_errorstr;
-extern Company *DoStartupNewCompany(bool is_ai);
+extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void InitializeRailGUI();
 
 /**
