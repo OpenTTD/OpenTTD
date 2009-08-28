@@ -294,10 +294,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficos
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabla de ranking de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Aportar fondos para construir una nueva industria
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de vehículos de carretera de la empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos de la empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de vehículos de carretera de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Acercar vista
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Alejar vista
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir vías de ferrocarril
@@ -659,7 +659,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Rutas de transporte
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Bosque
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Estación de ferrocarril
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Muelle de carga de camiones
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Estación de carga de camiones
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Estación de autobuses
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeropuerto/Helipuerto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Muelle
@@ -790,7 +790,7 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se está volviendo viejo
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} se está volviendo muy viejo
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está volviendo muy viejo y necesita ser reemplazado urgentemente
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no puede encontrar un camino para continuar.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no puede encontrar una ruta para continuar.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Los beneficios del año pasado del {VEHICLE} fueron {CURRENCY}
 
@@ -1176,7 +1176,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ver vías reservadas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ver rutas reservadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Mantener activas las herramientas de construcción tras su uso: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar costes en la ventana de finanzas: {ORANGE}{STRING}
 
@@ -1194,15 +1194,15 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desacti
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA en multijugador (experimental): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Número de instrucciones antes de pausar la IA: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de despachos en porcentajes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}{STRING} días
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}no
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}{STRING} días
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}no
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de despacho por defecto para aeroplanos: {ORANGE}{STRING} días
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de despacho por defecto para aeronaves: {ORANGE}no
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}{STRING} días
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}no
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de mantenimiento en porcentajes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}desactivado
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}desactivado
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de mantenimiento por defecto para aeroplanos: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de mantenimiento por defecto para aeronaves: {ORANGE}desactivado
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}desactivado
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desactivar servicio cuando las averías están desactivadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactivar railes electricos: {ORANGE}{STRING}
@@ -1212,7 +1212,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Fecha d
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar economía suave (cambios más pequeños): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permitir comprar acciones de otras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cuando arrastre colocar señales cada: {ORANGE}{STRING} casilla(s)
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Coloca automáticamente semáforos antes de: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Señales mecánicas por defecto antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar la GUI de señales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de señal a construir por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloque
@@ -1305,7 +1305,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Consulta
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ajustes de la IA
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar nuevo juego
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar nuevo juego. Ctrl+Click omite la configuración del escenario
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Cargar un juego guardado
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Empezar juego nuevo, usando mapa de altura como terreno
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comienza un nuevo juego, usando un escenario personalizado desde el disco
@@ -1831,16 +1831,16 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constru
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construcción de ferrocarril
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcciòn Línea Eléctrica de Ferrocarril
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcción Línea Eléctrica de Ferrocarril
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construcción de monorraíl
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construcción de tren de levitación magnética
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramos de ferrocarril usando modo Autorraíl
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril. Ctrl permite retirar ferrocarriles
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramos de ferrocarril usando modo Autorraíl. Ctrl permite retirar ferrocarriles
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para construir y despachar trenes)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de ruta
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir señales de ferrocarril
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir ferrocarril a punto de ruta. Ctrl activa la unión de puntos de ruta
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril. Ctrl activa la unión de estaciones
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Arrastrar construye señales en el trozo de ferrocarril recorrido. Arrastrar+Ctrl construye señales hasta el próximo cruce{}Ctrl+Click no abre la ventana de selección de señales
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviario
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar tramos y señales de ferrocarril
@@ -1857,11 +1857,11 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Seleccio
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Selección de estación de tren
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientación
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Elige orientación de la estación de tren
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Elige orientación de la estación de trenes
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Número de andenes
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Elige número de andenes de la estación de tren
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Elige número de andenes de la estación de trenes
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longitud de andén
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elige longitud de la estación de tren
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elige longitud de la estación de trenes
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar y soltar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir una estación con arrastrar & soltar
 
@@ -1873,12 +1873,12 @@ STR_STATION_CLASS_WAYP                                          :Puntos de ruta
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de Señales
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de bloque (semáforo){}Este es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (semáforo){}Verde si existen una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (semáforo){}Se comporta de la misma manera que una señal de bloque, pero es necesaria para activar el color correcto en las señales de entrada y combo.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Señal combo (semáforo){}La señal combo actua como señal de entrada y salida a la vez. Esto permite construir grandes "árboles" de señales condicionales.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Señal de ruta (semáforo){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. Pueden ser traspasadas desde atrás.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Señal de ruta de un sentido (semáforo){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. No pueden ser traspasadas desde atrás.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de bloque (mecánica){}Este es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Verde si existen una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Se comporta de la misma manera que una señal de bloque, pero es necesaria para activar el color correcto en las señales de entrada y combo.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Señal combo (mecánica){}La señal combo actua como señal de entrada y salida a la vez. Esto permite construir grandes "árboles" de señales condicionales.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Señal de ruta (mecánica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. Pueden ser traspasadas desde atrás.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Señal de ruta de un sentido (mecánica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. No pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Señal de bloque (eléctrica){}Es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Señal de entrada (eléctrica){}Verde si existen una o más señales verdes en el siguiente segmento de vía, de lo contrario estará en rojo
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Señal de salida (eléctrica){}Se comporta de la misma manera que una señal de bloque, pero es necesaria para activar el color correcto en las señales de entrada y combo.
@@ -1908,16 +1908,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silici
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de carretera
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de tranvía
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir sección de carretera
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera usando el modo de Autocarretera
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías usando el modo de Autotranvías
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir sección de carretera. Ctrl permite retirar carreteras
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía. Ctrl permite retirar tranvías
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera usando el modo de Autocarretera. Ctrl permite retirar carreteras
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías usando el modo de Autotranvías. Ctrl permite retirar tranvías
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de carretera (para construir y despachar vehículos)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de tranvías (para vehículos de contrucción y servicio)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estación de autobús
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estación de tranvía de pasajeros
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estación de carga para camiones
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estación de tranvía de carga
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estación de autobús. Ctrl activa la unión de estaciones
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estación de tranvía de pasajeros. Ctrl activa la unión de estaciones
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estación de carga para camiones. Ctrl activa la unión de estaciones
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estación de tranvía de carga. Ctrl activa la unión de estaciones
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar/Desactivar carreteras de un sentido
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir puente de carretera
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir puente de tranvía
@@ -1948,7 +1948,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canales.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir dársenas
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para construir y despachar barcos)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles. Ctrl activa la unión de estaciones
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya que puede ser usada como punto de ruta
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir acueducto
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definir área de agua.{}Crea un canal, a menos que se pulse Ctrl al nivel del mar, en cuyo caso se inundarán los alrededores
@@ -1963,7 +1963,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Muelle
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeropuertos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeropuerto
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeropuerto. Ctrl activa la unión de estaciones
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selección de aeropuerto
@@ -2082,28 +2082,28 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tierra cubierta por nieve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desierto
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía del tren
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vía del tren con señales de bloque
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vía del tren con señales de entrada
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vía del tren con señales de salida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vía del tren con señales combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vía del tren con señales de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vía de tren con señales de ruta de un sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vía de tren con señales de bloque y señales de entrada
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vía de tren con señales de bloque y de salida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vía de tren con señales combo y de bloque
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vía de tren con señales de bloque y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vía de tren con señales de bloque y de ruta de un sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vía de tren con señales de entrada y señales de salida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vía de tren con señales de entrada y señales combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vía de tren con señales de entrada y señales de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vía de tren con señales de entrada y señales de ruta de un sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vía de tren con señales de salida y señales combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vía de tren con señales de salida y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vía de tren con señales de salida y de ruta de un sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vía de tren con señales combo y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vía de tren con señales combo y de ruta de un sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vía de tren con señales de ruta y señales de ruta de un sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ferrocarril
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ferrocarril con señales de bloque
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Ferrocarril con señales de entrada
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Ferrocarril con señales de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Ferrocarril con señales combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Ferrocarril con señales de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ferrocarril con señales de ruta de un sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ferrocarril con señales de bloque y señales de entrada
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ferrocarril con señales de bloque y de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ferrocarril con señales combo y de bloque
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ferrocarril con señales de bloque y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Ferrocarril con señales de bloque y de ruta de un sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ferrocarril con señales de entrada y señales de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ferrocarril con señales de entrada y señales combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ferrocarril con señales de entrada y señales de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ferrocarril con señales de entrada y señales de ruta de un sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Ferrocarril con señales de salida y señales combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ferrocarril con señales de salida y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ferrocarril con señales de salida y de ruta de un sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ferrocarril con señales combo y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ferrocarril con señales combo y de ruta de un sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ferrocarril con señales de ruta y señales de ruta de un sentido
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito de trenes
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Road
@@ -2120,7 +2120,7 @@ STR_LAI_TREE_NAME_TREES                                         :Árboles
 STR_LAI_TREE_NAME_RAINFOREST                                    :Selváticos
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactus
 
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estación de tren
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estación de trenes
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar de aeroplanos
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeropuerto
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Zona de carga de camiones
@@ -2138,7 +2138,7 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Astillero
 
 # Industries come directly from their industry names
 
-STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel de tren
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel ferroviario
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel de carretera
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Puente de tren de acero suspendido
@@ -2354,7 +2354,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduc
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pueblos
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblo - click sobre el nombre para centrar la vista en el pueblo
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblo - click sobre un nombre para centrar la vista en el pueblo. Ctrl+Click abre un punto de vista en dicha posición
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
 # Town view window
@@ -2367,7 +2367,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga ne
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} entregados último mes
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en pueblo: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el pueblo
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el pueblo. Ctrl+Click abre un punto de vista en dicha posición
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridad local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar información sobre autoridades locales
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre del pueblo
@@ -2413,10 +2413,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Ninguna
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Líneas ya subvencionadas:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Haga click sobre el servicio para centrar la vista en la industria/pueblo
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Haga click sobre el servicio para centrar la vista en la industria/pueblo. Ctrl+Click abre un punto de vista en dicha posición
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - click en nombre para centrar vista en la estación
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - click sobre un nombre para centrar vista en la estación. Ctrl+Click abre un punto de vista en dicha posición
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar varios elementos
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2452,7 +2452,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la posición de la estación
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la posición de la estación. Ctrl+Click abre un punto de vista en dicha posición
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar nombre de la estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar todos los trenes que tienen esta estación en su horario
@@ -2463,9 +2463,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renombrar estación/zona de carga
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en posición del punto de ruta
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en posición del punto de ruta. Ctrl+Click abre un punto de vista en dicha posición
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar nombre del punto de ruta
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista en posición de la boya
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista en posición de la boya. Ctrl+Click abre un punto de vista en dicha posición
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar nombre de boya
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nombre del punto de ruta
@@ -2544,13 +2544,13 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nombre de industrias - pulse en el nombre para centrar la vista en él
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nombre de industrias - click sobre un nombre para centrar la vista en la industria. Ctrl+Click abre un punto de vista en dicha posición
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción mes anterior:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar la vista sobre la industria
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar la vista sobre la industria. Ctrl+Click abre un punto de vista en dicha posición
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
@@ -2735,10 +2735,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto con
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto construirá una copia del barco. Pulse este botón y después el barco dentro o fuera del muelle. Ctrl+Click compartirá las ordenes
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto construirá una copia de la aeronave. Pulse este botón y después en la aeronave dentro o fuera del hangar. Ctrl+Click compartirá las ordenes
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar vista en posición del depósito
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar vista en posición del depósito
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar vista en posición del astillero
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar vista en posición del hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar vista en posición del depósito de trenes. Ctrl+Click abre un punto de vista en dicha posición
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar vista en posición del depósito de vehículos. Ctrl+Click abre un punto de vista en dicha posición
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar vista en posición del astillero. Ctrl+Click abre un punto de vista en dicha posición
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar vista en posición del hangar. Ctrl+Click abre un punto de vista en dicha posición
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obtener lista de todos los trenes de este depósito y sus ordenes
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obtener lista de todos los vehículos del depósito actual y sus ordenes
@@ -2806,10 +2806,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer qu
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar vista en posición del tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar vista en posición del vehículo
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar vista en posición del barco
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrar vista en posición de la aeronave
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar vista en posición del tren. Ctrl+Click sigue al tren en la vista principal
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar vista en posición del vehículo. Ctrl+Click sigue al vehículo en la vista principal
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar vista en posición del barco. Ctrl+Click sigue al barco en la vista principal
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrar vista en posición de la aeronave. Ctrl+Click sigue a la aeronave en la vista principal
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar tren al depósito
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar vehículo al depósito
@@ -2831,10 +2831,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reformar
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Revertir dirección del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar vehículo a girar
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ver órdenes del vehículo
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órdenes del barco
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren. Ctrl+Click muestra su horario
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ver órdenes del vehículo Ctrl+Click muestra su horario
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órdenes del barco. Ctrl+Click muestra su horario
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+Click muestra su horario
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Ver detalles del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostrar detalles del vehículo
@@ -2855,7 +2855,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Parándose
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parándose, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sin potencia
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando vía libre
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando ruta libre
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Hacia {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Hacia {STATION}, {VELOCITY}
@@ -2911,10 +2911,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferir Créditos: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA}días{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA}%{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar intervalo de despacho
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrementar intervalo de despacho
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}días{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}%{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar intervalo de mantenimiento en 10. Ctrl+Click incrementa el intervalo de mantenimiento en 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrementar intervalo de mantenimiento en 10. Ctrl+Click reduce el intervalo de mantenimiento en 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nombrar tren
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nombrar vehículo
@@ -3039,7 +3039,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ir a
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito más cercano
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Introducir una orden avanzada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ver todos los vehículos con el mismo calendario
@@ -3266,7 +3266,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No se puede construir la sede de la empresa...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}No se puede comprar el 25% de acciones...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}No se puede vender el 25% de acciones...
-STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa todavía no dispone acciones a la venta...
+STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa es demasiado reciente como para comerciar con acciones...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede construir ningún pueblo
@@ -3304,12 +3304,12 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}No se pu
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjunta más de una estación/zona de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estación demasiado extendida
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...desactivada estaciones no uniformes
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...desactivadas estaciones no uniformes
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estaciones/zonas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de Autobús
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas zonas de carga
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado cerca de otra estación de tren
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas zonas de carga de camiones
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado cerca de otra estación de trenes
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiado cerca de otra estación/zona de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca de otro muelle
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca de otro aeropuerto
@@ -3319,13 +3319,13 @@ STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...reves
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede retirar parte de la estación...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Debes retirar la estación de tren primero
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Debes retirar la estación de trenes primero
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No se puede retirar estación de bus...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se puede quitar la estación de camiones...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No se puede quitar estación de tranvía de pasajeros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No se puede quitar estación de tranvía de carga...
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse estación de tren
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse estación de trenes
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Primero debe demolerse estación de autobús
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Primero debe demolerse estación de camiones
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Debe demoler la estación del tranvía de pasajeros primero
@@ -3377,12 +3377,12 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límite de din
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinación de tramos imposible
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de vía no apropiado
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de ferrocarril no apropiado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Se debe retirar primero tramo de vía
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Carretera de un solo sentido o bloqueada
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}No se pueden construir señales aquí...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir vías del tren aquí...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar vías del tren aquí...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir vías de ferrocarril aquí...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar vías de ferrocarril aquí...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}No se pueden retirar señales de aquí...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}No se pueden convertir las señales aquí...
 
