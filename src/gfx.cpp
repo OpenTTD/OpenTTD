@@ -748,8 +748,8 @@ int GetStringHeight(StringID str, int maxw)
  */
 int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline)
 {
-	int maxw = right - left;
-	int maxh = bottom - top;
+	int maxw = right - left + 1;
+	int maxh = bottom - top + 1;
 
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
@@ -760,7 +760,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
 	int total_height = (num + 1) * mt;
 
-	if (maxh != -1 && (int)total_height > maxh) {
+	if (maxh != 0 && total_height > maxh) {
 		/* Check there's room enough for at least one line. */
 		if (maxh < mt) return top;
 
