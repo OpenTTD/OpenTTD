@@ -298,18 +298,14 @@ void PlaceLandBlockInfo()
 
 /** Widgets for the land info window. */
 enum AboutWidgets {
-	AW_CLOSE,      ///< Close the window
-	AW_CAPTION,    ///< Title bar of the window
-	AW_BACKGROUND, ///< Background to draw on
-	AW_FRAME,      ///< The scrolling frame with goodies
-};
-
-static const Widget _about_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW},           // AW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   419,     0,    13, STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // AW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   419,    14,   271, 0x0,               STR_NULL},                           // AW_BACKGROUND
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,     5,   414,    40,   245, STR_NULL,          STR_NULL},                           // AW_FRAME
-{    WIDGETS_END},
+	AW_CLOSE,                ///< Close the window
+	AW_CAPTION,              ///< Title bar of the window
+	AW_BACKGROUND,           ///< Background to draw on
+	AW_ABOUT_ORIG_COPYRIGHT, ///< Text with original copyright info
+	AW_ABOUT_VERSION,        ///< OpenTTD version string
+	AW_FRAME,                ///< The scrolling frame with goodies
+	AW_WEBSITE,              ///< URL of OpenTTD website
+	AW_ABOUT_COPYRIGHT,      ///< OpenTTD copyright info
 };
 
 static const NWidgetPart _nested_about_widgets[] = {
@@ -317,118 +313,145 @@ static const NWidgetPart _nested_about_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, AW_CLOSE),
 		NWidget(WWT_CAPTION, COLOUR_GREY, AW_CAPTION), SetDataTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND),
-		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetMinimalSize(410, 206), SetPadding(26, 5, 26, 5), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND), SetPIP(4, 2, 4),
+		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_ORIG_COPYRIGHT), SetDataTip(STR_ABOUT_ORIGINAL_COPYRIGHT, STR_NULL),
+		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_VERSION), SetDataTip(STR_ABOUT_VERSION, STR_NULL),
+		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetPadding(0, 5, 1, 5), EndContainer(),
+		NWidget(WWT_TEXT, COLOUR_GREY, AW_WEBSITE), SetDataTip(STR_BLACK_RAW_STRING, STR_NULL),
+		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_COPYRIGHT), SetDataTip(STR_ABOUT_COPYRIGHT_OPENTTD, STR_NULL),
 	EndContainer(),
 };
 
 static const WindowDesc _about_desc(
-	WDP_CENTER, WDP_CENTER, 420, 272, 420, 272,
+	WDP_CENTER, WDP_CENTER, 0, 0, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_about_widgets, _nested_about_widgets, lengthof(_nested_about_widgets)
+	NULL, _nested_about_widgets, lengthof(_nested_about_widgets)
 );
 
-struct AboutWindow : public Window {
-	int scroll_height;
-	uint16 counter;
+static const char *_credits[] = {
+	"Original design by Chris Sawyer",
+	"Original graphics by Simon Foster",
+	"",
+	"The OpenTTD team (in alphabetical order):",
+	"  Jean-Francois Claeys (Belugas) - GUI, newindustries and more",
+	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles",
+	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
+	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
+	"  Christoph Elsenhans (frosch) - General coding",
+	"  Lo\xC3\xAF""c Guilloux (glx) - Windows Expert",
+	"  Michael Lutz (michi_cc) - Path based signals",
+	"  Owen Rudge (orudge) - Forum host, OS/2 port",
+	"  Peter Nelson (peter1138) - Spiritual descendant from newGRF gods",
+	"  Remko Bijker (Rubidium) - Lead coder and way more",
+	"  Zden\xC4\x9Bk Sojka (SmatZ) - Bug finder and fixer",
+	"  Thijs Marinussen (Yexo) - AI Framework",
+	"",
+	"Inactive Developers:",
+	"  Tam\xC3\xA1s Farag\xC3\xB3 (Darkvater) - Ex-Lead coder",
+	"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;)",
+	"  Jonathan Coome (Maedhros) - High priest of the NewGRF Temple",
+	"  Attila B\xC3\xA1n (MiHaMiX) - Developer WebTranslator 1 and 2",
+	"  Christoph Mallon (Tron) - Programmer, code correctness police",
+	"",
+	"Retired Developers:",
+	"  Ludvig Strigeus (ludde) - OpenTTD author, main coder (0.1 - 0.3.3)",
+	"  Serge Paquet (vurlix) - Assistant project manager, coder (0.1 - 0.3.3)",
+	"  Dominik Scherer (dominik81) - Lead programmer, GUI expert (0.3.0 - 0.3.6)",
+	"  Benedikt Br\xC3\xBCggemeier (skidd13) - Bug fixer and code reworker",
+	"  Patric Stout (TrueLight) - Programmer (0.3 - pre0.7), sys op (active)",
+	"",
+	"Special thanks go out to:",
+	"  Josef Drexler - For his great work on TTDPatch",
+	"  Marcin Grzegorczyk - For his documentation of TTD internals",
+	"  Petr Baudis (pasky) - Many patches, newGRF support",
+	"  Stefan Mei\xC3\x9Fner (sign_de) - For his work on the console",
+	"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with",
+	"  Cian Duffy (MYOB) - BeOS port / manual writing",
+	"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
+	"  Richard Kempton (richK) - additional airports, initial TGP implementation",
+	"",
+	"  Alberto Demichelis - Squirrel scripting language \xC2\xA9 2003-2008",
+	"  Markus F.X.J. Oberhumer - (Mini)LZO for loading old savegames \xC2\xA9 1996-2008",
+	"  L. Peter Deutsch - MD5 implementation \xC2\xA9 1999, 2000, 2002",
+	"  Michael Blunck - Pre-Signals and Semaphores \xC2\xA9 2003",
+	"  George - Canal/Lock graphics \xC2\xA9 2003-2004",
+	"  David Dallaston - Tram tracks",
+	"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
+	"  All Translators - Who made OpenTTD a truly international game",
+	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
+	"",
+	"",
+	"And last but not least:",
+	"  Chris Sawyer - For an amazing game!"
+};
 
-	AboutWindow() : Window(&_about_desc)
+struct AboutWindow : public Window {
+	int text_position;                       ///< The top of the scrolling text
+	byte counter;                            ///< Used to scroll the text every 5 ticks
+	int line_height;                         ///< The height of a single line
+	const static int num_visible_lines = 19; ///< The number of lines visible simultaneously
+
+	AboutWindow() : Window()
 	{
+		this->InitNested(&_about_desc);
+
 		this->counter = 5;
-		this->scroll_height = this->height - 40;
-		this->FindWindowPlacementAndResize(&_about_desc);
+		this->text_position = this->nested_array[AW_FRAME]->pos_y + this->nested_array[AW_FRAME]->current_y;
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == AW_WEBSITE) SetDParamStr(0, "Website: http://www.openttd.org");
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != AW_FRAME) return;
+
+		this->line_height = FONT_HEIGHT_NORMAL;
+
+		Dimension d;
+		d.height = this->line_height * num_visible_lines;
+
+		d.width = 0;
+		for (uint i = 0; i < lengthof(_credits); i++) {
+			d.width = max(d.width, GetStringBoundingBox(_credits[i]).width);
+		}
+		d.width += WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+
+		*size = maxdim(*size, d);
 	}
 
 	virtual void OnPaint()
 	{
-		static const char *credits[] = {
-			/*************************************************************************
-			 *                      maximum length of string which fits in window   -^*/
-			"Original design by Chris Sawyer",
-			"Original graphics by Simon Foster",
-			"",
-			"The OpenTTD team (in alphabetical order):",
-			"  Jean-Francois Claeys (Belugas) - GUI, newindustries and more",
-			"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles",
-			"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
-			"  Victor Fischer (Celestar) - Programming everywhere you need him to",
-			"  Christoph Elsenhans (frosch) - General coding",
-			"  Lo\xC3\xAF""c Guilloux (glx) - Windows Expert",
-			"  Michael Lutz (michi_cc) - Path based signals",
-			"  Owen Rudge (orudge) - Forum host, OS/2 port",
-			"  Peter Nelson (peter1138) - Spiritual descendant from newGRF gods",
-			"  Remko Bijker (Rubidium) - Lead coder and way more",
-			"  Zden\xC4\x9Bk Sojka (SmatZ) - Bug finder and fixer",
-			"  Thijs Marinussen (Yexo) - AI Framework",
-			"",
-			"Inactive Developers:",
-			"  Tam\xC3\xA1s Farag\xC3\xB3 (Darkvater) - Ex-Lead coder",
-			"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;)",
-			"  Jonathan Coome (Maedhros) - High priest of the NewGRF Temple",
-			"  Attila B\xC3\xA1n (MiHaMiX) - Developer WebTranslator 1 and 2",
-			"  Christoph Mallon (Tron) - Programmer, code correctness police",
-			"",
-			"Retired Developers:",
-			"  Ludvig Strigeus (ludde) - OpenTTD author, main coder (0.1 - 0.3.3)",
-			"  Serge Paquet (vurlix) - Assistant project manager, coder (0.1 - 0.3.3)",
-			"  Dominik Scherer (dominik81) - Lead programmer, GUI expert (0.3.0 - 0.3.6)",
-			"  Benedikt Br\xC3\xBCggemeier (skidd13) - Bug fixer and code reworker",
-			"  Patric Stout (TrueLight) - Programmer (0.3 - pre0.7), sys op (active)",
-			"",
-			"Special thanks go out to:",
-			"  Josef Drexler - For his great work on TTDPatch",
-			"  Marcin Grzegorczyk - For his documentation of TTD internals",
-			"  Petr Baudis (pasky) - Many patches, newGRF support",
-			"  Stefan Mei\xC3\x9Fner (sign_de) - For his work on the console",
-			"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with",
-			"  Cian Duffy (MYOB) - BeOS port / manual writing",
-			"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
-			"  Richard Kempton (richK) - additional airports, initial TGP implementation",
-			"",
-			"  Alberto Demichelis - Squirrel scripting language \xC2\xA9 2003-2008",
-			"  Markus F.X.J. Oberhumer - (Mini)LZO for loading old savegames \xC2\xA9 1996-2008",
-			"  L. Peter Deutsch - MD5 implementation \xC2\xA9 1999, 2000, 2002",
-			"  Michael Blunck - Pre-Signals and Semaphores \xC2\xA9 2003",
-			"  George - Canal/Lock graphics \xC2\xA9 2003-2004",
-			"  David Dallaston - Tram tracks",
-			"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
-			"  All Translators - Who made OpenTTD a truly international game",
-			"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
-			"",
-			"",
-			"And last but not least:",
-			"  Chris Sawyer - For an amazing game!"
-		};
-
 		this->DrawWidgets();
+	}
 
-		/* Show original copyright and revision version */
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17, STR_ABOUT_ORIGINAL_COPYRIGHT, TC_FROMSTRING, SA_CENTER);
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, 17 + 10, STR_ABOUT_VERSION, TC_FROMSTRING, SA_CENTER);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != AW_FRAME) return;
 
-		int y = this->scroll_height;
+		int y = this->text_position;
 
-		/* Show all scrolling credits */
-		for (uint i = 0; i < lengthof(credits); i++) {
-			if (y >= 50 && y < (this->height - 40)) {
-				DrawString(this->widget[AW_FRAME].left + 5, this->widget[AW_FRAME].right - 5, y, credits[i], TC_BLACK);
+		/* Show all scrolling _credits */
+		for (uint i = 0; i < lengthof(_credits); i++) {
+			if (y >= r.top + 7 && y < r.bottom - this->line_height) {
+				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, _credits[i], TC_BLACK);
 			}
-			y += 10;
+			y += this->line_height;
 		}
-
-		/* If the last text has scrolled start a new from the start */
-		if (y < 50) this->scroll_height = this->height - 40;
-
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 25, "Website: http://www.openttd.org", TC_BLACK, SA_CENTER);
-		DrawString(this->widget[AW_BACKGROUND].left + 2, this->widget[AW_BACKGROUND].right - 2, this->height - 15, STR_ABOUT_COPYRIGHT_OPENTTD, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnTick()
 	{
 		if (--this->counter == 0) {
 			this->counter = 5;
-			this->scroll_height--;
+			this->text_position--;
+			/* If the last text has scrolled start a new from the start */
+			if (this->text_position < (int)(this->nested_array[AW_FRAME]->pos_y - lengthof(_credits) * this->line_height)) {
+				this->text_position = this->nested_array[AW_FRAME]->pos_y + this->nested_array[AW_FRAME]->current_y;
+			}
 			this->SetDirty();
 		}
 	}
