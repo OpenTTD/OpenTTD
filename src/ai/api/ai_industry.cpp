@@ -91,6 +91,20 @@
 	return -1;
 }
 
+/* static */ int32 AIIndustry::GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id)
+{
+	if (!IsValidIndustry(industry_id)) return -1;
+	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+
+	const Industry *i = ::GetIndustry(industry_id);
+
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] == cargo_id) return i->last_month_pct_transported[j] * 100 >> 8;
+	}
+
+	return -1;
+}
+
 /* static */ TileIndex AIIndustry::GetLocation(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;

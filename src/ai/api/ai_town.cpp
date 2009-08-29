@@ -65,8 +65,8 @@
 	const Town *t = ::GetTown(town_id);
 
 	switch(AICargo::GetTownEffect(cargo_id)) {
-		case AICargo::TE_PASSENGERS: return t->act_pass;
-		case AICargo::TE_MAIL:       return t->act_mail;
+		case AICargo::TE_PASSENGERS: return t->max_pass;
+		case AICargo::TE_MAIL:       return t->max_mail;
 		default: return -1;
 	}
 }
@@ -79,22 +79,27 @@
 	const Town *t = ::GetTown(town_id);
 
 	switch(AICargo::GetTownEffect(cargo_id)) {
-		case AICargo::TE_PASSENGERS: return t->pct_pass_transported;
-		case AICargo::TE_MAIL:       return t->pct_mail_transported;
+		case AICargo::TE_PASSENGERS: return t->act_pass;
+		case AICargo::TE_MAIL:       return t->act_mail;
 		default: return -1;
 	}
 }
 
 /* static */ int32 AITown::GetMaxProduction(TownID town_id, CargoID cargo_id)
 {
+	return AITown::GetLastMonthProduction(town_id, cargo_id);
+}
+
+/* static */ int32 AITown::GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id)
+{
 	if (!IsValidTown(town_id)) return -1;
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
 	const Town *t = ::GetTown(town_id);
 
-	switch(AICargo::GetTownEffect(cargo_id)) {
-		case AICargo::TE_PASSENGERS: return t->max_pass;
-		case AICargo::TE_MAIL:       return t->max_mail;
+	switch (AICargo::GetTownEffect(cargo_id)) {
+		case AICargo::TE_PASSENGERS: return t->pct_pass_transported * 100 >> 8;
+		case AICargo::TE_MAIL:       return t->pct_mail_transported * 100 >> 8;
 		default: return -1;
 	}
 }

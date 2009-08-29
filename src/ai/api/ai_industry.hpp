@@ -78,6 +78,16 @@ public:
 	static int32 GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id);
 
 	/**
+	 * Get the percentage of cargo transported from an industry last month.
+	 * @param industry_id The index of the industry.
+	 * @param cargo_id The index of the cargo.
+	 * @pre IsValidIndustry(industry_id).
+	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @return The percentage of given cargo transported from this industry last month.
+	 */
+	static int32 GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id);
+
+	/**
 	 * Gets the location of the industry.
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
