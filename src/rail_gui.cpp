@@ -1689,11 +1689,13 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
 
-		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_NE]->pos_x - 1, this->nested_array[BRDW_DEPOT_NE]->pos_y, DIAGDIR_NE, _cur_railtype);
-		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_SE]->pos_x - 1, this->nested_array[BRDW_DEPOT_SE]->pos_y, DIAGDIR_SE, _cur_railtype);
-		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_SW]->pos_x - 1, this->nested_array[BRDW_DEPOT_SW]->pos_y, DIAGDIR_SW, _cur_railtype);
-		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_NW]->pos_x - 1, this->nested_array[BRDW_DEPOT_NW]->pos_y, DIAGDIR_NW, _cur_railtype);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (!IsInsideMM(widget, BRDW_DEPOT_NE, BRDW_DEPOT_NW + 1)) return;
+
+		DrawTrainDepotSprite(r.left - 1, r.top, widget - BRDW_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
 	}
 
 	virtual void OnClick(Point pt, int widget)
