@@ -4130,7 +4130,7 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATIONL                                         :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_WHITE_STRINGN                                               :{WHITE}{STRING}
+STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}

@@ -257,7 +257,7 @@ struct OskWindow : public Window {
 };
 
 static const Widget _osk_widgets[] = {
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_WHITE_STRINGN, STR_NULL}, // OSK_WIDGET_CAPTION
+{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_WHITE_STRING,  STR_NULL}, // OSK_WIDGET_CAPTION
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT_BACKGROUND
 {    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT
 
@@ -449,7 +449,7 @@ static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 
 
 static const NWidgetPart _nested_osk_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, OSK_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRINGN, STR_NULL),
+	NWidget(WWT_CAPTION, COLOUR_GREY, OSK_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	NWidget(WWT_PANEL, COLOUR_GREY, OSK_WIDGET_TEXT_BACKGROUND),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, OSK_WIDGET_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),

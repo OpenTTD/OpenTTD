@@ -1320,7 +1320,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 static const Widget _query_string_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_STR_WIDGET_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_WHITE_STRINGN, STR_NULL},              // QUERY_STR_WIDGET_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_WHITE_STRING,  STR_NULL},              // QUERY_STR_WIDGET_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_BACKGROUND
 {    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_TEXT
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_BUTTON_DEFAULT,       STR_NULL},              // QUERY_STR_WIDGET_DEFAULT
@@ -1332,7 +1332,7 @@ static const Widget _query_string_widgets[] = {
 static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_STR_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRINGN, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetPadding(2, 2, 2, 2),
