@@ -1458,7 +1458,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Пров
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Настройки ИИ
 STR_INTRO_QUIT                                                  :{BLACK}Выход
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Начать новую игру
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Начать новую игру. Ctrl+клик пропускает этап настройки карты
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Загрузить сохранённую игру
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Начать новую игру, используя карту высот в качестве шаблона карты
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Начать новую игру, используя сценарий
@@ -2975,10 +2975,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разр
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показать поезд в основном окне
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Показать автомобиль в главном окне
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показать корабль в главном окне
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать транспорт в главном окне
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показать поезд в основном окне. Ctrl+клик будет следить за поездом в главном окне
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Показать автомобиль в главном окне. Ctrl+клик будет следить за автомобилем в главном окне
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показать корабль в главном окне. Ctrl+Click будет следить за кораблем в главном окне
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать самолет в главном окне. Ctrl+клик будет следить за самолетом в главном окне
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+клик - только для обслуживания.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+клик - только для обслуживания.
@@ -3082,8 +3082,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выру
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+клик увеличивает интервал обслуживания на 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+клик уменьшает интервал обслуживания на 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назвать поезд
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назвать автотранспорт

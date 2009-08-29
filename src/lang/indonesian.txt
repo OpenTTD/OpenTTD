@@ -293,10 +293,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Tampilka
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Tampilkan grafik
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Tampilkan daftar perusahaan
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Danai pembangunan industri baru atau daftar semua industri
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Tampilkan daftar kereta perusahaan
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Tampilkan daftar bus/truk perusahaan
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Tampilkan daftar kapal perusahaan
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Tampilkan daftar pesawat perusahaan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Tampilkan daftar kereta perusahaan. Ctrl-klik untuk membuka-tutup daftar kendaraan.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Tampilkan daftar bus/truk perusahaan. Ctrl-Klik untuk menampilkan daftar group atau kendaraan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Tampilkan daftar kapal perusahaan.Ctrl-Klik untuk menampilkan daftar group atau kendaraan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Tampilkan daftar pesawat perusahaan. Ctrl-Klik untuk menampilkan daftar group atau kendaraan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Perbesar tampilan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Perkecil tampilan
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Membangun rel kereta
@@ -1304,7 +1304,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari kon
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Pengaturan AI
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru. Ctrl-klik untuk melewati pengaturan peta
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Membuka permainan yang telah disimpan
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Mulai permainan baru, menggunakan heightmap sebagai datarannya
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Mulai permainan baru, menggunakan skenario kustomisasi
@@ -1839,7 +1839,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Membangu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Membangun depo kereta (untuk membuat dan perbaikan kereta)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Membangun stasiun Kereta
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangun Jembatan rel
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta dan sinyal
@@ -3038,7 +3038,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Pergi ke
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Depo terdekat
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar terdekat
 STR_ORDER_CONDITIONAL                                           :Melompat ke perintah lain
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan perintah baru sebelum perintah yang terpilih, atau tambahkan pada akhir daftar
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan perintah baru sebelum perintah yang terpilih, atau tambahkan pada akhir daftar. Sambil menekan ctrl, perintah ke stasiun menjadi 'muat penuh sembarang', penunjuk jalan menjadi 'non-stop', dan depo menjadi 'servis'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Masukkan perintah berikutnya
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Tampilkan semua kendaraan yang mempunyai perintah bersama.

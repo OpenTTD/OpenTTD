@@ -295,10 +295,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostra i
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra i grafici
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la classifica delle compagnie
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finanzia la costruzione di una nuova industria o mostra l'elenco delle industrie
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra l'elenco dei treni di una compagnia
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra l'elenco degli automezzi di una compagnia
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra l'elenco delle navi di una compagnia
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostra l'elenco degli aeromobili di una compagnia
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra l'elenco dei treni di una compagnia. CTRL+clic non apre la lista gruppi.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra l'elenco degli automezzi di una compagnia. CTRL+clic non apre la lista gruppi.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra l'elenco delle navi di una compagnia. CTRL+clic non apre la lista gruppi.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostra l'elenco degli aeromobili di una compagnia. CTRL+clic non apre la lista gruppi.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zooma la visuale in avanti
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zooma la visuale indietro
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Costruisci ferrovie
@@ -1306,7 +1306,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenut
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Impostazioni IA
 STR_INTRO_QUIT                                                  :{BLACK}Esci
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita. CTRL salta la configurazione della mappa.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Carica una partita salvata
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Inizia una nuova partita, utilizzando una heightmap per definire il terreno
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Inizia una nuova partita, utilizzando uno scenario personalizzato
@@ -1836,12 +1836,12 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Costruzi
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Costruzione monorotaia
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Costruzione maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Costruisce i binari
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Costruisce binari usando la modalità automatica
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Costruisce binari. CTRL alterna costruzione/rimozione.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Costruisce binari usando la modalità automatica. CTRL alterna costruzione/rimozione.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Costruisce un deposito ferroviario (per costruire e manutenere i treni)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Trasforma la rotaia in un waypoint
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Costruisce una stazione ferroviaria
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Costruisce i segnali ferroviari
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Trasforma la rotaia in un waypoint. CTRL abilita l'unione con altri waypoint.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Costruisce una stazione ferroviaria. CTRL abilita l'unione con altre stazioni.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Costruisce i segnali ferroviari. CTRL alterna segnali semaforici/luminosi.{}Trascinare il cursore per costruire segnali su un tratto rettilineo di rotaie, con CTRL per andare automaticamente fino al raccordo successivo.{}Tenere premuto CTRL mentre si attiva il pulsante per non aprire la finestra segnali.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Costruisce un ponte ferroviario
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruisce un tunnel ferroviario
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Seleziona fra costruzione/rimozione di binari e segnali
@@ -1909,16 +1909,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubolare, Silic
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Costruzione strade
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Costruzione tranvie
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Costruisce una sezione di strada
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Costruisce una sezione di tranvia
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Costruisce sezioni di strada usando la modalità automatica
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Costruisce una sezione di strada. CTRL alterna costruzione/rimozione.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Costruisce una sezione di tranvia. CTRL alterna costruzione/rimozione.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Costruisce sezioni di strada usando la modalità automatica. CTRL alterna costruzione/rimozione.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica. CTRL alterna costruzione/rimozione.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito automezzi (per costruire e manutenere i veicoli)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito tranviario (per costruire e manutenere i veicoli)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Costruisce una stazione degli autobus
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Costruisce una stazione tram passeggeri
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Costruisce un'area di carico per camion
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Costruisce una stazione tram merci
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Costruisce una stazione degli autobus. CTRL abilita l'unione con altre stazioni.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Costruisce una stazione tram passeggeri. CTRL abilita l'unione con altre stazioni.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Costruisce un'area di carico per camion. CTRL abilita l'unione con altre stazioni.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Costruisce una stazione tram merci. CTRL abilita l'unione con altre stazioni.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Attiva/disattiva strade a senso unico
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Costruisce un ponte stradale
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Costruisce un ponte tranviario
@@ -1949,7 +1949,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Trasport
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Costruisce canali
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Costruisce chiuse per i canali
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Costruisce un deposito navale (per costruire e manutenere le navi)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruisce un molo per le navi
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruisce un molo per le navi. CTRL abilita l'unione con altre stazioni.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definisce una zona d'acqua.{}Costruisce un canale, a meno che non si tenga premuto CTRL mentre si fa clic al livello del mare, provocando l'allagamento dei dintorni
@@ -1964,7 +1964,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Molo
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroporti
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruisce un aeroporto
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruisce un aeroporto. CTRL abilita l'unione con altre stazioni.
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selezione aeroporto
@@ -2355,7 +2355,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inserire
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Città
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomi delle città - fare clic su un nome per centrare la visuale sulla città
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomi delle città - fare clic su un nome per centrare la visuale sulla città. CTRL+clic la mostra in una mini visuale.
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 
 # Town view window
@@ -2368,7 +2368,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carichi 
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}Richiesto: {ORANGE}{STRING}{BLACK}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}Consegnato il mese scorso: {ORANGE}{CARGO}{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della città
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della città. CTRL+clic la mostra in una mini visuale.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorità locale
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra informazioni sull'autorità locale
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia il nome della città
@@ -2414,10 +2414,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Nessuno
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizi già sovvenzionati:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fino al {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale sull'industria o città
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale sull'industria o città. CTRL+clic mostra l'industria/città in una mini visuale.
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale sulla stazione
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale sulla stazione. CTRL+clic la mostra in una mini visuale.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenere premuto CTRL per selezionare più di un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stazion{P 2 e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2453,7 +2453,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Eccellente
 STR_CARGO_RATING_OUTSTANDING                                    :Eccezionale
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la visuale principale sulla posizione della stazione
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la visuale principale sulla posizione della stazione. CTRL+clic la mostra in una mini visuale.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia il nome della stazione
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostra tutti i treni che hanno questa stazione pianificata
@@ -2464,9 +2464,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostra t
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Rinomina stazione/area di carico
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del waypoint
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del waypoint. CTRL+clic lo mostra in una mini visuale.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia il nome del waypoint
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa. CTRL+clic la mostra in una mini visuale.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambia il nome della boa
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
@@ -2545,13 +2545,13 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% trasportato)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% trasportato)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria. CTRL+clic la mostra in una mini visuale.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produzione il mese scorso:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% trasportato)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la visuale principale sulla posizione dell'industria
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la visuale principale sulla posizione dell'industria. CTRL+clic la mostra in una mini visuale.
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Richiede: {YELLOW}{STRING}{STRING}
@@ -2736,10 +2736,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Costruis
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Costruisce una copia di una nave. Fare clic su questo pulsante e quindi su una nave dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Costruisce una copia di un aeromobile. Fare clic su questo pusalnte e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per convidivere gli ordini.
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del deposito ferroviario
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del deposito automezzi
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la visuale principale sulla posizione del deposito navale
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la visuale principale sulla posizione dell'hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del deposito ferroviario. CTRL+clic lo mostra in una mini visuale.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del deposito automezzi. CTRL+clic lo mostra in una mini visuale.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la visuale principale sulla posizione del deposito navale. CTRL+clic lo mostra in una mini visuale.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la visuale principale sulla posizione dell'hangar. CTRL+clic lo mostra in una mini visuale.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Elenca tutti i treni che hanno questo deposito nei loro ordini
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Elenca tutti gli automezzi che hanno questo deposito nei loro ordini
@@ -2807,10 +2807,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì c
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del treno
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la visuale principale sulla posizione dell'automezzo
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra la visuale principale sulla posizione della nave
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra la visuale principale sulla posizione dell'aeromobile
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del treno. CTRL+clic attiva l'inseguimento della visuale.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la visuale principale sulla posizione dell'automezzo. CTRL+clic attiva l'inseguimento della visuale.
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra la visuale principale sulla posizione della nave. CTRL+clic attiva l'inseguimento della visuale.
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra la visuale principale sulla posizione dell'aeromobile. CTRL+clic attiva l'inseguimento della visuale.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Manda il treno al deposito. CTRL+clic per eseguire solo una manutenzione
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Manda l'automezzo al deposito. CTRL+clic per eseguire solo una manutenzione
@@ -2832,10 +2832,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Riadatta
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverte la direzione del treno
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Fa fare un'inversione al veicolo
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra gli ordini del treno
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra gli ordini del veicolo
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra gli ordini della nave
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra gli ordini dell'aeromobile
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra gli ordini del treno. CTRL+clic mostra la tabella tabella oraria.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra gli ordini del veicolo. CTRL+clic mostra la tabella tabella oraria.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra gli ordini della nave. CTRL+clic mostra la tabella tabella oraria.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra gli ordini dell'aeromobile. CTRL+clic mostra la tabella tabella oraria.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra i dettagli sul treno
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra i dettagli sull'automezzo
@@ -2914,8 +2914,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crediti 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Manutenzione ogni: {LTBLUE}{COMMA} giorni{BLACK}   Ultima volta: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervallo manutenzione: {LTBLUE}{COMMA}%{BLACK}   Ultima il: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumenta l'intervallo di manutenzione
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Riduce l'intervallo di manutenzione
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumenta l'intervallo di manutenzione di 10. CTRL+clic lo aumenta di 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Riduce l'intervallo di manutenzione di 10. CTRL+clic lo riduce di 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nome del treno
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Rinomina l'automezzo
@@ -3040,7 +3040,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vai a
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Deposito più vicino
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar più vicino
 STR_ORDER_CONDITIONAL                                           :Salto condizionale
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista. Facendo clic con CTRL gli ordini verso le stazioni diventano 'attendi carico', quelli verso waypoint 'no-stop' e quelli verso depositi 'manutenzione'.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Inserisce un ordine avanzato
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tutti i veicoli che condividono questa lista ordini
