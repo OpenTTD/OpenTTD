@@ -872,8 +872,10 @@ enum BuildRoadStationWidgets {
 };
 
 struct BuildRoadStationWindow : public PickerWindowBase {
-	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(desc, parent, TRANSPORT_ROAD)
+	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(parent)
 	{
+		this->CreateNestedTree(desc);
+
 		/* Trams don't have non-drivethrough stations */
 		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
 			_road_station_picker_orientation = DIAGDIR_END;
@@ -885,13 +887,15 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 			BRSW_STATION_NW,
 			WIDGET_LIST_END);
 
-		this->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
-		this->widget[BRSW_CAPTION].data = _road_type_infos[_cur_roadtype].picker_title[rs];
-		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->widget[i].tooltips = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
+		this->nested_array[BRSW_CAPTION]->widget_data = _road_type_infos[_cur_roadtype].picker_title[rs];
+		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->nested_array[i]->tool_tip = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
 
 		this->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BRSW_LT_OFF);
-		this->FindWindowPlacementAndResize(desc);
+
+		this->FinishInitNested(desc, TRANSPORT_ROAD);
+
+		this->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
 	}
 
 	virtual ~BuildRoadStationWindow()
@@ -910,26 +914,26 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 			SetTileSelectSize(1, 1);
 		}
 
-		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
-
-		StationPickerDrawSprite(this->widget[BRSW_STATION_NE].left + TILE_PIXELS, this->widget[BRSW_STATION_NE].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_NE);
-		StationPickerDrawSprite(this->widget[BRSW_STATION_SE].left + TILE_PIXELS, this->widget[BRSW_STATION_SE].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_SE);
-		StationPickerDrawSprite(this->widget[BRSW_STATION_SW].left + TILE_PIXELS, this->widget[BRSW_STATION_SW].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_SW);
-		StationPickerDrawSprite(this->widget[BRSW_STATION_NW].left + TILE_PIXELS, this->widget[BRSW_STATION_NW].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_NW);
-
-		StationPickerDrawSprite(this->widget[BRSW_STATION_X].left  + TILE_PIXELS, this->widget[BRSW_STATION_X].bottom  - TILE_PIXELS, st, INVALID_RAILTYPE, _cur_roadtype, DIAGDIR_END + AXIS_X);
-		StationPickerDrawSprite(this->widget[BRSW_STATION_Y].left  + TILE_PIXELS, this->widget[BRSW_STATION_Y].bottom  - TILE_PIXELS, st, INVALID_RAILTYPE, _cur_roadtype, DIAGDIR_END + AXIS_Y);
-
-		/* strings such as 'Size' and 'Coverage Area' */
+		/* 'Accepts' and 'Supplies' texts. */
 		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
-		int top = 147;
-		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, sct, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, sct, rad, true) + WD_PAR_VSEP_NORMAL;
-		if (top != this->widget[BRSW_BACKGROUND].bottom) {
-			this->SetDirty();
-			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, top - this->widget[BRSW_BACKGROUND].bottom);
-			this->SetDirty();
+		int top = this->nested_array[BRSW_LT_ON]->pos_y + this->nested_array[BRSW_LT_ON]->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetCore *back_nwi = this->nested_array[BRSW_BACKGROUND];
+		int right = back_nwi->pos_x +  back_nwi->current_x;
+		int bottom = back_nwi->pos_y +  back_nwi->current_y;
+		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, sct, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, sct, rad, true) + WD_PAR_VSEP_NORMAL;
+		/* Resize background if the text is not equally long as the window. */
+		if (top > bottom || (top < bottom && back_nwi->current_y > back_nwi->smallest_y)) {
+			ResizeWindow(this, 0, top - bottom);
 		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (!IsInsideMM(widget, BRSW_STATION_NE, BRSW_STATION_Y + 1)) return;
+
+		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
+		StationPickerDrawSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, st, INVALID_RAILTYPE, widget < BRSW_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - BRSW_STATION_NE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -970,24 +974,6 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 };
 
 /** Widget definition of the build road station window */
-static const Widget _rv_station_picker_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,                       STR_TOOLTIP_CLOSE_WINDOW},                    // BRSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   206,     0,    13, STR_NULL,                              STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},          // BRSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   206,    14,   177, 0x0,                                   STR_NULL},                                    // BRSW_BACKGROUND
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    17,    66, 0x0,                                   STR_NULL},                                    // BRSW_STATION_NE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    69,   118, 0x0,                                   STR_NULL},                                    // BRSW_STATION_SE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    69,   118, 0x0,                                   STR_NULL},                                    // BRSW_STATION_SW
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    17,    66, 0x0,                                   STR_NULL},                                    // BRSW_STATION_NW
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       139,   204,    17,    66, 0x0,                                   STR_NULL},                                    // BRSW_STATION_X
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       139,   204,    69,   118, 0x0,                                   STR_NULL},                                    // BRSW_STATION_Y
-
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        10,    69,   134,   145, STR_STATION_BUILD_COVERAGE_OFF,        STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP}, // BRSW_LT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        70,   129,   134,   145, STR_STATION_BUILD_COVERAGE_ON,         STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP},  // BRSW_LT_ON
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   139,   120,   133, STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL},                                    // BRSW_INFO
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_rv_station_picker_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRSW_CLOSEBOX),
@@ -1026,7 +1012,7 @@ static const WindowDesc _rv_station_picker_desc(
 	WDP_AUTO, WDP_AUTO, 207, 178, 207, 178,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_rv_station_picker_widgets, _nested_rv_station_picker_widgets, lengthof(_nested_rv_station_picker_widgets)
+	NULL, _nested_rv_station_picker_widgets, lengthof(_nested_rv_station_picker_widgets)
 );
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs)
