@@ -235,7 +235,7 @@
 /* static */ bool AIRail::RemoveRailTrack(TileIndex tile, RailTrack rail_track)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, ::IsPlainRailTile(tile));
+	EnforcePrecondition(false, ::IsPlainRailTile(tile) || ::IsLevelCrossingTile(tile));
 	EnforcePrecondition(false, GetRailTracks(tile) & rail_track);
 	EnforcePrecondition(false, KillFirstBit((uint)rail_track) == 0);
 
