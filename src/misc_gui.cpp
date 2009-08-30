@@ -58,26 +58,19 @@ enum LandInfoWidgets {
 	LIW_BACKGROUND, ///< Background to draw on
 };
 
-static const Widget _land_info_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},           // LIW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // LIW_CAPTION
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   299,    14,    99, 0x0,                               STR_NULL},                           // LIW_BACKGROUND
-{    WIDGETS_END},
-};
-
 static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, LIW_CLOSE),
 		NWidget(WWT_CAPTION, COLOUR_GREY, LIW_CAPTION), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), SetMinimalSize(300, 86), SetResize(0, 1), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), EndContainer(),
 };
 
 static const WindowDesc _land_info_desc(
-	WDP_AUTO, WDP_AUTO, 300, 100, 300, 100,
+	WDP_AUTO, WDP_AUTO, 0, 0, 0, 0,
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_land_info_widgets, _nested_land_info_widgets, lengthof(_nested_land_info_widgets)
+	NULL, _nested_land_info_widgets, lengthof(_nested_land_info_widgets)
 );
 
 class LandInfoWindow : public Window {
@@ -95,22 +88,51 @@ public:
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
 
-		uint y = 21;
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != LIW_BACKGROUND) return;
+
+		uint y = r.top + WD_TEXTPANEL_TOP;
 		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
 			if (StrEmpty(this->landinfo_data[i])) break;
 
-			DrawString(this->widget[LIW_BACKGROUND].left + 2, this->widget[LIW_BACKGROUND].right - 2, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_CENTER);
-			y += i == 0 ? 16 : 12;
+			DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_CENTER);
+			y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+			if (i == 0) y += 4;
 		}
 
 		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
 			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
-			DrawStringMultiLine(this->widget[LIW_BACKGROUND].left + 2, this->widget[LIW_BACKGROUND].right - 2, y, y + 22, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, r.bottom - WD_TEXTPANEL_BOTTOM, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
-	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != LIW_BACKGROUND) return;
+
+		size->height = WD_TEXTPANEL_TOP + WD_TEXTPANEL_BOTTOM;
+		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
+			if (StrEmpty(this->landinfo_data[i])) break;
+
+			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+			size->width = max(size->width, width);
+
+			size->height += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+			if (i == 0) size->height += 4;
+		}
+
+		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
+			uint width = GetStringBoundingBox(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+			size->width = max(size->width, min(300u, width));
+			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
+			size->height += GetStringHeight(STR_JUST_RAW_STRING, size->width - WD_FRAMERECT_LEFT - WD_FRAMERECT_RIGHT);
+		}
+	}
+
+	LandInfoWindow(TileIndex tile) : Window() {
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
@@ -256,11 +278,7 @@ public:
 		}
 		if (!found) this->landinfo_data[LAND_INFO_MULTICENTER_LINE][0] = '\0';
 
-		if (found) line_nr += 2;
-
-		if (line_nr > 6) ResizeWindow(this, 0, 12 * (line_nr - 6));
-
-		this->FindWindowPlacementAndResize(&_land_info_desc);
+		this->InitNested(&_land_info_desc);
 
 #if defined(_DEBUG)
 #	define LANDINFOD_LEVEL 0

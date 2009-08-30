@@ -63,6 +63,10 @@ enum WidgetDrawDistances {
 	WD_FRAMERECT_TOP    = 1,    ///< Offset at top to draw the frame rectangular area
 	WD_FRAMERECT_BOTTOM = 1,    ///< Offset at bottom to draw the frame rectangular area
 
+	/* Extra space at top/bottom of text panels */
+	WD_TEXTPANEL_TOP    = 6,    ///< Offset at top to draw above the text
+	WD_TEXTPANEL_BOTTOM = 6,   ///< Offset at bottom to draw below the text
+
 	/* WWT_FRAME */
 	WD_FRAMETEXT_LEFT  = 6,     ///< Left offset of the text of the frame.
 	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
