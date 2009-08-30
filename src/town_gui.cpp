@@ -562,7 +562,7 @@ private:
 			SetVScrollCount(this, this->towns.Length()); // Update scrollbar as well.
 		}
 		/* Always sort the towns. */
-		last_town = NULL;
+		this->last_town = NULL;
 		this->towns.Sort();
 	}
 
@@ -599,7 +599,7 @@ public:
 	TownDirectoryWindow(const WindowDesc *desc) : Window()
 	{
 		this->towns.SetListing(this->last_sorting);
-		this->towns.SetSortFuncs(this->sorter_funcs);
+		this->towns.SetSortFuncs(TownDirectoryWindow::sorter_funcs);
 		this->towns.ForceRebuild();
 		this->BuildSortTownList();
 
