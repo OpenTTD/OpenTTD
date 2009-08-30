@@ -804,21 +804,23 @@ protected:
 	GUIIndustryList industries;
 
 	/** (Re)Build industries list */
-	void BuildIndustriesList()
+	void BuildSortIndustriesList()
 	{
-		if (!this->industries.NeedRebuild()) return;
+		if (this->industries.NeedRebuild()) {
+			this->industries.Clear();
 
-		this->industries.Clear();
+			const Industry *i;
+			FOR_ALL_INDUSTRIES(i) {
+				*this->industries.Append() = i;
+			}
 
-		DEBUG(misc, 3, "Building industry list");
-
-		const Industry *i;
-		FOR_ALL_INDUSTRIES(i) {
-			*this->industries.Append() = i;
+			this->industries.Compact();
+			this->industries.RebuildDone();
+			SetVScrollCount(this, this->industries.Length()); // Update scrollbar as well.
 		}
-
-		this->industries.Compact();
-		this->industries.RebuildDone();
+		this->last_industry = NULL;
+		this->industries.Sort();
+		this->InvalidateWidget(IDW_INDUSTRY_LIST);
 	}
 
 	/**
@@ -902,18 +904,6 @@ protected:
 		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
-	/** Sort the industries list */
-	void SortIndustriesList()
-	{
-		if (!this->industries.Sort()) return;
-
-		/* Reset name sorter sort cache */
-		this->last_industry = NULL;
-
-		/* Set the modified widget dirty */
-		this->InvalidateWidget(IDW_INDUSTRY_LIST);
-	}
-
 public:
 	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
@@ -925,8 +915,7 @@ public:
 		this->industries.SetListing(this->last_sorting);
 		this->industries.SetSortFuncs(this->sorter_funcs);
 		this->industries.ForceRebuild();
-		this->industries.NeedResort();
-		this->SortIndustriesList();
+		this->BuildSortIndustriesList();
 
 		this->widget[IDW_DROPDOWN_CRITERIA].data = this->sorter_names[this->industries.SortType()];
 	}
@@ -938,11 +927,6 @@ public:
 
 	virtual void OnPaint()
 	{
-		BuildIndustriesList();
-		SortIndustriesList();
-
-		SetVScrollCount(this, this->industries.Length());
-
 		this->DrawWidgets();
 		this->DrawSortButtonState(IDW_DROPDOWN_ORDER, this->industries.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
@@ -1023,6 +1007,12 @@ public:
 		this->vscroll.cap += delta.y / 10;
 	}
 
+	virtual void OnHundredthTick()
+	{
+		this->BuildSortIndustriesList();
+		this->SetDirty();
+	}
+
 	virtual void OnInvalidateData(int data)
 	{
 		if (data == 0) {
@@ -1030,7 +1020,7 @@ public:
 		} else {
 			this->industries.ForceResort();
 		}
-		this->InvalidateWidget(IDW_INDUSTRY_LIST);
+		this->BuildSortIndustriesList();
 	}
 };
 
