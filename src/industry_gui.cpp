@@ -796,6 +796,7 @@ protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
 	static const Industry *last_industry;
+	int industryline_height; ///< Height of a single industry line in the industry directory window.
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
@@ -908,8 +909,11 @@ public:
 	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
 		this->vscroll.cap = 16;
-		this->resize.height = this->height - 6 * 10; // minimum 10 items
-		this->resize.step_height = 10;
+
+		this->industryline_height = 10;
+		this->resize.height = this->height - 6 * this->industryline_height; // minimum 10 items
+
+		this->resize.step_height = this->industryline_height;
 		this->FindWindowPlacementAndResize(desc);
 
 		this->industries.SetListing(this->last_sorting);
@@ -931,7 +935,7 @@ public:
 		this->DrawSortButtonState(IDW_DROPDOWN_ORDER, this->industries.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		int max = min(this->vscroll.pos + this->vscroll.cap, this->industries.Length());
-		int y = 28; // start of the list-widget
+		int y = this->widget[IDW_INDUSTRY_LIST].top + 2; // start of the list-widget
 
 		for (int n = this->vscroll.pos; n < max; ++n) {
 			const Industry *i = this->industries[n];
@@ -958,9 +962,9 @@ public:
 			/* Drawing the right string */
 			StringID str = STR_INDUSTRY_DIRECTORY_ITEM_NOPROD;
 			if (p != 1) str = (p == 5) ? STR_INDUSTRY_DIRECTORY_ITEM : STR_INDUSTRY_DIRECTORY_ITEM_TWO;
-			DrawString(4, this->widget[IDW_INDUSTRY_LIST].right, y, str);
+			DrawString(this->widget[IDW_INDUSTRY_LIST].left + 2, this->widget[IDW_INDUSTRY_LIST].right - 2, y, str);
 
-			y += 10;
+			y += this->industryline_height;
 		}
 	}
 
@@ -977,7 +981,7 @@ public:
 				break;
 
 			case IDW_INDUSTRY_LIST: {
-				int y = (pt.y - 28) / 10;
+				int y = (pt.y - this->widget[IDW_INDUSTRY_LIST].top - 2) / this->industryline_height;
 				uint16 p;
 
 				if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
@@ -1004,7 +1008,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / 10;
+		this->vscroll.cap += delta.y / this->industryline_height;
 	}
 
 	virtual void OnHundredthTick()
