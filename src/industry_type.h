@@ -20,4 +20,17 @@ struct Industry;
 struct IndustrySpec;
 struct IndustryTileSpec;
 
+static const IndustryID INVALID_INDUSTRY = 0xFFFF;
+
+enum {
+	NEW_INDUSTRYOFFSET     = 37,                         ///< original number of industries
+	NUM_INDUSTRYTYPES      = 64,                         ///< total number of industries, new and old
+	INDUSTRYTILE_NOANIM    = 0xFF,                       ///< flag to mark industry tiles as having no animation
+	NEW_INDUSTRYTILEOFFSET = 175,                        ///< original number of tiles
+	INVALID_INDUSTRYTYPE   = NUM_INDUSTRYTYPES,          ///< one above amount is considered invalid
+	NUM_INDUSTRYTILES      = 512,                        ///< total number of industry tiles, new and old
+	INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES,          ///< one above amount is considered invalid
+	INDUSTRY_COMPLETED     = 3,                          ///< final stage of industry construction.
+};
+
 #endif /* INDUSTRY_TYPE_H */

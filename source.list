@@ -200,6 +200,7 @@ house.h
 house_type.h
 industry.h
 industry_type.h
+industrytype.h
 ini_type.h
 landscape.h
 landscape_type.h

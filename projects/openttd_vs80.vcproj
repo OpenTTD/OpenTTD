@@ -1088,6 +1088,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\industrytype.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ini_type.h"
 				>
 			</File>
