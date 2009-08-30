@@ -192,8 +192,18 @@ Do NOT copy files included with OpenTTD into "shared" directories (explained in
 the following sections) as sooner or later you will run into graphical glitches
 when using other versions of the game.
 
-If you want AIs use the in-game content downloader to download some or download
-some from the internet and place them in the ai/ directory.
+If you want AIs use the in-game content downloader. If for some reason that is
+not possible or you want to use an AI that has not been uploaded to the content
+download system download the tar file and place it in the ai/ directory. If the
+AI needs libraries you'll have to download those too and put them in the
+ai/library/ directory. All AIs and AI Libraries that have been uploaded to
+the content download system can be found at http://noai.openttd.org/downloads/
+The AIs and libraries can be found their in the form of .tar.gz packages.
+OpenTTD can read inside tar files but it does not extract .tar.gz files by
+itself.
+To figure out which libraries you need for an AI you have to start the AI and
+wait for an error message to pop up. The error message will tell you
+"couldn't find library 'lib-name'". Download that library and try again.
 
 4.2) OpenTTD directories
 ---- -------------------------------
