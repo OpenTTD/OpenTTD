@@ -76,24 +76,6 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 	EndContainer(),
 };
 
-typedef void DrawEngineInfoProc(EngineID, int left, int right, int top, int bottom);
-
-struct DrawEngineInfo {
-	DrawEngineInfoProc *info_proc;
-};
-
-static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, int bottom);
-static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top, int bottom);
-static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, int bottom);
-static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top, int bottom);
-
-static const DrawEngineInfo _draw_engine_list[4] = {
-	{ DrawTrainEngineInfo    },
-	{ DrawRoadVehEngineInfo  },
-	{ DrawShipEngineInfo     },
-	{ DrawAircraftEngineInfo },
-};
-
 struct EnginePreviewWindow : Window {
 	EnginePreviewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
@@ -111,11 +93,9 @@ struct EnginePreviewWindow : Window {
 		SetDParam(0, engine);
 		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
 
-		const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
-
 		int width = this->width;
 		DrawVehicleEngine(width >> 1, 100, engine, GetEnginePalette(engine, _local_company));
-		dei->info_proc(engine, this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 170);
+		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 170, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -156,10 +136,8 @@ uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 	return total;
 }
 
-static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, int bottom)
+static StringID GetTrainEngineInfoString(const Engine *e)
 {
-	const Engine *e = Engine::Get(engine);
-
 	SetDParam(0, e->GetCost());
 	SetDParam(2, e->GetDisplayMaxSpeed());
 	SetDParam(3, e->GetPower());
@@ -167,19 +145,18 @@ static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, i
 
 	SetDParam(4, e->GetRunningCost());
 
-	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_TRAIN);
+	uint capacity = GetTotalCapacityOfArticulatedParts(e->index, VEH_TRAIN);
 	if (capacity != 0) {
 		SetDParam(5, e->GetDefaultCargoType());
 		SetDParam(6, capacity);
 	} else {
 		SetDParam(5, CT_INVALID);
 	}
-	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER, TC_FROMSTRING, SA_CENTER);
+	return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER;
 }
 
-static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top, int bottom)
+static StringID GetAircraftEngineInfoString(const Engine *e)
 {
-	const Engine *e = Engine::Get(engine);
 	CargoID cargo = e->GetDefaultCargoType();
 
 	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
@@ -190,26 +167,22 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(4, CT_MAIL),
 		SetDParam(5, e->u.air.mail_capacity);
 		SetDParam(6, e->GetRunningCost());
-
-		DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST;
 	} else {
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
 		SetDParam(2, cargo);
 		SetDParam(3, e->GetDisplayDefaultCapacity());
 		SetDParam(4, e->GetRunningCost());
-
-		DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST;
 	}
 }
 
-static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top, int bottom)
+static StringID GetRoadVehEngineInfoString(const Engine *e)
 {
-	const Engine *e = Engine::Get(engine);
-
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
-	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_ROAD);
+	uint capacity = GetTotalCapacityOfArticulatedParts(e->index, VEH_ROAD);
 	if (capacity != 0) {
 		SetDParam(2, e->GetDefaultCargoType());
 		SetDParam(3, capacity);
@@ -217,20 +190,45 @@ static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top,
 		SetDParam(2, CT_INVALID);
 	}
 	SetDParam(4, e->GetRunningCost());
-
-	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+	return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST;
 }
 
-static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, int bottom)
+static StringID GetShipEngineInfoString(const Engine *e)
 {
-	const Engine *e = Engine::Get(engine);
-
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
 	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
-	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+	return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST;
+}
+
+
+/**
+ * Get a multi-line string with some technical data, describing the engine.
+ * @param engine Engine to describe.
+ * @return String describing the engine.
+ * @post \c DParam array is set up for printing the string.
+ */
+StringID GetEngineInfoString(EngineID engine)
+{
+	const Engine *e = Engine::Get(engine);
+
+	switch (e->type) {
+		case VEH_TRAIN:
+			return GetTrainEngineInfoString(e);
+
+		case VEH_ROAD:
+			return GetRoadVehEngineInfoString(e);
+
+		case VEH_SHIP:
+			return GetShipEngineInfoString(e);
+
+		case VEH_AIRCRAFT:
+			return GetAircraftEngineInfoString(e);
+
+		default: NOT_REACHED();
+	}
 }
 
 /**
@@ -269,7 +267,6 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
 	assert(ni->reftype1 == NR_ENGINE);
 	EngineID engine = ni->ref1;
-	const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));
 	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, TC_FROMSTRING, SA_CENTER);
@@ -281,7 +278,7 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 
 	DrawVehicleEngine(w->width >> 1, 88, engine, GetEnginePalette(engine, _local_company));
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
-	dei->info_proc(engine, 26, w->width - 26, 100, 170);
+	DrawStringMultiLine(26, w->width - 26, 100, 170, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 }
 
 

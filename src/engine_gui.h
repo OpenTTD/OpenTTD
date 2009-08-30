@@ -21,6 +21,7 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare);  ///< qs
 void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items); ///< qsort of specified portion of the engine list
 
 StringID GetEngineCategoryName(EngineID engine);
+StringID GetEngineInfoString(EngineID engine);
 void DrawVehicleEngine(int x, int y, EngineID engine, SpriteID pal);
 
 #endif /* ENGINE_GUI_H */
