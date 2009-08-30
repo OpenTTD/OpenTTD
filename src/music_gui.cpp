@@ -419,6 +419,10 @@ enum MusicWidgets {
 };
 
 struct MusicWindow : public Window {
+	static const int slider_bar_height = 4;
+	static const int slider_height = 7;
+	static const int slider_width = 3;
+
 	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
 		this->InitNested(desc, number);
@@ -460,28 +464,23 @@ struct MusicWindow : public Window {
 				}
 				DrawString(r.left, r.right, r.top + 1, str, TC_FROMSTRING, SA_CENTER);
 			} break;
+
+			case MW_MUSIC_VOL: case MW_EFFECT_VOL: {
+				DrawString(r.left, r.right, r.top + 1, (widget == MW_MUSIC_VOL) ? STR_MUSIC_MUSIC_VOLUME : STR_MUSIC_EFFECTS_VOLUME, TC_FROMSTRING, SA_CENTER);
+				int y = (r.top + r.bottom - slider_bar_height) / 2;
+				DrawFrameRect(r.left, y, r.right, y + slider_bar_height, COLOUR_GREY, FR_LOWERED);
+				DrawString(r.left, r.right, r.bottom - FONT_HEIGHT_SMALL, STR_MUSIC_MIN_MAX_RULER, TC_FROMSTRING, SA_CENTER);
+				y = (r.top + r.bottom - slider_height) / 2;
+				byte volume = (widget == MW_MUSIC_VOL) ? msf.music_vol : msf.effect_vol;
+				int x = r.left + (volume * (r.right - r.left) / 127);
+				DrawFrameRect(x, y, x + slider_width, y + slider_height, COLOUR_GREY, FR_NONE);
+			} break;
 		}
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-
-		DrawString(108, 174, 15, STR_MUSIC_MUSIC_VOLUME, TC_FROMSTRING, SA_CENTER);
-		DrawString(108, 174, 29, STR_MUSIC_MIN_MAX_RULER, TC_FROMSTRING, SA_CENTER);
-		DrawString(214, 280, 15, STR_MUSIC_EFFECTS_VOLUME, TC_FROMSTRING, SA_CENTER);
-		DrawString(214, 280, 29, STR_MUSIC_MIN_MAX_RULER, TC_FROMSTRING, SA_CENTER);
-
-		DrawFrameRect(108, 23, 174, 26, COLOUR_GREY, FR_LOWERED);
-		DrawFrameRect(214, 23, 280, 26, COLOUR_GREY, FR_LOWERED);
-
-		DrawFrameRect(
-			108 + msf.music_vol / 2, 22, 111 + msf.music_vol / 2, 28, COLOUR_GREY, FR_NONE
-		);
-
-		DrawFrameRect(
-			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, COLOUR_GREY, FR_NONE
-		);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -506,19 +505,14 @@ struct MusicWindow : public Window {
 				break;
 
 			case MW_MUSIC_VOL: case MW_EFFECT_VOL: { // volume sliders
-				int x = pt.x - 88;
-				if (x < 0) return;
+				int x = pt.x - this->nested_array[widget]->pos_x;
 
-				byte *vol = &msf.music_vol;
-				if (x >= 106) {
-					vol = &msf.effect_vol;
-					x -= 106;
-				}
+				byte *vol = (widget == MW_MUSIC_VOL) ? &msf.music_vol : &msf.effect_vol;
 
-				byte new_vol = min(max(x - 21, 0) * 2, 127);
+				byte new_vol = x * 127 / this->nested_array[widget]->current_x;
 				if (new_vol != *vol) {
 					*vol = new_vol;
-					if (vol == &msf.music_vol) MusicVolumeChanged(new_vol);
+					if (widget == MW_MUSIC_VOL) MusicVolumeChanged(new_vol);
 					this->SetDirty();
 				}
 
@@ -570,10 +564,10 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_STOP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_STOP_MUSIC, STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_PLAY), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_PLAY_MUSIC, STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC),
 		NWidget(WWT_PANEL, COLOUR_GREY, MW_SLIDERS),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_EMPTY, COLOUR_GREY, MW_MUSIC_VOL), SetMinimalSize(98, 22), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+			NWidget(NWID_HORIZONTAL), SetPIP(20, 11, 20),
+				NWidget(WWT_EMPTY, COLOUR_GREY, MW_MUSIC_VOL), SetMinimalSize(67, 22), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				NWidget(WWT_PANEL, COLOUR_GREY, MW_GAUGE), SetMinimalSize(16, 20), SetPadding(1, 0, 1, 0), EndContainer(),
-				NWidget(WWT_EMPTY, COLOUR_GREY, MW_EFFECT_VOL), SetMinimalSize(98, 22), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+				NWidget(WWT_EMPTY, COLOUR_GREY, MW_EFFECT_VOL), SetMinimalSize(67, 22), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetFill(true, false),
