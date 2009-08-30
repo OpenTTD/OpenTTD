@@ -540,7 +540,6 @@ private:
 	/* Runtime saved values */
 	static Listing last_sorting;
 	static const Town *last_town;
-	int townline_height; ///< Height of a single town line in the town directory window.
 
 	/* Constants for sorting towns */
 	static GUITownList::SortFunction * const sorter_funcs[];
@@ -603,9 +602,8 @@ public:
 		this->towns.ForceRebuild();
 		this->BuildSortTownList();
 
-		this->townline_height = FONT_HEIGHT_NORMAL;
 		this->InitNested(desc, 0);
-		this->vscroll.cap = this->nested_array[TDW_CENTERTOWN]->current_y / this->resize.step_height;
+		this->vscroll.cap = this->nested_array[TDW_CENTERTOWN]->current_y / (int)this->resize.step_height;
 	}
 
 	~TownDirectoryWindow()
@@ -636,7 +634,7 @@ public:
 
 			case TDW_CENTERTOWN: {
 				int n = 0;
-				int y = r.top + 2;
+				int y = r.top + WD_FRAMERECT_TOP;
 				for (uint i = this->vscroll.pos; i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
 
@@ -644,9 +642,9 @@ public:
 
 					SetDParam(0, t->index);
 					SetDParam(1, t->population);
-					DrawString(r.left + 2, r.right - 2, y, STR_TOWN_DIRECTORY_TOWN);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TOWN_DIRECTORY_TOWN);
 
-					y += this->townline_height;
+					y += this->resize.step_height;
 					if (++n == this->vscroll.cap) break; // max number of towns in 1 window
 				}
 			} break;
@@ -675,7 +673,7 @@ public:
 					SetDParam(1, 10000000); // 10^7
 					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
 				}
-				d.width += padding.width + 2 + 2; // Text is rendered with 2 pixel offset at both sides.
+				d.width += padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
 				resize->height = d.height;
@@ -716,7 +714,7 @@ public:
 				break;
 
 			case TDW_CENTERTOWN: { // Click on Town Matrix
-				uint16 id_v = (pt.y - this->nested_array[widget]->pos_y - 2) / this->townline_height;
+				uint16 id_v = (pt.y - this->nested_array[widget]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.cap) return; // click out of bounds
 
@@ -744,7 +742,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / this->townline_height;
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 	}
 
 	virtual void OnInvalidateData(int data)
