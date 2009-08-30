@@ -1004,7 +1004,7 @@ static const NWidgetPart _nested_rv_station_picker_widgets[] = {
 											SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 			NWidget(NWID_SPACER), SetFill(true, false),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 32),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 10), SetResize(0, 1),
 	EndContainer(),
 };
 
