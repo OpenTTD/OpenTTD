@@ -292,10 +292,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Dangos g
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Dangos graffiau
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Dangos tabl cynghrair cwmnïau
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ariannu adeiladu diwydiant newydd
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Dangos rhestr o drenau'r cwmni
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Dangos rhestr o gerbydau ffordd y cwmni
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Dangos rhestr o longau'r cwmni
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Dangos rhestr o awyrennau'r cwmni
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Dangos rhestr o drenau'r cwmni. Mae Ctrl+Clic yn toglo agor y rhestr gr&#373;p/cerbyd
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Dangos rhestr o gerbydau ffordd y cwmni. Mae Ctrl+Clic yn toglo agor y rhestr grŵp/cerbyd
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :4. {BLACK}Dangos rhestr o longau'r cwmni. Mae Ctrl+Clic yn toglo agor y rhestr grŵp/cerbyd
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Dangos rhestr o awyrennau'r cwmni. Mae Ctrl+Clic yn toglo agor y rhestr grŵp/cerbyd
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Agosáu'r olygfa
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Pellhau'r olygfa
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Adeiladu Rheilffyrdd
@@ -1832,7 +1832,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Adeiladu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Adeiladu trên depo (ar gyfer adeiladu a rhoi gwasanaeth i drenau)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Newid rheilffordd yn bwynt llwybr
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Adeiladu gorsaf reilffordd
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Adeiladu signalau rheilffordd
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Adeiladu signalau rheilffordd. Mae Ctrl yn toglo signalau semafor/golau lliw{}llusgion yn adeiladu signalau ar trac rheilffordd syth. Mae Ctrl yn adeiladu signalau ers y gyffordd nesaf{}Mae Ctrl+Clic yn toglo agor y ffenestr dewis signalau.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Adeiladu pont reilffordd
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu twnnel rheilffordd
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau a signalau
@@ -2794,10 +2794,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Canoli'r prif olygfa ar leoliad y trên
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Canoli'r brif olygfa ar leoliad y llong
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Canoli'r prif olygfa ar leoliad yr awyren
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Canoli'r prif olygfa ar leoliad y trên. Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd, Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Canol'r prif olygfa ar leoliad yr long. Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Canoli'r prif olygfa ar leoliad yr awyren. Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Anfon trên i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Anfon cerbyd i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
@@ -2819,10 +2819,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ailffiti
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}gwrthdroi cyfeiriad trên
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Gorfodi cerbyd i droi rownd
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Dangos gorchmynion trên
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Dangos gorchmynion cerbyd
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Dangos gorchmynion llong
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Dangos gorchmynion awyren
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Dangos gorchmynion trên. Mae Ctrl+Clic yn ddangos amserlen y trên
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Dangos gorchmynion cerbyd. Mae Ctrl+Clic yn ddangos amserlen y cerbyd
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Dangos gorchmynion llong. Mae Ctrl+Clic yn ddangos amserlen y long
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Dangos gorchmynion awyren. Mae Ctrl + clic yn ddangos amserlen y awyren
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Dangos manylion trên
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos manylion cerbyd ffordd
@@ -2901,8 +2901,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}days{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethu
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethu
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Enwi trên
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Enwi cerbyd ffordd
@@ -3027,7 +3027,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mynd i
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mynd i'r depo agosaf
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mynd i'r awyrendy agosaf
 STR_ORDER_CONDITIONAL                                           :Naid gorchymyn amodol
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ychwanegu gorchymyn newydd o flaen y gorchymyn sydd wedi'i amlygu, neu ar ddiwedd y rhestr
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK} Creu gorchymyn newydd cyn yr orchymyn o flaen, neu creu ar diewdd yr taflen. Y mae Ctrl yn gwneud i'r gorchymynion yr orsaf 'llwyth llawn unrhyw cargo', gorchymynion 'waypoint' 'heb aros' a gorchmynion depot 'gwasanaethu'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Mewnosod gorchymyn uwch
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Dangos pob cerbydau sy'n rhannu'r amserlen hon

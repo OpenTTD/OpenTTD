@@ -1322,7 +1322,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Mostra le opzioni di difficoltà
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra le impostazioni avanzate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra le impostazioni NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla l'esistenza di contenuti nuovi o aggiornati da scaricare
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra le impostazioni dell'intelligenza artificiale
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Esci da 'OpenTTD'
 
