@@ -905,6 +905,41 @@ protected:
 		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
+	/**
+	 * Get the StringID to draw and set the appropriate DParams.
+	 * @param i the industry to get the StringID of.
+	 * @return the StringID.
+	 */
+	StringID GetIndustryString(const Industry *i)
+	{
+		const IndustrySpec *indsp = GetIndustrySpec(i->type);
+		byte p = 0;
+
+		/* Industry name */
+		SetDParam(p++, i->index);
+
+		/* Industry productions */
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] == CT_INVALID) continue;
+			SetDParam(p++, i->produced_cargo[j]);
+			SetDParam(p++, i->last_month_production[j]);
+			SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, const_cast<Industry *>(i), i->type, indsp));
+		}
+
+		/* Transported productions */
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] == CT_INVALID) continue;
+			SetDParam(p++, ToPercent8(i->last_month_pct_transported[j]));
+		}
+
+		/* Drawing the right string */
+		switch (p) {
+			case 1:  return STR_INDUSTRY_DIRECTORY_ITEM_NOPROD;
+			case 5:  return STR_INDUSTRY_DIRECTORY_ITEM;
+			default: return STR_INDUSTRY_DIRECTORY_ITEM_TWO;
+		}
+	}
+
 public:
 	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
@@ -938,32 +973,8 @@ public:
 		int y = this->widget[IDW_INDUSTRY_LIST].top + 2; // start of the list-widget
 
 		for (int n = this->vscroll.pos; n < max; ++n) {
-			const Industry *i = this->industries[n];
-			const IndustrySpec *indsp = GetIndustrySpec(i->type);
-			byte p = 0;
-
-			/* Industry name */
-			SetDParam(p++, i->index);
-
-			/* Industry productions */
-			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-				if (i->produced_cargo[j] == CT_INVALID) continue;
-				SetDParam(p++, i->produced_cargo[j]);
-				SetDParam(p++, i->last_month_production[j]);
-				SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, const_cast<Industry *>(i), i->type, indsp));
-			}
-
-			/* Transported productions */
-			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-				if (i->produced_cargo[j] == CT_INVALID) continue;
-				SetDParam(p++, ToPercent8(i->last_month_pct_transported[j]));
-			}
-
-			/* Drawing the right string */
-			StringID str = STR_INDUSTRY_DIRECTORY_ITEM_NOPROD;
-			if (p != 1) str = (p == 5) ? STR_INDUSTRY_DIRECTORY_ITEM : STR_INDUSTRY_DIRECTORY_ITEM_TWO;
+			StringID str = this->GetIndustryString(this->industries[n]);
 			DrawString(this->widget[IDW_INDUSTRY_LIST].left + 2, this->widget[IDW_INDUSTRY_LIST].right - 2, y, str);
-
 			y += this->industryline_height;
 		}
 	}
