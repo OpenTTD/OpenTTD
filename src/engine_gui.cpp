@@ -27,6 +27,10 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+/** Return the category of an engine.
+ * @param engine Engine to examine.
+ * @return String describing the category ("road veh", "train". "airplane", or "ship") of the engine.
+ */
 StringID GetEngineCategoryName(EngineID engine)
 {
 	switch (Engine::Get(engine)->type) {

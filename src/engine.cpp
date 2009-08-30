@@ -30,6 +30,7 @@
 #include "vehicle_func.h"
 #include "settings_type.h"
 #include "core/pool_func.hpp"
+#include "engine_gui.h"
 
 #include "table/strings.h"
 #include "table/engines.h"
@@ -613,8 +614,6 @@ CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	return CommandCost();
 }
-
-StringID GetEngineCategoryName(EngineID engine);
 
 static void NewVehicleAvailable(Engine *e)
 {
