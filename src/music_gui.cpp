@@ -417,55 +417,64 @@ enum MusicWidgets {
 };
 
 struct MusicWindow : public Window {
-	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
+	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, number);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case MW_GAUGE:
+				GfxFillRect(r.left, r.top, r.right, r.bottom, 0);
+
+				for (uint i = 0; i != 8; i++) {
+					int colour = 0xD0;
+					if (i > 4) {
+						colour = 0xBF;
+						if (i > 6) {
+							colour = 0xB8;
+						}
+					}
+					GfxFillRect(r.left, r.bottom - i * 2, r.right, r.bottom - i * 2, colour);
+				}
+				break;
+
+			case MW_INFO: {
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0);
+				StringID str = STR_MUSIC_TRACK_NONE;
+				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
+					SetDParam(0, _music_wnd_cursong);
+					str = (_music_wnd_cursong < 10) ? STR_MUSIC_TRACK_SINGLE_DIGIT : STR_MUSIC_TRACK_DOUBLE_DIGIT;
+				}
+				DrawString(r.left + 3, r.right - 3, r.top, str);
+				str = STR_MUSIC_TITLE_NONE;
+				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
+					str = STR_MUSIC_TITLE_NAME;
+					SetDParam(0, SPECSTR_SONGNAME);
+					SetDParam(1, _music_wnd_cursong);
+				}
+				DrawString(r.left, r.right, r.top + 1, str, TC_FROMSTRING, SA_CENTER);
+			} break;
+
+			case MW_SHUFFLE:
+				DrawString(r.left, r.right, r.top, STR_MUSIC_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK), SA_CENTER);
+				break;
+
+			case MW_PROGRAMME:
+				DrawString(r.left, r.right, r.top, STR_MUSIC_PROGRAM, TC_FROMSTRING, SA_CENTER);
+				break;
+
+			case MW_ALL: case MW_OLD: case MW_NEW: case MW_EZY: case MW_CUSTOM1: case MW_CUSTOM2:
+				DrawString(r.left, r.right, r.top, STR_MUSIC_PLAYLIST_ALL + (widget - MW_ALL), msf.playlist == (widget - MW_ALL) ? TC_WHITE : TC_BLACK, SA_CENTER);
+				break;
+		}
 	}
 
 	virtual void OnPaint()
 	{
-		this->RaiseWidget(MW_GAUGE);
-		this->RaiseWidget(MW_INFO);
 		this->DrawWidgets();
 
-		GfxFillRect(187, 16, 200, 33, 0);
-
-		for (uint i = 0; i != 8; i++) {
-			int colour = 0xD0;
-			if (i > 4) {
-				colour = 0xBF;
-				if (i > 6) {
-					colour = 0xB8;
-				}
-			}
-			GfxFillRect(187, NUM_SONGS_PLAYLIST - i * 2, 200, NUM_SONGS_PLAYLIST - i * 2, colour);
-		}
-
-		GfxFillRect(60, 46, 239, 52, 0);
-
-		StringID str = STR_MUSIC_TRACK_NONE;
-		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
-			SetDParam(0, _music_wnd_cursong);
-			str = (_music_wnd_cursong < 10) ? STR_MUSIC_TRACK_SINGLE_DIGIT : STR_MUSIC_TRACK_DOUBLE_DIGIT;
-		}
-		DrawString(this->widget[MW_INFO].left + 3, this->widget[MW_INFO].right - 3, 46, str);
-
-		str = STR_MUSIC_TITLE_NONE;
-		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
-			str = STR_MUSIC_TITLE_NAME;
-			SetDParam(0, SPECSTR_SONGNAME);
-			SetDParam(1, _music_wnd_cursong);
-		}
-		DrawString(this->widget[MW_INFO].left, this->widget[MW_INFO].right, 46, str, TC_FROMSTRING, SA_CENTER);
-
-		DrawString(this->widget[MW_INFO].left + 1, this->widget[MW_INFO].right, 38, STR_MUSIC_TRACK_XTITLE);
-
-		for (uint i = 0; i != 6; i++) {
-			DrawString(this->widget[i + MW_ALL].left, this->widget[i + MW_ALL].right, 59, STR_MUSIC_PLAYLIST_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK, SA_CENTER);
-		}
-
-		DrawString(this->widget[MW_SHUFFLE].left, this->widget[MW_SHUFFLE].right, this->widget[MW_SHUFFLE].top + 1, STR_MUSIC_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK), SA_CENTER);
-		DrawString(this->widget[MW_PROGRAMME].left, this->widget[MW_PROGRAMME].right, this->widget[MW_PROGRAMME].top + 1, STR_MUSIC_PROGRAM, TC_FROMSTRING, SA_CENTER);
 		DrawString(108, 174, 15, STR_MUSIC_MUSIC_VOLUME, TC_FROMSTRING, SA_CENTER);
 		DrawString(108, 174, 29, STR_MUSIC_MIN_MAX_RULER, TC_FROMSTRING, SA_CENTER);
 		DrawString(214, 280, 15, STR_MUSIC_EFFECTS_VOLUME, TC_FROMSTRING, SA_CENTER);
@@ -553,28 +562,6 @@ struct MusicWindow : public Window {
 #endif
 };
 
-static const Widget _music_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},                          // MW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_MUSIC_JAZZ_JUKEBOX_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // MW_CAPTION
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    21,    14,    35, SPR_IMG_SKIP_TO_PREV,  STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK},          // MW_PREV
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    22,    43,    14,    35, SPR_IMG_SKIP_TO_NEXT,  STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION}, // MW_NEXT
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    44,    65,    14,    35, SPR_IMG_STOP_MUSIC,    STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC},              // MW_STOP
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    66,    87,    14,    35, SPR_IMG_PLAY_MUSIC,    STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC},             // MW_PLAY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    88,   299,    14,    35, 0x0,                   STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC},       // MW_SLIDERS
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   186,   201,    15,    34, 0x0,                   STR_NULL},                                          // MW_GAUGE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   299,    36,    57, 0x0,                   STR_NULL},                                          // MW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    59,   240,    45,    53, 0x0,                   STR_NULL},                                          // MW_INFO
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,     6,    55,    42,    49, 0x0,                   STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE},          // MW_SHUFFLE
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   244,   293,    42,    49, 0x0,                   STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION},      // MW_PROGRAMME
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    49,    58,    65, 0x0,                   STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM},       // MW_ALL
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,    50,    99,    58,    65, 0x0,                   STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC},          // MW_OLD
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   100,   149,    58,    65, 0x0,                   STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC},          // MW_NEW
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   150,   199,    58,    65, 0x0,                   STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE},         // MW_EZY
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   249,    58,    65, 0x0,                   STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED},    // MW_CUSTOM1
-{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   250,   299,    58,    65, 0x0,                   STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED},    // MW_CUSTOM2
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_music_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, MW_CLOSE),
@@ -617,7 +604,7 @@ static const WindowDesc _music_window_desc(
 	0, 22, 300, 66, 300, 66,
 	WC_MUSIC_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_music_window_widgets, _nested_music_window_widgets, lengthof(_nested_music_window_widgets)
+	NULL, _nested_music_window_widgets, lengthof(_nested_music_window_widgets)
 );
 
 void ShowMusicWindow()
