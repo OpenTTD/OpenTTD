@@ -746,36 +746,21 @@ enum IndustryDirectoryWidgets {
 };
 
 /** Widget definition of the industy directory gui */
-static const Widget _industry_directory_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW},             // IDW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_BROWN,    11,   415,     0,    13, STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   416,   427,     0,    13, 0x0,                     STR_TOOLTIP_STICKY},                    // IDW_STICKY
-
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    80,    14,    25, STR_BUTTON_SORT_BY,             STR_TOOLTIP_SORT_ORDER},                   // IDW_DROPDOWN_ORDER
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_BROWN,    81,   243,    14,    25, 0x0,                     STR_TOOLTIP_SORT_CRITERIAP},                // IDW_DROPDOWN_CRITERIA
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_BROWN,   244,   415,    14,    25, 0x0,                     STR_NULL},                             // IDW_SPACER
-
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   415,    26,   189, 0x0,                     STR_INDUSTRY_DIRECTORY_LIST_CAPTION},         // IDW_INDUSTRY_LIST
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   416,   427,    14,   177, 0x0,                     STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // IDW_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   416,   427,   178,   189, 0x0,                     STR_TOOLTIP_RESIZE},                    // IDW_RESIZE
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_industry_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, IDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, IDW_CAPTION), SetMinimalSize(405, 14), SetDataTip(STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, IDW_CAPTION), SetDataTip(STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, IDW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXTBTN, COLOUR_BROWN, IDW_DROPDOWN_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, IDW_DROPDOWN_CRITERIA), SetMinimalSize(163, 12), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
-				NWidget(WWT_PANEL , COLOUR_BROWN, IDW_SPACER), SetResize(1, 0),
+				NWidget(WWT_TEXTBTN, COLOUR_BROWN, IDW_DROPDOWN_ORDER), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, IDW_DROPDOWN_CRITERIA), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIAP),
+				NWidget(WWT_PANEL, COLOUR_BROWN, IDW_SPACER), SetResize(1, 0),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN, IDW_INDUSTRY_LIST), SetMinimalSize(416, 164), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1),
+			NWidget(WWT_PANEL, COLOUR_BROWN, IDW_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
@@ -796,7 +781,6 @@ protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
 	static const Industry *last_industry;
-	int industryline_height; ///< Height of a single industry line in the industry directory window.
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
@@ -910,7 +894,7 @@ protected:
 	 * @param i the industry to get the StringID of.
 	 * @return the StringID.
 	 */
-	StringID GetIndustryString(const Industry *i)
+	StringID GetIndustryString(const Industry *i) const
 	{
 		const IndustrySpec *indsp = GetIndustrySpec(i->type);
 		byte p = 0;
@@ -941,22 +925,15 @@ protected:
 	}
 
 public:
-	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
+	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
-		this->vscroll.cap = 16;
-
-		this->industryline_height = 10;
-		this->resize.height = this->height - 6 * this->industryline_height; // minimum 10 items
-
-		this->resize.step_height = this->industryline_height;
-		this->FindWindowPlacementAndResize(desc);
-
 		this->industries.SetListing(this->last_sorting);
-		this->industries.SetSortFuncs(this->sorter_funcs);
+		this->industries.SetSortFuncs(IndustryDirectoryWindow::sorter_funcs);
 		this->industries.ForceRebuild();
 		this->BuildSortIndustriesList();
 
-		this->widget[IDW_DROPDOWN_CRITERIA].data = this->sorter_names[this->industries.SortType()];
+		this->InitNested(desc, 0);
+		this->vscroll.cap = this->nested_array[IDW_INDUSTRY_LIST]->current_y / this->resize.step_height;
 	}
 
 	~IndustryDirectoryWindow()
@@ -964,20 +941,72 @@ public:
 		this->last_sorting = this->industries.GetListing();
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == IDW_DROPDOWN_CRITERIA) SetDParam(0, IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
+	}
+
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		this->DrawSortButtonState(IDW_DROPDOWN_ORDER, this->industries.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+	}
 
-		int max = min(this->vscroll.pos + this->vscroll.cap, this->industries.Length());
-		int y = this->widget[IDW_INDUSTRY_LIST].top + 2; // start of the list-widget
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case IDW_DROPDOWN_ORDER:
+				this->DrawSortButtonState(widget, this->industries.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+				break;
 
-		for (int n = this->vscroll.pos; n < max; ++n) {
-			StringID str = this->GetIndustryString(this->industries[n]);
-			DrawString(this->widget[IDW_INDUSTRY_LIST].left + 2, this->widget[IDW_INDUSTRY_LIST].right - 2, y, str);
-			y += this->industryline_height;
+			case IDW_INDUSTRY_LIST: {
+				int n = 0;
+				int y = r.top + WD_FRAMERECT_TOP;
+				for (uint i = this->vscroll.pos; i < this->industries.Length(); i++) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, this->GetIndustryString(this->industries[i]));
+
+					y += this->resize.step_height;
+					if (++n == this->vscroll.cap) break; // max number of industries in 1 window
+				}
+			} break;
 		}
 	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case IDW_DROPDOWN_ORDER: {
+				Dimension d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
+			case IDW_DROPDOWN_CRITERIA: {
+				Dimension d = {0, 0};
+				for (uint i = 0; IndustryDirectoryWindow::sorter_names[i] != INVALID_STRING_ID; i++) {
+					d = maxdim(d, GetStringBoundingBox(IndustryDirectoryWindow::sorter_names[i]));
+				}
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
+			case IDW_INDUSTRY_LIST: {
+				Dimension d = {0, 0};
+				for (uint i = 0; i < this->industries.Length(); i++) {
+					d = maxdim(d, GetStringBoundingBox(this->GetIndustryString(this->industries[i])));
+				}
+				resize->height = d.height;
+				d.width += padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				*size = maxdim(*size, d);
+				break;
+			}
+		}
+	}
+
 
 	virtual void OnClick(Point pt, int widget)
 	{
@@ -988,11 +1017,11 @@ public:
 				break;
 
 			case IDW_DROPDOWN_CRITERIA:
-				ShowDropDownMenu(this, this->sorter_names, this->industries.SortType(), IDW_DROPDOWN_CRITERIA, 0, 0);
+				ShowDropDownMenu(this, IndustryDirectoryWindow::sorter_names, this->industries.SortType(), IDW_DROPDOWN_CRITERIA, 0, 0);
 				break;
 
 			case IDW_INDUSTRY_LIST: {
-				int y = (pt.y - this->widget[IDW_INDUSTRY_LIST].top - 2) / this->industryline_height;
+				int y = (pt.y - this->nested_array[widget]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 				uint16 p;
 
 				if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
@@ -1012,14 +1041,13 @@ public:
 	{
 		if (this->industries.SortType() != index) {
 			this->industries.SetSortType(index);
-			this->widget[IDW_DROPDOWN_CRITERIA].data = this->sorter_names[this->industries.SortType()];
 			this->SetDirty();
 		}
 	}
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / this->industryline_height;
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 	}
 
 	virtual void OnHundredthTick()
@@ -1065,7 +1093,7 @@ static const WindowDesc _industry_directory_desc(
 	WDP_AUTO, WDP_AUTO, 428, 190, 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_industry_directory_widgets, _nested_industry_directory_widgets, lengthof(_nested_industry_directory_widgets)
+	NULL, _nested_industry_directory_widgets, lengthof(_nested_industry_directory_widgets)
 );
 
 void ShowIndustryDirectory()
