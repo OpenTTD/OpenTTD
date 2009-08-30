@@ -560,12 +560,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Entuta p
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Ĵaza Diskogurdo
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Ĉiu
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Malnovstile
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Novstile
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Facila Vojo
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Propra 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Propra 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Ĉiu
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Malnovstile
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Novstile
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Facila Vojo
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Propra 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Propra 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muzika Volumeno
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efekta Volumeno
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}-  '  '  ' '  '  '  +
@@ -575,7 +575,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Numero{SETX 88}{BLACK}{TINYFONT}Titolo
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Miksu
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Miksu
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programo
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Saltu al antaŭa numero
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Saltu al posta numero

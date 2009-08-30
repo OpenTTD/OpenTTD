@@ -567,12 +567,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punteggi
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Tutte
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Vecchio stile
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nuovo stile
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Personale 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Personale 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Tutte
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Vecchio stile
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nuovo stile
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Personale 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personale 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume musica
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume effetti
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -582,7 +582,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Brano{SETX 88}{BLACK}{TINYFONT}Titolo
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Casuale
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Casuale
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programma
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Salta al brano precedente
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Salta al brano successivo

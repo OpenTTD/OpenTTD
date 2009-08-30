@@ -564,12 +564,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Συνο
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Τζουκμπόξ Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Όλα
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Παλιό Στυλ
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Νέο Στυλ
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Προσαρμοσμένο 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Προσαρμοσμένο 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Όλα
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Παλιό Στυλ
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Νέο Στυλ
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Προσαρμοσμένο 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Προσαρμοσμένο 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Ένταση Μουσικής
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Ένταση Εφέ
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}ΕΛΑΧ  '  '  ' '  '  '  ΜΕΓ
@@ -579,7 +579,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Κομμάτι{SETX 88}{BLACK}{TINYFONT}Τίτλος
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Τυχαία αναπαραγωγή
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Τυχαία αναπαραγωγή
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Πρόγραμμα
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Πλοήγηση στο προηγούμενο κομμάτι της συλλογής
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Πλοήγηση στο επόμενο κομμάτι στη συλλογή

@@ -567,12 +567,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punkti k
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Džeza mūzikas automāts
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Visi
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Vecais stils
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Jaunais stils
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy iela
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Speciālais 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Speciālais 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Visi
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Vecais stils
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Jaunais stils
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy iela
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Speciālais 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Speciālais 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Mūzikas skaļums
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektu skaļums
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -582,7 +582,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Treks{SETX 88}{BLACK}{TINYFONT}Nosaukums
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Sajaukt
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Sajaukt
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programma
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Pārlēkt uz iepriekšējo dziesmu
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Pārlēkt uz nākošo dziesmu

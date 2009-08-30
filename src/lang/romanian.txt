@@ -565,12 +565,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punctaju
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Tonomatul cu jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Tot
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Oldies
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Moderne
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Personale 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Personale 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Tot
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Oldies
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Moderne
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Personale 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personale 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volumul muzicii
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volumul efectelor sonore
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  '  '  '  '  MAX
@@ -580,7 +580,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Piesa nr: {SETX 88}{BLACK}{TINYFONT}Titlul
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Aleator
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Aleator
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sări la piesa precedentă din selecţie
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sări la piesa următoare din selecţie

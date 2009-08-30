@@ -564,12 +564,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Cyfanswm
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Pob Arddull
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Arddull Newydd
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Hen Arddull
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Scoedent
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Cyfaddas 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Cyfaddas 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Pob Arddull
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Arddull Newydd
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Hen Arddull
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Scoedent
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Cyfaddas 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Cyfaddas 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Lefel Sain Cerddoriaeth
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Lefel Sain Effeithiau
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}ISAF  '  '  ' '  '  '  MWYAF
@@ -579,7 +579,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Teitl{SETX 88}{BLACK}{TINYFONT}Trac
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Cymysgu Trefn
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Cymysgu Trefn
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Rhaglen
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Neidio i'r gân ddiwethaf yn y rhestr
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Neidio i'r gân nesaf yn y rhestr

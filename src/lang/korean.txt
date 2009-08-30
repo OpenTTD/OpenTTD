@@ -565,12 +565,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}산출 �
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}재즈 쥬크박스
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}모두
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}고전 스타일
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}뉴 스타일
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}사용자 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}사용자 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}모두
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}고전 스타일
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}뉴 스타일
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}사용자 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}사용자 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}음량
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}효과 음량
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}최소  '  '  ' '  '  '  최대
@@ -580,7 +580,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}트랙{SETX 88}{BLACK}{TINYFONT}제목
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}무작위
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}무작위
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}프로그램
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}이전 트랙으로 건너뛰기
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}다음 트랙으로 건너뛰기

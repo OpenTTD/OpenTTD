@@ -632,12 +632,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Celkový
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Vše
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Staré
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nové
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Volba 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Volba 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Vše
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Staré
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nové
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Volba 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Volba 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Hlasitost hudby
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Hlasitost efektů
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -647,7 +647,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Skladba{SETX 88}{BLACK}{TINYFONT}Název
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Náhodně
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Náhodně
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Skočit na předchozí skladbu ve výběru
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Skočit na další skladbu ve výběru

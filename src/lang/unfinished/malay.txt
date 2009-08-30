@@ -458,10 +458,10 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Peti muzik Jaz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Semua
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Cara Lama
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Gaya baru
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Lorong Ezy
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Semua
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Cara Lama
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Gaya baru
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Lorong Ezy
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Kekuatan muzik
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Kekuatan Kesan Bunyi
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -471,7 +471,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Tajuk {SETX 88}{BLACK}{TINYFONT}Trek
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Kocok
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Kocok
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Lompat ke lagu sebelumnya
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Lompat ke lagu seterusnya

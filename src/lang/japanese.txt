@@ -560,12 +560,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}最大�
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}ジャズジュークボックス
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}すべての曲
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}旧式ジャズ
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}新式ジャズ
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}カスタム 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}カスタム 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}すべての曲
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}旧式ジャズ
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}新式ジャズ
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}カスタム 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}カスタム 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}音楽の音量
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}エフェクトの音量
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -575,7 +575,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}曲{SETX 88}{BLACK}{TINYFONT}タイトル
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}シャッフル
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}シャッフル
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}プレイリスト
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}選択部分の前の曲へジャンプ
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}選択部分の次の曲へジャンプ

@@ -628,12 +628,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Celkove 
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Všetko
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Starý štýl
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nový štýl
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Vlastné 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Vlastné 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Všetko
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Starý štýl
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nový štýl
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Vlastné 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Vlastné 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Hlasitost hudby
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Hlasitost zvuk. efektov
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -643,7 +643,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Stopa{SETX 88}{BLACK}{TINYFONT}Title
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Náhodne
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Náhodne
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Predchádzajúca stopa
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Nasledujúca stopa

@@ -565,12 +565,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox de Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Tot
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Estil Antic
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nou Estil
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Opcional 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Opcional 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Tot
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Estil Antic
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nou Estil
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Opcional 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Opcional 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volum de la música
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volum dels efectes
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -580,7 +580,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Pista{SETX 88}{BLACK}{TINYFONT}Títol
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Aleatori
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Aleatori
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programa
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Salta a la pista anterior de la selecció
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Salta a la pista següent de la selecció

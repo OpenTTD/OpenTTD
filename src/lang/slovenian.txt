@@ -606,12 +606,12 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Skupno t
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Gramofon
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Vse
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Star stil
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Novi stil
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Poulična
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Po meri 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Po meri 2
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Vse
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Star stil
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Novi stil
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Poulična
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Po meri 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Po meri 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Glasnost glasbe
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Glasnost zvokov
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
@@ -621,7 +621,7 @@ STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Skladba{SETX 88}{BLACK}{TINYFONT}Naslov
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}Mešano
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Mešano
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Skoči na prejšnjo skladbo v izboru
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Preskoči na naslednjo skladbo v izboru
