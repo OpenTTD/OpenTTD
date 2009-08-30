@@ -72,11 +72,9 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 	EndContainer(),
 };
 
-typedef void DrawEngineProc(int x, int y, EngineID engine, SpriteID pal);
 typedef void DrawEngineInfoProc(EngineID, int left, int right, int top, int bottom);
 
 struct DrawEngineInfo {
-	DrawEngineProc *engine_proc;
 	DrawEngineInfoProc *info_proc;
 };
 
@@ -86,10 +84,10 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top, int bottom);
 
 static const DrawEngineInfo _draw_engine_list[4] = {
-	{ DrawTrainEngine,    DrawTrainEngineInfo    },
-	{ DrawRoadVehEngine,  DrawRoadVehEngineInfo  },
-	{ DrawShipEngine,     DrawShipEngineInfo     },
-	{ DrawAircraftEngine, DrawAircraftEngineInfo },
+	{ DrawTrainEngineInfo    },
+	{ DrawRoadVehEngineInfo  },
+	{ DrawShipEngineInfo     },
+	{ DrawAircraftEngineInfo },
 };
 
 struct EnginePreviewWindow : Window {
@@ -112,7 +110,7 @@ struct EnginePreviewWindow : Window {
 		const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 		int width = this->width;
-		dei->engine_proc(width >> 1, 100, engine, GetEnginePalette(engine, _local_company));
+		DrawVehicleEngine(width >> 1, 100, engine, GetEnginePalette(engine, _local_company));
 		dei->info_proc(engine, this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 170);
 	}
 
@@ -231,6 +229,38 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 }
 
+/**
+ * Draw an engine.
+ * @param x      Horizontal position to use for drawing the engine.
+ * @param y      Vertical position to use for drawing the engine.
+ * @param engine Engine to draw.
+ * @para, pal    Palette to use for drawing.
+ */
+void DrawVehicleEngine(int x, int y, EngineID engine, SpriteID pal)
+{
+	const Engine *e = Engine::Get(engine);
+
+	switch (e->type) {
+		case VEH_TRAIN:
+			DrawTrainEngine(x, y, engine, pal);
+			break;
+
+		case VEH_ROAD:
+			DrawRoadVehEngine(x, y, engine, pal);
+			break;
+
+		case VEH_SHIP:
+			DrawShipEngine(x, y, engine, pal);
+			break;
+
+		case VEH_AIRCRAFT:
+			DrawAircraftEngine(x, y, engine, pal);
+			break;
+
+		default: NOT_REACHED();
+	}
+}
+
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
 	assert(ni->reftype1 == NR_ENGINE);
@@ -245,7 +275,7 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	SetDParam(0, engine);
 	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEWS_NEW_VEHICLE_TYPE, TC_FROMSTRING, SA_CENTER);
 
-	dei->engine_proc(w->width >> 1, 88, engine, GetEnginePalette(engine, _local_company));
+	DrawVehicleEngine(w->width >> 1, 88, engine, GetEnginePalette(engine, _local_company));
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
 	dei->info_proc(engine, 26, w->width - 26, 100, 170);
 }

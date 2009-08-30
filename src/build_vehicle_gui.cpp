@@ -703,17 +703,6 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 	return y;
 }
 
-static void DrawVehicleEngine(VehicleType type, int x, int y, EngineID engine, SpriteID pal)
-{
-	switch (type) {
-		case VEH_TRAIN:    DrawTrainEngine(   x, y, engine, pal); break;
-		case VEH_ROAD:     DrawRoadVehEngine( x, y, engine, pal); break;
-		case VEH_SHIP:     DrawShipEngine(    x, y, engine, pal); break;
-		case VEH_AIRCRAFT: DrawAircraftEngine(x, y, engine, pal); break;
-		default: NOT_REACHED();
-	}
-}
-
 /** Engine drawing loop
  * @param type Type of vehicle (VEH_*)
  * @param x,y Where should the list start
@@ -763,7 +752,7 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 
 		SetDParam(0, engine);
 		DrawString(x + x_offset, r, y, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK);
-		DrawVehicleEngine(type, x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
+		DrawVehicleEngine(x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
 		if (count_location != 0) {
 			SetDParam(0, num_engines);
 			DrawString(x, count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
