@@ -11,7 +11,7 @@
 
 #include "stdafx.h"
 #include "landscape.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "animated_tile_func.h"

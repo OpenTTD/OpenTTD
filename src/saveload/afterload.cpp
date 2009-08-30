@@ -22,7 +22,7 @@
 #include "../network/network.h"
 #include "../gfxinit.h"
 #include "../functions.h"
-#include "../industry_map.h"
+#include "../industry.h"
 #include "../town_map.h"
 #include "../clear_map.h"
 #include "../vehicle_func.h"

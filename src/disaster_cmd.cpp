@@ -26,7 +26,7 @@
 #include "stdafx.h"
 #include "landscape.h"
 
-#include "industry_map.h"
+#include "industry.h"
 #include "station_base.h"
 #include "command_func.h"
 #include "news_func.h"

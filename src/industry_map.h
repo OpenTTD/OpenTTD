@@ -12,7 +12,7 @@
 #ifndef INDUSTRY_MAP_H
 #define INDUSTRY_MAP_H
 
-#include "industry.h"
+#include "industrytype.h"
 #include "tile_map.h"
 #include "water_map.h"
 
@@ -67,17 +67,6 @@ static inline IndustryID GetIndustryIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
 	return _m[t].m2;
-}
-
-/**
- * Get the industry of the given tile
- * @param t the tile to get the industry from
- * @pre IsTileType(t, MP_INDUSTRY)
- * @return the industry
- */
-static inline Industry *GetIndustryByTile(TileIndex t)
-{
-	return Industry::Get(GetIndustryIndex(t));
 }
 
 /**

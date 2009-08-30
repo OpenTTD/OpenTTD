@@ -23,7 +23,7 @@
 #include "train.h"
 #include "roadveh.h"
 #include "water.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "cargotype.h"
 #include "newgrf_canal.h"
 #include "transparency.h"

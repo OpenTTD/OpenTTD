@@ -14,7 +14,7 @@
 #include "tile_cmd.h"
 #include "company_func.h"
 #include "command_func.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "town.h"
 #include "news_func.h"
 #include "network/network.h"

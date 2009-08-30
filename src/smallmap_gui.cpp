@@ -11,7 +11,7 @@
 
 #include "stdafx.h"
 #include "clear_map.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "station_map.h"
 #include "landscape.h"
 #include "window_gui.h"
@@ -408,8 +408,8 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 
 	if (t == MP_INDUSTRY) {
 		/* If industry is allowed to be seen, use its colour on the map */
-		if (_legend_from_industries[_industry_to_list_pos[GetIndustryByTile(tile)->type]].show_on_map) {
-			return GetIndustrySpec(GetIndustryByTile(tile)->type)->map_colour * 0x01010101;
+		if (_legend_from_industries[_industry_to_list_pos[Industry::GetByTile(tile)->type]].show_on_map) {
+			return GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour * 0x01010101;
 		} else {
 			/* otherwise, return the colour of the clear tiles, which will make it disappear */
 			return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[MP_CLEAR]);
@@ -465,7 +465,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR(0x37373737) : _vegetation_clear_bits[GetClearGround(tile)];
 
 		case MP_INDUSTRY:
-			return GetIndustrySpec(GetIndustryByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR(0xD0D0D0D0) : MKCOLOUR(0xB5B5B5B5);
+			return GetIndustrySpec(Industry::GetByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR(0xD0D0D0D0) : MKCOLOUR(0xB5B5B5B5);
 
 		case MP_TREES:
 			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT) {

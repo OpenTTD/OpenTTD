@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "company_func.h"
-#include "industry.h"
 #include "newgrf_cargo.h"
 #include "yapf/yapf.h"
 #include "cargotype.h"
@@ -31,7 +30,7 @@
 #include "core/pool_func.hpp"
 #include "station_base.h"
 #include "roadstop_base.h"
-#include "industry_map.h"
+#include "industry.h"
 
 #include "table/strings.h"
 
@@ -284,7 +283,7 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
 	if (!IsTileType(ind_tile, MP_INDUSTRY)) return false;
 
 	RectAndIndustryVector *riv = (RectAndIndustryVector *)user_data;
-	Industry *ind = GetIndustryByTile(ind_tile);
+	Industry *ind = Industry::GetByTile(ind_tile);
 
 	/* Don't check further if this industry is already in the list */
 	if (riv->industries_near->Contains(ind)) return false;

@@ -22,7 +22,7 @@
 #include "newgrf_industrytiles.h"
 #include "newgrf_sound.h"
 #include "newgrf_text.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "sprite.h"
 #include "transparency.h"
 #include "functions.h"
@@ -97,7 +97,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		/* Animation stage of nearby tiles */
 		case 0x61:
 			tile = GetNearbyTile(parameter, tile);
-			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == inds) {
+			if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == inds) {
 				return GetIndustryAnimationState(tile);
 			}
 			return UINT_MAX;
@@ -122,14 +122,14 @@ static uint32 IndustryTileGetRandomBits(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
 	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
-	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryRandomBits(tile) : GetIndustryByTile(tile)->random;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryRandomBits(tile) : Industry::GetByTile(tile)->random;
 }
 
 static uint32 IndustryTileGetTriggers(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
 	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
-	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : GetIndustryByTile(tile)->random_triggers;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : Industry::GetByTile(tile)->random_triggers;
 }
 
 static void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
@@ -140,7 +140,7 @@ static void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
 	if (object->scope == VSG_SCOPE_SELF) {
 		SetIndustryTriggers(tile, triggers);
 	} else {
-		GetIndustryByTile(tile)->random_triggers = triggers;
+		Industry::GetByTile(tile)->random_triggers = triggers;
 	}
 }
 
@@ -299,7 +299,7 @@ bool PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, 
 
 void AnimateNewIndustryTile(TileIndex tile)
 {
-	Industry *ind = GetIndustryByTile(tile);
+	Industry *ind = Industry::GetByTile(tile);
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 	byte animation_speed = itspec->animation_speed;
@@ -387,7 +387,7 @@ bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat
 
 	if (!HasBit(itspec->animation_triggers, iat)) return false;
 
-	Industry *ind = GetIndustryByTile(tile);
+	Industry *ind = Industry::GetByTile(tile);
 	ChangeIndustryTileAnimationFrame(itspec, tile, iat, random, gfx, ind);
 	return true;
 }
@@ -436,7 +436,7 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 
 void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
 {
-	DoTriggerIndustryTile(tile, trigger, GetIndustryByTile(tile));
+	DoTriggerIndustryTile(tile, trigger, Industry::GetByTile(tile));
 }
 
 void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)

@@ -12,7 +12,7 @@
 #include "ai_tilelist.hpp"
 #include "ai_industry.hpp"
 #include "../../tile_map.h"
-#include "../../industry_map.h"
+#include "../../industry.h"
 #include "../../station_base.h"
 #include "../../settings_type.h"
 

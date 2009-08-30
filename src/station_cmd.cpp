@@ -21,7 +21,7 @@
 #include "news_func.h"
 #include "train.h"
 #include "roadveh.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "newgrf_station.h"
 #include "newgrf_commons.h"
 #include "yapf/yapf.h"
@@ -143,7 +143,7 @@ static bool CMSAMine(TileIndex tile)
 	/* No industry */
 	if (!IsTileType(tile, MP_INDUSTRY)) return false;
 
-	const Industry *ind = GetIndustryByTile(tile);
+	const Industry *ind = Industry::GetByTile(tile);
 
 	/* No extractive industry */
 	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_EXTRACTIVE) == 0) return false;
@@ -190,7 +190,7 @@ static bool CMSAForest(TileIndex tile)
 	/* No industry */
 	if (!IsTileType(tile, MP_INDUSTRY)) return false;
 
-	const Industry *ind = GetIndustryByTile(tile);
+	const Industry *ind = Industry::GetByTile(tile);
 
 	/* No extractive industry */
 	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;

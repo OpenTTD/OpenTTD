@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "station_base.h"
 #include "train.h"
 #include "landscape.h"
@@ -102,7 +102,7 @@ IndustryType GetIndustryType(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 
-	const Industry *ind = GetIndustryByTile(tile);
+	const Industry *ind = Industry::GetByTile(tile);
 	assert(ind != NULL);
 	return ind->type;
 }
@@ -297,7 +297,7 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 static void DrawTile_Industry(TileInfo *ti)
 {
 	IndustryGfx gfx = GetIndustryGfx(ti->tile);
-	Industry *ind = GetIndustryByTile(ti->tile);
+	Industry *ind = Industry::GetByTile(ti->tile);
 	const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 	const DrawBuildingsTileStruct *dits;
 	SpriteID image;
@@ -385,7 +385,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
 		const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 		if (indts->grf_prop.spritegroup != NULL && HasBit(indts->callback_flags, CBM_INDT_DRAW_FOUNDATIONS)) {
-			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, GetIndustryByTile(tile), tile);
+			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, Industry::GetByTile(tile), tile);
 			if (callback_res == 0) return FOUNDATION_NONE;
 		}
 	}
@@ -406,7 +406,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance)
 	const uint8 *cargo_acceptance = itspec->acceptance;
 
 	if (HasBit(itspec->callback_flags, CBM_INDT_ACCEPT_CARGO)) {
-		uint16 res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, GetIndustryByTile(tile), tile);
+		uint16 res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
 			accepts_cargo = raw_accepts_cargo;
 			for (uint i = 0; i < lengthof(itspec->accepts_cargo); i++) raw_accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
@@ -414,7 +414,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance)
 	}
 
 	if (HasBit(itspec->callback_flags, CBM_INDT_CARGO_ACCEPTANCE)) {
-		uint16 res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, GetIndustryByTile(tile), tile);
+		uint16 res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
 			cargo_acceptance = raw_cargo_acceptance;
 			for (uint i = 0; i < lengthof(itspec->accepts_cargo); i++) raw_cargo_acceptance[i] = GB(res, i * 4, 4);
@@ -429,7 +429,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance)
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
-	const Industry *i = GetIndustryByTile(tile);
+	const Industry *i = Industry::GetByTile(tile);
 	const IndustrySpec *is = GetIndustrySpec(i->type);
 
 	td->owner[0] = i->owner;
@@ -446,7 +446,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 
 static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 {
-	Industry *i = GetIndustryByTile(tile);
+	Industry *i = Industry::GetByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
 	/* water can destroy industries
@@ -473,7 +473,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 
 static void TransportIndustryGoods(TileIndex tile)
 {
-	Industry *i = GetIndustryByTile(tile);
+	Industry *i = Industry::GetByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	bool moved_cargo = false;
 
@@ -846,7 +846,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 
 	case GFX_TOY_FACTORY: {
-			Industry *i = GetIndustryByTile(tile);
+			Industry *i = Industry::GetByTile(tile);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
 				SetIndustryAnimationLoop(tile, 0);
@@ -882,7 +882,7 @@ static TrackStatus GetTileTrackStatus_Industry(TileIndex tile, TransportType mod
 
 static void AddProducedCargo_Industry(TileIndex tile, CargoArray &produced)
 {
-	const Industry *i = GetIndustryByTile(tile);
+	const Industry *i = Industry::GetByTile(tile);
 
 	for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
 		CargoID cargo = i->produced_cargo[j];
@@ -893,7 +893,7 @@ static void AddProducedCargo_Industry(TileIndex tile, CargoArray &produced)
 static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* If the founder merges, the industry was created by the merged company */
-	Industry *i = GetIndustryByTile(tile);
+	Industry *i = Industry::GetByTile(tile);
 	if (i->founder == old_owner) i->founder = (new_owner == INVALID_OWNER) ? OWNER_NONE : new_owner;
 }
 
@@ -2409,7 +2409,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, u
 			/* Call callback 3C 'disable autosloping for industry tiles'. */
 			if (HasBit(itspec->callback_flags, CBM_INDT_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
-				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, GetIndustryByTile(tile), tile);
+				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, Industry::GetByTile(tile), tile);
 				if ((res == 0) || (res == CALLBACK_FAILED)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 			} else {
 				/* allow autoslope */

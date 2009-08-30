@@ -14,7 +14,7 @@
 #include "tile_type.h"
 #include "strings_type.h"
 #include "company_type.h"
-#include "industry_map.h"
+#include "industry.h"
 #include "newgrf.h"
 #include "newgrf_industries.h"
 #include "newgrf_commons.h"
@@ -242,7 +242,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Get random tile bits at offset param */
 		case 0x61:
 			tile = GetNearbyTile(parameter, tile);
-			return (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == industry) ? GetIndustryRandomBits(tile) : 0;
+			return (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) ? GetIndustryRandomBits(tile) : 0;
 
 		/* Land info of nearby tiles */
 		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
@@ -250,7 +250,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Animation stage of nearby tiles */
 		case 0x63:
 			tile = GetNearbyTile(parameter, tile);
-			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == industry) {
+			if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) {
 				return GetIndustryAnimationState(tile);
 			}
 			return 0xFFFFFFFF;

@@ -19,11 +19,9 @@
 #include "economy_type.h"
 #include "map_type.h"
 #include "industry_type.h"
-#include "industrytype.h"
 #include "tile_type.h"
 #include "subsidy_type.h"
-#include "town_type.h"
-#include "date_type.h"
+#include "industry_map.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
@@ -73,6 +71,17 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	Industry(TileIndex tile = INVALID_TILE) : xy(tile) {}
 	~Industry();
+
+	/**
+	 * Get the industry of the given tile
+	 * @param t the tile to get the industry from
+	 * @pre IsTileType(t, MP_INDUSTRY)
+	 * @return the industry
+	 */
+	static FORCEINLINE Industry *GetByTile(TileIndex tile)
+	{
+		return Industry::Get(GetIndustryIndex(tile));
+	}
 
 	static Industry *GetRandom();
 };
