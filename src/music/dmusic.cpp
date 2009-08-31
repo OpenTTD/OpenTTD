@@ -16,7 +16,7 @@
 	#undef WIN32_LEAN_AND_MEAN // Don't exclude rarely-used stuff from Windows headers
 #endif
 #include "../debug.h"
-#include "../win32.h"
+#include "../os/windows/win32.h"
 #include "dmusic.h"
 
 #include <windows.h>

@@ -44,7 +44,7 @@ Sub UpdateFiles(version)
 	End If
 
 	UpdateFile modified, revision, version, cur_date, "../src/rev.cpp"
-	UpdateFile modified, revision, version, cur_date, "../src/ottdres.rc"
+	UpdateFile modified, revision, version, cur_date, "../src/os/windows/ottdres.rc"
 End Sub
 
 Function ReadRegistryKey(shive, subkey, valuename, architecture)
@@ -286,6 +286,6 @@ End Function
 
 Dim version
 version = DetermineSVNVersion
-If Not (IsCachedVersion(version) And CheckFile("../src/rev.cpp") And CheckFile("../src/ottdres.rc")) Then
+If Not (IsCachedVersion(version) And CheckFile("../src/rev.cpp") And CheckFile("../src/os/windows/ottdres.rc")) Then
 	UpdateFiles version
 End If

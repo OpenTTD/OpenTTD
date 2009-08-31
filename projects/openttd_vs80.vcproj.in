@@ -16,7 +16,7 @@
 	</Platforms>
 	<ToolFiles>
 		<ToolFile
-			RelativePath="..\src\masm64.rules"
+			RelativePath="..\src\os\windows\masm64.rules"
 		/>
 	</ToolFiles>
 	<Configurations>
@@ -458,7 +458,7 @@
 			Filter="asm"
 			>
 			<File
-				RelativePath=".\..\src\win64.asm"
+				RelativePath=".\..\src\os\windows\win64.asm"
 				>
 				<FileConfiguration
 					Name="Release|Win32"

@@ -16,7 +16,7 @@
 	</Platforms>
 	<ToolFiles>
 		<ToolFile
-			RelativePath="..\src\masm64.rules"
+			RelativePath="..\src\os\windows\masm64.rules"
 		/>
 	</ToolFiles>
 	<Configurations>
@@ -652,7 +652,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ottdres.rc"
+				RelativePath=".\..\src\os\windows\ottdres.rc"
 				>
 			</File>
 			<File
@@ -764,7 +764,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\win32.cpp"
+				RelativePath=".\..\src\os\windows\win32.cpp"
 				>
 			</File>
 			<File
@@ -1624,7 +1624,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\win32.h"
+				RelativePath=".\..\src\os\windows\win32.h"
 				>
 			</File>
 			<File
@@ -3585,7 +3585,7 @@
 			Filter="asm"
 			>
 			<File
-				RelativePath=".\..\src\win64.asm"
+				RelativePath=".\..\src\os\windows\win64.asm"
 				>
 				<FileConfiguration
 					Name="Release|Win32"

@@ -9,16 +9,16 @@
 
 /** @file os2.cpp OS2 related OS support. */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
-#include "gui.h"
-#include "fileio_func.h"
-#include "fios.h"
-#include "functions.h"
-#include "core/random_func.hpp"
-#include "string_func.h"
-#include "textbuf_gui.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../variables.h"
+#include "../../gui.h"
+#include "../../fileio_func.h"
+#include "../../fios.h"
+#include "../../functions.h"
+#include "../../core/random_func.hpp"
+#include "../../string_func.h"
+#include "../../textbuf_gui.h"
 
 #include "table/strings.h"
 

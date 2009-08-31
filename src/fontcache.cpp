@@ -51,7 +51,7 @@ enum {
 #ifdef WIN32
 #include <windows.h>
 #include <shlobj.h> /* SHGetFolderPath */
-#include "win32.h"
+#include "os/windows/win32.h"
 
 /**
  * Get the short DOS 8.3 format for paths.

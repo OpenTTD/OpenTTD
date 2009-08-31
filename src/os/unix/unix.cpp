@@ -9,12 +9,12 @@
 
 /** @file unix.cpp Implementation of Unix specific file handling. */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
-#include "textbuf_gui.h"
-#include "functions.h"
-#include "core/random_func.hpp"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../variables.h"
+#include "../../textbuf_gui.h"
+#include "../../functions.h"
+#include "../../core/random_func.hpp"
 
 #include "table/strings.h"
 
@@ -117,8 +117,8 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 
 #include <iconv.h>
 #include <errno.h>
-#include "debug.h"
-#include "string_func.h"
+#include "../../debug.h"
+#include "../../string_func.h"
 
 const char *GetCurrentLocale(const char *param);
 

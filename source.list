@@ -49,10 +49,10 @@ npf.cpp
 openttd.cpp
 os_timer.cpp
 #if WIN32
-	ottdres.rc
+	os/windows/ottdres.rc
 #end
 #if WINCE
-	ottdres.rc
+	os/windows/ottdres.rc
 #end
 pathfind.cpp
 pbs.cpp
@@ -97,12 +97,12 @@ tile_map.cpp
 #if WIN32
 #else
 	#if WINCE
-		win32.cpp
+		os/windows/win32.cpp
 	#else
 		#if OS2
-			os2.cpp
+			os/os2/os2.cpp
 		#else
-			unix.cpp
+			os/unix/unix.cpp
 		#end
 	#end
 #end
@@ -112,7 +112,7 @@ viewport.cpp
 waypoint.cpp
 widget.cpp
 #if WIN32
-	win32.cpp
+	os/windows/win32.cpp
 #end
 window.cpp
 
@@ -334,7 +334,7 @@ water.h
 waypoint_base.h
 waypoint_func.h
 widget_type.h
-win32.h
+os/windows/win32.h
 music/win32_m.h
 sound/win32_s.h
 video/win32_v.h

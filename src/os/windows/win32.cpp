@@ -9,35 +9,35 @@
 
 /** @file win32.cpp Implementation of MS Windows system calls */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "saveload/saveload.h"
-#include "gfx_func.h"
-#include "textbuf_gui.h"
-#include "fileio_func.h"
-#include "fios.h"
-#include "rev.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../debug.h"
+#include "../../saveload/saveload.h"
+#include "../../gfx_func.h"
+#include "../../textbuf_gui.h"
+#include "../../fileio_func.h"
+#include "../../fios.h"
+#include "../../rev.h"
 #include <windows.h>
 #include <winnt.h>
 #include <wininet.h>
 #include <fcntl.h>
 #include <shlobj.h> /* SHGetFolderPath */
-#include "variables.h"
+#include "../../variables.h"
 #include "win32.h"
-#include "core/alloc_func.hpp"
-#include "functions.h"
-#include "core/random_func.hpp"
-#include "core/bitmath_func.hpp"
-#include "string_func.h"
-#include "gamelog.h"
+#include "../../core/alloc_func.hpp"
+#include "../../functions.h"
+#include "../../core/random_func.hpp"
+#include "../../core/bitmath_func.hpp"
+#include "../../string_func.h"
+#include "../../gamelog.h"
 #include <ctype.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #if defined(_MSC_VER) && !defined(WINCE)
 	#include <dbghelp.h>
-	#include "strings_func.h"
+	#include "../../strings_func.h"
 #endif
 
 static bool _has_console;
