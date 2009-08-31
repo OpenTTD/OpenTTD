@@ -49,7 +49,7 @@ static const AirportMovingData _airport_moving_data_country[22] = {
 	{    3,   40, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 12 Just landed, brake until end of runway
 	{    7,   40, 0,                               {DIR_N} }, // 13 Just landed, turn around and taxi 1 square
 	{   53,   40, 0,                               {DIR_N} }, // 14 Taxi from runway to crossing
-	{  -31,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 15 Fly around waiting for a landing spot (north-east)
+	{    1,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 15 Fly around waiting for a landing spot (north-east)
 	{    1,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 16 Fly around waiting for a landing spot (north-west)
 	{  257,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 17 Fly around waiting for a landing spot (south-west)
 	{  273,   47, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 18 Fly around waiting for a landing spot (south)
@@ -81,10 +81,10 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 	{    3,   54, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 18 Just landed, brake until end of runway
 	{   12,   54, AMED_SLOWTURN,                   {DIR_NW} }, // 19 Just landed, turn around and taxi
 	{    8,   32, 0,                               {DIR_NW} }, // 20 Taxi from runway to crossing
-	{  -31,  149, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 21 Fly around waiting for a landing spot (north-east)
+	{    1,  149, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 21 Fly around waiting for a landing spot (north-east)
 	{    1,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 22 Fly around waiting for a landing spot (north-west)
 	{  193,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 23 Fly around waiting for a landing spot (south-west)
-	{  225,   81, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 24 Fly around waiting for a landing spot (south)
+	{  225,   62, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 24 Fly around waiting for a landing spot (south)
 	/* Helicopter */
 	{   80,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 25 Bufferspace before helipad
 	{   80,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 26 Bufferspace before helipad
@@ -155,7 +155,7 @@ static const AirportMovingData _airport_moving_data_metropolitan[27] = {
 	{   21,   85, 0,                               {DIR_N} }, // 16 Just landed, turn around and taxi 1 square
 	{   21,   69, 0,                               {DIR_N} }, // 17 On Runway-out taxiing to In-Way
 	{   21,   54, AMED_EXACTPOS,                   {DIR_SW} }, // 18 Taxi from runway to crossing
-	{  -31,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 19 Fly around waiting for a landing spot (north-east)
+	{    1,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 19 Fly around waiting for a landing spot (north-east)
 	{    1,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 20 Fly around waiting for a landing spot (north-west)
 	{  257,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 21 Fly around waiting for a landing spot (south-west)
 	{  273,   49, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 22 Fly around waiting for a landing spot (south)
@@ -204,7 +204,7 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 	{    3,  104, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 34 Just landed, brake until end of runway
 	{   12,  104, AMED_SLOWTURN,                   {DIR_N} }, // 35 Just landed, turn around and taxi 1 square
 	{    7,   84, 0,                               {DIR_N} }, // 36 Taxi from runway to crossing
-	{  -31,  209, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 37 Fly around waiting for a landing spot (north-east)
+	{    1,  209, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 37 Fly around waiting for a landing spot (north-east)
 	{    1,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 38 Fly around waiting for a landing spot (north-west)
 	{  273,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 39 Fly around waiting for a landing spot (south-west)
 	{  305,   81, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 40 Fly around waiting for a landing spot (south)
