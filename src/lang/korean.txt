@@ -267,6 +267,7 @@ STR_SORT_BY_MODEL                                               :모델
 STR_SORT_BY_VALUE                                               :가격
 STR_SORT_BY_LENGTH                                              :길이
 STR_SORT_BY_LIFE_TIME                                           :남은 수명
+STR_SORT_BY_TIMETABLE_DELAY                                     :시간표 지연
 STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
 STR_SORT_BY_RATING_MAX                                          :높은 화물 등급순
@@ -293,10 +294,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}회사 �
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래프 표시
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위 표시
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}회사의 열차 목록 표시
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}회사의 자동차 목록 표시
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}회사의 선박 목록 표시
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}회사의 항공기 목록 표시
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}회사의 열차 목록 표시. Ctrl+Click 토글시 그룹/운송기구의 리스트를 엽니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}회사의 자동차 목록 표시. Ctrl+Click 토글시 그룹/차량의 리스트를 엽니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}회사의 선박 목록 표시. Ctrl+Click 토글시 그룹/선박의 리스트를 엽니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}회사의 항공기 목록 표시. Ctrl+Click 토글시 그룹/항공기의 목록을 엽니다.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}화면을 확대합니다
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}화면을 축소합니다
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철로 건설
@@ -306,7 +307,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}공항 �
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 콘솔, AI 디버그, 스크린샷, OpenTTD에 대하여
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}시나리오 저장, 불러오기, 에디터 종료, 게임 종료 등
@@ -926,6 +927,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용�
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 사운드 세트
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}사용할 기본 사운드 세트를 선택하시오
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 사운드 세트에 대한 추가 정보
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
 
@@ -1780,6 +1784,7 @@ STR_CONTENT_TYPE_AI                                             :인공지능
 STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 라이브러리
 STR_CONTENT_TYPE_SCENARIO                                       :시나리오
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :기본 사운드
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}콘텐츠 다운로드...
@@ -2801,10 +2806,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동합니다
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 열차를 따라갈것입니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 차량을 따라갈것입니다.
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 선박을 따라갈것입니다.
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 항공기를 따라갈것입니다.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}기차를 차량기지로 보냅니다. (CTRL+클릭시 점검만 하러 보냄)
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고로 보냅니다. CTRL+클릭하면 점검만 합니다.
@@ -2826,10 +2831,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}이 항�
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}열차를 회차시킵니다.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}차량을 U턴시킵니다.
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}열차 경로설정창 띄우기
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량 경로 보이기
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로 보여주기
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기 경로를 보여줍니다
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}열차의 경로를 보여줍니다. Ctrl+Click은 열차의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량의 경로를 보여줍니다. Ctrl+Click은 차량의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로를 보여줍니다. Ctrl+Click은 선박의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기의 경로를 보여줍니다. Ctrl+Click은 항공기의 시간표를 보여줍니다.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차 상세정보 보기
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}자동차 상세정보 보이기
@@ -2908,8 +2913,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 �
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 간격: {LTBLUE}{COMMA}%{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기 증가시키기
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기 감소시키기
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기를 10씩 증가시킵니다. Ctrl+Click시 점검 주기를 5씩 증가시킵니다.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기를 10씩 감소시킵니다. Ctrl+Click 시 점검 주기를 5씩 감소시킵니다.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 지정
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정

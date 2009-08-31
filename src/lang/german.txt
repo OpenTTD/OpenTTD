@@ -3030,7 +3030,7 @@ STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{C
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert für den Vergleich eingeben
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Überspringen
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Überspringe den laufenden Auftrag, und starte den nächsten. Strg+Klick überspringt den ausgewählten
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Den aktuellen Auftrag überspringen und den nächsten ausführen. Strg+Klick springt zum ausgewählten Auftrag
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Löschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lösche den markierten Auftrag
@@ -3509,7 +3509,7 @@ STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Auftrag 
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Auftrag kann nicht bearbeitet werden...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Auftrag kann nicht verschoben werden...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Auftrag kann nicht ausgelassen werden...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Wechseln zum ausgewählten Auftrag nicht möglich...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Springen zum ausgewählten Auftrag nicht möglich...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... Fahrzeug kann nicht alle Stationen erreichen
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... Fahrzeug kann diese Station nicht erreichen
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ein Fahrzeug, welches diesen gemeinsamen Fahrplan nutzt, kann die Station nicht erreichen
