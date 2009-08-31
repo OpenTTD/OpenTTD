@@ -52,7 +52,7 @@ static const AirportMovingData _airport_moving_data_country[22] = {
 	{  -31,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 15 Fly around waiting for a landing spot (north-east)
 	{    1,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 16 Fly around waiting for a landing spot (north-west)
 	{  257,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 17 Fly around waiting for a landing spot (south-west)
-	{  273,   49, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 18 Fly around waiting for a landing spot (south)
+	{  273,   47, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 18 Fly around waiting for a landing spot (south)
 	{   44,   37, AMED_HELI_RAISE,                 {DIR_N} }, // 19 Helicopter takeoff
 	{   44,   40, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 20 In position above landing spot helicopter
 	{   44,   40, AMED_HELI_LOWER,                 {DIR_N} }, // 21 Helicopter landing
