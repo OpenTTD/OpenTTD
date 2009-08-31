@@ -488,7 +488,8 @@ bool YapfFindNearestRoadDepot(const Vehicle *v, int max_distance, TileIndex *dep
 	/* handle the case when our vehicle is already in the depot tile */
 	if (IsRoadDepotTile(tile)) {
 		/* only what we need to return is the Depot* */
-		return Depot::GetByTile(tile);
+		*depot_tile = tile;
+		return true;
 	}
 
 	/* default is YAPF type 2 */
