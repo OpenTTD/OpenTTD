@@ -53,20 +53,25 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
  */
 uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile);
 
-/** Used when user sends RV to the nearest depot or if RV needs servicing.
- * Returns the nearest depot (or NULL if depot was not found).
+/** Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing.
+ * @param v            vehicle that needs to go to some depot
+ * @param max_distance max distance (number of track tiles) from the current vehicle position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_distance
+ *                     was reached and no depot was seen)
+ * @param depot_tile   receives the depot tile if depot was found
+ * @return             true if depot was found.
  */
-Depot *YapfFindNearestRoadDepot(const Vehicle *v);
+bool YapfFindNearestRoadDepot(const Vehicle *v, int max_distance, TileIndex *depot_tile);
 
 /** Used when user sends train to the nearest depot or if train needs servicing.
  * @param v            train that needs to go to some depot
  * @param max_distance max distance (number of track tiles) from the current train position
- *                  (used also as optimization - the pathfinder can stop path finding if max_distance
- *                  was reached and no depot was seen)
+ *                     (used also as optimization - the pathfinder can stop path finding if max_distance
+ *                     was reached and no depot was seen)
  * @param reverse_penalty penalty that should be added for the path that requires reversing the train first
  * @param depot_tile   receives the depot tile if depot was found
  * @param reversed     receives true if train needs to reversed first
- * @return       the true if depot was found.
+ * @return             true if depot was found.
  */
 bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed);
 
