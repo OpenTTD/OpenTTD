@@ -482,7 +482,7 @@ bool YapfFindNearestRoadDepot(const Vehicle *v, int max_distance, TileIndex *dep
 	TileIndex tile = v->tile;
 	Trackdir trackdir = v->GetVehicleTrackdir();
 	if ((TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, RoadVehicle::From(v)->compatible_roadtypes)) & TrackdirToTrackdirBits(trackdir)) == 0) {
-		return NULL;
+		return false;
 	}
 
 	/* handle the case when our vehicle is already in the depot tile */
