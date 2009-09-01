@@ -37,16 +37,16 @@ enum SubsidyListWidgets {
 };
 
 struct SubsidyListWindow : Window {
-	SubsidyListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	SubsidyListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget != SLW_PANEL) return;
 
-		int y = pt.y - this->widget[SLW_PANEL].top - FONT_HEIGHT_NORMAL - 1; // Skip 'subsidies on offer' line
+		int y = pt.y - this->nested_array[SLW_PANEL]->pos_y - FONT_HEIGHT_NORMAL - WD_FRAMERECT_TOP; // Skip 'subsidies on offer' line
 
 		if (y < 0) return;
 
@@ -69,7 +69,7 @@ struct SubsidyListWindow : Window {
 			if (y < 0) return;
 		}
 
-		y -= 11; // "Services already subsidised:"
+		y -= FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP; // "Services already subsidised:"
 		if (y < 0) return;
 
 		FOR_ALL_SUBSIDIES(s) {
@@ -113,28 +113,32 @@ struct SubsidyListWindow : Window {
 
 	virtual void OnPaint()
 	{
-		YearMonthDay ymd;
-		const Subsidy *s;
-
 		this->DrawWidgets();
+	}
 
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != SLW_PANEL) return;
+
+		YearMonthDay ymd;
 		ConvertDateToYMD(_date, &ymd);
 
-		int right = this->widget[SLW_PANEL].right;
-		int y = this->widget[SLW_PANEL].top + 1;
-		int x = this->widget[SLW_PANEL].left + 1;
+		int right = r.right - WD_FRAMERECT_RIGHT;
+		int y = r.top + WD_FRAMERECT_TOP;
+		int x = r.left + WD_FRAMERECT_LEFT;
 
 		/* Section for drawing the offered subisidies */
 		DrawString(x, right, y, STR_SUBSIDIES_OFFERED_TITLE);
 		y += FONT_HEIGHT_NORMAL;
 		uint num = 0;
 
+		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
 			if (!s->IsAwarded()) {
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(7, _date - ymd.day + s->remaining * 32);
-				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_OFFERED_FROM_TO);
+				DrawString(x, right, y, STR_SUBSIDIES_OFFERED_FROM_TO);
 
 				y += FONT_HEIGHT_NORMAL;
 				num++;
@@ -142,13 +146,13 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE);
+			DrawString(x, right, y, STR_SUBSIDIES_NONE);
 			y += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Section for drawing the already granted subisidies */
-		DrawString(x, right, y + 1, STR_SUBSIDIES_SUBSIDISED_TITLE);
-		y += FONT_HEIGHT_NORMAL;
+		DrawString(x, right, y + WD_FRAMERECT_TOP, STR_SUBSIDIES_SUBSIDISED_TITLE);
+		y += FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP;
 		num = 0;
 
 		FOR_ALL_SUBSIDIES(s) {
@@ -158,26 +162,15 @@ struct SubsidyListWindow : Window {
 				SetDParam(8, _date - ymd.day + s->remaining * 32);
 
 				/* Displays the two connected stations */
-				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
+				DrawString(x, right, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
 
 				y += FONT_HEIGHT_NORMAL;
 				num++;
 			}
 		}
 
-		if (num == 0) DrawString(x + 2, right - 2, y, STR_SUBSIDIES_NONE);
+		if (num == 0) DrawString(x, right, y, STR_SUBSIDIES_NONE);
 	}
-};
-
-static const Widget _subsidies_list_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,   COLOUR_BROWN,   0,  10,   0,  13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},                       // SLW_CLOSEBOX
-{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_BROWN,  11, 307,   0,  13, STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},             // SLW_CAPTION
-{  WWT_STICKYBOX, RESIZE_LR,     COLOUR_BROWN, 308, 319,   0,  13, STR_NULL,              STR_TOOLTIP_STICKY},                              // SLW_STICKYBOX
-{      WWT_PANEL, RESIZE_RB,     COLOUR_BROWN,   0, 307,  14, 126, 0x0,                   STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER}, // SLW_PANEL
-{  WWT_SCROLLBAR, RESIZE_LRB,    COLOUR_BROWN, 308, 319,  14, 114, 0x0,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},           // SLW_SCROLLBAR
-{  WWT_RESIZEBOX, RESIZE_LRTB,   COLOUR_BROWN, 308, 319, 115, 126, 0x0,                   STR_TOOLTIP_RESIZE},                              // SLW_RESIZEBOX
-
-{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_subsidies_list_widgets[] = {
@@ -199,7 +192,7 @@ static const WindowDesc _subsidies_list_desc(
 	WDP_AUTO, WDP_AUTO, 320, 127, 320, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_subsidies_list_widgets, _nested_subsidies_list_widgets, lengthof(_nested_subsidies_list_widgets)
+	NULL, _nested_subsidies_list_widgets, lengthof(_nested_subsidies_list_widgets)
 );
 
 
