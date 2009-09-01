@@ -40,23 +40,26 @@ struct SubsidyListWindow : Window {
 	SubsidyListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->InitNested(desc, window_number);
+		this->OnInvalidateData(0);
+		this->vscroll.cap = this->nested_array[SLW_PANEL]->current_y / this->resize.step_height;
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget != SLW_PANEL) return;
 
-		int y = pt.y - this->nested_array[SLW_PANEL]->pos_y - FONT_HEIGHT_NORMAL - WD_FRAMERECT_TOP; // Skip 'subsidies on offer' line
+		int y = (pt.y - this->nested_array[SLW_PANEL]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
+		if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
 
-		if (y < 0) return;
+		y += this->vscroll.pos;
+		y--; // Skip 'subsidies on offer' line
 
-		uint num = 0;
-
+		int num = 0;
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
 			if (!s->IsAwarded()) {
-				y -= FONT_HEIGHT_NORMAL;
-				if (y < 0) {
+				y--;
+				if (y == 0) {
 					this->HandleClick(s);
 					return;
 				}
@@ -65,17 +68,17 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			y -= FONT_HEIGHT_NORMAL; // "None"
+			y--; // "None"
 			if (y < 0) return;
 		}
 
-		y -= 2 * FONT_HEIGHT_NORMAL; // "Services already subsidised:"
+		y -= 2; // "Services already subsidised:"
 		if (y < 0) return;
 
 		FOR_ALL_SUBSIDIES(s) {
 			if (s->IsAwarded()) {
-				y -= FONT_HEIGHT_NORMAL;
-				if (y < 0) {
+				y--;
+				if (y == 0) {
 					this->HandleClick(s);
 					return;
 				}
@@ -116,11 +119,12 @@ struct SubsidyListWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	/**
+	 * Count the number of lines in this window.
+	 * @return the number of lines
+	 */
+	uint CountLines()
 	{
-		if (widget != SLW_PANEL) return;
-		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
-
 		/* Count number of (non) awarded subsidies */
 		uint num_awarded = 0;
 		uint num_not_awarded = 0;
@@ -137,12 +141,18 @@ struct SubsidyListWindow : Window {
 		if (num_awarded     == 0) num_awarded = 1;
 		if (num_not_awarded == 0) num_not_awarded = 1;
 
-		/* Number of lines to show. */
-		uint lines = 3; // Offered, accepted and an empty line before the accepted ones.
-		/* The lines with actual subsidies with a minimum of 4 */
-		lines += max(num_awarded + num_not_awarded, 4U);
+		/* Offered, accepted and an empty line before the accepted ones. */
+		return 3 + num_awarded + num_not_awarded;
+	}
 
-		d.height *= lines;
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != SLW_PANEL) return;
+		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
+
+		resize->height = d.height;
+
+		d.height *= 5;
 		d.width += padding.width + WD_FRAMERECT_RIGHT + WD_FRAMERECT_LEFT;
 		d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 		*size = maxdim(*size, d);
@@ -159,50 +169,67 @@ struct SubsidyListWindow : Window {
 		int y = r.top + WD_FRAMERECT_TOP;
 		int x = r.left + WD_FRAMERECT_LEFT;
 
-		/* Section for drawing the offered subisidies */
-		DrawString(x, right, y, STR_SUBSIDIES_OFFERED_TITLE);
-		y += FONT_HEIGHT_NORMAL;
-		uint num = 0;
+		int pos = -this->vscroll.pos;
 
+		/* Section for drawing the offered subisidies */
+		if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
+		pos++;
+
+		uint num = 0;
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
 			if (!s->IsAwarded()) {
-				/* Displays the two offered towns */
-				SetupSubsidyDecodeParam(s, 1);
-				SetDParam(7, _date - ymd.day + s->remaining * 32);
-				DrawString(x, right, y, STR_SUBSIDIES_OFFERED_FROM_TO);
-
-				y += FONT_HEIGHT_NORMAL;
+				if (IsInsideMM(pos, 0, this->vscroll.cap)) {
+					/* Displays the two offered towns */
+					SetupSubsidyDecodeParam(s, 1);
+					SetDParam(7, _date - ymd.day + s->remaining * 32);
+					DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_FROM_TO);
+				}
+				pos++;
 				num++;
 			}
 		}
 
 		if (num == 0) {
-			DrawString(x, right, y, STR_SUBSIDIES_NONE);
-			y += FONT_HEIGHT_NORMAL;
+			if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			pos++;
 		}
 
 		/* Section for drawing the already granted subisidies */
-		y += FONT_HEIGHT_NORMAL;
-		DrawString(x, right, y, STR_SUBSIDIES_SUBSIDISED_TITLE);
-		y += FONT_HEIGHT_NORMAL;
+		pos++;
+		if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_TITLE);
+		pos++;
 		num = 0;
 
 		FOR_ALL_SUBSIDIES(s) {
 			if (s->IsAwarded()) {
-				SetupSubsidyDecodeParam(s, 1);
-				SetDParam(7, s->awarded);
-				SetDParam(8, _date - ymd.day + s->remaining * 32);
+				if (IsInsideMM(pos, 0, this->vscroll.cap)) {
+					SetupSubsidyDecodeParam(s, 1);
+					SetDParam(7, s->awarded);
+					SetDParam(8, _date - ymd.day + s->remaining * 32);
 
-				/* Displays the two connected stations */
-				DrawString(x, right, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
-
-				y += FONT_HEIGHT_NORMAL;
+					/* Displays the two connected stations */
+					DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
+				}
+				pos++;
 				num++;
 			}
 		}
 
-		if (num == 0) DrawString(x, right, y, STR_SUBSIDIES_NONE);
+		if (num == 0) {
+			if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			pos++;
+		}
+	}
+
+	virtual void OnResize(Point delta)
+	{
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		SetVScrollCount(this, this->CountLines());
 	}
 };
 

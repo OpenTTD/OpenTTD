@@ -57,7 +57,7 @@ void Subsidy::AwardTo(CompanyID company)
 	);
 	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->index));
 
-	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+	InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
 
 /**
@@ -152,7 +152,7 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
 	}
 
 	if (dirty) {
-		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+		InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 		RebuildSubsidisedSourceAndDestinationCache();
 	}
 }
@@ -315,7 +315,7 @@ void SubsidyMonthlyLoop()
 		} while (n--);
 	}
 
-	if (modified) InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+	if (modified) InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
 
 /**
