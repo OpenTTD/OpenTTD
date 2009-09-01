@@ -536,6 +536,7 @@ static void CompanyCheckBankrupt(Company *c)
 				 * join another company (cheat) the "unowned" company can bankrupt. */
 				c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 				c->bankrupt_timeout = 0x456;
+				free(cni);
 				break;
 			}
 
