@@ -581,7 +581,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Brano{SETX 88}{BLACK}{TINYFONT}Titolo
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Brano
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titolo
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Casuale
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programma
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Salta al brano precedente

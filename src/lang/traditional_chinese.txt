@@ -578,7 +578,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}「{STRING}」
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}音軌{SETX 88}{BLACK}{TINYFONT}標題
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}音軌
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}標題
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}亂序
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}播放清單
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}跳至所選的上一首樂軌

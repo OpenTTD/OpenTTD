@@ -579,7 +579,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Lag{SETX 88}{BLACK}{TINYFONT}Titill
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Lag
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titill
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Stokka
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Listar
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Skipta yfir í fyrra lag

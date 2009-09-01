@@ -612,7 +612,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}SZÁM{SETX 88}{BLACK}{TINYFONT}CIM
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}SZÁM
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}CIM
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}KEVER
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}MÜSOR
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Előző szám
@@ -690,7 +691,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}REPÜLÖGÉP
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}SZÁLLITÁSI ÚTVONAL
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}ERDÖ
-STR_SMALLMAP_LEGENDA_FOREST.t                                   :{BLACK}{TINYFONT}erdőt
+STR_SMALLMAP_LEGENDA_FOREST.t                                   :{TINYFONT}{BLACK}erdőt
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}VASÚTÁLLOMÁS
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}TEHERAUTÓ-RAKODÓHELY
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}BUSZMEGÁLLÓ

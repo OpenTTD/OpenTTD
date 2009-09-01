@@ -703,7 +703,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Доріжка{SETX 88}{BLACK}{TINYFONT}Заголовок
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Доріжка
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Заголовок
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Випадково
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Програма
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Попередня

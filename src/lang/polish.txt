@@ -958,7 +958,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Ścieżka{SETX 88}{BLACK}{TINYFONT}Tytuł
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Ścieżka
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Tytuł
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Przypadkowo
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Przejdź do następnej ścieżki
@@ -1036,7 +1037,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Samoloty
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Trasy transportowe
 STR_SMALLMAP_LEGENDA_FOREST                                     :{G=m}{TINYFONT}{BLACK}Las
-STR_SMALLMAP_LEGENDA_FOREST.d                                   :{G=m}{BLACK}{TINYFONT}Lasu
+STR_SMALLMAP_LEGENDA_FOREST.d                                   :{G=m}{TINYFONT}{BLACK}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Stacja kolejowa
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Załadunek ciężarówek
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Przystanek

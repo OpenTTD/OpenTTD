@@ -578,7 +578,8 @@ STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGR
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Teitl{SETX 88}{BLACK}{TINYFONT}Trac
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Teitl
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Trac
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Cymysgu Trefn
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Rhaglen
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Neidio i'r gân ddiwethaf yn y rhestr
