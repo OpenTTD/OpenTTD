@@ -492,13 +492,78 @@ void InitializeCompanies()
 	_cur_company_tick_index = 0;
 }
 
+/**
+ * Handle the bankruptcy take over of a company.
+ * Companies going bankrupt will ask the other companies in order of their
+ * performance rating, so better performing companies get the 'do you want to
+ * merge with Y' question earlier. The question will then stay till either the
+ * company has gone bankrupt or got merged with a company.
+ *
+ * @param c the company that is going bankrupt.
+ */
+static void HandleBankruptcyTakeover(Company *c)
+{
+	/* Amount of time out for each company to take over a company;
+	 * Timeout is a quarter (3 months of 30 days) divided over the
+	 * number of companies. The minimum number of days in a quarter
+	 * is 90: 31 in January, 28 in February and 31 in March.
+	 * Note that the company going bankrupt can't buy itself. */
+	static const int TAKE_OVER_TIMEOUT = 3 * 30 * DAY_TICKS / (MAX_COMPANIES - 1);
+
+	assert(c->bankrupt_asked != 0);
+
+	/* We're currently asking some company to buy 'us' */
+	if (c->bankrupt_timeout != 0) {
+		c->bankrupt_timeout -= MAX_COMPANIES;
+		if (c->bankrupt_timeout > 0) return;
+		c->bankrupt_timeout = 0;
+
+		return;
+	}
+
+	/* Did we ask everyone for bankruptcy? If so, bail out. */
+	if (c->bankrupt_asked == MAX_UVALUE(CompanyMask)) return;
+
+	Company *c2, *best = NULL;
+	int32 best_performance = -1;
+
+	/* Ask the company with the highest performance history first */
+	FOR_ALL_COMPANIES(c2) {
+		if (c2->bankrupt_asked == 0 && // Don't ask companies going bankrupt themselves
+				!HasBit(c->bankrupt_asked, c2->index) &&
+				best_performance < c2->old_economy[1].performance_history) {
+			best_performance = c2->old_economy[1].performance_history;
+			best = c2;
+		}
+	}
+
+	/* Asked all companies? */
+	if (best_performance == -1) {
+		c->bankrupt_asked = MAX_UVALUE(CompanyMask);
+		return;
+	}
+
+	SetBit(c->bankrupt_asked, best->index);
+
+	if (IsInteractiveCompany(best->index)) {
+		c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
+		ShowBuyCompanyDialog(c->index);
+		return;
+	}
+
+	if (best->is_ai) {
+		AI::NewEvent(best->index, new AIEventCompanyAskMerger(c->index, ClampToI32(c->bankrupt_value)));
+	}
+}
+
 void OnTick_Companies()
 {
 	if (_game_mode == GM_EDITOR) return;
 
 	Company *c = Company::GetIfValid(_cur_company_tick_index);
-	if (c != NULL && c->name_1 != 0) {
-		GenerateCompanyName(c);
+	if (c != NULL) {
+		if (c->name_1 != 0) GenerateCompanyName(c);
+		if (c->bankrupt_asked != 0) HandleBankruptcyTakeover(c);
 	}
 
 	if (_next_competitor_start == 0) {

@@ -38,6 +38,7 @@ void SQAIEvent_Register(Squirrel *engine) {
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_ENGINE_PREVIEW,              "AI_ET_ENGINE_PREVIEW");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_NEW,                 "AI_ET_COMPANY_NEW");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_IN_TROUBLE,          "AI_ET_COMPANY_IN_TROUBLE");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_ASK_MERGER,          "AI_ET_COMPANY_ASK_MERGER");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_MERGER,              "AI_ET_COMPANY_MERGER");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_BANKRUPT,            "AI_ET_COMPANY_BANKRUPT");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_VEHICLE_CRASHED,             "AI_ET_VEHICLE_CRASHED");

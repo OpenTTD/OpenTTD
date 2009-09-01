@@ -192,6 +192,28 @@ void SQAIEventCompanyInTrouble_Register(Squirrel *engine) {
 }
 
 namespace SQConvert {
+	/* Allow AIEventCompanyAskMerger to be used as Squirrel parameter */
+	template <> AIEventCompanyAskMerger *GetParam(ForceType<AIEventCompanyAskMerger *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventCompanyAskMerger *)instance; }
+	template <> AIEventCompanyAskMerger &GetParam(ForceType<AIEventCompanyAskMerger &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventCompanyAskMerger *)instance; }
+	template <> const AIEventCompanyAskMerger *GetParam(ForceType<const AIEventCompanyAskMerger *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventCompanyAskMerger *)instance; }
+	template <> const AIEventCompanyAskMerger &GetParam(ForceType<const AIEventCompanyAskMerger &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventCompanyAskMerger *)instance; }
+	template <> int Return<AIEventCompanyAskMerger *>(HSQUIRRELVM vm, AIEventCompanyAskMerger *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventCompanyAskMerger", res, NULL, DefSQDestructorCallback<AIEventCompanyAskMerger>); return 1; }
+}; // namespace SQConvert
+
+void SQAIEventCompanyAskMerger_Register(Squirrel *engine) {
+	DefSQClass <AIEventCompanyAskMerger> SQAIEventCompanyAskMerger("AIEventCompanyAskMerger");
+	SQAIEventCompanyAskMerger.PreRegister(engine, "AIEvent");
+
+	SQAIEventCompanyAskMerger.DefSQStaticMethod(engine, &AIEventCompanyAskMerger::Convert, "Convert", 2, ".x");
+
+	SQAIEventCompanyAskMerger.DefSQMethod(engine, &AIEventCompanyAskMerger::GetCompanyID, "GetCompanyID", 1, "x");
+	SQAIEventCompanyAskMerger.DefSQMethod(engine, &AIEventCompanyAskMerger::GetValue,     "GetValue",     1, "x");
+	SQAIEventCompanyAskMerger.DefSQMethod(engine, &AIEventCompanyAskMerger::AcceptMerger, "AcceptMerger", 1, "x");
+
+	SQAIEventCompanyAskMerger.PostRegister(engine);
+}
+
+namespace SQConvert {
 	/* Allow AIEventCompanyMerger to be used as Squirrel parameter */
 	template <> AIEventCompanyMerger *GetParam(ForceType<AIEventCompanyMerger *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventCompanyMerger *)instance; }
 	template <> AIEventCompanyMerger &GetParam(ForceType<AIEventCompanyMerger &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventCompanyMerger *)instance; }

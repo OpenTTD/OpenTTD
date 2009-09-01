@@ -19,6 +19,7 @@
  * API additions:
  * \li AIBaseStation
  * \li AIBuoyList
+ * \li AIEventCompanyAskMerger
  * \li AIRail::RemoveRailWaypointTileRect
  * \li AISubsidy::SubsidyParticipantType
  * \li AISubsidy::GetSourceType

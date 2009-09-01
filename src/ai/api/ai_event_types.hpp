@@ -359,6 +359,54 @@ private:
 };
 
 /**
+ * Event Company Ask Merger, indicating a company can be bought (cheaply) by you.
+ */
+class AIEventCompanyAskMerger : public AIEvent {
+public:
+	static const char *GetClassName() { return "AIEventCompanyAskMerger"; }
+
+	/**
+	 * @param owner The company that can be bough.
+	 * @param value The value/costs of buying the company.
+	 */
+	AIEventCompanyAskMerger(Owner owner, int32 value) :
+		AIEvent(AI_ET_COMPANY_MERGER),
+		owner((AICompany::CompanyID)owner),
+		value(value)
+	{}
+
+	/**
+	 * Convert an AIEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static AIEventCompanyAskMerger *Convert(AIEvent *instance) { return (AIEventCompanyAskMerger *)instance; }
+
+	/**
+	 * Get the CompanyID of the company that can be bought.
+	 * @return The CompanyID of the company that can be bought.
+	 * @note If the company is bought this will become invalid.
+	 */
+	AICompany::CompanyID GetCompanyID() { return this->owner; }
+
+	/**
+	 * Get the value of the new company.
+	 * @return The value of the new company.
+	 */
+	int32 GetValue() { return this->value; }
+
+	/**
+	 * Take over the company for this merger.
+	 * @return true if the merger was a success.
+	 */
+	bool AcceptMerger();
+
+private:
+	AICompany::CompanyID owner;
+	int32 value;
+};
+
+/**
  * Event Company Merger, indicating a company has been bought by another
  *  company.
  */

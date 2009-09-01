@@ -92,3 +92,8 @@ bool AIEventEnginePreview::AcceptPreview()
 {
 	return AIObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
 }
+
+bool AIEventCompanyAskMerger::AcceptMerger()
+{
+	return AIObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
+}

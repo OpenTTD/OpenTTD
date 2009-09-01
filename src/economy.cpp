@@ -506,16 +506,6 @@ static void CompanyCheckBankrupt(Company *c)
 			AI::BroadcastNewEvent(new AIEventCompanyInTrouble(c->index));
 			break;
 		case 3: {
-			/* XXX - In multiplayer, should we ask other companies if it wants to take
-		          over when it is a human company? -- TrueLight */
-			if (!c->is_ai) {
-				SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
-				SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
-				SetDParamStr(2, cni->company_name);
-				AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_TROUBLE, cni);
-				break;
-			}
-
 			/* Check if the company has any value.. if not, declare it bankrupt
 			 *  right now */
 			Money val = CalculateCompanyValue(c);
@@ -1560,14 +1550,16 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = Company::GetIfValid(p1);
+	if (c == NULL) return CMD_ERROR;
 
-	/* Disable takeovers in multiplayer games */
-	if (c == NULL || _networking) return CMD_ERROR;
+	/* Disable takeovers when not asked */
+	if (!HasBit(c->bankrupt_asked, _current_company)) return CMD_ERROR;
+
+	/* Disable taking over the local company in single player */
+	if (!_networking && _local_company == c->index) return CMD_ERROR;
 
 	/* Do not allow companies to take over themselves */
 	if ((CompanyID)p1 == _current_company) return CMD_ERROR;
-
-	if (!c->is_ai) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		DoAcquireCompany(c);
