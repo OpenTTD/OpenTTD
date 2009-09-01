@@ -69,7 +69,7 @@ struct SubsidyListWindow : Window {
 			if (y < 0) return;
 		}
 
-		y -= FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP; // "Services already subsidised:"
+		y -= 2 * FONT_HEIGHT_NORMAL; // "Services already subsidised:"
 		if (y < 0) return;
 
 		FOR_ALL_SUBSIDIES(s) {
@@ -116,6 +116,38 @@ struct SubsidyListWindow : Window {
 		this->DrawWidgets();
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != SLW_PANEL) return;
+		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
+
+		/* Count number of (non) awarded subsidies */
+		uint num_awarded = 0;
+		uint num_not_awarded = 0;
+		const Subsidy *s;
+		FOR_ALL_SUBSIDIES(s) {
+			if (!s->IsAwarded()) {
+				num_not_awarded++;
+			} else {
+				num_awarded++;
+			}
+		}
+
+		/* Count the 'none' lines */
+		if (num_awarded     == 0) num_awarded = 1;
+		if (num_not_awarded == 0) num_not_awarded = 1;
+
+		/* Number of lines to show. */
+		uint lines = 3; // Offered, accepted and an empty line before the accepted ones.
+		/* The lines with actual subsidies with a minimum of 4 */
+		lines += max(num_awarded + num_not_awarded, 4U);
+
+		d.height *= lines;
+		d.width += padding.width + WD_FRAMERECT_RIGHT + WD_FRAMERECT_LEFT;
+		d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		*size = maxdim(*size, d);
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != SLW_PANEL) return;
@@ -151,8 +183,9 @@ struct SubsidyListWindow : Window {
 		}
 
 		/* Section for drawing the already granted subisidies */
-		DrawString(x, right, y + WD_FRAMERECT_TOP, STR_SUBSIDIES_SUBSIDISED_TITLE);
-		y += FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP;
+		y += FONT_HEIGHT_NORMAL;
+		DrawString(x, right, y, STR_SUBSIDIES_SUBSIDISED_TITLE);
+		y += FONT_HEIGHT_NORMAL;
 		num = 0;
 
 		FOR_ALL_SUBSIDIES(s) {
@@ -180,7 +213,7 @@ static const NWidgetPart _nested_subsidies_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, SLW_STICKYBOX),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetMinimalSize(308, 113), SetDataTip(0x0, STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetDataTip(0x0, STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, SLW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, SLW_RESIZEBOX),
@@ -189,7 +222,7 @@ static const NWidgetPart _nested_subsidies_list_widgets[] = {
 };
 
 static const WindowDesc _subsidies_list_desc(
-	WDP_AUTO, WDP_AUTO, 320, 127, 320, 127,
+	WDP_AUTO, WDP_AUTO, 320, 127, 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	NULL, _nested_subsidies_list_widgets, lengthof(_nested_subsidies_list_widgets)
