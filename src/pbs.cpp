@@ -18,7 +18,7 @@ TrackBits GetReservedTrackbits(TileIndex t)
 	switch (GetTileType(t)) {
 		case MP_RAILWAY:
 			if (IsRailWaypoint(t) || IsRailDepot(t)) return GetRailWaypointReservation(t);
-			if (IsPlainRailTile(t)) return GetTrackReservation(t);
+			if (IsPlainRail(t)) return GetTrackReservation(t);
 			break;
 
 		case MP_ROAD:
@@ -79,7 +79,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IsPlainRailTile(tile)) return TryReserveTrack(tile, t);
+			if (IsPlainRail(tile)) return TryReserveTrack(tile, t);
 			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
 				if (!GetDepotWaypointReservation(tile)) {
 					SetDepotWaypointReservation(tile, true);
@@ -139,7 +139,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 				MarkTileDirtyByTile(tile);
 				break;
 			}
-			if (IsPlainRailTile(tile)) UnreserveTrack(tile, t);
+			if (IsPlainRail(tile)) UnreserveTrack(tile, t);
 			break;
 
 		case MP_ROAD:

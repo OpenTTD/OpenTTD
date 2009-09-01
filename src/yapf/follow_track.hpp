@@ -202,7 +202,7 @@ protected:
 	FORCEINLINE bool QueryNewTileTrackStatus()
 	{
 		CPerfStart perf(*m_pPerf);
-		if (IsRailTT() && GetTileType(m_new_tile) == MP_RAILWAY && IsPlainRailTile(m_new_tile)) {
+		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
 			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh != NULL ? m_veh->u.road.compatible_roadtypes : 0));

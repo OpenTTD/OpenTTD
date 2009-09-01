@@ -626,8 +626,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 
 		tile_org = tile = RandomTile();
 		do {
-			if (IsTileType(tile, MP_RAILWAY) &&
-					IsPlainRailTile(tile) &&
+			if (IsPlainRailTile(tile) &&
 					IsHumanCompany(GetTileOwner(tile))) {
 				break;
 			}
