@@ -248,10 +248,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}长度�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}面积：{NUM} x {NUM}{}高度差：{NUM}米
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名称
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
 STR_SORT_BY_TRANSPORTED                                         :已运输
@@ -1304,7 +1305,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线�
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 设定
 STR_INTRO_QUIT                                                  :{BLACK}退出
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始一个新游戏
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始一个新游戏. 单击的同时按住Ctrl以跳过地图设置界面
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}读取一个游戏存档
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}以高度图决定的地形开始一个新游戏
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}使用一个自定义场景开始游戏
@@ -2353,7 +2354,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标�
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 点击名称可以将屏幕中心{}移动到城镇所在的位置
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 点击名称可以将屏幕中心{}移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
 STR_TOWN_POPULATION                                             :{BLACK}所有城镇人口总数：{COMMA}
 
 # Town view window
@@ -2366,7 +2367,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{BLACK} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{BLACK} 上个月已运到： {ORANGE}{CARGO}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}显示地方政府的信息
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}城镇改名
@@ -2412,10 +2413,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}将 {ST
 STR_SUBSIDIES_NONE                                              :{ORANGE}没有
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已经中标的项目：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，截止日期为 {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}点击项目可将屏幕中心移动到{}城镇/工业 所在的位置
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}点击项目可将屏幕中心移动到{}城镇/工业 所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇/工业位置
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置. 单击的同时按住Ctrl会在新视点中显示车站位置
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}摁住 CTRL 可以选择多个项目
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2451,7 +2452,7 @@ STR_CARGO_RATING_EXCELLENT                                      :卓越
 STR_CARGO_RATING_OUTSTANDING                                    :完美（最高评价）
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}将屏幕中心移动到车站所在的位置
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}将屏幕中心移动到车站所在的位置. 单击的同时按住Ctrl会在新视点中显示车站位置
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}重命名车站
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}显示所有调度计划中含有此车站的列车
@@ -2462,9 +2463,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}显示�
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :重命名车站
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置. 单击的同时按住Ctrl会在新视点中显示路点位置
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改路点名
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置. 单击的同时按住Ctrl会在新视点中显示浮标位置
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}修改浮标名
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑路点名称
@@ -2543,13 +2544,13 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 已运输)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% 已运输)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工业设施{}点击可以将屏幕中心移动到其所在位置
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工业设施{}点击可以将屏幕中心移动到其所在位置. 单击的同时按住Ctrl会在新视点中显示工业位置
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 已运输)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置. 单击的同时按住Ctrl会在新视点中显示工厂位置
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}需要：{YELLOW}{STRING}{STRING}
@@ -2734,10 +2735,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}复制�
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只，按此按钮后点击一个在船坞内或外面的船只即可。Ctrl+单击可以同时共享调度计划。
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK} 复制飞机 按此按钮后 {}点击一个在机库内或外面的飞机即可{}Ctrl+单击 可以同时共享调度计划
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车库所在的位置
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到当前船坞的位置
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到当前机库的位置
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车库所在的位置. 单击的同时按住Ctrl会在新视点中显示列车库位置
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置. 单击的同时按住Ctrl会在新视点中显示车库位置
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到当前船坞的位置. 单击的同时按住Ctrl会在新视点中显示船坞位置
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到当前机库的位置. 单击的同时按住Ctrl会在新视点中显示机库位置
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}显示所有调度计划中含有此车库的列车
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}显示所有调度计划中含有此车库的汽车
@@ -2805,10 +2806,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到列车所在的位置
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}将屏幕中心移动到汽车所在的位置
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}将屏幕中心移动到船只所在的位置
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到飞机所在的位置
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到列车所在的位置. 单击的同时按住Ctrl则主窗口会跟踪列车的路线
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}将屏幕中心移动到车辆所在的位置. 单击的同时按住Ctrl则主窗口会跟踪车辆的路线
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}将屏幕中心移动到船只所在的位置. 单击的同时按住Ctrl则主窗口会跟踪船只的航线
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到飞机所在的位置. 单击的同时按住Ctrl则主窗口会跟踪飞机的航线
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车返回车库
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库{}Ctrl+单击 时汽车只进行保养
@@ -2830,10 +2831,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改装�
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}命令列车调头
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}强制汽车掉头
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}显示列车的调度计划
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}显示车辆的调度指令
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}显示船只的调度计划
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}显示飞机的调度计划
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}显示列车的调度计划. 单击的同时按住Ctrl以显示列车的时刻表
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}显示车辆的调度指令. 单击的同时按住Ctrl以显示车辆的时刻表
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}显示船只的调度计划. 单击的同时按住Ctrl以显示船只的时刻表
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}显示飞机的调度计划. 单击的同时按住Ctrl以显示飞机的时刻表
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}显示列车的详细信息
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示汽车的详细信息
@@ -2912,8 +2913,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运�
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修间隔
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}缩小检修间隔
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 同时按住Ctrl点击则以5为单位进行调整
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 同时按住Ctrl点击则以5为单位进行调整
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列车命名
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车

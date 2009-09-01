@@ -249,10 +249,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longitud
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferencia altura: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Población
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nombre
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Fecha
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Población
+STR_SORT_BY_NAME                                                :Nombre
 STR_SORT_BY_PRODUCTION                                          :Producción
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado

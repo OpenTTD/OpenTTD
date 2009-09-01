@@ -374,10 +374,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длин
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} x {NUM}{}Разница высот: {NUM} м
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Население
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Имя
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Продукция
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Вывоз
@@ -2118,7 +2119,7 @@ STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Напр
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Выберите направление дока
 
 # Dock construction window
-STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Док
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Пристань
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Аэропорты
