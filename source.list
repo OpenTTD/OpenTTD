@@ -76,23 +76,6 @@ strings.cpp
 subsidy.cpp
 texteff.cpp
 tgp.cpp
-#if HAVE_THREAD
-	#if WIN32
-		thread_win32.cpp
-	#else
-		#if OS2
-			thread_os2.cpp
-		#else
-			#if MORPHOS
-				thread_morphos.cpp
-			#else
-				thread_pthread.cpp
-			#end
-		#end
-	#end
-#else
-	thread_none.cpp
-#end
 tile_map.cpp
 #if WIN32
 #else
@@ -304,7 +287,6 @@ terraform_gui.h
 textbuf_gui.h
 texteff.hpp
 tgp.h
-thread.h
 tile_cmd.h
 tile_type.h
 tilehighlight_func.h
@@ -939,4 +921,24 @@ sound/null_s.cpp
 		sound/cocoa_s.cpp
 		os/macosx/splash.cpp
 	#end
+#end
+
+# Threading
+thread/thread.h
+#if HAVE_THREAD
+	#if WIN32
+		thread/thread_win32.cpp
+	#else
+		#if OS2
+			thread/thread_os2.cpp
+		#else
+			#if MORPHOS
+				thread/thread_morphos.cpp
+			#else
+				thread/thread_pthread.cpp
+			#end
+		#end
+	#end
+#else
+	thread/thread_none.cpp
 #end

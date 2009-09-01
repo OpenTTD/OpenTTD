@@ -151,8 +151,8 @@ bundle_exe: all
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).exe'
 	$(Q)mkdir -p "$(BUNDLES_DIR)"
 	$(Q)unix2dos "$(ROOT_DIR)/docs/"* "$(ROOT_DIR)/readme.txt" "$(ROOT_DIR)/COPYING" "$(ROOT_DIR)/changelog.txt" "$(ROOT_DIR)/known-bugs.txt"
-	$(Q)cd $(ROOT_DIR)/os/win32/installer && makensis.exe //DVERSION_INCLUDE=version_$(PLATFORM).txt install.nsi
-	$(Q)mv $(ROOT_DIR)/os/win32/installer/*$(PLATFORM).exe "$(BUNDLES_DIR)/$(BUNDLE_NAME).exe"
+	$(Q)cd $(ROOT_DIR)/os/windows/installer && makensis.exe //DVERSION_INCLUDE=version_$(PLATFORM).txt install.nsi
+	$(Q)mv $(ROOT_DIR)/os/windows/installer/*$(PLATFORM).exe "$(BUNDLES_DIR)/$(BUNDLE_NAME).exe"
 
 ifdef OSXAPP
 install:

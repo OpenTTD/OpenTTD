@@ -26,7 +26,7 @@
 #include "landscape_type.h"
 #include "network/network_func.h"
 #include "core/smallvec_type.hpp"
-#include "thread.h"
+#include "thread/thread.h"
 #include "window_func.h"
 
 #include "table/palettes.h"

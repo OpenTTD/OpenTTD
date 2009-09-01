@@ -17,7 +17,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../core/alloc_func.hpp"
-#include "../thread.h"
+#include "../thread/thread.h"
 #include "../string_func.h"
 #include "network_internal.h"
 #include "network_udp.h"

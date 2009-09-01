@@ -9,10 +9,10 @@
 
 /** @file thread_morphos.cpp MorphOS implementation of Threads. */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "thread.h"
-#include "debug.h"
-#include "core/alloc_func.hpp"
+#include "../debug.h"
+#include "../core/alloc_func.hpp"
 #include <stdlib.h>
 #include <unistd.h>
 

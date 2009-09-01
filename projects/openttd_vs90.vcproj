@@ -733,10 +733,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\thread_win32.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\tile_map.cpp"
 				>
 			</File>
@@ -1498,10 +1494,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\tgp.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\thread.h"
 				>
 			</File>
 			<File
@@ -3574,6 +3566,18 @@
 			</File>
 			<File
 				RelativePath=".\..\src\sound\win32_s.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Threading"
+			>
+			<File
+				RelativePath=".\..\src\thread\thread.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\thread\thread_win32.cpp"
 				>
 			</File>
 		</Filter>

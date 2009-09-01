@@ -24,7 +24,7 @@
 #include "../openttd.h"
 #include "../debug.h"
 #include "../station_base.h"
-#include "../thread.h"
+#include "../thread/thread.h"
 #include "../town.h"
 #include "../network/network.h"
 #include "../variables.h"

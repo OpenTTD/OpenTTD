@@ -28,7 +28,7 @@
 #include "../string_func.h"
 #include "../company_base.h"
 #include "../settings_type.h"
-#include "../thread.h"
+#include "../thread/thread.h"
 #include "../rev.h"
 
 #include "core/udp.h"

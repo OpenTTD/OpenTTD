@@ -9,7 +9,7 @@
 
 /** @file thread_os2.cpp OS/2 implementation of Threads. */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "thread.h"
 
 #define INCL_DOS
