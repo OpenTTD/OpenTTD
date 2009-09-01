@@ -954,6 +954,9 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 
 void VehicleEnterDepot(Vehicle *v)
 {
+	/* Always work with the front of the vehicle */
+	assert(v == v->First());
+
 	switch (v->type) {
 		case VEH_TRAIN: {
 			Train *t = Train::From(v);
@@ -962,7 +965,6 @@ void VehicleEnterDepot(Vehicle *v)
 			SetDepotReservation(t->tile, false);
 			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
 
-			if (!t->IsFrontEngine()) t = t->First();
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
 			t->load_unload_time_rem = 0;
 			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
@@ -972,7 +974,6 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_ROAD:
 			InvalidateWindowClasses(WC_ROADVEH_LIST);
-			if (!RoadVehicle::From(v)->IsRoadVehFront()) v = v->First();
 			break;
 
 		case VEH_SHIP:
