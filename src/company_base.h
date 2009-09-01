@@ -70,7 +70,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 	Year inaugurated_year;
 	byte num_valid_stat_ent;
 
-	byte quarters_of_bankrupcy;
+	byte quarters_of_bankruptcy;
 	CompanyMask bankrupt_asked; ///< which companies were asked about buying it?
 	int16 bankrupt_timeout;
 	Money bankrupt_value;

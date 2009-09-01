@@ -54,7 +54,7 @@ static NewsItem *_current_news = NULL;
 typedef void DrawNewsCallbackProc(struct Window *w, const NewsItem *ni);
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
 
-static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
+static void DrawNewsBankruptcy(Window *w, const NewsItem *ni)
 {
 	const CompanyNewsInformation *cni = (const CompanyNewsInformation*)ni->free_data;
 
@@ -134,10 +134,10 @@ static const NewsSubtypeData _news_subtype_data[] = {
 	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_NONE, NULL                    }, ///< NS_ARRIVAL_COMPANY
 	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_NONE, NULL                    }, ///< NS_ARRIVAL_OTHER
 	{ NT_ACCIDENT,         NM_THIN,     NF_NONE, NULL                    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_NEW
 	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_OPEN
 	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_CLOSE
 	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_ECONOMY

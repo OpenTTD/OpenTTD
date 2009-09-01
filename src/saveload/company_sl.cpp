@@ -124,7 +124,7 @@ static const SaveLoad _company_desc[] = {
 
 	    SLE_VAR(Company, num_valid_stat_ent,    SLE_UINT8),
 
-	    SLE_VAR(Company, quarters_of_bankrupcy, SLE_UINT8),
+	    SLE_VAR(Company, quarters_of_bankruptcy,SLE_UINT8),
 	SLE_CONDVAR(Company, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
 	SLE_CONDVAR(Company, bankrupt_asked,        SLE_UINT16,                104, SL_MAX_VERSION),
 	    SLE_VAR(Company, bankrupt_timeout,      SLE_INT16),

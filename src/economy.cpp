@@ -482,17 +482,17 @@ static void CompanyCheckBankrupt(Company *c)
 {
 	/*  If the company has money again, it does not go bankrupt */
 	if (c->money >= 0) {
-		c->quarters_of_bankrupcy = 0;
+		c->quarters_of_bankruptcy = 0;
 		c->bankrupt_asked = 0;
 		return;
 	}
 
-	c->quarters_of_bankrupcy++;
+	c->quarters_of_bankruptcy++;
 
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 	cni->FillData(c);
 
-	switch (c->quarters_of_bankrupcy) {
+	switch (c->quarters_of_bankruptcy) {
 		case 0:
 		case 1:
 			free(cni);

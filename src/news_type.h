@@ -24,7 +24,7 @@ enum NewsType {
 	NT_ARRIVAL_COMPANY, ///< Cargo arrived for company
 	NT_ARRIVAL_OTHER,   ///< Cargo arrived for competitor
 	NT_ACCIDENT,        ///< An accident or disaster has occurred
-	NT_COMPANY_INFO,    ///< Company info (new companies, bankrupcy messages)
+	NT_COMPANY_INFO,    ///< Company info (new companies, bankruptcy messages)
 	NT_INDUSTRY_OPEN,   ///< Opening of industries
 	NT_INDUSTRY_CLOSE,  ///< Closing of industries
 	NT_ECONOMY,         ///< Economic changes (recession, industry up/dowm)
