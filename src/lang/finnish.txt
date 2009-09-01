@@ -249,9 +249,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pinta-al
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Asukasluku
-STR_SORT_BY_NAME                                                :{BLACK}Nimi
-STR_SORT_BY_DATE                                                :{BLACK}Päiväys
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Asukasluku
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Päiväys
 STR_SORT_BY_PRODUCTION                                          :Tuotto
 STR_SORT_BY_TYPE                                                :Tyyppi
 STR_SORT_BY_TRANSPORTED                                         :Kuljetettu

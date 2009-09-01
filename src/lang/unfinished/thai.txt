@@ -245,9 +245,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}ขอ�
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}ประชากร
-STR_SORT_BY_NAME                                                :{BLACK}ชื่อ
-STR_SORT_BY_DATE                                                :{BLACK}วันที่
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}ประชากร
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}ชื่อ
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}วันที่
 STR_SORT_BY_PRODUCTION                                          :ผลิตภัณฑ์
 STR_SORT_BY_TYPE                                                :ประเภท
 STR_SORT_BY_TRANSPORTED                                         :การขนส่ง

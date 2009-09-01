@@ -248,9 +248,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Regiono:
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Enloĝantaro
-STR_SORT_BY_NAME                                                :{BLACK}Nomo
-STR_SORT_BY_DATE                                                :{BLACK}Dato
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Enloĝantaro
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nomo
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 STR_SORT_BY_PRODUCTION                                          :Produktado
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportiĝis

@@ -249,9 +249,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Yta: {NU
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Befolkning
-STR_SORT_BY_NAME                                                :{BLACK}Namn
-STR_SORT_BY_DATE                                                :{BLACK}Datum
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Befolkning
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namn
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produktion
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Transporterat

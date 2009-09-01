@@ -282,9 +282,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Lakosság
-STR_SORT_BY_NAME                                                :{BLACK}Név
-STR_SORT_BY_DATE                                                :{BLACK}Dátum
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Lakosság
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Név
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
 STR_SORT_BY_PRODUCTION                                          :Termelés
 STR_SORT_BY_TYPE                                                :Típus
 STR_SORT_BY_TRANSPORTED                                         :Elszállítás

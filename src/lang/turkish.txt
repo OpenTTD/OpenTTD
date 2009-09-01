@@ -250,9 +250,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {N
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Nüfus
-STR_SORT_BY_NAME                                                :{BLACK}İsim
-STR_SORT_BY_DATE                                                :{BLACK}Tarih
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Nüfus
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}İsim
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarih
 STR_SORT_BY_PRODUCTION                                          :Üretim
 STR_SORT_BY_TYPE                                                :Tür
 STR_SORT_BY_TRANSPORTED                                         :Taşınan

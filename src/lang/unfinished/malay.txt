@@ -218,9 +218,9 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Bilangan Penduduk
-STR_SORT_BY_NAME                                                :{BLACK}Nama
-STR_SORT_BY_DATE                                                :{BLACK}Tarikh
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Bilangan Penduduk
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarikh
 STR_SORT_BY_PRODUCTION                                          :Pengeluaran
 STR_SORT_BY_TYPE                                                :Jenis
 STR_SORT_BY_TRANSPORTED                                         :Telah dihantarkan

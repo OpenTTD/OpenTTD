@@ -628,9 +628,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: 
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Populacja
-STR_SORT_BY_NAME                                                :{BLACK}Nazwa
-STR_SORT_BY_DATE                                                :{BLACK}Data
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populacja
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nazwa
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 STR_SORT_BY_PRODUCTION                                          :Produkcja
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Przetransportowano

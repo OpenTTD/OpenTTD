@@ -291,9 +291,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Območje
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Prebivalstvo
-STR_SORT_BY_NAME                                                :{BLACK}Ime
-STR_SORT_BY_DATE                                                :{BLACK}Datum
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Prebivalstvo
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ime
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Proizvodnja
 STR_SORT_BY_TYPE                                                :Tip
 STR_SORT_BY_TRANSPORTED                                         :Prepeljano

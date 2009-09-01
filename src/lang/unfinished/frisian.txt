@@ -233,9 +233,9 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Populaasje
-STR_SORT_BY_NAME                                                :{BLACK}Namme
-STR_SORT_BY_DATE                                                :{BLACK}Datum
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaasje
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namme
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produksje
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Ferfierd

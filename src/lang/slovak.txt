@@ -313,9 +313,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: 
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Populacia
-STR_SORT_BY_NAME                                                :{BLACK}Nazov
-STR_SORT_BY_DATE                                                :{BLACK}Datum
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populacia
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nazov
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produkcia
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Prepravene

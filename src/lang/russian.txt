@@ -375,9 +375,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Население
-STR_SORT_BY_NAME                                                :{BLACK}Имя
-STR_SORT_BY_DATE                                                :{BLACK}Дата
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Население
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Имя
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 STR_SORT_BY_PRODUCTION                                          :Продукция
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Вывоз

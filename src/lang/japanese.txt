@@ -248,9 +248,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域�
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}人口
-STR_SORT_BY_NAME                                                :{BLACK}名前
-STR_SORT_BY_DATE                                                :{BLACK}日付
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名前
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日付
 STR_SORT_BY_PRODUCTION                                          :生産量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :運送済み

@@ -306,9 +306,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala:
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Rahvaarv
-STR_SORT_BY_NAME                                                :{BLACK}Nimi
-STR_SORT_BY_DATE                                                :{BLACK}Daatum
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Rahvaarv
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Daatum
 STR_SORT_BY_PRODUCTION                                          :Toodang
 STR_SORT_BY_TYPE                                                :Tüüp
 STR_SORT_BY_TRANSPORTED                                         :Veetud

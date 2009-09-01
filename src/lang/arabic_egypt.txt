@@ -249,9 +249,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المس
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}عدد السكان
-STR_SORT_BY_NAME                                                :{BLACK}اسم
-STR_SORT_BY_DATE                                                :{BLACK}تاريخ
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}عدد السكان
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}اسم
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاريخ
 STR_SORT_BY_PRODUCTION                                          :إنتاج
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :الحمولة المنقولة

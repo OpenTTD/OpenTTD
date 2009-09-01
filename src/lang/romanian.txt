@@ -249,9 +249,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafa�
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Populatia
-STR_SORT_BY_NAME                                                :{BLACK}Nume
-STR_SORT_BY_DATE                                                :{BLACK}Datã
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populatia
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nume
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datã
 STR_SORT_BY_PRODUCTION                                          :Productie
 STR_SORT_BY_TYPE                                                :Tip
 STR_SORT_BY_TRANSPORTED                                         :Transportat

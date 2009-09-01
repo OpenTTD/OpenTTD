@@ -229,9 +229,9 @@ STR_BUTTON_OK                                                   :{BLACK}تایی
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}جمعیت
-STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DATE                                                :{BLACK}تاریخ
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}جمعیت
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 STR_SORT_BY_PRODUCTION                                          :تولید
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :منتقل شده

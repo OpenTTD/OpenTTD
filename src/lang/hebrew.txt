@@ -249,9 +249,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}  {NUM} 
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}אכלוסיה
-STR_SORT_BY_NAME                                                :{BLACK}שם
-STR_SORT_BY_DATE                                                :{BLACK}תאריך
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}אכלוסיה
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}שם
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}תאריך
 STR_SORT_BY_PRODUCTION                                          :ייצור
 STR_SORT_BY_TYPE                                                :סוג
 STR_SORT_BY_TRANSPORTED                                         :סחורה שנשלחה

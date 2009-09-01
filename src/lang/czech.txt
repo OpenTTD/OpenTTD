@@ -317,9 +317,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: 
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Populace
-STR_SORT_BY_NAME                                                :{BLACK}Podle jména
-STR_SORT_BY_DATE                                                :{BLACK}Podle data
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populace
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Podle jména
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Podle data
 STR_SORT_BY_PRODUCTION                                          :Prudukce
 STR_SORT_BY_TYPE                                                :Typu
 STR_SORT_BY_TRANSPORTED                                         :Přepraveno

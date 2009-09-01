@@ -144,9 +144,9 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}آبادی
-STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DATE                                                :{BLACK}تاریخ
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}آبادی
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز
 STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ

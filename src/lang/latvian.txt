@@ -251,9 +251,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Lauks: {
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Iedzīvotāju skaita
-STR_SORT_BY_NAME                                                :{BLACK}Vārda
-STR_SORT_BY_DATE                                                :{BLACK}Datuma
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Iedzīvotāju skaita
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vārda
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datuma
 STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Tipa
 STR_SORT_BY_TRANSPORTED                                         :Transportētā

@@ -250,9 +250,9 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Svæði:
 
 
 # The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}Fólksfjöldi
-STR_SORT_BY_NAME                                                :{BLACK}Nafn
-STR_SORT_BY_DATE                                                :{BLACK}Dagsetning
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólksfjöldi
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nafn
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dagsetning
 STR_SORT_BY_PRODUCTION                                          :Framleiðsla
 STR_SORT_BY_TYPE                                                :Tegund
 STR_SORT_BY_TRANSPORTED                                         :Flutt
