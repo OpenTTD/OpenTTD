@@ -827,7 +827,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
-			!EnsureNoTrainOnTrack(tile, track) || !HasTrack(tile, track)) {
+			!HasTrack(tile, track) || !EnsureNoTrainOnTrack(tile, track)) {
 		return CMD_ERROR;
 	}
 
