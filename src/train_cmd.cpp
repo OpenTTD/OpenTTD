@@ -2300,7 +2300,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 {
 	bool sound = false;
 
-	if ((v->vehstatus & VS_TRAIN_SLOWING) || v->load_unload_time_rem != 0 || v->cur_speed < 2) {
+	if ((v->vehstatus & VS_TRAIN_SLOWING) || v->cur_speed < 2) {
 		return;
 	}
 
