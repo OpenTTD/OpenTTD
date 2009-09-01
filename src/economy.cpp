@@ -483,6 +483,7 @@ static void CompanyCheckBankrupt(Company *c)
 	/*  If the company has money again, it does not go bankrupt */
 	if (c->money >= 0) {
 		c->quarters_of_bankrupcy = 0;
+		c->bankrupt_asked = 0;
 		return;
 	}
 
@@ -535,7 +536,6 @@ static void CompanyCheckBankrupt(Company *c)
 				 * he/she is no long in control of this company. However... when you
 				 * join another company (cheat) the "unowned" company can bankrupt. */
 				c->bankrupt_asked = MAX_UVALUE(CompanyMask);
-				c->bankrupt_timeout = 0x456;
 				free(cni);
 				break;
 			}
