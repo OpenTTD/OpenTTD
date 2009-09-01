@@ -24,25 +24,25 @@ char *AIEventEnginePreview::GetName()
 	static const int len = 64;
 	char *engine_name = MallocT<char>(len);
 
-	::SetDParam(0, engine);
+	::SetDParam(0, this->engine);
 	::GetString(engine_name, STR_ENGINE_NAME, &engine_name[len - 1]);
 	return engine_name;
 }
 
 CargoID AIEventEnginePreview::GetCargoType()
 {
-	const Engine *e = ::Engine::Get(engine);
+	const Engine *e = ::Engine::Get(this->engine);
 	if (!e->CanCarryCargo()) return CT_INVALID;
 	return e->GetDefaultCargoType();
 }
 
 int32 AIEventEnginePreview::GetCapacity()
 {
-	const Engine *e = ::Engine::Get(engine);
+	const Engine *e = ::Engine::Get(this->engine);
 	switch (e->type) {
 		case VEH_ROAD:
 		case VEH_TRAIN: {
-			CargoArray capacities = GetCapacityOfArticulatedParts(engine, e->type);
+			CargoArray capacities = GetCapacityOfArticulatedParts(this->engine, e->type);
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				if (capacities[c] == 0) continue;
 				return capacities[c];
@@ -61,7 +61,7 @@ int32 AIEventEnginePreview::GetCapacity()
 
 int32 AIEventEnginePreview::GetMaxSpeed()
 {
-	const Engine *e = ::Engine::Get(engine);
+	const Engine *e = ::Engine::Get(this->engine);
 	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
@@ -69,17 +69,17 @@ int32 AIEventEnginePreview::GetMaxSpeed()
 
 Money AIEventEnginePreview::GetPrice()
 {
-	return ::Engine::Get(engine)->GetCost();
+	return ::Engine::Get(this->engine)->GetCost();
 }
 
 Money AIEventEnginePreview::GetRunningCost()
 {
-	return ::Engine::Get(engine)->GetRunningCost();
+	return ::Engine::Get(this->engine)->GetRunningCost();
 }
 
 int32 AIEventEnginePreview::GetVehicleType()
 {
-	switch (::Engine::Get(engine)->type) {
+	switch (::Engine::Get(this->engine)->type) {
 		case VEH_ROAD:     return AIVehicle::VT_ROAD;
 		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
 		case VEH_SHIP:     return AIVehicle::VT_WATER;
@@ -90,5 +90,5 @@ int32 AIEventEnginePreview::GetVehicleType()
 
 bool AIEventEnginePreview::AcceptPreview()
 {
-	return AIObject::DoCommand(0, engine, 0, CMD_WANT_ENGINE_PREVIEW);
+	return AIObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
 }
