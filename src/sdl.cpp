@@ -31,7 +31,7 @@ static int _sdl_usage;
 
 #ifdef DYNAMICALLY_LOADED_SDL
 
-#include "win32.h"
+#include "os/windows/win32.h"
 
 #define M(x) x "\0"
 static const char sdl_files[] =

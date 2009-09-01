@@ -37,7 +37,7 @@ typedef unsigned long in_addr_t;
 	typedef int socklen_t;
 #	define IPPROTO_IPV6 41
 #else
-#include "../../win32.h"
+#include "../../os/windows/win32.h"
 #include "../../core/alloc_func.hpp"
 
 #define AI_ADDRCONFIG   0x00000400  // Resolution only if global address configured
