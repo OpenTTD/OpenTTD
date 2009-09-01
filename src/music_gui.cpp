@@ -510,12 +510,7 @@ struct MusicWindow : public Window {
 				DrawString(r.left, r.right, r.top + 1, (widget == MW_MUSIC_VOL) ? STR_MUSIC_MUSIC_VOLUME : STR_MUSIC_EFFECTS_VOLUME, TC_FROMSTRING, SA_CENTER);
 				int y = (r.top + r.bottom - slider_bar_height) / 2;
 				DrawFrameRect(r.left, y, r.right, y + slider_bar_height, COLOUR_GREY, FR_LOWERED);
-				DrawString(r.left, r.right, r.bottom - FONT_HEIGHT_SMALL, STR_MUSIC_MIN, TC_FROMSTRING, SA_LEFT);
-				DrawString(r.left, r.right, r.bottom - FONT_HEIGHT_SMALL, STR_MUSIC_MAX, TC_FROMSTRING, SA_RIGHT);
-				for (int i = 0; i <= 10; i++) {
-					int x = r.left + (r.right - r.left) * i / 10;
-					DrawFrameRect(x, y + slider_bar_height, x, y + slider_bar_height + 2, COLOUR_DARK_BLUE, FR_NONE);
-				}
+				DrawString(r.left, r.right, r.bottom - FONT_HEIGHT_SMALL, STR_MUSIC_MIN_MAX_RULER, TC_FROMSTRING, SA_CENTER);
 				y = (r.top + r.bottom - slider_height) / 2;
 				byte volume = (widget == MW_MUSIC_VOL) ? msf.music_vol : msf.effect_vol;
 				int x = r.left + (volume * (r.right - r.left) / 127);
