@@ -52,7 +52,6 @@ struct SubsidyListWindow : Window {
 		if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
 
 		y += this->vscroll.pos;
-		y--; // Skip 'subsidies on offer' line
 
 		int num = 0;
 		const Subsidy *s;
