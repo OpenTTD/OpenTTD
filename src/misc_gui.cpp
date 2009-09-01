@@ -408,7 +408,7 @@ struct AboutWindow : public Window {
 	int text_position;                       ///< The top of the scrolling text
 	byte counter;                            ///< Used to scroll the text every 5 ticks
 	int line_height;                         ///< The height of a single line
-	const static int num_visible_lines = 19; ///< The number of lines visible simultaneously
+	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
 	AboutWindow() : Window()
 	{
