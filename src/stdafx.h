@@ -308,8 +308,8 @@ typedef unsigned char byte;
 	#define PERSONAL_DIR ""
 #endif
 
-/* Compile time assertions */
-#if defined(__OS2__)
+/* Compile time assertions, disabled for OS/2 or GCC < 3.4 (GCC < 3 isn't supported anymore) */
+#if defined(__OS2__) || (defined(__GNUC__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4)
 	#define assert_compile(expr)
 #else
 	#define assert_compile(expr) extern const int __ct_assert__[1 - 2 * !(expr)] UNUSED
