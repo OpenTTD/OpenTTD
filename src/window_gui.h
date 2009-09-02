@@ -185,7 +185,7 @@ enum WindowDefaultPosition {
  * Scrollbar data structure
  */
 class Scrollbar {
-public: // To become private
+private:
 	uint16 count;  ///< Number of elements in the list
 	uint16 cap;    ///< Number of visible elements of the scroll bar
 	uint16 pos;    ///< Index of first visible item of the list

@@ -452,12 +452,9 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 
 	if (w->nested_array != NULL && (uint)widget < w->nested_array_size) sb = w->nested_array[widget]->FindScrollbar(w);
 
-	if (sb != NULL && sb->count > sb->cap) {
-		int pos = Clamp(sb->pos + wheel, 0, sb->count - sb->cap);
-		if (pos != sb->pos) {
-			sb->pos = pos;
-			w->SetDirty();
-		}
+	if (sb != NULL && sb->GetCount() > sb->GetCapacity()) {
+		sb->UpdatePosition(wheel);
+		w->SetDirty();
 	}
 }
 
@@ -1886,9 +1883,9 @@ static bool HandleScrollbarScrolling()
 			}
 
 			/* Find the item we want to move to and make sure it's inside bounds. */
-			int pos = min(max(0, i + _scrollbar_start_pos) * sb->count / _scrollbar_size, max(0, sb->count - sb->cap));
-			if (pos != sb->pos) {
-				sb->pos = pos;
+			int pos = min(max(0, i + _scrollbar_start_pos) * sb->GetCount() / _scrollbar_size, max(0, sb->GetCount() - sb->GetCapacity()));
+			if (pos != sb->GetPosition()) {
+				sb->SetPosition(pos);
 				w->SetDirty();
 			}
 			return false;

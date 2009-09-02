@@ -116,7 +116,7 @@ struct DropdownWindow : Window {
 
 		int y     = _cursor.pos.y - this->top - 2;
 		int width = this->widget[0].right - 3;
-		int pos   = this->vscroll.pos;
+		int pos   = this->vscroll.GetPosition();
 
 		const DropDownList *list = this->list;
 
@@ -150,7 +150,7 @@ struct DropdownWindow : Window {
 		int width  = this->widget[0].right - 2;
 		int right  = this->widget[0].right;
 		int bottom = this->widget[0].bottom;
-		int pos    = this->vscroll.pos;
+		int pos    = this->vscroll.GetPosition();
 
 		DropDownList *list = this->list;
 
@@ -189,14 +189,7 @@ struct DropdownWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (this->scrolling == -1) {
-			this->vscroll.pos = max(0, this->vscroll.pos - 1);
-			this->SetDirty();
-		} else if (this->scrolling == 1) {
-			this->vscroll.pos = min(this->vscroll.count - this->vscroll.cap, this->vscroll.pos + 1);
-			this->SetDirty();
-		}
-		this->scrolling = 0;
+		this->vscroll.UpdatePosition(this->scrolling);
 	}
 
 	virtual void OnMouseLoop()
@@ -354,8 +347,8 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		dw->widget[0].right -= 12;
 
 		/* Capacity is the average number of items visible */
-		dw->vscroll.cap   = height * (uint16)list->size() / list_height;
-		dw->vscroll.count = (uint16)list->size();
+		dw->vscroll.SetCapacity(height * (uint16)list->size() / list_height);
+		dw->vscroll.SetCount((uint16)list->size());
 	}
 
 	dw->desc_flags = WDF_DEF_WIDGET;

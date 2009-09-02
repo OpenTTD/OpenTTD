@@ -42,9 +42,9 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 
 	height = (bottom - top);
 
-	pos = sb->pos;
-	count = sb->count;
-	cap = sb->cap;
+	pos = sb->GetPosition();
+	count = sb->GetCount();
+	cap = sb->GetCapacity();
 
 	if (count != 0) top += height * pos / count;
 
@@ -102,7 +102,7 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 		w->flags4 |= WF_SCROLL_UP;
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
-			if (sb->pos != 0) sb->pos--;
+			sb->UpdatePosition(-1);
 		}
 		_left_button_clicked = false;
 	} else if (pos >= ma - 10) {
@@ -111,16 +111,16 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
-			if (sb->pos + sb->cap < sb->count) sb->pos++;
+			sb->UpdatePosition(1);
 		}
 		_left_button_clicked = false;
 	} else {
 		Point pt = HandleScrollbarHittest(sb, mi, ma);
 
 		if (pos < pt.x) {
-			sb->pos = max(sb->pos - sb->cap, 0);
+			sb->UpdatePosition(-sb->GetCapacity());
 		} else if (pos > pt.y) {
-			sb->pos = min(sb->pos + sb->cap, max(sb->count - sb->cap, 0));
+			sb->UpdatePosition(sb->GetCapacity());
 		} else {
 			_scrollbar_start_pos = pt.x - mi - 9;
 			_scrollbar_size = ma - mi - 23;

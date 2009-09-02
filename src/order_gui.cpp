@@ -1167,7 +1167,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		/* Update the scroll + matrix */
-		this->vscroll.UpdateCapacity((this->widget[ORDER_WIDGET_ORDER_LIST].bottom - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / ORDER_LIST_LINE_HEIGHT);
+		this->vscroll.UpdateCapacity(delta.y / ORDER_LIST_LINE_HEIGHT);
 
 		/* Update the button bars. */
 		if (this->vehicle->owner == _local_company) {
