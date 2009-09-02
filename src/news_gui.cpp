@@ -118,22 +118,24 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
 
 /** Widget numbers of the news display windows. */
 enum NewsTypeWidgets {
+	NTW_PANEL,    ///< The news item background panel.
 	NTW_HEADLINE, ///< The news headline.
 	NTW_CLOSEBOX, ///< Close the window.
+	NTW_DATE,     ///< Date of the news item.
 	NTW_CAPTION,  ///< Title bar of the window. Only used in small news items.
 	NTW_INSET,    ///< Inset around the viewport in the window. Only used in small news items.
-	NTW_VIEWPORT, ///< Viewport in the window. Only used in small news items.
+	NTW_VIEWPORT, ///< Viewport in the window.
 	NTW_MESSAGE,  ///< Space for displaying the message. Only used in small news items.
 };
 
 /* Normal news items. */
 static const NWidgetPart _nested_normal_news_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_PANEL),
+		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
+			NWidget(WWT_TEXT, COLOUR_WHITE, NTW_CLOSEBOX), SetDataTip(STR_SILVER_CROSS, STR_NULL), SetPadding(0, 0, 0, 1),
+			NWidget(NWID_SPACER), SetFill(true, false),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
+		NWidget(NWID_SPACER), SetMinimalSize(428, 156), SetPadding(0, 1, 1, 1),
 	EndContainer(),
 };
 
@@ -146,12 +148,17 @@ static WindowDesc _normal_news_desc(
 
 /* Thin news items. */
 static const NWidgetPart _nested_thin_news_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_PANEL),
+		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
+			NWidget(WWT_TEXT, COLOUR_WHITE, NTW_CLOSEBOX), SetDataTip(STR_SILVER_CROSS, STR_NULL), SetPadding(0, 0, 0, 1),
+			NWidget(NWID_SPACER), SetFill(true, false),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_LABEL, COLOUR_WHITE, NTW_DATE), SetDataTip(STR_DATE_LONG_SMALL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(false, true),
+			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 118),
+		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(428, 48), SetFill(true, false), SetPadding(0, 1, 0, 1),
+		NWidget(NWID_VIEWPORT, INVALID_COLOUR, NTW_VIEWPORT), SetMinimalSize(426, 70), SetPadding(1, 2, 2, 2),
 	EndContainer(),
 };
 
@@ -201,25 +208,25 @@ struct NewsSubtypeData {
  * Data common to all news items of a given subtype (actual data)
  */
 static const NewsSubtypeData _news_subtype_data[] = {
-	/* type,               display_mode, flags,      window description,            callback */
-	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,     &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,     &_normal_news_desc, NULL                    }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_NONE,     &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NM_SMALL,    NF_INCOLOUR, &_small_news_desc,  NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,     &_normal_news_desc, DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NM_SMALL,    NF_INCOLOUR, &_small_news_desc,  NULL                    }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,     &_normal_news_desc, NULL                    }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,     &_normal_news_desc, NULL                    }, ///< NS_GENERAL
+	/* type,               display_mode, flags,                         window description,            callback */
+	{ NT_ARRIVAL_COMPANY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_ACCIDENT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc, NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc,  NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc,  NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,                        &_normal_news_desc, NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc, NULL                    }, ///< NS_GENERAL
 };
 
 assert_compile(lengthof(_news_subtype_data) == NS_END);
@@ -264,47 +271,27 @@ struct NewsWindow : Window {
 
 		this->InitNested(desc);
 
-		const NewsMode display_mode = _news_subtype_data[this->ni->subtype].display_mode;
-		switch (display_mode) {
-			case NM_NORMAL:
-				break;
-
-			case NM_THIN:
-				InitializeWindowViewport(this, 2, 58, 426, 70,
-					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
-				break;
-
-			case NM_SMALL: {
-				NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[NTW_VIEWPORT];
-				nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
-				if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
-				if ((this->ni->flags & NF_INCOLOUR) == 0) {
-					nvp->disp_flags |= ND_SHADE_GREY;
-				} else if (this->ni->flags & NF_SHADE) {
-					nvp->disp_flags |= ND_SHADE_DIMMED;
-				}
-				break;
+		/* Initialize viewport if it exists. */
+		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[NTW_VIEWPORT];
+		if (nvp != NULL) {
+			nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
+			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
+			if ((this->ni->flags & NF_INCOLOUR) == 0) {
+				nvp->disp_flags |= ND_SHADE_GREY;
+			} else if (this->ni->flags & NF_SHADE) {
+				nvp->disp_flags |= ND_SHADE_DIMMED;
 			}
-
-			default: NOT_REACHED();
 		}
 	}
 
-	void DrawNewsBorder() const
+	void DrawNewsBorder(const Rect &r) const
 	{
-		int left = 0;
-		int right = this->width - 1;
-		int top = 0;
-		int bottom = this->height - 1;
+		GfxFillRect(r.left,  r.top,    r.right, r.bottom, 0xF);
 
-		GfxFillRect(left,  top,    right, bottom, 0xF);
-
-		GfxFillRect(left,  top,    left,  bottom, 0xD7);
-		GfxFillRect(right, top,    right, bottom, 0xD7);
-		GfxFillRect(left,  top,    right, top,    0xD7);
-		GfxFillRect(left,  bottom, right, bottom, 0xD7);
-
-		DrawString(left + 2, right - 2, top + 1, STR_SILVER_CROSS);
+		GfxFillRect(r.left,  r.top,    r.left,  r.bottom, 0xD7);
+		GfxFillRect(r.right, r.top,    r.right, r.bottom, 0xD7);
+		GfxFillRect(r.left,  r.top,    r.right, r.top,    0xD7);
+		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, 0xD7);
 	}
 
 	virtual void OnPaint()
@@ -312,9 +299,8 @@ struct NewsWindow : Window {
 		const NewsMode display_mode = _news_subtype_data[this->ni->subtype].display_mode;
 
 		switch (display_mode) {
-			case NM_NORMAL:
-			case NM_THIN: {
-				this->DrawNewsBorder();
+			case NM_NORMAL: {
+				this->DrawWidgets();
 
 				if (_news_subtype_data[this->ni->subtype].callback != NULL) {
 					(_news_subtype_data[this->ni->subtype].callback)(this, ni);
@@ -326,29 +312,12 @@ struct NewsWindow : Window {
 				SetDParam(0, this->ni->date);
 				DrawString(2, this->width - 2, 1, STR_DATE_LONG_SMALL, TC_FROMSTRING, SA_RIGHT);
 
-				if (display_mode == NM_NORMAL) {
-					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, this->width - 2, 20, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
-				} else {
-					/* Back up transparency options to draw news view */
-					TransparencyOptionBits to_backup = _transparency_opt;
-					_transparency_opt = 0;
-					this->DrawViewport();
-					_transparency_opt = to_backup;
-
-					/* Shade the viewport into gray, or colour*/
-					ViewPort *vp = this->viewport;
-					GfxFillRect(vp->left - this->left, vp->top - this->top,
-						vp->left - this->left + vp->width - 1, vp->top - this->top + vp->height - 1,
-						(this->ni->flags & NF_INCOLOUR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY), FILLRECT_RECOLOUR
-					);
-
-					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-					DrawStringMultiLine(2, this->width - 2, 0, 58, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
-				}
+				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				DrawStringMultiLine(2, this->width - 2, 20, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				break;
 			}
 
+			case NM_THIN:
 			case NM_SMALL:
 				this->DrawWidgets();
 				break;
@@ -374,9 +343,18 @@ struct NewsWindow : Window {
 		}
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == NTW_DATE) SetDParam(0, this->ni->date);
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
+			case NTW_PANEL:
+				this->DrawNewsBorder(r);
+				return;
+
 			case NTW_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 				DrawStringMultiLine(r.left + 2, r.right - 2, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
