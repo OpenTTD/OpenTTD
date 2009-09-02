@@ -661,6 +661,8 @@ public:
 			this->HideWidget(ORDER_WIDGET_TIMETABLE_VIEW);
 		}
 		this->FindWindowPlacementAndResize(desc);
+
+		this->OnInvalidateData(-2);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -678,6 +680,10 @@ public:
 				this->DeleteChildWindows();
 				HideDropDownMenu(this);
 				this->selected_order = -1;
+				break;
+
+			case -2:
+				/* Some other order changes */
 				break;
 
 			default: {
@@ -711,14 +717,14 @@ public:
 				this->selected_order = to;
 			} break;
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		bool shared_orders = this->vehicle->IsOrderListShared();
 
 		this->vscroll.SetCount(this->vehicle->GetNumOrders() + 1);
+		this->UpdateButtonState();
+	}
 
+	void UpdateButtonState()
+	{
+		bool shared_orders = this->vehicle->IsOrderListShared();
 		int sel = OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel);
 
@@ -808,10 +814,6 @@ public:
 					OrderConditionVariable ocv = order->GetConditionVariable();
 					this->SetWidgetDisabledState(ORDER_WIDGET_COND_COMPARATOR, ocv == OCV_UNCONDITIONALLY);
 					this->SetWidgetDisabledState(ORDER_WIDGET_COND_VALUE, ocv == OCV_REQUIRES_SERVICE || ocv == OCV_UNCONDITIONALLY);
-
-					uint value = order->GetConditionValue();
-					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
-					SetDParam(1, value);
 				} break;
 
 				default: // every other orders
@@ -821,10 +823,31 @@ public:
 					this->DisableWidget(ORDER_WIDGET_FULL_LOAD);
 					this->DisableWidget(ORDER_WIDGET_UNLOAD_DROPDOWN);
 					this->DisableWidget(ORDER_WIDGET_UNLOAD);
+					break;
 			}
 		}
 
+		this->SetDirty();
+	}
+
+	virtual void OnPaint()
+	{
+		bool shared_orders = this->vehicle->IsOrderListShared();
+		int sel = OrderGetSel();
+		const Order *order = this->vehicle->GetOrder(sel);
+
+		if (this->vehicle->owner == _local_company) {
+			/* Set the strings for the dropdown boxes. */
+			this->widget[ORDER_WIDGET_COND_VARIABLE].data   = _order_conditional_variable[order == NULL ? 0 : order->GetConditionVariable()];
+			this->widget[ORDER_WIDGET_COND_COMPARATOR].data = _order_conditional_condition[order == NULL ? 0 : order->GetConditionComparator()];
+		}
+
 		SetDParam(0, this->vehicle->index);
+		if (order != NULL && order->IsType(OT_CONDITIONAL)) {
+			uint value = order->GetConditionValue();
+			if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+			SetDParam(1, value);
+		}
 		this->DrawWidgets();
 
 		int y = 15;
@@ -907,7 +930,7 @@ public:
 					}
 				}
 
-				this->SetDirty();
+				this->UpdateButtonState();
 			} break;
 
 			case ORDER_WIDGET_SKIP:

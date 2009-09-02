@@ -791,7 +791,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
-		InvalidateVehicleOrder(v, 0);
+		InvalidateVehicleOrder(v, -2);
 	}
 
 	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
@@ -1097,7 +1097,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					u->current_order.GetLoadType() != order->GetLoadType()) {
 				u->current_order.SetLoadType(order->GetLoadType());
 			}
-			InvalidateVehicleOrder(u, 0);
+			InvalidateVehicleOrder(u, -2);
 		}
 	}
 
@@ -1158,7 +1158,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				dst->AddToShared(src);
 
 				InvalidateVehicleOrder(dst, -1);
-				InvalidateVehicleOrder(src, 0);
+				InvalidateVehicleOrder(src, -2);
 
 				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
@@ -1252,7 +1252,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		for (Vehicle *u = v->FirstShared(); u != NULL; u = u->NextShared()) {
 			/* Update any possible open window of the vehicle */
-			InvalidateVehicleOrder(u, 0);
+			InvalidateVehicleOrder(u, -2);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
 			if (u->cur_order_index == order_number && (u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
@@ -1795,7 +1795,7 @@ bool ProcessOrders(Vehicle *v)
 	/* Otherwise set it, and determine the destination tile. */
 	v->current_order = *order;
 
-	InvalidateVehicleOrder(v, 0);
+	InvalidateVehicleOrder(v, -2);
 	switch (v->type) {
 		default:
 			NOT_REACHED();
