@@ -1809,8 +1809,8 @@ void NWidgetBackground::Draw(const Window *w)
 			NOT_REACHED();
 	}
 
-	if (this->child != NULL) this->child->Draw(w);
 	if (this->index >= 0) w->DrawWidget(r, this->index);
+	if (this->child != NULL) this->child->Draw(w);
 
 	if (this->IsDisabled()) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
