@@ -1763,7 +1763,7 @@ public:
 			STR_SAVELOAD_LOAD_HEIGHTMAP,
 		};
 
-		this->vscroll.cap = 10;
+		this->vscroll.SetCapacity(10);
 		this->resize.step_width = 2;
 		this->resize.step_height = 10;
 
@@ -1779,7 +1779,7 @@ public:
 
 			case SLD_LOAD_SCENARIO:
 			case SLD_LOAD_HEIGHTMAP:
-				this->vscroll.cap--;
+				this->vscroll.UpdateCapacity(-1);
 
 			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
 			case SLD_SAVE_SCENARIO: strecpy(this->edit_str_buf, "UNNAMED", &this->edit_str_buf[edit_str_size - 1]); break;
@@ -1845,7 +1845,7 @@ public:
 	{
 		int y;
 
-		SetVScrollCount(this, _fios_items.Length());
+		this->vscroll.SetCount(_fios_items.Length());
 		this->DrawWidgets();
 		DrawFiosTexts(this->widget[SLWW_BACKGROUND].left, this->widget[SLWW_BACKGROUND].right);
 
@@ -1859,12 +1859,12 @@ public:
 		this->DrawSortButtonState(_savegame_sort_order & SORT_BY_NAME ? SLWW_SORT_BYNAME : SLWW_SORT_BYDATE, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
 
 		y = widg->top + 1;
-		for (uint pos = this->vscroll.pos; pos < _fios_items.Length(); pos++) {
+		for (uint pos = this->vscroll.GetPosition(); pos < _fios_items.Length(); pos++) {
 			const FiosItem *item = _fios_items.Get(pos);
 
 			DrawString(widg->left + 2, widg->right - 2, y, item->title, _fios_colours[item->type]);
 			y += 10;
-			if (y >= this->vscroll.cap * 10 + widg->top + 1) break;
+			if (y >= this->vscroll.GetCapacity() * 10 + widg->top + 1) break;
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
@@ -1898,7 +1898,7 @@ public:
 			case SLWW_DRIVES_DIRECTORIES_LIST: { // Click the listbox
 				int y = (pt.y - this->widget[widget].top - 1) / 10;
 
-				if (y < 0 || (y += this->vscroll.pos) >= this->vscroll.count) return;
+				if (y < 0 || (y += this->vscroll.GetPosition()) >= this->vscroll.GetCount()) return;
 
 				const FiosItem *file = _fios_items.Get(y);
 
@@ -2014,7 +2014,7 @@ public:
 			this->widget[SLWW_SAVE_GAME].left  += diff;
 		}
 
-		this->vscroll.cap += delta.y / 10;
+		this->vscroll.UpdateCapacity(delta.y / 10);
 	}
 
 	virtual void OnInvalidateData(int data)

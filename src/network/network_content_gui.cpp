@@ -251,6 +251,8 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 		this->FilterContentList();
 		this->content.Compact();
 		this->content.RebuildDone();
+
+		this->vscroll.SetCount(this->content.Length()); // Update the scrollbar
 	}
 
 	/** Sort content by name. */
@@ -328,13 +330,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	{
 		if (this->selected == NULL) return;
 
-		if (this->list_pos < this->vscroll.pos) {
-			/* scroll up to the server */
-			this->vscroll.pos = this->list_pos;
-		} else if (this->list_pos >= this->vscroll.pos + this->vscroll.cap) {
-			/* scroll down so that the server is at the bottom */
-			this->vscroll.pos = this->list_pos - this->vscroll.cap + 1;
-		}
+		this->vscroll.ScrollTowards(this->list_pos);
 	}
 
 public:
@@ -349,7 +345,7 @@ public:
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
 		this->SetFocusedWidget(NCLWW_FILTER);
 
-		this->vscroll.cap = 14;
+		this->vscroll.SetCapacity(14);
 		this->resize.step_height = 14;
 		this->resize.step_width = 2;
 
@@ -364,7 +360,6 @@ public:
 		this->FilterContentList();
 		this->SortContentList();
 
-		SetVScrollCount(this, this->content.Length());
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -380,7 +375,6 @@ public:
 
 		if (this->content.NeedRebuild()) {
 			this->BuildContentList();
-			SetVScrollCount(this, this->content.Length());
 		}
 		this->SortContentList();
 
@@ -428,7 +422,7 @@ public:
 		/* Fill the matrix with the information */
 		uint y = this->widget[NCLWW_MATRIX].top + 3;
 		int cnt = 0;
-		for (ConstContentIterator iter = this->content.Get(this->vscroll.pos); iter != this->content.End() && cnt < this->vscroll.cap; iter++, cnt++) {
+		for (ConstContentIterator iter = this->content.Get(this->vscroll.GetPosition()); iter != this->content.End() && cnt < this->vscroll.GetCapacity(); iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(this->widget[NCLWW_CHECKBOX].left + 1, y - 2, this->widget[NCLWW_NAME].right - 1, y + 9, 10);
@@ -567,8 +561,8 @@ public:
 			case NCLWW_MATRIX: {
 				uint32 id_v = (pt.y - this->widget[NCLWW_MATRIX].top) / this->resize.step_height;
 
-				if (id_v >= this->vscroll.cap) return; // click out of bounds
-				id_v += this->vscroll.pos;
+				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
+				id_v += this->vscroll.GetPosition();
 
 				if (id_v >= this->content.Length()) return; // click out of bounds
 
@@ -641,11 +635,11 @@ public:
 				break;
 			case WKC_PAGEUP:
 				/* scroll up a page */
-				this->list_pos = (this->list_pos < this->vscroll.cap) ? 0 : this->list_pos - this->vscroll.cap;
+				this->list_pos = (this->list_pos < this->vscroll.GetCapacity()) ? 0 : this->list_pos - this->vscroll.GetCapacity();
 				break;
 			case WKC_PAGEDOWN:
 				/* scroll down a page */
-				this->list_pos = min(this->list_pos + this->vscroll.cap, (int)this->content.Length() - 1);
+				this->list_pos = min(this->list_pos + this->vscroll.GetCapacity(), (int)this->content.Length() - 1);
 				break;
 			case WKC_HOME:
 				/* jump to beginning */
@@ -700,11 +694,8 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-
-		this->widget[NCLWW_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-
-		SetVScrollCount(this, this->content.Length());
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->widget[NCLWW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Make the matrix and details section grow both bigger (or smaller) */
 		delta.x /= 2;

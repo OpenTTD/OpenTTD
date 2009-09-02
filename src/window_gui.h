@@ -289,6 +289,23 @@ public:
 		if (difference == 0) return;
 		this->SetPosition(Clamp(this->pos + difference, 0, this->count - this->cap));
 	}
+
+	/**
+	 * Scroll towards the given position; if the item is visible nothing
+	 * happens, otherwise it will be shown either at the bottom or top of
+	 * the window depending on where in the list it was.
+	 * @param position the position to scroll towards.
+	 */
+	void ScrollTowards(int position)
+	{
+		if (position < this->GetPosition()) {
+			/* scroll up to the item */
+			this->SetPosition(position);
+		} else if (position >= this->GetPosition() + this->GetCapacity()) {
+			/* scroll down so that the item is at the bottom */
+			this->SetPosition(position - this->GetCapacity() + 1);
+		}
+	}
 };
 
 /**
