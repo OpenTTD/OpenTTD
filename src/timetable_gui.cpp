@@ -59,7 +59,7 @@ struct TimetableWindow : Window {
 	{
 		this->vehicle = Vehicle::Get(window_number);
 		this->owner = this->vehicle->owner;
-		this->vscroll.cap = 8;
+		this->vscroll.SetCapacity(8);
 		this->resize.step_height = 10;
 		this->sel_index = -1;
 
@@ -75,9 +75,9 @@ struct TimetableWindow : Window {
 		 */
 		int sel = (y - 15) / 10;
 
-		if ((uint)sel >= this->vscroll.cap) return INVALID_ORDER;
+		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
 
-		sel += this->vscroll.pos;
+		sel += this->vscroll.GetPosition();
 
 		return (sel < v->GetNumOrders() * 2 && sel >= 0) ? sel : INVALID_ORDER;
 	}
@@ -148,7 +148,7 @@ struct TimetableWindow : Window {
 		const Vehicle *v = this->vehicle;
 		int selected = this->sel_index;
 
-		SetVScrollCount(this, v->GetNumOrders() * 2);
+		this->vscroll.SetCount(v->GetNumOrders() * 2);
 
 		if (v->owner == _local_company) {
 			bool disable = true;
@@ -179,7 +179,7 @@ struct TimetableWindow : Window {
 		this->DrawWidgets();
 
 		int y = 15;
-		int i = this->vscroll.pos;
+		int i = this->vscroll.GetPosition();
 		VehicleOrderID order_id = (i + 1) / 2;
 		bool final_order = false;
 
@@ -187,7 +187,7 @@ struct TimetableWindow : Window {
 
 		while (order != NULL) {
 			/* Don't draw anything if it extends past the end of the window. */
-			if (i - this->vscroll.pos >= this->vscroll.cap) break;
+			if (!this->vscroll.IsVisible(i)) break;
 
 			if (i % 2 == 0) {
 				DrawOrderString(v, order, order_id, y, i == selected, true, this->widget[TTV_TIMETABLE_PANEL].right - 4);
@@ -335,7 +335,7 @@ struct TimetableWindow : Window {
 	virtual void OnResize(Point delta)
 	{
 		/* Update the scroll + matrix */
-		this->vscroll.cap = (this->widget[TTV_TIMETABLE_PANEL].bottom - this->widget[TTV_TIMETABLE_PANEL].top) / 10;
+		this->vscroll.UpdateCapacity(delta.y / 10);
 	}
 };
 

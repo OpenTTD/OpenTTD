@@ -41,7 +41,7 @@ struct SubsidyListWindow : Window {
 	{
 		this->InitNested(desc, window_number);
 		this->OnInvalidateData(0);
-		this->vscroll.cap = this->nested_array[SLW_PANEL]->current_y / this->resize.step_height;
+		this->vscroll.SetCapacity(this->nested_array[SLW_PANEL]->current_y / this->resize.step_height);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -49,9 +49,9 @@ struct SubsidyListWindow : Window {
 		if (widget != SLW_PANEL) return;
 
 		int y = (pt.y - this->nested_array[SLW_PANEL]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
-		if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
+		if (!IsInsideMM(y, 0, this->vscroll.GetCapacity())) return;
 
-		y += this->vscroll.pos;
+		y += this->vscroll.GetPosition();
 
 		int num = 0;
 		const Subsidy *s;
@@ -168,17 +168,18 @@ struct SubsidyListWindow : Window {
 		int y = r.top + WD_FRAMERECT_TOP;
 		int x = r.left + WD_FRAMERECT_LEFT;
 
-		int pos = -this->vscroll.pos;
+		int pos = -this->vscroll.GetPosition();
+		const int cap = this->vscroll.GetCapacity();
 
 		/* Section for drawing the offered subisidies */
-		if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
 		pos++;
 
 		uint num = 0;
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
 			if (!s->IsAwarded()) {
-				if (IsInsideMM(pos, 0, this->vscroll.cap)) {
+				if (IsInsideMM(pos, 0, cap)) {
 					/* Displays the two offered towns */
 					SetupSubsidyDecodeParam(s, 1);
 					SetDParam(7, _date - ymd.day + s->remaining * 32);
@@ -190,19 +191,19 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
 			pos++;
 		}
 
 		/* Section for drawing the already granted subisidies */
 		pos++;
-		if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_TITLE);
 		pos++;
 		num = 0;
 
 		FOR_ALL_SUBSIDIES(s) {
 			if (s->IsAwarded()) {
-				if (IsInsideMM(pos, 0, this->vscroll.cap)) {
+				if (IsInsideMM(pos, 0, cap)) {
 					SetupSubsidyDecodeParam(s, 1);
 					SetDParam(7, s->awarded);
 					SetDParam(8, _date - ymd.day + s->remaining * 32);
@@ -216,19 +217,19 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, this->vscroll.cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
 			pos++;
 		}
 	}
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
-		SetVScrollCount(this, this->CountLines());
+		this->vscroll.SetCount(this->CountLines());
 	}
 };
 
