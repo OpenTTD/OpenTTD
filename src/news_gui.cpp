@@ -98,8 +98,12 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
 			NWidget(WWT_TEXT, COLOUR_WHITE, NTW_CLOSEBOX), SetDataTip(STR_SILVER_CROSS, STR_NULL), SetPadding(0, 0, 0, 1),
 			NWidget(NWID_SPACER), SetFill(true, false),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_LABEL, COLOUR_WHITE, NTW_DATE), SetDataTip(STR_DATE_LONG_SMALL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(false, true),
+			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(428, 156), SetPadding(0, 1, 1, 1),
+		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(428, 154), SetPadding(0, 1, 1, 1),
 	EndContainer(),
 };
 
@@ -220,7 +224,6 @@ static WindowDesc _small_news_desc(
  */
 struct NewsSubtypeData {
 	NewsType type;         ///< News category @see NewsType
-	NewsMode display_mode; ///< Display mode value @see NewsMode
 	NewsFlag flags;        ///< Initial NewsFlags bits @see NewsFlag
 	WindowDesc *desc;      ///< Window description for displaying this news.
 };
@@ -230,24 +233,24 @@ struct NewsSubtypeData {
  */
 static const NewsSubtypeData _news_subtype_data[] = {
 	/* type,               display_mode, flags,                         window description,            callback */
-	{ NT_ARRIVAL_COMPANY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc  }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc   }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,                        &_vehicle_news_desc }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc   }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,                        &_normal_news_desc  }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc  }, ///< NS_GENERAL
+	{ NT_ARRIVAL_COMPANY,  (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ACCIDENT
+	{ NT_COMPANY_INFO,     NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NF_NONE,                        &_normal_news_desc  }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NF_INCOLOUR,                    &_small_news_desc   }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NF_NONE,                        &_vehicle_news_desc }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NF_INCOLOUR,                    &_small_news_desc   }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NF_NONE,                        &_normal_news_desc  }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NF_NONE,                        &_normal_news_desc  }, ///< NS_GENERAL
 };
 
 assert_compile(lengthof(_news_subtype_data) == NS_END);
@@ -338,31 +341,7 @@ struct NewsWindow : Window {
 
 	virtual void OnPaint()
 	{
-		const NewsMode display_mode = _news_subtype_data[this->ni->subtype].display_mode;
-
-		switch (display_mode) {
-			case NM_NORMAL: {
-				this->DrawWidgets();
-
-				DrawString(2, this->width - 1, 1, STR_SILVER_CROSS);
-
-				SetDParam(0, this->ni->date);
-				DrawString(2, this->width - 2, 1, STR_DATE_LONG_SMALL, TC_FROMSTRING, SA_RIGHT);
-
-				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-				DrawStringMultiLine(2, this->width - 2, 20, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
-				break;
-			}
-
-			case NM_NEW_VEH:
-			case NM_COMPANY:
-			case NM_THIN:
-			case NM_SMALL:
-				this->DrawWidgets();
-				break;
-
-			default: NOT_REACHED();
-		}
+		this->DrawWidgets();
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
