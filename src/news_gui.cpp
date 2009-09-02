@@ -366,7 +366,11 @@ struct NewsWindow : Window {
 				_forced_news = NULL;
 				break;
 
-			case NTW_HEADLINE:
+			case NTW_CAPTION:
+			case NTW_VIEWPORT:
+				break; // Ignore clicks
+
+			default:
 				if (this->ni->reftype1 == NR_VEHICLE) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
