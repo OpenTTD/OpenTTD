@@ -54,51 +54,6 @@ static NewsItem *_current_news = NULL;
 typedef void DrawNewsCallbackProc(struct Window *w, const NewsItem *ni);
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
 
-static void DrawNewsBankruptcy(Window *w, const NewsItem *ni)
-{
-	const CompanyNewsInformation *cni = (const CompanyNewsInformation*)ni->free_data;
-
-	DrawCompanyManagerFace(cni->face, cni->colour, 2, 23);
-	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
-
-	SetDParamStr(0, cni->president_name);
-	DrawStringMultiLine(49 - MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 49 + MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 141, 169, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
-
-	switch (ni->subtype) {
-		case NS_COMPANY_TROUBLE:
-			DrawString(0, w->width, 1, STR_NEWS_COMPANY_IN_TROUBLE_TITLE, TC_FROMSTRING, SA_CENTER);
-
-			SetDParam(0, ni->params[2]);
-
-			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
-			break;
-
-		case NS_COMPANY_MERGER:
-			DrawString(0, w->width, 1, STR_NEWS_COMPANY_MERGER_TITLE, TC_FROMSTRING, SA_CENTER);
-			SetDParam(0, ni->params[2]);
-			SetDParam(1, ni->params[3]);
-			SetDParam(2, ni->params[4]);
-			DrawStringMultiLine(100, w->width - 2, 20, 169, ni->params[4] == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
-			break;
-
-		case NS_COMPANY_BANKRUPT:
-			DrawString(0, w->width, 1, STR_NEWS_COMPANY_BANKRUPT_TITLE, TC_FROMSTRING, SA_CENTER);
-			SetDParam(0, ni->params[2]);
-			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
-			break;
-
-		case NS_COMPANY_NEW:
-			DrawString(0, w->width, 1, STR_NEWS_COMPANY_LAUNCH_TITLE, TC_FROMSTRING, SA_CENTER);
-			SetDParam(0, ni->params[2]);
-			SetDParam(1, ni->params[3]);
-			DrawStringMultiLine(100, w->width - 2, 20, 169, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, TC_FROMSTRING, SA_CENTER);
-			break;
-
-		default:
-			NOT_REACHED();
-	}
-}
-
 /**
  * Get the position a news-reference is referencing.
  * @param reftype The type of reference.
@@ -118,14 +73,18 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
 
 /** Widget numbers of the news display windows. */
 enum NewsTypeWidgets {
-	NTW_PANEL,    ///< The news item background panel.
-	NTW_HEADLINE, ///< The news headline.
-	NTW_CLOSEBOX, ///< Close the window.
-	NTW_DATE,     ///< Date of the news item.
-	NTW_CAPTION,  ///< Title bar of the window. Only used in small news items.
-	NTW_INSET,    ///< Inset around the viewport in the window. Only used in small news items.
-	NTW_VIEWPORT, ///< Viewport in the window.
-	NTW_MESSAGE,  ///< Space for displaying the message. Only used in small news items.
+	NTW_PANEL,       ///< The news item background panel.
+	NTW_TITLE,       ///< Title of the company news.
+	NTW_HEADLINE,    ///< The news headline.
+	NTW_CLOSEBOX,    ///< Close the window.
+	NTW_DATE,        ///< Date of the news item.
+	NTW_CAPTION,     ///< Title bar of the window. Only used in small news items.
+	NTW_INSET,       ///< Inset around the viewport in the window. Only used in small news items.
+	NTW_VIEWPORT,    ///< Viewport in the window.
+	NTW_COMPANY_MSG, ///< Message in company news items.
+	NTW_MESSAGE,     ///< Space for displaying the message. Only used in small news items.
+	NTW_MGR_FACE,    ///< Face of the manager.
+	NTW_MGR_NAME,    ///< Name of the manager.
 };
 
 /* Normal news items. */
@@ -144,6 +103,37 @@ static WindowDesc _normal_news_desc(
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	NULL, _nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
+);
+
+/* Company news items. */
+static const NWidgetPart _nested_company_news_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_PANEL),
+		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_TEXT, COLOUR_WHITE, NTW_CLOSEBOX), SetDataTip(STR_SILVER_CROSS, STR_NULL), SetPadding(0, 0, 0, 1),
+				NWidget(NWID_SPACER), SetFill(false, true),
+			EndContainer(),
+			NWidget(WWT_LABEL, COLOUR_WHITE, NTW_TITLE), SetFill(true, true), SetMinimalSize(410, 20), SetDataTip(STR_EMPTY, STR_NULL),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL), SetPadding(0, 1, 1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MGR_FACE), SetMinimalSize(93, 119), SetPadding(2, 6, 2, 1),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MGR_NAME), SetMinimalSize(93, 24), SetPadding(0, 0, 0, 1),
+					NWidget(NWID_SPACER), SetFill(true, false),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetFill(false, true),
+			EndContainer(),
+			NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_COMPANY_MSG), SetFill(true, true), SetMinimalSize(328, 150),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _company_news_desc(
+	WDP_CENTER, 476, 430, 170, 430, 170,
+	WC_NEWS_WINDOW, WC_NONE,
+	WDF_DEF_WIDGET,
+	NULL, _nested_company_news_widgets, lengthof(_nested_company_news_widgets)
 );
 
 /* Thin news items. */
@@ -209,24 +199,24 @@ struct NewsSubtypeData {
  */
 static const NewsSubtypeData _news_subtype_data[] = {
 	/* type,               display_mode, flags,                         window description,            callback */
-	{ NT_ARRIVAL_COMPANY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc, NULL                    }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc,  NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc, DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc,  NULL                    }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,                        &_normal_news_desc, NULL                    }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc, NULL                    }, ///< NS_GENERAL
+	{ NT_ARRIVAL_COMPANY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_ACCIDENT
+	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc, NULL                    }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc, NULL                    }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc, NULL                    }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_COMPANY,  NF_NONE,                        &_company_news_desc, NULL                    }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc,  NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  NM_THIN,     (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc,    NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc,   NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,                        &_normal_news_desc,  DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NM_SMALL,    NF_INCOLOUR,                    &_small_news_desc,   NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE,                        &_normal_news_desc,  NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NM_NORMAL,   NF_NONE,                        &_normal_news_desc,  NULL                    }, ///< NS_GENERAL
 };
 
 assert_compile(lengthof(_news_subtype_data) == NS_END);
@@ -269,7 +259,28 @@ struct NewsWindow : Window {
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
-		this->InitNested(desc);
+		this->CreateNestedTree(desc);
+		switch (this->ni->subtype) {
+			case NS_COMPANY_TROUBLE:
+				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_IN_TROUBLE_TITLE;
+				break;
+
+			case NS_COMPANY_MERGER:
+				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_MERGER_TITLE;
+				break;
+
+			case NS_COMPANY_BANKRUPT:
+				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_BANKRUPT_TITLE;
+				break;
+
+			case NS_COMPANY_NEW:
+				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_LAUNCH_TITLE;
+				break;
+
+			default:
+				break;
+		}
+		this->FinishInitNested(desc, 0);
 
 		/* Initialize viewport if it exists. */
 		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[NTW_VIEWPORT];
@@ -317,6 +328,7 @@ struct NewsWindow : Window {
 				break;
 			}
 
+			case NM_COMPANY:
 			case NM_THIN:
 			case NM_SMALL:
 				this->DrawWidgets();
@@ -328,19 +340,29 @@ struct NewsWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
+		StringID str = STR_NULL;
 		switch (widget) {
-			case NTW_MESSAGE: {
+			case NTW_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-				Dimension d = *size;
-				d.width = (d.width >= padding.width) ? d.width - padding.width : 0;
-				d.height = (d.height >= padding.height) ? d.height - padding.height : 0;
-				d = GetStringMultiLineBoundingBox(this->ni->string_id, d);
-				d.width += padding.width;
-				d.height += padding.height;
-				*size = maxdim(*size, d);
+				str = this->ni->string_id;
 				break;
-			}
+
+			case NTW_COMPANY_MSG:
+				str = this->GetCompanyMessageString();
+				break;
+
+			default:
+				return; // Do nothing
 		}
+
+		/* Update minimal size with length of the multi-line string. */
+		Dimension d = *size;
+		d.width = (d.width >= padding.width) ? d.width - padding.width : 0;
+		d.height = (d.height >= padding.height) ? d.height - padding.height : 0;
+		d = GetStringMultiLineBoundingBox(str, d);
+		d.width += padding.width;
+		d.height += padding.height;
+		*size = maxdim(*size, d);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -358,6 +380,22 @@ struct NewsWindow : Window {
 			case NTW_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 				DrawStringMultiLine(r.left + 2, r.right - 2, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
+				break;
+
+			case NTW_MGR_FACE: {
+				const CompanyNewsInformation *cni = (const CompanyNewsInformation*)this->ni->free_data;
+				DrawCompanyManagerFace(cni->face, cni->colour, r.left, r.top);
+				GfxFillRect(r.left + 1, r.top, r.left + 1 + 91, r.top + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
+				break;
+			}
+			case NTW_MGR_NAME: {
+				const CompanyNewsInformation *cni = (const CompanyNewsInformation*)this->ni->free_data;
+				SetDParamStr(0, cni->president_name);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
+				break;
+			}
+			case NTW_COMPANY_MSG:
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->GetCompanyMessageString(), TC_FROMSTRING, SA_CENTER);
 				break;
 		}
 	}
@@ -423,6 +461,34 @@ struct NewsWindow : Window {
 		this->top = y;
 
 		SetDirtyBlocks(this->left, this->top - diff, this->left + this->width, this->top + this->height);
+	}
+
+private:
+	StringID GetCompanyMessageString() const
+	{
+		switch (this->ni->subtype) {
+			case NS_COMPANY_TROUBLE:
+				SetDParam(0, this->ni->params[2]);
+				return STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION;
+
+			case NS_COMPANY_MERGER:
+				SetDParam(0, this->ni->params[2]);
+				SetDParam(1, this->ni->params[3]);
+				SetDParam(2, this->ni->params[4]);
+				return this->ni->params[4] == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION;
+
+			case NS_COMPANY_BANKRUPT:
+				SetDParam(0, this->ni->params[2]);
+				return STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION;
+
+			case NS_COMPANY_NEW:
+				SetDParam(0, this->ni->params[2]);
+				SetDParam(1, this->ni->params[3]);
+				return STR_NEWS_COMPANY_LAUNCH_DESCRIPTION;
+
+			default:
+				NOT_REACHED();
+		}
 	}
 };
 
