@@ -193,7 +193,7 @@ public:
 
 		this->timer_enabled = _loaded_newgrf_features.has_newindustries;
 
-		this->vscroll.cap = 8; // rows in grid, same in scroller
+		this->vscroll.SetCapacity(8); // rows in grid, same in scroller
 		this->resize.step_height = 13;
 
 		this->selected_index = -1;
@@ -227,22 +227,22 @@ public:
 		}
 		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
 
-		SetVScrollCount(this, this->count);
+		this->vscroll.SetCount(this->count);
 
 		this->DrawWidgets();
 
 		/* and now with the matrix painting */
-		for (byte i = 0; i < this->vscroll.cap && ((i + this->vscroll.pos) < this->count); i++) {
+		for (byte i = 0; i < this->vscroll.GetCapacity() && ((i + this->vscroll.GetPosition()) < this->count); i++) {
 			int offset = i * 13;
 			int x = 3;
 			int y = 16;
-			bool selected = this->selected_index == i + this->vscroll.pos;
+			bool selected = this->selected_index == i + this->vscroll.GetPosition();
 
-			if (this->index[i + this->vscroll.pos] == INVALID_INDUSTRYTYPE) {
+			if (this->index[i + this->vscroll.GetPosition()] == INVALID_INDUSTRYTYPE) {
 				DrawString(20, right, y + offset, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
 				continue;
 			}
-			const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll.pos]);
+			const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll.GetPosition()]);
 
 			/* Draw the name of the industry in white is selected, otherwise, in orange */
 			DrawString(20, right, y + offset, indsp->name, selected ? TC_WHITE : TC_ORANGE);
@@ -320,7 +320,7 @@ public:
 		switch (widget) {
 			case DPIW_MATRIX_WIDGET: {
 				const IndustrySpec *indsp;
-				int y = (pt.y - this->widget[DPIW_MATRIX_WIDGET].top) / 13 + this->vscroll.pos ;
+				int y = (pt.y - this->widget[DPIW_MATRIX_WIDGET].top) / 13 + this->vscroll.GetPosition() ;
 
 				if (y >= 0 && y < count) { // Is it within the boundaries of available data?
 					this->selected_index = y;
@@ -363,8 +363,8 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		/* Adjust the number of items in the matrix depending of the rezise */
-		this->vscroll.cap  += delta.y / (int)this->resize.step_height;
-		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -801,7 +801,7 @@ protected:
 
 			this->industries.Compact();
 			this->industries.RebuildDone();
-			SetVScrollCount(this, this->industries.Length()); // Update scrollbar as well.
+			this->vscroll.SetCount(this->industries.Length()); // Update scrollbar as well.
 		}
 		this->last_industry = NULL;
 		this->industries.Sort();
@@ -933,7 +933,7 @@ public:
 		this->BuildSortIndustriesList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.cap = this->nested_array[IDW_INDUSTRY_LIST]->current_y / this->resize.step_height;
+		this->vscroll.SetCapacity(this->nested_array[IDW_INDUSTRY_LIST]->current_y / this->resize.step_height);
 	}
 
 	~IndustryDirectoryWindow()
@@ -961,11 +961,11 @@ public:
 			case IDW_INDUSTRY_LIST: {
 				int n = 0;
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (uint i = this->vscroll.pos; i < this->industries.Length(); i++) {
+				for (uint i = this->vscroll.GetPosition(); i < this->industries.Length(); i++) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, this->GetIndustryString(this->industries[i]));
 
 					y += this->resize.step_height;
-					if (++n == this->vscroll.cap) break; // max number of industries in 1 window
+					if (++n == this->vscroll.GetCapacity()) break; // max number of industries in 1 window
 				}
 			} break;
 		}
@@ -1024,8 +1024,8 @@ public:
 				int y = (pt.y - this->nested_array[widget]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 				uint16 p;
 
-				if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
-				p = y + this->vscroll.pos;
+				if (!IsInsideMM(y, 0, this->vscroll.GetCapacity())) return;
+				p = y + this->vscroll.GetPosition();
 				if (p < this->industries.Length()) {
 					if (_ctrl_pressed) {
 						ShowExtraViewPortWindow(this->industries[p]->xy);
@@ -1047,7 +1047,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 	}
 
 	virtual void OnHundredthTick()

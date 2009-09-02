@@ -237,20 +237,20 @@ public:
 			default: NOT_REACHED();
 			case VEH_TRAIN:
 			case VEH_ROAD:
-				this->vscroll2.cap = 9;
-				this->vscroll.cap = 6;
+				this->vscroll2.SetCapacity(9);
+				this->vscroll.SetCapacity(6);
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 				break;
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				this->vscroll2.cap = 9;
-				this->vscroll.cap = 4;
+				this->vscroll2.SetCapacity(9);
+				this->vscroll.SetCapacity(4);
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 				break;
 		}
 
-		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
@@ -348,8 +348,8 @@ public:
 		this->BuildGroupList(owner);
 		this->groups.Sort(&GroupNameSorter);
 
-		SetVScroll2Count(this, this->groups.Length());
-		SetVScrollCount(this, this->vehicles.Length());
+		this->vscroll2.SetCount(this->groups.Length());
+		this->vscroll.SetCount(this->vehicles.Length());
 
 		/* The drop down menu is out, *but* it may not be used, retract it. */
 		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
@@ -416,8 +416,8 @@ public:
 
 		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, STR_GROUP_DEFAULT_TRAINS + this->vehicle_type, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
-		max = min(this->vscroll2.pos + this->vscroll2.cap, this->groups.Length());
-		for (i = this->vscroll2.pos ; i < max ; ++i) {
+		max = min(this->vscroll2.GetPosition() + this->vscroll2.GetCapacity(), this->groups.Length());
+		for (i = this->vscroll2.GetPosition() ; i < max ; ++i) {
 			const Group *g = this->groups[i];
 
 			assert(g->owner == owner);
@@ -469,9 +469,9 @@ public:
 			case GRP_WIDGET_LIST_GROUP: { // Matrix Group
 				uint16 id_g = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 
-				if (id_g >= this->vscroll2.cap) return;
+				if (id_g >= this->vscroll2.GetCapacity()) return;
 
-				id_g += this->vscroll2.pos;
+				id_g += this->vscroll2.GetPosition();
 
 				if (id_g >= this->groups.Length()) return;
 
@@ -484,9 +484,9 @@ public:
 
 			case GRP_WIDGET_LIST_VEHICLE: { // Matrix Vehicle
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)this->resize.step_height;
-				if (id_v >= this->vscroll.cap) return; // click out of bounds
+				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 
-				id_v += this->vscroll.pos;
+				id_v += this->vscroll.GetPosition();
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
@@ -568,9 +568,9 @@ public:
 
 				this->SetDirty();
 
-				if (id_g >= this->vscroll2.cap) return;
+				if (id_g >= this->vscroll2.GetCapacity()) return;
 
-				id_g += this->vscroll2.pos;
+				id_g += this->vscroll2.GetPosition();
 
 				if (id_g >= this->groups.Length()) return;
 
@@ -588,9 +588,9 @@ public:
 
 				this->SetDirty();
 
-				if (id_v >= this->vscroll.cap) return; // click out of bounds
+				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 
-				id_v += this->vscroll.pos;
+				id_v += this->vscroll.GetPosition();
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
@@ -614,11 +614,11 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll2.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		this->vscroll2.UpdateCapacity(delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY);
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 
-		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
