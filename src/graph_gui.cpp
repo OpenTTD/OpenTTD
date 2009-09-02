@@ -1093,77 +1093,6 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		/* Draw standard stuff */
 		this->DrawWidgets();
-
-		/* No need to draw when there's nothing to draw */
-		if (this->company == INVALID_COMPANY) return;
-
-		/* The colours used to show how the progress is going */
-		int colour_done = _colour_gradient[COLOUR_GREEN][4];
-		int colour_notdone = _colour_gradient[COLOUR_RED][4];
-
-		int y = 27;
-		int total_score = 0;
-
-		/* Draw all the score parts */
-		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
-			int val    = _score_part[company][i];
-			int needed = _score_info[i].needed;
-			int score  = _score_info[i].score;
-
-			y += 20;
-			/* SCORE_TOTAL has his own rulez ;) */
-			if (i == SCORE_TOTAL) {
-				needed = total_score;
-				score = SCORE_MAX;
-			} else {
-				total_score += score;
-			}
-
-			DrawString(7, 107, y, STR_PERFORMANCE_DETAIL_VEHICLES + i);
-
-			/* Draw the score */
-			SetDParam(0, score);
-			DrawString(7, 107, y, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING, SA_RIGHT);
-
-			/* Calculate the %-bar */
-			byte x = Clamp(val, 0, needed) * 50 / needed;
-
-			/* SCORE_LOAN is inversed */
-			if (val < 0 && i == SCORE_LOAN) x = 0;
-
-			/* Draw the bar */
-			if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, colour_done);
-			if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, colour_notdone);
-
-			/* Calculate the % */
-			x = Clamp(val, 0, needed) * 100 / needed;
-
-			/* SCORE_LOAN is inversed */
-			if (val < 0 && i == SCORE_LOAN) x = 0;
-
-			/* Draw it */
-			SetDParam(0, x);
-			DrawString(112, 162, y, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_CENTER);
-
-			/* SCORE_LOAN is inversed */
-			if (i == SCORE_LOAN) val = needed - val;
-
-			/* Draw the amount we have against what is needed
-			 * For some of them it is in currency format */
-			SetDParam(0, val);
-			SetDParam(1, needed);
-			switch (i) {
-				case SCORE_MIN_PROFIT:
-				case SCORE_MIN_INCOME:
-				case SCORE_MAX_INCOME:
-				case SCORE_MONEY:
-				case SCORE_LOAN:
-					DrawString(167, this->width, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY);
-					break;
-				default:
-					DrawString(167, this->width, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT);
-			}
-		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -1178,6 +1107,61 @@ struct PerformanceRatingDetailWindow : Window {
 			Dimension sprite_size = GetSpriteSize(SPR_PLAYER_ICON);
 			DrawCompanyIcon(cid, (r.left + r.right - sprite_size.width) / 2 + offset, (r.top + r.bottom - sprite_size.height) / 2 + offset);
 			return;
+		}
+
+		if (!IsInsideMM(widget, PRW_SCORE_FIRST, PRW_SCORE_LAST + 1)) return;
+
+		ScoreID score_type = (ScoreID)(widget - PRW_SCORE_FIRST);
+
+			/* The colours used to show how the progress is going */
+		int colour_done = _colour_gradient[COLOUR_GREEN][4];
+		int colour_notdone = _colour_gradient[COLOUR_RED][4];
+
+		/* Draw all the score parts */
+		int val    = _score_part[company][score_type];
+		int needed = _score_info[score_type].needed;
+		int score  = _score_info[score_type].score;
+
+		/* SCORE_TOTAL has his own rules ;) */
+		if (score_type == SCORE_TOTAL) {
+			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) needed += _score_info[i].needed;
+			score = SCORE_MAX;
+		}
+
+		DrawString(7, 107, r.top + 6, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
+
+		/* Draw the score */
+		SetDParam(0, score);
+		DrawString(7, 107, r.top + 6, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING, SA_RIGHT);
+
+		/* Calculate the %-bar */
+		byte x = Clamp(val, 0, needed) * 50 / needed;
+
+		/* Draw the bar */
+		if (x !=  0) GfxFillRect(112,     r.top + 4, 112 + x,  r.top + 16, colour_done);
+		if (x != 50) GfxFillRect(112 + x, r.top + 4, 112 + 50, r.top + 16, colour_notdone);
+
+		/* Draw it */
+		SetDParam(0, Clamp(val, 0, needed) * 100 / needed);
+		DrawString(112, 162, r.top + 6, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_CENTER);
+
+		/* SCORE_LOAN is inversed */
+		if (score_type == SCORE_LOAN) val = needed - val;
+
+		/* Draw the amount we have against what is needed
+			* For some of them it is in currency format */
+		SetDParam(0, val);
+		SetDParam(1, needed);
+		switch (score_type) {
+			case SCORE_MIN_PROFIT:
+			case SCORE_MIN_INCOME:
+			case SCORE_MAX_INCOME:
+			case SCORE_MONEY:
+			case SCORE_LOAN:
+				DrawString(167, this->width, r.top + 6, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY);
+				break;
+			default:
+				DrawString(167, this->width, r.top + 6, STR_PERFORMANCE_DETAIL_AMOUNT_INT);
 		}
 	}
 
