@@ -117,6 +117,7 @@ Dimension GetStringBoundingBox(const char *str);
 Dimension GetStringBoundingBox(StringID strid);
 uint32 FormatStringLinebreaks(char *str, int maxw);
 int GetStringHeight(StringID str, int maxw);
+Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 void LoadStringWidthTable();
 
 /**

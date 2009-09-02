@@ -729,6 +729,16 @@ int GetStringHeight(StringID str, int maxw)
 	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16));
 }
 
+/** Calculate string bounding box for multi-line strings.
+ * @param str        String to check.
+ * @param suggestion Suggested bounding box.
+ * @return Bounding box for the multi-line string, may be bigger than \a suggestion.
+ */
+Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion)
+{
+	Dimension box = {suggestion.width, GetStringHeight(str, suggestion.width)};
+	return box;
+}
 
 /**
  * Draw string, possibly over multiple lines.
