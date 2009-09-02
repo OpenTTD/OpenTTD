@@ -13,6 +13,7 @@
 #define WINDOW_GUI_H
 
 #include "core/geometry_func.hpp"
+#include "core/math_func.hpp"
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "company_type.h"
@@ -183,10 +184,99 @@ enum WindowDefaultPosition {
 /**
  * Scrollbar data structure
  */
-struct Scrollbar {
+class Scrollbar {
+public: // To become private
 	uint16 count;  ///< Number of elements in the list
 	uint16 cap;    ///< Number of visible elements of the scroll bar
 	uint16 pos;    ///< Index of first visible item of the list
+public:
+	/**
+	 * Gets the number of elements in the list
+	 * @return the number of elements
+	 */
+	FORCEINLINE uint16 GetCount() const
+	{
+		return this->count;
+	}
+
+	/**
+	 * Gets the number of visible elements of the scrollbar
+	 * @return the number of visible elements
+	 */
+	FORCEINLINE uint16 GetCapacity() const
+	{
+		return this->cap;
+	}
+
+	/**
+	 * Gets the position of the first visible element in the list
+	 * @return the position of the element
+	 */
+	FORCEINLINE uint16 GetPosition() const
+	{
+		return this->pos;
+	}
+
+	/**
+	 * Sets the number of elements in the list
+	 * @param num the number of elements in the list
+	 * @note updates the position if needed
+	 */
+	void SetCount(int num)
+	{
+		assert(num >= 0);
+		assert(num <= MAX_UVALUE(uint16));
+
+		this->count = num;
+		num -= this->cap;
+		if (num < 0) num = 0;
+		if (num < this->pos) this->pos = num;
+	}
+
+	/**
+	 * Set the capacity of visible elements.
+	 * @param capacity the new capacity
+	 * @note updates the position if needed
+	 */
+	void SetCapacity(int capacity)
+	{
+		assert(capacity > 0);
+		assert(capacity <= MAX_UVALUE(uint16));
+
+		this->cap = capacity;
+		if (this->cap + this->pos > this->count) this->pos = max(0, this->count - this->cap);
+	}
+
+	/**
+	 * Updates the capacity by adding/removing a number of (visible) elements.
+	 * @param difference the difference in capacity
+	 * @note updates the position if needed
+	 */
+	void UpdateCapacity(int difference)
+	{
+		this->SetCapacity(this->cap + difference);
+	}
+
+	/**
+	 * Sets the position of the first visible element
+	 * @param position the position of the element
+	 */
+	void SetPosition(int position)
+	{
+		assert(position >= 0);
+		assert(this->count <= this->cap ? (position == 0) : (position + this->cap < this->count));
+		this->pos = position;
+	}
+
+	/**
+	 * Updates the position of the first visible element by the given amount.
+	 * If the position would be too low or high it will be clamped appropriately
+	 * @param difference the amount of change requested
+	 */
+	void UpdatePosition(int difference)
+	{
+		this->SetPosition(Clamp(this->pos + difference, 0, this->count - this->cap));
+	}
 };
 
 /**
