@@ -172,7 +172,7 @@ enum SizingType {
 
 /* Forward declarations. */
 class NWidgetCore;
-struct Scrollbar;
+class Scrollbar;
 
 /**
  * Baseclass for nested widgets.
