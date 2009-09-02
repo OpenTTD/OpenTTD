@@ -24,6 +24,7 @@
 #include "sortlist_type.h"
 
 #include "table/strings.h"
+#include "table/sprites.h"
 
 /* Bitmasks of company and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_companies;
@@ -1068,18 +1069,12 @@ struct PerformanceRatingDetailWindow : Window {
 	static CompanyID company;
 	int timeout;
 
-	PerformanceRatingDetailWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	PerformanceRatingDetailWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		/* Disable the companies who are not active */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i));
-		}
-
 		this->UpdateCompanyStats();
 
-		if (company != INVALID_COMPANY) this->LowerWidget(company + PRW_COMPANY_FIRST);
-
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
+		this->OnInvalidateData(-1);
 	}
 
 	void UpdateCompanyStats()
@@ -1092,74 +1087,22 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 
 		this->timeout = DAY_TICKS * 5;
-
 	}
 
 	virtual void OnPaint()
 	{
-		byte x;
-		uint16 y = 27;
-		int total_score = 0;
-		int colour_done, colour_notdone;
-
 		/* Draw standard stuff */
 		this->DrawWidgets();
 
-		/* Check if the currently selected company is still active. */
-		if (company == INVALID_COMPANY || !Company::IsValidID(company)) {
-			if (company != INVALID_COMPANY) {
-				/* Raise and disable the widget for the previous selection. */
-				this->RaiseWidget(company + PRW_COMPANY_FIRST);
-				this->DisableWidget(company + PRW_COMPANY_FIRST);
-				this->SetDirty();
-
-				company = INVALID_COMPANY;
-			}
-
-			for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-				if (Company::IsValidID(i)) {
-					/* Lower the widget corresponding to this company. */
-					this->LowerWidget(i + PRW_COMPANY_FIRST);
-					this->SetDirty();
-
-					company = i;
-					break;
-				}
-			}
-		}
-
-		/* If there are no active companies, don't display anything else. */
-		if (company == INVALID_COMPANY) return;
-
-		/* Paint the company icons */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			if (!Company::IsValidID(i)) {
-				/* Check if we have the company as an active company */
-				if (!this->IsWidgetDisabled(i + PRW_COMPANY_FIRST)) {
-					/* Bah, company gone :( */
-					this->DisableWidget(i + PRW_COMPANY_FIRST);
-
-					/* We need a repaint */
-					this->SetDirty();
-				}
-				continue;
-			}
-
-			/* Check if we have the company marked as inactive */
-			if (this->IsWidgetDisabled(i + PRW_COMPANY_FIRST)) {
-				/* New company! Yippie :p */
-				this->EnableWidget(i + PRW_COMPANY_FIRST);
-				/* We need a repaint */
-				this->SetDirty();
-			}
-
-			x = (i == company) ? 1 : 0;
-			DrawCompanyIcon(i, (i % 8) * 37 + 13 + x, (i < 8 ? 0 : 13) + 16 + x);
-		}
+		/* No need to draw when there's nothing to draw */
+		if (this->company == INVALID_COMPANY) return;
 
 		/* The colours used to show how the progress is going */
-		colour_done = _colour_gradient[COLOUR_GREEN][4];
-		colour_notdone = _colour_gradient[COLOUR_RED][4];
+		int colour_done = _colour_gradient[COLOUR_GREEN][4];
+		int colour_notdone = _colour_gradient[COLOUR_RED][4];
+
+		int y = 27;
+		int total_score = 0;
 
 		/* Draw all the score parts */
 		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
@@ -1183,7 +1126,7 @@ struct PerformanceRatingDetailWindow : Window {
 			DrawString(7, 107, y, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING, SA_RIGHT);
 
 			/* Calculate the %-bar */
-			x = Clamp(val, 0, needed) * 50 / needed;
+			byte x = Clamp(val, 0, needed) * 50 / needed;
 
 			/* SCORE_LOAN is inversed */
 			if (val < 0 && i == SCORE_LOAN) x = 0;
@@ -1223,15 +1166,30 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 	}
 
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		/* No need to draw when there's nothing to draw */
+		if (this->company == INVALID_COMPANY) return;
+
+		if (IsInsideMM(widget, PRW_COMPANY_FIRST, PRW_COMPANY_LAST + 1)) {
+			if (this->IsWidgetDisabled(widget)) return;
+			CompanyID cid = (CompanyID)(widget - PRW_COMPANY_FIRST);
+			int offset = (cid == this->company) ? 1 : 0;
+			Dimension sprite_size = GetSpriteSize(SPR_PLAYER_ICON);
+			DrawCompanyIcon(cid, (r.left + r.right - sprite_size.width) / 2 + offset, (r.top + r.bottom - sprite_size.height) / 2 + offset);
+			return;
+		}
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, PRW_COMPANY_FIRST, PRW_COMPANY_LAST + 1)) {
 			/* Is it no on disable? */
 			if (!this->IsWidgetDisabled(widget)) {
-				this->RaiseWidget(company + PRW_COMPANY_FIRST);
-				company = (CompanyID)(widget - PRW_COMPANY_FIRST);
-				this->LowerWidget(company + PRW_COMPANY_FIRST);
+				this->RaiseWidget(this->company + PRW_COMPANY_FIRST);
+				this->company = (CompanyID)(widget - PRW_COMPANY_FIRST);
+				this->LowerWidget(this->company + PRW_COMPANY_FIRST);
 				this->SetDirty();
 			}
 		}
@@ -1246,6 +1204,37 @@ struct PerformanceRatingDetailWindow : Window {
 			this->UpdateCompanyStats();
 			this->SetDirty();
 		}
+	}
+
+	/**
+	 * Invalidate the data of this window.
+	 * @param data the company ID of the company that is going to be removed
+	 */
+	virtual void OnInvalidateData(int data)
+	{
+		/* Disable the companies who are not active */
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i) || i == data);
+		}
+
+		/* Check if the currently selected company is still active. */
+		if (this->company == data || (this->company != INVALID_COMPANY && !Company::IsValidID(this->company))) {
+			/* Raise the widget for the previous selection. */
+			this->RaiseWidget(this->company + PRW_COMPANY_FIRST);
+			this->company = INVALID_COMPANY;
+		}
+
+		if (this->company == INVALID_COMPANY) {
+			const Company *c;
+			FOR_ALL_COMPANIES(c) {
+				if (c->index == data) continue; // Ignore to-be-removed company
+				this->company = c->index;
+				break;
+			}
+		}
+
+		/* Make sure the widget is lowered */
+		this->LowerWidget(this->company + PRW_COMPANY_FIRST);
 	}
 };
 
@@ -1298,6 +1287,10 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 	NWidgetHorizontal *hor = NULL; // Storage for buttons in one row.
 	int hor_length = 0;
 
+	Dimension sprite_size = GetSpriteSize(SPR_PLAYER_ICON);
+	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
+	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
+
 	for (int widnum = PRW_COMPANY_FIRST; widnum <= PRW_COMPANY_LAST; widnum++) {
 		/* Ensure there is room in 'hor' for another button. */
 		if (hor_length == MAX_LENGTH) {
@@ -1312,8 +1305,8 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 		}
 
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
-		panel->SetMinimalSize(37, 13);
-		panel->SetFill(false, false);
+		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
+		panel->SetFill(true, false);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		hor->Add(panel);
 		hor_length++;
@@ -1324,46 +1317,13 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 	if (hor_length > 0 && hor_length < MAX_LENGTH) {
 		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
 		NWidgetSpacer *spc = new NWidgetSpacer(0, 0);
+		spc->SetMinimalSize(sprite_size.width, sprite_size.height);
 		spc->SetFill(true, false);
 		hor->Add(spc);
 	}
 	if (hor != NULL) vert->Add(hor);
 	return vert;
 }
-
-static const Widget _performance_rating_detail_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},            // PRW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},  // PRW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                    STR_NULL},                            // PRW_BACKGROUND
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP}, // PRW_SCORE_FIRST
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    61,    80, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    81,   100, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   101,   120, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   121,   140, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   141,   160, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   161,   180, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   181,   200, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   201,   220, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP},    // PRW_SCORE_LAST
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},     // PRW_COMPANY_FIRST
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   261,   297,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},     // PRW_COMPANY_LAST
-{   WIDGETS_END},
-};
 
 static const NWidgetPart _nested_performance_rating_detail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -1380,7 +1340,7 @@ static const WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, WDP_AUTO, 299, 241, 299, 241,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_performance_rating_detail_widgets, _nested_performance_rating_detail_widgets, lengthof(_nested_performance_rating_detail_widgets)
+	NULL, _nested_performance_rating_detail_widgets, lengthof(_nested_performance_rating_detail_widgets)
 );
 
 void ShowPerformanceRatingDetail()

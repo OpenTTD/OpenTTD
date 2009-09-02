@@ -57,6 +57,7 @@ Company::Company(uint16 name_1, bool is_ai) :
 	is_ai(is_ai)
 {
 	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
+	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, -1);
 }
 
 Company::~Company()
@@ -69,6 +70,7 @@ Company::~Company()
 
 	DeleteCompanyWindows(this->index);
 	InvalidateWindowData(WC_GRAPH_LEGEND, 0, this->index);
+	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, this->index);
 }
 
 /**
