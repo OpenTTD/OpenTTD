@@ -120,8 +120,10 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
 enum NewsTypeWidgets {
 	NTW_HEADLINE, ///< The news headline.
 	NTW_CLOSEBOX, ///< Close the window.
-	NTW_CAPTION,  ///< Title bar of the window. Only used in type0-news.
-	NTW_VIEWPORT, ///< Viewport in window. Only used in type0-news.
+	NTW_CAPTION,  ///< Title bar of the window. Only used in small news items.
+	NTW_INSET,    ///< Inset around the viewport in the window. Only used in small news items.
+	NTW_VIEWPORT, ///< Viewport in the window. Only used in small news items.
+	NTW_MESSAGE,  ///< Space for displaying the message. Only used in small news items.
 };
 
 /* Normal news items. */
@@ -170,16 +172,10 @@ static NWidgetPart _nested_small_news_widgets[] = {
 
 	/* Main part */
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NTW_HEADLINE),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-
-			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NTW_VIEWPORT), SetMinimalSize(276, 49),
-			EndContainer(),
-
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NTW_INSET), SetPadding(2, 2, 2, 2),
+			NWidget(NWID_VIEWPORT, INVALID_COLOUR, NTW_VIEWPORT), SetPadding(1, 1, 1, 1), SetMinimalSize(274, 47), SetFill(true, false),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 22),
+		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(275, 20), SetFill(true, false),
 	EndContainer(),
 };
 
@@ -278,10 +274,11 @@ struct NewsWindow : Window {
 					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 				break;
 
-			case NM_SMALL:
-				InitializeWindowViewport(this, 3, 17, 274, 47,
-					ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
+			case NM_SMALL: {
+				NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[NTW_VIEWPORT];
+				nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 				break;
+			}
 
 			default: NOT_REACHED();
 		}
@@ -348,12 +345,36 @@ struct NewsWindow : Window {
 
 			case NM_SMALL:
 				this->DrawWidgets();
-				this->DrawViewport();
-				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-				DrawStringMultiLine(2, this->width - 2, 64, this->height, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				break;
 
 			default: NOT_REACHED();
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case NTW_MESSAGE: {
+				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				Dimension d = *size;
+				d.width = (d.width >= padding.width) ? d.width - padding.width : 0;
+				d.height = (d.height >= padding.height) ? d.height - padding.height : 0;
+				d = GetStringMultiLineBoundingBox(this->ni->string_id, d);
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case NTW_MESSAGE:
+				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				DrawStringMultiLine(r.left + 2, r.right - 2, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
+				break;
 		}
 	}
 
