@@ -582,6 +582,11 @@ void Window::DrawWidgets() const
 {
 	if (this->nested_root != NULL) {
 		this->nested_root->Draw(this);
+
+		if (this->flags4 & WF_WHITE_BORDER_MASK) {
+			DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
+		}
+
 		return;
 	}
 
@@ -695,7 +700,6 @@ void Window::DrawWidgets() const
 	if (this->flags4 & WF_WHITE_BORDER_MASK) {
 		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
-
 }
 
 /**
