@@ -62,9 +62,9 @@ struct AIListWindow : public Window {
 
 		this->InitNested(desc); // Initializes 'this->line_height' as side effect.
 
-		this->vscroll.cap = this->nested_array[AIL_WIDGET_LIST]->current_y / this->line_height;
-		this->nested_array[AIL_WIDGET_LIST]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-		SetVScrollCount(this, (int)this->ai_info_list->size() + 1);
+		this->vscroll.SetCapacity(this->nested_array[AIL_WIDGET_LIST]->current_y / this->line_height);
+		this->vscroll.SetCount((int)this->ai_info_list->size() + 1);
+		this->nested_array[AIL_WIDGET_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
@@ -103,13 +103,13 @@ struct AIListWindow : public Window {
 				/* Draw a list of all available AIs. */
 				int y = this->nested_array[AIL_WIDGET_LIST]->pos_y;
 				/* First AI in the list is hardcoded to random */
-				if (this->vscroll.pos == 0) {
+				if (this->vscroll.IsVisible(0)) {
 					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_BLACK);
 					y += this->line_height;
 				}
 				AIInfoList::const_iterator it = this->ai_info_list->begin();
 				for (int i = 1; it != this->ai_info_list->end(); i++, it++) {
-					if (IsInsideBS(i, this->vscroll.pos, this->vscroll.cap)) {
+					if (this->vscroll.IsVisible(i)) {
 						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, (*it).second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_BLACK);
 						y += this->line_height;
 					}
@@ -160,7 +160,7 @@ struct AIListWindow : public Window {
 	{
 		switch (widget) {
 			case AIL_WIDGET_LIST: { // Select one of the AIs
-				int sel = (pt.y - this->nested_array[AIL_WIDGET_LIST]->pos_y) / this->line_height + this->vscroll.pos - 1;
+				int sel = (pt.y - this->nested_array[AIL_WIDGET_LIST]->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
 				if (sel < (int)this->ai_info_list->size()) {
 					this->selected = sel;
 					this->SetDirty();
@@ -194,7 +194,7 @@ struct AIListWindow : public Window {
 	{
 		switch (widget) {
 			case AIL_WIDGET_LIST: {
-				int sel = (pt.y - this->nested_array[AIL_WIDGET_LIST]->pos_y) / this->line_height + this->vscroll.pos - 1;
+				int sel = (pt.y - this->nested_array[AIL_WIDGET_LIST]->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
 				if (sel < (int)this->ai_info_list->size()) {
 					this->selected = sel;
 					this->ChangeAI();
@@ -207,9 +207,8 @@ struct AIListWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / this->line_height;
-		SetVScrollCount(this, (int)this->ai_info_list->size() + 1);
-		this->nested_array[AIL_WIDGET_LIST]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / this->line_height);
+		this->nested_array[AIL_WIDGET_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -280,9 +279,9 @@ struct AISettingsWindow : public Window {
 
 		this->InitNested(desc);  // Initializes 'this->line_height' as side effect.
 
-		this->vscroll.cap = this->nested_array[AIS_WIDGET_BACKGROUND]->current_y / this->line_height;
-		this->nested_array[AIS_WIDGET_BACKGROUND]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-		SetVScrollCount(this, (int)this->ai_config->GetConfigList()->size());
+		this->vscroll.SetCapacity(this->nested_array[AIS_WIDGET_BACKGROUND]->current_y / this->line_height);
+		this->vscroll.SetCount((int)this->ai_config->GetConfigList()->size());
+		this->nested_array[AIS_WIDGET_BACKGROUND]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -308,10 +307,10 @@ struct AISettingsWindow : public Window {
 		AIConfig *config = this->ai_config;
 		AIConfigItemList::const_iterator it = config->GetConfigList()->begin();
 		int i = 0;
-		for (; i < this->vscroll.pos; i++) it++;
+		for (; !this->vscroll.IsVisible(i); i++) it++;
 
 		int y = r.top;
-		for (; i < this->vscroll.pos + this->vscroll.cap && it != config->GetConfigList()->end(); i++, it++) {
+		for (; this->vscroll.IsVisible(i) && it != config->GetConfigList()->end(); i++, it++) {
 			int current_value = config->GetSetting((*it).name);
 
 			int x = 0;
@@ -336,7 +335,7 @@ struct AISettingsWindow : public Window {
 	{
 		switch (widget) {
 			case AIS_WIDGET_BACKGROUND: {
-				int num = (pt.y - this->nested_array[AIS_WIDGET_BACKGROUND]->pos_y) / this->line_height + this->vscroll.pos;
+				int num = (pt.y - this->nested_array[AIS_WIDGET_BACKGROUND]->pos_y) / this->line_height + this->vscroll.GetPosition();
 				if (num >= (int)this->ai_config->GetConfigList()->size()) break;
 
 				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
@@ -404,8 +403,8 @@ struct AISettingsWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / this->line_height;
-		this->nested_array[AIS_WIDGET_BACKGROUND]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / this->line_height);
+		this->nested_array[AIS_WIDGET_BACKGROUND]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnTick()
@@ -506,9 +505,9 @@ struct AIConfigWindow : public Window {
 	{
 		this->InitNested(&_ai_config_desc); // Initializes 'this->line_height' as a side effect.
 		this->selected_slot = INVALID_COMPANY;
-		this->vscroll.cap = this->nested_array[AIC_WIDGET_LIST]->current_y / this->line_height;
-		this->nested_array[AIC_WIDGET_LIST]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-		SetVScrollCount(this, MAX_COMPANIES);
+		this->vscroll.SetCapacity(this->nested_array[AIC_WIDGET_LIST]->current_y / this->line_height);
+		this->vscroll.SetCount(MAX_COMPANIES);
+		this->nested_array[AIC_WIDGET_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		this->OnInvalidateData(0);
 	}
 
@@ -544,7 +543,7 @@ struct AIConfigWindow : public Window {
 			}
 			case AIC_WIDGET_LIST: {
 				int y = r.top;
-				for (int i = this->vscroll.pos; i < this->vscroll.pos + this->vscroll.cap && i < MAX_COMPANIES; i++) {
+				for (int i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < MAX_COMPANIES; i++) {
 					StringID text;
 
 					if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL) {
@@ -583,7 +582,7 @@ struct AIConfigWindow : public Window {
 			}
 
 			case AIC_WIDGET_LIST: { // Select a slot
-				uint slot = (pt.y - this->nested_array[widget]->pos_y) / this->line_height + this->vscroll.pos;
+				uint slot = (pt.y - this->nested_array[widget]->pos_y) / this->line_height + this->vscroll.GetPosition();
 
 				if (slot == 0 || slot > _settings_newgame.difficulty.max_no_competitors) slot = INVALID_COMPANY;
 				this->selected_slot = (CompanyID)slot;
@@ -666,7 +665,7 @@ struct AIDebugWindow : public Window {
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
-		this->vscroll.cap = 14; // Minimal number of lines in the log panel.
+		this->vscroll.SetCapacity(14); // Minimal number of lines in the log panel.
 
 		this->InitNested(desc, number);
 		/* Disable the companies who are not active or not an AI */
@@ -675,7 +674,6 @@ struct AIDebugWindow : public Window {
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
 
-		this->vscroll.pos = 0;
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
 
@@ -686,7 +684,7 @@ struct AIDebugWindow : public Window {
 	{
 		if (widget == AID_WIDGET_LOG_PANEL) {
 			resize->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			size->height = this->vscroll.cap * resize->height + this->top_offset + this->bottom_offset;
+			size->height = this->vscroll.GetCapacity() * resize->height + this->top_offset + this->bottom_offset;
 		}
 	}
 
@@ -765,8 +763,8 @@ struct AIDebugWindow : public Window {
 		_current_company = old_company;
 
 		int scroll_count = (log == NULL) ? 0 : log->used;
-		if (this->vscroll.count != scroll_count) {
-			SetVScrollCount(this, scroll_count);
+		if (this->vscroll.GetCount() != scroll_count) {
+			this->vscroll.SetCount(scroll_count);
 
 			/* We need a repaint */
 			this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
@@ -776,19 +774,20 @@ struct AIDebugWindow : public Window {
 
 		/* Detect when the user scrolls the window. Enable autoscroll when the
 		 * bottom-most line becomes visible. */
-		if (this->last_vscroll_pos != this->vscroll.pos) {
-			this->autoscroll = this->vscroll.pos >= log->used - this->vscroll.cap;
+		if (this->last_vscroll_pos != this->vscroll.GetPosition()) {
+			this->autoscroll = this->vscroll.GetPosition() >= log->used - this->vscroll.GetCapacity();
 		}
 		if (this->autoscroll) {
-			int scroll_pos = max(0, log->used - this->vscroll.cap);
-			if (scroll_pos != this->vscroll.pos) {
-				this->vscroll.pos = scroll_pos;
+			int scroll_pos = max(0, log->used - this->vscroll.GetCapacity());
+			if (scroll_pos != this->vscroll.GetPosition()) {
+				this->vscroll.SetPosition(scroll_pos);
 
 				/* We need a repaint */
 				this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+				this->InvalidateWidget(AID_WIDGET_LOG_PANEL);
 			}
 		}
-		this->last_vscroll_pos = this->vscroll.pos;
+		this->last_vscroll_pos = this->vscroll.GetPosition();
 
 	}
 
@@ -814,7 +813,7 @@ struct AIDebugWindow : public Window {
 				if (log == NULL) return;
 
 				int y = this->top_offset;
-				for (int i = this->vscroll.pos; i < (this->vscroll.cap + this->vscroll.pos) && i < log->used; i++) {
+				for (int i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < log->used; i++) {
 					uint pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 					if (log->lines[pos] == NULL) break;
 
@@ -840,9 +839,16 @@ struct AIDebugWindow : public Window {
 	{
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
+
+		CompanyID old_company = _current_company;
+		_current_company = ai_debug_company;
+		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
+		_current_company = old_company;
+		this->vscroll.SetCount((log == NULL) ? 0 : log->used);
+
 		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		this->autoscroll = true;
-		this->last_vscroll_pos = this->vscroll.pos;
+		this->last_vscroll_pos = this->vscroll.GetPosition();
 		this->SetDirty();
 	}
 
@@ -875,8 +881,7 @@ struct AIDebugWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		SetVScrollCount(this, this->vscroll.count); // vscroll.pos should be in a valid range
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 	}
 };
 

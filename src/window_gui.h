@@ -218,6 +218,16 @@ public:
 	}
 
 	/**
+	 * Checks whether given current item is visible in the list
+	 * @param item to check
+	 * @return true iff the item is visible
+	 */
+	FORCEINLINE bool IsVisible(uint16 item) const
+	{
+		return IsInsideBS(item, this->GetPosition(), this->GetCapacity());
+	}
+
+	/**
 	 * Sets the number of elements in the list
 	 * @param num the number of elements in the list
 	 * @note updates the position if needed
@@ -264,7 +274,7 @@ public:
 	void SetPosition(int position)
 	{
 		assert(position >= 0);
-		assert(this->count <= this->cap ? (position == 0) : (position + this->cap < this->count));
+		assert(this->count <= this->cap ? (position == 0) : (position + this->cap <= this->count));
 		this->pos = position;
 	}
 
