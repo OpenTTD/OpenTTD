@@ -822,7 +822,7 @@ struct MessageHistoryWindow : Window {
 	MessageHistoryWindow(const WindowDesc *desc) : Window()
 	{
 		this->InitNested(desc); // Initializes 'this->line_height' and 'this->date_width'.
-		this->vscroll.cap = (this->nested_array[MHW_BACKGROUND]->current_y - this->top_spacing - this->bottom_spacing) / this->line_height;
+		this->vscroll.SetCapacity((this->nested_array[MHW_BACKGROUND]->current_y - this->top_spacing - this->bottom_spacing) / this->line_height);
 		this->OnInvalidateData(0);
 	}
 
@@ -852,7 +852,7 @@ struct MessageHistoryWindow : Window {
 
 		/* Find the first news item to display. */
 		NewsItem *ni = _latest_news;
-		for (int n = this->vscroll.pos; n > 0; n--) {
+		for (int n = this->vscroll.GetPosition(); n > 0; n--) {
 			ni = ni->prev;
 			if (ni == NULL) return;
 		}
@@ -861,7 +861,7 @@ struct MessageHistoryWindow : Window {
 		int y = r.top + this->top_spacing;
 		const int date_left = r.left + WD_FRAMETEXT_LEFT;       // Left edge of dates
 		const int news_left = date_left + this->date_width + 5; // Left edge of news items
-		for (int n = this->vscroll.cap; n > 0; n--) {
+		for (int n = this->vscroll.GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
 			DrawString(date_left, news_left, y, STR_SHORT_DATE);
 
@@ -875,7 +875,7 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		SetVScrollCount(this, _total_news);
+		this->vscroll.SetCount(_total_news);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -884,7 +884,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == NULL) return;
 
-			for (int n = (pt.y - this->nested_array[MHW_BACKGROUND]->pos_y - WD_FRAMERECT_TOP) / this->line_height + this->vscroll.pos; n > 0; n--) {
+			for (int n = (pt.y - this->nested_array[MHW_BACKGROUND]->pos_y - WD_FRAMERECT_TOP) / this->line_height + this->vscroll.GetPosition(); n > 0; n--) {
 				ni = ni->prev;
 				if (ni == NULL) return;
 			}
@@ -895,7 +895,7 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / this->line_height;
+		this->vscroll.UpdateCapacity(delta.y / this->line_height);
 		this->OnInvalidateData(0);
 	}
 };

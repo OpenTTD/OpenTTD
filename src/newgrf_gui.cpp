@@ -156,8 +156,8 @@ struct NewGRFAddWindow : public Window {
 		/* Count the number of GRFs */
 		for (c = _all_grfs; c != NULL; c = c->next) n++;
 
-		this->vscroll.cap = (wl->bottom - wl->top) / 10;
-		SetVScrollCount(this, n);
+		this->vscroll.SetCapacity((wl->bottom - wl->top) / 10);
+		this->vscroll.SetCount(n);
 
 		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
 		this->DrawWidgets();
@@ -165,8 +165,8 @@ struct NewGRFAddWindow : public Window {
 		GfxFillRect(wl->left + 1, wl->top + 1, wl->right, wl->bottom, 0xD7);
 
 		uint y = wl->top + 1;
-		for (c = _all_grfs, n = 0; c != NULL && n < (this->vscroll.pos + this->vscroll.cap); c = c->next, n++) {
-			if (n >= this->vscroll.pos) {
+		for (c = _all_grfs, n = 0; c != NULL && n < (this->vscroll.GetPosition() + this->vscroll.GetCapacity()); c = c->next, n++) {
+			if (n >= this->vscroll.GetPosition()) {
 				bool h = c == this->sel;
 				const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 
@@ -194,7 +194,7 @@ struct NewGRFAddWindow : public Window {
 			case ANGRFW_GRF_LIST: {
 				/* Get row... */
 				const GRFConfig *c;
-				uint i = (pt.y - this->widget[ANGRFW_GRF_LIST].top) / 10 + this->vscroll.pos;
+				uint i = (pt.y - this->widget[ANGRFW_GRF_LIST].top) / 10 + this->vscroll.GetPosition();
 
 				for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
 				this->sel = c;
@@ -376,8 +376,8 @@ struct NewGRFWindow : public Window {
 
 		for (c = this->list, i = 0; c != NULL; c = c->next, i++) {}
 
-		this->vscroll.cap = (this->widget[SNGRFS_FILE_LIST].bottom - this->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
-		SetVScrollCount(this, i);
+		this->vscroll.SetCapacity((this->widget[SNGRFS_FILE_LIST].bottom - this->widget[SNGRFS_FILE_LIST].top) / 14 + 1);
+		this->vscroll.SetCount(i);
 
 		this->SetWidgetsDisabledState(!this->editable,
 			SNGRFS_PRESET_LIST,
@@ -437,7 +437,7 @@ struct NewGRFWindow : public Window {
 		int y = this->widget[SNGRFS_FILE_LIST].top;
 		int i = 0;
 		for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {
-			if (i >= this->vscroll.pos && i < this->vscroll.pos + this->vscroll.cap) {
+			if (this->vscroll.IsVisible(i)) {
 				const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 				SpriteID pal;
 				byte txtoffset;
@@ -579,7 +579,7 @@ struct NewGRFWindow : public Window {
 
 			case SNGRFS_FILE_LIST: { // Select a GRF
 				GRFConfig *c;
-				uint i = (pt.y - this->widget[SNGRFS_FILE_LIST].top) / 14 + this->vscroll.pos;
+				uint i = (pt.y - this->widget[SNGRFS_FILE_LIST].top) / 14 + this->vscroll.GetPosition();
 
 				for (c = this->list; c != NULL && i > 0; c = c->next, i--) {}
 				this->sel = c;
@@ -711,8 +711,8 @@ struct NewGRFWindow : public Window {
 			ResizeButtons(this, SNGRFS_SET_PARAMETERS, SNGRFS_APPLY_CHANGES);
 		}
 
-		this->vscroll.cap += delta.y / 14;
-		this->widget[SNGRFS_FILE_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / 14);
+		this->widget[SNGRFS_FILE_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		this->SetupNewGRFWindow();
 	}

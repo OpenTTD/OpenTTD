@@ -423,9 +423,9 @@ private:
 	{
 		int sel = (y - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / ORDER_LIST_LINE_HEIGHT; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
-		if ((uint)sel >= this->vscroll.cap) return INVALID_ORDER;
+		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
 
-		sel += this->vscroll.pos;
+		sel += this->vscroll.GetPosition();
 
 		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_ORDER;
 	}
@@ -639,7 +639,7 @@ public:
 		assert(this->widget[ORDER_WIDGET_ORDER_LIST].top + 1 + num_lines * ORDER_LIST_LINE_HEIGHT == this->widget[ORDER_WIDGET_ORDER_LIST].bottom);
 
 		this->owner = v->owner;
-		this->vscroll.cap = num_lines;
+		this->vscroll.SetCapacity(num_lines);
 		this->resize.step_height = ORDER_LIST_LINE_HEIGHT;
 		this->selected_order = -1;
 		this->vehicle = v;
@@ -717,7 +717,7 @@ public:
 	{
 		bool shared_orders = this->vehicle->IsOrderListShared();
 
-		SetVScrollCount(this, this->vehicle->GetNumOrders() + 1);
+		this->vscroll.SetCount(this->vehicle->GetNumOrders() + 1);
 
 		int sel = OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel);
@@ -829,12 +829,12 @@ public:
 
 		int y = 15;
 
-		int i = this->vscroll.pos;
+		int i = this->vscroll.GetPosition();
 		order = this->vehicle->GetOrder(i);
 		StringID str;
 		while (order != NULL) {
 			/* Don't draw anything if it extends past the end of the window. */
-			if (i - this->vscroll.pos >= this->vscroll.cap) break;
+			if (!this->vscroll.IsVisible(i)) break;
 
 			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, this->widget[ORDER_WIDGET_ORDER_LIST].right - 4);
 			y += ORDER_LIST_LINE_HEIGHT;
@@ -843,7 +843,7 @@ public:
 			order = order->next;
 		}
 
-		if (i - this->vscroll.pos < this->vscroll.cap) {
+		if (this->vscroll.IsVisible(i)) {
 			str = shared_orders ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
 			DrawString(this->widget[ORDER_WIDGET_ORDER_LIST].left + 2, this->widget[ORDER_WIDGET_ORDER_LIST].right - 2, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
@@ -1167,7 +1167,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		/* Update the scroll + matrix */
-		this->vscroll.cap = (this->widget[ORDER_WIDGET_ORDER_LIST].bottom - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / ORDER_LIST_LINE_HEIGHT;
+		this->vscroll.UpdateCapacity((this->widget[ORDER_WIDGET_ORDER_LIST].bottom - this->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / ORDER_LIST_LINE_HEIGHT);
 
 		/* Update the button bars. */
 		if (this->vehicle->owner == _local_company) {
