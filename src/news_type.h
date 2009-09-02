@@ -72,6 +72,7 @@ enum NewsMode {
 	NM_NORMAL   = 1, ///< Show a simple news message without viewport (height 170 pixels).
 	NM_THIN     = 2, ///< Show a simple news message with a viewport (height 130 pixels).
 	NM_COMPANY  = 3, ///< Show news about companies.
+	NM_NEW_VEH  = 4, ///< Show news about new vehicles.
 };
 
 /**

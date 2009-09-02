@@ -263,25 +263,6 @@ void DrawVehicleEngine(int x, int y, EngineID engine, SpriteID pal)
 	}
 }
 
-void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
-{
-	assert(ni->reftype1 == NR_ENGINE);
-	EngineID engine = ni->ref1;
-
-	SetDParam(0, GetEngineCategoryName(engine));
-	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, TC_FROMSTRING, SA_CENTER);
-
-	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
-
-	SetDParam(0, engine);
-	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEWS_NEW_VEHICLE_TYPE, TC_FROMSTRING, SA_CENTER);
-
-	DrawVehicleEngine(w->width >> 1, 88, engine, GetEnginePalette(engine, _local_company));
-	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
-	DrawStringMultiLine(26, w->width - 26, 100, 170, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
-}
-
-
 /** Sort all items using qsort() and given 'CompareItems' function
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
