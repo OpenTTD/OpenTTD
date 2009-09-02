@@ -10,6 +10,7 @@
 /** @file widget.cpp Handling of the default/simple widgets. */
 
 #include "stdafx.h"
+#include "openttd.h"
 #include "company_func.h"
 #include "gfx_func.h"
 #include "window_gui.h"
@@ -17,6 +18,7 @@
 #include "zoom_func.h"
 #include "debug.h"
 #include "strings_func.h"
+#include "transparency.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1866,7 +1868,20 @@ void NWidgetViewport::StoreWidgets(Widget *widgets, int length, bool left_moving
 
 void NWidgetViewport::Draw(const Window *w)
 {
-	w->DrawViewport();
+	if (this->disp_flags & ND_NO_TRANSPARENCY) {
+		TransparencyOptionBits to_backup = _transparency_opt;
+		_transparency_opt = 0; // Disable all transparency
+		w->DrawViewport();
+		_transparency_opt = to_backup;
+	} else {
+		w->DrawViewport();
+	}
+
+	/* Optionally shade the viewport. */
+	if (this->disp_flags & (ND_SHADE_GREY | ND_SHADE_DIMMED)) {
+		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1,
+				(this->disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
+	}
 }
 
 Scrollbar *NWidgetViewport::FindScrollbar(Window *w, bool allow_next)

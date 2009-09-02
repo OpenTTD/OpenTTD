@@ -281,11 +281,17 @@ public:
 
 /** Nested widget flags that affect display and interaction withe 'real' widgets. */
 enum NWidgetDisplay {
-	NDB_LOWERED  = 0, ///< Widget is lowered (pressed down) bit.
-	NDB_DISABLED = 1, ///< Widget is disabled (greyed out) bit.
+	NDB_LOWERED         = 0, ///< Widget is lowered (pressed down) bit.
+	NDB_DISABLED        = 1, ///< Widget is disabled (greyed out) bit.
+	NDB_NO_TRANSPARENCY = 2, ///< Viewport is never transparent.
+	NDB_SHADE_GREY      = 3, ///< Shade viewport to grey-scale.
+	NDB_SHADE_DIMMED    = 4, ///< Display dimmed colours in the viewport.
 
-	ND_LOWERED  = 1 << NDB_LOWERED,  ///< Bit value of the lowered flag.
-	ND_DISABLED = 1 << NDB_DISABLED, ///< Bit value of the disabled flag.
+	ND_LOWERED  = 1 << NDB_LOWERED,                ///< Bit value of the lowered flag.
+	ND_DISABLED = 1 << NDB_DISABLED,               ///< Bit value of the disabled flag.
+	ND_NO_TRANSPARENCY = 1 << NDB_NO_TRANSPARENCY, ///< Bit value of the 'no transparency' flag.
+	ND_SHADE_GREY      = 1 << NDB_SHADE_GREY,      ///< Bit value of the 'shade to grey' flag.
+	ND_SHADE_DIMMED    = 1 << NDB_SHADE_DIMMED,    ///< Bit value of the 'dimmed colours' flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay);
 
@@ -488,6 +494,8 @@ private:
  * Nested widget to display a viewport in a window.
  * After initializing the nested widget tree, call #InitializeViewport(). After changing the window size,
  * call #UpdateViewportCoordinates() eg from Window::OnResize().
+ * If the #display_flags field contains the #ND_NO_TRANSPARENCY bit, the viewport will disable transparency.
+ * Shading to grey-scale is controlled with the #ND_SHADE_GREY bit (used for B&W news papers), the #ND_SHADE_DIMMED gives dimmed colours (for colour news papers).
  * @todo Class derives from #NWidgetCore, but does not use #colour, #widget_data, or #tool_tip.
  * @ingroup NestedWidgets */
 class NWidgetViewport : public NWidgetCore {
