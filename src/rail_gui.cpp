@@ -1024,9 +1024,9 @@ public:
 		if (newstation) {
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
-			this->vscroll.count = _railstation.station_count;
-			this->vscroll.cap   = GB(this->nested_array[BRSW_NEWST_LIST]->widget_data, MAT_ROW_START, MAT_ROW_BITS);
-			this->vscroll.pos   = Clamp(_railstation.station_type - 2, 0, this->vscroll.count - this->vscroll.cap);
+			this->vscroll.SetCount(_railstation.station_count);
+			this->vscroll.SetCapacity(GB(this->nested_array[BRSW_NEWST_LIST]->widget_data, MAT_ROW_START, MAT_ROW_BITS));
+			this->vscroll.SetPosition(Clamp(_railstation.station_type - 2, 0, this->vscroll.GetCount() - this->vscroll.GetCapacity()));
 		} else {
 			/* New stations are not available, so ensure the default station
 			 * type is 'selected'. */
@@ -1150,7 +1150,7 @@ public:
 
 			case BRSW_NEWST_LIST: {
 				uint y = r.top;
-				for (uint16 i = this->vscroll.pos; i < _railstation.station_count && i < (uint)(this->vscroll.pos + this->vscroll.cap); i++) {
+				for (uint16 i = this->vscroll.GetPosition(); i < _railstation.station_count && this->vscroll.IsVisible(i); i++) {
 					const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
 					StringID str = STR_STATION_CLASS_DFLT;
@@ -1308,8 +1308,8 @@ public:
 				const StationSpec *statspec;
 				int y = (pt.y - this->nested_array[BRSW_NEWST_LIST]->pos_y) / this->line_height;
 
-				if (y >= this->vscroll.cap) return;
-				y += this->vscroll.pos;
+				if (y >= this->vscroll.GetCapacity()) return;
+				y += this->vscroll.GetPosition();
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
@@ -1339,8 +1339,8 @@ public:
 
 			this->CheckSelectedSize(GetCustomStationSpec(_railstation.station_class, _railstation.station_type));
 
-			this->vscroll.count = _railstation.station_count;
-			this->vscroll.pos   = _railstation.station_type;
+			this->vscroll.SetCount(_railstation.station_count);
+			this->vscroll.SetPosition(_railstation.station_type);
 		}
 
 		SndPlayFx(SND_15_BEEP);
@@ -1775,24 +1775,24 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
 		this->InitNested(desc, TRANSPORT_RAIL);
-		this->hscroll.cap = 5;
-		this->hscroll.count = _waypoint_count;
+		this->hscroll.SetCapacity(5);
+		this->hscroll.SetCount(_waypoint_count);
 	};
 
 	virtual void OnPaint()
 	{
-		for (uint i = 0; i < this->hscroll.cap; i++) {
-			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll.pos + i) == _cur_waypoint_type);
+		for (uint i = 0; i < this->hscroll.GetCapacity(); i++) {
+			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll.GetPosition() + i) == _cur_waypoint_type);
 		}
 
 		this->DrawWidgets();
 
-		for (uint i = 0; i < this->hscroll.cap; i++) {
-			if (this->hscroll.pos + i < this->hscroll.count) {
-				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.pos + i);
+		for (uint i = 0; i < this->hscroll.GetCapacity(); i++) {
+			if (this->hscroll.GetPosition() + i < this->hscroll.GetCount()) {
+				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.GetPosition() + i);
 
 				int bottom = this->nested_array[BRWW_WAYPOINT_1 + i]->pos_y + this->nested_array[BRWW_WAYPOINT_1 + i]->current_y;
-				DrawWaypointSprite(this->nested_array[BRWW_WAYPOINT_1 + i]->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.pos + i, _cur_railtype);
+				DrawWaypointSprite(this->nested_array[BRWW_WAYPOINT_1 + i]->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
@@ -1811,7 +1811,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			case BRWW_WAYPOINT_3:
 			case BRWW_WAYPOINT_4:
 			case BRWW_WAYPOINT_5: {
-				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll.pos;
+				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll.GetPosition();
 
 				/* Check station availability callback */
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);

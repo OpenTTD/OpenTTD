@@ -90,7 +90,7 @@ enum SignListWidgets {
 struct SignListWindow : Window, SignList {
 	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->vscroll.cap = 12;
+		this->vscroll.SetCapacity(12);
 		this->resize.step_height = 10;
 		this->resize.height = this->height - 10 * 7; // minimum if 5 in the list
 
@@ -105,20 +105,20 @@ struct SignListWindow : Window, SignList {
 		BuildSignsList();
 		SortSignsList();
 
-		SetVScrollCount(this, this->signs.Length());
+		this->vscroll.SetCount(this->signs.Length()); // Update the scrollbar
 
-		SetDParam(0, this->vscroll.count);
+		SetDParam(0, this->vscroll.GetCount());
 		this->DrawWidgets();
 
 		/* No signs? */
 		int y = this->widget[SLW_LIST].top + 2; // offset from top of widget
-		if (this->vscroll.count == 0) {
+		if (this->vscroll.GetCount() == 0) {
 			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_STATION_LIST_NONE);
 			return;
 		}
 
 		/* Start drawing the signs */
-		for (uint16 i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < this->vscroll.count; i++) {
+		for (uint16 i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->vscroll.GetCount(); i++) {
 			const Sign *si = this->signs[i];
 
 			if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, this->widget[SLW_LIST].left + 4, y + 1);
@@ -134,9 +134,9 @@ struct SignListWindow : Window, SignList {
 		if (widget == SLW_LIST) {
 			uint32 id_v = (pt.y - this->widget[SLW_LIST].top - 1) / 10;
 
-			if (id_v >= this->vscroll.cap) return;
-			id_v += this->vscroll.pos;
-			if (id_v >= this->vscroll.count) return;
+			if (id_v >= this->vscroll.GetCapacity()) return;
+			id_v += this->vscroll.GetPosition();
+			if (id_v >= this->vscroll.GetCount()) return;
 
 			const Sign *si = this->signs[id_v];
 			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
@@ -145,7 +145,7 @@ struct SignListWindow : Window, SignList {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / 10;
+		this->vscroll.UpdateCapacity(delta.y / 10);
 	}
 
 	virtual void OnInvalidateData(int data)

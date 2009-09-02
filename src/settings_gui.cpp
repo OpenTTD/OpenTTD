@@ -1448,9 +1448,8 @@ struct GameSettingsWindow : Window {
 
 		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric setting buttons are depressed
-		this->vscroll.pos = 0;
-		this->vscroll.cap = (this->widget[SETTINGSEL_OPTIONSPANEL].bottom - this->widget[SETTINGSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
-		SetVScrollCount(this, _settings_main_page.Length());
+		this->vscroll.SetCapacity((this->widget[SETTINGSEL_OPTIONSPANEL].bottom - this->widget[SETTINGSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT);
+		this->vscroll.SetCount(_settings_main_page.Length());
 
 		this->resize.step_height = SETTING_HEIGHT;
 		this->resize.height = this->height;
@@ -1464,7 +1463,7 @@ struct GameSettingsWindow : Window {
 	{
 		this->DrawWidgets();
 		_settings_main_page.Draw(settings_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
-				this->width - 13, this->vscroll.pos, this->vscroll.pos + this->vscroll.cap);
+				this->width - 13, this->vscroll.GetPosition(), this->vscroll.GetPosition() + this->vscroll.GetCapacity());
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1474,7 +1473,7 @@ struct GameSettingsWindow : Window {
 		int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 		if (y < 0) return;  // Clicked above first entry
 
-		byte btn = this->vscroll.pos + y / SETTING_HEIGHT;  // Compute which setting is selected
+		byte btn = this->vscroll.GetPosition() + y / SETTING_HEIGHT;  // Compute which setting is selected
 		if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
 		uint cur_row = 0;
@@ -1488,7 +1487,7 @@ struct GameSettingsWindow : Window {
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
 			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
-			SetVScrollCount(this, _settings_main_page.Length());
+			this->vscroll.SetCount(_settings_main_page.Length());
 			this->SetDirty();
 			return;
 		}
@@ -1608,8 +1607,7 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / SETTING_HEIGHT;
-		SetVScrollCount(this, _settings_main_page.Length());
+		this->vscroll.UpdateCapacity(delta.y / SETTING_HEIGHT);
 	}
 };
 
