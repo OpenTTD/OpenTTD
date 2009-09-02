@@ -124,12 +124,7 @@ enum NewsTypeWidgets {
 	NTW_VIEWPORT, ///< Viewport in window. Only used in type0-news.
 };
 
-static const Widget _normal_news_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   169, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
+/* Normal news items. */
 static const NWidgetPart _nested_normal_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
 		NWidget(NWID_HORIZONTAL),
@@ -144,15 +139,10 @@ static WindowDesc _normal_news_desc(
 	WDP_CENTER, 476, 430, 170, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_normal_news_widgets, _nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
+	NULL, _nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
 );
 
-static const Widget _thin_news_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   129, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
+/* Thin news items. */
 static const NWidgetPart _nested_thin_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
 		NWidget(NWID_HORIZONTAL),
@@ -167,17 +157,10 @@ static WindowDesc _thin_news_desc(
 	WDP_CENTER, 476, 430, 130, 430, 130,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_thin_news_widgets, _nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
+	NULL, _nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
 );
 
-static const Widget _small_news_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   279,    14,    86, 0x0,                      STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,    11,   279,     0,    13, STR_NEWS_MESSAGE_CAPTION, STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     2,   277,    16,    64, 0x0,                      STR_NULL},
-{   WIDGETS_END},
-};
-
+/* Small news items. */
 static NWidgetPart _nested_small_news_widgets[] = {
 	/* Caption + close box */
 	NWidget(NWID_HORIZONTAL),
@@ -204,8 +187,7 @@ static WindowDesc _small_news_desc(
 	WDP_CENTER, 476, 280, 87, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	_small_news_widgets,
-	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
+	NULL, _nested_small_news_widgets, lengthof(_nested_small_news_widgets)
 );
 
 /**
@@ -276,7 +258,7 @@ struct NewsWindow : Window {
 	NewsItem *ni;         ///< News item to display.
 	static uint duration; ///< Remaining time for showing current news message (may only be accessed while a news item is displayed).
 
-	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(desc), ni(ni)
+	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(), ni(ni)
 	{
 		NewsWindow::duration = 555;
 		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
@@ -284,7 +266,7 @@ struct NewsWindow : Window {
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc);
 
 		const NewsMode display_mode = _news_subtype_data[this->ni->subtype].display_mode;
 		switch (display_mode) {
@@ -305,7 +287,7 @@ struct NewsWindow : Window {
 		}
 	}
 
-	void DrawNewsBorder()
+	void DrawNewsBorder() const
 	{
 		int left = 0;
 		int right = this->width - 1;
