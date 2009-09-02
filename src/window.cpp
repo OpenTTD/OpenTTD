@@ -2626,42 +2626,6 @@ int PositionMainToolbar(Window *w)
 	return w->left;
 }
 
-/**
- * Set the number of items of the vertical scrollbar.
- *
- * Function also updates the position of the scrollbar if necessary.
- * @param w   Window containing the vertical scrollbar
- * @param num New number of items
- */
-void SetVScrollCount(Window *w, int num)
-{
-	w->vscroll.SetCount(num);
-}
-
-/**
- * Set the number of items of the second vertical scrollbar.
- *
- * Function also updates the position of the scrollbar if necessary.
- * @param w   Window containing the second vertical scrollbar
- * @param num New number of items
- */
-void SetVScroll2Count(Window *w, int num)
-{
-	w->vscroll2.SetCount(num);
-}
-
-/**
- * Set the number of items of the horizontal scrollbar.
- *
- * Function also updates the position of the scrollbar if necessary.
- * @param w   Window containing the horizontal scrollbar
- * @param num New number of items
- */
-void SetHScrollCount(Window *w, int num)
-{
-	w->hscroll.SetCount(num);
-}
-
 
 /**
  * Switches viewports following vehicles, which get autoreplaced

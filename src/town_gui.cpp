@@ -108,7 +108,7 @@ public:
 			Window(desc, window_number), sel_index(-1)
 	{
 		this->town = Town::Get(this->window_number);
-		this->vscroll.cap = 5;
+		this->vscroll.SetCapacity(5);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -118,7 +118,7 @@ public:
 		int numact;
 		uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
 
-		SetVScrollCount(this, numact + 1);
+		this->vscroll.SetCount(numact + 1);
 
 		if (this->sel_index != -1 && !HasBit(buttons, this->sel_index)) {
 			this->sel_index = -1;
@@ -172,7 +172,7 @@ public:
 		}
 
 		y = this->widget[TWA_COMMAND_LIST].top + 1;
-		int pos = this->vscroll.pos;
+		int pos = this->vscroll.GetPosition();
 
 		if (--pos < 0) {
 			DrawString(this->widget[TWA_COMMAND_LIST].left + 2, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
@@ -206,7 +206,7 @@ public:
 
 				if (!IsInsideMM(y, 0, 5)) return;
 
-				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_company, this->town), y + this->vscroll.pos - 1);
+				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_company, this->town), y + this->vscroll.GetPosition() - 1);
 				if (y >= 0) {
 					this->sel_index = y;
 					this->SetDirty();
@@ -558,7 +558,7 @@ private:
 
 			this->towns.Compact();
 			this->towns.RebuildDone();
-			SetVScrollCount(this, this->towns.Length()); // Update scrollbar as well.
+			this->vscroll.SetCount(this->towns.Length()); // Update scrollbar as well.
 		}
 		/* Always sort the towns. */
 		this->last_town = NULL;
@@ -603,7 +603,7 @@ public:
 		this->BuildSortTownList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.cap = this->nested_array[TDW_CENTERTOWN]->current_y / (int)this->resize.step_height;
+		this->vscroll.SetCapacity(this->nested_array[TDW_CENTERTOWN]->current_y / (int)this->resize.step_height);
 	}
 
 	~TownDirectoryWindow()
@@ -635,7 +635,7 @@ public:
 			case TDW_CENTERTOWN: {
 				int n = 0;
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (uint i = this->vscroll.pos; i < this->towns.Length(); i++) {
+				for (uint i = this->vscroll.GetPosition(); i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
 
 					assert(t->xy != INVALID_TILE);
@@ -645,7 +645,7 @@ public:
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TOWN_DIRECTORY_TOWN);
 
 					y += this->resize.step_height;
-					if (++n == this->vscroll.cap) break; // max number of towns in 1 window
+					if (++n == this->vscroll.GetCapacity()) break; // max number of towns in 1 window
 				}
 			} break;
 		}
@@ -716,9 +716,9 @@ public:
 			case TDW_CENTERTOWN: { // Click on Town Matrix
 				uint16 id_v = (pt.y - this->nested_array[widget]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 
-				if (id_v >= this->vscroll.cap) return; // click out of bounds
+				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 
-				id_v += this->vscroll.pos;
+				id_v += this->vscroll.GetPosition();
 
 				if (id_v >= this->towns.Length()) return; // click out of town bounds
 
@@ -742,7 +742,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 	}
 
 	virtual void OnInvalidateData(int data)

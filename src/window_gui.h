@@ -957,8 +957,4 @@ void ResizeButtons(Window *w, byte left, byte right);
 
 void ResizeWindowForWidget(Window *w, uint widget, int delta_x, int delta_y);
 
-void SetVScrollCount(Window *w, int num);
-void SetVScroll2Count(Window *w, int num);
-void SetHScrollCount(Window *w, int num);
-
 #endif /* WINDOW_GUI_H */

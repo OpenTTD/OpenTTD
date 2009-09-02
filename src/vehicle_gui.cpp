@@ -102,6 +102,7 @@ void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 w
 	GenerateVehicleSortList(&this->vehicles, this->vehicle_type, owner, index, window_type);
 
 	this->vehicles.RebuildDone();
+	this->vscroll.SetCount(this->vehicles.Length());
 }
 
 /* cached values for VehicleNameSorter to spare many GetString() calls */
@@ -298,14 +299,14 @@ struct RefitWindow : public Window {
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window(desc, v->index)
 	{
 		this->owner = v->owner;
-		this->vscroll.cap = 8;
+		this->vscroll.SetCapacity(8);
 		this->resize.step_height = 14;
 
 		this->order = order;
 		this->sel  = -1;
 		this->list = BuildRefitList(v);
 		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
-		SetVScrollCount(this, this->list->num_lines);
+		this->vscroll.SetCount(this->list->num_lines);
 
 		this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
 		this->widget[VRW_MATRIX].tooltips       = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
@@ -337,12 +338,12 @@ struct RefitWindow : public Window {
 			}
 		}
 
-		SetVScrollCount(this, this->list->num_lines);
+		this->vscroll.SetCount(this->list->num_lines);
 
 		SetDParam(0, v->index);
 		this->DrawWidgets();
 
-		this->cargo = DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.pos, this->vscroll.cap, this->resize.step_height, this->width - 2);
+		this->cargo = DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, this->width - 2);
 
 		if (this->cargo != NULL) {
 			CommandCost cost;
@@ -365,7 +366,7 @@ struct RefitWindow : public Window {
 			case VRW_MATRIX: { // listbox
 				int y = pt.y - this->widget[VRW_MATRIX].top;
 				if (y >= 0) {
-					this->sel = (y / (int)this->resize.step_height) + this->vscroll.pos;
+					this->sel = (y / (int)this->resize.step_height) + this->vscroll.GetPosition();
 					this->SetDirty();
 				}
 				break;
@@ -387,8 +388,8 @@ struct RefitWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->widget[VRW_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->widget[VRW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -807,8 +808,8 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
 	int left = this->widget[VLW_WIDGET_LIST].left + WD_MATRIX_LEFT;
 	int right = this->widget[VLW_WIDGET_LIST].right - WD_MATRIX_RIGHT;
 	int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
-	uint max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
-	for (uint i = this->vscroll.pos; i < max; ++i) {
+	uint max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->vehicles.Length());
+	for (uint i = this->vscroll.GetPosition(); i < max; ++i) {
 		const Vehicle *v = this->vehicles[i];
 		StringID str;
 
@@ -879,19 +880,19 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				this->resize.step_width = 1;
 				/* Fallthrough */
 			case VEH_ROAD:
-				this->vscroll.cap = 6;
+				this->vscroll.SetCapacity(6);
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 				break;
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				this->vscroll.cap = 4;
+				this->vscroll.SetCapacity(4);
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 				break;
 			default: NOT_REACHED();
 		}
 
 
-		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Set up sorting. Make the window-specific _sorting variable
 		 * point to the correct global _sorting struct so we are freed
@@ -925,7 +926,6 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 		this->BuildVehicleList(owner, index, window_type);
 		this->SortVehicleList();
-		SetVScrollCount(this, this->vehicles.Length());
 
 		if (this->vehicles.Length() == 0) HideDropDownMenu(this);
 
@@ -937,25 +937,25 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 					 * and we should close the window when deleting the order      */
 					NOT_REACHED();
 				}
-				SetDParam(0, this->vscroll.count);
+				SetDParam(0, this->vscroll.GetCount());
 				break;
 
 			case VLW_STANDARD: // Company Name
 				SetDParam(0, STR_COMPANY_NAME);
 				SetDParam(1, owner);
-				SetDParam(2, this->vscroll.count);
+				SetDParam(2, this->vscroll.GetCount());
 				break;
 
 			case VLW_WAYPOINT_LIST:
 				SetDParam(0, STR_WAYPOINT_NAME);
 				SetDParam(1, index);
-				SetDParam(2, this->vscroll.count);
+				SetDParam(2, this->vscroll.GetCount());
 				break;
 
 			case VLW_STATION_LIST: // Station Name
 				SetDParam(0, STR_STATION_NAME);
 				SetDParam(1, index);
-				SetDParam(2, this->vscroll.count);
+				SetDParam(2, this->vscroll.GetCount());
 				break;
 
 			case VLW_DEPOT_LIST:
@@ -965,7 +965,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				} else {
 					SetDParam(1, Depot::Get(index)->town_index);
 				}
-				SetDParam(2, this->vscroll.count);
+				SetDParam(2, this->vscroll.GetCount());
 				break;
 			default: NOT_REACHED();
 		}
@@ -1015,9 +1015,9 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / this->resize.step_height;
 				const Vehicle *v;
 
-				if (id_v >= this->vscroll.cap) return; // click out of bounds
+				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 
-				id_v += this->vscroll.pos;
+				id_v += this->vscroll.GetPosition();
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
@@ -1103,8 +1103,8 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -1279,7 +1279,7 @@ struct VehicleDetailsWindow : Window {
 			case VEH_TRAIN:
 				ResizeWindow(this, 0, 39);
 
-				this->vscroll.cap = 6;
+				this->vscroll.SetCapacity(6);
 				this->height += 12;
 				this->resize.step_height = 14;
 				this->resize.height = this->height - 14 * 2; // Minimum of 4 wagons in the display
@@ -1310,11 +1310,11 @@ struct VehicleDetailsWindow : Window {
 		}
 
 		if (v->type != VEH_TRAIN) {
-			this->vscroll.cap = 1;
+			this->vscroll.SetCapacity(1);
 			this->widget[VLD_WIDGET_MIDDLE_DETAILS].right += 12;
 		}
 
-		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		this->owner = v->owner;
 
 		this->tab = TDW_TAB_CARGO;
@@ -1367,7 +1367,7 @@ struct VehicleDetailsWindow : Window {
 
 		if (v->type == VEH_TRAIN) {
 			this->DisableWidget(det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
-			SetVScrollCount(this, GetTrainDetailsWndVScroll(v->index, det_tab));
+			this->vscroll.SetCount(GetTrainDetailsWndVScroll(v->index, det_tab));
 		}
 
 		this->SetWidgetsHiddenState(v->type != VEH_TRAIN,
@@ -1436,14 +1436,14 @@ struct VehicleDetailsWindow : Window {
 		const Widget *matrix = &this->widget[VLD_WIDGET_MIDDLE_DETAILS];
 		switch (v->type) {
 			case VEH_TRAIN:
-				DrawVehicleDetails(v, matrix->left + 2, matrix->right - 2, matrix->top + 1, this->vscroll.pos, this->vscroll.cap, det_tab);
+				DrawVehicleDetails(v, matrix->left + 2, matrix->right - 2, matrix->top + 1, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), det_tab);
 				break;
 
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
 				DrawVehicleImage(v, matrix->left + 3, matrix->top + 1, INVALID_VEHICLE, matrix->right - matrix->left - 5, 0);
-				DrawVehicleDetails(v, matrix->left + 75, matrix->right - 2, matrix->top + 1, this->vscroll.pos, this->vscroll.cap, det_tab);
+				DrawVehicleDetails(v, matrix->left + 75, matrix->right - 2, matrix->top + 1, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), det_tab);
 				break;
 
 			default: NOT_REACHED();
@@ -1501,8 +1501,8 @@ struct VehicleDetailsWindow : Window {
 		if (delta.x != 0) ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
 		if (delta.y == 0) return;
 
-		this->vscroll.cap += delta.y / 14;
-		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / 14);
+		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
