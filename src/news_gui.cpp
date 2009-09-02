@@ -116,6 +116,98 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
 	}
 }
 
+/** Widget numbers of the news display windows. */
+enum NewsTypeWidgets {
+	NTW_HEADLINE, ///< The news headline.
+	NTW_CLOSEBOX, ///< Close the window.
+	NTW_CAPTION,  ///< Title bar of the window. Only used in type0-news.
+	NTW_VIEWPORT, ///< Viewport in window. Only used in type0-news.
+};
+
+static const Widget _normal_news_widgets[] = {
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   169, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
+{   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_normal_news_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
+	EndContainer(),
+};
+
+static WindowDesc _normal_news_desc(
+	WDP_CENTER, 476, 430, 170, 430, 170,
+	WC_NEWS_WINDOW, WC_NONE,
+	WDF_DEF_WIDGET,
+	_normal_news_widgets, _nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
+);
+
+static const Widget _thin_news_widgets[] = {
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   129, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
+{   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_thin_news_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 118),
+	EndContainer(),
+};
+
+static WindowDesc _thin_news_desc(
+	WDP_CENTER, 476, 430, 130, 430, 130,
+	WC_NEWS_WINDOW, WC_NONE,
+	WDF_DEF_WIDGET,
+	_thin_news_widgets, _nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
+);
+
+static const Widget _small_news_widgets[] = {
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   279,    14,    86, 0x0,                      STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,    11,   279,     0,    13, STR_NEWS_MESSAGE_CAPTION, STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     2,   277,    16,    64, 0x0,                      STR_NULL},
+{   WIDGETS_END},
+};
+
+static NWidgetPart _nested_small_news_widgets[] = {
+	/* Caption + close box */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetMinimalSize(269, 14), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
+	EndContainer(),
+
+	/* Main part */
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NTW_HEADLINE),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+
+			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NTW_VIEWPORT), SetMinimalSize(276, 49),
+			EndContainer(),
+
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 22),
+	EndContainer(),
+};
+
+static WindowDesc _small_news_desc(
+	WDP_CENTER, 476, 280, 87, 280, 87,
+	WC_NEWS_WINDOW, WC_NONE,
+	WDF_DEF_WIDGET,
+	_small_news_widgets,
+	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
+);
+
 /**
  * Data common to all news items of a given subtype (structure)
  */
@@ -123,6 +215,7 @@ struct NewsSubtypeData {
 	NewsType type;         ///< News category @see NewsType
 	NewsMode display_mode; ///< Display mode value @see NewsMode
 	NewsFlag flags;        ///< Initial NewsFlags bits @see NewsFlag
+	WindowDesc *desc;      ///< Window description for displaying this news.
 	DrawNewsCallbackProc *callback; ///< Call-back function
 };
 
@@ -130,25 +223,25 @@ struct NewsSubtypeData {
  * Data common to all news items of a given subtype (actual data)
  */
 static const NewsSubtypeData _news_subtype_data[] = {
-	/* type,               display_mode, flags,              callback */
-	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_NONE, NULL                    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_NONE, NULL                    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         NM_THIN,     NF_NONE, NULL                    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, DrawNewsBankruptcy      }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_NONE, NULL                    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NM_SMALL,    NF_NONE, NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE, DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NM_SMALL,    NF_NONE, NULL                    }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NM_NORMAL,   NF_NONE, NULL                    }, ///< NS_GENERAL
+	/* type,               display_mode, flags,  window description,            callback */
+	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_ACCIDENT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE, &_normal_news_desc, DrawNewsBankruptcy      }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE, &_normal_news_desc, NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_NONE, &_thin_news_desc,   NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NM_SMALL,    NF_NONE, &_small_news_desc,  NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE, &_normal_news_desc, DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NM_SMALL,    NF_NONE, &_small_news_desc,  NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NM_NORMAL,   NF_NONE, &_normal_news_desc, NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NM_NORMAL,   NF_NONE, &_normal_news_desc, NULL                    }, ///< NS_GENERAL
 };
 
 assert_compile(lengthof(_news_subtype_data) == NS_END);
@@ -176,14 +269,6 @@ NewsTypeData _news_type_data[] = {
 };
 
 assert_compile(lengthof(_news_type_data) == NT_END);
-
-/** Widget numbers of the news display windows. */
-enum NewsTypeWidgets {
-	NTW_HEADLINE, ///< The news headline.
-	NTW_CLOSEBOX, ///< Close the window.
-	NTW_CAPTION,  ///< Title bar of the window. Only used in type0-news.
-	NTW_VIEWPORT, ///< Viewport in window. Only used in type0-news.
-};
 
 /** Window class displaying a news item. */
 struct NewsWindow : Window {
@@ -353,117 +438,15 @@ struct NewsWindow : Window {
 /* static */ uint NewsWindow::duration = 0; // Instance creation.
 
 
-static const Widget _normal_news_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   169, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
-static const NWidgetPart _nested_normal_news_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
-	EndContainer(),
-};
-
-static WindowDesc _normal_news_desc(
-	WDP_CENTER, 476, 430, 170, 430, 170,
-	WC_NEWS_WINDOW, WC_NONE,
-	WDF_DEF_WIDGET,
-	_normal_news_widgets, _nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
-);
-
-static const Widget _thin_news_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   129, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
-static const NWidgetPart _nested_thin_news_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, NTW_HEADLINE),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_WHITE, NTW_CLOSEBOX), SetMinimalSize(11, 12), EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(419, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 118),
-	EndContainer(),
-};
-
-static WindowDesc _thin_news_desc(
-	WDP_CENTER, 476, 430, 130, 430, 130,
-	WC_NEWS_WINDOW, WC_NONE,
-	WDF_DEF_WIDGET,
-	_thin_news_widgets, _nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
-);
-
-static const Widget _small_news_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   279,    14,    86, 0x0,                      STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,    11,   279,     0,    13, STR_NEWS_MESSAGE_CAPTION, STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     2,   277,    16,    64, 0x0,                      STR_NULL},
-{   WIDGETS_END},
-};
-
-static NWidgetPart _nested_small_news_widgets[] = {
-	/* Caption + close box */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetMinimalSize(269, 14), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
-	EndContainer(),
-
-	/* Main part */
-	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NTW_HEADLINE),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-
-			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NTW_VIEWPORT), SetMinimalSize(276, 49),
-			EndContainer(),
-
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 22),
-	EndContainer(),
-};
-
-static WindowDesc _small_news_desc(
-	WDP_CENTER, 476, 280, 87, 280, 87,
-	WC_NEWS_WINDOW, WC_NONE,
-	WDF_DEF_WIDGET,
-	_small_news_widgets,
-	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
-);
-
-
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(NewsItem *ni)
 {
 	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
 	if (sound != 0) SndPlayFx(sound);
 
-	int top = _screen.height;
-	Window *w;
-	switch (_news_subtype_data[ni->subtype].display_mode) {
-		case NM_NORMAL:
-			_normal_news_desc.top = top;
-			w = new NewsWindow(&_normal_news_desc, ni);
-			break;
-
-		case NM_THIN:
-			_thin_news_desc.top = top;
-			w = new NewsWindow(&_thin_news_desc, ni);
-			break;
-
-		case NM_SMALL:
-			_small_news_desc.top = top;
-			w = new NewsWindow(&_small_news_desc, ni);
-			break;
-
-		default: NOT_REACHED();
-	}
+	WindowDesc *desc = _news_subtype_data[ni->subtype].desc;
+	desc->top = _screen.height;
+	new NewsWindow(desc, ni);
 }
 
 /** Show news item in the ticker */
