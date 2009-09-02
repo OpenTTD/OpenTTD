@@ -250,10 +250,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Garums: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Lauks: {NUM} x {NUM}{}Augstuma atšķirība: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Iedzīvotāju skaita
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vārda
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datuma
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Iedzīvotāji
+STR_SORT_BY_NAME                                                :Nosaukums
 STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Tipa
 STR_SORT_BY_TRANSPORTED                                         :Transportētā
@@ -295,10 +298,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Parādī
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Parādīt grafikus
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Parādīt uzņēmuma rangu sarakstu
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansēt jauna industriāla objekta būvniecību
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Parādīt uzņēmuma vilcienu sarkstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Parādīt uzņēmuma mašīnu sarakstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Parādīt uzņēmuma kuģu sarakstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Parādīt uzņēmuma lidaparātu sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Parādīt uzņēmuma vilcienu sarkstu. Ctrl+Klikšķis pārslēdz starp grupu/transportlīdzekļu sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Parādīt uzņēmuma mašīnu sarakstu. Ctrl+Klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Parādīt uzņēmuma kuģu sarakstu. Ctrl+Klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Parādīt uzņēmuma lidaparātu sarakstu. Ctrl+Klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Pietuvināt skatu
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Attālināt skatu
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Būvēt sliežu posmu
@@ -1307,7 +1310,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaud
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI uzstādījumi
 STR_INTRO_QUIT                                                  :{BLACK}Iziet
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt jaunu spēli
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt jaunu spēli. Ctrl+Klikšķis izlaiž kartes konfigurēšanu
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ielādēt saglabāto spēli
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Sākt jaunu spēli, izmantojot augstumkarti priekš ainavas reljefa
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Sākt jaunu spēli ar speciālu scenāriju
@@ -1837,12 +1840,12 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektris
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Viensliežu būvēšana
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magleva būvēšana
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliežu ceļu
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt dzelzceļu izmantojot autosliežu režīmu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliedes. Ctrl pārslēdz sliežu būvniecību/demolēšanu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt dzelzceļu, izmantojot Autorail režīmu. Ctrl pārslēdz sliežu būvniecību/demolēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build vilcienu depo (priekš vilcienu celtniecības un apkopes)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārvērst sliedes par kontrolpunktu
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt semaforu
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārvērst sliedes par maršruta punktu. Ctrl iespējo maršrutu punktu apvienošanu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl iespējo staciju apvienošanu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālus. Ctrl pārslēdz semaforas/luksoforus{}Vilkšana rada signālus uz taisna sliežu posma. Ctrl uzbūvē signālus līdz nākamajam sazarojumam{}Ctrl+Klikšķis pārslēdz signālu izvēles loga atvēršanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pārslēgties starp sliežu un semaforu būvēšanas/nojaukšanas režīmiem
@@ -1910,16 +1913,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cauruļveida, s
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Ceļa būvēšana
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaju būvēšana
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Būvēt ceļa posmu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Būvēt tramvaja sliežu sekciju
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt ceļu autoceļu režīmā
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaja sliežu sekciju autotramvaja režīmā
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Būvēt ceļu. Ctrl pārslēdz ceļa būvniecību/demolēšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Būvēt tramvaja sliedes. Ctrl pārslēdz tramvaja sliežu būvniecību/demolēšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt ceļu Autoroad režīmā. Ctrl pārslēdz ceļu būvēšanu/demolēšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaja sliedes ar Autotram iespēju. Ctrl pārslēdz tramvaja sliežu būvēšanu/demolēšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt automašīnu depo (priekš automašīnu būvniecības un apkopes)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju ražošanai un apkopei)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt tramvaja pasažieru pieturu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automašīnu iekraušanas staciju
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt tramvaja kravas pieturu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl iespējo staciju apvienošanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt tramvaja pasažieru pieturu. Ctrl iespējo staciju apvienošanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automašīnu staciju. Ctrl iespējo staciju apvienošanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaja pieturu. Ctrl iespējo staciju apvienošanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ieslēgt/izslēgt vienvirziena ceļus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt tiltu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Būvēt tramvaja tiltu
@@ -1950,7 +1953,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Ūdensce
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Būvēt kanālus. Nospiediet CTRL, lai izvietotu jūras šūnas (tikai jūras līmenī)
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Būvēt slūžas
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Būvēt kuģu depo (kuģu būvēšanai un apkopei)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Būvēt kuģu piestātni
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Būvēt kuģu piestātni. Ctrl iespējo staciju apvienošanu
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Izvieto boju, kura var kalpot kā ceļa rādītājs
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Būvēt akveduktu
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definēt ūdens laukumu.{}Veidot kanālu. Ja nospiests CTRL jūras līmenī, tad appludinās apkārtni
@@ -1965,7 +1968,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doks
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lidostas
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Būvēt lidostu
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Būvēt lidostu. Ctrl iespējo staciju apvienošanu
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lidostas izvēle
@@ -2356,7 +2359,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Ievadiet
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pilsētas
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Pilsētu nosaukumi - izvēlies pilsētu, lai iecentrētu uz to skatu
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Pilsētu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz to. Ctrl+Klikšķis atvērs skatu uz pilsētu jaunā skatulaukā
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzīvotāju skaits: {COMMA}
 
 # Town view window
@@ -2369,7 +2372,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Krava ne
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} nepieciešams
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} pagājušajā mēnesī piegādātas
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu limits pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Iecentrēt galveno skatu uz pilsētas atrašanās vietu
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+Klikšķis atvērs skatu uz pilsētu jaunā skatulaukā
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Pašvaldība
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Parādīt informāciju par pašvaldību
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Pārsaukt pilsētu
@@ -2415,10 +2418,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Neviens
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Pašlaik subsidētie pakalpojumi:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} no {STRING} uz {STRING}{YELLOW} ({COMPANY}{YELLOW}, līdz {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik uz servisa, lai iecentrētu skatu uz rūpnīcu vai pilsētu
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķināt uz servisa, lai iecentrētu skatu uz rūpnīcu/pilsētu. Ctrl+Klikšķis atvērs skatu uz pilsētu/rūpnīcu jaunā skatulaukā
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciju nosaukumi - klik uz nosaukuma, lai centrētu galveno skatu uz staciju
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciju nosaukumi - klikšķināt uz nosaukuma, lai centrētu galveno skatu uz staciju. Ctrl+Klikšķis atvērs skatu uz staciju jaunā skatulaukā
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Nospiediet CTRL lai izvēlētos vairākus
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stacij{P a as u}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2454,7 +2457,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Lielisks
 STR_CARGO_RATING_OUTSTANDING                                    :Izcils
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz stacijas atrašanās vietu
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz staciju. Ctrl+Klikšķis atvērs skatu uz staciju jaunā skatulaukā
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pārsaukt staciju
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rādīt vilcienus, kuru rīkojumu sarakstos ir šī stacija
@@ -2465,9 +2468,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rādīt 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārsaukt staciju/iekraušanas zonu
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz maršruta punktu
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz maršruta punktu. Ctrl+Klikšķis atvērs skatu uz maršruta punktu jaunā skatulaukā
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Pārsaukt kontrolpunktu
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatulaukā
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mainīt bojas nosaukumu
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot kontrolpunkta nosaukumu
@@ -2546,13 +2549,13 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Rūpnīc
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% pārvadāti)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% pārvadāti)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}IRūpnīcu vārdi - klik uz vārda, lai centrētu skatu uz rūpnīcu
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}IRūpnīcu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz rūpnīcu. Ctrl+Klikšķis atvērs skatu uz rūpnīcu jaunā skatulaukā
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Iepriekšējā mēnesī saražots:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% aizvests)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Iecentrēt galveno skatu uz rūpnīcu
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt galveno skatu uz rūpnīcu. Ctrl+Klikšķis atvērs skatu uz rūpnīcu jaunā skatulaukā
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}
@@ -2737,10 +2740,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Šis uzb
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Šis uzbūvēs kuģa kopiju, Klik uz pogas un pēc tam uz kuģa. Izmantojot CTRL+klik, kuģi dalīsies ar rīkojumiem
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Šis uzbūvēs lidaparāta kopiju, Klik uz pogas un pēc tam uz lidaparāta. Izmantojot CTRL+klik, lidaparāti dalīsies ar rīkojumiem
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz vilciena depo atrašanās vietu
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrēt galveno skatu uz transportl. depo
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz kuģa depo
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrēt galveno skatu uz angāru
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz vilciena depo. Ctrl+Klikšķis atvērs skatu uz depo jaunā skatulaukā
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrēt galveno skatu uz auto depo. Ctrl+Klikšķis atvērs skatu uz depo jaunā skatulaukā
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz kuģu depo. Ctrl+Klikšķis atvērs skatu uz depo jaunā skatulaukā
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrēt galveno skatu uz angāru. Ctrl+Klikšķis atvērs skatu uz angāru jaunā skatulaukā
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Iegūt vilcienu sarakstu, kuru rīkojumos ir pašreizējais depo
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Iegūt transportu sarakstu, kuru rīkojumos ir pašreizējais depo
@@ -2808,10 +2811,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Auto-aiz
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrēt galveno skatu uz vilciena atrašanās vietu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrēt galveno skatu uz transportl.
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrēt skatu uz kuģi
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrēt galveno skatu uz lidaparātu
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrēt galveno skatu uz vilcienu. Ctrl+Klikšķis sekos vilcienam galvenajā skatā
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrēt galveno skatu uz transportlīdzekli. Ctrl+Klikšķis sekos transportlīdzeklim galvenajā skatā
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrēt galveno skatu uz kuģi. Ctrl+Klikšķis sekos kuģim galvenajā skatā
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrēt galveno skatu uz lidaparātu. Ctrl+Klikšķis sekos lidaparātam galvenajā skatā
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Sūtīt vilcienu uz depo. Ctrl+klik - tikai apkope
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Sūtīt transportl. uz depo. Ctrl+klik tikai apkope
@@ -2833,10 +2836,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pārbūv
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Apgriezt vilcienu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Piespiest transportl. apgriezties
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Parādīt vilciena rīkojumus
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Rādīt transportl. rīkojumus
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Rādīt kuģa rīkojumus
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Parādīt lidaparāta komandas
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Parādīt vilciena rīkojumus. Ctrl+Klikšķis, lai parādītu vilciena maršruta grafiku
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Rādīt transportīdzekļa rīkojumus. Ctrl+Klikšķis, lai parādītu transportlīdzekļa maršruta grafiku
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Rādīt kuģa rīkojumus. Ctrl+Klikšķis, lai parādītu kuģa maršruta grafiku
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Parādīt lidaparāta rīkojumus. Ctrl+Klikšķis, lai parādītu lidaparāta maršruta grafiku
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Rādīt vilciena informāciju
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Rādīt transportl. informāciju
@@ -2915,8 +2918,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}dienas{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}%{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes intervālu
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes intervālu
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes intervālu par 10. Ctrl+Klikšķis palielina apkopes intervālu par 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes intervālu par 10. Ctrl+Klikšķis samazina apkopes intervālu par 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nosaukt vilcienu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nosaukt transportl.
@@ -3041,7 +3044,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Doties u
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Braukt uz tuvāko depo
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Braukt uz tuvāko angāru
 STR_ORDER_CONDITIONAL                                           :Nosacīts maršruta lēciens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās. Ctrl stacijā norīko piekraut pilnu ar jebkuru kravu, maršruta punktam braukt cauri bez apstājas un depo veikt apkopi
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ievietot sarežģītāku komandu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
