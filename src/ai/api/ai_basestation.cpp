@@ -22,7 +22,7 @@
 /* static */ bool AIBaseStation::IsValidBaseStation(StationID station_id)
 {
 	const BaseStation *st = ::BaseStation::GetIfValid(station_id);
-	return st != NULL && st->owner == _current_company;
+	return st != NULL && (st->owner == _current_company || st->owner == OWNER_NONE);
 }
 
 /* static */ char *AIBaseStation::GetName(StationID station_id)
