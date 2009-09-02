@@ -97,8 +97,14 @@ enum NewsReferenceType {
  * @note #NF_INCOLOUR is set automatically if needed.
  */
 enum NewsFlag {
-	NF_NONE      = 0,      ///< No flag is set.
-	NF_INCOLOUR  = 1 << 0, ///< Show the newsmessage in colour, otherwise it defaults to black & white.
+	NFB_INCOLOUR       = 0, ///< News item is shown in colour (otherwise it is shown in black & white).
+	NFB_NO_TRANSPARENT = 1, ///< News item disables transparency in the viewport.
+	NFB_SHADE          = 2, ///< News item uses shaded colours.
+
+	NF_NONE           = 0,      ///< No flag is set.
+	NF_INCOLOUR       = 1 << 0, ///< Bit value for coloured news.
+	NF_NO_TRANSPARENT = 1 << 1, ///< Bit value for disabling transparency.
+	NF_SHADE          = 1 << 2, ///< Bit value for enabling shading.
 };
 DECLARE_ENUM_AS_BIT_SET(NewsFlag);
 
