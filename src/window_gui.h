@@ -264,6 +264,7 @@ public:
 	 */
 	void UpdateCapacity(int difference)
 	{
+		if (difference == 0) return;
 		this->SetCapacity(this->cap + difference);
 	}
 
@@ -285,6 +286,7 @@ public:
 	 */
 	void UpdatePosition(int difference)
 	{
+		if (difference == 0) return;
 		this->SetPosition(Clamp(this->pos + difference, 0, this->count - this->cap));
 	}
 };

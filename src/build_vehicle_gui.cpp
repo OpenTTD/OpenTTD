@@ -785,7 +785,7 @@ struct BuildVehicleWindow : Window {
 
 		ResizeWindow(this, 0, vlh - 14);
 		this->resize.step_height = vlh;
-		this->vscroll.cap = 1;
+		this->vscroll.SetCapacity(1);
 		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (1 << MAT_ROW_START) | (1 << MAT_COL_START);
 
 		this->resize.width  = this->width;
@@ -1052,7 +1052,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case BUILD_VEHICLE_WIDGET_LIST: {
-				uint i = (pt.y - this->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(this->vehicle_type) + this->vscroll.pos;
+				uint i = (pt.y - this->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(this->vehicle_type) + this->vscroll.GetPosition();
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
@@ -1104,9 +1104,9 @@ struct BuildVehicleWindow : Window {
 	{
 		this->GenerateBuildList();
 
-		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.Length());
+		uint max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->eng_list.Length());
 
-		SetVScrollCount(this, this->eng_list.Length());
+		this->vscroll.SetCount(this->eng_list.Length());
 		if (this->vehicle_type == VEH_TRAIN) {
 			if (this->filter.railtype == RAILTYPE_END) {
 				SetDParam(0, STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION);
@@ -1124,7 +1124,7 @@ struct BuildVehicleWindow : Window {
 
 		this->DrawWidgets();
 
-		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].right, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, &this->eng_list, this->vscroll.pos, max, this->sel_engine, 0, DEFAULT_GROUP);
+		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].right, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, &this->eng_list, this->vscroll.GetPosition(), max, this->sel_engine, 0, DEFAULT_GROUP);
 
 		if (this->sel_engine != INVALID_ENGINE) {
 			const Widget *wi = &this->widget[BUILD_VEHICLE_WIDGET_PANEL];
@@ -1186,8 +1186,8 @@ struct BuildVehicleWindow : Window {
 		}
 		if (delta.y == 0) return;
 
-		this->vscroll.cap += delta.y / (int)GetVehicleListHeight(this->vehicle_type);
-		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.UpdateCapacity(delta.y / (int)GetVehicleListHeight(this->vehicle_type));
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

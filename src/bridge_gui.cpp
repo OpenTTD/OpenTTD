@@ -143,16 +143,16 @@ public:
 		this->bridges->NeedResort();
 		this->SortBridgeList();
 
-		this->vscroll.count = bl->Length();
-		this->vscroll.cap = this->nested_array[BBSW_BRIDGE_LIST]->current_y / this->resize.step_height;
-		if (this->last_size < this->vscroll.cap) this->last_size = this->vscroll.cap;
-		if (this->last_size > this->vscroll.count) this->last_size = this->vscroll.count;
+		this->vscroll.SetCount(bl->Length());
+		this->vscroll.SetCapacity(this->nested_array[BBSW_BRIDGE_LIST]->current_y / this->resize.step_height);
+		if (this->last_size < this->vscroll.GetCapacity()) this->last_size = this->vscroll.GetCapacity();
+		if (this->last_size > this->vscroll.GetCount()) this->last_size = this->vscroll.GetCount();
 		/* Resize the bridge selection window if we used a bigger one the last time. */
-		if (this->last_size > this->vscroll.cap) {
-			ResizeWindow(this, 0, (this->last_size - this->vscroll.cap) * this->resize.step_height);
-			this->vscroll.cap = this->last_size;
+		if (this->last_size > this->vscroll.GetCapacity()) {
+			ResizeWindow(this, 0, (this->last_size - this->vscroll.GetCapacity()) * this->resize.step_height);
+			this->vscroll.SetCapacity(this->last_size);
 		}
-		this->nested_array[BBSW_BRIDGE_LIST]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->nested_array[BBSW_BRIDGE_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	~BuildBridgeWindow()
@@ -220,7 +220,7 @@ public:
 
 			case BBSW_BRIDGE_LIST: {
 				uint y = r.top;
-				for (int i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < (int)this->bridges->Length(); i++) {
+				for (int i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < (int)this->bridges->Length(); i++) {
 					const BridgeSpec *b = this->bridges->Get(i)->spec;
 
 					SetDParam(2, this->bridges->Get(i)->cost);
@@ -254,8 +254,8 @@ public:
 			default: break;
 			case BBSW_BRIDGE_LIST: {
 				uint i = ((int)pt.y - this->nested_array[BBSW_BRIDGE_LIST]->pos_y) / this->resize.step_height;
-				if (i < this->vscroll.cap) {
-					i += this->vscroll.pos;
+				if (i < this->vscroll.GetCapacity()) {
+					i += this->vscroll.GetPosition();
 					if (i < this->bridges->Length()) {
 						this->BuildBridge(i);
 						delete this;
@@ -285,11 +285,10 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->nested_array[BBSW_BRIDGE_LIST]->widget_data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
-		SetVScrollCount(this, this->bridges->Length());
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->nested_array[BBSW_BRIDGE_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
-		this->last_size = max(this->vscroll.cap, this->last_size);
+		this->last_size = max(this->vscroll.GetCapacity(), this->last_size);
 	}
 };
 

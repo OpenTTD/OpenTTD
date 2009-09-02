@@ -176,7 +176,7 @@ class ReplaceVehicleWindow : public Window {
 		if (this->update_left == true) {
 			/* We need to rebuild the left list */
 			GenerateReplaceVehList(this, true);
-			SetVScrollCount(this, this->list[0].Length());
+			this->vscroll.SetCount(this->list[0].Length());
 			if (this->init_lists && this->sel_engine[0] == INVALID_ENGINE && this->list[0].Length() != 0) {
 				this->sel_engine[0] = this->list[0][0];
 			}
@@ -190,7 +190,7 @@ class ReplaceVehicleWindow : public Window {
 				this->sel_engine[1] = INVALID_ENGINE;
 			} else {
 				GenerateReplaceVehList(this, false);
-				SetVScroll2Count(this, this->list[1].Length());
+				this->vscroll2.SetCount(this->list[1].Length());
 				if (this->init_lists && this->sel_engine[1] == INVALID_ENGINE && this->list[1].Length() != 0) {
 					this->sel_engine[1] = this->list[1][0];
 				}
@@ -213,10 +213,10 @@ public:
 		this->sel_engine[1] = INVALID_ENGINE;
 
 		this->resize.step_height = GetVehicleListHeight(vehicletype);
-		this->vscroll.cap = this->resize.step_height == 14 ? 8 : 4;
+		this->vscroll.SetCapacity(this->resize.step_height == 14 ? 8 : 4);
 
 		Widget *widget = this->widget;
-		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		if (vehicletype != VEH_TRAIN) {
 			/* Since it's not a train we will hide the train only widgets. */
@@ -229,7 +229,7 @@ public:
 									WIDGET_LIST_END);
 		}
 
-		ResizeWindow(this, 0, this->resize.step_height * this->vscroll.cap);
+		ResizeWindow(this, 0, this->resize.step_height * this->vscroll.GetCapacity());
 
 		/* Set the minimum window size to the current window size */
 		this->resize.width  = this->width;
@@ -237,7 +237,7 @@ public:
 
 		this->owner = _local_company;
 		this->sel_group = id_g;
-		this->vscroll2.cap = this->vscroll.cap;   // these two are always the same
+		this->vscroll2.SetCapacity(this->vscroll.GetCapacity());   // these two are always the same
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -311,8 +311,8 @@ public:
 		for (byte i = 0; i < 2; i++) {
 			uint widget     = (i == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
 			GUIEngineList *list = &this->list[i]; // which list to draw
-			EngineID start  = i == 0 ? this->vscroll.pos : this->vscroll2.pos; // what is the offset for the start (scrolling)
-			EngineID end    = min((i == 0 ? this->vscroll.cap : this->vscroll2.cap) + start, list->Length());
+			EngineID start  = i == 0 ? this->vscroll.GetPosition() : this->vscroll2.GetPosition(); // what is the offset for the start (scrolling)
+			EngineID end    = min((i == 0 ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity()) + start, list->Length());
 
 			/* Do the actual drawing */
 			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].right, this->widget[widget].top + 1, list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
@@ -374,8 +374,8 @@ public:
 			case RVW_WIDGET_LEFT_MATRIX:
 			case RVW_WIDGET_RIGHT_MATRIX: {
 				uint i = (pt.y - 14) / this->resize.step_height;
-				uint16 click_scroll_pos = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.pos : this->vscroll2.pos;
-				uint16 click_scroll_cap = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.cap : this->vscroll2.cap;
+				uint16 click_scroll_pos = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.GetPosition() : this->vscroll2.GetPosition();
+				uint16 click_scroll_cap = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity();
 				byte click_side         = widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
 				size_t engine_count     = this->list[click_side].Length();
 
@@ -401,8 +401,8 @@ public:
 		if (temp == sel_railtype) return; // we didn't select a new one. No need to change anything
 		sel_railtype = temp;
 		/* Reset scrollbar positions */
-		this->vscroll.pos  = 0;
-		this->vscroll2.pos = 0;
+		this->vscroll.SetPosition(0);
+		this->vscroll2.SetPosition(0);
 		/* Rebuild the lists */
 		this->update_left  = true;
 		this->update_right = true;
@@ -411,12 +411,12 @@ public:
 	}
 
 	virtual void OnResize(Point delta) {
-		this->vscroll.cap  += delta.y / (int)this->resize.step_height;
-		this->vscroll2.cap += delta.y / (int)this->resize.step_height;
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll2.UpdateCapacity(delta.y / (int)this->resize.step_height);
 
 		Widget *widget = this->widget;
 
-		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		if (delta.x != 0) {
 			/* We changed the width of the window so we have to resize the lists.
