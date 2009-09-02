@@ -310,7 +310,7 @@ struct NewsWindow : Window {
 						if (tile1 != INVALID_TILE) ShowExtraViewPortWindow(tile1);
 						if (tile2 != INVALID_TILE) ShowExtraViewPortWindow(tile2);
 					} else {
-						if (((tile1 == INVALID_TILE) || !ScrollMainWindowToTile(tile1)) && (tile2 != INVALID_TILE)) {
+						if ((tile1 == INVALID_TILE || !ScrollMainWindowToTile(tile1)) && tile2 != INVALID_TILE) {
 							ScrollMainWindowToTile(tile2);
 						}
 					}
