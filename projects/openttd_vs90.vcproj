@@ -649,10 +649,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\os\windows\ottdres.rc"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\pathfind.cpp"
 				>
 			</File>
@@ -754,10 +750,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\widget.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\os\windows\win32.cpp"
 				>
 			</File>
 			<File
@@ -3566,6 +3558,22 @@
 			</File>
 			<File
 				RelativePath=".\..\src\sound\win32_s.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Windows files"
+			>
+			<File
+				RelativePath=".\..\src\os\windows\crashlog_win.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\os\windows\ottdres.rc"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\os\windows\win32.cpp"
 				>
 			</File>
 		</Filter>

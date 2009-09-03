@@ -48,12 +48,6 @@ network/network_udp.cpp
 npf.cpp
 openttd.cpp
 os_timer.cpp
-#if WIN32
-	os/windows/ottdres.rc
-#end
-#if WINCE
-	os/windows/ottdres.rc
-#end
 pathfind.cpp
 pbs.cpp
 queue.cpp
@@ -80,7 +74,6 @@ tile_map.cpp
 #if WIN32
 #else
 	#if WINCE
-		os/windows/win32.cpp
 	#else
 		#if OS2
 			os/os2/os2.cpp
@@ -94,9 +87,6 @@ vehiclelist.cpp
 viewport.cpp
 waypoint.cpp
 widget.cpp
-#if WIN32
-	os/windows/win32.cpp
-#end
 window.cpp
 
 # Header Files
@@ -921,6 +911,17 @@ sound/null_s.cpp
 		sound/cocoa_s.cpp
 		os/macosx/splash.cpp
 	#end
+#end
+
+# Windows files
+#if WIN32
+	os/windows/crashlog_win.cpp
+	os/windows/ottdres.rc
+	os/windows/win32.cpp
+#end
+#if WINCE
+	os/windows/ottdres.rc
+	os/windows/win32.cpp
 #end
 
 # Threading
