@@ -1074,7 +1074,7 @@ struct PerformanceRatingDetailWindow : Window {
 		this->UpdateCompanyStats();
 
 		this->InitNested(desc, window_number);
-		this->OnInvalidateData(-1);
+		this->OnInvalidateData(INVALID_COMPANY);
 	}
 
 	void UpdateCompanyStats()
