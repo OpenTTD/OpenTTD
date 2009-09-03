@@ -117,7 +117,6 @@ static void *_safe_esp;
 static char *_crash_msg;
 static bool _expanded;
 static bool _did_emerg_save;
-static int _ident;
 
 struct DebugFileInfo {
 	uint32 size;
@@ -254,123 +253,18 @@ static bool EmergencySave()
 	return true;
 }
 
-/* Disable the crash-save submit code as it's not used */
-#if 0
-
-struct WinInetProcs {
-	HINTERNET (WINAPI *InternetOpen)(LPCTSTR, DWORD, LPCTSTR, LPCTSTR, DWORD);
-	HINTERNET (WINAPI *InternetConnect)(HINTERNET, LPCTSTR, INTERNET_PORT, LPCTSTR, LPCTSTR, DWORD, DWORD, DWORD);
-	HINTERNET (WINAPI *HttpOpenRequest)(HINTERNET, LPCTSTR, LPCTSTR, LPCTSTR, LPCTSTR, LPCTSTR *, DWORD, DWORD);
-	BOOL (WINAPI *HttpSendRequest)(HINTERNET, LPCTSTR, DWORD, LPVOID, DWORD);
-	BOOL (WINAPI *InternetCloseHandle)(HINTERNET);
-	BOOL (WINAPI *HttpQueryInfo)(HINTERNET, DWORD, LPVOID, LPDWORD, LPDWORD);
-};
-
-#define M(x) x "\0"
-#if defined(UNICODE)
-# define W(x) x "W"
-#else
-# define W(x) x "A"
-#endif
-static const char wininet_files[] =
-	M("wininet.dll")
-	M(W("InternetOpen"))
-	M(W("InternetConnect"))
-	M(W("HttpOpenRequest"))
-	M(W("HttpSendRequest"))
-	M("InternetCloseHandle")
-	M(W("HttpQueryInfo"))
-	M("");
-#undef W
-#undef M
-
-static WinInetProcs _wininet;
-
-static const TCHAR *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const TCHAR *arg)
-{
-	HINTERNET inet, conn, http;
-	const TCHAR *err = NULL;
-	DWORD code, len;
-	static TCHAR buf[100];
-	TCHAR buff[100];
-
-	if (_wininet.InternetOpen == NULL && !LoadLibraryList((Function*)&_wininet, wininet_files)) return _T("can't load wininet.dll");
-
-	inet = _wininet.InternetOpen(_T("OTTD"), INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
-	if (inet == NULL) { err = _T("internetopen failed"); goto error1; }
-
-	conn = _wininet.InternetConnect(inet, _T("www.openttd.org"), INTERNET_DEFAULT_HTTP_PORT, _T(""), _T(""), INTERNET_SERVICE_HTTP, 0, 0);
-	if (conn == NULL) { err = _T("internetconnect failed"); goto error2; }
-
-	_sntprintf(buff, lengthof(buff), _T("/crash.php?file=%s&ident=%d"), arg, _ident);
-
-	http = _wininet.HttpOpenRequest(conn, _T("POST"), buff, NULL, NULL, NULL, INTERNET_FLAG_NO_CACHE_WRITE , 0);
-	if (http == NULL) { err = _T("httpopenrequest failed"); goto error3; }
-
-	if (!_wininet.HttpSendRequest(http, _T("Content-type: application/binary"), -1, msg, (DWORD)msglen)) { err = _T("httpsendrequest failed"); goto error4; }
-
-	len = sizeof(code);
-	if (!_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &code, &len, 0)) { err = _T("httpqueryinfo failed"); goto error4; }
-
-	if (code != 200) {
-		int l = _sntprintf(buf, lengthof(buf), _T("Server said: %d "), code);
-		len = sizeof(buf) - l;
-		_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_TEXT, buf + l, &len, 0);
-		err = buf;
-	}
-
-error4:
-	_wininet.InternetCloseHandle(http);
-error3:
-	_wininet.InternetCloseHandle(conn);
-error2:
-	_wininet.InternetCloseHandle(inet);
-error1:
-	return err;
-}
-
-static void SubmitFile(HWND wnd, const TCHAR *file)
-{
-	HANDLE h;
-	unsigned long size;
-	unsigned long read;
-	void *mem;
-
-	h = CreateFile(file, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
-	if (h == NULL) return;
-
-	size = GetFileSize(h, NULL);
-	if (size > 500000) goto error1;
-
-	mem = MallocT<byte>(size);
-	if (mem == NULL) goto error1;
-
-	if (!ReadFile(h, mem, size, &read, NULL) || read != size) goto error2;
-
-	SubmitCrashReport(wnd, mem, size, file);
-
-error2:
-	free(mem);
-error1:
-	CloseHandle(h);
-}
-
-#endif /* Disabled crash-submit procedures */
-
 static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide report <<") };
 
 static void SetWndSize(HWND wnd, int mode)
 {
 	RECT r, r2;
-	int offs;
 
 	GetWindowRect(wnd, &r);
-
 	SetDlgItemText(wnd, 15, _expand_texts[mode == 1]);
 
 	if (mode >= 0) {
 		GetWindowRect(GetDlgItem(wnd, 11), &r2);
-		offs = r2.bottom - r2.top + 10;
+		int offs = r2.bottom - r2.top + 10;
 		if (!mode) offs = -offs;
 		SetWindowPos(wnd, HWND_TOPMOST, 0, 0,
 			r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
@@ -419,33 +313,6 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 						MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
 					}
 					break;
-/* Disable the crash-save submit code as it's not used */
-#if 0
-				case 14: { // Submit crash report
-					const TCHAR *s;
-
-					SetCursor(LoadCursor(NULL, IDC_WAIT));
-
-					s = SubmitCrashReport(wnd, _crash_msg, strlen(_crash_msg), _T(""));
-					if (s != NULL) {
-						MessageBox(wnd, s, _T("Error"), MB_ICONSTOP);
-						break;
-					}
-
-					/* try to submit emergency savegame */
-					if (_did_emerg_save || DoEmergencySave(wnd)) SubmitFile(wnd, _T("crash.sav"));
-
-					/* try to submit the autosaved game */
-					if (_opt.autosave) {
-						TCHAR buf[40];
-						_sntprintf(buf, lengthof(buf), _T("autosave%d.sav"), (_autosave_ctr - 1) & 3);
-						SubmitFile(wnd, buf);
-					}
-					EnableWindow(GetDlgItem(wnd, 14), FALSE);
-					SetCursor(LoadCursor(NULL, IDC_ARROW));
-					MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
-				} break;
-#endif /* Disabled crash-submit procedures */
 				case 15: // Expand window to show crash-message
 					_expanded ^= 1;
 					SetWndSize(wnd, _expanded);
@@ -490,8 +357,6 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		ExitProcess(0);
 	}
 	had_exception = true;
-
-	_ident = GetTickCount(); // something pretty unique
 
 	MakeCRCTable(AllocaM(uint32, 256));
 	_crash_msg = output = (char*)LocalAlloc(LMEM_FIXED, EXCEPTION_OUTPUT_SIZE);
@@ -1184,21 +1049,6 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 void CSleep(int milliseconds)
 {
 	Sleep(milliseconds);
-}
-
-
-/** Utility function to get the current timestamp in milliseconds
- * Useful for profiling */
-int64 GetTS()
-{
-	static double freq;
-	__int64 value;
-	if (!freq) {
-		QueryPerformanceFrequency((LARGE_INTEGER*)&value);
-		freq = (double)1000000 / value;
-	}
-	QueryPerformanceCounter((LARGE_INTEGER*)&value);
-	return (__int64)(value * freq);
 }
 
 
