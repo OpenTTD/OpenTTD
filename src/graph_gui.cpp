@@ -1124,8 +1124,8 @@ struct PerformanceRatingDetailWindow : Window {
 
 		/* SCORE_TOTAL has his own rules ;) */
 		if (score_type == SCORE_TOTAL) {
-			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) needed += _score_info[i].needed;
-			score = SCORE_MAX;
+			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) score += _score_info[i].score;
+			needed = SCORE_MAX;
 		}
 
 		DrawString(7, 107, r.top + 6, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
