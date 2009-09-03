@@ -281,10 +281,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távols�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Lakosság
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Név
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Lakosság
+STR_SORT_BY_NAME                                                :Név
 STR_SORT_BY_PRODUCTION                                          :Termelés
 STR_SORT_BY_TYPE                                                :Típus
 STR_SORT_BY_TRANSPORTED                                         :Elszállítás
