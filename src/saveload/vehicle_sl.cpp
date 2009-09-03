@@ -591,9 +591,10 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		     SLE_VAR(Aircraft, state,                 SLE_UINT8),
 
 		 SLE_CONDVAR(Aircraft, previous_pos,          SLE_UINT8,                    2, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, last_direction,        SLE_UINT8,                    2, SL_MAX_VERSION),
 
-		/* reserve extra space in savegame here. (currently 15 bytes) */
-		SLE_CONDNULL(15,                                                           2, SL_MAX_VERSION),
+		/* reserve extra space in savegame here. (currently 14 bytes) */
+		SLE_CONDNULL(14,                                                           2, SL_MAX_VERSION),
 
 		     SLE_END()
 	};

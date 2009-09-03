@@ -91,6 +91,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	byte previous_pos;
 	StationID targetairport;
 	byte state;
+	DirectionByte last_direction;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Aircraft() : SpecializedVehicle<Aircraft, VEH_AIRCRAFT>() {}

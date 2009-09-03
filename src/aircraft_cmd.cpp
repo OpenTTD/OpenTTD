@@ -1048,6 +1048,8 @@ static bool AircraftController(Aircraft *v)
 	count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
 	if (count == 0) return false;
 
+	if (v->load_unload_time_rem != 0) v->load_unload_time_rem--;
+
 	do {
 
 		GetNewVehiclePosResult gp;
@@ -1069,9 +1071,15 @@ static bool AircraftController(Aircraft *v)
 			/* Turn. Do it slowly if in the air. */
 			Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
 			if (newdir != v->direction) {
-				v->direction = newdir;
-				if (!(amd->flag & AMED_SLOWTURN)) {
+				if (amd->flag & AMED_SLOWTURN) {
+					if (v->load_unload_time_rem == 0 || newdir == v->last_direction) {
+						v->load_unload_time_rem = 8;
+						v->last_direction = v->direction;
+						v->direction = newdir;
+					}
+				} else {
 					v->cur_speed >>= 1;
+					v->direction = newdir;
 				}
 			}
 
