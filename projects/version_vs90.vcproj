@@ -36,7 +36,7 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\src\ottdres.rc.in"
+			RelativePath="..\src\os\windows\ottdres.rc.in"
 			>
 		</File>
 		<File
