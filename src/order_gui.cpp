@@ -606,6 +606,7 @@ private:
 
 		if (DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), CMD_DELETE_ORDER | CMD_MSG(STR_ERROR_CAN_T_DELETE_THIS_ORDER))) {
 			w->selected_order = selected >= w->vehicle->GetNumOrders() ? -1 : selected;
+			w->UpdateButtonState();
 		}
 	}
 
@@ -725,7 +726,7 @@ public:
 	void UpdateButtonState()
 	{
 		bool shared_orders = this->vehicle->IsOrderListShared();
-		int sel = OrderGetSel();
+		int sel = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel);
 
 		if (this->vehicle->owner == _local_company) {
@@ -833,7 +834,7 @@ public:
 	virtual void OnPaint()
 	{
 		bool shared_orders = this->vehicle->IsOrderListShared();
-		int sel = OrderGetSel();
+		int sel = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel);
 
 		if (this->vehicle->owner == _local_company) {
@@ -1083,6 +1084,7 @@ public:
 				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > this->vehicle->GetNumOrders() || to_order == INVALID_ORDER || to_order > this->vehicle->GetNumOrders()) &&
 						DoCommandP(this->vehicle->tile, this->vehicle->index, from_order | (to_order << 16), CMD_MOVE_ORDER | CMD_MSG(STR_ERROR_CAN_T_MOVE_THIS_ORDER))) {
 					this->selected_order = -1;
+					this->UpdateButtonState();
 				}
 			} break;
 
