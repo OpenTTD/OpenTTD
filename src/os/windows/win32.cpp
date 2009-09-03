@@ -73,8 +73,8 @@ void ShowOSErrorBox(const char *buf, bool system)
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
 
-/* if exception tracker is enabled, we crash here to let the exception handler handle it. */
-#if defined(WIN32_EXCEPTION_TRACKER) && !defined(_DEBUG)
+	/* If exception tracker is enabled, we crash here to let the exception handler handle it. */
+#if defined(WIN32_EXCEPTION_TRACKER) && defined(NDEBUG)
 	if (system) {
 		SetExceptionString("%s", buf);
 		*(byte*)0 = 0;
@@ -383,20 +383,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
 
 #if defined(WIN32_EXCEPTION_TRACKER)
-	extern void Win32InitializeExceptions();
+	void Win32InitializeExceptions();
 	Win32InitializeExceptions();
 #endif
 
-#if defined(WIN32_EXCEPTION_TRACKER_DEBUG)
-	_try {
-		LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep);
-#endif
-		ttd_main(argc, argv);
-
-#if defined(WIN32_EXCEPTION_TRACKER_DEBUG)
-	} _except (ExceptionHandler(_exception_info())) {}
-#endif
-
+	ttd_main(argc, argv);
 	return 0;
 }
 

@@ -9,11 +9,21 @@
 
 /** @file crashlog_win.cpp Implementation of a crashlogger for Windows */
 
-#include "../../stdafx.h"
-#include <windows.h>
-#include "win32.h"
+#if defined(WIN32_EXCEPTION_TRACKER)
 
-#ifdef _MSC_VER
+#include "../../stdafx.h"
+#include "win32.h"
+#include "../../core/alloc_func.hpp"
+#include "../../string_func.h"
+#include "../../gamelog.h"
+#include "../../saveload/saveload.h"
+#include "../../fileio_func.h"
+#include "../../rev.h"
+#include "../../strings_func.h"
+
+#include <windows.h>
+#include <dbghelp.h>
+
 static const char *_exception_string = NULL;
 void SetExceptionString(const char *s, ...)
 {
@@ -26,18 +36,6 @@ void SetExceptionString(const char *s, ...)
 
 	_exception_string = strdup(buf);
 }
-#endif
-
-#if defined(_MSC_VER) && !defined(WINCE)
-
-#include "../../core/alloc_func.hpp"
-#include "../../string_func.h"
-#include "../../gamelog.h"
-#include "../../saveload/saveload.h"
-#include "../../fileio_func.h"
-#include "../../rev.h"
-#include <dbghelp.h>
-#include "../../strings_func.h"
 
 static void *_safe_esp;
 static char *_crash_msg;
@@ -497,4 +495,4 @@ void Win32InitializeExceptions()
 
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
-#endif /* _MSC_VER */
+#endif /* WIN32_EXCEPTION_TRACKER */
