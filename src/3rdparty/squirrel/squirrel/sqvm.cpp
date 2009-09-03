@@ -1526,7 +1526,19 @@ void SQVM::Pop(SQInteger n) {
 	}
 }
 
-void SQVM::Push(const SQObjectPtr &o) { _stack[_top++] = o; }
+void SQVM::Push(const SQObjectPtr &o) {
+	/* Normally the stack shouldn't get this full, sometimes it might. As of now
+	 * all cases have been bugs in "our" (OpenTTD) code. Trigger an assert for
+	 * all debug builds and for the release builds just increase the stack size.
+	 * This way getting a false positive isn't that bad (releases work fine) and
+	 * if there is something fishy it can be caught in RCs/nightlies. */
+#ifdef NDEBUG
+	if (_top >= (int)_stack.capacity()) _stack.resize(2 * _stack.capacity());
+#else
+	assert(_top < (int)_stack.capacity());
+#endif
+	_stack[_top++] = o;
+}
 SQObjectPtr &SQVM::Top() { return _stack[_top-1]; }
 SQObjectPtr &SQVM::PopGet() { return _stack[--_top]; }
 SQObjectPtr &SQVM::GetUp(SQInteger n) { return _stack[_top+n]; }
