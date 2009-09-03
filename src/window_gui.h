@@ -287,7 +287,7 @@ public:
 	void UpdatePosition(int difference)
 	{
 		if (difference == 0) return;
-		this->SetPosition(Clamp(this->pos + difference, 0, this->count - this->cap));
+		this->SetPosition(Clamp(this->pos + difference, 0, max(this->count - this->cap, 0)));
 	}
 
 	/**
