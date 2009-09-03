@@ -20,7 +20,7 @@
 class AIMap : public AIObject {
 public:
 #ifdef DEFINE_SCRIPT_FILES
-	static const int TILE_INVALID = INVALID_TILE; //!< Invalid TileIndex.
+	static const int TILE_INVALID = (int)INVALID_TILE; //!< Invalid TileIndex.
 #endif /* DEFINE_SCRIPT_FILES */
 #ifdef DOXYGEN_SKIP
 	const static TileIndex TILE_INVALID; //!< Invalid TileIndex.
