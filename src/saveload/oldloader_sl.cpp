@@ -607,7 +607,8 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 {
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
-	Order *o = new (num) Order(UnpackOldOrder(_old_order));
+	Order *o = new (num) Order();
+	o->AssignOrder(UnpackOldOrder(_old_order));
 
 	if (o->IsType(OT_NOTHING)) {
 		delete o;
