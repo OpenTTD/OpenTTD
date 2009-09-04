@@ -1077,14 +1077,26 @@ static bool AircraftController(Aircraft *v)
 						v->last_direction = v->direction;
 						v->direction = newdir;
 					}
+
+					/* Move vehicle. */
+					gp = GetNewVehiclePos(v);
 				} else {
 					v->cur_speed >>= 1;
 					v->direction = newdir;
-				}
-			}
 
-			/* Move vehicle. */
-			gp = GetNewVehiclePos(v);
+					/* When leaving a terminal an aircraft often goes to a position
+					 * directly in front of it. If it would move while turning it
+					 * would need an two extra turns to end up at the correct position.
+					 * To make it easier just disallow all moving while turning as
+					 * long as an aircraft is on the ground. */
+					gp.x = v->x_pos;
+					gp.y = v->y_pos;
+					gp.new_tile = gp.old_tile = v->tile;
+				}
+			} else {
+				/* Move vehicle. */
+				gp = GetNewVehiclePos(v);
+			}
 		}
 
 		v->tile = gp.new_tile;
