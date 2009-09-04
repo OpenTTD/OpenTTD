@@ -305,10 +305,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pikkus: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala: {NUM} x {NUM}{}Kõrguste erinevus: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Rahvaarv
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Daatum
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Rahvaarv
+STR_SORT_BY_NAME                                                :Nimi
 STR_SORT_BY_PRODUCTION                                          :Toodang
 STR_SORT_BY_TYPE                                                :Tüüp
 STR_SORT_BY_TRANSPORTED                                         :Veetud
@@ -323,6 +326,7 @@ STR_SORT_BY_MODEL                                               :Mudel
 STR_SORT_BY_VALUE                                               :Väärtus
 STR_SORT_BY_LENGTH                                              :Pikkus
 STR_SORT_BY_LIFE_TIME                                           :Allesjäänud eluaeg
+STR_SORT_BY_TIMETABLE_DELAY                                     :Hilinemine sõiduplaanis
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING                                             :Ootava kauba väärtus
 STR_SORT_BY_RATING_MAX                                          :Kõrgeim kaubahinnang
@@ -983,6 +987,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valige k
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisaandmed põhigraafikakomplekti kohta
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Põhihelikomplekt
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vali kasutatavad põhihelid
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Täiendav teave põhihelikomplekti kohta
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekraanrežiim ebaõnnestus
 
@@ -1837,6 +1844,7 @@ STR_CONTENT_TYPE_AI                                             :Tehismõistus
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Tehismõistuse teek
 STR_CONTENT_TYPE_SCENARIO                                       :Stsenaarium
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Kõrguskaart
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Põhihelid
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Sisu allalaadimine...
@@ -1878,6 +1886,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tarnib: 
 STR_JOIN_STATION_CAPTION                                        :{BLACK}Liida jaamale
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Ehita eraldi jaam
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Liida teemärgis
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ehita eraldi teemärgis
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Rööbasteede ehitamine
@@ -2470,6 +2480,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jaamanim
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Enam kui ühe eseme valimiseks hoia all CTRL klahvi
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} jaam{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Puudub -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vali kõik tööstused
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
@@ -2512,7 +2523,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näita k
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jaama nime vahetamine
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskenda vaade teemärgisel. Ctrl+klikk avab teemärgisel uue vaate
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuda meldepunkti nime
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade poile. Ctrl+klikk avab poil uue vaate
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Muuda poi nime
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
 
@@ -3177,6 +3191,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tehismõ
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi tehismõistus uuesti
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Sulge tehismõistus, laadi skript uuesti ning taaskäivita tehismõistus
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat tehismõistust ei leitud.{}See on asendustehismõistus, ning ei tee midagi.{}Tehismõistuseid saab laadida kasutades 'Internetisisu' süsteemi.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos ekraanitõmmisega tehismõistuse tõrkeotsingu aknast.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehismõistuse debugi akent saab vaadata ainult server
 
@@ -3379,12 +3394,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Dokk tul
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lennuväli tuleb enne lammutada
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Liidab teemärgised
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Liiga lähedal teisele teemärgisele
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Meldepunkti ei saa siia rajada...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poid ei saa siia asetada...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Meldepunkti nime ei saa muuta...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Meldepunkti ei saa siit eemaldada...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Enne peab rööbastelt kõik teemärgid eemaldama
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...poi on ees
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...poi on kasutusel!
 
@@ -3401,6 +3419,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lennuk p
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ainult depoos peatunud ronge saab muuta
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Rong on liiga pikk
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Sõidusuunda ei saa pöörata...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Mitmest osast koosnevaid veovahendeid ei saa ümber pöörata
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Ühildamatud rööbasteetüübid
 
@@ -3538,6 +3557,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Rongi ei
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ei saa rongi ümber pöörata.
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Selle raja ahel puudub, rong ei saa sõitu alustada
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Maanteesõiduk ei saa ümber pöörata...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Lennuk on õhus
 
@@ -3672,6 +3692,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} lennuv
 STR_SV_STNAME_OILFIELD                                          :{STRING} naftaväli
 STR_SV_STNAME_MINES                                             :{STRING} kaevandused
 STR_SV_STNAME_DOCKS                                             :{STRING} dokid
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} juurdeehitis
 STR_SV_STNAME_SIDINGS                                           :{STRING} hargnemine
@@ -3949,6 +3971,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Poi
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Poi nr. {COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Ettevõte {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Rühm {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}

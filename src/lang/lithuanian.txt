@@ -282,10 +282,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Atstumas
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: {NUM} x {NUM}{}Aukščių skirtumas: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populiaciją
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vardą
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datą
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Produkciją
 STR_SORT_BY_TYPE                                                :Tipą
 STR_SORT_BY_TRANSPORTED                                         :Pervežimus
@@ -1256,6 +1257,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :atsitiktinis
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Miestams leidžiama tiesti kelius: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Leisti miestams kontroliuoti oro uostų triukšmo lygį: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrindinės įrankių juostos pozicija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kairėje
@@ -1285,6 +1287,7 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveik
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Krovinų valdymas
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatiškai atnaujinti
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Techninė apžiūra
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutas
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukiniai
@@ -1734,6 +1737,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :gautas neteisin
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :bloga versija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :toks vardas jau naudojamas
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :blogas žaidimo slaptažodis
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :neteisinga kompanija DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :išmestas serverio
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :bandė sukčiauti
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilnas
@@ -1750,10 +1754,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Žaidimas tęsi
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :išeinama
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} prisijungė prie žaidimo
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} prisijungė prie #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} prisijungė prie stebėtojų
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} pradėjo naują kompaniją (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} paliko žaidimą ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} pasikeitė vardą į {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} turi savo kompaniją {2:CURRENCY}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jūs gavote {1:STRING} {2:CURRENCY}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Serveris užsidarė
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Serveris persikrauna...{}Prašau palaukti...
 
@@ -1763,6 +1770,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipas
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Turinio tipas
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Vardas
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Turinio vardas
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Paspauskite kad pamatyti smulkmenas{}Pažymėkite checkbox atsisiųntimui
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pažymėti viską
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Pažymėti visą turinį atsisiuntimui
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymėti atnaujinimus
