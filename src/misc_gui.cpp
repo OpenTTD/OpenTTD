@@ -788,7 +788,7 @@ struct TooltipsWindow : public Window
 			Window(x, y, width, height, WC_TOOLTIPS, widget)
 	{
 		this->string_id = str;
-		assert(sizeof(this->params[0]) == sizeof(params[0]));
+		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
 		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;

@@ -738,7 +738,7 @@ void StartupEconomy()
 {
 	int i;
 
-	assert(sizeof(_price) == NUM_PRICES * sizeof(Money));
+	assert_compile(sizeof(_price) == NUM_PRICES * sizeof(Money));
 
 	/* Setup price bases */
 	for (i = 0; i < NUM_PRICES; i++) {

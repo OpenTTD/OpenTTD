@@ -5652,7 +5652,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 	newfile->traininfo_vehicle_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
 	/* Copy the initial parameter list */
-	assert(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
+	assert_compile(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
 	newfile->param_end = config->num_params;
 	memcpy(newfile->param, config->param, sizeof(newfile->param));
 

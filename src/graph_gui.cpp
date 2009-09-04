@@ -213,7 +213,7 @@ protected:
 
 		/* the colours and cost array of GraphDrawer must accomodate
 		 * both values for cargo and companies. So if any are higher, quit */
-		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
+		assert_compile(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
 
 		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
@@ -1244,7 +1244,7 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 		STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP,
 	};
 
-	assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
+	assert_compile(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
 
 	NWidgetVertical *vert = new NWidgetVertical();
 	for (int widnum = PRW_SCORE_FIRST; widnum <= PRW_SCORE_LAST; widnum++) {
