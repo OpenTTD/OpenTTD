@@ -87,31 +87,43 @@
 
 /* static */ bool AITile::HasTreeOnTile(TileIndex tile)
 {
+	if (!::IsValidTile(tile)) return false;
+
 	return ::IsTileType(tile, MP_TREES);
 }
 
 /* static */ bool AITile::IsFarmTile(TileIndex tile)
 {
+	if (!::IsValidTile(tile)) return false;
+
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_FIELDS));
 }
 
 /* static */ bool AITile::IsRockTile(TileIndex tile)
 {
+	if (!::IsValidTile(tile)) return false;
+
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_ROCKS));
 }
 
 /* static */ bool AITile::IsRoughTile(TileIndex tile)
 {
+	if (!::IsValidTile(tile)) return false;
+
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_ROUGH));
 }
 
 /* static */ bool AITile::IsSnowTile(TileIndex tile)
 {
+	if (!::IsValidTile(tile)) return false;
+
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_SNOW));
 }
 
 /* static */ bool AITile::IsDesertTile(TileIndex tile)
 {
+	if (!::IsValidTile(tile)) return false;
+
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_DESERT));
 }
 

@@ -88,7 +88,7 @@ public:
 	}
 	SQUnsignedInteger capacity() { return _allocated; }
 	inline T &back() const { return _vals[_size - 1]; }
-	inline T& operator[](SQUnsignedInteger pos) const{ return _vals[pos]; }
+	inline T& operator[](SQUnsignedInteger pos) const{ assert(pos < _allocated); return _vals[pos]; }
 	T* _vals;
 private:
 	void _realloc(SQUnsignedInteger newsize)
