@@ -1678,7 +1678,10 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
  */
 CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	const IndustrySpec *indspec = GetIndustrySpec(GB(p1, 0, 16));
+	IndustryType it = GB(p1, 0, 16);
+	if (it >= NUM_INDUSTRYTYPES) return CMD_ERROR;
+
+	const IndustrySpec *indspec = GetIndustrySpec(it);
 	const Industry *ind = NULL;
 
 	/* Check if the to-be built/founded industry is available for this climate. */
@@ -1717,7 +1720,8 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	} else {
 		int count = indspec->num_table;
 		const IndustryTileTable * const *itt = indspec->table;
-		int num = Clamp(GB(p1, 16, 16), 0, count - 1);
+		int num = GB(p1, 16, 16);
+		if (num >= count) return CMD_ERROR;
 
 		_error_message = STR_ERROR_SITE_UNSUITABLE;
 		do {
