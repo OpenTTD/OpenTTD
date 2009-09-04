@@ -26,6 +26,7 @@
 #include "string_func.h"
 
 #include "table/strings.h"
+#include "table/sprites.h"
 
 struct SignList {
 	typedef GUIList<const Sign *> GUISignList;
@@ -88,51 +89,63 @@ enum SignListWidgets {
 };
 
 struct SignListWindow : Window, SignList {
-	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	static const int text_offset; // Offset of the sign text relative to the left edge of the SLW_LIST widget.
+
+	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->vscroll.SetCapacity(12);
-		this->resize.step_height = 10;
-		this->resize.height = this->height - 10 * 7; // minimum if 5 in the list
+		this->InitNested(desc, window_number);
 
+		this->vscroll.SetCapacity(this->nested_array[SLW_LIST]->current_y / this->resize.step_height);
+		printf("resize step = %d\n", this->resize.step_height);
+
+		/* Create initial list. */
 		this->signs.ForceRebuild();
-		this->signs.NeedResort();
-
-		this->FindWindowPlacementAndResize(desc);
+		this->signs.ForceResort();
+		this->BuildSignsList();
+		this->SortSignsList();
+		this->vscroll.SetCount(this->signs.Length());
 	}
 
 	virtual void OnPaint()
 	{
-		BuildSignsList();
-		SortSignsList();
-
-		this->vscroll.SetCount(this->signs.Length()); // Update the scrollbar
-
-		SetDParam(0, this->vscroll.GetCount());
 		this->DrawWidgets();
+	}
 
-		/* No signs? */
-		int y = this->widget[SLW_LIST].top + 2; // offset from top of widget
-		if (this->vscroll.GetCount() == 0) {
-			DrawString(this->widget[SLW_LIST].left + 2, this->widget[SLW_LIST].right, y, STR_STATION_LIST_NONE);
-			return;
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case SLW_LIST: {
+				uint y = r.top + 2; // Offset from top of widget.
+				/* No signs? */
+				if (this->vscroll.GetCount() == 0) {
+					DrawString(r.left + 2, r.right, y, STR_STATION_LIST_NONE);
+					return;
+				}
+
+				/* At least one sign available. */
+				for (uint16 i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->vscroll.GetCount(); i++) {
+					const Sign *si = this->signs[i];
+
+					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, r.left + 4, y + 1);
+
+					SetDParam(0, si->index);
+					DrawString(r.left + this->text_offset, r.right, y, STR_SIGN_NAME, TC_YELLOW);
+					y += this->resize.step_height;
+				}
+				break;
+			}
 		}
+	}
 
-		/* Start drawing the signs */
-		for (uint16 i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->vscroll.GetCount(); i++) {
-			const Sign *si = this->signs[i];
-
-			if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, this->widget[SLW_LIST].left + 4, y + 1);
-
-			SetDParam(0, si->index);
-			DrawString(this->widget[SLW_LIST].left + 22, this->widget[SLW_LIST].right, y, STR_SIGN_NAME, TC_YELLOW);
-			y += 10;
-		}
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == SLW_CAPTION) SetDParam(0, this->vscroll.GetCount());
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget == SLW_LIST) {
-			uint32 id_v = (pt.y - this->widget[SLW_LIST].top - 1) / 10;
+			uint id_v = (pt.y - this->nested_array[SLW_LIST]->pos_y - 1) / this->resize.step_height;
 
 			if (id_v >= this->vscroll.GetCapacity()) return;
 			id_v += this->vscroll.GetPosition();
@@ -145,28 +158,31 @@ struct SignListWindow : Window, SignList {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / 10);
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget == SLW_LIST) resize->height = max<uint>(FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_PLAYER_ICON).height);
+		/* Minimal width of SLW_LIST is the maximal length of a sign + its offset. */
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (data == 0) {
+		if (data == 0) { // New or deleted sign.
 			this->signs.ForceRebuild();
-		} else {
+			this->BuildSignsList();
+			this->InvalidateWidget(SLW_CAPTION);
+			this->vscroll.SetCount(this->signs.Length());
+		} else { // Change of sign contents.
 			this->signs.ForceResort();
 		}
+
+		this->SortSignsList();
 	}
 };
 
-static const Widget _sign_list_widget[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   346,   357,     0,    13, 0x0,                   STR_TOOLTIP_STICKY},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   345,    14,   137, 0x0,                   STR_NULL},
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   346,   357,    14,   125, 0x0,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   346,   357,   126,   137, 0x0,                   STR_TOOLTIP_RESIZE},
-{   WIDGETS_END},
-};
+const int SignListWindow::text_offset = 22;
 
 static const NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -175,7 +191,8 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, SLW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(346, 124), SetResize(1, 10), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(WD_FRAMERECT_LEFT + SignListWindow::text_offset + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMERECT_RIGHT, 54),
+							SetResize(1, 10), SetFill(true, true), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLW_RESIZE),
@@ -184,10 +201,10 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 };
 
 static const WindowDesc _sign_list_desc(
-	WDP_AUTO, WDP_AUTO, 358, 138, 358, 138,
+	WDP_AUTO, WDP_AUTO, 0, 0, 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_sign_list_widget, _nested_sign_list_widgets, lengthof(_nested_sign_list_widgets)
+	NULL, _nested_sign_list_widgets, lengthof(_nested_sign_list_widgets)
 );
 
 
