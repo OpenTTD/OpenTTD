@@ -1671,23 +1671,20 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
  * @param tile tile where industry is built
  * @param flags of operations to conduct
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 15) - industry type see build_industry.h and see industry.h
- * - p1 = (bit 16 - 31) - first layout to try
+ * - p1 = (bit  0 -  7) - industry type see build_industry.h and see industry.h
+ * - p1 = (bit  8 - 15) - first layout to try
  * @param p2 seed to use for variable 8F
  * @return index of the newly create industry, or CMD_ERROR if it failed
  */
 CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	IndustryType it = GB(p1, 0, 16);
+	IndustryType it = GB(p1, 0, 8);
 	if (it >= NUM_INDUSTRYTYPES) return CMD_ERROR;
 
 	const IndustrySpec *indspec = GetIndustrySpec(it);
-	const Industry *ind = NULL;
 
 	/* Check if the to-be built/founded industry is available for this climate. */
-	if (!indspec->enabled) {
-		return CMD_ERROR;
-	}
+	if (!indspec->enabled) return CMD_ERROR;
 
 	/* If the setting for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
@@ -1695,6 +1692,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		return CMD_ERROR;
 	}
 
+	const Industry *ind = NULL;
 	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
@@ -1709,7 +1707,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table), p2, founder);
+					ind = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), p2, founder);
 					if (ind != NULL) {
 						break;
 					}
@@ -1720,16 +1718,16 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	} else {
 		int count = indspec->num_table;
 		const IndustryTileTable * const *itt = indspec->table;
-		int num = GB(p1, 16, 16);
+		int num = GB(p1, 8, 8);
 		if (num >= count) return CMD_ERROR;
 
 		_error_message = STR_ERROR_SITE_UNSUITABLE;
 		do {
 			if (--count < 0) return CMD_ERROR;
 			if (--num < 0) num = indspec->num_table - 1;
-		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
+		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, it));
 
-		ind = CreateNewIndustryHelper(tile, p1, flags, indspec, num, p2, _current_company);
+		ind = CreateNewIndustryHelper(tile, it, flags, indspec, num, p2, _current_company);
 		if (ind == NULL) return CMD_ERROR;
 	}
 

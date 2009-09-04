@@ -108,7 +108,7 @@
 	EnforcePrecondition(false, AIMap::IsValidTile(tile));
 
 	uint32 seed = ::InteractiveRandom();
-	return AIObject::DoCommand(tile, (::InteractiveRandomRange(::GetIndustrySpec(industry_type)->num_table) << 16) | industry_type, seed, CMD_BUILD_INDUSTRY);
+	return AIObject::DoCommand(tile, (::InteractiveRandomRange(::GetIndustrySpec(industry_type)->num_table) << 8) | industry_type, seed, CMD_BUILD_INDUSTRY);
 }
 
 /* static */ bool AIIndustryType::ProspectIndustry(IndustryType industry_type)

@@ -385,7 +385,7 @@ public:
 			_current_company = OWNER_NONE;
 			_generating_world = true;
 			_ignore_restrictions = true;
-			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 8) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 			if (!success) {
 				SetDParam(0, indsp->name);
 				ShowErrorMessage(_error_message, STR_ERROR_CAN_T_BUILD_HERE, pt.x, pt.y);
@@ -394,7 +394,7 @@ public:
 			_ignore_restrictions = false;
 			_generating_world = false;
 		} else {
-			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 8) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 		}
 
 		/* If an industry has been built, just reset the cursor and the system */
