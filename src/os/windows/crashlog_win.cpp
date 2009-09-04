@@ -292,7 +292,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		output += seprintf(output, last,
 			"*** OpenTTD Crash Report ***\r\n"
 			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
-			"Build: %s (%d) built on " __DATE__ " " __TIME__ "\r\n",
+			"Build: %s (%d) built on %s\r\n",
 			time.wYear,
 			time.wMonth,
 			time.wDay,
@@ -300,7 +300,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			time.wMinute,
 			time.wSecond,
 			_openttd_revision,
-			_openttd_revision_modified
+			_openttd_revision_modified,
+			_openttd_build_date
 		);
 	}
 
@@ -437,7 +438,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			MINIDUMP_EXCEPTION_INFORMATION mdei;
 			MINIDUMP_USER_STREAM userstream;
 			MINIDUMP_USER_STREAM_INFORMATION musi;
-			char msg[] = "****** Built on " __DATE__ " " __TIME__ ". ******";
+			char msg[64];
+			seprintf(msg, lastof(msg), "****** Built on %s. ******", _openttd_build_date);
 
 			userstream.Type        = LastReservedStream + 1;
 			userstream.Buffer      = msg;

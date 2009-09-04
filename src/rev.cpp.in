@@ -30,6 +30,14 @@
 const char _openttd_revision[] = "!!VERSION!!";
 
 /**
+ * The text version of OpenTTD's build date.
+ * Updating the build date in this file is the safest as it generally gets
+ * updated for each revision in contrary to most other files that only see
+ * updates when they are actually changed themselves.
+ */
+const char _openttd_build_date[] = __DATE__ " " __TIME__;
+
+/**
  * Let us know if current build was modified. This detection
  * works even in the case when revision string is overriden by
  * --revision argument.
