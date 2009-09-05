@@ -1644,7 +1644,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New company
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(none)
+STR_NETWORK_CLIENTLIST_NONE                                     :- None -
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Give money
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Speak to all
@@ -2414,7 +2414,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidies on offer for services taking:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} from {STRING2} to {STRING2}{YELLOW} (by {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}None
+STR_SUBSIDIES_NONE                                              :{ORANGE}- None -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Services already subsidised:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} from {STRING2} to {STRING2}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to centre view on industry/town. Ctrl+Click opens a new viewport on industry/town location
