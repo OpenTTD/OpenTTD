@@ -19,6 +19,7 @@ public:
 	/* virtual */ const char *Start(const char * const *param) { return NULL; }
 
 	/* virtual */ void Stop() { }
+	/* virtual */ const char *GetName() const { return "null"; }
 };
 
 class FSoundDriver_Null: public SoundDriverFactory<FSoundDriver_Null> {

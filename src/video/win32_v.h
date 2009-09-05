@@ -27,6 +27,7 @@ public:
 	/* virtual */ bool ChangeResolution(int w, int h);
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	/* virtual */ const char *GetName() const { return "win32"; }
 };
 
 class FVideoDriver_Win32: public VideoDriverFactory<FVideoDriver_Win32> {

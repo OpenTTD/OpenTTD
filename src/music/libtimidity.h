@@ -27,6 +27,7 @@ public:
 	/* virtual */ bool IsSongPlaying();
 
 	/* virtual */ void SetVolume(byte vol);
+	/* virtual */ const char *GetName() const { return "libtimidity"; }
 };
 
 class FMusicDriver_LibTimidity: public MusicDriverFactory<FMusicDriver_LibTimidity> {

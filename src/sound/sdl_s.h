@@ -19,6 +19,7 @@ public:
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
+	/* virtual */ const char *GetName() const { return "sdl"; }
 };
 
 class FSoundDriver_SDL: public SoundDriverFactory<FSoundDriver_SDL> {

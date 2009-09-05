@@ -27,6 +27,7 @@ public:
 	/* virtual */ bool ChangeResolution(int w, int h);
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	/* virtual */ const char *GetName() const { return "sdl"; }
 };
 
 class FVideoDriver_SDL: public VideoDriverFactory<FVideoDriver_SDL> {

@@ -27,6 +27,7 @@ public:
 	/* virtual */ bool IsSongPlaying();
 
 	/* virtual */ void SetVolume(byte vol);
+	/* virtual */ const char *GetName() const { return "qt"; }
 };
 
 class FMusicDriver_QtMidi: public MusicDriverFactory<FMusicDriver_QtMidi> {

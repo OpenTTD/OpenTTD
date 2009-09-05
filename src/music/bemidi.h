@@ -27,6 +27,7 @@ public:
 	/* virtual */ bool IsSongPlaying();
 
 	/* virtual */ void SetVolume(byte vol);
+	/* virtual */ const char *GetName() const { return "bemidi"; }
 };
 
 class FMusicDriver_BeMidi: public MusicDriverFactory<FMusicDriver_BeMidi> {

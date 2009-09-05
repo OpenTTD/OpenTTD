@@ -19,6 +19,7 @@ public:
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
+	/* virtual */ const char *GetName() const { return "win32"; }
 };
 
 class FSoundDriver_Win32: public SoundDriverFactory<FSoundDriver_Win32> {

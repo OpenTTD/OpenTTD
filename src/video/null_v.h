@@ -30,6 +30,7 @@ public:
 	/* virtual */ bool ChangeResolution(int w, int h);
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	/* virtual */ const char *GetName() const { return "null"; }
 };
 
 class FVideoDriver_Null: public VideoDriverFactory<FVideoDriver_Null> {

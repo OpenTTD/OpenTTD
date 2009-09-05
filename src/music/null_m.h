@@ -27,6 +27,7 @@ public:
 	/* virtual */ bool IsSongPlaying() { return true; }
 
 	/* virtual */ void SetVolume(byte vol) { }
+	/* virtual */ const char *GetName() const { return "null"; }
 };
 
 class FMusicDriver_Null: public MusicDriverFactory<FMusicDriver_Null> {

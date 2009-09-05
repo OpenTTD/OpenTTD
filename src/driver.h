@@ -36,6 +36,8 @@ public:
 		DT_VIDEO,
 		DT_END,
 	};
+
+	virtual const char *GetName() const = 0;
 };
 
 DECLARE_POSTFIX_INCREMENT(Driver::Type);

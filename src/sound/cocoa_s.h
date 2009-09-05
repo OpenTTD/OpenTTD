@@ -19,6 +19,7 @@ public:
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
+	/* virtual */ const char *GetName() const { return "cocoa"; }
 };
 
 class FSoundDriver_Cocoa: public SoundDriverFactory<FSoundDriver_Cocoa> {

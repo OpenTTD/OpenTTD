@@ -21,6 +21,7 @@ public:
 	/* virtual */ void Stop();
 
 	/* virtual */ void MainLoop();
+	/* virtual */ const char *GetName() const { return "allegro"; }
 };
 
 class FSoundDriver_Allegro: public SoundDriverFactory<FSoundDriver_Allegro> {
