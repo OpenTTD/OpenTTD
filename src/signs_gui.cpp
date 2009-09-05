@@ -89,13 +89,13 @@ enum SignListWidgets {
 };
 
 struct SignListWindow : Window, SignList {
-	static const int text_offset; // Offset of the sign text relative to the left edge of the SLW_LIST widget.
+	int text_offset; // Offset of the sign text relative to the left edge of the SLW_LIST widget.
 
 	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->InitNested(desc, window_number);
 
-		this->vscroll.SetCapacity(this->nested_array[SLW_LIST]->current_y / this->resize.step_height);
+		this->vscroll.SetCapacity((this->nested_array[SLW_LIST]->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 
 		/* Create initial list. */
 		this->signs.ForceRebuild();
@@ -114,10 +114,10 @@ struct SignListWindow : Window, SignList {
 	{
 		switch (widget) {
 			case SLW_LIST: {
-				uint y = r.top + 2; // Offset from top of widget.
+				uint y = r.top + WD_FRAMERECT_TOP; // Offset from top of widget.
 				/* No signs? */
 				if (this->vscroll.GetCount() == 0) {
-					DrawString(r.left + 2, r.right, y, STR_STATION_LIST_NONE);
+					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right, y, STR_STATION_LIST_NONE);
 					return;
 				}
 
@@ -128,7 +128,7 @@ struct SignListWindow : Window, SignList {
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, r.left + 4, y + 1);
 
 					SetDParam(0, si->index);
-					DrawString(r.left + this->text_offset, r.right, y, STR_SIGN_NAME, TC_YELLOW);
+					DrawString(r.left + this->text_offset, r.right - WD_FRAMETEXT_RIGHT, y, STR_SIGN_NAME, TC_YELLOW);
 					y += this->resize.step_height;
 				}
 				break;
@@ -144,7 +144,7 @@ struct SignListWindow : Window, SignList {
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget == SLW_LIST) {
-			uint id_v = (pt.y - this->nested_array[SLW_LIST]->pos_y - 1) / this->resize.step_height;
+			uint id_v = (pt.y - this->nested_array[SLW_LIST]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 
 			if (id_v >= this->vscroll.GetCapacity()) return;
 			id_v += this->vscroll.GetPosition();
@@ -162,8 +162,13 @@ struct SignListWindow : Window, SignList {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget == SLW_LIST) resize->height = max<uint>(FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_PLAYER_ICON).height);
-		/* Minimal width of SLW_LIST is the maximal length of a sign + its offset. */
+		if (widget == SLW_LIST) {
+			Dimension spr_dim = GetSpriteSize(SPR_PLAYER_ICON);
+			this->text_offset = WD_FRAMETEXT_LEFT + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
+			resize->height = max<uint>(FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_PLAYER_ICON).height);
+			Dimension d = {this->text_offset + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM};
+			*size = maxdim(*size, d);
+		}
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -181,8 +186,6 @@ struct SignListWindow : Window, SignList {
 	}
 };
 
-const int SignListWindow::text_offset = 22;
-
 static const NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SLW_CLOSEBOX),
@@ -190,8 +193,8 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, SLW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(WD_FRAMERECT_LEFT + SignListWindow::text_offset + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMERECT_RIGHT, 54),
-							SetResize(1, 10), SetFill(true, true), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(WD_FRAMETEXT_LEFT + 16 + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, 50),
+							SetResize(1, 10), SetFill(true, false), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLW_RESIZE),
