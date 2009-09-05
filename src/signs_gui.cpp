@@ -96,7 +96,6 @@ struct SignListWindow : Window, SignList {
 		this->InitNested(desc, window_number);
 
 		this->vscroll.SetCapacity(this->nested_array[SLW_LIST]->current_y / this->resize.step_height);
-		printf("resize step = %d\n", this->resize.step_height);
 
 		/* Create initial list. */
 		this->signs.ForceRebuild();
