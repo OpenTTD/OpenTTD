@@ -1646,7 +1646,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Diventa 
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuova compagnia
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(nessuno)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Nessuno -
 STR_NETWORK_CLIENTLIST_KICK                                     :Espelli
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dona denaro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tutti
@@ -2358,6 +2358,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inserire
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Città
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nessuna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomi delle città - fare clic su un nome per centrare la visuale sulla città. CTRL+clic la mostra in una mini visuale.
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
@@ -2415,7 +2416,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Sussidi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Sussidi offerti per la realizzazione di servizi:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} (entro {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Nessuno
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Nessuno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizi già sovvenzionati:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fino al {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale sull'industria o città. CTRL+clic mostra l'industria/città in una mini visuale.
@@ -2546,6 +2547,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Stiamo c
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrie
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nessuna -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% trasportato)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% trasportato)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

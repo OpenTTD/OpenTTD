@@ -2834,10 +2834,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Renovasi
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Balikkan arah kereta api
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Paksa kendaraan untuk berbalik arah
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Tampilkan perintah kereta
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Tampilkan order kereta. Ctrl+Click untuk menampilkan jadwal kereta.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Tampilkan perintah kendaraan
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Tampilkan perintah kapal
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Tampilkan order pesawat
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Tampilkan order kapal. Ctrl+Click untuk menampilkan jadwal kapal.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Tampilkan order pesawat. Ctrl+Click untuk menampilkan jadwal pesawat
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tampilkan informasi kereta
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilkan detail bus/truk
@@ -2916,8 +2916,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Tr
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} %{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Menambah jarak waktu servis
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mengurangi jarak waktu servis
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah jarak waktu servis dengan 10. Ctrl+Click untuk menambah jarak waktu servis dengan 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangi jarak waktu servis dengan 10. Ctrl+Click
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama kereta
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan

@@ -248,10 +248,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長度�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域：{NUM} x {NUM}{}高度差：{NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名稱
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :產量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :已運送
@@ -1638,7 +1639,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁觀�
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(無)
+STR_NETWORK_CLIENTLIST_NONE                                     :- 無 -
 STR_NETWORK_CLIENTLIST_KICK                                     :踢除
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :給錢
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :對全員說話
@@ -2405,7 +2406,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}補助資訊
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}提供補助的運輸服務：
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} (在 {DATE_SHORT} 之前)
-STR_SUBSIDIES_NONE                                              :{ORANGE}無
+STR_SUBSIDIES_NONE                                              :{ORANGE}- 無 -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已獲補助的服務：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，補助到 {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央

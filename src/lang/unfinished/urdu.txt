@@ -143,10 +143,11 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین
 # Measurement tooltip
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}آبادی
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز
 STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
@@ -157,10 +158,10 @@ STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا ٹرینوں کی فہرست کھلتی یا بند ہوتی ہے
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا گاڑیوں کی فہرست کھلتی یا بند ہوتی ہے
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا کشتیوں کی فہرست کھلتی یا بند ہوتی ہے
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا جہازوں کی فہرست کھلتی یا بند ہوتی ہے
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}بڑا کر کے دکھاو
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}چھوٹا کر کے دکھاو
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل کی پٹری بچھاو

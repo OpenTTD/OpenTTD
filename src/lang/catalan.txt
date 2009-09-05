@@ -1644,7 +1644,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Espectad
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova companyia
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(cap)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Cap -
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entrega diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tothom
@@ -2067,7 +2067,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propieta
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propietari del rail del tramvia: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propietari del rail: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritat Local: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ningú
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Cap
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenades: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construït: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe d'estació: {LTBLUE}{STRING}
@@ -2413,7 +2413,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencions
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencions per prestació de serveis oferts:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} a {STRING}{YELLOW} (per {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Cap
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Cap -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serveis ja subvencionats:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} des de {STRING} fins a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fins a {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a l'indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població

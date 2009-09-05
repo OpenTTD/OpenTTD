@@ -1645,7 +1645,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nouvelle compagnie
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(aucun)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Aucun -
 STR_NETWORK_CLIENTLIST_KICK                                     :Jeter
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donner de l'argent
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parler à tous
@@ -2357,6 +2357,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer u
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Aucune -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - Cliquer sur un nom pour centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale : {COMMA}
@@ -2414,7 +2415,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventions
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Offres de subvention pour le transport de:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} (avant {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Aucune
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Aucune -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subventions déjà accordées:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} ({COMPANY}{YELLOW}, jusqu'à {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer sur le service pour centrer la vue sur l'industrie ou la ville. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie ou la ville
@@ -2545,6 +2546,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous som
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Aucune -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transporté)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporté)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

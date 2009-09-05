@@ -248,10 +248,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}الطو
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المساحة: {NUM} x {NUM}{}فرق الارتفاع{NUM} م
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}عدد السكان
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}اسم
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاريخ
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :السكان
+STR_SORT_BY_NAME                                                :الاسم
 STR_SORT_BY_PRODUCTION                                          :إنتاج
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :الحمولة المنقولة
@@ -266,6 +269,7 @@ STR_SORT_BY_MODEL                                               :موديل
 STR_SORT_BY_VALUE                                               :القيمة
 STR_SORT_BY_LENGTH                                              :الطول
 STR_SORT_BY_LIFE_TIME                                           :العمر المتبقي
+STR_SORT_BY_TIMETABLE_DELAY                                     :تاخير جدولة الاوامر
 STR_SORT_BY_FACILITY                                            :نوع المحطة
 STR_SORT_BY_WAITING                                             :قيمة الشحنة المنتظرة
 STR_SORT_BY_RATING_MAX                                          :اعلى نسبة شحن
@@ -926,6 +930,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اخت�
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ملف مفقود او غير صالح
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} معلومات اضافية عن القاعدة الرسومية
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}قاعدة الاصوات الاساسية
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}اختر الاصوات الاساسية للاستخدام
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}معلومات اضافية حول مجوعة الصوت
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}فشل تشغيل نمط الشاشة الكاملة
 
@@ -1780,6 +1787,7 @@ STR_CONTENT_TYPE_AI                                             :الذكاء ا
 STR_CONTENT_TYPE_AI_LIBRARY                                     :مكتبة الذكاء الصناعي
 STR_CONTENT_TYPE_SCENARIO                                       :سناريو
 STR_CONTENT_TYPE_HEIGHTMAP                                      :خارطة المرتفعات
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :الاصوات الاساسية
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE} يتم التحميل الان ...

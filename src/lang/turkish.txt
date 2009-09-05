@@ -249,10 +249,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Uzunluk:
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {NUM} x {NUM}{}Yükseklik farkı: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Nüfus
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}İsim
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarih
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Nüfus
+STR_SORT_BY_NAME                                                :İsim
 STR_SORT_BY_PRODUCTION                                          :Üretim
 STR_SORT_BY_TYPE                                                :Tür
 STR_SORT_BY_TRANSPORTED                                         :Taşınan
