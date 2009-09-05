@@ -961,6 +961,10 @@ public:
 			case IDW_INDUSTRY_LIST: {
 				int n = 0;
 				int y = r.top + WD_FRAMERECT_TOP;
+				if (this->industries.Length() == 0) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_DIRECTORY_NONE);
+					break;
+				}
 				for (uint i = this->vscroll.GetPosition(); i < this->industries.Length(); i++) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, this->GetIndustryString(this->industries[i]));
 
@@ -994,7 +998,7 @@ public:
 			}
 
 			case IDW_INDUSTRY_LIST: {
-				Dimension d = {0, 0};
+				Dimension d = GetStringBoundingBox(STR_INDUSTRY_DIRECTORY_NONE);
 				for (uint i = 0; i < this->industries.Length(); i++) {
 					d = maxdim(d, GetStringBoundingBox(this->GetIndustryString(this->industries[i])));
 				}

@@ -635,6 +635,11 @@ public:
 			case TDW_CENTERTOWN: {
 				int n = 0;
 				int y = r.top + WD_FRAMERECT_TOP;
+				if (this->towns.Length() == 0) { // No towns available.
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right, y, STR_TOWN_DIRECTORY_NONE);
+					break;
+				}
+				/* At least one town available. */
 				for (uint i = this->vscroll.GetPosition(); i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
 
@@ -663,7 +668,7 @@ public:
 				break;
 			}
 			case TDW_CENTERTOWN: {
-				Dimension d = {0, 0};
+				Dimension d = GetStringBoundingBox(STR_TOWN_DIRECTORY_NONE);
 				for (uint i = 0; i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
 

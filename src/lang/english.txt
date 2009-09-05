@@ -2356,6 +2356,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enter a 
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Towns
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- None -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Town names - click on name to centre view on town. Ctrl+Click opens a new viewport on town location
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
@@ -2544,6 +2545,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We are l
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- None -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transported)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transported)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
