@@ -2458,29 +2458,11 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				break;
 			}
 
-			case WPT_RESIZE_PTR: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
-				if (nwrb != NULL) {
-					assert(parts->u.xy_ptr->x >= 0 && parts->u.xy_ptr->y >= 0);
-					nwrb->SetResize(parts->u.xy_ptr->x, parts->u.xy_ptr->y);
-				}
-				break;
-			}
-
 			case WPT_MINSIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
 				if (nwrb != NULL) {
 					assert(parts->u.xy.x >= 0 && parts->u.xy.y >= 0);
 					nwrb->SetMinimalSize(parts->u.xy.x, parts->u.xy.y);
-				}
-				break;
-			}
-
-			case WPT_MINSIZE_PTR: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
-				if (nwrb != NULL) {
-					assert(parts->u.xy_ptr->x >= 0 && parts->u.xy_ptr->y >= 0);
-					nwrb->SetMinimalSize((uint)(parts->u.xy_ptr->x), (uint)(parts->u.xy_ptr->y));
 				}
 				break;
 			}
@@ -2496,15 +2478,6 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				if (nwc != NULL) {
 					nwc->widget_data = parts->u.data_tip.data;
 					nwc->tool_tip = parts->u.data_tip.tooltip;
-				}
-				break;
-			}
-
-			case WPT_DATATIP_PTR: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
-				if (nwc != NULL) {
-					nwc->widget_data = parts->u.datatip_ptr->data;
-					nwc->tool_tip = parts->u.datatip_ptr->tooltip;
 				}
 				break;
 			}
