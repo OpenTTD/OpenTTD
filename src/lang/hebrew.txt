@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} קיל�
 # Common window strings
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(י) סדר מיון (עולה\יורד
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}בחר\י קרטריון מיון
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}בחר קריטריון סינון
 STR_BUTTON_SORT_BY                                              :{BLACK}מיון לפי
 STR_BUTTON_LOCATION                                             :{BLACK}מיקום
 STR_BUTTON_RENAME                                               :{BLACK}שנה שם
@@ -248,10 +249,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}  {NUM} 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}  {NUM} x {NUM} :שטח {}   {NBSP}'מ {NUM} :הפרש גובה
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}אכלוסיה
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}שם
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}תאריך
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :אוכלוסייה
+STR_SORT_BY_NAME                                                :שם
 STR_SORT_BY_PRODUCTION                                          :ייצור
 STR_SORT_BY_TYPE                                                :סוג
 STR_SORT_BY_TRANSPORTED                                         :סחורה שנשלחה
@@ -266,8 +270,11 @@ STR_SORT_BY_MODEL                                               :דגם
 STR_SORT_BY_VALUE                                               :ערך
 STR_SORT_BY_LENGTH                                              :אורך
 STR_SORT_BY_LIFE_TIME                                           :זמן חיים נותר
+STR_SORT_BY_TIMETABLE_DELAY                                     :עיכוב בלוח זמנים
 STR_SORT_BY_FACILITY                                            :סוג תחנה
 STR_SORT_BY_WAITING                                             :ערך הסחורה שמחכה
+STR_SORT_BY_RATING_MAX                                          :דירוג מטען גבוה ביותר
+STR_SORT_BY_RATING_MIN                                          :דירוג מטען נמוך ביותר
 STR_SORT_BY_ENGINE_ID                                           :מספר קטר
 STR_SORT_BY_COST                                                :מחיר
 STR_SORT_BY_POWER                                               :כח
@@ -290,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}הצג �
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}הצג גרפים
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}הצג את טבלת ליגת החברות
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ממן בניה של תעשייה חדשה או הצג את רשימת כל התעשיות
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}הצג את רשימת הרכבות של החברה
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}הצג את רשימת הרכבות של החברה. Ctrl+לחיצה בכדי לברור פתיחה של רשימת הקבוצה/רכבים
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}הצג את רשימת הרכבים של החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}הצג את רשימת כלי השייט של החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}הצג את רשימת כלי הטייס של החברה
@@ -510,6 +517,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}הצג/הסתר סוג מטען
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}הצג דירוגי ביצועים מפורטים
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}מפתחות להשוואה בין החברות
@@ -918,9 +926,14 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר �
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט צילום המסך
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר את הפורמט של צילום המסך
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}סט גרפיקה בסיסי
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסי
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} קובץ{P "" s} חסר/הושחט
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הגרפיקה הבסיסית
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ערכת צלילים בסיסיים
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}בחר את ערכת הצלילים הבסיסיים לשימוש
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הצלילים הבסיסיים
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל בשינויי למסך מלא
 
@@ -928,11 +941,23 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל
 
 STR_CURRENCY_WINDOW                                             :{WHITE}מטבע מותאם אישית
 STR_CURRENCY_EXCHANGE_RATE                                      :{ORANGE}{0:CURRENCY} =£{1:COMMA} {LTBLUE} :שער חליפין
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} הקטן את ערך המטבע שלך עבור פאונד (£) אחד
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}הגדל את ערך המטבע שלך עבור פאונד (£) אחד
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}קבע את שער החליפין של המטבע שלך עם פאונד (£) אחד
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}תו מפריד: {ORANGE}{2:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}קבע תו מפריד עבור סוג המטבע שלך
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}תחילית: {ORANGE}{3:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}קבע את המחרוזת התחילית עבור המטבע שלך
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}סופית: {ORANGE}{4:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}קבע את המחזורת הסופית עבור המטבע שלך
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{5:NUM} {LTBLUE} :החלפה ליורו
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{ORANGE} ללא {LTBLUE} :החלפה ליורו
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}קבע את השנה למעבר ליורו
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור ליורו מוקדם יותר
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור ליורו מאוחר יותר
 
 STR_CURRENCY_PREVIEW                                            :{ORANGE}{6:CURRENCY}{LTBLUE} :צפיה מקדימה
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ליש"ט (£) במטבע שלך
@@ -1051,6 +1076,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}תמי�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}הראה רמזורים בצד הנהיגה: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}הראה את חלון מערך הכספים בכל סוף שנה : {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}הוראות חדשות הם תמיד 'לא לעצור' כבחירת מחדל: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}הוראות לרכבת חדשה לעצירת ברירת מחדל ב-{ORANGE}{STRING}{LTBLUE} של הרציף
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :קצה קרוב
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :אמצע
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :קצה רחוק
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}:(כלי רכב ממתינים(עם אפקט קונט {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{ORANGE}{STRING}{LTBLUE} :גלילת תצוגה בעת שסמן העכבר נמצא בסמוך לקצוות
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}אפשר נתינת שוחד לערים מקומיים {ORANGE}{STRING}
@@ -1060,8 +1089,9 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{ORANGE}{STRING
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}הכפלת משקל מטען כדי לחקות רכבות כבדות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{ORANGE}1 / {STRING}{LTBLUE} :מקדם המהירות עבור מטוסים
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{ORANGE}{STRING}{LTBLUE} :אפשר מעבר דרך תחנות על כבישים בבעלות עירונית
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}אפשר נסיעה דרך תמרורי-עצירה על דרכים בבעלות מתחרים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{ORANGE}{STRING}{LTBLUE} :אפשר בניית תחנות בשכנות
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}אפשר מספר ערכות מנוע GRF חדשות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}החלפת הגדרה זו לא אפשרית כאשר יש רכבים
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}בטל התיישנות נמלי תעופה: {ORANGE}{STRING}
@@ -1183,6 +1213,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{ORANGE}{STRING
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{ORANGE}{STRING}{LTBLUE} :הצג חדשות צבעוניות החל משנת
 STR_CONFIG_SETTING_STARTING_YEAR                                :{ORANGE}{STRING}{LTBLUE} :שנת התחלה
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}אפשר כלכלה עדינה (יותר, שינויים קטנים יותר): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}אפשר קניית מניות מחברות אחרות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{ORANGE}משבצ(ו)ת {STRING}{LTBLUE} :בעת גרירה, הצג רמזורים בכל
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{ORANGE}{STRING}{LTBLUE} :בנה רמזורים מכאניים לפני
@@ -1196,11 +1227,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :רמזורי ב
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :רמזורי נתיב בלבד
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :הכל
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}מתווה דרך לערים חדשות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :רגילה
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :כבישים משופרים
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 רשת
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 רשת
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :אקראית
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}ערים יכולות לבנות דרכים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{ORANGE}{STRING}{LTBLUE} :אפשר שליטה של הערים ברמת הרעש בשדות תעופה
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{ORANGE}{STRING}{LTBLUE} :מיקום הסרגל העיקרי
@@ -1220,6 +1253,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :מהיר מאו
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{ORANGE}1/{STRING}{LTBLUE} :אחוז העיירות אשר יתפתחו לערים
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{ORANGE}מבוטל {LTBLUE} :אחוז העיירות אשר יתפתחו לערים
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{ORANGE}{STRING}{LTBLUE} :מכפיל התחלתי של גודל העיירות
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}הסר רכיבי-דרך לא הגיוניים במהלך בניית דרכים: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}בנייה
@@ -1290,7 +1324,9 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}ארץ �
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}הצג הגדרות משחק
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}הצג הגדרות קושי
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}הצג הגדרות מתקדמות
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}הצג הגדרות שדרוג גראפי
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}הצג הגדרות בינה-מלאכותית
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'- צא מ
 
 # Quit window
@@ -1720,6 +1756,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} בחר 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} בחר רת כל התכנים המהווים שדרוג לבחירה קיימת
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} בטל בחירה
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} בטל את כל הבחירות להורדה
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}הכנס מחרוזת סינון
+STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}סינון תוית\שם:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} הורד
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK} החל בהורדת התכנים שנבחרו
@@ -1750,6 +1788,7 @@ STR_CONTENT_TYPE_AI                                             :בינה מלא
 STR_CONTENT_TYPE_AI_LIBRARY                                     :ספריית בינה מלאכותית
 STR_CONTENT_TYPE_SCENARIO                                       :סצנריו
 STR_CONTENT_TYPE_HEIGHTMAP                                      :מפת גבהים
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :צלילים בסיסיים
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}...מוריד תוכן
@@ -1791,6 +1830,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}מספק
 STR_JOIN_STATION_CAPTION                                        :{BLACK}חבר לתחנה קיימת
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}בנה תחנה נפרדת
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}חבר נקודות ציון
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}בנה נקודת ציון נפרדת
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}בניית מסילות
@@ -2286,7 +2327,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't ad
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}הקובץ לא נמצא, הוטען קובץ תואם
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}קבצים תואמים נטענו במקום קבצים חסרים
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}שדרוגים גראפים אחדים לא נמצאו ולפיכך שותקו
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}שדרוגים גראפים אחדים לא נמצאו ולפיכך נוטרלו
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}קבצים חסרים
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}?הפשרת המשחק עלולה להביא לקריסה. להמשיך
 
@@ -2308,6 +2349,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}הכנס
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}ערים
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- אין -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}רשימת ערים- לחץ על השם כדי למקד את התצוגה עליה
 STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
@@ -2488,6 +2530,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}.אנו 
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}תעשיות
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- אין -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{YELLOW}(שונעו {NBSP}{3:COMMA}%){BLACK} ({1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{YELLOW}(שונעו {NBSP} {6:COMMA}%/{5:COMMA}%) {BLACK} ({3:CARGO}{4:STRING}/{1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

@@ -249,10 +249,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}길이: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: {NUM} x {NUM}{}고도차: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}인구
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}이름
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}날짜
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :인구
+STR_SORT_BY_NAME                                                :이름
 STR_SORT_BY_PRODUCTION                                          :생산
 STR_SORT_BY_TYPE                                                :종류
 STR_SORT_BY_TRANSPORTED                                         :수송량
@@ -1306,7 +1309,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라�
 STR_INTRO_AI_SETTINGS                                           :{BLACK}인공지능 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다. Ctrl+클릭은 맵설정을 넘어갑니다.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}사용자 시나리오로 새 게임을 시작합니다
@@ -1358,12 +1361,12 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}일시정지 상태에서의 건설 허용 : {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}제트항공기가 소형 공항에서 (자주) 폭발하지 않게 함 : {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 변경: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 변경: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감 나라
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
 
 # Livery window
@@ -1736,7 +1739,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING}님
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING}님이 게임에서 나갔습니다 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 가 이름을 {STRING}으로 바꿨습니다
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 가 당신의 회사에게 {2:CURRENCY}를 송금하였습니다
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 당신은  {1:STRING} 에게 {2:CURRENCY}를 송금하였습니다
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 당신은 {1:STRING} 에게 {2:CURRENCY}를 송금하였습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} 서버가 세션을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} 서버 재가동중...{}기다려주세요...
 
@@ -1836,8 +1839,8 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}전기�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}모노레일 건설
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}자기부상열차 건설
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}일반 철도를 건설합니다
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동 레일 기능으로 철로 만들기
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}일반 철도를 건설합니다. Ctrl키는 일반 철도의 건설/제거를 전환합니다.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동 레일 기능으로 철로 만들기. Ctrl키는 철도의 건설/제거 를 스위칭 합니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다 (열차 건설 및 점검용)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}웨이포인트를 건설합니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도 역사 건설
@@ -1883,7 +1886,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}일방�
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의  거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구,출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
@@ -1944,7 +1947,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}화물 �
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 전차 정거장의 방향을 선택하세요.
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}항만 건설
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}수로 건설
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}운하 만들기
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}갑문 짓기
@@ -2354,6 +2357,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}팻말 �
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}도시 목록
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}(없음)
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}도시 이름
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
@@ -2542,6 +2546,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 �
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}산업시설
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}(없음)
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 운반됨)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2566,7 +2571,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}생산: 
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}생산: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경 (8의 배수, 최대 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}대의 열차
@@ -2630,7 +2635,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}새 전�
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}새 모노레일
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}새 자기부상열차
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}기차
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}새 기차
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}새 자동차
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}새 선박
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}새 항공기
@@ -3040,7 +3045,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}행선�
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차량기지로
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격납고로
 STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. Ctrl키와 함께 누르면 역에서는 '아무 화물이나 가득 싣고', 웨이포인트에서는 '논스톱', 차량기지에서는 '점검' 이 실행됩니다.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}확장된 이동경로를 입력합니다
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
@@ -3511,9 +3516,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}이 경�
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}이 경로를 옮길 수 없습니다...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}현재 경로를 건너 뛸 수 없습니다...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}선택한 경로로 건너 뛸 수 없습니다...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}차량이 모든 정거장에 갈 수 없습니다
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}차량이 그 정거장에 갈 수 없습니다.
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}경로를 공유하고 있는 차량이 그 정거장에 갈 수 없습니다.
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... 차량이 모든 정거장에 갈 수 없습니다
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 차량이 그 정거장에 갈 수 없습니다.
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 경로를 공유하고 있는 차량이 그 정거장에 갈 수 없습니다.
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}경로를 공유할 수 없습니다...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}경로를 복사할 수 없습니다...

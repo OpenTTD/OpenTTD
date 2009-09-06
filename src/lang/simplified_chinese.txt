@@ -253,6 +253,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名称
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :人口
+STR_SORT_BY_NAME                                                :名称
 STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
 STR_SORT_BY_TRANSPORTED                                         :已运输
@@ -2354,6 +2356,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标�
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 没有 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 点击名称可以将屏幕中心{}移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
 STR_TOWN_POPULATION                                             :{BLACK}所有城镇人口总数：{COMMA}
@@ -2542,6 +2545,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们�
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业设施
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 没有 -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 已运输)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% 已运输)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

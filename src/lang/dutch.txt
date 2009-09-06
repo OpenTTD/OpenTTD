@@ -296,7 +296,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Toon alg
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Toon grafieken
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Toon bedrijfscompetitietabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betaal plaatsing van nieuwe industrie
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Toon lijst met treinen van het bedrijf
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Toon lijst met treinen van het bedrijf. Ctrl+klik schakelt het openen van de normale/geavanceerde voertuigenlijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Toon lijst met wegvoertuigen van het bedrijf
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Toon lijst met schepen van het bedrijf
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Toon lijst met vliegtuigen van het bedrijf
@@ -1644,7 +1644,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Kijk toe
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw bedrijf
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(geen)
+STR_NETWORK_CLIENTLIST_NONE                                     :Geen
 STR_NETWORK_CLIENTLIST_KICK                                     :Schop uit het spel
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geef geld
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Praat met iedereen
@@ -2356,6 +2356,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de plaats
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
@@ -2413,7 +2414,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Beschikbare subsidies:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} (voor {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Geen
+STR_SUBSIDIES_NONE                                              :{ORANGE} Geen
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bestaande subsidies:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om de plaats/industrie te centreren
@@ -2544,6 +2545,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We zoeke
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrielijst
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE} Geen
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -3042,7 +3044,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ga naar
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_CONDITIONAL                                           :Conditionele order sprong
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan de eind van de lijst
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan het eind van de lijst. Ctrl-klik maakt stationsorders "Volledig één soort vracht laden", controlepost-orders "Ga non-stop via" en depot-orders "Onderhoud bij".
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Voeg een geavanceerde order toe
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Toon alle voertuigen met dezelfde gedeelde orders
