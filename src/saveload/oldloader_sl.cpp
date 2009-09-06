@@ -796,7 +796,7 @@ static const OldChunks station_chunk[] = {
 
 	OCL_NULL( 4 ),         ///< sign left/top, no longer in use
 
-	OCL_SVAR( OC_UINT16, Station, had_vehicle_of_type ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U8, Station, had_vehicle_of_type ),
 
 	OCL_CHUNK( 12, LoadOldGood ),
 
