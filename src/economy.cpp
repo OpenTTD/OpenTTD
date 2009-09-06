@@ -859,8 +859,9 @@ static SmallIndustryList _cargo_delivery_destinations;
  * @param st The station that accepted the cargo
  * @param cargo_type Type of cargo delivered
  * @param nun_pieces Amount of cargo delivered
+ * @return actually accepted pieces of cargo
  */
-static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces)
+static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint num_pieces)
 {
 	/* Find the nearest industrytile to the station sign inside the catchment area, whose industry accepts the cargo.
 	 * This fails in three cases:
@@ -869,7 +870,9 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 	 *  3) The results of callbacks CBID_INDUSTRY_REFUSE_CARGO and CBID_INDTILE_CARGO_ACCEPTANCE are inconsistent. (documented behaviour)
 	 */
 
-	for (uint i = 0; i < st->industries_near.Length(); i++) {
+	uint accepted = 0;
+
+	for (uint i = 0; i < st->industries_near.Length() && num_pieces != 0; i++) {
 		Industry *ind = st->industries_near[i];
 		const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 
@@ -889,10 +892,13 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 		/* Insert the industry into _cargo_delivery_destinations, if not yet contained */
 		_cargo_delivery_destinations.Include(ind);
 
-		ind->incoming_cargo_waiting[cargo_index] = min(num_pieces + ind->incoming_cargo_waiting[cargo_index], 0xFFFF);
-
-		return;
+		uint amount = min(num_pieces, 0xFFFF - ind->incoming_cargo_waiting[cargo_index]);
+		ind->incoming_cargo_waiting[cargo_index] += amount;
+		num_pieces -= amount;
+		accepted += amount;
 	}
+
+	return accepted;
 }
 
 /**
@@ -923,10 +929,10 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 	if (cs->town_effect == TE_WATER) st->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
-	DeliverGoodsToIndustry(st, cargo_type, num_pieces);
+	uint accepted = DeliverGoodsToIndustry(st, cargo_type, num_pieces);
 
 	/* Determine profit */
-	Money profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);
+	Money profit = GetTransportedGoodsIncome(accepted, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);
 
 	/* Modify profit if a subsidy is in effect */
 	if (CheckSubsidised(cargo_type, company->index, src_type, src, st))  {
