@@ -19,15 +19,19 @@
 typedef OverflowSafeInt64 Money;
 
 struct Economy {
-	Money max_loan;                       ///< Maximum possible loan
-	Money max_loan_unround;               ///< Economy fluctuation status
-	uint16 max_loan_unround_fract;        ///< Fraction of the unrounded max loan
-	int16 fluct;
+	Money max_loan;                       ///< NOSAVE: Maximum possible loan
+	int16 fluct;                          ///< Economy fluctuation status
 	byte interest_rate;                   ///< Interest
 	byte infl_amount;                     ///< inflation amount
 	byte infl_amount_pr;                  ///< inflation rate for payment rates
 	uint32 industry_daily_change_counter; ///< Bits 31-16 are number of industry to be performed, 15-0 are fractional collected daily
 	uint32 industry_daily_increment;      ///< The value which will increment industry_daily_change_counter. Computed value. NOSAVE
+	uint64 inflation_prices;              ///< Cumulated inflation of prices since game start; 16 bit fractional part
+	uint64 inflation_payment;             ///< Cumulated inflation of cargo paypent since game start; 16 bit fractional part
+
+	/* Old stuff for savegame conversion only */
+	Money old_max_loan_unround;           ///< Old: Unrounded max loan
+	uint16 old_max_loan_unround_fract;    ///< Old: Fraction of the unrounded max loan
 };
 
 enum ScoreID {
@@ -148,6 +152,23 @@ struct PriceBaseSpec {
 
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
+
+/**
+ * Maximum inflation (including fractional part) without causing overflows in int64 price computations.
+ * This allows for 32 bit base prices (21 are currently needed).
+ * Considering the sign bit and 16 fractional bits, there are 15 bits left.
+ * 170 years of 4% inflation result in a inflation of about 822, so 10 bits are actually enough.
+ * Note, that NewGRF multipliers share the 16 fractional bits.
+ * @see MAX_PRICE_MODIFIER
+ */
+static const uint64 MAX_INFLATION = (1ull << (63 - 32)) - 1;
+
+/**
+ * Maximum NewGRF price modifier including the shift offset of 8 bits.
+ * Increasing base prices by factor 65536 should be enough.
+ * @see MAX_INFLATION
+ */
+static const int MAX_PRICE_MODIFIER = 16 + 8;
 
 struct CargoPayment;
 typedef uint32 CargoPaymentID;

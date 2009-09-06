@@ -121,7 +121,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 #endif /* ENABLE_NETWORK */
 	InitializeAnimatedTiles();
 
-	InitializeLandscapeVariables(false);
+	InitializeEconomy();
 
 	ResetObjectToPlace();
 
@@ -131,19 +131,4 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	GamelogMode();
 	GamelogGRFAddList(_grfconfig);
 	GamelogStopAction();
-}
-
-
-/* Calculate constants that depend on the landscape type. */
-void InitializeLandscapeVariables(bool only_constants)
-{
-	if (only_constants) return;
-
-	memset(_cargo_payment_rates, 0, sizeof(_cargo_payment_rates));
-	memset(_cargo_payment_rates_frac, 0, sizeof(_cargo_payment_rates_frac));
-
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
-		_cargo_payment_rates[cs->Index()] = cs->initial_payment;
-	}
 }

@@ -15,29 +15,31 @@
 
 #include "saveload.h"
 
-/** Prices */
-static void SaveLoad_PRIC()
+/** Prices in pre 126 savegames */
+static void Load_PRIC()
 {
-	int vt = CheckSavegameVersion(65) ? (SLE_FILE_I32 | SLE_VAR_I64) : SLE_INT64;
-	SlArray(&_price,      NUM_PRICES, vt);
-	SlArray(&_price_frac, NUM_PRICES, SLE_UINT16);
+	int vt = CheckSavegameVersion(65) ? SLE_FILE_I32 : SLE_FILE_I64;
+	SlArray(NULL, NUM_PRICES, vt | SLE_VAR_NULL);
+	SlArray(NULL, NUM_PRICES, SLE_FILE_U16 | SLE_VAR_NULL);
 }
 
-/** Cargo payment rates */
-static void SaveLoad_CAPR()
+/** Cargo payment rates in pre 126 savegames */
+static void Load_CAPR()
 {
 	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
-	int vt = CheckSavegameVersion(65) ? (SLE_FILE_I32 | SLE_VAR_I64) : SLE_INT64;
-	SlArray(&_cargo_payment_rates,      num_cargo, vt);
-	SlArray(&_cargo_payment_rates_frac, num_cargo, SLE_UINT16);
+	int vt = CheckSavegameVersion(65) ? SLE_FILE_I32 : SLE_FILE_I64;
+	SlArray(NULL, num_cargo, vt | SLE_VAR_NULL);
+	SlArray(NULL, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
 }
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, max_loan,                      SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, max_loan,                      SLE_INT64,                  65, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, max_loan_unround,              SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, max_loan_unround,              SLE_INT64,                  65, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, max_loan_unround_fract,        SLE_UINT16,                 70, SL_MAX_VERSION),
+	SLE_CONDNULL(4,                                                                  0, 64),             // max_loan
+	SLE_CONDNULL(8,                                                                 65, SL_MAX_VERSION), // max_loan
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  65, 125),
+	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 70, 125),
+	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                126, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                126, SL_MAX_VERSION),
 	    SLE_VAR(Economy, fluct,                         SLE_INT16),
 	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
@@ -97,7 +99,7 @@ static void Ptrs_CAPY()
 
 extern const ChunkHandler _economy_chunk_handlers[] = {
 	{ 'CAPY', Save_CAPY,     Load_CAPY,     Ptrs_CAPY, CH_ARRAY},
-	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, NULL,      CH_RIFF | CH_AUTO_LENGTH},
-	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, NULL,      CH_RIFF | CH_AUTO_LENGTH},
+	{ 'PRIC', NULL,          Load_PRIC,     NULL,      CH_RIFF | CH_AUTO_LENGTH},
+	{ 'CAPR', NULL,          Load_CAPR,     NULL,      CH_RIFF | CH_AUTO_LENGTH},
 	{ 'ECMY', Save_ECMY,     Load_ECMY,     NULL,      CH_RIFF | CH_LAST},
 };

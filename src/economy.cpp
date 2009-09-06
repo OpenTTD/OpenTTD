@@ -107,10 +107,9 @@ const ScoreInfo _score_info[] = {
 int _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
-uint16 _price_frac[NUM_PRICES];
-Money  _cargo_payment_rates[NUM_CARGO];
-uint16 _cargo_payment_rates_frac[NUM_CARGO];
+static Money _cargo_payment_rates[NUM_CARGO];
 Money _additional_cash_required;
+static byte _price_base_multiplier[NUM_PRICES];
 
 Money CalculateCompanyValue(const Company *c)
 {
@@ -585,20 +584,11 @@ static void CompaniesGenStatistics()
 	InvalidateWindow(WC_COMPANY_LEAGUE, 0);
 }
 
-static void AddSingleInflation(Money *value, uint16 *frac, int32 amt)
-{
-	/* Is it safe to add inflation ? */
-	if ((INT64_MAX / amt) < (*value + 1)) {
-		*value = INT64_MAX / amt;
-		*frac = 0;
-	} else {
-		int64 tmp = (int64)*value * amt + *frac;
-		*frac   = GB(tmp, 0, 16);
-		*value += tmp >> 16;
-	}
-}
-
-static void AddInflation(bool check_year = true)
+/**
+ * Add monthly inflation
+ * @param check_year Shall the inflation get stopped after 170 years?
+ */
+void AddInflation(bool check_year)
 {
 	/* The cargo payment inflation differs from the normal inflation, so the
 	 * relative amount of money you make with a transport decreases slowly over
@@ -622,23 +612,63 @@ static void AddInflation(bool check_year = true)
 	 * 12 -> months per year
 	 * This is only a good approxiamtion for small values
 	 */
-	int32 inf = _economy.infl_amount * 54;
+	_economy.inflation_prices  += min((_economy.inflation_prices  * _economy.infl_amount    * 54) >> 16, MAX_INFLATION);
+	_economy.inflation_payment += min((_economy.inflation_payment * _economy.infl_amount_pr * 54) >> 16, MAX_INFLATION);
+}
 
-	for (uint i = 0; i != NUM_PRICES; i++) {
-		AddSingleInflation((Money*)&_price + i, _price_frac + i, inf);
+/**
+ * Computes all prices, payments and maximum loan.
+ */
+void RecomputePrices()
+{
+	/* Setup maximum loan */
+	_economy.max_loan = (_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / 50000 * 50000;
+
+	assert_compile(sizeof(_price) == NUM_PRICES * sizeof(Money));
+
+	/* Setup price bases */
+	for (uint i = 0; i < NUM_PRICES; i++) {
+		Money price = _price_base_specs[i].start_price;
+
+		/* Apply difficulty settings */
+		uint mod = 1;
+		switch (_price_base_specs[i].category) {
+			case PCAT_RUNNING:
+				mod = _settings_game.difficulty.vehicle_costs;
+				break;
+
+			case PCAT_CONSTRUCTION:
+				mod = _settings_game.difficulty.construction_cost;
+				break;
+
+			default: break;
+		}
+		if (mod < 1) {
+			price = price * 3 >> 2;
+		} else if (mod > 1) {
+			price = price * 9 >> 3;
+		}
+
+		/* Apply inflation */
+		price = (int64)price * _economy.inflation_prices;
+
+		/* Apply newgrf modifiers, and remove fractional part of inflation */
+		int shift = _price_base_multiplier[i] - 8 - 16;
+		if (shift >= 0) {
+			price <<= shift;
+		} else {
+			price >>= -shift;
+		}
+
+		/* Store value */
+		((Money *)&_price)[i] = price;
 	}
 
-	AddSingleInflation(&_economy.max_loan_unround, &_economy.max_loan_unround_fract, inf);
-
-	if (_economy.max_loan + 50000 <= _economy.max_loan_unround) _economy.max_loan += 50000;
-
-	inf = _economy.infl_amount_pr * 54;
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		AddSingleInflation(
-			(Money*)_cargo_payment_rates + i,
-			_cargo_payment_rates_frac + i,
-			inf
-		);
+	/* Setup cargo payment */
+	memset(_cargo_payment_rates, 0, sizeof(_cargo_payment_rates));
+	const CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		_cargo_payment_rates[cs->Index()] = ((int64)cs->initial_payment * _economy.inflation_payment) >> 16;
 	}
 
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
@@ -695,8 +725,6 @@ static void HandleEconomyFluctuations()
 }
 
 
-static byte price_base_multiplier[NUM_PRICES];
-
 /**
  * Reset changes to the price base multipliers.
  */
@@ -706,7 +734,7 @@ void ResetPriceBaseMultipliers()
 
 	/* 8 means no multiplier. */
 	for (i = 0; i < NUM_PRICES; i++)
-		price_base_multiplier[i] = 8;
+		_price_base_multiplier[i] = 8;
 }
 
 /**
@@ -719,7 +747,7 @@ void ResetPriceBaseMultipliers()
 void SetPriceBaseMultiplier(uint price, byte factor)
 {
 	assert(price < NUM_PRICES);
-	price_base_multiplier[price] = factor;
+	_price_base_multiplier[price] = min(factor, MAX_PRICE_MODIFIER);
 }
 
 /**
@@ -745,82 +773,24 @@ void StartupIndustryDailyChanges(bool init_counter)
 
 void StartupEconomy()
 {
-	int i;
-
-	assert_compile(sizeof(_price) == NUM_PRICES * sizeof(Money));
-
-	/* Setup price bases */
-	for (i = 0; i < NUM_PRICES; i++) {
-		Money price = _price_base_specs[i].start_price;
-
-		/* Apply difficulty settings */
-		uint mod = 1;
-		switch (_price_base_specs[i].category) {
-			case PCAT_RUNNING:
-				mod = _settings_game.difficulty.vehicle_costs;
-				break;
-
-			case PCAT_CONSTRUCTION:
-				mod = _settings_game.difficulty.construction_cost;
-				break;
-
-			default: break;
-		}
-		if (mod < 1) {
-			price = price * 3 >> 2;
-		} else if (mod > 1) {
-			price = price * 9 >> 3;
-		}
-
-		/* Apply newgrf modifiers */
-		if (price_base_multiplier[i] > 8) {
-			price <<= price_base_multiplier[i] - 8;
-		} else {
-			price >>= 8 - price_base_multiplier[i];
-		}
-
-		/* Store start value */
-		((Money*)&_price)[i] = price;
-		_price_frac[i] = 0;
-	}
-
 	_economy.interest_rate = _settings_game.difficulty.initial_interest;
 	_economy.infl_amount = _settings_game.difficulty.initial_interest;
 	_economy.infl_amount_pr = max(0, _settings_game.difficulty.initial_interest - 1);
-	_economy.max_loan_unround = _economy.max_loan = _settings_game.difficulty.max_loan;
 	_economy.fluct = GB(Random(), 0, 8) + 168;
+
+	/* Set up prices */
+	RecomputePrices();
 
 	StartupIndustryDailyChanges(true); // As we are starting a new game, initialize the counter too
 
 }
 
-void ResetEconomy()
+/**
+ * Resets economy to initial values
+ */
+void InitializeEconomy()
 {
-	/* Test if resetting the economy is needed. */
-	bool needed = false;
-
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
-		if (_cargo_payment_rates[cs->Index()] == 0) {
-			needed = true;
-			break;
-		}
-	}
-
-	if (!needed) return;
-
-	/* Remember old unrounded maximum loan value. NewGRF has the ability
-	 * to change all the other inflation affected base costs. */
-	Money old_value = _economy.max_loan_unround;
-
-	/* Reset the economy */
-	StartupEconomy();
-	InitializeLandscapeVariables(false);
-
-	/* Reapply inflation, ignoring the year */
-	while (old_value > _economy.max_loan_unround) {
-		AddInflation(false);
-	}
+	_economy.inflation_prices = _economy.inflation_payment = 1 << 16;
 }
 
 Money GetPriceByIndex(uint8 index)
@@ -1415,7 +1385,10 @@ void LoadUnloadStation(Station *st)
 void CompaniesMonthlyLoop()
 {
 	CompaniesGenStatistics();
-	if (_settings_game.economy.inflation) AddInflation();
+	if (_settings_game.economy.inflation) {
+		AddInflation();
+		RecomputePrices();
+	}
 	CompaniesPayInterest();
 	/* Reset the _current_company flag */
 	_current_company = OWNER_NONE;

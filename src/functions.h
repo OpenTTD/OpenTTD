@@ -29,8 +29,6 @@ void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
 
-void InitializeLandscapeVariables(bool only_constants);
-
 /* misc functions */
 /**
  * Mark a tile given by its index dirty for repaint.

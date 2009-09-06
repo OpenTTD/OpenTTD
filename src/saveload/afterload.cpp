@@ -234,6 +234,8 @@ static void InitializeWindowsAndCaches()
 		}
 	}
 
+	RecomputePrices();
+
 	SetCachedEngineCounts();
 
 	Station::RecomputeIndustriesNearForAll();
@@ -529,9 +531,6 @@ bool AfterLoadGame()
 
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();
-
-	/* reinit the landscape variables (landscape might have changed) */
-	InitializeLandscapeVariables(true);
 
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
@@ -1929,6 +1928,24 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(126)) {
+		/* Recompute inflation based on old unround loan limit
+		 * Note: Max loan is 500000. With an inflation of 4% across 170 years
+		 *       that results in a max loan of about 0.7 * 2^31.
+		 *       So taking the 16 bit fractional part into account there are plenty of bits left
+		 *       for unmodified savegames ...
+		 */
+		uint64 aimed_inflation = (_economy.old_max_loan_unround << 16 | _economy.old_max_loan_unround_fract) / _settings_game.difficulty.max_loan;
+
+		/* ... well, just clamp it then. */
+		if (aimed_inflation > MAX_INFLATION) aimed_inflation = MAX_INFLATION;
+
+		/* Simulate the inflation, so we also get the payment inflation */
+		while (_economy.inflation_prices < aimed_inflation) {
+			AddInflation(false);
+		}
+	}
+
 	AfterLoadLabelMaps();
 
 	GamelogPrintDebug(1);
@@ -1950,7 +1967,7 @@ void ReloadNewGRFData()
 	/* reload grf data */
 	GfxLoadSprites();
 	LoadStringWidthTable();
-	ResetEconomy();
+	RecomputePrices();
 	/* reload vehicles */
 	ResetVehiclePosHash();
 	AfterLoadVehicles(false);
