@@ -570,6 +570,57 @@
     4000 => 50
   IsEmpty():     true
 
+--Company--
+  SetName():            true
+  SetName():            true
+  SetName():            true
+  SetName():            false
+  GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
+  GetName():                   Regression
+  GetPresidentName():          D. Watkins
+  SetPresidentName():          true
+  GetPresidentName():          Regression AI
+  GetCompanyValue():           1
+  GetBankBalance():            100000
+  GetName():                   (null : 0x00000000)
+  GetLoanAmount():             100000
+  GetMaxLoanAmount():          2000000000
+  GetLoanInterval():           10000
+  SetLoanAmount(1):            false
+  SetLoanAmount(100):          false
+  SetLoanAmount(10000):        true
+  GetLastErrorString():        ERR_NONE
+  GetBankBalance():            10000
+  GetLoanAmount():             10000
+  SetMinimumLoanAmount(31337): true
+  GetBankBalance():            40000
+  GetLoanAmount():             40000
+  SetLoanAmount(10000):        true
+  GetBankBalance():            2000000000
+  GetLoanAmount():             2000000000
+  GetCompanyHQ():              -1
+  BuildCompanyHQ():            true
+  GetCompanyHQ():              33151
+  BuildCompanyHQ():            true
+  GetCompanyHQ():              33153
+  BuildCompanyHQ():            false
+  GetLastErrorString():        ERR_AREA_NOT_CLEAR
+  GetAutoRenewStatus();        false
+  SetAutoRenewStatus(true);    true
+  GetAutoRenewStatus();        true
+  SetAutoRenewStatus(true);    true
+  SetAutoRenewStatus(false);   true
+  GetAutoRenewMonths();        6
+  SetAutoRenewMonths(-12);     true
+  GetAutoRenewMonths();        -12
+  SetAutoRenewMonths(-12);     true
+  SetAutoRenewMonths(6);       true
+  GetAutoRenewMoney();         100000
+  SetAutoRenewMoney(200000);   true
+  GetAutoRenewMoney();         200000
+  SetAutoRenewMoney(200000);   true
+  SetAutoRenewMoney(100000);   true
+
 --AIAirport--
   IsHangarTile():       false
   IsAirportTile():      false
@@ -619,8 +670,8 @@
   GetAirportWidth(9):          -1
   GetAirportHeight(9):         -1
   GetAirportCoverageRadius(9): -1
-  GetBankBalance():     100000
-  GetPrice():           84
+  GetBankBalance():     1999999790
+  GetPrice():           5400
   BuildAirport():       true
   IsHangarTile():       false
   IsAirportTile():      true
@@ -629,11 +680,11 @@
   IsHangarTile():       true
   IsAirportTile():      true
   GetAirportType():     0
-  GetBankBalance():     198940
+  GetBankBalance():     1999989890
   RemoveAirport():      true
   IsHangarTile():       false
   IsAirportTile():      false
-  GetBankBalance():     297964
+  GetBankBalance():     1999989626
   BuildAirport():       true
 
 --Bridge--
@@ -648,70 +699,70 @@
     IsValidBridge():    true
     GetName():          Wooden rail bridge
     GetMaxSpeed():      32
-    GetPrice():         15
+    GetPrice():         450
     GetMaxLength():     102
     GetMinLength():     2
   Bridge 1
     IsValidBridge():    true
     GetName():          Concrete rail bridge
     GetMaxSpeed():      48
-    GetPrice():         21
+    GetPrice():         630
     GetMaxLength():     4
     GetMinLength():     2
   Bridge 2
     IsValidBridge():    true
     GetName():          Steel girder rail bridge
     GetMaxSpeed():      64
-    GetPrice():         27
+    GetPrice():         811
     GetMaxLength():     7
     GetMinLength():     2
   Bridge 3
     IsValidBridge():    true
     GetName():          Reinforced concrete suspension rail bridge
     GetMaxSpeed():      80
-    GetPrice():         32
+    GetPrice():         946
     GetMaxLength():     12
     GetMinLength():     4
   Bridge 4
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
     GetMaxSpeed():      96
-    GetPrice():         35
+    GetPrice():         1042
     GetMaxLength():     102
     GetMinLength():     5
   Bridge 5
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
     GetMaxSpeed():      112
-    GetPrice():         36
+    GetPrice():         1081
     GetMaxLength():     102
     GetMinLength():     5
   Bridge 6
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
     GetMaxSpeed():      160
-    GetPrice():         42
+    GetPrice():         1261
     GetMaxLength():     9
     GetMinLength():     5
   Bridge 7
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
     GetMaxSpeed():      208
-    GetPrice():         44
+    GetPrice():         1306
     GetMaxLength():     10
     GetMinLength():     5
   Bridge 8
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
     GetMaxSpeed():      240
-    GetPrice():         47
+    GetPrice():         1396
     GetMaxLength():     11
     GetMinLength():     5
   Bridge 9
     IsValidBridge():    true
     GetName():          Steel girder rail bridge
     GetMaxSpeed():      256
-    GetPrice():         45
+    GetPrice():         1351
     GetMaxLength():     4
     GetMinLength():     2
   Bridge 10
@@ -773,16 +824,16 @@
     1 => 48
     0 => 32
   Price ListDump:
-    8 => 47
-    9 => 45
-    7 => 44
-    6 => 42
-    5 => 36
-    4 => 35
-    3 => 32
-    2 => 27
-    1 => 21
-    0 => 15
+    8 => 1396
+    9 => 1351
+    7 => 1306
+    6 => 1261
+    5 => 1081
+    4 => 1042
+    3 => 946
+    2 => 811
+    1 => 630
+    0 => 450
   MaxLength ListDump:
     5 => 102
     4 => 102
@@ -813,9 +864,9 @@
     4 => 96
     0 => 32
   Price ListDump:
-    5 => 220
-    4 => 212
-    0 => 91
+    5 => 6489
+    4 => 6252
+    0 => 2703
 
 --AICargo--
   Cargo -1
@@ -837,7 +888,7 @@
     GetTownEffect():         1
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  3
-    GetCargoIncome(100, 10): 39
+    GetCargoIncome(100, 10): 38
     GetCargoIncome(10, 100): 3
     GetRoadVehicleTypeForCargo(): 0
   Cargo 1
@@ -848,7 +899,7 @@
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  7
-    GetCargoIncome(100, 10): 75
+    GetCargoIncome(100, 10): 71
     GetCargoIncome(10, 100): 6
     GetRoadVehicleTypeForCargo(): 1
   Cargo 2
@@ -859,7 +910,7 @@
     GetTownEffect():         2
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  5
-    GetCargoIncome(100, 10): 58
+    GetCargoIncome(100, 10): 55
     GetCargoIncome(10, 100): 5
     GetRoadVehicleTypeForCargo(): 1
   Cargo 3
@@ -870,7 +921,7 @@
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  5
-    GetCargoIncome(100, 10): 56
+    GetCargoIncome(100, 10): 53
     GetCargoIncome(10, 100): 5
     GetRoadVehicleTypeForCargo(): 1
   Cargo 4
@@ -881,7 +932,7 @@
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  5
-    GetCargoIncome(100, 10): 55
+    GetCargoIncome(100, 10): 52
     GetCargoIncome(10, 100): 4
     GetRoadVehicleTypeForCargo(): 1
   Cargo 5
@@ -892,7 +943,7 @@
     GetTownEffect():         3
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  7
-    GetCargoIncome(100, 10): 78
+    GetCargoIncome(100, 10): 74
     GetCargoIncome(10, 100): 6
     GetRoadVehicleTypeForCargo(): 1
   Cargo 6
@@ -902,9 +953,9 @@
     HasCargoClass():         false
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
-    GetCargoIncome(10, 10):  6
-    GetCargoIncome(100, 10): 60
-    GetCargoIncome(10, 100): 5
+    GetCargoIncome(10, 10):  5
+    GetCargoIncome(100, 10): 58
+    GetCargoIncome(10, 100): 4
     GetRoadVehicleTypeForCargo(): 1
   Cargo 7
     IsValidCargo():          true
@@ -914,7 +965,7 @@
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  6
-    GetCargoIncome(100, 10): 63
+    GetCargoIncome(100, 10): 60
     GetCargoIncome(10, 100): 5
     GetRoadVehicleTypeForCargo(): 1
   Cargo 8
@@ -925,7 +976,7 @@
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  6
-    GetCargoIncome(100, 10): 65
+    GetCargoIncome(100, 10): 62
     GetCargoIncome(10, 100): 5
     GetRoadVehicleTypeForCargo(): 1
   Cargo 9
@@ -935,8 +986,8 @@
     HasCargoClass():         false
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
-    GetCargoIncome(10, 10):  7
-    GetCargoIncome(100, 10): 72
+    GetCargoIncome(10, 10):  6
+    GetCargoIncome(100, 10): 69
     GetCargoIncome(10, 100): 6
     GetRoadVehicleTypeForCargo(): 1
   Cargo 10
@@ -947,7 +998,7 @@
     GetTownEffect():         0
     GetCargoIncome(0, 0):    0
     GetCargoIncome(10, 10):  9
-    GetCargoIncome(100, 10): 94
+    GetCargoIncome(100, 10): 90
     GetCargoIncome(10, 100): 7
     GetRoadVehicleTypeForCargo(): 1
   Cargo 11
@@ -1010,17 +1061,17 @@
     2 => 0
     0 => 0
   CargoIncomes(100, 100) ListDump:
-    10 => 78
-    5 => 65
-    1 => 65
-    9 => 63
-    8 => 57
-    7 => 57
-    3 => 53
-    2 => 53
-    6 => 52
-    4 => 43
-    0 => 31
+    10 => 74
+    5 => 62
+    1 => 62
+    9 => 60
+    8 => 54
+    7 => 54
+    3 => 50
+    2 => 50
+    6 => 49
+    4 => 41
+    0 => 30
 
 --CargoList_IndustryAccepting--
   Count():            1
@@ -1031,57 +1082,6 @@
   Count():            1
   ListDump:
     7
-
---Company--
-  SetName():            true
-  SetName():            true
-  SetName():            true
-  SetName():            false
-  GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
-  GetName():                   Regression
-  GetPresidentName():          D. Watkins
-  SetPresidentName():          true
-  GetPresidentName():          Regression AI
-  GetCompanyValue():           354852
-  GetBankBalance():            454602
-  GetName():                   (null : 0x00000000)
-  GetLoanAmount():             100000
-  GetMaxLoanAmount():          300000
-  GetLoanInterval():           10000
-  SetLoanAmount(1):            false
-  SetLoanAmount(100):          false
-  SetLoanAmount(10000):        true
-  GetLastErrorString():        ERR_NONE
-  GetBankBalance():            364602
-  GetLoanAmount():             10000
-  SetMinimumLoanAmount(31337): true
-  GetBankBalance():            394602
-  GetLoanAmount():             40000
-  SetLoanAmount(10000):        true
-  GetBankBalance():            654602
-  GetLoanAmount():             300000
-  GetCompanyHQ():              -1
-  BuildCompanyHQ():            true
-  GetCompanyHQ():              33151
-  BuildCompanyHQ():            true
-  GetCompanyHQ():              33153
-  BuildCompanyHQ():            false
-  GetLastErrorString():        ERR_AREA_NOT_CLEAR
-  GetAutoRenewStatus();        false
-  SetAutoRenewStatus(true);    true
-  GetAutoRenewStatus();        true
-  SetAutoRenewStatus(true);    true
-  SetAutoRenewStatus(false);   true
-  GetAutoRenewMonths();        6
-  SetAutoRenewMonths(-12);     true
-  GetAutoRenewMonths();        -12
-  SetAutoRenewMonths(-12);     true
-  SetAutoRenewMonths(6);       true
-  GetAutoRenewMoney();         100000
-  SetAutoRenewMoney(200000);   true
-  GetAutoRenewMoney();         200000
-  SetAutoRenewMoney(200000);   true
-  SetAutoRenewMoney(100000);   true
 
 --Engine--
   Engine -1
@@ -1110,9 +1110,9 @@
     GetCapacity():      -1
     GetReliability():   75
     GetMaxSpeed():      64
-    GetPrice():         22
+    GetPrice():         8203
     GetMaxAge():        5490
-    GetRunningCost():   7
+    GetRunningCost():   820
     GetPower():         300
     GetWeight():        47
     GetMaxTractiveEffort(): 139
@@ -1254,9 +1254,9 @@
     GetCapacity():      -1
     GetReliability():   80
     GetMaxSpeed():      112
-    GetPrice():         41
+    GetPrice():         15234
     GetMaxAge():        7686
-    GetRunningCost():   18
+    GetRunningCost():   1968
     GetPower():         1000
     GetWeight():        131
     GetMaxTractiveEffort(): 388
@@ -1272,9 +1272,9 @@
     GetCapacity():      -1
     GetReliability():   84
     GetMaxSpeed():      128
-    GetPrice():         61
+    GetPrice():         22265
     GetMaxAge():        7320
-    GetRunningCost():   21
+    GetRunningCost():   2296
     GetPower():         1200
     GetWeight():        162
     GetMaxTractiveEffort(): 480
@@ -1596,7 +1596,7 @@
     GetCapacity():      40
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         79
+    GetPrice():         1447
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1614,7 +1614,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         73
+    GetPrice():         1335
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1632,7 +1632,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         56
+    GetPrice():         1031
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1650,7 +1650,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         64
+    GetPrice():         1171
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1668,7 +1668,7 @@
     GetCapacity():      25
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         61
+    GetPrice():         1125
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1686,7 +1686,7 @@
     GetCapacity():      25
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         60
+    GetPrice():         1113
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1704,7 +1704,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         58
+    GetPrice():         1066
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1722,7 +1722,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         57
+    GetPrice():         1060
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1740,7 +1740,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         57
+    GetPrice():         1048
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1758,7 +1758,7 @@
     GetCapacity():      20
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         62
+    GetPrice():         1148
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -1776,7 +1776,7 @@
     GetCapacity():      20
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         81
+    GetPrice():         1494
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2136,7 +2136,7 @@
     GetCapacity():      45
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         79
+    GetPrice():         1447
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2154,7 +2154,7 @@
     GetCapacity():      35
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         73
+    GetPrice():         1335
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2172,7 +2172,7 @@
     GetCapacity():      35
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         56
+    GetPrice():         1031
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2190,7 +2190,7 @@
     GetCapacity():      35
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         64
+    GetPrice():         1171
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2208,7 +2208,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         61
+    GetPrice():         1125
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2226,7 +2226,7 @@
     GetCapacity():      30
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         60
+    GetPrice():         1113
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2244,7 +2244,7 @@
     GetCapacity():      35
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         58
+    GetPrice():         1066
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2262,7 +2262,7 @@
     GetCapacity():      35
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         57
+    GetPrice():         1060
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2280,7 +2280,7 @@
     GetCapacity():      35
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         57
+    GetPrice():         1048
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2298,7 +2298,7 @@
     GetCapacity():      25
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         62
+    GetPrice():         1148
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2316,7 +2316,7 @@
     GetCapacity():      25
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         81
+    GetPrice():         1494
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2712,7 +2712,7 @@
     GetCapacity():      47
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         79
+    GetPrice():         1447
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2730,7 +2730,7 @@
     GetCapacity():      37
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         73
+    GetPrice():         1335
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2748,7 +2748,7 @@
     GetCapacity():      37
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         56
+    GetPrice():         1031
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2766,7 +2766,7 @@
     GetCapacity():      37
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         64
+    GetPrice():         1171
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2784,7 +2784,7 @@
     GetCapacity():      32
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         61
+    GetPrice():         1125
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2802,7 +2802,7 @@
     GetCapacity():      32
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         60
+    GetPrice():         1113
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2820,7 +2820,7 @@
     GetCapacity():      37
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         58
+    GetPrice():         1066
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2838,7 +2838,7 @@
     GetCapacity():      37
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         57
+    GetPrice():         1060
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2856,7 +2856,7 @@
     GetCapacity():      37
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         57
+    GetPrice():         1048
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2874,7 +2874,7 @@
     GetCapacity():      27
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         62
+    GetPrice():         1148
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -2892,7 +2892,7 @@
     GetCapacity():      27
     GetReliability():   -1
     GetMaxSpeed():      0
-    GetPrice():         81
+    GetPrice():         1494
     GetMaxAge():        -1
     GetRunningCost():   0
     GetPower():         -1
@@ -3198,9 +3198,9 @@
     GetCapacity():      31
     GetReliability():   78
     GetMaxSpeed():      56
-    GetPrice():         386
+    GetPrice():         4920
     GetMaxAge():        4392
-    GetRunningCost():   14
+    GetRunningCost():   426
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3324,9 +3324,9 @@
     GetCapacity():      20
     GetReliability():   77
     GetMaxSpeed():      48
-    GetPrice():         347
+    GetPrice():         4428
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3378,9 +3378,9 @@
     GetCapacity():      22
     GetReliability():   92
     GetMaxSpeed():      48
-    GetPrice():         370
+    GetPrice():         4715
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3486,9 +3486,9 @@
     GetCapacity():      21
     GetReliability():   98
     GetMaxSpeed():      48
-    GetPrice():         354
+    GetPrice():         4510
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3540,9 +3540,9 @@
     GetCapacity():      14
     GetReliability():   97
     GetMaxSpeed():      48
-    GetPrice():         337
+    GetPrice():         4305
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3594,9 +3594,9 @@
     GetCapacity():      14
     GetReliability():   87
     GetMaxSpeed():      48
-    GetPrice():         344
+    GetPrice():         4387
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3648,9 +3648,9 @@
     GetCapacity():      20
     GetReliability():   97
     GetMaxSpeed():      48
-    GetPrice():         366
+    GetPrice():         4674
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3702,9 +3702,9 @@
     GetCapacity():      20
     GetReliability():   98
     GetMaxSpeed():      48
-    GetPrice():         379
+    GetPrice():         4838
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3756,9 +3756,9 @@
     GetCapacity():      22
     GetReliability():   97
     GetMaxSpeed():      48
-    GetPrice():         389
+    GetPrice():         4961
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3810,9 +3810,9 @@
     GetCapacity():      15
     GetReliability():   82
     GetMaxSpeed():      48
-    GetPrice():         360
+    GetPrice():         4592
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -3864,9 +3864,9 @@
     GetCapacity():      12
     GetReliability():   76
     GetMaxSpeed():      48
-    GetPrice():         466
+    GetPrice():         5945
     GetMaxAge():        5490
-    GetRunningCost():   14
+    GetRunningCost():   421
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -4782,9 +4782,9 @@
     GetCapacity():      220
     GetReliability():   99
     GetMaxSpeed():      24
-    GetPrice():         515
+    GetPrice():         30465
     GetMaxAge():        10980
-    GetRunningCost():   21
+    GetRunningCost():   2296
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -4818,9 +4818,9 @@
     GetCapacity():      100
     GetReliability():   88
     GetMaxSpeed():      32
-    GetPrice():         309
+    GetPrice():         18279
     GetMaxAge():        10980
-    GetRunningCost():   14
+    GetRunningCost():   1476
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -4908,9 +4908,9 @@
     GetCapacity():      160
     GetReliability():   81
     GetMaxSpeed():      24
-    GetPrice():         412
+    GetPrice():         24372
     GetMaxAge():        10980
-    GetRunningCost():   23
+    GetRunningCost():   2460
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -4980,9 +4980,9 @@
     GetCapacity():      25
     GetReliability():   58
     GetMaxSpeed():      238
-    GetPrice():         45
+    GetPrice():         28710
     GetMaxAge():        7320
-    GetRunningCost():   13
+    GetRunningCost():   2390
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -4998,9 +4998,9 @@
     GetCapacity():      65
     GetReliability():   95
     GetMaxSpeed():      238
-    GetPrice():         48
+    GetPrice():         30761
     GetMaxAge():        8784
-    GetRunningCost():   15
+    GetRunningCost():   2812
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -5052,9 +5052,9 @@
     GetCapacity():      30
     GetReliability():   77
     GetMaxSpeed():      238
-    GetPrice():         48
+    GetPrice():         30761
     GetMaxAge():        10980
-    GetRunningCost():   15
+    GetRunningCost():   2756
     GetPower():         -1
     GetWeight():        -1
     GetMaxTractiveEffort(): -1
@@ -5781,17 +5781,17 @@
     126 => 48
     123 => 48
   Price ListDump:
-    153 => 466
-    147 => 389
-    116 => 386
-    144 => 379
-    126 => 370
-    141 => 366
-    150 => 360
-    132 => 354
-    123 => 347
-    138 => 344
-    135 => 337
+    153 => 5945
+    147 => 4961
+    116 => 4920
+    144 => 4838
+    126 => 4715
+    141 => 4674
+    150 => 4592
+    132 => 4510
+    123 => 4428
+    138 => 4387
+    135 => 4305
 
 --Group--
   SetAutoReplace():         false
@@ -6923,7 +6923,7 @@
     Id:                      9
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Farm
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6933,7 +6933,7 @@
     Id:                      5
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Oil Rig
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6943,7 +6943,7 @@
     Id:                      12
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Bank
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -6953,7 +6953,7 @@
     Id:                      11
     IsRawIndustry():         true
     ProductionCanIncrease(): false
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Oil Wells
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6963,7 +6963,7 @@
     Id:                      1
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   773585
+    GetConstructionCost():   703125
     GetName():               Power Station
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -6973,7 +6973,7 @@
     Id:                      3
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Forest
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6983,7 +6983,7 @@
     Id:                      2
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   722013
+    GetConstructionCost():   656250
     GetName():               Sawmill
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -6993,7 +6993,7 @@
     Id:                      18
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Iron Ore Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -7003,7 +7003,7 @@
     Id:                      0
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   821934
+    GetConstructionCost():   747070
     GetName():               Coal Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -7013,7 +7013,7 @@
     Id:                      8
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   693003
+    GetConstructionCost():   629882
     GetName():               Steel Mill
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -7023,7 +7023,7 @@
     Id:                      4
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   786478
+    GetConstructionCost():   714843
     GetName():               Oil Refinery
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -7033,7 +7033,7 @@
     Id:                      6
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   670440
+    GetConstructionCost():   609375
     GetName():               Factory
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -7074,7 +7074,7 @@
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     765887
+  GetBankBalance():     1999980703
   BuildWaterDepot():    true
   BuildDock():          true
   BuildBuoy():          true
@@ -7087,7 +7087,7 @@
   IsBuoyTile():         true
   IsLockTile():         true
   IsCanalTile():        true
-  GetBankBalance():     805063
+  GetBankBalance():     1999951154
 
 --AIBuoyList--
   Count():             1
@@ -7104,7 +7104,7 @@
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     854575
+  GetBankBalance():     1999928509
   BuildWaterDepot():    true
   BuildDock():          true
 
@@ -8305,8 +8305,8 @@
   IsValidVehicle(12):   true
   CloneVehicle():       13
   --Accounting--
-    GetCosts():         932
-    Should be:          932
+    GetCosts():         11890
+    Should be:          11890
     ResetCosts():       (null : 0x00000000)
   SellVehicle(13):      true
   IsInDepot():          true
@@ -8318,8 +8318,8 @@
   IsInDepot():          false
   IsStoppedInDepot():   false
   --Accounting--
-    GetCosts():         -466
-    Should be:          -466
+    GetCosts():         -5945
+    Should be:          -5945
   GetName():            Road Vehicle 1
   SetName():            true
   GetName():            MyVehicleName
@@ -8332,10 +8332,10 @@
     GetMaxAge():         5490
     GetAgeLeft():        5490
     GetCurrentSpeed():   7
-    GetRunningCost():    14
+    GetRunningCost():    421
     GetProfitThisYear(): 0
     GetProfitLastYear(): 0
-    GetCurrentValue():   466
+    GetCurrentValue():   5945
     GetVehicleType():    1
     GetRoadType():       0
     GetCapacity():       12
@@ -8365,7 +8365,7 @@
   GetNumWagons():       3
   GetLength():          24
   GetWagonEngineType(): 9
-  GetWagonAge():        1
+  GetWagonAge():        0
   GetWagonEngineType(): 27
   GetWagonAge():        0
   GetWagonEngineType(): 27
@@ -8401,11 +8401,11 @@
     14 => 1
     12 => 1
   Age ListDump:
-    17 => 1
-    16 => 1
-    14 => 1
-    13 => 1
-    12 => 1
+    17 => 0
+    16 => 0
+    14 => 0
+    13 => 0
+    12 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -8413,11 +8413,11 @@
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10979
-    14 => 10979
-    17 => 7319
-    13 => 5489
-    12 => 5489
+    16 => 10980
+    14 => 10980
+    17 => 7320
+    13 => 5490
+    12 => 5490
   CurrentSpeed ListDump:
     12 => 21
     17 => 0
@@ -8425,17 +8425,17 @@
     14 => 0
     13 => 0
   RunningCost ListDump:
-    17 => 21
-    16 => 21
-    14 => 15
-    13 => 14
-    12 => 14
+    14 => 2756
+    17 => 2296
+    16 => 2296
+    13 => 421
+    12 => 421
   ProfitThisYear ListDump:
     17 => 0
     16 => 0
     14 => 0
     13 => 0
-    12 => -1
+    12 => 0
   ProfitLastYear ListDump:
     17 => 0
     16 => 0
@@ -8443,11 +8443,11 @@
     13 => 0
     12 => 0
   CurrentValue ListDump:
-    16 => 515
-    13 => 466
-    12 => 466
-    17 => 61
-    14 => 48
+    14 => 30761
+    16 => 30465
+    17 => 22265
+    13 => 5945
+    12 => 5945
   VehicleType ListDump:
     14 => 3
     16 => 2

@@ -1654,12 +1654,15 @@ function Regression::Start()
 	this.Std();
 	this.Base();
 	this.List();
+
+	/* Do this first as it gains maximum loan (which is faked to quite a lot). */
+	this.Company();
+
 	this.Airport();
 	this.Bridge();
 	this.BridgeList();
 	this.Cargo();
 	this.CargoList();
-	this.Company();
 	this.Engine();
 	this.EngineList();
 	this.Group();
