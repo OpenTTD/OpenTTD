@@ -823,10 +823,6 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 		}
 	}
 
-	/* zero the distance (thus income) if it's the bank and very short transport. */
-	if (_settings_game.game_creation.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10) return 0;
-
-
 	static const int MIN_TIME_FACTOR = 31;
 	static const int MAX_TIME_FACTOR = 255;
 
@@ -861,7 +857,7 @@ static SmallIndustryList _cargo_delivery_destinations;
  * @param nun_pieces Amount of cargo delivered
  * @return actually accepted pieces of cargo
  */
-static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint num_pieces)
+static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint num_pieces, IndustryID source)
 {
 	/* Find the nearest industrytile to the station sign inside the catchment area, whose industry accepts the cargo.
 	 * This fails in three cases:
@@ -874,6 +870,8 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 
 	for (uint i = 0; i < st->industries_near.Length() && num_pieces != 0; i++) {
 		Industry *ind = st->industries_near[i];
+		if (ind->index == source) continue;
+
 		const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 
 		uint cargo_index;
@@ -929,7 +927,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 	if (cs->town_effect == TE_WATER) st->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
-	uint accepted = DeliverGoodsToIndustry(st, cargo_type, num_pieces);
+	uint accepted = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src_type == ST_INDUSTRY ? src : INVALID_INDUSTRY);
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);
