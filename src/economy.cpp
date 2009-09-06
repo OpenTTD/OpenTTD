@@ -107,7 +107,6 @@ const ScoreInfo _score_info[] = {
 int _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
-static Money _cargo_payment_rates[NUM_CARGO];
 Money _additional_cash_required;
 static byte _price_base_multiplier[NUM_PRICES];
 
@@ -665,10 +664,9 @@ void RecomputePrices()
 	}
 
 	/* Setup cargo payment */
-	memset(_cargo_payment_rates, 0, sizeof(_cargo_payment_rates));
-	const CargoSpec *cs;
+	CargoSpec *cs;
 	FOR_ALL_CARGOSPECS(cs) {
-		_cargo_payment_rates[cs->Index()] = ((int64)cs->initial_payment * _economy.inflation_payment) >> 16;
+		cs->current_payment = ((int64)cs->initial_payment * _economy.inflation_payment) >> 16;
 	}
 
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
@@ -803,6 +801,10 @@ Money GetPriceByIndex(uint8 index)
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
+	if (!cs->IsValid()) {
+		/* User changed newgrfs and some vehicle still carries some cargo which is no longer available. */
+		return 0;
+	}
 
 	/* Use callback to calculate cargo profit, if available */
 	if (HasBit(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
@@ -817,7 +819,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 			/* "The result should be a signed multiplier that gets multiplied
 			 * by the amount of cargo moved and the price factor, then gets
 			 * divided by 8192." */
-			return result * num_pieces * _cargo_payment_rates[cargo_type] / 8192;
+			return result * num_pieces * cs->current_payment / 8192;
 		}
 	}
 
@@ -845,7 +847,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	 */
 	const int time_factor = max(MAX_TIME_FACTOR - days_over_days1 - days_over_days2, MIN_TIME_FACTOR);
 
-	return BigMulS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
+	return BigMulS(dist * time_factor * num_pieces, cs->current_payment, 21);
 }
 
 /** The industries we've currently brought cargo to. */

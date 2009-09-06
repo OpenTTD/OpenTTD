@@ -12,6 +12,7 @@
 #ifndef CARGOTYPE_H
 #define CARGOTYPE_H
 
+#include "economy_type.h"
 #include "cargo_type.h"
 #include "gfx_type.h"
 #include "strings_type.h"
@@ -56,6 +57,8 @@ struct CargoSpec {
 	uint16 classes;
 	const struct GRFFile *grffile;   ///< NewGRF where 'group' belongs to
 	const struct SpriteGroup *group;
+
+	Money current_payment;
 
 	/**
 	 * Determines index of this cargospec
