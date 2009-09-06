@@ -169,7 +169,11 @@ void FixOldVehicles()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->next != NULL) v->next = Vehicle::Get((size_t)v->next);
+		if ((size_t)v->next == 0xFFFF) {
+			v->next = NULL;
+		} else {
+			v->next = Vehicle::GetIfValid((size_t)v->next);
+		}
 
 		/* For some reason we need to correct for this */
 		switch (v->spritenum) {
@@ -1396,7 +1400,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
-		if (_old_next_ptr != 0xFFFF) v->next = (Vehicle *)(size_t)_old_next_ptr;
+		v->next = (Vehicle *)(size_t)_old_next_ptr;
 
 		if (_cargo_count != 0) {
 			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);
