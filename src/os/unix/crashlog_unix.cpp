@@ -153,14 +153,14 @@ void CDECL HandleCrash(int signum)
 	if (GamelogTestEmergency()) {
 		printf("A serious fault condition occured in the game. The game will shut down.\n");
 		printf("As you loaded an emergency savegame no crash information will be generated.\n");
-		exit(3);
+		abort();
 	}
 
 	CrashLogUnix log(signum);
 	log.MakeCrashLog();
 
 	CrashLog::AfterCrashLogCleanup();
-	exit(2);
+	abort();
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
