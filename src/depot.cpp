@@ -62,7 +62,7 @@ Depot::~Depot()
 	/* Delete the depot list */
 	WindowNumber wno = (this->index << 16) | VLW_DEPOT_LIST | GetTileOwner(this->xy);
 	switch (GetTileType(this->xy)) {
-		default: NOT_REACHED();
+		default: break; // It can happen there is no depot here anymore (TTO/TTD savegames)
 		case MP_RAILWAY: DeleteWindowById(WC_TRAINS_LIST,  wno | (VEH_TRAIN << 11)); break;
 		case MP_ROAD:    DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD  << 11)); break;
 		case MP_WATER:   DeleteWindowById(WC_SHIPS_LIST,   wno | (VEH_SHIP  << 11)); break;
