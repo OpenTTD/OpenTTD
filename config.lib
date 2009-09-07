@@ -149,7 +149,7 @@ set_default() {
 		with_threads
 		with_distcc
 		with_ccache
-	CC CXX CFLAGS LDFLAGS"
+	CC CXX CFLAGS CXXFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -393,6 +393,7 @@ detect_params() {
 			CC=* | --CC=*)                CC="$optarg";;
 			CXX=* | --CXX=*)              CXX="$optarg";;
 			CFLAGS=* | --CFLAGS=*)        CFLAGS="$optarg";;
+			CXXFLAGS=* | --CXXFLAGS=*)    CXXFLAGS="$optarg";;
 			LDFLAGS=* | --LDFLAGS=*)      LDFLAGS="$optarg";;
 
 			--ignore-extra-parameters)    ignore_extra_parameters="1";;
@@ -1037,12 +1038,15 @@ make_compiler_cflags() {
 	# Params:
 	# $1 - compiler
 	# $2 - the current cflags
-	# $3 - variable to finally write to
-	# $4 - the current ldflags
-	# $5 - variable to finally write to
+	# $3 - variable to finally write cflags to
+	# $4 - the current cxxflags
+	# $5 - variable to finally write cxxflags to
+	# $6 - the current ldflags
+	# $7 - variable to finally write ldflags to
 
 	flags="$2"
-	ldflags="$4"
+	cxxflags="$4"
+	ldflags="$6"
 
 	if [ `echo $1 | cut -c 1-3` = "icc" ]; then
 		# Enable some things only for certain ICC versions
@@ -1058,6 +1062,9 @@ make_compiler_cflags() {
 		if [ $cc_version -ge 110 ]; then
 			# vec report defaults to telling where it did loop vectorisation, which is not very important
 			flags="$flags -vec-report=0"
+
+			# Use c++0x mode so static_assert() is available
+			cxxflags="$cxxflags -std=c++0x"
 		fi
 	else
 		# Enable some things only for certain GCC versions
@@ -1099,6 +1106,11 @@ make_compiler_cflags() {
 			flags="$flags -fno-strict-overflow"
 		fi
 
+		if [ $cc_version -ge 43 ]; then
+			# Use c++0x mode so static_assert() is available
+			cxxflags="$cxxflags -std=c++0x"
+		fi
+
 		has_rdynamic=`$1 -dumpspecs | grep rdynamic`
 		if [ -n "$has_rdynamic" ]; then
 			# rdynamic is used to get useful stack traces from crash reports.
@@ -1108,16 +1120,21 @@ make_compiler_cflags() {
 	fi
 
 	eval "$3=\"$flags\""
-	eval "$5=\"$ldflags\""
+	eval "$5=\"$cxxflags\""
+	eval "$7=\"$ldflags\""
 }
 
 make_cflags_and_ldflags() {
 	# General CFlags for BUILD
 	CFLAGS_BUILD=""
-	#LDFLAGS for BUILD
+	# Special CXXFlags for BUILD
+	CXXFLAGS_BUILD=""
+	# LDFLAGS for BUILD
 	LDFLAGS_BUILD=""
 	# General CFlags for HOST
 	CFLAGS="$CFLAGS -D$os"
+	# Special CXXFlags for HOST
+	CXXFLAGS="$CXXFLAGS"
 	# Libs to compile. In fact this is just LDFLAGS
 	LIBS="-lstdc++"
 	# LDFLAGS used for HOST
@@ -1166,8 +1183,8 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DNO_THREADS"
 	fi
 
-	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD"
-	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$LDFLAGS" "LDFLAGS"
+	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$CXXFLAGS_BUILD" "CXXFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD"
+	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$CXXFLAGS" "CXXFLAGS" "$LDFLAGS" "LDFLAGS"
 
 	if [ "`echo $1 | cut -c 1-3`" != "icc" ]; then
 		if [ "$os" = "CYGWIN" ]; then
@@ -1443,6 +1460,7 @@ make_cflags_and_ldflags() {
 	CFLAGS="$CFLAGS -DGLOBAL_DATA_DIR=\\\\\"$prefix_dir/$data_dir\\\\\""
 
 	log 1 "using CFLAGS... $CFLAGS"
+	log 1 "using CXXFLAGS... $CXXFLAGS"
 	log 1 "using LDFLAGS... $LIBS $LDFLAGS"
 
 	# Makedepend doesn't like something like: -isysroot /OSX/blabla
@@ -1453,10 +1471,11 @@ make_cflags_and_ldflags() {
 	#  not something we can control.
 	# Also make makedepend aware of compiler's built-in defines.
 	if [ "$with_makedepend" != "0" ] || [ "$enable_builtin_depend" != "0" ]; then
-		cflags_makedep="`echo | $cxx_host -E -x c++ -dM - | sed 's@.define @-D@g;s@ .*@ @g;s@(.*)@@g' | tr -d '\r\n'`"
+		# Append CXXFLAGS possibly containing -std=c++0x
+		cflags_makedep="`echo | $cxx_host $CXXFLAGS -E -x c++ -dM - | sed 's@.define @-D@g;s@ .*@ @g;s@(.*)@@g' | tr -d '\r\n'`"
 
 		# Please escape ALL " within ` because e.g. "" terminates the string in some sh implementations
-		cflags_makedep="$cflags_makedep `echo \"$CFLAGS\" | sed 's@ /@ -@g;s@-I[ ]*[^ ]*@@g'`"
+		cflags_makedep="$cflags_makedep `echo \"$CFLAGS\" \"$CXXFLAGS\" | sed 's@ /@ -@g;s@-I[ ]*[^ ]*@@g'`"
 	else
 		makedepend=""
 	fi
@@ -2641,6 +2660,7 @@ detect_cputype() {
 
 make_sed() {
 	T_CFLAGS="$CFLAGS"
+	T_CXXFLAGS="$CXXFLAGS"
 	T_LDFLAGS="$LDFLAGS"
 
 	SRC_OBJS_DIR="$BASE_SRC_OBJS_DIR/$OBJS_SUBDIR"
@@ -2659,6 +2679,8 @@ make_sed() {
 		s@!!LIPO!!@$lipo@g;
 		s@!!CFLAGS!!@$T_CFLAGS@g;
 		s@!!CFLAGS_BUILD!!@$CFLAGS_BUILD@g;
+		s@!!CXXFLAGS!!@$T_CXXFLAGS@g;
+		s@!!CXXFLAGS_BUILD!!@$CXXFLAGS_BUILD@g;
 		s@!!STRGEN_FLAGS!!@$strgen_flags@g;
 		s@!!LIBS!!@$LIBS@g;
 		s@!!LDFLAGS!!@$T_LDFLAGS@g;
@@ -2963,6 +2985,7 @@ showhelp() {
 	echo "  CC                             C compiler command"
 	echo "  CXX                            C++ compiler command"
 	echo "  CFLAGS                         C compiler flags"
+	echo "  CXXFLAGS                       C++ compiler flags"
 	echo "  WINDRES                        windres command"
 	echo "  LDFLAGS                        linker flags, e.g. -L<lib dir> if you"
 	echo "                                 have libraries in a nonstandard"

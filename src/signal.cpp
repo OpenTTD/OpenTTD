@@ -29,19 +29,19 @@ enum {
 assert_compile(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
 
 /** incidating trackbits with given enterdir */
-static const TrackBitsByte _enterdir_to_trackbits[DIAGDIR_END] = {
-	{TRACK_BIT_3WAY_NE},
-	{TRACK_BIT_3WAY_SE},
-	{TRACK_BIT_3WAY_SW},
-	{TRACK_BIT_3WAY_NW}
+static const TrackBits _enterdir_to_trackbits[DIAGDIR_END] = {
+	TRACK_BIT_3WAY_NE,
+	TRACK_BIT_3WAY_SE,
+	TRACK_BIT_3WAY_SW,
+	TRACK_BIT_3WAY_NW
 };
 
 /** incidating trackdirbits with given enterdir */
-static const TrackdirBitsShort _enterdir_to_trackdirbits[DIAGDIR_END] = {
-	{TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S},
-	{TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_RIGHT_N},
-	{TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N},
-	{TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_LEFT_S}
+static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S,
+	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_RIGHT_N,
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,
+	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_LEFT_S
 };
 
 /**
