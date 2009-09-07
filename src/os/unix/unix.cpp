@@ -15,6 +15,7 @@
 #include "../../textbuf_gui.h"
 #include "../../functions.h"
 #include "../../core/random_func.hpp"
+#include "../../crashlog.h"
 
 #include "table/strings.h"
 
@@ -254,6 +255,7 @@ int CDECL main(int argc, char *argv[])
 		argc = 1;
 	}
 #endif
+	CrashLog::InitialiseCrashLog();
 
 	SetRandomSeed(time(NULL));
 

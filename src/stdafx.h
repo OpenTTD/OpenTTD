@@ -229,12 +229,6 @@
 		#define strncasecmp strnicmp
 	#endif
 
-
-	#if defined(NDEBUG) && defined(WITH_ASSERT)
-		#undef assert
-		#define assert(expression) if (!(expression)) error("Assertion failed at line %i of %s: %s", __LINE__, __FILE__, #expression);
-	#endif
-
 	/* MSVC doesn't have these :( */
 	#define S_ISDIR(mode) (mode & S_IFDIR)
 	#define S_ISREG(mode) (mode & S_IFREG)
@@ -362,6 +356,15 @@ assert_compile(sizeof(uint8)  == 1);
 void NORETURN CDECL usererror(const char *str, ...) WARN_FORMAT(1, 2);
 void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
+
+/* For non-debug builds with assertions enabled use the special assertion handler:
+ * - For MSVC: NDEBUG is set for all release builds and WITH_ASSERT overrides the disabling of asserts.
+ * - For non MSVC: NDEBUG is set when assertions are disables, _DEBUG is set for non-release builds.
+ */
+#if (defined(_MSC_VER) && defined(NDEBUG) && defined(WITH_ASSERT)) || (!defined(_MSC_VER) && !defined(NDEBUG) && !defined(_DEBUG))
+	#undef assert
+	#define assert(expression) if (!(expression)) error("Assertion failed at line %i of %s: %s", __LINE__, __FILE__, #expression);
+#endif
 
 #if defined(MORPHOS) || defined(__NDS__) || defined(__DJGPP__)
 	/* MorphOS and NDS don't have C++ conformant _stricmp... */

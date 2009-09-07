@@ -1038,13 +1038,18 @@ make_compiler_cflags() {
 	# $1 - compiler
 	# $2 - the current cflags
 	# $3 - variable to finally write to
+	# $4 - the current ldflags
+	# $5 - variable to finally write to
 
 	flags="$2"
+	ldflags="$4"
 
 	if [ `echo $1 | cut -c 1-3` = "icc" ]; then
 		# Enable some things only for certain ICC versions
 		cc_version=`$1 -dumpversion | cut -c 1-4`
 
+		flags="$flags -rdynamic"
+		ldflags="$ldflags -rdynamic"
 
 		if [ "$cc_version" = "10.1" ]; then
 			flags="$flags -Wno-multichar"
@@ -1094,9 +1099,17 @@ make_compiler_cflags() {
 			# about it's own optimized code in some places.
 			flags="$flags -fno-strict-overflow"
 		fi
+
+		has_rdynamic=`$1 -dumpspecs | grep rdynamic`
+		if [ -n "$has_rdynamic" ]; then
+			# rdynamic is used to get useful stack traces from crash reports.
+			flags="$flags -rdynamic"
+			ldflags="$ldflags -rdynamic"
+		fi
 	fi
 
 	eval "$3=\"$flags\""
+	eval "$5=\"$ldflags\""
 }
 
 make_cflags_and_ldflags() {
@@ -1154,8 +1167,8 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DNO_THREADS"
 	fi
 
-	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD"
-	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS"
+	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD"
+	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$LDFLAGS" "LDFLAGS"
 
 	if [ "`echo $1 | cut -c 1-3`" != "icc" ]; then
 		if [ "$os" = "CYGWIN" ]; then

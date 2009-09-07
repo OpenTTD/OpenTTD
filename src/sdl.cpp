@@ -17,16 +17,6 @@
 #include "sdl.h"
 #include <SDL.h>
 
-#ifdef UNIX
-#include <signal.h>
-
-#ifdef __MORPHOS__
-	/* The system supplied definition of SIG_DFL is wrong on MorphOS */
-	#undef SIG_DFL
-	#define SIG_DFL (void (*)(int))0
-#endif
-#endif
-
 static int _sdl_usage;
 
 #ifdef DYNAMICALLY_LOADED_SDL
@@ -86,26 +76,6 @@ static const char *LoadSdlDLL()
 #endif /* DYNAMICALLY_LOADED_SDL */
 
 
-#ifdef UNIX
-static void SdlAbort(int sig)
-{
-	/* Own hand-made parachute for the cases of failed assertions. */
-	SDL_CALL SDL_Quit();
-
-	switch (sig) {
-		case SIGSEGV:
-		case SIGFPE:
-			signal(sig, SIG_DFL);
-			raise(sig);
-			break;
-
-		default:
-			break;
-	}
-}
-#endif
-
-
 const char *SdlOpen(uint32 x)
 {
 #ifdef DYNAMICALLY_LOADED_SDL
@@ -115,18 +85,12 @@ const char *SdlOpen(uint32 x)
 	}
 #endif
 	if (_sdl_usage++ == 0) {
-		if (SDL_CALL SDL_Init(x) == -1)
+		if (SDL_CALL SDL_Init(x | SDL_INIT_NOPARACHUTE) == -1)
 			return SDL_CALL SDL_GetError();
 	} else if (x != 0) {
 		if (SDL_CALL SDL_InitSubSystem(x) == -1)
 			return SDL_CALL SDL_GetError();
 	}
-
-#ifdef UNIX
-	signal(SIGABRT, SdlAbort);
-	signal(SIGSEGV, SdlAbort);
-	signal(SIGFPE, SdlAbort);
-#endif
 
 	return NULL;
 }
@@ -137,11 +101,6 @@ void SdlClose(uint32 x)
 		SDL_CALL SDL_QuitSubSystem(x);
 	if (--_sdl_usage == 0) {
 		SDL_CALL SDL_Quit();
-		#ifdef UNIX
-		signal(SIGABRT, SIG_DFL);
-		signal(SIGSEGV, SIG_DFL);
-		signal(SIGFPE, SIG_DFL);
-		#endif
 	}
 }
 

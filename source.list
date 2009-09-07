@@ -79,6 +79,7 @@ tile_map.cpp
 		#if OS2
 			os/os2/os2.cpp
 		#else
+			os/unix/crashlog_unix.cpp
 			os/unix/unix.cpp
 		#end
 	#end
