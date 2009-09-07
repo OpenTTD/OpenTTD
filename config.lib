@@ -1046,19 +1046,18 @@ make_compiler_cflags() {
 
 	if [ `echo $1 | cut -c 1-3` = "icc" ]; then
 		# Enable some things only for certain ICC versions
-		cc_version=`$1 -dumpversion | cut -c 1-4`
+		cc_version=`$1 -dumpversion | cut -c 1-4 | sed s@\\\.@@g`
 
 		flags="$flags -rdynamic"
 		ldflags="$ldflags -rdynamic"
 
-		if [ "$cc_version" = "10.1" ]; then
+		if [ $cc_version -ge 101 ]; then
 			flags="$flags -Wno-multichar"
 		fi
 
-		if [ "$cc_version" = "11.0" ]; then
-			# warning 1899: multicharacter character literal (potential portability problem) (e.g. 'FOOD')
+		if [ $cc_version -ge 110 ]; then
 			# vec report defaults to telling where it did loop vectorisation, which is not very important
-			flags="$flags -vec-report=0 -wd1899"
+			flags="$flags -vec-report=0"
 		fi
 	else
 		# Enable some things only for certain GCC versions
