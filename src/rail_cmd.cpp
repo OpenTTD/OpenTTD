@@ -1039,7 +1039,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
 	int signal_ctr;
 	byte signals;
-	bool error = true;
+	bool err = true;
 	TileIndex end_tile;
 	TileIndex start_tile = tile;
 
@@ -1118,7 +1118,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 
 			/* Be user-friendly and try placing signals as much as possible */
 			if (CmdSucceeded(ret)) {
-				error = false;
+				err = false;
 				total_cost.AddCost(ret);
 			}
 		}
@@ -1143,7 +1143,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 		}
 	}
 
-	return error ? CMD_ERROR : total_cost;
+	return err ? CMD_ERROR : total_cost;
 }
 
 /** Build signals on a stretch of track.
