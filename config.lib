@@ -2810,8 +2810,6 @@ generate_src_normal() {
 }
 
 generate_src_osx() {
-	CLEAN_CFLAGS="$CFLAGS"
-	CLEAN_LDFLAGS="$LDFLAGS"
 	cc_host_orig="$cc_host"
 	cxx_host_orig="$cxx_host"
 
