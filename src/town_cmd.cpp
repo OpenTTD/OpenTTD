@@ -1315,17 +1315,19 @@ static bool GrowTown(Town *t)
 
 	/* No road available, try to build a random road block by
 	 * clearing some land and then building a road there. */
-	tile = t->xy;
-	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
-		/* Only work with plain land that not already has a house */
-		if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
-			if (CmdSucceeded(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR))) {
-				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
-				_current_company = old_company;
-				return true;
+	if (_settings_game.economy.allow_town_roads || _generating_world) {
+		tile = t->xy;
+		for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
+			/* Only work with plain land that not already has a house */
+			if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
+				if (CmdSucceeded(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR))) {
+					DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
+					_current_company = old_company;
+					return true;
+				}
 			}
+			tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
 		}
-		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
 	}
 
 	_current_company = old_company;
