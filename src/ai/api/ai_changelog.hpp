@@ -30,16 +30,15 @@
  * \li AIIndustry::GetLastMonthTransportedPercentage
  *
  * API removals:
- * \li AIOrder::ChangeOrder
- * \li AISign::GetMaxSignID
- * \li AITile::GetHeight
- * \li AIBaseStation::WAYPOINT_INVALID
- * \li AISubsidy::SourceIsTown
- * \li AISubsidy::GetSource
- * \li AISubsidy::DestinationIsTown
- * \li AISubsidy::GetDestination
- * \li AITown::GetMaxProduction
- * \li AIWaypoint::WAYPOINT_INVALID
+ * \li AIOrder::ChangeOrder, use AIOrder::SetOrderFlags instead
+ * \li AISign::GetMaxSignID, use AISignList instead
+ * \li AITile::GetHeight, use AITile::GetMinHeight/GetMaxHeight/GetCornerHeight instead
+ * \li AISubsidy::SourceIsTown, use AISubsidy::GetSourceType instead
+ * \li AISubsidy::GetSource, use AISubsidy::GetSourceIndex instead
+ * \li AISubsidy::DestinationIsTown, use AISubsidy::GetDestinationType instead
+ * \li AISubsidy::GetDestination, use AISubsidy::GetDestinationIndex instead
+ * \li AITown::GetMaxProduction, use AITown::GetLastMonthProduction instead
+ * \li AIWaypoint::WAYPOINT_INVALID, use AIBaseStation::STATION_INVALID instead
  *
  * Other changes:
  * \li The GetName / SetName / GetLocation functions were moved from AIStation
