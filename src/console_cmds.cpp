@@ -789,6 +789,39 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConNetworkReconnect)
+{
+	if (argc == 0) {
+		IConsoleHelp("Reconnect to server to which you were connected last time. Usage: 'reconnect [<company>]'");
+		IConsoleHelp("Company 255 is spectator (default, if not specified), 0 means creating new company.");
+		IConsoleHelp("All others are a certain company with Company 1 being #1");
+		return true;
+	}
+
+	CompanyID playas = (argc >= 2) ? (CompanyID)atoi(argv[1]) : COMPANY_SPECTATOR;
+	switch (playas) {
+		case 0: playas = COMPANY_NEW_COMPANY; break;
+		case COMPANY_SPECTATOR: /* nothing to do */ break;
+		default:
+			/* From a user pov 0 is a new company, internally it's different and all
+			 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
+			playas--;
+			if (playas < COMPANY_FIRST || playas >= MAX_COMPANIES) return false;
+			break;
+	}
+
+	if (StrEmpty(_settings_client.network.last_host)) {
+		IConsolePrint(CC_DEFAULT, "No server for reconnecting.");
+		return true;
+	}
+
+	/* Don't resolve the address first, just print it directly as it comes from the config file. */
+	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s:%d...", _settings_client.network.last_host, _settings_client.network.last_port);
+
+	NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), playas);
+	return true;
+};
+
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {
 	if (argc == 0) {
@@ -1831,6 +1864,8 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("server_info",     ConServerInfo);
 	IConsoleCmdHookAdd("server_info",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleAliasRegister("info",          "server_info");
+	IConsoleCmdRegister("reconnect",       ConNetworkReconnect);
+	IConsoleCmdHookAdd("reconnect",        ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
 	IConsoleCmdRegister("rcon",            ConRcon);
 	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 
