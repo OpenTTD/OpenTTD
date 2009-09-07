@@ -1107,8 +1107,9 @@ make_compiler_cflags() {
 		fi
 
 		if [ $cc_version -ge 43 ]; then
-			# Use c++0x mode so static_assert() is available
-			cxxflags="$cxxflags -std=c++0x"
+			# Use gnu++0x mode so static_assert() is available.
+			# Don't use c++0x, it breaks mingw (with gcc 4.4.0).
+			cxxflags="$cxxflags -std=gnu++0x"
 		fi
 
 		has_rdynamic=`$1 -dumpspecs | grep rdynamic`
