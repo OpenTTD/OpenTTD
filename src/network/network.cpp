@@ -227,7 +227,10 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_se
 			colour = CC_DEFAULT;
 			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW;
 			break;
-		case NETWORK_ACTION_JOIN:           strid = STR_NETWORK_MESSAGE_CLIENT_JOINED; break;
+		case NETWORK_ACTION_JOIN:
+			/* Show the Client ID for the server but not for the client. */
+			strid = _network_server ? STR_NETWORK_MESSAGE_CLIENT_JOINED_ID :  STR_NETWORK_MESSAGE_CLIENT_JOINED;
+			break;
 		case NETWORK_ACTION_LEAVE:          strid = STR_NETWORK_MESSAGE_CLIENT_LEFT; break;
 		case NETWORK_ACTION_NAME_CHANGE:    strid = STR_NETWORK_MESSAGE_NAME_CHANGE; break;
 		case NETWORK_ACTION_GIVE_MONEY:     strid = self_send ? STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY : STR_NETWORK_MESSAGE_GIVE_MONEY;   break;

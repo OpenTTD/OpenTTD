@@ -805,7 +805,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name);
+		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, NULL, cs->client_id);
 
 		/* Mark the client as pre-active, and wait for an ACK
 		 *  so we know he is done loading and in sync with us */
