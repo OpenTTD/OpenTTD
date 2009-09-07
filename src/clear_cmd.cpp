@@ -58,7 +58,7 @@ void DrawHillyLandTile(const TileInfo *ti)
 	if (ti->tileh != SLOPE_FLAT) {
 		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + _tileh_to_sprite[ti->tileh], PAL_NONE);
 	} else {
-		DrawGroundSprite(_landscape_clear_sprites[GB(ti->x ^ ti->y, 4, 3)], PAL_NONE);
+		DrawGroundSprite(_landscape_clear_sprites_rough[GB(ti->x ^ ti->y, 4, 3)], PAL_NONE);
 	}
 }
 
@@ -72,11 +72,11 @@ void DrawClearLandFence(const TileInfo *ti)
 	}
 
 	if (GetFenceSW(ti->tile) != 0) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh[ti->tileh], PAL_NONE, ti->x, ti->y, z);
+		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh_sw[ti->tileh], PAL_NONE, ti->x, ti->y, z);
 	}
 
 	if (GetFenceSE(ti->tile) != 0) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_2[ti->tileh], PAL_NONE, ti->x, ti->y, z);
+		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_se[ti->tileh], PAL_NONE, ti->x, ti->y, z);
 	}
 }
 
@@ -96,15 +96,12 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case CLEAR_FIELDS:
-			DrawGroundSprite(_clear_land_sprites_1[GetFieldType(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
+			DrawGroundSprite(_clear_land_sprites_farmland[GetFieldType(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
 			break;
 
 		case CLEAR_SNOW:
-			DrawGroundSprite(_clear_land_sprites_2[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
-			break;
-
 		case CLEAR_DESERT:
-			DrawGroundSprite(_clear_land_sprites_3[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
+			DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
 			break;
 	}
 

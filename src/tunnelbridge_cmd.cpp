@@ -974,7 +974,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (!ice) {
 			DrawClearLandTile(ti, 3);
 		} else {
-			DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh], PAL_NONE);
+			DrawGroundSprite(SPR_FLAT_SNOW_DESERT_TILE + _tileh_to_sprite[ti->tileh], PAL_NONE);
 		}
 
 		/* draw ramp */

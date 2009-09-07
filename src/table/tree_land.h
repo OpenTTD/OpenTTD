@@ -12,13 +12,6 @@
 #ifndef TREE_LAND_H
 #define TREE_LAND_H
 
-static const SpriteID _tree_sprites_1[] = {
-	SPR_FLAT_1_QUART_SNOWY_TILE,
-	SPR_FLAT_2_QUART_SNOWY_TILE,
-	SPR_FLAT_3_QUART_SNOWY_TILE,
-	SPR_FLAT_SNOWY_TILE
-};
-
 static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};
 static const byte _tree_count_by_landscape[4] = {12, 8, 12, 9};
 

@@ -1733,7 +1733,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		} else {
 			switch (rgt) {
 				case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
-				case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOWY_TILE; break;
+				case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOW_DESERT_TILE; break;
 				default:                     image = SPR_FLAT_GRASS_TILE; break;
 			}
 			image += _tileh_to_sprite[ti->tileh];
@@ -1927,7 +1927,7 @@ static void DrawTile_Track(TileInfo *ti)
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
 			} else {
-				image = SPR_FLAT_SNOWY_TILE; // flat ground
+				image = SPR_FLAT_SNOW_DESERT_TILE; // flat ground
 			}
 		}
 
