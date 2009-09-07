@@ -1,7 +1,7 @@
 ##name Hebrew
 ##ownname עברית
 ##isocode he_IL
-##plural 2
+##plural 0
 ##textdir rtl
 ##digitsep ,
 ##digitsepcur ,
@@ -2037,9 +2037,14 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}גדול
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}אקראי
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}בחר את גודל העיר
 STR_FOUND_TOWN_CITY                                             :{BLACK}עיר
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}ערים גדלות מהר יותר מאשר עיירות{}כתלות בהגדרות, הן גדולות יותר כאשר הן נוסדות
 
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}מתווה כביש של עיר:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}בחר מתווה כביש לשימוש עבור עיר זו
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}מקורי
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}כבישים טובים יותר
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 רשת
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 רשת
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}אקראי
 
 # Fund new industry window
@@ -2336,6 +2341,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Behaviou
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' סיפק מידע לא נכון.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע מטען/התאמה מחדש עבור '{1:ENGINE}' שונה מרשימת הרכישה לאחר הבניה. דבר זה עלול לגרום מילוי/חידוש אוטומטי לכישלון התאמה מחדש בצורה נכונה.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
@@ -2361,6 +2369,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{ORANGE}{1:COMM
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{ORANGE}{1:COMMA}{BLACK} :מספר מירבי {ORANGE}{0:COMMA}{BLACK} :נוסעים בחודש שעבר
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{ORANGE}{1:COMMA}{BLACK} :מספר מירבי {ORANGE}{0:COMMA}{BLACK} :שקי דואר בחודש שעבר
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}המטען שצריך בשביל גידול עיר
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} דרוש
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} נמסרו בחודש שעבר
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{ORANGE}{1:COMMA}{BLACK} :מירבית {ORANGE}{0:COMMA}{BLACK} :רמת הרעש המותרת בעיר זו
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}מקד את התצוגה על העיר שנבחרה
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}רשות מקומית
@@ -2404,8 +2414,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK} :סובסידיות למימון שירותי הובלה
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} (ב-{DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}אין
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK} :שירותים מסובסדים
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} ({COMPANY}{YELLOW}, עד {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה
 
 # Station list window
@@ -2413,6 +2425,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}שמות
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}לחץ והחזק מקש קונטרל כדי לבחור יותר מפריט אחד
 STR_STATION_LIST_CAPTION                                        :{WHITE}תחנות{NBSP} {1:COMMA}  - {0:COMPANY}
 STR_STATION_LIST_STATION                                        :{YELLOW} {1:STATIONFEATURES}{0:STATION}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- כלום -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}בחר את כל המתקנים
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}(ברח את כל סוגי הסחורה (כולל סחורה שלא מחכה
@@ -2455,7 +2468,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}הצג �
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :שנה שם של תחנה/אזור טעינה
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}מרכז תצוגה ראשית על מיקום ציון הדרך. Ctrl+לחיצה פותח תצוגה חדשה על מיקום ציון הדרך
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}שנה שם נקודת ציון
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}מרכז תצוגה ראשית על מיקום מצוף. Ctrl+לחיצה פותח חלון תצוגה חדש על מיקום מצוף
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}שנה שם מצוף
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ערוך שם נקודת ציון
 
@@ -2635,6 +2651,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{GOLD}{COMMA}%{
 STR_PURCHASE_INFO_COST                                          :{GOLD}{CURRENCY}{BLACK} :מחיר
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{GOLD}({1:WEIGHT_S})  {0:WEIGHT_S} {BLACK} : משקל
 STR_PURCHASE_INFO_COST_SPEED                                    :{GOLD}{1:VELOCITY}{BLACK} : מהירות {GOLD}{0:CURRENCY} {BLACK} :מחיר
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}קיבולת: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{GOLD}+{1:WEIGHT_S}{BLACK}  :משקל {GOLD}+{0:POWER} : {BLACK} :קרונות
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK} :ניתן להתאים ל{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :כל סוגי המטען
@@ -2757,6 +2774,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פ�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_S} :משקל  {NBSP}{0:CURRENCY}  :מחיר {}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY} :עלות תפעולית
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}עלות: {CURRENCY} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO}, {CARGO}{}עלות שוטפת: {CURRENCY}/לשנה
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}עלות: {CURRENCY} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO}{}הוצאה שוטפת: {CURRENCY}/לשנה
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} החלף
@@ -2776,6 +2795,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}הפסק
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}לחץ כאן להפסיק את ההחלפה
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{ORANGE}{SKIP}{SKIP}{STRING}{BLACK} : מחליף
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}החלף בין חלונות החלפת קרון וקטר
 STR_REPLACE_ENGINES                                             :מנועים/קטרים
 STR_REPLACE_WAGONS                                              :קרונות
 
@@ -2836,6 +2856,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}עצור
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}טעינה / פריקה
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE} עוזב/ת
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}!התרסק/הֿ
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}התקלקל
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}נעצרה
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}עוצרת
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} ,עוצרת
@@ -2877,12 +2898,22 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן ש�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}תן שם לכלי השייט
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}תן שם לכלי הטייס
 
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}גיל: {LTBLUE}{STRING}{BLACK}   עלות שוטפת: {LTBLUE}{CURRENCY}/לשנה
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :({1:COMMA}) שנים {NBSP}{0:COMMA}
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}({1:COMMA}) שנים {NBSP}{0:COMMA}
 
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}מהירות מקסימלית: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל: {LTBLUE}{WEIGHT_S} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_S} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}רווח בשנה הנוכחת: {LTBLUE}{CURRENCY} (שנה שעברה: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}מהימנות: {LTBLUE}{COMMA}%  {BLACK}קלקול מאז טיפול אחרון: {LTBLUE}{COMMA}
 
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}נבנה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}קיבולת: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}קיבולת: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}קיבולת: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
 
@@ -3056,6 +3087,9 @@ STR_ORDER_NO_UNLOAD                                             :(אל תפרו�
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(אל תפרוק,המתן למילוי)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק, המתן עד שיתמלא מטען מסויים)
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[קצה קרוב]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[אמצע]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[קצה רחוק]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA} :דלג ליעד
 STR_ORDER_CONDITIONAL_NUM                                       :{3:COMMA} {2:STRING} {1:STRING} כאשר {NBSP}{0:COMMA}{NBSP} דלג ליעד
@@ -3103,6 +3137,8 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}שם ה�
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
 
+STR_ERROR_AI_NO_AI_FOUND                                        :לא נמצאה בינה מלאכותית מתאימה לטעינה.{}בינה מלאכותית זו הינה מדומה ולא תעשה כלום.{}באפשרותך להוריד מספר אלגורתמים של בינה מלאכותית בעזרת מערכת 'תוכן מקוון'.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד מאלגורתמי הבינה המלאכותית קרס. אנא דווח זאת ליוצר האלגוריתם וצרף צילום מסך של מסך ה-Debug.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלון הדה-באג זמין רק עבור השרת
 
 # AI configuration window
@@ -3120,6 +3156,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}שנה �
 STR_AI_LIST_CAPTION                                             :{WHITE}בינות מלאכותיות זמינות
 STR_AI_LIST_TOOLTIP                                             :{BLACK} לחץ לבחירת בינה מלאכותית
 
+STR_AI_LIST_AUTHOR                                              :{BLACK}יוצר: {STRING}
+STR_AI_LIST_VERSION                                             :{BLACK}גרסה: {NUM}
+STR_AI_LIST_URL                                                 :{BLACK}קישור: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}אשר
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר סוג בינה מלאכותית שהודגש
@@ -3165,6 +3204,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :בדיקת של
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game was saved in version without tram support. All trams have been removed.
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}יצירת המפה בוטלה...{}... אין מיקומי ערים מתאימים
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   ::{WHITE}אין ערים בסצנריו זה...
 
 STR_ERROR_PNGMAP                                                :{WHITE}לא יכול לטעון שטח אדמה מקובץ...
@@ -3237,16 +3277,17 @@ STR_ERROR_PROTECTED                                             :{WHITE}חברה
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}לא ניתן לבנות ערים
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}...לא ניתן לשנות את השם של העיר הזאת
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}...לא ניתן לבנות כאן עיירה
+STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}לא ניתן לבנות עיירה כאן...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...קרוב מידי לקצה המפה
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...קרוב מידי לעיירה אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...יותר מידי עיירות
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...אין יותר מקום על המפה
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}עיר זאת לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}עבודות כביש בפעולה
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}ניסיון ליצור תעשיות נכשל
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}באתר זה {STRING} לא ניתן לבנות
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}לא ניתן {STRING} לבנות כאן...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}לא ניתן לבנות כאן תעשיה מסוג זה
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}קרוב מידי לתעשיה אחרת
 STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...יש לבנות עיר קודם
@@ -3259,13 +3300,13 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...יכ�
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...יער יכול להנטע רק מעל קו השלג
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}...לא ניתן לבנות תחנת רכבת באתר זה
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}לא ניתן לבנות תחנת רכבת כאן...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}...לא ניתן לבנות תחנת אוטובוס
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}...לא ניתן לבנות תחנת טעינה למשאיות
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}...לא ניתן לבנות תחנת חשמלית לנוסעים
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}...לא ניתן לבנות תחנת חשמלית לסחורה
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}...לא ניתן לבנות מזח במשבצת זו
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}לא ניתן לבנות שדה תעופה באתר זה
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}לא ניתן לבנות תחנת חשמלית לנוסעים...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}לא ניתן לבנות תחנת חשמלית לסחורה...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}לא ניתן לבנות מזח כאן...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}לא ניתן לבנות שדה תעופה כאן...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}ניסיון לחבר בין תחנות קיימות
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...פריסת התחנה חורגת מהמותר
@@ -3287,32 +3328,35 @@ STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}...לא 
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}חייב למחוק תחנת רכבת קודם
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}...לא ניתן להסיר תחנת אוטובוס
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}...לא ניתן להסיר תחנת משאיות
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}...לא ניתן להסיר תחנת חשמלית לנוסעים
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}...לא ניתן להסיר תחנת חשמלית למשאות
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}לא ניתן להסיר תחנת חשמלית לנוסעים...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}לא ניתן להסיר תחנת חשמלית למטען...
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}חייב לפרק תחנת רכבת קודם
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}חובה להסיר קודם את תחנת האוטובוס
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}חובה להסיר קודם את תחנת המשאיות
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}יש להרוס תחנת רכבת תחילה
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}יש להסיר את תחנת האוטובוס תחילה
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}יש להסיר את תחנת המשאיות תחילה
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}יש להסיר את תחנת החשמלית תחילה
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}יש להסיר את תחנת החשמלית תחילה
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}חובה להסיר קודם את המזח הקיים
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}חייב לפנות שדה תעופה קודם
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}נוגע ביותר מנקודת ציון אחת
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}קרובה מידי לנקודת ציון אחרת
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}לא ניתן לבנות תחנת רכבת באתר זה
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}לא ניתן למקם מצוף במשבצת זו
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}שינוי שם היעד נכשל...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}לא ניתן להסיר תחנת רכבת מאתר זה
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}יש להסיר נקודת ציון של פסי רכבת תחילה
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...מצוף חוסם את הדרך
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...המצוף בשימוש
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}...לא ניתן למקם מוסך רכבת במשבצת זו
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}...לא ניתן למקם מוסך כלי רכב במשבצת זו
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}...לא ניתן לבנות מוסך לחשמלית כאן
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE} ...לא ניתן לבנות כאן מבדוק
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}לא ניתן לבנות מוסך רכבת כאן...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}לא ניתן לבנות מוסך כלי רכב כאן...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}לא ניתן לבנות מוסך לחשמלית כאן...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE} לא ניתן לבנות מבדוק כאן...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...חייב לעצור בתוך מוסך לכלי רכב
@@ -3321,6 +3365,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}המטו
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}ניתן לשנות את הרכבת בעת עצירה במוסך בלבד
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}לא ניתן להפוך כיוון כלי הרכב...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :סוג הפסים אינו מתאים
 
@@ -3339,23 +3384,23 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(הגבלת כ�
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}שילוב מסילות בלתי אפשרי
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE} אין מסילת רכבת מתאימה
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}יש לבטל את המסילה הקיימת
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}יש להסיר את המסילה הקיימת תחילה
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}כביש חד סיטרי או חסום
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}...לא ניתן למקם רמזורים במשבצת זו
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}...לא ניתן להניח פסי רכבת במשבצת זו
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}לא ניתן למקם רמזורים כאן...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}לא ניתן להניח פסי רכבת כאן...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}...לא ניתן להסיר פסי רכבת ממשבצת זו
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}...לא ניתן להסיר רמזורים ממשבצת זו
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}לא ניתן להסיר רמזורים מכאן...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}לא ניתן להחלף רמזורים
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}...לא ניתן לשנות את סוג המסילה
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}יש להסיר את הכביש תחילה
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... כביש חד סיטרי לא יכול להיות בצומת
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}...לא ניתן לבנות כביש במשבצת זו
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}...לא ניתן לבנות מסילות חשמלית כאן
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}...לא ניתן להסיר כביש ממשבצת זו
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}...לא ניתן לפרק מסילת רכבת חשמלית מכאן
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... כבישים חד סיטריים לא יכולים להכיל צמתים
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}לא ניתן לבנות כביש כאן...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}לא ניתן לבנות מסילות חשמלית כאן...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}לא ניתן להסיר כביש מכאן...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}לא ניתן להסיר מסילת רכבת חשמלית מכאן...
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}לא ניתן לבנות כאן תעלה
@@ -3371,7 +3416,7 @@ STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...קי�
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}...לא יכול לטעת עצים במשבצת זו
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE} ...לא ניתן לבנות גשר באתר זה
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}לא ניתן לבנות גשר כאן...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}חוברה קודם לפרק את הגשר
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}לא ניתן להתחיל ולסיים באותה הנקודה
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE} צדדי הגשר לא באותו הגובה
@@ -3380,7 +3425,7 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}התחל
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...קצוות הגשר צריכים להיות על הקרקע
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}...לא ניתן לבנות מנהרה באתר זה
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}לא ניתן להקים מנהרה כאן...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}אזור לא מתאים לכניסה למנהרה
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}חובה קודם לבטל את המנהרה
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}מנהרה אחרת מפריעה
@@ -3458,6 +3503,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא נ�
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}לא ניתן לשנות את כיוון  הנסיעה של הרכבת
 STR_ERROR_TRAIN_START_NO_CATENARY                               :סוג מסילה לא מתאים לרכבת זו
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}לא ניתן לבצע סיבוב של כלי הרכב...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}נמצא בטיסה
 
@@ -3592,6 +3638,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} נמל
 STR_SV_STNAME_OILFIELD                                          :{STRING} שדה הנפט
 STR_SV_STNAME_MINES                                             :{STRING} מכרות
 STR_SV_STNAME_DOCKS                                             :{STRING} רציפי
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} תחנת מפגש
 STR_SV_STNAME_SIDINGS                                           :{STRING} תחנת מסיעי
@@ -3869,6 +3917,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} מצוף
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} מצוף #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}

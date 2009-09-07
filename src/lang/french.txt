@@ -1841,7 +1841,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construc
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construire des rails. Ctrl pour inverser le mode (construire/enlever)
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construire les rails avec le mode AutoRail. Ctrl pour inverser le mode (construire/enlever)
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construire un dépôt ferroviaire (pour construire et entretenir les trains)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construire un dépôt ferroviaire (pour acheter et entretenir des trains)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur les rails. Ctrl pour joindre des points de contrôle
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construire une gare. Ctrl pour joindre des stations
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux. Ctrl pour inverser le type des signaux (sémaphore/lumineux){}Faire glisser pour construire le long d'une section de voie linéaire. Utiliser Ctrl pour construire des signaux jusqu'à la prochaine jonction{}Ctrl-clic pour inverser le mode d'ouverture de la fenêtre de sélection des signaux
@@ -1916,8 +1916,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construire une section de tramway. Ctrl pour inverser le mode (construire/enlever)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construire une route avec le mode Auto-route. Ctrl pour inverser le mode (construire/enlever)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construire une section de tramway avec le mode Auto-tram. Ctrl pour inverser le mode (construire/enlever)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construire un dépôt routier (pour construire et entretenir les véhicules routiers)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construire un dépôt de tramway (pour la construction et l'entretien des véhicules)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construire un dépôt routier (pour acheter et entretenir des véhicules)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construire un dépôt de tramway (pour acheter et entretenir des véhicules)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construire un arrêt d'autobus. Ctrl pour joindre des stations
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construire une station de tramway pour passagers. Ctrl pour joindre des stations
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construire une aire de chargement. Ctrl pour joindre des stations
@@ -1951,7 +1951,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construc
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Voies navigables
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construire des canaux.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construire des écluses
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construire un dépôt naval (pour construire et entretenir les navires)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construire un dépôt naval (pour acheter et entretenir des navires)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construire un port. Ctrl pour joindre des stations
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Placer une bouée, peut servir de guide aux navires
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construire un aqueduc
@@ -2663,15 +2663,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liste de sélection de navire - cliquer sur un navire pour informations
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liste de sélection d'aéronef - cliquer sur les aéronefs pour de plus amples informations
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Construire
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Construire
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Construire navire
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Construire aéronef
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Acheter
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Acheter
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Acheter
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Acheter
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Construire le véhicule sélectionné
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Construire le véhicule sélectionné
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Construire le navire surligné
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Construire l'aéronef sélectionné
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Acheter le véhicule sélectionné
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Acheter le véhicule sélectionné
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Acheter le navire sélectionné
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Acheter l'aéronef sélectionné
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renommer
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renommer
@@ -2726,20 +2726,20 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nouveaux
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nouveaux navires
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nouvel aéronef
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Construire un nouveau train/wagon
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Construire un nouveau véhicule
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construire nouveau navire
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Construire nouvel aéronef
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Acheter un nouveau véhicule ferroviaire
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Acheter un nouveau véhicule routier
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Acheter un nouveau navire
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Acheter un nouvel aéronef
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Copier Train
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Copier Véhicule
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Copier Navire
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Copier aéronef
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar. Ctrl-clic pour partager les ordres
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acheter une copie d'un train et de ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acheter une copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acheter une copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acheter une copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar. Ctrl-clic pour partager les ordres
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centre la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt
@@ -2822,10 +2822,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envoie l
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envoyer le navire au dépôt. Ctrl-clic pour entretien seul
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envoyer l'aéronef au hangar. Ctrl-clic pour entretien seul
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-clic pour partager les ordres
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-clic pour partager les ordres
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Effectuer la copie d'un navire. Ctrl-clic pour partager les ordres
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Effectuer une copie de l'aéronef. Ctrl-clic pour partager les ordres
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acheter une copie du train et de ses wagons. Ctrl-clic pour partager les ordres
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acheter une copie du véhicule routier. Ctrl-clic pour partager les ordres
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acheter une copie du navire. Ctrl-clic pour partager les ordres
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acheter une copie de l'aéronef. Ctrl-clic pour partager les ordres
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forcer le train à continuer sans tenir compte des feux
 
@@ -3472,10 +3472,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossib
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Impossible d'envoyer le navire au dépôt...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Impossible d'envoyer l'aéronef au hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Impossible de construire le véhicule ferroviaire...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Impossible de construire le véhicule...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Impossible de construire navire...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossible de construire l'aéronef...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Impossible d'acheter le véhicule ferroviaire...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Impossible d'acheter le véhicule routier...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Impossible d'acheter le navire...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossible d'acheter l'aéronef...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Impossible de renommer le type de train...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossible de renommer type de véhicule routier...

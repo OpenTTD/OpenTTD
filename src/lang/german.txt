@@ -1645,7 +1645,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Zuschaue
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Neue Firma
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(keiner)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Keine -
 STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geld schenken
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
@@ -1951,7 +1951,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Wasserwe
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Wasserwege
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäle bauen.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schleusen bauen
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Bau und die Wartung von Schiffen)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Kauf und die Wartung von Schiffen)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Hafen bauen. Strg+Klick, um Stationen zu verbinden
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsboje, wird als Wegpunkt benötigt
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquädukt bauen
@@ -2357,6 +2357,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Einen Na
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städte
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keine -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen - Klick auf den Namen scrollt Hauptansicht zur Stadt. Strg+Klick öffnet neue Zusatzansicht bei der Stadt
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
@@ -2414,7 +2415,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventionen
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subventionsangebot für:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} von {STRING} nach {STRING}{YELLOW} (bis {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Keine
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Keine -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bereits vergebene Subventionen:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} von {STRING} nach {STRING}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick auf Dienstleistung scrollt Hauptansicht zur Industrie/Stadt. Strg+Klick öffnet neue Zusatzansicht bei der Industrie/Stadt
@@ -2545,6 +2546,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wir such
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keine -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportiert)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportiert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2734,10 +2736,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Fahrzeug
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schiff kopieren
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Flugzeug kopieren
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Baut eine Kopie des Zuges mit allen Waggons. Klicke diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Baut eine Kopie des Fahrzeuges. Klicke diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kauft eine Kopie des Zuges mit allen Waggons. Klicke diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kauft eine Kopie des Fahrzeuges. Klicke diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kauft eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kauft eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Hauptansicht zum Zugdepot scrollen. Strg+Klick öffnet neue Zusatzansicht beim Zugdepot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht zum Fahrzeugdepot scrollen. Strg+Klick öffnet neue Zusatzansicht beim Fahrzeugdepot
@@ -2820,10 +2822,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Das Fahr
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Das Schiff zur Werft schicken. Strg+Klick, um dort nur Wartung durchzuführen.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Das Flugzeug in den Hangar schicken. Strg+Klick, um dort nur Wartung durchzuführen.
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Baut eine Kopie des Zuges mit allen Waggons. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Baut eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Baut eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Kauft eine Kopie des Zuges mit allen Waggons. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Kauft eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Kauft eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Kauft eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Zug zur Weiterfahrt zwingen, ohne das Signal zu beachten
 
@@ -3136,7 +3138,7 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneu
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Einer der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI Debug-Fenster ist nur auf dem Server verfügbar
 
 # AI configuration window
@@ -3472,8 +3474,8 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Flugzeug
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Fahrzeug kann nicht gekauft werden...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Schiff kann nicht gebaut werden...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Flugzeug kann nicht gebaut werden...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Schiff kann nicht gekauft werden...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Flugzeug kann nicht gekauft werden...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Zugtyp kann nicht umbenannt werden...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Fahrzeug kann nicht umbenannt werden...

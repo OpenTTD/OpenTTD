@@ -372,7 +372,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafico profitto operativo
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafico margine operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafico incassi
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico merci consegnate
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafico storico prestazioni
@@ -506,7 +506,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico profitto operativo
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico margine operativo
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico incassi
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità di merce consegnate
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
@@ -760,7 +760,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G o a} {STRING} piantat{G o a} vicino a {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o a} {STRING} piantat{G 0 o a} vicino a {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annuncia imminente chiusura!!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
