@@ -890,7 +890,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		/* Insert the industry into _cargo_delivery_destinations, if not yet contained */
 		_cargo_delivery_destinations.Include(ind);
 
-		uint amount = min(num_pieces, 0xFFFF - ind->incoming_cargo_waiting[cargo_index]);
+		uint amount = min(num_pieces, 0xFFFFU - ind->incoming_cargo_waiting[cargo_index]);
 		ind->incoming_cargo_waiting[cargo_index] += amount;
 		num_pieces -= amount;
 		accepted += amount;
