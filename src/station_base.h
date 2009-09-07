@@ -85,6 +85,7 @@ public:
 	byte last_vehicle_type;
 	std::list<Vehicle *> loading_vehicles;
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
+	uint32 town_acc; ///< Bitmask of cargos accepted by town houses and headquarters
 
 	IndustryVector industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
 

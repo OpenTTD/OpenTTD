@@ -579,7 +579,14 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 	}
 }
 
-static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance)
+static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, uint32 *town_acc)
+{
+	if (cargo == CT_INVALID || amount == 0) return;
+	acceptance[cargo] += amount;
+	SetBit(*town_acc, cargo);
+}
+
+static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32 *town_acc)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	CargoID accepts[3];
@@ -604,13 +611,13 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance)
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
-			if (accepts[0] != CT_INVALID) acceptance[accepts[0]] += GB(callback, 0, 4);
-			if (accepts[1] != CT_INVALID) acceptance[accepts[1]] += GB(callback, 4, 4);
+			AddAcceptedCargoSetMask(accepts[0], GB(callback, 0, 4), acceptance, town_acc);
+			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, town_acc);
 			if (_settings_game.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
-				acceptance[CT_FOOD] += GB(callback, 8, 4);
+				AddAcceptedCargoSetMask(CT_FOOD, GB(callback, 8, 4), acceptance, town_acc);
 			} else {
-				if (accepts[2] != CT_INVALID) acceptance[accepts[2]] += GB(callback, 8, 4);
+				AddAcceptedCargoSetMask(accepts[2], GB(callback, 8, 4), acceptance, town_acc);
 			}
 			return;
 		}
@@ -618,7 +625,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance)
 
 	/* No custom acceptance, so fill in with the default values */
 	for (uint8 i = 0; i < lengthof(accepts); i++) {
-		if (accepts[i] != CT_INVALID) acceptance[accepts[i]] += hs->cargo_acceptance[i];
+		AddAcceptedCargoSetMask(accepts[i], hs->cargo_acceptance[i], acceptance, town_acc);
 	}
 }
 

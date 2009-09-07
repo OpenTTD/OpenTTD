@@ -30,7 +30,9 @@ void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoords();
 
 CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad);
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint32 *town_acc = NULL);
+
+void UpdateStationAcceptance(Station *st, bool show_msg);
 
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);

@@ -159,7 +159,7 @@ public:
 		td.grf = NULL;
 
 		CargoArray acceptance;
-		AddAcceptedCargo(tile, acceptance);
+		AddAcceptedCargo(tile, acceptance, NULL);
 		GetTileDesc(tile, &td);
 
 		uint line_nr = 0;

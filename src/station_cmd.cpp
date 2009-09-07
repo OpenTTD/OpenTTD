@@ -510,10 +510,12 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param w X extent of area
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
+ * @param town_acc bitmask of cargo accepted by houses and headquarters; can be NULL
  */
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint32 *town_acc)
 {
 	CargoArray acceptance;
+	if (town_acc != NULL) *town_acc = 0;
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -533,7 +535,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad)
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
-			AddAcceptedCargo(tile, acceptance);
+			AddAcceptedCargo(tile, acceptance, town_acc);
 		}
 	}
 
@@ -544,7 +546,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param st Station to update
  * @param show_msg controls whether to display a message that acceptance was changed.
  */
-static void UpdateStationAcceptance(Station *st, bool show_msg)
+void UpdateStationAcceptance(Station *st, bool show_msg)
 {
 	/* old accepted goods types */
 	uint old_acc = GetAcceptanceMask(st);
@@ -556,7 +558,8 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 			TileXY(st->rect.left, st->rect.top),
 			st->rect.right  - st->rect.left + 1,
 			st->rect.bottom - st->rect.top  + 1,
-			st->GetCatchmentRadius()
+			st->GetCatchmentRadius(),
+			&st->town_acc
 		);
 	}
 

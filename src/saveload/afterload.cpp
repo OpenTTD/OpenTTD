@@ -1946,6 +1946,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(127)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) UpdateStationAcceptance(st, false);
+	}
+
 	AfterLoadLabelMaps();
 
 	GamelogPrintDebug(1);
