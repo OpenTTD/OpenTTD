@@ -190,6 +190,8 @@ struct DropdownWindow : Window {
 	virtual void OnTick()
 	{
 		this->vscroll.UpdatePosition(this->scrolling);
+		this->scrolling = 0;
+		this->SetDirty();
 	}
 
 	virtual void OnMouseLoop()
