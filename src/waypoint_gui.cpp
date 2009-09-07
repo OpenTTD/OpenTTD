@@ -67,7 +67,7 @@ public:
 
 	~WaypointWindow()
 	{
-		DeleteWindowById(WC_TRAINS_LIST, (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | this->wp->owner);
+		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | this->wp->owner);
 	}
 
 	virtual void SetStringParameters(int widget) const
