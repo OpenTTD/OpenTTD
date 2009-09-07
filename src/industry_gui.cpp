@@ -803,9 +803,10 @@ protected:
 			this->industries.RebuildDone();
 			this->vscroll.SetCount(this->industries.Length()); // Update scrollbar as well.
 		}
-		this->last_industry = NULL;
-		this->industries.Sort();
-		this->InvalidateWidget(IDW_INDUSTRY_LIST);
+
+		if (!this->industries.Sort()) return;
+		IndustryDirectoryWindow::last_industry = NULL; // Reset name sorter sort cache
+		this->InvalidateWidget(IDW_INDUSTRY_LIST); // Set the modified widget dirty
 	}
 
 	/**
@@ -1045,7 +1046,7 @@ public:
 	{
 		if (this->industries.SortType() != index) {
 			this->industries.SetSortType(index);
-			this->SetDirty();
+			this->BuildSortIndustriesList();
 		}
 	}
 
@@ -1056,8 +1057,8 @@ public:
 
 	virtual void OnHundredthTick()
 	{
+		this->industries.ForceResort();
 		this->BuildSortIndustriesList();
-		this->SetDirty();
 	}
 
 	virtual void OnInvalidateData(int data)
