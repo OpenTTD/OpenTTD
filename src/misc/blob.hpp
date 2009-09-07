@@ -307,9 +307,10 @@ public:
 	/** all deallocations should happen here */
 	static FORCEINLINE void RawFree(CHdr *p)
 	{
-		/* Just to silence an unsilencable GCC 4.4+ warning */
+		/* Just to silence an unsilencable GCC 4.4+ warning. */
 		assert(p != CBlobBaseSimple::hdrEmpty);
 
+		/* In case GCC warns about the following, see GCC's PR38509 why it is bogus. */
 		free(p);
 	}
 	/** fixing the four bytes at the end of blob data - useful when blob is used to hold string */
