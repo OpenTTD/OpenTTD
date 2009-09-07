@@ -1442,8 +1442,8 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 			if (v != NULL) FreeTrainTrackReservation(v);
 		}
 
-		DoClearSquare(tile);
 		delete Depot::GetByTile(tile);
+		DoClearSquare(tile);
 		AddSideToSignalBuffer(tile, dir, owner);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 		if (v != NULL) TryPathReserve(v, true);
