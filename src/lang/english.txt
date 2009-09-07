@@ -1840,7 +1840,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Maglev C
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railway track. Ctrl toggles build/remove for railway construction
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railway track using the Autorail mode. Ctrl toggles build/remove for railway construction
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for building and servicing trains)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for buying and servicing trains)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convert rail to waypoint. Ctrl enables joining waypoints
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railway station. Ctrl enables joining stations
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build railway signals. Ctrl toggles semaphore/light signals{}Dragging builds signals along a straight stretch of rail. Ctrl builds signals till the next junction{}Ctrl+Click toggles opening the signal selection window
@@ -1915,8 +1915,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Build ro
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Build tramway section. Ctrl toggles build/remove for tramway construction
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Build road section using the Autoroad mode. Ctrl toggles build/remove for road construction
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Build tramway section using the Autotram mode. Ctrl toggles build/remove for tramway construction
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for building and servicing vehicles)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build tram vehicle depot (for building and servicing vehicles)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for buying and servicing vehicles)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build tram vehicle depot (for buying and servicing vehicles)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl enables joining stations
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Build passenger tram station. Ctrl enables joining stations
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build lorry loading bay. Ctrl enables joining stations
@@ -1950,7 +1950,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterway
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterways
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Build canals.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Build locks
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build ship depot (for building and servicing ships)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build ship depot (for buying and servicing ships)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Build ship dock. Ctrl enables joining stations
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Place a buoy which can be used as a waypoint
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Build aqueduct
@@ -2662,15 +2662,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Road veh
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Ship selection list - click on ship for information
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aircraft selection list - click on aircraft for information
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Build Vehicle
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Build Vehicle
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Build Ship
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Build Aircraft
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Buy Vehicle
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Buy Vehicle
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Buy Ship
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Buy Aircraft
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Build the highlighted train vehicle
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Build the highlighted road vehicle
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Build the highlighted ship
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Build the highlighted aircraft
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Buy the highlighted train vehicle
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Buy the highlighted road vehicle
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Buy the highlighted ship
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Buy the highlighted aircraft
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Rename
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Rename
@@ -2725,20 +2725,20 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}New Vehi
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}New Ships
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}New Aircraft
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Build new train vehicle
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Build new road vehicle
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Build new ship
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Build new aircraft
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Buy new train vehicle
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Buy new road vehicle
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Buy new ship
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Buy new aircraft
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clone Train
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clone Vehicle
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clone Ship
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clone Aircraft
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click share the orders
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will will share the orders
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}This will buy a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click share the orders
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}This will buy a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will will share the orders
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}This will buy a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}This will buy a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centre main view on train depot location. Ctrl+Click opens a new viewport on train depot location
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centre main view on road vehicle depot location. Ctrl+Click opens a new viewport on road depot location
@@ -2821,10 +2821,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send veh
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ship to depot. Ctrl+Click will only service
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send aircraft to hangar. Ctrl+Click will only service
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}This will build a copy of the train including all cars. Ctrl+Click will share the orders
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}This will build a copy of the road vehicle. Ctrl+Click will share the orders
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}This will build a copy of the ship. Ctrl+Click will share the orders
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}This will build a copy of the aircraft. Ctrl+Click will share the orders
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}This will buy a copy of the train including all cars. Ctrl+Click will share the orders
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}This will buy a copy of the road vehicle. Ctrl+Click will share the orders
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}This will buy a copy of the ship. Ctrl+Click will share the orders
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}This will buy a copy of the aircraft. Ctrl+Click will share the orders
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Force train to proceed without waiting for signal to clear it
 
@@ -3471,10 +3471,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Can't se
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Can't send ship to depot...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Can't send aircraft to hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Can't build railway vehicle...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Can't build road vehicle...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Can't build ship...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Can't build aircraft...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Can't buy railway vehicle...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Can't buy road vehicle...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Can't buy ship...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Can't buy aircraft...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Can't rename train vehicle type...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Can't rename road vehicle type...
