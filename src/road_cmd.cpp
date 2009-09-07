@@ -886,8 +886,8 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		DoClearSquare(tile);
 		delete GetDepotByTile(tile);
+		DoClearSquare(tile);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_road_depot);

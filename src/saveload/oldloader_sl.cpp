@@ -594,7 +594,8 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 {
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
-	new (num) Order(UnpackOldOrder(_old_order));
+	Order *o = new (num) Order();
+	o->AssignOrder(UnpackOldOrder(_old_order));
 
 	/* Relink the orders to eachother (in the orders for one vehicle are behind eachother,
 	 * with an invalid order (OT_NOTHING) as indication that it is the last order */

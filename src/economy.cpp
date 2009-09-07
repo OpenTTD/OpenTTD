@@ -671,9 +671,18 @@ static void CompaniesPayInterest()
 
 static void HandleEconomyFluctuations()
 {
-	if (_settings_game.difficulty.economy == 0) return;
+	if (_settings_game.difficulty.economy != 0) {
+		/* When economy is Fluctuating, decrease counter */
+		_economy.fluct--;
+	} else if (_economy.fluct <= 0) {
+		/* When it's Steady and we are in recession, end it now */
+		_economy.fluct = -12;
+	} else {
+		/* No need to do anything else in other cases */
+		return;
+	}
 
-	if (--_economy.fluct == 0) {
+	if (_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
 		AddNewsItem(STR_7073_WORLD_RECESSION_FINANCIAL, NS_ECONOMY, 0, 0);
 	} else if (_economy.fluct == -12) {

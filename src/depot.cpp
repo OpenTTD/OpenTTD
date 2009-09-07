@@ -10,6 +10,7 @@
 #include "core/bitmath_func.hpp"
 #include "tile_map.h"
 #include "water_map.h"
+#include "vehicle_gui.h"
 
 DEFINE_OLD_POOL_GENERIC(Depot, Depot)
 
@@ -48,6 +49,16 @@ Depot::~Depot()
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
+
+	/* Delete the depot list */
+	WindowNumber wno = (this->index << 16) | VLW_DEPOT_LIST | GetTileOwner(this->xy);
+	switch (GetTileType(this->xy)) {
+		default: break; // It can happen there is no depot here anymore (TTO/TTD savegames)
+		case MP_RAILWAY: DeleteWindowById(WC_TRAINS_LIST,  wno | (VEH_TRAIN << 11)); break;
+		case MP_ROAD:    DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD  << 11)); break;
+		case MP_WATER:   DeleteWindowById(WC_SHIPS_LIST,   wno | (VEH_SHIP  << 11)); break;
+	}
+
 	this->xy = INVALID_TILE;
 }
 
