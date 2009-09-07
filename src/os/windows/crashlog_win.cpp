@@ -9,38 +9,101 @@
 
 /** @file crashlog_win.cpp Implementation of a crashlogger for Windows */
 
-#if defined(WIN32_EXCEPTION_TRACKER)
-
 #include "../../stdafx.h"
+#include "../../crashlog.h"
 #include "win32.h"
 #include "../../core/alloc_func.hpp"
+#include "../../core/math_func.hpp"
 #include "../../string_func.h"
-#include "../../gamelog.h"
-#include "../../saveload/saveload.h"
 #include "../../fileio_func.h"
-#include "../../rev.h"
 #include "../../strings_func.h"
 
 #include <windows.h>
-#include <dbghelp.h>
 
-static const char *_exception_string = NULL;
-void SetExceptionString(const char *s, ...)
+/**
+ * Windows implementation for the crash logger.
+ */
+class CrashLogWindows : public CrashLog {
+	/** Information about the encountered exception */
+	EXCEPTION_POINTERS *ep;
+
+	/* virtual */ char *LogOSVersion(char *buffer, const char *last) const;
+	/* virtual */ char *LogError(char *buffer, const char *last, const char *message) const;
+	/* virtual */ char *LogStacktrace(char *buffer, const char *last) const;
+	/* virtual */ char *LogRegisters(char *buffer, const char *last) const;
+	/* virtual */ char *LogModules(char *buffer, const char *last) const;
+public:
+#if defined(_MSC_VER)
+	/* virtual */ int WriteCrashDump(char *filename, const char *filename_last) const;
+#endif /* _MSC_VER */
+
+	/** Buffer for the generated crash log */
+	char crashlog[65536];
+	/** Buffer for the filename of the crash log */
+	char crashlog_filename[MAX_PATH];
+	/** Buffer for the filename of the crash dump */
+	char crashdump_filename[MAX_PATH];
+
+	/**
+	 * A crash log is always generated when it's generated.
+	 * @param ep the data related to the exception.
+	 */
+	CrashLogWindows(EXCEPTION_POINTERS *ep = NULL) :
+		ep(ep)
+	{
+		this->crashlog[0] = '\0';
+		this->crashlog_filename[0] = '\0';
+		this->crashdump_filename[0] = '\0';
+	}
+
+	/**
+	 * Points to the current crash log.
+	 */
+	static CrashLogWindows *current;
+};
+
+/* static */ CrashLogWindows *CrashLogWindows::current = NULL;
+
+/* virtual */ char *CrashLogWindows::LogOSVersion(char *buffer, const char *last) const
 {
-	va_list va;
-	char buf[512];
+	_OSVERSIONINFOA os;
+	os.dwOSVersionInfoSize = sizeof(os);
+	GetVersionExA(&os);
 
-	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
-	va_end(va);
+	return buffer + seprintf(buffer, last,
+			"Operating system:\n"
+			" Name:    Windows\n"
+			" Release: %d.%d.%d (%s)\n"
+			" MSVC:    %s\n\n",
+			(int)os.dwMajorVersion,
+			(int)os.dwMinorVersion,
+			(int)os.dwBuildNumber,
+			os.szCSDVersion,
+#if defined(_MSC_VER)
+			"Yes"
+#else
+			"No"
+#endif
+	);
 
-	_exception_string = strdup(buf);
 }
 
-static void *_safe_esp;
-static char *_crash_msg;
-static bool _expanded;
-static bool _did_emerg_save;
+/* virtual */ char *CrashLogWindows::LogError(char *buffer, const char *last, const char *message) const
+{
+	return buffer + seprintf(buffer, last,
+			"Crash reason:\n"
+			" Exception: %.8X\n"
+#ifdef _M_AMD64
+			" Location:  %.16IX\n"
+#else
+			" Location:  %.8X\n"
+#endif
+			" Message:   %s\n\n",
+			(int)ep->ExceptionRecord->ExceptionCode,
+			(size_t)ep->ExceptionRecord->ExceptionAddress,
+			message == NULL ? "<none>" : message
+	);
+}
 
 struct DebugFileInfo {
 	uint32 size;
@@ -112,7 +175,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
-	output += seprintf(output, last, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
+	output += seprintf(output, last, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\n",
 		WIDE_TO_MB(buffer),
 		mod,
 		dfi.size,
@@ -127,9 +190,12 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	return output;
 }
 
-static char *PrintModuleList(char *output, const char *last)
+/* virtual */ char *CrashLogWindows::LogModules(char *output, const char *last) const
 {
+	MakeCRCTable(AllocaM(uint32, 256));
 	BOOL (WINAPI *EnumProcessModules)(HANDLE, HMODULE*, DWORD, LPDWORD);
+
+	output += seprintf(output, last, "Module information:\n");
 
 	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0\0")) {
 		HMODULE modules[100];
@@ -144,13 +210,210 @@ static char *PrintModuleList(char *output, const char *last)
 				size_t count = min(needed / sizeof(HMODULE), lengthof(modules));
 
 				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
-				return output;
+				return output + seprintf(output, last, "\n");
 			}
 		}
 	}
 	output = PrintModuleInfo(output, last, NULL);
-	return output;
+	return output + seprintf(output, last, "\n");
 }
+
+/* virtual */ char *CrashLogWindows::LogRegisters(char *buffer, const char *last) const
+{
+	buffer += seprintf(buffer, last, "Registers:\n");
+#ifdef _M_AMD64
+	buffer += seprintf(buffer, last,
+		"Registers:\n"
+		" RAX: %.16llX RBX: %.16llX RCX: %.16llX RDX: %.16llX\n"
+		" RSI: %.16llX RDI: %.16llX RBP: %.16llX RSP: %.16llX\n"
+		" R8:  %.16llX R9:  %.16llX R10: %.16llX R11: %.16llX\n"
+		" R12: %.16llX R13: %.16llX R14: %.16llX R15: %.16llX\n"
+		" RIP: %.16llX EFLAGS: %.8X\n",
+		ep->ContextRecord->Rax,
+		ep->ContextRecord->Rbx,
+		ep->ContextRecord->Rcx,
+		ep->ContextRecord->Rdx,
+		ep->ContextRecord->Rsi,
+		ep->ContextRecord->Rdi,
+		ep->ContextRecord->Rbp,
+		ep->ContextRecord->Rsp,
+		ep->ContextRecord->R8,
+		ep->ContextRecord->R9,
+		ep->ContextRecord->R10,
+		ep->ContextRecord->R11,
+		ep->ContextRecord->R12,
+		ep->ContextRecord->R13,
+		ep->ContextRecord->R14,
+		ep->ContextRecord->R15,
+		ep->ContextRecord->Rip,
+		ep->ContextRecord->EFlags
+	);
+#else
+	buffer += seprintf(buffer, last,
+		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\n"
+		" ESI: %.8X EDI: %.8X EBP: %.8X ESP: %.8X\n"
+		" EIP: %.8X EFLAGS: %.8X\n",
+		(int)ep->ContextRecord->Eax,
+		(int)ep->ContextRecord->Ebx,
+		(int)ep->ContextRecord->Ecx,
+		(int)ep->ContextRecord->Edx,
+		(int)ep->ContextRecord->Esi,
+		(int)ep->ContextRecord->Edi,
+		(int)ep->ContextRecord->Ebp,
+		(int)ep->ContextRecord->Esp,
+		(int)ep->ContextRecord->Eip,
+		(int)ep->ContextRecord->EFlags
+	);
+#endif
+
+	buffer += seprintf(buffer, last, "\n Bytes at instruction pointer:\n");
+#ifdef _M_AMD64
+	byte *b = (byte*)ep->ContextRecord->Rip;
+#else
+	byte *b = (byte*)ep->ContextRecord->Eip;
+#endif
+	for (int i = 0; i != 24; i++) {
+		if (IsBadReadPtr(b, 1)) {
+			buffer += seprintf(buffer, last, " ??"); // OCR: WAS: , 0);
+		} else {
+			buffer += seprintf(buffer, last, " %.2X", *b);
+		}
+		b++;
+	}
+	return buffer + seprintf(buffer, last, "\n\n");
+}
+
+/* virtual */ char *CrashLogWindows::LogStacktrace(char *buffer, const char *last) const
+{
+	buffer += seprintf(buffer, last, "Stack trace:\n");
+#ifdef _M_AMD64
+	uint32 *b = (uint32*)ep->ContextRecord->Rsp;
+#else
+	uint32 *b = (uint32*)ep->ContextRecord->Esp;
+#endif
+	for (int j = 0; j != 24; j++) {
+		for (int i = 0; i != 8; i++) {
+			if (IsBadReadPtr(b, sizeof(uint32))) {
+				buffer += seprintf(buffer, last, " ????????"); // OCR: WAS - , 0);
+			} else {
+				buffer += seprintf(buffer, last, " %.8X", *b);
+			}
+			b++;
+		}
+		buffer += seprintf(buffer, last, "\n");
+	}
+	return buffer + seprintf(buffer, last, "\n");
+}
+
+#if defined(_MSC_VER)
+#include <dbghelp.h>
+
+/* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const
+{
+	int ret = 0;
+	HMODULE dbghelp = LoadLibrary(_T("dbghelp.dll"));
+	if (dbghelp != NULL) {
+		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
+				MINIDUMP_TYPE,
+				CONST PMINIDUMP_EXCEPTION_INFORMATION,
+				CONST PMINIDUMP_USER_STREAM_INFORMATION,
+				CONST PMINIDUMP_CALLBACK_INFORMATION);
+		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
+		if (funcMiniDumpWriteDump != NULL) {
+			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir);
+			HANDLE file  = CreateFile(OTTD2FS(filename), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+			HANDLE proc  = GetCurrentProcess();
+			DWORD procid = GetCurrentProcessId();
+			MINIDUMP_EXCEPTION_INFORMATION mdei;
+			MINIDUMP_USER_STREAM userstream;
+			MINIDUMP_USER_STREAM_INFORMATION musi;
+
+			userstream.Type        = LastReservedStream + 1;
+			userstream.Buffer      = (void*)this->crashlog;
+			userstream.BufferSize  = (ULONG)strlen(this->crashlog) + 1;
+
+			musi.UserStreamCount   = 1;
+			musi.UserStreamArray   = &userstream;
+
+			mdei.ThreadId = GetCurrentThreadId();
+			mdei.ExceptionPointers  = ep;
+			mdei.ClientPointers     = false;
+
+			funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, NULL);
+			ret = 1;
+		} else {
+			ret = -1;
+		}
+		FreeLibrary(dbghelp);
+	}
+	return ret;
+}
+#endif /* _MSC_VER */
+
+extern bool CloseConsoleLogIfActive();
+static void ShowCrashlogWindow();
+
+/**
+ * Stack pointer for use when 'starting' the crash handler.
+ * Not static as gcc's inline assembly needs it that way.
+ */
+void *_safe_esp = NULL;
+
+static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
+{
+	if (CrashLogWindows::current != NULL) {
+		CrashLog::AfterCrashLogCleanup();
+		ExitProcess(2);
+	}
+
+	CrashLogWindows *log = new CrashLogWindows(ep);
+	CrashLogWindows::current = log;
+	log->FillCrashLog(log->crashlog, lastof(log->crashlog));
+	log->WriteCrashLog(log->crashlog, log->crashlog_filename, lastof(log->crashlog_filename));
+	log->WriteCrashDump(log->crashdump_filename, lastof(log->crashdump_filename));
+
+	/* Close any possible log files */
+	CloseConsoleLogIfActive();
+
+	if (_safe_esp) {
+#ifdef _M_AMD64
+		ep->ContextRecord->Rip = (DWORD64)ShowCrashlogWindow;
+		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
+#else
+		ep->ContextRecord->Eip = (DWORD)ShowCrashlogWindow;
+		ep->ContextRecord->Esp = (DWORD)_safe_esp;
+#endif
+		return EXCEPTION_CONTINUE_EXECUTION;
+	}
+
+	CrashLog::AfterCrashLogCleanup();
+	return EXCEPTION_EXECUTE_HANDLER;
+}
+
+#ifdef _M_AMD64
+extern "C" void *_get_safe_esp();
+#endif
+
+/* static */ void CrashLog::InitialiseCrashLog()
+{
+#if defined(_MSC_VER)
+#ifdef _M_AMD64
+	_safe_esp = _get_safe_esp();
+#else
+	_asm {
+		mov _safe_esp, esp
+	}
+#endif
+#else
+	asm("movl %esp, __safe_esp");
+#endif
+
+	SetUnhandledExceptionFilter(ExceptionHandler);
+}
+
+/* The crash log GUI */
+
+static bool _expanded;
 
 static const TCHAR _crash_desc[] =
 	_T("A serious fault condition occured in the game. The game will shut down.\n")
@@ -167,15 +430,6 @@ static const TCHAR _save_succeeded[] =
 static const TCHAR _emergency_crash[] =
 	_T("A serious fault condition occured in the game. The game will shut down.\n")
 	_T("As you loaded an emergency savegame no crash information will be generated.\n");
-
-static bool EmergencySave()
-{
-	GamelogStartAction(GLAT_EMERGENCY);
-	GamelogEmergency();
-	GamelogStopAction();
-	SaveOrLoad("crash.sav", SL_SAVE, BASE_DIR);
-	return true;
-}
 
 static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide report <<") };
 
@@ -200,18 +454,6 @@ static void SetWndSize(HWND wnd, int mode)
 	}
 }
 
-static bool DoEmergencySave(HWND wnd)
-{
-	bool b = false;
-
-	EnableWindow(GetDlgItem(wnd, 13), FALSE);
-	_did_emerg_save = true;
-	__try {
-		b = EmergencySave();
-	} __except (1) {}
-	return b;
-}
-
 static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
@@ -219,19 +461,32 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 #if defined(UNICODE)
 			/* We need to put the crash-log in a seperate buffer because the default
 			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
-			wchar_t crash_msgW[8096];
+			wchar_t crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
 #endif
+			/* Convert unix -> dos newlines because the edit box only supports that properly :( */
+			const char *unix_nl = CrashLogWindows::current->crashlog;
+			char dos_nl[lengthof(CrashLogWindows::current->crashlog)];
+			char *p = dos_nl;
+			WChar c;
+			while ((c = Utf8Consume(&unix_nl)) && p < lastof(dos_nl) - 4) { // 4 is max number of bytes per character
+				if (c == '\n') p += Utf8Encode(p, '\r');
+				p += Utf8Encode(p, c);
+			}
+			*p = '\0';
+
 			SetDlgItemText(wnd, 10, _crash_desc);
-			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(_crash_msg, crash_msgW, lengthof(crash_msgW)));
+			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(dos_nl, crash_msgW, lengthof(crash_msgW)));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 			SetWndSize(wnd, -1);
 		} return TRUE;
 		case WM_COMMAND:
 			switch (wParam) {
 				case 12: // Close
-					ExitProcess(0);
+					CrashLog::AfterCrashLogCleanup();
+					ExitProcess(2);
 				case 13: // Emergency save
-					if (DoEmergencySave(wnd)) {
+					char filename[MAX_PATH];
+					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
 						MessageBox(wnd, _save_succeeded, _T("Save successful"), MB_ICONINFORMATION);
 					} else {
 						MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
@@ -243,258 +498,17 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					break;
 			}
 			return TRUE;
-		case WM_CLOSE: ExitProcess(0);
+		case WM_CLOSE:
+			CrashLog::AfterCrashLogCleanup();
+			ExitProcess(2);
 	}
 
 	return FALSE;
 }
 
-static void Handler2()
+static void ShowCrashlogWindow()
 {
 	ShowCursor(TRUE);
 	ShowWindow(GetActiveWindow(), FALSE);
 	DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(100), NULL, CrashDialogFunc);
 }
-
-extern bool CloseConsoleLogIfActive();
-
-static HANDLE _file_crash_log;
-
-static void GamelogPrintCrashLogProc(const char *s)
-{
-	DWORD num_written;
-	WriteFile(_file_crash_log, s, (DWORD)strlen(s), &num_written, NULL);
-	WriteFile(_file_crash_log, "\r\n", (DWORD)strlen("\r\n"), &num_written, NULL);
-}
-
-/** Amount of output for the execption handler. */
-static const int EXCEPTION_OUTPUT_SIZE = 8192;
-
-static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
-{
-	char *output;
-	static bool had_exception = false;
-
-	if (had_exception) ExitProcess(0);
-	if (GamelogTestEmergency()) {
-		MessageBox(NULL, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
-		ExitProcess(0);
-	}
-	had_exception = true;
-
-	MakeCRCTable(AllocaM(uint32, 256));
-	_crash_msg = output = (char*)LocalAlloc(LMEM_FIXED, EXCEPTION_OUTPUT_SIZE);
-	const char *last = output + EXCEPTION_OUTPUT_SIZE - 1;
-
-	{
-		SYSTEMTIME time;
-		GetLocalTime(&time);
-		output += seprintf(output, last,
-			"*** OpenTTD Crash Report ***\r\n"
-			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
-			"Build: %s (%d) built on %s\r\n",
-			time.wYear,
-			time.wMonth,
-			time.wDay,
-			time.wHour,
-			time.wMinute,
-			time.wSecond,
-			_openttd_revision,
-			_openttd_revision_modified,
-			_openttd_build_date
-		);
-	}
-
-	if (_exception_string)
-		output += seprintf(output, last, "Reason: %s\r\n", _exception_string);
-
-	output += seprintf(output, last, "Language: %s\r\n", _dynlang.curr_file);
-
-#ifdef _M_AMD64
-	output += seprintf(output, last, "Exception %.8X at %.16IX\r\n"
-		"Registers:\r\n"
-		"RAX: %.16llX RBX: %.16llX RCX: %.16llX RDX: %.16llX\r\n"
-		"RSI: %.16llX RDI: %.16llX RBP: %.16llX RSP: %.16llX\r\n"
-		"R8:  %.16llX R9:  %.16llX R10: %.16llX R11: %.16llX\r\n"
-		"R12: %.16llX R13: %.16llX R14: %.16llX R15: %.16llX\r\n"
-		"RIP: %.16llX EFLAGS: %.8X\r\n"
-		"\r\nBytes at CS:RIP:\r\n",
-		ep->ExceptionRecord->ExceptionCode,
-		ep->ExceptionRecord->ExceptionAddress,
-		ep->ContextRecord->Rax,
-		ep->ContextRecord->Rbx,
-		ep->ContextRecord->Rcx,
-		ep->ContextRecord->Rdx,
-		ep->ContextRecord->Rsi,
-		ep->ContextRecord->Rdi,
-		ep->ContextRecord->Rbp,
-		ep->ContextRecord->Rsp,
-		ep->ContextRecord->R8,
-		ep->ContextRecord->R9,
-		ep->ContextRecord->R10,
-		ep->ContextRecord->R11,
-		ep->ContextRecord->R12,
-		ep->ContextRecord->R13,
-		ep->ContextRecord->R14,
-		ep->ContextRecord->R15,
-		ep->ContextRecord->Rip,
-		ep->ContextRecord->EFlags
-	);
-#else
-	output += seprintf(output, last, "Exception %.8X at %.8p\r\n"
-		"Registers:\r\n"
-		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\r\n"
-		" ESI: %.8X EDI: %.8X EBP: %.8X ESP: %.8X\r\n"
-		" EIP: %.8X EFLAGS: %.8X\r\n"
-		"\r\nBytes at CS:EIP:\r\n",
-		ep->ExceptionRecord->ExceptionCode,
-		ep->ExceptionRecord->ExceptionAddress,
-		ep->ContextRecord->Eax,
-		ep->ContextRecord->Ebx,
-		ep->ContextRecord->Ecx,
-		ep->ContextRecord->Edx,
-		ep->ContextRecord->Esi,
-		ep->ContextRecord->Edi,
-		ep->ContextRecord->Ebp,
-		ep->ContextRecord->Esp,
-		ep->ContextRecord->Eip,
-		ep->ContextRecord->EFlags
-	);
-#endif
-
-	{
-#ifdef _M_AMD64
-		byte *b = (byte*)ep->ContextRecord->Rip;
-#else
-		byte *b = (byte*)ep->ContextRecord->Eip;
-#endif
-		int i;
-		for (i = 0; i != 24; i++) {
-			if (IsBadReadPtr(b, 1)) {
-				output += seprintf(output, last, " ??"); // OCR: WAS: , 0);
-			} else {
-				output += seprintf(output, last, " %.2X", *b);
-			}
-			b++;
-		}
-		output += seprintf(output, last,
-			"\r\n"
-			"\r\nStack trace: \r\n"
-		);
-	}
-
-	{
-		int i, j;
-#ifdef _M_AMD64
-		uint32 *b = (uint32*)ep->ContextRecord->Rsp;
-#else
-		uint32 *b = (uint32*)ep->ContextRecord->Esp;
-#endif
-		for (j = 0; j != 24; j++) {
-			for (i = 0; i != 8; i++) {
-				if (IsBadReadPtr(b, sizeof(uint32))) {
-					output += seprintf(output, last, " ????????"); // OCR: WAS - , 0);
-				} else {
-					output += seprintf(output, last, " %.8X", *b);
-				}
-				b++;
-			}
-			output += seprintf(output, last, "\r\n");
-		}
-	}
-
-	output += seprintf(output, last, "\r\nModule information:\r\n");
-	output = PrintModuleList(output, last);
-
-	{
-		_OSVERSIONINFOA os;
-		os.dwOSVersionInfoSize = sizeof(os);
-		GetVersionExA(&os);
-		output += seprintf(output, last, "\r\nSystem information:\r\n"
-			" Windows version %d.%d %d %s\r\n\r\n",
-			os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
-	}
-
-	_file_crash_log = CreateFile(_T("crash.log"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
-
-	if (_file_crash_log != INVALID_HANDLE_VALUE) {
-		DWORD num_written;
-		WriteFile(_file_crash_log, _crash_msg, output - _crash_msg, &num_written, NULL);
-	}
-
-#if !defined(_DEBUG)
-	HMODULE dbghelp = LoadLibrary(_T("dbghelp.dll"));
-	if (dbghelp != NULL) {
-		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
-				MINIDUMP_TYPE,
-				CONST PMINIDUMP_EXCEPTION_INFORMATION,
-				CONST PMINIDUMP_USER_STREAM_INFORMATION,
-				CONST PMINIDUMP_CALLBACK_INFORMATION);
-		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
-		if (funcMiniDumpWriteDump != NULL) {
-			HANDLE file  = CreateFile(_T("crash.dmp"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
-			HANDLE proc  = GetCurrentProcess();
-			DWORD procid = GetCurrentProcessId();
-			MINIDUMP_EXCEPTION_INFORMATION mdei;
-			MINIDUMP_USER_STREAM userstream;
-			MINIDUMP_USER_STREAM_INFORMATION musi;
-			char msg[64];
-			seprintf(msg, lastof(msg), "****** Built on %s. ******", _openttd_build_date);
-
-			userstream.Type        = LastReservedStream + 1;
-			userstream.Buffer      = msg;
-			userstream.BufferSize  = sizeof(msg);
-
-			musi.UserStreamCount   = 1;
-			musi.UserStreamArray   = &userstream;
-
-			mdei.ThreadId = GetCurrentThreadId();
-			mdei.ExceptionPointers  = ep;
-			mdei.ClientPointers     = false;
-
-			funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, NULL);
-		}
-		FreeLibrary(dbghelp);
-	}
-#endif
-
-	if (_file_crash_log != INVALID_HANDLE_VALUE) {
-		GamelogPrint(&GamelogPrintCrashLogProc);
-		CloseHandle(_file_crash_log);
-	}
-
-	/* Close any possible log files */
-	CloseConsoleLogIfActive();
-
-	if (_safe_esp) {
-#ifdef _M_AMD64
-		ep->ContextRecord->Rip = (DWORD64)Handler2;
-		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
-#else
-		ep->ContextRecord->Eip = (DWORD)Handler2;
-		ep->ContextRecord->Esp = (DWORD)_safe_esp;
-#endif
-		return EXCEPTION_CONTINUE_EXECUTION;
-	}
-
-
-	return EXCEPTION_EXECUTE_HANDLER;
-}
-
-#ifdef _M_AMD64
-extern "C" void *_get_safe_esp();
-#endif
-
-void Win32InitializeExceptions()
-{
-#ifdef _M_AMD64
-	_safe_esp = _get_safe_esp();
-#else
-	_asm {
-		mov _safe_esp, esp
-	}
-#endif
-
-	SetUnhandledExceptionFilter(ExceptionHandler);
-}
-#endif /* WIN32_EXCEPTION_TRACKER */

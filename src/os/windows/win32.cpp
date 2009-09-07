@@ -23,6 +23,7 @@
 #include "../../functions.h"
 #include "../../core/random_func.hpp"
 #include "../../string_func.h"
+#include "../../crashlog.h"
 #include <errno.h>
 #include <sys/stat.h>
 
@@ -72,14 +73,6 @@ void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
-
-	/* If exception tracker is enabled, we crash here to let the exception handler handle it. */
-#if defined(WIN32_EXCEPTION_TRACKER) && defined(NDEBUG)
-	if (system) {
-		SetExceptionString("%s", buf);
-		*(byte*)0 = 0;
-	}
-#endif
 }
 
 /* Code below for windows version of opendir/readdir/closedir copied and
@@ -354,6 +347,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	_codepage = GetACP(); // get system codepage as some kind of a default
 #endif /* UNICODE */
 
+	CrashLog::InitialiseCrashLog();
+
 #if defined(UNICODE)
 
 #if !defined(WINCE)
@@ -381,11 +376,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	SetRandomSeed(GetTickCount());
 
 	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
-
-#if defined(WIN32_EXCEPTION_TRACKER)
-	void Win32InitializeExceptions();
-	Win32InitializeExceptions();
-#endif
 
 	ttd_main(argc, argv);
 	return 0;

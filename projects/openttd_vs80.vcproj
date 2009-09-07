@@ -496,6 +496,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\crashlog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\command.cpp"
 				>
 			</File>
@@ -853,6 +857,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\cmd_helper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\crashlog.h"
 				>
 			</File>
 			<File

@@ -230,12 +230,9 @@
 	#endif
 
 
-	#if defined(WIN32_EXCEPTION_TRACKER)
-		void SetExceptionString(const char *s, ...) WARN_FORMAT(1, 2);
-		#if defined(NDEBUG) && defined(WITH_ASSERT)
-			#undef assert
-			#define assert(expression) if (!(expression)) { SetExceptionString("Assertion failed at %s:%d: %s", __FILE__, __LINE__, #expression); *(byte*)0 = 0; }
-		#endif
+	#if defined(NDEBUG) && defined(WITH_ASSERT)
+		#undef assert
+		#define assert(expression) if (!(expression)) error("Assertion failed at line %i of %s: %s", __LINE__, __FILE__, #expression);
 	#endif
 
 	/* MSVC doesn't have these :( */

@@ -9,6 +9,7 @@ callback_table.cpp
 cargopacket.cpp
 cargotype.cpp
 cheat.cpp
+crashlog.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
@@ -118,6 +119,7 @@ cargotype.h
 cheat_func.h
 cheat_type.h
 cmd_helper.h
+crashlog.h
 command_func.h
 command_type.h
 company_base.h
