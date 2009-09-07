@@ -2610,15 +2610,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefierer we
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Eng Grupp ëmbenennen
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nei Zich
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nei Elektrozich
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nei Monorailgefierer
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nei Magnéitbunngefierer
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nei Zich
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nei Elektrozich
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nei Monorailgefierer
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nei Magnéitbunngefierer
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Zich
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nei Stroossengefierer
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nei Schëffer
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neien Fliger
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Zich
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nei Stroossengefierer
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nei Schëffer
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Neien Fliger
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Gewiicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Kraaft: {GOLD}{POWER}
@@ -2638,30 +2638,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :All Typ Wueren
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles ausser {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zéikraaft: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Fligerlëscht - Klickt op den Fliger fir Informatiounen
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Fligerlëscht - Klickt op den Fliger fir Informatiounen
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Gefiert bauen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Gefiert bauen
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schëff bauen
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Fliger bauen
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Gefiert bauen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Gefiert bauen
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schëff bauen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Fliger bauen
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Baut den ungewielten Zuch
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Baut dat ungewieltent Stroossengefiert
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Baut dat ungewielten Schëff
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Baut den ungewielten Fliger
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Baut den ungewielten Zuch
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Baut dat ungewieltent Stroossengefiert
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Baut dat ungewielten Schëff
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Baut den ungewielten Fliger
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ëmbenennen
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ëmbenennen
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ëmbenennen
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Ëmbenennen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Ëmbenennen
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Gefierttyp ëmbenennen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Gefierttyp ëmbenennen
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Schëffstyp ëmbenennen
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Fligertyp ëmbenennen
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Gefierttyp ëmbenennen
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Gefierttyp ëmbenennen
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Schëffstyp ëmbenennen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Fligertyp ëmbenennen
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zuchgefierttyp ëmbenennen
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gefiertentyp ëmbenennen
@@ -3447,10 +3447,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kann d'G
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kann d'Schëff net an den Depot schécken...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kann den Fliger net an den Hangar schécken...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kann den Zuch net bauen...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kann d'Stroossengefiert hei net bauen...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kann Schëff net bauen...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kann den Fliger net bauen...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kann den Zuch net bauen...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kann d'Stroossengefiert hei net bauen...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kann Schëff net bauen...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kann den Fliger net bauen...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kann den Zuchgefierttyp net ëmbenennen...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kann den Gefierttyp net ëmbenennen...

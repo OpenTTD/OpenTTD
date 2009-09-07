@@ -2569,15 +2569,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :すべての車
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新規鉄道車両
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新規電動鉄道車両
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}新規モノレール車両
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}新規磁気浮上式鉄道車両
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}新規鉄道車両
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}新規電動鉄道車両
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}新規モノレール車両
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}新規磁気浮上式鉄道車両
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}鉄道車両
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}新規道路車両
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}新規船舶
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}新規飛行機
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}鉄道車両
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}新規道路車両
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}新規船舶
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}新規飛行機
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}価格：{GOLD}{CURRENCY}{BLACK}　重量：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最大速度：{GOLD}{VELOCITY}{BLACK}　出力：{GOLD}{POWER}
@@ -2597,30 +2597,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :すべて
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}を除いてすべて
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列車のリスト - 情報を見るには列車をクリックします
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飛行機のリスト - 情報を見るには飛行機をクリックします
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車のリスト - 情報を見るには列車をクリックします
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飛行機のリスト - 情報を見るには飛行機をクリックします
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}車両を購入
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}車両を購入
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}船舶を購入
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}飛行機を購入
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}車両を購入
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}車両を購入
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}船舶を購入
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}飛行機を購入
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}選択した車両を購入
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}選択した道路車両を購入します
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}選択した船舶を購入
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}選択した飛行機を購入
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}選択した車両を購入
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}選択した道路車両を購入します
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}選択した船舶を購入
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}選択した飛行機を購入
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}名称を変更
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}名称変更
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}名称を変更
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}名称を変更
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}名称を変更
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}名称変更
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}名称を変更
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}名称を変更
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}鉄道車両の名称を変更
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}道路車両の名称を変更
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}船舶名を変更
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}飛行機の名称を変更
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}鉄道車両の名称を変更
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}道路車両の名称を変更
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}船舶名を変更
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}飛行機の名称を変更
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}鉄道車両の名称を変更
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}道路車両の名称を変更
@@ -3390,10 +3390,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}船舶を造船所へ回送できません...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}飛行機を格納庫へ回送できません...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}鉄道車両が購入できません...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}道路車両が購入できません...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}船舶が購入できません...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}飛行機を購入できません...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}鉄道車両が購入できません...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}道路車両が購入できません...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}船舶が購入できません...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}飛行機を購入できません...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}鉄道車両の名称を変更できません...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}道路車両の名称を変更できません...

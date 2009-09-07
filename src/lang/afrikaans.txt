@@ -2509,15 +2509,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwyder alle v
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem groep
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nuwe Spoor Voertuie
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nuwe Elektries Spoor Voertuie
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nuwe Eenspoor Voertuie
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nuwe Maglev Voertuie
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nuwe Spoor Voertuie
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nuwe Elektries Spoor Voertuie
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nuwe Eenspoor Voertuie
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nuwe Maglev Voertuie
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Spoorweg Voertuie
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nuwe Pad Voertuie
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nuwe Skepe
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nuwe Vliegtuig
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Spoorweg Voertuie
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nuwe Pad Voertuie
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nuwe Skepe
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nuwe Vliegtuig
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Gewig: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Spoed: {GOLD}{VELOCITY}{BLACK}   Krag: {GOLD}{POWER}
@@ -2536,30 +2536,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrag tipes
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalwe {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. Traktiewe Poging: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Trein voertuig keuse lys - kliek op voertuig vir inligting
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Pad voertuig keuse lys - kliek op voertuig vir inligting
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skip keuse lys - kliek op skip vir inligting
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Vliegtuig keuse lys - kliek op vliegtuig vir inligting
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trein voertuig keuse lys - kliek op voertuig vir inligting
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Pad voertuig keuse lys - kliek op voertuig vir inligting
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skip keuse lys - kliek op skip vir inligting
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Vliegtuig keuse lys - kliek op vliegtuig vir inligting
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Bou Voertuig
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Bou Voertuig
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bou Skip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bou Vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Bou Voertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Bou Voertuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bou Skip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bou Vliegtuig
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Bou die verlig trein voertuig
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bou die verlig pad voertuig
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bou die verlig skip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Bou die verlig vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bou die verlig trein voertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bou die verlig pad voertuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bou die verlig skip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bou die verlig vliegtuig
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Hernoem
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Hernoem
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Hernoem
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Hernoem
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Hernoem
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Hernoem
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Hernoem
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Hernoem trein voertuig tipe
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem pad voertuig tipe
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Hernoem skip tipe
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Hernoem vliegtuig tipe
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Hernoem trein voertuig tipe
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Hernoem pad voertuig tipe
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Hernoem skip tipe
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Hernoem vliegtuig tipe
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem trein voertuig tipe
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem pad voertuig tipe
@@ -3322,10 +3322,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan nie 
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan nie skip na depot stuur nie...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan nie vlietuig na hangar stuur nie...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan nie spoorweg voertuig bou nie...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan nie pad voertuig bou nie...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan nie skip bou nie...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan nie vliegtuig bou nie...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan nie spoorweg voertuig bou nie...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan nie pad voertuig bou nie...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan nie skip bou nie...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan nie vliegtuig bou nie...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Trein voertuig tipe kan nie hernoem word nie...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Pad voertuig tipe kan nie hernoem word nie...

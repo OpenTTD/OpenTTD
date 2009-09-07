@@ -2627,15 +2627,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}إعادة تسمية مجموعة
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}عربات قطار جديدة
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}عربات قطار كهربائية جديدة
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}عربات قطار احادي جديدة
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}عربات قطار ممغنط جديدة
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}عربات قطار جديدة
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}عربات قطار كهربائية جديدة
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}عربات قطار احادي جديدة
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}عربات قطار ممغنط جديدة
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}عربات قطار
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}عربات جديدة
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}سفن جديدة
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}طائرة جديدة
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}عربات قطار
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}عربات جديدة
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}سفن جديدة
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}طائرة جديدة
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK} التكلفة: {GOLD}{CURRENCY}{BLACK}   الوزن: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}السرعة: {GOLD}{VELOCITY}{BLACK} الطاقة: {GOLD}{POWER}
@@ -2655,30 +2655,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :كل انواع
 STR_PURCHASE_INFO_ALL_BUT                                       :الكل الا {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}تأثير الجذب القصى: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}قائمة اختيار القطارات - اضغط على العربة لعرض معلوماتها
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}قائمة اختيار السفن - اضغط على السفينة للتفاصيل
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}قائمة اختيار الطائرات - اضغط على الطائرة للتفاصيل
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}قائمة اختيار القطارات - اضغط على العربة لعرض معلوماتها
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}قائمة اختيار السفن - اضغط على السفينة للتفاصيل
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}قائمة اختيار الطائرات - اضغط على الطائرة للتفاصيل
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}شراء عربات
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}شراء عربة
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}شراء سفينة
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}شراء طائرة
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}شراء عربات
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}شراء عربة
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}شراء سفينة
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}شراء طائرة
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}شراء العربة الموضحة
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}شراء العربة
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}شراء السفينة المختارة
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}اشتر الطائرة المختارة
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}شراء العربة الموضحة
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}شراء العربة
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}شراء السفينة المختارة
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}اشتر الطائرة المختارة
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}اعادة تسمية
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}أعد التسمية
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}تسمية
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}اعادة تسمية
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}اعادة تسمية
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}أعد التسمية
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}تسمية
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}اعادة تسمية
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}اعادة تسمية نوع عربة القطار
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK} اعادة تسمية العربة
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}اعادة تسمية نوع السفينة
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}اعادة تسمية نوع الطائرة
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}اعادة تسمية نوع عربة القطار
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK} اعادة تسمية العربة
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}اعادة تسمية نوع السفينة
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}اعادة تسمية نوع الطائرة
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}اعادة تسمية عربات القطار
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE} اعادة تسمية العربة
@@ -3469,10 +3469,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}لا ي�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}لا يمكن ارسال السفينة الى حوض الصيانة ...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}لا يمكن ارسال الطائرة لحظيرةالصيانة
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}لايمكن بناء عربات سكة حديد ...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}لا يمكن شراء عربة ...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}لا يمكن شراء السفينة...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}لا يمكن شراء الطائرة
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}لايمكن بناء عربات سكة حديد ...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}لا يمكن شراء عربة ...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}لا يمكن شراء السفينة...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}لا يمكن شراء الطائرة
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}لا يمكن اعادة تسمية عربات القطار ...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} لايمكن اعادة تسمية العربات

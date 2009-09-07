@@ -2555,15 +2555,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεσ�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετονομασία ενός γκρουπ
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Νέα Οχήματα Σιδηρόδρομου
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Νέα Οχήματα Ηλεκτροδοτούμενου Σιδηρόδρομου
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Νέα Οχήματα Monorail
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Νέα Οχήματα Μαγνητικής Αιώρησης
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Νέα Οχήματα Σιδηρόδρομου
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Νέα Οχήματα Ηλεκτροδοτούμενου Σιδηρόδρομου
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Νέα Οχήματα Monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Νέα Οχήματα Μαγνητικής Αιώρησης
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Νέα Οχήματα Σιδηρόδρομου
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Νέα Οχήματα Δρόμου
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Νέα Πλοία
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Νέα Αεροπλάνα
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Νέα Οχήματα Σιδηρόδρομου
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Νέα Οχήματα Δρόμου
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Νέα Πλοία
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Νέα Αεροπλάνα
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY}{BLACK} Βάρος: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Ιπποδύναμη: {GOLD}{POWER}

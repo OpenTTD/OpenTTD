@@ -2629,15 +2629,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els v
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nous Trens
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nous Trens de Via Electrificada
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nous Trens Monorail
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nous Trens Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nous Trens
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nous Trens de Via Electrificada
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nous Trens Monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nous Trens Maglev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nous Vehicles sobre vies
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nous Vehicles
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nous Vaixells
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nou Avió
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nous Vehicles sobre vies
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nous Vehicles
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nous Vaixells
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nou Avió
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pes: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK} Potència: {GOLD}{POWER}
@@ -2657,30 +2657,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Totes les càrr
 STR_PURCHASE_INFO_ALL_BUT                                       :Tots menys {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esforç de Tracció: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Llista de selecció d'elements de tren - clica a l'element per més informació
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció d'elements de tren - clica a l'element per més informació
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Construeix Vehicle
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Construeix Vehicle
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construeix Vaixell
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construeix Avió
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Construeix Vehicle
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Construeix Vehicle
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Construeix Vaixell
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Construeix Avió
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Construeix l'element de tren seleccionat
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Construeix l'automòbil seleccionat
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construeix el vaixell seleccionat
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Construeix l'avió seleccionat
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Construeix l'element de tren seleccionat
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Construeix l'automòbil seleccionat
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Construeix el vaixell seleccionat
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Construeix l'avió seleccionat
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Reanomena
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Reanomena
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Reanomena
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Reanomena
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Reanomena
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Reanomena
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Reanomena
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Reanomena
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Reanomena el tipus d'element del tren
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Reanomena tipus d'automòbil
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Reanomena tipus de vaixell
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Reanomena tipus d'avió
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Reanomena el tipus d'element del tren
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Reanomena tipus d'automòbil
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Reanomena tipus de vaixell
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Reanomena tipus d'avió
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus d'element del tren
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
@@ -3471,10 +3471,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es po
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}No es pot enviar vaixell a la drassana...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es pot enviar l'avió a l'hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}No es pot construir el vehicle...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}No es pot construir l'automòbil...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}No es pot construir el vaixell...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}No es pot construir l'avió...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No es pot construir el vehicle...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No es pot construir l'automòbil...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}No es pot construir el vaixell...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}No es pot construir l'avió...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot reanomenar tipus d'automòbil

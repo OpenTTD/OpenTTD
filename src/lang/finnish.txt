@@ -2624,15 +2624,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki a
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Uusi juna
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Uusi sähköjuna
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Uusi yksiraidejuna
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Uusi MagLev-juna
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Uusi juna
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Uusi sähköjuna
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Uusi yksiraidejuna
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Uusi MagLev-juna
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Uudet Junat
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Uusia ajoneuvoja
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Uusia laivoja
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Uusi lentokone
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Uudet Junat
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Uusia ajoneuvoja
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Uusia laivoja
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Uusi lentokone
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Paino: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK} Teho: {GOLD}{POWER}
@@ -2652,30 +2652,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityy
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vääntömomentti: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Yksikön valintalista - napsauta kohteita saadaksesi tietoja.
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Laivan valintalista - napsauta laivaa saadaksesi tietoja.
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Lentokonevalintalista - napsauta lentokonetta saadaksesi tietoja.
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Yksikön valintalista - napsauta kohteita saadaksesi tietoja.
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Laivan valintalista - napsauta laivaa saadaksesi tietoja.
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lentokonevalintalista - napsauta lentokonetta saadaksesi tietoja.
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Rakenna yksikkö
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Rakenna ajoneuvo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Rakenna laiva
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Rakenna lentokone
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Rakenna yksikkö
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Rakenna ajoneuvo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Rakenna laiva
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Rakenna lentokone
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Rakenna valittu yksikkö.
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Rakenna valittu ajoneuvo.
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Rakenna valittu laiva
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Rakenna korostettu lentokone
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Rakenna valittu yksikkö.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Rakenna valittu ajoneuvo.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Rakenna valittu laiva
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Rakenna korostettu lentokone
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Nimeä
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Nimeä
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Nimeä
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Nimeä
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nimeä
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Nimeä
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Nimeä
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Nimeä
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Nimeä yksikön tyyppi uudelleen.
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Nimeä laivatyyppi uudelleen.
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Nimeä lentokonetyyppi uudelleen.
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Nimeä yksikön tyyppi uudelleen.
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Nimeä laivatyyppi uudelleen.
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Nimeä lentokonetyyppi uudelleen.
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Nimeä juna(vaunu)n tyyppi uudelleen.
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Nimeä ajoneuvon tyyppi uudelleen
@@ -3466,10 +3466,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ajoneuvo
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Laivaa ei voi lähettää telakalle...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Lentokonetta ei voi lähettää lentokonehalliin...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Yksikköä ei voi rakentaa...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ajoneuvoa ei voi rakentaa...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Laivaa ei voi rakentaa...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Lentokonetta ei voi rakentaa...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Yksikköä ei voi rakentaa...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi rakentaa...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Laivaa ei voi rakentaa...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Lentokonetta ei voi rakentaa...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ajoneuvotyyppiä ei voi uudelleennimetä...

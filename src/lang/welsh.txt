@@ -2613,15 +2613,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Dileu pob cerby
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grw^p
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Cerbydau Rheilffordd Newydd
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Cerbydau Rheilffordd Trydan Newydd
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Cerbydau Monoreilffordd Newydd
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Cerbydau Maglef Newydd
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Cerbydau Rheilffordd Newydd
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Cerbydau Rheilffordd Trydan Newydd
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Cerbydau Monoreilffordd Newydd
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Cerbydau Maglef Newydd
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Cerbydau Rheilffordd
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Cerbydau Ffordd Newydd
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Llong  Newydd
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Awyrennau Newydd
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Cerbydau Rheilffordd
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Cerbydau Ffordd Newydd
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Llong  Newydd
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Awyrennau Newydd
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Côst: {GOLD}{CURRENCY}{BLACK} Pwysau: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Cyflymder: {GOLD}{VELOCITY}{BLACK}   Pŵer: {GOLD}{POWER}
@@ -2641,30 +2641,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Pob math o lwyt
 STR_PURCHASE_INFO_ALL_BUT                                       :Popeth ond{GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Uchafswm Ymdrech Tynnol: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Rhestr ddewis awyrennau - cliciwch ar awyren am wybodaeth
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Rhestr ddewis awyrennau - cliciwch ar awyren am wybodaeth
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Adeiladu Cerbyd
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Adeiladu Cerbyd
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Adeiladu Llong
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Adeiladu Awyrennau
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Adeiladu Cerbyd
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Adeiladu Cerbyd
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Adeiladu Llong
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Adeiladu Awyrennau
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ailenwi
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ailenwi
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ailenwi
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ailenwi
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ailenwi
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ailenwi
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Ailenwi
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Ailenwi
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Ailenwi math y cerbyd trên
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ailenwi'r math cerbyd ffordd
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Ailenwi'r math llong
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ailenwi'r math awyren
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Ailenwi math y cerbyd trên
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Ailenwi'r math cerbyd ffordd
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Ailenwi'r math llong
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ailenwi'r math awyren
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ailenwi math y cerbyd trên
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ailenwi'r math cerbyd ffordd
@@ -3451,10 +3451,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Methu gy
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Methu gyrru llong i ddepo...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Methu gyrru awyren i awyrendy...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Methu adeiladu cerbyd rheilffordd...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Methu adeiladu cerbyd...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Methu adeiladu llong...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Methu adeiladu awyren...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Methu adeiladu cerbyd rheilffordd...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Methu adeiladu cerbyd...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Methu adeiladu llong...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Methu adeiladu awyren...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Methu ailenwi math y cerbyd trên...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Methu ailenwi cerbyd ffordd...

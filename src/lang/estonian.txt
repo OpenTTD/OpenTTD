@@ -2684,15 +2684,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Uued rööbassõidukid
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Uus elektriraudteesõiduk
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Uus monorelsssõiduk
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Uus magnethõljuksõiduk
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Uued rööbassõidukid
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Uus elektriraudteesõiduk
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Uus monorelsssõiduk
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Uus magnethõljuksõiduk
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Rööbassõidukid
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Uued mootorsõidukid
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Uued laevad
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Uus lennuk
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Rööbassõidukid
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Uued mootorsõidukid
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Uued laevad
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Uus lennuk
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hind: {GOLD}{CURRENCY}{BLACK} Tühimass: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tippkiirus: {GOLD}{VELOCITY}{BLACK}   Võimsus: {GOLD}{POWER}
@@ -2712,30 +2712,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Kõik kaubatü�
 STR_PURCHASE_INFO_ALL_BUT                                       :Kõik, välja arvatud {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurim veojõud: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Nimekiri raudteesõidukitest - andmete saamiseks klõpsa raudteesõidukile
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Mootorsõidukite nimekiri - andmete saamiseks klõpsa sõidukile
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Laevade nimekiri - info saamiseks klõps laevale
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Lennukite nimekiri - info saamiseks vajuta lennukile
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Nimekiri raudteesõidukitest - andmete saamiseks klõpsa raudteesõidukile
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Mootorsõidukite nimekiri - andmete saamiseks klõpsa sõidukile
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Laevade nimekiri - info saamiseks klõps laevale
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lennukite nimekiri - info saamiseks vajuta lennukile
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Ehita sõiduk
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Ehita veovahend
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Ehita laev
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Ehita lennuk
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Ehita sõiduk
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Ehita veovahend
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Ehita laev
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Ehita lennuk
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Ehita valitud raudteesõiduk
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Ehita valitud mootorsõiduk
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Ehita valitud laev
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Ehita valitud lennuk
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Ehita valitud raudteesõiduk
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ehita valitud mootorsõiduk
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Ehita valitud laev
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Ehita valitud lennuk
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Nimevahetus
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Nimevahetus
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Nimevahetus
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Nimevahetus
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nimevahetus
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Nimevahetus
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Nimevahetus
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Nimevahetus
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Muuda raudteesõiduki tüübinime
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Muuda mootorsõiduki tüübinime
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Laeva tüübinime muutmine
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Lennuki tüübinime muutmine
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Muuda raudteesõiduki tüübinime
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Muuda mootorsõiduki tüübinime
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Laeva tüübinime muutmine
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Lennuki tüübinime muutmine
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Vaheta rongivaguni tüübinime
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Vaheta mootorsõiduki tüübinime
@@ -3526,10 +3526,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ei saa v
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Ei saa laeva angaari saata...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ei saa lennukit angaari saata...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Rööbassõidukit ei saa ehitada...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Mootorsõidukit ei saa ehitada...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Ei saa laeva ehitada...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Ei saa ehitada lennukit...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Rööbassõidukit ei saa ehitada...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Mootorsõidukit ei saa ehitada...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ei saa laeva ehitada...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ei saa ehitada lennukit...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Raudteesõiduki tüübinime ei saa vahetada...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Mootorsõiduki tüübinime ei saa vahetada...

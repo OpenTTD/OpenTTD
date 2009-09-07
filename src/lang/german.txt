@@ -2628,15 +2628,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Neues Schienenfahrzeug
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Neue E-Loks
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Neues Einschienenbahn-Fahrzeug
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Neue Magnetzüge
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Neues Schienenfahrzeug
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Neue E-Loks
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Neues Einschienenbahn-Fahrzeug
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Neue Magnetzüge
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Neue Eisenbahnfahrzeuge
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Neue Fahrzeuge
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Neue Schiffe
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neue Flugzeuge
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Neue Eisenbahnfahrzeuge
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Neue Fahrzeuge
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Neue Schiffe
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Neue Flugzeuge
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Leistung: {GOLD}{POWER}
@@ -2656,30 +2656,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarte
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles außer {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zugkraft: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schiffauswahliste - für Einzelheiten auf das Schiff klicken
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flugzeugauswahlliste - Klick auf das Flugzeug zeigt weitere Einzelheiten an
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schiffauswahliste - für Einzelheiten auf das Schiff klicken
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flugzeugauswahlliste - Klick auf das Flugzeug zeigt weitere Einzelheiten an
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Fahrzeug kaufen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Fahrzeug kaufen
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schiff kaufen
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Flugzeug kaufen
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Fahrzeug kaufen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Fahrzeug kaufen
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schiff kaufen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Flugzeug kaufen
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Angewähltes Fahrzeug kaufen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Ausgewähltes Fahrzeug kaufen
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Ausgewähltes Schiff kaufen
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Augewähltes Flugzeug kaufen
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Angewähltes Fahrzeug kaufen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ausgewähltes Fahrzeug kaufen
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Ausgewähltes Schiff kaufen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Augewähltes Flugzeug kaufen
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Umbenennen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Umbenennen
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Umbenennen
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Umbenennen
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Umbenennen
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Umbenennen
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Umbenennen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Umbenennen
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Umbenennen der Waggontypen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Fahrzeug umbenennen
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Schiff umbenennen
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Flugzeug umbenennen
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Umbenennen der Waggontypen
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Fahrzeug umbenennen
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Schiff umbenennen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Flugzeug umbenennen
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zugtyp umbenennen
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Fahrzeug umbenennen
@@ -3470,10 +3470,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Fahrzeug
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Schiff kann nicht in die Werft geschickt werden...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Flugzeug kann nicht in den Hangar geschickt werden...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Fahrzeug kann nicht gekauft werden...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Schiff kann nicht gebaut werden...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Flugzeug kann nicht gebaut werden...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Fahrzeug kann nicht gekauft werden...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Schiff kann nicht gebaut werden...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Flugzeug kann nicht gebaut werden...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Zugtyp kann nicht umbenannt werden...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Fahrzeug kann nicht umbenannt werden...

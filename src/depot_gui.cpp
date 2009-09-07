@@ -568,7 +568,7 @@ struct DepotWindow : Window {
 			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) return;
 		}
 
-		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN + v->type), CcCloneVehicle);
+		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle);
 
 		ResetObjectToPlace();
 	}

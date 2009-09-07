@@ -2614,15 +2614,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :הסר את כ�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}שנה שם קבוצה
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}רכבות חדשות
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}רכבות חשמליות חדשות
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        ::{WHITE}רכבות חד-פס חדשות
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}רכבות פס מגנטי חדשות
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}רכבות חדשות
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}רכבות חשמליות חדשות
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          ::{WHITE}רכבות חד-פס חדשות
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}רכבות פס מגנטי חדשות
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}רכבות זמינות
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}כלי רכב חדשים
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}כלי שייט חדשים
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}כלי טייס חדש
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}רכבות זמינות
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}כלי רכב חדשים
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}כלי שייט חדשים
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}כלי טייס חדש
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{GOLD}{1:WEIGHT_S}{BLACK} :משקל {GOLD}{0:CURRENCY}{BLACK} :מחיר
 STR_PURCHASE_INFO_SPEED_POWER                                   :{GOLD}{1:POWER}{BLACK} :עוצמת מנוע {GOLD}{0:VELOCITY}{BLACK} :מהירות
@@ -2641,30 +2641,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :כל סוגי �
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} כל סוגי המטען למעט
 STR_PURCHASE_INFO_MAX_TE                                        :{GOLD}{FORCE}{BLACK} :כוח  סחיבה מירבי
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK} בחירת קרונות - לחץ על קרון לקבלת מידע
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}רשימת כלי הרכב - בחר כלי רכב למידע
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}כלי שייט – בחר כלי לצפיה במידע
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}כלי טייס – בחר כלי לצפיה במידע
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK} בחירת קרונות - לחץ על קרון לקבלת מידע
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}רשימת כלי הרכב - בחר כלי רכב למידע
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}כלי שייט – בחר כלי לצפיה במידע
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}כלי טייס – בחר כלי לצפיה במידע
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}בנה רכבת
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}בנה כלי רכב
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}בנה כלי שייט
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}בנה כלי טייס
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}בנה רכבת
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}בנה כלי רכב
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}בנה כלי שייט
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}בנה כלי טייס
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}בנה את קרון הרכבת שנבחר
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}בנה כלי רכב מהסוג שנבחר
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}בנה את כלי השייט שנבחר
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}בנה את כלי הטייס שנבחר
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}בנה את קרון הרכבת שנבחר
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}בנה כלי רכב מהסוג שנבחר
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}בנה את כלי השייט שנבחר
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}בנה את כלי הטייס שנבחר
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}שנה שם
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}שנה שם
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}החלף שם
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}החלף שם
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}שנה שם
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}שנה שם
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}החלף שם
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}החלף שם
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}שנה את שם סוג הקרון
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}שנה את שם סוג כלי הרכב
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}החלף שם סוג כלי השייט
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}החלף שם סוג כלי הטיס
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}שנה את שם סוג הקרון
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}שנה את שם סוג כלי הרכב
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}החלף שם סוג כלי השייט
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}החלף שם סוג כלי הטיס
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}שנה את שם סוג קרון הרכבת
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}שנה את שם סוג כלי הרכב
@@ -3427,10 +3427,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}...לא 
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}...לא ניתן לשלוח את כלי הטייס לסככת המטוסים
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}...לא ניתן לבנות רכבת
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}לא ניתן לבנות כלי רכב...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}לא ניתן לבנות כלי שייט זה
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}לא ניתן לבנות כלי טייס
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}...לא ניתן לבנות רכבת
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}לא ניתן לבנות כלי רכב...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}לא ניתן לבנות כלי שייט זה
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}לא ניתן לבנות כלי טייס
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}לא ניתן לשנות את שם סוג הקרון
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב

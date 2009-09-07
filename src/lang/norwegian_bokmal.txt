@@ -2617,15 +2617,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kjø
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gi nytt navn på gruppen
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nye tog/vogner for jernbane
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nytt elektrisk tog
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nye tog/vogner for monorail
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nye tog/vogner for maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nye tog/vogner for jernbane
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nytt elektrisk tog
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nye tog/vogner for monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nye tog/vogner for maglev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Skinnekjøretøy
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nye kjøretøy
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nye skip
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nytt fly
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Skinnekjøretøy
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nye kjøretøy
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nye skip
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nytt fly
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Effekt: {GOLD}{POWER}
@@ -2645,30 +2645,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetyper
 STR_PURCHASE_INFO_ALL_BUT                                       :Alt utenom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. trekkraft: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Liste over tog/vogner - trykk på tog/vogn for mer informasjon
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skipsliste - trykk på skip for mer informasjon
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flyliste - trykk på fly for mer informasjon
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liste over tog/vogner - trykk på tog/vogn for mer informasjon
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skipsliste - trykk på skip for mer informasjon
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flyliste - trykk på fly for mer informasjon
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kjøp tog/vogn
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kjøp kjøretøy
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bygg skip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bygg fly
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kjøp tog/vogn
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kjøp kjøretøy
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bygg skip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bygg fly
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Bygg den valgte enheten
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bygg det valgte kjøretøyet
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bygg det valgte skipet
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Bygg det valge flyet
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bygg den valgte enheten
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bygg det valgte kjøretøyet
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bygg det valgte skipet
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bygg det valge flyet
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Endre navn
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endre navn
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Endre navn
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Endre navn
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Endre navn
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Endre navn
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Endre navn
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Endre navn
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Endre navnet til den valgte enheten
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endre navnet til kjøretøytypen
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Endre navnet til skipstypen
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Endre navn til flytype
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Endre navnet til den valgte enheten
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endre navnet til kjøretøytypen
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endre navnet til skipstypen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endre navn til flytype
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gi tog/vogn nytt navn
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endre navnet til kjøretøytypen
@@ -3456,10 +3456,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikke
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan ikke sende skip til depotet...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikke sende fly til hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan ikke bygge jernbanekjøretøy...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan ikke kjøpe kjøretøy...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan ikke bygge skip...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan ikke bygge fly...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan ikke bygge jernbanekjøretøy...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan ikke kjøpe kjøretøy...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan ikke bygge skip...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikke bygge fly...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke gi tog/vogn nytt navn...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikke endre navnet til kjøretøytypen...

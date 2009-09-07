@@ -2681,15 +2681,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozi
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova željeznička vozila
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova električna pružna vozila
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nova jednotračna željeznička vozila
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nova maglev vozila
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nova željeznička vozila
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nova električna pružna vozila
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nova jednotračna željeznička vozila
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nova maglev vozila
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nova pružna vozila
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nova cestovna vozila
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi brodovi
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Novi zrakoplov
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nova pružna vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nova cestovna vozila
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Novi brodovi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Novi zrakoplov
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cijena: {GOLD}{CURRENCY}{BLACK} Težina {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
@@ -2708,30 +2708,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste teret
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Maks. vučni napor: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Popis izabranih vlakova - klikni na vlak za informacije
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Popis izabranih cestovnih vozila - klikni na vozilo za informacije
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Popis izabranih brodova - klikni na brod za informacije
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Popis izabranih zrakoplova - klikni na zrakoplov za informacije
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Popis izabranih vlakova - klikni na vlak za informacije
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Popis izabranih cestovnih vozila - klikni na vozilo za informacije
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Popis izabranih brodova - klikni na brod za informacije
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Popis izabranih zrakoplova - klikni na zrakoplov za informacije
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Izgradi vozilo
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Izgradi vozilo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Izgradi brod
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Izgradi zrakoplov
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Izgradi vozilo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Izgradi vozilo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Izgradi brod
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Izgradi zrakoplov
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Izgradi označeni vlak
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Izgradi označeno cestovno vozilo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Izgradi označeni brod
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Izgradi označeni zrakoplov
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Izgradi označeni vlak
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Izgradi označeno cestovno vozilo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Izgradi označeni brod
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Izgradi označeni zrakoplov
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Preimenuj
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Preimenuj
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Preimenuj
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Preimenuj
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Preimenuj
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Preimenuj vrstu vagona
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Preimenuj vrstu cestovnog vozila
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Preimenuj vrstu broda
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Preimenuj vrstu zrakoplova
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Preimenuj vrstu vagona
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Preimenuj vrstu cestovnog vozila
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Preimenuj vrstu broda
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Preimenuj vrstu zrakoplova
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Preimenuj vrstu vagona
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Preimenuj vrstu cestovnog vozila
@@ -3507,10 +3507,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nije mog
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nije moguće poslati brod u spremište...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nije moguće poslati zrakoplov u hangar
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nije moguće izgraditi željezničko vozilo...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nije moguće izgraditi cestovno vozilo...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nije moguće izgraditi brod...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nije moguće izgraditi zrakoplov...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nije moguće izgraditi željezničko vozilo...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nije moguće izgraditi cestovno vozilo...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nije moguće izgraditi brod...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nije moguće izgraditi zrakoplov...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nije moguće preimenovati vrstu vagona...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nije moguće preimenovati vrstu cestovnog vozila...

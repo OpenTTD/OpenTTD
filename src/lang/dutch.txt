@@ -2629,15 +2629,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwijder alle 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem een groep
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nieuwe railvoertuigen
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nieuwe elektrische railvoertuigen
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nieuwe monorailrailvoertuigen
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nieuwe zweefrailvoertuigen
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nieuwe railvoertuigen
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nieuwe elektrische railvoertuigen
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nieuwe monorailrailvoertuigen
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nieuwe zweefrailvoertuigen
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Railvoertuigen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nieuwe wegvoertuigen
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nieuwe schepen
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nieuwe vliegtuigen
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Railvoertuigen
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nieuwe wegvoertuigen
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nieuwe schepen
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nieuwe vliegtuigen
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}
@@ -2657,30 +2657,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrachttype
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Trekkracht: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Railvoertuigkeuzelijst - klik op een railvoertuig voor informatie
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Wegvoertuigkeuzelijst - klik op een wegvoertuig voor informatie
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schipkeuzelijst - klik op een schip voor informatie
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Vliegtuigkeuzelijst - klik op een vliegtuig voor informatie
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Railvoertuigkeuzelijst - klik op een railvoertuig voor informatie
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Wegvoertuigkeuzelijst - klik op een wegvoertuig voor informatie
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schipkeuzelijst - klik op een schip voor informatie
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Vliegtuigkeuzelijst - klik op een vliegtuig voor informatie
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Bouw railvoertuig
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Bouw wegvoertuig
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bouw schip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bouw vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Bouw railvoertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Bouw wegvoertuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bouw schip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bouw vliegtuig
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Bouw het geselecteerde railvoertuig
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bouw het geselecteerde wegvoertuig
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bouw het geselecteerde schip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Bouw het geselecteerde vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bouw het geselecteerde railvoertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bouw het geselecteerde wegvoertuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bouw het geselecteerde schip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bouw het geselecteerde vliegtuig
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Hernoem
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Hernoem
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Hernoem
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Hernoem
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Hernoem
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Hernoem
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Hernoem
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Hernoem type van railvoertuig
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem type van wegvoertuig
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Hernoem type van schip
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Hernoem type van vliegtuig
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Hernoem type van railvoertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Hernoem type van wegvoertuig
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Hernoem type van schip
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Hernoem type van vliegtuig
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem type van railvoertuig
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem type van wegvoertuig
@@ -3471,10 +3471,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan wegv
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan schip niet naar dok sturen...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan railvoertuig niet bouwen...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuig niet bouwen...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan schip niet kopen...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet bouwen...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan railvoertuig niet bouwen...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan wegvoertuig niet bouwen...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan schip niet kopen...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan vliegtuig niet bouwen...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan type van railvoertuig niet hernoemen...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan type van wegvoertuig niet hernoemen...

@@ -1269,37 +1269,37 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :فرستادن 
 
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}قطار جدید ریل مغناطیسی
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}قطار جدید
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}قطار جدید مونوریل
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}قطار جدید ریل مغناطیسی
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}وسایل ریل خط آهن
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}ماشین های جدید
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}هواپیمای جدید
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}وسایل ریل خط آهن
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}ماشین های جدید
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}هواپیمای جدید
 
 STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}لیست انتخاب هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}لیست انتخاب هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}ساخت وسیله نقلیه
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}ساخت وسیله نقلیه
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}ساخت هواپیما
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}ساخت وسیله نقلیه
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}ساخت وسیله نقلیه
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}ساخت هواپیما
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}قطار مشخص شده را بخر
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}کشتی مشخص شده را بساز
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}ساخت هواپیمای مشخص شده
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}قطار مشخص شده را بخر
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}کشتی مشخص شده را بساز
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}ساخت هواپیمای مشخص شده
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}تغییر نام
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}نام گذاری مجدد
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}نام گذاری مجدد
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}تغییر نام
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}تغییر نام
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}نام گذاری مجدد
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}نام گذاری مجدد
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}تغییر نام نوع قطار
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}نام گذاری مجدد نوع کشتی
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}نامگذاری مجدد نوع هواپیما
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}تغییر نام نوع قطار
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}تغییر نام انواع ماشین ها
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}نام گذاری مجدد نوع کشتی
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}نامگذاری مجدد نوع هواپیما
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
@@ -1723,10 +1723,10 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}نمیت
 
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}نمیشود قطار  ساخت ...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}نمی شود کشتی ساخت...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را ساخت
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}نمیشود قطار  ساخت ...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}نمی شود ماشین ساخت...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}نمی شود کشتی ساخت...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}نمی توان هواپیما را ساخت
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود نوع قطار ها را تغییر نام داد...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...

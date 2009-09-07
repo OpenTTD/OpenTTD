@@ -2618,15 +2618,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有交
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}為群組重新命名
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新購鐵路車輛
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新電氣化列車
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}新購單軌車輛
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}新購磁浮車輛
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}新購鐵路車輛
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}新電氣化列車
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}新購單軌車輛
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}新購磁浮車輛
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列車
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}購置新車輛
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}購買船舶
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}購買飛機
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}列車
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}購置新車輛
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}購買船舶
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}購買飛機
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}費用：{GOLD}{CURRENCY}{BLACK} 載重：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
@@ -2646,30 +2646,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物類
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}除了
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列車選單 - 點選列車檢視資訊
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}車輛清單 - 點選車輛可看到詳細資料
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船舶清單 - 點選船舶顯示詳細資料
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飛機清單 - 點選飛機檢視詳細資料
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車選單 - 點選列車檢視資訊
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}車輛清單 - 點選車輛可看到詳細資料
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶清單 - 點選船舶顯示詳細資料
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飛機清單 - 點選飛機檢視詳細資料
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}購買交通工具
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}購買車輛
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}購買船舶
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}購買飛機
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}購買交通工具
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}購買車輛
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}購買船舶
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}購買飛機
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}購買選定的列車
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}購置選定的車輛
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}購買選定船舶
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}購買選定的飛機
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}購買選定的列車
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}購置選定的車輛
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}購買選定船舶
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}購買選定的飛機
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}更名
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}更名
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}更名
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}更名
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}更名
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}更名
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}更名
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}更名
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}修改列車的名稱
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}為車輛類型更名
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}重新命名船舶類型
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}重新命名飛機種類
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}修改列車的名稱
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}為車輛類型更名
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}重新命名船舶類型
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}重新命名飛機種類
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車類型
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}為車輛類型更名
@@ -3456,10 +3456,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}無法將船舶送到船塢...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}無法將飛機送回機棚...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}無法購買鐵道車輛...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}無法購置車輛
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}無法購買船舶...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}無法購買飛機...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}無法購買鐵道車輛...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}無法購置車輛
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}無法購買船舶...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}無法購買飛機...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}無法修改列車類型名稱...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}無法為車輛類型更名...

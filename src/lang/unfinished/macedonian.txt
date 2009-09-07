@@ -1016,19 +1016,19 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 
 # Build vehicle window
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Шински возила
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Нов авион
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Шински возила
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нов авион
 
 
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
 
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Направи авион
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Направи авион
 
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Направи авион од селектираниот тип
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Направи авион од селектираниот тип
 
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Преименувај
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Преименувај
 
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Преименувај го типот на авиони
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Преименувај го типот на авиони
 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
 
@@ -1287,7 +1287,7 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не м�
 
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да се прати авионот во гаража...
 
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Не може да се направи авионот...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не може да се направи авионот...
 
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не може да се преименува типот на авиони...
 

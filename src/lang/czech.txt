@@ -2691,15 +2691,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstranit všec
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Přejmenovat skupinu
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nové lokomotivy a vagony
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nové elektrické lokomotivy a vagony
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nové lokomotivy a vagony pro monorail
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nové lokomotivy a vagony Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nové lokomotivy a vagony
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nové elektrické lokomotivy a vagony
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nové lokomotivy a vagony pro monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nové lokomotivy a vagony Maglev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nová železniční vozidla
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nová silniční vozidla
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nové lodě
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nové letadlo
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nová železniční vozidla
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nová silniční vozidla
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nové lodě
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nové letadlo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
@@ -2719,30 +2719,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Všechny druhy 
 STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. tažná síla: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Seznam silničních vozidel - klepni na vozidlo pro informace
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Seznam lodí - informace získáš klepnutím na jméno lodi
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Seznam letadel - klepni na letadlo pro informace
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Seznam silničních vozidel - klepni na vozidlo pro informace
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Seznam lodí - informace získáš klepnutím na jméno lodi
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Seznam letadel - klepni na letadlo pro informace
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Koupit vůz
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Koupit silniční vozidlo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Koupit loď
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Koupit letadlo
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Koupit vůz
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koupit silniční vozidlo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koupit loď
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koupit letadlo
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kup označený vagon/lokomotivu
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Koupit označené vozidlo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Koupit označenou loď
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Koupit označené letadlo
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup označený vagon/lokomotivu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koupit označené vozidlo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koupit označenou loď
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koupit označené letadlo
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Přejmenovat
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Přejmenovat
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Přejmenovat
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Přejmenovat
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Přejmenovat
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Přejmenovat
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Přejmenovat
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Přejmenovat
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Přejmenovat typ vlaku
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Přejmenovat typ silničního vozidla
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Přejmenovat typ lodi
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Přejmenovat typ letadla
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Přejmenovat typ vlaku
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Přejmenovat typ silničního vozidla
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Přejmenovat typ lodi
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Přejmenovat typ letadla
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Přejmenovat typ železničního vozidla
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Přejmenovat typ silničního vozidla
@@ -3536,10 +3536,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nelze po
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nelze poslat loď do depa...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nelze poslat letadlo do hangáru...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nelze koupit vagon nebo lokomotivu...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nelze koupit nové silniční vozidlo...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nelze koupit loď...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nelze koupit letadlo...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nelze koupit vagon nebo lokomotivu...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nelze koupit nové silniční vozidlo...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nelze koupit loď...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nelze koupit letadlo...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nelze přejmenovat typ železničního vozidla...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nelze přejmenovat typ silničního vozidla...

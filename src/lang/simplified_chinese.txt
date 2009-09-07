@@ -2629,15 +2629,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}购买普通列车
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}购买电气化列车
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}购买单轨列车
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}购买磁悬浮列车
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}购买普通列车
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}购买电气化列车
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}购买单轨列车
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}购买磁悬浮列车
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}新列车
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}购买汽车
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}购买船只
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}购买飞机
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}新列车
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}购买汽车
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}购买船只
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}购买飞机
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   重量：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
@@ -2657,30 +2657,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型
 STR_PURCHASE_INFO_ALL_BUT                                       :除了 {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牵引力：{GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列车选择列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}汽车列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船只列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飞机列表 - 点击可以查看详细信息
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车选择列表 - 点击可以查看详细信息
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车列表 - 点击可以查看详细信息
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船只列表 - 点击可以查看详细信息
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞机列表 - 点击可以查看详细信息
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}购买
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}购买汽车
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}购买船只
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}购买
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}购买
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}购买汽车
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}购买船只
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}购买
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}购买选定的列车
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}购买选定的汽车
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}购买选定的船只
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}购买选定的飞机
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}购买选定的列车
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}购买选定的汽车
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}购买选定的船只
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}购买选定的飞机
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}重命名
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}重命名
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}重命名
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}重命名飞机
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}重命名
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}重命名
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}重命名
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}重命名飞机
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}重命名列车型号
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}重命名汽车型号
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}重命名船只型号
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}重命名飞机型号
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}重命名列车型号
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}重命名汽车型号
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}重命名船只型号
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}重命名飞机型号
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重命名车辆的类型
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重命名汽车型号
@@ -3471,10 +3471,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}不能�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}不能命令船只前往船坞……
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}不能命令飞机返回机库……
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}不能购买列车……
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}不能购买汽车...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}不能建造船只……
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}不能购买飞机……
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}不能购买列车……
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}不能购买汽车...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}不能建造船只……
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}不能购买飞机……
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}不能重命名车辆的类型...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}不能重命名汽车型号……

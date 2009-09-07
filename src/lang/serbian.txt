@@ -2812,15 +2812,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozi
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova Železnička Vozila
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova Železnička Električna Vozila
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nova Jenodšinska Vozila
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nova Maglev Vozila
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nova Železnička Vozila
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nova Železnička Električna Vozila
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nova Jenodšinska Vozila
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nova Maglev Vozila
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Šinska Vozila
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nova Drumska Vozila
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi Brodovi
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Letilice
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Šinska Vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nova Drumska Vozila
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Novi Brodovi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Letilice
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Težina: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
@@ -2840,30 +2840,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tovar
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve sem {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najveća Vučna Svaga: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Spisak probranih brodova - kliknite na brod za više podataka
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Spisak probranih letilica - kliknite na vozilo za više podataka
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Spisak probranih brodova - kliknite na brod za više podataka
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Spisak probranih letilica - kliknite na vozilo za više podataka
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kupi Vozilo
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kupi Vozilo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Brod
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Napraviti Letelicu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kupi Vozilo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kupi Vozilo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kupi Brod
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Napraviti Letelicu
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kupite označeno šinsko vozilo
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kupite označeno drumsko vozilo
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kupite označeni brod
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Kupite označenu letilicu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kupite označeno šinsko vozilo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kupite označeno drumsko vozilo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kupite označeni brod
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kupite označenu letilicu
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Promena naziva
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Preimenuj
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Preimenuj
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Promena naziva
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Preimenuj
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Preimenuj
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Preimenujte vrstu šinskog vozila
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Promenite naziv vrste drumskog vozila
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Promenite naziv vrste broda
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Promenite naziv vrste letilice
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Preimenujte vrstu šinskog vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Promenite naziv vrste drumskog vozila
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Promenite naziv vrste broda
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Promenite naziv vrste letilice
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Promena naziva vrste šinskog vozila
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Naziv vrste drumskog vozila
@@ -3664,10 +3664,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Vozilo n
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Brod ne može da ode u depo...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Letilica ne može da ode u hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nemoguća kupovina šinskog vozila...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ne može se kupiti drumsko vozilo...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Brod se ne može kupiti...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Letelice se ne može napraviti
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nemoguća kupovina šinskog vozila...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ne može se kupiti drumsko vozilo...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Brod se ne može kupiti...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Letelice se ne može napraviti
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemoguća promena naziva vrste drumskog vozila...

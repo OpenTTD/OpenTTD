@@ -2628,15 +2628,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçla
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Yeni Tren
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Yeni Elektrikli Trenler
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Yeni Monoray
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Yeni Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Yeni Tren
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Yeni Elektrikli Trenler
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Yeni Monoray
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Yeni Maglev
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Trenler
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Yeni Araba
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Yeni gemi
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Yeni Uçak
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Trenler
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Yeni Araba
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Yeni gemi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Yeni Uçak
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Ağırlık: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hız: {GOLD}{VELOCITY}{BLACK} Güç: {GOLD}{POWER}
@@ -2656,30 +2656,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo tür
 STR_PURCHASE_INFO_ALL_BUT                                       :Şunlar hariç tümü: {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Mak. Çekim Gücü: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tıklayın
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Araba listesi - bilgi için arabayı tıklayın
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Gemi seçim listesi - bilgi için gemiye tıkla
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Uçak listesi - bilgi için uçaga tıklayın
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tıklayın
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Araba listesi - bilgi için arabayı tıklayın
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Gemi seçim listesi - bilgi için gemiye tıkla
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Uçak listesi - bilgi için uçaga tıklayın
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Satın Al
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Araba Al
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Gemi yap
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Uçak Yap
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Satın Al
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Araba Al
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Gemi yap
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Uçak Yap
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Seçili treni satın al
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Seçili arabayı al
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Seçili gemiyi yap
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Seçili uçaktan al
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Seçili treni satın al
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Seçili arabayı al
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Seçili gemiyi yap
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Seçili uçaktan al
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Yeni isim
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}İsim
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}İsim
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}İsim
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Yeni isim
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}İsim
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}İsim
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}İsim
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Treni yeniden adlandır
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Araç türünü yeniden adlandır
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Gemi türünü adlandır
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Uçak türünü adlandır
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Treni yeniden adlandır
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Araç türünü yeniden adlandır
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Gemi türünü adlandır
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Uçak türünü adlandır
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren yeniden adlandırılamaz
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Araç türünü yeniden adlandır
@@ -3470,10 +3470,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Araç ga
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Gemi tersaneye gönderilemez...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Hangara gönderilemiyor...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tren satın alınamaz...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Araba alınamıyor...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Yemi yapılamaz...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Uçak alınamaz...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tren satın alınamaz...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Araba alınamıyor...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Yemi yapılamaz...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Uçak alınamaz...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tren yeniden adlandırılamaz...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Araç türü yeniden adlandırılamıyor...

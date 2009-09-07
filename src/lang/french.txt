@@ -2630,15 +2630,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Retirer tous le
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renommer un groupe
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nouveaux véhicules ferroviaires
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nouveaux véhicules ferroviaires électriques
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nouveaux véhicules monorail
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nouveaux véhicules magnétiques
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nouveaux véhicules ferroviaires
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nouveaux véhicules ferroviaires électriques
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nouveaux véhicules monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nouveaux véhicules magnétiques
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Véhicules sur rail
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nouveaux véhicules
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nouveaux navires
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nouvel Aéronef
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Véhicules sur rail
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nouveaux véhicules
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nouveaux navires
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nouvel Aéronef
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Poids: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse: {GOLD}{VELOCITY}{BLACK} Puissance: {GOLD}{POWER}
@@ -2658,30 +2658,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types 
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Sélection du véhicule - Cliquer pour obtenir des informations
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Choix du véhicule - cliquer sur un véhicule pour obtenir des informations
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Liste de sélection de navire - cliquer sur un navire pour informations
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Liste de sélection d'aéronef - cliquer sur les aéronefs pour de plus amples informations
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Sélection du véhicule - Cliquer pour obtenir des informations
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule - cliquer sur un véhicule pour obtenir des informations
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liste de sélection de navire - cliquer sur un navire pour informations
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liste de sélection d'aéronef - cliquer sur les aéronefs pour de plus amples informations
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Construire
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Construire
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construire navire
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construire aéronef
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Construire
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Construire
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Construire navire
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Construire aéronef
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Construire le véhicule sélectionné
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Construire le véhicule sélectionné
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construire le navire surligné
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Construire l'aéronef sélectionné
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Construire le véhicule sélectionné
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Construire le véhicule sélectionné
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Construire le navire surligné
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Construire l'aéronef sélectionné
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Renommer
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Renommer
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Renommer
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Renommer
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renommer
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renommer
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Renommer
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Renommer
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Renommer le type du véhicule
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Renommer type de véhicule routier
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Renommer type de navire
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Renommer type d'aéronef
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renommer le type du véhicule
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renommer type de véhicule routier
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renommer type de navire
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renommer type d'aéronef
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renommer le type de train
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer type de véhicule routier
@@ -3472,10 +3472,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossib
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Impossible d'envoyer le navire au dépôt...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Impossible d'envoyer l'aéronef au hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Impossible de construire le véhicule ferroviaire...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Impossible de construire le véhicule...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Impossible de construire navire...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Impossible de construire l'aéronef...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Impossible de construire le véhicule ferroviaire...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Impossible de construire le véhicule...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Impossible de construire navire...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossible de construire l'aéronef...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Impossible de renommer le type de train...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossible de renommer type de véhicule routier...

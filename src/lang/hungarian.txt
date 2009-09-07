@@ -2661,15 +2661,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Új vasúti járművek
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Új villamosvasúti járművek
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Új egysínű járművek
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Új MagLev járművek
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Új vasúti járművek
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Új villamosvasúti járművek
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Új egysínű járművek
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Új MagLev járművek
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Új vasúti járművek
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Új közúti járművek
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Új hajók
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Új repülőgépek
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Új vasúti járművek
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Új közúti járművek
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Új hajók
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Új repülőgépek
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{POWER}
@@ -2689,30 +2689,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállí
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Vasúti jármű kiválasztása - kattints egy járműre az adataihoz
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Hajó kiválasztása - kattints egy hajóra az adataihoz
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Repülőgép kiválasztása - kattints egy repülőgépre az adataihoz
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Vasúti jármű kiválasztása - kattints egy járműre az adataihoz
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Hajó kiválasztása - kattints egy hajóra az adataihoz
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Repülőgép kiválasztása - kattints egy repülőgépre az adataihoz
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Megvesz
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Megvesz
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Megvesz
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Megvesz
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Megvesz
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Megvesz
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Megvesz
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Megvesz
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}A kijelölt vasúti jármű megvétele
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}A kijelölt közúti jármű megvétele
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt hajó megvétele
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}A kijelölt repülőgép megvétele
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}A kijelölt vasúti jármű megvétele
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}A kijelölt közúti jármű megvétele
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}A kijelölt hajó megvétele
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt repülőgép megvétele
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Átnevez
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Átnevez
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Átnevez
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Átnevez
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Átnevez
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Átnevez
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Átnevez
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Átnevez
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}A vasúti jármű márkanevének megváltoztatása
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}A közúti jármű márkanevének megváltoztatása
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}A hajó márkanevének megváltoztatása
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}A repülőgép márkanevének megváltoztatása
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}A vasúti jármű márkanevének megváltoztatása
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}A közúti jármű márkanevének megváltoztatása
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}A hajó márkanevének megváltoztatása
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}A repülőgép márkanevének megváltoztatása
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Márkanév megváltoztatása
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Márkanév megváltoztatása
@@ -3503,10 +3503,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nem kül
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nem küldheted a hajót a dokkba...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nem küldheted a repülőgépet a hangárba...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nem veheted meg a vasúti járművet...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nem veheted meg a közúti járművet...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nem veheted meg a hajót...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nem veheted meg a repülőgépet...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nem veheted meg a vasúti járművet...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nem veheted meg a közúti járművet...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nem veheted meg a hajót...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nem veheted meg a repülőgépet...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nem változtathatod meg a márkanevet...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nem változtathatod meg a márkanevet...

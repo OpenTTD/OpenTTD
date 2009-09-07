@@ -2629,15 +2629,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Izņemt visus t
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārsaukt grupu
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Jauni vilcieni
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Jauni Elektriskā Dzelzceļa Satiksmes Līdzekļi
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Jauni vilcieni
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Jauni vilcieni
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Jauni vilcieni
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Jauni Elektriskā Dzelzceļa Satiksmes Līdzekļi
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Jauni vilcieni
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Jauni vilcieni
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Jauni vilcieni
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Jauni transportl.
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Jauni kuģi
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Jauns lidaparāts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Jauni vilcieni
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Jauni transportl.
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Jauni kuģi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Jauns lidaparāts
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums: {GOLD}{VELOCITY}{BLACK} Jauda: {GOLD}{POWER}
@@ -2657,30 +2657,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Visi kravu tipi
 STR_PURCHASE_INFO_ALL_BUT                                       :Visu izņemot {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimus. Vilcēja piepūle: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Vilciena vagonu atlasīšanas saraksts - klik uz vagonu priekš informācijas
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Transportl. izvēles saraksts - klik uz tā, priekš informācijas
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Kuģu izvēles saraksts - klik uz tā, priekš informācijas
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Lidaparātu izvēles saraksts - klikot, lai iegūtu info
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Vilciena vagonu atlasīšanas saraksts - klik uz vagonu priekš informācijas
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Transportl. izvēles saraksts - klik uz tā, priekš informācijas
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Kuģu izvēles saraksts - klik uz tā, priekš informācijas
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lidaparātu izvēles saraksts - klikot, lai iegūtu info
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Būvēt Satiksmes Līdzekli
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Būvēt transportl.
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Uzbūvēt kuģi
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Būvēt lidaparātu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Būvēt Satiksmes Līdzekli
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Būvēt transportl.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Uzbūvēt kuģi
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Būvēt lidaparātu
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Būvēt atzīmēto vilciena vagonu
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Būvēt atzīmēto transportl.
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Būvēt atzīmēto kuģi
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Būvēt izvēlēto lidaparātu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Būvēt atzīmēto vilciena vagonu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Būvēt atzīmēto transportl.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Būvēt atzīmēto kuģi
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Būvēt izvēlēto lidaparātu
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Pārsaukt
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Pārsaukt
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Pārsaukt
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Pārsaukt
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Pārsaukt
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Pārsaukt
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Pārsaukt
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Pārsaukt
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Pārsaukt vilciena vagona tipu
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Pārsaukt transportl. tipu
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Pārsaukt kuģa tipu
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Pārsaukt lidaparāta veidu
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Pārsaukt vilciena vagona tipu
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Pārsaukt transportl. tipu
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Pārsaukt kuģa tipu
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pārsaukt lidaparāta veidu
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pārsaukt vilciena vagona tipu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pārsaukt transportl. tipu
@@ -3471,10 +3471,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nevar ai
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kuģi nevar aizsūtīt uz depo...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Lidaparātu nevar aizsūtīt uz angāru...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Vilcienu nevar uzbūvēt...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nevar uzbūvēt transportl. ...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nevar uzbūvēt kuģi...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nevar būvēt lidaparātu...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Vilcienu nevar uzbūvēt...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nevar uzbūvēt transportl. ...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nevar uzbūvēt kuģi...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nevar būvēt lidaparātu...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nevar pārsaukt vilciena vagona tipu...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nevar pārsaukt transportl. tipu...

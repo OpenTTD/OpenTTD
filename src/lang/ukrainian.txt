@@ -2738,15 +2738,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбути�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Новий залізничний транспорт
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новий електрозалізничний транспорт
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Новий монорельсовий транспорт
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Новий транспорт на магнітній подушці
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Новий залізничний транспорт
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Новий електрозалізничний транспорт
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Новий монорельсовий транспорт
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Новий транспорт на магнітній подушці
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Потяги
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Нове авто
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Нові кораблі
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Нові літаки
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Потяги
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Нове авто
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Нові кораблі
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нові літаки
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}   Вага: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
@@ -2766,30 +2766,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тяглова сила: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Список поїздів - клікніть на поїзді для інформації
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Список авто - натисніть на авто для інформації
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Список вибору кораблів - натисніть на корабель для інформації
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Список вибору літаків - натисніть на літак для інформації
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів - клікніть на поїзді для інформації
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список авто - натисніть на авто для інформації
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список вибору кораблів - натисніть на корабель для інформації
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список вибору літаків - натисніть на літак для інформації
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Будувати
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Будувати
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Будувати корабель
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Будувати
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Будувати
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Будувати
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Будувати корабель
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Будувати
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Будувати вибраний поїзд
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Будувати вибране авто
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Будувати вибраний корабель
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Будувати вибраний літак
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Будувати вибраний поїзд
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Будувати вибране авто
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Будувати вибраний корабель
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Будувати вибраний літак
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Назва
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Зміна назви
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Зміна назви
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Зміна назви
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Назва
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Зміна назви
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Зміна назви
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Зміна назви
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Перейменуйте тип транспорту
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Перейменувати тип авто
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Перейменувати тип корабля
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Перейменувати тип літака
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Перейменуйте тип транспорту
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Перейменувати тип авто
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Перейменувати тип корабля
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Перейменувати тип літака
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзду
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Перейменувати тип авто
@@ -3576,10 +3576,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Немо
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Неможливо направити корабель в депо...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Неможливо направити літак до ангару...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Неможливо збудувати поїзд...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Неможливо будувати авто...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Неможливо будувати корабель...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Неможливо будувати літак...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Неможливо збудувати поїзд...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Неможливо будувати авто...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Неможливо будувати корабель...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Неможливо будувати літак...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Неможливо перейменувати тип поїзду...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Неможливо перейменувати тип авто...

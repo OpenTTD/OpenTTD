@@ -2620,15 +2620,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fo
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Döp om en grupp
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nytt tågfordon
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nya elektriska järnvägsfordon
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nytt monorailfordon
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nytt maglevfordon
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nytt tågfordon
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nya elektriska järnvägsfordon
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nytt monorailfordon
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nytt maglevfordon
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Nya Rälsfordon
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nytt Vägfordon
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nytt skepp
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nytt flygplan
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nya Rälsfordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nytt Vägfordon
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nytt skepp
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nytt flygplan
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vikt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
@@ -2648,30 +2648,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av l
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt utom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal Dragkraft: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lista av tågvagnar - klicka på tågvagn för information
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Vägfordonslista - klicka på fordon för information
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skeppslista - klicka på skepp för information
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flygplanslista - Klicka på flygplan för information
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista av tågvagnar - klicka på tågvagn för information
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Vägfordonslista - klicka på fordon för information
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skeppslista - klicka på skepp för information
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flygplanslista - Klicka på flygplan för information
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Bygg fordon
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Bygg Fordon
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bygg skepp
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bygg flygplan
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Bygg fordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Bygg Fordon
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bygg skepp
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bygg flygplan
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Bygg markerad tågvagn
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bygg markerat vägfordon
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bygg markerat skepp
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Bygg markerat flygplan
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bygg markerad tågvagn
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bygg markerat vägfordon
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bygg markerat skepp
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bygg markerat flygplan
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Byt namn på
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Byt namn på
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Byt namn på
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Byt namn på
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Byt namn på
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Byt namn på
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Byt namn på
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Byt namn på
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Byt namn på tågvagn
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Byt namn på vägfordon typ
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Byt namn på skeppstyp
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Byt namn på flygplanstyp
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Byt namn på tågvagn
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn på vägfordon typ
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Byt namn på skeppstyp
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Byt namn på flygplanstyp
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Byt namn på tågets fordonstyp
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordon typ
@@ -3462,10 +3462,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan inte
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan inte skicka skepp till depå...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan inte skicka flygplan till hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan inte bygga järnvägfordon...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan inte bygga vägfordon...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan inte bygga skepp...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan inte bygga flygplan...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan inte bygga järnvägfordon...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan inte bygga vägfordon...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan inte bygga skepp...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan inte bygga flygplan...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan inte byta namn på tågets fordonstyp...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan inte byta namn på vägfordon typ...

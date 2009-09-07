@@ -2627,15 +2627,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Kereta Api Baru
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Kereta listrik baru
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Monorel Baru
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Maglev Baru
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Kereta Api Baru
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Kereta listrik baru
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Monorel Baru
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Maglev Baru
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Semua Kereta
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bus/truk Baru
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Kapal Baru
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Buat Pesawat
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Semua Kereta
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Bus/truk Baru
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Kapal Baru
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Buat Pesawat
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK} Daya: {GOLD}{POWER}
@@ -2655,30 +2655,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kar
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua tapi tidak untuk {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Traksi Maks.: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Daftar kapal - klik pada kapal untuk informasi
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Daftar kapal - klik pada kapal untuk informasi
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Membuat Kendaraan
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Membuat Kendaraan
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Membuat Kapal
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Buat Pesawat
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Membuat Kendaraan
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Membuat Kendaraan
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Membuat Kapal
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Buat Pesawat
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Membuat kereta sesuai pilihan
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Membuat bus/truk yang dipilih
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Buat kapal yang dipilih
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Membuat pesawat yang dipilih
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Membuat kereta sesuai pilihan
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Membuat bus/truk yang dipilih
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Buat kapal yang dipilih
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Membuat pesawat yang dipilih
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ubah Nama
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ganti Nama
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ubah Nama
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ubah Nama
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ubah Nama
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ganti Nama
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Ubah Nama
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Ubah Nama
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Ubah nama jenis kereta api
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ganti nama jenis bus/truk
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Ubah nama jenis kapal
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ubah nama jenis pesawat
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Ubah nama jenis kereta api
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Ganti nama jenis bus/truk
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Ubah nama jenis kapal
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ubah nama jenis pesawat
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ubah nama jenis kereta
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ganti nama jenis bus/truk
@@ -3469,10 +3469,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak da
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Tidak dapat mengirim kapal ke galangan...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Tidak dapat mengirim pesawat ke hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tidak dapat membuat kendaraan...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Tidak dapat membuat bus/truk...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Tidak dapat membuat kapal...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Tidak dapat membuat pesawat ...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tidak dapat membuat kendaraan...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Tidak dapat membuat bus/truk...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Tidak dapat membuat kapal...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Tidak dapat membuat pesawat ...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tidak dapat mengubah nama jenis kereta...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Tidak bisa mengganti nama jenis bus/truk

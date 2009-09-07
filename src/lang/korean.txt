@@ -2630,15 +2630,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 �
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}새 기차
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}새 전기 기차
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}새 모노레일
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}새 자기부상열차
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}새 기차
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}새 전기 기차
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}새 모노레일
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}새 자기부상열차
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}새 기차
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}새 자동차
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}새 선박
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}새 항공기
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}새 기차
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}새 자동차
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}새 선박
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}새 항공기
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 중량: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
@@ -2658,30 +2658,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류�
 STR_PURCHASE_INFO_ALL_BUT                                       :모든 화물 / 제외: {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}기차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}기차 선택 목록 - 차량 정보를 보려면 클릭
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}차량 만들기
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}차량 만들기
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}선박 만들기
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}항공기 만들기
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}차량 만들기
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}차량 만들기
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}선박 만들기
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}항공기 만들기
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}선택된 차량 생산
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}선택한 자동차 만들기
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}선택한 선박 만들기
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}선택한 항공기 만들기
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}선택된 차량 생산
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}선택한 자동차 만들기
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}선택한 선박 만들기
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}선택한 항공기 만들기
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}이름
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}이름 지정
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}이름 지정
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}이름 지정
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}이름
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}이름 지정
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}이름 지정
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 지정
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}차량 타입의 이름을 다시 지정
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}자동차 타입의 이름 지정
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}선박 타입의 이름 지정
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}항공기 타입의 이름 지정
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}차량 타입의 이름을 다시 지정
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}자동차 타입의 이름 지정
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박 타입의 이름 지정
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기 타입의 이름 지정
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차 차량 타입 이름 재지정
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차 타입의 이름 지정
@@ -3472,10 +3472,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}선박을 정박소로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}기차를 만들 수 없습니다...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}자동차를 만들 수 없습니다...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}선박을 만들 수 없습니다...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}항공기를 만들 수 없습니다...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}기차를 만들 수 없습니다...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}자동차를 만들 수 없습니다...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}선박을 만들 수 없습니다...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공기를 만들 수 없습니다...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...

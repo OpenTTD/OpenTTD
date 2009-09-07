@@ -868,12 +868,12 @@ struct BuildVehicleWindow : Window {
 	/* Setup widget strings to fit the different types of vehicles */
 	void SetupWindowStrings(VehicleType type)
 	{
-		this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION) + type;
-		this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP + type;
-		this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON + type;
-		this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP + type;
-		this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON + type;
-		this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP + type;
+		this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + type;
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + type;
+		this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + type;
+		this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP + type;
+		this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON + type;
+		this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP + type;
 
 		if (type == VEH_TRAIN && this->listview_mode) this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data = STR_JUST_STRING;
 	}
@@ -1109,7 +1109,7 @@ struct BuildVehicleWindow : Window {
 		this->vscroll.SetCount(this->eng_list.Length());
 		if (this->vehicle_type == VEH_TRAIN) {
 			if (this->filter.railtype == RAILTYPE_END) {
-				SetDParam(0, STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION);
+				SetDParam(0, STR_BUY_VEHICLE_TRAIN_ALL_CAPTION);
 			} else {
 				const RailtypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
 				SetDParam(0, rti->strings.build_caption);

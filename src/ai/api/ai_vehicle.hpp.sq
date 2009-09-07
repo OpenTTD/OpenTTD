@@ -65,10 +65,10 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE,                          AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
 	AIError::RegisterErrorMap(STR_ERROR_SHIP_NOT_AVAILABLE,                                  AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
 	AIError::RegisterErrorMap(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE,                          AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_TRAIN,                                   AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE,                            AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_SHIP,                                    AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_AIRCRAFT,                                AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_TRAIN,                                     AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_ROAD_VEHICLE,                              AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_SHIP,                                      AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_AIRCRAFT,                                  AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
 	AIError::RegisterErrorMap(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE,                              AIVehicle::ERR_VEHICLE_WRONG_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT,                           AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT,                    AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);

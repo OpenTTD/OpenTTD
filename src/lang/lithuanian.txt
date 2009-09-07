@@ -2613,15 +2613,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pervadinti grupę
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nauji Traukiniai
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nauji Elektriniai Traukiniai
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nauji Vienbegiai Traukiniai
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nauji „Maglev“ traukiniai
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nauji Traukiniai
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nauji Elektriniai Traukiniai
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nauji Vienbegiai Traukiniai
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nauji „Maglev“ traukiniai
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Traukiniai
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nauji automobiliai
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nauji laivai
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Naujas lektuvas
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Traukiniai
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nauji automobiliai
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nauji laivai
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Naujas lektuvas
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Svoris: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK}   Galia: {GOLD}{POWER}
@@ -2640,30 +2640,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Visus krovinių
 STR_PURCHASE_INFO_ALL_BUT                                       :Visus, išskyrus {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Did. traukiamoji galia: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Transporto priemoniu pasirinkimo sarasas - paspausk ant priemones, kad gautum daugiau informacijos
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Laivu sarasas - paspausk ant laivo, jei nori detalesnes informacijos
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Lektuvu sarasas - paspausk ant lektuvo, jei nori daugiau informacijos
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Transporto priemoniu pasirinkimo sarasas - paspausk ant priemones, kad gautum daugiau informacijos
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Laivu sarasas - paspausk ant laivo, jei nori detalesnes informacijos
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lektuvu sarasas - paspausk ant lektuvo, jei nori daugiau informacijos
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Pirkti
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Isigyti priemone
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Nupirkti Laiva
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Isigyti lektuva
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Pirkti
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Isigyti priemone
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Nupirkti Laiva
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Isigyti lektuva
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Isigyti pazymeta transporto priemone
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Isigyti pazymeta automobili
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Statyti pazymeta laiva
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Statyti pazymeta lektuva
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Isigyti pazymeta transporto priemone
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Isigyti pazymeta automobili
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Statyti pazymeta laiva
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Statyti pazymeta lektuva
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Pervardinti
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Pervardinti
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Pervardinti
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Pervardinti
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Pervardinti
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Pervardinti
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Pervardinti
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Pervardinti
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Pervardinti traukinio tipa
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Pervardinti automobiliu tipa
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Pakeisti laivo tipa
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Pakeisti lektuvo varda
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Pervardinti traukinio tipa
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Pervardinti automobiliu tipa
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Pakeisti laivo tipa
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pakeisti lektuvo varda
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pervardinti traukinio tipa
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pervardinti automobiliu tipa
@@ -3408,10 +3408,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Negalima
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nusiusti i laivu depa negalima...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Negalima lektuvo nusiusti i angara...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Gelezinkelio transporto priemones nupirkti negalima...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Automobilio isigyti negalima...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Laivo isigyti negalima...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Negalima isigyti lektuvo...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Gelezinkelio transporto priemones nupirkti negalima...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Automobilio isigyti negalima...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Laivo isigyti negalima...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Negalima isigyti lektuvo...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Neimanoma pervardinti traukinio tipo...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Negali pervardinti automobliu tipo...

@@ -2614,15 +2614,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjarlægja öll
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endurnefna hóp
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Lestaúrval
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nýjir rafdrifnir lestarvagnar
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nýir einteingungsvagnar
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nýir segullestarvagnar
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Lestaúrval
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nýjir rafdrifnir lestarvagnar
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nýir einteingungsvagnar
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nýir segullestarvagnar
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Járnbrautarlestir
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bifreiðaúrval
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Skipaúrval
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Flugvélaúrval
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Járnbrautarlestir
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Bifreiðaúrval
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Skipaúrval
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Flugvélaúrval
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Afl: {GOLD}{POWER}
@@ -2642,30 +2642,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Allar tegundir 
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks : {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flugvélalisti - smelltu á flugvél fyrir nánari upplýsingar
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flugvélalisti - smelltu á flugvél fyrir nánari upplýsingar
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kaupa vagn
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kaupa bifreið
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kaupa skip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kaupa flugvél
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kaupa vagn
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kaupa bifreið
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kaupa skip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kaupa flugvél
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kaupa valinn lestarvagn
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kaupa valda bifreið
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kaupa valið skip
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Kaupa valda flugvél
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kaupa valinn lestarvagn
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kaupa valda bifreið
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kaupa valið skip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kaupa valda flugvél
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Endurnefna
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Endurnefna
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Endurnefna
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Endurnefna
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Endurnefna
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Endurnefna lestarvagnstegund
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endurnefna tegund bifreiðar
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Endurnefna skipategund
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Endurnefna tegund flugvélar
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Endurnefna lestarvagnstegund
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endurnefna tegund bifreiðar
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endurnefna skipategund
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endurnefna tegund flugvélar
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Endurskíra lestargerð
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endurnefna tegund bifreiðar
@@ -3452,10 +3452,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Get ekki
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Get ekki sent skip í slipp...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Get ekki sent flugvél í flugskýli...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Get ekki byggt lest...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Get ekki byggt bíl...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Get ekki smíðað skip...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Get ekki smíðað flugvél...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Get ekki byggt lest...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Get ekki byggt bíl...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Get ekki smíðað skip...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Get ekki smíðað flugvél...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Get ekki endurskírt lestargerð...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} Get ekki endurnefnat tegund bifreiðar...

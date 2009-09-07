@@ -2629,15 +2629,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehi
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
 
 # Build vehicle window
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}New Rail Vehicles
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}New Electric Rail Vehicles
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}New Monorail Vehicles
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}New Maglev Vehicles
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}New Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}New Electric Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}New Monorail Vehicles
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}New Maglev Vehicles
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}New Rail Vehicles
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}New Road Vehicles
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}New Ships
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}New Aircraft
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}New Rail Vehicles
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}New Road Vehicles
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}New Ships
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}New Aircraft
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
@@ -2657,30 +2657,30 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Train vehicle selection list - click on vehicle for information
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Road vehicle selection list - click on vehicle for information
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Ship selection list - click on ship for information
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Aircraft selection list - click on aircraft for information
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Train vehicle selection list - click on vehicle for information
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Road vehicle selection list - click on vehicle for information
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Ship selection list - click on ship for information
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aircraft selection list - click on aircraft for information
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Build Vehicle
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Build Vehicle
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Build Ship
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Build Aircraft
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Build Vehicle
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Build Vehicle
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Build Ship
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Build Aircraft
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Build the highlighted train vehicle
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Build the highlighted road vehicle
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Build the highlighted ship
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Build the highlighted aircraft
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Build the highlighted train vehicle
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Build the highlighted road vehicle
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Build the highlighted ship
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Build the highlighted aircraft
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Rename
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Rename
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Rename
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Rename
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Rename
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Rename
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Rename
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Rename
 
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Rename train vehicle type
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Rename road vehicle type
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Rename ship type
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Rename aircraft type
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Rename train vehicle type
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Rename road vehicle type
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Rename ship type
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Rename aircraft type
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Rename train vehicle type
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Rename road vehicle type
@@ -3471,10 +3471,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Can't se
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Can't send ship to depot...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Can't send aircraft to hangar...
 
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Can't build railway vehicle...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Can't build road vehicle...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Can't build ship...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Can't build aircraft...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Can't build railway vehicle...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Can't build road vehicle...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Can't build ship...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Can't build aircraft...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Can't rename train vehicle type...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Can't rename road vehicle type...
