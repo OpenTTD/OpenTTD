@@ -17,6 +17,7 @@
 #include "../../string_func.h"
 #include "../../fileio_func.h"
 #include "../../strings_func.h"
+#include "../../gamelog.h"
 
 #include <windows.h>
 
@@ -366,6 +367,14 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		ExitProcess(2);
 	}
 
+	if (GamelogTestEmergency()) {
+		static const TCHAR _emergency_crash[] =
+			_T("A serious fault condition occured in the game. The game will shut down.\n")
+			_T("As you loaded an emergency savegame no crash information will be generated.\n");
+		MessageBox(NULL, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		ExitProcess(3);
+	}
+
 	CrashLogWindows *log = new CrashLogWindows(ep);
 	CrashLogWindows::current = log;
 	log->FillCrashLog(log->crashlog, lastof(log->crashlog));
@@ -426,10 +435,6 @@ static const TCHAR _save_succeeded[] =
 	_T("Emergency save succeeded.\n")
 	_T("Be aware that critical parts of the internal game state may have become ")
 	_T("corrupted. The saved game is not guaranteed to work.");
-
-static const TCHAR _emergency_crash[] =
-	_T("A serious fault condition occured in the game. The game will shut down.\n")
-	_T("As you loaded an emergency savegame no crash information will be generated.\n");
 
 static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide report <<") };
 
