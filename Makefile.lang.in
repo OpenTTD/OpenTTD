@@ -5,20 +5,20 @@
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 
-STRGEN       = !!STRGEN!!
-ENDIAN_CHECK = !!ENDIAN_CHECK!!
-SRC_DIR      = !!SRC_DIR!!
-LANG_DIR     = !!LANG_DIR!!
-BIN_DIR      = !!BIN_DIR!!
-LANGS_SRC    = $(shell ls $(LANG_DIR)/*.txt)
-LANGS        = $(LANGS_SRC:$(LANG_DIR)/%.txt=%.lng)
-CXX_BUILD    = !!CXX_BUILD!!
-CFLAGS_BUILD = !!CFLAGS_BUILD!!
-LDFLAGS_BUILD= !!LDFLAGS_BUILD!!
-STRGEN_FLAGS = !!STRGEN_FLAGS!!
-STAGE        = !!STAGE!!
-LANG_SUPPRESS= !!LANG_SUPPRESS!!
-LANG_OBJS_DIR= !!LANG_OBJS_DIR!!
+STRGEN        = !!STRGEN!!
+ENDIAN_CHECK  = !!ENDIAN_CHECK!!
+SRC_DIR       = !!SRC_DIR!!
+LANG_DIR      = !!LANG_DIR!!
+BIN_DIR       = !!BIN_DIR!!
+LANGS_SRC     = $(shell ls $(LANG_DIR)/*.txt)
+LANGS         = $(LANGS_SRC:$(LANG_DIR)/%.txt=%.lng)
+CXX_BUILD     = !!CXX_BUILD!!
+CFLAGS_BUILD  = !!CFLAGS_BUILD!!
+LDFLAGS_BUILD = !!LDFLAGS_BUILD!!
+STRGEN_FLAGS  = !!STRGEN_FLAGS!!
+STAGE         = !!STAGE!!
+LANG_SUPPRESS = !!LANG_SUPPRESS!!
+LANG_OBJS_DIR = !!LANG_OBJS_DIR!!
 
 ifeq ($(LANG_SUPPRESS), yes)
 LANG_ERRORS = >/dev/null 2>&1
