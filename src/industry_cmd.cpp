@@ -176,10 +176,18 @@ Industry::~Industry()
 
 	DeleteIndustryNews(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
-	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 
 	DeleteSubsidyWith(ST_INDUSTRY, this->index);
 	CargoPacket::InvalidateAllFrom(ST_INDUSTRY, this->index);
+}
+
+/**
+ * Invalidating some stuff after removing item from the pool.
+ * @param index index of deleted item
+ */
+void Industry::PostDestructor(size_t index)
+{
+	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 	Station::RecomputeIndustriesNearForAll();
 }
 

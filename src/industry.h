@@ -84,6 +84,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	}
 
 	static Industry *GetRandom();
+	static void PostDestructor(size_t index);
 };
 
 void PlantRandomFarmField(const Industry *i);
