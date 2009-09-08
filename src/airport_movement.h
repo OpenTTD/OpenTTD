@@ -271,8 +271,8 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	{   56, -168, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 45 Fly around waiting for a landing spot (south-west)
 	{  312,   88, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 46 Fly around waiting for a landing spot (south)
 	/* Helicopter */
-	{   96,   40, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 47 Bufferspace before helipad
-	{   96,   40, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 48 Bufferspace before helipad
+	{   96,   40, AMED_NOSPDCLAMP,                 {DIR_N} }, // 47 Bufferspace before helipad
+	{   96,   40, AMED_NOSPDCLAMP,                 {DIR_N} }, // 48 Bufferspace before helipad
 	{   82,   54, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 49 Get in position for Helipad1
 	{   64,   56, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 50 Get in position for Helipad2
 	{   81,   55, AMED_HELI_LOWER,                 {DIR_N} }, // 51 Land at Helipad1
