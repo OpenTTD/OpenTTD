@@ -1686,7 +1686,7 @@ STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduce el texto para el chat en red
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No se han encontrado dispositivos de red o juego compilado sin soporte de red
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}No se pudo encontrar ningún juego en red
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}El servidor no responde a la petición
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}No se pudo conectar debido a incompatibilidad de NewGRF
@@ -1706,15 +1706,15 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}No se pe
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
-STR_NETWORK_ERROR_CLIENT_DESYNC                                 :error de desync
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :error de desincronización
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :no se puede cargar el mapa
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :conexión perdida
-STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :error protocolo
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF erroneo
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :error de protocolo
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF erróneo
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :no autorizado
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recibido paquete extraño
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versión incorrecta
-STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :este nombre ya está en uso
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nombre en uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contraseña incorrecta
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :error en el id de la empresa en el DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :expulsado por el servidor
@@ -1725,7 +1725,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor lleno
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Juego detenido (no hay suficientes jugadores)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Juego en pausa (no hay suficientes jugadores)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Juego en marcha (suficientes jugadores)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Juego detenido (conectado cliente)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Juego en marcha (cliente conectado)
@@ -1733,9 +1733,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Juego en marcha
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abandonando
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se ha unido al juego
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ha entrado en al compañía #{2:NUM}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha entrado como espectador
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha comenzado una nueva compañía (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se ha unido al juego (Cliente #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se ha unido a la compañía #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se ha unido como espectador
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha creado una nueva compañía (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abandonado el juego ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiado su nombre a {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} da a tu compañia {2:CURRENCY}
@@ -1847,7 +1848,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Arrastrar construye señales en el trozo de ferrocarril recorrido. Arrastrar+Ctrl construye señales hasta el próximo cruce{}Ctrl+Click no abre la ventana de selección de señales
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviario
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar tramos y señales de ferrocarril
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar vias, señales, estaciones y puntos de ruta de ferrocarril. Ctrl+Click retirará también la vía al retirar estaciones y puntos de ruta.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de raíl
 
 # Rail depot construction window

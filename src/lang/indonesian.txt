@@ -2356,6 +2356,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Masukkan
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kota
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Tidak Ada -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama Kota - Klik pada nama untuk memindahkan ke tengah
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
@@ -2544,6 +2545,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami men
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tidak Ada -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% terkirim)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% terkirim)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

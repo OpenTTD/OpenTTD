@@ -930,7 +930,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}У ТС «{VEHICLE}» не хватает заданий
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}У ТС «{VEHICLE}» нет заданий
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}У ТС «{VEHICLE}» неверное задание
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}У ТС «{VEHICLE}» повторяющиеся задания
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}У ТС «{VEHICLE}» неправильное место назначения
 # end of order system
@@ -2075,8 +2075,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Стро
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строительство трамвайных путей
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Строительство автодорог в автоматическом режиме
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строительство трамвайных путей в автоматическом режиме
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строительство гаражей (для закупки и обслуживания машин)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строительство трамвайных депо (для закупки и обслуживания трамваев)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строительство гаражей (для приобретения и обслуживания машин)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строительство трамвайных депо (для приобретения и обслуживания трамваев)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строительство автобусных остановок. Нажатие Ctrl позволяет объединять станции.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строительство трамвайных остановок. Нажатие Ctrl позволяет объединять станции.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строительство погрузочных станций. Нажатие Ctrl позволяет объединять станции.
@@ -2110,7 +2110,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Стро
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водные пути
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Строительство каналов
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Строительство шлюзов
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для строительства и обслуживания кораблей)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для приобретения и обслуживания кораблей)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Строительство пристаней. Нажатие Ctrl позволяет объединять станции.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Буи помогают в навигации на больших расстояниях; используйте их как маршрутные точки
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Строительство акведуков
@@ -2823,8 +2823,8 @@ STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Спис
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Авиатранспорт - нажмите для получения справки
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купить
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купить
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купить
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купить автомобиль
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купить корабль
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купить
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купить выбранный локомотив/вагон

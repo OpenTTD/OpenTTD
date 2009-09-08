@@ -1842,7 +1842,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Costruzi
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Costruisce binari. CTRL alterna costruzione/rimozione.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Costruisce binari usando la modalità automatica. CTRL alterna costruzione/rimozione.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Costruisce un deposito ferroviario (per costruire e manutenere i treni)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Costruisce un deposito ferroviario (per comprare e manutenere i treni)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Trasforma la rotaia in un waypoint. CTRL abilita l'unione con altri waypoint.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Costruisce una stazione ferroviaria. CTRL abilita l'unione con altre stazioni.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Costruisce i segnali ferroviari. CTRL alterna segnali semaforici/luminosi.{}Trascinare il cursore per costruire segnali su un tratto rettilineo di rotaie, con CTRL per andare automaticamente fino al raccordo successivo.{}Tenere premuto CTRL mentre si attiva il pulsante per non aprire la finestra segnali.
@@ -1917,8 +1917,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Costruis
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Costruisce una sezione di tranvia. CTRL alterna costruzione/rimozione.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Costruisce sezioni di strada usando la modalità automatica. CTRL alterna costruzione/rimozione.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica. CTRL alterna costruzione/rimozione.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito automezzi (per costruire e manutenere i veicoli)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito tranviario (per costruire e manutenere i veicoli)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito automezzi (per comprare e manutenere i veicoli)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito tranviario (per comprare e manutenere i veicoli)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Costruisce una stazione degli autobus. CTRL abilita l'unione con altre stazioni.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Costruisce una stazione tram passeggeri. CTRL abilita l'unione con altre stazioni.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Costruisce un'area di carico per camion. CTRL abilita l'unione con altre stazioni.
@@ -1952,7 +1952,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Costr. t
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Trasporti su acqua
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Costruisce canali
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Costruisce chiuse per i canali
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Costruisce un deposito navale (per costruire e manutenere le navi)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Costruisce un deposito navale (per comprare e manutenere le navi)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruisce un molo per le navi. CTRL abilita l'unione con altre stazioni.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto
@@ -1996,7 +1996,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modellaz
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abbassa un angolo del terreno
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un angolo del terreno
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella terreno
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra terreno per usi futuri
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Alberi
@@ -2400,7 +2400,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grande campagna
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finanzia ricostruzione delle strade
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Costruisci statua del proprietario della compagnia
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finanzia nuove costruzioni
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra l'esclusiva sui trasporti
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acquista esclusiva sui trasporti
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompi l'autorità locale
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Inizia una piccola campagnia pubblicitaria, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
@@ -2409,7 +2409,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Finanzia la ricostruzione della rete stradale cittadina. Causa un cosiderabile disagio al traffico stradale per 6 mesi.{}Costo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Costruisce una statua in onore della compagnia.{}Costo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Finanzia la costruzione di nuovi edifici commerciali nella città.{}Costo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Compra un 1 di diritti di trasporto esclusivi in città. L'autorità cittadina permetterà a passeggeri e merci di usare solo le stazioni della compagnia.{}Costo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Acquista un anno di diritti di trasporto esclusivi in città. L'autorità cittadina permetterà a passeggeri e merci di usare solo le stazioni della compagnia.{}Costo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Corrompi l'autorità locale per autmentare la tua valutazione, con il rischio di una severa multa se scoperto.{}Costo: {CURRENCY}
 
 # Subsidies window
@@ -2537,8 +2537,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambia i
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Compra il 25% delle azioni
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendi il 25% delle azioni
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra il 25% delle azioni di questa compagnia
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende il 25% delle azioni di questa compagnia
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra una quota del 25% di questa compagnia
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome della compagnia
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome del presidente
@@ -2664,15 +2664,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Elenco s
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Elenco selezione navi - fare clic su una nave per informazioni
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Elenco selezione aeromobili - fare clic su un aeromobile per informazioni
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Costruisci veicolo
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Costruisci veicolo
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Costruisci nave
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Costruisci aeromobile
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Compra veicolo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra veicolo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Compra nave
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Compra aeromobile
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Costruisce il veicolo ferroviario selezionato
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Costruisce l'automezzo selezionato
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Costruisce la nave selezionata
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Costruisce l'aeromobile selezionato
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra il veicolo ferroviario selezionato
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automezzo selezionato
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra la nave selezionata
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'aeromobile selezionato
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Rinomina
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Rinomina
@@ -2727,20 +2727,20 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nuovi ve
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nuove navi
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nuovo aeromobile
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Costruisce un nuovo veicolo ferroviario
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Costruisce un nuovo automezzo
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Costruisce una nuova nave
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Costruisce un nuovo aeromobile
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Compra un nuovo veicolo ferroviario
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Compra un nuovo automezzo
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Compra una nuova nave
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Compra un nuovo aeromobile
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clona treno
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona automezzo
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona nave
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona aeromobile
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Costruisce una copia di un treno, inclusi tutti i vagoni. Fare clic su questo pulsante e quindi su un treno dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Costruisce una copia di un automezzo. Fare clic su questo pulsante e quindi su un automezzo dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Costruisce una copia di una nave. Fare clic su questo pulsante e quindi su una nave dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Costruisce una copia di un aeromobile. Fare clic su questo pusalnte e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per convidivere gli ordini.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Compra una copia di un treno, inclusi tutti i vagoni. Fare clic su questo pulsante e quindi su un treno dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Compra una copia di un automezzo. Fare clic su questo pulsante e quindi su un automezzo dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Compra una copia di una nave. Fare clic su questo pulsante e quindi su una nave dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Compra una copia di un aeromobile. Fare clic su questo pusalnte e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per convidivere gli ordini
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del deposito ferroviario. CTRL+clic lo mostra in una mini visuale.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del deposito automezzi. CTRL+clic lo mostra in una mini visuale.
@@ -2823,10 +2823,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Manda l'
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Manda la nave al deposito. CTRL+clic per eseguire solo una manutenzione
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Manda l'aeromobile all'hangar. CTRL+clic per eseguire solo una manutenzione
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Costruisce una copia del treno, inclusi tutti i vagoni. Tenere premuto CTRL per condividere gli ordini.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Costruisce una copia dell'automezzo. Tenere premuto CTRL per condividere gli ordini
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Costruisce una copia della nave. Tenere premuto CTRL per condividere gli ordini
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Costruisce una copia dell'aeromobile. Tenere premuto CTRL per condividere gli ordini
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Compra una copia del treno, inclusi tutti i vagoni. Tenere premuto CTRL per condividere gli ordini
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Compra una copia dell'automezzo. Tenere premuto CTRL per condividere gli ordini
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Compra una copia della nave. Tenere premuto CTRL per condividere gli ordini
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Compra una copia dell'aeromobile. Tenere premuto CTRL per condividere gli ordini
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forza il treno a proseguire senza aspettare il segnale di via libera
 
@@ -3473,10 +3473,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossib
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Impossibile mandare la nave al deposito...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Impossibile mandare l'aeromobile all'hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Impossibile costruire il veicolo ferroviario...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Impossibile costruire l'automezzo...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Impossibile costruire la nave...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossibile costruire l'aeromobile...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Impossibile comprare il veicolo ferroviario...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Impossibile comprare l'automezzo...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Impossibile comprare la nave...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossibile comprare l'aeromobile...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Impossibile rinominare il tipo di veicolo ferroviario...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossibile rinominare il tipo di automezzo...

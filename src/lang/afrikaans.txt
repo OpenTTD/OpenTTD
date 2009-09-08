@@ -249,10 +249,12 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Hoogte verskil: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populasie
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Naam
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
+# These are used in dropdowns
+STR_SORT_BY_NAME                                                :Naam
 STR_SORT_BY_PRODUCTION                                          :Produksie
 STR_SORT_BY_TYPE                                                :Tipe
 STR_SORT_BY_TRANSPORTED                                         :Vervoer
@@ -425,6 +427,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskap Geskid
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebied informasie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel troos
+STR_ABOUT_MENU_AI_DEBUG                                         :AI ontfout
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermskoot (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Groot Skermskoot (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oor 'OpenTTD'
@@ -772,6 +775,8 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insek vervuiling oorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produksie by {INDUSTRY} verminder {COMMA}%!
 
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} wag in depot
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wag in depot
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wag in die vliegtuig hangar
 
 # Start of order review system.
@@ -921,6 +926,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} verlore / korrupte ler{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Addisioneel informasie oor die basis grapfieke stel
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basiese klank stel
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kies die basiese klank stel om te gebruik
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Addisionele informasie oor die basiese klank stel
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Volskerm metode gedop
 
@@ -1160,6 +1168,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laas beskikbaar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meeste gebruik
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Wys geresrveerde spore: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bou gereedskap aktief na gebruik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Groep uitgawes in maatskappy finansies venster: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Toon gebou gereedskap wanneer geen geskik voertuie is beskikbaar : {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max treine per speler: {ORANGE}{STRING}
@@ -1201,11 +1210,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Blok seine alee
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Pad seinligte alleenlik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Pad uitleg vir nuwe dorpe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :verstek
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :beter paaie
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :lukraak
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Dorpe toegelaat om paaie te bou: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
@@ -1685,6 +1696,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :verskaffer vol
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Speletjie gepoos (not enough players)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Speletjie ongepoos (genoeg spelers)
@@ -1693,6 +1705,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Speletjie gepoo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} het by die spel aangesluit
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} het by besigheid  #{2:NUM} aangesluit
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} het aangesluit by die spektators
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} begin 'n nuwe maatskappy (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} het die spel verlaat ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} het sy/haar naam verander na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} het jou besigheid {2:CURRENCY} gegee
@@ -1702,10 +1715,12 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Die ver
 
 # Content downloading window
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipe
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipe inhoud
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Naam van die inhoud
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selekteer alles
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merk al die inhoud wat afgelaai moet word
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selekteer opgraderings
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alle inhoud wat nie afgelaai moet word nie
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Begin om die geselekteerde inligting af te laai
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jy het nie dit geselekteer om af te laai nie
@@ -1713,6 +1728,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het 
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basiese klanke
 
 # Content downloading progress window
 
@@ -2244,6 +2260,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tik 'n n
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Dorpe
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Geen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Dorp naam - kliek naam om skerm op stad te senter
 STR_TOWN_POPULATION                                             :{BLACK}Wêreld populasie: {COMMA}
@@ -2254,6 +2271,7 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populasie: {ORANGE}{COMMA}{BLACK}  Huise: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasiers verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pos verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} vereis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} gelewer laas maand
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geraaas limit in dorp: {ORANGE}{COMMA}{BLACK}  Maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Senter skerm op dorp lokasie
@@ -2309,6 +2327,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasie n
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hou in CTRL om meer as een item te selekteer
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasie{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Kies alle fakulteite
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Kies alle vrag tipes (geen wag vrag ingesluit)
@@ -2352,6 +2371,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem stasie/
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander wegpunt name
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander baken naam
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer wegpunt naam
 
@@ -2530,6 +2550,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Be
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kos: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewig: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Spoed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteit: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Self Krag Waens: {GOLD}+{POWER}{BLACK} Gewig: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herpasbaar na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrag tipes
@@ -2777,8 +2798,13 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Benaam v
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar re} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. spoed: {LTBLUE}{VELOCITY}
 
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY} (vorige jaar: {CURRENCY})
 
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasiteit: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}oordra Krediete: {LTBLUE}{CURRENCY}
 
@@ -2931,6 +2957,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Herpas na {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Herpas na {STRING} en stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -2951,6 +2978,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Geen aflaai en
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Geen aflaay en wag vir eenigge vol vrag)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[naby einde]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[ver einde]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Spring oor na bevel {COMMA}
@@ -3006,6 +3034,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Die AI 
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Konfigurasie
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AIs wat in die volgende spel  gelaai gaan word
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mens Speler
+STR_AI_CONFIG_RANDOM_AI                                         :Lukraak AI
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Kies AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laai nog 'n AI
@@ -3017,6 +3046,8 @@ STR_AI_LIST_CAPTION                                             :{WHITE}Beskikba
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliek om 'n AI te kies
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Skrywer: {STRING}
+STR_AI_LIST_VERSION                                             :{BLACK}Weergawe: {NUM}
+STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aanvaar
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Kies beligte AI
@@ -3026,6 +3057,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Moenie A
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
+STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3216,6 +3248,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtui
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treine kan slegs verander word as hulle in die depot gestop is
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lank
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan nie rigting van voertuig omkeer nie...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan nie voertuie van veel deele draai nie
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Onbestaaanbaar spoor tipes
 
@@ -3487,6 +3520,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Lughaw
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olieveld
 STR_SV_STNAME_MINES                                             :{STRING} Myne
 STR_SV_STNAME_DOCKS                                             :{STRING} Werfe
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anneks
 STR_SV_STNAME_SIDINGS                                           :{STRING} Wisselspoore
@@ -3764,6 +3799,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Baken
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Baken #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Groep {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
