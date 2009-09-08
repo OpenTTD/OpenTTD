@@ -1073,7 +1073,7 @@ static bool AircraftController(Aircraft *v)
 			if (newdir != v->direction) {
 				if (amd->flag & AMED_SLOWTURN) {
 					if (v->load_unload_time_rem == 0 || newdir == v->last_direction) {
-						v->load_unload_time_rem = 8;
+						v->load_unload_time_rem = 1 << (_settings_game.vehicle.plane_speed - 1);
 						v->last_direction = v->direction;
 						v->direction = newdir;
 					}
