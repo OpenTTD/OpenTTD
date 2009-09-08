@@ -141,11 +141,10 @@ static const char *GetLocalCode()
 #endif
 }
 
-/** FYI: This is not thread-safe.
- * convert between locales, which from and which to is set in the calling
- * functions OTTD2FS() and FS2OTTD(). You should NOT use this function directly
- * NOTE: iconv was added in OSX 10.3. 10.2.x will still have the invalid char
- * issues. There aren't any easy fix for this */
+/**
+ * Convert between locales, which from and which to is set in the calling
+ * functions OTTD2FS() and FS2OTTD().
+ */
 static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 {
 	static char buf[1024];
@@ -153,7 +152,7 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 	 * non-const. Correct implementation is at
 	 * http://www.opengroup.org/onlinepubs/007908799/xsh/iconv.html */
 #ifdef HAVE_BROKEN_ICONV
-	char *inbuf = (char*)name;
+	char *inbuf = const_cast<char*>(name);
 #else
 	const char *inbuf = name;
 #endif
