@@ -61,6 +61,13 @@
  *     API version 0.7 is assumed. This function should return the major and
  *     minor number of the stable version of the API the AI is written against.
  *     For 0.7.2 that would be 0.7, for 1.1.3 it would be 1.1, etc.
+ * \li The subsidy logic has changed. Subsidy is now awarded when cargo
+ *     originating from subsidy source is delivered to station that has subsidy
+ *     destination it its catchment area. One industry tile or one town house
+ *     is enough as long as station accepts the cargo. Awarded subsidies are no
+ *     longer bound to stations used for first delivery, any station can be
+ *     used for loading and unloading as long as cargo is transfered from
+ *     source to destination.
  *
  * \b 0.7.3
  *
