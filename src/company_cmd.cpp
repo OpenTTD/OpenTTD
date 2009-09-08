@@ -69,8 +69,16 @@ Company::~Company()
 	if (CleaningPool()) return;
 
 	DeleteCompanyWindows(this->index);
-	InvalidateWindowData(WC_GRAPH_LEGEND, 0, this->index);
-	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, this->index);
+}
+
+/**
+ * Invalidating some stuff after removing item from the pool.
+ * @param index index of deleted item
+ */
+void Company::PostDestructor(size_t index)
+{
+	InvalidateWindowData(WC_GRAPH_LEGEND, 0, index);
+	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, index);
 }
 
 /**

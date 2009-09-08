@@ -1198,11 +1198,11 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		/* Disable the companies who are not active */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i) || i == data);
+			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i));
 		}
 
 		/* Check if the currently selected company is still active. */
-		if (this->company == data || (this->company != INVALID_COMPANY && !Company::IsValidID(this->company))) {
+		if (this->company != INVALID_COMPANY && !Company::IsValidID(this->company)) {
 			/* Raise the widget for the previous selection. */
 			this->RaiseWidget(this->company + PRW_COMPANY_FIRST);
 			this->company = INVALID_COMPANY;
@@ -1211,7 +1211,6 @@ struct PerformanceRatingDetailWindow : Window {
 		if (this->company == INVALID_COMPANY) {
 			const Company *c;
 			FOR_ALL_COMPANIES(c) {
-				if (c->index == data) continue; // Ignore to-be-removed company
 				this->company = c->index;
 				break;
 			}

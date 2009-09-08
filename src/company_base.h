@@ -103,6 +103,8 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 	{
 		return !Company::Get(index)->is_ai;
 	}
+
+	static void PostDestructor(size_t index);
 };
 
 #define FOR_ALL_COMPANIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Company, company_index, var, start)
