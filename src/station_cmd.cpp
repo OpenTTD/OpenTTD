@@ -727,7 +727,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 			 * build isn't a rail station it's INVALID_RAILTYPE. */
 			if (rt != INVALID_RAILTYPE &&
 					IsPlainRailTile(tile_cur) && !HasSignals(tile_cur) &&
-					HasPowerOnRail(GetRailType(tile), rt)) {
+					HasPowerOnRail(GetRailType(tile_cur), rt)) {
 				/* Allow overbuilding if the tile:
 				 *  - has rail, but no signals
 				 *  - it has exactly one track
