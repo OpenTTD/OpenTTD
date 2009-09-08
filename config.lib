@@ -1366,7 +1366,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DWITH_ICU"
 		CFLAGS="$CFLAGS `$icu_config --cppflags | tr '\n\r' '  '`"
 
-		LIBS="$LIBS `$icu_config --ldflags-libsonly | tr '\n\r' '  '`"
+		LIBS="$LIBS `$icu_config --ldflags-searchpath --ldflags-libsonly | tr '\n\r' '  '`"
 	fi
 
 
@@ -2409,9 +2409,9 @@ detect_icu() {
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -lt "20" ]; then
-		if [ -n "$shortversion" ] && [ "$shortversion" -lt "20" ]; then
-			log 1 "checking libicu... needs at least version 2.0.0, icu NOT enabled"
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -lt "22" ]; then
+		if [ -n "$shortversion" ] && [ "$shortversion" -lt "22" ]; then
+			log 1 "checking libicu... needs at least version 2.2.0, icu NOT enabled"
 		else
 			log 1 "checking libicu... not found"
 		fi
