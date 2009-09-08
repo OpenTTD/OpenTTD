@@ -1366,7 +1366,8 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DWITH_ICU"
 		CFLAGS="$CFLAGS `$icu_config --cppflags | tr '\n\r' '  '`"
 
-		LIBS="$LIBS `$icu_config --ldflags-searchpath --ldflags-libsonly | tr '\n\r' '  '`"
+		# Some icu-configs have the 'feature' of not adding a space where others do add the space
+		LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly | tr '\n\r' '  '`"
 	fi
 
 
