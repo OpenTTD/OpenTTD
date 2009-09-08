@@ -429,10 +429,11 @@ static const TCHAR _crash_desc[] =
 	_T("Please send the crash information and the crash.dmp file (if any) to the developers.\n")
 	_T("This will greatly help debugging. The correct place to do this is http://bugs.openttd.org. ")
 	_T("The information contained in the report is displayed below.\n")
-	_T("Press \"Emergency save\" to attempt saving the game.");
+	_T("Press \"Emergency save\" to attempt saving the game. Generated file(s):\n")
+	_T("'%s%s%s'");
 
 static const TCHAR _save_succeeded[] =
-	_T("Emergency save succeeded.\n")
+	_T("Emergency save succeeded. Its location is '%s'.\n")
 	_T("Be aware that critical parts of the internal game state may have become ")
 	_T("corrupted. The saved game is not guaranteed to work.");
 
@@ -479,7 +480,14 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			}
 			*p = '\0';
 
-			SetDlgItemText(wnd, 10, _crash_desc);
+			/* Add path to crash.log and crash.dmp (if any) to the crash window text */
+			int len = _tcslen(_crash_desc) + _tcslen(OTTD2FS(CrashLogWindows::current->crashlog_filename)) + _tcslen(OTTD2FS(CrashLogWindows::current->crashdump_filename)) + 4;
+			TCHAR *text = AllocaM(TCHAR, len);
+			TCHAR *dump = _tcsdup(OTTD2FS(CrashLogWindows::current->crashdump_filename));
+			_sntprintf(text, len, _crash_desc, OTTD2FS(CrashLogWindows::current->crashlog_filename), dump[0] != _T('\0') ? _T("'\n'") : _T(""), dump);
+			free(dump);
+
+			SetDlgItemText(wnd, 10, text);
 			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(dos_nl, crash_msgW, lengthof(crash_msgW)));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 			SetWndSize(wnd, -1);
@@ -492,7 +500,10 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 				case 13: // Emergency save
 					char filename[MAX_PATH];
 					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
-						MessageBox(wnd, _save_succeeded, _T("Save successful"), MB_ICONINFORMATION);
+						int len = _tcslen(_save_succeeded) + _tcslen(OTTD2FS(filename)) + 1;
+						TCHAR *text = AllocaM(TCHAR, len);
+						_sntprintf(text, len, _save_succeeded, OTTD2FS(filename));
+						MessageBox(wnd, text, _T("Save successful"), MB_ICONINFORMATION);
 					} else {
 						MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
 					}
