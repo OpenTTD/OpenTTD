@@ -1217,14 +1217,16 @@ restart:
  * @param affected_stations the stations affected
  * @param flags the command flags
  * @param removal_cost the cost for removing the tile
+ * @param keep_rail whether to keep the rail of the station
  * @tparam T the type of station to remove
  * @return the number of cleared tiles or an error
  */
 template <class T>
-CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected_stations, DoCommandFlag flags, Money removal_cost)
+CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected_stations, DoCommandFlag flags, Money removal_cost, bool keep_rail)
 {
 	/* Count of the number of tiles removed */
 	int quantity = 0;
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
 	/* Do the action for every tile into the area */
 	TILE_LOOP(tile, ta.w, ta.h, ta.tile) {
@@ -1267,7 +1269,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 				}
 			}
 
-			if (st->facilities & FACIL_WAYPOINT) {
+			if (keep_rail) {
 				MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
 			} else {
 				DoClearSquare(tile);
@@ -1287,6 +1289,10 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 				for (; v->Next() != NULL; v = v->Next()) ;
 				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 			}
+		}
+		if (keep_rail) {
+			/* Don't refund the 'steel' of the track! */
+			total_cost.AddCost(-_price.remove_rail);
 		}
 	}
 
@@ -1310,7 +1316,8 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, quantity * removal_cost);
+	total_cost.AddCost(quantity * removal_cost);
+	return total_cost;
 }
 
 /** Remove a single tile from a rail station.
@@ -1318,7 +1325,8 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
  * @param start tile of station piece to remove
  * @param flags operation to perform
  * @param p1 start_tile
- * @param p2 unused
+ * @param p2 various bitstuffed elements
+ * - p2 = bit 0 - if set keep the rail
  * @param text unused
  * @return cost of operation or error
  */
@@ -1330,7 +1338,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 	TileArea ta(start, end);
 	SmallVector<Station *, 4> affected_stations;
 
-	CommandCost ret = RemoveFromRailBaseStation(ta, affected_stations, flags, _price.remove_rail_station);
+	CommandCost ret = RemoveFromRailBaseStation(ta, affected_stations, flags, _price.remove_rail_station, HasBit(p2, 0));
 	if (ret.Failed()) return ret;
 
 	/* Do all station specific functions here. */
@@ -1351,7 +1359,8 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
  * @param start tile of waypoint piece to remove
  * @param flags operation to perform
  * @param p1 start_tile
- * @param p2 unused
+ * @param p2 various bitstuffed elements
+ * - p2 = bit 0 - if set keep the rail
  * @param text unused
  * @return cost of operation or error
  */
@@ -1363,7 +1372,7 @@ CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint
 	TileArea ta(start, end);
 	SmallVector<Waypoint *, 4> affected_stations;
 
-	return RemoveFromRailBaseStation(ta, affected_stations, flags, _price.remove_train_depot);
+	return RemoveFromRailBaseStation(ta, affected_stations, flags, _price.remove_train_depot, HasBit(p2, 0));
 }
 
 

@@ -7137,7 +7137,7 @@
     IsRailStationTile():           false
     IsRailStationTile():           true
     IsRailStationTile():           true
-    RemoveRailStationTileRect():   true
+    RemoveRailStationTileRectangle():true
     IsRailStationTile():           false
     IsRailStationTile():           true
     IsRailStationTile():           false

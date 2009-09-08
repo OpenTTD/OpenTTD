@@ -187,28 +187,20 @@
 	return AIObject::DoCommand(tile, GetCurrentRailType() | (GetRailTracks(tile) == RAILTRACK_NE_SW ? AXIS_X : AXIS_Y) << 4 | 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT);
 }
 
-/* static */ bool AIRail::RemoveRailWaypoint(TileIndex tile)
-{
-	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, IsRailWaypointTile(tile));
-
-	return AIObject::DoCommand(tile, 0, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT);
-}
-
-/* static */ bool AIRail::RemoveRailWaypointTileRect(TileIndex tile, TileIndex tile2)
+/* static */ bool AIRail::RemoveRailWaypointTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(tile2));
 
-	return AIObject::DoCommand(tile, tile2, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT);
+	return AIObject::DoCommand(tile, tile2, keep_rail ? 1 : 0, CMD_REMOVE_FROM_RAIL_WAYPOINT);
 }
 
-/* static */ bool AIRail::RemoveRailStationTileRect(TileIndex tile, TileIndex tile2)
+/* static */ bool AIRail::RemoveRailStationTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(tile2));
 
-	return AIObject::DoCommand(tile, tile2, 0, CMD_REMOVE_FROM_RAIL_STATION);
+	return AIObject::DoCommand(tile, tile2, keep_rail ? 1 : 0, CMD_REMOVE_FROM_RAIL_STATION);
 }
 
 /* static */ uint AIRail::GetRailTracks(TileIndex tile)

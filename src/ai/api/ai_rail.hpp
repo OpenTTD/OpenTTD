@@ -280,33 +280,26 @@ public:
 	static bool BuildRailWaypoint(TileIndex tile);
 
 	/**
-	 * Remove a rail waypoint.
-	 * @param tile Place to remove the waypoint from.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @pre IsRailWaypointTile(tile).
-	 * @return Whether the rail waypoint has been/can be removed or not.
-	 */
-	static bool RemoveRailWaypoint(TileIndex tile);
-
-	/**
 	 * Remove all rail waypoint pieces within a rectangle on the map.
 	 * @param tile One corner of the rectangle to clear.
 	 * @param tile2 The oppposite corner.
+	 * @param keep_rail Whether to keep the rail after removal.
 	 * @pre IsValidTile(tile).
 	 * @pre IsValidTile(tile2).
 	 * @return Whether at least one tile has been/can be cleared or not.
 	 */
-	static bool RemoveRailWaypointTileRect(TileIndex tile, TileIndex tile2);
+	static bool RemoveRailWaypointTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail);
 
 	/**
 	 * Remove all rail station platform pieces within a rectangle on the map.
 	 * @param tile One corner of the rectangle to clear.
 	 * @param tile2 The oppposite corner.
+	 * @param keep_rail Whether to keep the rail after removal.
 	 * @pre IsValidTile(tile).
 	 * @pre IsValidTile(tile2).
 	 * @return Whether at least one tile has been/can be cleared or not.
 	 */
-	static bool RemoveRailStationTileRect(TileIndex tile, TileIndex tile2);
+	static bool RemoveRailStationTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail);
 
 	/**
 	 * Get all RailTracks on the given tile.

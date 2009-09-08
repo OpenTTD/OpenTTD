@@ -76,3 +76,13 @@ AITown.GetMaxProduction <- function(town_id, cargo_id)
 {
 	return AITown.GetLastMonthProduction(town_id, cargo_id);
 }
+
+AIRail.RemoveRailWaypoint <- function(tile)
+{
+	return AIRail.RemoveRailWaypointTileRect(tile, tile, true);
+}
+
+AIRail.RemoveRailStationTileRect <- function(tile, tile2)
+{
+	return AIRail.RemoveRailStationTileRectangle(tile, tile2, false);
+}

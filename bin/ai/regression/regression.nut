@@ -964,7 +964,7 @@ function Regression::Rail()
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7957));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7958));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7959));
-	print("    RemoveRailStationTileRect():   " + AIRail.RemoveRailStationTileRect(7959, 7959));
+	print("    RemoveRailStationTileRectangle():" + AIRail.RemoveRailStationTileRectangle(7959, 7959, false));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7957));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7958));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7959));
