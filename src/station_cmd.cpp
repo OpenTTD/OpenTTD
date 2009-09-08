@@ -1928,7 +1928,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	Station *st = NULL;
-	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, 1, 1), &st);
+	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, w, h), &st);
 	if (CmdFailed(ret)) return ret;
 
 	/* Distant join */
