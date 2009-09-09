@@ -16,6 +16,7 @@
 #include "console_internal.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "debug.h"
 
 #include <stdarg.h>
 
@@ -53,7 +54,9 @@ static void IConsoleWriteToLogFile(const char *string)
 {
 	if (_iconsole_output_file != NULL) {
 		/* if there is an console output file ... also print it there */
-		if (fwrite(string, strlen(string), 1, _iconsole_output_file) != 1 ||
+		const char *header = GetLogPrefix();
+		if (fwrite(header, strlen(header), 1, _iconsole_output_file) != 1 ||
+				fwrite(string, strlen(string), 1, _iconsole_output_file) != 1 ||
 				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
 			fclose(_iconsole_output_file);
 			_iconsole_output_file = NULL;
@@ -107,7 +110,7 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
 	str_validate(str, str + strlen(str));
 
 	if (_network_dedicated) {
-		fprintf(stdout, "%s\n", str);
+		fprintf(stdout, "%s%s\n", GetLogPrefix(), str);
 		fflush(stdout);
 		IConsoleWriteToLogFile(str);
 		free(str); // free duplicated string since it's not used anymore

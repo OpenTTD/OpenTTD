@@ -102,6 +102,8 @@ struct GUISettings {
 	uint16 network_chat_box_width;           ///< width of the chat box in pixels
 	uint8  network_chat_box_height;          ///< height of the chat box in lines
 #endif
+
+	bool   show_date_in_logs;                ///< whether to show dates in console logs
 };
 
 /** Settings related to currency/unit systems. */

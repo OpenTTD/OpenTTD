@@ -10,13 +10,15 @@
 /** @file debug.cpp Handling of printing debug messages. */
 
 #include "stdafx.h"
-#include <stdio.h>
 #include <stdarg.h>
 #include "console_func.h"
 #include "debug.h"
 #include "string_func.h"
 #include "network/core/core.h"
 #include "fileio_func.h"
+#include "settings_type.h"
+
+#include <time.h>
 
 #if defined(ENABLE_NETWORK)
 SOCKET _debug_socket = INVALID_SOCKET;
@@ -74,7 +76,7 @@ static void debug_print(const char *dbg, const char *buf)
 	if (_debug_socket != INVALID_SOCKET) {
 		char buf2[1024 + 32];
 
-		snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
+		snprintf(buf2, lengthof(buf2), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
 		return;
 	}
@@ -86,14 +88,14 @@ static void debug_print(const char *dbg, const char *buf)
 		_sntprintf(tbuf, sizeof(tbuf), _T("%s"), OTTD2FS(dbg));
 		NKDbgPrintfW(_T("dbg: [%s] %s\n"), tbuf, OTTD2FS(buf));
 #else
-		fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
+		fprintf(stderr, "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 #endif
 		IConsoleDebug(dbg, buf);
 	} else {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == NULL) return;
 
-		fprintf(f, "%s", buf);
+		fprintf(f, "%s%s", GetLogPrefix(), buf);
 		fflush(f);
 	}
 }
@@ -180,3 +182,21 @@ const char *GetDebugString()
 
 	return dbgstr;
 }
+
+/**
+ * Get the prefix for logs; if show_date_in_logs is enabled it returns
+ * the date, otherwise it returns nothing.
+ * @return the prefix for logs (do not free), never NULL
+ */
+const char *GetLogPrefix()
+{
+	static char _log_prefix[24];
+	if (_settings_client.gui.show_date_in_logs) {
+		time_t cur_time = time(NULL);
+		strftime(_log_prefix, sizeof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ", localtime(&cur_time));
+	} else {
+		*_log_prefix = '\0';
+	}
+	return _log_prefix;
+}
+

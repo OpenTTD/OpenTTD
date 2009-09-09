@@ -93,4 +93,6 @@ const char *GetDebugString();
 void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...) WARN_FORMAT(1, 2);
 
+const char *GetLogPrefix();
+
 #endif /* DEBUG_H */
