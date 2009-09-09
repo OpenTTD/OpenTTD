@@ -297,9 +297,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Toon gra
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Toon bedrijfscompetitietabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betaal plaatsing van nieuwe industrie
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Toon lijst met treinen van het bedrijf. Ctrl+klik schakelt het openen van de normale/geavanceerde voertuigenlijst
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Toon lijst met wegvoertuigen van het bedrijf
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Toon lijst met schepen van het bedrijf
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Toon lijst met vliegtuigen van het bedrijf
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Toon lijst met wegvoertuigen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Toon lijst met schepen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Toon lijst met vliegtuigen van het bedrijf. Ctrl+klik wisselt tussen het openen van de groep/voertuig lijst
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Inzoomen
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uitzoomen
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bouw spoor
@@ -555,8 +555,8 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuigen. Dit is inclusief wegvoertuigen, treinen, schepen en vliegtuigen.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal stationsonderdelen. Elke deel van een station (b.v. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze zijn verbonden met een station
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuigen met winst in het afgelopen jaar. Dit is inclusief wegvoertuigen, treinen, schepen en vliegtuigen.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijjk onderhouden stationsonderdelen. Elke deel van een station (b.v. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze zijn verbonden met een station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst van de voertuigen met het laagste inkomen (van alle voertuigen ouder dan 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdient in de maand met de laagste winst van de afgelopen 12 kwartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid aan geld die is verdient in de maand met de hoogste winst van de afgelopen 12 kwartalen
@@ -1308,7 +1308,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online i
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel. Ctrl+klik slaat de wereldconfiguratie over
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laad een opgeslagen spel
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start een nieuw spel, gebaseerd op een scenario
@@ -1732,6 +1732,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spel hervat (cl
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} is het spel ingekomen (Speler #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} heeft zich gevoegd bij bedrijf #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} kijkt nu toe
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} heeft een nieuw bedrijf opgericht (#{2:NUM})
@@ -1840,13 +1841,13 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Zweefspo
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Plaats spoor
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bouw spoor met de Autorail-methode
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bouw treindepot (om treinen te bouwen en te onderhouden)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bouw treindepot (om treinen te kopen en te onderhouden)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteer spoor naar controlepost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bouw treinstation
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen. Ctrl wisselt tussen semaphore/licht seinen{}Slepen, plaatsen seinen langs een recht stuk spoor. Ctrl bouwd sienen tot de volgende wissel{}Ctrl+Klik wisselt tussen het openen van het seinen keuzescherm
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bouw spoorbrug
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen bij spoor- en seinaanleg
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen bij spoor- en seinaanleg. Ctrl+klik behoud het spoor bij verwijderen van tussenstops en stations
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander spoortype
 
 # Rail depot construction window
@@ -1915,8 +1916,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bouw weg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bouw tramrails
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bouw weg met de Autoroad-methode
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bouw tramrails met de Autotram-methode
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bouw garage (voor bouw en onderhoud van wegvoertuigen)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bouw tramdepot (voor bouw en onderhoud van trams)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bouw garage (voor het kopen en onderhoud van wegvoertuigen)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bouw tramdepot (voor het kopen en onderhoud van trams)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bouw bushalte
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bouw passagiertramhalte
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bouw vrachtwagenlaadhal
@@ -1950,7 +1951,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Kanaalaa
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalen
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bouw kanalen.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bouw sluis
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw dok (voor bouw en onderhoud van schepen)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw dok (voor het kopen en onderhoud van schepen)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw dok
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaats boei, kan gebruikt worden voor extra tussenstops
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bouw aquaduct
@@ -2662,15 +2663,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Wegvoert
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schipkeuzelijst - klik op een schip voor informatie
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Vliegtuigkeuzelijst - klik op een vliegtuig voor informatie
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Bouw railvoertuig
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Bouw wegvoertuig
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bouw schip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bouw vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Koop spoorvoertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koop wegvoertuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koop schip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koop vliegtuig
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bouw het geselecteerde railvoertuig
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bouw het geselecteerde wegvoertuig
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bouw het geselecteerde schip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bouw het geselecteerde vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop het geselecteerde railvoertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop het geselecteerde wegvoertuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop het geselecteerde schip
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop het geselecteerde vliegtuig
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Hernoem
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Hernoem
@@ -2725,25 +2726,25 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nieuwe w
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nieuwe schepen
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nieuwe vliegtuigen
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Bouw nieuw railvoertuig
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bouw nieuw wegvoertuig
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bouw nieuw schip
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Bouw nieuw vliegtuig
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Koop nieuw railvoertuig
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Koop nieuw wegvoertuig
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Koop nieuw schip
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Koop nieuw vliegtuig
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Kloon trein
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloon wegvoertuig
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon schip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon vliegtuig
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hierdoor wordt een kopie gebouwd van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hierdoor wordt een kopie gebouwd van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hierdoor wordt een kopie gebouwd van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor wordt een kopie gebouwd van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hierdoor wordt een kopie gekocht van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hierdoor wordt een kopie gekocht van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor wordt een kopie gekocht van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van het treindepot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de garage
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het dok
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer het scherm op de locatie van de hangar
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer het scherm op de locatie van de hangar. Ctrl+klik opent een nieuw venster op de hangar lokatie
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Geef een lijst van alle treinen met dit depot in hun orders
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Geef een lijst van alle wegvoertuigen met deze garage in hun orders
@@ -2811,20 +2812,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te ve
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de trein
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centreer het scherm op de locatie van het wegvoertuig
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer het scherm op de locatie van het schip
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer het scherm op de locatie van het vliegtuig
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de trein. Ctrl+klik volgt de trein in het hoofdscherm
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centreer het scherm op de locatie van het wegvoertuig. Ctrl+klik volgt het voertuig in het hoofdscherm
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer het scherm op de locatie van het schip. Ctrl+klik volgt het schip op het hoofdscherm
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer het scherm op de locatie van het vliegtuig. Ctrl+klik volgt het vliegtuid op het hoofdscherm
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur wegvoertuig naar garage. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar dok. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar. Ctrl+klik voor alleen onderhoud
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hierdoor wordt een kopie gebouwd van deze trein inclusief wagons. Ctrl+klik deelt de orders
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor wordt een kopie gebouwd van dit wegvoertuig. Ctrl+klik deelt de orders
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gebouwd van dit schip. Ctrl+klik deelt de orders
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gebouwd van dit vliegtuig. Ctrl+klik deelt de orders
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hierdoor wordt een kopie gekocht van deze trein inclusief wagons. Ctrl+klik deelt de orders
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor wordt een kopie gekocht van dit wegvoertuig. Ctrl+klik deelt de orders
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van dit schip. Ctrl+klik deelt de orders
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gekocht van dit vliegtuig. Ctrl+klik deelt de orders
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen signaal
 
@@ -2836,10 +2837,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bouw vli
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Keer trein om
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Dwing het wegvoertuig om om te draaien
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon orders van trein
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon orders van wegvoertuig
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Toon orders van schip
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Toon orders van vliegtuig
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon orders van trein. Ctrl+klik toont het tijdschema van de trein
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon orders van wegvoertuig. Ctrl+klik toont tijdschma van het voertuig
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Toon orders van schip. Ctrl+klik toont tijdschema van het schip
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Toon orders van vliegtuig. Ctrl+klik toont het tijdschema van het vliegtuig
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Toon details van trein
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Toon details van wegvoertuig
@@ -2918,8 +2919,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Geldover
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval tussen onderhoud: {LTBLUE}{COMMA}dagen{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Service interval: {LTBLUE}{COMMA}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot interval tussen onderhoud
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein interval tussen onderhoud
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot interval tussen onderhoud met 10. Ctrl+klik verhoogd de interval met 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein interval tussen onderhoud met 10. Ctrl+klik verlaagt de interval met 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
@@ -3471,10 +3472,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan wegv
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan schip niet naar dok sturen...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan railvoertuig niet bouwen...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan wegvoertuig niet bouwen...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan railvoertuig niet kopen...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan wegvoertuig niet kopen...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan schip niet kopen...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan vliegtuig niet bouwen...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan vliegtuig niet kopen...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan type van railvoertuig niet hernoemen...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan type van wegvoertuig niet hernoemen...

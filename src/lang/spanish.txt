@@ -556,9 +556,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinero:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstamo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Cantidad de vehículos. Incluye vehículos de carretera, trenes, barcos y aeroplanos.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación. Cada parte de una estación (ej. estaciones de tren, paradas de autobús, aeropuertos, etc) es contabilizado, incluso si está conectado a una estación.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El beneficio del vehículo con menores ingresos (de todos los vehículos mayores de 2 años)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Cantidad de vehículos que obtuvieron beneficios el año pasado. Incluye vehículos de carretera, trenes, barcos y aeronaves.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Cada parte de una estación (ej. estaciones de tren, paradas de autobús, aeropuertos, etc) es contabilizado, incluso si están unidas en una estación
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficio del vehículo con menores ingresos (de entre todos los vehículos con más de 2 años)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en un mes con el beneficio más bajo en los pasados 12 cuartos
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en un mes con el beneficio más alto en los pasados 12 cuartos
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregadas en los pasados cuatro cuartos.
@@ -1187,7 +1187,7 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máx aeroplanos por jugador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máx aeronaves por jugador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Máx barcos por jugador: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactivar trenes para el ordenador: {ORANGE}{STRING}
@@ -1203,7 +1203,7 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interva
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}desactivado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de mantenimiento por defecto para aeroplanos: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de mantenimiento por defecto para aeronaves: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de mantenimiento por defecto para aeronaves: {ORANGE}desactivado
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}desactivado
@@ -1400,8 +1400,8 @@ STR_LIVERY_TRUCK                                                :Camión
 STR_LIVERY_PASSENGER_SHIP                                       :Ferry de Pasajeros
 STR_LIVERY_FREIGHT_SHIP                                         :Barco de Carga
 STR_LIVERY_HELICOPTER                                           :Helicoptero
-STR_LIVERY_SMALL_PLANE                                          :Aeroplano Pequeño
-STR_LIVERY_LARGE_PLANE                                          :Aeroplano Grande
+STR_LIVERY_SMALL_PLANE                                          :Aeronave Pequeña
+STR_LIVERY_LARGE_PLANE                                          :Aeronave Grande
 STR_LIVERY_PASSENGER_TRAM                                       :Tranvía de Pasajeros
 STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de Carga
 
@@ -1848,7 +1848,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Arrastrar construye señales en el trozo de ferrocarril recorrido. Arrastrar+Ctrl construye señales hasta el próximo cruce{}Ctrl+Click no abre la ventana de selección de señales
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviario
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar vias, señales, estaciones y puntos de ruta de ferrocarril. Ctrl+Click retirará también la vía al retirar estaciones y puntos de ruta.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar vias, señales, estaciones y puntos de ruta de ferrocarril. Mantener pulsado Ctrl retirará también la vía al retirar estaciones y puntos de ruta
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de raíl
 
 # Rail depot construction window
@@ -2126,7 +2126,7 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Selváticos
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactus
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estación de trenes
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar de aeroplanos
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar de aeronaves
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeropuerto
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Zona de carga de camiones
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Estación de autobús
@@ -2484,12 +2484,12 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcc
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuevos vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Coste operación Trenes
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste operación Vehículos
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Coste operación Aeroplanos
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Coste operación Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Coste operación Barcos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantenimiento de inmuebles
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingresos Trenes
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingresos Vehículos
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingresos Aeroplanos
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingresos Aeronaves
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingresos Barcos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intereses de Préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
@@ -2514,7 +2514,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema d
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehiculos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} veh{P "" s}. carret{P er ""}a
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeroplano{P "" s}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronaves{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} barco{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ninguno
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de la empresa: {WHITE}{CURRENCY}
@@ -2693,7 +2693,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renombra
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN}, Depósito de tren
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Depósito de vehículos
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Astillero de {TOWN}
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar de aeroplanos
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar de aeronaves
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}

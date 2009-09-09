@@ -1734,6 +1734,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partita ripresa
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abbandono della partita
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} è entrato nella partita
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} è entrato nella partita (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ha iniziato a controllare la compagnia #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} è diventato spettatore
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha avviato una nuova compagnia (#{2:NUM})
@@ -1848,7 +1849,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Costruis
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Costruisce i segnali ferroviari. CTRL alterna segnali semaforici/luminosi.{}Trascinare il cursore per costruire segnali su un tratto rettilineo di rotaie, con CTRL per andare automaticamente fino al raccordo successivo.{}Tenere premuto CTRL mentre si attiva il pulsante per non aprire la finestra segnali.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Costruisce un ponte ferroviario
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruisce un tunnel ferroviario
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Seleziona fra costruzione/rimozione di binari e segnali
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterna costruzione/rimozione di binari, segnali, waypoint e stazioni. Tenere premuto CTRL per mantenere i binari rimuovendo waypoint e stazioni
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converte/aggiorna il tipo di rotaie
 
 # Rail depot construction window
