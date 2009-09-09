@@ -244,6 +244,7 @@ void AIInstance::RegisterAPI()
 	SQAIVehicle_Register(this->engine);
 	SQAIVehicleList_Register(this->engine);
 	SQAIVehicleList_DefaultGroup_Register(this->engine);
+	SQAIVehicleList_Depot_Register(this->engine);
 	SQAIVehicleList_Group_Register(this->engine);
 	SQAIVehicleList_SharedOrders_Register(this->engine);
 	SQAIVehicleList_Station_Register(this->engine);

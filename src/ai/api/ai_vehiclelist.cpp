@@ -11,9 +11,12 @@
 
 #include "ai_vehiclelist.hpp"
 #include "ai_group.hpp"
+#include "ai_map.hpp"
 #include "ai_station.hpp"
 #include "ai_vehicle.hpp"
 #include "../../company_func.h"
+#include "../../depot_base.h"
+#include "../../depot_map.h"
 #include "../../vehicle_base.h"
 
 AIVehicleList::AIVehicleList()
@@ -35,6 +38,57 @@ AIVehicleList_Station::AIVehicleList_Station(StationID station_id)
 
 			FOR_VEHICLE_ORDERS(v, order) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
+					this->AddItem(v->index);
+					break;
+				}
+			}
+		}
+	}
+}
+
+AIVehicleList_Depot::AIVehicleList_Depot(TileIndex tile)
+{
+	if (!AIMap::IsValidTile(tile)) return;
+
+	DestinationID dest;
+	VehicleType type;
+
+	switch (GetTileType(tile)) {
+		case MP_STATION: // Aircraft
+			if (!IsAirport(tile)) return;
+			type = VEH_AIRCRAFT;
+			dest = GetStationIndex(tile);
+			break;
+
+		case MP_RAILWAY:
+			if (!IsRailDepot(tile)) return;
+			type = VEH_TRAIN;
+			dest = Depot::GetByTile(tile)->index;
+			break;
+
+		case MP_ROAD:
+			if (!IsRoadDepot(tile)) return;
+			type = VEH_ROAD;
+			dest = Depot::GetByTile(tile)->index;
+			break;
+
+		case MP_WATER:
+			if (!IsShipDepot(tile)) return;
+			type = VEH_SHIP;
+			dest = Depot::GetByTile(min(tile, GetOtherShipDepotTile(tile)))->index;
+			break;
+
+		default: // No depot
+			return;
+	}
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->owner == _current_company && v->IsPrimaryVehicle() && v->type == type) {
+			const Order *order;
+
+			FOR_VEHICLE_ORDERS(v, order) {
+				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
 					this->AddItem(v->index);
 					break;
 				}

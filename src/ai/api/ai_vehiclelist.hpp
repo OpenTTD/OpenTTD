@@ -41,6 +41,24 @@ public:
 };
 
 /**
+ * Creates a list of vehicles that have orders to a given depot.
+ * The list is created with a tile. If the tile is part of an airport all
+ * aircraft having a depot order on a hangar of that airport will be
+ * returned. For all other vehicle types the tile has to be a depot or
+ * an empty list will be returned.
+ * @ingroup AIList
+ */
+class AIVehicleList_Depot : public AIAbstractList {
+public:
+	static const char *GetClassName() { return "AIVehicleList_Depot"; }
+
+	/**
+	 * @param tile The tile of the depot to get the list of vehicles from, which have orders to it.
+	 */
+	AIVehicleList_Depot(TileIndex tile);
+};
+
+/**
  * Creates a list of vehicles that share orders.
  * @ingroup AIList
  */

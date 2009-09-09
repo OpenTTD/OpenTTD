@@ -22,6 +22,7 @@
  * \li AIBaseStation
  * \li AIBuoyList
  * \li AIEventCompanyAskMerger
+ * \li AIIndustry::GetLastMonthTransportedPercentage
  * \li AIRail::RemoveRailStationTileRectangle
  * \li AIRail::RemoveRailWaypointTileRectangle
  * \li AISubsidy::SubsidyParticipantType
@@ -30,7 +31,7 @@
  * \li AISubsidy::GetDestinationType
  * \li AISubsidy::GetDestinationIndex
  * \li AITown::GetLastMonthTransportedPercentage
- * \li AIIndustry::GetLastMonthTransportedPercentage
+ * \li AIVehicleList_Depot
  *
  * API removals:
  * \li AIOrder::ChangeOrder, use AIOrder::SetOrderFlags instead
