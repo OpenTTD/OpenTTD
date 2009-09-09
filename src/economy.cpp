@@ -166,7 +166,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner) continue;
 			if (IsCompanyBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
-				num++;
+				if (v->profit_last_year > 0) num++; // For the vehicle score only count profitable vehicles
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */
 					if (min_profit_first || min_profit > v->profit_last_year) {
@@ -191,7 +191,8 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		const Station *st;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) num += CountBits((byte)st->facilities);
+			/* Only count stations that are actually serviced */
+			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits((byte)st->facilities);
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}
