@@ -1071,9 +1071,14 @@ static bool AircraftController(Aircraft *v)
 			/* Turn. Do it slowly if in the air. */
 			Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
 			if (newdir != v->direction) {
-				if (amd->flag & AMED_SLOWTURN) {
+				if (amd->flag & AMED_SLOWTURN && v->number_consecutive_turns < 8) {
 					if (v->load_unload_time_rem == 0 || newdir == v->last_direction) {
-						v->load_unload_time_rem = 1 << (_settings_game.vehicle.plane_speed - 1);
+						if (newdir == v->last_direction) {
+							v->number_consecutive_turns = 0;
+						} else {
+							v->number_consecutive_turns++;
+						}
+						v->load_unload_time_rem = 2 * _settings_game.vehicle.plane_speed;
 						v->last_direction = v->direction;
 						v->direction = newdir;
 					}
@@ -1094,6 +1099,7 @@ static bool AircraftController(Aircraft *v)
 					gp.new_tile = gp.old_tile = v->tile;
 				}
 			} else {
+				v->number_consecutive_turns = 0;
 				/* Move vehicle. */
 				gp = GetNewVehiclePos(v);
 			}
