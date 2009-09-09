@@ -481,7 +481,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			*p = '\0';
 
 			/* Add path to crash.log and crash.dmp (if any) to the crash window text */
-			int len = _tcslen(_crash_desc) + _tcslen(OTTD2FS(CrashLogWindows::current->crashlog_filename)) + _tcslen(OTTD2FS(CrashLogWindows::current->crashdump_filename)) + 4;
+			size_t len = _tcslen(_crash_desc) + _tcslen(OTTD2FS(CrashLogWindows::current->crashlog_filename)) + _tcslen(OTTD2FS(CrashLogWindows::current->crashdump_filename)) + 4;
 			TCHAR *text = AllocaM(TCHAR, len);
 			TCHAR *dump = _tcsdup(OTTD2FS(CrashLogWindows::current->crashdump_filename));
 			_sntprintf(text, len, _crash_desc, OTTD2FS(CrashLogWindows::current->crashlog_filename), dump[0] != _T('\0') ? _T("'\n'") : _T(""), dump);
@@ -500,7 +500,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 				case 13: // Emergency save
 					char filename[MAX_PATH];
 					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
-						int len = _tcslen(_save_succeeded) + _tcslen(OTTD2FS(filename)) + 1;
+						size_t len = _tcslen(_save_succeeded) + _tcslen(OTTD2FS(filename)) + 1;
 						TCHAR *text = AllocaM(TCHAR, len);
 						_sntprintf(text, len, _save_succeeded, OTTD2FS(filename));
 						MessageBox(wnd, text, _T("Save successful"), MB_ICONINFORMATION);
