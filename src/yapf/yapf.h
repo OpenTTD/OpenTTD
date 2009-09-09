@@ -15,6 +15,7 @@
 #include "../debug.h"
 #include "../depot_type.h"
 #include "../direction_type.h"
+#include "../station_type.h"
 #include "../pbs.h"
 
 /** Finds the best path for given ship.
@@ -52,6 +53,14 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
  * @return       distance from origin tile to the destination (number of road tiles) or UINT_MAX if path not found
  */
 uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile);
+
+/** Used to determinine the closest reachable compatible road stop for a given vehicle.
+ * @param v            vehicle that needs to go to the road stop
+ * @param station      the station the road stop must belong to
+ * @param stop_tile    receives the stop tile if a stop was found
+ * @return             true if stop was found.
+ */
+bool YapfFindNearestRoadVehicleCompatibleStop(const RoadVehicle *v, StationID station, TileIndex *stop_tile);
 
 /** Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing.
  * @param v            vehicle that needs to go to some depot
