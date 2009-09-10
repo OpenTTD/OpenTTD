@@ -1266,7 +1266,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 	assert(!invalidate || _generating_world);
 
 	for (TileIndex t = 0; t < MapSize(); t++) {
-		if (IsTileType(t, MP_ROAD) && !HasTownOwnedRoad(t)) {
+		if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
 			TownID tid = (TownID)INVALID_TOWN;
 			if (!invalidate) {
 				const Town *town = CalcClosestTownFromTile(t);

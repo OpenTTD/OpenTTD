@@ -1177,9 +1177,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
 	if (vehicle_type == VEH_AIRCRAFT) {
 		depot_airport_index = GetStationIndex(depot_tile);
 	} else {
-		Depot *depot = Depot::GetByTile(depot_tile);
-		if (depot == NULL) return; // no depot to show
-		depot_airport_index = depot->index;
+		depot_airport_index = GetDepotIndex(depot_tile);
 	}
 	ShowVehicleListWindowLocal(company, VLW_DEPOT_LIST, vehicle_type, depot_airport_index);
 }

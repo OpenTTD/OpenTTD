@@ -2264,7 +2264,7 @@ bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bo
 	if (tfdd.best_length == UINT_MAX) return false;
 
 	if (location    != NULL) *location    = tfdd.tile;
-	if (destination != NULL) *destination = Depot::GetByTile(tfdd.tile)->index;
+	if (destination != NULL) *destination = GetDepotIndex(tfdd.tile);
 	if (reverse     != NULL) *reverse     = tfdd.reverse;
 
 	return true;
@@ -4526,15 +4526,15 @@ static void CheckIfTrainNeedsService(Train *v)
 		return;
 	}
 
-	const Depot *depot = Depot::GetByTile(tfdd.tile);
+	DepotID depot = GetDepotIndex(tfdd.tile);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			v->current_order.GetDestination() != depot->index &&
+			v->current_order.GetDestination() != depot &&
 			!Chance16(3, 16)) {
 		return;
 	}
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
+	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }

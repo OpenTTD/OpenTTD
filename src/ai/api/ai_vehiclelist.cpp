@@ -63,19 +63,19 @@ AIVehicleList_Depot::AIVehicleList_Depot(TileIndex tile)
 		case MP_RAILWAY:
 			if (!IsRailDepot(tile)) return;
 			type = VEH_TRAIN;
-			dest = Depot::GetByTile(tile)->index;
+			dest = GetDepotIndex(tile);
 			break;
 
 		case MP_ROAD:
 			if (!IsRoadDepot(tile)) return;
 			type = VEH_ROAD;
-			dest = Depot::GetByTile(tile)->index;
+			dest = GetDepotIndex(tile);
 			break;
 
 		case MP_WATER:
 			if (!IsShipDepot(tile)) return;
 			type = VEH_SHIP;
-			dest = Depot::GetByTile(min(tile, GetOtherShipDepotTile(tile)))->index;
+			dest = GetDepotIndex(tile);
 			break;
 
 		default: // No depot

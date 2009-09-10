@@ -436,7 +436,7 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 	if (rfdd.best_length == UINT_MAX) return false;
 
 	if (location    != NULL) *location    = rfdd.tile;
-	if (destination != NULL) *destination = Depot::GetByTile(rfdd.tile)->index;
+	if (destination != NULL) *destination = GetDepotIndex(rfdd.tile);
 
 	return true;
 }
@@ -1850,7 +1850,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 		return;
 	}
 
-	const Depot *depot = Depot::GetByTile(rfdd.tile);
+	DepotID depot = GetDepotIndex(rfdd.tile);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
 			v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS &&
@@ -1861,7 +1861,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 	ClearSlot(v);
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
+	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = rfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
