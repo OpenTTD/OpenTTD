@@ -21,6 +21,7 @@
 	return 1; \
 }
 
+#ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 static SQInteger math_srand(HSQUIRRELVM v)
 {
 	SQInteger i;
@@ -35,6 +36,7 @@ static SQInteger math_rand(HSQUIRRELVM v)
 	sq_pushinteger(v,rand());
 	return 1;
 }
+#endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 
 static SQInteger math_abs(HSQUIRRELVM v)
 {
