@@ -12,32 +12,31 @@
 #ifndef TOWN_MAP_H
 #define TOWN_MAP_H
 
-#include "tile_map.h"
+#include "road_map.h"
 #include "town_type.h"
 #include "house.h"
 
 /**
  * Get the index of which town this house/street is attached to.
  * @param t the tile
- * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD)
+ * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD) but not a road depot
  * @return TownID
  */
 static inline TownID GetTownIndex(TileIndex t)
 {
-	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_ROAD)); // XXX incomplete
+	assert(IsTileType(t, MP_HOUSE) || (IsTileType(t, MP_ROAD) && !IsRoadDepot(t)));
 	return _m[t].m2;
 }
 
 /**
  * Set the town index for a road or house tile.
  * @param t the tile
- * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD)
  * @param index the index of the town
- * @pre IsTileType(t, MP_ROAD) || IsTileType(t, MP_HOUSE)
+ * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD) but not a road depot
  */
 static inline void SetTownIndex(TileIndex t, TownID index)
 {
-	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_ROAD));
+	assert(IsTileType(t, MP_HOUSE) || (IsTileType(t, MP_ROAD) && !IsRoadDepot(t)));
 	_m[t].m2 = index;
 }
 

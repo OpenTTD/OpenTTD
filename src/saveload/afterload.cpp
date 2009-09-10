@@ -842,7 +842,7 @@ bool AfterLoadGame()
 						case ROAD_TILE_DEPOT:
 							break;
 					}
-					if (!HasTownOwnedRoad(t)) {
+					if (!IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
 						const Town *town = CalcClosestTownFromTile(t);
 						if (town != NULL) SetTownIndex(t, town->index);
 					}
