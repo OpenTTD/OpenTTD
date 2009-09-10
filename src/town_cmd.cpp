@@ -2730,6 +2730,8 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
+			if (IsRoadDepot(tile)) return CalcClosestTownFromTile(tile, threshold);
+
 			if (!HasTownOwnedRoad(tile)) {
 				TownID tid = GetTownIndex(tile);
 

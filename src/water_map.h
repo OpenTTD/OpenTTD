@@ -13,6 +13,7 @@
 #define WATER_MAP_H
 
 #include "core/math_func.hpp"
+#include "depot_type.h"
 
 enum WaterTileType {
 	WATER_TILE_CLEAR,
@@ -196,11 +197,11 @@ static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 	_me[t].m7 = 0;
 }
 
-static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, WaterClass original_water_class)
+static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart base, Axis a, WaterClass original_water_class)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
-	_m[t].m2 = 0;
+	_m[t].m2 = did;
 	_m[t].m3 = original_water_class;
 	_m[t].m4 = 0;
 	_m[t].m5 = base + a * 2;

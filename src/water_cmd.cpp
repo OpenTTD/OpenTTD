@@ -141,8 +141,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		Depot *depot = new Depot(tile);
 		depot->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
-		MakeShipDepot(tile,  _current_company, DEPOT_NORTH, axis, wc1);
-		MakeShipDepot(tile2, _current_company, DEPOT_SOUTH, axis, wc2);
+		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_NORTH, axis, wc1);
+		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}

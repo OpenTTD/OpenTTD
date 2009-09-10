@@ -45,4 +45,17 @@ static inline bool IsDepotTile(TileIndex tile)
 	return IsRailDepotTile(tile) || IsRoadDepotTile(tile) || IsShipDepotTile(tile) || IsHangarTile(tile);
 }
 
+/**
+ * Get the index of which depot is attached to the tile.
+ * @param t the tile
+ * @pre IsRailDepotTile(t) || IsRoadDepotTile(t) || IsShipDepotTile(t)
+ * @return DepotID
+ */
+static inline DepotID GetDepotIndex(TileIndex t)
+{
+	/* Hangars don't have a Depot class, thus store no DepotID. */
+	assert(IsRailDepotTile(t) || IsRoadDepotTile(t) || IsShipDepotTile(t));
+	return _m[t].m2;
+}
+
 #endif /* DEPOT_MAP_H */

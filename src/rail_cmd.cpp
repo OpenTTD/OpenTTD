@@ -789,10 +789,10 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (flags & DC_EXEC) {
 		Depot *d = new Depot(tile);
-		MakeRailDepot(tile, _current_company, dir, (RailType)p1);
-		MarkTileDirtyByTile(tile);
-
 		d->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
+
+		MakeRailDepot(tile, _current_company, d->index, dir, (RailType)p1);
+		MarkTileDirtyByTile(tile);
 
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));

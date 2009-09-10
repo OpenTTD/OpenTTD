@@ -13,6 +13,7 @@
 #include "../void_map.h"
 #include "../signs_base.h"
 #include "../roadstop_base.h"
+#include "../depot_base.h"
 #include "../window_func.h"
 #include "../fios.h"
 #include "../train.h"
@@ -1949,6 +1950,14 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(127)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) UpdateStationAcceptance(st, false);
+	}
+
+	if (CheckSavegameVersion(128)) {
+		const Depot *d;
+		FOR_ALL_DEPOTS(d) {
+			_m[d->xy].m2 = d->index;
+			if (IsTileType(d->xy, MP_WATER)) _m[GetOtherShipDepotTile(d->xy)].m2 = d->index;
+		}
 	}
 
 	AfterLoadLabelMaps();

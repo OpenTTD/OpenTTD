@@ -13,6 +13,7 @@
 #define RAIL_MAP_H
 
 #include "rail_type.h"
+#include "depot_type.h"
 #include "signal_func.h"
 #include "direction_func.h"
 #include "track_func.h"
@@ -551,11 +552,11 @@ static inline void MakeRailNormal(TileIndex t, Owner o, TrackBits b, RailType r)
 }
 
 
-static inline void MakeRailDepot(TileIndex t, Owner o, DiagDirection d, RailType r)
+static inline void MakeRailDepot(TileIndex t, Owner o, DepotID did, DiagDirection d, RailType r)
 {
 	SetTileType(t, MP_RAILWAY);
 	SetTileOwner(t, o);
-	_m[t].m2 = 0;
+	_m[t].m2 = did;
 	_m[t].m3 = r;
 	_m[t].m4 = 0;
 	_m[t].m5 = RAIL_TILE_DEPOT << 6 | d;

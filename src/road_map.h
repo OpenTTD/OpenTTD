@@ -13,6 +13,7 @@
 #define ROAD_MAP_H
 
 #include "track_func.h"
+#include "depot_type.h"
 #include "rail_type.h"
 #include "town_type.h"
 #include "road_func.h"
@@ -407,11 +408,11 @@ static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner r
 }
 
 
-static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir, RoadType rt)
+static inline void MakeRoadDepot(TileIndex t, Owner owner, DepotID did, DiagDirection dir, RoadType rt)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, owner);
-	_m[t].m2 = 0;
+	_m[t].m2 = did;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = ROAD_TILE_DEPOT << 6 | dir;
