@@ -25,10 +25,6 @@
  */
 class SquirrelStd {
 public:
-	/**
-	 * Make an integer absolute.
-	 */
-	static SQInteger abs(HSQUIRRELVM vm);
 
 	/**
 	 * Get the lowest of two integers.

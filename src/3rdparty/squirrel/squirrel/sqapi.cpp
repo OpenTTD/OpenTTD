@@ -90,6 +90,11 @@ SQInteger sq_getvmstate(HSQUIRRELVM v)
 	}
 }
 
+void sq_decreaseops(HSQUIRRELVM v, int amount)
+{
+	v->DecreaseOps(amount);
+}
+
 bool sq_can_suspend(HSQUIRRELVM v)
 {
 	return v->_nnativecalls <= 2;

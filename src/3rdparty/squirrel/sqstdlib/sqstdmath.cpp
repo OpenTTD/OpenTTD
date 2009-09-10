@@ -4,15 +4,17 @@
 #include <stdlib.h>
 #include <sqstdmath.h>
 
-#define SINGLE_ARG_FUNC(_funcname) static SQInteger math_##_funcname(HSQUIRRELVM v){ \
+#define SINGLE_ARG_FUNC(_funcname, num_ops) static SQInteger math_##_funcname(HSQUIRRELVM v){ \
 	SQFloat f; \
+	sq_decreaseops(v,num_ops); \
 	sq_getfloat(v,2,&f); \
 	sq_pushfloat(v,(SQFloat)_funcname(f)); \
 	return 1; \
 }
 
-#define TWO_ARGS_FUNC(_funcname) static SQInteger math_##_funcname(HSQUIRRELVM v){ \
+#define TWO_ARGS_FUNC(_funcname, num_ops) static SQInteger math_##_funcname(HSQUIRRELVM v){ \
 	SQFloat p1,p2; \
+	sq_decreaseops(v,num_ops); \
 	sq_getfloat(v,2,&p1); \
 	sq_getfloat(v,3,&p2); \
 	sq_pushfloat(v,(SQFloat)_funcname(p1,p2)); \
@@ -42,21 +44,21 @@ static SQInteger math_abs(HSQUIRRELVM v)
 	return 1;
 }
 
-SINGLE_ARG_FUNC(sqrt)
-SINGLE_ARG_FUNC(fabs)
-SINGLE_ARG_FUNC(sin)
-SINGLE_ARG_FUNC(cos)
-SINGLE_ARG_FUNC(asin)
-SINGLE_ARG_FUNC(acos)
-SINGLE_ARG_FUNC(log)
-SINGLE_ARG_FUNC(log10)
-SINGLE_ARG_FUNC(tan)
-SINGLE_ARG_FUNC(atan)
-TWO_ARGS_FUNC(atan2)
-TWO_ARGS_FUNC(pow)
-SINGLE_ARG_FUNC(floor)
-SINGLE_ARG_FUNC(ceil)
-SINGLE_ARG_FUNC(exp)
+SINGLE_ARG_FUNC(sqrt, 100)
+SINGLE_ARG_FUNC(fabs, 1)
+SINGLE_ARG_FUNC(sin, 100)
+SINGLE_ARG_FUNC(cos, 100)
+SINGLE_ARG_FUNC(asin, 100)
+SINGLE_ARG_FUNC(acos, 100)
+SINGLE_ARG_FUNC(log, 100)
+SINGLE_ARG_FUNC(log10, 100)
+SINGLE_ARG_FUNC(tan, 100)
+SINGLE_ARG_FUNC(atan, 100)
+TWO_ARGS_FUNC(atan2, 100)
+TWO_ARGS_FUNC(pow, 100)
+SINGLE_ARG_FUNC(floor, 1)
+SINGLE_ARG_FUNC(ceil, 1)
+SINGLE_ARG_FUNC(exp, 100)
 
 #define _DECL_FUNC(name,nparams,tycheck) {_SC(#name),math_##name,nparams,tycheck}
 static SQRegFunction mathlib_funcs[] = {
@@ -74,8 +76,10 @@ static SQRegFunction mathlib_funcs[] = {
 	_DECL_FUNC(floor,2,_SC(".n")),
 	_DECL_FUNC(ceil,2,_SC(".n")),
 	_DECL_FUNC(exp,2,_SC(".n")),
+#ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	_DECL_FUNC(srand,2,_SC(".n")),
 	_DECL_FUNC(rand,1,NULL),
+#endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 	_DECL_FUNC(fabs,2,_SC(".n")),
 	_DECL_FUNC(abs,2,_SC(".n")),
 	{0,0,0,0},
@@ -96,9 +100,11 @@ SQRESULT sqstd_register_mathlib(HSQUIRRELVM v)
 		sq_createslot(v,-3);
 		i++;
 	}
+#ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	sq_pushstring(v,_SC("RAND_MAX"),-1);
 	sq_pushinteger(v,RAND_MAX);
 	sq_createslot(v,-3);
+#endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 	sq_pushstring(v,_SC("PI"),-1);
 	sq_pushfloat(v,(SQFloat)M_PI);
 	sq_createslot(v,-3);

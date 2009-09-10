@@ -10,6 +10,7 @@
 /** @file squirrel_std.cpp Implements the Squirrel Standard Function class */
 
 #include <squirrel.h>
+#include <sqstdmath.h>
 #include "../stdafx.h"
 #include "../debug.h"
 #include "squirrel.hpp"
@@ -17,17 +18,6 @@
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
 
-/* abs() is normally defined to myabs(), which we don't want in this file */
-#undef abs
-
-SQInteger SquirrelStd::abs(HSQUIRRELVM vm)
-{
-	SQInteger tmp;
-
-	sq_getinteger(vm, 2, &tmp);
-	sq_pushinteger(vm, ::abs(tmp));
-	return 1;
-}
 
 SQInteger SquirrelStd::min(HSQUIRRELVM vm)
 {
@@ -118,7 +108,8 @@ void squirrel_register_std(Squirrel *engine)
 {
 	/* We don't use squirrel_helper here, as we want to register to the global
 	 *  scope and not to a class. */
-	engine->AddMethod("abs", &SquirrelStd::abs, 2, ".i");
 	engine->AddMethod("min", &SquirrelStd::min, 3, ".ii");
 	engine->AddMethod("max", &SquirrelStd::max, 3, ".ii");
+
+	sqstd_register_mathlib(engine->GetVM());
 }

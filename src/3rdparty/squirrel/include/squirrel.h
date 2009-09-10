@@ -314,6 +314,7 @@ SQUIRREL_API bool sq_resumecatch(HSQUIRRELVM v, int suspend = -1);
 SQUIRREL_API bool sq_resumeerror(HSQUIRRELVM v);
 SQUIRREL_API SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool resumedret,SQBool retval,SQBool raiseerror,SQBool throwerror);
 SQUIRREL_API SQInteger sq_getvmstate(HSQUIRRELVM v);
+SQUIRREL_API void sq_decreaseops(HSQUIRRELVM v, int amount);
 
 /*compiler*/
 SQUIRREL_API SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQChar *sourcename,SQBool raiseerror);

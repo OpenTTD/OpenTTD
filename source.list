@@ -541,6 +541,7 @@ script/squirrel_std.hpp
 3rdparty/squirrel/squirrel/sqobject.cpp
 3rdparty/squirrel/squirrel/sqstate.cpp
 3rdparty/squirrel/sqstdlib/sqstdaux.cpp
+3rdparty/squirrel/sqstdlib/sqstdmath.cpp
 3rdparty/squirrel/squirrel/sqtable.cpp
 3rdparty/squirrel/squirrel/sqvm.cpp
 
