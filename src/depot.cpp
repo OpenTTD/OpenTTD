@@ -24,29 +24,6 @@ DepotPool _depot_pool("Depot");
 INSTANTIATE_POOL_METHODS(Depot)
 
 /**
- * Gets a depot from a tile
- * @param tile tile with depot
- * @return Returns the depot if the tile had a depot, else it returns NULL
- */
-/* static */ Depot *Depot::GetByTile(TileIndex tile)
-{
-	/* A ship depot is multiple tiles. The north most tile is
-	 * always the ->xy tile, so make sure we always look for
-	 * the nothern tile and not the southern one. */
-	if (IsShipDepotTile(tile)) {
-		tile = min(tile, GetOtherShipDepotTile(tile));
-	}
-
-	Depot *depot;
-
-	FOR_ALL_DEPOTS(depot) {
-		if (depot->xy == tile) return depot;
-	}
-
-	return NULL;
-}
-
-/**
  * Clean up a depot
  */
 Depot::~Depot()

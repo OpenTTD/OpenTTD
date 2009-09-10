@@ -13,7 +13,7 @@
 #define DEPOT_BASE_H
 
 #include "tile_type.h"
-#include "depot_type.h"
+#include "depot_map.h"
 #include "core/pool_type.hpp"
 #include "town_type.h"
 
@@ -27,7 +27,10 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
 	~Depot();
 
-	static Depot *GetByTile(TileIndex tile);
+	static FORCEINLINE Depot *GetByTile(TileIndex tile)
+	{
+		return Depot::Get(GetDepotIndex(tile));
+	}
 };
 
 #define FOR_ALL_DEPOTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Depot, depot_index, var, start)
