@@ -555,9 +555,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diner:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstec:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles. Inclou els automòbils, trens, vaixells i avions.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat de parts d'estacions. Cada part d'una estació es compta (ex. estació de tren, parada d'autobús, aeroport), encara que estigui connectada a una altra estació.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El benefici del vehicle amb els menors ingressos (de tots els vehicles més antics de 2 anys)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles que han donat beneficis durant el darrer any; Inclou els automòbils, trens, vaixells i avions
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat de parts d'una es estació revisades. Cada part d'una estació (ex. estació de tren, parada d'autobús, aeroport) es compta, encara que estigui connectada com una sola estació.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El benefici del vehicle amb els menors ingressos (només s'han considerat els vehicles més antics de 2 anys)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el mes amb el mínim benefici dels darrers 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el mes amb el màxim benefici dels darrers 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unitats de càrrega entregades en els darrers quatre trimestres.
@@ -1732,6 +1732,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Joc en marxa (e
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :deixant
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} s'ha unit al joc
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} s'ha unit al joc (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} s'ha unit a la companyia #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} s'ha unit als espectadors
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha començat una nova companyia (#{2:NUM})
@@ -1846,7 +1847,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta el semàfor/senyals de llums{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix túnel de tren
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Intercanvia funció construeix/treu per vies de tren i senyals
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta construeix/treu per vies de tren, senyals, punts de control i estacions
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via
 
 # Rail depot construction window
@@ -1915,8 +1916,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construe
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construeix una secció de via de tramvia. Ctrl canvia entre construeix/treu la construcció de vies de tramvia
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construeix secció de carretera utilitzant el mode Autocarretera. Ctrl canvia entre construeix/treu la construcció de carreteres
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix secció de tramvia utilitzant el mode Autotramvia. Ctrl canvia entre construeix/treu la construcció de vies de tramvia
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per construir i revisar vehicles)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per construir i revisar tramvies)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per comprar i revisar vehicles)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per comprar i revisar tramvies)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Ctrl permet ajuntar estacions
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix una estació de tramvies. Ctrl permet ajuntar estacions
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construeix un moll de càrrega. Ctrl permet ajuntar estacions
@@ -1950,7 +1951,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construc
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canals
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canals.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per construir i revisar vaixells)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per comprar i revisar vaixells)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port. Ctrl permet ajuntar estacions
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa una boia que pot ser útil per fer punts de control addicionals
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeducte
@@ -2657,32 +2658,32 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Totes les càrr
 STR_PURCHASE_INFO_ALL_BUT                                       :Tots menys {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esforç de Tracció: {GOLD}{FORCE}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció d'elements de tren - clica a l'element per més informació
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció de vehicles ferroviaris - clica al vehicle per més informació
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Construeix Vehicle
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Construeix Vehicle
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Construeix Vaixell
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Construeix Avió
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Compra Vehicle
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra Vehicle
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Compra Vaixell
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Compra Avió
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Construeix l'element de tren seleccionat
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Construeix l'automòbil seleccionat
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Construeix el vaixell seleccionat
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Construeix l'avió seleccionat
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el vehicle ferroviari seleccionat
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automòbil seleccionat
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell seleccionat
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'avió seleccionat
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Reanomena
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Reanomena
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Reanomena
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Reanomena
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Reanomena el tipus d'element del tren
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Reanomena el tipus de vehicle ferroviari
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Reanomena tipus d'automòbil
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Reanomena tipus de vaixell
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Reanomena tipus d'avió
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus d'element del tren
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus vehicle ferroviari
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Reanomena tipus de vaixell
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Reanomena tipus d'avió
@@ -2703,7 +2704,7 @@ STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vaixells - clica en un vaixell per més informació
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avió - clica sobre l'avió per més informació
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrossega el vehicle ferroviari fins aquí per vendre'l
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrossega el vehicle fins aquí per vendre'l
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrossega l'avió fins aquí per vendre'l
@@ -2725,20 +2726,20 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nous Veh
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vaixells
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nou Avió
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Construeix un nou element de tren
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Construeix un nou automòbil
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construeix un nou vaixell
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Construeix nous avions
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Compra un nou vehicle ferroviari
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Compra un nou automòbil
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Compra un nou vaixell
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Compra un nou avió
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clona Tren
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona Vehicle
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona Vaixell
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona Avió
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Fa una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Fa una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Fa una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Fa una còpia de l'avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Això comprarà una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Això comprarà una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Això comprarà una còpia d'un avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
@@ -2821,10 +2822,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia avió a l'hangar
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Fa una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Fa una còpia del vehicle. Control+Clic compartirà les ordres
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Fa una còpia del vaixell. Control+Clic compartirà les ordres
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Fa una còpia de l'avió. Control+Clic compartirà les ordres
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Això comprarà una còpia del vehicle. Control+Clic compartirà les ordres
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Això comprarà una còpia del vaixell. Control+Clic compartirà les ordres
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Això comprarà una còpia de l'avió. Control+Clic compartirà les ordres
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga al tren a actuar sense esperar a tenir la senyal lliure
 
@@ -2941,9 +2942,9 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO}
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Càrrega
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Mostra els detalls de càrrega transportada
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informació
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Mostra els detalls d'elements del tren
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Mostra els detalls dels vehicles ferroviaris
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacitats
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra les capacitats de cada element
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra les capacitats de cada vehicle
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Càrrega Total
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Mostra la capacitat total del tren, separada per tipus de càrrega
 
@@ -3471,12 +3472,12 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es po
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}No es pot enviar vaixell a la drassana...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es pot enviar l'avió a l'hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No es pot construir el vehicle...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No es pot construir l'automòbil...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}No es pot construir el vaixell...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}No es pot construir l'avió...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No es pot comprar el vehicle ferroviari...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No es pot comprar l'automòbil...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}No es pot comprar el vaixell...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}No es pot comprar l'avió...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus d'element del tren...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus de vehicle ferroviari...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot reanomenar tipus d'automòbil
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}No es pot reanomenar el tipus de vaixell...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}No es pot reanomenar el tipus d'avió...

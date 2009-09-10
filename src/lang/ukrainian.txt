@@ -373,10 +373,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довж
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {NUM} м
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}за населенням
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}за назвою
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}за датою
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Населення
+STR_SORT_BY_NAME                                                :Ім'я
 STR_SORT_BY_PRODUCTION                                          :за продуктивністю
 STR_SORT_BY_TYPE                                                :за типом
 STR_SORT_BY_TRANSPORTED                                         :за перевезенням
@@ -391,6 +394,7 @@ STR_SORT_BY_MODEL                                               :за модел
 STR_SORT_BY_VALUE                                               :за ціною
 STR_SORT_BY_LENGTH                                              :за довжиною
 STR_SORT_BY_LIFE_TIME                                           :Залишок строку служби
+STR_SORT_BY_TIMETABLE_DELAY                                     :Запізнення від розкладу
 STR_SORT_BY_FACILITY                                            :за типом станції
 STR_SORT_BY_WAITING                                             :за ціною вантажу
 STR_SORT_BY_RATING_MAX                                          :Найвищий рейтинг вантажу
@@ -411,16 +415,16 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Збер
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Показати карту
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Показати міста
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Показати субсидії
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Показати зупинки, станції
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Показати список станцій компанії
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Фінансова інформація
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Головна інформація
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показати графіки
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показати таблицю компаній
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Фінансувати будівництво нової промисловості
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показати поїзди
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показати авто
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Показати кораблі
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Показати літаки
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показати список поїздів компанії. Ctrl+клік переключає відкриття групи/списку поїздів
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показати список автомобілів компанії. Ctrl+клік переключає відкриття групи/списку автомобілів.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Показати список кораблів компанії. Ctrl+клік переключає відкриття групи/списку кораблів
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Показати список літаків компанії. Ctrl+клік переключає відкриття групи/списку літаків
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Збільшити
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Зменшити
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будувати залізниці
@@ -676,9 +680,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Кошт
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кредит:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підсумок:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Загальна кількість транспорту
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Загальна кількість станцій.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибуток транспорту з найменшим доходом (з усього транспорту від 2 років)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Кількість транспорту, який приніс прибуток торік; враховуються автомобілі, поїзди, кораблі та літаки
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується, навіть якщо вони об'єднані в одну станцію
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибуток транспорту з найменшим доходом (тільки транспорт старіший 2 років)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменший місячний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найбільший місячний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Кількість одиниць вантажу, доставлених за останні 4 квартали
@@ -1051,6 +1055,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Обер
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} відсутн{P ий их их}/пошкоджен{P ий их их} файл{P "" а ів}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір графіки
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базовий набір звуків
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Оберіть базовий набір звуків для використання
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір звуків
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Повноекранний режим не працює
 
@@ -1850,6 +1857,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Гру прод
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :виходжу...
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} приєднався до гри
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :{G=m}*** {STRING} приєднався до гри (Клієнт #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} приєднався до компанії №{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} став спостерігачем
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} заснував нову компанію (№{2:NUM})
@@ -1861,7 +1869,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Сер�
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Перезавантаження сервера...{}Зачекайте...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Завантаження змісту
+STR_CONTENT_TITLE                                               :{WHITE}Завантаження вмісту
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Тип вмісту
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Назва
@@ -1905,6 +1913,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Бібліотека AI
 STR_CONTENT_TYPE_SCENARIO                                       :Сценарій
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Карта висот
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Основні звуки
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Завантажую вміст...
@@ -1946,6 +1955,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Пост
 STR_JOIN_STATION_CAPTION                                        :{BLACK}Об'єднати станцію
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Побудувати окрему станцію
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}З'єднати точку маршруту
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Створити окрему точку маршруту
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Будівництво залізниці
@@ -2471,6 +2482,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введ
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Міста
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- немає -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Назви міст - вкажіть на місто і воно з'явиться в центрі екрану
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
@@ -2485,7 +2497,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Вант
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} потрібно
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} перевезено за останній місяць
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати в центрі екрану
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати місто в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування міста
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Місцева влада
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Інформація про місцеву владу
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Змінити назву міста
@@ -2538,6 +2550,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назв
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Утримуйте Ctrl для вибору декількох пунктів
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- нема -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Вибрати весь транспорт
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Вибрати всі типи вантажів
@@ -2569,7 +2582,7 @@ STR_CARGO_RATING_EXCELLENT                                      :відмінн�
 STR_CARGO_RATING_OUTSTANDING                                    :найкраще
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показати станцію в центрі екрану
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показати станцію в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування станції
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Перейменувати станцію
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показати всі поїзди, які заходять на цю станцію
@@ -2580,7 +2593,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Пока
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Перейменування станції
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показати точку маршруту в центрі єкрану. Ctrl+клік відкриє нове вікно у місці розташування точки маршруту
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перейменувати точку маршруту
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати буй в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування буя
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Перейменувати буй
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
@@ -2655,6 +2671,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми ш�
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Промисловість
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- немає -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2664,7 +2681,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Назв
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Вироблено за місяць:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% перевезено)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показати в центрі екрану
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показати підприємство в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування підприємства
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING}{STRING}
@@ -2849,10 +2866,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Буду
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Будувати копію корабля. Натисніть на цю кнопку, і потім на корабель в депо або ззовні. Утримуйте Ctrl для спільного завдання
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Будувати копію літака. Натисніть на цю кнопку і потім на літак в ангарі або ззовні. Утримуйте Ctrl для спільного завдання
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Показати депо в центрі головного екрану
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Показати залізничне депо в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування залізничного депо
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Показати автомобільне депо в центрі екрану
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показати депо в центрі екрану
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Показати ангар в центрі екрану
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показати док в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування доку
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Показати ангар в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування ангара
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Отримати список усіх поїздів, що заходять до цього депо
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Отримати список усіх автомобілів, що заходять до цього депо
@@ -2920,10 +2937,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозв
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показати поїзд в центрі головного екрану
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показати поїзд в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування поїзда
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Показати авто в центрі екрану
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показати корабель в центрі екрану
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показати літак в центрі екрану
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показати корабель в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування корабля
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показати літак в центрі екрану. Ctrl+клік відкриє нове вікно у місці розташування літака
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Направити поїзд у депо
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Направити авто в депо
@@ -3245,6 +3262,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назв
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно Дебаг AI доступно тільки серверу
 
@@ -3447,12 +3465,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Споч
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спочатку зруйнуйте аеропорт
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Суміжне більш ніж з однією існуючою точкою маршруту
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Надто близько до іншої точки маршруту
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Тут не можна встановити точку маршруту..
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Неможливо розмістити бакен тут...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Не можна перейменувати точку маршруту...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Тут не можна прибрати точку маршруту..
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Спочатку приберіть точку залізничного маршруту
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...бакен на шляху
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...бакен використовується!
 
@@ -3779,6 +3800,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Аер
 STR_SV_STNAME_OILFIELD                                          :{STRING} Нафтовина
 STR_SV_STNAME_MINES                                             :{STRING} Шахти
 STR_SV_STNAME_DOCKS                                             :{STRING} Доки
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Флігель
 STR_SV_STNAME_SIDINGS                                           :{STRING} Хутори
@@ -4056,6 +4079,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Буй
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Буй #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Компанія {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
