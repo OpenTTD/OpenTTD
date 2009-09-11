@@ -293,10 +293,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}顯示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}顯示圖表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}顯示公司排行榜
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}出資建造新工廠或顯示所有工業清單
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}顯示公司擁有的列車
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}顯示公司擁有的車輛
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}顯示公司擁有的船舶
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}顯示公司擁有的飛機
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}顯示公司擁有的列車。 按住 Ctrl 點選可切換群組／交通工具清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}顯示公司擁有的車輛。 按住 Ctrl 點選可切換群組／交通工具清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}顯示公司擁有的船舶。 按住 Ctrl 點選可切換群組／交通工具清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}顯示公司擁有的飛機。 按住 Ctrl 點選可切換群組／交通工具清單
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}拉近場景
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}拉遠場景
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}鋪設鐵軌
@@ -339,7 +339,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}顯示市鎮名稱
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}顯示車站／機場／碼頭名稱
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}顯示號誌站
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}顯示號誌站名稱
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}顯示標誌
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}完整動畫
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}完整細節
@@ -553,8 +553,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}貸款�
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計：
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}交通工具數量；包含鐵公路車輛、 船舶與飛機
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}車站各部份數量。每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}使用兩年以上的交通工具之中，最低 收入車輛的損益
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入交通工具的損益 (只計算出廠兩年以上的交通工具)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}前三年的單月最低收入
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}前三年的單月最高收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}前四季運送的貨物量
@@ -794,7 +794,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的盈利是 {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}重載失敗即停止 {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} 因重載失敗而停止
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}無法自動更新 {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} 問世了！
@@ -1835,13 +1835,13 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}鋪設�
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵軌
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動鋪軌模式建造鐵軌
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置、維修列車)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌與號誌
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌站及車站。按住 Ctrl 點選可移除號誌站及車站中的鐵軌
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換／升級軌道種類
 
 # Rail depot construction window
@@ -1910,8 +1910,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}鋪設�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}興建電車站
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用自動模式鋪設道路
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用自動模式鋪設輕軌
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}興建車庫 (用來購置、維護車輛)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}興建電車維修廠 (用來購置、維護電車)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}興建車庫 (用來購置及維護車輛)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}興建電車機廠 (用來購置及維護電車)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}興建公車站
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}興建載客電車站
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}興建貨運站
@@ -1945,7 +1945,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}興建�
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水道
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}建造運河，按住 CTRL 可在海面上建造 (僅限海平面)
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}興建水閘
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}興建船塢 (用以購買／維護船舶)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}興建船塢 (用以購買及維護船舶)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}興建碼頭
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置浮標，可用作導航點
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}興建水道橋
@@ -2825,10 +2825,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改裝�
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}倒轉列車方向
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}強制車輛掉頭
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}顯示列車的指令
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}顯示車輛指令
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}顯示船舶指令
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}顯示飛機的指令
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}顯示列車指令。 按住 Ctrl 點選可顯示列車時刻表
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}顯示車輛指令。 按住 Ctrl 點選可顯示車輛時刻表
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}顯示船舶指令。 按住 Ctrl 點選可顯示船舶時刻表
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}顯示飛機指令。 按住 Ctrl 點選可顯示飛機時刻表
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}顯示列車詳細資料
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示車輛詳細資訊
@@ -3456,8 +3456,8 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}無法將船舶送到船塢...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}無法將飛機送回機棚...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}無法購買鐵道車輛...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}無法購置車輛
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}無法購買鐵道列車...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}無法購買車輛
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}無法購買船舶...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}無法購買飛機...
 

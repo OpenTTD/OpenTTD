@@ -1076,9 +1076,9 @@ STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra 
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres són 'sense parada' per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves ordres del tren parar per defecte {ORANGE}{STRING}{LTBLUE} de la plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :prop del final
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lluny del final
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :extrem més llunyà
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
@@ -1602,7 +1602,7 @@ STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nom com
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguració: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Valor de la companyia: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Balanç actual: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Ingressos de l'últim any: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Ingressos del darrer any: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Rendiment: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Vehicles: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2486,7 +2486,7 @@ STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Desp. de 
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Desp. de Circ. d'Avions
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Desp. de Circ. de Vaixells
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manteniment de Propietats
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingressos de Tren
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingressos de Trens
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingressos de Vehicles
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingressos d'Avions
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingressos de Vaixells
@@ -2603,7 +2603,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar a la Dra
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar a l'Hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Clica per parar tots els vehicles de la llista
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Clica per arrencar tots els vehicles de la llista
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Clica per engegar tots els vehicles de la llista
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 
@@ -2756,10 +2756,10 @@ STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Clica pe
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Clica per parar tots els vaixells de dins de la drassana
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Clica per parar tots els avions de dins de l'hangar
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Clica per arrencar tots els trens de dins de la cotxera
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Clica per arrencar tots els vehicles de dins de la cotxera
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Clica per arrencar tots els vaixells de dins de la drassana
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Clica per arrencar tots els avions de dins de l'hangar
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Clica per engegar tots els trens de dins de la cotxera
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Clica per engegar tots els vehicles de dins de la cotxera
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Clica per engegar tots els vaixells de dins de la drassana
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Clica per engegar tots els avions de dins de l'hangar
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs a punt de vendre tots els vehicles de la cotxera. N'estàs segur?
 
@@ -2847,10 +2847,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra e
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'avió
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acció sobre el tren actual - clica aquí per parar/arrencar el tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions sobre l'avió actual - clica aquí per parar/arrencar l'avió
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acció sobre el tren actual - clica aquí per parar/engegar el tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/engegar el vehicle
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/engegar el vaixell
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions sobre l'avió actual - clica aquí per parar/engegar l'avió
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
@@ -3087,9 +3087,9 @@ STR_ORDER_NO_UNLOAD                                             :(No descarregui
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descarreguis i espera carregar del tot)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descarreguis i espera carregar del tot de qualsevol càrrega)
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[prop del final]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[extrem més proper]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[a la meitat]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[lluny del final]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[extrem més llunyà]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :salta a l'ordre {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Salta a l'ordre {COMMA} quan {STRING} {STRING} {COMMA}
@@ -3462,10 +3462,10 @@ STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}No es po
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}No es pot anomenar el vaixell...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}No es pot anomenar l'avió...
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No es pot parar/arrencar el tren...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No es pot parar/arrencar l'automòbil...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}No es pot parar/arrencar el vaixell...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}No es pot parar/arrencar l'avió...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No es pot parar/engegar el tren...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No es pot parar/engegar l'automòbil...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}No es pot parar/engegar el vaixell...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}No es pot parar/engegar l'avió...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}No pots enviar el tren a cotxeres...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es pot enviar el vehicle a cotxera...
@@ -3501,7 +3501,7 @@ STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}No es po
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No es pot invertir la direcció del tren...
-STR_ERROR_TRAIN_START_NO_CATENARY                               :Aquesta via no té catenària, el tren no pot arrencar
+STR_ERROR_TRAIN_START_NO_CATENARY                               :Aquesta via no té catenària, el tren no pot engegar
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No s'ha pogut fer girar el vehicle...
 
