@@ -516,7 +516,6 @@ public:
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
-	/* virtual */ void Invalidate(const Window *w) const;
 	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
 
 	static void InvalidateDimensionCache();

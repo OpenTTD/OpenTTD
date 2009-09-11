@@ -2272,13 +2272,6 @@ void NWidgetLeaf::Draw(const Window *w)
 	}
 }
 
-void NWidgetLeaf::Invalidate(const Window *w) const
-{
-	if (this->type == WWT_EMPTY) return; // Don't repaint dummy widgets.
-	NWidgetBase::Invalidate(w);
-}
-
-
 Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
 {
 	if (this->type == WWT_SCROLLBAR) return &w->vscroll;
