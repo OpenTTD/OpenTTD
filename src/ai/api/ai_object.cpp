@@ -170,6 +170,11 @@ void AIObject::SetAllowDoCommand(bool allow)
 
 bool AIObject::GetAllowDoCommand()
 {
+	return GetStorage()->allow_do_command;
+}
+
+bool AIObject::CanSuspend()
+{
 	Squirrel *squirrel = Company::Get(_current_company)->ai_instance->engine;
 	return GetStorage()->allow_do_command && squirrel->CanSuspend();
 }
@@ -197,7 +202,7 @@ int AIObject::GetCallbackVariable(int index)
 
 bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, AISuspendCallbackProc *callback)
 {
-	if (AIObject::GetAllowDoCommand() == false) {
+	if (!AIObject::CanSuspend()) {
 		throw AI_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
