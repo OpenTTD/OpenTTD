@@ -62,6 +62,12 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	char *orig_str_buf;
 	const uint16 edit_str_size; ///< maximum length of string (in bytes), including terminating '\0'
 
+	QueryStringBaseWindow(uint16 size) : Window(), edit_str_size(size)
+	{
+		assert(size != 0);
+		this->edit_str_buf = CallocT<char>(size);
+	}
+
 	QueryStringBaseWindow(uint16 size, const WindowDesc *desc, WindowNumber window_number = 0) : Window(desc, window_number), edit_str_size(size)
 	{
 		assert(size != 0);

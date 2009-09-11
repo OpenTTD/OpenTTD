@@ -1182,23 +1182,35 @@ void QueryString::HandleEditBox(Window *w, int wid)
 
 void QueryString::DrawEditBox(Window *w, int wid)
 {
-	const Widget *wi = &w->widget[wid];
+	int left;
+	int right;
+	int top;
+	int bottom;
+	if (w->widget == NULL) {
+		const NWidgetCore *wi = w->nested_array[wid];
 
-	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+		assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
-	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);
+		left   = wi->pos_x;
+		right  = wi->pos_x + wi->current_x - 1;
+		top    = wi->pos_y;
+		bottom = wi->pos_y + wi->current_y - 1;
+	} else {
+		const Widget *wi = &w->widget[wid];
 
-	DrawPixelInfo dpi;
-	int delta;
+		assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+
+		left   = wi->left;
+		right  = wi->right;
+		top    = wi->top;
+		bottom = wi->bottom;
+	}
+
+	GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, 215);
 
 	/* Limit the drawing of the string inside the widget boundaries */
-	if (!FillDrawPixelInfo(&dpi,
-			wi->left + 4,
-			wi->top + 1,
-			wi->right - wi->left - 4,
-			wi->bottom - wi->top - 1)) {
-		return;
-	}
+	DrawPixelInfo dpi;
+	if (!FillDrawPixelInfo(&dpi, left + WD_FRAMETEXT_LEFT, top + WD_FRAMERECT_TOP, right - left - WD_FRAMETEXT_RIGHT, bottom - top - WD_FRAMERECT_BOTTOM)) return;
 
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &dpi;
@@ -1206,9 +1218,7 @@ void QueryString::DrawEditBox(Window *w, int wid)
 	/* We will take the current widget length as maximum width, with a small
 	 * space reserved at the end for the caret to show */
 	const Textbuf *tb = &this->text;
-
-	delta = (wi->right - wi->left) - tb->width - 10;
-	if (delta > 0) delta = 0;
+	int delta = min(0, (right - left) - tb->width - 10);
 
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 

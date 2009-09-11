@@ -75,7 +75,13 @@ struct OskWindow : public Window {
 		this->parent = parent;
 		assert(parent != NULL);
 
-		this->caption = (parent->widget[button].data != STR_NULL) ? parent->widget[button].data : parent->caption;
+		if (parent->widget != NULL) {
+			this->caption = (parent->widget[button].data != STR_NULL) ? parent->widget[button].data : parent->caption;
+		}
+		if (parent->nested_array != NULL) {
+			assert(parent->nested_array[button] != NULL);
+			this->caption = (parent->nested_array[button]->widget_data != STR_NULL) ? parent->nested_array[button]->widget_data : parent->caption;
+		}
 
 		this->qs         = parent;
 		this->text_btn   = button;
