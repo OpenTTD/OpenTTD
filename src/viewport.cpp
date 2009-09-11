@@ -1279,12 +1279,12 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
-	this->width_normal = GetStringBoundingBox(buffer).width + 3;
+	this->width_normal = GetStringBoundingBox(buffer).width;
 	this->left = center - this->width_normal / 2;
 
 	/* zoomed out version */
 	_cur_fontsize = FS_SMALL;
-	this->width_small = GetStringBoundingBox(buffer).width + 3;
+	this->width_small = GetStringBoundingBox(buffer).width;
 	_cur_fontsize = FS_NORMAL;
 
 	this->MarkDirty();
@@ -1428,58 +1428,45 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 
 	const StringSpriteToDraw *ssend = sstdv->End();
 	for (const StringSpriteToDraw *ss = sstdv->Begin(); ss != ssend; ++ss) {
-		TextColour colour;
-
-		if (ss->width != 0) {
-			/* Do not draw signs nor station names if they are set invisible */
-			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
-
-			int x = UnScaleByZoom(ss->x, zoom) - 1;
-			int y = UnScaleByZoom(ss->y, zoom) - 1;
-			int bottom = y + 11;
-			int w = ss->width;
-
-			if (w & 0x8000) {
-				w &= ~0x8000;
-				y--;
-				bottom -= 6;
-				w -= 3;
-			}
-
-		/* Draw the rectangle if 'tranparent station signs' is off,
-		 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
-			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
-				DrawFrameRect(
-					x, y, x + w, bottom, (Colours)ss->colour,
-					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
-				);
-			}
-		}
+		TextColour colour = TC_BLACK;
+		bool small = HasBit(ss->width, 15);
+		int w = GB(ss->width, 0, 15);
+		int x = UnScaleByZoom(ss->x, zoom);
+		int y = UnScaleByZoom(ss->y, zoom);
+		int bottom = y + (small ? FONT_HEIGHT_SMALL : FONT_HEIGHT_NORMAL);
 
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
-		/* if we didn't draw a rectangle, or if transparant building is on,
-		 * draw the text in the colour the rectangle would have */
-		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN && ss->width != 0) {
-			/* Real colours need the IS_PALETTE_COLOUR flag
-			 * otherwise colours from _string_colourmap are assumed. */
-			colour = (TextColour)_colour_gradient[ss->colour][6] | IS_PALETTE_COLOUR;
-		} else {
-			colour = TC_BLACK;
-		}
 
-		/* The maximum width of the string */
-		int w = GB(ss->width, 0, 15);
-		if (w == 0) {
+		if (w != 0) {
+			/* Do not draw signs nor station names if they are set invisible */
+			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
+
+			/* if we didn't draw a rectangle, or if transparant building is on,
+			* draw the text in the colour the rectangle would have */
+			if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) {
+				/* Real colours need the IS_PALETTE_COLOUR flag
+				* otherwise colours from _string_colourmap are assumed. */
+				colour = (TextColour)_colour_gradient[ss->colour][6] | IS_PALETTE_COLOUR;
+			}
+
+			/* Draw the rectangle if 'tranparent station signs' is off,
+			 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
+			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
+				DrawFrameRect(
+					x - 1, y - 1, x + 1 + w, bottom, (Colours)ss->colour,
+					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
+				);
+			}
+
+			if (small) y -= 1;
+		} else {
 			char buffer[DRAW_STRING_BUFFER];
 			GetString(buffer, ss->string, lastof(buffer));
 			w = GetStringBoundingBox(buffer).width;
 		}
 
-		DrawString(
-			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->x, zoom) + w - 1, UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
-			ss->string, colour, SA_CENTER
-		);
+		DrawString(x, x + w - 1, y, ss->string, colour, SA_CENTER);
 	}
 }
 
