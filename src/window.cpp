@@ -140,6 +140,42 @@ bool EditBoxInGlobalFocus()
 }
 
 /**
+ * Set focus within this window to the given widget. The function however doesn't change which window has focus.
+ * @param widget_index Index of the widget in the window to set the focus to.
+ * @return Focus has changed.
+ */
+bool Window::SetFocusedWidget(byte widget_index)
+{
+	if (this->widget != NULL) {
+		/* Do nothing if widget_index is already focused, or if it wasn't a valid widget. */
+		if (widget_index >= this->widget_count || this->widget + widget_index == this->focused_widget) return false;
+
+		if (this->focused_widget != NULL) {
+			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
+			this->InvalidateWidget(this->focused_widget - this->widget);
+		}
+		this->focused_widget = &this->widget[widget_index];
+		return true;
+	}
+
+	if (this->nested_array != NULL) {
+		/* Do nothing if widget_index is already focused, or if it wasn't a valid widget. */
+		if (widget_index >= this->nested_array_size) return false;
+
+		assert(this->nested_array[widget_index] != NULL); // Setting focus to a non-existing widget is a bad idea.
+		if (this->nested_focus != NULL) {
+			if (this->nested_array[widget_index] == this->nested_focus) return false;
+
+			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
+			this->nested_focus->Invalidate(this);
+		}
+		this->nested_focus = this->nested_array[widget_index];
+		return true;
+	}
+	NOT_REACHED();
+}
+
+/**
  * Sets the enabled/disabled status of a list of widgets.
  * By default, widgets are enabled.
  * On certain conditions, they have to be disabled.
