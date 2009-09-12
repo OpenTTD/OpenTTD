@@ -359,10 +359,23 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			continue;
 		}
 
-		CommandCost cost = DoCommand(tile, v->engine_type, build_argument, flags, GetCmdBuildVeh(v));
+		/* In case we're building a multi headed vehicle and the maximum number of
+		 * vehicles is almost reached (e.g. max trains - 1) not all vehicles would
+		 * be cloned. When the non-primary engines were build they were seen as
+		 * 'new' vehicles whereas they would immediately be joined with a primary
+		 * engine. This caused the vehicle to be not build as 'the limit' had been
+		 * reached, resulting in partially build vehicles and such. */
+		DoCommandFlag build_flags = flags;
+		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
+
+		CommandCost cost = DoCommand(tile, v->engine_type, build_argument, build_flags, GetCmdBuildVeh(v));
 		build_argument = 3; // ensure that we only assign a number to the first engine
 
-		if (CmdFailed(cost)) return cost;
+		if (CmdFailed(cost)) {
+			/* Can't build a part, then sell the stuff we already made; clear up the mess */
+			if (w_front != NULL) DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
+			return cost;
+		}
 
 		total_cost.AddCost(cost);
 
