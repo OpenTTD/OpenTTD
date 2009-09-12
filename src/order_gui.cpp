@@ -452,17 +452,16 @@ private:
 
 	/**
 	 * Handle the click on the goto button.
-	 *
-	 * @param w current window
+	 * @param i Dummy parameter.
 	 */
-	static void OrderClick_Goto(OrdersWindow *w, int i)
+	void OrderClick_Goto(int i)
 	{
-		w->InvalidateWidget(ORDER_WIDGET_GOTO);
-		w->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
-		if (w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
+		this->InvalidateWidget(ORDER_WIDGET_GOTO);
+		this->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
+		if (this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
-			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, w);
-			w->goto_type = OPOS_GOTO;
+			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, this);
+			this->goto_type = OPOS_GOTO;
 		} else {
 			ResetObjectToPlace();
 		}
@@ -470,79 +469,71 @@ private:
 
 	/**
 	 * Handle the click on the full load button.
-	 *
-	 * @param w current window
 	 * @param load_type the way to load.
 	 */
-	static void OrderClick_FullLoad(OrdersWindow *w, int load_type)
+	void OrderClick_FullLoad(int load_type)
 	{
-		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = w->vehicle->GetOrder(sel_ord);
+		VehicleOrderID sel_ord = this->OrderGetSel();
+		const Order *order = this->vehicle->GetOrder(sel_ord);
 
 		if (order == NULL || order->GetLoadType() == load_type) return;
 
 		if (load_type < 0) {
 			load_type = order->GetLoadType() == OLF_LOAD_IF_POSSIBLE ? OLF_FULL_LOAD_ANY : OLF_LOAD_IF_POSSIBLE;
 		}
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_LOAD | (load_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 16), MOF_LOAD | (load_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
 	 * Handle the click on the service.
-	 *
-	 * @param w current window
 	 */
-	static void OrderClick_Service(OrdersWindow *w, int i)
+	void OrderClick_Service(int i)
 	{
-		VehicleOrderID sel_ord = w->OrderGetSel();
+		VehicleOrderID sel_ord = this->OrderGetSel();
 
 		if (i < 0) {
-			const Order *order = w->vehicle->GetOrder(sel_ord);
+			const Order *order = this->vehicle->GetOrder(sel_ord);
 			if (order == NULL) return;
 			i = (order->GetDepotOrderType() & ODTFB_SERVICE) ? DA_ALWAYS_GO : DA_SERVICE;
 		}
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_DEPOT_ACTION | (i << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 16), MOF_DEPOT_ACTION | (i << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
 	 * Handle the click on the service in nearest depot button.
-	 *
-	 * @param w current window
+	 * @param i Dummy parameter.
 	 */
-	static void OrderClick_NearestDepot(OrdersWindow *w, int i)
+	void OrderClick_NearestDepot(int i)
 	{
 		Order order;
 		order.next = NULL;
 		order.index = 0;
 		order.MakeGoToDepot(0, ODTFB_PART_OF_ORDERS,
-				_settings_client.gui.new_nonstop && (w->vehicle->type == VEH_TRAIN || w->vehicle->type == VEH_ROAD) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+				_settings_client.gui.new_nonstop && (this->vehicle->type == VEH_TRAIN || this->vehicle->type == VEH_ROAD) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
 
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (w->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
+		DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
 	}
 
 	/**
 	 * Handle the click on the conditional order button.
-	 *
-	 * @param w current window
+	 * @param i Dummy parameter.
 	 */
-	static void OrderClick_Conditional(OrdersWindow *w, int i)
+	void OrderClick_Conditional(int i)
 	{
-		w->InvalidateWidget(ORDER_WIDGET_GOTO);
-		w->LowerWidget(ORDER_WIDGET_GOTO);
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, w);
-		w->goto_type = OPOS_CONDITIONAL;
+		this->InvalidateWidget(ORDER_WIDGET_GOTO);
+		this->LowerWidget(ORDER_WIDGET_GOTO);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, this);
+		this->goto_type = OPOS_CONDITIONAL;
 	}
 
 	/**
 	 * Handle the click on the unload button.
-	 *
-	 * @param w current window
 	 */
-	static void OrderClick_Unload(OrdersWindow *w, int unload_type)
+	void OrderClick_Unload(int unload_type)
 	{
-		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = w->vehicle->GetOrder(sel_ord);
+		VehicleOrderID sel_ord = this->OrderGetSel();
+		const Order *order = this->vehicle->GetOrder(sel_ord);
 
 		if (order == NULL || order->GetUnloadType() == unload_type) return;
 
@@ -550,19 +541,17 @@ private:
 			unload_type = order->GetUnloadType() == OUF_UNLOAD_IF_POSSIBLE ? OUFB_UNLOAD : OUF_UNLOAD_IF_POSSIBLE;
 		}
 
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
+		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
 	 * Handle the click on the nonstop button.
-	 *
-	 * @param w current window
 	 * @param non_stop what non-stop type to use; -1 to use the 'next' one.
 	 */
-	static void OrderClick_Nonstop(OrdersWindow *w, int non_stop)
+	void OrderClick_Nonstop(int non_stop)
 	{
-		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = w->vehicle->GetOrder(sel_ord);
+		VehicleOrderID sel_ord = this->OrderGetSel();
+		const Order *order = this->vehicle->GetOrder(sel_ord);
 
 		if (order == NULL || order->GetNonStopType() == non_stop) return;
 
@@ -571,63 +560,58 @@ private:
 			non_stop = order->GetNonStopType() ^ ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
 		}
 
-		w->InvalidateWidget(ORDER_WIDGET_NON_STOP);
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
+		this->InvalidateWidget(ORDER_WIDGET_NON_STOP);
+		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
 	 * Handle the click on the skip button.
-	 * If ctrl is pressed skip to selected order.
-	 *  Else skip to current order + 1
-	 *
-	 * @param w current window
+	 * If ctrl is pressed, skip to selected order, else skip to current order + 1
+	 * @param i Dummy parameter.
 	 */
-	static void OrderClick_Skip(OrdersWindow *w, int i)
+	void OrderClick_Skip(int i)
 	{
 		/* Don't skip when there's nothing to skip */
-		if (_ctrl_pressed && w->vehicle->cur_order_index == w->OrderGetSel()) return;
-		if (w->vehicle->GetNumOrders() <= 1) return;
+		if (_ctrl_pressed && this->vehicle->cur_order_index == this->OrderGetSel()) return;
+		if (this->vehicle->GetNumOrders() <= 1) return;
 
-		DoCommandP(w->vehicle->tile, w->vehicle->index, _ctrl_pressed ? w->OrderGetSel() : ((w->vehicle->cur_order_index + 1) % w->vehicle->GetNumOrders()),
+		DoCommandP(this->vehicle->tile, this->vehicle->index, _ctrl_pressed ? this->OrderGetSel() : ((this->vehicle->cur_order_index + 1) % this->vehicle->GetNumOrders()),
 				CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_ERROR_CAN_T_SKIP_TO_ORDER : STR_ERROR_CAN_T_SKIP_ORDER));
 	}
 
 	/**
 	 * Handle the click on the delete button.
-	 *
-	 * @param w current window
+	 * @param i Dummy parameter.
 	 */
-	static void OrderClick_Delete(OrdersWindow *w, int i)
+	void OrderClick_Delete(int i)
 	{
 		/* When networking, move one order lower */
-		int selected = w->selected_order + (int)_networking;
+		int selected = this->selected_order + (int)_networking;
 
-		if (DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), CMD_DELETE_ORDER | CMD_MSG(STR_ERROR_CAN_T_DELETE_THIS_ORDER))) {
-			w->selected_order = selected >= w->vehicle->GetNumOrders() ? -1 : selected;
-			w->UpdateButtonState();
+		if (DoCommandP(this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), CMD_DELETE_ORDER | CMD_MSG(STR_ERROR_CAN_T_DELETE_THIS_ORDER))) {
+			this->selected_order = selected >= this->vehicle->GetNumOrders() ? -1 : selected;
+			this->UpdateButtonState();
 		}
 	}
 
 	/**
 	 * Handle the click on the refit button.
-	 * If ctrl is pressed cancel refitting.
-	 *  Else show the refit window.
-	 *
-	 * @param w current window
+	 * If ctrl is pressed, cancel refitting, else show the refit window.
+	 * @param i Dummy parameter.
 	 */
-	static void OrderClick_Refit(OrdersWindow *w, int i)
+	void OrderClick_Refit(int i)
 	{
 		if (_ctrl_pressed) {
 			/* Cancel refitting */
-			DoCommandP(w->vehicle->tile, w->vehicle->index, (w->OrderGetSel() << 16) | (CT_NO_REFIT << 8) | CT_NO_REFIT, CMD_ORDER_REFIT);
+			DoCommandP(this->vehicle->tile, this->vehicle->index, (this->OrderGetSel() << 16) | (CT_NO_REFIT << 8) | CT_NO_REFIT, CMD_ORDER_REFIT);
 		} else {
-			ShowVehicleRefitWindow(w->vehicle, w->OrderGetSel(), w);
+			ShowVehicleRefitWindow(this->vehicle, this->OrderGetSel(), this);
 		}
 	}
-	typedef void Handler(OrdersWindow*, int);
+	typedef void (OrdersWindow::*Handler)(int);
 	struct KeyToEvent {
 		uint16 keycode;
-		Handler *proc;
+		Handler proc;
 	};
 
 public:
@@ -651,7 +635,7 @@ public:
 				if (order->IsType(OT_GOTO_STATION)) station_orders++;
 			}
 
-			if (station_orders < 2) OrderClick_Goto(this, 0);
+			if (station_orders < 2) this->OrderClick_Goto(0);
 		}
 
 		if (_settings_game.order.timetabling) {
@@ -933,15 +917,15 @@ public:
 			} break;
 
 			case ORDER_WIDGET_SKIP:
-				OrderClick_Skip(this, 0);
+				this->OrderClick_Skip(0);
 				break;
 
 			case ORDER_WIDGET_DELETE:
-				OrderClick_Delete(this, 0);
+				this->OrderClick_Delete(0);
 				break;
 
 			case ORDER_WIDGET_NON_STOP:
-				OrderClick_Nonstop(this, -1);
+				this->OrderClick_Nonstop(-1);
 				break;
 
 			case ORDER_WIDGET_NON_STOP_DROPDOWN: {
@@ -950,7 +934,7 @@ public:
 			} break;
 
 			case ORDER_WIDGET_GOTO:
-				OrderClick_Goto(this, 0);
+				this->OrderClick_Goto(0);
 				break;
 
 			case ORDER_WIDGET_GOTO_DROPDOWN:
@@ -958,7 +942,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_FULL_LOAD:
-				OrderClick_FullLoad(this, -1);
+				this->OrderClick_FullLoad(-1);
 				break;
 
 			case ORDER_WIDGET_FULL_LOAD_DROPDOWN:
@@ -966,7 +950,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_UNLOAD:
-				OrderClick_Unload(this, -1);
+				this->OrderClick_Unload(-1);
 				break;
 
 			case ORDER_WIDGET_UNLOAD_DROPDOWN:
@@ -974,11 +958,11 @@ public:
 				break;
 
 			case ORDER_WIDGET_REFIT:
-				OrderClick_Refit(this, 0);
+				this->OrderClick_Refit(0);
 				break;
 
 			case ORDER_WIDGET_SERVICE:
-				OrderClick_Service(this, -1);
+				this->OrderClick_Service(-1);
 				break;
 
 			case ORDER_WIDGET_SERVICE_DROPDOWN:
@@ -1038,28 +1022,28 @@ public:
 	{
 		switch (widget) {
 			case ORDER_WIDGET_NON_STOP_DROPDOWN:
-				OrderClick_Nonstop(this, index);
+				this->OrderClick_Nonstop(index);
 				break;
 
 			case ORDER_WIDGET_FULL_LOAD_DROPDOWN:
-				OrderClick_FullLoad(this, index);
+				this->OrderClick_FullLoad(index);
 				break;
 
 			case ORDER_WIDGET_UNLOAD_DROPDOWN:
-				OrderClick_Unload(this, index);
+				this->OrderClick_Unload(index);
 				break;
 
 			case ORDER_WIDGET_GOTO_DROPDOWN:
 				switch (index) {
-					case 0: OrderClick_Goto(this, 0); break;
-					case 1: OrderClick_NearestDepot(this, 0); break;
-					case 2: OrderClick_Conditional(this, 0); break;
+					case 0: this->OrderClick_Goto(0); break;
+					case 1: this->OrderClick_NearestDepot(0); break;
+					case 2: this->OrderClick_Conditional(0); break;
 					default: NOT_REACHED();
 				}
 				break;
 
 			case ORDER_WIDGET_SERVICE_DROPDOWN:
-				OrderClick_Service(this, index);
+				this->OrderClick_Service(index);
 				break;
 
 			case ORDER_WIDGET_COND_VARIABLE:
@@ -1087,7 +1071,7 @@ public:
 			} break;
 
 			case ORDER_WIDGET_DELETE:
-				OrderClick_Delete(this, 0);
+				this->OrderClick_Delete(0);
 				break;
 		}
 
@@ -1097,20 +1081,20 @@ public:
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		static const KeyToEvent keytoevent[] = {
-			{'D', OrderClick_Skip},
-			{'F', OrderClick_Delete},
-			{'G', OrderClick_Goto},
-			{'H', OrderClick_Nonstop},
-			{'J', OrderClick_FullLoad},
-			{'K', OrderClick_Unload},
-			//('?', OrderClick_Service},
+			{'D', &OrdersWindow::OrderClick_Skip},
+			{'F', &OrdersWindow::OrderClick_Delete},
+			{'G', &OrdersWindow::OrderClick_Goto},
+			{'H', &OrdersWindow::OrderClick_Nonstop},
+			{'J', &OrdersWindow::OrderClick_FullLoad},
+			{'K', &OrdersWindow::OrderClick_Unload},
+			//('?', &OrdersWindow::OrderClick_Service},
 		};
 
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
 		for (uint i = 0; i < lengthof(keytoevent); i++) {
 			if (keycode == keytoevent[i].keycode) {
-				keytoevent[i].proc(this, -1);
+				(this->*(keytoevent[i].proc))(-1);
 				return ES_HANDLED;
 			}
 		}
