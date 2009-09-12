@@ -24,6 +24,10 @@
 #include "video/video_driver.hpp"
 #include "saveload/saveload.h"
 
+#include <squirrel.h>
+#include "ai/ai_info.hpp"
+#include "company_base.h"
+
 #include <time.h>
 
 /* static */ const char *CrashLog::message = NULL;
@@ -93,6 +97,17 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			BaseSounds::GetUsedSet() == NULL ? "none" : BaseSounds::GetUsedSet()->name,
 			_video_driver == NULL ? "none" : _video_driver->GetName()
 	);
+
+	buffer += seprintf(buffer, last, "AI Configuration:\n");
+	const Company *c;
+	FOR_ALL_COMPANIES(c) {
+		if (c->ai_info == NULL) {
+			buffer += seprintf(buffer, last, " %2i: Human\n", (int)c->index);
+		} else {
+			buffer += seprintf(buffer, last, " %2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+		}
+	}
+	buffer += seprintf(buffer, last, "\n");
 
 	return buffer;
 }
