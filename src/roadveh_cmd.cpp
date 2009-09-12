@@ -675,22 +675,8 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 {
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
-	TileIndex dest = INVALID_TILE;
-	const RoadStop *rs = GetStation(station)->GetPrimaryRoadStop(this);
-	if (rs != NULL) {
-		uint mindist = UINT_MAX;
-
-		for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
-			uint dist = DistanceManhattan(this->tile, rs->xy);
-
-			if (dist < mindist) {
-				mindist = dist;
-				dest = rs->xy;
-			}
-		}
-	}
-
-	if (dest != INVALID_TILE) {
+	TileIndex dest;
+	if (YapfFindNearestRoadVehicleCompatibleStop(this, station, &dest)) {
 		return dest;
 	} else {
 		/* There is no stop left at the station, so don't even TRY to go there */
