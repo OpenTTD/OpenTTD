@@ -1165,6 +1165,8 @@ bool SQVM::CallNative(SQNativeClosure *nclosure,SQInteger nargs,SQInteger stackb
 	}
 
 
+	/* Store the call stack size, so we can restore that */
+	SQInteger cstksize = _callsstacksize;
 	SQInteger ret;
 	try {
 		SQBool can_suspend = this->_can_suspend;
@@ -1175,6 +1177,7 @@ bool SQVM::CallNative(SQNativeClosure *nclosure,SQInteger nargs,SQInteger stackb
 		_nnativecalls--;
 		suspend = false;
 
+		_callsstacksize = cstksize;
 		_stackbase = oldstackbase;
 		_top = oldtop;
 
@@ -1183,6 +1186,8 @@ bool SQVM::CallNative(SQNativeClosure *nclosure,SQInteger nargs,SQInteger stackb
 		while(oldtop > _stackbase + stackbase) _stack._vals[oldtop--].Null();
 		throw;
 	}
+
+	assert(cstksize == _callsstacksize);
 
 	_nnativecalls--;
 	suspend = false;
