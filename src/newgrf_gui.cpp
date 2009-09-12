@@ -51,7 +51,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 }
 
 
-static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bottom, bool show_params)
+static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint bottom, bool show_params)
 {
 	char buff[256];
 
@@ -68,24 +68,24 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		GetString(message, c->error->custom_message == NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
 
 		SetDParamStr(0, message);
-		y = DrawStringMultiLine(x, x + w, y, bottom, c->error->severity);
+		y = DrawStringMultiLine(x, right, y, bottom, c->error->severity);
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != NULL) {
 		SetDParamStr(0, c->filename);
-		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_FILENAME);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_FILENAME);
 	}
 
 	/* Prepare and draw GRF ID */
 	snprintf(buff, lengthof(buff), "%08X", BSWAP32(c->grfid));
 	SetDParamStr(0, buff);
-	y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
+	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
 
 	/* Prepare and draw MD5 sum */
 	md5sumToString(buff, lastof(buff), c->md5sum);
 	SetDParamStr(0, buff);
-	y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_MD5SUM);
+	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_MD5SUM);
 
 	/* Show GRF parameter list */
 	if (show_params) {
@@ -96,25 +96,25 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		} else {
 			SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
 		}
-		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_PARAMETER);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
 		SetDParamStr(0, c->windows_paletted ? "Windows" : "DOS");
-		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
 	}
 
 	/* Show flags */
-	if (c->status == GCS_NOT_FOUND)       y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_NOT_FOUND);
-	if (c->status == GCS_DISABLED)        y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_DISABLED);
-	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
+	if (c->status == GCS_NOT_FOUND)       y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NOT_FOUND);
+	if (c->status == GCS_DISABLED)        y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_DISABLED);
+	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && !StrEmpty(c->info)) {
 		SetDParam(0, STR_JUST_RAW_STRING);
 		SetDParamStr(1, c->info);
-		y = DrawStringMultiLine(x, x + w, y, bottom, STR_BLACK_STRING);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_BLACK_STRING);
 	} else {
-		y = DrawStringMultiLine(x, x + w, y, bottom, STR_NEWGRF_SETTINGS_NO_INFO);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
 }
 
@@ -179,7 +179,7 @@ struct NewGRFAddWindow : public Window {
 
 		if (this->sel != NULL) {
 			const Widget *wi = &this->widget[ANGRFW_GRF_INFO];
-			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, false);
+			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right, wi->bottom, false);
 		}
 	}
 
@@ -476,7 +476,7 @@ struct NewGRFWindow : public Window {
 		if (this->sel != NULL) {
 			/* Draw NewGRF file info */
 			const Widget *wi = &this->widget[SNGRFS_NEWGRF_INFO];
-			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, this->show_params);
+			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right, wi->bottom, this->show_params);
 		}
 	}
 
