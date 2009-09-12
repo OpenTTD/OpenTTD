@@ -139,47 +139,78 @@ struct NewGRFAddWindow : public Window {
 	GRFConfig **list;
 	const GRFConfig *sel;
 
-	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : Window(desc, 0)
+	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : Window()
 	{
+		this->InitNested(desc, 0);
 		this->list = list;
-		this->resize.step_height = 10;
+		this->OnInvalidateData(0);
+	}
 
-		this->FindWindowPlacementAndResize(desc);
+	virtual void OnInvalidateData(int data)
+	{
+		/* Count the number of GRFs */
+		int n = 0;
+		for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) n++;
+
+		this->vscroll.SetCount(n);
+		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
+		this->vscroll.SetCapacity((this->nested_array[ANGRFW_GRF_LIST]->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case ANGRFW_GRF_LIST:
+				resize->height = FONT_HEIGHT_NORMAL;
+				size->height = max(size->height, WD_FRAMERECT_TOP + 10 * resize->height + WD_FRAMERECT_BOTTOM + padding.height + 2);
+				break;
+
+			case ANGRFW_GRF_INFO:
+				size->height = max(size->height, WD_FRAMERECT_TOP + 10 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM + padding.height + 2);
+				break;
+		}
+	}
+
+	virtual void OnResize(Point delta)
+	{
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 	}
 
 	virtual void OnPaint()
 	{
-		const GRFConfig *c;
-		const Widget *wl = &this->widget[ANGRFW_GRF_LIST];
-		int n = 0;
-
-		/* Count the number of GRFs */
-		for (c = _all_grfs; c != NULL; c = c->next) n++;
-
-		this->vscroll.SetCapacity((wl->bottom - wl->top) / 10);
-		this->vscroll.SetCount(n);
-
-		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
 		this->DrawWidgets();
+	}
 
-		GfxFillRect(wl->left + 1, wl->top + 1, wl->right, wl->bottom, 0xD7);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case ANGRFW_GRF_LIST: {
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
 
-		uint y = wl->top + 1;
-		for (c = _all_grfs, n = 0; c != NULL && n < (this->vscroll.GetPosition() + this->vscroll.GetCapacity()); c = c->next, n++) {
-			if (n >= this->vscroll.GetPosition()) {
-				bool h = c == this->sel;
-				const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+				uint y = r.top + WD_FRAMERECT_TOP;
+				int max_index = this->vscroll.GetPosition() + this->vscroll.GetCapacity();
 
-				/* Draw selection background */
-				if (h) GfxFillRect(this->widget[ANGRFW_GRF_LIST].left + 1, y, this->widget[ANGRFW_GRF_LIST].right, y + 9, 156);
-				DrawString(this->widget[ANGRFW_GRF_LIST].left + 2, this->widget[ANGRFW_GRF_LIST].right - 2, y, text, h ? TC_WHITE : TC_ORANGE);
-				y += 10;
+				const GRFConfig *c;
+				int n;
+				for (c = _all_grfs, n = 0; c != NULL && n < max_index; c = c->next, n++) {
+					if (n >= this->vscroll.GetPosition()) {
+						bool h = c == this->sel;
+						const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+
+						/* Draw selection background */
+						if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, 156);
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, text, h ? TC_WHITE : TC_ORANGE);
+						y += this->resize.step_height;
+					}
+				}
+				break;
 			}
-		}
 
-		if (this->sel != NULL) {
-			const Widget *wi = &this->widget[ANGRFW_GRF_INFO];
-			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right, wi->bottom, false);
+			case ANGRFW_GRF_INFO:
+				if (this->sel != NULL) {
+					ShowNewGRFInfo(this->sel, r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, r.bottom - WD_FRAMERECT_BOTTOM, false);
+				}
+				break;
 		}
 	}
 
@@ -194,11 +225,11 @@ struct NewGRFAddWindow : public Window {
 			case ANGRFW_GRF_LIST: {
 				/* Get row... */
 				const GRFConfig *c;
-				uint i = (pt.y - this->widget[ANGRFW_GRF_LIST].top) / 10 + this->vscroll.GetPosition();
+				uint i = (pt.y - this->nested_array[ANGRFW_GRF_LIST]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height + this->vscroll.GetPosition();
 
 				for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
 				this->sel = c;
-				this->SetDirty();
+				InvalidateThisWindowData(this);
 				break;
 			}
 
@@ -234,24 +265,10 @@ struct NewGRFAddWindow : public Window {
 			case ANGRFW_RESCAN: // Rescan list
 				this->sel = NULL;
 				ScanNewGRFFiles();
-				this->SetDirty();
+				InvalidateThisWindowData(this);
 				break;
 		}
 	}
-};
-
-/* Widget definition for the add a newgrf window */
-static const Widget _newgrf_add_dlg_widgets[] = {
-{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW },             // ANGRFW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,  11, 306,   0,  13, STR_NEWGRF_ADD_CAPTION,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS },   // ANGRFW_CAPTION
-{      WWT_PANEL,      RESIZE_RB,  COLOUR_GREY,   0, 294,  14, 121, 0x0,                     STR_NULL },                             // ANGRFW_BACKGROUND
-{      WWT_INSET,      RESIZE_RB,  COLOUR_GREY,   2, 292,  16, 119, 0x0,                     STR_NULL },                             // ANGRFW_GRF_LIST
-{  WWT_SCROLLBAR,     RESIZE_LRB,  COLOUR_GREY, 295, 306,  14, 121, 0x0,                     STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST }, // ANGRFW_SCROLLBAR
-{      WWT_PANEL,     RESIZE_RTB,  COLOUR_GREY,   0, 306, 122, 224, 0x0,                     STR_NULL },                             // ANGRFW_GRF_INFO
-{ WWT_PUSHTXTBTN,     RESIZE_RTB,  COLOUR_GREY,   0, 146, 225, 236, STR_NEWGRF_ADD_FILE,     STR_NEWGRF_ADD_FILE_TOOLTIP },              // ANGRFW_ADD
-{ WWT_PUSHTXTBTN,    RESIZE_LRTB,  COLOUR_GREY, 147, 294, 225, 236, STR_NEWGRF_ADD_RESCAN_FILES, STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP },          // ANGRFW_RESCAN
-{  WWT_RESIZEBOX,    RESIZE_LRTB,  COLOUR_GREY, 295, 306, 225, 236, 0x0,                     STR_TOOLTIP_RESIZE },                    // ANGRFW_RESIZE
-{   WIDGETS_END },
 };
 
 static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
@@ -261,24 +278,26 @@ static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_BACKGROUND),
-			NWidget(WWT_INSET, COLOUR_GREY, ANGRFW_GRF_LIST), SetMinimalSize(291, 104), SetResize(1, 10), SetPadding(2, 2, 2, 2), EndContainer(),
+			NWidget(WWT_INSET, COLOUR_GREY, ANGRFW_GRF_LIST), SetMinimalSize(290, 1), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, ANGRFW_SCROLLBAR),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_GRF_INFO), SetResize(1, 0), SetMinimalSize(307, 103), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_GRF_INFO), SetMinimalSize(306, 1), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_ADD), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_FILE, STR_NEWGRF_ADD_FILE_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_RESCAN), SetMinimalSize(148, 12), SetDataTip(STR_NEWGRF_ADD_RESCAN_FILES, STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ANGRFW_RESIZE),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_ADD), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_FILE, STR_NEWGRF_ADD_FILE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_RESCAN), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_RESCAN_FILES, STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP),
+		EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ANGRFW_RESIZE), SetFill(false, true),
 	EndContainer(),
 };
 
 /* Window definition for the add a newgrf window */
 static const WindowDesc _newgrf_add_dlg_desc(
-	WDP_CENTER, WDP_CENTER, 307, 237, 307, 337,
+	WDP_CENTER, WDP_CENTER, 0, 0, 306, 335,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_newgrf_add_dlg_widgets, _nested_newgrf_add_dlg_widgets, lengthof(_nested_newgrf_add_dlg_widgets)
+	NULL, _nested_newgrf_add_dlg_widgets, lengthof(_nested_newgrf_add_dlg_widgets)
 );
 
 static GRFPresetList _grf_preset_list;
