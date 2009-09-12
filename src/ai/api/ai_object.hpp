@@ -133,8 +133,15 @@ protected:
 	static GroupID GetNewGroupID();
 
 	/**
-	 * Get the latest stored allow_do_command.
-	 *  If this is false, you are not allowed to do any DoCommands.
+	 * Can we suspend the AI at this moment?
+	 */
+	static bool CanSuspend();
+
+	/**
+	 * Get the internal value of allow_do_command. This can differ
+	 * from CanSuspend() if the reason we are not allowed
+	 * to execute a DoCommand is in squirrel and not the API.
+	 * In that case use this function to restore the previous value.
 	 */
 	static bool GetAllowDoCommand();
 

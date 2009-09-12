@@ -1799,6 +1799,20 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 			continue;
 		}
 
+		/* Check for duplicate GRFID (will also check for duplicate filenames) */
+		bool duplicate = false;
+		for (const GRFConfig *gc = first; gc != NULL; gc = gc->next) {
+			if (gc->grfid == c->grfid) {
+				ShowInfoF("ini: ignoring  NewGRF '%s': duplicate GRF ID with '%s'", item->name, gc->filename);
+				duplicate = true;
+				break;
+			}
+		}
+		if (duplicate) {
+			ClearGRFConfig(&c);
+			continue;
+		}
+
 		/* Mark file as static to avoid saving in savegame. */
 		if (is_static) SetBit(c->flags, GCF_STATIC);
 
