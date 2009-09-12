@@ -116,7 +116,7 @@ Station::~Station()
  * after removing item from the pool.
  * @param index index of deleted item
  */
-void Station::PostDestructor(size_t index)
+void BaseStation::PostDestructor(size_t index)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }

@@ -158,6 +158,8 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	{
 		return (this->facilities & ~FACIL_WAYPOINT) != 0;
 	}
+
+	static void PostDestructor(size_t index);
 };
 
 #define FOR_ALL_BASE_STATIONS(var) FOR_ALL_ITEMS_FROM(BaseStation, station_index, var, 0)
