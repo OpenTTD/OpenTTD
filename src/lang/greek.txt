@@ -249,10 +249,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Μήκο
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περιοχή: {NUM} x {NUM}{}Υψομετρική διαφορά: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Πληθυσμός
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Όνομα
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Μέρα
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Πληθυσμός
+STR_SORT_BY_NAME                                                :Όνομα
 STR_SORT_BY_PRODUCTION                                          :Παραγωγή
 STR_SORT_BY_TYPE                                                :Τύπος
 STR_SORT_BY_TRANSPORTED                                         :Μεταφέρθηκαν
@@ -553,9 +556,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Χρήμ
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνειο:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων; αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων που είχαν κέρδος, αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τραίνου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (για όλα τα οχήματα παλιότερα των 2 ετών)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκε τα τελευταία τέσσερα τετράμηνα
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
@@ -1084,6 +1087,7 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ανο�
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Συντελεστής ταχύτητας αεροσκαφών: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Επιτρέπεται ένας διαμεσού δρόμος να σταματάει σε δρόμους που ανήκουν σε ανταγωνιστές: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
@@ -1236,6 +1240,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Δεξιά
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Χάμηλο όριο παραθύρου (μη καρφωμένο): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Χάμηλο όριο παραθύρου (μη καρφωμένο): {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ρυθμός ανάπτυξης πόλης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
@@ -1301,7 +1307,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγ
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+Click παρακάμπτει την ρύθμιση του χάρτη
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας χάρτη υψομετρίας
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
@@ -1636,7 +1642,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Παρα
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Νεα εταιρία
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(τίποτα)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Κανείς -
 STR_NETWORK_CLIENTLIST_KICK                                     :Εκδίωξη
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Δώστε χρήματα
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Μιλήστε σε όλους
@@ -1724,6 +1730,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Συνέχισ�
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :αποχώρηση
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} συμμετέχει στο παιχνίδι
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} συμμετέχει στο παιχνίδι (Πελάτης #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} συμμετέχει στην εταιρία #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} συμμετέχει στους θεατές
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νεα εταιρία (#{2:NUM})
@@ -1829,7 +1836,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Κατα
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστασίου (για κατασκευή και επισκευή τρένων)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστασίου (για αγορά και επισκευή τρένων)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών
@@ -1890,8 +1897,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομού(τραμ)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για κατασκευή και επισκευή οχημάτων)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για κατασκευή και επισκευή οχημάτων)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών
@@ -1925,7 +1932,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Κατα
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανάλια νερού
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Δημιουργία καναλιών.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή Υδατοφράκτη
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για κατασκευή και επισκευή πλοίων)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για αγορά και επισκευή πλοίων)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Προσδιορισμός θαλάσσιας επιφάνειας.{}Δημιουργία καναλιού, εκτός εάν το πλήκτρο CTRL είναι κρατημένο στο επίπεδο της θάλασσας, όπου θα πλημμυρίσει τις παρακείμενες περιοχές.
@@ -2296,6 +2303,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστ
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για να κεντράρετε την εικόνα στην πόλη
 STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
@@ -2353,7 +2361,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Τρέχουσες χρηματοδοτήσεις για υπηρεσίες παίρνοντας:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} από {STRING} πρός {STRING}{YELLOW} (έως {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Κανένα
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Καμία -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από το σταθμό {STRING} προς το σταθμό {STRING}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
@@ -2484,6 +2492,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχν
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Βιομηχανίες
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Τίποτα -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2579,9 +2588,25 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Κόστ
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Χωρητικότητα: {GOLD}{CARGO}, {CARGO}
 
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Αγορά Οχήματος
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Αγορά Οχήματος
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Αγορά Πλοίου
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Αγορά Αεροπλάνου
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγοράστε το επιλεγμένο οχήμα τραίνου
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγοράστε το επιλεγμένο οχήμα δρόμου
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγοράστε το επιλεγμένο πλοίο
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροπλάνο
 
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Μετανομασία
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Μετανομασία
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Μετανομασία
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Μετανομασία
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Μετανομάζει τον τύπο οχήματος τραίνου
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Μετανομάζει τον τύπο οχήματος δρόμου
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετανομάζει τον τύπο πλοίο
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετανομάζει τον τύπο αεροπλάνου
 
 
 # Depot window
@@ -3138,6 +3163,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Δεν �
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Δεν μπορεί να στάλει το πλοίο στο ναυπηγείο...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να στάλει το αεροπλάνο στο υπόστεγο...
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Δεν μπορεί να αγοραστεί όχημα σιδηρόδρομου...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να αγοραστεί όχημα δρόμου...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Δεν μπορεί να αγοραστεί πλοίο...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπόρει να αγοραστεί αεροπλάνο...
 
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Δεν μπορεί να πωληθεί το όχημα σιδηρόδρομου...
@@ -3375,9 +3404,25 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Φορτηγό 
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Φορτηγό ζαχαρωτών
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Βαγόνι Χάλυβα
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Βαγόνι Χαλκού
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Φορτηγο χάλυβα Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Λεωφορείο Ploddyphut
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Φορτηγό Άνθρακα Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Φορτηγό Άνθρακα Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Φορτηγό Άνθρακα DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Φορτηγό Αλληλογραφίας MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Φορτηγό Αλληλογραφίας Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Φορτηγό Αλληλογραφίας Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Φορτηγό Αλληλογραφίας MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Φορτηγό Αλληλογραφίας Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Φορτηγό Αλληλογραφίας Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Βυτίο Πετρελαίου Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Βυτίο Πετρελαίου Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Βυτίο Πετρελαίου Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Φορτηγό Ξυλείας Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Φορτηγό Ξυλείας Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Φορτηγό Ξυλείας Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Φορτηγό χάλυβα Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Φορτηγο χάλυβα Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Φορτηγο χάλυβα Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Φορτηγό χάλυβα Kelling
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Θωρακισμένο φορτηγό Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Foster

@@ -390,7 +390,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financia una no
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcció de Ferrocarril
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de ferrocarril elèctric
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de Ferrocarril Elèctric
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcció de Monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcció de Maglev
 ############ range ends here

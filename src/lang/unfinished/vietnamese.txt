@@ -219,10 +219,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Chiều 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Diện tích: {NUM} x {NUM}{}Chênh lệch độ cao: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Dân số
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Tên
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ngày tháng
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Sản lượng
 STR_SORT_BY_TYPE                                                :Loại
 STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
@@ -880,11 +881,17 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Gửi về Hang
 
 # Build vehicle window
 
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Máy Bay Mới
+
+
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Danh sách tàu hỏa - click vào tàu hỏa để xem thông tin
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Danh sách xe - click vào xe để xem thông tin
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Danh sách tàu - click vào tàu để xem thông tin
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Danh sách máy bay - click vào máy bay để xem thông tin
 
 
 
-
-
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Thay tên
 
 
 
@@ -1141,6 +1148,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ
 
 
 
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua phi cơ này...
 
 
 

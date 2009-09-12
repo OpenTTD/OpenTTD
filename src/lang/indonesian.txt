@@ -556,7 +556,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Hutang:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Jumlah kendaraan yang menghasilkan keuntungan tahun lalu; termasuk bus/truk, kereta api, kapal dan pesawat
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jumlah dari bagian-bagian stasiun. Setiap bagian dari stasiun (misal: stasiun kereta api, halte Bus, bandara) dihitung, meskipun mereka dihubungkan menjadi satu kesatuan stasiun
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jumlah dari bagian-bagian stasiun yang diservis baru-baru ini. Setiap bagian dari stasiun (misal: stasiun kereta api, halte Bus, bandara) dihitung, meskipun mereka dihubungkan menjadi satu kesatuan stasiun
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Keuntungan dari kendaraan dengan pendapatan terendah (hanya kendaraan yang usianya melebihi 2 tahun yang diperhitungkan)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu bulan dengan keuntungan terendah pada 1/4 tahun terakhir
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu bulan dengan keuntungan tertinggi pada 1/4 tahun terakhir
@@ -1839,11 +1839,11 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Konstruk
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Pembangunan Monorel
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Pembangunan Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Membangun jalur rel
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Membangun rel kereta menggunakan mode Rel Otomatis
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Membangun depo kereta (untuk membuat dan perbaikan kereta)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Membangun stasiun Kereta
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bangun rel. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bangun rel kereta menggunakan mode Autorail. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bangun depo kereta (untuk pembelian dan perbaikan kereta)
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint. Ctrl untuk mengaktifkan penggabungan waypoint
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bangun stasiun kereta. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangun Jembatan rel
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta
@@ -1912,16 +1912,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Pipa, Silikon
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pembangunan Jalan
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Konstruksi Jalan Trem
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Membangun bagian jalan
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Membangun jalur trem
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Membangun jalan menggunakan modus otomatis
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Membuat jalur trem menggunakan mode Autotram
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Membangun bengkel (untuk membuat dan memperbaiki kendaraan)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Membangun depo trem (untuk pembuatan dan perbaikan kendaraan)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Membangun stasiun bus
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Membangun stasion trem penumpang
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Membangun terminal bongkar muat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Membangun stasiun trem
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bangun bagian jalan. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bangun jalur trem. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun jalan menggunakan mode Autoroad. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bangun jalur trem menggunakan mode Autotram. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan kendaraan)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun depo trem (untuk pembelian dan perbaikan kendaraan)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun stasiun bus. Ctrl untuk mengaktifkan penggabungan stasiun
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bangun stasion trem penumpang. Ctrl untuk mengaktifkan penggabungan stasiun
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bangun terminal bongkar muat. Ctrl untuk mengaktifkan penggabungan stasiun
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bangun stasiun trem. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktif/Non Aktifkan jalan satu arah
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Membangun jembatan
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Membangun jembatan trem
@@ -1951,8 +1951,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstruk
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Perairan
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Membangun kanal.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Membangun pengunci
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Membangun pelabuhan
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bangun galangan kapal (untuk pembelian dan perbaikan kapal)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bangun pelabuhan. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan pelampung yang dapat digunakan sebagai petunjuk arah
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Membangun jembatan air
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Membuat area perairan .{}Membuat kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
@@ -1967,7 +1967,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Pelabuha
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Bandara
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Membangun bandara
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bangun bandara. Ctrl untuk mengaktifkan penggabungan stasiun
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilih Bandara
@@ -2359,7 +2359,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Masukkan
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kota
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Tidak Ada -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama Kota - Klik pada nama untuk memindahkan ke tengah
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama-nama kota - Klik pada nama untuk mengarahkan pandangan utama pada kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 # Town view window
@@ -2372,7 +2372,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo un
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{BLACK} Butuh {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{BLACK} Bulan lalu terima {ORANGE}{CARGO}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan pada lokasi kota
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Pemkot
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Tampilkan Informasi pemerintah setempat
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ubah nama kota
@@ -2415,13 +2415,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Penawaran subsidi jasa transportasi:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} (sebelum {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Belum ada
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Tidak Ada -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Jasa transportasi bersubsidi:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} ({COMPANY}{YELLOW}, hingga {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik pada servis untuk memindahkan industri/kota ke tengah
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik pada servis untuk mengarahkan pandangan utama pada industri/kota. Ctrl+Click akan membuka viewport baru pada lokasi industri/kota
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama Stasiun - klik pada nama di bagian tengan pada stasiun
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama-nama stasiun - klik pada nama untuk mengarahkan pandangan utama pada stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan CTRL untuk memilih lebih dari satu item
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasiun
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2457,7 +2457,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Sempurna
 STR_CARGO_RATING_OUTSTANDING                                    :Diatas Sempurna
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan pada lokasi stasiun
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ganti nama stasiun
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Tampilkan semua kereta yang memiliki jadwal menuju stasiun ini.
@@ -2468,9 +2468,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tampilka
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Ubah nama stasiun/area bongkar muat
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Arahkan pandangan pada lokasi waypoint
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi waypoint. Ctrl+Click akan membuka viewport baru pada lokasi waypoint
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ubah nama waypoint
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan pada lokasi pelampung
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi pelampung. Ctrl+Click akan membuka viewport baru pada lokasi pelampung
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ubah nama pelampung
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ubah nama waypoint
@@ -2550,13 +2550,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tidak
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% terkirim)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% terkirim)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama industri - klik di nama untuk mengetengahkan industri
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama-nama industri - klik di nama untuk mengarahkan pandangan utama pada industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksi bulan kemarin
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% terkirim)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan pandangan pada lokasi industri
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan pandangan utama pada lokasi industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}
@@ -2663,15 +2663,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Daftar p
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Daftar kapal - klik pada kapal untuk informasi
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Membuat Kendaraan
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Membuat Kendaraan
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Membuat Kapal
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Buat Pesawat
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Beli Kendaraan
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Beli Kendaraan
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kapal
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Membuat kereta sesuai pilihan
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Membuat bus/truk yang dipilih
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Buat kapal yang dipilih
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Membuat pesawat yang dipilih
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli kereta yang dipilih
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Beli kendaraan yang dipilih
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Beli kapal yang dipilih
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pesawat yang dipilih
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ubah Nama
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ganti Nama
@@ -2726,25 +2726,25 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kendaraa
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kapal Baru
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Buat Pesawat
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Membuat kereta baru
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Membuat bus/truk baru
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Membuat kapal baru
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Membuat pesawat baru
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Beli kereta baru
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Beli kendaraan baru
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Beli kapal baru
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Beli pesawat baru
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Gandakan
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gandakan
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gandakan
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Gandakan
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan membuat perintah berbagi
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan membuat perintah berbagi
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik untuk berbagi perintah
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik untuk berbagi perintah
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeali satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl+Click untuk berbagi perintah
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo kereta
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi garasi bus/truk
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan pada lokasi Galangan Kapal
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan ke lokasi hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo kereta. Ctrl+Click akan membuka viewport baru pada lokasi depo kereta
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan utama pada lokasi bengkel kendaraan. Ctrl+Click akan membuka viewport baru pada lokasi bengkel kendaraan
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi galangan kapal. Ctrl+Click akan membuka viewport baru pada lokasi galangan kapal
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan utama pada lokasi hangar. Ctrl+Click akan membuka viewport baru pada lokasi hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Mendaftar semua kereta dengan depo ini beserta perintahnya.
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Mendaftar semua bus/truk dari bengkel ini beserta perintahnya.
@@ -2813,19 +2813,19 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat 
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi kereta. Ctrl+Click akan mengikuti kereta pada pandangan utama.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan pada lokasi kendaraan
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan pada lokasi kapal
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan pada lokasi pesawat
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan utama pada lokasi kendaraan. Ctrl+Click akan mengikuti kendaraan pada pandangan utama
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan utama pada lokasi kapal. Ctrl+Click akan mengikuti kapal pada pandangan utama
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan utama pada lokasi pesawat. Ctrl+Click akan mengikuti pesawat pada pandangan utama
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Kirim kereta ke depo. CTRL+klik hanya akan memerintahkan servis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Kirim kendaraan ke garasi. CTRL + klik hanya akan memerintahkan servis
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Kirim kapal ke Galangan. CTRL+klik hanya akan memerintahkan servis
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Kirim pesawat ke hangar. CTRL+klik hanya akan memerintahkan servis
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan membuat perintah berbagi
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan membuat perintah berbagi
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Untuk menggandakan satu unit kapal. Kontrol-klik akan berbagi perintah
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik untuk berbagi perintah
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ini akan membeli satu unit kereta api yang sama termasuk gerbongnya. Ctrl-Click akan berbagi perintah
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Ctrl+Click akan berbagi perintah
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ini akan membeli satu unit kapal yang sama. Ctrl+Click akan berbagi perintah
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ini akan membali satu unit pesawat yang sama. Ctrl+Click untuk berbagi perintah
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal hijau
 
@@ -3472,10 +3472,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak da
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Tidak dapat mengirim kapal ke galangan...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Tidak dapat mengirim pesawat ke hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tidak dapat membuat kendaraan...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Tidak dapat membuat bus/truk...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Tidak dapat membuat kapal...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Tidak dapat membuat pesawat ...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tidak dapat membeli kereta...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Tidak dapat membeli kendaraan...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Tidak dapat membeli kapal...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Tidak dapat membeli pesawat ...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tidak dapat mengubah nama jenis kereta...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Tidak bisa mengganti nama jenis bus/truk

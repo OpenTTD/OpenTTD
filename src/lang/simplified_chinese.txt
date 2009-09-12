@@ -296,10 +296,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示图表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}显示公司名次表
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}建设新的工业设施
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}显示公司的火车列表
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}显示公司的汽车列表
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}显示公司的船只列表
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}显示公司的飞机列表
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}显示公司的火车列表。按住 Ctrl 键单击可以切换组群和车辆列表。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}显示公司的汽车列表。按住 Ctrl 键单击可以切换组群和汽车列表。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}显示公司的船只列表。按住 Ctrl 键单击可以切换组群和船只列表。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}显示公司的飞机列表。按住 Ctrl 键单击可以切换组群和飞机列表。
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}放大视图
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}缩小视图
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}建设铁路
@@ -555,9 +555,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}现金�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}贷款：
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}总表现值：
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}车船总数{}包括火车、汽车、船只和飞机
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}包括车站、机场、码头的{}总数量 即使多种类型的车站{}连接在一起也将被分别计算
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}单一运输工具最低年利润{}只计算使用两年以上的车辆,船只和飞机
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}上一年盈利的车船总数；包括火车、汽车、船只和飞机
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最近仍然使用的车站组件数量。车站的每个组件（火车站、公交站、机场）即使是连接成为一个车站，也会被独立计数。
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}单一运输工具最低年利润（只计算使用两年以上的车辆、船只和飞机）
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}在过去 12 个月中{}利润最少的月份的现金收入
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}在过去 12 个月中{}利润最多的月份的现金收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}在过去 4 个季度中运输的货物总数
@@ -1644,7 +1644,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(没有)
+STR_NETWORK_CLIENTLIST_NONE                                     :（没有）
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送钱
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :向全体人广播
@@ -1839,15 +1839,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}电气�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}单轨铁路建设
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}磁悬浮铁路建设
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}铺设铁轨
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用全向路轨工具铺设铁轨
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库 (可以购买或养护列车)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设铁轨。按住 Ctrl 键切换建设/移除铁轨。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设铁轨。按住 Ctrl 键切换建设/移除铁轨。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/光板式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}建设/拆除 铁路或信号灯
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除铁轨、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除铁轨。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型
 
 # Rail depot construction window
@@ -1912,16 +1912,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :硅制函梁
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}道路建设
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}电车建设
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}建设道路
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}建造电车轨道
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用多向道路工具建设道路
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用全向轨道工具建设电车轨道
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}建设汽车车库(可以购买或维护车辆)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}建造电车车库(发车与车辆维修)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}建设公共汽车站
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}建设客运电车站
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}建设汽车货场
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}建设货运电车站
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}建设道路。按住 Ctrl 键切换建设/移除道路。
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}建造电车轨道。按住 Ctrl 键切换建设/移除电车轨道。
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用多向道路工具建设道路。按住 Ctrl 键切换建设/移除道路。
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用多向轨道工具建设电车轨道。按住 Ctrl 键切换建设/移除电车轨道。
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}建设汽车车库（可以购买或维护车辆）
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}建造电车车库（可以购买与维护车辆）
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}建设公共汽车站。按住 Ctrl 键允许合并站台
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}建设客运电车站。按住 Ctrl 键允许合并站台
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}建设汽车货场。按住 Ctrl 键允许合并站台
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}建设货运电车站。按住 Ctrl 键允许合并站台
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}选择是否建设单行道
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}建设公路桥梁
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}建设电车桥梁
@@ -1951,8 +1951,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水运�
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水运
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞 (可以购买或保养船只)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞（可以购买或保养船只）
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头。按住 Ctrl 键允许合并站台
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设水渠
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}修建运河{}当地形处于海平面时{}按住 Ctrl键 可以定义水域
@@ -1967,7 +1967,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}码头
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}机场
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建机场
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建机场。按住 Ctrl 键允许合并站台
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}飞机场选单
@@ -2663,10 +2663,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车�
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船只列表 - 点击可以查看详细信息
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞机列表 - 点击可以查看详细信息
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}购买
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}购买汽车
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}购买汽车
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}购买船只
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}购买
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}购买飞机
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}购买选定的列车
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}购买选定的汽车
@@ -2736,10 +2736,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}克隆�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}克隆船只
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}克隆飞机
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}复制列车 按此按钮后{}点击一辆在车库内或外面的列车即可{}Ctrl+单击 可以同时共享调度计划
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}复制汽车 按此按钮后{}点击一辆在车库内或外面的汽车即可{}Ctrl+单击 可以同时共享调度计划
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只，按此按钮后点击一个在船坞内或外面的船只即可。Ctrl+单击可以同时共享调度计划。
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK} 复制飞机 按此按钮后 {}点击一个在机库内或外面的飞机即可{}Ctrl+单击 可以同时共享调度计划
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}复制列车。按此按钮后{}点击一辆在车库内或外面的列车即可{}按住 Ctrl 键单击可以同时共享调度计划
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}复制汽车。按此按钮后{}点击一辆在车库内或外面的汽车即可{}按住 Ctrl 键单击可以同时共享调度计划
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只。按此按钮后{}点击一个在船坞内或外面的船只即可。按住 Ctrl 键单击可以同时共享调度计划。
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}复制飞机。按此按钮后{}点击一个在机库内或外面的飞机即可。按住 Ctrl 键单击可以同时共享调度计划
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车库所在的位置. 单击的同时按住Ctrl会在新视点中显示列车库位置
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置. 单击的同时按住Ctrl会在新视点中显示车库位置
@@ -2822,10 +2822,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船只前往船坞{}Ctrl+单击 时船只只进行保养
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库{}Ctrl+单击 时飞机只进行保养
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}复制这列火车{}Ctrl+单击 可以同时共享调度计划
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}复制这辆汽车{}Ctrl+单击 可以同时共享调度计划
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}复制当前选定的船只{}Ctrl+单击 可以同时共享调度计划
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}复制当前选定的飞机{}Ctrl+单击 可以同时共享调度计划
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}复制这列火车。按住 Ctrl 键单击可以同时共享调度计划
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}复制这辆汽车。按住 Ctrl 键单击可以同时共享调度计划
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}复制这条船只。按住 Ctrl 键单击可以同时共享调度计划
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}复制这架飞机。按住 Ctrl 键单击可以同时共享调度计划
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}命令列车强行通过信号
 
@@ -3474,7 +3474,7 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}不能�
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}不能购买列车……
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}不能购买汽车...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}不能建造船只……
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}不能购买船只……
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}不能购买飞机……
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}不能重命名车辆的类型...
