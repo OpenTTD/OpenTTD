@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_waypoint.hpp Everything to query and build waypoints. */
+/** @file ai_basestation.hpp Base for stations/waypoint handling. */
 
 #ifndef AI_BASESTATION_HPP
 #define AI_BASESTATION_HPP
