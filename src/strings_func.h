@@ -100,7 +100,7 @@ extern DynamicLanguages _dynlang; // defined in strings.cpp
 bool ReadLanguagePack(int index);
 void InitializeLanguagePacks();
 
-int CDECL StringIDSorter(const void *a, const void *b);
+int CDECL StringIDSorter(const StringID *a, const StringID *b);
 
 /** Key comparison function for std::map */
 struct StringIDCompare

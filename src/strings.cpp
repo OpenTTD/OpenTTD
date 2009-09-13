@@ -1350,14 +1350,12 @@ const char *GetCurrentLocale(const char *param)
 const char *GetCurrentLocale(const char *param);
 #endif /* !(defined(WIN32) || defined(__APPLE__)) */
 
-int CDECL StringIDSorter(const void *a, const void *b)
+int CDECL StringIDSorter(const StringID *a, const StringID *b)
 {
-	const StringID va = *(const StringID*)a;
-	const StringID vb = *(const StringID*)b;
 	char stra[512];
 	char strb[512];
-	GetString(stra, va, lastof(stra));
-	GetString(strb, vb, lastof(strb));
+	GetString(stra, *a, lastof(stra));
+	GetString(strb, *b, lastof(strb));
 
 	return strcmp(stra, strb);
 }

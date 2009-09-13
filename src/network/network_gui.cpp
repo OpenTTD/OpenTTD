@@ -31,6 +31,7 @@
 #include "../sortlist_type.h"
 #include "../company_base.h"
 #include "../company_func.h"
+#include "../core/sort_func.hpp"
 
 #include "table/strings.h"
 #include "../table/sprites.h"
@@ -63,7 +64,7 @@ void SortNetworkLanguages()
 	}
 
 	/* Sort the strings (we don't move 'any' and the 'invalid' one) */
-	qsort(&_language_dropdown[1], NETLANG_COUNT - 1, sizeof(StringID), &StringIDSorter);
+	QSortT(_language_dropdown, NETLANG_COUNT - 1, &StringIDSorter);
 }
 
 enum {
