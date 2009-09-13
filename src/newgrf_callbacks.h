@@ -249,18 +249,17 @@ enum StationCallbackMask {
  * Callback masks for houses.
  */
 enum HouseCallbackMask {
-	CBM_HOUSE_ALLOW_CONSTRUCTION        =  0,
-	CBM_HOUSE_ANIMATION_NEXT_FRAME      =  1,
-	CBM_HOUSE_ANIMATION_START_STOP      =  2,
-	CBM_HOUSE_CONSTRUCTION_STATE_CHANGE =  3,
-	CBM_HOUSE_COLOUR                    =  4,
-	CBM_HOUSE_CARGO_ACCEPTANCE          =  5,
-	CBM_HOUSE_ANIMATION_SPEED           =  6,
-	CBM_HOUSE_DESTRUCTION               =  7,
-	CBM_HOUSE_ACCEPT_CARGO              =  8,
-	CBM_HOUSE_PRODUCE_CARGO             =  9,
-	CBM_HOUSE_DENY_DESTRUCTION          = 10,
-
+	CBM_HOUSE_ALLOW_CONSTRUCTION        =  0, ///< decide whether the house can be built on a given tile
+	CBM_HOUSE_ANIMATION_NEXT_FRAME      =  1, ///< decides next animation frame
+	CBM_HOUSE_ANIMATION_START_STOP      =  2, ///< periodically start/stop the animation
+	CBM_HOUSE_CONSTRUCTION_STATE_CHANGE =  3, ///< change animation when construction state changes
+	CBM_HOUSE_COLOUR                    =  4, ///< decide the color of the building
+	CBM_HOUSE_CARGO_ACCEPTANCE          =  5, ///< decides amount of cargo acceptance
+	CBM_HOUSE_ANIMATION_SPEED           =  6, ///< decides animation speed
+	CBM_HOUSE_DESTRUCTION               =  7, ///< trigger destruction of building
+	CBM_HOUSE_ACCEPT_CARGO              =  8, ///< decides accepted types
+	CBM_HOUSE_PRODUCE_CARGO             =  9, ///< custom cargo production
+	CBM_HOUSE_DENY_DESTRUCTION          = 10, ///< conditional protection
 };
 
 /**
