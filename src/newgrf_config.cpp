@@ -10,6 +10,7 @@
 /** @file newgrf_config.cpp Finding NewGRFs and configuring them. */
 
 #include "stdafx.h"
+#include "core/sort_func.hpp"
 #include "debug.h"
 #include "3rdparty/md5/md5.h"
 #include "newgrf.h"
@@ -349,10 +350,10 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
  * @param p2 the second GRFConfig *
  * @return the same strcmp would return for the name of the NewGRF.
  */
-static int CDECL GRFSorter(const void *p1, const void *p2)
+static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
 {
-	const GRFConfig *c1 = *(const GRFConfig **)p1;
-	const GRFConfig *c2 = *(const GRFConfig **)p2;
+	const GRFConfig *c1 = *p1;
+	const GRFConfig *c2 = *p2;
 
 	return strcasecmp(c1->name != NULL ? c1->name : c1->filename,
 		c2->name != NULL ? c2->name : c2->filename);
@@ -370,7 +371,7 @@ void ScanNewGRFFiles()
 	if (num == 0 || _all_grfs == NULL) return;
 
 	/* Sort the linked list using quicksort.
-	 * For that we first have to make an array, the qsort and
+	 * For that we first have to make an array, then sort and
 	 * then remake the linked list. */
 	GRFConfig **to_sort = MallocT<GRFConfig*>(num);
 
@@ -381,7 +382,7 @@ void ScanNewGRFFiles()
 	/* Number of files is not necessarily right */
 	num = i;
 
-	qsort(to_sort, num, sizeof(GRFConfig*), GRFSorter);
+	QSortT(to_sort, num, &GRFSorter);
 
 	for (i = 1; i < num; i++) {
 		to_sort[i - 1]->next = to_sort[i];
