@@ -240,7 +240,7 @@ static void OnNewMonth()
 		RedrawAutosave();
 	}
 
-	InvalidateWindowClasses(WC_CHEATS);
+	SetWindowClassesDirty(WC_CHEATS);
 	CompaniesMonthlyLoop();
 	SubsidyMonthlyLoop();
 	EnginesMonthlyLoop();
@@ -264,7 +264,7 @@ static void OnNewDay()
 	DisasterDailyLoop();
 	IndustryDailyLoop();
 
-	InvalidateWindowWidget(WC_STATUS_BAR, 0, 0);
+	SetWindowWidgetDirty(WC_STATUS_BAR, 0, 0);
 	EnginesDailyLoop();
 }
 

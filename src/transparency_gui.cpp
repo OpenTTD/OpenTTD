@@ -117,7 +117,7 @@ public:
 			if (IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_BEGIN))) {
 				MarkWholeScreenDirty();
 			} else {
-				this->InvalidateWidget(TTW_WIDGET_BUTTONS);
+				this->SetWidgetDirty(TTW_WIDGET_BUTTONS);
 			}
 		}
 	}

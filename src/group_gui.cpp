@@ -676,7 +676,7 @@ public:
 	{
 		/* abort drag & drop */
 		this->vehicle_sel = INVALID_VEHICLE;
-		this->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
+		this->SetWidgetDirty(GRP_WIDGET_LIST_VEHICLE);
 	}
 
 	void ShowRenameGroupWindow(GroupID group)

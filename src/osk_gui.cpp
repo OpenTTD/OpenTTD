@@ -245,20 +245,20 @@ struct OskWindow : public Window {
 		QueryStringBaseWindow *w = dynamic_cast<QueryStringBaseWindow*>(this->parent);
 		if (w != NULL) w->OnOSKInput(this->text_btn);
 
-		this->InvalidateWidget(OSK_WIDGET_TEXT);
-		if (this->parent != NULL) this->parent->InvalidateWidget(this->text_btn);
+		this->SetWidgetDirty(OSK_WIDGET_TEXT);
+		if (this->parent != NULL) this->parent->SetWidgetDirty(this->text_btn);
 	}
 
 	virtual void OnMouseLoop()
 	{
 		this->qs->HandleEditBox(this, OSK_WIDGET_TEXT);
 		/* make the caret of the parent window also blink */
-		this->parent->InvalidateWidget(this->text_btn);
+		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
 	virtual void OnInvalidateData(int)
 	{
-		this->InvalidateWidget(OSK_WIDGET_TEXT);
+		this->SetWidgetDirty(OSK_WIDGET_TEXT);
 	}
 };
 

@@ -87,7 +87,7 @@ void VehicleServiceInDepot(Vehicle *v)
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
 	v->reliability = Engine::Get(v->engine_type)->reliability;
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
+	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
 bool Vehicle::NeedsServicing() const
@@ -517,7 +517,7 @@ void Vehicle::PreDestructor()
 		DeleteWindowById(WC_VEHICLE_REFIT, this->index);
 		DeleteWindowById(WC_VEHICLE_DETAILS, this->index);
 		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->index);
-		InvalidateWindow(WC_COMPANY, this->owner);
+		SetWindowDirty(WC_COMPANY, this->owner);
 	}
 	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
 
@@ -824,7 +824,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 void DecreaseVehicleValue(Vehicle *v)
 {
 	v->value -= v->value >> 8;
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 }
 
 static const byte _breakdown_chance[64] = {
@@ -844,7 +844,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* decrease reliability */
 	v->reliability = rel = max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
-	if ((rel_old >> 8) != (rel >> 8)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
 	if (v->breakdown_ctr != 0 || (v->vehstatus & VS_STOPPED) ||
 			_settings_game.difficulty.vehicle_breakdowns < 1 ||
@@ -884,7 +884,7 @@ void AgeVehicle(Vehicle *v)
 		v->reliability_spd_dec <<= 1;
 	}
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
 	/* Don't warn about non-primary or not ours vehicles or vehicles that are crashed */
 	if (v->Previous() != NULL || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0) return;
@@ -960,7 +960,7 @@ void VehicleEnterDepot(Vehicle *v)
 	switch (v->type) {
 		case VEH_TRAIN: {
 			Train *t = Train::From(v);
-			InvalidateWindowClasses(WC_TRAINS_LIST);
+			SetWindowClassesDirty(WC_TRAINS_LIST);
 			/* Clear path reservation */
 			SetDepotReservation(t->tile, false);
 			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
@@ -973,17 +973,17 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		case VEH_ROAD:
-			InvalidateWindowClasses(WC_ROADVEH_LIST);
+			SetWindowClassesDirty(WC_ROADVEH_LIST);
 			break;
 
 		case VEH_SHIP:
-			InvalidateWindowClasses(WC_SHIPS_LIST);
+			SetWindowClassesDirty(WC_SHIPS_LIST);
 			Ship::From(v)->state = TRACK_BIT_DEPOT;
 			RecalcShipStuff(v);
 			break;
 
 		case VEH_AIRCRAFT:
-			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+			SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 			HandleAircraftEnterHangar(Aircraft::From(v));
 			break;
 		default: NOT_REACHED();
@@ -994,7 +994,7 @@ void VehicleEnterDepot(Vehicle *v)
 		 * We only increase the number of vehicles when the first one enters, so we will not need to search for more vehicles in the depot */
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
-	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 
 	v->vehstatus |= VS_HIDDEN;
 	v->cur_speed = 0;
@@ -1004,7 +1004,7 @@ void VehicleEnterDepot(Vehicle *v)
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 		const Order *real_order = v->GetOrder(v->cur_order_index);
 		Order t = v->current_order;
@@ -1435,10 +1435,10 @@ void Vehicle::BeginLoading()
 
 	PrepareUnload(this);
 
-	InvalidateWindow(GetWindowClassForVehicleType(this->type), this->owner);
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
-	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
-	InvalidateWindow(WC_STATION_VIEW, this->last_station_visited);
+	SetWindowDirty(GetWindowClassForVehicleType(this->type), this->owner);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+	SetWindowDirty(WC_STATION_VIEW, this->last_station_visited);
 
 	Station::Get(this->last_station_visited)->MarkTilesDirty(true);
 	this->cur_speed = 0;
@@ -1517,7 +1517,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			if (flags & DC_EXEC) {
 				this->current_order.SetDepotOrderType(ODTF_MANUAL);
 				this->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
 		}
@@ -1529,7 +1529,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementOrderIndex();
 
 			this->current_order.MakeDummy();
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
 	}
@@ -1546,7 +1546,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		this->dest_tile = location;
 		this->current_order.MakeGoToDepot(destination, ODTF_MANUAL);
 		if (!(command & DEPOT_SERVICE)) this->current_order.SetDepotActionType(ODATFB_HALT);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 
 		/* If there is no depot in front, reverse automatically (trains only) */
 		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
@@ -1645,8 +1645,8 @@ void StopAllVehicles()
 		/* Code ripped from CmdStartStopTrain. Can't call it, because of
 		 * ownership problems, so we'll duplicate some code, for now */
 		v->vehstatus |= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 	}
 }
 
@@ -1672,7 +1672,7 @@ void VehiclesYearlyLoop()
 
 			v->profit_last_year = v->profit_this_year;
 			v->profit_this_year = 0;
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		}
 	}
 }

@@ -1665,7 +1665,7 @@ struct CompanyWindow : Window
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 					SetTileSelectSize(2, 2);
 					this->LowerWidget(CW_WIDGET_BUILD_VIEW_HQ);
-					this->InvalidateWidget(CW_WIDGET_BUILD_VIEW_HQ);
+					this->SetWidgetDirty(CW_WIDGET_BUILD_VIEW_HQ);
 				} else {
 					if (_ctrl_pressed) {
 						ShowExtraViewPortWindow(tile);
@@ -1680,7 +1680,7 @@ struct CompanyWindow : Window
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 				SetTileSelectSize(2, 2);
 				this->LowerWidget(CW_WIDGET_RELOCATE_HQ);
-				this->InvalidateWidget(CW_WIDGET_RELOCATE_HQ);
+				this->SetWidgetDirty(CW_WIDGET_RELOCATE_HQ);
 				break;
 
 			case CW_WIDGET_BUY_SHARE:

@@ -690,7 +690,7 @@ void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype
 	ni->next = NULL;
 	_latest_news = ni;
 
-	InvalidateWindow(WC_MESSAGE_HISTORY, 0);
+	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
 
 /** Delete a news item from the queue */
@@ -724,7 +724,7 @@ static void DeleteNewsItem(NewsItem *ni)
 	_total_news--;
 	delete ni;
 
-	InvalidateWindow(WC_MESSAGE_HISTORY, 0);
+	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
 
 void DeleteVehicleNews(VehicleID vid, StringID news)
@@ -1160,7 +1160,7 @@ struct MessageOptionsWindow : Window {
 			case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
 				_news_ticker_sound ^= 1;
 				this->OnInvalidateData(0);
-				this->InvalidateWidget(widget);
+				this->SetWidgetDirty(widget);
 				break;
 
 			default: { // Clicked on the [<] .. [>] widgets

@@ -152,7 +152,7 @@ public:
 	virtual void OnTimeout()
 	{
 		this->RaiseWidget(BTW_MANY_RANDOM);
-		this->InvalidateWidget(BTW_MANY_RANDOM);
+		this->SetWidgetDirty(BTW_MANY_RANDOM);
 	}
 
 	virtual void OnPlaceObjectAbort()

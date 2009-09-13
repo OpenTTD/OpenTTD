@@ -254,7 +254,7 @@ protected:
 		this->last_station = NULL;
 
 		/* Set the modified widget dirty */
-		this->InvalidateWidget(SLW_LIST);
+		this->SetWidgetDirty(SLW_LIST);
 	}
 
 public:
@@ -969,7 +969,7 @@ struct StationViewWindow : public Window {
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
 			if (this->cargo_rows[c] == row) {
 				ToggleBit(this->cargo, c);
-				this->InvalidateWidget(SVW_WAITING);
+				this->SetWidgetDirty(SVW_WAITING);
 				break;
 			}
 		}

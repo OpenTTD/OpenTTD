@@ -104,7 +104,7 @@ struct DropdownWindow : Window {
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
 		if (w2 != NULL) {
 			w2->RaiseWidget(this->parent_button);
-			w2->InvalidateWidget(this->parent_button);
+			w2->SetWidgetDirty(this->parent_button);
 		}
 
 		DeleteDropDownList(this->list);
@@ -252,7 +252,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 
 	w->LowerWidget(button);
-	w->InvalidateWidget(button);
+	w->SetWidgetDirty(button);
 
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */

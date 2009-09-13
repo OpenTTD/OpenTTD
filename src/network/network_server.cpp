@@ -1733,7 +1733,7 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
 	if (NetworkCompanyIsPassworded(company_id) == passworded) return;
 
 	SB(_network_company_passworded, company_id, 1, !!passworded);
-	InvalidateWindowClasses(WC_COMPANY);
+	SetWindowClassesDirty(WC_COMPANY);
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {

@@ -39,9 +39,9 @@ void ShowVitalWindows();
 
 void ReInitAllWindows();
 
-void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index);
-void InvalidateWindow(WindowClass cls, WindowNumber number);
-void InvalidateWindowClasses(WindowClass cls);
+void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_index);
+void SetWindowDirty(WindowClass cls, WindowNumber number);
+void SetWindowClassesDirty(WindowClass cls);
 
 void DeleteWindowById(WindowClass cls, WindowNumber number, bool force = true);
 void DeleteWindowByClass(WindowClass cls);

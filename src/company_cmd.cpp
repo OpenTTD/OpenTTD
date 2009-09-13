@@ -149,8 +149,8 @@ void InvalidateCompanyWindows(const Company *company)
 {
 	CompanyID cid = company->index;
 
-	if (cid == _local_company) InvalidateWindow(WC_STATUS_BAR, 0);
-	InvalidateWindow(WC_FINANCES, cid);
+	if (cid == _local_company) SetWindowDirty(WC_STATUS_BAR, 0);
+	SetWindowDirty(WC_FINANCES, cid);
 }
 
 bool CheckCompanyHasMoney(CommandCost cost)
@@ -459,9 +459,9 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	GeneratePresidentName(c);
 
-	InvalidateWindow(WC_GRAPH_LEGEND, 0);
-	InvalidateWindow(WC_TOOLBAR_MENU, 0);
-	InvalidateWindow(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WC_GRAPH_LEGEND, 0);
+	SetWindowDirty(WC_TOOLBAR_MENU, 0);
+	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
 
@@ -595,7 +595,7 @@ void CompaniesYearlyLoop()
 	FOR_ALL_COMPANIES(c) {
 		memmove(&c->yearly_expenses[1], &c->yearly_expenses[0], sizeof(c->yearly_expenses) - sizeof(c->yearly_expenses[0]));
 		memset(&c->yearly_expenses[0], 0, sizeof(c->yearly_expenses[0]));
-		InvalidateWindow(WC_FINANCES, c->index);
+		SetWindowDirty(WC_FINANCES, c->index);
 	}
 
 	if (_settings_client.gui.show_finances && _local_company != COMPANY_SPECTATOR) {

@@ -619,7 +619,7 @@ public:
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
 	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
-	void InvalidateWidget(byte widget_index) const;
+	void SetWidgetDirty(byte widget_index) const;
 
 	void DrawWidgets() const;
 	void DrawViewport() const;

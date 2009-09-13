@@ -87,11 +87,11 @@ struct GraphLegendWindow : Window {
 		ToggleBit(_legend_excluded_companies, widget - GLW_FIRST_COMPANY);
 		this->ToggleWidgetLoweredState(widget);
 		this->SetDirty();
-		InvalidateWindow(WC_INCOME_GRAPH, 0);
-		InvalidateWindow(WC_OPERATING_PROFIT, 0);
-		InvalidateWindow(WC_DELIVERED_CARGO, 0);
-		InvalidateWindow(WC_PERFORMANCE_HISTORY, 0);
-		InvalidateWindow(WC_COMPANY_VALUE, 0);
+		SetWindowDirty(WC_INCOME_GRAPH, 0);
+		SetWindowDirty(WC_OPERATING_PROFIT, 0);
+		SetWindowDirty(WC_DELIVERED_CARGO, 0);
+		SetWindowDirty(WC_PERFORMANCE_HISTORY, 0);
+		SetWindowDirty(WC_COMPANY_VALUE, 0);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -403,7 +403,7 @@ protected:
 			Window(desc, window_number), has_negative_values(has_negative_values),
 			format_str_y_axis(format_str_y_axis)
 	{
-		InvalidateWindow(WC_GRAPH_LEGEND, 0);
+		SetWindowDirty(WC_GRAPH_LEGEND, 0);
 		this->num_vert_lines = 24;
 
 		this->graph_location.left   = left;

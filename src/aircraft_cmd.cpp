@@ -433,7 +433,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
-		InvalidateWindow(WC_COMPANY, v->owner);
+		SetWindowDirty(WC_COMPANY, v->owner);
 		if (IsLocalCompany())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Aircraft window
 
@@ -580,8 +580,8 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->cargo_subtype = new_subtype;
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
 		v->InvalidateNewGRFCacheOfChain();
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 	}
 
@@ -606,10 +606,10 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 //		printf("targetairport = %d, st->index = %d\n", v->targetairport, st->index);
 //		v->targetairport = st->index;
 		v->current_order.MakeGoToDepot(st->index, ODTFB_SERVICE);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	} else if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		v->current_order.MakeDummy();
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -639,8 +639,8 @@ void Aircraft::OnNewDay()
 
 	SubtractMoneyFromCompanyFract(this->owner, cost);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
-	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+	SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 }
 
 static void HelicopterTickHandler(Aircraft *v)
@@ -816,7 +816,7 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_settings_client.gui.vehicle_speed)
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* Adjust distance moved by plane speed setting */
@@ -1219,8 +1219,8 @@ static void HandleBrokenAircraft(Aircraft *v)
 
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 }
 
@@ -1316,7 +1316,7 @@ static void CrashAirplane(Aircraft *v)
 
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 
-	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 	uint amt = 2;
 	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) amt += v->cargo.Count();
@@ -1439,7 +1439,7 @@ void AircraftLeaveHangar(Aircraft *v)
 	VehicleServiceInDepot(v);
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+	SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 }
 
 /** Checks if an aircraft should head towards a hangar because it needs replacement
@@ -1550,7 +1550,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 				v->date_of_last_service = _date;
 				v->breakdowns_since_last_service = 0;
 				v->reliability = Engine::Get(v->engine_type)->reliability;
-				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+				SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 			}
 		}
 		return;

@@ -228,7 +228,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		/* Update the Replace Vehicle Windows */
-		InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
+		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
 		InvalidateWindowData(GetWindowClassForVehicleType(v->type), (v->type << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
@@ -362,7 +362,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 	}
 
 	/* Update the Replace Vehicle Windows */
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
+	SetWindowDirty(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
 
@@ -385,7 +385,7 @@ void UpdateTrainGroupID(Train *v)
 	}
 
 	/* Update the Replace Vehicle Windows */
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
+	SetWindowDirty(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)

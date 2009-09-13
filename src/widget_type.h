@@ -209,7 +209,7 @@ public:
 	inline uint GetVerticalStepSize(SizingType sizing) const;
 
 	virtual void Draw(const Window *w) = 0;
-	virtual void Invalidate(const Window *w) const;
+	virtual void SetDirty(const Window *w) const;
 
 	WidgetType type;      ///< Type of the widget / nested widget.
 	bool fill_x;          ///< Allow horizontal filling from initial size.
@@ -458,7 +458,7 @@ public:
 	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
-	/* virtual */ void Invalidate(const Window *w) const;
+	/* virtual */ void SetDirty(const Window *w) const;
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 };
 

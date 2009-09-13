@@ -456,7 +456,7 @@ private:
 	 */
 	void OrderClick_Goto(int i)
 	{
-		this->InvalidateWidget(ORDER_WIDGET_GOTO);
+		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 		this->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
 		if (this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
@@ -521,7 +521,7 @@ private:
 	 */
 	void OrderClick_Conditional(int i)
 	{
-		this->InvalidateWidget(ORDER_WIDGET_GOTO);
+		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 		this->LowerWidget(ORDER_WIDGET_GOTO);
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, this);
 		this->goto_type = OPOS_CONDITIONAL;
@@ -560,7 +560,7 @@ private:
 			non_stop = order->GetNonStopType() ^ ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
 		}
 
-		this->InvalidateWidget(ORDER_WIDGET_NON_STOP);
+		this->SetWidgetDirty(ORDER_WIDGET_NON_STOP);
 		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
@@ -1138,7 +1138,7 @@ public:
 			}
 		}
 		this->RaiseWidget(ORDER_WIDGET_GOTO);
-		this->InvalidateWidget(ORDER_WIDGET_GOTO);
+		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 	}
 
 	virtual void OnMouseLoop()
@@ -1233,7 +1233,7 @@ public:
 		for (uint i = 0; i < this->widget_count; i++) {
 			if (this->IsWidgetLowered(i) && i != ORDER_WIDGET_GOTO) {
 				this->RaiseWidget(i);
-				this->InvalidateWidget(i);
+				this->SetWidgetDirty(i);
 			}
 		}
 	}

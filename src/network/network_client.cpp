@@ -124,7 +124,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	 */
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
-	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	p = NetworkSend_Init(PACKET_CLIENT_COMPANY_INFO);
 	MY_CLIENT->Send_Packet(p);
@@ -145,7 +145,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
-	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
@@ -399,7 +399,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 		p->Recv_string(company_info->clients, sizeof(company_info->clients));
 
-		InvalidateWindow(WC_NETWORK_WINDOW, 0);
+		SetWindowDirty(WC_NETWORK_WINDOW, 0);
 
 		return NETWORK_RECV_STATUS_OKAY;
 	}
@@ -434,7 +434,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		ci->client_playas = playas;
 		strecpy(ci->client_name, name, lastof(ci->client_name));
 
-		InvalidateWindow(WC_CLIENT_LIST, 0);
+		SetWindowDirty(WC_CLIENT_LIST, 0);
 
 		return NETWORK_RECV_STATUS_OKAY;
 	}
@@ -446,7 +446,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 
-	InvalidateWindow(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -560,7 +560,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 {
 	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
 	_network_join_waiting = p->Recv_uint8();
-	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	/* We are put on hold for receiving the map.. we need GUI for this ;) */
 	DEBUG(net, 1, "The server is currently busy sending the map to someone else, please wait..." );
@@ -601,7 +601,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		if (_network_join_bytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
-		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 		/* The first packet does not contain any more data */
 		return NETWORK_RECV_STATUS_OKAY;
@@ -615,7 +615,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		}
 
 		_network_join_bytes = ftell(file_pointer);
-		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 	}
 
 	/* Check if this was the last packet */
@@ -623,7 +623,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		fclose(file_pointer);
 
 		_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
-		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
+		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 		/* The map is done downloading, load it */
 		if (!SafeSaveOrLoad("network_client.tmp", SL_LOAD, GM_NORMAL, AUTOSAVE_DIR)) {
@@ -775,7 +775,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 		delete ci;
 	}
 
-	InvalidateWindow(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -794,7 +794,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 		DEBUG(net, 0, "Unknown client (%d) is leaving the game", client_id);
 	}
 
-	InvalidateWindow(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	/* If we come here it means we could not locate the client.. strange :s */
 	return NETWORK_RECV_STATUS_OKAY;
@@ -808,7 +808,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 	if (ci != NULL)
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name);
 
-	InvalidateWindow(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -881,7 +881,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE)
 {
 	_network_company_passworded = p->Recv_uint16();
-	InvalidateWindowClasses(WC_COMPANY);
+	SetWindowClassesDirty(WC_COMPANY);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

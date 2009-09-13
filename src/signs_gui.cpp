@@ -176,7 +176,7 @@ struct SignListWindow : Window, SignList {
 		if (data == 0) { // New or deleted sign.
 			this->signs.ForceRebuild();
 			this->BuildSignsList();
-			this->InvalidateWidget(SLW_CAPTION);
+			this->SetWidgetDirty(SLW_CAPTION);
 			this->vscroll.SetCount(this->signs.Length());
 		} else { // Change of sign contents.
 			this->signs.ForceResort();
@@ -272,7 +272,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		this->cur_sign = si->index;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_SIGN_NAME_PIXELS);
 
-		this->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		this->SetWidgetDirty(QUERY_EDIT_SIGN_WIDGET_TEXT);
 		this->SetFocusedWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 	}
 

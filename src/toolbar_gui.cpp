@@ -1120,12 +1120,12 @@ struct MainToolbarWindow : Window {
 	{
 		if (this->IsWidgetLowered(TBN_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(TBN_PAUSE);
-			this->InvalidateWidget(TBN_PAUSE);
+			this->SetWidgetDirty(TBN_PAUSE);
 		}
 
 		if (this->IsWidgetLowered(TBN_FASTFORWARD) != !!_fast_forward) {
 			this->ToggleWidgetLoweredState(TBN_FASTFORWARD);
-			this->InvalidateWidget(TBN_FASTFORWARD);
+			this->SetWidgetDirty(TBN_FASTFORWARD);
 		}
 	}
 
@@ -1143,7 +1143,7 @@ struct MainToolbarWindow : Window {
 		for (uint i = TBN_SETTINGS; i < this->widget_count - 1; i++) {
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
-				this->InvalidateWidget(i);
+				this->SetWidgetDirty(i);
 			}
 		}
 	}
@@ -1393,8 +1393,8 @@ public:
 	virtual void OnTimeout()
 	{
 		this->SetWidgetsLoweredState(false, TBSE_DATEBACKWARD, TBSE_DATEFORWARD, WIDGET_LIST_END);
-		this->InvalidateWidget(TBSE_DATEBACKWARD);
-		this->InvalidateWidget(TBSE_DATEFORWARD);
+		this->SetWidgetDirty(TBSE_DATEBACKWARD);
+		this->SetWidgetDirty(TBSE_DATEFORWARD);
 	}
 
 	virtual void OnTick()

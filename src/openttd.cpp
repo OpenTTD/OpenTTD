@@ -602,7 +602,7 @@ int ttd_main(int argc, char *argv[])
 	/* Initialize FreeType */
 	InitFreeType();
 
-	/* This must be done early, since functions use the InvalidateWindow* calls */
+	/* This must be done early, since functions use the SetWindowDirty* calls */
 	InitWindowSystem();
 
 	/* Look for the sounds before the graphics. Otherwise none would be set and

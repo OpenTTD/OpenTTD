@@ -40,7 +40,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 				v->current_order.wait_time = time;
 			}
 		}
-		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 	}
 }
 
@@ -176,7 +176,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			ClrBit(v2->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 			ClrBit(v2->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 		}
-		InvalidateWindow(WC_VEHICLE_TIMETABLE, v2->index);
+		SetWindowDirty(WC_VEHICLE_TIMETABLE, v2->index);
 	}
 
 	return CommandCost();
@@ -241,6 +241,6 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	v->lateness_counter -= (timetabled - time_taken);
 
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
-		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 	}
 }

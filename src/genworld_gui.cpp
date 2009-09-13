@@ -54,8 +54,8 @@ extern void MakeNewgameSettingsLive();
 static inline void SetNewLandscapeType(byte landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
-	InvalidateWindowClasses(WC_SELECT_GAME);
-	InvalidateWindowClasses(WC_GENERATE_LANDSCAPE);
+	SetWindowClassesDirty(WC_SELECT_GAME);
+	SetWindowClassesDirty(WC_GENERATE_LANDSCAPE);
 }
 
 enum GenerateLandscapeWindowWidgets {
@@ -802,7 +802,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
 			if (this->IsWidgetLowered(*widget)) {
 				this->RaiseWidget(*widget);
-				this->InvalidateWidget(*widget);
+				this->SetWidgetDirty(*widget);
 			}
 		}
 	}
@@ -880,12 +880,12 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			switch (this->widget_id) {
 				case GLAND_START_DATE_TEXT:
-					this->InvalidateWidget(GLAND_START_DATE_TEXT);
+					this->SetWidgetDirty(GLAND_START_DATE_TEXT);
 					_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
 					break;
 
 				case GLAND_SNOW_LEVEL_TEXT:
-					this->InvalidateWidget(GLAND_SNOW_LEVEL_TEXT);
+					this->SetWidgetDirty(GLAND_SNOW_LEVEL_TEXT);
 					_settings_newgame.game_creation.snow_line_height = Clamp(value, 2, MAX_SNOWLINE_HEIGHT);
 					break;
 
@@ -936,7 +936,7 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 		strecpy(w->name, _file_to_saveload.title, lastof(w->name));
 	}
 
-	InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
+	SetWindowDirty(WC_GENERATE_LANDSCAPE, mode);
 }
 
 void ShowGenerateLandscape()
@@ -1100,12 +1100,12 @@ struct CreateScenarioWindow : public Window
 
 			switch (this->widget_id) {
 				case CSCEN_START_DATE_TEXT:
-					this->InvalidateWidget(CSCEN_START_DATE_TEXT);
+					this->SetWidgetDirty(CSCEN_START_DATE_TEXT);
 					_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
 					break;
 
 				case CSCEN_FLAT_LAND_HEIGHT_TEXT:
-					this->InvalidateWidget(CSCEN_FLAT_LAND_HEIGHT_TEXT);
+					this->SetWidgetDirty(CSCEN_FLAT_LAND_HEIGHT_TEXT);
 					_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, MAX_TILE_HEIGHT);
 					break;
 			}
@@ -1396,7 +1396,7 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 		return;
 	}
 
-	InvalidateWindow(WC_GENERATE_PROGRESS_WINDOW, 0);
+	SetWindowDirty(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
 
 	/* Release the rights to the map generator, and acquire the rights to the

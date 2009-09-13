@@ -153,7 +153,7 @@ struct AIListWindow : public Window {
 			for (int i = 0; i < this->selected; i++) it++;
 			AIConfig::GetConfig(slot)->ChangeAI((*it).second->GetName(), (*it).second->GetVersion());
 		}
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
+		SetWindowDirty(WC_GAME_OPTIONS, 0);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -767,7 +767,7 @@ struct AIDebugWindow : public Window {
 			this->vscroll.SetCount(scroll_count);
 
 			/* We need a repaint */
-			this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
+			this->SetWidgetDirty(AID_WIDGET_SCROLLBAR);
 		}
 
 		if (log == NULL) return;
@@ -783,8 +783,8 @@ struct AIDebugWindow : public Window {
 				this->vscroll.SetPosition(scroll_pos);
 
 				/* We need a repaint */
-				this->InvalidateWidget(AID_WIDGET_SCROLLBAR);
-				this->InvalidateWidget(AID_WIDGET_LOG_PANEL);
+				this->SetWidgetDirty(AID_WIDGET_SCROLLBAR);
+				this->SetWidgetDirty(AID_WIDGET_LOG_PANEL);
 			}
 		}
 		this->last_vscroll_pos = this->vscroll.GetPosition();

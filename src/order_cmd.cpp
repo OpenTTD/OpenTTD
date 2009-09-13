@@ -179,7 +179,7 @@ Order::Order(uint32 packed)
  */
 void InvalidateVehicleOrder(const Vehicle *v, int data)
 {
-	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 	if (data != 0) {
 		/* Calls SetDirty() too */
@@ -188,8 +188,8 @@ void InvalidateVehicleOrder(const Vehicle *v, int data)
 		return;
 	}
 
-	InvalidateWindow(WC_VEHICLE_ORDERS,    v->index);
-	InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+	SetWindowDirty(WC_VEHICLE_ORDERS,    v->index);
+	SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 }
 
 /**
@@ -795,8 +795,8 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
-	if (v->type == VEH_AIRCRAFT) InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-	if (v->type == VEH_SHIP) InvalidateWindowClasses(WC_SHIPS_LIST);
+	if (v->type == VEH_AIRCRAFT) SetWindowClassesDirty(WC_AIRCRAFT_LIST);
+	if (v->type == VEH_SHIP) SetWindowClassesDirty(WC_SHIPS_LIST);
 
 	return CommandCost();
 }
@@ -1515,7 +1515,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
 				v->current_order.GetDestination() == destination) {
 			order->MakeDummy();
-			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		}
 
 		/* Clear the order from the order-list */
@@ -1806,7 +1806,7 @@ bool ProcessOrders(Vehicle *v)
 
 		case VEH_AIRCRAFT:
 		case VEH_SHIP:
-			InvalidateWindowClasses(GetWindowClassForVehicleType(v->type));
+			SetWindowClassesDirty(GetWindowClassForVehicleType(v->type));
 			break;
 	}
 

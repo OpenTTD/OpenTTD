@@ -726,7 +726,7 @@ struct DepotWindow : Window {
 				break;
 
 			case DEPOT_WIDGET_CLONE: // Clone button
-				this->InvalidateWidget(DEPOT_WIDGET_CLONE);
+				this->SetWidgetDirty(DEPOT_WIDGET_CLONE);
 				this->ToggleWidgetLoweredState(DEPOT_WIDGET_CLONE);
 
 				if (this->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
@@ -850,11 +850,11 @@ struct DepotWindow : Window {
 	{
 		/* abort clone */
 		this->RaiseWidget(DEPOT_WIDGET_CLONE);
-		this->InvalidateWidget(DEPOT_WIDGET_CLONE);
+		this->SetWidgetDirty(DEPOT_WIDGET_CLONE);
 
 		/* abort drag & drop */
 		this->sel = INVALID_VEHICLE;
-		this->InvalidateWidget(DEPOT_WIDGET_MATRIX);
+		this->SetWidgetDirty(DEPOT_WIDGET_MATRIX);
 	};
 
 	/* check if a vehicle in a depot was clicked.. */
@@ -935,11 +935,11 @@ struct DepotWindow : Window {
 	{
 		if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL)) {
 			this->RaiseWidget(DEPOT_WIDGET_SELL);
-			this->InvalidateWidget(DEPOT_WIDGET_SELL);
+			this->SetWidgetDirty(DEPOT_WIDGET_SELL);
 		}
 		if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL_CHAIN)) {
 			this->RaiseWidget(DEPOT_WIDGET_SELL_CHAIN);
-			this->InvalidateWidget(DEPOT_WIDGET_SELL_CHAIN);
+			this->SetWidgetDirty(DEPOT_WIDGET_SELL_CHAIN);
 		}
 	}
 
@@ -955,7 +955,7 @@ struct DepotWindow : Window {
 	{
 		if (this->sel != INVALID_VEHICLE) {
 			_cursor.vehchain = _ctrl_pressed;
-			this->InvalidateWidget(DEPOT_WIDGET_MATRIX);
+			this->SetWidgetDirty(DEPOT_WIDGET_MATRIX);
 			return ES_HANDLED;
 		}
 

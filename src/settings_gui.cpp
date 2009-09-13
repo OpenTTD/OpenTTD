@@ -384,7 +384,7 @@ struct GameOptionsWindow : Window {
 			case GOW_TOWNNAME_DROPDOWN: // Town names
 				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
 					this->opt->game_creation.town_name = index;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
+					SetWindowDirty(WC_GAME_OPTIONS, 0);
 				}
 				break;
 

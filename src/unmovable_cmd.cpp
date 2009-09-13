@@ -69,7 +69,7 @@ static CommandCost DestroyCompanyHQ(CompanyID cid, DoCommandFlag flags)
 		DoClearSquare(t + TileDiffXY(1, 0));
 		DoClearSquare(t + TileDiffXY(1, 1));
 		c->location_of_HQ = INVALID_TILE; // reset HQ position
-		InvalidateWindow(WC_COMPANY, cid);
+		SetWindowDirty(WC_COMPANY, cid);
 
 		CargoPacket::InvalidateAllFrom(ST_HEADQUARTERS, cid);
 	}
@@ -127,7 +127,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		MakeCompanyHQ(tile, _current_company);
 
 		UpdateCompanyHQ(c, score);
-		InvalidateWindow(WC_COMPANY, c->index);
+		SetWindowDirty(WC_COMPANY, c->index);
 	}
 
 	return cost;
@@ -291,7 +291,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 
 		TownID town = GetStatueTownID(tile);
 		ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
-		InvalidateWindow(WC_TOWN_AUTHORITY, town);
+		SetWindowDirty(WC_TOWN_AUTHORITY, town);
 	}
 
 	if (flags & DC_EXEC) {
@@ -486,7 +486,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new
 			DoClearSquare(tile);
 		}
 
-		InvalidateWindow(WC_TOWN_AUTHORITY, town);
+		SetWindowDirty(WC_TOWN_AUTHORITY, town);
 	} else {
 		DoClearSquare(tile);
 	}

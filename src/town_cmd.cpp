@@ -339,7 +339,7 @@ void Town::UpdateVirtCoord()
 	this->sign.UpdatePosition(pt.x, pt.y - 24,
 		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN);
 
-	InvalidateWindow(WC_TOWN_VIEW, this->index);
+	SetWindowDirty(WC_TOWN_VIEW, this->index);
 }
 
 /** Update the virtual coords needed to draw the town sign for all towns. */
@@ -360,7 +360,7 @@ void UpdateAllTownVirtCoords()
 static void ChangePopulation(Town *t, int mod)
 {
 	t->population += mod;
-	InvalidateWindow(WC_TOWN_VIEW, t->index);
+	SetWindowDirty(WC_TOWN_VIEW, t->index);
 	t->UpdateVirtCoord();
 
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
@@ -2471,7 +2471,7 @@ static void TownActionBribe(Town *t)
 		 */
 		if (t->ratings[_current_company] > RATING_BRIBE_DOWN_TO) {
 			t->ratings[_current_company] = RATING_BRIBE_DOWN_TO;
-			InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
+			SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 		}
 	} else {
 		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DC_EXEC);
@@ -2575,7 +2575,7 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (flags & DC_EXEC) {
 		_town_action_proc[p2](t);
-		InvalidateWindow(WC_TOWN_AUTHORITY, p1);
+		SetWindowDirty(WC_TOWN_AUTHORITY, p1);
 	}
 
 	return cost;
@@ -2616,7 +2616,7 @@ static void UpdateTownGrowRate(Town *t)
 		t->ratings[i] = Clamp(t->ratings[i], RATING_MINIMUM, RATING_MAXIMUM);
 	}
 
-	InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
+	SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 
 	ClrBit(t->flags, TOWN_IS_FUNDED);
 	if (_settings_game.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
@@ -2675,7 +2675,7 @@ static void UpdateTownAmounts(Town *t)
 	t->max_mail = t->new_max_mail; t->new_max_mail = 0;
 	t->act_mail = t->new_act_mail; t->new_act_mail = 0;
 
-	InvalidateWindow(WC_TOWN_VIEW, t->index);
+	SetWindowDirty(WC_TOWN_VIEW, t->index);
 }
 
 static void UpdateTownUnwanted(Town *t)
@@ -2821,7 +2821,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 	} else {
 		SetBit(t->have_ratings, _current_company);
 		t->ratings[_current_company] = rating;
-		InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
+		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 	}
 }
 

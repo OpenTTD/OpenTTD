@@ -806,7 +806,7 @@ protected:
 
 		if (!this->industries.Sort()) return;
 		IndustryDirectoryWindow::last_industry = NULL; // Reset name sorter sort cache
-		this->InvalidateWidget(IDW_INDUSTRY_LIST); // Set the modified widget dirty
+		this->SetWidgetDirty(IDW_INDUSTRY_LIST); // Set the modified widget dirty
 	}
 
 	/**

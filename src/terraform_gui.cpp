@@ -734,7 +734,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			if (i == ETTW_BUTTONS_START) i = ETTW_BUTTONS_END; // skip the buttons
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
-				this->InvalidateWidget(i);
+				this->SetWidgetDirty(i);
 			}
 		}
 	}

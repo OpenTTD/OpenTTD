@@ -441,7 +441,7 @@ static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 		ci->client_playas = COMPANY_INACTIVE_CLIENT;
 		ci->join_date = _date;
 
-		InvalidateWindow(WC_CLIENT_LIST, 0);
+		SetWindowDirty(WC_CLIENT_LIST, 0);
 	}
 
 	return cs;
@@ -489,7 +489,7 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 		if (cs->status >= STATUS_AUTH) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
-		InvalidateWindow(WC_CLIENT_LIST, 0);
+		SetWindowDirty(WC_CLIENT_LIST, 0);
 	}
 
 	delete cs->GetInfo();

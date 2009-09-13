@@ -557,5 +557,5 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		SB(object.callback_param2, 24, 8, again);
 	}
 
-	InvalidateWindow(WC_INDUSTRY_VIEW, ind->index);
+	SetWindowDirty(WC_INDUSTRY_VIEW, ind->index);
 }

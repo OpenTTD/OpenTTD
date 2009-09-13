@@ -837,8 +837,8 @@ static void FloodVehicle(Vehicle *v)
 			return;
 		}
 
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 
 		AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
 		SetDParam(0, pass);

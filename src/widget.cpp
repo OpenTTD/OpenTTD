@@ -991,7 +991,7 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, ui
  * Mark the widget as 'dirty' (in need of repaint).
  * @param w Window owning the widget.
  */
-void NWidgetBase::Invalidate(const Window *w) const
+void NWidgetBase::SetDirty(const Window *w) const
 {
 	int abs_left = w->left + this->pos_x;
 	int abs_top = w->top + this->pos_y;
@@ -1654,7 +1654,7 @@ void NWidgetSpacer::Draw(const Window *w)
 	/* Spacer widget is never visible. */
 }
 
-void NWidgetSpacer::Invalidate(const Window *w) const
+void NWidgetSpacer::SetDirty(const Window *w) const
 {
 	/* Spacer widget never need repainting. */
 }

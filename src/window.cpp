@@ -107,9 +107,9 @@ void SetFocusedWindow(Window *w)
 	if (_focused_window != NULL) {
 		if (_focused_window->focused_widget != NULL) {
 			uint focused_widget_id = _focused_window->focused_widget - _focused_window->widget;
-			_focused_window->InvalidateWidget(focused_widget_id);
+			_focused_window->SetWidgetDirty(focused_widget_id);
 		}
-		if (_focused_window->nested_focus != NULL) _focused_window->nested_focus->Invalidate(_focused_window);
+		if (_focused_window->nested_focus != NULL) _focused_window->nested_focus->SetDirty(_focused_window);
 	}
 
 	/* Remember which window was previously focused */
@@ -152,7 +152,7 @@ bool Window::SetFocusedWidget(byte widget_index)
 
 		if (this->focused_widget != NULL) {
 			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
-			this->InvalidateWidget(this->focused_widget - this->widget);
+			this->SetWidgetDirty(this->focused_widget - this->widget);
 		}
 		this->focused_widget = &this->widget[widget_index];
 		return true;
@@ -167,7 +167,7 @@ bool Window::SetFocusedWidget(byte widget_index)
 			if (this->nested_array[widget_index] == this->nested_focus) return false;
 
 			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
-			this->nested_focus->Invalidate(this);
+			this->nested_focus->SetDirty(this);
 		}
 		this->nested_focus = this->nested_array[widget_index];
 		return true;
@@ -246,7 +246,7 @@ void Window::RaiseButtons(bool autoraise)
 		for (uint i = 0; i < this->widget_count; i++) {
 			if ((!autoraise || (this->widget[i].type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
-				this->InvalidateWidget(i);
+				this->SetWidgetDirty(i);
 			}
 		}
 	}
@@ -254,7 +254,7 @@ void Window::RaiseButtons(bool autoraise)
 		for (uint i = 0; i < this->nested_array_size; i++) {
 			if (this->nested_array[i] != NULL && (!autoraise || (this->nested_array[i]->type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
-				this->InvalidateWidget(i);
+				this->SetWidgetDirty(i);
 			}
 		}
 	}
@@ -264,7 +264,7 @@ void Window::RaiseButtons(bool autoraise)
  * Invalidate a widget, i.e. mark it as being changed and in need of redraw.
  * @param widget_index the widget to redraw.
  */
-void Window::InvalidateWidget(byte widget_index) const
+void Window::SetWidgetDirty(byte widget_index) const
 {
 	if (this->widget != NULL) {
 		const Widget *wi = &this->widget[widget_index];
@@ -274,7 +274,7 @@ void Window::InvalidateWidget(byte widget_index) const
 
 		SetDirtyBlocks(this->left + wi->left, this->top + wi->top, this->left + wi->right + 1, this->top + wi->bottom + 1);
 	}
-	if (this->nested_array != NULL) this->nested_array[widget_index]->Invalidate(this);
+	if (this->nested_array != NULL) this->nested_array[widget_index]->SetDirty(this);
 }
 
 /**
@@ -286,7 +286,7 @@ void Window::HandleButtonClick(byte widget)
 {
 	this->LowerWidget(widget);
 	this->flags4 |= WF_TIMEOUT_BEGIN;
-	this->InvalidateWidget(widget);
+	this->SetWidgetDirty(widget);
 }
 
 /**
@@ -409,13 +409,13 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			 * we assume that that button is used to resize to the left. */
 			int left_pos = (wi != NULL) ? wi->left : nw->pos_x;
 			StartWindowSizing(w, left_pos < (w->width / 2));
-			w->InvalidateWidget(widget_index);
+			w->SetWidgetDirty(widget_index);
 			return;
 		}
 
 		if ((w->desc_flags & WDF_STICKY_BUTTON) && widget_type == WWT_STICKYBOX) {
 			w->flags4 ^= WF_STICKY;
-			w->InvalidateWidget(widget_index);
+			w->SetWidgetDirty(widget_index);
 			return;
 		}
 	}
@@ -2440,7 +2440,7 @@ void UpdateWindows()
  * @param cls Window class
  * @param number Window number in that class
  */
-void InvalidateWindow(WindowClass cls, WindowNumber number)
+void SetWindowDirty(WindowClass cls, WindowNumber number)
 {
 	const Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
@@ -2454,12 +2454,12 @@ void InvalidateWindow(WindowClass cls, WindowNumber number)
  * @param number Window number in that class
  * @param widget_index Index number of the widget that needs repainting
  */
-void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)
+void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_index)
 {
 	const Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->window_class == cls && w->window_number == number) {
-			w->InvalidateWidget(widget_index);
+			w->SetWidgetDirty(widget_index);
 		}
 	}
 }
@@ -2468,7 +2468,7 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
  * Mark all windows of a particular class as dirty (in need of repainting)
  * @param cls Window class
  */
-void InvalidateWindowClasses(WindowClass cls)
+void SetWindowClassesDirty(WindowClass cls)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {

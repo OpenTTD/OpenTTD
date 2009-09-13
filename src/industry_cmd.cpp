@@ -1894,7 +1894,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		}
 	}
 
-	if (refresh) InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
+	if (refresh) SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 }
 
 /** Simple helper that will collect data for the generation of industries */

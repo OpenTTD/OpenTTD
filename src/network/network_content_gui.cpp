@@ -95,17 +95,17 @@ public:
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
 					AI::Rescan();
-					InvalidateWindowClasses(WC_AI_DEBUG);
+					SetWindowClassesDirty(WC_AI_DEBUG);
 					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:
 					BaseGraphics::FindSets();
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
+					SetWindowDirty(WC_GAME_OPTIONS, 0);
 					break;
 
 				case CONTENT_TYPE_BASE_SOUNDS:
 					BaseSounds::FindSets();
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
+					SetWindowDirty(WC_GAME_OPTIONS, 0);
 					break;
 
 				case CONTENT_TYPE_NEWGRF:

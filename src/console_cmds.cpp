@@ -383,7 +383,7 @@ DEF_CONSOLE_CMD(ConClearBuffer)
 	}
 
 	IConsoleClearBuffer();
-	InvalidateWindow(WC_CONSOLE, 0);
+	SetWindowDirty(WC_CONSOLE, 0);
 	return true;
 }
 

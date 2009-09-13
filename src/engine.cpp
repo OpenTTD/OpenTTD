@@ -436,8 +436,8 @@ static void CalcEngineReliability(Engine *e)
 		/* Kick this engine out of the lists */
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
-	InvalidateWindowClasses(WC_BUILD_VEHICLE); // Update to show the new reliability
-	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
+	SetWindowClassesDirty(WC_BUILD_VEHICLE); // Update to show the new reliability
+	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
 }
 
 void SetYearEngineAgingStops()

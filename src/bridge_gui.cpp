@@ -121,8 +121,8 @@ private:
 		this->nested_array[BBSW_DROPDOWN_CRITERIA]->widget_data = this->sorter_names[this->bridges->SortType()];
 
 		/* Set the modified widgets dirty */
-		this->InvalidateWidget(BBSW_DROPDOWN_CRITERIA);
-		this->InvalidateWidget(BBSW_BRIDGE_LIST);
+		this->SetWidgetDirty(BBSW_DROPDOWN_CRITERIA);
+		this->SetWidgetDirty(BBSW_BRIDGE_LIST);
 	}
 
 public:

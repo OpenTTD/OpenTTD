@@ -35,7 +35,7 @@
 static inline void SetNewLandscapeType(byte landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
-	InvalidateWindowClasses(WC_SELECT_GAME);
+	SetWindowClassesDirty(WC_SELECT_GAME);
 }
 
 enum SelectGameIntroWidgets {

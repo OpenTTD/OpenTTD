@@ -67,7 +67,7 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
  */
 static int32 ClickSetProdCheat(int32 p1, int32 p2)
 {
-	InvalidateWindowClasses(WC_INDUSTRY_VIEW);
+	SetWindowClassesDirty(WC_INDUSTRY_VIEW);
 	return p1;
 }
 
@@ -104,7 +104,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 
 	SetDate(ConvertYMDToDate(_cur_year + p2, ymd.month, ymd.day));
 	EnginesMonthlyLoop();
-	InvalidateWindow(WC_STATUS_BAR, 0);
+	SetWindowDirty(WC_STATUS_BAR, 0);
 	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
 	ResetSignalVariant();
 	return _cur_year;

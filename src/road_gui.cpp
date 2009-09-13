@@ -267,7 +267,7 @@ typedef void OnButtonClick(Window *w);
 static void ToggleRoadButton_Remove(Window *w)
 {
 	w->ToggleWidgetLoweredState(RTW_REMOVE);
-	w->InvalidateWidget(RTW_REMOVE);
+	w->SetWidgetDirty(RTW_REMOVE);
 	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
 }
@@ -447,12 +447,12 @@ struct BuildRoadToolbarWindow : Window {
 		switch (clicked_widget) {
 			case RTW_REMOVE:
 				this->RaiseWidget(RTW_ONE_WAY);
-				this->InvalidateWidget(RTW_ONE_WAY);
+				this->SetWidgetDirty(RTW_ONE_WAY);
 				break;
 
 			case RTW_ONE_WAY:
 				this->RaiseWidget(RTW_REMOVE);
-				this->InvalidateWidget(RTW_REMOVE);
+				this->SetWidgetDirty(RTW_REMOVE);
 				break;
 
 			case RTW_BUS_STATION:
@@ -533,8 +533,8 @@ struct BuildRoadToolbarWindow : Window {
 			RTW_REMOVE,
 			RTW_ONE_WAY,
 			WIDGET_LIST_END);
-		this->InvalidateWidget(RTW_REMOVE);
-		this->InvalidateWidget(RTW_ONE_WAY);
+		this->SetWidgetDirty(RTW_REMOVE);
+		this->SetWidgetDirty(RTW_ONE_WAY);
 
 		DeleteWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
 		DeleteWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);

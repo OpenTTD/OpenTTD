@@ -106,9 +106,9 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 		v->vehstatus ^= VS_STOPPED;
 		if (v->type != VEH_TRAIN) v->cur_speed = 0; // trains can stop 'slowly'
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClasses(GetWindowClassForVehicleType(v->type));
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowClassesDirty(GetWindowClassForVehicleType(v->type));
 	}
 	return CommandCost();
 }
@@ -567,7 +567,7 @@ CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (flags & DC_EXEC) {
 		v->service_interval = serv_int;
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 
 	return CommandCost();

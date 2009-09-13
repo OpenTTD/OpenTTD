@@ -314,7 +314,7 @@ static void ToggleRailButton_Remove(Window *w)
 {
 	DeleteWindowById(WC_SELECT_STATION, 0);
 	w->ToggleWidgetLoweredState(RTW_REMOVE);
-	w->InvalidateWidget(RTW_REMOVE);
+	w->SetWidgetDirty(RTW_REMOVE);
 	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
 }
@@ -795,7 +795,7 @@ struct BuildRailToolbarWindow : Window {
 	{
 		this->RaiseButtons();
 		this->DisableWidget(RTW_REMOVE);
-		this->InvalidateWidget(RTW_REMOVE);
+		this->SetWidgetDirty(RTW_REMOVE);
 
 		DeleteWindowById(WC_BUILD_SIGNAL, TRANSPORT_RAIL);
 		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_RAIL);
@@ -1601,14 +1601,14 @@ public:
 			case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
 				if (_settings_client.gui.drag_signals_density > 1) {
 					_settings_client.gui.drag_signals_density--;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
+					SetWindowDirty(WC_GAME_OPTIONS, 0);
 				}
 				break;
 
 			case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
 				if (_settings_client.gui.drag_signals_density < 20) {
 					_settings_client.gui.drag_signals_density++;
-					InvalidateWindow(WC_GAME_OPTIONS, 0);
+					SetWindowDirty(WC_GAME_OPTIONS, 0);
 				}
 				break;
 

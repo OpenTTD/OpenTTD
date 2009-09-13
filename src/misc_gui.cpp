@@ -1141,25 +1141,25 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 		case WKC_RETURN: case WKC_NUM_ENTER: return HEBR_CONFIRM;
 
 		case (WKC_CTRL | 'V'):
-			if (InsertTextBufferClipboard(&this->text)) w->InvalidateWidget(wid);
+			if (InsertTextBufferClipboard(&this->text)) w->SetWidgetDirty(wid);
 			break;
 
 		case (WKC_CTRL | 'U'):
 			DeleteTextBufferAll(&this->text);
-			w->InvalidateWidget(wid);
+			w->SetWidgetDirty(wid);
 			break;
 
 		case WKC_BACKSPACE: case WKC_DELETE:
-			if (DeleteTextBufferChar(&this->text, keycode)) w->InvalidateWidget(wid);
+			if (DeleteTextBufferChar(&this->text, keycode)) w->SetWidgetDirty(wid);
 			break;
 
 		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-			if (MoveTextBufferPos(&this->text, keycode)) w->InvalidateWidget(wid);
+			if (MoveTextBufferPos(&this->text, keycode)) w->SetWidgetDirty(wid);
 			break;
 
 		default:
 			if (IsValidChar(key, this->afilter)) {
-				if (InsertTextBufferChar(&this->text, key)) w->InvalidateWidget(wid);
+				if (InsertTextBufferChar(&this->text, key)) w->SetWidgetDirty(wid);
 			} else {
 				state = Window::ES_NOT_HANDLED;
 			}
@@ -1171,7 +1171,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 void QueryString::HandleEditBox(Window *w, int wid)
 {
 	if (HasEditBoxFocus(w, wid) && HandleCaret(&this->text)) {
-		w->InvalidateWidget(wid);
+		w->SetWidgetDirty(wid);
 		/* When we're not the OSK, notify 'our' OSK to redraw the widget,
 		 * so the caret changes appropriately. */
 		if (w->window_class != WC_OSK) {
@@ -1932,7 +1932,7 @@ public:
 						/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
 						ttd_strlcpy(this->text.buf, file->title, this->text.maxsize);
 						UpdateTextBufferSize(&this->text);
-						this->InvalidateWidget(SLWW_SAVE_OSK_TITLE);
+						this->SetWidgetDirty(SLWW_SAVE_OSK_TITLE);
 					}
 				} else {
 					/* Changed directory, need repaint. */
@@ -2078,7 +2078,7 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 
 void RedrawAutosave()
 {
-	InvalidateWindow(WC_STATUS_BAR, 0);
+	SetWindowDirty(WC_STATUS_BAR, 0);
 }
 
 void SetFiosType(const byte fiostype)

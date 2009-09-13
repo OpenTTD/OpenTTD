@@ -171,14 +171,14 @@ struct StatusBarWindow : Window {
 
 		if (this->ticker_scroll < TICKER_STOP) { // Scrolling text
 			this->ticker_scroll += COUNTER_STEP;
-			this->InvalidateWidget(SBW_MIDDLE);
+			this->SetWidgetDirty(SBW_MIDDLE);
 		}
 
 		if (this->reminder_timeout > REMINDER_STOP) { // Red blot to show there are new unread newsmessages
 			this->reminder_timeout -= COUNTER_STEP;
 		} else if (this->reminder_timeout < REMINDER_STOP) {
 			this->reminder_timeout = REMINDER_STOP;
-			this->InvalidateWidget(SBW_MIDDLE);
+			this->SetWidgetDirty(SBW_MIDDLE);
 		}
 	}
 };

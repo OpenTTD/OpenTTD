@@ -130,8 +130,8 @@ void TrainPowerChanged(Train *v)
 
 		v->tcache.cached_power = total_power;
 		v->tcache.cached_max_te = max_te;
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -355,7 +355,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 
 	if (v->IsFrontEngine()) {
 		UpdateTrainAcceleration(v);
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 }
 
@@ -768,7 +768,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		TrainConsistChanged(v->First(), false);
 		UpdateTrainGroupID(v->First());
 
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 		}
@@ -939,7 +939,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-		InvalidateWindow(WC_COMPANY, v->owner);
+		SetWindowDirty(WC_COMPANY, v->owner);
 		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 		}
@@ -1406,11 +1406,11 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			UpdateTrainGroupID(src_head);
 			if (src_head->IsFrontEngine()) {
 				/* Update the refit button and window */
-				InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, VVW_WIDGET_REFIT_VEH);
+				SetWindowDirty(WC_VEHICLE_REFIT, src_head->index);
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, src_head->index, VVW_WIDGET_REFIT_VEH);
 			}
 			/* Update the depot window */
-			InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
+			SetWindowDirty(WC_VEHICLE_DEPOT, src_head->tile);
 		}
 
 		if (dst_head != NULL) {
@@ -1419,11 +1419,11 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			UpdateTrainGroupID(dst_head);
 			if (dst_head->IsFrontEngine()) {
 				/* Update the refit button and window */
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, VVW_WIDGET_REFIT_VEH);
-				InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, dst_head->index, VVW_WIDGET_REFIT_VEH);
+				SetWindowDirty(WC_VEHICLE_REFIT, dst_head->index);
 			}
 			/* Update the depot window */
-			InvalidateWindow(WC_VEHICLE_DEPOT, dst_head->tile);
+			SetWindowDirty(WC_VEHICLE_DEPOT, dst_head->tile);
 		}
 
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
@@ -1470,7 +1470,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			DeleteWindowById(WC_VEHICLE_DETAILS, first->index);
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, first->index);
 		}
-		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
+		SetWindowDirty(WC_VEHICLE_DEPOT, first->tile);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 
@@ -1546,7 +1546,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					NormaliseTrainConsist(first);
 					TrainConsistChanged(first, false);
 					UpdateTrainGroupID(first);
-					if (first->IsFrontEngine()) InvalidateWindow(WC_VEHICLE_REFIT, first->index);
+					if (first->IsFrontEngine()) SetWindowDirty(WC_VEHICLE_REFIT, first->index);
 				}
 
 			}
@@ -1597,7 +1597,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 				NormaliseTrainConsist(first);
 				TrainConsistChanged(first, false);
 				UpdateTrainGroupID(first);
-				InvalidateWindow(WC_VEHICLE_REFIT, first->index);
+				SetWindowDirty(WC_VEHICLE_REFIT, first->index);
 			}
 		} break;
 	}
@@ -1633,7 +1633,7 @@ static inline void SetLastSpeed(Train *v, int spd)
 	if (spd != old) {
 		v->tcache.last_speed = spd;
 		if (_settings_client.gui.vehicle_speed || (old == 0) != (spd == 0)) {
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
 }
@@ -1655,7 +1655,7 @@ static void MarkTrainAsStuck(Train *v)
 		v->subspeed = 0;
 		SetLastSpeed(v, 0);
 
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -1960,7 +1960,7 @@ static void ReverseTrainDirection(Train *v)
 	/* If we are inside a depot after reversing, don't bother with path reserving. */
 	if (v->track == TRACK_BIT_DEPOT) {
 		/* Can't be stuck here as inside a depot is always a safe tile. */
-		if (HasBit(v->flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		if (HasBit(v->flags, VRF_TRAIN_STUCK)) SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		ClrBit(v->flags, VRF_TRAIN_STUCK);
 		return;
 	}
@@ -2018,8 +2018,8 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 
 		if (flags & DC_EXEC) {
 			ToggleBit(v->flags, VRF_REVERSE_DIRECTION);
-			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		}
 	} else {
 		/* turn the whole train around */
@@ -2148,8 +2148,8 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				v->cargo_type = new_cid;
 				v->cargo_cap = amount;
 				v->cargo_subtype = new_subtype;
-				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-				InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+				SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+				SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 				InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 			}
 		}
@@ -2437,7 +2437,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	/* if the train got no power, then keep it in the depot */
 	if (v->tcache.cached_power == 0) {
 		v->vehstatus |= VS_STOPPED;
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		return true;
 	}
 
@@ -2446,7 +2446,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	if (v->force_proceed == 0) {
 		/* force proceed was not pressed */
 		if (++v->load_unload_time_rem < 37) {
-			InvalidateWindowClasses(WC_TRAINS_LIST);
+			SetWindowClassesDirty(WC_TRAINS_LIST);
 			return true;
 		}
 
@@ -2455,7 +2455,7 @@ static bool CheckTrainStayInDepot(Train *v)
 		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 		if (seg_state == SIGSEG_FULL || HasDepotReservation(v->tile)) {
 			/* Full and no PBS signal in block or depot reserved, can't exit. */
-			InvalidateWindowClasses(WC_TRAINS_LIST);
+			SetWindowClassesDirty(WC_TRAINS_LIST);
 			return true;
 		}
 	} else {
@@ -2474,7 +2474,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	/* Only leave when we can reserve a path to our destination. */
 	if (seg_state == SIGSEG_PBS && !TryPathReserve(v) && v->force_proceed == 0) {
 		/* No path and no force proceed. */
-		InvalidateWindowClasses(WC_TRAINS_LIST);
+		SetWindowClassesDirty(WC_TRAINS_LIST);
 		MarkTrainAsStuck(v);
 		return true;
 	}
@@ -2483,7 +2483,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
 
 	VehicleServiceInDepot(v);
-	InvalidateWindowClasses(WC_TRAINS_LIST);
+	SetWindowClassesDirty(WC_TRAINS_LIST);
 	v->PlayLeaveStationSound();
 
 	v->track = TRACK_BIT_X;
@@ -3169,7 +3169,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	/* If we have a reserved path and the path ends at a safe tile, we are finished already. */
 	if (origin.okay && (v->tile != origin.tile || first_tile_okay)) {
 		/* Can't be stuck then. */
-		if (HasBit(v->flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		if (HasBit(v->flags, VRF_TRAIN_STUCK)) SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		ClrBit(v->flags, VRF_TRAIN_STUCK);
 		return true;
 	}
@@ -3197,7 +3197,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 
 	if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
 		v->load_unload_time_rem = 0;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 	ClrBit(v->flags, VRF_TRAIN_STUCK);
 	return true;
@@ -3536,11 +3536,11 @@ static void SetVehicleCrashed(Train *v)
 
 	v->crash_anim_pos++;
 
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
 	if (v->track == TRACK_BIT_DEPOT) {
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 	}
 
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
@@ -4024,7 +4024,7 @@ static void DeleteLastWagon(Train *v)
 		/* Update the depot window if the first vehicle is in depot -
 		 * if v == first, then it is updated in PreDestructor() */
 		if (first->track == TRACK_BIT_DEPOT) {
-			InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
+			SetWindowDirty(WC_VEHICLE_DEPOT, first->tile);
 		}
 	}
 
@@ -4121,7 +4121,7 @@ static bool HandleCrashedTrain(Train *v)
 	if (state >= 4440 && !(v->tick_counter & 0x1F)) {
 		bool ret = v->Next() != NULL;
 		DeleteLastWagon(v);
-		InvalidateWindow(WC_REPLACE_VEHICLE, (v->group_id << 16) | VEH_TRAIN);
+		SetWindowDirty(WC_REPLACE_VEHICLE, (v->group_id << 16) | VEH_TRAIN);
 		return ret;
 	}
 
@@ -4137,8 +4137,8 @@ static void HandleBrokenTrain(Train *v)
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
 
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
 			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
@@ -4154,7 +4154,7 @@ static void HandleBrokenTrain(Train *v)
 	if (!(v->tick_counter & 3)) {
 		if (!--v->breakdown_delay) {
 			v->breakdown_ctr = 0;
-			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		}
 	}
 }
@@ -4330,7 +4330,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	if (v->force_proceed != 0) {
 		v->force_proceed--;
 		ClrBit(v->flags, VRF_TRAIN_STUCK);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* train is broken down? */
@@ -4399,13 +4399,13 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			if (v->force_proceed == 0) return true;
 			ClrBit(v->flags, VRF_TRAIN_STUCK);
 			v->load_unload_time_rem = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
 
 	if (v->current_order.IsType(OT_LEAVESTATION)) {
 		v->current_order.Free();
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		return true;
 	}
 
@@ -4413,7 +4413,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
 	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && (v->vehstatus & VS_STOPPED)) {
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	int adv_spd = (v->direction & 1) ? 192 : 256;
@@ -4521,7 +4521,7 @@ static void CheckIfTrainNeedsService(Train *v)
 			 * suddenly moved farther away, we continue our normal
 			 * schedule? */
 			v->current_order.MakeDummy();
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
@@ -4536,7 +4536,7 @@ static void CheckIfTrainNeedsService(Train *v)
 
 	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = tfdd.tile;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
 void Train::OnNewDay()
@@ -4566,8 +4566,8 @@ void Train::OnNewDay()
 
 			SubtractMoneyFromCompanyFract(this->owner, cost);
 
-			InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
-			InvalidateWindowClasses(WC_TRAINS_LIST);
+			SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+			SetWindowClassesDirty(WC_TRAINS_LIST);
 		}
 	} else if (this->IsEngine()) {
 		/* Also age engines that aren't front engines */

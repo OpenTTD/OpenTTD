@@ -295,7 +295,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-		InvalidateWindow(WC_COMPANY, v->owner);
+		SetWindowDirty(WC_COMPANY, v->owner);
 		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Road window
 		}
@@ -620,7 +620,7 @@ static void RoadVehCrash(RoadVehicle *v)
 
 	ClearSlot(v);
 
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 
 	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
 
@@ -663,8 +663,8 @@ static void HandleBrokenRoadVeh(RoadVehicle *v)
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
 
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
 			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
@@ -680,7 +680,7 @@ static void HandleBrokenRoadVeh(RoadVehicle *v)
 	if ((v->tick_counter & 1) == 0) {
 		if (--v->breakdown_delay == 0) {
 			v->breakdown_ctr = 0;
-			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		}
 	}
 }
@@ -836,7 +836,7 @@ static int RoadVehAccelerate(RoadVehicle *v)
 	/* Update statusbar only if speed has changed to save CPU time */
 	if (oldspeed != v->cur_speed) {
 		if (_settings_client.gui.vehicle_speed) {
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
 
@@ -1730,7 +1730,7 @@ again:
 		}
 
 		StartRoadVehSound(v);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* Check tile position conditions - i.e. stop position in depot,
@@ -1845,7 +1845,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 			 * suddenly moved farther away, we continue our normal
 			 * schedule? */
 			v->current_order.MakeDummy();
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
@@ -1863,7 +1863,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 
 	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = rfdd.tile;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
 void RoadVehicle::OnNewDay()
@@ -1957,8 +1957,8 @@ void RoadVehicle::OnNewDay()
 
 	SubtractMoneyFromCompanyFract(this->owner, cost);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
-	InvalidateWindowClasses(WC_ROADVEH_LIST);
+	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+	SetWindowClassesDirty(WC_ROADVEH_LIST);
 }
 
 Trackdir RoadVehicle::GetVehicleTrackdir() const
@@ -2069,8 +2069,8 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			v->cargo.Truncate((v->cargo_type == new_cid) ? capacity : 0);
 			v->cargo_type = new_cid;
 			v->cargo_subtype = new_subtype;
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 			InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		}
 	}

@@ -148,7 +148,7 @@ static void StopMusic()
 	_music_wnd_cursong = 0;
 	DoStopMusic();
 	_song_is_active = false;
-	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
+	SetWindowWidgetDirty(WC_MUSIC_WINDOW, 0, 9);
 }
 
 static void PlayPlaylistSong()
@@ -169,7 +169,7 @@ static void PlayPlaylistSong()
 	DoPlaySong();
 	_song_is_active = true;
 
-	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
+	SetWindowWidgetDirty(WC_MUSIC_WINDOW, 0, 9);
 }
 
 void ResetMusic()
@@ -600,7 +600,7 @@ struct MusicWindow : public Window {
 			case MW_SHUFFLE: // toggle shuffle
 				msf.shuffle ^= 1;
 				this->SetWidgetLoweredState(MW_SHUFFLE, msf.shuffle);
-				this->InvalidateWidget(MW_SHUFFLE);
+				this->SetWidgetDirty(MW_SHUFFLE);
 				StopMusic();
 				SelectSongToPlay();
 				this->SetDirty();
@@ -623,7 +623,7 @@ struct MusicWindow : public Window {
 #if 0
 	virtual void OnTick()
 	{
-		this->InvalidateWidget(MW_GAUGE);
+		this->SetWidgetDirty(MW_GAUGE);
 	}
 #endif
 };

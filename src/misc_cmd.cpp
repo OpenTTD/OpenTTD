@@ -354,8 +354,8 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 			}
 		}
 
-		InvalidateWindow(WC_STATUS_BAR, 0);
-		InvalidateWindow(WC_MAIN_TOOLBAR, 0);
+		SetWindowDirty(WC_STATUS_BAR, 0);
+		SetWindowDirty(WC_MAIN_TOOLBAR, 0);
 	}
 	return CommandCost();
 }

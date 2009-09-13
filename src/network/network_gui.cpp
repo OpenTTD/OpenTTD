@@ -1203,7 +1203,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			strecpy(_settings_client.network.server_password, str, lastof(_settings_client.network.server_password));
 		} else {
 			int32 value = atoi(str);
-			this->InvalidateWidget(this->widget_id);
+			this->SetWidgetDirty(this->widget_id);
 			switch (this->widget_id) {
 				default: NOT_REACHED();
 				case NSSW_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(value, 2, MAX_CLIENTS); break;

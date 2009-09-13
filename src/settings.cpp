@@ -664,13 +664,13 @@ static bool RedrawScreen(int32 p1)
 
 static bool InvalidateDetailsWindow(int32 p1)
 {
-	InvalidateWindowClasses(WC_VEHICLE_DETAILS);
+	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
 	return true;
 }
 
 static bool InvalidateStationBuildWindow(int32 p1)
 {
-	InvalidateWindow(WC_BUILD_STATION, 0);
+	SetWindowDirty(WC_BUILD_STATION, 0);
 	return true;
 }
 
@@ -752,7 +752,7 @@ static bool TrainAccelerationModelChanged(int32 p1)
 
 static bool DragSignalsDensityChanged(int32)
 {
-	InvalidateWindow(WC_BUILD_SIGNAL, 0);
+	SetWindowDirty(WC_BUILD_SIGNAL, 0);
 
 	return true;
 }
@@ -820,7 +820,7 @@ static bool DifficultyChange(int32)
 			ShowErrorMessage(INVALID_STRING_ID, STR_WARNING_DIFFICULTY_TO_CUSTOM, 0, 0);
 			_settings_newgame.difficulty.diff_level = 3;
 		}
-		InvalidateWindowClasses(WC_SELECT_GAME);
+		SetWindowClassesDirty(WC_SELECT_GAME);
 	} else {
 		_settings_game.difficulty.diff_level = 3;
 	}
@@ -1446,7 +1446,7 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			GamelogStopAction();
 		}
 
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
+		SetWindowDirty(WC_GAME_OPTIONS, 0);
 	}
 
 	return CommandCost();
@@ -1480,7 +1480,7 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 			return CommandCost();
 		}
 
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
+		SetWindowDirty(WC_GAME_OPTIONS, 0);
 	}
 
 	return CommandCost();
@@ -1509,7 +1509,7 @@ bool SetSettingValue(uint index, int32 value)
 			Write_ValidateSetting(var2, sd, value);
 		}
 		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
+		SetWindowDirty(WC_GAME_OPTIONS, 0);
 		return true;
 	}
 
