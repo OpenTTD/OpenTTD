@@ -929,7 +929,7 @@ void CheckRedrawStationCoverage(const Window *w)
 {
 	if (_thd.dirty & 1) {
 		_thd.dirty &= ~1;
-		SetWindowDirty(w);
+		w->SetDirty();
 	}
 }
 
@@ -2079,7 +2079,7 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 
 void RedrawAutosave()
 {
-	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
+	InvalidateWindow(WC_STATUS_BAR, 0);
 }
 
 void SetFiosType(const byte fiostype)

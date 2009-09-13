@@ -591,16 +591,6 @@ void Window::SetDirty() const
 	SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height);
 }
 
-/**
- * Mark entire window as dirty (in need of re-paint)
- * @param w Window to redraw
- * @ingroup dirty
- */
-void SetWindowDirty(const Window *w)
-{
-	if (w != NULL) w->SetDirty();
-}
-
 /** Re-initialize a window. */
 void Window::ReInit()
 {

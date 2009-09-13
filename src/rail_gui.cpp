@@ -1601,14 +1601,14 @@ public:
 			case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
 				if (_settings_client.gui.drag_signals_density > 1) {
 					_settings_client.gui.drag_signals_density--;
-					SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 				break;
 
 			case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
 				if (_settings_client.gui.drag_signals_density < 20) {
 					_settings_client.gui.drag_signals_density++;
-					SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 				break;
 

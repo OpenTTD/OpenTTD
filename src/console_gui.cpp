@@ -141,7 +141,7 @@ static void IConsoleClearCommand()
 	_iconsole_cmdline.width = 0;
 	_iconsole_cmdline.caretpos = 0;
 	_iconsole_cmdline.caretxoffs = 0;
-	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
+	InvalidateWindow(WC_CONSOLE, 0);
 }
 
 static inline void IConsoleResetHistoryPos() {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
@@ -470,5 +470,5 @@ static void IConsoleHistoryNavigate(int direction)
 void IConsoleGUIPrint(ConsoleColour colour_code, char *str)
 {
 	new IConsoleLine(str, (TextColour)colour_code);
-	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
+	InvalidateWindow(WC_CONSOLE, 0);
 }

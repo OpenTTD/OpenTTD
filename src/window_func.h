@@ -15,8 +15,6 @@
 #include "window_type.h"
 #include "company_type.h"
 
-void SetWindowDirty(const Window *w);
-
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void ChangeWindowOwner(Owner old_owner, Owner new_owner);
 

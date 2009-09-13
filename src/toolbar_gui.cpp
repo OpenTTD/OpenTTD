@@ -782,7 +782,7 @@ static void ToolbarSwitchClick(Window *w)
 
 	SplitToolbar(w);
 	w->HandleButtonClick(TBN_SWITCHBAR);
-	SetWindowDirty(w);
+	w->SetDirty();
 	SndPlayFx(SND_15_BEEP);
 }
 
