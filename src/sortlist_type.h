@@ -25,7 +25,7 @@ enum SortListFlags {
 	VL_DESC       = 1 << 0, ///< sort descending or ascending
 	VL_RESORT     = 1 << 1, ///< instruct the code to resort the list in the next loop
 	VL_REBUILD    = 1 << 2, ///< rebuild the sort list
-	VL_FIRST_SORT = 1 << 3, ///< sort with qsort first
+	VL_FIRST_SORT = 1 << 3, ///< sort with quick sort first
 	VL_FILTER     = 1 << 4, ///< filter disabled/enabled
 	VL_END        = 1 << 5,
 };
@@ -246,7 +246,7 @@ public:
 
 	/**
 	 * Sort the list.
-	 *  For the first sorting we use qsort since it is
+	 *  For the first sorting we use quick sort since it is
 	 *  faster for irregular sorted data. After that we
 	 *  use gsort.
 	 *

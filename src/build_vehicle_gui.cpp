@@ -114,19 +114,17 @@ static byte _last_sort_criteria[]    = {0, 0, 0, 0};
 static bool _last_sort_order[]       = {false, false, false, false};
 static byte _last_filter_criteria[]  = {0, 0, 0, 0};
 
-static int CDECL EngineNumberSorter(const void *a, const void *b)
+static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
-	const EngineID va = *(const EngineID*)a;
-	const EngineID vb = *(const EngineID*)b;
-	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
+	int r = ListPositionOfEngine(*a) - ListPositionOfEngine(*b);
 
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EngineIntroDateSorter(const void *a, const void *b)
+static int CDECL EngineIntroDateSorter(const EngineID *a, const EngineID *b)
 {
-	const int va = Engine::Get(*(const EngineID*)a)->intro_date;
-	const int vb = Engine::Get(*(const EngineID*)b)->intro_date;
+	const int va = Engine::Get(*a)->intro_date;
+	const int vb = Engine::Get(*b)->intro_date;
 	const int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -134,13 +132,13 @@ static int CDECL EngineIntroDateSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EngineNameSorter(const void *a, const void *b)
+static int CDECL EngineNameSorter(const EngineID *a, const EngineID *b)
 {
 	static EngineID last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
 	static char     last_name[2][64] = { "\0", "\0" };
 
-	const EngineID va = *(const EngineID*)a;
-	const EngineID vb = *(const EngineID*)b;
+	const EngineID va = *a;
+	const EngineID vb = *b;
 
 	if (va != last_engine[0]) {
 		last_engine[0] = va;
@@ -161,10 +159,10 @@ static int CDECL EngineNameSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EngineReliabilitySorter(const void *a, const void *b)
+static int CDECL EngineReliabilitySorter(const EngineID *a, const EngineID *b)
 {
-	const int va = Engine::Get(*(const EngineID*)a)->reliability;
-	const int vb = Engine::Get(*(const EngineID*)b)->reliability;
+	const int va = Engine::Get(*a)->reliability;
+	const int vb = Engine::Get(*b)->reliability;
 	const int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -172,10 +170,10 @@ static int CDECL EngineReliabilitySorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EngineCostSorter(const void *a, const void *b)
+static int CDECL EngineCostSorter(const EngineID *a, const EngineID *b)
 {
-	Money va = Engine::Get(*(const EngineID*)a)->GetCost();
-	Money vb = Engine::Get(*(const EngineID*)b)->GetCost();
+	Money va = Engine::Get(*a)->GetCost();
+	Money vb = Engine::Get(*b)->GetCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -183,10 +181,10 @@ static int CDECL EngineCostSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EngineSpeedSorter(const void *a, const void *b)
+static int CDECL EngineSpeedSorter(const EngineID *a, const EngineID *b)
 {
-	int va = Engine::Get(*(const EngineID*)a)->GetDisplayMaxSpeed();
-	int vb = Engine::Get(*(const EngineID*)b)->GetDisplayMaxSpeed();
+	int va = Engine::Get(*a)->GetDisplayMaxSpeed();
+	int vb = Engine::Get(*b)->GetDisplayMaxSpeed();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -194,10 +192,10 @@ static int CDECL EngineSpeedSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EnginePowerSorter(const void *a, const void *b)
+static int CDECL EnginePowerSorter(const EngineID *a, const EngineID *b)
 {
-	int va = Engine::Get(*(const EngineID*)a)->GetPower();
-	int vb = Engine::Get(*(const EngineID*)b)->GetPower();
+	int va = Engine::Get(*a)->GetPower();
+	int vb = Engine::Get(*b)->GetPower();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -205,10 +203,10 @@ static int CDECL EnginePowerSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL EngineRunningCostSorter(const void *a, const void *b)
+static int CDECL EngineRunningCostSorter(const EngineID *a, const EngineID *b)
 {
-	Money va = Engine::Get(*(const EngineID*)a)->GetRunningCost();
-	Money vb = Engine::Get(*(const EngineID*)b)->GetRunningCost();
+	Money va = Engine::Get(*a)->GetRunningCost();
+	Money vb = Engine::Get(*b)->GetRunningCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -217,10 +215,10 @@ static int CDECL EngineRunningCostSorter(const void *a, const void *b)
 }
 
 /* Train sorting functions */
-static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *b)
+static int CDECL TrainEnginePowerVsRunningCostSorter(const EngineID *a, const EngineID *b)
 {
-	const Engine *e_a = Engine::Get(*(const EngineID*)a);
-	const Engine *e_b = Engine::Get(*(const EngineID*)b);
+	const Engine *e_a = Engine::Get(*a);
+	const Engine *e_b = Engine::Get(*b);
 
 	/* Here we are using a few tricks to get the right sort.
 	 * We want power/running cost, but since we usually got higher running cost than power and we store the result in an int,
@@ -237,13 +235,13 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL TrainEngineCapacitySorter(const void *a, const void *b)
+static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
-	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
-	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
+	const RailVehicleInfo *rvi_a = RailVehInfo(*a);
+	const RailVehicleInfo *rvi_b = RailVehInfo(*b);
 
-	int va = GetTotalCapacityOfArticulatedParts(*(const EngineID*)a, VEH_TRAIN) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(*(const EngineID*)b, VEH_TRAIN) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int va = GetTotalCapacityOfArticulatedParts(*a, VEH_TRAIN) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int vb = GetTotalCapacityOfArticulatedParts(*b, VEH_TRAIN) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -251,12 +249,10 @@ static int CDECL TrainEngineCapacitySorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
+static int CDECL TrainEnginesThenWagonsSorter(const EngineID *a, const EngineID *b)
 {
-	EngineID va = *(const EngineID*)a;
-	EngineID vb = *(const EngineID*)b;
-	int val_a = (RailVehInfo(va)->railveh_type == RAILVEH_WAGON ? 1 : 0);
-	int val_b = (RailVehInfo(vb)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_a = (RailVehInfo(*a)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_b = (RailVehInfo(*b)->railveh_type == RAILVEH_WAGON ? 1 : 0);
 	int r = val_a - val_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -265,10 +261,10 @@ static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 }
 
 /* Road vehicle sorting functions */
-static int CDECL RoadVehEngineCapacitySorter(const void *a, const void *b)
+static int CDECL RoadVehEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
-	int va = GetTotalCapacityOfArticulatedParts(*(const EngineID*)a, VEH_ROAD);
-	int vb = GetTotalCapacityOfArticulatedParts(*(const EngineID*)b, VEH_ROAD);
+	int va = GetTotalCapacityOfArticulatedParts(*a, VEH_ROAD);
+	int vb = GetTotalCapacityOfArticulatedParts(*b, VEH_ROAD);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -277,10 +273,10 @@ static int CDECL RoadVehEngineCapacitySorter(const void *a, const void *b)
 }
 
 /* Ship vehicle sorting functions */
-static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
+static int CDECL ShipEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
-	const Engine *e_a = Engine::Get(*(const EngineID*)a);
-	const Engine *e_b = Engine::Get(*(const EngineID*)b);
+	const Engine *e_a = Engine::Get(*a);
+	const Engine *e_b = Engine::Get(*b);
 
 	int va = e_a->GetDisplayDefaultCapacity();
 	int vb = e_b->GetDisplayDefaultCapacity();
@@ -292,10 +288,10 @@ static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
 }
 
 /* Aircraft sorting functions */
-static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
+static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 {
-	const Engine *e_a = Engine::Get(*(const EngineID*)a);
-	const Engine *e_b = Engine::Get(*(const EngineID*)b);
+	const Engine *e_a = Engine::Get(*a);
+	const Engine *e_b = Engine::Get(*b);
 
 	int va = e_a->GetDisplayDefaultCapacity();
 	int vb = e_b->GetDisplayDefaultCapacity();
@@ -303,8 +299,8 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 
 	if (r == 0) {
 		/* The planes has the same passenger capacity. Check mail capacity instead */
-		va = AircraftVehInfo(*(const EngineID*)a)->mail_capacity;
-		vb = AircraftVehInfo(*(const EngineID*)b)->mail_capacity;
+		va = AircraftVehInfo(*a)->mail_capacity;
+		vb = AircraftVehInfo(*b)->mail_capacity;
 		r = va - vb;
 
 		if (r == 0) {

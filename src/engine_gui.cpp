@@ -23,6 +23,7 @@
 #include "vehicle_func.h"
 #include "company_func.h"
 #include "rail.h"
+#include "core/sort_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -263,7 +264,7 @@ void DrawVehicleEngine(int x, int y, EngineID engine, SpriteID pal)
 	}
 }
 
-/** Sort all items using qsort() and given 'CompareItems' function
+/** Sort all items using quick sort and given 'CompareItems' function
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  */
@@ -273,7 +274,7 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
 	 * generally, do not sort if there are less than 2 items */
 	if (size < 2) return;
-	qsort(el->Begin(), size, sizeof(*el->Begin()), compare); // MorphOS doesn't know vector::at(int) ...
+	QSortT(el->Begin(), size, compare);
 }
 
 /** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
@@ -287,6 +288,6 @@ void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, ui
 	if (num_items < 2) return;
 	assert(begin < el->Length());
 	assert(begin + num_items <= el->Length());
-	qsort(el->Get(begin), num_items, sizeof(*el->Begin()), compare);
+	QSortT(el->Get(begin), num_items, compare);
 }
 

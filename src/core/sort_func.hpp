@@ -19,7 +19,6 @@
 /**
  * Type safe qsort()
  *
- * @todo replace the normal qsort with this one
  * @note Use this sort for irregular sorted data.
  *
  * @param base Pointer to the first element of the array to be sorted.

@@ -58,11 +58,9 @@ enum ReplaceVehicleWindowWidgets {
 	RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
 };
 
-static int CDECL EngineNumberSorter(const void *a, const void *b)
+static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
-	const EngineID va = *(const EngineID*)a;
-	const EngineID vb = *(const EngineID*)b;
-	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
+	int r = ListPositionOfEngine(*a) - ListPositionOfEngine(*b);
 
 	return r;
 }
