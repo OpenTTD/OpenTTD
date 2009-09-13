@@ -111,7 +111,7 @@ public:
 				case CONTENT_TYPE_NEWGRF:
 					ScanNewGRFFiles();
 					/* Yes... these are the NewGRF windows */
-					InvalidateWindowClasses(WC_SAVELOAD);
+					InvalidateWindowClassesData(WC_SAVELOAD);
 					InvalidateWindowData(WC_GAME_OPTIONS, 0, 1);
 					InvalidateWindowData(WC_NETWORK_WINDOW, 1, 2);
 					break;
