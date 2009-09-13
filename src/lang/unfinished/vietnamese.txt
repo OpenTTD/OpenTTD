@@ -20,6 +20,8 @@
 
 ##id 0x0000
 STR_NULL                                                        :
+STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(chuỗi không xác định)
 STR_JUST_NOTHING                                                :Không màu
 
 # Cargo related strings
@@ -195,13 +197,19 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lít{P 
 # Common window strings
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Chọn tiêu chí sắp xếp
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Chọn tiêu chí lọc bỏ
 STR_BUTTON_SORT_BY                                              :{BLACK}Sắp xếp bởi
 STR_BUTTON_LOCATION                                             :{BLACK}Vị trí
 STR_BUTTON_RENAME                                               :{BLACK}Đổi tên
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Đóng cửa sổ
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiêu đề cửa sổ - kéo nó để di chuyển cửa số
+STR_TOOLTIP_STICKY                                              :{BLACK}Đánh dấu không-thể-đóng khi bấm nút "Đóng Tất Cả Cửa Sổ"
+STR_TOOLTIP_RESIZE                                              :{BLACK}Click và kéo để thay đổi kích thước cửa sổ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn lên/xuống
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn sang trái/phải
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Phá hủy công trình etc. trên một ô đất
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
@@ -224,6 +232,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Dân s�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Tên
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ngày tháng
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Dân số
+STR_SORT_BY_NAME                                                :Tên
 STR_SORT_BY_PRODUCTION                                          :Sản lượng
 STR_SORT_BY_TYPE                                                :Loại
 STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
@@ -238,6 +248,7 @@ STR_SORT_BY_MODEL                                               :Kiểu
 STR_SORT_BY_VALUE                                               :Giá trị
 STR_SORT_BY_LENGTH                                              :Chiều dài
 STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
+STR_SORT_BY_TIMETABLE_DELAY                                     :Lịch hoãn
 STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
 STR_SORT_BY_WAITING                                             :Giá trị hàng hoá đang đợi
 STR_SORT_BY_RATING_MAX                                          :Đánh giá mức hàng hoá cao nhất
@@ -257,7 +268,17 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tuỳ ch
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thành phố
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Hiện tiền trợ cấp
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Hiện thông tin tài chính của công ty
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Hiện thông tin tổng quát của công ty
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Hiển thị biểu đồ
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hiện bảng liên đoàn công ty
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bỏ vốn cho những ngành mới hoặc hiện tất cả các ngành
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện danh sách tàu lửa của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hiện danh sách tàu thủy của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Hiện danh sách máy bay của công ty.Ctrl+Click vào chốt néo để mở dạnh sách nhóm/phương tiện
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thành phố
@@ -382,6 +403,8 @@ STR_MONTH_DEC                                                   :Tháng Mười 
 ############ End of order list
 
 # Music window
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Bài Nhạc
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Tên
 
 # Playlist window
 
@@ -518,6 +541,9 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Toàn m�
 
 
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm thanh chuẩn
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
 
 
 # Custom currency window
@@ -669,10 +695,12 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn c
 # Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} đã vào trò chơi (Client #{2:NUM})
 
 # Content downloading window
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Âm thanh chuẩn
 
 # Content downloading progress window
 
@@ -798,6 +826,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú ý!
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 
 # Town view window
 
@@ -840,6 +869,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Chấp n
 
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Không Có -
 
 # Industry view
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Sản lượng tháng trước:
@@ -880,7 +910,14 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Gửi về Hang
 
 
 # Build vehicle window
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Tàu Hỏa Mới
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Tàu Điện Mới
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Tàu Đơn Ray Mới
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Tàu Đệm Từ Mới
 
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Tàu Hỏa Mới
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Xe Cộ Mới
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Tàu Mới
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Máy Bay Mới
 
 
@@ -889,10 +926,25 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Danh sá
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Danh sách tàu - click vào tàu để xem thông tin
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Danh sách máy bay - click vào máy bay để xem thông tin
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Mua P.Tiện
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Mua P.Tiện
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Mua tàu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Mua Máy Bay
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Mua tàu hỏa đã ấn định
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Mua xe đã ấn định
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Mua tàu đã ấn định
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Mua máy bay đã ấn định
 
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Thay tên
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Thay tên
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Thay tên
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Thay tên
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Thay tên loại tàu hỏa
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Thay tên loại xe
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Thay tên loại tàu
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Thay tên loại máy bay
 
 
 # Depot window
@@ -1148,6 +1200,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ
 
 
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Không thể mua tàu hỏa này...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Không thể mua xe này...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Không thể mua tàu này...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua phi cơ này...
 
 

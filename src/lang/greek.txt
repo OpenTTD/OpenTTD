@@ -77,7 +77,7 @@ STR_CARGO_SINGULAR_COPPER_ORE                                   :Μετάλλε�
 STR_CARGO_SINGULAR_MAIZE                                        :Καλαμπόκι
 STR_CARGO_SINGULAR_FRUIT                                        :Φρούτα
 STR_CARGO_SINGULAR_DIAMOND                                      :Διαμάντια
-STR_CARGO_SINGULAR_FOOD                                         :Φαγητό
+STR_CARGO_SINGULAR_FOOD                                         :Τρόφιμα
 STR_CARGO_SINGULAR_PAPER                                        :Χαρτί
 STR_CARGO_SINGULAR_GOLD                                         :Χρυσός
 STR_CARGO_SINGULAR_WATER                                        :Νερό
@@ -146,7 +146,7 @@ STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ΧΜ
 STR_ABBREV_MAIZE                                                :{TINYFONT}ΚΛ
 STR_ABBREV_FRUIT                                                :{TINYFONT}ΦΡ
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}ΔΜ
-STR_ABBREV_FOOD                                                 :{TINYFONT}ΦΓ
+STR_ABBREV_FOOD                                                 :{TINYFONT}ΤΦ
 STR_ABBREV_PAPER                                                :{TINYFONT}ΧΤ
 STR_ABBREV_GOLD                                                 :{TINYFONT}ΧΡ
 STR_ABBREV_WATER                                                :{TINYFONT}ΝΕ
@@ -270,7 +270,7 @@ STR_SORT_BY_MODEL                                               :Μοντέλο
 STR_SORT_BY_VALUE                                               :Αξία
 STR_SORT_BY_LENGTH                                              :Μήκος
 STR_SORT_BY_LIFE_TIME                                           :Υπόλοιπη διάρκεια ζωής
-STR_SORT_BY_TIMETABLE_DELAY                                     :Καθυστέρηση προγραμματισμού
+STR_SORT_BY_TIMETABLE_DELAY                                     :Καθυστέρηση δρομολογίου
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
@@ -297,10 +297,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση γραφημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιρειών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τραίνων της εταιρείας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρείας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρείας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρείας
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τραίνων της εταιρείας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρείας. Ctrl+κλικ εναλλάσει το άνοιγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρείας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρείας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατασκευή σιδηρόδρομου
@@ -1056,8 +1056,8 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μον�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (απαιτεί NPF)
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Σύνδεση σταθμών τρένων χτισμένων κοντά: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η σύνδεση μη παρακείμενων σταθμών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Συνένωση σταθμών τρένων χτισμένων δίπλα σε άλλο: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Φόρτωση οχημάτων σταδιακά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Πληθωρισμός: {ORANGE}{STRING}
@@ -1167,8 +1167,8 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Χρή�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :όχι
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Η εταιρία μου
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Όλες οι εταιρίες
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ενεργοποίηση χρονοδιαγραμμάτων για τα οχήματα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση χρονοδιαγραμμάτων σε τικ αντί για ημέρες: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ενεργοποίηση δρομολογίων για τα οχήματα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Προεπιλογή τύπου γραμμής (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Κανονικός σιδηρόδρομος
@@ -1823,9 +1823,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Δέχε
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Προμηθεύει : {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Ενώστε σταθμό
+STR_JOIN_STATION_CAPTION                                        :{BLACK}Συνενώση σταθμού
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Χτίστε ένα ξεχωριστό σταθμό
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Συνένωση σημείου καθοδήγησης
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Χτήσιμο ενός ξεχωριστού σημείου καθοδήγησης
 
 # Rail construction toolbar
@@ -1834,15 +1835,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Κατα
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Κατασκευή μονοτρόχιου σιδηροδρόμου
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Κατασκευή μαγνητικού σιδηροδρόμου
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστασίου (για αγορά και επισκευή τρένων)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή γραμμής σε σημείο καθοδήγησης. Ctrl ενεργοποιηει συνένωση σημείων καθοδήγησης
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl ενεργοποιηει συνένωση σταθμών
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους και σηματοδότες
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας το Ctrl αφαιρεί επίσης σιδηρόδρομο απο σημεία καθοδήγησης και σταθμούς
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής
 
 # Rail depot construction window
@@ -1850,8 +1851,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Προσ
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Σημείο πορείας
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Επιλογή τύπου σημείου πορείας
+STR_WAYPOINT_CAPTION                                            :{WHITE}Σημείο καθοδήγησης
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Επιλογή τύπου σημείου καθοδήγησης
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Επιλογή Σιδηροδρομικού Σταθμού
@@ -1893,16 +1894,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σωλήνας,
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή τροχιοδρομού(τραμ)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομού(τραμ)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου(τραμ). Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ. Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl ενεργοποιηεί συνένωση σταθμών
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Ctrl ενεργοποιηει συνένωση επιβατικών σταθμών
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Ctrl ενεργοποιεί συνένωση σταθμών φόρτωσης
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομού(τραμ)
@@ -1933,7 +1934,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανά
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Δημιουργία καναλιών.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή Υδατοφράκτη
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για αγορά και επισκευή πλοίων)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Ctrl ενεργοποιεί συνένωση λιμένων
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Τοποθετήστε μια σημαδούρα που μπορεί να χρησιμοποιήθει ως σημείο καθοδήγησης
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Προσδιορισμός θαλάσσιας επιφάνειας.{}Δημιουργία καναλιού, εκτός εάν το πλήκτρο CTRL είναι κρατημένο στο επίπεδο της θάλασσας, όπου θα πλημμυρίσει τις παρακείμενες περιοχές.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Τοποθέτησε ποτάμια
@@ -1947,7 +1949,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Λιμά
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Αεροδρόμια
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Ctrl ενεργοποιεί συνένωση αεροδρομίων
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
@@ -2051,6 +2053,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Τοπι
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Κανένα
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Συντεταγμένες: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Κατασκευή: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Κλάση στάθμου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Τύπος σταθμού: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτό Εμπόρευμα: {LTBLUE}
@@ -2106,7 +2109,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Χώρος φό
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Στάση λεωφορείων
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Αποβάθρα πλοίων
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Σημαδούρα
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Σημείο πορείας
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Σημείο καθοδηγήσης
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Νερό
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Κανάλι
@@ -2278,6 +2281,7 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχεί
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
@@ -2548,6 +2552,8 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Στείλε σ
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Στείλε στο ναυπηγείο
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Στείλε στο υπόστεγο
 
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα οχήματα στη λίστα
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα οχήματα στη λίστα
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοίνες εντόλες του {COMMA} {P οχήματος οχημάτων}
 
@@ -2559,6 +2565,7 @@ STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα α�
 
 
 
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Προσθήκη κοινόχρηστων οχημάτων
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεση όλων των οχημάτων
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετονομασία ενός γκρουπ
@@ -2586,6 +2593,11 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστ
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Κόστος: {GOLD}{CURRENCY}{BLACK} Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Χωρητικότητα: {GOLD}{CARGO}, {CARGO}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ενισχυμένα βαγόνια: {GOLD}+{POWER}{BLACK} Βάρος: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Μετατρέψιμο σε: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Όλοι οι τύποι εμπορεύματος
+STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μεγ. Δύναμη Έλξης: {GOLD}{FORCE}
 
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Αγορά Οχήματος
@@ -2610,14 +2622,32 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετα
 
 
 # Depot window
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Αμαξοστάσιο Τραίνων
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Αμαξοστάσιο Οχημάτων Δρόμου
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ναυπηγείο Πλοίων
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Υπόστεγο Αεροπλάνων
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P όχημα οχήματα}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τραίνα - κλικ σε ένα τραίνο για πληροφορίες, σύρτε ενα όχημα για το προσθέσετε/αφαιρέσετε στο τραίνο
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - κλικ σε ένα όχημα για πληροφορίες
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - κλικ σε ένα πλοίο για πληροφορίες
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροπλάνα - κλικ σε ένα αεροπλάνο για πληροφορίες
 
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Συρτε το όχημα τραίνου εδώ για το πουλήσετε
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Σύρτε το όχημα δρόμου εδώ για το πουλήσετε
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Σύρτε το πλοίο εδώ για το πουλήσετε
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Σύρτε το αεροπλάνο εδώ για το πουλήσετε
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Σύρε την μηχανή του τρένου για να διαγραφεί ολόκληρο το τρένο
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Πουλήστε όλα τα τραίνα στο αμαξοστάσιο
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Πουλήστε όλα τα οχήματα δρόμου στο αμαξοστάσιο
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Πουλήστε όλα τα πλοία στο ναυπηγείο
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροπλάνα στο υπόστεγο
 
 
 
@@ -2670,6 +2700,12 @@ STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφά
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Αποχώρηση
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Κατεστραμμένο!
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Χαλασμένο
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Σταματημένο
+STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Σταματάει
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Σταματάει, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Χώρις ενέργεια κίνησης
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Πάει προς {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Πάει προς {STATION}, {VELOCITY}
@@ -2679,6 +2715,14 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Δεν 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Καθ' οδόν {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Κατευθύνεται προς το ναυπηγείο της πόλης {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Κατευθύνεται προς το ναυπήγειο της πόλης {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Κατευθύνεται προς το υπόστεγο του αεροδρομίου {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Κατευθύνεται προς το υπόστεγο του αεροδρομίου {STATION}, {VELOCITY}
 
 
 # Vehicle details
@@ -2703,8 +2747,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Χωρη
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}μέρες{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Ctrl+κλικ αυξάνει τα διαστήματα επισκευών κατα 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Ctrl+κλικ μειώνει τα διαστήματα επισκευών κατά 5
 
 
 # Extra buttons for train details windows
@@ -2738,7 +2782,8 @@ STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Διασ
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Εντολές)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Προγραμματισμός
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Δρομολόγια
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλαγή στην προβολή δρομολογίων
 
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2792,6 +2837,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :είναι αλ
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :είναι ψευδές
 
 STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Δώστε τίμη για να συγκριθεί
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Παρέλειψε
 
@@ -2827,37 +2873,62 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
 STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)
+STR_ORDER_NO_LOAD                                               :(Χωρίς φόρτωση)
+STR_ORDER_UNLOAD                                                :(Ξεφόρτωμα και πάρε φόρτιο)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Ξεφόρτωμα και αναμόνη για πλήρης φόρτωση)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Ξεφόρτωμα και αναμόνη για πλήρης φόρτωση οποιουδήποτε)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Ξεφόρτωμα και φύγε άδειο)
+STR_ORDER_TRANSFER                                              :(Μεταφορά και πάρε φορτίο)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Μεταφορά και αναμονή για πλήρη φόρτωση)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Μετάφορα και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Μεταφορά και φύγε άδειο)
+STR_ORDER_NO_UNLOAD                                             :(Χωρίς αποφόρτωση και πάρε φορτίο)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Χωρίς αποφόρτωση και αναμονή για πλήρης φόρτωση)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Χωρίς αποφόρτωση και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[κοντά στο τέλος]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[μέση]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[στην άκρη]
 
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Μετάβαση στην εντολή {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Μετάβαση στην εντολή {COMMA} όταν {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Μετάβαση στην εντολή {COMMA} όταν {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Μη Έγκυρη Εντολή)
 
 # Time table window
-STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Οδηγίες
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Δρομολόγια)
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Εντολές
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Αλλαγή στην προβολή εντολών
 
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομολόγια - κλικ σε μια εντολή για την τονίσετε.
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Μη ταξιδέψεις
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Ταξίδεψε (όχι προγραμματισμένο)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Ταξίδεψε (όχι μεσώ δρομολογίου)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Ταξίδεψε για {STRING}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} μέρ{P α ες}
+STR_TIMETABLE_TICKS                                             :{COMMA} στιγμ{P ή ές}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το χρονοδιάγραμμα αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί.
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το χρονοδιάγραμμα αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί (δεν είναι όλα τα χρονοδιαγράμματα)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί.
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί (δεν είναι όλα τα χρονοδιαγράμματα)
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Αυτό το όχημα πηγαίνει στην ώρα του
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Αυτό το όχημα εχει καθυστερήσει κατά {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα αυτό τρέχει {STRING} αργά
 
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
 
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Καθαρισμός χρόνων
 
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Επαναφορά Μετρητή Καθυστέρησης
 
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Αυτόματη πλήρωση
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Συμπληρώστε το δρομολόγιο αυτόματα με τιμές από το επόμενο ταξίδι (Ctrl+κλικ για να προσπαθήσει να κρατήσει τους χρόνους αναμονής)
 
 # AI debug window
+STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου"
 
@@ -3056,11 +3127,11 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Πρέπ
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}προστίθεται σε περισσότερο από ένα υπάρχον σημείο καθοδήγησης
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Πολύ κοντά σε άλλο σημείο καθοδήγησης
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Αδύνατο να χτιστεί σημείο πορείας τρένου εδώ...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Αδύνατο να χτιστεί σημείο καθοδήγησης τρένου εδώ...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Δεν μπορεί να τοποθετηθεί σημαδούρα εδώ...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου καθοδήγησης...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Αδύνατο να αφαιρεθεί το σημείο πορείας τρένου από εδώ...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Αδύνατο να αφαιρεθεί το σημείο καθοδήγησης τρένου από εδώ...
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... σημαδούρα στη μέση
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση
 
@@ -3142,6 +3213,10 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... εί
 # Group related errors
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Τραίνο καθ'οδόν
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Όχημα δρόμου καθ'οδόν
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Πλοίο καθ'οδόν
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Αεροπλάνο καθ'οδόν
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Δεν μπορεί να υποστεί μετατροπή το όχημα δρόμου...
@@ -3212,6 +3287,7 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Αδύν
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... πολύ μακριά από τον προηγούμενο προορισμό
 
 # Timetable related errors
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Δεν μπορεί να δρομολογηθεί το όχημα...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Τα οχήματα μπορούν να περιμένουν μόνο στους σταθμούς.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Αυτό το όχημα δεν σταματάει σε αυτό το σταθμό.
 
@@ -3272,7 +3348,7 @@ STR_INDUSTRY_NAME_FARM                                          :Φάρμα
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Ορυχείο Μεταλλεύματος Χαλκού
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Πετρελαιοπηγές
 STR_INDUSTRY_NAME_BANK                                          :Τράπεζα
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Εργοστάσιο Επεξεργασίας Τροφών
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Εργοστάσιο Επεξεργασίας Τροφίμων
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Μύλος Χαρτιού
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Χρυσορυχείο
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Τράπεζα
@@ -3294,7 +3370,7 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :Εργοστά�
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Πηγές Πλαστικού
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Εργοστάσιο Αναψυκτικών
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Γεννήτρια Φυσαλίδων
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Λατομείο Τόφυ
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Λατομείο Ζαχαρωτών
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Ορυχείο Ζάχαρης
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -3368,43 +3444,100 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Ηλ�
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Ηλεκτρικό)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Βαγόνι επιβατών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Βαγόνι Αλληλογραφίας
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Νταλίκα Άνθρακα
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Βυτίο Πετρελαίου
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Βαγόνι Ζώων
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Βαγόνι Άνθρακα
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Βαγόνι Πετρελαίου
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Βαγόνι Μεταφοράς Ζώων
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Βαγόνι Αγαθών
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Φορτηγό Σιτηρών
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Νταλικά Ξυλείας
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Φορτηγό Σιδήρου
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Βαγόνι Σιτηρών
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Βαγόνι Ξυλείας
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Βαγόνι Μεταλλεύματος Σιδήρου
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Βαγόνι Χάλυβα
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Τεθωρακισμένο Βαγόνι
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Θωρακισμένο Βαγόνι
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Βαγόνι Τροφίμων
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Νταλίκα Χαρτιού
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Βαγόνι Χαρτιού
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Βαγόνι Χαλκού
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Βυτίο Νερού
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Νταλικά Φρούτων
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Νταλίκα Λάστιχου
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Νταλίκα Ζάχαρης
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Φορτηγό Μαλλιού της Γριάς
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Φορτηγό ζαχαρωτών
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Βαγόνι Νερού
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Βαγόνι Φρούτων
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Βαγόνι Λάστιχου
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Βαγόνι Ζάχαρης
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Βαγόνι Μαλλιού της Γριάς
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Βαγόνι Ζαχαρώτων
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Βαγόνι Φυσαλίδων
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Βυτίο Κόλα
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Βαγόνι Γλυκών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Βαγόνι Παιχνιδιών
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Φορτηγό Μπαταριών
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Βαγόνι Μπαταριών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Νταλίκα Αναψυκτικών
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Νταλίκα Πλαστικού
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Βαγόνι Πλαστικού
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Ηλεκτρικό)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Ηλεκτρικό)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Επιβατικό Βαγόνι
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Βαγόνι Αλληλογραφίας
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Βαγόνι Άνθρακα
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Βαγόνι Πετρελαίου
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Βαγόνι Μεταφοράς Ζώων
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Βαγόνι Αγαθών
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Φορτηγό Σιτηρών
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Βαγόνι Ξυλείας
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Φορτηγό Σιδήρου
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Βαγόνι Χάλυβα
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Θωρακισμένο Βαγόνι
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Βαγόνι Τροφίμων
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Βαγόνι Χαρτιού
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Βαγόνι Χαλκού
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Βαγόνι Νερού
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Βαγόνι Φρούτων
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Βαγόνι Λάστιχου
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Βαγόνι Ζάχαρης
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Φορτηγό Μαλλιού της Γριάς
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Φορτηγό ζαχαρωτών
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Βαγόνι Φυσαλίδων
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Βαγόνι Κόλας
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Βαγόνι Γλυκών
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Βαγόνι Παιχνιδιών
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Βαγόνι Μπαταριών
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Βαγόνι Αναψυκτικών
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Βαγόνι Πλαστικού
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Επιβατικό Βαγόνι
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Βαγόνι Αλληλογραφίας
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Βαγόνι Άνθρακα
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Βαγόνι Πετρελαίου
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Βαγόνι Μεταφοράς Ζώων
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Βαγόνι Αγαθών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Βαγόνι Σιτηρών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Βαγόνι Ξυλείας
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Βαγόνι Μεταλλεύματος Σιδήρου
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Βαγόνι Χάλυβα
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Θωρακισμένο Βαγόνι
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Βαγόνι Τροφίμων
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Βαγόνι Χαρτιού
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Βαγόνι Χαλκού
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Λεωφορείο Ploddyphut
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Βαγόνι Νερού
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Βαγόνι Φρούτων
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Βαγόνι Λάστιχου
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Βαγόνι Ζάχαρης
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Βαγόνι Μαλλιού της Γριάς
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Βαγόνι Ζαχαρώτων
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Βαγόνι Φυσαλίδων
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Βαγόνι Κόλας
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Βαγόνι Γλυκών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Βαγόνι Παιχνιδιών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Βαγόνι Μπαταριών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Βαγόνι Αναψυκτικών
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Βαγόνι Πλαστικού
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Λεωφορείο MPS Regal
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Λεωφορείο Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Λεωφορείο Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Λεωφορείο Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Λεωφορείο Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Λεωφορείο Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Λεωφορείο Ploddyphut MkIII
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Φορτηγό Άνθρακα Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Φορτηγό Άνθρακα Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Φορτηγό Άνθρακα DW
@@ -3417,15 +3550,30 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Φορτηγό 
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Βυτίο Πετρελαίου Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Βυτίο Πετρελαίου Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Βυτίο Πετρελαίου Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Ημιφορτηγό μεταφοράς ζώων Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Ημιφορτηγό μεταφοράς ζώων Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Ημιφορτηγό μεταφοράς ζώων Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Φορτηγό Αγαθών Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Φορτηγό Αγαθών Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Φορτηγό Αγαθών Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Φορτηγό Σιτηρών Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Φορτηγό Σιτηρών Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Φορτηγό Σιτηρών Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Φορτηγό Ξυλείας Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Φορτηγό Ξυλείας Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Φορτηγό Ξυλείας Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Φορτηγό μεταλλεύματος σιδήρου MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Φορτηγό μεταλλεύματος σιδήρου Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Φορτηγό μεταλλεύματος σιδήρου Chippy
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Φορτηγό χάλυβα Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Φορτηγο χάλυβα Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Φορτηγό χάλυβα Kelling
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Θωρακισμένο φορτηγό Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Ημιφορτηγό Τροφίμων Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Ημιφορτηγό Τροφίμων Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Ημιφορτηγό Τροφίμων Chippy
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Φορτηγό Χαρτιού Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Φορτηγό Χαρτιού Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Φορτηγό Χαρτιού MPS
