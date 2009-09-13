@@ -729,9 +729,19 @@ static void MakeIndustryTileBigger(TileIndex tile)
 		CreateChimneySmoke(tile);
 		break;
 
-	case GFX_OILRIG_1:
-		if (GetIndustryGfx(tile + TileDiffXY(0, 1)) == GFX_OILRIG_1) BuildOilRig(tile);
-		break;
+	case GFX_OILRIG_1: {
+		/* Do not require an industry tile to be after the first two GFX_OILRIG_1
+		 * tiles (like the default oil rig). Do a proper check to ensure the
+		 * tiles belong to the same industry and based on that build the oil rig's
+		 * station. */
+		TileIndex other = tile + TileDiffXY(0, 1);
+
+		if (IsTileType(other, MP_INDUSTRY) &&
+				GetIndustryGfx(other) == GFX_OILRIG_1 &&
+				GetIndustryIndex(tile) == GetIndustryIndex(other)) {
+			BuildOilRig(tile);
+		}
+	} break;
 
 	case GFX_TOY_FACTORY:
 	case GFX_BUBBLE_CATCHER:
