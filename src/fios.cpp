@@ -13,6 +13,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "core/sort_func.hpp"
 #include "fios.h"
 #include "fileio_func.h"
 #include "tar_type.h"
@@ -43,15 +44,13 @@ extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
 extern void GetOldSaveGameName(const char *file, char *title, const char *last);
 
 /**
- * Compare two FiosItem's. Used with qsort when sorting the file list.
- * @param a A pointer to the first FiosItem to compare.
- * @param b A pointer to the second FiosItem to compare.
+ * Compare two FiosItem's. Used with sort when sorting the file list.
+ * @param da A pointer to the first FiosItem to compare.
+ * @param db A pointer to the second FiosItem to compare.
  * @return -1, 0 or 1, depending on how the two items should be sorted.
  */
-int CDECL compare_FiosItems(const void *a, const void *b)
+int CDECL CompareFiosItems(const FiosItem *da, const FiosItem *db)
 {
-	const FiosItem *da = (const FiosItem *)a;
-	const FiosItem *db = (const FiosItem *)b;
 	int r = 0;
 
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && da->mtime != db->mtime) {
@@ -309,7 +308,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	{
 		byte order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		qsort(_fios_items.Begin(), _fios_items.Length(), sizeof(FiosItem), compare_FiosItems);
+		QSortT(_fios_items.Begin(), _fios_items.Length(), CompareFiosItems);
 		_savegame_sort_order = order;
 	}
 
@@ -324,7 +323,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 		scanner.Scan(NULL, subdir, true, true);
 	}
 
-	qsort(_fios_items.Get(sort_start), _fios_items.Length() - sort_start, sizeof(FiosItem), compare_FiosItems);
+	QSortT(_fios_items.Get(sort_start), _fios_items.Length() - sort_start, CompareFiosItems);
 
 	/* Show drives */
 	if (mode != SLD_NEW_GAME) FiosGetDrives();

@@ -40,6 +40,7 @@
 #include "newgrf_cargo.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
+#include "core/sort_func.hpp"
 
 #include "table/strings.h"
 
@@ -1746,9 +1747,7 @@ static void MakeSortedSaveGameList()
 	}
 
 	uint s_amount = _fios_items.Length() - sort_start - sort_end;
-	if (s_amount > 0) {
-		qsort(_fios_items.Get(sort_start), s_amount, sizeof(FiosItem), compare_FiosItems);
-	}
+	QSortT(_fios_items.Get(sort_start), s_amount, CompareFiosItems);
 }
 
 extern void StartupEngines();

@@ -115,6 +115,6 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size);
 /* Determines type of savegame (or tells it is not a savegame) */
 FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last);
 
-int CDECL compare_FiosItems(const void *a, const void *b);
+int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 
 #endif /* FIOS_H */
