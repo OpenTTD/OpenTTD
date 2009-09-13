@@ -65,7 +65,7 @@ private:
 
 	static const char *GetDriverTypeName(Driver::Type type)
 	{
-		static const char *driver_type_name[] = { "sound", "music", "video" };
+		static const char * const driver_type_name[] = { "sound", "music", "video" };
 		return driver_type_name[type];
 	}
 
