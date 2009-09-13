@@ -251,8 +251,10 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 		this->FilterContentList();
 		this->content.Compact();
 		this->content.RebuildDone();
+		this->SortContentList();
 
 		this->vscroll.SetCount(this->content.Length()); // Update the scrollbar
+		this->ScrollToSelected();
 	}
 
 	/** Sort content by name. */
@@ -315,7 +317,6 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
 			if (*iter == this->selected) {
 				this->list_pos = iter - this->content.Begin();
-				this->ScrollToSelected();
 				return;
 			}
 		}
@@ -376,7 +377,6 @@ public:
 		if (this->content.NeedRebuild()) {
 			this->BuildContentList();
 		}
-		this->SortContentList();
 
 		/* To sum all the bytes we intend to download */
 		uint filesize = 0;
