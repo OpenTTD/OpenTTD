@@ -29,121 +29,121 @@ STR_JUST_NOTHING                                                :Ничего
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :Пассажиры
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=p}Пассажиры
 STR_CARGO_PLURAL_PASSENGERS.gen                                 :пассажиров
 STR_CARGO_PLURAL_PASSENGERS.acc                                 :пассажиров
-STR_CARGO_PLURAL_COAL                                           :Уголь
+STR_CARGO_PLURAL_COAL                                           :{G=m}Уголь
 STR_CARGO_PLURAL_COAL.gen                                       :угля
 STR_CARGO_PLURAL_COAL.acc                                       :уголь
-STR_CARGO_PLURAL_MAIL                                           :Почта
+STR_CARGO_PLURAL_MAIL                                           :{G=f}Почта
 STR_CARGO_PLURAL_MAIL.gen                                       :почты
 STR_CARGO_PLURAL_MAIL.acc                                       :почту
-STR_CARGO_PLURAL_OIL                                            :Нефть
+STR_CARGO_PLURAL_OIL                                            :{G=f}Нефть
 STR_CARGO_PLURAL_OIL.gen                                        :нефти
 STR_CARGO_PLURAL_OIL.acc                                        :нефть
-STR_CARGO_PLURAL_LIVESTOCK                                      :Скот
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Скот
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :скота
 STR_CARGO_PLURAL_LIVESTOCK.acc                                  :скот
-STR_CARGO_PLURAL_GOODS                                          :Товары
+STR_CARGO_PLURAL_GOODS                                          :{G=p}Товары
 STR_CARGO_PLURAL_GOODS.gen                                      :товаров
 STR_CARGO_PLURAL_GOODS.acc                                      :товары
-STR_CARGO_PLURAL_GRAIN                                          :Зерно
+STR_CARGO_PLURAL_GRAIN                                          :{G=n}Зерно
 STR_CARGO_PLURAL_GRAIN.gen                                      :зерна
 STR_CARGO_PLURAL_GRAIN.acc                                      :зерно
-STR_CARGO_PLURAL_WOOD                                           :Дерево
+STR_CARGO_PLURAL_WOOD                                           :{G=n}Дерево
 STR_CARGO_PLURAL_WOOD.gen                                       :дерева
 STR_CARGO_PLURAL_WOOD.acc                                       :дерево
-STR_CARGO_PLURAL_IRON_ORE                                       :Железная руда
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=f}Железная руда
 STR_CARGO_PLURAL_IRON_ORE.gen                                   :железной руды
 STR_CARGO_PLURAL_IRON_ORE.acc                                   :железную руду
-STR_CARGO_PLURAL_STEEL                                          :Сталь
+STR_CARGO_PLURAL_STEEL                                          :{G=f}Сталь
 STR_CARGO_PLURAL_STEEL.gen                                      :стали
 STR_CARGO_PLURAL_STEEL.acc                                      :сталь
-STR_CARGO_PLURAL_VALUABLES                                      :Драгоценности
+STR_CARGO_PLURAL_VALUABLES                                      :{G=p}Драгоценности
 STR_CARGO_PLURAL_VALUABLES.gen                                  :драгоценностей
 STR_CARGO_PLURAL_VALUABLES.acc                                  :драгоценности
-STR_CARGO_PLURAL_COPPER_ORE                                     :Медная руда
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=f}Медная руда
 STR_CARGO_PLURAL_COPPER_ORE.gen                                 :медной руды
 STR_CARGO_PLURAL_COPPER_ORE.acc                                 :медную руду
-STR_CARGO_PLURAL_MAIZE                                          :Кукуруза
+STR_CARGO_PLURAL_MAIZE                                          :{G=f}Кукуруза
 STR_CARGO_PLURAL_MAIZE.gen                                      :кукурузы
 STR_CARGO_PLURAL_MAIZE.acc                                      :кукурузу
-STR_CARGO_PLURAL_FRUIT                                          :Фрукты
+STR_CARGO_PLURAL_FRUIT                                          :{G=p}Фрукты
 STR_CARGO_PLURAL_FRUIT.gen                                      :фруктов
 STR_CARGO_PLURAL_FRUIT.acc                                      :фрукты
-STR_CARGO_PLURAL_DIAMONDS                                       :Алмазы
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=p}Алмазы
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазов
 STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
-STR_CARGO_PLURAL_FOOD                                           :Продукты
+STR_CARGO_PLURAL_FOOD                                           :{G=p}Продукты
 STR_CARGO_PLURAL_FOOD.gen                                       :продуктов
 STR_CARGO_PLURAL_FOOD.acc                                       :продукты
-STR_CARGO_PLURAL_PAPER                                          :Бумага
+STR_CARGO_PLURAL_PAPER                                          :{G=f}Бумага
 STR_CARGO_PLURAL_PAPER.gen                                      :бумаги
 STR_CARGO_PLURAL_PAPER.acc                                      :бумагу
-STR_CARGO_PLURAL_GOLD                                           :Золото
+STR_CARGO_PLURAL_GOLD                                           :{G=n}Золото
 STR_CARGO_PLURAL_GOLD.gen                                       :золота
 STR_CARGO_PLURAL_GOLD.acc                                       :золото
-STR_CARGO_PLURAL_WATER                                          :Вода
+STR_CARGO_PLURAL_WATER                                          :{G=f}Вода
 STR_CARGO_PLURAL_WATER.gen                                      :воды
 STR_CARGO_PLURAL_WATER.acc                                      :воду
-STR_CARGO_PLURAL_WHEAT                                          :Пшеница
+STR_CARGO_PLURAL_WHEAT                                          :{G=f}Пшеница
 STR_CARGO_PLURAL_WHEAT.gen                                      :пшеницы
 STR_CARGO_PLURAL_WHEAT.acc                                      :пшеницу
-STR_CARGO_PLURAL_RUBBER                                         :Каучук
+STR_CARGO_PLURAL_RUBBER                                         :{G=m}Каучук
 STR_CARGO_PLURAL_RUBBER.gen                                     :каучука
 STR_CARGO_PLURAL_RUBBER.acc                                     :каучук
-STR_CARGO_PLURAL_SUGAR                                          :Сахар
+STR_CARGO_PLURAL_SUGAR                                          :{G=m}Сахар
 STR_CARGO_PLURAL_SUGAR.gen                                      :сахара
 STR_CARGO_PLURAL_SUGAR.acc                                      :сахар
-STR_CARGO_PLURAL_TOYS                                           :Игрушки
+STR_CARGO_PLURAL_TOYS                                           :{G=p}Игрушки
 STR_CARGO_PLURAL_TOYS.gen                                       :игрушек
 STR_CARGO_PLURAL_TOYS.acc                                       :игрушки
-STR_CARGO_PLURAL_CANDY                                          :Конфеты
+STR_CARGO_PLURAL_CANDY                                          :{G=p}Конфеты
 STR_CARGO_PLURAL_CANDY.gen                                      :конфет
 STR_CARGO_PLURAL_CANDY.acc                                      :конфеты
-STR_CARGO_PLURAL_COLA                                           :Кола
+STR_CARGO_PLURAL_COLA                                           :{G=f}Кола
 STR_CARGO_PLURAL_COLA.gen                                       :колы
 STR_CARGO_PLURAL_COLA.acc                                       :колу
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Сахарная вата
+STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=f}Сахарная вата
 STR_CARGO_PLURAL_COTTON_CANDY.gen                               :сахарной ваты
 STR_CARGO_PLURAL_COTTON_CANDY.acc                               :сахарную вату
-STR_CARGO_PLURAL_BUBBLES                                        :Пузырьки
+STR_CARGO_PLURAL_BUBBLES                                        :{G=p}Пузырьки
 STR_CARGO_PLURAL_BUBBLES.gen                                    :пузырьков
 STR_CARGO_PLURAL_BUBBLES.acc                                    :пузырьки
-STR_CARGO_PLURAL_TOFFEE                                         :Ириски
+STR_CARGO_PLURAL_TOFFEE                                         :{G=p}Ириски
 STR_CARGO_PLURAL_TOFFEE.gen                                     :ирисок
 STR_CARGO_PLURAL_TOFFEE.acc                                     :ириски
-STR_CARGO_PLURAL_BATTERIES                                      :Батарейки
+STR_CARGO_PLURAL_BATTERIES                                      :{G=p}Батарейки
 STR_CARGO_PLURAL_BATTERIES.gen                                  :батареек
 STR_CARGO_PLURAL_BATTERIES.acc                                  :батарейки
-STR_CARGO_PLURAL_PLASTIC                                        :Пластик
+STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Пластик
 STR_CARGO_PLURAL_PLASTIC.gen                                    :пластика
 STR_CARGO_PLURAL_PLASTIC.acc                                    :пластик
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Газировка
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}Газировка
 STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газировки
 STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газировку
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Пассажиры
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=p}Пассажиры
 STR_CARGO_SINGULAR_PASSENGER.gen                                :пассажиров
 STR_CARGO_SINGULAR_PASSENGER.acc                                :пассажиров
-STR_CARGO_SINGULAR_COAL                                         :Уголь
+STR_CARGO_SINGULAR_COAL                                         :{G=m}Уголь
 STR_CARGO_SINGULAR_COAL.gen                                     :угля
 STR_CARGO_SINGULAR_COAL.acc                                     :уголь
-STR_CARGO_SINGULAR_MAIL                                         :Почта
+STR_CARGO_SINGULAR_MAIL                                         :{G=f}Почта
 STR_CARGO_SINGULAR_MAIL.gen                                     :почты
 STR_CARGO_SINGULAR_MAIL.acc                                     :почту
-STR_CARGO_SINGULAR_OIL                                          :Нефть
+STR_CARGO_SINGULAR_OIL                                          :{G=f}Нефть
 STR_CARGO_SINGULAR_OIL.gen                                      :нефти
 STR_CARGO_SINGULAR_OIL.acc                                      :нефть
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Скот
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Скот
 STR_CARGO_SINGULAR_LIVESTOCK.gen                                :скота
 STR_CARGO_SINGULAR_LIVESTOCK.acc                                :скот
-STR_CARGO_SINGULAR_GOODS                                        :Товары
+STR_CARGO_SINGULAR_GOODS                                        :{G=p}Товары
 STR_CARGO_SINGULAR_GOODS.gen                                    :товаров
 STR_CARGO_SINGULAR_GOODS.acc                                    :товары
-STR_CARGO_SINGULAR_GRAIN                                        :Зерно
+STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Зерно
 STR_CARGO_SINGULAR_GRAIN.gen                                    :зерна
 STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
 STR_CARGO_SINGULAR_WOOD                                         :Дерево
@@ -236,7 +236,7 @@ STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} мед
 STR_QUANTITY_MAIZE                                              :{WEIGHT} кукурузы
 STR_QUANTITY_FRUIT                                              :{WEIGHT} фруктов
 STR_QUANTITY_DIAMONDS                                           :{COMMA} меш{P ок ка ков} алмазов
-STR_QUANTITY_FOOD                                               :{WEIGHT} еды
+STR_QUANTITY_FOOD                                               :{WEIGHT} продуктов
 STR_QUANTITY_PAPER                                              :{WEIGHT} бумаги
 STR_QUANTITY_GOLD                                               :{COMMA} меш{P ок ка ков} золота
 STR_QUANTITY_WATER                                              :{VOLUME} воды
@@ -271,7 +271,7 @@ STR_ABBREV_COPPER_ORE                                           :{TINYFONT}МР
 STR_ABBREV_MAIZE                                                :{TINYFONT}КК
 STR_ABBREV_FRUIT                                                :{TINYFONT}ФР
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}АЛ
-STR_ABBREV_FOOD                                                 :{TINYFONT}ПЩ
+STR_ABBREV_FOOD                                                 :{TINYFONT}ПР
 STR_ABBREV_PAPER                                                :{TINYFONT}БМ
 STR_ABBREV_GOLD                                                 :{TINYFONT}ЗЛ
 STR_ABBREV_WATER                                                :{TINYFONT}ВД
@@ -741,7 +741,7 @@ STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Пока
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбор программы воспроизведения
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
-STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Номер трека
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Программа - «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Очистить
@@ -1999,15 +1999,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Элек
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Монорельс
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Магнитные поезда
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Строительство железной дороги
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Строительство ж/д путей в автоматическом режиме
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Строительство железной дороги. При нажатом Ctrl - удаление путей.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Строительство ж/д путей в автоматическом режиме. При нажатом Ctrl - удаление путей.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Строительство депо (для приобретения и обслуживания поездов)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Установка на рельсах точек пути. Нажатие Ctrl позволяет объединять точки.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Строительство ж/д станций. Нажатие Ctrl позволяет объединять станции.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Установка сигналов
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Установка сигналов. Ctrl переключает семафоры/светофоры.{}Перетаскиваием можно строить сигналы на прямом участке пути. Ctrl строит сигналы до ближайшего пересечения.{}Ctrl+щелчок переключает открытие окна выбора сигналов.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Строительство ж/д мостов
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строительство ж/д туннелей
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Строительство/удаление ж/д путей, сигналов, станций
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Строительство/удаление ж/д путей, сигналов, станций. При нажатом Ctrl убирает станции с рельсами.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Преобразовать/модернизировать тип рельсов
 
 # Rail depot construction window
@@ -2072,10 +2072,10 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Трубчат�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Строительство автомобильных дорог
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамваи
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Строительство автомобильных дорог
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строительство трамвайных путей
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Строительство автодорог в автоматическом режиме
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строительство трамвайных путей в автоматическом режиме
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Строительство автомобильных дорог. При нажатом Ctrl - удаление дороги.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строительство трамвайных путей. При нажатом Ctrl - удаление путей.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Строительство автодорог в автоматическом режиме. При нажатом Ctrl - удаление дороги.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строительство трамвайных путей в автоматическом режиме. При нажатом Ctrl - удаление путей.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строительство гаражей (для приобретения и обслуживания машин)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строительство трамвайных депо (для приобретения и обслуживания трамваев)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строительство автобусных остановок. Нажатие Ctrl позволяет объединять станции.
@@ -2519,7 +2519,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Нет -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Названия городов - кликните на названии для отображения города
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Список городов - щелчок по названию показывает город в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_TOWN_POPULATION                                             :{BLACK}Население: {COMMA}
 
 # Town view window
@@ -2529,7 +2529,7 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Насе
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пассажиров за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Почты за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, необходимый для роста города:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} необходимо
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} требу{G е е е ю}тся
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} доставлено в прошлом месяце
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать город в основном окне. Ctrl+клик - показать в дополнительном окне.
@@ -2578,10 +2578,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Нет -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидируемые маршруты:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} по маршруту из {STRING} в {STRING}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нажмите на маршрут для отображения предприятия/города
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нажмите на маршрут для отображения предприятия/города. Ctrl+щелчок показывает в дополнительном окне.
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Названия станций - кликните для того, чтобы показать станцию в основном окне
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Список станций - щелчок по названию показывает станцию в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Нажмите и держите Ctrl для выбора более одного варианта
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станци{P я и й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2710,7 +2710,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Не�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Название производства, нажмите для центровки
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Список предприятий - щелчок по названию показывает предприятие в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2896,7 +2896,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Копи
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Копировать
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Копировать
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Создать копию поезда, включая все вагоны. Нажмите на кнопку, а затем на поезд внутри или снаружи депо. Ctrl+щелчок создаст поезд с общими заданиями.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Создать копию состава. Нажмите на кнопку, а затем на поезд внутри или снаружи депо. Ctrl+щелчок создаст поезд с общими заданиями.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Создать копию автомобиля. Нажмите на кнопку, а затем на машину внутри или снаружи гаража. Ctrl+щелчок создаст автомобиль с общими заданиями.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Создать копию корабля. Нажмите на кнопку, а затем на корабль внутри или снаружи дока. Control+щелчок создаст корабль с общими заданиями.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Создать копию самолёта. Нажмите на кнопку, а потом на возд. судно внутри или снаружи ангара. Ctrl+щелчок создаст копию с общими заданиями.
@@ -2992,7 +2992,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отпр
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить корабль в док. Ctrl+клик - только для обслуживания
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Послать авиатранспорт в ангар. Ctrl+клик - только для обслуживания.
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию поезда, включая все вагоны. Ctrl+щелчок создаст поезд с общими заданиями.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общими заданиями.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Control+щелчок создаст автомобиль с общими заданиями.
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию корабля. Control+щелчок создаст корабль с общими заданиями.
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию возд. судна. Control+щелчок создаст копию с общими заданиями.
@@ -3215,7 +3215,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ехат
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Идти к ближайшему депо
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Идти к ближайшему ангару
 STR_ORDER_CONDITIONAL                                           :Условный переход к заданию
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, или в конец списка
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, или в конец списка. Ctrl добавляет на станциях «полная погрузка любым грузом», на точках - «без остановки», на депо - «обслуживание».
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Добавить расширенное задание
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показать весь транспорт с общими заданиями
@@ -3756,7 +3756,7 @@ STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Шахта медной руды
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Нефтяная скважина
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Банк
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Пищевая фабрика
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Продуктовый завод
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Бумажная фабрика
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Золотая шахта
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Банк
@@ -3861,7 +3861,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Бронированный вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рефрижератор (еда)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рефрижератор
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Вагон для бумаги
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Вагон для медной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Водная цистерна
@@ -3891,7 +3891,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бронированный вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рефрижератор (еда)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рефрижератор
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Вагон для бумаги
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Вагон для медной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Водная цистерна
@@ -3923,7 +3923,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бронированный вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рефрижератор (еда)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рефрижератор
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Вагон для бумаги
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Вагон для медной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Водная цистерна
@@ -3979,9 +3979,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Грузови�
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Броневик Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Броневик Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Броневик Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Рефрижератор Foster (еда)
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Рефрижератор Perry (еда)
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Рефрижератор Chippy (еда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Рефрижератор Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Рефрижератор Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Рефрижератор Chippy
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Грузовик Uhl (бумага)
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Грузовик Balogh (бумага)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Грузовик MPS (бумага)

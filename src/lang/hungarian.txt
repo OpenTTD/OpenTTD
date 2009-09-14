@@ -1766,6 +1766,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Játék elindí
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :kilépés
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} csatlakozott a játékhoz
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} csatlakozott a játékhoz ({2:NUM}. számú kliens)
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} csatlakozott a(z) {2:NUM}. számú vállalathoz
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} csatlakozott a megfigyelőkhöz
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} új vállalatot alapított (#{2:NUM})
@@ -2390,6 +2391,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Felirat 
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Városok
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nincs -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Városnevek - kattints egy névre a város megnézéséhez
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
@@ -2578,6 +2580,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Cégünk
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gazdasági épületek
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nincs -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% elszállítva)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

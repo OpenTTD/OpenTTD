@@ -279,13 +279,35 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện d
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hiện danh sách tàu thủy của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Hiện danh sách máy bay của công ty.Ctrl+Click vào chốt néo để mở dạnh sách nhóm/phương tiện
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Lắp đường ray
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Xây đường
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Xây bến cảng
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Xây sân bay
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Mở thanh địa hình để nâng cao/hạ thấp ô đất, trồng cây, etc.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hiện cửa sổ âm thanh/nhạc
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Hiện thông báo/tin tức cuối cùng, hiện tùy chọn thông báo
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông tin vùng đất, bảng lệnh, AI debug, ảnh chụp, nói về OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lưu kịch bản, nạp kịch bản, bỏ trình chỉnh sửa kịch bản, thoát
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Trình Biên Tập Kịch Bản
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Chuyển ngày bắt đầu về phía sau 1 năm
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Chuyển ngày bắt đầu về phía trước 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thành phố
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tạo địa hình
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo thị trấn
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo khu công nghiệp
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng chú thích
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu kịch bản
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nạp kịch bản
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ độ cao
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 ############ range for SE file menu starts
 
@@ -293,6 +315,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Tùy chọn trò chơi
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập cao cấp
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập độ trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Hiển thị tên thành phố
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Hiển thị tên nhà ga
