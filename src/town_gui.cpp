@@ -874,32 +874,33 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 };
 
 /** Found a town window class. */
-struct FoundTownWindow : Window
-{
+struct FoundTownWindow : Window {
 private:
-	static TownSize town_size;
-	static bool city;
-	static TownLayout town_layout;
+	TownSize town_size;     ///< Selected town size
+	TownLayout town_layout; ///< Selected town layout
+	bool city;              ///< Are we building a city?
 
 public:
-	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) :
+			Window(),
+			town_size(TS_MEDIUM),
+			town_layout(_settings_game.economy.town_layout),
+			city(false)
 	{
 		this->InitNested(desc, window_number);
-		town_layout = _settings_game.economy.town_layout;
-		city = false;
 		this->UpdateButtons();
 	}
 
 	void UpdateButtons()
 	{
 		for (int i = TSEW_SIZE_SMALL; i <= TSEW_SIZE_RANDOM; i++) {
-			this->SetWidgetLoweredState(i, i == TSEW_SIZE_SMALL + town_size);
+			this->SetWidgetLoweredState(i, i == TSEW_SIZE_SMALL + this->town_size);
 		}
 
-		this->SetWidgetLoweredState(TSEW_CITY, city);
+		this->SetWidgetLoweredState(TSEW_CITY, this->city);
 
 		for (int i = TSEW_LAYOUT_ORIGINAL; i <= TSEW_LAYOUT_RANDOM; i++) {
-			this->SetWidgetLoweredState(i, i == TSEW_LAYOUT_ORIGINAL + town_layout);
+			this->SetWidgetLoweredState(i, i == TSEW_LAYOUT_ORIGINAL + this->town_layout);
 		}
 
 		this->SetDirty();
@@ -914,14 +915,14 @@ public:
 	{
 		switch (widget) {
 			case TSEW_NEWTOWN:
-				HandlePlacePushButton(this, TSEW_NEWTOWN, SPR_CURSOR_TOWN, HT_RECT, PlaceProc_Town);
+				HandlePlacePushButton(this, TSEW_NEWTOWN, SPR_CURSOR_TOWN, HT_RECT, NULL);
 				break;
 
 			case TSEW_RANDOMTOWN: {
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				const Town *t = CreateRandomTown(20, town_size, city, town_layout);
+				const Town *t = CreateRandomTown(20, this->town_size, this->city, this->town_layout);
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 
@@ -937,7 +938,7 @@ public:
 
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				if (!GenerateTowns(town_layout)) {
+				if (!GenerateTowns(this->town_layout)) {
 					ShowErrorMessage(STR_ERROR_NO_SPACE_FOR_TOWN, STR_ERROR_CAN_T_GENERATE_TOWN, 0, 0);
 				}
 				UpdateNearestTownForRoadTiles(false);
@@ -945,19 +946,19 @@ public:
 				break;
 
 			case TSEW_SIZE_SMALL: case TSEW_SIZE_MEDIUM: case TSEW_SIZE_LARGE: case TSEW_SIZE_RANDOM:
-				town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
+				this->town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
 				this->UpdateButtons();
 				break;
 
 			case TSEW_CITY:
-				city ^= true;
-				this->SetWidgetLoweredState(TSEW_CITY, city);
+				this->city ^= true;
+				this->SetWidgetLoweredState(TSEW_CITY, this->city);
 				this->SetDirty();
 				break;
 
 			case TSEW_LAYOUT_ORIGINAL: case TSEW_LAYOUT_BETTER: case TSEW_LAYOUT_GRID2:
 			case TSEW_LAYOUT_GRID3: case TSEW_LAYOUT_RANDOM:
-				town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
+				this->town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
 				this->UpdateButtons();
 				break;
 		}
@@ -972,7 +973,14 @@ public:
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		uint32 townnameparts;
+		if (!GenerateTownName(&townnameparts)) {
+			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, STR_ERROR_CAN_T_BUILD_TOWN_HERE, 0, 0);
+			return;
+		}
+
+		DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3, townnameparts,
+				CMD_BUILD_TOWN | CMD_MSG(STR_ERROR_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 	}
 
 	virtual void OnPlaceObjectAbort()
@@ -980,22 +988,7 @@ public:
 		this->RaiseButtons();
 		this->UpdateButtons();
 	}
-
-	static void PlaceProc_Town(TileIndex tile)
-	{
-		uint32 townnameparts;
-		if (!GenerateTownName(&townnameparts)) {
-			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, STR_ERROR_CAN_T_BUILD_TOWN_HERE, 0, 0);
-			return;
-		}
-
-		DoCommandP(tile, town_size | city << 2 | town_layout << 3, townnameparts, CMD_BUILD_TOWN | CMD_MSG(STR_ERROR_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
-	}
 };
-
-TownSize FoundTownWindow::town_size = TS_MEDIUM; // select medium-sized towns per default;
-bool FoundTownWindow::city;
-TownLayout FoundTownWindow::town_layout;
 
 static const WindowDesc _found_town_desc(
 	WDP_AUTO, WDP_AUTO, 160, 162, 160, 162,
