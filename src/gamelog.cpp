@@ -334,8 +334,11 @@ static LoggedChange *GamelogChange(GamelogChangeType ct)
  */
 void GamelogEmergency()
 {
-	assert(_gamelog_action_type == GLAT_EMERGENCY);
+	/* Terminate any active action */
+	if (_gamelog_action_type != GLAT_NONE) GamelogStopAction();
+	GamelogStartAction(GLAT_EMERGENCY);
 	GamelogChange(GLCT_EMERGENCY);
+	GamelogStopAction();
 }
 
 /** Finds out if current game is a loaded emergency savegame.

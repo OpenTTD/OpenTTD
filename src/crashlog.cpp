@@ -211,9 +211,7 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 	if (_m == NULL) return false;
 
 	try {
-		GamelogStartAction(GLAT_EMERGENCY);
 		GamelogEmergency();
-		GamelogStopAction();
 
 		seprintf(filename, filename_last, "%scrash.sav", _personal_dir);
 
