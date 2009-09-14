@@ -878,7 +878,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
 
-	if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
+	if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
 		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, NULL, INVALID_TILE);
 		if (callback != CALLBACK_FAILED) tile = callback;
 	}
@@ -969,7 +969,7 @@ void AnimateStationTile(TileIndex tile)
 
 	uint8 animation_speed = ss->anim_speed;
 
-	if (HasBit(ss->callbackmask, CBM_STATION_ANIMATION_SPEED)) {
+	if (HasBit(ss->callback_mask, CBM_STATION_ANIMATION_SPEED)) {
 		uint16 callback = GetStationCallback(CBID_STATION_ANIMATION_SPEED, 0, 0, ss, st, tile);
 		if (callback != CALLBACK_FAILED) animation_speed = Clamp(callback & 0xFF, 0, 16);
 	}
@@ -981,7 +981,7 @@ void AnimateStationTile(TileIndex tile)
 
 	bool frame_set_by_callback = false;
 
-	if (HasBit(ss->callbackmask, CBM_STATION_ANIMATION_NEXT_FRAME)) {
+	if (HasBit(ss->callback_mask, CBM_STATION_ANIMATION_NEXT_FRAME)) {
 		uint32 param = HasBit(ss->flags, SSF_CB141_RANDOM_BITS) ? Random() : 0;
 		uint16 callback = GetStationCallback(CBID_STATION_ANIM_NEXT_FRAME, param, 0, ss, st, tile);
 

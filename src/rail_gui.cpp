@@ -1155,7 +1155,7 @@ public:
 
 					StringID str = STR_STATION_CLASS_DFLT;
 					if (statspec != NULL && statspec->name != 0) {
-						if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
+						if (HasBit(statspec->callback_mask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
 							GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
 						}
 						str = statspec->name;
@@ -1315,7 +1315,7 @@ public:
 				/* Check station availability callback */
 				statspec = GetCustomStationSpec(_railstation.station_class, y);
 				if (statspec != NULL &&
-					HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
+					HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 					GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
 				_railstation.station_type = y;
@@ -1795,7 +1795,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				DrawWaypointSprite(this->nested_array[BRWW_WAYPOINT_1 + i]->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
 
 				if (statspec != NULL &&
-						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
+						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
 					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, 0, FILLRECT_CHECKER);
 				}
@@ -1816,7 +1816,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				/* Check station availability callback */
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);
 				if (statspec != NULL &&
-						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
+						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
 				_cur_waypoint_type = type;

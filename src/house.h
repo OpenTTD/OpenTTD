@@ -109,7 +109,7 @@ struct HouseSpec {
 	HouseID substitute_id;             ///< which original house this one is based on
 	struct SpriteGroup *spritegroup;   ///< pointer to the different sprites of the house
 	HouseID override;                  ///< which house this one replaces
-	uint16 callback_mask;              ///< House callback flags
+	uint16 callback_mask;              ///< Bitmask of house callbacks that have to be called
 	byte random_colour[4];             ///< 4 "random" colours
 	byte probability;                  ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags;       ///< some more flags

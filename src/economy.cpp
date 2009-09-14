@@ -883,7 +883,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		if (cargo_index >= lengthof(ind->accepts_cargo)) continue;
 
 		/* Check if industry temporarily refuses acceptance */
-		if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+		if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
 			if (res == 0) continue;
 		}
@@ -957,7 +957,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 static void TriggerIndustryProduction(Industry *i)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
-	uint16 callback = indspec->callback_flags;
+	uint16 callback = indspec->callback_mask;
 
 	i->was_cargo_delivered = true;
 	i->last_cargo_accepted_at = _date;
@@ -1144,7 +1144,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* The default loadamount for mail is 1/4 of the load amount for passengers */
 		if (v->type == VEH_AIRCRAFT && !Aircraft::From(v)->IsNormalAircraft()) load_amount = (load_amount + 3) / 4;
 
-		if (_settings_game.order.gradual_loading && HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
+		if (_settings_game.order.gradual_loading && HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
 			if (cb_load_amount != CALLBACK_FAILED && GB(cb_load_amount, 0, 8) != 0) load_amount = GB(cb_load_amount, 0, 8);
 		}

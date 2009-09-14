@@ -286,7 +286,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 		}
 
 		/* Check powered wagon / visual effect callback */
-		if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
+		if (HasBit(EngInfo(u->engine_type)->callback_mask, CBM_TRAIN_WAGON_POWER)) {
 			uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
 			if (callback != CALLBACK_FAILED) u->tcache.cached_vis_effect = GB(callback, 0, 8);
@@ -328,7 +328,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
-		if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_VEHICLE_LENGTH)) {
+		if (HasBit(EngInfo(u->engine_type)->callback_mask, CBM_VEHICLE_LENGTH)) {
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
@@ -2006,7 +2006,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 	if (p2 != 0) {
 		/* turn a single unit around */
 
-		if (v->IsMultiheaded() || HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) {
+		if (v->IsMultiheaded() || HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) {
 			return_cmd_error(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS);
 		}
 
@@ -2104,7 +2104,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		if (e->CanCarryCargo()) {
 			uint16 amount = CALLBACK_FAILED;
 
-			if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+			if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				/* Back up the vehicle's cargo type */
 				CargoID temp_cid = v->cargo_type;
 				byte temp_subtype = v->cargo_subtype;

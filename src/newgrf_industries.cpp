@@ -198,7 +198,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x40:
 		case 0x41:
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
-			uint16 callback = indspec->callback_flags;
+			uint16 callback = indspec->callback_mask;
 			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
 					return min(industry->incoming_cargo_waiting[variable - 0x40] / industry->prod_level, (uint16)0xFFFF);
@@ -495,7 +495,7 @@ bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCa
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	if (HasBit(indspec->callback_flags, CBM_IND_AVAILABLE)) {
+	if (HasBit(indspec->callback_mask, CBM_IND_AVAILABLE)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_AVAILABLE, 0, creation_type, NULL, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			return (res == 0);

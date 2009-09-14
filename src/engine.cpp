@@ -793,7 +793,7 @@ bool IsEngineRefittable(EngineID engine)
 
 	/* Are there suffixes?
 	 * Note: This does not mean the suffixes are actually available for every consist at any time. */
-	if (HasBit(ei->callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) return true;
+	if (HasBit(ei->callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) return true;
 
 	/* Is there any cargo except the default cargo? */
 	CargoID default_cargo = e->GetDefaultCargoType();

@@ -62,7 +62,7 @@ enum CargoSuffixType {
  */
 static StringID GetCargoSuffix(uint cargo, CargoSuffixType cst, Industry *ind, IndustryType ind_type, const IndustrySpec *indspec)
 {
-	if (HasBit(indspec->callback_flags, CBM_IND_CARGO_SUFFIX)) {
+	if (HasBit(indspec->callback_mask, CBM_IND_CARGO_SUFFIX)) {
 		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, ind, ind_type, (cst != CST_FUND) ? ind->xy : INVALID_TILE);
 		if (GB(callback, 0, 8) != 0xFF) return GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback);
 	}
@@ -291,7 +291,7 @@ public:
 
 		/* Get the additional purchase info text, if it has not already been */
 		if (this->text[this->selected_index] == STR_NULL) {   // Have i been called already?
-			if (HasBit(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
+			if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
 				uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
 				if (callback_res != CALLBACK_FAILED) {  // Did it failed?
 					StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
@@ -508,7 +508,7 @@ public:
 		SetDParam(0, this->window_number);
 		this->DrawWidgets();
 
-		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+		if (HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) {
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
@@ -566,7 +566,7 @@ public:
 		}
 
 		/* Get the extra message for the GUI */
-		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
+		if (HasBit(ind->callback_mask, CBM_IND_WINDOW_MORE_TEXT)) {
 			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
 			if (callback_res != CALLBACK_FAILED) {
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);

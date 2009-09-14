@@ -119,7 +119,7 @@ struct EngineInfo {
 	uint32 refit_mask;
 	byte refit_cost;
 	byte misc_flags;
-	byte callbackmask;
+	byte callback_mask; ///< Bitmask of vehicle callbacks that have to be called
 	int8 retire_early;  ///< Number of years early to retire vehicle
 	StringID string_id; ///< Default name of engine
 };

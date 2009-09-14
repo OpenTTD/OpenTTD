@@ -44,7 +44,7 @@ struct CargoSpec {
 	bool is_freight;
 	TownEffect town_effect; ///< The effect this cargo type has on towns
 	uint16 multipliertowngrowth;
-	uint8 callback_mask;
+	uint8 callback_mask;         ///< Bitmask of cargo callbacks that have to be called
 
 	StringID name;
 	StringID name_single;

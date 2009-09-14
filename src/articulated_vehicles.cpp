@@ -22,7 +22,7 @@ static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
-	if (!HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
+	if (!HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
 
 	/* If we can't allocate a vehicle now, we can't allocate it in the command
 	 * either, so it doesn't matter how many articulated parts there are. */
@@ -95,7 +95,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 
 	if (type != VEH_TRAIN && type != VEH_ROAD) return capacity;
 
-	if (!HasBit(EngInfo(engine)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
+	if (!HasBit(EngInfo(engine)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
@@ -122,7 +122,7 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 	const Engine *e = Engine::Get(engine);
 	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return false;
 
-	if (!HasBit(e->info.callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
+	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
@@ -148,7 +148,7 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool i
 
 	if (type != VEH_TRAIN && type != VEH_ROAD) return cargos;
 
-	if (!HasBit(EngInfo(engine)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
+	if (!HasBit(EngInfo(engine)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
@@ -177,7 +177,7 @@ uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, VehicleType type,
 
 	if (type != VEH_TRAIN && type != VEH_ROAD) return cargos;
 
-	if (!HasBit(EngInfo(engine)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
+	if (!HasBit(EngInfo(engine)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
@@ -291,7 +291,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 void AddArticulatedParts(Vehicle *first, VehicleType type)
 {
-	if (!HasBit(EngInfo(first->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return;
+	if (!HasBit(EngInfo(first->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
 	Vehicle *v = first;
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {

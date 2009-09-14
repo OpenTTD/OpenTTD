@@ -126,7 +126,7 @@ struct IndustrySpec {
 	uint8 number_of_sounds;               ///< Number of sounds available in the sounds array
 	const uint8 *random_sounds;           ///< array of random sounds.
 	/* Newgrf data */
-	uint16 callback_flags;                ///< Flags telling which grf callback is set
+	uint16 callback_mask;                 ///< Bitmask of industry callbacks that have to be called
 	uint8 cleanup_flag;                   ///< flags indicating which data should be freed upon cleaning up
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;         ///< properties related the the grf file
@@ -164,7 +164,7 @@ struct IndustryTileSpec {
 	bool anim_state;                      ///< When true, the tile has to be drawn using the animation
 	                                      ///< state instead of the construction state
 	/* Newgrf data */
-	uint8 callback_flags;                 ///< Flags telling which grf callback is set
+	uint8 callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
 	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
 	uint8 animation_speed;                ///< The speed of the animation
 	uint8 animation_triggers;             ///< When to start the animation

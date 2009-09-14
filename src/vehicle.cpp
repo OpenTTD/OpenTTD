@@ -1361,7 +1361,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 	if (map != PAL_NONE) return map;
 
 	/* Check if we should use the colour map callback */
-	if (HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_COLOUR_REMAP)) {
+	if (HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_COLOUR_REMAP)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
 		/* A return value of 0xC000 is stated to "use the default two-colour
 		 * maps" which happens to be the failure action too... */

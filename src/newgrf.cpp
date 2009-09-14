@@ -696,7 +696,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x1E: // Callback
-				ei->callbackmask = grf_load_byte(&buf);
+				ei->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x1F: // Tractive effort coefficient
@@ -857,7 +857,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x17: // Callback mask
-				ei->callbackmask = grf_load_byte(&buf);
+				ei->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x18: // Tractive effort
@@ -971,7 +971,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x12: // Callback mask
-				ei->callbackmask = grf_load_byte(&buf);
+				ei->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x13: // Refit cost
@@ -1087,7 +1087,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 
 			case 0x14: // Callback mask
-				ei->callbackmask = grf_load_byte(&buf);
+				ei->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x15: // Refit cost
@@ -1219,7 +1219,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 			} break;
 
 			case 0x0B: // Callback mask
-				statspec->callbackmask = grf_load_byte(&buf);
+				statspec->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x0C: // Disallowed number of platforms
@@ -1349,7 +1349,7 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, byte **b
 
 		switch (prop) {
 			case 0x08:
-				wf->callbackmask = grf_load_byte(&buf);
+				wf->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x09:
@@ -1596,7 +1596,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byt
 				housespec->building_availability = (HouseZones)grf_load_word(&buf);
 				break;
 
-			case 0x14: // House callback flags
+			case 0x14: // House callback mask
 				housespec->callback_mask = grf_load_byte(&buf);
 				break;
 
@@ -1640,7 +1640,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byt
 				housespec->class_id = AllocateHouseClassID(grf_load_byte(&buf), _cur_grffile->grfid);
 				break;
 
-			case 0x1D: // Callback flags 2
+			case 0x1D: // Callback mask part 2
 				housespec->callback_mask |= (grf_load_byte(&buf) << 8);
 				break;
 
@@ -2164,8 +2164,8 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				tsp->slopes_refused = (Slope)grf_load_byte(&buf);
 				break;
 
-			case 0x0E: // Callback flags
-				tsp->callback_flags = grf_load_byte(&buf);
+			case 0x0E: // Callback mask
+				tsp->callback_mask = grf_load_byte(&buf);
 				break;
 
 			case 0x0F: // Animation information
@@ -2430,10 +2430,10 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				indsp->prospecting_chance = grf_load_dword(&buf);
 				break;
 
-			case 0x21:   // Callback flags
-			case 0x22: { // Callback additional flags
+			case 0x21:   // Callback mask
+			case 0x22: { // Callback additional mask
 				byte aflag = grf_load_byte(&buf);
-				SB(indsp->callback_flags, (prop - 0x21) * 8, 8, aflag);
+				SB(indsp->callback_mask, (prop - 0x21) * 8, 8, aflag);
 			} break;
 
 			case 0x23: // removal cost multiplier

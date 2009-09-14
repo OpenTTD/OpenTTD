@@ -1054,7 +1054,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		}
 
 		/* Check if the station is buildable */
-		if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
+		if (HasBit(statspec->callback_mask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
 			return CMD_ERROR;
 		}
 	}
@@ -2306,7 +2306,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 			relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
-			if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
+			if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
 				uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
 				if (callback != CALLBACK_FAILED) tile = (callback & ~1) + GetRailStationAxis(ti->tile);
 			}

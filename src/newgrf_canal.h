@@ -29,7 +29,7 @@ enum CanalFeature {
 struct WaterFeature {
 	const SpriteGroup *group;
 	const GRFFile *grffile;   ///< newgrf where 'group' belongs to
-	uint8 callbackmask;
+	uint8 callback_mask;       ///< Bitmask of canal callbacks that have to be called
 	uint8 flags;
 };
 

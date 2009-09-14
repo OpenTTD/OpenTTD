@@ -83,7 +83,7 @@ struct StationSpec {
 
 	uint32 cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
 
-	byte callbackmask; ///< Bitmask of callbacks to use, @see newgrf_callbacks.h
+	byte callback_mask; ///< Bitmask of station callbacks that have to be called
 
 	byte flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 

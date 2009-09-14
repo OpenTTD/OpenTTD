@@ -241,7 +241,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	if (ti->tileh != SLOPE_FLAT) {
 		bool draw_old_one = true;
-		if (HasBit(inds->callback_flags, CBM_INDT_DRAW_FOUNDATIONS)) {
+		if (HasBit(inds->callback_mask, CBM_INDT_DRAW_FOUNDATIONS)) {
 			/* Called to determine the type (if any) of foundation to draw for industry tile */
 			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, i, ti->tile);
 			draw_old_one = callback_res != 0;
@@ -304,7 +304,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 	byte animation_speed = itspec->animation_speed;
 
-	if (HasBit(itspec->callback_flags, CBM_INDT_ANIM_SPEED)) {
+	if (HasBit(itspec->callback_mask, CBM_INDT_ANIM_SPEED)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIMATION_SPEED, 0, 0, gfx, ind, tile);
 		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 0, 16);
 	}
@@ -319,7 +319,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	byte frame = GetIndustryAnimationState(tile);
 	uint16 num_frames = GB(itspec->animation_info, 0, 8);
 
-	if (HasBit(itspec->callback_flags, CBM_INDT_ANIM_NEXT_FRAME)) {
+	if (HasBit(itspec->callback_mask, CBM_INDT_ANIM_NEXT_FRAME)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_NEXT_FRAME, HasBit(itspec->animation_special_flags, 0) ? Random() : 0, 0, gfx, ind, tile);
 
 		if (callback_res != CALLBACK_FAILED) {

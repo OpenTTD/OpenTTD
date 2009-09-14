@@ -918,7 +918,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	/* Check the refit capacity callback */
-	if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+	if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 		/* Back up the existing cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;

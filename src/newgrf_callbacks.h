@@ -263,6 +263,13 @@ enum HouseCallbackMask {
 };
 
 /**
+ * Callback masks for canals.
+ */
+enum CanalCallbackMask {
+	CBM_CANAL_SPRITE_OFFSET       = 1, ///< Enable add sprite offset callback
+};
+
+/**
  * Callback masks for cargos.
  */
 enum CargoCallbackMask {

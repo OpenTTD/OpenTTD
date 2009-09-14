@@ -2020,7 +2020,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!e->CanCarryCargo()) continue;
 
-		if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+		if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 			/* Back up the cargo type */
 			CargoID temp_cid = v->cargo_type;
 			byte temp_subtype = v->cargo_subtype;
