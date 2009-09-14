@@ -23,6 +23,8 @@
 #include "widgets/dropdown_type.h"
 #include "network/network.h"
 #include "network/network_content.h"
+#include "sortlist_type.h"
+#include "querystring_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -123,6 +125,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 enum AddNewGRFWindowWidgets {
 	ANGRFW_CLOSEBOX = 0,
 	ANGRFW_CAPTION,
+	ANGRFW_FILTER_PANEL,
+	ANGRFW_FILTER_TITLE,
+	ANGRFW_FILTER,
 	ANGRFW_BACKGROUND,
 	ANGRFW_GRF_LIST,
 	ANGRFW_SCROLLBAR,
@@ -135,24 +140,129 @@ enum AddNewGRFWindowWidgets {
 /**
  * Window for adding NewGRF files
  */
-struct NewGRFAddWindow : public Window {
-	GRFConfig **list;
-	const GRFConfig *sel;
+struct NewGRFAddWindow : public QueryStringBaseWindow {
+private:
+	typedef GUIList<const GRFConfig *> GUIGRFConfigList;
 
-	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : Window()
+	GRFConfig **list;
+
+	/** Runtime saved values */
+	static Listing last_sorting;
+	static Filtering last_filtering;
+
+	static GUIGRFConfigList::SortFunction * const sorter_funcs[];
+	static GUIGRFConfigList::FilterFunction * const filter_funcs[];
+	GUIGRFConfigList grfs;
+
+	const GRFConfig *sel;
+	int sel_pos;
+
+	enum {
+		EDITBOX_MAX_SIZE = 50,
+		EDITBOX_MAX_LENGTH = 300,
+	};
+
+	/**
+	 * (Re)build the grf as its amount has changed because
+	 * an item has been added or deleted for example
+	 */
+	void BuildGrfList()
+	{
+		if (!this->grfs.NeedRebuild()) return;
+
+		/* Create temporary array of grfs to use for listing */
+		this->grfs.Clear();
+
+		for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
+			*this->grfs.Append() = c;
+		}
+
+		this->FilterGrfList();
+		this->grfs.Compact();
+		this->grfs.RebuildDone();
+		this->SortGrfList();
+
+		this->vscroll.SetCount(this->grfs.Length()); // Update the scrollbar
+		this->ScrollToSelected();
+	}
+
+	/** Sort grfs by name. */
+	static int CDECL NameSorter(const GRFConfig * const *a, const GRFConfig * const *b)
+	{
+		const char *name_a = ((*a)->name != NULL) ? (*a)->name : "";
+		const char *name_b = ((*b)->name != NULL) ? (*b)->name : "";
+		int result = strcasecmp(name_a, name_b);
+		if (result == 0) {
+			result = strcasecmp((*a)->filename, (*b)->filename);
+		}
+		return result;
+	}
+
+	/** Sort the grf list */
+	void SortGrfList()
+	{
+		if (!this->grfs.Sort()) return;
+
+		/* update list position */
+		if (this->sel != NULL) {
+			this->sel_pos = this->grfs.FindIndex(this->sel);
+			if (this->sel_pos < 0) {
+				this->sel = NULL;
+			}
+		}
+	}
+
+	/** Filter grfs by tags/name */
+	static bool CDECL TagNameFilter(const GRFConfig * const *a, const char *filter_string)
+	{
+		if ((*a)->name     != NULL && strcasestr((*a)->name,     filter_string) != NULL) return true;
+		if ((*a)->filename != NULL && strcasestr((*a)->filename, filter_string) != NULL) return true;
+		if ((*a)->info     != NULL && strcasestr((*a)->info,     filter_string) != NULL) return true;
+		return false;
+	}
+
+	/** Filter the grf list */
+	void FilterGrfList()
+	{
+		if (!this->grfs.Filter(this->edit_str_buf)) return;
+	}
+
+	/** Make sure that the currently selected grf is within the visible part of the list */
+	void ScrollToSelected()
+	{
+		if (this->sel_pos >= 0) {
+			this->vscroll.ScrollTowards(this->sel_pos);
+		}
+	}
+
+public:
+	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : QueryStringBaseWindow(EDITBOX_MAX_SIZE)
 	{
 		this->InitNested(desc, 0);
+
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
+		this->SetFocusedWidget(ANGRFW_FILTER);
+
 		this->list = list;
+		this->grfs.SetListing(this->last_sorting);
+		this->grfs.SetFiltering(this->last_filtering);
+		this->grfs.SetSortFuncs(this->sorter_funcs);
+		this->grfs.SetFilterFuncs(this->filter_funcs);
+
 		this->OnInvalidateData(0);
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
-		/* Count the number of GRFs */
-		int n = 0;
-		for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) n++;
+		/* data == 0: NewGRFS were rescanned. All pointers to GrfConfigs are invalid.
+		 * data == 1: User interaction with this window: Filter or selection change. */
+		if (data == 0) {
+			this->sel = NULL;
+			this->sel_pos = -1;
+			this->grfs.ForceRebuild();
+		}
 
-		this->vscroll.SetCount(n);
+		this->BuildGrfList();
 		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
 		this->vscroll.SetCapacity((this->nested_array[ANGRFW_GRF_LIST]->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
@@ -179,6 +289,7 @@ struct NewGRFAddWindow : public Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+		this->DrawEditBox(ANGRFW_FILTER);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -188,20 +299,19 @@ struct NewGRFAddWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
 
 				uint y = r.top + WD_FRAMERECT_TOP;
-				int max_index = this->vscroll.GetPosition() + this->vscroll.GetCapacity();
+				int min_index = this->vscroll.GetPosition();
+				int max_index = min(min_index + this->vscroll.GetCapacity(), this->grfs.Length());
 
-				const GRFConfig *c;
-				int n;
-				for (c = _all_grfs, n = 0; c != NULL && n < max_index; c = c->next, n++) {
-					if (n >= this->vscroll.GetPosition()) {
-						bool h = c == this->sel;
-						const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+				for (int i = min_index; i < max_index; i++)
+				{
+					const GRFConfig *c = this->grfs[i];
+					bool h = c == this->sel;
+					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 
-						/* Draw selection background */
-						if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, 156);
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, text, h ? TC_WHITE : TC_ORANGE);
-						y += this->resize.step_height;
-					}
+					/* Draw selection background */
+					if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, 156);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, text, h ? TC_WHITE : TC_ORANGE);
+					y += this->resize.step_height;
 				}
 				break;
 			}
@@ -224,12 +334,16 @@ struct NewGRFAddWindow : public Window {
 		switch (widget) {
 			case ANGRFW_GRF_LIST: {
 				/* Get row... */
-				const GRFConfig *c;
 				uint i = (pt.y - this->nested_array[ANGRFW_GRF_LIST]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height + this->vscroll.GetPosition();
 
-				for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
-				this->sel = c;
-				InvalidateThisWindowData(this);
+				if (i < this->grfs.Length()) {
+					this->sel = this->grfs[i];
+					this->sel_pos = i;
+				} else {
+					this->sel = NULL;
+					this->sel_pos = -1;
+				}
+				InvalidateThisWindowData(this, 1);
 				break;
 			}
 
@@ -263,18 +377,101 @@ struct NewGRFAddWindow : public Window {
 				break;
 
 			case ANGRFW_RESCAN: // Rescan list
-				this->sel = NULL;
 				ScanNewGRFFiles();
-				InvalidateThisWindowData(this);
+				InvalidateThisWindowData(this, 0);
 				break;
 		}
 	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(ANGRFW_FILTER);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case WKC_UP:
+				/* scroll up by one */
+				if (this->sel_pos > 0) this->sel_pos--;
+				break;
+
+			case WKC_DOWN:
+				/* scroll down by one */
+				if (this->sel_pos < (int)this->grfs.Length() - 1) this->sel_pos++;
+				break;
+
+			case WKC_PAGEUP:
+				/* scroll up a page */
+				this->sel_pos = (this->sel_pos < this->vscroll.GetCapacity()) ? 0 : this->sel_pos - this->vscroll.GetCapacity();
+				break;
+
+			case WKC_PAGEDOWN:
+				/* scroll down a page */
+				this->sel_pos = min(this->sel_pos + this->vscroll.GetCapacity(), (int)this->grfs.Length() - 1);
+				break;
+
+			case WKC_HOME:
+				/* jump to beginning */
+				this->sel_pos = 0;
+				break;
+
+			case WKC_END:
+				/* jump to end */
+				this->sel_pos = this->grfs.Length() - 1;
+				break;
+
+			default: {
+				/* Handle editbox input */
+				EventState state = ES_NOT_HANDLED;
+				if (this->HandleEditBoxKey(ANGRFW_FILTER, key, keycode, state) == HEBR_EDITING) {
+					this->OnOSKInput(ANGRFW_FILTER);
+				}
+				return state;
+			}
+		}
+
+		if (this->grfs.Length() == 0) this->sel_pos = -1;
+		if (this->sel_pos >= 0) {
+			this->sel = this->grfs[this->sel_pos];
+
+			this->ScrollToSelected();
+
+			InvalidateThisWindowData(this, 1);
+		}
+
+		return ES_HANDLED;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		this->grfs.SetFilterState(!StrEmpty(this->edit_str_buf));
+		this->grfs.ForceRebuild();
+		InvalidateThisWindowData(this, 1);
+	}
+};
+
+Listing NewGRFAddWindow::last_sorting = {false, 0};
+Filtering NewGRFAddWindow::last_filtering = {false, 0};
+
+NewGRFAddWindow::GUIGRFConfigList::SortFunction * const NewGRFAddWindow::sorter_funcs[] = {
+	&NameSorter,
+};
+
+NewGRFAddWindow::GUIGRFConfigList::FilterFunction * const NewGRFAddWindow::filter_funcs[] = {
+	&TagNameFilter,
 };
 
 static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, ANGRFW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, ANGRFW_CAPTION), SetDataTip(STR_NEWGRF_ADD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_FILTER_PANEL), SetResize(1, 0),
+		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0), SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+			NWidget(WWT_TEXT, COLOUR_GREY, ANGRFW_FILTER_TITLE), SetFill(false, true), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
+			NWidget(WWT_EDITBOX, COLOUR_GREY, ANGRFW_FILTER), SetMinimalSize(100, 12), SetResize(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_BACKGROUND),
@@ -294,7 +491,7 @@ static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 
 /* Window definition for the add a newgrf window */
 static const WindowDesc _newgrf_add_dlg_desc(
-	WDP_CENTER, WDP_CENTER, 0, 0, 306, 335,
+	WDP_CENTER, WDP_CENTER, 0, 0, 306, 347,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	NULL, _nested_newgrf_add_dlg_widgets, lengthof(_nested_newgrf_add_dlg_widgets)

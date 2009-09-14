@@ -116,6 +116,24 @@ public:
 	}
 
 	/**
+	 * Search for the first occurence of an item.
+	 * The '!=' operator of T is used for comparison.
+	 * @param item Item to search for
+	 * @return The position of the item, or -1 when not present
+	 */
+	FORCEINLINE int FindIndex(const T &item)
+	{
+		int index = 0;
+		T *pos = this->Begin();
+		const T *end = this->End();
+		while (pos != end && *pos != item) {
+			pos++;
+			index++;
+		}
+		return pos == end ? -1 : index;
+	}
+
+	/**
 	 * Tests whether a item is present in the vector.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to test for
