@@ -16,7 +16,6 @@
 #include "rev.h"
 #include "string_func.h"
 #include "strings_func.h"
-#include "network/network.h"
 #include "blitter/factory.hpp"
 #include "base_media_base.h"
 #include "music/music_driver.hpp"
@@ -218,9 +217,8 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 
 		seprintf(filename, filename_last, "%scrash.sav", _personal_dir);
 
-		/* Fake ourselves to be a network server so we don't get threaded saving */
-		_network_server = true;
-		return SaveOrLoad(filename, SL_SAVE, NO_DIRECTORY) == SL_OK;
+		/* Don't do a threaded saveload. */
+		return SaveOrLoad(filename, SL_SAVE, NO_DIRECTORY, false) == SL_OK;
 	} catch (...) {
 		return false;
 	}

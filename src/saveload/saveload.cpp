@@ -1780,9 +1780,10 @@ void WaitTillSaved()
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
  * @param mode Save or load. Load can also be a TTD(Patch) game. Use SL_LOAD, SL_OLD_LOAD or SL_SAVE
+ * @param threaded True when threaded saving is allowed
  * @return Return the results of the action. SL_OK, SL_ERROR or SL_REINIT ("unload" the game)
  */
-SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
+SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, bool threaded)
 {
 	uint32 hdr[2];
 	const SaveLoadFormat *fmt;
@@ -1851,9 +1852,9 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			SlWriteFill(); // flush the save buffer
 
 			SaveFileStart();
-			if (_network_server ||
-						!ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread)) {
-				if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
+			if (_network_server) threaded = false;
+			if (!threaded || !ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread)) {
+				if (threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 				SaveOrLoadResult result = SaveFileToDisk(false);
 				SaveFileDone();
