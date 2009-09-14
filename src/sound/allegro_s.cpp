@@ -24,7 +24,7 @@ static FSoundDriver_Allegro iFSoundDriver_Allegro;
 /** The stream we are writing too */
 static AUDIOSTREAM *_stream = NULL;
 /** The number of samples in the buffer */
-static const int BUFFER_SIZE = 512;
+static const int BUFFER_SIZE = 4096;
 
 void SoundDriver_Allegro::MainLoop()
 {
@@ -65,7 +65,7 @@ const char *SoundDriver_Allegro::Start(const char * const *parm)
 	}
 
 	_stream = play_audio_stream(BUFFER_SIZE, 16, true, 44100, 255, 128);
-	MxInitialize(11025);
+	MxInitialize(44100);
 	return NULL;
 }
 
