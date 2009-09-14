@@ -2204,7 +2204,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		this->DrawEditBox(4);
+		this->DrawEditBox(NCPWW_PASSWORD);
 	}
 
 	virtual void OnClick(Point pt, int widget)
