@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Επιλογή σειράς ταξινόμησης (καθοδικά/ανοδικά)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Επιλογή κριτηρίου ταξινόμησης
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Επιλέξτε κριτήρια φιλτραρίσματος
@@ -1754,8 +1757,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλ
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπάρχωντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Κατέβασμα
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Έναρξη κατεβάσματος του επιλεγμένου περιεχόμενου
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Συνολικό μέγεθος κατεβάσματος: {WHITE}{BYTES}

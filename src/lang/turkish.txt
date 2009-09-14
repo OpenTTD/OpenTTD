@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtre metnini girin
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Listeyi filtrelemek için bir anahtar sözcük girin
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sıralama türü seçin (azalan/artan)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sıralama kriteri seçin
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Süzme kriterini seçin
@@ -1757,8 +1760,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Güncell
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Mevcut içeriğin güncellemesi olan tüm içeriği indirilmek üzere işaretle
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Tümünden seçimi kaldır
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tüm içeriği indirilmemek üzere işaretle
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Filtre metnini girin
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Listeyi filtrelemek için bir anahtar sözcük girin
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiket/isim filtresi:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}İndir
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Seçili içeriği indirmeye başla

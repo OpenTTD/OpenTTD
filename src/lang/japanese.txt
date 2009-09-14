@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルタを入力
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルタのキーワードを入力します。
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択（昇順／降順）
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}並べ替えの基準を選択
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
@@ -1718,8 +1721,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}アッ�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}すでにダウンロードした項目のためのアップデートをすべて選択します。
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}選択を解除
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}何も選択していないようにします
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}フィルタを入力
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}フィルタのキーワードを入力します。
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}タグ／名前のフィルタ：
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ダウンロード
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}選択した項目のダウンロードを開始します。

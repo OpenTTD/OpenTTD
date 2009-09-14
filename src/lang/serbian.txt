@@ -394,6 +394,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter teksta
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberite način sortiranja (opadajući/rastući)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Odaberite kriterijum za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izaberite način filtriranja
@@ -1941,8 +1944,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Obeleži
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Obeležava sve preuzete dodatke koje imaju novija izdanja za preuzimanje
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Otkazuje preuzimanje svih dodataka
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Unes filter teksta
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po oznaci/nazivu:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Započinje preuzimanje odabranih dodataka

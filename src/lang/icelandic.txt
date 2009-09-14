@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sláðu inn leitarstreng
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sláðu inn leitarstreng til að sía listann
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velja uppröðun (minnkandi/stækkandi)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Velja uppröðun
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Veldu hvers kyns farartæki þú vilt kaupa
@@ -1749,8 +1752,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velja up
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Velja til niðurhals allar uppfærslur fyrir pakka sem nú þegar hefur verið náð í
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Af-velja allt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Afvelja allt frá niðurhali
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Sláðu inn leitarstreng
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Sláðu inn leitarstreng til að sía listann
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Leitarstrengur:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Niðurhala
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Hefja niðurhal á völdum pökkum

@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter string
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wuert fir d'Lëscht ze filtern
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Richtung fir ze sortéieren (oofsteigend/opsteigend)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Argument fir ze sortéieren
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filterkritère wielen
@@ -1745,8 +1748,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wiel Upg
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markéier all Inhalt,den en Upgrade fir existéirenden Inhalt ass, als Download
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles ofwielen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Alles markéiren fir net downzeloaden
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Filter string
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Wuert fir d'Lëscht ze filtern
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/Nummfilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start den Download vum ausgewielten Inhalt

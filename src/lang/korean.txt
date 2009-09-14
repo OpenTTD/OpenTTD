@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 문자를 입력하세요
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}정렬 기준 선택
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}필터링 기준 선택
@@ -1756,8 +1759,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}업데�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}업데이트 항목이 있는 컨텐츠를 선택합니다.
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}모든 콘텐츠의 선택을 해제합니다.
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}검색할 문자를 입력하세요
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}검색할 키워드를 입력하세요
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다.

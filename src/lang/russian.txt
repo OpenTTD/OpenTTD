@@ -342,6 +342,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите строку фильтра
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевое слово для фильтрации списка
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Смена направления сортировки (убывание/возрастание)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Смена критерия сортировки
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберите фильтр
@@ -1910,8 +1913,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Отметить для загрузки обновления для имеющегося контента
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Ничего не загружать
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Введите строку фильтра
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Введите ключевое слово для фильтрации списка
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фильтр:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скачать
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Начать загрузку выбранного контента

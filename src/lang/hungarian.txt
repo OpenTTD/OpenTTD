@@ -249,6 +249,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} köbmé
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Kulcsszó megadása a szűréshez
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Írd ide a kulcsszót ami alapján szűrni szeretnéd a listát
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Csökkenő/növekvő sorbarendezés
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sorbarendezési feltétel
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Szűrési feltétel kiválasztása
@@ -1790,8 +1793,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Frissít
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Már meglévő tartalmakhoz az összes elérhető frissítés kijelölése letöltéshez
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nincs kijelölés
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Megszünteti az összes kijelölést
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Kulcsszó megadása a szűréshez
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Írd ide a kulcsszót ami alapján szűrni szeretnéd a listát
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Címke/név szűrő:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Letöltés
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}A kijelölt tartalmak letöltésének megkezdése

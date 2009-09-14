@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entrer le filtre
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entrer un mot clé pour filtrer la liste
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Choisir l'ordre de tri croissant/décroissant
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Choisir le critère de tri
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Choisir le critère de filtrage
@@ -1757,8 +1760,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélecti
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer tous les contenus qui sont une mise à jour du contenu existant pour être téléchargés
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les contenus pour ne pas être téléchargés
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Entrer le filtre
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Entrer un mot clé pour filtrer la liste
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur tag/nom:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement du contenu choisi

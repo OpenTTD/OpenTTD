@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter eingeben
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Stichwort eingeben, mit dem die Liste gefiltert werden soll
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sortierkriterium auswählen
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filterkriterien auswählen
@@ -1757,8 +1760,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Alle Erweiterungen, die einen bestehenden Inhalt verbessern, auswählen
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Keine Erweiterung zum Herunterladen auswählen
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Filter eingeben
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Stichwort eingeben, mit dem die Liste gefiltert werden soll
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Beginne die ausgewählten Erweiterung(en) herunterzuladen

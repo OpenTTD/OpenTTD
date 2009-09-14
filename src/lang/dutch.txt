@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Geef het filter op
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilters kan worden in de lijst
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecteer sorteringscriteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Kies filtercriteria
@@ -1756,8 +1759,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selectee
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer alle updates voor bestaande content om te downloaden
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Laat alle content niet downloaden
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Geef het filter op
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Geef een woord waarop gefilters kan worden in de lijst
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloaden van geselecteerde gegevens

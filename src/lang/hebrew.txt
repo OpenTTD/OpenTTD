@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מט�
 STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(י) סדר מיון (עולה\יורד
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}בחר\י קרטריון מיון
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}בחר קריטריון סינון
@@ -1757,8 +1760,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} בחר 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} בחר רת כל התכנים המהווים שדרוג לבחירה קיימת
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} בטל בחירה
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} בטל את כל הבחירות להורדה
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}הכנס מחרוזת סינון
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}סינון תוית\שם:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} הורד
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK} החל בהורדת התכנים שנבחרו

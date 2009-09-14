@@ -207,6 +207,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر 
 STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}وارد کردن رشته پایش
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}انتخاب طرز مرتب کردن (نزولی/صعودی)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}انتخاب معیار مرتب کردن
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}انتخاب معیار پایش
@@ -842,8 +845,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخ
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} علامت گذاری برای دانلود ِ تمام مواردی که برای ارتقاع محتوی موجود لازم می باشد
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد را برای عدم دانلود
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}وارد کردن رشته پایش
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}دانلود
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}شروع به دانلود موارد انتخاب شده

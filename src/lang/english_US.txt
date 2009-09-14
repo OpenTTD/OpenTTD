@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select sorting order (descending/ascending)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Select sorting criteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select filtering criteria
@@ -1756,8 +1759,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select u
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Mark all content that is an upgrade for existing content to be downloaded
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselect all
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Mark all content to be not downloaded
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Enter filter string
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Enter a keyword to filter the list for
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloading the selected content

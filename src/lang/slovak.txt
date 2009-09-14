@@ -280,6 +280,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložiť filtrovací reťazec
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložiť kľúčové slovo pre filtrovanie zoznamu
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Vyber kriterium triedenia
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vybrať kritériá filtrovania
@@ -1815,8 +1818,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Označi�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označiť všetok obsah obsahujúci aktualizáciu, ktorý sa má stiahnuť
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačiť všetko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označiť všetok obsah ktorý nemá byť stiahnutý
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Vložiť filtrovací reťazec
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Vložiť kľúčové slovo pre filtrovanie zoznamu
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/meno filtru:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Sťahovanie
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Začať sťahovanie ozačeného obsahu

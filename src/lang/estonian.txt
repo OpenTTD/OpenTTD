@@ -273,6 +273,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta filterkirjend
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sisesta märksõna mida loendist otsida
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sorteerimistingimuse valimine
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vali sõelumisalused
@@ -1812,8 +1815,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Märgi u
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Tähista allalaaditavaks kõik olemasoleva sisu uuendused
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Eemalda märgistus kõigilt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Eemaldatakse allalaadimise märgistus
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Sisesta filterkirjend
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Sisesta märksõna mida loendist otsida
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Sildi- ja nimefilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lae alla
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Alusta valitud sisu allalaadimist

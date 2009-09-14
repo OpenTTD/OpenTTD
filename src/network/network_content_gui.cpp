@@ -749,7 +749,7 @@ static const Widget _network_content_list_widgets[] = {
 {    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_CONTENT_TITLE,                  STR_NULL},                               // NCLWW_CAPTION
 {      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   277, 0x0,                                STR_NULL},                               // NCLWW_BACKGROUND
 
-{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   210,   440,    20,    31, STR_CONTENT_FILTER_OSKTITLE,        STR_CONTENT_FILTER_TOOLTIP},                 // NCLWW_FILTER
+{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   210,   440,    20,    31, STR_LIST_FILTER_OSKTITLE,           STR_LIST_FILTER_TOOLTIP},                // NCLWW_FILTER
 
 /* LEFT SIDE */
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,          8,    20,    36,    47, STR_EMPTY,                          STR_NULL},                               // NCLWW_CHECKBOX
@@ -802,7 +802,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 			/* Right side. */
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetMinimalSize(231, 12), SetDataTip(STR_CONTENT_FILTER_OSKTITLE, STR_CONTENT_FILTER_TOOLTIP),
+				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetMinimalSize(231, 12), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_DETAILS), SetMinimalSize(231, 209), SetResize(0, 1), EndContainer(),
 			EndContainer(),

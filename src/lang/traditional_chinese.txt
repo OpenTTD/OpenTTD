@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}輸入篩選字串
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入篩選所使用的關鍵字，對於清單……
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}選擇排序項目
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}選擇過濾條件
@@ -1750,8 +1753,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}選擇�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}將所有已下載項目的升級檔標示為要下載
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全選
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}將所有內容標示為不要下載
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}輸入篩選字串
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}輸入篩選所使用的關鍵字，對於清單……
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}過濾條件 (標籤／名稱)：
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}下載
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}開始下載選擇的內容

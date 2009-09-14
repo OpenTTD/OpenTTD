@@ -258,6 +258,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesi vrstico za filtriranje
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesi besedni ključ, po katerem se bo filtriral seznam
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi nacin sortiranja (padajoče/naraščajoce)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Izberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberi način filtriranja
@@ -1790,8 +1793,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izberi n
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi vse nadgradne vsebine za obstoječe vsebine prenosa
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nobena
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi vse, da ne bo prenešeno
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Vnesi vrstico za filtriranje
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Vnesi besedni ključ, po katerem se bo filtriral seznam
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Oznaka/ime filtra:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Prenesi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Požene prenos izbranih vsebin

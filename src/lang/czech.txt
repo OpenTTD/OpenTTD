@@ -284,6 +284,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložte filtr
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložte klíčové slovo pro filtr seznamu
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber způsob řazeni (sestupně/vzestupně)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Vyber, podle čeho se má třídit
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vyber třídící podmínku
@@ -1820,8 +1823,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vybrat v
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označit všechen vylepšený/aktualizovaný obsah ke stáhnutí
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačit vše
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Nestahovat nic
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Vložte filtr
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Vložte klíčové slovo pro filtr seznamu
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr na značku/jméno:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Stáhnout
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Začít stahovat vybraný obsah

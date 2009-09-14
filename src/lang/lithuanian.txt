@@ -250,6 +250,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Įveskite filtro eilutę
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Įveskite raktažodį filtruoti sąrašui dėl
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pasirink rikiavimo tvarka (mazejimo/didejimo)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pasirink rikiavimo kriteriju
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pasirinkite filtravimo kriterijas
@@ -1777,8 +1780,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymė
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pažymėti visą turinį, atnaujinimui skirtą turinį atsisiuntimui
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nieko nežymėti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Pažymėti visą turinį kaip neatsisiųstą
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Įveskite filtro eilutę
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Įveskite raktažodį filtruoti sąrašui dėl
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtro pavadinimas:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Atsisiųsti
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Pradedama siųsti pažymėta turinį

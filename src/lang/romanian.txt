@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtru
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Alege criteriul de sortare
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selectează criteriul de filtrare
@@ -1756,8 +1759,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marchează toate resursele care sunt actualizări ale resurselor existente pentru descărcare
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Deselectează toate resursele selectate
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Filtru
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru nume/etichetă:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Porneşte descărcarea resurselor selectate

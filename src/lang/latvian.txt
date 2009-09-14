@@ -218,6 +218,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Ievadīt filtra stīgu
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Ievadiet atslēgvārdu, lai filtrētu sarakstu
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izvēlieties kārtošanas secību (dilstošs/augošs)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Izvēlieties kārtošanas kritēriju
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izvēlieties atlasīšanas nosacījumus
@@ -1757,8 +1760,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Norādie
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Iezīmējiet visu saturu lejupielādei, lai, tas ir uzlabojums eksistējošam saturam
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Atcelt visa iezīmēšanu
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Iezīmēt visu saturu lejupielādei
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Ievadīt filtra stīgu
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Ievadiet atslēgvārdu, lai filtrētu sarakstu
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Taga/vārda filtrs:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lejupielāde
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Sākt norādītā lejupielādi

@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}م3
 STR_UNITS_FORCE_SI                                              :{COMMA} كيلو نيوتن
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK} اختر كلمة اساسية لفلترة القائمة
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} اختر طريقة الترتيب - تنازلي / تصاعدي
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK} اختر نوع الترتيب
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK} اختر معايير الفلترة
@@ -1755,8 +1758,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} اخت�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} ضع علامة على التحديثات للمحتويات الموجودة و التي سيتم تحميلها
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح الكل
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK} ادخل فلتر
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK} اختر كلمة اساسية لفلترة القائمة
 STR_CONTENT_FILTER_TITLE                                        :{BLACK} فلتر:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} تحميل
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK} ابدأ تحميل المحتويات المختارة

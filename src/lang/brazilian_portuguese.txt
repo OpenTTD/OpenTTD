@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entre com o filtro desejado
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entre uma palavra a ser filtrada
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar forma de ordenação (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecionar um critério de classificação
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecionar critério para filtração
@@ -1749,8 +1752,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecion
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Seleciona tudo que consistir em upgrades para conteúdo existente para ser baixado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Descelecionar tudo
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Desceleciona todos
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Entre com o filtro desejado
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Entre uma palavra a ser filtrada
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/nome do filtro:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Baixar
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Baixa o conteúdo selecionado

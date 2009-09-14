@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv in sökfilter
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv in ett sökord att filtrera listan efter
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Välj sorteringsordning (fallande/stigande)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Välj sortering
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Angre kriterier för filtrering
@@ -1748,8 +1751,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Välj up
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markera allt innehåll som är en uppgradering på befintligt innehåll för nedladdning
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Avmarkera allt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markera att inte ladda hem någonting
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Skriv in sökfilter
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Skriv in ett sökord att filtrera listan efter
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter för Tagg/namn:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Ladda ned
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Börja ladda hem valt innehåll

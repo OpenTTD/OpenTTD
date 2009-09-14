@@ -595,6 +595,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowo filtru
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo kluczowe dla listy filtru
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Wybierz porządek sortowania (malejąco/rosnąco)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Wybierz kryterium sortowania
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Wybierz kryteria filtrowania
@@ -2132,8 +2135,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wybierz 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wybierz całą zawartość do pobrania, która jest ulepszeniem dla istniejącej zawartości
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz wszystko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Zaznacz całą zawartość, aby nie była pobrana
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Wpisz słowo filtru
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Wpisz słowo kluczowe dla listy filtru
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij ściąganie zaznaczonych danych

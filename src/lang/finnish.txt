@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatin teksti
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Valitse järjestys (laskeva/nouseva).
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Valitse järjestyskriteeri.
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Valitse suodatuskriteerit
@@ -1756,8 +1759,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön, ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Syötä suodatin teksti
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Syötä avainsana suodattaaksesi listan
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tagi/nimi suodatus:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen

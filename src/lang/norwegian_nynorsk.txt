@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn filter-streng
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv eit nøkkelord for filtrering av lista
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vel sorteringsrekkefølgje (søkkande/stigande)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Vel sorteringskriterie
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorter etter
@@ -1728,8 +1731,6 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel oppd
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alt innhald som er ei oppgradering av eksisterande, og skal lastast ned
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Vel ingenting
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt innhald som ikkje skal lastast ned
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Skriv inn filter-streng
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}Skriv eit nøkkelord for filtrering av lista
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke-/namn-filter
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Last ned valt innhald
