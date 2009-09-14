@@ -676,13 +676,10 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  * - p1 = 0 - create a new company, Which company (network) it will be is in p2
  * - p1 = 1 - create a new AI company
  * - p1 = 2 - delete a company. Company is identified by p2
- * - p1 = 3 - merge two companies together. merge #1 with #2. Identified by p2
  * @param p2 various functionality, dictated by p1
  * - p1 = 0 - ClientID of the newly created client
  * - p1 = 1 - CompanyID to start AI (INVALID_COMPANY for first available)
  * - p1 = 2 - CompanyID of the that is getting deleted
- * - p1 = 3 - #1 p2 = (bit  0-15) - company to merge (p2 & 0xFFFF)
- *          - #2 p2 = (bit 16-31) - company to be merged into ((p2>>16)&0xFFFF)
  * @todo In the case of p1=0, create new company, the clientID of the new client is in parameter
  * p2. This parameter is passed in at function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
  * on the server itself. First of all this is unbelievably ugly; second of all, well,
@@ -818,18 +815,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyID c_index = c->index;
 			delete c;
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
-		} break;
-
-		case 3: { // Merge a company (#1) into another company (#2), elimination company #1
-			CompanyID cid_old = (CompanyID)GB(p2,  0, 16);
-			CompanyID cid_new = (CompanyID)GB(p2, 16, 16);
-
-			if (!Company::IsValidID(cid_old) || !Company::IsValidID(cid_new)) return CMD_ERROR;
-
-			if (!(flags & DC_EXEC)) return CMD_ERROR;
-
-			ChangeOwnershipOfCompanyItems(cid_old, cid_new);
-			delete Company::Get(cid_old);
 		} break;
 
 		default: return CMD_ERROR;

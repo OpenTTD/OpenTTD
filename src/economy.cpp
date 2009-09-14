@@ -1553,8 +1553,11 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Do not allow companies to take over themselves */
 	if ((CompanyID)p1 == _current_company) return CMD_ERROR;
 
+	/* Get the cost here as the company is deleted in DoAcquireCompany. */
+	CommandCost cost(EXPENSES_OTHER, c->bankrupt_value);
+
 	if (flags & DC_EXEC) {
 		DoAcquireCompany(c);
 	}
-	return CommandCost(EXPENSES_OTHER, c->bankrupt_value);
+	return cost;
 }
