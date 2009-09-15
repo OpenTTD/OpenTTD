@@ -185,7 +185,7 @@ static Subsidy *FindSubsidyPassengerRoute()
 		return NULL;
 	}
 
-	if (DistanceManhattan(src->xy, src->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
+	if (DistanceManhattan(src->xy, dst->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
 	if (CheckSubsidyDuplicate(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index)) return NULL;
 
 	Subsidy *s = new Subsidy();
