@@ -182,7 +182,14 @@ public:
 	} orders;
 
 	byte vehicle_flags;             ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
-	uint16 load_unload_time_rem;
+
+	/**
+	 * Multi purpose variable used as counter for:
+	 *  - loading/unloading: ticks to wait before starting next cycle.
+	 *  - aircraft: ticks between each turn to prevent > 45 degree turns.
+	 *  - trains: ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
+	 */
+	uint16 time_counter;
 
 	GroupID group_id;               ///< Index of group Pool array
 

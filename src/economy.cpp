@@ -1069,7 +1069,7 @@ void PrepareUnload(Vehicle *front_v)
 	ClrBit(front_v->vehicle_flags, VF_LOADING_FINISHED);
 
 	/* Start unloading in at the first possible moment */
-	front_v->load_unload_time_rem = 1;
+	front_v->time_counter = 1;
 
 	if ((front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 		for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
@@ -1095,10 +1095,10 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 {
 	assert(v->current_order.IsType(OT_LOADING));
 
-	assert(v->load_unload_time_rem != 0);
+	assert(v->time_counter != 0);
 
 	/* We have not waited enough time till the next round of loading/unloading */
-	if (--v->load_unload_time_rem != 0) {
+	if (--v->time_counter != 0) {
 		if (_settings_game.order.improved_load && (v->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->Next()) {
@@ -1116,7 +1116,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
 		SetBit(v->vehicle_flags, VF_LOADING_FINISHED);
-		v->load_unload_time_rem = 1;
+		v->time_counter = 1;
 		return;
 	}
 
@@ -1347,7 +1347,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	}
 
 	/* Always wait at least 1, otherwise we'll wait 'infinitively' long. */
-	v->load_unload_time_rem = max(1, unloading_time);
+	v->time_counter = max(1, unloading_time);
 
 	if (completely_emptied) {
 		TriggerVehicle(v, VEHICLE_TRIGGER_EMPTY);

@@ -325,7 +325,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->name = NULL;
 //		v->next_order_param = v->next_order = 0;
 
-//		v->load_unload_time_rem = 0;
+//		v->time_counter = 0;
 //		v->progress = 0;
 		v->last_station_visited = INVALID_STATION;
 //		v->destination_coords = 0;
@@ -1048,7 +1048,7 @@ static bool AircraftController(Aircraft *v)
 	count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
 	if (count == 0) return false;
 
-	if (v->load_unload_time_rem != 0) v->load_unload_time_rem--;
+	if (v->time_counter != 0) v->time_counter--;
 
 	do {
 
@@ -1072,13 +1072,13 @@ static bool AircraftController(Aircraft *v)
 			Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
 			if (newdir != v->direction) {
 				if (amd->flag & AMED_SLOWTURN && v->number_consecutive_turns < 8) {
-					if (v->load_unload_time_rem == 0 || newdir == v->last_direction) {
+					if (v->time_counter == 0 || newdir == v->last_direction) {
 						if (newdir == v->last_direction) {
 							v->number_consecutive_turns = 0;
 						} else {
 							v->number_consecutive_turns++;
 						}
-						v->load_unload_time_rem = 2 * _settings_game.vehicle.plane_speed;
+						v->time_counter = 2 * _settings_game.vehicle.plane_speed;
 						v->last_direction = v->direction;
 						v->direction = newdir;
 					}

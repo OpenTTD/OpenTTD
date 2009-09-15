@@ -245,7 +245,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->value = cost.GetCost();
 //		v->day_counter = 0;
 //		v->next_order_param = v->next_order = 0;
-//		v->load_unload_time_rem = 0;
+//		v->time_counter = 0;
 //		v->progress = 0;
 
 //		v->overtaking = 0;

@@ -1648,7 +1648,7 @@ static void MarkTrainAsStuck(Train *v)
 		/* When loading the vehicle is already stopped. No need to change that. */
 		if (v->current_order.IsType(OT_LOADING)) return;
 
-		v->load_unload_time_rem = 0;
+		v->time_counter = 0;
 
 		/* Stop train */
 		v->cur_speed = 0;
@@ -1988,7 +1988,7 @@ static void ReverseTrainDirection(Train *v)
 	} else if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
 		/* A train not inside a PBS block can't be stuck. */
 		ClrBit(v->flags, VRF_TRAIN_STUCK);
-		v->load_unload_time_rem = 0;
+		v->time_counter = 0;
 	}
 }
 
@@ -2445,12 +2445,12 @@ static bool CheckTrainStayInDepot(Train *v)
 
 	if (v->force_proceed == 0) {
 		/* force proceed was not pressed */
-		if (++v->load_unload_time_rem < 37) {
+		if (++v->time_counter < 37) {
 			SetWindowClassesDirty(WC_TRAINS_LIST);
 			return true;
 		}
 
-		v->load_unload_time_rem = 0;
+		v->time_counter = 0;
 
 		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 		if (seg_state == SIGSEG_FULL || HasDepotReservation(v->tile)) {
@@ -3196,7 +3196,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	}
 
 	if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
-		v->load_unload_time_rem = 0;
+		v->time_counter = 0;
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 	ClrBit(v->flags, VRF_TRAIN_STUCK);
@@ -3768,12 +3768,12 @@ static void TrainController(Train *v, Vehicle *nomove)
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 100;
-							if (_settings_game.pf.wait_oneway_signal == 255 || ++v->load_unload_time_rem < _settings_game.pf.wait_oneway_signal * 20) return;
+							if (_settings_game.pf.wait_oneway_signal == 255 || ++v->time_counter < _settings_game.pf.wait_oneway_signal * 20) return;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 10;
-							if (_settings_game.pf.wait_twoway_signal == 255 || ++v->load_unload_time_rem < _settings_game.pf.wait_twoway_signal * 73) {
+							if (_settings_game.pf.wait_twoway_signal == 255 || ++v->time_counter < _settings_game.pf.wait_twoway_signal * 73) {
 								DiagDirection exitdir = TrackdirToExitdir(i);
 								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
 
@@ -3787,7 +3787,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 						/* If we would reverse but are currently in a PBS block and
 						 * reversing of stuck trains is disabled, don't reverse. */
 						if (_settings_game.pf.wait_for_pbs_path == 255 && UpdateSignalsOnSegment(v->tile, enterdir, v->owner) == SIGSEG_PBS) {
-							v->load_unload_time_rem = 0;
+							v->time_counter = 0;
 							return;
 						}
 						goto reverse_train_direction;
@@ -3881,7 +3881,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 				}
 
 				if (v->IsFrontEngine()) {
-					v->load_unload_time_rem = 0;
+					v->time_counter = 0;
 
 					/* If we are approching a crossing that is reserved, play the sound now. */
 					TileIndex crossing = TrainApproachingCrossingTile(v);
@@ -3973,7 +3973,7 @@ invalid_rail:
 	if (prev != NULL) error("Disconnecting train");
 
 reverse_train_direction:
-	v->load_unload_time_rem = 0;
+	v->time_counter = 0;
 	v->cur_speed = 0;
 	v->subspeed = 0;
 	ReverseTrainDirection(v);
@@ -4351,7 +4351,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 
 	bool valid_order = !v->current_order.IsType(OT_NOTHING) && v->current_order.GetType() != OT_CONDITIONAL;
 	if (ProcessOrders(v) && CheckReverseTrain(v)) {
-		v->load_unload_time_rem = 0;
+		v->time_counter = 0;
 		v->cur_speed = 0;
 		v->subspeed = 0;
 		ReverseTrainDirection(v);
@@ -4373,17 +4373,17 @@ static bool TrainLocoHandler(Train *v, bool mode)
 
 	/* Handle stuck trains. */
 	if (!mode && HasBit(v->flags, VRF_TRAIN_STUCK)) {
-		++v->load_unload_time_rem;
+		++v->time_counter;
 
 		/* Should we try reversing this tick if still stuck? */
-		bool turn_around = v->load_unload_time_rem % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.wait_for_pbs_path < 255;
+		bool turn_around = v->time_counter % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.wait_for_pbs_path < 255;
 
-		if (!turn_around && v->load_unload_time_rem % _settings_game.pf.path_backoff_interval != 0 && v->force_proceed == 0) return true;
+		if (!turn_around && v->time_counter % _settings_game.pf.path_backoff_interval != 0 && v->force_proceed == 0) return true;
 		if (!TryPathReserve(v)) {
 			/* Still stuck. */
 			if (turn_around) ReverseTrainDirection(v);
 
-			if (HasBit(v->flags, VRF_TRAIN_STUCK) && v->load_unload_time_rem > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
+			if (HasBit(v->flags, VRF_TRAIN_STUCK) && v->time_counter > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
 				/* Show message to player. */
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
@@ -4393,12 +4393,12 @@ static bool TrainLocoHandler(Train *v, bool mode)
 						v->index
 					);
 				}
-				v->load_unload_time_rem = 0;
+				v->time_counter = 0;
 			}
 			/* Exit if force proceed not pressed, else reset stuck flag anyway. */
 			if (v->force_proceed == 0) return true;
 			ClrBit(v->flags, VRF_TRAIN_STUCK);
-			v->load_unload_time_rem = 0;
+			v->time_counter = 0;
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
