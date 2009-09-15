@@ -192,7 +192,7 @@ enum CallbackID {
 	CBID_SOUNDS_AMBIENT_EFFECT           = 0x144, // 15 bit callback, not implemented
 
 	/** Called to calculate part of a station rating. */
-	CBID_CARGO_STATION_RATING_CALC       = 0x145, // 15 bit callback, not implemented
+	CBID_CARGO_STATION_RATING_CALC       = 0x145, // 15 bit callback
 
 	/** Allow signal sprites to be replaced dynamically. */
 	CBID_NEW_SIGNALS_SPRITE_DRAW         = 0x146, // 15 bit callback, not implemented

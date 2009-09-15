@@ -2727,8 +2727,9 @@ static void UpdateStationRating(Station *st)
 	byte_inc_sat(&st->time_since_load);
 	byte_inc_sat(&st->time_since_unload);
 
-	GoodsEntry *ge = st->goods;
-	do {
+	const CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		GoodsEntry *ge = &st->goods[cs->Index()];
 		/* Slowly increase the rating back to his original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
 		 *  failed while you didn't moved that cargo yet to a station. */
@@ -2740,25 +2741,35 @@ static void UpdateStationRating(Station *st)
 		if (HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) {
 			byte_inc_sat(&ge->days_since_pickup);
 
+			bool skip = false;
 			int rating = 0;
+			uint waiting = ge->cargo.Count();
 
-			{
+			if (HasBit(cs->callback_mask, CBM_CARGO_STATION_RATING_CALC)) {
+				/* Perform custom station rating. If it succeeds the speed, days in transit and
+				 * waiting cargo ratings must not be executed. */
+
+				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
+				uint last_speed = ge->last_speed;
+				if (last_speed == 0) last_speed = 0xFF;
+
+				uint32 var18 = min(ge->days_since_pickup, 0xFF) | (min(waiting, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
+				/* Convert to the 'old' vehicle types */
+				uint32 var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
+				uint16 callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
+				if (callback != CALLBACK_FAILED) {
+					skip = true;
+					rating = GB(callback, 0, 14);
+
+					/* Simulate a 15 bit signed value */
+					if (HasBit(callback, 14)) rating -= 0x4000;
+				}
+			}
+
+			if (!skip) {
 				int b = ge->last_speed - 85;
-				if (b >= 0)
-					rating += b >> 2;
-			}
+				if (b >= 0) rating += b >> 2;
 
-			{
-				byte age = ge->last_age;
-				(age >= 3) ||
-				(rating += 10, age >= 2) ||
-				(rating += 10, age >= 1) ||
-				(rating += 13, true);
-			}
-
-			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
-
-			{
 				byte days = ge->days_since_pickup;
 				if (st->last_vehicle_type == VEH_SHIP) days >>= 2;
 				(days > 21) ||
@@ -2766,15 +2777,22 @@ static void UpdateStationRating(Station *st)
 				(rating += 25, days > 6) ||
 				(rating += 45, days > 3) ||
 				(rating += 35, true);
+
+				(rating -= 90, waiting > 1500) ||
+				(rating += 55, waiting > 1000) ||
+				(rating += 35, waiting > 600) ||
+				(rating += 10, waiting > 300) ||
+				(rating += 20, waiting > 100) ||
+				(rating += 10, true);
 			}
 
-			uint waiting = ge->cargo.Count();
-			(rating -= 90, waiting > 1500) ||
-			(rating += 55, waiting > 1000) ||
-			(rating += 35, waiting > 600) ||
-			(rating += 10, waiting > 300) ||
-			(rating += 20, waiting > 100) ||
-			(rating += 10, true);
+			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
+
+			byte age = ge->last_age;
+			(age >= 3) ||
+			(rating += 10, age >= 2) ||
+			(rating += 10, age >= 1) ||
+			(rating += 13, true);
 
 			{
 				int or_ = ge->rating; // old rating
@@ -2819,7 +2837,7 @@ static void UpdateStationRating(Station *st)
 				if (waiting_changed) ge->cargo.Truncate(waiting);
 			}
 		}
-	} while (++ge != endof(st->goods));
+	}
 
 	StationID index = st->index;
 	if (waiting_changed) {
