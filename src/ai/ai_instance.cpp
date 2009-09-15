@@ -142,7 +142,8 @@ AIInstance::AIInstance(AIInfo *info) :
 		if (strcmp(main_script, "%_dummy") == 0) {
 			extern void AI_CreateAIDummy(HSQUIRRELVM vm);
 			AI_CreateAIDummy(this->engine->GetVM());
-		} else if (!this->engine->LoadScript(main_script)) {
+		} else if (!this->engine->LoadScript(main_script) || this->engine->IsSuspended()) {
+			if (this->engine->IsSuspended()) AILog::Error("This AI took too long to load script. AI is not started.");
 			this->Died();
 			return;
 		}

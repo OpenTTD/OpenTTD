@@ -473,7 +473,7 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 	/* Load and run the script */
 	if (SQ_SUCCEEDED(LoadFile(vm, script, SQTrue))) {
 		sq_push(vm, -2);
-		if (SQ_SUCCEEDED(sq_call(vm, 1, SQFalse, SQTrue))) {
+		if (SQ_SUCCEEDED(sq_call(vm, 1, SQFalse, SQTrue, 100000))) {
 			sq_pop(vm, 1);
 			return true;
 		}
