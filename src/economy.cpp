@@ -815,7 +815,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 			int result = GB(callback, 0, 14);
 
 			/* Simulate a 15 bit signed value */
-			if (HasBit(callback, 14)) result = 0x4000 - result;
+			if (HasBit(callback, 14)) result -= 0x4000;
 
 			/* "The result should be a signed multiplier that gets multiplied
 			 * by the amount of cargo moved and the price factor, then gets
