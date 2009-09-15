@@ -562,6 +562,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνο
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων που είχαν κέρδος, αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τραίνου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μικρότερο κέρδος των τελευταίων 12 τετάρτων
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μεγαλύτερο κέρδος των τελευταίων 12 τετάρτων
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκε τα τελευταία τέσσερα τετράμηνα
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
@@ -1757,6 +1759,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλ
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπάρχωντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ετικέτα/όνομα φίλτρου:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Κατέβασμα
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Έναρξη κατεβάσματος του επιλεγμένου περιεχόμενου
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Συνολικό μέγεθος κατεβάσματος: {WHITE}{BYTES}
@@ -2257,6 +2260,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Παλέ
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παράμετροι: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Δεν υπάρχουν διαθέσιμες πληροφορίες
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν βρέθηκε το ταυτοποιημένο αρχείο
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
@@ -2265,6 +2269,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισα
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Διαθέσιμα αρχεία NewGRF
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Προσθήκη στην επιλόγη
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωση σας
+STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Ανανέωση της λίστας με τα διαθέσιμα αρχεία NewGRF
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2280,14 +2285,18 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} απαιτεί έκδοση OpenTTD {STRING} ή μεγαλύτερη.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {STRING} ως στατικό NewGRF με {STRING} μπόρει να προκαλέσει αποσυγχρονισμούς.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνεται αλλαγές σε ενα παιχνίδι σε εξέλιξη, αυτο μπορεί να κρασάρει το OpenTTD.{} Είστε απολύτα σίγουρος/η για αυτό;
 
 
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ανύπαρκτο/α αρχείο/α GRF έχουν απενεργοποιηθεί
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ανύπαρκτο/α αρχείο/α GRF
 
 # NewGRF 'it's broken' warnings
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρένο'{VEHICLE}' που ανήκει στην '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το Παιχνίδι μπορεί ν΄αποσυγχρονιστεί ή να κρασάρει.
@@ -2868,6 +2877,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Υπόστεγο
 
+STR_ORDER_REFIT_STOP_ORDER                                      :(Μετρατροπή σε {STRING} και στάση)
 STR_ORDER_STOP_ORDER                                            :(Στάση)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -2920,8 +2930,10 @@ STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Αυτό
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα αυτό τρέχει {STRING} αργά
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλάζει ο χρόνος που παίρνει η επιλεγμένη επιλογή για να εκτελεστεί
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Καθαρισμός χρόνων
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Καθαρίζει το χρόνο της επιλεγμένης επιλογής
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Επαναφορά Μετρητή Καθυστέρησης
 
@@ -3143,6 +3155,9 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν �
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Αδύνατο να χτιστεί αποθήκη πλοίων εδώ...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Το τραίνο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο οχημάτων
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Το πλοίο πρέπει να σταματήσει μέσα στο ναυπηγείο
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Το αεροπλάνο πρέπει να σταματήσει μέσα στο υπόστεγο
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τραίνα μπόρουν να τροποιηθούν μόνο όταν σταματήσουν μέσα σε αμαξοστάσιο
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Τραίνο πολύ μεγάλο
@@ -3183,6 +3198,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Δεν �
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... πρέπει να χτιστεί στο νερό
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Αδύνατο να χτιστεί στο νερό
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Πρέπει να κατεδαφιστεί το κανάλι πρώτα
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ...
 
 # Tree related errors
@@ -3203,6 +3219,7 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Αδύν
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Άλλο τουνελ στη μέση
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τούνελ θα καταλήξει εκτός του χάρτη
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
 
 # Unmovable related errors

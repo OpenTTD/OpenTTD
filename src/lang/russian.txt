@@ -146,76 +146,76 @@ STR_CARGO_SINGULAR_GOODS.acc                                    :товары
 STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Зерно
 STR_CARGO_SINGULAR_GRAIN.gen                                    :зерна
 STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
-STR_CARGO_SINGULAR_WOOD                                         :Дерево
+STR_CARGO_SINGULAR_WOOD                                         :{G=n}Дерево
 STR_CARGO_SINGULAR_WOOD.gen                                     :дерева
 STR_CARGO_SINGULAR_WOOD.acc                                     :дерево
-STR_CARGO_SINGULAR_IRON_ORE                                     :Железная руда
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=f}Железная руда
 STR_CARGO_SINGULAR_IRON_ORE.gen                                 :железной руды
 STR_CARGO_SINGULAR_IRON_ORE.acc                                 :железную руду
-STR_CARGO_SINGULAR_STEEL                                        :Сталь
+STR_CARGO_SINGULAR_STEEL                                        :{G=f}Сталь
 STR_CARGO_SINGULAR_STEEL.gen                                    :стали
 STR_CARGO_SINGULAR_STEEL.acc                                    :сталь
-STR_CARGO_SINGULAR_VALUABLES                                    :Драгоценности
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=p}Драгоценности
 STR_CARGO_SINGULAR_VALUABLES.gen                                :драгоценностей
 STR_CARGO_SINGULAR_VALUABLES.acc                                :драгоценности
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Медная руда
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=f}Медная руда
 STR_CARGO_SINGULAR_COPPER_ORE.gen                               :медной руды
 STR_CARGO_SINGULAR_COPPER_ORE.acc                               :медную руду
-STR_CARGO_SINGULAR_MAIZE                                        :Кукуруза
+STR_CARGO_SINGULAR_MAIZE                                        :{G=f}Кукуруза
 STR_CARGO_SINGULAR_MAIZE.gen                                    :кукурузы
 STR_CARGO_SINGULAR_MAIZE.acc                                    :кукурузу
-STR_CARGO_SINGULAR_FRUIT                                        :Фрукты
+STR_CARGO_SINGULAR_FRUIT                                        :{G=p}Фрукты
 STR_CARGO_SINGULAR_FRUIT.gen                                    :фруктов
 STR_CARGO_SINGULAR_FRUIT.acc                                    :фрукты
-STR_CARGO_SINGULAR_DIAMOND                                      :Алмазы
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=p}Алмазы
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :алмазов
 STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмазы
-STR_CARGO_SINGULAR_FOOD                                         :Продукты
+STR_CARGO_SINGULAR_FOOD                                         :{G=p}Продукты
 STR_CARGO_SINGULAR_FOOD.gen                                     :продуктов
 STR_CARGO_SINGULAR_FOOD.acc                                     :продукты
-STR_CARGO_SINGULAR_PAPER                                        :Бумага
+STR_CARGO_SINGULAR_PAPER                                        :{G=f}Бумага
 STR_CARGO_SINGULAR_PAPER.gen                                    :бумаги
 STR_CARGO_SINGULAR_PAPER.acc                                    :бумагу
-STR_CARGO_SINGULAR_GOLD                                         :Золото
+STR_CARGO_SINGULAR_GOLD                                         :{G=n}Золото
 STR_CARGO_SINGULAR_GOLD.gen                                     :золота
 STR_CARGO_SINGULAR_GOLD.acc                                     :золото
-STR_CARGO_SINGULAR_WATER                                        :Вода
+STR_CARGO_SINGULAR_WATER                                        :{G=f}Вода
 STR_CARGO_SINGULAR_WATER.gen                                    :воды
 STR_CARGO_SINGULAR_WATER.acc                                    :воду
-STR_CARGO_SINGULAR_WHEAT                                        :Пшеница
+STR_CARGO_SINGULAR_WHEAT                                        :{G=f}Пшеница
 STR_CARGO_SINGULAR_WHEAT.gen                                    :пшеницы
 STR_CARGO_SINGULAR_WHEAT.acc                                    :пшеницу
-STR_CARGO_SINGULAR_RUBBER                                       :Каучук
+STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Каучук
 STR_CARGO_SINGULAR_RUBBER.gen                                   :каучука
 STR_CARGO_SINGULAR_RUBBER.acc                                   :каучук
-STR_CARGO_SINGULAR_SUGAR                                        :Сахар
+STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Сахар
 STR_CARGO_SINGULAR_SUGAR.gen                                    :сахара
 STR_CARGO_SINGULAR_SUGAR.acc                                    :сахар
-STR_CARGO_SINGULAR_TOY                                          :Игрушки
+STR_CARGO_SINGULAR_TOY                                          :{G=p}Игрушки
 STR_CARGO_SINGULAR_TOY.gen                                      :игрушек
 STR_CARGO_SINGULAR_TOY.acc                                      :игрушки
-STR_CARGO_SINGULAR_CANDY                                        :Конфеты
+STR_CARGO_SINGULAR_CANDY                                        :{G=p}Конфеты
 STR_CARGO_SINGULAR_CANDY.gen                                    :конфет
 STR_CARGO_SINGULAR_CANDY.acc                                    :конфеты
-STR_CARGO_SINGULAR_COLA                                         :Кола
+STR_CARGO_SINGULAR_COLA                                         :{G=f}Кола
 STR_CARGO_SINGULAR_COLA.gen                                     :колы
 STR_CARGO_SINGULAR_COLA.acc                                     :колу
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Сахарная вата
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=f}Сахарная вата
 STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :сахарной ваты
 STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :сахарную вату
-STR_CARGO_SINGULAR_BUBBLE                                       :Пузырьки
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=p}Пузырьки
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :пузырьков
 STR_CARGO_SINGULAR_BUBBLE.acc                                   :пузырьки
-STR_CARGO_SINGULAR_TOFFEE                                       :Ириски
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=p}Ириски
 STR_CARGO_SINGULAR_TOFFEE.gen                                   :ирисок
 STR_CARGO_SINGULAR_TOFFEE.acc                                   :ириски
-STR_CARGO_SINGULAR_BATTERY                                      :Батарейки
+STR_CARGO_SINGULAR_BATTERY                                      :{G=p}Батарейки
 STR_CARGO_SINGULAR_BATTERY.gen                                  :батареек
 STR_CARGO_SINGULAR_BATTERY.acc                                  :батарейки
-STR_CARGO_SINGULAR_PLASTIC                                      :Пластик
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}Пластик
 STR_CARGO_SINGULAR_PLASTIC.gen                                  :пластика
 STR_CARGO_SINGULAR_PLASTIC.acc                                  :пластик
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Газировка
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Газировка
 STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :газировки
 STR_CARGO_SINGULAR_FIZZY_DRINK.acc                              :газировку
 
@@ -344,6 +344,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} кН
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите строку фильтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевое слово для фильтрации списка
+STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Смена направления сортировки (убывание/возрастание)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Смена критерия сортировки
@@ -2507,7 +2508,7 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Инфо
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» вызвал бесконечный цикл.
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} Мет{P ка ки ок}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} мет{P ка ки ок}
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Редактировать надпись на знаке

@@ -26,6 +26,7 @@ STR_JUST_NOTHING                                                :Không màu
 
 # Cargo related strings
 # Plural cargo name
+STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Hành khách
 STR_CARGO_PLURAL_COAL                                           :Than
 STR_CARGO_PLURAL_MAIL                                           :Thư
@@ -52,12 +53,14 @@ STR_CARGO_PLURAL_TOYS                                           :Đồ chơi
 STR_CARGO_PLURAL_CANDY                                          :Kẹo
 STR_CARGO_PLURAL_COLA                                           :Nước cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Kẹo bông
+STR_CARGO_PLURAL_BUBBLES                                        :Bong bóng
 STR_CARGO_PLURAL_TOFFEE                                         :Kẹo bơ cứng
 STR_CARGO_PLURAL_BATTERIES                                      :Pin
 STR_CARGO_PLURAL_PLASTIC                                        :Chất dẻo
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Đồ uống có ga
 
 # Singular cargo name
+STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Hành khách
 STR_CARGO_SINGULAR_COAL                                         :Than
 STR_CARGO_SINGULAR_MAIL                                         :Thư
@@ -84,12 +87,14 @@ STR_CARGO_SINGULAR_TOY                                          :Đồ chơi
 STR_CARGO_SINGULAR_CANDY                                        :Kẹo
 STR_CARGO_SINGULAR_COLA                                         :Nước cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kẹo bông
+STR_CARGO_SINGULAR_BUBBLE                                       :Bong bóng
 STR_CARGO_SINGULAR_TOFFEE                                       :Kẹo bơ cứng
 STR_CARGO_SINGULAR_BATTERY                                      :Pin
 STR_CARGO_SINGULAR_PLASTIC                                      :Chất dẻo
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Đồ uống có ga
 
 # Quantity of cargo
+STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} hành khách{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} than
 STR_QUANTITY_MAIL                                               :{COMMA} túi{P "" s} thư
@@ -116,12 +121,15 @@ STR_QUANTITY_TOYS                                               :{COMMA} đồ c
 STR_QUANTITY_SWEETS                                             :{COMMA} túi{P "" s} kẹo
 STR_QUANTITY_COLA                                               :{VOLUME} of nước cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} kẹo bông
+STR_QUANTITY_BUBBLES                                            :{COMMA} bong bóng{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} kẹo bơ cứng
 STR_QUANTITY_BATTERIES                                          :{COMMA} pin{P y ies}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} chất dẻo
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} đồ uống có ga{P "" s}
+STR_QUANTITY_N_A                                                :N/A{SKIP}
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}HK
 STR_ABBREV_COAL                                                 :{TINYFONT}Th
 STR_ABBREV_MAIL                                                 :{TINYFONT}Th
@@ -132,6 +140,7 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}Ngc
 STR_ABBREV_WOOD                                                 :{TINYFONT}G
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}Qs
 STR_ABBREV_STEEL                                                :{TINYFONT}Th
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}Qđ
 STR_ABBREV_MAIZE                                                :{TINYFONT}Ng
 STR_ABBREV_FRUIT                                                :{TINYFONT}Hq
@@ -146,6 +155,7 @@ STR_ABBREV_SUGAR                                                :{TINYFONT}Đg
 STR_ABBREV_TOYS                                                 :{TINYFONT}Đc
 STR_ABBREV_SWEETS                                               :{TINYFONT}Bk
 STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
 STR_ABBREV_TOFFEE                                               :{TINYFONT}Kb
 STR_ABBREV_BATTERIES                                            :{TINYFONT}Pi
@@ -162,6 +172,7 @@ STR_LITERS                                                      :lít
 STR_ITEMS                                                       :mặt hàng
 STR_CRATES                                                      :thùng
 STR_RES_OTHER                                                   :khác
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Xanh da trời đậm
@@ -184,17 +195,31 @@ STR_COLOUR_WHITE                                                :Trắng
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} dặm/giờ
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}mã lực
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tấn{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lít{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập chuỗi lọc
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập từ khóa vào để lọc danh sách
+STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc giá trị:
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Chọn tiêu chí sắp xếp
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Chọn tiêu chí lọc bỏ
@@ -279,6 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện d
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hiện danh sách tàu thủy của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Hiện danh sách máy bay của công ty.Ctrl+Click vào chốt néo để mở dạnh sách nhóm/phương tiện
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Thu nhỏ tầm nhìn
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Nới rộng tầm nhìn
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Lắp đường ray
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Xây đường
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Xây bến cảng
@@ -300,7 +327,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo th
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo khu công nghiệp
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng chú thích
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu kịch bản
@@ -319,6 +346,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số New
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập độ trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Hiển thị tên thành phố
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Hiển thị tên nhà ga
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Hiển thị tên Waypoint
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Hiển thị ký hiệu
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animation đầy đủ
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Chi tiết
@@ -335,11 +363,14 @@ STR_FILE_MENU_EXIT                                              :Thoát
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Khung nhìn bổ sung
+STR_MAP_MENU_SIGN_LIST                                          :Danh sách ký hiệu
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thành phố
 ############ both ranges ends here
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tiền trợ cấp
 ############ range ends here
 
 ############ range for graph menu starts
@@ -348,27 +379,43 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Biểu đồ th
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ hàng hoá phân phối
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Biểu đồ lịch sử năng suất
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Biểu đồ giá trị công ty
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tỉ giá thanh toán hàng hoá
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng liên đoàn công ty
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết năng suất định mức
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Thư mục các ngành
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Góp vốn cho ngành mới
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Công trình đường ray
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Công trình đường ray điện
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Công trình tàu đơn ray
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Công trình tàu điện từ
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Công trình đường sá
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Công trình ô tô điện
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Công trình đường sông
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Công trình sân bay
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Phong cảnh
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Trồng cây
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Đặt ký hiệu
 ############ range ends here
 
 ############ range for music menu starts
@@ -376,12 +423,53 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Âm thanh/aamm 
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Thư/bản tin cuối cùng
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Cài đặt thông báo
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
+STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
+STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
+STR_ABOUT_MENU_SCREENSHOT                                       :Chụp ảnh màn hình (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Phóng to ảnh màn hình (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1st
+STR_ORDINAL_NUMBER_2ND                                          :2nd
+STR_ORDINAL_NUMBER_3RD                                          :3rd
+STR_ORDINAL_NUMBER_4TH                                          :4th
+STR_ORDINAL_NUMBER_5TH                                          :5th
+STR_ORDINAL_NUMBER_6TH                                          :6th
+STR_ORDINAL_NUMBER_7TH                                          :7th
+STR_ORDINAL_NUMBER_8TH                                          :8th
+STR_ORDINAL_NUMBER_9TH                                          :9th
+STR_ORDINAL_NUMBER_10TH                                         :10th
+STR_ORDINAL_NUMBER_11TH                                         :11th
+STR_ORDINAL_NUMBER_12TH                                         :12th
+STR_ORDINAL_NUMBER_13TH                                         :13th
+STR_ORDINAL_NUMBER_14TH                                         :14th
+STR_ORDINAL_NUMBER_15TH                                         :15th
+STR_ORDINAL_NUMBER_16TH                                         :16th
+STR_ORDINAL_NUMBER_17TH                                         :17th
+STR_ORDINAL_NUMBER_18TH                                         :18th
+STR_ORDINAL_NUMBER_19TH                                         :19th
+STR_ORDINAL_NUMBER_20TH                                         :20th
+STR_ORDINAL_NUMBER_21ST                                         :21st
+STR_ORDINAL_NUMBER_22ND                                         :22nd
+STR_ORDINAL_NUMBER_23RD                                         :23rd
+STR_ORDINAL_NUMBER_24TH                                         :24th
+STR_ORDINAL_NUMBER_25TH                                         :25th
+STR_ORDINAL_NUMBER_26TH                                         :26th
+STR_ORDINAL_NUMBER_27TH                                         :27th
+STR_ORDINAL_NUMBER_28TH                                         :28th
+STR_ORDINAL_NUMBER_29TH                                         :29th
+STR_ORDINAL_NUMBER_30TH                                         :30th
+STR_ORDINAL_NUMBER_31ST                                         :31st
 ############ range for days ends
 
 ############ range for months starts
@@ -413,17 +501,65 @@ STR_MONTH_DEC                                                   :Tháng Mười 
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nút
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Hiện khóa trên biểu đồ
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Biểu Đồ Lợi Nhuận Hoạt Động
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Biểu Đồ Thu Nhập
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lượng hàng hóa đã giao
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá năng suất công ty (cao nhất=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tỉ giá thanh toán hàng hóa
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Số ngày vận chuyển
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá năng suất
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nút bật biểu đồ công ty
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click vào đây để bật/tắt thông tin công ty trên biểu đồ
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng liên đoàn công ty
+STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Kỹ sư
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Quản Lý Giao Thông
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Người Phối Hợp Vận Chuyển
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Giám Sát Tuyến Đường
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Giám Đốc
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Giám Đốc Điều Hành
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Chủ Tịch
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Chủ Tịch
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Ông Trùm
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Chi tiết năng suất định mức
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Chi tiết
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}P/Tiện:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Trạm:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lợi nhuận thấp nhất:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Thu nhập thấp nhất:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Thu nhập cao nhất:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Đã giao:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Hàng hóa:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Tiền:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Vay:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}T/Cộng:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Số lượng phương tiện đã làm ra lợi nhuận năm trước ; bao gồm xe cộ, tàu lửa, tàu thủy và máy bay
 
 # Music window
 STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Bài Nhạc
@@ -628,7 +764,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Chơi mới
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải trò chơi
 
 
@@ -1168,7 +1304,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Quá g�
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Yêu cầu nền đất phẳng
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không làm thế này được....
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Không thể dọn dẹp khu vực này....
-STR_ERROR_OWNED_BY                                              :{WHITE}...sở hữu bởi {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}... sở hữu bởi {STRING}
 
 # Local authority errors
 

@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} 千牛
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入过滤器字符串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入用以过滤此列表的关键词
+STR_LIST_FILTER_TITLE                                           :{BLACK}过滤器字符串：
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}选择排序方法 （降序/升序）
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}选择排序标准

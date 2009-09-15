@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} קיל�
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
+STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(י) סדר מיון (עולה\יורד
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}בחר\י קרטריון מיון
@@ -559,9 +560,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}: מאז
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK} : הלוואה
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}: סה"כ
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}מספר כלי תחבורה לרבות רכבים,כלי טייס, כלי שייט ורכבות
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}מספר התחנות לרבות תחנות המחוברות זו לזו
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}(הרווח התפעולי של כלי התעבורה בעל ההכנסה הנמוכה ביותר (רק כלים בני שנתיים ויותר נלקחים בחשבון
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}מספר כלי תחבורה שהציגו רווחים; נכללים רכבים, רכבות, כלי טייס וכלי שייט
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}מספר חלקי התחנות שנתנו שירות. כל חלק של תחנה (למשל, תחנות רכבת, תחנות אוטובוס, נמלי תעופה) נחשבים, אפילו אם הם מחוברים כתחנה אחת
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}(הרווח של כלי התחבורה בעלי ההכנסה הנמוכה ביותר (רק כלים בני שנתיים ויותר נלקחים בחשבון
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש הגרוע ביותר ב -12 הריבעונים האחרונים
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש המוצלח ביותר ב -12 הריבעונים האחרונים
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}מספר יחידות המטען ששונעו בארבעת הריבעונים הארונים
@@ -1849,7 +1850,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}בניי
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}בניית רמזורי רכבת. Ctrl בורר בין איתות דגלים ואיתות תאורה{}גרירה בונה אותות לאורך מסילת רכבת ישרה. Ctrl בונה אותות עד להצטלבות הבאה{}Ctrl+לחיצה בורר פתיחת חלון בחירת איתותים
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}בניית גשרים למסילות
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}חציבת מנהרות למסילות
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}החלף בנייה/הסרה של פסי רכבת ורמזורים
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}החלף מצב בנייה/הסרה של פסי רכבת, רמזורים, נקודות ציון ותחנות. החזקת Ctrl מסירה גם פסי רכבת מנקודות ציון ותחנות רכבת
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}שנה/שדרג את המסילה
 
 # Rail depot construction window
@@ -2411,19 +2412,19 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}.ּבנה פסל של לכבודו של בעל החברה.{}עלות: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}.ממן בניית מבנים מסחריים חדשים בעיר.{}עלות: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}רכוש זכויות תחבורה בלעדיות למשך שנה אחת בעיר. רשות העירייה תאפשר לנוסעים ומטען להשתמש בתחנות החברה שלך בלבד.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} שחד את העיריה המקומית כדי להגדיל את הדרוג שלך בעיר. סכויי בינוני להתפס ולשלם קנס .{}  מחיר: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}שחד את הרשות המקומית כדי להגדיל את הדרוג שלך בעיר תוך כדי סיכון להתפס ולשלם קנס חמור.{}עלות: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK} :סובסידיות למימון שירותי הובלה
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} (ב-{DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}אין
+STR_SUBSIDIES_NONE                                              :{ORANGE}- כלום -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK} :שירותים מסובסדים
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} ({COMPANY}{YELLOW}, עד {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום העיר/תעשייה
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}שמות תחנות -לחץ על השם כדי להתמקד בתחנה
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}שמות תחנות - לחץ על השם כדי להתמקד בתחנה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התחנה
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}לחץ והחזק מקש קונטרל כדי לבחור יותר מפריט אחד
 STR_STATION_LIST_CAPTION                                        :{WHITE}תחנות{NBSP} {1:COMMA}  - {0:COMPANY}
 STR_STATION_LIST_STATION                                        :{YELLOW} {1:STATIONFEATURES}{0:STATION}
@@ -2459,7 +2460,7 @@ STR_CARGO_RATING_EXCELLENT                                      :מצויין
 STR_CARGO_RATING_OUTSTANDING                                    :מדהים
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}מרכז תצוגה ראשית על התחנה
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}מרכז תצוגה ראשית על מיקום תחנה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום תחנה
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}שנה שם של תחנה
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}הצג את כל הרכבות העוברות דרך תחנה זו
@@ -2502,9 +2503,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}הלוו
 STR_FINANCES_MAX_LOAN                                           :{BLACK}{CURRENCY}{WHITE} : הלוואה מירבית
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{SKIP}{SKIP}{CURRENCY} {BLACK}לווה
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}הגדל את ההלוואה
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}הגדל את ההלוואה. Ctrl+לחיצה מלווה ככל שניתן
 STR_FINANCES_REPAY_BUTTON                                       :{SKIP}{SKIP}{CURRENCY} {BLACK}החזר
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}החזר חלק מההלוואה
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}פרע חלק מההלוואה.Ctrl+לחיצה פורע ככל שניתן
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2552,13 +2553,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- אי�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{YELLOW}(שונעו {NBSP}{3:COMMA}%){BLACK} ({1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{YELLOW}(שונעו {NBSP} {6:COMMA}%/{5:COMMA}%) {BLACK} ({3:CARGO}{4:STRING}/{1:CARGO}{2:STRING}) {ORANGE}{0:INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}רשימת תעשיות – לחץ על שם להתמקדות
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}רשימת תעשיות - לחץ על שם כדי להתמקד בתעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התעשייה
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK} :תפוקה בחודש שעבר
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{BLACK}(הובלו {NBSP}{2:COMMA}%) {YELLOW}{1:STRING}{0:CARGO}
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}מקד את התצוגה הראשית על התעשיה
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}מקד את התצוגה הראשית על מיקום התעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התעשייה
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} : דורש
@@ -2573,7 +2574,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{YELLOW}{1:STRI
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{YELLOW}{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :מייצר
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה (כפולות של 8, עד 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}רכבות{NBSP} {1:COMMA} - {0:STRING}
@@ -2643,7 +2644,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}כלי �
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}כלי טייס חדש
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{GOLD}{1:WEIGHT_S}{BLACK} :משקל {GOLD}{0:CURRENCY}{BLACK} :מחיר
-STR_PURCHASE_INFO_SPEED_POWER                                   :{GOLD}{1:POWER}{BLACK} :עוצמת מנוע {GOLD}{0:VELOCITY}{BLACK} :מהירות
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}מהירות: {GOLD}{VELOCITY}{BLACK} הספק: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{GOLD}{VELOCITY}{BLACK} :מהירות
 STR_PURCHASE_INFO_RUNNINGCOST                                   ::לשנה {GOLD}{CURRENCY}{BLACK} :עלות תפעולית
 STR_PURCHASE_INFO_CAPACITY                                      :{GOLD}{1:STRING} {0:CARGO}{BLACK} :קיבולת
@@ -2651,7 +2652,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(ניתן לה�
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{GOLD}{1:COMMA}{BLACK} :(משך חיים(שנים {GOLD}{0:NUM}{BLACK} :תוכנן
 STR_PURCHASE_INFO_RELIABILITY                                   :{GOLD}{COMMA}%{BLACK} :אמינות מירבית
 STR_PURCHASE_INFO_COST                                          :{GOLD}{CURRENCY}{BLACK} :מחיר
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{GOLD}({1:WEIGHT_S})  {0:WEIGHT_S} {BLACK} : משקל
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}משקל: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{GOLD}{1:VELOCITY}{BLACK} : מהירות {GOLD}{0:CURRENCY} {BLACK} :מחיר
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}קיבולת: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{GOLD}+{1:WEIGHT_S}{BLACK}  :משקל {GOLD}+{0:POWER} : {BLACK} :קרונות
@@ -2665,15 +2666,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}רשימ
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}כלי שייט – בחר כלי לצפיה במידע
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}כלי טייס – בחר כלי לצפיה במידע
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}בנה רכבת
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}בנה כלי רכב
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}בנה כלי שייט
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}בנה כלי טייס
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}רכוש כלי רכב
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}רכוש כלי רכב
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}רכוש כלי שייט
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}רכוש כלי טייס
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}בנה את קרון הרכבת שנבחר
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}בנה כלי רכב מהסוג שנבחר
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}בנה את כלי השייט שנבחר
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}בנה את כלי הטייס שנבחר
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}רכוש את קרון הרכבת שמודגש
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}רכוש את כלי הרכב שמודגש
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}רכוש את כלי השייט שמודגש
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}רכוש את כלי הטייס שמודגש
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}שנה שם
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}שנה שם
@@ -2701,7 +2702,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGIN
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK} {1:STRING} כלים  {NBSP}{0:NUM}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}רכבות - בחר רכבת לקבלת מידע, גרור קרון להוספתו/הסרתו מהרכבת
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}רכבות - לחץ על רכבת לקבלת מידע, גרור קרון להוספתו/הסרתו מהרכבת
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}כלי רכב - לחץ על כלי רכב למידע
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}כלי שייט – בחר כלי לצפיה במידע
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
@@ -2728,25 +2729,25 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}כלי �
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}כלי שייט חדש
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}כלי טייס חדש
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}בניית קרון חדש
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}בנה כלי רכב חדש
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}בנה כלי שייט חדש
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}בנה כלי טייס חדש
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}רכוש קרון חדש
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}רכוש כלי רכב חדש
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}רכוש כלי שייט חדש
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}רכוש כלי טייס חדש
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}שכפל רכבת
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}שכפל רכב
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}שכפל כלי שייט
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}שכפל כלי טייס
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK} .פעולה זו תיצור עותק נוסף של כלי הרכב
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}פעולה זו תיצור עותק של כלי השייט
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}פעולה זו תיצור עותק של כלי הטייס
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}פעולה זו תרכוש העתק נוסף של הרכבת וכל קרונותיה. לחץ על כפתור זה ולאחר מכן על רכבת בתוך או מחוץ לתחנה. Ctrl+לחיצה יעתיק גם את הוראות הרכבת
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}פעולה זו תרכוש העתק נוסף של כלי רכב. לחץ על כפתור זה ולאחר מכן על כלי רכב בתוך או מחוץ למוסך. Ctrl+לחיצה יעתיק גם את הוראות כלי הרכב
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}פעולה זו תרכוש העתק נוסף של כלי שייט חדש. לחץ על כפתור זה ולאחר מכן על כלי שייט בתוך או מחוץ למבדוק. Ctrl+לחיצה יעתיק גם את הוראות כלי השייט
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}פעולה זו תרכוש העתק נוסף של כלי הטייס. לחץ על כפתור זה ולאחר מכן על כלי טייס בתוך או מחוץ למוסך-המטוסים. Ctrl+לחיצה יעתיק גם את הוראות כלי הטייס
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}מקד את החלון הראשי על מיקום תחנת הטיפולים
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה הראשית על מיקום מוסך כלי הרכב
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}מקד את התצוגה הראשית על מבדוק הספינות
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}מקד את התצוגה הראשית על סככת המטוסים
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}מקד את החלון הראשי על מיקום מוסך הרכבות. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום המוסך
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה הראשית על מיקום מוסך כלי הרכב. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום המוסך
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}מקד את התצוגה הראשית על מבדוק הספינות. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום המבדוק
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}מקד את התצוגה הראשית על סככת המטוסים. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום סככת המטוסים
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}מציג את רשימת הרכבות העוברות במוסך זה
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}מציג את כל הרכבים העוברים במוסך זה
@@ -2814,35 +2815,35 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}הסר �
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה על מיקום הרכבת
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}מקד את התצוגה על מיקומו של כלי הרכב
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}מקד את התצוגה הראשית על כלי השייט
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}מקד את התצוגה הראשית על כלי הטייס
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}מרכז את התצוגה על מיקום הרכבת. Ctrl+לחיצה יעקוב אחרי הרכבת בתצוגה הראשית
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}מרכז את התצוגה על מיקומו של כלי הרכב. Ctrl+לחיצה יעקוב אחרי כלי הרכב בתצוגה הראשית
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}מקד את התצוגה הראשית על כלי השייט. Ctrl+לחיצה יעקוב אחרי כל השייט בתצוגה הראשית
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}מקד את התצוגה הראשית על כלי הטייס. Ctrl+לחיצה יעקוב אחרי כלי הטייס בתצוגה הראשית
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}.שלח את הרכבת למוסך
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}.שלח את כלי הרכב למוסך
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}שלח את כלי השייט למבדוק
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sשלח את כלי הטייס לסככת המטוסים
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}.פעולה זו תיצור עותק נוסף של כלי הרכב
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}פעולה זו תיצור עותק של כלי השייט
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}פעולה זו תיצור עותק של כלי הטייס
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה. Ctrl+לחיצה יעתיק גם את ההוראות
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}.פעולה זו תיצור עותק נוסף של כלי הרכב. Ctrl+לחיצה תעתיק גם את ההוראות
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}פעולה זו תיצור עותק של כלי השייט. Ctrl+לחיצה תעתיק גם את ההוראות
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}פעולה זו תיצור עותק של כלי הטייס. Ctrl+לחיצה תעתיק גם את ההוראות
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}הכרח את הרכבת להמשיך מבלי להמתין לרמזור
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}התאם את הרכבת לנשיאת משא שונה
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}התאם כלי רכב לנשיאת מטען חדש
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}התאם כלי שייט לנשיאת מטען נתון
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}התאם מחדש כלי שייט לנשיאת מטען אחר
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}התאם מחדש כלי שייט לנשיאת מטען אחר
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}התאם כלי טייס לנשיאת מטען נתון
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}שנה את כיוון הנסיעה של הרכבת
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}הכרח את כלי הרכב להסתובב
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}הצג את רשימת היעדים של הרכבת
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}הצג את רשימת היעדים
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}הצג את יעדי כלי השייט
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}הצג את יעדי כלי הטייס
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}הצג את הוראות הרכבת. Ctrl+לחיצה להצגת לוח הזמנים של הרכבת
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}הצג את הוראות כלי הרכב. Ctrl+לחיצה להצגת לוח הזמנים של כלי הרכב
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}הצג את הוראות כלי השייט. Ctrl+לחיצה להצגת לוח הזמנים של כלי השייט
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}הצג את הוראות כלי הטייס. Ctrl+לחיצה להצגת לוח הזמנים של כלי הטייס
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}הצג את נתוני הרכבת
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}הצג את פרטי כלי הרכב
@@ -2876,11 +2877,11 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {1:VEL
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}{TOWN} בדרך אל המוסך ב
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך אל המוסך ב
 STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}{TOWN} בדרך אל מוסך הרכבים ב
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE} {1:VELOCITY}  במהירות , {NBSP}{0:TOWN} בדרך אל מוסך הרכבים ב
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}בדרך אל מוסך הרכבים בעיר {TOWN} ,{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE} {TOWN} בדרך אל המבדוק ב
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:TOWN} בדרך אל המבדוק ב
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}בדרך אל המבדוק בעיר {TOWN} ,{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE} {STATION} בדרך אל סככת המטוסים ב
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:STATION} בדרך אל סככת המטוסים ב
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}בדרך אל סככת המטוסים בעיר {STATION}, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}{TOWN} בדרך לטיפול במוסך
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך לטיפול במוסך

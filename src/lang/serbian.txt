@@ -396,6 +396,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter teksta
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter teksta:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberite način sortiranja (opadajući/rastući)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Odaberite kriterijum za sortiranje

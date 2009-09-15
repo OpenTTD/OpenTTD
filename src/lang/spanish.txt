@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escribe patrón de filtrado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce una palabra clave para filtrar la lista
+STR_LIST_FILTER_TITLE                                           :{BLACK}Patrón de filtrado:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione ordenación (descendiente/ascendinte)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Seleccione criterio de orden
@@ -1301,7 +1302,7 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Nuevo Ju
 STR_INTRO_LOAD_GAME                                             :{BLACK}Cargar Juego
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jugar Escenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jugar Mapa de alturas
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Escenario
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Escenarios
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de Juego

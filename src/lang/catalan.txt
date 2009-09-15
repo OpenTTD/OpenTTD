@@ -216,8 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix cadena filtrant
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena filtrant
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdueix una paraula clau per filtrar la llista de
+STR_LIST_FILTER_TITLE                                           :{BLACK}Cadena filtrant:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecciona criteri de classificació

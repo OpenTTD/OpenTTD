@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan kata penyaring
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring daftar
+STR_LIST_FILTER_TITLE                                           :{BLACK}Saring kata:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih modus pengurutan (menurun/menaik)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pilih kriteria pengurutan
