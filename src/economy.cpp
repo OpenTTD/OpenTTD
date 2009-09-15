@@ -1212,9 +1212,11 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* update stats */
 		int t;
 		switch (u->type) {
-			case VEH_TRAIN: t = Train::From(u)->tcache.cached_max_speed; break;
-			case VEH_ROAD:  t = u->max_speed / 2;           break;
-			default:        t = u->max_speed;               break;
+			case VEH_TRAIN:    t = Train::From(u)->tcache.cached_max_speed; break;
+			case VEH_ROAD:     t = u->max_speed / 2;        break;
+			case VEH_SHIP:     t = u->max_speed;            break;
+			case VEH_AIRCRAFT: t = u->max_speed * 10 / 129; break; // convert to old units
+			default: NOT_REACHED();
 		}
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
