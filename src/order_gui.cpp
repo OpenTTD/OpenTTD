@@ -183,7 +183,7 @@ static int DepotActionStringIndex(const Order *order)
 	}
 }
 
-void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int width)
+void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int left, int right)
 {
 	StringID str = (v->cur_order_index == order_index) ? STR_ORDER_SELECTED : STR_ORDER;
 	SetDParam(6, STR_EMPTY);
@@ -287,7 +287,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	}
 
 	SetDParam(0, order_index + 1);
-	DrawString(2, width + 2, y, str, selected ? TC_WHITE : TC_BLACK);
+	DrawString(left, right, y, str, selected ? TC_WHITE : TC_BLACK);
 }
 
 
@@ -842,7 +842,7 @@ public:
 			/* Don't draw anything if it extends past the end of the window. */
 			if (!this->vscroll.IsVisible(i)) break;
 
-			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, this->widget[ORDER_WIDGET_ORDER_LIST].right - 4);
+			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, this->widget[ORDER_WIDGET_ORDER_LIST].left + 2, this->widget[ORDER_WIDGET_ORDER_LIST].right - 2);
 			y += ORDER_LIST_LINE_HEIGHT;
 
 			i++;

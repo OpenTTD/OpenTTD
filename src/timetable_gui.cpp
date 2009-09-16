@@ -190,7 +190,7 @@ struct TimetableWindow : Window {
 			if (!this->vscroll.IsVisible(i)) break;
 
 			if (i % 2 == 0) {
-				DrawOrderString(v, order, order_id, y, i == selected, true, this->widget[TTV_TIMETABLE_PANEL].right - 4);
+				DrawOrderString(v, order, order_id, y, i == selected, true, this->widget[TTV_TIMETABLE_PANEL].left + 2, this->widget[TTV_TIMETABLE_PANEL].right - 2);
 
 				order_id++;
 
