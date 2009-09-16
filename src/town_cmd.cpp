@@ -257,6 +257,19 @@ static uint GetSlopeZ_Town(TileIndex tile, uint x, uint y)
 /** Tile callback routine */
 static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 {
+	HouseID hid = GetHouseType(tile);
+
+	/* For NewGRF house tiles we might not be drawing a foundation. We need to
+	 * account for this, as other structures should
+	 * draw the wall of the foundation in this case.
+	 */
+	if (hid >= NEW_HOUSE_OFFSET) {
+		const HouseSpec *hs = HouseSpec::Get(hid);
+		if (hs->spritegroup != NULL && HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
+			uint32 callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, hid, Town::GetByTile(tile), tile);
+			if (callback_res == 0) return FOUNDATION_NONE;
+		}
+	}
 	return FlatteningFoundation(tileh);
 }
 
@@ -2895,7 +2908,20 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint 
 
 		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
 		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&
-			(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+				(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+			bool allow_terraform = true;
+
+			/* Call the autosloping callback per tile, not for the whole building at once. */
+			house = GetHouseType(tile);
+			hs = HouseSpec::Get(house);
+			if (HasBit(hs->callback_mask, CBM_HOUSE_AUTOSLOPE)) {
+				/* If the callback fails, allow autoslope. */
+				uint16 res = GetHouseCallback(CBID_HOUSE_AUTOSLOPE, 0, 0, house, Town::GetByTile(tile), tile);
+				if ((res != 0) && (res != CALLBACK_FAILED)) allow_terraform = false;
+			}
+
+			if (allow_terraform) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+		}
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

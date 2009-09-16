@@ -244,7 +244,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 		if (HasBit(inds->callback_mask, CBM_INDT_DRAW_FOUNDATIONS)) {
 			/* Called to determine the type (if any) of foundation to draw for industry tile */
 			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, i, ti->tile);
-			draw_old_one = callback_res != 0;
+			draw_old_one = (callback_res != 0);
 		}
 
 		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);

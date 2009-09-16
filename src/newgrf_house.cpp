@@ -426,7 +426,16 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	const SpriteGroup *group;
 	ResolverObject object;
 
-	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
+	if (ti->tileh != SLOPE_FLAT) {
+		bool draw_old_one = true;
+		if (HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
+			/* Called to determine the type (if any) of foundation to draw for the house tile */
+			uint32 callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
+			draw_old_one = (callback_res != 0);
+		}
+
+		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);
+	}
 
 	NewHouseResolver(&object, house_id, ti->tile, Town::GetByTile(ti->tile));
 

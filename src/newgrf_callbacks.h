@@ -214,6 +214,12 @@ enum CallbackID {
 
 	/** Called on the Get Tile Description for an house tile. */
 	CBID_HOUSE_CUSTOM_NAME               = 0x14D, // 15 bit callback
+
+	/** Called to determine the type (if any) of foundation to draw for house tile. */
+	CBID_HOUSE_DRAW_FOUNDATIONS          = 0x14E, // 15 bit callback
+
+	/** Called to determine if one can alter the ground below a house tile */
+	CBID_HOUSE_AUTOSLOPE                 = 0x14F, // 15 bit callback
 };
 
 /**
@@ -257,6 +263,8 @@ enum HouseCallbackMask {
 	CBM_HOUSE_ACCEPT_CARGO              =  8, ///< decides accepted types
 	CBM_HOUSE_PRODUCE_CARGO             =  9, ///< custom cargo production
 	CBM_HOUSE_DENY_DESTRUCTION          = 10, ///< conditional protection
+	CBM_HOUSE_DRAW_FOUNDATIONS          = 11, ///< decides if default foundations need to be drawn
+	CBM_HOUSE_AUTOSLOPE                 = 12, ///< decides allowance of autosloping
 };
 
 /**
