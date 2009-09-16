@@ -231,10 +231,8 @@ can be placed in a few different locations:
 		Windows: C:\Documents and Settings\<username>\My Documents\OpenTTD
 		Mac OSX: ~/Documents/OpenTTD
 		Linux:   ~/.openttd
-	3. The shared directory
+	3. The shared directory (Windows only)
 		Windows: C:\Documents and Settings\All Users\Documents\OpenTTD
-		Mac OSX: /Library/Application Support/OpenTTD
-		Linux:   not available
 	4. The binary directory (where the OpenTTD executable is)
 		Windows: C:\Program Files\OpenTTD
 		Linux:   /usr/games
