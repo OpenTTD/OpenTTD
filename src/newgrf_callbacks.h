@@ -18,9 +18,6 @@
  * bit is set in the callback flags/trigger for a vehicle, house,
  * industry, etc.
  * Names are formatted as CBID_<CLASS>_<CALLBACK>
- *
- * @note Do not forget to add 15 bits callbacks to the switch in
- *       newgrf_spritegroup.cpp (search for "15 bits callback").
  */
 enum CallbackID {
 	/** Set when using the callback resolve system, but not to resolve a callback. */
@@ -144,7 +141,7 @@ enum CallbackID {
 	CBID_VEHICLE_SOUND_EFFECT            = 0x33, // 15 bit callback
 
 	/** Return the vehicles this given vehicle can be "upgraded" to. */
-	CBID_VEHICLE_AUTOREPLACE_SELECTION   = 0x34, // 15 bit callback
+	CBID_VEHICLE_AUTOREPLACE_SELECTION   = 0x34, // 15 bit callback, not implemented
 
 	/** Called monthly on production changes, so it can be adjusted more frequently */
 	CBID_INDUSTRY_MONTHLYPROD_CHANGE     = 0x35, // 15 bit callback
@@ -228,7 +225,7 @@ enum VehicleCallbackMask {
 	CBM_VEHICLE_LENGTH         = 1, ///< Vehicle length (trains and road vehicles)
 	CBM_VEHICLE_LOAD_AMOUNT    = 2, ///< Load amount
 	CBM_VEHICLE_REFIT_CAPACITY = 3, ///< Cargo capacity after refit
-	CBM_VEHICLE_ARTIC_ENGINE   = 4, ///< Add articulated engines (trains only)
+	CBM_VEHICLE_ARTIC_ENGINE   = 4, ///< Add articulated engines (trains and road vehicles)
 	CBM_VEHICLE_CARGO_SUFFIX   = 5, ///< Show suffix after cargo name
 	CBM_VEHICLE_COLOUR_REMAP   = 6, ///< Change colour mapping of vehicle
 	CBM_VEHICLE_SOUND_EFFECT   = 7, ///< Vehicle uses custom sound effects
@@ -266,7 +263,7 @@ enum HouseCallbackMask {
  * Callback masks for canals.
  */
 enum CanalCallbackMask {
-	CBM_CANAL_SPRITE_OFFSET       = 1, ///< Enable add sprite offset callback
+	CBM_CANAL_SPRITE_OFFSET       = 0, ///< Enable add sprite offset callback
 };
 
 /**
