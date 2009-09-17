@@ -17,6 +17,7 @@
 #include "string_func.h"
 #include "gamelog.h"
 #include "network/network_type.h"
+#include "network/network_func.h"
 #include "gfx_func.h"
 
 #include "fileio_func.h"
@@ -391,6 +392,10 @@ void ScanNewGRFFiles()
 	_all_grfs = to_sort[0];
 
 	free(to_sort);
+
+#ifdef ENABLE_NETWORK
+	NetworkAfterNewGRFScan();
+#endif
 }
 
 

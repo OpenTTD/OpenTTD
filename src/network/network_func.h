@@ -85,5 +85,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *
 void NetworkUndrawChatMessage();
 void NetworkChatMessageDailyLoop();
 
+void NetworkAfterNewGRFScan();
+
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_FUNC_H */
