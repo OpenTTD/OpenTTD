@@ -497,7 +497,7 @@ The OpenTTD team (in alphabetical order):
   Owen Rudge (orudge)            - Forum host, OS/2 port
   Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
   Remko Bijker (Rubidium)        - Lead coder and way more
-  Zdenek Sojka (SmatZ)           - Bug finder and fixer
+  Zdeněk Sojka (SmatZ)           - Bug finder and fixer
   Thijs Marinussen (Yexo)        - AI Framework
 
 Inactive Developers:
@@ -517,7 +517,7 @@ Retired Developers:
 Thanks to:
   Josef Drexler                  - For his great work on TTDPatch.
   Marcin Grzegorczyk             - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
-  Petr Baudis (pasky)            - Many patches, newgrf support, etc.
+  Petr Baudiš (pasky)            - Many patches, newgrf support, etc.
   Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with
   Stefan Meißner (sign_de)       - For his work on the console
   Mike Ragsdale                  - OpenTTD installer
