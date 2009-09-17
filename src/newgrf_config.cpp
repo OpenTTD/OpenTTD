@@ -150,6 +150,8 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 			if (src->error->custom_message != NULL) c->error->custom_message = strdup(src->error->custom_message);
 		}
 
+		ClrBit(c->flags, GCF_COPY);
+
 		ClrBit(c->flags, GCF_INIT_ONLY);
 		if (init_only) SetBit(c->flags, GCF_INIT_ONLY);
 
