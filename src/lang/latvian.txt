@@ -1737,6 +1737,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spēle atsākta
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ir pievienojies spēlei (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ir pievienojies kompānijai #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojis skatītājus
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ir nodibinājis jaunu kompāniju (#{2:NUM})
@@ -2359,6 +2360,8 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Ievadiet
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pilsētas
+STR_TOWN_DIRECTORY_NONE                                         :{G=m}{ORANGE}- Neviens -
+STR_TOWN_DIRECTORY_NONE.kas                                     :{G=f}{ORANGE}- Neviena -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Pilsētu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz to. Ctrl+Klikšķis atvērs skatu uz pilsētu jaunā skatulaukā
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzīvotāju skaits: {COMMA}
@@ -2547,6 +2550,8 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mēs mek
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Rūpnīcas
+STR_INDUSTRY_DIRECTORY_NONE                                     :{G=m}{ORANGE}- Neviens -
+STR_INDUSTRY_DIRECTORY_NONE.kas                                 :{G=f}{ORANGE}- Neviena -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% pārvadāti)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% pārvadāti)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

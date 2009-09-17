@@ -233,7 +233,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suuri/pieni ikkunan koko
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys ylös/alas
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa ruudulla olevat rakennukset, puut, jne.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia, puita, jne.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Oletus
@@ -262,8 +262,8 @@ STR_SORT_BY_PRODUCTION                                          :Tuotto
 STR_SORT_BY_TYPE                                                :Tyyppi
 STR_SORT_BY_TRANSPORTED                                         :Kuljetettu
 STR_SORT_BY_NUMBER                                              :Numero
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tuottoa viime vuonna
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Tuottoa tänä vuonna
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tuotto viime vuonna
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Tuotto tänä vuonna
 STR_SORT_BY_AGE                                                 :Ikä
 STR_SORT_BY_RELIABILITY                                         :Toimintavarmuus
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kokonaiskapasiteetti/rahtityyppi
@@ -277,7 +277,7 @@ STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Korkein rahtiluokitus
 STR_SORT_BY_RATING_MIN                                          :Matalin rahtiluokitus
-STR_SORT_BY_ENGINE_ID                                           :VeturiID (perinteinen lajittelu)
+STR_SORT_BY_ENGINE_ID                                           :Veturin ID (perinteinen lajittelu)
 STR_SORT_BY_COST                                                :Hinta
 STR_SORT_BY_POWER                                               :Teho
 STR_SORT_BY_INTRO_DATE                                          :Julkaisupäivä
@@ -378,7 +378,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Tulot
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Kuljetettu rahti
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Suoritehistoria
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Yhtiön arvo
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rahtimaksutaksat
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rahtitaksat
 ############ range ends here
 
 ############ range for company league menu starts
@@ -513,7 +513,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Rahtia k
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Yhtiön suoritearvio (enimmäisarvio=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Yhtiöiden arvot
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rahtimaksutaksat
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rahtitaksat
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Päivää kauttakulussa
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Maksu 10 yksikön (tai 10.000 litran) rahdin kuljettamisesta 20 ruudun päähän.
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Rahtityypin kuvaaja päälle/pois
@@ -532,7 +532,7 @@ STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insinööri
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Liikennepäällikkö
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Kuljetusjohtaja
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Reittityönjohtaja
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Reittisuunnittelija
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Johtaja
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Osastopäällikkö
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Puheenjohtaja
@@ -735,7 +735,7 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Junakolari!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Junaonnettomuus!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
@@ -746,7 +746,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}{TOWN}: Öljynjalostamon räjähdys!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN}: Tehdas tuhoutunut epäilyttävissä olosuhteissa!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}{TOWN}: 'UFO' laskeutuu!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}{TOWN}: Hiilikaivoksen vajoaminen jättää tuhon jälkiä!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}{TOWN}: Hiilikaivoksen sortuma aiheuttaa tuhoa!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Tulvia!{}Ainakin {COMMA} oletettavasti kadoksissa tai kuollut tappavan tulvan jälkeen!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Kuljetusyhtiö vaikeuksissa!
@@ -788,7 +788,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on liian vähän käskyjä
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on epäkelpo käsky
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virhe
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia määräyksiä
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virheellinen asema
 # end of order system
@@ -800,7 +800,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} on eksynyt.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Kulkuneuvon {VEHICLE} tulos viime vuonna oli {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Sovituskomento virhe pysäytti ajoneuvon {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Korvauksen epäonnistuminen pysäytti ajoneuvon {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Uusi {STRING} on nyt saatavilla!
@@ -820,7 +820,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Tuki myönnetty yhtiölle {STRING}!{}{}{STRING}kuljetus välillä {STRING}-{STRING} tuottaa kolminkertaisesti seuraavan vuoden ajan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Tuki myönnetty yhtiölle {STRING}!{}{}{STRING}kuljetus välillä {STRING}-{STRING} tuottaa nelinkertaisesti seuraavan vuoden ajan!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}: liikennekaaos!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}
@@ -852,7 +852,7 @@ STR_GAME_OPTIONS_CURRENCY_GRD                                   :Kreikan drakma 
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Unkarin forintti (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islannin kruunu (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian liira (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollannin guildeni (NLG)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollannin guldeni (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norjan kruunu (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Puolan zloty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian leu (RON)
@@ -957,12 +957,12 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Valitse 
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaihda euroon: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaihda euroon: {ORANGE}ei koskaan
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Valitse vuosi, jona vaihdetaan Euroon
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Vaihda Euroon aikaisemmin
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Vaihda Euroon myöhemmin
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Valitse vuosi, jona vaihdetaan euroon
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Vaihda euroon aikaisemmin
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Vaihda euroon myöhemmin
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Esikatselu: {ORANGE}{6:CURRENCY}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Puntaa (£) valuutassasi
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10 000 puntaa (£) valuutassasi
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda oman valuutan parametria.
 
 # Difficulty level window
@@ -992,7 +992,7 @@ STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Rakenta
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Maaston tyyppi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Meren/järvien määrä: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Talous: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Junien peruutus: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Junien kääntyminen: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Onnettomuudet: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Kaupunginvaltuuston asenne alueen uudelleenjärjestelyyn: {ORANGE}{STRING}
 ############ range for difficulty settings ends
@@ -1065,7 +1065,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli e
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lataa kulkuneuvot vähitellen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaatio: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Kuljeta rahti asemalle vain, kun on kysyntää: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Pura rahti asemalle vain, kun on kysyntää: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Erittäin pitkien siltojen rakentaminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Varikollemenomääräykset: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuaalinen raakateollisuuden rakentamistapa: {ORANGE}{STRING}
@@ -1082,13 +1082,13 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Uudet j
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :loppuun
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aivan loppuun
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ajoneuvohen jonotus (tehostein): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Salli kuljetusyksinoikeuksien ostaminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Salli rahan lähettäminen muille yhtiöille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Rahdin painokerroin raskaiden junien simulointia varten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lentokoneen nopeuskerroin: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Salli läpiajettavat pysäkit kilpailijoiden omistamilla teillä: {ORANGE}{STRING}
@@ -1098,20 +1098,20 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä a
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lentokentät eivät vanhene: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Varoita jos juna menetetään: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Varoita jos juna eksyy reitiltään: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Tarkista ajoneuvojen pysähdykset: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :kyllä, mutta ei pysäytetyille
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kaikille ajoneuvoille
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varoita, jos kulkuneuvon tulos on negatiivinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ajoneuvot eivät vanhene: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Itseuudista ajoneuvo, kun se vanhenee: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Itseuudista {ORANGE}{STRING}{LTBLUE} kuukautta ennen/jälkeen enimmäisiän
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Pienin tarvittava rahamäärä itseuudistukseen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Uudista ajoneuvo automaattisesti, kun se vanhenee: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Uudista ajoneuvo automaattisesti {ORANGE}{STRING}{LTBLUE} kuukautta ennen/jälkeen enimmäisiän
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Vähimmäisrahamäärä ajoneuvon automaattiseen uudistukseen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Näytä kaupungin asukasluku kaupungin nimessä: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maa generaattori: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maastogeneraattori: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurin etäisyys reunasta öljyjalostamolle{ORANGE}{STRING}
@@ -1121,10 +1121,10 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasai
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen (sileä)
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin epätasainen
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Puiden sijainti algoritmi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Puiden sijoittelualgoritmi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ei mitään
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Alkuperäinen
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Kehitetty
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Parannettu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Korkeuskartan pyöritys:{ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Salli m
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman levittäytyminen: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
@@ -1145,9 +1145,9 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma yritys
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Kaikki yritykset
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Suosi ryhmäkeskustelua <ENTER> näppäimellä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Hiiren rullan toiminta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoomaa karttaa
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Vieritä karttaa
-STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Pois
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :kartan lähentäminen/loitontaminen
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :kartan vieritys
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :ei käytössä
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullan nopeus: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Oikean painikkeen emulointi: {ORANGE}{STRING}
@@ -1176,13 +1176,13 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Nopea kulkuneuvon käskyjen luominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Oletusraidetyyppi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköraide
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköistetty raide
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Yksiraiteinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Näytä varatut radat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Näytä varatut raiteet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pidä rakennustyökalut aktiivisina käytön jälkeen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ryhmitä kulut yhtiön rahoitusikkunassa: {ORANGE}{STRING}
 
@@ -1218,15 +1218,15 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Aloitus
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Tasainen talous (enemmän pieniä muutoksia): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna opasteet automaattisesti ennen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna oletuksena siipiopastimia ennen vuotta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Käytä graafista opastinkäyttöliittymää: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Oletusarvoinen opastintyyppi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Tavallinen
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Edistynyt
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Reittiopastimet
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Yksisuuntaiset reittiopastimet
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Vaihda opastintyyppien välillä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Vain tavallinen
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Vain edistynyt
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Vain reittiopastimet
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kaikki
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Uusissa kaupungeissa käytettävä tiekaava: {ORANGE}{STRING}
@@ -1298,16 +1298,16 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Uusi peli
 STR_INTRO_LOAD_GAME                                             :{BLACK}Lataa peli
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Pelaa skenaariota
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Pelaa korkeuskartta
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Lataa skenaario
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Lataa korkeuskartta
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Maisemaeditori
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpeli
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin Asetukset
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin asetukset
 STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusaste: ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-Sisältö
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Tekoälyasetukset
 STR_INTRO_QUIT                                                  :{BLACK}Sulje
 
@@ -1372,7 +1372,7 @@ STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuta p
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Muuntuvat tuotantoarvot: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Uusi Väriteema
+STR_LIVERY_CAPTION                                              :{WHITE}Uusi väriteema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näytä yleiset väriteemat
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä junan väriteemat
@@ -1387,16 +1387,16 @@ STR_LIVERY_DEFAULT                                              :Normaalit tunnu
 STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi
-STR_LIVERY_MONORAIL                                             :Yksiraiteinen veturi
+STR_LIVERY_MONORAIL                                             :Yksiraiteisen veturi
 STR_LIVERY_MAGLEV                                               :Maglev-veturi
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Matkustajavaunu (höyry)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Matkustajavaunu (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Matkustajavaunu (sähkö)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Matkustajavaunu (Yksiraiteinen)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Matkustajavaunu (yksiraiteinen)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Matkustajavaunu (Maglev)
-STR_LIVERY_FREIGHT_WAGON                                        :Rahtivaunu
+STR_LIVERY_FREIGHT_WAGON                                        :Tavaravaunu
 STR_LIVERY_BUS                                                  :Linja-auto
 STR_LIVERY_TRUCK                                                :Kuorma-auto
 STR_LIVERY_PASSENGER_SHIP                                       :Matkustajalautta
@@ -1404,8 +1404,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Rahtilaiva
 STR_LIVERY_HELICOPTER                                           :Helikopteri
 STR_LIVERY_SMALL_PLANE                                          :Pieni lentokone
 STR_LIVERY_LARGE_PLANE                                          :Suuri lentokone
-STR_LIVERY_PASSENGER_TRAM                                       :Matkustajavaunu
-STR_LIVERY_FREIGHT_TRAM                                         :Rahtivaunu
+STR_LIVERY_PASSENGER_TRAM                                       :Raitiovaunu
+STR_LIVERY_FREIGHT_TRAM                                         :Raitiotavaravaunu
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Kasvojen valinta
@@ -1480,7 +1480,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Pelaajia
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Pelaajia online / pelaajia maks.{}Yhtiöitä online / yhtiöitä maks.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartan koko
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartan koko{}Valitse lajitellaksi koon mukaan
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartan koko{}Valitse lajitellaksesi koon mukaan
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Päiväys
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Tämä päivä
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Vuosia
@@ -1489,7 +1489,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kieli, p
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Napsauta peliä luettelossa valitaksesi
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Edellinen palvelin:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Valitse tästä edellinen palvelin, jolla pelasit
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Valitse edellinen palvelin, jolla pelasit
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}PELITIEDOT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Pelaajat: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1786,7 +1786,7 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... sis�
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Perusgrafiikat
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :Tekoäly
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Tekoäly kirjasto
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Tekoälykirjasto
 STR_CONTENT_TYPE_SCENARIO                                       :Skenaario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Korkeuskartta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Perusäänet
@@ -1794,7 +1794,7 @@ STR_CONTENT_TYPE_BASE_SOUNDS                                    :Perusäänet
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ladataan sisältöä...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Pyydetään tiedostoja...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nyt ladataan {STRING} ({NUM}/{NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Ladataan {STRING} ({NUM}/{NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Lataus valmis
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/{BYTES} ladattu ({NUM} %)
 
@@ -1845,7 +1845,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna veturitalli (junien ostamista ja huoltoa varten).
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi. Ctrl liittää reittipisteet
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl liittää asemat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna rautatieopastimia. Ctrl valitsee siipiopastin/sähköopastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalinta ikkunan
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valoopastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, reittipisteiden, asemien ja opastimien rakentaminen/poisto päälle/pois.
@@ -1863,7 +1863,7 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Valitse 
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Rautatieaseman valinta
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Suunta
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Valitse rautatieaseman suunta.
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ratojen määrä
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Raiteiden lukumäärä
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Valitse asemalaiturien määrä rautatieasemalle.
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Asemalaiturin pituus
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Valitse rautatieaseman pituus.
@@ -1878,22 +1878,22 @@ STR_STATION_CLASS_WAYP                                          :Reittipisteet
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Opastimien valinta
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokkisignaali (siipiopastin){}Tämä on kaikkein alkeellisin signaali, joka sallii vain yhden junan samassa blokissa yhtä aikaa.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sisääntulo-opastin (siipiopastin){}Näyttää vihreää aina, kun yksi tai useampi seuraavan rataosuuden poistumisopastin näyttää vihreää. Muutoin näyttää punaista.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Poistumisopastin (siipiopastin){}Käyttäytyy samalla tavalla kuin blokkiopastin, mutta on välttämätön oikean valon näyttämiseen eri sisääntulo- ja yhdistelmäopastimissa.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Yhdistelmäopastin (siipiopastin){}Yhdistelmäopastin toimii yhtä aikaa sisääntulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria "opastinpuita".
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Reittiopastin (siipiopastin){}Reittiopastin sallii useamman junan päästä opastinblokkiin samaan aikaan, jos junalle jää tilaa turvalliseen pysähtymiseen. Tavalliset reittiopastimet voi ohittaa takakautta.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Yksisuuntainen reittiopastin (siipiopastin){}Reittiopastin sallii useamman junan päästä opastinblokkiin samaan aikaan, jos junalle jää tilaa turvalliseen pysähtymiseen. Yksisuuntaisia opastimia ei voi ohittaa takakautta.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokkiopastin (sähköistetty){}Tämä on kaikkein tavallisin opastintyyppi, joka sallii vain yhden junan kulkevan samassa blokissa kerrallaan.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sisääntulo-opastin (sähköistetty){}Näyttää vihreää aina, kun yksi tai useampi seuraavan rataosuuden poistumisopastin näyttää vihreää. Muutoin näyttää punaista.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Poistumisopastin (sähköistetty){}Käyttäytyy samalla tavalla kuin blokkiopastin, mutta on välttämätön oikean valon näyttämiseen eri sisääntulo- ja yhdistelmäopastimissa.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Yhdistelmäopastin (sähköistetty){}Yhdistelmäopastin toimii yhtä aikaa sisääntulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria "opastinpuita".
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Reittiopastin (sähköistetty){}Reittiopastin sallii useamman junan päästä opastinblokkiin samaan aikaan, jos junalle jää tilaa turvalliseen pysähtymiseen. Tavalliset reittiopastimet voi ohittaa takakautta.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Yksisuuntainen reittiopastin (sähköistetty){}Reittiopastin sallii useamman junan päästä opastinblokkiin samaan aikaan, jos junalle jää tilaa turvalliseen pysähtymiseen. Yksisuuntaisia opastimia ei voi ohittaa takakautta.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Suojastusopastin (siipiopastin){}Kaikkein alkeellisin opastin, joka sallii vain yhden junan samalla osuudella kerrallaan.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Tulo-opastin (siipiopastin){}Näyttää vihreää aina, kun yksi tai useampi seuraavista poistumisopastimista näyttää vihreää. Muutoin näyttää punaista.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Poistumisopastin (siipiopastin){}Käyttäytyy samalla tavalla kuin suojastusopastin, mutta on välttämätön oikean valon näyttämiseen tulo- ja yhdistelmäopastimissa.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Yhdistelmäopastin (siipiopastin){}Yhdistelmäopastin toimii yhtä aikaa tulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria "opastinpuita".
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Reittiopastin (siipiopastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Tavalliset reittiopastimet voi ohittaa takakautta.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Yksisuuntainen reittiopastin (siipiopastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Yksisuuntaisia opastimia ei voi ohittaa takakautta.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Suojastusopastin (valo-opastin){}Kaikkein alkeellisin opastin, joka sallii vain yhden junan osuudella kerrallaan.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Tulo-opastin (valo-opastin){}Näyttää vihreää aina, kun yksi tai useampi seuraavista poistumisopastimista näyttää vihreää. Muutoin näyttää punaista.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Poistumisopastin (valo-opastin){}Käyttäytyy samalla tavalla kuin suojastusopastin, mutta on välttämätön oikean valon näyttämiseen tulo- ja yhdistelmäopastimissa.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Yhdistelmäopastin (valo-opastin){}Yhdistelmäopastin toimii yhtä aikaa tulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria "opastinpuita".
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Tavalliset reittiopastimet voi ohittaa takakautta.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Yksisuuntainen reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Yksisuuntaisia opastimia ei voi ohittaa takakautta.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassaolevan opastimen klikkaaminen muuntaa siitä valituntyyppisen ja -muotoisen. Ctrl+Click vaihtaa nykyistä opastimen muotoa.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Opastimien tiheys vetämällä lisättäessä
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Pienennä opastimien tiheyttä vetämällä lisättäessä
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna opastimien tiheyttä vetämällä lisättäessä
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Opastimien väli vetämällä lisättäessä
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Pienennä opastimien väliä vetämällä lisättäessä
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna opastimien väliä vetämällä lisättäessä
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Valitse rautatiesilta.
@@ -1916,7 +1916,7 @@ STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Raitioti
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Rakenna tieosuus. Ctrl vaihtaa rakennus/poistotilan välillä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Rakenna raitiotietä. Ctrl vaihtaa rakennus/poistotilan välillä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Rakenna tieosuus käyttäen Autoroad-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Rakenna raitiovaunuosuus käyttäen Autotram-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Rakenna raitiotieosuus käyttäen Autotram-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Rakenna autovarikko (ajoneuvojen ostamista ja huoltoa varten)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Rakenna raitiotievarikko (vaunujen ostamiseen ja korjaamiseen)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Rakenna linja-autoasema. Ctrl liittää asemat
@@ -1954,7 +1954,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Rakenna 
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Rakenna sulku
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Rakenna telakka (laivojen ostamista ja huoltamista varten)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Rakenna satama. Ctrl liittää asemat
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Sijoita poiju; sitä voidaan käyttää ylimääräisenä opasteena.
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Sijoita poiju: voidaan käyttää ylimääräisenä reittipisteenä.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Rakenna akvedukti
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Määrittele vesialue.{}Tee kanava, paitsi jos Ctrl on alaspainettuna merenpinnalla. Tällöin meri laajenee ympäristöön.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Sijoita jokia.
@@ -1978,7 +1978,7 @@ STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pieni
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Kaupunki
 STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Suurkaupungin lentokenttä
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Kansainvälinen lentokenttä
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Työmatkalainen
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Lähiliikennekenttä
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Mannertenvälinen
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterikenttä
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterihalli
@@ -2052,7 +2052,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Sattuman
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Rakenna uutta teollisuutta
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Valitse tehdas listasta
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Monta satunnaista teollisuusaluetta
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Peitä kartta satunnaisesti sijoitetuilla teollisuusalueilla.
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Sijoita teollisuuslaitokset satunnaisesti
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kustannus: {YELLOW}{CURRENCY}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Koekaivaus
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Rakenna
@@ -2060,14 +2060,14 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Perusta
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-aluetiedot
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Puhdistuksen hinta: {LTBLUE}-
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Puhdistuksen hinta: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Raivaamisen hinta: {LTBLUE}-
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Raivaamisen hinta: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Tulo kun tyhjennetty: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :-
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Omistaja: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Tien omistaja: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Raitiotien omistaja: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Junaradan omistaja: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Rautatien omistaja: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Kunta: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ei mitään
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaatit: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2088,27 +2088,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumen peittäm�
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Aavikkoa
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Rautatie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Rautatie blokkiopasteilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Rautatie esiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Rautatie suojastusopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Rautatie tulo-opastimin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Rautatie poistumisopastimin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Rautatie yhdistelmäopastein
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Rautatiekiskot reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Rautatiekiskot yksisuuntaisilla reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Rautatie blokki- ja sisääntulo-opasteilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Rautatie blokki- ja poistumisopasteilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Rautatie blokki- ja yhdistelmäopasteilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Rautatieraiteet blokki- ja reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Rautatieraiteet blokki- ja yksisuuntaisilla reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Rautatie esi- ja poistumissignaaleilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Rautatie esi- ja yhdistelmäopastein
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Rautatieraiteet ehto- ja reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Rautatieraiteet ehto- ja yksisuuntaisopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Rautatie poistumis- ja yhdistelmäopastein
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Rautatieraiteet poistumis- ja reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rautatieraiteet poistumis- ja yksisuuntaisopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Rautatieraiteet yhdistelmä- ja reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rautatieraiteet yhdistelmä- ja yksisuuntaisopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rautatieraiteet reitti- ja yksisuuntaisopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Rautatie reittiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Rautatie yksisuuntaisin reittiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Rautatie suojastus- ja tulo-opastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Rautatie suojastus- ja poistumisopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Rautatie suojastus- ja yhdistelmäopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Rautatie suojastus- ja reittiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Rautatie suojastus- ja yksisuuntaisin reittiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Rautatie esi- ja poistumisopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Rautatie esi- ja yhdistelmäopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Rautatie esi- ja reittiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Rautatie esi- ja yksisuuntaisin reittiopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Rautatie poistumis- ja yhdistelmäopastimin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Rautatie poistumis- ja reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rautatie poistumis- ja yksisuuntaisopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Rautatie yhdistelmä- ja reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rautatie yhdistelmä- ja yksisuuntaisilla reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rautatie reitti- ja yksisuuntaisilla reittiopastimilla
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Veturitalli
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Tie

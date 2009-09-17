@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter eingeben
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Stichwort eingeben, mit dem die Liste gefiltert werden soll
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sortierkriterium auswählen

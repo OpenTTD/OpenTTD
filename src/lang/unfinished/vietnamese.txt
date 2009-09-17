@@ -684,17 +684,65 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Tuyết
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Bật/tắt tên thị trấn trên bản đồ
+STR_SMALLMAP_CENTER                                             :{BLACK}Căn giữa bản đồ nhỏ ở vị trí hiện tại
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Tắt tất cả
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bật tất cả
 
 # Status bar messages
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Hiện thông điệp hoặc tin tức cuối cùng
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  DỪNG  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}LƯU TỰ ĐỘNG
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ĐANG LƯU GAME *  *
 
 # News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}Lịch Sử Thông Điệp
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sách những tin tức gần đây
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông điệp
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Tùy Chọn Thông Điệp
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Đặt tất cả loại thông điệp thành: Tắt/ Giản Lược/ Đủ
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Phát âm thanh khi có thông báo tổng kết
+STR_NEWS_MESSAGES_OFF                                           :Tắt
+STR_NEWS_MESSAGES_SUMMARY                                       :Giản Lược
+STR_NEWS_MESSAGES_FULL                                          :Đủ
 
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Loại thông báo:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Phương tiện đầu tiên đỗ trạm chúng ta
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Phương tiện đầu tiền đỗ trạm đối thủ
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Tai nạn / thiên tai
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Thông tin công ty
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Cụm công nghiệp mới mở
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Cụm công nghiệp mới đóng
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Những thay đổi của nền kinh tế
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Thay đổi trong sản xuất của cụm công nghiệp đáp ứng cho công ty
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Thay đổi trong sản xuất của cụm công nghiệp đáp ứng cho đối thủ
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Thay đổi trong sản xuất của cụm công nghiệp khác
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Lời khuyên / thông tin cho những phương tiện của công ty
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Phương tiện mới
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Thay đổi về việc nhận hàng vận chuyển
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tiền trợ cấp
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Thông tin chung
 
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Tàu lửa đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe bus đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe tải đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe điện chở khách đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe tải điện đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Tàu thủy đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Máy bay đầu tiên đến trạm {STATION}!
 
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Đâm Tàu!{}{COMMA} người chết sau tai nạn đáng tiếc
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Bị Tàu Đâm!{}Người lái xe đã tử nạn sau tai nạn đáng tiếc
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Bị Tàu Đâm!{}{COMMA} người đã tử nạn sau tai nạn đáng tiếc
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Tai Nạn Máy Bay!{}{COMMA} người chết tại trạm {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Tai Nạn Máy Bay!{}Do hết nhiên liệu, {COMMA} người tử nạn
 
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Tai nạn Zeppelin tại trạm {STATION}!
 
 
 
