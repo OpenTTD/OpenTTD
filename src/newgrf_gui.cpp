@@ -236,8 +236,9 @@ private:
 	}
 
 public:
-	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : QueryStringBaseWindow(EDITBOX_MAX_SIZE)
+	NewGRFAddWindow(const WindowDesc *desc, Window *parent, GRFConfig **list) : QueryStringBaseWindow(EDITBOX_MAX_SIZE)
 	{
+		this->parent = parent;
 		this->InitNested(desc, 0);
 
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
@@ -731,7 +732,7 @@ struct NewGRFWindow : public Window {
 
 			case SNGRFS_ADD: // Add GRF
 				DeleteWindowByClass(WC_SAVELOAD);
-				new NewGRFAddWindow(&_newgrf_add_dlg_desc, &this->list);
+				new NewGRFAddWindow(&_newgrf_add_dlg_desc, this, &this->list);
 				break;
 
 			case SNGRFS_REMOVE: { // Remove GRF
