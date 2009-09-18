@@ -106,6 +106,8 @@ extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandF
  * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -139,7 +141,8 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
  * @param flags for this command type
  * @param p1 unused
  * @param p2 unused
- * @return error of cost of operation
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -166,7 +169,8 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param flags for this command type
  * @param p1 unused
  * @param p2 unused
- * @return error or cost of operation
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

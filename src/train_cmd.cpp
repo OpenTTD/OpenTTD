@@ -832,6 +832,8 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
  * @param flags type of operation
  * @param p1 engine type id
  * @param p2 bit 1 prevents any free cars from being added to the train
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1087,6 +1089,8 @@ static void NormaliseTrainConsist(Train *v)
  * - p1 (bit  0 - 15) source vehicle index
  * - p1 (bit 16 - 31) what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
  * @param p2 (bit 0) move all vehicles following the source vehicle
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1440,6 +1444,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * - p2 = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
  * - p2 = 1: sell the vehicle and all vehicles following it in the chain
  *           if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1997,6 +2003,8 @@ static void ReverseTrainDirection(Train *v)
  * @param flags type of operation
  * @param p1 train to reverse
  * @param p2 if true, reverse a unit in a train (needs to be in a depot)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2055,6 +2063,8 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
  * @param flags type of operation
  * @param p1 train to ignore the red signal
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2070,11 +2080,12 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID of the train to refit
- * param p2 various bitstuffed elements
+ * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to
  * - p2 = (bit 8-15) - the new cargo subtype to refit to
  * - p2 = (bit 16) - refit only this vehicle
- * @return cost of refit or error
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2277,6 +2288,8 @@ bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bo
  * @param p2 various bitmasked elements
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSendTrainToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

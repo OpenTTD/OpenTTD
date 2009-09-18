@@ -75,8 +75,11 @@ void InitializeGroup()
 /**
  * Create a new vehicle group.
  * @param tile unused
+ * @param flags type of operation
  * @param p1   vehicle type
  * @param p2   unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -102,9 +105,12 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 /**
  * Add all vehicles in the given group to the default group and then deletes the group.
  * @param tile unused
+ * @param flags type of operation
  * @param p1   index of array group
  *      - p1 bit 0-15 : GroupID
  * @param p2   unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -159,9 +165,12 @@ static bool IsUniqueGroupName(const char *name)
 /**
  * Rename a group
  * @param tile unused
+ * @param flags type of operation
  * @param p1   index of array group
  *   - p1 bit 0-15 : GroupID
  * @param p2   unused
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -191,10 +200,13 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 /**
  * Add a vehicle to a group
  * @param tile unused
+ * @param flags type of operation
  * @param p1   index of array group
  *   - p1 bit 0-15 : GroupID
  * @param p2   vehicle to add to a group
  *   - p2 bit 0-15 : VehicleID
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -238,9 +250,12 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 /**
  * Add all shared vehicles of all vehicles from a group
  * @param tile unused
+ * @param flags type of operation
  * @param p1   index of group array
  *  - p1 bit 0-15 : GroupID
  * @param p2   type of vehicles
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -275,9 +290,12 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
 /**
  * Remove all vehicles from a group
  * @param tile unused
+ * @param flags type of operation
  * @param p1   index of group array
  * - p1 bit 0-15 : GroupID
  * @param p2   type of vehicles
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -310,10 +328,13 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 /**
  * (Un)set global replace protection from a group
  * @param tile unused
+ * @param flags type of operation
  * @param p1   index of group array
  * - p1 bit 0-15 : GroupID
  * @param p2
  * - p2 bit 0    : 1 to set or 0 to clear protection.
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

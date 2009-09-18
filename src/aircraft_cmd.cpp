@@ -253,7 +253,8 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  * @param flags for command
  * @param p1 aircraft type being built (engine)
  * @param p2 unused
- * return result of operation.  Could be cost, error
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -449,7 +450,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param flags for command type
  * @param p1 vehicle ID to be sold
  * @param p2 unused
- * @return result of operation.  Error or sold value
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -495,7 +497,8 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
  * @param p2 various bitmasked elements
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
- * @return o if everything went well
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSendAircraftToHangar(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -520,7 +523,8 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, DoCommandFlag flags, uint32 
  * - p2 = (bit 0-7) - the new cargo type to refit to
  * - p2 = (bit 8-15) - the new cargo subtype to refit to
  * - p2 = (bit 16) - refit only this vehicle (ignored)
- * @return cost of refit or error
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

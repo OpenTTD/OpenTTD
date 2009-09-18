@@ -1410,6 +1410,8 @@ static const SettingDesc *GetSettingDescription(uint index)
  * @param p1 the index of the setting in the SettingDesc array which identifies it
  * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
+ * @param text unused
+ * @return the cost of this operation or an error
  * @see _settings
  */
 CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
@@ -1458,6 +1460,8 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param p1 the index of the setting in the _company_settings array which identifies it
  * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

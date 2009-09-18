@@ -32,6 +32,8 @@ SignID _new_sign_id;
  * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -68,7 +70,8 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param flags type of operation
  * @param p1 index of the sign to be renamed/removed
  * @param p2 unused
- * @return 0 if succesfull, otherwise CMD_ERROR
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

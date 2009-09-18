@@ -450,6 +450,8 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
  *                        the order will be inserted before that one
  *                        the maximum vehicle order id is 254.
  * @param p2 packed order to insert
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -706,6 +708,8 @@ static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlag flags)
  * @param flags operation to perform
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -771,6 +775,8 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param flags operation to perform
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 the selected order to which we want to skip
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -804,10 +810,13 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 /**
  * Move an order inside the orderlist
  * @param tile unused
+ * @param flags operation to perform
  * @param p1 the ID of the vehicle
  * @param p2 order to move and target
  *           bit 0-15  : the order to move
  *           bit 16-31 : the target order
+ * @param text unused
+ * @return the cost of this operation or an error
  * @note The target order will move one place down in the orderlist
  *  if you move the order upwards else it'll move it one place down
  */
@@ -886,6 +895,8 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param p2 various bitstuffed elements
  *  - p2 = (bit 0 -  3) - what data to modify (@see ModifyOrderFlags)
  *  - p2 = (bit 4 - 15) - the data to modify
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1111,6 +1122,8 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * - p1 = (bit  0-15) - destination vehicle to clone orders to (p1 & 0xFFFF)
  * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1233,6 +1246,8 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  *   - bit 0-7 CargoID
  *   - bit 8-15 Cargo subtype
  *   - bit 16-23 number of order to modify
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1378,6 +1393,8 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
  * @param p2 various bistuffed elements
  * - p2 = (bit  0-15) - current order-index (p2 & 0xFFFF)
  * - p2 = (bit 16-31) - service interval (p2 >> 16)
+ * @param text unused
+ * @return the cost of this operation or an error
  * @todo Unfortunately you cannot safely restore the unitnumber or the old vehicle
  * as far as I can see. We can store it in BackuppedOrders, and restore it, but
  * but we have no way of seeing it has been tampered with or not, as we have no

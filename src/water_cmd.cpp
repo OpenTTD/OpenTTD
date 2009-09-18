@@ -106,6 +106,8 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  * @param flags type of operation
  * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -270,6 +272,8 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
  * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -287,6 +291,8 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param flags type of operation
  * @param p1 start tile of stretch-dragging
  * @param p2 specifies canal (0), water (1) or river (2); last two can only be built in scenario editor
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

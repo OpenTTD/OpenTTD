@@ -618,6 +618,7 @@ void CompaniesYearlyLoop()
  *   - bits  0-15 = old engine type
  *   - bits 16-31 = new engine type
  * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -680,6 +681,9 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  * - p1 = 0 - ClientID of the newly created client
  * - p1 = 1 - CompanyID to start AI (INVALID_COMPANY for first available)
  * - p1 = 2 - CompanyID of the that is getting deleted
+ * @param text unused
+ * @return the cost of this operation or an error
+ *
  * @todo In the case of p1=0, create new company, the clientID of the new client is in parameter
  * p2. This parameter is passed in at function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
  * on the server itself. First of all this is unbelievably ugly; second of all, well,

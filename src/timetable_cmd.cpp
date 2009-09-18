@@ -58,6 +58,8 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
  * - p2 = (bit  0-15) - Waiting or travelling time as specified by p1 bit 24 if p1 bit 25 is not set,
  *                      Travelling time if p1 bit 25 is set.
  * - p2 = (bit 16-31) - Waiting time if p1 bit 25 is set
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -115,6 +117,9 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * @param flags Operation to perform.
  * @param p1 Various bitstuffed elements
  * - p1 = (bit  0-15) - Vehicle with the orders to change.
+ * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -142,6 +147,8 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param p2 Various bitstuffed elements
  * - p2 = (bit 0) - Set to 1 to enable, 0 to disable autofill.
  * - p2 = (bit 1) - Set to 1 to preserve waiting times in non-destructive mode
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

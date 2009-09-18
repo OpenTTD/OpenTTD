@@ -604,6 +604,8 @@ void EnginesDailyLoop()
  * @param flags operation to perfom
  * @param p1 engine-prototype offered
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -713,6 +715,8 @@ static bool IsUniqueEngineName(const char *name)
  * @param flags operation to perfom
  * @param p1 engine ID to rename
  * @param p2 unused
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

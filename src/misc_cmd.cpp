@@ -34,6 +34,8 @@
  * @param flags operation to perform
  * @param p1 unused
  * @param p2 face bitmasked
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -55,6 +57,8 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
  * p1 bits 0-7 scheme to set
  * p1 bits 8-9 set in use state or first/second colour
  * @param p2 new colour for vehicles, property, etc.
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -142,6 +146,8 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param p2 when 0: loans LOAN_INTERVAL
  *           when 1: loans the maximum loan permitting money (press CTRL),
  *           when 2: loans the amount specified in p1
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -186,6 +192,8 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  * @param p2 when 0: pays back LOAN_INTERVAL
  *           when 1: pays back the maximum loan permitting money (press CTRL),
  *           when 2: pays back the amount specified in p1
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -238,6 +246,8 @@ static bool IsUniqueCompanyName(const char *name)
  * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -274,6 +284,8 @@ static bool IsUniquePresidentName(const char *name)
  * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -326,6 +338,8 @@ static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
  * @param flags operation to perform
  * @param p1 the pause mode to change
  * @param p2 1 pauses, 0 unpauses this mode
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -367,6 +381,8 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
  * @param flags operation to perform
  * @param p1 the amount of money to receive (if negative), or spend (if positive)
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdMoneyCheat(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -384,6 +400,8 @@ CommandCost CmdMoneyCheat(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  * @param flags operation to perform
  * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the company to transfer the money to
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

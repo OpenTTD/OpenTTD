@@ -614,6 +614,8 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
  * @param flags type of operation
  * @param p1 Index of vehicle
  * @param p2 not used
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

@@ -357,6 +357,8 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
  * @param p1 bit 0..3 road pieces to remove (RoadBits)
  *           bit 4..5 road type
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -451,6 +453,8 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
  *           bit 4..5 road type
  *           bit 6..7 disallowed directions to toggle
  * @param p2 the town that is building the road (0 if not applicable)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -703,6 +707,8 @@ do_clear:;
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
  * - p2 = (bit 5) - set road direction
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -789,6 +795,8 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1,
  * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -851,6 +859,8 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1
  * @param p1 bit 0..1 entrance direction (DiagDirection)
  *           bit 2..3 road type
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"

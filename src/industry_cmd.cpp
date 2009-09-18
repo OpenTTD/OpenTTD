@@ -1692,7 +1692,8 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
  * - p1 = (bit  0 -  7) - industry type see build_industry.h and see industry.h
  * - p1 = (bit  8 - 15) - first layout to try
  * @param p2 seed to use for variable 8F
- * @return index of the newly create industry, or CMD_ERROR if it failed
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

@@ -233,7 +233,8 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
  * @param flags for this command type
  * @param p1 corners to terraform (SLOPE_xxx)
  * @param p2 direction; eg up (non-zero) or down (zero)
- * @return error or cost of terraforming
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -359,7 +360,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param flags for this command type
  * @param p1 start tile of area drag
  * @param p2 height difference; eg raise (+1), lower (-1) or level (0)
- * @return  error or cost of terraforming
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

@@ -1592,6 +1592,8 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
  *               2 true iff it should be a city
  *            3..5 town road layout (@see TownLayout)
  * @param p2 town name parts
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2304,6 +2306,8 @@ static bool IsUniqueTownName(const char *name)
  * @param flags type of operation
  * @param p1 town ID to rename
  * @param p2 unused
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2576,6 +2580,8 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
  * @param flags type of operation
  * @param p1 town to do the action at
  * @param p2 action to perform, @see _town_action_proc for the list of available actions
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

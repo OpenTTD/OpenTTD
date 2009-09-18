@@ -399,6 +399,7 @@ CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags)
  * @param p2 Additional data for the command (for the #CommandProc)
  * @param flags Flags for the command and how to execute the command
  * @param cmd The command-id to execute (a value of the CMD_* enums)
+ * @param text The text to pass
  * @see CommandProc
  * @return the cost
  */

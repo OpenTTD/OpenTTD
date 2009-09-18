@@ -950,6 +950,8 @@ CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_
  * - p2 = (bit  0- 7) - custom station class
  * - p2 = (bit  8-15) - custom station id
  * - p2 = (bit 16-31) - station ID to join (NEW_STATION if build new one)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1328,7 +1330,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
  * @param p2 various bitstuffed elements
  * - p2 = bit 0 - if set keep the rail
  * @param text unused
- * @return cost of operation or error
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1362,7 +1364,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
  * @param p2 various bitstuffed elements
  * - p2 = bit 0 - if set keep the rail
  * @param text unused
- * @return cost of operation or error
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1508,6 +1510,8 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
  *           bit 2..3: the roadtypes
  *           bit 5: allow stations directly adjacent to other stations.
  *           bit 16..31: station ID to join (NEW_STATION if build new one)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1729,6 +1733,8 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
  * @param flags operation to perform
  * @param p1 not used
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1866,6 +1872,8 @@ void UpdateAirportsNoise()
  * @param p2 various bitstuffed elements
  * - p2 = (bit     0) - allow airports directly adjacent to other airports.
  * - p2 = (bit 16-31) - station ID to join (NEW_STATION if build new one)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2116,6 +2124,8 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
  * @param flags operation to perform
  * @param p1 (bit 0) - allow docks directly adjacent to other docks.
  * @param p2 bit 16-31: station ID to join (NEW_STATION if build new one)
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -2929,6 +2939,8 @@ static bool IsUniqueStationName(const char *name)
  * @param flags operation to perform
  * @param p1 station ID that is to be renamed
  * @param p2 unused
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

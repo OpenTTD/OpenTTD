@@ -310,6 +310,8 @@ static inline bool ValParamTrackOrientation(Track track) {return IsValidTrack(tr
  * @param flags operation to perform
  * @param p1 railtype of being built piece (normal, mono, maglev)
  * @param p2 rail track to build
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -447,6 +449,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * @param flags operation to perform
  * @param p1 unused
  * @param p2 rail orientation
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -675,6 +679,8 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
  * - p2 = (bit 4-6) - track-orientation, valid values: 0-5 (Track enum)
  * - p2 = (bit 7)   - 0 = build, 1 = remove tracks
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -722,6 +728,8 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
  * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
  * - p2 = (bit 4-6) - track-orientation, valid values: 0-5 (Track enum)
  * - p2 = (bit 7)   - 0 = build, 1 = remove tracks
+ * @param text unused
+ * @return the cost of this operation or an error
  * @see CmdRailTrackHelper
  */
 CommandCost CmdBuildRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
@@ -738,6 +746,8 @@ CommandCost CmdBuildRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p1
  * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
  * - p2 = (bit 4-6) - track-orientation, valid values: 0-5 (Track enum)
  * - p2 = (bit 7)   - 0 = build, 1 = remove tracks
+ * @param text unused
+ * @return the cost of this operation or an error
  * @see CmdRailTrackHelper
  */
 CommandCost CmdRemoveRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
@@ -750,6 +760,8 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p
  * @param flags operation to perform
  * @param p1 rail type
  * @param p2 bit 0..1 entrance direction (DiagDirection)
+ * @param text unused
+ * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
@@ -817,7 +829,9 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * - p1 = (bit 15-16)-cycle the signal direction this many times
  * - p1 = (bit 17)  - 1 = don't modify an existing signal but don't fail either, 0 = always set new signal type
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
- * TODO: p2 should be replaced by two bits for "along" and "against" the track.
+ * @param text unused
+ * @return the cost of this operation or an error
+ * @todo p2 should be replaced by two bits for "along" and "against" the track.
  */
 CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1033,6 +1047,8 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
  * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
  * - p2 = (bit  7- 9) - default signal type
  * - p2 = (bit 24-31) - user defined signals_density
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1159,6 +1175,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
  * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
  * - p2 = (bit  7- 9) - default signal type
  * - p2 = (bit 24-31) - user defined signals_density
+ * @param text unused
+ * @return the cost of this operation or an error
  * @see CmdSignalTrackHelper
  */
 CommandCost CmdBuildSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
@@ -1174,6 +1192,8 @@ CommandCost CmdBuildSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  *           - (bit  3)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
  *           - (bit  4)    - 0 = signals, 1 = semaphores
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1228,6 +1248,8 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
  * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
  * - p2 = (bit  7- 9) - default signal type
  * - p2 = (bit 24-31) - user defined signals_density
+ * @param text unused
+ * @return the cost of this operation or an error
  * @see CmdSignalTrackHelper
  */
 CommandCost CmdRemoveSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
@@ -1257,6 +1279,8 @@ Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
  * @param flags operation to perform
  * @param p1 start tile of drag
  * @param p2 new railtype to convert to
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

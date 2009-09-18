@@ -183,6 +183,8 @@ bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, DoCommandFlag fl
  * - p2 = (bit  0- 7) - bridge type (hi bh)
  * - p2 = (bit  8-14) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -452,6 +454,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
  * @param flags type of operation
  * @param p1 railtype or roadtypes. bit 9 set means road tunnel
  * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

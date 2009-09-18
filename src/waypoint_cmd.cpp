@@ -210,7 +210,7 @@ extern bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis a
  * - p2 = (bit  0- 7) - custom station class
  * - p2 = (bit  8-15) - custom station id
  * @param text unused
- * @return cost of operation or error
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -330,7 +330,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
  * @param p1 unused
  * @param p2 unused
  * @param text unused
- * @return cost of operation or error
+ * @return the cost of this operation or an error
  */
 CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -427,8 +427,8 @@ static bool IsUniqueWaypointName(const char *name)
  * @param flags type of operation
  * @param p1 id of waypoint
  * @param p2 unused
- * @param text the new name of the waypoint or an empty string when resetting to the default
- * @return cost of operation or error
+ * @param text the new name or an empty string when resetting to the default
+ * @return the cost of this operation or an error
  */
 CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

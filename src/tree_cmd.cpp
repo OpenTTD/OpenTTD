@@ -328,6 +328,8 @@ void GenerateTrees()
  * @param flags type of operation
  * @param p1 tree type, -1 means random.
  * @param p2 end tile of area-drag
+ * @param text unused
+ * @return the cost of this operation or an error
  */
 CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
