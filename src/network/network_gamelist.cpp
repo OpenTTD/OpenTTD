@@ -150,4 +150,37 @@ void NetworkGameListRequery()
 	}
 }
 
+/**
+ * Rebuild the GRFConfig's of the servers in the game list as we did
+ * a rescan and might have found new NewGRFs.
+ */
+void NetworkAfterNewGRFScan()
+{
+	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
+		/* Reset compatability state */
+		item->info.compatible = item->info.version_compatible;
+
+		for (GRFConfig *c = item->info.grfconfig; c != NULL; c = c->next) {
+			assert(HasBit(c->flags, GCF_COPY));
+
+			const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
+			if (f == NULL) {
+				/* Don't know the GRF, so mark game incompatible and the (possibly)
+				 * already resolved name for this GRF (another server has sent the
+				 * name of the GRF already */
+				c->name   = FindUnknownGRFName(c->grfid, c->md5sum, true);
+				c->status = GCS_NOT_FOUND;
+
+				/* If we miss a file, we're obviously incompatible */
+				item->info.compatible = false;
+			} else {
+				c->filename  = f->filename;
+				c->name      = f->name;
+				c->info      = f->info;
+				c->status    = GCS_UNKNOWN;
+			}
+		}
+	}
+}
+
 #endif /* ENABLE_NETWORK */

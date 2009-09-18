@@ -49,25 +49,41 @@ http://forum.openttd.org/
 
 2.1) Reporting Bugs:
 ---- ---------------
-To report a bug, please create a Flyspray account and follow the bugs
-link from our homepage. Please make sure the bug is reproducible and
-still occurs in the latest daily build or the current SVN version. Also
-please look through the existing bug reports briefly to see whether the bug
-is not already known.
+First of all, check whether the bug is not already known. Do this by looking
+through the file called 'known-bugs.txt' which is distributed with OpenTTD
+like this readme.
 
-The Flyspray project page URL is: http://bugs.openttd.org/
+For tracking our bugs we are using a bug tracker called Flyspray. You can find
+the tracker at http://bugs.openttd.org/. Before actually reporting take a look
+through the already reported bugs there to see if the bug is already known.
+The 'known-bugs.txt' file might be a bit outdated at the moment you are
+reading it as only bugs known before the release are documented there. Also
+look through the recently closed bugs.
 
-Please include the following information in your bug report:
-        - OpenTTD version (PLEASE test the latest SVN/nightly build)
-        - Bug details, including instructions how to reproduce it
-        - Platform and compiler (Win32, Linux, FreeBSD, ...)
-        - Attach a saved game *and* a screenshot if possible
-        - If this bug only occurred recently please note the last
-          version without the bug and the first version including
-          the bug. That way we can fix it quicker by looking at the
-          changes made.
-        - Attach crash.dmp, crash.log and crash.sav from the data
-          directory if they exist.
+When you are sure it is not already reported you should:
+ * Make sure you are running a recent version, i.e. run the latest stable or
+   nightly based on where you found the bug.
+ * Make sure you are not running a non-official binary, like a patch pack.
+   When you are playing with a patch pack you should report any bugs to the
+   forum thread related to that patch pack.
+ * Make it reproducable for the developers. In other words, create a savegame
+   in which you can reproduce the issue once loaded. It is very useful to give
+   us the crash.dmp, crash.sav and crash.log which are created on crashes.
+ * Check whether the bug is already reported on our bug tracker. This includes
+   searching for recently closed bug reports as the bug might already be fixed.
+
+After you have done all that you can report the bug. Please include the
+following information in your bug report:
+ * OpenTTD version (PLEASE test the latest SVN/nightly build)
+ * Bug details, including instructions how to reproduce it
+ * Platform (Win32, Linux, FreeBSD, ...) and compiler (including version) if
+   you compiled OpenTTD yourself.
+ * Attach a saved game *and* a screenshot if possible
+ * If this bug only occurred recently please note the last version without
+   the bug and the first version including the bug. That way we can fix it
+   quicker by looking at the changes made.
+ * Attach crash.dmp, crash.log and crash.sav. These files are usually created
+   next to your openttd.cfg. The crash handler will tell you the location.
 
 2.2) Reporting Desyncs:
 ---- ------------------
@@ -483,7 +499,7 @@ The OpenTTD team (in alphabetical order):
   Owen Rudge (orudge)            - Forum host, OS/2 port
   Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
   Remko Bijker (Rubidium)        - Lead coder and way more
-  Zdenek Sojka (SmatZ)           - Bug finder and fixer
+  Zdeněk Sojka (SmatZ)           - Bug finder and fixer
   Thijs Marinussen (Yexo)        - AI Framework
 
 Inactive Developers:
@@ -503,7 +519,7 @@ Retired Developers:
 Thanks to:
   Josef Drexler                  - For his great work on TTDPatch.
   Marcin Grzegorczyk             - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
-  Petr Baudis (pasky)            - Many patches, newgrf support, etc.
+  Petr Baudiš (pasky)            - Many patches, newgrf support, etc.
   Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with
   Stefan Meißner (sign_de)       - For his work on the console
   Mike Ragsdale                  - OpenTTD installer

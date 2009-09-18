@@ -9,6 +9,7 @@
 #include "string_func.h"
 #include "gamelog.h"
 #include "network/network_type.h"
+#include "network/network_func.h"
 #include "gfx_func.h"
 
 #include "fileio_func.h"
@@ -140,6 +141,8 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 			if (src->error->data != NULL) c->error->data = strdup(src->error->data);
 			if (src->error->custom_message != NULL) c->error->custom_message = strdup(src->error->custom_message);
 		}
+
+		ClrBit(c->flags, GCF_COPY);
 
 		ClrBit(c->flags, GCF_INIT_ONLY);
 		if (init_only) SetBit(c->flags, GCF_INIT_ONLY);
@@ -383,6 +386,10 @@ void ScanNewGRFFiles()
 	_all_grfs = to_sort[0];
 
 	free(to_sort);
+
+#ifdef ENABLE_NETWORK
+	NetworkAfterNewGRFScan();
+#endif
 }
 
 

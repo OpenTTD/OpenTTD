@@ -133,8 +133,9 @@ struct NewGRFAddWindow : public Window {
 	GRFConfig **list;
 	const GRFConfig *sel;
 
-	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : Window(desc, 0)
+	NewGRFAddWindow(const WindowDesc *desc, Window *parent, GRFConfig **list) : Window(desc, 0)
 	{
+		this->parent = parent;
 		this->list = list;
 		this->resize.step_height = 10;
 
@@ -490,7 +491,7 @@ struct NewGRFWindow : public Window {
 
 			case SNGRFS_ADD: // Add GRF
 				DeleteWindowByClass(WC_SAVELOAD);
-				new NewGRFAddWindow(&_newgrf_add_dlg_desc, &this->list);
+				new NewGRFAddWindow(&_newgrf_add_dlg_desc, this, &this->list);
 				break;
 
 			case SNGRFS_REMOVE: { // Remove GRF

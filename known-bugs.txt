@@ -1,5 +1,18 @@
-README
+OpenTTD's known bugs
+Last updated:    2009-08-18
+Release version: 0.7.2
 ------------------------------------------------------------------------
+
+
+Table of Contents:
+------------------
+1) About
+2) Known bugs in the this stable release
+3) Known bugs that will not be solved
+
+
+1) About:
+-- ------
 All bugs listed below are marked as known. Please do not submit any bugs
 that are the same as these. If you do, do not act surprised, because
 we WILL flame you!!
@@ -8,12 +21,18 @@ Of course if you have more knowledge about any of these bugs, have more
 specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://bugs.openttd.org.
 
-If the bug report is closed, it has been fixed, which then can be verified
-in the latest SVN version of /trunk.
 
-Bugs for 0.7.2
-------------------------------------------------------------------------
-URL: http://bugs.openttd.org
+2) Known bugs in the this stable release:
+-- --------------------------------------
+The following bugs are known to exist in this stable release and
+we intend to fix them. Some bugs are known but are not fixable or
+fixing them would cause further problems. Those bugs can be found
+in the "Known bugs that will not be solved" section.
+
+The bugs in this section all refer to a ticket in our bug tracking system
+that you can find at: http://bugs.openttd.org
+If the bugs are closed but still listed here it means that the bug is fixed
+and that the nightlies and next major release will not have that bug.
 
 - 3057	Road vehicle sometimes 'forget' the need for servicing
 - 3040	Not all alternatives are always shown in the "Join station" list
@@ -32,3 +51,72 @@ URL: http://bugs.openttd.org
 - 1140	[OSX] Not smooth moving map with touchpad
 - 1072	Text overflows in several windows
 -  119	Clipping problems with vehicles on slopes
+
+
+3) Known bugs that will not be solved:
+-- -----------------------------------
+This section lists all known bugs that we do not intend to fix and the
+reasons why we think that fixing them is infeasible. We might make some
+minor improvements that reduce the scope of these bugs, but we will not
+be able to completely fix them.
+
+Clipping problems
+	In some cases sprites are not drawn as one would expect. Examples of
+	this are aircraft that might be hidden below the runway or trees that
+	in some cases are rendered over vehicles.
+	The primary cause of this problem is that OpenTTD does not have enough
+	data (like a 3D model) to properly determine what needs to be drawn in
+	front of what. OpenTTD has bounding boxes but in lots of cases they
+	are either too big or too small and then cause problems with what
+	needs to be drawn in front of what. Also some visual tricks are used.
+	For example trains at 8 pixels high, the catenary needs to be drawn
+	above that. When you want to draw bridges on top of that, which are
+	only one height level (= 8 pixels) higher, you are getting into some
+	big problems.
+	We can not change the height levels; it would require us to either
+	redraw all vehicle or all landscape graphics. Doing so would mean we
+	leave the Transport Tycoon graphics, which in effect means OpenTTD
+	will not be a Transport Tycoon clone anymore.
+
+Duplicate (station) names after renaming
+	After renaming stations one can create duplicate station names. This
+	is done giving a station the same custom name as another station with
+	an automatically generated name.
+	The major part of this problem is that station names are translatable.
+	Meaning that a station is called e.g. '<TOWN> Central' in English and
+	'<TOWN> Centraal' in Dutch. This means that in network games the
+	renaming of a town could cause the rename to succeed on some clients
+	and fail at others. This creates an inconsistent game state that will
+	be seen as a 'desync'. Secondly the custom names are intended to fall
+	completely outside of the '<TOWN> <name>' naming of stations, so when
+	you rename a town all station names are updated accordingly.
+	As a result the decision has been made that all custom names are only
+	compared to the other custom names in the same class and not compared
+	to the automatically generated names.
+
+Forbid 90 degree turns does not work for crossing PBS paths
+	When you run a train through itself on a X junction with PBS turned on
+	the train will not obey the 'forbid 90 degree turns' setting. This is
+	due to the fact that we can not be sure that the setting was turned
+	off when the track was reserved, which means that we assume it was
+	turned on and that the setting does not hold at the time. We made it
+	this way to allow one to change the setting in-game, but it breaks
+	slightly when you are running your train through itself. Running a
+	train through means that your network is broken and is thus a user
+	error which OpenTTD tries to graciously handle.
+	Fixing this bug means that we need to record whether this particular
+	setting was turned on or off at the time the reservation was made. This
+	means adding quite a bit of data to the savegame for solving an issue
+	that is basically an user error. We think it is not worth the effort.
+
+Lost trains ignore (block) exit signals
+	If trains are lost they ignore block exit signals, blocking junctions
+	with presignals. This is caused because the path finders cannot tell
+	where the train needs to go. As such a random direction is chosen at
+	each junction. This causes the trains to occasionally to make choices
+	that are unwanted from a player's point of view.
+	This will not be fixed because lost trains are in almost all cases a
+	network problem, e.g. a train can never reach a specific place. This
+	makes the impact of fixing the bug enormously small against the
+	amount of work needed to write a system that prevents the lost trains
+	from taking the wrong direction.
