@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Alege criteriul de sortare
@@ -299,7 +300,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Afişeaz
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afişează grafice
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Afişează clasamentul companiilor
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listează sau fondează obiectivele industriale
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afişează lista cu trenurile companiei
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afisează o listă cu trenurile companiei. Ctrl+Click alternează deschiderea lista grupurilor
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afişează lista cu autovehiculele companiei
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afişează lista cu navele companiei
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afişează lista cu aeronavele companiei
@@ -558,9 +559,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Cont cur
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Credite:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numãrul de vehicule. Include autovehicule, trenuri, nave si aeronave.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numãrul de vehicule profitabile anul precedent. Include autovehicule, trenuri, nave si aeronave
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numãrul statiilor. Se numãrã fiecare componentã în cazul unor statii compuse din gãri, aeroporturi, porturi, statii de autobuz, etc.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cel mai mic venit (dintre toate vehiculele mai vechi de 2 ani).
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obtinutã în luna cu cel mai mic profit din ultimele 36 de luni.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obtinutã în luna cu cel mai mare profit din ultimele 36 de luni.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Numãrul de încãrcãturi transportate în ultimele 12 luni.
@@ -1647,7 +1648,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observă
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companie nouă
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(none)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Nici unul -
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donează bani
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Vorbeşte către toţi
@@ -1842,13 +1843,13 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construc
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construieşte cale ferată
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construieşte cale ferată în modul automat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construieşte un depou feroviar (pentru construire şi întreţinere de trenuri)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construieşte un depou feroviar (pentru achiziţie şi service de trenuri)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în haltă de mişcare (waypoint)
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construieşte gară
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semafoare feroviare
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construieşte pod de cale ferată
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comutator pentru construcţie/înlăturare căi ferate şi semnale
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl-Click înlătură şinele din punctele de tranzit si staţii
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteşte tipul de cale ferată
 
 # Rail depot construction window
@@ -1917,8 +1918,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construcieşte şină de tramvai
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construieste sectiune de sosea folosind modul Auto-sosea
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construieste sectiune de sina de tramvai folosind modul Auto-tramvai
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construieşte o autobază (pentru construire şi întreţinere de autovehicule)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construieste depou tramvaie (pentru constructii si reparatii vehicule)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construieşte o autobază (pentru achiziţie şi service vehicule)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construieste depou tramvaie (pentru achiziţii si service vehicule)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Plasează staţie de autobuz
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construieste statie de tramvai pentru calatori
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construieşte platformă pentru camioane
@@ -1952,7 +1953,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construc
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Rute acvatice
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construieşte canale
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construieşte ecluză
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru construcţie si service nave)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru achiziţionare si service nave)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construieşte port
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Amplasează o baliză ce poate fi utilizată pentru direcţionare
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieste apeduct
@@ -2416,7 +2417,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenţii (F6)
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvenţii disponibile:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de la {STRING} la {STRING}{YELLOW} (după {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}- nici una
+STR_SUBSIDIES_NONE                                              :{ORANGE} - nici una -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subvenţii acordate la ora actuală:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STRING} la {STRING}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe informatie pentru a centra imaginea pe industrie/oras
@@ -2666,12 +2667,12 @@ STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Cumpără vehicul
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Cumpără vehicul
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Construieşte navă
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Cumpără navă
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Cumpără aeronavă
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Cumpără vehiculul selectat
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Cumpără vehiculul feroviar selectat
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Cumpără autovehiculul selectat
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Construieşte nava selectată
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Cumpără nava selectată
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Cumpără aeronava selectată
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nume nou
@@ -2729,18 +2730,18 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Aeronav�
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Construieşte un nou vehicul feroviar
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Cumpără un autovehicul nou
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construieşte o navă nouă
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Cumpără o aeronavă
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Cumpără o navă nouă
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Cumpără o nouă aeronavă
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clonare tren
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonare vehicul
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonare navă
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonare aeronavă
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi dă clic pe un tren din interiorul sau exteriorul depoului. Ctrl+clic va împărţi comenzile
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi dă clic pe un autovehicul din interiorul sau afara depoului. Ctrl+clic va împărţi comenzile
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi dă clic pe o navă din interiorul sau exteriorul depoului. Ctrl+clic va împărţi comenzile
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi dă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+clic va împărţi comenzile
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi dă click pe un tren din interiorul sau exteriorul depoului. Ctrl+click va sincroniza comenzile
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi dă click pe un autovehicul din interiorul sau afara depoului. Ctrl+click va sincroniza comenzile
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi dă click pe o navă din interiorul sau exteriorul depoului. Ctrl+click va sincroniza comenzile
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi dă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+Clic va sincroniza comenzile
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează imaginea pe locaţia depoului
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia acestei autobaze
@@ -2823,10 +2824,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Trimite 
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Trimite nava în şantier. Ctrl+clic pentru întreţinere
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Trimite aeronava la hangar. Ctrl+clic pentru întreţinere
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+clic a împărţi comenzile
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+clic va împărţi comenzile
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+clic va împărţi comenzile
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+clic va împărţi comenzile
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+click a sincroniza comenzile
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+click va sincroniza comenzile
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+click va sincroniza comenzile
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+Click va sincroniza comenzile
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forţează trenul să ignore semnalizarea de oprire
 
@@ -3046,7 +3047,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mergi la
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel mai apropiat depou
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Adaugă o comandă avansată
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Arata toate vehiculele care se incadreaza in acest program
@@ -3473,10 +3474,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nu pot t
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nu pot trimite nava în şantier...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nu se poate trimite aeronava la hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nu se poate construi vehiculul...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nu pot cumpăra vehiculul feroviar...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nu pot cumpăra autovehicul...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nu pot construi nava...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nu se poate cumpăra aeronava...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nu pot cumpara nava...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nu pot cumpăra aeronava...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nu se poate redenumi modelul de vehicul...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nu pot redenumi modelul de autovehicul...

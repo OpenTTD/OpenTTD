@@ -892,7 +892,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Взрыв нефтеперегонного завода вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}НЛО приземлилось возле г.{NBSP}{TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Обвал на угольной шахте вызывает оползень около {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Обвал на угольной шахте вызывает оползень в районе г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}ПОТОП!{}{COMMA} человек{P "" а ""} утонул{P "" о о} в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Транспортная компания в опасном положении!
@@ -909,9 +909,9 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Новое предприятие! {STRING} стро{G 0 и и и я}тся возле г.{NBSP}{TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Новое предприятие! {STRING} заложен{G 0 "" а о ы} возле г.{NBSP}{TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} объявляет о немедленном закрытии!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Проблемы с поставками вынуждают {STRING} объявить о неизбежном закрытии!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Недостаток деревьев в округе вынуждает {STRING} объявить о неизбежном закрытии!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Предприятие «{STRING}» объявляет о скором закрытии!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Предприятие «{STRING}» закрывается из-за проблем с поставками сырья!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с недостатком деревьев в округе!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
@@ -1587,7 +1587,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Числ
 STR_FACE_FACECODE_ERR                                           :{WHITE}Не могу изменить внешность - значение должно быть целым и лежать в диапазоне от 0 до 4 294 967 295
 STR_FACE_SAVE                                                   :{BLACK}Сохранить
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Сохранить внешность
-STR_FACE_SAVE_DONE                                              :{WHITE}Это лицо сохранено в файле конфигурации.
+STR_FACE_SAVE_DONE                                              :{WHITE}Внешность сохранена в файле конфигурации.
 STR_FACE_EUROPEAN                                               :{BLACK}Европ.
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Выбор европеоидного типа лица
 STR_FACE_AFRICAN                                                :{BLACK}Африк.
@@ -3239,7 +3239,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Ангар ({STATION})
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Переоборуд. для {STRING} и стоп)
+STR_ORDER_REFIT_STOP_ORDER                                      :(Переоборуд. под {STRING.acc} и стоп)
 STR_ORDER_STOP_ORDER                                            :(Стоп)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3729,7 +3729,7 @@ STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Старые д
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Коттеджи
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Дома
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Многоквартирный дом
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Высокое офисное здание
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Высотное офисное здание
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Торгово-офисный центр
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Торгово-офисный центр
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Театр
