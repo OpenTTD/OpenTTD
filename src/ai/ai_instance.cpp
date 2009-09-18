@@ -122,21 +122,31 @@ AIInstance::AIInstance(AIInfo *info) :
 	/* Register the API functions and classes */
 	this->RegisterAPI();
 
-	/* Load and execute the script for this AI */
-	const char *main_script = info->GetMainScript();
-	if (strcmp(main_script, "%_dummy") == 0) {
-		extern void AI_CreateAIDummy(HSQUIRRELVM vm);
-		AI_CreateAIDummy(this->engine->GetVM());
-	} else if (!this->engine->LoadScript(main_script)) {
-		this->Died();
-		return;
-	}
+	try {
+		AIObject::SetAllowDoCommand(false);
+		/* Load and execute the script for this AI */
+		const char *main_script = info->GetMainScript();
+		if (strcmp(main_script, "%_dummy") == 0) {
+			extern void AI_CreateAIDummy(HSQUIRRELVM vm);
+			AI_CreateAIDummy(this->engine->GetVM());
+		} else if (!this->engine->LoadScript(main_script) || this->engine->IsSuspended()) {
+			if (this->engine->IsSuspended()) AILog::Error("This AI took too long to load script. AI is not started.");
+			this->Died();
+			return;
+		}
 
-	/* Create the main-class */
-	this->instance = MallocT<SQObject>(1);
-	if (!this->engine->CreateClassInstance(info->GetInstanceName(), this->controller, this->instance)) {
+		/* Create the main-class */
+		this->instance = MallocT<SQObject>(1);
+		if (!this->engine->CreateClassInstance(info->GetInstanceName(), this->controller, this->instance)) {
+			this->Died();
+			return;
+		}
+		AIObject::SetAllowDoCommand(true);
+	} catch (AI_FatalError e) {
+		this->is_dead = true;
+		this->engine->ThrowError(e.GetErrorMessage());
+		this->engine->ResumeError();
 		this->Died();
-		return;
 	}
 }
 

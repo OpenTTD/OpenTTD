@@ -1153,7 +1153,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 			int result = GB(callback, 0, 14);
 
 			/* Simulate a 15 bit signed value */
-			if (HasBit(callback, 14)) result = 0x4000 - result;
+			if (HasBit(callback, 14)) result -= 0x4000;
 
 			/* "The result should be a signed multiplier that gets multiplied
 			 * by the amount of cargo moved and the price factor, then gets
@@ -1563,9 +1563,6 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 {
 	assert(v->current_order.IsType(OT_LOADING));
 
-	/* When we've finished loading we're just staying here till the timetable 'runs' out */
-	if (HasBit(v->vehicle_flags, VF_LOADING_FINISHED)) return;
-
 	assert(v->load_unload_time_rem != 0);
 
 	/* We have not waited enough time till the next round of loading/unloading */
@@ -1587,6 +1584,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
 		SetBit(v->vehicle_flags, VF_LOADING_FINISHED);
+		v->load_unload_time_rem = 1;
 		return;
 	}
 
@@ -1680,9 +1678,11 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* update stats */
 		int t;
 		switch (u->type) {
-			case VEH_TRAIN: t = u->u.rail.cached_max_speed; break;
-			case VEH_ROAD:  t = u->max_speed / 2;           break;
-			default:        t = u->max_speed;               break;
+			case VEH_TRAIN:    t = u->u.rail.cached_max_speed; break;
+			case VEH_ROAD:     t = u->max_speed / 2;           break;
+			case VEH_SHIP:     t = u->max_speed;               break;
+			case VEH_AIRCRAFT: t = u->max_speed * 10 / 129;    break; // convert to old units
+			default: NOT_REACHED();
 		}
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
