@@ -103,7 +103,16 @@ struct DropdownWindow : Window {
 	{
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
 		if (w2 != NULL) {
-			w2->RaiseWidget(this->parent_button);
+			if (w2->nested_array != NULL) {
+				NWidgetCore *nwi2 = w2->GetWidget<NWidgetCore>(this->parent_button);
+				if (nwi2->type == NWID_BUTTON_DRPDOWN) {
+					nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
+				} else {
+					w2->RaiseWidget(this->parent_button);
+				}
+			} else {
+				w2->RaiseWidget(this->parent_button);
+			}
 			w2->SetWidgetDirty(this->parent_button);
 		}
 
@@ -251,20 +260,23 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 
-	w->LowerWidget(button);
-	w->SetWidgetDirty(button);
-
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
 	Rect wi_rect;
 	Colours wi_colour;
 	if (w->nested_array != NULL) {
-		const NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
+		NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
 		wi_rect.left   = nwi->pos_x;
 		wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
 		wi_rect.top    = nwi->pos_y;
 		wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
 		wi_colour = nwi->colour;
+
+		if (nwi->type == NWID_BUTTON_DRPDOWN) {
+			nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
+		} else {
+			w->LowerWidget(button);
+		}
 	} else {
 		const Widget *wi = &w->widget[button];
 		wi_rect.left   = wi->left;
@@ -272,7 +284,10 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		wi_rect.top    = wi->top;
 		wi_rect.bottom = wi->bottom;
 		wi_colour = wi->colour;
+
+		w->LowerWidget(button);
 	}
+	w->SetWidgetDirty(button);
 
 	/* The preferred position is just below the dropdown calling widget */
 	int top = w->top + wi_rect.bottom + 1;

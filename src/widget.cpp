@@ -562,19 +562,41 @@ static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, Strin
 	if (str != STR_NULL) DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + WD_CAPTIONTEXT_TOP, str, TC_FROMSTRING, SA_CENTER);
 }
 
-static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
+/**
+ * Draw a button with a dropdown (#WWT_DROPDOWN and #NWID_BUTTON_DRPDOWN).
+ * @param r                Rectangle containing the widget.
+ * @param colour           Background colour of the widget.
+ * @param clicked_button   The button-part is lowered.
+ * @param clicked_dropdown The drop-down part is lowered.
+ * @param str              Text of the button.
+ *
+ * @note Magic constants are also used in #NWidgetLeaf::ButtonHit.
+ */
+static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str)
 {
 	if (_dynlang.text_dir == TD_LTR) {
-		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, FR_NONE);
-		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
-		DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_BLACK_ARROW_DOWN, TC_FROMSTRING, SA_CENTER);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT, r.right - WD_DROPDOWNTEXT_RIGHT, r.top + WD_DROPDOWNTEXT_TOP, str, TC_BLACK);
+		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
+		DrawString(r.right - (clicked_dropdown ? 10 : 11), r.right, r.top + (clicked_dropdown ? 2 : 1), STR_BLACK_ARROW_DOWN, TC_FROMSTRING, SA_CENTER);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + WD_DROPDOWNTEXT_TOP + clicked_button, str, TC_BLACK);
 	} else {
-		DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, colour, FR_NONE);
-		DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
-		DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_BLACK_ARROW_DOWN, TC_FROMSTRING, SA_CENTER);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_RIGHT, r.right - WD_DROPDOWNTEXT_LEFT, r.top + WD_DROPDOWNTEXT_TOP, str, TC_BLACK);
+		DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
+		DrawString(r.left + clicked_dropdown, r.left + 11, r.top + (clicked_dropdown ? 2 : 1), STR_BLACK_ARROW_DOWN, TC_FROMSTRING, SA_CENTER);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_RIGHT + clicked_button, r.right - WD_DROPDOWNTEXT_LEFT + clicked_button, r.top + WD_DROPDOWNTEXT_TOP + clicked_button, str, TC_BLACK);
 	}
+}
+
+/**
+ * Draw a dropdown #WWT_DROPDOWN widget.
+ * @param r       Rectangle containing the widget.
+ * @param colour  Background colour of the widget.
+ * @param clicked The widget is lowered.
+ * @param str     Text of the button.
+ */
+static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
+{
+	DrawButtonDropdown(r, colour, false, clicked, str);
 }
 
 /**
@@ -2003,6 +2025,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_TEXT:
 		case WWT_MATRIX:
 		case WWT_EDITBOX:
+		case NWID_BUTTON_DRPDOWN:
 			this->SetFill(false, false);
 			break;
 
@@ -2177,7 +2200,8 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			size = maxdim(size, d2);
 			break;
 		}
-		case WWT_DROPDOWN: {
+		case WWT_DROPDOWN:
+		case NWID_BUTTON_DRPDOWN: {
 			static const Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
 			padding = &extra;
 			if (this->index >= 0) w->SetStringParameters(this->index);
@@ -2300,6 +2324,11 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawDropdown(r, this->colour, clicked, this->widget_data);
 			break;
 
+		case NWID_BUTTON_DRPDOWN:
+			if (this->index >= 0) w->SetStringParameters(this->index);
+			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data);
+			break;
+
 		default:
 			NOT_REACHED();
 	}
@@ -2320,6 +2349,24 @@ Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;
+}
+
+/**
+ * For a #NWID_BUTTON_DRPDOWN, test whether \a pt refers to the button or to the drop-down.
+ * @param pt Point in the widget.
+ * @return The point refers to the button.
+ *
+ * @param The magic constants are also used at #DrawButtonDropdown.
+ */
+bool NWidgetLeaf::ButtonHit(const Point &pt)
+{
+	if (_dynlang.text_dir == TD_LTR) {
+		int button_width = this->pos_x + this->current_x - 12;
+		return pt.x < button_width;
+	} else {
+		int button_left = this->pos_x + 12;
+		return pt.x >= button_left;
+	}
 }
 
 /**
@@ -2545,7 +2592,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			default:
 				if (*dest != NULL) return num_used;
-				assert((parts->type & WWT_MASK) < WWT_LAST);
+				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DRPDOWN);
 				*dest = new NWidgetLeaf(parts->type, parts->u.widget.colour, parts->u.widget.index, 0x0, STR_NULL);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;

@@ -121,6 +121,7 @@ enum WidgetType {
 	NWID_SELECTION,      ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
 	NWID_LAYERED,        ///< Widgets layered on top of each other, all visible at the same time.
 	NWID_VIEWPORT,       ///< Nested widget containing a viewport.
+	NWID_BUTTON_DRPDOWN, ///< Button with a drop-down.
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
@@ -278,17 +279,22 @@ public:
 
 /** Nested widget flags that affect display and interaction withe 'real' widgets. */
 enum NWidgetDisplay {
+	/* Generic. */
 	NDB_LOWERED         = 0, ///< Widget is lowered (pressed down) bit.
 	NDB_DISABLED        = 1, ///< Widget is disabled (greyed out) bit.
+	/* Viewport widget. */
 	NDB_NO_TRANSPARENCY = 2, ///< Viewport is never transparent.
 	NDB_SHADE_GREY      = 3, ///< Shade viewport to grey-scale.
 	NDB_SHADE_DIMMED    = 4, ///< Display dimmed colours in the viewport.
+	/* Button dropdown widget. */
+	NDB_DROPDOWN_ACTIVE = 5, ///< Dropdown menu of the button dropdown widget is active. @see #NWID_BUTTON_DRPDOWN
 
 	ND_LOWERED  = 1 << NDB_LOWERED,                ///< Bit value of the lowered flag.
 	ND_DISABLED = 1 << NDB_DISABLED,               ///< Bit value of the disabled flag.
 	ND_NO_TRANSPARENCY = 1 << NDB_NO_TRANSPARENCY, ///< Bit value of the 'no transparency' flag.
 	ND_SHADE_GREY      = 1 << NDB_SHADE_GREY,      ///< Bit value of the 'shade to grey' flag.
 	ND_SHADE_DIMMED    = 1 << NDB_SHADE_DIMMED,    ///< Bit value of the 'dimmed colours' flag.
+	ND_DROPDOWN_ACTIVE = 1 << NDB_DROPDOWN_ACTIVE, ///< Bit value of the 'dropdown active' flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay);
 
@@ -525,6 +531,8 @@ public:
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
+
+	bool ButtonHit(const Point &pt);
 
 	static void InvalidateDimensionCache();
 private:
