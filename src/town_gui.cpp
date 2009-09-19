@@ -270,7 +270,7 @@ public:
 	{
 		this->CreateNestedTree(desc);
 
-		this->town = Town::Get(this->window_number);
+		this->town = Town::Get(window_number);
 		if (this->town->larger_town) this->nested_array[TVW_CAPTION]->widget_data = STR_TOWN_VIEW_CITY_CAPTION;
 
 		this->FinishInitNested(desc, window_number);
