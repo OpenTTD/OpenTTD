@@ -1263,6 +1263,11 @@ void NWidgetStacked::SetIndex(int index)
 
 void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 {
+	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
+		assert(w->nested_array_size > (uint)this->index);
+		w->nested_array[this->index] = this;
+	}
+
 	/* First sweep, recurse down and compute minimal size and filling. */
 	this->smallest_x = 0;
 	this->smallest_y = 0;
