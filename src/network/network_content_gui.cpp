@@ -180,7 +180,7 @@ public:
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
-			this->nested_array[NCDSWW_CANCELOK]->widget_data = STR_BUTTON_OK;
+			this->GetWidget<NWidgetCore>(NCDSWW_CANCELOK)->widget_data = STR_BUTTON_OK;
 		}
 
 		this->SetDirty();

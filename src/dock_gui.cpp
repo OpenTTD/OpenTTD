@@ -370,8 +370,8 @@ public:
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		int top = this->nested_array[BDSW_LT_OFF]->pos_y + this->nested_array[BDSW_LT_OFF]->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetCore *back_nwi = this->nested_array[BDSW_BACKGROUND];
+		int top = this->GetWidget<NWidgetBase>(BDSW_LT_OFF)->pos_y + this->GetWidget<NWidgetBase>(BDSW_LT_OFF)->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetBase *back_nwi = this->GetWidget<NWidgetBase>(BDSW_BACKGROUND);
 		int right  = back_nwi->pos_x + back_nwi->current_x;
 		int bottom = back_nwi->pos_y + back_nwi->current_y;
 		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
@@ -463,10 +463,10 @@ public:
 	{
 		this->DrawWidgets();
 
-		DrawShipDepotSprite(this->nested_array[BDDW_X]->pos_x + 64, this->nested_array[BDDW_X]->pos_y + 18, 0);
-		DrawShipDepotSprite(this->nested_array[BDDW_X]->pos_x + 32, this->nested_array[BDDW_X]->pos_y + 34, 1);
-		DrawShipDepotSprite(this->nested_array[BDDW_Y]->pos_x + 32, this->nested_array[BDDW_Y]->pos_y + 18, 2);
-		DrawShipDepotSprite(this->nested_array[BDDW_Y]->pos_x + 64, this->nested_array[BDDW_Y]->pos_y + 34, 3);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 18, 0);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 34, 1);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 18, 2);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 34, 3);
 	}
 
 	virtual void OnClick(Point pt, int widget)

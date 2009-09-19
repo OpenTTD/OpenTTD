@@ -223,8 +223,8 @@ public:
 		const AirportFTAClass *airport = GetAirport(_selected_airport_type);
 		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
-		uint16 top = this->nested_array[BAW_BTN_DOHILIGHT]->pos_y + this->nested_array[BAW_BTN_DOHILIGHT]->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetCore *panel_nwi = this->nested_array[BAW_BOTTOMPANEL];
+		uint16 top = this->GetWidget<NWidgetBase>(BAW_BTN_DOHILIGHT)->pos_y + this->GetWidget<NWidgetBase>(BAW_BTN_DOHILIGHT)->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetBase *panel_nwi = this->GetWidget<NWidgetBase>(BAW_BOTTOMPANEL);
 		int right = panel_nwi->pos_x +  panel_nwi->current_x;
 		int bottom = panel_nwi->pos_y +  panel_nwi->current_y;
 		/* only show the station (airport) noise, if the noise option is activated */

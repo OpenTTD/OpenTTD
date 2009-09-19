@@ -271,12 +271,12 @@ public:
 		this->CreateNestedTree(desc);
 
 		this->town = Town::Get(window_number);
-		if (this->town->larger_town) this->nested_array[TVW_CAPTION]->widget_data = STR_TOWN_VIEW_CITY_CAPTION;
+		if (this->town->larger_town) this->GetWidget<NWidgetCore>(TVW_CAPTION)->widget_data = STR_TOWN_VIEW_CITY_CAPTION;
 
 		this->FinishInitNested(desc, window_number);
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
-		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[TVW_VIEWPORT];
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(TVW_VIEWPORT);
 		nvp->InitializeViewport(this, this->town->xy, ZOOM_LVL_NEWS);
 
 		this->ResizeWindowAsNeeded();
@@ -422,7 +422,7 @@ public:
 
 		if (_settings_game.economy.station_noise_level) aimed_height += FONT_HEIGHT_NORMAL;
 
-		NWidgetCore *nwid_info = this->nested_array[TVW_INFOPANEL];
+		NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(TVW_INFOPANEL);
 		if (aimed_height > nwid_info->current_y || (aimed_height < nwid_info->current_y && nwid_info->current_y > nwid_info->smallest_y)) {
 			ResizeWindow(this, 0, aimed_height - nwid_info->current_y);
 		}
@@ -431,7 +431,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		if (this->viewport != NULL) {
-			NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[TVW_VIEWPORT];
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(TVW_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 		}
 	}
@@ -621,7 +621,7 @@ public:
 		this->BuildSortTownList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.SetCapacity(this->nested_array[TDW_CENTERTOWN]->current_y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / (int)this->resize.step_height);
 	}
 
 	~TownDirectoryWindow()
@@ -679,7 +679,7 @@ public:
 		switch (widget) {
 			case TDW_SORTNAME:
 			case TDW_SORTPOPULATION: {
-				Dimension d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
 				d.height += padding.height;
 				*size = maxdim(*size, d);
@@ -737,7 +737,7 @@ public:
 				break;
 
 			case TDW_CENTERTOWN: { // Click on Town Matrix
-				uint16 id_v = (pt.y - this->nested_array[widget]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
+				uint16 id_v = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 

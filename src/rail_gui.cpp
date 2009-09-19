@@ -643,15 +643,15 @@ struct BuildRailToolbarWindow : Window {
 		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
 		assert(railtype < RAILTYPE_END);
-		this->nested_array[RTW_CAPTION]->widget_data      = rti->strings.toolbar_caption;
-		this->nested_array[RTW_BUILD_NS]->widget_data     = rti->gui_sprites.build_ns_rail;
-		this->nested_array[RTW_BUILD_X]->widget_data      = rti->gui_sprites.build_x_rail;
-		this->nested_array[RTW_BUILD_EW]->widget_data     = rti->gui_sprites.build_ew_rail;
-		this->nested_array[RTW_BUILD_Y]->widget_data      = rti->gui_sprites.build_y_rail;
-		this->nested_array[RTW_AUTORAIL]->widget_data     = rti->gui_sprites.auto_rail;
-		this->nested_array[RTW_BUILD_DEPOT]->widget_data  = rti->gui_sprites.build_depot;
-		this->nested_array[RTW_CONVERT_RAIL]->widget_data = rti->gui_sprites.convert_rail;
-		this->nested_array[RTW_BUILD_TUNNEL]->widget_data = rti->gui_sprites.build_tunnel;
+		this->GetWidget<NWidgetCore>(RTW_CAPTION)->widget_data      = rti->strings.toolbar_caption;
+		this->GetWidget<NWidgetCore>(RTW_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
+		this->GetWidget<NWidgetCore>(RTW_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
+		this->GetWidget<NWidgetCore>(RTW_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
+		this->GetWidget<NWidgetCore>(RTW_BUILD_Y)->widget_data      = rti->gui_sprites.build_y_rail;
+		this->GetWidget<NWidgetCore>(RTW_AUTORAIL)->widget_data     = rti->gui_sprites.auto_rail;
+		this->GetWidget<NWidgetCore>(RTW_BUILD_DEPOT)->widget_data  = rti->gui_sprites.build_depot;
+		this->GetWidget<NWidgetCore>(RTW_CONVERT_RAIL)->widget_data = rti->gui_sprites.convert_rail;
+		this->GetWidget<NWidgetCore>(RTW_BUILD_TUNNEL)->widget_data = rti->gui_sprites.build_tunnel;
 	}
 
 	/** Switch to another rail type.
@@ -1025,7 +1025,7 @@ public:
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
 			this->vscroll.SetCount(_railstation.station_count);
-			this->vscroll.SetCapacity(GB(this->nested_array[BRSW_NEWST_LIST]->widget_data, MAT_ROW_START, MAT_ROW_BITS));
+			this->vscroll.SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
 			this->vscroll.SetPosition(Clamp(_railstation.station_type - 2, 0, this->vscroll.GetCount() - this->vscroll.GetCapacity()));
 		} else {
 			/* New stations are not available, so ensure the default station
@@ -1074,8 +1074,8 @@ public:
 		this->DrawWidgets();
 
 		/* 'Accepts' and 'Supplies' texts. */
-		int top = this->nested_array[BRSW_HIGHLIGHT_ON]->pos_y + this->nested_array[BRSW_HIGHLIGHT_ON]->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetCore *back_nwi = this->nested_array[BRSW_BACKGROUND];
+		int top = this->GetWidget<NWidgetBase>(BRSW_HIGHLIGHT_ON)->pos_y + this->GetWidget<NWidgetBase>(BRSW_HIGHLIGHT_ON)->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetBase *back_nwi = this->GetWidget<NWidgetBase>(BRSW_BACKGROUND);
 		int right = back_nwi->pos_x +  back_nwi->current_x;
 		int bottom = back_nwi->pos_y +  back_nwi->current_y;
 		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
@@ -1113,7 +1113,7 @@ public:
 				size->width = max(size->width, d.width + padding.width);
 
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-				size->height = GB(this->nested_array[widget]->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 				break;
 			}
 		}
@@ -1306,7 +1306,7 @@ public:
 
 			case BRSW_NEWST_LIST: {
 				const StationSpec *statspec;
-				int y = (pt.y - this->nested_array[BRSW_NEWST_LIST]->pos_y) / this->line_height;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(BRSW_NEWST_LIST)->pos_y) / this->line_height;
 
 				if (y >= this->vscroll.GetCapacity()) return;
 				y += this->vscroll.GetPosition();
@@ -1529,9 +1529,9 @@ private:
 	 */
 	void DrawSignalSprite(byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
 	{
-		int bottom = this->nested_array[widget_index]->pos_y + this->nested_array[widget_index]->current_y - 1;
+		int bottom = this->GetWidget<NWidgetBase>(widget_index)->pos_y + this->GetWidget<NWidgetBase>(widget_index)->current_y - 1;
 		DrawSprite(image + this->IsWidgetLowered(widget_index), PAL_NONE,
-				this->nested_array[widget_index]->pos_x + this->nested_array[widget_index]->current_x / 2 - xrel - xsize / 2 + this->IsWidgetLowered(widget_index),
+				this->GetWidget<NWidgetBase>(widget_index)->pos_x + this->GetWidget<NWidgetBase>(widget_index)->current_x / 2 - xrel - xsize / 2 + this->IsWidgetLowered(widget_index),
 				bottom - 3 + this->IsWidgetLowered(widget_index));
 	}
 
@@ -1568,9 +1568,9 @@ public:
 
 		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
 		SetDParam(0, _settings_client.gui.drag_signals_density);
-		int right = this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->pos_x + this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->current_x - 1;
-		DrawString(this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->pos_x, right,
-				this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->pos_y + 2, STR_JUST_INT, TC_ORANGE, SA_CENTER);
+		int right = this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->pos_x + this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->current_x - 1;
+		DrawString(this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->pos_x, right,
+				this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->pos_y + 2, STR_JUST_INT, TC_ORANGE, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1791,8 +1791,8 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			if (this->hscroll.GetPosition() + i < this->hscroll.GetCount()) {
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.GetPosition() + i);
 
-				int bottom = this->nested_array[BRWW_WAYPOINT_1 + i]->pos_y + this->nested_array[BRWW_WAYPOINT_1 + i]->current_y;
-				DrawWaypointSprite(this->nested_array[BRWW_WAYPOINT_1 + i]->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
+				int bottom = this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i)->pos_y + this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i)->current_y;
+				DrawWaypointSprite(this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i)->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&

@@ -934,7 +934,7 @@ public:
 		this->BuildSortIndustriesList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.SetCapacity(this->nested_array[IDW_INDUSTRY_LIST]->current_y / this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(IDW_INDUSTRY_LIST)->current_y / this->resize.step_height);
 	}
 
 	~IndustryDirectoryWindow()
@@ -980,7 +980,7 @@ public:
 	{
 		switch (widget) {
 			case IDW_DROPDOWN_ORDER: {
-				Dimension d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
 				d.height += padding.height;
 				*size = maxdim(*size, d);
@@ -1026,7 +1026,7 @@ public:
 				break;
 
 			case IDW_INDUSTRY_LIST: {
-				int y = (pt.y - this->nested_array[widget]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 				uint16 p;
 
 				if (!IsInsideMM(y, 0, this->vscroll.GetCapacity())) return;

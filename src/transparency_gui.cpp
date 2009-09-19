@@ -80,7 +80,7 @@ public:
 				for (uint i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
 					if (i == TTW_WIDGET_LOADING) continue; // Do not draw button for invisible loading indicators.
 
-					const NWidgetCore *wi = this->nested_array[i];
+					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(i);
 					DrawFrameRect(wi->pos_x + 1, r.top + 2, wi->pos_x + wi->current_x - 2, r.bottom - 2, COLOUR_PALE_GREEN,
 							HasBit(_invisibility_opt, i - TTW_WIDGET_BEGIN) ? FR_LOWERED : FR_NONE);
 				}
@@ -104,7 +104,7 @@ public:
 		} else if (widget == TTW_WIDGET_BUTTONS) {
 			uint i;
 			for (i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
-				const NWidgetCore *nwid = this->nested_array[i];
+				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
 				if (IsInsideBS(pt.x, nwid->pos_x, nwid->current_x))
 					break;
 			}

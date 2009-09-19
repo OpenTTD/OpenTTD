@@ -95,7 +95,7 @@ struct SignListWindow : Window, SignList {
 	{
 		this->InitNested(desc, window_number);
 
-		this->vscroll.SetCapacity((this->nested_array[SLW_LIST]->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 
 		/* Create initial list. */
 		this->signs.ForceRebuild();
@@ -144,7 +144,7 @@ struct SignListWindow : Window, SignList {
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget == SLW_LIST) {
-			uint id_v = (pt.y - this->nested_array[SLW_LIST]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
+			uint id_v = (pt.y - this->GetWidget<NWidgetBase>(SLW_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 
 			if (id_v >= this->vscroll.GetCapacity()) return;
 			id_v += this->vscroll.GetPosition();

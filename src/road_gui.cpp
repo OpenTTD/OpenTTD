@@ -774,8 +774,8 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 
 		this->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
 		if ( _cur_roadtype == ROADTYPE_TRAM) {
-			this->nested_array[BRDW_CAPTION]->widget_data = STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION;
-			for (int i = BRDW_DEPOT_NE; i <= BRDW_DEPOT_NW; i++) this->nested_array[i]->tool_tip = STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP;
+			this->GetWidget<NWidgetCore>(BRDW_CAPTION)->widget_data = STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION;
+			for (int i = BRDW_DEPOT_NE; i <= BRDW_DEPOT_NW; i++) this->GetWidget<NWidgetCore>(i)->tool_tip = STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP;
 		}
 
 		this->FinishInitNested(desc, TRANSPORT_ROAD);
@@ -887,8 +887,8 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 			BRSW_STATION_NW,
 			WIDGET_LIST_END);
 
-		this->nested_array[BRSW_CAPTION]->widget_data = _road_type_infos[_cur_roadtype].picker_title[rs];
-		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->nested_array[i]->tool_tip = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
+		this->GetWidget<NWidgetCore>(BRSW_CAPTION)->widget_data = _road_type_infos[_cur_roadtype].picker_title[rs];
+		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->GetWidget<NWidgetCore>(i)->tool_tip = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
 
 		this->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BRSW_LT_OFF);
@@ -916,8 +916,8 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 
 		/* 'Accepts' and 'Supplies' texts. */
 		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
-		int top = this->nested_array[BRSW_LT_ON]->pos_y + this->nested_array[BRSW_LT_ON]->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetCore *back_nwi = this->nested_array[BRSW_BACKGROUND];
+		int top = this->GetWidget<NWidgetBase>(BRSW_LT_ON)->pos_y + this->GetWidget<NWidgetBase>(BRSW_LT_ON)->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetBase *back_nwi = this->GetWidget<NWidgetBase>(BRSW_BACKGROUND);
 		int right = back_nwi->pos_x +  back_nwi->current_x;
 		int bottom = back_nwi->pos_y +  back_nwi->current_y;
 		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, sct, rad, false) + WD_PAR_VSEP_NORMAL;

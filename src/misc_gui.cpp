@@ -416,7 +416,7 @@ struct AboutWindow : public Window {
 		this->InitNested(&_about_desc);
 
 		this->counter = 5;
-		this->text_position = this->nested_array[AW_FRAME]->pos_y + this->nested_array[AW_FRAME]->current_y;
+		this->text_position = this->GetWidget<NWidgetBase>(AW_FRAME)->pos_y + this->GetWidget<NWidgetBase>(AW_FRAME)->current_y;
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -468,8 +468,8 @@ struct AboutWindow : public Window {
 			this->counter = 5;
 			this->text_position--;
 			/* If the last text has scrolled start a new from the start */
-			if (this->text_position < (int)(this->nested_array[AW_FRAME]->pos_y - lengthof(_credits) * this->line_height)) {
-				this->text_position = this->nested_array[AW_FRAME]->pos_y + this->nested_array[AW_FRAME]->current_y;
+			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(AW_FRAME)->pos_y - lengthof(_credits) * this->line_height)) {
+				this->text_position = this->GetWidget<NWidgetBase>(AW_FRAME)->pos_y + this->GetWidget<NWidgetBase>(AW_FRAME)->current_y;
 			}
 			this->SetDirty();
 		}
@@ -1188,7 +1188,7 @@ void QueryString::DrawEditBox(Window *w, int wid)
 	int top;
 	int bottom;
 	if (w->widget == NULL) {
-		const NWidgetCore *wi = w->nested_array[wid];
+		const NWidgetBase *wi = w->GetWidget<NWidgetBase>(wid);
 
 		assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 

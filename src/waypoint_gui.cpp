@@ -52,14 +52,14 @@ public:
 
 		this->CreateNestedTree(desc);
 		if (this->vt == VEH_TRAIN) {
-			this->nested_array[WAYPVW_SHOW_VEHICLES]->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
-			this->nested_array[WAYPVW_CENTERVIEW]->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
-			this->nested_array[WAYPVW_RENAME]->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
+			this->GetWidget<NWidgetCore>(WAYPVW_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
+			this->GetWidget<NWidgetCore>(WAYPVW_CENTERVIEW)->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
+			this->GetWidget<NWidgetCore>(WAYPVW_RENAME)->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
 		}
 		this->FinishInitNested(desc, window_number);
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
-		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[WAYPVW_VIEWPORT];
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
 		nvp->InitializeViewport(this, this->wp->xy, ZOOM_LVL_MIN);
 
 		this->OnInvalidateData(0);

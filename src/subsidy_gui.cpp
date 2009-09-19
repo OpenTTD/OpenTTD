@@ -41,14 +41,14 @@ struct SubsidyListWindow : Window {
 	{
 		this->InitNested(desc, window_number);
 		this->OnInvalidateData(0);
-		this->vscroll.SetCapacity(this->nested_array[SLW_PANEL]->current_y / this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(SLW_PANEL)->current_y / this->resize.step_height);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget != SLW_PANEL) return;
 
-		int y = (pt.y - this->nested_array[SLW_PANEL]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
+		int y = (pt.y - this->GetWidget<NWidgetBase>(SLW_PANEL)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 		if (!IsInsideMM(y, 0, this->vscroll.GetCapacity())) return;
 
 		y += this->vscroll.GetPosition();

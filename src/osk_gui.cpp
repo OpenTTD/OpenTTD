@@ -79,8 +79,9 @@ struct OskWindow : public Window {
 			this->caption = (parent->widget[button].data != STR_NULL) ? parent->widget[button].data : parent->caption;
 		}
 		if (parent->nested_array != NULL) {
-			assert(parent->nested_array[button] != NULL);
-			this->caption = (parent->nested_array[button]->widget_data != STR_NULL) ? parent->nested_array[button]->widget_data : parent->caption;
+			NWidgetCore *par_wid = parent->GetWidget<NWidgetCore>(button);
+			assert(par_wid != NULL);
+			this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : parent->caption;
 		}
 
 		this->qs         = parent;

@@ -834,8 +834,9 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 		top = this->widget[widget].top;
 	} else {
 		assert(this->nested_array != NULL);
-		base = offset + this->nested_array[widget]->pos_x + (_dynlang.text_dir == TD_LTR ? this->nested_array[widget]->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
-		top = this->nested_array[widget]->pos_y;
+		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+		base = offset + nwid->pos_x + (_dynlang.text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
+		top = nwid->pos_y;
 	}
 	DrawString(base, base + WD_SORTBUTTON_ARROW_WIDTH, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
 }
@@ -937,7 +938,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
- * @fn void FillNestedArray(NWidgetCore **array, uint length)
+ * @fn void FillNestedArray(NWidgetBase **array, uint length)
  * Fill the Window::nested_array array with pointers to nested widgets in the tree.
  * @param array Base pointer of the array.
  * @param length Length of the array.
@@ -1104,7 +1105,7 @@ void NWidgetCore::SetDataTip(uint16 widget_data, StringID tool_tip)
 	this->tool_tip = tool_tip;
 }
 
-void NWidgetCore::FillNestedArray(NWidgetCore **array, uint length)
+void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
 {
 	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
 }
@@ -1211,7 +1212,7 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 	}
 }
 
-void NWidgetContainer::FillNestedArray(NWidgetCore **array, uint length)
+void NWidgetContainer::FillNestedArray(NWidgetBase **array, uint length)
 {
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		child_wid->FillNestedArray(array, length);
@@ -1640,7 +1641,7 @@ void NWidgetSpacer::SetupSmallestSize(Window *w, bool init_array)
 	this->smallest_y = this->min_y;
 }
 
-void NWidgetSpacer::FillNestedArray(NWidgetCore **array, uint length)
+void NWidgetSpacer::FillNestedArray(NWidgetBase **array, uint length)
 {
 }
 
@@ -1772,7 +1773,7 @@ void NWidgetBackground::StoreWidgets(Widget *widgets, int length, bool left_movi
 	if (this->child != NULL) this->child->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
 }
 
-void NWidgetBackground::FillNestedArray(NWidgetCore **array, uint length)
+void NWidgetBackground::FillNestedArray(NWidgetBase **array, uint length)
 {
 	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
 	if (this->child != NULL) this->child->FillNestedArray(array, length);
@@ -1832,7 +1833,7 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next)
 {
 	if (this->index > 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
-		NWidgetCore *next_wid = w->nested_array[this->index + 1];
+		NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;
@@ -2278,7 +2279,7 @@ Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
 	if (this->type == WWT_SCROLL2BAR) return &w->vscroll2;
 
 	if (this->index > 0 && allow_next && (uint)(this->index) + 1 < w->nested_array_size) {
-		NWidgetCore *next_wid = w->nested_array[this->index + 1];
+		NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;

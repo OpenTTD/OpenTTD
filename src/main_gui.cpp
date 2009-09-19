@@ -215,7 +215,7 @@ struct MainWindow : Window
 		this->InitNested(&_main_window_desc, 0);
 		ResizeWindow(this, _screen.width, _screen.height);
 
-		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[MW_VIEWPORT];
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(MW_VIEWPORT);
 		nvp->InitializeViewport(this, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 	}
 
@@ -386,7 +386,7 @@ struct MainWindow : Window
 	virtual void OnResize(Point delta)
 	{
 		if (this->viewport != NULL) {
-			NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[MW_VIEWPORT];
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(MW_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 		}
 	}

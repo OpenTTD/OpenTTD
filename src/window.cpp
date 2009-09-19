@@ -164,12 +164,12 @@ bool Window::SetFocusedWidget(byte widget_index)
 
 		assert(this->nested_array[widget_index] != NULL); // Setting focus to a non-existing widget is a bad idea.
 		if (this->nested_focus != NULL) {
-			if (this->nested_array[widget_index] == this->nested_focus) return false;
+			if (this->GetWidget<NWidgetCore>(widget_index) == this->nested_focus) return false;
 
 			/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 			this->nested_focus->SetDirty(this);
 		}
-		this->nested_focus = this->nested_array[widget_index];
+		this->nested_focus = this->GetWidget<NWidgetCore>(widget_index);
 		return true;
 	}
 	NOT_REACHED();
@@ -486,7 +486,7 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 		}
 	}
 
-	if (w->nested_array != NULL && (uint)widget < w->nested_array_size) sb = w->nested_array[widget]->FindScrollbar(w);
+	if (w->nested_array != NULL && (uint)widget < w->nested_array_size) sb = w->GetWidget<NWidgetCore>(widget)->FindScrollbar(w);
 
 	if (sb != NULL && sb->GetCount() > sb->GetCapacity()) {
 		sb->UpdatePosition(wheel);
@@ -912,7 +912,7 @@ void Window::InitializeData(WindowClass cls, const Widget *widget, int window_nu
 	/* If available, initialize nested widget tree. */
 	if (widget == NULL) {
 		if (this->nested_array == NULL) {
-			this->nested_array = CallocT<NWidgetCore *>(this->nested_array_size);
+			this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
 			this->nested_root->SetupSmallestSize(this, true);
 		} else {
 			this->nested_root->SetupSmallestSize(this, false);
@@ -1339,7 +1339,7 @@ void Window::CreateNestedTree(const WindowDesc *desc, bool fill_nested)
 	this->nested_array_size = (uint)(biggest_index + 1);
 
 	if (fill_nested) {
-		this->nested_array = CallocT<NWidgetCore *>(this->nested_array_size);
+		this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
 		this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);
 	}
 }

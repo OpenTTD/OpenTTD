@@ -325,7 +325,7 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case MTSW_LIST_LEFT: { // add to playlist
-				int y = (pt.y - this->nested_array[widget]->pos_y) / FONT_HEIGHT_SMALL;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / FONT_HEIGHT_SMALL;
 
 				if (msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
@@ -343,7 +343,7 @@ struct MusicTrackSelectionWindow : public Window {
 			} break;
 
 			case MTSW_LIST_RIGHT: { // remove from playlist
-				int y = (pt.y - this->nested_array[widget]->pos_y) / FONT_HEIGHT_SMALL;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / FONT_HEIGHT_SMALL;
 
 				if (msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
@@ -583,11 +583,11 @@ struct MusicWindow : public Window {
 				break;
 
 			case MW_MUSIC_VOL: case MW_EFFECT_VOL: { // volume sliders
-				int x = pt.x - this->nested_array[widget]->pos_x;
+				int x = pt.x - this->GetWidget<NWidgetBase>(widget)->pos_x;
 
 				byte *vol = (widget == MW_MUSIC_VOL) ? &msf.music_vol : &msf.effect_vol;
 
-				byte new_vol = x * 127 / this->nested_array[widget]->current_x;
+				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
 				if (new_vol != *vol) {
 					*vol = new_vol;
 					if (widget == MW_MUSIC_VOL) MusicVolumeChanged(new_vol);

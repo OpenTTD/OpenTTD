@@ -391,12 +391,16 @@ public:
 	const Widget *focused_widget;    ///< Currently focused widget, or \c NULL if no widget has focus.
 	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c NULL if no nested widget has focus.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
-	NWidgetCore **nested_array;      ///< Array of pointers into the tree.
+	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
 	uint nested_array_size;          ///< Size of the nested array.
 
 	Window *parent;                  ///< Parent window.
 	Window *z_front;                 ///< The window in front of us in z-order.
 	Window *z_back;                  ///< The window behind us in z-order.
+
+	template <class NWID = NWidgetBase>
+	inline NWID *GetWidget(uint widnum) const;
+
 
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);
@@ -417,7 +421,7 @@ public:
 		}
 		if (this->nested_array != NULL) {
 			assert(widget_index < this->nested_array_size);
-			if (this->nested_array[widget_index] != NULL) this->nested_array[widget_index]->SetDisabled(disab_stat);
+			if (this->nested_array[widget_index] != NULL) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
 		}
 	}
 
@@ -448,7 +452,7 @@ public:
 	{
 		if (this->nested_array != NULL) {
 			assert(widget_index < this->nested_array_size);
-			return this->nested_array[widget_index]->IsDisabled();
+			return this->GetWidget<NWidgetCore>(widget_index)->IsDisabled();
 		}
 		assert(widget_index < this->widget_count);
 		return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
@@ -531,7 +535,7 @@ public:
 		}
 		if (this->nested_array != NULL) {
 			assert(widget_index < this->nested_array_size);
-			this->nested_array[widget_index]->SetLowered(lowered_stat);
+			this->GetWidget<NWidgetCore>(widget_index)->SetLowered(lowered_stat);
 		}
 	}
 
@@ -547,8 +551,8 @@ public:
 		}
 		if (this->nested_array != NULL) {
 			assert(widget_index < this->nested_array_size);
-			bool lowered_state = this->nested_array[widget_index]->IsLowered();
-			this->nested_array[widget_index]->SetLowered(!lowered_state);
+			bool lowered_state = this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
+			this->GetWidget<NWidgetCore>(widget_index)->SetLowered(!lowered_state);
 		}
 	}
 
@@ -579,7 +583,7 @@ public:
 	{
 		if (this->nested_array != NULL) {
 			assert(widget_index < this->nested_array_size);
-			return this->nested_array[widget_index]->IsLowered();
+			return this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 		}
 		assert(widget_index < this->widget_count);
 		return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
@@ -837,6 +841,29 @@ public:
 
 	/*** End of the event handling ***/
 };
+
+/** Get the nested widget with number \a widnum from the nested widget tree.
+ * @tparam NWID Type of the nested widget.
+ * @param widnum Widget number of the widget to retrieve.
+ * @return The requested widget if it is instantiated, \c NULL otherwise.
+ */
+template <class NWID>
+inline NWID *Window::GetWidget(uint widnum) const
+{
+	if (widnum >= this->nested_array_size || this->nested_array[widnum] == NULL) return NULL;
+	NWID *nwid = dynamic_cast<NWID *>(this->nested_array[widnum]);
+	assert(nwid != NULL);
+	return nwid;
+}
+
+/** Specialized case of #Window::GetWidget for the nested widget base class. */
+template <>
+inline NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
+{
+	if (widnum >= this->nested_array_size) return NULL;
+	return this->nested_array[widnum];
+}
+
 
 /**
  * Base class for windows opened from a toolbar.

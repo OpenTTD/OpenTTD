@@ -62,9 +62,9 @@ struct AIListWindow : public Window {
 
 		this->InitNested(desc); // Initializes 'this->line_height' as side effect.
 
-		this->vscroll.SetCapacity(this->nested_array[AIL_WIDGET_LIST]->current_y / this->line_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->current_y / this->line_height);
 		this->vscroll.SetCount((int)this->ai_info_list->size() + 1);
-		this->nested_array[AIL_WIDGET_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
@@ -87,7 +87,7 @@ struct AIListWindow : public Window {
 
 			resize->width = 1;
 			resize->height = this->line_height;
-			size->height = GB(this->nested_array[widget]->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+			size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 		}
 	}
 
@@ -101,7 +101,7 @@ struct AIListWindow : public Window {
 		switch (widget) {
 			case AIL_WIDGET_LIST: {
 				/* Draw a list of all available AIs. */
-				int y = this->nested_array[AIL_WIDGET_LIST]->pos_y;
+				int y = this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->pos_y;
 				/* First AI in the list is hardcoded to random */
 				if (this->vscroll.IsVisible(0)) {
 					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_BLACK);
@@ -160,7 +160,7 @@ struct AIListWindow : public Window {
 	{
 		switch (widget) {
 			case AIL_WIDGET_LIST: { // Select one of the AIs
-				int sel = (pt.y - this->nested_array[AIL_WIDGET_LIST]->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
+				int sel = (pt.y - this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
 				if (sel < (int)this->ai_info_list->size()) {
 					this->selected = sel;
 					this->SetDirty();
@@ -194,7 +194,7 @@ struct AIListWindow : public Window {
 	{
 		switch (widget) {
 			case AIL_WIDGET_LIST: {
-				int sel = (pt.y - this->nested_array[AIL_WIDGET_LIST]->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
+				int sel = (pt.y - this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
 				if (sel < (int)this->ai_info_list->size()) {
 					this->selected = sel;
 					this->ChangeAI();
@@ -208,7 +208,7 @@ struct AIListWindow : public Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.UpdateCapacity(delta.y / this->line_height);
-		this->nested_array[AIL_WIDGET_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -279,9 +279,9 @@ struct AISettingsWindow : public Window {
 
 		this->InitNested(desc);  // Initializes 'this->line_height' as side effect.
 
-		this->vscroll.SetCapacity(this->nested_array[AIS_WIDGET_BACKGROUND]->current_y / this->line_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AIS_WIDGET_BACKGROUND)->current_y / this->line_height);
 		this->vscroll.SetCount((int)this->ai_config->GetConfigList()->size());
-		this->nested_array[AIS_WIDGET_BACKGROUND]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -291,7 +291,7 @@ struct AISettingsWindow : public Window {
 
 			resize->width = 1;
 			resize->height = this->line_height;
-			size->height = GB(this->nested_array[widget]->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+			size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 		}
 	}
 
@@ -335,7 +335,7 @@ struct AISettingsWindow : public Window {
 	{
 		switch (widget) {
 			case AIS_WIDGET_BACKGROUND: {
-				int num = (pt.y - this->nested_array[AIS_WIDGET_BACKGROUND]->pos_y) / this->line_height + this->vscroll.GetPosition();
+				int num = (pt.y - this->GetWidget<NWidgetBase>(AIS_WIDGET_BACKGROUND)->pos_y) / this->line_height + this->vscroll.GetPosition();
 				if (num >= (int)this->ai_config->GetConfigList()->size()) break;
 
 				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
@@ -404,7 +404,7 @@ struct AISettingsWindow : public Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.UpdateCapacity(delta.y / this->line_height);
-		this->nested_array[AIS_WIDGET_BACKGROUND]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnTick()
@@ -505,9 +505,9 @@ struct AIConfigWindow : public Window {
 	{
 		this->InitNested(&_ai_config_desc); // Initializes 'this->line_height' as a side effect.
 		this->selected_slot = INVALID_COMPANY;
-		this->vscroll.SetCapacity(this->nested_array[AIC_WIDGET_LIST]->current_y / this->line_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AIC_WIDGET_LIST)->current_y / this->line_height);
 		this->vscroll.SetCount(MAX_COMPANIES);
-		this->nested_array[AIC_WIDGET_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(AIC_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		this->OnInvalidateData(0);
 	}
 
@@ -521,7 +521,7 @@ struct AIConfigWindow : public Window {
 	{
 		if (widget == AIC_WIDGET_LIST) {
 			this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-			size->height = GB(this->nested_array[widget]->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+			size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 		}
 	}
 
@@ -582,7 +582,7 @@ struct AIConfigWindow : public Window {
 			}
 
 			case AIC_WIDGET_LIST: { // Select a slot
-				uint slot = (pt.y - this->nested_array[widget]->pos_y) / this->line_height + this->vscroll.GetPosition();
+				uint slot = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height + this->vscroll.GetPosition();
 
 				if (slot == 0 || slot > _settings_newgame.difficulty.max_no_competitors) slot = INVALID_COMPANY;
 				this->selected_slot = (CompanyID)slot;
@@ -724,7 +724,7 @@ struct AIDebugWindow : public Window {
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			/* Background is grey by default, will be changed to red for dead AIs */
-			this->nested_array[i + AID_WIDGET_COMPANY_BUTTON_START]->colour = COLOUR_GREY;
+			this->GetWidget<NWidgetCore>(i + AID_WIDGET_COMPANY_BUTTON_START)->colour = COLOUR_GREY;
 
 			const Company *c = Company::GetIfValid(i);
 			if (c == NULL || !c->is_ai) {
@@ -741,7 +741,7 @@ struct AIDebugWindow : public Window {
 
 			/* Mark dead AIs by red background */
 			if (c->ai_instance->IsDead()) {
-				this->nested_array[i + AID_WIDGET_COMPANY_BUTTON_START]->colour = COLOUR_RED;
+				this->GetWidget<NWidgetCore>(i + AID_WIDGET_COMPANY_BUTTON_START)->colour = COLOUR_RED;
 			}
 
 			/* Check if we have the company marked as inactive */
@@ -754,7 +754,7 @@ struct AIDebugWindow : public Window {
 			}
 
 			byte offset = (i == ai_debug_company) ? 1 : 0;
-			DrawCompanyIcon(i, this->nested_array[AID_WIDGET_COMPANY_BUTTON_START + i]->pos_x + 11 + offset, this->nested_array[AID_WIDGET_COMPANY_BUTTON_START + i]->pos_y + 2 + offset);
+			DrawCompanyIcon(i, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_x + 11 + offset, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
 		}
 
 		CompanyID old_company = _current_company;

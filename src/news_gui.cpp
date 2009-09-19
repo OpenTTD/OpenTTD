@@ -296,19 +296,19 @@ struct NewsWindow : Window {
 		this->CreateNestedTree(desc);
 		switch (this->ni->subtype) {
 			case NS_COMPANY_TROUBLE:
-				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_IN_TROUBLE_TITLE;
+				this->GetWidget<NWidgetCore>(NTW_TITLE)->widget_data = STR_NEWS_COMPANY_IN_TROUBLE_TITLE;
 				break;
 
 			case NS_COMPANY_MERGER:
-				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_MERGER_TITLE;
+				this->GetWidget<NWidgetCore>(NTW_TITLE)->widget_data = STR_NEWS_COMPANY_MERGER_TITLE;
 				break;
 
 			case NS_COMPANY_BANKRUPT:
-				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_BANKRUPT_TITLE;
+				this->GetWidget<NWidgetCore>(NTW_TITLE)->widget_data = STR_NEWS_COMPANY_BANKRUPT_TITLE;
 				break;
 
 			case NS_COMPANY_NEW:
-				this->nested_array[NTW_TITLE]->widget_data = STR_NEWS_COMPANY_LAUNCH_TITLE;
+				this->GetWidget<NWidgetCore>(NTW_TITLE)->widget_data = STR_NEWS_COMPANY_LAUNCH_TITLE;
 				break;
 
 			default:
@@ -317,7 +317,7 @@ struct NewsWindow : Window {
 		this->FinishInitNested(desc, 0);
 
 		/* Initialize viewport if it exists. */
-		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[NTW_VIEWPORT];
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(NTW_VIEWPORT);
 		if (nvp != NULL) {
 			nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
@@ -922,7 +922,7 @@ struct MessageHistoryWindow : Window {
 	MessageHistoryWindow(const WindowDesc *desc) : Window()
 	{
 		this->InitNested(desc); // Initializes 'this->line_height' and 'this->date_width'.
-		this->vscroll.SetCapacity((this->nested_array[MHW_BACKGROUND]->current_y - this->top_spacing - this->bottom_spacing) / this->line_height);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(MHW_BACKGROUND)->current_y - this->top_spacing - this->bottom_spacing) / this->line_height);
 		this->OnInvalidateData(0);
 	}
 
@@ -984,7 +984,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == NULL) return;
 
-			for (int n = (pt.y - this->nested_array[MHW_BACKGROUND]->pos_y - WD_FRAMERECT_TOP) / this->line_height + this->vscroll.GetPosition(); n > 0; n--) {
+			for (int n = (pt.y - this->GetWidget<NWidgetBase>(MHW_BACKGROUND)->pos_y - WD_FRAMERECT_TOP) / this->line_height + this->vscroll.GetPosition(); n > 0; n--) {
 				ni = ni->prev;
 				if (ni == NULL) return;
 			}
@@ -1145,7 +1145,7 @@ struct MessageOptionsWindow : Window {
 	virtual void OnInvalidateData(int data)
 	{
 		/* Update the dropdown value for 'set all categories'. */
-		this->nested_array[WIDGET_NEWSOPT_DROP_SUMMARY]->widget_data = this->message_opt[this->state];
+		this->GetWidget<NWidgetCore>(WIDGET_NEWSOPT_DROP_SUMMARY)->widget_data = this->message_opt[this->state];
 
 		/* Update widget to reflect the value of the #_news_ticker_sound variable. */
 		this->SetWidgetLoweredState(WIDGET_NEWSOPT_SOUNDTICKER, _news_ticker_sound);

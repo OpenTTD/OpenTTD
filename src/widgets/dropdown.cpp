@@ -259,7 +259,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	Rect wi_rect;
 	Colours wi_colour;
 	if (w->nested_array != NULL) {
-		const NWidgetCore *nwi = w->nested_array[button];
+		const NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
 		wi_rect.left   = nwi->pos_x;
 		wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
 		wi_rect.top    = nwi->pos_y;

@@ -118,7 +118,7 @@ private:
 		this->bridges->Sort();
 
 		/* Display the current sort variant */
-		this->nested_array[BBSW_DROPDOWN_CRITERIA]->widget_data = this->sorter_names[this->bridges->SortType()];
+		this->GetWidget<NWidgetCore>(BBSW_DROPDOWN_CRITERIA)->widget_data = this->sorter_names[this->bridges->SortType()];
 
 		/* Set the modified widgets dirty */
 		this->SetWidgetDirty(BBSW_DROPDOWN_CRITERIA);
@@ -134,7 +134,7 @@ public:
 	{
 		this->CreateNestedTree(desc);
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly. */
-		this->nested_array[BBSW_CAPTION]->widget_data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
+		this->GetWidget<NWidgetCore>(BBSW_CAPTION)->widget_data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
 		this->FinishInitNested(desc, GB(br_type, 15, 2)); // Initializes 'this->bridgetext_offset'.
 
 		this->parent = FindWindowById(WC_BUILD_TOOLBAR, GB(this->type, 15, 2));
@@ -144,7 +144,7 @@ public:
 		this->SortBridgeList();
 
 		this->vscroll.SetCount(bl->Length());
-		this->vscroll.SetCapacity(this->nested_array[BBSW_BRIDGE_LIST]->current_y / this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST)->current_y / this->resize.step_height);
 		if (this->last_size < this->vscroll.GetCapacity()) this->last_size = this->vscroll.GetCapacity();
 		if (this->last_size > this->vscroll.GetCount()) this->last_size = this->vscroll.GetCount();
 		/* Resize the bridge selection window if we used a bigger one the last time. */
@@ -152,7 +152,7 @@ public:
 			ResizeWindow(this, 0, (this->last_size - this->vscroll.GetCapacity()) * this->resize.step_height);
 			this->vscroll.SetCapacity(this->last_size);
 		}
-		this->nested_array[BBSW_BRIDGE_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	~BuildBridgeWindow()
@@ -171,7 +171,7 @@ public:
 	{
 		switch (widget) {
 			case BBSW_DROPDOWN_ORDER: {
-				Dimension d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
 				d.height += padding.height;
 				*size = maxdim(*size, d);
@@ -253,7 +253,7 @@ public:
 		switch (widget) {
 			default: break;
 			case BBSW_BRIDGE_LIST: {
-				uint i = ((int)pt.y - this->nested_array[BBSW_BRIDGE_LIST]->pos_y) / this->resize.step_height;
+				uint i = ((int)pt.y - this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST)->pos_y) / this->resize.step_height;
 				if (i < this->vscroll.GetCapacity()) {
 					i += this->vscroll.GetPosition();
 					if (i < this->bridges->Length()) {
@@ -286,7 +286,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
-		this->nested_array[BBSW_BRIDGE_LIST]->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		this->last_size = max(this->vscroll.GetCapacity(), this->last_size);
 	}

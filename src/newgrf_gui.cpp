@@ -265,7 +265,7 @@ public:
 
 		this->BuildGrfList();
 		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
-		this->vscroll.SetCapacity((this->nested_array[ANGRFW_GRF_LIST]->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(ANGRFW_GRF_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -335,7 +335,7 @@ public:
 		switch (widget) {
 			case ANGRFW_GRF_LIST: {
 				/* Get row... */
-				uint i = (pt.y - this->nested_array[ANGRFW_GRF_LIST]->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height + this->vscroll.GetPosition();
+				uint i = (pt.y - this->GetWidget<NWidgetBase>(ANGRFW_GRF_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height + this->vscroll.GetPosition();
 
 				if (i < this->grfs.Length()) {
 					this->sel = this->grfs[i];
