@@ -1296,7 +1296,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 
 	/* First button row. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_SELECTION),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
 			/* Unload + (full load, unload) or (refit, service) buttons. */
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_LAYERED),
@@ -1306,7 +1306,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 					EndContainer(),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_NON_STOP_DROPDOWN), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_TOOLTIP_NON_STOP),
 				EndContainer(),
-				NWidget(NWID_SELECTION),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(NWID_LAYERED),
 							NWidget(NWID_HORIZONTAL),
@@ -1433,7 +1433,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 
 	/* First button row. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_SELECTION),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
 			/* Refit + service buttons. */
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_REFIT), SetMinimalSize(186, 12), SetDataTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP),

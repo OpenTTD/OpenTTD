@@ -377,12 +377,20 @@ class NWidgetStacked : public NWidgetContainer {
 public:
 	NWidgetStacked(WidgetType tp);
 
+	void SetIndex(int index);
+
 	void SetupSmallestSize(Window *w, bool init_array);
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
+
+	void SetDisplayedPlane(int plane);
+
+	int shown_plane; ///< Plane being displayed (for #NWID_SELECTION only).
+	int index;       ///< If non-negative, index in the #Window::nested_array.
 };
 
 /** Nested widget container flags, */

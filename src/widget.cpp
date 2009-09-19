@@ -1253,6 +1253,12 @@ static inline uint ComputeOffset(uint space, uint max_space)
  */
 NWidgetStacked::NWidgetStacked(WidgetType tp) : NWidgetContainer(tp)
 {
+	this->index = -1;
+}
+
+void NWidgetStacked::SetIndex(int index)
+{
+	this->index = index;
 }
 
 void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
@@ -1301,8 +1307,24 @@ void NWidgetStacked::StoreWidgets(Widget *widgets, int length, bool left_moving,
 	}
 }
 
+void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
+{
+	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
+	NWidgetContainer::FillNestedArray(array, length);
+}
+
 void NWidgetStacked::Draw(const Window *w)
 {
+	if (this->type == NWID_SELECTION) {
+		int plane = 0;
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
+			if (plane == this->shown_plane) {
+				child_wid->Draw(w);
+				return;
+			}
+		}
+	}
+
 	assert(this->type == NWID_LAYERED); // Currently, NWID_SELECTION is not supported.
 	/* Render from back to front. */
 	for (NWidgetBase *child_wid = this->tail; child_wid != NULL; child_wid = child_wid->prev) {
@@ -1313,11 +1335,21 @@ void NWidgetStacked::Draw(const Window *w)
 NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 {
 	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
-	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
-		if (nwid != NULL) return nwid;
+	int plane = 0;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
+		if (plane == this->shown_plane) {
+			return child_wid->GetWidgetFromPos(x, y);
+		}
 	}
 	return NULL;
+}
+
+/** Select which plane to show (for #NWID_SELECTION only).
+ * @param plane Plane number to display.
+ */
+void NWidgetStacked::SetDisplayedPlane(int plane)
+{
+	this->shown_plane = plane;
 }
 
 NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags) : NWidgetContainer(tp)
@@ -2435,13 +2467,11 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				break;
 			}
 
-			case NWID_SELECTION:
 			case NWID_LAYERED:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetStacked(parts->type);
 				*fill_dest = true;
 				break;
-
 
 			case WPT_RESIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
@@ -2497,6 +2527,16 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				*dest = new NWidgetViewport(parts->u.widget.index);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;
+
+			case NWID_SELECTION: {
+				if (*dest != NULL) return num_used;
+				NWidgetStacked *nws = new NWidgetStacked(parts->type);
+				*dest = nws;
+				*fill_dest = true;
+				nws->SetIndex(parts->u.widget.index);
+				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
+				break;
+			}
 
 			default:
 				if (*dest != NULL) return num_used;

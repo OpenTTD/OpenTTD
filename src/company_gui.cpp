@@ -1443,7 +1443,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 94),
 		/* Multi player buttons. */
-		NWidget(NWID_SELECTION),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SPACER), SetFill(true, false),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
@@ -1458,7 +1458,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
 	/* Button bars at the bottom. */
-	NWidget(NWID_SELECTION),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetMinimalSize(90, 12),
 										SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
