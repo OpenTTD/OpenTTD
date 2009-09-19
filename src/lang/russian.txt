@@ -1091,7 +1091,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{0:CURRENCY} = £{1:COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Повысить курс вашей валюты по отношению к фунту (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Понизить курс вашей валюты по отношению к фунту (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Снизить курс вашей валюты по отношению к фунту (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Установить курс вашей валюты по отношению к фунту (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {ORANGE}{2:STRING}

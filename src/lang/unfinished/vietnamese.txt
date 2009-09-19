@@ -815,10 +815,20 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Đã rút khỏi trợ cấp:{}{}{STRING} kinh doanh từ {STRING} đến {STRING} sẽ không còn trợ cấp nữa.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Khuyến mãi trợ cấp dịch vụ:{}{}Dịch vụ {STRING} đầu tiên từ {STRING} đến {STRING} sẽ thu hút tiền trợ cấp trong một năm của chính quyền địa phương!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% đến năm sau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi đến năm sau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba đến năm sau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư đến năm sau!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Giao thông hỗn loạn tại {TOWN}!{}{}Chương trình sửa đường đầu tư bởi {STRING} mang 6 tháng khốn đốn cho người chạy mô tô!
 
 # Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Cổng nhìn {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Chép tới cổng nhìn
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Chép địa điểm ở cảnh nhìn bao trùm tới cổng nhìn
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Chèn từ cổng nhìn
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Chèn địa điểm ở cổng nhìn đến cảnh nhìn bao trùm
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Tùy chọn Trò chơi
@@ -828,10 +838,32 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa ch
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
 STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yên (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Úc (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Phơ-răng Bỉ (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Phơ-răng Thụy Sỹ (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Séc (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mác Đức (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Đan Mạch (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Phần Lan (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Phơ-răng (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Hy Lạp (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungary (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Đồng Króna (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Ý (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Hà Lan (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Na Uy (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Đồng Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Ru-ma-ni (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúp Nga (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Thụy Điển (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Thổ Nhĩ Kỳ (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovakia (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Đồng Real Brasil (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Kroon Estonia (EEK)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
 ############ end of currency region
 
@@ -853,6 +885,27 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Tên th�
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa chọn kiểu tên thành phố
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Gốc)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Pháp
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Đức
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Tiếng Anh (Bổ Sung)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Mỹ-Latin
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Thụy Điển
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hà Lan
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Phần Lan
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Ba Lan
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakia
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Na Uy
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungary
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Úc
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Ru-ma-ni
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Séc
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Thụy Sỹ
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Đan Mạch
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Thổ Nhĩ Kỳ
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ý
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
@@ -868,29 +921,80 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Ngôn ng
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Toàn màn hình
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Đánh dấu vào ô này để chơi OpenTTD ở chế độ fullscreen
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Độ phân giải màn hình
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Chọn độ phân giải màn hình để sử dụng
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Định dạng ảnh màn hình
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Chọn định dạng ảnh màn hình để sử dụng
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} thiếu/hỏng file{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về gói đồ họa
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm thanh chuẩn
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất bại khi bật chế độ fullscreen
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Tự chỉnh tiền tệ
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tỉ giá hối đoái: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm tỉ giá tiền của bạn đối với 1 Pound (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Điều chỉnh tỉ giá tiền của bạn đối với 1 Pound (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ký tự cách: {ORANGE}{2:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Chọn ký tự cách cho tiền tệ của bạn
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Tiền tố: {ORANGE}{3:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp đầu ngữ cho tiền tệ của bạn
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Hậu tố: {ORANGE}{4:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp sau ngữ cho tiền tệ của bạn
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Chuyển về đồng Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Chuyển về đồng Euro: {ORANGE}không bao giờ
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Chọn năm để chuyển sang đồng Euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Chuyển về đồng Euro sớm hơn
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Chuyển về đồng Euro sau
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem trước: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) tính bằng tiền của bạn
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa tham số của tiền tự chỉnh
 
 # Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Cấp Độ Khó
 
 ############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Dễ
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Trung Bình
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Khó
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Tự chỉnh
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Hiện danh sách điểm cao
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lưu
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Số thị trấn: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Số cụm công nghiệp: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Tiền vay tối đa ban đầu : {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Độ nổi tiếng ban đầu: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Giá vận hành phương tiện: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Tốc độ xây dựng của đối thủ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Hư hỏng phương tiện: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Cấp số nhân trợ cấp: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Giá trả cho việc xây dựng: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Kiểu địa chất: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Độ bao phủ của biển/sông: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Nền kinh tế: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Quay tàu hỏa: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Thiên tai: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 
