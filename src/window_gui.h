@@ -398,7 +398,7 @@ public:
 	Window *z_front;                 ///< The window in front of us in z-order.
 	Window *z_back;                  ///< The window behind us in z-order.
 
-	template <class NWID = NWidgetBase>
+	template <class NWID>
 	inline NWID *GetWidget(uint widnum) const;
 
 

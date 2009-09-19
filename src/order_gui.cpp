@@ -475,7 +475,7 @@ private:
 	 */
 	int GetOrderFromPt(int y)
 	{
-		int sel = (y - this->GetWidget(ORDER_WIDGET_ORDER_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
+		int sel = (y - this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
 		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
 
@@ -680,7 +680,7 @@ public:
 		this->selected_order = -1;
 		this->owner = v->owner;
 
-		int num_lines = (this->GetWidget(ORDER_WIDGET_ORDER_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height;
+		int num_lines = (this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height;
 		this->vscroll.SetCapacity(num_lines);
 
 		if (_settings_client.gui.quick_goto && v->owner == _local_company) {
@@ -1234,7 +1234,7 @@ public:
 	{
 		if (this->goto_type == OPOS_CONDITIONAL) {
 			this->goto_type = OPOS_GOTO;
-			NWidgetBase *nwid = this->GetWidget(ORDER_WIDGET_ORDER_LIST);
+			NWidgetBase *nwid = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST);
 			if (IsInsideBS(_cursor.pos.x, this->left + nwid->pos_x, nwid->current_x) && IsInsideBS(_cursor.pos.y, this->top + nwid->pos_y, nwid->current_y)) {
 				int order_id = this->GetOrderFromPt(_cursor.pos.y - this->top);
 				if (order_id != INVALID_ORDER) {
