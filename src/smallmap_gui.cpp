@@ -647,9 +647,6 @@ public:
 	 * <li>Town names (optional)</li></ol>
 	 *
 	 * @param dpi pointer to pixel to write onto
-	 * @param w pointer to Window struct
-	 * @param type type of map requested (vegetation, owners, routes, etc)
-	 * @param show_towns true if the town names should be displayed, false if not.
 	 */
 	void DrawSmallMap(DrawPixelInfo *dpi)
 	{

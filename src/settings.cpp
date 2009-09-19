@@ -1492,10 +1492,8 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 /** Top function to save the new value of an element of the Settings struct
  * @param index offset in the SettingDesc array of the Settings struct which
  * identifies the setting member we want to change
- * @param object pointer to a valid settings struct that has its settings change.
- * This only affects setting-members that are not needed to be the same on all
- * clients in a network game.
- * @param value new value of the setting */
+ * @param value new value of the setting
+ */
 bool SetSettingValue(uint index, int32 value)
 {
 	const SettingDesc *sd = &_settings[index];
@@ -1526,8 +1524,8 @@ bool SetSettingValue(uint index, int32 value)
 /** Top function to save the new value of an element of the Settings struct
  * @param index offset in the SettingDesc array of the CompanySettings struct
  * which identifies the setting member we want to change
- * @param object pointer to a valid CompanySettings struct that has its settings changed.
- * @param value new value of the setting */
+ * @param value new value of the setting
+ */
 void SetCompanySetting(uint index, int32 value)
 {
 	const SettingDesc *sd = &_company_settings[index];

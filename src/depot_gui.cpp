@@ -262,8 +262,7 @@ struct DepotWindow : Window {
 	}
 
 	/** Draw a vehicle in the depot window in the box with the top left corner at x,y
-	 * @param *w Window to draw in
-	 * @param *v Vehicle to draw
+	 * @param v Vehicle to draw
 	 * @param x Left side of the box to draw in
 	 * @param y Top of the box to draw in
 	 */

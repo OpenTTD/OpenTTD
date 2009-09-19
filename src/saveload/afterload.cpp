@@ -61,7 +61,6 @@ extern void InitializeRailGUI();
  * This as for example docks and shipdepots do not store
  * whether the tile used to be canal or 'normal' water.
  * @param t the tile to change.
- * @param o the owner of the new tile.
  * @param include_invalid_water_class Also consider WATER_CLASS_INVALID, i.e. industry tiles on land
  */
 void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_water_class)

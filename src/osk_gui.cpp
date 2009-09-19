@@ -534,8 +534,6 @@ void GetKeyboardLayout()
 /**
  * Show the on-screen keyboard (osk) associated with a given textbox
  * @param parent pointer to the Window where this keyboard originated from
- * @param q      querystr_d pointer to the query string of the parent, which is
- *               shared for both windows
  * @param button widget number of parent's textbox
  * @param cancel widget number of parent's cancel button (0 if cancel events
  *               should not be passed)

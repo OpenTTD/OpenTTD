@@ -493,7 +493,6 @@ void *AllocSprite(size_t mem_req)
  * For ST_FONT sprites, it is normal. In other cases, default sprite is loaded instead.
  * @param sprite ID of loaded sprite
  * @param requested requested sprite type
- * @param available available sprite type
  * @param sc the currently known sprite cache for the requested sprite
  * @return fallback sprite
  * @note this function will do usererror() in the case the fallback sprite isn't available */

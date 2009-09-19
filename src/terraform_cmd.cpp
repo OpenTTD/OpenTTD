@@ -149,7 +149,7 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
  * @param ts TerraformerState.
  * @param tile Tile.
  * @param height Aimed height.
- * @param return Error code or cost.
+ * @return Error code or cost.
  */
 static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height)
 {

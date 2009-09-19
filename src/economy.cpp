@@ -989,7 +989,6 @@ static void TriggerIndustryProduction(Industry *i)
 /**
  * Makes us a new cargo payment helper.
  * @param front The front of the train
- * @param destinations List to add the destinations of 'our' cargo to
  */
 CargoPayment::CargoPayment(Vehicle *front) :
 	front(front),

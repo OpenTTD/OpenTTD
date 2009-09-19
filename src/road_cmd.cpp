@@ -1269,7 +1269,6 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 /**
  * Updates cached nearest town for all road tiles
  * @param invalidate are we just invalidating cached data?
- * @param ignore town that should be ignored (because we are deleting it now)
  * @pre invalidate == true implies _generating_world == true
  */
 void UpdateNearestTownForRoadTiles(bool invalidate)

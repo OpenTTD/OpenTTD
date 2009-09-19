@@ -1486,7 +1486,6 @@ void UpdateTownMaxPass(Town *t)
  * @param tile Where to put it
  * @param townnameparts The town name
  * @param size Parameter for size determination
- * @param size_mode How the size should be determined
  * @param city whether to build a city or town
  * @param layout the (road) layout of the town
  */

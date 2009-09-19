@@ -863,7 +863,7 @@ void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSp
 /**
  * Find a nearby station that joins this station.
  * @tparam T the class to find a station for
- * @param error_message the error message when building a station on top of others
+ * @tparam error_message the error message when building a station on top of others
  * @param existing_station an existing station we build over
  * @param station_to_join the station to join to
  * @param adjacent whether adjacent stations are allowed

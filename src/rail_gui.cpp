@@ -636,7 +636,6 @@ struct BuildRailToolbarWindow : Window {
 
 	/** Configures the rail toolbar for railtype given
 	 * @param railtype the railtype to display
-	 * @param w the window to modify
 	 */
 	void SetupRailToolbar(RailType railtype)
 	{
@@ -1933,10 +1932,10 @@ static void SetDefaultRailGui()
 /**
  * Updates the current signal variant used in the signal GUI
  * to the one adequate to current year.
- * @param 0 needed to be called when a setting changes
+ * @param p needed to be called when a setting changes
  * @return success, needed for settings
  */
-bool ResetSignalVariant(int32 = 0)
+bool ResetSignalVariant(int32 p = 0)
 {
 	SignalVariant new_variant = (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 

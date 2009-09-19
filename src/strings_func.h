@@ -59,7 +59,6 @@ static inline uint64 GetDParamX(const uint64 *s, uint n)
 
 /**
  * Get the current string parameter at index \a n from the global string parameter array.
- * @param s Array of string parameters.
  * @param n Index of the string parameter.
  * @return Value of the requested string parameter.
  */

@@ -27,7 +27,7 @@ void NORETURN ReallocError(size_t size);
  * type.
  * @note throws an error when there is no memory anymore.
  * @note the memory contains garbage data (i.e. possibly non-zero values).
- * @param T the type of the variable(s) to allocation.
+ * @tparam T the type of the variable(s) to allocation.
  * @param num_elements the number of elements to allocate of the given type.
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
@@ -52,7 +52,7 @@ static FORCEINLINE T *MallocT(size_t num_elements)
  * type.
  * @note throws an error when there is no memory anymore.
  * @note the memory contains all zero values.
- * @param T the type of the variable(s) to allocation.
+ * @tparam T the type of the variable(s) to allocation.
  * @param num_elements the number of elements to allocate of the given type.
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
@@ -77,7 +77,7 @@ static FORCEINLINE T *CallocT(size_t num_elements)
  * type. It extends/shrinks the memory allocation given in t_ptr.
  * @note throws an error when there is no memory anymore.
  * @note the pointer to the data may change, but the data will remain valid.
- * @param T the type of the variable(s) to allocation.
+ * @tparam T the type of the variable(s) to allocation.
  * @param t_ptr the previous allocation to extend/shrink.
  * @param num_elements the number of elements to allocate of the given type.
  * @return NULL when num_elements == 0, non-NULL otherwise.

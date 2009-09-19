@@ -21,7 +21,7 @@ static FBlitter_32bppOptimized iFBlitter_32bppOptimized;
 /**
  * Draws a sprite to a (screen) buffer. It is templated to allow faster operation.
  *
- * @param mode blitter mode
+ * @tparam mode blitter mode
  * @param bp further blitting parameters
  * @param zoom zoom level at which we are drawing
  */

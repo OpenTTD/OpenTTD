@@ -2356,7 +2356,7 @@ Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
  * @param pt Point in the widget.
  * @return The point refers to the button.
  *
- * @param The magic constants are also used at #DrawButtonDropdown.
+ * @note The magic constants are also used at #DrawButtonDropdown.
  */
 bool NWidgetLeaf::ButtonHit(const Point &pt)
 {
