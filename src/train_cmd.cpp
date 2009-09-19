@@ -1159,6 +1159,15 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				if (dst_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 			}
 
+			if (src_head == src && !HasBit(p2, 0)) {
+				/* Moving of a *single* vehicle at the front of the train.
+				 * If the next vehicle is an engine a new train will be created
+				 * instead of removing a vehicle from a free chain. The newly
+				 * created train may not be too long. */
+				const Train *u = src_head->GetNextVehicle();
+				if (u != NULL && u->IsEngine() && (src_len - 1) > max_len) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+			}
+
 			/* We are moving between rows, so only count the wagons from the source
 			 * row that are being moved. */
 			if (HasBit(p2, 0)) {
