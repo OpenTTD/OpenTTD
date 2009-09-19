@@ -300,10 +300,10 @@ public:
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
 
 				uint y = r.top + WD_FRAMERECT_TOP;
-				int min_index = this->vscroll.GetPosition();
-				int max_index = min(min_index + this->vscroll.GetCapacity(), this->grfs.Length());
+				uint min_index = this->vscroll.GetPosition();
+				uint max_index = min(min_index + this->vscroll.GetCapacity(), this->grfs.Length());
 
-				for (int i = min_index; i < max_index; i++)
+				for (uint i = min_index; i < max_index; i++)
 				{
 					const GRFConfig *c = this->grfs[i];
 					bool h = c == this->sel;
