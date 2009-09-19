@@ -465,7 +465,7 @@ static void IConsoleHistoryNavigate(int direction)
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen
  * @param colour_code the colour of the command. Red in case of errors, etc.
- * @param string the message entered or output on the console (notice, error, etc.)
+ * @param str the message entered or output on the console (notice, error, etc.)
  */
 void IConsoleGUIPrint(ConsoleColour colour_code, char *str)
 {

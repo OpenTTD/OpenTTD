@@ -506,6 +506,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  * @param service should the vehicles only get service in the depots
  * @param owner owner of the vehicles to send
  * @param vlw_flag tells what kind of list requested the goto depot
+ * @param id general purpose id whoms meaning is given by @c vlw_flag; e.g. StationID for station lists
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
 CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool service, Owner owner, uint16 vlw_flag, uint32 id)

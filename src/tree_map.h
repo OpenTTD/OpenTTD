@@ -268,7 +268,7 @@ static inline void SetTreeCounter(TileIndex t, uint c)
  *
  * @param t The tile to make a tree-tile from
  * @param type The type of the tree
- * @param set the number of trees
+ * @param count the number of trees
  * @param growth the growth status
  * @param ground the ground type
  * @param density the density (not the number of trees)

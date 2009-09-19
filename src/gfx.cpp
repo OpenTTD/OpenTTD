@@ -435,6 +435,7 @@ static int GetStringWidth(const UChar *str)
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
+ * @param truncate  Whether to truncate the string or not.
  *
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.

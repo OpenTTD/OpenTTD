@@ -364,7 +364,7 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex t)
  * on the orientation of the tunnel or bridge.
  * @param tile the tile to get the road bits for
  * @param rt   the road type to get the road bits form
- * @param stbe whether to return straight road bits for tunnels/bridges.
+ * @param straight_tunnel_bridge_entrance whether to return straight road bits for tunnels/bridges.
  * @return the road bits of the given tile
  */
 RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge_entrance = false);

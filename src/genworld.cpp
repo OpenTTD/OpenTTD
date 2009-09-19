@@ -262,6 +262,7 @@ void HandleGeneratingWorldAbortion()
  * @param mode The mode of world generation (see GenerateWorldModes).
  * @param size_x The X-size of the map.
  * @param size_y The Y-size of the map.
+ * @param reset_settings Whether to reset the game configuration (used for restart)
  */
 void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_settings)
 {

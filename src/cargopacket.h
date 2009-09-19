@@ -45,6 +45,8 @@ struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 	 * Creates a new cargo packet
 	 * @param source the source of the packet
 	 * @param count  the number of cargo entities to put in this packet
+	 * @param source_type the 'type' of source the packet comes from (for subsidies)
+	 * @param source_id the actual source of the packet (for subsidies)
 	 * @pre count != 0 || source == INVALID_STATION
 	 */
 	CargoPacket(StationID source = INVALID_STATION, uint16 count = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);

@@ -1780,6 +1780,7 @@ void WaitTillSaved()
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
  * @param mode Save or load. Load can also be a TTD(Patch) game. Use SL_LOAD, SL_OLD_LOAD or SL_SAVE
+ * @param sb The sub directory to save the savegame in
  * @param threaded True when threaded saving is allowed
  * @return Return the results of the action. SL_OK, SL_ERROR or SL_REINIT ("unload" the game)
  */

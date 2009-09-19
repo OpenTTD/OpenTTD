@@ -264,9 +264,11 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, v
  * Every tile will be tested by means of the callback function proc,
  * which will determine if yes or no the given tile meets criteria of search.
  * @param tile to start the search from. Upon completion, it will return the tile matching the search
- * @param radius: How many tiles to search outwards. Note: This is a radius and thus different
+ * @param radius How many tiles to search outwards. Note: This is a radius and thus different
  *                from the size parameter of the other CircularTileSearch function, which is a diameter.
- * @param proc: callback testing function pointer.
+ * @param w the width of the inner rectangle
+ * @param h the height of the inner rectangle
+ * @param proc callback testing function pointer.
  * @param user_data to be passed to the callback function. Depends on the implementation
  * @return result of the search
  * @pre proc != NULL

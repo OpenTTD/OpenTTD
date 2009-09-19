@@ -1575,7 +1575,7 @@ static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
  * @param c2  second cargo
  * @param ca3 acceptance of third cargo
  * @param c3  and third cargo. Those three are in an array
- * @param s1  slope refused upon choosing a place to build
+ * @param sl  slope refused upon choosing a place to build
  * @param a1  animation frame on production
  * @param a2  next frame of animation
  * @param a3  chooses between animation or construction state

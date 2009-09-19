@@ -78,7 +78,7 @@ uint GetTileZ(TileIndex tile)
 
 /**
  * Get top height of the tile
- * @param tile Tile to compute height of
+ * @param t Tile to compute height of
  * @return Maximum height of the tile */
 uint GetTileMaxZ(TileIndex t)
 {

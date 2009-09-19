@@ -74,7 +74,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	/**
 	 * Get the industry of the given tile
-	 * @param t the tile to get the industry from
+	 * @param tile the tile to get the industry from
 	 * @pre IsTileType(t, MP_INDUSTRY)
 	 * @return the industry
 	 */

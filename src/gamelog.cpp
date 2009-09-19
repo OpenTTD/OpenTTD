@@ -107,6 +107,7 @@ static void AddDebugText(char *buf, const char *s, ...)
 
 
 /** Prints GRF filename if found
+ * @param buf The location in the _dbgofs buffer to draw
  * @param grfid GRF which filename to print
  */
 static void PrintGrfFilename(char *buf, uint grfid)
@@ -119,6 +120,7 @@ static void PrintGrfFilename(char *buf, uint grfid)
 }
 
 /** Prints GRF ID, checksum and filename if found
+ * @param buf The location in the _dbgofs buffer to draw
  * @param grfid GRF ID
  * @param md5sum array of md5sum to print
  */
@@ -150,7 +152,10 @@ static const char *la_text[] = {
 assert_compile(lengthof(la_text) == GLAT_END);
 
 
-/** Prints active gamelog */
+/**
+ * Prints active gamelog
+ * @param proc the procedure to draw with
+ */
 void GamelogPrint(GamelogPrintProc *proc)
 {
 	char buf[GAMELOG_BUF_LEN];
@@ -359,7 +364,6 @@ bool GamelogTestEmergency()
 }
 
 /** Logs a change in game revision
- * @param revision new revision string
  */
 void GamelogRevision()
 {
@@ -481,7 +485,8 @@ static void GamelogGRFBug(uint32 grfid, byte bug, uint64 data)
  * Ensures this is logged only once for each GRF and engine type
  * This check takes some time, but it is called pretty seldom, so it
  * doesn't matter that much (ideally it shouldn't be called at all).
- * @param engine engine to log
+ * @param grfid the broken NewGRF
+ * @param internal_id the internal ID of whatever's broken in the NewGRF
  * @return true iff a unique record was done
  */
 bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id)

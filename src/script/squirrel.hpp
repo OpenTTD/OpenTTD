@@ -144,6 +144,7 @@ public:
 
 	/**
 	 * Creates a class instance.
+	 * @param vm The VM to create the class instance for
 	 * @param class_name The name of the class of which we create an instance.
 	 * @param real_instance The instance to the real class, if it represents a real class.
 	 * @param instance Returning value with the pointer to the instance.

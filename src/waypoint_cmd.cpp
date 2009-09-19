@@ -157,6 +157,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
  * Check whether the given tile is suitable for a waypoint.
  * @param tile the tile to check for suitability
  * @param axis the axis of the waypoint
+ * @param waypoint Waypoint the waypoint to check for is already joined to. If we find another waypoint it can join to it will throw an error.
  */
 static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *waypoint)
 {

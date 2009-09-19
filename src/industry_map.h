@@ -304,6 +304,7 @@ static inline void SetIndustryTriggers(TileIndex tile, byte triggers)
  * @param index  the industry this tile belongs to
  * @param gfx    the graphics to use for the tile
  * @param random the random value
+ * @param wc     the water class for this industry; only useful when build on water
  */
 static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random, WaterClass wc)
 {

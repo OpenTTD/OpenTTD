@@ -164,6 +164,7 @@ private:
 
 	/**
 	 * Save one object (int / string / arrray / table) to the savegame.
+	 * @param vm The virtual machine to get all the data from.
 	 * @param index The index on the squirrel stack of the element to save.
 	 * @param max_depth The maximum depth recursive arrays / tables will be stored
 	 *   with before an error is returned.

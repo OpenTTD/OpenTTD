@@ -61,6 +61,7 @@ int GetDriverParamInt(const char * const *parm, const char *name, int def)
 /**
  * Find the requested driver and return its class.
  * @param name the driver to select.
+ * @param type the type of driver to select
  * @post Sets the driver so GetCurrentDriver() returns it too.
  */
 Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
@@ -144,6 +145,8 @@ Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 /**
  * Register a driver internally, based on its name.
  * @param name the name of the driver.
+ * @param type the type of driver to register
+ * @param priority the priority; how badly do we want this as default?
  * @note an assert() will be trigger if 2 driver with the same name try to register.
  */
 void DriverFactoryBase::RegisterDriver(const char *name, Driver::Type type, int priority)

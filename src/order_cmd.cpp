@@ -1662,6 +1662,7 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
  * Update the vehicle's destination tile from an order.
  * @param order the order the vehicle currently has
  * @param v the vehicle to update
+ * @param conditional_depth the depth (amount of steps) to go with conditional orders. This to prevent infinite loops.
  */
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 {

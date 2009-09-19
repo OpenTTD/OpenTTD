@@ -132,7 +132,7 @@ static inline void SetRailType(TileIndex t, RailType r)
 
 /**
  * Gets the track bits of the given tile
- * @param t the tile to get the track bits from
+ * @param tile the tile to get the track bits from
  * @return the track bits of the tile
  */
 static inline TrackBits GetTrackBits(TileIndex tile)

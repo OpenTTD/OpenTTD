@@ -1485,8 +1485,10 @@ void UpdateTownMaxPass(Town *t)
  * @param t The town
  * @param tile Where to put it
  * @param townnameparts The town name
- * @param size_mode How the size should be determined
  * @param size Parameter for size determination
+ * @param size_mode How the size should be determined
+ * @param city whether to build a city or town
+ * @param layout the (road) layout of the town
  */
 static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
@@ -1726,6 +1728,7 @@ static bool FindNearestEmptyLand(TileIndex tile, void *user_data)
  * flat spot.
  *
  * @param tile Start looking from this spot.
+ * @param layout the road layout to search for
  * @return tile that was found
  */
 static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layout)
@@ -1840,8 +1843,8 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
 
 /**
  * Clears tile and builds a house or house part.
- * @param t tile index
- * @param tid Town index
+ * @param tile tile index
+ * @param t The town to clear the house for
  * @param counter of construction step
  * @param stage of construction (used for drawing)
  * @param type of house. Index into house specs array
@@ -1865,7 +1868,7 @@ static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byt
 /**
  * Write house information into the map. For houses > 1 tile, all tiles are marked.
  * @param t tile index
- * @param tid Town index
+ * @param town The town related to this house
  * @param counter of construction step
  * @param stage of construction (used for drawing)
  * @param type of house. Index into house specs array

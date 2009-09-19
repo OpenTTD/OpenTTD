@@ -402,6 +402,7 @@ static bool NormaliseTileOffset(int32 *tile)
 /**
  * Check whether one can reach (possibly by building) a road piece the center
  * of the neighbouring tile. This includes roads and (drive through) stations.
+ * @param rts The road type we want to know reachability for
  * @param start_tile The tile to "enter" the neighbouring tile.
  * @param neighbour The direction to the neighbouring tile to "enter".
  * @return true if and only if the tile is reachable.

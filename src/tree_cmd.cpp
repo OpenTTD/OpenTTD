@@ -74,7 +74,7 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
  * @pre the tile must be suitable for trees.
  *
  * @param tile where to plant the trees.
- * @param type The type of the tree
+ * @param treetype The type of the tree
  * @param count the number of trees (minus 1)
  * @param growth the growth status
  */

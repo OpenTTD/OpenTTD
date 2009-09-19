@@ -124,9 +124,9 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 /**
  * Draws an image of a road vehicle chain
  * @param v Front vehicle
- + @param x x Position to start at
+ * @param x x Position to start at
  * @param y y Position to draw at
- * @param seletion Selected vehicle to draw a border around
+ * @param selection Selected vehicle to draw a border around
  * @param max_width Number of pixels space for drawing
  */
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width)

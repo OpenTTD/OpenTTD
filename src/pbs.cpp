@@ -327,7 +327,7 @@ Train *GetTrainForReservation(TileIndex tile, Track track)
  * @param tile The tile
  * @param trackdir The trackdir to test
  * @param include_line_end Should end-of-line tiles be considered safe?
- * @param forbid_90def Don't allow trains to make 90 degree turns
+ * @param forbid_90deg Don't allow trains to make 90 degree turns
  * @return True if it is a safe position
  */
 bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg)
@@ -367,7 +367,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
  * @param v the vehicle to test for
  * @param tile The tile
  * @param trackdir The trackdir to test
- * @param forbid_90def Don't allow trains to make 90 degree turns
+ * @param forbid_90deg Don't allow trains to make 90 degree turns
  * @return True if the position is free
  */
 bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg)

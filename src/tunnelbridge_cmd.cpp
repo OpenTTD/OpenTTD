@@ -753,7 +753,7 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
  * @param psid Image and palette of a bridge pillar.
  * @param ti #TileInfo of current bridge-middle-tile.
  * @param axis Orientation of bridge.
- * @param type Bridge type.
+ * @param drawfarpillar Whether to draw the pillar at the back
  * @param x Sprite X position of front pillar.
  * @param y Sprite Y position of front pillar.
  * @param z_bridge Absolute height of bridge bottom.

@@ -2479,6 +2479,7 @@ void SetWindowClassesDirty(WindowClass cls)
 /**
  * Mark window data as invalid (in need of re-computing)
  * @param w Window with invalid data
+ * @param data The data to invalidate with
  */
 void InvalidateThisWindowData(Window *w, int data)
 {
@@ -2490,6 +2491,7 @@ void InvalidateThisWindowData(Window *w, int data)
  * Mark window data of the window of a given class and specific window number as invalid (in need of re-computing)
  * @param cls Window class
  * @param number Window number within the class
+ * @param data The data to invalidate with
  */
 void InvalidateWindowData(WindowClass cls, WindowNumber number, int data)
 {
@@ -2502,6 +2504,7 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number, int data)
 /**
  * Mark window data of all windows of a given class as invalid (in need of re-computing)
  * @param cls Window class
+ * @param data The data to invalidate with
  */
 void InvalidateWindowClassesData(WindowClass cls, int data)
 {

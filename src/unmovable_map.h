@@ -155,7 +155,7 @@ static inline byte GetCompanyHQSection(TileIndex t)
 /**
  * Set the 'section' of the HQ.
  * @param t a tile of the HQ.
- * param section to be set.
+ * @param section to be set.
  * @pre IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t)
  */
 static inline void SetCompanyHQSection(TileIndex t, uint8 section)

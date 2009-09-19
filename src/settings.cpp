@@ -301,7 +301,7 @@ static void make_manyofmany(char *buf, const char *last, const char *many, uint3
 
 /** Convert a string representation (external) of a setting to the internal rep.
  * @param desc SettingDesc struct that holds all information about the variable
- * @param str input string that will be parsed based on the type of desc
+ * @param orig_str input string that will be parsed based on the type of desc
  * @return return the parsed value of the setting */
 static const void *string_to_val(const SettingDescBase *desc, const char *orig_str)
 {
@@ -605,9 +605,8 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * saved and a callback function should be defined that will take over the
  * list-handling and store the data itself somewhere.
  * @param ini IniFile handle to the ini file with the source data
- * @param grpname character string identifying the section-header of the ini
- * file that will be parsed
- * entries of the given section
+ * @param grpname character string identifying the section-header of the ini file that will be parsed
+ * @param list new list with entries of the given section
  */
 static void ini_load_setting_list(IniFile *ini, const char *grpname, StringList *list)
 {

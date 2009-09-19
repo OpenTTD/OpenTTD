@@ -242,6 +242,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
  * @param pos position of the selected item in caller widow
  * @param rows number of rows(capacity) in caller window
  * @param delta step height in caller window
+ * @param right the right most position to draw
  * @return the refit option that is hightlighted, NULL if none
  */
 static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, uint right)
@@ -433,6 +434,7 @@ static const WindowDesc _vehicle_refit_desc(
 /** Show the refit window for a vehicle
  * @param *v The vehicle to show the refit window for
  * @param order of the vehicle ( ? )
+ * @param parent the parent window of the refit window
  */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent)
 {
@@ -782,9 +784,9 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 /**
  * Draws an image of a vehicle chain
  * @param v Front vehicle
- + @param x x Position to start at
+ * @param x x Position to start at
  * @param y y Position to draw at
- * @param seletion Selected vehicle to draw a frame around
+ * @param selection Selected vehicle to draw a frame around
  * @param max_width Number of pixels space for drawing
  * @param skip Number of pixels to skip at the front (for scrolling)
  */

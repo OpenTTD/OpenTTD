@@ -70,6 +70,7 @@ static inline uint GetGroupArraySize()
 /**
  * Get the number of engines with EngineID id_e in the group with GroupID
  * id_g
+ * @param company The company the group belongs to
  * @param id_g The GroupID of the group used
  * @param id_e The EngineID of the engine to count
  * @return The number of engines with EngineID id_e in the group

@@ -701,12 +701,15 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 
 /** Engine drawing loop
  * @param type Type of vehicle (VEH_*)
- * @param x,y Where should the list start
+ * @param x The left most location of the list
+ * @param r The right most location of the list
+ * @param y The top most location of teh list
  * @param eng_list What engines to draw
  * @param min where to start in the list
  * @param max where in the list to end
  * @param selected_id what engine to highlight as selected, if any
  * @param count_location Offset to print the engine count (used by autoreplace). 0 means it's off
+ * @param selected_group the group to list the engines of
  */
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group)
 {

@@ -174,6 +174,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
  * @param pieces roadbits to remove
  * @param rt roadtype to remove
  * @param crossing_check should we check if there is a tram track when we are removing road from crossing?
+ * @param town_check should we check if the town allows removal?
  */
 static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits pieces, RoadType rt, bool crossing_check, bool town_check = true)
 {

@@ -642,8 +642,8 @@ static inline NWidgetPart SetResize(int16 dx, int16 dy)
 
 /**
  * Widget part function for setting the minimal size.
- * @param dx Horizontal minimal size.
- * @param dy Vertical minimal size.
+ * @param x Horizontal minimal size.
+ * @param y Vertical minimal size.
  * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetMinimalSize(int16 x, int16 y)

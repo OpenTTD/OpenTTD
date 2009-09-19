@@ -114,10 +114,8 @@ typedef bool (*CMSAMatcher)(TileIndex tile);
 /**
  * Counts the numbers of tiles matching a specific type in the area around
  * @param tile the center tile of the 'count area'
- * @param type the type of tile searched for
- * @param industry when type == MP_INDUSTRY, the type of the industry,
- *                 in all other cases this parameter is ignored
- * @return the result the noumber of matching tiles around
+ * @param cmp the comparator/matcher (@see CMSAMatcher)
+ * @return the number of matching tiles around
  */
 static int CountMapSquareAround(TileIndex tile, CMSAMatcher cmp)
 {
@@ -660,6 +658,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
  * @param invalid_dirs prohibited directions (set of DiagDirections)
  * @param station StationID to be queried and returned if available
  * @param check_clear if clearing tile should be performed (in wich case, cost will be added)
+ * @param rt The rail type to check for (overbuilding rail stations over rail)
  * @return the cost in case of success, or an error code if it failed.
  */
 CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE)
@@ -928,7 +927,7 @@ CommandCost FindJoiningStation(StationID existing_station, StationID station_to_
  * @param waypoint_to_join the waypoint to join to
  * @param adjacent whether adjacent waypoints are allowed
  * @param ta the area of the newly build waypoint
- * @param st 'return' pointer for the found waypoint
+ * @param wp 'return' pointer for the found waypoint
  * @return command cost with the error or 'okay'
  */
 CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_to_join, bool adjacent, TileArea ta, Waypoint **wp)
@@ -2971,8 +2970,7 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param tile North tile of producer
  * @param w_prod X extent of producer
  * @param h_prod Y extent of producer
- *
- * @return: Set of found stations
+ * @param stations The list to store the stations in
  */
 void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList *stations)
 {

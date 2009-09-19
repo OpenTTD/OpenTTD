@@ -79,7 +79,7 @@ public:
 
 	/**
 	 * Makes this order a Go To Station order.
-	 * @param destsination the station to go to.
+	 * @param destination the station to go to.
 	 */
 	void MakeGoToStation(StationID destination);
 

@@ -1481,6 +1481,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 /**
  * Draws text "Vehicles:" and number of all vehicle types, or "(none)"
  * @param company ID of company to print statistics of
+ * @param right the right most location to draw to
  */
 static void DrawCompanyVehiclesAmount(CompanyID company, int right)
 {

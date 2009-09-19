@@ -299,6 +299,7 @@ static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callb
 /** Issue a train vehicle move command
  * @param v The vehicle to move
  * @param after The vehicle to insert 'v' after, or NULL to start new chain
+ * @param flags the command flags to use
  * @param whole_chain move all vehicles following 'v' (true), or only 'v' (false)
  * @return success or error
  */

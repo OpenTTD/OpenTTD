@@ -1028,9 +1028,11 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 /**
  * Scan a single directory (and recursively it's children) and add
  * any graphics sets that are found.
+ * @param fs              the file scanner to add the files to
  * @param extension       the extension of files to search for.
  * @param path            full path we're currently at
  * @param basepath_length from where in the path are we 'based' on the search path
+ * @param recursive       whether to recursively search the sub directories
  */
 static uint ScanPath(FileScanner *fs, const char *extension, const char *path, size_t basepath_length, bool recursive)
 {
@@ -1078,6 +1080,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 
 /**
  * Scan the given tar and add graphics sets when it finds one.
+ * @param fs        the file scanner to scan for
  * @param extension the extension of files to search for.
  * @param tar       the tar to search in.
  */
@@ -1104,6 +1107,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
  * @param extension the extension of files to search for.
  * @param sd        the sub directory to search in.
  * @param tars      whether to search in the tars too.
+ * @param recursive whether to search recursively
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
@@ -1132,6 +1136,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
  * Scan for files with the given extention in the given search path.
  * @param extension the extension of files to search for.
  * @param directory the sub directory to search in.
+ * @param recursive whether to search recursively
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */

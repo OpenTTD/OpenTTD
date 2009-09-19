@@ -209,6 +209,7 @@ static void InitLoading(LoadgameState *ls)
 /**
  * Verifies the title has a valid checksum
  * @param title title and checksum
+ * @param len   the length of the title to read/checksum
  * @return true iff the title is valid
  * @note the title (incl. checksum) has to be at least 41/49 (HEADER_SIZE) bytes long!
  */

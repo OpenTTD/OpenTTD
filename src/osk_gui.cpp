@@ -346,7 +346,7 @@ static const int INTER_KEY_SPACE = 2; // Number of pixels between two keys.
  * Add a key widget to a row of the keyboard.
  * @param hor     Row container to add key widget to.
  * @param height  Height of the key (all keys in a row should have equal height).
- * @param numhalf Number of 1/2 key widths that this key has.
+ * @param num_half Number of 1/2 key widths that this key has.
  * @param widtype Widget type of the key. Must be either \c NWID_SPACER for an invisible key, or a \c WWT_* widget.
  * @param widnum  Widget number of the key.
  * @param widdata Data value of the key widget.

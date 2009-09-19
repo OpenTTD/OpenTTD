@@ -245,7 +245,7 @@ static FORCEINLINE bool IsInsideBS(const T x, const uint base, const uint size)
  *
  * Returns true if a value is in the interval of [min, max).
  *
- * @param a The value to check
+ * @param x The value to check
  * @param min The minimum of the interval
  * @param max The maximum of the interval
  * @see IsInsideBS()

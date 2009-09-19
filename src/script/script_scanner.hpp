@@ -31,7 +31,7 @@ public:
 
 	/**
 	 * Rescan for scripts.
-	 * @param info_flie_name The name of the 'info.nut' file.
+	 * @param info_file_name The name of the 'info.nut' file.
 	 * @param search_dir The subdirecotry to search for scripts.
 	 */
 	void ScanScriptDir(const char *info_file_name, Subdirectory search_dir);

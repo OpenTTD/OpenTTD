@@ -750,6 +750,7 @@ SpriteID GetCargoSprite(CargoID i)
  * @param waiting number of waiting units
  * @param x x on-screen coordinate where to start with drawing icons
  * @param y y coordinate
+ * @param width the width of the view
  */
 static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
 {
@@ -1128,9 +1129,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
  * Circulate around the to-be-built station to find stations we could join.
  * Make sure that only stations are returned where joining wouldn't exceed
  * station spread and are our own station.
- * @param tile Base tile of the to-be-built station
- * @param w Width of the to-be-built station
- * @param h Height of the to-be-built station
+ * @param ta Base tile area of the to-be-built station
  * @param distant_join Search for adjacent stations (false) or stations fully
  *                     within station spread
  * @tparam T the type of station to look for
@@ -1308,8 +1307,7 @@ static const WindowDesc _select_station_desc(
 /**
  * Check whether we need to show the station selection window.
  * @param cmd Command to build the station.
- * @param w Width of the to-be-built station
- * @param h Height of the to-be-built station
+ * @param ta Tile area of the to-be-built station
  * @tparam T the type of station
  * @return whether we need to show the station selection window.
  */

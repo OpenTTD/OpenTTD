@@ -382,7 +382,7 @@ const char *GetGRFStringPtr(uint16 stringid)
  * of the current language set by the user.
  * This function is called after the user changed language,
  * from strings.cpp:ReadLanguagePack
- * @param langauge_id iso code of current selection
+ * @param language_id iso code of current selection
  */
 void SetCurrentGrfLangID(byte language_id)
 {
@@ -529,7 +529,9 @@ void RewindTextRefStack()
 /**
  * FormatString for NewGRF specific "magic" string control codes
  * @param scc   the string control code that has been read
- * @param stack the current "stack"
+ * @param buff  the buffer we're writing to
+ * @param str   the string that we need to write
+ * @param argv  the OpenTTD stack of values
  * @return the string control code to "execute" now
  */
 uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv)

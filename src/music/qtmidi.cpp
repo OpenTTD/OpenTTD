@@ -50,7 +50,7 @@ enum {
  * Sets the @c OSType of a given file to @c 'Midi', but only if it's not
  * already set.
  *
- * @param *spec A @c FSSpec structure referencing a file.
+ * @param *ref A @c FSSpec structure referencing a file.
  */
 static void SetMIDITypeIfNeeded(const FSRef *ref)
 {

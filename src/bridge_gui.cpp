@@ -45,7 +45,7 @@ typedef GUIList<BuildBridgeData> GUIBridgeList;
 /**
  * Callback executed after a build Bridge CMD has been called
  *
- * @param scucess True if the build succeded
+ * @param success True if the build succeded
  * @param tile The tile where the command has been executed
  * @param p1 not used
  * @param p2 not used
@@ -351,7 +351,7 @@ static const WindowDesc _build_bridge_desc(
  *  If we can't build a bridge under the given conditions
  *  show an error message.
  *
- * @parma start The start tile of the bridge
+ * @param start The start tile of the bridge
  * @param end The end tile of the bridge
  * @param transport_type The transport type
  * @param road_rail_type The road/rail type

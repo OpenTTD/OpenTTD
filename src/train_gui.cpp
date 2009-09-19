@@ -64,9 +64,9 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 /**
  * Draws an image of a whole train
  * @param v Front vehicle
- + @param x x Position to start at
+ * @param x x Position to start at
  * @param y y Position to draw at
- * @param seletion Selected vehicle to draw a frame around
+ * @param selection Selected vehicle to draw a frame around
  * @param max_width Number of pixels space for drawing
  * @param skip Number of pixels to skip at the front (for scrolling)
  */

@@ -855,7 +855,8 @@ static SmallIndustryList _cargo_delivery_destinations;
  * All cargo is delivered to the nearest (Manhattan) industry to the station sign, which is inside the acceptance rectangle and actually accepts the cargo.
  * @param st The station that accepted the cargo
  * @param cargo_type Type of cargo delivered
- * @param nun_pieces Amount of cargo delivered
+ * @param num_pieces Amount of cargo delivered
+ * @param source The source of the cargo
  * @return actually accepted pieces of cargo
  */
 static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint num_pieces, IndustryID source)
@@ -903,6 +904,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 /**
  * Delivers goods to industries/towns and calculates the payment
  * @param num_pieces amount of cargo delivered
+ * @param cargo_type the type of cargo that is delivered
  * @param dest Station the cargo has been unloaded
  * @param source_tile The origin of the cargo for distance calculation
  * @param days_in_transit Travel time

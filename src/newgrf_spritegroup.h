@@ -225,7 +225,7 @@ protected:
 struct CallbackResultSpriteGroup : SpriteGroup {
 	/**
 	 * Creates a spritegroup representing a callback result
-	 * @param result The value that was used to represent this callback result
+	 * @param value The value that was used to represent this callback result
 	 */
 	CallbackResultSpriteGroup(uint16 value) :
 		SpriteGroup(SGT_CALLBACK),

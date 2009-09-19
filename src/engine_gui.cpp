@@ -237,7 +237,7 @@ StringID GetEngineInfoString(EngineID engine)
  * @param x      Horizontal position to use for drawing the engine.
  * @param y      Vertical position to use for drawing the engine.
  * @param engine Engine to draw.
- * @para, pal    Palette to use for drawing.
+ * @param pal    Palette to use for drawing.
  */
 void DrawVehicleEngine(int x, int y, EngineID engine, SpriteID pal)
 {

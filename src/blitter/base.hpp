@@ -107,7 +107,8 @@ public:
 	/**
 	 * Make a single horizontal line in a single colour on the video-buffer.
 	 * @param video The destination pointer (video-buffer).
-	 * @param width The lenght of the line.
+	 * @param width The length of the line.
+	 * @param height The height of the line.
 	 * @param colour A 8bpp mapping colour.
 	 */
 	virtual void DrawRect(void *video, int width, int height, uint8 colour) = 0;
