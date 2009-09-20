@@ -326,7 +326,7 @@ static const SaveLoad _station_desc[] = {
 	      SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 	      SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
 	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
-	  SLE_CONDVAR(Station, town_acc,                   SLE_UINT32, 127, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT32, 127, SL_MAX_VERSION),
 
 	      SLE_END()
 };

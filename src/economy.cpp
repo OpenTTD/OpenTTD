@@ -933,7 +933,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 	uint accepted = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src_type == ST_INDUSTRY ? src : INVALID_INDUSTRY);
 
 	/* If there are non-industries around accepting the cargo, accept it all */
-	if (HasBit(st->town_acc, cargo_type)) accepted = num_pieces;
+	if (HasBit(st->always_accepted, cargo_type)) accepted = num_pieces;
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);

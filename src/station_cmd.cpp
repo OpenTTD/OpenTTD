@@ -508,12 +508,12 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param w X extent of area
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
- * @param town_acc bitmask of cargo accepted by houses and headquarters; can be NULL
+ * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be NULL
  */
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint32 *town_acc)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint32 *always_accepted)
 {
 	CargoArray acceptance;
-	if (town_acc != NULL) *town_acc = 0;
+	if (always_accepted != NULL) *always_accepted = 0;
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -533,7 +533,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint3
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
-			AddAcceptedCargo(tile, acceptance, town_acc);
+			AddAcceptedCargo(tile, acceptance, always_accepted);
 		}
 	}
 
@@ -557,7 +557,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 			st->rect.right  - st->rect.left + 1,
 			st->rect.bottom - st->rect.top  + 1,
 			st->GetCatchmentRadius(),
-			&st->town_acc
+			&st->always_accepted
 		);
 	}
 

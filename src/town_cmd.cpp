@@ -592,14 +592,14 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 	}
 }
 
-static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, uint32 *town_acc)
+static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, uint32 *always_accepted)
 {
 	if (cargo == CT_INVALID || amount == 0) return;
 	acceptance[cargo] += amount;
-	SetBit(*town_acc, cargo);
+	SetBit(*always_accepted, cargo);
 }
 
-static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32 *town_acc)
+static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	CargoID accepts[3];
@@ -624,13 +624,13 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
-			AddAcceptedCargoSetMask(accepts[0], GB(callback, 0, 4), acceptance, town_acc);
-			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, town_acc);
+			AddAcceptedCargoSetMask(accepts[0], GB(callback, 0, 4), acceptance, always_accepted);
+			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, always_accepted);
 			if (_settings_game.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
-				AddAcceptedCargoSetMask(CT_FOOD, GB(callback, 8, 4), acceptance, town_acc);
+				AddAcceptedCargoSetMask(CT_FOOD, GB(callback, 8, 4), acceptance, always_accepted);
 			} else {
-				AddAcceptedCargoSetMask(accepts[2], GB(callback, 8, 4), acceptance, town_acc);
+				AddAcceptedCargoSetMask(accepts[2], GB(callback, 8, 4), acceptance, always_accepted);
 			}
 			return;
 		}
@@ -638,7 +638,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32
 
 	/* No custom acceptance, so fill in with the default values */
 	for (uint8 i = 0; i < lengthof(accepts); i++) {
-		AddAcceptedCargoSetMask(accepts[i], hs->cargo_acceptance[i], acceptance, town_acc);
+		AddAcceptedCargoSetMask(accepts[i], hs->cargo_acceptance[i], acceptance, always_accepted);
 	}
 }
 
