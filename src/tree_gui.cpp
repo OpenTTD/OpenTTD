@@ -52,24 +52,34 @@ enum BuildTreesWidgets {
  */
 class BuildTreesWindow : public Window
 {
-	uint16 base;
-	uint16 count;
-	uint tree_to_plant;
+	uint16 base;        ///< Base tree number used for drawing the window.
+	uint16 count;       ///< Number of different trees available.
+	uint tree_to_plant; ///< Tree number to plant, \c UINT_MAX for a random tree.
 
 public:
-	BuildTreesWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	BuildTreesWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		if (_game_mode != GM_EDITOR) {
-			this->HideWidget(BTW_MANY_RANDOM);
-			int offset = this->widget[BTW_MANY_RANDOM].bottom - this->widget[BTW_MANY_RANDOM].top;
-			this->height -= offset;
-			this->widget[BTW_BACKGROUND].bottom -= offset;
-		}
+		this->InitNested(desc, window_number);
 		ResetObjectToPlace();
-		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != BTW_MANY_RANDOM) return;
+
+		if (_game_mode != GM_EDITOR) {
+			size->width = 0;
+			size->height = 0;
+		}
 	}
 
 	virtual void OnPaint()
+	{
+		this->OnInvalidateData(0);
+		this->DrawWidgets();
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		static const PalSpriteID tree_sprites[] = {
 			{ 0x655, PAL_NONE }, { 0x663, PAL_NONE }, { 0x678, PAL_NONE }, { 0x62B, PAL_NONE },
@@ -84,21 +94,10 @@ public:
 			{ 0x7BA, PAL_NONE }, { 0x7C1, PALETTE_TO_RED, }, { 0x7C8, PALETTE_TO_PALE_GREEN }, { 0x7CF, PALETTE_TO_YELLOW }, { 0x7D6, PALETTE_TO_RED }
 		};
 
-		this->DrawWidgets();
+		if (widget < BTW_TYPE_11 || widget > BTW_TYPE_34 || widget - BTW_TYPE_11 >= this->count) return;
 
-		int i = this->base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
-		int count = this->count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
-
-		int x = 18;
-		int y = 54;
-		do {
-			DrawSprite(tree_sprites[i].sprite, tree_sprites[i].pal, x, y);
-			x += 35;
-			if (!(++i & 3)) {
-				x -= 35 * 4;
-				y += 47;
-			}
-		} while (--count);
+		int i = this->base + widget - BTW_TYPE_11;
+		DrawSprite(tree_sprites[i].sprite, tree_sprites[i].pal, (r.left + r.right) / 2, r.bottom - 7);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -149,6 +148,12 @@ public:
 		}
 	}
 
+	virtual void OnInvalidateData(int data = 0)
+	{
+		this->base  = _tree_base_by_landscape[_settings_game.game_creation.landscape];
+		this->count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
+	}
+
 	virtual void OnTimeout()
 	{
 		this->RaiseWidget(BTW_MANY_RANDOM);
@@ -159,27 +164,6 @@ public:
 	{
 		this->RaiseButtons();
 	}
-};
-
-static const Widget _build_trees_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,               STR_TOOLTIP_CLOSE_WINDOW},           // BTW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   142,     0,    13, STR_PLANT_TREE_CAPTION,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // BTW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   142,    14,   183, 0x0,                           STR_NULL},                           // BTW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_11
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_12
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_13
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    16,    61, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_14
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_21
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_22
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_23
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    63,   108, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_24
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_31
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_32
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_33
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_34
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   157,   168, STR_TREES_RANDOM_TYPE,         STR_TREES_RANDOM_TYPE_TOOLTIP},          // BTW_TYPE_RANDOM
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   170,   181, STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP},     // BTW_MANY_RANDOM
-{    WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_trees_widgets[] = {
@@ -248,7 +232,7 @@ static const WindowDesc _build_trees_desc(
 	WDP_AUTO, WDP_AUTO, 143, 184, 143, 184,
 	WC_BUILD_TREES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_trees_widgets, _nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)
+	NULL, _nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)
 );
 
 void ShowBuildTreesToolbar()
