@@ -781,9 +781,9 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Bị sâu bọ tàn phá tại {INDUSTRY}!{}Năng suất giảm 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} năng suất tại {INDUSTRY} giảm {COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} đang chờ tại ga xe lửa
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} đang chờ tại kho chứa
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} đang chờ tại kho chứa
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} đang chờ tại xưởng
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} đang chờ tại xưởng
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} đang chờ tại xưởng
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} đang chờ tại sân bay
 
 # Start of order review system.
@@ -995,21 +995,96 @@ STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Độ b
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Nền kinh tế: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Quay tàu hỏa: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Thiên tai: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Quan điểm của hội đồng thành phố về cơ cấu lại khu vực: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :Không Có
+STR_NUM_VERY_LOW                                                :Thấp Nhất
+STR_NUM_LOW                                                     :Thấp
+STR_NUM_NORMAL                                                  :Thường
+STR_NUM_HIGH                                                    :Cao
+STR_NUM_CUSTOM                                                  :Tự Chỉnh
 
+STR_AI_SPEED_VERY_SLOW                                          :Chậm Nhất
+STR_AI_SPEED_SLOW                                               :Chậm
+STR_AI_SPEED_MEDIUM                                             :Trung Bình
+STR_AI_SPEED_FAST                                               :Nhanh
+STR_AI_SPEED_VERY_FAST                                          :Nhanh Nhất
 
+STR_SEA_LEVEL_VERY_LOW                                          :Thấp Nhất
+STR_SEA_LEVEL_LOW                                               :Thấp
+STR_SEA_LEVEL_MEDIUM                                            :Trung Bình
+STR_SEA_LEVEL_HIGH                                              :Cao
 
+STR_DISASTER_NONE                                               :Không Có
+STR_DISASTER_REDUCED                                            :Giảm
+STR_DISASTER_NORMAL                                             :Thường
 
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Rất Phẳng
+STR_TERRAIN_TYPE_FLAT                                           :Phẳng
+STR_TERRAIN_TYPE_HILLY                                          :Núi
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Núi Cao
 
+STR_ECONOMY_STEADY                                              :Vững
+STR_ECONOMY_FLUCTUATING                                         :Lên Xuống
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Cuối đường, tại trạm
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Chỉ cuối đường
 
+STR_DISASTERS_OFF                                               :Tắt
+STR_DISASTERS_ON                                                :Bật
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
+STR_CITY_APPROVAL_TOLERANT                                      :Khả Dung
+STR_CITY_APPROVAL_HOSTILE                                       :Thù Địch
 
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành động này thay đổi độ khó về tự tùy chỉnh
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Cao Cấp
 
+STR_CONFIG_SETTING_OFF                                          :Tắt
+STR_CONFIG_SETTING_ON                                           :Bật
+STR_CONFIG_SETTING_DISABLED                                     :tắt
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Hiện tốc độ phương tiện trong thanh trạng thái: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Cho phép xây dựng trên dốc và bờ biển: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Cho phép thay đổi địa chất dưới công trình, đường etc. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Cho phép thực tế hơn kích cỡ khu vực đón hàng: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Cho phép tháo dỡ thêm đường, cầu ... thuộc thị trấn : {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bật chức năng xây tàu lửa nhiều toa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Kiểu tăng tốc của tàu hỏa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Gốc
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Thật
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cấm tàu hỏa và tàu thủy quay 90 độ: {ORANGE}{STRING} {LTBLUE} (vô hiệu với NTD)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Nhập ga xe lửa xây kế nhau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép nhập trạm không kế nhau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử dụng thuật toán chất hàng cải tiến: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Chất đồ lên phương tiện từ từ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Lạm phát: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Phân phối hàng hóa đến trạm nếu ở đó có nhu cầu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Cho phép xây cầu cực dài: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Cho phép lệnh đi về xưởng: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Tùy chỉnh phương pháp xây dựng ngành công nghiệp chính: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như các ngành khác
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :khảo sát
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Cho phép nhiều cụm công nghiệp giống nhau trong thị trấn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Cụm công nghiệp cùng kiểu có thể xây cạnh nhau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Luôn luôn hiện ngày tháng đầy đủ trên thanh trạng thái: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiển thị tín hiệu ở phía làn đường đi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Hiện bảng tài chính vào cuối năm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Các lệnh mới thì 'không-dừng' như là mặc định: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Lệnh tàu hỏa sẽ ngừng lại ở {ORANGE}{STRING}{LTBLUE} sân ga một cách tự động
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :gần cuối
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :giữa
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Xe cộ nối đuôi (với tác động nối tiếp): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tự dịch chuyển cửa sổ khi con trỏ gần rìa: {ORANGE}{STRING}
 
 
 
