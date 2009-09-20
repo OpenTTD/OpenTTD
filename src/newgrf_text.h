@@ -28,4 +28,6 @@ void SwitchToErrorRefStack();
 void RewindTextRefStack();
 uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv);
 
+StringID TTDPStringIDToOTTDStringIDMapping(StringID string);
+
 #endif /* NEWGRF_TEXT_H */
