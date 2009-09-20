@@ -1320,6 +1320,7 @@ static void CrashAirplane(Aircraft *v)
 
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 
+	v->MarkDirty();
 	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 	uint amt = 2;

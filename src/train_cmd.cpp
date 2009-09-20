@@ -4159,6 +4159,7 @@ static void HandleBrokenTrain(Train *v)
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
 
+		v->MarkDirty();
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
@@ -4176,6 +4177,7 @@ static void HandleBrokenTrain(Train *v)
 	if (!(v->tick_counter & 3)) {
 		if (!--v->breakdown_delay) {
 			v->breakdown_ctr = 0;
+			v->MarkDirty();
 			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		}
 	}

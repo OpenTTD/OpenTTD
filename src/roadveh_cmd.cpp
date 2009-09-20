@@ -671,6 +671,7 @@ static void HandleBrokenRoadVeh(RoadVehicle *v)
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
 
+		v->MarkDirty();
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
@@ -688,6 +689,7 @@ static void HandleBrokenRoadVeh(RoadVehicle *v)
 	if ((v->tick_counter & 1) == 0) {
 		if (--v->breakdown_delay == 0) {
 			v->breakdown_ctr = 0;
+			v->MarkDirty();
 			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		}
 	}
