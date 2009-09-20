@@ -5644,7 +5644,7 @@ static const CargoLabel _default_refitmasks_aircraft[] = {
 	'TOYS', 'BATT', 'SWET', 'TOFF', 'COLA', 'CTCD', 'BUBL', 'PLST', 'FZDR',
 	0 };
 
-static const CargoLabel *_default_refitmasks[] = {
+static const CargoLabel * const _default_refitmasks[] = {
 	_default_refitmasks_rail,
 	_default_refitmasks_road,
 	_default_refitmasks_ships,

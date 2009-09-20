@@ -175,7 +175,7 @@ uint _block_sizes[4][2];
 
 /* Array to hold the default resize capacities
  * First part is the vehicle type, while the last is 0 = x, 1 = y */
-const uint _resize_cap[][2] = {
+static const uint _resize_cap[][2] = {
 /* VEH_TRAIN */    {6, 10 * 29},
 /* VEH_ROAD */     {5, 5},
 /* VEH_SHIP */     {3, 3},

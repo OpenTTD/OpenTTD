@@ -24,7 +24,7 @@ enum {
  * exist, or are in the wrong place, in the standard sprite fonts.
  * This is not used for FreeType rendering */
 
-static DefaultUnicodeMapping _default_unicode_map[] = {
+static const DefaultUnicodeMapping _default_unicode_map[] = {
 	{ 0x00A0, 0x20 }, // Non-breaking space / Up arrow
 	{ 0x00A4, CLRL }, // Currency sign
 	{ 0x00A6, CLRL }, // Broken bar

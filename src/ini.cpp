@@ -98,7 +98,7 @@ void IniGroup::Clear()
 	this->last_item = &this->item;
 }
 
-IniFile::IniFile(const char **list_group_names) : group(NULL), comment(NULL), list_group_names(list_group_names)
+IniFile::IniFile(const char * const *list_group_names) : group(NULL), comment(NULL), list_group_names(list_group_names)
 {
 	this->last_group = &this->group;
 }

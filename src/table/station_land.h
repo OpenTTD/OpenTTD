@@ -967,7 +967,7 @@ static const DrawTileSprites _station_display_datas_waypoint[] = {
 
 #undef TILE_SPRITE_LINE
 
-static const DrawTileSprites *_station_display_datas[] = {
+static const DrawTileSprites * const _station_display_datas[] = {
 	_station_display_datas_rail,
 	_station_display_datas_airport,
 	_station_display_datas_truck,

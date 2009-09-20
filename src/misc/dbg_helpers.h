@@ -34,7 +34,7 @@ template <typename T, size_t N> struct ArrayT<T[N]> {
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_t t_unk)
+inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>::item_t t_unk)
 {
 	if ((size_t)idx >= ArrayT<T>::length) {
 		return t_unk;
@@ -48,7 +48,7 @@ inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_t t_unk, E idx_inv, typename ArrayT<T>::item_t t_inv)
+inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>::item_t t_unk, E idx_inv, typename ArrayT<T>::item_t t_inv)
 {
 	if ((size_t)idx < ArrayT<T>::length) {
 		return t[idx];

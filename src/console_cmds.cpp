@@ -1243,7 +1243,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 
 DEF_CONSOLE_CMD(ConInfoVar)
 {
-	static const char *_icon_vartypes[] = {"boolean", "byte", "uint16", "uint32", "int16", "int32", "string"};
+	static const char * const _icon_vartypes[] = {"boolean", "byte", "uint16", "uint32", "int16", "int32", "string"};
 	const IConsoleVar *var;
 
 	if (argc == 0) {
@@ -1587,7 +1587,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 /** Resolve a string to a content type. */
 static ContentType StringToContentType(const char *str)
 {
-	static const char *inv_lookup[] = { "", "base", "newgrf", "ai", "ailib", "scenario", "heightmap" };
+	static const char * const inv_lookup[] = { "", "base", "newgrf", "ai", "ailib", "scenario", "heightmap" };
 	for (uint i = 1 /* there is no type 0 */; i < lengthof(inv_lookup); i++) {
 		if (strcasecmp(str, inv_lookup[i]) == 0) return (ContentType)i;
 	}
@@ -1670,9 +1670,9 @@ DEF_CONSOLE_CMD(ConContent)
 	if (strcasecmp(argv[1], "state") == 0) {
 		IConsolePrintF(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-			static const char *types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap" };
-			static const char *states[] = { "Not selected", "Selected" , "Dep Selected", "Installed", "Unknown" };
-			static ConsoleColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
+			static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap" };
+			static const char * const states[] = { "Not selected", "Selected" , "Dep Selected", "Installed", "Unknown" };
+			static const ConsoleColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
 			const ContentInfo *ci = *iter;
 			IConsolePrintF(state_to_colour[ci->state], "%d, %s, %s, %s", ci->id, types[ci->type - 1], states[ci->state], ci->name);

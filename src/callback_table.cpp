@@ -67,7 +67,7 @@ CommandCallback CcCreateGroup;
 /* ai/ai_core.cpp */
 CommandCallback CcAI;
 
-CommandCallback *_callback_table[] = {
+CommandCallback * const _callback_table[] = {
 	/* 0x00 */ NULL,
 	/* 0x01 */ CcBuildAircraft,
 	/* 0x02 */ CcBuildAirport,

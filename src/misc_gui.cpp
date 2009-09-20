@@ -348,7 +348,7 @@ static const WindowDesc _about_desc(
 	NULL, _nested_about_widgets, lengthof(_nested_about_widgets)
 );
 
-static const char *_credits[] = {
+static const char * const _credits[] = {
 	"Original design by Chris Sawyer",
 	"Original graphics by Simon Foster",
 	"",

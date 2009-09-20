@@ -9,7 +9,7 @@
 
 /** @file pricebase.h Price Bases */
 
-static PriceBaseSpec _price_base_specs[NUM_PRICES] = {
+static const PriceBaseSpec _price_base_specs[NUM_PRICES] = {
 	{    100, PCAT_NONE        }, ///< station_value
 	{    100, PCAT_CONSTRUCTION}, ///< build_rail
 	{     95, PCAT_CONSTRUCTION}, ///< build_road

@@ -498,7 +498,7 @@ void *AllocSprite(size_t mem_req)
  * @note this function will do usererror() in the case the fallback sprite isn't available */
 static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc)
 {
-	static const char *sprite_types[] = {
+	static const char * const sprite_types[] = {
 		"normal",        // ST_NORMAL
 		"map generator", // ST_MAPGEN
 		"character",     // ST_FONT

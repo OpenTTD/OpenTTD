@@ -14,7 +14,7 @@
 
 #include "command_type.h"
 
-extern CommandCallback *_callback_table[];
+extern CommandCallback * const _callback_table[];
 extern const int _callback_table_count;
 
 #endif /* CALLBACK_TABLE_H */

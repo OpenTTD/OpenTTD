@@ -322,13 +322,13 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
-		TileIndex Heads[] = {tile_start, tile_end};
+		const TileIndex heads[] = {tile_start, tile_end};
 		for (int i = 0; i < 2; i++) {
-			if (MayHaveBridgeAbove(Heads[i])) {
-				if (IsBridgeAbove(Heads[i])) {
-					TileIndex north_head = GetNorthernBridgeEnd(Heads[i]);
+			if (MayHaveBridgeAbove(heads[i])) {
+				if (IsBridgeAbove(heads[i])) {
+					TileIndex north_head = GetNorthernBridgeEnd(heads[i]);
 
-					if (direction == GetBridgeAxis(Heads[i])) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+					if (direction == GetBridgeAxis(heads[i])) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 					if (z_start + TILE_HEIGHT == GetBridgeHeight(north_head)) {
 						return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);

@@ -184,7 +184,7 @@ static const PluralForm _plural_forms[] = {
  * a = array, i.e. list of strings
  */
  /** All pragmas used */
-static const char *_pragmas[][4] = {
+static const char * const _pragmas[][4] = {
 	/*  name         flags  default   description */
 	{ "name",        "0",   "",       "English name for the language" },
 	{ "ownname",     "t",   "",       "Localised name for the language" },

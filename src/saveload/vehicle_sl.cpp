@@ -669,7 +669,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	};
 
 
-	static const SaveLoad *_veh_descs[] = {
+	static const SaveLoad * const _veh_descs[] = {
 		_train_desc,
 		_roadveh_desc,
 		_ship_desc,

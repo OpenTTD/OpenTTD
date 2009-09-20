@@ -139,7 +139,7 @@ static void PrintGrfInfo(char *buf, uint grfid, const uint8 *md5sum)
 
 
 /** Text messages for various logged actions */
-static const char *la_text[] = {
+static const char * const la_text[] = {
 	"new game started",
 	"game loaded",
 	"GRF config changed",

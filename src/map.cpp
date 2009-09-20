@@ -282,7 +282,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
 	uint x = TileX(*tile) + w + 1;
 	uint y = TileY(*tile);
 
-	uint extent[DIAGDIR_END] = { w, h, w, h };
+	const uint extent[DIAGDIR_END] = { w, h, w, h };
 
 	for (uint n = 0; n < radius; n++) {
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {

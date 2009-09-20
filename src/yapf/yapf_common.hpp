@@ -150,8 +150,8 @@ public:
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	inline bool PfCalcEstimate(Node& n)
 	{
-		static int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
-		static int dg_dir_to_y_offs[] = {0, 1, 0, -1};
+		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
+		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};
 		if (PfDetectDestination(n)) {
 			n.m_estimate = n.m_cost;
 			return true;

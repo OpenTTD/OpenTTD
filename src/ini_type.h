@@ -80,17 +80,17 @@ struct IniGroup {
 
 /** The complete ini file. */
 struct IniFile {
-	IniGroup *group;               ///< the first group in the ini
-	IniGroup **last_group;         ///< the last group in the ini
-	char *comment;                 ///< last comment in file
-	const char **list_group_names; ///< NULL terminated list with group names that are lists
+	IniGroup *group;                      ///< the first group in the ini
+	IniGroup **last_group;                ///< the last group in the ini
+	char *comment;                        ///< last comment in file
+	const char * const *list_group_names; ///< NULL terminated list with group names that are lists
 
 	/**
 	 * Construct a new in-memory Ini file representation.
 	 * @param list_group_names A NULL terminated list with groups that should be
 	 *                         loaded as lists instead of variables.
 	 */
-	IniFile(const char **list_group_names = NULL);
+	IniFile(const char * const *list_group_names = NULL);
 
 	/** Free everything we loaded. */
 	~IniFile();

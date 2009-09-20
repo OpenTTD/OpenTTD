@@ -87,7 +87,7 @@ static const SaveLoad _glog_emergency_desc[] = {
 	SLE_END()
 };
 
-static const SaveLoad *_glog_desc[] = {
+static const SaveLoad * const _glog_desc[] = {
 	_glog_mode_desc,
 	_glog_revision_desc,
 	_glog_oldver_desc,

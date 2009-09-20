@@ -86,7 +86,7 @@ static bool IsSignedVarMemType(VarType vt);
 /**
  * Groups in openttd.cfg that are actually lists.
  */
-static const char *_list_group_names[] = {
+static const char * const _list_group_names[] = {
 	"bans",
 	"newgrf",
 	"servers",
@@ -1256,7 +1256,7 @@ static void SaveVersionInConfig(IniFile *ini)
 	char version[9];
 	snprintf(version, lengthof(version), "%08X", _openttd_newgrf_version);
 
-	const char *versions[][2] = {
+	const char * const versions[][2] = {
 		{ "version_string", _openttd_revision },
 		{ "version_number", version }
 	};

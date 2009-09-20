@@ -38,7 +38,7 @@ enum {
 };
 
 /** Which PPPs are possible at all on a given PCP */
-static byte AllowedPPPonPCP[DIAGDIR_END] = {
+static const byte AllowedPPPonPCP[DIAGDIR_END] = {
 	1 << DIR_N | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S | 1 << DIR_W  | 1 << DIR_NW,
 	1 << DIR_N | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_S | 1 << DIR_SW | 1 << DIR_W,
 	1 << DIR_N | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S | 1 << DIR_W  | 1 << DIR_NW,
@@ -48,7 +48,7 @@ static byte AllowedPPPonPCP[DIAGDIR_END] = {
 /** Which of the PPPs are inside the tile. For the two PPPs on the tile border
  * the following system is used: if you rotate the PCP so that it is in the
  * north, the eastern PPP belongs to the tile. */
-static byte OwnedPPPonPCP[DIAGDIR_END] = {
+static const byte OwnedPPPonPCP[DIAGDIR_END] = {
 	1 << DIR_SE | 1 << DIR_S  | 1 << DIR_SW | 1 << DIR_W,
 	1 << DIR_N  | 1 << DIR_SW | 1 << DIR_W  | 1 << DIR_NW,
 	1 << DIR_N  | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_NW,
@@ -70,7 +70,7 @@ static const DiagDirection PCPpositions[TRACK_END][2] = {
  * track, plus the point in extension of the track (to mark end-of-track). PCPs
  * which are not on either end of the track are fully preferred.
  * @see PCPpositions */
-static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
+static const byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{    // X
 		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, // NE
 		PCP_NOT_ON_TRACK,                        // SE
@@ -111,7 +111,7 @@ static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 /** In case we have a staight line, we place pylon only every two tiles,
  * so there are certain tiles which we ignore. A straight line is found if
  * we have exactly two PPPs. */
-static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
+static const byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 	{   // Ignore group 1, X and Y tracks
 		{     // X even, Y even
 			IGNORE_NONE,
@@ -186,7 +186,7 @@ static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 #undef NO_IGNORE
 
 /** Which pylons can definately NOT be built */
-static byte DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
+static const byte DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, // X
 	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, // Y
 	{1 << DIR_W | 1 << DIR_E,  0,           0,           1 << DIR_W | 1 << DIR_E }, // UPPER

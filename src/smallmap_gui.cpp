@@ -519,7 +519,7 @@ static const uint32 _smallmap_mask_right[] = {
 
 /* each tile has 4 x pixels and 1 y pixel */
 
-static GetSmallMapPixels *_smallmap_draw_procs[] = {
+static GetSmallMapPixels * const _smallmap_draw_procs[] = {
 	GetSmallMapContoursPixels,
 	GetSmallMapVehiclesPixels,
 	GetSmallMapIndustriesPixels,

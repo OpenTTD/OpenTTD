@@ -252,11 +252,11 @@ MD5File::ChecksumResult MD5File::CheckMD5() const
 }
 
 /** Names corresponding to the GraphicsFileType */
-const char *_graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
+static const char * const _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
 /** Implementation */
 template <class T, size_t Tnum_files>
-/* static */ const char **BaseSet<T, Tnum_files>::file_names = _graphics_file_names;
+/* static */ const char * const *BaseSet<T, Tnum_files>::file_names = _graphics_file_names;
 
 extern void UpdateNewGRFConfigPalette();
 

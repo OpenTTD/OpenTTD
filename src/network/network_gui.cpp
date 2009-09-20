@@ -824,7 +824,7 @@ static const Widget _network_game_window_widgets[] = {
  * display_flags and/or left/right side for the overlapping widgets
  * NGWW_CLIENTS through NGWW_YEARS.
  */
-NWidgetPart _nested_network_game_widgets[] = {
+static const NWidgetPart _nested_network_game_widgets[] = {
 	/* TOP */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NGWW_CLOSE),
