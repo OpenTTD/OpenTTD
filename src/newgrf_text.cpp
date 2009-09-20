@@ -626,8 +626,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 			case SCC_NEWGRF_UNPRINT:              *buff -= Utf8Consume(str); break;
 
 			case SCC_NEWGRF_PRINT_STRING_ID:
-				*argv = _newgrf_textrefstack->PopUnsignedWord();
-				if (*argv == STR_NULL) *argv = STR_EMPTY;
+				*argv = TTDPStringIDToOTTDStringIDMapping(_newgrf_textrefstack->PopUnsignedWord());
 				break;
 		}
 	}
