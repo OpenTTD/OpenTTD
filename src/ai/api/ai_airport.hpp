@@ -57,12 +57,24 @@ public:
 	 * Checks whether the given AirportType is valid and available.
 	 * @param type The AirportType to check.
 	 * @return True if and only if the AirportType is valid and available.
+	 * @post return value == true -> IsAirportInformationAvailable returns true.
 	 */
 	static bool IsValidAirportType(AirportType type);
 
 	/**
+	 * Can you get information on this airport type? As opposed to
+	 * IsValidAirportType this will return also return true when
+	 * an airport type is no longer buildable.
+	 * @param type The AirportType to check.
+	 * @return True if and only if the AirportType is valid.
+	 * @post return value == false -> IsValidAirportType returns false.
+	 */
+	static bool IsAirportInformationAvailable(AirportType type);
+
+	/**
 	 * Get the cost to build this AirportType.
 	 * @param type The AirportType to check.
+	 * @pre AirportAvailable(type).
 	 * @return The cost of building this AirportType.
 	 */
 	static Money GetPrice(AirportType type);
@@ -86,6 +98,7 @@ public:
 	/**
 	 * Get the width of this type of airport.
 	 * @param type The type of airport.
+	 * @pre IsAirportInformationAvailable(type).
 	 * @return The width in tiles.
 	 */
 	static int32 GetAirportWidth(AirportType type);
@@ -93,6 +106,7 @@ public:
 	/**
 	 * Get the height of this type of airport.
 	 * @param type The type of airport.
+	 * @pre IsAirportInformationAvailable(type).
 	 * @return The height in tiles.
 	 */
 	static int32 GetAirportHeight(AirportType type);
@@ -100,6 +114,7 @@ public:
 	/**
 	 * Get the coverage radius of this type of airport.
 	 * @param type The type of airport.
+	 * @pre IsAirportInformationAvailable(type).
 	 * @return The radius in tiles.
 	 */
 	static int32 GetAirportCoverageRadius(AirportType type);
@@ -174,6 +189,7 @@ public:
 	 *  an airport at some tile.
 	 * @param tile The tile to check.
 	 * @param type The AirportType to check.
+	 * @pre IsAirportInformationAvailable(type).
 	 * @return The TownID of the town closest to the tile.
 	 */
 	static TownID GetNearestTown(TileIndex tile, AirportType type);
