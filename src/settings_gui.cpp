@@ -719,6 +719,9 @@ public:
 				GameSettings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 
 				uint i;
+				GetSettingFromName("difficulty.diff_level", &i);
+				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, CMD_CHANGE_SETTING);
+
 				const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i);
 				for (uint btn = 0; btn != GAME_DIFFICULTY_NUM; btn++, sd++) {
 					int32 new_val = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
@@ -728,9 +731,6 @@ public:
 						DoCommandP(0, i + btn, new_val, CMD_CHANGE_SETTING);
 					}
 				}
-
-				GetSettingFromName("difficulty.diff_level", &i);
-				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, CMD_CHANGE_SETTING);
 				delete this;
 				/* If we are in the editor, we should reload the economy.
 				 * This way when you load a game, the max loan and interest rate
