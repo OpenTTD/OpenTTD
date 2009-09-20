@@ -75,6 +75,7 @@
  * API additions:
  * \li AIAbstractList::SORT_ASCENDING
  * \li AIAbstractList::SORT_DESCENDING
+ * \li AIAirport::IsAirportInformationAvailable
  * \li AICompany::GetPresidentGender
  * \li AICompany::SetPresidentGender
  * \li AIEngine::GetDesignDate
@@ -83,7 +84,7 @@
  * Other changes:
  * \li AIs are now killed when they execute a DoCommand or Sleep at a time
  *     they are not allowed to do so.
- * \li When the API requests a string as parameter you can give ever squirrel
+ * \li When the API requests a string as parameter you can give every squirrel
  *     type and it'll be converted to a string
  * \li AIs can create subclasses of API classes and use API constants as part
  *     of their own constants
