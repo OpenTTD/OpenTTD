@@ -51,23 +51,12 @@ enum TownAuthorityWidgets {
 	TWA_EXECUTE,      ///< Do-it button.
 };
 
-static const Widget _town_authority_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW},               // TWA_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   316,     0,    13, STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},     // TWA_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,    14,   105, 0x0,                         STR_NULL},                               // TWA_RATING_INFO
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   304,   106,   157, 0x0,                         STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP},    // TWA_COMMAND_LIST
-{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_BROWN,   305,   316,   106,   157, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},   // TWA_SCROLLBAR
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,   158,   209, 0x0,                         STR_NULL},                               // TWA_ACTION_INFO
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,   316,   210,   221, STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP}, // TWA_EXECUTE
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TWA_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, TWA_CAPTION), SetDataTip(STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_RATING_INFO), SetMinimalSize(317, 92), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_RATING_INFO), SetMinimalSize(317, 92), SetResize(0, 1), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_BROWN, TWA_COMMAND_LIST), SetMinimalSize(305, 52), SetDataTip(0x0, STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_BROWN, TWA_SCROLLBAR),
@@ -104,13 +93,11 @@ private:
 	}
 
 public:
-	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) :
-			Window(desc, window_number), sel_index(-1)
+	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) : Window(), sel_index(-1)
 	{
-		this->town = Town::Get(this->window_number);
-		this->vscroll.SetCapacity(5);
-
-		this->FindWindowPlacementAndResize(desc);
+		this->town = Town::Get(window_number);
+		this->InitNested(desc, window_number);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TWA_COMMAND_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
 	}
 
 	virtual void OnPaint()
@@ -126,19 +113,27 @@ public:
 
 		this->SetWidgetDisabledState(TWA_EXECUTE, this->sel_index == -1);
 
-		SetDParam(0, this->window_number);
 		this->DrawWidgets();
+		this->DrawRatings();
+	}
 
-		int y = this->widget[TWA_RATING_INFO].top + 1;
+	/** Draw the contents of the ratings panel. May request a resize of the window if the contents does not fit. */
+	void DrawRatings()
+	{
+		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(TWA_RATING_INFO);
+		int left = nwid->pos_x;
+		int right = nwid->pos_x + nwid->current_x - 1;
 
-		DrawString(this->widget[TWA_RATING_INFO].left + 2, this->widget[TWA_RATING_INFO].right - 2, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
+		uint y = nwid->pos_y + WD_FRAMERECT_TOP;
+
+		DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_TOP, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
 		y += FONT_HEIGHT_NORMAL;
 
 		/* Draw list of companies */
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, 2, y);
+				DrawCompanyIcon(c->index, left + WD_FRAMERECT_LEFT, y);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);
@@ -156,42 +151,87 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) { // red icon for company with exclusive rights
-					DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, left + WD_FRAMERECT_LEFT + 16, y);
 				}
 
-				DrawString(this->widget[TWA_RATING_INFO].left + 28, this->widget[TWA_RATING_INFO].right - 2, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
+				DrawString(left + WD_FRAMERECT_LEFT + 26, right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
 				y += FONT_HEIGHT_NORMAL;
 			}
 		}
 
-		if (y > this->widget[TWA_RATING_INFO].bottom) {
+		y = y + WD_FRAMERECT_BOTTOM - nwid->pos_y; // Compute needed size of the widget.
+		if (y > nwid->current_y) {
 			/* If the company list is too big to fit, mark ourself dirty and draw again. */
-			ResizeWindowForWidget(this, TWA_RATING_INFO, 0, y - this->widget[TWA_RATING_INFO].bottom);
-			this->SetDirty();
-			return;
+			ResizeWindow(this, 0, y - nwid->current_y);
 		}
+	}
 
-		y = this->widget[TWA_COMMAND_LIST].top + 1;
-		int pos = this->vscroll.GetPosition();
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == TWA_CAPTION) SetDParam(0, this->window_number);
+	}
 
-		if (--pos < 0) {
-			DrawString(this->widget[TWA_COMMAND_LIST].left + 2, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
-			y += FONT_HEIGHT_NORMAL;
-		}
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case TWA_ACTION_INFO:
+				if (this->sel_index != -1) {
+					SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[this->sel_index]);
+					SetDParam(0, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
+					DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+								STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index);
+				}
+				break;
+			case TWA_COMMAND_LIST: {
+				int numact;
+				uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
+				int y = r.top + WD_FRAMERECT_TOP;
+				int pos = this->vscroll.GetPosition();
 
-		for (int i = 0; buttons; i++, buttons >>= 1) {
-			if (pos <= -5) break; ///< Draw only the 5 fitting lines
+				if (--pos < 0) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
+					y += FONT_HEIGHT_NORMAL;
+				}
 
-			if ((buttons & 1) && --pos < 0) {
-				DrawString(this->widget[TWA_COMMAND_LIST].left + 3, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
-				y += FONT_HEIGHT_NORMAL;
+				for (int i = 0; buttons; i++, buttons >>= 1) {
+					if (pos <= -5) break; ///< Draw only the 5 fitting lines
+
+					if ((buttons & 1) && --pos < 0) {
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
+						y += FONT_HEIGHT_NORMAL;
+					}
+				}
+				break;
 			}
 		}
+	}
 
-		if (this->sel_index != -1) {
-			SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[this->sel_index]);
-			SetDParam(0, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
-			DrawStringMultiLine(this->widget[TWA_ACTION_INFO].left + 2, this->widget[TWA_ACTION_INFO].right - 2, this->widget[TWA_ACTION_INFO].top + 1, this->widget[TWA_ACTION_INFO].bottom - 1, STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index);
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case TWA_ACTION_INFO: {
+				assert(size->width > padding.width && size->height > padding.height);
+				size->width -= WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->height -= WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				Dimension d = {0, 0};
+				for (int i = 0; i < TACT_COUNT; i++) {
+					SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
+					SetDParam(0, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i);
+					d = maxdim(d, GetStringMultiLineBoundingBox(STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + i, *size));
+				}
+				*size = maxdim(*size, d);
+				size->width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				break;
+			}
+
+			case TWA_COMMAND_LIST:
+				size->height = WD_FRAMERECT_TOP + 5 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				break;
+
+			case TWA_RATING_INFO:
+				size->height = WD_FRAMERECT_TOP + 9 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				break;
 		}
 	}
 
@@ -202,7 +242,7 @@ public:
 	{
 		switch (widget) {
 			case TWA_COMMAND_LIST: {
-				int y = (pt.y - this->widget[TWA_COMMAND_LIST].top - 1) / FONT_HEIGHT_NORMAL;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(TWA_COMMAND_LIST)->pos_y - 1) / FONT_HEIGHT_NORMAL;
 
 				if (!IsInsideMM(y, 0, 5)) return;
 
@@ -231,7 +271,7 @@ static const WindowDesc _town_authority_desc(
 	WDP_AUTO, WDP_AUTO, 317, 222, 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_town_authority_widgets, _nested_town_authority_widgets, lengthof(_nested_town_authority_widgets)
+	NULL, _nested_town_authority_widgets, lengthof(_nested_town_authority_widgets)
 );
 
 static void ShowTownAuthorityWindow(uint town)
