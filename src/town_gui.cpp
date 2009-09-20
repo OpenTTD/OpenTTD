@@ -76,8 +76,6 @@ static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
 };
 
-extern const byte _town_action_costs[8];
-
 struct TownAuthorityWindow : Window {
 private:
 	Town *town;

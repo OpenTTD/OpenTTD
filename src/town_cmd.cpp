@@ -2359,7 +2359,10 @@ void ExpandTown(Town *t)
 	UpdateTownMaxPass(t);
 }
 
-extern const byte _town_action_costs[8] = {
+/** Factor in the cost of each town action.
+ * @see TownActions
+ */
+const byte _town_action_costs[TACT_COUNT] = {
 	2, 4, 9, 35, 48, 53, 117, 175
 };
 
@@ -2508,26 +2511,6 @@ static TownActionProc * const _town_action_proc[] = {
 	TownActionBuyRights,
 	TownActionBribe
 };
-
-enum TownActions {
-	TACT_NONE             = 0x00,
-
-	TACT_ADVERTISE_SMALL  = 0x01,
-	TACT_ADVERTISE_MEDIUM = 0x02,
-	TACT_ADVERTISE_LARGE  = 0x04,
-	TACT_ROAD_REBUILD     = 0x08,
-	TACT_BUILD_STATUE     = 0x10,
-	TACT_FOUND_BUILDINGS  = 0x20,
-	TACT_BUY_RIGHTS       = 0x40,
-	TACT_BRIBE            = 0x80,
-
-	TACT_ADVERTISE        = TACT_ADVERTISE_SMALL | TACT_ADVERTISE_MEDIUM | TACT_ADVERTISE_LARGE,
-	TACT_CONSTRUCTION     = TACT_ROAD_REBUILD | TACT_BUILD_STATUE | TACT_FOUND_BUILDINGS,
-	TACT_FUNDS            = TACT_BUY_RIGHTS | TACT_BRIBE,
-	TACT_ALL              = TACT_ADVERTISE | TACT_CONSTRUCTION | TACT_FUNDS,
-};
-
-DECLARE_ENUM_AS_BIT_SET(TownActions);
 
 /** Get a list of available actions to do at a town.
  * @param nump if not NULL add put the number of available actions in it
