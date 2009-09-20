@@ -429,9 +429,30 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, ui
 		}
 	}
 
+	const Industry *ind = Industry::GetByTile(tile);
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
-		if (a != CT_INVALID) acceptance[a] += cargo_acceptance[i];
+		if (a == CT_INVALID) continue; // work only with valid cargos
+
+		/* Add accepted cargo */
+		acceptance[a] += cargo_acceptance[i];
+
+		/* Maybe set 'always accepted' bit (if it's not set already) */
+		if (HasBit(*always_accepted, a)) continue;
+
+		bool accepts = false;
+		for (uint cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
+			/* Test whether the industry itself accepts the cargo type */
+			if (ind->accepts_cargo[cargo_index] == a) {
+				accepts = true;
+				break;
+			}
+		}
+
+		if (accepts) continue;
+
+		/* If the industry itself doesn't accept this cargo, set 'always accepted' bit */
+		SetBit(*always_accepted, a);
 	}
 }
 

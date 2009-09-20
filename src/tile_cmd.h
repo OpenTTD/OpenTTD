@@ -80,7 +80,7 @@ typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
  * Tile callback function signature for obtaining cargo acceptance of a tile
  * @param tile            Tile queried for its accepted cargo
  * @param acceptance      Storage destination of the cargo acceptance in 1/8
- * @param always_accepted Bitmask of town and headquarters-accepted cargo
+ * @param always_accepted Bitmask of always accepted cargo types
  */
 typedef void AddAcceptedCargoProc(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted);
 
