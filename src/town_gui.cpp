@@ -44,11 +44,11 @@ typedef GUIList<const Town*> GUITownList;
 enum TownAuthorityWidgets {
 	TWA_CLOSEBOX,
 	TWA_CAPTION,
-	TWA_RATING_INFO,
-	TWA_COMMAND_LIST,
+	TWA_RATING_INFO,  ///< Overview with ratings for each company.
+	TWA_COMMAND_LIST, ///< List of commands for the player.
 	TWA_SCROLLBAR,
-	TWA_ACTION_INFO,
-	TWA_EXECUTE,
+	TWA_ACTION_INFO,  ///< Additional information about the action.
+	TWA_EXECUTE,      ///< Do-it button.
 };
 
 static const Widget _town_authority_widgets[] = {
@@ -76,10 +76,11 @@ static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
 };
 
+/** Town authority window. */
 struct TownAuthorityWindow : Window {
 private:
-	Town *town;
-	int sel_index;
+	Town *town;    ///< Town being displayed.
+	int sel_index; ///< Currently selected town action, \c 0 to \c TACT_COUNT-1, \c -1 means no action selected.
 
 	/**
 	 * Get the position of the Nth set bit.
@@ -123,7 +124,7 @@ public:
 			this->sel_index = -1;
 		}
 
-		this->SetWidgetDisabledState(6, this->sel_index == -1);
+		this->SetWidgetDisabledState(TWA_EXECUTE, this->sel_index == -1);
 
 		SetDParam(0, this->window_number);
 		this->DrawWidgets();
@@ -131,7 +132,7 @@ public:
 		int y = this->widget[TWA_RATING_INFO].top + 1;
 
 		DrawString(this->widget[TWA_RATING_INFO].left + 2, this->widget[TWA_RATING_INFO].right - 2, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
-		y += 10;
+		y += FONT_HEIGHT_NORMAL;
 
 		/* Draw list of companies */
 		const Company *c;
@@ -159,7 +160,7 @@ public:
 				}
 
 				DrawString(this->widget[TWA_RATING_INFO].left + 28, this->widget[TWA_RATING_INFO].right - 2, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
 			}
 		}
 
@@ -175,7 +176,7 @@ public:
 
 		if (--pos < 0) {
 			DrawString(this->widget[TWA_COMMAND_LIST].left + 2, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
-			y += 10;
+			y += FONT_HEIGHT_NORMAL;
 		}
 
 		for (int i = 0; buttons; i++, buttons >>= 1) {
@@ -183,7 +184,7 @@ public:
 
 			if ((buttons & 1) && --pos < 0) {
 				DrawString(this->widget[TWA_COMMAND_LIST].left + 3, this->widget[TWA_COMMAND_LIST].right - 2, y, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
 			}
 		}
 
@@ -201,7 +202,7 @@ public:
 	{
 		switch (widget) {
 			case TWA_COMMAND_LIST: {
-				int y = (pt.y - this->widget[TWA_COMMAND_LIST].top - 1) / 10;
+				int y = (pt.y - this->widget[TWA_COMMAND_LIST].top - 1) / FONT_HEIGHT_NORMAL;
 
 				if (!IsInsideMM(y, 0, 5)) return;
 
