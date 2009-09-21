@@ -213,10 +213,11 @@ function Regression::Airport()
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32116));
 
 	for (local i = -1; i < 10; i++) {
-		print("  IsValidAirportType(" + i + "):       " + AIAirport.IsValidAirportType(i));
-		print("  GetAirportWidth(" + i + "):          " + AIAirport.GetAirportWidth(i));
-		print("  GetAirportHeight(" + i + "):         " + AIAirport.GetAirportHeight(i));
-		print("  GetAirportCoverageRadius(" + i + "): " + AIAirport.GetAirportCoverageRadius(i));
+		print("  IsAirportInformationAvailable(" + i + "): " + AIAirport.IsAirportInformationAvailable(i));
+		print("  IsValidAirportType(" + i + "):            " + AIAirport.IsValidAirportType(i));
+		print("  GetAirportWidth(" + i + "):               " + AIAirport.GetAirportWidth(i));
+		print("  GetAirportHeight(" + i + "):              " + AIAirport.GetAirportHeight(i));
+		print("  GetAirportCoverageRadius(" + i + "):      " + AIAirport.GetAirportCoverageRadius(i));
 	}
 
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));

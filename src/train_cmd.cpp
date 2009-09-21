@@ -1061,6 +1061,15 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				if (dst_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
 			}
 
+			if (src_head == src && !HasBit(p2, 0)) {
+				/* Moving of a *single* vehicle at the front of the train.
+				 * If the next vehicle is an engine a new train will be created
+				 * instead of removing a vehicle from a free chain. The newly
+				 * created train may not be too long. */
+				const Vehicle *u = GetNextVehicle(src_head);
+				if (u != NULL && IsTrainEngine(u) && (src_len - 1) > max_len) return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+			}
+
 			/* We are moving between rows, so only count the wagons from the source
 			 * row that are being moved. */
 			if (HasBit(p2, 0)) {
@@ -4048,6 +4057,7 @@ static void HandleBrokenTrain(Vehicle *v)
 
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		v->MarkDirty();
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
 			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
@@ -4064,6 +4074,7 @@ static void HandleBrokenTrain(Vehicle *v)
 		if (!--v->breakdown_delay) {
 			v->breakdown_ctr = 0;
 			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+			v->MarkDirty();
 		}
 	}
 }

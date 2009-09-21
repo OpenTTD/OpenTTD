@@ -1734,6 +1734,7 @@ void StopAllVehicles()
 		v->vehstatus |= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		v->MarkDirty();
 	}
 }
 

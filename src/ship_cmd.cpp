@@ -189,6 +189,7 @@ static void HandleBrokenShip(Vehicle *v)
 
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		v->MarkDirty();
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
 			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
@@ -205,6 +206,7 @@ static void HandleBrokenShip(Vehicle *v)
 		if (!--v->breakdown_delay) {
 			v->breakdown_ctr = 0;
 			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+			v->MarkDirty();
 		}
 	}
 }

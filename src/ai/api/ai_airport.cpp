@@ -12,7 +12,12 @@
 
 /* static */ bool AIAirport::IsValidAirportType(AirportType type)
 {
-	return type >= AT_SMALL && type <= AT_HELISTATION && HasBit(::GetValidAirports(), type);
+	return IsAirportInformationAvailable(type) && HasBit(::GetValidAirports(), type);
+}
+
+/* static */ bool AIAirport::IsAirportInformationAvailable(AirportType type)
+{
+	return type >= 0 && type <= AT_HELISTATION;
 }
 
 /* static */ Money AIAirport::GetPrice(AirportType type)
@@ -39,21 +44,21 @@
 
 /* static */ int32 AIAirport::GetAirportWidth(AirportType type)
 {
-	if (!IsValidAirportType(type)) return -1;
+	if (!IsAirportInformationAvailable(type)) return -1;
 
 	return ::GetAirport(type)->size_x;
 }
 
 /* static */ int32 AIAirport::GetAirportHeight(AirportType type)
 {
-	if (!IsValidAirportType(type)) return -1;
+	if (!IsAirportInformationAvailable(type)) return -1;
 
 	return ::GetAirport(type)->size_y;
 }
 
 /* static */ int32 AIAirport::GetAirportCoverageRadius(AirportType type)
 {
-	if (!IsValidAirportType(type)) return -1;
+	if (!IsAirportInformationAvailable(type)) return -1;
 
 	return _settings_game.station.modified_catchment ? ::GetAirport(type)->catchment : (uint)CA_UNMODIFIED;
 }
@@ -136,7 +141,7 @@
 	extern Town *AirportGetNearestTown(const AirportFTAClass *afc, TileIndex airport_tile);
 
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
-	if (!IsValidAirportType(type)) return INVALID_TOWN;
+	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
 
 	return AirportGetNearestTown(GetAirport(type), tile)->index;
 }

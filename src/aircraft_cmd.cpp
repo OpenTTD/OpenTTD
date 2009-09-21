@@ -1303,6 +1303,7 @@ static void CrashAirplane(Vehicle *v)
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 
 	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+	v->MarkDirty();
 
 	uint amt = 2;
 	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) amt += v->cargo.Count();
