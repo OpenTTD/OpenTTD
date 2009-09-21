@@ -38,7 +38,6 @@ map.cpp
 misc.cpp
 mixer.cpp
 music.cpp
-namegen.cpp
 network/network.cpp
 network/network_client.cpp
 network/network_command.cpp
@@ -72,6 +71,7 @@ subsidy.cpp
 texteff.cpp
 tgp.cpp
 tile_map.cpp
+townname.cpp
 #if WIN32
 #else
 	#if WINCE
@@ -185,7 +185,6 @@ map_func.h
 map_type.h
 mixer.h
 music.h
-namegen_func.h
 network/network.h
 network/network_base.h
 network/network_client.h
@@ -287,6 +286,7 @@ tilehighlight_type.h
 timetable.h
 toolbar_gui.h
 town.h
+townname_func.h
 town_type.h
 track_func.h
 track_type.h
@@ -485,7 +485,6 @@ table/engines.h
 table/genland.h
 table/industry_land.h
 table/landscape_sprite.h
-table/namegen.h
 table/palette_convert.h
 table/palettes.h
 table/pricebase.h
@@ -497,6 +496,7 @@ table/sprites.h
 table/station_land.h
 table/strgen_tables.h
 ../objs/langs/table/strings.h
+table/townname.h
 table/town_land.h
 table/track_land.h
 table/train_cmd.h

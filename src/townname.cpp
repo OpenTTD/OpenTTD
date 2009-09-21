@@ -7,14 +7,14 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file namegen.cpp Town name generators. */
+/** @file townname.cpp Town name generators. */
 
 #include "stdafx.h"
-#include "namegen_func.h"
+#include "townname_func.h"
 #include "string_func.h"
 #include "core/alloc_func.hpp"
 
-#include "table/namegen.h"
+#include "table/townname.h"
 
 
 /**

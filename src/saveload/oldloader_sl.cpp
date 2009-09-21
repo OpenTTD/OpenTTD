@@ -35,7 +35,7 @@
 
 #include "table/strings.h"
 #include "../table/engines.h"
-#include "../table/namegen.h"
+#include "../table/townname.h"
 
 static bool   _read_ttdpatch_flags;
 
