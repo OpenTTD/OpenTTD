@@ -3200,7 +3200,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}まだ�
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}市町村を建設できません
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}町名を変更できません...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}ここで町が建設できません...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}ここで町が建設できません...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...地図の端に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...他の町に近すぎます
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...市町村数の制限を超えています
@@ -3213,7 +3213,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}産業�
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}ここに{STRING}が建設できません
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}この産業をここに建設できません...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...他の産業に近すぎます。
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...先に町を建設しなければなりません
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...先に町を建設しなければなりません
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...一町内に一つしか建設できません
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...人口が1200人以上の市町のみに建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...雨林地域のみに建設できます

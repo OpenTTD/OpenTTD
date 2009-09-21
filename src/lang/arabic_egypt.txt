@@ -3275,7 +3275,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}هذه �
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}لا يمكن انشاء اي مدينة
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}لايمكن اعادة تسمية المدينة ...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}لا يمكن انشاء مدينة هنا
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}لا يمكن انشاء مدينة هنا
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...قريبة جدا من حافة الخريطة
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...قريبة جدا من مدينة أخرى
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... المدن كثيرة جدا
@@ -3288,7 +3288,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}لا ي�
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}لايمكن انشاء {STRING} هنا...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}لا بمكن بناء المصنع هنا ...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}قريب جدا من مصنع آخر
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...يجب بناء مدينة اولا
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...يجب بناء مدينة اولا
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...يسمح بواحد في المدينة فقط
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...يمكن بنائة في مدن يزيد سكانها عن 1200 نسمة
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... يمكن بنائة في الغابات المطيرة فقط

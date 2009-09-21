@@ -3221,7 +3221,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dette se
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikkje byggje byar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikkje byte namn på byen...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kan ikkje grunnleggja by her...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikkje grunnleggja by her...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...for nært kanten på kartet
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...for nær ein annan by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...for mange byar
@@ -3234,7 +3234,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikkje byggja {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikkje byggje denne typen industri her...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...for nær ein annan industri
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...må byggja ein by først
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...må byggja ein by først
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...berre ein er tillatt per by
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan berre byggjast i byar med meir enn 1200 innbyggjarar
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kan berre byggjast i regnskogområde

@@ -3074,7 +3074,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Αυτή
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Αδύνατο να χτιστούν πόλεις
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Αδύνατο να μετονομαστεί η πόλη...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Αδύνατο να χτιστεί πόλη εδώ...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Αδύνατο να χτιστεί πόλη εδώ...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... πολύ κοντά στην άκρη του χάρτη
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... πολύ κοντά σε άλλη πόλη
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πάρα πολλές πόλεις
@@ -3087,7 +3087,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Δεν �
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Αδύνατο να χτιστεί {G ο η το} {STRING} εδώ...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Αδύνατο να χτιστεί αυτός ο τύπος βιομηχανίας εδώ...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... πολύ κοντά σε άλλη βιομηχανία
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... πρέπει να χτιστεί πόλη πρώτα
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... πρέπει να χτιστεί πόλη πρώτα
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... επιτρέπεται μόνο μία ανά πόλη
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να χτιστεί μόνο σε δασώδεις περιοχές

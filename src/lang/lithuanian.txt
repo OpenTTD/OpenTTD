@@ -3220,7 +3220,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ši komp
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Neimanoma statyti jokiu miestu
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Miesto pervardinti negalima...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Negalima įkurti miesto...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Negalima įkurti miesto...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...per arti žemėlapio krašto
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...per arti kito miesto
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...per daug miestų
@@ -3233,7 +3233,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Neįmano
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} čia negali būti pastatyta...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Neįmanoma čia pastatyti šio tipo pramonės įmonės...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...per arti kitos gamyklos
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...pirma reikia pastatyti miestą
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...pirma reikia pastatyti miestą
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...mieste gali būti tik vienas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...gali būti pastatyta tik miestuose, kuriuose yra bent 1200 gyventojų
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...gali būti statomas tik drėgnose miškingose teritorijose

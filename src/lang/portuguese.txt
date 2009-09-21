@@ -3278,7 +3278,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta emp
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Não é possível construir cidades
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Não é possível renomear cidade...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Não é possível construir uma cidade aqui...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Não é possível construir uma cidade aqui...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas cidades
@@ -3291,7 +3291,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Não é possível construir {STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Não é possível construir este tipo de indústria aqui...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...muito perto de outra indústria
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... é necessário construir uma cidade primeiro
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... é necessário construir uma cidade primeiro
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só é permitido uma por cidade
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só pode ser construído em cidades com pelo menos 1200 habitantes
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só se pode construir em zonas florestais

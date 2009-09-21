@@ -3403,7 +3403,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ця к�
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не можна створити місто
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Неможливо перейменувати...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Тут не можна будувати місто...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Тут не можна будувати місто...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...надто близько до краю карти
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...надто близько до іншого міста
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...забагато міст
@@ -3416,7 +3416,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Немо
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Неможливо будувати {STRING.z} тут...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Неможливо будувати тут...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...дуже близько до іншої промисловості
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...спочатку збудуйте місто
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...спочатку збудуйте місто
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...дозволяється тільки 1 у місті
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...можливо будувати лише у містах з населенням не менш 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...можна будувати лише у джунглях

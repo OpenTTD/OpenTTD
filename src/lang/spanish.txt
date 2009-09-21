@@ -3280,7 +3280,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta emp
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede construir ningún pueblo
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No se puede renombrar pueblo...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}No se puede construir pueblo aquí...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No se puede construir pueblo aquí...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... demasiado cercano al borde del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cercano a otro pueblo
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados pueblos
@@ -3293,7 +3293,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}No se puede construir {STRING} aquí...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}No se puede construir este tipo de industria aquí...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...demasiado cercano a otra industria
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... debe construirse un pueblo primero
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... debe construirse un pueblo primero
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... solo se permite uno por pueblo
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... sólo puede ser construido en pueblos con población superior a 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... sólo se puede construir en áreas de selva

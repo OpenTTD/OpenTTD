@@ -3279,7 +3279,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Aquesta 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossible construir poblacions
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot reanomenar la població...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... massa prop del límit del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
@@ -3292,7 +3292,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es po
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...massa prop d'altres indústries
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... primer has de construir la població
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... primer has de construir la població
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... només un permès per població
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... només es pot construir en poblacions de més de 1200 hab.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... només es pot construir en àrees de selva tropical

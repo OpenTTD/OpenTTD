@@ -3279,7 +3279,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Perusaha
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak dapat membuat satu kota pun
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Tidak dapat mengubah nama kota...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Tidak dapat membangun kota disini
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak dapat membangun kota disini
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...terlalu dekat dengan batas tepi peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...terlalu banyak kota
@@ -3292,7 +3292,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak dapat membangun {STRING} disini...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tidak dapat membangun industri ini disini...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...terlalu dekat dengan industri lain
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...harus membangun kota terlebih dahulu
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...harus membangun kota terlebih dahulu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...hanya diizinkan satu di setiap kota
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya dapat dibangun di area hutan hujan

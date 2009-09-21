@@ -3278,7 +3278,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}이 회�
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}도시를 만들 수 없습니다!
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}도시 이름을 바꿀 수 없습니다...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}여기에 도시를 건설할 수 없습니다...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}여기에 도시를 건설할 수 없습니다...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...맵 가장자리와 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...다른 도시와 너무 가깝습니다!
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...도시가 너무 많습니다!
@@ -3291,7 +3291,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}산업�
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}여기에 {STRING}{G 0 "을" "를"} 건설할 수 없습니다...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}여기에 이 산업시설을 건설할 수 없습니다...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...다른 산업시설과 너무 가깝습니다.
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...도시를 먼저 만드십시오
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...도시를 먼저 만드십시오
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...한 도시에 하나만 건설 가능합니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...인구 1200명 이상의 도시에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...열대우림 지역에만 건설할 수 있습니다!

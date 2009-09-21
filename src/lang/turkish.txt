@@ -3280,7 +3280,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Bu şirk
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Şehir kurulamaz
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}İsim değiştirilemiyor...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Buraya şehir yapılamıyor...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Buraya şehir yapılamıyor...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...haritanin kenarına çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...başka bir şehire çok yakın
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...çok fazla şehir var
@@ -3293,7 +3293,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Fabrika 
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Buraya {STRING} yapılamaz...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Buraya bu fabrikadan yapılamaz...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...başka bir fabrikaya çok yakın
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...önce şehir yapılmalı
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...önce şehir yapılmalı
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...her şehirde yalnızca bir tane olabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...yalnızca yağmur ormanlarında yapılabilir

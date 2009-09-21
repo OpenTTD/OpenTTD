@@ -3658,7 +3658,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ta firma
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie można wybudować żadnego miasta
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nie można zmienić nazwy miasta...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Nie można tutaj zbudować miasta...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nie można tutaj zbudować miasta...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...zbyt blisko krawędzi mapy
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...zbyt blisko innego miasta
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...zbyt wiele miast
@@ -3671,7 +3671,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nie można tutaj wybudować: {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nie można tutaj wybudować tego przedsiębiorstwa...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...zbyt blisko innego przedsiębiorstwa
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...należy najpierw wybudować miasto
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...należy najpierw wybudować miasto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...dozwolone jedno na miasto
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...można zbudować jedynie w miastach o populacji przynajmniej 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...może być wybudowane tylko w lasach deszczowych

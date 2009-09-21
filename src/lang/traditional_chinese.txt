@@ -3265,7 +3265,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}這間�
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}不能建立市鎮
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}無法修改市鎮名稱...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}不能在此建造市鎮...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}不能在此建造市鎮...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...太接近地圖邊緣
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...太接近另一個市鎮
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...已有太多市鎮
@@ -3278,7 +3278,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法�
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}不能在這裡建造 {STRING} ...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}無法在此新建這種工業...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...太接近另一個工業
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...應先建造市鎮
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...應先建造市鎮
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...每個市鎮僅允許一個
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...只能在市鎮人口超過 1200 人的地方建造
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...只能建在雨林區

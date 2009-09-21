@@ -1567,7 +1567,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} m
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak boleh bina bandar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Tidak boleh menamakan semula bandar...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Tidak boleh membina bandar di sini...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak boleh membina bandar di sini...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...terlalu hampir kepada hujung peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...terlalu hampir kepada bandar lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...terlalu banyak bandar
@@ -1577,7 +1577,7 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar i
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak boleh menjana industri..
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak boleh bina {STRING} di sini...
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...mesti membangunkan bandar dahulu
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...mesti membangunkan bandar dahulu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...hanya satu dibenarkan untuk setiap bandar
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya boleh dibina di bandar dengan populasi lebih atau sama dengan 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya boleh dibina di kawasan hutan

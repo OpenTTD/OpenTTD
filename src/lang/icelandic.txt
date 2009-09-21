@@ -3261,7 +3261,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Þetta f
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Get ekki stofnað nýja borg
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Get ekki endurskírt bæ...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Get ekki byggt bæ hér...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Get ekki byggt bæ hér...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...of nálægt brún kortsins
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...of nálægt öðrum bæ
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...of margir bæir
@@ -3274,7 +3274,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Get ekki byggt {STRING} hérna...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Get ekki reist þennan iðnað hér...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...of nálægt öðrum iðnaði
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...verður að byggja bæ first
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...verður að byggja bæ first
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...aðeins eitt stykki á hvern bæ
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...aðeins hægt að byggja á regnskógasvæðum

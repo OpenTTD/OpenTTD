@@ -3302,7 +3302,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Podjetje
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ni mogoče zgraditi mest
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ne moreš preimenovati mesta ...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Nemogoča gradnja mesta tukaj ...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nemogoča gradnja mesta tukaj ...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE} ... preblizu roba zemljevida
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE} ... preblizu drugemu mestu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE} ... preveliko število mest
@@ -3315,7 +3315,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tukaj ni možno zgraditi {STRING}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nemogoča gradnja tega tipa industrije tukaj...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...preblizu drugi industriji
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE} ... najprej je potrebno zgraditi mesto
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE} ... najprej je potrebno zgraditi mesto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE} ... samo en primerek na mesto dovoljen
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE} ... gradnja mogoča samo v mestih z vsaj 1200 ali več ljudi
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE} ... gradnja mogoča samo v območju deževnega gozda

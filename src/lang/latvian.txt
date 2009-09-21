@@ -3282,7 +3282,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Šī kom
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nevar uzbūvēt pilsētas
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nevar pārsaukt pilsētu...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Te nevar būvēt jaunu pilsētu...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Te nevar būvēt jaunu pilsētu...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... pārāk tuvu kartes malai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... pārāk tuvu citai pilsētai
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... pārāk daudz pilsētu
@@ -3295,7 +3295,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nevar iz
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Šeit nevar būvēt {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Šeit nevar būvēt šī tipa rūpnīcu...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...pārāk tuvu citai rūpnīcai
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... vispirms jāuzceļ pilsēta
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... vispirms jāuzceļ pilsēta
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... pilsētā atļauts tikai viens(a)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... atļauts būvēt tikai pilsētās ar iedzīvotāju skaitu vismaz 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... var celt tikai mežu apgabalos

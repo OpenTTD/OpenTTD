@@ -3280,7 +3280,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Diese Fi
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Bau von Städten unmöglich
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Die Stadt kann nicht umbenannt werden...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Stadt kann hier nicht gegründet werden...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Stadt kann hier nicht gegründet werden...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zu dicht am Spielfeldrand
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu dicht an einer anderen Stadt
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
@@ -3293,7 +3293,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Industri
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Industrie kann hier nicht gebaut werden...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... zu nah an einer anderen Industrie
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... erst muss eine Stadt gegründet werden
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... erst muss eine Stadt gegründet werden
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... pro Stadt nur einmal erlaubt
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kann nur in Städten mit mehr als 1200 Einwohnern gebaut werden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kann nur in Regenwaldgebieten errichtet werden

@@ -3277,7 +3277,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dette se
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke bygge nogen byer
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikke omdøbe byen...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kan ikke bygge en by her...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikke bygge en by her...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for tæt på kanten af kortet
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for tæt på en anden by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byer
@@ -3290,7 +3290,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikke bygge {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikke bygge denne industritype her...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...for tæt på en anden industribygning
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... det er nødvendigt at bygge en by først
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... det er nødvendigt at bygge en by først
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... kun en tilladt per by
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan kun bygges i byer med mindst 1200 indbyggere
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan kun bygges i regnskovsområder

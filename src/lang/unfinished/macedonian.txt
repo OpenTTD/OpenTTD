@@ -1226,7 +1226,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ве
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не може да се направи град
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Овде не може да се изгради град...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Овде не може да се изгради град...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...премногу блиску до крајот на мапата
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...премногу блиску до друг град
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...премногу градови

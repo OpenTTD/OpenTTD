@@ -3279,7 +3279,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}This com
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Can't build any towns
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Can't rename town...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Can't build town here...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Can't build town here...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... too close to edge of map
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... too close to another town
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... too many towns
@@ -3292,7 +3292,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Can't ge
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Can't build {STRING} here...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Can't construct this industry type here...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...too close to another industry
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... must build town first
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... must build town first
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... only one allowed per town
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... can only be built in towns with a population of at least 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... can only be built in rainforest areas

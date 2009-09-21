@@ -3268,7 +3268,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Det här
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte bygga några städer.
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan inte byta namn på stad...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kan inte bygga stad här...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan inte bygga stad här...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...för nära kartans kant
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...för nära en annan stad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...för många städer
@@ -3281,7 +3281,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan inte bygga {STRING} här...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan inte bygga denna typ av industri här...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... för nära en annan industri
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...måste bygga stad först
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...måste bygga stad först
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...endast en per stad
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan bara byggas i städer med minst 1200 invånare
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kan bara byggas i regnskog

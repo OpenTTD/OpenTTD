@@ -3279,7 +3279,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Tällä 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kaupunkeja ei voi rakentaa
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kaupungin nimeä ei voi vaihtaa.
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kaupunkia ei voi rakentaa tähän...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kaupunkia ei voi rakentaa tähän...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liian lähellä kartan reunaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kaupunkia.
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kaupunkia.
@@ -3292,7 +3292,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisu
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...liian lähellä toista teollisuutta.
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... kaupunki pitää rakentaa ensin.
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kaupunki pitää rakentaa ensin.
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kaupunkia kohden.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... voidaan rakentaa vain sademetsäalueisiin

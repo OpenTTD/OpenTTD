@@ -3278,7 +3278,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dit bedr
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen enkele plaats bouwen
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan dorp niet hernoemen...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kan hier geen nieuw dorp bouwen...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuw dorp bouwen...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te dicht bij de rand van de kaart
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een ander dorp
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpen
@@ -3291,7 +3291,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan {STRING} hier niet bouwen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan dit type industrie hier niet bouwen...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te dicht bij een andere industrie
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... plaats eerst dorp
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... plaats eerst dorp
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slechts één per dorp toegestaan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan alleen in dorpen met bevolking van meer dan 1200 worden gebouwd
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan alleen in het regenwoud gebouwd worden

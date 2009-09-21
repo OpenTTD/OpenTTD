@@ -1606,7 +1606,7 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}نمی �
 
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}نمی توان اسم شهر را تغییر داد
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}اینجا نمی شود شهر ساخت
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}اینجا نمی شود شهر ساخت
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE} به حاشیه ی نقشه زیادی نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE} به شهر دیگری بسیار نزدیک است
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعداد شهر ها بسیار زیاد شده
@@ -1614,7 +1614,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعدا
 # Industry related errors
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}نمی شود {STRING} اینجا ساخت
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}این نوع کاخانه را در اینجا نمی شود ساخت...
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE} اول باید شهر ساخته شود
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE} اول باید شهر ساخته شود
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE} فقط یکی به ازای هر شهر مجاز است
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE} فقط در شهرهایی با جمعیت بیش از 1200 نفر ممکن است
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE} فقط میتوان در جنگل های بارانی ساخت

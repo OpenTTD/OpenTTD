@@ -3279,7 +3279,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Această
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nu pot construi nici un oras
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nu se poate redenumi oraşul...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Nu se poate construi un oraş aici...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nu se poate construi un oraş aici...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...prea aproape de marginea hărţii
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...prea aproape de alt oraş
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...prea multe oraşe
@@ -3292,7 +3292,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nu pot g
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nu se poate construi {STRING} aici...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Acest tip de industrie nu se poate construi aici...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...prea aproape de altă industrie
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...mai întâi trebuie creat un oraş
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...mai întâi trebuie creat un oraş
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...un singur obiectiv de acest tip este permis per oraş
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...se poate construi doar în oraşe cu populaţia de cel puţin 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...se poate construi doar in padurile tropicale

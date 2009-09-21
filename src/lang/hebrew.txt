@@ -3280,7 +3280,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}חברה
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}לא ניתן לבנות ערים
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}...לא ניתן לשנות את השם של העיר הזאת
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}לא ניתן לבנות עיירה כאן...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}לא ניתן לבנות עיירה כאן...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... קרוב מידי לקצה המפה
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... קרוב מידי לעיר אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יותר מידי ערים
@@ -3293,7 +3293,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}ניסי
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}לא ניתן {STRING} לבנות כאן...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}לא ניתן לבנות כאן תעשיה מסוג זה
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}קרוב מידי לתעשיה אחרת
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... יש לבנות עיר קודם
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... יש לבנות עיר קודם
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ניתן רק אחד בכל עיר
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ניתן לבנות בערים עם אוכלוסייה בעלת לפחות 1200 איש
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... יכול להבנות רק ליד אזורי יערות הגשם

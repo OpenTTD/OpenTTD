@@ -3474,7 +3474,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ovo pred
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne mogu da napravim naselje
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Naselje nije moguće preimenovati...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Ovde je nemoguće izgraditi naselje...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ovde je nemoguće izgraditi naselje...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...previše blizu ivici terena
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...drugo naselje je previše blizu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...previše naselja
@@ -3487,7 +3487,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemoguć
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE} {STRING} je nemoguće izgraditi ovde...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nije moguće ovde izgraditi taj tip industrije...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...previše blizu druge fabrike
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...prvo bi trebalo podići naselje
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...prvo bi trebalo podići naselje
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...dozvoljena je samo jedna ovakva gradnja po naselju
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...dozvoljeno izgraditi samo u naseljima sa populacijom od najmanje 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama

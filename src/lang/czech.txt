@@ -3345,7 +3345,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Tato spo
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nelze vygenerovat žádné město
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nelze přejmenovat město...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Zde nelze postavit město...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Zde nelze postavit město...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... moc blízko k okraji mapy
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... moc blízko k jinému městu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... příliš mnoho měst
@@ -3358,7 +3358,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nelze vy
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Zde nelze postavit {STRING} ...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Zde nelze postavit tento druh průmyslu...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... příliš blízko k jinému průmyslu
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... je nutné nejprve vystavět město
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... je nutné nejprve vystavět město
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... je povolena jen jedna na město
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... může být budováno jen v pralesech

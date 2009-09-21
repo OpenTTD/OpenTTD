@@ -1768,7 +1768,7 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kin net 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kin gjin stêd bouwe
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kin de namme net feroarje...
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Kin hjir gjin stêd boue...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kin hjir gjin stêd boue...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...te ticht by de râne fan 'e map
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...te ticht by in oare stêd
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...te folle stêden
@@ -1777,7 +1777,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...der i
 # Industry related errors
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kin hjir gjin {STRING} boue...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kin dit type yndustry hjir net boue...
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...stêd moat earst bout wurde
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...stêd moat earst bout wurde
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}..mei mar ien per stêd wêze
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kin allinnich yn in reinwâld bout wurde
