@@ -59,7 +59,6 @@ struct QueryString {
 
 struct QueryStringBaseWindow : public Window, public QueryString {
 	char *edit_str_buf;
-	char *orig_str_buf;
 	const uint16 edit_str_size; ///< maximum length of string (in bytes), including terminating '\0'
 
 	QueryStringBaseWindow(uint16 size) : Window(), edit_str_size(size)
