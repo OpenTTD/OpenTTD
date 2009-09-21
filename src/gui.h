@@ -80,7 +80,7 @@ extern const TextColour _fios_colours[];
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type);
 
 void ShowBuildIndustryWindow();
-void ShowBuildTownWindow();
+void ShowFoundTownWindow();
 void ShowMusicWindow();
 
 

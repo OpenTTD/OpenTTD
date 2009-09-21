@@ -1596,7 +1596,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Only in the scenario editor */
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;

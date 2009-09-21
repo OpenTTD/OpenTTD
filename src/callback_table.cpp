@@ -37,7 +37,7 @@ CommandCallback CcCloneVehicle;
 CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
 CommandCallback CcTerraform;
-CommandCallback CcBuildTown;
+CommandCallback CcFoundTown;
 CommandCallback CcGiveMoney;
 
 /* rail_gui.cpp */
@@ -77,7 +77,7 @@ CommandCallback * const _callback_table[] = {
 	/* 0x06 */ CcBuildLoco,
 	/* 0x07 */ CcBuildRoadVeh,
 	/* 0x08 */ CcBuildShip,
-	/* 0x09 */ CcBuildTown,
+	/* 0x09 */ CcFoundTown,
 	/* 0x0A */ CcBuildRoadTunnel,
 	/* 0x0B */ CcBuildRailTunnel,
 	/* 0x0C */ CcBuildWagon,

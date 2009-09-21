@@ -827,7 +827,7 @@ static void ToolbarScenGenTown(Window *w)
 {
 	w->HandleButtonClick(TBSE_TOWNGENERATE);
 	SndPlayFx(SND_15_BEEP);
-	ShowBuildTownWindow();
+	ShowFoundTownWindow();
 }
 
 static void ToolbarScenGenIndustry(Window *w)

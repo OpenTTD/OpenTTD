@@ -840,7 +840,7 @@ void ShowTownDirectory()
 	new TownDirectoryWindow(&_town_directory_desc);
 }
 
-void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcFoundTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -1032,12 +1032,12 @@ public:
 	{
 		uint32 townnameparts;
 		if (!GenerateTownName(&townnameparts)) {
-			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, STR_ERROR_CAN_T_BUILD_TOWN_HERE, 0, 0);
+			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, STR_ERROR_CAN_T_FOUND_TOWN_HERE, 0, 0);
 			return;
 		}
 
 		DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3, townnameparts,
-				CMD_BUILD_TOWN | CMD_MSG(STR_ERROR_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+				CMD_FOUND_TOWN | CMD_MSG(STR_ERROR_CAN_T_FOUND_TOWN_HERE), CcFoundTown);
 	}
 
 	virtual void OnPlaceObjectAbort()
@@ -1054,7 +1054,7 @@ static const WindowDesc _found_town_desc(
 	NULL, _nested_found_town_widgets, lengthof(_nested_found_town_widgets)
 );
 
-void ShowBuildTownWindow()
+void ShowFoundTownWindow()
 {
 	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
 	AllocateWindowDescFront<FoundTownWindow>(&_found_town_desc, 0);
