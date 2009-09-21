@@ -896,7 +896,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}ПОТОП!{}{COMMA} человек{P "" а ""} утонул{P "" о о} в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Транспортная компания в опасном положении!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK} {STRING} будет продана или объявлена банкротом, если ситуация не изменится!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} будет продана или объявлена банкротом, если не начнёт приносить прибыль!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Объединение компаний!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} продана {STRING} за {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Банкрот!

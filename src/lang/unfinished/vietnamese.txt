@@ -1085,6 +1085,12 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :giữa
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Xe cộ nối đuôi (với tác động nối tiếp): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tự dịch chuyển cửa sổ khi con trỏ gần rìa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Cho phép mua quyền vận tải độc quyền: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Cho phép chuyển tiền cho các công ty khác: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Trạm biến tính: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Cân nặng nhân với số hàng hóa để mô phỏng sức nặng của tàu hỏa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hệ số tốc độ máy bay: {ORANGE}1 / {STRING}
 
 
 
