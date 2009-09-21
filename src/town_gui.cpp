@@ -848,6 +848,15 @@ void CcFoundTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
+void CcFoundRandomTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (success) {
+		tile = Town::Get(_new_town_id)->xy;
+		SndPlayTileFx(SND_1F_SPLAT, tile);
+		ScrollMainWindowToTile(tile);
+	}
+}
+
 /** Widget numbers of town scenario editor window. */
 enum TownScenarioEditorWidgets {
 	TSEW_CLOSEBOX,
@@ -963,6 +972,18 @@ public:
 		this->SetDirty();
 	}
 
+	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, CommandCallback cc)
+	{
+		uint32 townnameparts;
+		if (!GenerateTownName(&townnameparts)) {
+			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, errstr, 0, 0);
+			return;
+		}
+
+		DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6,
+				townnameparts, CMD_FOUND_TOWN | CMD_MSG(errstr), cc);
+	}
+
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
@@ -975,20 +996,10 @@ public:
 				HandlePlacePushButton(this, TSEW_NEWTOWN, SPR_CURSOR_TOWN, HT_RECT, NULL);
 				break;
 
-			case TSEW_RANDOMTOWN: {
+			case TSEW_RANDOMTOWN:
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
-				_generating_world = true;
-				UpdateNearestTownForRoadTiles(true);
-				const Town *t = CreateRandomTown(20, this->town_size, this->city, this->town_layout);
-				UpdateNearestTownForRoadTiles(false);
-				_generating_world = false;
-
-				if (t == NULL) {
-					ShowErrorMessage(STR_ERROR_NO_SPACE_FOR_TOWN, STR_ERROR_CAN_T_GENERATE_TOWN, 0, 0);
-				} else {
-					ScrollMainWindowToTile(t->xy);
-				}
-			} break;
+				this->ExecuteFoundTownCommand(0, true, STR_ERROR_CAN_T_GENERATE_TOWN, CcFoundRandomTown);
+				break;
 
 			case TSEW_MANYRANDOMTOWNS:
 				this->HandleButtonClick(TSEW_MANYRANDOMTOWNS);
@@ -1030,14 +1041,7 @@ public:
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		uint32 townnameparts;
-		if (!GenerateTownName(&townnameparts)) {
-			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, STR_ERROR_CAN_T_FOUND_TOWN_HERE, 0, 0);
-			return;
-		}
-
-		DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3, townnameparts,
-				CMD_FOUND_TOWN | CMD_MSG(STR_ERROR_CAN_T_FOUND_TOWN_HERE), CcFoundTown);
+		this->ExecuteFoundTownCommand(tile, false, STR_ERROR_CAN_T_FOUND_TOWN_HERE, CcFoundTown);
 	}
 
 	virtual void OnPlaceObjectAbort()

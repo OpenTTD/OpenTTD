@@ -56,6 +56,7 @@
 
 Town *_cleared_town;
 int _cleared_town_rating;
+TownID _new_town_id;
 
 uint32 _cur_town_ctr;     ///< iterator through all towns in OnTick_Town
 uint32 _cur_town_iter;    ///< frequency iterator at the same place
@@ -174,6 +175,7 @@ enum TownGrowthResult {
 };
 
 static bool BuildTownHouse(Town *t, TileIndex tile);
+static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout);
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
@@ -1581,7 +1583,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	return CommandCost();
+	return CommandCost(EXPENSES_OTHER);
 }
 
 /** Create a new town.
@@ -1592,6 +1594,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
  * @param p1  0..1 size of the town (@see TownSize)
  *               2 true iff it should be a city
  *            3..5 town road layout (@see TownLayout)
+ *               6 use random location (randomize \c tile )
  * @param p2 town name parts
  * @param text unused
  * @return the cost of this operation or an error
@@ -1605,6 +1608,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	bool city = HasBit(p1, 2);
 	TownLayout layout = (TownLayout)GB(p1, 3, 3);
 	TownNameParams par(_settings_game.game_creation.town_name);
+	bool random = HasBit(p1, 6);
 	uint32 townnameparts = p2;
 
 	if (size > TS_RANDOM) return CMD_ERROR;
@@ -1612,22 +1616,34 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 
-	CommandCost cost = TownCanBePlacedHere(tile);
-	if (CmdFailed(cost)) return cost;
-
 	/* Allocate town struct */
 	if (!Town::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_TOWNS);
 
+	CommandCost cost(EXPENSES_OTHER);
+	if (!random) {
+		cost = TownCanBePlacedHere(tile);
+		if (CmdFailed(cost)) return cost;
+	}
+
 	/* Create the town */
 	if (flags & DC_EXEC) {
-		Town *t = new Town(tile);
 		_generating_world = true;
 		UpdateNearestTownForRoadTiles(true);
-		DoCreateTown(t, tile, townnameparts, size, city, layout);
+		if (random) {
+			const Town *t = CreateRandomTown(20, townnameparts, size, city, layout);
+			if (t == NULL) {
+				cost = CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN);
+			} else {
+				_new_town_id = t->index;
+			}
+		} else {
+			Town *t = new Town(tile);
+			DoCreateTown(t, tile, townnameparts, size, city, layout);
+		}
 		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
 	}
-	return CommandCost();
+	return cost;
 }
 
 /**
@@ -1744,7 +1760,7 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	return INVALID_TILE;
 }
 
-Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout)
+static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	if (!Town::CanAllocateItem()) return NULL;
 
@@ -1761,10 +1777,6 @@ Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layou
 
 		/* Make sure town can be placed here */
 		if (CmdFailed(TownCanBePlacedHere(tile))) continue;
-
-		uint32 townnameparts;
-		/* Get a unique name for the town. */
-		if (!GenerateTownName(&townnameparts)) break;
 
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
@@ -1793,6 +1805,7 @@ bool GenerateTowns(TownLayout layout)
 	uint num = 0;
 	uint difficulty = _settings_game.difficulty.number_towns;
 	uint n = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint32 townnameparts;
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 
@@ -1802,22 +1815,28 @@ bool GenerateTowns(TownLayout layout)
 	do {
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
+		/* Get a unique name for the town. */
+		if (!GenerateTownName(&townnameparts)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, TS_RANDOM, city, layout) != NULL) num++; // if creation successfull, raise a flag
+		if (CreateRandomTown(20, townnameparts, TS_RANDOM, city, layout) != NULL) num++; // if creation successfull, raise a flag
 	} while (--n);
+
+	if (num != 0) return true;
 
 	/* If num is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
-	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) == NULL) {
-		if (Town::GetNumItems() == 0) {
-			if (_game_mode != GM_EDITOR) {
-				extern StringID _switch_mode_errorstr;
-				_switch_mode_errorstr = STR_ERROR_COULD_NOT_CREATE_TOWN;
-			}
-		}
-		return false;  // we are still without a town? we failed, simply
+	if (GenerateTownName(&townnameparts) &&
+			CreateRandomTown(10000, townnameparts, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) != NULL) {
+		return true;
 	}
-	return true;
+
+	/* If there are no towns at all and we are generating new game, bail out */
+	if (Town::GetNumItems() == 0 && _game_mode != GM_EDITOR) {
+		extern StringID _switch_mode_errorstr;
+		_switch_mode_errorstr = STR_ERROR_COULD_NOT_CREATE_TOWN;
+	}
+
+	return false;  // we are still without a town? we failed, simply
 }
 
 

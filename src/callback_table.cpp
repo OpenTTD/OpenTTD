@@ -37,7 +37,6 @@ CommandCallback CcCloneVehicle;
 CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
 CommandCallback CcTerraform;
-CommandCallback CcFoundTown;
 CommandCallback CcGiveMoney;
 
 /* rail_gui.cpp */
@@ -60,6 +59,10 @@ CommandCallback CcBuildShip;
 /* train_gui.cpp */
 CommandCallback CcBuildWagon;
 CommandCallback CcBuildLoco;
+
+/* town_gui.cpp */
+CommandCallback CcFoundTown;
+CommandCallback CcFoundRandomTown;
 
 /* group_gui.cpp */
 CommandCallback CcCreateGroup;
@@ -93,6 +96,7 @@ CommandCallback * const _callback_table[] = {
 	/* 0x16 */ CcCloneVehicle,
 	/* 0x17 */ CcGiveMoney,
 	/* 0x18 */ CcCreateGroup,
+	/* 0x19 */ CcFoundRandomTown,
 };
 
 const int _callback_table_count = lengthof(_callback_table);

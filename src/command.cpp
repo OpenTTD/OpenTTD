@@ -296,7 +296,7 @@ static const Command _command_proc_table[] = {
 	{CmdSellShareInCompany,                         0}, // CMD_SELL_SHARE_IN_COMPANY
 	{CmdBuyCompany,                                 0}, // CMD_BUY_COMANY
 
-	{CmdFoundTown,                        CMD_OFFLINE}, // CMD_FOUND_TOWN
+	{CmdFoundTown,          CMD_NO_TEST | CMD_OFFLINE}, // CMD_FOUND_TOWN
 	{CmdRenameTown,                        CMD_SERVER}, // CMD_RENAME_TOWN
 	{CmdDoTownAction,                               0}, // CMD_DO_TOWN_ACTION
 

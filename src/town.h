@@ -163,7 +163,6 @@ void UpdateAllTownVirtCoords();
 void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
-Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout);
 
 enum TownRatingCheckType {
 	ROAD_REMOVE         = 0,
@@ -239,6 +238,7 @@ enum TownActions {
 DECLARE_ENUM_AS_BIT_SET(TownActions);
 
 extern const byte _town_action_costs[TACT_COUNT];
+extern TownID _new_town_id;
 
 /**
  * Calculate a hash value from a tile position
