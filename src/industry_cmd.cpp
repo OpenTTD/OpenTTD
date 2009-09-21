@@ -432,7 +432,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, ui
 	const Industry *ind = Industry::GetByTile(tile);
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
-		if (a == CT_INVALID) continue; // work only with valid cargos
+		if (a == CT_INVALID || cargo_acceptance[i] == 0) continue; // work only with valid cargos
 
 		/* Add accepted cargo */
 		acceptance[a] += cargo_acceptance[i];
