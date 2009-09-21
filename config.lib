@@ -1048,7 +1048,7 @@ make_compiler_cflags() {
 	cxxflags="$4"
 	ldflags="$6"
 
-	if [ `echo $1 | cut -c 1-3` = "icc" ]; then
+	if [ `basename $1 | cut -c 1-3` = "icc" ]; then
 		# Enable some things only for certain ICC versions
 		cc_version=`$1 -dumpversion | cut -c 1-4 | sed s@\\\.@@g`
 
