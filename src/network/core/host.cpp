@@ -30,9 +30,9 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // PS
 {
 }
 
-#elif defined(BEOS_NET_SERVER) /* doesn't have neither getifaddrs or net/if.h */
+#elif defined(BEOS_NET_SERVER) || defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
 /* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
-int _netstat(int fd, char **output, int verbose);
+extern "C" int _netstat(int fd, char **output, int verbose);
 
 int seek_past_header(char **pos, const char *header)
 {
@@ -63,9 +63,9 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 	char **output = &output_pointer;
 	if (seek_past_header(output, "IP Interfaces:") == B_OK) {
 		for (;;) {
-			uint32 n, fields, read;
+			uint32 n;
+			int fields, read;
 			uint8 i1, i2, i3, i4, j1, j2, j3, j4;
-			struct in_addr inaddr;
 			uint32 ip;
 			uint32 netmask;
 
@@ -85,7 +85,6 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
 				NetworkAddress addr(address, sizeof(sockaddr));
 				if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
-				index++;
 			}
 			if (read < 0) {
 				break;

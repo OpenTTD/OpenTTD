@@ -19,9 +19,11 @@
 
 #include <unistd.h>
 
-#if defined(SUNOS) && !defined(_LP64) && !defined(_I32LPx)
+#if (defined(SUNOS) && !defined(_LP64) && !defined(_I32LPx)) || defined(__HAIKU__)
 /* Solaris has, in certain situation, pid_t defined as long, while in other
- *  cases it has it defined as int... this handles all cases nicely. */
+ *  cases it has it defined as int... this handles all cases nicely.
+ * Haiku has also defined pid_t as a long.
+ */
 # define PRINTF_PID_T "%ld"
 #else
 # define PRINTF_PID_T "%d"

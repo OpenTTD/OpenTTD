@@ -16,15 +16,15 @@
 	#include "os/macosx/osx_stdafx.h"
 #endif /* __APPLE__ */
 
-#if defined(__NDS__)
+#if defined(__BEOS__) || defined(__HAIKU__)
+	#include <SupportDefs.h>
+	#include <unistd.h>
+	#define _GNU_SOURCE
+	#define TROUBLED_INTS
+#elif defined(__NDS__)
 	#include <nds/jtypes.h>
-	/* NDS' types for uint32/int32 are based on longs, which causes
-	 * trouble all over the place in OpenTTD. */
-	#define uint32 uint32_ugly_hack
-	#define int32 int32_ugly_hack
-	typedef unsigned int uint32_ugly_hack;
-	typedef signed int int32_ugly_hack;
-#endif /* __NDS__ */
+	#define TROUBLED_INTS
+#endif
 
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
@@ -80,10 +80,6 @@
 	#include <psptypes.h>
 	#include <pspdebug.h>
 	#include <pspthreadman.h>
-#endif
-
-#if defined(__BEOS__)
-	#include <SupportDefs.h>
 #endif
 
 #if defined(SUNOS) || defined(HPUX)
@@ -282,11 +278,18 @@
 typedef unsigned char byte;
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x)*/
-#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__MORPHOS__)) || defined(__QNXNTO__)
+#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__HAIKU__) && !defined(__MORPHOS__)) || defined(__QNXNTO__)
 	typedef unsigned int uint;
 #endif
 
-#if !defined(__BEOS__) && !defined(__NDS__) /* Already defined on BEOS and NDS */
+#if defined(TROUBLED_INTS)
+	/* NDS'/BeOS'/Haiku's types for uint32/int32 are based on longs, which causes
+	 * trouble all over the place in OpenTTD. */
+	#define uint32 uint32_ugly_hack
+	#define int32 int32_ugly_hack
+	typedef unsigned int uint32_ugly_hack;
+	typedef signed int int32_ugly_hack;
+#else
 	typedef unsigned char    uint8;
 	typedef   signed char     int8;
 	typedef unsigned short   uint16;
@@ -295,7 +298,7 @@ typedef unsigned char byte;
 	typedef   signed int      int32;
 	typedef unsigned __int64 uint64;
 	typedef   signed __int64  int64;
-#endif /* !__BEOS__ && !__NDS__ */
+#endif /* !TROUBLED_INTS */
 
 #if !defined(WITH_PERSONAL_DIR)
 	#define PERSONAL_DIR ""
