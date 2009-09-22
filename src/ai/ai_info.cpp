@@ -20,6 +20,7 @@
 #include "../settings_type.h"
 #include "../openttd.h"
 #include "../debug.h"
+#include "../rev.h"
 
 AIConfigItem _start_date_config = {
 	"start_date",
@@ -113,6 +114,10 @@ static bool CheckAPIVersion(const char *api_version)
 
 	SQInteger res = AIFileInfo::Constructor(vm, info);
 	if (res != 0) return res;
+
+	char buf[8];
+	seprintf(buf, lastof(buf), "%d.%d", GB(_openttd_newgrf_version, 28, 4), GB(_openttd_newgrf_version, 24, 4));
+	info->api_version = strdup(buf);
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, NULL);
