@@ -59,7 +59,14 @@ Company::~Company()
 	if (CleaningPool()) return;
 
 	DeleteCompanyWindows(this->index);
-	this->name_1 = 0;
+
+	/* Zero the memory of the company; we might 'reuse' it later on.
+	 * This is more a hack than a proper fix, but... it's already
+	 * fixed in trunk by the new pool system and this is the only
+	 * troublesome case in 0.7, so we'll leave it at this fix. */
+	CompanyID id = this->index;
+	memset(this, 0, sizeof(*this));
+	this->index = id;
 }
 
 /**
