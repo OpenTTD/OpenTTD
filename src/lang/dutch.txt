@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Geef het filter op
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilters kan worden in de lijst
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter tekst:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecteer sorteringscriteria
@@ -1343,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2025,11 +2027,12 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Dorpsontwikkeling
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuw dorp
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Bouw nieuw dorp
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuw dorp
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurig dorp
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bouw dorp op willekeurige locatie
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sticht dorp op willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Bedek de kaart met willekeurig geplaatste steden
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Stadsgrootte:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Klein
@@ -2373,7 +2376,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vracht n
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} nodig
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} afgelopen maand afgeleverd
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van het dorp. Ctrl+Klik opent een nieuw venster op de locatie van het dorp
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Geef informatie over de gemeente weer
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hernoem plaats
@@ -2419,10 +2422,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE} Geen
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bestaande subsidies:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om de plaats/industrie te centreren
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+Klik opent een nieuw venster op de locatie van het dorp/industrie
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+Klik opent een nieuw venster op de locatie van het station
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Houd Ctrl ingedrukt om meer items te kiezen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stations
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2458,7 +2461,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Geweldig
 STR_CARGO_RATING_OUTSTANDING                                    :Uitstekend
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het station
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het station. Ctrl+Klik opent een nieuw venster op de locatie van het station
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Hernoem station
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
@@ -2469,9 +2472,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Geef all
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem station/laadgebied
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost. Ctrl+Klik opent een nieuw venster op de locatie van de controlepost
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander naam controlepost
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie. Ctrl+Klik opent een nieuw venster op de locatie van de boei
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander naam boei
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam controlepost aanpassen
@@ -2551,13 +2554,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE} Geen
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - klik op naam om scherm te centreren op industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - klik op naam om scherm te centreren op industrie. Ctrl+Klik opent een nieuw venster op de locatie van de industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Productie vorige maand:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% getransporteerd)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het scherm op de locatie van de industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het scherm op de locatie van de industrie. Ctrl+Klik opent een nieuws venster op de locatie van de industrie
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Vereist: {YELLOW}{STRING}{STRING}

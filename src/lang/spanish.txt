@@ -1345,6 +1345,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2027,11 +2028,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Creación de Pueblos
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuevo Pueblo
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construir nuevo pueblo
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nuevo pueblo
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Pueblo al Azar
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construir pueblo en sitio aleatorio
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar pueblo en lugar aleatorio
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Varios pueblos al azar
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubre el mapa con pueblos colocados al azar
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nombre del pueblo:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introducir nombre de pueblo
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click para introducir nombre de pueblo
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nombre aleatorio
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generar nuevo nombre
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamaño pueblo:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequeña

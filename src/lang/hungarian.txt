@@ -1377,6 +1377,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2064,6 +2065,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Egy vél
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Egy település építése véletlenszerű helyre
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Sok véletlen település
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Véletlenszerüen elhelyez a térképen sok települést.
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Városnév:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}A város nevének megadása
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kattints ide a város nevének beírásához
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Véletlen név
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Új véletlen név generálása
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Új település mérete:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Kicsi

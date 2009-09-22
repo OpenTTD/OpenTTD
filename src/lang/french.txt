@@ -1345,6 +1345,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2027,11 +2028,12 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Êtes-vo
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Créer les villes
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nouvelle ville
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construire une nouvelle ville
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fonder une nouvelle ville
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Créer une ville
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construire une ville à un emplacement aléatoire
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonder une ville à un emplacement aléatoire
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Beaucoup de villes au hasard
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Couvrir la carte avec des villes placées aléatoirement
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Taille:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Petite

@@ -1346,6 +1346,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1547,7 +1548,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{S
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spettatori:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita il server a un certo numero di spettatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa spaere agli altri giocatori quale lingua è parlata sul server
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server
 STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Avvia partita
@@ -2028,11 +2029,12 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Si è si
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generazione città
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuova città
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Costruisce una nuova città
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fonda una nuova città
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Città casuale
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Costruisce una città in un luogo casuale
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonda una città in una posizione casuale
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Alcune città casuali
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Copre la mappa con città posizionate casualmente
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Dimensione città:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Piccola
@@ -3281,7 +3283,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Questa c
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossibile costruire città
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossibile rinominare la città...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossibile costruire una città qui...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossibile fondare una città qui...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... troppo vicino al bordo della mappa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
@@ -3294,7 +3296,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossibile costruire {STRING} qui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossibile costruire l'industria qui...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...troppo vicina ad un'altra industria
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... bisogna prima costruire una città
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... bisogna fondare una città prima
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ne è ammessa solo una per città
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... può essere costruita solo in città con almeno 1.200 abitanti
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... può essere costruita solo nella foresta pluviale

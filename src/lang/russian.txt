@@ -1498,6 +1498,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix/Linux
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2191,6 +2192,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случ
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Создать город в случайном месте
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Много случайных городов
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Случайно разместить на карте города
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Название города:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введите название города
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Щёлкните, чтобы переименовать город
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Случайное название
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Сгенерировать случайное название
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Размер города:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Малый
@@ -3554,7 +3561,7 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Нель
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(денег мало)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Невозможная комбинация путей
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недопустимая комбинация путей
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Нет подходящих рельсов
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала надо удалить рельсы
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или блокирована

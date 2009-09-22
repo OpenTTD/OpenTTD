@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}輸入篩選字串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入篩選所使用的關鍵字，對於清單……
+STR_LIST_FILTER_TITLE                                           :{BLACK}篩選字串：
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}選擇排序項目
@@ -256,6 +257,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名稱
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :人口
+STR_SORT_BY_NAME                                                :名稱
 STR_SORT_BY_PRODUCTION                                          :產量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :已運送
@@ -362,7 +365,7 @@ STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :打開新視野
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮清冊
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮目錄
 ############ both ranges ends here
 
 ############ range for subsidies menu starts
@@ -384,7 +387,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :詳細營運評
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :工業清冊
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :工業目錄
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :投資成立工廠
 ############ range ends here
 
@@ -555,7 +558,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資金�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}貸款：
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計：
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}交通工具數量；包含鐵公路車輛、 船舶與飛機
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年盈利的交通工具數量； 包含鐵公路車輛、船舶與飛機
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入交通工具的損益 (只計算出廠兩年以上的交通工具)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}前三年的單月最低收入
@@ -926,11 +929,13 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}畫面�
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}選擇畫面擷取檔案格式
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基礎圖組
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基礎圖組
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基礎圖形集
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎圖形集的額外資訊
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基礎音效組
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}選擇要使用的基礎音效集
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎音效集的額外資訊
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}無法切換全螢幕模式
 
@@ -1073,7 +1078,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永遠�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}設定指令時預設選擇「直達」指令：{ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新列車調度計劃中默認命令為停靠車站月台 {ORANGE}{STRING}{LTBLUE} 位置
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新列車調度計劃中預設命令為停靠車站月台 {ORANGE}{STRING}{LTBLUE} 位置
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中間
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :遠端
@@ -1306,7 +1311,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查�
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 設定
 STR_INTRO_QUIT                                                  :{BLACK}離開
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲。 按住 Ctrl 點選可跳過地圖設定畫面
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}載入舊遊戲
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}以高度圖為地形開始新遊戲
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}使用自訂的場景開始新遊戲
@@ -1338,6 +1343,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1730,6 +1736,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :遊戲繼續 (�
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :離開中
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入遊戲
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} 已加入此遊戲 (用戶端 #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} 已加入公司 #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 已加入為旁觀者
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 已建立新公司 (#{2:NUM})
@@ -1834,15 +1841,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}鋪設�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}鋪設單軌
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}鋪設磁浮軌
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵軌
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動鋪軌模式建造鐵軌
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動模式鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站。 按住 Ctrl 可興建相鄰車站
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站。 按住 Ctrl 可興建相鄰車站
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌站及車站。按住 Ctrl 點選可移除號誌站及車站中的鐵軌
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換／升級軌道種類
 
 # Rail depot construction window
@@ -1907,16 +1914,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :管橋，玻璃
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}鋪設道路
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}鋪設電車軌
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}鋪設一段公路
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}興建電車站
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用自動模式鋪設道路
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用自動模式鋪設輕軌
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}鋪設一段公路。 按住 Ctrl 可切換鋪設／拆除模式
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}興建電車軌。 按住 Ctrl 可切換鋪設／拆除模式
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用自動模式鋪設道路。 按住 Ctrl 可切換鋪設／拆除模式
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用自動模式鋪設輕軌。 按住 Ctrl 可切換鋪設／拆除模式
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}興建車庫 (用來購置及維護車輛)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}興建電車機廠 (用來購置及維護電車)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}興建公車站
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}興建載客電車站
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}興建貨運站
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}興建載貨電車站
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}興建公車站。 按住 Ctrl 可興建相鄰車站
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}興建載客電車站。 按住 Ctrl 可興建相鄰車站
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}興建貨運站。 按住 Ctrl 可興建相鄰車站
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}興建載貨電車站。 按住 Ctrl 可興建相鄰車站
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}切換單行道／雙向道
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}興建公路橋樑
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}架設電車橋
@@ -1947,7 +1954,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水道
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}建造運河，按住 CTRL 可在海面上建造 (僅限海平面)
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}興建水閘
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}興建船塢 (用以購買及維護船舶)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}興建碼頭
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}興建碼頭。 按住 Ctrl 可興建相鄰車站
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置浮標，可用作導航點
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}興建水道橋
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}劃出湖泊範圍{}開鑿運河，在海平面上按 CTRL 鍵則會淹沒週遭土地
@@ -1962,7 +1969,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}碼頭
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}機場
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}興建機場
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}興建機場。 按住 Ctrl 可興建相鄰車站
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}選擇機場
@@ -2024,6 +2031,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}隨機�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}隨機選址建立市鎮
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}許多隨機市鎮
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}以隨機分佈的市鎮佈滿地圖
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}市鎮大小：
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}小型
@@ -2334,7 +2342,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消�
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' 的行為可能會造成失去同步或當機
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
 
@@ -2350,8 +2358,9 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}輸入�
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城市
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 無 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面中央
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面中央。 按住 Ctrl 點選可於市鎮位置開啟新視窗視野
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 
 # Town view window
@@ -2364,7 +2373,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}市鎮�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{BLACK}還需要 {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{BLACK}上個月已運送 {ORANGE}{CARGO}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面中央
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面中央。 按住 Ctrl 點選可於市鎮位置開啟新視窗視野
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}顯示地方政府資訊
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改市鎮名稱
@@ -2410,10 +2419,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}將 {ST
 STR_SUBSIDIES_NONE                                              :{ORANGE}- 無 -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已獲補助的服務：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，補助到 {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央。 按住 Ctrl 點選可於工業／市鎮位置開啟新視窗視野
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站名稱 - 點選名稱可將車站置於畫面中央
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站名稱 - 點選名稱可將車站置於畫面中央。 按住 Ctrl 點選可於車站位置開啟新視窗視野
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 選擇多個項目
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - 車站 {COMMA} 座
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2449,7 +2458,7 @@ STR_CARGO_RATING_EXCELLENT                                      :極佳
 STR_CARGO_RATING_OUTSTANDING                                    :傑出
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}將車站置於畫面中央
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}將車站置於畫面中央。 按住 Ctrl 點選可於車站位置開啟新視窗視野
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}變更車站名稱
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}顯示所有指令內包含這個車站的列車
@@ -2460,8 +2469,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}顯示�
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :修改車站／載貨區名稱
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將路徑置於畫面中央
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將號誌站置於畫面中央。 按住 Ctrl 點選可於號誌站位置開啟新視窗視野
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改號誌站名稱
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}將浮標置於畫面中央。 按住 Ctrl 點選可於浮標位置開啟新視窗視野
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}修改浮標名稱
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
 
@@ -2490,9 +2501,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}貸款
 STR_FINANCES_MAX_LOAN                                           :{WHITE}貸款上限：{BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}貸款 {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}增加貸款
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}增加貸款。 按住 Ctrl 點選可貸款最大額度
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}償還 {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}償還貸款
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}償還貸款。 按住 Ctrl 點選可償還最大額度
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2536,16 +2547,17 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我們�
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工業
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 無 -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (已運送 {COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (已運送 {COMMA}%/{COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面中央
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面中央。 按住 Ctrl 點選可於工業位置開啟新視窗視野
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月產量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} (運送了 {COMMA}%)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面中央
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面中央。 按住 Ctrl 點選可於工業位置開啟新視窗視野
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}需要：{YELLOW}{STRING}{STRING}
@@ -2560,7 +2572,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}產出�
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}產出：{YELLOW}{STRING}{STRING}，{STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量 (以 8 為倍數增減，最大為 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車 {COMMA} 組
@@ -2730,10 +2742,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}這會�
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}這會購買一艘相同的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}這會購買一架相同的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵路機廠置於畫面中央
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車庫置於畫面中央
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船塢置於畫面中央
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面中央
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵路機廠置於畫面中央。 按住 Ctrl 點選可於鐵路機廠位置開啟新視窗視野
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車庫置於畫面中央。 按住 Ctrl 點選可於車庫位置開啟新視窗視野
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船塢置於畫面中央。 按住 Ctrl 點選可於船塢位置開啟新視窗視野
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面中央。 按住 Ctrl 點選可於機棚位置開啟新視窗視野
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}取得所有命令内有這個機廠的列車
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}取得所有命令内有這個車庫的車輛
@@ -2801,10 +2813,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}將列車置於畫面中央
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}將車輛置於畫面中央
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}將船舶置於畫面中央
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}將飛機置於畫面中央
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}將列車置於畫面中央。 按住 Ctrl 點選可於畫面中央追蹤該列車
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}將車輛置於畫面中央。 按住 Ctrl 點選可於畫面中央追蹤該車輛
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}將船舶置於畫面中央。 按住 Ctrl 點選可於畫面中央追蹤該船舶
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}將飛機置於畫面中央。 按住 Ctrl 點選可於畫面中央追蹤該飛機
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}將列車送回機廠，按住 CTRL 點選機廠則僅做維護
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}將車輛送到車庫，按住 CTRL 點選則只做維護
@@ -2908,8 +2920,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}轉運�
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}維護間隔：{LTBLUE}{COMMA} 天{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}維護間隔：{LTBLUE}{COMMA}%{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}延長維護間隔
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}縮短維護間隔
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位延長維護間隔。 按住 Ctrl 點選可以 5 為單位
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位縮短維護間隔。 按住 Ctrl 點選可以 5 為單位
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}為列車命名
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}為車輛命名
@@ -3034,7 +3046,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的機廠
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的機棚
 STR_ORDER_CONDITIONAL                                           :條件式跳躍指令
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在最後新增指令
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在最後新增指令。按住 Ctrl 於車站時可直接設為「滿載任一種類客貨」， 於號誌站時則為「直達」， 於機廠時則為「維護」
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}插入進階指令
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共用這份指令的交通工具
@@ -3193,15 +3205,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}此存�
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}地圖產生失敗...{}...找不到合適的市鎮位址
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...這個地圖沒有市鎮
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... 這個地圖沒有市鎮
 
 STR_ERROR_PNGMAP                                                :{WHITE}無法從 PNG 檔載入地形...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...找不到檔案
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...無法轉換影像格式，需要 8 或 24-bit PNG 影像
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...出現一點狀況，抱歉 (或許是檔案損毀)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... 找不到檔案
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式，需要 8 或 24-bit PNG 影像
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 出現一點狀況，抱歉 (或許是檔案損毀)
 
 STR_ERROR_BMPMAP                                                :{WHITE}無法從 BMP 檔載入地形...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...無法轉換影像格式
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}縮放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不建議過度縮放地圖。要繼續產生嗎？
@@ -3223,10 +3235,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}地面�
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能執行以下動作....
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必須先摧毀建築物
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除這個地段....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...地點不適合
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...已經建了
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地點不適合
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已經建了
 STR_ERROR_OWNED_BY                                              :{WHITE}... 所有者是 {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...此區域屬於其它公司所有
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此區域屬於其它公司所有
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名稱必須是唯一的
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}被 {STRING} 擋住
 
@@ -3250,10 +3262,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已�
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}無法修改公司名稱...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}無法修改經理名稱...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...貸款額度上限是 {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 貸款額度上限是 {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}無法再借更多錢...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...不需償還貸款
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...需要 {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 不需償還貸款
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... 需要 {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}無法償還貸款...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}無法把貸款的錢流通出去...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}無法購買公司...
@@ -3266,10 +3278,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}這間�
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}不能建立市鎮
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}無法修改市鎮名稱...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}不能在此建造市鎮...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...太接近地圖邊緣
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...太接近另一個市鎮
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...已有太多市鎮
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...地圖沒有足夠空間
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 太接近地圖邊緣
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 太接近另一個市鎮
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 已有太多市鎮
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地圖沒有足夠空間
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}此市鎮不會自動興建道路。你可以到 [進階設定] -> [經濟] -> [市鎮] 中啟用 [市鎮可以興建道路] 選項。
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
 
@@ -3277,15 +3289,15 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路�
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法產生工業...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}不能在這裡建造 {STRING} ...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}無法在此新建這種工業...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...太接近另一個工業
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...應先建造市鎮
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...每個市鎮僅允許一個
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...只能在市鎮人口超過 1200 人的地方建造
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...只能建在雨林區
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...只能建在沙漠區
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...只能建在市鎮內
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...只能位於地圖邊緣
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...森林只能種在雪線以上
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 太接近另一個工業
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 應先建造市鎮
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 每個市鎮僅允許一個
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 只能在市鎮人口超過 1200 人的地方建造
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 只能建在雨林區
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 只能建在沙漠區
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 只能建在市鎮內
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只能位於地圖邊緣
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}不能在這邊興建火車站...
@@ -3297,19 +3309,19 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}無法�
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}無法在此興建機場...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}鄰接超過一個現有車站／載貨區
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...車站範圍太大
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...未開啟不規則車站功能
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 車站範圍太大
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... 未開啟不規則車站功能
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}太多車站／載貨區
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}太多火車站元件
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}太多公車站
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}太多貨運站
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}太靠近另一個火車站
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}太靠近另一個車站／載貨區
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}太靠近另一個碼頭
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}太靠近另一個機場
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}太接近另一個火車站
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}太接近另一個車站／載貨區
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}太接近另一個碼頭
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}太接近另一個機場
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}不能修改車站名稱...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...此路段為市鎮所有
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...此道路面向錯誤的方向
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 此路段為市鎮所有
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 此道路面向錯誤的方向
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}無法移除車站元件...
@@ -3328,14 +3340,16 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}必須�
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}必須先摧毀機場
 
 # Waypoint related errors
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}太接近另一個號誌站
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}無法在此興建列車號誌站...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}無法在此放置浮標...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}無法修改號誌站名稱...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}無法移除列車號誌站...
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...被浮標擋住
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...浮標正在使用！
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵路號誌站
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被浮標擋住
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 浮標正在使用！
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}不能在這邊興建鐵路機廠...
@@ -3344,7 +3358,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}無法�
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}不能在此建造船塢...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車必須停在機廠内
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...必須停在車庫内
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 必須停在車庫内
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船舶必須停在船塢内
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飛機必須停在機棚内
 
@@ -3391,13 +3405,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}無法�
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}無法在此興建運河...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}無法在此興建水閘...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}無法在此開鑿河流...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...必須建在水域上
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...不能建在水域上
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... 必須建在水域上
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... 不能建在水域上
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}必須先移除運河
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}無法興建水道橋...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...這邊已經有樹了
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... 這邊已經有樹了
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}不能在這邊植樹...
 
 # Bridge related errors
@@ -3407,7 +3421,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}開始�
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}橋樑兩端不在同個海拔
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋樑太接近地面
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始與結束位置必須在同一直線上
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...橋樑的兩端應在陸地上
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...
@@ -3419,9 +3433,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}無法�
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}被東西擋住
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...被公司總部擋住
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 被公司總部擋住
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能購買這塊土地...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...您已經擁有了！
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 您已經擁有了！
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}無法建立群組...
@@ -3501,13 +3515,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}無法�
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}無法移動這個命令...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}無法跳過目前的命令...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}無法跳過指定的命令...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}交通工具無法前往所有車站
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}交通工具無法前往此車站
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一個分享這個指令的車輛無法抵達車站
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... 交通工具無法前往所有車站
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 交通工具無法前往此車站
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 一個分享這個指令的交通工具無法抵達車站
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}無法共享指令清單...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}無法複製指令清單...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...與上個目的地相距太遠
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 與上個目的地相距太遠
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為交通工具加入時刻表...
@@ -3515,7 +3529,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}交通�
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此交通工具將不停靠此車站
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...太多標誌了
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 太多標誌了
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}不能在這邊放置標誌...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}不能修改標誌名稱...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}無法刪除標誌...
@@ -3623,6 +3637,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} 機場
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 礦場
 STR_SV_STNAME_DOCKS                                             :{STRING} 碼頭
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} 輔助站
 STR_SV_STNAME_SIDINGS                                           :{STRING} 側站
@@ -3900,6 +3916,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} 浮標
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} 浮標 #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(公司 {COMMA})
 STR_FORMAT_GROUP_NAME                                           :群組 {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
