@@ -78,7 +78,6 @@ Town::~Town()
 	/* Delete town authority window
 	 * and remove from list of sorted towns */
 	DeleteWindowById(WC_TOWN_VIEW, this->index);
-	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 
 	/* Delete all industries belonging to the town */
 	FOR_ALL_INDUSTRIES(i) if (i->town == this) delete i;
@@ -121,6 +120,7 @@ Town::~Town()
  */
 void Town::PostDestructor(size_t index)
 {
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 	UpdateNearestTownForRoadTiles(false);
 }
 
