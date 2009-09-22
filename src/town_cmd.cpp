@@ -1419,9 +1419,10 @@ struct TownNameParams {
  */
 static bool VerifyTownName(uint32 r, const TownNameParams *par)
 {
-	/* reserve space for extra unicode character and terminating '\0' */
-	char buf1[MAX_LENGTH_TOWN_NAME_BYTES + 4 + 1];
-	char buf2[MAX_LENGTH_TOWN_NAME_BYTES + 4 + 1];
+	/* Reserve space for extra unicode character. We need to do this to be able
+	 * to detect too long town name. */
+	char buf1[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
+	char buf2[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
 
 	SetDParam(0, r);
 	if (par->grf && par->grfid != 0) {
