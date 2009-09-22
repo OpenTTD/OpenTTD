@@ -168,7 +168,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
 #define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command()
 #define DEF_CLIENT_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
-#define DEF_SERVER_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(NetworkClientSocket *cs, Packet *p)
+#define DEF_SERVER_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(NetworkClientSocket *cs, Packet *p)
 #define DEF_SERVER_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(NetworkClientSocket *cs)
 #define DEF_SERVER_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
 
