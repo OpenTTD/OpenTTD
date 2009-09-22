@@ -798,6 +798,7 @@ bool NetworkServerStart()
 	_network_own_client_id = CLIENT_ID_SERVER;
 
 	_network_clients_connected = 0;
+	_network_company_passworded = 0;
 
 	NetworkInitGameInfo();
 
