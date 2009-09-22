@@ -172,13 +172,13 @@ uint Engine::GetDisplayDefaultCapacity() const
 	if (!this->CanCarryCargo()) return 0;
 	switch (type) {
 		case VEH_TRAIN:
-			return GetEngineProperty(this->index, 0x14, this->u.rail.capacity) + (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? this->u.rail.capacity : 0);
+			return GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY, this->u.rail.capacity) + (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? this->u.rail.capacity : 0);
 
 		case VEH_ROAD:
-			return GetEngineProperty(this->index, 0x0F, this->u.road.capacity);
+			return GetEngineProperty(this->index, PROP_ROADVEH_CARGO_CAPACITY, this->u.road.capacity);
 
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, 0x0D, this->u.ship.capacity);
+			return GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY, this->u.ship.capacity);
 
 		case VEH_AIRCRAFT:
 			return AircraftDefaultCargoCapacity(this->GetDefaultCargoType(), &this->u.air);
@@ -194,13 +194,13 @@ Money Engine::GetRunningCost() const
 			return this->u.road.running_cost * GetPriceByIndex(this->u.road.running_cost_class) >> 8;
 
 		case VEH_TRAIN:
-			return GetEngineProperty(this->index, 0x0D, this->u.rail.running_cost) * GetPriceByIndex(this->u.rail.running_cost_class) >> 8;
+			return GetEngineProperty(this->index, PROP_TRAIN_RUNNING_COST_FACTOR, this->u.rail.running_cost) * GetPriceByIndex(this->u.rail.running_cost_class) >> 8;
 
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, 0x0F, this->u.ship.running_cost) * _price.ship_running >> 8;
+			return GetEngineProperty(this->index, PROP_SHIP_RUNNING_COST_FACTOR, this->u.ship.running_cost) * _price.ship_running >> 8;
 
 		case VEH_AIRCRAFT:
-			return GetEngineProperty(this->index, 0x0E, this->u.air.running_cost) * _price.aircraft_running >> 8;
+			return GetEngineProperty(this->index, PROP_AIRCRAFT_RUNNING_COST_FACTOR, this->u.air.running_cost) * _price.aircraft_running >> 8;
 
 		default: NOT_REACHED();
 	}
@@ -210,19 +210,19 @@ Money Engine::GetCost() const
 {
 	switch (this->type) {
 		case VEH_ROAD:
-			return GetEngineProperty(this->index, 0x11, this->u.road.cost_factor) * (_price.roadveh_base >> 3) >> 5;
+			return GetEngineProperty(this->index, PROP_ROADVEH_COST_FACTOR, this->u.road.cost_factor) * (_price.roadveh_base >> 3) >> 5;
 
 		case VEH_TRAIN:
 			if (this->u.rail.railveh_type == RAILVEH_WAGON) {
-				return (GetEngineProperty(this->index, 0x17, this->u.rail.cost_factor) * _price.build_railwagon) >> 8;
+				return (GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor) * _price.build_railwagon) >> 8;
 			} else {
-				return GetEngineProperty(this->index, 0x17, this->u.rail.cost_factor) * (_price.build_railvehicle >> 3) >> 5;
+				return GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor) * (_price.build_railvehicle >> 3) >> 5;
 			}
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, 0x0A, this->u.ship.cost_factor) * (_price.ship_base >> 3) >> 5;
+			return GetEngineProperty(this->index, PROP_SHIP_COST_FACTOR, this->u.ship.cost_factor) * (_price.ship_base >> 3) >> 5;
 
 		case VEH_AIRCRAFT:
-			return GetEngineProperty(this->index, 0x0B, this->u.air.cost_factor) * (_price.aircraft_base >> 3) >> 5;
+			return GetEngineProperty(this->index, PROP_AIRCRAFT_COST_FACTOR, this->u.air.cost_factor) * (_price.aircraft_base >> 3) >> 5;
 
 		default: NOT_REACHED();
 	}
@@ -236,13 +236,13 @@ uint Engine::GetDisplayMaxSpeed() const
 {
 	switch (this->type) {
 		case VEH_TRAIN:
-			return GetEngineProperty(this->index, 0x09, this->u.rail.max_speed);
+			return GetEngineProperty(this->index, PROP_TRAIN_SPEED, this->u.rail.max_speed);
 
 		case VEH_ROAD:
 			return this->u.road.max_speed / 2;
 
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, 0x0B, this->u.ship.max_speed) / 2;
+			return GetEngineProperty(this->index, PROP_SHIP_SPEED, this->u.ship.max_speed) / 2;
 
 		case VEH_AIRCRAFT:
 			return this->u.air.max_speed;
@@ -256,7 +256,7 @@ uint Engine::GetPower() const
 	/* Currently only trains have 'power' */
 	switch (this->type) {
 		case VEH_TRAIN:
-			return GetEngineProperty(this->index, 0x0B, this->u.rail.power);
+			return GetEngineProperty(this->index, PROP_TRAIN_POWER, this->u.rail.power);
 
 		default: NOT_REACHED();
 	}
@@ -272,7 +272,7 @@ uint Engine::GetDisplayWeight() const
 	/* Currently only trains have 'weight' */
 	switch (this->type) {
 		case VEH_TRAIN:
-			return GetEngineProperty(this->index, 0x16, this->u.rail.weight) << (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
+			return GetEngineProperty(this->index, PROP_TRAIN_WEIGHT, this->u.rail.weight) << (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 
 		default: NOT_REACHED();
 	}
@@ -288,7 +288,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 	/* Currently only trains have 'tractive effort' */
 	switch (this->type) {
 		case VEH_TRAIN:
-			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, 0x1F, this->u.rail.tractive_effort)) / 256;
+			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_TRAIN_TRACTIVE_EFFORT, this->u.rail.tractive_effort)) / 256;
 
 		default: NOT_REACHED();
 	}

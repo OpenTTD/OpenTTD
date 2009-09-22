@@ -1268,7 +1268,7 @@ Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 	if (t->IsArticulatedPart()) return NULL;
 
 	const RailVehicleInfo *rvi = RailVehInfo(t->engine_type);
-	if (GetVehicleProperty(t, 0x0B, rvi->power) != 0) TrainPowerChanged(t->First());
+	if (GetVehicleProperty(t, PROP_TRAIN_POWER, rvi->power) != 0) TrainPowerChanged(t->First());
 
 	return NULL;
 }

@@ -288,7 +288,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
 			u->rcache.cached_veh_length = GetRoadVehLength(u);
 			/* Cargo capacity is zero if and only if the vehicle cannot carry anything */
-			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
+			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, PROP_ROADVEH_CARGO_CAPACITY, u->cargo_cap);
 			v->InvalidateNewGRFCache();
 			u->InvalidateNewGRFCache();
 		}
@@ -2054,7 +2054,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			 * carry twice as much mail/goods as normal cargo, and four times as
 			 * many passengers
 			 */
-			capacity = GetVehicleProperty(v, 0x0F, e->u.road.capacity);
+			capacity = GetVehicleProperty(v, PROP_ROADVEH_CARGO_CAPACITY, e->u.road.capacity);
 			switch (old_cid) {
 				case CT_PASSENGERS: break;
 				case CT_MAIL:

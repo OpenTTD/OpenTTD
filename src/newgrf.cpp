@@ -506,14 +506,14 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->ai_passenger_only = grf_load_byte(&buf);
 				break;
 
-			case 0x09: { // Speed (1 unit is 1 kmh)
+			case PROP_TRAIN_SPEED: { // 0x09 Speed (1 unit is 1 km-ish/h)
 				uint16 speed = grf_load_word(&buf);
 				if (speed == 0xFFFF) speed = 0;
 
 				rvi->max_speed = speed;
 			} break;
 
-			case 0x0B: // Power
+			case PROP_TRAIN_POWER: // 0x0B Power
 				rvi->power = grf_load_word(&buf);
 
 				/* Set engine / wagon state based on power */
@@ -526,7 +526,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 				break;
 
-			case 0x0D: // Running cost factor
+			case PROP_TRAIN_RUNNING_COST_FACTOR: // 0x0D Running cost factor
 				rvi->running_cost = grf_load_byte(&buf);
 				break;
 
@@ -567,7 +567,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 			} break;
 
-			case 0x14: // Cargo capacity
+			case PROP_TRAIN_CARGO_CAPACITY: // 0x14 Cargo capacity
 				rvi->capacity = grf_load_byte(&buf);
 				break;
 
@@ -585,11 +585,11 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 			} break;
 
-			case 0x16: // Weight
+			case PROP_TRAIN_WEIGHT: // 0x16 Weight
 				SB(rvi->weight, 0, 8, grf_load_byte(&buf));
 				break;
 
-			case 0x17: // Cost factor
+			case PROP_TRAIN_COST_FACTOR: // 0x17 Cost factor
 				rvi->cost_factor = grf_load_byte(&buf);
 				break;
 
@@ -653,7 +653,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->callback_mask = grf_load_byte(&buf);
 				break;
 
-			case 0x1F: // Tractive effort coefficient
+			case PROP_TRAIN_TRACTIVE_EFFORT: // 0x1F Tractive effort coefficient
 				rvi->tractive_effort = grf_load_byte(&buf);
 				break;
 
@@ -686,7 +686,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 			} break;
 
-			case 0x25: // User-defined bit mask to set when checking veh. var. 42
+			case PROP_TRAIN_USER_DATA: // 0x25 User-defined bit mask to set when checking veh. var. 42
 				rvi->user_def_data = grf_load_byte(&buf);
 				break;
 
@@ -769,7 +769,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->image_index = spriteid;
 			} break;
 
-			case 0x0F: // Cargo capacity
+			case PROP_ROADVEH_CARGO_CAPACITY: // 0x0F Cargo capacity
 				rvi->capacity = grf_load_byte(&buf);
 				break;
 
@@ -786,7 +786,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 			} break;
 
-			case 0x11: // Cost factor
+			case PROP_ROADVEH_COST_FACTOR: // 0x11 Cost factor
 				rvi->cost_factor = grf_load_byte(&buf);
 				break;
 
@@ -887,11 +887,11 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				svi->refittable = (grf_load_byte(&buf) != 0);
 				break;
 
-			case 0x0A: // Cost factor
+			case PROP_SHIP_COST_FACTOR: // 0x0A Cost factor
 				svi->cost_factor = grf_load_byte(&buf);
 				break;
 
-			case 0x0B: // Speed (1 unit is 0.5 kmh)
+			case PROP_SHIP_SPEED: // 0x0B Speed (1 unit is 0.5 km-ish/h)
 				svi->max_speed = grf_load_byte(&buf);
 				break;
 
@@ -908,11 +908,11 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 			} break;
 
-			case 0x0D: // Cargo capacity
+			case PROP_SHIP_CARGO_CAPACITY: // 0x0D Cargo capacity
 				svi->capacity = grf_load_word(&buf);
 				break;
 
-			case 0x0F: // Running cost factor
+			case PROP_SHIP_RUNNING_COST_FACTOR: // 0x0F Running cost factor
 				svi->running_cost = grf_load_byte(&buf);
 				break;
 
@@ -1008,11 +1008,11 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				SB(avi->subtype, 1, 1, (grf_load_byte(&buf) != 0 ? 1 : 0)); // AIR_FAST
 				break;
 
-			case 0x0B: // Cost factor
+			case PROP_AIRCRAFT_COST_FACTOR: // 0x0B Cost factor
 				avi->cost_factor = grf_load_byte(&buf);
 				break;
 
-			case 0x0C: // Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h)
+			case PROP_AIRCRAFT_SPEED: // 0x0C Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h)
 				avi->max_speed = (grf_load_byte(&buf) * 129) / 10;
 				break;
 
@@ -1020,7 +1020,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				avi->acceleration = (grf_load_byte(&buf) * 129) / 10;
 				break;
 
-			case 0x0E: // Running cost factor
+			case PROP_AIRCRAFT_RUNNING_COST_FACTOR: // 0x0E Running cost factor
 				avi->running_cost = grf_load_byte(&buf);
 				break;
 

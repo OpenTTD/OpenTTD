@@ -1026,7 +1026,7 @@ uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param
 
 
 /* Callback 36 handlers */
-uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value)
+uint GetVehicleProperty(const Vehicle *v, PropertyID property, uint orig_value)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_MODIFY_PROPERTY, property, 0, v->engine_type, v);
 	if (callback != CALLBACK_FAILED) return callback;
@@ -1035,7 +1035,7 @@ uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value)
 }
 
 
-uint GetEngineProperty(EngineID engine, uint8 property, uint orig_value)
+uint GetEngineProperty(EngineID engine, PropertyID property, uint orig_value)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_MODIFY_PROPERTY, property, 0, engine, NULL);
 	if (callback != CALLBACK_FAILED) return callback;

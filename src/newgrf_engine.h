@@ -14,6 +14,7 @@
 
 #include "direction_type.h"
 #include "newgrf_callbacks.h"
+#include "newgrf_properties.h"
 
 enum {
 	TRAININFO_DEFAULT_VEHICLE_WIDTH = 29,
@@ -45,8 +46,8 @@ bool UsesWagonOverride(const Vehicle *v);
 
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
  * time) orig_value is returned */
-uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value);
-uint GetEngineProperty(EngineID engine, uint8 property, uint orig_value);
+uint GetVehicleProperty(const Vehicle *v, PropertyID property, uint orig_value);
+uint GetEngineProperty(EngineID engine, PropertyID property, uint orig_value);
 
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 0x01,

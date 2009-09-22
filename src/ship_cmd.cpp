@@ -158,7 +158,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 Money Ship::GetRunningCost() const
 {
-	return GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running;
+	return GetVehicleProperty(this, PROP_SHIP_RUNNING_COST_FACTOR, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running;
 }
 
 void Ship::OnNewDay()
@@ -334,7 +334,7 @@ static bool ShipAccelerate(Vehicle *v)
 	uint spd;
 	byte t;
 
-	spd = min(v->cur_speed + 1, GetVehicleProperty(v, 0x0B, v->max_speed));
+	spd = min(v->cur_speed + 1, GetVehicleProperty(v, PROP_SHIP_SPEED, v->max_speed));
 
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
@@ -815,7 +815,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		v->InvalidateNewGRFCacheOfChain();
 
-		v->cargo_cap = GetVehicleProperty(v, 0x0D, svi->capacity);
+		v->cargo_cap = GetVehicleProperty(v, PROP_SHIP_CARGO_CAPACITY, svi->capacity);
 
 		v->InvalidateNewGRFCacheOfChain();
 
@@ -942,7 +942,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	if (capacity == CALLBACK_FAILED) {
-		capacity = GetVehicleProperty(v, 0x0D, ShipVehInfo(v->engine_type)->capacity);
+		capacity = GetVehicleProperty(v, PROP_SHIP_CARGO_CAPACITY, ShipVehInfo(v->engine_type)->capacity);
 	}
 	_returned_refit_capacity = capacity;
 

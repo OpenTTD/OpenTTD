@@ -107,14 +107,14 @@ void TrainPowerChanged(Train *v)
 			const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
 			if (engine_has_power) {
-				uint16 power = GetVehicleProperty(u, 0x0B, rvi_u->power);
+				uint16 power = GetVehicleProperty(u, PROP_TRAIN_POWER, rvi_u->power);
 				if (power != 0) {
 					/* Halve power for multiheaded parts */
 					if (u->IsMultiheaded()) power /= 2;
 
 					total_power += power;
 					/* Tractive effort in (tonnes * 1000 * 10 =) N */
-					max_te += (u->tcache.cached_veh_weight * 10000 * GetVehicleProperty(u, 0x1F, rvi_u->tractive_effort)) / 256;
+					max_te += (u->tcache.cached_veh_weight * 10000 * GetVehicleProperty(u, PROP_TRAIN_TRACTIVE_EFFORT, rvi_u->tractive_effort)) / 256;
 				}
 			}
 		}
@@ -151,7 +151,7 @@ static void TrainCargoChanged(Train *v)
 		/* Vehicle weight is not added for articulated parts. */
 		if (!u->IsArticulatedPart()) {
 			/* vehicle weight is the sum of the weight of the vehicle and the weight of its cargo */
-			vweight += GetVehicleProperty(u, 0x16, RailVehInfo(u->engine_type)->weight);
+			vweight += GetVehicleProperty(u, PROP_TRAIN_WEIGHT, RailVehInfo(u->engine_type)->weight);
 		}
 
 		/* powered wagons have extra weight added */
@@ -253,7 +253,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 
 	for (Train *u = v; u != NULL; u = u->Next()) {
 		/* Update user defined data (must be done before other properties) */
-		u->tcache.user_def_data = GetVehicleProperty(u, 0x25, u->tcache.user_def_data);
+		u->tcache.user_def_data = GetVehicleProperty(u, PROP_TRAIN_USER_DATA, u->tcache.user_def_data);
 		v->InvalidateNewGRFCache();
 		u->InvalidateNewGRFCache();
 	}
@@ -316,14 +316,14 @@ void TrainConsistChanged(Train *v, bool same_length)
 
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
 			if ((rvi_u->railveh_type != RAILVEH_WAGON || _settings_game.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
-				uint16 speed = GetVehicleProperty(u, 0x09, rvi_u->max_speed);
+				uint16 speed = GetVehicleProperty(u, PROP_TRAIN_SPEED, rvi_u->max_speed);
 				if (speed != 0) max_speed = min(speed, max_speed);
 			}
 		}
 
 		if (e_u->CanCarryCargo() && u->cargo_type == e_u->GetDefaultCargoType() && u->cargo_subtype == 0) {
 			/* Set cargo capacity if we've not been refitted */
-			u->cargo_cap = GetVehicleProperty(u, 0x14, rvi_u->capacity);
+			u->cargo_cap = GetVehicleProperty(u, PROP_TRAIN_CARGO_CAPACITY, rvi_u->capacity);
 		}
 
 		/* check the vehicle length (callback) */
@@ -4491,7 +4491,7 @@ Money Train::GetRunningCost() const
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 
-		byte cost_factor = GetVehicleProperty(v, 0x0D, rvi->running_cost);
+		byte cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, rvi->running_cost);
 		if (cost_factor == 0) continue;
 
 		/* Halve running cost for multiheaded parts */

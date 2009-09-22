@@ -207,6 +207,7 @@ newgrf_generic.h
 newgrf_house.h
 newgrf_industries.h
 newgrf_industrytiles.h
+newgrf_properties.h
 newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h

@@ -619,7 +619,7 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 
 Money Aircraft::GetRunningCost() const
 {
-	return GetVehicleProperty(this, 0x0E, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running;
+	return GetVehicleProperty(this, PROP_AIRCRAFT_RUNNING_COST_FACTOR, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running;
 }
 
 void Aircraft::OnNewDay()
@@ -753,7 +753,7 @@ static void PlayAircraftSound(const Vehicle *v)
 
 void UpdateAircraftCache(Aircraft *v)
 {
-	uint max_speed = GetVehicleProperty(v, 0x0C, 0);
+	uint max_speed = GetVehicleProperty(v, PROP_AIRCRAFT_SPEED, 0);
 	if (max_speed != 0) {
 		/* Convert from original units to (approx) km/h */
 		max_speed = (max_speed * 129) / 10;
