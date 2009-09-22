@@ -1586,7 +1586,10 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
-		if (t != NULL && !StrEmpty(text)) t->name = strdup(text);
+		if (t != NULL && !StrEmpty(text)) {
+			t->name = strdup(text);
+			t->UpdateVirtCoord();
+		}
 	}
 	return cost;
 }
