@@ -212,7 +212,6 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
 bool GenerateTowns(TownLayout layout);
-bool GenerateTownName(uint32 *townnameparts);
 
 
 /** Town actions of a company. */

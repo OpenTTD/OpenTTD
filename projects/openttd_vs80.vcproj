@@ -1528,6 +1528,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\townname_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\town_type.h"
 				>
 			</File>

@@ -2033,6 +2033,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Found to
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Many random towns
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cover the map with randomly placed towns
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Town name:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Enter town name
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click to enter town name
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Random name
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generate new random name
+
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Town size:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Small
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Medium

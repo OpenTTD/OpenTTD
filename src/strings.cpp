@@ -38,6 +38,7 @@
 #include "engine_base.h"
 #include "strgen/strgen.h"
 #include "gfx_func.h"
+#include "townname_func.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -105,7 +106,7 @@ const char *GetStringPtr(StringID string)
  * @param last
  * @return a formatted string of char
  */
-static char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char *last)
+char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char *last)
 {
 	if (GB(string, 0, 16) == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, argv, last);
 
@@ -913,27 +914,13 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 
 			case SCC_TOWN_NAME: { // {TOWN}
 				const Town *t = Town::Get(GetInt32(&argv));
-				int64 temp[1];
 
 				assert(t != NULL);
 
-				temp[0] = t->townnameparts;
-				uint32 grfid = t->townnamegrfid;
-
 				if (t->name != NULL) {
 					buff = strecpy(buff, t->name, last);
-				} else if (grfid == 0) {
-					/* Original town name */
-					buff = GetStringWithArgs(buff, t->townnametype, temp, last);
 				} else {
-					/* Newgrf town name */
-					if (GetGRFTownName(grfid) != NULL) {
-						/* The grf is loaded */
-						buff = GRFTownNameGenerate(buff, t->townnamegrfid, t->townnametype, t->townnameparts, last);
-					} else {
-						/* Fallback to english original */
-						buff = GetStringWithArgs(buff, SPECSTR_TOWNNAME_ENGLISH, temp, last);
-					}
+					buff = GetTownName(buff, t, last);
 				}
 				break;
 			}

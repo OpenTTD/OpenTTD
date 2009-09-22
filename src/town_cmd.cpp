@@ -50,6 +50,8 @@
 #include "core/smallmap_type.hpp"
 #include "core/pool_func.hpp"
 #include "town.h"
+#include "townname_func.h"
+#include "townname_type.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -1392,90 +1394,6 @@ void UpdateTownRadius(Town *t)
 	}
 }
 
-extern int _nb_orig_names;
-
-/**
- * Struct holding a parameters used to generate town name.
- * Speeds things up a bit because these values are computed only once per name generation.
- */
-struct TownNameParams {
-	uint32 grfid;        ///< newgrf ID
-	uint16 townnametype; ///< town name style
-	bool grf;            ///< true iff a newgrf is used to generate town name
-
-	TownNameParams(byte town_name)
-	{
-		this->grf = town_name >= _nb_orig_names;
-		this->grfid = this->grf ? GetGRFTownNameId(town_name - _nb_orig_names) : 0;
-		this->townnametype = this->grf ? GetGRFTownNameType(town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + town_name;
-	}
-};
-
-/**
- * Verifies the town name is valid and unique.
- * @param r random bits
- * @param par town name parameters
- * @return true iff name is valid and unique
- */
-static bool VerifyTownName(uint32 r, const TownNameParams *par)
-{
-	/* Reserve space for extra unicode character. We need to do this to be able
-	 * to detect too long town name. */
-	char buf1[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
-	char buf2[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
-
-	SetDParam(0, r);
-	if (par->grf && par->grfid != 0) {
-		GRFTownNameGenerate(buf1, par->grfid, par->townnametype, r, lastof(buf1));
-	} else {
-		GetString(buf1, par->townnametype, lastof(buf1));
-	}
-
-	/* Check size and width */
-	if (strlen(buf1) >= MAX_LENGTH_TOWN_NAME_BYTES) return false;
-
-	const Town *t;
-	FOR_ALL_TOWNS(t) {
-		/* We can't just compare the numbers since
-		 * several numbers may map to a single name. */
-		SetDParam(0, t->index);
-		GetString(buf2, STR_TOWN_NAME, lastof(buf2));
-		if (strcmp(buf1, buf2) == 0) return false;
-	}
-
-	return true;
-}
-
-/**
- * Generates valid town name.
- * @param townnameparts if a name is generated, it's stored there
- * @return true iff a name was generated
- */
-bool GenerateTownName(uint32 *townnameparts)
-{
-	/* Do not set too low tries, since when we run out of names, we loop
-	 * for #tries only one time anyway - then we stop generating more
-	 * towns. Do not show it too high neither, since looping through all
-	 * the other towns may take considerable amount of time (10000 is
-	 * too much). */
-	int tries = 1000;
-	TownNameParams par(_settings_game.game_creation.town_name);
-
-	assert(townnameparts != NULL);
-
-	for (;;) {
-		uint32 r = InteractiveRandom();
-
-		if (!VerifyTownName(r, &par)) {
-			if (tries-- < 0) return false;
-			continue;
-		}
-
-		*townnameparts = r;
-		return true;
-	}
-}
-
 void UpdateTownMaxPass(Town *t)
 {
 	t->max_pass = t->population >> 3;
@@ -1526,6 +1444,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->exclusive_counter = 0;
 	t->statues = 0;
 
+	extern int _nb_orig_names;
 	if (_settings_game.game_creation.town_name < _nb_orig_names) {
 		/* Original town name */
 		t->townnamegrfid = 0;
@@ -1587,6 +1506,22 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 	return CommandCost(EXPENSES_OTHER);
 }
 
+/**
+ * Verifies this custom name is unique. Only custom names are checked.
+ * @param name name to check
+ * @return is this name unique?
+ */
+static bool IsUniqueTownName(const char *name)
+{
+	const Town *t;
+
+	FOR_ALL_TOWNS(t) {
+		if (t->name != NULL && strcmp(t->name, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Create a new town.
  * This obviously only works in the scenario editor. Function not removed
  * as it might be possible in the future to fund your own town :)
@@ -1615,7 +1550,14 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (size > TS_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
 
-	if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+	if (StrEmpty(text)) {
+		/* If supplied name is empty, townnameparts has to generate unique automatic name */
+		if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+	} else {
+		/* If name is not empty, it has to be unique custom name */
+		if (strlen(text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueTownName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+	}
 
 	/* Allocate town struct */
 	if (!Town::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_TOWNS);
@@ -1630,19 +1572,21 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (flags & DC_EXEC) {
 		_generating_world = true;
 		UpdateNearestTownForRoadTiles(true);
+		Town *t;
 		if (random) {
-			const Town *t = CreateRandomTown(20, townnameparts, size, city, layout);
+			t = CreateRandomTown(20, townnameparts, size, city, layout);
 			if (t == NULL) {
 				cost = CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN);
 			} else {
 				_new_town_id = t->index;
 			}
 		} else {
-			Town *t = new Town(tile);
+			t = new Town(tile);
 			DoCreateTown(t, tile, townnameparts, size, city, layout);
 		}
 		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
+		if (t != NULL && !StrEmpty(text)) t->name = strdup(text);
 	}
 	return cost;
 }
@@ -2310,17 +2254,6 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	if (eflags & BUILDING_2_TILES_Y)   DoClearTownHouseHelper(tile + TileDiffXY(0, 1), t, ++house);
 	if (eflags & BUILDING_2_TILES_X)   DoClearTownHouseHelper(tile + TileDiffXY(1, 0), t, ++house);
 	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1), t, ++house);
-}
-
-static bool IsUniqueTownName(const char *name)
-{
-	const Town *t;
-
-	FOR_ALL_TOWNS(t) {
-		if (t->name != NULL && strcmp(t->name, name) == 0) return false;
-	}
-
-	return true;
 }
 
 /** Rename a town (server-only).

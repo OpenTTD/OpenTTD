@@ -12,9 +12,123 @@
 #include "stdafx.h"
 #include "townname_func.h"
 #include "string_func.h"
+#include "townname_func.h"
+#include "townname_type.h"
+#include "town.h"
 #include "core/alloc_func.hpp"
+#include "strings_func.h"
 
 #include "table/townname.h"
+
+
+/**
+ * Initializes this struct from town data
+ * @param t town for which we will be printing name later
+ */
+TownNameParams::TownNameParams(const Town *t) :
+		grfid(t->townnamegrfid), // by default, use supplied data
+		type(t->townnametype)
+{
+	if (t->townnamegrfid != 0 && GetGRFTownName(t->townnamegrfid) == NULL) {
+		/* Fallback to english original */
+		this->grfid = 0;
+		this->type = SPECSTR_TOWNNAME_ENGLISH;
+		return;
+	}
+}
+
+
+/**
+ * Fills buffer with specified town name
+ * @param buff buffer start
+ * @param par town name parameters
+ * @param townnameparts 'encoded' town name
+ * @param last end of buffer
+ * @return pointer to terminating '\0'
+ */
+char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, const char *last)
+{
+	if (par->grfid == 0) {
+		int64 temp[1] = { townnameparts };
+		return GetStringWithArgs(buff, par->type, temp, last);
+	}
+
+	return GRFTownNameGenerate(buff, par->grfid, par->type, townnameparts, last);
+}
+
+
+/**
+ * Fills buffer with town's name
+ * @param buff buffer start
+ * @param t we want to get name of this town
+ * @param last end of buffer
+ * @return pointer to terminating '\0'
+ */
+char *GetTownName(char *buff, const Town *t, const char *last)
+{
+	TownNameParams par(t);
+	return GetTownName(buff, &par, t->townnameparts, last);
+}
+
+
+/**
+ * Verifies the town name is valid and unique.
+ * @param r random bits
+ * @param par town name parameters
+ * @return true iff name is valid and unique
+ */
+bool VerifyTownName(uint32 r, const TownNameParams *par)
+{
+	/* reserve space for extra unicode character and terminating '\0' */
+	char buf1[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
+	char buf2[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
+
+	GetTownName(buf1, par, r, lastof(buf1));
+
+	/* Check size and width */
+	if (strlen(buf1) >= MAX_LENGTH_TOWN_NAME_BYTES) return false;
+
+	const Town *t;
+	FOR_ALL_TOWNS(t) {
+		/* We can't just compare the numbers since
+		 * several numbers may map to a single name. */
+		const char *buf = t->name;
+		if (buf == NULL) {
+			GetTownName(buf2, t, lastof(buf2));
+			buf = buf2;
+		}
+		if (strcmp(buf1, buf2) == 0) return false;
+	}
+
+	return true;
+}
+
+
+/**
+ * Generates valid town name.
+ * @param townnameparts if a name is generated, it's stored there
+ * @return true iff a name was generated
+ */
+bool GenerateTownName(uint32 *townnameparts)
+{
+	/* Do not set too low tries, since when we run out of names, we loop
+	 * for #tries only one time anyway - then we stop generating more
+	 * towns. Do not show it too high neither, since looping through all
+	 * the other towns may take considerable amount of time (10000 is
+	 * too much). */
+	TownNameParams par(_settings_game.game_creation.town_name);
+
+	for (int i = 1000; i != 0; i--) {
+		uint32 r = InteractiveRandom();
+		if (!VerifyTownName(r, &par)) continue;
+
+		*townnameparts = r;
+		return true;
+	}
+
+	return false;
+}
+
 
 
 /**

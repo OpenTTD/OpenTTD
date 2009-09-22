@@ -34,6 +34,11 @@
 #include "landscape.h"
 #include "cargotype.h"
 #include "tile_map.h"
+#include "querystring_gui.h"
+#include "window_func.h"
+#include "string_func.h"
+#include "townname_func.h"
+#include "townname_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -850,11 +855,7 @@ void CcFoundTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcFoundRandomTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		tile = Town::Get(_new_town_id)->xy;
-		SndPlayTileFx(SND_1F_SPLAT, tile);
-		ScrollMainWindowToTile(tile);
-	}
+	if (success) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
 }
 
 /** Widget numbers of town scenario editor window. */
@@ -866,6 +867,9 @@ enum TownScenarioEditorWidgets {
 	TSEW_NEWTOWN,
 	TSEW_RANDOMTOWN,
 	TSEW_MANYRANDOMTOWNS,
+	TSEW_TOWNNAME_TEXT,
+	TSEW_TOWNNAME_EDITBOX,
+	TSEW_TOWNNAME_RANDOM,
 	TSEW_TOWNSIZE,
 	TSEW_SIZE_SMALL,
 	TSEW_SIZE_MEDIUM,
@@ -895,6 +899,14 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 										SetDataTip(STR_FOUND_TOWN_RANDOM_TOWN_BUTTON, STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP), SetPadding(0, 2, 1, 2),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_MANYRANDOMTOWNS), SetMinimalSize(156, 12), SetFill(true, false),
 										SetDataTip(STR_FOUND_TOWN_MANY_RANDOM_TOWNS, STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP), SetPadding(0, 2, 0, 2),
+		/* Town name selection. */
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, TSEW_TOWNSIZE), SetMinimalSize(156, 14), SetDataTip(STR_FOUND_TOWN_NAME_TITLE, STR_NULL),
+			NWidget(WWT_EDITBOX, COLOUR_WHITE, TSEW_TOWNNAME_EDITBOX), SetMinimalSize(156, 12), SetDataTip(STR_FOUND_TOWN_NAME_EDITOR_TITLE, STR_FOUND_TOWN_NAME_EDITOR_HELP),
+			NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_TOWNNAME_RANDOM), SetMinimalSize(78, 12), SetFill(true, false),
+										SetDataTip(STR_FOUND_TOWN_NAME_RANDOM_BUTTON, STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP),
+		EndContainer(),
 		/* Town size selection. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(true, false),
@@ -940,21 +952,39 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 };
 
 /** Found a town window class. */
-struct FoundTownWindow : Window {
+struct FoundTownWindow : QueryStringBaseWindow {
 private:
 	TownSize town_size;     ///< Selected town size
 	TownLayout town_layout; ///< Selected town layout
 	bool city;              ///< Are we building a city?
+	bool townnamevalid;     ///< Is generated town name valid?
+	uint32 townnameparts;   ///< Generated town name
+	TownNameParams params;  ///< Town name parameters
 
 public:
 	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) :
-			Window(),
+			QueryStringBaseWindow(MAX_LENGTH_TOWN_NAME_BYTES),
 			town_size(TS_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
-			city(false)
+			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
+		this->RandomTownName();
 		this->UpdateButtons();
+	}
+
+	void RandomTownName()
+	{
+		this->townnamevalid = GenerateTownName(&this->townnameparts);
+
+		if (!this->townnamevalid) {
+			this->edit_str_buf[0] = '\0';
+		} else {
+			GetTownName(this->edit_str_buf, &this->params, this->townnameparts, &this->edit_str_buf[this->edit_str_size - 1]);
+		}
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
+
+		this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
 	}
 
 	void UpdateButtons()
@@ -974,19 +1004,27 @@ public:
 
 	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, CommandCallback cc)
 	{
-		uint32 townnameparts;
-		if (!GenerateTownName(&townnameparts)) {
-			ShowErrorMessage(STR_ERROR_TOO_MANY_TOWNS, errstr, 0, 0);
-			return;
+		const char *name = NULL;
+
+		if (!this->townnamevalid) {
+			name = this->edit_str_buf;
+		} else {
+			/* If user changed the name, send it */
+			char buf[MAX_LENGTH_TOWN_NAME_BYTES];
+			GetTownName(buf, &this->params, this->townnameparts, lastof(buf));
+			if (strcmp(buf, this->edit_str_buf) != 0) name = this->edit_str_buf;
 		}
 
-		DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6,
-				townnameparts, CMD_FOUND_TOWN | CMD_MSG(errstr), cc);
+		bool success = DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6,
+				townnameparts, CMD_FOUND_TOWN | CMD_MSG(errstr), cc, name);
+
+		if (success) this->RandomTownName();
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+		this->DrawEditBox(TSEW_TOWNNAME_EDITBOX);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -999,6 +1037,10 @@ public:
 			case TSEW_RANDOMTOWN:
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				this->ExecuteFoundTownCommand(0, true, STR_ERROR_CAN_T_GENERATE_TOWN, CcFoundRandomTown);
+				break;
+
+			case TSEW_TOWNNAME_RANDOM:
+				this->RandomTownName();
 				break;
 
 			case TSEW_MANYRANDOMTOWNS:
@@ -1037,6 +1079,18 @@ public:
 		this->RaiseWidget(TSEW_RANDOMTOWN);
 		this->RaiseWidget(TSEW_MANYRANDOMTOWNS);
 		this->SetDirty();
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(TSEW_TOWNNAME_EDITBOX);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		EventState state;
+		this->HandleEditBoxKey(TSEW_TOWNNAME_EDITBOX, key, keycode, state);
+		return state;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
