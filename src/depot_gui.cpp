@@ -169,13 +169,13 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_MOVE_VEHICLE));
 }
 
-/* Array to hold the block sizes
- * First part is the vehicle type, while the last is 0 = x, 1 = y */
-uint _block_sizes[4][2];
+/** Array containing the cell size in pixels of the #DEPOT_WIDGET_MATRIX widget for each vehicle type.
+ * @note The train vehicle type uses the entire row for each train. */
+static Dimension _block_sizes[4];
 
-/* Array to hold the default resize capacities
- * First part is the vehicle type, while the last is 0 = x, 1 = y */
-static const uint _resize_cap[][2] = {
+/** Array containing the default number of cells in horizontal and vertical direction in the #DEPOT_WIDGET_MATRIX widget for each vehicle type.
+ * @note The train vehicle type uses the entire row for each train. */
+static const Dimension _resize_cap[] = {
 	{10 * 29, 6}, ///< VEH_TRAIN
 	{      5, 5}, ///< VEH_ROAD
 	{      3, 3}, ///< VEH_SHIP
@@ -184,14 +184,14 @@ static const uint _resize_cap[][2] = {
 
 static void ResizeDefaultWindowSizeForTrains()
 {
-	_block_sizes[VEH_TRAIN][0] = 1;
-	_block_sizes[VEH_TRAIN][1] = GetVehicleListHeight(VEH_TRAIN);
+	_block_sizes[VEH_TRAIN].width = 1;
+	_block_sizes[VEH_TRAIN].height = GetVehicleListHeight(VEH_TRAIN);
 }
 
 static void ResizeDefaultWindowSizeForRoadVehicles()
 {
-	_block_sizes[VEH_ROAD][0] = 56;
-	_block_sizes[VEH_ROAD][1] = GetVehicleListHeight(VEH_ROAD);
+	_block_sizes[VEH_ROAD].width = 56;
+	_block_sizes[VEH_ROAD].height = GetVehicleListHeight(VEH_ROAD);
 }
 
 static void ResizeDefaultWindowSize(VehicleType type)
@@ -216,13 +216,13 @@ static void ResizeDefaultWindowSize(VehicleType type)
 	switch (type) {
 		default: NOT_REACHED();
 		case VEH_SHIP:
-			_block_sizes[VEH_SHIP][0] = max(90U, max_width + 20); // we need 20 pixels from the right edge to the sprite
+			_block_sizes[VEH_SHIP].width = max(90U, max_width + 20); // we need 20 pixels from the right edge to the sprite
 			break;
 		case VEH_AIRCRAFT:
-			_block_sizes[VEH_AIRCRAFT][0] = max(74U, max_width);
+			_block_sizes[VEH_AIRCRAFT].width = max(74U, max_width);
 			break;
 	}
-	_block_sizes[type][1] = max(GetVehicleListHeight(type), max_height);
+	_block_sizes[type].height = max(GetVehicleListHeight(type), max_height);
 }
 
 /* Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game
@@ -656,17 +656,17 @@ struct DepotWindow : Window {
 		/* Resize the window according to the vehicle type */
 
 		/* Set the number of blocks in each direction */
-		this->hscroll.SetCapacity(_resize_cap[type][0]);
-		this->vscroll.SetCapacity(_resize_cap[type][1]);
+		this->hscroll.SetCapacity(_resize_cap[type].width);
+		this->vscroll.SetCapacity(_resize_cap[type].height);
 
 		/* Set the block size */
-		this->resize.step_width  = _block_sizes[type][0];
-		this->resize.step_height = _block_sizes[type][1];
+		this->resize.step_width  = _block_sizes[type].width;
+		this->resize.step_height = _block_sizes[type].height;
 
 		/* Enlarge the window to fit with the selected number of blocks of the selected size */
 		ResizeWindow(this,
-					_block_sizes[type][0] * this->hscroll.GetCapacity(),
-					_block_sizes[type][1] * this->vscroll.GetCapacity());
+					_block_sizes[type].width * this->hscroll.GetCapacity(),
+					_block_sizes[type].height * this->vscroll.GetCapacity());
 
 		if (type == VEH_TRAIN) {
 			/* Make space for the horizontal scrollbar vertically, and the unit
