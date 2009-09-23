@@ -176,10 +176,10 @@ uint _block_sizes[4][2];
 /* Array to hold the default resize capacities
  * First part is the vehicle type, while the last is 0 = x, 1 = y */
 static const uint _resize_cap[][2] = {
-/* VEH_TRAIN */    {6, 10 * 29},
-/* VEH_ROAD */     {5, 5},
-/* VEH_SHIP */     {3, 3},
-/* VEH_AIRCRAFT */ {3, 4},
+	{10 * 29, 6}, ///< VEH_TRAIN
+	{      5, 5}, ///< VEH_ROAD
+	{      3, 3}, ///< VEH_SHIP
+	{      4, 3}, ///< VEH_AIRCRAFT
 };
 
 static void ResizeDefaultWindowSizeForTrains()
@@ -656,8 +656,8 @@ struct DepotWindow : Window {
 		/* Resize the window according to the vehicle type */
 
 		/* Set the number of blocks in each direction */
-		this->vscroll.SetCapacity(_resize_cap[type][0]);
-		this->hscroll.SetCapacity(_resize_cap[type][1]);
+		this->hscroll.SetCapacity(_resize_cap[type][0]);
+		this->vscroll.SetCapacity(_resize_cap[type][1]);
 
 		/* Set the block size */
 		this->resize.step_width  = _block_sizes[type][0];
