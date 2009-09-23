@@ -2748,6 +2748,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ai\api\ai_info_docs.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ai\api\ai_list.hpp"
 				>
 			</File>

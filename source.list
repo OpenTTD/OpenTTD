@@ -619,6 +619,7 @@ ai/api/ai_industry.hpp
 ai/api/ai_industrylist.hpp
 ai/api/ai_industrytype.hpp
 ai/api/ai_industrytypelist.hpp
+ai/api/ai_info_docs.hpp
 ai/api/ai_list.hpp
 ai/api/ai_log.hpp
 ai/api/ai_map.hpp
