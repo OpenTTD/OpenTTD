@@ -828,7 +828,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
 		} else if (v->group_id != DEFAULT_GROUP) {
 			/* The vehicle has no name, but is member of a group, so print group name */
 			SetDParam(0, v->group_id);
-			DrawString(left + 19, right, y, STR_TINT_GROUP, TC_BLACK);
+			DrawString(left + 19, right, y, STR_TINY_GROUP, TC_BLACK);
 		}
 
 		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, left + 138, right, y);
