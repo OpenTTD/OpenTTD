@@ -1186,15 +1186,6 @@ enum JoinStationWidgets {
 	JSW_RESIZEBOX,
 };
 
-static const Widget _select_station_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE, COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT, COLOUR_DARK_GREEN,    11,   199,     0,    13, STR_JOIN_STATION_CAPTION,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     RESIZE_RB, COLOUR_DARK_GREEN,     0,   187,    14,    79, 0x0,                             STR_NULL},
-{  WWT_SCROLLBAR,    RESIZE_LRB, COLOUR_DARK_GREEN,   188,   199,    14,    67, 0x0,                             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB, COLOUR_DARK_GREEN,   188,   199,    68,    79, 0x0,                             STR_TOOLTIP_RESIZE},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_select_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, JSW_WIDGET_CLOSEBOX),
@@ -1219,37 +1210,60 @@ struct SelectStationWindow : Window {
 	TileArea area; ///< Location of new station
 
 	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd, TileArea ta) :
-		Window(desc, 0),
+		Window(),
 		select_station_cmd(cmd),
 		area(ta)
 	{
-		this->vscroll.SetCapacity(6);
-		this->resize.step_height = 10;
+		this->CreateNestedTree(desc);
+		this->GetWidget<NWidgetCore>(JSW_WIDGET_CAPTION)->widget_data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
+		this->FinishInitNested(desc, 0);
 
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(JSW_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 		this->OnInvalidateData(0);
+	}
 
-		this->widget[JSW_WIDGET_CAPTION].data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
-		this->FindWindowPlacementAndResize(desc);
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != JSW_PANEL) return;
+
+		/* Determine the widest string */
+		Dimension d = GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
+		for (uint i = 0; i < _stations_nearby_list.Length(); i++) {
+			const T *st = T::Get(_stations_nearby_list[i]);
+			SetDParam(0, st->index);
+			SetDParam(1, st->facilities);
+			d = maxdim(d, GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION));
+		}
+
+		resize->height = d.height;
+		d.width += WD_FRAMERECT_RIGHT + WD_FRAMERECT_LEFT;
+		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		*size = maxdim(*size, d);
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
 
-		uint y = 17;
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != JSW_PANEL) return;
+
+		uint y = r.top + WD_FRAMERECT_TOP;
 		if (this->vscroll.GetPosition() == 0) {
-			DrawString(3, this->widget[JSW_PANEL].right - 2, y, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
+			y += this->resize.step_height;
 		}
 
-		for (uint i = max<uint>(1, this->vscroll.GetPosition()); i <= _stations_nearby_list.Length(); ++i, y += 10) {
+		for (uint i = max<uint>(1, this->vscroll.GetPosition()); i <= _stations_nearby_list.Length(); ++i, y += this->resize.step_height) {
 			/* Don't draw anything if it extends past the end of the window. */
 			if (i - this->vscroll.GetPosition() >= this->vscroll.GetCapacity()) break;
 
 			const T *st = T::Get(_stations_nearby_list[i - 1]);
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
-			DrawString(3, this->widget[JSW_PANEL].right - 2, y, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION);
 		}
 	}
 
@@ -1257,7 +1271,7 @@ struct SelectStationWindow : Window {
 	{
 		if (widget != JSW_PANEL) return;
 
-		uint32 st_index = (pt.y - 16) / 10 + this->vscroll.GetPosition();
+		uint32 st_index = (pt.y - this->GetWidget<NWidgetBase>(JSW_PANEL)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
 		bool distant_join = (st_index > 0);
 		if (distant_join) st_index--;
 
@@ -1284,7 +1298,7 @@ struct SelectStationWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / 10);
+		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -1299,7 +1313,7 @@ static const WindowDesc _select_station_desc(
 	WDP_AUTO, WDP_AUTO, 200, 80, 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_select_station_widgets, _nested_select_station_widgets, lengthof(_nested_select_station_widgets)
+	NULL, _nested_select_station_widgets, lengthof(_nested_select_station_widgets)
 );
 
 
