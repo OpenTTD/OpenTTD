@@ -2035,6 +2035,11 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonda un
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Alcune città casuali
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Copre la mappa con città posizionate casualmente
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome città:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Inserire il nome della città
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Fare clic per inserire il nome della città
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome casuale
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genera un nuovo nome casuale
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Dimensione città:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Piccola

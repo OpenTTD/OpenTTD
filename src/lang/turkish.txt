@@ -1345,6 +1345,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2032,6 +2033,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Rastgele
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir yarat
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Birçok rastgele şehir
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Haritayı rastgele şehirlerle doldur
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kasaba adı:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Kasaba adı girin
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kasaba adı girmek için tıklayın
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Rastgele isim
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Yeni rastgele isim oluştur
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Şehir büyüklüğü:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Küçük

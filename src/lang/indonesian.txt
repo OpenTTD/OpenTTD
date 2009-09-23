@@ -2033,6 +2033,11 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Membangu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Buat kota secara acak
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dukung Peta dengan penempatan kota secara otomatis
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nama kota:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Masukkan nama kota
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik untuk mengisi nama kota
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Acak nama
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Buat nama baru secara acak
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Ukuran kota:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Kecil

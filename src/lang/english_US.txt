@@ -560,8 +560,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Loan:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles; this includes road vehicles, trains, ships and aircraft
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (of all vehicles older than 2 years)
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-visited station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected as one station
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the past four quarters.
@@ -1344,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1919,7 +1920,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Build st
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Build road section using the Autoroad mode. Ctrl toggles build/remove for road construction
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Build streetcar track using the Autostreet mode. Ctrl toggles build/remove for streetcar construction
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for buying and servicing vehicles)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build streetcar depot (for building and servicing streetcars)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build streetcar depot (for buying and maintaining vehicles)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl enables joining stations
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Build passenger streetcar station. Ctrl enables joining stations
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build truck loading bay. Ctrl enables joining stations
@@ -2031,6 +2032,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Random T
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Build town in random location
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Many random towns
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cover the map with randomly placed towns
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Town name:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Enter town name
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click to enter town name
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Random name
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generate new random name
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Town size:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Small

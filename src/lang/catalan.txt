@@ -1344,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2026,11 +2027,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs s
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de Poblacions
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Població
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construcció de nova població
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una nova població
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localitat Aleatòria
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construeix una població en un lloc aleatori
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moltes poblacions aleatòries
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Omple el mapa amb poblacions situades aleatòriament
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la població:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introdueix el nom de la població
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clica per introduir el nom de la població
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nom aleatori
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genera un nom aleatori nou
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Mida de població:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Petit

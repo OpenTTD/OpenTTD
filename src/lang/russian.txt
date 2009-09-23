@@ -2197,7 +2197,7 @@ STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Наз�
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введите название города
 STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Щёлкните, чтобы переименовать город
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Случайное название
-STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Сгенерировать случайное название
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Выбрать случайное название
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Размер города:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Малый
