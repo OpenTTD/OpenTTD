@@ -168,5 +168,73 @@ public:
 	 * @note This function is optional.
 	 */
 	string GetURL();
+
+	/**
+	 * Gets the settings that OpenTTD shows in the "AI Parameters" window
+	 * so the user can customize the AI. This is a special function that
+	 * doesn't need to return anything. Instead you can call AddSetting
+	 * and AddLabels here.
+	 *
+	 * @note This function is optional.
+	 */
+	void GetSettings();
+
+	/** Miscellaneous flags for AI settings. */
+	enum AIConfigFlags {
+		AICONFIG_NONE,    //!< Normal setting.
+		AICONFIG_RANDOM,  //!< When randomizing the AI, pick any value between min_value and max_value.
+		AICONFIG_BOOLEAN, //!< This value is a boolean (either 0 (false) or 1 (true) ).
+	};
+
+	/**
+	 * Add a user configurable setting for this AI. You can call this
+	 * as many times as you have settings.
+	 * @param setting_description A table with all information about a
+	 *  single setting. The table should have the following name/value pairs:
+	 *  - name The name of the setting, this is used in openttd.cfg to
+	 *    store the current configuration of AIs. Required.
+	 *  - description A single line describing the setting. Required.
+	 *  - min_value The minimum value of this setting. Required for integer
+	 *    settings and not allowed for boolean settings.
+	 *  - max_value The maximum value of this setting. Required for integer
+	 *    settings and not allowed for boolean settings.
+	 *  - easy_value The default value if the easy difficulty level
+	 *    is selected. Required.
+	 *  - medium_value The default value if the medium difficulty level
+	 *    is selected. Required.
+	 *  - hard_value The default value if the hard difficulty level
+	 *    is selected. Required.
+	 *  - custom_value The default value if the custom difficulty level
+	 *    is selected. Required.
+	 *  - random_deviation If this property has a nonzero value, then the
+	 *    actual value of the setting in game will be
+	 *    user_configured_value + random(-random_deviation, random_deviation).
+	 *    Not allowed if the AICONFIG_RANDOM flag is set, otherwise optional.
+	 *  - step_size The increase/decrease of the value every time the user
+	 *    clicks one of the up/down arrow buttons. Optional, default is 1.
+	 *  - flags Bitmask of some flags, see AIConfigFlags. Required.
+	 *
+	 * @note This is a function provided by OpenTTD, you don't have to
+	 * include it in your AI but should just call it from GetSettings.
+	 */
+	void AddSetting(table setting_description);
+
+	/**
+	 * Add labels for the values of a setting. Instead of a number the
+	 *  user will see the corresponding name.
+	 * @param setting_name The name of the setting.
+	 * @param value_names A table that maps values to names. The first
+	 *   character of every identifier is ignored and the rest should
+	 *   be the an integer of the value you define a name for. The value
+	 *   is a short description of that value.
+	 * To define labels for a setting named "competition_level" you could
+	 * for example call it like this:
+	 * AddLabels("competition_level", {_0 = "no competition", _1 = "some competition",
+	 * _2 = "a lot of competition"});
+	 *
+	 * @note This is a function provided by OpenTTD, you don't have to
+	 * include it in your AI but should just call it from GetSettings.
+	 */
+	void AddLabels(const char *setting_name, table value_names);
 };
 #endif
