@@ -1226,7 +1226,7 @@ struct SelectStationWindow : Window {
 		this->vscroll.SetCapacity(6);
 		this->resize.step_height = 10;
 
-		FindStationsNearby<T>(this->area, true);
+		this->OnInvalidateData(0);
 
 		this->widget[JSW_WIDGET_CAPTION].data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
 		this->FindWindowPlacementAndResize(desc);
@@ -1234,8 +1234,6 @@ struct SelectStationWindow : Window {
 
 	virtual void OnPaint()
 	{
-		this->vscroll.SetCount(_stations_nearby_list.Length() + 1);
-
 		this->DrawWidgets();
 
 		uint y = 17;
@@ -1286,12 +1284,13 @@ struct SelectStationWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity((this->widget[JSW_PANEL].bottom - this->widget[JSW_PANEL].top) / 10);
+		this->vscroll.UpdateCapacity(delta.y / 10);
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
 		FindStationsNearby<T>(this->area, true);
+		this->vscroll.SetCount(_stations_nearby_list.Length() + 1);
 		this->SetDirty();
 	}
 };
