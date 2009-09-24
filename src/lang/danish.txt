@@ -2026,9 +2026,10 @@ STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bygenere
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Ny by
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Opfør en ny by
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfældig by
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Byg en by på en tilfældig placering
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grundlæg et tilfældigt sted
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfældige byer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dæk kortet med tilfældigt placerede byer
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystørrelse:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Lille
@@ -3045,7 +3046,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå til
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmeste depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede eller ved slutningen af ordrelisten
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', kontrolsted ordrer med 'Uden stop', og depotordrer med 'Service'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Indsæt en avanceret ordre
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle transportmidler, der deler denne ruteplan

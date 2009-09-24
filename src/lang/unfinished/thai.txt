@@ -216,7 +216,10 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลู�
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
 # Common window strings
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}เลือกเรียงลำดับ (descending/ascending)
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}ป้อนคำค้นเพื่อกรองรายการ
+STR_LIST_FILTER_TITLE                                           :{BLACK}กรองจากชื่อ:
+
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}เลือกเรียงลำดับ (จากบนลงล่าง/จากล่างขึ้นบน)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}เลือกเกณฑ์การเรียงลำดับ
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}เลือกเกณฑ์การกรอง
 STR_BUTTON_SORT_BY                                              :{BLACK}เรียงตาม
@@ -224,11 +227,13 @@ STR_BUTTON_LOCATION                                             :{BLACK}ที�
 STR_BUTTON_RENAME                                               :{BLACK}เปลี่ยนชื่อ
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}หัวของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
-STR_TOOLTIP_STICKY                                              :{BLACK}มาร์คหน้าต่างนี้เป็น uncloseable โดย 'ปิดทั้งหมดของ Windows' คีย์
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ชื่อของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
+STR_TOOLTIP_STICKY                                              :{BLACK}ทำเครื่องหมายหน้าต่างนี้เพื่อตรึงไว้ป้องกันการปิดจากการกดปุ่ม 'ปิดทุกหน้าต่าง'
 STR_TOOLTIP_RESIZE                                              :{BLACK}คลิกค้างแล้วลากเพื่อเปลี่ยนขนาดของหน้าต่าง
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการขึ้นลง
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำลายสิ่งก่อสร้างและอื่นๆ ในพื้นที่ช่องนั้น
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}เปลี่ยนขนาดหน้าต่าง ใหญ่/เล็ก
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการ ขึ้น/ลง
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการ ซ้าย/ขวา
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำลายสิ่งก่อสร้าง และสิ่งต่างๆ ในพื้นที่ช่องนั้น
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}ค่าปกติ
@@ -244,10 +249,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}คว�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}ขอบเขต: {NUM} x {NUM}{}ความแตกต่างของคสามสูง: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}ประชากร
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}ชื่อ
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}วันที่
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :เรียงตามจำนวนประชากร
+STR_SORT_BY_NAME                                                :เรียงตามชื่อ
 STR_SORT_BY_PRODUCTION                                          :ผลิตภัณฑ์
 STR_SORT_BY_TYPE                                                :ประเภท
 STR_SORT_BY_TRANSPORTED                                         :การขนส่ง
@@ -277,7 +285,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :ความส
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตั้งค่า
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกมไปข้างหน้า
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตัวเลือก
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}แสดงทำเนียบชื่อเมือง
@@ -288,20 +297,20 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}แส�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}แสดงกราฟทั้งหลาย
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}แสดงตารางอันดับบริษัท
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}กองทุนอุตสาหกรรมก่อสร้างใหม่หรือรายการทั้งหมดอุตสาหกรรม
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แสดงรายการรถไฟของบริษัท
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}แสดงรายการอากาศยานของบริษัท
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แสดงรายการรถไฟของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}แสดงรายการอากาศยานของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายภาพให้ใหญ่ขึ้น
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อภาพให้เล็กลง
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}สร้างรางรถไฟ
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}สร้างถนน
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}สร้างท่าเรือ
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}สร้างสนามบิน
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}เปิด landscaping แถบเครื่องมือเพื่อเพิ่ม / ลดแผ่นดินพืชไม้ฯลฯ
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}แสดงหน้าต่างดนตรี
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}เปิดแถบเครื่องมือภูมิประเทศเพื่อปรับความสูงต่ำของพื้นดิน, ปลูกต้นไม้ ฯลฯ
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}แสดงหน้าต่างเสียงและดนตรี
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}แสดงข้อความล่าสุด/รายงานข่าว, แสดงตัวเลือกข้อความ
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน, console, AI debug, screenshots, เกี่ยวกับ OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}บันทึกสถานการณ์,โหลดสถานการณ์,ละทิ้งสถานการณ์บรรณาธิการ,เลิก
@@ -319,9 +328,15 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}สถ�
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกสถานการณ์
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :โหลดสถานการณ์
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :โหลด heightmap
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจากโปรแกรมแก้ไขแผนที่
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
 ############ range ends here
 
 ############ range for file menu starts
@@ -628,7 +643,7 @@ STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE
 # Extra view window
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}การตั้งค่าของเกม
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ตัวเลือกเกม
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}การเลือกสกุลเงิน
 
 ############ start of currency region
@@ -702,28 +717,48 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscre
 STR_CURRENCY_WINDOW                                             :{WHITE}สกุลเงิน
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}อัตราแลกเปลี่ยน: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ลดจํานวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}เพิ่มจำนวนเงินในสกุลเงินหนึ่งปอนด์ (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}เพิ่มจำนวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}กำหนดอัตราแลกเปลี่ยนของสกุลเงินหนึ่งปอนด์ (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}เครื่องแยกแร่: {ORANGE}{2:STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}ตั้งเครื่องสกัดสำหรับสกุลเงินของคุณ
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}สัญลักษณ์แบ่งหลักสกุลเงินของท่าน
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}คำนำหน้า: {ORANGE}{3:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}สัญลักษณ์หน้าสกุลเงินของท่าน
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}คำเสริมท้าย: {ORANGE}{4:STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}สัญลักษณ์ต่อท้ายสกุลเงินของท่าน
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}เปลี่ยนเป็นเงินสกุลยูโร: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}เปลี่ยนเป็นเงินสกุลยูโร: {ORANGE}ไม่เคย
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}ตั้งปีเพื่อเปลี่ยนสกุลเงินเป็นยูโร
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}เปลี่ยนสกุลเงินเป็นยูโรก่อน
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}เปลี่ยนสกุลเงินเป็นยูโรทีหลัง
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}แสดงตัวอย่าง: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เปลี่ยนการกำหนดค่าตัวแปรสกุลเงิน
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}ระดับความยาก
 
 ############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}ง่าย
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}ปานกลาง
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}ยาก
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}กำหนดเอง
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}แสดงแผนผังการจัดอันดับคะแนน
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}บันทึก
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}จำนวนของเมือง: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}จำนวนโรงงานอุตสาหกรรม: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}กู้ยืมขั้นต้นได้สูงสุด: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}อัตราดอกเบี้ยขั้นต้น: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}ค่าใช้จ่ายการเดินรถ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}ความเร็วในการก่อสร้างของผู้ร่วมแข่งขัน: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}พาหนะเสียหาย: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 
@@ -766,14 +801,14 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}เป�
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โปรแกรมแก้ฉาก
 STR_INTRO_MULTIPLAYER                                           :{BLACK}เล่นหลายคน
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตั้งค่าเกม
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตัวเลือกเกม
 STR_INTRO_DIFFICULTY                                            :{BLACK}ความยาก ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์
 STR_INTRO_QUIT                                                  :{BLACK}ออก
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่, Ctrl+Click เพื่อข้ามการตั้งค่าแผนที่
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}เปิดเกมที่บันทึกไว้
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}เริ่มเกมใหม่โดยใช้ heightmap เป็นภูมิประเทศ
 
@@ -792,6 +827,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :ระบบปฏิบัติการ Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -871,6 +907,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :การขน
 # Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ได้เข้าร่วมเกม (Client #{2:NUM})
 
 # Content downloading window
 
@@ -944,6 +981,16 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}ยก�
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}สร้างเมือง
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}เมืองใหม่
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ก่อสร้างเมืองใหม่
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}สุ่มเมือง
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}สร้างเมืองโดยการสุ่มที่ตั้ง
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}สุ่มหลายๆ เมือง
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}สุ่มสร้างเมืองครอบคลุมแผนที่ทั้งหมด
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}ชื่อเมือง:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}ใส่ชื่อเมือง
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}คลิกเพื่อใส่ชื่อเมือง
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}สุ่มชื่อ
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}สุ่มสร้างชื่อใหม่
 
 
 
@@ -1026,6 +1073,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำ�
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ไม่มี -
 
 # Town view window
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}ผู้โดยสารเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
@@ -1076,6 +1124,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำ�
 
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
 
 # Industry view
 
@@ -1107,21 +1156,70 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :ส่งเข
 
 
 # Build vehicle window
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}รถไฟใหม่
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}รถไฟฟ้าใหม่
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}รถไฟฟ้ารางเดี่ยวใหม่
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Maglev (รถไฟพลังแม่เหล็ก) ใหม่
+
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}รถไฟใหม่
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}รถใหม่
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}เรือใหม่
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}เครื่องบินใหม่
 
 
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}รายการรถไฟ - คลิกที่รถไฟเพื่อดูรายละเอียด
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}รายการรถ - คลิกที่รถเพื่อดูรายละเอียด
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}รายการเรือ - คลิกที่เรือเพื่อดูรายละเอียด
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}รายการเครื่องบิน - คลิกที่เครื่องบินเพื่อดูรายละเอียด
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}ซื้อเรือรถ
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}ซื้อรถ
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}ซื้อเรือ
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}ซื้อเครื่องบิน
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}ซื้อรถไฟที่เลือกไว้
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}ซื้อรถที่เลือกไว้
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}ซื้อเรือที่เลือกไว้
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}ซื้อเครื่องบินที่เลือกไว้
 
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}เปลี่ยนชื่อ
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}เปลี่ยนชื่อ
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}เปลี่ยนชื่อ
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}เปลี่ยนชื่อ
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}เปลี่ยนชื่อชนิดของรถไฟ
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}เปลี่ยนชื่อชนิดของรถ
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}เปลี่ยนชื่อชนิดของเรือ
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}เปลี่ยนชื่อชนิดของเครื่องบิน
 
-
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}เปลี่ยนชื่อชนิดของรถไฟ
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}เปลี่ยนชื่อชนิดของรถ
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}เปลี่ยนชื่อชนิดของเรือ
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}เปลี่ยนชื่อชนิดของเครื่องบิน
 
 # Depot window
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} โรงเก็บรถไฟ
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} โรงรถ
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} โรงเก็บเรือ
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} โรงเก็บเครื่องบิน
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}รถไฟ - คลิกที่รถไฟเพื่อดูรายละเอียด, คลิกค้างแล้ววางตู้แต่ละตู้เพื่อ เพิ่ม/ลบ จากขบวน
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}รถ - คลิกที่รถเพื่อดูรายละเอียด
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}เรือ - คลิกที่เรือเพื่อดูรายละเอียด
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}เครื่องบิน - คลิกที่เครื่องบินเพื่อดูรายละเอียด
 
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}คลิกค้างที่ตู้รถไฟแล้วลากมาวางที่นี่เพื่อขาย
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}คลิกค้างที่รถแล้วลากมาวางที่นี่เพื่อขาย
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}คลิกค้างที่เรือแล้วลากมาวางที่นี่เพื่อขาย
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}คลิกค้างที่เครื่องบินแล้วลากมาวางที่นี่เพื่อขาย
 
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}คลิกค้างที่หัวรถจักรแล้วลากมาวางที่นี่เพื่อขายรถไฟทั้งขบวน
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}ขายรถไฟทั้งหมดที่อยู่ในโรงนี้
 
 
 
@@ -1293,6 +1391,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...ม�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...มีพื้นที่บนแผนที่ไม่มากพอ
 
 # Industry related errors
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... ต้องสร้างเมืองก่อน
 
 # Station construction related errors
 
@@ -1335,6 +1434,10 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...ม�
 
 
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}ไม่สามารถซื้อรถไฟได้...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}ไม่สามารถซื้อรถได้...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}ไม่สามารถซื้อเรือได้...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}ไม่สามารถซื้อเครื่องบินได้...
 
 
 
@@ -1351,7 +1454,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม�
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}ไม่สามารถใช้รายการสถานที่ร่วมกันได้
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}ไม่สามารถคัดลอกรายการสถานที่ได้
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...ไกลจากจุดเริ่มต้นมากเกินไป
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...ไกลจากจุดก่อนหน้านี้มากเกินไป
 
 # Timetable related errors
 
