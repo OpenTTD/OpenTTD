@@ -1,3 +1,9 @@
+openttd (0.7.3~RC2) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 24 Sep 2009 21:30:43 +0200
+
 openttd (0.7.3~RC1) unstable; urgency=low
 
   * New upstream release.

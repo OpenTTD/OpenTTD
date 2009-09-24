@@ -1,3 +1,22 @@
+0.7.3-RC2 (2009-09-24)
+------------------------------------------------------------------------
+- Update: Documentation about bug reporting and known bugs (r17554)
+- Fix: When a command did not fail in test run and failed in execution run, error message was not set. Affects only few commands (r17607)
+- Fix: [NewGRF] Crash when defining the same tile in a tile layout twice [FS#3218] (r17605)
+- Fix: Vehicle image was not always updated when needed (r17594)
+- Fix: [NoAI] Could not query the size of small airports when they could not be build anymore [FS#3212] (r17591)
+- Fix: Erroneous message about changing the difficulty level [FS#3220] (r17588)
+- Fix: Assertion triggered when the second vehicle in a 101+ (or 11+ if mammoth trains is disabled) vehicle free wagon chain is an engine and the first vehicle is moved to another chain [FS#3208] (r17576)
+- Fix: [NewGRF] Memory leak when viewing the NewGRF settings of a server (r17563)
+- Fix: [NewGRF] The NewGRF settings of (remote) network games did not get properly updated when the NewGRFs were rescanned causing reading of freed data [FS#2972] (r17562)
+- Fix: [NewGRF] Close the "Add NewGRF" window when you close the "NewGRF Settings" window. The add window has a pointer to the settings which means that not deleting it would cause dereferencing an already freed pointer [FS#3206] (r17559)
+- Fix: Vehicles waiting for their time table did not load anymore after their initial load was completed [FS#3201] (r17551)
+- Fix: Aircraft were given an unfair advantage in station rating calculations (r17550)
+- Fix: [NewGRF] Sign extending of profit calculation did not work (r17546)
+- Fix: [NoAI] AIs had "infinite" time when running code from the global scope [FS#3202] (r17545)
+- Fix: [NoAI] Crash when doing commands in the "global" scope [FS#3202] (r17544)
+
+
 0.7.3-RC1 (2009-09-13)
 ------------------------------------------------------------------------
 - Add: [NoAI] AITown::GetLastMonthTransportedPercentage and AIIndustry::GetLastMonthTransportedPercentage (r17294)
