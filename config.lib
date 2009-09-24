@@ -1077,8 +1077,6 @@ make_compiler_cflags() {
 
 		flags="$flags -Wall -Wno-multichar -Wsign-compare -Wundef"
 		flags="$flags -Wwrite-strings -Wpointer-arith"
-		flags="$flags -Wno-uninitialized"
-
 		flags="$flags -W -Wno-unused-parameter -Wformat=2"
 		flags="$flags -Wredundant-decls"
 
