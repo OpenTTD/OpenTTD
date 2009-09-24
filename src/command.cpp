@@ -606,7 +606,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		assert(res.GetCost() == res2.GetCost() && CmdFailed(res) == CmdFailed(res2)); // sanity check
 	} else {
 		if (CmdFailed(res2)) {
-			res.SetGlobalErrorMessage();
+			res2.SetGlobalErrorMessage();
 			goto show_error;
 		}
 	}

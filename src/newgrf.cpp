@@ -2173,6 +2173,25 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 	return ret;
 }
 
+/**
+ * Validate the industry layout; e.g. to prevent duplicate tiles.
+ * @param layout the layout to check
+ * @param size the size of the layout
+ * @return true if the layout is deemed valid
+ */
+static bool ValidateIndustryLayout(const IndustryTileTable *layout, int size)
+{
+	for (int i = 0; i < size - 1; i++) {
+		for (int j = i + 1; j < size; j++) {
+			if (layout[i].ti.x == layout[j].ti.x &&
+					layout[i].ti.y == layout[j].ti.y) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -2304,8 +2323,16 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 							itt[k].ti.y = (int8)GB(itt[k].ti.y, 0, 8);
 						}
 					}
-					tile_table[j] = CallocT<IndustryTileTable>(size);
-					memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
+
+					if (!ValidateIndustryLayout(copy_from, size)) {
+						/* The industry layout was not valid, so skip this one. */
+						grfmsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id %u. Ignoring", indid);
+						indsp->num_table--;
+						j--;
+					} else {
+						tile_table[j] = CallocT<IndustryTileTable>(size);
+						memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
+					}
 				}
 				/* Install final layout construction in the industry spec */
 				indsp->table = tile_table;
