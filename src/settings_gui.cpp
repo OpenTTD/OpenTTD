@@ -523,47 +523,6 @@ enum GameDifficultyWidgets {
 	GDW_CANCEL,
 };
 
-static const NWidgetPart _nested_game_difficulty_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_MAUVE, GDW_CAPTION), SetMinimalSize(370, 14), SetDataTip(STR_DIFFICULTY_LEVEL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_UPPER_BG),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_EASY), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_EASY, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_MEDIUM), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_MEDIUM, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_HARD), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_HARD, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_CUSTOM), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_CUSTOM, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(12, 0),
-		EndContainer(),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
-			NWidget(WWT_TEXTBTN, COLOUR_GREEN, GDW_HIGHSCORE), SetMinimalSize(348, 12), SetDataTip(STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(12, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_SETTING_BG), SetMinimalSize(370, 221),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_LOWER_BG),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(105, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_ACCEPT), SetMinimalSize(81, 12), SetDataTip(STR_DIFFICULTY_LEVEL_SAVE, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_CANCEL), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(103, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-	EndContainer(),
-};
-
-/* Window definition for the game difficulty settings window */
-static const WindowDesc _game_difficulty_desc(
-	WDP_CENTER, WDP_CENTER, 370, 279, 370, 279,
-	WC_GAME_OPTIONS, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_game_difficulty_widgets, lengthof(_nested_game_difficulty_widgets)
-);
-
 void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 
 struct GameDifficultyWindow : public Window {
@@ -583,9 +542,9 @@ private:
 	};
 
 public:
-	GameDifficultyWindow() : Window()
+	GameDifficultyWindow(const WindowDesc *desc) : Window()
 	{
-		this->InitNested(&_game_difficulty_desc);
+		this->InitNested(desc);
 
 		/* Copy current settings (ingame or in intro) to temporary holding place
 		 * change that when setting stuff, copy back on clicking 'OK' */
@@ -740,10 +699,52 @@ public:
 	}
 };
 
+/** Widget definition for the game difficulty settings window */
+static const NWidgetPart _nested_game_difficulty_widgets[] = {
+	NWidget(WWT_CAPTION, COLOUR_MAUVE, GDW_CAPTION), SetMinimalSize(370, 14), SetDataTip(STR_DIFFICULTY_LEVEL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_UPPER_BG),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_EASY), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_EASY, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_MEDIUM), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_MEDIUM, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_HARD), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_HARD, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_LVL_CUSTOM), SetMinimalSize(87, 12), SetDataTip(STR_DIFFICULTY_LEVEL_CUSTOM, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(12, 0),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+			NWidget(WWT_TEXTBTN, COLOUR_GREEN, GDW_HIGHSCORE), SetMinimalSize(348, 12), SetDataTip(STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(12, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_SETTING_BG), SetMinimalSize(370, 221),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_LOWER_BG),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(105, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_ACCEPT), SetMinimalSize(81, 12), SetDataTip(STR_DIFFICULTY_LEVEL_SAVE, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, GDW_CANCEL), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(103, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+	EndContainer(),
+};
+
+/** Window definition for the game difficulty settings window */
+static const WindowDesc _game_difficulty_desc(
+	WDP_CENTER, WDP_CENTER, 370, 279, 370, 279,
+	WC_GAME_OPTIONS, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	NULL, _nested_game_difficulty_widgets, lengthof(_nested_game_difficulty_widgets)
+);
+
 void ShowGameDifficulty()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	new GameDifficultyWindow();
+	new GameDifficultyWindow(&_game_difficulty_desc);
 }
 
 static const int SETTING_HEIGHT = 11; ///< Height of a single setting in the tree view in pixels
