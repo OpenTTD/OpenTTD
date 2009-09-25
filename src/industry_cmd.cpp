@@ -1672,6 +1672,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  */
 static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed, Owner founder)
 {
+	assert(itspec_index < indspec->num_table);
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
 
@@ -1724,7 +1725,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	const IndustrySpec *indspec = GetIndustrySpec(it);
 
 	/* Check if the to-be built/founded industry is available for this climate. */
-	if (!indspec->enabled) return CMD_ERROR;
+	if (!indspec->enabled || indspec->num_table == 0) return CMD_ERROR;
 
 	/* If the setting for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
@@ -1862,7 +1863,7 @@ void GenerateIndustries()
 			}
 
 			chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
-			if (ind_spc->enabled && chance > 0) {
+			if (ind_spc->enabled && chance > 0 && ind_spc->num_table > 0) {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
@@ -1885,7 +1886,7 @@ void GenerateIndustries()
 			 * @todo :  Do we really have to pass chance as un-scaled value, since we've already
 			 *          processed that scaling above? No, don't think so.  Will find a way. */
 			ind_spc = GetIndustrySpec(it);
-			if (ind_spc->enabled) {
+			if (ind_spc->enabled && ind_spc->num_table > 0) {
 				chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
 				if (chance > 0) PlaceInitialIndustry(it, chance);
 			}
