@@ -1344,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2026,11 +2027,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Luo kaupunkeja
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uusi kaupunki
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Rakenna uusi kaupunki
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Perusta uusi kaupunki
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnainen kaupunki
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rakenna kaupunki satunnaiseen paikkaan
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kaupunki satunnaiseen paikkaan
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kaupunkia
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Peitä kartta satunnaisesti sijoitetuilla kaupungeilla.
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kaupungin nimi:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Syötä kaupungin nimi
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikkaa syöttääksesi kaupungin nimen
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Satunnainen nimi
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generoi uusi satunnainen nimi
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Kaupungin koko:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pieni

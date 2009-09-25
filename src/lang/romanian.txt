@@ -301,9 +301,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afişeaz
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Afişează clasamentul companiilor
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listează sau fondează obiectivele industriale
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afisează o listă cu trenurile companiei. Ctrl+Click alternează deschiderea lista grupurilor
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afişează lista cu autovehiculele companiei
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afişează lista cu navele companiei
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afişează lista cu aeronavele companiei
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afişează lista cu autovehiculele companiei. Ctrl-Click comută deschiderea listei cu grupuri/vehicule
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afişează lista cu navele companiei. Ctrl-Click comută deschiderea listei cu grupuri/vehicule
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afişează lista cu aeronavele companiei. Ctrl-Click comută deschiderea listei cu grupuri/ vehicule
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Măreşte imaginea
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Micşorează imaginea
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construieşte căi ferate
@@ -1312,7 +1312,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse 
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Setări Inteligenţă Artificială
 STR_INTRO_QUIT                                                  :{BLACK}Ieşire
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou. Ctrl+Click pentru a sări peste fereastra de configuraţie a harţii
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Încarcă un joc salvat
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Începe un joc nou folosind o hartă topografică pentru generarea terenului
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Începerea unui joc nou folosind un scenariu deja existent
@@ -1344,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1841,12 +1842,12 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construc
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construcţie monoşină
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construcţie pernă magnetică
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construieşte cale ferată
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construieşte cale ferată în modul automat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construieşte cale ferată. Ctrl comută construirea/eliminarea căii ferate
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construieşte cale ferată în modul automat. Ctrl comută construirea/eliminarea căii ferate
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construieşte un depou feroviar (pentru achiziţie şi service de trenuri)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în haltă de mişcare (waypoint)
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construieşte gară
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semafoare feroviare
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în punct de tranzit. Ctrl permite alipirea punctelor de tranzit distante
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construieşte gară. Ctrl permite alipirea staţiilor distante
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semafoare feroviare. Ctrl comută între semafoare-semnale{}Trage cu mouse-ul pentru a construi semnale automat pe o porţiune de şină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncţiune{}Ctrl-Click comută deschiderea ferestrei de selectie a tipului semnalului
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construieşte pod de cale ferată
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl-Click înlătură şinele din punctele de tranzit si staţii
@@ -1914,16 +1915,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular (silico
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcţii rutiere
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcţie Tramvai
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construieşte secţiune de şosea
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construcieşte şină de tramvai
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construieste sectiune de sosea folosind modul Auto-sosea
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construieste sectiune de sina de tramvai folosind modul Auto-tramvai
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construieşte secţiune de şosea. Ctrl comută construirea/eliminarea şoselei
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construcieşte şină de tramvai. Ctrl comută construirea/eliminarea şinei
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construieste sectiune de sosea folosind modul Auto-sosea. Ctrl comută construirea/eliminarea şoselei
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construieste sectiune de sina de tramvai folosind modul Auto-tramvai. Ctrl comută construirea/eliminarea şinei
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construieşte o autobază (pentru achiziţie şi service vehicule)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construieste depou tramvaie (pentru achiziţii si service vehicule)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Plasează staţie de autobuz
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construieste statie de tramvai pentru calatori
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construieşte platformă pentru camioane
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construieste statie de transport marfar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construieşte staţie de autobuz. Ctrl permite alipirea staţiilor distante
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construieste statie de tramvai pentru calatori. Ctrl permite alipirea staţiilor distante
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construieşte platformă pentru camioane. Ctrl permite alipirea staţiilor distante
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construieste statie de transport marfar. Ctrl permite alipirea staţiilor distante
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activare/Dezactivare sensuri unice
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construieşte pod rutier
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construieşte pod pentru tramvaie
@@ -1954,7 +1955,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Rute acv
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construieşte canale
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construieşte ecluză
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru achiziţionare si service nave)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construieşte port
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construieşte port. Ctrl permite alipirea staţiilor distante
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Amplasează o baliză ce poate fi utilizată pentru direcţionare
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieste apeduct
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineşte zona apei.{}Creează un canal, mai puţin când Ctrl este apăsat la nivelul mării, când va inunda, in loc, imprejurimile
@@ -1969,7 +1970,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Port
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroporturi
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construieşte aeroport
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construieşte aeroport. Ctrl pemite alipirea staţiilor distante
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Alege tipul de aeroport
@@ -2031,6 +2032,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Oraş al
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construieşte un oraş într-o locaţie aleatoare
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mai multe orase aleatoare
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Umple harta cu orase generate aleator
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nume oraş:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introdu numele oraşului
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click pentru a introduce numele oraşului
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nume aleator
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generează un nume aleator
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Mărime oraş:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Mic
@@ -2361,7 +2368,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introdu 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Oraşe
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nimic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Numele oraşelor - clic pe un nume pentru a centra imaginea pe oraşul respectiv
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Numele oraşelor - clic pe un nume pentru a centra imaginea pe oraşul respectiv. Ctrl+Click deshide o fereastra cu locaţia oraşului
 STR_TOWN_POPULATION                                             :{BLACK}Populatia totala: {COMMA}
 
 # Town view window
@@ -2374,7 +2381,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Transpor
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} necesare
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} livrat luna trecută
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Mută imaginea pe locaţia oraşului
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează imaginea pe locaţia oraşului. Ctrl+Click deshide o fereastra cu locaţia oraşului
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorit. locală
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Afişează informaţii referitoare la autoritatea locală
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Schimbă numele oraşului
@@ -2420,10 +2427,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE} - nici una -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subvenţii acordate la ora actuală:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STRING} la {STRING}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe informatie pentru a centra imaginea pe industrie/oras
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe informatie pentru a centra imaginea pe industrie/oras. Ctrl+Click deshide o fereastra cu locaţia industriei/oraşului
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Numele staţiilor - clic pe un nume pentru a centra imaginea pe staţia respectivă
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Numele staţiilor - clic pe un nume pentru a centra imaginea pe staţia respectivă. Ctrl+Click deshide o fereastra cu locaţia staţiei
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ţine apăsat Ctrl pentru a alege mai mult decât un obiect
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Staţi{P e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2459,7 +2466,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelent
 STR_CARGO_RATING_OUTSTANDING                                    :Fantastic
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrează imaginea pe locaţia staţiei
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrează imaginea pe locaţia staţiei. Ctrl+Click deshide o fereastra cu locaţia staţiei
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Schimbă numele staţiei
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afiseaza toate trenurile care opresc in aceasta statie
@@ -2470,9 +2477,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afiseaza
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Redenumeşte staţia
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click deshide o fereastra cu locaţia punctului de tranzit
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimba numele haltei
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează fereastra principală pe locaţia balizei
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează fereastra principală pe locaţia balizei. Ctrl+Click deshide o fereastra cu locaţia balizei
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Schimbă numele balizei
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editează numele haltei
@@ -2552,13 +2559,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nimic
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Numele industriilor - clic pe nume pentru focalizarea pe industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Numele industriilor - clic pe nume pentru focalizarea pe industrie. Ctrl+Click deshide o fereastra cu locaţia industriei
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producţia lunii trecute:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportat)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrează imaginea pe locaţia industriei
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrează imaginea pe locaţia industriei. Ctrl+Click deshide o fereastra cu locaţia industriei
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Are nevoie de: {YELLOW}{STRING}{STRING}
@@ -2743,10 +2750,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest bu
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi dă click pe o navă din interiorul sau exteriorul depoului. Ctrl+click va sincroniza comenzile
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi dă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+Clic va sincroniza comenzile
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează imaginea pe locaţia depoului
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia acestei autobaze
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrează imaginea pe locaţia şantierului
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrează imaginea pe locaţia hangarului
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează imaginea pe locaţia depoului. Ctrl+Click deshide o fereastra cu locaţia depoului
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia acestei autobaze. Ctrl+Click deshide o fereastra cu locaţia autobazei
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrează imaginea pe locaţia şantierului. Ctrl+Click deshide o fereastra cu locaţia şantierului
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrează imaginea pe locaţia hangarului. Ctrl+Click deshide o fereastra cu locaţia hangarului
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obtine o lista ordonata a tuturor trenurilor din depoul actual
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obtine o lista ordonata a tuturor autovehiculelor din depoul actual
@@ -2814,10 +2821,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã opti
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia curentă a trenului
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrează imaginea pe locaţia curentă a autovehiculului
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrează imaginea pe locaţia curentă a navei
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrează imaginea pe locaţia curentă a aeronavei
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia curentă a trenului. Ctrl-click va urmări trenul
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrează imaginea pe locaţia curentă a autovehiculului. Ctrl-click va urmări autovehiculul
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrează imaginea pe locaţia curentă a navei. Ctrl-click va urmări nava
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrează imaginea pe locaţia curentă a aeronavei. Ctrl-click va urmări aeronava
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trimite trenul într-un depou
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Trimite autovehiculul la autobază. Ctrl+clic pentru service
@@ -2839,10 +2846,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Schimbă
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Schimbă sensul de circulaţie al trenului
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forţează vehiculul să întoarcă
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afişează comenzile trenului
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afişează comenzile autovehiculului
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afişează comenzile navei
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afişează comenzile aeronavei
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afişează comenzile trenului. Ctrl-Click pentru a afişa orarul
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afişează comenzile autovehiculului. Ctrl-Click pentru a afişa orarul
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afişează comenzile navei. Ctrl-Click pentru a afişa orarul
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afişează comenzile aeronavei. Ctrl-Click pentru a afişa orarul
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Afişează detaliile trenului
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afişează detaliile autovehiculului
@@ -2921,8 +2928,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalul pentru întreţinere: {LTBLUE}{COMMA}zile{BLACK}   Ultima întreţinere: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalul de service: {LTBLUE}{COMMA}%{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Măreşte intervalul de service
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Micşorează intervalul de service
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Măreşte intervalul de service cu 10. Ctrl-click măreşte intervalul de service cu 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Micşorează intervalul de service cu 10. Ctrl-Click micşorează intervalul de service cu 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Numele trenului
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Numele autovehiculului
@@ -3104,7 +3111,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Comenzi
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Schimba la panoul de comenzi
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - click on an order to highlight it.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - click pe un ordin pentru a-l selecta
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}NU este calatorie
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Calatorie (fara orar)

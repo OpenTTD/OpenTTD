@@ -1344,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2031,6 +2032,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}随机�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}随机新增一个城镇
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}大量随机城镇
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}在地图上随机创建大量城镇
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}城镇名称：
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}输入城镇名称
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}点击这里输入城镇名称
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}随机名称
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}重新随机生成城镇名称
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}城镇规模：
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}小
