@@ -1943,7 +1943,7 @@ static void MaybeNewIndustry()
 		ind_spc = GetIndustrySpec(j);
 		byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
 
-		if (!ind_spc->enabled || chance == 0) continue;
+		if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0) continue;
 
 		/* If there is no Callback CBID_INDUSTRY_AVAILABLE or if this one did anot failed,
 		 * and if appearing chance for this landscape is above 0, this industry can be chosen */
