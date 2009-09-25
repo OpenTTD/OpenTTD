@@ -267,28 +267,36 @@ static void SendChat(const char *buf, DestType type, int dest)
 enum NetWorkChatWidgets {
 	NWCW_CLOSE,
 	NWCW_BACKGROUND,
+	NWCW_DESTINATION,
 	NWCW_TEXTBOX,
 	NWCW_SENDBUTTON,
 };
 
 struct NetworkChatWindow : public QueryStringBaseWindow {
 	DestType dtype;
+	StringID dest_string;
 	int dest;
 
-	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH, desc)
+	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH)
 	{
-		this->LowerWidget(NWCW_TEXTBOX);
 		this->dtype   = type;
 		this->dest    = dest;
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
+
+		static const StringID chat_captions[] = {
+			STR_NETWORK_CHAT_ALL_CAPTION,
+			STR_NETWORK_CHAT_COMPANY_CAPTION,
+			STR_NETWORK_CHAT_CLIENT_CAPTION
+		};
+		assert((uint)this->dtype < lengthof(chat_captions));
+		this->dest_string = chat_captions[this->dtype];
+
+		this->InitNested(desc);
+
 		this->SetFocusedWidget(NWCW_TEXTBOX);
-
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
-
 		_chat_tab_completion_active = false;
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~NetworkChatWindow ()
@@ -437,17 +445,21 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 	virtual void OnPaint()
 	{
-		static const StringID chat_captions[] = {
-			STR_NETWORK_CHAT_ALL_CAPTION,
-			STR_NETWORK_CHAT_COMPANY_CAPTION,
-			STR_NETWORK_CHAT_CLIENT_CAPTION
-		};
-
 		this->DrawWidgets();
-
-		assert((uint)this->dtype < lengthof(chat_captions));
-		DrawString(this->widget[NWCW_BACKGROUND].left, this->widget[NWCW_TEXTBOX].left - 2, this->widget[NWCW_TEXTBOX].top + 1, chat_captions[this->dtype], TC_BLACK, SA_RIGHT);
 		this->DrawEditBox(NWCW_TEXTBOX);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != NWCW_DESTINATION) return;
+		*size = maxdim(*size, GetStringBoundingBox(this->dest_string));
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != NWCW_DESTINATION) return;
+
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->dest_string, TC_BLACK, SA_RIGHT);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -491,16 +503,8 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 	virtual void OnOpenOSKWindow(int wid)
 	{
-		ShowOnScreenKeyboard(this, wid, 0, 3);
+		ShowOnScreenKeyboard(this, wid, NWCW_CLOSE, NWCW_SENDBUTTON);
 	}
-};
-
-static const Widget _chat_window_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,   COLOUR_GREY,   0,  10,  0, 13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},
-{      WWT_PANEL, RESIZE_RIGHT,  COLOUR_GREY,  11, 319,  0, 13, 0x0,                       STR_NULL}, // background
-{    WWT_EDITBOX, RESIZE_RIGHT,  COLOUR_GREY,  75, 257,  1, 12, STR_NETWORK_CHAT_OSKTITLE, STR_NULL}, // text box
-{ WWT_PUSHTXTBTN, RESIZE_LR,     COLOUR_GREY, 258, 319,  1, 12, STR_NETWORK_CHAT_SEND,          STR_NULL}, // send button
-{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_chat_window_widgets[] = {
@@ -508,8 +512,9 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, NWCW_CLOSE),
 		NWidget(WWT_PANEL, COLOUR_GREY, NWCW_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, NWCW_TEXTBOX), SetMinimalSize(183, 12), SetPadding(1, 0, 1, 64), SetResize(1, 0),
-															SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, NWCW_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, NWCW_TEXTBOX), SetMinimalSize(100, 12), SetPadding(1, 0, 1, 0), SetResize(1, 0),
+																	SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NWCW_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),
 			EndContainer(),
 		EndContainer(),
@@ -520,7 +525,7 @@ static const WindowDesc _chat_window_desc(
 	WDP_CENTER, -26, 320, 14, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
-	_chat_window_widgets, _nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
+	NULL, _nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
 );
 
 void ShowNetworkChatQueryWindow(DestType type, int dest)
