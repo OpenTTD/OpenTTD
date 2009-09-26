@@ -261,12 +261,14 @@ struct DepotWindow : Window {
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
 	}
 
-	/** Draw a vehicle in the depot window in the box with the top left corner at x,y
-	 * @param v Vehicle to draw
-	 * @param x Left side of the box to draw in
-	 * @param y Top of the box to draw in
+	/** Draw a vehicle in the depot window in the box with the top left corner at x,y.
+	 * @param v     Vehicle to draw.
+	 * @param x     Left side of the box to draw in.
+	 * @param y     Top of the box to draw in.
+	 * @param left  Left edge of the widget.
+	 * @param right Right edge of the widget.
 	 */
-	void DrawVehicleInDepot(const Vehicle *v, int x, int y)
+	void DrawVehicleInDepot(const Vehicle *v, int x, int y, int left, int right) const
 	{
 		bool free_wagon = false;
 		int sprite_y = y + this->resize.step_height - GetVehicleListHeight(v->type);
@@ -281,7 +283,7 @@ struct DepotWindow : Window {
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
 				SetDParam(0, (u->tcache.cached_total_length + 7) / 8);
-				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT); // Draw the counter
+				DrawString(left, right - 1, y + 4, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 			}
 
@@ -297,7 +299,7 @@ struct DepotWindow : Window {
 		}
 
 		if (free_wagon) {
-			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, STR_DEPOT_NO_ENGINE);
+			DrawString(x, right - 1, y + 2, STR_DEPOT_NO_ENGINE);
 		} else {
 			byte diff_x = 0, diff_y = 0;
 
@@ -312,7 +314,7 @@ struct DepotWindow : Window {
 			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
 
 			SetDParam(0, v->unitnumber);
-			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
+			DrawString(x, right - 1, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
 		}
 	}
 
@@ -373,7 +375,7 @@ struct DepotWindow : Window {
 			for (i = 0; i < boxes_in_each_row && num < maxval; i++, num++, x += this->resize.step_width) {
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
-				this->DrawVehicleInDepot(v, x, y);
+				this->DrawVehicleInDepot(v, x, y, this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right);
 			}
 		}
 
@@ -382,7 +384,7 @@ struct DepotWindow : Window {
 		/* draw the train wagons, that do not have an engine in front */
 		for (; num < maxval; num++, y += 14) {
 			const Vehicle *v = this->wagon_list[num - this->vehicle_list.Length()];
-			this->DrawVehicleInDepot(v, x, y);
+			this->DrawVehicleInDepot(v, x, y, this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right);
 		}
 	}
 
