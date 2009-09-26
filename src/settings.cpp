@@ -1422,7 +1422,11 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return CMD_ERROR;
 	if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return CMD_ERROR;
-	if ((sd->desc.flags & SGF_NEWGAME_ONLY) && _game_mode != GM_MENU) return CMD_ERROR;
+	if ((sd->desc.flags & SGF_NEWGAME_ONLY) &&
+			(_game_mode == GM_NORMAL ||
+			(_game_mode == GM_EDITOR && (sd->desc.flags & SGF_SCENEDIT_TOO) == 0))) {
+		return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
 		GameSettings *s = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;

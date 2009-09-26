@@ -547,7 +547,7 @@ public:
 		this->opt_mod_temp = (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
 		/* Setup disabled buttons when creating window
 		 * disable all other difficulty buttons during gameplay except for 'custom' */
-		this->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
+		this->SetWidgetsDisabledState(_game_mode != GM_MENU,
 			GDW_LVL_EASY,
 			GDW_LVL_MEDIUM,
 			GDW_LVL_HARD,
@@ -609,10 +609,6 @@ public:
 			uint i;
 			const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i) + (widget / 3);
 			const SettingDescBase *sdb = &sd->desc;
-
-			/* Clicked disabled button? */
-			bool editable = (_game_mode == GM_MENU || (sdb->flags & SGF_NEWGAME_ONLY) == 0);
-			if (!editable) return;
 
 			int32 val = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
 			if (widget % 3 == 1) {
@@ -690,10 +686,12 @@ public:
 			/* skip deprecated difficulty options */
 			if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 			int32 value = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
-			bool editable = (_game_mode == GM_MENU || (sdb->flags & SGF_NEWGAME_ONLY) == 0);
+			bool disable = (sd->desc.flags & SGF_NEWGAME_ONLY) &&
+					(_game_mode == GM_NORMAL ||
+					(_game_mode == GM_EDITOR && (sd->desc.flags & SGF_SCENEDIT_TOO) == 0));
 
-			this->SetWidgetDisabledState(GDW_OPTIONS_START + i * 3 + 0, !editable || sdb->min == value);
-			this->SetWidgetDisabledState(GDW_OPTIONS_START + i * 3 + 1, !editable || sdb->max == (uint32)value);
+			this->SetWidgetDisabledState(GDW_OPTIONS_START + i * 3 + 0, disable || sdb->min == value);
+			this->SetWidgetDisabledState(GDW_OPTIONS_START + i * 3 + 1, disable || sdb->max == (uint32)value);
 		}
 	}
 };

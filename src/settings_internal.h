@@ -44,11 +44,12 @@ enum SettingGuiFlagLong {
 	SGF_NETWORK_ONLY = 1 << 3, ///< this setting only applies to network games
 	SGF_CURRENCY     = 1 << 4, ///< the number represents money, so when reading value multiply by exchange rate
 	SGF_NO_NETWORK   = 1 << 5, ///< this setting does not apply to network games; it may not be changed during the game
-	SGF_NEWGAME_ONLY = 1 << 6, ///< this setting cannot be changed in inside a game
-	SGF_PER_COMPANY  = 1 << 7, ///< this setting can be different for each company (saved in company struct)
+	SGF_NEWGAME_ONLY = 1 << 6, ///< this setting cannot be changed in a game
+	SGF_SCENEDIT_TOO = 1 << 7, ///< this setting can be changed in the scenario editor (only makes sense when SGF_NEWGAME_ONLY is set)
+	SGF_PER_COMPANY  = 1 << 8, ///< this setting can be different for each company (saved in company struct)
 };
 DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong);
-typedef SimpleTinyEnumT<SettingGuiFlagLong, byte> SettingGuiFlag;
+typedef SimpleTinyEnumT<SettingGuiFlagLong, uint16> SettingGuiFlag;
 
 
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification

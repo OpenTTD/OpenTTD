@@ -213,6 +213,7 @@ static bool UpdateClientConfigValues(int32 p1);
 #define CR SGF_CURRENCY
 #define NN SGF_NO_NETWORK
 #define NG SGF_NEWGAME_ONLY
+#define NS (SGF_NEWGAME_ONLY | SGF_SCENEDIT_TOO)
 #define PC SGF_PER_COMPANY
 
 static const SettingDesc _music_settings[] = {
@@ -335,14 +336,14 @@ const SettingDesc _settings[] = {
 	SDT_CONDNULL(                                                            1, 97, 109),
 	 SDT_CONDVAR(GameSettings, difficulty.number_towns,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      4,  1, STR_NUM_VERY_LOW,                          DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     4,     0,      4,  1, STR_NONE,                                  DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.max_loan,                 SLE_UINT32, 97, SL_MAX_VERSION, 0,NG|CR,300000,100000,500000,50000,STR_NULL,                               DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.initial_interest,          SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     2,      4,  1, STR_NULL,                                  DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.max_loan,                 SLE_UINT32, 97, SL_MAX_VERSION, 0,NS|CR,300000,100000,500000,50000,STR_NULL,                               DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.initial_interest,          SLE_UINT8, 97, SL_MAX_VERSION, 0,NS,     2,     2,      4,  1, STR_NULL,                                  DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.vehicle_costs,             SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_SEA_LEVEL_LOW,                         DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.competitor_speed,          SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      4,  1, STR_AI_SPEED_VERY_SLOW,                    DifficultyChange),
 	SDT_CONDNULL(                                                            1, 97, 109),
 	 SDT_CONDVAR(GameSettings, difficulty.vehicle_breakdowns,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     1,     0,      2,  1, STR_DISASTER_NONE,                         DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.subsidy_multiplier,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      3,  1, STR_SUBSIDY_X1_5,                          DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.construction_cost,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      2,  1, STR_SEA_LEVEL_LOW,                         DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.construction_cost,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NS,     0,     0,      2,  1, STR_SEA_LEVEL_LOW,                         DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.terrain_type,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     1,     0,      3,  1, STR_TERRAIN_TYPE_VERY_FLAT,                DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.quantity_sea_lakes,        SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      3,  1, STR_SEA_LEVEL_VERY_LOW,                    DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.economy,                   SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_ECONOMY_STEADY,                        DifficultyChange),
