@@ -213,7 +213,7 @@ static bool UpdateClientConfigValues(int32 p1);
 #define CR SGF_CURRENCY
 #define NN SGF_NO_NETWORK
 #define NG SGF_NEWGAME_ONLY
-#define NS (SGF_NEWGAME_ONLY | SGF_SCENEDIT_TOO)
+#define NS SGF_NEWGAME_ONLY | SGF_SCENEDIT_TOO
 #define PC SGF_PER_COMPANY
 
 static const SettingDesc _music_settings[] = {
