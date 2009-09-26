@@ -249,11 +249,24 @@ struct DepotWindow : Window {
 	{
 		this->sel = INVALID_VEHICLE;
 		this->generate_list = true;
+		this->type = type;
 
 		this->owner = GetTileOwner(tile);
 		this->CreateDepotListWindow(type);
 
 		this->FindWindowPlacementAndResize(desc);
+
+		/* Setup disabled buttons. */
+		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
+			DEPOT_WIDGET_STOP_ALL,
+			DEPOT_WIDGET_START_ALL,
+			DEPOT_WIDGET_SELL,
+			DEPOT_WIDGET_SELL_CHAIN,
+			DEPOT_WIDGET_SELL_ALL,
+			DEPOT_WIDGET_BUILD,
+			DEPOT_WIDGET_CLONE,
+			DEPOT_WIDGET_AUTOREPLACE,
+			WIDGET_LIST_END);
 	}
 
 	~DepotWindow()
@@ -324,19 +337,6 @@ struct DepotWindow : Window {
 		uint16 rows_in_display   = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_ROW_START, MAT_ROW_BITS);
 		uint16 boxes_in_each_row = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_COL_START, MAT_COL_BITS);
 
-		/* setup disabled buttons */
-		TileIndex tile = this->window_number;
-		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
-			DEPOT_WIDGET_STOP_ALL,
-			DEPOT_WIDGET_START_ALL,
-			DEPOT_WIDGET_SELL,
-			DEPOT_WIDGET_SELL_CHAIN,
-			DEPOT_WIDGET_SELL_ALL,
-			DEPOT_WIDGET_BUILD,
-			DEPOT_WIDGET_CLONE,
-			DEPOT_WIDGET_AUTOREPLACE,
-			WIDGET_LIST_END);
-
 		/* determine amount of items for scroller */
 		if (this->type == VEH_TRAIN) {
 			uint max_width = VEHICLEINFO_FULL_VEHICLE_WIDTH;
@@ -355,6 +355,7 @@ struct DepotWindow : Window {
 		}
 
 		/* locate the depot struct */
+		TileIndex tile = this->window_number;
 		if (this->type == VEH_AIRCRAFT) {
 			SetDParam(0, GetStationIndex(tile)); // Airport name
 		} else {
@@ -647,7 +648,6 @@ struct DepotWindow : Window {
 
 	void CreateDepotListWindow(VehicleType type)
 	{
-		this->type = type;
 		_backup_orders_tile = 0;
 
 		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
@@ -883,7 +883,8 @@ struct DepotWindow : Window {
 					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
 						sel != INVALID_VEHICLE) {
 						if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
-							DoCommandP(Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE));
+							DoCommandP(Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true,
+													CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != NULL && Train::From(gdvp.head)->IsFrontEngine()) {
