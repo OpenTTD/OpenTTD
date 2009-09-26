@@ -934,26 +934,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fehler b
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen Währung
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wiesselkuer: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wiesselkuer: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz den Betrag Suen den fir 1 Pond (£) gebraucht get erof
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz den Betrag Suen den fir 1 Pond (£) gebraucht get erop
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setzt den Wiesselcours fir äer Währung fir 1 Pond (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Komma-Stil: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Komma-Stil: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Setz den Separateur fir äer Währung
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Setz den Prefix fir äer Währung
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Setz den Suffix fir äer Währung
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Zum Euro wiesselen: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Zum Euro wiesselen: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Zum Euro wiesselen: {ORANGE}nie
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Wielt d'Joer wou op den Euro gewiesselt gëtt
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Wiessel éischter op den Euro
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Wiessel méi spéit op den Euro
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prouf: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prouf: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pond (£) an äerer Währung
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Änner Währungsparameter
 

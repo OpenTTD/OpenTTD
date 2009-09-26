@@ -944,26 +944,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Vollbild
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Eigene Währung gegenüber dem Pfund (£) verteuern
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Eigene Währung gegenüber dem Pfund (£) verbilligen
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Umrechnungskurs der eigenen Währung gegenüber dem Pfund (£) festlegen
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Das Tausender-Trennzeichen für die eigene Währung festlegen
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Das Zeichen für die eigene Währung festlegen (Prefix)
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Das Zeichen für die Eigene Währung setzen (Suffix)
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Umstellung auf Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Umstellung auf Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Umstellung auf Euro: {ORANGE}nie
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Einführungsjahr des Euros festlegen
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Früher den Euro einführen
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Später den Euro einführen
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorschau: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorschau: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pfund (£) in der eigenen Währung
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Parameter für eigene Währung ändern
 

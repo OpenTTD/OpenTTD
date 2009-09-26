@@ -1007,26 +1007,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Selhalo 
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Snížit hodnotu vlastní měny oproti libře (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zvýšit hodnotu vlastní měny oproti libře (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Určit směnný kurz vlastní měny oproti libře (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Určit oddělovač v zápisu měny
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Určit předponu pro vlastní měnu
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Určit příponu pro vlastní měnu
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Přechod k euru: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Přechod k euru: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Přechod k euru: {ORANGE}nikdy
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Určit rok přechodu na euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Přejít na euro dříve
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Přejít na euro později
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 liber (£) ve vlastní měně
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit parametry vlastní měny
 

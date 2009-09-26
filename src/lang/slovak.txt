@@ -1002,26 +1002,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Zobrazov
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zníženie hodnoty vašej meny oproti jednej libre (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zvýšenie hodnoty vašej meny oproti jednej libre (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Nastaviť kurz pre vašu menu oproti libre (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddelovac: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddelovac: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Nastaviť oddeľovač meny
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nastavit prefix pre vašu menu
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Prípona: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Prípona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Nastaviť suffix pre vašu menu
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prechod na Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prechod na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prechod na Euro: {ORANGE}nikdy
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Nastaviť rok, kedy zmeniť menu na Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Zmeniť skôr na Euro
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Zmeniť na Euro neskôr
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Nahlad: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Nahlad: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libier (£) vo vašej mene
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmenit parametre vlastnej meny
 

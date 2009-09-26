@@ -1068,26 +1068,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Повн
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{0:CURRENCY} = Ј {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Зменшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Встановити роздільник для своєї валюти
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Встановити префікс для своєї валюти
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Встановити суфікс для своєї валюти
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Перехід на євро: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Перехід на євро: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Перехід на євро: {ORANGE}ні
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Визначити рік введення Євро
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перейти на Євро раніше
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перейти на Євро пізніше
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 фунтів (£) у вашій валюті
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Налаштування іншої грошової одиниці
 

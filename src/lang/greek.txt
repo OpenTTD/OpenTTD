@@ -943,26 +943,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Πλήρ
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Προσαρμοσμένο νόμισμα
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ισοτιμία: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ισοτιμία: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείωση του ποσού της ισοτιμίας σας για μία λίρα (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αύξηση του ποσού της ισοτιμίας σας για μία λίρα (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστικό: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστικό: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ορίστε το διαχωριστικό για το νόμισμά σας
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Πρόθεμα: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Πρόθεμα: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ορίστε το πρόθεμα για το νόμισμά σας
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Επίθεμα: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Επίθεμα: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Ορίστε το επίθεμα για το νόμισμά σας
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Αλλαγή σε Ευρώ: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Αλλαγή σε Ευρώ: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Αλλαγή σε Ευρώ: {ORANGE}ποτέ
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Θέστε το χρόνο που γίνεται η μετάβαση σε Ευρώ
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γίνει η μετάβαση σε Ευρώ νωρίτερα
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γίνει η μετάβαση σε Ευρώ αργότερα
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προεπισκόπιση: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προεπισκόπιση: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Λίρες (£) στο νόμισμά σας
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλαγή παραμέτρων προσαρμοσμένου νομίσματος
 

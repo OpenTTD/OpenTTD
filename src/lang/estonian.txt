@@ -999,26 +999,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekr
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Langeta oma valuuta väärtust naela (£) suhtes
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tõsta oma valuuta väärtust naela (£) suhtes
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Määra oma valuuta kurss naela (£) suhtes
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Eraldusmärk: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Eraldusmärk: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Määra oma valuuta eraldusmärk
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Määra oma valuuta eesliide
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Järelliide: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Järelliide: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Määra oma valuuta järelliide
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mine eurole: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mine eurole: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mine eurole: {ORANGE}Mitte kunagi
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Määra eurole minemise aasta
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mine eurole varem
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mine eurole hiljem
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaade: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 naela (£) sinu valuutas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 

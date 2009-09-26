@@ -935,26 +935,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd 
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Llehad yr swm o eich arian cyfred am un Punt (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}amlhau yr swm o eich arian cyfred am un Punt (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}newid y raddfa gyfnewid o eich arian cyfred i un Punt (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Gwahanydd: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Gwahanydd: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Creu yr ysgar i eich arian Cyfred
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Rhagddodiad: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Rhagddodiad: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Creu yr rhagddodiad i eich arian Cyfred
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Olddodiad: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Olddodiad: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Creu yr olddodiad i eich arian Cyfred
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Newid i'r Ewro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Newid i'r Ewro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Newid i'r Ewro: {ORANGE}byth
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Set yr blwyddyn i newid i'r Ewro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Newid i'r Ewro yn gynnar.
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Newid i'r Ewro yn hwyrach
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolwg: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolwg: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) yn eich arian cyfaddas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Newid paramedrau arian cyfaddas
 

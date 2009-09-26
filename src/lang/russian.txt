@@ -1089,26 +1089,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{0:CURRENCY} = £{1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Повысить курс вашей валюты по отношению к фунту (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Снизить курс вашей валюты по отношению к фунту (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Установить курс вашей валюты по отношению к фунту (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Установить разделитель тысяч
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Установить префикс вашей валюты
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Установить суффикс вашей валюты
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}с {5:NUM} года
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Переход на евро: {ORANGE}с {NUM} года
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Переход на евро: {ORANGE}никогда
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Установить год перехода на евро
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перейти на евро раньше
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перейти на евро позже
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Образец: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 англ. фунтов (£) в вашей валюте
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты
 

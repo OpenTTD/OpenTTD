@@ -715,26 +715,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscre
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}สกุลเงิน
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}อัตราแลกเปลี่ยน: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}อัตราแลกเปลี่ยน: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ลดจํานวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}เพิ่มจำนวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}กำหนดอัตราแลกเปลี่ยนของสกุลเงินหนึ่งปอนด์ (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}เครื่องแยกแร่: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}เครื่องแยกแร่: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}สัญลักษณ์แบ่งหลักสกุลเงินของท่าน
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}คำนำหน้า: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}คำนำหน้า: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}สัญลักษณ์หน้าสกุลเงินของท่าน
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}คำเสริมท้าย: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}คำเสริมท้าย: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}สัญลักษณ์ต่อท้ายสกุลเงินของท่าน
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}เปลี่ยนเป็นเงินสกุลยูโร: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}เปลี่ยนเป็นเงินสกุลยูโร: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}เปลี่ยนเป็นเงินสกุลยูโร: {ORANGE}ไม่เคย
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}ตั้งปีเพื่อเปลี่ยนสกุลเงินเป็นยูโร
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}เปลี่ยนสกุลเงินเป็นยูโรก่อน
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}เปลี่ยนสกุลเงินเป็นยูโรทีหลัง
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}แสดงตัวอย่าง: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}แสดงตัวอย่าง: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เปลี่ยนการกำหนดค่าตัวแปรสกุลเงิน
 
 # Difficulty level window

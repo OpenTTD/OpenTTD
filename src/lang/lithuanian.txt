@@ -972,26 +972,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Viso ekr
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Sumažinti valiutos kiekį vienu svaru (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Padidinti valiutos kiekį vienu svaru (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Nustatyti valiutos keitimo kursą vienam svarui (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Nustatyti daliklį jūsų valiutai
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nustatyti prifix'ą valiutai
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Nustatyti suffix'a valiutai
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pereiti prie Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pereiti prie Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Pereiti prie Euro: {ORANGE}niekada
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Kelintais metais pereiti prie Euro?
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Pereiti prie Euro anksčiau
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Pereiti prie Euro vėliau
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perziura: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perziura: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 

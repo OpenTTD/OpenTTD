@@ -944,26 +944,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekra
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi azaltın
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi arttırın
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi belirleyin
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Para biriminiz için ondalık ayıracı belirleyin
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Para biriminiz için ön ek belirleyin
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Para biriminiz için son ek belirleyin
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya geç: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya geç: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euro'ya geç: {ORANGE}hiçbir zaman
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Avro'ya geçiş yılını seçin
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Avro'ya daha erken geç
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Avro'ya daha sonra geç
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizleme: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizleme: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Sterlin'in (£) para biriminizdeki karşılığı
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini değiştir
 

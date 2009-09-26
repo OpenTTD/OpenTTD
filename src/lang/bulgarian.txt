@@ -940,20 +940,20 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Проб
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Парична единица
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител: {ORANGE}{STRING}
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {ORANGE}{3:STRING}
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка: {ORANGE}{4:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {ORANGE}{STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка: {ORANGE}{STRING}
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Преобразуване в евро: {ORANGE}никога
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Сложи година за преминаване в Евро
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Премини в Евро по-рано
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Премини в Евро по-късно
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на парична единица
 
 # Difficulty level window

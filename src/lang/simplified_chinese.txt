@@ -943,26 +943,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法�
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自定义货币
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{0:CURRENCY} = {1:COMMA} 英镑(£)
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{CURRENCY} = {COMMA} 英镑(£)
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}减少英磅(£)兑换自定义货币的数量
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}增加英磅(£)兑换自定义货币的数量
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}设置自定义货币与英磅(£)的兑换比率
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符： {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符： {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}设置千位分隔符
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}设置自定义货币的首字
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}设置自定义货币的尾字
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}转换为欧元： {ORANGE}{5:NUM} 年后
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}转换为欧元： {ORANGE}{NUM} 年后
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}转换为欧元： {ORANGE}不转换
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}设置转换为欧元货币的起始年份
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}提早转换为欧元货币的起始年份
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}延后转换为欧元货币的起始年份
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 英磅(£) 兑换自定义货币的数量
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
 

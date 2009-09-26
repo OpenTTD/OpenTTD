@@ -943,26 +943,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus la
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Atur Mata Uang
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Menurunkan nilai mata uang satu Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Meningkatkan nilai mata uang satu Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Atur penukaran nilai mata uang per satu Pound (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Atur pemisah nilai mata uang Anda
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Masukkan awalan untuk mata uang
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Masukkan akhiran untuk mata uang
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggunakan Euro tahun: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggunakan Euro tahun: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Menggunakan Euro: {ORANGE}tidak pernah
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Masukkan tahun perpindahan ke Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Berpindah ke Euro lebih awal
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Berpindah ke Eurolebih akhir
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) pada mata uang Anda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sendiri parameter mata uang
 

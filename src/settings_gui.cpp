@@ -1745,15 +1745,19 @@ struct CustomCurrencyWindow : Window {
 
 	virtual void SetStringParameters(int widget) const
 	{
-		SetDParam(0, 1);
-		SetDParam(1, 1);
-		SetDParamStr(2, _custom_currency.separator);
-		SetDParamStr(3, _custom_currency.prefix);
-		SetDParamStr(4, _custom_currency.suffix);
-		SetDParam(5, _custom_currency.to_euro);
-		if (widget == CUSTCURR_YEAR) {
-			this->GetWidget<NWidgetCore>(CUSTCURR_YEAR)->widget_data = (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER;
-			SetDParam(6, 10000);
+		switch (widget) {
+			case CUSTCURR_RATE:      SetDParam(0, 1); SetDParam(1, 1);            break;
+			case CUSTCURR_SEPARATOR: SetDParamStr(0, _custom_currency.separator); break;
+			case CUSTCURR_PREFIX:    SetDParamStr(0, _custom_currency.prefix);    break;
+			case CUSTCURR_SUFFIX:    SetDParamStr(0, _custom_currency.suffix);    break;
+			case CUSTCURR_YEAR:
+				SetDParam(0, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER);
+				SetDParam(1, _custom_currency.to_euro);
+				break;
+
+			case CUSTCURR_PREVIEW:
+				SetDParam(0, 10000);
+				break;
 		}
 	}
 
@@ -1765,6 +1769,13 @@ struct CustomCurrencyWindow : Window {
 			case CUSTCURR_PREFIX_EDIT:
 			case CUSTCURR_SUFFIX_EDIT:
 				size->width  = this->GetWidget<NWidgetCore>(CUSTCURR_RATE_DOWN)->smallest_x + this->GetWidget<NWidgetCore>(CUSTCURR_RATE_UP)->smallest_x;
+				break;
+
+			/* Make sure the window is wide enough for the widest exchange rate */
+			case CUSTCURR_RATE:
+				SetDParam(0, 1);
+				SetDParam(1, INT32_MAX);
+				*size = GetStringBoundingBox(STR_CURRENCY_EXCHANGE_RATE);
 				break;
 		}
 	}
@@ -1926,7 +1937,7 @@ static const NWidgetPart _nested_cust_currency_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, CUSTCURR_YEAR_DOWN), SetDataTip(STR_BLACK_SMALL_ARROW_LEFT, STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, CUSTCURR_YEAR_UP), SetDataTip(STR_BLACK_SMALL_ARROW_RIGHT, STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(5, 0),
-				NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_YEAR), SetDataTip(STR_CURRENCY_SWITCH_TO_EURO, STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP), SetFill(true, false),
+				NWidget(WWT_TEXT, COLOUR_BLUE, CUSTCURR_YEAR), SetDataTip(STR_JUST_STRING, STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP), SetFill(true, false),
 			EndContainer(),
 		EndContainer(),
 		NWidget(WWT_LABEL, COLOUR_BLUE, CUSTCURR_PREVIEW),

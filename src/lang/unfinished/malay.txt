@@ -727,7 +727,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skri
 
 # Custom currency window
 
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kadar pertukaran: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kadar pertukaran: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Tetapkan kadar pertukaran mata wang anda untuk stau Paun (£)
 
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Tetapkan pemisah mata wang anda
@@ -735,7 +735,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Tetapkan
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Tetapkan permulaan untuk mata wang anda
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Tetapkan akhiran untuk mata wang anda
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Tukar ke Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Tukar ke Euro: {ORANGE}{NUM}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Tetapkan tahun untuk menukar ke Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Tukar ke Euro dahulu
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Tukar ke Euro kemudian

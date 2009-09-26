@@ -944,26 +944,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}מטבע מותאם אישית
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}שער חליפין: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}שער חליפין: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} הקטן את ערך המטבע שלך עבור פאונד (£) אחד
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}הגדל את ערך המטבע שלך עבור פאונד (£) אחד
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}קבע את שער החליפין של המטבע שלך עם פאונד (£) אחד
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}תו מפריד: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}תו מפריד: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}קבע תו מפריד עבור סוג המטבע שלך
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}תחילית: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}תחילית: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}קבע את המחרוזת התחילית עבור המטבע שלך
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}סופית: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}סופית: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}קבע את המחזורת הסופית עבור המטבע שלך
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{5:NUM} {LTBLUE} :החלפה ליורו
+STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{NUM} {LTBLUE} :החלפה ליורו
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{ORANGE} ללא {LTBLUE} :החלפה ליורו
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}קבע את השנה למעבר ליורו
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור ליורו מוקדם יותר
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור ליורו מאוחר יותר
 
-STR_CURRENCY_PREVIEW                                            :{ORANGE}{6:CURRENCY}{LTBLUE} :צפיה מקדימה
+STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURRENCY}{LTBLUE} :צפיה מקדימה
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ליש"ט (£) במטבע שלך
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
 

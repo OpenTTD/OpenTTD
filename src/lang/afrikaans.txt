@@ -935,26 +935,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Volskerm
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Gewoonte koers
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wissel koers: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wissel koers: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag die hoeveelheid van jou koers vir een Pond (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog die hoeveelheid van jou koers vir een Pond (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel die wissel koers vir jou koers vir een Pond (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Stel die skeier vir jou koers
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel die voorvoegsel teks vir jou koers
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Stel die agtervoegsel teks vir jou koers
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Verwissel na Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Verwissel na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Verwissel na Euro: {ORANGE}nooit
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Stel die jaar om na Euro toe te skakel
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skakel na Euro vroeër
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skakel na Euro later
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorskou: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorskou: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pond (£) in jou koers
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander gebruiklike koers parameter
 

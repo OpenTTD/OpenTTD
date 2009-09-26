@@ -932,26 +932,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}O modo d
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Disminuí-la cantidade da túa moeda por unha Libra Esterlina (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementa-la cantidade da túa moeda por unha Libra Esterlina (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{G=n}{BLACK}Configura-lo cambio da túa moeda por unha Libra Esterlina (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Configura-lo separador para a túa moeda
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Configura-la cadea de prefixo para a túa moeda
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Configura-la cadea de sufixo para a túa moeda
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Cambiar a Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Cambiar a Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Camiar a Euro: {ORANGE}nunca
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Selecciona o ano no que se cambiará ó Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambiar ó Euro máis pronto
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambiar ó Euro máis tarde
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras Esterlinas (£) na túa moeda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia-lo parámetro de moeda personalizada
 

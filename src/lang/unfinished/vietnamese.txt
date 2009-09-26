@@ -943,26 +943,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất b
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Tự chỉnh tiền tệ
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tỉ giá hối đoái: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tỉ giá hối đoái: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Điều chỉnh tỉ giá tiền của bạn đối với 1 Pound (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ký tự cách: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ký tự cách: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Chọn ký tự cách cho tiền tệ của bạn
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Tiền tố: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Tiền tố: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp đầu ngữ cho tiền tệ của bạn
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Hậu tố: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Hậu tố: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp sau ngữ cho tiền tệ của bạn
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Chuyển về đồng Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Chuyển về đồng Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Chuyển về đồng Euro: {ORANGE}không bao giờ
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Chọn năm để chuyển sang đồng Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Chuyển về đồng Euro sớm hơn
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Chuyển về đồng Euro sau
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem trước: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem trước: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) tính bằng tiền của bạn
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa tham số của tiền tự chỉnh
 

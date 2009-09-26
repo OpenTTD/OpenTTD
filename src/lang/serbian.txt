@@ -1128,26 +1128,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspeš
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sopstvena moneta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Smanjite vrednost vaše monete u odnosu na jednu funtu (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Povećajte vrednost vaše monete u odnosu na jednu funtu (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Postavite vrednost vaše monete u odnosu na jednu funtu (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdelnik: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdelnik: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Postavite razdelnik za vašu monetu
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Postavite prefiks za vašu monetu
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Postavite sufiks za vašu monetu
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prelazak na Euro: {ORANGE}nikada
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Odredite godinu za prelazak na euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Raniji prelazak na euro
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Kasniji prelazak na euro
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 funti (£) u vašoj moneti
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promena parametara sopstvene monete
 

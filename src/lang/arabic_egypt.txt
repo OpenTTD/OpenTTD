@@ -942,26 +942,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}فشل �
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}عمله مخصصه
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}معامل التبديل: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}معامل التبديل: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} £ قلل قيمة عملتك لكل جنية استرليني
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} £ زد قيمة عملتك لكل جنية استرليني
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK} حدد قيمة الصرف لعملتك مقابل الجنية الاسترليني (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE} فاصل العملة: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE} فاصل العملة: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK} حدد الفاصل لعملتك
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE} علامة العملة السابقة: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE} علامة العملة السابقة: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK} حدد الرمز الاستهلالي لعملتك
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}  علامة العملة الاخيرة: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}  علامة العملة الاخيرة: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK} حدد الرمز اللاحق لعملتك
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول إلى يورو : {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول إلى يورو : {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}حول إلى يورو : {ORANGE}أبدا
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK} حدد السنة لتبديل العملة لليورو
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK} بدل الى اليورو مبكرا
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK} بدل الى اليورو متاخرا
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK} 10000 جنية استرليني في عملتك
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
 

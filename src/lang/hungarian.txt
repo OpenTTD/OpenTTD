@@ -976,26 +976,26 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljesk�
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Átváltási arány csökkentése egy Fonthoz (£) képest
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Átváltási arány növelése egy Fonthoz (£) képest
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Átváltási arány beállítása egy Fonthoz (£) képest
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó: {ORANGE}{2:STRING}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Elválasztó beállítása a pénznemedhez
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {ORANGE}{3:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Előtag beállítása a pénznemedhez
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Előtag: {ORANGE}{4:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Előtag: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Utótag beállítása a pénznemedhez
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euróra váltás: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euróra váltás: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euróra váltás: {ORANGE}soha
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Euróra váltás évének beállítása
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euróra váltás korábban
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euróra váltás később
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előnézet: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előnézet: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Font (£) a pénznemedben
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját pénznem paramétereinek megváltoztatása
 
