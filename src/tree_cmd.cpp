@@ -635,7 +635,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 	uint treeCounter = GetTreeCounter(tile);
 
-	/* Handle growth of grass at every 8th processings, like it's done for grass */
+	/* Handle growth of grass (under trees/on MP_TREES tiles) at every 8th processings, like it's done for grass on MP_CLEAR tiles. */
 	if ((treeCounter & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
 		uint density = GetTreeDensity(tile);
 		if (density < 3) {
