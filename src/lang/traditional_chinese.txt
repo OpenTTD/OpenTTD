@@ -928,7 +928,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇�
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}畫面擷取檔案格式
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}選擇畫面擷取檔案格式
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基礎圖組
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基礎圖形集
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基礎圖形集
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎圖形集的額外資訊
@@ -1784,7 +1784,7 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 不支援內容下載功能！
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基礎圖集
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基礎圖形
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 函式庫
@@ -2032,6 +2032,11 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}隨機�
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}許多隨機市鎮
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}以隨機分佈的市鎮佈滿地圖
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}市鎮名稱：
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}輸入市鎮名稱
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}點選輸入市鎮名稱
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}隨機名稱
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}產生新隨機名稱
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}市鎮大小：
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}小型
@@ -2737,7 +2742,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}複製�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}複製船舶
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}複製飛機
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}這會購買一列相同的列車，包含所有車廂，按下按鈕之後再點選機廠内外的其他列車。按住 CTRL 點選還可共享指令
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}這會購買一列相同的列車， 包含所有車廂， 按下按鈕之後再點選機廠内外的其他列車。 按住 CTRL 點選還可共享指令
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}這會購買一部相同的車輛，按下按鈕之後再點選於車庫内或外的車輛，按住 CTRL 點選還可共享指令
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}這會購買一艘相同的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}這會購買一架相同的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
@@ -2823,7 +2828,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}將車�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}將船舶送往船塢，按住 CTRL 點選則只做維護
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}將飛機送到機棚，按住 CTRL 點選則只做維護
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}這會購買一列相同的列車，包含所有車廂，按住 CTRL 點選還可共享指令
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}這會購買一列相同的列車， 包含所有車廂， 按住 CTRL 點選還可共享指令
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}這會將購買一部相同的車輛，按住 CTRL 點選還可共享指令
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}這會購買一艘相同的船舶，按住 CTRL 點選還可共享指令
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}這會購買一架相同的飛機，按住 CTRL 點選還可共享指令
@@ -3138,6 +3143,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI 名�
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
 
+STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI 除錯視窗只可於伺服器使用
 
