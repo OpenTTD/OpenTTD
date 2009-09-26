@@ -870,31 +870,28 @@ struct DepotWindow : Window {
 				}
 			} break;
 
-			case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
-				if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL) &&
-					this->sel != INVALID_VEHICLE) {
+			case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN: {
+				if (this->IsWidgetDisabled(widget)) return;
+				if (this->sel == INVALID_VEHICLE) return;
 
-					if (this->IsWidgetDisabled(widget)) return;
-					if (this->sel == INVALID_VEHICLE) return;
+				this->HandleButtonClick(widget);
 
-					this->HandleButtonClick(widget);
+				const Vehicle *v = Vehicle::Get(this->sel);
+				this->sel = INVALID_VEHICLE;
+				this->SetDirty();
 
-					const Vehicle *v = Vehicle::Get(this->sel);
-					this->sel = INVALID_VEHICLE;
-					this->SetDirty();
+				int sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
 
-					int sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
+				bool is_engine = (v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine());
 
-					bool is_engine = (v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine());
-
-					if (is_engine) {
-						_backup_orders_tile = v->tile;
-						BackupVehicleOrders(v);
-					}
-
-					if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
+				if (is_engine) {
+					_backup_orders_tile = v->tile;
+					BackupVehicleOrders(v);
 				}
-				break;
+
+				if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
+			} break;
+
 			default:
 				this->sel = INVALID_VEHICLE;
 				this->SetDirty();
