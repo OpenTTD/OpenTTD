@@ -318,14 +318,12 @@ struct DepotWindow : Window {
 
 	void DrawDepotWindow()
 	{
-		TileIndex tile = this->window_number;
-		int x, y, maxval;
-
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		uint16 rows_in_display   = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_ROW_START, MAT_ROW_BITS);
 		uint16 boxes_in_each_row = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_COL_START, MAT_COL_BITS);
 
 		/* setup disabled buttons */
+		TileIndex tile = this->window_number;
 		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
 			DEPOT_WIDGET_STOP_ALL,
 			DEPOT_WIDGET_START_ALL,
@@ -367,8 +365,8 @@ struct DepotWindow : Window {
 		this->DrawWidgets();
 
 		uint16 num = this->vscroll.GetPosition() * boxes_in_each_row;
-		maxval = min(this->vehicle_list.Length(), num + (rows_in_display * boxes_in_each_row));
-
+		int maxval = min(this->vehicle_list.Length(), num + (rows_in_display * boxes_in_each_row));
+		int x, y;
 		for (x = 2, y = 15; num < maxval; y += this->resize.step_height, x = 2) { // Draw the rows
 			byte i;
 
@@ -402,10 +400,7 @@ struct DepotWindow : Window {
 
 	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, const Vehicle **veh, GetDepotVehiclePtData *d) const
 	{
-		uint xt, row, xm = 0, ym = 0;
-		int pos, skip = 0;
-		uint16 boxes_in_each_row = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_COL_START, MAT_COL_BITS);
-
+		uint xt, xm = 0, ym = 0;
 		if (this->type == VEH_TRAIN) {
 			xt = 0;
 			x -= 23;
@@ -417,10 +412,11 @@ struct DepotWindow : Window {
 			ym = (y - 14) % this->resize.step_height;
 		}
 
-		row = (y - 14) / this->resize.step_height;
+		uint row = (y - 14) / this->resize.step_height;
 		if (row >= this->vscroll.GetCapacity()) return MODE_ERROR;
 
-		pos = ((row + this->vscroll.GetPosition()) * boxes_in_each_row) + xt;
+		uint16 boxes_in_each_row = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_COL_START, MAT_COL_BITS);
+		int pos = ((row + this->vscroll.GetPosition()) * boxes_in_each_row) + xt;
 
 		if ((int)(this->vehicle_list.Length() + this->wagon_list.Length()) <= pos) {
 			if (this->type == VEH_TRAIN) {
@@ -432,6 +428,7 @@ struct DepotWindow : Window {
 			}
 		}
 
+		int skip = 0;
 		if ((int)this->vehicle_list.Length() > pos) {
 			*veh = this->vehicle_list[pos];
 			skip = this->hscroll.GetPosition();
