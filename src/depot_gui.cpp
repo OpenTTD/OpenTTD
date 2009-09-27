@@ -168,19 +168,7 @@ static const Dimension _resize_cap[] = {
 	{      4, 3}, ///< VEH_AIRCRAFT
 };
 
-static void ResizeDefaultWindowSizeForTrains()
-{
-	_block_sizes[VEH_TRAIN].width = 1;
-	_block_sizes[VEH_TRAIN].height = GetVehicleListHeight(VEH_TRAIN);
-}
-
-static void ResizeDefaultWindowSizeForRoadVehicles()
-{
-	_block_sizes[VEH_ROAD].width = 56;
-	_block_sizes[VEH_ROAD].height = GetVehicleListHeight(VEH_ROAD);
-}
-
-static void ResizeDefaultWindowSize(VehicleType type)
+static void InitBlocksizeForShipAircraft(VehicleType type)
 {
 	uint max_width  = 0;
 	uint max_height = 0;
@@ -211,14 +199,18 @@ static void ResizeDefaultWindowSize(VehicleType type)
 	_block_sizes[type].height = max(GetVehicleListHeight(type), max_height);
 }
 
-/* Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game
- * We will only need to call this once for each game */
+/** Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game.
+ * @note Calling this function once for each game is enough. */
 void InitDepotWindowBlockSizes()
 {
-	ResizeDefaultWindowSizeForTrains();
-	ResizeDefaultWindowSizeForRoadVehicles();
-	ResizeDefaultWindowSize(VEH_SHIP);
-	ResizeDefaultWindowSize(VEH_AIRCRAFT);
+	_block_sizes[VEH_TRAIN].width = 1;
+	_block_sizes[VEH_TRAIN].height = GetVehicleListHeight(VEH_TRAIN);
+
+	_block_sizes[VEH_ROAD].width = 56;
+	_block_sizes[VEH_ROAD].height = GetVehicleListHeight(VEH_ROAD);
+
+	InitBlocksizeForShipAircraft(VEH_SHIP);
+	InitBlocksizeForShipAircraft(VEH_AIRCRAFT);
 }
 
 static void DepotSellAllConfirmationCallback(Window *w, bool confirmed);
