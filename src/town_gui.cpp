@@ -969,6 +969,7 @@ public:
 			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
 		this->RandomTownName();
 		this->UpdateButtons();
 	}
@@ -982,9 +983,10 @@ public:
 		} else {
 			GetTownName(this->edit_str_buf, &this->params, this->townnameparts, &this->edit_str_buf[this->edit_str_size - 1]);
 		}
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
+		UpdateTextBufferSize(&this->text);
 
 		this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
+		this->SetWidgetDirty(TSEW_TOWNNAME_EDITBOX);
 	}
 
 	void UpdateButtons()
