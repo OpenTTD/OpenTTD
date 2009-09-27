@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Insira uma frase para filtrar por
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Insira uma palavra chave para filtrar a lista por
+STR_LIST_FILTER_TITLE                                           :{BLACK}Frase filtro:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione forma de ordenação (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Seleccione critério de ordenação
@@ -1343,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :SO/2
@@ -2025,11 +2027,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem a ce
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gerar Cidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Cidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construir nova cidade
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova cidade
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade Aleatória
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construir uma cidade num local aleatório
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar uma cidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias cidades aleatórias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cobrir o mapa com cidades colocadas aleatoriamente
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da cidade:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introduza o nome da cidade
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clique para introduzir o nome da cidade
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatório
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Gerar novo nome aleatório
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamanho da cidade:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequena
