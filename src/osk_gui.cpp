@@ -108,8 +108,9 @@ struct OskWindow : public Window {
 	 * Only show valid characters; do not show characters that would
 	 * only insert a space when we have a spacebar to do that or
 	 * characters that are not allowed to be entered.
+	 * @param shift True if the shift key is pressed.
 	 */
-	void ChangeOskDiabledState(bool shift)
+	void ChangeOskDisabledState(bool shift)
 	{
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
 			this->SetWidgetDisabledState(OSK_WIDGET_LETTERS + i,
@@ -126,7 +127,7 @@ struct OskWindow : public Window {
 		this->SetWidgetLoweredState(OSK_WIDGET_SHIFT, HasBit(_keystate, KEYS_SHIFT));
 		this->SetWidgetLoweredState(OSK_WIDGET_CAPS, HasBit(_keystate, KEYS_CAPS));
 
-		this->ChangeOskDiabledState(shift);
+		this->ChangeOskDisabledState(shift);
 
 		SetDParam(0, this->caption);
 		this->DrawWidgets();
