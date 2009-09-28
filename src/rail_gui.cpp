@@ -1512,6 +1512,7 @@ enum BuildSignalWidgets {
 	BSW_ELECTRIC_PBS_OWAY,
 	BSW_CONVERT,
 	BSW_DRAG_SIGNALS_DENSITY,
+	BSW_DRAG_SIGNALS_DENSITY_LABEL,
 	BSW_DRAG_SIGNALS_DENSITY_DECREASE,
 	BSW_DRAG_SIGNALS_DENSITY_INCREASE,
 };
@@ -1556,17 +1557,20 @@ public:
 	BuildSignalWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
 		this->InitNested(desc, TRANSPORT_RAIL);
+		this->OnInvalidateData();
 	};
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case BSW_DRAG_SIGNALS_DENSITY_LABEL:
+				SetDParam(0, _settings_client.gui.drag_signals_density);
+				break;
+		}
+	}
 
 	virtual void OnPaint()
 	{
-		this->LowerWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
-
-		this->SetWidgetLoweredState(BSW_CONVERT, _convert_signal_button);
-
-		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _settings_client.gui.drag_signals_density == 1);
-		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _settings_client.gui.drag_signals_density == 20);
-
 		this->DrawWidgets();
 
 		this->DrawSignalSprite(BSW_SEMAPHORE_NORM,     SPR_IMG_SIGNAL_SEMAPHORE_NORM);
@@ -1581,12 +1585,6 @@ public:
 		this->DrawSignalSprite(BSW_ELECTRIC_COMBO,     SPR_IMG_SIGNAL_ELECTRIC_COMBO);
 		this->DrawSignalSprite(BSW_ELECTRIC_PBS,       SPR_IMG_SIGNAL_ELECTRIC_PBS);
 		this->DrawSignalSprite(BSW_ELECTRIC_PBS_OWAY,  SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY);
-
-		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
-		SetDParam(0, _settings_client.gui.drag_signals_density);
-		int right = this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->pos_x + this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->current_x - 1;
-		DrawString(this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->pos_x, right,
-				this->GetWidget<NWidgetBase>(BSW_DRAG_SIGNALS_DENSITY)->pos_y + 2, STR_JUST_INT, TC_ORANGE, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1632,6 +1630,17 @@ public:
 		}
 
 		this->SetDirty();
+		this->OnInvalidateData();
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		this->LowerWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+
+		this->SetWidgetLoweredState(BSW_CONVERT, _convert_signal_button);
+
+		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _settings_client.gui.drag_signals_density == 1);
+		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _settings_client.gui.drag_signals_density == 20);
 	}
 };
 
@@ -1658,7 +1667,7 @@ static const NWidgetPart _nested_signal_builder_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_PBS), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP), EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_PBS_OWAY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP), EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_DRAG_SIGNALS_DENSITY), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP),
-			NWidget(NWID_SPACER), SetMinimalSize(0, 13),
+			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BSW_DRAG_SIGNALS_DENSITY_LABEL), SetMinimalSize(0, 13), SetDataTip(STR_ORANGE_INT, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP), SetFill(true, true),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, BSW_DRAG_SIGNALS_DENSITY_DECREASE), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, BSW_DRAG_SIGNALS_DENSITY_INCREASE), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP),

@@ -751,7 +751,7 @@ static bool TrainAccelerationModelChanged(int32 p1)
 
 static bool DragSignalsDensityChanged(int32)
 {
-	SetWindowDirty(WC_BUILD_SIGNAL, 0);
+	InvalidateWindowData(WC_BUILD_SIGNAL, 0);
 
 	return true;
 }
