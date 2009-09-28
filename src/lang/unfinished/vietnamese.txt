@@ -1201,6 +1201,9 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Máy kh
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Cho phép máy chơi ở chế độ multiplayer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes trước khi máy bị đình chỉ: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Khoảng cách dịch vụ ở dạng phần trăm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Khoảng cách dịch vụ mặc định cho tàu lửa: {ORANGE}{STRING} ngày/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Khoảng cách dịch vụ mặc định cho tàu lửa: {ORANGE}tắt
 
 
 

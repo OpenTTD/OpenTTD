@@ -2350,6 +2350,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGI
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 會導致產量 Callback 時發生無窮迴圈的錯誤。
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個

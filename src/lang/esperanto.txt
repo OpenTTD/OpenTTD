@@ -217,6 +217,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elektu vicordo (deira/alira)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Elektu ordigaj kondiĉoj
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selektu kriteriojn por filtrado
@@ -239,6 +240,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Nuligu
 STR_BUTTON_OK                                                   :{BLACK}Bone
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Longo: {NUM}
@@ -247,10 +250,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longo: {
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Regiono: {NUM} x {NUM}{}Altecdiferenco: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Enloĝantaro
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nomo
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Enloĝantaro
+STR_SORT_BY_NAME                                                :Nomo
 STR_SORT_BY_PRODUCTION                                          :Produktado
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportiĝis
@@ -392,9 +398,11 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglevfervoja k
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Vojkonstruado
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Trama konstruado
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Akvoja Konstruado
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -719,6 +727,8 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Ĝenera
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua tramo alvenas al {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua vartramo alvenas al {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝipo alvenas en {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua aviadilo alvenas en {STATION}!
 
@@ -767,6 +777,9 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektoj kaŭzas plagon ĉe {INDUSTRY}!{}Produktado duoniĝas
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produktado de {STRING} ĉe {INDUSTRY} malpliiĝas per {COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} atendas en depoto
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} atendas en depoto
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} atendas en depoto
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -783,6 +796,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} estas perdita.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY}
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} haltis ĉar komanda transformo fiaskis
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Aŭtorenovigo fiaskis ĉe {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nova {STRING} nun haveblas!
@@ -915,6 +929,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu 
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta/koruptita dosiero{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza grafikaro
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Baza sonaro
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Elektu la uzendan sonaron
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza sonaro
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekrana moduso fiaskis
 
@@ -1307,6 +1324,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unikso
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1663,6 +1681,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Ludo malpaŭzit
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlasanta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ensalutis la ludon
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} interligis la ludon (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} iĝis ano de kompanio #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} iĝis spektanto
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ekis novan kompanion (#{2:NUM})
@@ -1676,6 +1695,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} La serv
 # Content downloading window
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bazaj sonoj
 
 # Content downloading progress window
 
@@ -1861,6 +1881,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Hazarda 
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Konstruu urbon en hazarda loko
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Multaj hazardaj urboj
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kovru la mapon per hazarde metitajn urbojn
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Urbnomo:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Enigu urbnomon
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klaku por enigi urbnomon
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Hazarda nomo
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Kreu hazardan novan urbnomon
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Urba grandeco:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Malgranda
@@ -2126,6 +2152,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu 
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Urboj
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-Neniu -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Urbonomoj - alklaku nomon por centre vidi la urbon
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
@@ -2304,6 +2331,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ni serĉ
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrioj
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Neniu -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportite)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportite)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
