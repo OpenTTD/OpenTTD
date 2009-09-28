@@ -30,6 +30,7 @@
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "settings_type.h"
+#include "spritecache.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -1523,15 +1524,32 @@ private:
 	 *
 	 * @param widget_index index of this widget in the window
 	 * @param image        the sprite to draw
-	 * @param xrel         the relativ x value of the sprite in the grf
-	 * @param xsize        the width of the sprite
 	 */
-	void DrawSignalSprite(byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
+	void DrawSignalSprite(byte widget_index, SpriteID image)
 	{
-		int bottom = this->GetWidget<NWidgetBase>(widget_index)->pos_y + this->GetWidget<NWidgetBase>(widget_index)->current_y - 1;
-		DrawSprite(image + this->IsWidgetLowered(widget_index), PAL_NONE,
-				this->GetWidget<NWidgetBase>(widget_index)->pos_x + this->GetWidget<NWidgetBase>(widget_index)->current_x / 2 - xrel - xsize / 2 + this->IsWidgetLowered(widget_index),
-				bottom - 3 + this->IsWidgetLowered(widget_index));
+		/* First get the right image, which is one later for 'green' signals. */
+		image += this->IsWidgetLowered(widget_index);
+
+		/* Next get the actual sprite so we can calculate the right offsets. */
+		const Sprite *sprite = GetSprite(image, ST_NORMAL);
+
+		/* For the x offset we want the sprite to be centered, so undo the offset
+		 * for sprite drawing and add half of the sprite's width. For the y offset
+		 * we want the sprite to be aligned on the bottom, so again we undo the
+		 * offset for sprite drawing and assume it is the bottom of the sprite. */
+		int sprite_center_x_offset = sprite->x_offs + sprite->width / 2;
+		int sprite_bottom_y_offset = sprite->height + sprite->y_offs;
+
+		/* Next we want to know where on the window to draw. Calculate the center
+		 * and the bottom of the area to draw. */
+		const NWidgetBase *widget = this->GetWidget<NWidgetBase>(widget_index);
+		int widget_center_x = widget->pos_x + widget->current_x / 2;
+		int widget_bottom_y = widget->pos_y + widget->current_y - 2;
+
+		/* Finally we draw the signal. */
+		DrawSprite(image, PAL_NONE,
+				widget_center_x - sprite_center_x_offset + this->IsWidgetLowered(widget_index),
+				widget_bottom_y - sprite_bottom_y_offset + this->IsWidgetLowered(widget_index));
 	}
 
 public:
@@ -1551,19 +1569,18 @@ public:
 
 		this->DrawWidgets();
 
-		/* The 'hardcoded' off sets are needed because they are reused sprites. */
-		this->DrawSignalSprite(BSW_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_NORM,   0, 12); // xsize of sprite + 1 ==  9
-		this->DrawSignalSprite(BSW_SEMAPHORE_ENTRY, SPR_IMG_SIGNAL_SEMAPHORE_ENTRY, -1, 13); // xsize of sprite + 1 == 10
-		this->DrawSignalSprite(BSW_SEMAPHORE_EXIT,  SPR_IMG_SIGNAL_SEMAPHORE_EXIT,   0, 12); // xsize of sprite + 1 ==  9
-		this->DrawSignalSprite(BSW_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_COMBO,  0, 12); // xsize of sprite + 1 ==  9
-		this->DrawSignalSprite(BSW_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS,    0, 12); // xsize of sprite + 1 ==  9
-		this->DrawSignalSprite(BSW_SEMAPHORE_PBS_OWAY, SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY, -1, 13); // xsize of sprite + 1 == 10
-		this->DrawSignalSprite(BSW_ELECTRIC_NORM,   SPR_IMG_SIGNAL_ELECTRIC_NORM,   -1,  4);
-		this->DrawSignalSprite(BSW_ELECTRIC_ENTRY,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY,  -2,  6);
-		this->DrawSignalSprite(BSW_ELECTRIC_EXIT,   SPR_IMG_SIGNAL_ELECTRIC_EXIT,   -2,  6);
-		this->DrawSignalSprite(BSW_ELECTRIC_COMBO,  SPR_IMG_SIGNAL_ELECTRIC_COMBO,  -2,  6);
-		this->DrawSignalSprite(BSW_ELECTRIC_PBS,    SPR_IMG_SIGNAL_ELECTRIC_PBS,    -1,  4);
-		this->DrawSignalSprite(BSW_ELECTRIC_PBS_OWAY,SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY,-2,  6);
+		this->DrawSignalSprite(BSW_SEMAPHORE_NORM,     SPR_IMG_SIGNAL_SEMAPHORE_NORM);
+		this->DrawSignalSprite(BSW_SEMAPHORE_ENTRY,    SPR_IMG_SIGNAL_SEMAPHORE_ENTRY);
+		this->DrawSignalSprite(BSW_SEMAPHORE_EXIT,     SPR_IMG_SIGNAL_SEMAPHORE_EXIT);
+		this->DrawSignalSprite(BSW_SEMAPHORE_COMBO,    SPR_IMG_SIGNAL_SEMAPHORE_COMBO);
+		this->DrawSignalSprite(BSW_SEMAPHORE_PBS,      SPR_IMG_SIGNAL_SEMAPHORE_PBS);
+		this->DrawSignalSprite(BSW_SEMAPHORE_PBS_OWAY, SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY);
+		this->DrawSignalSprite(BSW_ELECTRIC_NORM,      SPR_IMG_SIGNAL_ELECTRIC_NORM);
+		this->DrawSignalSprite(BSW_ELECTRIC_ENTRY,     SPR_IMG_SIGNAL_ELECTRIC_ENTRY);
+		this->DrawSignalSprite(BSW_ELECTRIC_EXIT,      SPR_IMG_SIGNAL_ELECTRIC_EXIT);
+		this->DrawSignalSprite(BSW_ELECTRIC_COMBO,     SPR_IMG_SIGNAL_ELECTRIC_COMBO);
+		this->DrawSignalSprite(BSW_ELECTRIC_PBS,       SPR_IMG_SIGNAL_ELECTRIC_PBS);
+		this->DrawSignalSprite(BSW_ELECTRIC_PBS_OWAY,  SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY);
 
 		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
 		SetDParam(0, _settings_client.gui.drag_signals_density);
