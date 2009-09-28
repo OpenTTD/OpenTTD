@@ -4001,7 +4001,7 @@ STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLAC
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATIONL                                         :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{RAW_STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}

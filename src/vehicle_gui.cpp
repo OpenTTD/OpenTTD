@@ -773,7 +773,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
-			DrawString(left, right, y, STR_TINY_BLACK_STATIONL);
+			DrawString(left, right, y, STR_TINY_BLACK_STATION);
 
 			y += 6;
 			if (++i == 4) break;
