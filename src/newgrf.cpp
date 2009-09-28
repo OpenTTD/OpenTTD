@@ -101,6 +101,7 @@ enum {
 struct GRFTempEngineData {
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
+	bool refitmask_valid;    ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 };
 
@@ -647,6 +648,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x1D: // Refit cargo
 				ei->refit_mask = grf_load_dword(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1E: // Callback
@@ -701,10 +703,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x28: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x29: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x2A: // Long format introduction date (days since year 0)
@@ -808,6 +812,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x16: // Cargos available for refitting
 				ei->refit_mask = grf_load_dword(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x17: // Callback mask
@@ -837,10 +842,12 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x1D: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1E: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1F: // Long format introduction date (days since year 0)
@@ -922,6 +929,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x11: // Cargos available for refitting
 				ei->refit_mask = grf_load_dword(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x12: // Callback mask
@@ -950,10 +958,12 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x19: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -1038,6 +1048,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x13: // Cargos available for refitting
 				ei->refit_mask = grf_load_dword(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x14: // Callback mask
@@ -1059,10 +1070,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x19: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -5693,37 +5706,40 @@ static void CalculateRefitMasks()
 		uint32 not_mask = 0;
 		uint32 xor_mask = 0;
 
-		if (ei->refit_mask != 0) {
-			const GRFFile *file = e->grffile;
-			if (file != NULL && file->cargo_max != 0) {
-				/* Apply cargo translation table to the refit mask */
-				uint num_cargo = min(32, file->cargo_max);
-				for (uint i = 0; i < num_cargo; i++) {
-					if (!HasBit(ei->refit_mask, i)) continue;
+		/* Did the newgrf specify any refitting? If not, use defaults. */
+		if (_gted[engine].refitmask_valid) {
+			if (ei->refit_mask != 0) {
+				const GRFFile *file = e->grffile;
+				if (file != NULL && file->cargo_max != 0) {
+					/* Apply cargo translation table to the refit mask */
+					uint num_cargo = min(32, file->cargo_max);
+					for (uint i = 0; i < num_cargo; i++) {
+						if (!HasBit(ei->refit_mask, i)) continue;
 
-					CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
-					if (c == CT_INVALID) continue;
+						CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
+						if (c == CT_INVALID) continue;
 
-					SetBit(xor_mask, c);
+						SetBit(xor_mask, c);
+					}
+				} else {
+					/* No cargo table, so use the cargo bitnum values */
+					const CargoSpec *cs;
+					FOR_ALL_CARGOSPECS(cs) {
+						if (HasBit(ei->refit_mask, cs->bitnum)) SetBit(xor_mask, cs->Index());
+					}
 				}
-			} else {
-				/* No cargo table, so use the cargo bitnum values */
+			}
+
+			if (_gted[engine].cargo_allowed != 0) {
+				/* Build up the list of cargo types from the set cargo classes. */
 				const CargoSpec *cs;
 				FOR_ALL_CARGOSPECS(cs) {
-					if (HasBit(ei->refit_mask, cs->bitnum)) SetBit(xor_mask, cs->Index());
+					if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     cs->Index());
+					if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
 				}
 			}
-		}
-
-		if (_gted[engine].cargo_allowed != 0) {
-			/* Build up the list of cargo types from the set cargo classes. */
-			const CargoSpec *cs;
-			FOR_ALL_CARGOSPECS(cs) {
-				if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     cs->Index());
-				if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
-			}
-		} else if (xor_mask == 0) {
-			/* Don't apply default refit mask to wagons or engines with no capacity */
+		} else {
+			/* Don't apply default refit mask to wagons nor engines with no capacity */
 			if (e->type != VEH_TRAIN || (e->u.rail.capacity != 0 && e->u.rail.railveh_type != RAILVEH_WAGON)) {
 				const CargoLabel *cl = _default_refitmasks[e->type];
 				for (uint i = 0;; i++) {
