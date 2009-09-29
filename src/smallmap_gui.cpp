@@ -1139,28 +1139,11 @@ enum ExtraViewportWindowWidgets {
 	EVW_ZOOMOUT,
 	EVW_MAIN_TO_VIEW,
 	EVW_VIEW_TO_MAIN,
-	EVW_SPACER1,
-	EVW_SPACER2,
+	EVW_SPACER,
 	EVW_RESIZE,
 };
 
 /* Extra ViewPort Window Stuff */
-static const Widget _extra_view_port_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,    0,   13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   287,    0,   13, STR_EXTRA_VIEW_PORT_TITLE,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   288,   299,    0,   13, 0x0,                              STR_TOOLTIP_STICKY},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   299,   14,   33, 0x0,                              STR_NULL},
-{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   297,   16,   31, 0x0,                              STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    21,   34,   55, SPR_IMG_ZOOMIN,                   STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    22,    43,   34,   55, SPR_IMG_ZOOMOUT,                  STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,    44,   171,   34,   55, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   172,   298,   34,   55, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   299,   299,   34,   55, 0x0,                              STR_NULL},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   287,   56,   67, 0x0,                              STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   288,   299,   56,   67, 0x0,                              STR_TOOLTIP_RESIZE},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_extra_view_port_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, EVW_CLOSE),
@@ -1168,19 +1151,20 @@ static const NWidgetPart _nested_extra_view_port_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, EVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, EVW_BACKGROUND),
-		NWidget(WWT_INSET, COLOUR_GREY, EVW_VIEWPORT), SetMinimalSize(296, 16), SetPadding(2, 2, 2, 2), SetResize(1, 1), EndContainer(),
+		NWidget(NWID_VIEWPORT, INVALID_COLOUR, EVW_VIEWPORT), SetPadding(2, 2, 2, 2), SetResize(1, 1), SetFill(true, true),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, EVW_ZOOMIN), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, EVW_ZOOMOUT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, EVW_MAIN_TO_VIEW), SetMinimalSize(128, 22),
-									SetDataTip(STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, EVW_VIEW_TO_MAIN), SetMinimalSize(127, 22),
-									SetDataTip(STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT),
-		NWidget(WWT_PANEL, COLOUR_GREY, EVW_SPACER1), SetMinimalSize(1, 22), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, EVW_ZOOMIN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, EVW_ZOOMOUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, EVW_MAIN_TO_VIEW), SetFill(true, true), SetResize(1, 0),
+										SetDataTip(STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, EVW_VIEW_TO_MAIN), SetFill(true, true), SetResize(1, 0),
+										SetDataTip(STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, EVW_SPACER2), SetFill(true, true), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, EVW_SPACER), SetFill(true, true), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY, EVW_RESIZE),
 	EndContainer(),
 };
@@ -1188,13 +1172,13 @@ static const NWidgetPart _nested_extra_view_port_widgets[] = {
 class ExtraViewportWindow : public Window
 {
 public:
-	ExtraViewportWindow(const WindowDesc *desc, int window_number, TileIndex tile) : Window(desc, window_number)
+	ExtraViewportWindow(const WindowDesc *desc, int window_number, TileIndex tile) : Window()
 	{
-		/* New viewport start at (zero,zero) */
-		InitializeWindowViewport(this, 3, 17, this->widget[EVW_VIEWPORT].right - this->widget[EVW_VIEWPORT].left - 1, this->widget[EVW_VIEWPORT].bottom - this->widget[EVW_VIEWPORT].top - 1, 0, ZOOM_LVL_VIEWPORT);
+		this->InitNested(desc, window_number);
 
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(EVW_VIEWPORT);
+		nvp->InitializeViewport(this, 0, ZOOM_LVL_NORMAL);
 		this->DisableWidget(EVW_ZOOMIN);
-		this->FindWindowPlacementAndResize(desc);
 
 		Point pt;
 		if (tile == INVALID_TILE) {
@@ -1208,20 +1192,25 @@ public:
 			pt = RemapCoords(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, TileHeight(tile));
 		}
 
-		this->viewport->scrollpos_x = pt.x - ((this->widget[EVW_VIEWPORT].right - this->widget[EVW_VIEWPORT].left) - 1) / 2;
-		this->viewport->scrollpos_y = pt.y - ((this->widget[EVW_VIEWPORT].bottom - this->widget[EVW_VIEWPORT].top) - 1) / 2;
+		this->viewport->scrollpos_x = pt.x - (nvp->pos_x - ((nvp->current_x - 1) / 2));
+		this->viewport->scrollpos_y = pt.y - (nvp->pos_y - ((nvp->current_y - 1) / 2));
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case EVW_CAPTION:
+				/* set the number in the title bar */
+				SetDParam(0, this->window_number + 1);
+				break;
+		}
 	}
 
 	virtual void OnPaint()
 	{
-		/* set the number in the title bar */
-		SetDParam(0, this->window_number + 1);
-
 		this->DrawWidgets();
-		this->DrawViewport();
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1254,10 +1243,10 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->viewport->width          += delta.x;
-		this->viewport->height         += delta.y;
-		this->viewport->virtual_width  += delta.x;
-		this->viewport->virtual_height += delta.y;
+		if (this->viewport != NULL) {
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(EVW_VIEWPORT);
+			nvp->UpdateViewportCoordinates(this);
+		}
 	}
 
 	virtual void OnScroll(Point delta)
@@ -1287,7 +1276,7 @@ static const WindowDesc _extra_view_port_desc(
 	WDP_AUTO, WDP_AUTO, 300, 68, 300, 268,
 	WC_EXTRA_VIEW_PORT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_extra_view_port_widgets, _nested_extra_view_port_widgets, lengthof(_nested_extra_view_port_widgets)
+	NULL, _nested_extra_view_port_widgets, lengthof(_nested_extra_view_port_widgets)
 );
 
 void ShowExtraViewPortWindow(TileIndex tile)
