@@ -996,7 +996,6 @@ struct MessageHistoryWindow : Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.UpdateCapacity(delta.y / this->line_height);
-		this->OnInvalidateData(0);
 	}
 };
 
@@ -1160,8 +1159,7 @@ struct MessageOptionsWindow : Window {
 
 			case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
 				_news_ticker_sound ^= 1;
-				this->OnInvalidateData(0);
-				this->SetWidgetDirty(widget);
+				this->InvalidateData();
 				break;
 
 			default: { // Clicked on the [<] .. [>] widgets
@@ -1187,8 +1185,7 @@ struct MessageOptionsWindow : Window {
 			this->SetMessageButtonStates(index, i);
 			_news_type_data[i].display = (NewsDisplay)index;
 		}
-		this->OnInvalidateData(0);
-		this->SetDirty();
+		this->InvalidateData();
 	}
 };
 

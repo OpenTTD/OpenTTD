@@ -1632,8 +1632,7 @@ public:
 			default: break;
 		}
 
-		this->SetDirty();
-		this->OnInvalidateData();
+		this->InvalidateData();
 	}
 
 	virtual void OnInvalidateData(int data = 0)

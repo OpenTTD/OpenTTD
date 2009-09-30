@@ -586,8 +586,7 @@ struct AIConfigWindow : public Window {
 
 				if (slot == 0 || slot > _settings_newgame.difficulty.max_no_competitors) slot = INVALID_COMPANY;
 				this->selected_slot = (CompanyID)slot;
-				this->OnInvalidateData(0);
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 			}
 

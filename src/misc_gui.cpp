@@ -1176,7 +1176,7 @@ void QueryString::HandleEditBox(Window *w, int wid)
 		 * so the caret changes appropriately. */
 		if (w->window_class != WC_OSK) {
 			Window *w_osk = FindWindowById(WC_OSK, 0);
-			if (w_osk != NULL && w_osk->parent == w) w_osk->OnInvalidateData();
+			if (w_osk != NULL && w_osk->parent == w) w_osk->InvalidateData();
 		}
 	}
 }
@@ -1322,7 +1322,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			default: NOT_REACHED();
 			case HEBR_EDITING: {
 				Window *osk = FindWindowById(WC_OSK, 0);
-				if (osk != NULL && osk->parent == this) osk->OnInvalidateData();
+				if (osk != NULL && osk->parent == this) osk->InvalidateData();
 			} break;
 			case HEBR_CONFIRM: this->OnOk();
 			/* FALL THROUGH */

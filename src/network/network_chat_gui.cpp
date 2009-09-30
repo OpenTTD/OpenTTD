@@ -489,7 +489,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 				default: NOT_REACHED();
 				case HEBR_EDITING: {
 					Window *osk = FindWindowById(WC_OSK, 0);
-					if (osk != NULL && osk->parent == this) osk->OnInvalidateData();
+					if (osk != NULL && osk->parent == this) osk->InvalidateData();
 				} break;
 				case HEBR_CONFIRM:
 					SendChat(this->text.buf, this->dtype, this->dest);

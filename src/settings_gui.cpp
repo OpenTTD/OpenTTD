@@ -353,8 +353,7 @@ struct GameOptionsWindow : Window {
 
 			T::SetSet(name);
 			this->reload = true;
-			this->SetDirty();
-			this->OnInvalidateData(0);
+			this->InvalidateData();
 		}
 	}
 
@@ -625,8 +624,7 @@ public:
 			this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
 			SetDifficultyLevel(3, &this->opt_mod_temp.difficulty); // set difficulty level to custom
 			this->LowerWidget(GDW_LVL_CUSTOM);
-			this->OnInvalidateData();
-			this->SetDirty();
+			this->InvalidateData();
 			return;
 		}
 
@@ -639,8 +637,7 @@ public:
 				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
 				SetDifficultyLevel(widget - GDW_LVL_EASY, &this->opt_mod_temp.difficulty);
 				this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
-				this->OnInvalidateData();
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 
 			case GDW_HIGHSCORE: // Highscore Table
