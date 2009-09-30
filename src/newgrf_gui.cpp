@@ -373,7 +373,7 @@ public:
 					*list = c;
 
 					DeleteWindowByClass(WC_SAVELOAD);
-					InvalidateWindowData(WC_GAME_OPTIONS, 0);
+					InvalidateWindowData(WC_GAME_OPTIONS, 0, 2);
 				}
 				break;
 
@@ -569,7 +569,7 @@ struct NewGRFWindow : public Window {
 		GetGRFPresetList(&_grf_preset_list);
 
 		this->FindWindowPlacementAndResize(desc);
-		this->SetupNewGRFWindow();
+		this->OnInvalidateData(2);
 	}
 
 	~NewGRFWindow()
@@ -585,67 +585,9 @@ struct NewGRFWindow : public Window {
 		_grf_preset_list.Clear();
 	}
 
-	void SetupNewGRFWindow()
-	{
-		const GRFConfig *c;
-		int i;
-
-		for (c = this->list, i = 0; c != NULL; c = c->next, i++) {}
-
-		this->vscroll.SetCapacity((this->widget[SNGRFS_FILE_LIST].bottom - this->widget[SNGRFS_FILE_LIST].top) / 14 + 1);
-		this->vscroll.SetCount(i);
-
-		this->SetWidgetsDisabledState(!this->editable,
-			SNGRFS_PRESET_LIST,
-			SNGRFS_ADD,
-			SNGRFS_APPLY_CHANGES,
-			SNGRFS_TOGGLE_PALETTE,
-			WIDGET_LIST_END
-		);
-	}
-
 	virtual void OnPaint()
 	{
-		bool disable_all = this->sel == NULL || !this->editable;
-
-		this->SetWidgetsDisabledState(disable_all,
-			SNGRFS_REMOVE,
-			SNGRFS_MOVE_UP,
-			SNGRFS_MOVE_DOWN,
-			WIDGET_LIST_END
-		);
-		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all);
-		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
-
-		if (!disable_all) {
-			/* All widgets are now enabled, so disable widgets we can't use */
-			if (this->sel == this->list)       this->DisableWidget(SNGRFS_MOVE_UP);
-			if (this->sel->next == NULL)       this->DisableWidget(SNGRFS_MOVE_DOWN);
-			if (this->sel->IsOpenTTDBaseGRF()) this->DisableWidget(SNGRFS_REMOVE);
-		}
-
-		if (this->preset == -1) {
-			this->widget[SNGRFS_PRESET_LIST].data = STR_NUM_CUSTOM;
-		} else {
-			SetDParamStr(0, _grf_preset_list[this->preset]);
-			this->widget[SNGRFS_PRESET_LIST].data = STR_JUST_RAW_STRING;
-		}
-		this->SetWidgetDisabledState(SNGRFS_PRESET_DELETE, this->preset == -1);
-
-		bool has_missing = false;
-		bool has_compatible = false;
-		for (const GRFConfig *c = this->list; !has_missing && c != NULL; c = c->next) {
-			has_missing    |= c->status == GCS_NOT_FOUND;
-			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
-		}
-		if (has_missing || has_compatible) {
-			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
-			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP;
-		} else {
-			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_INTRO_ONLINE_CONTENT;
-			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_INTRO_TOOLTIP_ONLINE_CONTENT;
-		}
-		this->SetWidgetDisabledState(SNGRFS_PRESET_SAVE, has_missing);
+		if (this->preset != -1) SetDParamStr(0, _grf_preset_list[this->preset]);
 
 		this->DrawWidgets();
 
@@ -726,7 +668,7 @@ struct NewGRFWindow : public Window {
 				DeleteGRFPresetFromConfig(_grf_preset_list[this->preset]);
 				GetGRFPresetList(&_grf_preset_list);
 				this->preset = -1;
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 
 			case SNGRFS_ADD: // Add GRF
@@ -754,8 +696,7 @@ struct NewGRFWindow : public Window {
 
 				this->sel = newsel;
 				this->preset = -1;
-				this->SetupNewGRFWindow();
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 			}
 
@@ -772,7 +713,7 @@ struct NewGRFWindow : public Window {
 					}
 				}
 				this->preset = -1;
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 			}
 
@@ -789,7 +730,7 @@ struct NewGRFWindow : public Window {
 					}
 				}
 				this->preset = -1;
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 			}
 
@@ -800,7 +741,7 @@ struct NewGRFWindow : public Window {
 				for (c = this->list; c != NULL && i > 0; c = c->next, i--) {}
 				this->sel = c;
 
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 			}
 
@@ -881,8 +822,7 @@ struct NewGRFWindow : public Window {
 		}
 
 		this->sel = NULL;
-		this->SetupNewGRFWindow();
-		this->SetDirty();
+		this->InvalidateData(3);
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -890,6 +830,8 @@ struct NewGRFWindow : public Window {
 		if (str == NULL) return;
 
 		switch (this->query_widget) {
+			default: NOT_REACHED();
+
 			case SNGRFS_PRESET_SAVE:
 				SaveGRFPresetToConfig(str, this->list);
 				GetGRFPresetList(&_grf_preset_list);
@@ -901,8 +843,6 @@ struct NewGRFWindow : public Window {
 						break;
 					}
 				}
-
-				this->SetDirty();
 				break;
 
 			case SNGRFS_SET_PARAMETERS: {
@@ -914,10 +854,11 @@ struct NewGRFWindow : public Window {
 				if (c->num_params == (byte)-1) c->num_params = 0;
 
 				this->preset = -1;
-				this->SetDirty();
 				break;
 			}
 		}
+
+		this->InvalidateData();
 	}
 
 	virtual void OnResize(Point delta)
@@ -929,17 +870,14 @@ struct NewGRFWindow : public Window {
 
 		this->vscroll.UpdateCapacity(delta.y / 14);
 		this->widget[SNGRFS_FILE_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-
-		this->SetupNewGRFWindow();
 	}
 
-	virtual void OnInvalidateData(int data)
+	virtual void OnInvalidateData(int data = 0)
 	{
 		switch (data) {
 			default: NOT_REACHED();
 			case 0:
-				this->preset = -1;
-				this->SetupNewGRFWindow();
+				/* Nothing important to do */
 				break;
 
 			case 1:
@@ -960,7 +898,67 @@ struct NewGRFWindow : public Window {
 					c->status    = GCS_UNKNOWN;
 				}
 				break;
+
+			case 2:
+				this->preset = -1;
+				/* Fall through */
+			case 3:
+				const GRFConfig *c;
+				int i;
+
+				for (c = this->list, i = 0; c != NULL; c = c->next, i++) {}
+
+				this->vscroll.SetCapacity((this->widget[SNGRFS_FILE_LIST].bottom - this->widget[SNGRFS_FILE_LIST].top) / 14 + 1);
+				this->vscroll.SetCount(i);
+				break;
 		}
+
+		this->SetWidgetsDisabledState(!this->editable,
+			SNGRFS_PRESET_LIST,
+			SNGRFS_ADD,
+			SNGRFS_APPLY_CHANGES,
+			SNGRFS_TOGGLE_PALETTE,
+			WIDGET_LIST_END
+		);
+
+		bool disable_all = this->sel == NULL || !this->editable;
+		this->SetWidgetsDisabledState(disable_all,
+			SNGRFS_REMOVE,
+			SNGRFS_MOVE_UP,
+			SNGRFS_MOVE_DOWN,
+			WIDGET_LIST_END
+		);
+		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all);
+		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
+
+		if (!disable_all) {
+			/* All widgets are now enabled, so disable widgets we can't use */
+			if (this->sel == this->list)       this->DisableWidget(SNGRFS_MOVE_UP);
+			if (this->sel->next == NULL)       this->DisableWidget(SNGRFS_MOVE_DOWN);
+			if (this->sel->IsOpenTTDBaseGRF()) this->DisableWidget(SNGRFS_REMOVE);
+		}
+
+		if (this->preset == -1) {
+			this->widget[SNGRFS_PRESET_LIST].data = STR_NUM_CUSTOM;
+		} else {
+			this->widget[SNGRFS_PRESET_LIST].data = STR_JUST_RAW_STRING;
+		}
+		this->SetWidgetDisabledState(SNGRFS_PRESET_DELETE, this->preset == -1);
+
+		bool has_missing = false;
+		bool has_compatible = false;
+		for (const GRFConfig *c = this->list; !has_missing && c != NULL; c = c->next) {
+			has_missing    |= c->status == GCS_NOT_FOUND;
+			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
+		}
+		if (has_missing || has_compatible) {
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP;
+		} else {
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_INTRO_ONLINE_CONTENT;
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_INTRO_TOOLTIP_ONLINE_CONTENT;
+		}
+		this->SetWidgetDisabledState(SNGRFS_PRESET_SAVE, has_missing);
 	}
 };
 
