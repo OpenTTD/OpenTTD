@@ -1345,6 +1345,7 @@ STR_OSNAME_DOS                                                  :דוס
 STR_OSNAME_UNIX                                                 :יוניקס
 STR_OSNAME_OSX                                                  :X מערכת הפעלה
 STR_OSNAME_BEOS                                                 :מערכת הפעלה בי
+STR_OSNAME_HAIKU                                                :הייקו
 STR_OSNAME_MORPHOS                                              :מערכת הפעלה מורפ
 STR_OSNAME_AMIGAOS                                              :מערכת הפעלה אניגמה
 STR_OSNAME_OS2                                                  :מערכת הפעלה או.אס שתיים
@@ -2027,11 +2028,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}האם �
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}יצירת ערים
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}עיירה חדשה
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}בנה עיירה חדשה
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ייסד עיר חדשה
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}עיר אקראית
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}בנה עיירה במקום אקראי
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ייסד עיר במקום אקראי
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}ערים אקראיות
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}פזר על המפה ערים באופן אקראי
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}שם העיר:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}הכנס שם עיר
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}לחץ כדי להכניס שם עיר
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}שם אקראי
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}צור שם אקראי חדש
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}:גודל העיר
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}קטן
@@ -3993,6 +4000,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

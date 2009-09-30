@@ -296,7 +296,7 @@ STR_BAGS                                                        :багажа
 STR_TONS                                                        :тонн
 STR_LITERS                                                      :литров
 STR_ITEMS                                                       :штук
-STR_CRATES                                                      :мешков
+STR_CRATES                                                      :ящиков
 STR_RES_OTHER                                                   :Другое
 STR_NOTHING                                                     :
 

@@ -2027,9 +2027,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Are you 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Town Generation
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}New Town
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construct new town
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Found new town
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Random Town
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Build town in random location
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Found town in random location
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Many random towns
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cover the map with randomly placed towns
 
@@ -2840,7 +2840,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Force tr
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Refit train to carry a different cargo type
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Refit road vehicle to carry a different cargo type
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Refit cargo ship to carry a different cargo type
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Refit ship to carry a different cargo type
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Refit aircraft to carry a different cargo type
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Reverse direction of train
@@ -3999,6 +3999,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
