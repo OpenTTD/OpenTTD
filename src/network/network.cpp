@@ -1019,7 +1019,12 @@ void NetworkGameLoop()
 			cp->company = (CompanyID)company;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
-		CheckMinActiveClients();
+		if (_frame_counter >= _frame_counter_max) {
+			/* Only check for active clients just before we're going to send out
+			 * the commands so we don't send multiple pause/unpause commands when
+			 * the frame_freq is more than 1 tick. */
+			CheckMinActiveClients();
+		}
 
 		bool send_frame = false;
 
