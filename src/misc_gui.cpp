@@ -1421,6 +1421,7 @@ enum QueryWidgets {
 	QUERY_WIDGET_CLOSEBOX,
 	QUERY_WIDGET_CAPTION,
 	QUERY_WIDGET_BACKGROUND,
+	QUERY_WIDGET_TEXT,
 	QUERY_WIDGET_NO,
 	QUERY_WIDGET_YES
 };
@@ -1432,22 +1433,23 @@ struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
 	uint64 params[10];       ///< local copy of _decode_parameters
 	StringID message;        ///< message shown for query window
+	StringID caption;        ///< title of window
 
-	QueryWindow(const WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
+	QueryWindow(const WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window()
 	{
+		/* Create a backup of the variadic arguments to strings because it will be
+		 * overridden pretty often. We will copy these back for drawing */
+		CopyOutDParam(this->params, 0, lengthof(this->params));
+		this->caption = caption;
+		this->message = message;
+		this->proc    = callback;
+
+		this->InitNested(desc);
+
 		if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
 		this->parent = parent;
 		this->left = parent->left + (parent->width / 2) - (this->width / 2);
 		this->top = parent->top + (parent->height / 2) - (this->height / 2);
-
-		/* Create a backup of the variadic arguments to strings because it will be
-		 * overridden pretty often. We will copy these back for drawing */
-		CopyOutDParam(this->params, 0, lengthof(this->params));
-		this->widget[QUERY_WIDGET_CAPTION].data = caption;
-		this->message    = message;
-		this->proc       = callback;
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~QueryWindow()
@@ -1455,13 +1457,39 @@ struct QueryWindow : public Window {
 		if (this->proc != NULL) this->proc(this->parent, false);
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case QUERY_WIDGET_CAPTION:
+				SetDParam(0, this->caption);
+				break;
+
+			case QUERY_WIDGET_TEXT:
+				CopyInDParam(0, this->params, lengthof(this->params));
+				break;
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != QUERY_WIDGET_TEXT) return;
+
+		Dimension d = GetStringMultiLineBoundingBox(this->message, *size);
+		d.width += padding.width;
+		d.height += padding.height;
+		*size = d;
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != QUERY_WIDGET_TEXT) return;
+
+		DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->message, TC_FROMSTRING, SA_CENTER);
+	}
+
 	virtual void OnPaint()
 	{
-		CopyInDParam(0, this->params, lengthof(this->params));
 		this->DrawWidgets();
-		CopyInDParam(0, this->params, lengthof(this->params));
-
-		DrawStringMultiLine(1, this->width - 1, 14, 62, this->message, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1505,28 +1533,17 @@ struct QueryWindow : public Window {
 	}
 };
 
-
-static const Widget _query_widgets[] = {
-{  WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_RED,      0,  10,   0,  13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_WIDGET_CLOSEBOX
-{   WWT_CAPTION, RESIZE_NONE,  COLOUR_RED,     11, 209,   0,  13, STR_NULL,        STR_NULL},              // QUERY_WIDGET_CAPTION
-{     WWT_PANEL, RESIZE_NONE,  COLOUR_RED,      0, 209,  14,  81, 0x0, /*OVERRIDE*/STR_NULL},              // QUERY_WIDGET_BACKGROUND
-{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW,  20,  90,  62,  73, STR_QUIT_NO,          STR_NULL},              // QUERY_WIDGET_NO
-{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW, 120, 190,  62,  73, STR_QUIT_YES,         STR_NULL},              // QUERY_WIDGET_YES
-{   WIDGETS_END },
-};
-
 static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED, QUERY_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_RED, QUERY_WIDGET_CAPTION), SetDataTip(STR_NULL, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_RED, QUERY_WIDGET_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 48),
-		NWidget(NWID_HORIZONTAL), SetPIP(20, 29, 19),
+	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND), SetPIP(8, 15, 8),
+		NWidget(WWT_TEXT, COLOUR_RED, QUERY_WIDGET_TEXT), SetMinimalSize(200, 12),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(20, 29, 20),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
 };
 
@@ -1534,12 +1551,11 @@ static const WindowDesc _query_desc(
 	WDP_CENTER, WDP_CENTER, 210, 82, 210, 82,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
-	_query_widgets, _nested_query_widgets, lengthof(_nested_query_widgets)
+	NULL, _nested_query_widgets, lengthof(_nested_query_widgets)
 );
 
 /** Show a modal confirmation window with standard 'yes' and 'no' buttons
  * The window is aligned to the centre of its parent.
- * NOTE: You cannot use BindCString as parameter for this window!
  * @param caption string shown as window caption
  * @param message string that will be shown for the window
  * @param parent pointer to parent window, if this pointer is NULL the parent becomes
