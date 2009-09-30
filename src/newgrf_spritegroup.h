@@ -296,8 +296,6 @@ struct ResolverObject {
 	uint32 reseed;
 	VarSpriteGroupScope scope;
 
-	bool info_view; ///< Indicates if the item is being drawn in an info window
-
 	BaseStorageArray *psa; ///< The persistent storage array of this resolved object.
 
 	const GRFFile *grffile; ///< GRFFile the resolved SpriteGroup belongs to
@@ -307,6 +305,7 @@ struct ResolverObject {
 			const struct Vehicle *self;
 			const struct Vehicle *parent;
 			EngineID self_type;
+			bool info_view;                ///< Indicates if the item is being drawn in an info window
 		} vehicle;
 		struct {
 			TileIndex tile;

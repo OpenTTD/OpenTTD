@@ -724,7 +724,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x1C: return v->y_pos;
 		case 0x1D: return GB(v->y_pos, 8, 8);
 		case 0x1E: return v->z_pos;
-		case 0x1F: return object->info_view ? DIR_W : v->direction;
+		case 0x1F: return object->u.vehicle.info_view ? DIR_W : v->direction;
 		case 0x28: return v->cur_image;
 		case 0x29: return GB(v->cur_image, 8, 8);
 		case 0x32: return v->vehstatus;
@@ -862,8 +862,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->u.vehicle.parent = (v != NULL) ? v->First() : v;
 
 	res->u.vehicle.self_type = engine_type;
-
-	res->info_view = false;
+	res->u.vehicle.info_view = false;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -945,7 +944,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 
 	NewVehicleResolver(&object, engine, v);
 
-	object.info_view = info_view;
+	object.u.vehicle.info_view = info_view;
 
 	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
 	group = SpriteGroup::Resolve(group, &object);
