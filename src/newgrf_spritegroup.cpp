@@ -143,7 +143,6 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 		bool available = true;
 		if (adjust->variable == 0x7E) {
 			ResolverObject subobject = *object;
-			subobject.procedure_call = true;
 			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, &subobject);
 			if (subgroup == NULL) {
 				value = CALLBACK_FAILED;
