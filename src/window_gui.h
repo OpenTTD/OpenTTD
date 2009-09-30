@@ -634,6 +634,16 @@ public:
 	void SetDirty() const;
 	void ReInit();
 
+	/**
+	 * Mark this window's data as invalid (in need of re-computing)
+	 * @param data The data to invalidate with
+	 */
+	void InvalidateData(int data = 0)
+	{
+		this->SetDirty();
+		this->OnInvalidateData(data);
+	}
+
 	/*** Event handling ***/
 
 	/**

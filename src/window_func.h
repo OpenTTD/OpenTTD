@@ -27,7 +27,6 @@ void ResetWindowSystem();
 void SetupColoursAndInitialWindow();
 void InputLoop();
 
-void InvalidateThisWindowData(Window *w, int data = 0);
 void InvalidateWindowData(WindowClass cls, WindowNumber number, int data = 0);
 void InvalidateWindowClassesData(WindowClass cls, int data = 0);
 

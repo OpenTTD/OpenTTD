@@ -344,7 +344,7 @@ public:
 					this->sel = NULL;
 					this->sel_pos = -1;
 				}
-				InvalidateThisWindowData(this, 1);
+				this->InvalidateData(1);
 				break;
 			}
 
@@ -379,7 +379,7 @@ public:
 
 			case ANGRFW_RESCAN: // Rescan list
 				ScanNewGRFFiles();
-				InvalidateThisWindowData(this, 0);
+				this->InvalidateData();
 				break;
 		}
 	}
@@ -437,8 +437,7 @@ public:
 			this->sel = this->grfs[this->sel_pos];
 
 			this->ScrollToSelected();
-
-			InvalidateThisWindowData(this, 1);
+			this->InvalidateData(1);
 		}
 
 		return ES_HANDLED;
@@ -448,7 +447,7 @@ public:
 	{
 		this->grfs.SetFilterState(!StrEmpty(this->edit_str_buf));
 		this->grfs.ForceRebuild();
-		InvalidateThisWindowData(this, 1);
+		this->InvalidateData(1);
 	}
 };
 

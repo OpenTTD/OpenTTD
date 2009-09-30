@@ -166,9 +166,8 @@ bool DoZoomInOutWindow(int how, Window *w)
 		vp->virtual_left = w->viewport->scrollpos_x;
 		vp->virtual_top = w->viewport->scrollpos_y;
 	}
-	w->SetDirty();
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
-	InvalidateThisWindowData(w);
+	w->InvalidateData();
 	return true;
 }
 
