@@ -291,14 +291,16 @@ struct ResolverObject {
 	uint32 callback_param2;
 
 	byte trigger;
-	byte count;
-	uint32 last_value;
-	uint32 reseed;
-	VarSpriteGroupScope scope;
 
-	BaseStorageArray *psa; ///< The persistent storage array of this resolved object.
+	uint32 last_value;          ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
+	uint32 reseed;              ///< Collects bits to rerandomise while triggering triggers.
 
-	const GRFFile *grffile; ///< GRFFile the resolved SpriteGroup belongs to
+	VarSpriteGroupScope scope;  ///< Scope of currently resolved DeterministicSpriteGroup resp. RandomizedSpriteGroup
+	byte count;                 ///< Additional scope for RandomizedSpriteGroup
+
+	BaseStorageArray *psa;      ///< The persistent storage array of this resolved object.
+
+	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
 
 	union {
 		struct {

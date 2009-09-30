@@ -142,13 +142,16 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
 		if (adjust->variable == 0x7E) {
-			ResolverObject subobject = *object;
-			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, &subobject);
+			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, object);
 			if (subgroup == NULL) {
 				value = CALLBACK_FAILED;
 			} else {
 				value = subgroup->GetCallbackResult();
 			}
+
+			/* Reset values to current scope.
+			 * Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
+			object->scope = this->var_scope;
 		} else {
 			value = GetVariable(object, adjust->variable, adjust->parameter, &available);
 		}
