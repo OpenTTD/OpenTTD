@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entre com o filtro desejado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entre uma palavra a ser filtrada
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar forma de ordenação (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecionar um critério de classificação
@@ -252,10 +253,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprime
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Diferença de altura: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}População
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nome
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :População
+STR_SORT_BY_NAME                                                :Nome
 STR_SORT_BY_PRODUCTION                                          :Produção
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
@@ -270,6 +274,7 @@ STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Tamanho
 STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
+STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso do plano de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga aguardando
 STR_SORT_BY_RATING_MAX                                          :Maior avaliação de carga
@@ -296,7 +301,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibir i
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir gráficos
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Exibir tabela de classificação das empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiar construção de uma nova indústria
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Exibir lista de trens da empresa
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Exibir lista de trens da empresa. Ctrl+Clique liga/desliga a abertura da lista de veículos/grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Exibir lista de automóveis da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Exibir lista de embarcações da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Exibir lista de aeronaves da empresa
@@ -925,11 +930,14 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecion
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da foto
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecionar o formato de foto que deseja utilizar
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Jogo de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione o jogo de gráficos a ser utilizado
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set de gráficos base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione o set de gráficos a ser utilizado
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo faltando/corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o set de gráficos base
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set de sons base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione o set de gráficos a ser utilizado
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informações sobr o set de sons base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Falha no modo de tela cheia
 
@@ -1337,6 +1345,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1641,7 +1650,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Assistir
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Companhia
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(nenhum)
+STR_NETWORK_CLIENTLIST_NONE                                     :- Nenhum -
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinheiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar com todos
@@ -1729,6 +1738,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Jogo des-pausad
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saindo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} entrou no jogo
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} entrou no jogo (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} entrou na companhia #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} está assistindo ao jogo
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} abriu uma nova companhia (#{2:NUM})
@@ -1782,6 +1792,7 @@ STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :IA's disponíveis
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de altitudes
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Baixando conteúdo...
@@ -1820,9 +1831,11 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceita: 
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suprimentos: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Unir estações
+STR_JOIN_STATION_CAPTION                                        :{BLACK}Unir estação
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir uma estação separada
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Unir ponto de controle
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir um ponto de controle separado
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construir ferrovias
@@ -2015,11 +2028,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem cert
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gerar Cidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Cidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construir nova cidade
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova cidade
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade Aleatória
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construir cidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias cidades aleatórias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cobrir o mapa com cidades colocadas aleatoriamente
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da cidade:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Coloque o nome da cidade
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clique para dar um nome à cidade
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatório
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Gerar novo nome aleatoriamente
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamanho da cidade:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequena
@@ -2348,6 +2367,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Coloque 
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Cidades
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nenhum -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes das cidades - clique no nome para centralizar a visualização na cidade
 STR_TOWN_POPULATION                                             :{BLACK}População mundial: {COMMA}
@@ -2365,7 +2385,7 @@ STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite d
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na cidade
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Exibir informações sobre a autoridade local
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da cidade
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renomear cidade
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar o tamanho da cidade
@@ -2415,6 +2435,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nome da 
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Segure CTRL para selecionar mais de um item
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estações
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhuma -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selecionar todas as instalações
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Selecionar todos os tipos de carga (inclusive as que não tem espera)
@@ -2457,7 +2478,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Exibir t
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estação/área de carga
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centralizar visualização no local do ponto de controle. Ctrl+Clique abre uma nova janela de visualização.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renomear ponto de controle
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na localização da bóia. Ctrl+Clique abre uma nova janela de visualização
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Renomear bóia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controle
 
@@ -2532,6 +2556,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos 
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústrias
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nenhum -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2726,10 +2751,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isso ir�
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Isso irá construir uma cópia da embarcação. Clique neste botão e depois em uma embarcação dentro ou fora do depósito naval. Control-clique vai compartilhar as ordens
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Isso vai construir uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave dentro ou fora do hangar. Control-clique vai compartilhar as ordens
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização de um depósito ferroviário
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização da garagem
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar visualização na localização do depósito naval
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar visualização na localização do hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centralizar visualização na localização de um depósito ferroviário. Ctrl+Clique abre uma nova janela de visualização
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centralizar visualização na localização da garagem. Ctrl+Clique abre uma nova janela de visualização
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centralizar visualização na localização do depósito naval. Ctrl+Clique abre uma nova janela de visualização
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centralizar visualização na localização do hangar. Ctrl+Clique abre uma nova janela de visualização
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obtém uma lista de todos os trens com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obtém uma lista de todos os automóveis com esta garagem em suas ordens
@@ -2797,10 +2822,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz auto
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização do trem
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar visualização na localização do veículo
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar visualização na localização da embarcação
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrar visualização na localização da aeronave
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centralizar visualização na localização do trem. Ctrl+Clique segue o trem.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centralizar visualização na localização do veículo. Ctrl+Clique segue o veículo
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centralizar visualização na localização da embarcação. Ctrl+Clique segue o navio
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centralizar visualização na localização da aeronave. Ctrl+Clique segue a aeronave
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar trem para o depósito
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar veículo para a garagem. CTRL+clique irá apenas reparar
@@ -3325,12 +3350,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deve dem
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Deve demolir o aeroporto primeiro
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Junta mais de um ponto de controle existente
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Muito próximo a outro ponto de controle
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Impossível construir ponto de controle de trem aqui...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Impossível posicionar bóia aqui...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossível alterar o nome do ponto de controle...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossível remover ponto de controle de trem aqui...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Deve remover ponto de controle primeiro
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bóia no caminho
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...bóia está em uso!
 
@@ -3972,6 +4000,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
