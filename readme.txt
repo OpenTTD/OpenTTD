@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2009-08-18
-Release version: 0.7.2
+Last updated:    2009-10-01
+Release version: 0.7.3
 ------------------------------------------------------------------------
 
 
@@ -231,8 +231,10 @@ can be placed in a few different locations:
 		Windows: C:\Documents and Settings\<username>\My Documents\OpenTTD
 		Mac OSX: ~/Documents/OpenTTD
 		Linux:   ~/.openttd
-	3. The shared directory (Windows only)
+	3. The shared directory
 		Windows: C:\Documents and Settings\All Users\Documents\OpenTTD
+		Mac OSX: /Library/Application Support/OpenTTD
+		Linux:   not available
 	4. The binary directory (where the OpenTTD executable is)
 		Windows: C:\Program Files\OpenTTD
 		Linux:   /usr/games

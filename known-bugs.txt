@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2009-08-18
-Release version: 0.7.2
+Last updated:    2009-10-01
+Release version: 0.7.3
 ------------------------------------------------------------------------
 
 
@@ -34,23 +34,25 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
+- 3198	[OSX] "Could not get system colour space" error on some Mac OS X 10.6
+- 3194	[OSX] Full screen 'strobing' on some Mac OS X 10.6
+- 3190	[OSX] Compiling fails on some Mac OS X 10.6
+- 3159	[NewGRF] Autoreplace resets (or does not keep) value of variable F2
 - 3057	Road vehicle sometimes 'forget' the need for servicing
 - 3040	Not all alternatives are always shown in the "Join station" list
 - 2955	With path signals depots are less likely to be visited
 - 2891	Ignore signal does not keep the train running when in path signalled block till the next signal
 - 2769	No offer for buying bankrupt AIs
-- 2737	Self-crossing trains ignore "forbid 90 degree turn" setting
-- 2616	Cloning creates vehicles with invalid subcargos
+- 2616	[NewGRF] Cloning creates vehicles with invalid subcargos
+- 2613	[NewGRF] House property 15 does not work
 - 2585	[OSX] OS' mouse pointer showing
 - 2484	[OSX] Cannot enter CJK characters
 - 2427	Vehicle owner gets paid for whole cargo feeder share
 - 1944	Road vehicles not picking empty drivethrough platform
 - 1762	Strange Autoreplace behaviour
 - 1495	Long vehicles might block multistop drivethrough stations
-- 1473	Lost trains ignore exit signals
 - 1140	[OSX] Not smooth moving map with touchpad
 - 1072	Text overflows in several windows
--  119	Clipping problems with vehicles on slopes
 
 
 3) Known bugs that will not be solved:

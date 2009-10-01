@@ -5,6 +5,24 @@ openttd (0.8~svn-1) UNRELEASED; urgency=low
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 03 Sep 2008 18:56:04 +0200
 
+openttd (0.7.3) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 01 Oct 2009 12:35:47 +0200
+
+openttd (0.7.3~RC2) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 24 Sep 2009 21:30:43 +0200
+
+openttd (0.7.3~RC1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 13 Sep 2009 10:25:56 +0200
+
 openttd (0.7.2) unstable; urgency=low
 
   * New upstream release.
