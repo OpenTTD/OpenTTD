@@ -1,3 +1,8 @@
+0.7.3 (2009-10-01)
+------------------------------------------------------------------------
+- Fix: [NewGRF] Crash when trying to build an industry that has no industry layout defined [FS#3233] (r17638, r17633)
+
+
 0.7.3-RC2 (2009-09-24)
 ------------------------------------------------------------------------
 - Update: Documentation about bug reporting and known bugs (r17554)
