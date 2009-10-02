@@ -1461,6 +1461,7 @@ struct QueryWindow : public Window {
 	{
 		switch (widget) {
 			case QUERY_WIDGET_CAPTION:
+				CopyInDParam(1, this->params, lengthof(this->params));
 				SetDParam(0, this->caption);
 				break;
 
