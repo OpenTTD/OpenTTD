@@ -1671,7 +1671,7 @@ DEF_CONSOLE_CMD(ConContent)
 		IConsolePrintF(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap" };
-			static const char * const states[] = { "Not selected", "Selected" , "Dep Selected", "Installed", "Unknown" };
+			static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 			static const ConsoleColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
 			const ContentInfo *ci = *iter;

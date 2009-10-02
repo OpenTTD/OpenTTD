@@ -2164,8 +2164,8 @@ static const int8 scrollamt[16][2] = {
 	{ 0,  0}, ///<  5 : left  + right = nothing
 	{ 2, -1}, ///<  6 : right + up
 	{ 0, -2}, ///<  7 : right + left  + up = up
-	{ 0  ,2}, ///<  8 : down
-	{-2  ,1}, ///<  9 : down  + left
+	{ 0,  2}, ///<  8 : down
+	{-2,  1}, ///<  9 : down  + left
 	{ 0,  0}, ///< 10 : down  + up    = nothing
 	{-2,  0}, ///< 11 : left  + up    +  down = left
 	{ 2,  1}, ///< 12 : down  + right

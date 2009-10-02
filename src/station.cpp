@@ -322,7 +322,7 @@ void Station::RecomputeIndustriesNear()
 	/* Compute maximum extent of acceptance rectangle wrt. station sign */
 	TileIndex start_tile = this->xy;
 	uint max_radius = max(
-		max(DistanceManhattan(start_tile, TileXY(riv.rect.left , riv.rect.top)), DistanceManhattan(start_tile, TileXY(riv.rect.left , riv.rect.bottom))),
+		max(DistanceManhattan(start_tile, TileXY(riv.rect.left,  riv.rect.top)), DistanceManhattan(start_tile, TileXY(riv.rect.left,  riv.rect.bottom))),
 		max(DistanceManhattan(start_tile, TileXY(riv.rect.right, riv.rect.top)), DistanceManhattan(start_tile, TileXY(riv.rect.right, riv.rect.bottom)))
 	);
 

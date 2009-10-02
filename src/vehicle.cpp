@@ -1123,9 +1123,9 @@ GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 }
 
 static const Direction _new_direction_table[] = {
-	DIR_N , DIR_NW, DIR_W ,
+	DIR_N,  DIR_NW, DIR_W,
 	DIR_NE, DIR_SE, DIR_SW,
-	DIR_E , DIR_SE, DIR_S
+	DIR_E,  DIR_SE, DIR_S
 };
 
 Direction GetDirectionTowards(const Vehicle *v, int x, int y)

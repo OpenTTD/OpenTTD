@@ -177,7 +177,7 @@ static inline void EnlargeCompanyHQ(TileIndex t, byte size)
 	assert(size <= 4);
 	if (size <= GetCompanyHQSize(t)) return;
 
-	SetCompanyHQSize(t                   , size);
+	SetCompanyHQSize(t,                    size);
 	SetCompanyHQSize(t + TileDiffXY(0, 1), size);
 	SetCompanyHQSize(t + TileDiffXY(1, 0), size);
 	SetCompanyHQSize(t + TileDiffXY(1, 1), size);
@@ -263,7 +263,7 @@ static inline void MakeUnmovableHQHelper(TileIndex t, uint8 section, Owner o)
  */
 static inline void MakeCompanyHQ(TileIndex t, Owner o)
 {
-	MakeUnmovableHQHelper(t                   , 0, o);
+	MakeUnmovableHQHelper(t,                    0, o);
 	MakeUnmovableHQHelper(t + TileDiffXY(0, 1), 1, o);
 	MakeUnmovableHQHelper(t + TileDiffXY(1, 0), 2, o);
 	MakeUnmovableHQHelper(t + TileDiffXY(1, 1), 3, o);

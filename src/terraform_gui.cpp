@@ -224,7 +224,7 @@ static void TerraformClick_Level(Window *w)
 
 static void TerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH , HT_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
 }
 
 static void TerraformClick_BuyLand(Window *w)

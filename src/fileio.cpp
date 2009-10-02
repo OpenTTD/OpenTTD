@@ -907,7 +907,7 @@ void DeterminePaths(const char *exe)
 
 	if (_config_file != NULL) {
 		_personal_dir = strdup(_config_file);
-		char *end = strrchr(_personal_dir , PATHSEPCHAR);
+		char *end = strrchr(_personal_dir, PATHSEPCHAR);
 		if (end == NULL) {
 			_personal_dir[0] = '\0';
 		} else {

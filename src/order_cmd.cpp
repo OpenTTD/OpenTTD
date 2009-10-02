@@ -1380,7 +1380,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 	}
 
 	/* Restore vehicle order-index and service interval */
-	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , CMD_RESTORE_ORDER_INDEX);
+	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16), CMD_RESTORE_ORDER_INDEX);
 
 	/* Restore vehicle group */
 	DoCommandP(0, bak->group, v->index, CMD_ADD_VEHICLE_GROUP);
