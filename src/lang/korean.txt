@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 문자를 입력하세요
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
+STR_LIST_FILTER_TITLE                                           :{BLACK}필터링할 문자열:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}정렬 기준 선택
@@ -1344,6 +1345,7 @@ STR_OSNAME_DOS                                                  :{G=f}DOS
 STR_OSNAME_UNIX                                                 :{G=f}Unix
 STR_OSNAME_OSX                                                  :{G=f}OS X
 STR_OSNAME_BEOS                                                 :{G=f}BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :{G=f}MorphOS
 STR_OSNAME_AMIGAOS                                              :{G=f}AmigaOS
 STR_OSNAME_OS2                                                  :{G=f}OS/2
@@ -1736,6 +1738,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :게임 재개�
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :떠남
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING}님이 게임에 참여했습니다
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING}(이)가 게임에 참여하셨습니다 (클라이언트 #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING}님이 회사 #{2:NUM}에 참가하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING}님이 관전을 시작하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING}님이 새 회사 #{2:NUM}을 창업하셨습니다
@@ -2030,6 +2033,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위로 도시를 건설합니다.
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}도시 여러개를 무작위 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다.
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}도시 이름 입력
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}도시 이름을 입력하려면 클릭하세요
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}무작위 이름
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}무작위 이름 생성
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}도시 크기:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}소형
@@ -3991,6 +4000,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
