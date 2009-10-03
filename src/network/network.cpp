@@ -367,7 +367,7 @@ static uint NetworkCountActiveClients()
 /* Check if the minimum number of active clients has been reached and pause or unpause the game as appropriate */
 static void CheckMinActiveClients()
 {
-	if (!_network_dedicated || _settings_client.network.min_active_clients == 0) return;
+	if (!_network_dedicated || _settings_client.network.min_active_clients == 0 || (_pause_mode & PM_PAUSED_ERROR) != 0) return;
 
 	if (NetworkCountActiveClients() < _settings_client.network.min_active_clients) {
 		if ((_pause_mode & PM_PAUSED_NORMAL) != 0) return;

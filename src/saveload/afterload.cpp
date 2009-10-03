@@ -408,6 +408,12 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(119)) {
 		_pause_mode = (_pause_mode == 2) ? PM_PAUSED_NORMAL : PM_UNPAUSED;
+	} else if (_network_dedicated && (_pause_mode & PM_PAUSED_ERROR) != 0) {
+		DEBUG(net, 0, "The loading savegame was paused due to an error state.");
+		DEBUG(net, 0, "  The savegame cannot be used for multiplayer!");
+		/* Restore the signals */
+		ResetSignalHandlers();
+		return false;
 	}
 
 	/* in very old versions, size of train stations was stored differently */
