@@ -720,6 +720,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		v->spritenum = rvi->image_index;
 
 		v->engine_type = engine;
+		v->tcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		DiagDirection dir = GetRailDepotDirection(tile);
 
@@ -900,6 +901,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 //		v->dest_tile = 0;
 
 		v->engine_type = p1;
+		v->tcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;

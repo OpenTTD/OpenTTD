@@ -255,6 +255,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (EngineID)p1;
+		v->rcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;

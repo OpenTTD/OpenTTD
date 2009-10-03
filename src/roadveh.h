@@ -89,7 +89,7 @@ void RoadVehUpdateCache(RoadVehicle *v);
 /** Cached oftenly queried (NewGRF) values */
 struct RoadVehicleCache {
 	byte cached_veh_length;
-	EngineID first_engine;
+	EngineID first_engine;   ///< cached EngineID of the front vehicle. INVALID_VEHICLE for the front vehicle itself.
 };
 
 /**

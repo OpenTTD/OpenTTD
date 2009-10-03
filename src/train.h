@@ -96,9 +96,7 @@ struct TrainCache {
 	byte cached_vis_effect;
 	byte user_def_data;
 
-	/* NOSAVE: for wagon override - id of the first engine in train
-	 * 0xffff == not in train */
-	EngineID first_engine;
+	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_VEHICLE for the front vehicle itself.
 };
 
 /**

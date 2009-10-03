@@ -318,7 +318,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				t->subtype = 0;
 				t->track = front->track;
 				t->railtype = front->railtype;
-				t->tcache.first_engine = front->engine_type;
+				t->tcache.first_engine = front->engine_type; // needs to be set before first callback
 
 				t->spritenum = e_artic->u.rail.image_index;
 				if (e_artic->CanCarryCargo()) {
@@ -339,7 +339,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 				v = rv;
 
 				rv->subtype = 0;
-				rv->rcache.first_engine = front->engine_type;
+				rv->rcache.first_engine = front->engine_type; // needs to be set before first callback
 				rv->rcache.cached_veh_length = 8; // Callback is called when the consist is finished
 				rv->state = RVSB_IN_DEPOT;
 
