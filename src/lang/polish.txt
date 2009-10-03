@@ -597,6 +597,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowo filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo kluczowe dla listy filtru
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtruj napis:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Wybierz porządek sortowania (malejąco/rosnąco)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Wybierz kryterium sortowania
@@ -630,10 +631,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Długoś
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: {NUM} x {NUM}{}Różnica wysokości: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populacja
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nazwa
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Populacja
+STR_SORT_BY_NAME                                                :Nazwa
 STR_SORT_BY_PRODUCTION                                          :Produkcja
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Przetransportowano
@@ -675,7 +679,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl tabele firm
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ufunduj budowę nowego przedsiębiorstwa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+Kliknięcie otwiera listę grup/pojazdów
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę samochodów firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Wyświetl listę statków firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Wyświetl listę samolotów firmy
@@ -1720,6 +1724,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -2112,6 +2117,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Gra wznowiona (
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :opuszczanie
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} dołączył do gry.
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} dołączył do gry (Klient #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} dołączył do firmy #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} dołączył do obserwatorów
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} założył nową firmę (#{2:NUM})
@@ -2406,6 +2412,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe m
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa miasta w losowym miejscu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryj mapę losowo położonymi miastami
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nazwa miasta:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Wprowadź nazwę miasta
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliknij by wprowadzić nazwę miasta
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Losowa nazwa
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Stwórz nową losową nazwę
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Wielkość miasta:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Male
@@ -2734,6 +2746,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Wpisz na
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miasta
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Żaden -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - klik na nazwie aby wycentrować widok na mieście
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
@@ -2922,6 +2935,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy 
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Przemysł
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Żaden -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%/{COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4407,6 +4421,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

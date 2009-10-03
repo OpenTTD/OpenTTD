@@ -2063,7 +2063,7 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Seleccio
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Varias industrias al azar
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cubre el mapa con industrias colocadas al azar
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Coste: {YELLOW}{CURRENCY}
-STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Perspectiva
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospección
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
 

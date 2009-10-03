@@ -1201,12 +1201,48 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Máy kh
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Cho phép máy chơi ở chế độ multiplayer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes trước khi máy bị đình chỉ: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Khoảng cách dịch vụ ở dạng phần trăm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Khoảng cách dịch vụ mặc định cho tàu lửa: {ORANGE}{STRING} ngày/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Khoảng cách dịch vụ mặc định cho tàu lửa: {ORANGE}tắt
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Thời gian nghỉ ở dạng phần trăm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Thời gian nghỉ mặc định cho tàu lửa: {ORANGE}{STRING} ngày/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Thời gian nghỉ mặc định cho tàu lửa: {ORANGE}tắt
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Thời gian nghỉ mặc định cho xe cơ giới: {ORANGE}{STRING} ngày/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Thời gian nghỉ mặc định cho xe cơ giới: {ORANGE}tắt
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Thời gian nghỉ mặc định cho máy bay: {ORANGE}{STRING} ngày/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Thời gian nghỉ mặc định cho máy bay: {ORANGE}tắt
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Thời gian nghỉ mặc định cho tàu thủy: {ORANGE}{STRING} ngày/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Thời gian nghỉ mặc định cho tàu thủy: {ORANGE}tắt
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Tắt dịch vụ khi đặt độ hỏng hóc về không có: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Bật giới hạn tốc độ toa tàu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Cấm dùng tàu điện: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Tin tức màu xuất hiện vào: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Năm bắt đầu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Nền kinh tế ít biến động: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Cho phép mua cổ phần của các công ty khác: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Khi kéo/thả, đặt đèn tín hiệu lên mỗi : {ORANGE}{STRING} ô
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Tự động xây tín hiệu cánh trước: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bật GUI đèn tín hiệu : {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Kiểu đèn tín hiệu đc xây mặc định: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn dừng
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Đèn dẫn đường
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Đèn dẫn đường 1-chiều
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Đổi tuần hoàn các kiểu đèn báo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Chỉ đèn dừng
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Chỉ đèn dẫn đường
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Kiểu đường sá của thị trấn mới: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Gốc
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :đường tốt
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :ô 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :ô 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ngẫu nhiên
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Thị trấn được quyền xây đường sá: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Cho phép thị trấn kiểm tra độ ồn của sân bay: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Vị trí của thanh công cụ chính: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Trái
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Giữa
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Phải
 
 
 
@@ -1969,6 +2005,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

@@ -273,6 +273,7 @@ STR_SORT_BY_MODEL                                               :型號
 STR_SORT_BY_VALUE                                               :價值
 STR_SORT_BY_LENGTH                                              :長度
 STR_SORT_BY_LIFE_TIME                                           :剩餘年限
+STR_SORT_BY_TIMETABLE_DELAY                                     :時刻表誤點
 STR_SORT_BY_FACILITY                                            :車站種類
 STR_SORT_BY_WAITING                                             :等候客貨總值
 STR_SORT_BY_RATING_MAX                                          :最高運輸評價
@@ -608,7 +609,7 @@ STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}背景�
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA}「{STRING}」
 STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA}「{STRING}」
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}音軌索引
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}播放清單 - '{STRING}'
+STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}播放清單 - 「{STRING}」
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}清除
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}儲存
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除現有播放清單 (只適用「自訂一」或「自訂二」)
@@ -1846,7 +1847,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站。 按住 Ctrl 可興建相鄰車站
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站。 按住 Ctrl 可興建相鄰車站
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌。 按住 Ctrl 點選可切換懸臂／燈號號誌{} 於直線鐵路上拖曳可興建多個號誌。 按住 Ctrl 拖曳則只興建號誌至下個岔道{} 於選單按鈕按住 Ctrl 點選可切換顯示號誌選擇視窗
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
@@ -2345,12 +2346,12 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}缺少�
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暫停可能會讓 OpenTTD 當掉，請不要回報之後的當機情形。{}您真的要取消暫停嗎？
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' 的行為可能會造成失去同步或當機
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」 的行為可能會造成失去同步或當機
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」所擁有的列車 「{0:VEHICLE}」長度無效。 這個錯誤可能是 NewGRFs 有問題所致， 遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 會導致產量 Callback 時發生無窮迴圈的錯誤。
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「{1:STRING}」會導致產量 Callback 時發生無窮迴圈的錯誤。
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
@@ -3996,6 +3997,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
