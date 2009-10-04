@@ -466,7 +466,7 @@ public:
 	{
 		if (this->display_depth != 8) return;
 
-		for (CGTableCount index = first_color; index < first_color + num_colors; index++) {
+		for (uint32_t index = first_color; index < first_color + num_colors; index++) {
 			/* Clamp colors between 0.0 and 1.0 */
 			CGDeviceColor color;
 			color.red   = _cur_palette[index].r / 255.0;
