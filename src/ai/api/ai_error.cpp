@@ -61,6 +61,7 @@ AIError::AIErrorMapString AIError::error_map_string = AIError::AIErrorMapString(
 	error_map_string[ai_error_msg] = message;
 }
 
-/* static */ AIError::ErrorCategories AIError::GetErrorCategory() {
+/* static */ AIError::ErrorCategories AIError::GetErrorCategory()
+{
 	return (AIError::ErrorCategories)(GetLastError() >> (uint)ERR_CAT_BIT_SIZE);
 }

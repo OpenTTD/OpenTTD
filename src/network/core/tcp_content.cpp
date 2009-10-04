@@ -121,7 +121,8 @@ void NetworkContentSocketHandler::Recv_Packets()
  * @param type the packet type to create the stub for
  */
 #define DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(type) \
-bool NetworkContentSocketHandler::NetworkPacketReceive_## type ##_command(Packet *p) { \
+bool NetworkContentSocketHandler::NetworkPacketReceive_## type ##_command(Packet *p) \
+{ \
 	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", \
 			type, this->client_addr.GetAddressAsString()); \
 	return false; \

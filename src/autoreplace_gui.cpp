@@ -408,7 +408,8 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta) {
+	virtual void OnResize(Point delta)
+	{
 		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 		this->vscroll2.UpdateCapacity(delta.y / (int)this->resize.step_height);
 

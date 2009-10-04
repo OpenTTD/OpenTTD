@@ -554,8 +554,7 @@ struct LocksDrawTileStruct {
 #include "table/water_land.h"
 
 static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
-	SpriteID palette, uint base, bool draw_ground
-)
+	SpriteID palette, uint base, bool draw_ground)
 {
 	SpriteID image;
 	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
@@ -635,7 +634,8 @@ void DrawShoreTile(Slope tileh)
 	DrawGroundSprite(SPR_SHORE_BASE + tileh_to_shoresprite[tileh], PAL_NONE);
 }
 
-void DrawWaterClassGround(const TileInfo *ti) {
+void DrawWaterClassGround(const TileInfo *ti)
+{
 	switch (GetWaterClass(ti->tile)) {
 		case WATER_CLASS_SEA:   DrawSeaWater(ti->tile); break;
 		case WATER_CLASS_CANAL: DrawCanalWater(ti->tile); break;

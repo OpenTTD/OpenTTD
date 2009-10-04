@@ -660,7 +660,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		this->GetWidget<NWidgetCore>(ETTW_PLACE_DESERT_LIGHTHOUSE)->tool_tip = (_settings_game.game_creation.landscape == LT_TROPIC) ? STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA : STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE;
 	}
 
-	virtual void OnPaint() {
+	virtual void OnPaint()
+	{
 		this->DrawWidgets();
 
 		if (this->IsWidgetLowered(ETTW_LOWER_LAND) || this->IsWidgetLowered(ETTW_RAISE_LAND)) { // change area-size if raise/lower corner is selected

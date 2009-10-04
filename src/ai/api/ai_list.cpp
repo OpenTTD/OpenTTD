@@ -28,7 +28,8 @@ void AIList::RemoveItem(int32 item)
 	AIAbstractList::RemoveItem(item);
 }
 
-SQInteger AIList::_set(HSQUIRRELVM vm) {
+SQInteger AIList::_set(HSQUIRRELVM vm)
+{
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 	if (sq_gettype(vm, 3) != OT_INTEGER || sq_gettype(vm, 3) == OT_NULL) {
 		return sq_throwerror(vm, _SC("you can only assign integers to this list"));

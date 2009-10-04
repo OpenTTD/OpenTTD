@@ -181,7 +181,8 @@ struct HeightMap
 	 * @param y Y position
 	 * @return height as fixed point number
 	 */
-	inline height_t &height(uint x, uint y) {
+	inline height_t &height(uint x, uint y)
+	{
 		return h[x + y * dim_x];
 	}
 };

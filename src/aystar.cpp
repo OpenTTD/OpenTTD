@@ -240,7 +240,8 @@ void AyStarMain_Clear(AyStar *aystar)
  * aystar->clear() is called. Note that when you stop the algorithm halfway,
  * you should still call clear() yourself!
  */
-int AyStarMain_Main(AyStar *aystar) {
+int AyStarMain_Main(AyStar *aystar)
+{
 	int r, i = 0;
 	/* Loop through the OpenList
 	 *  Quit if result is no AYSTAR_STILL_BUSY or is more than loops_per_tick */

@@ -267,7 +267,8 @@ public:
 	 * @note Example:
 	 *  list.Valuate(AIBridge.GetPrice, 5);
 	 *  list.Valuate(AIBridge.GetMaxLength);
-	 *  function MyVal(bridge_id, myparam) {
+	 *  function MyVal(bridge_id, myparam)
+	 *  {
 	 *    return myparam * bridge_id; // This is silly
 	 *  }
 	 *  list.Valuate(MyVal, 12);

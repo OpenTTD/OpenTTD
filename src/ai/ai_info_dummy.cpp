@@ -66,7 +66,7 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 	/* 2) We construct the AI's code. This is done by merging a header, body and footer */
 	char dummy_script[4096];
 	char *dp = dummy_script;
-	dp = strecpy(dp, "class DummyAI extends AIController {\n  function Start() {\n", lastof(dummy_script));
+	dp = strecpy(dp, "class DummyAI extends AIController {\n  function Start()\n  {\n", lastof(dummy_script));
 
 	/* As special trick we need to split the error message on newlines and
 	 * emit each newline as a separate error printing string. */

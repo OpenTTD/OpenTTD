@@ -13,7 +13,8 @@
 #
 
 # Simple insertion sort.
-function array_sort(ARRAY, ELEMENTS, temp, i, j) {
+function array_sort(ARRAY, ELEMENTS, temp, i, j)
+{
 	for (i = 2; i <= ELEMENTS; i++)
 		for (j = i; ARRAY[j - 1] > ARRAY[j]; --j) {
 			temp = ARRAY[j]
@@ -23,7 +24,8 @@ function array_sort(ARRAY, ELEMENTS, temp, i, j) {
 	return
 }
 
-function dump_class_templates(name) {
+function dump_class_templates(name)
+{
 	print "	template <> "       name " *GetParam(ForceType<"       name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
 	print "	template <> "       name " &GetParam(ForceType<"       name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
 	print "	template <> const " name " *GetParam(ForceType<const " name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
