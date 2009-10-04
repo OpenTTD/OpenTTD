@@ -206,6 +206,10 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Typ de namme fan filter
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Typ in wurd om in list te filterjen foar
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter namme:
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selektear skiftrjochting (oprinnend/ôfrinnend)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selektear skiftnoarm
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selekear filternoarm
@@ -232,10 +236,11 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 # Measurement tooltip
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaasje
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namme
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Produksje
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Ferfierd
@@ -268,7 +273,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betelje 
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lit in list sjen fan de treinen fan dit bedriuw
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lit in list sjen fan de auto's fan dit bedriuw
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lit in list sjen fan de skepen fan dit bedriuw
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lit in list sjen fan de fleantúgen fan dit bedriuw
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lit in list sjen fan de fleantúgen fan dit bedriuw.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom it byld yn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom it byld út
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bou in spoarwei
@@ -575,7 +580,7 @@ STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treinen
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Auto's
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Skepen
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Fleantugen
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Fleantúgen
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportrûtes
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Bosk
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Treinstasjon
@@ -874,6 +879,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1043,6 +1049,7 @@ STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :koe it lân net
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} der is ien bykommen(Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is in neie taskôger
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat syn/har namme oanpast nei {STRING}
 
@@ -1202,7 +1209,13 @@ STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Bou nije
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Samar in stêd
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bou samar ergens in stêd
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Grutte fan 'e stêd:
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Stêd namme:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Typ namme fan in stêd
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik hjire om in stêd namme oan te meitsje
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Samar in namme
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Meitsje in willekeurich nije namme
+
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Grutte fan in stêd:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Lyts
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Middel
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grut
@@ -1434,7 +1447,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Hiel Goed
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sintrearje it byld op de lokaasje fan dit stasjon
 
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jou stasjon in oare namme
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jow stasjon in nije namme
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sintrearje it byld op de lokaasje fan dizze kontrôlepost
@@ -1452,7 +1465,7 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruks
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nije faartúchen
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trein Ûnderhâldskosten
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Auto's Ûnderhâldskosten
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fleantúch Ûnderhâldskosten
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fleantúg Ûnderhâldskosten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skip Ûnderhâldskosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Ûnderhâld fan besittingen
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ynkomsten Treinen
@@ -1552,9 +1565,25 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Stjoer nei hang
 
 
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Keapje auto
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Keapje auto
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Keapje boat
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Keapje fleantúg
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Keapje ferljochte trein
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Keapje ferljochte auto
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Keapje ferljochte boat
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Keapje ferljochte fleantúg
 
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Jow in nije namme
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Jow in nije namme
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Jow in nije namme
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Jow in nije namme
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Jow trein in nije namme
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Jow auto in nije namme
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Jow boat type in nije namme
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Jow fleantúg type in nije namme
 
 
 # Depot window
@@ -1882,7 +1911,12 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...it is
 
 
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kin gjin trein keapje...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kin gjin auto keapje...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kin gjin boat keapje...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kin gjin fleantúg keapje...
 
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kin trein type gjin nije namme joan...
 
 
 
@@ -2249,6 +2283,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

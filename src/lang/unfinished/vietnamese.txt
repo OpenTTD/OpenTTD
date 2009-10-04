@@ -1243,6 +1243,18 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Vị tr
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Trái
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Giữa
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Phải
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Phạm vi bám cửa sổ: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Phạm vi bám cửa sổ: {ORANGE}tắt
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Số cửa sổ giới hạn (không-dính): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Số cửa sổ giới hạn (không-dính): {ORANGE}tắt
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Độ phát triển của thị trấm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Không
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Chậm
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Bình thường
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nhanh
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Cực nhanh
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Tỷ lệ thị trấn sẽ tiến lên thành phố: {ORANGE}1 trên {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Tỷ lệ thị trấn sẽ tiến lên thành phố: {ORANGE}Không
 
 
 

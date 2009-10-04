@@ -317,9 +317,9 @@ STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}הצג �
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}מידע על איזור קרקע, קונסולה, דיבאג של בינה מלאכותית, צילומי מסך, אודות OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}שמור סצנריו, טען סצנריו, צא מעורך הסצנריו, צא
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}שמור תרחיש, טען תרחיש, צא מעורך התרחישים, צא מהמשחק
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}עורך הסצנריו
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}עורך התרחישים
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}שנה את שנת ההתחלה לשנה 1 יותר
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}הצג מפה, מדריך עיירות
@@ -327,12 +327,12 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}יציר
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}יצירת ערים
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}יצירת תעשיות
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}סלילת כבישים
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}טע עצים
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}נטע עצים
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}מקם סימניה
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :שמור סצנריו
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :פתח סצנריו
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :שמור תרחיש
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :טען תרחיש
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :טען מפת גובה
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :צא מהעורך
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -415,7 +415,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :בניית שד
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :עיצוב פני השטח
-STR_LANDSCAPING_MENU_PLANT_TREES                                :טע עצים
+STR_LANDSCAPING_MENU_PLANT_TREES                                :נטע עצים
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :מקם סימניות
 ############ range ends here
 
@@ -722,7 +722,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}סגי�
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}שינויים בכלכלה
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}שינויים ביצור של תעשיות בשירות החברה
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}שינויים ביצור של תעשיות בשירות המתחרה/ים
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}שינויים ביצור שאר התעשיות
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}שינויים ביצור תעשיה אחרת
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}עיצות/מידע על כלים של החברה
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}דגמים חדשים
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}שינויים במטענים המתקבלים
@@ -1300,7 +1300,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}משחק חדש
 STR_INTRO_LOAD_GAME                                             :{BLACK}טען משחק
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}שחק סצנריו
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}שחק תרחיש
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}שחק במפת גובה
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}עורך השלבים
 STR_INTRO_MULTIPLAYER                                           :{BLACK}משחק מרובה שחקנים
@@ -1316,8 +1316,8 @@ STR_INTRO_QUIT                                                  :{BLACK}צא
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}טען משחק שמור
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}התחל משחק חדש בשימוש מפת גובה כנוף.
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}התחל משחק חדש עם סצנריו מותאם אישית
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}צור מפה/סצנריו מותאמים אישית
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}התחל משחק חדש עם תרחיש מותאם אישית
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}צור עולם/תרחיש מותאמים אישית
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}התחל משחק מרובה משתתפים
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}אקלים ממוזג
@@ -1364,7 +1364,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}{CURREN
 STR_CHEAT_CHANGE_COMPANY                                        :{ORANGE}{COMMA}{LTBLUE} :שחק כבעלי החברה
 STR_CHEAT_EXTRA_DYNAMITE                                        :{ORANGE}{STRING}{LTBLUE} :בולדוזר קסמים
 STR_CHEAT_CROSSINGTUNNELS                                       :{ORANGE}{STRING}{LTBLUE} :מנהרות יכולות לחצות זו את זו
-STR_CHEAT_BUILD_IN_PAUSE                                        :{ORANGE}{STRING}{LTBLUE} :(freeze) בנייה בזמן שהמשחק קפוא
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}בנייה בזמן שהמשחק בהפסקה: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}מטוסי סילון לא יתרסקו (לעיתים קרובות) בשדות תעופה קטנים: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}החלף אקלים:{ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :אקלים ממוזג
@@ -1623,18 +1623,18 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}הצטר
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}הצטרף להנהלת חברה זו
 
 # Network connecting window
-STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}...מתחבר
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}מתחבר...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6)...מתחבר
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6)...מקבל הרשאה
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6)...ממתין
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6)...טוען מפה
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6)...מעבד נתונים
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6)...נרשם
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) מתחבר...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) מקבל הרשאה...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) ממתין...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) טוען מפה...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) מעבד נתונים...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) נרשם...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}...טוען מידע על המשחק
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}...טוען מידע על החברה
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}טוען מידע על המשחק...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}טוען מידע על החברה...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK} שחקנים {NUM} לפניך
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} :הורדו
@@ -1747,7 +1747,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :{STRING} שינ
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :{2:CURRENCY} נתן לחברתך {NBSP}{0:STRING} ***
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :{2:CURRENCY} {1:STRING} נתת ל ***
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} השרת סגר את המשחק
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} השרת עושה הפעלה מחדש{}אנא המתן...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} השרת מופעל מחדש...{}אנא המתן...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}הורדת תוכן
@@ -1782,7 +1782,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{WHITE}{BYTES}{
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{WHITE}{STRING}{SILVER} :נבחר בגלל
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{WHITE}{STRING}{SILVER} :תלויות
 STR_CONTENT_DETAIL_TAGS                                         :{WHITE}{STRING}{SILVER} :תגים
-STR_CONTENT_NO_ZLIB                                             :{WHITE}"zlib" - חסרה תמיכה ב  -  OpenTTD
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD נבנה ללא תמיכה ב-"zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... הורדת תוכן אינה אפשרית
 
 # Order of these is important!
@@ -1790,22 +1790,22 @@ STR_CONTENT_TYPE_BASE_GRAPHICS                                  :גרפיקה ב
 STR_CONTENT_TYPE_NEWGRF                                         :(NewGRF)שדרוגים גרפיים
 STR_CONTENT_TYPE_AI                                             :בינה מלאכותית
 STR_CONTENT_TYPE_AI_LIBRARY                                     :ספריית בינה מלאכותית
-STR_CONTENT_TYPE_SCENARIO                                       :סצנריו
+STR_CONTENT_TYPE_SCENARIO                                       :תרחיש
 STR_CONTENT_TYPE_HEIGHTMAP                                      :מפת גבהים
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :צלילים בסיסיים
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}...מוריד תוכן
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}...דורש קבצים
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}מוריד תוכן...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}דורש קבצים...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}({2:NUM} מתוך {NBSP}{1:NUM}) {NBSP}{0:STRING} :מוריד
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}הורדת קבצים הסתיימה
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}({2:NUM} %)הורדו {NBSP}{1:BYTES} מתוך {NBSP}{0:BYTES}
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}ניסיון התחברות לשרת התוכן נכשל
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE} הורדת רבצים נכשלה
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE} הקשר נותק
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE} לא ניתן לכתוב קובץ
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}ניסיון התחברות לשרת התוכן נכשל...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE} הורדת רבצים נכשלה...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... הקשר נותק
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... הקובץ לא ניתן לכתיבה
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE} נכשלה פתיחה של קובץ מכווץ
 
 # Transparency settings window
@@ -1958,7 +1958,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}בניי
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}בניית מבדוק אוניות (לבניה וטיפול בכלי שייט)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}בניית רציף לכלי שייט. Ctrl מאפשר איחוד תחנות
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}מקם מצוף שיכול לשמש כנקודת ציון לכלי שייט
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}בנה אקוודוקט
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}בנה מוביל-מים
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}הגדר את שטח המים.{}הכן תעלה, אלה אם כן CTRL לחוץ בגובה הים, ואז זה יציף את הסביבה במקום
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}מקם נחלים.
 
@@ -2004,9 +2004,9 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה �
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}עצים
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}בחר סוג עץ לנטיעה
-STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים מסוגים שונים
+STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים מסוג אקראי
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}נטע עצים מסוג אקראי במקום זה
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}עצים מסוגים שונים
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}עצים אקראיים
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}פזר עצים באופן אקראי על המפה
 
 # Land generation window (SE)
@@ -2018,7 +2018,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}מקם �
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}הגדל מספר משבצות לעיבוד
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}הקטן מספר משבצות לעיבוד
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}צור קרקע אקראית
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}צור סצנריו חדש
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}צור תרחיש חדש
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}אפס קרקע
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}מחק מהמפה את כל רכוש השחקן
 
@@ -2171,7 +2171,7 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :גשר עץ ל�
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :גשר בטון למעבר רכבים
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :גשר צינורי למעבר רכבים
 
-STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :אקוודוקט
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :מוביל-מים
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :אנטנה
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :מיגדלור
@@ -2187,8 +2187,8 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}שמור משחק
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}טען משחק
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}שמור סצנריו
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}פתח סצנריו
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}שמור תרחיש
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}טען תרחיש
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}טען מפת גובה
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}לחץ כאן כדי לעבור לתיקית בחירת מחדל של שמירות
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}בתים פנויים {BYTES}
@@ -2243,7 +2243,7 @@ STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}שנה �
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}שנה את שנת הפתיחה
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}סוג הסצנריו
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}סוג התרחיש
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}קרקע שטוחה
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}צור קרקע שטוחה
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}קרקע אקראית
@@ -2871,7 +2871,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}נעצרה
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}עוצרת
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} ,עוצרת
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}סוג מסילה לא מתאים לרכבת זו
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}...ממתינה לנתיב פנוי
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}ממתינה לנתיב פנוי
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}פונה אל {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}פונה אל {STATION}, {VELOCITY}
@@ -3215,15 +3215,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game was
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}יצירת המפה בוטלה...{}... אין מיקומי ערים מתאימים
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   ::{WHITE}אין ערים בסצנריו זה...
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   ::{WHITE}אין ערים בתרחיש זה...
 
 STR_ERROR_PNGMAP                                                :{WHITE}לא יכול לטעון שטח אדמה מקובץ...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...הקובץ לא נמצא
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...לא יכול לשנות את סוג התמונה. צריך תמונה של 8 או24-ביט
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...משהו לא הלך כשורה (כנראה קובץ מקולקל(
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... הקובץ לא נמצא.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...לא יכול להמיר את סוג התמונה. צריך תמונת PNG של 8 או 24-ביט.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... משהו לא הלך כשורה. מצטער. (כנראה קובץ מקולקל)
 
-STR_ERROR_BMPMAP                                                :{WHITE}לא יכול לטעון קרקע מתמונה...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...לא יכול לשנות סוג תמונה
+STR_ERROR_BMPMAP                                                :{WHITE}לא יכול לטעון קרקע מתמונת BMP...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... לא יכול להמיר סוג תמונה
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}אזהרת קנה מידה
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}?שינוי גדול של גודל המפה המקורית אינו מומלץ. להמשיך
@@ -3260,59 +3260,59 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}ניסי
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}נחשף ע"י מבקר המדינה
 
 # Leveling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}...לא ניתן להגביה את הקרקע
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}...לא ניתן להנמיך את הקרקע
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}לא ניתן לשטח את פני הקרקע
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}לא ניתן להגביה את הקרקע...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}לא ניתן להנמיך את הקרקע...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}לא ניתן לשטח את פני הקרקע כאן...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}חפירה תפגע במנהרה
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... כבר בגובה ים
 STR_ERROR_TOO_HIGH                                              :{WHITE}... גבוה מידי
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}...הקרקע כבר שטוחה
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... הקרקע כבר שטוחה
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}... לא ניתן לשנות את שם החברה
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}... לא ניתן לשנות את שם המנהל
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}לא ניתן לשנות את שם החברה...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}לא ניתן לשנות את שם המנהל...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... גודל ההלוואה המירבי הוא {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}לא ניתן לקבל הלוואה נוספת
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... אין הלוואה להחזיר
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} דרושים
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}...לא ניתן להחזיר את ההלוואה
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}...לא ניתן למסור כסף שנלווה מהבנק
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}לא ניתן לקנות את החברה
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}לא ניתן לבנות את מטה החברה באתר זה
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE} אין באפשרותך לקנות 25% ממניות חברה זו
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}אין באפשרותך למכור 25% ממניות חברה זו
-STR_ERROR_PROTECTED                                             :{WHITE}חברה זו צעירה מידי ואינה יכולה לסחור במניותיה
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... דרושים {CURRENCY}
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}לא ניתן להחזיר את ההלוואה...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}לא ניתן למסור כסף שנלווה מהבנק...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}לא ניתן לקנות את החברה...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}לא ניתן לבנות את מטה החברה באתר זה...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE} אין באפשרותך לקנות 25% ממניות חברה זו...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}אין באפשרותך למכור 25% ממניות חברה זו...
+STR_ERROR_PROTECTED                                             :{WHITE}חברה זו צעירה מידי ואינה יכולה לסחור במניותיה...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}לא ניתן לבנות ערים
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}...לא ניתן לשנות את השם של העיר הזאת
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}לא ניתן לבנות עיירה כאן...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}לא ניתן לשנות את השם של העיר הזאת...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}לא ניתן להקים עיירה כאן...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... קרוב מידי לקצה המפה
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... קרוב מידי לעיר אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יותר מידי ערים
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...אין יותר מקום על המפה
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... אין יותר מקום על המפה
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}עיר זאת לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}עבודות כביש בפעולה
 
 # Industry related errors
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}ניסיון ליצור תעשיות נכשל
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}לא ניתן {STRING} לבנות כאן...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}לא ניתן לבנות כאן תעשיה מסוג זה
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}קרוב מידי לתעשיה אחרת
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... יש לבנות עיר קודם
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}לא ניתן ליצור תעשיות...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}לא ניתן לבנות {STRING} כאן...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}לא ניתן לבנות כאן תעשיה מסוג זה...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... קרוב מידי לתעשיה אחרת
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... יש להקים עיר קודם
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ניתן רק אחד בכל עיר
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ניתן לבנות בערים עם אוכלוסייה בעלת לפחות 1200 איש
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... יכול להבנות רק ליד אזורי יערות הגשם
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... יכול להבנות רק ליד אזורי מדבר
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... יכול להבנות רק בערים
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... יכול להיות ממוקם בסמוך לשולי המפה בלבד
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}.. .יער יכול להנטע רק מעל קו השלג
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... יער יכול להנטע רק מעל קו השלג
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}לא ניתן לבנות תחנת רכבת כאן...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}...לא ניתן לבנות תחנת אוטובוס
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}...לא ניתן לבנות תחנת טעינה למשאיות
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}לא ניתן לבנות תחנת אוטובוס...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}לא ניתן לבנות תחנת טעינה למשאיות...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}לא ניתן לבנות תחנת חשמלית לנוסעים...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}לא ניתן לבנות תחנת חשמלית לסחורה...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}לא ניתן לבנות מזח כאן...
@@ -3320,7 +3320,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}לא נ�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}ניסיון לחבר בין תחנות קיימות
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... פריסת התחנה חורגת מהמותר
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...תחנות הטרוגניות אסורות
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... תחנות לא אחידות מבוטלות
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}יותר מידי תחנות/אזורי טעינה
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}התחנה מורכבת מיותר מידי חלקים
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}יותר מידי תחנות אוטובוס
@@ -3329,15 +3329,15 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}קרוב
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}(קרוב  מידי לתחנה/אזור טעינה אחר(ת
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}יותר מידי קרוב למזח אחר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}קרוב מידי לשדה תעופה אחר
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}...לא ניתן לשנות שם תחנה
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}לא ניתן לשנות שם תחנה...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...כביש זה בבעלות עירונית
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}הכביש פונה לכיוון לא נכון...
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}...לא ניתן לבטל חלק מהתחנה
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}חייב למחוק תחנת רכבת קודם
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}...לא ניתן להסיר תחנת אוטובוס
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}...לא ניתן להסיר תחנת משאיות
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}לא ניתן להסיר תחנת אוטובוס...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}לא ניתן להסיר תחנת משאיות...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}לא ניתן להסיר תחנת חשמלית לנוסעים...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}לא ניתן להסיר תחנת חשמלית למטען...
 
@@ -3353,11 +3353,11 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}חייב
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}נוגע ביותר מנקודת ציון אחת
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}קרובה מידי לנקודת ציון אחרת
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}לא ניתן לבנות תחנת רכבת באתר זה
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}לא ניתן למקם מצוף במשבצת זו
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}שינוי שם היעד נכשל...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}לא ניתן לבנות תחנת רכבת באתר זה...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}לא ניתן למקם מצוף במשבצת זו...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}שינוי שם נקודת הציון נכשל...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}לא ניתן להסיר תחנת רכבת מאתר זה
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}לא ניתן להסיר תחנת רכבת מאתר זה...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}יש להסיר נקודת ציון של פסי רכבת תחילה
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... מצוף חוסם את הדרך
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...המצוף בשימוש
@@ -3369,17 +3369,17 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE} לא ניתן לבנות מבדוק כאן...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... חייב להיות בעצירה בתוך מוסך לכלי רכב
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}המטוס צריך להמצא בעצירה בסככת מטוסים
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}ניתן לשנות את הרכבת בעת עצירה במוסך בלבד
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}לא ניתן להפוך כיוון כלי הרכב...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}לא ניתן לסובב כלי רכב המורכבים ממספר יחידות...
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :סוג הפסים אינו מתאים
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}...לא ניתן להזיז את כלי הרכב
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}לא ניתן להזיז את כלי הרכב...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}הקטר האחורי עוקב תמיד אחר הקטר הקידמי
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}לא מוצא נתיב למוסך מקומי
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}לא ניתן לאתר מוסך כלי רכב מקומי
@@ -3398,11 +3398,11 @@ STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}יש ל�
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}כביש חד סיטרי או חסום
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}לא ניתן למקם רמזורים כאן...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}לא ניתן להניח פסי רכבת כאן...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}...לא ניתן להסיר פסי רכבת ממשבצת זו
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}לא ניתן להסיר פסי רכבת ממשבצת זו...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}לא ניתן להסיר רמזורים מכאן...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}לא ניתן להחלף רמזורים
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}לא ניתן להחלף רמזורים...
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}...לא ניתן לשנות את סוג המסילה
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}לא ניתן לשנות את סוג המסילה...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}יש להסיר את הכביש תחילה
@@ -3413,17 +3413,17 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}לא ניתן להסיר מסילת רכבת חשמלית מכאן...
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}לא ניתן לבנות כאן תעלה
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}לא ניתן לבנות כאן שער ימי
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}...לא ניתן לבנות כאן נהר
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}לא ניתן לבנות כאן תעלה...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}לא ניתן לבנות כאן שער ימי...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}לא ניתן לבנות כאן נהר...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... חייב להיבנות על מים
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... לא ניתן לבנות על מים
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}חובה למחוק את התעלה קודם
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}...לא ניתן לבנות אקוודוקט באתר זה
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}לא ניתן לבנות מוביל-מים באתר זה...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... קיים כאן עץ
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}...לא יכול לטעת עצים במשבצת זו
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}לא יכול לטעת עצים במשבצת זו...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}לא ניתן לבנות גשר כאן...
@@ -3445,16 +3445,16 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}לא נ�
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}עצם חוסם את הדרך
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... מטה חברה חוסם את הדרך
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}...לא ניתן לקנות שטח זה
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}לא ניתן לקנות שטח זה...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... שטח זה כבר בבעלותך!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}... לא ניתן ליצור קבוצה
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}... לא ניתן למחוק קבוצה זו
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}... לא ניתן לשנות שם קבוצה
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}... לא ניתן למחוק את כל הכלים מקבוצה זו
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}... לא ניתן להוסיף כלי זה לקבוצה זו
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}... לא ניתן להוסיף כלים מצומדים לרשימה זו
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}לא ניתן ליצור קבוצה...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}לא ניתן למחוק קבוצה זו...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}לא ניתן לשנות שם קבוצה...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}לא ניתן למחוק את כל הכלים מקבוצה זו...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}לא ניתן להוסיף כלי זה לקבוצה זו...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}לא ניתן להוסיף כלים משותפים לרשימה זו...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}רכבת חוסמת את המעבר
@@ -3462,40 +3462,40 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}כלי �
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}כלי שייט חוסם את הדרך
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}כלי טייס חוסם את הדרך
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}...לא ניתן להתאים את הרכבת
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}... לא ניתן להתאים את כלי הרכב
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}לא ניתן להתאים את כלי השייט לנשיאת מטען זה
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}לא ניתן להתאים את כלי הטייס לנשיאת מטען זה
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}לא ניתן להתאים את הרכבת לנשיאת מטען זה...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}לא ניתן להתאים את כלי הרכב לנשיאת מטען זה...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}לא ניתן להתאים את כלי השייט לנשיאת מטען זה...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}לא ניתן להתאים את כלי הטייס לנשיאת מטען זה...
 
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}לא ניתן לתת שם לרכבת
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}לא ניתן לתת שם לרכבת...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}...לא ניתן לשנות את שם כלי הרכב
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}לא ניתן לתת שם לכלי שייט זה
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}לא ניתן לתת שם לכלי טייס זה
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}לא ניתן לתת שם לכלי שייט זה...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}לא ניתן לתת שם לכלי טייס זה...
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}לא ניתן לעצור/להמשיך בנסיעה
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}...לא ניתן לעצור/להמשיך בנסיעה
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}לא ניתן לעצור/להפעיל את כלי השייט
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}לא ניתן לעצור/להפעיל את כלי הטייס
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}לא ניתן לעצור/להתחיל בנסיעה...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}לא ניתן לעצור/להמשיך בנסיעה...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}לא ניתן לעצור/להתחיל את כלי השייט...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}לא ניתן לעצור/להתחיל את כלי הטייס...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}לא ניתן לשלוח רכבת למוסך
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}...לא ניתן לשלוח את כלי הרכב למוסך
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}...לא ניתן לשלוח את כלי הטייס לסככת המטוסים
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}לא ניתן לשלוח רכבת למוסך...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}לא ניתן לשלוח את כלי הרכב למוסך...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}לא ניתן לשלוח את כלי השייט למבדוק...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}לא ניתן לשלוח את כלי הטייס לסככת המטוסים...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}לא ניתן לבנות רכבת...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}לא ניתן לבנות כלי רכב...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}לא ניתן לבנות כלי שייט זה...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}לא ניתן לבנות כלי טייס...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}לא ניתן לשנות את שם סוג הקרון
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}  לא ניתן להחליף את שם הסוג של כלי השייט
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}לא ניתן להחליף את שם הסוג של כלי הטייס
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}לא ניתן לשנות את שם סוג הקרון...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}לא ניתן לשנות את שם הסוג של כלי הרכב...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}לא ניתן לשנות את שם הסוג של כלי השייט...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}לא ניתן לשנות את שם הסוג של כלי הטייס...
 
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}לא ניתן למכור את הרכבת
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}...לא ניתן למכור כלי רכב
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}לא ניתן למכור כלי שייט זה
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}לא ניתן למכור את כלי הטייס
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}לא ניתן למכור את הרכבת...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}לא ניתן למכור כלי רכב...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}לא ניתן למכור כלי שייט זה...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}לא ניתן למכור את כלי הטייס...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}קטר לא זמין
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}רכב לא זמין
@@ -3503,13 +3503,13 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}כלי �
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}כלי טייס לא זמין
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר מידי כלי תעבורה במשחק
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}...לא ניתן לשנות את מרווחי הטיפול
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא ניתן לשנות את מרווחי הטיפול...
 
-STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}...הכלי הושמד, לא ניתן למכרו
-STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}... הכלי הושמד, לא ניתן להתאימו
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}לא ניתן למכור כלי הרוס...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}לא ניתן להתאים מטען של כלי הרוס...
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}לא ניתן להפוך את כיוון הנסיעה של הרכבת...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :סוג מסילה לא מתאים לרכבת זו
 
@@ -3520,30 +3520,30 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}נמצא
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}לא נותר מקום יעדים נוספים
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}יותר מדי יעדים
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}...לא ניתן להוסיף יעד
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}...לא ניתן למחוק יעד זה
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}לא ניתן לשנות יעד זה
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}...לא ניתן לבטל יעד זה
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE} לא ניתן לדלג על היעד הנוכחי
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE} לא ניתן לדלג על היעד שנבחר
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}לא ניתן להוסיף יעד...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}לא ניתן למחוק יעד זה...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}לא ניתן לשנות יעד זה...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}לא ניתן להזיז יעד זה...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE} לא ניתן לדלג על היעד הנוכחי...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE} לא ניתן לדלג על היעד שנבחר...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... כלי הרכב לא יכול להגיע לכל התחנות
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... כלי הרכב לא יכול להגיע לתחנה זו
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... כלי רכב בעל ההוראה הזו לא יכול להגיע לתחנה זו
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}לא ניתן לצמד יעדים...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}לא ניתן להעתיק יעדים...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}לא ניתן לשתף יעדים...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}לא ניתן להעתיק רשימת יעדים...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... רחוק מידי מהיעד הקודם
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE} לא ניתן ליצור לוח זמנים עבור רכב זה
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE} לא ניתן ליצור לוח זמנים עבור רכב זה...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}.כלי תעבורה יכולים להמתין בתחנות בלבד
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}הכלי אינו עובר ביעד זה
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... יותר מידי תמרורים
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... יותר מידי סימניות
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}לא ניתן להציב כאן סימניה...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}... ניתן לשנות את שם הסימניה
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}...לא ניתן למחוק סימניה
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}לא ניתן למחוק סימניה...
 
 ##id 0x2000
 # Town building names

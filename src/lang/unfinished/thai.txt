@@ -759,21 +759,87 @@ STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}อั�
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}ค่าใช้จ่ายการเดินรถ: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}ความเร็วในการก่อสร้างของผู้ร่วมแข่งขัน: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}พาหนะเสียหาย: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}ตัวคูณเงินสนับสนุน: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}ราคาของการก่อสร้าง: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}ชนิดของภูมิประเทศ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}ปริมาณของน้ำทะเล/ทะเลสาบ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}สภาพเศรษฐกิจ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}การกลับของขบวนรถไฟ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}ภัยพิบัติ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}ทัศนคติของสภาเมืองเกี่ยวกับการปรับโครงสร้างพื้นที่: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :ไม่มี
+STR_NUM_VERY_LOW                                                :ต่ำมาก
+STR_NUM_LOW                                                     :ต่ำ
+STR_NUM_NORMAL                                                  :ปกติ
+STR_NUM_HIGH                                                    :สูง
+STR_NUM_CUSTOM                                                  :กำหนดเอง
 
+STR_AI_SPEED_VERY_SLOW                                          :ช้ามาก
+STR_AI_SPEED_SLOW                                               :ช้า
+STR_AI_SPEED_MEDIUM                                             :ปานกลาง
+STR_AI_SPEED_FAST                                               :เร็ว
+STR_AI_SPEED_VERY_FAST                                          :เร็วมาก
 
+STR_SEA_LEVEL_VERY_LOW                                          :ต่ำมาก
+STR_SEA_LEVEL_LOW                                               :ต่ำ
+STR_SEA_LEVEL_MEDIUM                                            :ปานกลาง
+STR_SEA_LEVEL_HIGH                                              :สูง
 
+STR_DISASTER_NONE                                               :ไม่มี
+STR_DISASTER_REDUCED                                            :ภาวะลดลง
+STR_DISASTER_NORMAL                                             :ภาวะปกติ
 
+STR_SUBSIDY_X1_5                                                :1.5 เท่า
+STR_SUBSIDY_X2                                                  :2 เท่า
+STR_SUBSIDY_X3                                                  :3 เท่า
+STR_SUBSIDY_X4                                                  :4 เท่า
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :แบนราบมาก
+STR_TERRAIN_TYPE_FLAT                                           :แบนราบ
+STR_TERRAIN_TYPE_HILLY                                          :เป็นเนิน
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :แบบภูเขา
 
+STR_ECONOMY_STEADY                                              :มั่นคง
+STR_ECONOMY_FLUCTUATING                                         :ผันผวน
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :ตรงสุดทางและตรงสถานี
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :ตรงสุดทางเท่านั้น
 
+STR_DISASTERS_OFF                                               :ปิด
+STR_DISASTERS_ON                                                :เปิด
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
+STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
+STR_CITY_APPROVAL_HOSTILE                                       :ไม่เป็นมิตร
 
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}มีการเปลี่ยนแปลงระดับความยากเป็นแบบกำหนดเอง
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปรับแต่งเพิ่มเติม
 
+STR_CONFIG_SETTING_OFF                                          :ปิด
+STR_CONFIG_SETTING_ON                                           :เปิด
+STR_CONFIG_SETTING_DISABLED                                     :ไม่ให้เรียกใช้งาน
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}แสดงความเร็วพาหนะในแถบสถานะ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}อนุญาตให้สร้างบนที่ชันและริมตลิ่ง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}อนุญาตให้เปลี่ยนสภาพพื้นผิวใต้สิ่งก่อสร้าง, ราง, ฯลฯ (ปรับความชันอัตโนมัติ): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}อนุญาตให้มีขนาดของพื้นที่เก็บน้ำที่สมเหตุสมผลมากขึ้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}ยอมให้สร้างขบวนรถไฟยาวๆ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ต้นแบบการเร่งความเร็วของรถไฟ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :ดั้งเดิม
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :เหมือนจริง
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ห้ามรถไฟและเรือหันกลับในมุม 90 องศา: {ORANGE}{STRING} {LTBLUE} (ใช้ไม่ได้กับตัวค้นหาเส้นทางใหม่)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}รวมสถานีรถไฟที่สร้างต่อกันเป็นสถานีเดียว: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}อนุญาตให้ใช้สถานีร่วมกันแม้ไม่ได้ติดกัน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}ใช้อัลกอริธึมเพื่อการบรรจุเข้าไปในพาหนะที่ดีขึ้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}บรรจุเข้าไปในพาหนะทีละน้อยๆ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}ภาวะเงินเฟ้อ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}ส่งสินค้าที่บรรทุกมาลงสถานีเฉพาะเมื่อมีความต้องการเท่านั้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}อนุญาตให้สร้างสะพานยาวมากๆ ได้: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}อนุญาตมีโรงเก็บพาหนะอยู่ในรายการการเดินทาง: {ORANGE}{STRING}
 
 
 
