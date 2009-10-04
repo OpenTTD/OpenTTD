@@ -30,7 +30,6 @@
 #	error "Compiling 64 bits without _SQ64 set! (or vice versa)"
 #endif
 
-#define MAC_OS_X_VERSION_MIN_REQUIRED MAC_OS_X_VERSION_10_3
 #include <AvailabilityMacros.h>
 
 /* Name conflict */
