@@ -195,7 +195,8 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 
 /** Frees memory used for this->name
  */
-DriverFactoryBase::~DriverFactoryBase() {
+DriverFactoryBase::~DriverFactoryBase()
+{
 	if (this->name == NULL) return;
 
 	/* Prefix the name with driver type to make it unique */
