@@ -39,6 +39,16 @@
 
 #include "table/strings.h"
 
+
+/**
+ * Try to retrive the current clipboard contents.
+ *
+ * @note OS-specific funtion.
+ * @return True if some text could be retrived.
+ */
+bool GetClipboardContents(char *buffer, size_t buff_len);
+
+
 /* Variables to display file lists */
 SaveLoadDialogMode _saveload_mode;
 
@@ -1010,6 +1020,49 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
 }
 
 /**
+ * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
+ * and append this up to the maximum length (either absolute or screenlength). If maxlength
+ * is zero, we don't care about the screenlength but only about the physical length of the string
+ * @param tb Textbuf type to be changed
+ * @return true on successful change of Textbuf, or false otherwise
+ */
+bool InsertTextBufferClipboard(Textbuf *tb)
+{
+	char utf8_buf[512];
+
+	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
+
+	uint16 width = 0, length = 0;
+	WChar c;
+	for (const char *ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
+		if (!IsPrintable(c)) break;
+
+		byte len = Utf8CharLen(c);
+		if (tb->size + length + len > tb->maxsize) break;
+
+		byte charwidth = GetCharacterWidth(FS_NORMAL, c);
+		if (tb->maxwidth != 0 && width + tb->width + charwidth > tb->maxwidth) break;
+
+		width += charwidth;
+		length += len;
+	}
+
+	if (length == 0) return false;
+
+	memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->size - tb->caretpos);
+	memcpy(tb->buf + tb->caretpos, utf8_buf, length);
+	tb->width += width;
+	tb->caretxoffs += width;
+
+	tb->size += length;
+	tb->caretpos += length;
+	assert(tb->size <= tb->maxsize);
+	tb->buf[tb->size - 1] = '\0'; // terminating zero
+
+	return true;
+}
+
+/**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next characer interaction will occur
  * @param tb Textbuf type where navigation occurs
@@ -1135,10 +1188,16 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 
 		case WKC_RETURN: case WKC_NUM_ENTER: return HEBR_CONFIRM;
 
+#ifdef WITH_COCOA
+		case (WKC_META | 'V'):
+#endif
 		case (WKC_CTRL | 'V'):
 			if (InsertTextBufferClipboard(&this->text)) w->SetWidgetDirty(wid);
 			break;
 
+#ifdef WITH_COCOA
+		case (WKC_META | 'U'):
+#endif
 		case (WKC_CTRL | 'U'):
 			DeleteTextBufferAll(&this->text);
 			w->SetWidgetDirty(wid);

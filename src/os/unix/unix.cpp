@@ -262,10 +262,12 @@ int CDECL main(int argc, char *argv[])
 	return ret;
 }
 
-bool InsertTextBufferClipboard(Textbuf *tb)
+#ifndef WITH_COCOA
+bool GetClipboardContents(char *buffer, size_t buff_len)
 {
 	return false;
 }
+#endif
 
 
 /* multi os compatible sleep function */

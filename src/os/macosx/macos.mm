@@ -11,6 +11,7 @@
 #include "../../core/bitmath_func.hpp"
 #include "../../rev.h"
 #include "macos.h"
+#include "../../string_func.h"
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
@@ -118,3 +119,19 @@ const char *GetCurrentLocale(const char *)
 }
 
 
+bool GetClipboardContents(char *buffer, size_t buff_len)
+{
+	NSPasteboard *pb = [ NSPasteboard generalPasteboard ];
+	NSArray *types = [ NSArray arrayWithObject:NSStringPboardType ];
+	NSString *bestType = [ pb availableTypeFromArray:types ];
+
+	/* Clipboard has no text data available. */
+	if (bestType == nil) return false;
+
+	NSString *string = [ pb stringForType:NSStringPboardType ];
+	if (string == nil || [ string length ] == 0) return false;
+
+	ttd_strlcpy(buffer, [ string UTF8String ], buff_len);
+
+	return true;
+}

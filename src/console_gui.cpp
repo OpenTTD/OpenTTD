@@ -293,6 +293,9 @@ struct IConsoleWindow : Window
 				MarkWholeScreenDirty();
 				break;
 
+#ifdef WITH_COCOA
+			case (WKC_META | 'V'):
+#endif
 			case (WKC_CTRL | 'V'):
 				if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
 					IConsoleResetHistoryPos();
@@ -304,6 +307,9 @@ struct IConsoleWindow : Window
 				IConsoleCmdExec("clear");
 				break;
 
+#ifdef WITH_COCOA
+			case (WKC_META | 'U'):
+#endif
 			case (WKC_CTRL | 'U'):
 				DeleteTextBufferAll(&_iconsole_cmdline);
 				this->SetDirty();
