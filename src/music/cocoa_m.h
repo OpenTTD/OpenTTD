@@ -7,14 +7,14 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file qtmidi.h Base of music playback via the QuickTime driver. */
+/** @file cocoa_m.h Base of music playback via CoreAudio. */
 
-#ifndef MUSIC_MACOSX_QUICKTIME_H
-#define MUSIC_MACOSX_QUICKTIME_H
+#ifndef MUSIC_MACOSX_COCOA_H
+#define MUSIC_MACOSX_COCOA_H
 
 #include "music_driver.hpp"
 
-class MusicDriver_QtMidi: public MusicDriver {
+class MusicDriver_Cocoa: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 
@@ -27,15 +27,15 @@ public:
 	/* virtual */ bool IsSongPlaying();
 
 	/* virtual */ void SetVolume(byte vol);
-	/* virtual */ const char *GetName() const { return "qt"; }
+	/* virtual */ const char *GetName() const { return "cocoa"; }
 };
 
-class FMusicDriver_QtMidi: public MusicDriverFactory<FMusicDriver_QtMidi> {
+class FMusicDriver_Cocoa: public MusicDriverFactory<FMusicDriver_Cocoa> {
 public:
-	static const int priority = 5;
-	/* virtual */ const char *GetName() { return "qt"; }
-	/* virtual */ const char *GetDescription() { return "QuickTime MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_QtMidi(); }
+	static const int priority = 10;
+	/* virtual */ const char *GetName() { return "cocoa"; }
+	/* virtual */ const char *GetDescription() { return "Cocoa MIDI Driver"; }
+	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Cocoa(); }
 };
 
-#endif /* MUSIC_MACOSX_QUICKTIME_H */
+#endif /* MUSIC_MACOSX_COCOA_H */
