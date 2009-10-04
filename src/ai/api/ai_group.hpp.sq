@@ -24,7 +24,8 @@ namespace SQConvert {
 	template <> int Return<AIGroup *>(HSQUIRRELVM vm, AIGroup *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGroup", res, NULL, DefSQDestructorCallback<AIGroup>); return 1; }
 }; // namespace SQConvert
 
-void SQAIGroup_Register(Squirrel *engine) {
+void SQAIGroup_Register(Squirrel *engine)
+{
 	DefSQClass <AIGroup> SQAIGroup("AIGroup");
 	SQAIGroup.PreRegister(engine);
 	SQAIGroup.AddConstructor<void (AIGroup::*)(), 1>(engine, "x");

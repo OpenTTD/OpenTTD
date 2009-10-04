@@ -9,7 +9,8 @@
 
 #include "ai_controller.hpp"
 
-void SQAIController_Register(Squirrel *engine) {
+void SQAIController_Register(Squirrel *engine)
+{
 	DefSQClass <AIController> SQAIController("AIController");
 	SQAIController.PreRegister(engine);
 	SQAIController.DefSQStaticMethod(engine, &AIController::GetTick,         "GetTick",         1, ".");

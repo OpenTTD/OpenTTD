@@ -24,7 +24,8 @@ namespace SQConvert {
 	template <> int Return<AITunnel *>(HSQUIRRELVM vm, AITunnel *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITunnel", res, NULL, DefSQDestructorCallback<AITunnel>); return 1; }
 }; // namespace SQConvert
 
-void SQAITunnel_Register(Squirrel *engine) {
+void SQAITunnel_Register(Squirrel *engine)
+{
 	DefSQClass <AITunnel> SQAITunnel("AITunnel");
 	SQAITunnel.PreRegister(engine);
 	SQAITunnel.AddConstructor<void (AITunnel::*)(), 1>(engine, "x");

@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIStationList *>(HSQUIRRELVM vm, AIStationList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList", res, NULL, DefSQDestructorCallback<AIStationList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIStationList_Register(Squirrel *engine) {
+void SQAIStationList_Register(Squirrel *engine)
+{
 	DefSQClass <AIStationList> SQAIStationList("AIStationList");
 	SQAIStationList.PreRegister(engine, "AIAbstractList");
 	SQAIStationList.AddConstructor<void (AIStationList::*)(AIStation::StationType station_type), 2>(engine, "xi");
@@ -37,7 +38,8 @@ namespace SQConvert {
 	template <> int Return<AIStationList_Vehicle *>(HSQUIRRELVM vm, AIStationList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList_Vehicle", res, NULL, DefSQDestructorCallback<AIStationList_Vehicle>); return 1; }
 }; // namespace SQConvert
 
-void SQAIStationList_Vehicle_Register(Squirrel *engine) {
+void SQAIStationList_Vehicle_Register(Squirrel *engine)
+{
 	DefSQClass <AIStationList_Vehicle> SQAIStationList_Vehicle("AIStationList_Vehicle");
 	SQAIStationList_Vehicle.PreRegister(engine, "AIAbstractList");
 	SQAIStationList_Vehicle.AddConstructor<void (AIStationList_Vehicle::*)(VehicleID vehicle_id), 2>(engine, "xi");

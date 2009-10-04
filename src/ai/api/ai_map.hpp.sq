@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIMap *>(HSQUIRRELVM vm, AIMap *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIMap", res, NULL, DefSQDestructorCallback<AIMap>); return 1; }
 }; // namespace SQConvert
 
-void SQAIMap_Register(Squirrel *engine) {
+void SQAIMap_Register(Squirrel *engine)
+{
 	DefSQClass <AIMap> SQAIMap("AIMap");
 	SQAIMap.PreRegister(engine);
 	SQAIMap.AddConstructor<void (AIMap::*)(), 1>(engine, "x");

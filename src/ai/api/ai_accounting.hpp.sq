@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIAccounting *>(HSQUIRRELVM vm, AIAccounting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIAccounting", res, NULL, DefSQDestructorCallback<AIAccounting>); return 1; }
 }; // namespace SQConvert
 
-void SQAIAccounting_Register(Squirrel *engine) {
+void SQAIAccounting_Register(Squirrel *engine)
+{
 	DefSQClass <AIAccounting> SQAIAccounting("AIAccounting");
 	SQAIAccounting.PreRegister(engine);
 	SQAIAccounting.AddConstructor<void (AIAccounting::*)(), 1>(engine, "x");

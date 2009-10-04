@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIDepotList *>(HSQUIRRELVM vm, AIDepotList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIDepotList", res, NULL, DefSQDestructorCallback<AIDepotList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIDepotList_Register(Squirrel *engine) {
+void SQAIDepotList_Register(Squirrel *engine)
+{
 	DefSQClass <AIDepotList> SQAIDepotList("AIDepotList");
 	SQAIDepotList.PreRegister(engine, "AIAbstractList");
 	SQAIDepotList.AddConstructor<void (AIDepotList::*)(AITile::TransportType transport_type), 2>(engine, "xi");

@@ -24,7 +24,8 @@ namespace SQConvert {
 	template <> int Return<AIAbstractList *>(HSQUIRRELVM vm, AIAbstractList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIAbstractList", res, NULL, DefSQDestructorCallback<AIAbstractList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIAbstractList_Register(Squirrel *engine) {
+void SQAIAbstractList_Register(Squirrel *engine)
+{
 	DefSQClass <AIAbstractList> SQAIAbstractList("AIAbstractList");
 	SQAIAbstractList.PreRegister(engine);
 	SQAIAbstractList.AddConstructor<void (AIAbstractList::*)(), 1>(engine, "x");

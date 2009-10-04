@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIBridgeList *>(HSQUIRRELVM vm, AIBridgeList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBridgeList", res, NULL, DefSQDestructorCallback<AIBridgeList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIBridgeList_Register(Squirrel *engine) {
+void SQAIBridgeList_Register(Squirrel *engine)
+{
 	DefSQClass <AIBridgeList> SQAIBridgeList("AIBridgeList");
 	SQAIBridgeList.PreRegister(engine, "AIAbstractList");
 	SQAIBridgeList.AddConstructor<void (AIBridgeList::*)(), 1>(engine, "x");
@@ -37,7 +38,8 @@ namespace SQConvert {
 	template <> int Return<AIBridgeList_Length *>(HSQUIRRELVM vm, AIBridgeList_Length *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBridgeList_Length", res, NULL, DefSQDestructorCallback<AIBridgeList_Length>); return 1; }
 }; // namespace SQConvert
 
-void SQAIBridgeList_Length_Register(Squirrel *engine) {
+void SQAIBridgeList_Length_Register(Squirrel *engine)
+{
 	DefSQClass <AIBridgeList_Length> SQAIBridgeList_Length("AIBridgeList_Length");
 	SQAIBridgeList_Length.PreRegister(engine, "AIAbstractList");
 	SQAIBridgeList_Length.AddConstructor<void (AIBridgeList_Length::*)(uint length), 2>(engine, "xi");

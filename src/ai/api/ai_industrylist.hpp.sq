@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIIndustryList *>(HSQUIRRELVM vm, AIIndustryList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryList", res, NULL, DefSQDestructorCallback<AIIndustryList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIIndustryList_Register(Squirrel *engine) {
+void SQAIIndustryList_Register(Squirrel *engine)
+{
 	DefSQClass <AIIndustryList> SQAIIndustryList("AIIndustryList");
 	SQAIIndustryList.PreRegister(engine, "AIAbstractList");
 	SQAIIndustryList.AddConstructor<void (AIIndustryList::*)(), 1>(engine, "x");
@@ -37,7 +38,8 @@ namespace SQConvert {
 	template <> int Return<AIIndustryList_CargoAccepting *>(HSQUIRRELVM vm, AIIndustryList_CargoAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryList_CargoAccepting", res, NULL, DefSQDestructorCallback<AIIndustryList_CargoAccepting>); return 1; }
 }; // namespace SQConvert
 
-void SQAIIndustryList_CargoAccepting_Register(Squirrel *engine) {
+void SQAIIndustryList_CargoAccepting_Register(Squirrel *engine)
+{
 	DefSQClass <AIIndustryList_CargoAccepting> SQAIIndustryList_CargoAccepting("AIIndustryList_CargoAccepting");
 	SQAIIndustryList_CargoAccepting.PreRegister(engine, "AIAbstractList");
 	SQAIIndustryList_CargoAccepting.AddConstructor<void (AIIndustryList_CargoAccepting::*)(CargoID cargo_id), 2>(engine, "xi");
@@ -54,7 +56,8 @@ namespace SQConvert {
 	template <> int Return<AIIndustryList_CargoProducing *>(HSQUIRRELVM vm, AIIndustryList_CargoProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryList_CargoProducing", res, NULL, DefSQDestructorCallback<AIIndustryList_CargoProducing>); return 1; }
 }; // namespace SQConvert
 
-void SQAIIndustryList_CargoProducing_Register(Squirrel *engine) {
+void SQAIIndustryList_CargoProducing_Register(Squirrel *engine)
+{
 	DefSQClass <AIIndustryList_CargoProducing> SQAIIndustryList_CargoProducing("AIIndustryList_CargoProducing");
 	SQAIIndustryList_CargoProducing.PreRegister(engine, "AIAbstractList");
 	SQAIIndustryList_CargoProducing.AddConstructor<void (AIIndustryList_CargoProducing::*)(CargoID cargo_id), 2>(engine, "xi");

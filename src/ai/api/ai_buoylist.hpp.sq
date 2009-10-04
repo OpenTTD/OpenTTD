@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIBuoyList *>(HSQUIRRELVM vm, AIBuoyList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBuoyList", res, NULL, DefSQDestructorCallback<AIBuoyList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIBuoyList_Register(Squirrel *engine) {
+void SQAIBuoyList_Register(Squirrel *engine)
+{
 	DefSQClass <AIBuoyList> SQAIBuoyList("AIBuoyList");
 	SQAIBuoyList.PreRegister(engine, "AIAbstractList");
 	SQAIBuoyList.AddConstructor<void (AIBuoyList::*)(), 1>(engine, "x");

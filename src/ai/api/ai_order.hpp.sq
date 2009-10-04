@@ -32,7 +32,8 @@ namespace SQConvert {
 	template <> int Return<AIOrder *>(HSQUIRRELVM vm, AIOrder *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIOrder", res, NULL, DefSQDestructorCallback<AIOrder>); return 1; }
 }; // namespace SQConvert
 
-void SQAIOrder_Register(Squirrel *engine) {
+void SQAIOrder_Register(Squirrel *engine)
+{
 	DefSQClass <AIOrder> SQAIOrder("AIOrder");
 	SQAIOrder.PreRegister(engine);
 	SQAIOrder.AddConstructor<void (AIOrder::*)(), 1>(engine, "x");

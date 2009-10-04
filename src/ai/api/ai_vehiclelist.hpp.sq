@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicleList *>(HSQUIRRELVM vm, AIVehicleList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList", res, NULL, DefSQDestructorCallback<AIVehicleList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIVehicleList_Register(Squirrel *engine) {
+void SQAIVehicleList_Register(Squirrel *engine)
+{
 	DefSQClass <AIVehicleList> SQAIVehicleList("AIVehicleList");
 	SQAIVehicleList.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList.AddConstructor<void (AIVehicleList::*)(), 1>(engine, "x");
@@ -37,7 +38,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicleList_Station *>(HSQUIRRELVM vm, AIVehicleList_Station *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_Station", res, NULL, DefSQDestructorCallback<AIVehicleList_Station>); return 1; }
 }; // namespace SQConvert
 
-void SQAIVehicleList_Station_Register(Squirrel *engine) {
+void SQAIVehicleList_Station_Register(Squirrel *engine)
+{
 	DefSQClass <AIVehicleList_Station> SQAIVehicleList_Station("AIVehicleList_Station");
 	SQAIVehicleList_Station.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_Station.AddConstructor<void (AIVehicleList_Station::*)(StationID station_id), 2>(engine, "xi");
@@ -54,7 +56,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicleList_Depot *>(HSQUIRRELVM vm, AIVehicleList_Depot *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_Depot", res, NULL, DefSQDestructorCallback<AIVehicleList_Depot>); return 1; }
 }; // namespace SQConvert
 
-void SQAIVehicleList_Depot_Register(Squirrel *engine) {
+void SQAIVehicleList_Depot_Register(Squirrel *engine)
+{
 	DefSQClass <AIVehicleList_Depot> SQAIVehicleList_Depot("AIVehicleList_Depot");
 	SQAIVehicleList_Depot.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_Depot.AddConstructor<void (AIVehicleList_Depot::*)(TileIndex tile), 2>(engine, "xi");
@@ -71,7 +74,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicleList_SharedOrders *>(HSQUIRRELVM vm, AIVehicleList_SharedOrders *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_SharedOrders", res, NULL, DefSQDestructorCallback<AIVehicleList_SharedOrders>); return 1; }
 }; // namespace SQConvert
 
-void SQAIVehicleList_SharedOrders_Register(Squirrel *engine) {
+void SQAIVehicleList_SharedOrders_Register(Squirrel *engine)
+{
 	DefSQClass <AIVehicleList_SharedOrders> SQAIVehicleList_SharedOrders("AIVehicleList_SharedOrders");
 	SQAIVehicleList_SharedOrders.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_SharedOrders.AddConstructor<void (AIVehicleList_SharedOrders::*)(VehicleID vehicle_id), 2>(engine, "xi");
@@ -88,7 +92,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicleList_Group *>(HSQUIRRELVM vm, AIVehicleList_Group *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_Group", res, NULL, DefSQDestructorCallback<AIVehicleList_Group>); return 1; }
 }; // namespace SQConvert
 
-void SQAIVehicleList_Group_Register(Squirrel *engine) {
+void SQAIVehicleList_Group_Register(Squirrel *engine)
+{
 	DefSQClass <AIVehicleList_Group> SQAIVehicleList_Group("AIVehicleList_Group");
 	SQAIVehicleList_Group.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_Group.AddConstructor<void (AIVehicleList_Group::*)(GroupID group_id), 2>(engine, "xi");
@@ -105,7 +110,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicleList_DefaultGroup *>(HSQUIRRELVM vm, AIVehicleList_DefaultGroup *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_DefaultGroup", res, NULL, DefSQDestructorCallback<AIVehicleList_DefaultGroup>); return 1; }
 }; // namespace SQConvert
 
-void SQAIVehicleList_DefaultGroup_Register(Squirrel *engine) {
+void SQAIVehicleList_DefaultGroup_Register(Squirrel *engine)
+{
 	DefSQClass <AIVehicleList_DefaultGroup> SQAIVehicleList_DefaultGroup("AIVehicleList_DefaultGroup");
 	SQAIVehicleList_DefaultGroup.PreRegister(engine, "AIAbstractList");
 	SQAIVehicleList_DefaultGroup.AddConstructor<void (AIVehicleList_DefaultGroup::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");

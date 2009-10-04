@@ -210,7 +210,8 @@ BEGIN {
 
 	print "";
 	# Then do the registration functions of the class. */
-	print "void SQ" cls "_Register(Squirrel *engine) {"
+	print "void SQ" cls "_Register(Squirrel *engine)"
+	print "{"
 	print "	DefSQClass <" cls "> SQ" cls "(\"" cls "\");"
 	if (super_cls == "AIObject" || super_cls == "AIAbstractList::Valuator") {
 		print "	SQ" cls ".PreRegister(engine);"

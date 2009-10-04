@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIExecMode *>(HSQUIRRELVM vm, AIExecMode *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIExecMode", res, NULL, DefSQDestructorCallback<AIExecMode>); return 1; }
 }; // namespace SQConvert
 
-void SQAIExecMode_Register(Squirrel *engine) {
+void SQAIExecMode_Register(Squirrel *engine)
+{
 	DefSQClass <AIExecMode> SQAIExecMode("AIExecMode");
 	SQAIExecMode.PreRegister(engine);
 	SQAIExecMode.AddConstructor<void (AIExecMode::*)(), 1>(engine, "x");

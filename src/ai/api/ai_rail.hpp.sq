@@ -30,7 +30,8 @@ namespace SQConvert {
 	template <> int Return<AIRail *>(HSQUIRRELVM vm, AIRail *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRail", res, NULL, DefSQDestructorCallback<AIRail>); return 1; }
 }; // namespace SQConvert
 
-void SQAIRail_Register(Squirrel *engine) {
+void SQAIRail_Register(Squirrel *engine)
+{
 	DefSQClass <AIRail> SQAIRail("AIRail");
 	SQAIRail.PreRegister(engine);
 	SQAIRail.AddConstructor<void (AIRail::*)(), 1>(engine, "x");

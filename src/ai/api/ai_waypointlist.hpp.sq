@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIWaypointList *>(HSQUIRRELVM vm, AIWaypointList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypointList", res, NULL, DefSQDestructorCallback<AIWaypointList>); return 1; }
 }; // namespace SQConvert
 
-void SQAIWaypointList_Register(Squirrel *engine) {
+void SQAIWaypointList_Register(Squirrel *engine)
+{
 	DefSQClass <AIWaypointList> SQAIWaypointList("AIWaypointList");
 	SQAIWaypointList.PreRegister(engine, "AIAbstractList");
 	SQAIWaypointList.AddConstructor<void (AIWaypointList::*)(), 1>(engine, "x");
@@ -37,7 +38,8 @@ namespace SQConvert {
 	template <> int Return<AIWaypointList_Vehicle *>(HSQUIRRELVM vm, AIWaypointList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypointList_Vehicle", res, NULL, DefSQDestructorCallback<AIWaypointList_Vehicle>); return 1; }
 }; // namespace SQConvert
 
-void SQAIWaypointList_Vehicle_Register(Squirrel *engine) {
+void SQAIWaypointList_Vehicle_Register(Squirrel *engine)
+{
 	DefSQClass <AIWaypointList_Vehicle> SQAIWaypointList_Vehicle("AIWaypointList_Vehicle");
 	SQAIWaypointList_Vehicle.PreRegister(engine, "AIAbstractList");
 	SQAIWaypointList_Vehicle.AddConstructor<void (AIWaypointList_Vehicle::*)(VehicleID vehicle_id), 2>(engine, "xi");

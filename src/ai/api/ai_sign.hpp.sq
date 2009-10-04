@@ -24,7 +24,8 @@ namespace SQConvert {
 	template <> int Return<AISign *>(HSQUIRRELVM vm, AISign *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AISign", res, NULL, DefSQDestructorCallback<AISign>); return 1; }
 }; // namespace SQConvert
 
-void SQAISign_Register(Squirrel *engine) {
+void SQAISign_Register(Squirrel *engine)
+{
 	DefSQClass <AISign> SQAISign("AISign");
 	SQAISign.PreRegister(engine);
 	SQAISign.AddConstructor<void (AISign::*)(), 1>(engine, "x");

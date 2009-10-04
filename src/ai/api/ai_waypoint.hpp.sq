@@ -20,7 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIWaypoint *>(HSQUIRRELVM vm, AIWaypoint *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypoint", res, NULL, DefSQDestructorCallback<AIWaypoint>); return 1; }
 }; // namespace SQConvert
 
-void SQAIWaypoint_Register(Squirrel *engine) {
+void SQAIWaypoint_Register(Squirrel *engine)
+{
 	DefSQClass <AIWaypoint> SQAIWaypoint("AIWaypoint");
 	SQAIWaypoint.PreRegister(engine, "AIBaseStation");
 	SQAIWaypoint.AddConstructor<void (AIWaypoint::*)(), 1>(engine, "x");

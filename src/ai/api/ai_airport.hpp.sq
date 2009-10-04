@@ -26,7 +26,8 @@ namespace SQConvert {
 	template <> int Return<AIAirport *>(HSQUIRRELVM vm, AIAirport *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIAirport", res, NULL, DefSQDestructorCallback<AIAirport>); return 1; }
 }; // namespace SQConvert
 
-void SQAIAirport_Register(Squirrel *engine) {
+void SQAIAirport_Register(Squirrel *engine)
+{
 	DefSQClass <AIAirport> SQAIAirport("AIAirport");
 	SQAIAirport.PreRegister(engine);
 	SQAIAirport.AddConstructor<void (AIAirport::*)(), 1>(engine, "x");

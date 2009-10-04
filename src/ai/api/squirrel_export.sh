@@ -76,7 +76,7 @@ echo "
 /Note: this line a marker in squirrel_export.sh. Do not change!/ {
 	print \$0
 	gsub(\"^.*/\", \"\")
-	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine) {$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
+	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
 
 	for (i = 1; files[i] != \"\"; i++) {
 		print \"#include \\\"api/\" files[i] \"\\\"\" \$0
@@ -89,7 +89,7 @@ echo "
 	print \$0
 	gsub(\"^.*/\", \"\")
 	print \"	squirrel_register_std(this->engine);\" \$0
-	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine) {$' *.hpp.sq | sed 's/^.*void //;s/Squirrel \*/this->/;s/ {/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
+	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
 
 	for (i = 1; regs[i] != \"\"; i++) {
 		if (regs[i] == \"SQAIController_Register(this->engine);\") continue

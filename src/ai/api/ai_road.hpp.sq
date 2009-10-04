@@ -28,7 +28,8 @@ namespace SQConvert {
 	template <> int Return<AIRoad *>(HSQUIRRELVM vm, AIRoad *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRoad", res, NULL, DefSQDestructorCallback<AIRoad>); return 1; }
 }; // namespace SQConvert
 
-void SQAIRoad_Register(Squirrel *engine) {
+void SQAIRoad_Register(Squirrel *engine)
+{
 	DefSQClass <AIRoad> SQAIRoad("AIRoad");
 	SQAIRoad.PreRegister(engine);
 	SQAIRoad.AddConstructor<void (AIRoad::*)(), 1>(engine, "x");
