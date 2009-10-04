@@ -16,7 +16,6 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 
-#include "packet.h"
 #include "tcp.h"
 
 NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :

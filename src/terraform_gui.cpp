@@ -29,10 +29,8 @@
 #include "textbuf_gui.h"
 #include "genworld.h"
 #include "tree_map.h"
-#include "station_map.h"
 #include "landscape_type.h"
 #include "tilehighlight_func.h"
-#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

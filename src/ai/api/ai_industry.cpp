@@ -12,7 +12,6 @@
 #include "ai_industry.hpp"
 #include "ai_cargo.hpp"
 #include "ai_map.hpp"
-#include "../../tile_type.h"
 #include "../../industry.h"
 #include "../../strings_func.h"
 #include "../../station_base.h"

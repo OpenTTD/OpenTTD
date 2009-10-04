@@ -24,7 +24,6 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "date_func.h"
-#include "core/random_func.hpp"
 #include "engine_func.h"
 #include "newgrf_storage.h"
 #include "water.h"
@@ -32,7 +31,6 @@
 #include "tilehighlight_func.h"
 #include "saveload/saveload.h"
 #include "void_map.h"
-#include "settings_type.h"
 #include "town.h"
 
 #include "table/sprites.h"

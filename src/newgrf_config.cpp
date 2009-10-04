@@ -10,13 +10,10 @@
 /** @file newgrf_config.cpp Finding NewGRFs and configuring them. */
 
 #include "stdafx.h"
-#include "core/sort_func.hpp"
 #include "debug.h"
 #include "3rdparty/md5/md5.h"
 #include "newgrf.h"
-#include "string_func.h"
 #include "gamelog.h"
-#include "network/network_type.h"
 #include "network/network_func.h"
 #include "gfx_func.h"
 

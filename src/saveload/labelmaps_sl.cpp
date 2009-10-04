@@ -10,17 +10,8 @@
 /** @file labelmaps_sl.cpp Code handling saving and loading of rail type label mappings */
 
 #include "../stdafx.h"
-#include "../strings_type.h"
-#include "../rail.h"
-#include "../map_func.h"
-#include "../tile_map.h"
-#include "../rail_map.h"
-#include "../road_map.h"
 #include "../station_map.h"
 #include "../tunnelbridge_map.h"
-#include "../core/alloc_func.hpp"
-#include "../core/smallvec_type.hpp"
-#include "../settings_type.h"
 
 #include "saveload.h"
 

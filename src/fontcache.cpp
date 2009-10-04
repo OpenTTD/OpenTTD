@@ -10,11 +10,9 @@
 /** @file fontcache.cpp Cache for characters from fonts. */
 
 #include "stdafx.h"
-#include "spritecache.h"
 #include "fontcache.h"
 #include "blitter/factory.hpp"
 #include "gfx_func.h"
-#include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
 
 #include "table/sprites.h"

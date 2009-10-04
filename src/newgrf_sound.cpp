@@ -16,7 +16,6 @@
 #include "newgrf_sound.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
-#include "core/smallvec_type.hpp"
 #include "core/mem_func.hpp"
 
 static SmallVector<SoundEntry, ORIGINAL_SAMPLE_COUNT> _sounds;

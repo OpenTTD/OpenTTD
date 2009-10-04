@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "company_func.h"
-#include "gfx_func.h"
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "zoom_func.h"

@@ -14,11 +14,9 @@
 #include "../newgrf_station.h"
 #include "../vehicle_base.h"
 #include "../town.h"
-#include "../station_map.h"
 
 #include "table/strings.h"
 
-#include "saveload.h"
 #include "saveload_internal.h"
 
 /** Helper structure to convert from the old waypoint system. */

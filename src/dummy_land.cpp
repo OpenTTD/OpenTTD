@@ -13,7 +13,6 @@
 #include "tile_cmd.h"
 #include "command_func.h"
 #include "viewport_func.h"
-#include "tile_map.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

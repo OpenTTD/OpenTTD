@@ -11,11 +11,9 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "debug.h"
 #include "landscape.h"
 #include "newgrf_text.h"
 #include "saveload/saveload.h"
-#include "tile_map.h"
 #include "gui.h"
 #include "station_gui.h"
 #include "viewport_func.h"
@@ -26,7 +24,6 @@
 #include "town.h"
 #include "network/network.h"
 #include "network/network_content.h"
-#include "variables.h"
 #include "company_base.h"
 #include "texteff.hpp"
 #include "cargotype.h"
@@ -36,11 +33,9 @@
 #include "fios.h"
 #include "zoom_func.h"
 #include "window_func.h"
-#include "string_func.h"
 #include "newgrf_cargo.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
-#include "core/sort_func.hpp"
 
 #include "table/strings.h"
 

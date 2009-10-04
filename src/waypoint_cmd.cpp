@@ -13,13 +13,11 @@
 
 #include "command_func.h"
 #include "landscape.h"
-#include "economy_func.h"
 #include "bridge_map.h"
 #include "town.h"
 #include "waypoint_base.h"
 #include "yapf/yapf.h"
 #include "strings_func.h"
-#include "gfx_func.h"
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
@@ -27,8 +25,7 @@
 #include "string_func.h"
 #include "company_func.h"
 #include "newgrf_station.h"
-#include "viewport_func.h"
-#include "train.h"
+#include "company_base.h"
 #include "water.h"
 
 #include "table/strings.h"

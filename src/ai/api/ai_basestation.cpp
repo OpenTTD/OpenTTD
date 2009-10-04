@@ -10,13 +10,11 @@
 /** @file ai_basestation.cpp Implementation of AIBaseStation. */
 
 #include "ai_basestation.hpp"
-#include "../../base_station_base.h"
 #include "../../station_base.h"
 #include "../../command_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../company_func.h"
-#include "../../core/alloc_func.hpp"
 #include "table/strings.h"
 
 /* static */ bool AIBaseStation::IsValidBaseStation(StationID station_id)

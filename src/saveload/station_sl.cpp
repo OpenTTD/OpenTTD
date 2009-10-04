@@ -13,11 +13,7 @@
 #include "../station_base.h"
 #include "../waypoint_base.h"
 #include "../roadstop_base.h"
-#include "../order_base.h"
 #include "../vehicle_base.h"
-#include "../core/bitmath_func.hpp"
-#include "../core/alloc_func.hpp"
-#include "../variables.h"
 #include "../newgrf_station.h"
 
 #include "saveload.h"

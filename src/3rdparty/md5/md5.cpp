@@ -57,7 +57,6 @@
  */
 
 #include "../../stdafx.h"
-#include "../../core/bitmath_func.hpp"
 #include "../../core/endian_func.hpp"
 #include "md5.h"
 

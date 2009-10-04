@@ -15,11 +15,8 @@
 
 #include "../../stdafx.h"
 #include "../../openttd.h"
-#include "../../variables.h"
 
 #include "../network_internal.h"
-#include "packet.h"
-#include "tcp_game.h"
 #include "../../core/pool_func.hpp"
 
 #include "table/strings.h"

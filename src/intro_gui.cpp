@@ -15,7 +15,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "network/network.h"
-#include "variables.h"
 #include "genworld.h"
 #include "network/network_gui.h"
 #include "network/network_content.h"
@@ -23,9 +22,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "fios.h"
-#include "settings_type.h"
 #include "functions.h"
-#include "newgrf_config.h"
 #include "ai/ai_gui.hpp"
 #include "gfx_func.h"
 

@@ -13,7 +13,6 @@
 #include "../gfx_func.h"
 #include "../fileio_func.h"
 #include "../debug.h"
-#include "../core/alloc_func.hpp"
 #include "../strings_func.h"
 #include "table/strings.h"
 #include "../gui.h"

@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "core/alloc_func.hpp"
-#include "core/math_func.hpp"
 #include "core/mem_func.hpp"
 #include "debug.h"
 #include "ini_type.h"

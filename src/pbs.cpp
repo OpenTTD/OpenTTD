@@ -9,7 +9,6 @@
 
 /** @file pbs.cpp */
 #include "stdafx.h"
-#include "pbs.h"
 #include "functions.h"
 #include "vehicle_func.h"
 #include "yapf/follow_track.hpp"

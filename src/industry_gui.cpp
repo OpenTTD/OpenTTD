@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "debug.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -26,7 +25,6 @@
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
 #include "strings_func.h"
-#include "map_func.h"
 #include "company_func.h"
 #include "tilehighlight_func.h"
 #include "string_func.h"

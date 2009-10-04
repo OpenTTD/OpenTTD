@@ -23,7 +23,6 @@
 #include "zoom_func.h"
 #include "map_func.h"
 #include "vehicle_base.h"
-#include "settings_type.h"
 #include "cheat_type.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"

@@ -13,9 +13,7 @@
 #include "ai_group.hpp"
 #include "ai_map.hpp"
 #include "ai_station.hpp"
-#include "ai_vehicle.hpp"
 #include "../../company_func.h"
-#include "../../depot_base.h"
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 

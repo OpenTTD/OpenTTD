@@ -35,7 +35,6 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "tunnelbridge.h"
-#include "engine_base.h"
 #include "cheat_type.h"
 #include "elrail_func.h"
 #include "landscape_type.h"

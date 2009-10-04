@@ -10,7 +10,6 @@
 /** @file newgrf_canal.cpp Implementation of NewGRF canals. */
 
 #include "stdafx.h"
-#include "core/overflowsafe_type.hpp"
 #include "tile_type.h"
 #include "debug.h"
 #include "newgrf_commons.h"

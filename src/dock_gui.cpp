@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "tile_map.h"
-#include "station_type.h"
 #include "terraform_gui.h"
 #include "window_gui.h"
 #include "station_gui.h"
@@ -27,7 +26,6 @@
 #include "slope_func.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
-#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

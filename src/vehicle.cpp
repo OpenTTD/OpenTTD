@@ -42,7 +42,6 @@
 #include "ai/ai.hpp"
 #include "core/smallmap_type.hpp"
 #include "depot_func.h"
-#include "settings_type.h"
 #include "network/network.h"
 #include "core/pool_func.hpp"
 #include "economy_base.h"

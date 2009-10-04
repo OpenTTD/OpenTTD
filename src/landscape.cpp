@@ -28,7 +28,6 @@
 #include "water.h"
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
-#include "settings_type.h"
 #include "animated_tile_func.h"
 
 #include "table/sprites.h"

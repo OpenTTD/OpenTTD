@@ -14,9 +14,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "address.h"
-#include "config.h"
-#include "host.h"
-#include "../../string_func.h"
 #include "../../debug.h"
 
 const char *NetworkAddress::GetHostname()

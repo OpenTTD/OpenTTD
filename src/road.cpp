@@ -19,7 +19,6 @@
 #include "company_base.h"
 #include "engine_base.h"
 #include "date_func.h"
-#include "settings_type.h"
 #include "landscape.h"
 
 bool IsPossibleCrossing(const TileIndex tile, Axis ax)

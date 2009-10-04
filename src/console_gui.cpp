@@ -17,11 +17,9 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "gfx_func.h"
-#include "core/math_func.hpp"
 #include "settings_type.h"
 #include "rev.h"
 
-#include "table/strings.h"
 
 enum {
 	ICON_HISTORY_SIZE       = 20,

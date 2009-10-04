@@ -14,7 +14,6 @@
 #include "gamelog.h"
 #include "map_func.h"
 #include "rev.h"
-#include "string_func.h"
 #include "strings_func.h"
 #include "blitter/factory.hpp"
 #include "base_media_base.h"

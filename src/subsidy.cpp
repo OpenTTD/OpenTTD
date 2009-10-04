@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "company_func.h"
 #include "industry.h"
-#include "map_func.h"
 #include "town.h"
 #include "news_func.h"
 #include "ai/ai.hpp"

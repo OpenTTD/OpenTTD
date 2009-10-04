@@ -29,7 +29,6 @@
 #include "widgets/dropdown_type.h"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
-#include "settings_type.h"
 #include "spritecache.h"
 
 #include "station_map.h"

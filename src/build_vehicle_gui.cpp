@@ -30,7 +30,6 @@
 #include "widgets/dropdown_func.h"
 #include "window_gui.h"
 #include "engine_gui.h"
-#include "settings_type.h"
 #include "cargotype.h"
 #include "newgrf_cargo.h"
 

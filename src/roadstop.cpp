@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "roadveh.h"
-#include "station_map.h"
 #include "core/pool_func.hpp"
 #include "roadstop_base.h"
 #include "station_base.h"

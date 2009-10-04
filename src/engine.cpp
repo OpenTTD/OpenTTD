@@ -10,11 +10,9 @@
 /** @file engine.cpp Base for all engine handling. */
 
 #include "stdafx.h"
-#include "debug.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "news_func.h"
-#include "variables.h"
 #include "aircraft.h"
 #include "newgrf.h"
 #include "newgrf_engine.h"
@@ -27,8 +25,6 @@
 #include "autoreplace_gui.h"
 #include "string_func.h"
 #include "ai/ai.hpp"
-#include "vehicle_func.h"
-#include "settings_type.h"
 #include "core/pool_func.hpp"
 #include "engine_gui.h"
 

@@ -11,12 +11,9 @@
 
 #include "stdafx.h"
 #include "gui.h"
-#include "window_gui.h"
-#include "textbuf_gui.h"
 #include "newgrf.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "string_func.h"
 #include "gfx_func.h"
 #include "gamelog.h"
 #include "settings_func.h"

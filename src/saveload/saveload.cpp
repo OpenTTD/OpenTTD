@@ -31,7 +31,6 @@
 #include "../window_func.h"
 #include "../strings_func.h"
 #include "../gfx_func.h"
-#include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"

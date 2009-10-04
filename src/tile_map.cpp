@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "tile_map.h"
 #include "core/math_func.hpp"
-#include "settings_type.h"
 
 /**
  * Return the slope of a given tile

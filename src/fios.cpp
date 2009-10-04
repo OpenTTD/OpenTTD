@@ -527,7 +527,6 @@ void FiosGetHeightmapList(SaveLoadDialogMode mode)
 }
 
 #if defined(ENABLE_NETWORK)
-#include "core/smallvec_type.hpp"
 #include "network/network_content.h"
 #include "3rdparty/md5/md5.h"
 

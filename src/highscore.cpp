@@ -10,7 +10,6 @@
 /** @file highscore.cpp Definition of functions used for highscore handling */
 
 #include "highscore.h"
-#include "settings_type.h"
 #include "company_base.h"
 #include "company_func.h"
 #include "cheat_func.h"

@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "landscape.h"
-#include "tile_map.h"
 #include "gui.h"
 #include "command_func.h"
 #include "network/network.h"

@@ -17,7 +17,6 @@
 #include "core/alloc_func.hpp"
 #include "core/random_func.hpp"
 #include "landscape_type.h"
-#include "settings_type.h"
 
 /*
  *

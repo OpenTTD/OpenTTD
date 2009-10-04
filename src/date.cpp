@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "settings_type.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "currency.h"

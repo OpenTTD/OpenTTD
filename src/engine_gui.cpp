@@ -15,18 +15,14 @@
 #include "engine_func.h"
 #include "engine_base.h"
 #include "command_func.h"
-#include "news_type.h"
-#include "newgrf_engine.h"
 #include "strings_func.h"
 #include "engine_gui.h"
 #include "articulated_vehicles.h"
 #include "vehicle_func.h"
 #include "company_func.h"
 #include "rail.h"
-#include "core/sort_func.hpp"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 /** Return the category of an engine.
  * @param engine Engine to examine.

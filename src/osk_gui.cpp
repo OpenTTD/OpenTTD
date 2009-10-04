@@ -10,7 +10,6 @@
 /** @file osk_gui.cpp The On Screen Keyboard GUI */
 
 #include "stdafx.h"
-#include "core/math_func.hpp"
 #include "string_func.h"
 #include "strings_func.h"
 #include "debug.h"

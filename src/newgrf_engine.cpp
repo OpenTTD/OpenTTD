@@ -22,7 +22,6 @@
 #include "core/random_func.hpp"
 #include "aircraft.h"
 #include "core/smallmap_type.hpp"
-#include "settings_type.h"
 #include "station_base.h"
 
 struct WagonOverride {

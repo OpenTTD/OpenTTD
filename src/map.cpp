@@ -11,10 +11,8 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "core/bitmath_func.hpp"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
-#include "map_func.h"
 #include "tile_map.h"
 
 #if defined(_MSC_VER)

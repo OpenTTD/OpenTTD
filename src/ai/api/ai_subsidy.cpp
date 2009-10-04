@@ -11,10 +11,8 @@
 
 #include "ai_subsidy.hpp"
 #include "ai_date.hpp"
-#include "ai_log.hpp"
 #include "../../subsidy_base.h"
 #include "../../station_base.h"
-#include "../../cargotype.h"
 
 /* static */ bool AISubsidy::IsValidSubsidy(SubsidyID subsidy_id)
 {

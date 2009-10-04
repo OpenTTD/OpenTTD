@@ -11,9 +11,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "tile_type.h"
 #include "strings_type.h"
-#include "company_type.h"
 #include "industry.h"
 #include "newgrf.h"
 #include "newgrf_industries.h"

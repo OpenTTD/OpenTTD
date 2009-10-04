@@ -15,7 +15,6 @@
 #include "../company_func.h"
 #include "../debug.h"
 #include "../network/network.h"
-#include "../settings_type.h"
 #include "../window_func.h"
 #include "../command_func.h"
 #include "ai.hpp"

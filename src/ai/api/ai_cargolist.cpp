@@ -12,7 +12,6 @@
 #include "ai_cargolist.hpp"
 #include "ai_industry.hpp"
 #include "../../cargotype.h"
-#include "../../tile_type.h"
 #include "../../industry.h"
 
 AICargoList::AICargoList()

@@ -13,10 +13,7 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "os_abstraction.h"
 #include "address.h"
-#include "../../core/alloc_func.hpp"
-#include "../../string_func.h"
 
 /**
  * Internal implementation for finding the broadcast IPs.

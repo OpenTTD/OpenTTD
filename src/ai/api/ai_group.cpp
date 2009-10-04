@@ -16,7 +16,6 @@
 #include "../../group.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../core/alloc_func.hpp"
 #include "../../command_func.h"
 #include "../../autoreplace_func.h"
 #include "../../settings_func.h"

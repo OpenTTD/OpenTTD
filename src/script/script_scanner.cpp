@@ -16,7 +16,6 @@
 
 #include <squirrel.h>
 #include "../script/squirrel.hpp"
-#include "script_info.hpp"
 #include "script_scanner.hpp"
 
 void ScriptScanner::ScanDir(const char *dirname, const char *info_file_name)

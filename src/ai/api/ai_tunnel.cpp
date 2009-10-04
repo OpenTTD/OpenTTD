@@ -14,8 +14,6 @@
 #include "../ai_instance.hpp"
 #include "../../tunnel_map.h"
 #include "../../command_func.h"
-#include "../../tunnelbridge.h"
-#include "../../road_func.h"
 
 /* static */ bool AITunnel::IsTunnelTile(TileIndex tile)
 {

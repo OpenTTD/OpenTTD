@@ -15,8 +15,7 @@
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "news_type.h"
-#include "settings_type.h"
-#include "transparency.h"
+#include "gfx_func.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"
@@ -31,7 +30,6 @@
 #include "statusbar_gui.h"
 #include "company_manager_face.h"
 #include "company_func.h"
-#include "map_func.h"
 #include "engine_gui.h"
 
 #include "table/strings.h"

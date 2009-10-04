@@ -10,14 +10,12 @@
 /** @file network.cpp Base functions for networking support. */
 
 #include "../stdafx.h"
-#include "../company_type.h"
 
 #ifdef ENABLE_NETWORK
 
 #include "../openttd.h"
 #include "../strings_func.h"
 #include "../command_func.h"
-#include "../variables.h"
 #include "../date_func.h"
 #include "network_internal.h"
 #include "network_client.h"
@@ -32,13 +30,10 @@
 #include "../3rdparty/md5/md5.h"
 #include "../core/random_func.hpp"
 #include "../window_func.h"
-#include "../string_func.h"
 #include "../company_func.h"
 #include "../company_base.h"
-#include "../settings_type.h"
 #include "../landscape_type.h"
 #include "../rev.h"
-#include "../core/alloc_func.hpp"
 #include "../core/pool_func.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../fileio_func.h"

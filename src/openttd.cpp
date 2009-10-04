@@ -23,7 +23,6 @@
 #include "video/video_driver.hpp"
 
 #include "fontcache.h"
-#include "gfxinit.h"
 #include "gui.h"
 #include "sound_func.h"
 #include "window_func.h"
@@ -34,7 +33,6 @@
 #include "company_func.h"
 #include "command_func.h"
 #include "news_func.h"
-#include "fileio_func.h"
 #include "fios.h"
 #include "aircraft.h"
 #include "roadveh.h"
@@ -61,7 +59,8 @@
 #include "rev.h"
 #include "highscore.h"
 #include "thread/thread.h"
-#include "station_base.h"
+#include "base_station_base.h"
+#include "airport.h"
 #include "crashlog.h"
 
 #include "newgrf_commons.h"

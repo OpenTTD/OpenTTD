@@ -16,7 +16,6 @@
 #include "../../strings_func.h"
 #include "../../core/alloc_func.hpp"
 #include "../../economy_func.h"
-#include "../../settings_type.h"
 #include "../../date_func.h"
 
 /* static */ bool AIBridge::IsValidBridge(BridgeID bridge_id)

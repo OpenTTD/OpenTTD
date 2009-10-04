@@ -14,7 +14,6 @@
 #include "window_gui.h"
 #include "transparency.h"
 #include "sound_func.h"
-#include "core/math_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

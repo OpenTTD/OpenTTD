@@ -19,7 +19,6 @@
 #include "window_func.h"
 #include "sound_func.h"
 #include "gfx_func.h"
-#include "core/math_func.hpp"
 #include "core/random_func.hpp"
 
 #include "table/strings.h"

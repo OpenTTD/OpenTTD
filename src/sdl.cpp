@@ -13,7 +13,6 @@
 
 #ifdef WITH_SDL
 
-#include "openttd.h"
 #include "sdl.h"
 #include <SDL.h>
 

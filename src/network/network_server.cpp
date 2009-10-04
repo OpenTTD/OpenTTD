@@ -25,10 +25,8 @@
 #include "../station_base.h"
 #include "../genworld.h"
 #include "../fileio_func.h"
-#include "../string_func.h"
 #include "../company_func.h"
 #include "../company_gui.h"
-#include "../settings_type.h"
 #include "../window_func.h"
 #include "../openttd.h"
 

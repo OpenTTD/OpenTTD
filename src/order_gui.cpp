@@ -10,7 +10,6 @@
 /** @file order_gui.cpp GUI related to orders. */
 
 #include "stdafx.h"
-#include "station_map.h"
 #include "window_gui.h"
 #include "command_func.h"
 #include "viewport_func.h"
@@ -30,7 +29,6 @@
 #include "string_func.h"
 #include "tilehighlight_func.h"
 #include "network/network.h"
-#include "settings_type.h"
 #include "station_base.h"
 #include "waypoint_base.h"
 

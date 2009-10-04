@@ -10,7 +10,6 @@
 /** @file alloc_func.cpp Functions to 'handle' memory allocation errors */
 
 #include "../stdafx.h"
-#include "alloc_func.hpp"
 
 /**
  * Function to exit with an error message after malloc() or calloc() have failed

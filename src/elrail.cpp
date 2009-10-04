@@ -61,7 +61,6 @@
 #include "train.h"
 #include "rail_gui.h"
 #include "tunnelbridge_map.h"
-#include "vehicle_func.h"
 #include "tunnelbridge.h"
 #include "elrail_func.h"
 #include "engine_base.h"

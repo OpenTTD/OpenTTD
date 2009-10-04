@@ -12,7 +12,6 @@
 #include <squirrel.h>
 #include "ai_abstractlist.hpp"
 #include "../../debug.h"
-#include "../../core/alloc_func.hpp"
 #include "../../script/squirrel.hpp"
 
 /**

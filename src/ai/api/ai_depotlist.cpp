@@ -10,7 +10,6 @@
 /** @file ai_depotlist.cpp Implementation of AIDepotList and friends. */
 
 #include "ai_depotlist.hpp"
-#include "../../tile_map.h"
 #include "../../company_func.h"
 #include "../../depot_base.h"
 #include "../../station_base.h"

@@ -14,8 +14,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../core/smallvec_type.hpp"
 #include "../../thread/thread.h"
 
 #include "tcp.h"

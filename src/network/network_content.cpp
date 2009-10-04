@@ -13,8 +13,6 @@
 
 #include "../stdafx.h"
 #include "../rev.h"
-#include "../fileio_func.h"
-#include "../string_func.h"
 #include "../ai/ai.hpp"
 #include "../window_func.h"
 #include "../gui.h"

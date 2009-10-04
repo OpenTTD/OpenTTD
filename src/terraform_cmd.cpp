@@ -17,7 +17,6 @@
 #include "variables.h"
 #include "functions.h"
 #include "economy_func.h"
-#include "settings_type.h"
 
 #include "table/strings.h"
 

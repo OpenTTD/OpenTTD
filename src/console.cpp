@@ -10,9 +10,6 @@
 /** @file console.cpp Handling of the in-game console. */
 
 #include "stdafx.h"
-#include "core/alloc_func.hpp"
-#include "core/math_func.hpp"
-#include "string_func.h"
 #include "console_internal.h"
 #include "network/network.h"
 #include "network/network_func.h"

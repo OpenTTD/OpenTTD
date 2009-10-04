@@ -12,7 +12,6 @@
 #include "ai_bridgelist.hpp"
 #include "ai_bridge.hpp"
 #include "../../bridge.h"
-#include "../../date_func.h"
 
 AIBridgeList::AIBridgeList()
 {

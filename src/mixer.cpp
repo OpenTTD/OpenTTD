@@ -10,7 +10,6 @@
 /** @file mixer.cpp Mixing of sound samples. */
 
 #include "stdafx.h"
-#include "mixer.h"
 #include "core/math_func.hpp"
 
 struct MixerChannel {

@@ -15,12 +15,10 @@
 #include "command_func.h"
 #include "vehicle_gui.h"
 #include "train.h"
-#include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "engine_base.h"
 #include "window_func.h"
-#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

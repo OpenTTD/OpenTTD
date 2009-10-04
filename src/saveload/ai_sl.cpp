@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../company_base.h"
-#include "../company_func.h"
 #include "../debug.h"
 #include "saveload.h"
 #include "../string_func.h"

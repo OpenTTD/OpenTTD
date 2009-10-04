@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../newgrf_house.h"
 #include "../newgrf_commons.h"
-#include "../variables.h"
 #include "../town.h"
 
 #include "saveload.h"

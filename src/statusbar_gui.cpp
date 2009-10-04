@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "settings_type.h"
 #include "date_func.h"
 #include "gfx_func.h"
 #include "news_func.h"

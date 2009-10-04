@@ -14,9 +14,6 @@
 #include "signs_base.h"
 #include "signs_func.h"
 #include "strings_func.h"
-#include "viewport_func.h"
-#include "zoom_func.h"
-#include "functions.h"
 #include "core/pool_func.hpp"
 
 #include "table/strings.h"

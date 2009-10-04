@@ -21,7 +21,6 @@
 #include "autoreplace_func.h"
 #include "string_func.h"
 #include "company_func.h"
-#include "core/alloc_func.hpp"
 #include "core/pool_func.hpp"
 
 #include "table/strings.h"

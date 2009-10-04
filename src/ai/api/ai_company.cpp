@@ -11,7 +11,6 @@
 
 #include "ai_company.hpp"
 #include "ai_error.hpp"
-#include "ai_log.hpp"
 #include "../../command_func.h"
 #include "../../company_func.h"
 #include "../../company_base.h"
@@ -19,7 +18,6 @@
 #include "../../economy_func.h"
 #include "../../strings_func.h"
 #include "../../tile_map.h"
-#include "../../core/alloc_func.hpp"
 #include "../../string_func.h"
 #include "../../settings_func.h"
 #include "table/strings.h"

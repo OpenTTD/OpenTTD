@@ -19,7 +19,6 @@
 #include "command_func.h"
 #include "company_func.h"
 #include "company_base.h"
-#include "settings_type.h"
 #include "strings_func.h"
 #include "openttd.h"
 

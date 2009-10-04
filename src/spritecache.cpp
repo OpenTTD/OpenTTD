@@ -13,7 +13,6 @@
 #include "gfx_type.h"
 #include "fileio_func.h"
 #include "spriteloader/grf.hpp"
-#include "core/alloc_func.hpp"
 #include "gfx_func.h"
 #ifdef WITH_PNG
 #include "spriteloader/png.hpp"

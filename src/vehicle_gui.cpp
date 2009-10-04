@@ -37,7 +37,6 @@
 #include "widgets/dropdown_func.h"
 #include "timetable.h"
 #include "vehiclelist.h"
-#include "settings_type.h"
 #include "articulated_vehicles.h"
 #include "cargotype.h"
 

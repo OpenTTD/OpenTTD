@@ -10,8 +10,6 @@
 /** @file yapf_road.cpp The road pathfinding. */
 
 #include "../stdafx.h"
-#include "../depot_base.h"
-#include "../roadveh.h"
 #include "../roadstop_base.h"
 #include "../cargotype.h"
 #include "../newgrf_cargo.h"

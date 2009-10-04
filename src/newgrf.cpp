@@ -41,11 +41,8 @@
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "date_func.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
 #include "string_func.h"
 #include "network/network.h"
-#include "map_func.h"
 #include <map>
 #include "core/alloc_type.hpp"
 #include "core/mem_func.hpp"

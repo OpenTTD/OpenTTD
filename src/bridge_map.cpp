@@ -10,7 +10,6 @@
 /** @file bridge_map.cpp Map accessor functions for bridges. */
 
 #include "stdafx.h"
-#include "bridge_map.h"
 #include "landscape.h"
 #include "tunnelbridge_map.h"
 

@@ -9,13 +9,11 @@
 
 /** @file ai_road.cpp Implementation of AIRoad. */
 
-#include "ai_road.hpp"
 #include "ai_map.hpp"
 #include "ai_station.hpp"
 #include "ai_cargo.hpp"
 #include "../../station_base.h"
 #include "../../command_type.h"
-#include "../../settings_type.h"
 #include "../../company_func.h"
 #include "../../script/squirrel_helper_type.hpp"
 

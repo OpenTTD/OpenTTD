@@ -14,7 +14,6 @@
 #include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
-#include "../../rail.h"
 #include "../../engine_base.h"
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"

@@ -17,11 +17,9 @@
 #include "sound_func.h"
 #include "window_func.h"
 #include "strings_func.h"
-#include "settings_type.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
-#include "station_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
 

@@ -9,9 +9,7 @@
 
 /** @file ai_order.cpp Implementation of AIOrder. */
 
-#include "ai_order.hpp"
 #include "ai_vehicle.hpp"
-#include "ai_log.hpp"
 #include "../ai_instance.hpp"
 #include "../../debug.h"
 #include "../../vehicle_base.h"

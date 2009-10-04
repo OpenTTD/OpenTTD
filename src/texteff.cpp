@@ -17,7 +17,6 @@
 #include "transparency.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
-#include "functions.h"
 #include "viewport_func.h"
 #include "settings_type.h"
 

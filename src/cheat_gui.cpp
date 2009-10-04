@@ -19,7 +19,6 @@
 #include "saveload/saveload.h"
 #include "window_gui.h"
 #include "newgrf.h"
-#include "settings_type.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "rail_gui.h"

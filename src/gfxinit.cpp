@@ -12,14 +12,12 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "spritecache.h"
-#include "fileio_func.h"
 #include "fios.h"
 #include "newgrf.h"
 #include "3rdparty/md5/md5.h"
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "settings_type.h"
-#include "string_func.h"
 
 /* The type of set we're replacing */
 #define SET_TYPE "graphics"

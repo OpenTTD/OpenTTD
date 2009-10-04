@@ -13,8 +13,8 @@
 
 #include "stdafx.h"
 #include "landscape.h"
-#include "town.h"
-#include "industry.h"
+#include "house.h"
+#include "industrytype.h"
 #include "newgrf.h"
 #include "newgrf_commons.h"
 #include "station_map.h"

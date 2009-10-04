@@ -11,12 +11,8 @@
 
 #include "stdafx.h"
 #include "depot_base.h"
-#include "company_type.h"
 #include "order_func.h"
 #include "window_func.h"
-#include "core/bitmath_func.hpp"
-#include "tile_map.h"
-#include "water_map.h"
 #include "core/pool_func.hpp"
 #include "vehicle_gui.h"
 

@@ -43,7 +43,6 @@
 #include "zoom_func.h"
 #include "vehicle_func.h"
 #include "company_func.h"
-#include "station_func.h"
 #include "waypoint_func.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"

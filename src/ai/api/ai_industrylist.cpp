@@ -10,7 +10,6 @@
 /** @file ai_industrylist.cpp Implementation of AIIndustryList and friends. */
 
 #include "ai_industrylist.hpp"
-#include "../../tile_type.h"
 #include "../../industry.h"
 
 AIIndustryList::AIIndustryList()

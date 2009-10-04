@@ -18,7 +18,6 @@
 #include "bmp.h"
 #include "gfx_func.h"
 #include "fios.h"
-#include "settings_type.h"
 #include "fileio_func.h"
 
 #include "table/strings.h"

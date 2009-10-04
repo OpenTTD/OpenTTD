@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 
-#include "strings_type.h"
 #include "order_func.h"
 #include "window_func.h"
 #include "newgrf_station.h"

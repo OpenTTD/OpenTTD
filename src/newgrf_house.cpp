@@ -15,7 +15,6 @@
 #include "debug.h"
 #include "viewport_func.h"
 #include "landscape.h"
-#include "town_map.h"
 #include "sprite.h"
 #include "newgrf.h"
 #include "newgrf_house.h"

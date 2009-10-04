@@ -13,7 +13,6 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../company_manager_face.h"
-#include "../settings_type.h"
 
 #include "saveload.h"
 

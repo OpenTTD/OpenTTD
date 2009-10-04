@@ -17,14 +17,10 @@
 #include "strgen.h"
 #include "../table/control_codes.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <stdarg.h>
 
 #if (!defined(WIN32) && !defined(WIN64)) || defined(__CYGWIN__)
 #include <unistd.h>
-#include <sys/types.h>
 #include <sys/stat.h>
 #endif
 

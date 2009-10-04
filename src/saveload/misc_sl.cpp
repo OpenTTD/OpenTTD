@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../date_func.h"
 #include "../variables.h"
-#include "../core/random_func.hpp"
 #include "../openttd.h"
 #include "../zoom_func.h"
 #include "../vehicle_func.h"

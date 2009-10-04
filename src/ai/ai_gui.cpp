@@ -20,9 +20,7 @@
 #include "../gfx_func.h"
 #include "../command_func.h"
 #include "../network/network.h"
-#include "../string_func.h"
 #include "../textbuf_gui.h"
-#include "../settings_type.h"
 #include "../settings_func.h"
 #include "../network/network_content.h"
 

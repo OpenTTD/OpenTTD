@@ -13,7 +13,6 @@
 #include "../zoom_func.h"
 #include "../gfx_func.h"
 #include "../core/math_func.hpp"
-#include "../core/alloc_func.hpp"
 #include "32bpp_optimized.hpp"
 
 static FBlitter_32bppOptimized iFBlitter_32bppOptimized;

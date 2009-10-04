@@ -41,8 +41,6 @@
 #include "tilehighlight_func.h"
 #include "rail.h"
 #include "widgets/dropdown_type.h"
-#include "settings_type.h"
-#include "newgrf_config.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"

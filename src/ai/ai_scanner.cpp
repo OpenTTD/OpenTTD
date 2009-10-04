@@ -11,12 +11,9 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../string_func.h"
 #include "../fileio_func.h"
-#include "../fios.h"
 #include "../network/network.h"
 #include "../core/random_func.hpp"
-#include <sys/stat.h>
 
 #include <squirrel.h>
 #include "../script/squirrel.hpp"

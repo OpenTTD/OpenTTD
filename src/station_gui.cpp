@@ -29,10 +29,8 @@
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "tilehighlight_func.h"
-#include "core/smallmap_type.hpp"
 #include "company_base.h"
 #include "sortlist_type.h"
-#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

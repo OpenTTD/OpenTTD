@@ -24,7 +24,6 @@
 #include "string_func.h"
 #include "company_func.h"
 #include "company_gui.h"
-#include "settings_type.h"
 #include "vehicle_base.h"
 
 #include "table/strings.h"

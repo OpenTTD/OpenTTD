@@ -11,7 +11,6 @@
 
 #include "ai_waypointlist.hpp"
 #include "ai_vehicle.hpp"
-#include "ai_waypoint.hpp"
 #include "../../company_func.h"
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"

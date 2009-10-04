@@ -16,12 +16,11 @@
 #include "landscape.h"
 #include "variables.h"
 #include "genworld.h"
-#include "industry.h"
+#include "landscape_type.h"
 #include "functions.h"
 #include "economy_func.h"
 #include "viewport_func.h"
 #include "water.h"
-#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

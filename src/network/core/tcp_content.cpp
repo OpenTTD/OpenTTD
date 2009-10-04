@@ -14,7 +14,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
-#include "../../debug.h"
 #include "tcp_content.h"
 
 ContentInfo::ContentInfo()

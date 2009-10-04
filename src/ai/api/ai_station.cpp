@@ -13,15 +13,11 @@
 #include "ai_cargo.hpp"
 #include "ai_map.hpp"
 #include "ai_town.hpp"
-#include "../../command_func.h"
 #include "../../debug.h"
 #include "../../station_base.h"
 #include "../../roadstop_base.h"
-#include "../../string_func.h"
-#include "../../strings_func.h"
 #include "../../company_func.h"
 #include "../../town.h"
-#include "table/strings.h"
 
 /* static */ bool AIStation::IsValidStation(StationID station_id)
 {

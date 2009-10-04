@@ -12,11 +12,9 @@
 #include "stdafx.h"
 #include "landscape.h"
 #include "mixer.h"
-#include "fileio_func.h"
 #include "newgrf_sound.h"
 #include "fios.h"
 #include "window_gui.h"
-#include "map_func.h"
 #include "vehicle_base.h"
 #include "debug.h"
 

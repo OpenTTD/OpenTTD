@@ -14,7 +14,6 @@
 #include "../strings_func.h"
 #include "../gfx_func.h"
 #include "../window_func.h"
-#include "../core/math_func.hpp"
 #include "dropdown_type.h"
 
 #include "table/strings.h"

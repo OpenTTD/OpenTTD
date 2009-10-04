@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../settings_type.h"
 #include "../vehicle_base.h"
 #include "../saveload/saveload.h"
 #include "../gui.h"
@@ -21,11 +20,9 @@
 #include "../script/squirrel.hpp"
 #include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
-#include "../script/squirrel_std.hpp"
 
 #define DEFINE_SCRIPT_FILES
 
-#include "ai_info.hpp"
 #include "ai_config.hpp"
 #include "ai_storage.hpp"
 #include "ai_instance.hpp"

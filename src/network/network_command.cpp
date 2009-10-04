@@ -17,8 +17,6 @@
 #include "network_client.h"
 #include "../command_func.h"
 #include "../callback_table.h"
-#include "../core/alloc_func.hpp"
-#include "../string_func.h"
 #include "../company_func.h"
 
 /** Local queue of packets */

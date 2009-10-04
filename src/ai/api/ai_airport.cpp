@@ -13,9 +13,7 @@
 #include "ai_station.hpp"
 #include "../../station_base.h"
 #include "../../company_func.h"
-#include "../../command_type.h"
 #include "../../town.h"
-#include "../../economy_func.h"
 
 /* static */ bool AIAirport::IsValidAirportType(AirportType type)
 {

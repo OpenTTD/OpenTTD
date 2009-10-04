@@ -22,7 +22,6 @@
 #include "../subsidy_base.h"
 #include "../debug.h"
 #include "../depot_base.h"
-#include "../newgrf_config.h"
 #include "../zoom_func.h"
 #include "../date_func.h"
 #include "../vehicle_func.h"
