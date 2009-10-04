@@ -80,9 +80,8 @@ void QZ_ShowMouse()
 		[ NSCursor unhide ];
 		_show_mouse = true;
 
-		// Hide the openttd cursor when leaving the window
-		if (_cocoa_subdriver != NULL)
-			UndrawMouseCursor();
+		/* Hide the openttd cursor when leaving the window */
+		if (_cocoa_subdriver != NULL) UndrawMouseCursor();
 		_cursor.in_window = false;
 	}
 }
@@ -90,39 +89,32 @@ void QZ_ShowMouse()
 void QZ_HideMouse()
 {
 	if (_show_mouse) {
-		/*
-		 * Don't hide the cursor when compiling in debug mode.
-		 * Note: Not hiding the cursor will cause artefacts around it in 8bpp fullscreen mode.
-		 */
+		/* Don't hide the cursor when compiling in debug mode.
+		 * Note: Not hiding the cursor will cause artefacts around it in 8bpp fullscreen mode. */
 #ifndef _DEBUG
 		[ NSCursor hide ];
 #endif
 		_show_mouse = false;
 
-		// Show the openttd cursor again
+		/* Show the openttd cursor again */
 		_cursor.in_window = true;
 	}
 }
 
 static void QZ_WarpCursor(int x, int y)
 {
-	NSPoint p;
-	CGPoint cgp;
-
-	assert(_cocoa_subdriver);
+	assert(_cocoa_subdriver != NULL);
 
 	/* Only allow warping when in foreground */
 	if (![ NSApp isActive ]) return;
 
-	p = NSMakePoint(x, y);
-	cgp = _cocoa_subdriver->PrivateLocalToCG(&p);
+	NSPoint p = NSMakePoint(x, y);
+	CGPoint cgp = _cocoa_subdriver->PrivateLocalToCG(&p);
 
 	/* this is the magic call that fixes cursor "freezing" after warp */
 	CGSetLocalEventsSuppressionInterval(0.0);
 	/* Do the actual warp */
 	CGWarpMouseCursorPosition(cgp);
-
-	/* Generate the mouse moved event */
 }
 
 
@@ -274,10 +266,9 @@ static const VkMapping _vk_mapping[] = {
 
 static uint32 QZ_MapKey(unsigned short sym)
 {
-	const VkMapping *map;
 	uint32 key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
+	for (const VkMapping *map = _vk_mapping; map != endof(_vk_mapping); ++map) {
 		if (sym == map->vk_from) {
 			key = map->map_to;
 			break;
@@ -323,23 +314,20 @@ static void QZ_DoUnsidedModifiers(unsigned int newMods)
 {
 	const int mapping[] = { QZ_CAPSLOCK, QZ_LSHIFT, QZ_LCTRL, QZ_LALT, QZ_LMETA };
 
-	int i;
-	unsigned int bit;
-
 	if (_current_mods == newMods) return;
 
 	/* Iterate through the bits, testing each against the current modifiers */
-	for (i = 0, bit = NSAlphaShiftKeyMask; bit <= NSCommandKeyMask; bit <<= 1, ++i) {
+	for (unsigned int i = 0, bit = NSAlphaShiftKeyMask; bit <= NSCommandKeyMask; bit <<= 1, ++i) {
 		unsigned int currentMask, newMask;
 
 		currentMask = _current_mods & bit;
 		newMask     = newMods & bit;
 
-		if (currentMask && currentMask != newMask) { /* modifier up event */
+		if (currentMask && currentMask != newMask) { // modifier up event
 			/* If this was Caps Lock, we need some additional voodoo to make SDL happy (is this needed in ottd?) */
 			if (bit == NSAlphaShiftKeyMask) QZ_KeyEvent(mapping[i], 0, YES);
 			QZ_KeyEvent(mapping[i], 0, NO);
-		} else if (newMask && currentMask != newMask) { /* modifier down event */
+		} else if (newMask && currentMask != newMask) { // modifier down event
 			QZ_KeyEvent(mapping[i], 0, YES);
 			/* If this was Caps Lock, we need some additional voodoo to make SDL happy (is this needed in ottd?) */
 			if (bit == NSAlphaShiftKeyMask) QZ_KeyEvent(mapping[i], 0, NO);
@@ -402,44 +390,37 @@ static void QZ_MouseButtonEvent(int button, BOOL down)
 
 static bool QZ_PollEvent()
 {
-	NSEvent *event;
-	NSPoint pt;
-	NSString *chars;
-#ifdef _DEBUG
-	uint32 et0, et;
-#endif
-
 	assert(_cocoa_subdriver != NULL);
 
 #ifdef _DEBUG
-	et0 = GetTick();
+	uint32 et0 = GetTick();
 #endif
-	event = [ NSApp nextEventMatchingMask:NSAnyEventMask
-			untilDate: [ NSDate distantPast ]
-			inMode: NSDefaultRunLoopMode dequeue:YES ];
+	NSEvent *event = [ NSApp nextEventMatchingMask:NSAnyEventMask
+				untilDate:[ NSDate distantPast ]
+				inMode:NSDefaultRunLoopMode dequeue:YES ];
 #ifdef _DEBUG
-	et = GetTick();
-	_tEvent+= et - et0;
+	_tEvent += GetTick() - et0;
 #endif
 
 	if (event == nil) return false;
 	if (!_cocoa_subdriver->IsActive()) {
 		QZ_ShowMouse();
-		[NSApp sendEvent:event];
+		[ NSApp sendEvent:event ];
 		return true;
 	}
 
 	QZ_DoUnsidedModifiers( [ event modifierFlags ] );
 
-	switch ([event type]) {
+	NSString *chars;
+	NSPoint  pt;
+	switch ([ event type ]) {
 		case NSMouseMoved:
 		case NSOtherMouseDragged:
 		case NSLeftMouseDragged:
 			pt = _cocoa_subdriver->GetMouseLocation(event);
-			if (!_cocoa_subdriver->MouseIsInsideView(&pt) &&
-					!_emulating_right_button) {
+			if (!_cocoa_subdriver->MouseIsInsideView(&pt) && !_emulating_right_button) {
 				QZ_ShowMouse();
-				[NSApp sendEvent:event];
+				[ NSApp sendEvent:event ];
 				break;
 			}
 
@@ -461,9 +442,8 @@ static bool QZ_PollEvent()
 
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 
-			if (!([ event modifierFlags ] & keymask) ||
-					!_cocoa_subdriver->MouseIsInsideView(&pt)) {
-				[NSApp sendEvent:event];
+			if (!([ event modifierFlags ] & keymask) || !_cocoa_subdriver->MouseIsInsideView(&pt)) {
+				[ NSApp sendEvent:event ];
 			}
 
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
@@ -484,7 +464,7 @@ static bool QZ_PollEvent()
 			break;
 		}
 		case NSLeftMouseUp:
-			[NSApp sendEvent:event];
+			[ NSApp sendEvent:event ];
 
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
@@ -508,7 +488,7 @@ static bool QZ_PollEvent()
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
 				QZ_ShowMouse();
-				[NSApp sendEvent:event];
+				[ NSApp sendEvent:event ];
 				break;
 			}
 
@@ -521,7 +501,7 @@ static bool QZ_PollEvent()
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
 				QZ_ShowMouse();
-				[NSApp sendEvent:event];
+				[ NSApp sendEvent:event ];
 				break;
 			}
 
@@ -536,7 +516,7 @@ static bool QZ_PollEvent()
 			pt = QZ_GetMouseLocation(event);
 			if (!QZ_MouseIsInsideView(&pt)) {
 				QZ_ShowMouse();
-				[NSApp sendEvent:event];
+				[ NSApp sendEvent:event ];
 				break;
 			}
 
@@ -549,7 +529,7 @@ static bool QZ_PollEvent()
 			pt = QZ_GetMouseLocation(event);
 			if (!QZ_MouseIsInsideView(&pt)) {
 				QZ_ShowMouse();
-				[NSApp sendEvent:event];
+				[ NSApp sendEvent:event ];
 				break;
 			}
 
@@ -561,34 +541,34 @@ static bool QZ_PollEvent()
 
 		case NSKeyDown:
 			/* Quit, hide and minimize */
-			switch ([event keyCode]) {
+			switch ([ event keyCode ]) {
 				case QZ_q:
 				case QZ_h:
 				case QZ_m:
 					if ([ event modifierFlags ] & NSCommandKeyMask) {
-						[NSApp sendEvent:event];
+						[ NSApp sendEvent:event ];
 					}
 					break;
 			}
 
 			chars = [ event characters ];
-			QZ_KeyEvent([event keyCode], [ chars length ] ? [ chars characterAtIndex:0 ] : 0, YES);
+			QZ_KeyEvent([ event keyCode ], [ chars length ] ? [ chars characterAtIndex:0 ] : 0, YES);
 			break;
 
 		case NSKeyUp:
 			/* Quit, hide and minimize */
-			switch ([event keyCode]) {
+			switch ([ event keyCode ]) {
 				case QZ_q:
 				case QZ_h:
 				case QZ_m:
 					if ([ event modifierFlags ] & NSCommandKeyMask) {
-						[NSApp sendEvent:event];
+						[ NSApp sendEvent:event ];
 					}
 					break;
 			}
 
 			chars = [ event characters ];
-			QZ_KeyEvent([event keyCode], [ chars length ] ? [ chars characterAtIndex:0 ] : 0, NO);
+			QZ_KeyEvent([ event keyCode ], [ chars length ] ? [ chars characterAtIndex:0 ] : 0, NO);
 			break;
 
 		case NSScrollWheel:
@@ -604,7 +584,7 @@ static bool QZ_PollEvent()
 			break;
 
 		default:
-			[NSApp sendEvent:event];
+			[ NSApp sendEvent:event ];
 	}
 
 	return true;
@@ -617,14 +597,10 @@ void QZ_GameLoop()
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + 30;
 	uint32 pal_tick = 0;
-#ifdef _DEBUG
-	uint32 et0, et, st0, st;
-#endif
-	int i;
 
 #ifdef _DEBUG
-	et0 = GetTick();
-	st = 0;
+	uint32 et0 = GetTick();
+	uint32 st = 0;
 #endif
 
 	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
@@ -633,7 +609,7 @@ void QZ_GameLoop()
 	_cocoa_subdriver->Draw();
 	CSleep(1);
 
-	for (i = 0; i < 2; i++) GameLoop();
+	for (int i = 0; i < 2; i++) GameLoop();
 
 	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 	UpdateWindows();
@@ -684,7 +660,7 @@ void QZ_GameLoop()
 			_cocoa_subdriver->Draw();
 		} else {
 #ifdef _DEBUG
-			st0 = GetTick();
+			uint32 st0 = GetTick();
 #endif
 			CSleep(1);
 #ifdef _DEBUG
@@ -698,7 +674,7 @@ void QZ_GameLoop()
 	}
 
 #ifdef _DEBUG
-	et = GetTick();
+	uint32 et = GetTick();
 
 	DEBUG(driver, 1, "cocoa_v: nextEventMatchingMask took %i ms total", _tEvent);
 	DEBUG(driver, 1, "cocoa_v: game loop took %i ms total (%i ms without sleep)", et - et0, et - et0 - st);
