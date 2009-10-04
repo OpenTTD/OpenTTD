@@ -44,13 +44,6 @@
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
 
-/* Disables a warning. This is needed since the method exists but has been dropped from the header, supposedly as of 10.4. */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
-@interface NSApplication(NSAppleMenu)
-- (void)setAppleMenu:(NSMenu *)menu;
-@end
-#endif
-
 
 @interface OTTDMain : NSObject
 @end
@@ -116,8 +109,10 @@ static void setApplicationMenu()
 	[ menuItem setSubmenu:appleMenu ];
 	[ [ NSApp mainMenu ] addItem:menuItem ];
 
-	/* Tell the application object that this is now the application menu */
-	[ NSApp setAppleMenu:appleMenu ];
+	/* Tell the application object that this is now the application menu.
+	 * This interesting Objective-C construct is used because not all SDK
+	 * versions define this method publicly. */
+	[ NSApp performSelector:@selector(setAppleMenu:) withObject:appleMenu ];
 
 	/* Finally give up our references to the objects */
 	[ appleMenu release ];
