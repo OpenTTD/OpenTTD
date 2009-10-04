@@ -55,9 +55,8 @@ BEGIN {
 }
 
 /@file/ {
-	# Break it in two lines, so SVN doesn't replace it
-	printf "/* $I"
-	print "d$ */"
+	# Break it, so SVN doesn't replace it
+	print "/* $I" "d$ */"
 	print ""
 	print "/*"
 	print " * This file is part of OpenTTD."
