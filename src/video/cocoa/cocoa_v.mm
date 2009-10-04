@@ -89,73 +89,60 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
 
 static void setApplicationMenu()
 {
-	/* warning: this code is very odd */
-	NSMenu *appleMenu;
-	NSMenuItem *menuItem;
-	NSString *title;
-	NSString *appName;
-
-	appName = @"OTTD";
-	appleMenu = [[NSMenu alloc] initWithTitle:appName];
+	NSString *appName = @"OTTD";
+	NSMenu *appleMenu = [ [ NSMenu alloc ] initWithTitle:appName ];
 
 	/* Add menu items */
-	title = [@"About " stringByAppendingString:appName];
-	[appleMenu addItemWithTitle:title action:@selector(orderFrontStandardAboutPanel:) keyEquivalent:@""];
+	NSString *title = [ @"About " stringByAppendingString:appName ];
+	[ appleMenu addItemWithTitle:title action:@selector(orderFrontStandardAboutPanel:) keyEquivalent:@"" ];
 
-	[appleMenu addItem:[NSMenuItem separatorItem]];
+	[ appleMenu addItem:[ NSMenuItem separatorItem ] ];
 
-	title = [@"Hide " stringByAppendingString:appName];
-	[appleMenu addItemWithTitle:title action:@selector(hide:) keyEquivalent:@"h"];
+	title = [ @"Hide " stringByAppendingString:appName ];
+	[ appleMenu addItemWithTitle:title action:@selector(hide:) keyEquivalent:@"h" ];
 
-	menuItem = (NSMenuItem*)[appleMenu addItemWithTitle:@"Hide Others" action:@selector(hideOtherApplications:) keyEquivalent:@"h"];
-	[menuItem setKeyEquivalentModifierMask:(NSAlternateKeyMask|NSCommandKeyMask)];
+	NSMenuItem *menuItem = [ appleMenu addItemWithTitle:@"Hide Others" action:@selector(hideOtherApplications:) keyEquivalent:@"h" ];
+	[ menuItem setKeyEquivalentModifierMask:(NSAlternateKeyMask | NSCommandKeyMask) ];
 
-	[appleMenu addItemWithTitle:@"Show All" action:@selector(unhideAllApplications:) keyEquivalent:@""];
+	[ appleMenu addItemWithTitle:@"Show All" action:@selector(unhideAllApplications:) keyEquivalent:@"" ];
 
-	[appleMenu addItem:[NSMenuItem separatorItem]];
+	[ appleMenu addItem:[ NSMenuItem separatorItem ] ];
 
-	title = [@"Quit " stringByAppendingString:appName];
-	[appleMenu addItemWithTitle:title action:@selector(terminate:) keyEquivalent:@"q"];
-
+	title = [ @"Quit " stringByAppendingString:appName ];
+	[ appleMenu addItemWithTitle:title action:@selector(terminate:) keyEquivalent:@"q" ];
 
 	/* Put menu into the menubar */
-	menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
-	[menuItem setSubmenu:appleMenu];
-	[[NSApp mainMenu] addItem:menuItem];
+	menuItem = [ [ NSMenuItem alloc ] initWithTitle:@"" action:nil keyEquivalent:@"" ];
+	[ menuItem setSubmenu:appleMenu ];
+	[ [ NSApp mainMenu ] addItem:menuItem ];
 
 	/* Tell the application object that this is now the application menu */
-	[NSApp setAppleMenu:appleMenu];
+	[ NSApp setAppleMenu:appleMenu ];
 
 	/* Finally give up our references to the objects */
-	[appleMenu release];
-	[menuItem release];
+	[ appleMenu release ];
+	[ menuItem release ];
 }
 
 /* Create a window menu */
 static void setupWindowMenu()
 {
-	NSMenu *windowMenu;
-	NSMenuItem *windowMenuItem;
-	NSMenuItem *menuItem;
-
-	windowMenu = [[NSMenu alloc] initWithTitle:@"Window"];
+	NSMenu *windowMenu = [ [ NSMenu alloc ] initWithTitle:@"Window" ];
 
 	/* "Minimize" item */
-	menuItem = [[NSMenuItem alloc] initWithTitle:@"Minimize" action:@selector(performMiniaturize:) keyEquivalent:@"m"];
-	[windowMenu addItem:menuItem];
-	[menuItem release];
+	[ windowMenu addItemWithTitle:@"Minimize" action:@selector(performMiniaturize:) keyEquivalent:@"m" ];
 
 	/* Put menu into the menubar */
-	windowMenuItem = [[NSMenuItem alloc] initWithTitle:@"Window" action:nil keyEquivalent:@""];
-	[windowMenuItem setSubmenu:windowMenu];
-	[[NSApp mainMenu] addItem:windowMenuItem];
+	NSMenuItem *menuItem = [ [ NSMenuItem alloc ] initWithTitle:@"Window" action:nil keyEquivalent:@"" ];
+	[ menuItem setSubmenu:windowMenu ];
+	[ [ NSApp mainMenu ] addItem:menuItem ];
 
 	/* Tell the application object that this is now the window menu */
-	[NSApp setWindowsMenu:windowMenu];
+	[ NSApp setWindowsMenu:windowMenu ];
 
 	/* Finally give up our references to the objects */
-	[windowMenu release];
-	[windowMenuItem release];
+	[ windowMenu release ];
+	[ menuItem release ];
 }
 
 static void setupApplication()
@@ -163,7 +150,7 @@ static void setupApplication()
 	ProcessSerialNumber psn = { 0, kCurrentProcess };
 
 	/* Ensure the application object is initialised */
-	[NSApplication sharedApplication];
+	[ NSApplication sharedApplication ];
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3
 	/* Tell the dock about us */
@@ -178,26 +165,24 @@ static void setupApplication()
 	if (err != 0) DEBUG(driver, 0, "Could not bring the application to front. Error %d", (int)err);
 
 	/* Set up the menubar */
-	[NSApp setMainMenu:[[NSMenu alloc] init]];
+	[ NSApp setMainMenu:[ [ NSMenu alloc ] init ] ];
 	setApplicationMenu();
 	setupWindowMenu();
 
 	/* Create OTTDMain and make it the app delegate */
-	_ottd_main = [[OTTDMain alloc] init];
-	[NSApp setDelegate:_ottd_main];
+	_ottd_main = [ [ OTTDMain alloc ] init ];
+	[ NSApp setDelegate:_ottd_main ];
 }
 
 
 static void QZ_UpdateVideoModes()
 {
-	uint i, count;
-	OTTD_Point modes[32];
-
 	assert(_cocoa_subdriver != NULL);
 
-	count = _cocoa_subdriver->ListModes(modes, lengthof(modes));
+	OTTD_Point modes[32];
+	uint count = _cocoa_subdriver->ListModes(modes, lengthof(modes));
 
-	for (i = 0; i < count; i++) {
+	for (uint i = 0; i < count; i++) {
 		_resolutions[i].width  = modes[i].x;
 		_resolutions[i].height = modes[i].y;
 	}
@@ -242,7 +227,7 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 #ifdef ENABLE_COCOA_QUARTZ
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 	/*
-	 * If we get here we are running 10.4 or earlier and either openttd was compiled without the quickdraw driver
+	 * If we get here we are running 10.4 or earlier and either openttd was compiled without the QuickDraw driver
 	 * or it failed to load for some reason. Fall back to Quartz if possible even though that driver is slower.
 	 */
 	if (MacOSVersionIsAtLeast(10, 4, 0)) {
@@ -258,9 +243,7 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
-	CocoaSubdriver *ret;
-
-	ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
+	CocoaSubdriver *ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
 	if (ret != NULL) return ret;
 
 	if (!fallback) return NULL;
@@ -290,15 +273,13 @@ void VideoDriver_Cocoa::Stop()
 	delete _cocoa_subdriver;
 	_cocoa_subdriver = NULL;
 
-	[_ottd_main release];
+	[ _ottd_main release ];
 
 	_cocoa_video_started = false;
 }
 
 const char *VideoDriver_Cocoa::Start(const char * const *parm)
 {
-	int width, height, bpp;
-
 	if (!MacOSVersionIsAtLeast(10, 3, 0)) return "The Cocoa video driver requires Mac OS X 10.3 or later.";
 
 	if (_cocoa_video_started) return "Already started";
@@ -309,9 +290,9 @@ const char *VideoDriver_Cocoa::Start(const char * const *parm)
 	/* Don't create a window or enter fullscreen if we're just going to show a dialog. */
 	if (_cocoa_video_dialog) return NULL;
 
-	width  = _cur_resolution.width;
-	height = _cur_resolution.height;
-	bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	int width  = _cur_resolution.width;
+	int height = _cur_resolution.height;
+	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
 	_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, _fullscreen, true);
 	if (_cocoa_subdriver == NULL) {
@@ -320,7 +301,6 @@ const char *VideoDriver_Cocoa::Start(const char * const *parm)
 	}
 
 	QZ_GameSizeChanged();
-
 	QZ_UpdateVideoModes();
 
 	return NULL;
@@ -336,19 +316,16 @@ void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 void VideoDriver_Cocoa::MainLoop()
 {
 	/* Start the main event loop */
-	[NSApp run];
+	[ NSApp run ];
 }
 
 bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 {
-	bool ret;
-
 	assert(_cocoa_subdriver != NULL);
 
-	ret = _cocoa_subdriver->ChangeResolution(w, h);
+	bool ret = _cocoa_subdriver->ChangeResolution(w, h);
 
 	QZ_GameSizeChanged();
-
 	QZ_UpdateVideoModes();
 
 	return ret;
@@ -356,11 +333,9 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 
 bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
-	bool oldfs;
-
 	assert(_cocoa_subdriver != NULL);
 
-	oldfs = _cocoa_subdriver->IsFullscreen();
+	bool oldfs = _cocoa_subdriver->IsFullscreen();
 	if (full_screen != oldfs) {
 		int width  = _cocoa_subdriver->GetWidth();
 		int height = _cocoa_subdriver->GetHeight();
@@ -377,8 +352,8 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	}
 
 	QZ_GameSizeChanged();
-
 	QZ_UpdateVideoModes();
+
 	return _cocoa_subdriver->IsFullscreen() == full_screen;
 }
 
@@ -386,11 +361,9 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 /* This is needed since sometimes assert is called before the videodriver is initialized */
 void CocoaDialog(const char *title, const char *message, const char *buttonLabel)
 {
-	bool wasstarted;
-
 	_cocoa_video_dialog = true;
 
-	wasstarted = _cocoa_video_started;
+	bool wasstarted = _cocoa_video_started;
 	if (_video_driver == NULL) {
 		setupApplication(); // Setup application before showing dialog
 	} else if (!_cocoa_video_started && _video_driver->Start(NULL) != NULL) {
@@ -427,12 +400,12 @@ void cocoaSetApplicationBundleDir()
  */
 void cocoaSetupAutoreleasePool()
 {
-	_ottd_autorelease_pool = [[NSAutoreleasePool alloc] init];
+	_ottd_autorelease_pool = [ [ NSAutoreleasePool alloc ] init ];
 }
 
 void cocoaReleaseAutoreleasePool()
 {
-	[_ottd_autorelease_pool release];
+	[ _ottd_autorelease_pool release ];
 }
 
 #endif /* WITH_COCOA */

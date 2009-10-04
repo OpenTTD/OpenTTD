@@ -97,9 +97,9 @@ void ShowOSErrorBox(const char *buf, bool system)
 const char *GetCurrentLocale(const char *)
 {
 	static char retbuf[32] = { '\0' };
-	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-	NSArray *languages = [defs objectForKey:@"AppleLanguages"];
-	NSString *preferredLang = [languages objectAtIndex:0];
+	NSUserDefaults *defs = [ NSUserDefaults standardUserDefaults ];
+	NSArray *languages = [ defs objectForKey:@"AppleLanguages" ];
+	NSString *preferredLang = [ languages objectAtIndex:0 ];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
 
 	/* Since Apple introduced encoding to CString in OSX 10.4 we have to make a few conditions
