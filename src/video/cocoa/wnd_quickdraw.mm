@@ -402,7 +402,7 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 		[ window setDriver:this ];
 
 		snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
-		nsscaption = [ [ NSString alloc ] initWithCString:caption ];
+		nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
 		[ window setTitle:nsscaption ];
 		[ window setMiniwindowTitle:nsscaption ];
 		[ nsscaption release ];

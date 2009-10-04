@@ -428,7 +428,6 @@ void WindowQuartzSubdriver::GetDeviceInfo()
 bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 {
 	char caption[50];
-	NSString *nsscaption;
 	unsigned int style;
 	NSRect contentRect;
 	BOOL isCustom = NO;
@@ -470,7 +469,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 		[ window setDriver:this ];
 
 		snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
-		nsscaption = [ [ NSString alloc ] initWithCString:caption ];
+		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
 		[ window setTitle: nsscaption ];
 		[ window setMiniwindowTitle: nsscaption ];
 		[ nsscaption release ];

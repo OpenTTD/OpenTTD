@@ -405,7 +405,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 
 	QZ_ShowMouse();
-	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
+	NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
 
 	if (!wasstarted && _video_driver != NULL) _video_driver->Stop();
 

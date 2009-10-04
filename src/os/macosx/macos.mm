@@ -59,7 +59,7 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
-	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
+	NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
 }
 
 #elif defined WITH_COCOA
