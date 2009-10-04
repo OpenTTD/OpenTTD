@@ -13,6 +13,7 @@
 #define FONTCACHE_H
 
 #include "gfx_type.h"
+#include "spritecache.h"
 
 /** Get the SpriteID mapped to the given font size and key */
 SpriteID GetUnicodeGlyph(FontSize size, uint32 key);
@@ -43,7 +44,7 @@ extern FreeTypeSettings _freetype;
 
 void InitFreeType();
 void UninitFreeType();
-const struct Sprite *GetGlyph(FontSize size, uint32 key);
+const Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
 
 /**
