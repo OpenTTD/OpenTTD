@@ -90,55 +90,67 @@ struct StatusBarWindow : Window {
 		COUNTER_STEP   =    2, ///< this is subtracted from active counters every tick
 	};
 
-	StatusBarWindow(const WindowDesc *desc) : Window(desc)
+	StatusBarWindow(const WindowDesc *desc) : Window()
 	{
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 		this->ticker_scroll    =   TICKER_STOP;
 		this->reminder_timeout = REMINDER_STOP;
 
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		const Company *c = (_local_company == COMPANY_SPECTATOR) ? NULL : Company::Get(_local_company);
-
 		this->DrawWidgets();
-		SetDParam(0, _date);
-		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_mode || _settings_client.gui.status_long_date) ? STR_WHITE_DATE_LONG : STR_WHITE_DATE_SHORT, TC_FROMSTRING, SA_CENTER);
+	}
 
-		if (c != NULL) {
-			/* Draw company money */
-			SetDParam(0, c->money);
-			DrawString(this->widget[SBW_RIGHT].left + 1, this->widget[SBW_RIGHT].right - 1, 1, STR_COMPANY_MONEY, TC_FROMSTRING, SA_CENTER);
-		}
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case SBW_LEFT:
+				/* Draw the date */
+				SetDParam(0, _date);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, (_pause_mode || _settings_client.gui.status_long_date) ? STR_WHITE_DATE_LONG : STR_WHITE_DATE_SHORT, TC_FROMSTRING, SA_CENTER);
+				break;
 
-		/* Draw status bar */
-		if (this->saving) { // true when saving is active
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_CENTER);
-		} else if (_do_autosave) {
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
-		} else if (_pause_mode != PM_UNPAUSED) {
-			DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_CENTER);
-		} else if (this->ticker_scroll < TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
-			/* Draw the scrolling news text */
-			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, this->widget[SBW_MIDDLE].top + 1, this->widget[SBW_MIDDLE].bottom)) {
-				this->ticker_scroll = TICKER_STOP;
+			case SBW_RIGHT: {
+				/* Draw company money, if any */
+				const Company *c = Company::GetIfValid(_local_company);
 				if (c != NULL) {
-					/* This is the default text */
-					SetDParam(0, c->index);
-					DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_CENTER);
+					SetDParam(0, c->money);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_COMPANY_MONEY, TC_FROMSTRING, SA_CENTER);
 				}
-			}
-		} else {
-			if (c != NULL) {
-				/* This is the default text */
-				SetDParam(0, c->index);
-				DrawString(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_CENTER);
-			}
-		}
+			} break;
 
-		if (this->reminder_timeout > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, this->widget[SBW_MIDDLE].right - 11, 2);
+			case SBW_MIDDLE:
+				/* Draw status bar */
+				if (this->saving) { // true when saving is active
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_CENTER);
+				} else if (_do_autosave) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_CENTER);
+				} else if (_pause_mode != PM_UNPAUSED) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_CENTER);
+				} else if (this->ticker_scroll < TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
+					/* Draw the scrolling news text */
+					if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom)) {
+						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
+						if (Company::IsValidID(_local_company)) {
+							/* This is the default text */
+							SetDParam(0, _local_company);
+							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_CENTER);
+						}
+					}
+				} else {
+					if (Company::IsValidID(_local_company)) {
+						/* This is the default text */
+						SetDParam(0, _local_company);
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_CENTER);
+					}
+				}
+
+				if (this->reminder_timeout > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, r.right - WD_FRAMERECT_RIGHT - 10, r.top + WD_FRAMERECT_TOP + 1);
+				break;
+		}
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -183,13 +195,6 @@ struct StatusBarWindow : Window {
 	}
 };
 
-static const Widget _main_status_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_GREY,     0,   139,     0,    11, 0x0, STR_NULL},
-{    WWT_PUSHBTN,   RESIZE_RIGHT,  COLOUR_GREY,   140,   179,     0,    11, 0x0, STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS},
-{    WWT_PUSHBTN,   RESIZE_LR,     COLOUR_GREY,   180,   319,     0,    11, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_main_status_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, SBW_LEFT), SetMinimalSize(140, 12), EndContainer(),
@@ -202,7 +207,7 @@ static WindowDesc _main_status_desc(
 	WDP_CENTER, 0, 320, 12, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
-	_main_status_widgets, _nested_main_status_widgets, lengthof(_nested_main_status_widgets)
+	NULL, _nested_main_status_widgets, lengthof(_nested_main_status_widgets)
 );
 
 /**
