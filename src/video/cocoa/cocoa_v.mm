@@ -44,17 +44,6 @@
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
 
-
-/* Portions of CPS.h */
-struct CPSProcessSerNum {
-	UInt32 lo;
-	UInt32 hi;
-};
-
-extern "C" OSErr CPSGetCurrentProcess(CPSProcessSerNum *psn);
-extern "C" OSErr CPSEnableForegroundOperation(CPSProcessSerNum *psn, UInt32 _arg2, UInt32 _arg3, UInt32 _arg4, UInt32 _arg5);
-extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum *psn);
-
 /* Disables a warning. This is needed since the method exists but has been dropped from the header, supposedly as of 10.4. */
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
 @interface NSApplication(NSAppleMenu)
@@ -171,17 +160,22 @@ static void setupWindowMenu()
 
 static void setupApplication()
 {
-	CPSProcessSerNum PSN;
+	ProcessSerialNumber psn = { 0, kCurrentProcess };
 
 	/* Ensure the application object is initialised */
 	[NSApplication sharedApplication];
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3
 	/* Tell the dock about us */
-	if (!CPSGetCurrentProcess(&PSN) &&
-			!CPSEnableForegroundOperation(&PSN, 0x03, 0x3C, 0x2C, 0x1103) &&
-			!CPSSetFrontProcess(&PSN)) {
-		[NSApplication sharedApplication];
+	if (MacOSVersionIsAtLeast(10, 3, 0)) {
+		OSStatus returnCode = TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+		if (returnCode != 0) DEBUG(driver, 0, "Could not change to foreground application. Error %d", (int)returnCode);
 	}
+#endif
+
+	/* Become the front process, important when start from the command line. */
+	OSErr err = SetFrontProcess(&psn);
+	if (err != 0) DEBUG(driver, 0, "Could not bring the application to front. Error %d", (int)err);
 
 	/* Set up the menubar */
 	[NSApp setMainMenu:[[NSMenu alloc] init]];
