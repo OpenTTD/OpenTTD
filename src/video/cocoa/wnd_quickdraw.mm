@@ -224,8 +224,7 @@ public:
 	/* Don't do anything if the window is currently being created */
 	if (driver->setup) return;
 
-	if (!driver->WindowResized())
-		error("Cocoa: Failed to resize window.");
+	if (!driver->WindowResized()) error("Cocoa: Failed to resize window.");
 }
 
 - (void)appDidHide:(NSNotification*)note
@@ -255,13 +254,13 @@ public:
 {
 	/* Make our window subclass receive these application notifications */
 	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-	selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
+		selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
 
 	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-	selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
+		selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
 
 	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-	selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
+		selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
 
 	return [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ];
 }
@@ -329,160 +328,132 @@ static bool _resize_icon[] = {
 
 void WindowQuickdrawSubdriver::GetDeviceInfo()
 {
-	CFDictionaryRef    cur_mode;
-
 	/* Initialize the video settings; this data persists between mode switches */
-	cur_mode = CGDisplayCurrentMode(kCGDirectMainDisplay);
+	CFDictionaryRef cur_mode = CGDisplayCurrentMode(kCGDirectMainDisplay);
 
 	/* Gather some information that is useful to know about the display */
-	CFNumberGetValue(
-		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayBitsPerPixel),
-		kCFNumberSInt32Type, &device_depth
-	);
+	CFNumberGetValue((const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayBitsPerPixel),
+		kCFNumberSInt32Type, &this->device_depth);
 
-	CFNumberGetValue(
-		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayWidth),
-		kCFNumberSInt32Type, &device_width
-	);
+	CFNumberGetValue((const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayWidth),
+		kCFNumberSInt32Type, &this->device_width);
 
-	CFNumberGetValue(
-		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayHeight),
-		kCFNumberSInt32Type, &device_height
-	);
+	CFNumberGetValue((const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayHeight),
+		kCFNumberSInt32Type, &this->device_height);
 }
 
 bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 {
-	char caption[50];
-	NSString *nsscaption;
-	unsigned int style;
-	NSRect contentRect;
-	BOOL isCustom = NO;
-	bool ret;
+	this->setup = true;
+	this->GetDeviceInfo();
 
-	setup = true;
-
-	GetDeviceInfo();
-
-	if (buffer_depth > device_depth) {
+	if (this->buffer_depth > this->device_depth) {
 		DEBUG(driver, 0, "Cannot use a blitter with a higer screen depth than the display when running in windowed mode.");
-		setup = false;
+		this->setup = false;
 		return false;
 	}
 
-	if (width > device_width)
-		width = device_width;
-	if (height > device_height)
-		height = device_height;
+	if (width > this->device_width) width = this->device_width;
+	if (height > this->device_height) height = this->device_height;
 
-	contentRect = NSMakeRect(0, 0, width, height);
+	NSRect contentRect = NSMakeRect(0, 0, width, height);
 
 	/* Check if we should recreate the window */
-	if (window == nil) {
+	if (this->window == nil) {
 		OTTD_QuickdrawWindowDelegate *delegate;
 
 		/* Set the window style */
-		style = NSTitledWindowMask;
+		unsigned int style = NSTitledWindowMask;
 		style |= (NSMiniaturizableWindowMask | NSClosableWindowMask);
 		style |= NSResizableWindowMask;
 
 		/* Manually create a window, avoids having a nib file resource */
-		window = [ [ OTTD_QuickdrawWindow alloc ]
-						initWithContentRect:contentRect
-						styleMask:style
-						backing:NSBackingStoreBuffered
-						defer:NO ];
+		this->window = [ [ OTTD_QuickdrawWindow alloc ] initWithContentRect:contentRect
+						styleMask:style	backing:NSBackingStoreBuffered defer:NO ];
 
-		if (window == nil) {
+		if (this->window == nil) {
 			DEBUG(driver, 0, "Could not create the Cocoa window.");
-			setup = false;
+			this->setup = false;
 			return false;
 		}
 
-		[ window setDriver:this ];
+		[ this->window setDriver:this ];
 
+		char caption[50];
 		snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
-		nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
-		[ window setTitle:nsscaption ];
-		[ window setMiniwindowTitle:nsscaption ];
+		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
+		[ this->window setTitle:nsscaption ];
+		[ this->window setMiniwindowTitle:nsscaption ];
 		[ nsscaption release ];
 
-		[ window setAcceptsMouseMovedEvents:YES ];
-		[ window setViewsNeedDisplay:NO ];
+		[ this->window setAcceptsMouseMovedEvents:YES ];
+		[ this->window setViewsNeedDisplay:NO ];
 
 		delegate = [ [ OTTD_QuickdrawWindowDelegate alloc ] init ];
 		[ delegate setDriver:this ];
-		[ window setDelegate: [ delegate autorelease ] ];
+		[ this->window setDelegate: [ delegate autorelease ] ];
 	} else {
 		/* We already have a window, just change its size */
-		if (!isCustom) {
-			[ window setContentSize:contentRect.size ];
-			// Ensure frame height - title bar height >= view height
-			contentRect.size.height = Clamp(height, 0, [ window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
-			height = contentRect.size.height;
-			[ qdview setFrameSize:contentRect.size ];
-		}
+		[ this->window setContentSize:contentRect.size ];
+		/* Ensure frame height - title bar height >= view height */
+		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22); // 22 is the height of title bar of window
+		height = contentRect.size.height;
+		[ this->qdview setFrameSize:contentRect.size ];
 	}
 
 	// Update again
-	window_width = width;
-	window_height = height;
+	this->window_width = width;
+	this->window_height = height;
 
-	[ window center ];
+	[ this->window center ];
 
 	/* Only recreate the view if it doesn't already exist */
-	if (qdview == nil) {
-		qdview = [ [ NSQuickDrawView alloc ] initWithFrame:contentRect ];
-		if (qdview == nil) {
+	if (this->qdview == nil) {
+		this->qdview = [ [ NSQuickDrawView alloc ] initWithFrame:contentRect ];
+		if (this->qdview == nil) {
 			DEBUG(driver, 0, "Could not create the Quickdraw view.");
-			setup = false;
+			this->setup = false;
 			return false;
 		}
 
-		[ qdview setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable ];
-		[ [ window contentView ] addSubview:qdview ];
-		[ qdview release ];
-		[ window makeKeyAndOrderFront:nil ];
+		[ this->qdview setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable ];
+		[ [ this->window contentView ] addSubview:this->qdview ];
+		[ this->qdview release ];
+		[ this->window makeKeyAndOrderFront:nil ];
 	}
 
-	ret = WindowResized();
+	bool ret = this->WindowResized();
+	this->UpdatePalette(0, 256);
 
-	UpdatePalette(0, 256);
-
-	setup = false;
-
+	this->setup = false;
 	return ret;
 }
 
 void WindowQuickdrawSubdriver::Blit32ToView32(int left, int top, int right, int bottom)
 {
-	const uint32 *src   = (uint32*)pixel_buffer;
-	uint32       *dst   = (uint32*)window_buffer;
-	uint          width = window_width;
-	uint          pitch = window_pitch / 4;
-	int y;
-
+	const uint32 *src   = (uint32*)this->pixel_buffer;
+	uint32       *dst   = (uint32*)this->window_buffer;
+	uint          width = this->window_width;
+	uint          pitch = this->window_pitch / 4;
 
 	dst += top * pitch + left;
 	src += top * width + left;
 
-	for (y = top; y < bottom; y++, dst+= pitch, src+= width) {
+	for (int y = top; y < bottom; y++, dst+= pitch, src+= width) {
 		memcpy(dst, src, (right - left) * 4);
 	}
 }
 
 void WindowQuickdrawSubdriver::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
-	const uint32 *pal   = palette32;
-	const uint8  *src   = (uint8*)pixel_buffer;
-	uint32       *dst   = (uint32*)window_buffer;
-	uint          width = window_width;
-	uint          pitch = window_pitch / 4;
-	int x;
-	int y;
+	const uint32 *pal   = this->palette32;
+	const uint8  *src   = (uint8*)this->pixel_buffer;
+	uint32       *dst   = (uint32*)this->window_buffer;
+	uint          width = this->window_width;
+	uint          pitch = this->window_pitch / 4;
 
-	for (y = top; y < bottom; y++) {
-		for (x = left; x < right; x++) {
+	for (int y = top; y < bottom; y++) {
+		for (int x = left; x < right; x++) {
 			dst[y * pitch + x] = pal[src[y * width + x]];
 		}
 	}
@@ -490,16 +461,14 @@ void WindowQuickdrawSubdriver::BlitIndexedToView32(int left, int top, int right,
 
 void WindowQuickdrawSubdriver::BlitIndexedToView16(int left, int top, int right, int bottom)
 {
-	const uint16 *pal   = palette16;
-	const uint8  *src   = (uint8*)pixel_buffer;
-	uint16       *dst   = (uint16*)window_buffer;
-	uint          width = window_width;
-	uint          pitch = window_pitch / 2;
-	int x;
-	int y;
+	const uint16 *pal   = this->palette16;
+	const uint8  *src   = (uint8*)this->pixel_buffer;
+	uint16       *dst   = (uint16*)this->window_buffer;
+	uint          width = this->window_width;
+	uint          pitch = this->window_pitch / 2;
 
-	for (y = top; y < bottom; y++) {
-		for (x = left; x < right; x++) {
+	for (int y = top; y < bottom; y++) {
+		for (int x = left; x < right; x++) {
 			dst[y * pitch + x] = pal[src[y * width + x]];
 		}
 	}
@@ -508,45 +477,43 @@ void WindowQuickdrawSubdriver::BlitIndexedToView16(int left, int top, int right,
 
 inline void WindowQuickdrawSubdriver::BlitToView(int left, int top, int right, int bottom)
 {
-	switch (device_depth) {
+	switch (this->device_depth) {
 		case 32:
-			switch (buffer_depth) {
+			switch (this->buffer_depth) {
 				case 32:
-					Blit32ToView32(left, top, right, bottom);
+					this->Blit32ToView32(left, top, right, bottom);
 					break;
 				case 8:
-					BlitIndexedToView32(left, top, right, bottom);
+					this->BlitIndexedToView32(left, top, right, bottom);
 					break;
 			}
 			break;
 		case 16:
-			BlitIndexedToView16(left, top, right, bottom);
+			this->BlitIndexedToView16(left, top, right, bottom);
 			break;
 	}
 }
 
 void WindowQuickdrawSubdriver::DrawResizeIcon()
 {
-	int xoff = window_width - _resize_icon_width;
-	int yoff = window_height - _resize_icon_height;
-	int x;
-	int y;
+	int xoff = this->window_width - _resize_icon_width;
+	int yoff = this->window_height - _resize_icon_height;
 
-	switch (device_depth) {
+	switch (this->device_depth) {
 		case 32:
-			for (y = 0; y < _resize_icon_height; y++) {
-				uint32 *trg = (uint32*)window_buffer + (yoff + y) * window_pitch / 4 + xoff;
+			for (int y = 0; y < _resize_icon_height; y++) {
+				uint32 *trg = (uint32*)this->window_buffer + (yoff + y) * this->window_pitch / 4 + xoff;
 
-				for (x = 0; x < _resize_icon_width; x++, trg++) {
+				for (int x = 0; x < _resize_icon_width; x++, trg++) {
 					if (_resize_icon[y * _resize_icon_width + x]) *trg = 0xff000000;
 				}
 			}
 			break;
 		case 16:
-			for (y = 0; y < _resize_icon_height; y++) {
-				uint16 *trg = (uint16*)window_buffer + (yoff + y) * window_pitch / 2 + xoff;
+			for (int y = 0; y < _resize_icon_height; y++) {
+				uint16 *trg = (uint16*)this->window_buffer + (yoff + y) * this->window_pitch / 2 + xoff;
 
-				for (x = 0; x < _resize_icon_width; x++, trg++) {
+				for (int x = 0; x < _resize_icon_width; x++, trg++) {
 					if (_resize_icon[y * _resize_icon_width + x]) *trg = 0x0000;
 				}
 			}
@@ -557,17 +524,17 @@ void WindowQuickdrawSubdriver::DrawResizeIcon()
 
 WindowQuickdrawSubdriver::WindowQuickdrawSubdriver(int bpp)
 {
-	window_width  = 0;
-	window_height = 0;
-	buffer_depth  = bpp;
-	pixel_buffer  = NULL;
-	active        = false;
-	setup         = false;
+	this->window_width  = 0;
+	this->window_height = 0;
+	this->buffer_depth  = bpp;
+	this->pixel_buffer  = NULL;
+	this->active        = false;
+	this->setup         = false;
 
-	window = nil;
-	qdview = nil;
+	this->window = nil;
+	this->qdview = nil;
 
-	num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
 WindowQuickdrawSubdriver::~WindowQuickdrawSubdriver()
@@ -575,121 +542,101 @@ WindowQuickdrawSubdriver::~WindowQuickdrawSubdriver()
 	QZ_ShowMouse();
 
 	/* Release window mode resources */
-	if (window != nil) [ window close ];
+	if (this->window != nil) [ this->window close ];
 
-	free(pixel_buffer);
+	free(this->pixel_buffer);
 }
 
 void WindowQuickdrawSubdriver::Draw()
 {
-	int i;
-	RgnHandle dirty, temp;
-
 	/* Check if we need to do anything */
-	if (num_dirty_rects == 0 ||
-		[ window isMiniaturized ]) {
-		return;
+	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
+
+	if (this->num_dirty_rects >= MAX_DIRTY_RECTS) {
+		this->num_dirty_rects = 1;
+		this->dirty_rects[0].left = 0;
+		this->dirty_rects[0].top = 0;
+		this->dirty_rects[0].right = this->window_width;
+		this->dirty_rects[0].bottom = this->window_height;
 	}
 
-	if (num_dirty_rects >= MAX_DIRTY_RECTS) {
-		num_dirty_rects = 1;
-		dirty_rects[0].left = 0;
-		dirty_rects[0].top = 0;
-		dirty_rects[0].right = window_width;
-		dirty_rects[0].bottom = window_height;
-	}
-
-	dirty = NewRgn();
-	temp  = NewRgn();
+	RgnHandle dirty = NewRgn();
+	RgnHandle temp  = NewRgn();
 
 	SetEmptyRgn(dirty);
 
 	/* Build the region of dirty rectangles */
-	for (i = 0; i < num_dirty_rects; i++) {
-		BlitToView(
-			dirty_rects[i].left,
-			dirty_rects[i].top,
-			dirty_rects[i].right,
-			dirty_rects[i].bottom
-		);
+	for (int i = 0; i < this->num_dirty_rects; i++) {
+		this->BlitToView(this->dirty_rects[i].left, this->dirty_rects[i].top,
+				this->dirty_rects[i].right, this->dirty_rects[i].bottom);
 
-		MacSetRectRgn(
-			temp,
-			dirty_rects[i].left,
-			dirty_rects[i].top,
-			dirty_rects[i].right,
-			dirty_rects[i].bottom
-		);
+		MacSetRectRgn(temp, this->dirty_rects[i].left, this->dirty_rects[i].top,
+				this->dirty_rects[i].right, this->dirty_rects[i].bottom);
 		MacUnionRgn(dirty, temp, dirty);
 	}
 
-	DrawResizeIcon();
+	this->DrawResizeIcon();
 
 	/* Flush the dirty region */
-	QDFlushPortBuffer( (OpaqueGrafPtr*) [ qdview qdPort ], dirty);
+	QDFlushPortBuffer( (OpaqueGrafPtr*) [ this->qdview qdPort ], dirty);
 	DisposeRgn(dirty);
 	DisposeRgn(temp);
 
-	num_dirty_rects = 0;
+	this->num_dirty_rects = 0;
 }
 
 void WindowQuickdrawSubdriver::MakeDirty(int left, int top, int width, int height)
 {
-	if (num_dirty_rects < MAX_DIRTY_RECTS) {
-		dirty_rects[num_dirty_rects].left = left;
-		dirty_rects[num_dirty_rects].top = top;
-		dirty_rects[num_dirty_rects].right = left + width;
-		dirty_rects[num_dirty_rects].bottom = top + height;
+	if (this->num_dirty_rects < MAX_DIRTY_RECTS) {
+		this->dirty_rects[this->num_dirty_rects].left = left;
+		this->dirty_rects[this->num_dirty_rects].top = top;
+		this->dirty_rects[this->num_dirty_rects].right = left + width;
+		this->dirty_rects[this->num_dirty_rects].bottom = top + height;
 	}
-	num_dirty_rects++;
+	this->num_dirty_rects++;
 }
 
 void WindowQuickdrawSubdriver::UpdatePalette(uint first_color, uint num_colors)
 {
-	uint i;
+	if (this->buffer_depth != 8) return;
 
-	if (buffer_depth != 8)
-		return;
-
-	switch (device_depth) {
+	switch (this->device_depth) {
 		case 32:
-			for (i = first_color; i < first_color + num_colors; i++) {
+			for (uint i = first_color; i < first_color + num_colors; i++) {
 				uint32 clr32 = 0xff000000;
 				clr32 |= (uint32)_cur_palette[i].r << 16;
 				clr32 |= (uint32)_cur_palette[i].g << 8;
 				clr32 |= (uint32)_cur_palette[i].b;
-				palette32[i] = clr32;
+				this->palette32[i] = clr32;
 			}
 			break;
 		case 16:
-			for (i = first_color; i < first_color + num_colors; i++) {
+			for (uint i = first_color; i < first_color + num_colors; i++) {
 				uint16 clr16 = 0x0000;
 				clr16 |= (uint16)((_cur_palette[i].r >> 3) & 0x1f) << 10;
 				clr16 |= (uint16)((_cur_palette[i].g >> 3) & 0x1f) << 5;
 				clr16 |= (uint16)((_cur_palette[i].b >> 3) & 0x1f);
-				palette16[i] = clr16;
+				this->palette16[i] = clr16;
 			}
 			break;
 	}
 
-	num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
 uint WindowQuickdrawSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
 {
-	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, buffer_depth);
+	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, this->buffer_depth);
 }
 
 bool WindowQuickdrawSubdriver::ChangeResolution(int w, int h)
 {
-	int old_width  = window_width;
-	int old_height = window_height;
+	int old_width  = this->window_width;
+	int old_height = this->window_height;
 
-	if (SetVideoMode(w, h))
-		return true;
+	if (this->SetVideoMode(w, h)) return true;
 
-	if (old_width != 0 && old_height != 0)
-		SetVideoMode(old_width, old_height);
+	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height);
 
 	return false;
 }
@@ -697,31 +644,24 @@ bool WindowQuickdrawSubdriver::ChangeResolution(int w, int h)
 /* Convert local coordinate to window server (CoreGraphics) coordinate */
 CGPoint WindowQuickdrawSubdriver::PrivateLocalToCG(NSPoint *p)
 {
-	CGPoint cgp;
+	*p = [ this->qdview convertPoint:*p toView: nil ];
+	*p = [ this->window convertBaseToScreen:*p ];
+	p->y = this->device_height - p->y;
 
-	*p = [ qdview convertPoint:*p toView: nil ];
-	*p = [ window convertBaseToScreen:*p ];
-	p->y = device_height - p->y;
-
-	cgp.x = p->x;
-	cgp.y = p->y;
-
-	return cgp;
+	return CGPointMake(p->x, p->y);
 }
 
 NSPoint WindowQuickdrawSubdriver::GetMouseLocation(NSEvent *event)
 {
-	NSPoint pt;
-
-	pt = [ event locationInWindow ];
-	pt = [ qdview convertPoint:pt fromView:nil ];
+	NSPoint pt = [ event locationInWindow ];
+	pt = [ this->qdview convertPoint:pt fromView:nil ];
 
 	return pt;
 }
 
 bool WindowQuickdrawSubdriver::MouseIsInsideView(NSPoint *pt)
 {
-	return [ qdview mouse:*pt inRect:[ qdview bounds ] ];
+	return [ this->qdview mouse:*pt inRect:[ this->qdview bounds ] ];
 }
 
 
@@ -731,45 +671,42 @@ bool WindowQuickdrawSubdriver::MouseIsInsideView(NSPoint *pt)
  */
 void WindowQuickdrawSubdriver::SetPortAlphaOpaque()
 {
-	if (device_depth != 32)
-		return;
+	if (this->device_depth != 32) return;
 
-	uint32 *pixels = (uint32*)window_buffer;
-	uint32  pitch  = window_pitch / 4;
-	int x, y;
+	uint32 *pixels = (uint32*)this->window_buffer;
+	uint32  pitch  = this->window_pitch / 4;
 
-	for (y = 0; y < window_height; y++)
-		for (x = 0; x < window_width; x++) {
+	for (int y = 0; y < this->window_height; y++)
+		for (int x = 0; x < this->window_width; x++) {
 		pixels[y * pitch + x] |= 0xFF000000;
 	}
 }
 
 bool WindowQuickdrawSubdriver::WindowResized()
 {
-	if (window == nil || qdview == nil) return true;
+	if (this->window == nil || this->qdview == nil) return true;
 
-	NSRect   newframe = [ qdview frame ];
-	CGrafPtr thePort  = (OpaqueGrafPtr*) [ qdview qdPort ];
-	int voff, hoff;
+	NSRect   newframe = [ this->qdview frame ];
+	CGrafPtr thePort  = (OpaqueGrafPtr*) [ this->qdview qdPort ];
 
 	LockPortBits(thePort);
-	window_buffer = GetPixBaseAddr(GetPortPixMap(thePort));
-	window_pitch = GetPixRowBytes(GetPortPixMap(thePort));
+	this->window_buffer = GetPixBaseAddr(GetPortPixMap(thePort));
+	this->window_pitch = GetPixRowBytes(GetPortPixMap(thePort));
 	UnlockPortBits(thePort);
 
 	/* _cocoa_video_data.realpixels now points to the window's pixels
 	 * We want it to point to the *view's* pixels
 	 */
-	voff = [ window frame ].size.height - newframe.size.height - newframe.origin.y;
-	hoff = [ qdview frame ].origin.x;
-	window_buffer = (uint8*)window_buffer + (voff * window_pitch) + hoff * (device_depth / 8);
+	int voff = [ this->window frame ].size.height - newframe.size.height - newframe.origin.y;
+	int hoff = [ this->qdview frame ].origin.x;
+	this->window_buffer = (uint8*)this->window_buffer + (voff * this->window_pitch) + hoff * (this->device_depth / 8);
 
-	window_width = newframe.size.width;
-	window_height = newframe.size.height;
+	this->window_width = newframe.size.width;
+	this->window_height = newframe.size.height;
 
-	free(pixel_buffer);
-	pixel_buffer = malloc(window_width * window_height * buffer_depth / 8);
-	if (pixel_buffer == NULL) {
+	free(this->pixel_buffer);
+	this->pixel_buffer = malloc(this->window_width * this->window_height * this->buffer_depth / 8);
+	if (this->pixel_buffer == NULL) {
 		DEBUG(driver, 0, "Failed to allocate pixel buffer");
 		return false;
 	}
@@ -777,7 +714,7 @@ bool WindowQuickdrawSubdriver::WindowResized()
 	QZ_GameSizeChanged();
 
 	/* Redraw screen */
-	num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
 
 	return true;
 }

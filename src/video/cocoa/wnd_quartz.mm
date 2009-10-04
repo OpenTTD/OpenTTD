@@ -161,18 +161,15 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 {
 	static CGColorSpaceRef colorSpace = NULL;
 
-	if (colorSpace == NULL)
-	{
+	if (colorSpace == NULL) {
 		CMProfileRef sysProfile;
 
-		if (CMGetSystemProfile(&sysProfile) == noErr)
-		{
+		if (CMGetSystemProfile(&sysProfile) == noErr) {
 			colorSpace = CGColorSpaceCreateWithPlatformColorSpace(sysProfile);
 			CMCloseProfile(sysProfile);
 		}
 
-		if (colorSpace == NULL)
-			error("Could not get system colour space. You might need to recalibrate your monitor.");
+		if (colorSpace == NULL) error("Could not get system colour space. You might need to recalibrate your monitor.");
 	}
 
 	return colorSpace;
@@ -231,8 +228,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	/* Don't do anything if the window is currently being created */
 	if (driver->setup) return;
 
-	if (!driver->WindowResized())
-		error("Cocoa: Failed to resize window.");
+	if (!driver->WindowResized()) error("Cocoa: Failed to resize window.");
 }
 
 - (void)appDidHide:(NSNotification*)note
@@ -261,14 +257,11 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
 {
 	/* Make our window subclass receive these application notifications */
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-	selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
 
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-	selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
 
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-	selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
 
 	return [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ];
 }
@@ -326,31 +319,23 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 
 - (void)drawRect:(NSRect)invalidRect
 {
-	CGImageRef    fullImage;
-	CGImageRef    clippedImage;
-	NSRect        rect;
-	const NSRect *dirtyRects;
-	NSInteger     dirtyRectCount;
-	int           n;
-	CGRect        clipRect;
-	CGRect        blitRect;
-	uint32        blitArea       = 0;
-	NSRect        frameRect      = [ self frame ];
-	CGContextRef  viewContext    = (CGContextRef)[ [ NSGraphicsContext currentContext ] graphicsPort ];
-
 	if (driver->cgcontext == NULL) return;
 
+	CGContextRef viewContext = (CGContextRef)[ [ NSGraphicsContext currentContext ] graphicsPort ];
 	CGContextSetShouldAntialias(viewContext, FALSE);
 	CGContextSetInterpolationQuality(viewContext, kCGInterpolationNone);
 
 	/* The obtained 'rect' is actually a union of all dirty rects, let's ask for an explicit list of rects instead */
+	const NSRect *dirtyRects;
+	NSInteger     dirtyRectCount;
 	[ self getRectsBeingDrawn:&dirtyRects count:&dirtyRectCount ];
 
 	/* We need an Image in order to do blitting, but as we don't touch the context between this call and drawing no copying will actually be done here */
-	fullImage = CGBitmapContextCreateImage(driver->cgcontext);
+	CGImageRef fullImage = CGBitmapContextCreateImage(driver->cgcontext);
 
 	/* Calculate total area we are blitting */
-	for (n = 0; n < dirtyRectCount; n++) {
+	uint32 blitArea = 0;
+	for (int n = 0; n < dirtyRectCount; n++) {
 		blitArea += dirtyRects[n].size.width * dirtyRects[n].size.height;
 	}
 
@@ -360,8 +345,11 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	 * rect separately but if we blit more than that, it's just cheaper to blit the entire union in one pass.
 	 * Feel free to remove or find an even better value than 50% ... / blackis
 	 */
+	NSRect frameRect = [ self frame ];
 	if (blitArea / (float)(invalidRect.size.width * invalidRect.size.height) > 0.5f) {
-		rect = invalidRect;
+		NSRect rect = invalidRect;
+		CGRect clipRect;
+		CGRect blitRect;
 
 		blitRect.origin.x = rect.origin.x;
 		blitRect.origin.y = rect.origin.y;
@@ -375,12 +363,14 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 		clipRect.size.height = rect.size.height;
 
 		/* Blit dirty part of image */
-		clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
+		CGImageRef clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
 		CGContextDrawImage(viewContext, blitRect, clippedImage);
 		CGImageRelease(clippedImage);
 	} else {
-		for (n = 0; n < dirtyRectCount; n++) {
-			rect = dirtyRects[n];
+		for (int n = 0; n < dirtyRectCount; n++) {
+			NSRect rect = dirtyRects[n];
+			CGRect clipRect;
+			CGRect blitRect;
 
 			blitRect.origin.x = rect.origin.x;
 			blitRect.origin.y = rect.origin.y;
@@ -394,7 +384,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 			clipRect.size.height = rect.size.height;
 
 			/* Blit dirty part of image */
-			clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
+			CGImageRef clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
 			CGContextDrawImage(viewContext, blitRect, clippedImage);
 			CGImageRelease(clippedImage);
 		}
@@ -408,138 +398,123 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 
 void WindowQuartzSubdriver::GetDeviceInfo()
 {
-	CFDictionaryRef    cur_mode;
-
 	/* Initialize the video settings; this data persists between mode switches */
-	cur_mode = CGDisplayCurrentMode(kCGDirectMainDisplay);
+	CFDictionaryRef cur_mode = CGDisplayCurrentMode(kCGDirectMainDisplay);
 
 	/* Gather some information that is useful to know about the display */
 	CFNumberGetValue(
 		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayWidth),
-		kCFNumberSInt32Type, &device_width
+		kCFNumberSInt32Type, &this->device_width
 	);
 
 	CFNumberGetValue(
 		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayHeight),
-		kCFNumberSInt32Type, &device_height
+		kCFNumberSInt32Type, &this->device_height
 	);
 }
 
 bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 {
-	char caption[50];
-	unsigned int style;
-	NSRect contentRect;
-	BOOL isCustom = NO;
-	bool ret;
+	this->setup = true;
+	this->GetDeviceInfo();
 
-	setup = true;
+	if (width > this->device_width) width = this->device_width;
+	if (height > this->device_height) height = this->device_height;
 
-	GetDeviceInfo();
-
-	if (width > device_width)
-		width = device_width;
-	if (height > device_height)
-		height = device_height;
-
-	contentRect = NSMakeRect(0, 0, width, height);
+	NSRect contentRect = NSMakeRect(0, 0, width, height);
 
 	/* Check if we should recreate the window */
-	if (window == nil) {
+	if (this->window == nil) {
 		OTTD_QuartzWindowDelegate *delegate;
 
 		/* Set the window style */
-		style = NSTitledWindowMask;
+		unsigned int style = NSTitledWindowMask;
 		style |= (NSMiniaturizableWindowMask | NSClosableWindowMask);
 		style |= NSResizableWindowMask;
 
 		/* Manually create a window, avoids having a nib file resource */
-		window = [ [ OTTD_QuartzWindow alloc ]
-						initWithContentRect: contentRect
-						styleMask: style
-						backing: NSBackingStoreBuffered
-						defer: NO ];
+		this->window = [ [ OTTD_QuartzWindow alloc ]
+							initWithContentRect:contentRect
+							styleMask:style
+							backing:NSBackingStoreBuffered
+							defer:NO ];
 
-		if (window == nil) {
+		if (this->window == nil) {
 			DEBUG(driver, 0, "Could not create the Cocoa window.");
-			setup = false;
+			this->setup = false;
 			return false;
 		}
 
-		[ window setDriver:this ];
+		[ this->window setDriver:this ];
 
+		char caption[50];
 		snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
 		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
-		[ window setTitle: nsscaption ];
-		[ window setMiniwindowTitle: nsscaption ];
+		[ this->window setTitle:nsscaption ];
+		[ this->window setMiniwindowTitle:nsscaption ];
 		[ nsscaption release ];
 
-		[ window setAcceptsMouseMovedEvents: YES ];
-		[ window setViewsNeedDisplay: NO ];
+		[ this->window setAcceptsMouseMovedEvents:YES ];
+		[ this->window setViewsNeedDisplay:NO ];
 
-		[ window useOptimizedDrawing: YES ];
+		[ this->window useOptimizedDrawing:YES ];
 
 		delegate = [ [ OTTD_QuartzWindowDelegate alloc ] init ];
-		[ delegate setDriver: this ];
-		[ window setDelegate: [ delegate autorelease ] ];
+		[ delegate setDriver:this ];
+		[ this->window setDelegate:[ delegate autorelease ] ];
 	} else {
 		/* We already have a window, just change its size */
-		if (!isCustom) {
-			[ window setContentSize: contentRect.size ];
+		[ this->window setContentSize:contentRect.size ];
 
-			// Ensure frame height - title bar height >= view height
-			contentRect.size.height = Clamp(height, 0, [ window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
+		// Ensure frame height - title bar height >= view height
+		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
 
-			if (qzview != nil) {
-				height = contentRect.size.height;
-				[ qzview setFrameSize: contentRect.size ];
-			}
+		if (this->qzview != nil) {
+			height = contentRect.size.height;
+			[ this->qzview setFrameSize:contentRect.size ];
 		}
 	}
 
-	window_width = width;
-	window_height = height;
+	this->window_width = width;
+	this->window_height = height;
 
-	[ window center ];
+	[ this->window center ];
 
 	/* Only recreate the view if it doesn't already exist */
-	if (qzview == nil) {
-		qzview = [ [ OTTD_QuartzView alloc ] initWithFrame: contentRect ];
-		if (qzview == nil) {
+	if (this->qzview == nil) {
+		this->qzview = [ [ OTTD_QuartzView alloc ] initWithFrame:contentRect ];
+		if (this->qzview == nil) {
 			DEBUG(driver, 0, "Could not create the Quickdraw view.");
-			setup = false;
+			this->setup = false;
 			return false;
 		}
 
-		[ qzview setDriver: this ];
+		[ this->qzview setDriver:this ];
 
-		[ qzview setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable ];
-		[ window setContentView: qzview ];
-		[ qzview release ];
-		[ window makeKeyAndOrderFront:nil ];
+		[ this->qzview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
+		[ this->window setContentView:qzview ];
+		[ this->qzview release ];
+		[ this->window makeKeyAndOrderFront:nil ];
 	}
 
-	ret = WindowResized();
+	bool ret = WindowResized();
+	this->UpdatePalette(0, 256);
 
-	UpdatePalette(0, 256);
-
-	setup = false;
+	this->setup = false;
 
 	return ret;
 }
 
 void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
-	const uint32 *pal   = palette;
-	const uint8  *src   = (uint8*)pixel_buffer;
-	uint32       *dst   = (uint32*)image_buffer;
-	uint          width = window_width;
-	uint          pitch = window_width;
-	int x;
-	int y;
+	const uint32 *pal   = this->palette;
+	const uint8  *src   = (uint8*)this->pixel_buffer;
+	uint32       *dst   = (uint32*)this->image_buffer;
+	uint          width = this->window_width;
+	uint          pitch = this->window_width;
 
-	for (y = top; y < bottom; y++) {
-		for (x = left; x < right; x++) {
+	for (int y = top; y < bottom; y++) {
+		for (int x = left; x < right; x++) {
 			dst[y * pitch + x] = pal[src[y * width + x]];
 		}
 	}
@@ -548,20 +523,20 @@ void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, in
 
 WindowQuartzSubdriver::WindowQuartzSubdriver(int bpp)
 {
-	window_width  = 0;
-	window_height = 0;
-	buffer_depth  = bpp;
-	image_buffer  = NULL;
-	pixel_buffer  = NULL;
-	active        = false;
-	setup         = false;
+	this->window_width  = 0;
+	this->window_height = 0;
+	this->buffer_depth  = bpp;
+	this->image_buffer  = NULL;
+	this->pixel_buffer  = NULL;
+	this->active        = false;
+	this->setup         = false;
 
-	window = nil;
-	qzview = nil;
+	this->window = nil;
+	this->qzview = nil;
 
-	cgcontext = NULL;
+	this->cgcontext = NULL;
 
-	num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
 WindowQuartzSubdriver::~WindowQuartzSubdriver()
@@ -569,103 +544,92 @@ WindowQuartzSubdriver::~WindowQuartzSubdriver()
 	QZ_ShowMouse();
 
 	/* Release window mode resources */
-	if (window != nil) [ window close ];
+	if (this->window != nil) [ this->window close ];
 
-	CGContextRelease(cgcontext);
+	CGContextRelease(this->cgcontext);
 
-	free(image_buffer);
-	free(pixel_buffer);
+	free(this->image_buffer);
+	free(this->pixel_buffer);
 }
 
 void WindowQuartzSubdriver::Draw()
 {
-	int i;
-	NSRect dirtyrect;
-
 	/* Check if we need to do anything */
-	if (num_dirty_rects == 0 ||
-		[ window isMiniaturized ]) {
-		return;
-	}
+	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
 
-	if (num_dirty_rects >= MAX_DIRTY_RECTS) {
-		num_dirty_rects = 1;
-		dirty_rects[0].left = 0;
-		dirty_rects[0].top = 0;
-		dirty_rects[0].right = window_width;
-		dirty_rects[0].bottom = window_height;
+	if (this->num_dirty_rects >= MAX_DIRTY_RECTS) {
+		this->num_dirty_rects = 1;
+		this->dirty_rects[0].left = 0;
+		this->dirty_rects[0].top = 0;
+		this->dirty_rects[0].right = this->window_width;
+		this->dirty_rects[0].bottom = this->window_height;
 	}
 
 	/* Build the region of dirty rectangles */
-	for (i = 0; i < num_dirty_rects; i++) {
+	for (int i = 0; i < this->num_dirty_rects; i++) {
 		/* We only need to blit in indexed mode since in 32bpp mode the game draws directly to the image. */
-		if (buffer_depth == 8) {
+		if (this->buffer_depth == 8) {
 			BlitIndexedToView32(
-				dirty_rects[i].left,
-				dirty_rects[i].top,
-				dirty_rects[i].right,
-				dirty_rects[i].bottom
+				this->dirty_rects[i].left,
+				this->dirty_rects[i].top,
+				this->dirty_rects[i].right,
+				this->dirty_rects[i].bottom
 			);
 		}
 
-		dirtyrect.origin.x = dirty_rects[i].left;
-		dirtyrect.origin.y = window_height - dirty_rects[i].bottom;
-		dirtyrect.size.width = dirty_rects[i].right - dirty_rects[i].left;
-		dirtyrect.size.height = dirty_rects[i].bottom - dirty_rects[i].top;
+		NSRect dirtyrect;
+		dirtyrect.origin.x = this->dirty_rects[i].left;
+		dirtyrect.origin.y = this->window_height - this->dirty_rects[i].bottom;
+		dirtyrect.size.width = this->dirty_rects[i].right - this->dirty_rects[i].left;
+		dirtyrect.size.height = this->dirty_rects[i].bottom - this->dirty_rects[i].top;
 
 		/* drawRect will be automatically called by Mac OS X during next update cycle, and then blitting will occur */
-		[ qzview setNeedsDisplayInRect: dirtyrect ];
+		[ qzview setNeedsDisplayInRect:dirtyrect ];
 	}
 
 	//DrawResizeIcon();
 
-	num_dirty_rects = 0;
+	this->num_dirty_rects = 0;
 }
 
 void WindowQuartzSubdriver::MakeDirty(int left, int top, int width, int height)
 {
-	if (num_dirty_rects < MAX_DIRTY_RECTS) {
-		dirty_rects[num_dirty_rects].left = left;
-		dirty_rects[num_dirty_rects].top = top;
-		dirty_rects[num_dirty_rects].right = left + width;
-		dirty_rects[num_dirty_rects].bottom = top + height;
+	if (this->num_dirty_rects < MAX_DIRTY_RECTS) {
+		dirty_rects[this->num_dirty_rects].left = left;
+		dirty_rects[this->num_dirty_rects].top = top;
+		dirty_rects[this->num_dirty_rects].right = left + width;
+		dirty_rects[this->num_dirty_rects].bottom = top + height;
 	}
-	num_dirty_rects++;
+	this->num_dirty_rects++;
 }
 
 void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
 {
-	uint i;
+	if (this->buffer_depth != 8) return;
 
-	if (buffer_depth != 8)
-		return;
-
-	for (i = first_color; i < first_color + num_colors; i++) {
+	for (uint i = first_color; i < first_color + num_colors; i++) {
 		uint32 clr = 0xff000000;
 		clr |= (uint32)_cur_palette[i].r << 16;
 		clr |= (uint32)_cur_palette[i].g << 8;
 		clr |= (uint32)_cur_palette[i].b;
-		palette[i] = clr;
+		this->palette[i] = clr;
 	}
 
-	num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
 uint WindowQuartzSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
 {
-	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, buffer_depth);
+	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, this->buffer_depth);
 }
 
 bool WindowQuartzSubdriver::ChangeResolution(int w, int h)
 {
-	int old_width  = window_width;
-	int old_height = window_height;
+	int old_width  = this->window_width;
+	int old_height = this->window_height;
 
-	if (SetVideoMode(w, h))
-		return true;
-
-	if (old_width != 0 && old_height != 0)
-		SetVideoMode(old_width, old_height);
+	if (this->SetVideoMode(w, h)) return true;
+	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height);
 
 	return false;
 }
@@ -673,14 +637,14 @@ bool WindowQuartzSubdriver::ChangeResolution(int w, int h)
 /* Convert local coordinate to window server (CoreGraphics) coordinate */
 CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
 {
+
+	p->y = this->window_height - p->y;
+	*p = [ this->qzview convertPoint:*p toView:nil ];
+
+	*p = [ this->window convertBaseToScreen:*p ];
+	p->y = this->device_height - p->y;
+
 	CGPoint cgp;
-
-	p->y = window_height - p->y;
-	*p = [ qzview convertPoint:*p toView: nil ];
-
-	*p = [ window convertBaseToScreen:*p ];
-	p->y = device_height - p->y;
-
 	cgp.x = p->x;
 	cgp.y = p->y;
 
@@ -689,19 +653,17 @@ CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
 
 NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
 {
-	NSPoint pt;
+	NSPoint pt = [ event locationInWindow ];
+	pt = [ this->qzview convertPoint:pt fromView:nil ];
 
-	pt = [ event locationInWindow ];
-	pt = [ qzview convertPoint:pt fromView:nil ];
-
-	pt.y = window_height - pt.y;
+	pt.y = this->window_height - pt.y;
 
 	return pt;
 }
 
 bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
 {
-	return [ qzview mouse:*pt inRect:[ qzview bounds ] ];
+	return [ qzview mouse:*pt inRect:[ this->qzview bounds ] ];
 }
 
 
@@ -711,49 +673,48 @@ bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
  */
 void WindowQuartzSubdriver::SetPortAlphaOpaque()
 {
-	uint32 *pixels = (uint32*)image_buffer;
-	uint32  pitch  = window_width;
-	int x, y;
+	uint32 *pixels = (uint32*)this->image_buffer;
+	uint32  pitch  = this->window_width;
 
-	for (y = 0; y < window_height; y++)
-		for (x = 0; x < window_width; x++) {
+	for (int y = 0; y < this->window_height; y++)
+		for (int x = 0; x < this->window_width; x++) {
 		pixels[y * pitch + x] |= 0xFF000000;
 	}
 }
 
 bool WindowQuartzSubdriver::WindowResized()
 {
-	if (window == nil || qzview == nil) return true;
+	if (this->window == nil || this->qzview == nil) return true;
 
-	NSRect newframe = [ qzview frame ];
+	NSRect newframe = [ this->qzview frame ];
 
-	window_width = newframe.size.width;
-	window_height = newframe.size.height;
+	this->window_width = newframe.size.width;
+	this->window_height = newframe.size.height;
 
 	/* Create Core Graphics Context */
-	free(image_buffer);
-	image_buffer = (uint32*)malloc(window_width * window_height * 4);
+	free(this->image_buffer);
+	this->image_buffer = (uint32*)malloc(this->window_width * this->window_height * 4);
 
-	CGContextRelease(cgcontext);
-	cgcontext = CGBitmapContextCreate(
-		image_buffer,              // data
-		window_width,              // width
-		window_height,             // height
+	CGContextRelease(this->cgcontext);
+	this->cgcontext = CGBitmapContextCreate(
+		this->image_buffer,        // data
+		this->window_width,        // width
+		this->window_height,       // height
 		8,                         // bits per component
-		window_width * 4,          // bytes per row
+		this->window_width * 4,    // bytes per row
 		QZ_GetCorrectColorSpace(), // color space
 		kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host
 	);
 
-	assert(cgcontext != NULL);
-	CGContextSetShouldAntialias(cgcontext, FALSE);
-	CGContextSetAllowsAntialiasing(cgcontext, FALSE);
-	CGContextSetInterpolationQuality(cgcontext, kCGInterpolationNone);
+	assert(this->cgcontext != NULL);
+	CGContextSetShouldAntialias(this->cgcontext, FALSE);
+	CGContextSetAllowsAntialiasing(this->cgcontext, FALSE);
+	CGContextSetInterpolationQuality(this->cgcontext, kCGInterpolationNone);
 
-	if (buffer_depth == 8) {
-		free(pixel_buffer);
-		pixel_buffer = malloc(window_width * window_height);
-		if (pixel_buffer == NULL) {
+	if (this->buffer_depth == 8) {
+		free(this->pixel_buffer);
+		this->pixel_buffer = malloc(this->window_width * this->window_height);
+		if (this->pixel_buffer == NULL) {
 			DEBUG(driver, 0, "Failed to allocate pixel buffer");
 			return false;
 		}
@@ -762,7 +723,7 @@ bool WindowQuartzSubdriver::WindowResized()
 	QZ_GameSizeChanged();
 
 	/* Redraw screen */
-	num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
 
 	return true;
 }
@@ -770,8 +731,6 @@ bool WindowQuartzSubdriver::WindowResized()
 
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 {
-	WindowQuartzSubdriver *ret;
-
 	if (!MacOSVersionIsAtLeast(10, 4, 0)) {
 		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.4 or later.");
 		return NULL;
@@ -782,7 +741,7 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 		return NULL;
 	}
 
-	ret = new WindowQuartzSubdriver(bpp);
+	WindowQuartzSubdriver *ret = new WindowQuartzSubdriver(bpp);
 
 	if (!ret->ChangeResolution(width, height)) {
 		delete ret;
