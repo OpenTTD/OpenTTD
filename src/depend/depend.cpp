@@ -426,7 +426,8 @@ const char *GeneratePath(const char *dirname, const char *filename, bool local)
 		/* Remove '..' from the begin of the filename. */
 		while (*p == '.') {
 			if (*(++p) == '.') {
-				*(strrchr(path, '/')) = '\0';
+				char *s = strrchr(path, '/');
+				if (s != NULL) *s = '\0';
 				p += 2;
 			}
 		}
@@ -443,7 +444,8 @@ const char *GeneratePath(const char *dirname, const char *filename, bool local)
 		/* Remove '..' from the begin of the filename. */
 		while (*p == '.') {
 			if (*(++p) == '.') {
-				*(strrchr(path, '/')) = '\0';
+				char *s = strrchr(path, '/');
+				if (s != NULL) *s = '\0';
 				p += 2;
 			}
 		}
