@@ -784,8 +784,6 @@ bool IsEngineRefittable(EngineID engine)
 	/* check if it's an engine that is in the engine array */
 	if (e == NULL) return false;
 
-	if (e->type == VEH_SHIP && !e->u.ship.refittable) return false;
-
 	if (!e->CanCarryCargo()) return false;
 
 	const EngineInfo *ei = &e->info;

@@ -888,7 +888,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case 0x09: // Refittable
-				svi->refittable = (grf_load_byte(&buf) != 0);
+				svi->old_refittable = (grf_load_byte(&buf) != 0);
 				break;
 
 			case PROP_SHIP_COST_FACTOR: // 0x0A Cost factor
@@ -5756,6 +5756,9 @@ static void CalculateRefitMasks()
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
 		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
 		if (ei->cargo_type == CT_INVALID) ei->climates = 0x80;
+
+		/* Clear refit_mask for not refittable ships */
+		if (e->type == VEH_SHIP && !e->u.ship.old_refittable) ei->refit_mask = 0;
 	}
 }
 

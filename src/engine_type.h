@@ -67,7 +67,7 @@ struct ShipVehicleInfo {
 	uint16 capacity;
 	byte running_cost;
 	SoundID sfx;
-	bool refittable;
+	bool old_refittable;   ///< Is ship refittable; only used during initialisation. Later use EngineInfo::refit_mask.
 };
 
 /* AircraftVehicleInfo subtypes, bitmask type.
