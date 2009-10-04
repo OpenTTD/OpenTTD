@@ -14,10 +14,10 @@
 #ifndef NETWORK_CORE_H
 #define NETWORK_CORE_H
 
-#ifdef ENABLE_NETWORK
-
 #include "os_abstraction.h"
 #include "../../newgrf_config.h"
+
+#ifdef ENABLE_NETWORK
 
 bool NetworkCoreInitialize();
 void NetworkCoreShutdown();

@@ -12,12 +12,12 @@
 #ifndef NETWORK_ADDRESS_H
 #define NETWORK_ADDRESS_H
 
-#ifdef ENABLE_NETWORK
-
 #include "os_abstraction.h"
 #include "config.h"
 #include "../../string_func.h"
 #include "../../core/smallmap_type.hpp"
+
+#ifdef ENABLE_NETWORK
 
 class NetworkAddress;
 typedef SmallVector<NetworkAddress, 4> NetworkAddressList;

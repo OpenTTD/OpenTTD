@@ -12,10 +12,10 @@
 #ifndef NETWORK_CONTENT_H
 #define NETWORK_CONTENT_H
 
-#if defined(ENABLE_NETWORK)
-
 #include "core/tcp_content.h"
 #include "../core/smallvec_type.hpp"
+
+#if defined(ENABLE_NETWORK)
 
 /** Vector with content info */
 typedef SmallVector<ContentInfo *, 16> ContentVector;

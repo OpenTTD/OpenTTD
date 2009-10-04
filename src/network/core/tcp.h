@@ -14,12 +14,12 @@
 #ifndef NETWORK_CORE_TCP_H
 #define NETWORK_CORE_TCP_H
 
-#ifdef ENABLE_NETWORK
-
 #include "os_abstraction.h"
 #include "address.h"
 #include "core.h"
 #include "packet.h"
+
+#ifdef ENABLE_NETWORK
 
 /** Base socket handler for all TCP sockets */
 class NetworkTCPSocketHandler : public NetworkSocketHandler {

@@ -12,8 +12,6 @@
 #ifndef NETWORK_INTERNAL_H
 #define NETWORK_INTERNAL_H
 
-#ifdef ENABLE_NETWORK
-
 #include "network.h"
 #include "network_func.h"
 #include "network_base.h"
@@ -24,6 +22,8 @@
 #include "core/tcp_game.h"
 
 #include "../command_type.h"
+
+#ifdef ENABLE_NETWORK
 
 #ifdef RANDOM_DEBUG
 /**

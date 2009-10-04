@@ -14,12 +14,12 @@
 #ifndef NETWORK_CORE_CONTENT_H
 #define NETWORK_CORE_CONTENT_H
 
-#ifdef ENABLE_NETWORK
-
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
 #include "../../debug.h"
+
+#ifdef ENABLE_NETWORK
 
 /** The values in the enum are important; they are used as database 'keys' */
 enum ContentType {

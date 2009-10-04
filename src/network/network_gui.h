@@ -12,10 +12,10 @@
 #ifndef NETWORK_GUI_H
 #define NETWORK_GUI_H
 
-#ifdef ENABLE_NETWORK
-
 #include "../window_type.h"
 #include "network_type.h"
+
+#ifdef ENABLE_NETWORK
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 void ShowNetworkGiveMoneyWindow(CompanyID company);

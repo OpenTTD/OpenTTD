@@ -12,12 +12,12 @@
 #ifndef NETWORK_TYPE_H
 #define NETWORK_TYPE_H
 
-#ifdef ENABLE_NETWORK
-
 #include "../company_type.h"
 #include "../economy_type.h"
 #include "core/config.h"
 #include "core/game.h"
+
+#ifdef ENABLE_NETWORK
 
 enum {
 	/** How many clients can we have */

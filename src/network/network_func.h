@@ -12,13 +12,13 @@
 #ifndef NETWORK_FUNC_H
 #define NETWORK_FUNC_H
 
-#ifdef ENABLE_NETWORK
-
 #include "core/address.h"
 #include "network_type.h"
 #include "../console_type.h"
 #include "../gfx_type.h"
 #include "../core/smallvec_type.hpp"
+
+#ifdef ENABLE_NETWORK
 
 extern NetworkServerGameInfo _network_game_info;
 extern NetworkCompanyState *_network_company_states;

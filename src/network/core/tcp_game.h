@@ -14,12 +14,12 @@
 #ifndef NETWORK_CORE_TCP_GAME_H
 #define NETWORK_CORE_TCP_GAME_H
 
-#ifdef ENABLE_NETWORK
-
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
 #include "../../core/pool_type.hpp"
+
+#ifdef ENABLE_NETWORK
 
 /**
  * Enum with all types of UDP packets.

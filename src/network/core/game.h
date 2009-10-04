@@ -15,11 +15,11 @@
 #ifndef NETWORK_CORE_GAME_H
 #define NETWORK_CORE_GAME_H
 
-#ifdef ENABLE_NETWORK
-
 #include "config.h"
 #include "../../newgrf_config.h"
 #include "../../date_type.h"
+
+#ifdef ENABLE_NETWORK
 
 /**
  * The game information that is not generated on-the-fly and has to
