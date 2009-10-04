@@ -18,6 +18,7 @@
 
 #define MAC_OS_X_VERSION_MIN_REQUIRED MAC_OS_X_VERSION_10_3
 #include "../../stdafx.h"
+#include "../../os/macosx/macos.h"
 
 #define Rect  OTTDRect
 #define Point OTTDPoint

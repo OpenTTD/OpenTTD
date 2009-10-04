@@ -58,14 +58,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <climits>
-
-/* MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
- * strgen always runs from terminal and don't need a window for asserts */
-#if !defined(__APPLE__) || defined(STRGEN)
-	#include <cassert>
-#else
-	#include "os/macosx/macos.h"
-#endif
+#include <cassert>
 
 #if defined(UNIX) || defined(__MINGW32__)
 	#include <sys/types.h>

@@ -10,21 +10,13 @@
 #include "../../stdafx.h"
 #include "../../core/bitmath_func.hpp"
 #include "../../rev.h"
+#include "macos.h"
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
 #include <AppKit/AppKit.h>
 #undef Rect
 #undef Point
-
-#include <mach/mach.h>
-#include <mach/mach_host.h>
-#include <mach/host_info.h>
-#include <mach/machine.h>
-
-#ifndef CPU_SUBTYPE_POWERPC_970
-#define CPU_SUBTYPE_POWERPC_970 ((cpu_subtype_t) 100)
-#endif
 
 /*
  * This file contains objective C
@@ -62,74 +54,6 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 	}
 }
 
-void ToggleFullScreen(bool fs);
-
-static char *GetOSString()
-{
-	static char buffer[175];
-	const char *CPU;
-	char newgrf[125];
-	// get the hardware info
-	host_basic_info_data_t hostInfo;
-	mach_msg_type_number_t infoCount;
-
-	infoCount = HOST_BASIC_INFO_COUNT;
-	host_info(
-		mach_host_self(), HOST_BASIC_INFO, (host_info_t)&hostInfo, &infoCount
-	);
-
-	// replace the hardware info with strings, that tells a bit more than just an int
-	switch (hostInfo.cpu_subtype) {
-#ifdef __POWERPC__
-		case CPU_SUBTYPE_POWERPC_750:  CPU = "G3"; break;
-		case CPU_SUBTYPE_POWERPC_7400:
-		case CPU_SUBTYPE_POWERPC_7450: CPU = "G4"; break;
-		case CPU_SUBTYPE_POWERPC_970:  CPU = "G5"; break;
-		default:                       CPU = "Unknown PPC"; break;
-#else
-		/* it looks odd to have a switch for two cases, but it leaves room for easy
-		 * expansion. Odds are that Apple will some day use newer CPUs than i686
-		 */
-		case CPU_SUBTYPE_PENTPRO: CPU = "i686"; break;
-		default:                  CPU = "Unknown Intel"; break;
-#endif
-	}
-
-	/* Get the version of OSX */
-	char OS[20];
-	int version_major, version_minor, version_bugfix;
-	GetMacOSVersion(&version_major, &version_minor, &version_bugfix);
-
-	if (version_major != -1 && version_minor != -1 && version_bugfix != -1) {
-		snprintf(OS, lengthof(OS), "%d.%d.%d", version_major, version_minor, version_bugfix);
-	} else {
-		snprintf(OS, lengthof(OS), "uncertain %d.%d.%d", version_major, version_minor, version_bugfix);
-	}
-
-	// make a list of used newgrf files
-/*	if (_first_grffile != NULL) {
-		char *n = newgrf;
-		const GRFFile *file;
-
-		for (file = _first_grffile; file != NULL; file = file->next) {
-			n = strecpy(n, " ", lastof(newgrf));
-			n = strecpy(n, file->filename, lastof(newgrf));
-		}
-	} else {*/
-		sprintf(newgrf, "none");
-//	}
-
-	snprintf(
-		buffer, lengthof(buffer),
-		"Please add this info: (tip: copy-paste works)\n"
-		"CPU: %s, OSX: %s, OpenTTD version: %s\n"
-		"NewGRF files:%s",
-		CPU, OS, _openttd_revision, newgrf
-	);
-	return buffer;
-}
-
-
 #ifdef WITH_SDL
 
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
@@ -139,7 +63,7 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
 
 #elif defined WITH_COCOA
 
-void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
+extern void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
 
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
@@ -156,42 +80,15 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
 
 #endif
 
-void ShowMacAssertDialog(const char *function, const char *file, const int line, const char *expression)
+
+void ShowOSErrorBox(const char *buf, bool system)
 {
-	const char *buffer =
-		[[NSString stringWithFormat:@
-			"An assertion has failed and OpenTTD must quit.\n"
-			"%s in %s (line %d)\n"
-			"\"%s\"\n"
-			"\n"
-			"You should report this error the OpenTTD developers if you think you found a bug.\n"
-			"\n"
-			"%s",
-			function, file, line, expression, GetOSString()] cString
-		];
-	NSLog(@"%s", buffer);
-	ToggleFullScreen(0);
-	ShowMacDialog("Assertion Failed", buffer, "Quit");
-
-	// abort so that a debugger has a chance to notice
-	abort();
-}
-
-
-void ShowMacErrorDialog(const char *error)
-{
-	const char *buffer =
-		[[NSString stringWithFormat:@
-			"Please update to the newest version of OpenTTD\n"
-			"If the problem presists, please report this to\n"
-			"http://bugs.openttd.org\n"
-			"\n"
-			"%s",
-			GetOSString()] cString
-		];
-	ToggleFullScreen(0);
-	ShowMacDialog(error, buffer, "Quit");
-	abort();
+	/* Display the error in the best way possible. */
+	if (system) {
+		ShowMacDialog("OpenTTD has encountered an error", buf, "Quit");
+	} else {
+		ShowMacDialog(buf, "See the readme for more info.\nMost likely you are missing files from the original TTD.", "Quit");
+	}
 }
 
 

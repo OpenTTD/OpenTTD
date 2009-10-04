@@ -79,7 +79,11 @@ townname.cpp
 		#if OS2
 			os/os2/os2.cpp
 		#else
-			os/unix/crashlog_unix.cpp
+			#if OSX
+				os/macosx/crashlog_osx.cpp
+			#else
+				os/unix/crashlog_unix.cpp
+			#end
 			os/unix/unix.cpp
 		#end
 	#end

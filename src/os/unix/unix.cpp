@@ -218,21 +218,17 @@ void ShowInfo(const char *str)
 	fprintf(stderr, "%s\n", str);
 }
 
+#if !defined(__APPLE__)
 void ShowOSErrorBox(const char *buf, bool system)
 {
-#if defined(__APPLE__)
-	/* this creates an NSAlertPanel with the contents of 'buf'
-	 * this is the native and nicest way to do this on OSX */
-	ShowMacDialog( buf, "See readme for more info\nMost likely you are missing files from the original TTD", "Quit" );
-#else
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
 		fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
 	} else {
 		fprintf(stderr, "Error: %s\n", buf);
 	}
-#endif
 }
+#endif
 
 #ifdef WITH_COCOA
 void cocoaSetupAutoreleasePool();

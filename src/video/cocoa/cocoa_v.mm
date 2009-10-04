@@ -16,6 +16,7 @@
 #ifdef WITH_COCOA
 
 #include "../../stdafx.h"
+#include "../../os/macosx/macos.h"
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
