@@ -21,7 +21,9 @@
 #include <time.h>
 #include <signal.h>
 
-#if (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
+#ifdef __APPLE__
+	#include <sys/mount.h>
+#elif (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
 	#define HAS_STATVFS
 #endif
 
@@ -71,17 +73,16 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 {
 	uint64 free = 0;
 
-#ifdef HAS_STATVFS
-# ifdef __APPLE__
-	/* OSX 10.3 lacks statvfs so don't try to use it even though later versions of OSX has it. */
-	if (MacOSVersionIsAtLeast(10, 4, 0))
-# endif
-	{
-		struct statvfs s;
+#ifdef __APPLE__
+	struct statfs s;
 
-		if (statvfs(path, &s) != 0) return false;
-		free = (uint64)s.f_frsize * s.f_bavail;
-	}
+	if (statfs(path, &s) != 0) return false;
+	free = (uint64)s.f_bsize * s.f_bavail;
+#elif defined(HAS_STATVFS)
+	struct statvfs s;
+
+	if (statvfs(path, &s) != 0) return false;
+	free = (uint64)s.f_frsize * s.f_bavail;
 #endif
 	if (tot != NULL) *tot = free;
 	return true;
