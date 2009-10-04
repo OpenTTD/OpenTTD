@@ -351,7 +351,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	/* Calculate total area we are blitting */
 	for (n = 0; n < dirtyRectCount; n++) {
 		blitArea += dirtyRects[n].size.width * dirtyRects[n].size.height;
- 	}
+	}
 
 	/*
 	 * This might be completely stupid, but in my extremely subjective opinion it feels faster
@@ -396,8 +396,8 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 			clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
 			CGContextDrawImage(viewContext, blitRect, clippedImage);
 			CGImageRelease(clippedImage);
- 		}
- 	}
+		}
+	}
 
 	CGImageRelease(fullImage);
 }

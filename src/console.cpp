@@ -312,7 +312,7 @@ void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *
 		_base = item_new;                                                          \
 	} else {                                                                     \
 		item_before->next = item_new;                                              \
-  }                                                                            \
+	}                                                                            \
                                                                                \
 	item_new->next = item;                                                       \
 	/* END - Alphabetical insert */                                              \

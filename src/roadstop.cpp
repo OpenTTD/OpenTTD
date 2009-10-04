@@ -18,9 +18,10 @@
 RoadStopPool _roadstop_pool("RoadStop");
 INSTANTIATE_POOL_METHODS(RoadStop)
 
-/** De-Initializes a RoadStops. This includes clearing all slots that vehicles might
-  * have and unlinks it from the linked list of road stops at the given station
-  */
+/**
+ * De-Initializes RoadStops. This includes clearing all slots that vehicles might
+ * have and unlinks it from the linked list of road stops at the given station
+ */
 RoadStop::~RoadStop()
 {
 	if (CleaningPool()) return;

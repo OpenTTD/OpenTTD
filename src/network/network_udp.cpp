@@ -528,7 +528,7 @@ void NetworkUDPAdvertiseThread(void *pntr)
 }
 
 /* Register us to the master server
-     This function checks if it needs to send an advertise */
+ *   This function checks if it needs to send an advertise */
 void NetworkUDPAdvertise()
 {
 	/* Check if we should send an advertise */

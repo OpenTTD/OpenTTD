@@ -535,7 +535,7 @@ static const Units units[] = {
  */
 uint ConvertSpeedToDisplaySpeed(uint speed)
 {
- return (speed * units[_settings_game.locale.units].s_m) >> units[_settings_game.locale.units].s_s;
+	return (speed * units[_settings_game.locale.units].s_m) >> units[_settings_game.locale.units].s_s;
 }
 
 /**

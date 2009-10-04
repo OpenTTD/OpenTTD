@@ -942,7 +942,7 @@ void ShowNetworkGameWindow()
 		/* add all servers from the config file to our list */
 		for (char **iter = _network_host_list.Begin(); iter != _network_host_list.End(); iter++) {
 			NetworkAddServer(*iter);
-  }
+		}
 	}
 
 	new NetworkGameWindow(&_network_game_window_desc);

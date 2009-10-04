@@ -10,7 +10,7 @@
 /** @file cargo_const.h Table of all default cargo types */
 
 #define MK(bt, label, c, e, f, g, h, fr, te, ks1, ks2, ks3, ks4, ks5, l, m) \
-          {bt, label, c, c, e, f, {g, h}, fr, te, 0, 0, ks1, ks2, ks3, ks4, ks5, l, m, NULL, NULL, 0}
+		{bt, label, c, c, e, f, {g, h}, fr, te, 0, 0, ks1, ks2, ks3, ks4, ks5, l, m, NULL, NULL, 0}
 static const CargoSpec _default_cargo[] = {
 	MK(  0, 'PASS', 152,  1, 3185,  0,  24, false, TE_PASSENGERS,
 		STR_CARGO_PLURAL_PASSENGERS,     STR_CARGO_SINGULAR_PASSENGER,      STR_PASSENGERS, STR_QUANTITY_PASSENGERS,   STR_ABBREV_PASSENGERS,
