@@ -96,7 +96,7 @@ struct TrainCache {
 	byte cached_vis_effect;
 	byte user_def_data;
 
-	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_VEHICLE for the front vehicle itself.
+	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
 };
 
 /**
