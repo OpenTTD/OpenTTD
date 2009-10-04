@@ -34,16 +34,41 @@
  * To insure that the crosscompiler still works, let him try any changes before they are committed
  */
 
+
+/**
+ * Get the version of the MacOS we are running under. Code adopted
+ * from http://www.cocoadev.com/index.pl?DeterminingOSVersion
+ * @param return_major major version of the os. This would be 10 in the case of 10.4.11
+ * @param return_minor minor version of the os. This would be 4 in the case of 10.4.11
+ * @param return_bugfix bugfix version of the os. This would be 11 in the case of 10.4.11
+ * A return value of -1 indicates that something went wrong and we don't know.
+ */
+void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
+{
+	*return_major = -1;
+	*return_minor = -1;
+	*return_bugfix = -1;
+	SInt32 systemVersion, version_major, version_minor, version_bugfix;
+	if (Gestalt(gestaltSystemVersion, &systemVersion) == noErr) {
+		if (systemVersion >= 0x1040) {
+			if (Gestalt(gestaltSystemVersionMajor,  &version_major) == noErr) *return_major = (int)version_major;
+			if (Gestalt(gestaltSystemVersionMinor,  &version_minor) == noErr) *return_minor = (int)version_minor;
+			if (Gestalt(gestaltSystemVersionBugFix, &version_bugfix) == noErr) *return_bugfix = (int)version_bugfix;
+		} else {
+			*return_major = (int)(GB(systemVersion, 12, 4) * 10 + GB(systemVersion, 8, 4));
+			*return_minor = (int)GB(systemVersion, 4, 4);
+			*return_bugfix = (int)GB(systemVersion, 0, 4);
+		}
+	}
+}
+
 void ToggleFullScreen(bool fs);
 
 static char *GetOSString()
 {
 	static char buffer[175];
 	const char *CPU;
-	char OS[20];
 	char newgrf[125];
-	SInt32 sysVersion;
-
 	// get the hardware info
 	host_basic_info_data_t hostInfo;
 	mach_msg_type_number_t infoCount;
@@ -70,16 +95,15 @@ static char *GetOSString()
 #endif
 	}
 
-	// get the version of OSX
-	if (Gestalt(gestaltSystemVersion, &sysVersion) != noErr) {
-		sprintf(OS, "Undetected");
-	} else {
-		int majorHiNib = GB(sysVersion, 12, 4);
-		int majorLoNib = GB(sysVersion,  8, 4);
-		int minorNib   = GB(sysVersion,  4, 4);
-		int bugNib     = GB(sysVersion,  0, 4);
+	/* Get the version of OSX */
+	char OS[20];
+	int version_major, version_minor, version_bugfix;
+	GetMacOSVersion(&version_major, &version_minor, &version_bugfix);
 
-		sprintf(OS, "%d%d.%d.%d", majorHiNib, majorLoNib, minorNib, bugNib);
+	if (version_major != -1 && version_minor != -1 && version_bugfix != -1) {
+		snprintf(OS, lengthof(OS), "%d.%d.%d", version_major, version_minor, version_bugfix);
+	} else {
+		snprintf(OS, lengthof(OS), "uncertain %d.%d.%d", version_major, version_minor, version_bugfix);
 	}
 
 	// make a list of used newgrf files
@@ -197,72 +221,3 @@ const char *GetCurrentLocale(const char *)
 }
 
 
-/*
- * This will only give an accurate result for versions before OS X 10.8 since it uses bcd encoding
- * for the minor and bugfix version numbers and a scheme of representing all numbers from 9 and up
- * with 9. This means we can't tell OS X 10.9 from 10.9 or 10.11. Please use GetMacOSVersionMajor()
- * and GetMacOSVersionMinor() instead.
- */
-static long GetMacOSVersion()
-{
-	static SInt32 sysVersion = -1;
-
-	if (sysVersion != -1) return sysVersion;
-
-	if (Gestalt(gestaltSystemVersion, &sysVersion) != noErr) sysVersion = -1;
-	 return sysVersion;
-}
-
-long GetMacOSVersionMajor()
-{
-	static SInt32 sysVersion = -1;
-
-	if (sysVersion != -1) return sysVersion;
-
-	sysVersion = GetMacOSVersion();
-	if (sysVersion == -1) return -1;
-
-	if (sysVersion >= 0x1040) {
-		if (Gestalt(gestaltSystemVersionMajor, &sysVersion) != noErr) sysVersion = -1;
-	} else {
-		sysVersion = GB(sysVersion, 12, 4) * 10 + GB(sysVersion,  8, 4);
-	}
-
-	return sysVersion;
-}
-
-long GetMacOSVersionMinor()
-{
-	static SInt32 sysVersion = -1;
-
-	if (sysVersion != -1) return sysVersion;
-
-	sysVersion = GetMacOSVersion();
-	if (sysVersion == -1) return -1;
-
-	if (sysVersion >= 0x1040) {
-		if (Gestalt(gestaltSystemVersionMinor, &sysVersion) != noErr) sysVersion = -1;
-	} else {
-		sysVersion = GB(sysVersion,  4, 4);
-	}
-
-	return sysVersion;
-}
-
-long GetMacOSVersionBugfix()
-{
-	static SInt32 sysVersion = -1;
-
-	if (sysVersion != -1) return sysVersion;
-
-	sysVersion = GetMacOSVersion();
-	if (sysVersion == -1) return -1;
-
-	if (sysVersion >= 0x1040) {
-		if (Gestalt(gestaltSystemVersionBugFix, &sysVersion) != noErr) sysVersion = -1;
-	} else {
-		sysVersion = GB(sysVersion,  0, 4);
-	}
-
-	return sysVersion;
-}
