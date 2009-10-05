@@ -217,6 +217,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selekteer sorteer orde (afklimende/klimende)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selekteer sorteer maatstaf
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selekteer filtrering kriteria
@@ -254,6 +255,7 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populasi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Naam
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Populasie
 STR_SORT_BY_NAME                                                :Naam
 STR_SORT_BY_PRODUCTION                                          :Produksie
 STR_SORT_BY_TYPE                                                :Tipe
@@ -555,7 +557,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nommer van voertuie; dit sluit pad voertuie, treine, skepe en vliegtuie in
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal van stasie parte. Elke deel van 'n stasie (b.v. trein stasie, bushalte, lughawe) is getel, selfs indien hulle is konnekteer as een stasie
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Die profyt van die voertuig met die laagste inkome (van alle voertuie ouer as 2 jaare)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Die wins van die voertuig met die laagste inkomste (van alle voertuie ouer as 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die laagste profyt in die laaste 12 kwartiers
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die hoogste profyt in die laaste 12 kwartiers
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Eenheide van vrag afgelewer in die laaste vier kwartiers
@@ -1702,6 +1704,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Speletjie gepoo
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Speletjie ongepoos (genoeg spelers)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Speletjie gepoos (konnekteer kliënt)
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :verlaat
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} het by die spel aangesluit
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} het by besigheid  #{2:NUM} aangesluit
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} het aangesluit by die spektators
@@ -1722,17 +1725,28 @@ STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selektee
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merk al die inhoud wat afgelaai moet word
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selekteer opgraderings
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alle inhoud wat nie afgelaai moet word nie
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Laai af
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Begin om die geselekteerde inligting af te laai
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jy het nie dit geselekteer om af te laai nie
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het dit geselekeer om af te laai
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Naam: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Weergawe: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beskrywing: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipe: {WHITE}{STRING}
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basis grafika
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basiese klanke
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Aflaai voltooi
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} van {BYTES} afgelaai ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Aflaai onsuksesvol...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verloor
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... lêer nie skryfbaar nie
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon nie die afgelaaide lêer dekompakteer
@@ -1760,6 +1774,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Voorraad
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{BLACK}Sluit by stasie aan
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bou 'n aparte stasie
 
 
 # Rail construction toolbar
@@ -1948,10 +1963,17 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bou dorp
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Baie lukraak dorpe
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Maak die kaart vol met wildweg geplaased dorpe
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Dorp naam:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Tik in dorp naam
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliek om dorp naam in te voeg
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Lukraak naam
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genereer nuwe lukrake naam
+
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Dorp groote:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Klein
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Middelmatig
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Groot
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Lukraak
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Kies dorp groote
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 
@@ -1959,6 +1981,9 @@ STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Straat 
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Kies straat uitleg ingebruik vir dorp
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Oorspronklik
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Beter strate
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 grid
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 grid
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Lukraak
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Konsolideer nuwe nywerheid
@@ -2242,6 +2267,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Gelyke 
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Versoenbaar GRF(s) gelaai vir vermis lêers
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermis GRF lêers is gestrem
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vermis GRF leêr(s)
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dit verander voertuig lengte vier '{1:ENGINE}' wanneer die nie in diensstasie is nie.
@@ -2446,6 +2472,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ons is o
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nywerhede
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Geen -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% uitgevoer)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% uitgevoer)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2799,9 +2826,12 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. spoed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_S} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {LTBLUE}{WEIGHT_S} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY} (vorige jaar: {CURRENCY})
 
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasiteit: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3317,9 +3347,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan nie 
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Voorwerp in die pad
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...maatskappy hoofkwartier in die weg
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... maatskappy hoofkwartier in die pad
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Die land area kan nie aangekoop word nie...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...jy besit dit alreeds!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... jy besit dit alreeds!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan nie groep skep nie...
@@ -3398,9 +3428,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Die opdr
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan nie opdrag beweeg nie...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan nie huidige opdrag sprong nie...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan nie verkieste opdrag sprong nie...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}voertuig kan nie na al die stasies toe gaan
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}voertuig kan nie na daardie stasie toe gaan
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}'n voertuig wat heirdie opdrag deel kan nie na daadie stasie toe gaan
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... voertuig kan nie na al die stasies toe gaan nie
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... voertuig kan nie na daardie stasie toe gaan
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 'n voertuig wat hierdie opdrag deel kan nie na daardie stasie toe gaan nie
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan nie opdraglys deel nie...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan nie opdrag lys kopie nie...
@@ -3872,6 +3902,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

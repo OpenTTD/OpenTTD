@@ -2207,6 +2207,54 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Buo
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Buorltruck
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Oaljetenker
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Oaljetenker
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Sweefmobiel
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Passazjier Fearboat
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passazjier Fearboat
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Guod boat
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Guod boat
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Guod boat
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Guod boat
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Lofttaksy A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Lofttaksy A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Lofttaksy A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Lofttaksy A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Lofttaksy A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerfleantûg M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario Helikopter
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 Helikopter
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Helikopter
 
 ##id 0x8800
 # Formatting of some strings
@@ -2218,6 +2266,8 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_BUOY_NAME                                            :{TOWN} Boei
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boei #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Bedriuw {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Klobke {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Kontrôlepost
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Kontrôlepost #{COMMA}
 
