@@ -54,7 +54,6 @@
 	if (!AICargo::IsValidCargo(cargo_id)) return false;
 
 	if (GetCargoType(engine_id) == cargo_id) return true;
-	if (cargo_id == CT_MAIL && ::Engine::Get(engine_id)->type == VEH_AIRCRAFT) return true;
 	return ::CanRefitTo(engine_id, cargo_id);
 }
 
