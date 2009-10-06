@@ -840,13 +840,13 @@ struct StationViewWindow : public Window {
 						for (CargoDataList::iterator jt = cargolist.begin(); jt != cargolist.end(); jt++) {
 							CargoData *cd = &(*jt);
 							if (cd->cargo == i && cd->source == cp->source) {
-								cd->count += cp->count;
+								cd->count += cp->Count();
 								added = true;
 								break;
 							}
 						}
 
-						if (!added) cargolist.push_back(CargoData(i, cp->source, cp->count));
+						if (!added) cargolist.push_back(CargoData(i, cp->source, cp->Count()));
 					}
 				}
 			}

@@ -719,12 +719,9 @@ void Load_VEHS()
 
 		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v)) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */
-			CargoPacket *cp = new CargoPacket();
+			CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_days, _cargo_feeder_share);
 			cp->source          = _cargo_source;
 			cp->source_xy       = _cargo_source_xy;
-			cp->count           = _cargo_count;
-			cp->days_in_transit = _cargo_days;
-			cp->feeder_share    = _cargo_feeder_share;
 			cp->loaded_at_xy    = _cargo_loaded_at_xy;
 			v->cargo.Append(cp);
 		}

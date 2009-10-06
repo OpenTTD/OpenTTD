@@ -39,6 +39,15 @@ CargoPacket::CargoPacket(StationID source, uint16 count, SourceType source_type,
 	this->source_id       = source_id;
 }
 
+CargoPacket::CargoPacket(uint16 count, byte days_in_transit, Money feeder_share, SourceType source_type, SourceID source_id) :
+		feeder_share(feeder_share),
+		count(count),
+		days_in_transit(days_in_transit),
+		source_id(source_id)
+{
+	this->source_type = source_type;
+}
+
 /**
  * Invalidates (sets source_id to INVALID_SOURCE) all cargo packets from given source
  * @param src_type type of source
@@ -149,7 +158,7 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 					break;
 
 				case MTA_TRANSFER:
-					payment->PayTransfer(cp, cp->count);
+					cp->feeder_share += payment->PayTransfer(cp, cp->count);
 					break;
 
 				case MTA_UNLOAD:
@@ -178,7 +187,7 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 				cp_new->count = count;
 				dest->packets.push_back(cp_new);
 
-				if (mta == MTA_TRANSFER) payment->PayTransfer(cp_new, count);
+				if (mta == MTA_TRANSFER) cp_new->feeder_share += payment->PayTransfer(cp_new, count);
 			} else {
 				payment->PayFinalDelivery(cp, count);
 			}

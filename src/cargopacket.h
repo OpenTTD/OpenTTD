@@ -26,33 +26,87 @@ struct CargoPacket;
 typedef Pool<CargoPacket, CargoPacketID, 1024, 1048576> CargoPacketPool;
 extern CargoPacketPool _cargopacket_pool;
 
+class CargoList;
+extern const struct SaveLoad *GetCargoPacketDesc();
+
 /**
  * Container for cargo from the same location and time
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
+private:
+	/* Variables used by the CargoList cache. Only let them be modified via
+	 * the proper accessor functions and/or CargoList itself. */
 	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo
-	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain)
-	TileIndex loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle
-	StationID source;       ///< The station where the cargo came from first
-
 	uint16 count;           ///< The amount of cargo in this packet
 	byte days_in_transit;   ///< Amount of days this packet has been in transit
 
+	/** The CargoList caches, thus needs to know about it. */
+	friend class CargoList;
+	/** We want this to be saved, right? */
+	friend const struct SaveLoad *GetCargoPacketDesc();
+public:
+
+	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
+	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
+	StationID source;           ///< The station where the cargo came from first
 	SourceTypeByte source_type; ///< Type of #source_id
 	SourceID source_id;         ///< Index of source, INVALID_SOURCE if unknown/invalid
 
 	/**
 	 * Creates a new cargo packet
-	 * @param source the source of the packet
-	 * @param count  the number of cargo entities to put in this packet
+	 * @param source      the source of the packet
+	 * @param count       the number of cargo entities to put in this packet
 	 * @param source_type the 'type' of source the packet comes from (for subsidies)
-	 * @param source_id the actual source of the packet (for subsidies)
+	 * @param source_id   the actual source of the packet (for subsidies)
 	 * @pre count != 0 || source == INVALID_STATION
 	 */
 	CargoPacket(StationID source = INVALID_STATION, uint16 count = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
 
+	/**
+	 * Creates a new cargo packet. Initializes the fields that cannot be changed later.
+	 * Used when loading or splitting packets.
+	 * @param count           the number of cargo entities to put in this packet
+	 * @param days_in_transit number of days the cargo has been in transit
+	 * @param feeder_share    feeder share the packet has already accumulated
+	 * @param source_type     the 'type' of source the packet comes from (for subsidies)
+	 * @param source_id       the actual source of the packet (for subsidies)
+	 */
+	CargoPacket(uint16 count, byte days_in_transit, Money feeder_share = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
+
 	/** Destroy the packet */
 	~CargoPacket() { }
+
+
+	/**
+	 * Gets the number of 'items' in this packet.
+	 * @return the item count
+	 */
+	FORCEINLINE uint16 Count() const
+	{
+		return this->count;
+	}
+
+	/**
+	 * Gets the amount of money already paid to earlier vehicles in
+	 * the feeder chain.
+	 * @return the feeder share
+	 */
+	FORCEINLINE Money FeederShare() const
+	{
+		return this->feeder_share;
+	}
+
+	/**
+	 * Gets the number of days this cargo has been in transit.
+	 * This number isn't really in days, but in 2.5 days (185 ticks) and
+	 * it is capped at 255.
+	 * @return the length this cargo has been in transit
+	 */
+	FORCEINLINE byte DaysInTransit() const
+	{
+		return this->days_in_transit;
+	}
+
 
 	/**
 	 * Checks whether the cargo packet is from (exactly) the same source

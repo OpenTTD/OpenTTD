@@ -239,15 +239,10 @@ static void Load_STNS()
 				SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 				if (GB(_waiting_acceptance, 0, 12) != 0) {
 					/* Don't construct the packet with station here, because that'll fail with old savegames */
-					CargoPacket *cp = new CargoPacket();
+					CargoPacket *cp = new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_days, _cargo_feeder_share);
 					/* In old versions, enroute_from used 0xFF as INVALID_STATION */
 					cp->source          = (CheckSavegameVersion(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
-					cp->count           = GB(_waiting_acceptance, 0, 12);
-					cp->days_in_transit = _cargo_days;
-					cp->feeder_share    = _cargo_feeder_share;
 					cp->source_xy       = _cargo_source_xy;
-					cp->days_in_transit = _cargo_days;
-					cp->feeder_share    = _cargo_feeder_share;
 					SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, 1);
 					ge->cargo.Append(cp);
 				}

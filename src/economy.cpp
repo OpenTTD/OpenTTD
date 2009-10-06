@@ -1028,36 +1028,37 @@ CargoPayment::~CargoPayment()
  * @param cp The cargo packet to pay for.
  * @param count The number of packets to pay for.
  */
-void CargoPayment::PayFinalDelivery(CargoPacket *cp, uint count)
+void CargoPayment::PayFinalDelivery(const CargoPacket *cp, uint count)
 {
 	if (this->owner == NULL) {
 		this->owner = Company::Get(this->front->owner);
 	}
 
 	/* Handle end of route payment */
-	Money profit = DeliverGoods(count, this->ct, this->current_station, cp->source_xy, cp->days_in_transit, this->owner, cp->source_type, cp->source_id);
+	Money profit = DeliverGoods(count, this->ct, this->current_station, cp->source_xy, cp->DaysInTransit(), this->owner, cp->source_type, cp->source_id);
 	this->route_profit += profit;
 
 	/* The vehicle's profit is whatever route profit there is minus feeder shares. */
-	this->visual_profit += profit - cp->feeder_share;
+	this->visual_profit += profit - cp->FeederShare();
 }
 
 /**
  * Handle payment for transfer of the given cargo packet.
- * @param cp The cargo packet to pay for.
+ * @param cp The cargo packet to pay for; actual payment won't be made!.
  * @param count The number of packets to pay for.
+ * @return The amount of money paid for the transfer.
  */
-void CargoPayment::PayTransfer(CargoPacket *cp, uint count)
+Money CargoPayment::PayTransfer(const CargoPacket *cp, uint count)
 {
 	Money profit = GetTransportedGoodsIncome(
 		count,
 		/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
 		DistanceManhattan(cp->loaded_at_xy, Station::Get(this->current_station)->xy),
-		cp->days_in_transit,
+		cp->DaysInTransit(),
 		this->ct);
 
 	this->visual_profit += profit; // accumulate transfer profits for whole vehicle
-	cp->feeder_share    += profit; // account for the (virtual) profit already made for the cargo packet
+	return profit; // account for the (virtual) profit already made for the cargo packet
 }
 
 /**
