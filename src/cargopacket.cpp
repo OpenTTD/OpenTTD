@@ -78,7 +78,7 @@ CargoList::~CargoList()
 
 void CargoList::AgeCargo()
 {
-	if (this->empty) return;
+	if (this->Empty()) return;
 
 	uint dit = 0;
 	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
@@ -214,12 +214,11 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 
 void CargoList::InvalidateCache()
 {
-	this->empty = this->packets.empty();
 	this->count = 0;
 	this->feeder_share = 0;
 	this->days_in_transit = 0;
 
-	if (this->empty) return;
+	if (this->packets.empty()) return;
 
 	uint dit = 0;
 	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
