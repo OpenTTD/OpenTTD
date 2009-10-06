@@ -19,11 +19,13 @@
 #include "cargo_type.h"
 #include <list>
 
+/** Unique identifier for a single cargo packet. */
 typedef uint32 CargoPacketID;
 struct CargoPacket;
 
-/** We want to use a pool */
+/** Type of the pool for cargo packets. */
 typedef Pool<CargoPacket, CargoPacketID, 1024, 1048576> CargoPacketPool;
+/** The actual pool with cargo packets */
 extern CargoPacketPool _cargopacket_pool;
 
 class CargoList;
@@ -51,7 +53,7 @@ public:
 	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
 	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
 	StationID source;           ///< The station where the cargo came from first
-	SourceTypeByte source_type; ///< Type of #source_id
+	SourceTypeByte source_type; ///< Type of \c source_id
 	SourceID source_id;         ///< Index of source, INVALID_SOURCE if unknown/invalid
 
 	/**
@@ -118,8 +120,10 @@ public:
 	 */
 	FORCEINLINE bool SameSource(const CargoPacket *cp) const
 	{
-		return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit &&
-				this->source_type == cp->source_type && this->source_id == cp->source_id;
+		return this->source_xy    == cp->source_xy &&
+				this->days_in_transit == cp->days_in_transit &&
+				this->source_type     == cp->source_type &&
+				this->source_id       == cp->source_id;
 	}
 
 	static void InvalidateAllFrom(SourceType src_type, SourceID src);
@@ -166,6 +170,7 @@ private:
 	uint days_in_transit; ///< Cache for the number of days in transit
 
 public:
+	/** The GoodsEntry has a CargoList. */
 	friend const struct SaveLoad *GetGoodsDesc();
 
 	/** Create the cargo list */
@@ -177,7 +182,10 @@ public:
 	 * Returns a pointer to the cargo packet list (so you can iterate over it etc).
 	 * @return pointer to the packet list
 	 */
-	FORCEINLINE const CargoList::List *Packets() const { return &this->packets; }
+	FORCEINLINE const CargoList::List *Packets() const
+	{
+		return &this->packets;
+	}
 
 	/**
 	 * Ages the all cargo in this list
@@ -188,31 +196,46 @@ public:
 	 * Checks whether this list is empty
 	 * @return true if and only if the list is empty
 	 */
-	FORCEINLINE bool Empty() const { return this->empty; }
+	FORCEINLINE bool Empty() const
+	{
+		return this->empty;
+	}
 
 	/**
 	 * Returns the number of cargo entities in this list
 	 * @return the before mentioned number
 	 */
-	FORCEINLINE uint Count() const { return this->count; }
+	FORCEINLINE uint Count() const
+	{
+		return this->count;
+	}
 
 	/**
 	 * Returns total sum of the feeder share for all packets
 	 * @return the before mentioned number
 	 */
-	FORCEINLINE Money FeederShare() const { return this->feeder_share; }
+	FORCEINLINE Money FeederShare() const
+	{
+		return this->feeder_share;
+	}
 
 	/**
 	 * Returns source of the first cargo packet in this list
 	 * @return the before mentioned source
 	 */
-	FORCEINLINE StationID Source() const { return this->source; }
+	FORCEINLINE StationID Source() const
+	{
+		return this->source;
+	}
 
 	/**
 	 * Returns average number of days in transit for a cargo entity
 	 * @return the before mentioned number
 	 */
-	FORCEINLINE uint DaysInTransit() const { return this->days_in_transit; }
+	FORCEINLINE uint DaysInTransit() const
+	{
+		return this->days_in_transit;
+	}
 
 
 	/**

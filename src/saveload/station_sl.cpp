@@ -196,6 +196,11 @@ static const SaveLoad _station_speclist_desc[] = {
 	SLE_END()
 };
 
+/**
+ * Wrapper function to get the GoodsEntry's internal structure while
+ * some of the variables itself are private.
+ * @return the saveload description for GoodsEntry.
+ */
 const SaveLoad *GetGoodsDesc()
 {
 	static const SaveLoad goods_desc[] = {
