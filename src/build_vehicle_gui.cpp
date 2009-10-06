@@ -629,51 +629,45 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 	YearMonthDay ymd;
 	ConvertDateToYMD(e->intro_date, &ymd);
 	bool refittable = IsArticulatedVehicleRefittable(engine_number);
+	bool articulated_cargo = false;
 
 	switch (e->type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN: {
+		case VEH_TRAIN:
 			if (e->u.rail.railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->u.rail);
 			} else {
 				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->u.rail);
 			}
-
-			/* Cargo type + capacity, or N/A */
-			int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, refittable);
-
-			if (new_y == y) {
-				SetDParam(0, CT_INVALID);
-				SetDParam(2, STR_EMPTY);
-				DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
-				y += FONT_HEIGHT_NORMAL;
-			} else {
-				y = new_y;
-			}
+			articulated_cargo = true;
 			break;
-		}
-		case VEH_ROAD: {
+
+		case VEH_ROAD:
 			y = DrawRoadVehPurchaseInfo(left, right, y, engine_number);
-
-			/* Cargo type + capacity, or N/A */
-			int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, refittable);
-
-			if (new_y == y) {
-				SetDParam(0, CT_INVALID);
-				SetDParam(2, STR_EMPTY);
-				DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
-				y += FONT_HEIGHT_NORMAL;
-			} else {
-				y = new_y;
-			}
+			articulated_cargo = true;
 			break;
-		}
+
 		case VEH_SHIP:
 			y = DrawShipPurchaseInfo(left, right, y, engine_number, &e->u.ship, refittable);
 			break;
+
 		case VEH_AIRCRAFT:
 			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, &e->u.air, refittable);
 			break;
+	}
+
+	if (articulated_cargo) {
+		/* Cargo type + capacity, or N/A */
+		int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, refittable);
+
+		if (new_y == y) {
+			SetDParam(0, CT_INVALID);
+			SetDParam(2, STR_EMPTY);
+			DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
+			y += FONT_HEIGHT_NORMAL;
+		} else {
+			y = new_y;
+		}
 	}
 
 	/* Draw details, that applies to all types except rail wagons */
