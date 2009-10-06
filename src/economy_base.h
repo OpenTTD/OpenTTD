@@ -13,7 +13,6 @@
 #define ECONOMY_BASE_H
 
 #include "cargopacket.h"
-#include "vehicle_type.h"
 #include "company_type.h"
 
 /** Type of pool to store cargo payments in. */

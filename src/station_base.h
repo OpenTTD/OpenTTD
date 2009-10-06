@@ -16,7 +16,6 @@
 #include "airport.h"
 #include "cargopacket.h"
 #include "cargo_type.h"
-#include "vehicle_type.h"
 #include "industry_type.h"
 #include "core/geometry_type.hpp"
 #include <list>

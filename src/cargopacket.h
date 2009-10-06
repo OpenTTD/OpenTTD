@@ -17,6 +17,7 @@
 #include "tile_type.h"
 #include "station_type.h"
 #include "cargo_type.h"
+#include "vehicle_type.h"
 #include <list>
 
 /** Unique identifier for a single cargo packet. */
@@ -143,6 +144,7 @@ public:
 #define FOR_ALL_CARGOPACKETS(var) FOR_ALL_CARGOPACKETS_FROM(var, 0)
 
 extern const struct SaveLoad *GetGoodsDesc();
+extern const SaveLoad *GetVehicleDescription(VehicleType vt);
 
 /**
  * Simple collection class for a list of cargo packets
@@ -168,8 +170,10 @@ private:
 	List packets;               ///< The cargo packets in this list
 
 public:
-	/** The GoodsEntry has a CargoList. */
+	/** The stations, via GoodsEntry, have a CargoList. */
 	friend const struct SaveLoad *GetGoodsDesc();
+	/** The vehicles have a cargo list too. */
+	friend const SaveLoad *GetVehicleDescription(VehicleType vt);
 
 	/** Create the cargo list */
 	FORCEINLINE CargoList() { this->InvalidateCache(); }
