@@ -78,14 +78,13 @@ CargoList::~CargoList()
 
 void CargoList::AgeCargo()
 {
-	if (this->Empty()) return;
-
-	uint dit = 0;
 	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
-		if ((*it)->days_in_transit != 0xFF) (*it)->days_in_transit++;
-		dit += (*it)->days_in_transit * (*it)->count;
+		/* If we're at the maximum, then we can't increase no more. */
+		if ((*it)->days_in_transit == 0xFF) continue;
+
+		(*it)->days_in_transit++;
+		this->cargo_days_in_transit += (*it)->count;
 	}
-	this->days_in_transit = dit / count;
 }
 
 void CargoList::Append(CargoPacket *cp)
@@ -216,15 +215,11 @@ void CargoList::InvalidateCache()
 {
 	this->count = 0;
 	this->feeder_share = 0;
-	this->days_in_transit = 0;
+	this->cargo_days_in_transit = 0;
 
-	if (this->packets.empty()) return;
-
-	uint dit = 0;
 	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
-		this->count        += (*it)->count;
-		dit                += (*it)->days_in_transit * (*it)->count;
-		this->feeder_share += (*it)->feeder_share;
+		this->count                 += (*it)->count;
+		this->cargo_days_in_transit += (*it)->days_in_transit * (*it)->count;
+		this->feeder_share          += (*it)->feeder_share;
 	}
-	this->days_in_transit = dit / count;
 }

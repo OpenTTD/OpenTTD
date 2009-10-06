@@ -161,11 +161,11 @@ public:
 	};
 
 private:
-	Money feeder_share;   ///< Cache for the feeder share
-	uint count;           ///< Cache for the number of cargo entities
-	uint days_in_transit; ///< Cache for the number of days in transit
+	Money feeder_share;         ///< Cache for the feeder share
+	uint count;                 ///< Cache for the number of cargo entities
+	uint cargo_days_in_transit; ///< Cache for the sum of number of days in transit of each entity; comparable to man-hours
 
-	List packets;         ///< The cargo packets in this list
+	List packets;               ///< The cargo packets in this list
 
 public:
 	/** The GoodsEntry has a CargoList. */
@@ -232,7 +232,7 @@ public:
 	 */
 	FORCEINLINE uint DaysInTransit() const
 	{
-		return this->days_in_transit;
+		return this->count == 0 ? 0 : this->cargo_days_in_transit / this->count;
 	}
 
 
