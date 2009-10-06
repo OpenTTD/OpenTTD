@@ -91,8 +91,8 @@ struct ExpensesList {
 };
 
 static const ExpensesList _expenses_list_types[] = {
-	ExpensesList(_expenses_list_1, lengthof(_expenses_list_1), lengthof(_expenses_list_1) * 10),
-	ExpensesList(_expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12),
+	ExpensesList(_expenses_list_1, lengthof(_expenses_list_1), lengthof(_expenses_list_1) * 10 + 26),
+	ExpensesList(_expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12 + 26),
 };
 
 /** Widgets of the company finances windows. */
@@ -350,9 +350,9 @@ struct CompanyFinancesWindow : Window {
 				this->widget[CFW_EXPS_PANEL].bottom = this->widget[CFW_EXPS_PANEL].top;
 			}
 			int height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
-			if (_expenses_list_types[type].height + 26 != height) {
+			if (_expenses_list_types[type].height != height) {
 				this->SetDirty();
-				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].height - height + 26);
+				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].height - height);
 				this->SetDirty();
 				return;
 			}
