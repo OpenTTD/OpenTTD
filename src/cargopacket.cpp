@@ -92,7 +92,7 @@ void CargoList::Append(CargoPacket *cp)
 	assert(cp != NULL);
 
 	for (List::iterator it = packets.begin(); it != packets.end(); it++) {
-		if ((*it)->SameSource(cp) && (*it)->count + cp->count <= 65535) {
+		if ((*it)->SameSource(cp) && (*it)->count + cp->count <= CargoPacket::MAX_COUNT) {
 			(*it)->count        += cp->count;
 			(*it)->feeder_share += cp->feeder_share;
 			delete cp;

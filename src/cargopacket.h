@@ -45,6 +45,8 @@ private:
 	/** We want this to be saved, right? */
 	friend const struct SaveLoad *GetCargoPacketDesc();
 public:
+	/** Maximum number of items in a single cargo packet. */
+	static const uint16 MAX_COUNT = UINT16_MAX;
 
 	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
 	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
