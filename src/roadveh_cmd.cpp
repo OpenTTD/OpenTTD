@@ -280,7 +280,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		v->cargo_cap = rvi->capacity;
 
-		AddArticulatedParts(v, VEH_ROAD);
+		AddArticulatedParts(v);
 		v->InvalidateNewGRFCacheOfChain();
 
 		/* Call various callbacks after the whole consist has been constructed */

@@ -756,7 +756,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 
 		v->group_id = DEFAULT_GROUP;
 
-		AddArticulatedParts(v, VEH_TRAIN);
+		AddArticulatedParts(v);
 
 		_new_vehicle_id = v->index;
 
@@ -926,7 +926,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 			AddRearEngineToMultiheadedTrain(v);
 		} else {
-			AddArticulatedParts(v, VEH_TRAIN);
+			AddArticulatedParts(v);
 		}
 
 		TrainConsistChanged(v, false);

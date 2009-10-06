@@ -49,11 +49,10 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 /**
  * Returns the default (non-refitted) capacity of a specific EngineID.
  * @param engine the EngineID of iterest
- * @param type the type of the engine
  * @param cargo_type returns the default cargo type, if needed
  * @return capacity
  */
-static inline uint16 GetVehicleDefaultCapacity(EngineID engine, VehicleType type, CargoID *cargo_type)
+static inline uint16 GetVehicleDefaultCapacity(EngineID engine, CargoID *cargo_type)
 {
 	const Engine *e = Engine::Get(engine);
 	CargoID cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
@@ -65,16 +64,15 @@ static inline uint16 GetVehicleDefaultCapacity(EngineID engine, VehicleType type
 /**
  * Returns all cargos a vehicle can carry.
  * @param engine the EngineID of iterest
- * @param type the type of the engine
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
  * @return bit set of CargoIDs
  */
-static inline uint32 GetAvailableVehicleCargoTypes(EngineID engine, VehicleType type, bool include_initial_cargo_type)
+static inline uint32 GetAvailableVehicleCargoTypes(EngineID engine, bool include_initial_cargo_type)
 {
 	uint32 cargos = 0;
 	CargoID initial_cargo_type;
 
-	if (GetVehicleDefaultCapacity(engine, type, &initial_cargo_type) > 0) {
+	if (GetVehicleDefaultCapacity(engine, &initial_cargo_type) > 0) {
 		const EngineInfo *ei = EngInfo(engine);
 		cargos = ei->refit_mask;
 		if (include_initial_cargo_type && initial_cargo_type < NUM_CARGO) SetBit(cargos, initial_cargo_type);
@@ -88,7 +86,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 	CargoArray capacity;
 
 	CargoID cargo_type;
-	uint16 cargo_capacity = GetVehicleDefaultCapacity(engine, type, &cargo_type);
+	uint16 cargo_capacity = GetVehicleDefaultCapacity(engine, &cargo_type);
 	if (cargo_type < NUM_CARGO) capacity[cargo_type] = cargo_capacity;
 
 	if (type != VEH_TRAIN && type != VEH_ROAD) return capacity;
@@ -101,7 +99,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 
 		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), type, GB(callback, 0, 7));
 
-		cargo_capacity = GetVehicleDefaultCapacity(artic_engine, type, &cargo_type);
+		cargo_capacity = GetVehicleDefaultCapacity(artic_engine, &cargo_type);
 		if (cargo_type < NUM_CARGO) capacity[cargo_type] += cargo_capacity;
 	}
 
@@ -142,7 +140,7 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
  */
 uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool include_initial_cargo_type)
 {
-	uint32 cargos = GetAvailableVehicleCargoTypes(engine, type, include_initial_cargo_type);
+	uint32 cargos = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
 
 	if (type != VEH_TRAIN && type != VEH_ROAD) return cargos;
 
@@ -153,7 +151,7 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool i
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 
 		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), type, GB(callback, 0, 7));
-		cargos |= GetAvailableVehicleCargoTypes(artic_engine, type, include_initial_cargo_type);
+		cargos |= GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
 	}
 
 	return cargos;
@@ -170,7 +168,7 @@ uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, VehicleType type,
 {
 	uint32 cargos = UINT32_MAX;
 
-	uint32 veh_cargos = GetAvailableVehicleCargoTypes(engine, type, include_initial_cargo_type);
+	uint32 veh_cargos = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
 	if (veh_cargos != 0) cargos &= veh_cargos;
 
 	if (type != VEH_TRAIN && type != VEH_ROAD) return cargos;
@@ -182,7 +180,7 @@ uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, VehicleType type,
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 
 		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), type, GB(callback, 0, 7));
-		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, type, include_initial_cargo_type);
+		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
 		if (veh_cargos != 0) cargos &= veh_cargos;
 	}
 
@@ -250,7 +248,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 	CargoArray real_default_capacity;
 
 	do {
-		uint32 refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, v->type, true);
+		uint32 refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, true);
 		real_refit_union |= refit_mask;
 		if (refit_mask != 0) real_refit_intersection &= refit_mask;
 
@@ -287,8 +285,9 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 	}
 }
 
-void AddArticulatedParts(Vehicle *first, VehicleType type)
+void AddArticulatedParts(Vehicle *first)
 {
+	VehicleType type = first->type;
 	if (!HasBit(EngInfo(first->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
 	Vehicle *v = first;
