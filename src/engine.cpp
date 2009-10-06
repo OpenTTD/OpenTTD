@@ -523,12 +523,10 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 
 	SetBit(e->company_avail, company);
 	if (e->type == VEH_TRAIN) {
-		const RailVehicleInfo *rvi = RailVehInfo(eid);
-
-		assert(rvi->railtype < RAILTYPE_END);
-		SetBit(c->avail_railtypes, rvi->railtype);
+		assert(e->u.rail.railtype < RAILTYPE_END);
+		SetBit(c->avail_railtypes, e->u.rail.railtype);
 	} else if (e->type == VEH_ROAD) {
-		SetBit(c->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
 	e->preview_company_rank = 0xFF;
@@ -765,7 +763,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	if (type == VEH_TRAIN) {
 		/* Check if the rail type is available to this company */
 		const Company *c = Company::Get(company);
-		if (((GetRailTypeInfo(RailVehInfo(engine)->railtype))->compatible_railtypes & c->avail_railtypes) == 0) return false;
+		if (((GetRailTypeInfo(e->u.rail.railtype))->compatible_railtypes & c->avail_railtypes) == 0) return false;
 	}
 
 	return true;

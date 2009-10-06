@@ -257,7 +257,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 		const Engine *e_u = Engine::Get(u->engine_type);
 		const RailVehicleInfo *rvi_u = &e_u->u.rail;
 
-		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
+		if (!HasBit(e_u->info.misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
 
 		/* Cache wagon override sprite group. NULL is returned if there is none */
 		u->tcache.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->tcache.first_engine);
@@ -281,7 +281,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 		}
 
 		/* Check powered wagon / visual effect callback */
-		if (HasBit(EngInfo(u->engine_type)->callback_mask, CBM_TRAIN_WAGON_POWER)) {
+		if (HasBit(e_u->info.callback_mask, CBM_TRAIN_WAGON_POWER)) {
 			uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
 			if (callback != CALLBACK_FAILED) u->tcache.cached_vis_effect = GB(callback, 0, 8);
@@ -323,7 +323,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
-		if (HasBit(EngInfo(u->engine_type)->callback_mask, CBM_VEHICLE_LENGTH)) {
+		if (HasBit(e_u->info.callback_mask, CBM_VEHICLE_LENGTH)) {
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
@@ -837,6 +837,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE);
 
 	const Engine *e = Engine::Get(p1);
+	const RailVehicleInfo *rvi = &e->u.rail;
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines with CT_INVALID should not be available */
@@ -849,7 +850,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!IsRailDepotTile(tile)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
-	const RailVehicleInfo *rvi = RailVehInfo(p1);
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
 	uint num_vehicles =
@@ -2121,7 +2121,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		if (e->CanCarryCargo()) {
 			uint16 amount = CALLBACK_FAILED;
 
-			if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
+			if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				/* Back up the vehicle's cargo type */
 				CargoID temp_cid = v->cargo_type;
 				byte temp_subtype = v->cargo_subtype;

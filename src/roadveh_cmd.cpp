@@ -107,13 +107,14 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 
 static SpriteID GetRoadVehIcon(EngineID engine)
 {
-	uint8 spritenum = RoadVehInfo(engine)->image_index;
+	const Engine *e = Engine::Get(engine);
+	uint8 spritenum = e->u.road.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(engine)->original_image_index;
+		spritenum = e->original_image_index;
 	}
 
 	return DIR_W + _roadveh_images[spritenum];
@@ -201,7 +202,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!IsRoadDepotTile(tile)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
-	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
+	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
 
 	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
@@ -217,7 +218,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	if (flags & DC_EXEC) {
-		const RoadVehicleInfo *rvi = RoadVehInfo(p1);
+		const RoadVehicleInfo *rvi = &e->u.road;
 
 		RoadVehicle *v = new RoadVehicle();
 		v->unitnumber = unit_num;
@@ -270,7 +271,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->random_bits = VehicleRandomBits();
 		v->SetRoadVehFront();
 
-		v->roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+		v->roadtype = HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		v->compatible_roadtypes = RoadTypeToRoadTypes(v->roadtype);
 		v->rcache.cached_veh_length = 8;
 
@@ -2029,7 +2030,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!e->CanCarryCargo()) continue;
 
-		if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
+		if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 			/* Back up the cargo type */
 			CargoID temp_cid = v->cargo_type;
 			byte temp_subtype = v->cargo_subtype;

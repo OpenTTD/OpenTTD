@@ -298,8 +298,8 @@ static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 
 	if (r == 0) {
 		/* The planes has the same passenger capacity. Check mail capacity instead */
-		va = AircraftVehInfo(*a)->mail_capacity;
-		vb = AircraftVehInfo(*b)->mail_capacity;
+		va = e_a->u.air.mail_capacity;
+		vb = e_b->u.air.mail_capacity;
 		r = va - vb;
 
 		if (r == 0) {
@@ -633,11 +633,10 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN: {
-			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-			if (rvi->railveh_type == RAILVEH_WAGON) {
-				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, rvi);
+			if (e->u.rail.railveh_type == RAILVEH_WAGON) {
+				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->u.rail);
 			} else {
-				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, rvi);
+				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->u.rail);
 			}
 
 			/* Cargo type + capacity, or N/A */
@@ -670,15 +669,15 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 			break;
 		}
 		case VEH_SHIP:
-			y = DrawShipPurchaseInfo(left, right, y, engine_number, ShipVehInfo(engine_number), refittable);
+			y = DrawShipPurchaseInfo(left, right, y, engine_number, &e->u.ship, refittable);
 			break;
 		case VEH_AIRCRAFT:
-			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, AircraftVehInfo(engine_number), refittable);
+			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, &e->u.air, refittable);
 			break;
 	}
 
 	/* Draw details, that applies to all types except rail wagons */
-	if (e->type != VEH_TRAIN || RailVehInfo(engine_number)->railveh_type != RAILVEH_WAGON) {
+	if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
 		SetDParam(1, e->GetLifeLengthInDays() / DAYS_IN_LEAP_YEAR);

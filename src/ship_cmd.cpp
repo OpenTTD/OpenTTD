@@ -55,13 +55,14 @@ static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
 
 static SpriteID GetShipIcon(EngineID engine)
 {
-	uint8 spritenum = ShipVehInfo(engine)->image_index;
+	const Engine *e = Engine::Get(engine);
+	uint8 spritenum = e->u.ship.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(engine)->original_image_index;
+		spritenum = e->original_image_index;
 	}
 
 	return DIR_W + _ship_sprites[spritenum];
@@ -765,7 +766,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		int x;
 		int y;
 
-		const ShipVehicleInfo *svi = ShipVehInfo(p1);
+		const ShipVehicleInfo *svi = &e->u.ship;
 
 		Ship *v = new Ship();
 		v->unitnumber = unit_num;
@@ -919,11 +920,13 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
+	const Engine *e = Engine::Get(v->engine_type);
+
 	/* Check cargo */
 	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	/* Check the refit capacity callback */
-	if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
+	if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 		/* Back up the existing cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;
@@ -938,7 +941,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	if (capacity == CALLBACK_FAILED) {
-		capacity = GetVehicleProperty(v, PROP_SHIP_CARGO_CAPACITY, ShipVehInfo(v->engine_type)->capacity);
+		capacity = GetVehicleProperty(v, PROP_SHIP_CARGO_CAPACITY, e->u.ship.capacity);
 	}
 	_returned_refit_capacity = capacity;
 

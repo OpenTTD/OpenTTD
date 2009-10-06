@@ -56,32 +56,31 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 	/* we can't replace an engine into itself (that would be autorenew) */
 	if (from == to) return false;
 
-	VehicleType type = Engine::Get(from)->type;
+	const Engine *e_from = Engine::Get(from);
+	const Engine *e_to = Engine::Get(to);
+	VehicleType type = e_from->type;
 
 	/* check that the new vehicle type is available to the company and its type is the same as the original one */
 	if (!IsEngineBuildable(to, type, company)) return false;
 
 	switch (type) {
 		case VEH_TRAIN: {
-			const RailVehicleInfo *rvi_from = RailVehInfo(from);
-			const RailVehicleInfo *rvi_to   = RailVehInfo(to);
-
 			/* make sure the railtypes are compatible */
-			if ((GetRailTypeInfo(rvi_from->railtype)->compatible_railtypes & GetRailTypeInfo(rvi_to->railtype)->compatible_railtypes) == 0) return false;
+			if ((GetRailTypeInfo(e_from->u.rail.railtype)->compatible_railtypes & GetRailTypeInfo(e_to->u.rail.railtype)->compatible_railtypes) == 0) return false;
 
 			/* make sure we do not replace wagons with engines or vise versa */
-			if ((rvi_from->railveh_type == RAILVEH_WAGON) != (rvi_to->railveh_type == RAILVEH_WAGON)) return false;
+			if ((e_from->u.rail.railveh_type == RAILVEH_WAGON) != (e_to->u.rail.railveh_type == RAILVEH_WAGON)) return false;
 			break;
 		}
 
 		case VEH_ROAD:
 			/* make sure that we do not replace a tram with a normal road vehicles or vise versa */
-			if (HasBit(EngInfo(from)->misc_flags, EF_ROAD_TRAM) != HasBit(EngInfo(to)->misc_flags, EF_ROAD_TRAM)) return false;
+			if (HasBit(e_from->info.misc_flags, EF_ROAD_TRAM) != HasBit(e_to->info.misc_flags, EF_ROAD_TRAM)) return false;
 			break;
 
 		case VEH_AIRCRAFT:
 			/* make sure that we do not replace a plane with a helicopter or vise versa */
-			if ((AircraftVehInfo(from)->subtype & AIR_CTOL) != (AircraftVehInfo(to)->subtype & AIR_CTOL)) return false;
+			if ((e_from->u.air.subtype & AIR_CTOL) != (e_to->u.air.subtype & AIR_CTOL)) return false;
 			break;
 
 		default: break;

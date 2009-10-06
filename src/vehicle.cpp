@@ -701,7 +701,8 @@ CommandCost GetRefitCost(EngineID engine_type)
 {
 	Money base_cost;
 	ExpensesType expense_type;
-	switch (Engine::Get(engine_type)->type) {
+	const Engine *e = Engine::Get(engine_type);
+	switch (e->type) {
 		case VEH_SHIP:
 			base_cost = _price.ship_base;
 			expense_type = EXPENSES_SHIP_RUN;
@@ -718,14 +719,14 @@ CommandCost GetRefitCost(EngineID engine_type)
 			break;
 
 		case VEH_TRAIN:
-			base_cost = 2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
+			base_cost = 2 * ((e->u.rail.railveh_type == RAILVEH_WAGON) ?
 							 _price.build_railwagon : _price.build_railvehicle);
 			expense_type = EXPENSES_TRAIN_RUN;
 			break;
 
 		default: NOT_REACHED();
 	}
-	return CommandCost(expense_type, (EngInfo(engine_type)->refit_cost * base_cost) >> 10);
+	return CommandCost(expense_type, (e->info.refit_cost * base_cost) >> 10);
 }
 
 static void DoDrawVehicle(const Vehicle *v)
@@ -1248,6 +1249,14 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 }
 
 
+/**
+ * Determines the livery for a vehicle.
+ * @param engine_type EngineID of the vehicle
+ * @param company Owner of the vehicle
+ * @param parent_engine_type EngineID of the front vehicle. INVALID_VEHICLE if vehicle is at front itself.
+ * @param v the vehicle. NULL if in purchase list etc.
+ * @return livery to use
+ */
 const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
 {
 	const Company *c = Company::Get(company);
@@ -1262,19 +1271,17 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 		switch (e->type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN: {
-				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
-				if (v != NULL && parent_engine_type != INVALID_ENGINE && (UsesWagonOverride(v) || (Train::From(v)->IsArticulatedPart() && rvi->railveh_type != RAILVEH_WAGON))) {
+				if (v != NULL && parent_engine_type != INVALID_ENGINE && (UsesWagonOverride(v) || (Train::From(v)->IsArticulatedPart() && e->u.rail.railveh_type != RAILVEH_WAGON))) {
 					/* Wagonoverrides use the coloir scheme of the front engine.
 					 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
 					engine_type = parent_engine_type;
 					e = Engine::Get(engine_type);
-					rvi = RailVehInfo(engine_type);
 					/* Note: Luckily cargo_type is not needed for engines */
 				}
 
 				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
 				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
-				if (rvi->railveh_type == RAILVEH_WAGON) {
+				if (e->u.rail.railveh_type == RAILVEH_WAGON) {
 					if (!CargoSpec::Get(cargo_type)->is_freight) {
 						if (parent_engine_type == INVALID_ENGINE) {
 							scheme = LS_PASSENGER_WAGON_STEAM;
@@ -1292,9 +1299,9 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 						scheme = LS_FREIGHT_WAGON;
 					}
 				} else {
-					bool is_mu = HasBit(EngInfo(engine_type)->misc_flags, EF_RAIL_IS_MU);
+					bool is_mu = HasBit(e->info.misc_flags, EF_RAIL_IS_MU);
 
-					switch (rvi->engclass) {
+					switch (e->u.rail.engclass) {
 						default: NOT_REACHED();
 						case EC_STEAM:    scheme = LS_STEAM; break;
 						case EC_DIESEL:   scheme = is_mu ? LS_DMU : LS_DIESEL;   break;
@@ -1317,7 +1324,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
 
 				/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
-				if (HasBit(EngInfo(engine_type)->misc_flags, EF_ROAD_TRAM)) {
+				if (HasBit(e->info.misc_flags, EF_ROAD_TRAM)) {
 					/* Tram */
 					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
 				} else {
@@ -1359,8 +1366,10 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 	/* Return cached value if any */
 	if (map != PAL_NONE) return map;
 
+	const Engine *e = Engine::Get(engine_type);
+
 	/* Check if we should use the colour map callback */
-	if (HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_COLOUR_REMAP)) {
+	if (HasBit(e->info.callback_mask, CBM_VEHICLE_COLOUR_REMAP)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
 		/* A return value of 0xC000 is stated to "use the default two-colour
 		 * maps" which happens to be the failure action too... */
@@ -1376,7 +1385,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, Engi
 		}
 	}
 
-	bool twocc = HasBit(EngInfo(engine_type)->misc_flags, EF_USES_2CC);
+	bool twocc = HasBit(e->info.misc_flags, EF_USES_2CC);
 
 	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOUR_START;
 

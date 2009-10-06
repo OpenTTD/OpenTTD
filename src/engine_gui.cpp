@@ -30,13 +30,14 @@
  */
 StringID GetEngineCategoryName(EngineID engine)
 {
-	switch (Engine::Get(engine)->type) {
+	const Engine *e = Engine::Get(engine);
+	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_ROAD:              return STR_ENGINE_PREVIEW_ROAD_VEHICLE;
 		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
 		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
-			return GetRailTypeInfo(RailVehInfo(engine)->railtype)->strings.new_loco;
+			return GetRailTypeInfo(e->u.rail.railtype)->strings.new_loco;
 	}
 }
 

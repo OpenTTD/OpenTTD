@@ -111,6 +111,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 	uint best = 0;
 	StationID index = INVALID_STATION;
 	TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
+	const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT)) continue;
@@ -119,7 +120,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 		if (afc->nof_depots == 0 || (
 					/* don't crash the plane if we know it can't land at the airport */
 					(afc->flags & AirportFTAClass::SHORT_STRIP) &&
-					(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
+					(avi->subtype & AIR_FAST) &&
 					!_cheats.no_jetcrash.value)) {
 			continue;
 		}
@@ -185,13 +186,14 @@ SpriteID GetRotorImage(const Aircraft *v)
 
 static SpriteID GetAircraftIcon(EngineID engine)
 {
-	uint8 spritenum = AircraftVehInfo(engine)->image_index;
+	const Engine *e = Engine::Get(engine);
+	uint8 spritenum = e->u.air.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(engine)->original_image_index;
+		spritenum = e->original_image_index;
 	}
 
 	return DIR_W + _aircraft_sprite[spritenum];
@@ -258,8 +260,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 {
 	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_ERROR_AIRCRAFT_NOT_AVAILABLE);
 
-	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	const Engine *e = Engine::Get(p1);
+	const AircraftVehicleInfo *avi = &e->u.air;
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
@@ -386,7 +388,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (v->cargo_type != CT_PASSENGERS) {
 			uint16 callback = CALLBACK_FAILED;
 
-			if (HasBit(EngInfo(p1)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
+			if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
 			}
 
@@ -537,9 +539,11 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	CargoID new_cid = GB(p2, 0, 8);
 	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
+	const Engine *e = Engine::Get(v->engine_type);
+
 	/* Check the refit capacity callback */
 	uint16 callback = CALLBACK_FAILED;
-	if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
+	if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
 		/* Back up the existing cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;
@@ -553,13 +557,11 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->cargo_subtype = temp_subtype;
 	}
 
-	const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
-
 	uint pass;
 	if (callback == CALLBACK_FAILED) {
 		/* If the callback failed, or wasn't executed, use the aircraft's
 		 * default cargo capacity */
-		pass = AircraftDefaultCargoCapacity(new_cid, avi);
+		pass = AircraftDefaultCargoCapacity(new_cid, &e->u.air);
 	} else {
 		pass = callback;
 	}
@@ -574,7 +576,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->cargo_cap = pass;
 
 		Vehicle *u = v->Next();
-		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? avi->mail_capacity : 0;
+		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? e->u.air.mail_capacity : 0;
 		u->cargo_cap = mail;
 		v->cargo.Truncate(v->cargo_type == new_cid ? pass : 0);
 		u->cargo.Truncate(v->cargo_type == new_cid ? mail : 0);
