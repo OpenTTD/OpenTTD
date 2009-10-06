@@ -239,8 +239,8 @@ static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*b);
 
-	int va = GetTotalCapacityOfArticulatedParts(*a, VEH_TRAIN) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(*b, VEH_TRAIN) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int va = GetTotalCapacityOfArticulatedParts(*a) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int vb = GetTotalCapacityOfArticulatedParts(*b) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -262,8 +262,8 @@ static int CDECL TrainEnginesThenWagonsSorter(const EngineID *a, const EngineID 
 /* Road vehicle sorting functions */
 static int CDECL RoadVehEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
-	int va = GetTotalCapacityOfArticulatedParts(*a, VEH_ROAD);
-	int vb = GetTotalCapacityOfArticulatedParts(*b, VEH_ROAD);
+	int va = GetTotalCapacityOfArticulatedParts(*a);
+	int vb = GetTotalCapacityOfArticulatedParts(*b);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -406,7 +406,7 @@ static const StringID _sort_listing[][11] = {{
 static bool CDECL CargoFilter(const EngineID *eid, const CargoID cid)
 {
 	if (cid == CF_ANY) return true;
-	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, Engine::Get(*eid)->type, true);
+	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true);
 	return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
 }
 
@@ -414,9 +414,9 @@ static GUIEngineList::FilterFunction * const _filter_funcs[] = {
 	&CargoFilter,
 };
 
-static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, VehicleType type, bool refittable)
+static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, bool refittable)
 {
-	CargoArray cap = GetCapacityOfArticulatedParts(engine, type);
+	CargoArray cap = GetCapacityOfArticulatedParts(engine);
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		if (cap[c] == 0) continue;
@@ -640,7 +640,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 			}
 
 			/* Cargo type + capacity, or N/A */
-			int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, VEH_TRAIN, refittable);
+			int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, refittable);
 
 			if (new_y == y) {
 				SetDParam(0, CT_INVALID);
@@ -656,7 +656,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 			y = DrawRoadVehPurchaseInfo(left, right, y, engine_number);
 
 			/* Cargo type + capacity, or N/A */
-			int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, VEH_ROAD, refittable);
+			int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, refittable);
 
 			if (new_y == y) {
 				SetDParam(0, CT_INVALID);

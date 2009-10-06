@@ -16,10 +16,10 @@
 #include "engine_type.h"
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window);
-CargoArray GetCapacityOfArticulatedParts(EngineID engine, VehicleType type);
+CargoArray GetCapacityOfArticulatedParts(EngineID engine);
 void AddArticulatedParts(Vehicle *first);
-uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool include_initial_cargo_type);
-uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, VehicleType type, bool include_initial_cargo_type);
+uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type);
+uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type);
 bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *cargo_type);
 bool IsArticulatedVehicleRefittable(EngineID engine);
 void CheckConsistencyOfArticulatedVehicle(const Vehicle *v);

@@ -75,7 +75,7 @@
 	switch (e->type) {
 		case VEH_ROAD:
 		case VEH_TRAIN: {
-			CargoArray capacities = GetCapacityOfArticulatedParts(engine_id, e->type);
+			CargoArray capacities = GetCapacityOfArticulatedParts(engine_id);
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				if (capacities[c] == 0) continue;
 				return capacities[c];

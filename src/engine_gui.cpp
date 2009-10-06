@@ -122,11 +122,11 @@ void ShowEnginePreviewWindow(EngineID engine)
 	AllocateWindowDescFront<EnginePreviewWindow>(&_engine_preview_desc, engine);
 }
 
-uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
+uint GetTotalCapacityOfArticulatedParts(EngineID engine)
 {
 	uint total = 0;
 
-	CargoArray cap = GetCapacityOfArticulatedParts(engine, type);
+	CargoArray cap = GetCapacityOfArticulatedParts(engine);
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		total += cap[c];
 	}
@@ -143,7 +143,7 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 
 	SetDParam(4, e->GetRunningCost());
 
-	uint capacity = GetTotalCapacityOfArticulatedParts(e->index, VEH_TRAIN);
+	uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
 	if (capacity != 0) {
 		SetDParam(5, e->GetDefaultCargoType());
 		SetDParam(6, capacity);
@@ -180,7 +180,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 {
 	SetDParam(0, e->GetCost());
 	SetDParam(1, e->GetDisplayMaxSpeed());
-	uint capacity = GetTotalCapacityOfArticulatedParts(e->index, VEH_ROAD);
+	uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
 	if (capacity != 0) {
 		SetDParam(2, e->GetDefaultCargoType());
 		SetDParam(3, capacity);
