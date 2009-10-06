@@ -3348,6 +3348,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}必須�
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}必須先摧毀機場
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}太接近多個已存在的號誌站
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}太接近另一個號誌站
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}無法在此興建列車號誌站...
