@@ -28,8 +28,8 @@ void InitializeCargoPackets()
 
 CargoPacket::CargoPacket(StationID source, uint16 count, SourceType source_type, SourceID source_id) :
 	count(count),
-	source(source),
-	source_id(source_id)
+	source_id(source_id),
+	source(source)
 {
 	this->source_type = source_type;
 

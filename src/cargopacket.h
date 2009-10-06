@@ -50,11 +50,11 @@ public:
 	/** Maximum number of items in a single cargo packet. */
 	static const uint16 MAX_COUNT = UINT16_MAX;
 
-	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
-	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
-	StationID source;           ///< The station where the cargo came from first
 	SourceTypeByte source_type; ///< Type of \c source_id
 	SourceID source_id;         ///< Index of source, INVALID_SOURCE if unknown/invalid
+	StationID source;           ///< The station where the cargo came from first
+	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
+	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
 
 	/**
 	 * Creates a new cargo packet
@@ -161,11 +161,11 @@ public:
 	};
 
 private:
-	List packets;         ///< The cargo packets in this list
-
-	uint count;           ///< Cache for the number of cargo entities
 	Money feeder_share;   ///< Cache for the feeder share
+	uint count;           ///< Cache for the number of cargo entities
 	uint days_in_transit; ///< Cache for the number of days in transit
+
+	List packets;         ///< The cargo packets in this list
 
 public:
 	/** The GoodsEntry has a CargoList. */
