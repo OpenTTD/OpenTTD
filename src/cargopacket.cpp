@@ -23,20 +23,18 @@ void InitializeCargoPackets()
 	_cargopacket_pool.CleanPool();
 }
 
-CargoPacket::CargoPacket(StationID source, uint16 count, SourceType source_type, SourceID source_id)
+CargoPacket::CargoPacket(StationID source, uint16 count, SourceType source_type, SourceID source_id) :
+	count(count),
+	source(source),
+	source_id(source_id)
 {
-	if (source != INVALID_STATION) assert(count != 0);
-
-//	this->feeder_share    = 0; // no need to zero already zeroed data (by operator new)
-	this->source_xy       = (source != INVALID_STATION) ? Station::Get(source)->xy : 0;
-	this->loaded_at_xy    = this->source_xy;
-	this->source          = source;
-
-	this->count           = count;
-//	this->days_in_transit = 0;
-
 	this->source_type     = source_type;
-	this->source_id       = source_id;
+
+	if (source != INVALID_STATION) {
+		assert(count != 0);
+		this->source_xy    = Station::Get(source)->xy;
+		this->loaded_at_xy = this->source_xy;
+	}
 }
 
 CargoPacket::CargoPacket(uint16 count, byte days_in_transit, Money feeder_share, SourceType source_type, SourceID source_id) :
