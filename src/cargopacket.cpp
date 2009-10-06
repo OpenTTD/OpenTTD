@@ -217,7 +217,6 @@ void CargoList::InvalidateCache()
 	this->empty = this->packets.empty();
 	this->count = 0;
 	this->feeder_share = 0;
-	this->source = INVALID_STATION;
 	this->days_in_transit = 0;
 
 	if (this->empty) return;
@@ -229,5 +228,4 @@ void CargoList::InvalidateCache()
 		this->feeder_share += (*it)->feeder_share;
 	}
 	this->days_in_transit = dit / count;
-	this->source = (*packets.begin())->source;
 }

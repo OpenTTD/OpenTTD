@@ -166,7 +166,6 @@ private:
 	bool empty;           ///< Cache for whether this list is empty or not
 	uint count;           ///< Cache for the number of cargo entities
 	Money feeder_share;   ///< Cache for the feeder share
-	StationID source;     ///< Cache for the source of the packet
 	uint days_in_transit; ///< Cache for the number of days in transit
 
 public:
@@ -225,7 +224,7 @@ public:
 	 */
 	FORCEINLINE StationID Source() const
 	{
-		return this->source;
+		return this->Empty() ? INVALID_STATION : this->packets.front()->source;;
 	}
 
 	/**
