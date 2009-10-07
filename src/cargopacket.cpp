@@ -153,7 +153,6 @@ bool CargoList::MoveTo(CargoList *dest, uint max_move, CargoList::MoveToAction m
 {
 	assert(mta == MTA_FINAL_DELIVERY || dest != NULL);
 	assert(mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL);
-	CargoList tmp;
 
 	List::iterator it = packets.begin();
 	while (it != packets.end() && max_move > 0) {
