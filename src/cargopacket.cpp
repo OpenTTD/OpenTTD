@@ -149,26 +149,30 @@ void CargoList::Truncate(uint max_remaining)
 	}
 }
 
-bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta, CargoPayment *payment, uint data)
+bool CargoList::MoveTo(CargoList *dest, uint max_move, CargoList::MoveToAction mta, CargoPayment *payment, uint data)
 {
 	assert(mta == MTA_FINAL_DELIVERY || dest != NULL);
 	assert(mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL);
 	CargoList tmp;
 
-	while (!this->packets.empty() && count > 0) {
-		CargoPacket *cp = *packets.begin();
-		if (cp->count <= count) {
+	List::iterator it = packets.begin();
+	while (it != packets.end() && max_move > 0) {
+		CargoPacket *cp = *it;
+		if (cp->source == data && mta == MTA_FINAL_DELIVERY) {
+			/* Skip cargo that originated from this station. */
+			++it;
+			continue;
+		}
+
+		if (cp->count <= max_move) {
 			/* Can move the complete packet */
-			this->packets.remove(cp);
-			switch (mta) {
+			max_move -= cp->count;
+			this->packets.erase(it++);
+			this->RemoveFromCache(cp);
+			switch(mta) {
 				case MTA_FINAL_DELIVERY:
-					if (cp->source == data) {
-						tmp.Append(cp);
-					} else {
-						payment->PayFinalDelivery(cp, cp->count);
-						count -= cp->count;
-						delete cp;
-					}
+					payment->PayFinalDelivery(cp, cp->count);
+					delete cp;
 					continue; // of the loop
 
 				case MTA_CARGO_LOAD:
@@ -182,51 +186,47 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 				case MTA_UNLOAD:
 					break;
 			}
-			count -= cp->count;
-			dest->packets.push_back(cp);
-		} else {
-			/* Can move only part of the packet, so split it into two pieces */
-			if (mta != MTA_FINAL_DELIVERY) {
-				CargoPacket *cp_new = new CargoPacket();
-
-				Money fs = cp->feeder_share * count / static_cast<uint>(cp->count);
-				cp->feeder_share -= fs;
-
-				cp_new->source          = cp->source;
-				cp_new->source_xy       = cp->source_xy;
-				cp_new->loaded_at_xy    = (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy;
-
-				cp_new->days_in_transit = cp->days_in_transit;
-				cp_new->feeder_share    = fs;
-
-				cp_new->source_type     = cp->source_type;
-				cp_new->source_id       = cp->source_id;
-
-				cp_new->count = count;
-				dest->packets.push_back(cp_new);
-
-				if (mta == MTA_TRANSFER) cp_new->feeder_share += payment->PayTransfer(cp_new, count);
-			} else {
-				payment->PayFinalDelivery(cp, count);
-			}
-			cp->count -= count;
-
-			count = 0;
+			dest->Append(cp);
+			continue;
 		}
+
+		/* Can move only part of the packet */
+		if (mta == MTA_FINAL_DELIVERY) {
+			/* Final delivery doesn't need package splitting. */
+			payment->PayFinalDelivery(cp, max_move);
+			this->count -= max_move;
+			this->cargo_days_in_transit -= max_move * cp->days_in_transit;
+
+			/* Final delivery payment pays the feeder share, so we have to
+			 * reset that so it is not 'shown' twice for partial unloads. */
+			this->feeder_share -= cp->feeder_share;
+			cp->feeder_share = 0;
+		} else {
+			/* But... the rest needs package splitting. */
+			Money fs = cp->feeder_share * max_move / static_cast<uint>(cp->count);
+			cp->feeder_share -= fs;
+
+			CargoPacket *cp_new = new CargoPacket(max_move, cp->days_in_transit, fs, cp->source_type, cp->source_id);
+
+			cp_new->source          = cp->source;
+			cp_new->source_xy       = cp->source_xy;
+			cp_new->loaded_at_xy    = (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy;
+
+			this->RemoveFromCache(cp_new); // this reflects the changes in cp.
+
+			if (mta == MTA_TRANSFER) {
+				/* Add the feeder share before inserting in dest. */
+				cp_new->feeder_share += payment->PayTransfer(cp_new, max_move);
+			}
+
+			dest->Append(cp_new);
+		}
+		cp->count -= max_move;
+
+		max_move = 0;
 	}
 
-	bool remaining = !this->packets.empty();
-
-	if (mta == MTA_FINAL_DELIVERY && !tmp.Empty()) {
-		/* There are some packets that could not be delivered at the station, put them back */
-		tmp.MoveTo(this, UINT_MAX, MTA_UNLOAD, NULL);
-		tmp.packets.clear();
-	}
-
-	if (dest != NULL) dest->InvalidateCache();
-	this->InvalidateCache();
-
-	return remaining;
+	return it != packets.end();
 }
 
 void CargoList::InvalidateCache()

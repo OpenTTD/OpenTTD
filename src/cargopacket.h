@@ -266,9 +266,9 @@ public:
 	/**
 	 * Truncates the cargo in this list to the given amount. It leaves the
 	 * first count cargo entities and removes the rest.
-	 * @param count the maximum amount of entities to be in the list after the command
+	 * @param max_remaining the maximum amount of entities to be in the list after the command
 	 */
-	void Truncate(uint count);
+	void Truncate(uint max_remaining);
 
 	/**
 	 * Moves the given amount of cargo to another list.
