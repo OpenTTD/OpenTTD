@@ -1566,17 +1566,18 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 void NetworkServer_ReadPackets(NetworkClientSocket *cs)
 {
 	Packet *p;
-	NetworkRecvStatus res;
-	while ((p = cs->Recv_Packet()) != NULL) {
+	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;
+
+	while (res == NETWORK_RECV_STATUS_OKAY && (p = cs->Recv_Packet()) != NULL) {
 		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->HasClientQuit()) {
 			res = _network_server_packet[type](cs, p);
-
-			/* Something didn't go as expected */
-			if (res != NETWORK_RECV_STATUS_OKAY) return;
 		} else {
+			cs->CloseConnection();
+			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;
 			DEBUG(net, 0, "[server] received invalid packet type %d", type);
 		}
+
 		delete p;
 	}
 }
