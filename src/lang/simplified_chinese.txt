@@ -1679,7 +1679,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}设置�
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}发送
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[团队] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[私聊] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[全体] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[团队] {STRING}: {WHITE}{STRING}

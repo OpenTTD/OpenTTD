@@ -1670,7 +1670,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Ange fö
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Skicka
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Företaget] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alla] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Företaget] {STRING}: {WHITE}{STRING}

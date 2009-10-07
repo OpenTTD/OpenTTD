@@ -1712,7 +1712,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastavi 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Pošlji
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Skupina] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsi] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Skupina] {STRING}: {WHITE}{STRING}

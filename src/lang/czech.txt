@@ -1742,7 +1742,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastav h
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Poslat
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tým] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Osobní] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všichni] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Tým] {STRING}: {WHITE}{STRING}

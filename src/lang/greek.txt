@@ -1677,7 +1677,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέστ
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Στείλε
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ομάδα] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Προσωπικό] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Σε όλους] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Ομάδα] {STRING}: {WHITE}{STRING}

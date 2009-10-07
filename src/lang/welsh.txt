@@ -1670,7 +1670,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Gosod cy
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Anfon
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tîm] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Preifat] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Pawb] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Tîm] {STRING}: {WHITE}{STRING}

@@ -1677,7 +1677,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ادخل
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ارسل
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[خاص]:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[الكل]:
 
 STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {WHITE}{STRING}

@@ -1650,7 +1650,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Stel maa
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Stuur
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Span] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privaat] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}: {WHITE}{STRING}

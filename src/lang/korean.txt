@@ -1680,7 +1680,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 �
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}보내기
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[팀] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[귓속말] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[모두] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[팀] {STRING}: {WHITE}{STRING}

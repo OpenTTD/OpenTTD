@@ -1680,7 +1680,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}קבע �
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}שלח
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[קבוצה] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[פרטי] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[לכולם] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[קבוצה] {STRING}: {WHITE}{STRING}

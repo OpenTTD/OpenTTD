@@ -1804,7 +1804,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Вста
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Відправити
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Приватно] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {WHITE}{STRING}

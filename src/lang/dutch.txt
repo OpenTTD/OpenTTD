@@ -1679,7 +1679,6 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Geef bed
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Verstuur
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Prive] :
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Iedereen] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}

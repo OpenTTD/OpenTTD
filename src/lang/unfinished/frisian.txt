@@ -1030,7 +1030,6 @@ STR_NETWORK_SERVER                                              :Tsjinner
 
 # Network chat
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privee] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Oan {STRING}: {WHITE}{STRING}
