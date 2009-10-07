@@ -277,7 +277,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	StringID dest_string;
 	int dest;
 
-	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH)
+	NetworkChatWindow(const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH)
 	{
 		this->dtype   = type;
 		this->dest    = dest;
@@ -292,14 +292,14 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		assert((uint)this->dtype < lengthof(chat_captions));
 		this->dest_string = chat_captions[this->dtype];
 
-		this->InitNested(desc);
+		this->InitNested(desc, type);
 
 		this->SetFocusedWidget(NWCW_TEXTBOX);
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
 		_chat_tab_completion_active = false;
 	}
 
-	~NetworkChatWindow ()
+	~NetworkChatWindow()
 	{
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
 	}
@@ -505,6 +505,11 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	{
 		ShowOnScreenKeyboard(this, wid, NWCW_CLOSE, NWCW_SENDBUTTON);
 	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (data == this->dest) delete this;
+	}
 };
 
 static const NWidgetPart _nested_chat_window_widgets[] = {
@@ -530,8 +535,8 @@ static const WindowDesc _chat_window_desc(
 
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
-	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
-	new NetworkChatWindow (&_chat_window_desc, type, dest);
+	DeleteWindowByClass(WC_SEND_NETWORK_MSG);
+	new NetworkChatWindow(&_chat_window_desc, type, dest);
 }
 
 #endif /* ENABLE_NETWORK */

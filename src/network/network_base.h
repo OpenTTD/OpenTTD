@@ -30,7 +30,7 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	char unique_id[NETWORK_UNIQUE_ID_LENGTH];       ///< Every play sends an unique id so we can indentify him
 
 	NetworkClientInfo(ClientID client_id = INVALID_CLIENT_ID) : client_id(client_id) {}
-	~NetworkClientInfo() { client_id = INVALID_CLIENT_ID; }
+	~NetworkClientInfo();
 };
 
 #define FOR_ALL_CLIENT_INFOS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientInfo, clientinfo_index, var, start)

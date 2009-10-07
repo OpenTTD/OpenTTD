@@ -95,6 +95,15 @@ static ClientID _network_client_id = CLIENT_ID_FIRST;
 extern void StateGameLoop();
 
 /**
+ * Basically a client is leaving us right now.
+ */
+NetworkClientInfo::~NetworkClientInfo()
+{
+	/* Delete the chat window, if you were chatting with this client. */
+	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_CLIENT, this->client_id);
+}
+
+/**
  * Return the CI given it's raw index
  * @param index the index to search for
  * @return return a pointer to the corresponding NetworkClientInfo struct
