@@ -114,84 +114,114 @@ enum CompanyFinancesWindowWidgets {
 	CFW_REPAY_LOAN,    ///< Decrease loan
 };
 
+/** Draw the expenses categories.
+ * @param r Available space for drawing.
+ * @note The environment must provide padding at the left and right of \a r.
+ */
+static int DrawCategories(const Rect &r)
+{
+	int y = r.top + WD_FRAMERECT_TOP;
+
+	DrawString(r.left, r.right, y, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_CENTER, true);
+	y += 10 + 2;
+
+	int type = _settings_client.gui.expenses_layout;
+	for (int i = 0; i < _expenses_list_types[type].length; i++) {
+		const ExpensesType et = _expenses_list_types[type].et[i];
+		if (et == INVALID_EXPENSES) {
+			y += 2;
+			DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+			y += 20;
+		} else {
+			DrawString(r.left, r.right, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
+			y += 10;
+		}
+	}
+
+	DrawString(r.left, r.right, y + 2, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+	return y;
+}
+
+/** Draw an amount of money.
+ * @param amount Amount of money to draw,
+ * @param left   Left coordinate of the space to draw in.
+ * @param right  Right coordinate of the space to draw in.
+ * @param top    Top coordinate of the space to draw in.
+ */
+static void DrawPrice(Money amount, int left, int right, int top)
+{
+	StringID str = STR_FINANCES_NEGATIVE_INCOME;
+	if (amount < 0) {
+		amount = -amount;
+		str++;
+	}
+	SetDParam(0, amount);
+	DrawString(left, right, top, str, TC_FROMSTRING, SA_RIGHT);
+}
+
+/** Draw a column with prices.
+ * @param r    Available space for drawing.
+ * @param year Year being drawn.
+ * @param tbl  Pointer to table of amounts for \a year.
+ * @note The environment must provide padding at the left and right of \a r.
+ */
+static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_END])
+{
+	int y = r.top + WD_FRAMERECT_TOP;
+
+	SetDParam(0, year);
+	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
+	y += 10 + 2;
+
+	Money sum = 0;
+	Money subtotal = 0;
+	int type = _settings_client.gui.expenses_layout;
+	for (int i = 0; i < _expenses_list_types[type].length; i++) {
+		const ExpensesType et = _expenses_list_types[type].et[i];
+		if (et == INVALID_EXPENSES) {
+			Money cost = subtotal;
+			subtotal = 0;
+			GfxFillRect(r.left, y, r.right, y, 215);
+			y += 2;
+			DrawPrice(cost, r.left, r.right, y + 2);
+			y += 20;
+		} else {
+			Money cost = (*tbl)[et];
+			subtotal += cost;
+			sum += cost;
+			if (cost != 0) DrawPrice(cost, r.left, r.right, y + 2);
+			y += 10;
+		}
+	}
+
+	GfxFillRect(r.left, y, r.right, y, 215);
+	y += 2;
+	DrawPrice(sum, r.left, r.right, y);
+}
+
 static void DrawCompanyEconomyStats(const Company *c, bool small, const Widget *widget)
 {
-	int type = _settings_client.gui.expenses_layout;
 	int y;
-	const Money (*tbl)[EXPENSES_END];
-	StringID str;
 
 	if (!small) { // normal sized economics window
 		const Widget *w = &widget[CFW_EXPS_CATEGORY];
-		/* draw categories */
-		DrawString(w->left, w->right, 15, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_CENTER, true);
-
-		y = 27;
-		for (int i = 0; i < _expenses_list_types[type].length; i++) {
-			ExpensesType et = _expenses_list_types[type].et[i];
-			if (et == INVALID_EXPENSES) {
-				y += 2;
-				DrawString(w->left + 2, w->right - 2, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
-				y += 20;
-			} else {
-				DrawString(w->left + 2, w->right - 2, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
-				y += 10;
-			}
-		}
-
-		DrawString(w->left + 2, w->right - 2, y + 2, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+		const Rect r = {w->left + WD_FRAMERECT_LEFT, 14, w->right - WD_FRAMERECT_RIGHT, w->bottom};
+		y = DrawCategories(r);
 
 		/* draw the price columns */
 		int year = _cur_year - 2;
-		int j = 3;
 		w++;
-		tbl = c->yearly_expenses + 2;
+		const Money (*tbl)[EXPENSES_END] = c->yearly_expenses + 2;
 
-		do {
+		for (int j = 0; j < 3; j++) {
 			if (year >= c->inaugurated_year) {
-				SetDParam(0, year);
-				DrawString(w->left, w->right, 15, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
-
-				Money sum = 0;
-				Money subtotal = 0;
-
-				int y = 27;
-
-				for (int i = 0; i < _expenses_list_types[type].length; i++) {
-					ExpensesType et = _expenses_list_types[type].et[i];
-					Money cost;
-
-					if (et == INVALID_EXPENSES) {
-						GfxFillRect(w->left, y, w->right, y, 215);
-						cost = subtotal;
-						subtotal = 0;
-						y += 2;
-					} else {
-						cost = (*tbl)[et];
-						subtotal += cost;
-						sum += cost;
-					}
-
-					if (cost != 0 || et == INVALID_EXPENSES) {
-						str = STR_FINANCES_NEGATIVE_INCOME;
-						if (cost < 0) { cost = -cost; str++; }
-						SetDParam(0, cost);
-						DrawString(w->left, w->right, y, str, TC_FROMSTRING, SA_RIGHT);
-					}
-					y += (et == INVALID_EXPENSES) ? 20 : 10;
-				}
-
-				str = STR_FINANCES_NEGATIVE_INCOME;
-				if (sum < 0) { sum = -sum; str++; }
-				SetDParam(0, sum);
-				DrawString(w->left, w->right, y + 2, str, TC_FROMSTRING, SA_RIGHT);
-
-				GfxFillRect(w->left, y, w->right, y, 215);
+				const Rect r = {w->left, 14, w->right, w->bottom};
+				DrawYearColumn(r, year, tbl);
 				w++;
 			}
 			year++;
 			tbl--;
-		} while (--j != 0);
+		}
 
 		y += 14;
 
