@@ -105,8 +105,7 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 void NetworkContentSocketHandler::Recv_Packets()
 {
 	Packet *p;
-	NetworkRecvStatus res;
-	while ((p = this->Recv_Packet(&res)) != NULL) {
+	while ((p = this->Recv_Packet()) != NULL) {
 		bool cont = HandlePacket(p);
 		delete p;
 		if (!cont) return;

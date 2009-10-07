@@ -131,12 +131,10 @@ bool NetworkTCPSocketHandler::Send_Packets()
  * @param status the variable to store the status into
  * @return the received packet (or NULL when it didn't receive one)
  */
-Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
+Packet *NetworkTCPSocketHandler::Recv_Packet()
 {
 	ssize_t res;
 	Packet *p;
-
-	*status = NETWORK_RECV_STATUS_OKAY;
 
 	if (!this->IsConnected()) return NULL;
 
@@ -157,7 +155,7 @@ Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
 				if (err != EWOULDBLOCK) {
 					/* Something went wrong... (104 is connection reset by peer) */
 					if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
-					*status = this->CloseConnection();
+					this->CloseConnection();
 					return NULL;
 				}
 				/* Connection would block, so stop for now */
@@ -165,7 +163,7 @@ Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
 			}
 			if (res == 0) {
 				/* Client/server has left */
-				*status = this->CloseConnection();
+				this->CloseConnection();
 				return NULL;
 			}
 			p->pos += res;
@@ -175,7 +173,7 @@ Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
 		p->ReadRawPacketSize();
 
 		if (p->size > SEND_MTU) {
-			*status = this->CloseConnection();
+			this->CloseConnection();
 			return NULL;
 		}
 	}
@@ -188,7 +186,7 @@ Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
 			if (err != EWOULDBLOCK) {
 				/* Something went wrong... (104 is connection reset by peer) */
 				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
-				*status = this->CloseConnection();
+				this->CloseConnection();
 				return NULL;
 			}
 			/* Connection would block */
@@ -196,7 +194,7 @@ Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
 		}
 		if (res == 0) {
 			/* Client/server has left */
-			*status = this->CloseConnection();
+			this->CloseConnection();
 			return NULL;
 		}
 

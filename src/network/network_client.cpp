@@ -952,7 +952,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs)
 	Packet *p;
 	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;
 
-	while (res == NETWORK_RECV_STATUS_OKAY && (p = cs->Recv_Packet(&res)) != NULL) {
+	while (res == NETWORK_RECV_STATUS_OKAY && (p = cs->Recv_Packet()) != NULL) {
 		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->HasClientQuit()) {
 			res = _network_client_packet[type](p);

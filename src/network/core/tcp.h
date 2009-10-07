@@ -41,7 +41,7 @@ public:
 	bool Send_Packets();
 	bool IsPacketQueueEmpty();
 
-	Packet *Recv_Packet(NetworkRecvStatus *status);
+	Packet *Recv_Packet();
 
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET);
 	~NetworkTCPSocketHandler();

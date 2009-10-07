@@ -1567,7 +1567,7 @@ void NetworkServer_ReadPackets(NetworkClientSocket *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res;
-	while ((p = cs->Recv_Packet(&res)) != NULL) {
+	while ((p = cs->Recv_Packet()) != NULL) {
 		byte type = p->Recv_uint8();
 		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->HasClientQuit()) {
 			res = _network_server_packet[type](cs, p);
