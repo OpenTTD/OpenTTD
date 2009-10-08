@@ -1255,7 +1255,21 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nhanh
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Cực nhanh
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Tỷ lệ thị trấn sẽ tiến lên thành phố: {ORANGE}1 trên {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Tỷ lệ thị trấn sẽ tiến lên thành phố: {ORANGE}Không
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Tốc độ tăng trưởng thành phố: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Bỏ đi những phần-đường-ngớ-ngẩn khi xây dựng đường: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Đựng
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ph.Tiện
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Trạm
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Kinh Tế
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Tùy chỉnh hiển thị
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Tương Tác
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Đèn Báo
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Chuyển hàng
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Tự làm mới
 
 
 

@@ -1681,6 +1681,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Imposta 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Invia
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Squadra] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privato] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Tutti] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Squadra] {STRING}: {WHITE}{STRING}

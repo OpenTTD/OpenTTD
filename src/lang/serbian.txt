@@ -478,10 +478,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tabele lige preduzeća
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiranje izgradnje nove fabrike, spisak svih fabrika
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova preduzeća
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži spisak svih drumskih vozila preduzeća
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži spisak svih brodova preduzeća
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži spisak svih letelica preduzeća
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova preduzeća. Ctrl+Click uključuje prikaz spiska grupe/vozila
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži spisak svih drumskih vozila preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži spisak svih brodova preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži spisak svih letelica preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Približi pogled (zoom in)
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Udalji pogled (zoom out)
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Izgradnja železničke pruge
@@ -737,9 +737,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Novac:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila; ukupan broj drumskih, železničkih vozila, brodova i letilica
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj stanica. Posebno se broji svaki deo (npr. železničko, autobusko stajalište ili aerodrom) stanice.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila sa najmanjim prihodom (svih vozila starijih od 2 godine)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su zaradila profit prošle godine; ovo uključuje drumska, železnička vozila, brodove i letilice
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno servisiranih delova stanica. Posebno se broji svaki deo (npr. železničko, autobusko stajalište ili aerodrom) stanice.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila sa najmanjim prihodom (samo vozila starijih od 2 godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina novca zarađena u mesecu sa najmanjom dobiti u proteklih 12 tromesečja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Količina novca zarađena u mesecu sa najvećom dobiti u proteklih 12 tromesečja
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Jedinica tereta dostavljenih u proteklih četiri tromesečja
@@ -1497,7 +1497,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak D
 STR_INTRO_AI_SETTINGS                                           :{BLACK}VI Podešavanja
 STR_INTRO_QUIT                                                  :{BLACK}Izađi
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju. Ctrl+Klik preskače konfiguraciju mape
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitavanje stare pozicije
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pokreće novu partiju, koristeći elevacionu kartu kao teren
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Započinje novu partiju, koristeći prethodno napravljen scenario
@@ -1864,6 +1864,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Postavi 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Pošalji
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ekipi] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] {STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Ekipi] {STRING}: {WHITE}{STRING}
@@ -2026,15 +2027,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnj
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Izgradnja jednošinske pruge (Monorail)
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnja magnetne pruge (MagLev)
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradnja železničke pruge
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gradite prugu koristeći automatsko određivanje pravca
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradnja železničke pruge. Ctrl uključuje izgradnju/uklanjanje
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gradite prugu koristeći automatsko određivanje pravca. Ctrl uključuje izgradnju/uklanjanje
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Izgradnja voznog depoa (za pravljenje novih, kao i za servis starih vozova)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Promena pruge u putanju. Uz Ctrl se spaja sa drugim čvorištima
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradnja železničke stanice. Uz Ctrl se spaja sa drugim stanicama
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradnja železničke signalizacije
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradnja železničke signalizacije. Ctrl uključuje semafore/svetlosne signale{}Prevlačenjem se grade signali duž prave linije pruge. Ctrl gradi signale do sledeće raskrsnice{}Ctrl+Klik uključuje otvaranje prozora za izbor signala
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradnja železničkog mosta
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradnja železničkog tunela
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Uklanjanje železničkih pruga i signalizacije (kad je uključeno)
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Izgradnja/Uklanjanje železničkih pruga,signalizacije, putnih tačaka i stanica (kad je uključeno). Držanjem Ctrl takođe se uklanja pruga sa putnih tačaka i stanica
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Promena/Nadogradnja vrste pruge
 
 # Rail depot construction window
@@ -2099,10 +2100,10 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cevni, Siliciju
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Izgradnja puta
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaj Konstrukcija
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Izgradnja deonice puta
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Izgradnja deonice tamvajske pruge
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Gradite put koristeći automatsko određivanje pravca
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Gradite tramvajsku prugu koristeći automatsko određivanje pravca
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Izgradnja deonice puta. Ctrl uključuje izgradnju/uklanjanje
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Izgradnja deonice tamvajske pruge. Ctrl uključuje izgradnju/uklanjanje
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Gradite put koristeći automatsko određivanje pravca. Ctrl uključuje izgradnju/uklanjanje
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Gradite tramvajsku prugu koristeći automatsko određivanje pravca. Ctrl uključuje izgradnju/uklanjanje tramvajske pruge
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Izgradnja drumskog depoa (za izgradnju novih i servis starih vozila)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Izgradnja tramvajskog depoa (za izgradnju novih i servis starih tramvaja)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Izgradnja autobuske stanice. Uz Ctrl se spaja sa drugim stanicama
@@ -2211,9 +2212,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li si
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stvaranje naselja
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Novo naselje
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Podigni novo naselje
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Osnuj novo naselje
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nasumično naselje
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Izgradi naselje na nasumičnoj lokaciji
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Osnuj naselje na nasumičnoj lokaciji
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mnogo nasumičnih naselja
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popunjava teren sa nasumično rasporđenim naseljima
 
@@ -2552,7 +2553,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Unos naz
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Naselja
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Prazno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena naselja - klik na ime centrira pogled na to naselje
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena naselja - klik na ime centrira pogled na to naselje. Ctrl+Klik otvara novi pogled na to mesto
 STR_TOWN_POPULATION                                             :{BLACK}Svet Populacija: {COMMA}
 
 # Town view window
@@ -2565,7 +2566,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar po
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} dostavljeno prošlog meseca
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pozicioniraj pogled na lokaciju naselja
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pozicioniraj pogled na lokaciju naselja. Ctrl+Klik otvara novi pogled na to mesto
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalna vlast
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Prikaži podatke o lokalnoj vlasti
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Promeni ime naselja
@@ -2611,10 +2612,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Prazno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Odobrene subvencije:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} između stanica {STRING} i {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom na uslugu prebacuje se na lokaciju fabrike/naselja
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom na uslugu prebacuje se na lokaciju fabrike/naselja. Ctrl+Klik otvara novi pogled na to mesto
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena stanica - klik na ime centrira pogled na stanicu
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena stanica - klik na ime centrira pogled na stanicu. Ctrl+Klik otvara novi pogled na to mesto
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Držite Ctrl kako biste označili više od jedne stavke
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stanic{P a e a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2650,7 +2651,7 @@ STR_CARGO_RATING_EXCELLENT                                      :odlično
 STR_CARGO_RATING_OUTSTANDING                                    :izvanredno
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju stanice
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju stanice. Ctrl+Klik otvara novi pogled na to mesto
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Preimenuj stanicu
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Prikazuje sve vozove koji imaju ovu stanicu u svom voznom redu
@@ -2661,9 +2662,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikazuj
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj stanicu
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Prebacite se na lokaciju čvorišta
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Prebacite se na lokaciju čvorišta. Ctrl+Klik otvara novi pogled na to mesto
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Promena naziva putanje
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacite se na lokaciju bove
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacite se na lokaciju bove. Ctrl+Klik otvara novi pogled na to mesto
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Promeni naziv bove
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva putanje
@@ -2743,13 +2744,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nema 
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena fabrika - kliknite na ime kako bi otišli do fabrike
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena fabrika - kliknite na ime kako bi otišli do fabrike. Ctrl+Klik otvara novi pogled na to mesto
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Prošlomesečna proizvodnja:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% prevezeno)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuje na lokaciju fabrike
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuje na lokaciju fabrike. Ctrl+Klik otvara novi pogled na to mesto
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}
@@ -2859,7 +2860,7 @@ STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Spisak p
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kupi Vozilo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kupi Vozilo
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kupi Brod
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Napraviti Letelicu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kupi Letelicu
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kupite označeno šinsko vozilo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kupite označeno drumsko vozilo
@@ -2919,8 +2920,8 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nova Voz
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi Brodovi
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Letilica
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupite nova šinska vozila
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kupi novo drumsko vozilo
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupovina novog šinskog vozila
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kupovina novog drumskog vozila
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupovina novog broda
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kupovina nove letilice
 
@@ -2934,10 +2935,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ovim će
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ovim ćete kupiti isti brod. Kliknite na dugme i potom na brod koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ovim ćete kupiti istu letilicu. Kliknite na dugme i potom na letilicu koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacite se na lokaciju železničkog depoa
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju drumskog depoa
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju broda
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Prebacite se na lokaciju hangara
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacite se na lokaciju železničkog depoa. Ctrl+Klik otvara novi pogled na to mesto
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju drumskog depoa. Ctrl+Klik otvara novi pogled na to mesto
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju broda. Ctrl+Klik otvara novi pogled na to mesto
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Prebacite se na lokaciju hangara. Ctrl+Klik otvara novi pogled to mesto
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Dohvata spisak svih vozova sa ovim depoom u naredbama
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Dohvata spisak svih drumskih vozila sa ovim depoom u naredbama
@@ -3015,10 +3016,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju voza
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Prebacite se na lokaciju vozila
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju broda
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Prebacite se na lokaciju letilice
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju voza. Ctrl+Klik će pratiti voz u glavnom prikazu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Prebacite se na lokaciju vozila. Ctrl+Klik će pratiti vozilo u glavnom prikazu
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju broda. Ctrl+Klik će pratiti brod u glavnom prikazu
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Prebacite se na lokaciju letilice. Ctrl+Klik će pratiti letelicu u glavnom prikazu
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošaljite voz u depo. Sa Ctrl+Klik će otići samo na servis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošaljite vozilo u depo. Sa Ctrl+Klik će otići samo na servis
@@ -3028,7 +3029,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Pošalji
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ovim ćete kupiti istu kompoziciju. Sa Ctrl+Klik će imati zajedničke naredbe
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Sa Ctrl+Klik će imati zajedničke naredbe
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ovim ćete kupiti isti brod. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ovim ćete kupiti istu letilicu. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ovim ćete kupiti kopiju letilice. Sa Ctrl+Klik će imati zajedničke naredbe
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Voz će krenuti bez čekanja na signal za slobodan kolosek
 
@@ -3040,10 +3041,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prepravi
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Promena smera kretanja voza
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Naterajte vozilo da okrene
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuje naredbe vozu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Prikazuje naredbe vozilu
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe brodu
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Prikazuje naredbe letilici
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuje naredbe vozu. Ctrl+Klik za prikaz reda vožnje
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Prikazuje naredbe vozilu. Ctrl+Klik za prikaz reda vožnje
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe brodu. Ctrl+Klik za prikaz brodskog rasporeda
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Prikazuje naredbe letilici. Ctrl+Klik za prikaz letelicinog rasporeda
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Prikazuje podatke o vozu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikazuje detalje drumskog vozila
@@ -3122,8 +3123,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Zarada o
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period servisiranja: {LTBLUE}{COMMA}%{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja za 10. Ctrl+Klik povećava period za 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja za 10. Ctrl+Klik smanjuje period za 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
@@ -3248,7 +3249,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg depoa
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
 STR_ORDER_CONDITIONAL                                           :Uslovna naredba skoka
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska. Ctrl čini da stanica naredi "pun bilo koji tovar", putna tačka naredi "non-stop" i depo naredi "servis"
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Dodavanje složene naredbe
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Prikazuje sva vozila koja dele ovaj red vožnje
@@ -3678,7 +3679,7 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Letilica
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nemoguća kupovina šinskog vozila...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ne može se kupiti drumsko vozilo...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Brod se ne može kupiti...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Letelice se ne može napraviti
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ne može se kupiti letelica...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemoguća promena naziva vrste drumskog vozila...

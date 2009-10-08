@@ -1833,6 +1833,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Уста
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Отправить
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Лично] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всем] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {WHITE}{STRING}
