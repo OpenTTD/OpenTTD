@@ -32,8 +32,12 @@
 
 #include "table/strings.h"
 
+/** Company GUI constants. */
 enum {
 	FIRST_GUI_CALL = INT_MAX,  ///< default value to specify this is the first call of the resizable gui
+
+	EXP_LINESPACE  = 2,        ///< Amount of vertical space for a horizontal (sub-)total line.
+	EXP_BLOCKSPACE = 10,       ///< Amount of vertical space between two blocks of numbers.
 };
 
 static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
@@ -78,21 +82,25 @@ static ExpensesType _expenses_list_2[] = {
 
 /** Expense list container. */
 struct ExpensesList {
-	const ExpensesType *et; ///< Expenses items.
-	const int length;       ///< Number of items in list.
-	const int height;       ///< Height of list, 10 pixels per item, plus an additional 12 pixels per subtotal. */
+	const ExpensesType *et;  ///< Expenses items.
+	const int length;        ///< Number of items in list.
+	const int num_subtotals; ///< Number of sub-totals in the list.
 
-	ExpensesList(ExpensesType *et, int length, int height) :
-		et(et),
-		length(length),
-		height(height)
+	ExpensesList(ExpensesType *et, int length, int num_subtotals) : et(et), length(length), num_subtotals(num_subtotals)
 	{
+	}
+
+	int GetHeight() const
+	{
+		/* top spacing + heading + line + texts of expenses + sub-totals + total line + total text + bottom spacing. */
+		return WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL + EXP_LINESPACE +
+			this->length * FONT_HEIGHT_NORMAL + num_subtotals * (EXP_BLOCKSPACE + EXP_LINESPACE) + EXP_LINESPACE + FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 	}
 };
 
 static const ExpensesList _expenses_list_types[] = {
-	ExpensesList(_expenses_list_1, lengthof(_expenses_list_1), lengthof(_expenses_list_1) * 10 + 26),
-	ExpensesList(_expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12 + 26),
+	ExpensesList(_expenses_list_1, lengthof(_expenses_list_1), 0),
+	ExpensesList(_expenses_list_2, lengthof(_expenses_list_2), 3),
 };
 
 /** Widgets of the company finances windows. */
@@ -123,22 +131,22 @@ static int DrawCategories(const Rect &r)
 	int y = r.top + WD_FRAMERECT_TOP;
 
 	DrawString(r.left, r.right, y, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_CENTER, true);
-	y += 10 + 2;
+	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
 
 	int type = _settings_client.gui.expenses_layout;
 	for (int i = 0; i < _expenses_list_types[type].length; i++) {
 		const ExpensesType et = _expenses_list_types[type].et[i];
 		if (et == INVALID_EXPENSES) {
-			y += 2;
+			y += EXP_LINESPACE;
 			DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
-			y += 20;
+			y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
 		} else {
 			DrawString(r.left, r.right, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
-			y += 10;
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 
-	DrawString(r.left, r.right, y + 2, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+	DrawString(r.left, r.right, y + EXP_LINESPACE, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
 	return y;
 }
 
@@ -171,7 +179,7 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 
 	SetDParam(0, year);
 	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
-	y += 10 + 2;
+	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
 
 	Money sum = 0;
 	Money subtotal = 0;
@@ -182,20 +190,20 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 			Money cost = subtotal;
 			subtotal = 0;
 			GfxFillRect(r.left, y, r.right, y, 215);
-			y += 2;
-			DrawPrice(cost, r.left, r.right, y + 2);
-			y += 20;
+			y += EXP_LINESPACE;
+			DrawPrice(cost, r.left, r.right, y + EXP_LINESPACE);
+			y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
 		} else {
 			Money cost = (*tbl)[et];
 			subtotal += cost;
 			sum += cost;
-			if (cost != 0) DrawPrice(cost, r.left, r.right, y + 2);
-			y += 10;
+			if (cost != 0) DrawPrice(cost, r.left, r.right, y + EXP_LINESPACE);
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 
 	GfxFillRect(r.left, y, r.right, y, 215);
-	y += 2;
+	y += EXP_LINESPACE;
 	DrawPrice(sum, r.left, r.right, y);
 }
 
@@ -380,9 +388,9 @@ struct CompanyFinancesWindow : Window {
 				this->widget[CFW_EXPS_PANEL].bottom = this->widget[CFW_EXPS_PANEL].top;
 			}
 			int height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
-			if (_expenses_list_types[type].height != height) {
+			if (_expenses_list_types[type].GetHeight() != height) {
 				this->SetDirty();
-				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].height - height);
+				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].GetHeight() - height);
 				this->SetDirty();
 				return;
 			}
