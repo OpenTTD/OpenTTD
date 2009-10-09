@@ -1679,12 +1679,13 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Alege pa
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Trimite
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Mesaj privat] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] pentru {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Mesaj privat] pentru {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu textul pentru chat in retea
 
