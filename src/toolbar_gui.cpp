@@ -1186,7 +1186,7 @@ static const Widget _toolb_normal_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MUSIC,           STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW},  // TBN_MUSICSOUND
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MESSAGES,        STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS},   // TBN_NEWSREPORT
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_QUERY,           STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION},   // TBN_HELP
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_SWITCH_TOOLBAR,      STR_EMPTY},                                    // TBN_SWITCHBAR
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_SWITCH_TOOLBAR,      STR_NULL},                                    // TBN_SWITCHBAR
 {   WIDGETS_END},
 };
 
