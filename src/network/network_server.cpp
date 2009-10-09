@@ -53,7 +53,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientSocket *cs
 	 */
 
 	if (ci->client_id != INVALID_CLIENT_ID) {
-		Packet *p = NetworkSend_Init(PACKET_SERVER_CLIENT_INFO);
+		Packet *p = new Packet(PACKET_SERVER_CLIENT_INFO);
 		p->Send_uint32(ci->client_id);
 		p->Send_uint8 (ci->client_playas);
 		p->Send_string(ci->client_name);
@@ -106,7 +106,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	Packet *p;
 
 	FOR_ALL_COMPANIES(company) {
-		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
+		p = new Packet(PACKET_SERVER_COMPANY_INFO);
 
 		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
 		p->Send_bool  (true);
@@ -121,7 +121,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		cs->Send_Packet(p);
 	}
 
-	p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
+	p = new Packet(PACKET_SERVER_COMPANY_INFO);
 
 	p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
 	p->Send_bool  (false);
@@ -139,7 +139,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 	 */
 
 	char str[100];
-	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
+	Packet *p = new Packet(PACKET_SERVER_ERROR);
 
 	p->Send_uint8(error);
 	cs->Send_Packet(p);
@@ -193,7 +193,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *
 	 * 16 * uint8:  MD5 checksum of the GRF
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_CHECK_NEWGRFS);
+	Packet *p = new Packet(PACKET_SERVER_CHECK_NEWGRFS);
 	const GRFConfig *c;
 	uint grf_count = 0;
 
@@ -223,7 +223,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *
 
 	cs->status = STATUS_AUTHORIZING;
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
+	Packet *p = new Packet(PACKET_SERVER_NEED_PASSWORD);
 	p->Send_uint8(type);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_string(_settings_client.network.network_id);
@@ -248,7 +248,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	cs->status = STATUS_AUTH;
 	_network_game_info.clients_on++;
 
-	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
+	p = new Packet(PACKET_SERVER_WELCOME);
 	p->Send_uint32(cs->client_id);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_string(_settings_client.network.network_id);
@@ -281,7 +281,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 		if (new_cs->status == STATUS_MAP_WAIT) waiting++;
 	}
 
-	p = NetworkSend_Init(PACKET_SERVER_WAIT);
+	p = new Packet(PACKET_SERVER_WAIT);
 	p->Send_uint8(waiting);
 	cs->Send_Packet(p);
 }
@@ -325,7 +325,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
 
 		/* Now send the _frame_counter and how many packets are coming */
-		p = NetworkSend_Init(PACKET_SERVER_MAP);
+		p = new Packet(PACKET_SERVER_MAP);
 		p->Send_uint8 (MAP_PACKET_START);
 		p->Send_uint32(_frame_counter);
 		p->Send_uint32(ftell(file_pointer));
@@ -345,7 +345,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		uint i;
 		int res;
 		for (i = 0; i < sent_packets; i++) {
-			Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
+			Packet *p = new Packet(PACKET_SERVER_MAP);
 			p->Send_uint8(MAP_PACKET_NORMAL);
 			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
 
@@ -355,7 +355,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			cs->Send_Packet(p);
 			if (feof(file_pointer)) {
 				/* Done reading! */
-				Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
+				Packet *p = new Packet(PACKET_SERVER_MAP);
 				p->Send_uint8(MAP_PACKET_END);
 				cs->Send_Packet(p);
 
@@ -413,7 +413,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientSocket *cs, Clien
 	 *    uint32:  Client-identifier
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_JOIN);
+	Packet *p = new Packet(PACKET_SERVER_JOIN);
 
 	p->Send_uint32(client_id);
 
@@ -434,7 +434,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_FRAME)
 	 *      (last two depends on compile-settings, and are not default settings)
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_FRAME);
+	Packet *p = new Packet(PACKET_SERVER_FRAME);
 	p->Send_uint32(_frame_counter);
 	p->Send_uint32(_frame_counter_max);
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
@@ -458,7 +458,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 	 *      (last one depends on compile-settings, and are not default settings)
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_SYNC);
+	Packet *p = new Packet(PACKET_SERVER_SYNC);
 	p->Send_uint32(_frame_counter);
 	p->Send_uint32(_sync_seed_1);
 
@@ -484,7 +484,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, co
 	 *    uint32: Frame of execution
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_COMMAND);
+	Packet *p = new Packet(PACKET_SERVER_COMMAND);
 
 	cs->Send_Command(p, cp);
 	p->Send_uint32(cp->frame);
@@ -505,7 +505,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientSocket *cs, Netwo
 	 *    uint64: Arbitrary data
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_CHAT);
+	Packet *p = new Packet(PACKET_SERVER_CHAT);
 
 	p->Send_uint8 (action);
 	p->Send_uint32(client_id);
@@ -527,7 +527,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs,
 	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR_QUIT);
+	Packet *p = new Packet(PACKET_SERVER_ERROR_QUIT);
 
 	p->Send_uint32(client_id);
 	p->Send_uint8 (errorno);
@@ -545,7 +545,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientSocket *cs, Clien
 	 *    uint32:  Client-identifier
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_QUIT);
+	Packet *p = new Packet(PACKET_SERVER_QUIT);
 
 	p->Send_uint32(client_id);
 
@@ -561,7 +561,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
 	 *     <none>
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_SHUTDOWN);
+	Packet *p = new Packet(PACKET_SERVER_SHUTDOWN);
 	cs->Send_Packet(p);
 }
 
@@ -574,13 +574,13 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 	 *     <none>
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_SERVER_NEWGAME);
+	Packet *p = new Packet(PACKET_SERVER_NEWGAME);
 	cs->Send_Packet(p);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 colour, const char *command)
 {
-	Packet *p = NetworkSend_Init(PACKET_SERVER_RCON);
+	Packet *p = new Packet(PACKET_SERVER_RCON);
 
 	p->Send_uint16(colour);
 	p->Send_string(command);
@@ -589,7 +589,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint1
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, ClientID client_id, CompanyID company_id)
 {
-	Packet *p = NetworkSend_Init(PACKET_SERVER_MOVE);
+	Packet *p = new Packet(PACKET_SERVER_MOVE);
 
 	p->Send_uint32(client_id);
 	p->Send_uint8(company_id);
@@ -598,7 +598,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, Clien
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMPANY_UPDATE)(NetworkClientSocket *cs)
 {
-	Packet *p = NetworkSend_Init(PACKET_SERVER_COMPANY_UPDATE);
+	Packet *p = new Packet(PACKET_SERVER_COMPANY_UPDATE);
 
 	p->Send_uint16(_network_company_passworded);
 	cs->Send_Packet(p);
@@ -606,7 +606,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMPANY_UPDATE)(NetworkClientSocket 
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
 {
-	Packet *p = NetworkSend_Init(PACKET_SERVER_CONFIG_UPDATE);
+	Packet *p = new Packet(PACKET_SERVER_CONFIG_UPDATE);
 
 	p->Send_uint8(_settings_client.network.max_companies);
 	p->Send_uint8(_settings_client.network.max_spectators);

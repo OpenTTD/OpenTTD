@@ -72,8 +72,6 @@ public:
 	void   Recv_string(char *buffer, size_t size, bool allow_newlines = false);
 };
 
-Packet *NetworkSend_Init(PacketType type);
-
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_PACKET_H */

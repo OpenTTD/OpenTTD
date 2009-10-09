@@ -48,20 +48,6 @@ Packet::Packet(PacketType type)
 }
 
 /**
- * Create a packet for sending
- * @param type the of packet
- * @return the newly created packet
- */
-Packet *NetworkSend_Init(PacketType type)
-{
-	Packet *packet = new Packet(type);
-	/* An error is inplace here, because it simply means we ran out of memory. */
-	if (packet == NULL) error("Failed to allocate Packet");
-
-	return packet;
-}
-
-/**
  * Writes the packet size from the raw packet from packet->size
  */
 void Packet::PrepareToSend()

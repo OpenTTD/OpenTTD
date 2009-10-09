@@ -123,7 +123,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
-	p = NetworkSend_Init(PACKET_CLIENT_COMPANY_INFO);
+	p = new Packet(PACKET_CLIENT_COMPANY_INFO);
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -144,7 +144,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
-	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
+	p = new Packet(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
@@ -161,7 +161,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	 * Data:
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_NEWGRFS_CHECKED);
+	Packet *p = new Packet(PACKET_CLIENT_NEWGRFS_CHECKED);
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -174,7 +174,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, 
 	 *    uint8:  NetworkPasswordType
 	 *    String: Password
 	 */
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_PASSWORD);
+	Packet *p = new Packet(PACKET_CLIENT_PASSWORD);
 	p->Send_uint8 (type);
 	p->Send_string(type == NETWORK_GAME_PASSWORD ? password : GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
@@ -189,7 +189,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 	 *    <none>
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_GETMAP);
+	Packet *p = new Packet(PACKET_CLIENT_GETMAP);
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -202,7 +202,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
 	 *    <none>
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_MAP_OK);
+	Packet *p = new Packet(PACKET_CLIENT_MAP_OK);
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -215,7 +215,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 	 *    uint32: current FrameCounter of the client
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_ACK);
+	Packet *p = new Packet(PACKET_CLIENT_ACK);
 
 	p->Send_uint32(_frame_counter);
 	MY_CLIENT->Send_Packet(p);
@@ -237,7 +237,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 	 *    uint8:  CallBackID (see callback_table.c)
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
+	Packet *p = new Packet(PACKET_CLIENT_COMMAND);
 	MY_CLIENT->Send_Command(p, cp);
 
 	MY_CLIENT->Send_Packet(p);
@@ -257,7 +257,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	 *    uint64: Some arbitrary number
 	 */
 
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_CHAT);
+	Packet *p = new Packet(PACKET_CLIENT_CHAT);
 
 	p->Send_uint8 (action);
 	p->Send_uint8 (type);
@@ -277,7 +277,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 	 * Data:
 	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
 	 */
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_ERROR);
+	Packet *p = new Packet(PACKET_CLIENT_ERROR);
 
 	p->Send_uint8(errorno);
 	MY_CLIENT->Send_Packet(p);
@@ -291,7 +291,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 	 * Data:
 	 *    String: Password
 	 */
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_PASSWORD);
+	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
 
 	p->Send_string(GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
@@ -305,7 +305,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 	 * Data:
 	 *    String: Name
 	 */
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_NAME);
+	Packet *p = new Packet(PACKET_CLIENT_SET_NAME);
 
 	p->Send_string(name);
 	MY_CLIENT->Send_Packet(p);
@@ -319,14 +319,14 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)()
 	 * Function: The client is quiting the game
 	 * Data:
 	 */
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_QUIT);
+	Packet *p = new Packet(PACKET_CLIENT_QUIT);
 
 	MY_CLIENT->Send_Packet(p);
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command)
 {
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_RCON);
+	Packet *p = new Packet(PACKET_CLIENT_RCON);
 	p->Send_string(pass);
 	p->Send_string(command);
 	MY_CLIENT->Send_Packet(p);
@@ -334,7 +334,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char *pass)
 {
-	Packet *p = NetworkSend_Init(PACKET_CLIENT_MOVE);
+	Packet *p = new Packet(PACKET_CLIENT_MOVE);
 	p->Send_uint8(company);
 	p->Send_string(GenerateCompanyPasswordHash(pass));
 	MY_CLIENT->Send_Packet(p);

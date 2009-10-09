@@ -134,16 +134,14 @@ bool NetworkTCPSocketHandler::Send_Packets()
 Packet *NetworkTCPSocketHandler::Recv_Packet()
 {
 	ssize_t res;
-	Packet *p;
 
 	if (!this->IsConnected()) return NULL;
 
 	if (this->packet_recv == NULL) {
 		this->packet_recv = new Packet(this);
-		if (this->packet_recv == NULL) error("Failed to allocate packet");
 	}
 
-	p = this->packet_recv;
+	Packet *p = this->packet_recv;
 
 	/* Read packet size */
 	if (p->pos < sizeof(PacketSize)) {
