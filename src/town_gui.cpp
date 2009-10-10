@@ -978,6 +978,7 @@ public:
 			GetTownName(this->edit_str_buf, &this->params, this->townnameparts, &this->edit_str_buf[this->edit_str_size - 1]);
 		}
 		UpdateTextBufferSize(&this->text);
+		UpdateOSKOriginalText(this, TSEW_TOWNNAME_EDITBOX);
 
 		this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
 		this->SetWidgetDirty(TSEW_TOWNNAME_EDITBOX);

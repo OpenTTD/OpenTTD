@@ -86,5 +86,6 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 };
 
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel, int ok);
+void UpdateOSKOriginalText(const QueryStringBaseWindow *parent, int button);
 
 #endif /* QUERYSTRING_GUI_H */

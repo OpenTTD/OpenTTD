@@ -547,3 +547,21 @@ void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel,
 	GetKeyboardLayout();
 	new OskWindow(&_osk_desc, parent, button, cancel, ok);
 }
+
+/**
+ * Updates the original text of the OSK so when the 'parent' changes the
+ * original and you press on cancel you won't get the 'old' original text
+ * but the updated one.
+ * @param parent window that just updated it's orignal text
+ * @param button widget number of parent's textbox to update
+ */
+void UpdateOSKOriginalText(const QueryStringBaseWindow *parent, int button)
+{
+	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
+	if (osk == NULL || osk->qs != parent || osk->text_btn != button) return;
+
+	free(osk->orig_str_buf);
+	osk->orig_str_buf = strdup(osk->qs->text.buf);
+
+	osk->SetDirty();
+}
