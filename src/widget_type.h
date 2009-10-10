@@ -376,8 +376,15 @@ protected:
 	NWidgetBase *tail; ///< Pointer to last widget in container.
 };
 
+static const int STACKED_SELECTION_ZERO_SIZE = INT_MAX; ///< Display plane value for getting a zero-size widget.
+
 /** Stacked widgets, widgets all occupying the same space in the window.
- * @note the semantics difference between #NWID_SELECTION and #NWID_LAYERED is currently not used.
+ * #NWID_SELECTION allows for selecting one of several panels (planes) to tbe displayed. All planes must have the same size.
+ * Since all planes are also initialized, switching between different planes can be done while the window is displayed.
+ *
+ * There is also a special plane #STACKED_SELECTION_ZERO_SIZE which always has zero size, and is not resizable or fillable. It is used to make all child
+ * planes of the widget disappear. Unlike the regular display planes, switching from or to the #STACKED_SELECTION_ZERO_SIZE plane means that a
+ * #Windows::ReInit() is needed to re-initialize the window.
  */
 class NWidgetStacked : public NWidgetContainer {
 public:

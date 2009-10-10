@@ -1289,6 +1289,17 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 		w->nested_array[this->index] = this;
 	}
 
+	/* Zero size plane selected */
+	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) {
+		this->smallest_x = 0;
+		this->smallest_y = 0;
+		this->fill_x = false;
+		this->fill_y = false;
+		this->resize_x = 0;
+		this->resize_y = 0;
+		return;
+	}
+
 	/* First sweep, recurse down and compute minimal size and filling. */
 	this->smallest_x = 0;
 	this->smallest_y = 0;
@@ -1312,6 +1323,8 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 	StoreSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y);
+
+	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
 
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
@@ -1341,6 +1354,8 @@ void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
 
 void NWidgetStacked::Draw(const Window *w)
 {
+	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
+
 	if (this->type == NWID_SELECTION) {
 		int plane = 0;
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
@@ -1351,7 +1366,7 @@ void NWidgetStacked::Draw(const Window *w)
 		}
 	}
 
-	assert(this->type == NWID_LAYERED); // Currently, NWID_SELECTION is not supported.
+	assert(this->type == NWID_LAYERED);
 	/* Render from back to front. */
 	for (NWidgetBase *child_wid = this->tail; child_wid != NULL; child_wid = child_wid->prev) {
 		child_wid->Draw(w);
@@ -1360,6 +1375,8 @@ void NWidgetStacked::Draw(const Window *w)
 
 NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 {
+	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return NULL;
+
 	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
 	int plane = 0;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
