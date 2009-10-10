@@ -82,15 +82,15 @@ static ExpensesType _expenses_list_2[] = {
 
 /** Expense list container. */
 struct ExpensesList {
-	const ExpensesType *et;  ///< Expenses items.
-	const int length;        ///< Number of items in list.
-	const int num_subtotals; ///< Number of sub-totals in the list.
+	const ExpensesType *et;   ///< Expenses items.
+	const uint length;        ///< Number of items in list.
+	const uint num_subtotals; ///< Number of sub-totals in the list.
 
 	ExpensesList(ExpensesType *et, int length, int num_subtotals) : et(et), length(length), num_subtotals(num_subtotals)
 	{
 	}
 
-	int GetHeight() const
+	uint GetHeight() const
 	{
 		/* top spacing + heading + line + texts of expenses + sub-totals + total line + total text + bottom spacing. */
 		return WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL + EXP_LINESPACE +
@@ -134,7 +134,7 @@ static int DrawCategories(const Rect &r)
 	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
 
 	int type = _settings_client.gui.expenses_layout;
-	for (int i = 0; i < _expenses_list_types[type].length; i++) {
+	for (uint i = 0; i < _expenses_list_types[type].length; i++) {
 		const ExpensesType et = _expenses_list_types[type].et[i];
 		if (et == INVALID_EXPENSES) {
 			y += EXP_LINESPACE;
@@ -184,7 +184,7 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 	Money sum = 0;
 	Money subtotal = 0;
 	int type = _settings_client.gui.expenses_layout;
-	for (int i = 0; i < _expenses_list_types[type].length; i++) {
+	for (uint i = 0; i < _expenses_list_types[type].length; i++) {
 		const ExpensesType et = _expenses_list_types[type].et[i];
 		if (et == INVALID_EXPENSES) {
 			Money cost = subtotal;
@@ -387,7 +387,7 @@ struct CompanyFinancesWindow : Window {
 			if (this->widget[CFW_EXPS_PANEL].bottom < this->widget[CFW_EXPS_PANEL].top) {
 				this->widget[CFW_EXPS_PANEL].bottom = this->widget[CFW_EXPS_PANEL].top;
 			}
-			int height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
+			uint height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
 			if (_expenses_list_types[type].GetHeight() != height) {
 				this->SetDirty();
 				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].GetHeight() - height);
