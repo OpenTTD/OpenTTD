@@ -40,7 +40,6 @@ enum {
 	EXP_BLOCKSPACE = 10,       ///< Amount of vertical space between two blocks of numbers.
 };
 
-static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 static void DoSelectCompanyManagerFace(Window *parent, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 
 /** Standard unsorted list of expenses. */
@@ -92,9 +91,27 @@ struct ExpensesList {
 
 	uint GetHeight() const
 	{
-		/* top spacing + heading + line + texts of expenses + sub-totals + total line + total text + bottom spacing. */
-		return WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL + EXP_LINESPACE +
-			this->length * FONT_HEIGHT_NORMAL + num_subtotals * (EXP_BLOCKSPACE + EXP_LINESPACE) + EXP_LINESPACE + FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+		/* heading + line + texts of expenses + sub-totals + total line + total text */
+		return FONT_HEIGHT_NORMAL + EXP_LINESPACE + this->length * FONT_HEIGHT_NORMAL + num_subtotals * (EXP_BLOCKSPACE + EXP_LINESPACE) + EXP_LINESPACE + FONT_HEIGHT_NORMAL;
+	}
+
+	/** Compute width of the expenses categories in pixels. */
+	uint GetCategoriesWidth() const
+	{
+		uint width = 0;
+		bool invalid_expenses_measured = false; // Measure 'Total' width only once.
+		for (uint i = 0; i < this->length; i++) {
+			ExpensesType et = this->et[i];
+			if (et == INVALID_EXPENSES) {
+				if (!invalid_expenses_measured) {
+					width = max(width, GetStringBoundingBox(STR_FINANCES_TOTAL_CAPTION).width);
+					invalid_expenses_measured = true;
+				}
+			} else {
+				width = max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + et).width);
+			}
+		}
+		return width;
 	}
 };
 
@@ -110,14 +127,22 @@ enum CompanyFinancesWindowWidgets {
 	CFW_TOGGLE_SIZE,   ///< Toggle windows size
 	CFW_STICKY,        ///< Sticky button
 	CFW_EXPS_PANEL,    ///< Panel for expenses
+	CFW_SEL_PANEL,     ///< Select panel or nothing
 	CFW_EXPS_CATEGORY, ///< Column for expenses category strings
 	CFW_EXPS_PRICE1,   ///< Column for year Y-2 expenses
 	CFW_EXPS_PRICE2,   ///< Column for year Y-1 expenses
 	CFW_EXPS_PRICE3,   ///< Column for year Y expenses
 	CFW_TOTAL_PANEL,   ///< Panel for totals
-	CFW_TOTAL_LABELS,  ///< Column for totals labels
-	CFW_TOTAL_VALUES,  ///< Column for totals values
-	CFW_TOTAL_MAXLOAN, ///< Column for max loan string
+	CFW_SEL_MAXLOAN,   ///< Selection of maxloan column
+	CFW_BALANCE_TITLE, ///< 'Bank balance' title
+	CFW_LOAN_TITLE,    ///< 'Loan' title
+	CFW_BALANCE_VALUE, ///< Bank balance value
+	CFW_LOAN_VALUE,    ///< Loan
+	CFW_LOAN_LINE,     ///< Line for summing bank balance and loan
+	CFW_TOTAL_VALUE,   ///< Total
+	CFW_MAXLOAN_GAP,   ///< Gap above max loan widget
+	CFW_MAXLOAN_VALUE, ///< Max loan widget
+	CFW_SEL_BUTTONS,   ///< Selection of buttons
 	CFW_INCREASE_LOAN, ///< Increase loan
 	CFW_REPAY_LOAN,    ///< Decrease loan
 };
@@ -126,9 +151,9 @@ enum CompanyFinancesWindowWidgets {
  * @param r Available space for drawing.
  * @note The environment must provide padding at the left and right of \a r.
  */
-static int DrawCategories(const Rect &r)
+static void DrawCategories(const Rect &r)
 {
-	int y = r.top + WD_FRAMERECT_TOP;
+	int y = r.top;
 
 	DrawString(r.left, r.right, y, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_CENTER, true);
 	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
@@ -147,7 +172,6 @@ static int DrawCategories(const Rect &r)
 	}
 
 	DrawString(r.left, r.right, y + EXP_LINESPACE, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
-	return y;
 }
 
 /** Draw an amount of money.
@@ -175,7 +199,7 @@ static void DrawPrice(Money amount, int left, int right, int top)
  */
 static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_END])
 {
-	int y = r.top + WD_FRAMERECT_TOP;
+	int y = r.top;
 
 	SetDParam(0, year);
 	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
@@ -207,236 +231,220 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 	DrawPrice(sum, r.left, r.right, y);
 }
 
-static void DrawCompanyEconomyStats(const Company *c, bool small, const Widget *widget)
-{
-	int y;
-
-	if (!small) { // normal sized economics window
-		const Widget *w = &widget[CFW_EXPS_CATEGORY];
-		const Rect r = {w->left + WD_FRAMERECT_LEFT, 14, w->right - WD_FRAMERECT_RIGHT, w->bottom};
-		y = DrawCategories(r);
-
-		/* draw the price columns */
-		int year = _cur_year - 2;
-		w++;
-		const Money (*tbl)[EXPENSES_END] = c->yearly_expenses + 2;
-
-		for (int j = 0; j < 3; j++) {
-			if (year >= c->inaugurated_year) {
-				const Rect r = {w->left, 14, w->right, w->bottom};
-				DrawYearColumn(r, year, tbl);
-				w++;
-			}
-			year++;
-			tbl--;
-		}
-
-		y += 14;
-
-		/* draw max loan aligned to loan below (y += 10) */
-		SetDParam(0, _economy.max_loan);
-		DrawString(widget[CFW_TOTAL_MAXLOAN].left, widget[CFW_TOTAL_MAXLOAN].right, y + 10, STR_FINANCES_MAX_LOAN);
-	} else {
-		y = 15;
-	}
-
-	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_FINANCES_BANK_BALANCE_TITLE);
-	SetDParam(0, c->money);
-	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
-
-	y += 10;
-
-	DrawString(widget[CFW_TOTAL_LABELS].left, widget[CFW_TOTAL_LABELS].right, y, STR_FINANCES_LOAN_TITLE);
-	SetDParam(0, c->current_loan);
-	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
-
-	y += 12;
-
-	GfxFillRect(widget[CFW_TOTAL_VALUES].left, y - 2, widget[CFW_TOTAL_VALUES].right, y - 2, 215);
-
-	SetDParam(0, c->money - c->current_loan);
-	DrawString(widget[CFW_TOTAL_VALUES].left, widget[CFW_TOTAL_VALUES].right, y, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
-}
-
 static const NWidgetPart _nested_company_finances_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CFW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetMinimalSize(369, 14), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetMinimalSize(14, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, CFW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CFW_CLOSEBOX), SetFill(false, true),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetMinimalSize(14, 14), SetFill(false, true), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, CFW_STICKY), SetFill(false, true),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CFW_EXPS_PANEL),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY), SetMinimalSize(123, 0),
-			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1), SetMinimalSize(86, 0),
-			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE2), SetMinimalSize(86, 0),
-			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE3), SetMinimalSize(86, 0),
-			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_PANEL),
+		NWidget(WWT_PANEL, COLOUR_GREY, CFW_EXPS_PANEL),
+			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT), SetPIP(0, 9, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY), SetMinimalSize(120, 0), SetFill(false, false),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1), SetMinimalSize(86, 0), SetFill(false, false),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE2), SetMinimalSize(86, 0), SetFill(false, false),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE3), SetMinimalSize(86, 0), SetFill(false, false),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CFW_TOTAL_PANEL),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_LABELS), SetMinimalSize(95, 34),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_VALUES), SetMinimalSize(86, 34),
-			NWidget(NWID_SPACER), SetMinimalSize(19, 0),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_MAXLOAN), SetMinimalSize(205, 34),
+		NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT),
+			NWidget(NWID_VERTICAL), // Vertical column with 'bank balance', 'loan'
+				NWidget(WWT_TEXT, COLOUR_GREY, CFW_BALANCE_TITLE), SetDataTip(STR_FINANCES_BANK_BALANCE_TITLE, STR_NULL), SetFill(true, false),
+				NWidget(WWT_TEXT, COLOUR_GREY, CFW_LOAN_TITLE), SetDataTip(STR_FINANCES_LOAN_TITLE, STR_NULL), SetFill(true, false),
+				NWidget(NWID_SPACER), SetFill(false, true),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetFill(false, false), SetMinimalSize(30, 0),
+			NWidget(NWID_VERTICAL), // Vertical column with bank balance amount, loan amount, and total.
+				NWidget(WWT_TEXT, COLOUR_GREY, CFW_BALANCE_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, CFW_LOAN_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_LOAN_LINE), SetMinimalSize(0, 2), SetFill(true, false),
+				NWidget(WWT_TEXT, COLOUR_GREY, CFW_TOTAL_VALUE), SetDataTip(STR_NULL, STR_NULL),
+			EndContainer(),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_MAXLOAN),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_SPACER), SetFill(false, true), SetMinimalSize(25, 0),
+					NWidget(NWID_VERTICAL), // Max loan information
+						NWidget(WWT_EMPTY, COLOUR_GREY, CFW_MAXLOAN_GAP), SetFill(false, false),
+						NWidget(WWT_TEXT, COLOUR_GREY, CFW_MAXLOAN_VALUE), SetDataTip(STR_FINANCES_MAX_LOAN, STR_NULL),
+						NWidget(NWID_SPACER), SetFill(false, true),
+					EndContainer(),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetFill(true, true),
 		EndContainer(),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetMinimalSize(203, 12), SetDataTip(STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetMinimalSize(204, 12), SetDataTip(STR_FINANCES_REPAY_BUTTON, STR_FINANCES_REPAY_TOOLTIP),
-	EndContainer(),
-};
-
-static const Widget _company_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},           // CFW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   380,     0,    13, STR_FINANCES_CAPTION,       STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // CFW_CAPTION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   381,   394,     0,    13, SPR_LARGE_SMALL_WINDOW,     STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW},      // CFW_TOGGLE_SIZE
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,     0,    13, 0x0,                        STR_TOOLTIP_STICKY},                  // CFW_STICKY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14,    14, 0x0,                        STR_NULL},                           // CFW_EXPS_PANEL
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,   122,    14,    14, 0x0,                        STR_NULL},                           // CFW_EXPS_CATEGORY
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   130,   215,    14,    14, 0x0,                        STR_NULL},                           // CFW_EXPS_PRICE1
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   225,   310,    14,    14, 0x0,                        STR_NULL},                           // CFW_EXPS_PRICE2
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   320,   405,    14,    14, 0x0,                        STR_NULL},                           // CFW_EXPS_PRICE3
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_PANEL
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     2,    96,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_LABELS
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,    97,   182,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_VALUES
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,   202,   406,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_MAXLOAN
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202,    48,    59, STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP},        // CFW_INCREASE_LOAN
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406,    48,    59, STR_FINANCES_REPAY_BUTTON,  STR_FINANCES_REPAY_TOOLTIP},         // CFW_REPAY_LOAN
-{   WIDGETS_END},
-};
-
-static const NWidgetPart _nested_company_finances_small_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CFW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetMinimalSize(243, 14), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetMinimalSize(14, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, CFW_STICKY),
-	EndContainer(),
-	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PANEL),
-	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY),
-	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1),
-	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE2),
-	NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE3),
-	NWidget(WWT_PANEL, COLOUR_GREY, CFW_TOTAL_PANEL),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_LABELS), SetMinimalSize(95, 34),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_VALUES), SetMinimalSize(86, 34),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CFW_TOTAL_MAXLOAN), SetMinimalSize(97, 0),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_BUTTONS),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetFill(true, false), SetDataTip(STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetFill(true, false), SetDataTip(STR_FINANCES_REPAY_BUTTON, STR_FINANCES_REPAY_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetMinimalSize(140, 12), SetDataTip(STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetMinimalSize(140, 12), SetDataTip(STR_FINANCES_REPAY_BUTTON, STR_FINANCES_REPAY_TOOLTIP),
-	EndContainer(),
 };
 
-static const Widget _company_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},           // CFW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   253,     0,    13, STR_FINANCES_CAPTION,       STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // CFW_CAPTION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW,     STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW},      // CFW_TOGGLE_SIZE
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   268,   279,     0,    13, 0x0,                        STR_TOOLTIP_STICKY},                  // CFW_STICKY
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                           // CFW_EXPS_PANEL
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                           // CFW_EXPS_CATEGORY
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                           // CFW_EXPS_PRICE1
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                           // CFW_EXPS_PRICE2
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                           // CFW_EXPS_PRICE3
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   279,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_PANEL
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     2,    96,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_LABELS
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,    97,   182,    14,    47, 0x0,                        STR_NULL},                           // CFW_TOTAL_VALUES
-{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                           // CFW_TOTAL_MAXLOAN
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   139,    48,    59, STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP},        // CFW_INCREASE_LOAN
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   140,   279,    48,    59, STR_FINANCES_REPAY_BUTTON,  STR_FINANCES_REPAY_TOOLTIP},         // CFW_REPAY_LOAN
-{   WIDGETS_END},
-};
-
+/** Window class displaying the company finances.
+ * @todo #money_width should be calculated dynamically.
+ */
 struct CompanyFinancesWindow : Window {
-	bool small;
+	bool small;       ///< Window is toggled to 'small'.
+	uint money_width; ///< Width needed for displaying all amounts.
 
-	CompanyFinancesWindow(const WindowDesc *desc, CompanyID company, bool show_small,
-					bool show_stickied, int top, int left) :
-			Window(desc, company),
-			small(show_small)
+	CompanyFinancesWindow(const WindowDesc *desc, CompanyID company) : Window()
 	{
+		this->small = false;
+		this->money_width = 86;
+		this->CreateNestedTree(desc);
+		this->SetupWidgets();
+		this->FinishInitNested(desc, company);
+
 		this->owner = (Owner)this->window_number;
+	}
 
-		if (show_stickied) this->flags4 |= WF_STICKY;
+	virtual void SetStringParameters(int widget) const
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+		switch (widget) {
+			case CFW_CAPTION:
+				SetDParam(0, c->index);
+				SetDParam(1, c->index);
+				break;
 
-		/* Check if repositioning from default is required */
-		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
-			this->top = top;
-			this->left = left;
+			case CFW_MAXLOAN_VALUE:
+				SetDParam(0, _economy.max_loan);
+				break;
+
+			case CFW_INCREASE_LOAN:
+			case CFW_REPAY_LOAN:
+				SetDParam(2, LOAN_INTERVAL);
+				break;
 		}
+	}
 
-		this->FindWindowPlacementAndResize(desc);
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		int type = _settings_client.gui.expenses_layout;
+		switch (widget) {
+			case CFW_EXPS_CATEGORY:
+				size->width  = _expenses_list_types[type].GetCategoriesWidth();
+				size->height = _expenses_list_types[type].GetHeight();
+				break;
+
+			case CFW_EXPS_PRICE1:
+			case CFW_EXPS_PRICE2:
+			case CFW_EXPS_PRICE3:
+				size->width  = this->money_width;
+				size->height = _expenses_list_types[type].GetHeight();
+				break;
+
+			case CFW_BALANCE_VALUE:
+			case CFW_LOAN_VALUE:
+			case CFW_TOTAL_VALUE:
+				size->width  = this->money_width + padding.width;
+				break;
+
+			case CFW_MAXLOAN_GAP:
+				size->height = FONT_HEIGHT_NORMAL;
+				break;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case CFW_EXPS_CATEGORY:
+				DrawCategories(r);
+				break;
+
+			case CFW_EXPS_PRICE1:
+			case CFW_EXPS_PRICE2:
+			case CFW_EXPS_PRICE3: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				int age = min(_cur_year - c->inaugurated_year, 2);
+				int wid_offset = widget - CFW_EXPS_PRICE1;
+				if (wid_offset <= age) {
+					DrawYearColumn(r, _cur_year - (age - wid_offset), c->yearly_expenses + (age - wid_offset));
+				}
+				break;
+			}
+
+			case CFW_BALANCE_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->money);
+				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
+				break;
+			}
+
+			case CFW_LOAN_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->current_loan);
+				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
+				break;
+			}
+
+			case CFW_TOTAL_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->money - c->current_loan);
+				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
+				break;
+			}
+
+			case CFW_LOAN_LINE:
+				GfxFillRect(r.left, r.top, r.right, r.top, 215);
+				break;
+		}
+	}
+
+	/** Setup the widgets in the nested tree, such that the finances window is displayed properly.
+	 * @note After setup, the window must be (re-)initialized.
+	 */
+	void SetupWidgets()
+	{
+		int plane = small ? STACKED_SELECTION_ZERO_SIZE : 0;
+		this->GetWidget<NWidgetStacked>(CFW_SEL_PANEL)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetStacked>(CFW_SEL_MAXLOAN)->SetDisplayedPlane(plane);
+
+		CompanyID company = (CompanyID)this->window_number;
+		plane = (company != _local_company) ? STACKED_SELECTION_ZERO_SIZE : 0;
+		this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->SetDisplayedPlane(plane);
 	}
 
 	virtual void OnPaint()
 	{
-		CompanyID company = (CompanyID)this->window_number;
-		const Company *c = Company::Get(company);
-
 		if (!small) {
+			/* Check that the expenses panel height matches the height needed for the layout. */
 			int type = _settings_client.gui.expenses_layout;
-			if (this->widget[CFW_EXPS_PANEL].bottom < this->widget[CFW_EXPS_PANEL].top) {
-				this->widget[CFW_EXPS_PANEL].bottom = this->widget[CFW_EXPS_PANEL].top;
-			}
-			uint height = this->widget[CFW_EXPS_PANEL].bottom - this->widget[CFW_EXPS_PANEL].top + 1;
-			if (_expenses_list_types[type].GetHeight() != height) {
-				this->SetDirty();
-				ResizeWindowForWidget(this, CFW_EXPS_PANEL, 0, _expenses_list_types[type].GetHeight() - height);
-				this->SetDirty();
+			if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetCore>(CFW_EXPS_CATEGORY)->current_y) {
+				this->SetupWidgets();
+				this->ReInit();
 				return;
 			}
 		}
 
-		/* Recheck the size of the window as it might need to be resized due to the local company changing */
-		int new_height = this->widget[(company == _local_company) ? CFW_INCREASE_LOAN : CFW_TOTAL_PANEL].bottom + 1;
-		if (this->height != new_height) {
-			/* Make window dirty before and after resizing */
-			this->SetDirty();
-			this->height = new_height;
-			this->SetDirty();
-
-			this->SetWidgetHiddenState(CFW_INCREASE_LOAN, company != _local_company);
-			this->SetWidgetHiddenState(CFW_REPAY_LOAN,    company != _local_company);
+		/* Check that the loan buttons are shown only when the user owns the company. */
+		CompanyID company = (CompanyID)this->window_number;
+		int req_plane = (company != _local_company) ? STACKED_SELECTION_ZERO_SIZE : 0;
+		if (req_plane != this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->shown_plane) {
+			this->SetupWidgets();
+			this->ReInit();
+			return;
 		}
 
-		/* Borrow button only shows when there is any more money to loan */
-		this->SetWidgetDisabledState(CFW_INCREASE_LOAN, c->current_loan == _economy.max_loan);
+		const Company *c = Company::Get(company);
+		this->SetWidgetDisabledState(CFW_INCREASE_LOAN, c->current_loan == _economy.max_loan); // Borrow button only shows when there is any more money to loan.
+		this->SetWidgetDisabledState(CFW_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
 
-		/* Repay button only shows when there is any more money to repay */
-		this->SetWidgetDisabledState(CFW_REPAY_LOAN, company != _local_company || c->current_loan == 0);
-
-		SetDParam(0, c->index);
-		SetDParam(1, c->index);
-		SetDParam(2, LOAN_INTERVAL);
 		this->DrawWidgets();
-
-		DrawCompanyEconomyStats(c, this->small, this->widget);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case CFW_TOGGLE_SIZE: {// toggle size
-				bool new_mode = !this->small;
-				bool stickied = !!(this->flags4 & WF_STICKY);
-				int oldtop = this->top;   ///< current top position of the window before closing it
-				int oldleft = this->left; ///< current left position of the window before closing it
-				CompanyID company = (CompanyID)this->window_number;
-
-				delete this;
-				/* Open up the (toggled size) Finance window at the same position as the previous */
-				DoShowCompanyFinances(company, new_mode, stickied, oldtop, oldleft);
-			}
-			break;
+			case CFW_TOGGLE_SIZE: // toggle size
+				this->small = !this->small;
+				this->SetupWidgets();
+				this->ReInit();
+				break;
 
 			case CFW_INCREASE_LOAN: // increase loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_INCREASE_LOAN | CMD_MSG(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY));
@@ -450,41 +458,22 @@ struct CompanyFinancesWindow : Window {
 };
 
 static const WindowDesc _company_finances_desc(
-	WDP_AUTO, WDP_AUTO, 407, 60, 407, 60,
+	WDP_AUTO, WDP_AUTO, 0, 0, 0, 0,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_company_finances_widgets, _nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
+	NULL, _nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
 );
 
-static const WindowDesc _company_finances_small_desc(
-	WDP_AUTO, WDP_AUTO, 280, 60, 280, 60,
-	WC_FINANCES, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_company_finances_small_widgets, _nested_company_finances_small_widgets, lengthof(_nested_company_finances_small_widgets)
-);
-
-/**
- * Open the small/large finance window of the company
- *
- * @param company        the company who's finances are requested to be seen
- * @param show_small     show large or small version opf the window
- * @param show_stickied  previous "stickyness" of the window
- * @param top            previous top position of the window
- * @param left           previous left position of the window
- *
- * @pre is company a valid company
+/** Open the finances window of a company.
+ * @param company Company to show finances of.
+ * @pre is company a valid company.
  */
-static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top, int left)
-{
-	if (!Company::IsValidID(company)) return;
-
-	if (BringWindowToFrontById(WC_FINANCES, company)) return;
-	new CompanyFinancesWindow(show_small ? &_company_finances_small_desc : &_company_finances_desc, company, show_small, show_stickied, top, left);
-}
-
 void ShowCompanyFinances(CompanyID company)
 {
-	DoShowCompanyFinances(company, false, false);
+	if (!Company::IsValidID(company)) return;
+	if (BringWindowToFrontById(WC_FINANCES, company)) return;
+
+	new CompanyFinancesWindow(&_company_finances_desc, company);
 }
 
 /* List of colours for the livery window */
