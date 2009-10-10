@@ -360,7 +360,16 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 				DeleteWindowById(WC_OSK, 0);
 			}
 
-			focused_widget_changed = w->SetFocusedWidget(widget_index);
+			/* focused_widget_changed is 'now' only true if the window this widget
+			 * is in gained focus. In that case it must remain true, also if the
+			 * local widget focus did not change. As such it's the logical-or of
+			 * both changed states.
+			 *
+			 * If this is not preserved, then the OSK window would be opened when
+			 * a user has the edit box focused and then click on another window and
+			 * then back again on the edit box (to type some text).
+			 */
+			focused_widget_changed |= w->SetFocusedWidget(widget_index);
 		}
 
 		if (widget_type & WWB_PUSHBUTTON) {
