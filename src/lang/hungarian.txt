@@ -333,10 +333,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Általá
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikonok
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}A cégek helyezése
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Gazdasági épület építése, meglévők listázása
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vonatok listája
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Közúti járművek listája
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajók listája
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Repülőgépek listája
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vonatok listája. Ctrl+Klikkel válszthatsz a csoport/jármű lista között.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Közúti járművek listája. Ctrl+Klikkel válszthatsz a csoport/jármű lista között.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajók listája. Ctrl+Klikkel válszthatsz a csoport/jármű lista között.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Repülőgépek listája. Ctrl+Klikkel válszthatsz a csoport/jármű lista között.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Közelítés
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Távolítás
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Vasúti pálya építése
@@ -592,9 +592,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pénz:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kölcsön:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összesen:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Járművek száma. Beleértendőek a közúti járművek, a vonatok, hajók és repülők.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak is.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A két évesnél idősebb járművek minimális profitja
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Az előző évben profitált járművek száma; ebbe beleértendőek a közúti, kötöttpályás, vizi és légi járművek.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban javított állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A legalacsonyabb profitot hozó jármű profitja (csak 2 évnél idősebb járművek)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Az utóbbi 12 negyedév legalacsonyabb havi profitja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Az utóbbi 12 negyedév legjövedelmezőbb havi profitja
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Utolsó négy negyedévben elszállított rakomány.
@@ -1346,7 +1346,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölth
 STR_INTRO_AI_SETTINGS                                           :{BLACK}MI beállítások
 STR_INTRO_QUIT                                                  :{BLACK}Kilépés
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új játék kezdése
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új játék kezdése. Ctrl+klikkel átugorhatod a térkép beállításokat
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Mentett játék betöltése
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Új játék kezdése saját pályán
@@ -1683,7 +1683,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigye
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(nincs)
+STR_NETWORK_CLIENTLIST_NONE                                     :---
 STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Pénz adományozása
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Üzenet mindenkinek
@@ -1713,6 +1713,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vállala
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Elküld
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Csapat] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privát] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Mindenkinek] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Csapat] {STRING}: {WHITE}{STRING}
@@ -1877,13 +1878,13 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev v
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Sín lerakása
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módón
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Járműtelep építése (vonatok vételére és karbantartására)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Vasúti remíz építése (vonatok vételére és karbantartására)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Vasútállomás építése
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése. Ctrl a szemafor/fénysorompó között vált{}Húzással a sínek mentén végig jelzők épülnek. A Ctrl a következő kereszteződésig épít jelzőket{}Ctrl+klikkel válthatod a jelző választás ablak megnyitását
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Vasúti híd építése
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Vasúti alagút építése
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Felszedés/lerakás közötti váltás vasúti pályánál és jelzőnél
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Váltás felszedés/lerakás között vasúti pályák, szemaforok, útocélok és állomások építésekor. A Ctrl nyomvatartásával az állomásokból és úticélokból is felbontható a sín.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Sínek átalakítása a kiválasztott típusra
 
 # Rail depot construction window
@@ -2062,7 +2063,7 @@ STR_FOUND_TOWN_CAPTION                                          :{WHITE}Városk�
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Új település
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Új település építése
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Egy véletlen település
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Egy település építése véletlenszerű helyre
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Település építése véletlenszerű helyre
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Sok véletlen település
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Véletlenszerüen elhelyez a térképen sok települést.
 
@@ -2768,10 +2769,10 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Új jár
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Új hajók
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Új repülőgépek
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Új vasúti jármű vásárlása
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Új közúti jármű vásárlása
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Új hajó vásárlása
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Új repülőgépek vásárlása
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Új vasúti jármű
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Új közúti jármű
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Új hajó
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Új repülőgépek
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Vonat másolása
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Jármű másolása
@@ -2779,8 +2780,8 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Hajó m�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Repülőgép másolása
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ide kattintva egy teljes vonat másolatát készítheted el. Kattints ide majd a másolandó vonatra. Ctrl+kattintás esetén a menetrendet is megoszthatod
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide kattintva elkészítheted egy közúti jármű másolatát. Kattints ide, majd a másolandó járműre. Ctrl+kattintás esetén a menetrendet is megosztod
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide kattintva egy vonat másolatát készítheted el. Kattints ide majd a másolandó vonatra. Ctrl+kattintás esetén a menetrendet is megoszthatod
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide kattintva elkészítheted egy közúti jármű másolatát. Kattints ide, majd a másolandó járműre. Ctrl+klikkel a menetrendet is megosztod
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide kattintva egy hajó másolatát készítheted el. Kattints ide majd a másolandó hajóra. Ctrl+klikkel a menetrendet is megoszthatod
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide kattintva egy repülőgép másolatát készítheted el. Kattints ide majd a másolandó repülőgépre. Ctrl+kattintás esetén a menetrendet is megoszthatod.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a járműtelepre állítja
@@ -2854,20 +2855,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az autom
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a vonatra állítja
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}A fő nézetet a járműre állítja
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}A fő nézetet a hajóra állítja
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}A fő nézetet a repülőgépre állítja
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Közelítés a jármű jelenlegi helyzetére. Ctrl+klikkel mozgás közben is követheted.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Közelítés a jármű jelenlegi helyzetére. Ctrl+klikkel mozgás közben is követheted.
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Közelítés a jármű jelenlegi helyzetére. Ctrl+klikkel mozgás közben is követheted.
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Közelítés a jármű jelenlegi helyzetére. Ctrl+klikkel mozgás közben is követheted.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A járműtelepre küldi a vonatot
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Garázsba küldi a járművet
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Dokkba küldi a hajót
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hangárba küldi a repülőgépet
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ide kattintva a teljes vonat másolatát készítheted el. Control+kattintás esetén a menetrendet is megosztod
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ide kattintva ezen jármű másolatát készítheted el. Control+kattintás esetén a menetrendet is megosztja
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ide kattintva egy hajó másolatát készítheted el. Control+kattintás esetén a menetrendet is megoszthatod
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ezzel a repülőgép másolatát készítheted el. Control+kattintás esetén a menetrendet is megoszthatod.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ide kattintva a teljes vonat másolatát készítheted el. Ctrl+klikkel a menetrendet is megosztod
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ide kattintva ezen jármű másolatát készítheted el. Ctrl+klikkel a menetrendet is megosztja
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ezzel egy hajó másolatát készítheted el. Ctrl+klikkel a menetrendet is megoszthatod
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ezzel a repülőgép másolatát készítheted el. Ctrl+klikkel a menetrendet is megoszthatod.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}A vonat rákényszerítése a továbbhaladást tiltó jelzés mellett való elhaladásra
 
@@ -2879,10 +2880,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}A repül
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}A vonat megfordítása
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Visszafordítja a járművet
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}A vonat menetrendjének megmutatása
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}A jármű menetrendjének megmutatása
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}A hajó menetrendjének megmutatása
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}A repülőgép menetrendjének megmutatása
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}A vonat utasításainak mutatása. Ctrl+klikk a menetrendet mutatja.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}A jármű utasításainak mutatása. Ctrl+klikk a menetrendet mutatja.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}A hajó utasításainak mutatása. Ctrl+klikk a menetrendet mutatja.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}A repülőgép utasításainak mutatása. Ctrl+klikk mutatja a menetrendjét.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}A vonat adatai
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}A közúti jármű adatai
@@ -2961,8 +2962,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Szállí
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Javítási időköz: {LTBLUE}{COMMA} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Szervíz-intervallum: {LTBLUE}{COMMA}%{BLACK}   Utolsó szervíz: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz növelése
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz csökkentése
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz növelése 10-el. A ctrl+klikk 5-el növeli.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz csökkentése 10-el. A ctrl+klikk 5-el csökkenti.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Vonat átnevezése
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Közúti jármű átnevezése
@@ -3087,7 +3088,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Új cél
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi depóba
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangár
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére. A ctrl+klikk állomásoknál 'Telerekodás'-t, úticéloknál 'Non-stop'-ot, garázsoknál 'Szervíz' parancsot ad a célponthoz.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Fejlett utasítás elhelyezése
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet

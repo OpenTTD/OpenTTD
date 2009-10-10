@@ -438,7 +438,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буду
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Змінити ландшафт
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Налаштувати звук/музику
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показати останнє повідомлення. Налаштування повідомлень
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку, консоль, дебаг AI, знімки екрану, про OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Зберегти сценарій, завантажити сценарій, вийти з редактору сценарію, вихід
@@ -471,7 +471,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Нова гра
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Опції прозорості
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Показ назви міст
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Показ назви станцій
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Показ точки маршруту
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Показ назв точок маршруту
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Показ позначення
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Повна анімація
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Повна деталізація
@@ -559,7 +559,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Дебаг AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Копія екрану (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Копія всієї карти (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Знімок всієї карти (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру 'OpenTTD'
 ############ range ends here
 
@@ -1437,12 +1437,12 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Пере
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Параметри AI
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клік пропускає конфігурацію карти
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Продовжити збережену гру
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Почати нову гру, використавши карту висот за ландшафт
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Почати нову гру, використовуючи сценарій
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Створити свій сценарій
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Почати багатокористувачеву гру
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Почати багатокористувацьку гру
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Вибрати 'помірний' клімат
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Вибрати 'субарктичний' клімат
@@ -1489,13 +1489,13 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гра�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Супер бульдозер (руйнує все): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелі перетинаються: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Будувати в режимі паузи: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Реактивні літаки сідають і в малих аеропортах: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Змінити клімат: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Реактивні літаки не будуть (часто) розбиватися в малих аеропортах: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Змінити клімат: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Помірний ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субарктичний ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтропічний ландшафт
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Іграшковий ландшафт
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Змінити дату: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Змінити дату: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
 
 # Livery window
@@ -1804,6 +1804,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Вста
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Відправити
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Личное] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {WHITE}{STRING}
@@ -2535,14 +2536,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Фінансу�
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купити єдине транспортне право
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Підкупити місцеву владу
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Провести малу рекламну компанію, щоб залучити більше пасажирів і вантажу до вашої компанії в цьому місті.{}  Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Провести середню рекламну компанію, щоб залучити більше пасажирів і вантажу до вашої компанії в цьому місті.{}  Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Провести велику рекламну компанію, щоб залучити більше пасажирів і вантажу до вашої компанії в цьому місті.{}  Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Реконструкція доріг призведе до значного погіршення руху на 6 місяців.{}  Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Збудувати монумент на честь вашої компанії.{} Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Фінансувати будівництво нових офісів у місті.{}  Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Купити єдине транспортне право у місті на 1 рік. Пасажири і вантажі у місті будуть перевозитись лише вашою компанією.{} Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Підкуп місцевої влади збільшить ваш рейтинг, але при викритті загрожує суворим покаранням.{}  Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Провести малу локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Провести середню локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Провести велику локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Фінансувати реконструкцію міських доріг. Призведе до значного погіршення руху на 6 місяців.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Збудувати монумент на честь вашої компанії.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Фінансувати будівництво нових офісів у місті.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Купити ексклюзивне транспортне право у місті на 1 рік. Міська влада дозволить використовувати лише станції вашої компанії.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Підкупити місцеву владу для збільшення вашого рейтингу, при викритті загрожує суворим покаранням.{}Вартість: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
@@ -3368,10 +3369,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Схил
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Неможливо зробити це...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Спочатку зруйнуйте споруду
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Неможливо очистити цю ділянку...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...невідповідне місце
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...вже побудовано
-STR_ERROR_OWNED_BY                                              :{WHITE}...власність {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...ця ділянка у власності іншої компанії
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... невідповідне місце
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... вже побудовано
+STR_ERROR_OWNED_BY                                              :{WHITE}... власність {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ділянка у власності іншої компанії
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Назва має бути унікальною
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} на шляху
 
@@ -3395,10 +3396,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... вж
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Неможливо змінити назву компанії...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Неможливо змінити ім'я керівника...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...найбільший дозволений розмір позики {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... найбільший дозволений розмір позики {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Неможливо взяти ще позику...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...позика вже повернута
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...потрібно {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... позика вже повернута
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... потрібно {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Неможливо повернути позику...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Неможливо передати гроші, позичені у банку...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Неможливо купити компанію...
@@ -3411,9 +3412,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ця к�
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не можна створити місто
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Неможливо перейменувати...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Тут не можна будувати місто...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...надто близько до краю карти
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...надто близько до іншого міста
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...забагато міст
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... надто близько до краю карти
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... надто близько до іншого міста
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... забагато міст
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...на карті немає вільного місця
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Місто не буде будувати дороги. ВИ можете дозволити будівництво доріг у вікні Розширені налаштування->Економіка->Міста.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Дорога ремонтується
@@ -3424,13 +3425,13 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Немо
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Неможливо будувати тут...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...дуже близько до іншої промисловості
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...спочатку збудуйте місто
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...дозволяється тільки 1 у місті
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...можливо будувати лише у містах з населенням не менш 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...можна будувати лише у джунглях
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...можна будувати лише у пустелі
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...можна будувати лише у містах
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...можливе розміщення лише біля краю карти
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...ліс може бути посаджений вище від рівня снігу
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... у місті може бути тільки один
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можна будувати лише у містах з населенням не менш 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можна будувати лише у джунглях
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можна будувати лише у пустелі
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будувати лише у містах
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можна розмістити лише біля країв карти
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... садити ліс можна тільки вище рівня снігу
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Неможливо будувати станцію тут...
@@ -3442,7 +3443,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Немо
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Неможливо будувати аеропорт тут...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Граничить з іншою станцією
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...станція занадто велика
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станція занадто велика
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...неоднорідні станції відключені
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Дуже багато станцій
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Забагато частин залізничної станції
@@ -3482,7 +3483,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Не м�
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Тут не можна прибрати точку маршруту..
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Спочатку приберіть точку залізничного маршруту
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...бакен на шляху
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... бакен на шляху
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...бакен використовується!
 
 # Depot related errors
@@ -3492,7 +3493,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тут �
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Неможливо будувати корабельне депо тут...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...авто повинно стояти в депо
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... повинно стояти в гаражі
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабль має стояти в доці
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Літак повинен стояти в ангарі
 
@@ -3518,7 +3519,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(бракує �
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Неможливе з'єднання колії
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Невідповідний тип колії
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спочатку приберіть колію
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом  або блокована
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом або блокована
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Неможливо будувати сигнали тут...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Неможливо будувати колію тут...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Неможливо прибрати колію звідси...
@@ -3539,13 +3540,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не м�
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Неможливо будувати канал тут...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Неможливо будувати шлюз тут...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Тут не можна зробити річку...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...має бути збудовано на воді
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Неможливо будувати на воді
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... має бути збудовано на воді
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... неможливо будувати на воді
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спочатку потрібно прибрати канал
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут не можна побудувати акведук...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...Тут вже росте дерево
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... тут вже росте дерево
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Неможливо посадити тут дерево
 
 # Bridge related errors
@@ -3555,7 +3556,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Поча
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Кінці мостів на різних рівнях
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Міст дуже низький для цього місця
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Початок та кінець мають бути на одній лінії
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...кінці мосту мають бути на землі
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Неможливо збудувати тунель...
@@ -3567,9 +3568,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немо
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Об'єкт на шляху
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...на шляху Головний офіс
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... на шляху Головний офіс
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Неможливо купити цю ділянку ...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...це вже ваша власність!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... це вже ваша власність!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не можна створити групу...
@@ -3649,13 +3650,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Немо
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Не можна перемістити цей наказ...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не можна пропустити цей наказ...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не можна перейти до цього наказу...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}Транспорт не може йти на всі станції
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}Транспорт не може йти на цю станцію
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}Транспорт зі спільного розкладу не може йти на цю станцію
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... транспорт не може йти на всі станції
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... транспорт не може йти на цю станцію
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... транспорт, що має спільний з цим розклад, не може йти на цю станцію
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Неможливо розділити список завдань...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Неможливо скопіювати список завдань...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...дуже далеко від попереднього пункту призначення
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... дуже далеко від попереднього пункту призначення
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не можна встановити розклад для транспорту...
@@ -3663,7 +3664,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Тран
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Цей транспорт не зупиняється на цій станції.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...дуже багато позначень
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... дуже багато позначень
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Неможливо позначити місце
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Неможливо перейменувати місце...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не можна видалити позначку...
