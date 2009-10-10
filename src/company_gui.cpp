@@ -191,13 +191,13 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 			subtotal = 0;
 			GfxFillRect(r.left, y, r.right, y, 215);
 			y += EXP_LINESPACE;
-			DrawPrice(cost, r.left, r.right, y + EXP_LINESPACE);
+			DrawPrice(cost, r.left, r.right, y);
 			y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
 		} else {
 			Money cost = (*tbl)[et];
 			subtotal += cost;
 			sum += cost;
-			if (cost != 0) DrawPrice(cost, r.left, r.right, y + EXP_LINESPACE);
+			if (cost != 0) DrawPrice(cost, r.left, r.right, y);
 			y += FONT_HEIGHT_NORMAL;
 		}
 	}
