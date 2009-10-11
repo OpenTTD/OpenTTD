@@ -234,18 +234,6 @@ struct DepotWindow : Window {
 		this->window_number = tile;
 		this->SetupWidgetData(type);
 
-		/* Setup disabled buttons. */
-		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
-			DEPOT_WIDGET_STOP_ALL,
-			DEPOT_WIDGET_START_ALL,
-			DEPOT_WIDGET_SELL,
-			DEPOT_WIDGET_SELL_CHAIN,
-			DEPOT_WIDGET_SELL_ALL,
-			DEPOT_WIDGET_BUILD,
-			DEPOT_WIDGET_CLONE,
-			DEPOT_WIDGET_AUTOREPLACE,
-			WIDGET_LIST_END);
-
 		this->FinishInitNested(desc, tile);
 		this->owner = GetTileOwner(tile);
 		this->CreateDepotListWindow(type);
@@ -671,6 +659,19 @@ struct DepotWindow : Window {
 		} else {
 			this->vscroll.SetCount((this->vehicle_list.Length() + this->hscroll.GetCapacity() - 1) / this->hscroll.GetCapacity());
 		}
+
+		/* Setup disabled buttons. */
+		TileIndex tile = this->window_number;
+		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
+			DEPOT_WIDGET_STOP_ALL,
+			DEPOT_WIDGET_START_ALL,
+			DEPOT_WIDGET_SELL,
+			DEPOT_WIDGET_SELL_CHAIN,
+			DEPOT_WIDGET_SELL_ALL,
+			DEPOT_WIDGET_BUILD,
+			DEPOT_WIDGET_CLONE,
+			DEPOT_WIDGET_AUTOREPLACE,
+			WIDGET_LIST_END);
 
 		this->DrawWidgets();
 	}
