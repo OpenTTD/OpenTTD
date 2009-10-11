@@ -1133,19 +1133,21 @@ static bool AircraftController(Aircraft *v)
 				continue;
 			}
 
-			uint curz = GetSlopeZ(x, y) + 1;
+			uint curz = GetSlopeZ(x + amd->x, y + amd->y) + 1;
 
-			if (curz > z) {
-				z++;
-			} else {
-				int t = max(1U, dist - 4);
+			/* We're not flying below our destination, right? */
+			assert(curz <= z);
+			int t = max(1U, dist - 4);
+			int delta = z - curz;
 
+			/* Only start lowering when we're sufficiently close for a 1:1 glide */
+			if (delta >= t) {
 				z -= ((z - curz) + t - 1) / t;
-				if (z < curz) z = curz;
 			}
+			if (z < curz) z = curz;
 		}
 
-		/* We've landed. Decrase speed when we're reaching end of runway. */
+		/* We've landed. Decrease speed when we're reaching end of runway. */
 		if (amd->flag & AMED_BRAKE) {
 			uint curz = GetSlopeZ(x, y) + 1;
 
