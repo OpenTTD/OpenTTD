@@ -2492,11 +2492,11 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Spese/ri
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Costruzioni
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuovi veicoli
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Esercizio treni
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Costi d'esercizio treni
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Costi d'esercizio automezzi
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Costi d'esercizio aeromobili
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Costi d'esercizio navi
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manut. proprietà
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manutenzione proprietà
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ricavi treni
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ricavi automezzi
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ricavi aeromobili

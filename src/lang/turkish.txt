@@ -1680,6 +1680,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Şirket 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Gönder
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Takım] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Özel] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Herkes] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Takım] {STRING}: {WHITE}{STRING}
@@ -4009,6 +4010,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

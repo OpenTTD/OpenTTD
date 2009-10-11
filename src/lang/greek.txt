@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
+STR_LIST_FILTER_TITLE                                           :{BLACK}Φίλτρο:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Επιλογή σειράς ταξινόμησης (καθοδικά/ανοδικά)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Επιλογή κριτηρίου ταξινόμησης
@@ -1344,6 +1345,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1677,6 +1679,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέστ
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Στείλε
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ομάδα] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Προσωπικό] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Σε όλους] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Ομάδα] {STRING}: {WHITE}{STRING}
@@ -1868,6 +1871,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Επιλ
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Έλξη & πτώση
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιόντας έλξη & πτώση
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Επιλογή για εμφάνιση μιας κλάσης σταθμών
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Επέλεξε τον τύπο του σταθμού προς χτίσιμο
 
 STR_STATION_CLASS_DFLT                                          :Εξ ορισμού σταθμός
@@ -2014,6 +2018,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Τυχα
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Χτίσιμο πόλης σε τυχαία τοποθεσία
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Πολλές τυχαίες πόλεις
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Κάλυψη του χάρτη με τυχαία τοποθετημένες πόλεις
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Όνομα πόλης:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Εισάγετε το όνομα της πόλης
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Κλικ για να δώσετε το όνομα της πόλης
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Τυχαίο όνομα
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Δημιουργία ενός τυχαίου ονόματος
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Μέγεθος πόλης:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Μικρό
@@ -2200,6 +2210,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ελεύ
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Τυχαία
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειροκινήτος
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
@@ -2293,9 +2304,12 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχε�
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνεται αλλαγές σε ενα παιχνίδι σε εξέλιξη, αυτο μπορεί να κρασάρει το OpenTTD.{} Είστε απολύτα σίγουρος/η για αυτό;
 
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθηκη του αρχείου: διπλότυπο GRF ID
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Φόρτωση συμβατών GRF(s) για χαμένα αρχεία.
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ανύπαρκτο/α αρχείο/α GRF έχουν απενεργοποιηθεί
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ανύπαρκτο/α αρχείο/α GRF
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Συνέχιση λειτουργίας μπόρει να κρασάρει το OpenTTD. Μην δώσετε αναφορές σφαλμάτων για συνεχόμενα κρασαρίσματα.{}Θέλετε πραγματικά να συνεχίσετε την λειτουργία;
 
 # NewGRF 'it's broken' warnings
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρένο'{VEHICLE}' που ανήκει στην '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το Παιχνίδι μπορεί ν΄αποσυγχρονιστεί ή να κρασάρει.
@@ -3769,6 +3783,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
