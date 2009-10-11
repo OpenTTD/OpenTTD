@@ -99,9 +99,7 @@ void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
  * Window for the autoreplacing of vehicles.
  */
 class ReplaceVehicleWindow : public Window {
-	byte sel_index[2];
 	EngineID sel_engine[2];
-	uint16 count[2];
 	bool wagon_btnstate; ///< true means engine is selected
 	GUIEngineList list[2];
 	bool update_left;
@@ -132,10 +130,9 @@ class ReplaceVehicleWindow : public Window {
 
 
 	/** Generate a list
-	 * @param w Window, that contains the list
 	 * @param draw_left true if generating the left list, otherwise false
 	 */
-	void GenerateReplaceVehList(Window *w, bool draw_left)
+	void GenerateReplaceVehList(bool draw_left)
 	{
 		EngineID selected_engine = INVALID_ENGINE;
 		VehicleType type = (VehicleType)this->window_number;
@@ -173,7 +170,7 @@ class ReplaceVehicleWindow : public Window {
 
 		if (this->update_left == true) {
 			/* We need to rebuild the left list */
-			GenerateReplaceVehList(this, true);
+			GenerateReplaceVehList(true);
 			this->vscroll.SetCount(this->list[0].Length());
 			if (this->init_lists && this->sel_engine[0] == INVALID_ENGINE && this->list[0].Length() != 0) {
 				this->sel_engine[0] = this->list[0][0];
@@ -187,7 +184,7 @@ class ReplaceVehicleWindow : public Window {
 				this->list[1].Clear();
 				this->sel_engine[1] = INVALID_ENGINE;
 			} else {
-				GenerateReplaceVehList(this, false);
+				GenerateReplaceVehList(false);
 				this->vscroll2.SetCount(this->list[1].Length());
 				if (this->init_lists && this->sel_engine[1] == INVALID_ENGINE && this->list[1].Length() != 0) {
 					this->sel_engine[1] = this->list[1][0];
@@ -245,28 +242,24 @@ public:
 		if (this->update_left || this->update_right) this->GenerateLists();
 
 		Company *c = Company::Get(_local_company);
-		EngineID selected_id[2];
 		const GroupID selected_group = this->sel_group;
-
-		selected_id[0] = this->sel_engine[0];
-		selected_id[1] = this->sel_engine[1];
 
 		/* Disable the "Start Replacing" button if:
 		 *    Either list is empty
 		 * or The selected replacement engine has a replacement (to prevent loops)
 		 * or The right list (new replacement) has the existing replacement vehicle selected */
 		this->SetWidgetDisabledState(RVW_WIDGET_START_REPLACE,
-										selected_id[0] == INVALID_ENGINE ||
-										selected_id[1] == INVALID_ENGINE ||
-										EngineReplacementForCompany(c, selected_id[1], selected_group) != INVALID_ENGINE ||
-										EngineReplacementForCompany(c, selected_id[0], selected_group) == selected_id[1]);
+										this->sel_engine[0] == INVALID_ENGINE ||
+										this->sel_engine[1] == INVALID_ENGINE ||
+										EngineReplacementForCompany(c, this->sel_engine[1], selected_group) != INVALID_ENGINE ||
+										EngineReplacementForCompany(c, this->sel_engine[0], selected_group) == this->sel_engine[1]);
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left list (existing vehicle) is empty
 		 *   or The selected vehicle has no replacement set up */
 		this->SetWidgetDisabledState(RVW_WIDGET_STOP_REPLACE,
-										selected_id[0] == INVALID_ENGINE ||
-										!EngineHasReplacementForCompany(c, selected_id[0], selected_group));
+										this->sel_engine[0] == INVALID_ENGINE ||
+										!EngineHasReplacementForCompany(c, this->sel_engine[0], selected_group));
 
 		/* now the actual drawing of the window itself takes place */
 		SetDParam(0, STR_REPLACE_VEHICLE_TRAIN + this->window_number);
@@ -292,12 +285,12 @@ public:
 		this->DrawWidgets();
 
 		/* sets up the string for the vehicle that is being replaced to */
-		if (selected_id[0] != INVALID_ENGINE) {
-			if (!EngineHasReplacementForCompany(c, selected_id[0], selected_group)) {
+		if (this->sel_engine[0] != INVALID_ENGINE) {
+			if (!EngineHasReplacementForCompany(c, this->sel_engine[0], selected_group)) {
 				SetDParam(0, STR_REPLACE_NOT_REPLACING);
 			} else {
 				SetDParam(0, STR_ENGINE_NAME);
-				SetDParam(1, EngineReplacementForCompany(c, selected_id[0], selected_group));
+				SetDParam(1, EngineReplacementForCompany(c, this->sel_engine[0], selected_group));
 			}
 		} else {
 			SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
