@@ -99,14 +99,14 @@ void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
  * Window for the autoreplacing of vehicles.
  */
 class ReplaceVehicleWindow : public Window {
-	EngineID sel_engine[2];
-	bool wagon_btnstate; ///< true means engine is selected
-	GUIEngineList list[2];
-	bool update_left;
-	bool update_right;
-	bool init_lists;
-	GroupID sel_group;
-	static RailType sel_railtype;
+	EngineID sel_engine[2];       ///< Selected engine left and right.
+	GUIEngineList list[2];        ///< Left and right list of engines.
+	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
+	bool update_left;             ///< Rebuild left list.
+	bool update_right;            ///< Rebuild right list.
+	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right (#update_left and/or #update_right) and no valid engine selected.
+	GroupID sel_group;            ///< Group selected to replace.
+	static RailType sel_railtype; ///< Type of rail tracks selected.
 
 	/** Figure out if an engine should be added to a list.
 	 * @param e            The EngineID.
@@ -144,7 +144,7 @@ class ReplaceVehicleWindow : public Window {
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, type) {
 			EngineID eid = e->index;
-			if (type == VEH_TRAIN && !GenerateReplaceRailList(eid, draw_left, this->wagon_btnstate)) continue; // special rules for trains
+			if (type == VEH_TRAIN && !GenerateReplaceRailList(eid, draw_left, this->replace_engines)) continue; // special rules for trains
 
 			if (draw_left) {
 				const GroupID selected_group = this->sel_group;
@@ -172,7 +172,7 @@ class ReplaceVehicleWindow : public Window {
 			/* We need to rebuild the left list */
 			GenerateReplaceVehList(true);
 			this->vscroll.SetCount(this->list[0].Length());
-			if (this->init_lists && this->sel_engine[0] == INVALID_ENGINE && this->list[0].Length() != 0) {
+			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->list[0].Length() != 0) {
 				this->sel_engine[0] = this->list[0][0];
 			}
 		}
@@ -186,24 +186,24 @@ class ReplaceVehicleWindow : public Window {
 			} else {
 				GenerateReplaceVehList(false);
 				this->vscroll2.SetCount(this->list[1].Length());
-				if (this->init_lists && this->sel_engine[1] == INVALID_ENGINE && this->list[1].Length() != 0) {
+				if (this->reset_sel_engine && this->sel_engine[1] == INVALID_ENGINE && this->list[1].Length() != 0) {
 					this->sel_engine[1] = this->list[1][0];
 				}
 			}
 		}
 		/* Reset the flags about needed updates */
-		this->update_left  = false;
-		this->update_right = false;
-		this->init_lists   = false;
+		this->update_left      = false;
+		this->update_right     = false;
+		this->reset_sel_engine = false;
 	}
 
 public:
 	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window(desc, vehicletype)
 	{
-		this->wagon_btnstate = true; // start with locomotives (all other vehicles will not read this bool)
-		this->update_left   = true;
-		this->update_right  = true;
-		this->init_lists    = true;
+		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
+		this->update_left      = true;
+		this->update_right     = true;
+		this->reset_sel_engine = true;
 		this->sel_engine[0] = INVALID_ENGINE;
 		this->sel_engine[1] = INVALID_ENGINE;
 
@@ -269,7 +269,7 @@ public:
 			SetDParam(1, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 
 			/* set wagon/engine button */
-			SetDParam(2, this->wagon_btnstate ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
+			SetDParam(2, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 
 			/* sets the colour of that art thing */
 			this->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].colour  = _company_colours[_local_company];
@@ -326,9 +326,9 @@ public:
 	{
 		switch (widget) {
 			case RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE:
-				this->wagon_btnstate = !(this->wagon_btnstate);
-				this->update_left = true;
-				this->init_lists  = true;
+				this->replace_engines  = !(this->replace_engines);
+				this->update_left      = true;
+				this->reset_sel_engine = true;
 				this->SetDirty();
 				break;
 
@@ -376,8 +376,8 @@ public:
 					if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
 					this->sel_engine[click_side] = e;
 					if (click_side == 0) {
-						this->update_right = true;
-						this->init_lists   = true;
+						this->update_right     = true;
+						this->reset_sel_engine = true;
 					}
 					this->SetDirty();
 					}
@@ -395,9 +395,9 @@ public:
 		this->vscroll.SetPosition(0);
 		this->vscroll2.SetPosition(0);
 		/* Rebuild the lists */
-		this->update_left  = true;
-		this->update_right = true;
-		this->init_lists   = true;
+		this->update_left      = true;
+		this->update_right     = true;
+		this->reset_sel_engine = true;
 		this->SetDirty();
 	}
 
