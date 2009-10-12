@@ -21,69 +21,361 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(definitu gabeko karakterea)
+STR_JUST_NOTHING                                                :Ezer ez
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Bidaiariak
+STR_CARGO_PLURAL_COAL                                           :Ikatza
+STR_CARGO_PLURAL_MAIL                                           :Posta
+STR_CARGO_PLURAL_OIL                                            :Petroleoa
+STR_CARGO_PLURAL_LIVESTOCK                                      :Behi buruak
+STR_CARGO_PLURAL_GOODS                                          :Merkantzia kaxak
+STR_CARGO_PLURAL_GRAIN                                          :Garaua
+STR_CARGO_PLURAL_WOOD                                           :Egurra
+STR_CARGO_PLURAL_IRON_ORE                                       :Burdin Mea
+STR_CARGO_PLURAL_STEEL                                          :Altzairua
+STR_CARGO_PLURAL_VALUABLES                                      :Baliozko Objektuak
+STR_CARGO_PLURAL_COPPER_ORE                                     :Kobre Mea
+STR_CARGO_PLURAL_MAIZE                                          :Artoa
+STR_CARGO_PLURAL_FRUIT                                          :Fruta
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamanteak
+STR_CARGO_PLURAL_FOOD                                           :Janaria
+STR_CARGO_PLURAL_PAPER                                          :Papera
+STR_CARGO_PLURAL_GOLD                                           :Urrea
+STR_CARGO_PLURAL_WATER                                          :Ura
+STR_CARGO_PLURAL_WHEAT                                          :Garia
+STR_CARGO_PLURAL_RUBBER                                         :Goma
+STR_CARGO_PLURAL_SUGAR                                          :Azukrea
+STR_CARGO_PLURAL_TOYS                                           :Jostailuak
+STR_CARGO_PLURAL_CANDY                                          :Gozokiak
+STR_CARGO_PLURAL_COLA                                           :Kola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Piruleta
+STR_CARGO_PLURAL_BUBBLES                                        :Burbuilak
+STR_CARGO_PLURAL_TOFFEE                                         :Toffeea
+STR_CARGO_PLURAL_BATTERIES                                      :Pilak
+STR_CARGO_PLURAL_PLASTIC                                        :Plastikoa
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Edari Burbuilatsuak
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :Bidaiariak
+STR_CARGO_SINGULAR_COAL                                         :Ikatza
+STR_CARGO_SINGULAR_MAIL                                         :Posta
+STR_CARGO_SINGULAR_OIL                                          :Petroleoa
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Behi Burua
+STR_CARGO_SINGULAR_GOODS                                        :Merkantzia kaxa
+STR_CARGO_SINGULAR_GRAIN                                        :Garaua
+STR_CARGO_SINGULAR_WOOD                                         :Egurra
+STR_CARGO_SINGULAR_IRON_ORE                                     :Burdin Mea
+STR_CARGO_SINGULAR_STEEL                                        :Altzairua
+STR_CARGO_SINGULAR_VALUABLES                                    :Baliozko Objektua
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Kobre Mea
+STR_CARGO_SINGULAR_MAIZE                                        :Garia
+STR_CARGO_SINGULAR_FRUIT                                        :Fruta
+STR_CARGO_SINGULAR_DIAMOND                                      :Diamantea
+STR_CARGO_SINGULAR_FOOD                                         :Janaria
+STR_CARGO_SINGULAR_PAPER                                        :Papera
+STR_CARGO_SINGULAR_GOLD                                         :Urrea
+STR_CARGO_SINGULAR_WATER                                        :Ura
+STR_CARGO_SINGULAR_WHEAT                                        :Garia
+STR_CARGO_SINGULAR_RUBBER                                       :Goma
+STR_CARGO_SINGULAR_SUGAR                                        :Azukre
+STR_CARGO_SINGULAR_TOY                                          :Jostailu
+STR_CARGO_SINGULAR_CANDY                                        :Gozoki
+STR_CARGO_SINGULAR_COLA                                         :Kola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Piruleta
+STR_CARGO_SINGULAR_BUBBLE                                       :Burbuila
+STR_CARGO_SINGULAR_TOFFEE                                       :Toffeea
+STR_CARGO_SINGULAR_BATTERY                                      :Pila
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastikoa
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Edari Burbuilatsua
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} bidaiari{P "" ak}
+STR_QUANTITY_COAL                                               :{WEIGHT} ikatzarena
+STR_QUANTITY_MAIL                                               :{COMMA} poltsa{P "" s} postarena
+STR_QUANTITY_OIL                                                :{VOLUME} olioarena
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}elementua{P "" s} Behi buruena
+STR_QUANTITY_GOODS                                              :{COMMA}kaxa{P "" s}merkantziena
+STR_QUANTITY_GRAIN                                              :{WEIGHT} garauarena
+STR_QUANTITY_WOOD                                               :{WEIGHT} egurrarena
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} burdin mearena
+STR_QUANTITY_STEEL                                              :{WEIGHT} altzairuena
+STR_QUANTITY_VALUABLES                                          :{COMMA}zaku{P "" s}baliozko objektuena
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kobre mearena
+STR_QUANTITY_MAIZE                                              :{WEIGHT} artoarena
+STR_QUANTITY_FRUIT                                              :{WEIGHT} frutarena
+STR_QUANTITY_DIAMONDS                                           :{COMMA} zaku{P "" s} diamanteena
+STR_QUANTITY_FOOD                                               :{WEIGHT} janariarena
+STR_QUANTITY_PAPER                                              :{WEIGHT} paperarena
+STR_QUANTITY_GOLD                                               :{COMMA} zaku{P "" s} urrearena
+STR_QUANTITY_WATER                                              :{VOLUME} urarena
+STR_QUANTITY_WHEAT                                              :{WEIGHT} gariarena
+STR_QUANTITY_RUBBER                                             :{VOLUME} gomarena
+STR_QUANTITY_SUGAR                                              :{WEIGHT} azukrearena
+STR_QUANTITY_TOYS                                               :{COMMA} jostailuena{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} zaku{P "" s} gozokiena
+STR_QUANTITY_COLA                                               :{VOLUME} kolarena
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} piruletena
+STR_QUANTITY_BUBBLES                                            :{COMMA} burbuilena{P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffeearena
+STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P y k}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastikoarena
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} edari burbuilatsua {P "" k}
+STR_QUANTITY_N_A                                                :N/A{SKIP}
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}BD
+STR_ABBREV_COAL                                                 :{TINYFONT}ITZ
+STR_ABBREV_MAIL                                                 :{TINYFONT}PT
+STR_ABBREV_OIL                                                  :{TINYFONT}PR
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BB
+STR_ABBREV_GOODS                                                :{TINYFONT}MT
+STR_ABBREV_GRAIN                                                :{TINYFONT}GA
+STR_ABBREV_WOOD                                                 :{TINYFONT}EG
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}MA
+STR_ABBREV_STEEL                                                :{TINYFONT}AT
+STR_ABBREV_VALUABLES                                            :{TINYFONT}BO
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
+STR_ABBREV_MAIZE                                                :{TINYFONT}AR
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}JN
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}UE
+STR_ABBREV_WATER                                                :{TINYFONT}UR
+STR_ABBREV_WHEAT                                                :{TINYFONT}GI
+STR_ABBREV_RUBBER                                               :{TINYFONT}GM
+STR_ABBREV_SUGAR                                                :{TINYFONT}AZ
+STR_ABBREV_TOYS                                                 :{TINYFONT}JS
+STR_ABBREV_SWEETS                                               :{TINYFONT}GZ
+STR_ABBREV_COLA                                                 :{TINYFONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}PL
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BR
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}PI
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}EB
+STR_ABBREV_NONE                                                 :{TINYFONT}EZ
+STR_ABBREV_ALL                                                  :{TINYFONT}DEN
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :bidaiariak
+STR_BAGS                                                        :zakuak
+STR_TONS                                                        :tonak
+STR_LITERS                                                      :litroak
+STR_ITEMS                                                       :elementuak
+STR_CRATES                                                      :kaxak
+STR_RES_OTHER                                                   :besteak
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :Urdin Iluna
+STR_COLOUR_PALE_GREEN                                           :Berde Zurbila
+STR_COLOUR_PINK                                                 :Larrosa
+STR_COLOUR_YELLOW                                               :Horia
+STR_COLOUR_RED                                                  :Gorria
+STR_COLOUR_LIGHT_BLUE                                           :Urdin Argia
+STR_COLOUR_GREEN                                                :Berdea
+STR_COLOUR_DARK_GREEN                                           :Berde Iluna
+STR_COLOUR_BLUE                                                 :Urdina
+STR_COLOUR_CREAM                                                :Krema
+STR_COLOUR_MAUVE                                                :Malba
+STR_COLOUR_PURPLE                                               :Morea
+STR_COLOUR_ORANGE                                               :Laranja
+STR_COLOUR_BROWN                                                :Marroia
+STR_COLOUR_GREY                                                 :Grisa
+STR_COLOUR_WHITE                                                :Zuria
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona{P "" k}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" }
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sartu hitz bat iragazkian zerrendan aurkitzeko
+STR_LIST_FILTER_TITLE                                           :{BLACK}Iragazle lokarria:
 
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Hautatu agertze ordena (deszendientea/aszendientea)
+STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Hautatu agertze kriterioa
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Hautatu iragazle kriterioa
+STR_BUTTON_SORT_BY                                              :{BLACK}Agertu
+STR_BUTTON_LOCATION                                             :{BLACK}Kokapena
+STR_BUTTON_RENAME                                               :{BLACK}Berrizendatu
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Itxi leihoa
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Leiho izena - Arrastatu hau leihoa mugitzeko
+STR_TOOLTIP_STICKY                                              :{BLACK}Markatu leiho hau itxiezina bezala 'Zarratu Leiho Guztiak' gakoarekin
+STR_TOOLTIP_RESIZE                                              :{BLACK}Click eta arrastatu leiho honi tamaina aldatzeko
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Ukondotu handi/txiki leiho tamaina
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu barra - korrituz zerrenda gora/behera
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu Barra - korrituz zerrenda ezkerra/eskuma
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikinak etab desegin lurreko karratu batean
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}Lehenetsia
+STR_BUTTON_CANCEL                                               :{BLACK}Ezeztatu
+STR_BUTTON_OK                                                   :{BLACK}Baieztatu
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :º1234567890'¡qwertyuiop`+[]asdfghjklñ´ç  <zxcvbnm,.-
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ª!"·$%&/()=?¿QWERTYUIOP^*ASDFGHJKLÑ¨Ç  >ZXCVBNM;:_
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Luzera: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Luzera: {NUM}{}Goratasun diferentzia: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Goratasun diferentzia: {NUM} m
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Biztanleria
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Izena
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Biztanleria
+STR_SORT_BY_NAME                                                :Izena
+STR_SORT_BY_PRODUCTION                                          :Produkzioa
+STR_SORT_BY_TYPE                                                :Mota
+STR_SORT_BY_TRANSPORTED                                         :Garraiatua
+STR_SORT_BY_NUMBER                                              :Numeroa
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Onura azken urtean
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Onura urte honetan
+STR_SORT_BY_AGE                                                 :Adina
+STR_SORT_BY_RELIABILITY                                         :Fidakortasuna
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Erabateko edukiera karga era bakoitzeko
+STR_SORT_BY_MAX_SPEED                                           :Gehienezko abiadura
+STR_SORT_BY_MODEL                                               :Modeloa
+STR_SORT_BY_VALUE                                               :Balioa
+STR_SORT_BY_LENGTH                                              :Luzera
+STR_SORT_BY_LIFE_TIME                                           :Geratzen zaion bizitza denbora
+STR_SORT_BY_TIMETABLE_DELAY                                     :denbora zutabeko atzerapenaz
+STR_SORT_BY_FACILITY                                            :Geltoki mota
+STR_SORT_BY_WAITING                                             :Karga balioa itxaroten
+STR_SORT_BY_RATING_MAX                                          :Karga balorazio handiena
+STR_SORT_BY_RATING_MIN                                          :Karga balorazio txikiena
+STR_SORT_BY_ENGINE_ID                                           :MotoreID (ordenatze klasikoa)
+STR_SORT_BY_COST                                                :Kostua
+STR_SORT_BY_POWER                                               :Potentzia
+STR_SORT_BY_INTRO_DATE                                          :Introdukzio Data
+STR_SORT_BY_RUNNING_COST                                        :Operazio Kostak
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Operazio Kostak
+STR_SORT_BY_CARGO_CAPACITY                                      :Karga Edukiera
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Jokoa bizkor aurreratu
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Aukerak
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Jokoa gorde, Jokoa utzi, Irten
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Erakutsi mapa, ikusbegi extra edo kartelen zerrenda
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Erakutsi herri direktorioa
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidioak erakutsi
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Erakutsi konpainien geltokien zerrenda
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Erakutsi konpaniaren finantza informazioa
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Erakutsi konpaniaren informazio generala
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikoak erakutsi
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Erakutsi konpaniaren elkarte zerrenda
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Eraiki industria berria edo industri guztien zerrenda erakutsi
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}erakutsi konpaniako trenen zerrenda. Ctrl+Click taldea zabaltzea/garraioen zerrenda agertzea uzten du
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Erakusti konpaniako errepideko garraioen zerrenda. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Erakutsi konpaniako itsasontzien zerrenda. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Erakutsi konpaniako hegazkinen zerrenda. Ctrl+Click taldearen/garraioaren zerrenda zabaltzen uzten du
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ikuspegia handitu
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Ikuspegia txikitu
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Trenbideak eraiki
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bideak eraiki
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Itsasontzi kaiak eraiki
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Aireportuak eraiki
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zabaldu paisaiko tresna-barra lurra igotzeko/beheratzeko, zuhaitzak landatu, etab.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Erakutsi soinu/musika leihoa
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Erakutsi azken mezu/albiste erreportaia, erakutsi mezu aukerak
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lur arearen informazioa, konsola, IA debug, screenshots, OpenTTDri buruz
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Eszenarioa gorde, eszenarioa kargatu, eszenarioaren editorea itxi, irten
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Eszenario Editorea
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mugitu hasierako data urte 1 atzerago
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Mugitu hasierako data urte 1 aurrerago
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Erakutsi mapa, herri direktorioa
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Paisaiaren sorkuntza
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Herrien sorkuntza
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrien sorkuntza
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Errepideen eraikuntza
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Zuhaitzak landatu
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Kartela jarri
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Eszenarioa gorde
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Eszenarioa kargatu
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Garaiera-mapa kargatu
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editoretik irten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarpenak
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia aukerak
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Herri izen erakutsiak
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Geltoki izen erakutsiak
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ibilbide izen erakutsiak
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Erakutsitako kartelak
+STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animazio betea
+STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Xehetasun betea
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Eraikin transparenteak
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Geltoki kartel transparenteak
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :Jokoa gorde
+STR_FILE_MENU_LOAD_GAME                                         :Jokoa kargatu
+STR_FILE_MENU_QUIT_GAME                                         :Jokoa utzi
+STR_FILE_MENU_EXIT                                              :Windowsera irten
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Munduko mapa
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Bista extra
+STR_MAP_MENU_SIGN_LIST                                          :Kartel zerrenda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Herri direktorioa
 ############ both ranges ends here
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidioak
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Operazio onuren grafikoa
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Irabazien grafikoa
 ############ range ends here
 
 ############ range for company league menu starts
