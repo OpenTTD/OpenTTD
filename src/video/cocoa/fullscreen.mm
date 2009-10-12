@@ -257,6 +257,12 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 	bool SetVideoMode(int w, int h)
 	{
+		/* Define this variables at the top (against coding style) because
+		 * otherwise GCC barfs at the goto's jumping over variable initialization. */
+		NSRect screen_rect;
+		NSPoint pt;
+		int gamma_error;
+
 		/* Destroy any previous mode */
 		if (this->pixel_buffer != NULL) {
 			free(this->pixel_buffer);
@@ -286,7 +292,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 		/* Fade display to zero gamma */
 		OTTD_QuartzGammaTable gamma_table;
-		int gamma_error = this->FadeGammaOut(&gamma_table);
+		gamma_error = this->FadeGammaOut(&gamma_table);
 
 		/* Put up the blanking window (a window above all other windows) */
 		if (CGDisplayCapture(this->display_id) != CGDisplayNoErr ) {
@@ -330,11 +336,10 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		 * We can hack around this bug by setting the screen rect ourselves.
 		 * This hack should be removed if/when the bug is fixed.
 		 */
-		NSRect screen_rect = NSMakeRect(0, 0, this->display_width, this->display_height);
+		screen_rect = NSMakeRect(0, 0, this->display_width, this->display_height);
 		[ [ NSScreen mainScreen ] setFrame:screen_rect ];
 
-
-		NSPoint pt = [ NSEvent mouseLocation ];
+		pt = [ NSEvent mouseLocation ];
 		pt.y = this->display_height - pt.y;
 		if (this->MouseIsInsideView(&pt)) QZ_HideMouse();
 
