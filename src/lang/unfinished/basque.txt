@@ -376,30 +376,50 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidioak
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Operazio onuren grafikoa
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Irabazien grafikoa
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Entregatutako kargaren grafikoa
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Jardunaldi historiako grafikoa
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Konpaniako balioaren grafikoa
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Karga ordainketaren tasa
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Konpaniako ligaren tabloia
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Jardunaldi xehetuaren tasa
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industria direktorioa
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Industria berri bat eraiki
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Trenbide eraiketa
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Trenbide elektrikoaren eraiketa
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorailaren eraiketa
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglevaren eraiketa
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Errepide eraiketa
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tranvia eraiketa
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Ibaibide eraiketa
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Aireportu eraiketa
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisai editorea
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Zuhaitzak landatu
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Kartela jarri
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :Soinua/musika
 ############ range ends here
 
 ############ range for message menu starts
