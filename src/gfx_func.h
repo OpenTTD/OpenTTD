@@ -115,7 +115,7 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 
 Dimension GetStringBoundingBox(const char *str);
 Dimension GetStringBoundingBox(StringID strid);
-uint32 FormatStringLinebreaks(char *str, int maxw);
+uint32 FormatStringLinebreaks(char *str, const char *last, int maxw);
 int GetStringHeight(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 void LoadStringWidthTable();
