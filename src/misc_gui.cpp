@@ -841,11 +841,9 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	if (str == STR_NULL) return;
 
 	for (uint i = 0; i != paramcount; i++) SetDParam(i, params[i]);
-	char buffer[512];
-	GetString(buffer, str, lastof(buffer));
 
 	Dimension br;
-	br.width  = min(GetStringBoundingBox(buffer).width, 194);
+	br.width  = min(GetStringBoundingBox(str).width, 194);
 	br.height = GetStringHeight(str, br.width);
 
 	/* increase slightly to have some space around the box */
