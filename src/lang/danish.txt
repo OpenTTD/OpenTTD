@@ -2029,6 +2029,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grundlæ
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfældige byer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dæk kortet med tilfældigt placerede byer
 
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik for at indtaste bynavn
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilfældigt navn
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystørrelse:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Lille

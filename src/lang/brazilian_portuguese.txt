@@ -1680,6 +1680,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Enviar
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipe] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Equipe] {STRING}: {WHITE}{STRING}

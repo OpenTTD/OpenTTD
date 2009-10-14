@@ -423,50 +423,169 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Soinua/musika
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Azken mezua/albiste erreportaia
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Mezu ezarpenak
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mezuen historia
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Lur arearen informazioa
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsola aktibatu
+STR_ABOUT_MENU_AI_DEBUG                                         :IA debug
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot erraldoia (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'-ri buruz
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1.
+STR_ORDINAL_NUMBER_2ND                                          :2.
+STR_ORDINAL_NUMBER_3RD                                          :3.
+STR_ORDINAL_NUMBER_4TH                                          :4.
+STR_ORDINAL_NUMBER_5TH                                          :5.
+STR_ORDINAL_NUMBER_6TH                                          :6.
+STR_ORDINAL_NUMBER_7TH                                          :7.
+STR_ORDINAL_NUMBER_8TH                                          :8.
+STR_ORDINAL_NUMBER_9TH                                          :9.
+STR_ORDINAL_NUMBER_10TH                                         :10.
+STR_ORDINAL_NUMBER_11TH                                         :11.
+STR_ORDINAL_NUMBER_12TH                                         :12.
+STR_ORDINAL_NUMBER_13TH                                         :13.
+STR_ORDINAL_NUMBER_14TH                                         :14.
+STR_ORDINAL_NUMBER_15TH                                         :15.
+STR_ORDINAL_NUMBER_16TH                                         :16.
+STR_ORDINAL_NUMBER_17TH                                         :17.
+STR_ORDINAL_NUMBER_18TH                                         :18.
+STR_ORDINAL_NUMBER_19TH                                         :19.
+STR_ORDINAL_NUMBER_20TH                                         :20.
+STR_ORDINAL_NUMBER_21ST                                         :21.
+STR_ORDINAL_NUMBER_22ND                                         :22.
+STR_ORDINAL_NUMBER_23RD                                         :23.
+STR_ORDINAL_NUMBER_24TH                                         :24.
+STR_ORDINAL_NUMBER_25TH                                         :25.
+STR_ORDINAL_NUMBER_26TH                                         :26.
+STR_ORDINAL_NUMBER_27TH                                         :27.
+STR_ORDINAL_NUMBER_28TH                                         :28.
+STR_ORDINAL_NUMBER_29TH                                         :29.
+STR_ORDINAL_NUMBER_30TH                                         :30.
+STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Urt
+STR_MONTH_ABBREV_FEB                                            :Ots
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Mai
+STR_MONTH_ABBREV_JUN                                            :Eka
+STR_MONTH_ABBREV_JUL                                            :Uzt
+STR_MONTH_ABBREV_AUG                                            :Abu
+STR_MONTH_ABBREV_SEP                                            :Ira
+STR_MONTH_ABBREV_OCT                                            :Urr
+STR_MONTH_ABBREV_NOV                                            :Aza
+STR_MONTH_ABBREV_DEC                                            :Abe
 
+STR_MONTH_JAN                                                   :Urtarrila
+STR_MONTH_FEB                                                   :Otsaila
+STR_MONTH_MAR                                                   :Martxoa
+STR_MONTH_APR                                                   :Apirila
+STR_MONTH_MAY                                                   :Maiatza
+STR_MONTH_JUN                                                   :Ekaina
+STR_MONTH_JUL                                                   :Uztaila
+STR_MONTH_AUG                                                   :Abuztua
+STR_MONTH_SEP                                                   :Iraila
+STR_MONTH_OCT                                                   :Urria
+STR_MONTH_NOV                                                   :Azaroa
+STR_MONTH_DEC                                                   :Abendua
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Giltza
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Erakutsi giltza grafikoetan
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operazio Onuren Grafikoa
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Irabazi Grafikoa
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Emandako karga unitateak
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Konpaniako performantzia balorazioak (balorazio handiena=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Konpania balioak
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Karga Ordainketaren Tasa
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Iraganbide egunak
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Ordainketa 10 unitate entregatzeagatik (edo 10,000 litro) 20 karratuko distatziako karga bategatik
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Erakutsi performantzia balorazioak xehetasunekin
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Giltza konpaniako grafikoei
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Konpaniako Liga Tabloia
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingienaria
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafiko Zuzendaria
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Garraio Koordinatzailea
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Ibilbide Gainbegiralea
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Zuzendaria
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Zuzendari Ejekutiboa
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Lehendakaria
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Lehendakaria
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Performantzia balorazio xehetua
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Xehetasuna
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Garraioak:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Geltokiak:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Onura min.
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Irabazi min.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Irabazi max.:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregatua:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Karga:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dirua:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Mailegua:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Guztira:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Entregatutako karga azkeneko lau laurdenetan
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Entregatutako karga tipo zenbakia azkeneko laudenean
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Konpania honek duen dirua bankuan
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Konpania honek hartu duen dirua mailegutan
 
 # Music window
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Dena
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Estilo Zaharra
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Estilo Berria
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Pertsonalizatua 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Pertsonalizatua 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikaren Bolumena
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektuen Bolumena
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Pista
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titulua
+STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programatu
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Musika jotzen gelditu
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Musika jotzen hasi
 
 # Playlist window
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
 
 # Highscore window
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
