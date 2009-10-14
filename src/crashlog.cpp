@@ -115,37 +115,65 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 #	include <allegro.h>
 #endif /* WITH_ALLEGRO */
 #ifdef WITH_FONTCONFIG
-#include <fontconfig/fontconfig.h>
+#	include <fontconfig/fontconfig.h>
 #endif /* WITH_FONTCONFIG */
+#ifdef WITH_PNG
+	/* pngconf.h, included by png.h doesn't like something in the
+	 * freetype headers. As such it's not alphabetically sorted. */
+#	include <png.h>
+#endif /* WITH_PNG */
 #ifdef WITH_FREETYPE
-#include <ft2build.h>
-#include FT_FREETYPE_H
+#	include <ft2build.h>
+#	include FT_FREETYPE_H
 #endif /* WITH_FREETYPE */
 #ifdef WITH_ICU
 #	include <unicode/uversion.h>
 #endif /* WITH_ICU */
 #ifdef WITH_SDL
+#	include "sdl.h"
 #	include <SDL.h>
 #endif /* WITH_SDL */
 
 char *CrashLog::LogLibraries(char *buffer, const char *last) const
 {
 	buffer += seprintf(buffer, last, "Libraries:\n");
+
 #ifdef WITH_ALLEGRO
-	buffer += seprintf(buffer, last, " Allegro:    %s\n", ALLEGRO_VERSION_STR);
+	buffer += seprintf(buffer, last, " Allegro:    %s\n", allegro_id);
 #endif /* WITH_ALLEGRO */
+
 #ifdef WITH_FONTCONFIG
-	buffer += seprintf(buffer, last, " FontConfig: %d.%d.%d\n", FC_MAJOR, FC_MINOR, FC_REVISION);
+	int version = FcGetVersion();
+	buffer += seprintf(buffer, last, " FontConfig: %d.%d.%d\n", version / 10000, (version / 100) % 100, version % 100);
 #endif /* WITH_FONTCONFIG */
+
 #ifdef WITH_FREETYPE
-	buffer += seprintf(buffer, last, " FreeType:   %d.%d.%d\n", FREETYPE_MAJOR, FREETYPE_MINOR, FREETYPE_PATCH);
+	FT_Library library;
+	int major, minor, patch;
+	FT_Init_FreeType(&library);
+	FT_Library_Version(library, &major, &minor, &patch);
+	FT_Done_FreeType(library);
+	buffer += seprintf(buffer, last, " FreeType:   %d.%d.%d\n", major, minor, patch);
 #endif /* WITH_FREETYPE */
+
 #ifdef WITH_ICU
-	buffer += seprintf(buffer, last, " ICU:        %s\n", U_ICU_VERSION);
+	/* 4 times 0-255, separated by dots (.) and a trailing '\0' */
+	char buf[4 * 3 + 3 + 1];
+	UVersionInfo ver;
+	u_getVersion(ver);
+	u_versionToString(ver, buf);
+	buffer += seprintf(buffer, last, " ICU:        %s\n", buf);
 #endif /* WITH_ICU */
+
+#ifdef WITH_PNG
+	buffer += seprintf(buffer, last, " PNG:        %s\n", png_get_libpng_ver(NULL));
+#endif /* WITH_PNG */
+
 #ifdef WITH_SDL
-	buffer += seprintf(buffer, last, " SDL:        %d.%d.%d\n", SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
+	const SDL_version *v = SDL_CALL SDL_Linked_Version();
+	buffer += seprintf(buffer, last, " SDL:        %d.%d.%d\n", v->major, v->minor, v->patch);
 #endif /* WITH_SDL */
+
 	buffer += seprintf(buffer, last, "\n");
 	return buffer;
 }
