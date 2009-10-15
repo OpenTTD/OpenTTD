@@ -23,6 +23,8 @@ class ThreadMutex_None : public ThreadMutex {
 public:
 	virtual void BeginCritical() {}
 	virtual void EndCritical() {}
+	virtual void WaitForSignal() {}
+	virtual void SendSignal() {}
 };
 
 /* static */ ThreadMutex *ThreadMutex::New()

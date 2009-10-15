@@ -20,6 +20,7 @@
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
 #include "../functions.h"
+#include "../thread/thread.h"
 #include "sdl_v.h"
 #include <SDL.h>
 
@@ -27,6 +28,15 @@ static FVideoDriver_SDL iFVideoDriver_SDL;
 
 static SDL_Surface *_sdl_screen;
 static bool _all_modes;
+
+/** Whether the drawing is/may be done in a separate thread. */
+static bool _draw_threaded;
+/** Thread used to 'draw' to the screen, i.e. push data to the screen. */
+static ThreadObject *_draw_thread = NULL;
+/** Mutex to keep the access to the shared memory controlled. */
+static ThreadMutex *_draw_mutex = NULL;
+/** Should we keep continue drawing? */
+static volatile bool _draw_continue;
 
 #define MAX_DIRTY_RECTS 100
 static SDL_Rect _dirty_rects[MAX_DIRTY_RECTS];
@@ -97,6 +107,22 @@ static void DrawSurfaceToScreen()
 	} else {
 		SDL_CALL SDL_UpdateRects(_sdl_screen, n, _dirty_rects);
 	}
+}
+
+static void DrawSurfaceToScreenThread(void *)
+{
+	/* First wait till we 'may' start */
+	_draw_mutex->BeginCritical();
+	_draw_mutex->WaitForSignal();
+
+	while (_draw_continue) {
+		/* Then just draw and wait till we stop */
+		DrawSurfaceToScreen();
+		_draw_mutex->WaitForSignal();
+	}
+
+	_draw_mutex->EndCritical();
+	_draw_thread->Exit();
 }
 
 static const Dimension _default_resolutions[] = {
@@ -213,6 +239,9 @@ static bool CreateMainSurface(uint w, uint h)
 		DEBUG(driver, 0, "SDL: Couldn't allocate a window to draw on");
 		return false;
 	}
+
+	/* Delay drawing for this cycle; the next cycle will redraw the whole screen */
+	_num_dirty_rects = 0;
 
 	_screen.width = newscreen->w;
 	_screen.height = newscreen->h;
@@ -445,6 +474,9 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 
 	SDL_CALL SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 	SDL_CALL SDL_EnableUNICODE(1);
+
+	_draw_threaded = GetDriverParam(parm, "no_threads") == NULL && GetDriverParam(parm, "no_thread") == NULL;
+
 	return NULL;
 }
 
@@ -462,6 +494,25 @@ void VideoDriver_SDL::MainLoop()
 	uint32 mod;
 	int numkeys;
 	Uint8 *keys;
+
+	if (_draw_threaded) {
+		/* Initialise the mutex first, because that's the thing we *need*
+		 * directly in the newly created thread. */
+		_draw_mutex = ThreadMutex::New();
+		if (_draw_mutex == NULL) {
+			_draw_threaded = false;
+		} else {
+			_draw_mutex->BeginCritical();
+			_draw_continue = true;
+
+			_draw_threaded = ThreadObject::New(&DrawSurfaceToScreenThread, NULL, &_draw_thread);
+		}
+
+		/* Free the mutex if we won't be able to use it. */
+		if (!_draw_threaded) delete _draw_mutex;
+	}
+
+	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
 
 	for (;;) {
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
@@ -505,7 +556,13 @@ void VideoDriver_SDL::MainLoop()
 
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
+			/* The gameloop is the part that can run asynchroniously. The rest
+			 * except sleeping can't. */
+			if (_draw_threaded) _draw_mutex->EndCritical();
+
 			GameLoop();
+
+			if (_draw_threaded) _draw_mutex->BeginCritical();
 
 			_screen.dst_ptr = _sdl_screen->pixels;
 			UpdateWindows();
@@ -513,14 +570,30 @@ void VideoDriver_SDL::MainLoop()
 				CheckPaletteAnim();
 				pal_tick = 1;
 			}
-			DrawSurfaceToScreen();
+
+			/* End of the critical part. */
+			if (_draw_threaded) {
+				_draw_mutex->SendSignal();
+			} else {
+				/* Oh, we didn't have threads, then just draw unthreaded */
+				DrawSurfaceToScreen();
+			}
 		} else {
-			SDL_CALL SDL_Delay(1);
-			_screen.dst_ptr = _sdl_screen->pixels;
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-			DrawSurfaceToScreen();
+			/* Release the thread while sleeping */
+			if (_draw_threaded) _draw_mutex->EndCritical();
+			CSleep(1);
+			if (_draw_threaded) _draw_mutex->BeginCritical();
 		}
+	}
+
+	if (_draw_threaded) {
+		_draw_continue = false;
+		_draw_mutex->SendSignal();
+		_draw_mutex->EndCritical();
+		_draw_thread->Join();
+
+		delete _draw_mutex;
+		delete _draw_thread;
 	}
 }
 

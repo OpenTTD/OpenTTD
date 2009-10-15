@@ -68,6 +68,19 @@ public:
 	 * End of the critical section
 	 */
 	virtual void EndCritical() = 0;
+
+	/**
+	 * Wait for a signal to be send.
+	 * @pre You must be in the critical section.
+	 * @note While waiting the critical section is left.
+	 * @post You will be in the critical section.
+	 */
+	virtual void WaitForSignal() = 0;
+
+	/**
+	 * Send a signal and wake the 'thread' that was waiting for it.
+	 */
+	virtual void SendSignal() = 0;
 };
 
 #endif /* THREAD_H */

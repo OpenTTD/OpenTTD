@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "thread.h"
 #include <pthread.h>
+#include <errno.h>
 
 /**
  * POSIX pthread version for ThreadObject.
@@ -95,16 +96,21 @@ private:
 class ThreadMutex_pthread : public ThreadMutex {
 private:
 	pthread_mutex_t mutex;
+	pthread_cond_t condition;
 
 public:
 	ThreadMutex_pthread()
 	{
 		pthread_mutex_init(&this->mutex, NULL);
+		pthread_cond_init(&this->condition, NULL);
 	}
 
 	/* virtual */ ~ThreadMutex_pthread()
 	{
-		pthread_mutex_destroy(&this->mutex);
+		int err = pthread_cond_destroy(&this->condition);
+		assert(err != EBUSY);
+		err = pthread_mutex_destroy(&this->mutex);
+		assert(err != EBUSY);
 	}
 
 	/* virtual */ void BeginCritical()
@@ -115,6 +121,16 @@ public:
 	/* virtual */ void EndCritical()
 	{
 		pthread_mutex_unlock(&this->mutex);
+	}
+
+	/* virtual */ void WaitForSignal()
+	{
+		pthread_cond_wait(&this->condition, &this->mutex);
+	}
+
+	/* virtual */ void SendSignal()
+	{
+		pthread_cond_signal(&this->condition);
 	}
 };
 

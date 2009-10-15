@@ -7,7 +7,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file allegro_v.cpp Implementation of the Allegro video driver. */
+/**
+ * @file allegro_v.cpp Implementation of the Allegro video driver.
+ * @note Implementing threaded pushing of data to the display is
+ *       not faster (it's a few percent slower) in contrast to the
+ *       results gained with threading it for SDL.
+ */
 
 #ifdef WITH_ALLEGRO
 

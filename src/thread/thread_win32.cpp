@@ -107,16 +107,19 @@ private:
 class ThreadMutex_Win32 : public ThreadMutex {
 private:
 	CRITICAL_SECTION critical_section;
+	HANDLE event;
 
 public:
 	ThreadMutex_Win32()
 	{
 		InitializeCriticalSection(&this->critical_section);
+		this->event = CreateEvent(NULL, FALSE, FALSE, NULL);
 	}
 
 	/* virtual */ ~ThreadMutex_Win32()
 	{
 		DeleteCriticalSection(&this->critical_section);
+		CloseHandle(this->event);
 	}
 
 	/* virtual */ void BeginCritical()
@@ -127,6 +130,18 @@ public:
 	/* virtual */ void EndCritical()
 	{
 		LeaveCriticalSection(&this->critical_section);
+	}
+
+	/* virtual */ void WaitForSignal()
+	{
+		this->EndCritical();
+		WaitForSingleObject(this->event, INFINITE);
+		this->BeginCritical();
+	}
+
+	/* virtual */ void SendSignal()
+	{
+		SetEvent(this->event);
 	}
 };
 
