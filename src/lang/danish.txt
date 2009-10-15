@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filter-udtryk
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Indtast nøgleord til at filtrere listen efter
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Vælg sorteringskriterie
@@ -1343,6 +1344,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1677,6 +1679,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Sæt sel
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Hold] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Hold] {STRING}: {WHITE}{STRING}
@@ -1734,6 +1737,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spil ikke læng
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlader
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har tilsluttet sig spillet
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har tilsluttet sig spillet (Klient #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} har tilsluttet sig firmaet #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har tilsluttet sig som tilskuer
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startet et nyt firma (#{2:NUM})
@@ -2029,8 +2033,11 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grundlæ
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfældige byer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dæk kortet med tilfældigt placerede byer
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Bynavn:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Indtast bynavn
 STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik for at indtaste bynavn
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilfældigt navn
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generer nyt tilfældigt navn
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystørrelse:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Lille
@@ -3992,6 +3999,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}

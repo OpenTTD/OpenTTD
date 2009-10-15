@@ -557,6 +557,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dirua:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Mailegua:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Guztira:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Onurak lortu dituzten garraioen zenbakia; honek errepideko garraioak, trenak, itsasontziak eta hegazkinak sartzen ditu
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Oraintsu zerbitzatuta dauden geltokien zatien zenbakia. Geltokiko edozein zati (adib. tren geltokia, autobuseko geldialdia, aireportua) zenbatuta dago, nahiz eta beste geltoki batekin konektatuta egon
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Onura gutxien eduki duen garraioa (bakarrik 2 urte baino zaharragoak dira kontuan hartuta)
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Entregatutako karga azkeneko lau laurdenetan
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Entregatutako karga tipo zenbakia azkeneko laudenean
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Konpania honek duen dirua bankuan
@@ -586,6 +589,10 @@ STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Musika j
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
+STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Pistaren Indizea
+STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programatu - '{STRING}'
 
 # Highscore window
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.

@@ -565,7 +565,7 @@ STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθ
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μικρότερο κέρδος των τελευταίων 12 τετάρτων
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μεγαλύτερο κέρδος των τελευταίων 12 τετάρτων
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκε τα τελευταία τέσσερα τετράμηνα
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκαν στα τελευταία τέσσερα τετράμηνα
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Το ποσό των χρημάτων που έχει πάρει η εταιρία ως δάνειο
@@ -592,7 +592,7 @@ STR_MUSIC_XTITLE                                                :{TINYFONT}{BLAC
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Τυχαία αναπαραγωγή
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Πρόγραμμα
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Πλοήγηση στο προηγούμενο κομμάτι της συλλογής
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Πλοήγηση στο επόμενο κομμάτι στη συλλογή
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Πλοήγηση στο επόμενο κομμάτι της συλλογής
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Σταμάτημα αναπαραγωγής
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Έναρξη αναπαραγωγής
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Μετακινήστε τις γραμμές κύλισης για ρύθμιση έντασης
@@ -1881,6 +1881,9 @@ STR_STATION_CLASS_WAYP                                          :Σημείο κ
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή σηματοδότη
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τραίνο να είναι στο ίδιο τμήμα την ίδια στιγμή
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Σηματοδότης τμήματος (ηλεκτρικός){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τραίνο να είναι στο ίδιο τμήμα την ίδια στιγμή.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπέας σηματοδότη{}Όταν επιλεκτεί, κάνοντας κλικ σε ένα υπάρχον σηματοδότη θα το μετατρέψει στο επιλεγμένο τύπο σηματοδότη και παραλλαγή, Ctrl+κλικ θα εναλλάσει την τρέχουσα παραλλαγή.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Πυκνότητα σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση πυκνότητας σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση πυκνότητας σηματοδοτών με σύρσιμο
@@ -2097,10 +2100,14 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Κομμάτι 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και μονόδρομης τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Κομμάτι σιδηρόδρομου με προ και εξόδου σηματοδότες
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Κομμάτι σιδηρόδρομου με προ και συνδιασμένους σηματοδότες
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Κομματι σιδηρόδρομου με προ και τροχιάς σηματοδότες
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Κομμάτι σιδηρόδρομου με σηματοδότες προ και μονόδρομης τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Κομμάτι σιδηρόδρομου με εξόδου και συνδιασμένους σηματοδότες
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Κομμάτι σιδηρόδρομου με σηματοδότες εξόδου και μονόδρομης τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Κομμάτι σιδηρόδρομου με σηματοδότες εξόδου και μονόδρομης τροχιάς
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Κομμάτι σιδηρόδρομου με σηματοδότες συνδιασμένους και τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Κομμάτι σιδηρόδρομου με σηματοδότες συνδιασμένους και μονόδρομης τροχιάς
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Κομμάτι σιδηρόδρομου με σηματοδότες τροχιάς και μονόδρομης τροχιάς
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Αμαξοστάσιο
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
@@ -2194,7 +2201,10 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού μια πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού μια κάτω
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Σπορος τυχαίας παραγωγής:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Κλικ για να δώσετε ένα σπόρο τυχαίας παραγωγής
 STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαία δημιουργία
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Αλλαγή του σπόρου τυχαίας παραγωγής για την Δημιουργία Εδάφους
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
@@ -2218,6 +2228,7 @@ STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περι
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Μέγεθος: {ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε ένα σπόρο τυχαίας παραγωγής
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 
@@ -2244,6 +2255,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημι
 STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριου και πετρώδους περιοχής
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόγχου πλακιδίων
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
 # NewGRF settings
@@ -2298,8 +2310,10 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {STRING} ως στατικό NewGRF με {STRING} μπόρει να προκαλέσει αποσυγχρονισμούς.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Αναπάντεχο sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8.
 
 # NewGRF related 'general' warnings
@@ -2595,6 +2609,10 @@ STR_GROUP_DEFAULT_SHIPS                                         :Αγκρουπ�
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Αγκρουπάριστα αεροπλάνα
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Γκρουπς - Κάντε κλικ σε ένα γκρουπ για δείτε όλα τα οχήματα που ανήκουν στο γκρουπ
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Κάντε κλικ για δημιουργήσετε ένα γκρουπ
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Διαγράψτε το επιλεγμένο γκρουπ
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετονομάστε το επιλεγμένο γκρουπ
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Κάντε κλικ για προστατέψετε αυτό το γκρουπ από την γενική αυτόματη αντικατάσταση
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Προσθήκη κοινόχρηστων οχημάτων
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεση όλων των οχημάτων
@@ -2630,6 +2648,10 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Όλοι οι �
 STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μεγ. Δύναμη Έλξης: {GOLD}{FORCE}
 
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Λίστα επιλεγμένων βαγονιών τραίνων - κάντε κλικ σε ένα βαγόνι για πληροφορίες
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Λίστα επιλεγμένων οχήματα δρόμου - κάντε κλικ σε ένα όχημα για πληροφορίες
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Λίστα επιλεγμένων πλοίων - κάντε κλικ σε ένα πλοίων για πληροφορίες
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Λίστα επιλεγμένων αεροπλάνων - κάντε κλικ σε ένα αεροπλάνο για πληροφορίες
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Αγορά Οχήματος
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Αγορά Οχήματος
@@ -2651,6 +2673,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Μετα
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετανομάζει τον τύπο πλοίο
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετανομάζει τον τύπο αεροπλάνου
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Μετονομασία του τύπου τραίνου
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Αμαξοστάσιο Τραίνων
@@ -2680,8 +2703,20 @@ STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Πουλ
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Πουλήστε όλα τα πλοία στο ναυπηγείο
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροπλάνα στο υπόστεγο
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Αυτόματη αντικατάσταση όλων των τραίνων στο αμαξοστάσιο
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Αυτόματη αντικατάσταση όλων των οχήματων στο αμαξοστάσιο
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Αυτόματη αντικατάσταση όλων των πλοίων στο ναυπηγείο
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροπλάνων στο υπόστεγο
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νεα τραίνα-βαγόνια
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Νεα οχήματα
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Νεα Πλοία
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νεο Αεροπλάνο
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Αγοράστε ένα νεο τραίνο-βαγόνι
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Αγοράστε ένα νεο όχημα δρόμου
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Αγοράστε ένα νεο πλοίο
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Αγοράστε ένα νεο αεροπλάνο
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Κλωνοποίηση τραίνου
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλωνοποίηση όχηματος δρόμου
@@ -2689,6 +2724,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλων
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση αεροπλάνου
 
 
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του ναυπηγείου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του ναυπηγείου
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του υπόστεγου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του υπόστεγου
 
 
 
@@ -2765,6 +2804,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Κατ�
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Κατευθύνεται προς το υπόστεγο του αεροδρομίου {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Κατευθύνεται προς το υπόστεγο του αεροδρομίου {STATION}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service στο ναυπηγείο της πόλης {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service στο ναυπηγείο της πόλης {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service στο υπόστεγο του στάθμου {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Επισκεύη στο υπόστεγο του σταθμού {STATION}, {VELOCITY}
 
 # Vehicle details

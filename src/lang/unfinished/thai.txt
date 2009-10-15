@@ -55,7 +55,7 @@ STR_CARGO_PLURAL_COLA                                           :น้ำโค
 STR_CARGO_PLURAL_COTTON_CANDY                                   :ขนมสายไหม
 STR_CARGO_PLURAL_BUBBLES                                        :ฟอง
 STR_CARGO_PLURAL_TOFFEE                                         :ลูกอม
-STR_CARGO_PLURAL_BATTERIES                                      :ุถ่านไฟฉาย
+STR_CARGO_PLURAL_BATTERIES                                      :ถ่านไฟฉาย
 STR_CARGO_PLURAL_PLASTIC                                        :พลาสติก
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :น้ำอัดลมหรรษา
 
@@ -123,7 +123,7 @@ STR_QUANTITY_COLA                                               :น้ำโค
 STR_QUANTITY_CANDYFLOSS                                         :ขนมสายไหม {WEIGHT}
 STR_QUANTITY_BUBBLES                                            :ฟอง {COMMA} ลูก
 STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT}
-STR_QUANTITY_BATTERIES                                          :ุ่ถ่านไฟฉาย {COMMA} ก้อน
+STR_QUANTITY_BATTERIES                                          :ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME}
 STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
 STR_QUANTITY_N_A                                                :N/A{SKIP}
@@ -216,6 +216,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลู�
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}ใส่คำกรอง
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}ป้อนคำค้นเพื่อกรองรายการ
 STR_LIST_FILTER_TITLE                                           :{BLACK}กรองจากชื่อ:
 
@@ -337,6 +338,18 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :กำหนดระดับความยาก
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :กำหนดค่าขั้นสูง
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ตัวเลือกค่าโปร่งใส
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}แสดงชื่อเมือง
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}แสดงชื่อสถานี
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}แสดงจุดผ่าน
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}แสดงป้าย
+STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}ภาพเคลื่อนไหวเต็มที่
+STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}รายละเอียดเต็มที่
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}สิ่งก่อสร้างแบบโปร่งใส
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}ป้ายสถานีแบบโปร่งใส
 ############ range ends here
 
 ############ range for file menu starts
@@ -347,10 +360,15 @@ STR_FILE_MENU_EXIT                                              :ออกจา
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :แผนที่โลก
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :มุมมองเพิ่มเติม
+STR_MAP_MENU_SIGN_LIST                                          :รายการป้าย
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :รายชื่อเมือง
 ############ both ranges ends here
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :การสนับสนุน
 ############ range ends here
 
 ############ range for graph menu starts
@@ -364,24 +382,38 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :อัตรา
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :ตารางแสดงอันดับบริษัท
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :การวัดผลประสิทธิภาพอย่างละเอียด
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :รายชื่ออุตสาหกรรม
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ลงทุนอุตสาหกรรมใหม่
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :การก่อสร้างทางรถไฟ
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :การก่อสร้างทางรถไฟฟ้า
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :การก่อสร้างทางรถไฟรางเดี่ยว
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :การก่อสร้างทางรถไฟพลังแม่เหล็ก
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :การก่อสร้างถนน
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :การก่อสร้างทางรถราง
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :การก่อสร้างคลอง
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :การก่อสร้างสนามบิน
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :การปรับพื้นที่
+STR_LANDSCAPING_MENU_PLANT_TREES                                :ปลูกต้นไม้
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :ปักป้าย
 ############ range ends here
 
 ############ range for music menu starts
@@ -395,6 +427,11 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ูข้อค
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :ข้อมูลพื้นที่
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :เปิด/ปิด คอนโซล
+STR_ABOUT_MENU_SCREENSHOT                                       :จับภาพหน้าจอ (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอขนาดใหญ่ (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :เกี่ยวกับ 'OpenTTD'
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -466,10 +503,14 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}กราฟแสดงผลประกอบการ
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}กราฟแสดงรายได้
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}หน่วยงานการจัดส่งสินค้า
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}คะแนนประสิทธิภาพของบริษัท (maximum rating=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}มูลค่าทรัพย์สินบริษัท
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}อัตราค่าตอบแทนการขนส่ง
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}วันในการเดินทาง
 
 
 # Graph key window
