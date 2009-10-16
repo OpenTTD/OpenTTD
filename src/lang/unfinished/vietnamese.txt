@@ -1299,17 +1299,37 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Chơi mới
 STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp Game
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Kịch Bản
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi Heightmap
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập kịch bản
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều người chơi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
+STR_INTRO_DIFFICULTY                                            :{BLACK}Độ khó ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết Lập Cao Cấp
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải trò chơi
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Chơi game mới, dùng heightmap làm quang cảnh
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Chơi game mới, dùng kịch bản đã chỉnh sửa
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Tạo kịch bản/thế giới đã chỉnh sửa
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Bắt đầu game nhiều người chơi
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Chọn kiểu quang cảnh 'ôn hòa'
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Chọn kiểu quang cảnh 'giá rét'
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Chọn kiểu quang cảnh 'nhiệt đới'
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn kiểu quang cảnh 'đồ chơi'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị tùy chọn trò chơi
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Hiện thỉ tùy chỉnh độ khó
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Hiển thị tùy chỉnh cao cấp
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Hiện thị tùy chỉnh AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
 
 # Quit window
@@ -1333,8 +1353,19 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Thoát
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn thoát khỏi trò chơi không?
+STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ kịch bản này?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}Cheats
+STR_CHEATS_TOOLTIP                                              :{BLACK}Ô đánh dấu cho biết nếu bạn đã từng dùng mã ăn gian đó
+STR_CHEATS_WARNING                                              :{BLACK}Cảnh báo! Bạn muốn lừa dối những đối thủ thành thực của bạn ư. Những hành động đó của bạn sẽ là vết nhơ suốt đời.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xúc văng nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Đường ngầm có thể vượt lẫn nhau : {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Xây trong chế độ dừng game: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Máy bay sẽ không hư (thường xuyên) ở các sân bay nhỏ: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Đổi thời tiết: {ORANGE}{STRING}
 
 # Livery window
 

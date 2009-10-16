@@ -586,6 +586,7 @@ STR_MUSIC_XTITLE                                                :{TINYFONT}{BLAC
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programatu
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Musika jotzen gelditu
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Musika jotzen hasi
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'Kanta guztiak' programa selekzionatu
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
@@ -593,9 +594,13 @@ STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Pistaren Indizea
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programatu - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Garbitu
+STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Gorde
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Musikaren ezarpenak gorde
 
 # Highscore window
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negozio gizona
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 
