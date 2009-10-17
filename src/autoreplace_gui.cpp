@@ -209,8 +209,7 @@ public:
 		this->resize.step_height = GetVehicleListHeight(vehicletype);
 		this->vscroll.SetCapacity(this->resize.step_height == 14 ? 8 : 4);
 
-		Widget *widget = this->widget;
-		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[RVW_WIDGET_LEFT_MATRIX].data = this->widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		if (vehicletype != VEH_TRAIN) {
 			/* Since it's not a train we will hide the train only widgets. */
@@ -405,9 +404,7 @@ public:
 		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
 		this->vscroll2.UpdateCapacity(delta.y / (int)this->resize.step_height);
 
-		Widget *widget = this->widget;
-
-		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[RVW_WIDGET_LEFT_MATRIX].data = this->widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		if (delta.x != 0) {
 			/* We changed the width of the window so we have to resize the lists.
@@ -418,10 +415,10 @@ public:
 			 * to place the lists.
 			 * This way the lists will have equal size while keeping the width of the scrollbars unchanged. */
 			ResizeButtons(this, RVW_WIDGET_LEFT_DETAILS, RVW_WIDGET_RIGHT_DETAILS);
-			widget[RVW_WIDGET_RIGHT_MATRIX].left    = widget[RVW_WIDGET_RIGHT_DETAILS].left;
-			widget[RVW_WIDGET_LEFT_SCROLLBAR].right = widget[RVW_WIDGET_LEFT_DETAILS].right;
-			widget[RVW_WIDGET_LEFT_SCROLLBAR].left  = widget[RVW_WIDGET_LEFT_SCROLLBAR].right - 11;
-			widget[RVW_WIDGET_LEFT_MATRIX].right    = widget[RVW_WIDGET_LEFT_SCROLLBAR].left - 1;
+			this->widget[RVW_WIDGET_RIGHT_MATRIX].left    = this->widget[RVW_WIDGET_RIGHT_DETAILS].left;
+			this->widget[RVW_WIDGET_LEFT_SCROLLBAR].right = this->widget[RVW_WIDGET_LEFT_DETAILS].right;
+			this->widget[RVW_WIDGET_LEFT_SCROLLBAR].left  = this->widget[RVW_WIDGET_LEFT_SCROLLBAR].right - 11;
+			this->widget[RVW_WIDGET_LEFT_MATRIX].right    = this->widget[RVW_WIDGET_LEFT_SCROLLBAR].left - 1;
 		}
 	}
 
