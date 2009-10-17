@@ -56,7 +56,7 @@ uint GetGlyphWidth(FontSize size, uint32 key);
  * @param winlangid the language ID windows style.
  * @return true if a font has been set, false otherwise.
  */
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid);
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str);
 
 #else
 

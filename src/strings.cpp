@@ -1544,7 +1544,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 							FreeTypeSettings backup;
 							memcpy(&backup, &_freetype, sizeof(backup));
 
-							bool success = SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid);
+							bool success = SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, string);
 							if (success) {
 								UninitFreeType();
 								InitFreeType();

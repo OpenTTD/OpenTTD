@@ -2414,6 +2414,12 @@ detect_fontconfig() {
 		return 0
 	fi
 
+	if [ "$os" = "OSX" ]; then
+		log 1 "checking libfontconfig... OSX, skipping"
+		fontconfig_config=""
+		return 0
+	fi
+
 	if [ "$with_fontconfig" = "1" ] || [ "$with_fontconfig" = "" ] || [ "$with_fontconfig" = "2" ]; then
 		fontconfig_config="pkg-config fontconfig"
 	else
