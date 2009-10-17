@@ -2272,6 +2272,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια �
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Εναλλαγή παλέτας
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Εναλλάσει την παλέττα του επιλεγμένου NewGRF.{}Κάντε αυτό όταν τα γραφίκα από αυτό το NewGRF δείχνουν ροζ μέσα στο παιχνίδι
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Εφαρμογή αλλαγών
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Αναζήτηση μη εγκατεστήμενου περιεχομένου online
@@ -2674,6 +2675,9 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετα
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετανομάζει τον τύπο αεροπλάνου
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Μετονομασία του τύπου τραίνου
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Μετονομασία του τύπου οχήματος δρόμου
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Μετονομασία του τύπου πλοίου
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Μετονομασία του τύπου αεροπλάνου
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Αμαξοστάσιο Τραίνων
@@ -2730,6 +2734,10 @@ STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Κεντ
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του υπόστεγου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του υπόστεγου
 
 
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα τραίνα μέσα στο αμαξοστάσιο
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα οχήματα μέσα στο αμαξοστάσιο
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα πλοία μέσα στο ναυπηγείο
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα αεροπλάνα μέσα στο υπόστεγο
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα τραίνα μέσα στο αμαξοστάσιο
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα οχήματα μέσα στο αμαξοστάσιο
@@ -2745,12 +2753,15 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Ατμομηχ�
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Όχημα δρόμου
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :αεροπλάνου
 STR_ENGINE_PREVIEW_SHIP                                         :πλοιού
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :μηχανή monorail
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :μηχανή maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY} Βάρος: {WEIGHT_S}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY}/χρ{}Χωρητικότητα: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Κόστος: {CURRENCY} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO}, {CARGO}{}Κόστος Λειτουργίας: {CURRENCY}/χρ
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Κόστος: {CURRENCY} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO}{}Κόστος Λειτουργίας: {CURRENCY}/χρ
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Τραίνο
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο
