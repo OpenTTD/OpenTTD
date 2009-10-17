@@ -32,7 +32,7 @@ public:
 
 class FMusicDriver_Null: public MusicDriverFactory<FMusicDriver_Null> {
 public:
-	static const int priority = 0;
+	static const int priority = 1;
 	/* virtual */ const char *GetName() { return "null"; }
 	/* virtual */ const char *GetDescription() { return "Null Music Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Null(); }
