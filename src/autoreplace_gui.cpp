@@ -136,9 +136,9 @@ class ReplaceVehicleWindow : public Window {
 	{
 		EngineID selected_engine = INVALID_ENGINE;
 		VehicleType type = (VehicleType)this->window_number;
-		byte i = draw_left ? 0 : 1;
+		byte side = draw_left ? 0 : 1;
 
-		GUIEngineList *list = &this->engines[i];
+		GUIEngineList *list = &this->engines[side];
 		list->Clear();
 
 		const Engine *e;
@@ -156,9 +156,9 @@ class ReplaceVehicleWindow : public Window {
 			}
 
 			*list->Append() = eid;
-			if (eid == this->sel_engine[i]) selected_engine = eid; // The selected engine is still in the list
+			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
 		}
-		this->sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
+		this->sel_engine[side] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
 		EngList_Sort(list, &EngineNumberSorter);
 	}
 
@@ -296,24 +296,24 @@ public:
 		DrawString(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].right - 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_BLACK_STRING);
 
 		/* Draw the lists */
-		for (byte i = 0; i < 2; i++) {
-			uint widget     = (i == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
-			GUIEngineList *list = &this->engines[i]; // which engines list to draw
-			EngineID start  = i == 0 ? this->vscroll.GetPosition() : this->vscroll2.GetPosition(); // what is the offset for the start (scrolling)
-			EngineID end    = min((i == 0 ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity()) + start, list->Length());
+		for (byte side = 0; side < 2; side++) {
+			uint widget     = (side == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
+			GUIEngineList *list = &this->engines[side]; // which engines list to draw
+			EngineID start  = side == 0 ? this->vscroll.GetPosition() : this->vscroll2.GetPosition(); // what is the offset for the start (scrolling)
+			EngineID end    = min((side == 0 ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity()) + start, list->Length());
 
 			/* Do the actual drawing */
 			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].right, this->widget[widget].top + 1,
-					list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, this->sel_group);
+					list, start, end, this->sel_engine[side], side == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, this->sel_group);
 
 			/* Also draw the details if an engine is selected */
-			if (this->sel_engine[i] != INVALID_ENGINE) {
-				const Widget *wi = &this->widget[i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS];
-				int text_end = DrawVehiclePurchaseInfo(wi->left + 2, wi->right - 2, wi->top + 1, this->sel_engine[i]);
+			if (this->sel_engine[side] != INVALID_ENGINE) {
+				const Widget *wi = &this->widget[side == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS];
+				int text_end = DrawVehiclePurchaseInfo(wi->left + 2, wi->right - 2, wi->top + 1, this->sel_engine[side]);
 
 				if (text_end > wi->bottom) {
 					this->SetDirty();
-					ResizeWindowForWidget(this, i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS, 0, text_end - wi->bottom);
+					ResizeWindowForWidget(this, side == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS, 0, text_end - wi->bottom);
 					this->SetDirty();
 				}
 			}
