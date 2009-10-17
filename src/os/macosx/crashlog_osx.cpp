@@ -129,8 +129,8 @@ class CrashLogOSX : public CrashLog {
 				int status = -1;
 				char *func_name = abi::__cxa_demangle(dli.dli_sname, NULL, 0, &status);
 
-				ptrdiff_t offset = (intptr_t)ip - (intptr_t)dli.dli_saddr;
-				buffer += seprintf(buffer, last, " (%s + %d)", func_name != NULL ? func_name : dli.dli_sname, offset);
+				long int offset = (intptr_t)ip - (intptr_t)dli.dli_saddr;
+				buffer += seprintf(buffer, last, " (%s + %ld)", func_name != NULL ? func_name : dli.dli_sname, offset);
 
 				free(func_name);
 			}
@@ -188,13 +188,13 @@ public:
 	{
 		static const char crash_title[] =
 			"A serious fault condition occured in the game. The game will shut down.";
-		static const char crash_info[] =
-			"Please send the generated crash information and the last (auto)save to the developers. "
-			"This will greatly help debugging. The correct place to do this is http://bugs.openttd.org.\n\n"
-			"Generated file(s):\n%s\n%s";
 
 		char message[1024];
-		seprintf(message, lastof(message), crash_info, this->filename_log, this->filename_save);
+		seprintf(message, lastof(message),
+				 "Please send the generated crash information and the last (auto)save to the developers. "
+				 "This will greatly help debugging. The correct place to do this is http://bugs.openttd.org.\n\n"
+				 "Generated file(s):\n%s\n%s",
+				 this->filename_log, this->filename_save);
 
 		ShowMacDialog(crash_title, message, "Quit");
 	}
