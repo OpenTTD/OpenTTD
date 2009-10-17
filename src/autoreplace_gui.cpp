@@ -144,7 +144,7 @@ class ReplaceVehicleWindow : public Window {
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, type) {
 			EngineID eid = e->index;
-			if (type == VEH_TRAIN && !GenerateReplaceRailList(eid, draw_left, this->replace_engines)) continue; // special rules for trains
+			if (type == VEH_TRAIN && !this->GenerateReplaceRailList(eid, draw_left, this->replace_engines)) continue; // special rules for trains
 
 			if (draw_left) {
 				const GroupID selected_group = this->sel_group;
@@ -170,7 +170,7 @@ class ReplaceVehicleWindow : public Window {
 
 		if (this->update_left == true) {
 			/* We need to rebuild the left engines list */
-			GenerateReplaceVehList(true);
+			this->GenerateReplaceVehList(true);
 			this->vscroll.SetCount(this->engines[0].Length());
 			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].Length() != 0) {
 				this->sel_engine[0] = this->engines[0][0];
@@ -184,7 +184,7 @@ class ReplaceVehicleWindow : public Window {
 				this->engines[1].Clear();
 				this->sel_engine[1] = INVALID_ENGINE;
 			} else {
-				GenerateReplaceVehList(false);
+				this->GenerateReplaceVehList(false);
 				this->vscroll2.SetCount(this->engines[1].Length());
 				if (this->reset_sel_engine && this->sel_engine[1] == INVALID_ENGINE && this->engines[1].Length() != 0) {
 					this->sel_engine[1] = this->engines[1][0];
