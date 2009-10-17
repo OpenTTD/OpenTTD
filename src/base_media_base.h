@@ -13,6 +13,7 @@
 #define BASE_MEDIA_BASE_H
 
 #include "fileio_func.h"
+#include "core/smallmap_type.hpp"
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
 struct IniFile;
@@ -41,28 +42,35 @@ struct MD5File {
  */
 template <class T, size_t Tnum_files>
 struct BaseSet {
+	typedef SmallMap<const char *, const char *> TranslatedStrings;
+
 	/** Number of files in this set */
 	static const size_t NUM_FILES = Tnum_files;
 
 	/** Internal names of the files in this set. */
 	static const char * const *file_names;
 
-	const char *name;          ///< The name of the base set
-	const char *description;   ///< Description of the base set
-	uint32 shortname;          ///< Four letter short variant of the name
-	uint32 version;            ///< The version of this base set
+	const char *name;              ///< The name of the base set
+	TranslatedStrings description; ///< Description of the base set
+	uint32 shortname;              ///< Four letter short variant of the name
+	uint32 version;                ///< The version of this base set
 
-	MD5File files[NUM_FILES];  ///< All files part of this set
-	uint found_files;          ///< Number of the files that could be found
-	uint valid_files;          ///< Number of the files that could be found and are valid
+	MD5File files[NUM_FILES];      ///< All files part of this set
+	uint found_files;              ///< Number of the files that could be found
+	uint valid_files;              ///< Number of the files that could be found and are valid
 
-	T *next;                   ///< The next base set in this list
+	T *next;                       ///< The next base set in this list
 
 	/** Free everything we allocated */
 	~BaseSet()
 	{
 		free((void*)this->name);
-		free((void*)this->description);
+
+		for (TranslatedStrings::iterator iter = this->description.Begin(); iter != this->description.End(); iter++) {
+			free((void*)iter->first);
+			free((void*)iter->second);
+		}
+
 		for (uint i = 0; i < NUM_FILES; i++) {
 			free((void*)this->files[i].filename);
 			free((void*)this->files[i].missing_warning);
@@ -97,6 +105,30 @@ struct BaseSet {
 	 * @return true if loading was successful.
 	 */
 	bool FillSetDetails(IniFile *ini, const char *path);
+
+	/**
+	 * Get the description for the given ISO code.
+	 * It falls back to the first two characters of the ISO code in case
+	 * no match could be made with the full ISO code. If even then the
+	 * matching fails the default is returned.
+	 * @param isocode the isocode to search for
+	 * @return the description
+	 */
+	const char *GetDescription(const char *isocode = NULL) const
+	{
+		if (isocode != NULL) {
+			/* First the full ISO code */
+			for (TranslatedStrings::const_iterator iter = this->description.Begin(); iter != this->description.End(); iter++) {
+				if (strcmp(iter->first, isocode) == 0) return iter->second;
+			}
+			/* Then the first two characters */
+			for (TranslatedStrings::const_iterator iter = this->description.Begin(); iter != this->description.End(); iter++) {
+				if (strncmp(iter->first, isocode, 2) == 0) return iter->second;
+			}
+		}
+		/* Then fall back */
+		return this->description.Begin()->second;
+	}
 };
 
 /**

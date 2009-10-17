@@ -40,7 +40,14 @@ bool BaseSet<T, Tnum_files>::FillSetDetails(IniFile *ini, const char *path)
 	this->name = strdup(item->value);
 
 	fetch_metadata("description");
-	this->description = strdup(item->value);
+	this->description[strdup("")] = strdup(item->value);
+
+	/* Add the translations of the descriptions too. */
+	for (const IniItem *item = metadata->item; item != NULL; item = item->next) {
+		if (strncmp("description.", item->name, 12) != 0) continue;
+
+		this->description[strdup(item->name + 12)] = strdup(item->value);
+	}
 
 	fetch_metadata("shortname");
 	for (uint i = 0; item->value[i] != '\0' && i < 4; i++) {
@@ -213,7 +220,7 @@ template <class Tbase_set>
 {
 	p += seprintf(p, last, "List of " SET_TYPE " sets:\n");
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
-		p += seprintf(p, last, "%18s: %s", s->name, s->description);
+		p += seprintf(p, last, "%18s: %s", s->name, s->GetDescription());
 		int invalid = s->GetNumInvalid();
 		if (invalid != 0) {
 			int missing = s->GetNumMissing();

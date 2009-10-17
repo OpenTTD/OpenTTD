@@ -31,7 +31,15 @@ shortname    = XMPL
 ; the version of this graphics set (read as single integer)
 version      = 0
 ; a fairly short description of the set
+; By adding '.<iso code>' you can translate the description.
+; Note that OpenTTD first tries the full ISO code, then the first
+; two characters and then uses the fallback (no '.<iso code>').
+; The ISO code matching is case sensitive!
+; So en_US will be used for en_UK if no en_UK translation is added.
+; As a result the below example has 'howdie' for en_US and en_UK but
+; 'foo' for all other languages.
 description  = foo
+description.en_US = howdie
 ; palette used by the set; either DOS or Windows
 palette      = DOS
 

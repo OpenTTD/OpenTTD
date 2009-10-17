@@ -99,6 +99,7 @@ extern DynamicLanguages _dynlang; // defined in strings.cpp
 
 bool ReadLanguagePack(int index);
 void InitializeLanguagePacks();
+const char *GetCurrentLanguageIsoCode();
 
 int CDECL StringIDSorter(const StringID *a, const StringID *b);
 

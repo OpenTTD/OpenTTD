@@ -33,6 +33,7 @@ template <typename T, typename U, uint S = 16>
 struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	typedef ::SmallPair<T, U> Pair;
 	typedef Pair *iterator;
+	typedef const Pair *const_iterator;
 
 	/** Creates new SmallMap. Data are initialized in SmallVector constructor */
 	FORCEINLINE SmallMap() { }
