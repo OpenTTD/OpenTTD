@@ -258,17 +258,6 @@ public:
 	}
 
 	/**
-	 * Updates the capacity by adding/removing a number of (visible) elements.
-	 * @param difference the difference in capacity
-	 * @note updates the position if needed
-	 */
-	void UpdateCapacity(int difference)
-	{
-		if (difference == 0) return;
-		this->SetCapacity(this->cap + difference);
-	}
-
-	/**
 	 * Sets the position of the first visible element
 	 * @param position the position of the element
 	 */

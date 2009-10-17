@@ -205,7 +205,7 @@ struct AIListWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / this->line_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->current_y / this->line_height);
 		this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
@@ -401,7 +401,7 @@ struct AISettingsWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / this->line_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->current_y / this->line_height);
 		this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
@@ -662,14 +662,14 @@ struct AIDebugWindow : public Window {
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
-		this->vscroll.SetCapacity(14); // Minimal number of lines in the log panel.
-
 		this->InitNested(desc, number);
 		/* Disable the companies who are not active or not an AI */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
+
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AID_WIDGET_LOG_PANEL)->current_y / this->resize.step_height);
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -681,7 +681,7 @@ struct AIDebugWindow : public Window {
 	{
 		if (widget == AID_WIDGET_LOG_PANEL) {
 			resize->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			size->height = this->vscroll.GetCapacity() * resize->height + this->top_offset + this->bottom_offset;
+			size->height = 14 * resize->height + this->top_offset + this->bottom_offset;
 		}
 	}
 
@@ -878,7 +878,7 @@ struct AIDebugWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AID_WIDGET_LOG_PANEL)->current_y / this->resize.step_height);
 	}
 };
 

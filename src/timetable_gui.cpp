@@ -333,8 +333,8 @@ struct TimetableWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		/* Update the scroll + matrix */
-		this->vscroll.UpdateCapacity(delta.y / 10);
+		/* Update the scroll bar */
+		this->vscroll.SetCapacity((this->widget[TTV_TIMETABLE_PANEL].bottom - this->widget[TTV_TIMETABLE_PANEL].top + 1) / this->resize.step_height);
 	}
 };
 

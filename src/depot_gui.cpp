@@ -906,8 +906,8 @@ struct DepotWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
-		this->hscroll.UpdateCapacity(delta.x / (int)this->resize.step_width);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_y / (int)this->resize.step_height);
+		this->hscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_x / (int)this->resize.step_width);
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) +
 											((this->type == VEH_TRAIN ? 1 : this->hscroll.GetCapacity()) << MAT_COL_START);
 	}

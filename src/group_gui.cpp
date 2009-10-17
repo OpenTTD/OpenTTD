@@ -614,10 +614,10 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll2.UpdateCapacity(delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY);
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
-
+		this->vscroll2.SetCapacity((this->widget[GRP_WIDGET_LIST_GROUP].bottom - this->widget[GRP_WIDGET_LIST_GROUP].top + 1) / PLY_WND_PRC__SIZE_OF_ROW_TINY);
 		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+
+		this->vscroll.SetCapacity((this->widget[GRP_WIDGET_LIST_VEHICLE].bottom - this->widget[GRP_WIDGET_LIST_VEHICLE].top + 1) / this->resize.step_height);
 		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 

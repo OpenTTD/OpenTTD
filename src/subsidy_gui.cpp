@@ -222,7 +222,7 @@ struct SubsidyListWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(SLW_PANEL)->current_y / this->resize.step_height);
 	}
 
 	virtual void OnInvalidateData(int data)

@@ -659,7 +659,7 @@ public:
 		this->BuildSortTownList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / this->resize.step_height);
 	}
 
 	~TownDirectoryWindow()
@@ -803,7 +803,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / this->resize.step_height);
 	}
 
 	virtual void OnInvalidateData(int data)

@@ -714,7 +714,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity((this->widget[NGWW_MATRIX].bottom - this->widget[NGWW_MATRIX].top + 1) / this->resize.step_height);
 		this->widget[NGWW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Additional colums in server list */

@@ -1625,7 +1625,7 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / SETTING_HEIGHT);
+		this->vscroll.SetCapacity((this->widget[SETTINGSEL_OPTIONSPANEL].bottom - this->widget[SETTINGSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT);
 	}
 };
 

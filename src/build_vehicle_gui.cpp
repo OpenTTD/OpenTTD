@@ -1177,7 +1177,7 @@ struct BuildVehicleWindow : Window {
 		}
 		if (delta.y == 0) return;
 
-		this->vscroll.UpdateCapacity(delta.y / (int)GetVehicleListHeight(this->vehicle_type));
+		this->vscroll.SetCapacity((this->widget[BUILD_VEHICLE_WIDGET_LIST].bottom - this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1) / GetVehicleListHeight(this->vehicle_type));
 		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };

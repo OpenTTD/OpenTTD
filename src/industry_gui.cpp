@@ -361,7 +361,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		/* Adjust the number of items in the matrix depending of the rezise */
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity((this->widget[DPIW_MATRIX_WIDGET].bottom - this->widget[DPIW_MATRIX_WIDGET].top + 1) / this->resize.step_height);
 		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
@@ -1050,7 +1050,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(IDW_INDUSTRY_LIST)->current_y / this->resize.step_height);
 	}
 
 	virtual void OnHundredthTick()

@@ -1857,7 +1857,7 @@ public:
 
 			case SLD_LOAD_SCENARIO:
 			case SLD_LOAD_HEIGHTMAP:
-				this->vscroll.UpdateCapacity(-1);
+				this->vscroll.SetCapacity(this->vscroll.GetCapacity() - 1);
 
 			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
 			case SLD_SAVE_SCENARIO: strecpy(this->edit_str_buf, "UNNAMED", &this->edit_str_buf[edit_str_size - 1]); break;
@@ -1974,7 +1974,7 @@ public:
 				break;
 
 			case SLWW_DRIVES_DIRECTORIES_LIST: { // Click the listbox
-				int y = (pt.y - this->widget[widget].top - 1) / 10;
+				int y = (pt.y - this->widget[SLWW_DRIVES_DIRECTORIES_LIST].top - 1) / 10;
 
 				if (y < 0 || (y += this->vscroll.GetPosition()) >= this->vscroll.GetCount()) return;
 
@@ -2092,7 +2092,7 @@ public:
 			this->widget[SLWW_SAVE_GAME].left  += diff;
 		}
 
-		this->vscroll.UpdateCapacity(delta.y / 10);
+		this->vscroll.SetCapacity((this->widget[SLWW_DRIVES_DIRECTORIES_LIST].bottom - this->widget[SLWW_DRIVES_DIRECTORIES_LIST].top + 1) / 10);
 	}
 
 	virtual void OnInvalidateData(int data)

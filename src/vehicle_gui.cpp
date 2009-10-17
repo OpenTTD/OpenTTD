@@ -389,7 +389,7 @@ struct RefitWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity((this->widget[VRW_MATRIX].bottom - this->widget[VRW_MATRIX].top + 1) / this->resize.step_height);
 		this->widget[VRW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
@@ -1105,7 +1105,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity((this->widget[VLW_WIDGET_LIST].bottom - this->widget[VLW_WIDGET_LIST].top + 1) / this->resize.step_height);
 		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
@@ -1501,7 +1501,7 @@ struct VehicleDetailsWindow : Window {
 		if (delta.x != 0) ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
 		if (delta.y == 0) return;
 
-		this->vscroll.UpdateCapacity(delta.y / 14);
+		this->vscroll.SetCapacity((this->widget[VLD_WIDGET_MIDDLE_DETAILS].bottom - this->widget[VLD_WIDGET_MIDDLE_DETAILS].top + 1) / 14);
 		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };

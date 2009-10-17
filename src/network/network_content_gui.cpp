@@ -692,7 +692,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		this->vscroll.SetCapacity((this->widget[NCLWW_MATRIX].bottom - this->widget[NCLWW_MATRIX].top + 1) / this->resize.step_height);
 		this->widget[NCLWW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Make the matrix and details section grow both bigger (or smaller) */

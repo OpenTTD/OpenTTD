@@ -993,7 +993,7 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.UpdateCapacity(delta.y / this->line_height);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(MHW_BACKGROUND)->current_y / this->line_height);
 	}
 };
 

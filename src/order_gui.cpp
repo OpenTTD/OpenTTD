@@ -1268,8 +1268,8 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		/* Update the scroll + matrix */
-		this->vscroll.UpdateCapacity(delta.y / (int)this->resize.step_height);
+		/* Update the scroll bar */
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->current_y / this->resize.step_height);
 	}
 
 	virtual void OnTimeout()
