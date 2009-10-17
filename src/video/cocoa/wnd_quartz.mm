@@ -129,7 +129,7 @@ public:
 	WindowQuartzSubdriver(int bpp);
 	virtual ~WindowQuartzSubdriver();
 
-	virtual void Draw();
+	virtual void Draw(bool force_update);
 	virtual void MakeDirty(int left, int top, int width, int height);
 	virtual void UpdatePalette(uint first_color, uint num_colors);
 
@@ -552,7 +552,7 @@ WindowQuartzSubdriver::~WindowQuartzSubdriver()
 	free(this->pixel_buffer);
 }
 
-void WindowQuartzSubdriver::Draw()
+void WindowQuartzSubdriver::Draw(bool force_update)
 {
 	/* Check if we need to do anything */
 	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
@@ -583,8 +583,10 @@ void WindowQuartzSubdriver::Draw()
 		dirtyrect.size.width = this->dirty_rects[i].right - this->dirty_rects[i].left;
 		dirtyrect.size.height = this->dirty_rects[i].bottom - this->dirty_rects[i].top;
 
-		/* drawRect will be automatically called by Mac OS X during next update cycle, and then blitting will occur */
-		[ qzview setNeedsDisplayInRect:dirtyrect ];
+		/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
+		 * and then blitting will occur. If force_update is true, it will be done right now. */
+		[ this->qzview setNeedsDisplayInRect:dirtyrect ];
+		if (force_update) [ this->qzview displayIfNeeded ];
 	}
 
 	//DrawResizeIcon();

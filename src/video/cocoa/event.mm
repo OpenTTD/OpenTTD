@@ -606,7 +606,7 @@ void QZ_GameLoop()
 	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 	DisplaySplashImage();
 	QZ_CheckPaletteAnim();
-	_cocoa_subdriver->Draw();
+	_cocoa_subdriver->Draw(true);
 	CSleep(1);
 
 	for (int i = 0; i < 2; i++) GameLoop();

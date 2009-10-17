@@ -47,7 +47,7 @@ class CocoaSubdriver {
 public:
 	virtual ~CocoaSubdriver() {}
 
-	virtual void Draw() = 0;
+	virtual void Draw(bool force_update = false) = 0;
 	virtual void MakeDirty(int left, int top, int width, int height) = 0;
 	virtual void UpdatePalette(uint first_color, uint num_colors) = 0;
 
