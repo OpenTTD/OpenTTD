@@ -22,31 +22,40 @@
 #include "strings_func.h"
 #include "openttd.h"
 
+enum HighscoreWidgets {
+	HSW_BACKGROUND,
+};
+
 struct EndGameHighScoreBaseWindow : Window {
 	uint32 background_img;
 	int8 rank;
 
-	EndGameHighScoreBaseWindow(const WindowDesc *desc) : Window(desc)
+	EndGameHighScoreBaseWindow(const WindowDesc *desc) : Window()
 	{
+		this->InitNested(desc);
+		ResizeWindow(this, _screen.width - this->width, _screen.height - this->height);
 	}
 
-	/* Always draw a maximized window and within there the centered background */
-	void SetupHighScoreEndWindow(uint *x, uint *y)
+	/* Always draw a maximized window and within it the centered background */
+	void SetupHighScoreEndWindow()
 	{
-		/* resize window to "full-screen" */
-		this->width = _screen.width;
-		this->height = _screen.height;
-		this->widget[0].right = this->width - 1;
-		this->widget[0].bottom = this->height - 1;
+		/* Resize window to "full-screen". */
+		if (this->width != _screen.width || this->height != _screen.height) ResizeWindow(this, _screen.width - this->width, _screen.height - this->height);
 
 		this->DrawWidgets();
 
+		Point pt = this->GetTopLeft640x480();
 		/* Center Highscore/Endscreen background */
-		*x = max(0, (_screen.width  / 2) - (640 / 2));
-		*y = max(0, (_screen.height / 2) - (480 / 2));
 		for (uint i = 0; i < 10; i++) { // the image is split into 10 50px high parts
-			DrawSprite(this->background_img + i, PAL_NONE, *x, *y + (i * 50));
+			DrawSprite(this->background_img + i, PAL_NONE, pt.x, pt.y + (i * 50));
 		}
+	}
+
+	/** Return the coordinate of the screen such that a window of 640x480 is centered at the screen. */
+	Point GetTopLeft640x480()
+	{
+		Point pt = {max(0, (_screen.width  / 2) - (640 / 2)), max(0, (_screen.height / 2) - (480 / 2))};
+		return pt;
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -94,9 +103,8 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 	virtual void OnPaint()
 	{
-		uint x, y;
-
-		this->SetupHighScoreEndWindow(&x, &y);
+		this->SetupHighScoreEndWindow();
+		Point pt = this->GetTopLeft640x480();
 
 		const Company *c = Company::GetIfValid(_local_company);
 		if (c == NULL) return;
@@ -107,11 +115,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
 			SetDParam(2, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(x, x + 640, y + 140, y + 206, STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x, pt.x + 640, pt.y + 140, pt.y + 206, STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
 		} else {
 			SetDParam(0, c->index);
 			SetDParam(1, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(x, x + 640, y + 90, y + 210, STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x, pt.x + 640, pt.y + 90, pt.y + 210, STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 };
@@ -141,52 +149,47 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	virtual void OnPaint()
 	{
 		const HighScore *hs = _highscore_table[this->window_number];
-		uint x, y;
 
-		this->SetupHighScoreEndWindow(&x, &y);
+		this->SetupHighScoreEndWindow();
+		Point pt = this->GetTopLeft640x480();
 
 		SetDParam(0, ORIGINAL_END_YEAR);
 		SetDParam(1, this->window_number + STR_DIFFICULTY_LEVEL_EASY);
-		DrawStringMultiLine(x + 70, x + 570, y, y + 140, !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(pt.x + 70, pt.x + 570, pt.y, pt.y + 140, !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
 		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(x + 40, x + 600, y + 140 + (i * 55), STR_HIGHSCORE_POSITION);
+			DrawString(pt.x + 40, pt.x + 600, pt.y + 140 + (i * 55), STR_HIGHSCORE_POSITION);
 
 			if (hs[i].company[0] != '\0') {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				DrawString(x + 71, x + 569, y + 140 + (i * 55), hs[i].company, colour);
+				DrawString(pt.x + 71, pt.x + 569, pt.y + 140 + (i * 55), hs[i].company, colour);
 				SetDParam(0, hs[i].title);
 				SetDParam(1, hs[i].score);
-				DrawString(x + 71, x + 569, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
+				DrawString(pt.x + 71, pt.x + 569, pt.y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
 			}
 		}
 	}
 };
 
-static const Widget _highscore_widgets[] = {
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_END, 0, 640, 0, 480, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_highscore_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_END, 0), SetMinimalSize(641, 481), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_END, HSW_BACKGROUND), SetMinimalSize(641, 481), SetResize(1, 1), EndContainer(),
 };
 
 static const WindowDesc _highscore_desc(
 	0, 0, 641, 481, 641, 481,
 	WC_HIGHSCORE, WC_NONE,
 	0,
-	_highscore_widgets, _nested_highscore_widgets, lengthof(_nested_highscore_widgets)
+	NULL, _nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
 static const WindowDesc _endgame_desc(
 	0, 0, 641, 481, 641, 481,
 	WC_ENDSCREEN, WC_NONE,
 	0,
-	_highscore_widgets, _nested_highscore_widgets, lengthof(_nested_highscore_widgets)
+	NULL, _nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
 /** Show the highscore table for a given difficulty. When called from
