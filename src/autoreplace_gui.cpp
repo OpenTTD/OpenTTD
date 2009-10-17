@@ -147,11 +147,10 @@ class ReplaceVehicleWindow : public Window {
 			if (type == VEH_TRAIN && !this->GenerateReplaceRailList(eid, draw_left, this->replace_engines)) continue; // special rules for trains
 
 			if (draw_left) {
-				const GroupID selected_group = this->sel_group;
-				const uint num_engines = GetGroupNumEngines(_local_company, selected_group, eid);
+				const uint num_engines = GetGroupNumEngines(_local_company, this->sel_group, eid);
 
 				/* Skip drawing the engines we don't have any of and haven't set for replacement */
-				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, selected_group) == INVALID_ENGINE) continue;
+				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, this->sel_group) == INVALID_ENGINE) continue;
 			} else {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
@@ -242,7 +241,6 @@ public:
 		if (this->update_left || this->update_right) this->GenerateLists();
 
 		Company *c = Company::Get(_local_company);
-		const GroupID selected_group = this->sel_group;
 
 		/* Disable the "Start Replacing" button if:
 		 *    Either engines list is empty
@@ -251,15 +249,15 @@ public:
 		this->SetWidgetDisabledState(RVW_WIDGET_START_REPLACE,
 										this->sel_engine[0] == INVALID_ENGINE ||
 										this->sel_engine[1] == INVALID_ENGINE ||
-										EngineReplacementForCompany(c, this->sel_engine[1], selected_group) != INVALID_ENGINE ||
-										EngineReplacementForCompany(c, this->sel_engine[0], selected_group) == this->sel_engine[1]);
+										EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != INVALID_ENGINE ||
+										EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group) == this->sel_engine[1]);
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left engines list (existing vehicle) is empty
 		 *   or The selected vehicle has no replacement set up */
 		this->SetWidgetDisabledState(RVW_WIDGET_STOP_REPLACE,
 										this->sel_engine[0] == INVALID_ENGINE ||
-										!EngineHasReplacementForCompany(c, this->sel_engine[0], selected_group));
+										!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
 
 		/* now the actual drawing of the window itself takes place */
 		SetDParam(0, STR_REPLACE_VEHICLE_TRAIN + this->window_number);
@@ -286,11 +284,11 @@ public:
 
 		/* sets up the string for the vehicle that is being replaced to */
 		if (this->sel_engine[0] != INVALID_ENGINE) {
-			if (!EngineHasReplacementForCompany(c, this->sel_engine[0], selected_group)) {
+			if (!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group)) {
 				SetDParam(0, STR_REPLACE_NOT_REPLACING);
 			} else {
 				SetDParam(0, STR_ENGINE_NAME);
-				SetDParam(1, EngineReplacementForCompany(c, this->sel_engine[0], selected_group));
+				SetDParam(1, EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group));
 			}
 		} else {
 			SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
@@ -306,7 +304,8 @@ public:
 			EngineID end    = min((i == 0 ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity()) + start, list->Length());
 
 			/* Do the actual drawing */
-			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].right, this->widget[widget].top + 1, list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
+			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].right, this->widget[widget].top + 1,
+					list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, this->sel_group);
 
 			/* Also draw the details if an engine is selected */
 			if (this->sel_engine[i] != INVALID_ENGINE) {
