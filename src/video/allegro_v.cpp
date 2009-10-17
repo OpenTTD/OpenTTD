@@ -201,7 +201,7 @@ static bool CreateMainSurface(uint w, uint h)
 
 	GetAvailableVideoMode(&w, &h);
 	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) {
-		DEBUG(driver, 0, "Allegro: Couldn't allocate a window to draw on");
+		DEBUG(driver, 0, "Allegro: Couldn't allocate a window to draw on '%s'", allegro_error);
 		return false;
 	}
 
@@ -415,7 +415,10 @@ int _allegro_instance_count = 0;
 
 const char *VideoDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return "Failed to set up Allegro";
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) {
+		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
+		return "Failed to set up Allegro";
+	}
 	_allegro_instance_count++;
 
 	install_timer();
