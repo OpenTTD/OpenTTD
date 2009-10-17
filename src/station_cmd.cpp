@@ -1270,11 +1270,9 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 				}
 			}
 
-			if (keep_rail) {
-				MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
-			} else {
-				DoClearSquare(tile);
-			}
+			DoClearSquare(tile);
+			if (keep_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
+
 			st->rect.AfterRemoveTile(st, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
