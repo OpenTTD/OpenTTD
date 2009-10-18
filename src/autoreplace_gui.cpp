@@ -102,8 +102,6 @@ class ReplaceVehicleWindow : public Window {
 	EngineID sel_engine[2];       ///< Selected engine left and right.
 	GUIEngineList engines[2];     ///< Left and right list of engines.
 	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
-	bool update_left;             ///< Rebuild left list.
-	bool update_right;            ///< Rebuild right list.
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right (#update_left and/or #update_right) and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels (found so far).
@@ -168,7 +166,7 @@ class ReplaceVehicleWindow : public Window {
 	{
 		EngineID e = this->sel_engine[0];
 
-		if (this->update_left == true) {
+		if (this->engines[0].NeedRebuild()) {
 			/* We need to rebuild the left engines list */
 			this->GenerateReplaceVehList(true);
 			this->vscroll.SetCount(this->engines[0].Length());
@@ -177,7 +175,7 @@ class ReplaceVehicleWindow : public Window {
 			}
 		}
 
-		if (this->update_right || e != this->sel_engine[0]) {
+		if (this->engines[1].NeedRebuild() || e != this->sel_engine[0]) {
 			/* Either we got a request to rebuild the right engines list, or the left engines list selected a different engine */
 			if (this->sel_engine[0] == INVALID_ENGINE) {
 				/* Always empty the right engines list when nothing is selected in the left engines list */
@@ -192,8 +190,8 @@ class ReplaceVehicleWindow : public Window {
 			}
 		}
 		/* Reset the flags about needed updates */
-		this->update_left      = false;
-		this->update_right     = false;
+		this->engines[0].RebuildDone();
+		this->engines[1].RebuildDone();
 		this->reset_sel_engine = false;
 	}
 
@@ -201,8 +199,8 @@ public:
 	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window()
 	{
 		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
-		this->update_left      = true;
-		this->update_right     = true;
+		this->engines[0].ForceRebuild();
+		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
 		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 		this->sel_engine[0] = INVALID_ENGINE;
@@ -327,7 +325,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		if (this->update_left || this->update_right) this->GenerateLists();
+		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) this->GenerateLists();
 
 		Company *c = Company::Get(_local_company);
 
@@ -384,7 +382,7 @@ public:
 		switch (widget) {
 			case RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE:
 				this->replace_engines  = !(this->replace_engines);
-				this->update_left      = true;
+				this->engines[0].ForceRebuild();
 				this->reset_sel_engine = true;
 				this->SetDirty();
 				break;
@@ -433,7 +431,7 @@ public:
 					if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
 					this->sel_engine[click_side] = e;
 					if (click_side == 0) {
-						this->update_right     = true;
+						this->engines[1].ForceRebuild();
 						this->reset_sel_engine = true;
 					}
 					this->SetDirty();
@@ -452,8 +450,8 @@ public:
 		this->vscroll.SetPosition(0);
 		this->vscroll2.SetPosition(0);
 		/* Rebuild the lists */
-		this->update_left      = true;
-		this->update_right     = true;
+		this->engines[0].ForceRebuild();
+		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
 		this->SetDirty();
 	}
@@ -470,9 +468,9 @@ public:
 	virtual void OnInvalidateData(int data)
 	{
 		if (data != 0) {
-			this->update_left = true;
+			this->engines[0].ForceRebuild();
 		} else {
-			this->update_right = true;
+			this->engines[1].ForceRebuild();
 		}
 	}
 };
