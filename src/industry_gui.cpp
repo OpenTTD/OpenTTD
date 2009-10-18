@@ -470,6 +470,7 @@ enum IndustryViewWidgets {
 	IVW_CAPTION,
 	IVW_STICKY,
 	IVW_BACKGROUND,
+	IVW_INSET,
 	IVW_VIEWPORT,
 	IVW_INFO,
 	IVW_GOTO,
@@ -483,16 +484,33 @@ class IndustryViewWindow : public Window
 	byte clicked_line;        ///< The line of the button that has been clicked
 	byte clicked_button;      ///< The button that has been clicked (to raise)
 	byte production_offset_y; ///< The offset of the production texts/buttons
+	int info_height;          ///< Height needed for the #IVW_INFO panel
 
 public:
-	IndustryViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	IndustryViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 		this->editbox_line = 0;
 		this->clicked_line = 0;
 		this->clicked_button = 0;
-		InitializeWindowViewport(this, 3, 17, 254, 86, Industry::Get(window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
-		this->FindWindowPlacementAndResize(desc);
+		this->info_height = WD_FRAMERECT_TOP + 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM + 1; // Info panel has at least two lines text.
+
+		this->InitNested(desc, window_number);
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
+		nvp->InitializeViewport(this, Industry::Get(window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(IVW_INFO);
+		uint expected = this->DrawInfo(nwi->pos_x, nwi->pos_x + nwi->current_x - 1, nwi->pos_y) - nwi->pos_y;
+		if (expected > nwi->current_y - 1) {
+			this->info_height = expected + 1;
+			this->ReInit();
+			return;
+		}
 	}
 
 	/** Draw the text in the #IVW_INFO panel.
@@ -583,24 +601,17 @@ public:
 				}
 			}
 		}
-		return y;
+		return y + WD_FRAMERECT_BOTTOM;
 	}
 
-	virtual void OnPaint()
+	virtual void SetStringParameters(int widget) const
 	{
-		SetDParam(0, this->window_number);
-		this->DrawWidgets();
+		if (widget== IVW_CAPTION) SetDParam(0, this->window_number);
+	}
 
-		int y = this->DrawInfo(this->widget[IVW_INFO].left, this->widget[IVW_INFO].right, this->widget[IVW_INFO].top);
-
-		if (y > this->widget[IVW_INFO].bottom) {
-			this->SetDirty();
-			ResizeWindowForWidget(this, IVW_INFO, 0, y - this->widget[IVW_INFO].top);
-			this->SetDirty();
-			return;
-		}
-
-		this->DrawViewport();
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget == IVW_INFO) size->height = this->info_height;
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -616,9 +627,9 @@ public:
 				uint x = pt.x;
 				int line = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
 				if (pt.y >= this->production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
-					Widget *wi = &this->widget[widget];
-					uint left = wi->left + WD_FRAMETEXT_LEFT;
-					uint right = wi->right - WD_FRAMERECT_RIGHT;
+					NWidgetCore *nwi = this->GetWidget<NWidgetCore>(widget);
+					uint left = nwi->pos_x + WD_FRAMETEXT_LEFT;
+					uint right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
 					if (IsInsideMM(x, left, left + 20) ) {
 						/* Clicked buttons, decrease or increase production */
 						if (x < left + 10) {
@@ -665,13 +676,10 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->viewport->width            += delta.x;
-		this->viewport->height           += delta.y;
-		this->viewport->virtual_width    += delta.x;
-		this->viewport->virtual_height   += delta.y;
-		this->viewport->dest_scrollpos_x -= delta.x;
-		this->viewport->dest_scrollpos_y -= delta.y;
-		UpdateViewportPosition(this);
+		if (this->viewport != NULL) {
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
+			nvp->UpdateViewportCoordinates(this);
+		}
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -697,19 +705,6 @@ static void UpdateIndustryProduction(Industry *i)
 }
 
 /** Widget definition of the view industy gui */
-static const Widget _industry_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_CREAM,     0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},           // IVW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_CREAM,    11,   247,     0,    13, STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // IVW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_CREAM,   248,   259,     0,    13, 0x0,                       STR_TOOLTIP_STICKY},                  // IVW_STICKY
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_CREAM,     0,   259,    14,   105, 0x0,                       STR_NULL},                           // IVW_BACKGROUND
-{      WWT_INSET,     RESIZE_RB,  COLOUR_CREAM,     2,   257,    16,   103, 0x0,                       STR_NULL},                           // IVW_VIEWPORT
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,     0,   259,   106,   107, 0x0,                       STR_NULL},                           // IVW_INFO
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_CREAM,     0,   129,   108,   119, STR_BUTTON_LOCATION,       STR_INDUSTRY_VIEW_LOCATION_TOOLTIP}, // IVW_GOTO
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,   130,   247,   108,   119, 0x0,                       STR_NULL},                           // IVW_SPACER
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_CREAM,   248,   259,   108,   119, 0x0,                       STR_TOOLTIP_RESIZE},                  // IVW_RESIZE
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM, IVW_CLOSEBOX),
@@ -717,7 +712,8 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_CREAM, IVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_BACKGROUND),
-		NWidget(WWT_INSET, COLOUR_CREAM, IVW_VIEWPORT), SetMinimalSize(256, 88), SetPadding(2, 2, 2, 2), SetResize(1, 1),
+		NWidget(WWT_INSET, COLOUR_CREAM, IVW_INSET), SetPadding(2, 2, 2, 2),
+			NWidget(NWID_VIEWPORT, INVALID_COLOUR, IVW_VIEWPORT), SetMinimalSize(254, 86), SetFill(true, false), SetPadding(1, 1, 1, 1), SetResize(1, 1),
 		EndContainer(),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_INFO), SetMinimalSize(260, 2), SetResize(1, 0),
@@ -734,7 +730,7 @@ static const WindowDesc _industry_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, 120, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_industry_view_widgets, _nested_industry_view_widgets, lengthof(_nested_industry_view_widgets)
+	NULL, _nested_industry_view_widgets, lengthof(_nested_industry_view_widgets)
 );
 
 void ShowIndustryViewWindow(int industry)
