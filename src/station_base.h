@@ -44,7 +44,7 @@ struct GoodsEntry {
 	byte rating;
 	byte last_speed;
 	byte last_age;
-	CargoList cargo; ///< The cargo packets of cargo waiting in this station
+	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
 };
 
 

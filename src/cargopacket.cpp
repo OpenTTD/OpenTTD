@@ -90,7 +90,7 @@ void CargoList::AddToCache(const CargoPacket *cp)
 	this->cargo_days_in_transit += cp->days_in_transit * cp->count;
 }
 
-void CargoList::AgeCargo()
+void VehicleCargoList::AgeCargo()
 {
 	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
 		/* If we're at the maximum, then we can't increase no more. */

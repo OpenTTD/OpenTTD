@@ -45,6 +45,8 @@ private:
 
 	/** The CargoList caches, thus needs to know about it. */
 	friend class CargoList;
+	friend class VehicleCargoList;
+	friend class StationCargoList;
 	/** We want this to be saved, right? */
 	friend const struct SaveLoad *GetCargoPacketDesc();
 public:
@@ -143,9 +145,6 @@ public:
  */
 #define FOR_ALL_CARGOPACKETS(var) FOR_ALL_CARGOPACKETS_FROM(var, 0)
 
-extern const struct SaveLoad *GetGoodsDesc();
-extern const SaveLoad *GetVehicleDescription(VehicleType vt);
-
 /**
  * Simple collection class for a list of cargo packets
  */
@@ -162,7 +161,7 @@ public:
 		MTA_UNLOAD,         ///< The cargo is moved as part of a forced unload
 	};
 
-private:
+protected:
 	Money feeder_share;         ///< Cache for the feeder share
 	uint count;                 ///< Cache for the number of cargo entities
 	uint cargo_days_in_transit; ///< Cache for the sum of number of days in transit of each entity; comparable to man-hours
@@ -184,11 +183,6 @@ private:
 	void RemoveFromCache(const CargoPacket *cp);
 
 public:
-	/** The stations, via GoodsEntry, have a CargoList. */
-	friend const struct SaveLoad *GetGoodsDesc();
-	/** The vehicles have a cargo list too. */
-	friend const SaveLoad *GetVehicleDescription(VehicleType vt);
-
 	/** Create the cargo list */
 	FORCEINLINE CargoList() { this->InvalidateCache(); }
 	/** And destroy it ("frees" all cargo packets) */
@@ -295,6 +289,29 @@ public:
 
 	/** Invalidates the cached data and rebuild it */
 	void InvalidateCache();
+};
+
+/**
+ * CargoList that is used for vehicles.
+ */
+class VehicleCargoList : public CargoList {
+public:
+	/** The vehicles have a cargo list (and we want that saved). */
+	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt);
+
+	/**
+	 * Ages the all cargo in this list
+	 */
+	void AgeCargo();
+};
+
+/**
+ * CargoList that is used for stations.
+ */
+class StationCargoList : public CargoList {
+public:
+	/** The stations, via GoodsEntry, have a CargoList. */
+	friend const struct SaveLoad *GetGoodsDesc();
 };
 
 #endif /* CARGOPACKET_H */
