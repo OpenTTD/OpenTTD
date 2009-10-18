@@ -115,20 +115,6 @@ public:
 	}
 
 
-	/**
-	 * Checks whether the cargo packet is from (exactly) the same source
-	 * in time and location.
-	 * @param cp the cargo packet to compare to
-	 * @return true if and only if days_in_transit and source_xy are equal
-	 */
-	FORCEINLINE bool SameSource(const CargoPacket *cp) const
-	{
-		return this->source_xy    == cp->source_xy &&
-				this->days_in_transit == cp->days_in_transit &&
-				this->source_type     == cp->source_type &&
-				this->source_id       == cp->source_id;
-	}
-
 	static void InvalidateAllFrom(SourceType src_type, SourceID src);
 };
 
@@ -301,6 +287,22 @@ public:
 	 * Ages the all cargo in this list
 	 */
 	void AgeCargo();
+
+	/**
+	 * Are two the two CargoPackets mergeable in the context of
+	 * a list of CargoPackets for a Vehicle?
+	 * @param cp1 the first CargoPacket
+	 * @param cp2 the second CargoPacket
+	 * @return true if they are mergeable
+	 */
+	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
+	{
+		return cp1->source_xy    == cp2->source_xy &&
+				cp1->days_in_transit == cp2->days_in_transit &&
+				cp1->source_type     == cp2->source_type &&
+				cp1->source_id       == cp2->source_id &&
+				cp1->loaded_at_xy    == cp2->loaded_at_xy;
+	}
 };
 
 /**
@@ -310,6 +312,21 @@ class StationCargoList : public CargoList<StationCargoList> {
 public:
 	/** The stations, via GoodsEntry, have a CargoList. */
 	friend const struct SaveLoad *GetGoodsDesc();
+
+	/**
+	 * Are two the two CargoPackets mergeable in the context of
+	 * a list of CargoPackets for a Vehicle?
+	 * @param cp1 the first CargoPacket
+	 * @param cp2 the second CargoPacket
+	 * @return true if they are mergeable
+	 */
+	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
+	{
+		return cp1->source_xy    == cp2->source_xy &&
+				cp1->days_in_transit == cp2->days_in_transit &&
+				cp1->source_type     == cp2->source_type &&
+				cp1->source_id       == cp2->source_id;
+	}
 };
 
 #endif /* CARGOPACKET_H */

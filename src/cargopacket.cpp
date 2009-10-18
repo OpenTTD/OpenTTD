@@ -111,7 +111,7 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 
 	for (List::iterator it = this->packets.begin(); it != this->packets.end(); it++) {
 		CargoPacket *icp = *it;
-		if (icp->SameSource(cp) && icp->count + cp->count <= CargoPacket::MAX_COUNT) {
+		if (Tinst::AreMergable(icp, cp) && icp->count + cp->count <= CargoPacket::MAX_COUNT) {
 			icp->count        += cp->count;
 			icp->feeder_share += cp->feeder_share;
 
