@@ -40,11 +40,14 @@ CargoPacket::CargoPacket(StationID source, uint16 count, SourceType source_type,
 	}
 }
 
-CargoPacket::CargoPacket(uint16 count, byte days_in_transit, Money feeder_share, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
 		feeder_share(feeder_share),
 		count(count),
 		days_in_transit(days_in_transit),
-		source_id(source_id)
+		source_id(source_id),
+		source(source),
+		source_xy(source_xy),
+		loaded_at_xy(loaded_at_xy)
 {
 	this->source_type = source_type;
 }
@@ -224,12 +227,7 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, CargoList::MoveT
 			Money fs = cp->feeder_share * max_move / static_cast<uint>(cp->count);
 			cp->feeder_share -= fs;
 
-			CargoPacket *cp_new = new CargoPacket(max_move, cp->days_in_transit, fs, cp->source_type, cp->source_id);
-
-			cp_new->source          = cp->source;
-			cp_new->source_xy       = cp->source_xy;
-			cp_new->loaded_at_xy    = (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy;
-
+			CargoPacket *cp_new = new CargoPacket(max_move, cp->days_in_transit, cp->source, cp->source_xy, (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy, fs, cp->source_type, cp->source_id);
 			this->RemoveFromCache(cp_new); // this reflects the changes in cp.
 
 			if (mta == MTA_TRANSFER) {

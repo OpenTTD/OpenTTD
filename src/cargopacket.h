@@ -74,11 +74,14 @@ public:
 	 * Used when loading or splitting packets.
 	 * @param count           the number of cargo entities to put in this packet
 	 * @param days_in_transit number of days the cargo has been in transit
+	 * @param source          the station the cargo was initially loaded
+	 * @param source_xy       the station location the cargo was initially loaded
+	 * @param loaded_at_xy    the location the cargo was loaded last
 	 * @param feeder_share    feeder share the packet has already accumulated
 	 * @param source_type     the 'type' of source the packet comes from (for subsidies)
 	 * @param source_id       the actual source of the packet (for subsidies)
 	 */
-	CargoPacket(uint16 count, byte days_in_transit, Money feeder_share = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(uint16 count, byte days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet */
 	~CargoPacket() { }
