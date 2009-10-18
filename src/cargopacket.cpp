@@ -171,7 +171,7 @@ void CargoList<Tinst>::Truncate(uint max_remaining)
 
 template <class Tinst>
 template <class Tother_inst>
-bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, CargoList::MoveToAction mta, CargoPayment *payment, uint data)
+bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta, CargoPayment *payment, uint data)
 {
 	assert(mta == MTA_FINAL_DELIVERY || dest != NULL);
 	assert(mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL);

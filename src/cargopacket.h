@@ -316,7 +316,7 @@ public:
 	 * @return true if there are still packets that might be moved from this cargo list
 	 */
 	template <class Tother_inst>
-	bool MoveTo(Tother_inst *dest, uint count, CargoList::MoveToAction mta, CargoPayment *payment, uint data = 0);
+	bool MoveTo(Tother_inst *dest, uint count, MoveToAction mta, CargoPayment *payment, uint data = 0);
 
 	/** Invalidates the cached data and rebuild it */
 	void InvalidateCache();
