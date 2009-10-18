@@ -495,16 +495,19 @@ public:
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual void OnPaint()
+	/** Draw the text in the #IVW_INFO panel.
+	 * @param left  Left edge of the panel.
+	 * @param right Right edge of the panel.
+	 * @param top   Top edge of the panel.
+	 * @return Expected position of the bottom edge of the panel.
+	 */
+	int DrawInfo(uint left, uint right, uint top)
 	{
 		Industry *i = Industry::Get(this->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
 		int y = this->widget[IVW_INFO].top + 1;
 		bool first = true;
 		bool has_accept = false;
-
-		SetDParam(0, this->window_number);
-		this->DrawWidgets();
 
 		if (HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) {
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
@@ -581,6 +584,15 @@ public:
 				}
 			}
 		}
+		return y;
+	}
+
+	virtual void OnPaint()
+	{
+		SetDParam(0, this->window_number);
+		this->DrawWidgets();
+
+		int y = this->DrawInfo(this->widget[IVW_INFO].left, this->widget[IVW_INFO].right, this->widget[IVW_INFO].top);
 
 		if (y > this->widget[IVW_INFO].bottom) {
 			this->SetDirty();
