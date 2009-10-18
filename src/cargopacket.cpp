@@ -68,7 +68,8 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, Money feeder_share,
  *
  */
 
-CargoList::~CargoList()
+template <class Tinst>
+CargoList<Tinst>::~CargoList()
 {
 	while (!this->packets.empty()) {
 		delete this->packets.front();
@@ -76,14 +77,16 @@ CargoList::~CargoList()
 	}
 }
 
-void CargoList::RemoveFromCache(const CargoPacket *cp)
+template <class Tinst>
+void CargoList<Tinst>::RemoveFromCache(const CargoPacket *cp)
 {
 	this->count                 -= cp->count;
 	this->feeder_share          -= cp->feeder_share;
 	this->cargo_days_in_transit -= cp->days_in_transit * cp->count;
 }
 
-void CargoList::AddToCache(const CargoPacket *cp)
+template <class Tinst>
+void CargoList<Tinst>::AddToCache(const CargoPacket *cp)
 {
 	this->count                 += cp->count;
 	this->feeder_share          += cp->feeder_share;
@@ -101,7 +104,8 @@ void VehicleCargoList::AgeCargo()
 	}
 }
 
-void CargoList::Append(CargoPacket *cp)
+template <class Tinst>
+void CargoList<Tinst>::Append(CargoPacket *cp)
 {
 	assert(cp != NULL);
 
@@ -123,7 +127,8 @@ void CargoList::Append(CargoPacket *cp)
 }
 
 
-void CargoList::Truncate(uint max_remaining)
+template <class Tinst>
+void CargoList<Tinst>::Truncate(uint max_remaining)
 {
 	for (List::iterator it = packets.begin(); it != packets.end(); /* done during loop*/) {
 		CargoPacket *cp = *it;
@@ -149,7 +154,9 @@ void CargoList::Truncate(uint max_remaining)
 	}
 }
 
-bool CargoList::MoveTo(CargoList *dest, uint max_move, CargoList::MoveToAction mta, CargoPayment *payment, uint data)
+template <class Tinst>
+template <class Tother_inst>
+bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, CargoList::MoveToAction mta, CargoPayment *payment, uint data)
 {
 	assert(mta == MTA_FINAL_DELIVERY || dest != NULL);
 	assert(mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL);
@@ -228,7 +235,8 @@ bool CargoList::MoveTo(CargoList *dest, uint max_move, CargoList::MoveToAction m
 	return it != packets.end();
 }
 
-void CargoList::InvalidateCache()
+template <class Tinst>
+void CargoList<Tinst>::InvalidateCache()
 {
 	this->count = 0;
 	this->feeder_share = 0;
@@ -238,3 +246,16 @@ void CargoList::InvalidateCache()
 		this->AddToCache(*it);
 	}
 }
+
+/*
+ * We have to instantiate everything we want to be usable.
+ */
+template class CargoList<VehicleCargoList>;
+template class CargoList<StationCargoList>;
+
+/** Autoreplace Vehicle -> Vehicle 'transfer' */
+template bool CargoList<VehicleCargoList>::MoveTo(VehicleCargoList *, uint max_move, MoveToAction mta, CargoPayment *payment, uint data);
+/** Cargo unloading at a station */
+template bool CargoList<VehicleCargoList>::MoveTo(StationCargoList *, uint max_move, MoveToAction mta, CargoPayment *payment, uint data);
+/** Cargo loading at a station */
+template bool CargoList<StationCargoList>::MoveTo(VehicleCargoList *, uint max_move, MoveToAction mta, CargoPayment *payment, uint data);

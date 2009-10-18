@@ -29,7 +29,7 @@ typedef Pool<CargoPacket, CargoPacketID, 1024, 1048576> CargoPacketPool;
 /** The actual pool with cargo packets */
 extern CargoPacketPool _cargopacket_pool;
 
-class CargoList;
+template <class Tinst> class CargoList;
 extern const struct SaveLoad *GetCargoPacketDesc();
 
 /**
@@ -44,7 +44,7 @@ private:
 	byte days_in_transit;   ///< Amount of days this packet has been in transit
 
 	/** The CargoList caches, thus needs to know about it. */
-	friend class CargoList;
+	template <class Tinst> friend class CargoList;
 	friend class VehicleCargoList;
 	friend class StationCargoList;
 	/** We want this to be saved, right? */
@@ -147,7 +147,9 @@ public:
 
 /**
  * Simple collection class for a list of cargo packets
+ * @tparam Tinst The actual instantation of this cargo list
  */
+template <class Tinst>
 class CargoList {
 public:
 	/** List of cargo packets */
@@ -192,15 +194,10 @@ public:
 	 * Returns a pointer to the cargo packet list (so you can iterate over it etc).
 	 * @return pointer to the packet list
 	 */
-	FORCEINLINE const CargoList::List *Packets() const
+	FORCEINLINE const List *Packets() const
 	{
 		return &this->packets;
 	}
-
-	/**
-	 * Ages the all cargo in this list
-	 */
-	void AgeCargo();
 
 	/**
 	 * Checks whether this list is empty
@@ -285,7 +282,8 @@ public:
 	 * @pre mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL
 	 * @return true if there are still packets that might be moved from this cargo list
 	 */
-	bool MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta, CargoPayment *payment, uint data = 0);
+	template <class Tother_inst>
+	bool MoveTo(Tother_inst *dest, uint count, CargoList::MoveToAction mta, CargoPayment *payment, uint data = 0);
 
 	/** Invalidates the cached data and rebuild it */
 	void InvalidateCache();
@@ -294,7 +292,7 @@ public:
 /**
  * CargoList that is used for vehicles.
  */
-class VehicleCargoList : public CargoList {
+class VehicleCargoList : public CargoList<VehicleCargoList> {
 public:
 	/** The vehicles have a cargo list (and we want that saved). */
 	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt);
@@ -308,7 +306,7 @@ public:
 /**
  * CargoList that is used for stations.
  */
-class StationCargoList : public CargoList {
+class StationCargoList : public CargoList<StationCargoList> {
 public:
 	/** The stations, via GoodsEntry, have a CargoList. */
 	friend const struct SaveLoad *GetGoodsDesc();
