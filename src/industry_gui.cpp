@@ -85,7 +85,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 template <typename TC, typename TS>
 static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargos, TS &suffixes)
 {
-	assert_compile(lengthof(cargos) <= lengthof(suffixes));
+	assert_tcompile(lengthof(cargos) <= lengthof(suffixes));
 	for (uint j = 0; j < lengthof(cargos); j++) {
 		if (cargos[j] != CT_INVALID) {
 			GetCargoSuffix(cb_offset + j, cst, ind, ind_type, indspec, suffixes[j], lastof(suffixes[j]));

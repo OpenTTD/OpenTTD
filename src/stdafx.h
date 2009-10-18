@@ -301,11 +301,14 @@ typedef unsigned char byte;
 #if defined(__STDCXX_VERSION__) || defined(__GXX_EXPERIMENTAL_CXX0X__) || defined(__GXX_EXPERIMENTAL_CPP0X__) || defined(static_assert)
 	/* __STDCXX_VERSION__ is c++0x feature macro, __GXX_EXPERIMENTAL_CXX0X__ is used by gcc, __GXX_EXPERIMENTAL_CPP0X__ by icc */
 	#define assert_compile(expr) static_assert(expr, #expr )
+	#define assert_tcompile(expr) assert_compile(expr)
 #elif defined(__OS2__) || (defined(__GNUC__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4)
 	/* Disabled for OS/2 or GCC < 3.4 (GCC < 3 isn't supported anymore) */
 	#define assert_compile(expr)
+	#define assert_tcompile(expr) assert(expr)
 #else
 	#define assert_compile(expr) extern const int __ct_assert__[1 - 2 * !(expr)] UNUSED
+	#define assert_tcompile(expr) assert(expr)
 #endif
 
 /* Check if the types have the bitsizes like we are using them */
