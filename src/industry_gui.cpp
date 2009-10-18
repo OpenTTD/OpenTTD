@@ -544,7 +544,7 @@ public:
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
-				if (has_accept) y += 10;
+				if (has_accept) y += WD_PAR_VSEP_WIDE;
 				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
 				y += FONT_HEIGHT_NORMAL;
 				this->production_offset_y = y;
@@ -572,7 +572,7 @@ public:
 			if (callback_res != CALLBACK_FAILED) {
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
 				if (message != STR_NULL && message != STR_UNDEFINED) {
-					y += 10;
+					y += WD_PAR_VSEP_WIDE;
 
 					PrepareTextRefStackUsage(6);
 					/* Use all the available space left from where we stand up to the

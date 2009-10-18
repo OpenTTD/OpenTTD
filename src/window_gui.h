@@ -115,7 +115,8 @@ enum WidgetDrawDistances {
 
 	WD_SORTBUTTON_ARROW_WIDTH = 11, ///< Width of up/down arrow of sort button state.
 
-	WD_PAR_VSEP_NORMAL = 2,      ///< Amount of vertical space between two paragraphs of text.
+	WD_PAR_VSEP_NORMAL = 2,      ///< Normal amount of vertical space between two paragraphs of text.
+	WD_PAR_VSEP_WIDE   = 8,      ///< Large amount of vertical space between two paragraphs of text.
 };
 
 /* wiget.cpp */
