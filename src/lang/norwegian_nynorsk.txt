@@ -2000,6 +2000,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bygg by 
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfeldige byar
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dekk kartet med tilfeldig plasserte byar
 
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilfeldig namn
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystorleik:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Liten
