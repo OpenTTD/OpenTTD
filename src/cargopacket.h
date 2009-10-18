@@ -37,11 +37,14 @@ extern const struct SaveLoad *GetCargoPacketDesc();
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
-	/* Variables used by the CargoList cache. Only let them be modified via
-	 * the proper accessor functions and/or CargoList itself. */
-	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo
-	uint16 count;           ///< The amount of cargo in this packet
-	byte days_in_transit;   ///< Amount of days this packet has been in transit
+	Money feeder_share;         ///< Value of feeder pickup to be paid for on delivery of cargo
+	uint16 count;               ///< The amount of cargo in this packet
+	byte days_in_transit;       ///< Amount of days this packet has been in transit
+	SourceTypeByte source_type; ///< Type of \c source_id
+	SourceID source_id;         ///< Index of source, INVALID_SOURCE if unknown/invalid
+	StationID source;           ///< The station where the cargo came from first
+	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
+	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
 
 	/** The CargoList caches, thus needs to know about it. */
 	template <class Tinst> friend class CargoList;
@@ -52,12 +55,6 @@ private:
 public:
 	/** Maximum number of items in a single cargo packet. */
 	static const uint16 MAX_COUNT = UINT16_MAX;
-
-	SourceTypeByte source_type; ///< Type of \c source_id
-	SourceID source_id;         ///< Index of source, INVALID_SOURCE if unknown/invalid
-	StationID source;           ///< The station where the cargo came from first
-	TileIndex source_xy;        ///< The origin of the cargo (first station in feeder chain)
-	TileIndex loaded_at_xy;     ///< Location where this cargo has been loaded into the vehicle
 
 	/**
 	 * Creates a new cargo packet
@@ -115,6 +112,51 @@ public:
 	FORCEINLINE byte DaysInTransit() const
 	{
 		return this->days_in_transit;
+	}
+
+	/**
+	 * Gets the type of the cargo's source. industry, town or head quarter
+	 * @return the source type
+	 */
+	FORCEINLINE SourceType SourceSubsidyType() const
+	{
+		return this->source_type;
+	}
+
+	/**
+	 * Gets the ID of the cargo's source. An IndustryID, TownID or CompanyID
+	 * @return the source ID
+	 */
+	FORCEINLINE SourceID SourceSubsidyID() const
+	{
+		return this->source_id;
+	}
+
+	/**
+	 * Gets the ID of the station where the cargo was loaded for the first time
+	 * @return the StationID
+	 */
+	FORCEINLINE SourceID SourceStation() const
+	{
+		return this->source;
+	}
+
+	/**
+	 * Gets the coordinates of the cargo's source station
+	 * @return the source station's coordinates
+	 */
+	FORCEINLINE TileIndex SourceStationXY() const
+	{
+		return this->source_xy;
+	}
+
+	/**
+	 * Gets the coordinates of the cargo's last loading station
+	 * @return the last loading station's coordinates
+	 */
+	FORCEINLINE TileIndex LoadedAtXY() const
+	{
+		return this->loaded_at_xy;
 	}
 
 
