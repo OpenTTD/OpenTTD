@@ -505,7 +505,7 @@ public:
 	{
 		Industry *i = Industry::Get(this->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
-		int y = this->widget[IVW_INFO].top + 1;
+		int y = top + WD_FRAMERECT_TOP;
 		bool first = true;
 		bool has_accept = false;
 
@@ -514,15 +514,15 @@ public:
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
 				if (first) {
-					DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING);
-					y += 10;
+					DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING);
+					y += FONT_HEIGHT_NORMAL;
 					first = false;
 				}
 				SetDParam(0, i->accepts_cargo[j]);
 				SetDParam(1, i->incoming_cargo_waiting[j]);
 				SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
-				DrawString(4, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO);
-				y += 10;
+				DrawString(left + WD_FRAMETEXT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO);
+				y += FONT_HEIGHT_NORMAL;
 			}
 		} else {
 			StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
@@ -535,8 +535,8 @@ public:
 				SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
 			}
 			if (has_accept) {
-				DrawString(2, this->widget[IVW_INFO].right, y, str);
-				y += 10;
+				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, str);
+				y += FONT_HEIGHT_NORMAL;
 			}
 		}
 
@@ -545,8 +545,8 @@ public:
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
 				if (has_accept) y += 10;
-				DrawString(2, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
-				y += 10;
+				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
+				y += FONT_HEIGHT_NORMAL;
 				this->production_offset_y = y;
 				first = false;
 			}
@@ -556,14 +556,14 @@ public:
 			SetDParam(2, GetCargoSuffix(j + 3, CST_VIEW, i, i->type, ind));
 
 			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
-			uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
-			DrawString(x, this->widget[IVW_INFO].right, y, STR_INDUSTRY_VIEW_TRANSPORTED);
+			uint x = left + WD_FRAMETEXT_LEFT + (IsProductionAlterable(i) ? 30 : 0);
+			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(5, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
+				DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
 						!IsProductionMinimum(i, j), !IsProductionMaximum(i, j));
 			}
-			y += 10;
+			y += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Get the extra message for the GUI */
@@ -572,14 +572,13 @@ public:
 			if (callback_res != CALLBACK_FAILED) {
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
 				if (message != STR_NULL && message != STR_UNDEFINED) {
-					const Widget *wi = &this->widget[IVW_INFO];
 					y += 10;
 
 					PrepareTextRefStackUsage(6);
 					/* Use all the available space left from where we stand up to the
 					 * end of the window. We ALSO enlarge the window if needed, so we
 					 * can 'go' wild with the bottom of the window. */
-					y = DrawStringMultiLine(wi->left + 2, wi->right - 2, y, UINT16_MAX, message);
+					y = DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, UINT16_MAX, message);
 					StopTextRefStackUsage();
 				}
 			}
@@ -610,18 +609,19 @@ public:
 
 		switch (widget) {
 			case IVW_INFO: {
-				int line, x;
-
 				i = Industry::Get(this->window_number);
 
 				/* We should work if needed.. */
 				if (!IsProductionAlterable(i)) return;
-				x = pt.x;
-				line = (pt.y - this->production_offset_y) / 10;
+				uint x = pt.x;
+				int line = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
 				if (pt.y >= this->production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
-					if (IsInsideMM(x, 5, 25) ) {
+					Widget *wi = &this->widget[widget];
+					uint left = wi->left + WD_FRAMETEXT_LEFT;
+					uint right = wi->right - WD_FRAMERECT_RIGHT;
+					if (IsInsideMM(x, left, left + 20) ) {
 						/* Clicked buttons, decrease or increase production */
-						if (x < 15) {
+						if (x < left + 10) {
 							if (IsProductionMinimum(i, line)) return;
 							i->production_rate[line] = max(i->production_rate[line] / 2, 0);
 						} else {
@@ -635,8 +635,8 @@ public:
 						this->SetDirty();
 						this->flags4 |= WF_TIMEOUT_BEGIN;
 						this->clicked_line = line + 1;
-						this->clicked_button = (x < 15 ? 1 : 2);
-					} else if (IsInsideMM(x, 34, 160)) {
+						this->clicked_button = (x < left + 10 ? 1 : 2);
+					} else if (IsInsideMM(x, left + 30, right)) {
 						/* clicked the text */
 						this->editbox_line = line;
 						SetDParam(0, i->production_rate[line] * 8);
