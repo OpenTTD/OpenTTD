@@ -62,6 +62,18 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, Money feeder_share,
 	}
 }
 
+/**
+ * Invalidates (sets source to INVALID_STATION) all cargo packets from given station
+ * @param sid the station that gets removed
+ */
+/* static */ void CargoPacket::InvalidateAllFrom(StationID sid)
+{
+	CargoPacket *cp;
+	FOR_ALL_CARGOPACKETS(cp) {
+		if (cp->source == sid) cp->source_id = INVALID_SOURCE;
+	}
+}
+
 /*
  *
  * Cargo list implementation

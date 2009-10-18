@@ -97,11 +97,7 @@ Station::~Station()
 		this->goods[c].cargo.Truncate(0);
 	}
 
-	CargoPacket *cp;
-	FOR_ALL_CARGOPACKETS(cp) {
-		/* Don't allow cargo packets with invalid source station */
-		if (cp->source == this->index) cp->source = INVALID_STATION;
-	}
+	CargoPacket::InvalidateAllFrom(this->index);
 }
 
 
