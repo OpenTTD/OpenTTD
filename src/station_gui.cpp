@@ -825,7 +825,7 @@ struct StationViewWindow : public Window {
 
 				/* Add an entry for each distinct cargo source. */
 				const StationCargoList::List *packets = st->goods[i].cargo.Packets();
-				for (StationCargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					const CargoPacket *cp = *it;
 					if (cp->SourceStation() != station_id) {
 						bool added = false;
@@ -837,7 +837,7 @@ struct StationViewWindow : public Window {
 						if (!HasBit(this->cargo, i)) break;
 
 						/* Check if we already have this source in the list */
-						for (CargoDataList::iterator jt = cargolist.begin(); jt != cargolist.end(); jt++) {
+						for (CargoDataList::iterator jt(cargolist.begin()); jt != cargolist.end(); jt++) {
 							CargoData *cd = &(*jt);
 							if (cd->cargo == i && cd->source == cp->SourceStation()) {
 								cd->count += cp->Count();

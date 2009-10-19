@@ -185,8 +185,12 @@ public:
 template <class Tinst>
 class CargoList {
 public:
-	/** List of cargo packets */
+	/** Container with cargo packets */
 	typedef std::list<CargoPacket *> List;
+	/** The iterator for our container */
+	typedef List::iterator Iterator;
+	/** The const iterator for our container */
+	typedef List::const_iterator ConstIterator;
 
 	/** Kind of actions that could be done with packets on move */
 	enum MoveToAction {

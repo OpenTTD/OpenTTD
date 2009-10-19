@@ -73,7 +73,7 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
 {
 	CargoPacket *cp;
 	FOR_ALL_CARGOPACKETS(cp) {
-		if (cp->source == sid) cp->source_id = INVALID_SOURCE;
+		if (cp->source == sid) cp->source = INVALID_STATION;
 	}
 }
 
@@ -86,9 +86,8 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
 template <class Tinst>
 CargoList<Tinst>::~CargoList()
 {
-	while (!this->packets.empty()) {
-		delete this->packets.front();
-		this->packets.pop_front();
+	for (Iterator it(this->packets.begin()); it != this->packets.end(); ++it) {
+		delete *it;
 	}
 }
 
@@ -111,7 +110,7 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 {
 	assert(cp != NULL);
 
-	for (List::iterator it = this->packets.begin(); it != this->packets.end(); it++) {
+	for (Iterator it(this->packets.begin()); it != this->packets.end(); it++) {
 		CargoPacket *icp = *it;
 		if (Tinst::AreMergable(icp, cp) && icp->count + cp->count <= CargoPacket::MAX_COUNT) {
 			icp->count        += cp->count;
@@ -132,11 +131,11 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 template <class Tinst>
 void CargoList<Tinst>::Truncate(uint max_remaining)
 {
-	for (List::iterator it = packets.begin(); it != packets.end(); /* done during loop*/) {
+	for (Iterator it(packets.begin()); it != packets.end(); /* done during loop*/) {
 		CargoPacket *cp = *it;
 		if (max_remaining == 0) {
 			/* Nothing should remain, just remove the packets. */
-			packets.erase(it++);
+			this->packets.erase(it++);
 			static_cast<Tinst *>(this)->RemoveFromCache(cp);
 			delete cp;
 			continue;
@@ -163,8 +162,8 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 	assert(mta == MTA_FINAL_DELIVERY || dest != NULL);
 	assert(mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL);
 
-	List::iterator it = packets.begin();
-	while (it != packets.end() && max_move > 0) {
+	Iterator it(this->packets.begin());
+	while (it != this->packets.end() && max_move > 0) {
 		CargoPacket *cp = *it;
 		if (cp->source == data && mta == MTA_FINAL_DELIVERY) {
 			/* Skip cargo that originated from this station. */
@@ -241,7 +240,7 @@ void CargoList<Tinst>::InvalidateCache()
 	this->count = 0;
 	this->cargo_days_in_transit = 0;
 
-	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
+	for (ConstIterator it(this->packets.begin()); it != this->packets.end(); it++) {
 		static_cast<Tinst *>(this)->AddToCache(*it);
 	}
 }
@@ -261,12 +260,13 @@ void VehicleCargoList::AddToCache(const CargoPacket *cp)
 
 void VehicleCargoList::AgeCargo()
 {
-	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
+	for (ConstIterator it(this->packets.begin()); it != this->packets.end(); it++) {
+		CargoPacket *cp = *it;
 		/* If we're at the maximum, then we can't increase no more. */
-		if ((*it)->days_in_transit == 0xFF) continue;
+		if (cp->days_in_transit == 0xFF) continue;
 
-		(*it)->days_in_transit++;
-		this->cargo_days_in_transit += (*it)->count;
+		cp->days_in_transit++;
+		this->cargo_days_in_transit += cp->count;
 	}
 }
 

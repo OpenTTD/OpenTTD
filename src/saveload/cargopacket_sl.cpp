@@ -28,7 +28,7 @@
 			*/
 		FOR_ALL_VEHICLES(v) {
 			const VehicleCargoList::List *packets = v->cargo.Packets();
-			for (VehicleCargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
 				cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : v->tile;
 				cp->loaded_at_xy = cp->source_xy;
@@ -47,7 +47,7 @@
 				GoodsEntry *ge = &st->goods[c];
 
 				const StationCargoList::List *packets = ge->cargo.Packets();
-				for (StationCargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
 					cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : st->xy;
 					cp->loaded_at_xy = cp->source_xy;
