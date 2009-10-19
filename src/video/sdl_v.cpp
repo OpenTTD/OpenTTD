@@ -21,6 +21,7 @@
 #include "../network/network.h"
 #include "../functions.h"
 #include "../thread/thread.h"
+#include "../genworld.h"
 #include "sdl_v.h"
 #include <SDL.h>
 
@@ -572,7 +573,7 @@ void VideoDriver_SDL::MainLoop()
 			}
 
 			/* End of the critical part. */
-			if (_draw_threaded) {
+			if (_draw_threaded && !IsGeneratingWorld()) {
 				_draw_mutex->SendSignal();
 			} else {
 				/* Oh, we didn't have threads, then just draw unthreaded */
