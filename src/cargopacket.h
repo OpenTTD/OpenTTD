@@ -197,7 +197,6 @@ public:
 	};
 
 protected:
-	Money feeder_share;         ///< Cache for the feeder share
 	uint count;                 ///< Cache for the number of cargo entities
 	uint cargo_days_in_transit; ///< Cache for the sum of number of days in transit of each entity; comparable to man-hours
 
@@ -248,15 +247,6 @@ public:
 	FORCEINLINE uint Count() const
 	{
 		return this->count;
-	}
-
-	/**
-	 * Returns total sum of the feeder share for all packets
-	 * @return the before mentioned number
-	 */
-	FORCEINLINE Money FeederShare() const
-	{
-		return this->feeder_share;
 	}
 
 	/**
@@ -326,14 +316,48 @@ public:
  * CargoList that is used for vehicles.
  */
 class VehicleCargoList : public CargoList<VehicleCargoList> {
+protected:
+	/** The (direct) parent of this class */
+	typedef CargoList<VehicleCargoList> Parent;
+
+	Money feeder_share; ///< Cache for the feeder share
+
+	/**
+	 * Update the cache to reflect adding of this packet.
+	 * Increases count, feeder share and days_in_transit
+	 * @param cp a new packet to be inserted
+	 */
+	void AddToCache(const CargoPacket *cp);
+
+	/**
+	 * Update the cached values to reflect the removal of this packet.
+	 * Decreases count, feeder share and days_in_transit
+	 * @param cp Packet to be removed from cache
+	 */
+	void RemoveFromCache(const CargoPacket *cp);
+
 public:
+	/** The super class ought to know what it's doing */
+	friend class CargoList<VehicleCargoList>;
 	/** The vehicles have a cargo list (and we want that saved). */
 	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt);
+
+	/**
+	 * Returns total sum of the feeder share for all packets
+	 * @return the before mentioned number
+	 */
+	FORCEINLINE Money FeederShare() const
+	{
+		return this->feeder_share;
+	}
 
 	/**
 	 * Ages the all cargo in this list
 	 */
 	void AgeCargo();
+
+	/** Invalidates the cached data and rebuild it */
+	void InvalidateCache();
 
 	/**
 	 * Are two the two CargoPackets mergeable in the context of
@@ -357,6 +381,8 @@ public:
  */
 class StationCargoList : public CargoList<StationCargoList> {
 public:
+	/** The super class ought to know what it's doing */
+	friend class CargoList<StationCargoList>;
 	/** The stations, via GoodsEntry, have a CargoList. */
 	friend const struct SaveLoad *GetGoodsDesc();
 

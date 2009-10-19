@@ -96,7 +96,6 @@ template <class Tinst>
 void CargoList<Tinst>::RemoveFromCache(const CargoPacket *cp)
 {
 	this->count                 -= cp->count;
-	this->feeder_share          -= cp->feeder_share;
 	this->cargo_days_in_transit -= cp->days_in_transit * cp->count;
 }
 
@@ -104,19 +103,7 @@ template <class Tinst>
 void CargoList<Tinst>::AddToCache(const CargoPacket *cp)
 {
 	this->count                 += cp->count;
-	this->feeder_share          += cp->feeder_share;
 	this->cargo_days_in_transit += cp->days_in_transit * cp->count;
-}
-
-void VehicleCargoList::AgeCargo()
-{
-	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
-		/* If we're at the maximum, then we can't increase no more. */
-		if ((*it)->days_in_transit == 0xFF) continue;
-
-		(*it)->days_in_transit++;
-		this->cargo_days_in_transit += (*it)->count;
-	}
 }
 
 template <class Tinst>
@@ -130,7 +117,7 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 			icp->count        += cp->count;
 			icp->feeder_share += cp->feeder_share;
 
-			this->AddToCache(cp);
+			static_cast<Tinst *>(this)->AddToCache(cp);
 			delete cp;
 			return;
 		}
@@ -138,7 +125,7 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 
 	/* The packet could not be merged with another one */
 	this->packets.push_back(cp);
-	this->AddToCache(cp);
+	static_cast<Tinst *>(this)->AddToCache(cp);
 }
 
 
@@ -150,7 +137,7 @@ void CargoList<Tinst>::Truncate(uint max_remaining)
 		if (max_remaining == 0) {
 			/* Nothing should remain, just remove the packets. */
 			packets.erase(it++);
-			this->RemoveFromCache(cp);
+			static_cast<Tinst *>(this)->RemoveFromCache(cp);
 			delete cp;
 			continue;
 		}
@@ -189,7 +176,7 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 			/* Can move the complete packet */
 			max_move -= cp->count;
 			this->packets.erase(it++);
-			this->RemoveFromCache(cp);
+			static_cast<Tinst *>(this)->RemoveFromCache(cp);
 			switch(mta) {
 				case MTA_FINAL_DELIVERY:
 					payment->PayFinalDelivery(cp, cp->count);
@@ -215,20 +202,24 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 		if (mta == MTA_FINAL_DELIVERY) {
 			/* Final delivery doesn't need package splitting. */
 			payment->PayFinalDelivery(cp, max_move);
-			this->count -= max_move;
-			this->cargo_days_in_transit -= max_move * cp->days_in_transit;
+
+			/* Remove the delivered data from the cache */
+			uint left = cp->count - max_move;
+			cp->count = max_move;
+			static_cast<Tinst *>(this)->RemoveFromCache(cp);
 
 			/* Final delivery payment pays the feeder share, so we have to
 			 * reset that so it is not 'shown' twice for partial unloads. */
-			this->feeder_share -= cp->feeder_share;
 			cp->feeder_share = 0;
+			cp->count = left;
 		} else {
 			/* But... the rest needs package splitting. */
 			Money fs = cp->feeder_share * max_move / static_cast<uint>(cp->count);
 			cp->feeder_share -= fs;
+			cp->count -= max_move;
 
 			CargoPacket *cp_new = new CargoPacket(max_move, cp->days_in_transit, cp->source, cp->source_xy, (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy, fs, cp->source_type, cp->source_id);
-			this->RemoveFromCache(cp_new); // this reflects the changes in cp.
+			static_cast<Tinst *>(this)->RemoveFromCache(cp_new); // this reflects the changes in cp.
 
 			if (mta == MTA_TRANSFER) {
 				/* Add the feeder share before inserting in dest. */
@@ -237,7 +228,6 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 
 			dest->Append(cp_new);
 		}
-		cp->count -= max_move;
 
 		max_move = 0;
 	}
@@ -249,12 +239,41 @@ template <class Tinst>
 void CargoList<Tinst>::InvalidateCache()
 {
 	this->count = 0;
-	this->feeder_share = 0;
 	this->cargo_days_in_transit = 0;
 
 	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
-		this->AddToCache(*it);
+		static_cast<Tinst *>(this)->AddToCache(*it);
 	}
+}
+
+
+void VehicleCargoList::RemoveFromCache(const CargoPacket *cp)
+{
+	this->feeder_share -= cp->feeder_share;
+	this->Parent::RemoveFromCache(cp);
+}
+
+void VehicleCargoList::AddToCache(const CargoPacket *cp)
+{
+	this->feeder_share += cp->feeder_share;
+	this->Parent::AddToCache(cp);
+}
+
+void VehicleCargoList::AgeCargo()
+{
+	for (List::const_iterator it = this->packets.begin(); it != this->packets.end(); it++) {
+		/* If we're at the maximum, then we can't increase no more. */
+		if ((*it)->days_in_transit == 0xFF) continue;
+
+		(*it)->days_in_transit++;
+		this->cargo_days_in_transit += (*it)->count;
+	}
+}
+
+void VehicleCargoList::InvalidateCache()
+{
+	this->feeder_share = 0;
+	this->Parent::InvalidateCache();
 }
 
 /*
