@@ -222,7 +222,7 @@ protected:
 
 public:
 	/** Create the cargo list */
-	FORCEINLINE CargoList() { this->InvalidateCache(); }
+	CargoList() {}
 	/** And destroy it ("frees" all cargo packets) */
 	~CargoList();
 
