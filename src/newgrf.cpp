@@ -3716,7 +3716,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x09: // date fraction
-			*value = _date_fract;
+			*value = _date_fract * 885;
 			return true;
 
 		case 0x0A: // animation counter
