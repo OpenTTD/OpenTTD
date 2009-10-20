@@ -367,10 +367,10 @@ struct DepotWindow : Window {
 			xm = x % this->resize.step_width;
 			if (xt >= this->hscroll.GetCapacity()) return MODE_ERROR;
 
-			ym = (y - 14) % this->resize.step_height;
+			ym = y % this->resize.step_height;
 		}
 
-		uint row = (y - 14) / this->resize.step_height;
+		uint row = y / this->resize.step_height;
 		if (row >= this->vscroll.GetCapacity()) return MODE_ERROR;
 
 		uint16 boxes_in_each_row = GB(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->widget_data, MAT_COL_START, MAT_COL_BITS);
@@ -439,6 +439,10 @@ struct DepotWindow : Window {
 		return MODE_START_STOP;
 	}
 
+	/** Handle click in the depot matrix.
+	 * @param x Horizontal position in the matrix widget in pixels.
+	 * @param y Vertical position in the matrix widget in pixels.
+	 */
 	void DepotClick(int x, int y)
 	{
 		GetDepotVehiclePtData gdvp = { NULL, NULL };
@@ -677,9 +681,11 @@ struct DepotWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case DEPOT_WIDGET_MATRIX: // List
-				this->DepotClick(pt.x, pt.y);
+			case DEPOT_WIDGET_MATRIX: { // List
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(DEPOT_WIDGET_MATRIX);
+				this->DepotClick(pt.x - nwi->pos_x, pt.y - nwi->pos_y);
 				break;
+			}
 
 			case DEPOT_WIDGET_BUILD: // Build vehicle
 				ResetObjectToPlace();
@@ -749,7 +755,8 @@ struct DepotWindow : Window {
 
 		GetDepotVehiclePtData gdvp = { NULL, NULL };
 		const Vehicle *v = NULL;
-		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp);
+		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(DEPOT_WIDGET_MATRIX);
+		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(pt.x - nwi->pos_x, pt.y - nwi->pos_y, &v, &gdvp);
 
 		if (this->type == VEH_TRAIN) v = gdvp.wagon;
 
@@ -840,23 +847,21 @@ struct DepotWindow : Window {
 				this->sel = INVALID_VEHICLE;
 				this->SetDirty();
 
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(DEPOT_WIDGET_MATRIX);
 				if (this->type == VEH_TRAIN) {
 					GetDepotVehiclePtData gdvp = { NULL, NULL };
 
-					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
-						sel != INVALID_VEHICLE) {
+					if (this->GetVehicleFromDepotWndPt(pt.x - nwi->pos_x, pt.y - nwi->pos_y, &v, &gdvp) == MODE_DRAG_VEHICLE && sel != INVALID_VEHICLE) {
 						if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
 							DoCommandP(Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true,
-													CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE));
+									CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != NULL && Train::From(gdvp.head)->IsFrontEngine()) {
 							ShowVehicleViewWindow(gdvp.head);
 						}
 					}
-				} else if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, NULL) == MODE_DRAG_VEHICLE &&
-					v != NULL &&
-					sel == v->index) {
+				} else if (this->GetVehicleFromDepotWndPt(pt.x - nwi->pos_x, pt.y - nwi->pos_y, &v, NULL) == MODE_DRAG_VEHICLE && v != NULL && sel == v->index) {
 					ShowVehicleViewWindow(v);
 				}
 			} break;
