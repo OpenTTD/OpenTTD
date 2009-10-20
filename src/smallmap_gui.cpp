@@ -629,7 +629,7 @@ class SmallMapWindow : public Window {
 	 * @param dpi the part of the smallmap to be drawn into
 	 * @param blitter current blitter
 	 */
-	void DrawVehicles(DrawPixelInfo *dpi, Blitter *blitter)
+	void DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter)
 	{
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
@@ -678,7 +678,7 @@ class SmallMapWindow : public Window {
 	 * Adds town names to the smallmap.
 	 * @param dpi the part of the smallmap to be drawn into
 	 */
-	void DrawTowns(DrawPixelInfo *dpi)
+	void DrawTowns(const DrawPixelInfo *dpi)
 	{
 		const Town *t;
 		FOR_ALL_TOWNS(t) {
@@ -862,6 +862,7 @@ class SmallMapWindow : public Window {
 		/* Draw town names */
 		if (this->show_towns) this->DrawTowns(dpi);
 
+		/* Draw map indicators */
 		this->DrawMapIndicators();
 
 		_cur_dpi = old_dpi;
