@@ -252,8 +252,6 @@ void AfterLoadVehicles(bool part_of_load)
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) Train::From(v)->tcache.first_engine = INVALID_ENGINE;
 		if (v->type == VEH_ROAD)  RoadVehicle::From(v)->rcache.first_engine = INVALID_ENGINE;
-
-		v->cargo.InvalidateCache();
 	}
 
 	/* AfterLoadVehicles may also be called in case of NewGRF reload, in this

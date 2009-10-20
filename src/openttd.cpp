@@ -60,6 +60,7 @@
 #include "highscore.h"
 #include "thread/thread.h"
 #include "base_station_base.h"
+#include "station_base.h"
 #include "airport.h"
 #include "crashlog.h"
 
@@ -1151,6 +1152,25 @@ void StateGameLoop()
 					default:
 						break;
 				}
+			}
+		}
+
+		/* Check whether the caches are still valid */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			byte buff[sizeof(VehicleCargoList)];
+			memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
+			v->cargo.InvalidateCache();
+			assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
+		}
+
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			for (CargoID c = 0; c < NUM_CARGO; c++) {
+				byte buff[sizeof(StationCargoList)];
+				memcpy(buff, &st->goods[c].cargo, sizeof(StationCargoList));
+				st->goods[c].cargo.InvalidateCache();
+				assert(memcmp(&st->goods[c].cargo, buff, sizeof(StationCargoList)) == 0);
 			}
 		}
 

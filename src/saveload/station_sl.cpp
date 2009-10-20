@@ -98,10 +98,6 @@ void AfterLoadStations()
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx, NULL);
 		}
 
-		if (Station::IsExpected(st)) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) Station::From(st)->goods[c].cargo.InvalidateCache();
-		}
-
 		StationUpdateAnimTriggers(st);
 	}
 }

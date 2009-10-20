@@ -535,6 +535,14 @@ bool AfterLoadGame()
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();
 
+	/* Fix the CargoPackets *and* fix the caches of CargoLists.
+	 * If this isn't done before Stations and especially Vehicles are
+	 * running their AfterLoad we might get in trouble. In the case of
+	 * vehicles we could give the wrong (cached) count of items in a
+	 * vehicle which causes different results when getting their caches
+	 * filled; and that could eventually lead to desyncs. */
+	CargoPacket::AfterLoad();
+
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
 
@@ -1226,8 +1234,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	CargoPacket::AfterLoad();
-
 	if (CheckSavegameVersion(45)) {
 		Vehicle *v;
 		/* Originally just the fact that some cargo had been paid for was
@@ -1237,7 +1243,6 @@ bool AfterLoadGame()
 		 * amount that has been paid is stored. */
 		FOR_ALL_VEHICLES(v) {
 			ClrBit(v->vehicle_flags, 2);
-			v->cargo.InvalidateCache();
 		}
 	}
 
