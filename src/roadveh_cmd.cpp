@@ -144,9 +144,9 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 	DrawSprite(GetRoadVehIcon(engine), pal, x, y);
 }
 
-byte GetRoadVehLength(const RoadVehicle *v)
+static uint GetRoadVehLength(const RoadVehicle *v)
 {
-	byte length = 8;
+	uint length = 8;
 
 	uint16 veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
 	if (veh_len != CALLBACK_FAILED) {
