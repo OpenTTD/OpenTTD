@@ -1679,6 +1679,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}設定�
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}傳送
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[團隊]：
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[私人] {STRING}：
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[全員] ：
 
 STR_NETWORK_CHAT_COMPANY                                        :[團隊] {STRING}：{WHITE}{STRING}
@@ -2350,6 +2351,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:EN
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」所擁有的列車 「{0:VEHICLE}」長度無效。 這個錯誤可能是 NewGRFs 有問題所致， 遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中「{1:ENGINE}」的貨物／改裝資訊和購買後的資訊不同。 這可能會導致自動更新／取代時無法正確的改裝交通工具。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「{1:STRING}」會導致產量 Callback 時發生無窮迴圈的錯誤。
 
 # Sign list window
@@ -2836,7 +2838,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}這會�
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}強制列車前進，不等待號誌允許
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改造列車以運輸不同的貨物種類
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改裝列車以運輸不同的貨物種類
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改裝車輛以運送不同的貨物種類
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改裝貨船以便運送不同貨物
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改裝飛機以運送其他貨物
@@ -2967,12 +2969,12 @@ STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}選擇�
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}選擇要讓船舶運送的貨物種類
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}選擇要讓飛機運送的貨物種類
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改造列車
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改裝列車
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}改裝車輛
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}改裝船舶
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}改裝飛機
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}改造列車以運輸選定的貨物種類
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}改裝列車以運輸選定的貨物種類
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}改裝車輛以運送指定的貨物種類
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}改裝船舶以運送選定的貨物種類
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}改裝飛機以運送選定的貨物種類
@@ -3459,7 +3461,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方�
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}前方有船舶
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}前方有飛機
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}無法改造列車...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}無法改裝列車...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}無法改裝車輛...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}無法改裝船舶...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}無法改裝飛機...

@@ -1679,7 +1679,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Atur Kat
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Kirim
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] {STRING}:
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Semua] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {WHITE}{STRING}
