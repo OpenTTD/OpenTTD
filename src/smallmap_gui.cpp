@@ -637,6 +637,84 @@ class SmallMapWindow : public Window {
 	}
 
 	/**
+	 * Adds vehicles to the smallmap.
+	 * @param dpi the part of the smallmap to be drawn into
+	 * @param blitter current blitter
+	 */
+	inline void DrawVehicles(DrawPixelInfo *dpi, Blitter *blitter)
+	{
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_EFFECT) continue;
+			if (v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) continue;
+
+			/* Remap into flat coordinates. */
+			Point pt = RemapCoords(
+					this->RemapX(v->x_pos / TILE_SIZE),
+					this->RemapY(v->y_pos / TILE_SIZE),
+					0);
+			int x = pt.x;
+			int y = pt.y;
+
+			/* Check if y is out of bounds? */
+			y -= dpi->top;
+			if (!IsInsideMM(y, 0, dpi->height)) continue;
+
+			/* Default is to draw both pixels. */
+			bool skip = false;
+
+			/* Offset X coordinate */
+			x -= this->subscroll + 3 + dpi->left;
+
+			if (x < 0) {
+				/* if x+1 is 0, that means we're on the very left edge,
+				 *  and should thus only draw a single pixel */
+				if (++x != 0) continue;
+				skip = true;
+			} else if (x >= dpi->width - 1) {
+				/* Check if we're at the very right edge, and if so draw only a single pixel */
+				if (x != dpi->width - 1) continue;
+				skip = true;
+			}
+
+			/* Calculate pointer to pixel and the colour */
+			byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
+
+			/* And draw either one or two pixels depending on clipping */
+			blitter->SetPixel(dpi->dst_ptr, x, y, colour);
+			if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, colour);
+		}
+	}
+
+	/**
+	 * Adds town names to the smallmap.
+	 * @param dpi the part of the smallmap to be drawn into
+	 */
+	inline void DrawTowns(DrawPixelInfo *dpi)
+	{
+		const Town *t;
+		FOR_ALL_TOWNS(t) {
+			/* Remap the town coordinate */
+			Point pt = RemapCoords(
+					this->RemapX(TileX(t->xy)),
+					this->RemapY(TileY(t->xy)),
+					0);
+			int x = pt.x - this->subscroll - (t->sign.width_small >> 1);
+			int y = pt.y;
+
+			/* Check if the town sign is within bounds */
+			if (x + t->sign.width_small > dpi->left &&
+					x < dpi->left + dpi->width &&
+					y + FONT_HEIGHT_SMALL > dpi->top &&
+					y < dpi->top + dpi->height) {
+				/* And draw it. */
+				SetDParam(0, t->index);
+				DrawString(x, x + t->sign.width_small, y, STR_SMALLMAP_TOWN);
+			}
+		}
+	}
+
+	/**
 	 * Draws the small map.
 	 *
 	 * Basically, the small map is draw column of pixels by column of pixels. The pixels
@@ -739,75 +817,11 @@ class SmallMapWindow : public Window {
 			x += 2;
 		}
 
-		/* draw vehicles? */
-		if (this->map_type == SMT_CONTOUR || this->map_type == SMT_VEHICLES) {
-			Vehicle *v;
+		/* Draw vehicles */
+		if (this->map_type == SMT_CONTOUR || this->map_type == SMT_VEHICLES) this->DrawVehicles(dpi, blitter);
 
-			FOR_ALL_VEHICLES(v) {
-				if (v->type != VEH_EFFECT &&
-						(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
-					/* Remap into flat coordinates. */
-					Point pt = RemapCoords(
-							this->RemapX(v->x_pos / TILE_SIZE),
-							this->RemapY(v->y_pos / TILE_SIZE),
-							0);
-					x = pt.x;
-					y = pt.y;
-
-					/* Check if y is out of bounds? */
-					y -= dpi->top;
-					if (!IsInsideMM(y, 0, dpi->height)) continue;
-
-					/* Default is to draw both pixels. */
-					bool skip = false;
-
-					/* Offset X coordinate */
-					x -= this->subscroll + 3 + dpi->left;
-
-					if (x < 0) {
-						/* if x+1 is 0, that means we're on the very left edge,
-						 *  and should thus only draw a single pixel */
-						if (++x != 0) continue;
-						skip = true;
-					} else if (x >= dpi->width - 1) {
-						/* Check if we're at the very right edge, and if so draw only a single pixel */
-						if (x != dpi->width - 1) continue;
-						skip = true;
-					}
-
-					/* Calculate pointer to pixel and the colour */
-					byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
-
-					/* And draw either one or two pixels depending on clipping */
-					blitter->SetPixel(dpi->dst_ptr, x, y, colour);
-					if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, colour);
-				}
-			}
-		}
-
-		if (this->show_towns) {
-			const Town *t;
-
-			FOR_ALL_TOWNS(t) {
-				/* Remap the town coordinate */
-				Point pt = RemapCoords(
-						this->RemapX(TileX(t->xy)),
-						this->RemapY(TileY(t->xy)),
-						0);
-				x = pt.x - this->subscroll - (t->sign.width_small >> 1);
-				y = pt.y;
-
-				/* Check if the town sign is within bounds */
-				if (x + t->sign.width_small > dpi->left &&
-						x < dpi->left + dpi->width &&
-						y + FONT_HEIGHT_SMALL > dpi->top &&
-						y < dpi->top + dpi->height) {
-					/* And draw it. */
-					SetDParam(0, t->index);
-					DrawString(x, x + t->sign.width_small, y, STR_SMALLMAP_TOWN);
-				}
-			}
-		}
+		/* Draw town names */
+		if (this->show_towns) this->DrawTowns(dpi);
 
 		/* Find main viewport. */
 		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
