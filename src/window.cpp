@@ -917,6 +917,14 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
  */
 void Window::InitializeData(WindowClass cls, const Widget *widget, int window_number)
 {
+	/* Set up window properties; some of them are needed to set up smallest size below */
+	this->window_class = cls;
+	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
+	this->owner = INVALID_OWNER;
+	this->focused_widget = NULL;
+	this->nested_focus = NULL;
+	this->window_number = window_number;
+
 	/* If available, initialize nested widget tree. */
 	if (widget == NULL) {
 		if (this->nested_array == NULL) {
@@ -930,17 +938,11 @@ void Window::InitializeData(WindowClass cls, const Widget *widget, int window_nu
 	}
 	/* Else, all data members of nested widgets have been set to 0 by the #ZeroedMemoryAllocator base class. */
 
-	/* Set up window properties,
+	/* Further set up window properties,
 	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
-	this->window_class = cls;
-	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
-	this->owner = INVALID_OWNER;
 	AssignWidgetToWindow(this, widget);
-	this->focused_widget = NULL;
-	this->nested_focus = NULL;
 	this->resize.step_width  = (this->nested_root != NULL) ? this->nested_root->resize_x : 1;
 	this->resize.step_height = (this->nested_root != NULL) ? this->nested_root->resize_y : 1;
-	this->window_number = window_number;
 
 	/* Give focus to the opened window unless it is the OSK window or a text box
 	 * of focused window has focus (so we don't interrupt typing). But if the new

@@ -230,11 +230,9 @@ struct DepotWindow : Window {
 		this->type = type;
 
 		this->CreateNestedTree(desc);
-
-		this->window_number = tile;
 		this->SetupWidgetData(type);
-
 		this->FinishInitNested(desc, tile);
+
 		this->owner = GetTileOwner(tile);
 		this->CreateDepotListWindow(type);
 	}
