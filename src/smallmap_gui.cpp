@@ -532,18 +532,6 @@ static const byte _vehicle_type_colours[6] = {
 };
 
 
-static void DrawVertMapIndicator(int x, int y, int x2, int y2)
-{
-	GfxFillRect(x, y,      x2, y + 3, 69);
-	GfxFillRect(x, y2 - 3, x2, y2,    69);
-}
-
-static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
-{
-	GfxFillRect(x,      y, x + 3, y2, 69);
-	GfxFillRect(x2 - 3, y, x2,    y2, 69);
-}
-
 class SmallMapWindow : public Window {
 	enum SmallMapType {
 		SMT_CONTOUR,
@@ -715,6 +703,57 @@ class SmallMapWindow : public Window {
 	}
 
 	/**
+	 * Draws vertical part of map indicator
+	 * @param x X coord of left/right border of main viewport
+	 * @param y Y coord of top border of main viewport
+	 * @param y2 Y coord of bottom border of main viewport
+	 */
+	static inline void DrawVertMapIndicator(int x, int y, int y2)
+	{
+		GfxFillRect(x, y,      x, y + 3, 69);
+		GfxFillRect(x, y2 - 3, x, y2,    69);
+	}
+
+	/**
+	 * Draws horizontal part of map indicator
+	 * @param x X coord of left border of main viewport
+	 * @param x2 X coord of right border of main viewport
+	 * @param y Y coord of top/bottom border of main viewport
+	 */
+	static inline void DrawHorizMapIndicator(int x, int x2, int y)
+	{
+		GfxFillRect(x,      y, x + 3, y, 69);
+		GfxFillRect(x2 - 3, y, x2,    y, 69);
+	}
+
+	/**
+	 * Adds map indicators to the smallmap.
+	 */
+	inline void DrawMapIndicators()
+	{
+		/* Find main viewport. */
+		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+
+		Point pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
+
+		int x = vp->virtual_left - pt.x;
+		int y = vp->virtual_top - pt.y;
+		int x2 = (x + vp->virtual_width) / TILE_SIZE;
+		int y2 = (y + vp->virtual_height) / TILE_SIZE;
+		x /= TILE_SIZE;
+		y /= TILE_SIZE;
+
+		x -= this->subscroll;
+		x2 -= this->subscroll;
+
+		SmallMapWindow::DrawVertMapIndicator(x, y, y2);
+		SmallMapWindow::DrawVertMapIndicator(x2, y, y2);
+
+		SmallMapWindow::DrawHorizMapIndicator(x, x2, y);
+		SmallMapWindow::DrawHorizMapIndicator(x, x2, y2);
+	}
+
+	/**
 	 * Draws the small map.
 	 *
 	 * Basically, the small map is draw column of pixels by column of pixels. The pixels
@@ -823,27 +862,8 @@ class SmallMapWindow : public Window {
 		/* Draw town names */
 		if (this->show_towns) this->DrawTowns(dpi);
 
-		/* Find main viewport. */
-		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+		this->DrawMapIndicators();
 
-		/* Draw map indicators */
-		Point pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
-
-		x = vp->virtual_left - pt.x;
-		y = vp->virtual_top - pt.y;
-		int x2 = (x + vp->virtual_width) / TILE_SIZE;
-		int y2 = (y + vp->virtual_height) / TILE_SIZE;
-		x /= TILE_SIZE;
-		y /= TILE_SIZE;
-
-		x -= this->subscroll;
-		x2 -= this->subscroll;
-
-		DrawVertMapIndicator(x, y, x, y2);
-		DrawVertMapIndicator(x2, y, x2, y2);
-
-		DrawHorizMapIndicator(x, y, x2, y);
-		DrawHorizMapIndicator(x, y2, x2, y2);
 		_cur_dpi = old_dpi;
 	}
 
