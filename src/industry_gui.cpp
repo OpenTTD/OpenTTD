@@ -143,6 +143,7 @@ static const WindowDesc _build_industry_desc(
 	_build_industry_widgets, _nested_build_industry_widgets, lengthof(_nested_build_industry_widgets)
 );
 
+/** Build (fund or prospect) a new industry, */
 class BuildIndustryWindow : public Window {
 	int selected_index;                         ///< index of the element in the matrix
 	IndustryType selected_type;                 ///< industry corresponding to the above index
@@ -155,9 +156,6 @@ class BuildIndustryWindow : public Window {
 
 	void SetupArrays()
 	{
-		IndustryType ind;
-		const IndustrySpec *indsp;
-
 		this->count = 0;
 
 		for (uint i = 0; i < lengthof(this->index); i++) {
@@ -175,8 +173,8 @@ class BuildIndustryWindow : public Window {
 		 * The tests performed after the enabled allow to load the industries
 		 * In the same way they are inserted by grf (if any)
 		 */
-		for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
-			indsp = GetIndustrySpec(ind);
+		for (IndustryType ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
+			const IndustrySpec *indsp = GetIndustrySpec(ind);
 			if (indsp->enabled) {
 				/* Rule is that editor mode loads all industries.
 				 * In game mode, all non raw industries are loaded too
@@ -206,7 +204,7 @@ public:
 	BuildIndustryWindow() : Window(&_build_industry_desc)
 	{
 		/* Shorten the window to the equivalant of the additionnal purchase
-		 * info coming from the callback.  SO it will only be available to its full
+		 * info coming from the callback.  So it will only be available to its full
 		 * height when newindistries are loaded */
 		if (!_loaded_newgrf_features.has_newindustries) {
 			this->widget[DPIW_INFOPANEL].bottom -= 44;
@@ -318,11 +316,11 @@ public:
 		DrawString(x_str, right, y_str, str);
 		y_str += 11;
 
-		/* Get the additional purchase info text, if it has not already been */
-		if (this->text[this->selected_index] == STR_NULL) {   // Have i been called already?
+		/* Get the additional purchase info text, if it has not already been queried. */
+		if (this->text[this->selected_index] == STR_NULL) {   // Have I been called already?
 			if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
 				uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
-				if (callback_res != CALLBACK_FAILED) {  // Did it failed?
+				if (callback_res != CALLBACK_FAILED) {  // Did it fail?
 					StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
 					this->text[this->selected_index] = newtxt;   // Store it for further usage
 				}
