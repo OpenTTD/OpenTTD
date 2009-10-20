@@ -419,7 +419,7 @@ public:
 
 			case RVW_WIDGET_LEFT_MATRIX:
 			case RVW_WIDGET_RIGHT_MATRIX: {
-				uint i = (pt.y - 14) / this->resize.step_height;
+				uint i = (pt.y - this->GetWidget<NWidgetBase>(RVW_WIDGET_LEFT_MATRIX)->pos_y) / this->resize.step_height;
 				uint16 click_scroll_pos = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.GetPosition() : this->vscroll2.GetPosition();
 				uint16 click_scroll_cap = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity();
 				byte click_side         = widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
