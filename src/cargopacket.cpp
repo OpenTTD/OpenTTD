@@ -26,18 +26,20 @@ void InitializeCargoPackets()
 	_cargopacket_pool.CleanPool();
 }
 
-CargoPacket::CargoPacket(StationID source, uint16 count, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket()
+{
+	this->source_type = ST_INDUSTRY;
+	this->source_id   = INVALID_SOURCE;
+}
+
+CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id) :
 	count(count),
 	source_id(source_id),
-	source(source)
+	source(source),
+	source_xy(source_xy)
 {
-	this->source_type = source_type;
-
-	if (source != INVALID_STATION) {
-		assert(count != 0);
-		this->source_xy    = Station::Get(source)->xy;
-		this->loaded_at_xy = this->source_xy;
-	}
+	assert(count != 0);
+	this->source_type  = source_type;
 }
 
 CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
@@ -49,6 +51,7 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
 		source_xy(source_xy),
 		loaded_at_xy(loaded_at_xy)
 {
+	assert(count != 0);
 	this->source_type = source_type;
 }
 
