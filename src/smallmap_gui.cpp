@@ -590,7 +590,7 @@ class SmallMapWindow : public Window {
 	 * @param proc Pointer to the colour function
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
-	inline void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
+	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
 	{
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
@@ -629,7 +629,7 @@ class SmallMapWindow : public Window {
 	 * @param dpi the part of the smallmap to be drawn into
 	 * @param blitter current blitter
 	 */
-	inline void DrawVehicles(DrawPixelInfo *dpi, Blitter *blitter)
+	void DrawVehicles(DrawPixelInfo *dpi, Blitter *blitter)
 	{
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
@@ -678,7 +678,7 @@ class SmallMapWindow : public Window {
 	 * Adds town names to the smallmap.
 	 * @param dpi the part of the smallmap to be drawn into
 	 */
-	inline void DrawTowns(DrawPixelInfo *dpi)
+	void DrawTowns(DrawPixelInfo *dpi)
 	{
 		const Town *t;
 		FOR_ALL_TOWNS(t) {
@@ -729,7 +729,7 @@ class SmallMapWindow : public Window {
 	/**
 	 * Adds map indicators to the smallmap.
 	 */
-	inline void DrawMapIndicators()
+	void DrawMapIndicators()
 	{
 		/* Find main viewport. */
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
