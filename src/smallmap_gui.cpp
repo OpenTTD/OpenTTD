@@ -562,7 +562,9 @@ class SmallMapWindow : public Window
 	int32 scroll_x;
 	int32 scroll_y;
 	int32 subscroll;
-	uint8 refresh;
+
+	static const uint8 FORCE_REFRESH_PERIOD = 0x1F; ///< map is redrawn after that many ticks
+	uint8 refresh; ///< refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks
 
 	static const int COLUMN_WIDTH = 119;
 	static const int MIN_LEGEND_HEIGHT = 6 * 7;
@@ -874,7 +876,7 @@ public:
 		}
 	}
 
-	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number)
+	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number), refresh(FORCE_REFRESH_PERIOD)
 	{
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
@@ -1050,7 +1052,10 @@ public:
 	virtual void OnTick()
 	{
 		/* update the window every now and then */
-		if ((++this->refresh & 0x1F) == 0) this->SetDirty();
+		if (--this->refresh != 0) return;
+
+		this->refresh = FORCE_REFRESH_PERIOD;
+		this->SetDirty();
 	}
 
 	virtual void OnScroll(Point delta)
