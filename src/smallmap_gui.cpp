@@ -545,8 +545,7 @@ static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
 	GfxFillRect(x2 - 3, y, x2,    y2, 69);
 }
 
-class SmallMapWindow : public Window
-{
+class SmallMapWindow : public Window {
 	enum SmallMapType {
 		SMT_CONTOUR,
 		SMT_VEHICLES,
@@ -638,7 +637,6 @@ class SmallMapWindow : public Window
 		} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
 	}
 
-public:
 	/**
 	 * Draws the small map.
 	 *
@@ -836,17 +834,6 @@ public:
 		_cur_dpi = old_dpi;
 	}
 
-	void SmallMapCenterOnCurrentPos()
-	{
-		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-
-		int x = ((vp->virtual_width  - (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
-		int y = ((vp->virtual_height - (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
-		this->scroll_x = (y - x) & ~0xF;
-		this->scroll_y = (x + y) & ~0xF;
-		this->SetDirty();
-	}
-
 	void ResizeLegend()
 	{
 		Widget *legend = &this->widget[SM_WIDGET_LEGEND];
@@ -876,6 +863,7 @@ public:
 		}
 	}
 
+public:
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number), refresh(FORCE_REFRESH_PERIOD)
 	{
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
@@ -1115,6 +1103,17 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		if (delta.x != 0 && this->map_type == SMT_INDUSTRY) this->ResizeLegend();
+	}
+
+	void SmallMapCenterOnCurrentPos()
+	{
+		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+
+		int x = ((vp->virtual_width  - (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
+		int y = ((vp->virtual_height - (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
+		this->scroll_x = (y - x) & ~0xF;
+		this->scroll_y = (x + y) & ~0xF;
+		this->SetDirty();
 	}
 };
 
