@@ -109,14 +109,14 @@ template <class Tinst>
 void CargoList<Tinst>::Append(CargoPacket *cp)
 {
 	assert(cp != NULL);
+	static_cast<Tinst *>(this)->AddToCache(cp);
 
-	for (Iterator it(this->packets.begin()); it != this->packets.end(); it++) {
+	for (List::reverse_iterator it(this->packets.rbegin()); it != this->packets.rend(); it++) {
 		CargoPacket *icp = *it;
 		if (Tinst::AreMergable(icp, cp) && icp->count + cp->count <= CargoPacket::MAX_COUNT) {
 			icp->count        += cp->count;
 			icp->feeder_share += cp->feeder_share;
 
-			static_cast<Tinst *>(this)->AddToCache(cp);
 			delete cp;
 			return;
 		}
@@ -124,7 +124,6 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 
 	/* The packet could not be merged with another one */
 	this->packets.push_back(cp);
-	static_cast<Tinst *>(this)->AddToCache(cp);
 }
 
 
