@@ -148,18 +148,6 @@ static inline byte GetWaterTileRandomBits(TileIndex t)
 }
 
 
-static inline void MakeWater(TileIndex t)
-{
-	SetTileType(t, MP_WATER);
-	SetTileOwner(t, OWNER_WATER);
-	_m[t].m2 = 0;
-	_m[t].m3 = WATER_CLASS_SEA;
-	_m[t].m4 = 0;
-	_m[t].m5 = 0;
-	SB(_m[t].m6, 2, 4, 0);
-	_me[t].m7 = 0;
-}
-
 static inline void MakeShore(TileIndex t)
 {
 	SetTileType(t, MP_WATER);
@@ -172,29 +160,54 @@ static inline void MakeShore(TileIndex t)
 	_me[t].m7 = 0;
 }
 
-static inline void MakeRiver(TileIndex t, uint8 random_bits)
+/**
+ * Helper function for making a watery tile.
+ * @param t The tile to change into water
+ * @param o The owner of the water
+ * @param wc The class of water the tile has to be
+ * @param random_bits Eventual random bits to be set for this tile
+ */
+static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_bits)
 {
 	SetTileType(t, MP_WATER);
-	SetTileOwner(t, OWNER_WATER);
+	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = WATER_CLASS_RIVER;
+	_m[t].m3 = wc;
 	_m[t].m4 = random_bits;
 	_m[t].m5 = 0;
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 
+/**
+ * Make a sea tile.
+ * @param t The tile to change into sea
+ */
+static inline void MakeSea(TileIndex t)
+{
+	MakeWater(t, OWNER_WATER, WATER_CLASS_SEA, 0);
+}
+
+/**
+ * Make a river tile
+ * @param t The tile to change into river
+ * @param random_bits Random bits to be set for this tile
+ */
+static inline void MakeRiver(TileIndex t, uint8 random_bits)
+{
+	MakeWater(t, OWNER_WATER, WATER_CLASS_RIVER, random_bits);
+}
+
+/**
+ * Make a canal tile
+ * @param t The tile to change into canal
+ * @param o The owner of the canal
+ * @param random_bits Random bits to be set for this tile
+ */
 static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 {
 	assert(o != OWNER_WATER);
-	SetTileType(t, MP_WATER);
-	SetTileOwner(t, o);
-	_m[t].m2 = 0;
-	_m[t].m3 = WATER_CLASS_CANAL;
-	_m[t].m4 = random_bits;
-	_m[t].m5 = 0;
-	SB(_m[t].m6, 2, 4, 0);
-	_me[t].m7 = 0;
+	MakeWater(t, o, WATER_CLASS_CANAL, random_bits);
 }
 
 static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart base, Axis a, WaterClass original_water_class)

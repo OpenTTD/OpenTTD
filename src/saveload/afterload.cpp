@@ -926,7 +926,7 @@ bool AfterLoadGame()
 								MakeShore(t);
 							} else {
 								if (GetTileOwner(t) == OWNER_WATER) {
-									MakeWater(t);
+									MakeSea(t);
 								} else {
 									MakeCanal(t, GetTileOwner(t), Random());
 								}
@@ -1484,7 +1484,7 @@ bool AfterLoadGame()
 					if (IsWater(t)) {
 						Owner o = GetTileOwner(t);
 						if (o == OWNER_WATER) {
-							MakeWater(t);
+							MakeSea(t);
 						} else {
 							MakeCanal(t, o, Random());
 						}

@@ -165,7 +165,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
 
 	switch (wc) {
-		case WATER_CLASS_SEA:   MakeWater(tile);              break;
+		case WATER_CLASS_SEA:   MakeSea(tile);                break;
 		case WATER_CLASS_CANAL: MakeCanal(tile, o, Random()); break;
 		case WATER_CLASS_RIVER: MakeRiver(tile, Random());    break;
 		default:                DoClearSquare(tile);          break;
@@ -337,7 +337,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		if (flags & DC_EXEC) {
 			if (TileHeight(tile) == 0 && p2 == 1) {
-				MakeWater(tile);
+				MakeSea(tile);
 			} else if (p2 == 2) {
 				MakeRiver(tile, Random());
 			} else {
@@ -947,7 +947,7 @@ void DoFloodTile(TileIndex target)
 
 		/* flood flat tile */
 		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
-			MakeWater(target);
+			MakeSea(target);
 			MarkTileDirtyByTile(target);
 			flooded = true;
 		}
@@ -1067,7 +1067,7 @@ void ConvertGroundTilesIntoWaterTiles()
 			 * during the generation. */
 			switch (slope) {
 				case SLOPE_FLAT:
-					MakeWater(tile);
+					MakeSea(tile);
 					break;
 
 				case SLOPE_N:
