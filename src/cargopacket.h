@@ -214,14 +214,14 @@ protected:
 
 	/**
 	 * Update the cache to reflect adding of this packet.
-	 * Increases count, feeder share and days_in_transit
+	 * Increases count and days_in_transit
 	 * @param cp a new packet to be inserted
 	 */
 	void AddToCache(const CargoPacket *cp);
 
 	/**
 	 * Update the cached values to reflect the removal of this packet.
-	 * Decreases count, feeder share and days_in_transit
+	 * Decreases count and days_in_transit
 	 * @param cp Packet to be removed from cache
 	 */
 	void RemoveFromCache(const CargoPacket *cp);
