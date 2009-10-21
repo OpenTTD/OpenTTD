@@ -32,11 +32,16 @@ CargoPacket::CargoPacket()
 	this->source_id   = INVALID_SOURCE;
 }
 
+/* NOTE: We have to zero memory ourselves here because we are using a 'new'
+ * that, in contrary to all other pools, does not memset to 0. */
 CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id) :
+	feeder_share(0),
 	count(count),
+	days_in_transit(0),
 	source_id(source_id),
 	source(source),
-	source_xy(source_xy)
+	source_xy(source_xy),
+	loaded_at_xy(0)
 {
 	assert(count != 0);
 	this->source_type  = source_type;
