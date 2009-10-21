@@ -18,8 +18,11 @@
  * @tparam Tindex       Type of the index for this pool
  * @tparam Tgrowth_step Size of growths; if the pool is full increase the size by this amount
  * @tparam Tmax_size    Maximum size of the pool
+ * @tparam Tcache       Whether to perform 'alloc' caching, i.e. don't actually free/malloc just reuse the memory
+ * @tparam Tzero        Whether to zero the memory
+ * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
-template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size>
+template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, bool Tcache = false, bool Tzero = true>
 struct Pool {
 	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
@@ -75,7 +78,7 @@ struct Pool {
 	 * Base class for all PoolItems
 	 * @tparam Tpool The pool this item is going to be part of
 	 */
-	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size> *Tpool>
+	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tcache, Tzero> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
 
@@ -251,6 +254,18 @@ struct Pool {
 
 private:
 	static const size_t NO_FREE_ITEM = MAX_UVALUE(size_t); ///< Contant to indicate we can't allocate any more items
+
+	/**
+	 * Helper struct to cache 'freed' PoolItems so we
+	 * do not need to allocate them again.
+	 */
+	struct AllocCache {
+		/** The next in our 'cache' */
+		AllocCache *next;
+	};
+
+	/** Cache of freed pointers */
+	AllocCache *alloc_cache;
 
 	/**
 	 * Makes given index valid

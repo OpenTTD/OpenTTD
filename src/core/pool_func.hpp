@@ -17,8 +17,8 @@
 #include "pool_type.hpp"
 
 #define DEFINE_POOL_METHOD(type) \
-	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size> \
-	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size>
+	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, bool Tcache, bool Tzero> \
+	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tcache, Tzero>
 
 DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		name(name),
@@ -27,7 +27,8 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		first_unused(0),
 		items(0),
 		cleaning(false),
-		data(NULL)
+		data(NULL),
+		alloc_cache(NULL)
 { }
 
 DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
@@ -75,7 +76,18 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 	this->first_unused = max(this->first_unused, index + 1);
 	this->items++;
 
-	Titem *item = this->data[index] = (Titem *)CallocT<byte>(size);
+	Titem *item;
+	if (Tcache && this->alloc_cache != NULL) {
+		assert(sizeof(Titem) == size);
+		item = (Titem *)this->alloc_cache;
+		this->alloc_cache = this->alloc_cache->next;
+		if (Tzero) MemSetT(item, 0);
+	} else if (Tzero) {
+		item = (Titem *)CallocT<byte>(size);
+	} else {
+		item = (Titem *)MallocT<byte>(size);
+	}
+	this->data[index] = item;
 	item->index = (uint)index;
 	return item;
 }
@@ -111,7 +123,13 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 {
 	assert(index < this->size);
 	assert(this->data[index] != NULL);
-	free(this->data[index]);
+	if (Tcache) {
+		AllocCache *ac = (AllocCache *)this->data[index];
+		ac->next = this->alloc_cache;
+		this->alloc_cache = ac;
+	} else {
+		free(this->data[index]);
+	}
 	this->data[index] = NULL;
 	this->first_free = min(this->first_free, index);
 	this->items--;
@@ -129,6 +147,14 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 	this->first_unused = this->first_free = this->size = 0;
 	this->data = NULL;
 	this->cleaning = false;
+
+	if (Tcache) {
+		while (this->alloc_cache != NULL) {
+			AllocCache *ac = this->alloc_cache;
+			this->alloc_cache = ac->next;
+			free(ac);
+		}
+	}
 }
 
 #undef DEFINE_POOL_METHOD
