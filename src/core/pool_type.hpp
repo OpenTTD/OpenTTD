@@ -12,6 +12,13 @@
 #ifndef POOL_TYPE_HPP
 #define POOL_TYPE_HPP
 
+/**
+ * Base class for all pools.
+ * @tparam Titem        Type of the class/struct that is going to be pooled
+ * @tparam Tindex       Type of the index for this pool
+ * @tparam Tgrowth_step Size of growths; if the pool is full increase the size by this amount
+ * @tparam Tmax_size    Maximum size of the pool
+ */
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size>
 struct Pool {
 	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
@@ -64,7 +71,10 @@ struct Pool {
 		return this->items <= Tmax_size - n;
 	}
 
-	/** Base class for all PoolItems */
+	/**
+	 * Base class for all PoolItems
+	 * @tparam Tpool The pool this item is going to be part of
+	 */
 	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
