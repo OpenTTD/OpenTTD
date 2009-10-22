@@ -191,6 +191,7 @@ enum NetworkContentListWindowWidgets {
 	NCLWW_CAPTION,       ///< Caption of the window
 	NCLWW_BACKGROUND,    ///< Resize button
 
+	NCLWW_FILTER_CAPT,   ///< Caption for the filter editbox
 	NCLWW_FILTER,        ///< Filter editbox
 
 	NCLWW_CHECKBOX,      ///< Button above checkboxes
@@ -209,6 +210,8 @@ enum NetworkContentListWindowWidgets {
 	NCLWW_DOWNLOAD,      ///< 'Download' button
 
 	NCLWW_RESIZE,        ///< Resize button
+
+	NCLWW_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons.
 };
 
 /** Window that lists the content that's at the content server */
@@ -338,20 +341,20 @@ public:
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
 	 */
-	NetworkContentListWindow(const WindowDesc *desc, bool select_all) : QueryStringBaseWindow(EDITBOX_MAX_SIZE, desc, 1), selected(NULL), list_pos(0)
+	NetworkContentListWindow(const WindowDesc *desc, bool select_all) :
+			QueryStringBaseWindow(EDITBOX_MAX_SIZE),
+			selected(NULL),
+			list_pos(0)
 	{
-		ttd_strlcpy(this->edit_str_buf, "", this->edit_str_size);
+		this->InitNested(desc, 1);
+
+		this->GetWidget<NWidgetStacked>(NCLWW_SEL_ALL_UPDATE)->SetDisplayedPlane(select_all);
+
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
 		this->SetFocusedWidget(NCLWW_FILTER);
 
-		this->vscroll.SetCapacity(14);
-		this->resize.step_height = 14;
-		this->resize.step_width = 2;
-
 		_network_content_client.AddCallback(this);
-		this->HideWidget(select_all ? NCLWW_SELECT_UPDATE : NCLWW_SELECT_ALL);
-
 		this->content.SetListing(this->last_sorting);
 		this->content.SetFiltering(this->last_filtering);
 		this->content.SetSortFuncs(this->sorter_funcs);
@@ -359,15 +362,61 @@ public:
 		this->content.ForceRebuild();
 		this->FilterContentList();
 		this->SortContentList();
-
-		this->FindWindowPlacementAndResize(desc);
 		this->InvalidateData();
+
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(NCLWW_MATRIX)->current_y / this->resize.step_height);
+		this->GetWidget<NWidgetCore>(NCLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	/** Free everything we allocated */
 	~NetworkContentListWindow()
 	{
 		_network_content_client.RemoveCallback(this);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case NCLWW_FILTER_CAPT:
+				*size = maxdim(*size, GetStringBoundingBox(STR_CONTENT_FILTER_TITLE));
+				break;
+
+			case NCLWW_FILTER:
+				size->height = FONT_HEIGHT_NORMAL + padding.height;
+				break;
+
+			case NCLWW_TYPE: {
+				Dimension d = *size;
+				for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
+					d = maxdim(d, GetStringBoundingBox(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS));
+				}
+				size->width = d.width + WD_MATRIX_RIGHT + WD_MATRIX_LEFT;
+				break;
+			}
+
+			case NCLWW_MATRIX:
+				resize->height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				size->height = 10 * resize->height;
+				break;
+		}
+	}
+
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case NCLWW_FILTER_CAPT:
+				DrawString(r.left, r.right, r.top, STR_CONTENT_FILTER_TITLE, TC_FROMSTRING, SA_RIGHT);
+				break;
+
+			case NCLWW_DETAILS:
+				this->DrawDetails(r);
+				break;
+
+			case NCLWW_MATRIX:
+				this->DrawMatrix(r);
+				break;
+		}
 	}
 
 	virtual void OnPaint()
@@ -382,21 +431,31 @@ public:
 
 		/* Edit box to filter for keywords */
 		this->DrawEditBox(NCLWW_FILTER);
-		DrawString(this->widget[NCLWW_MATRIX].left, this->widget[NCLWW_FILTER].left - 8, this->widget[NCLWW_FILTER].top + 2, STR_CONTENT_FILTER_TITLE, TC_FROMSTRING, SA_RIGHT);
 
 		switch (this->content.SortType()) {
 			case NCLWW_CHECKBOX - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_CHECKBOX, arrow); break;
 			case NCLWW_TYPE     - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_TYPE,     arrow); break;
 			case NCLWW_NAME     - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_NAME,     arrow); break;
 		}
+	}
+
+	void DrawMatrix(const Rect &r) const
+	{
+		const int CHECKBOX_LEFT = r.left;
+		const int TYPE_LEFT     = this->GetWidget<NWidgetBase>(NCLWW_TYPE)->pos_x;
+		const int NAME_LEFT     = this->GetWidget<NWidgetBase>(NCLWW_NAME)->pos_x;
+
+		const int TYPE_RIGHT     = NAME_LEFT - 1;
+		const int NAME_RIGHT     = r.right;
+
 
 		/* Fill the matrix with the information */
-		uint y = this->widget[NCLWW_MATRIX].top + 3;
+		uint y = r.top;
 		int cnt = 0;
 		for (ConstContentIterator iter = this->content.Get(this->vscroll.GetPosition()); iter != this->content.End() && cnt < this->vscroll.GetCapacity(); iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
-			if (ci == this->selected) GfxFillRect(this->widget[NCLWW_CHECKBOX].left + 1, y - 2, this->widget[NCLWW_NAME].right - 1, y + 9, 10);
+			if (ci == this->selected) GfxFillRect(CHECKBOX_LEFT + 1, y + 1, NAME_RIGHT - 1, y + this->resize.step_height - 1, 10);
 
 			SpriteID sprite;
 			SpriteID pal = PAL_NONE;
@@ -408,24 +467,21 @@ public:
 				case ContentInfo::DOES_NOT_EXIST: sprite = SPR_BLOT; pal = PALETTE_TO_RED;   break;
 				default: NOT_REACHED();
 			}
-			DrawSprite(sprite, pal, this->widget[NCLWW_CHECKBOX].left + (pal == PAL_NONE ? 3 : 4), y + (pal == PAL_NONE ? 1 : 0));
+			DrawSprite(sprite, pal, CHECKBOX_LEFT + (pal == PAL_NONE ? 3 : 4), y + WD_MATRIX_TOP + (pal == PAL_NONE ? 1 : 0));
 
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
-			DrawString(this->widget[NCLWW_TYPE].left, this->widget[NCLWW_TYPE].right, y, str, TC_BLACK, SA_CENTER);
+			DrawString(TYPE_LEFT, TYPE_RIGHT, y + WD_MATRIX_TOP, str, TC_BLACK, SA_CENTER);
 
-			DrawString(this->widget[NCLWW_NAME].left + 5, this->widget[NCLWW_NAME].right, y, ci->name, TC_BLACK);
+			DrawString(NAME_LEFT + 5, NAME_RIGHT, y + WD_MATRIX_TOP, ci->name, TC_BLACK);
 			y += this->resize.step_height;
 		}
-
-		Rect r = {this->widget[NCLWW_DETAILS].left, this->widget[NCLWW_DETAILS].top, this->widget[NCLWW_DETAILS].right, this->widget[NCLWW_DETAILS].bottom};
-		this->DrawDetails(r);
 	}
 
 	/**
 	 * Helper function to draw the details part of this window.
 	 * @param r the rectangle to stay within while drawing
 	 */
-	virtual void DrawDetails(const Rect &r) const
+	void DrawDetails(const Rect &r) const
 	{
 		static const int DETAIL_TITLE_HEIGHT = 50; ///< Number of pixels for the title
 		static const int DETAIL_LEFT         =  5; ///< Number of pixels at the left
@@ -435,6 +491,10 @@ public:
 		/* Create the nice grayish rectangle at the details top */
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + DETAIL_TITLE_HEIGHT, 157);
 		DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + FONT_HEIGHT_NORMAL + WD_INSET_TOP, STR_CONTENT_DETAIL_TITLE, TC_FROMSTRING, SA_CENTER);
+
+		/* Draw the total download size */
+		SetDParam(0, this->filesize_sum);
+		DrawString(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, r.bottom - FONT_HEIGHT_NORMAL - WD_PAR_VSEP_NORMAL, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
 
 		if (this->selected == NULL) return;
 
@@ -526,10 +586,6 @@ public:
 				y = DrawStringMultiLine(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, y, max_y, STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF);
 			}
 		}
-
-		/* Draw the total download size */
-		SetDParam(0, this->filesize_sum);
-		DrawString(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, r.bottom - FONT_HEIGHT_NORMAL - WD_PAR_VSEP_NORMAL, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
 	}
 
 	virtual void OnDoubleClick(Point pt, int widget)
@@ -537,7 +593,7 @@ public:
 		/* Double clicking on a line in the matrix toggles the state of the checkbox */
 		if (widget != NCLWW_MATRIX) return;
 
-		pt.x = this->widget[NCLWW_CHECKBOX].left;
+		pt.x = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX)->pos_x;
 		this->OnClick(pt, widget);
 	}
 
@@ -545,7 +601,7 @@ public:
 	{
 		switch (widget) {
 			case NCLWW_MATRIX: {
-				uint32 id_v = (pt.y - this->widget[NCLWW_MATRIX].top) / this->resize.step_height;
+				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(NCLWW_MATRIX)->pos_y) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 				id_v += this->vscroll.GetPosition();
@@ -555,7 +611,7 @@ public:
 				this->selected = *this->content.Get(id_v);
 				this->list_pos = id_v;
 
-				if (pt.x <= this->widget[NCLWW_CHECKBOX].right) {
+				if (pt.x <= (int)(this->GetWidget<NWidgetCore>(NCLWW_CHECKBOX)->pos_y + this->GetWidget<NWidgetCore>(NCLWW_CHECKBOX)->current_y)) {
 					_network_content_client.ToggleSelectedState(this->selected);
 					this->content.ForceResort();
 				}
@@ -680,16 +736,8 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->vscroll.SetCapacity((this->widget[NCLWW_MATRIX].bottom - this->widget[NCLWW_MATRIX].top + 1) / this->resize.step_height);
-		this->widget[NCLWW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-
-		/* Make the matrix and details section grow both bigger (or smaller) */
-		delta.x /= 2;
-		this->widget[NCLWW_NAME].right      -= delta.x;
-		this->widget[NCLWW_MATRIX].right    -= delta.x;
-		this->widget[NCLWW_SCROLLBAR].left  -= delta.x;
-		this->widget[NCLWW_SCROLLBAR].right -= delta.x;
-		this->widget[NCLWW_DETAILS].left    -= delta.x;
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(NCLWW_MATRIX)->current_y / this->resize.step_height);
+		this->GetWidget<NWidgetCore>(NCLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnReceiveContentInfo(const ContentInfo *rci)
@@ -743,7 +791,7 @@ public:
 		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
 
-		this->widget[NCLWW_CANCEL].data = this->filesize_sum == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
+		this->GetWidget<NWidgetCore>(NCLWW_CANCEL)->widget_data = this->filesize_sum == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
 	}
 };
 
@@ -760,90 +808,57 @@ NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentL
 	&TagNameFilter,
 };
 
-/** Widgets used for the content list */
-static const Widget _network_content_list_widgets[] = {
-/* TOP */
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW},               // NCLWW_CLOSE
-{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_CONTENT_TITLE,                  STR_NULL},                               // NCLWW_CAPTION
-{      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   277, 0x0,                                STR_NULL},                               // NCLWW_BACKGROUND
-
-{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   210,   440,    20,    31, STR_LIST_FILTER_OSKTITLE,           STR_LIST_FILTER_TOOLTIP},                // NCLWW_FILTER
-
-/* LEFT SIDE */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,          8,    20,    36,    47, STR_EMPTY,                          STR_NULL},                               // NCLWW_CHECKBOX
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         21,   110,    36,    47, STR_CONTENT_TYPE_CAPTION,           STR_CONTENT_TYPE_CAPTION_TOOLTIP},           // NCLWW_TYPE
-{ WWT_PUSHTXTBTN,   RESIZE_RIGHT,  COLOUR_WHITE,        111,   190,    36,    47, STR_CONTENT_NAME_CAPTION,           STR_CONTENT_NAME_CAPTION_TOOLTIP},           // NCLWW_NAME
-
-{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     8,   190,    48,   244, (14 << 8) | 1,                      STR_CONTENT_MATRIX_TOOLTIP},                 // NCLWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    36,   244, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},   // NCLWW_SCROLLBAR
-
-/* RIGHT SIDE */
-{      WWT_PANEL,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   210,   440,    36,   244, 0x0,                                STR_NULL},                               // NCLWW_DETAILS
-
-/* BOTTOM */
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_ALL_CAPTION,     STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP},     // NCLWW_SELECT_ALL
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP}, // NCLWW_SELECT_UPDATE
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   252,   263, STR_CONTENT_UNSELECT_ALL_CAPTION,   STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP},   // NCLWW_UNSELECT
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        226,   326,   252,   263, STR_BUTTON_CANCEL,                   STR_NULL},                               // NCLWW_CANCEL
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        334,   434,   252,   263, STR_CONTENT_DOWNLOAD_CAPTION,       STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP},       // NCLWW_DOWNLOAD
-
-{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   266,   277, 0x0,                                STR_TOOLTIP_RESIZE },                     // NCLWW_RESIZE
-
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_network_content_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NCLWW_CLOSE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NCLWW_CAPTION), SetDataTip(STR_CONTENT_TITLE, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_BACKGROUND),
-		NWidget(NWID_HORIZONTAL), SetPIP(8, 7, 9),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(8, 8, 8),
+			/* Top */
+			NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, NCLWW_FILTER_CAPT), SetFill(true, false), SetResize(1, 0),
+			NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetFill(true, false), SetResize(1, 0),
+						SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(8, 8, 8),
 			/* Left side. */
 			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 22), SetResize(1, 0),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CHECKBOX), SetMinimalSize(13, 12), SetDataTip(STR_EMPTY, STR_NULL),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_TYPE), SetMinimalSize(90, 12),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CHECKBOX), SetMinimalSize(13, 1), SetDataTip(STR_EMPTY, STR_NULL),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_TYPE),
 											SetDataTip(STR_CONTENT_TYPE_CAPTION, STR_CONTENT_TYPE_CAPTION_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_NAME), SetMinimalSize(80, 12), SetResize(1, 0),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_NAME), SetResize(1, 0), SetFill(true, false),
 											SetDataTip(STR_CONTENT_NAME_CAPTION, STR_CONTENT_NAME_CAPTION_TOOLTIP),
 						EndContainer(),
-						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NCLWW_MATRIX), SetMinimalSize(183, 197), SetResize(2, 14),
-											SetDataTip((14 << 8) | 1, STR_CONTENT_MATRIX_TOOLTIP),
+						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NCLWW_MATRIX), SetResize(1, 14), SetFill(true, true),
 					EndContainer(),
 					NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NCLWW_SCROLLBAR),
 				EndContainer(),
 			EndContainer(),
 			/* Right side. */
 			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetMinimalSize(231, 12), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
-				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_DETAILS), SetMinimalSize(231, 209), SetResize(0, 1), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_DETAILS), SetResize(1, 1), SetFill(true, true), EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
 		/* Bottom. */
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
-			NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_ALL), SetMinimalSize(101, 12),
-										SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_UPDATE), SetMinimalSize(101, 12),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(8, 8, 8),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, NCLWW_SEL_ALL_UPDATE), SetResize(1, 0), SetFill(true, false),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_UPDATE), SetResize(1, 0), SetFill(true, false),
 										SetDataTip(STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_ALL), SetResize(1, 0), SetFill(true, false),
+										SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP),
 			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_UNSELECT), SetMinimalSize(101, 12),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_UNSELECT), SetResize(1, 0), SetFill(true, false),
 										SetDataTip(STR_CONTENT_UNSELECT_ALL_CAPTION, STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP),
-			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetResize(1, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_DOWNLOAD), SetMinimalSize(101, 12),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CANCEL), SetResize(1, 0), SetFill(true, false),
+										SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_DOWNLOAD), SetResize(1, 0), SetFill(true, false),
 										SetDataTip(STR_CONTENT_DOWNLOAD_CAPTION, STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP),
-			NWidget(NWID_SPACER), SetMinimalSize(15, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetResize(1, 0),
 		/* Resize button. */
@@ -859,7 +874,7 @@ static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, WDP_CENTER, 450, 278, 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_network_content_list_widgets, _nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
+	NULL, _nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
 );
 
 /**
