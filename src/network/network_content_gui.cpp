@@ -230,6 +230,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
+	uint filesize_sum;           ///< The sum of all selected file sizes
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -360,6 +361,7 @@ public:
 		this->SortContentList();
 
 		this->FindWindowPlacementAndResize(desc);
+		this->InvalidateData();
 	}
 
 	/** Free everything we allocated */
@@ -375,35 +377,6 @@ public:
 		if (this->content.NeedRebuild()) {
 			this->BuildContentList();
 		}
-
-		/* To sum all the bytes we intend to download */
-		uint filesize = 0;
-		bool show_select_all = false;
-		bool show_select_upgrade = false;
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
-			const ContentInfo *ci = *iter;
-			switch (ci->state) {
-				case ContentInfo::SELECTED:
-				case ContentInfo::AUTOSELECTED:
-					filesize += ci->filesize;
-					break;
-
-				case ContentInfo::UNSELECTED:
-					show_select_all = true;
-					show_select_upgrade |= ci->upgrade;
-					break;
-
-				default:
-					break;
-			}
-		}
-
-		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, filesize == 0 || FindWindowById(WC_NETWORK_STATUS_WINDOW, 0) != NULL);
-		this->SetWidgetDisabledState(NCLWW_UNSELECT, filesize == 0);
-		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
-		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
-
-		this->widget[NCLWW_CANCEL].data = filesize == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
 
 		this->DrawWidgets();
 
@@ -540,7 +513,7 @@ public:
 		}
 
 		/* Draw the total download size */
-		SetDParam(0, filesize);
+		SetDParam(0, this->filesize_sum);
 		DrawString(this->widget[NCLWW_DETAILS].left + 5, this->widget[NCLWW_DETAILS].right - 5, this->widget[NCLWW_DETAILS].bottom - 12, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
 	}
 
@@ -572,7 +545,7 @@ public:
 					this->content.ForceResort();
 				}
 
-				this->SetDirty();
+				this->InvalidateData();
 			} break;
 
 			case NCLWW_CHECKBOX:
@@ -587,22 +560,22 @@ public:
 					this->SortContentList();
 				}
 				this->ScrollToSelected();
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 
 			case NCLWW_SELECT_ALL:
 				_network_content_client.SelectAll();
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 
 			case NCLWW_SELECT_UPDATE:
 				_network_content_client.SelectUpgrade();
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 
 			case NCLWW_UNSELECT:
 				_network_content_client.UnselectAll();
-				this->SetDirty();
+				this->InvalidateData();
 				break;
 
 			case NCLWW_CANCEL:
@@ -654,7 +627,7 @@ public:
 					if (this->selected != NULL) {
 						_network_content_client.ToggleSelectedState(this->selected);
 						this->content.ForceResort();
-						this->SetDirty();
+						this->InvalidateData();
 					}
 					return ES_HANDLED;
 				}
@@ -679,7 +652,7 @@ public:
 		this->ScrollToSelected();
 
 		/* redraw window */
-		this->SetDirty();
+		this->InvalidateData();
 		return ES_HANDLED;
 	}
 
@@ -687,7 +660,7 @@ public:
 	{
 		this->content.SetFilterState(!StrEmpty(this->edit_str_buf));
 		this->content.ForceRebuild();
-		this->SetDirty();
+		this->InvalidateData();
 	}
 
 	virtual void OnResize(Point delta)
@@ -707,13 +680,13 @@ public:
 	virtual void OnReceiveContentInfo(const ContentInfo *rci)
 	{
 		this->content.ForceRebuild();
-		this->SetDirty();
+		this->InvalidateData();
 	}
 
 	virtual void OnDownloadComplete(ContentID cid)
 	{
 		this->content.ForceResort();
-		this->SetDirty();
+		this->InvalidateData();
 	}
 
 	virtual void OnConnect(bool success)
@@ -723,7 +696,39 @@ public:
 			delete this;
 		}
 
-		this->SetDirty();
+		this->InvalidateData();
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		/* To sum all the bytes we intend to download */
+		this->filesize_sum = 0;
+		bool show_select_all = false;
+		bool show_select_upgrade = false;
+		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+			const ContentInfo *ci = *iter;
+			switch (ci->state) {
+				case ContentInfo::SELECTED:
+				case ContentInfo::AUTOSELECTED:
+					this->filesize_sum += ci->filesize;
+					break;
+
+				case ContentInfo::UNSELECTED:
+					show_select_all = true;
+					show_select_upgrade |= ci->upgrade;
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, this->filesize_sum == 0 || FindWindowById(WC_NETWORK_STATUS_WINDOW, 0) != NULL);
+		this->SetWidgetDisabledState(NCLWW_UNSELECT, this->filesize_sum == 0);
+		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
+		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
+
+		this->widget[NCLWW_CANCEL].data = this->filesize_sum == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
 	}
 };
 
