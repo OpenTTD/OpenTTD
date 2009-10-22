@@ -35,7 +35,7 @@ version      = 0
 ; Note that OpenTTD first tries the full ISO code, then the first
 ; two characters and then uses the fallback (no '.<iso code>').
 ; The ISO code matching is case sensitive!
-; So en_US will be used for en_GB if no en_UK translation is added.
+; So en_US will be used for en_GB if no en_GB translation is added.
 ; As a result the below example has 'howdie' for en_US and en_GB but
 ; 'foo' for all other languages.
 description  = foo
