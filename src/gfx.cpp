@@ -791,6 +791,10 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
 
+	/* It makes no sense to even try if it can't be drawn anyway, or
+	 * do we really want to support fonts of 0 or less pixels high? */
+	if (maxh <= 0) return top;
+
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
 
@@ -800,7 +804,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
 	int total_height = (num + 1) * mt;
 
-	if (maxh != 0 && total_height > maxh) {
+	if (total_height > maxh) {
 		/* Check there's room enough for at least one line. */
 		if (maxh < mt) return top;
 
