@@ -699,7 +699,14 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informa
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Hiritarrak ospatzen dute . . .{} {STATION}era heltzen den lehenengo trena!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen del lehenengo autobusa!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo kamioia!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenego tranvia!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{}{STATION}era heltzen den lehenengo itsasontzia!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo hegazkina!
 
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Tren Txokea!{}{COMMA} kolisioaren su bolan hil ziren
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Errepideko Garraio baten eztanda!{}Gidaria tren batekin kolisionatu eta gero hiltzen da
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Errepideko Garraio Baten Eztanda!{}{COMMA} hiltzen dira trenarekin kolisionatu eta gero
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Hegazkin Istripua!{}{COMMA} hiltzen dira {STATION}ean
 
 
 
