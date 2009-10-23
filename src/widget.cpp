@@ -1291,12 +1291,19 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 
 	/* Zero size plane selected */
 	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) {
-		this->smallest_x = 0;
-		this->smallest_y = 0;
 		this->fill_x = false;
 		this->fill_y = false;
-		this->resize_x = 0;
-		this->resize_y = 0;
+
+		Dimension size = {0, 0};
+		Dimension resize = {0, 0};
+		Dimension padding = {0, 0};
+		/* Here we're primarily interested in the value of resize */
+		w->UpdateWidgetSize(this->index, &size, padding, &resize);
+
+		this->smallest_x = size.width;
+		this->smallest_y = size.height;
+		this->resize_x = resize.width;
+		this->resize_y = resize.height;
 		return;
 	}
 
