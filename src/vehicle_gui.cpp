@@ -1642,6 +1642,7 @@ static bool IsVehicleRefitable(const Vehicle *v)
 	return false;
 }
 
+/** Window manager class for viewing a vehicle. */
 struct VehicleViewWindow : Window {
 private:
 	/** Display planes available in the vehicle view window. */
@@ -1680,38 +1681,37 @@ private:
 public:
 	VehicleViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		const Vehicle *v = Vehicle::Get(window_number);
-
 		this->CreateNestedTree(desc);
 
-		/*
-		 * fill in data and tooltip codes for the widgets and
-		 * move some of the buttons for trains
-		 */
+		/* Sprites for the 'send to depot' button indexed by vehicle type. */
+		static const SpriteID vehicle_view_goto_depot_sprites[] = {
+			SPR_SEND_TRAIN_TODEPOT,
+			SPR_SEND_ROADVEH_TODEPOT,
+			SPR_SEND_SHIP_TODEPOT,
+			SPR_SEND_AIRCRAFT_TODEPOT,
+		};
+		const Vehicle *v = Vehicle::Get(window_number);
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = vehicle_view_goto_depot_sprites[v->type];
+
+		/* Sprites for the 'clone vehicle' button indexed by vehicle type. */
+		static const SpriteID vehicle_view_clone_sprites[] = {
+			SPR_CLONE_TRAIN,
+			SPR_CLONE_ROADVEH,
+			SPR_CLONE_SHIP,
+			SPR_CLONE_AIRCRAFT,
+		};
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = vehicle_view_clone_sprites[v->type];
+
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_TRAIN_TODEPOT;
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_TRAIN;
-
 				this->GetWidget<NWidgetCore>(VVW_WIDGET_TURN_AROUND)->tool_tip = STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP;
 				break;
 
 			case VEH_ROAD:
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_ROADVEH_TODEPOT;
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_ROADVEH;
 				break;
 
 			case VEH_SHIP:
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_SHIP_TODEPOT;
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_SHIP;
-
-				this->SelectPlane(SEL_RT_REFIT);
-				break;
-
 			case VEH_AIRCRAFT:
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_AIRCRAFT_TODEPOT;
-				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_AIRCRAFT;
-
 				this->SelectPlane(SEL_RT_REFIT);
 				break;
 
