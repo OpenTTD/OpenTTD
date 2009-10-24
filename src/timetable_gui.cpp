@@ -331,7 +331,7 @@ struct TimetableWindow : Window {
 		DoCommandP(0, p1, p2, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_ERROR_CAN_T_TIMETABLE_VEHICLE));
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		/* Update the scroll bar */
 		this->vscroll.SetCapacity((this->widget[TTV_TIMETABLE_PANEL].bottom - this->widget[TTV_TIMETABLE_PANEL].top + 1) / this->resize.step_height);

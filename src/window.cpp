@@ -640,10 +640,7 @@ void Window::ReInit()
 	}
 
 	ResizeWindow(this, dx, dy); // Sets post-resize dirty blocks.
-	Point diff;
-	diff.x = dx;
-	diff.y = dy;
-	this->OnResize(diff); // Calls NWidgetViewport::UpdateViewportCoordinates()
+	this->OnResize(); // Calls NWidgetViewport::UpdateViewportCoordinates()
 }
 
 /** Find the Window whose parent pointer points to this window
@@ -1046,11 +1043,7 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
 
 		ResizeWindow(this, enlarge_x, enlarge_y);
-
-		Point diff;
-		diff.x = enlarge_x;
-		diff.y = enlarge_y;
-		this->OnResize(diff);
+		this->OnResize();
 	}
 
 	int nx = this->left;
@@ -1840,11 +1833,7 @@ static bool HandleWindowDragging()
 
 			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
 			ResizeWindow(w, x, y);
-
-			Point diff;
-			diff.x = x;
-			diff.y = y;
-			w->OnResize(diff);
+			w->OnResize();
 			return false;
 		}
 	}
@@ -2696,11 +2685,7 @@ void RelocateAllWindows(int neww, int newh)
 			case WC_MAIN_TOOLBAR:
 				if (neww - w->width != 0) {
 					ResizeWindow(w, min(neww, 640) - w->width, 0);
-
-					Point delta;
-					delta.x = neww - w->width;
-					delta.y = 0;
-					w->OnResize(delta);
+					w->OnResize();
 				}
 
 				top = w->top;

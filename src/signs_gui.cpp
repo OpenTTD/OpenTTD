@@ -155,7 +155,7 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}

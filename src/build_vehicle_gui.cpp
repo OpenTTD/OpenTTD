@@ -1170,7 +1170,7 @@ struct BuildVehicleWindow : Window {
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (!this->listview_mode) ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
 

@@ -380,7 +380,7 @@ struct MainWindow : Window
 		ZoomInOrOutToCursorWindow(wheel < 0, this);
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(MW_VIEWPORT);

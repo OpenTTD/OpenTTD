@@ -133,7 +133,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(EVW_VIEWPORT);

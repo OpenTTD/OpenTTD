@@ -771,9 +771,8 @@ public:
 	/**
 	 * Called after the window got resized.
 	 * For nested windows with a viewport, call NWidgetViewport::UpdateViewportCoordinates.
-	 * @param delta The amount of which the window size changed.
 	 */
-	virtual void OnResize(Point delta) {}
+	virtual void OnResize() {}
 
 	/**
 	 * A dropdown option associated to this window has been selected.

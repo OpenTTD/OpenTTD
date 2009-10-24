@@ -1266,7 +1266,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		/* Update the scroll bar */
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->current_y / this->resize.step_height);

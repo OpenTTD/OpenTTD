@@ -612,7 +612,7 @@ public:
 		this->group_rename = INVALID_GROUP;
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll2.SetCapacity((this->widget[GRP_WIDGET_LIST_GROUP].bottom - this->widget[GRP_WIDGET_LIST_GROUP].top + 1) / PLY_WND_PRC__SIZE_OF_ROW_TINY);
 		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);

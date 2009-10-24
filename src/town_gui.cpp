@@ -466,7 +466,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(TVW_VIEWPORT);
@@ -801,7 +801,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / this->resize.step_height);
 	}

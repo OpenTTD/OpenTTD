@@ -712,7 +712,7 @@ public:
 		if (!StrEmpty(str)) NetworkAddServer(str);
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity((this->widget[NGWW_MATRIX].bottom - this->widget[NGWW_MATRIX].top + 1) / this->resize.step_height);
 		this->widget[NGWW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);

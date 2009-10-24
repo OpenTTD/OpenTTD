@@ -279,7 +279,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(ANGRFW_GRF_LIST)->current_y / this->resize.step_height);
 	}
@@ -608,7 +608,7 @@ struct NewGRFWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->current_y / this->resize.step_height);
 		this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);

@@ -387,7 +387,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		/* Adjust the number of items in the matrix depending of the rezise */
 		this->vscroll.SetCapacity((this->widget[DPIW_MATRIX_WIDGET].bottom - this->widget[DPIW_MATRIX_WIDGET].top + 1) / this->resize.step_height);
@@ -706,7 +706,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
@@ -1091,7 +1091,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(IDW_INDUSTRY_LIST)->current_y / this->resize.step_height);
 	}

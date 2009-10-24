@@ -1133,7 +1133,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->map_type == SMT_INDUSTRY) this->ResizeLegend();
 	}

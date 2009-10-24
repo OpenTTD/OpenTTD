@@ -455,7 +455,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(RVW_WIDGET_LEFT_MATRIX)->current_y / this->resize.step_height);
 		this->vscroll2.SetCapacity(this->GetWidget<NWidgetBase>(RVW_WIDGET_RIGHT_MATRIX)->current_y / this->resize.step_height);

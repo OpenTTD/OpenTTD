@@ -1127,7 +1127,7 @@ struct MainToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->width <= TBP_NORMAL_MAXBUTTON * TBP_BUTTONWIDTH) {
 			SplitToolbar(this);
@@ -1322,7 +1322,7 @@ public:
 		_place_proc(tile);
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		/* There are 16 buttons plus some spacings if the space allows it.
 		 * Furthermore there are two panels of which one is non - essential

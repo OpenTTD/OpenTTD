@@ -282,7 +282,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST)->current_y / this->resize.step_height);
 		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);

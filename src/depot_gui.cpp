@@ -907,7 +907,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_y / (int)this->resize.step_height);
 		this->hscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_x / (int)this->resize.step_width);

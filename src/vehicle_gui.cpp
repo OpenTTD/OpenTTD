@@ -387,7 +387,7 @@ struct RefitWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity((this->widget[VRW_MATRIX].bottom - this->widget[VRW_MATRIX].top + 1) / this->resize.step_height);
 		this->widget[VRW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
@@ -1103,7 +1103,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity((this->widget[VLW_WIDGET_LIST].bottom - this->widget[VLW_WIDGET_LIST].top + 1) / this->resize.step_height);
 		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
@@ -1496,7 +1496,7 @@ struct VehicleDetailsWindow : Window {
 		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN + Vehicle::Get(this->window_number)->type), NULL, str);
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
 
@@ -1920,7 +1920,7 @@ public:
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(VVW_WIDGET_VIEWPORT);

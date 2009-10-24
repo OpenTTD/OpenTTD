@@ -203,7 +203,7 @@ struct AIListWindow : public Window {
 		}
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->current_y / this->line_height);
 		this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
@@ -399,7 +399,7 @@ struct AISettingsWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->current_y / this->line_height);
 		this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
@@ -876,7 +876,7 @@ struct AIDebugWindow : public Window {
 		if (data == -1 || ai_debug_company == data) this->SetDirty();
 	}
 
-	virtual void OnResize(Point delta)
+	virtual void OnResize()
 	{
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AID_WIDGET_LOG_PANEL)->current_y / this->resize.step_height);
 	}
