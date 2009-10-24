@@ -247,27 +247,25 @@ static RefitList *BuildRefitList(const Vehicle *v)
  */
 static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, uint right)
 {
-	RefitOption *refit = list->items;
 	RefitOption *selected = NULL;
-	uint num_lines = list->num_lines;
 	uint y = 31;
-	uint i;
 
 	/* Draw the list, and find the selected cargo (by its position in list) */
-	for (i = 0; i < num_lines; i++) {
+	for (uint i = 0; i < list->num_lines; i++) {
 		TextColour colour = TC_BLACK;
+		RefitOption *refit = &list->items[i];
 		if (sel == 0) {
-			selected = &refit[i];
+			selected = refit;
 			colour = TC_WHITE;
 		}
 
 		if (i >= pos && i < pos + rows) {
 			/* Draw the cargo name */
-			int last_x = DrawString(2, right, y, CargoSpec::Get(refit[i].cargo)->name, colour);
+			int last_x = DrawString(2, right, y, CargoSpec::Get(refit->cargo)->name, colour);
 
 			/* If the callback succeeded, draw the cargo suffix */
-			if (refit[i].value != CALLBACK_FAILED) {
-				DrawString(last_x + 1, right, y, GetGRFStringID(GetEngineGRFID(refit[i].engine), 0xD000 + refit[i].value), colour);
+			if (refit->value != CALLBACK_FAILED) {
+				DrawString(last_x + 1, right, y, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value), colour);
 			}
 			y += delta;
 		}
