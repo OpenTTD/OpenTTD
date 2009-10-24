@@ -502,7 +502,7 @@ bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCa
 	return true;
 }
 
-static int32 DerefIndProd(uint field, bool use_register)
+static int32 DerefIndProd(int field, bool use_register)
 {
 	return use_register ? (int32)GetRegister(field) : field;
 }
@@ -543,7 +543,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		bool deref = (group->version == 1);
 
 		for (uint i = 0; i < 3; i++) {
-			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->substract_input[i], deref) * multiplier, 0, 0xFFFF);
+			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->subtract_input[i], deref) * multiplier, 0, 0xFFFF);
 		}
 		for (uint i = 0; i < 2; i++) {
 			ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + max(DerefIndProd(group->add_output[i], deref), 0) * multiplier, 0, 0xFFFF);

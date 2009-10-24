@@ -279,8 +279,8 @@ struct IndustryProductionSpriteGroup : SpriteGroup {
 	IndustryProductionSpriteGroup() : SpriteGroup(SGT_INDUSTRY_PRODUCTION) {}
 
 	uint8 version;
-	uint16 substract_input[3];
-	uint16 add_output[2];
+	int16 subtract_input[3];  // signed
+	uint16 add_output[2];     // unsigned
 	uint8 again;
 };
 

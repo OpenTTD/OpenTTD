@@ -2966,15 +2966,15 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					group->version = type;
 					if (type == 0) {
 						for (uint i = 0; i < 3; i++) {
-							group->substract_input[i] = grf_load_word(&buf);
+							group->subtract_input[i] = (int16)grf_load_word(&buf); // signed
 						}
 						for (uint i = 0; i < 2; i++) {
-							group->add_output[i] = grf_load_word(&buf);
+							group->add_output[i] = grf_load_word(&buf); // unsigned
 						}
 						group->again = grf_load_byte(&buf);
 					} else {
 						for (uint i = 0; i < 3; i++) {
-							group->substract_input[i] = grf_load_byte(&buf);
+							group->subtract_input[i] = grf_load_byte(&buf);
 						}
 						for (uint i = 0; i < 2; i++) {
 							group->add_output[i] = grf_load_byte(&buf);
