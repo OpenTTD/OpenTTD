@@ -1533,7 +1533,9 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, VVW_WIDGET_PANEL),
-			NWidget(WWT_INSET, COLOUR_GREY, VVW_WIDGET_VIEWPORT), SetPadding(2, 2, 2, 2), SetMinimalSize(228, 86), SetResize(1, 1), EndContainer(),
+			NWidget(WWT_INSET, COLOUR_GREY, VVW_WIDGET_INSET), SetPadding(2, 2, 2, 2),
+				NWidget(NWID_VIEWPORT, INVALID_COLOUR, VVW_WIDGET_VIEWPORT), SetMinimalSize(226, 84), SetResize(1, 1), SetPadding(1, 1, 1, 1),
+			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CENTER_MAIN_VIEH), SetMinimalSize(18, 18), SetFill(true, true), SetDataTip(SPR_CENTRE_VIEW_VEHICLE, 0x0 /* filled later */),
@@ -1595,8 +1597,6 @@ static const ZoomLevel _vehicle_view_zoom_levels[] = {
 };
 
 /* Constants for geometry of vehicle view viewport */
-static const int VV_VIEWPORT_X = 3;
-static const int VV_VIEWPORT_Y = 17;
 static const int VV_INITIAL_VIEWPORT_WIDTH = 226;
 static const int VV_INITIAL_VIEWPORT_HEIGHT = 84;
 static const int VV_INITIAL_VIEWPORT_HEIGHT_TRAIN = 102;
@@ -1719,9 +1719,7 @@ public:
 		}
 		this->FinishInitNested(desc, window_number);
 		this->owner = v->owner;
-		InitializeWindowViewport(this, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
-												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
-												 this->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
+		this->GetWidget<NWidgetViewport>(VVW_WIDGET_VIEWPORT)->InitializeViewport(this, this->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
 
 		this->GetWidget<NWidgetCore>(VVW_WIDGET_START_STOP_VEH)->tool_tip   = STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP + v->type;
 		this->GetWidget<NWidgetCore>(VVW_WIDGET_CENTER_MAIN_VIEH)->tool_tip = STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP + v->type;
@@ -1749,6 +1747,11 @@ public:
 					size->height = 0;
 					size->width = 0;
 				} break;
+
+			case VVW_WIDGET_VIEWPORT:
+				size->width = VV_INITIAL_VIEWPORT_WIDTH;
+				size->height = (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT;
+				break;
 		}
 	}
 
@@ -1768,8 +1771,6 @@ public:
 		}
 
 		this->DrawWidgets();
-
-		this->DrawViewport();
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -1921,10 +1922,10 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		this->viewport->width          += delta.x;
-		this->viewport->height         += delta.y;
-		this->viewport->virtual_width  += delta.x;
-		this->viewport->virtual_height += delta.y;
+		if (this->viewport != NULL) {
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(VVW_WIDGET_VIEWPORT);
+			nvp->UpdateViewportCoordinates(this);
+		}
 	}
 
 	virtual void OnTick()
