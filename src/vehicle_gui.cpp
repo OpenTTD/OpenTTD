@@ -235,29 +235,28 @@ static RefitList *BuildRefitList(const Vehicle *v)
 	return list;
 }
 
-/** Draw the list of available refit options for a consist.
- * Draw the list and highlight the selected refit option (if any)
- * @param *list first vehicle in consist to get the refit-options of
- * @param sel selected refit cargo-type in the window
- * @param pos position of the selected item in caller widow
- * @param rows number of rows(capacity) in caller window
- * @param delta step height in caller window
- * @param right the right most position to draw
+/** Draw the list of available refit options for a consist and highlight the selected refit option (if any).
+ * @param *list First vehicle in consist to get the refit-options of
+ * @param sel   Selected refit cargo-type in the window
+ * @param pos   Position of the selected item in caller widow
+ * @param rows  Number of rows(capacity) in caller window
+ * @param delta Step height in caller window
+ * @param r     Rectangle of the matrix widget.
  */
-static void DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, uint right)
+static void DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, const Rect &r)
 {
-	uint y = 31;
+	uint y = r.top + WD_MATRIX_TOP;
 	/* Draw the list, and find the selected cargo (by its position in list) */
 	for (uint i = pos; i < pos + rows && i < list->num_lines; i++) {
 		TextColour colour = (sel == (int)i) ? TC_WHITE : TC_BLACK;
 		RefitOption *refit = &list->items[i];
 
 		/* Draw the cargo name */
-		int last_x = DrawString(2, right, y, CargoSpec::Get(refit->cargo)->name, colour);
+		int last_x = DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, CargoSpec::Get(refit->cargo)->name, colour);
 
 		/* If the callback succeeded, draw the cargo suffix */
 		if (refit->value != CALLBACK_FAILED) {
-			DrawString(last_x + 1, right, y, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value), colour);
+			DrawString(last_x + 1, r.right - WD_MATRIX_RIGHT, y, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value), colour);
 		}
 		y += delta;
 	}
@@ -354,7 +353,7 @@ struct RefitWindow : public Window {
 	{
 		switch (widget) {
 			case VRW_MATRIX:
-				DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, r.right - WD_FRAMERECT_RIGHT);
+				DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, r);
 				break;
 
 			case VRW_INFOPANEL:
