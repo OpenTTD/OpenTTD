@@ -1172,10 +1172,7 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		if (delta.x != 0 && !this->listview_mode) {
-			ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
-		}
-		if (delta.y == 0) return;
+		if (!this->listview_mode) ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
 
 		this->vscroll.SetCapacity((this->widget[BUILD_VEHICLE_WIDGET_LIST].bottom - this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1) / GetVehicleListHeight(this->vehicle_type));
 		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);

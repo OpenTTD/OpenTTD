@@ -1051,7 +1051,7 @@ struct StationViewWindow : public Window {
 
 	virtual void OnResize(Point delta)
 	{
-		if (delta.x != 0) ResizeButtons(this, SVW_LOCATION, SVW_RENAME);
+		ResizeButtons(this, SVW_LOCATION, SVW_RENAME);
 		this->vscroll.SetCapacity((this->widget[SVW_WAITING].bottom - this->widget[SVW_WAITING].top + 1) / this->resize.step_height);
 	}
 };

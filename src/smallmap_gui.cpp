@@ -1135,7 +1135,7 @@ public:
 
 	virtual void OnResize(Point delta)
 	{
-		if (delta.x != 0 && this->map_type == SMT_INDUSTRY) this->ResizeLegend();
+		if (this->map_type == SMT_INDUSTRY) this->ResizeLegend();
 	}
 
 	void SmallMapCenterOnCurrentPos()

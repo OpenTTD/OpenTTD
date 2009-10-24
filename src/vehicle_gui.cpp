@@ -1498,8 +1498,7 @@ struct VehicleDetailsWindow : Window {
 
 	virtual void OnResize(Point delta)
 	{
-		if (delta.x != 0) ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
-		if (delta.y == 0) return;
+		ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
 
 		this->vscroll.SetCapacity((this->widget[VLD_WIDGET_MIDDLE_DETAILS].bottom - this->widget[VLD_WIDGET_MIDDLE_DETAILS].top + 1) / 14);
 		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
