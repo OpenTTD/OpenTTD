@@ -2118,57 +2118,56 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		if (!CanRefitTo(v->engine_type, new_cid)) continue;
 
 		const Engine *e = Engine::Get(v->engine_type);
-		if (e->CanCarryCargo()) {
-			uint16 amount = CALLBACK_FAILED;
+		if (!e->CanCarryCargo()) continue;
 
-			if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
-				/* Back up the vehicle's cargo type */
-				CargoID temp_cid = v->cargo_type;
-				byte temp_subtype = v->cargo_subtype;
-				v->cargo_type = new_cid;
-				v->cargo_subtype = new_subtype;
-				/* Check the refit capacity callback */
-				amount = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
-				/* Restore the original cargo type */
-				v->cargo_type = temp_cid;
-				v->cargo_subtype = temp_subtype;
-			}
+		uint16 amount = CALLBACK_FAILED;
+		if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
+			/* Back up the vehicle's cargo type */
+			CargoID temp_cid = v->cargo_type;
+			byte temp_subtype = v->cargo_subtype;
+			v->cargo_type = new_cid;
+			v->cargo_subtype = new_subtype;
+			/* Check the refit capacity callback */
+			amount = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+			/* Restore the original cargo type */
+			v->cargo_type = temp_cid;
+			v->cargo_subtype = temp_subtype;
+		}
 
-			if (amount == CALLBACK_FAILED) { // callback failed or not used, use default
-				CargoID old_cid = e->GetDefaultCargoType();
-				/* normally, the capacity depends on the cargo type, a rail vehicle can
-				 * carry twice as much mail/goods as normal cargo, and four times as
-				 * many passengers
-				 */
-				amount = e->u.rail.capacity;
-				switch (old_cid) {
-					case CT_PASSENGERS: break;
-					case CT_MAIL:
-					case CT_GOODS: amount *= 2; break;
-					default:       amount *= 4; break;
-				}
-				switch (new_cid) {
-					case CT_PASSENGERS: break;
-					case CT_MAIL:
-					case CT_GOODS: amount /= 2; break;
-					default:       amount /= 4; break;
-				}
+		if (amount == CALLBACK_FAILED) { // callback failed or not used, use default
+			CargoID old_cid = e->GetDefaultCargoType();
+			/* normally, the capacity depends on the cargo type, a rail vehicle can
+			 * carry twice as much mail/goods as normal cargo, and four times as
+			 * many passengers
+			 */
+			amount = e->u.rail.capacity;
+			switch (old_cid) {
+				case CT_PASSENGERS: break;
+				case CT_MAIL:
+				case CT_GOODS: amount *= 2; break;
+				default:       amount *= 4; break;
 			}
+			switch (new_cid) {
+				case CT_PASSENGERS: break;
+				case CT_MAIL:
+				case CT_GOODS: amount /= 2; break;
+				default:       amount /= 4; break;
+			}
+		}
 
-			if (new_cid != v->cargo_type) {
-				cost.AddCost(GetRefitCost(v->engine_type));
-			}
+		if (new_cid != v->cargo_type) {
+			cost.AddCost(GetRefitCost(v->engine_type));
+		}
 
-			num += amount;
-			if (flags & DC_EXEC) {
-				v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
-				v->cargo_type = new_cid;
-				v->cargo_cap = amount;
-				v->cargo_subtype = new_subtype;
-				SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-				SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-				InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-			}
+		num += amount;
+		if (flags & DC_EXEC) {
+			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
+			v->cargo_type = new_cid;
+			v->cargo_cap = amount;
+			v->cargo_subtype = new_subtype;
+			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 		}
 	} while ((v = v->Next()) != NULL && !only_this);
 
