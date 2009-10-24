@@ -1525,26 +1525,6 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 /* Unified vehicle GUI - Vehicle View Window */
 
 /** Vehicle view widgets. */
-static const Widget _vehicle_view_widgets[] = {
-	{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX
-	{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_GREY,  11, 237,   0,  13, STR_VEHICLE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
-	{  WWT_STICKYBOX,    RESIZE_LR,  COLOUR_GREY, 238, 249,   0,  13, 0x0,                      STR_TOOLTIP_STICKY },                  // VVW_WIDGET_STICKY
-	{      WWT_PANEL,    RESIZE_RB,  COLOUR_GREY,   0, 231,  14, 103, 0x0,                      STR_NULL },                           // VVW_WIDGET_PANEL
-	{      WWT_INSET,    RESIZE_RB,  COLOUR_GREY,   2, 229,  16, 101, 0x0,                      STR_NULL },                           // VVW_WIDGET_VIEWPORT
-	{    WWT_PUSHBTN,   RESIZE_RTB,  COLOUR_GREY,   0, 237, 104, 115, 0x0,                      0x0 /* filled later */ },             // VVW_WIDGET_START_STOP_VEH
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  0x0 /* filled later */ },             // VVW_WIDGET_CENTER_MAIN_VIEH
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },             // VVW_WIDGET_GOTO_DEPOT
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_REFIT_VEHICLE,        0x0 /* filled later */ },             // VVW_WIDGET_REFIT_VEH
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  68,  85, SPR_SHOW_ORDERS,          0x0 /* filled later */ },             // VVW_WIDGET_SHOW_ORDERS
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */ },             // VVW_WIDGET_SHOW_DETAILS
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },             // VVW_WIDGET_CLONE_VEH
-	{      WWT_PANEL,   RESIZE_LRB,  COLOUR_GREY, 232, 249, 104, 103, 0x0,                      STR_NULL },                           // VVW_WIDGET_EMPTY_BOTTOM_RIGHT
-	{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_GREY, 238, 249, 104, 115, 0x0,                      STR_TOOLTIP_RESIZE },                  // VVW_WIDGET_RESIZE
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_FORCE_VEHICLE_TURN,   STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP }, // VVW_WIDGET_TURN_AROUND
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_IGNORE_SIGNALS,       STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP }, // VVW_WIDGET_FORCE_PROCEED
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VVW_WIDGET_CLOSEBOX),
@@ -1556,22 +1536,22 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 			NWidget(WWT_INSET, COLOUR_GREY, VVW_WIDGET_VIEWPORT), SetPadding(2, 2, 2, 2), SetMinimalSize(228, 86), SetResize(1, 1), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CENTER_MAIN_VIEH), SetMinimalSize(18, 18), SetDataTip(SPR_CENTRE_VIEW_VEHICLE, 0x0 /* filled later */),
-			NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_GOTO_DEPOT), SetMinimalSize(18, 18), SetDataTip(0x0 /* filled later */, 0x0 /* filled later */),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CLONE_VEH), SetMinimalSize(18, 18), SetDataTip(0x0 /* filled later */, 0x0 /* filled later */),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CENTER_MAIN_VIEH), SetMinimalSize(18, 18), SetFill(true, true), SetDataTip(SPR_CENTRE_VIEW_VEHICLE, 0x0 /* filled later */),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, VVW_WIDGET_SELECT_DEPOT_CLONE),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_GOTO_DEPOT), SetMinimalSize(18, 18), SetFill(true, true), SetDataTip(0x0 /* filled later */, 0x0 /* filled later */),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_CLONE_VEH), SetMinimalSize(18, 18), SetFill(true, true), SetDataTip(0x0 /* filled later */, 0x0 /* filled later */),
 			EndContainer(),
-			NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_REFIT_VEH), SetMinimalSize(18, 18),
-												SetDataTip(SPR_REFIT_VEHICLE, 0x0 /* filled later */),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_TURN_AROUND), SetMinimalSize(18, 18),
+			/* For trains only, 'ignore signal' button. */
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_FORCE_PROCEED), SetMinimalSize(18, 18), SetFill(true, true),
+											SetDataTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, VVW_WIDGET_SELECT_REFIT_TURN),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_REFIT_VEH), SetMinimalSize(18, 18), SetFill(true, true), SetDataTip(SPR_REFIT_VEHICLE, 0x0 /* filled later */),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_TURN_AROUND), SetMinimalSize(18, 18), SetFill(true, true),
 												SetDataTip(SPR_FORCE_VEHICLE_TURN, STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_FORCE_PROCEED), SetMinimalSize(18, 18),
-												SetDataTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_SHOW_ORDERS), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_ORDERS, 0x0 /* filled later */),
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_SHOW_DETAILS), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */),
-			NWidget(WWT_PANEL, COLOUR_GREY, VVW_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(18, 0), SetResize(0, 1), EndContainer(),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_SHOW_ORDERS), SetFill(true, true), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_ORDERS, 0x0 /* filled later */),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VVW_WIDGET_SHOW_DETAILS), SetFill(true, true), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */),
+			NWidget(WWT_PANEL, COLOUR_GREY, VVW_WIDGET_EMPTY_BOTTOM_RIGHT), SetFill(true, true), SetMinimalSize(18, 0), SetResize(0, 1), EndContainer(),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1585,7 +1565,7 @@ static const WindowDesc _vehicle_view_desc(
 	WDP_AUTO, WDP_AUTO, 250, 116, 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_view_widgets, _nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
+	NULL, _nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 
 /** Vehicle view window descriptor for trains. Only minimum_height and
@@ -1595,7 +1575,7 @@ static const WindowDesc _train_view_desc(
 	WDP_AUTO, WDP_AUTO, 250, 134, 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_view_widgets, _nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
+	NULL, _nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 
 
@@ -1663,22 +1643,46 @@ static bool IsVehicleRefitable(const Vehicle *v)
 }
 
 struct VehicleViewWindow : Window {
-	VehicleViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+private:
+	/** Display planes available in the vehicle view window. */
+	enum PlaneSelections {
+		SEL_DC_GOTO_DEPOT,  ///< Display 'goto depot' button in #VVW_WIDGET_SELECT_DEPOT_CLONE stacked widget.
+		SEL_DC_CLONE,       ///< Display 'clone vehicle' button in #VVW_WIDGET_SELECT_DEPOT_CLONE stacked widget.
+
+		SEL_RT_REFIT,       ///< Display 'refit' button in #VVW_WIDGET_SELECT_REFIT_TURN stacked widget.
+		SEL_RT_TURN_AROUND, ///< Display 'turn around' button in #VVW_WIDGET_SELECT_REFIT_TURN stacked widget.
+
+		SEL_DC_BASEPLANE = SEL_DC_GOTO_DEPOT, ///< First plane of the #VVW_WIDGET_SELECT_DEPOT_CLONE stacked widget.
+		SEL_RT_BASEPLANE = SEL_RT_REFIT,      ///< First plane of the #VVW_WIDGET_SELECT_REFIT_TURN stacked widget.
+	};
+
+	/** Display a plane in the window.
+	 * @param plane Plane to show.
+	 */
+	void SelectPlane(PlaneSelections plane)
 	{
-		const Vehicle *v = Vehicle::Get(this->window_number);
+		switch (plane) {
+			case SEL_DC_GOTO_DEPOT:
+			case SEL_DC_CLONE:
+				this->GetWidget<NWidgetStacked>(VVW_WIDGET_SELECT_DEPOT_CLONE)->SetDisplayedPlane(plane - SEL_DC_BASEPLANE);
+				break;
 
-		this->owner = v->owner;
-		InitializeWindowViewport(this, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
-												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
-												 this->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
+			case SEL_RT_REFIT:
+			case SEL_RT_TURN_AROUND:
+				this->GetWidget<NWidgetStacked>(VVW_WIDGET_SELECT_REFIT_TURN)->SetDisplayedPlane(plane - SEL_RT_BASEPLANE);
+				break;
 
-		this->widget[VVW_WIDGET_START_STOP_VEH].tooltips   = STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_REFIT_VEH].tooltips        = STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips       = STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips      = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips     = STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_CLONE_VEH].tooltips        = STR_VEHICLE_VIEW_CLONE_TRAIN_INFO + v->type;
+			default:
+				NOT_REACHED();
+		}
+	}
+
+public:
+	VehicleViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	{
+		const Vehicle *v = Vehicle::Get(window_number);
+
+		this->CreateNestedTree(desc);
 
 		/*
 		 * fill in data and tooltip codes for the widgets and
@@ -1686,68 +1690,46 @@ struct VehicleViewWindow : Window {
 		 */
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_TRAIN_TODEPOT;
-				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_TRAIN;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_TRAIN_TODEPOT;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_TRAIN;
 
-				this->widget[VVW_WIDGET_TURN_AROUND].tooltips = STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP;
-
-				/* due to more buttons we must modify the layout a bit for trains */
-				this->widget[VVW_WIDGET_PANEL].bottom = 121;
-				this->widget[VVW_WIDGET_VIEWPORT].bottom = 119;
-
-				this->widget[VVW_WIDGET_START_STOP_VEH].top = 122;
-				this->widget[VVW_WIDGET_START_STOP_VEH].bottom = 133;
-
-				this->widget[VVW_WIDGET_REFIT_VEH].top = 68;
-				this->widget[VVW_WIDGET_REFIT_VEH].bottom = 85;
-
-				this->widget[VVW_WIDGET_SHOW_ORDERS].top = 86;
-				this->widget[VVW_WIDGET_SHOW_ORDERS].bottom = 103;
-
-				this->widget[VVW_WIDGET_SHOW_DETAILS].top = 104;
-				this->widget[VVW_WIDGET_SHOW_DETAILS].bottom = 121;
-
-				this->widget[VVW_WIDGET_EMPTY_BOTTOM_RIGHT].top = 122;
-				this->widget[VVW_WIDGET_EMPTY_BOTTOM_RIGHT].bottom = 121;
-
-				this->widget[VVW_WIDGET_RESIZE].top = 122;
-				this->widget[VVW_WIDGET_RESIZE].bottom = 133;
-
-				this->widget[VVW_WIDGET_TURN_AROUND].top = 68;
-				this->widget[VVW_WIDGET_TURN_AROUND].bottom = 85;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_TURN_AROUND)->tool_tip = STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP;
 				break;
 
 			case VEH_ROAD:
-				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_ROADVEH_TODEPOT;
-				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_ROADVEH;
-
-				this->SetWidgetHiddenState(VVW_WIDGET_FORCE_PROCEED, true);
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_ROADVEH_TODEPOT;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_ROADVEH;
 				break;
 
 			case VEH_SHIP:
-				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_SHIP_TODEPOT;
-				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_SHIP;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_SHIP_TODEPOT;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_SHIP;
 
-				this->SetWidgetsHiddenState(true,
-																		VVW_WIDGET_TURN_AROUND,
-																		VVW_WIDGET_FORCE_PROCEED,
-																		WIDGET_LIST_END);
+				this->SelectPlane(SEL_RT_REFIT);
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_AIRCRAFT_TODEPOT;
-				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_AIRCRAFT;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->widget_data = SPR_SEND_AIRCRAFT_TODEPOT;
+				this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->widget_data = SPR_CLONE_AIRCRAFT;
 
-				this->SetWidgetsHiddenState(true,
-																		VVW_WIDGET_TURN_AROUND,
-																		VVW_WIDGET_FORCE_PROCEED,
-																		WIDGET_LIST_END);
+				this->SelectPlane(SEL_RT_REFIT);
 				break;
 
 			default: NOT_REACHED();
 		}
+		this->FinishInitNested(desc, window_number);
+		this->owner = v->owner;
+		InitializeWindowViewport(this, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
+												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
+												 this->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
 
-		this->FindWindowPlacementAndResize(desc);
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_START_STOP_VEH)->tool_tip   = STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_CENTER_MAIN_VIEH)->tool_tip = STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_REFIT_VEH)->tool_tip        = STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_GOTO_DEPOT)->tool_tip       = STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_SHOW_ORDERS)->tool_tip      = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_SHOW_DETAILS)->tool_tip     = STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VVW_WIDGET_CLONE_VEH)->tool_tip        = STR_VEHICLE_VIEW_CLONE_TRAIN_INFO + v->type;
 	}
 
 	~VehicleViewWindow()
@@ -1758,16 +1740,26 @@ struct VehicleViewWindow : Window {
 		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		const Vehicle *v = Vehicle::Get(this->window_number);
+		switch (widget) {
+			case VVW_WIDGET_FORCE_PROCEED:
+				if (v->type != VEH_TRAIN) {
+					size->height = 0;
+					size->width = 0;
+				} break;
+		}
+	}
+
 	virtual void OnPaint()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
-		StringID str;
 		bool is_localcompany = v->owner == _local_company;
 		bool refitable_and_stopped_in_depot = IsVehicleRefitable(v);
 
 		this->SetWidgetDisabledState(VVW_WIDGET_GOTO_DEPOT, !is_localcompany);
-		this->SetWidgetDisabledState(VVW_WIDGET_REFIT_VEH,
-																!refitable_and_stopped_in_depot || !is_localcompany);
+		this->SetWidgetDisabledState(VVW_WIDGET_REFIT_VEH, !refitable_and_stopped_in_depot || !is_localcompany);
 		this->SetWidgetDisabledState(VVW_WIDGET_CLONE_VEH, !is_localcompany);
 
 		if (v->type == VEH_TRAIN) {
@@ -1775,10 +1767,25 @@ struct VehicleViewWindow : Window {
 			this->SetWidgetDisabledState(VVW_WIDGET_TURN_AROUND, !is_localcompany);
 		}
 
-		/* draw widgets & caption */
-		SetDParam(0, v->index);
 		this->DrawWidgets();
 
+		this->DrawViewport();
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget != VVW_WIDGET_CAPTION) return;
+
+		const Vehicle *v = Vehicle::Get(this->window_number);
+		SetDParam(0, v->index);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != VVW_WIDGET_START_STOP_VEH) return;
+
+		const Vehicle *v = Vehicle::Get(this->window_number);
+		StringID str;
 		if (v->vehstatus & VS_CRASHED) {
 			str = STR_VEHICLE_STATUS_CRASHED;
 		} else if (v->type != VEH_AIRCRAFT && v->breakdown_ctr == 1) { // check for aircraft necessary?
@@ -1856,9 +1863,8 @@ struct VehicleViewWindow : Window {
 		}
 
 		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, this->widget[VVW_WIDGET_START_STOP_VEH].top + 1);
-		DrawString(this->widget[VVW_WIDGET_START_STOP_VEH].left + 8, this->widget[VVW_WIDGET_START_STOP_VEH].right, this->widget[VVW_WIDGET_START_STOP_VEH].top + 1, str, TC_FROMSTRING, SA_CENTER);
-		this->DrawViewport();
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP);
+		DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1926,20 +1932,23 @@ struct VehicleViewWindow : Window {
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool veh_stopped = v->IsStoppedInDepot();
 
-		/* Widget VVW_WIDGET_GOTO_DEPOT must be hidden if the vehicle is already
-		 * stopped in depot.
-		 * Widget VVW_WIDGET_CLONE_VEH should then be shown, since cloning is
-		 * allowed only while in depot and stopped.
-		 * This sytem allows to have two buttons, on top of each other.
-		 * The same system applies to widget VVW_WIDGET_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
-		if (veh_stopped != this->IsWidgetHidden(VVW_WIDGET_GOTO_DEPOT) || veh_stopped == this->IsWidgetHidden(VVW_WIDGET_CLONE_VEH)) {
-			this->SetWidgetHiddenState( VVW_WIDGET_GOTO_DEPOT, veh_stopped);  // send to depot
-			this->SetWidgetHiddenState(VVW_WIDGET_CLONE_VEH, !veh_stopped); // clone
-			if (v->type == VEH_ROAD || v->type == VEH_TRAIN) {
-				this->SetWidgetHiddenState( VVW_WIDGET_REFIT_VEH, !veh_stopped); // refit
-				this->SetWidgetHiddenState(VVW_WIDGET_TURN_AROUND, veh_stopped);  // force turn around
+		/* Widget VVW_WIDGET_GOTO_DEPOT must be hidden if the vehicle is already stopped in depot.
+		 * Widget VVW_WIDGET_CLONE_VEH should then be shown, since cloning is allowed only while in depot and stopped.
+		 */
+		PlaneSelections plane = veh_stopped ? SEL_DC_CLONE : SEL_DC_GOTO_DEPOT;
+		NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(VVW_WIDGET_SELECT_DEPOT_CLONE); // Selection widget 'send to depot' / 'clone'.
+		if (nwi->shown_plane + SEL_DC_BASEPLANE != plane) {
+			this->SelectPlane(plane);
+			this->SetWidgetDirty(VVW_WIDGET_SELECT_DEPOT_CLONE);
+		}
+		/* The same system applies to widget VVW_WIDGET_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
+		if (v->type == VEH_ROAD || v->type == VEH_TRAIN) {
+			PlaneSelections plane = veh_stopped ? SEL_RT_REFIT : SEL_RT_TURN_AROUND;
+			NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(VVW_WIDGET_SELECT_REFIT_TURN);
+			if (nwi->shown_plane + SEL_RT_BASEPLANE != plane) {
+				this->SelectPlane(plane);
+				this->SetWidgetDirty(VVW_WIDGET_SELECT_REFIT_TURN);
 			}
-			this->SetDirty();
 		}
 	}
 };
