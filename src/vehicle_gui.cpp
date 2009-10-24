@@ -147,7 +147,7 @@ struct RefitOption {
 };
 
 struct RefitList {
-	uint num_lines;
+	uint num_lines;     ///< Number of #items.
 	RefitOption *items;
 };
 
@@ -275,31 +275,33 @@ enum VehicleRefitWidgets {
 	VRW_RESIZEBOX,
 };
 
+/** Refit cargo window. */
 struct RefitWindow : public Window {
-	int sel;
-	RefitOption *cargo;
-	RefitList *list;
-	uint length;
-	VehicleOrderID order;
+	int sel;              ///< Index in refit options, \c -1 if nothing is selected.
+	RefitOption *cargo;   ///< Refit option selected by \v sel.
+	RefitList *list;      ///< List of cargo types available for refitting.
+	uint length;          ///< For trains, the number of vehicles.
+	VehicleOrderID order; ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 
-	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window(desc, v->index)
+	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window()
 	{
+		this->CreateNestedTree(desc);
+
+		this->GetWidget<NWidgetCore>(VRW_SELECTHEADER)->tool_tip = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
+		this->GetWidget<NWidgetCore>(VRW_MATRIX)->tool_tip       = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(VRW_REFITBUTTON);
+		nwi->widget_data = STR_REFIT_TRAIN_REFIT_BUTTON + v->type;
+		nwi->tool_tip    = STR_REFIT_TRAIN_REFIT_TOOLTIP + v->type;
+
+		this->FinishInitNested(desc, v->index);
 		this->owner = v->owner;
-		this->vscroll.SetCapacity(8);
-		this->resize.step_height = 14;
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(VRW_MATRIX)->current_y / this->resize.step_height);
 
 		this->order = order;
 		this->sel  = -1;
 		this->list = BuildRefitList(v);
 		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
 		this->vscroll.SetCount(this->list->num_lines);
-
-		this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
-		this->widget[VRW_MATRIX].tooltips       = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
-		this->widget[VRW_REFITBUTTON].data      = STR_REFIT_TRAIN_REFIT_BUTTON + v->type;
-		this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_TRAIN_REFIT_TOOLTIP + v->type;
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~RefitWindow()
@@ -326,24 +328,48 @@ struct RefitWindow : public Window {
 
 		this->vscroll.SetCount(this->list->num_lines);
 
-		SetDParam(0, v->index);
-		this->DrawWidgets();
-
-		DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, this->width - 2);
 		this->cargo = (this->sel >= 0 && this->sel < (int)this->list->num_lines) ? &this->list->items[this->sel] : NULL;
+		this->DrawWidgets();
+	}
 
-		if (this->cargo != NULL) {
-			CommandCost cost;
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case VRW_MATRIX:
+				resize->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
+				size->height = resize->height * 8;
+				break;
+			case VRW_INFOPANEL:
+				size->height = max(size->height, WD_FRAMERECT_TOP + 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM);
+				break;
+		}
+	}
 
-			cost = DoCommand(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8,
-							 DC_QUERY_COST, GetCmdRefitVeh(v->type));
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == VRW_CAPTION) SetDParam(0, Vehicle::Get(this->window_number)->index);
+	}
 
-			if (CmdSucceeded(cost)) {
-				SetDParam(0, this->cargo->cargo);
-				SetDParam(1, _returned_refit_capacity);
-				SetDParam(2, cost.GetCost());
-				DrawStringMultiLine(2, this->width - 2, this->widget[VRW_INFOPANEL].top + 1, this->widget[VRW_INFOPANEL].bottom, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT);
-			}
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case VRW_MATRIX:
+				DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, r.right - WD_FRAMERECT_RIGHT);
+				break;
+
+			case VRW_INFOPANEL:
+				if (this->cargo != NULL) {
+					Vehicle *v = Vehicle::Get(this->window_number);
+					CommandCost cost = DoCommand(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
+					if (CmdSucceeded(cost)) {
+						SetDParam(0, this->cargo->cargo);
+						SetDParam(1, _returned_refit_capacity);
+						SetDParam(2, cost.GetCost());
+						DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT,
+								r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT);
+					}
+				}
+				break;
 		}
 	}
 
@@ -351,7 +377,7 @@ struct RefitWindow : public Window {
 	{
 		switch (widget) {
 			case VRW_MATRIX: { // listbox
-				int y = pt.y - this->widget[VRW_MATRIX].top;
+				int y = pt.y - this->GetWidget<NWidgetBase>(VRW_MATRIX)->pos_y;
 				if (y >= 0) {
 					this->sel = (y / (int)this->resize.step_height) + this->vscroll.GetPosition();
 					this->SetDirty();
@@ -375,21 +401,10 @@ struct RefitWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->widget[VRW_MATRIX].bottom - this->widget[VRW_MATRIX].top + 1) / this->resize.step_height);
-		this->widget[VRW_MATRIX].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(VRW_MATRIX);
+		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
-};
-
-static const Widget _vehicle_refit_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW},             // VRW_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_REFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // VRW_CAPTION
-	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_REFIT_TITLE,   STR_NULL},                             // VRW_SELECTHEADER
-	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,             STR_NULL},                             // VRW_MATRIX
-	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,               STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // VRW_SCROLLBAR
-	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,               STR_NULL},                             // VRW_INFOPANEL
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   227,   162,   173, 0x0,               STR_NULL},                             // VRW_REFITBUTTON
-	{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,               STR_TOOLTIP_RESIZE},                    // VRW_RESIZEBOX
-	{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_vehicle_refit_widgets[] = {
@@ -414,7 +429,7 @@ static const WindowDesc _vehicle_refit_desc(
 	WDP_AUTO, WDP_AUTO, 240, 174, 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_vehicle_refit_widgets, _nested_vehicle_refit_widgets, lengthof(_nested_vehicle_refit_widgets)
+	NULL, _nested_vehicle_refit_widgets, lengthof(_nested_vehicle_refit_widgets)
 );
 
 /** Show the refit window for a vehicle
