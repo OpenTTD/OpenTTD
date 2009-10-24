@@ -243,37 +243,24 @@ static RefitList *BuildRefitList(const Vehicle *v)
  * @param rows number of rows(capacity) in caller window
  * @param delta step height in caller window
  * @param right the right most position to draw
- * @return the refit option that is hightlighted, NULL if none
  */
-static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, uint right)
+static void DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, uint right)
 {
-	RefitOption *selected = NULL;
 	uint y = 31;
-
 	/* Draw the list, and find the selected cargo (by its position in list) */
-	for (uint i = 0; i < list->num_lines; i++) {
-		TextColour colour = TC_BLACK;
+	for (uint i = pos; i < pos + rows && i < list->num_lines; i++) {
+		TextColour colour = (sel == (int)i) ? TC_WHITE : TC_BLACK;
 		RefitOption *refit = &list->items[i];
-		if (sel == 0) {
-			selected = refit;
-			colour = TC_WHITE;
+
+		/* Draw the cargo name */
+		int last_x = DrawString(2, right, y, CargoSpec::Get(refit->cargo)->name, colour);
+
+		/* If the callback succeeded, draw the cargo suffix */
+		if (refit->value != CALLBACK_FAILED) {
+			DrawString(last_x + 1, right, y, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value), colour);
 		}
-
-		if (i >= pos && i < pos + rows) {
-			/* Draw the cargo name */
-			int last_x = DrawString(2, right, y, CargoSpec::Get(refit->cargo)->name, colour);
-
-			/* If the callback succeeded, draw the cargo suffix */
-			if (refit->value != CALLBACK_FAILED) {
-				DrawString(last_x + 1, right, y, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value), colour);
-			}
-			y += delta;
-		}
-
-		sel--;
+		y += delta;
 	}
-
-	return selected;
 }
 
 /** Widget numbers of the vehicle refit window. */
@@ -342,7 +329,8 @@ struct RefitWindow : public Window {
 		SetDParam(0, v->index);
 		this->DrawWidgets();
 
-		this->cargo = DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, this->width - 2);
+		DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->resize.step_height, this->width - 2);
+		this->cargo = (this->sel >= 0 && this->sel < (int)this->list->num_lines) ? &this->list->items[this->sel] : NULL;
 
 		if (this->cargo != NULL) {
 			CommandCost cost;
