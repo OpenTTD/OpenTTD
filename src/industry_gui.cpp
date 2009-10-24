@@ -106,31 +106,19 @@ enum DynamicPlaceIndustriesWidgets {
 	DPIW_RESIZE_WIDGET,
 };
 
-/** Widget definition of the dynamic place industries gui */
-static const Widget _build_industry_widgets[] = {
-{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},             // DPIW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_DARK_GREEN,    11,   169,     0,    13, STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // DPIW_CAPTION
-{     WWT_MATRIX,      RESIZE_RB,  COLOUR_DARK_GREEN,     0,   157,    14,   118, 0x801,                     STR_FUND_INDUSTRY_SELECTION_TOOLTIP},          // DPIW_MATRIX_WIDGET
-{  WWT_SCROLLBAR,     RESIZE_LRB,  COLOUR_DARK_GREEN,   158,   169,    14,   118, 0x0,                       STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // DPIW_SCROLLBAR
-{      WWT_PANEL,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   169,   119,   199, 0x0,                       STR_NULL},                             // DPIW_INFOPANEL
-{    WWT_TEXTBTN,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   157,   200,   211, STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY,     STR_NULL},                             // DPIW_FUND_WIDGET
-{  WWT_RESIZEBOX,    RESIZE_LRTB,  COLOUR_DARK_GREEN,   158,   169,   200,   211, 0x0,                       STR_TOOLTIP_RESIZE},                    // DPIW_RESIZE_WIDGET
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DPIW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DPIW_CAPTION), SetMinimalSize(159, 14), SetDataTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DPIW_CAPTION), SetDataTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, DPIW_MATRIX_WIDGET), SetMinimalSize(158, 105), SetDataTip(0x801, STR_FUND_INDUSTRY_SELECTION_TOOLTIP), SetResize(1, 1),
+		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, DPIW_MATRIX_WIDGET), SetDataTip(0x801, STR_FUND_INDUSTRY_SELECTION_TOOLTIP), SetResize(1, 1),
 		NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, DPIW_SCROLLBAR), SetResize(0, 1),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DPIW_INFOPANEL), SetMinimalSize(170, 81), SetResize(1, 0),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DPIW_INFOPANEL), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, DPIW_FUND_WIDGET), SetMinimalSize(158, 12), SetResize(1, 0), SetDataTip(STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, DPIW_FUND_WIDGET), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_NULL),
 		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, DPIW_RESIZE_WIDGET),
 	EndContainer(),
 };
@@ -140,7 +128,7 @@ static const WindowDesc _build_industry_desc(
 	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_build_industry_widgets, _nested_build_industry_widgets, lengthof(_nested_build_industry_widgets)
+	NULL, _nested_build_industry_widgets, lengthof(_nested_build_industry_widgets)
 );
 
 /** Build (fund or prospect) a new industry, */
@@ -151,8 +139,10 @@ class BuildIndustryWindow : public Window {
 	bool timer_enabled;                         ///< timer can be used
 	uint16 count;                               ///< How many industries are loaded
 	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
-	StringID text[NUM_INDUSTRYTYPES + 1];       ///< Text coming from CBM_IND_FUND_MORE_TEXT (if ever)
 	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
+
+	/** The offset for the text in the matrix. */
+	static const int MATRIX_TEXT_OFFSET = 17;
 
 	void SetupArrays()
 	{
@@ -160,7 +150,6 @@ class BuildIndustryWindow : public Window {
 
 		for (uint i = 0; i < lengthof(this->index); i++) {
 			this->index[i]   = INVALID_INDUSTRYTYPE;
-			this->text[i]    = STR_NULL;
 			this->enabled[i] = false;
 		}
 
@@ -198,27 +187,14 @@ class BuildIndustryWindow : public Window {
 			this->selected_index = 0;
 			this->selected_type = this->index[0];
 		}
+
+		this->vscroll.SetCount(this->count);
 	}
 
 public:
-	BuildIndustryWindow() : Window(&_build_industry_desc)
+	BuildIndustryWindow() : Window()
 	{
-		/* Shorten the window to the equivalant of the additionnal purchase
-		 * info coming from the callback.  So it will only be available to its full
-		 * height when newindistries are loaded */
-		if (!_loaded_newgrf_features.has_newindustries) {
-			this->widget[DPIW_INFOPANEL].bottom -= 44;
-			this->widget[DPIW_FUND_WIDGET].bottom -= 44;
-			this->widget[DPIW_FUND_WIDGET].top -= 44;
-			this->widget[DPIW_RESIZE_WIDGET].bottom -= 44;
-			this->widget[DPIW_RESIZE_WIDGET].top -= 44;
-			this->resize.height = this->height -= 44;
-		}
-
 		this->timer_enabled = _loaded_newgrf_features.has_newindustries;
-
-		this->vscroll.SetCapacity(8); // rows in grid, same in scroller
-		this->resize.step_height = 13;
 
 		this->selected_index = -1;
 		this->selected_type = INVALID_INDUSTRYTYPE;
@@ -228,112 +204,191 @@ public:
 
 		this->callback_timer = DAY_TICKS;
 
-		this->FindWindowPlacementAndResize(&_build_industry_desc);
+		this->InitNested(&_build_industry_desc, 0);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case DPIW_MATRIX_WIDGET: {
+				Dimension d = GetStringBoundingBox(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES);
+				for (byte i = 0; i < this->count; i++) {
+					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
+					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(this->index[i])->name));
+				}
+				resize->height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				d.width += MATRIX_TEXT_OFFSET + padding.width;
+				d.height = 5 * resize->height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
+			case DPIW_INFOPANEL: {
+				/* Extra line for cost outside of editor + extra lines for 'extra' information for NewGRFs. */
+				int height = 2 + (_game_mode == GM_EDITOR ? 0 : 1) + (_loaded_newgrf_features.has_newindustries ? 4 : 0);
+				Dimension d = {0, 0};
+				for (byte i = 0; i < this->count; i++) {
+					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
+
+					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
+
+					char cargo_suffix[3][512];
+					GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
+					StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
+					byte p = 0;
+					SetDParam(0, STR_JUST_NOTHING);
+					SetDParamStr(1, "");
+					for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
+						if (indsp->accepts_cargo[j] == CT_INVALID) continue;
+						if (p > 0) str++;
+						SetDParam(p++, CargoSpec::Get(indsp->accepts_cargo[j])->name);
+						SetDParamStr(p++, cargo_suffix[j]);
+					}
+					d = maxdim(d, GetStringBoundingBox(str));
+
+					/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
+					GetAllCargoSuffixes(3, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
+					str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
+					p = 0;
+					SetDParam(0, STR_JUST_NOTHING);
+					SetDParamStr(1, "");
+					for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
+						if (indsp->produced_cargo[j] == CT_INVALID) continue;
+						if (p > 0) str++;
+						SetDParam(p++, CargoSpec::Get(indsp->produced_cargo[j])->name);
+						SetDParamStr(p++, cargo_suffix[j]);
+					}
+					d = maxdim(d, GetStringBoundingBox(str));
+				}
+
+				/* Set it to something more sane :) */
+				size->height = height * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				size->width  = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+			} break;
+
+			case DPIW_FUND_WIDGET: {
+				Dimension d = GetStringBoundingBox(STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
+				d = maxdim(d, GetStringBoundingBox(STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY));
+				d = maxdim(d, GetStringBoundingBox(STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY));
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case DPIW_FUND_WIDGET:
+				/* Raw industries might be prospected. Show this fact by changing the string
+				 * In Editor, you just build, while ingame, or you fund or you prospect */
+				if (_game_mode == GM_EDITOR) {
+					/* We've chosen many random industries but no industries have been specified */
+					SetDParam(0, STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
+				} else {
+					const IndustrySpec *indsp = GetIndustrySpec(this->index[this->selected_index]);
+					SetDParam(0, (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+				}
+				break;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case DPIW_MATRIX_WIDGET:
+				for (byte i = 0; i < this->vscroll.GetCapacity() && i + this->vscroll.GetPosition() < this->count; i++) {
+					int x = r.left + WD_MATRIX_LEFT;
+					int y = r.top + WD_MATRIX_TOP + i * this->resize.step_height;
+					bool selected = this->selected_index == i + this->vscroll.GetPosition();
+
+					if (this->index[i + this->vscroll.GetPosition()] == INVALID_INDUSTRYTYPE) {
+						DrawString(x + MATRIX_TEXT_OFFSET, r.right - WD_MATRIX_RIGHT, y, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
+						continue;
+					}
+					const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll.GetPosition()]);
+
+					/* Draw the name of the industry in white is selected, otherwise, in orange */
+					DrawString(x + MATRIX_TEXT_OFFSET, r.right - WD_MATRIX_RIGHT, y, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+					GfxFillRect(x,     y + 1,  x + 10, y + 7, selected ? 15 : 0);
+					GfxFillRect(x + 1, y + 2,  x +  9, y + 6, indsp->map_colour);
+				}
+				break;
+
+			case DPIW_INFOPANEL: {
+				int y      = r.top    + WD_FRAMERECT_TOP;
+				int bottom = r.bottom - WD_FRAMERECT_BOTTOM;
+				int left   = r.left   + WD_FRAMERECT_LEFT;
+				int right  = r.right  - WD_FRAMERECT_RIGHT;
+
+				if (this->selected_type == INVALID_INDUSTRYTYPE) {
+					DrawStringMultiLine(left, right, y,  bottom, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP);
+					break;
+				}
+
+				const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
+
+				if (_game_mode != GM_EDITOR) {
+					SetDParam(0, indsp->GetConstructionCost());
+					DrawString(left, right, y, STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST);
+					y += FONT_HEIGHT_NORMAL;
+				}
+
+				/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
+				char cargo_suffix[3][512];
+				GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
+				StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
+				byte p = 0;
+				SetDParam(0, STR_JUST_NOTHING);
+				SetDParamStr(1, "");
+				for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
+					if (indsp->accepts_cargo[j] == CT_INVALID) continue;
+					if (p > 0) str++;
+					SetDParam(p++, CargoSpec::Get(indsp->accepts_cargo[j])->name);
+					SetDParamStr(p++, cargo_suffix[j]);
+				}
+				DrawString(left, right, y, str);
+				y += FONT_HEIGHT_NORMAL;
+
+				/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
+				GetAllCargoSuffixes(3, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
+				str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
+				p = 0;
+				SetDParam(0, STR_JUST_NOTHING);
+				SetDParamStr(1, "");
+				for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
+					if (indsp->produced_cargo[j] == CT_INVALID) continue;
+					if (p > 0) str++;
+					SetDParam(p++, CargoSpec::Get(indsp->produced_cargo[j])->name);
+					SetDParamStr(p++, cargo_suffix[j]);
+				}
+				DrawString(left, right, y, str);
+				y += FONT_HEIGHT_NORMAL;
+
+				/* Get the additional purchase info text, if it has not already been queried. */
+				str = STR_NULL;
+				if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {
+					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
+					if (callback_res != CALLBACK_FAILED) {  // Did it fail?
+						str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
+					}
+				}
+
+				/* Draw the Additional purchase text, provided by newgrf callback, if any.
+				 * Otherwhise, will print Nothing */
+				if (str != STR_NULL && str != STR_UNDEFINED) {
+					SetDParam(0, str);
+					DrawStringMultiLine(left, right, y, bottom, STR_JUST_STRING);
+				}
+			} break;
+		}
 	}
 
 	virtual void OnPaint()
 	{
-		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
-		int x_str = this->widget[DPIW_INFOPANEL].left + 3;
-		int y_str = this->widget[DPIW_INFOPANEL].top + 3;
-		const Widget *wi = &this->widget[DPIW_INFOPANEL];
-		int max_width = wi->right - wi->left - 4;
-		int right = wi->right - 1;
-
-		/* Raw industries might be prospected. Show this fact by changing the string
-		 * In Editor, you just build, while ingame, or you fund or you prospect */
-		if (_game_mode == GM_EDITOR) {
-			/* We've chosen many random industries but no industries have been specified */
-			if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != 0;
-			this->widget[DPIW_FUND_WIDGET].data = STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY;
-		} else {
-			this->widget[DPIW_FUND_WIDGET].data = (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY;
-		}
-		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
-
-		this->vscroll.SetCount(this->count);
-
 		this->DrawWidgets();
-
-		/* and now with the matrix painting */
-		for (byte i = 0; i < this->vscroll.GetCapacity() && ((i + this->vscroll.GetPosition()) < this->count); i++) {
-			int offset = i * 13;
-			int x = 3;
-			int y = 16;
-			bool selected = this->selected_index == i + this->vscroll.GetPosition();
-
-			if (this->index[i + this->vscroll.GetPosition()] == INVALID_INDUSTRYTYPE) {
-				DrawString(20, right, y + offset, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
-				continue;
-			}
-			const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll.GetPosition()]);
-
-			/* Draw the name of the industry in white is selected, otherwise, in orange */
-			DrawString(20, right, y + offset, indsp->name, selected ? TC_WHITE : TC_ORANGE);
-			GfxFillRect(x,     y + 1 + offset,  x + 10, y + 7 + offset, selected ? 15 : 0);
-			GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
-		}
-
-		if (this->selected_type == INVALID_INDUSTRYTYPE) {
-			DrawStringMultiLine(x_str, x_str + max_width, y_str, wi->bottom, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP);
-			return;
-		}
-
-		if (_game_mode != GM_EDITOR) {
-			SetDParam(0, indsp->GetConstructionCost());
-			DrawString(x_str, right, y_str, STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST);
-			y_str += 11;
-		}
-
-		/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
-		char cargo_suffix[3][512];
-		GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
-		StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
-		byte p = 0;
-		SetDParam(0, STR_JUST_NOTHING);
-		SetDParamStr(1, "");
-		for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
-			if (indsp->accepts_cargo[j] == CT_INVALID) continue;
-			if (p > 0) str++;
-			SetDParam(p++, CargoSpec::Get(indsp->accepts_cargo[j])->name);
-			SetDParamStr(p++, cargo_suffix[j]);
-		}
-		DrawString(x_str, right, y_str, str);
-		y_str += 11;
-
-		/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
-		GetAllCargoSuffixes(3, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
-		str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
-		p = 0;
-		SetDParam(0, STR_JUST_NOTHING);
-		SetDParamStr(1, "");
-		for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-			if (indsp->produced_cargo[j] == CT_INVALID) continue;
-			if (p > 0) str++;
-			SetDParam(p++, CargoSpec::Get(indsp->produced_cargo[j])->name);
-			SetDParamStr(p++, cargo_suffix[j]);
-		}
-		DrawString(x_str, right, y_str, str);
-		y_str += 11;
-
-		/* Get the additional purchase info text, if it has not already been queried. */
-		if (this->text[this->selected_index] == STR_NULL) {   // Have I been called already?
-			if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
-				uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
-				if (callback_res != CALLBACK_FAILED) {  // Did it fail?
-					StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
-					this->text[this->selected_index] = newtxt;   // Store it for further usage
-				}
-			}
-		}
-
-		/* Draw the Additional purchase text, provided by newgrf callback, if any.
-		 * Otherwhise, will print Nothing */
-		str = this->text[this->selected_index];
-		if (str != STR_NULL && str != STR_UNDEFINED) {
-			SetDParam(0, str);
-			DrawStringMultiLine(x_str, x_str + max_width, y_str, wi->bottom, STR_JUST_STRING);
-		}
 	}
 
 	virtual void OnDoubleClick(Point pt, int widget)
@@ -347,7 +402,7 @@ public:
 		switch (widget) {
 			case DPIW_MATRIX_WIDGET: {
 				const IndustrySpec *indsp;
-				int y = (pt.y - this->widget[DPIW_MATRIX_WIDGET].top) / 13 + this->vscroll.GetPosition() ;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(DPIW_MATRIX_WIDGET)->pos_y) / this->resize.step_height + this->vscroll.GetPosition() ;
 
 				if (y >= 0 && y < count) { // Is it within the boundaries of available data?
 					this->selected_index = y;
@@ -362,6 +417,8 @@ public:
 						this->RaiseButtons();
 						ResetObjectToPlace();
 					}
+
+					this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
 				}
 			} break;
 
@@ -389,9 +446,9 @@ public:
 
 	virtual void OnResize()
 	{
-		/* Adjust the number of items in the matrix depending of the rezise */
-		this->vscroll.SetCapacity((this->widget[DPIW_MATRIX_WIDGET].bottom - this->widget[DPIW_MATRIX_WIDGET].top + 1) / this->resize.step_height);
-		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		/* Adjust the number of items in the matrix depending of the resize */
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(DPIW_MATRIX_WIDGET)->current_y / this->resize.step_height);
+		this->GetWidget<NWidgetCore>(DPIW_MATRIX_WIDGET)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -445,6 +502,7 @@ public:
 				/* Only if result does match the previous state would it require a redraw. */
 				if (call_back_result != this->enabled[this->selected_index]) {
 					this->enabled[this->selected_index] = call_back_result;
+					this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
 					this->SetDirty();
 				}
 			}
@@ -464,7 +522,10 @@ public:
 	virtual void OnInvalidateData(int data = 0)
 	{
 		this->SetupArrays();
-		this->SetDirty();
+
+		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
+		if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != 0;
+		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
 	}
 };
 
