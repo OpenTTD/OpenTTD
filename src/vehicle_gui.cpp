@@ -340,7 +340,7 @@ struct RefitWindow : public Window {
 				size->height = resize->height * 8;
 				break;
 			case VRW_INFOPANEL:
-				size->height = max(size->height, WD_FRAMERECT_TOP + 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM);
+				size->height = max(size->height, (uint)(WD_FRAMERECT_TOP + 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM));
 				break;
 		}
 	}
