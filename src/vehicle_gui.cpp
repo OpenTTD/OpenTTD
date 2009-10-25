@@ -690,6 +690,7 @@ enum VehicleListWindowWidgets {
 	VLW_WIDGET_EMPTY_TOP_RIGHT,
 	VLW_WIDGET_LIST,
 	VLW_WIDGET_SCROLLBAR,
+	VLW_WIDGET_HIDE_BUTTONS,
 	VLW_WIDGET_OTHER_COMPANY_FILLER,
 	VLW_WIDGET_AVAILABLE_VEHICLES,
 	VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
@@ -697,28 +698,6 @@ enum VehicleListWindowWidgets {
 	VLW_WIDGET_START_ALL,
 	VLW_WIDGET_EMPTY_BOTTOM_RIGHT,
 	VLW_WIDGET_RESIZE,
-};
-
-static const Widget _vehicle_list_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,      STR_TOOLTIP_CLOSE_WINDOW},
-	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   247,     0,    13, 0x0,                  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   248,   259,     0,    13, 0x0,                  STR_TOOLTIP_STICKY},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_BUTTON_SORT_BY,          STR_TOOLTIP_SORT_ORDER},
-	{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    81,   247,    14,    25, 0x0,                  STR_TOOLTIP_SORT_CRITERIAP},
-	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   248,   259,    14,    25, 0x0,                  STR_NULL},
-	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   247,    26,   181, 0x0,                  STR_NULL},
-	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   248,   259,    26,   181, 0x0,                  STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
-	/* Widget to be shown for other companies hiding the following 6 widgets */
-	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   247,   182,   193, 0x0,                  STR_NULL},
-
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   182,   193, 0x0,                  STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP},
-	{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   106,   223,   182,   193, STR_VEHICLE_LIST_MANAGE_LIST,      STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP},
-
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   224,   235,   182,   193, SPR_FLAG_VEH_STOPPED, STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP},
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   236,   247,   182,   193, SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP},
-	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   248,   247,   182,   193, 0x0,                  STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   248,   259,   182,   193, 0x0,                  STR_TOOLTIP_RESIZE},
-	{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_vehicle_list[] = {
@@ -729,9 +708,9 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_SORT_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_SORT_BY_PULLDOWN), SetMinimalSize(167, 12), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
-		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_TOP_RIGHT), SetMinimalSize(12, 12), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_SORT_ORDER), SetMinimalSize(81, 12), SetFill(false, true), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_SORT_BY_PULLDOWN), SetMinimalSize(167, 12), SetFill(false, true), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
+		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_TOP_RIGHT), SetMinimalSize(12, 12), SetFill(false, true), SetResize(1, 0),
 		EndContainer(),
 	EndContainer(),
 
@@ -740,21 +719,21 @@ static const NWidgetPart _nested_vehicle_list[] = {
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR), SetMinimalSize(12, 156),
 	EndContainer(),
 
-	/* Widget to be shown for other companies hiding the following 6 widgets */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_OTHER_COMPANY_FILLER),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, VLW_WIDGET_HIDE_BUTTONS),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12), SetFill(false, true),
 								SetDataTip(0x0, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12), SetFill(false, true),
 								SetDataTip(STR_VEHICLE_LIST_MANAGE_LIST, STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_STOP_ALL), SetMinimalSize(12, 12),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_STOP_ALL), SetMinimalSize(12, 12), SetFill(false, true),
 								SetDataTip(SPR_FLAG_VEH_STOPPED, STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_START_ALL), SetMinimalSize(12, 12),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_START_ALL), SetMinimalSize(12, 12), SetFill(false, true),
 								SetDataTip(SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP),
-				NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(0, 12), SetResize(1, 0),
-				EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(0, 12), SetResize(1, 0), SetFill(false, true), EndContainer(),
 			EndContainer(),
+			/* Widget to be shown for other companies hiding the previous 5 widgets. */
+			NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_OTHER_COMPANY_FILLER), SetFill(true, true), SetResize(1, 0), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VLW_WIDGET_RESIZE),
 	EndContainer(),
@@ -860,43 +839,38 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
  * 16-31 StationID or OrderID depending on window type (bit 8-10)
  */
 struct VehicleListWindow : public BaseVehicleListWindow {
+private:
+	/** Enumeration of planes of the button row at the bottom. */
+	enum ButtonPlanes {
+		BP_SHOW_BUTTONS, ///< Show the buttons.
+		BP_HIDE_BUTTONS, ///< Show the empty panel.
+	};
 
-	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
+public:
+	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow()
 	{
-		uint16 window_type = this->window_number & VLW_MASK;
-		CompanyID company = (CompanyID)GB(this->window_number, 0, 8);
+		uint16 window_type = window_number & VLW_MASK;
+		CompanyID company = (CompanyID)GB(window_number, 0, 8);
 
-		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
-		this->owner = company;
+		this->vehicle_type = (VehicleType)GB(window_number, 11, 5);
+
+		this->CreateNestedTree(desc);
 
 		/* Set up the window widgets */
-		this->widget[VLW_WIDGET_LIST].tooltips           = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
-		this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->tool_tip                  = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_AVAILABLE_VEHICLES)->widget_data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
 
 		if (window_type == VLW_SHARED_ORDERS) {
-			this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
+			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
 		} else {
-			this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
+			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
 		}
 
-		switch (this->vehicle_type) {
-			case VEH_TRAIN:
-				this->resize.step_width = 1;
-				/* Fallthrough */
-			case VEH_ROAD:
-				this->vscroll.SetCapacity(6);
-				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-				break;
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
-				this->vscroll.SetCapacity(4);
-				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
-				break;
-			default: NOT_REACHED();
-		}
+		this->FinishInitNested(desc, window_number);
+		this->owner = company;
 
-
-		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->current_y / this->resize.step_height);
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Set up sorting. Make the window-specific _sorting variable
 		 * point to the correct global _sorting struct so we are freed
@@ -913,7 +887,6 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		this->vehicles.ForceRebuild();
 		this->vehicles.NeedResort();
 
-		this->FindWindowPlacementAndResize(desc);
 		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
 
@@ -922,19 +895,34 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		*this->sorting = this->vehicles.GetListing();
 	}
 
-	virtual void OnPaint()
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		const Owner owner = this->owner;
-		const uint16 window_type = this->window_number & VLW_MASK;
+		if (widget != VLW_WIDGET_LIST) return;
+
+		resize->width = 0;
+		switch (this->vehicle_type) {
+			case VEH_TRAIN:
+				resize->width = 1;
+				/* Fallthrough */
+			case VEH_ROAD:
+				resize->height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+				size->height = 6 * resize->height;
+				break;
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				resize->height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
+				size->height = 4 * resize->height;
+				break;
+			default: NOT_REACHED();
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget != VLW_WIDGET_CAPTION) return;
+
 		const uint16 index = GB(this->window_number, 16, 16);
-
-		this->BuildVehicleList(owner, index, window_type);
-		this->SortVehicleList();
-
-		if (this->vehicles.Length() == 0) HideDropDownMenu(this);
-
-		/* draw the widgets */
-		switch (window_type) {
+		switch (this->window_number & VLW_MASK) {
 			case VLW_SHARED_ORDERS: // Shared Orders
 				if (this->vehicles.Length() == 0) {
 					/* We can't open this window without vehicles using this order
@@ -973,17 +961,39 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				break;
 			default: NOT_REACHED();
 		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case VLW_WIDGET_SORT_ORDER:
+				/* draw arrow pointing up/down for ascending/descending sorting */
+				this->DrawSortButtonState(widget, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+				break;
+
+			case VLW_WIDGET_LIST:
+				this->DrawVehicleListItems(INVALID_VEHICLE, this->resize.step_height, r);
+				break;
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		const uint16 window_type = this->window_number & VLW_MASK;
+
+		this->BuildVehicleList(this->owner, GB(this->window_number, 16, 16), window_type);
+		this->SortVehicleList();
+
+		if (this->vehicles.Length() == 0) HideDropDownMenu(this);
 
 		/* Hide the widgets that we will not use in this window
 		 * Some windows contains actions only fit for the owner */
-		this->SetWidgetsHiddenState(this->owner != _local_company,
-			VLW_WIDGET_AVAILABLE_VEHICLES,
-			VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-			VLW_WIDGET_STOP_ALL,
-			VLW_WIDGET_START_ALL,
-			VLW_WIDGET_EMPTY_BOTTOM_RIGHT,
-			WIDGET_LIST_END);
-		this->SetWidgetHiddenState(VLW_WIDGET_OTHER_COMPANY_FILLER, this->owner == _local_company);
+		int plane_to_show = (this->owner == _local_company) ? BP_SHOW_BUTTONS : BP_HIDE_BUTTONS;
+		NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(VLW_WIDGET_HIDE_BUTTONS);
+		if (plane_to_show != nwi->shown_plane) {
+			nwi->SetDisplayedPlane(plane_to_show);
+			nwi->SetDirty(this);
+		}
 		if (this->owner == _local_company) {
 			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
 			this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
@@ -993,18 +1003,10 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				WIDGET_LIST_END);
 		}
 
-
 		/* Set text of sort by dropdown widget. */
-		this->widget[VLW_WIDGET_SORT_BY_PULLDOWN].data = this->vehicle_sorter_names[this->vehicles.SortType()];
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_SORT_BY_PULLDOWN)->widget_data = this->vehicle_sorter_names[this->vehicles.SortType()];
 
 		this->DrawWidgets();
-
-		/* draw arrow pointing up/down for ascending/descending sorting */
-		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
-
-		Rect rect = {this->widget[VLW_WIDGET_LIST].left, this->widget[VLW_WIDGET_LIST].top,
-				this->widget[VLW_WIDGET_LIST].right, this->widget[VLW_WIDGET_LIST].bottom};
-		this->DrawVehicleListItems(INVALID_VEHICLE, this->resize.step_height, rect);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1014,9 +1016,12 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				this->vehicles.ToggleSortOrder();
 				this->SetDirty();
 				break;
+
 			case VLW_WIDGET_SORT_BY_PULLDOWN:// Select sorting criteria dropdown menu
-				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0,
+						(this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 				return;
+
 			case VLW_WIDGET_LIST: { // Matrix to show vehicles
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / this->resize.step_height;
 				const Vehicle *v;
@@ -1059,7 +1064,8 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 			case VLW_WIDGET_STOP_ALL:
 			case VLW_WIDGET_START_ALL:
-				DoCommandP(0, GB(this->window_number, 16, 16), (this->window_number & VLW_MASK) | (1 << 6) | (widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | this->vehicle_type, CMD_MASS_START_STOP);
+				DoCommandP(0, GB(this->window_number, 16, 16),
+						(this->window_number & VLW_MASK) | (1 << 6) | (widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | this->vehicle_type, CMD_MASS_START_STOP);
 				break;
 		}
 	}
@@ -1079,13 +1085,11 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 						break;
 					case 1: // Send for servicing
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND | DEPOT_SERVICE,
-							GetCmdSendToDepot(this->vehicle_type));
+							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND | DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case 2: // Send to Depots
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND,
-							GetCmdSendToDepot(this->vehicle_type));
+							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
 						break;
 
 					default: NOT_REACHED();
@@ -1109,8 +1113,8 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->widget[VLW_WIDGET_LIST].bottom - this->widget[VLW_WIDGET_LIST].top + 1) / this->resize.step_height);
-		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->current_y / this->resize.step_height);
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -1133,8 +1137,7 @@ static WindowDesc _vehicle_list_desc(
 	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
 	WC_INVALID, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_list_widgets,
-	_nested_vehicle_list, lengthof(_nested_vehicle_list)
+	NULL, _nested_vehicle_list, lengthof(_nested_vehicle_list)
 );
 
 static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
