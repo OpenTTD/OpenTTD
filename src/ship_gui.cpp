@@ -59,7 +59,7 @@ void DrawShipDetails(const Vehicle *v, int left, int right, int y)
 	SetDParam(0, v->cargo_type);
 	SetDParam(1, v->cargo_cap);
 	SetDParam(4, GetCargoSubtypeText(v));
-	DrawString(left, right, y + 10, STR_VEHICLE_INFO_CAPACITY);
+	DrawString(left, right, y + FONT_HEIGHT_NORMAL, STR_VEHICLE_INFO_CAPACITY);
 
 	StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 	if (!v->cargo.Empty()) {
@@ -68,9 +68,9 @@ void DrawShipDetails(const Vehicle *v, int left, int right, int y)
 		SetDParam(2, v->cargo.Source());
 		str = STR_VEHICLE_DETAILS_CARGO_FROM;
 	}
-	DrawString(left, right, y + 21, str);
+	DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1, str);
 
 	/* Draw Transfer credits text */
 	SetDParam(0, v->cargo.FeederShare());
-	DrawString(left, right, y + 33, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(left, right, y + 3 * FONT_HEIGHT_NORMAL + 3, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }

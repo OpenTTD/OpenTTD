@@ -31,7 +31,7 @@
  */
 void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
 {
-	int y_offset = (v->Next()->cargo_cap != 0) ? -11 : 0;
+	int y_offset = (v->Next()->cargo_cap != 0) ? -(FONT_HEIGHT_NORMAL + 1): 0;
 	Money feeder_share = 0;
 
 	for (const Aircraft *u = v ; u != NULL ; u = u->Next()) {
@@ -46,26 +46,26 @@ void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
 			SetDParam(2, u->Next()->cargo_type);
 			SetDParam(3, u->Next()->cargo_cap);
 			SetDParam(4, GetCargoSubtypeText(u));
-			DrawString(left, right, y + 10, (u->Next()->cargo_cap != 0) ? STR_VEHICLE_INFO_CAPACITY_CAPACITY : STR_VEHICLE_INFO_CAPACITY);
+			DrawString(left, right, y + FONT_HEIGHT_NORMAL, (u->Next()->cargo_cap != 0) ? STR_VEHICLE_INFO_CAPACITY_CAPACITY : STR_VEHICLE_INFO_CAPACITY);
 		}
 
 		if (u->cargo_cap != 0) {
 			uint cargo_count = u->cargo.Count();
 
-			y_offset += 11;
+			y_offset += FONT_HEIGHT_NORMAL + 1;
 			if (cargo_count != 0) {
 				/* Cargo names (fix pluralness) */
 				SetDParam(0, u->cargo_type);
 				SetDParam(1, cargo_count);
 				SetDParam(2, u->cargo.Source());
-				DrawString(left, right, y + 21 + y_offset, STR_VEHICLE_DETAILS_CARGO_FROM);
+				DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1 + y_offset, STR_VEHICLE_DETAILS_CARGO_FROM);
 				feeder_share += u->cargo.FeederShare();
 			}
 		}
 	}
 
 	SetDParam(0, feeder_share);
-	DrawString(left, right, y + 33 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(left, right, y + 3 * FONT_HEIGHT_NORMAL + 3 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }
 
 

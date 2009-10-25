@@ -33,7 +33,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 {
 	const RoadVehicle *rv = RoadVehicle::From(v);
 
-	uint y_offset = rv->HasArticulatedPart() ? 15 : 0;
+	uint y_offset = rv->HasArticulatedPart() ? 15 : 0; // Draw the first line below the sprite of an articulated RV instead of after it.
 	StringID str;
 	Money feeder_share = 0;
 
@@ -80,7 +80,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 			}
 		}
 
-		DrawString(left, right, y + 10 + y_offset, capacity, TC_BLUE);
+		DrawString(left, right, y + FONT_HEIGHT_NORMAL + y_offset, capacity, TC_BLUE);
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
@@ -93,12 +93,12 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 				str = STR_VEHICLE_DETAILS_CARGO_FROM;
 				feeder_share += u->cargo.FeederShare();
 			}
-			DrawString(left, right, y + 21 + y_offset, str);
+			DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1 + y_offset, str);
 
-			y_offset += 11;
+			y_offset += FONT_HEIGHT_NORMAL + 1;
 		}
 
-		y_offset -= 11;
+		y_offset -= FONT_HEIGHT_NORMAL + 1;
 	} else {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
@@ -113,12 +113,12 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 			str = STR_VEHICLE_DETAILS_CARGO_FROM;
 			feeder_share += v->cargo.FeederShare();
 		}
-		DrawString(left, right, y + 21 + y_offset, str);
+		DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1 + y_offset, str);
 	}
 
 	/* Draw Transfer credits text */
 	SetDParam(0, feeder_share);
-	DrawString(left, right, y + 33 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(left, right, y + 3 * FONT_HEIGHT_NORMAL + 3 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }
 
 /**
