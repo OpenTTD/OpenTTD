@@ -16,6 +16,7 @@
 #include "../../gfx_func.h"
 #include "../../fileio_func.h"
 #include "../../blitter/factory.hpp"
+#include "../../core/mem_func.hpp"
 
 #include "splash.h"
 
@@ -44,7 +45,6 @@ void DisplaySplashImage()
 	png_colorp palette;
 	int num_palette;
 	png_bytep *row_pointers;
-	uint8 *src;
 	uint y;
 	uint xoff, yoff;
 	int i;
@@ -119,13 +119,13 @@ void DisplaySplashImage()
 
 	switch (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth()) {
 		case 8: {
-				uint8 *dst;
-
-				memset(_screen.dst_ptr, 0xff, _screen.pitch * _screen.height);
+				uint8 *dst_ptr = (uint8 *)_screen.dst_ptr;
+				/* Initialize buffer */
+				MemSetT(dst_ptr, 0xff, _screen.pitch * _screen.height);
 
 				for (y = 0; y < height; y++) {
-					src = row_pointers[y];
-					dst = ((uint8 *) _screen.dst_ptr) + (yoff + y) * _screen.pitch + xoff;
+					uint8 *src = row_pointers[y];
+					uint8 *dst = dst_ptr + (yoff + y) * _screen.pitch + xoff;
 
 					memcpy(dst, src, width);
 				}
@@ -147,17 +147,17 @@ void DisplaySplashImage()
 			}
 			break;
 		case 32: {
-				uint32 *dst;
-				uint x;
-
-				memset(_screen.dst_ptr, 0xff000000, _screen.pitch * _screen.height * 4);
+				uint32 *dst_ptr = (uint32 *)_screen.dst_ptr;
+				/* Initialize buffer */
+				MemSetT(dst_ptr, 0, _screen.pitch * _screen.height);
 
 				for (y = 0; y < height; y++) {
-					src = row_pointers[y];
-					dst = ((uint32 *) _screen.dst_ptr) + (yoff + y) * _screen.pitch + xoff;
+					uint8 *src = row_pointers[y];
+					uint32 *dst = dst_ptr + (yoff + y) * _screen.pitch + xoff;
 
-					for (x = 0; x < width; x++)
+					for (x = 0; x < width; x++) {
 						dst[x] = palette[src[x]].blue | (palette[src[x]].green << 8) | (palette[src[x]].red << 16) | 0xff000000;
+					}
 				}
 			}
 			break;
