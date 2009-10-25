@@ -37,42 +37,31 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 
 void DisplaySplashImage()
 {
-	png_byte header[8];
-	FILE *f;
-	png_structp png_ptr;
-	png_infop info_ptr, end_info;
-	uint width, height, bit_depth, color_type;
-	png_colorp palette;
-	int num_palette;
-	png_bytep *row_pointers;
-	uint y;
-	uint xoff, yoff;
-	int i;
-
-	f = FioFOpenFile(SPLASH_IMAGE_FILE);
+	FILE *f = FioFOpenFile(SPLASH_IMAGE_FILE);
 	if (f == NULL) return;
 
-	fread(header, 1, 8, f);
+	png_byte header[8];
+	fread(header, sizeof(png_byte), 8, f);
 	if (png_sig_cmp(header, 0, 8) != 0) {
 		fclose(f);
 		return;
 	}
 
-	png_ptr = png_create_read_struct (PNG_LIBPNG_VER_STRING, (png_voidp) NULL, png_my_error, png_my_warning);
+	png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, (png_voidp) NULL, png_my_error, png_my_warning);
 
 	if (png_ptr == NULL) {
 		fclose(f);
 		return;
 	}
 
-	info_ptr = png_create_info_struct(png_ptr);
+	png_infop info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == NULL) {
 		png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
 		fclose(f);
 		return;
 	}
 
-	end_info = png_create_info_struct(png_ptr);
+	png_infop end_info = png_create_info_struct(png_ptr);
 	if (end_info == NULL) {
 		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
 		fclose(f);
@@ -90,10 +79,10 @@ void DisplaySplashImage()
 
 	png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
 
-	width            = png_get_image_width(png_ptr, info_ptr);
-	height           = png_get_image_height(png_ptr, info_ptr);
-	bit_depth        = png_get_bit_depth(png_ptr, info_ptr);
-	color_type       = png_get_color_type(png_ptr, info_ptr);
+	uint width      = png_get_image_width(png_ptr, info_ptr);
+	uint height     = png_get_image_height(png_ptr, info_ptr);
+	uint bit_depth  = png_get_bit_depth(png_ptr, info_ptr);
+	uint color_type = png_get_color_type(png_ptr, info_ptr);
 
 	if (color_type != PNG_COLOR_TYPE_PALETTE || bit_depth != 8) {
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
@@ -107,15 +96,17 @@ void DisplaySplashImage()
 		return;
 	}
 
+	png_colorp palette;
+	int num_palette;
 	png_get_PLTE(png_ptr, info_ptr, &palette, &num_palette);
 
-	row_pointers = png_get_rows(png_ptr, info_ptr);
+	png_bytep *row_pointers = png_get_rows(png_ptr, info_ptr);
 
 	if (width > (uint) _screen.width) width = _screen.width;
 	if (height > (uint) _screen.height) height = _screen.height;
 
-	xoff = (_screen.width - width) / 2;
-	yoff = (_screen.height - height) / 2;
+	uint xoff = (_screen.width - width) / 2;
+	uint yoff = (_screen.height - height) / 2;
 
 	switch (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth()) {
 		case 8: {
@@ -123,14 +114,14 @@ void DisplaySplashImage()
 				/* Initialize buffer */
 				MemSetT(dst_ptr, 0xff, _screen.pitch * _screen.height);
 
-				for (y = 0; y < height; y++) {
+				for (uint y = 0; y < height; y++) {
 					uint8 *src = row_pointers[y];
 					uint8 *dst = dst_ptr + (yoff + y) * _screen.pitch + xoff;
 
 					memcpy(dst, src, width);
 				}
 
-				for (i = 0; i < num_palette; i++) {
+				for (int i = 0; i < num_palette; i++) {
 					_cur_palette[i].a = i == 0 ? 0 : 0xff;
 					_cur_palette[i].r = palette[i].red;
 					_cur_palette[i].g = palette[i].green;
@@ -151,11 +142,11 @@ void DisplaySplashImage()
 				/* Initialize buffer */
 				MemSetT(dst_ptr, 0, _screen.pitch * _screen.height);
 
-				for (y = 0; y < height; y++) {
+				for (uint y = 0; y < height; y++) {
 					uint8 *src = row_pointers[y];
 					uint32 *dst = dst_ptr + (yoff + y) * _screen.pitch + xoff;
 
-					for (x = 0; x < width; x++) {
+					for (uint x = 0; x < width; x++) {
 						dst[x] = palette[src[x]].blue | (palette[src[x]].green << 8) | (palette[src[x]].red << 16) | 0xff000000;
 					}
 				}
