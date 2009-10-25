@@ -807,7 +807,7 @@ static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection
  * @param line_height      Height of a single item line.
  * @param r                Rectangle with edge positions of the matrix widget.
  */
-void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r)
+void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r) const
 {
 	int left = r.left + WD_MATRIX_LEFT;
 	int right = r.right - WD_MATRIX_RIGHT;

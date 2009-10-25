@@ -37,7 +37,12 @@ struct BaseVehicleListWindow: public Window {
 		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
 	}
 
-	void DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r);
+	BaseVehicleListWindow() : Window()
+	{
+		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
+	}
+
+	void DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r) const;
 	void SortVehicleList();
 	void BuildVehicleList(Owner owner, uint16 index, uint16 window_type);
 };
