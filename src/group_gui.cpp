@@ -435,7 +435,9 @@ public:
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		this->DrawVehicleListItems(this->vehicle_sel);
+		Rect rect = {this->widget[GRP_WIDGET_LIST_VEHICLE].left, this->widget[GRP_WIDGET_LIST_VEHICLE].top,
+				this->widget[GRP_WIDGET_LIST_VEHICLE].right, this->widget[GRP_WIDGET_LIST_VEHICLE].bottom};
+		this->DrawVehicleListItems(this->vehicle_sel, this->resize.step_height, rect);
 	}
 
 	virtual void OnClick(Point pt, int widget)

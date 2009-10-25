@@ -803,13 +803,15 @@ static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection
 
 /**
  * Draw all the vehicle list items.
- * @param selected_vehicle the vehicle that is to be selected
+ * @param selected_vehicle The vehicle that is to be highlighted.
+ * @param line_height      Height of a single item line.
+ * @param r                Rectangle with edge positions of the matrix widget.
  */
-void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
+void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r)
 {
-	int left = this->widget[VLW_WIDGET_LIST].left + WD_MATRIX_LEFT;
-	int right = this->widget[VLW_WIDGET_LIST].right - WD_MATRIX_RIGHT;
-	int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
+	int left = r.left + WD_MATRIX_LEFT;
+	int right = r.right - WD_MATRIX_RIGHT;
+	int y = r.top;
 	uint max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->vehicles.Length());
 	for (uint i = this->vscroll.GetPosition(); i < max; ++i) {
 		const Vehicle *v = this->vehicles[i];
@@ -819,7 +821,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
 		DrawVehicleImage(v, left + 19, y + 5, selected_vehicle, right - left + 1 - 19, 0);
-		DrawString(left + 19, right, y + this->resize.step_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		DrawString(left + 19, right, y + line_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		if (v->name != NULL) {
 			/* The vehicle got a name so we will print it */
@@ -831,7 +833,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
 			DrawString(left + 19, right, y, STR_TINY_GROUP, TC_BLACK);
 		}
 
-		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, left + 138, right, y);
+		if (line_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, left + 138, right, y);
 
 		if (v->IsInDepot()) {
 			str = STR_BLUE_COMMA;
@@ -844,7 +846,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle)
 
 		DrawVehicleProfitButton(v, left, y + 13);
 
-		y += this->resize.step_height;
+		y += line_height;
 	}
 }
 
@@ -1000,7 +1002,9 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		this->DrawVehicleListItems(INVALID_VEHICLE);
+		Rect rect = {this->widget[VLW_WIDGET_LIST].left, this->widget[VLW_WIDGET_LIST].top,
+				this->widget[VLW_WIDGET_LIST].right, this->widget[VLW_WIDGET_LIST].bottom};
+		this->DrawVehicleListItems(INVALID_VEHICLE, this->resize.step_height, rect);
 	}
 
 	virtual void OnClick(Point pt, int widget)
