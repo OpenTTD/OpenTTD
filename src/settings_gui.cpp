@@ -779,8 +779,8 @@ void ShowGameDifficulty()
 	new GameDifficultyWindow(&_game_difficulty_desc);
 }
 
-static const int SETTING_HEIGHT = 11; ///< Height of a single setting in the tree view in pixels
-static const int LEVEL_WIDTH = 15;    ///< Indenting width of a sub-page in pixels
+static int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree view in pixels
+static const int LEVEL_WIDTH = 15; ///< Indenting width of a sub-page in pixels
 
 /**
  * Flags for #SettingEntry
@@ -1435,23 +1435,18 @@ enum GameSettingsWidgets {
 };
 
 struct GameSettingsWindow : Window {
-	static const int SETTINGTREE_LEFT_OFFSET; ///< Position of left edge of setting values
-	static const int SETTINGTREE_TOP_OFFSET;  ///< Position of top edge of setting values
+	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
+	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
+	static const int SETTINGTREE_TOP_OFFSET    = 5; ///< Position of top edge of setting values
+	static const int SETTINGTREE_BOTTOM_OFFSET = 5; ///< Position of bottom edge of setting values
 
 	static GameSettings *settings_ptr;  ///< Pointer to the game settings being displayed and modified
 
 	SettingEntry *valuewindow_entry; ///< If non-NULL, pointer to setting for which a value-entering window has been opened
 	SettingEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric setting (with a depressed left or right button)
 
-	GameSettingsWindow(const WindowDesc *desc) : Window(desc)
+	GameSettingsWindow(const WindowDesc *desc) : Window()
 	{
-		/* Check that the widget doesn't get moved without adapting the constant as well.
-		 *  - SETTINGTREE_LEFT_OFFSET should be 5 pixels to the right of the left edge of the panel
-		 *  - SETTINGTREE_TOP_OFFSET should be 5 pixels below the top edge of the panel
-		 */
-		assert(this->widget[SETTINGSEL_OPTIONSPANEL].left + 5 == SETTINGTREE_LEFT_OFFSET);
-		assert(this->widget[SETTINGSEL_OPTIONSPANEL].top + 5 == SETTINGTREE_TOP_OFFSET);
-
 		static bool first_time = true;
 
 		settings_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
@@ -1466,33 +1461,45 @@ struct GameSettingsWindow : Window {
 
 		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric setting buttons are depressed
-		this->vscroll.SetCapacity((this->widget[SETTINGSEL_OPTIONSPANEL].bottom - this->widget[SETTINGSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT);
+
+		this->InitNested(desc, 0);
+
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SETTINGSEL_OPTIONSPANEL)->current_y - SETTINGTREE_TOP_OFFSET - SETTINGTREE_BOTTOM_OFFSET) / this->resize.step_height);
 		this->vscroll.SetCount(_settings_main_page.Length());
+	}
 
-		this->resize.step_height = SETTING_HEIGHT;
-		this->resize.height = this->height;
-		this->resize.step_width = 1;
-		this->resize.width = this->width;
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
-		this->FindWindowPlacementAndResize(desc);
+		resize->height = SETTING_HEIGHT = max(11, FONT_HEIGHT_NORMAL + 1);
+		resize->width  = 1;
+
+		size->height = 5 * resize->height + SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET;
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != SETTINGSEL_OPTIONSPANEL) return;
+
+		_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
+				r.right - SETTINGTREE_RIGHT_OFFSET, this->vscroll.GetPosition(), this->vscroll.GetPosition() + this->vscroll.GetCapacity());
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		_settings_main_page.Draw(settings_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
-				this->width - 13, this->vscroll.GetPosition(), this->vscroll.GetPosition() + this->vscroll.GetCapacity());
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
-		int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
+		int y = pt.y - this->GetWidget<NWidgetCore>(widget)->pos_y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 		if (y < 0) return;  // Clicked above first entry
 
-		byte btn = this->vscroll.GetPosition() + y / SETTING_HEIGHT;  // Compute which setting is selected
-		if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
+		byte btn = this->vscroll.GetPosition() + y / this->resize.step_height;  // Compute which setting is selected
+		if (y % this->resize.step_height > this->resize.step_height - 2) return;  // Clicked too low at the setting
 
 		uint cur_row = 0;
 		SettingEntry *pe = _settings_main_page.FindEntry(btn, &cur_row);
@@ -1625,22 +1632,11 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->widget[SETTINGSEL_OPTIONSPANEL].bottom - this->widget[SETTINGSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SETTINGSEL_OPTIONSPANEL)->current_y - SETTINGTREE_TOP_OFFSET - SETTINGTREE_BOTTOM_OFFSET) / this->resize.step_height);
 	}
 };
 
 GameSettings *GameSettingsWindow::settings_ptr = NULL;
-const int GameSettingsWindow::SETTINGTREE_LEFT_OFFSET = 5;
-const int GameSettingsWindow::SETTINGTREE_TOP_OFFSET = 19;
-
-static const Widget _settings_selection_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},             // SETTINGSEL_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   411,     0,    13, STR_CONFIG_SETTING_CAPTION,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // SETTINGSEL_CAPTION
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   399,    14,   187, 0x0,                             STR_NULL},                             // SETTINGSEL_OPTIONSPANEL
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   400,   411,    14,   175, 0x0,                             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // SETTINGSEL_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   400,   411,   176,   187, 0x0,                             STR_TOOLTIP_RESIZE},                    // SETTINGSEL_RESIZE
-{   WIDGETS_END},
-};
 
 static const NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -1648,7 +1644,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, SETTINGSEL_CAPTION), SetDataTip(STR_CONFIG_SETTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_MAUVE, SETTINGSEL_OPTIONSPANEL), SetMinimalSize(400, 174), SetResize(1, SETTING_HEIGHT), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_MAUVE, SETTINGSEL_OPTIONSPANEL), SetMinimalSize(400, 174), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SETTINGSEL_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, SETTINGSEL_RESIZE),
@@ -1660,7 +1656,7 @@ static const WindowDesc _settings_selection_desc(
 	WDP_CENTER, WDP_CENTER, 412, 188, 450, 397,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
-	_settings_selection_widgets, _nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
+	NULL, _nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
 );
 
 void ShowGameSettings()
