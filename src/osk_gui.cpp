@@ -68,8 +68,9 @@ struct OskWindow : public Window {
 	int cancel_btn;        ///< widget number of parent's cancel button (=0 when cancel shouldn't be passed on; text will be reverted to original)
 	Textbuf *text;         ///< pointer to parent's textbuffer (to update caret position)
 	char *orig_str_buf;    ///< Original string.
+	bool shift;            ///< Is the shift effectively pressed?
 
-	OskWindow(const WindowDesc *desc, QueryStringBaseWindow *parent, int button, int cancel, int ok) : Window(desc)
+	OskWindow(const WindowDesc *desc, QueryStringBaseWindow *parent, int button, int cancel, int ok) : Window()
 	{
 		this->parent = parent;
 		assert(parent != NULL);
@@ -92,10 +93,12 @@ struct OskWindow : public Window {
 		/* make a copy in case we need to reset later */
 		this->orig_str_buf = strdup(this->qs->text.buf);
 
+		this->InitNested(desc, 0);
+
 		/* Not needed by default. */
 		this->DisableWidget(OSK_WIDGET_SPECIAL);
 
-		this->FindWindowPlacementAndResize(desc);
+		this->UpdateOskState();
 	}
 
 	~OskWindow()
@@ -107,36 +110,41 @@ struct OskWindow : public Window {
 	 * Only show valid characters; do not show characters that would
 	 * only insert a space when we have a spacebar to do that or
 	 * characters that are not allowed to be entered.
-	 * @param shift True if the shift key is pressed.
 	 */
-	void ChangeOskDisabledState(bool shift)
+	void UpdateOskState()
 	{
+		this->shift = HasBit(_keystate, KEYS_CAPS) ^ HasBit(_keystate, KEYS_SHIFT);
+
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
 			this->SetWidgetDisabledState(OSK_WIDGET_LETTERS + i,
-					!IsValidChar(_keyboard[shift][i], this->qs->afilter) || _keyboard[shift][i] == ' ');
+					!IsValidChar(_keyboard[this->shift][i], this->qs->afilter) || _keyboard[this->shift][i] == ' ');
 		}
 		this->SetWidgetDisabledState(OSK_WIDGET_SPACE, !IsValidChar(' ', this->qs->afilter));
-	}
-
-	virtual void OnPaint()
-	{
-		bool shift = HasBit(_keystate, KEYS_CAPS) ^ HasBit(_keystate, KEYS_SHIFT);
 
 		this->LowerWidget(OSK_WIDGET_TEXT);
 		this->SetWidgetLoweredState(OSK_WIDGET_SHIFT, HasBit(_keystate, KEYS_SHIFT));
 		this->SetWidgetLoweredState(OSK_WIDGET_CAPS, HasBit(_keystate, KEYS_CAPS));
+	}
 
-		this->ChangeOskDisabledState(shift);
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == OSK_WIDGET_CAPTION) SetDParam(0, this->caption);
+	}
 
-		SetDParam(0, this->caption);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget < OSK_WIDGET_LETTERS) return;
+
+		widget -= OSK_WIDGET_LETTERS;
+		DrawCharCentered(_keyboard[this->shift][widget],
+			r.left + 8,
+			r.top + 3,
+			TC_BLACK);
+	}
+
+	virtual void OnPaint()
+	{
 		this->DrawWidgets();
-
-		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
-			DrawCharCentered(_keyboard[shift][i],
-				this->widget[OSK_WIDGET_LETTERS + i].left + 8,
-				this->widget[OSK_WIDGET_LETTERS + i].top + 3,
-				TC_BLACK);
-		}
 
 		this->qs->DrawEditBox(this, OSK_WIDGET_TEXT);
 	}
@@ -145,9 +153,7 @@ struct OskWindow : public Window {
 	{
 		/* clicked a letter */
 		if (widget >= OSK_WIDGET_LETTERS) {
-			bool shift = HasBit(_keystate, KEYS_CAPS) ^ HasBit(_keystate, KEYS_SHIFT);
-
-			WChar c = _keyboard[shift][widget - OSK_WIDGET_LETTERS];
+			WChar c = _keyboard[this->shift][widget - OSK_WIDGET_LETTERS];
 
 			if (!IsValidChar(c, this->qs->afilter)) return;
 
@@ -155,7 +161,7 @@ struct OskWindow : public Window {
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
-				this->widget[OSK_WIDGET_SHIFT].colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
+				this->GetWidget<NWidgetCore>(OSK_WIDGET_SHIFT)->colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
 				this->SetDirty();
 			}
 			return;
@@ -182,11 +188,13 @@ struct OskWindow : public Window {
 
 			case OSK_WIDGET_CAPS:
 				ToggleBit(_keystate, KEYS_CAPS);
+				this->UpdateOskState();
 				this->SetDirty();
 				break;
 
 			case OSK_WIDGET_SHIFT:
 				ToggleBit(_keystate, KEYS_SHIFT);
+				this->UpdateOskState();
 				this->SetDirty();
 				break;
 
@@ -250,83 +258,6 @@ struct OskWindow : public Window {
 	{
 		this->SetWidgetDirty(OSK_WIDGET_TEXT);
 	}
-};
-
-static const Widget _osk_widgets[] = {
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_WHITE_STRING,  STR_NULL}, // OSK_WIDGET_CAPTION
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT_BACKGROUND
-{    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT
-
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    30,   139, 0x0,               STR_NULL}, // OSK_WIDGET_KEYS_BACKGROUND
-
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_BUTTON_CANCEL, STR_NULL}, // OSK_WIDGET_CANCEL
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_BUTTON_OK,     STR_NULL}, // OSK_WIDGET_OK
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   252,    35,    46, SPR_OSK_BACKSPACE, STR_NULL}, // OSK_WIDGET_BACKSPACE
-
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,    67,    82, SPR_OSK_SPECIAL,   STR_NULL}, // OSK_WIDGET_SPECIAL
-{     WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    36,    85,   100, SPR_OSK_CAPS,      STR_NULL}, // OSK_WIDGET_CAPS
-{     WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,   103,   118, SPR_OSK_SHIFT,     STR_NULL}, // OSK_WIDGET_SHIFT
-
-{ WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_GREY,    75,   189,   121,   136, STR_EMPTY,         STR_NULL}, // OSK_WIDGET_SPACE
-
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,   121,   136, SPR_OSK_LEFT,      STR_NULL}, // OSK_WIDGET_LEFT
-{ WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,   121,   136, SPR_OSK_RIGHT,     STR_NULL}, // OSK_WIDGET_RIGHT
-
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,     3,    18,    49,    64, 0x0,    STR_NULL},            // OSK_WIDGET_NUMBERS_FIRST = OSK_WIDGET_LETTERS
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    21,    36,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    39,    54,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    57,    72,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    75,    90,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    93,   108,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   111,   126,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   129,   144,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   147,   162,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   165,   180,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   183,   198,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   201,   216,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,    49,    64, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,    49,    64, 0x0,    STR_NULL},            // OSK_WIDGET_NUMBERS_LAST
-
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    30,    45,    67,    82, 0x0,    STR_NULL},            // OSK_WIDGET_QWERTY_FIRST
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    48,    63,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    66,    81,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    84,    99,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   102,   117,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   120,   135,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   138,   153,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   156,   171,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   174,   189,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   192,   207,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   210,   225,    67,    82, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   228,   243,    67,    82, 0x0,    STR_NULL},            // OSK_WIDGET_QWERTY_LAST
-
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    39,    54,    85,   100, 0x0,    STR_NULL},            // OSK_WIDGET_ASDFG_FIRST
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    57,    72,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    75,    90,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    93,   108,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   111,   126,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   129,   144,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   147,   162,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   165,   180,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   183,   198,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   201,   216,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   219,   234,    85,   100, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   237,   252,    85,   100, 0x0,    STR_NULL},            // OSK_WIDGET_ASDFG_LAST
-
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    30,    45,   103,   118, 0x0,    STR_NULL},            // OSK_WIDGET_ZXCVB_FIRST
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    48,    63,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    66,    81,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,    84,    99,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   102,   117,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   120,   135,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   138,   153,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   156,   171,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   174,   189,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   192,   207,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   210,   225,   103,   118, 0x0,    STR_NULL},
-{    WWT_PUSHBTN, RESIZE_NONE,  COLOUR_GREY,   228,   243,   103,   118, 0x0,    STR_NULL},            // OSK_WIDGET_ZXCVB_LAST
-
-{   WIDGETS_END},
 };
 
 static const int HALF_KEY_WIDTH = 7;  // Width of 1/2 key in pixels.
@@ -463,7 +394,7 @@ static const WindowDesc _osk_desc(
 	WDP_CENTER, WDP_CENTER, 256, 140, 256, 140,
 	WC_OSK, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_osk_widgets, _nested_osk_widgets, lengthof(_nested_osk_widgets)
+	NULL, _nested_osk_widgets, lengthof(_nested_osk_widgets)
 );
 
 /**
