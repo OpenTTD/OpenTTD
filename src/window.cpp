@@ -1960,7 +1960,7 @@ static bool HandleViewportScroll()
 	}
 
 	/* Create a scroll-event and send it to the window */
-	w->OnScroll(delta);
+	if (delta.x != 0 || delta.y != 0) w->OnScroll(delta);
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
