@@ -40,7 +40,7 @@ public:
 
 class FMusicDriver_ExtMidi: public MusicDriverFactory<FMusicDriver_ExtMidi> {
 public:
-	static const int priority = 1;
+	static const int priority = 3;
 	/* virtual */ const char *GetName() { return "extmidi"; }
 	/* virtual */ const char *GetDescription() { return "External MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_ExtMidi(); }
