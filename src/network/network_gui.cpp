@@ -2175,14 +2175,14 @@ enum NetworkCompanyPasswordWindowWidgets {
 };
 
 struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
-	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(lengthof(_settings_client.network.default_company_pass), desc)
+	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(lengthof(_settings_client.network.default_company_pass))
 	{
+		this->InitNested(desc, 0);
+
 		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
 		this->SetFocusedWidget(NCPWW_PASSWORD);
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	void OnOk()
@@ -2249,57 +2249,42 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	}
 };
 
-static const Widget _ncp_window_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,  0, 13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_GREY,  11, 299,  0, 13, STR_COMPANY_PASSWORD_CAPTION,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,  RESIZE_NONE,  COLOUR_GREY,   0, 299, 14, 50, 0x0,                               STR_NULL},
-{       WWT_TEXT,  RESIZE_NONE,  COLOUR_GREY,   5, 100, 19, 30, STR_COMPANY_VIEW_PASSWORD,              STR_NULL},
-{    WWT_EDITBOX,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 19, 30, STR_COMPANY_VIEW_SET_PASSWORD,          STR_NULL},
-{    WWT_TEXTBTN,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 35, 46, STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY,   0, 149, 51, 62, STR_BUTTON_CANCEL,                  STR_COMPANY_PASSWORD_CANCEL},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY, 150, 299, 51, 62, STR_BUTTON_OK,                      STR_COMPANY_PASSWORD_OK},
-{   WIDGETS_END},
-};
-
-static const NWidgetPart _nested_ncp_window_widgets[] = {
+static const NWidgetPart _nested_network_company_password_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, NCPWW_CLOSE),
 		NWidget(WWT_CAPTION, COLOUR_GREY, NCPWW_CAPTION), SetDataTip(STR_COMPANY_PASSWORD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, NCPWW_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 5),
-		NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_TEXT, COLOUR_GREY, NCPWW_LABEL), SetMinimalSize(96, 12), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
-				NWidget(NWID_SPACER), SetFill(false, true),
-			EndContainer(),
-			NWidget(NWID_VERTICAL),
+		NWidget(NWID_VERTICAL), SetPIP(5, 5, 5),
+			NWidget(NWID_HORIZONTAL), SetPIP(5, 5, 5),
+				NWidget(WWT_TEXT, COLOUR_GREY, NCPWW_LABEL), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
 				NWidget(WWT_EDITBOX, COLOUR_GREY, NCPWW_PASSWORD), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
+				NWidget(NWID_SPACER), SetFill(true, false),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, NCPWW_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 12),
 											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_CANCEL), SetMinimalSize(150, 12), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_OK), SetMinimalSize(150, 12), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_CANCEL), SetFill(true, false), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_OK), SetFill(true, false), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
 	EndContainer(),
 };
 
-static const WindowDesc _ncp_window_desc(
+static const WindowDesc _network_company_password_window_desc(
 	WDP_AUTO, WDP_AUTO, 300, 63, 300, 63,
 	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_ncp_window_widgets, _nested_ncp_window_widgets, lengthof(_nested_ncp_window_widgets)
+	NULL, _nested_network_company_password_window_widgets, lengthof(_nested_network_company_password_window_widgets)
 );
 
 void ShowNetworkCompanyPasswordWindow(Window *parent)
 {
 	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
-	new NetworkCompanyPasswordWindow(&_ncp_window_desc, parent);
+	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
 }
 
 #endif /* ENABLE_NETWORK */
