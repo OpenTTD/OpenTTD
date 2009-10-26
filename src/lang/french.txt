@@ -939,7 +939,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sons de 
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Choisir les sons de base à utiliser
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Information additionnelle sur les sons de base
 
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Echec du mode plein écran
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Échec du mode plein écran
 
 # Custom currency window
 
@@ -1651,7 +1651,8 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nouvelle
 
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Aucun -
-STR_NETWORK_CLIENTLIST_KICK                                     :Jeter
+STR_NETWORK_CLIENTLIST_KICK                                     :Exclure
+STR_NETWORK_CLIENTLIST_BAN                                      :Bannir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donner de l'argent
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parler à tous
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parler à la compagnie
@@ -1722,7 +1723,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :révision incor
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom déjà utilisé
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :mot de passe de partie incorrect
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :mauvais company-id dans DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :jeté par le serveur
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :exclu par le serveur
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a tenté de tricher
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Serveur complet
 ############ End of leave-in-this-order
@@ -1734,7 +1735,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partie suspendu
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partie reprise (assez de joueurs)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partie suspendue (connexion d'un client)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partie reprise (client connecté)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partie reprise (echec de connexion du client)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partie reprise (échec de connexion du client)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :départ
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a rejoint la partie
@@ -1803,7 +1804,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de contenu impossible...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Echec du téléchargement...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Échec du téléchargement...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexion perdue
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichier non enregistrable
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossible de décompresser le fichier téléchargé

@@ -1652,6 +1652,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Neue Fir
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Keine -
 STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
+STR_NETWORK_CLIENTLIST_BAN                                      :Bann
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geld schenken
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit Firma sprechen
