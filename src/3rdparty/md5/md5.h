@@ -55,16 +55,6 @@
 #ifndef MD5_INCLUDED
 #define MD5_INCLUDED
 
-/*
- * This package supports both compile-time and run-time determination of CPU
- * byte order.  If ARCH_IS_BIG_ENDIAN is defined as 0, the code will be
- * compiled to run only on little-endian CPUs; if ARCH_IS_BIG_ENDIAN is
- * defined as non-zero, the code will be compiled to run only on big-endian
- * CPUs; if ARCH_IS_BIG_ENDIAN is not defined, the code will be compiled to
- * run on either big- or little-endian CPUs, but will run slightly less
- * efficiently on either one than if ARCH_IS_BIG_ENDIAN is defined.
- */
-
 struct Md5 {
 private:
 	uint32 count[2]; ///< message length in bits, lsw first

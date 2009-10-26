@@ -175,7 +175,7 @@ void Md5::Process(const uint8 *data /*[64]*/)
 	uint32 X[16];
 
 	/* Convert the uint8 data to uint32 LE */
-	uint32 *px = (uint32 *)data;
+	const uint32 *px = (const uint32 *)data;
 	for (uint i = 0; i < 16; i++) {
 		X[i] = TO_LE32(*px);
 		px++;
@@ -306,17 +306,18 @@ void Md5::Finish(uint8 digest[16])
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
 	uint8 data[8];
-	uint i;
 
 	/* Save the length before padding. */
-	for (i = 0; i < 8; ++i)
+	for (uint i = 0; i < 8; ++i) {
 		data[i] = (uint8)(this->count[i >> 2] >> ((i & 3) << 3));
+	}
 
 	/* Pad to 56 bytes mod 64. */
 	this->Append(pad, ((55 - (this->count[0] >> 3)) & 63) + 1);
 	/* Append the length. */
 	this->Append(data, 8);
 
-	for (i = 0; i < 16; ++i)
+	for (uint i = 0; i < 16; ++i) {
 		digest[i] = (uint8)(this->abcd[i >> 2] >> ((i & 3) << 3));
+	}
 }
