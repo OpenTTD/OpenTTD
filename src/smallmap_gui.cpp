@@ -590,9 +590,8 @@ class SmallMapWindow : public Window {
 	 * @param proc Pointer to the colour function
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
-	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
+	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, Blitter *blitter, GetSmallMapPixels *proc)
 	{
-		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
 		void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
 
@@ -839,7 +838,7 @@ class SmallMapWindow : public Window {
 				/* number of lines */
 				int reps = (dpi->height - y + 1) / 2;
 				if (reps > 0) {
-					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[this->map_type]);
+					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, blitter, _smallmap_draw_procs[this->map_type]);
 				}
 			}
 
