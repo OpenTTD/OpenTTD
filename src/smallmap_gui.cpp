@@ -138,8 +138,7 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 };
 
 
-/* number of used industries */
-static int _smallmap_industry_count;
+static int _smallmap_industry_count; ///< Number of used industries
 
 /** Macro for ordinary entry of LegendAndColour */
 #define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
@@ -351,7 +350,7 @@ static const AndOr _smallmap_vegetation_andor[] = {
 	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
 };
 
-typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough function
+typedef uint32 GetSmallMapPixels(TileIndex tile); ///< Typedef callthrough function
 
 
 static inline TileType GetEffectiveTileType(TileIndex tile)
@@ -410,7 +409,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 		if (_legend_from_industries[_industry_to_list_pos[Industry::GetByTile(tile)->type]].show_on_map) {
 			return GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour * 0x01010101;
 		} else {
-			/* otherwise, return the colour of the clear tiles, which will make it disappear */
+			/* Otherwise, return the colour of the clear tiles, which will make it disappear */
 			return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[MP_CLEAR]);
 		}
 	}
@@ -439,7 +438,7 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 		}
 	}
 
-	/* ground colour */
+	/* Ground colour */
 	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_contours_andor[t]);
 }
 
@@ -516,7 +515,7 @@ static const uint32 _smallmap_mask_right[] = {
 	MKCOLOUR(0x00FFFFFF),
 };
 
-/* each tile has 4 x pixels and 1 y pixel */
+/* Each tile has 4 x pixels and 1 y pixel */
 
 static GetSmallMapPixels * const _smallmap_draw_procs[] = {
 	GetSmallMapContoursPixels,
@@ -586,7 +585,8 @@ class SmallMapWindow : public Window {
 	 * @param yc The Y coordinate of the first tile in the column
 	 * @param pitch Number of pixels to advance in the screen buffer each time a pixel is written.
 	 * @param reps Number of lines to draw
-	 * @param mask ?
+	 * @param mask Some bytes may need to be masked out when at the border of drawn area
+	 * @param blitter current blitter
 	 * @param proc Pointer to the colour function
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
@@ -596,10 +596,10 @@ class SmallMapWindow : public Window {
 		void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
 
 		do {
-			/* check if the tile (xc,yc) is within the map range */
+			/* Check if the tile (xc,yc) is within the map range */
 			uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
 			if (IsInsideMM(xc, min_xy, MapMaxX()) && IsInsideMM(yc, min_xy, MapMaxY())) {
-				/* check if the dst pointer points to a pixel inside the screen buffer */
+				/* Check if the dst pointer points to a pixel inside the screen buffer */
 				if (dst < _screen.dst_ptr) continue;
 				if (dst >= dst_ptr_abs_end) continue;
 
@@ -612,14 +612,15 @@ class SmallMapWindow : public Window {
 					blitter->SetPixelIfEmpty(dst, 2, 0, val8[2]);
 					blitter->SetPixelIfEmpty(dst, 3, 0, val8[3]);
 				} else {
-					/* It happens that there are only 1, 2 or 3 pixels left to fill, so in that special case, write till the end of the video-buffer */
+					/* It happens that there are only 1, 2 or 3 pixels left to fill, so
+					 * in that special case, write till the end of the video-buffer */
 					int i = 0;
 					do {
 						blitter->SetPixelIfEmpty(dst, 0, 0, val8[i]);
 					} while (i++, dst = blitter->MoveTo(dst, 1, 0), dst < dst_ptr_abs_end);
 				}
 			}
-		/* switch to next tile in the column */
+		/* Switch to next tile in the column */
 		} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
 	}
 
@@ -655,7 +656,7 @@ class SmallMapWindow : public Window {
 
 			if (x < 0) {
 				/* if x+1 is 0, that means we're on the very left edge,
-				 *  and should thus only draw a single pixel */
+				 * and should thus only draw a single pixel */
 				if (++x != 0) continue;
 				skip = true;
 			} else if (x >= dpi->width - 1) {
@@ -771,23 +772,22 @@ class SmallMapWindow : public Window {
 		old_dpi = _cur_dpi;
 		_cur_dpi = dpi;
 
-		/* clear it */
+		/* Clear it */
 		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, 0);
 
-		/* setup owner table */
+		/* Setup owner table */
 		if (this->map_type == SMT_OWNER) {
 			const Company *c;
 
-			/* fill with some special colours */
+			/* Fill with some special colours */
 			_owner_colours[OWNER_TOWN]  = MKCOLOUR(0xB4B4B4B4);
 			_owner_colours[OWNER_NONE]  = MKCOLOUR(0x54545454);
 			_owner_colours[OWNER_WATER] = MKCOLOUR(0xCACACACA);
-			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); // industry
+			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); // Industry
 
-			/* now fill with the company colours */
+			/* Now fill with the company colours */
 			FOR_ALL_COMPANIES(c) {
-				_owner_colours[c->index] =
-					_colour_gradient[c->colour][5] * 0x01010101;
+				_owner_colours[c->index] = _colour_gradient[c->colour][5] * 0x01010101;
 			}
 		}
 
@@ -820,22 +820,22 @@ class SmallMapWindow : public Window {
 		for (;;) {
 			uint32 mask = 0xFFFFFFFF;
 
-			/* distance from left edge */
+			/* Distance from left edge */
 			if (x >= -3) {
 				if (x < 0) {
-					/* mask to use at the left edge */
+					/* Mask to use at the left edge */
 					mask = _smallmap_mask_left[x + 3];
 				}
 
-				/* distance from right edge */
+				/* Distance from right edge */
 				int t = dpi->width - x;
 				if (t < 4) {
-					if (t <= 0) break; // exit loop
-					/* mask to use at the right edge */
+					if (t <= 0) break; // Exit loop
+					/* Mask to use at the right edge */
 					mask &= _smallmap_mask_right[t - 1];
 				}
 
-				/* number of lines */
+				/* Number of lines */
 				int reps = (dpi->height - y + 1) / 2;
 				if (reps > 0) {
 					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, blitter, _smallmap_draw_procs[this->map_type]);
@@ -910,11 +910,11 @@ public:
 	{
 		DrawPixelInfo new_dpi;
 
-		/* Hide Enable all/Disable all buttons if is not industry type small map*/
+		/* Hide Enable all/Disable all buttons if is not industry type small map */
 		this->SetWidgetHiddenState(SM_WIDGET_ENABLEINDUSTRIES, this->map_type != SMT_INDUSTRY);
 		this->SetWidgetHiddenState(SM_WIDGET_DISABLEINDUSTRIES, this->map_type != SMT_INDUSTRY);
 
-		/* draw the window */
+		/* Draw the window */
 		SetDParam(0, STR_SMALLMAP_TYPE_CONTOURS + this->map_type);
 		this->DrawWidgets();
 
@@ -934,7 +934,7 @@ public:
 
 			if (this->map_type == SMT_INDUSTRY) {
 				/* Industry name must be formated, since it's not in tiny font in the specs.
-				 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
+				 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font*/
 				SetDParam(0, tbl->legend);
 				assert(tbl->type < NUM_INDUSTRYTYPES);
 				SetDParam(1, _industry_counts[tbl->type]);
@@ -944,14 +944,14 @@ public:
 					DrawString(x + 11, x + COLUMN_WIDTH - 1, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
 				} else {
 					DrawString(x + 11, x + COLUMN_WIDTH - 1, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
-					GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend colour
+					GfxFillRect(x, y + 1, x + 8, y + 5, 0); // Outer border of the legend colour
 				}
 			} else {
 				/* Anything that is not an industry is using normal process */
 				GfxFillRect(x, y + 1, x + 8, y + 5, 0);
 				DrawString(x + 11, x + COLUMN_WIDTH - 1, y, tbl->legend);
 			}
-			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend colour
+			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // Legend colour
 
 			y += 6;
 		}
@@ -1016,15 +1016,15 @@ public:
 				break;
 
 			case SM_WIDGET_LEGEND: // Legend
-				/* if industry type small map*/
+				/* If industry type small map*/
 				if (this->map_type == SMT_INDUSTRY) {
-					/* if click on industries label, find right industry type and enable/disable it */
-					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
+					/* If click on industries label, find right industry type and enable/disable it */
+					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // Label panel
 					uint column = (pt.x - 4) / COLUMN_WIDTH;
 					uint line = (pt.y - wi->top - 2) / 6;
 					int rows_per_column = (wi->bottom - wi->top) / 6;
 
-					/* check if click is on industry label*/
+					/* Check if click is on industry label*/
 					int industry_pos = (column * rows_per_column) + line;
 					if (industry_pos < _smallmap_industry_count) {
 						_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
@@ -1041,17 +1041,17 @@ public:
 				for (int i = 0; i != _smallmap_industry_count; i++) {
 					_legend_from_industries[i].show_on_map = true;
 				}
-				/* toggle appeareance indicating the choice */
+				/* Toggle appeareance indicating the choice */
 				this->LowerWidget(SM_WIDGET_ENABLEINDUSTRIES);
 				this->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
 				this->SetDirty();
 				break;
 
-			case SM_WIDGET_DISABLEINDUSTRIES: // disable all industries
+			case SM_WIDGET_DISABLEINDUSTRIES: // Disable all industries
 				for (int i = 0; i != _smallmap_industry_count; i++) {
 					_legend_from_industries[i].show_on_map = false;
 				}
-				/* toggle appeareance indicating the choice */
+				/* Toggle appeareance indicating the choice */
 				this->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
 				this->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
 				this->SetDirty();
@@ -1071,7 +1071,7 @@ public:
 
 	virtual void OnTick()
 	{
-		/* update the window every now and then */
+		/* Update the window every now and then */
 		if (--this->refresh != 0) return;
 
 		this->refresh = FORCE_REFRESH_PERIOD;
@@ -1177,8 +1177,8 @@ bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 	bool res = ScrollWindowTo(x, y, z, FindWindowById(WC_MAIN_WINDOW, 0), instant);
 
 	/* If a user scrolls to a tile (via what way what so ever) and already is on
-	 *  that tile (e.g.: pressed twice), move the smallmap to that location,
-	 *  so you directly see where you are on the smallmap. */
+	 * that tile (e.g.: pressed twice), move the smallmap to that location,
+	 * so you directly see where you are on the smallmap. */
 
 	if (res) return res;
 
