@@ -407,71 +407,79 @@ public:
 		/* Draw the last joined server, if any */
 		if (this->last_joined != NULL) this->DrawServerLine(this->last_joined, y = this->widget[NGWW_LASTJOINED].top + 3, this->last_joined == sel);
 
+		const Widget *wi = &this->widget[NGWW_DETAILS];
+		Rect r = {wi->left, wi->top, wi->right, wi->bottom};
+		this->DrawDetails(r);
+	}
+
+	void DrawDetails(const Rect &r) const
+	{
+		NetworkGameList *sel = this->server;
+
+		const int detail_height = 6 + 8 + 6 + 3 * FONT_HEIGHT_NORMAL;
+
 		/* Draw the right menu */
-		GfxFillRect(this->widget[NGWW_DETAILS].left + 1, 43, this->widget[NGWW_DETAILS].right - 1, 92, 157);
+		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + detail_height - 1, 157);
 		if (sel == NULL) {
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 58, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_CENTER);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 		} else if (!sel->online) {
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 68, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
 
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 132, STR_NETWORK_SERVER_LIST_SERVER_OFFLINE, TC_FROMSTRING, SA_CENTER); // server offline
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + detail_height + 4, STR_NETWORK_SERVER_LIST_SERVER_OFFLINE, TC_FROMSTRING, SA_CENTER); // server offline
 		} else { // show game info
-			uint16 y = 100;
-			const uint16 x = this->widget[NGWW_DETAILS].left + 5;
 
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 48, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_CENTER);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_CENTER);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 8 + 2 * FONT_HEIGHT_NORMAL, sel->info.map_name, TC_BLACK, SA_CENTER); // map name
 
-			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
-			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, sel->info.map_name, TC_BLACK, SA_CENTER); // map name
+			uint16 y = r.top + detail_height + 4;
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_CLIENTS);
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CLIENTS);
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_LANGUAGE); // server language
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_LANGUAGE); // server language
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.map_set);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_TILESET); // tileset
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_TILESET); // tileset
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParamStr(0, sel->address.GetAddressAsString());
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_SERVER_ADDRESS); // server address
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_ADDRESS); // server address
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_START_DATE); // start date
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_START_DATE); // start date
+			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
+			y += FONT_HEIGHT_NORMAL;
 
-			y += 2;
+			y += WD_PAR_VSEP_NORMAL;
 
 			if (!sel->info.compatible) {
-				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_CENTER); // server mismatch
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_CENTER); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				/* Show: server full, when clients_on == max_clients */
-				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_CENTER); // server full
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_CENTER); // server full
 			} else if (sel->info.use_password) {
-				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_CENTER); // password warning
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_CENTER); // password warning
 			}
-
-			y += 10;
 		}
 	}
 
