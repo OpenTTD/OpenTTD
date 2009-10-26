@@ -1860,9 +1860,8 @@ bool AfterLoadGame()
 		/* Convert old subsidies */
 		Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
-			/* Convert only nonawarded subsidies. The original source and destination town/industry
-			 * can't be determined anymore for awarded subsidies, so invalidate them. */
 			if (s->remaining < 12) {
+				/* Converting nonawarded subsidy */
 				s->remaining = 12 - s->remaining; // convert "age" to "remaining"
 				s->awarded = INVALID_COMPANY; // not awarded to anyone
 				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
@@ -1886,8 +1885,33 @@ bool AfterLoadGame()
 						if (Industry::IsValidID(s->src) && Industry::IsValidID(s->dst)) continue;
 						break;
 				}
+			} else {
+				/* Do our best for awarded subsidies. The original source or destination industry
+				 * can't be determined anymore for awarded subsidies, so invalidate them.
+				 * Town -> Town subsidies are converted using simple heuristic */
+				s->remaining = 24 - s->remaining; // convert "age of awarded subsidy" to "remaining"
+				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
+				switch (cs->town_effect) {
+					case TE_PASSENGERS:
+					case TE_MAIL: {
+						/* Town -> Town */
+						const Station *ss = Station::GetIfValid(s->src);
+						const Station *sd = Station::GetIfValid(s->dst);
+						if (ss != NULL && sd != NULL && ss->owner == sd->owner &&
+								Company::IsValidID(ss->owner)) {
+							s->src_type = s->dst_type = ST_TOWN;
+							s->src = ss->town->index;
+							s->dst = sd->town->index;
+							s->awarded = ss->owner;
+							continue;
+						}
+						break;
+					}
+					default:
+						break;
+				}
 			}
-			/* Awarded subsidy or invalid source/destination, invalidate */
+			/* Awarded non-town subsidy or invalid source/destination, invalidate */
 			delete s;
 		}
 	}
