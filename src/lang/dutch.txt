@@ -1651,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw be
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :Geen
 STR_NETWORK_CLIENTLIST_KICK                                     :Schop uit het spel
+STR_NETWORK_CLIENTLIST_BAN                                      :Bannen
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geef geld
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Praat met iedereen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Praat met het bedrijf

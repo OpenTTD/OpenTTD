@@ -1836,6 +1836,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Novo pre
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Prazno -
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
+STR_NETWORK_CLIENTLIST_BAN                                      :Zabrani pristup
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Razgovaraj sa svima
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Razgovaraj sa ekipom
