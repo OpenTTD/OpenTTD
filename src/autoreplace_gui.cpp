@@ -105,7 +105,7 @@ class ReplaceVehicleWindow : public Window {
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right (#update_left and/or #update_right) and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels (found so far).
-	static RailType sel_railtype; ///< Type of rail tracks selected.
+	RailType sel_railtype;        ///< Type of rail tracks selected.
 
 	/** Figure out if an engine should be added to a list.
 	 * @param e            The EngineID.
@@ -198,6 +198,24 @@ class ReplaceVehicleWindow : public Window {
 public:
 	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window()
 	{
+		if (vehicletype == VEH_TRAIN) {
+			/* For rail vehicles find the most used vehicle type, which is usually
+			 * better than 'just' the first/previous vehicle type. */
+			uint type_count[RAILTYPE_END];
+			memset(type_count, 0, sizeof(type_count));
+
+			const Engine *e;
+			FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+				if (e->u.rail.railveh_type == RAILVEH_WAGON) continue;
+				type_count[e->u.rail.railtype] += GetGroupNumEngines(_local_company, id_g, e->index);
+			}
+
+			this->sel_railtype = RAILTYPE_BEGIN;
+			for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+				if (type_count[this->sel_railtype] < type_count[rt]) this->sel_railtype = rt;
+			}
+		}
+
 		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
@@ -543,8 +561,6 @@ static const WindowDesc _replace_vehicle_desc(
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	NULL, _nested_replace_vehicle_widgets, lengthof(_nested_replace_vehicle_widgets)
 );
-
-RailType ReplaceVehicleWindow::sel_railtype = RAILTYPE_RAIL;
 
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
