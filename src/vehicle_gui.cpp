@@ -372,6 +372,11 @@ struct RefitWindow : public Window {
 		}
 	}
 
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget == VRW_MATRIX) this->OnClick(pt, VRW_REFITBUTTON);
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
