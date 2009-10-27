@@ -1451,67 +1451,72 @@ struct NetworkLobbyWindow : public Window {
 			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
 
 			pos++;
-			y += NET_PRC__SIZE_OF_ROW;
+			y += this->resize.step_height;
 			if (pos >= this->vscroll.GetPosition() + this->vscroll.GetCapacity()) break;
 		}
 
+		const Widget *wi = &this->widget[NLWW_DETAILS];
+		Rect r = {wi->left, wi->top, wi->right, wi->bottom};
+		this->DrawDetails(r);
+	}
+
+	void DrawDetails(const Rect &r) const
+	{
+		const int detail_height = 12 + FONT_HEIGHT_NORMAL + 12;
 		/* Draw info about selected company when it is selected in the left window */
-		GfxFillRect(174, 39, 403, 75, 157);
-		DrawString(this->widget[NLWW_DETAILS].left + 10, this->widget[NLWW_DETAILS].right - 10, 50, STR_NETWORK_GAME_LOBBY_COMPANY_INFO, TC_FROMSTRING, SA_CENTER);
-		if (this->company != INVALID_COMPANY && !StrEmpty(this->company_info[this->company].company_name)) {
-			const uint x = this->widget[NLWW_DETAILS].left + 10;
-			y = 80;
+		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + detail_height - 1, 157);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 12, STR_NETWORK_GAME_LOBBY_COMPANY_INFO, TC_FROMSTRING, SA_CENTER);
 
-			SetDParam(0, gi->clients_on);
-			SetDParam(1, gi->clients_max);
-			SetDParam(2, gi->companies_on);
-			SetDParam(3, gi->companies_max);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_CLIENTS);
-			y += 10;
+		if (this->company == INVALID_COMPANY || StrEmpty(this->company_info[this->company].company_name)) return;
 
-			SetDParamStr(0, this->company_info[this->company].company_name);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_COMPANY_NAME);
-			y += 10;
+		int y = r.top + detail_height + 4;
+		const NetworkGameInfo *gi = &this->server->info;
 
-			SetDParam(0, this->company_info[this->company].inaugurated_year);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR); // inauguration year
-			y += 10;
+		SetDParam(0, gi->clients_on);
+		SetDParam(1, gi->clients_max);
+		SetDParam(2, gi->companies_on);
+		SetDParam(3, gi->companies_max);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CLIENTS);
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParam(0, this->company_info[this->company].company_value);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_VALUE); // company value
-			y += 10;
+		SetDParamStr(0, this->company_info[this->company].company_name);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_COMPANY_NAME);
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParam(0, this->company_info[this->company].money);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE); // current balance
-			y += 10;
+		SetDParam(0, this->company_info[this->company].inaugurated_year);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR); // inauguration year
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParam(0, this->company_info[this->company].income);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME); // last year's income
-			y += 10;
+		SetDParam(0, this->company_info[this->company].company_value);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_VALUE); // company value
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParam(0, this->company_info[this->company].performance);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_PERFORMANCE); // performance
-			y += 10;
+		SetDParam(0, this->company_info[this->company].money);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE); // current balance
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParam(0, this->company_info[this->company].num_vehicle[0]);
-			SetDParam(1, this->company_info[this->company].num_vehicle[1]);
-			SetDParam(2, this->company_info[this->company].num_vehicle[2]);
-			SetDParam(3, this->company_info[this->company].num_vehicle[3]);
-			SetDParam(4, this->company_info[this->company].num_vehicle[4]);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_VEHICLES); // vehicles
-			y += 10;
+		SetDParam(0, this->company_info[this->company].income);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME); // last year's income
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParam(0, this->company_info[this->company].num_station[0]);
-			SetDParam(1, this->company_info[this->company].num_station[1]);
-			SetDParam(2, this->company_info[this->company].num_station[2]);
-			SetDParam(3, this->company_info[this->company].num_station[3]);
-			SetDParam(4, this->company_info[this->company].num_station[4]);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_STATIONS); // stations
-			y += 10;
+		SetDParam(0, this->company_info[this->company].performance);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_PERFORMANCE); // performance
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParamStr(0, this->company_info[this->company].clients);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_PLAYERS); // players
+		for (uint i = 0; i < lengthof(this->company_info[this->company].num_vehicle); i++) {
+			SetDParam(i, this->company_info[this->company].num_vehicle[i]);
 		}
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_VEHICLES); // vehicles
+		y += FONT_HEIGHT_NORMAL;
+
+		for (uint i = 0; i < lengthof(this->company_info[this->company].num_station); i++) {
+			SetDParam(i, this->company_info[this->company].num_station[i]);
+		}
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_STATIONS); // stations
+		y += FONT_HEIGHT_NORMAL;
+
+		SetDParamStr(0, this->company_info[this->company].clients);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_PLAYERS); // players
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1523,7 +1528,7 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case NLWW_MATRIX: { // Company list
-				uint32 id_v = (pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
+				uint32 id_v = (pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.GetCapacity()) break;
 
