@@ -21,6 +21,7 @@
 #include "vehicle_func.h"
 #include "company_func.h"
 #include "rail.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 
@@ -140,6 +141,7 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 	SetDParam(2, e->GetDisplayMaxSpeed());
 	SetDParam(3, e->GetPower());
 	SetDParam(1, e->GetDisplayWeight());
+	SetDParam(7, e->GetDisplayMaxTractiveEffort());
 
 	SetDParam(4, e->GetRunningCost());
 
@@ -150,7 +152,7 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 	} else {
 		SetDParam(5, CT_INVALID);
 	}
-	return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER;
+	return (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && e->u.rail.railtype != RAILTYPE_MAGLEV) ? STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE : STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER;
 }
 
 static StringID GetAircraftEngineInfoString(const Engine *e)
