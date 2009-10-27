@@ -685,6 +685,11 @@ struct NewGRFWindow : public Window {
 		}
 	}
 
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget == SNGRFS_FILE_LIST) this->OnClick(pt, SNGRFS_SET_PARAMETERS);
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
