@@ -525,6 +525,7 @@ const SettingDesc _settings[] = {
 	/***************************************************************************/
 	/* Unsaved setting variables. */
 	SDTC_OMANY(gui.autosave,                  SLE_UINT8, S,  0, 1, 4, _autosave_interval,     STR_NULL,                                       NULL),
+	 SDTC_BOOL(gui.threaded_saves,                       S,  0,  true,                        STR_NULL,                                       NULL),
 	SDTC_OMANY(gui.date_format_in_default_names,SLE_UINT8,S,MS, 0, 2, _savegame_date,         STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES,   NULL),
 	 SDTC_BOOL(gui.vehicle_speed,                        S,  0,  true,                        STR_CONFIG_SETTING_VEHICLESPEED,                NULL),
 	 SDTC_BOOL(gui.status_long_date,                     S,  0,  true,                        STR_CONFIG_SETTING_LONGDATE,                    NULL),

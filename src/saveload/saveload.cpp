@@ -1852,7 +1852,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			SlWriteFill(); // flush the save buffer
 
 			SaveFileStart();
-			if (_network_server) threaded = false;
+			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 			if (!threaded || !ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread)) {
 				if (threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
