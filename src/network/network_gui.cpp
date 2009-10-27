@@ -65,7 +65,6 @@ void SortNetworkLanguages()
 
 enum {
 	NET_PRC__OFFSET_TOP_WIDGET          = 54,
-	NET_PRC__OFFSET_TOP_WIDGET_COMPANY  = 52,
 	NET_PRC__SIZE_OF_ROW                = 14,
 };
 
@@ -1397,14 +1396,13 @@ struct NetworkLobbyWindow : public Window {
 	NetworkCompanyInfo company_info[MAX_COMPANIES];
 
 	NetworkLobbyWindow(const WindowDesc *desc, NetworkGameList *ngl) :
-			Window(desc), company(INVALID_COMPANY), server(ngl)
+			Window(), company(INVALID_COMPANY), server(ngl)
 	{
-		this->vscroll.SetCapacity(10);
-
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, 0);
+		this->OnResize();
 	}
 
-	CompanyID NetworkLobbyFindCompanyIndex(byte pos)
+	CompanyID NetworkLobbyFindCompanyIndex(byte pos) const
 	{
 		/* Scroll through all this->company_info and get the 'pos' item that is not empty */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
@@ -1416,10 +1414,49 @@ struct NetworkLobbyWindow : public Window {
 		return COMPANY_FIRST;
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case NLWW_HEADER:
+				size->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;;
+				break;
+
+			case NLWW_MATRIX:
+				resize->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
+				size->height = 10 * resize->height;
+				break;
+
+			case NLWW_DETAILS:
+				size->height = 30 + 11 * FONT_HEIGHT_NORMAL;
+				break;
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case NLWW_TEXT:
+				SetDParamStr(0, this->server->info.server_name);
+				break;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case NLWW_DETAILS:
+				this->DrawDetails(r);
+				break;
+
+			case NLWW_MATRIX:
+				this->DrawMatrix(r);
+				break;
+		}
+	}
+
 	virtual void OnPaint()
 	{
 		const NetworkGameInfo *gi = &this->server->info;
-		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
 		/* Join button is disabled when no company is selected and for AI companies*/
 		this->SetWidgetDisabledState(NLWW_JOIN, this->company == INVALID_COMPANY || GetLobbyCompanyInfo(this->company)->ai);
@@ -1428,36 +1465,35 @@ struct NetworkLobbyWindow : public Window {
 		/* Cannot spectate if there are too many spectators */
 		this->SetWidgetDisabledState(NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
 
-		/* Draw window widgets */
-		SetDParamStr(0, gi->server_name);
-		this->DrawWidgets();
-
 		this->vscroll.SetCount(gi->companies_on);
 
+		/* Draw window widgets */
+		this->DrawWidgets();
+	}
+
+	void DrawMatrix(const Rect &r) const
+	{
+		int y = r.top + WD_MATRIX_TOP;
 		/* Draw company list */
-		pos = this->vscroll.GetPosition();
-		while (pos < gi->companies_on) {
+		int pos = this->vscroll.GetPosition();
+		while (pos < this->server->info.companies_on) {
 			byte company = NetworkLobbyFindCompanyIndex(pos);
 			bool income = false;
 			if (this->company == company) {
-				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
+				GfxFillRect(r.left + 1, y - 2, r.right - 1, y + FONT_HEIGHT_NORMAL, 10); // show highlighted item with a different colour
 			}
 
-			DrawString(13, 135, y, this->company_info[company].company_name, TC_BLACK);
-			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT - 20, y, this->company_info[company].company_name, TC_BLACK);
+			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, r.right - WD_FRAMERECT_RIGHT - 20, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
 			if (this->company_info[company].income >= 0) income = true;
-			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
+			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, r.right - WD_FRAMERECT_RIGHT - 10, y);
 
 			pos++;
 			y += this->resize.step_height;
 			if (pos >= this->vscroll.GetPosition() + this->vscroll.GetCapacity()) break;
 		}
-
-		const Widget *wi = &this->widget[NLWW_DETAILS];
-		Rect r = {wi->left, wi->top, wi->right, wi->bottom};
-		this->DrawDetails(r);
 	}
 
 	void DrawDetails(const Rect &r) const
@@ -1528,7 +1564,7 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case NLWW_MATRIX: { // Company list
-				uint32 id_v = (pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / this->resize.step_height;
+				uint32 id_v = (pt.y - this->GetWidget<NWidgetCore>(NLWW_MATRIX)->pos_y) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.GetCapacity()) break;
 
@@ -1566,30 +1602,13 @@ struct NetworkLobbyWindow : public Window {
 			if (!this->IsWidgetDisabled(NLWW_JOIN)) this->OnClick(pt, NLWW_JOIN);
 		}
 	}
-};
 
-static const Widget _network_lobby_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW },        // NLWW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY_CAPTION,      STR_NULL},                         // NLWW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   234, 0x0,                         STR_NULL},                         // NLWW_BACKGROUND
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   419,    22,    34, STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN, STR_NULL},                         // NLWW_TEXT
-
-/* company list */
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_WHITE,         10,   155,    38,    49, 0x0,                         STR_NULL},                         // NLWW_HEADER
-{     WWT_MATRIX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP},     // NLWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NLWW_SCROLLBAR
-
-/* company info */
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   173,   404,    38,   190, 0x0,                         STR_NULL},                         // NLWW_DETAILS
-
-/* buttons */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   200,   211, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY,    STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP},     // NLWW_JOIN
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   215,   226, STR_NETWORK_GAME_LOBBY_NEW_COMPANY,     STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP},      // NLWW_NEW
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   200,   211, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME,   STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP},    // NLWW_SPECTATE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   215,   226, STR_NETWORK_SERVER_LIST_REFRESH,         STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP},          // NLWW_REFRESH
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        278,   388,   200,   211, STR_BUTTON_CANCEL,            STR_NULL},                         // NLWW_CANCEL
-
-{   WIDGETS_END},
+	virtual void OnResize()
+	{
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(NLWW_MATRIX);
+		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+	}
 };
 
 static const NWidgetPart _nested_network_lobby_window_widgets[] = {
@@ -1598,35 +1617,33 @@ static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NLWW_CAPTION), SetDataTip(STR_NETWORK_GAME_LOBBY_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_BACKGROUND),
-		NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NLWW_TEXT), SetDataTip(STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN, STR_NULL), SetMinimalSize(410, 13), SetPadding(8, 0, 0, 10),
+		NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NLWW_TEXT), SetDataTip(STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN, STR_NULL), SetResize(1, 0), SetPadding(10, 10, 0, 10),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 15),
+		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 10),
 			/* Company list. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_WHITE, NLWW_HEADER), SetMinimalSize(146, 12), SetFill(false, false), EndContainer(),
-				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NLWW_MATRIX), SetMinimalSize(146, 141), SetDataTip((10 << 8) + 1, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_WHITE, NLWW_HEADER), SetMinimalSize(146, 0), SetResize(1, 0), SetFill(true, false), EndContainer(),
+				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NLWW_MATRIX), SetMinimalSize(146, 0), SetResize(1, 1), SetFill(true, true), SetDataTip(0, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NLWW_SCROLLBAR),
-			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetResize(0, 1),
 			/* Company info. */
-			NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_DETAILS), SetMinimalSize(232, 153), SetFill(false, false), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_DETAILS), SetMinimalSize(232, 0), SetResize(1, 1), SetFill(true, true), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 		/* Buttons. */
-		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 31),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_JOIN), SetMinimalSize(142, 12), SetDataTip(STR_NETWORK_GAME_LOBBY_JOIN_COMPANY, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_NEW), SetMinimalSize(142, 12), SetDataTip(STR_NETWORK_GAME_LOBBY_NEW_COMPANY, STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 3, 10),
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 3, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_JOIN), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_GAME_LOBBY_JOIN_COMPANY, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_NEW), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_GAME_LOBBY_NEW_COMPANY, STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP),
 			EndContainer(),
-			NWidget(NWID_VERTICAL), SetPadding(0, 0, 0, 6),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_SPECTATE), SetMinimalSize(111, 12), SetDataTip(STR_NETWORK_GAME_LOBBY_SPECTATE_GAME, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_REFRESH), SetMinimalSize(111, 12), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 3, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_SPECTATE), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_GAME_LOBBY_SPECTATE_GAME, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_REFRESH), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
 			EndContainer(),
-			NWidget(NWID_VERTICAL), SetPadding(0, 0, 0, 9),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_CANCEL), SetMinimalSize(111, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 15),
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 3, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_CANCEL), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(true, true),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
@@ -1634,10 +1651,10 @@ static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 };
 
 static const WindowDesc _network_lobby_window_desc(
-	WDP_CENTER, WDP_CENTER, 420, 235, 420, 235,
+	WDP_CENTER, WDP_CENTER, 0, 0, 0, 0,
 	WC_NETWORK_WINDOW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_network_lobby_window_widgets, _nested_network_lobby_window_widgets, lengthof(_nested_network_lobby_window_widgets)
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	NULL, _nested_network_lobby_window_widgets, lengthof(_nested_network_lobby_window_widgets)
 );
 
 /* Show the networklobbywindow with the selected server
