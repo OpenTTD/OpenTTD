@@ -955,11 +955,11 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
-		v->InvalidateNewGRFCacheOfChain();
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 	}
+	v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
 
 	return cost;
 

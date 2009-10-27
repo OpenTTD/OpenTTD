@@ -2083,7 +2083,11 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 	}
 
-	if (flags & DC_EXEC) RoadVehUpdateCache(RoadVehicle::Get(p1)->First());
+	if (flags & DC_EXEC) {
+		RoadVehUpdateCache(RoadVehicle::Get(p1)->First());
+	} else {
+		v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
+	}
 
 	_returned_refit_capacity = total_capacity;
 

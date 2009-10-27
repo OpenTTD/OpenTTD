@@ -1227,6 +1227,10 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	 * than it actually solves (infinite loops and such).
 	 */
 	if (dst_head != NULL && !src_in_dst && (flags & DC_AUTOREPLACE) == 0) {
+		/* Forget everything, as everything is going to change */
+		src->InvalidateNewGRFCacheOfChain();
+		dst->InvalidateNewGRFCacheOfChain();
+
 		/*
 		 * When performing the 'allow wagon attach' callback, we have to check
 		 * that for each and every wagon, not only the first one. This means
@@ -1254,6 +1258,10 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 				/* Restore original first_engine data */
 				next_to_attach->tcache.first_engine = first_engine;
+
+				/* We do not want to remember any cached variables from the test run */
+				next_to_attach->InvalidateNewGRFCache();
+				dst_head->InvalidateNewGRFCache();
 
 				if (callback != CALLBACK_FAILED) {
 					StringID error = STR_NULL;
@@ -2174,7 +2182,11 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	_returned_refit_capacity = num;
 
 	/* Update the train's cached variables */
-	if (flags & DC_EXEC) TrainConsistChanged(Train::Get(p1)->First(), false);
+	if (flags & DC_EXEC) {
+		TrainConsistChanged(Train::Get(p1)->First(), false);
+	} else {
+		v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
+	}
 
 	return cost;
 }
