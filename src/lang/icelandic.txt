@@ -1525,21 +1525,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Veldu ko
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hvaða kort viltu spila?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Búa til nýjan leik
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Staðarnet / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (auglýsa)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} biðlar{P i ar}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} biðlar{P i ar}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Hámarksfjöldi notenda:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Veldu hámarksfjölda notenda. Ekki þarf að fylla öll pláss
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Fyrirtæki
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Fyrirtæki
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Hámarksfjöldi fyrirtækja:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Takmarka fjölda fyrirtækja á vefþjóni
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} áhorf{P andi endur}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} áhorf{P andi endur}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Hámarksfjöldi áhorfanda:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Takmarka fjölda áhorfanda á vefþjóninum
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Hefja leik
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Hefja nýjan netleik í sérvöldu korti eða landslagi af handahófi

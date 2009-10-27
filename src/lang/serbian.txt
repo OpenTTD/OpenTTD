@@ -1718,21 +1718,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Odaberit
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Na kom terenu želite da igrate?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Stvaranje nove proizvoljne partije
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (sa oglašavanjem)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} igrač{P "" a a}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} igrač{P "" a a}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Najviše igrača:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Odaberite koliko najviše može da ima igrača. Nemoraju sva mesta da budu popunjena
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} preduzeć{P e a a}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} preduzeć{P e a a}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Najviše preduzeća:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Odaberite koliko najviše može biti preduzeća na serveru
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} posmatrač{P "" a a}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} posmatrač{P "" a a}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Najviše posmatrača:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Odaberite koliko najviše može biti posmatrača na serveru
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači će znati sa kojim jezikom se razgovara na serveru
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Pokreni partiju
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnim terenom, ili scenarijom

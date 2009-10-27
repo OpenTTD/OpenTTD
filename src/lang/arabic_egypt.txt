@@ -1531,21 +1531,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}اختر
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}في أي خريطة تود ان تلعب؟
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :ولد لعبة جديدة عشوائيا
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :شبكة محلية / انترنت
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :انترنت (دعاية)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM}عميل
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}عميل
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد عملاء:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر أقصى عدد للعملاء
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}شركة
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}شركة
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}أقصى عدد شركات:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}حدد العدد الاقصى للشركات في هذا الخادم
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}مشاهد
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM}مشاهد
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}أقصى عدد مشاهدين:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}حدد عدد المشاهدين لهذا الخادم
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}اللغة المتحدثة:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللاعبين الآخرين سيعرفون اللغة المتحدثة
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}أبدأ اللعبة
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}ابدأ لعبة شبكة جديدة من خريطة عشوائية او سيناريو.

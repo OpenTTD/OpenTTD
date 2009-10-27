@@ -1534,21 +1534,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}בחר �
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}באיזה מפה אתה רוצה לשחק?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :צור משחק אקראי חדש
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / אינטרנט
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :(אינטרנט (פרסם
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} לקוח{P "" ות}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} לקוח{P "" ות}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מקסימום לקוחות:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספר משתתפים מירבי
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} חבר{P ה ות}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} חבר{P ה ות}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}מקסימום חברות:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}הגבל את השרת למספר מסויים של חברות
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}צופים {NUM}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}צופים {NUM}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK} :מספר צופים מירבי
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}הגבלת השרת למספר צופים מסויים
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}שפת דיבור:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}התחל משחק
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}התחל משחק רשת עם מפה אקראית

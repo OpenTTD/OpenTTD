@@ -1505,21 +1505,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Seleccio
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}¿Qué mapa queres xogar?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Xerar unha nova partida aleatoriamente
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (anunciar)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compañía{P "" s}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compañía{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Nº máx. de compañías:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectador{P "" es}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P "" es}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Nº máx. de espectadores:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita-lo servidor a unha certa cantidade de espectadores
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Iniciar Partida
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Comezar unha nova partida en rede a partires dun mapa aleatorio, ou un escenario

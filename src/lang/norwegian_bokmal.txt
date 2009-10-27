@@ -1530,21 +1530,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Velg et 
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hvilket kart vil du spille på?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Lag et tilfeldig spill
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonser)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" er}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalt antall tillatte klienter
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Velg maksimalt antall klienter. Ikke alle plassene trenger å bli tatt
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} firma{P "" er}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firma{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. antall firmaer:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begrens tjeneren til et bestemt antall firmaer
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} tilskuer{P "" e}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} tilskuer{P "" e}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks antall tilskuere
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrens tjeneren til et bestemt antall tilskuere
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk de snakker på tjeneren:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spillere skal kunne vite hvilket språk man snakker på denne tjeneren.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spill
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start et nytt nettverksspill på et tilfeldig kart, eller scenario

@@ -1533,21 +1533,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Select a
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Which map do you want to play?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generate random new game
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertize)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} client{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose a maximum number of clients. Not all slots need to be filled.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P y ies}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P y ies}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max companies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limit the server to a certain number of companies
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} spectator{P "" s}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectator{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spectators:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limit the server to a certain number of spectators
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Language spoken:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start Game
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start a new network game from a random map, or scenario

@@ -1533,21 +1533,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Pilih pe
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Peta mana yang akan dimainkan?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Bangkitkan permainan baru secara acak
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (mengiklankan)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} klien
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klien
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimum klien:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pilih jumlah klien maksimal. Tidak semua slot harus diisi
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Perusahaan
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Perusahaan
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimum perusahaan:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Batasi jumlah perusahaan pada server
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Penonton
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} Penonton
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimum penonton:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Batasi jumlah penonton pada server
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa pembicaraan:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Mulai permainan
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulai satu permainan dalam jaringan dari salah satu peta acak atau skenario

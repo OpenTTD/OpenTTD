@@ -1588,21 +1588,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vali kaa
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Millist kaarti sa tahad mängida?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Tekita suvaline kaart
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (reklaami)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Suurim klientide arv:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} ettevõte{P "" t}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} ettevõte{P "" t}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Enim ettevõtteid:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Teatud ettevõtete piirang serveris
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} pealtvaataja{P "" t}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} pealtvaataja{P "" t}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Enim pealtvaatajaid
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Teatud vaatlejate piirang serveris
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Räägitav keel:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Teistele mängijatele teadmiseks, et mis keelt serveris räägitakse
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Alusta mängu
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Uue võrgumängu alustamine suvalise kaardiga

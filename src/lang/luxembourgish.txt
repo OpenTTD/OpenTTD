@@ -1521,21 +1521,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Kaart wi
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Wéi eng Kaart wëllt der spillen?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generéiert en zoufällegt neit Spill
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (Werben)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} Spiller
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Spiller
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max Spiller:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Maximal Unzuel vun den Clients. Et muss net all Slot gefëllt sin.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Firm{P a en}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max Firmen:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}D'Unzuel vun den Firmen limitéieren
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Zuschauer
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} Zuschauer
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max Zuschauer:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}D'Unzuel vun den Zuschauer limitéiren
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Geschwaaten Sprooch:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aaner Leit gesin wéi eng Sprooch um Server geschwaat gëtt
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spill starten
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Eng nei Partie iwwert d'Netzwierk starten

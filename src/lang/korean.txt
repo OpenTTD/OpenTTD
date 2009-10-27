@@ -1534,21 +1534,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}맵 선�
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}어떤 맵을 선택하시겠습니까?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :신규 무작위 게임 만들기
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / 인터넷
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :인터넷 (광고 허용)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM}명
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}명
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}최대 접속자 수:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}최대 접속자수를 선택합니다. 모든 슬롯이 차있을 필요는 없습니다.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}개
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}개
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}최대 회사수:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}서버의 회사의 수를 제한합니다
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}명
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM}명
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}최대 관전자수:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}게임을 관전하는 접속자의 수를 제한합니다
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}대화 언어:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}서버에서 주로 사용하는 언어를 고르십시오.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}서버 열기
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}무작위 맵이나 시나리오로 새로운 네트워크 게임을 시작합니다.

@@ -1533,21 +1533,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selectee
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Op welke kaart wil je spelen?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Genereer willekeurig nieuw spel
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (adverteren)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} speler{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximaal aantal spelers:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies een maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} bedr{P ijf ijven}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} bedr{P ijf ijven}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max bedrijven:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Beperk de server tot een bepaald aantal bedrijven
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} toeschouwer{P "" s}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} toeschouwer{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max toeschouwers:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk de server tot een bepaald aantal toeschouwers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproken taal:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario

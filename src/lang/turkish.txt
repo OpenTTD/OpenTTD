@@ -1534,21 +1534,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Harita s
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hangi haritada oynamak istiyorsun?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Rastgele haritada oyna
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :İnternet (reklam vererek)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} istemci
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} istemci
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}İzin verilen en fazla oyuncu:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}İzin verilen en fazla oyuncu sayısını seç. Her yerin dolması gerekmez
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} şirket
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} şirket
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}En fazla şirket:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Sunucudaki şirket sayısını sınırla
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} seyirci
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} seyirci
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}En fazla izleyici:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Sunucudaki izleyici sayısını sınırla
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Konuşulan dil:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Oyunu Başlat
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Rastgele harita ya da senaryoda network oyunu aç

@@ -1483,21 +1483,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Elektu m
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kiun mapon vi volas ludi?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generu hazardan novan ludon
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Loka reto / Interreto
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Interreto (reklamu)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} client{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Klienta maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} kompanio{P "" j}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanio{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Kompania maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limu la servilon al certa kvanto da kompanioj
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} spektanto{P "" s}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spektanto{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spektanta maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limigu la servilon al certa kvanto da spektantoj
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata lingvo:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Startu Ludon
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Komencu novan retan ludon de hazarda mapo, aŭ scenaro

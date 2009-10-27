@@ -1534,21 +1534,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Επιλ
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Σε ποιό χάρτη θέλετε να παίξετε;
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Δημιουργία τυχαίου νέου παιχνιδιού
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Ίντερνετ
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Ίντερνετ (αναγγελία)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} συμπαίκτ{P ης ες}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} εταιρί{P α ες}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} εταιρί{P α ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Μέγιστος αριθμός εταιριών:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό εταιριών
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} θεατ{P ής ές}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} θεατ{P ής ές}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Μέγιστος αριθμός θεατών:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό θεατών
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ομιλούμενη γλώσσα:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στο διακομιστή
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Έναρξη παιχνιδιού
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Έναρξη νέου δικτυακού παιχνιδιού από τυχαίο χάρτη ή σενάριο

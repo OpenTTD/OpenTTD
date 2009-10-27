@@ -374,8 +374,7 @@ public:
 				!sel->online ||
 				sel->info.grfconfig == NULL);
 
-		SetDParam(0, 0x00);
-		SetDParam(1, _lan_internet_types_dropdown[_settings_client.network.lan_internet]);
+		SetDParam(0, _lan_internet_types_dropdown[_settings_client.network.lan_internet]);
 		this->DrawWidgets();
 
 		/* Edit box to set client name */
@@ -1015,23 +1014,23 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	{
 		switch (widget) {
 			case NSSW_CONNTYPE_BTN:
-				SetDParam(1, _connection_types_dropdown[_settings_client.network.server_advertise]);
+				SetDParam(0, _connection_types_dropdown[_settings_client.network.server_advertise]);
 				break;
 
 			case NSSW_CLIENTS_TXT:
-				SetDParam(2, _settings_client.network.max_clients);
+				SetDParam(0, _settings_client.network.max_clients);
 				break;
 
 			case NSSW_COMPANIES_TXT:
-				SetDParam(3, _settings_client.network.max_companies);
+				SetDParam(0, _settings_client.network.max_companies);
 				break;
 
 			case NSSW_SPECTATORS_TXT:
-				SetDParam(4, _settings_client.network.max_spectators);
+				SetDParam(0, _settings_client.network.max_spectators);
 				break;
 
 			case NSSW_LANGUAGE_BTN:
-				SetDParam(5, STR_NETWORK_LANG_ANY + _settings_client.network.server_lang);
+				SetDParam(0, STR_NETWORK_LANG_ANY + _settings_client.network.server_lang);
 				break;
 		}
 	}

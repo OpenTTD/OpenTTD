@@ -1913,21 +1913,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Wybierz 
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Na której mapie chcesz grac?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Tworzenie losowej nowej gry
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publiczny)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" ów ów}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna ilość klientów:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} firm{P a y ""}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firm{P a y ""}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksymalna ilość firm:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ogranicz serwer do określonej ilości firm
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} widz{P "" ów ów}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} widz{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksymalna ilość widzów:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ogranicz serwer do określonej ilości widzów
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Używany język:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Inni gracze będą poinformowani jaki język jest używany na serwerze
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Rozpocznij grę
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Uruchom nową grę sieciową z losową mapą lub scenariuszem

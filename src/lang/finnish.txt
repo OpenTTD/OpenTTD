@@ -1533,21 +1533,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Valitse 
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Mitä karttaa haluat pelata?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Luo uusi satunnainen peli
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Lähiverkko / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (mainosta)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} asiakas{P "" ta}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} yritys{P "" tä}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yritys{P "" tä}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Rajoita yhtiöiden määrää palvelimella
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} katsoja{P "" a}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} katsoja{P "" a}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Katsojien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Puhuttu kieli:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Aloita peli
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla.

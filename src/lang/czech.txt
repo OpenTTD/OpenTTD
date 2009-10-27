@@ -1596,21 +1596,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vyber ma
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Ve které mapě si chceš zahrát?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Vytvořit novou náhodnou hru
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :internet (zveřejnit)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i ů}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ů}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nejvyšší počet hráčů:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} společnost{P "" i í}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} společnost{P "" i í}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximální počet společností:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Omezit serverem počet společností
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} pozorovatel{P "" é ů}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} pozorovatel{P "" é ů}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximální počet pozorovatelů:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omezit serverem pocet pozorovatelů
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk ve hře:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začít hru
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Hru po síti začít s náhodnou mapou nebo se scénářem

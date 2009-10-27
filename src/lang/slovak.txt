@@ -1600,21 +1600,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vyber ma
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Ktoru mapu chces hrat?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Vygenerovat nahodnu novu hru
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (oznamit)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i ov}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ov}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximálny pocet klientov:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol maximalny pocet klientov. Moze sa ich pripojit aj menej.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} spolocnost{P "" i í}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} spolocnost{P "" i í}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max. pocet spolocnosti:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Obmedzi maximalny pocet spolocnosti na serveri
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} pozorovatel{P "" ia ov}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} pozorovatel{P "" ia ov}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. pocet divakov:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omedzi maximalny pocet divakov na serveri
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk hracov:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatni hraci vedeli, akym jazykom sa bude hovorit na serveri.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spustit hru
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenara

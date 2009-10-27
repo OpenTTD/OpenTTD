@@ -1533,21 +1533,21 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Seleccio
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}amb quin mapa vols jugar?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Genera un nou joc aleatori
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (anunci)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{SKIP}{SKIP}{NUM} client{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} companyi{P a es}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} companyi{P a es}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Màx companyies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita el servidor a un cert nombre de companyies
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectador{P "" s}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Màx espectadors:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita el servidor a un cert nombre de espectadors
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma parlat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Els altres jugadors sabran quin idioma es parla en aquest servidor.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Inicia el Joc
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Inicia un nou joc de xarxa des de un mapa aleatori, o escenari
