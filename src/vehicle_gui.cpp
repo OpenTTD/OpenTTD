@@ -1400,27 +1400,86 @@ struct VehicleDetailsWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != VLD_WIDGET_SERVICING_INTERVAL) return;
-
 		const Vehicle *v = Vehicle::Get(this->window_number);
-		/* Draw service interval text */
-		SetDParam(0, v->service_interval);
-		SetDParam(1, v->date_of_last_service);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + (r.bottom - r.top + 1 - FONT_HEIGHT_NORMAL) / 2,
-				Company::Get(v->owner)->settings.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
+
+		switch (widget) {
+			case VLD_WIDGET_TOP_DETAILS: {
+				int y = r.top + WD_FRAMERECT_TOP;
+
+				/* Draw running cost */
+				SetDParam(1, v->age / DAYS_IN_LEAP_YEAR);
+				SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
+				SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
+				SetDParam(3, v->GetDisplayRunningCost());
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
+				y += FONT_HEIGHT_NORMAL;
+
+				/* Draw max speed */
+				switch (v->type) {
+					case VEH_TRAIN:
+						SetDParam(2, v->GetDisplayMaxSpeed());
+						SetDParam(1, Train::From(v)->tcache.cached_power);
+						SetDParam(0, Train::From(v)->tcache.cached_weight);
+						SetDParam(3, Train::From(v)->tcache.cached_max_te / 1000);
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && Train::From(v)->railtype != RAILTYPE_MAGLEV) ?
+								STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE : STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
+						break;
+
+					case VEH_ROAD:
+					case VEH_SHIP:
+					case VEH_AIRCRAFT:
+						SetDParam(0, v->GetDisplayMaxSpeed());
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_MAX_SPEED);
+						break;
+
+					default: NOT_REACHED();
+				}
+				y += FONT_HEIGHT_NORMAL;
+
+				/* Draw profit */
+				SetDParam(0, v->GetDisplayProfitThisYear());
+				SetDParam(1, v->GetDisplayProfitLastYear());
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
+				y += FONT_HEIGHT_NORMAL;
+
+				/* Draw breakdown & reliability */
+				SetDParam(0, ToPercent16(v->reliability));
+				SetDParam(1, v->breakdowns_since_last_service);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
+				break;
+			}
+
+			case VLD_WIDGET_MATRIX:
+				/* For trains only. */
+				DrawVehicleDetails(v, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
+				break;
+
+			case VLD_WIDGET_MIDDLE_DETAILS:
+				/* For other vehicles, at the place of the matrix. */
+				DrawVehicleImage(v, r.left + 3, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, r.right - r.left + 1 - 6, 0);
+				DrawVehicleDetails(v, r.left + 75, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
+				break;
+
+			case VLD_WIDGET_SERVICING_INTERVAL:
+				/* Draw service interval text */
+				SetDParam(0, v->service_interval);
+				SetDParam(1, v->date_of_last_service);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + (r.bottom - r.top + 1 - FONT_HEIGHT_NORMAL) / 2,
+						Company::Get(v->owner)->settings.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
+				break;
+		}
 	}
 
 	/** Repaint vehicle details window. */
 	virtual void OnPaint()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
-		TrainDetailsWindowTabs det_tab = this->tab;
 
 		this->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_company);
 
 		if (v->type == VEH_TRAIN) {
-			this->DisableWidget(det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
-			this->vscroll.SetCount(GetTrainDetailsWndVScroll(v->index, det_tab));
+			this->DisableWidget(this->tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
+			this->vscroll.SetCount(GetTrainDetailsWndVScroll(v->index, this->tab));
 		}
 
 		/* Disable service-scroller when interval is set to disabled */
@@ -1429,67 +1488,7 @@ struct VehicleDetailsWindow : Window {
 			VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
 			WIDGET_LIST_END);
 
-
 		this->DrawWidgets();
-
-		/* Draw running cost */
-		SetDParam(1, v->age / DAYS_IN_LEAP_YEAR);
-		SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
-		SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
-		SetDParam(3, v->GetDisplayRunningCost());
-		DrawString(2, this->width - 2, 15, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
-
-		/* Draw max speed */
-		switch (v->type) {
-			case VEH_TRAIN:
-				SetDParam(2, v->GetDisplayMaxSpeed());
-				SetDParam(1, Train::From(v)->tcache.cached_power);
-				SetDParam(0, Train::From(v)->tcache.cached_weight);
-				SetDParam(3, Train::From(v)->tcache.cached_max_te / 1000);
-				DrawString(2, this->width - 2, 25, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && Train::From(v)->railtype != RAILTYPE_MAGLEV) ?
-						STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE : STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
-				break;
-
-			case VEH_ROAD:
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
-				SetDParam(0, v->GetDisplayMaxSpeed());
-				DrawString(2, this->width - 2, 25, STR_VEHICLE_INFO_MAX_SPEED);
-				break;
-
-			default: NOT_REACHED();
-		}
-
-		/* Draw profit */
-		SetDParam(0, v->GetDisplayProfitThisYear());
-		SetDParam(1, v->GetDisplayProfitLastYear());
-		DrawString(2, this->width - 2, 35, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
-
-		/* Draw breakdown & reliability */
-		SetDParam(0, ToPercent16(v->reliability));
-		SetDParam(1, v->breakdowns_since_last_service);
-		DrawString(2, this->width - 2, 45, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
-
-		switch (v->type) {
-			case VEH_TRAIN: {
-				const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(VLD_WIDGET_MATRIX);
-				int right = nwi->pos_x + nwi->current_x - 1;
-				DrawVehicleDetails(v, nwi->pos_x + 2, right - 2, nwi->pos_y + 1, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), det_tab);
-				break;
-			}
-
-			case VEH_ROAD:
-			case VEH_SHIP:
-			case VEH_AIRCRAFT: {
-				const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(VLD_WIDGET_MIDDLE_DETAILS);
-				int right = nwi->pos_x + nwi->current_x - 1;
-				DrawVehicleImage(v, nwi->pos_x + 3, nwi->pos_y + 1, INVALID_VEHICLE, nwi->current_x - 6, 0);
-				DrawVehicleDetails(v, nwi->pos_x + 75, right - 2, nwi->pos_y + 1, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), det_tab);
-				break;
-			}
-
-			default: NOT_REACHED();
-		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
