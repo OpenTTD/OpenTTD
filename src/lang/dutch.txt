@@ -2784,6 +2784,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillocomot
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :zweeflocomotief
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}  Max. T.E.: {7:FORCE}{}Bedrijfskosten: {CURRENCY}/yr{}Capaciteit: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosten: {CURRENCY} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO}, {CARGO}{}Gebruikskosten: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosten: {CURRENCY} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO}{}Gebruikeskosten: {CURRENCY}/yr
 

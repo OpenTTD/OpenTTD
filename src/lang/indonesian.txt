@@ -1651,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Per
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- tidak ada -
 STR_NETWORK_CLIENTLIST_KICK                                     :Usir
+STR_NETWORK_CLIENTLIST_BAN                                      :Larangan
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Kirim uang
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Bicara ke semua
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Bicara ke perusahaan
@@ -2783,6 +2784,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :lokomotif monor
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :lokomotif maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY}/thn{}Kapasitas: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {7:FORCE}{}Biaya Operasional: {CURRENCY}/yr{}Kapasitas: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}, {CARGO}{}Bea Berjalan: {CURRENCY}/thn
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}{}Bea Berjalan: {CURRENCY}/thn
 

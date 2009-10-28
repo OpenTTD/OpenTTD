@@ -1805,6 +1805,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Нет -
 STR_NETWORK_CLIENTLIST_KICK                                     :Выкинуть
+STR_NETWORK_CLIENTLIST_BAN                                      :Бан
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Передать денег
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Сказать всем
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Говорить с компанией
@@ -2948,9 +2949,10 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :монорел�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсовый локомотив
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магниторельсового локомотива
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Цена обслуж.: {CURRENCY}/год{}Ёмкость: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY}/год{}Ёмкость: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {7:FORCE}{}Стоимость обслуж.: {CURRENCY}/год{}Ёмкость: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цена: {CURRENCY} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO}, {CARGO}{}Стоимость обслуживания: {CURRENCY}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO}{}Стоимость обслуживания: {CURRENCY}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO}{}Стоимость обслуж.: {CURRENCY}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
