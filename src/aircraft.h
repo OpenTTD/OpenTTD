@@ -29,15 +29,6 @@ enum AircraftSubType {
 
 
 /**
- * Calculates cargo capacity based on an aircraft's passenger
- * and mail capacities.
- * @param cid Which cargo type to calculate a capacity for.
- * @param avi Which engine to find a cargo capacity for.
- * @return New cargo capacity value.
- */
-uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi);
-
-/**
  * This is the Callback method after the construction attempt of an aircraft
  * @param success indicates completion (or not) of the operation
  * @param tile of depot where aircraft is built

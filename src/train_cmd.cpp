@@ -316,10 +316,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 			}
 		}
 
-		if (e_u->CanCarryCargo() && u->cargo_type == e_u->GetDefaultCargoType() && u->cargo_subtype == 0) {
-			/* Set cargo capacity if we've not been refitted */
-			u->cargo_cap = GetVehicleProperty(u, PROP_TRAIN_CARGO_CAPACITY, rvi_u->capacity);
-		}
+		u->cargo_cap = GetVehicleCapacity(u);
 
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
@@ -2119,6 +2116,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	CommandCost cost(EXPENSES_TRAIN_RUN);
 	uint num = 0;
 
+	v->InvalidateNewGRFCacheOfChain();
 	do {
 		/* XXX: We also refit all the attached wagons en-masse if they
 		 * can be refitted. This is how TTDPatch does it.  TODO: Have
@@ -2128,40 +2126,17 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!e->CanCarryCargo()) continue;
 
-		uint16 amount = CALLBACK_FAILED;
-		if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
-			/* Back up the vehicle's cargo type */
-			CargoID temp_cid = v->cargo_type;
-			byte temp_subtype = v->cargo_subtype;
-			v->cargo_type = new_cid;
-			v->cargo_subtype = new_subtype;
-			/* Check the refit capacity callback */
-			amount = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
-			/* Restore the original cargo type */
-			v->cargo_type = temp_cid;
-			v->cargo_subtype = temp_subtype;
-		}
+		/* Back up the vehicle's cargo type */
+		CargoID temp_cid = v->cargo_type;
+		byte temp_subtype = v->cargo_subtype;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
 
-		if (amount == CALLBACK_FAILED) { // callback failed or not used, use default
-			CargoID old_cid = e->GetDefaultCargoType();
-			/* normally, the capacity depends on the cargo type, a rail vehicle can
-			 * carry twice as much mail/goods as normal cargo, and four times as
-			 * many passengers
-			 */
-			amount = e->u.rail.capacity;
-			switch (old_cid) {
-				case CT_PASSENGERS: break;
-				case CT_MAIL:
-				case CT_GOODS: amount *= 2; break;
-				default:       amount *= 4; break;
-			}
-			switch (new_cid) {
-				case CT_PASSENGERS: break;
-				case CT_MAIL:
-				case CT_GOODS: amount /= 2; break;
-				default:       amount /= 4; break;
-			}
-		}
+		uint amount = GetVehicleCapacity(v);
+
+		/* Restore the original cargo type */
+		v->cargo_type = temp_cid;
+		v->cargo_subtype = temp_subtype;
 
 		if (new_cid != v->cargo_type) {
 			cost.AddCost(GetRefitCost(v->engine_type));

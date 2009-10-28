@@ -162,6 +162,7 @@ bool Engine::CanCarryCargo() const
  * For multiheaded engines this is the capacity of both heads.
  * For articulated engines use GetCapacityOfArticulatedParts
  *
+ * @note Keep this function consistent with GetVehicleCapacity().
  * @return The default capacity
  * @see GetDefaultCargoType
  */
@@ -179,7 +180,12 @@ uint Engine::GetDisplayDefaultCapacity() const
 			return GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY, this->u.ship.capacity);
 
 		case VEH_AIRCRAFT:
-			return AircraftDefaultCargoCapacity(this->GetDefaultCargoType(), &this->u.air);
+			switch (this->GetDefaultCargoType()) {
+				case CT_PASSENGERS: return this->u.air.passenger_capacity;
+				case CT_MAIL:       return this->u.air.passenger_capacity + this->u.air.mail_capacity;
+				case CT_GOODS:      return (this->u.air.passenger_capacity + this->u.air.mail_capacity) / 2;
+				default:            return (this->u.air.passenger_capacity + this->u.air.mail_capacity) / 4;
+			}
 
 		default: NOT_REACHED();
 	}

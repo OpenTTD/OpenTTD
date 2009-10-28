@@ -283,8 +283,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		/* Call various callbacks after the whole consist has been constructed */
 		for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
-			/* Cargo capacity is zero if and only if the vehicle cannot carry anything */
-			if (u->cargo_cap != 0) u->cargo_cap = GetVehicleProperty(u, PROP_ROADVEH_CARGO_CAPACITY, u->cargo_cap);
+			u->cargo_cap = GetVehicleCapacity(u);
 			v->InvalidateNewGRFCache();
 			u->InvalidateNewGRFCache();
 		}
@@ -2008,7 +2007,6 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
 	bool only_this = HasBit(p2, 16);
-	uint16 capacity = CALLBACK_FAILED;
 	uint total_capacity = 0;
 
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
@@ -2019,6 +2017,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
+	v->InvalidateNewGRFCacheOfChain();
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
 		/* XXX: We refit all the attached wagons en-masse if they can be
 		 * refitted. This is how TTDPatch does it.  TODO: Have some nice
@@ -2028,43 +2027,17 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!e->CanCarryCargo()) continue;
 
-		if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
-			/* Back up the cargo type */
-			CargoID temp_cid = v->cargo_type;
-			byte temp_subtype = v->cargo_subtype;
-			v->cargo_type = new_cid;
-			v->cargo_subtype = new_subtype;
+		/* Back up the cargo type */
+		CargoID temp_cid = v->cargo_type;
+		byte temp_subtype = v->cargo_subtype;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
 
-			/* Check the refit capacity callback */
-			capacity = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+		uint capacity = GetVehicleCapacity(v);
 
-			/* Restore the original cargo type */
-			v->cargo_type = temp_cid;
-			v->cargo_subtype = temp_subtype;
-		}
-
-		if (capacity == CALLBACK_FAILED) {
-			/* callback failed or not used, use default capacity */
-
-			CargoID old_cid = e->GetDefaultCargoType();
-			/* normally, the capacity depends on the cargo type, a vehicle can
-			 * carry twice as much mail/goods as normal cargo, and four times as
-			 * many passengers
-			 */
-			capacity = GetVehicleProperty(v, PROP_ROADVEH_CARGO_CAPACITY, e->u.road.capacity);
-			switch (old_cid) {
-				case CT_PASSENGERS: break;
-				case CT_MAIL:
-				case CT_GOODS: capacity *= 2; break;
-				default:       capacity *= 4; break;
-			}
-			switch (new_cid) {
-				case CT_PASSENGERS: break;
-				case CT_MAIL:
-				case CT_GOODS: capacity /= 2; break;
-				default:       capacity /= 4; break;
-			}
-		}
+		/* Restore the original cargo type */
+		v->cargo_type = temp_cid;
+		v->cargo_subtype = temp_subtype;
 
 		total_capacity += capacity;
 

@@ -112,6 +112,8 @@ SpriteID GetEnginePalette(EngineID engine_type, CompanyID company);
  */
 SpriteID GetVehiclePalette(const Vehicle *v);
 
+uint GetVehicleCapacity(const Vehicle *v);
+
 extern const uint32 _veh_build_proc_table[];
 extern const uint32 _veh_sell_proc_table[];
 extern const uint32 _veh_refit_proc_table[];

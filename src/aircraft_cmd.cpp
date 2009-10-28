@@ -223,31 +223,6 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 	height = spr->height;
 }
 
-/**
- * Calculates cargo capacity based on an aircraft's passenger
- * and mail capacities.
- * @param cid Which cargo type to calculate a capacity for.
- * @param avi Which engine to find a cargo capacity for.
- * @return New cargo capacity value.
- */
-uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
-{
-	assert(cid != CT_INVALID);
-
-	/* An aircraft can carry twice as much goods as normal cargo,
-	 * and four times as many passengers. */
-	switch (cid) {
-		case CT_PASSENGERS:
-			return avi->passenger_capacity;
-		case CT_MAIL:
-			return avi->passenger_capacity + avi->mail_capacity;
-		case CT_GOODS:
-			return (avi->passenger_capacity + avi->mail_capacity) / 2;
-		default:
-			return (avi->passenger_capacity + avi->mail_capacity) / 4;
-	}
-}
-
 /** Build an aircraft.
  * @param tile tile of depot where aircraft is built
  * @param flags for command
@@ -385,20 +360,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		v->InvalidateNewGRFCacheOfChain();
 
+		v->cargo_cap = GetVehicleCapacity(v);
 		if (v->cargo_type != CT_PASSENGERS) {
-			uint16 callback = CALLBACK_FAILED;
-
-			if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
-				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
-			}
-
-			if (callback == CALLBACK_FAILED) {
-				/* Callback failed, or not executed; use the default cargo capacity */
-				v->cargo_cap = AircraftDefaultCargoCapacity(v->cargo_type, avi);
-			} else {
-				v->cargo_cap = callback;
-			}
-
 			/* Set the 'second compartent' capacity to none */
 			u->cargo_cap = 0;
 		}
@@ -540,31 +503,20 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	const Engine *e = Engine::Get(v->engine_type);
+	v->InvalidateNewGRFCacheOfChain();
 
-	/* Check the refit capacity callback */
-	uint16 callback = CALLBACK_FAILED;
-	if (HasBit(e->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY)) {
-		/* Back up the existing cargo type */
-		CargoID temp_cid = v->cargo_type;
-		byte temp_subtype = v->cargo_subtype;
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
+	/* Back up the existing cargo type */
+	CargoID temp_cid = v->cargo_type;
+	byte temp_subtype = v->cargo_subtype;
+	v->cargo_type = new_cid;
+	v->cargo_subtype = new_subtype;
 
-		callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+	uint pass = GetVehicleCapacity(v);
 
-		/* Restore the cargo type */
-		v->cargo_type = temp_cid;
-		v->cargo_subtype = temp_subtype;
-	}
+	/* Restore the cargo type */
+	v->cargo_type = temp_cid;
+	v->cargo_subtype = temp_subtype;
 
-	uint pass;
-	if (callback == CALLBACK_FAILED) {
-		/* If the callback failed, or wasn't executed, use the aircraft's
-		 * default cargo capacity */
-		pass = AircraftDefaultCargoCapacity(new_cid, &e->u.air);
-	} else {
-		pass = callback;
-	}
 	_returned_refit_capacity = pass;
 
 	CommandCost cost;
