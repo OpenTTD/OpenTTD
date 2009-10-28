@@ -41,8 +41,8 @@ public:
 	static char *GetName(EngineID engine_id);
 
 	/**
-	 * Get the cargo-type of an engine. In case it can transport 2 cargos, it
-	 *  returns the first.
+	 * Get the cargo-type of an engine. In case it can transport multiple cargos, it
+	 *  returns the first/main.
 	 * @param engine_id The engine to get the cargo-type of.
 	 * @pre IsValidEngine(engine_id).
 	 * @return The cargo-type of the engine.
@@ -52,6 +52,8 @@ public:
 	/**
 	 * Check if the cargo of an engine can be refitted to your requested. If
 	 *  the engine already allows this cargo, the function also returns true.
+	 *  In case of articulated vehicles the function decides whether at least one
+	 *  part can carry the cargo.
 	 * @param engine_id The engine to check for refitting.
 	 * @param cargo_id The cargo to check for refitting.
 	 * @pre IsValidEngine(engine_id).
@@ -75,8 +77,8 @@ public:
 	static bool CanPullCargo(EngineID engine_id, CargoID cargo_id);
 
 	/**
-	 * Get the capacity of an engine. In case it can transport 2 cargos, it
-	 *  returns the first.
+	 * Get the capacity of an engine. In case it can transport multiple cargos, it
+	 *  returns the first/main.
 	 * @param engine_id The engine to get the capacity of.
 	 * @pre IsValidEngine(engine_id).
 	 * @return The capacity of the engine.

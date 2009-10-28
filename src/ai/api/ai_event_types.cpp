@@ -30,9 +30,18 @@ char *AIEventEnginePreview::GetName()
 
 CargoID AIEventEnginePreview::GetCargoType()
 {
-	const Engine *e = ::Engine::Get(this->engine);
-	if (!e->CanCarryCargo()) return CT_INVALID;
-	return e->GetDefaultCargoType();
+	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
+
+	CargoID most_cargo = CT_INVALID;
+	uint amount = 0;
+	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+		if (cap[cid] > amount) {
+			amount = cap[cid];
+			most_cargo = cid;
+		}
+	}
+
+	return most_cargo;
 }
 
 int32 AIEventEnginePreview::GetCapacity()

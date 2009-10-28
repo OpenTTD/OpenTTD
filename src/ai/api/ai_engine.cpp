@@ -42,10 +42,18 @@
 {
 	if (!IsValidEngine(engine_id)) return CT_INVALID;
 
-	const Engine *e = ::Engine::Get(engine_id);
-	if (!e->CanCarryCargo()) return CT_INVALID;
+	CargoArray cap = ::GetCapacityOfArticulatedParts(engine_id);
 
-	return e->GetDefaultCargoType();
+	CargoID most_cargo = CT_INVALID;
+	uint amount = 0;
+	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+		if (cap[cid] > amount) {
+			amount = cap[cid];
+			most_cargo = cid;
+		}
+	}
+
+	return most_cargo;
 }
 
 /* static */ bool AIEngine::CanRefitCargo(EngineID engine_id, CargoID cargo_id)
@@ -53,8 +61,7 @@
 	if (!IsValidEngine(engine_id)) return false;
 	if (!AICargo::IsValidCargo(cargo_id)) return false;
 
-	if (GetCargoType(engine_id) == cargo_id) return true;
-	return ::CanRefitTo(engine_id, cargo_id);
+	return HasBit(::GetUnionOfArticulatedRefitMasks(engine_id, true), cargo_id);
 }
 
 /* static */ bool AIEngine::CanPullCargo(EngineID engine_id, CargoID cargo_id)
