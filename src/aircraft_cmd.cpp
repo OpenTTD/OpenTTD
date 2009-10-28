@@ -500,40 +500,17 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	/* Check cargo */
 	CargoID new_cid = GB(p2, 0, 8);
-	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
+	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
-	const Engine *e = Engine::Get(v->engine_type);
-	v->InvalidateNewGRFCacheOfChain();
-
-	/* Back up the existing cargo type */
-	CargoID temp_cid = v->cargo_type;
-	byte temp_subtype = v->cargo_subtype;
-	v->cargo_type = new_cid;
-	v->cargo_subtype = new_subtype;
-
-	uint pass = GetVehicleCapacity(v);
-
-	/* Restore the cargo type */
-	v->cargo_type = temp_cid;
-	v->cargo_subtype = temp_subtype;
-
-	_returned_refit_capacity = pass;
-
-	CommandCost cost;
-	if (new_cid != v->cargo_type) {
-		cost = GetRefitCost(v->engine_type);
-	}
+	CommandCost cost = RefitVehicle(v, true, new_cid, new_subtype, flags);
 
 	if (flags & DC_EXEC) {
-		v->cargo_cap = pass;
-
+		const Engine *e = Engine::Get(v->engine_type);
 		Vehicle *u = v->Next();
 		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? e->u.air.mail_capacity : 0;
 		u->cargo_cap = mail;
-		v->cargo.Truncate(v->cargo_type == new_cid ? pass : 0);
 		u->cargo.Truncate(v->cargo_type == new_cid ? mail : 0);
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
+
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);

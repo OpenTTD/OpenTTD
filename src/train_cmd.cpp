@@ -2113,52 +2113,15 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	/* Check cargo */
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_TRAIN_RUN);
-	uint num = 0;
-
-	v->InvalidateNewGRFCacheOfChain();
-	do {
-		/* XXX: We also refit all the attached wagons en-masse if they
-		 * can be refitted. This is how TTDPatch does it.  TODO: Have
-		 * some nice [Refit] button near each wagon. --pasky */
-		if (!CanRefitTo(v->engine_type, new_cid)) continue;
-
-		const Engine *e = Engine::Get(v->engine_type);
-		if (!e->CanCarryCargo()) continue;
-
-		/* Back up the vehicle's cargo type */
-		CargoID temp_cid = v->cargo_type;
-		byte temp_subtype = v->cargo_subtype;
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
-
-		uint amount = GetVehicleCapacity(v);
-
-		/* Restore the original cargo type */
-		v->cargo_type = temp_cid;
-		v->cargo_subtype = temp_subtype;
-
-		if (new_cid != v->cargo_type) {
-			cost.AddCost(GetRefitCost(v->engine_type));
-		}
-
-		num += amount;
-		if (flags & DC_EXEC) {
-			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
-			v->cargo_type = new_cid;
-			v->cargo_cap = amount;
-			v->cargo_subtype = new_subtype;
-			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-		}
-	} while ((v = v->Next()) != NULL && !only_this);
-
-	_returned_refit_capacity = num;
+	CommandCost cost = RefitVehicle(v, only_this, new_cid, new_subtype, flags);
 
 	/* Update the train's cached variables */
 	if (flags & DC_EXEC) {
-		TrainConsistChanged(Train::Get(p1)->First(), false);
+		Train *front = v->First();
+		TrainConsistChanged(front, false);
+		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
+		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	} else {
 		v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
 	}

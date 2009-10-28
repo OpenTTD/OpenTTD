@@ -256,6 +256,93 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	return cost;
 }
 
+/** Learn the price of refitting a certain engine
+ * @param engine_type Which engine to refit
+ * @return Price for refitting
+ */
+static CommandCost GetRefitCost(EngineID engine_type)
+{
+	Money base_cost;
+	ExpensesType expense_type;
+	const Engine *e = Engine::Get(engine_type);
+	switch (e->type) {
+		case VEH_SHIP:
+			base_cost = _price.ship_base;
+			expense_type = EXPENSES_SHIP_RUN;
+			break;
+
+		case VEH_ROAD:
+			base_cost = _price.roadveh_base;
+			expense_type = EXPENSES_ROADVEH_RUN;
+			break;
+
+		case VEH_AIRCRAFT:
+			base_cost = _price.aircraft_base;
+			expense_type = EXPENSES_AIRCRAFT_RUN;
+			break;
+
+		case VEH_TRAIN:
+			base_cost = 2 * ((e->u.rail.railveh_type == RAILVEH_WAGON) ?
+				_price.build_railwagon : _price.build_railvehicle);
+			expense_type = EXPENSES_TRAIN_RUN;
+			break;
+
+		default: NOT_REACHED();
+	}
+	return CommandCost(expense_type, (e->info.refit_cost * base_cost) >> 10);
+}
+
+/**
+ * Refits a vehicle (chain).
+ * This is the vehicle-type independent part of the CmdRefitXXX functions.
+ * @param v            The vehicle to refit.
+ * @param only_this    Whether to only refit this vehicle, or the whole chain.
+ * @param new_cid      Cargotype to refit to
+ * @param new_subtype  Cargo subtype to refit to
+ * @param flags        Command flags
+ * @return refit cost; or CMD_ERROR if no vehicle was actually refitable to the cargo
+ */
+CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
+{
+	CommandCost cost(v->GetExpenseType(false));
+	uint total_capacity = 0;
+	bool success = false;
+
+	v->InvalidateNewGRFCacheOfChain();
+	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
+		const Engine *e = Engine::Get(v->engine_type);
+		if (!e->CanCarryCargo() || !HasBit(e->info.refit_mask, new_cid)) continue;
+		success = true;
+
+		/* Back up the vehicle's cargo type */
+		CargoID temp_cid = v->cargo_type;
+		byte temp_subtype = v->cargo_subtype;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
+
+		uint amount = GetVehicleCapacity(v);
+		total_capacity += amount;
+
+		/* Restore the original cargo type */
+		v->cargo_type = temp_cid;
+		v->cargo_subtype = temp_subtype;
+
+		if (new_cid != v->cargo_type) {
+			cost.AddCost(GetRefitCost(v->engine_type));
+		}
+
+		if (flags & DC_EXEC) {
+			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
+			v->cargo_type = new_cid;
+			v->cargo_cap = amount;
+			v->cargo_subtype = new_subtype;
+		}
+	}
+
+	_returned_refit_capacity = total_capacity;
+	return success ? cost : CMD_ERROR;
+}
+
 /** Test if a name is unique among vehicle names.
  * @param name Name to test.
  * @return True ifffffff the name is unique.

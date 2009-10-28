@@ -909,7 +909,6 @@ CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost(EXPENSES_SHIP_RUN);
 	CargoID new_cid = GB(p2, 0, 8); // gets the cargo number
 	byte new_subtype = GB(p2, 8, 8);
 
@@ -920,33 +919,11 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */
-	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
+	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
-	v->InvalidateNewGRFCacheOfChain();
-
-	/* Back up the existing cargo type */
-	CargoID temp_cid = v->cargo_type;
-	byte temp_subtype = v->cargo_subtype;
-	v->cargo_type = new_cid;
-	v->cargo_subtype = new_subtype;
-
-	uint capacity = GetVehicleCapacity(v);
-
-	/* Restore the cargo type */
-	v->cargo_type = temp_cid;
-	v->cargo_subtype = temp_subtype;
-
-	_returned_refit_capacity = capacity;
-
-	if (new_cid != v->cargo_type) {
-		cost = GetRefitCost(v->engine_type);
-	}
+	CommandCost cost = RefitVehicle(v, true, new_cid, new_subtype, flags);
 
 	if (flags & DC_EXEC) {
-		v->cargo_cap = capacity;
-		v->cargo.Truncate((v->cargo_type == new_cid) ? capacity : 0);
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);

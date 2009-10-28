@@ -2003,11 +2003,9 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
  */
 CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost(EXPENSES_ROADVEH_RUN);
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
 	bool only_this = HasBit(p2, 16);
-	uint total_capacity = 0;
 
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
 
@@ -2017,52 +2015,17 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
-	v->InvalidateNewGRFCacheOfChain();
-	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
-		/* XXX: We refit all the attached wagons en-masse if they can be
-		 * refitted. This is how TTDPatch does it.  TODO: Have some nice
-		 * [Refit] button near each wagon. */
-		if (!CanRefitTo(v->engine_type, new_cid)) continue;
-
-		const Engine *e = Engine::Get(v->engine_type);
-		if (!e->CanCarryCargo()) continue;
-
-		/* Back up the cargo type */
-		CargoID temp_cid = v->cargo_type;
-		byte temp_subtype = v->cargo_subtype;
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
-
-		uint capacity = GetVehicleCapacity(v);
-
-		/* Restore the original cargo type */
-		v->cargo_type = temp_cid;
-		v->cargo_subtype = temp_subtype;
-
-		total_capacity += capacity;
-
-		if (new_cid != v->cargo_type) {
-			cost.AddCost(GetRefitCost(v->engine_type));
-		}
-
-		if (flags & DC_EXEC) {
-			v->cargo_cap = capacity;
-			v->cargo.Truncate((v->cargo_type == new_cid) ? capacity : 0);
-			v->cargo_type = new_cid;
-			v->cargo_subtype = new_subtype;
-			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-			InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-		}
-	}
+	CommandCost cost = RefitVehicle(v, only_this, new_cid, new_subtype, flags);
 
 	if (flags & DC_EXEC) {
-		RoadVehUpdateCache(RoadVehicle::Get(p1)->First());
+		RoadVehicle *front = v->First();
+		RoadVehUpdateCache(front);
+		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
+		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
+		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 	} else {
 		v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
 	}
-
-	_returned_refit_capacity = total_capacity;
 
 	return cost;
 }

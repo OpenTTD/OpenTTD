@@ -683,52 +683,6 @@ void CallVehicleTicks()
 	_current_company = OWNER_NONE;
 }
 
-/** Check if a given engine type can be refitted to a given cargo
- * @param engine_type Engine type to check
- * @param cid_to check refit to this cargo-type
- * @return true if it is possible, false otherwise
- */
-bool CanRefitTo(EngineID engine_type, CargoID cid_to)
-{
-	return HasBit(EngInfo(engine_type)->refit_mask, cid_to);
-}
-
-/** Learn the price of refitting a certain engine
- * @param engine_type Which engine to refit
- * @return Price for refitting
- */
-CommandCost GetRefitCost(EngineID engine_type)
-{
-	Money base_cost;
-	ExpensesType expense_type;
-	const Engine *e = Engine::Get(engine_type);
-	switch (e->type) {
-		case VEH_SHIP:
-			base_cost = _price.ship_base;
-			expense_type = EXPENSES_SHIP_RUN;
-			break;
-
-		case VEH_ROAD:
-			base_cost = _price.roadveh_base;
-			expense_type = EXPENSES_ROADVEH_RUN;
-			break;
-
-		case VEH_AIRCRAFT:
-			base_cost = _price.aircraft_base;
-			expense_type = EXPENSES_AIRCRAFT_RUN;
-			break;
-
-		case VEH_TRAIN:
-			base_cost = 2 * ((e->u.rail.railveh_type == RAILVEH_WAGON) ?
-							 _price.build_railwagon : _price.build_railvehicle);
-			expense_type = EXPENSES_TRAIN_RUN;
-			break;
-
-		default: NOT_REACHED();
-	}
-	return CommandCost(expense_type, (e->info.refit_cost * base_cost) >> 10);
-}
-
 static void DoDrawVehicle(const Vehicle *v)
 {
 	SpriteID image = v->cur_image;

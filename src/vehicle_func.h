@@ -42,8 +42,7 @@ byte VehicleRandomBits();
 void ResetVehiclePosHash();
 void ResetVehicleColourMap();
 
-bool CanRefitTo(EngineID engine_type, CargoID cid_to);
-CommandCost GetRefitCost(EngineID engine_type);
+CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_subtype, DoCommandFlag flags);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
