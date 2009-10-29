@@ -397,7 +397,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, vehicle.disable_elrails,                         38, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DISABLE_ELRAILS,        SettingsDisableElrail),
 	 SDT_CONDVAR(GameSettings, vehicle.freight_trains,               SLE_UINT8, 39, SL_MAX_VERSION, 0,NN,     1,     1,     255, 1, STR_CONFIG_SETTING_FREIGHT_TRAINS,         NULL),
 	SDT_CONDBOOL(GameSettings, order.timetabling,                               67, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_TIMETABLE_ALLOW,        NULL),
-	 SDT_CONDVAR(GameSettings, vehicle.plane_speed,                  SLE_UINT8, 90, SL_MAX_VERSION, 0, 0,     4,     1,       4, 0, STR_CONFIG_SETTING_PLANE_SPEED,            NULL),
+	 SDT_CONDVAR(GameSettings, vehicle.plane_speed,                  SLE_UINT8, 90, SL_MAX_VERSION, 0,NN,     4,     1,       4, 0, STR_CONFIG_SETTING_PLANE_SPEED,            NULL),
 	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        ChangeDynamicEngines),
 
 	    SDT_BOOL(GameSettings, station.join_stations,                                               0, 0,  true,                    STR_CONFIG_SETTING_JOINSTATIONS,           NULL),
