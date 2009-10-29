@@ -235,7 +235,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα  αριστερά/δεξιά
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση των κτηρίων κ.λπ. σε συγκεκριμένο τετράγωνο
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κ.λπ. σε συγκεκριμένο τετράγωνο
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
@@ -282,7 +282,7 @@ STR_SORT_BY_RATING_MIN                                          :Χαμηλότ�
 STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασσική ταξινόμηση)
 STR_SORT_BY_COST                                                :Κόστος
 STR_SORT_BY_POWER                                               :Δύναμη
-STR_SORT_BY_INTRO_DATE                                          :Ημέρα Κυκλοφορίας
+STR_SORT_BY_INTRO_DATE                                          :Ημερομηνία Παρουσιάσης
 STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Δύναμη/Κόστος Συντήρησης
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
@@ -295,16 +295,16 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθ
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Εμφάνιση χάρτη
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Εμφάνιση του καταλόγου πόλεων
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Εμφάνιση χρηματοδοτήσεων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Εμφάνιση λίστας σταθμών της εταιρείας
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Εμφάνιση οικονομικών πληροφοριών εταιρείας
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφάνιση γενικών πληροφοριών της εταιρείας
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Εμφάνιση λίστας σταθμών της εταιρίας
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Εμφάνιση οικονομικών πληροφοριών εταιρίας
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφάνιση γενικών πληροφοριών της εταιρίας
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση γραφημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιρειών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τραίνων της εταιρείας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρείας. Ctrl+κλικ εναλλάσει το άνοιγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρείας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρείας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τραίνων της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Ctrl+κλικ εναλλάσει το άνοιγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατασκευή σιδηρόδρομου
@@ -342,7 +342,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωριμένες ρυθμίσεις
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Εμφάνιση ονομάτων πόλεων
@@ -365,7 +365,7 @@ STR_FILE_MENU_EXIT                                              :Έξοδος
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Χάρτης του κόσμου
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Πρόσθετη εμφάνιση
-STR_MAP_MENU_SIGN_LIST                                          :Λίστα ταμπελών
+STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Καταλογος πόλεων
 ############ both ranges ends here
@@ -416,7 +416,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Κατασκε�
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Μορφοποίηση εδάφους
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Φύτευση δέντρων
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Τοποθέτηση σηματοδότη
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Τοποθέτηση πινακίδας
 ############ range ends here
 
 ############ range for music menu starts
@@ -460,11 +460,11 @@ STR_ORDINAL_NUMBER_17TH                                         :17{G ος η ο
 STR_ORDINAL_NUMBER_18TH                                         :18{G ος η ο}
 STR_ORDINAL_NUMBER_19TH                                         :19{G ος η ο}
 STR_ORDINAL_NUMBER_20TH                                         :20{G ος η ο}
-STR_ORDINAL_NUMBER_21ST                                         :21{G ος η ο}
-STR_ORDINAL_NUMBER_22ND                                         :22{G ος η ο}
-STR_ORDINAL_NUMBER_23RD                                         :23{G ος η ο}
-STR_ORDINAL_NUMBER_24TH                                         :24{G ος η ο}
-STR_ORDINAL_NUMBER_25TH                                         :25{G ος η ο}
+STR_ORDINAL_NUMBER_21ST                                         :{G=f}21{G ος η ο}
+STR_ORDINAL_NUMBER_22ND                                         :{G=f}22{G ος η ο}
+STR_ORDINAL_NUMBER_23RD                                         :{G=f}23{G ος η ο}
+STR_ORDINAL_NUMBER_24TH                                         :{G=f}24{G ος η ο}
+STR_ORDINAL_NUMBER_25TH                                         :{G=f}25{G ος η ο}
 STR_ORDINAL_NUMBER_26TH                                         :26{G ος η ο}
 STR_ORDINAL_NUMBER_27TH                                         :27{G ος η ο}
 STR_ORDINAL_NUMBER_28TH                                         :28{G ος η ο}
@@ -512,8 +512,8 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Γράφημα Ενεργών Εσόδων
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Γράφημα Εισοδήματος
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Μονάδες φορτίου που παραδόθηκαν
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ποσοστά απόδοσης εταιρείας (μέγιστη τιμή=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Αξία εταιρείας
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ποσοστά απόδοσης εταιρίας (μέγιστη τιμή=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Αξία εταιρίας
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ποσοστά Πληρωμής Φορτίων
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Μέρες σε μεταφορά
@@ -524,8 +524,8 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLAC
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Γραφήματα κλειδιού εταιρείας
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Κάντε κλικ εδώ για εναλλαγή εμφάνισης της εταιρείας στο γράφημα
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Γραφήματα κλειδιού εταιρίας
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Κάντε κλικ εδώ για εναλλαγή εμφάνισης της εταιρίας στο γράφημα
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Πίνακας Πρωταθλήματος Εταιρειών
@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνε
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων που είχαν κέρδος, αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τραίνου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τραίνου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μικρότερο κέρδος των τελευταίων 12 τετάρτων
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μεγαλύτερο κέρδος των τελευταίων 12 τετάρτων
@@ -615,7 +615,7 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Αποθήκευση
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Αποθήκευση επιλογών μουσικής
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Κάντε κλίκ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Κάντε κλικ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 
 # Highscore window
@@ -632,7 +632,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Μεγιστά�
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} έφτασε στο επίπεδο '{STRING}'
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} της εταιρίας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Χάρτης - {STRING}
@@ -653,7 +653,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφά
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Δρόμοι
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Σιδηρόδρομοι
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Σταθμοί/Αεροδρόμια/Λιμάνια
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Κτήρια/Βιομηχανίες
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Κτίρια/Βιομηχανίες
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Οχήματα
 STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100μ
 STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200μ
@@ -716,14 +716,14 @@ STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Τύπο
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Άφιξη πρώτου οχήματος στο σταθμό του παίκτη
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ατυχήματα / καταστροφές
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Πληροφορίες εταιρείας
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Πληροφορίες εταιρίας
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Έναρξη των βιομηχανιών
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Κλείνουν οι βιομηχανίες
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Κλείσιμο βιομηχανιών
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Οικονομικές αλλαγές
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Αλλαγή της Παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρεία
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(ες)
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Άλλες διαφοροποιήσεις στη παραγωγή
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Συμβουλή / πληροφορίες για τα εταιρικά οχήματα
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Συμβουλές / πληροφορίες για τα εταιρικά οχήματα
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Νέα οχήματα
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Αλλαγές στην αποδοχή φορτίου
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Επιχορηγήσεις
@@ -751,13 +751,13 @@ STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Κατάρρευση ανθρακωρυχείου αφήνει καταστροφικό ρήγμα κοντά στο {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Εταιρεία μεταφορών σε μπελάδες!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}Η εταιρεία {STRING} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Συγχώνευση εταιρειών μεταφοράς!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}Η εταιρεία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY}!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Εταιρία μεταφορών σε πρόβλημα!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}Η εταιρία {STRING} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί σύντομα η απόδοσή της!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Συγχώνευση εταιριών μεταφοράς!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}Η εταιρία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Χρεωκοπία!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Η {STRING} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ίδρυση νέας εταιρείας μεταφορών!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ίδρυση νέας εταιρίας μεταφορών!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Διευθυντής)
@@ -766,7 +766,7 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Η βιομηχανία {STRING} ανακοίνωσε άμεσο κλείσιμο!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια αναγκάζουν την εταιρεία {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια αναγκάζουν το {STRING} να κλείσει αμέσως!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
@@ -774,13 +774,13 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Ύφεση Τέλος!{}{}Κέρδη στο εμπόριο δίνει σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Η βιομηχανία {INDUSTRY} ανεβάζει την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στο {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στη {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} η παραγωγή στη βιοχηχανία {INDUSTRY} αυξήθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στη βιοχηχανία {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στη βιομηχανία {INDUSTRY} μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} η παραγωγή στη βιομηχανία {INDUSTRY} μειώθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στη βιομηχανία {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
@@ -817,12 +817,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο στ�
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STRING} προς {STRING} δεν χρηματοδοτείται πια.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα επανακατασκευής των δρόμων από την εταιρεία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Εμφάνιση {COMMA}
@@ -939,7 +939,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Σετ �
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Επιλέξτε τους βασικούς ήχους που θα χρησιμοποιήσετε
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με τους βασικούς ήχους
 
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Πλήρεις Οθόνη απέτυχε
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Κατάσταση Πλήρης Οθόνης απέτυχε
 
 # Custom currency window
 
@@ -1012,7 +1012,7 @@ STR_AI_SPEED_MEDIUM                                             :Μέτριο
 STR_AI_SPEED_FAST                                               :Γρήγορο
 STR_AI_SPEED_VERY_FAST                                          :Πολύ Γρήγορο
 
-STR_SEA_LEVEL_VERY_LOW                                          :Πολύ χαμηλό
+STR_SEA_LEVEL_VERY_LOW                                          :Πολύ Χαμηλό
 STR_SEA_LEVEL_LOW                                               :Χαμηλό
 STR_SEA_LEVEL_MEDIUM                                            :Μέτριο
 STR_SEA_LEVEL_HIGH                                              :Υψηλό
@@ -1054,14 +1054,14 @@ STR_CONFIG_SETTING_ON                                           :Ενεργό
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Εμφάνιση της ταχύτητας του οχήματος στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτήρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τραίνων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (απαιτεί NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τραίνα και πλοία: {ORANGE}{STRING} {LTBLUE} (απαιτεί NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Συνένωση σταθμών τρένων χτισμένων δίπλα σε άλλο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
@@ -1141,9 +1141,9 @@ STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύν�
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ανάποδη μετακίνηση οθόνης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Ομαλή μετάβαση οθόνης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Εμφάνιση χρωμάτων των εταιρειών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Εμφάνιση χρωμάτων των εταιριών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η Εταιρεία μου
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η Εταιρία μου
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Όλες οι εταιρίες
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Προτίμηση ομαδικού chat με <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Λειτουργία ροδέλας κύλισης: {ORANGE}{STRING}
@@ -1154,7 +1154,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχ�
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Εξομοίωση δεξιού κλικ {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Κλικ Εντολών
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-Κλικ
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Μετάβαση με αριστερό κλικ: {ORANGE}{STRING}
@@ -1180,7 +1180,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Προ�
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Κανονικός σιδηρόδρομος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Ηλεκτρικός σιδηρόδρομος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Μαγνητικής Αιώρησης
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτη διαθεσιμότητα
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταία διαθεσιμότητα
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Περισσότερο χρησιμοποιούμενος
@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Δια�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Εμφάνιση οικοδομικών εργαλίων όταν δεν υπάρχουν κατάλληλα οχήματα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστα τρένα ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστος αριθμός τραίνων ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροσκάφη ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά παίκτη: {ORANGE}{STRING}
@@ -1203,8 +1203,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Επι�
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes πριν το AI έχουν διακοπεί: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} μέρες/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τραίνα: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τραίνα: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} μέρες/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα:: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}{STRING} μέρες/%
@@ -1300,10 +1300,10 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Νέο Παιχνίδι
 STR_INTRO_LOAD_GAME                                             :{BLACK}Φόρτωση Παιχνιδιού
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παιξτε το Σενάριο
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε υψομετρίκο χάρτη
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Διαμόρφωση Σεναρίου
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Πολοί παίκτες
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παιξτε Σενάριο
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε Υψομετρίκο Χάρτη
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Επεξεργαστής Σεναρίου
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχνίδι Πολλών Παικτών
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
 STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δυσκολία ({STRING})
@@ -1313,7 +1313,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγ
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+Click παρακάμπτει την ρύθμιση του χάρτη
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+κλικ παρακάμπτει την ρύθμιση του χάρτη
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας χάρτη υψομετρίας
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
@@ -1398,7 +1398,7 @@ STR_LIVERY_PASSENGER_WAGON_STEAM                                :Επιβατη�
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Επιβατηγό Βαγόνι (Πετρελαίου)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Επιβατηγό Βαγόνι (Ηλεκτρικό)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατηγό Βαγόνι (Monorail)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατηγό Βαγόνι (Μαγνητικά Αιωρούμενο)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατηγό Βαγόνι (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Εμπορικό Βαγόνι
 STR_LIVERY_BUS                                                  :Λεωφορείο
 STR_LIVERY_TRUCK                                                :Φορτηγό
@@ -1470,9 +1470,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Σύνδεση:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Επιλέξτε μεταξύ παιχνιδιού στο ίντερνετ η τοπικού (LAN) παιχνιδιού
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Επιλέξτε μεταξύ παιχνιδιού στο Internet ή τοπικού (LAN) παιχνιδιού
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Ίντερνετ
+STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Αυτό είναι το όνομα με το οποίο θα σας αναγνωρίζουν οι άλλοι παίκτες
 
@@ -1535,8 +1535,8 @@ STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Σε π�
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Δημιουργία τυχαίου νέου παιχνιδιού
 
 STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Ίντερνετ
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Ίντερνετ (αναγγελία)
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (αναγγελία)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
@@ -1811,15 +1811,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Δεν �
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις διαφάνειας
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες των σταθμών. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας για τα δέντρα. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Εναλλαγή διαφάνιας για τα σπίτια. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για τις βιομηχανίες. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλλαγή διαφάνιας για τα κτήρια όπως σταθμοί, αμαξοστάσια και waypoints. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνιας για τις γέφυρες. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για κτήρια όπως φάροι και κεραίες. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλάγη διαφάνιας για τις συνδέσεις. Ctrl+Click για να το κλειδώσετε.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Εναλλάγη διαφάνιας για τις ενδείξεις φόρτωσης. Ctrl+Click για να το κλειδώσετε.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες των σταθμών. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας για τα δέντρα. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Εναλλαγή διαφάνιας για τα σπίτια. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για τις βιομηχανίες. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλλαγή διαφάνιας για τα κτίρια όπως σταθμοί, αμαξοστάσια και σημειών καθοδήγησης. Ctrl+κλίκ για να το κλειδώσετε.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνιας για τις γέφυρες. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για κτίρια όπως φάροι και κεραίες. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλάγη διαφάνιας για τις συνδέσεις. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Εναλλάγη διαφάνιας για τις ενδείξεις φόρτωσης. Ctrl+κλικ για να το κλειδώσετε.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα να είναι αόρατα αντίς διάφανα
 
 # Base for station construction window(s)
@@ -1849,11 +1849,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατα
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστασίου (για αγορά και επισκευή τρένων)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή γραμμής σε σημείο καθοδήγησης. Ctrl ενεργοποιηει συνένωση σημείων καθοδήγησης
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl ενεργοποιηει συνένωση σταθμών
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Ctrl εναλλάσει σηματοφόρους/σηματοδότες. {}Σύροντας κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Ctrl κατασκευάζει μέχρι την επομένη διαστάυρωση {}Ctrl+κλικ εναλλάσει το άνοιγμα του παραθύρου επιλογής σηματοδοτών
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας το Ctrl αφαιρεί επίσης σιδηρόδρομο απο σημεία καθοδήγησης και σταθμούς
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατροπή/Αλλαγή τύπου γραμμής
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Προσανατολισμός Αμαξοστασίου
@@ -1904,14 +1904,14 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλ
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας Δρόμου
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Επιλογή γέφυρας - κάντε κλικ στην γέφυρα της προτίμησής σας για κατασκευή
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ατσάλινη με Αναρτήσεις
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ατσάλινη Με Δοκούς
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ατσάλινη Κρεμαστή
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Με αναρτήσεις, Τσιμεντένια
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ατσάλινη, με Αναρτήσεις
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ατσάλινη, Με Δοκούς
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ατσάλινη, Κρεμαστή
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Τσιμεντένια, Με αναρτήσεις
 STR_BRIDGE_NAME_WOODEN                                          :Ξύλινη
 STR_BRIDGE_NAME_CONCRETE                                        :Τσιμεντένια
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Ατσάλινη Φυσούνας
-STR_BRIDGE_TUBULAR_SILICON                                      :Σωλήνας, Σιλικόνη
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Ατσάλινη, Φυσούνας
+STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόνη, Φυσούνας
 
 
 # Road construction toolbar
@@ -1944,11 +1944,11 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλ
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Προσανατολισμός Στάσης Λεωφορείου
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Επιλέξτε τον προσανατολισμό της στάσης των λεωφορείων
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Προς. Στάσης Λεωφορείου
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Επιλέξτε τον προσανατολισμό του χώρου φόρτωσης φορτηγών
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Προσανατολισμός επιβατικού σταθμού τραμ
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Προσανατολισμός Σταθμού Φόρτωσης Φορτηγών
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Επιλέξτε τον προσανατολισμό του σταθμού φόρτωσης φορτηγών
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Προσανατολισμός Επιβατικού Σταθμού Τραμ
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Επιλέξτε τον προσανατολισμό του επιβατικού στάθμου τραμ
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσανατολισμός εμπορευτικού σταθμού τραμ
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσανατολισμός Εμπορευτικού Σταθμού Τραμ
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλέξτε τον προσανατολισμό του εμπορευτικού στάθμου τραμ
 
 # Waterways toolbar (last two for SE only)
@@ -1964,8 +1964,8 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Προσ
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Τοποθέτησε ποτάμια
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Προσανατολισμός Αποθήκης Πλοίων
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Επιλέξτε τον προσανατολισμό της αποθήκης πλοίων
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Προσανατολισμός Ναυπηγείου Πλοίων
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Επιλέξτε τον προσανατολισμό του ναυπηγείου πλοίων
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Λιμάνι
@@ -2149,7 +2149,7 @@ STR_LAI_WATER_DESCRIPTION_CANAL                                 :Κανάλι
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Κλείδωμα
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Ποτάμι
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Ακτή ή όχθη ποταμού
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Αποθήκη πλοίων
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ναυπηγείο πλοίων
 
 # Industries come directly from their industry names
 
@@ -2176,8 +2176,8 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Κανάλι
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Αναμεταδότης
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Φάρος
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Κεντρικά Γραφεία Εταιρείας
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Ιδιόκτητη γή από εταιρεία
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Κεντρικά Γραφεία Εταιρίας
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Ιδιόκτητη γή από εταιρία
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Σχετικά με το OpenTTD
@@ -2191,7 +2191,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Φόρτ
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθήκευση Σεναρίου
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Φόρτωση Σεναρίου
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Φόρτωση χάρτη υψομετρίας
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Κάντε κλίκ εδώ για να πάτε στον τρέχων φάκελλο αποθήκευσης
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Κάντε κλικ εδώ για να πάτε στον τρέχων φάκελλο αποθήκευσης
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ελεύθερα
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Λίστα δίσκων, φακέλλων και αποθηκευμένων παιχνιδιών
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Τρέχον όνομα για το αποθηκευμένο παιχνίδι
@@ -2370,7 +2370,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για να κεντράρετε την εικόνα στην πόλη
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - κλικ στο όνομα για να κεντράρετε την εικόνα στην πόλη. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της βιομηχανίας
 STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
 
 # Town view window
@@ -2383,7 +2383,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Εμπο
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} απαιτείται
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} παραδόθηκε τον τελευταίο μήνα
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της πόλης
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Τοπική αρχή
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Εμφάνιση πληροφοριών για την τοπική αρχή
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος πόλεως
@@ -2397,7 +2397,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Μετονομ�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Τοπική αρχή της πόλης {TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ποσοστά εταιρείας μεταφορών:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ποσοστά εταιρίας μεταφορών:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Διαθέσιμες πράξεις:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Λίστα πραγμάτων που πρέπει να γίνουν σε αυτή την πόλη - κάντε κλικ στο αντικείμενο για πληροφορίες
@@ -2408,7 +2408,7 @@ STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Μικρή δι
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Μεσαία διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Μεγάλη διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Επιχορήγηση ανακατασκευής τοπικού οδικού δικτύου
-STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Χτίσιμο αγάλματος ιδιοκτήτη εταιρείας
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Χτίσιμο αγάλματος ιδιοκτήτη εταιρίας
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορήγηση νέων κτιρίων
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκίστε την τοπική αρχή
@@ -2417,9 +2417,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρείας σας.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρείας σας.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρίας σας.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Δωροδοκίστε τις τοπικές αρχές για να αυξησετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εαν συλληφθείτε.{}Κόστος: {CURRENCY}
 
 # Subsidies window
@@ -2429,10 +2429,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Καμία -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από το σταθμό {STRING} προς το σταθμό {STRING}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα εικόνας
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα εικόνας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα αντικείμενα
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμ{P ός οί}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2468,7 +2468,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Εξαιρετ�
 STR_CARGO_RATING_OUTSTANDING                                    :Καταπληκτική
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Κεντράρισμα εικόνας στην τοποθεσία του σταθμού
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Κεντράρισμα εικόνας στην τοποθεσία του σταθμού. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Αλλαγή ονόματος του σταθμού
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Εμφάνιση όλων των τραίνων που έχουν αυτό το σταθμό στο δρομολόγιο τους
@@ -2479,9 +2479,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφά
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Μετονομασία περιοχής σταθμού/φόρτωσης
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της είκονας στη τοποθεσία του σημείου καθοδήγησης
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της είκονας στη τοποθεσία του σημείου καθοδήγησης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σημείου καθοδήγησης
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της σημαδούρας
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Αλλαγή ονόματος σημαδούρας
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου καθοδήγησης
@@ -2511,15 +2511,15 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Δάνε
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Μέγιστο Δάνειο: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Δανεισμός {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Αύξηση του ποσού του δανείου. Ctrl+Click για να δανειστείτε όσο περισσότερο γίνεται
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Αύξηση του ποσού του δανείου. Ctrl+κλικ για να δανειστείτε όσο περισσότερο γίνεται
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Πληρωμή {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Αποπληρωμή μέρους του δανείου. Ctrl+Click αποπληρώνετε όσο περισσότερο γίνεται
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Αποπληρωμή μέρους του δανείου. Ctrl+κλικ αποπληρώνετε όσο περισσότερο γίνεται
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Διευθυντής)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Εγκαινιασμένος: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Ίδρυση: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωματισμός:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Οχήματα:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} τραίν{P ο α}
@@ -2527,33 +2527,33 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} αεροσκάφος
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} πλοί{P ο α}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανένα
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρείας: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Αρχηγείου
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίστιμο αρχηγείου εταιρείας / προβολή αρχηγείου
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίστιμο αρχηγείου εταιρίας / προβολή αρχηγείου
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ανοικοδόμηση του αρχηγείου της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Νέο Πρόσωπο
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Επιλογή νέου προσώπου διευθυντή
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Χρωματισμός
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Αλλαγή της εμφάνισης των οχημάτων της εταιρείας
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Όνομα Εταιρείας
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Αλλαγή του ονόματος της εταιρείας
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Αλλαγή της εμφάνισης των οχημάτων της εταιρίας
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Όνομα Εταιρίας
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Αλλαγή του ονόματος της εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Όνομα Διευθυντή
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Αλλαγή του ονόματος του διευθυντή
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% στην εταιρεία
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρείας
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% της εταιρείας
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρείας
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% στην εταιρία
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρίας
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% της εταιρίας
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας
 
-STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρείας
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχνουμε μία εταιρεία μεταφορών για να αναλάβει την εταιρεία μας.{}{}Θέλετε να αγοράσετε την {COMPANY} για {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχνουμε μία εταιρία μεταφορών για να εξαγοράσει την εταιρία μας.{}{}Θέλετε να εξαγοράσετε την {COMPANY} για {CURRENCY}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Βιομηχανίες
@@ -2561,13 +2561,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Τί�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ονόματα βιομηχανιών - click στο ονομα για κεντράρισμα στην βιομηχανία
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ονόματα βιομηχανιών - κλικ στο όνομα για κεντράρισμα στην βιομηχανία. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της βιομηχανίας
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παραγωγή προηγούμενου μήνα:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην περιοχή της βιομηχανίας
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}
@@ -2597,7 +2597,7 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αερο
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY} (προηγούμενο έτος: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Διαθέσιμα Τρένα
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Διαθέσιμα Τραίνα
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Διαθέσιμα Οχήματα
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Διαθέσιμα Πλοία
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Διαθέσιμα Αεροσκάφη
@@ -3197,7 +3197,7 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Έσοδα: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Μετέφερε: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Μετέφερε: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Υπολογιζόμενο Κόστος: {CURRENCY}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Εκτιμώμενο Κόστος: {CURRENCY}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY}
 
 # Saveload messages
@@ -3250,7 +3250,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Αυτή
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ακατάλληλη περιοχή
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη χτισμένο
 STR_ERROR_OWNED_BY                                              :{WHITE}... ιδιοκτησία του {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρείας
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρίας
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Το όνομα πρέπει να είναι μοναδικό
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} στη μέση
 
@@ -3271,7 +3271,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}...πο�
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Αδύνατο να αλλάξει το όνομα της εταιρείας...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Αδύνατο να αλλάξει το όνομα της εταιρίας...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Αδύνατο να αλλάξει το όνομα του διευθυντή...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... το μέγιστο επιτρεπόμενο δάνειο είναι {CURRENCY}
@@ -3280,11 +3280,11 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... δε
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... Απαιτούνται {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Αδύνατη η αποπληρωμή του δανείου...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Δεν είναι δυνατόν να δοθούν χρήματα που είναι δανεισμένα από την τράπεζα...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Αδύνατη η εξαγορά της εταιρείας...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Αδύνατο να χτιστεί αρχηγείο εταιρείας...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρείας...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρείας...
-STR_ERROR_PROTECTED                                             :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Αδύνατη η εξαγορά της εταιρίας...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Αδύνατο να χτιστεί αρχηγείο εταιρίας...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρίας...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρίας...
+STR_ERROR_PROTECTED                                             :{WHITE}Αυτή η εταιρία δεν είναι αρκετά παλιά για συναλλαγή μετοχών ακόμα...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Αδύνατο να χτιστούν πόλεις
@@ -3368,7 +3368,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ση
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Αδύνατο να χτιστεί αμαξοστάσιο εδώ...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Αδύνατο να χτιστεί σταθμός οχημάτων εδώ...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί σταθμαρχείο τραμ εδώ...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Αδύνατο να χτιστεί αποθήκη πλοίων εδώ...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί ναυπηγείο πλοίων εδώ...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Το τραίνο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο οχημάτων
@@ -3398,7 +3398,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Αδύν
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Μη συμβατή σιδηροτροχιά
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρόμος είναι μονόδρομος ή μπλοκαρισμένος
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Αδύνατο να χτιστούν σηματοδότες εδώ...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Δεν μπορούν να χτιστούν σηματοδότες εδώ...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Αδύνατο να χτιστεί σιδηρόδρομος εδώ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Αδύνατο να αφαιρεθεί σιδηρόδρομος από εδώ...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Αδύνατο να αφαιρεθούν σηματοδότες από εδώ...
@@ -3428,7 +3428,7 @@ STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... υπ
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Αδύνατο να χτιστεί γέφυρα εδώ...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Δεν μπορεί να χτιστεί γέφυρα εδώ...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Η γέφυρα δεν καταλήγει στο ίδιο επίπεδο
@@ -3437,7 +3437,7 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Η αρ�
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Αδύνατο να χτιστεί τούνελ εδώ...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να χτιστεί τούνελ εδώ...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Άλλο τουνελ στη μέση
@@ -3446,7 +3446,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύν
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Αντικείμενο στη μέση
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... κεντρικά γραφεία εταιρείας στη μέση
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... κεντρικά γραφεία εταιρίας στη μέση
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Αδύνατο να αγοραστεί το έδαφος...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... είστε ήδη ιδιοκτήτης!
 
@@ -3563,7 +3563,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Συγκρότ�
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Καταστήματα και γραφεία
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Μοντέρνο κτίριο γραφείων
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Αποθήκη
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Τετράγωνο γραφείων
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Συγκρότημα γραφείων
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Γήπεδο
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Παλιά σπίτια
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Χωράφια
@@ -3933,7 +3933,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Σημα
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Σημαδούρα #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Ομάδα {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Σημείο καθοδηγήσης {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Σημείο καθοδηγήσης #{COMMA}
 

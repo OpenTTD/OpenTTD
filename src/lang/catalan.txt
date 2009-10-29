@@ -1651,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova com
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Cap -
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
+STR_NETWORK_CLIENTLIST_BAN                                      :Prohibit
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entrega diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tothom
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parla a l'Empresa
@@ -2783,6 +2784,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de m
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY} Potència: {POWER} T.E. Max.: {7:FORCE}{}Cost d'utilització: {CURRENCY}/any{}Capacitat: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {CURRENCY} Vel. Max: {VELOCITY}{}Capacitat: {CARGO}, {CARGO}{}Cost d'utilització: {CURRENCY}/any
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY} Vel. Max: {VELOCITY}{}Capacitat: {CARGO}{}Cost d'utilització: {CURRENCY}/any
 

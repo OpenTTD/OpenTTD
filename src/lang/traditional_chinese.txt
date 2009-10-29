@@ -1651,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公�
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- 無 -
 STR_NETWORK_CLIENTLIST_KICK                                     :踢除
+STR_NETWORK_CLIENTLIST_BAN                                      :封鎖
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :給錢
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :對全員說話
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :對公司說話
