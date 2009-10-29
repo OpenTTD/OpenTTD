@@ -153,16 +153,27 @@ static const Colour _palettes[][256] = {
 
 #define GET_PALETTE(x) _palettes[x]
 
-struct ExtraPaletteValues {
-	Colour dark_water[15];        ///< dark blue water
-	Colour dark_water_TOY[15];    ///< dark blue water Toyland
-	Colour lighthouse[12];        ///< lighthouse & stadium
-	Colour oil_ref[21];           ///< oil refinery
-	Colour fizzy_drink[15];       ///< fizzy drinks
-	Colour glitter_water[45];     ///< glittery water
-	Colour glitter_water_TOY[45]; ///< glittery water Toyland
+/** Description of the length of the palette cycle animations */
+enum {
+	EPV_CYCLES_DARK_WATER    =  5, ///< length of the dark blue water animation
+	EPV_CYCLES_LIGHTHOUSE    =  4, ///< length of the lighthouse/stadium animation
+	EPV_CYCLES_OIL_REFINERY  =  7, ///< length of the oil refinery's fire animation
+	EPV_CYCLES_FIZZY_DRINK   =  5, ///< length of the fizzy drinks animation
+	EPV_CYCLES_GLITTER_WATER = 15, ///< length of the glittery water animation
 };
 
+/** Description of tables for the palette animation */
+struct ExtraPaletteValues {
+	Colour dark_water[EPV_CYCLES_DARK_WATER];               ///< dark blue water
+	Colour dark_water_toyland[EPV_CYCLES_DARK_WATER];       ///< dark blue water Toyland
+	Colour lighthouse[EPV_CYCLES_LIGHTHOUSE];               ///< lighthouse & stadium
+	Colour oil_refinery[EPV_CYCLES_OIL_REFINERY];           ///< oil refinery
+	Colour fizzy_drink[EPV_CYCLES_FIZZY_DRINK];             ///< fizzy drinks
+	Colour glitter_water[EPV_CYCLES_GLITTER_WATER];         ///< glittery water
+	Colour glitter_water_toyland[EPV_CYCLES_GLITTER_WATER]; ///< glittery water Toyland
+};
+
+/** Actual palette animation tables */
 static const ExtraPaletteValues _extra_palette_values = {
 	/* dark blue water */
 	{ M( 32,  68, 112), M( 36,  72, 116), M( 40,  76, 120), M( 44,  80, 124),

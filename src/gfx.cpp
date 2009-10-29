@@ -1152,39 +1152,39 @@ void DoPaletteAnimations()
 	memcpy(old_val, palette_pos, oldval_size);
 
 	/* Dark blue water */
-	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
-	j = EXTR(320, 5);
-	for (i = 0; i != 5; i++) {
+	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
+	j = EXTR(320, EPV_CYCLES_DARK_WATER);
+	for (i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
 		*palette_pos++ = s[j];
 		j++;
-		if (j == 5) j = 0;
+		if (j == EPV_CYCLES_DARK_WATER) j = 0;
 	}
 
-	/* Glittery water */
-	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_TOY : ev->glitter_water;
-	j = EXTR(128, 15);
-	for (i = 0; i != 5; i++) {
+	/* Glittery water; jumps over 3 colours each cycle! */
+	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
+	j = EXTR(128, EPV_CYCLES_GLITTER_WATER);
+	for (i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
 		*palette_pos++ = s[j];
 		j += 3;
-		if (j >= 15) j -= 15;
+		if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
 	}
 
 	/* Fizzy Drink bubbles animation */
 	s = ev->fizzy_drink;
-	j = EXTR2(512, 5);
-	for (i = 0; i != 5; i++) {
+	j = EXTR2(512, EPV_CYCLES_FIZZY_DRINK);
+	for (i = 0; i != EPV_CYCLES_FIZZY_DRINK; i++) {
 		*palette_pos++ = s[j];
 		j++;
-		if (j == 5) j = 0;
+		if (j == EPV_CYCLES_FIZZY_DRINK) j = 0;
 	}
 
 	/* Oil refinery fire animation */
-	s = ev->oil_ref;
-	j = EXTR2(512, 7);
-	for (i = 0; i != 7; i++) {
+	s = ev->oil_refinery;
+	j = EXTR2(512, EPV_CYCLES_OIL_REFINERY);
+	for (i = 0; i != EPV_CYCLES_OIL_REFINERY; i++) {
 		*palette_pos++ = s[j];
 		j++;
-		if (j == 7) j = 0;
+		if (j == EPV_CYCLES_OIL_REFINERY) j = 0;
 	}
 
 	/* Radio tower blinking */
@@ -1220,17 +1220,17 @@ void DoPaletteAnimations()
 
 	/* Handle lighthouse and stadium animation */
 	s = ev->lighthouse;
-	j = EXTR(256, 4);
-	for (i = 0; i != 4; i++) {
+	j = EXTR(256, EPV_CYCLES_LIGHTHOUSE);
+	for (i = 0; i != EPV_CYCLES_LIGHTHOUSE; i++) {
 		*palette_pos++ = s[j];
 		j++;
-		if (j == 4) j = 0;
+		if (j == EPV_CYCLES_LIGHTHOUSE) j = 0;
 	}
 
 	/* Animate water for old DOS graphics */
 	if (_use_palette == PAL_DOS) {
 		/* Dark blue water DOS */
-		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
+		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
 		j = EXTR(320, 5);
 		for (i = 0; i != 5; i++) {
 			*palette_pos++ = s[j];
@@ -1239,7 +1239,7 @@ void DoPaletteAnimations()
 		}
 
 		/* Glittery water DOS */
-		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_TOY : ev->glitter_water;
+		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
 		j = EXTR(128, 15);
 		for (i = 0; i != 5; i++) {
 			*palette_pos++ = s[j];
