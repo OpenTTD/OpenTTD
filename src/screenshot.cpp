@@ -90,7 +90,8 @@ static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, 
 	if (f == NULL) return false;
 
 	/* each scanline must be aligned on a 32bit boundary */
-	padw = Align(w, 4);
+	padw = w;
+	if (pixelformat == 8) padw = Align(padw, 4);
 
 	if (pixelformat == 8) pal_size = sizeof(RgbQuad) * 256;
 
