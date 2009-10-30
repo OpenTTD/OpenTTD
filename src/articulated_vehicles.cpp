@@ -20,6 +20,25 @@
 
 static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts per vehicle, i.e. when to abort calling the articulated vehicle callback.
 
+/**
+ * Determines the next articulated part to attach
+ * @param index Position in chain
+ * @param front_type Front engine type
+ * @param front Front engine
+ * @param mirrored Returns whether the part shall be flipped.
+ * @return engine to add or INVALID_ENGINE
+ */
+static EngineID GetNextArticPart(uint index, EngineID front_type, Vehicle *front = NULL, bool *mirrored = false)
+{
+	assert(front == NULL || front->engine_type == front_type);
+
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, index, 0, front_type, front);
+	if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return INVALID_ENGINE;
+
+	if (mirrored != NULL) *mirrored = HasBit(callback, 7);
+	return GetNewEngineID(GetEngineGRF(front_type), Engine::Get(front_type)->type, GB(callback, 0, 7));
+}
+
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
 	if (!HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
@@ -36,8 +55,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 
 	uint i;
 	for (i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, v);
-		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
+		if (GetNextArticPart(i, engine_type, v) == INVALID_ENGINE) break;
 	}
 
 	delete v;
@@ -95,10 +113,8 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
-		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
-
-		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), e->type, GB(callback, 0, 7));
+		EngineID artic_engine = GetNextArticPart(i, engine);
+		if (artic_engine == INVALID_ENGINE) break;
 
 		cargo_capacity = GetVehicleDefaultCapacity(artic_engine, &cargo_type);
 		if (cargo_type < NUM_CARGO) capacity[cargo_type] += cargo_capacity;
@@ -122,10 +138,9 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
-		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
+		EngineID artic_engine = GetNextArticPart(i, engine);
+		if (artic_engine == INVALID_ENGINE) break;
 
-		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), e->type, GB(callback, 0, 7));
 		if (IsEngineRefittable(artic_engine)) return true;
 	}
 
@@ -148,10 +163,9 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_car
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
-		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
+		EngineID artic_engine = GetNextArticPart(i, engine);
+		if (artic_engine == INVALID_ENGINE) break;
 
-		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), e->type, GB(callback, 0, 7));
 		cargos |= GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
 	}
 
@@ -177,10 +191,9 @@ uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_init
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
-		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
+		EngineID artic_engine = GetNextArticPart(i, engine);
+		if (artic_engine == INVALID_ENGINE) break;
 
-		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), e->type, GB(callback, 0, 7));
 		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
 		if (veh_cargos != 0) cargos &= veh_cargos;
 	}
@@ -293,15 +306,13 @@ void AddArticulatedParts(Vehicle *first)
 
 	Vehicle *v = first;
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, first->engine_type, first);
-		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return;
+		bool flip_image;
+		EngineID engine_type = GetNextArticPart(i, first->engine_type, first, &flip_image);
+		if (engine_type == INVALID_ENGINE) return;
 
 		/* In the (very rare) case the GRF reported wrong number of articulated parts
 		 * and we run out of available vehicles, bail out. */
 		if (!Vehicle::CanAllocateItem()) return;
-
-		EngineID engine_type = GetNewEngineID(GetEngineGRF(first->engine_type), type, GB(callback, 0, 7));
-		bool flip_image = HasBit(callback, 7);
 
 		const Engine *e_artic = Engine::Get(engine_type);
 		switch (type) {
