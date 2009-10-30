@@ -389,7 +389,9 @@ public:
 	Window *z_back;                  ///< The window behind us in z-order.
 
 	template <class NWID>
-	inline NWID *GetWidget(uint widnum) const;
+	inline const NWID *GetWidget(uint widnum) const;
+	template <class NWID>
+	inline NWID *GetWidget(uint widnum);
 
 
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
@@ -847,7 +849,7 @@ public:
  * @return The requested widget if it is instantiated, \c NULL otherwise.
  */
 template <class NWID>
-inline NWID *Window::GetWidget(uint widnum) const
+inline NWID *Window::GetWidget(uint widnum)
 {
 	if (widnum >= this->nested_array_size || this->nested_array[widnum] == NULL) return NULL;
 	NWID *nwid = dynamic_cast<NWID *>(this->nested_array[widnum]);
@@ -857,10 +859,21 @@ inline NWID *Window::GetWidget(uint widnum) const
 
 /** Specialized case of #Window::GetWidget for the nested widget base class. */
 template <>
-inline NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
+inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
 {
 	if (widnum >= this->nested_array_size) return NULL;
 	return this->nested_array[widnum];
+}
+
+/** Get the nested widget with number \a widnum from the nested widget tree.
+ * @tparam NWID Type of the nested widget.
+ * @param widnum Widget number of the widget to retrieve.
+ * @return The requested widget if it is instantiated, \c NULL otherwise.
+ */
+template <class NWID>
+inline const NWID *Window::GetWidget(uint widnum) const
+{
+	return const_cast<Window *>(this)->GetWidget<NWID>(widnum);
 }
 
 

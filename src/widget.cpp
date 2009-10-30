@@ -855,7 +855,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 		top = this->widget[widget].top;
 	} else {
 		assert(this->nested_array != NULL);
-		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+		const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 		base = offset + nwid->pos_x + (_dynlang.text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
 		top = nwid->pos_y;
 	}

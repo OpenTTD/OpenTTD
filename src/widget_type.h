@@ -308,9 +308,9 @@ public:
 	void SetDataTip(uint16 widget_data, StringID tool_tip);
 
 	inline void SetLowered(bool lowered);
-	inline bool IsLowered();
+	inline bool IsLowered() const;
 	inline void SetDisabled(bool disabled);
-	inline bool IsDisabled();
+	inline bool IsDisabled() const;
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
@@ -335,7 +335,7 @@ inline void NWidgetCore::SetLowered(bool lowered)
 }
 
 /** Return whether the widget is lowered. */
-inline bool NWidgetCore::IsLowered()
+inline bool NWidgetCore::IsLowered() const
 {
 	return HasBit(this->disp_flags, NDB_LOWERED);
 }
@@ -350,7 +350,7 @@ inline void NWidgetCore::SetDisabled(bool disabled)
 }
 
 /** Return whether the widget is disabled. */
-inline bool NWidgetCore::IsDisabled()
+inline bool NWidgetCore::IsDisabled() const
 {
 	return HasBit(this->disp_flags, NDB_DISABLED);
 }
