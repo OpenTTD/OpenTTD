@@ -859,6 +859,23 @@ public:
 
 		this->vehicle_type = (VehicleType)GB(window_number, 11, 5);
 
+		/* Set up sorting. Make the window-specific _sorting variable
+		 * point to the correct global _sorting struct so we are freed
+		 * from having conditionals during window operation */
+		switch (this->vehicle_type) {
+			case VEH_TRAIN:    this->sorting = &_sorting.train; break;
+			case VEH_ROAD:     this->sorting = &_sorting.roadveh; break;
+			case VEH_SHIP:     this->sorting = &_sorting.ship; break;
+			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
+			default: NOT_REACHED();
+		}
+
+		this->vehicles.SetListing(*this->sorting);
+		this->vehicles.ForceRebuild();
+		this->vehicles.NeedResort();
+		this->BuildVehicleList(company, GB(window_number, 16, 16), window_type);
+		this->SortVehicleList();
+
 		this->CreateNestedTree(desc);
 
 		/* Set up the window widgets */
@@ -876,21 +893,6 @@ public:
 
 		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->current_y / this->resize.step_height);
 		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-
-		/* Set up sorting. Make the window-specific _sorting variable
-		 * point to the correct global _sorting struct so we are freed
-		 * from having conditionals during window operation */
-		switch (this->vehicle_type) {
-			case VEH_TRAIN:    this->sorting = &_sorting.train; break;
-			case VEH_ROAD:     this->sorting = &_sorting.roadveh; break;
-			case VEH_SHIP:     this->sorting = &_sorting.ship; break;
-			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
-			default: NOT_REACHED();
-		}
-
-		this->vehicles.SetListing(*this->sorting);
-		this->vehicles.ForceRebuild();
-		this->vehicles.NeedResort();
 
 		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
