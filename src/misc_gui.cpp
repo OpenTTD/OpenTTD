@@ -782,12 +782,13 @@ static const NWidgetPart _nested_tooltips_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, 0), SetMinimalSize(200, 32), EndContainer(),
 };
 
+/** Window class for displaying a tooltip. */
 struct TooltipsWindow : public Window
 {
-	StringID string_id;
-	byte paramcount;
-	uint64 params[5];
-	bool use_left_mouse_button;
+	StringID string_id;         ///< String to display as tooltip.
+	byte paramcount;            ///< Number of string parameters in #string_id.
+	uint64 params[5];           ///< The string parameters.
+	bool use_left_mouse_button; ///< Wait for left mouse button to close window (else, wait for right button).
 
 	TooltipsWindow(int x, int y, int width, int height, const Widget *widget,
 								 StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) :
