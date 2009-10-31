@@ -194,9 +194,10 @@ void strtolower(char *str)
 bool IsValidChar(WChar key, CharSetFilter afilter)
 {
 	switch (afilter) {
-		case CS_ALPHANUMERAL: return IsPrintable(key);
-		case CS_NUMERAL:      return (key >= '0' && key <= '9');
-		case CS_ALPHA:        return IsPrintable(key) && !(key >= '0' && key <= '9');
+		case CS_ALPHANUMERAL:  return IsPrintable(key);
+		case CS_NUMERAL:       return (key >= '0' && key <= '9');
+		case CS_NUMERAL_SPACE: return (key >= '0' && key <= '9') || key == ' ';
+		case CS_ALPHA:         return IsPrintable(key) && !(key >= '0' && key <= '9');
 	}
 
 	return false;

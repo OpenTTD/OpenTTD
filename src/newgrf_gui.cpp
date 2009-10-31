@@ -819,7 +819,7 @@ struct NewGRFWindow : public Window {
 				static char buff[512];
 				GRFBuildParamList(buff, this->sel, lastof(buff));
 				SetDParamStr(0, buff);
-				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_SETTINGS_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_SETTINGS_PARAMETER_QUERY, 63, 250, this, CS_NUMERAL_SPACE, QSF_NONE);
 				break;
 			}
 
