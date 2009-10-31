@@ -178,7 +178,7 @@ struct AIListWindow : public Window {
 
 			case AIL_WIDGET_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERROR_NOTAVAILABLE, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
 				} else {
 #if defined(ENABLE_NETWORK)
 					ShowNetworkContentListWindow(NULL, CONTENT_TYPE_AI);
@@ -365,7 +365,7 @@ struct AISettingsWindow : public Window {
 
 					if (_settings_newgame.difficulty.diff_level != 3) {
 						_settings_newgame.difficulty.diff_level = 3;
-						ShowErrorMessage(INVALID_STRING_ID, STR_WARNING_DIFFICULTY_TO_CUSTOM, 0, 0);
+						ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
 					}
 				} else if (!bool_item) {
 					/* Display a query box so users can enter a custom value. */
@@ -962,6 +962,6 @@ void ShowAIDebugWindow(CompanyID show_company)
 		if (w == NULL) w = new AIDebugWindow(&_ai_debug_desc, 0);
 		if (show_company != INVALID_COMPANY) w->ChangeToAI(show_company);
 	} else {
-		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_AI_DEBUG_SERVER_ONLY, 0, 0);
+		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, 0, 0);
 	}
 }

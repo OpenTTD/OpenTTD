@@ -31,7 +31,7 @@ static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
 	static byte warning_level = 0;
 	if (warning_level == 0) {
 		SetDParamStr(0, FioGetFilename(file_slot));
-		ShowErrorMessage(INVALID_STRING_ID, STR_NEWGRF_ERROR_CORRUPT_SPRITE, 0, 0);
+		ShowErrorMessage(STR_NEWGRF_ERROR_CORRUPT_SPRITE, INVALID_STRING_ID, 0, 0);
 	}
 	DEBUG(sprite, warning_level, "[%i] Loading corrupted sprite from %s at position %i", line, FioGetFilename(file_slot), (int)file_pos);
 	warning_level = 6;

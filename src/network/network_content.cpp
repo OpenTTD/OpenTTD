@@ -382,7 +382,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 			if (filename == NULL) {
 				/* Unless that fails ofcourse... */
 				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-				ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, 0, 0);
+				ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, 0, 0);
 				this->Close();
 				return false;
 			}
@@ -394,7 +394,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 		size_t toRead = (size_t)(p->size - p->pos);
 		if (fwrite(p->buffer + p->pos, 1, toRead, this->curFile) != toRead) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, 0, 0);
+			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, 0, 0);
 			this->Close();
 			fclose(this->curFile);
 			this->curFile = NULL;
@@ -417,7 +417,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 
 				this->OnDownloadComplete(this->curInfo->id);
 			} else {
-				ShowErrorMessage(INVALID_STRING_ID, STR_CONTENT_ERROR_COULD_NOT_EXTRACT, 0, 0);
+				ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_EXTRACT, INVALID_STRING_ID, 0, 0);
 			}
 		}
 	}

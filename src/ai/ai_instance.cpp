@@ -304,7 +304,7 @@ void AIInstance::Died()
 
 	const AIInfo *info = AIConfig::GetConfig(_current_company)->GetInfo();
 	if (info != NULL) {
-		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_AI_PLEASE_REPORT_CRASH, 0, 0);
+		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, 0, 0);
 
 		if (info->GetURL() != NULL) {
 			AILog::Info("Please report the error to the following URL:");

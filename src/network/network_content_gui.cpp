@@ -755,7 +755,7 @@ public:
 	virtual void OnConnect(bool success)
 	{
 		if (!success) {
-			ShowErrorMessage(INVALID_STRING_ID, STR_CONTENT_ERROR_COULD_NOT_CONNECT, 0, 0);
+			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_CONNECT, INVALID_STRING_ID, 0, 0);
 			delete this;
 		}
 
@@ -895,7 +895,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type)
 	DeleteWindowById(WC_NETWORK_WINDOW, 1);
 	new NetworkContentListWindow(&_network_content_list_desc, cv != NULL);
 #else
-	ShowErrorMessage(STR_CONTENT_NO_ZLIB_SUB, STR_CONTENT_NO_ZLIB, 0, 0);
+	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, 0, 0);
 	/* Connection failed... clean up the mess */
 	if (cv != NULL) {
 		for (ContentIterator iter = cv->Begin(); iter != cv->End(); iter++) delete *iter;

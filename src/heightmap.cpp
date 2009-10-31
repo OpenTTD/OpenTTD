@@ -107,20 +107,20 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 
 	fp = FioFOpenFile(filename, "rb");
 	if (fp == NULL) {
-		ShowErrorMessage(STR_ERROR_PNGMAP_FILE_NOT_FOUND, STR_ERROR_PNGMAP, 0, 0);
+		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, 0, 0);
 		return false;
 	}
 
 	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if (png_ptr == NULL) {
-		ShowErrorMessage(STR_ERROR_PNGMAP_MISC, STR_ERROR_PNGMAP, 0, 0);
+		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_MISC, 0, 0);
 		fclose(fp);
 		return false;
 	}
 
 	info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == NULL || setjmp(png_jmpbuf(png_ptr))) {
-		ShowErrorMessage(STR_ERROR_PNGMAP_MISC, STR_ERROR_PNGMAP, 0, 0);
+		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_MISC, 0, 0);
 		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 		return false;
@@ -136,7 +136,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	/* Maps of wrong colour-depth are not used.
 	 * (this should have been taken care of by stripping alpha and 16-bit samples on load) */
 	if ((info_ptr->channels != 1) && (info_ptr->channels != 3) && (info_ptr->bit_depth != 8)) {
-		ShowErrorMessage(STR_ERROR_PNGMAP_IMAGE_TYPE, STR_ERROR_PNGMAP, 0, 0);
+		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_IMAGE_TYPE, 0, 0);
 		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 		return false;
@@ -230,14 +230,14 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 
 	f = FioFOpenFile(filename, "rb");
 	if (f == NULL) {
-		ShowErrorMessage(STR_ERROR_PNGMAP_FILE_NOT_FOUND, STR_ERROR_BMPMAP, 0, 0);
+		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, 0, 0);
 		return false;
 	}
 
 	BmpInitializeBuffer(&buffer, f);
 
 	if (!BmpReadHeader(&buffer, &info, &data)) {
-		ShowErrorMessage(STR_ERROR_BMPMAP_IMAGE_TYPE, STR_ERROR_BMPMAP, 0, 0);
+		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, 0, 0);
 		fclose(f);
 		BmpDestroyData(&data);
 		return false;
@@ -245,7 +245,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 
 	if (map != NULL) {
 		if (!BmpReadBitmap(&buffer, &info, &data)) {
-			ShowErrorMessage(STR_ERROR_BMPMAP_IMAGE_TYPE, STR_ERROR_BMPMAP, 0, 0);
+			ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, 0, 0);
 			fclose(f);
 			BmpDestroyData(&data);
 			return false;

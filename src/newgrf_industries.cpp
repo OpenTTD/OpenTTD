@@ -529,7 +529,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 			/* display error message */
 			SetDParamStr(0, spec->grf_prop.grffile->filename);
 			SetDParam(1, spec->name);
-			ShowErrorMessage(STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, STR_NEWGRF_BUGGY, 0, 0);
+			ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, 0, 0);
 
 			/* abort the function early, this error isn't critical and will allow the game to continue to run */
 			break;

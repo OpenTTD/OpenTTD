@@ -1577,7 +1577,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 						static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
 						Utf8Encode(err_str, SCC_YELLOW);
 						SetDParamStr(0, err_str);
-						ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+						ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 
 						/* Reset the font width */
 						LoadStringWidthTable();
@@ -1610,7 +1610,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 		static char *err_str = strdup("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with icu enabled.");
 		Utf8Encode(err_str, SCC_YELLOW);
 		SetDParamStr(0, err_str);
-		ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 	}
 #endif
 }

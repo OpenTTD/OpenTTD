@@ -315,7 +315,7 @@ struct GameOptionsWindow : Window {
 			case GOW_FULLSCREEN_BUTTON: // Click fullscreen on/off
 				/* try to toggle full-screen on/off */
 				if (!ToggleFullScreen(!_fullscreen)) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_FULLSCREEN_FAILED, 0, 0);
+					ShowErrorMessage(STR_ERROR_FULLSCREEN_FAILED, INVALID_STRING_ID, 0, 0);
 				}
 				this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
 				this->SetDirty();

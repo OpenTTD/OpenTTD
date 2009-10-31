@@ -353,7 +353,7 @@ public:
 					/* Find last entry in the list, checking for duplicate grfid on the way */
 					for (list = this->list; *list != NULL; list = &(*list)->next) {
 						if ((*list)->grfid == src->grfid) {
-							ShowErrorMessage(INVALID_STRING_ID, STR_NEWGRF_DUPLICATE_GRFID, 0, 0);
+							ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, 0, 0);
 							return;
 						}
 					}
@@ -835,7 +835,7 @@ struct NewGRFWindow : public Window {
 
 			case SNGRFS_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERROR_NOTAVAILABLE, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
 				} else {
 #if defined(ENABLE_NETWORK)
 				/* Only show the things in the current list, or everything when nothing's selected */

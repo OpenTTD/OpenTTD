@@ -777,9 +777,9 @@ static void ShowScreenshotResult(bool b)
 	if (b) {
 		extern char _screenshot_name[];
 		SetDParamStr(0, _screenshot_name);
-		ShowErrorMessage(INVALID_STRING_ID, STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, 0, 0);
+		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, 0, 0);
 	} else {
-		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_SCREENSHOT_FAILED, 0, 0);
+		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, 0, 0);
 	}
 
 }
@@ -866,7 +866,7 @@ static void StartScenario()
 	if (_file_to_saveload.mode == SL_INVALID) {
 		DEBUG(sl, 0, "Savegame is obsolete or invalid format: '%s'", _file_to_saveload.name);
 		SetDParamStr(0, GetSaveLoadErrorString());
-		ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 		_game_mode = GM_MENU;
 		return;
 	}
@@ -882,7 +882,7 @@ static void StartScenario()
 	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, SCENARIO_DIR) != SL_OK) {
 		LoadIntroGame();
 		SetDParamStr(0, GetSaveLoadErrorString());
-		ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 	}
 
 	_settings_game.difficulty = _settings_newgame.difficulty;
@@ -998,7 +998,7 @@ void SwitchToMode(SwitchMode new_mode)
 			if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
 				LoadIntroGame();
 				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 			} else {
 				if (_saveload_mode == SLD_LOAD_SCENARIO) {
 					StartupEngines();
@@ -1041,7 +1041,7 @@ void SwitchToMode(SwitchMode new_mode)
 				_settings_newgame.game_creation.starting_year = _cur_year;
 			} else {
 				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 			}
 			break;
 		}
@@ -1054,7 +1054,7 @@ void SwitchToMode(SwitchMode new_mode)
 			/* Make network saved games on pause compatible to singleplayer */
 			if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
 				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 			} else {
 				DeleteWindowById(WC_SAVELOAD, 0);
 			}
@@ -1071,7 +1071,7 @@ void SwitchToMode(SwitchMode new_mode)
 	}
 
 	if (_switch_mode_errorstr != INVALID_STRING_ID) {
-		ShowErrorMessage(INVALID_STRING_ID, _switch_mode_errorstr, 0, 0, true);
+		ShowErrorMessage(_switch_mode_errorstr, INVALID_STRING_ID, 0, 0, true);
 	}
 }
 
@@ -1219,7 +1219,7 @@ static void DoAutosave()
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
 	if (SaveOrLoad(buf, SL_SAVE, AUTOSAVE_DIR) != SL_OK) {
-		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_AUTOSAVE_FAILED, 0, 0);
+		ShowErrorMessage(STR_ERROR_AUTOSAVE_FAILED, INVALID_STRING_ID, 0, 0);
 	}
 }
 

@@ -427,7 +427,7 @@ public:
 					this->HandleButtonClick(DPIW_FUND_WIDGET);
 
 					if (Town::GetNumItems() == 0) {
-						ShowErrorMessage(STR_ERROR_MUST_FOUND_TOWN_FIRST, STR_ERROR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
+						ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, 0, 0);
 					} else {
 						extern void GenerateIndustries();
 						_generating_world = true;
@@ -462,7 +462,7 @@ public:
 			/* Show error if no town exists at all */
 			if (Town::GetNumItems() == 0) {
 				SetDParam(0, indsp->name);
-				ShowErrorMessage(STR_ERROR_MUST_FOUND_TOWN_FIRST, STR_ERROR_CAN_T_BUILD_HERE, pt.x, pt.y);
+				ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, STR_ERROR_MUST_FOUND_TOWN_FIRST, pt.x, pt.y);
 				return;
 			}
 
@@ -472,7 +472,7 @@ public:
 			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 8) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 			if (!success) {
 				SetDParam(0, indsp->name);
-				ShowErrorMessage(_error_message, STR_ERROR_CAN_T_BUILD_HERE, pt.x, pt.y);
+				ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, _error_message, pt.x, pt.y);
 			}
 
 			_ignore_restrictions = false;

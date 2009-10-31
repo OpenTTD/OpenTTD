@@ -2291,7 +2291,7 @@ void ExpandTown(Town *t)
 	 * but do this only onces per openttd run. */
 	static bool warned_no_roads = false;
 	if (!_settings_game.economy.allow_town_roads && !warned_no_roads) {
-		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS, 0, 0);
+		ShowErrorMessage(STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS, INVALID_STRING_ID, 0, 0);
 		warned_no_roads = true;
 	}
 
@@ -2435,7 +2435,7 @@ static void TownActionBribe(Town *t)
 
 		/* only show errormessage to the executing player. All errors are handled command.c
 		 * but this is special, because it can only 'fail' on a DC_EXEC */
-		if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED_2, STR_ERROR_BRIBE_FAILED, 0, 0);
+		if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, STR_ERROR_BRIBE_FAILED_2, 0, 0);
 
 		/* decrease by a lot!
 		 * ChangeTownRating is only for stuff in demolishing. Bribe failure should

@@ -556,22 +556,22 @@ struct ErrmsgWindow : public Window {
 private:
 	uint duration;                  ///< Length of display of the message. 0 means forever,
 	uint64 decode_params[20];       ///< Parameters of the message strings.
-	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
+	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
 	bool show_company_manager_face; ///< Display the face of the manager in the window.
 
-	Rect area_detailed; ///< Area available for #detailed_msg in the #EMW_MESSAGE widget.
 	Rect area_summary;  ///< Area available for #summary_msg in the #EMW_MESSAGE widget.
+	Rect area_detailed; ///< Area available for #detailed_msg in the #EMW_MESSAGE widget.
 
 public:
-	ErrmsgWindow(Point pt, int width, int height, StringID detailed_msg, StringID summary_msg, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
+	ErrmsgWindow(Point pt, int width, int height, StringID summary_msg, StringID detailed_msg, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
 			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
 			show_company_manager_face(show_company_manager_face)
 	{
 		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
-		this->detailed_msg = detailed_msg;
 		this->summary_msg  = summary_msg;
+		this->detailed_msg = detailed_msg;
 		this->desc_flags   = WDF_STD_BTN | WDF_DEF_WIDGET;
 
 		SwitchToErrorRefStack();
@@ -596,10 +596,10 @@ public:
 			this->area_summary.bottom = height - WD_FRAMERECT_BOTTOM;
 		} else {
 			int over = (height - h) / 2;
-			this->area_detailed.bottom = height - WD_FRAMERECT_BOTTOM;
-			this->area_detailed.top    = this->area_detailed.bottom - height_detailed - over;
 			this->area_summary.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
 			this->area_summary.bottom = this->area_summary.top + height_summary + over;
+			this->area_detailed.bottom = height - WD_FRAMERECT_BOTTOM;
+			this->area_detailed.top    = this->area_detailed.bottom - height_detailed - over;
 		}
 
 		this->FindWindowPlacementAndResize(width, height);
@@ -663,13 +663,13 @@ public:
 
 /**
  * Display an error message in a window.
- * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
  * @param summary_msg  General error message showed in first line. Must be valid.
+ * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param no_timeout   Set to true, if the message is that important that it should not close automatically after some time.
  */
-void ShowErrorMessage(StringID detailed_msg, StringID summary_msg, int x, int y, bool no_timeout)
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y, bool no_timeout)
 {
 	static Widget *generated_errmsg_widgets = NULL;
 	static Widget *generated_errmsg_face_widgets = NULL;
@@ -703,7 +703,7 @@ void ShowErrorMessage(StringID detailed_msg, StringID summary_msg, int x, int y,
 
 		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets),
 													_errmsg_widgets, &generated_errmsg_widgets);
-		new ErrmsgWindow(pt, 240, 46, detailed_msg, summary_msg, wid, false, no_timeout);
+		new ErrmsgWindow(pt, 240, 46, summary_msg, detailed_msg, wid, false, no_timeout);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -717,7 +717,7 @@ void ShowErrorMessage(StringID detailed_msg, StringID summary_msg, int x, int y,
 
 		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets),
 													_errmsg_face_widgets, &generated_errmsg_face_widgets);
-		new ErrmsgWindow(pt, 334, 137, detailed_msg, summary_msg, wid, true, no_timeout);
+		new ErrmsgWindow(pt, 334, 137, summary_msg, detailed_msg, wid, true, no_timeout);
 	}
 }
 
@@ -730,7 +730,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		msg = STR_MESSAGE_ESTIMATED_INCOME;
 	}
 	SetDParam(0, cost);
-	ShowErrorMessage(INVALID_STRING_ID, msg, x, y);
+	ShowErrorMessage(msg, INVALID_STRING_ID, x, y);
 }
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
@@ -1990,7 +1990,7 @@ public:
 
 			case SLWW_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERROR_NOTAVAILABLE, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
 				} else {
 #if defined(ENABLE_NETWORK)
 					switch (_saveload_mode) {
@@ -2038,7 +2038,7 @@ public:
 
 		if (this->IsWidgetLowered(SLWW_DELETE_SELECTION)) { // Delete button clicked
 			if (!FiosDelete(this->text.buf)) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_UNABLE_TO_DELETE_FILE, 0, 0);
+				ShowErrorMessage(STR_ERROR_UNABLE_TO_DELETE_FILE, INVALID_STRING_ID, 0, 0);
 			} else {
 				BuildFileList();
 				/* Reset file name to current date on successful delete */

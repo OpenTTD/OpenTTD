@@ -535,7 +535,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
 	if (_game_mode == GM_NORMAL && (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0 && !Company::IsValidID(_current_company)) {
-		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
+		if (my_cmd) ShowErrorMessage(error_part1, _error_message, x, y);
 		return false;
 	}
 
@@ -555,7 +555,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
-			ShowErrorMessage(_error_message, error_part1, x, y);
+			ShowErrorMessage(error_part1, _error_message, x, y);
 		} else {
 			ShowEstimatedCostOrIncome(res.GetCost(), x, y);
 		}
@@ -626,7 +626,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		if (res2.GetCost() != 0 && tile != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
 		if (_additional_cash_required != 0) {
 			SetDParam(0, _additional_cash_required);
-			if (my_cmd) ShowErrorMessage(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, error_part1, x, y);
+			if (my_cmd) ShowErrorMessage(error_part1, STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, x, y);
 			if (res2.GetCost() == 0) goto callb_err;
 		}
 	}
@@ -640,7 +640,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 show_error:
 	/* show error message if the command fails? */
 	if (IsLocalCompany() && error_part1 != 0 && my_cmd) {
-		ShowErrorMessage(_error_message, error_part1, x, y);
+		ShowErrorMessage(error_part1, _error_message, x, y);
 	}
 
 callb_err:

@@ -198,7 +198,7 @@ void CheckTrainsLengths()
 							(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
 						SetDParam(0, v->index);
 						SetDParam(1, v->owner);
-						ShowErrorMessage(INVALID_STRING_ID, STR_BROKEN_VEHICLE_LENGTH, 0, 0, true);
+						ShowErrorMessage(STR_BROKEN_VEHICLE_LENGTH, INVALID_STRING_ID, 0, 0, true);
 
 						if (!_networking) DoCommandP(0, PM_PAUSED_ERROR, 1, CMD_PAUSE);
 					}
