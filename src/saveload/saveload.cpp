@@ -1697,7 +1697,7 @@ const char *GetSaveLoadErrorString()
 static void SaveFileError()
 {
 	SetDParamStr(0, GetSaveLoadErrorString());
-	ShowErrorMessage(STR_NULL, STR_JUST_RAW_STRING, 0, 0);
+	ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
 	SaveFileDone();
 }
 
