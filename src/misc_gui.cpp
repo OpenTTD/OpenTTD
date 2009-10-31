@@ -773,26 +773,28 @@ void HideFillingPercent(TextEffectID *te_id)
 	*te_id = INVALID_TE_ID;
 }
 
-static const Widget _tooltips_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,     0,    31, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_tooltips_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, 0), SetMinimalSize(200, 32), EndContainer(),
 };
 
-/** Window class for displaying a tooltip. */
+static const WindowDesc _tool_tips_desc(
+	100, 100, 0, 0, 0, 0, // Coordinates and sizes are not used,
+	WC_TOOLTIPS, WC_NONE,
+	0,
+	NULL, _nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
+);
+
+/** Window for displaying a tooltip. */
 struct TooltipsWindow : public Window
 {
 	StringID string_id;         ///< String to display as tooltip.
 	byte paramcount;            ///< Number of string parameters in #string_id.
 	uint64 params[5];           ///< The string parameters.
 	bool use_left_mouse_button; ///< Wait for left mouse button to close window (else, wait for right button).
+	Point window_pos;           ///< Position of the window.
+	Dimension window_size;      ///< Size of the window.
 
-	TooltipsWindow(int x, int y, const Dimension &window_size, const Widget *widget,
-								 StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) :
-			Window(x, y, window_size.width, window_size.height, WC_TOOLTIPS, widget)
+	TooltipsWindow(int x, int y, const Dimension &window_size, StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) : Window()
 	{
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
@@ -801,22 +803,42 @@ struct TooltipsWindow : public Window
 		this->paramcount = paramcount;
 		this->use_left_mouse_button = use_left_mouse_button;
 
-		this->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
-		this->widget[0].right = width;
-		this->widget[0].bottom = height;
+		this->window_pos.x = x;
+		this->window_pos.y = y;
+		this->window_size = window_size;
 
-		FindWindowPlacementAndResize(width, height);
+		this->InitNested(&_tool_tips_desc);
+
+		this->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
 	}
 
-	virtual void OnPaint()
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0);
-		GfxFillRect(1, 1, this->width - 2, this->height - 2, 0x44);
+		return this->window_pos;
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		/* There is only one widget. */
+		*size = this->window_size;
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		/* There is only one widget. */
+		GfxFillRect(r.left, r.top, r.right, r.bottom, 0);
+		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0x44);
 
 		for (uint arg = 0; arg < this->paramcount; arg++) {
 			SetDParam(arg, this->params[arg]);
 		}
-		DrawStringMultiLine(3, this->width - 3, 0, this->height, this->string_id, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, this->string_id, TC_FROMSTRING, SA_CENTER);
+	}
+
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
 	}
 
 	virtual void OnMouseLoop()
@@ -835,8 +857,6 @@ struct TooltipsWindow : public Window
  */
 void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button)
 {
-	static Widget *generated_tooltips_widgets = NULL;
-
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL) return;
@@ -858,9 +878,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	if (y + (int)br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - (int)br.height - 5;
 	int x = Clamp(_cursor.pos.x - (int)(br.width >> 1), 0, _screen.width - (int)br.width);
 
-	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets),
-													_tooltips_widgets, &generated_tooltips_widgets);
-	new TooltipsWindow(x, y, br, wid, str, paramcount, params, use_left_mouse_button);
+	new TooltipsWindow(x, y, br, str, paramcount, params, use_left_mouse_button);
 }
 
 
