@@ -791,10 +791,9 @@ struct TooltipsWindow : public Window
 	byte paramcount;            ///< Number of string parameters in #string_id.
 	uint64 params[5];           ///< The string parameters.
 	bool use_left_mouse_button; ///< Wait for left mouse button to close window (else, wait for right button).
-	Point window_pos;           ///< Position of the window.
 	Dimension window_size;      ///< Size of the window.
 
-	TooltipsWindow(int x, int y, const Dimension &window_size, StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) : Window()
+	TooltipsWindow(const Dimension &window_size, StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) : Window()
 	{
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
@@ -803,8 +802,6 @@ struct TooltipsWindow : public Window
 		this->paramcount = paramcount;
 		this->use_left_mouse_button = use_left_mouse_button;
 
-		this->window_pos.x = x;
-		this->window_pos.y = y;
 		this->window_size = window_size;
 
 		this->InitNested(&_tool_tips_desc);
@@ -814,7 +811,16 @@ struct TooltipsWindow : public Window
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		return this->window_pos;
+		Point pt;
+
+		/* Correctly position the tooltip position, watch out for window and cursor size
+		 * Clamp value to below main toolbar and above statusbar. If tooltip would
+		 * go below window, flip it so it is shown above the cursor */
+		pt.y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
+		if (pt.y + sm_height > _screen.height - 12) pt.y = _cursor.pos.y + _cursor.offs.y - sm_height - 5;
+		pt.x = Clamp(_cursor.pos.x - (sm_width >> 1), 0, _screen.width - sm_width);
+
+		return pt;
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -871,14 +877,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	br.width  += 2 + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 	br.height += 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
-	/* Correctly position the tooltip position, watch out for window and cursor size
-	 * Clamp value to below main toolbar and above statusbar. If tooltip would
-	 * go below window, flip it so it is shown above the cursor */
-	int y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
-	if (y + (int)br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - (int)br.height - 5;
-	int x = Clamp(_cursor.pos.x - (int)(br.width >> 1), 0, _screen.width - (int)br.width);
-
-	new TooltipsWindow(x, y, br, str, paramcount, params, use_left_mouse_button);
+	new TooltipsWindow(br, str, paramcount, params, use_left_mouse_button);
 }
 
 
