@@ -1651,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uusi Yht
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Ei mitään -
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
+STR_NETWORK_CLIENTLIST_BAN                                      :Kiellä
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Anna rahaa
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Puhu kaikille
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Puhu yhtiölle
@@ -2783,6 +2784,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen v
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kulu: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. Vetovoima: {7:FORCE}{}Käyttökustannukset: {CURRENCY}/v{}Kapasiteetti: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Hinta: {CURRENCY} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO}, {CARGO}{}Käyttökustannukset: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Hinta: {CURRENCY} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO}{}Käyttökustannukset: {CURRENCY}/yr
 

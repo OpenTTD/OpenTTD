@@ -1718,6 +1718,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nová sp
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :(nikto)
 STR_NETWORK_CLIENTLIST_KICK                                     :Vyhodit
+STR_NETWORK_CLIENTLIST_BAN                                      :Ban
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Previest peniaze
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Napisat vsetkym
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Napisat spolocnosti
@@ -1746,6 +1747,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastavte
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Poslat
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Súkromná] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všetkým] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {WHITE}{STRING}
@@ -2849,6 +2851,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednokolajova l
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magneticka lokomotiva
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Hmotnosť: {WEIGHT_S}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {7:FORCE}{}Prevádzkové náklady: {CURRENCY}/yr{}Kapacita: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY} Max. Rýchlost: {VELOCITY}{}Kapacita: {CARGO}, {CARGO}{}Prevádzkové náklady: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY} Max. Rýchlosť: {VELOCITY}{}Kapacita: {CARGO}{}Prevádzkové náklady: {CURRENCY}/yr
 

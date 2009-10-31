@@ -28,7 +28,7 @@ STR_JUST_NOTHING                                                :Τίποτα
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :Επιβάτες
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Επιβάτες
 STR_CARGO_PLURAL_COAL                                           :Κάρβουνο
 STR_CARGO_PLURAL_MAIL                                           :Ταχυδρομείο
 STR_CARGO_PLURAL_OIL                                            :Πετρέλαιο
@@ -735,7 +735,7 @@ STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο εμπορευτικό τραμ φτάνει στο σταθμό {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροπλάνο φτάνει στο αεροδρόμιο {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροπλάνο φτάνει στο {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Σύγκρουση Τραίνων!{}{COMMA} σκοτώθηκαν σε σύγκρουση
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε σύγκρουση με τρένο
@@ -2776,7 +2776,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρό�
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μύνημα από τον κατασκευαστή οχήματων
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδιάση ενός νέου {STRING} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδιάση {G ενός μιας ενός} {G νέου νέας νέου} {STRING} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Ατμομηχανή
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Όχημα δρόμου
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :αεροπλάνου
@@ -2889,8 +2889,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Κατ�
 STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Κατευθύνεται προς το ναυπηγείο της πόλης {TOWN}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Κατευθύνεται προς το ναυπήγειο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Κατευθύνεται προς το υπόστεγο του αεροδρομίου {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Κατευθύνεται προς το υπόστεγο του αεροδρομίου {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Κατευθύνεται προς το υπόστεγο του {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Κατευθύνεται προς το υπόστεγο του {STATION}, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Επισκευή στο αμαξοστάσιο της πόλης {TOWN}
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
@@ -3646,7 +3646,7 @@ STR_SV_STNAME_HEIGHTS                                           :Λόφοι {STR
 STR_SV_STNAME_WOODS                                             :Δάσος {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Λίμνη {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Ανταλλαγή
-STR_SV_STNAME_AIRPORT                                           :Αεροδρόμιο {STRING}
+STR_SV_STNAME_AIRPORT                                           :αεροδρόμιο {STRING}
 STR_SV_STNAME_OILFIELD                                          :Πετρελαιοπηγές {STRING}
 STR_SV_STNAME_MINES                                             :Ορυχεία {STRING}
 STR_SV_STNAME_DOCKS                                             :Λιμάνι {STRING}
