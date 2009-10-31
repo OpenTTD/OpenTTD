@@ -28,7 +28,7 @@ static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts
  * @param mirrored Returns whether the part shall be flipped.
  * @return engine to add or INVALID_ENGINE
  */
-static EngineID GetNextArticPart(uint index, EngineID front_type, Vehicle *front = NULL, bool *mirrored = false)
+static EngineID GetNextArticPart(uint index, EngineID front_type, Vehicle *front = NULL, bool *mirrored = NULL)
 {
 	assert(front == NULL || front->engine_type == front_type);
 
