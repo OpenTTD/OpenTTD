@@ -360,11 +360,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		v->InvalidateNewGRFCacheOfChain();
 
-		v->cargo_cap = GetVehicleCapacity(v);
-		if (v->cargo_type != CT_PASSENGERS) {
-			/* Set the 'second compartent' capacity to none */
-			u->cargo_cap = 0;
-		}
+		v->cargo_cap = GetVehicleCapacity(v, &u->cargo_cap);
 
 		v->InvalidateNewGRFCacheOfChain();
 
@@ -505,12 +501,6 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	CommandCost cost = RefitVehicle(v, true, new_cid, new_subtype, flags);
 
 	if (flags & DC_EXEC) {
-		const Engine *e = Engine::Get(v->engine_type);
-		Vehicle *u = v->Next();
-		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? e->u.air.mail_capacity : 0;
-		u->cargo_cap = mail;
-		u->cargo.Truncate(v->cargo_type == new_cid ? mail : 0);
-
 		v->colourmap = PAL_NONE; // invalidate vehicle colour map
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);

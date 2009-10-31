@@ -320,7 +320,8 @@ CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_s
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 
-		uint amount = GetVehicleCapacity(v);
+		uint16 mail_capacity;
+		uint amount = GetVehicleCapacity(v, &mail_capacity);
 		total_capacity += amount;
 
 		/* Restore the original cargo type */
@@ -336,6 +337,11 @@ CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_s
 			v->cargo_type = new_cid;
 			v->cargo_cap = amount;
 			v->cargo_subtype = new_subtype;
+			if (v->type == VEH_AIRCRAFT) {
+				Vehicle *u = v->Next();
+				u->cargo_cap = mail_capacity;
+				u->cargo.Truncate(mail_capacity);
+			}
 		}
 	}
 

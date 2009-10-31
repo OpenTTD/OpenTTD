@@ -277,15 +277,14 @@ static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 	const Engine *e_a = Engine::Get(*a);
 	const Engine *e_b = Engine::Get(*b);
 
-	int va = e_a->GetDisplayDefaultCapacity();
-	int vb = e_b->GetDisplayDefaultCapacity();
+	uint16 mail_a, mail_b;
+	int va = e_a->GetDisplayDefaultCapacity(&mail_a);
+	int vb = e_b->GetDisplayDefaultCapacity(&mail_b);
 	int r = va - vb;
 
 	if (r == 0) {
-		/* The planes has the same passenger capacity. Check mail capacity instead */
-		va = e_a->u.air.mail_capacity;
-		vb = e_b->u.air.mail_capacity;
-		r = va - vb;
+		/* The planes have the same passenger capacity. Check mail capacity instead */
+		r = mail_a - mail_b;
 
 		if (r == 0) {
 			/* Use EngineID to sort instead since we want consistent sorting */
@@ -519,7 +518,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 }
 
 /* Draw ship specific details */
-static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_number, const ShipVehicleInfo *svi, bool refittable)
+static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable)
 {
 	const Engine *e = Engine::Get(engine_number);
 
@@ -545,7 +544,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 }
 
 /* Draw aircraft specific details */
-static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, const AircraftVehicleInfo *avi, bool refittable)
+static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable)
 {
 	const Engine *e = Engine::Get(engine_number);
 	CargoID cargo = e->GetDefaultCargoType();
@@ -557,17 +556,19 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	y += FONT_HEIGHT_NORMAL;
 
 	/* Cargo capacity */
-	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
-		SetDParam(0, CT_PASSENGERS);
-		SetDParam(1, e->GetDisplayDefaultCapacity());
+	uint16 mail_capacity;
+	uint capacity = e->GetDisplayDefaultCapacity(&mail_capacity);
+	if (mail_capacity > 0) {
+		SetDParam(0, cargo);
+		SetDParam(1, capacity);
 		SetDParam(2, CT_MAIL);
-		SetDParam(3, avi->mail_capacity);
+		SetDParam(3, mail_capacity);
 		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY);
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity
 		 * callback, then the capacity shown is likely to be incorrect. */
 		SetDParam(0, cargo);
-		SetDParam(1, e->GetDisplayDefaultCapacity());
+		SetDParam(1, capacity);
 		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 	}
@@ -633,11 +634,11 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 			break;
 
 		case VEH_SHIP:
-			y = DrawShipPurchaseInfo(left, right, y, engine_number, &e->u.ship, refittable);
+			y = DrawShipPurchaseInfo(left, right, y, engine_number, refittable);
 			break;
 
 		case VEH_AIRCRAFT:
-			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, &e->u.air, refittable);
+			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, refittable);
 			break;
 	}
 

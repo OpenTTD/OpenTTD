@@ -16,6 +16,7 @@
 #include "aircraft.h"
 #include "newgrf.h"
 #include "newgrf_engine.h"
+#include "newgrf_cargo.h"
 #include "group.h"
 #include "strings_func.h"
 #include "gfx_func.h"
@@ -163,11 +164,13 @@ bool Engine::CanCarryCargo() const
  * For articulated engines use GetCapacityOfArticulatedParts
  *
  * @note Keep this function consistent with GetVehicleCapacity().
+ * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
  * @return The default capacity
  * @see GetDefaultCargoType
  */
-uint Engine::GetDisplayDefaultCapacity() const
+uint Engine::GetDisplayDefaultCapacity(uint16 *mail_capacity) const
 {
+	if (mail_capacity != NULL) *mail_capacity = 0;
 	if (!this->CanCarryCargo()) return 0;
 	switch (type) {
 		case VEH_TRAIN:
@@ -179,13 +182,21 @@ uint Engine::GetDisplayDefaultCapacity() const
 		case VEH_SHIP:
 			return GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY, this->u.ship.capacity);
 
-		case VEH_AIRCRAFT:
-			switch (this->GetDefaultCargoType()) {
-				case CT_PASSENGERS: return this->u.air.passenger_capacity;
-				case CT_MAIL:       return this->u.air.passenger_capacity + this->u.air.mail_capacity;
-				case CT_GOODS:      return (this->u.air.passenger_capacity + this->u.air.mail_capacity) / 2;
-				default:            return (this->u.air.passenger_capacity + this->u.air.mail_capacity) / 4;
+		case VEH_AIRCRAFT: {
+			uint capacity = this->u.air.passenger_capacity;
+			CargoID cargo = this->GetDefaultCargoType();
+			if (IsCargoInClass(cargo, CC_PASSENGERS)) {
+				if (mail_capacity != NULL) *mail_capacity = this->u.air.mail_capacity;
+			} else {
+				capacity += this->u.air.mail_capacity;
 			}
+			switch (cargo) {
+				case CT_PASSENGERS:
+				case CT_MAIL:       return capacity;
+				case CT_GOODS:      return capacity / 2;
+				default:            return capacity / 4;
+			}
+		}
 
 		default: NOT_REACHED();
 	}

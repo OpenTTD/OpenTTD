@@ -1377,10 +1377,12 @@ SpriteID GetVehiclePalette(const Vehicle *v)
  * For aircraft the main capacity is determined. Mail might be present as well.
  * @note Keep this function consistent with Engine::GetDisplayDefaultCapacity().
  * @param v Vehicle of interest
+ * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
  * @return Capacity
  */
-uint GetVehicleCapacity(const Vehicle *v)
+uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
 {
+	if (mail_capacity != NULL) *mail_capacity = 0;
 	const Engine *e = Engine::Get(v->engine_type);
 
 	if (!e->CanCarryCargo()) return 0;
@@ -1409,8 +1411,11 @@ uint GetVehicleCapacity(const Vehicle *v)
 	 * Note: This might change to become more consistent/flexible. */
 	if (e->type != VEH_SHIP) {
 		if (e->type == VEH_AIRCRAFT) {
-			if (v->cargo_type == CT_PASSENGERS) return capacity;
-			capacity += e->u.air.mail_capacity;
+			if (IsCargoInClass(v->cargo_type, CT_PASSENGERS)) {
+				if (mail_capacity != NULL) *mail_capacity = e->u.air.mail_capacity;
+			} else {
+				capacity += e->u.air.mail_capacity;
+			}
 			if (v->cargo_type == CT_MAIL) return capacity;
 		} else {
 			switch (default_cargo) {

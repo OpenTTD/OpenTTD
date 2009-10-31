@@ -73,7 +73,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	}
 
 	bool CanCarryCargo() const;
-	uint GetDisplayDefaultCapacity() const;
+	uint GetDisplayDefaultCapacity(uint16 *mail_capacity = NULL) const;
 	Money GetRunningCost() const;
 	Money GetCost() const;
 	uint GetDisplayMaxSpeed() const;
