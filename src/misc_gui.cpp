@@ -551,15 +551,16 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 	EndContainer(),
 };
 
+/** Window class for displaying an error message window. */
 struct ErrmsgWindow : public Window {
 private:
-	uint duration;
-	uint64 decode_params[20];
-	StringID message_1;
-	StringID message_2;
-	bool show_company_manager_face;
+	uint duration;                  ///< Length of display of the message. 0 means forever,
+	uint64 decode_params[20];       ///< Parameters of the message strings.
+	StringID message_1;             ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
+	StringID message_2;             ///< General error message showed in first line. Must be valid.
+	bool show_company_manager_face; ///< Display the face of the manager in the window.
 
-	int y[4];
+	int y[4]; ///< Vertical start/end position of the area available for #message_1 and #message_2 in the #EMW_MESSAGE widget.
 
 public:
 	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
