@@ -1901,6 +1901,7 @@ detect_os() {
 					/cygwin/       { print "CYGWIN";  exit}
 					/mingw/        { print "MINGW";   exit}
 					/os\/2/        { print "OS2";     exit}
+					/gnu/          { print "UNIX";    exit}
 			'`
 		fi
 

@@ -30,6 +30,10 @@
 #include <set>
 #include <stack>
 
+#ifndef PATH_MAX
+#	define PATH_MAX 260
+#endif
+
 /** Simple string comparator using strcmp as implementation */
 struct StringCompare {
 	/**
