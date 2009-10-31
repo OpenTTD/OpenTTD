@@ -560,7 +560,8 @@ private:
 	StringID message_2;             ///< General error message showed in first line. Must be valid.
 	bool show_company_manager_face; ///< Display the face of the manager in the window.
 
-	int y[4]; ///< Vertical start/end position of the area available for #message_1 and #message_2 in the #EMW_MESSAGE widget.
+	Rect area_msg1; ///< Area available for #message_1 in the #EMW_MESSAGE widget.
+	Rect area_msg2; ///< Area available for #message_2 in the #EMW_MESSAGE widget.
 
 public:
 	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
@@ -578,24 +579,27 @@ public:
 
 		assert(msg2 != INVALID_STRING_ID);
 
-		int text_width = this->widget[EMW_MESSAGE].right - this->widget[EMW_MESSAGE].left;
+		this->area_msg1.left  = this->area_msg2.left  = this->widget[EMW_MESSAGE].left  + WD_FRAMETEXT_LEFT;
+		this->area_msg1.right = this->area_msg2.right = this->widget[EMW_MESSAGE].right - WD_FRAMETEXT_RIGHT;
+		int text_width = this->area_msg1.right - this->area_msg1.left + 1;
+
 		int h2 = GetStringHeight(msg2, text_width); // msg2 is printed first
 		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : GetStringHeight(msg1, text_width);
 
 		SwitchToNormalRefStack();
 
-		int h = 20 + h1 + h2;
-		height = max<int>(height, h);
+		int h = this->widget[EMW_MESSAGE].top + 2 + h1 + h2;
+		height = max<int>(height, h + 4);
 
 		if (msg1 == INVALID_STRING_ID) {
-			y[2] = 14 + 1;
-			y[3] = height - 1;
+			this->area_msg2.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
+			this->area_msg2.bottom = height - WD_FRAMERECT_BOTTOM;
 		} else {
-			int over = (height - 16 - h1 - h2) / 2;
-			y[1] = height - 1;
-			y[0] = y[1] - h1 - over;
-			y[2] = 14 + 1;
-			y[3] = y[2] + h2 + over;
+			int over = (height - h) / 2;
+			this->area_msg1.bottom = height - WD_FRAMERECT_BOTTOM;
+			this->area_msg1.top    = this->area_msg1.bottom - h1 - over;
+			this->area_msg2.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
+			this->area_msg2.bottom = this->area_msg2.top + h2 + over;
 		}
 
 		this->FindWindowPlacementAndResize(width, height);
@@ -618,8 +622,10 @@ public:
 			DrawCompanyManagerFace(c->face, c->colour, this->widget[EMW_FACE].left, this->widget[EMW_FACE].top);
 		}
 
-		DrawStringMultiLine(this->widget[EMW_MESSAGE].left, this->widget[EMW_MESSAGE].right, y[2], y[3], this->message_2, TC_FROMSTRING, SA_CENTER);
-		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiLine(this->widget[EMW_MESSAGE].left, this->widget[EMW_MESSAGE].right, y[0], y[1], this->message_1, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(this->area_msg2.left, this->area_msg2.right, this->area_msg2.top, this->area_msg2.bottom, this->message_2, TC_FROMSTRING, SA_CENTER);
+		if (this->message_1 != INVALID_STRING_ID) {
+			DrawStringMultiLine(this->area_msg1.left, this->area_msg1.right, this->area_msg1.top, this->area_msg1.bottom, this->message_1, TC_FROMSTRING, SA_CENTER);
+		}
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
 		SwitchToNormalRefStack();
