@@ -556,50 +556,50 @@ struct ErrmsgWindow : public Window {
 private:
 	uint duration;                  ///< Length of display of the message. 0 means forever,
 	uint64 decode_params[20];       ///< Parameters of the message strings.
-	StringID message_1;             ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
-	StringID message_2;             ///< General error message showed in first line. Must be valid.
+	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
+	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
 	bool show_company_manager_face; ///< Display the face of the manager in the window.
 
-	Rect area_msg1; ///< Area available for #message_1 in the #EMW_MESSAGE widget.
-	Rect area_msg2; ///< Area available for #message_2 in the #EMW_MESSAGE widget.
+	Rect area_detailed; ///< Area available for #detailed_msg in the #EMW_MESSAGE widget.
+	Rect area_summary;  ///< Area available for #summary_msg in the #EMW_MESSAGE widget.
 
 public:
-	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
+	ErrmsgWindow(Point pt, int width, int height, StringID detailed_msg, StringID summary_msg, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
 			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
 			show_company_manager_face(show_company_manager_face)
 	{
 		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
-		this->message_1 = msg1;
-		this->message_2 = msg2;
-		this->desc_flags = WDF_STD_BTN | WDF_DEF_WIDGET;
+		this->detailed_msg = detailed_msg;
+		this->summary_msg  = summary_msg;
+		this->desc_flags   = WDF_STD_BTN | WDF_DEF_WIDGET;
 
 		SwitchToErrorRefStack();
 		RewindTextRefStack();
 
-		assert(msg2 != INVALID_STRING_ID);
+		assert(summary_msg != INVALID_STRING_ID);
 
-		this->area_msg1.left  = this->area_msg2.left  = this->widget[EMW_MESSAGE].left  + WD_FRAMETEXT_LEFT;
-		this->area_msg1.right = this->area_msg2.right = this->widget[EMW_MESSAGE].right - WD_FRAMETEXT_RIGHT;
-		int text_width = this->area_msg1.right - this->area_msg1.left + 1;
+		this->area_detailed.left  = this->area_summary.left  = this->widget[EMW_MESSAGE].left  + WD_FRAMETEXT_LEFT;
+		this->area_detailed.right = this->area_summary.right = this->widget[EMW_MESSAGE].right - WD_FRAMETEXT_RIGHT;
+		int text_width = this->area_detailed.right - this->area_detailed.left + 1;
 
-		int h2 = GetStringHeight(msg2, text_width); // msg2 is printed first
-		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : GetStringHeight(msg1, text_width);
+		int height_summary  = GetStringHeight(summary_msg, text_width); // summary_msg is printed first
+		int height_detailed = (detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(detailed_msg, text_width);
 
 		SwitchToNormalRefStack();
 
-		int h = this->widget[EMW_MESSAGE].top + 2 + h1 + h2;
+		int h = this->widget[EMW_MESSAGE].top + 2 + height_detailed + height_summary;
 		height = max<int>(height, h + 4);
 
-		if (msg1 == INVALID_STRING_ID) {
-			this->area_msg2.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
-			this->area_msg2.bottom = height - WD_FRAMERECT_BOTTOM;
+		if (detailed_msg == INVALID_STRING_ID) {
+			this->area_summary.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
+			this->area_summary.bottom = height - WD_FRAMERECT_BOTTOM;
 		} else {
 			int over = (height - h) / 2;
-			this->area_msg1.bottom = height - WD_FRAMERECT_BOTTOM;
-			this->area_msg1.top    = this->area_msg1.bottom - h1 - over;
-			this->area_msg2.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
-			this->area_msg2.bottom = this->area_msg2.top + h2 + over;
+			this->area_detailed.bottom = height - WD_FRAMERECT_BOTTOM;
+			this->area_detailed.top    = this->area_detailed.bottom - height_detailed - over;
+			this->area_summary.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
+			this->area_summary.bottom = this->area_summary.top + height_summary + over;
 		}
 
 		this->FindWindowPlacementAndResize(width, height);
@@ -622,9 +622,9 @@ public:
 			DrawCompanyManagerFace(c->face, c->colour, this->widget[EMW_FACE].left, this->widget[EMW_FACE].top);
 		}
 
-		DrawStringMultiLine(this->area_msg2.left, this->area_msg2.right, this->area_msg2.top, this->area_msg2.bottom, this->message_2, TC_FROMSTRING, SA_CENTER);
-		if (this->message_1 != INVALID_STRING_ID) {
-			DrawStringMultiLine(this->area_msg1.left, this->area_msg1.right, this->area_msg1.top, this->area_msg1.bottom, this->message_1, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(this->area_summary.left, this->area_summary.right, this->area_summary.top, this->area_summary.bottom, this->summary_msg, TC_FROMSTRING, SA_CENTER);
+		if (this->detailed_msg != INVALID_STRING_ID) {
+			DrawStringMultiLine(this->area_detailed.left, this->area_detailed.right, this->area_detailed.top, this->area_detailed.bottom, this->detailed_msg, TC_FROMSTRING, SA_CENTER);
 		}
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
@@ -663,13 +663,13 @@ public:
 
 /**
  * Display an error message in a window.
- * @param msg_1 Detailed error message showed in second line. Can be INVALID_STRING_ID.
- * @param msg_2 General error message showed in first line. Must be valid.
- * @param x World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
- * @param y World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
- * @param no_timeout Set to true, if the message is that important that it should not close automatically after some time.
+ * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
+ * @param summary_msg  General error message showed in first line. Must be valid.
+ * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param no_timeout   Set to true, if the message is that important that it should not close automatically after some time.
  */
-void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y, bool no_timeout)
+void ShowErrorMessage(StringID detailed_msg, StringID summary_msg, int x, int y, bool no_timeout)
 {
 	static Widget *generated_errmsg_widgets = NULL;
 	static Widget *generated_errmsg_face_widgets = NULL;
@@ -678,12 +678,12 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y, bool no_time
 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
-	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
+	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
 
 	Point pt;
 	const ViewPort *vp;
 
-	if (msg_1 != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) {
+	if (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
@@ -703,7 +703,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y, bool no_time
 
 		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets),
 													_errmsg_widgets, &generated_errmsg_widgets);
-		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, wid, false, no_timeout);
+		new ErrmsgWindow(pt, 240, 46, detailed_msg, summary_msg, wid, false, no_timeout);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -717,7 +717,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y, bool no_time
 
 		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets),
 													_errmsg_face_widgets, &generated_errmsg_face_widgets);
-		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, wid, true, no_timeout);
+		new ErrmsgWindow(pt, 334, 137, detailed_msg, summary_msg, wid, true, no_timeout);
 	}
 }
 

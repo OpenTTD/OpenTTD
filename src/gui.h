@@ -65,7 +65,7 @@ void ShowIndustryDirectory();
 void ShowSubsidiesList();
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
-void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y, bool no_timeout = false);
+void ShowErrorMessage(StringID detailed_msg, StringID summary_msg, int x, int y, bool no_timeout = false);
 
 void ShowSmallMap();
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
