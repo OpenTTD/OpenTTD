@@ -941,7 +941,7 @@ public:
 
 			case VLW_STANDARD: // Company Name
 				SetDParam(0, STR_COMPANY_NAME);
-				SetDParam(1, owner);
+				SetDParam(1, index);
 				SetDParam(2, this->vscroll.GetCount());
 				break;
 
@@ -1166,7 +1166,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
 		ShowCompanyGroup(company, vehicle_type);
 	} else {
-		ShowVehicleListWindowLocal(company, VLW_STANDARD, vehicle_type, 0);
+		ShowVehicleListWindowLocal(company, VLW_STANDARD, vehicle_type, company);
 	}
 }
 
