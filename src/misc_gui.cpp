@@ -790,9 +790,9 @@ struct TooltipsWindow : public Window
 	uint64 params[5];           ///< The string parameters.
 	bool use_left_mouse_button; ///< Wait for left mouse button to close window (else, wait for right button).
 
-	TooltipsWindow(int x, int y, int width, int height, const Widget *widget,
+	TooltipsWindow(int x, int y, const Dimension &window_size, const Widget *widget,
 								 StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) :
-			Window(x, y, width, height, WC_TOOLTIPS, widget)
+			Window(x, y, window_size.width, window_size.height, WC_TOOLTIPS, widget)
 	{
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
@@ -848,8 +848,8 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	br.height = GetStringHeight(str, br.width);
 
 	/* increase slightly to have some space around the box */
-	br.width += 6;
-	br.height += 4;
+	br.width  += 2 + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+	br.height += 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 	/* Correctly position the tooltip position, watch out for window and cursor size
 	 * Clamp value to below main toolbar and above statusbar. If tooltip would
@@ -860,7 +860,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 
 	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets),
 													_tooltips_widgets, &generated_tooltips_widgets);
-	new TooltipsWindow(x, y, br.width, br.height, wid, str, paramcount, params, use_left_mouse_button);
+	new TooltipsWindow(x, y, br, wid, str, paramcount, params, use_left_mouse_button);
 }
 
 
