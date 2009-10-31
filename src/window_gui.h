@@ -639,6 +639,18 @@ public:
 	/*** Event handling ***/
 
 	/**
+	 * Compute the initial position of the window.
+	 * @param *desc         The pointer to the WindowDesc of the window to create.
+	 * @param sm_width      Smallest width of the window.
+	 * @param sm_height     Smallest height of the window.
+	 * @param window_number The window number of the new window.
+	 * @return Initial position of the top-left corner of the window.
+	 *
+	 * @note Due to the way C++ works, only windows with nested widgets can usefully override this function.
+	 */
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number);
+
+	/**
 	 * The window must be repainted.
 	 * @note This method should not change any state, it should only use drawing functions.
 	 */

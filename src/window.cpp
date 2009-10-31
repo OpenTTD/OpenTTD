@@ -1310,6 +1310,11 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 	return pt;
 }
 
+/* virtual */ Point Window::OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+{
+	return LocalGetWindowPlacement(desc, sm_width, sm_height, window_number);
+}
+
 /**
  * Set the positions of a new window from a WindowDesc and open it.
  *
@@ -1356,7 +1361,7 @@ void Window::FinishInitNested(const WindowDesc *desc, WindowNumber window_number
 {
 	this->InitializeData(desc->cls, NULL, window_number);
 	this->desc_flags = desc->flags;
-	Point pt = LocalGetWindowPlacement(desc, this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
+	Point pt = this->OnInitialPosition(desc, this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
 }
