@@ -791,9 +791,8 @@ struct TooltipsWindow : public Window
 	byte paramcount;            ///< Number of string parameters in #string_id.
 	uint64 params[5];           ///< The string parameters.
 	bool use_left_mouse_button; ///< Wait for left mouse button to close window (else, wait for right button).
-	Dimension window_size;      ///< Size of the window.
 
-	TooltipsWindow(const Dimension &window_size, StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) : Window()
+	TooltipsWindow(StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) : Window()
 	{
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
@@ -801,8 +800,6 @@ struct TooltipsWindow : public Window
 		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
 		this->use_left_mouse_button = use_left_mouse_button;
-
-		this->window_size = window_size;
 
 		this->InitNested(&_tool_tips_desc);
 
@@ -826,7 +823,14 @@ struct TooltipsWindow : public Window
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
 		/* There is only one widget. */
-		*size = this->window_size;
+		for (uint i = 0; i != this->paramcount; i++) SetDParam(i, this->params[i]);
+
+		size->width  = min(GetStringBoundingBox(this->string_id).width, 194);
+		size->height = GetStringHeight(this->string_id, size->width);
+
+		/* Increase slightly to have some space around the box. */
+		size->width  += 2 + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+		size->height += 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -867,17 +871,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 
 	if (str == STR_NULL) return;
 
-	for (uint i = 0; i != paramcount; i++) SetDParam(i, params[i]);
-
-	Dimension br;
-	br.width  = min(GetStringBoundingBox(str).width, 194);
-	br.height = GetStringHeight(str, br.width);
-
-	/* increase slightly to have some space around the box */
-	br.width  += 2 + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-	br.height += 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-
-	new TooltipsWindow(br, str, paramcount, params, use_left_mouse_button);
+	new TooltipsWindow(str, paramcount, params, use_left_mouse_button);
 }
 
 
