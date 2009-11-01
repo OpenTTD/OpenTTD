@@ -589,19 +589,27 @@ public:
 			return pt;
 		}
 
+		/* Find the screen part between the main toolbar at the top, and the statusbar at the bottom.
+		 * Add a fixed distance 20 to make it less cluttered.
+		 */
+		const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		int scr_top = w->top + w->height + 20;
+		w = FindWindowById(WC_STATUS_BAR, 0);
+		int scr_bot = w->top - 20;
+
 		Point pt = RemapCoords2(this->position.x, this->position.y);
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 		if (this->detailed_msg != STR_ERROR_OWNED_BY || GetDParamX(this->decode_params, 2) >= MAX_COMPANIES) {
 			/* move x pos to opposite corner */
 			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
-			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - sm_width - 20 : 20;
+			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - sm_width - 20 : 20; // Stay 20 pixels away from the edge of the screen.
 
 			/* move y pos to opposite corner */
 			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
-			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
+			pt.y = (pt.y < (_screen.height >> 1)) ? scr_bot - sm_height : scr_top;
 		} else {
 			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (sm_width / 2),  0, _screen.width  - sm_width);
-			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), 22, _screen.height - sm_height);
+			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), scr_top, scr_bot - sm_height);
 		}
 		return pt;
 	}
@@ -798,13 +806,21 @@ struct TooltipsWindow : public Window
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
+		/* Find the screen part between the main toolbar at the top, and the statusbar at the bottom.
+		 * Add a fixed distance 2 so the tooltip floats free from both bars.
+		 */
+		const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		int scr_top = w->top + w->height + 2;
+		w = FindWindowById(WC_STATUS_BAR, 0);
+		int scr_bot = w->top - 2;
+
 		Point pt;
 
 		/* Correctly position the tooltip position, watch out for window and cursor size
 		 * Clamp value to below main toolbar and above statusbar. If tooltip would
 		 * go below window, flip it so it is shown above the cursor */
-		pt.y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
-		if (pt.y + sm_height > _screen.height - 12) pt.y = min(_cursor.pos.y + _cursor.offs.y - 5, _screen.height - 12) - sm_height;
+		pt.y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, scr_top, scr_bot);
+		if (pt.y + sm_height > scr_bot) pt.y = min(_cursor.pos.y + _cursor.offs.y - 5, scr_bot) - sm_height;
 		pt.x = Clamp(_cursor.pos.x - (sm_width >> 1), 0, _screen.width - sm_width);
 
 		return pt;
