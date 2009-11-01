@@ -46,6 +46,7 @@ struct ScreenshotFormat {
 #pragma pack(push, 1)
 #endif
 
+/** BMP File Header (stored in little endian) */
 struct BitmapFileHeader {
 	uint16 type;
 	uint32 size;
@@ -58,6 +59,7 @@ assert_compile(sizeof(BitmapFileHeader) == 14);
 #pragma pack(pop)
 #endif
 
+/** BMP Info Header (stored in little endian) */
 struct BitmapInfoHeader {
 	uint32 size;
 	int32 width, height;
@@ -66,47 +68,63 @@ struct BitmapInfoHeader {
 };
 assert_compile(sizeof(BitmapInfoHeader) == 40);
 
+/** Format of palette data in BMP header */
 struct RgbQuad {
 	byte blue, green, red, reserved;
 };
 assert_compile(sizeof(RgbQuad) == 4);
 
-/* generic .BMP writer */
+/** Pixel data in 24bpp BMP */
+struct RgbTriplet {
+	byte b, g, r;
+};
+assert_compile(sizeof(RgbTriplet) == 3);
+
+/**
+ * Generic .BMP writer
+ * @param name file name including extension
+ * @param callb callback used for gathering rendered image
+ * @param userdata parameters forwarded to #callb
+ * @param w width in pixels
+ * @param h height in pixels
+ * @param pixelformat bits per pixel
+ * @param paletter colour paletter (for 8bpp mode)
+ * @return was everything ok?
+ */
 static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
-	BitmapFileHeader bfh;
-	BitmapInfoHeader bih;
-	RgbQuad rq[256];
-	FILE *f;
-	uint i, padw;
-	uint n, maxlines;
-	uint pal_size = 0;
-	uint bpp = pixelformat / 8;
+	uint bpp; // bytes per pixel
+	switch (pixelformat) {
+		case 8:  bpp = 1; break;
+		/* 32bpp mode is saved as 24bpp BMP */
+		case 32: bpp = 3; break;
+		/* Only implemented for 8bit and 32bit images so far */
+		default: return false;
+	}
 
-	/* only implemented for 8bit and 32bit images so far. */
-	if (pixelformat != 8 && pixelformat != 32) return false;
-
-	f = fopen(name, "wb");
+	FILE *f = fopen(name, "wb");
 	if (f == NULL) return false;
 
-	/* each scanline must be aligned on a 32bit boundary */
-	padw = w;
-	if (pixelformat == 8) padw = Align(padw, 4);
+	/* Each scanline must be aligned on a 32bit boundary */
+	uint bytewidth = Align(w * bpp, 4); // bytes per line in file
 
-	if (pixelformat == 8) pal_size = sizeof(RgbQuad) * 256;
+	/* Size of palette. Only present for 8bpp mode */
+	uint pal_size = pixelformat == 8 ? sizeof(RgbQuad) * 256 : 0;
 
-	/* setup the file header */
+	/* Setup the file header */
+	BitmapFileHeader bfh;
 	bfh.type = TO_LE16('MB');
-	bfh.size = TO_LE32(sizeof(bfh) + sizeof(bih) + pal_size + padw * h * bpp);
+	bfh.size = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size + bytewidth * h);
 	bfh.reserved = 0;
-	bfh.off_bits = TO_LE32(sizeof(bfh) + sizeof(bih) + pal_size);
+	bfh.off_bits = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size);
 
-	/* setup the info header */
+	/* Setup the info header */
+	BitmapInfoHeader bih;
 	bih.size = TO_LE32(sizeof(BitmapInfoHeader));
 	bih.width = TO_LE32(w);
 	bih.height = TO_LE32(h);
 	bih.planes = TO_LE16(1);
-	bih.bitcount = TO_LE16(pixelformat);
+	bih.bitcount = TO_LE16(bpp * 8);
 	bih.compression = 0;
 	bih.sizeimage = 0;
 	bih.xpels = 0;
@@ -114,57 +132,66 @@ static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, 
 	bih.clrused = 0;
 	bih.clrimp = 0;
 
+	/* Write file header and info header */
+	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1 || fwrite(&bih, sizeof(bih), 1, f) != 1) {
+		fclose(f);
+		return false;
+	}
+
 	if (pixelformat == 8) {
-		/* convert the palette to the windows format */
-		for (i = 0; i != 256; i++) {
+		/* Convert the palette to the windows format */
+		RgbQuad rq[256];
+		for (uint i = 0; i < 256; i++) {
 			rq[i].red   = palette[i].r;
 			rq[i].green = palette[i].g;
 			rq[i].blue  = palette[i].b;
 			rq[i].reserved = 0;
 		}
+		/* Write the palette */
+		if (fwrite(rq, sizeof(rq), 1, f) != 1) {
+			fclose(f);
+			return false;
+		}
 	}
 
-	/* write file header and info header and palette */
-	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1 || fwrite(&bih, sizeof(bih), 1, f) != 1) {
-		fclose(f);
-		return false;
-	}
-	if (pixelformat == 8 && fwrite(rq, sizeof(rq), 1, f) != 1) {
-		fclose(f);
-		return false;
-	}
+	/* Try to use 64k of memory, store between 16 and 128 lines */
+	uint maxlines = Clamp(65536 / (w * pixelformat / 8), 16, 128); // number of lines per iteration
 
-	/* use by default 64k temp memory */
-	maxlines = Clamp(65536 / padw, 16, 128);
+	uint8 *buff = MallocT<uint8>(maxlines * w * pixelformat / 8); // buffer which is rendered to
+	uint8 *line = AllocaM(uint8, bytewidth); // one line, stored to file
+	memset(line, 0, bytewidth);
 
-	/* now generate the bitmap bits */
-	uint8 *buff = CallocT<uint8>(padw * maxlines * bpp); // by default generate 128 lines at a time.
-
-	/* start at the bottom, since bitmaps are stored bottom up. */
+	/* Start at the bottom, since bitmaps are stored bottom up */
 	do {
-		/* determine # lines */
-		n = min(h, maxlines);
+		uint n = min(h, maxlines);
 		h -= n;
 
-		/* render the pixels */
-		callb(userdata, buff, h, padw, n);
+		/* Render the pixels */
+		callb(userdata, buff, h, w, n);
 
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
-		if (pixelformat == 32) {
-			/* Data stored in BMP are always little endian,
-			 * but we have big endian data in buffer */
-			uint32 *buff32 = (uint32 *)buff;
-			for (i = 0; i < padw * n; i++) buff32[i] = BSWAP32(buff32[i]);
-		}
-#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
-
-		/* write each line */
-		while (n)
-			if (fwrite(buff + (--n) * padw * bpp, padw * bpp, 1, f) != 1) {
+		/* Write each line */
+		while (n-- != 0) {
+			if (pixelformat == 8) {
+				/* Move to 'line', leave last few pixels in line zeroed */
+				memcpy(line, buff + n * w, w);
+			} else {
+				/* Convert from 'native' 32bpp to BMP-like 24bpp.
+				 * Works for both big and little endian machines */
+				Colour *src = ((Colour *)buff) + n * w;
+				RgbTriplet *dst = (RgbTriplet *)line;
+				for (uint i = 0; i < w; i++) {
+					dst[i].r = src[i].r;
+					dst[i].g = src[i].g;
+					dst[i].b = src[i].b;
+				}
+			}
+			/* Write to file */
+			if (fwrite(line, bytewidth, 1, f) != 1) {
 				free(buff);
 				fclose(f);
 				return false;
 			}
+		}
 	} while (h != 0);
 
 	free(buff);
