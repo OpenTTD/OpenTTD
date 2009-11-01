@@ -24,7 +24,7 @@ enum ScreenshotType {
 };
 
 bool MakeScreenshot();
-void SetScreenshotType(ScreenshotType t);
+void RequestScreenshot(ScreenshotType t, const char *name);
 bool IsScreenshotRequested();
 
 extern char _screenshot_format_name[8];

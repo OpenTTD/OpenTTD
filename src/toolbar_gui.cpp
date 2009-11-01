@@ -748,12 +748,12 @@ static void ToolbarHelpClick(Window *w)
 
 static void MenuClickSmallScreenshot()
 {
-	SetScreenshotType(SC_VIEWPORT);
+	RequestScreenshot(SC_VIEWPORT, NULL);
 }
 
 static void MenuClickWorldScreenshot()
 {
-	SetScreenshotType(SC_WORLD);
+	RequestScreenshot(SC_WORLD, NULL);
 }
 
 static void MenuClickHelp(int index)

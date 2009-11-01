@@ -539,21 +539,20 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 
 static char *MakeScreenshotName(const char *ext)
 {
-	static char filename[MAX_PATH];
-	int serial;
-	size_t len;
-
-	if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_company == COMPANY_SPECTATOR) {
-		strecpy(_screenshot_name, "screenshot", lastof(_screenshot_name));
-	} else {
-		GenerateDefaultSaveName(_screenshot_name, lastof(_screenshot_name));
+	if (_screenshot_name[0] == '\0') {
+		if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_company == COMPANY_SPECTATOR) {
+			strecpy(_screenshot_name, "screenshot", lastof(_screenshot_name));
+		} else {
+			GenerateDefaultSaveName(_screenshot_name, lastof(_screenshot_name));
+		}
 	}
 
 	/* Add extension to screenshot file */
-	len = strlen(_screenshot_name);
+	size_t len = strlen(_screenshot_name);
 	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
 
-	for (serial = 1;; serial++) {
+	static char filename[20 + 1]; // 1 character more to detect overflow
+	for (uint serial = 1;; serial++) {
 		if (snprintf(filename, lengthof(filename), "%s%s", _personal_dir, _screenshot_name) >= (int)lengthof(filename)) {
 			/* We need more characters than MAX_PATH -> end with error */
 			filename[0] = '\0';
@@ -561,15 +560,17 @@ static char *MakeScreenshotName(const char *ext)
 		}
 		if (!FileExists(filename)) break;
 		/* If file exists try another one with same name, but just with a higher index */
-		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%d.%s", serial, ext);
+		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%u.%s", serial, ext);
 	}
 
 	return filename;
 }
 
-void SetScreenshotType(ScreenshotType t)
+void RequestScreenshot(ScreenshotType t, const char *name)
 {
 	_screenshot_type = t;
+	_screenshot_name[0] = '\0';
+	if (name != NULL) strecpy(_screenshot_name, name, lastof(_screenshot_name));
 }
 
 bool IsScreenshotRequested()

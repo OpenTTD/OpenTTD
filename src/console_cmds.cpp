@@ -1218,21 +1218,36 @@ DEF_CONSOLE_CMD(ConAlias)
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
-		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | no_con]'");
-		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create the screenshot");
+		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | no_con] [file name]'");
+		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create"
+				"the screenshot. Screenshots of whole map are always drawn without console");
 		return true;
 	}
 
 	if (argc > 3) return false;
 
-	SetScreenshotType(SC_VIEWPORT);
-	if (argc > 1) {
-		if (strcmp(argv[1], "big") == 0 || (argc == 3 && strcmp(argv[2], "big") == 0))
-			SetScreenshotType(SC_WORLD);
+	ScreenshotType type = SC_VIEWPORT;
+	const char *name = NULL;
 
-		if (strcmp(argv[1], "no_con") == 0 || (argc == 3 && strcmp(argv[2], "no_con") == 0))
+	if (argc > 1) {
+		if (strcmp(argv[1], "big") == 0) {
+			/* screenshot big [filename] */
+			type = SC_WORLD;
+			if (argc > 2) name = argv[2];
+		} else if (strcmp(argv[1], "no_con") == 0) {
+			/* screenshot no_con [filename] */
 			IConsoleClose();
+			if (argc > 2) name = argv[2];
+		} else if (argc == 2) {
+			/* screenshot filename */
+			name = argv[1];
+		} else {
+			/* screenshot argv[1] argv[2] - invalid*/
+			return false;
+		}
 	}
+
+	RequestScreenshot(type, name);
 
 	return true;
 }
