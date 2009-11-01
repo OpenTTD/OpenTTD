@@ -775,7 +775,6 @@ void HandleExitGameRequest()
 static void ShowScreenshotResult(bool b)
 {
 	if (b) {
-		extern char _screenshot_name[];
 		SetDParamStr(0, _screenshot_name);
 		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, 0, 0);
 	} else {

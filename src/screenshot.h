@@ -30,5 +30,6 @@ bool IsScreenshotRequested();
 extern char _screenshot_format_name[8];
 extern uint _num_screenshot_formats;
 extern uint _cur_screenshot_format;
+extern char _screenshot_name[];
 
 #endif /* SCREENSHOT_H */

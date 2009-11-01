@@ -27,7 +27,7 @@ char _screenshot_format_name[8];
 uint _num_screenshot_formats;
 uint _cur_screenshot_format;
 char _screenshot_name[128];
-ScreenshotType current_screenshot_type;
+static ScreenshotType _screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */
 typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, uint n);
@@ -460,7 +460,7 @@ void InitializeScreenshotFormats()
 		}
 	_cur_screenshot_format = j;
 	_num_screenshot_formats = lengthof(_screenshot_formats);
-	current_screenshot_type = SC_NONE;
+	_screenshot_type = SC_NONE;
 }
 
 const char *GetScreenshotFormatDesc(int i)
@@ -569,12 +569,12 @@ static char *MakeScreenshotName(const char *ext)
 
 void SetScreenshotType(ScreenshotType t)
 {
-	current_screenshot_type = t;
+	_screenshot_type = t;
 }
 
 bool IsScreenshotRequested()
 {
-	return (current_screenshot_type != SC_NONE);
+	return (_screenshot_type != SC_NONE);
 }
 
 static bool MakeSmallScreenshot()
@@ -604,14 +604,14 @@ static bool MakeWorldScreenshot()
 
 bool MakeScreenshot()
 {
-	switch (current_screenshot_type) {
+	switch (_screenshot_type) {
 		case SC_VIEWPORT:
 			UndrawMouseCursor();
 			DrawDirtyBlocks();
-			current_screenshot_type = SC_NONE;
+			_screenshot_type = SC_NONE;
 			return MakeSmallScreenshot();
 		case SC_WORLD:
-			current_screenshot_type = SC_NONE;
+			_screenshot_type = SC_NONE;
 			return MakeWorldScreenshot();
 		default: return false;
 	}
