@@ -551,7 +551,7 @@ static char *MakeScreenshotName(const char *ext)
 	size_t len = strlen(_screenshot_name);
 	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
 
-	static char filename[20 + 1]; // 1 character more to detect overflow
+	static char filename[MAX_PATH];
 	for (uint serial = 1;; serial++) {
 		if (snprintf(filename, lengthof(filename), "%s%s", _personal_dir, _screenshot_name) >= (int)lengthof(filename)) {
 			/* We need more characters than MAX_PATH -> end with error */
