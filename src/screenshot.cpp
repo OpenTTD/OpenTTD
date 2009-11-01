@@ -554,7 +554,11 @@ static char *MakeScreenshotName(const char *ext)
 	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
 
 	for (serial = 1;; serial++) {
-		snprintf(filename, lengthof(filename), "%s%s", _personal_dir, _screenshot_name);
+		if (snprintf(filename, lengthof(filename), "%s%s", _personal_dir, _screenshot_name) >= (int)lengthof(filename)) {
+			/* We need more characters than MAX_PATH -> end with error */
+			filename[0] = '\0';
+			break;
+		}
 		if (!FileExists(filename)) break;
 		/* If file exists try another one with same name, but just with a higher index */
 		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%d.%s", serial, ext);
