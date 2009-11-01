@@ -1652,6 +1652,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nueva co
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :- Ninguno -
 STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
+STR_NETWORK_CLIENTLIST_BAN                                      :Banear
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinero
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Hablar a todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Hablar a empresa
@@ -2666,7 +2667,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformable a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esfuerzo de Tracción {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T Máxima: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículo - click en vehículo para información
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos - click en vehículo para información
@@ -2784,6 +2785,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de m
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Coste Operativo: {CURRENCY}/año{}Capacidad: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidad: {VELOCITY}  Potencia: {POWER}  F.T. Máxima: {7:FORCE}{}Coste de operación: {CURRENCY}/año{}Capacidad: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Coste: {CURRENCY} Velocidad Max.: {VELOCITY}{}Capacidad: {CARGO}, {CARGO}{}Coste Mantenimiento: {CURRENCY}/año
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Coste: {CURRENCY} Velocidad Max.: {VELOCITY}{}Capacidad: {CARGO}{}Coste Mantenimiento: {CURRENCY}/año
 

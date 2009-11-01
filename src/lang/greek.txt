@@ -29,70 +29,70 @@ STR_JUST_NOTHING                                                :Τίποτα
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Επιβάτες
-STR_CARGO_PLURAL_COAL                                           :Κάρβουνο
-STR_CARGO_PLURAL_MAIL                                           :Ταχυδρομείο
-STR_CARGO_PLURAL_OIL                                            :Πετρέλαιο
-STR_CARGO_PLURAL_LIVESTOCK                                      :Ζώα
-STR_CARGO_PLURAL_GOODS                                          :Αγαθά
-STR_CARGO_PLURAL_GRAIN                                          :Σιτηρά
-STR_CARGO_PLURAL_WOOD                                           :Ξυλεία
-STR_CARGO_PLURAL_IRON_ORE                                       :Σιδηρομετάλλευμα
-STR_CARGO_PLURAL_STEEL                                          :Χάλυβας
-STR_CARGO_PLURAL_VALUABLES                                      :Τιμαλφή
-STR_CARGO_PLURAL_COPPER_ORE                                     :Μετάλλευμα Χαλκού
-STR_CARGO_PLURAL_MAIZE                                          :Καλαμπόκι
-STR_CARGO_PLURAL_FRUIT                                          :Φρούτα
-STR_CARGO_PLURAL_DIAMONDS                                       :Διαμάντια
-STR_CARGO_PLURAL_FOOD                                           :Τρόφιμα
-STR_CARGO_PLURAL_PAPER                                          :Χαρτί
-STR_CARGO_PLURAL_GOLD                                           :Χρυσός
-STR_CARGO_PLURAL_WATER                                          :Νερό
-STR_CARGO_PLURAL_WHEAT                                          :Σιτάρι
-STR_CARGO_PLURAL_RUBBER                                         :Λάστιχο
-STR_CARGO_PLURAL_SUGAR                                          :Ζάχαρη
-STR_CARGO_PLURAL_TOYS                                           :Παιχνίδια
-STR_CARGO_PLURAL_CANDY                                          :Γλυκίσματα
-STR_CARGO_PLURAL_COLA                                           :Κόλα
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Μαλλι της γριας
-STR_CARGO_PLURAL_BUBBLES                                        :Φυσαλίδες
-STR_CARGO_PLURAL_TOFFEE                                         :Ζαχαρωτά
-STR_CARGO_PLURAL_BATTERIES                                      :Μπαταρίες
-STR_CARGO_PLURAL_PLASTIC                                        :Πλαστικά
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Αναψυκτικά
+STR_CARGO_PLURAL_COAL                                           :{G=m}Άνθρακες
+STR_CARGO_PLURAL_MAIL                                           :{G=f}Αλληλογραφία
+STR_CARGO_PLURAL_OIL                                            :{G=n}Πετρέλαια
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Ζώα
+STR_CARGO_PLURAL_GOODS                                          :{G=n}Αγαθά
+STR_CARGO_PLURAL_GRAIN                                          :{G=n}Σιτηρά
+STR_CARGO_PLURAL_WOOD                                           :{G=f}Ξυλεία
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Σιδηρομεταλλεύματα
+STR_CARGO_PLURAL_STEEL                                          :{G=m}Χάλυβες
+STR_CARGO_PLURAL_VALUABLES                                      :{G=n}Πολύτιμα είδη
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=n}Μεταλλεύματα Χαλκού
+STR_CARGO_PLURAL_MAIZE                                          :{G=n}Καλαμπόκια
+STR_CARGO_PLURAL_FRUIT                                          :{G=n}Φρούτα
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=n}Διαμάντια
+STR_CARGO_PLURAL_FOOD                                           :{G=n}Τρόφιμα
+STR_CARGO_PLURAL_PAPER                                          :{G=n}Χαρτιά
+STR_CARGO_PLURAL_GOLD                                           :{G=m}Χρυσοί
+STR_CARGO_PLURAL_WATER                                          :{G=n}Νερά
+STR_CARGO_PLURAL_WHEAT                                          :Σιτάρια
+STR_CARGO_PLURAL_RUBBER                                         :{G=n}Λάστιχα
+STR_CARGO_PLURAL_SUGAR                                          :{G=f}Ζάχαρες
+STR_CARGO_PLURAL_TOYS                                           :{G=n}Παιχνίδια
+STR_CARGO_PLURAL_CANDY                                          :{G=n}Γλυκίσματα
+STR_CARGO_PLURAL_COLA                                           :{G=f}Κόλα
+STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Μαλλιά της γριάς
+STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Φυσαλίδες
+STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Ζαχαρωτά
+STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Μπαταρίες
+STR_CARGO_PLURAL_PLASTIC                                        :{G=n}Πλαστικά
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=n}Αναψυκτικά
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Επιβάτης
-STR_CARGO_SINGULAR_COAL                                         :Κάρβουνο
-STR_CARGO_SINGULAR_MAIL                                         :Ταχυδρομείο
-STR_CARGO_SINGULAR_OIL                                          :Πετρέλαιο
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Ζώα
-STR_CARGO_SINGULAR_GOODS                                        :Αγαθά
-STR_CARGO_SINGULAR_GRAIN                                        :Σιτηρά
-STR_CARGO_SINGULAR_WOOD                                         :Ξυλεία
-STR_CARGO_SINGULAR_IRON_ORE                                     :Σιδηρομετάλλευμα
-STR_CARGO_SINGULAR_STEEL                                        :Χάλυβας
-STR_CARGO_SINGULAR_VALUABLES                                    :Τιμαλφή
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Μετάλλευμα Χαλκού
-STR_CARGO_SINGULAR_MAIZE                                        :Καλαμπόκι
-STR_CARGO_SINGULAR_FRUIT                                        :Φρούτα
-STR_CARGO_SINGULAR_DIAMOND                                      :Διαμάντια
-STR_CARGO_SINGULAR_FOOD                                         :Τρόφιμα
-STR_CARGO_SINGULAR_PAPER                                        :Χαρτί
-STR_CARGO_SINGULAR_GOLD                                         :Χρυσός
-STR_CARGO_SINGULAR_WATER                                        :Νερό
-STR_CARGO_SINGULAR_WHEAT                                        :Σιτάρι
-STR_CARGO_SINGULAR_RUBBER                                       :Καουτσούκ
-STR_CARGO_SINGULAR_SUGAR                                        :Ζάχαρη
-STR_CARGO_SINGULAR_TOY                                          :Παιχνίδι
-STR_CARGO_SINGULAR_CANDY                                        :Γλυκό
-STR_CARGO_SINGULAR_COLA                                         :Κόλα
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Μαλλί της γριάς
-STR_CARGO_SINGULAR_BUBBLE                                       :Φυσαλίδα
-STR_CARGO_SINGULAR_TOFFEE                                       :Ζαχαρωτά
-STR_CARGO_SINGULAR_BATTERY                                      :Μπαταρία
-STR_CARGO_SINGULAR_PLASTIC                                      :Πλαστικό
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Αναψυκτικό
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Επιβάτης
+STR_CARGO_SINGULAR_COAL                                         :{G=m}Άνθρακας
+STR_CARGO_SINGULAR_MAIL                                         :{G=f}Αλληλογραφία
+STR_CARGO_SINGULAR_OIL                                          :{G=n}Πετρέλαιο
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=n}Ζώο
+STR_CARGO_SINGULAR_GOODS                                        :{G=n}Αγαθό
+STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Σιτηρό
+STR_CARGO_SINGULAR_WOOD                                         :{G=f}Ξυλεία
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=n}Σιδηρομετάλλευμα
+STR_CARGO_SINGULAR_STEEL                                        :{G=m}Χάλυβας
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=n}Πολύτιμο είδος
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=n}Μετάλλευμα Χαλκού
+STR_CARGO_SINGULAR_MAIZE                                        :{G=n}Καλαμπόκι
+STR_CARGO_SINGULAR_FRUIT                                        :{G=n}Φρούτο
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=n}Διαμάντι
+STR_CARGO_SINGULAR_FOOD                                         :{G=n}Τρόφιμο
+STR_CARGO_SINGULAR_PAPER                                        :{G=n}Χαρτί
+STR_CARGO_SINGULAR_GOLD                                         :{G=m}Χρυσός
+STR_CARGO_SINGULAR_WATER                                        :{G=n}Νερό
+STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Σιτάρι
+STR_CARGO_SINGULAR_RUBBER                                       :{G=n}Λάστιχο
+STR_CARGO_SINGULAR_SUGAR                                        :{G=f}Ζάχαρη
+STR_CARGO_SINGULAR_TOY                                          :{G=n}Παιχνίδι
+STR_CARGO_SINGULAR_CANDY                                        :{G=n}Γλυκό
+STR_CARGO_SINGULAR_COLA                                         :{G=f}Κόλα
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Μαλλί της γριάς
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Φυσαλίδα
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Ζαχαρωτό
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Μπαταρία
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Πλαστικό
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=n}Αναψυκτικό
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -106,7 +106,7 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} σιτ
 STR_QUANTITY_WOOD                                               :{WEIGHT} ξύλου
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} μεταλλεύματος σιδήρου
 STR_QUANTITY_STEEL                                              :{WEIGHT} χάλυβα
-STR_QUANTITY_VALUABLES                                          :{COMMA} τσάντ{P α ες} με τιμαλφή
+STR_QUANTITY_VALUABLES                                          :{COMMA} τσάντ{P α ες} με πολύτιμα είδη
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} μεταλλεύματος χαλκού
 STR_QUANTITY_MAIZE                                              :{WEIGHT} καλαμποκιού
 STR_QUANTITY_FRUIT                                              :{WEIGHT} φρούτων
@@ -756,31 +756,31 @@ STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Συγχώνευση εταιριών μεταφοράς!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}Η εταιρία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Χρεωκοπία!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Η {STRING} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Η {STRING} έκλεισε από τους πιστωτές της και όλα τα περιουσιακά στοιχεία της εκποιήθηκαν!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ίδρυση νέας εταιρίας μεταφορών!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Διευθυντής)
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Νέο {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Νέ{G ος α ο} {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Η βιομηχανία {STRING} ανακοίνωσε άμεσο κλείσιμο!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια αναγκάζουν το {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια υλικών αναγκάζουν {G το τη το} {STRING} να κλείσει αμέσως!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Παγκόσμια Ύφεση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Ύφεση Τέλος!{}{}Κέρδη στο εμπόριο δίνει σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Η βιομηχανία {INDUSTRY} ανεβάζει την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στη {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{G Ο Η Το} {INDUSTRY} ανεβάζει την παραγωγή!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στα {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στ{G o η ο} {INDUSTRY} μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στη βιομηχανία {INDUSTRY} μειώθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
@@ -814,9 +814,9 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο στ�
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING} και {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε η προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STRING} προς {STRING} δεν χρηματοδοτείται πια.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {G το τη το} {STRING} προς {G το τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
@@ -1160,7 +1160,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Μετάβαση με αριστερό κλικ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Χρήση της {ORANGE}{STRING}{LTBLUE} ημερολογιακής μορφής στα αποθηκευμένα παιχνίδια.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :{G=f}μεγάλη (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -3047,10 +3047,10 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Η τι�
 STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Δώστε τίμη για να συγκριθεί
 
-STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Παρέλειψε
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Παράκαμψη
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Παρακάμπτει την τρέχουσα εντολή και ξεκινά την επόμενη. Ctrl+ κλικ παρακάπτει την επιλέγμενη εντολή
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Διέγραψε
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Διαγραφή
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Διαγράφη της επιλεγμένης εντολής
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Πήγαινε Στο
@@ -3585,61 +3585,61 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Τράπεζα-
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Ορυχείο Άνθρακα
-STR_INDUSTRY_NAME_POWER_STATION                                 :Σταθμός Ηλεκτρισμού
-STR_INDUSTRY_NAME_SAWMILL                                       :Πριονιστήριο
-STR_INDUSTRY_NAME_FOREST                                        :Δάσος
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Διυλιστήριο
-STR_INDUSTRY_NAME_OIL_RIG                                       :Πετρελαιοπηγή
-STR_INDUSTRY_NAME_FACTORY                                       :Εργοστάσιο
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Εργασίες Εκτύπωσης
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Χαλυβουργείο
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=n}Ορυχείο Άνθρακα
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=m}Σταθμός Ηλεκτρισμού
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=n}Πριονιστήριο
+STR_INDUSTRY_NAME_FOREST                                        :{G=n}Δάσος
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=n}Διυλιστήριο
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Πετρελαιοπηγή
+STR_INDUSTRY_NAME_FACTORY                                       :{G=n}Εργοστάσιο
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=n}Τυπογραφείο
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=n}Χαλυβουργείο
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Φάρμα
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Ορυχείο Μεταλλεύματος Χαλκού
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Πετρελαιοπηγές
-STR_INDUSTRY_NAME_BANK                                          :Τράπεζα
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Εργοστάσιο Επεξεργασίας Τροφίμων
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Μύλος Χαρτιού
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Χρυσορυχείο
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Τράπεζα
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Αδαμαντορυχείο
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Ορυχείο Μεταλλεύματος Σιδήρου
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Φυτεία Φρούτων
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Φυτεία Λάστιχου
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Προμήθεια Νερού
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Πύργος Νερού
-STR_INDUSTRY_NAME_FACTORY_2                                     :Εργοστάσιο
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=n}Ορυχείο Μεταλλεύματος Χαλκού
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Πετρελαιοπηγές
+STR_INDUSTRY_NAME_BANK                                          :{G=f}Τράπεζα
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=n}Εργοστάσιο Επεξεργασίας Τροφίμων
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Μύλος Χαρτιού
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=n}Χρυσωρυχείο
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=f}Τράπεζα
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=n}Αδαμαντορυχείο
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=n}Ορυχείο Μεταλλεύματος Σιδήρου
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Φυτεία Φρούτων
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Φυτεία Λάστιχου
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}Προμήθεια Νερού
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Πύργος Νερού
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=n}Εργοστάσιο
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Φάρμα
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Υλοτομείο
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Δάσος Μαλλιού της Γριάς
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Εργοστάσιο Γλυκών
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=n}Υλοτομίο
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=n}Δάσος Μαλλιού της Γριάς
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=n}Εργοστάσιο Γλυκών
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Φάρμα Μπαταριών
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Πηγές Κόλα
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Κατάστημα Παιχνιδιών
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Εργοστάσιο Παιχνιδιών
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Πηγές Πλαστικού
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Εργοστάσιο Αναψυκτικών
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Γεννήτρια Φυσαλίδων
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Λατομείο Ζαχαρωτών
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Ορυχείο Ζάχαρης
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Πηγές Κόλα
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Κατάστημα Παιχνιδιών
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=n}Εργοστάσιο Παιχνιδιών
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Πηγές Πλαστικού
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=n}Εργοστάσιο Αναψυκτικών
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=f}Γεννήτρια Φυσαλίδων
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=n}Λατομείο Ζαχαρωτών
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=n}Ορυχείο Ζάχαρης
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ανώνυμο
-STR_SV_TRAIN_NAME                                               :Τρένο {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Όχημα {COMMA}
-STR_SV_SHIP_NAME                                                :Πλοίο {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Αεροπλάνο {COMMA}
+STR_SV_TRAIN_NAME                                               :{G=n}Τρένο {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Όχημα Δρόμου {COMMA}
+STR_SV_SHIP_NAME                                                :{G=n}Πλοίο {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :{G=n}Αεροπλάνο {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} Βορράς
-STR_SV_STNAME_SOUTH                                             :{STRING} Νότος
-STR_SV_STNAME_EAST                                              :{STRING} Ανατολή
-STR_SV_STNAME_WEST                                              :{STRING} Δύση
-STR_SV_STNAME_CENTRAL                                           :{STRING} Κεντρικά
-STR_SV_STNAME_TRANSFER                                          :{STRING} Μεταφορά
+STR_SV_STNAME_NORTH                                             :Βόρειο {STRING}
+STR_SV_STNAME_SOUTH                                             :Νότιο {STRING}
+STR_SV_STNAME_EAST                                              :Ανατολικό {STRING}
+STR_SV_STNAME_WEST                                              :Δυτικό {STRING}
+STR_SV_STNAME_CENTRAL                                           :Κεντρικό {STRING}
+STR_SV_STNAME_TRANSFER                                          :Μετεπιβίβασης {STRING}
 STR_SV_STNAME_HALT                                              :Όρια {STRING}
 STR_SV_STNAME_VALLEY                                            :Κοιλάδα {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Λόφοι {STRING}
@@ -3660,7 +3660,7 @@ STR_SV_STNAME_UPPER                                             :Άνω {STRING}
 STR_SV_STNAME_LOWER                                             :Κάτω {STRING}
 STR_SV_STNAME_HELIPORT                                          :Ελικοδρόμιο {STRING}
 STR_SV_STNAME_FOREST                                            :Δάσος {STRING}
-STR_SV_STNAME_FALLBACK                                          :{STRING} Σταθμός #{NUM}
+STR_SV_STNAME_FALLBACK                                          :Σταθμός {STRING} #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -3929,13 +3929,13 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{G=f}{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{TOWN} Σημαδούρα
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Σημαδούρα #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :Σημαδούρα {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Σημαδούρα {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Ομάδα {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Σημείο καθοδηγήσης {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Σημείο καθοδηγήσης #{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Σημείο καθοδηγήσης {TOWN} #{COMMA}
 
 STR_UNKNOWN_STATION                                             :άγνωστος σταθμός
 STR_DEFAULT_SIGN_NAME                                           :Πινακίδα
@@ -3980,7 +3980,7 @@ STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_LONG                                              :{G=f}{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
@@ -3994,13 +3994,13 @@ STR_TINY_COMMA                                                  :{TINYFONT}{COMM
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
+STR_BLACK_DATE_LONG                                             :{G=f}{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_LONG                                             :{G=f}{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
+STR_DATE_LONG_SMALL                                             :{G=f}{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}

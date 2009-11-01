@@ -2818,6 +2818,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :egysínű mozdo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :MagLev mozdony
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Ár: {CURRENCY} Súly: {WEIGHT_S}{}Sebesség: {VELOCITY} Erő: {POWER} Maximális Vonóerő: {7:FORCE}{}Üzemeltetési költségeit: {CURRENCY}/év{}Capacity: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Ár: {CURRENCY} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}, {CARGO}{}Üzemeltetés: {CURRENCY}/év
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Ár: {CURRENCY} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}{}Üzemeltetés: {CURRENCY}/év
 
