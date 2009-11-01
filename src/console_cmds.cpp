@@ -1219,7 +1219,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
 		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | no_con] [file name]'");
-		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create"
+		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create "
 				"the screenshot. Screenshots of whole map are always drawn without console");
 		return true;
 	}

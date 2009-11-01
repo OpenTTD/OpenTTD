@@ -125,9 +125,14 @@ static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, 
 	}
 
 	/* write file header and info header and palette */
-	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1) return false;
-	if (fwrite(&bih, sizeof(bih), 1, f) != 1) return false;
-	if (pixelformat == 8) if (fwrite(rq, sizeof(rq), 1, f) != 1) return false;
+	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1 || fwrite(&bih, sizeof(bih), 1, f) != 1) {
+		fclose(f);
+		return false;
+	}
+	if (pixelformat == 8 && fwrite(rq, sizeof(rq), 1, f) != 1) {
+		fclose(f);
+		return false;
+	}
 
 	/* use by default 64k temp memory */
 	maxlines = Clamp(65536 / padw, 16, 128);
@@ -151,7 +156,7 @@ static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, 
 			uint32 *buff32 = (uint32 *)buff;
 			for (i = 0; i < padw * n; i++) buff32[i] = BSWAP32(buff32[i]);
 		}
-#endif
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
 		/* write each line */
 		while (n)
