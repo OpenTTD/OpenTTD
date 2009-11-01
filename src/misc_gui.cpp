@@ -496,60 +496,42 @@ enum ErrorMessageWidgets {
 	EMW_MESSAGE,
 };
 
-static const Widget _errmsg_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   239,     0,    13, STR_ERROR_MESSAGE_CAPTION, STR_NULL},
-{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   239,    14,    45, 0x0,                       STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     0,     0,     0,     0, 0x0,                       STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     2,   237,    14,    45, 0x0,                       STR_NULL},
-{    WIDGETS_END},
-};
-
 static const NWidgetPart _nested_errmsg_widgets[] = {
-	NWidget(NWID_LAYERED),
-		NWidget(NWID_VERTICAL),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
-				NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
-				NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetPadding(0, 2, 0, 2), SetMinimalSize(236, 32),
-				NWidget(NWID_SPACER), SetResize(0, 1),
-			EndContainer(),
-		EndContainer(),
-		NWidget(NWID_VERTICAL),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(1, 1), SetFill(false, false),
-				NWidget(NWID_SPACER), SetFill(true, false),
-			EndContainer(),
-			NWidget(NWID_SPACER), SetFill(true, true), SetResize(0, 1),
-		EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
+		NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetPadding(0, 2, 0, 2), SetMinimalSize(236, 32),
 	EndContainer(),
 };
 
-static const Widget _errmsg_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_BLACK_CROSS,                         STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   333,     0,    13, STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL},
-{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   333,    14,   136, 0x0,                                     STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,     2,    92,    16,   135, 0x0,                                     STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    COLOUR_RED,    94,   331,    14,   136, 0x0,                                     STR_NULL},
-{   WIDGETS_END},
-};
+static const WindowDesc _errmsg_desc(
+	0, 0, 240, 46, 240, 46, // x/y position is not used.
+	WC_ERRMSG, WC_NONE,
+	WDF_STD_BTN | WDF_DEF_WIDGET,
+	NULL, _nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
+);
 
 static const NWidgetPart _nested_errmsg_face_widgets[] = {
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
-			NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
-		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
-				NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetPadding(2, 0, 1, 0),
-				NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetMinimalSize(238, 123),
-			EndContainer(),
-			NWidget(NWID_SPACER), SetResize(0, 1),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
+		NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
+			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetFill(false, true), SetPadding(2, 0, 1, 0),
+			NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetFill(false, true), SetMinimalSize(238, 123),
 		EndContainer(),
 	EndContainer(),
 };
+
+static const WindowDesc _errmsg_face_desc(
+	0, 0, 334, 137, 334, 137, // x/y position is not used.
+	WC_ERRMSG, WC_NONE,
+	WDF_STD_BTN | WDF_DEF_WIDGET,
+	NULL, _nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
+);
 
 /** Window class for displaying an error message window. */
 struct ErrmsgWindow : public Window {
@@ -558,77 +540,97 @@ private:
 	uint64 decode_params[20];       ///< Parameters of the message strings.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
 	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
-	bool show_company_manager_face; ///< Display the face of the manager in the window.
-
-	Rect area_summary;  ///< Area available for #summary_msg in the #EMW_MESSAGE widget.
-	Rect area_detailed; ///< Area available for #detailed_msg in the #EMW_MESSAGE widget.
+	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #EMW_MESSAGE widget.
+	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #EMW_MESSAGE widget.
+	Point position;                 ///< Position of the error message window.
 
 public:
-	ErrmsgWindow(Point pt, int width, int height, StringID summary_msg, StringID detailed_msg, const Widget *widget, bool show_company_manager_face, bool no_timeout) :
-			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
-			show_company_manager_face(show_company_manager_face)
+	ErrmsgWindow(Point pt, const WindowDesc *desc, StringID summary_msg, StringID detailed_msg, bool no_timeout) : Window()
 	{
+		this->position = pt;
 		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
 		this->summary_msg  = summary_msg;
 		this->detailed_msg = detailed_msg;
-		this->desc_flags   = WDF_STD_BTN | WDF_DEF_WIDGET;
-
-		SwitchToErrorRefStack();
-		RewindTextRefStack();
 
 		assert(summary_msg != INVALID_STRING_ID);
 
-		this->area_detailed.left  = this->area_summary.left  = this->widget[EMW_MESSAGE].left  + WD_FRAMETEXT_LEFT;
-		this->area_detailed.right = this->area_summary.right = this->widget[EMW_MESSAGE].right - WD_FRAMETEXT_RIGHT;
-		int text_width = this->area_detailed.right - this->area_detailed.left + 1;
-
-		int height_summary  = GetStringHeight(summary_msg, text_width); // summary_msg is printed first
-		int height_detailed = (detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(detailed_msg, text_width);
-
-		SwitchToNormalRefStack();
-
-		int h = this->widget[EMW_MESSAGE].top + 2 + height_detailed + height_summary;
-		height = max<int>(height, h + 4);
-
-		if (detailed_msg == INVALID_STRING_ID) {
-			this->area_summary.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
-			this->area_summary.bottom = height - WD_FRAMERECT_BOTTOM;
-		} else {
-			int over = (height - h) / 2;
-			this->area_summary.top    = this->widget[EMW_MESSAGE].top + WD_FRAMERECT_TOP;
-			this->area_summary.bottom = this->area_summary.top + height_summary + over;
-			this->area_detailed.bottom = height - WD_FRAMERECT_BOTTOM;
-			this->area_detailed.top    = this->area_detailed.bottom - height_detailed - over;
-		}
-
-		this->FindWindowPlacementAndResize(width, height);
+		this->InitNested(desc);
 	}
 
-	virtual void OnPaint()
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
-		this->DrawWidgets();
-		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+		if (widget != EMW_MESSAGE) return;
 
+		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
 		 * If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
 		 */
 		SwitchToErrorRefStack();
 		RewindTextRefStack();
 
-		if (this->show_company_manager_face) {
-			const Company *c = Company::Get((CompanyID)GetDParamX(this->decode_params, 2));
-			DrawCompanyManagerFace(c->face, c->colour, this->widget[EMW_FACE].left, this->widget[EMW_FACE].top);
-		}
+		int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
+		this->height_summary  = GetStringHeight(summary_msg, text_width);
+		this->height_detailed = (detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(detailed_msg, text_width);
 
-		DrawStringMultiLine(this->area_summary.left, this->area_summary.right, this->area_summary.top, this->area_summary.bottom, this->summary_msg, TC_FROMSTRING, SA_CENTER);
-		if (this->detailed_msg != INVALID_STRING_ID) {
-			DrawStringMultiLine(this->area_detailed.left, this->area_detailed.right, this->area_detailed.top, this->area_detailed.bottom, this->detailed_msg, TC_FROMSTRING, SA_CENTER);
-		}
+		SwitchToNormalRefStack(); // Switch back to the normal text ref. stack for NewGRF texts.
 
-		/* Switch back to the normal text ref. stack for NewGRF texts */
-		SwitchToNormalRefStack();
+		uint panel_height = WD_FRAMERECT_TOP + this->height_summary + WD_FRAMERECT_BOTTOM;
+		if (detailed_msg != INVALID_STRING_ID) panel_height += this->height_detailed + WD_PAR_VSEP_WIDE;
+
+		size->height = max(size->height, panel_height);
+	}
+
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	{
+		return this->position;
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == EMW_CAPTION) CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case EMW_FACE: {
+				const Company *c = Company::Get((CompanyID)GetDParamX(this->decode_params, 2));
+				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
+				break;
+			}
+
+			case EMW_MESSAGE:
+				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+				SwitchToErrorRefStack();
+				RewindTextRefStack();
+
+				if (this->detailed_msg == INVALID_STRING_ID) {
+					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+							this->summary_msg, TC_FROMSTRING, SA_CENTER);
+				} else {
+					int extra = (r.bottom - r.top + 1 - this->height_summary - this->height_detailed - WD_PAR_VSEP_WIDE) / 2;
+
+					int top = r.top + WD_FRAMERECT_TOP;
+					int bottom = top + this->height_summary + extra;
+					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->summary_msg, TC_FROMSTRING, SA_CENTER);
+
+					bottom = r.bottom - WD_FRAMERECT_BOTTOM;
+					top = bottom - this->height_detailed - extra;
+					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->detailed_msg, TC_FROMSTRING, SA_CENTER);
+				}
+
+				SwitchToNormalRefStack(); // Switch back to the normal text ref. stack for NewGRF texts.
+				break;
+
+			default:
+				break;
+		}
 	}
 
 	virtual void OnMouseLoop()
@@ -671,9 +673,6 @@ public:
  */
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y, bool no_timeout)
 {
-	static Widget *generated_errmsg_widgets = NULL;
-	static Widget *generated_errmsg_face_widgets = NULL;
-
 	DeleteWindowById(WC_ERRMSG, 0);
 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
@@ -701,9 +700,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y,
 			pt.y = (_screen.height - 46) >> 1;
 		}
 
-		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets),
-													_errmsg_widgets, &generated_errmsg_widgets);
-		new ErrmsgWindow(pt, 240, 46, summary_msg, detailed_msg, wid, false, no_timeout);
+		new ErrmsgWindow(pt, &_errmsg_desc, summary_msg, detailed_msg, no_timeout);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -715,9 +712,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y,
 			pt.y = (_screen.height - 137) >> 1;
 		}
 
-		const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets),
-													_errmsg_face_widgets, &generated_errmsg_face_widgets);
-		new ErrmsgWindow(pt, 334, 137, summary_msg, detailed_msg, wid, true, no_timeout);
+		new ErrmsgWindow(pt, &_errmsg_face_desc, summary_msg, detailed_msg, no_timeout);
 	}
 }
 
