@@ -583,7 +583,27 @@ public:
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		return this->position;
+		/* Position (0, 0) given, center the window. */
+		if (this->position.x == 0 && this->position.y == 0) {
+			Point pt = {(_screen.width - sm_width) >> 1, (_screen.height - sm_height) >> 1};
+			return pt;
+		}
+
+		Point pt = RemapCoords2(this->position.x, this->position.y);
+		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+		if (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) {
+			/* move x pos to opposite corner */
+			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
+			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - 260 : 20;
+
+			/* move y pos to opposite corner */
+			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
+			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
+		} else {
+			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334 / 2),  0, _screen.width  - 334);
+			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (137 / 2), 22, _screen.height - 137);
+		}
+		return pt;
 	}
 
 	virtual void OnPaint()
@@ -679,41 +699,9 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y,
 
 	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
 
-	Point pt;
-	const ViewPort *vp;
-
-	if (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) {
-		if ((x | y) != 0) {
-			pt = RemapCoords2(x, y);
-			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-
-			/* move x pos to opposite corner */
-			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
-			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - 260 : 20;
-
-			/* move y pos to opposite corner */
-			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
-			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
-
-		} else {
-			pt.x = (_screen.width - 240) >> 1;
-			pt.y = (_screen.height - 46) >> 1;
-		}
-
-		new ErrmsgWindow(pt, &_errmsg_desc, summary_msg, detailed_msg, no_timeout);
-	} else {
-		if ((x | y) != 0) {
-			pt = RemapCoords2(x, y);
-			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334 / 2),  0, _screen.width  - 334);
-			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (137 / 2), 22, _screen.height - 137);
-		} else {
-			pt.x = (_screen.width  - 334) >> 1;
-			pt.y = (_screen.height - 137) >> 1;
-		}
-
-		new ErrmsgWindow(pt, &_errmsg_face_desc, summary_msg, detailed_msg, no_timeout);
-	}
+	Point pt = {x, y};
+	const WindowDesc *desc = (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) ? &_errmsg_desc : &_errmsg_face_desc;
+	new ErrmsgWindow(pt, desc, summary_msg, detailed_msg, no_timeout);
 }
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y)
