@@ -1387,6 +1387,9 @@ uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
 
 	if (!e->CanCarryCargo()) return 0;
 
+	if (mail_capacity != NULL && e->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
+		*mail_capacity = e->u.air.mail_capacity;
+	}
 	CargoID default_cargo = e->GetDefaultCargoType();
 
 	/* Check the refit capacity callback if we are not in the default configuration.
@@ -1411,9 +1414,7 @@ uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
 	 * Note: This might change to become more consistent/flexible. */
 	if (e->type != VEH_SHIP) {
 		if (e->type == VEH_AIRCRAFT) {
-			if (IsCargoInClass(v->cargo_type, CT_PASSENGERS)) {
-				if (mail_capacity != NULL) *mail_capacity = e->u.air.mail_capacity;
-			} else {
+			if (!IsCargoInClass(v->cargo_type, CT_PASSENGERS)) {
 				capacity += e->u.air.mail_capacity;
 			}
 			if (v->cargo_type == CT_MAIL) return capacity;
