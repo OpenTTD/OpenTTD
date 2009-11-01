@@ -570,13 +570,13 @@ public:
 		RewindTextRefStack();
 
 		int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
-		this->height_summary  = GetStringHeight(summary_msg, text_width);
-		this->height_detailed = (detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(detailed_msg, text_width);
+		this->height_summary  = GetStringHeight(this->summary_msg, text_width);
+		this->height_detailed = (this->detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->detailed_msg, text_width);
 
 		SwitchToNormalRefStack(); // Switch back to the normal text ref. stack for NewGRF texts.
 
 		uint panel_height = WD_FRAMERECT_TOP + this->height_summary + WD_FRAMERECT_BOTTOM;
-		if (detailed_msg != INVALID_STRING_ID) panel_height += this->height_detailed + WD_PAR_VSEP_WIDE;
+		if (this->detailed_msg != INVALID_STRING_ID) panel_height += this->height_detailed + WD_PAR_VSEP_WIDE;
 
 		size->height = max(size->height, panel_height);
 	}
@@ -591,17 +591,17 @@ public:
 
 		Point pt = RemapCoords2(this->position.x, this->position.y);
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-		if (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) {
+		if (this->detailed_msg != STR_ERROR_OWNED_BY || GetDParamX(this->decode_params, 2) >= MAX_COMPANIES) {
 			/* move x pos to opposite corner */
 			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
-			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - 260 : 20;
+			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - sm_width - 20 : 20;
 
 			/* move y pos to opposite corner */
 			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
 			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
 		} else {
-			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334 / 2),  0, _screen.width  - 334);
-			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (137 / 2), 22, _screen.height - 137);
+			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (sm_width / 2),  0, _screen.width  - sm_width);
+			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), 22, _screen.height - sm_height);
 		}
 		return pt;
 	}
