@@ -392,14 +392,12 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
  */
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
 {
-	uint result = 0;
 	DropDownList *list = new DropDownList();
 
 	for (uint i = 0; strings[i] != INVALID_STRING_ID; i++) {
 		if (!HasBit(hidden_mask, i)) {
-			list->push_back(new DropDownListStringItem(strings[i], result, HasBit(disabled_mask, i)));
+			list->push_back(new DropDownListStringItem(strings[i], i, HasBit(disabled_mask, i)));
 		}
-		result++;
 	}
 
 	/* No entries in the list? */
