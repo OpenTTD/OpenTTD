@@ -816,7 +816,7 @@ struct TooltipsWindow : public Window
 		 * Clamp value to below main toolbar and above statusbar. If tooltip would
 		 * go below window, flip it so it is shown above the cursor */
 		pt.y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
-		if (pt.y + sm_height > _screen.height - 12) pt.y = _cursor.pos.y + _cursor.offs.y - sm_height - 5;
+		if (pt.y + sm_height > _screen.height - 12) pt.y = min(_cursor.pos.y + _cursor.offs.y - 5, _screen.height - 12) - sm_height;
 		pt.x = Clamp(_cursor.pos.x - (sm_width >> 1), 0, _screen.width - sm_width);
 
 		return pt;
