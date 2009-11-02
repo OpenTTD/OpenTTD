@@ -280,6 +280,7 @@ assert_compile(lengthof(_news_type_data) == NT_END);
 /** Window class displaying a news item. */
 struct NewsWindow : Window {
 	uint16 chat_height;   ///< Height of the chat window.
+	uint16 status_height; ///< Height of the status bar window
 	NewsItem *ni;         ///< News item to display.
 	static uint duration; ///< Remaining time for showing current news message (may only be accessed while a news item is displayed).
 
@@ -288,6 +289,7 @@ struct NewsWindow : Window {
 		NewsWindow::duration = 555;
 		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
 		this->chat_height = (w != NULL) ? w->height : 0;
+		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
@@ -490,7 +492,7 @@ struct NewsWindow : Window {
 	virtual void OnTick()
 	{
 		/* Scroll up newsmessages from the bottom in steps of 4 pixels */
-		int y = max(this->top - 4, _screen.height - this->height - 12 - this->chat_height);
+		int y = max(this->top - 4, _screen.height - this->height - this->status_height - this->chat_height);
 		if (y == this->top) return;
 
 		if (this->viewport != NULL) this->viewport->top += y - this->top;

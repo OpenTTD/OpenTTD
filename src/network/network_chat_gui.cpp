@@ -118,7 +118,7 @@ void NetworkInitChatMessage()
 
 	_chatmsg_list       = ReallocT(_chatmsg_list, _settings_client.gui.network_chat_box_height);
 	_chatmsg_box.x      = 10;
-	_chatmsg_box.y      = 30;
+	_chatmsg_box.y      = 3 * FONT_HEIGHT_NORMAL;
 	_chatmsg_box.width  = _settings_client.gui.network_chat_box_width;
 	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING) + 2;
 	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
@@ -449,6 +449,12 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->DrawEditBox(NWCW_TEXTBOX);
 	}
 
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	{
+		Point pt = { (_screen.width - max(sm_width, desc->default_width)) / 2, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
+		return pt;
+	}
+
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
 		if (widget != NWCW_DESTINATION) return;
@@ -537,7 +543,7 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 };
 
 static const WindowDesc _chat_window_desc(
-	WDP_CENTER, -26, 320, 14, 640, 14, // x, y, width, height
+	WDP_CENTER, 0, 320, 14, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	NULL, _nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
