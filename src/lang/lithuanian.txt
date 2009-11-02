@@ -1669,7 +1669,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Stebėti
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nauja kompanija
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(nėra)
 STR_NETWORK_CLIENTLIST_KICK                                     :Išmesti (Kick)
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Duoti pinigų
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Sakyti visiems

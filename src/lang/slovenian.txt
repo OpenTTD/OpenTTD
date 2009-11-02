@@ -1682,7 +1682,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Opazuj
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Novo podjetje
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(brez)
 STR_NETWORK_CLIENTLIST_KICK                                     :Brcni
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj denar
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Pogovor vsem

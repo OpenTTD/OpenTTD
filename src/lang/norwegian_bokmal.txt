@@ -1646,7 +1646,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Vær til
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt firma
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(ingen)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gi penger
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Snakk til alle

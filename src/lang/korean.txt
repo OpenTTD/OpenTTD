@@ -1650,7 +1650,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}관전
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}새 회사
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(없음)
 STR_NETWORK_CLIENTLIST_KICK                                     :추방
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :돈 보내기
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :모두에게 말하기

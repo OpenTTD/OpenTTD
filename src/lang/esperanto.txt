@@ -1599,7 +1599,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spekti
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Kompanio
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(neniu)
 STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donu monon
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parolu al ĉiuj

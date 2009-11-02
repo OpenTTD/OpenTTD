@@ -1716,7 +1716,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Pozorova
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nová spoločnosť
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(nikto)
 STR_NETWORK_CLIENTLIST_KICK                                     :Vyhodit
 STR_NETWORK_CLIENTLIST_BAN                                      :Ban
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Previest peniaze

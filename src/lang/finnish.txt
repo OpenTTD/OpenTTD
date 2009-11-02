@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Katsele
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uusi Yhtiö
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Ei mitään -
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
 STR_NETWORK_CLIENTLIST_BAN                                      :Kiellä
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Anna rahaa

@@ -1640,7 +1640,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gwylio
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cwmni Newydd
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(dim)
 STR_NETWORK_CLIENTLIST_KICK                                     :Cicio
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Rhoi arian
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Siarad â phawb

@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :（没有）
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送钱
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :向全体人广播

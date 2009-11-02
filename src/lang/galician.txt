@@ -1621,7 +1621,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Compañía
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(ningún)
 STR_NETWORK_CLIENTLIST_KICK                                     :Patear
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar diñeiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar a todos

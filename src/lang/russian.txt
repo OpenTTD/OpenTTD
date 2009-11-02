@@ -1803,7 +1803,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Набл
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая компания
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Нет -
 STR_NETWORK_CLIENTLIST_KICK                                     :Выкинуть
 STR_NETWORK_CLIENTLIST_BAN                                      :Бан
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Передать денег

@@ -1650,7 +1650,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nouvelle compagnie
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Aucun -
 STR_NETWORK_CLIENTLIST_KICK                                     :Exclure
 STR_NETWORK_CLIENTLIST_BAN                                      :Bannir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donner de l'argent

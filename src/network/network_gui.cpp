@@ -1757,13 +1757,6 @@ extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 /* Every action must be of this form */
 typedef void ClientList_Action_Proc(byte client_no);
 
-/* Max 10 actions per client */
-#define MAX_CLIENTLIST_ACTION 10
-
-enum {
-	CLNWND_OFFSET = 16,
-};
-
 static const Widget _client_list_popup_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   99,     0,     0,     0, STR_NULL},
 {   WIDGETS_END},
@@ -1831,67 +1824,60 @@ static void ClientList_SpeakToAll(byte client_no)
 	ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
 }
 
-static void ClientList_None(byte client_no)
-{
-	/* No action ;) */
-}
-
-
-
+/** Popup selection window to chose an action to perform */
 struct NetworkClientListPopupWindow : Window {
-	int sel_index;
+	/** Container for actions that can be executed. */
+	struct ClientListAction {
+		StringID name;                ///< Name of the action to execute
+		ClientList_Action_Proc *proc; ///< Action to execute
+	};
+
+	uint sel_index;
 	int client_no;
-	char action[MAX_CLIENTLIST_ACTION][50];
-	ClientList_Action_Proc *proc[MAX_CLIENTLIST_ACTION];
+	SmallVector<ClientListAction, 2> actions; ///< Actions to execute
+
+	/**
+	 * Add an action to the list of actions to execute.
+	 * @param name the name of the action
+	 * @param proc the procedure to execute for the action
+	 */
+	inline void AddAction(StringID name, ClientList_Action_Proc *proc)
+	{
+		ClientListAction *action = this->actions.Append();
+		action->name = name;
+		action->proc = proc;
+	}
 
 	NetworkClientListPopupWindow(int x, int y, const Widget *widgets, int client_no) :
 			Window(x, y, 150, 100, WC_TOOLBAR_MENU, widgets),
 			sel_index(0), client_no(client_no)
 	{
-		/*
-		 * Fill the actions this client has.
-		 * Watch is, max 50 chars long!
-		 */
-
 		const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
 
-		int i = 0;
 		if (_network_own_client_id != ci->client_id) {
-			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, lastof(this->action[i]));
-			this->proc[i++] = &ClientList_SpeakToClient;
+			this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, &ClientList_SpeakToClient);
 		}
 
 		if (Company::IsValidID(ci->client_playas) || ci->client_playas == COMPANY_SPECTATOR) {
-			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(this->action[i]));
-			this->proc[i++] = &ClientList_SpeakToCompany;
+			this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, &ClientList_SpeakToCompany);
 		}
-		GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, lastof(this->action[i]));
-		this->proc[i++] = &ClientList_SpeakToAll;
+		this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, &ClientList_SpeakToAll);
 
 		if (_network_own_client_id != ci->client_id) {
 			/* We are no spectator and the company we want to give money to is no spectator and money gifts are allowed */
 			if (Company::IsValidID(_local_company) && Company::IsValidID(ci->client_playas) && _settings_game.economy.give_money) {
-				GetString(this->action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(this->action[i]));
-				this->proc[i++] = &ClientList_GiveMoney;
+				this->AddAction(STR_NETWORK_CLIENTLIST_GIVE_MONEY, &ClientList_GiveMoney);
 			}
 		}
 
 		/* A server can kick clients (but not himself) */
 		if (_network_server && _network_own_client_id != ci->client_id) {
-			GetString(this->action[i], STR_NETWORK_CLIENTLIST_KICK, lastof(this->action[i]));
-			this->proc[i++] = &ClientList_Kick;
-
-			GetString(this->action[i], STR_NETWORK_CLIENTLIST_BAN, lastof(this->action[i]));
-			this->proc[i++] = &ClientList_Ban;
-		}
-
-		if (i == 0) {
-			GetString(this->action[i], STR_NETWORK_CLIENTLIST_NONE, lastof(this->action[i]));
-			this->proc[i++] = &ClientList_None;
+			this->AddAction(STR_NETWORK_CLIENTLIST_KICK, &ClientList_Kick);
+			this->AddAction(STR_NETWORK_CLIENTLIST_BAN, &ClientList_Ban);
 		}
 
 		/* Calculate the height */
-		int h = ClientListPopupHeight();
+		int h = this->actions.Length() * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 		/* Allocate the popup */
 		this->widget[0].bottom = this->widget[0].top + h;
@@ -1902,48 +1888,14 @@ struct NetworkClientListPopupWindow : Window {
 		this->FindWindowPlacementAndResize(150, h + 1);
 	}
 
-	/**
-	 * An action is clicked! What do we do?
-	 */
-	void HandleClientListPopupClick(byte index)
-	{
-		/* A click on the Popup of the ClientList.. handle the command */
-		if (index < MAX_CLIENTLIST_ACTION && this->proc[index] != NULL) {
-			this->proc[index](this->client_no);
-		}
-	}
-
-	/**
-	 * Finds the amount of actions in the popup and set the height correct
-	 */
-	uint ClientListPopupHeight()
-	{
-		int num = 0;
-
-		/* Find the amount of actions */
-		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++) {
-			if (this->action[i][0] == '\0') continue;
-			if (this->proc[i] == NULL) continue;
-			num++;
-		}
-
-		num *= FONT_HEIGHT_NORMAL;
-
-		return num + 1;
-	}
-
-
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
 
 		/* Draw the actions */
 		int sel = this->sel_index;
-		int y = 1;
-		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++, y += FONT_HEIGHT_NORMAL) {
-			if (this->action[i][0] == '\0') continue;
-			if (this->proc[i] == NULL) continue;
-
+		int y = WD_FRAMERECT_TOP;
+		for (const ClientListAction *action = this->actions.Begin(); action != this->actions.End(); action++, y += FONT_HEIGHT_NORMAL) {
 			TextColour colour;
 			if (sel-- == 0) { // Selected item, highlight it
 				GfxFillRect(1, y, 150 - 2, y + FONT_HEIGHT_NORMAL - 1, 0);
@@ -1952,23 +1904,23 @@ struct NetworkClientListPopupWindow : Window {
 				colour = TC_BLACK;
 			}
 
-			DrawString(4, this->width - 4, y, this->action[i], colour);
+			DrawString(4, this->width - 4, y, action->name, colour);
 		}
 	}
 
 	virtual void OnMouseLoop()
 	{
 		/* We selected an action */
-		int index = (_cursor.pos.y - this->top) / FONT_HEIGHT_NORMAL;
+		uint index = (_cursor.pos.y - this->top - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
 
 		if (_left_button_down) {
-			if (index == -1 || index == this->sel_index) return;
+			if (index == this->sel_index || index >= this->actions.Length()) return;
 
 			this->sel_index = index;
 			this->SetDirty();
 		} else {
-			if (index >= 0 && _cursor.pos.y >= this->top) {
-				HandleClientListPopupClick(index);
+			if (index < this->actions.Length() && _cursor.pos.y >= this->top) {
+				this->actions[index].proc(this->client_no);
 			}
 
 			DeleteWindowById(WC_TOOLBAR_MENU, 0);

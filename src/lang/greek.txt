@@ -1650,7 +1650,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Παρα
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Νεα εταιρία
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Κανείς -
 STR_NETWORK_CLIENTLIST_KICK                                     :Εκδίωξη
 STR_NETWORK_CLIENTLIST_BAN                                      :Εκδίωξη
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Δώστε χρήματα

@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Åskåda
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt företag
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Inga -
 STR_NETWORK_CLIENTLIST_KICK                                     :Kasta ut
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Ge pengar
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Prata med alla

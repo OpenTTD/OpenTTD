@@ -1610,7 +1610,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}傍観�
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新会社
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :（なし）
 STR_NETWORK_CLIENTLIST_KICK                                     :蹴る
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送金
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :全員へ発言

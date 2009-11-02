@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Menonton
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Perusahaan
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- tidak ada -
 STR_NETWORK_CLIENTLIST_KICK                                     :Usir
 STR_NETWORK_CLIENTLIST_BAN                                      :Larangan
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Kirim uang

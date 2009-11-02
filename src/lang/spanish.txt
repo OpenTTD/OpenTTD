@@ -1650,7 +1650,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Presenci
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nueva compañía
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Ninguno -
 STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
 STR_NETWORK_CLIENTLIST_BAN                                      :Banear
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinero

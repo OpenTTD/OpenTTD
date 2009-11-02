@@ -1683,7 +1683,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigye
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :---
 STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
 STR_NETWORK_CLIENTLIST_BAN                                      :Kitiltás
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Pénz adományozása

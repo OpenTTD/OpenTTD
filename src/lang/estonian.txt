@@ -1704,7 +1704,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Jälgi
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus Ettevõte
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(pole)
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Anna raha
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Räägi kõigiga

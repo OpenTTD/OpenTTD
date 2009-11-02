@@ -1647,7 +1647,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE} شاه�
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE} شركة جديدة
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :بدون
 STR_NETWORK_CLIENTLIST_KICK                                     :اطرد
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :اعط اموال
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :تحدث مع الكل

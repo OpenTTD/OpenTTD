@@ -1637,7 +1637,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Nokucken
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Firma
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(keng)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Suen ginn
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Jidderengem soen

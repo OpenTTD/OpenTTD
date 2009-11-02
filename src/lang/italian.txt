@@ -1651,7 +1651,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Diventa 
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuova compagnia
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Nessuno -
 STR_NETWORK_CLIENTLIST_KICK                                     :Espelli
 STR_NETWORK_CLIENTLIST_BAN                                      :Bandisci
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dona denaro

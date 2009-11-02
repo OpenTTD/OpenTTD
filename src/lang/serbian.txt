@@ -1834,7 +1834,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Praćenj
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Novo preduzeće
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Prazno -
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
 STR_NETWORK_CLIENTLIST_BAN                                      :Zabrani pristup
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac

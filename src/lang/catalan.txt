@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Espectad
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova companyia
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Cap -
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_BAN                                      :Prohibit
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entrega diners

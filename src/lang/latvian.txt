@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Skatīt
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauna kompānija
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(neviens)
 STR_NETWORK_CLIENTLIST_KICK                                     :Izmest
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Iedot naudu
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Runāt ar visiem

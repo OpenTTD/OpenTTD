@@ -1641,7 +1641,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Fylgjast
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nýtt fyrirtæki
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(ekkert)
 STR_NETWORK_CLIENTLIST_KICK                                     :Sparka
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gefa pening
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tala við alla

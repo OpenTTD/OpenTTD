@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Assistir
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova empresa
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :- Nenhum -
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinheiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar com todos

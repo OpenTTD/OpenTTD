@@ -1705,7 +1705,6 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Promatra
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova tvrtka
 
 # Network client list
-STR_NETWORK_CLIENTLIST_NONE                                     :(nitko)
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Razgovaraj sa svima
