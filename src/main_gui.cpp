@@ -66,7 +66,8 @@ void HandleOnEditText(const char *str)
 	switch (_rename_what) {
 #ifdef ENABLE_NETWORK
 	case 3: { // Give money, you can only give money in excess of loan
-		const Company *c = Company::Get(_local_company);
+		const Company *c = Company::GetIfValid(_local_company);
+		if (c == NULL) break;
 		Money money = min(c->money - c->current_loan, (Money)(atoi(str) / _currency->rate));
 
 		uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
