@@ -1,7 +1,7 @@
 ##name Greek
 ##ownname Ελληνικά
 ##isocode el_GR
-##plural 0
+##plural 2
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
