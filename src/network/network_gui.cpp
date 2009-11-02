@@ -1757,14 +1757,16 @@ extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 /* Every action must be of this form */
 typedef void ClientList_Action_Proc(byte client_no);
 
-static const Widget _client_list_popup_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   99,     0,     0,     0, STR_NULL},
-{   WIDGETS_END},
+static const NWidgetPart _nested_client_list_popup_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_GREY, 0), EndContainer(),
 };
 
-static const NWidgetPart _nested_client_list_popup_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_GREY, 0), SetMinimalSize(100, 1), EndContainer(),
-};
+static const WindowDesc _client_list_popup_desc(
+	WDP_AUTO, WDP_AUTO, 150, 1, 150, 1,
+	WC_TOOLBAR_MENU, WC_CLIENT_LIST,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
+	NULL, _nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets)
+);
 
 /* Finds the Xth client-info that is active */
 static NetworkClientInfo *NetworkFindClientInfo(byte client_no)
@@ -1834,6 +1836,7 @@ struct NetworkClientListPopupWindow : Window {
 
 	uint sel_index;
 	int client_no;
+	Point desired_location;
 	SmallVector<ClientListAction, 2> actions; ///< Actions to execute
 
 	/**
@@ -1848,10 +1851,13 @@ struct NetworkClientListPopupWindow : Window {
 		action->proc = proc;
 	}
 
-	NetworkClientListPopupWindow(int x, int y, const Widget *widgets, int client_no) :
-			Window(x, y, 150, 100, WC_TOOLBAR_MENU, widgets),
+	NetworkClientListPopupWindow(const WindowDesc *desc, int x, int y, int client_no) :
+			Window(),
 			sel_index(0), client_no(client_no)
 	{
+		this->desired_location.x = x;
+		this->desired_location.y = y;
+
 		const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
 
 		if (_network_own_client_id != ci->client_id) {
@@ -1876,36 +1882,49 @@ struct NetworkClientListPopupWindow : Window {
 			this->AddAction(STR_NETWORK_CLIENTLIST_BAN, &ClientList_Ban);
 		}
 
-		/* Calculate the height */
-		int h = this->actions.Length() * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-
-		/* Allocate the popup */
-		this->widget[0].bottom = this->widget[0].top + h;
-		this->widget[0].right = this->widget[0].left + 150;
-
 		this->flags4 &= ~WF_WHITE_BORDER_MASK;
-
-		this->FindWindowPlacementAndResize(150, h + 1);
+		this->InitNested(desc, 0);
 	}
 
-	virtual void OnPaint()
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		this->DrawWidgets();
+		return this->desired_location;
+	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		Dimension d = *size;
+		for (const ClientListAction *action = this->actions.Begin(); action != this->actions.End(); action++) {
+			d = maxdim(GetStringBoundingBox(action->name), d);
+		}
+
+		d.height *= this->actions.Length();
+		d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		*size = d;
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
 		/* Draw the actions */
 		int sel = this->sel_index;
-		int y = WD_FRAMERECT_TOP;
+		int y = r.top + WD_FRAMERECT_TOP;
 		for (const ClientListAction *action = this->actions.Begin(); action != this->actions.End(); action++, y += FONT_HEIGHT_NORMAL) {
 			TextColour colour;
 			if (sel-- == 0) { // Selected item, highlight it
-				GfxFillRect(1, y, 150 - 2, y + FONT_HEIGHT_NORMAL - 1, 0);
+				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, 0);
 				colour = TC_WHITE;
 			} else {
 				colour = TC_BLACK;
 			}
 
-			DrawString(4, this->width - 4, y, action->name, colour);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, action->name, colour);
 		}
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
 	}
 
 	virtual void OnMouseLoop()
@@ -1933,18 +1952,11 @@ struct NetworkClientListPopupWindow : Window {
  */
 static void PopupClientList(int client_no, int x, int y)
 {
-	static Widget *generated_client_list_popup_widgets = NULL;
-
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
 	if (NetworkFindClientInfo(client_no) == NULL) return;
 
-	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(
-		_nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets),
-		_client_list_popup_widgets, &generated_client_list_popup_widgets
-	);
-
-	new NetworkClientListPopupWindow(x, y, wid, client_no);
+	new NetworkClientListPopupWindow(&_client_list_popup_desc, x, y, client_no);
 }
 
 
