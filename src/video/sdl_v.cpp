@@ -507,10 +507,13 @@ void VideoDriver_SDL::MainLoop()
 			_draw_continue = true;
 
 			_draw_threaded = ThreadObject::New(&DrawSurfaceToScreenThread, NULL, &_draw_thread);
-		}
 
-		/* Free the mutex if we won't be able to use it. */
-		if (!_draw_threaded) delete _draw_mutex;
+			/* Free the mutex if we won't be able to use it. */
+			if (!_draw_threaded) {
+				_draw_mutex->EndCritical();
+				delete _draw_mutex;
+			}
+		}
 	}
 
 	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
