@@ -895,11 +895,6 @@ inline const NWID *Window::GetWidget(uint widnum) const
 class PickerWindowBase : public Window {
 
 public:
-	PickerWindowBase(const WindowDesc *desc, Window *parent, WindowNumber number = 0) : Window(desc, number)
-	{
-		this->parent = parent;
-	};
-
 	PickerWindowBase(Window *parent) : Window()
 	{
 		this->parent = parent;
