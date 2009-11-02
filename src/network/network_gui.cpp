@@ -1968,15 +1968,6 @@ enum ClientListWidgets {
 	CLW_PANEL,
 };
 
-static const Widget _client_list_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_COMPANY_LIST_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_TOOLTIP_STICKY},
-
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   249,    14,    15, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSE),
@@ -1990,7 +1981,7 @@ static const WindowDesc _client_list_desc(
 	WDP_AUTO, WDP_AUTO, 250, 16, 250, 16,
 	WC_CLIENT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_client_list_widgets, _nested_client_list_widgets, lengthof(_nested_client_list_widgets)
+	NULL, _nested_client_list_widgets, lengthof(_nested_client_list_widgets)
 );
 
 /**
@@ -2158,18 +2149,23 @@ enum NetworkJoinStatusWidgets {
 };
 
 struct NetworkJoinStatusWindow : Window {
-	NetworkJoinStatusWindow(const WindowDesc *desc) : Window(desc)
+	NetworkJoinStatusWindow(const WindowDesc *desc) : Window()
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, 0);
 	}
 
 	virtual void OnPaint()
 	{
-		uint8 progress; // used for progress bar
 		this->DrawWidgets();
+	}
 
-		DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_CENTER);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != NJSW_BACKGROUND) return;
+
+		uint8 progress; // used for progress bar
+		DrawString(r.left + 2, r.right - 2, r.top + 20, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_CENTER);
 		switch (_network_join_status) {
 			case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
 			case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
@@ -2177,20 +2173,20 @@ struct NetworkJoinStatusWindow : Window {
 				break;
 			case NETWORK_JOIN_STATUS_WAITING:
 				SetDParam(0, _network_join_waiting);
-				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_WAITING, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left + 2, r.right - 2, r.top + 20 + FONT_HEIGHT_NORMAL, STR_NETWORK_CONNECTING_WAITING, TC_FROMSTRING, SA_CENTER);
 				progress = 15; // third stage is 15%
 				break;
 			case NETWORK_JOIN_STATUS_DOWNLOADING:
 				SetDParam(0, _network_join_bytes);
 				SetDParam(1, _network_join_bytes_total);
-				DrawString(this->widget[NJSW_BACKGROUND].left + 2, this->widget[NJSW_BACKGROUND].right - 2, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left + 2, r.right - 2, r.top + 20 + FONT_HEIGHT_NORMAL, STR_NETWORK_CONNECTING_DOWNLOADING, TC_FROMSTRING, SA_CENTER);
 				/* Fallthrough */
 			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 		}
 
 		/* Draw nice progress bar :) */
-		DrawFrameRect(20, 18, (int)((this->width - 20) * progress / 100), 28, COLOUR_MAUVE, FR_NONE);
+		DrawFrameRect(r.left + 20, r.top + 5, (int)((this->width - 20) * progress / 100), r.top + 15, COLOUR_MAUVE, FR_NONE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -2213,13 +2209,6 @@ struct NetworkJoinStatusWindow : Window {
 	}
 };
 
-static const Widget _network_join_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NJSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   249,    14,    84, 0x0,                    STR_NULL},                        // NJSW_BACKGROUND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL},                        // NJSW_CANCELOK
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_network_join_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, NJSW_CAPTION), SetDataTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, NJSW_BACKGROUND),
@@ -2231,7 +2220,7 @@ static const WindowDesc _network_join_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 250, 85, 250, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
-	_network_join_status_window_widget, _nested_network_join_status_window_widgets, lengthof(_nested_network_join_status_window_widgets)
+	NULL, _nested_network_join_status_window_widgets, lengthof(_nested_network_join_status_window_widgets)
 );
 
 void ShowJoinStatusWindow()
