@@ -523,7 +523,7 @@ void VideoDriver_SDL::MainLoop()
 		InteractiveRandom(); // randomness
 
 		while (PollEvent() == -1) {}
-		if (_exit_game) return;
+		if (_exit_game) break;
 
 		mod = SDL_CALL SDL_GetModState();
 		keys = SDL_CALL SDL_GetKeyState(&numkeys);
@@ -592,6 +592,8 @@ void VideoDriver_SDL::MainLoop()
 
 	if (_draw_threaded) {
 		_draw_continue = false;
+		/* Sending signal if there is no thread blocked
+		 * is very valid and results in noop */
 		_draw_mutex->SendSignal();
 		_draw_mutex->EndCritical();
 		_draw_thread->Join();
