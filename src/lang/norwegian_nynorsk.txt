@@ -1473,7 +1473,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartsto
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tenarversjon:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adressa til tenaren:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Starta:  {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Noverande dato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Noverande dato: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Passordbeskytta!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}TENAREN ER KOBLA AV
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}TENAREN ER FULL
@@ -1571,20 +1571,20 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvisk
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Fleirspelarspel-lobby
 
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Freistar å verte med:   {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Freistar å verte med: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Ei liste over firma i spelet. Du kan anten verte med i eit eller starte eit nytt.
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}FIRMAOVERSIKT
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Firmanamn:  {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Skipa:  {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Firmaverdi:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Noverande saldo:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Inntekt i fjor:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Nettverksyting:  {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Firmanamn: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Skipa: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Firmaverdi: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Noverande saldo: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Inntekt i fjor: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Nettverksyting: {WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Køyretøy:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stasjonar:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spelarar:  {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Køyretøy: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stasjonar: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spelarar: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nytt firma
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Skip eit nytt firma
@@ -1858,7 +1858,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ut-Signa
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo-Signal (elektrisk){}Verker som både inn og ut signaler og gjer det moglegheit til å lage store "tre" av presignal
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vegsignal (elektrisk){}(semaphore){}Eit vegsignal tillet meir enn eitt tog å entre signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Standard vegsignal kan passerast frå baksida.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs vegsignal (elektrisk){}(semaphore){}Eit vegsignal tillet meir enn eitt tog å entre signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Einvegs vegsignal kan ikkje passerast frå baksida.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Konvertering{}Klikk på eit signal for å endra det til valde type, CTRL-klikk  skifter mellom forskjellige variantar.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Klikk på eit signal for å endra det til valde type, CTRL-klikk skifter mellom forskjellige variantar.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Tettleik for dra og slepp signalbygging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minsk tettleik for dra og slepp signalbygging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auk tettleik for dra og slepp signalbygging
@@ -2270,7 +2270,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv Ne
 # NewGRF add window
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tilgjengelege NewGRF-filer
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Legg til i utvalet
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Legg til den valde NewGRF-fila  i konfigurasjonen din
+STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Legg til den valde NewGRF-fila i konfigurasjonen din
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Søk om att
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Oppdater lista over tilgjengelege NewGRF-filer
 
@@ -2371,14 +2371,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye b
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettar
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Smør bystyret
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Finansier ombygging av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{}  Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Finansier ombygging av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Bygg ein statue for å heidre grunnleggjaren av firmaet.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Finansier bygging av nye forretningsbygg i byen.{}  Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Finansier bygging av nye forretningsbygg i byen.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillèt då berre bruk av tenestene dine.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Smør bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}  Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Smør bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{} Kostnad: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidiar
@@ -2462,10 +2462,10 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totalt:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks lån:  {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks lån: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lån meir ({SKIP}{SKIP}{CURRENCY})
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auk storleiken på lånet
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auk storleiken på lånet. Ctrl+klikk tek opp maksimalt lån.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betal attende ({SKIP}{SKIP}{CURRENCY})
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betal attende ein del av lånet
 

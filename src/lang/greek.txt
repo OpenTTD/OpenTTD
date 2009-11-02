@@ -3646,11 +3646,11 @@ STR_SV_STNAME_WOODS                                             :Δάσος {STR
 STR_SV_STNAME_LAKESIDE                                          :Λίμνη {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Ανταλλαγή
 STR_SV_STNAME_AIRPORT                                           :αεροδρόμιο {STRING}
-STR_SV_STNAME_OILFIELD                                          :Πετρελαιοπηγές {STRING}
-STR_SV_STNAME_MINES                                             :Ορυχεία {STRING}
-STR_SV_STNAME_DOCKS                                             :Λιμάνι {STRING}
-STR_SV_STNAME_BUOY                                              :{STRING}
-STR_SV_STNAME_WAYPOINT                                          :{STRING}
+STR_SV_STNAME_OILFIELD                                          :{G=m}Πετρελαιοπηγές {STRING}
+STR_SV_STNAME_MINES                                             :{G=n}Ορυχεία {STRING}
+STR_SV_STNAME_DOCKS                                             :{G=n}Λιμάνι {STRING}
+STR_SV_STNAME_BUOY                                              :{G=f}{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{G=n}{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :Παράρτημα {STRING}
 STR_SV_STNAME_SIDINGS                                           :Παράκαμψη {STRING}

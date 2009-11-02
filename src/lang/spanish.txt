@@ -2271,10 +2271,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración de NewGRF
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Cargar la programación seleccionada
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Grabar progra...
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Grabar
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Grabar lista actual como una programación
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduce nombre de la programación
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar progr...
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borrar la programación seleccionada
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Añadir
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Añadir un NewGRF a la lista
