@@ -1056,7 +1056,7 @@ struct PerformanceRatingDetailWindow : Window {
 			if (this->IsWidgetDisabled(widget)) return;
 			CompanyID cid = (CompanyID)(widget - PRW_COMPANY_FIRST);
 			int offset = (cid == this->company) ? 1 : 0;
-			Dimension sprite_size = GetSpriteSize(SPR_PLAYER_ICON);
+			Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
 			DrawCompanyIcon(cid, (r.left + r.right - sprite_size.width) / 2 + offset, (r.top + r.bottom - sprite_size.height) / 2 + offset);
 			return;
 		}
@@ -1222,7 +1222,7 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 	NWidgetHorizontal *hor = NULL; // Storage for buttons in one row.
 	int hor_length = 0;
 
-	Dimension sprite_size = GetSpriteSize(SPR_PLAYER_ICON);
+	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
 	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
 	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
 

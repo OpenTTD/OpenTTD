@@ -111,7 +111,7 @@ uint16 GetDrawStringCompanyColour(CompanyID company)
 
 void DrawCompanyIcon(CompanyID c, int x, int y)
 {
-	DrawSprite(SPR_PLAYER_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
+	DrawSprite(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
 }
 
 /**
