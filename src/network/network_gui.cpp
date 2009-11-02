@@ -1765,32 +1765,6 @@ enum {
 	CLNWND_ROWSIZE = 10
 };
 
-/** Widget numbers of the client list window. */
-enum ClientListWidgets {
-	CLW_CLOSE,
-	CLW_CAPTION,
-	CLW_STICKY,
-	CLW_PANEL,
-};
-
-static const Widget _client_list_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_COMPANY_LIST_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_TOOLTIP_STICKY},
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
-{   WIDGETS_END},
-};
-
-static const NWidgetPart _nested_client_list_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKY),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CLW_PANEL), SetMinimalSize(250, CLNWND_ROWSIZE + 2), EndContainer(),
-};
-
 static const Widget _client_list_popup_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   99,     0,     0,     0, STR_NULL},
 {   WIDGETS_END},
@@ -1799,13 +1773,6 @@ static const Widget _client_list_popup_widgets[] = {
 static const NWidgetPart _nested_client_list_popup_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, 0), SetMinimalSize(100, 1), EndContainer(),
 };
-
-static const WindowDesc _client_list_desc(
-	WDP_AUTO, WDP_AUTO, 250, 1, 250, 1,
-	WC_CLIENT_LIST, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_client_list_widgets, _nested_client_list_widgets, lengthof(_nested_client_list_widgets)
-);
 
 /* Finds the Xth client-info that is active */
 static NetworkClientInfo *NetworkFindClientInfo(byte client_no)
@@ -2028,6 +1995,40 @@ static void PopupClientList(int client_no, int x, int y)
 
 	new NetworkClientListPopupWindow(x, y, wid, client_no);
 }
+
+
+/** Widget numbers of the client list window. */
+enum ClientListWidgets {
+	CLW_CLOSE,
+	CLW_CAPTION,
+	CLW_STICKY,
+	CLW_PANEL,
+};
+
+static const Widget _client_list_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_COMPANY_LIST_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_TOOLTIP_STICKY},
+
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
+{   WIDGETS_END},
+};
+
+static const NWidgetPart _nested_client_list_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSE),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CLW_PANEL), SetMinimalSize(250, CLNWND_ROWSIZE + 2), EndContainer(),
+};
+
+static const WindowDesc _client_list_desc(
+	WDP_AUTO, WDP_AUTO, 250, 1, 250, 1,
+	WC_CLIENT_LIST, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
+	_client_list_widgets, _nested_client_list_widgets, lengthof(_nested_client_list_widgets)
+);
 
 /**
  * Main handle for clientlist
