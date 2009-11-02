@@ -1762,7 +1762,6 @@ typedef void ClientList_Action_Proc(byte client_no);
 
 enum {
 	CLNWND_OFFSET = 16,
-	CLNWND_ROWSIZE = 10
 };
 
 static const Widget _client_list_popup_widgets[] = {
@@ -1928,7 +1927,7 @@ struct NetworkClientListPopupWindow : Window {
 			num++;
 		}
 
-		num *= CLNWND_ROWSIZE;
+		num *= FONT_HEIGHT_NORMAL;
 
 		return num + 1;
 	}
@@ -1941,13 +1940,13 @@ struct NetworkClientListPopupWindow : Window {
 		/* Draw the actions */
 		int sel = this->sel_index;
 		int y = 1;
-		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++, y += CLNWND_ROWSIZE) {
+		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++, y += FONT_HEIGHT_NORMAL) {
 			if (this->action[i][0] == '\0') continue;
 			if (this->proc[i] == NULL) continue;
 
 			TextColour colour;
 			if (sel-- == 0) { // Selected item, highlight it
-				GfxFillRect(1, y, 150 - 2, y + CLNWND_ROWSIZE - 1, 0);
+				GfxFillRect(1, y, 150 - 2, y + FONT_HEIGHT_NORMAL - 1, 0);
 				colour = TC_WHITE;
 			} else {
 				colour = TC_BLACK;
@@ -1960,7 +1959,7 @@ struct NetworkClientListPopupWindow : Window {
 	virtual void OnMouseLoop()
 	{
 		/* We selected an action */
-		int index = (_cursor.pos.y - this->top) / CLNWND_ROWSIZE;
+		int index = (_cursor.pos.y - this->top) / FONT_HEIGHT_NORMAL;
 
 		if (_left_button_down) {
 			if (index == -1 || index == this->sel_index) return;
@@ -2010,7 +2009,7 @@ static const Widget _client_list_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_COMPANY_LIST_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_TOOLTIP_STICKY},
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
+{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   249,    14,    15, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -2020,21 +2019,20 @@ static const NWidgetPart _nested_client_list_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CLW_PANEL), SetMinimalSize(250, CLNWND_ROWSIZE + 2), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CLW_PANEL), SetMinimalSize(250, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 1), EndContainer(),
 };
 
 static const WindowDesc _client_list_desc(
-	WDP_AUTO, WDP_AUTO, 250, 1, 250, 1,
+	WDP_AUTO, WDP_AUTO, 250, 16, 250, 16,
 	WC_CLIENT_LIST, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_client_list_widgets, _nested_client_list_widgets, lengthof(_nested_client_list_widgets)
 );
 
 /**
  * Main handle for clientlist
  */
-struct NetworkClientListWindow : Window
-{
+struct NetworkClientListWindow : Window {
 	int selected_item;
 	int selected_y;
 
@@ -2059,15 +2057,12 @@ struct NetworkClientListWindow : Window
 			if (ci->client_playas != COMPANY_INACTIVE_CLIENT) num++;
 		}
 
-		num *= CLNWND_ROWSIZE;
+		num *= FONT_HEIGHT_NORMAL;
 
+		int diff = (num + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM) - (this->widget[3].bottom - this->widget[3].top + 1);
 		/* If height is changed */
-		if (this->height != CLNWND_OFFSET + num + 1) {
-			/* XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1) */
-			this->SetDirty();
-			this->widget[3].bottom = this->widget[3].top + num + 2;
-			this->height = CLNWND_OFFSET + num + 1;
-			this->SetDirty();
+		if (diff != 0) {
+			ResizeWindow(this, 0, diff);
 			return false;
 		}
 		return true;
@@ -2083,12 +2078,12 @@ struct NetworkClientListWindow : Window
 
 		this->DrawWidgets();
 
-		int y = CLNWND_OFFSET;
+		int y = this->widget[3].top + WD_FRAMERECT_TOP;
 
 		FOR_ALL_CLIENT_INFOS(ci) {
 			TextColour colour;
 			if (this->selected_item == i++) { // Selected item, highlight it
-				GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);
+				GfxFillRect(1, y, 248, y + FONT_HEIGHT_NORMAL - 1, 0);
 				colour = TC_WHITE;
 			} else {
 				colour = TC_BLACK;
@@ -2105,7 +2100,7 @@ struct NetworkClientListWindow : Window
 
 			DrawString(81, this->width - 2, y, ci->client_name, colour);
 
-			y += CLNWND_ROWSIZE;
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 
@@ -2131,11 +2126,7 @@ struct NetworkClientListWindow : Window
 
 		/* Find the new selected item (if any) */
 		this->selected_y = pt.y;
-		if (pt.y > CLNWND_OFFSET) {
-			this->selected_item = (pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
-		} else {
-			this->selected_item = -1;
-		}
+		this->selected_item = max((pt.y - this->widget[3].top - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL, -1);
 
 		/* Repaint */
 		this->SetDirty();
