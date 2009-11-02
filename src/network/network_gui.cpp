@@ -1998,14 +1998,15 @@ static const WindowDesc _client_list_desc(
  */
 struct NetworkClientListWindow : Window {
 	int selected_item;
-	int selected_y;
+
+	uint server_client_width;
+	uint company_icon_width;
 
 	NetworkClientListWindow(const WindowDesc *desc, WindowNumber window_number) :
-			Window(desc, window_number),
-			selected_item(-1),
-			selected_y(0)
+			Window(),
+			selected_item(-1)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 	}
 
 	/**
@@ -2023,7 +2024,7 @@ struct NetworkClientListWindow : Window {
 
 		num *= FONT_HEIGHT_NORMAL;
 
-		int diff = (num + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM) - (this->widget[3].bottom - this->widget[3].top + 1);
+		int diff = (num + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM) - (this->GetWidget<NWidgetBase>(CLW_PANEL)->current_y);
 		/* If height is changed */
 		if (diff != 0) {
 			ResizeWindow(this, 0, diff);
@@ -2032,37 +2033,57 @@ struct NetworkClientListWindow : Window {
 		return true;
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != CLW_PANEL) return;
+
+		this->server_client_width = max(GetStringBoundingBox(STR_NETWORK_SERVER).width, GetStringBoundingBox(STR_NETWORK_CLIENT).width) + WD_FRAMERECT_RIGHT;
+		this->company_icon_width = GetSpriteSize(SPR_PLAYER_ICON).width + WD_FRAMERECT_LEFT;
+
+		uint width = 200; // Default width
+		const NetworkClientInfo *ci;
+		FOR_ALL_CLIENT_INFOS(ci) {
+			width = max(width, GetStringBoundingBox(ci->client_name).width);
+		}
+
+		size->width = WD_FRAMERECT_LEFT + this->server_client_width + this->company_icon_width + WD_FRAMERECT_RIGHT;
+	}
+
 	virtual void OnPaint()
 	{
-		NetworkClientInfo *ci;
-		int i = 0;
-
 		/* Check if we need to reset the height */
 		if (!this->CheckClientListHeight()) return;
 
 		this->DrawWidgets();
+	}
 
-		int y = this->widget[3].top + WD_FRAMERECT_TOP;
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != CLW_PANEL) return;
 
+		int y = r.top + WD_FRAMERECT_TOP;
+		int left = r.left + WD_FRAMERECT_LEFT;
+		int i = 0;
+		const NetworkClientInfo *ci;
 		FOR_ALL_CLIENT_INFOS(ci) {
 			TextColour colour;
 			if (this->selected_item == i++) { // Selected item, highlight it
-				GfxFillRect(1, y, 248, y + FONT_HEIGHT_NORMAL - 1, 0);
+				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, 0);
 				colour = TC_WHITE;
 			} else {
 				colour = TC_BLACK;
 			}
 
 			if (ci->client_id == CLIENT_ID_SERVER) {
-				DrawString(4, 81, y, STR_NETWORK_SERVER, colour);
+				DrawString(left, left + this->server_client_width, y, STR_NETWORK_SERVER, colour);
 			} else {
-				DrawString(4, 81, y, STR_NETWORK_CLIENT, colour);
+				DrawString(left, left + this->server_client_width, y, STR_NETWORK_CLIENT, colour);
 			}
 
 			/* Filter out spectators */
-			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, 64, y + 1);
+			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, left + this->server_client_width, y + 1);
 
-			DrawString(81, this->width - 2, y, ci->client_name, colour);
+			DrawString(left + this->server_client_width + this->company_icon_width, r.right - WD_FRAMERECT_RIGHT, y, ci->client_name, colour);
 
 			y += FONT_HEIGHT_NORMAL;
 		}
@@ -2080,17 +2101,21 @@ struct NetworkClientListWindow : Window {
 	{
 		/* -1 means we left the current window */
 		if (pt.y == -1) {
-			this->selected_y = 0;
 			this->selected_item = -1;
 			this->SetDirty();
 			return;
 		}
-		/* It did not change.. no update! */
-		if (pt.y == this->selected_y) return;
 
 		/* Find the new selected item (if any) */
-		this->selected_y = pt.y;
-		this->selected_item = max((pt.y - this->widget[3].top - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL, -1);
+		pt.y -= this->GetWidget<NWidgetBase>(CLW_PANEL)->pos_y;
+		int item = -1;
+		if (IsInsideMM(pt.y, WD_FRAMERECT_TOP, this->GetWidget<NWidgetBase>(CLW_PANEL)->current_y - WD_FRAMERECT_BOTTOM)) {
+			item = (pt.y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
+		}
+
+		/* It did not change.. no update! */
+		if (item == this->selected_item) return;
+		this->selected_item = item;
 
 		/* Repaint */
 		this->SetDirty();
