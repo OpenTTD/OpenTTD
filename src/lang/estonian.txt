@@ -275,6 +275,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta filterkirjend
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sisesta märksõna mida loendist otsida
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtreeri sõna:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sorteerimistingimuse valimine
@@ -356,7 +357,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Kuva ül
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Kuva graafikuid
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Kuva ettevõtete edetabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rahasta uute ehitiste konstrueerimist
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Kuva ettevõtte rongide nimistu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Näita ettevõtte rongiloendit. Ctrl+klõpsu abil saab rühma või sõidukiloendi vahel lülitada.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Kuva nimekiri ettevõtte mootorsõidukitest
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Kuva ettevõtte laevade nimistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Kuva nimekiri ettevõtte õhusõidukitest
@@ -615,9 +616,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Raha:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laen:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kokku:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Veeremit kokku; sisaldab sõidutee-, rööbastee- ja õhusõidukeid, ning laevu
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Eelmisel aastal kasumlike sõidukite arv; sisaldab maanteesõidukeid, ronge, laevu ja õhusõidukeid
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jaamaosade arv. Iga osa jaamast (nt. raudteejaam, bussipeatus, lennujaam) loetakse eraldi, isegi kui need on ühendatud üheks jaamaks
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Kõige väiksema tuluga sõiduki kasum (kõikidest vähemalt 2 aastastest veovahenditest)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Madalaima tuluga sõiduki kasum (arvestatakse vaid üle kaheaastaseid sõidukeid)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Väikseim kuukasum viimase 12 kvartali jooksul
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suurim kuukasum viimase 12 kvartali jooksul
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Viimasel neljal kvartalil kohale toimetatud kaubaühikute koguarv
@@ -1400,6 +1401,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1705,6 +1707,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus Ette
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja
+STR_NETWORK_CLIENTLIST_BAN                                      :Bänn
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Anna raha
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Räägi kõigiga
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Räägi ettevõttega
@@ -1733,6 +1736,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vali ett
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Saada
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privaatne] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
@@ -1790,6 +1794,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Mäng jätkub (
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lahkub
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} liitus mänguga
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} liitus mänguga ({2:NUM}. klient)
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} liitus {2:NUM}. ettevõttega
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} liitus vaatajatega
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} alustas uue ettevõtte (#{2:NUM})
@@ -2084,6 +2089,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Suvaline
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Ehita linn suvalisse kohta
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Palju suvalisi linnu
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kaardi katmine suvaliselt asetatud linnadega
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Linnanimi:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Sisesta linnanimi
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klõpsa linnale nime andmiseks
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Suvaline nimi
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Loo suvaline nimi
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Linna suurus:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Väike
@@ -2412,6 +2423,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sisesta 
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Linnad
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Puudub -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Linnanimed - vajuta linnanimele, et viia vaade linnale
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvastik: {COMMA}
@@ -2600,6 +2612,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Otsime e
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Tööstused
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Puudub -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% veetud)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% veetud)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2791,8 +2804,8 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klooni l
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}See ehitab koopia rongist koos kõikide vagunitega. Vajuta sellele nuppule, ning seejärel rongile depoo sees või väljas. CTRL-klikk jagab sihtpunkte
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}See paljundab mootorsõidukit. Klõpsa seda nuppu, ning seejärel mootorsõidukil depoos või sellest väljas. CTRL-klõps jagab sihtpunkte
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}See ehitab koopia laevast. Vajuta sellele nuppule, ning seejärel laevale laevaremonditehase sees või väljas. Sihtpunkte jagab CTRL-klikk.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}See paljundab õhusõidukit. Vajuta sellele nuppule, ning seejärel lennukile angaari sees või väljas. CTRL-klikk jagab sihtpunkte
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostab samasuguse laeva. Vajuta sellele nuppule, ning seejärel laevale laevaremonditehase sees või väljas. Ctrl-klõpsuga jagatakse sihtpunkte.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostab samasuguse õhusõiduki. Klõpsa sellele nuppule, ning seejärel lennukile angaari sees või väljas. CTRL-klõpsuga jagatakse sihtpunkte
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaaþi asukohale
@@ -2827,6 +2840,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorelssvedur
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnethõljukvedur
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hind: {CURRENCY} Tühimass: {WEIGHT_S}{}Tippkiirus: {VELOCITY}  Võimsus: {POWER}{}Käituskulud: {CURRENCY}/aastas{}Kandevõime: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hind: {CURRENCY} Tühimass: {WEIGHT_S}{}Kiirus: {VELOCITY}  Võimsus: {POWER}  Veojõud: {7:FORCE}{}Käituskulud: {CURRENCY}/aasta{}Mahutavus: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Hind: {CURRENCY} Tippkiirus: {VELOCITY}{}Kandevõime: {CARGO}, {CARGO}{}Käituskulud: {CURRENCY}/a
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Hind: {CURRENCY} Tippkiirus: {VELOCITY}{}Kandevõime: {CARGO}{}Käituskulud: {CURRENCY}/a
 
@@ -2875,10 +2889,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Saada s�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Saada laev angaari. CTRL+klikk ainult teenindab.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Saada lennuk angaari
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}See ehitab koopia rongist koos kõikide vagunitega. CTRL-klikk jagab sihtpunkte
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}See paljundab mootorsõidukit. CTRL-klõps jagab sihtpunkte
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}See ehitab koopia laevast. CTRL-klikk jagab sihtpunkte
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}See paljundab õhusõidukit. CTRL-klikk jagab sihtpunkte
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ostab samasuguse rongi koos kõikide vagunitega. CTRL-klõpsuga jagatakse sihtpunkte
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ostab samasuguse maanteesõiduki. CTRL-klõpsuga jagatakse sihtpunkte
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ostab samasuguse laeva. CTRL-klõpsuga jagatakse sihtpunkte
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ostab samasuguse õhusõiduki. CTRL-klõpsuga jagatakse sihtpunkte
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Sunni rongi signaale eirama
 
@@ -3525,10 +3539,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ei saa v
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Ei saa laeva angaari saata...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ei saa lennukit angaari saata...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Rööbassõidukit ei saa ehitada...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Mootorsõidukit ei saa ehitada...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ei saa laeva ehitada...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ei saa ehitada lennukit...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Rööbassõidukit ei saa osta...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Mootorsõidukit ei saa osta...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Laeva ei saa osta...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Lennukit ei saa osta...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Raudteesõiduki tüübinime ei saa vahetada...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Mootorsõiduki tüübinime ei saa vahetada...
@@ -4043,6 +4057,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
