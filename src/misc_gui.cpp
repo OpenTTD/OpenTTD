@@ -1453,7 +1453,7 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetFill(true, true), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetFill(true, true), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetFill(true, true), SetDataTip(STR_BUTTON_OK, STR_NULL),
