@@ -123,9 +123,12 @@ Lost trains ignore (block) exit signals
 	amount of work needed to write a system that prevents the lost trains
 	from taking the wrong direction.
 
-Extreme CPU usage when using SDL and PulseAudio
+Extreme CPU usage/hangs on exting game when using SDL and PulseAudio
 	OpenTTD can be extremely slow/use a lot of CPU when the sound is
-	played via SDL and then through PulseAudio's ALSA wrapper. This setup
-	seems to be the default configuration for Ubuntu 9.04 and later. This
-	issue can be solved by installing the 'libsdl1.2debian-pulseaudio'
-	package from Ubuntu's Universe repository.
+	played via SDL and then through PulseAudio's ALSA wrapper. Under the
+	same configuration OpenTTD, or rather SDL, might hang when exiting
+	the game. This setup seems to be the default configuration for
+	Ubuntu 9.04 and later. For Ubuntu this issue can be solved by
+	installing the 'libsdl1.2debian-pulseaudio' package from Ubuntu's
+	Universe repository. For other distributions a similar package needs
+	to be installed.
