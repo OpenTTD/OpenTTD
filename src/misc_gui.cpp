@@ -1361,7 +1361,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget == QUERY_STR_WIDGET_OK && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
+		if (widget == QUERY_STR_WIDGET_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
 			this->GetWidget<NWidgetCore>(widget)->SetFill(false, true);
 			size->width = 0;
 		}
