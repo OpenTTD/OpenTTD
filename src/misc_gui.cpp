@@ -1322,6 +1322,7 @@ void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
 	ShowOnScreenKeyboard(this, wid, 0, 0);
 }
 
+/** Widget of the string query window. */
 enum QueryStringWidgets {
 	QUERY_STR_WIDGET_CLOSEBOX,
 	QUERY_STR_WIDGET_CAPTION,
@@ -1332,23 +1333,50 @@ enum QueryStringWidgets {
 	QUERY_STR_WIDGET_OK
 };
 
-
+/** Class for the string query window. */
 struct QueryStringWindow : public QueryStringBaseWindow
 {
-	QueryStringWindow(uint16 size, const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(size, desc)
-	{
-		this->parent = parent;
-		this->SetFocusedWidget(QUERY_STR_WIDGET_TEXT);
+	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
 
-		this->FindWindowPlacementAndResize(desc);
+	QueryStringWindow(StringID str, StringID caption, uint maxsize, uint maxwidth, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
+			QueryStringBaseWindow(maxsize)
+	{
+		GetString(this->edit_str_buf, str, &this->edit_str_buf[maxsize - 1]);
+		this->edit_str_buf[maxsize - 1] = '\0';
+
+		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->edit_str_buf);
+
+		this->caption = caption;
+		this->afilter = afilter;
+		this->flags = flags;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, maxsize, maxwidth);
+
+		this->InitNested(desc);
+
+		this->parent = parent;
+
+		this->SetFocusedWidget(QUERY_STR_WIDGET_TEXT);
+		this->LowerWidget(QUERY_STR_WIDGET_TEXT);
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget == QUERY_STR_WIDGET_OK && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
+			this->GetWidget<NWidgetCore>(widget)->SetFill(false, true);
+			size->width = 0;
+		}
 	}
 
 	virtual void OnPaint()
 	{
-		SetDParam(0, this->caption);
 		this->DrawWidgets();
 
 		this->DrawEditBox(QUERY_STR_WIDGET_TEXT);
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == QUERY_STR_WIDGET_CAPTION) SetDParam(0, this->caption);
 	}
 
 	void OnOk()
@@ -1417,17 +1445,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	}
 };
 
-static const Widget _query_string_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_STR_WIDGET_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_WHITE_STRING,  STR_NULL},              // QUERY_STR_WIDGET_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_BACKGROUND
-{    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_TEXT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_BUTTON_DEFAULT,       STR_NULL},              // QUERY_STR_WIDGET_DEFAULT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    87,   172,    30,    41, STR_BUTTON_CANCEL,  STR_NULL},              // QUERY_STR_WIDGET_CANCEL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   173,   259,    30,    41, STR_BUTTON_OK,      STR_NULL},              // QUERY_STR_WIDGET_OK
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_STR_WIDGET_CLOSEBOX),
@@ -1437,9 +1454,9 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetDataTip(STR_BUTTON_OK, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetFill(true, true), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetFill(true, true), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetFill(true, true), SetDataTip(STR_BUTTON_OK, STR_NULL),
 	EndContainer(),
 };
 
@@ -1447,7 +1464,7 @@ static const WindowDesc _query_string_desc(
 	190, 219, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_query_string_widgets, _nested_query_string_widgets, lengthof(_nested_query_string_widgets)
+	NULL, _nested_query_string_widgets, lengthof(_nested_query_string_widgets)
 );
 
 /** Show a query popup window with a textbox in it.
@@ -1463,27 +1480,7 @@ static const WindowDesc _query_string_desc(
 void ShowQueryString(StringID str, StringID caption, uint maxsize, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
 {
 	DeleteWindowById(WC_QUERY_STRING, 0);
-
-	QueryStringWindow *w = new QueryStringWindow(maxsize, &_query_string_desc, parent);
-
-	GetString(w->edit_str_buf, str, &w->edit_str_buf[maxsize - 1]);
-	w->edit_str_buf[maxsize - 1] = '\0';
-
-	if ((flags & QSF_ACCEPT_UNCHANGED) == 0) w->orig = strdup(w->edit_str_buf);
-
-	if ((flags & QSF_ENABLE_DEFAULT) == 0) {
-		/* without the "Default" button, make "Cancel" and "OK" buttons wider */
-		w->SetWidgetHiddenState(QUERY_STR_WIDGET_DEFAULT, true);
-		w->widget[QUERY_STR_WIDGET_CANCEL].left  = 0;
-		w->widget[QUERY_STR_WIDGET_CANCEL].right = w->width / 2 - 1;
-		w->widget[QUERY_STR_WIDGET_OK].left      = w->width / 2;
-		w->widget[QUERY_STR_WIDGET_OK].right     = w->width - 1;
-	}
-
-	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
-	w->caption = caption;
-	w->afilter = afilter;
-	InitializeTextBuffer(&w->text, w->edit_str_buf, maxsize, maxwidth);
+	new QueryStringWindow(str, caption, maxsize, maxwidth, &_query_string_desc, parent, afilter, flags);
 }
 
 
