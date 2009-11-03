@@ -66,7 +66,7 @@ When you are sure it is not already reported you should:
  * Make sure you are not running a non-official binary, like a patch pack.
    When you are playing with a patch pack you should report any bugs to the
    forum thread related to that patch pack.
- * Make it reproducable for the developers. In other words, create a savegame
+ * Make it reproducible for the developers. In other words, create a savegame
    in which you can reproduce the issue once loaded. It is very useful to give
    us the crash.dmp, crash.sav and crash.log which are created on crashes.
  * Check whether the bug is already reported on our bug tracker. This includes
@@ -87,9 +87,9 @@ following information in your bug report:
 
 2.2) Reporting Desyncs:
 ---- ------------------
-As desyncs are hard to make reproducable OpenTTD has the ability to log all
+As desyncs are hard to make reproducible OpenTTD has the ability to log all
 actions done by clients so we can replay the whole game in an effort to make
-desyncs better reproducable. You need to turn this ability on. When turned
+desyncs better reproducible. You need to turn this ability on. When turned
 on an automatic savegame will be made once the map has been constructed in
 the 'save/autosave' directory, see OpenTTD directories to know where to find
 this directory. Furthermore the log file 'commands-out.log' will be created
@@ -178,7 +178,7 @@ config file, savegames will still be in this directory (see notes in section 4.2
 4.1) (Required) 3rd party files:
 ---- ---------------------------
 
-Before you run OpenTTD, you need to put the game's datafiles into a data/
+Before you run OpenTTD, you need to put the game's data files into a data/
 directory which can be located in various places addressed in the following
 section.
 As OpenTTD makes use of the original TTD artwork you will need the files listed
@@ -241,17 +241,17 @@ can be placed in a few different locations:
 	5. The installation directory (Linux only)
 		Linux:   /usr/share/games/openttd
 	6. The application bundle (Mac OSX only)
-		It includes the OTTD files (grf+lng) and it will work as long as they aren't touched
+		It includes the OpenTTD files (grf+lng) and it will work as long as they aren't touched
 
 Notes:
 	- Linux in the previous list means .deb, but most paths should be similar for others.
-	- The previous search order is also used for newgrfs and openttd.cfg.
+	- The previous search order is also used for NewGRFs and openttd.cfg.
 	- If openttd.cfg is not found, then it will be created using the 2, 4, 1, 3, 5 order.
 	- Savegames will be relative to the config file only if there is no save/
 	  directory in paths with higher priority than the config file path, but
 	  autosaves and screenshots will always be relative to the config file.
 
-The prefered setup:
+The preferred setup:
 Place 3rd party files in shared directory (or in personal directory if you don't
 have write access on shared directory) and have your openttd.cfg config file in
 personal directory (where the game will then also place savegames and screenshots).
@@ -299,7 +299,7 @@ ways to affect game state possibly resulting in program crash or multiplayer
 desyncs.
 Easier way would be to forbid all these unsafe actions, but that would affect
 game usability for many players. We certainly do not want that.
-However, we receive bugreports because of this. To reduce time spent with
+However, we receive bug reports because of this. To reduce time spent with
 solving these problems, these potentially unsafe actions are logged in
 the savegame (including crash.sav). Log is stored in crash logs, too.
 
@@ -308,15 +308,15 @@ Information logged:
 * Adding / removing / changing order of NewGRFs
 * Changing NewGRF parameters, loading compatible NewGRF
 * Changing game mode (scenario editor <-> normal game)
-* Loading game saved in a different OTTD / TTDPatch / TTD version
-* Running a modified OTTD build
-* Changing settings affecting NewGRF behaviour (non-networksafe settings)
+* Loading game saved in a different OpenTTD / TTDPatch / TTD version
+* Running a modified OpenTTD build
+* Changing settings affecting NewGRF behaviour (non-network-safe settings)
 * Changing landscape (by cheat)
 * Triggering NewGRF bugs
 
 No personal information is stored.
 
-You can show the gamelog by typing 'gamelog' in the console or by running
+You can show the game log by typing 'gamelog' in the console or by running
 OpenTTD in debug mode.
 
 
@@ -338,9 +338,9 @@ Windows:
   you need to add WITH_SDL to the project settings.
   PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these
   to work you need their development files. For best results, download the
-  openttd-useful.zip file from SourceForge under the Files tab. Put the header
-  files into your compiler's include/ directory and the library (.lib) files
-  into the lib/ directory.
+  openttd-useful.zip file from http://www.openttd.org/download-openttd-useful
+  Put the header files into your compiler's include/ directory and the
+  library (.lib) files into the lib/ directory.
   For more help with VS see docs/Readme_Windows_MSVC.txt.
 
   You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
@@ -472,7 +472,7 @@ The most frequent problem is missing data files. Don't forget to put all GRF
 files from TTD into your data/ folder including sample.cat!
 
 Under Windows 98 and lower it is impossible to use a dedicated server; it will
-fail to start. Perhaps this is for the better because those OS's are not known
+fail to start. Perhaps this is for the better because those OSes are not known
 for their stability.
 
 With the added support for font-based text selecting a non-latin language will
@@ -481,7 +481,7 @@ file and add a desired font for small/medium/-and large_font. This can be a font
 name like "Tahoma" or a path to a font.
 
 Any NewGRF file used in a game is stored inside the savegame and will refuse
-to load if you don't have that grf file available. A list of missing files
+to load if you don't have that NewGRF file available. A list of missing files
 will be output to the console at the moment, so use the '-d' flag (on windows)
 to see this list. You just have to find the files (http://grfcrawler.tt-forums.net/)
 put them in the data/ folder and you're set to go.
