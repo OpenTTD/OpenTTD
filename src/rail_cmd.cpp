@@ -1944,7 +1944,7 @@ static void DrawTile_Track(TileInfo *ti)
 		if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
 
 		/* adjust ground tile for desert
-			* don't adjust for snow, because snow in depots looks weird */
+		 * don't adjust for snow, because snow in depots looks weird */
 		if (IsSnowRailGround(ti->tile) && _settings_game.game_creation.landscape == LT_TROPIC) {
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks

@@ -415,8 +415,8 @@ void SlSetLength(size_t length)
 			switch (_sl.block_mode) {
 				case CH_RIFF:
 					/* Ugly encoding of >16M RIFF chunks
-					* The lower 24 bits are normal
-					* The uppermost 4 bits are bits 24:27 */
+					 * The lower 24 bits are normal
+					 * The uppermost 4 bits are bits 24:27 */
 					assert(length < (1 << 28));
 					SlWriteUint32((uint32)((length & 0xFFFFFF) | ((length >> 24) << 28)));
 					break;

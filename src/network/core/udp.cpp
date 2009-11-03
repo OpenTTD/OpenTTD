@@ -133,7 +133,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			p.PrepareToRead();
 
 			/* If the size does not match the packet must be corrupted.
-			* Otherwise it will be marked as corrupted later on. */
+			 * Otherwise it will be marked as corrupted later on. */
 			if (nbytes != p.size) {
 				DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString());
 				return;

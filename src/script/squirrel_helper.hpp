@@ -147,10 +147,10 @@ namespace SQConvert {
 	}
 
 	/**
-	* Helper class to recognize the function type (retval type, args) and use the proper specialization
-	* for SQ callback. The partial specializations for the second arg (Tis_void_retval) are not possible
-	* on the function. Therefore the class is used instead.
-	*/
+	 * Helper class to recognize the function type (retval type, args) and use the proper specialization
+	 * for SQ callback. The partial specializations for the second arg (Tis_void_retval) are not possible
+	 * on the function. Therefore the class is used instead.
+	 */
 	template <typename Tfunc, bool Tis_void_retval = HasVoidReturnT<Tfunc>::Yes> struct HelperT;
 
 	/**

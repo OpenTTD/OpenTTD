@@ -21,11 +21,11 @@
 	if (CheckSavegameVersion(44)) {
 		Vehicle *v;
 		/* If we remove a station while cargo from it is still enroute, payment calculation will assume
-			* 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
-			* stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
-			* where this situation exists, the cargo-source information is lost. in this case, we set the source
-			* to the current tile of the vehicle to prevent excessive profits
-			*/
+		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
+		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
+		 * where this situation exists, the cargo-source information is lost. in this case, we set the source
+		 * to the current tile of the vehicle to prevent excessive profits
+		 */
 		FOR_ALL_VEHICLES(v) {
 			const VehicleCargoList::List *packets = v->cargo.Packets();
 			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
@@ -36,10 +36,10 @@
 		}
 
 		/* Store position of the station where the goods come from, so there
-			* are no very high payments when stations get removed. However, if the
-			* station where the goods came from is already removed, the source
-			* information is lost. In that case we set it to the position of this
-			* station */
+		 * are no very high payments when stations get removed. However, if the
+		 * station where the goods came from is already removed, the source
+		 * information is lost. In that case we set it to the position of this
+		 * station */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) {

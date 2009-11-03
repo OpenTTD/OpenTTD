@@ -1101,7 +1101,7 @@ struct PerformanceRatingDetailWindow : Window {
 		if (score_type == SCORE_LOAN) val = needed - val;
 
 		/* Draw the amount we have against what is needed
-			* For some of them it is in currency format */
+		 * For some of them it is in currency format */
 		SetDParam(0, val);
 		SetDParam(1, needed);
 		switch (score_type) {
