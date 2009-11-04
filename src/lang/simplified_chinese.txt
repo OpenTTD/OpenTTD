@@ -1650,6 +1650,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公�
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
+STR_NETWORK_CLIENTLIST_BAN                                      :禁止
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送钱
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :向全体人广播
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :向本公司广播
@@ -2782,6 +2783,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/年{}运载能力： {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{7:FORCE}{}运行费用{CURRENCY}/年{}运载能力：{CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}售价：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{CARGO}, {CARGO}{}运行成本：{CURRENCY} /年
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}售价：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{CARGO}{}运行成本：{CURRENCY} /年
 
