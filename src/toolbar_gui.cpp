@@ -779,7 +779,7 @@ static void ToolbarSwitchClick(Window *w)
 	}
 
 	SplitToolbar(w);
-	w->HandleButtonClick(TBN_SWITCHBAR);
+	w->SetWidgetLoweredState(TBN_SWITCHBAR, _toolbar_mode == TB_LOWER);
 	w->SetDirty();
 	SndPlayFx(SND_15_BEEP);
 }
