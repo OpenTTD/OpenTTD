@@ -49,8 +49,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static void SplitToolbar(Window *w);
-
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
 
@@ -60,8 +58,6 @@ enum ToolBarProperties {
 	TBP_BUTTONHEIGHT       =  22,  ///< height of a button as well as the toolbars
 	TBP_DATEPANELWIDTH     = 130,  ///< used in scenario editor to calculate width of the toolbar.
 
-	TBP_TOOLBAR_MINBUTTON  =  14,  ///< references both toolbars
-	TBP_NORMAL_MAXBUTTON   =  19,  ///< normal toolbar has this many buttons
 	TBP_SCENARIO_MAXBUTTON =  16,  ///< while the scenario has these
 };
 
@@ -101,6 +97,7 @@ enum ToolbarNormalWidgets {
 	TBN_NEWSREPORT,
 	TBN_HELP,
 	TBN_SWITCHBAR,         ///< only available when toolbar has been split
+	TBN_END                ///< The end marker
 };
 
 enum ToolbarScenEditorWidgets {
@@ -778,9 +775,8 @@ static void ToolbarSwitchClick(Window *w)
 		_toolbar_mode = TB_UPPER;
 	}
 
-	SplitToolbar(w);
+	w->ReInit();
 	w->SetWidgetLoweredState(TBN_SWITCHBAR, _toolbar_mode == TB_LOWER);
-	w->SetDirty();
 	SndPlayFx(SND_15_BEEP);
 }
 
@@ -867,93 +863,6 @@ static void ToolbarBtn_NULL(Window *w)
 {
 }
 
-/* --- Resizing the toolbar */
-
-static void ResizeToolbar(Window *w)
-{
-	/* There are 27 buttons plus some spacings if the space allows it */
-	uint button_width;
-	uint spacing;
-	uint widgetcount = w->widget_count - 1;
-
-	if (w->width >= (int)widgetcount * TBP_BUTTONWIDTH) {
-		button_width = TBP_BUTTONWIDTH;
-		spacing = w->width - (widgetcount * button_width);
-	} else {
-		button_width = w->width / widgetcount;
-		spacing = 0;
-	}
-
-	static const uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
-	uint i = 0;
-	for (uint x = 0, j = 0; i < widgetcount; i++) {
-		if (extra_spacing_at[j] == i) {
-			j++;
-			uint add = spacing / (lengthof(extra_spacing_at) - j);
-			spacing -= add;
-			x += add;
-		}
-
-		w->widget[i].type = WWT_IMGBTN;
-		w->widget[i].left = x;
-		x += (spacing != 0) ? button_width : (w->width - x) / (widgetcount - i);
-		w->widget[i].right = x - 1;
-	}
-
-	w->widget[i].type = WWT_EMPTY; // i now points to the last item
-	_toolbar_mode = TB_NORMAL;
-}
-
-/* --- Split the toolbar */
-
-static void SplitToolbar(Window *w)
-{
-	static const byte arrange14[] = {
-		0,  1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27,
-		2,  3,  4,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
-	};
-	static const byte arrange15[] = {
-		0,  1,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
-		0,  2,  4,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
-	};
-	static const byte arrange16[] = {
-		0,  1,  2,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
-		0,  1,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
-	};
-	static const byte arrange17[] = {
-		0,  1,  2,  4,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
-		0,  1,  3,  4,  6,  5,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
-	};
-	static const byte arrange18[] = {
-		0,  1,  2,  4,  5,  6,  7,  8,  9, 12, 19, 20, 21, 22, 23, 17, 18, 27,
-		0,  1,  3,  4,  5,  6,  7, 10, 13, 14, 15, 16, 24, 25, 26, 17, 18, 27,
-	};
-	static const byte arrange19[] = {
-		0,  1,  2,  4,  5,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 17, 18, 27,
-		0,  1,  3,  4,  7,  8,  9, 10, 12, 25, 19, 20, 21, 22, 23, 26, 17, 18, 27,
-	};
-
-	static const byte * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
-
-	uint max_icons = max(TBP_TOOLBAR_MINBUTTON, (ToolBarProperties)((w->width + TBP_BUTTONWIDTH / 2) / TBP_BUTTONWIDTH));
-
-	assert(max_icons >= TBP_TOOLBAR_MINBUTTON && max_icons <= TBP_NORMAL_MAXBUTTON);
-
-	/* first hide all icons */
-	for (uint i = 0; i < w->widget_count - 1; i++) {
-		w->widget[i].type = WWT_EMPTY;
-	}
-
-	/* now activate them all on their proper positions */
-	for (uint i = 0, x = 0, n = max_icons - TBP_TOOLBAR_MINBUTTON; i < max_icons; i++) {
-		uint icon = arrangements[n][i + ((_toolbar_mode == TB_LOWER) ? max_icons : 0)];
-		w->widget[icon].type = WWT_IMGBTN;
-		w->widget[icon].left = x;
-		x += (w->width - x) / (max_icons - i);
-		w->widget[icon].right = x - 1;
-	}
-}
-
 typedef void MenuClickedProc(int index);
 
 static MenuClickedProc * const _menu_clicked_procs[] = {
@@ -984,6 +893,181 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickMusicWindow, // 24
 	MenuClickNewspaper,   // 25
 	MenuClickHelp,        // 26
+};
+
+/** Full blown container to make it behave exactly as we want :) */
+class NWidgetToolbarContainer : public NWidgetContainer {
+	bool visible[TBN_END]; ///< The visible headers
+	uint spacers;          ///< Number of spacer widgets in this toolbar
+
+public:
+	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL)
+	{
+	}
+
+	void SetupSmallestSize(Window *w, bool init_array)
+	{
+		this->smallest_x = 0; // Biggest child
+		this->smallest_y = 0; // Biggest child
+		this->fill_x = true;
+		this->fill_y = false;
+		this->resize_x = 1; // We only resize in this direction
+		this->resize_y = 0; // We never resize in this direction
+		this->spacers = 0;
+
+		/* First initialise some variables... */
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			child_wid->SetupSmallestSize(w, init_array);
+			this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+			this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+
+			if (child_wid->type == NWID_SPACER) this->spacers++;
+		}
+
+		/* ... then in a second pass make sure the 'current' heights are set. Won't change ever. */
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) child_wid->current_y = this->smallest_y;
+	}
+
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+	{
+		assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
+
+		this->pos_x = x;
+		this->pos_y = y;
+		this->current_x = given_width;
+		this->current_y = given_height;
+
+		/* Figure out what are the visible buttons */
+		memset(this->visible, 0, sizeof(this->visible));
+		uint visible_buttons;
+		const byte *arrangement = GetButtonArrangement(given_width, visible_buttons);
+		for (uint i = 0; i < visible_buttons; i++) {
+			this->visible[arrangement[i]] = true;
+		}
+
+		/* Create us ourselves a quick lookup table */
+		NWidgetBase *widgets[TBN_END];
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			if (child_wid->type == NWID_SPACER) continue;
+			widgets[((NWidgetCore*)child_wid)->index] = child_wid;
+		}
+
+		/* Now assign the widgets to their rightful place */
+		uint position = 0; // Place to put next child relative to origin of the container.
+		uint spacer_i = 0;
+		uint spacing = max(0, (int)given_width - (int)(visible_buttons * this->smallest_x)); // Remaining spacing for 'spacer' widgets
+		uint visible_i = 0;
+
+		/* Index into the arrangement indices. The macro lastof cannot be used here! */
+		const byte *cur_wid = rtl ? &arrangement[visible_buttons - 1] : arrangement;
+		for (uint i = 0; i < visible_buttons; i++) {
+			NWidgetBase *child_wid = widgets[*cur_wid];
+			if (spacing != 0) {
+				NWidgetBase *possible_spacer = rtl ? child_wid->next : child_wid->prev;
+				if (possible_spacer != NULL && possible_spacer->type == NWID_SPACER) {
+					uint add = spacing / (this->spacers - spacer_i);
+					position += add;
+					spacing -= add;
+					spacer_i++;
+				}
+			}
+
+			child_wid->current_x = (spacing != 0) ? this->smallest_x : (given_width - position) / (visible_buttons - visible_i);
+			child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, allow_resize_x, (this->resize_y > 0), rtl);
+			position += child_wid->current_x;
+			visible_i++;
+
+			if (rtl) {
+				cur_wid--;
+			} else {
+				cur_wid++;
+			}
+		}
+	}
+
+	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
+	{
+		/* We don't need to support the old version anymore! */
+		NOT_REACHED();
+	}
+
+	/* virtual */ void Draw(const Window *w)
+	{
+		/* Draw brown-red toolbar bg. */
+		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, 0xB2);
+		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, 0xB4, FILLRECT_CHECKER);
+
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			if (child_wid->type == NWID_SPACER) continue;
+			if (!this->visible[((NWidgetCore*)child_wid)->index]) continue;
+
+			child_wid->Draw(w);
+		}
+	}
+
+	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y)
+	{
+		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
+
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			if (child_wid->type == NWID_SPACER) continue;
+			if (!this->visible[((NWidgetCore*)child_wid)->index]) continue;
+
+			NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
+			if (nwid != NULL) return nwid;
+		}
+		return NULL;
+	}
+
+	/**
+	 * Get the arrangement of the buttons for the toolbar.
+	 * @param width the new width of the toolbar
+	 * @param count output for the number of buttons
+	 * @return the button configuration
+	 */
+	const byte *GetButtonArrangement(uint width, uint &count) const
+	{
+		static const uint SMALLEST_ARRANGEMENT = 14;
+		static const uint BIGGEST_ARRANGEMENT  = 19;
+		static const byte arrange14[] = {
+			0,  1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27,
+			2,  3,  4,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
+		};
+		static const byte arrange15[] = {
+			0,  1,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
+			0,  2,  4,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
+		};
+		static const byte arrange16[] = {
+			0,  1,  2,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
+			0,  1,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
+		};
+		static const byte arrange17[] = {
+			0,  1,  2,  4,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
+			0,  1,  3,  4,  6,  5,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
+		};
+		static const byte arrange18[] = {
+			0,  1,  2,  4,  5,  6,  7,  8,  9, 12, 19, 20, 21, 22, 23, 17, 18, 27,
+			0,  1,  3,  4,  5,  6,  7, 10, 13, 14, 15, 16, 24, 25, 26, 17, 18, 27,
+		};
+		static const byte arrange19[] = {
+			0,  1,  2,  4,  5,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 17, 18, 27,
+			0,  1,  3,  4,  7,  8,  9, 10, 12, 25, 19, 20, 21, 22, 23, 26, 17, 18, 27,
+		};
+		static const byte arrange_all[] = {
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+		};
+
+		uint full_buttons = max((width + this->smallest_x - 1) / this->smallest_x, SMALLEST_ARRANGEMENT);
+		if (full_buttons > BIGGEST_ARRANGEMENT) {
+			count = lengthof(arrange_all);
+			return arrange_all;
+		}
+
+		static const byte * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
+
+		count = full_buttons;
+		return arrangements[full_buttons - SMALLEST_ARRANGEMENT] + ((_toolbar_mode == TB_LOWER) ? full_buttons : 0);
+	}
 };
 
 /* --- Toolbar handling for the 'normal' case */
@@ -1022,24 +1106,19 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 };
 
 struct MainToolbarWindow : Window {
-	MainToolbarWindow(const WindowDesc *desc) : Window(desc)
+	MainToolbarWindow(const WindowDesc *desc) : Window()
 	{
-		this->SetWidgetDisabledState(TBN_PAUSE, _networking && !_network_server); // if not server, disable pause button
-		this->SetWidgetDisabledState(TBN_FASTFORWARD, _networking); // if networking, disable fast-forward button
+		this->InitNested(desc, 0);
 
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
-
-		this->FindWindowPlacementAndResize(desc);
+		this->SetWidgetDisabledState(TBN_PAUSE, _networking && !_network_server); // if not server, disable pause button
+		this->SetWidgetDisabledState(TBN_FASTFORWARD, _networking); // if networking, disable fast-forward button
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
 
 	virtual void OnPaint()
 	{
-		/* Draw brown-red toolbar bg. */
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4, FILLRECT_CHECKER);
-
 		/* If spectator, disable all construction buttons
 		 * ie : Build road, rail, ships, airports and landscaping
 		 * Since enabled state is the default, just disable when needed */
@@ -1127,15 +1206,6 @@ struct MainToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnResize()
-	{
-		if (this->width <= TBP_NORMAL_MAXBUTTON * TBP_BUTTONWIDTH) {
-			SplitToolbar(this);
-		} else {
-			ResizeToolbar(this);
-		}
-	}
-
 	virtual void OnTimeout()
 	{
 		/* We do not want to automatically raise the pause, fast forward and
@@ -1154,49 +1224,61 @@ struct MainToolbarWindow : Window {
 	}
 };
 
-static const Widget _toolb_normal_widgets[] = {
-{     WWT_IMGBTN,   RESIZE_LEFT,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_PAUSE,           STR_TOOLBAR_TOOLTIP_PAUSE_GAME},               // TBN_PAUSE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_FASTFORWARD,     STR_TOOLBAR_TOOLTIP_FORWARD},                  // TBN_FASTFORWARD
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SETTINGS,        STR_TOOLBAR_TOOLTIP_OPTIONS},                  // TBN_SETTINGS
-{   WWT_IMGBTN_2,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SAVE,            STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME},   // TBN_SAVEGAME
+static NWidgetBase *MakeMainToolbar(int *biggest_index)
+{
+	/** Sprites to use for the different toolbar buttons */
+	static const SpriteID toolbar_button_sprites[] = {
+		SPR_IMG_PAUSE,           // TBN_PAUSE
+		SPR_IMG_FASTFORWARD,     // TBN_FASTFORWARD
+		SPR_IMG_SETTINGS,        // TBN_SETTINGS
+		SPR_IMG_SAVE,            // TBN_SAVEGAME
+		SPR_IMG_SMALLMAP,        // TBN_SMALLMAP
+		SPR_IMG_TOWN,            // TBN_TOWNDIRECTORY
+		SPR_IMG_SUBSIDIES,       // TBN_SUBSIDIES
+		SPR_IMG_COMPANY_LIST,    // TBN_STATIONS
+		SPR_IMG_COMPANY_FINANCE, // TBN_FINANCES
+		SPR_IMG_COMPANY_GENERAL, // TBN_COMPANIES
+		SPR_IMG_GRAPHS,          // TBN_GRAPHICS
+		SPR_IMG_COMPANY_LEAGUE,  // TBN_LEAGUE
+		SPR_IMG_INDUSTRY,        // TBN_INDUSTRIES
+		SPR_IMG_TRAINLIST,       // TBN_TRAINS
+		SPR_IMG_TRUCKLIST,       // TBN_ROADVEHS
+		SPR_IMG_SHIPLIST,        // TBN_SHIPS
+		SPR_IMG_AIRPLANESLIST,   // TBN_AIRCRAFTS
+		SPR_IMG_ZOOMIN,          // TBN_ZOOMIN
+		SPR_IMG_ZOOMOUT,         // TBN_ZOOMOUT
+		SPR_IMG_BUILDRAIL,       // TBN_RAILS
+		SPR_IMG_BUILDROAD,       // TBN_ROADS
+		SPR_IMG_BUILDWATER,      // TBN_WATER
+		SPR_IMG_BUILDAIR,        // TBN_AIR
+		SPR_IMG_LANDSCAPING,     // TBN_LANDSCAPE
+		SPR_IMG_MUSIC,           // TBN_MUSICSOUND
+		SPR_IMG_MESSAGES,        // TBN_NEWSREPORT
+		SPR_IMG_QUERY,           // TBN_HELP
+		SPR_IMG_SWITCH_TOOLBAR,  // TBN_SWITCHBAR
+	};
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SMALLMAP,        STR_TOOLBAR_TOOLTIP_DISPLAY_MAP},              // TBN_SMALLMAP
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TOWN,            STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY},   // TBN_TOWNDIRECTORY
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SUBSIDIES,       STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES},        // TBN_SUBSIDIES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LIST,    STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS},  // TBN_STATIONS
+	NWidgetToolbarContainer *hor = new NWidgetToolbarContainer();
+	for (uint i = 0; i < TBN_END; i++) {
+		switch (i) {
+			case 4: case 8: case 13: case 17: case 19: case 24: hor->Add(new NWidgetSpacer(0, 0)); break;
+		}
+		hor->Add(new NWidgetLeaf(i == TBN_SAVEGAME ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i));
+	}
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES}, // TBN_FINANCES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL},  // TBN_COMPANIES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_GRAPHS,          STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS},           // TBN_GRAPHICS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE},   // TBN_LEAGUE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_INDUSTRY,        STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW}, // TBN_INDUSTRIES
+	*biggest_index = max<int>(*biggest_index, TBN_SWITCHBAR);
+	return hor;
+}
 
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TRAINLIST,       STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS},         // TBN_TRAINS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_TRUCKLIST,       STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES},  // TBN_ROADVEHS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SHIPLIST,        STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS},          // TBN_SHIPS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT},       // TBN_AIRCRAFTS
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_ZOOMIN,          STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN},         // TBN_ZOOMIN
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_ZOOMOUT,         STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT},        // TBN_ZOOMOUT
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDRAIL,       STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK},     // TBN_RAILS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDROAD,       STR_TOOLBAR_TOOLTIP_BUILD_ROADS},              // TBN_ROADS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDWATER,      STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS},         // TBN_WATER
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_BUILDAIR,        STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS},           // TBN_AIR
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_LANDSCAPING,     STR_TOOLBAR_TOOLTIP_LANDSCAPING},              // TBN_LANDSCAPE tree icon is SPR_IMG_PLANTTREES
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MUSIC,           STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW},  // TBN_MUSICSOUND
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_MESSAGES,        STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS},   // TBN_NEWSREPORT
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_QUERY,           STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION},   // TBN_HELP
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_SWITCH_TOOLBAR,  STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR},           // TBN_SWITCHBAR
-{   WIDGETS_END},
+static const NWidgetPart _nested_toolbar_normal_widgets[] = {
+	NWidgetFunction(MakeMainToolbar),
 };
 
 static const WindowDesc _toolb_normal_desc(
 	0, 0, 0, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_NO_FOCUS,
-	_toolb_normal_widgets
+	NULL, _nested_toolbar_normal_widgets, lengthof(_nested_toolbar_normal_widgets)
 );
 
 
