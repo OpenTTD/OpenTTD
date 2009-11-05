@@ -29,6 +29,7 @@
 #include "../company_gui.h"
 #include "../window_func.h"
 #include "../openttd.h"
+#include "../cargotype.h"
 
 #include "table/strings.h"
 
@@ -1380,7 +1381,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 		byte type = 0;
 		switch (v->type) {
 			case VEH_TRAIN: type = 0; break;
-			case VEH_ROAD: type = (v->cargo_type != CT_PASSENGERS) ? 1 : 2; break;
+			case VEH_ROAD: type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? 2 : 1; break;
 			case VEH_AIRCRAFT: type = 3; break;
 			case VEH_SHIP: type = 4; break;
 			default: continue;
