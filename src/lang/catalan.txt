@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la 
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies, mostra les opcions de missatges
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació del terreny, terminal, depuració IA, captures de pantalla, Quant a OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Desa l'escenari, carrega un escenari, abandona l'editor d'escenaris, sortir
@@ -956,8 +957,8 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Establei
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Estableix el sufix de text per a la teva moneda
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Canvi a Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Canvi a Euro: {ORANGE}mai
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Canvia a l'Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Canvia a l'Euro: {ORANGE}mai
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Estableix l'any d'introducció de l'Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Canvia a l'Euro més aviat
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Canvia a l'Euro més tard
@@ -2983,7 +2984,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Remodela
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordres)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horari
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Canvia cap a la vista d'horari
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Commuta a la vista d'horaris
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una per seleccionar-la
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -3110,7 +3111,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordre in
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordres
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Commuta l'ordre de la vista
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Commuta a la llista d'ordres
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari - clica sobre l'ordre per marcar-la.
 

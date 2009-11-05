@@ -315,6 +315,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ανοί
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Εμφάνιση παραθύρου ήχου/μουσικής
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληροφορίες περιοχής, κονσόλα, αποσφαλμάτωση AI, φωτογραφίες οθόνης, περί του OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλλάγη μπαρών εργασίας
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, παραίτηση πρόγραμμα επεξεργασίας, έξοδος
@@ -733,7 +734,7 @@ STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο φορτηγό φτάνει στο σταθμό {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο εμπορευτικό τραμ φτάνει στο σταθμό {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο εμπορευματικό τραμ φτάνει στο σταθμό {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροπλάνο φτάνει στο {STATION}!
 
@@ -2445,7 +2446,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Κανέ
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Αναμονή: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} καθ οδόν από το {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} από μεταφορά απ' το σταθμό {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Δέχεται
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Εμφάνιση λίστας αποδεκτών φορτίων
@@ -3589,7 +3590,7 @@ STR_INDUSTRY_NAME_POWER_STATION                                 :{G=m}Σταθμ
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=n}Πριονιστήριο
 STR_INDUSTRY_NAME_FOREST                                        :{G=n}Δάσος
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=n}Διυλιστήριο
-STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Πετρελαιοπηγή
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Πλατφόρμα Πετρελαίου
 STR_INDUSTRY_NAME_FACTORY                                       :{G=n}Εργοστάσιο
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=n}Τυπογραφείο
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=n}Χαλυβουργείο
@@ -3644,7 +3645,7 @@ STR_SV_STNAME_VALLEY                                            :Κοιλάδα 
 STR_SV_STNAME_HEIGHTS                                           :Λόφοι {STRING}
 STR_SV_STNAME_WOODS                                             :Δάσος {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Λίμνη {STRING}
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Ανταλλαγή
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Ανταλλαγής
 STR_SV_STNAME_AIRPORT                                           :αεροδρόμιο {STRING}
 STR_SV_STNAME_OILFIELD                                          :{G=m}Πετρελαιοπηγές {STRING}
 STR_SV_STNAME_MINES                                             :{G=n}Ορυχεία {STRING}
