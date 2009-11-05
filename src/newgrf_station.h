@@ -14,7 +14,6 @@
 
 #include "engine_type.h"
 #include "newgrf_callbacks.h"
-#include "newgrf_cargo.h"
 #include "tile_type.h"
 #include "station_type.h"
 #include "strings_type.h"

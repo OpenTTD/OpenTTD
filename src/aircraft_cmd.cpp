@@ -35,7 +35,6 @@
 #include "effectvehicle_func.h"
 #include "station_base.h"
 #include "cargotype.h"
-#include "newgrf_cargo.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

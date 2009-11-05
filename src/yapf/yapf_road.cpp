@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../roadstop_base.h"
 #include "../cargotype.h"
-#include "../newgrf_cargo.h"
 
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"

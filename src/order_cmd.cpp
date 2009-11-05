@@ -19,7 +19,6 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
-#include "newgrf_cargo.h"
 #include "timetable.h"
 #include "vehicle_func.h"
 #include "depot_base.h"

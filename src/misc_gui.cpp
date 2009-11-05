@@ -33,7 +33,6 @@
 #include "fios.h"
 #include "zoom_func.h"
 #include "window_func.h"
-#include "newgrf_cargo.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
 

@@ -22,6 +22,7 @@
 #include "train.h"
 #include "roadveh.h"
 #include "industry.h"
+#include "newgrf_cargo.h"
 #include "newgrf_station.h"
 #include "newgrf_commons.h"
 #include "yapf/yapf.h"

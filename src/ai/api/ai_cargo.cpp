@@ -14,7 +14,6 @@
 #include "../../economy_func.h"
 #include "../../core/alloc_func.hpp"
 #include "../../core/bitmath_func.hpp"
-#include "../../newgrf_cargo.h"
 
 /* static */ bool AICargo::IsValidCargo(CargoID cargo_type)
 {

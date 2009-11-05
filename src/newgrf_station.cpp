@@ -16,6 +16,7 @@
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "roadstop_base.h"
+#include "newgrf_cargo.h"
 #include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"

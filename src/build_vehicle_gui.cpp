@@ -31,7 +31,6 @@
 #include "window_gui.h"
 #include "engine_gui.h"
 #include "cargotype.h"
-#include "newgrf_cargo.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

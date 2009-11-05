@@ -21,7 +21,6 @@
 #include "core/pool_type.hpp"
 #include "house_type.h"
 
-#include "newgrf_cargo.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_generic.h"
 #include "newgrf_storage.h"

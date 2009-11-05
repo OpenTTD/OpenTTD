@@ -23,6 +23,7 @@
 #include "ai/ai.hpp"
 #include "aircraft.h"
 #include "train.h"
+#include "newgrf_cargo.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_industries.h"

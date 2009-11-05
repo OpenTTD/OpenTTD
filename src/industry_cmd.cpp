@@ -25,6 +25,7 @@
 #include "genworld.h"
 #include "tree_map.h"
 #include "newgrf.h"
+#include "newgrf_cargo.h"
 #include "newgrf_commons.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"

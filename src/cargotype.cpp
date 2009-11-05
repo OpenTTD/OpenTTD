@@ -10,7 +10,6 @@
 /** @file cargotype.cpp Implementation of cargos. */
 
 #include "stdafx.h"
-#include "newgrf_cargo.h"
 #include "cargotype.h"
 #include "core/bitmath_func.hpp"
 
