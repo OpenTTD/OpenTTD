@@ -61,6 +61,7 @@ void HandleOnEditText(const char *str)
 	switch (_rename_what) {
 #ifdef ENABLE_NETWORK
 	case 3: { // Give money, you can only give money in excess of loan
+		if (!IsValidCompanyID(_local_company)) break;
 		const Company *c = GetCompany(_local_company);
 		Money money = min(c->money - c->current_loan, (Money)(atoi(str) / _currency->rate));
 

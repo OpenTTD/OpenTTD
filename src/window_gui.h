@@ -380,7 +380,7 @@ public:
 	void DrawViewport() const;
 	void DrawSortButtonState(int widget, SortButtonState state) const;
 
-	void DeleteChildWindows() const;
+	void DeleteChildWindows(WindowClass wc = WC_INVALID) const;
 
 	void SetDirty() const;
 

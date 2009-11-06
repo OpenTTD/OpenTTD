@@ -516,6 +516,7 @@ struct NewGRFWindow : public Window {
 				this->preset = -1;
 				this->SetupNewGRFWindow();
 				this->SetDirty();
+				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 			}
 
@@ -558,6 +559,8 @@ struct NewGRFWindow : public Window {
 				uint i = (pt.y - this->widget[SNGRFS_FILE_LIST].top) / 14 + this->vscroll.pos;
 
 				for (c = this->list; c != NULL && i > 0; c = c->next, i--) {}
+
+				if (this->sel != c) this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				this->sel = c;
 
 				this->SetDirty();

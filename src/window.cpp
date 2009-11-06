@@ -509,12 +509,14 @@ void SetWindowDirty(const Window *w)
 
 /** Find the Window whose parent pointer points to this window
  * @param w parent Window to find child of
- * @return a Window pointer that is the child of w, or NULL otherwise */
-static Window *FindChildWindow(const Window *w)
+ * @param wc Window class of the window to remove; WC_INVALID if class does not matter
+ * @return a Window pointer that is the child of w, or NULL otherwise
+ */
+static Window *FindChildWindow(const Window *w, WindowClass wc)
 {
 	Window *v;
 	FOR_ALL_WINDOWS_FROM_BACK(v) {
-		if (v->parent == w) return v;
+		if ((wc == WC_INVALID || wc == v->window_class) && v->parent == w) return v;
 	}
 
 	return NULL;
@@ -522,13 +524,14 @@ static Window *FindChildWindow(const Window *w)
 
 /**
  * Delete all children a window might have in a head-recursive manner
+ * @param wc Window class of the window to remove; WC_INVALID if class does not matter
  */
-void Window::DeleteChildWindows() const
+void Window::DeleteChildWindows(WindowClass wc) const
 {
-	Window *child = FindChildWindow(this);
+	Window *child = FindChildWindow(this, wc);
 	while (child != NULL) {
 		delete child;
-		child = FindChildWindow(this);
+		child = FindChildWindow(this, wc);
 	}
 }
 
