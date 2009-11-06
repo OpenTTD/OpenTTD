@@ -898,11 +898,22 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetToolbarContainer : public NWidgetContainer {
 	bool visible[TBN_END]; ///< The visible headers
+protected:
 	uint spacers;          ///< Number of spacer widgets in this toolbar
 
 public:
 	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL)
 	{
+	}
+
+	/**
+	 * Check whether the given widget type is a button for us.
+	 * @param type the widget type to check
+	 * @return true if it is a button for us
+	 */
+	bool IsButton(WidgetType type) const
+	{
+		return type == WWT_IMGBTN || type == WWT_IMGBTN_2 || type == WWT_PUSHIMGBTN;
 	}
 
 	void SetupSmallestSize(Window *w, bool init_array)
@@ -919,13 +930,20 @@ public:
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			child_wid->SetupSmallestSize(w, init_array);
 			this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
-			this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
-
-			if (child_wid->type == NWID_SPACER) this->spacers++;
+			if (this->IsButton(child_wid->type)) {
+				this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+			} else if (child_wid->type == NWID_SPACER) {
+				this->spacers++;
+			}
 		}
 
 		/* ... then in a second pass make sure the 'current' heights are set. Won't change ever. */
-		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) child_wid->current_y = this->smallest_y;
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			child_wid->current_y = this->smallest_y;
+			if (!this->IsButton(child_wid->type)) {
+				child_wid->current_x = child_wid->smallest_x;
+			}
+		}
 	}
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
@@ -939,9 +957,9 @@ public:
 
 		/* Figure out what are the visible buttons */
 		memset(this->visible, 0, sizeof(this->visible));
-		uint visible_buttons;
-		const byte *arrangement = GetButtonArrangement(given_width, visible_buttons);
-		for (uint i = 0; i < visible_buttons; i++) {
+		uint arrangable_count, button_count, spacer_count;
+		const byte *arrangement = GetButtonArrangement(given_width, arrangable_count, button_count, spacer_count);
+		for (uint i = 0; i < arrangable_count; i++) {
 			this->visible[arrangement[i]] = true;
 		}
 
@@ -954,28 +972,34 @@ public:
 
 		/* Now assign the widgets to their rightful place */
 		uint position = 0; // Place to put next child relative to origin of the container.
+		uint spacer_space = max(0, (int)given_width - (int)(button_count * this->smallest_x)); // Remaining spacing for 'spacer' widgets
+		uint button_space = given_width - spacer_space; // Remaining spacing for the buttons
 		uint spacer_i = 0;
-		uint spacing = max(0, (int)given_width - (int)(visible_buttons * this->smallest_x)); // Remaining spacing for 'spacer' widgets
-		uint visible_i = 0;
+		uint button_i = 0;
 
 		/* Index into the arrangement indices. The macro lastof cannot be used here! */
-		const byte *cur_wid = rtl ? &arrangement[visible_buttons - 1] : arrangement;
-		for (uint i = 0; i < visible_buttons; i++) {
+		const byte *cur_wid = rtl ? &arrangement[arrangable_count - 1] : arrangement;
+		for (uint i = 0; i < arrangable_count; i++) {
 			NWidgetBase *child_wid = widgets[*cur_wid];
-			if (spacing != 0) {
+			/* If we have to give space to the spacers, do that */
+			if (spacer_space != 0) {
 				NWidgetBase *possible_spacer = rtl ? child_wid->next : child_wid->prev;
 				if (possible_spacer != NULL && possible_spacer->type == NWID_SPACER) {
-					uint add = spacing / (this->spacers - spacer_i);
+					uint add = spacer_space / (spacer_count - spacer_i);
 					position += add;
-					spacing -= add;
+					spacer_space -= add;
 					spacer_i++;
 				}
 			}
 
-			child_wid->current_x = (spacing != 0) ? this->smallest_x : (given_width - position) / (visible_buttons - visible_i);
+			/* Buttons can be scaled, the others not. */
+			if (this->IsButton(child_wid->type)) {
+				child_wid->current_x = button_space / (button_count - button_i);
+				button_space -= child_wid->current_x;
+				button_i++;
+			}
 			child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, allow_resize_x, (this->resize_y > 0), rtl);
 			position += child_wid->current_x;
-			visible_i++;
 
 			if (rtl) {
 				cur_wid--;
@@ -1022,10 +1046,17 @@ public:
 	/**
 	 * Get the arrangement of the buttons for the toolbar.
 	 * @param width the new width of the toolbar
-	 * @param count output for the number of buttons
+	 * @param arrangable_count output of the number of visible items
+	 * @param button_count output of the number of visible buttons
+	 * @param spacer_count output of the number of spacers
 	 * @return the button configuration
 	 */
-	const byte *GetButtonArrangement(uint width, uint &count) const
+	virtual const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const = 0;
+};
+
+/** Container for the 'normal' main toolbar */
+class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
+	/* virtual */ const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const
 	{
 		static const uint SMALLEST_ARRANGEMENT = 14;
 		static const uint BIGGEST_ARRANGEMENT  = 19;
@@ -1057,15 +1088,19 @@ public:
 			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
 		};
 
+		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
 		uint full_buttons = max((width + this->smallest_x - 1) / this->smallest_x, SMALLEST_ARRANGEMENT);
 		if (full_buttons > BIGGEST_ARRANGEMENT) {
-			count = lengthof(arrange_all);
+			button_count = arrangable_count = lengthof(arrange_all);
+			spacer_count = this->spacers;
 			return arrange_all;
 		}
 
+		/* Introduce the split toolbar */
 		static const byte * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
 
-		count = full_buttons;
+		button_count = arrangable_count = full_buttons;
+		spacer_count = this->spacers;
 		return arrangements[full_buttons - SMALLEST_ARRANGEMENT] + ((_toolbar_mode == TB_LOWER) ? full_buttons : 0);
 	}
 };
@@ -1258,7 +1293,7 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 		SPR_IMG_SWITCH_TOOLBAR,  // TBN_SWITCHBAR
 	};
 
-	NWidgetToolbarContainer *hor = new NWidgetToolbarContainer();
+	NWidgetMainToolbarContainer *hor = new NWidgetMainToolbarContainer();
 	for (uint i = 0; i < TBN_END; i++) {
 		switch (i) {
 			case 4: case 8: case 13: case 17: case 19: case 24: hor->Add(new NWidgetSpacer(0, 0)); break;
