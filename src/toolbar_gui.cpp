@@ -52,15 +52,6 @@
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
 
-/** This enum gathers properties of both toolbars */
-enum ToolBarProperties {
-	TBP_BUTTONWIDTH        =  22,  ///< width of a button
-	TBP_BUTTONHEIGHT       =  22,  ///< height of a button as well as the toolbars
-	TBP_DATEPANELWIDTH     = 130,  ///< used in scenario editor to calculate width of the toolbar.
-
-	TBP_SCENARIO_MAXBUTTON =  16,  ///< while the scenario has these
-};
-
 enum ToolbarMode {
 	TB_NORMAL,
 	TB_UPPER,
@@ -103,7 +94,8 @@ enum ToolbarNormalWidgets {
 enum ToolbarScenEditorWidgets {
 	TBSE_PAUSE        = 0,
 	TBSE_FASTFORWARD,
-	TBSE_SAVESCENARIO = 3,
+	TBSE_SETTINGS,
+	TBSE_SAVESCENARIO,
 	TBSE_SPACERPANEL,
 	TBSE_DATEPANEL,
 	TBSE_DATEBACKWARD,
@@ -118,6 +110,7 @@ enum ToolbarScenEditorWidgets {
 	TBSE_BUILDDOCKS,
 	TBSE_PLANTTREES,
 	TBSE_PLACESIGNS,
+	TBSE_DATEPANEL_CONTAINER,
 };
 
 /**
@@ -1105,6 +1098,66 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 	}
 };
 
+/** Container for the scenario editor's toolbar */
+class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
+	uint panel_widths[2]; ///< The width of the two panels (the text panel and date panel)
+
+	void SetupSmallestSize(Window *w, bool init_array)
+	{
+		this->NWidgetToolbarContainer::SetupSmallestSize(w, init_array);
+
+		/* Find the size of panel_widths */
+		uint i = 0;
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			if (child_wid->type == NWID_SPACER || this->IsButton(child_wid->type)) continue;
+
+			assert(i < lengthof(this->panel_widths));
+			this->panel_widths[i++] = child_wid->current_x;
+		}
+	}
+
+	/* virtual */ const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const
+	{
+		static const byte arrange_all[] = {
+			0, 1, 2, 3, 4, 18, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 24, 26,
+		};
+		static const byte arrange_nopanel[] = {
+			0, 1, 2, 3, 18, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 24, 26,
+		};
+		static const byte arrange_switch[] = {
+			18,  8, 11, 12, 13, 14, 15, 16, 17, 27,
+			 0,  1,  2,  3, 18,  9, 10, 24, 26, 27,
+		};
+
+		/* If we can place all buttons *and* the panels, show them. */
+		uint min_full_width = (lengthof(arrange_all) - lengthof(this->panel_widths)) * this->smallest_x + this->panel_widths[0] + this->panel_widths[1];
+		if (width >= min_full_width) {
+			width -= this->panel_widths[0] + this->panel_widths[1];
+			arrangable_count = lengthof(arrange_all);
+			button_count = arrangable_count - 2;
+			spacer_count = this->spacers;
+			return arrange_all;
+		}
+
+		/* Otherwise don't show the date panel and if we can't fit half the buttons and the panels anymore, split the toolbar in two */
+		uint min_small_width = (lengthof(arrange_switch) - lengthof(this->panel_widths)) * this->smallest_x / 2 + this->panel_widths[1];
+		if (width > min_small_width) {
+			width -= this->panel_widths[1];
+			arrangable_count = lengthof(arrange_nopanel);
+			button_count = arrangable_count - 1;
+			spacer_count = this->spacers - 1;
+			return arrange_nopanel;
+		}
+
+		/* Split toolbar */
+		width -= this->panel_widths[1];
+		arrangable_count = lengthof(arrange_switch) / 2;
+		button_count = arrangable_count - 1;
+		spacer_count = 0;
+		return arrange_switch + ((_toolbar_mode == TB_LOWER) ? arrangable_count : 0);
+	}
+};
+
 /* --- Toolbar handling for the 'normal' case */
 
 typedef void ToolbarButtonProc(Window *w);
@@ -1310,7 +1363,7 @@ static const NWidgetPart _nested_toolbar_normal_widgets[] = {
 };
 
 static const WindowDesc _toolb_normal_desc(
-	0, 0, 0, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
+	0, 0, 0, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_NO_FOCUS,
 	NULL, _nested_toolbar_normal_widgets, lengthof(_nested_toolbar_normal_widgets)
@@ -1347,15 +1400,16 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarMusicClick,
 	NULL,
 	ToolbarHelpClick,
+	ToolbarSwitchClick,
 };
 
 struct ScenarioEditorToolbarWindow : Window {
 public:
-	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window(desc)
+	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window()
 	{
-		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
+		this->InitNested(desc, 0);
 
-		this->FindWindowPlacementAndResize(desc);
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
@@ -1365,20 +1419,41 @@ public:
 		this->SetWidgetDisabledState(TBSE_DATEBACKWARD, _settings_game.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(TBSE_DATEFORWARD, _settings_game.game_creation.starting_year >= MAX_YEAR);
 
-		/* Draw brown-red toolbar bg. */
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4, FILLRECT_CHECKER);
-
 		this->DrawWidgets();
+	}
 
-		SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
-		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_CENTER);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case TBSE_DATEPANEL:
+				SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
+				DrawString(r.left, r.right, (this->height - FONT_HEIGHT_NORMAL) / 2, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_CENTER);
+				break;
 
-		/* We hide this panel when the toolbar space gets too small */
-		const Widget *panel = &this->widget[TBSE_SPACERPANEL];
-		if (panel->left != panel->right) {
-			DrawString(panel->left + 1, panel->right - 1,  1, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_CENTER);
-			DrawString(panel->left + 1, panel->right - 1, 11, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_CENTER);
+			case TBSE_SPACERPANEL: {
+				int height = r.bottom - r.top;
+				if (height > 2 * FONT_HEIGHT_NORMAL) {
+					DrawString(r.left, r.right, (height + 1) / 2 - FONT_HEIGHT_NORMAL, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_CENTER);
+					DrawString(r.left, r.right, (height + 1) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_CENTER);
+				} else {
+					DrawString(r.left, r.right, (height - FONT_HEIGHT_NORMAL) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_CENTER);
+				}
+			} break;
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case TBSE_SPACERPANEL:
+				size->width = max(GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_OPENTTD).width, GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR).width) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				break;
+
+			case TBSE_DATEPANEL:
+				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
+				*size = GetStringBoundingBox(STR_WHITE_DATE_LONG);
+				size->height = max(size->height, GetSpriteSize(SPR_IMG_SAVE).height + WD_IMGBTN2_TOP + WD_IMGBTN2_BOTTOM);
+				break;
 		}
 	}
 
@@ -1441,72 +1516,6 @@ public:
 		_place_proc(tile);
 	}
 
-	virtual void OnResize()
-	{
-		/* There are 16 buttons plus some spacings if the space allows it.
-		 * Furthermore there are two panels of which one is non - essential
-		 * and that one can be removed if the space is too small. */
-		uint buttons_width;
-		uint spacing;
-
-		static const int normal_min_width = (TBP_SCENARIO_MAXBUTTON * TBP_BUTTONWIDTH) + (2 * TBP_DATEPANELWIDTH);
-		static const int one_less_panel_min_width = (TBP_SCENARIO_MAXBUTTON * TBP_BUTTONWIDTH) + TBP_DATEPANELWIDTH;
-
-		if (this->width >= one_less_panel_min_width) {
-			buttons_width = TBP_SCENARIO_MAXBUTTON * TBP_BUTTONWIDTH;
-			spacing = this->width - ((this->width >= normal_min_width) ? normal_min_width : one_less_panel_min_width);
-		} else {
-			buttons_width = this->width - TBP_DATEPANELWIDTH;
-			spacing = 0;
-		}
-		static const uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 17, 0 };
-
-		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count; i++) {
-			switch (i) {
-				case TBSE_SPACERPANEL:
-					this->widget[i].left = x;
-					if (this->width < normal_min_width) {
-						this->widget[i].right = x;
-						j++;
-						continue;
-					}
-
-					x += TBP_DATEPANELWIDTH;
-					this->widget[i].right = x - 1;
-					break;
-
-				case TBSE_DATEPANEL: {
-					int offset = x - this->widget[i].left;
-					this->widget[i + 1].left  += offset;
-					this->widget[i + 1].right += offset;
-					this->widget[i + 2].left  += offset;
-					this->widget[i + 2].right += offset;
-					this->widget[i].left = x;
-					x += TBP_DATEPANELWIDTH;
-					this->widget[i].right = x - 1;
-					i += 2;
-				} break;
-
-				default:
-					if (this->widget[i].bottom == 0) continue;
-
-					this->widget[i].left = x;
-					x += buttons_width / (TBP_SCENARIO_MAXBUTTON - b);
-					this->widget[i].right = x - 1;
-					buttons_width -= buttons_width / (TBP_SCENARIO_MAXBUTTON - b);
-					b++;
-					break;
-			}
-
-			if (extra_spacing_at[j] == i) {
-				j++;
-				uint add = spacing / (lengthof(extra_spacing_at) - j);
-				spacing -= add;
-				x += add;
-			}
-		}
-	}
-
 	virtual void OnTimeout()
 	{
 		this->SetWidgetsLoweredState(false, TBSE_DATEBACKWARD, TBSE_DATEFORWARD, WIDGET_LIST_END);
@@ -1533,48 +1542,54 @@ public:
 	}
 };
 
-static const Widget _toolb_scen_widgets[] = {
-{    WWT_IMGBTN, RESIZE_LEFT,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_PAUSE,       STR_TOOLBAR_TOOLTIP_PAUSE_GAME},                  // TBSE_PAUSE
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD},                     // TBSE_FASTFORWARD
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SETTINGS,    STR_TOOLBAR_TOOLTIP_OPTIONS},
-{  WWT_IMGBTN_2, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SAVE,        STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO}, // TBSE_SAVESCENARIO
+static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_FASTFORWARD), SetDataTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_SETTINGS), SetDataTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
+	NWidget(WWT_IMGBTN_2, COLOUR_GREY, TBSE_SAVESCENARIO), SetDataTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO),
+	NWidget(NWID_SPACER),
+	NWidget(WWT_PANEL, COLOUR_GREY, TBSE_SPACERPANEL), EndContainer(),
+	NWidget(NWID_SPACER),
+	NWidget(WWT_PANEL, COLOUR_GREY, TBSE_DATEPANEL_CONTAINER),
+		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_DATEBACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD),
+			NWidget(WWT_EMPTY, COLOUR_GREY, TBSE_DATEPANEL),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_DATEFORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_SPACER),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_SMALLMAP), SetDataTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY),
+	NWidget(NWID_SPACER),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_ZOOMIN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_ZOOMOUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
+	NWidget(NWID_SPACER),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_LANDGENERATE), SetDataTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_TOWNGENERATE), SetDataTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_INDUSTRYGENERATE), SetDataTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_BUILDROAD), SetDataTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_BUILDDOCKS), SetDataTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_PLANTTREES), SetDataTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_PLACESIGNS), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
+	NWidget(NWID_SPACER),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBN_MUSICSOUND), SetDataTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBN_HELP), SetDataTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, TBN_SWITCHBAR), SetDataTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
+};
 
-{     WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, 0x0,                 STR_NULL},                                        // TBSE_SPACERPANEL
+static NWidgetBase *MakeScenarioToolbar(int *biggest_index)
+{
+	return MakeNWidgets(_nested_toolb_scen_inner_widgets, lengthof(_nested_toolb_scen_inner_widgets), biggest_index, new NWidgetScenarioToolbarContainer());
+}
 
-{     WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 129,  0, 21, 0x0,                 STR_NULL},                                        // TBSE_DATEPANEL
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   3,  14,  5, 16, SPR_ARROW_DOWN,      STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD}, // TBSE_DATEBACKWARD
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY, 113, 125,  5, 16, SPR_ARROW_UP,        STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD},  // TBSE_DATEFORWARD
-
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SMALLMAP,    STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY},  // TBSE_SMALLMAP
-
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_ZOOMIN,      STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN},            // TBSE_ZOOMIN
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_ZOOMOUT,     STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT},           // TBSE_ZOOMOUT
-
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION},       // TBSE_LANDGENERATE
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_TOWN,        STR_SCENEDIT_TOOLBAR_TOWN_GENERATION},            // TBSE_TOWNGENERATE
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_INDUSTRY,    STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION},        // TBSE_INDUSTRYGENERATE
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_BUILDROAD,   STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION},          // TBSE_BUILDROAD
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_BUILDWATER,  STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS},            // TBSE_BUILDDOCKS
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_PLANTTREES,  STR_SCENEDIT_TOOLBAR_PLANT_TREES},                // TBSE_PLANTTREES
-{WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_SIGN,        STR_SCENEDIT_TOOLBAR_PLACE_SIGN},                 // TBSE_PLACESIGNS
-
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_MUSIC,       STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW},
-{     WWT_EMPTY, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{    WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,   0,  0, 21, SPR_IMG_QUERY,       STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION},
-{WIDGETS_END},
+static const NWidgetPart _nested_toolb_scen_widgets[] = {
+	NWidgetFunction(MakeScenarioToolbar),
 };
 
 static const WindowDesc _toolb_scen_desc(
-	0, 0, 130, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
+	0, 0, 0, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
-	_toolb_scen_widgets
+	NULL, _nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets)
 );
 
 /* --- Allocating the toolbar --- */
