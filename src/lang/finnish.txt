@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Avaa maa
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näytä ääni- ja musiikkiasetukset
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-aluetiedot, konsoli, tekoälyn virheenjäljitys, tietoja OpenTTD:stä
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Vaihda työkalupalkkeja
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, hylkää skenaariomuokkain, lopeta.

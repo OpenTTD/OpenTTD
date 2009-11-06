@@ -492,6 +492,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvorite
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Prikaži prozor za zvuk i muziku
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Prikaži poslednju poruku/izveštaj, prikaži opcije poruka
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o zemljištu, konzola, debag veštačke inteligencije, slika sa ekrana, o OpenTTD-u
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Zamenjuje trake sa alatima
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sačuvaj scenario, učitaj scenario, napusti editor, izađi
