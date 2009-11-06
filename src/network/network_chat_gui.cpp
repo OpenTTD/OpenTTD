@@ -79,7 +79,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *
 	Utf8TrimString(buf, DRAW_STRING_BUFFER);
 
 	/* Force linebreaks for strings that are too long */
-	lines = GB(FormatStringLinebreaks(buf, _chatmsg_box.width - 8), 0, 16) + 1;
+	lines = GB(FormatStringLinebreaks(buf, lastof(buf), _chatmsg_box.width - 8), 0, 16) + 1;
 	if (lines >= MAX_CHAT_MESSAGES) return;
 
 	msg_count = GetChatMessageCount();

@@ -16,7 +16,7 @@ public:
 
 class FSoundDriver_Null: public SoundDriverFactory<FSoundDriver_Null> {
 public:
-	static const int priority = 0;
+	static const int priority = 1;
 	/* virtual */ const char *GetName() { return "null"; }
 	/* virtual */ const char *GetDescription() { return "Null Sound Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Null(); }

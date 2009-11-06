@@ -24,7 +24,7 @@ public:
 
 class FMusicDriver_Allegro: public MusicDriverFactory<FMusicDriver_Allegro> {
 public:
-	static const int priority = 1;
+	static const int priority = 2;
 	/* virtual */ const char *GetName() { return "allegro"; }
 	/* virtual */ const char *GetDescription() { return "Allegro MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Allegro(); }

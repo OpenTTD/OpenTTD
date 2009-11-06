@@ -109,7 +109,7 @@ void GfxDrawLine(int left, int top, int right, int bottom, int colour);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
 Dimension GetStringBoundingBox(const char *str);
-uint32 FormatStringLinebreaks(char *str, int maxw);
+uint32 FormatStringLinebreaks(char *str, const char *last, int maxw);
 int GetStringHeight(StringID str, int maxw);
 void LoadStringWidthTable();
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);

@@ -3022,10 +3022,10 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					group->g.indprod.version = type;
 					if (type == 0) {
 						for (uint i = 0; i < 3; i++) {
-							group->g.indprod.substract_input[i] = grf_load_word(&buf);
+							group->g.indprod.substract_input[i] = (int16)grf_load_word(&buf); // signed
 						}
 						for (uint i = 0; i < 2; i++) {
-							group->g.indprod.add_output[i] = grf_load_word(&buf);
+							group->g.indprod.add_output[i] = grf_load_word(&buf); // unsigned
 						}
 						group->g.indprod.again = grf_load_byte(&buf);
 					} else {
@@ -3774,7 +3774,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x09: // date fraction
-			*value = _date_fract;
+			*value = _date_fract * 885;
 			return true;
 
 		case 0x0A: // animation counter

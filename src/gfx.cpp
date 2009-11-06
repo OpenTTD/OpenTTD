@@ -593,12 +593,13 @@ void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, Tex
  * starting with index 0 is the real string end.
  *
  * @param str string to check and correct for length restrictions
+ * @param last the last valid location (for '\0') in the buffer of str
  * @param maxw the maximum width the string can have on one line
  * @return return a 32bit wide number consisting of 2 packed values:
  *  0 - 15 the number of lines ADDED to the string
  * 16 - 31 the fontsize in which the length calculation was done at
  */
-uint32 FormatStringLinebreaks(char *str, int maxw)
+uint32 FormatStringLinebreaks(char *str, const char *last, int maxw)
 {
 	FontSize size = _cur_fontsize;
 	int num = 0;
@@ -606,6 +607,7 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 	assert(maxw > 0);
 
 	for (;;) {
+		/* The character *after* the last space. */
 		char *last_space = NULL;
 		int w = 0;
 
@@ -615,18 +617,49 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 			if (IsWhitespace(c)) last_space = str;
 
 			if (IsPrintable(c)) {
-				w += GetCharacterWidth(size, c);
-				/* string is longer than maximum width so we need to decide what to
-				 * do. We can do two things:
-				 * 1. If no whitespace was found at all up until now (on this line) then
-				 *    we will truncate the string and bail out.
-				 * 2. In all other cases force a linebreak at the last seen whitespace */
+				int char_w = GetCharacterWidth(size, c);
+				w += char_w;
 				if (w > maxw) {
-					if (last_space == NULL) {
-						*Utf8PrevChar(str) = '\0';
+					/* The string is longer than maximum width so we need to decide
+					 * what to do with it. */
+					if (w == char_w) {
+						/* The character is wider than allowed width; don't know
+						 * what to do with this case... bail out! */
 						return num + (size << 16);
 					}
-					str = last_space;
+					if (last_space == NULL) {
+						/* No space has been found. Just terminate at our current
+						 * location. This usually happens for languages that do not
+						 * require spaces in strings, like Chinese, Japanese and
+						 * Korean. For other languages terminating mid-word might
+						 * not be the best, but terminating the whole string instead
+						 * of continuing the word at the next line is worse. */
+						str = Utf8PrevChar(str);
+						size_t len = strlen(str);
+						char *terminator = str + len;
+
+						/* The string location + length of the string + 1 for '\0'
+						 * always fits; otherwise there's no trailing '\0' and it
+						 * it not a valid string. */
+						assert(terminator <= last);
+						assert(*terminator == '\0');
+
+						/* If the string is too long we have to terminate it earlier. */
+						if (terminator == last) {
+							/* Get the 'begin' of the previous character and make that
+							 * the terminator of the string; we truncate it 'early'. */
+							*Utf8PrevChar(terminator) = '\0';
+							len = strlen(str);
+						}
+						/* Also move the terminator! */
+						memmove(str + 1, str, len + 1);
+						*str = '\0';
+						/* str needs to point to the character *after* the last space */
+						str++;
+					} else {
+						/* A space is found; perfect place to terminate */
+						str = last_space;
+					}
 					break;
 				}
 			} else {
@@ -695,7 +728,7 @@ int GetStringHeight(StringID str, int maxw)
 
 	GetString(buffer, str, lastof(buffer));
 
-	uint32 tmp = FormatStringLinebreaks(buffer, maxw);
+	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
 
 	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16));
 }
@@ -716,7 +749,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 
 	GetString(buffer, str, lastof(buffer));
 
-	tmp = FormatStringLinebreaks(buffer, maxw);
+	tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
 	num = GB(tmp, 0, 16);
 
 	mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
@@ -755,18 +788,16 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 {
 	char buffer[DRAW_STRING_BUFFER];
-	uint32 tmp;
-	int num, mt;
 	uint total_height;
 	const char *src;
 	WChar c;
 
 	GetString(buffer, str, lastof(buffer));
 
-	tmp = FormatStringLinebreaks(buffer, maxw);
-	num = GB(tmp, 0, 16);
+	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
+	int num = GB(tmp, 0, 16);
 
-	mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
+	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
 	total_height = (num + 1) * mt;
 
 	if (maxh != -1 && (int)total_height > maxh) {

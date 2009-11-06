@@ -18,7 +18,7 @@ public:
 
 class FSoundDriver_Allegro: public SoundDriverFactory<FSoundDriver_Allegro> {
 public:
-	static const int priority = 5;
+	static const int priority = 4;
 	/* virtual */ const char *GetName() { return "allegro"; }
 	/* virtual */ const char *GetDescription() { return "Allegro Sound Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Allegro(); }

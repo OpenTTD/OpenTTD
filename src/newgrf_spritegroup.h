@@ -165,8 +165,8 @@ struct TileLayoutSpriteGroup {
 
 struct IndustryProductionSpriteGroup {
 	uint8 version;
-	uint16 substract_input[3];
-	uint16 add_output[2];
+	int16 substract_input[3]; // signed
+	uint16 add_output[2];     // unsigned
 	uint8 again;
 };
 

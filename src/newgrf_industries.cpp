@@ -551,7 +551,7 @@ bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCa
 	return true;
 }
 
-static int32 DerefIndProd(uint field, bool use_register)
+static int32 DerefIndProd(int field, bool use_register)
 {
 	return use_register ? (int32)GetRegister(field) : field;
 }
