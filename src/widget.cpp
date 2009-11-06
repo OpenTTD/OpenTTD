@@ -2680,17 +2680,18 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
  * @param parts Array with parts of the widgets.
  * @param count Length of the \a parts array.
  * @param biggest_index Pointer to biggest nested widget index collected in the tree.
+ * @param container Container to add the nested widgets to. In case it is NULL a vertical container is used.
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
- * @precond \c biggest_index != NULL
- * @postcond \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
+ * @pre \c biggest_index != NULL
+ * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
-NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest_index)
+NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest_index, NWidgetContainer *container)
 {
 	*biggest_index = -1;
-	NWidgetContainer *cont = new NWidgetVertical();
-	MakeWidgetTree(parts, count, cont, biggest_index);
-	return cont;
+	if (container == NULL) container = new NWidgetVertical();
+	MakeWidgetTree(parts, count, container, biggest_index);
+	return container;
 }
 
 /**

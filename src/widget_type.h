@@ -829,7 +829,7 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 	return part;
 }
 
-NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest_index);
+NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest_index, NWidgetContainer *container = NULL);
 
 const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, const Widget *orig_wid, Widget **wid_cache);
 
