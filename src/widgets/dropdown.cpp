@@ -88,20 +88,26 @@ static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	EndContainer(),
 };
 
+/** Drop-down menu window */
 struct DropdownWindow : Window {
 	WindowClass parent_wnd_class; ///< Parent window class.
 	WindowNumber parent_wnd_num;  ///< Parent window number.
 	byte parent_button;           ///< Parent widget number where the window is dropped from.
-	DropDownList *list;
+	DropDownList *list;           ///< List with dropdown menu items.
 	int selected_index;           ///< Index of the selected item in the list.
-	byte click_delay;
+	byte click_delay;             ///< Timer to delay selection.
 	bool drag_mode;
 	bool instant_close;
-	int scrolling;
+	int scrolling;                ///< If non-zero, auto-scroll the item list (one time).
 
-	DropdownWindow(int x, int y, int width, int height, const Widget *widget) : Window(x, y, width, height, WC_DROPDOWN_MENU, widget)
+	/** Create a dropdown menu.
+	 * @param pos    Topleft position of the dropdown menu window.
+	 * @param size   Size of the dropdown menu window.
+	 * @param widget Widgets of the dropdown menu window.
+	 */
+	DropdownWindow(const Point &pos, const Dimension &size, const Widget *widget) : Window(pos.x, pos.y, size.width, size.height + 4, WC_DROPDOWN_MENU, widget)
 	{
-		this->FindWindowPlacementAndResize(width, height);
+		this->FindWindowPlacementAndResize(size.width, size.height + 4);
 	}
 
 	~DropdownWindow()
@@ -351,7 +357,9 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_dropdown_menu_widgets, lengthof(_nested_dropdown_menu_widgets),
 													_dropdown_menu_widgets, &generated_dropdown_menu_widgets);
-	DropdownWindow *dw = new DropdownWindow(w->left + wi_rect.left, top, width, height + 4, wid);
+	Point dw_pos = {w->left + wi_rect.left, top};
+	Dimension dw_size = {width, height};
+	DropdownWindow *dw = new DropdownWindow(dw_pos, dw_size, wid);
 
 	dw->widget[DDM_ITEMS].colour = wi_colour;
 	dw->widget[DDM_ITEMS].right = width - 1;
