@@ -5088,7 +5088,7 @@ static void GRFImportBlock(byte *buf, int len)
 	}
 }
 
-static void LoadGRFSound(byte *buf, int len)
+static void LoadGRFSound(byte *buf, uint len)
 {
 	byte *buf_start = buf;
 
@@ -5101,22 +5101,31 @@ static void LoadGRFSound(byte *buf, int len)
 		return;
 	}
 
-	/* Size of file -- we ignore this */
-	grf_load_dword(&buf);
+	uint32 total_size = grf_load_dword(&buf);
+	if (total_size > len + 8) {
+		grfmsg(1, "LoadGRFSound: RIFF was truncated");
+		return;
+	}
 
 	if (grf_load_dword(&buf) != BSWAP32('WAVE')) {
 		grfmsg(1, "LoadGRFSound: Invalid RIFF type");
 		return;
 	}
 
-	for (;;) {
+	while (total_size >= 8) {
 		uint32 tag  = grf_load_dword(&buf);
 		uint32 size = grf_load_dword(&buf);
+		total_size -= 8;
+		if (total_size < size) {
+			grfmsg(1, "LoadGRFSound: Invalid RIFF");
+			return;
+		}
+		total_size -= size;
 
 		switch (tag) {
 			case ' tmf': // 'fmt '
 				/* Audio format, must be 1 (PCM) */
-				if (grf_load_word(&buf) != 1) {
+				if (size < 16 || grf_load_word(&buf) != 1) {
 					grfmsg(1, "LoadGRFSound: Invalid audio format");
 					return;
 				}
@@ -5126,8 +5135,8 @@ static void LoadGRFSound(byte *buf, int len)
 				grf_load_word(&buf);
 				sound->bits_per_sample = grf_load_word(&buf);
 
-				/* Consume any extra bytes */
-				for (; size > 16; size--) grf_load_byte(&buf);
+				/* The rest will be skipped */
+				size -= 16;
 				break;
 
 			case 'atad': // 'data'
@@ -5140,13 +5149,21 @@ static void LoadGRFSound(byte *buf, int len)
 				sound->priority = 0;
 
 				grfmsg(2, "LoadGRFSound: channels %u, sample rate %u, bits per sample %u, length %u", sound->channels, sound->rate, sound->bits_per_sample, size);
-				return;
+				return; // the fmt chunk has to appear before data, so we are finished
 
 			default:
-				sound->file_size = 0;
-				return;
+				/* Skip unknown chunks */
+				break;
 		}
+
+		/* Skip rest of chunk */
+		for (; size > 0; size--) grf_load_byte(&buf);
 	}
+
+	grfmsg(1, "LoadGRFSound: RIFF does not contain any sound data");
+
+	/* Clear everything that was read */
+	MemSetT(sound, 0);
 }
 
 /* Action 0x12 */
@@ -5285,22 +5302,34 @@ static void TranslateGRFStrings(byte *buf, size_t len)
 /* 'Action 0xFF' */
 static void GRFDataBlock(byte *buf, int len)
 {
+	/* <FF> <name_len> <name> '\0' <data> */
+
 	if (_grf_data_blocks == 0) {
 		grfmsg(2, "GRFDataBlock: unexpected data block, skipping");
 		return;
 	}
 
+	if (!check_length(len, 3, "GRFDataBlock")) return;
+
 	buf++;
 	uint8 name_len = grf_load_byte(&buf);
 	const char *name = (const char *)buf;
-	buf += name_len + 1;
+	buf += name_len;
+
+	/* Test string termination */
+	if (grf_load_byte(&buf) != 0) {
+		grfmsg(2, "GRFDataBlock: Name not properly terminated");
+		return;
+	}
+
+	if (!check_length(len, 3 + name_len, "GRFDataBlock")) return;
 
 	grfmsg(2, "GRFDataBlock: block name '%s'...", name);
 
 	_grf_data_blocks--;
 
 	switch (_grf_data_type) {
-		case GDT_SOUND: LoadGRFSound(buf, len - name_len - 2); break;
+		case GDT_SOUND: LoadGRFSound(buf, len - name_len - 3); break;
 		default: NOT_REACHED();
 	}
 }
