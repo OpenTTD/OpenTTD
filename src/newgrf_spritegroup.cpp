@@ -173,14 +173,16 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
 		if (adjust->variable == 0x7E) {
-			ResolverObject subobject = *object;
-			subobject.procedure_call = true;
-			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject);
+			const SpriteGroup *subgroup = Resolve(adjust->subroutine, object);
 			if (subgroup == NULL || subgroup->type != SGT_CALLBACK) {
 				value = CALLBACK_FAILED;
 			} else {
 				value = subgroup->g.callback.result;
 			}
+
+			/* Reset values to current scope.
+			 * Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
+			object->scope = group->g.determ.var_scope;
 		} else {
 			value = GetVariable(object, adjust->variable, adjust->parameter, &available);
 		}
