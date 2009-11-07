@@ -343,7 +343,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 			scroll = true;
 			/* Add space for the scroll bar if we automatically determined
 			 * the width of the list. */
-			max_item_width += 12;
+			max_item_width += WD_VSCROLLBAR_WIDTH;
 		}
 	}
 
@@ -364,9 +364,9 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		 * the scrollbar's width */
 		dw->widget[DDM_SCROLL].colour = wi_colour;
 		dw->widget[DDM_SCROLL].right  = dw->widget[DDM_ITEMS].right;
-		dw->widget[DDM_SCROLL].left   = dw->widget[DDM_SCROLL].right - 11;
+		dw->widget[DDM_SCROLL].left   = dw->widget[DDM_SCROLL].right - (WD_VSCROLLBAR_WIDTH - 1);
 		dw->widget[DDM_SCROLL].bottom = dw->widget[DDM_ITEMS].bottom;
-		dw->widget[DDM_ITEMS].right -= 12;
+		dw->widget[DDM_ITEMS].right -= WD_VSCROLLBAR_WIDTH;
 
 		/* Capacity is the average number of items visible */
 		dw->vscroll.SetCapacity(height * (uint16)list->size() / list_height);
