@@ -101,13 +101,59 @@ struct DropdownWindow : Window {
 	int scrolling;                ///< If non-zero, auto-scroll the item list (one time).
 
 	/** Create a dropdown menu.
-	 * @param pos    Topleft position of the dropdown menu window.
-	 * @param size   Size of the dropdown menu window.
-	 * @param widget Widgets of the dropdown menu window.
+	 * @param parent        Parent window.
+	 * @param list          Dropdown item list.
+	 * @param selected      Index of the selected item in the list.
+	 * @param button        Widget of the parent window doing the dropdown.
+	 * @param instant_close ???
+	 * @param pos           Topleft position of the dropdown menu window.
+	 * @param size          Size of the dropdown menu window.
+	 * @param wi_colour     Colour of the parent widget.
+	 * @param scroll        Dropdown menu has a scrollbar.
+	 * @param widget        Widgets of the dropdown menu window.
 	 */
-	DropdownWindow(const Point &pos, const Dimension &size, const Widget *widget) : Window(pos.x, pos.y, size.width, size.height + 4, WC_DROPDOWN_MENU, widget)
+	DropdownWindow(Window *parent, DropDownList *list, int selected, int button, bool instant_close, const Point &pos, const Dimension &size, Colours wi_colour, bool scroll, const Widget *widget) :
+			Window(pos.x, pos.y, size.width, size.height + 4, WC_DROPDOWN_MENU, widget)
 	{
 		this->FindWindowPlacementAndResize(size.width, size.height + 4);
+
+		this->widget[DDM_ITEMS].colour = wi_colour;
+		this->widget[DDM_ITEMS].right = size.width - 1;
+		this->widget[DDM_ITEMS].bottom = size.height + 3;
+
+		this->SetWidgetHiddenState(DDM_SCROLL, !scroll);
+		if (scroll) {
+			/* We're scrolling, so enable the scroll bar and shrink the list by
+			 * the scrollbar's width */
+			this->widget[DDM_SCROLL].colour = wi_colour;
+			this->widget[DDM_SCROLL].right  = this->widget[DDM_ITEMS].right;
+			this->widget[DDM_SCROLL].left   = this->widget[DDM_SCROLL].right - (WD_VSCROLLBAR_WIDTH - 1);
+			this->widget[DDM_SCROLL].bottom = this->widget[DDM_ITEMS].bottom;
+			this->widget[DDM_ITEMS].right -= WD_VSCROLLBAR_WIDTH;
+
+			/* Total length of list */
+			int list_height = 0;
+			for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
+				DropDownListItem *item = *it;
+				list_height += item->Height(size.width - WD_VSCROLLBAR_WIDTH);
+			}
+
+			/* Capacity is the average number of items visible */
+			this->vscroll.SetCapacity(size.height * (uint16)list->size() / list_height);
+			this->vscroll.SetCount((uint16)list->size());
+		}
+
+		this->desc_flags = WDF_DEF_WIDGET;
+		this->flags4 &= ~WF_WHITE_BORDER_MASK;
+
+		this->parent_wnd_class = parent->window_class;
+		this->parent_wnd_num   = parent->window_number;
+		this->parent_button    = button;
+		this->list             = list;
+		this->selected_index   = selected;
+		this->click_delay      = 0;
+		this->drag_mode        = true;
+		this->instant_close    = instant_close;
 	}
 
 	~DropdownWindow()
@@ -359,39 +405,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 													_dropdown_menu_widgets, &generated_dropdown_menu_widgets);
 	Point dw_pos = {w->left + wi_rect.left, top};
 	Dimension dw_size = {width, height};
-	DropdownWindow *dw = new DropdownWindow(dw_pos, dw_size, wid);
-
-	dw->widget[DDM_ITEMS].colour = wi_colour;
-	dw->widget[DDM_ITEMS].right = width - 1;
-	dw->widget[DDM_ITEMS].bottom = height + 3;
-
-	dw->SetWidgetHiddenState(DDM_SCROLL, !scroll);
-
-	if (scroll) {
-		/* We're scrolling, so enable the scroll bar and shrink the list by
-		 * the scrollbar's width */
-		dw->widget[DDM_SCROLL].colour = wi_colour;
-		dw->widget[DDM_SCROLL].right  = dw->widget[DDM_ITEMS].right;
-		dw->widget[DDM_SCROLL].left   = dw->widget[DDM_SCROLL].right - (WD_VSCROLLBAR_WIDTH - 1);
-		dw->widget[DDM_SCROLL].bottom = dw->widget[DDM_ITEMS].bottom;
-		dw->widget[DDM_ITEMS].right -= WD_VSCROLLBAR_WIDTH;
-
-		/* Capacity is the average number of items visible */
-		dw->vscroll.SetCapacity(height * (uint16)list->size() / list_height);
-		dw->vscroll.SetCount((uint16)list->size());
-	}
-
-	dw->desc_flags = WDF_DEF_WIDGET;
-	dw->flags4 &= ~WF_WHITE_BORDER_MASK;
-
-	dw->parent_wnd_class = w->window_class;
-	dw->parent_wnd_num   = w->window_number;
-	dw->parent_button    = button;
-	dw->list             = list;
-	dw->selected_index   = selected;
-	dw->click_delay      = 0;
-	dw->drag_mode        = true;
-	dw->instant_close    = instant_close;
+	new DropdownWindow(w, list, selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll, wid);
 }
 
 /** Show a dropdown menu window near a widget of the parent window.
