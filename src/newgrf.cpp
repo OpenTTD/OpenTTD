@@ -417,6 +417,32 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 	}
 }
 
+/**
+ * Converts TTD(P) Base Price pointers into the index used by OTTD
+ * See http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
+ * @param base_pointer TTD(P) Base Price Pointer
+ * @param error_location Function name for grf error messages
+ * @param index If #base_pointer is valid, #index is assigned to the matching price; else it is left unchanged
+ */
+static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location, byte *index)
+{
+	/* Special value for 'none' */
+	if (base_pointer == 0) {
+		*index = 0xFF;
+		return;
+	}
+
+	static const uint32 start = 0x4B34; ///< Position of first base price
+	static const uint32 size  = 6;      ///< Size of each base price record
+
+	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= NUM_PRICES) {
+		grfmsg(1, "%s: Unsupported running cost base 0x%04X, ignoring", error_location, base_pointer);
+		return;
+	}
+
+	*index = (base_pointer - start) / size;
+}
+
 enum ChangeInfoResult {
 	CIR_SUCCESS,    ///< Variable was parsed and read
 	CIR_UNHANDLED,  ///< Variable was parsed but unread
@@ -529,21 +555,9 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->running_cost = grf_load_byte(&buf);
 				break;
 
-			case 0x0E: { // Running cost base
-				uint32 base = grf_load_dword(&buf);
-
-				/* These magic numbers are used in GRFs to specify the base cost:
-				 * http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
-				 */
-				if (base == 0) {
-					rvi->running_cost_class = 0xFF;
-				} else if (base < 0x4B34 || base > 0x4C54 || (base - 0x4B34) % 6 != 0) {
-					grfmsg(1, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring", base);
-				} else {
-					/* Convert the magic number to an index into the price data */
-					rvi->running_cost_class = (base - 0x4B34) / 6;
-				}
-			} break;
+			case 0x0E: // Running cost base
+				ConvertTTDBasePrice(grf_load_dword(&buf), "RailVehicleChangeInfo", &rvi->running_cost_class);
+				break;
 
 			case 0x12: { // Sprite ID
 				uint8 spriteid = grf_load_byte(&buf);
@@ -742,23 +756,9 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->running_cost = grf_load_byte(&buf);
 				break;
 
-			case 0x0A: { // Running cost base
-				uint32 base = grf_load_dword(&buf);
-
-				/* These magic numbers are used in GRFs to specify the base cost:
-				 * http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
-				 */
-				if (base == 0) {
-					rvi->running_cost_class = 0xFF;
-				} else if (base < 0x4B34 || base > 0x4C54 || (base - 0x4B34) % 6 != 0) {
-					grfmsg(1, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring", base);
-				} else {
-					/* Convert the magic number to an index into the price data */
-					rvi->running_cost_class = (base - 0x4B34) / 6;
-				}
-
+			case 0x0A: // Running cost base
+				ConvertTTDBasePrice(grf_load_dword(&buf), "RoadVehicleChangeInfo", &rvi->running_cost_class);
 				break;
-			}
 
 			case 0x0E: { // Sprite ID
 				uint8 spriteid = grf_load_byte(&buf);
