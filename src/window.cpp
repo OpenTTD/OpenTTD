@@ -1078,26 +1078,6 @@ void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
 }
 
 /**
- * Open a new window. If there is no space for a new window, close an open
- * window. Try to avoid stickied windows, but if there is no else, close one of
- * those as well. Then make sure all created windows are below some always-on-top
- * ones. Finally set all variables and call the WE_CREATE event
- * @param x offset in pixels from the left of the screen
- * @param y offset in pixels from the top of the screen
- * @param width width in pixels of the window
- * @param height height in pixels of the window
- * @param cls see WindowClass class of the window, used for identification and grouping
- * @param *widget see Widget pointer to the window layout and various elements
- * @return Window pointer of the newly created window
- */
-Window::Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget)
-{
-	assert(widget != NULL); // Constructor is used only for old-style widget array windows, they must always provide an old-style widget array.
-	this->InitializeData(cls, widget, 0);
-	this->InitializePositionSize(x, y, width, height);
-}
-
-/**
  * Decide whether a given rectangle is a good place to open a completely visible new window.
  * The new window should be within screen borders, and not overlap with another already
  * existing window (except for the main window in the background).

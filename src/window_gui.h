@@ -347,7 +347,6 @@ protected:
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
 public:
-	Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget);
 	Window(const WindowDesc *desc, WindowNumber number = 0);
 	Window();
 
@@ -579,31 +578,6 @@ public:
 		}
 		assert(widget_index < this->widget_count);
 		return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
-	}
-
-	/**
-	 * Align widgets a and b next to each other.
-	 * @param widget_index_a  the left widget
-	 * @param widget_index_b  the right widget (fixed)
-	 */
-	inline void AlignWidgetRight(byte widget_index_a, byte widget_index_b)
-	{
-		assert(widget_index_a < this->widget_count);
-		assert(widget_index_b < this->widget_count);
-		int w = this->widget[widget_index_a].right - this->widget[widget_index_a].left;
-		this->widget[widget_index_a].right = this->widget[widget_index_b].left - 1;
-		this->widget[widget_index_a].left  = this->widget[widget_index_a].right - w;
-	}
-
-	/**
-	 * Get the width of a widget.
-	 * @param widget_index  the widget
-	 * @return width of the widget
-	 */
-	inline int GetWidgetWidth(byte widget_index) const
-	{
-		assert(widget_index < this->widget_count);
-		return this->widget[widget_index].right - this->widget[widget_index].left + 1;
 	}
 
 	bool SetFocusedWidget(byte widget_index);
