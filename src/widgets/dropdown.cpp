@@ -120,8 +120,9 @@ struct DropdownWindow : Window {
 
 		this->CreateNestedTree(&_dropdown_desc);
 
+		uint items_width = size.width - (scroll ? WD_VSCROLLBAR_WIDTH : 0);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(DDM_ITEMS);
-		nwi->SetMinimalSize(size.width - (scroll ? 12 : 0), size.height + 4);
+		nwi->SetMinimalSize(items_width, size.height + 4);
 		nwi->colour = wi_colour;
 
 		nwi = this->GetWidget<NWidgetCore>(DDM_SCROLL);
@@ -138,7 +139,7 @@ struct DropdownWindow : Window {
 		int list_height = 0;
 		for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
 			DropDownListItem *item = *it;
-			list_height += item->Height(size.width - WD_VSCROLLBAR_WIDTH);
+			list_height += item->Height(items_width);
 		}
 
 		/* Capacity is the average number of items visible */
