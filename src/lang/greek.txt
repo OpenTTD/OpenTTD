@@ -768,7 +768,7 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{G Ο Η Το} {STRING} ανακοίνωσε άμεσο κλείσιμο!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια υλικών αναγκάζουν {G το τη το} {STRING} να κλείσει αμέσως!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει το {STRING} να κλείσει αμέσως!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Παγκόσμια Ύφεση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
