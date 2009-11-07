@@ -29,6 +29,8 @@ static FVideoDriver_SDL iFVideoDriver_SDL;
 
 static SDL_Surface *_sdl_screen;
 static bool _all_modes;
+/** Flag used to determine if _cursor.fix_at has changed. */
+static bool _last_fix_at;
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -363,17 +365,29 @@ static int PollEvent()
 {
 	SDL_Event ev;
 
+	if (_cursor.fix_at != _last_fix_at) {
+		_last_fix_at = _cursor.fix_at;
+		if (_last_fix_at) {
+			/* Move to centre of window */
+			SDL_CALL SDL_WarpMouse(_screen.width / 2, _screen.height / 2);
+
+		} else {
+			/* Restore position */
+			SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
+		}
+	}
+
 	if (!SDL_CALL SDL_PollEvent(&ev)) return -2;
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
 			if (_cursor.fix_at) {
-				int dx = ev.motion.x - _cursor.pos.x;
-				int dy = ev.motion.y - _cursor.pos.y;
+				int dx = ev.motion.x - _screen.width / 2;
+				int dy = ev.motion.y - _screen.height / 2;
 				if (dx != 0 || dy != 0) {
 					_cursor.delta.x += dx;
 					_cursor.delta.y += dy;
-					SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
+					SDL_CALL SDL_WarpMouse(_screen.width / 2, _screen.height / 2);
 				}
 			} else {
 				_cursor.delta.x = ev.motion.x - _cursor.pos.x;
