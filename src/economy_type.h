@@ -59,61 +59,62 @@ struct ScoreInfo {
 	int score;  ///< How much score it will give
 };
 
-struct Prices {
-	Money station_value;
-	Money build_rail;
-	Money build_road;
-	Money build_signals;
-	Money build_bridge;
-	Money build_train_depot;
-	Money build_road_depot;
-	Money build_ship_depot;
-	Money build_tunnel;
-	Money train_station_track;
-	Money train_station_length;
-	Money build_airport;
-	Money build_bus_station;
-	Money build_truck_station;
-	Money build_dock;
-	Money build_railvehicle;
-	Money build_railwagon;
-	Money aircraft_base;
-	Money roadveh_base;
-	Money ship_base;
-	Money build_trees;
-	Money terraform;
-	Money clear_grass;
-	Money clear_roughland;
-	Money clear_rocks;
-	Money clear_fields;
-	Money remove_trees;
-	Money remove_rail;
-	Money remove_signals;
-	Money clear_bridge;
-	Money remove_train_depot;
-	Money remove_road_depot;
-	Money remove_ship_depot;
-	Money clear_tunnel;
-	Money clear_water;
-	Money remove_rail_station;
-	Money remove_airport;
-	Money remove_bus_station;
-	Money remove_truck_station;
-	Money remove_dock;
-	Money remove_house;
-	Money remove_road;
-	Money running_rail[3];
-	Money aircraft_running;
-	Money roadveh_running;
-	Money ship_running;
-	Money build_industry;
+enum Price {
+	PR_STATION_VALUE = 0,
+	PR_BUILD_RAIL,
+	PR_BUILD_ROAD,
+	PR_BUILD_SIGNALS,
+	PR_BUILD_BRIDGE,
+	PR_BUILD_DEPOT_TRAIN,
+	PR_BUILD_DEPOT_ROAD,
+	PR_BUILD_DEPOT_SHIP,
+	PR_BUILD_TUNNEL,
+	PR_BUILD_STATION_RAIL,
+	PR_BUILD_STATION_RAIL_LENGTH,
+	PR_BUILD_STATION_AIRPORT,
+	PR_BUILD_STATION_BUS,
+	PR_BUILD_STATION_TRUCK,
+	PR_BUILD_STATION_DOCK,
+	PR_BUILD_VEHICLE_TRAIN,
+	PR_BUILD_VEHICLE_WAGON,
+	PR_BUILD_VEHICLE_AIRCRAFT,
+	PR_BUILD_VEHICLE_ROAD,
+	PR_BUILD_VEHICLE_SHIP,
+	PR_BUILD_TREES,
+	PR_TERRAFORM,
+	PR_CLEAR_GRASS,
+	PR_CLEAR_ROUGH,
+	PR_CLEAR_ROCKS,
+	PR_CLEAR_FILEDS,
+	PR_CLEAR_TREES,
+	PR_CLEAR_RAIL,
+	PR_CLEAR_SIGNALS,
+	PR_CLEAR_BRIDGE,
+	PR_CLEAR_DEPOT_TRAIN,
+	PR_CLEAR_DEPOT_ROAD,
+	PR_CLEAR_DEPOT_SHIP,
+	PR_CLEAR_TUNNEL,
+	PR_CLEAR_WATER,
+	PR_CLEAR_STATION_RAIL,
+	PR_CLEAR_STATION_AIRPORT,
+	PR_CLEAR_STATION_BUS,
+	PR_CLEAR_STATION_TRUCK,
+	PR_CLEAR_STATION_DOCK,
+	PR_CLEAR_HOUSE,
+	PR_CLEAR_ROAD,
+	PR_RUNNING_TRAIN_STEAM,
+	PR_RUNNING_TRAIN_DIESEL,
+	PR_RUNNING_TRAIN_ELECTRIC,
+	PR_RUNNING_AIRCRAFT,
+	PR_RUNNING_ROADVEH,
+	PR_RUNNING_SHIP,
+	PR_BUILD_INDUSTRY,
+
+	NUM_PRICES,
+	INVALID_PRICE = 0xFF
 };
 
-enum {
-	NUM_PRICES = 49,
-};
-
-assert_compile(NUM_PRICES * sizeof(Money) == sizeof(Prices));
+typedef Money Prices[NUM_PRICES];
 
 enum ExpensesType {
 	EXPENSES_CONSTRUCTION =  0,

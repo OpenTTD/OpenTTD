@@ -30,7 +30,7 @@
 	if (!IsValidAirportType(type)) return -1;
 
 	const AirportFTAClass *afc = ::GetAirport(type);
-	return _price.build_airport * afc->size_x * afc->size_y;
+	return _price[PR_BUILD_STATION_AIRPORT] * afc->size_x * afc->size_y;
 }
 
 /* static */ bool AIAirport::IsHangarTile(TileIndex tile)

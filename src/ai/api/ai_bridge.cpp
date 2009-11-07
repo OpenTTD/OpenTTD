@@ -145,7 +145,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return ::CalcBridgeLenCostFactor(length) * _price.build_bridge * ::GetBridgeSpec(bridge_id)->price >> 8;
+	return ::CalcBridgeLenCostFactor(length) * _price[PR_BUILD_BRIDGE] * ::GetBridgeSpec(bridge_id)->price >> 8;
 }
 
 /* static */ int32 AIBridge::GetMaxLength(BridgeID bridge_id)

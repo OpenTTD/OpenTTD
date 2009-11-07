@@ -148,7 +148,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		MarkTileDirtyByTile(tile2);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_ship_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
 }
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o)
@@ -193,7 +193,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 		MarkTileDirtyByTile(tile2);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_ship_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_SHIP]);
 }
 
 /** build a shiplift */
@@ -240,7 +240,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 22 >> 3);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER] * 22 >> 3);
 }
 
 static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
@@ -263,7 +263,7 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 2);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER] * 2);
 }
 
 /** Builds a lock (ship-lift)
@@ -346,7 +346,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			MarkCanalsAndRiversAroundDirty(tile);
 		}
 
-		cost.AddCost(_price.clear_water);
+		cost.AddCost(_price[PR_CLEAR_WATER]);
 	}
 
 	if (cost.GetCost() == 0) {
@@ -377,7 +377,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
 			}
-			return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
+			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER]);
 
 		case WATER_TILE_COAST: {
 			Slope slope = GetTileSlope(tile, NULL);
@@ -390,9 +390,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				MarkCanalsAndRiversAroundDirty(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
-				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
+				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER]);
 			} else {
-				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_roughland);
+				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_ROUGH]);
 			}
 		}
 

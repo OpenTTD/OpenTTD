@@ -10,53 +10,53 @@
 /** @file pricebase.h Price Bases */
 
 static const PriceBaseSpec _price_base_specs[NUM_PRICES] = {
-	{    100, PCAT_NONE        }, ///< station_value
-	{    100, PCAT_CONSTRUCTION}, ///< build_rail
-	{     95, PCAT_CONSTRUCTION}, ///< build_road
-	{     65, PCAT_CONSTRUCTION}, ///< build_signals
-	{    275, PCAT_CONSTRUCTION}, ///< build_bridge
-	{    600, PCAT_CONSTRUCTION}, ///< build_train_depot
-	{    500, PCAT_CONSTRUCTION}, ///< build_road_depot
-	{    700, PCAT_CONSTRUCTION}, ///< build_ship_depot
-	{    450, PCAT_CONSTRUCTION}, ///< build_tunnel
-	{    200, PCAT_CONSTRUCTION}, ///< train_station_track
-	{    180, PCAT_CONSTRUCTION}, ///< train_station_length
-	{    600, PCAT_CONSTRUCTION}, ///< build_airport
-	{    200, PCAT_CONSTRUCTION}, ///< build_bus_station
-	{    200, PCAT_CONSTRUCTION}, ///< build_truck_station
-	{    350, PCAT_CONSTRUCTION}, ///< build_dock
-	{ 400000, PCAT_CONSTRUCTION}, ///< build_railvehicle
-	{   2000, PCAT_CONSTRUCTION}, ///< build_railwagon
-	{ 700000, PCAT_CONSTRUCTION}, ///< aircraft_base
-	{  14000, PCAT_CONSTRUCTION}, ///< roadveh_base
-	{  65000, PCAT_CONSTRUCTION}, ///< ship_base
-	{     20, PCAT_CONSTRUCTION}, ///< build_trees
-	{    250, PCAT_CONSTRUCTION}, ///< terraform
-	{     20, PCAT_CONSTRUCTION}, ///< clear_grass
-	{     40, PCAT_CONSTRUCTION}, ///< clear_roughland
-	{    200, PCAT_CONSTRUCTION}, ///< clear_rocks
-	{    500, PCAT_CONSTRUCTION}, ///< clear_fields
-	{     20, PCAT_CONSTRUCTION}, ///< remove_trees
-	{    -70, PCAT_CONSTRUCTION}, ///< remove_rail
-	{     10, PCAT_CONSTRUCTION}, ///< remove_signals
-	{     50, PCAT_CONSTRUCTION}, ///< clear_bridge
-	{     80, PCAT_CONSTRUCTION}, ///< remove_train_depot
-	{     80, PCAT_CONSTRUCTION}, ///< remove_road_depot
-	{     90, PCAT_CONSTRUCTION}, ///< remove_ship_depot
-	{     30, PCAT_CONSTRUCTION}, ///< clear_tunnel
-	{  10000, PCAT_CONSTRUCTION}, ///< clear_water
-	{     50, PCAT_CONSTRUCTION}, ///< remove_rail_station
-	{     30, PCAT_CONSTRUCTION}, ///< remove_airport
-	{     50, PCAT_CONSTRUCTION}, ///< remove_bus_station
-	{     50, PCAT_CONSTRUCTION}, ///< remove_truck_station
-	{     55, PCAT_CONSTRUCTION}, ///< remove_dock
-	{   1600, PCAT_CONSTRUCTION}, ///< remove_house
-	{     40, PCAT_CONSTRUCTION}, ///< remove_road
-	{   5600, PCAT_RUNNING     }, ///< running_rail[0] steam
-	{   5200, PCAT_RUNNING     }, ///< running_rail[1] diesel
-	{   4800, PCAT_RUNNING     }, ///< running_rail[2] electric
-	{   9600, PCAT_RUNNING     }, ///< aircraft_running
-	{   1600, PCAT_RUNNING     }, ///< roadveh_running
-	{   5600, PCAT_RUNNING     }, ///< ship_running
-	{1000000, PCAT_CONSTRUCTION}, ///< build_industry
+	{    100, PCAT_NONE        }, ///< PR_STATION_VALUE
+	{    100, PCAT_CONSTRUCTION}, ///< PR_BUILD_RAIL
+	{     95, PCAT_CONSTRUCTION}, ///< PR_BUILD_ROAD
+	{     65, PCAT_CONSTRUCTION}, ///< PR_BUILD_SIGNALS
+	{    275, PCAT_CONSTRUCTION}, ///< PR_BUILD_BRIDGE
+	{    600, PCAT_CONSTRUCTION}, ///< PR_BUILD_DEPOT_TRAIN
+	{    500, PCAT_CONSTRUCTION}, ///< PR_BUILD_DEPOT_ROAD
+	{    700, PCAT_CONSTRUCTION}, ///< PR_BUILD_DEPOT_SHIP
+	{    450, PCAT_CONSTRUCTION}, ///< PR_BUILD_TUNNEL
+	{    200, PCAT_CONSTRUCTION}, ///< PR_BUILD_STATION_RAIL
+	{    180, PCAT_CONSTRUCTION}, ///< PR_BUILD_STATION_RAIL_LENGTH
+	{    600, PCAT_CONSTRUCTION}, ///< PR_BUILD_STATION_AIRPORT
+	{    200, PCAT_CONSTRUCTION}, ///< PR_BUILD_STATION_BUS
+	{    200, PCAT_CONSTRUCTION}, ///< PR_BUILD_STATION_TRUCK
+	{    350, PCAT_CONSTRUCTION}, ///< PR_BUILD_STATION_DOCK
+	{ 400000, PCAT_CONSTRUCTION}, ///< PR_BUILD_VEHICLE_TRAIN
+	{   2000, PCAT_CONSTRUCTION}, ///< PR_BUILD_VEHICLE_WAGON
+	{ 700000, PCAT_CONSTRUCTION}, ///< PR_BUILD_VEHICLE_AIRCRAFT
+	{  14000, PCAT_CONSTRUCTION}, ///< PR_BUILD_VEHICLE_ROAD
+	{  65000, PCAT_CONSTRUCTION}, ///< PR_BUILD_VEHICLE_SHIP
+	{     20, PCAT_CONSTRUCTION}, ///< PR_BUILD_TREES
+	{    250, PCAT_CONSTRUCTION}, ///< PR_TERRAFORM
+	{     20, PCAT_CONSTRUCTION}, ///< PR_CLEAR_GRASS
+	{     40, PCAT_CONSTRUCTION}, ///< PR_CLEAR_ROUGH
+	{    200, PCAT_CONSTRUCTION}, ///< PR_CLEAR_ROCKS
+	{    500, PCAT_CONSTRUCTION}, ///< PR_CLEAR_FILEDS
+	{     20, PCAT_CONSTRUCTION}, ///< PR_CLEAR_TREES
+	{    -70, PCAT_CONSTRUCTION}, ///< PR_CLEAR_RAIL
+	{     10, PCAT_CONSTRUCTION}, ///< PR_CLEAR_SIGNALS
+	{     50, PCAT_CONSTRUCTION}, ///< PR_CLEAR_BRIDGE
+	{     80, PCAT_CONSTRUCTION}, ///< PR_CLEAR_DEPOT_TRAIN
+	{     80, PCAT_CONSTRUCTION}, ///< PR_CLEAR_DEPOT_ROAD
+	{     90, PCAT_CONSTRUCTION}, ///< PR_CLEAR_DEPOT_SHIP
+	{     30, PCAT_CONSTRUCTION}, ///< PR_CLEAR_TUNNEL
+	{  10000, PCAT_CONSTRUCTION}, ///< PR_CLEAR_WATER
+	{     50, PCAT_CONSTRUCTION}, ///< PR_CLEAR_STATION_RAIL
+	{     30, PCAT_CONSTRUCTION}, ///< PR_CLEAR_STATION_AIRPORT
+	{     50, PCAT_CONSTRUCTION}, ///< PR_CLEAR_STATION_BUS
+	{     50, PCAT_CONSTRUCTION}, ///< PR_CLEAR_STATION_TRUCK
+	{     55, PCAT_CONSTRUCTION}, ///< PR_CLEAR_STATION_DOCK
+	{   1600, PCAT_CONSTRUCTION}, ///< PR_CLEAR_HOUSE
+	{     40, PCAT_CONSTRUCTION}, ///< PR_CLEAR_ROAD
+	{   5600, PCAT_RUNNING     }, ///< PR_RUNNING_TRAIN_STEAM
+	{   5200, PCAT_RUNNING     }, ///< PR_RUNNING_TRAIN_DIESEL
+	{   4800, PCAT_RUNNING     }, ///< PR_RUNNING_TRAIN_ELECTRIC
+	{   9600, PCAT_RUNNING     }, ///< PR_RUNNING_AIRCRAFT
+	{   1600, PCAT_RUNNING     }, ///< PR_RUNNING_ROADVEH
+	{   5600, PCAT_RUNNING     }, ///< PR_RUNNING_SHIP
+	{1000000, PCAT_CONSTRUCTION}, ///< PR_BUILD_INDUSTRY
 };

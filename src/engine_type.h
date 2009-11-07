@@ -12,6 +12,7 @@
 #ifndef ENGINE_TYPE_H
 #define ENGINE_TYPE_H
 
+#include "economy_type.h"
 #include "rail_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
@@ -48,7 +49,7 @@ struct RailVehicleInfo {
 	uint16 power;                   ///< Power of engine;           For multiheaded engines the sum of both engine powers.
 	uint16 weight;                  ///< Weight of vehicle;         For multiheaded engines the weight of each single engine.
 	byte running_cost;              ///< Running cost of engine;    For multiheaded engines the sum of both running costs.
-	byte running_cost_class;
+	Price running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
 	byte capacity;                  ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
 	byte ai_passenger_only;         ///< Bit value to tell AI that this engine is for passenger use only
@@ -95,7 +96,7 @@ struct RoadVehicleInfo {
 	byte image_index;
 	byte cost_factor;
 	byte running_cost;
-	byte running_cost_class;
+	Price running_cost_class;
 	SoundID sfx;
 	uint16 max_speed;        ///< Maximum speed in mph/3.2 units
 	byte capacity;

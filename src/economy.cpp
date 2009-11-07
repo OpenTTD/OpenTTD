@@ -123,7 +123,7 @@ Money CalculateCompanyValue(const Company *c)
 		if (st->owner == owner) num += CountBits((byte)st->facilities);
 	}
 
-	value += num * _price.station_value * 25;
+	value += num * _price[PR_STATION_VALUE] * 25;
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -558,7 +558,7 @@ static void CompaniesGenStatistics()
 
 	FOR_ALL_STATIONS(st) {
 		_current_company = st->owner;
-		CommandCost cost(EXPENSES_PROPERTY, _price.station_value >> 1);
+		CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
 		SubtractMoneyFromCompany(cost);
 	}
 
@@ -698,7 +698,7 @@ static void CompaniesPayInterest()
 
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INT, up_to_this_month - up_to_previous_month));
 
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price.station_value >> 2));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price[PR_STATION_VALUE] >> 2));
 	}
 }
 
@@ -793,11 +793,16 @@ void InitializeEconomy()
 	_economy.inflation_prices = _economy.inflation_payment = 1 << 16;
 }
 
-Money GetPriceByIndex(uint8 index)
+/**
+ * Determine a certain base price with range checking
+ * @param index Price of interest
+ * @return Base price, or zero if out of range
+ */
+Money GetPriceByIndex(Price index)
 {
-	if (index > NUM_PRICES) return 0;
+	if (index >= NUM_PRICES) return 0;
 
-	return ((Money*)&_price)[index];
+	return _price[index];
 }
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)

@@ -418,17 +418,17 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 }
 
 /**
- * Converts TTD(P) Base Price pointers into the index used by OTTD
+ * Converts TTD(P) Base Price pointers into the enum used by OTTD
  * See http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
  * @param base_pointer TTD(P) Base Price Pointer
  * @param error_location Function name for grf error messages
  * @param index If #base_pointer is valid, #index is assigned to the matching price; else it is left unchanged
  */
-static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location, byte *index)
+static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location, Price *index)
 {
 	/* Special value for 'none' */
 	if (base_pointer == 0) {
-		*index = 0xFF;
+		*index = INVALID_PRICE;
 		return;
 	}
 
@@ -440,7 +440,7 @@ static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location,
 		return;
 	}
 
-	*index = (base_pointer - start) / size;
+	*index = (Price)((base_pointer - start) / size);
 }
 
 enum ChangeInfoResult {

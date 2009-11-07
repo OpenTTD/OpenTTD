@@ -14,14 +14,6 @@
 #ifndef ENGINES_H
 #define ENGINES_H
 
-enum {
-	RC_W = 0xFF, ///< Running cost price index (out of range) of wagons
-	RC_S = 0x2A, ///< Running cost price index of steam
-	RC_D = 0x2B, ///< Running cost price index of diesel
-	RC_E = 0x2C, ///< Running cost price index of electric
-	RC_R = 0x2E, ///< Running cost price index of road vehicles
-};
-
 /** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date
@@ -378,6 +370,11 @@ static const EngineInfo _orig_engine_info[] = {
 #define O RAILTYPE_MONO
 #define L RAILTYPE_MAGLEV
 
+#define RC_S PR_RUNNING_TRAIN_STEAM
+#define RC_D PR_RUNNING_TRAIN_DIESEL
+#define RC_E PR_RUNNING_TRAIN_ELECTRIC
+#define RC_W INVALID_PRICE
+
 static const RailVehicleInfo _orig_rail_vehicle_info[] = {
 	/*   image_index  max_speed (kph)    running_cost      engclass
 	 *   |  flags     |        power (hp)  |  running_cost_class
@@ -501,6 +498,10 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
 	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 32, L, A), // 114
 	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 37, L, A), // 115
 };
+#undef RC_W
+#undef RC_E
+#undef RC_D
+#undef RC_S
 #undef L
 #undef O
 #undef C
@@ -625,7 +626,7 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * @param g weight (1/4ton)
  * @param h power (10hp)
  */
-#define ROV(a, b, c, d, e, f, g, h) { a, b, c, RC_R, d, e, f, g, h, 76, 0 }
+#define ROV(a, b, c, d, e, f, g, h) { a, b, c, PR_RUNNING_ROADVEH, d, e, f, g, h, 76, 0 }
 static const RoadVehicleInfo _orig_road_vehicle_info[] = {
 	/*    image_index       sfx                                 max_speed    power
 	 *    |    base_cost    |                                   |   capacity |

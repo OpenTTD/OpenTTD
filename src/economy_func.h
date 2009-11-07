@@ -40,7 +40,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount,
 void PrepareUnload(Vehicle *front_v);
 void LoadUnloadStation(Station *st);
 
-Money GetPriceByIndex(uint8 index);
+Money GetPriceByIndex(Price index);
 
 void InitializeEconomy();
 void RecomputePrices();

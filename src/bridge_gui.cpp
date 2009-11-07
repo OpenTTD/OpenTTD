@@ -407,7 +407,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				item->spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
-				item->cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * item->spec->price) >> 8);
+				item->cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item->spec->price) >> 8);
 			}
 		}
 	}

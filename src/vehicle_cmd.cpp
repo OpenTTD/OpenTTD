@@ -267,23 +267,22 @@ static CommandCost GetRefitCost(EngineID engine_type)
 	const Engine *e = Engine::Get(engine_type);
 	switch (e->type) {
 		case VEH_SHIP:
-			base_cost = _price.ship_base;
+			base_cost = _price[PR_BUILD_VEHICLE_SHIP];
 			expense_type = EXPENSES_SHIP_RUN;
 			break;
 
 		case VEH_ROAD:
-			base_cost = _price.roadveh_base;
+			base_cost = _price[PR_BUILD_VEHICLE_ROAD];
 			expense_type = EXPENSES_ROADVEH_RUN;
 			break;
 
 		case VEH_AIRCRAFT:
-			base_cost = _price.aircraft_base;
+			base_cost = _price[PR_BUILD_VEHICLE_AIRCRAFT];
 			expense_type = EXPENSES_AIRCRAFT_RUN;
 			break;
 
 		case VEH_TRAIN:
-			base_cost = 2 * ((e->u.rail.railveh_type == RAILVEH_WAGON) ?
-				_price.build_railwagon : _price.build_railvehicle);
+			base_cost = 2 * _price[(e->u.rail.railveh_type == RAILVEH_WAGON) ? PR_BUILD_VEHICLE_WAGON : PR_BUILD_VEHICLE_TRAIN];
 			expense_type = EXPENSES_TRAIN_RUN;
 			break;
 

@@ -368,7 +368,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 						MarkTileDirtyByTile(tile);
 					}
 					/* 2x as expensive to add more trees to an existing tile */
-					cost.AddCost(_price.build_trees * 2);
+					cost.AddCost(_price[PR_BUILD_TREES] * 2);
 					break;
 
 				case MP_WATER:
@@ -420,7 +420,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 						if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
 							SetTropicZone(tile, TROPICZONE_RAINFOREST);
 					}
-					cost.AddCost(_price.build_trees);
+					cost.AddCost(_price[PR_BUILD_TREES]);
 					break;
 
 				default:
@@ -551,7 +551,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, num * _price.remove_trees);
+	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[PR_CLEAR_TREES]);
 }
 
 static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)

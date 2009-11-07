@@ -28,18 +28,18 @@
 
 static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlag flags)
 {
-	static const Money * const clear_price_table[] = {
-		&_price.clear_grass,
-		&_price.clear_roughland,
-		&_price.clear_rocks,
-		&_price.clear_fields,
-		&_price.clear_roughland,
-		&_price.clear_roughland,
+	static const Price clear_price_table[] = {
+		PR_CLEAR_GRASS,
+		PR_CLEAR_ROUGH,
+		PR_CLEAR_ROCKS,
+		PR_CLEAR_FILEDS,
+		PR_CLEAR_ROUGH,
+		PR_CLEAR_ROUGH,
 	};
 	CommandCost price(EXPENSES_CONSTRUCTION);
 
 	if (!IsClearGround(tile, CLEAR_GRASS) || GetClearDensity(tile) != 0) {
-		price.AddCost(*clear_price_table[GetClearGround(tile)]);
+		price.AddCost(_price[clear_price_table[GetClearGround(tile)]]);
 	}
 
 	if (flags & DC_EXEC) DoClearSquare(tile);

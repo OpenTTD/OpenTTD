@@ -133,7 +133,7 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
 }
 
 /**
@@ -154,7 +154,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
 }
 
 bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
@@ -290,7 +290,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
-		cost.AddCost((bridge_len + 1) * _price.clear_bridge); // The cost of clearing the current bridge.
+		cost.AddCost((bridge_len + 1) * _price[PR_CLEAR_BRIDGE]); // The cost of clearing the current bridge.
 		owner = GetTileOwner(tile_start);
 
 		/* Do not remove road types when upgrading a bridge */
@@ -438,10 +438,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		if (c != NULL) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		cost.AddCost((int64)bridge_len * _price.build_bridge * GetBridgeSpec(bridge_type)->price >> 8);
+		cost.AddCost((int64)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
 
 		/* Aqueducts are a little more expensive. */
-		if (transport_type == TRANSPORT_WATER) cost.AddCost((int64)bridge_len * _price.clear_water);
+		if (transport_type == TRANSPORT_WATER) cost.AddCost((int64)bridge_len * _price[PR_CLEAR_WATER]);
 	}
 
 	return cost;
@@ -520,12 +520,12 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 			tiles_bump *= 2;
 		}
 
-		cost.AddCost(_price.build_tunnel);
+		cost.AddCost(_price[PR_BUILD_TUNNEL]);
 		cost.AddCost(cost.GetCost() >> tiles_coef); // add a multiplier for longer tunnels
 	}
 
 	/* Add the cost of the entrance */
-	cost.AddCost(_price.build_tunnel);
+	cost.AddCost(_price[PR_BUILD_TUNNEL]);
 	cost.AddCost(ret);
 
 	/* if the command fails from here on we want the end tile to be highlighted */
@@ -548,7 +548,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 	}
-	cost.AddCost(_price.build_tunnel);
+	cost.AddCost(_price[PR_BUILD_TUNNEL]);
 	cost.AddCost(ret);
 
 	if (flags & DC_EXEC) {
@@ -656,7 +656,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 			DoClearSquare(endtile);
 		}
 	}
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_tunnel * (GetTunnelBridgeLength(tile, endtile) + 2));
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_TUNNEL] * (GetTunnelBridgeLength(tile, endtile) + 2));
 }
 
 
@@ -730,7 +730,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * _price.clear_bridge);
+	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * _price[PR_CLEAR_BRIDGE]);
 }
 
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
@@ -1505,7 +1505,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		}
 
 		/* Surface slope is valid and remains unchanged? */
-		if (!CmdFailed(res) && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+		if (!CmdFailed(res) && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

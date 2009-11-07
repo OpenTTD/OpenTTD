@@ -194,7 +194,7 @@ static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 static inline Money RailBuildCost(RailType railtype)
 {
 	assert(railtype < RAILTYPE_END);
-	return (_price.build_rail * GetRailTypeInfo(railtype)->cost_multiplier) >> 3;
+	return (_price[PR_BUILD_RAIL] * GetRailTypeInfo(railtype)->cost_multiplier) >> 3;
 }
 
 /**
@@ -224,7 +224,7 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	}
 
 	/* make the price the same as remove + build new type */
-	return RailBuildCost(to) + _price.remove_rail;
+	return RailBuildCost(to) + _price[PR_CLEAR_RAIL];
 }
 
 Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data);

@@ -157,7 +157,7 @@ void Town::InitializeLayout(TownLayout layout)
 
 Money HouseSpec::GetRemovalCost() const
 {
-	return (_price.remove_house * this->removal_cost) >> 8;
+	return (_price[PR_CLEAR_HOUSE] * this->removal_cost) >> 8;
 }
 
 // Local
@@ -830,7 +830,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 	assert(tile < MapSize());
 
 	CommandCost r = DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-	if (CmdFailed(r) || r.GetCost() >= (_price.terraform + 2) * 8) return false;
+	if (CmdFailed(r) || r.GetCost() >= (_price[PR_TERRAFORM] + 2) * 8) return false;
 	DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
 	return true;
 }
@@ -2477,8 +2477,8 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
 
 		/* Things worth more than this are not shown */
-		Money avail = Company::Get(cid)->money + _price.station_value * 200;
-		Money ref = _price.build_industry >> 8;
+		Money avail = Company::Get(cid)->money + _price[PR_STATION_VALUE] * 200;
+		Money ref = _price[PR_BUILD_INDUSTRY] >> 8;
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
@@ -2525,7 +2525,7 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (!HasBit(GetMaskOfTownActions(NULL, _current_company, t), p2)) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_OTHER, (_price.build_industry >> 8) * _town_action_costs[p2]);
+	CommandCost cost(EXPENSES_OTHER, (_price[PR_BUILD_INDUSTRY] >> 8) * _town_action_costs[p2]);
 
 	if (flags & DC_EXEC) {
 		_town_action_proc[p2](t);
@@ -2861,7 +2861,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint 
 				if ((res != 0) && (res != CALLBACK_FAILED)) allow_terraform = false;
 			}
 
-			if (allow_terraform) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+			if (allow_terraform) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
 		}
 	}
 
