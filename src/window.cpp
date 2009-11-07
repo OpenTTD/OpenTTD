@@ -1621,7 +1621,7 @@ enum PreventHideDirection {
  * @param px   Previous horizontal base coordinate.
  * @param dir  If no room horizontally, move the rectangle to the indicated position.
  */
-void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, int px, PreventHideDirection dir)
+static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, int px, PreventHideDirection dir)
 {
 	if (v == NULL) return;
 
