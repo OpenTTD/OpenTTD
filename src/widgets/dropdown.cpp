@@ -69,16 +69,22 @@ static void DeleteDropDownList(DropDownList *list)
 	delete list;
 }
 
+/** Widget numbers of the dropdown menu. */
+enum DropdownMenuWidgets {
+	DDM_ITEMS,  ///< Panel showing the dropdown items.
+	DDM_SCROLL, ///< Scrollbar.
+};
+
 static const Widget _dropdown_menu_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_NULL},
-{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_NULL},                             ///< DDM_ITEMS
+{  WWT_SCROLLBAR,   RESIZE_NONE,  COLOUR_END,     0, 0,     0, 0, 0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, ///< DDM_SCROLL
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_LAYERED),
-		NWidget(WWT_PANEL, COLOUR_END, 0), SetMinimalSize(1, 1), EndContainer(),
-		NWidget(WWT_SCROLLBAR, COLOUR_END, 1), SetMinimalSize(1, 1),
+		NWidget(WWT_PANEL, COLOUR_END, DDM_ITEMS), SetMinimalSize(1, 1), EndContainer(),
+		NWidget(WWT_SCROLLBAR, COLOUR_END, DDM_SCROLL), SetMinimalSize(1, 1),
 	EndContainer(),
 };
 
@@ -123,7 +129,7 @@ struct DropdownWindow : Window {
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
 		int y     = _cursor.pos.y - this->top - 2;
-		int width = this->widget[0].right - 3;
+		int width = this->widget[DDM_ITEMS].right - 3;
 		int pos   = this->vscroll.GetPosition();
 
 		const DropDownList *list = this->list;
@@ -155,9 +161,9 @@ struct DropdownWindow : Window {
 		int y = 2;
 
 		int sel    = this->selected_index;
-		int width  = this->widget[0].right - 2;
-		int right  = this->widget[0].right;
-		int bottom = this->widget[0].bottom;
+		int width  = this->widget[DDM_ITEMS].right - 2;
+		int right  = this->widget[DDM_ITEMS].right;
+		int bottom = this->widget[DDM_ITEMS].bottom;
 		int pos    = this->vscroll.GetPosition();
 
 		DropDownList *list = this->list;
@@ -172,11 +178,11 @@ struct DropdownWindow : Window {
 			if (y + item_height < height) {
 				if (sel == item->result) GfxFillRect(x + 1, y, right - 1, y + item_height - 1, 0);
 
-				item->Draw(0, right, y, bottom, sel == item->result, (TextColour)this->widget[0].colour);
+				item->Draw(0, right, y, bottom, sel == item->result, (TextColour)this->widget[DDM_ITEMS].colour);
 
 				if (item->masked) {
 					GfxFillRect(x, y, right - 1, y + item_height - 1,
-						_colour_gradient[this->widget[0].colour][5], FILLRECT_CHECKER
+						_colour_gradient[this->widget[DDM_ITEMS].colour][5], FILLRECT_CHECKER
 					);
 				}
 			}
@@ -186,7 +192,7 @@ struct DropdownWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget != 0) return;
+		if (widget != DDM_ITEMS) return;
 		int item;
 		if (this->GetDropDownItem(item)) {
 			this->click_delay = 4;
@@ -347,20 +353,20 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 													_dropdown_menu_widgets, &generated_dropdown_menu_widgets);
 	DropdownWindow *dw = new DropdownWindow(w->left + wi_rect.left, top, width, height + 4, wid);
 
-	dw->widget[0].colour = wi_colour;
-	dw->widget[0].right = width - 1;
-	dw->widget[0].bottom = height + 3;
+	dw->widget[DDM_ITEMS].colour = wi_colour;
+	dw->widget[DDM_ITEMS].right = width - 1;
+	dw->widget[DDM_ITEMS].bottom = height + 3;
 
-	dw->SetWidgetHiddenState(1, !scroll);
+	dw->SetWidgetHiddenState(DDM_SCROLL, !scroll);
 
 	if (scroll) {
 		/* We're scrolling, so enable the scroll bar and shrink the list by
 		 * the scrollbar's width */
-		dw->widget[1].colour = wi_colour;
-		dw->widget[1].right  = dw->widget[0].right;
-		dw->widget[1].left   = dw->widget[1].right - 11;
-		dw->widget[1].bottom = dw->widget[0].bottom;
-		dw->widget[0].right -= 12;
+		dw->widget[DDM_SCROLL].colour = wi_colour;
+		dw->widget[DDM_SCROLL].right  = dw->widget[DDM_ITEMS].right;
+		dw->widget[DDM_SCROLL].left   = dw->widget[DDM_SCROLL].right - 11;
+		dw->widget[DDM_SCROLL].bottom = dw->widget[DDM_ITEMS].bottom;
+		dw->widget[DDM_ITEMS].right -= 12;
 
 		/* Capacity is the average number of items visible */
 		dw->vscroll.SetCapacity(height * (uint16)list->size() / list_height);
