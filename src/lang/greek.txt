@@ -9,7 +9,7 @@
 ##winlangid 0x0408
 ##grflangid 0x1e
 ##gender m f n
-
+##case subs date geniki
 
 # $Id$
 
@@ -93,6 +93,37 @@ STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Ζαχαρ
 STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Μπαταρία
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Πλαστικό
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=n}Αναψυκτικό
+STR_CARGO_SINGULAR_PASSENGER.subs                               :{G=m}Επιβάτες
+STR_CARGO_SINGULAR_COAL.subs                                    :{G=m}Άνθρακες
+STR_CARGO_SINGULAR_MAIL.subs                                    :{G=f}Αλληλογραφία
+STR_CARGO_SINGULAR_OIL.subs                                     :{G=n}Πετρέλαιο
+STR_CARGO_SINGULAR_LIVESTOCK.subs                               :{G=n}Ζώα
+STR_CARGO_SINGULAR_GOODS.subs                                   :{G=n}Αγαθα
+STR_CARGO_SINGULAR_GRAIN.subs                                   :{G=n}Σιτηρα
+STR_CARGO_SINGULAR_WOOD.subs                                    :{G=f}Ξυλεία
+STR_CARGO_SINGULAR_IRON_ORE.subs                                :{G=n}Σιδηρομετάλλευμα
+STR_CARGO_SINGULAR_STEEL.subs                                   :{G=m}Χάλυβα
+STR_CARGO_SINGULAR_VALUABLES.subs                               :{G=n}Πολύτιμα είδη
+STR_CARGO_SINGULAR_COPPER_ORE.subs                              :{G=n}Μετάλλευμα Χαλκού
+STR_CARGO_SINGULAR_MAIZE.subs                                   :{G=n}Καλαμπόκι
+STR_CARGO_SINGULAR_FRUIT.subs                                   :{G=n}Φρούτα
+STR_CARGO_SINGULAR_DIAMOND.subs                                 :{G=n}Διαμάντια
+STR_CARGO_SINGULAR_FOOD.subs                                    :{G=n}Τρόφιμα
+STR_CARGO_SINGULAR_PAPER.subs                                   :{G=n}Χαρτία
+STR_CARGO_SINGULAR_GOLD.subs                                    :{G=m}Χρυσό
+STR_CARGO_SINGULAR_WATER.subs                                   :{G=n}Νερα
+STR_CARGO_SINGULAR_WHEAT.subs                                   :{G=n}Σιτάρια
+STR_CARGO_SINGULAR_RUBBER.subs                                  :{G=n}Λάστιχα
+STR_CARGO_SINGULAR_SUGAR.subs                                   :{G=f}Ζάχαρες
+STR_CARGO_SINGULAR_TOY.subs                                     :{G=n}Παιχνίδια
+STR_CARGO_SINGULAR_CANDY.subs                                   :{G=n}Γλυκα
+STR_CARGO_SINGULAR_COLA.subs                                    :{G=f}Κόλα
+STR_CARGO_SINGULAR_COTTON_CANDY.subs                            :{G=n}Μαλλί της γριάς
+STR_CARGO_SINGULAR_BUBBLE.subs                                  :{G=f}Φυσαλίδες
+STR_CARGO_SINGULAR_TOFFEE.subs                                  :{G=n}Ζαχαρωτα
+STR_CARGO_SINGULAR_BATTERY.subs                                 :{G=f}Μπαταρίες
+STR_CARGO_SINGULAR_PLASTIC.subs                                 :{G=n}Πλαστικα
+STR_CARGO_SINGULAR_FIZZY_DRINK.subs                             :{G=n}Αναψυκτικα
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -441,37 +472,68 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά 
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1{G ος η ο}
-STR_ORDINAL_NUMBER_2ND                                          :2{G ος η ο}
-STR_ORDINAL_NUMBER_3RD                                          :3{G ος η ο}
-STR_ORDINAL_NUMBER_4TH                                          :4{G ος η ο}
-STR_ORDINAL_NUMBER_5TH                                          :5{G ος η ο}
-STR_ORDINAL_NUMBER_6TH                                          :6{G ος η ο}
-STR_ORDINAL_NUMBER_7TH                                          :7{G ος η ο}
-STR_ORDINAL_NUMBER_8TH                                          :8{G ος η ο}
-STR_ORDINAL_NUMBER_9TH                                          :9{G ος η ο}
-STR_ORDINAL_NUMBER_10TH                                         :10{G ος η ο}
-STR_ORDINAL_NUMBER_11TH                                         :11{G ος η ο}
-STR_ORDINAL_NUMBER_12TH                                         :12{G ος η ο}
-STR_ORDINAL_NUMBER_13TH                                         :13{G ος η ο}
-STR_ORDINAL_NUMBER_14TH                                         :14{G ος η ο}
-STR_ORDINAL_NUMBER_15TH                                         :15{G ος η ο}
-STR_ORDINAL_NUMBER_16TH                                         :16{G ος η ο}
-STR_ORDINAL_NUMBER_17TH                                         :17{G ος η ο}
-STR_ORDINAL_NUMBER_18TH                                         :18{G ος η ο}
-STR_ORDINAL_NUMBER_19TH                                         :19{G ος η ο}
-STR_ORDINAL_NUMBER_20TH                                         :20{G ος η ο}
-STR_ORDINAL_NUMBER_21ST                                         :21{G ος η ο}
-STR_ORDINAL_NUMBER_22ND                                         :22{G ος η ο}
-STR_ORDINAL_NUMBER_23RD                                         :23{G ος η ο}
-STR_ORDINAL_NUMBER_24TH                                         :24{G ος η ο}
-STR_ORDINAL_NUMBER_25TH                                         :25{G ος η ο}
-STR_ORDINAL_NUMBER_26TH                                         :26{G ος η ο}
-STR_ORDINAL_NUMBER_27TH                                         :27{G ος η ο}
-STR_ORDINAL_NUMBER_28TH                                         :28{G ος η ο}
-STR_ORDINAL_NUMBER_29TH                                         :29{G ος η ο}
-STR_ORDINAL_NUMBER_30TH                                         :30{G ος η ο}
-STR_ORDINAL_NUMBER_31ST                                         :31{G ος η ο}
+STR_ORDINAL_NUMBER_1ST                                          :1ος
+STR_ORDINAL_NUMBER_2ND                                          :2ος
+STR_ORDINAL_NUMBER_3RD                                          :3ος
+STR_ORDINAL_NUMBER_4TH                                          :4ος
+STR_ORDINAL_NUMBER_5TH                                          :5ος
+STR_ORDINAL_NUMBER_6TH                                          :6ος
+STR_ORDINAL_NUMBER_7TH                                          :7ος
+STR_ORDINAL_NUMBER_8TH                                          :8ος
+STR_ORDINAL_NUMBER_9TH                                          :9ος
+STR_ORDINAL_NUMBER_10TH                                         :10ος
+STR_ORDINAL_NUMBER_11TH                                         :11ος
+STR_ORDINAL_NUMBER_12TH                                         :12ος
+STR_ORDINAL_NUMBER_13TH                                         :13ος
+STR_ORDINAL_NUMBER_14TH                                         :14ος
+STR_ORDINAL_NUMBER_15TH                                         :15ος
+STR_ORDINAL_NUMBER_16TH                                         :16ος
+STR_ORDINAL_NUMBER_17TH                                         :17ος
+STR_ORDINAL_NUMBER_18TH                                         :18ος
+STR_ORDINAL_NUMBER_19TH                                         :19ος
+STR_ORDINAL_NUMBER_20TH                                         :20ος
+STR_ORDINAL_NUMBER_21ST                                         :21ος
+STR_ORDINAL_NUMBER_22ND                                         :22ος
+STR_ORDINAL_NUMBER_23RD                                         :23ος
+STR_ORDINAL_NUMBER_24TH                                         :24ος
+STR_ORDINAL_NUMBER_25TH                                         :25ος
+STR_ORDINAL_NUMBER_26TH                                         :26ος
+STR_ORDINAL_NUMBER_27TH                                         :27ος
+STR_ORDINAL_NUMBER_28TH                                         :28ος
+STR_ORDINAL_NUMBER_29TH                                         :29ος
+STR_ORDINAL_NUMBER_30TH                                         :30ος
+STR_ORDINAL_NUMBER_31ST                                         :31ος
+STR_ORDINAL_NUMBER_1ST.date                                     :1η
+STR_ORDINAL_NUMBER_2ND.date                                     :2η
+STR_ORDINAL_NUMBER_3RD.date                                     :3η
+STR_ORDINAL_NUMBER_4TH.date                                     :4η
+STR_ORDINAL_NUMBER_5TH.date                                     :5η
+STR_ORDINAL_NUMBER_6TH.date                                     :6η
+STR_ORDINAL_NUMBER_7TH.date                                     :7η
+STR_ORDINAL_NUMBER_8TH.date                                     :8η
+STR_ORDINAL_NUMBER_9TH.date                                     :9η
+STR_ORDINAL_NUMBER_10TH.date                                    :10η
+STR_ORDINAL_NUMBER_11TH.date                                    :11η
+STR_ORDINAL_NUMBER_12TH.date                                    :12η
+STR_ORDINAL_NUMBER_13TH.date                                    :13η
+STR_ORDINAL_NUMBER_14TH.date                                    :14η
+STR_ORDINAL_NUMBER_15TH.date                                    :15η
+STR_ORDINAL_NUMBER_16TH.date                                    :16η
+STR_ORDINAL_NUMBER_17TH.date                                    :17η
+STR_ORDINAL_NUMBER_18TH.date                                    :18η
+STR_ORDINAL_NUMBER_19TH.date                                    :19η
+STR_ORDINAL_NUMBER_20TH.date                                    :20η
+STR_ORDINAL_NUMBER_21ST.date                                    :21η
+STR_ORDINAL_NUMBER_22ND.date                                    :22η
+STR_ORDINAL_NUMBER_23RD.date                                    :23η
+STR_ORDINAL_NUMBER_24TH.date                                    :24η
+STR_ORDINAL_NUMBER_25TH.date                                    :25η
+STR_ORDINAL_NUMBER_26TH.date                                    :26η
+STR_ORDINAL_NUMBER_27TH.date                                    :27η
+STR_ORDINAL_NUMBER_28TH.date                                    :28η
+STR_ORDINAL_NUMBER_29TH.date                                    :29η
+STR_ORDINAL_NUMBER_30TH.date                                    :30η
+STR_ORDINAL_NUMBER_31ST.date                                    :31η
 ############ range for days ends
 
 ############ range for months starts
@@ -768,7 +830,7 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{G Ο Η Το} {STRING} ανακοίνωσε άμεσο κλείσιμο!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια υλικών αναγκάζουν {G το τη το} {STRING} να κλείσει αμέσως!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει το {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Παγκόσμια Ύφεση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
@@ -817,7 +879,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο στ�
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε η προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STRING} προς {STRING} δεν χρηματοδοτείται πια.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {G το τη το} {STRING} προς {G το τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING.subs} από {G το τη το} {STRING} προς {G το τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
@@ -1161,7 +1223,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Μετάβαση με αριστερό κλικ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Χρήση της {ORANGE}{STRING}{LTBLUE} ημερολογιακής μορφής στα αποθηκευμένα παιχνίδια.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :{G=f}μεγάλη (31 Δεκ 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -2776,13 +2838,19 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρό�
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μύνημα από τον κατασκευαστή οχήματων
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδιάση {G ενός μιας ενός} {G νέου νέας νέου} {STRING} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Ατμομηχανή
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Όχημα δρόμου
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :αεροπλάνου
-STR_ENGINE_PREVIEW_SHIP                                         :πλοιού
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :μηχανή monorail
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :μηχανή maglev
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδιάση {G ενός μιας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομηχανή
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :{G=f}ατμομηχανής
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}Όχημα δρόμου
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :{G=n}Οχήματος δρόμου
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροπλάνο
+STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :{G=n}αεροπλάνου
+STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοιο
+STR_ENGINE_PREVIEW_SHIP.geniki                                  :{G=n}πλοιού
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανή monorail
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :{G=f}μηχανής monorail
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανή maglev
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :{G=f}μηχανής maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY} Βάρος: {WEIGHT_S}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY}/χρ{}Χωρητικότητα: {CARGO}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY} Βάρος: {WEIGHT_S}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}  Μεγ. Ε.Δ: {7:FORCE}{}Κόστος Λειτουργίας: {CURRENCY}/yr{}Χωρητικότητα: {CARGO}
@@ -3926,7 +3994,7 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Ελικόπτ�
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{G=f}{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING.date} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Σημαδούρα {TOWN}
@@ -3980,7 +4048,7 @@ STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
-STR_JUST_DATE_LONG                                              :{G=f}{DATE_LONG}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
@@ -3994,13 +4062,13 @@ STR_TINY_COMMA                                                  :{TINYFONT}{COMM
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
-STR_BLACK_DATE_LONG                                             :{G=f}{BLACK}{DATE_LONG}
+STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{G=f}{WHITE}{DATE_LONG}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{G=f}{TINYFONT}{BLACK}{DATE_LONG}
+STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
