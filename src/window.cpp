@@ -1602,6 +1602,26 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 	w->SetDirty();
 }
 
+/** Return the top of the main view available for general use.
+ * @return Uppermost vertical coordinate available.
+ * @note Above the upper y coordinate is often the main toolbar.
+ */
+int GetMainViewTop()
+{
+	Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+	return (w == NULL) ? 0 : w->top + w->height;
+}
+
+/** Return the bottom of the main view available for general use.
+ * @return The vertical coordinate of the first unusable row, so 'top + height <= bottom' gives the correct result.
+ * @note At and below the bottom y coordinate is often the status bar.
+ */
+int GetMainViewBottom()
+{
+	Window *w = FindWindowById(WC_STATUS_BAR, 0);
+	return (w == NULL) ? _screen.height : w->top;
+}
+
 /** The minimum number of pixels of the title bar must be visible in both the X or Y direction */
 static const int MIN_VISIBLE_TITLE_BAR = 13;
 

@@ -377,18 +377,13 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	int height = list_height;
 
 	/* Check if the status bar is visible, as we don't want to draw over it */
-	Window *w3 = FindWindowById(WC_STATUS_BAR, 0);
-	int screen_bottom = w3 == NULL ? _screen.height : w3->top;
-
+	int screen_bottom = GetMainViewBottom();
 	bool scroll = false;
 
 	/* Check if the dropdown will fully fit below the widget */
 	if (top + height + 4 >= screen_bottom) {
-		w3 = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		int screen_top = w3 == NULL ? 0 : w3->top + w3->height;
-
 		/* If not, check if it will fit above the widget */
-		if (w->top + wi_rect.top - height > screen_top) {
+		if (w->top + wi_rect.top - height > GetMainViewTop()) {
 			top = w->top + wi_rect.top - height - 4;
 		} else {
 			/* ... and lastly if it won't, enable the scroll bar and fit the

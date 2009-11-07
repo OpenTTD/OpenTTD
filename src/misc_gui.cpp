@@ -588,13 +588,11 @@ public:
 			return pt;
 		}
 
-		/* Find the screen part between the main toolbar at the top, and the statusbar at the bottom.
+		/* Find the free screen space between the main toolbar at the top, and the statusbar at the bottom.
 		 * Add a fixed distance 20 to make it less cluttered.
 		 */
-		const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		int scr_top = ((w != NULL) ? w->top + w->height : 0) + 20;
-		w = FindWindowById(WC_STATUS_BAR, 0);
-		int scr_bot = ((w != NULL) ? w->top : _screen.height) - 20;
+		int scr_top = GetMainViewTop() + 20;
+		int scr_bot = GetMainViewBottom() - 20;
 
 		Point pt = RemapCoords2(this->position.x, this->position.y);
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
@@ -805,13 +803,11 @@ struct TooltipsWindow : public Window
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		/* Find the screen part between the main toolbar at the top, and the statusbar at the bottom.
+		/* Find the free screen space between the main toolbar at the top, and the statusbar at the bottom.
 		 * Add a fixed distance 2 so the tooltip floats free from both bars.
 		 */
-		const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		int scr_top = ((w != NULL) ? w->top + w->height : 0) + 2;
-		w = FindWindowById(WC_STATUS_BAR, 0);
-		int scr_bot = ((w != NULL) ? w->top : _screen.height) - 2;
+		int scr_top = GetMainViewTop() + 2;
+		int scr_bot = GetMainViewBottom() - 2;
 
 		Point pt;
 
