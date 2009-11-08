@@ -23,7 +23,7 @@
 #include "station_type.h"
 
 void ResetPriceBaseMultipliers();
-void SetPriceBaseMultiplier(Price price, byte factor);
+void SetPriceBaseMultiplier(Price price, int factor);
 
 extern const ScoreInfo _score_info[];
 extern int _score_part[MAX_COMPANIES][SCORE_END];

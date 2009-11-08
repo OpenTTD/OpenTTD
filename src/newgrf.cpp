@@ -1665,11 +1665,11 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
 			case 0x08: { // Cost base factor
-				byte factor = grf_load_byte(&buf);
+				int factor = grf_load_byte(&buf);
 				uint price = gvid + i;
 
 				if (price < PR_END) {
-					SetPriceBaseMultiplier((Price)price, factor);
+					SetPriceBaseMultiplier((Price)price, factor - 8);
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Price %d out of range, ignoring", price);
 				}

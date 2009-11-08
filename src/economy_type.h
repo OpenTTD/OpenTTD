@@ -171,11 +171,14 @@ static const int LOAN_INTERVAL = 10000;
 static const uint64 MAX_INFLATION = (1ull << (63 - 32)) - 1;
 
 /**
- * Maximum NewGRF price modifier including the shift offset of 8 bits.
+ * Maximum NewGRF price modifiers.
  * Increasing base prices by factor 65536 should be enough.
  * @see MAX_INFLATION
  */
-static const int MAX_PRICE_MODIFIER = 16 + 8;
+enum {
+	MIN_PRICE_MODIFIER = -8,
+	MAX_PRICE_MODIFIER = 16,
+};
 
 struct CargoPayment;
 typedef uint32 CargoPaymentID;

@@ -109,7 +109,7 @@ int _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
 Money _additional_cash_required;
-static byte _price_base_multiplier[PR_END];
+static int8 _price_base_multiplier[PR_END];
 
 Money CalculateCompanyValue(const Company *c)
 {
@@ -652,7 +652,7 @@ void RecomputePrices()
 		price = (int64)price * _economy.inflation_prices;
 
 		/* Apply newgrf modifiers, and remove fractional part of inflation */
-		int shift = _price_base_multiplier[i] - 8 - 16;
+		int shift = _price_base_multiplier[i] - 16;
 		if (shift >= 0) {
 			price <<= shift;
 		} else {
@@ -728,22 +728,20 @@ static void HandleEconomyFluctuations()
  */
 void ResetPriceBaseMultipliers()
 {
-	/* 8 means no multiplier. */
-	for (Price i = PR_BEGIN; i < PR_END; i++)
-		_price_base_multiplier[i] = 8;
+	memset(_price_base_multiplier, 0, sizeof(_price_base_multiplier));
 }
 
 /**
  * Change a price base by the given factor.
- * The price base is altered by factors of two, with an offset of 8.
- * NewBaseCost = OldBaseCost * 2^(n-8)
+ * The price base is altered by factors of two.
+ * NewBaseCost = OldBaseCost * 2^n
  * @param price Index of price base to change.
  * @param factor Amount to change by.
  */
-void SetPriceBaseMultiplier(Price price, byte factor)
+void SetPriceBaseMultiplier(Price price, int factor)
 {
 	assert(price < PR_END);
-	_price_base_multiplier[price] = min(factor, MAX_PRICE_MODIFIER);
+	_price_base_multiplier[price] = Clamp(factor, MIN_PRICE_MODIFIER, MAX_PRICE_MODIFIER);
 }
 
 /**
