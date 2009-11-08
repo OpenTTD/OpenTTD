@@ -683,24 +683,6 @@ void ShowCompanyStations(CompanyID company)
 	AllocateWindowDescFront<CompanyStationsWindow>(&_company_stations_desc, company);
 }
 
-static const Widget _station_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},             // SVW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   236,     0,    13, STR_STATION_VIEW_CAPTION,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   237,   248,     0,    13, 0x0,                             STR_TOOLTIP_STICKY},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   236,    14,    65, 0x0,                             STR_NULL},                             // SVW_WAITING
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   237,   248,    14,    65, 0x0,                             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   248,    66,    97, 0x0,                             STR_NULL},                             // SVW_ACCEPTLIST / SVW_RATINGLIST
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,    59,    98,   109, STR_BUTTON_LOCATION,             STR_STATION_VIEW_CENTER_TOOLTIP},      // SVW_LOCATION
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,    60,   120,    98,   109, STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP},     // SVW_RATINGS / SVW_ACCEPTS
-{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   121,   180,    98,   109, STR_BUTTON_RENAME,                STR_STATION_VIEW_RENAME_TOOLTIP},      // SVW_RENAME
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   181,   194,    98,   109, STR_TRAIN,                       STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP },            // SVW_TRAINS
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   195,   208,    98,   109, STR_LORRY,                       STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP },     // SVW_ROADVEHS
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   209,   222,    98,   109, STR_PLANE,                       STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP },          // SVW_PLANES
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   223,   236,    98,   109, STR_SHIP,                        STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP },             // SVW_SHIPS
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   237,   248,    98,   109, 0x0,                             STR_TOOLTIP_RESIZE},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_station_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SVW_CLOSEBOX),
@@ -712,15 +694,18 @@ static const NWidgetPart _nested_station_view_widgets[] = {
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, SVW_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, SVW_ACCEPTLIST), SetMinimalSize(249, 32), SetResize(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_LOCATION), SetMinimalSize(60, 12), SetDataTip(STR_BUTTON_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ACCEPTS), SetMinimalSize(61, 12), SetDataTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_RENAME), SetMinimalSize(60, 12), SetResize(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_STATION_VIEW_RENAME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_TRAINS), SetMinimalSize(14, 12), SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ROADVEHS), SetMinimalSize(14, 12), SetDataTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_PLANES),  SetMinimalSize(14, 12), SetDataTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_SHIPS), SetMinimalSize(14, 12), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SVW_RESIZE),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_LOCATION), SetMinimalSize(60, 12), SetResize(1, 0), SetFill(true, true),
+				SetDataTip(STR_BUTTON_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ACCEPTS), SetMinimalSize(61, 12), SetResize(1, 0), SetFill(true, true),
+				SetDataTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_RENAME), SetMinimalSize(60, 12), SetResize(1, 0), SetFill(true, true),
+				SetDataTip(STR_BUTTON_RENAME, STR_STATION_VIEW_RENAME_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_TRAINS), SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ROADVEHS), SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_PLANES),  SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_SHIPS), SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SVW_RESIZE), SetFill(false, true),
 	EndContainer(),
 };
 
@@ -784,25 +769,46 @@ struct StationViewWindow : public Window {
 	uint32 cargo;                 ///< Bitmask of cargo types to expand
 	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
 
-	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	/** Height of the #SVW_ACCEPTLIST widget for different views. */
+	enum AcceptListHeight {
+		ALH_RATING  = 130, ///< Height of the cargo ratings view.
+		ALH_ACCEPTS = 30,  ///< Height of the accepted cargo view.
+	};
+
+	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
+		this->CreateNestedTree(desc);
+		/* Nested widget tree creation is done in two steps to ensure that this->GetWidget<NWidgetCore>(SVW_ACCEPTS) exists in UpdateWidgetSize(). */
+		this->FinishInitNested(desc, window_number);
+
 		Owner owner = Station::Get(window_number)->owner;
 		if (owner != OWNER_NONE) this->owner = owner;
-		this->vscroll.SetCapacity(5);
-		this->resize.step_height = 10;
 
-		this->FindWindowPlacementAndResize(desc);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SVW_WAITING)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
 
 	~StationViewWindow()
 	{
-		WindowNumber wno =
-			(this->window_number << 16) | VLW_STATION_LIST | Station::Get(this->window_number)->owner;
+		WindowNumber wno = (this->window_number << 16) | VLW_STATION_LIST | Station::Get(this->window_number)->owner;
 
 		DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11), false);
 		DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11), false);
 		DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11), false);
 		DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11), false);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case SVW_WAITING:
+				resize->height = FONT_HEIGHT_NORMAL;
+				size->height = WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM;
+				break;
+
+			case SVW_ACCEPTLIST:
+				size->height = WD_FRAMERECT_TOP + ((this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) ? ALH_ACCEPTS : ALH_RATING) + WD_FRAMERECT_TOP;
+				break;
+		}
 	}
 
 	virtual void OnPaint()
@@ -821,18 +827,30 @@ struct StationViewWindow : public Window {
 		this->SetWidgetDisabledState(SVW_PLANES,   !(st->facilities & FACIL_AIRPORT));
 		this->SetWidgetDisabledState(SVW_SHIPS,    !(st->facilities & FACIL_DOCK));
 
-		SetDParam(0, st->index);
-		SetDParam(1, st->facilities);
 		this->DrawWidgets();
 
-		Rect waiting_rect = {this->widget[SVW_WAITING].left, this->widget[SVW_WAITING].top, this->widget[SVW_WAITING].right, this->widget[SVW_WAITING].bottom};
+		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SVW_WAITING);
+		Rect waiting_rect = {nwi->pos_x, nwi->pos_y, nwi->pos_x + nwi->current_x - 1, nwi->pos_y + nwi->current_y - 1};
 		this->DrawWaitingCargo(waiting_rect, cargolist, transfers);
+	}
 
-		Rect acceptlist_rect = {this->widget[SVW_ACCEPTLIST].left, this->widget[SVW_ACCEPTLIST].top, this->widget[SVW_ACCEPTLIST].right, this->widget[SVW_ACCEPTLIST].bottom};
-		if (this->widget[SVW_ACCEPTS].data == STR_STATION_VIEW_RATINGS_BUTTON) {
-			this->DrawAcceptedCargo(acceptlist_rect);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != SVW_ACCEPTLIST) return;
+
+		if (this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
+			this->DrawAcceptedCargo(r);
 		} else {
-			this->DrawCargoRatings(acceptlist_rect);
+			this->DrawCargoRatings(r);
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == SVW_CAPTION) {
+			const Station *st = Station::Get(this->window_number);
+			SetDParam(0, st->index);
+			SetDParam(1, st->facilities);
 		}
 	}
 
@@ -1019,7 +1037,7 @@ struct StationViewWindow : public Window {
 	{
 		switch (widget) {
 			case SVW_WAITING:
-				this->HandleCargoWaitingClick((pt.y - this->widget[SVW_WAITING].top) / 10 + this->vscroll.GetPosition());
+				this->HandleCargoWaitingClick((pt.y - this->GetWidget<NWidgetBase>(SVW_WAITING)->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL + this->vscroll.GetPosition());
 				break;
 
 			case SVW_LOCATION:
@@ -1030,27 +1048,25 @@ struct StationViewWindow : public Window {
 				}
 				break;
 
-			case SVW_RATINGS:
-				this->SetDirty();
-
-				if (this->widget[SVW_RATINGS].data == STR_STATION_VIEW_RATINGS_BUTTON) {
-					/* Switch to ratings view */
-					this->widget[SVW_RATINGS].data = STR_STATION_VIEW_ACCEPTS_BUTTON;
-					this->widget[SVW_RATINGS].tooltips = STR_STATION_VIEW_ACCEPTS_TOOLTIP;
-					ResizeWindowForWidget(this, SVW_ACCEPTLIST, 0, 100);
+			case SVW_RATINGS: {
+				/* Swap between 'accepts' and 'ratings' view. */
+				int height_change;
+				NWidgetCore *nwi = this->GetWidget<NWidgetCore>(SVW_RATINGS);
+				if (this->GetWidget<NWidgetCore>(SVW_RATINGS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
+					nwi->SetDataTip(STR_STATION_VIEW_ACCEPTS_BUTTON, STR_STATION_VIEW_ACCEPTS_TOOLTIP); // Switch to accepts view.
+					height_change = ALH_RATING - ALH_ACCEPTS;
 				} else {
-					/* Switch to accepts view */
-					this->widget[SVW_RATINGS].data = STR_STATION_VIEW_RATINGS_BUTTON;
-					this->widget[SVW_RATINGS].tooltips = STR_STATION_VIEW_RATINGS_TOOLTIP;
-					ResizeWindowForWidget(this, SVW_ACCEPTLIST, 0, -100);
+					nwi->SetDataTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP); // Switch to ratings view.
+					height_change = ALH_ACCEPTS - ALH_RATING;
 				}
-
-				this->SetDirty();
+				this->ReInit(0, height_change);
 				break;
+			}
 
 			case SVW_RENAME:
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_STATION_NAME, STR_STATION_VIEW_RENAME_STATION_CAPTION, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_STATION_NAME, STR_STATION_VIEW_RENAME_STATION_CAPTION, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS,
+						this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case SVW_TRAINS: { // Show a list of scheduled trains to this station
@@ -1092,8 +1108,7 @@ struct StationViewWindow : public Window {
 
 	virtual void OnResize()
 	{
-		ResizeButtons(this, SVW_LOCATION, SVW_RENAME);
-		this->vscroll.SetCapacity((this->widget[SVW_WAITING].bottom - this->widget[SVW_WAITING].top + 1) / this->resize.step_height);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SVW_WAITING)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
 };
 
@@ -1102,7 +1117,7 @@ static const WindowDesc _station_view_desc(
 	WDP_AUTO, WDP_AUTO, 249, 110, 249, 110,
 	WC_STATION_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_station_view_widgets, _nested_station_view_widgets, lengthof(_nested_station_view_widgets)
+	NULL, _nested_station_view_widgets, lengthof(_nested_station_view_widgets)
 );
 
 /**
