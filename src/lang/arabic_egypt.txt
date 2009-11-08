@@ -4013,6 +4013,3 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
-STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
-STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
