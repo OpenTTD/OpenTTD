@@ -862,7 +862,7 @@
 #if defined(LZO_MM_TINY)
 #  undef LZO_HAVE_MM_HUGE_ARRAY
 #endif
-#if defined(LZO_CC_AZTECC) || defined(LZO_CC_PACIFICC || defined(LZO_CC_ZORTECHC)
+#if defined(LZO_CC_AZTECC) || defined(LZO_CC_PACIFICC) || defined(LZO_CC_ZORTECHC)
 #  undef LZO_HAVE_MM_HUGE_PTR
 #  undef LZO_HAVE_MM_HUGE_ARRAY
 #elif defined(LZO_CC_DMC) || defined(LZO_CC_SYMANTECC)
@@ -1609,9 +1609,9 @@ extern "C" {
 #    define __lzo_cdecl                 __cdecl
 #    define __lzo_cdecl_atexit
 #    define __lzo_cdecl_main            __cdecl
-#    if defined(LZO_OS_OS2) && defined(LZO_CC_DMC) || defined(LZO_CC_SYMANTECC))
+#    if defined(LZO_OS_OS2) && defined(LZO_CC_DMC) || defined(LZO_CC_SYMANTECC)
 #      define __lzo_cdecl_qsort         __pascal
-#    elif defined(LZO_OS_OS2) && defined(LZO_CC_ZORTECHC))
+#    elif defined(LZO_OS_OS2) && defined(LZO_CC_ZORTECHC)
 #      define __lzo_cdecl_qsort         _stdcall
 #    else
 #      define __lzo_cdecl_qsort         __cdecl

@@ -883,7 +883,7 @@
 #if defined(LZO_MM_TINY)
 #  undef LZO_HAVE_MM_HUGE_ARRAY
 #endif
-#if defined(LZO_CC_AZTECC) || defined(LZO_CC_PACIFICC || defined(LZO_CC_ZORTECHC)
+#if defined(LZO_CC_AZTECC) || defined(LZO_CC_PACIFICC) || defined(LZO_CC_ZORTECHC)
 #  undef LZO_HAVE_MM_HUGE_PTR
 #  undef LZO_HAVE_MM_HUGE_ARRAY
 #elif defined(LZO_CC_DMC) || defined(LZO_CC_SYMANTECC)
@@ -1431,7 +1431,7 @@ extern "C" {
 #  define __lzo_forceinline     __inline__ __attribute__((__always_inline__))
 #elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 450) && defined(LZO_CC_SYNTAX_MSC)
 #  define __lzo_forceinline     __forceinline
-#elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 800) && LZO_CC_SYNTAX_GNUC)
+#elif defined(LZO_CC_INTELC) && (__INTEL_COMPILER >= 800) && LZO_CC_SYNTAX_GNUC
 #  define __lzo_forceinline     __inline__ __attribute__((__always_inline__))
 #elif defined(LZO_CC_LLVM) || defined(LZO_CC_PATHSCALE)
 #  define __lzo_forceinline     __inline__ __attribute__((__always_inline__))
@@ -1457,7 +1457,7 @@ extern "C" {
 #  define __lzo_noinline        __attribute__((__noinline__))
 #elif defined(LZO_CC_MSC) && (_MSC_VER >= 1300)
 #  define __lzo_noinline        __declspec(noinline)
-#elif defined(LZO_CC_MWERKS) && (__MWERKS__ >= 0x3200) && (defined(LZO_OS_WIN32) || (defined(LZO_OS_WIN64))
+#elif defined(LZO_CC_MWERKS) && (__MWERKS__ >= 0x3200) && (defined(LZO_OS_WIN32) || (defined(LZO_OS_WIN64)))
 #  if defined(__cplusplus)
 #  else
 #    define __lzo_noinline      __declspec(noinline)
@@ -1553,7 +1553,7 @@ extern "C" {
 #    define LZO_UNUSED(var)         if (&var) ; else
 #  elif defined(LZO_CC_GNUC) || defined(LZO_CC_LLVM) || defined(LZO_CC_PATHSCALE)
 #    define LZO_UNUSED(var)         ((void) var)
-#  elif defined(LZO_CC_MSC) && (_MSC_VER < 900))
+#  elif defined(LZO_CC_MSC) && (_MSC_VER < 900)
 #    define LZO_UNUSED(var)         if (&var) ; else
 #  elif defined(LZO_CC_KEILC)
 #    define LZO_UNUSED(var)         {extern int __lzo_unused[1-2*!(sizeof(var)>0)];}
@@ -1630,9 +1630,9 @@ extern "C" {
 #    define __lzo_cdecl                 __cdecl
 #    define __lzo_cdecl_atexit
 #    define __lzo_cdecl_main            __cdecl
-#    if defined(LZO_OS_OS2) && defined(LZO_CC_DMC) || defined(LZO_CC_SYMANTECC))
+#    if defined(LZO_OS_OS2) && defined(LZO_CC_DMC) || defined(LZO_CC_SYMANTECC)
 #      define __lzo_cdecl_qsort         __pascal
-#    elif defined(LZO_OS_OS2) && defined(LZO_CC_ZORTECHC))
+#    elif defined(LZO_OS_OS2) && defined(LZO_CC_ZORTECHC)
 #      define __lzo_cdecl_qsort         _stdcall
 #    else
 #      define __lzo_cdecl_qsort         __cdecl
