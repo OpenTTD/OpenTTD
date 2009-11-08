@@ -268,11 +268,9 @@ public:
 		this->owner = (Owner)this->window_number;
 		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
 
-		uint i = 0;
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
-			if (HasBit(this->cargo_filter, cs->Index())) this->LowerWidget(SLW_CARGOSTART + i);
-			i++;
+		for (uint i = 0; i < NUM_CARGO; i++) {
+			const CargoSpec *cs = CargoSpec::Get(i);
+			if (cs->IsValid() && HasBit(this->cargo_filter, i)) this->LowerWidget(SLW_CARGOSTART + i);
 		}
 
 		if (this->cargo_filter == this->cargo_filter_max) this->cargo_filter = _cargo_mask;
@@ -381,18 +379,14 @@ public:
 
 			default:
 				if (widget >= SLW_CARGOSTART) {
-					int i = 0;
-					const CargoSpec *cs;
-					FOR_ALL_CARGOSPECS(cs) {
-						if (i + SLW_CARGOSTART == widget) {
-							int cg_ofst = HasBit(this->cargo_filter, cs->Index()) ? 2 : 1;
-							GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.left + cg_ofst + 10, r.top + cg_ofst + 7, cs->rating_colour);
-							DrawString(r.left + cg_ofst, r.left + 12 + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_CENTER);
-							break;
-						}
-						i++;
+					const CargoSpec *cs = CargoSpec::Get(widget - SLW_CARGOSTART);
+					if (cs->IsValid()) {
+						int cg_ofst = HasBit(this->cargo_filter, cs->Index()) ? 2 : 1;
+						GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.left + cg_ofst + 10, r.top + cg_ofst + 7, cs->rating_colour);
+						DrawString(r.left + cg_ofst, r.left + 12 + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_CENTER);
 					}
 				}
+				break;
 		}
 	}
 
@@ -461,11 +455,9 @@ public:
 				break;
 
 			case SLW_CARGOALL: {
-				uint i = 0;
-				const CargoSpec *cs;
-				FOR_ALL_CARGOSPECS(cs) {
-					this->LowerWidget(i + SLW_CARGOSTART);
-					i++;
+				for (uint i = 0; i < NUM_CARGO; i++) {
+					const CargoSpec *cs = CargoSpec::Get(i);
+					if (cs->IsValid()) this->LowerWidget(SLW_CARGOSTART + i);
 				}
 				this->LowerWidget(SLW_NOCARGOWAITING);
 				this->LowerWidget(SLW_CARGOALL);
@@ -493,8 +485,9 @@ public:
 					this->include_empty = !this->include_empty;
 					this->ToggleWidgetLoweredState(SLW_NOCARGOWAITING);
 				} else {
-					for (uint i = SLW_CARGOSTART; i < this->nested_array_size; i++) {
-						this->RaiseWidget(i);
+					for (uint i = 0; i < NUM_CARGO; i++) {
+						const CargoSpec *cs = CargoSpec::Get(i);
+						if (cs->IsValid()) this->RaiseWidget(SLW_CARGOSTART + i);
 					}
 
 					this->cargo_filter = 0;
@@ -510,19 +503,16 @@ public:
 			default:
 				if (widget >= SLW_CARGOSTART) { // change cargo_filter
 					/* Determine the selected cargo type */
-					int i = 0;
-					const CargoSpec *cs;
-					FOR_ALL_CARGOSPECS(cs) {
-						if (widget - SLW_CARGOSTART == i) break;
-						i++;
-					}
+					const CargoSpec *cs = CargoSpec::Get(widget - SLW_CARGOSTART);
+					if (!cs->IsValid()) break;
 
 					if (_ctrl_pressed) {
 						ToggleBit(this->cargo_filter, cs->Index());
 						this->ToggleWidgetLoweredState(widget);
 					} else {
-						for (uint i = SLW_CARGOSTART; i < this->nested_array_size; i++) {
-							this->RaiseWidget(i);
+						for (uint i = 0; i < NUM_CARGO; i++) {
+							const CargoSpec *cs = CargoSpec::Get(i);
+							if (cs->IsValid()) this->RaiseWidget(SLW_CARGOSTART + i);
 						}
 						this->RaiseWidget(SLW_NOCARGOWAITING);
 
@@ -614,22 +604,26 @@ const StringID CompanyStationsWindow::sorter_names[] = {
  */
 static NWidgetBase *CargoWidgets(int *biggest_index)
 {
-	*biggest_index = -1;
 	NWidgetHorizontal *container = new NWidgetHorizontal();
 
-	uint i = 0;
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
-		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, SLW_CARGOSTART + i);
-		*biggest_index = SLW_CARGOSTART + i;
-
-		panel->SetMinimalSize(14, 11);
-		panel->SetResize(0, 0);
-		panel->SetFill(false, true);
-		panel->SetDataTip(0, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE);
-		container->Add(panel);
-		i++;
+	for (uint i = 0; i < NUM_CARGO; i++) {
+		const CargoSpec *cs = CargoSpec::Get(i);
+		if (cs->IsValid()) {
+			NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, SLW_CARGOSTART + i);
+			panel->SetMinimalSize(14, 11);
+			panel->SetResize(0, 0);
+			panel->SetFill(false, true);
+			panel->SetDataTip(0, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE);
+			container->Add(panel);
+		} else {
+			NWidgetLeaf *nwi = new NWidgetLeaf(WWT_EMPTY, COLOUR_GREY, SLW_CARGOSTART + i, 0x0, STR_NULL);
+			nwi->SetMinimalSize(0, 11);
+			nwi->SetResize(0, 0);
+			nwi->SetFill(false, true);
+			container->Add(nwi);
+		}
 	}
+	*biggest_index = SLW_CARGOSTART + NUM_CARGO;
 	return container;
 }
 
