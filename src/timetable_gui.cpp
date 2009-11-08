@@ -52,27 +52,34 @@ void SetTimetableParams(int param1, int param2, uint32 time)
 
 struct TimetableWindow : Window {
 	int sel_index;
-	const Vehicle *vehicle;
+	const Vehicle *vehicle; ///< Vehicle monitored by the window.
 
-	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->vehicle = Vehicle::Get(window_number);
+		this->InitNested(desc, window_number);
 		this->owner = this->vehicle->owner;
-		this->vscroll.SetCapacity(8);
-		this->resize.step_height = 10;
 		this->sel_index = -1;
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+	}
 
-		this->FindWindowPlacementAndResize(desc);
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case TTV_TIMETABLE_PANEL:
+				resize->height = FONT_HEIGHT_NORMAL;
+				size->height = WD_FRAMERECT_TOP + 8 * resize->height + WD_FRAMERECT_BOTTOM;
+				break;
+
+			case TTV_SUMMARY_PANEL:
+				size->height = WD_FRAMERECT_TOP + 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				break;
+		}
 	}
 
 	int GetOrderFromTimetableWndPt(int y, const Vehicle *v)
 	{
-		/*
-		 * Calculation description:
-		 * 15 = 14 (this->widget[TTV_ORDER_VIEW].top) + 1 (frame-line)
-		 * 10 = order text hight
-		 */
-		int sel = (y - 15) / 10;
+		int sel = (y - this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
 
 		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
 
@@ -174,76 +181,90 @@ struct TimetableWindow : Window {
 
 		this->SetWidgetLoweredState(TTV_AUTOFILL, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
-		SetDParam(0, v->index);
 		this->DrawWidgets();
+	}
 
-		int y = 15;
-		int i = this->vscroll.GetPosition();
-		VehicleOrderID order_id = (i + 1) / 2;
-		bool final_order = false;
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == TTV_CAPTION) SetDParam(0, this->vehicle->index);
+	}
 
-		const Order *order = v->GetOrder(order_id);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		const Vehicle *v = this->vehicle;
+		int selected = this->sel_index;
 
-		while (order != NULL) {
-			/* Don't draw anything if it extends past the end of the window. */
-			if (!this->vscroll.IsVisible(i)) break;
+		switch (widget) {
+			case TTV_TIMETABLE_PANEL: {
+				int y = r.top + WD_FRAMERECT_TOP;
+				int i = this->vscroll.GetPosition();
+				VehicleOrderID order_id = (i + 1) / 2;
+				bool final_order = false;
 
-			if (i % 2 == 0) {
-				DrawOrderString(v, order, order_id, y, i == selected, true, this->widget[TTV_TIMETABLE_PANEL].left + 2, this->widget[TTV_TIMETABLE_PANEL].right - 2);
+				const Order *order = v->GetOrder(order_id);
+				while (order != NULL) {
+					/* Don't draw anything if it extends past the end of the window. */
+					if (!this->vscroll.IsVisible(i)) break;
 
-				order_id++;
+					if (i % 2 == 0) {
+						DrawOrderString(v, order, order_id, y, i == selected, true, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT);
 
-				if (order_id >= v->GetNumOrders()) {
-					order = v->GetOrder(0);
-					final_order = true;
-				} else {
-					order = order->next;
+						order_id++;
+
+						if (order_id >= v->GetNumOrders()) {
+							order = v->GetOrder(0);
+							final_order = true;
+						} else {
+							order = order->next;
+						}
+					} else {
+						StringID string;
+
+						if (order->IsType(OT_CONDITIONAL)) {
+							string = STR_TIMETABLE_NO_TRAVEL;
+						} else if (order->travel_time == 0) {
+							string = STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
+						} else {
+							SetTimetableParams(0, 1, order->travel_time);
+							string = STR_TIMETABLE_TRAVEL_FOR;
+						}
+
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
+
+						if (final_order) break;
+					}
+
+					i++;
+					y += FONT_HEIGHT_NORMAL;
 				}
-			} else {
-				StringID string;
+				break;
+			}
 
-				if (order->IsType(OT_CONDITIONAL)) {
-					string = STR_TIMETABLE_NO_TRAVEL;
-				} else if (order->travel_time == 0) {
-					string = STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
-				} else {
-					SetTimetableParams(0, 1, order->travel_time);
-					string = STR_TIMETABLE_TRAVEL_FOR;
+			case TTV_SUMMARY_PANEL: {
+				int y = r.top + WD_FRAMERECT_TOP;
+
+				uint total_time = 0;
+				bool complete = true;
+				for (const Order *order = v->GetOrder(0); order != NULL; order = order->next) {
+					total_time += order->travel_time + order->wait_time;
+					if (order->travel_time == 0 && !order->IsType(OT_CONDITIONAL)) complete = false;
+					if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
 				}
 
-				DrawString(this->widget[TTV_TIMETABLE_PANEL].left + 2, this->widget[TTV_TIMETABLE_PANEL].right - 2, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
+				if (total_time != 0) {
+					SetTimetableParams(0, 1, total_time);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
+				}
+				y += FONT_HEIGHT_NORMAL;
 
-				if (final_order) break;
+				if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_STATUS_ON_TIME);
+				} else {
+					SetTimetableParams(0, 1, abs(v->lateness_counter));
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE);
+				}
+				break;
 			}
-
-			i++;
-			y += 10;
-		}
-
-		y = this->widget[TTV_SUMMARY_PANEL].top + 1;
-
-		{
-			uint total_time = 0;
-			bool complete = true;
-
-			for (const Order *order = v->GetOrder(0); order != NULL; order = order->next) {
-				total_time += order->travel_time + order->wait_time;
-				if (order->travel_time == 0 && !order->IsType(OT_CONDITIONAL)) complete = false;
-				if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
-			}
-
-			if (total_time != 0) {
-				SetTimetableParams(0, 1, total_time);
-				DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
-			}
-		}
-		y += 10;
-
-		if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
-			DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, STR_TIMETABLE_STATUS_ON_TIME);
-		} else {
-			SetTimetableParams(0, 1, abs(v->lateness_counter));
-			DrawString(this->widget[TTV_SUMMARY_PANEL].left + 2, this->widget[TTV_SUMMARY_PANEL].right - 2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE);
 		}
 	}
 
@@ -334,30 +355,8 @@ struct TimetableWindow : Window {
 	virtual void OnResize()
 	{
 		/* Update the scroll bar */
-		this->vscroll.SetCapacity((this->widget[TTV_TIMETABLE_PANEL].bottom - this->widget[TTV_TIMETABLE_PANEL].top + 1) / this->resize.step_height);
+		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
-};
-
-static const Widget _timetable_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},             // TTV_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   326,     0,    13, STR_TIMETABLE_TITLE,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // TTV_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   327,   387,     0,    13, STR_TIMETABLE_ORDER_VIEW,             STR_TIMETABLE_ORDER_VIEW_TOOLTIP},               // TTV_ORDER_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   388,   399,     0,    13, STR_NULL,                   STR_TOOLTIP_STICKY},                    // TTV_STICKY
-
-	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},                // TTV_TIMETABLE_PANEL
-	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   388,   399,    14,    95, STR_NULL,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // TTV_SCROLLBAR
-
-	{      WWT_PANEL,   RESIZE_RTB,    COLOUR_GREY,     0,   399,    96,   117, STR_NULL,                   STR_NULL},                             // TTV_SUMMARY_PANEL
-
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   109,   118,   129, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},      // TTV_CHANGE_TIME
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   110,   219,   118,   129, STR_TIMETABLE_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},     // TTV_CLEAR_TIME
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   220,   337,   118,   129, STR_TIMETABLE_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP}, // TTV_RESET_LATENESS
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   338,   387,   118,   129, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},       // TTV_AUTOFILL
-
-	{      WWT_PANEL,   RESIZE_RTB,    COLOUR_GREY,   388,   387,   118,   129, STR_NULL,                   STR_NULL},                             // TTV_EMPTY
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   388,   399,   118,   129, STR_NULL,                   STR_TOOLTIP_RESIZE},                    // TTV_RESIZE
-
-	{    WIDGETS_END }
 };
 
 static const NWidgetPart _nested_timetable_widgets[] = {
@@ -386,7 +385,7 @@ static const WindowDesc _timetable_desc(
 	WDP_AUTO, WDP_AUTO, 400, 130, 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	_timetable_widgets, _nested_timetable_widgets, lengthof(_nested_timetable_widgets)
+	NULL, _nested_timetable_widgets, lengthof(_nested_timetable_widgets)
 );
 
 void ShowTimetableWindow(const Vehicle *v)
