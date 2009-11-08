@@ -11,6 +11,7 @@
 ##gender m f n
 ##case subs date geniki
 
+
 # $Id$
 
 # This file is part of OpenTTD.
@@ -63,66 +64,66 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=n}Αναψυ
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Επιβάτης
-STR_CARGO_SINGULAR_COAL                                         :{G=m}Άνθρακας
-STR_CARGO_SINGULAR_MAIL                                         :{G=f}Αλληλογραφία
-STR_CARGO_SINGULAR_OIL                                          :{G=n}Πετρέλαιο
-STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=n}Ζώο
-STR_CARGO_SINGULAR_GOODS                                        :{G=n}Αγαθό
-STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Σιτηρό
-STR_CARGO_SINGULAR_WOOD                                         :{G=f}Ξυλεία
-STR_CARGO_SINGULAR_IRON_ORE                                     :{G=n}Σιδηρομετάλλευμα
-STR_CARGO_SINGULAR_STEEL                                        :{G=m}Χάλυβας
-STR_CARGO_SINGULAR_VALUABLES                                    :{G=n}Πολύτιμο είδος
-STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=n}Μετάλλευμα Χαλκού
-STR_CARGO_SINGULAR_MAIZE                                        :{G=n}Καλαμπόκι
-STR_CARGO_SINGULAR_FRUIT                                        :{G=n}Φρούτο
-STR_CARGO_SINGULAR_DIAMOND                                      :{G=n}Διαμάντι
-STR_CARGO_SINGULAR_FOOD                                         :{G=n}Τρόφιμο
-STR_CARGO_SINGULAR_PAPER                                        :{G=n}Χαρτί
-STR_CARGO_SINGULAR_GOLD                                         :{G=m}Χρυσός
-STR_CARGO_SINGULAR_WATER                                        :{G=n}Νερό
-STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Σιτάρι
-STR_CARGO_SINGULAR_RUBBER                                       :{G=n}Λάστιχο
-STR_CARGO_SINGULAR_SUGAR                                        :{G=f}Ζάχαρη
-STR_CARGO_SINGULAR_TOY                                          :{G=n}Παιχνίδι
-STR_CARGO_SINGULAR_CANDY                                        :{G=n}Γλυκό
-STR_CARGO_SINGULAR_COLA                                         :{G=f}Κόλα
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Μαλλί της γριάς
-STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Φυσαλίδα
-STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Ζαχαρωτό
-STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Μπαταρία
-STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Πλαστικό
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=n}Αναψυκτικό
 STR_CARGO_SINGULAR_PASSENGER.subs                               :{G=m}Επιβάτες
+STR_CARGO_SINGULAR_COAL                                         :{G=m}Άνθρακας
 STR_CARGO_SINGULAR_COAL.subs                                    :{G=m}Άνθρακες
+STR_CARGO_SINGULAR_MAIL                                         :{G=f}Αλληλογραφία
 STR_CARGO_SINGULAR_MAIL.subs                                    :{G=f}Αλληλογραφία
+STR_CARGO_SINGULAR_OIL                                          :{G=n}Πετρέλαιο
 STR_CARGO_SINGULAR_OIL.subs                                     :{G=n}Πετρέλαιο
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=n}Ζώο
 STR_CARGO_SINGULAR_LIVESTOCK.subs                               :{G=n}Ζώα
+STR_CARGO_SINGULAR_GOODS                                        :{G=n}Αγαθό
 STR_CARGO_SINGULAR_GOODS.subs                                   :{G=n}Αγαθα
+STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Σιτηρό
 STR_CARGO_SINGULAR_GRAIN.subs                                   :{G=n}Σιτηρα
+STR_CARGO_SINGULAR_WOOD                                         :{G=f}Ξυλεία
 STR_CARGO_SINGULAR_WOOD.subs                                    :{G=f}Ξυλεία
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=n}Σιδηρομετάλλευμα
 STR_CARGO_SINGULAR_IRON_ORE.subs                                :{G=n}Σιδηρομετάλλευμα
+STR_CARGO_SINGULAR_STEEL                                        :{G=m}Χάλυβας
 STR_CARGO_SINGULAR_STEEL.subs                                   :{G=m}Χάλυβα
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=n}Πολύτιμο είδος
 STR_CARGO_SINGULAR_VALUABLES.subs                               :{G=n}Πολύτιμα είδη
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=n}Μετάλλευμα Χαλκού
 STR_CARGO_SINGULAR_COPPER_ORE.subs                              :{G=n}Μετάλλευμα Χαλκού
+STR_CARGO_SINGULAR_MAIZE                                        :{G=n}Καλαμπόκι
 STR_CARGO_SINGULAR_MAIZE.subs                                   :{G=n}Καλαμπόκι
+STR_CARGO_SINGULAR_FRUIT                                        :{G=n}Φρούτο
 STR_CARGO_SINGULAR_FRUIT.subs                                   :{G=n}Φρούτα
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=n}Διαμάντι
 STR_CARGO_SINGULAR_DIAMOND.subs                                 :{G=n}Διαμάντια
+STR_CARGO_SINGULAR_FOOD                                         :{G=n}Τρόφιμο
 STR_CARGO_SINGULAR_FOOD.subs                                    :{G=n}Τρόφιμα
+STR_CARGO_SINGULAR_PAPER                                        :{G=n}Χαρτί
 STR_CARGO_SINGULAR_PAPER.subs                                   :{G=n}Χαρτία
+STR_CARGO_SINGULAR_GOLD                                         :{G=m}Χρυσός
 STR_CARGO_SINGULAR_GOLD.subs                                    :{G=m}Χρυσό
+STR_CARGO_SINGULAR_WATER                                        :{G=n}Νερό
 STR_CARGO_SINGULAR_WATER.subs                                   :{G=n}Νερα
+STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Σιτάρι
 STR_CARGO_SINGULAR_WHEAT.subs                                   :{G=n}Σιτάρια
+STR_CARGO_SINGULAR_RUBBER                                       :{G=n}Λάστιχο
 STR_CARGO_SINGULAR_RUBBER.subs                                  :{G=n}Λάστιχα
+STR_CARGO_SINGULAR_SUGAR                                        :{G=f}Ζάχαρη
 STR_CARGO_SINGULAR_SUGAR.subs                                   :{G=f}Ζάχαρες
+STR_CARGO_SINGULAR_TOY                                          :{G=n}Παιχνίδι
 STR_CARGO_SINGULAR_TOY.subs                                     :{G=n}Παιχνίδια
+STR_CARGO_SINGULAR_CANDY                                        :{G=n}Γλυκό
 STR_CARGO_SINGULAR_CANDY.subs                                   :{G=n}Γλυκα
+STR_CARGO_SINGULAR_COLA                                         :{G=f}Κόλα
 STR_CARGO_SINGULAR_COLA.subs                                    :{G=f}Κόλα
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Μαλλί της γριάς
 STR_CARGO_SINGULAR_COTTON_CANDY.subs                            :{G=n}Μαλλί της γριάς
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Φυσαλίδα
 STR_CARGO_SINGULAR_BUBBLE.subs                                  :{G=f}Φυσαλίδες
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Ζαχαρωτό
 STR_CARGO_SINGULAR_TOFFEE.subs                                  :{G=n}Ζαχαρωτα
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Μπαταρία
 STR_CARGO_SINGULAR_BATTERY.subs                                 :{G=f}Μπαταρίες
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Πλαστικό
 STR_CARGO_SINGULAR_PLASTIC.subs                                 :{G=n}Πλαστικα
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=n}Αναψυκτικό
 STR_CARGO_SINGULAR_FIZZY_DRINK.subs                             :{G=n}Αναψυκτικα
 
 # Quantity of cargo
@@ -473,66 +474,66 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά 
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1ος
-STR_ORDINAL_NUMBER_2ND                                          :2ος
-STR_ORDINAL_NUMBER_3RD                                          :3ος
-STR_ORDINAL_NUMBER_4TH                                          :4ος
-STR_ORDINAL_NUMBER_5TH                                          :5ος
-STR_ORDINAL_NUMBER_6TH                                          :6ος
-STR_ORDINAL_NUMBER_7TH                                          :7ος
-STR_ORDINAL_NUMBER_8TH                                          :8ος
-STR_ORDINAL_NUMBER_9TH                                          :9ος
-STR_ORDINAL_NUMBER_10TH                                         :10ος
-STR_ORDINAL_NUMBER_11TH                                         :11ος
-STR_ORDINAL_NUMBER_12TH                                         :12ος
-STR_ORDINAL_NUMBER_13TH                                         :13ος
-STR_ORDINAL_NUMBER_14TH                                         :14ος
-STR_ORDINAL_NUMBER_15TH                                         :15ος
-STR_ORDINAL_NUMBER_16TH                                         :16ος
-STR_ORDINAL_NUMBER_17TH                                         :17ος
-STR_ORDINAL_NUMBER_18TH                                         :18ος
-STR_ORDINAL_NUMBER_19TH                                         :19ος
-STR_ORDINAL_NUMBER_20TH                                         :20ος
-STR_ORDINAL_NUMBER_21ST                                         :21ος
-STR_ORDINAL_NUMBER_22ND                                         :22ος
-STR_ORDINAL_NUMBER_23RD                                         :23ος
-STR_ORDINAL_NUMBER_24TH                                         :24ος
-STR_ORDINAL_NUMBER_25TH                                         :25ος
-STR_ORDINAL_NUMBER_26TH                                         :26ος
-STR_ORDINAL_NUMBER_27TH                                         :27ος
-STR_ORDINAL_NUMBER_28TH                                         :28ος
-STR_ORDINAL_NUMBER_29TH                                         :29ος
-STR_ORDINAL_NUMBER_30TH                                         :30ος
-STR_ORDINAL_NUMBER_31ST                                         :31ος
 STR_ORDINAL_NUMBER_1ST.date                                     :1η
+STR_ORDINAL_NUMBER_2ND                                          :2ος
 STR_ORDINAL_NUMBER_2ND.date                                     :2η
+STR_ORDINAL_NUMBER_3RD                                          :3ος
 STR_ORDINAL_NUMBER_3RD.date                                     :3η
+STR_ORDINAL_NUMBER_4TH                                          :4ος
 STR_ORDINAL_NUMBER_4TH.date                                     :4η
+STR_ORDINAL_NUMBER_5TH                                          :5ος
 STR_ORDINAL_NUMBER_5TH.date                                     :5η
+STR_ORDINAL_NUMBER_6TH                                          :6ος
 STR_ORDINAL_NUMBER_6TH.date                                     :6η
+STR_ORDINAL_NUMBER_7TH                                          :7ος
 STR_ORDINAL_NUMBER_7TH.date                                     :7η
+STR_ORDINAL_NUMBER_8TH                                          :8ος
 STR_ORDINAL_NUMBER_8TH.date                                     :8η
+STR_ORDINAL_NUMBER_9TH                                          :9ος
 STR_ORDINAL_NUMBER_9TH.date                                     :9η
+STR_ORDINAL_NUMBER_10TH                                         :10ος
 STR_ORDINAL_NUMBER_10TH.date                                    :10η
+STR_ORDINAL_NUMBER_11TH                                         :11ος
 STR_ORDINAL_NUMBER_11TH.date                                    :11η
+STR_ORDINAL_NUMBER_12TH                                         :12ος
 STR_ORDINAL_NUMBER_12TH.date                                    :12η
+STR_ORDINAL_NUMBER_13TH                                         :13ος
 STR_ORDINAL_NUMBER_13TH.date                                    :13η
+STR_ORDINAL_NUMBER_14TH                                         :14ος
 STR_ORDINAL_NUMBER_14TH.date                                    :14η
+STR_ORDINAL_NUMBER_15TH                                         :15ος
 STR_ORDINAL_NUMBER_15TH.date                                    :15η
+STR_ORDINAL_NUMBER_16TH                                         :16ος
 STR_ORDINAL_NUMBER_16TH.date                                    :16η
+STR_ORDINAL_NUMBER_17TH                                         :17ος
 STR_ORDINAL_NUMBER_17TH.date                                    :17η
+STR_ORDINAL_NUMBER_18TH                                         :18ος
 STR_ORDINAL_NUMBER_18TH.date                                    :18η
+STR_ORDINAL_NUMBER_19TH                                         :19ος
 STR_ORDINAL_NUMBER_19TH.date                                    :19η
+STR_ORDINAL_NUMBER_20TH                                         :20ος
 STR_ORDINAL_NUMBER_20TH.date                                    :20η
+STR_ORDINAL_NUMBER_21ST                                         :21ος
 STR_ORDINAL_NUMBER_21ST.date                                    :21η
+STR_ORDINAL_NUMBER_22ND                                         :22ος
 STR_ORDINAL_NUMBER_22ND.date                                    :22η
+STR_ORDINAL_NUMBER_23RD                                         :23ος
 STR_ORDINAL_NUMBER_23RD.date                                    :23η
+STR_ORDINAL_NUMBER_24TH                                         :24ος
 STR_ORDINAL_NUMBER_24TH.date                                    :24η
+STR_ORDINAL_NUMBER_25TH                                         :25ος
 STR_ORDINAL_NUMBER_25TH.date                                    :25η
+STR_ORDINAL_NUMBER_26TH                                         :26ος
 STR_ORDINAL_NUMBER_26TH.date                                    :26η
+STR_ORDINAL_NUMBER_27TH                                         :27ος
 STR_ORDINAL_NUMBER_27TH.date                                    :27η
+STR_ORDINAL_NUMBER_28TH                                         :28ος
 STR_ORDINAL_NUMBER_28TH.date                                    :28η
+STR_ORDINAL_NUMBER_29TH                                         :29ος
 STR_ORDINAL_NUMBER_29TH.date                                    :29η
+STR_ORDINAL_NUMBER_30TH                                         :30ος
 STR_ORDINAL_NUMBER_30TH.date                                    :30η
+STR_ORDINAL_NUMBER_31ST                                         :31ος
 STR_ORDINAL_NUMBER_31ST.date                                    :31η
 ############ range for days ends
 
@@ -4071,6 +4072,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
@@ -4098,4 +4100,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

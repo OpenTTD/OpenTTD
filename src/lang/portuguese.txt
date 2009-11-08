@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a b
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostrar janela som/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostrar última mensagem/notícia, mostrar opções de mensagens
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações do terreno, consola, depuração da IA, capturas, sobre o OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar barras de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Guardar cenário, abrir cenário, abandonar editor de cenário, sair
@@ -1650,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova emp
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
+STR_NETWORK_CLIENTLIST_BAN                                      :Banir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinheiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar com todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Falar com a empresa
@@ -1678,6 +1680,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Enviar
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipa] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Equipa] {STRING}: {WHITE}{STRING}
@@ -2782,6 +2785,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva mono
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}  Máx. E.T.: {7:FORCE}{}Custo de Manutenção: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Custo: {CURRENCY} Máx. Velocidade: {VELOCITY}{}Capacidade: {CARGO}, {CARGO}{}Custo de circulação: {CURRENCY}/ano
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY} Máx. Velocidade: {VELOCITY}{}Capacidade: {CARGO}{}Custo de circulação: {CURRENCY}/ano
 
@@ -4025,4 +4029,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

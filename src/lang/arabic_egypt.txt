@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} كيل�
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK} اختر كلمة اساسية لفلترة القائمة
+STR_LIST_FILTER_TITLE                                           :{BLACK}نص المرشح
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} اختر طريقة الترتيب - تنازلي / تصاعدي
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK} اختر نوع الترتيب
@@ -313,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}افتح
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}عرض اطار الصوت/الموسيقى
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}اظهار الرسالة الأخيرة/التقرير الأخير, خيارات الرسائل
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}معلومات مناطق الخريطة
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}بدل صف الادوات
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}حفظ/فتح/خروج من محرر الخرائط
@@ -1343,6 +1345,7 @@ STR_OSNAME_DOS                                                  :دوس
 STR_OSNAME_UNIX                                                 :يونكس
 STR_OSNAME_OSX                                                  :أو أس أكس
 STR_OSNAME_BEOS                                                 :بي أو أس
+STR_OSNAME_HAIKU                                                :هايكو
 STR_OSNAME_MORPHOS                                              :مورف أو أس
 STR_OSNAME_AMIGAOS                                              :أميقا
 STR_OSNAME_OS2                                                  :أو أس/2
@@ -1648,6 +1651,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE} شرك�
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :اطرد
+STR_NETWORK_CLIENTLIST_BAN                                      :بان
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :اعط اموال
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :تحدث مع الكل
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :تحدث لشركة
@@ -1676,6 +1680,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ادخل
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ارسل
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[خاص] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[الكل]:
 
 STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {WHITE}{STRING}
@@ -1733,6 +1738,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :الاستمر�
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :يغادر
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} قد انضم للعبة
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} انضم الى اللعبة (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} انضم الى الشركة رقم : {2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} انضم الى المشاهدين
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} قد بدأ شركة جديدة: (#{2:NUM})
@@ -2027,6 +2033,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}مدين
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}بناء مدينة في مكان عشوائي
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}العديد من المدن العشوائية
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}غطي الخريطة عشوائيا بمدن
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}اسم المدينة
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}ادخل اسم المدينة
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}اضغط هنا لادخال اسم المدينة
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}اسم عشوائي
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}ولد اسم عشوائي جديد
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}حجم المدينة:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}صغير
@@ -2356,6 +2368,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}ادخل
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}مدن/ بلدات
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-بدون-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ) {COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}اسم المدينة - اضغط على الاسم لتوسيط الشاشة عليها
 STR_TOWN_POPULATION                                             :{BLACK}سكان العالم: {COMMA}
@@ -2544,6 +2557,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن �
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}صناعات
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}-بدون-
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW}({COMMA}% صدرت)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW}({COMMA}%/{COMMA}% صدرت)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2771,6 +2785,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :قاطرة سك
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :قاطرة سكة قطار ممغنطة
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK} التكلفة: {CURRENCY} الوزن: {WEIGHT_S} {} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY} / سنة {} السعة: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}التكلفة {CURRENCY} الوزن {WEIGHT_S}{}السرعة {VELOCITY}  Power: {POWER}قوة السحب  {7:FORCE}{}التكلفة التشغيلية {CURRENCY}/سنة{}السعة: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK} التكلفة {CURRENCY} السرعة القصوى {VELOCITY}{}Capacity السعة {CARGO} {CARGO}{} كلفة التشغيل {CURRENCY} / سنة
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK} التكلفة {CURRENCY} السرعة القصوى {VELOCITY}{} السعة {CARGO}{} كلفة التشغيل {CURRENCY} / سنة
 
@@ -3987,6 +4002,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
@@ -4013,4 +4029,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-
