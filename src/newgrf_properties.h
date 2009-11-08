@@ -27,6 +27,7 @@ enum PropertyID {
 	PROP_TRAIN_TRACTIVE_EFFORT                  = 0x1F, ///< Tractive effort coefficient in 1/256
 	PROP_TRAIN_USER_DATA                        = 0x25, ///< User defined data for vehicle variable 0x42
 
+	PROP_ROADVEH_RUNNING_COST_FACTOR            = 0x09, ///< Yearly runningcost
 	PROP_ROADVEH_CARGO_CAPACITY                 = 0x0F, ///< Capacity
 	PROP_ROADVEH_COST_FACTOR                    = 0x11, ///< Purchase cost
 

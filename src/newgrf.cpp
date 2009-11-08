@@ -752,7 +752,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->max_speed = grf_load_byte(&buf);
 				break;
 
-			case 0x09: // Running cost factor
+			case PROP_ROADVEH_RUNNING_COST_FACTOR: // 0x09 Running cost factor
 				rvi->running_cost = grf_load_byte(&buf);
 				break;
 

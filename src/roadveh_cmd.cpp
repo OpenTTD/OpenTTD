@@ -1821,6 +1821,17 @@ static bool RoadVehController(RoadVehicle *v)
 	return true;
 }
 
+Money RoadVehicle::GetRunningCost() const
+{
+	const RoadVehicleInfo *rvi = RoadVehInfo(this->engine_type);
+	if (rvi->running_cost_class == INVALID_PRICE) return 0;
+
+	uint cost_factor = GetVehicleProperty(this, PROP_ROADVEH_RUNNING_COST_FACTOR, rvi->running_cost);
+	if (cost_factor == 0) return 0;
+
+	return cost_factor * GetPriceByIndex(rvi->running_cost_class);
+}
+
 bool RoadVehicle::Tick()
 {
 	if (this->IsRoadVehFront()) {

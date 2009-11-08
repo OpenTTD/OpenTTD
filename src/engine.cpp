@@ -205,11 +205,15 @@ uint Engine::GetDisplayDefaultCapacity(uint16 *mail_capacity) const
 Money Engine::GetRunningCost() const
 {
 	switch (this->type) {
-		case VEH_ROAD:
-			return this->u.road.running_cost * GetPriceByIndex(this->u.road.running_cost_class) >> 8;
+		case VEH_ROAD: {
+			if (this->u.road.running_cost_class == INVALID_PRICE) return 0;
+			return GetEngineProperty(this->index, PROP_ROADVEH_RUNNING_COST_FACTOR, this->u.road.running_cost) * GetPriceByIndex(this->u.road.running_cost_class) >> 8;
+		}
 
-		case VEH_TRAIN:
+		case VEH_TRAIN: {
+			if (this->u.rail.running_cost_class == INVALID_PRICE) return 0;
 			return GetEngineProperty(this->index, PROP_TRAIN_RUNNING_COST_FACTOR, this->u.rail.running_cost) * GetPriceByIndex(this->u.rail.running_cost_class) >> 8;
+		}
 
 		case VEH_SHIP:
 			return GetEngineProperty(this->index, PROP_SHIP_RUNNING_COST_FACTOR, this->u.ship.running_cost) * _price[PR_RUNNING_SHIP] >> 8;
@@ -233,6 +237,7 @@ Money Engine::GetCost() const
 			} else {
 				return GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor) * (_price[PR_BUILD_VEHICLE_TRAIN] >> 3) >> 5;
 			}
+
 		case VEH_SHIP:
 			return GetEngineProperty(this->index, PROP_SHIP_COST_FACTOR, this->u.ship.cost_factor) * (_price[PR_BUILD_VEHICLE_SHIP] >> 3) >> 5;
 
