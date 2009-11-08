@@ -2269,7 +2269,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Kézi
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Magasságtérkép elforgatása:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magasságtérkép neve:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Méret: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méret:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Irj be egy tetszőleges számot
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Hóhatár megváltoztatása

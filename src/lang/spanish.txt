@@ -2237,7 +2237,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nombre del mapa de alturas:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introducir una semilla aleatoria
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Cambiar altura de la línea de nieve

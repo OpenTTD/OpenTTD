@@ -2299,7 +2299,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειρ
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Μέγεθος: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε ένα σπόρο τυχαίας παραγωγής
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού

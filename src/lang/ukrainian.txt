@@ -2360,7 +2360,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вруч
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот рельєфу
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва рельєфу:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Розмір:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Введіть випадкове число
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Змінити висоту лінії снігу

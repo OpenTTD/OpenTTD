@@ -2289,7 +2289,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}vlastní
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Otočení výškové mapy:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Jméno výškové mapy:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Zadej náhodné číslo
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Změnit výšku sněžne čáry

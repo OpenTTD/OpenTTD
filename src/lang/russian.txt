@@ -2395,7 +2395,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вруч
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Имя карты:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Введите случайное число
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Изменить высоту снеговой линии

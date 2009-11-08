@@ -2211,7 +2211,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handbuch
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Héichtekaart rotatioun:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichtekaart Numm:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Gréisst: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Gidd eng zoufälleg Zuel an
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ännert d'Schnéilinnhéicht

@@ -2224,7 +2224,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK} يدو�
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}اتجاة خريطة المرتفعات:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}اسم خريطة المرتفعات:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}الحجم: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}الحجم:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}ادخل مرجع عشوائي
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE} غير مستوى خط الثلج

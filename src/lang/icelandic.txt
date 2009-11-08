@@ -2215,7 +2215,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Forvalda
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Snúningur hæðarkorts:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nafn hæðarlínukorts:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Stærð: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stærð:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Sláðu inn slembistofn
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Breyta hæð snjólínu

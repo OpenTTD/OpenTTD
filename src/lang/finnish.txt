@@ -2236,7 +2236,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuaali
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Korkeuskartan kierto:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeuskartan nimi:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Koko: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Koko:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Syötä satunnaissiemen
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Vaihda lumilinjan korkeutta

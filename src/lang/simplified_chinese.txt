@@ -2235,7 +2235,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手动
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度图旋转：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度图名称：
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}地图尺寸： {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}地图尺寸：
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}请输入随机种子
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}改变雪线高度

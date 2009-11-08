@@ -2049,7 +2049,8 @@ STR_MAPGEN_GENERATE                                             :{WHITE}Generu
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Mapa turniĝo:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nomo:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Grandeco: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grandeco:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ŝanĝu altecon de la neĝlinio
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu komencjaron

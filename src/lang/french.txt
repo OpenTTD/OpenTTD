@@ -2237,7 +2237,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation de la carte d'altitude{NBSP}:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de la carte d'altitude{NBSP}:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Taille{NBSP}: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Taille{NBSP}:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Entrer une amorce
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifier l'altitude d'enneigement

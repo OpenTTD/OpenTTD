@@ -2174,7 +2174,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}ハイトマップの回転：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ハイトマップ名：
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}サイズ：{ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}サイズ：
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}ランダムシードを入力
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}雪線の位置を変更

@@ -2160,7 +2160,8 @@ STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Lukraak
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Hoogtekaart rotasie:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Hoogtekaart name:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Groote: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Groote:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Sleutel 'n lukraak saad in
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander sneeu lyn hoogte

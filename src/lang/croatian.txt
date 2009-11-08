@@ -2282,7 +2282,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ručno
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotacija visinske mape:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ime visinske karte:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veličina:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Upiši nasumično sjeme
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Promijeni visinu linije snijega

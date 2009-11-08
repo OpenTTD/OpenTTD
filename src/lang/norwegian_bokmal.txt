@@ -2231,7 +2231,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Høydekartrotering:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydekartnavn:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn en tilfeldig sender
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Skift høyden på snøgrensen
