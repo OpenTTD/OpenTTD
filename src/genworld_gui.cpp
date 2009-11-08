@@ -1222,24 +1222,21 @@ void ShowCreateScenario()
 enum GenerationProgressWindowWidgets {
 	GPWW_CAPTION,
 	GPWW_BACKGROUND,
+	GPWW_PROGRESS_BAR,
+	GPWW_PROGRESS_TEXT,
 	GPWW_ABORT,
-};
-
-static const Widget _generate_progress_widgets[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    0,   180,     0,    13, STR_GENERATION_WORLD,   STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // GPWW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    0,   180,    14,    96, 0x0,                    STR_NULL},                           // GPWW_BACKGROUND
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_WHITE,  20,   161,    74,    85, STR_GENERATION_ABORT,   STR_NULL},                           // GPWW_ABORT
-{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_generate_progress_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, GPWW_CAPTION), SetDataTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, GPWW_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 60),
-		NWidget(NWID_HORIZONTAL), SetPIP(20, 0, 19),
-			NWidget(WWT_TEXTBTN, COLOUR_WHITE, GPWW_ABORT), SetMinimalSize(142, 12), SetDataTip(STR_GENERATION_ABORT, STR_NULL),
+		NWidget(NWID_HORIZONTAL), SetPIP(20, 0, 20),
+			NWidget(NWID_VERTICAL), SetPIP(11, 8, 11),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, GPWW_PROGRESS_BAR), SetFill(true, false),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, GPWW_PROGRESS_TEXT), SetFill(true, false),
+				NWidget(WWT_TEXTBTN, COLOUR_WHITE, GPWW_ABORT), SetDataTip(STR_GENERATION_ABORT, STR_NULL), SetFill(true, false),
+			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 11),
 	EndContainer(),
 };
 
@@ -1248,7 +1245,7 @@ static const WindowDesc _generate_progress_desc(
 	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_generate_progress_widgets, _nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
+	NULL, _nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
 );
 
 struct tp_info {
@@ -1261,6 +1258,20 @@ struct tp_info {
 
 static tp_info _tp;
 
+static const StringID _generation_class_table[GWP_CLASS_COUNT]  = {
+	STR_GENERATION_WORLD_GENERATION,
+	STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION,
+	STR_GENERATION_CLEARING_TILES,
+	STR_SCENEDIT_TOOLBAR_TOWN_GENERATION,
+	STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION,
+	STR_GENERATION_UNMOVABLE_GENERATION,
+	STR_GENERATION_TREE_GENERATION,
+	STR_GENERATION_SETTINGUP_GAME,
+	STR_GENERATION_PREPARING_TILELOOP,
+	STR_GENERATION_PREPARING_GAME
+};
+
+
 static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
@@ -1272,9 +1283,9 @@ static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 
 struct GenerateProgressWindow : public Window {
 
-	GenerateProgressWindow() : Window(&_generate_progress_desc)
+	GenerateProgressWindow() : Window()
 	{
-		this->FindWindowPlacementAndResize(&_generate_progress_desc);
+		this->InitNested(&_generate_progress_desc);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1295,22 +1306,48 @@ struct GenerateProgressWindow : public Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
 
-		/* Draw the % complete with a bar and a text */
-		DrawFrameRect(19, 20, (this->width - 18), 37, COLOUR_GREY, FR_BORDERONLY);
-		DrawFrameRect(20, 21, (int)((this->width - 40) * _tp.percent / 100) + 20, 36, COLOUR_MAUVE, FR_NONE);
-		SetDParam(0, _tp.percent);
-		DrawString(this->widget[GPWW_BACKGROUND].left, this->widget[GPWW_BACKGROUND].right, 25, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_CENTER);
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case GPWW_PROGRESS_BAR: {
+				SetDParam(0, 100);
+				*size = GetStringBoundingBox(STR_GENERATION_PROGRESS);
+				/* We need some spacing for the 'border' */
+				size->height += 8;
+				size->width += 8;
+			} break;
 
-		/* Tell which class we are generating */
-		DrawString(this->widget[GPWW_BACKGROUND].left, this->widget[GPWW_BACKGROUND].right, 46, _tp.cls, TC_FROMSTRING, SA_CENTER);
+			case GPWW_PROGRESS_TEXT:
+				for (uint i = 0; i < GWP_CLASS_COUNT; i++) {
+					size->width = max(size->width, GetStringBoundingBox(_generation_class_table[i]).width);
+				}
+				size->height = FONT_HEIGHT_NORMAL * 2 + WD_PAR_VSEP_NORMAL;
+				break;
+		}
+	}
 
-		/* And say where we are in that class */
-		SetDParam(0, _tp.current);
-		SetDParam(1, _tp.total);
-		DrawString(this->widget[GPWW_BACKGROUND].left, this->widget[GPWW_BACKGROUND].right, 58, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_CENTER);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case GPWW_PROGRESS_BAR:
+				/* Draw the % complete with a bar and a text */
+				DrawFrameRect(r.left, r.top, r.right, r.bottom, COLOUR_GREY, FR_BORDERONLY);
+				DrawFrameRect(r.left + 1, r.top + 1, (int)((r.right - r.left - 2) * _tp.percent / 100) + r.left + 1, r.bottom - 1, COLOUR_MAUVE, FR_NONE);
+				SetDParam(0, _tp.percent);
+				DrawString(r.left, r.right, r.top + 5, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_CENTER);
+				break;
 
-		this->SetDirty();
+			case GPWW_PROGRESS_TEXT:
+				/* Tell which class we are generating */
+				DrawString(r.left, r.right, r.top, _tp.cls, TC_FROMSTRING, SA_CENTER);
+
+				/* And say where we are in that class */
+				SetDParam(0, _tp.current);
+				SetDParam(1, _tp.total);
+				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_CENTER);
+		}
 	}
 };
 
@@ -1338,18 +1375,6 @@ void ShowGenerateWorldProgress()
 static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total)
 {
 	static const int percent_table[GWP_CLASS_COUNT + 1] = {0, 5, 15, 20, 40, 60, 65, 80, 85, 99, 100 };
-	static const StringID class_table[GWP_CLASS_COUNT]  = {
-		STR_GENERATION_WORLD_GENERATION,
-		STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION,
-		STR_GENERATION_CLEARING_TILES,
-		STR_SCENEDIT_TOOLBAR_TOWN_GENERATION,
-		STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION,
-		STR_GENERATION_UNMOVABLE_GENERATION,
-		STR_GENERATION_TREE_GENERATION,
-		STR_GENERATION_SETTINGUP_GAME,
-		STR_GENERATION_PREPARING_TILELOOP,
-		STR_GENERATION_PREPARING_GAME
-	};
 
 	assert(cls < GWP_CLASS_COUNT);
 
@@ -1359,10 +1384,10 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 	if (IsGeneratingWorldAborted()) HandleGeneratingWorldAbortion();
 
 	if (total == 0) {
-		assert(_tp.cls == class_table[cls]);
+		assert(_tp.cls == _generation_class_table[cls]);
 		_tp.current += progress;
 	} else {
-		_tp.cls   = class_table[cls];
+		_tp.cls   = _generation_class_table[cls];
 		_tp.current = progress;
 		_tp.total   = total;
 		_tp.percent = percent_table[cls];
