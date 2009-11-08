@@ -598,7 +598,7 @@ public:
 	void DeleteChildWindows(WindowClass wc = WC_INVALID) const;
 
 	void SetDirty() const;
-	void ReInit();
+	void ReInit(int rx = 0, int ry = 0);
 
 	/**
 	 * Mark this window's data as invalid (in need of re-computing)

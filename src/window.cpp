@@ -599,8 +599,12 @@ void Window::SetDirty() const
 	SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height);
 }
 
-/** Re-initialize a window. */
-void Window::ReInit()
+/** Re-initialize a window, and optionally change its size.
+ * @param rx Horizontal resize of the window.
+ * @param ry Vertical resize of the window.
+ * @note For just resizing the window, use #ResizeWindow instead.
+ */
+void Window::ReInit(int rx, int ry)
 {
 	if (this->nested_root == NULL) return; // Only nested widget windows can re-initialize.
 
@@ -620,9 +624,9 @@ void Window::ReInit()
 	this->resize.step_width  = this->nested_root->resize_x;
 	this->resize.step_height = this->nested_root->resize_y;
 
-	/* Resize as close to the original size as possible. */
-	window_width  = max(window_width,  this->width);
-	window_height = max(window_height, this->height);
+	/* Resize as close to the original size + requested resize as possible. */
+	window_width  = max(window_width  + rx, this->width);
+	window_height = max(window_height + ry, this->height);
 	int dx = (this->resize.step_width  == 0) ? 0 : window_width  - this->width;
 	int dy = (this->resize.step_height == 0) ? 0 : window_height - this->height;
 	/* dx and dy has to go by step.. calculate it.
