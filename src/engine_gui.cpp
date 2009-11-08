@@ -47,17 +47,9 @@ enum EnginePreviewWidgets {
 	EPW_CLOSE,      ///< Close button
 	EPW_CAPTION,    ///< Title bar/caption
 	EPW_BACKGROUND, ///< Background
+	EPW_QUESTION,   ///< The container for the question
 	EPW_NO,         ///< No button
 	EPW_YES,        ///< Yes button
-};
-
-static const Widget _engine_preview_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,   10,    0,   13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},           // EPW_CLOSE
-{    WWT_CAPTION,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   11,  299,    0,   13, STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // EPW_CAPTION
-{      WWT_PANEL,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,  299,   14,  191, 0x0,                        STR_NULL},                           // EPW_BACKGROUND
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_QUIT_NO,                     STR_NULL},                           // EPW_NO
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_QUIT_YES,                    STR_NULL},                           // EPW_YES
-{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_engine_preview_widgets[] = {
@@ -66,35 +58,56 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, EPW_CAPTION), SetDataTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, EPW_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
-		NWidget(NWID_HORIZONTAL), SetPIP(85, 10, 85),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, EPW_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(true, false),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, 10, 85),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetDataTip(STR_QUIT_NO, STR_NULL), SetFill(true, false),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetDataTip(STR_QUIT_YES, STR_NULL), SetFill(true, false),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
 };
 
 struct EnginePreviewWindow : Window {
-	EnginePreviewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	static const int VEHICLE_SPACE = 40; // The space to show the vehicle image
+
+	EnginePreviewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != EPW_QUESTION) return;
 
 		EngineID engine = this->window_number;
 		SetDParam(0, GetEngineCategoryName(engine));
-		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 18, 80, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_CENTER);
+		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WD_PAR_VSEP_WIDE + FONT_HEIGHT_NORMAL + VEHICLE_SPACE;
+		SetDParam(0, engine);
+		size->height += GetStringHeight(GetEngineInfoString(engine), size->width);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != EPW_QUESTION) return;
+
+		EngineID engine = this->window_number;
+		SetDParam(0, GetEngineCategoryName(engine));
+		int y = r.top + GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, r.right - r.top + 1);
+		y = DrawStringMultiLine(r.left, r.right, r.top, y, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_CENTER) + WD_PAR_VSEP_WIDE;
 
 		SetDParam(0, engine);
-		DrawString(this->widget[EPW_BACKGROUND].left + 2, this->widget[EPW_BACKGROUND].right - 2, 80, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
+		y += FONT_HEIGHT_NORMAL;
 
-		int width = this->width;
-		DrawVehicleEngine(width >> 1, 100, engine, GetEnginePalette(engine, _local_company));
-		DrawStringMultiLine(this->widget[EPW_BACKGROUND].left + 26, this->widget[EPW_BACKGROUND].right - 26, 100, 170, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
+		DrawVehicleEngine(this->width >> 1, y + VEHICLE_SPACE / 2, engine, GetEnginePalette(engine, _local_company));
+
+		y += VEHICLE_SPACE;
+		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -114,7 +127,7 @@ static const WindowDesc _engine_preview_desc(
 	WDP_CENTER, WDP_CENTER, 300, 192, 300, 192,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_engine_preview_widgets, _nested_engine_preview_widgets, lengthof(_nested_engine_preview_widgets)
+	NULL, _nested_engine_preview_widgets, lengthof(_nested_engine_preview_widgets)
 );
 
 
