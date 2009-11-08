@@ -1803,28 +1803,64 @@ enum BuyCompanyWidgets {
 	BCW_CLOSEBOX,
 	BCW_CAPTION,
 	BCW_BACKGROUND,
+	BCW_FACE,
+	BCW_QUESTION,
 	BCW_NO,
 	BCW_YES,
 };
 
 struct BuyCompanyWindow : Window {
-	BuyCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	BuyCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 	}
 
 	virtual void OnPaint()
 	{
-		Company *c = Company::Get((CompanyID)this->window_number);
-		SetDParam(0, STR_COMPANY_NAME);
-		SetDParam(1, c->index);
 		this->DrawWidgets();
+	}
 
-		DrawCompanyManagerFace(c->face, c->colour, 2, 16);
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case BCW_FACE:
+				*size = GetSpriteSize(SPR_GRADIENT);
+				break;
 
-		SetDParam(0, c->index);
-		SetDParam(1, c->bankrupt_value);
-		DrawStringMultiLine(95, 333, 26, 116, STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
+			case BCW_QUESTION:
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->index);
+				SetDParam(1, c->bankrupt_value);
+				size->height = GetStringHeight(STR_BUY_COMPANY_MESSAGE, size->width);
+				break;
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case BCW_CAPTION:
+				SetDParam(0, STR_COMPANY_NAME);
+				SetDParam(1, Company::Get((CompanyID)this->window_number)->index);
+				break;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case BCW_FACE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
+			} break;
+
+			case BCW_QUESTION: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->index);
+				SetDParam(1, c->bankrupt_value);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
+			} break;
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1841,30 +1877,22 @@ struct BuyCompanyWindow : Window {
 	}
 };
 
-static const Widget _buy_company_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                         STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,    11,   333,     0,    13, STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   333,    14,   136, 0x0,                                     STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,   148,   207,   117,   128, STR_QUIT_NO,                                  STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,   218,   277,   117,   128, STR_QUIT_YES,                                 STR_NULL},
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_buy_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, BCW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, BCW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, BCW_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(334, 103), SetFill(true, false),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(148, 0), SetFill(true, false),
-			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_NO), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(true, false),
-			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_YES), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(56, 0), SetFill(true, false),
+		NWidget(NWID_VERTICAL), SetPIP(8, 8, 8),
+			NWidget(NWID_HORIZONTAL), SetPIP(8, 10, 8),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, BCW_FACE), SetFill(false, true),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, BCW_QUESTION), SetMinimalSize(240, 0), SetFill(true, true),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(100, 10, 100),
+				NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_NO), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_NO, STR_NULL), SetFill(true, false),
+				NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_YES), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_YES, STR_NULL), SetFill(true, false),
+			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetFill(true, false),
 	EndContainer(),
 };
 
@@ -1872,7 +1900,7 @@ static const WindowDesc _buy_company_desc(
 	153, 171, 334, 137, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_buy_company_widgets, _nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
+	NULL, _nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
 );
 
 
