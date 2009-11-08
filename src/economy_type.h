@@ -59,7 +59,12 @@ struct ScoreInfo {
 	int score;  ///< How much score it will give
 };
 
+/**
+ * Enumeration of all base prices for use with #Prices.
+ * The prices are ordered as they are expected by NewGRF cost multipliers, so don't shuffle them.
+ */
 enum Price {
+	PR_BEGIN = 0,
 	PR_STATION_VALUE = 0,
 	PR_BUILD_RAIL,
 	PR_BUILD_ROAD,
@@ -110,11 +115,12 @@ enum Price {
 	PR_RUNNING_SHIP,
 	PR_BUILD_INDUSTRY,
 
-	NUM_PRICES,
+	PR_END,
 	INVALID_PRICE = 0xFF
 };
+DECLARE_POSTFIX_INCREMENT(Price)
 
-typedef Money Prices[NUM_PRICES];
+typedef Money Prices[PR_END];
 
 enum ExpensesType {
 	EXPENSES_CONSTRUCTION =  0,

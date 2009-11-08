@@ -435,7 +435,7 @@ static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location,
 	static const uint32 start = 0x4B34; ///< Position of first base price
 	static const uint32 size  = 6;      ///< Size of each base price record
 
-	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= NUM_PRICES) {
+	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= PR_END) {
 		grfmsg(1, "%s: Unsupported running cost base 0x%04X, ignoring", error_location, base_pointer);
 		return;
 	}
@@ -1668,8 +1668,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 				byte factor = grf_load_byte(&buf);
 				uint price = gvid + i;
 
-				if (price < NUM_PRICES) {
-					SetPriceBaseMultiplier(price, factor);
+				if (price < PR_END) {
+					SetPriceBaseMultiplier((Price)price, factor);
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Price %d out of range, ignoring", price);
 				}

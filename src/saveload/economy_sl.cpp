@@ -18,9 +18,10 @@
 /** Prices in pre 126 savegames */
 static void Load_PRIC()
 {
+	/* Old games store 49 base prices, very old games store them as int32 */
 	int vt = CheckSavegameVersion(65) ? SLE_FILE_I32 : SLE_FILE_I64;
-	SlArray(NULL, NUM_PRICES, vt | SLE_VAR_NULL);
-	SlArray(NULL, NUM_PRICES, SLE_FILE_U16 | SLE_VAR_NULL);
+	SlArray(NULL, 49, vt | SLE_VAR_NULL);
+	SlArray(NULL, 49, SLE_FILE_U16 | SLE_VAR_NULL);
 }
 
 /** Cargo payment rates in pre 126 savegames */

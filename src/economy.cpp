@@ -109,7 +109,7 @@ int _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
 Money _additional_cash_required;
-static byte _price_base_multiplier[NUM_PRICES];
+static byte _price_base_multiplier[PR_END];
 
 Money CalculateCompanyValue(const Company *c)
 {
@@ -625,10 +625,8 @@ void RecomputePrices()
 	/* Setup maximum loan */
 	_economy.max_loan = (_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / 50000 * 50000;
 
-	assert_compile(sizeof(_price) == NUM_PRICES * sizeof(Money));
-
 	/* Setup price bases */
-	for (uint i = 0; i < NUM_PRICES; i++) {
+	for (Price i = PR_BEGIN; i < PR_END; i++) {
 		Money price = _price_base_specs[i].start_price;
 
 		/* Apply difficulty settings */
@@ -662,7 +660,7 @@ void RecomputePrices()
 		}
 
 		/* Store value */
-		((Money *)&_price)[i] = price;
+		_price[i] = price;
 	}
 
 	/* Setup cargo payment */
@@ -730,10 +728,8 @@ static void HandleEconomyFluctuations()
  */
 void ResetPriceBaseMultipliers()
 {
-	uint i;
-
 	/* 8 means no multiplier. */
-	for (i = 0; i < NUM_PRICES; i++)
+	for (Price i = PR_BEGIN; i < PR_END; i++)
 		_price_base_multiplier[i] = 8;
 }
 
@@ -744,9 +740,9 @@ void ResetPriceBaseMultipliers()
  * @param price Index of price base to change.
  * @param factor Amount to change by.
  */
-void SetPriceBaseMultiplier(uint price, byte factor)
+void SetPriceBaseMultiplier(Price price, byte factor)
 {
-	assert(price < NUM_PRICES);
+	assert(price < PR_END);
 	_price_base_multiplier[price] = min(factor, MAX_PRICE_MODIFIER);
 }
 
@@ -800,7 +796,7 @@ void InitializeEconomy()
  */
 Money GetPriceByIndex(Price index)
 {
-	if (index >= NUM_PRICES) return 0;
+	if (index >= PR_END) return 0;
 
 	return _price[index];
 }
