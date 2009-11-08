@@ -807,53 +807,14 @@ struct StationViewWindow : public Window {
 
 	virtual void OnPaint()
 	{
-		StationID station_id = this->window_number;
-		const Station *st = Station::Get(station_id);
 		CargoDataList cargolist;
 		uint32 transfers = 0;
+		this->OrderWaitingCargo(&cargolist, &transfers);
 
-		/* count types of cargos waiting in station */
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (st->goods[i].cargo.Empty()) {
-				this->cargo_rows[i] = 0;
-			} else {
-				/* Add an entry for total amount of cargo of this type waiting. */
-				cargolist.push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.Count()));
-
-				/* Set the row for this cargo entry for the expand/hide button */
-				this->cargo_rows[i] = (uint16)cargolist.size();
-
-				/* Add an entry for each distinct cargo source. */
-				const StationCargoList::List *packets = st->goods[i].cargo.Packets();
-				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
-					const CargoPacket *cp = *it;
-					if (cp->SourceStation() != station_id) {
-						bool added = false;
-
-						/* Enable the expand/hide button for this cargo type */
-						SetBit(transfers, i);
-
-						/* Don't add cargo lines if not expanded */
-						if (!HasBit(this->cargo, i)) break;
-
-						/* Check if we already have this source in the list */
-						for (CargoDataList::iterator jt(cargolist.begin()); jt != cargolist.end(); jt++) {
-							CargoData *cd = &(*jt);
-							if (cd->cargo == i && cd->source == cp->SourceStation()) {
-								cd->count += cp->Count();
-								added = true;
-								break;
-							}
-						}
-
-						if (!added) cargolist.push_back(CargoData(i, cp->SourceStation(), cp->Count()));
-					}
-				}
-			}
-		}
 		this->vscroll.SetCount((int)cargolist.size() + 1); // update scrollbar
 
 		/* disable some buttons */
+		const Station *st = Station::Get(this->window_number);
 		this->SetWidgetDisabledState(SVW_RENAME,   st->owner != _local_company);
 		this->SetWidgetDisabledState(SVW_TRAINS,   !(st->facilities & FACIL_TRAIN));
 		this->SetWidgetDisabledState(SVW_ROADVEHS, !(st->facilities & FACIL_TRUCK_STOP) && !(st->facilities & FACIL_BUS_STOP));
@@ -864,100 +825,180 @@ struct StationViewWindow : public Window {
 		SetDParam(1, st->facilities);
 		this->DrawWidgets();
 
-		int x = 2;  ///< coordinates used for printing waiting/accepted/rating of cargo
-		int y = 15;
+		Rect waiting_rect = {this->widget[SVW_WAITING].left, this->widget[SVW_WAITING].top, this->widget[SVW_WAITING].right, this->widget[SVW_WAITING].bottom};
+		this->DrawWaitingCargo(waiting_rect, cargolist, transfers);
+
+		Rect acceptlist_rect = {this->widget[SVW_ACCEPTLIST].left, this->widget[SVW_ACCEPTLIST].top, this->widget[SVW_ACCEPTLIST].right, this->widget[SVW_ACCEPTLIST].bottom};
+		if (this->widget[SVW_ACCEPTS].data == STR_STATION_VIEW_RATINGS_BUTTON) {
+			this->DrawAcceptedCargo(acceptlist_rect);
+		} else {
+			this->DrawCargoRatings(acceptlist_rect);
+		}
+	}
+
+	/** Order waiting cargo by type and destination.
+	 * @param cargolist [out] Ordered cargo.
+	 * @param transfers [out] Bitmask for cargoes being transfered.
+	 * @pre \c *cargolist must be empty.
+	 */
+	void OrderWaitingCargo(CargoDataList *cargolist, uint32 *transfers)
+	{
+		assert(cargolist->size() == 0);
+		*transfers = 0;
+
+		StationID station_id = this->window_number;
+		const Station *st = Station::Get(station_id);
+
+		/* count types of cargos waiting in station */
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			if (st->goods[i].cargo.Empty()) {
+				this->cargo_rows[i] = 0;
+			} else {
+				/* Add an entry for total amount of cargo of this type waiting. */
+				cargolist->push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.Count()));
+
+				/* Set the row for this cargo entry for the expand/hide button */
+				this->cargo_rows[i] = (uint16)cargolist->size();
+
+				/* Add an entry for each distinct cargo source. */
+				const StationCargoList::List *packets = st->goods[i].cargo.Packets();
+				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
+					const CargoPacket *cp = *it;
+					if (cp->SourceStation() != station_id) {
+						bool added = false;
+
+						/* Enable the expand/hide button for this cargo type */
+						SetBit(*transfers, i);
+
+						/* Don't add cargo lines if not expanded */
+						if (!HasBit(this->cargo, i)) break;
+
+						/* Check if we already have this source in the list */
+						for (CargoDataList::iterator jt(cargolist->begin()); jt != cargolist->end(); jt++) {
+							CargoData *cd = &(*jt);
+							if (cd->cargo == i && cd->source == cp->SourceStation()) {
+								cd->count += cp->Count();
+								added = true;
+								break;
+							}
+						}
+
+						if (!added) cargolist->push_back(CargoData(i, cp->SourceStation(), cp->Count()));
+					}
+				}
+			}
+		}
+	}
+
+	/** Draw waiting cargo.
+	 * @param r Rectangle of the widget.
+	 * @param cargolist Cargo, ordered by type and destination.
+	 * @param transfers Bitmask for cargoes that are transfered.
+	 */
+	void DrawWaitingCargo(const Rect &r, const CargoDataList &cargolist, uint32 transfers) const
+	{
+		int y = r.top + WD_FRAMERECT_TOP;
 		int pos = this->vscroll.GetPosition();
 
-		uint width = this->widget[SVW_WAITING].right - this->widget[SVW_WAITING].left - 4;
-		int maxrows = this->vscroll.GetCapacity();
-
-		StringID str;
-
+		const Station *st = Station::Get(this->window_number);
 		if (--pos < 0) {
-			str = STR_JUST_NOTHING;
+			StringID str = STR_JUST_NOTHING;
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				if (!st->goods[i].cargo.Empty()) str = STR_EMPTY;
 			}
 			SetDParam(0, str);
-			DrawString(x, this->widget[SVW_WAITING].right - 2, y, STR_STATION_VIEW_WAITING_TITLE);
-			y += 10;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_WAITING_TITLE);
+			y += FONT_HEIGHT_NORMAL;
 		}
 
+		int maxrows = this->vscroll.GetCapacity();
 		for (CargoDataList::const_iterator it = cargolist.begin(); it != cargolist.end() && pos > -maxrows; ++it) {
 			if (--pos < 0) {
 				const CargoData *cd = &(*it);
 				if (cd->source == INVALID_STATION) {
 					/* Heading */
-					DrawCargoIcons(cd->cargo, cd->count, x, y, width);
+					DrawCargoIcons(cd->cargo, cd->count, r.left + WD_FRAMERECT_LEFT, y, r.right - r.left - WD_FRAMERECT_LEFT - WD_FRAMERECT_RIGHT);
 					SetDParam(0, cd->cargo);
 					SetDParam(1, cd->count);
 					if (HasBit(transfers, cd->cargo)) {
 						/* This cargo has transfers waiting so show the expand or shrink 'button' */
 						const char *sym = HasBit(this->cargo, cd->cargo) ? "-" : "+";
-						DrawString(this->widget[SVW_WAITING].left, this->widget[SVW_WAITING].right - 12, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
-						DrawString(this->widget[SVW_WAITING].right - 10, this->widget[SVW_WAITING].right, y, sym, TC_YELLOW);
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - 10, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
+						DrawString(r.right - 8, r.right, y, sym, TC_YELLOW);
 					} else {
-						DrawString(this->widget[SVW_WAITING].left, this->widget[SVW_WAITING].right - 4, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
 					}
 				} else {
 					SetDParam(0, cd->cargo);
 					SetDParam(1, cd->count);
 					SetDParam(2, cd->source);
-					DrawString(x, x + width, y, STR_STATION_VIEW_EN_ROUTE_FROM, TC_FROMSTRING, SA_RIGHT);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_EN_ROUTE_FROM, TC_FROMSTRING, SA_RIGHT);
 				}
 
-				y += 10;
+				y += FONT_HEIGHT_NORMAL;
+			}
+		}
+	}
+
+	/** Draw accepted cargo in the #SVW_ACCEPTLIST widget.
+	 * @param r Rectangle of the widget.
+	 */
+	void DrawAcceptedCargo(const Rect &r) const
+	{
+		char string[512];
+		char *b = string;
+		bool first = true;
+
+		b = InlineString(b, STR_STATION_VIEW_ACCEPTS_CARGO);
+
+		const Station *st = Station::Get(this->window_number);
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
+			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
+				if (first) {
+					first = false;
+				} else {
+					/* Add a comma if this is not the first item */
+					*b++ = ',';
+					*b++ = ' ';
+				}
+				b = InlineString(b, CargoSpec::Get(i)->name);
 			}
 		}
 
-		if (this->widget[SVW_ACCEPTS].data == STR_STATION_VIEW_RATINGS_BUTTON) { // small window with list of accepted cargo
-			char string[512];
-			char *b = string;
-			bool first = true;
+		/* If first is still true then no cargo is accepted */
+		if (first) b = InlineString(b, STR_JUST_NOTHING);
 
-			b = InlineString(b, STR_STATION_VIEW_ACCEPTS_CARGO);
+		*b = '\0';
 
-			for (CargoID i = 0; i < NUM_CARGO; i++) {
-				if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
-				if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
-					if (first) {
-						first = false;
-					} else {
-						/* Add a comma if this is not the first item */
-						*b++ = ',';
-						*b++ = ' ';
-					}
-					b = InlineString(b, CargoSpec::Get(i)->name);
-				}
-			}
+		/* Make sure we detect any buffer overflow */
+		assert(b < endof(string));
 
-			/* If first is still true then no cargo is accepted */
-			if (first) b = InlineString(b, STR_JUST_NOTHING);
+		SetDParamStr(0, string);
+		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, STR_JUST_RAW_STRING);
+	}
 
-			*b = '\0';
+	/** Draw cargo ratings in the #SVW_ACCEPTLIST widget.
+	 * @param r Rectangle of the widget.
+	 */
+	void DrawCargoRatings(const Rect &r) const
+	{
+		const Station *st = Station::Get(this->window_number);
+		int y = r.top + WD_FRAMERECT_TOP;
 
-			/* Make sure we detect any buffer overflow */
-			assert(b < endof(string));
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_CARGO_RATINGS_TITLE);
+		y += FONT_HEIGHT_NORMAL;
 
-			SetDParamStr(0, string);
-			DrawStringMultiLine(this->widget[SVW_ACCEPTLIST].left + 2, this->widget[SVW_ACCEPTLIST].right - 2, this->widget[SVW_ACCEPTLIST].top + 1, this->widget[SVW_ACCEPTLIST].bottom - 1, STR_JUST_RAW_STRING);
-		} else { // extended window with list of cargo ratings
-			y = this->widget[SVW_RATINGLIST].top + 1;
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			const GoodsEntry *ge = &st->goods[cs->Index()];
+			if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
 
-			DrawString(this->widget[SVW_ACCEPTLIST].left + 2, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATINGS_TITLE);
-			y += 10;
-
-			const CargoSpec *cs;
-			FOR_ALL_CARGOSPECS(cs) {
-				const GoodsEntry *ge = &st->goods[cs->Index()];
-				if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
-
-				SetDParam(0, cs->name);
-				SetDParam(2, ToPercent8(ge->rating));
-				SetDParam(1, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
-				DrawString(this->widget[SVW_ACCEPTLIST].left + 8, this->widget[SVW_ACCEPTLIST].right - 2, y, STR_STATION_VIEW_CARGO_RATING);
-				y += 10;
-			}
+			SetDParam(0, cs->name);
+			SetDParam(2, ToPercent8(ge->rating));
+			SetDParam(1, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
+			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_CARGO_RATING);
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 
