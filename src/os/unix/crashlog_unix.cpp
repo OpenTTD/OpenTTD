@@ -143,7 +143,7 @@ static const int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS };
  * @note Not static so it shows up in the backtrace.
  * @param signum the signal that caused us to crash.
  */
-void CDECL HandleCrash(int signum)
+static void CDECL HandleCrash(int signum)
 {
 	/* Disable all handling of signals by us, so we don't go into infinite loops. */
 	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {

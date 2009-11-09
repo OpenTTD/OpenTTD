@@ -775,7 +775,7 @@ void DeleteIndustryNews(IndustryID iid)
 	}
 }
 
-void RemoveOldNewsItems()
+static void RemoveOldNewsItems()
 {
 	NewsItem *next;
 	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != NULL; cur = next) {

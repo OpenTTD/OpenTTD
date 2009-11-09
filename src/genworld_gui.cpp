@@ -310,7 +310,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 	EndContainer(),
 };
 
-void StartGeneratingLandscape(glwp_modes mode)
+static void StartGeneratingLandscape(glwp_modes mode)
 {
 	DeleteAllNonVitalWindows();
 

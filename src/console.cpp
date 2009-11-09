@@ -535,6 +535,53 @@ IConsoleVar *IConsoleVarGet(const char *name)
 }
 
 /**
+ * Get the value of the variable and put it into a printable
+ * string form so we can use it for printing
+ */
+static char *IConsoleVarGetStringValue(const IConsoleVar *var)
+{
+	static char tempres[50];
+	char *value = tempres;
+
+	switch (var->type) {
+		case ICONSOLE_VAR_BOOLEAN:
+			snprintf(tempres, sizeof(tempres), "%s", (*(bool*)var->addr) ? "on" : "off");
+			break;
+		case ICONSOLE_VAR_BYTE:
+			snprintf(tempres, sizeof(tempres), "%u", *(byte*)var->addr);
+			break;
+		case ICONSOLE_VAR_UINT16:
+			snprintf(tempres, sizeof(tempres), "%u", *(uint16*)var->addr);
+			break;
+		case ICONSOLE_VAR_UINT32:
+			snprintf(tempres, sizeof(tempres), "%u",  *(uint32*)var->addr);
+			break;
+		case ICONSOLE_VAR_INT16:
+			snprintf(tempres, sizeof(tempres), "%i", *(int16*)var->addr);
+			break;
+		case ICONSOLE_VAR_INT32:
+			snprintf(tempres, sizeof(tempres), "%i",  *(int32*)var->addr);
+			break;
+		case ICONSOLE_VAR_STRING:
+			value = (char*)var->addr;
+			break;
+		default: NOT_REACHED();
+	}
+
+	return value;
+}
+
+/**
+ * Print out the value of the variable after it has been assigned
+ * a new value, thus giving us feedback on the action
+ */
+static void IConsoleVarPrintSetValue(const IConsoleVar *var)
+{
+	char *value = IConsoleVarGetStringValue(var);
+	IConsolePrintF(CC_WARNING, "'%s' changed to:  %s", var->name, value);
+}
+
+/**
  * Set a new value to a console variable
  * @param *var the variable being set/changed
  * @param value the new value given to the variable, cast properly
@@ -619,43 +666,6 @@ static uint32 IConsoleVarGetValue(const IConsoleVar *var)
 }
 
 /**
- * Get the value of the variable and put it into a printable
- * string form so we can use it for printing
- */
-static char *IConsoleVarGetStringValue(const IConsoleVar *var)
-{
-	static char tempres[50];
-	char *value = tempres;
-
-	switch (var->type) {
-		case ICONSOLE_VAR_BOOLEAN:
-			snprintf(tempres, sizeof(tempres), "%s", (*(bool*)var->addr) ? "on" : "off");
-			break;
-		case ICONSOLE_VAR_BYTE:
-			snprintf(tempres, sizeof(tempres), "%u", *(byte*)var->addr);
-			break;
-		case ICONSOLE_VAR_UINT16:
-			snprintf(tempres, sizeof(tempres), "%u", *(uint16*)var->addr);
-			break;
-		case ICONSOLE_VAR_UINT32:
-			snprintf(tempres, sizeof(tempres), "%u",  *(uint32*)var->addr);
-			break;
-		case ICONSOLE_VAR_INT16:
-			snprintf(tempres, sizeof(tempres), "%i", *(int16*)var->addr);
-			break;
-		case ICONSOLE_VAR_INT32:
-			snprintf(tempres, sizeof(tempres), "%i",  *(int32*)var->addr);
-			break;
-		case ICONSOLE_VAR_STRING:
-			value = (char*)var->addr;
-			break;
-		default: NOT_REACHED();
-	}
-
-	return value;
-}
-
-/**
  * Print out the value of the variable when asked
  */
 void IConsoleVarPrintGetValue(const IConsoleVar *var)
@@ -673,23 +683,13 @@ void IConsoleVarPrintGetValue(const IConsoleVar *var)
 }
 
 /**
- * Print out the value of the variable after it has been assigned
- * a new value, thus giving us feedback on the action
- */
-void IConsoleVarPrintSetValue(const IConsoleVar *var)
-{
-	char *value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(CC_WARNING, "'%s' changed to:  %s", var->name, value);
-}
-
-/**
  * Execute a variable command. Without any parameters, print out its value
  * with parameters it assigns a new value to the variable
  * @param *var the variable that we will be querying/changing
  * @param tokencount how many additional parameters have been given to the commandline
  * @param *token the actual parameters the variable was called with
  */
-void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_TOKEN_COUNT])
+static void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_TOKEN_COUNT])
 {
 	const char *tokenptr = token[0];
 	byte t_index = tokencount;

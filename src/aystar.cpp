@@ -90,7 +90,7 @@ static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AySt
  *  return values:
  * AYSTAR_DONE : indicates we are done
  */
-int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
+static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
 	int new_f, new_g, new_h;
 	PathNode *closedlist_parent;
@@ -156,7 +156,7 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
  *   AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
  *   AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */
-int AyStarMain_Loop(AyStar *aystar)
+static int AyStarMain_Loop(AyStar *aystar)
 {
 	int i, r;
 
@@ -200,7 +200,7 @@ int AyStarMain_Loop(AyStar *aystar)
 /*
  * This function frees the memory it allocated
  */
-void AyStarMain_Free(AyStar *aystar)
+static void AyStarMain_Free(AyStar *aystar)
 {
 	aystar->OpenListQueue.free(&aystar->OpenListQueue, false);
 	/* 2nd argument above is false, below is true, to free the values only
@@ -276,7 +276,7 @@ int AyStarMain_Main(AyStar *aystar)
  * clear() automatically when the algorithm finishes
  * g is the cost for starting with this node.
  */
-void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g)
+static void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g)
 {
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",

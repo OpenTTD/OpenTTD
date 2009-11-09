@@ -227,7 +227,6 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	return RailBuildCost(to) + _price[PR_CLEAR_RAIL];
 }
 
-Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 int TicksToLeaveDepot(const Train *v);

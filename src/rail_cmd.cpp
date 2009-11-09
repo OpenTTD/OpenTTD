@@ -1256,7 +1256,7 @@ CommandCost CmdRemoveSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1,
 }
 
 /** Update power of train under which is the railtype being converted */
-Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
+static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
 	if (v->type != VEH_TRAIN) return NULL;
 

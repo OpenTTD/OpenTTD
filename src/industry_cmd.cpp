@@ -2058,7 +2058,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
  * service the industry, and 1 otherwise (only competitors can service the
  * industry)
  */
-int WhoCanServiceIndustry(Industry *ind)
+static int WhoCanServiceIndustry(Industry *ind)
 {
 	/* Find all stations within reach of the industry */
 	StationList stations;

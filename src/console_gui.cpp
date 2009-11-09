@@ -407,7 +407,6 @@ void IConsoleSwitch()
 }
 
 void IConsoleClose() {if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();}
-void IConsoleOpen()  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();}
 
 /**
  * Add the entered line into the history so you can look it back

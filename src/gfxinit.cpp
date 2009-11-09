@@ -65,7 +65,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 }
 
 
-void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_tbl)
+static void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_tbl)
 {
 	uint start;
 	while ((start = *index_tbl++) != END) {

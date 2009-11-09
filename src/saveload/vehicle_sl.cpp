@@ -737,7 +737,7 @@ void Load_VEHS()
 	}
 }
 
-void Ptrs_VEHS()
+static void Ptrs_VEHS()
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {

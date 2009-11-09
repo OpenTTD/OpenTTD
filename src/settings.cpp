@@ -796,7 +796,7 @@ void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
  * Checks the difficulty levels read from the configuration and
  * forces them to be correct when invalid.
  */
-void CheckDifficultyLevels()
+static void CheckDifficultyLevels()
 {
 	if (_settings_newgame.difficulty.diff_level != 3) {
 		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
@@ -1048,7 +1048,7 @@ static void HandleOldDiffCustom(bool savegame)
  * @param name pointer to the string defining name of the old news config
  * @param value pointer to the string defining value of the old news config
  * @returns true if conversion could have been made */
-bool ConvertOldNewsSetting(const char *name, const char *value)
+static bool ConvertOldNewsSetting(const char *name, const char *value)
 {
 	if (strcasecmp(name, "openclose") == 0) {
 		/* openclose has been split in "open" and "close".

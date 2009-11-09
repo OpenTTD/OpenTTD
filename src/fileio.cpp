@@ -302,7 +302,7 @@ char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir)
 	return buf;
 }
 
-FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
+static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
 #if defined(WIN32) && defined(UNICODE)
 	/* fopen is implemented as a define with ellipses for
@@ -436,7 +436,7 @@ void FioCreateDirectory(const char *name)
  * @param buf    string to append the separator to
  * @param buflen the length of the buf
  */
-void AppendPathSeparator(char *buf, size_t buflen)
+static void AppendPathSeparator(char *buf, size_t buflen)
 {
 	size_t s = strlen(buf);
 

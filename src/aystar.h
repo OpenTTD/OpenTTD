@@ -169,11 +169,7 @@ struct AyStar {
 };
 
 
-void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 int AyStarMain_Main(AyStar *aystar);
-int AyStarMain_Loop(AyStar *aystar);
-int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
-void AyStarMain_Free(AyStar *aystar);
 void AyStarMain_Clear(AyStar *aystar);
 
 /* Initialize an AyStar. You should fill all appropriate fields before

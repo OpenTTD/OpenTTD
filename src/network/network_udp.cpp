@@ -430,7 +430,7 @@ struct NetworkUDPQueryServerInfo : NetworkAddress {
  * Threaded part for resolving the IP of a server and querying it.
  * @param pntr the NetworkUDPQueryServerInfo.
  */
-void NetworkUDPQueryServerThread(void *pntr)
+static void NetworkUDPQueryServerThread(void *pntr)
 {
 	NetworkUDPQueryServerInfo *info = (NetworkUDPQueryServerInfo*)pntr;
 
@@ -459,7 +459,7 @@ void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 	}
 }
 
-void NetworkUDPRemoveAdvertiseThread(void *pntr)
+static void NetworkUDPRemoveAdvertiseThread(void *pntr)
 {
 	DEBUG(net, 1, "[udp] removing advertise from master server");
 
@@ -491,7 +491,7 @@ void NetworkUDPRemoveAdvertise(bool blocking)
 	}
 }
 
-void NetworkUDPAdvertiseThread(void *pntr)
+static void NetworkUDPAdvertiseThread(void *pntr)
 {
 	/* Find somewhere to send */
 	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);

@@ -103,7 +103,7 @@ static const RoadBits _invalid_tileh_slopes_road[2][15] = {
 	}
 };
 
-Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
+static Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
 
 /**
  * Is it allowed to remove the given road bits from the given tile?
@@ -981,7 +981,7 @@ struct DrawRoadTileStruct {
  * @param bits The RoadBits part
  * @return The resulting Foundation
  */
-Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
+static Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 {
 	/* Flat land and land without a road doesn't require a foundation */
 	if (tileh == SLOPE_FLAT || bits == ROAD_NONE) return FOUNDATION_NONE;

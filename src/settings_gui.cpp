@@ -1052,7 +1052,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int 
 	return cur_row;
 }
 
-const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd)
+static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd)
 {
 	if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {

@@ -767,7 +767,7 @@ static inline size_t SlCalcListLen(const void *list)
  * @param list The list being manipulated
  * @param conv SLRefType type of the list (Vehicle *, Station *, etc)
  */
-void SlList(void *list, SLRefType conv)
+static void SlList(void *list, SLRefType conv)
 {
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {

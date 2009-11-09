@@ -21,7 +21,14 @@
 #include "date_func.h"
 #include "landscape.h"
 
-bool IsPossibleCrossing(const TileIndex tile, Axis ax)
+/**
+ * Return if the tile is a valid tile for a crossing.
+ *
+ * @param tile the curent tile
+ * @param ax the axis of the road over the rail
+ * @return true if it is a valid tile
+ */
+static bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {
 	return (IsTileType(tile, MP_RAILWAY) &&
 		GetRailTileType(tile) == RAIL_TILE_NORMAL &&

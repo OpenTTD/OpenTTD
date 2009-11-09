@@ -46,7 +46,7 @@ void Waypoint::UpdateVirtCoord()
  * Set the default name for a waypoint
  * @param wp Waypoint to work on
  */
-void MakeDefaultWaypointName(Waypoint *wp)
+static void MakeDefaultWaypointName(Waypoint *wp)
 {
 	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
 	uint32 next = 0; // first waypoint number in the bitmap

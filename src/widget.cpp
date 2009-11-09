@@ -2314,7 +2314,7 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
  * @note Caller should release returned widget array with \c free(widgets).
  * @ingroup NestedWidgets
  */
-Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl, int biggest_index)
+static Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl, int biggest_index)
 {
 	/* Initialize nested widgets. */
 	nwid->SetupSmallestSize(NULL, false);

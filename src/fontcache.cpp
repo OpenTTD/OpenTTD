@@ -902,7 +902,7 @@ static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
 	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].width  = glyph->width;
 }
 
-void *AllocateFont(size_t size)
+static void *AllocateFont(size_t size)
 {
 	return MallocT<byte>(size);
 }

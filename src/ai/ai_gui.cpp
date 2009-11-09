@@ -239,7 +239,7 @@ static const WindowDesc _ai_list_desc(
 	NULL, _nested_ai_list_widgets, lengthof(_nested_ai_list_widgets)
 );
 
-void ShowAIListWindow(CompanyID slot)
+static void ShowAIListWindow(CompanyID slot)
 {
 	DeleteWindowByClass(WC_AI_LIST);
 	new AIListWindow(&_ai_list_desc, slot);
@@ -438,7 +438,7 @@ static const WindowDesc _ai_settings_desc(
 	NULL, _nested_ai_settings_widgets, lengthof(_nested_ai_settings_widgets)
 );
 
-void ShowAISettingsWindow(CompanyID slot)
+static void ShowAISettingsWindow(CompanyID slot)
 {
 	DeleteWindowByClass(WC_AI_LIST);
 	DeleteWindowByClass(WC_AI_SETTINGS);

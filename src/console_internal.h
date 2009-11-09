@@ -110,7 +110,6 @@ extern IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 
 /* console functions */
 void IConsoleClearBuffer();
-void IConsoleOpen();
 
 /* Commands */
 void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc);
@@ -123,10 +122,6 @@ void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, co
 void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help);
 IConsoleVar *IConsoleVarGet(const char *name);
 void IConsoleVarPrintGetValue(const IConsoleVar *var);
-void IConsoleVarPrintSetValue(const IConsoleVar *var);
-
-/* Parser */
-void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[]);
 
 /* console std lib (register ingame commands/aliases/variables) */
 void IConsoleStdLibRegister();

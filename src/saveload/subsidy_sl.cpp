@@ -27,7 +27,7 @@ static const SaveLoad _subsidies_desc[] = {
 	SLE_END()
 };
 
-void Save_SUBS()
+static void Save_SUBS()
 {
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
@@ -36,7 +36,7 @@ void Save_SUBS()
 	}
 }
 
-void Load_SUBS()
+static void Load_SUBS()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {

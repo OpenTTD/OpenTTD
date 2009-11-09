@@ -94,13 +94,6 @@ static inline Axis GetBridgeAxis(TileIndex t)
 }
 
 /**
- * Finds the end of a bridge in the specified direction starting at a middle tile
- * @param t the bridge tile to find the bridge ramp for
- * @param d the direction to search in
- */
-TileIndex GetBridgeEnd(TileIndex t, DiagDirection d);
-
-/**
  * Finds the northern end of a bridge starting at a middle tile
  * @param t the bridge tile to find the bridge ramp for
  */

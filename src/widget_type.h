@@ -548,7 +548,6 @@ private:
 	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
 };
 
-Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl = false);
 bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report = true);
 
 /**

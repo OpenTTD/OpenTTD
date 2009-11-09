@@ -148,7 +148,7 @@ static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
 
 #undef FIXNUM
 
-void FixOldTowns()
+static void FixOldTowns()
 {
 	Town *town;
 

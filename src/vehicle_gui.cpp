@@ -122,7 +122,7 @@ void DepotSortList(VehicleList *list)
 }
 
 /** draw the vehicle profit button in the vehicle list window. */
-void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
+static void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 {
 	SpriteID pal;
 

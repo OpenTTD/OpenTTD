@@ -141,7 +141,7 @@ bool SpriteExists(SpriteID id)
 	return !(GetSpriteCache(id)->file_pos == 0 && GetSpriteCache(id)->file_slot == 0);
 }
 
-void *AllocSprite(size_t);
+static void *AllocSprite(size_t);
 
 static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 {
@@ -451,7 +451,7 @@ static void DeleteEntryFromSpriteCache()
 	}
 }
 
-void *AllocSprite(size_t mem_req)
+static void *AllocSprite(size_t mem_req)
 {
 	mem_req += sizeof(MemBlock);
 

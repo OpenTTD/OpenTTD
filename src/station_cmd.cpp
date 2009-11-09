@@ -917,7 +917,7 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
  * @param st 'return' pointer for the found station
  * @return command cost with the error or 'okay'
  */
-CommandCost FindJoiningStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
+static CommandCost FindJoiningStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
 {
 	return FindJoiningBaseStation<Station, STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st);
 }

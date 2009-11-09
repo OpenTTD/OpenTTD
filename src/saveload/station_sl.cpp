@@ -259,7 +259,7 @@ static void Load_STNS()
 	}
 }
 
-void Ptrs_STNS()
+static void Ptrs_STNS()
 {
 	/* Don't run when savegame version is higher than or equal to 123. */
 	if (!CheckSavegameVersion(123)) return;
