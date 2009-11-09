@@ -212,7 +212,7 @@ void FioOpenFile(int slot, const char *filename)
 	FioSeekToFile(slot, pos);
 }
 
-static const char *_subdirs[NUM_SUBDIRS] = {
+static const char * const _subdirs[NUM_SUBDIRS] = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
