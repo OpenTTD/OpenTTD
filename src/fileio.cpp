@@ -212,7 +212,7 @@ void FioOpenFile(int slot, const char *filename)
 	FioSeekToFile(slot, pos);
 }
 
-const char *_subdirs[NUM_SUBDIRS] = {
+static const char *_subdirs[NUM_SUBDIRS] = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
@@ -957,7 +957,7 @@ void DeterminePaths(const char *exe)
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {
-		char *dir = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(default_subdirs[i]));
+		char *dir = str_fmt("%s%s", _personal_dir, _subdirs[default_subdirs[i]]);
 		FioCreateDirectory(dir);
 		free(dir);
 	}
@@ -970,7 +970,7 @@ void DeterminePaths(const char *exe)
 	/* Create the directory for each of the types of content */
 	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, DATA_DIR, AI_DIR, AI_LIBRARY_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
-		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], FioGetSubdirectory(dirs[i]));
+		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);
 		free(tmp);
 	}

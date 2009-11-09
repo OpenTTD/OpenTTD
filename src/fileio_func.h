@@ -56,13 +56,6 @@ char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char 
 char *FioAppendDirectory(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir);
 char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir);
 
-static inline const char *FioGetSubdirectory(Subdirectory subdir)
-{
-	extern const char *_subdirs[NUM_SUBDIRS];
-	assert(subdir < NUM_SUBDIRS);
-	return _subdirs[subdir];
-}
-
 void SanitizeFilename(char *filename);
 void AppendPathSeparator(char *buf, size_t buflen);
 void DeterminePaths(const char *exe);
