@@ -2197,7 +2197,7 @@ static void HandleKeyScrolling()
 	}
 }
 
-void MouseLoop(MouseClick click, int mousewheel)
+static void MouseLoop(MouseClick click, int mousewheel)
 {
 	DecreaseWindowCounters();
 	HandlePlacePresize();
@@ -2340,6 +2340,11 @@ void HandleMouseEvents()
 	}
 
 	MouseLoop(click, mousewheel);
+
+	/* We have moved the mouse the required distance,
+	 * no need to move it at any later time. */
+	_cursor.delta.x = 0;
+	_cursor.delta.y = 0;
 }
 
 /**

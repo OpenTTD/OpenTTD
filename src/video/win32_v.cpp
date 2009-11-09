@@ -879,7 +879,6 @@ void VideoDriver_Win32::MainLoop()
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
 			GameLoop();
-			_cursor.delta.x = _cursor.delta.y = 0;
 
 			if (_force_full_redraw) MarkWholeScreenDirty();
 

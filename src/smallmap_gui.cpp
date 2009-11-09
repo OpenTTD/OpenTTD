@@ -1064,8 +1064,6 @@ public:
 		if (widget == SM_WIDGET_MAP) {
 			if (_scrolling_viewport) return;
 			_scrolling_viewport = true;
-			_cursor.delta.x = 0;
-			_cursor.delta.y = 0;
 		}
 	}
 
