@@ -436,7 +436,7 @@ void FioCreateDirectory(const char *name)
  * @param buf    string to append the separator to
  * @param buflen the length of the buf
  */
-static void AppendPathSeparator(char *buf, size_t buflen)
+void AppendPathSeparator(char *buf, size_t buflen)
 {
 	size_t s = strlen(buf);
 
