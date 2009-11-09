@@ -37,17 +37,11 @@ DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
 /** Distances used in drawing widgets. */
 enum WidgetDrawDistances {
-	/* WWT_IMGBTN */
+	/* WWT_IMGBTN(_2) */
 	WD_IMGBTN_LEFT    = 1,      ///< Left offset of the image in the button.
 	WD_IMGBTN_RIGHT   = 2,      ///< Right offset of the image in the button.
 	WD_IMGBTN_TOP     = 1,      ///< Top offset of image in the button.
 	WD_IMGBTN_BOTTOM  = 2,      ///< Bottom offset of image in the button.
-
-	/* WWT_IMGBTN_2 */
-	WD_IMGBTN2_LEFT   = 1,      ///< Left offset of the images in the button.
-	WD_IMGBTN2_RIGHT  = 3,      ///< Right offset of the images in the button.
-	WD_IMGBTN2_TOP    = 1,      ///< Top offset of images in the button.
-	WD_IMGBTN2_BOTTOM = 3,      ///< Bottom offset of images in the button.
 
 	/* WWT_INSET */
 	WD_INSET_LEFT  = 2,         ///< Left offset of string.

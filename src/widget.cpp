@@ -286,16 +286,8 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 	assert(img != 0);
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
-	int left, top;
-	if ((type & WWT_MASK) == WWT_IMGBTN_2) {
-		if (clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
-		left = WD_IMGBTN2_LEFT;
-		top  = WD_IMGBTN2_TOP;
-	} else {
-		left = WD_IMGBTN_LEFT;
-		top  = WD_IMGBTN_TOP;
-	}
-	DrawSprite(img, PAL_NONE, r.left + left + clicked, r.top + top + clicked);
+	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
+	DrawSprite(img, PAL_NONE, r.left + WD_IMGBTN_LEFT + clicked, r.top + WD_IMGBTN_TOP + clicked);
 }
 
 /**
@@ -2077,19 +2069,12 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			break;
 		}
 		case WWT_IMGBTN:
+		case WWT_IMGBTN_2:
 		case WWT_PUSHIMGBTN: {
 			static const Dimension extra = {WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT,  WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM};
 			padding = &extra;
 			Dimension d2 = GetSpriteSize(this->widget_data);
-			d2.width += extra.width;
-			d2.height += extra.height;
-			size = maxdim(size, d2);
-			break;
-		}
-		case WWT_IMGBTN_2: {
-			static const Dimension extra = {WD_IMGBTN2_LEFT + WD_IMGBTN2_RIGHT,  WD_IMGBTN2_TOP + WD_IMGBTN2_BOTTOM};
-			padding = &extra;
-			Dimension d2 = maxdim(GetSpriteSize(this->widget_data), GetSpriteSize(this->widget_data + 1));
+			if (this->type == WWT_IMGBTN_2) d2 = maxdim(d2, GetSpriteSize(this->widget_data + 1));
 			d2.width += extra.width;
 			d2.height += extra.height;
 			size = maxdim(size, d2);
