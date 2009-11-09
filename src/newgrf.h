@@ -118,8 +118,6 @@ struct GRFFile {
 	int traininfo_vehicle_width;  ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 };
 
-extern GRFFile *_first_grffile;
-
 enum ShoreReplacement {
 	SHORE_REPLACE_NONE,       ///< No shore sprites were replaced.
 	SHORE_REPLACE_ACTION_5,   ///< Shore sprites were replaced by Action5.

@@ -161,7 +161,7 @@ void FixOldTowns()
 	}
 }
 
-StringID *_old_vehicle_names;
+static StringID *_old_vehicle_names;
 
 void FixOldVehicles()
 {

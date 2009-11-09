@@ -50,12 +50,9 @@
 #include "table/strings.h"
 #include "table/town_land.h"
 
-Town *_cleared_town;
-int _cleared_town_rating;
+static Town *_cleared_town;
+static int _cleared_town_rating;
 TownID _new_town_id;
-
-uint32 _cur_town_ctr;     ///< iterator through all towns in OnTick_Town
-uint32 _cur_town_iter;    ///< frequency iterator at the same place
 
 /* Initialize the town-pool */
 TownPool _town_pool("Town");
@@ -2714,7 +2711,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 }
 
 static bool _town_rating_test = false;
-SmallMap<const Town *, int, 4> _town_test_ratings;
+static SmallMap<const Town *, int, 4> _town_test_ratings;
 
 void SetTownRatingTestMode(bool mode)
 {

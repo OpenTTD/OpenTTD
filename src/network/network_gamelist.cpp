@@ -23,8 +23,8 @@
 
 NetworkGameList *_network_game_list = NULL;
 
-ThreadMutex *_network_game_list_mutex = ThreadMutex::New();
-NetworkGameList *_network_game_delayed_insertion_list = NULL;
+static ThreadMutex *_network_game_list_mutex = ThreadMutex::New();
+static NetworkGameList *_network_game_delayed_insertion_list = NULL;
 
 /** Add a new item to the linked gamelist, but do it delayed in the next tick
  * or so to prevent race conditions.

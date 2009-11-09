@@ -29,7 +29,7 @@
 
 #include "core/udp.h"
 
-ThreadMutex *_network_udp_mutex = ThreadMutex::New();
+static ThreadMutex *_network_udp_mutex = ThreadMutex::New();
 
 /** Session key to register ourselves to the master server */
 static uint64 _session_key = 0;

@@ -112,7 +112,10 @@ extern uint32 _last_sync_frame; // Used in the server to store the last time a s
 /* networking settings */
 extern NetworkAddressList _broadcast_list;
 
-extern uint32 _sync_seed_1, _sync_seed_2;
+extern uint32 _sync_seed_1;
+#ifdef NETWORK_SEND_DOUBLE_SEED
+extern uint32 _sync_seed_2;
+#endif
 extern uint32 _sync_frame;
 extern bool _network_first_time;
 /* Vars needed for the join-GUI */

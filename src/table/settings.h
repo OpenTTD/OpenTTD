@@ -278,7 +278,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 };
 
 static const uint GAME_DIFFICULTY_NUM = 18;
-uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
+static uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
 
 /* Most of these strings are used both for gameopt-backward compatability
  * and the settings tables. The rest is here for consistency. */

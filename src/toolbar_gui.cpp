@@ -50,7 +50,7 @@
 #include "table/sprites.h"
 
 RailType _last_built_railtype;
-RoadType _last_built_roadtype;
+static RoadType _last_built_roadtype;
 
 enum ToolbarMode {
 	TB_NORMAL,

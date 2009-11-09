@@ -65,7 +65,7 @@ static int _skip_sprites; // XXX
 static uint _file_index; // XXX
 
 static GRFFile *_cur_grffile;
-GRFFile *_first_grffile;
+static GRFFile *_first_grffile;
 static SpriteID _cur_spriteid;
 static GrfLoadingStage _cur_stage;
 static uint32 _nfo_line;
@@ -132,7 +132,7 @@ struct GRFLocation {
 
 static std::map<GRFLocation, SpriteID> _grm_sprites;
 typedef std::map<GRFLocation, byte*> GRFLineToSpriteOverride;
-GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
+static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 /** DEBUG() function dedicated to newGRF debugging messages
  * Function is essentialy the same as DEBUG(grf, severity, ...) with the
@@ -255,7 +255,7 @@ static void ClearTemporaryNewGRFData(GRFFile *gf)
 
 
 typedef std::map<StringID *, uint32> StringIDToGRFIDMapping;
-StringIDToGRFIDMapping _string_to_grf_mapping;
+static StringIDToGRFIDMapping _string_to_grf_mapping;
 
 /** Used when setting an object's property to map to the GRF's strings
  * while taking in consideration the "drift" between TTDPatch string system and OpenTTD's one

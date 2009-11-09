@@ -75,7 +75,7 @@ const byte _tileh_to_sprite[32] = {
  * Otherwise it points to a table loaded from a newGRF file, that describes the variable snowline
  * @ingroup SnowLineGroup
  * @see GetSnowLine() GameCreationSettings */
-SnowLine *_snow_line = NULL;
+static SnowLine *_snow_line = NULL;
 
 /**
  * Applies a foundation to a slope.
