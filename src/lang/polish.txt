@@ -650,8 +650,8 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita poje
 STR_SORT_BY_MAX_SPEED                                           :Prędkość maks.
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
-STR_SORT_BY_LENGTH                                              :Dlugosc
-STR_SORT_BY_LIFE_TIME                                           :Pozostaly czas zycia
+STR_SORT_BY_LENGTH                                              :Długość
+STR_SORT_BY_LIFE_TIME                                           :Pozostały czas życia
 STR_SORT_BY_TIMETABLE_DELAY                                     :Opóźnienie rozkładu jazdy
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
@@ -679,10 +679,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl tabele firm
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ufunduj budowę nowego przedsiębiorstwa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+Kliknięcie otwiera listę grup/pojazdów
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę samochodów firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Wyświetl listę statków firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Wyświetl listę samolotów firmy
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+klik otwiera listę grup/pojazdów
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę samochodów firmy. Ctrl+klik otwiera listę grup/pojazdów
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Wyświetl listę statków firmy. Ctrl+klik otwiera listę grup/pojazdów
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Wyświetl listę samolotów firmy. Ctrl+klik otwiera listę grup/pojazdów
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Przybliżenie
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddalenie
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Zbuduj tory kolejowe
@@ -769,12 +769,12 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa t
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Katalog przedsiębiorstw
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Ufunduj nowe przedsięb.
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Ufunduj nowe przedsiębiorstwo
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Konstrukcja torowiska
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Konstrukcja elektryfikowanego torowiska
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Konstrukcja torowiska elektryfikowanego
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Konstrukcja torowiska jednoszynowego
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Konstrukcja torowiska MagLev
 ############ range ends here
@@ -929,7 +929,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Pojazdy:
-STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacje:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zysk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. przychód:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. przychód:
@@ -940,7 +940,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pożyczk
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Łącznie:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liczba pojazdów, które przyniosły zysk w zeszłym roku: zawiera - pojazdy drogowe, pociągi, statki i samoloty
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba stacji. Wliczany jest każdy element stacji (np. dworzec, przystanek, lotnisko), nawet jeśli są połączone w jedną stację
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba ostatnio obsłużonych elementów stacji. Wliczany jest każdy element stacji (np. dworzec, przystanek, lotnisko), nawet jeśli są połączone w jedną stację
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zysk pojazdu o najniższym dochodzie (dotyczy pojazdów, które mają co najmniej 2 lata)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość pieniędzy zarobiona w miesiącu z najmniejszym zyskiem w ostatnich 12 kwartałach
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ilość pieniędzy zarobiona w miesiącu z największym zyskiem w ostatnich 12 kwartałach
@@ -2223,15 +2223,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Konstruk
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Konstrukcja torowiska jednoszynowego
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Konstrukcja torowiska MagLev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Budowa torów za pomocą trybu Autotory
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa zajezdni kolejowej (do kupowania i serwisowania pociągów)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zmiana torów na pkt. kontrolny
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na pkt. kontrolny. Ctrl umożliwia łączenie pkt. kontrolnych
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Budowa sygnałów
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów i semaforów
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, pkt. kontrolnych i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z pkt. kontrolnych i stacji
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zamiana typu torów
 
 # Rail depot construction window
@@ -2296,20 +2296,20 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, k
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Tworzenie dróg
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Budowa torowiska tramwajowego
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Budowa dróg
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zbuduj fragment torowiska tramwajowego
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Budowa drogi używając trybu Autoroad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Budowa torów tramwajowych używając trybu Autotram
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Zbuduj drogę. Ctrl przełącza buduj/usuń dla konstrukcji drogowych
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zbuduj torowisko tramwajowe. Ctrl przełącza buduj/usuń dla konstrukcji tramwajowych
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Zbuduj drogę używając trybu Autoroad. Ctrl przełącza buduj/usuń dla konstrukcji drogowych
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Zbuduj tory tramwajowe używając trybu Autotram. Ctrl przełącza buduj/usuń dla konstrukcji tramwajowych
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Wybuduj zajezdnię samochodową (do kupowania i serwisowania pojazdów)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Wybuduj zajezdnię tramwajową (do kupowania i serwisowania pojazdów)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zbuduj przystanek autobusowy. Ctrl umożliwia łączenie stacji
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zbuduj pasażerski przystanek tramwajowy. Ctrl umożliwia łączenie stacji
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zbuduj stację załadunku ciężarówek. Ctrl umożliwia łączenie stacji
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zbuduj tramwajową stację załadunkową
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zbuduj tramwajową stację załadunkową. Ctrl umożliwia łączenie stacji
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Włącz/Wyłącz drogi jednokierunkowe
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Budowa mostu drogowego
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zbuduj most drogowy
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Zbuduj most tramwajowy
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Budowa tunelu drogowego
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Zbuduj tunel drogowy
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zbuduj tunel tramwajowy
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Przełącz buduj/usuń dla konstrukcji dróg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Przełącz buduj/usuń dla konstrukcji torowiska tramwajowego
@@ -2336,7 +2336,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanał w
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Buduj kanały.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Buduj śluzy
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Wybuduj stocznię (do kupowania i serwisowania statków)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zbuduj port.. Ctrl umożliwia łączenie stacji
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zbuduj port. Ctrl umożliwia łączenie stacji
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Ustaw boję, która może być użyta jako punkt kontrolny
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Zbuduj akwedukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Stwórz akwen wodny.{}Tworzy kanał, chyba że przyrzymany jest CTRL na poziomie morza, wtedy pobliski teren zostanie zatopiony
@@ -2750,7 +2750,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Wpisz na
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miasta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Żaden -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - klik na nazwie aby wycentrować widok na mieście
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - klik na nazwie aby wycentrować widok na mieście. Ctrl+klik otwiera nowy podgląd na lokaję miasta
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
 
 # Town view window
@@ -2763,7 +2763,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Towar po
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{BLACK}Wymaganych {SETX 20}{ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} dowiezionych w zeszłym miesiącu
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na mieście
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na mieście. Ctrl+klik otwiera nowy podgląd na lokację miasta
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalne władze
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Pokaż informacje o lokalnych władzach
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę miasta
@@ -2809,10 +2809,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Żadne -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usługi już subsydiowane:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na Fabrykę/Miasto
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+Klik otwiera nowy podgląd na pozycji fabryki/miasta
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa stacji - kliknij na nazwie aby wycentrować główny widok na stacji
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa stacji - kliknij na nazwie aby wycentrować główny widok na stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Przytrzymaj CTRL aby zaznaczyć więcej niż jedną opcję
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2848,7 +2848,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Wyśmienite
 STR_CARGO_RATING_OUTSTANDING                                    :Niezrównane
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruj główny widok na stacji
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruj główny widok na stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmień nazwę stacji
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokazuje wszystkie pociągi, które mają tę stację w swoim rozkładzie
@@ -2859,9 +2859,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na punkcie kontrolnym
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na pkt. kontrolnym. Ctrl+klik otwiera nowy podgląd na lokacji pkt. kontrolnego
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę punktu orientacyjnego
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na boji
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na boi. Ctrl+klik otwiera nowy podgląd na lokacji boi
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boji
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
@@ -2941,13 +2941,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Żade
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%/{COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy zakladow - kliknij na nazwie by wysrodkowac na nim widok
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy zakładów - kliknij na nazwie zakładu by wyśrodkować na nim widok. Ctrl+klik otwiera nowy podgląd na lokacji zakładu
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyprodukowano w ostatnim miesiącu:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% przetransportowano)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj główny widok na przedsiębiorstwie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj główny widok na przedsiębiorstwie. Ctrl+Klik otwiera nowy podgląd na pozycji przedsiębiorstwa
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
@@ -3054,8 +3054,8 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wy
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków - kliknij na statku, aby uzyskać informacje
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista wyboru samolotów - kliknij na samolocie, aby uzyskać informacje
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kup pojazd
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kup pojazd
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kup pociąg
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kup pojazd drogowy
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kup statek
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kup samolot
 
@@ -3128,11 +3128,11 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonuj s
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonuj samolot
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Kliknij na przycisk a następnie na pociąg wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrowanie głównego okna na pozycji zajezdni
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrowanie głównego okna na pozycji zajezdni. Ctrl+Klik otwiera nowy podgląd na pozycji zajezdni.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruj główne okno na pozycji stoczni
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruj główne okno na pozycji hangaru
@@ -3198,7 +3198,7 @@ STR_REPLACE_ENGINES                                             :Lokomotywy
 STR_REPLACE_WAGONS                                              :Wagony
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu szyn chcesz zastąpić pojazdy
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyświetla typ pojazdu na jaki będzie zastąpiony  pojazd zaznaczony po lewej stronie
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyświetla typ pojazdu na jaki będzie zastąpiony pojazd zaznaczony po lewej stronie
 STR_REPLACE_RAIL_VEHICLES                                       :Kolej
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kolej elektryczna
 STR_REPLACE_MONORAIL_VEHICLES                                   :Kolej jednoszynowa
@@ -3221,7 +3221,7 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Ctrl+klik spowoduje współdzielenie poleceń
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Spowoduje zakup kopii pojazdu. Ctrl+klik spowoduje współdzielenie poleceń
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Ctrl+klik spowoduje współdzielenie poleceń
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Spowoduje zakup kopii statku. Ctrl+klik spowoduje współdzielenie poleceń
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Spowoduje zakup kopii samolotu. Ctrl+klik spowoduje współdzielenie poleceń
 
@@ -3317,8 +3317,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartoś�
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniem
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniem
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniem o 10. Ctrl+klik zwiększa okres między serwisowaniem o 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniem o 10. Ctrl+klik zmniejsza okres między serwisowaniem o 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nazwa pociągu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwij samochód
@@ -3714,7 +3714,7 @@ STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Za dużo
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Za dużo przystankow autobusowych
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zbyt wiele stacji załadunku ciężarówek
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Zbyt blisko innej stacji
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Zbyt  blisko innej stacji
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Zbyt blisko innej stacji/strefy załadunku
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zbyt blisko innego portu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zbyt blisko innego lotniska
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nie można zmienić nazwy.
@@ -3870,7 +3870,7 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nie moż
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nie można wysłać statku do stoczni...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nie można wysłać samolotu do hangaru...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nie można kupić lokomotywy...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nie można kupić pociągu...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie można kupić pojazdu drogowego...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nie można kupić statku...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nie można kupić samolotu...

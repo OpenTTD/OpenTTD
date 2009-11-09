@@ -3096,10 +3096,10 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Στάση
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Παράλειψη αυτής της εντολής εκτός αν χρειάζεται επισκευή
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Δεδομένα οχήματος για να γίνει άλμα
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ποσοστό φόρτωσης
-STR_ORDER_CONDITIONAL_RELIABILITY                               :Αξιοπιστία
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Μέγιστη ταχύτητα
-STR_ORDER_CONDITIONAL_AGE                                       :Ηλικία οχήματος (χρόνια)
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :{G=n}Ποσοστό φόρτωσης
+STR_ORDER_CONDITIONAL_RELIABILITY                               :{G=f}Αξιοπιστία
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :{G=f}Μέγιστη ταχύτητα
+STR_ORDER_CONDITIONAL_AGE                                       :{G=f}Ηλικία οχήματος (χρόνια)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Απαιτεί επισκευή
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Πάντα
 
