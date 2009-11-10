@@ -5141,7 +5141,7 @@ static void LoadGRFSound(byte *buf, uint len)
 
 			case 'atad': // 'data'
 				sound->file_size   = size;
-				sound->file_offset = FioGetPos() - (len - (buf - buf_start)) + 1;
+				sound->file_offset = FioGetPos() - (len - (buf - buf_start));
 				sound->file_slot   = _file_index;
 
 				/* Set default volume and priority */
