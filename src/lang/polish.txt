@@ -2750,7 +2750,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Wpisz na
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miasta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Żaden -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - klik na nazwie aby wycentrować widok na mieście. Ctrl+klik otwiera nowy podgląd na lokaję miasta
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - klik na nazwie aby wycentrować widok na mieście. Ctrl+klik otwiera nowy podgląd na lokację miasta
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
 
 # Town view window
@@ -2809,7 +2809,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Żadne -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usługi już subsydiowane:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+Klik otwiera nowy podgląd na pozycji fabryki/miasta
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+klik otwiera nowy podgląd na pozycji fabryki/miasta
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa stacji - kliknij na nazwie aby wycentrować główny widok na stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
@@ -2947,7 +2947,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy za
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyprodukowano w ostatnim miesiącu:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% przetransportowano)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj główny widok na przedsiębiorstwie. Ctrl+Klik otwiera nowy podgląd na pozycji przedsiębiorstwa
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj główny widok na przedsiębiorstwie. Ctrl+klik otwiera nowy podgląd na pozycji przedsiębiorstwa
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
@@ -3132,7 +3132,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduj
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrowanie głównego okna na pozycji zajezdni. Ctrl+Klik otwiera nowy podgląd na pozycji zajezdni.
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrowanie głównego okna na pozycji zajezdni. Ctrl+klik otwiera nowy podgląd na pozycji zajezdni
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruj główne okno na pozycji stoczni
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruj główne okno na pozycji hangaru
