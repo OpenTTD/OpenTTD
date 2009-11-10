@@ -56,6 +56,9 @@ bool IsHangar(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
 
+	/* If the tile isn't an airport there's no chance it's a hangar. */
+	if (!IsAirport(t)) return false;
+
 	const Station *st = Station::GetByTile(t);
 	const AirportFTAClass *apc = st->Airport();
 
