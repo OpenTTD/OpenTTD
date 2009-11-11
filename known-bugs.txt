@@ -132,3 +132,15 @@ Extreme CPU usage/hangs on exiting game when using SDL and PulseAudio
 	installing the 'libsdl1.2debian-pulseaudio' package from Ubuntu's
 	Universe repository. For other distributions a similar package needs
 	to be installed.
+
+OpenTTD not properly resizing with SDL on X
+	Under some X window managers OpenTTD's window does not properly
+	resize. You will either end up with a black bar at the right/bottom
+	side of the window or you cannot see the right/bottom of the window,
+	e.g you cannot see the status bar. The problem is that OpenTTD does
+	not always receive a resize event from SDL making it impossible for
+	OpenTTD to know that the window was resized; sometimes moving the
+	window will solve the problem.
+	Window managers that are known to exhibit this behaviour are KDE's
+	and GNOME's. With the XFCE's and LXDE's window managers the resize
+	event is sent when the user releases the mouse.
