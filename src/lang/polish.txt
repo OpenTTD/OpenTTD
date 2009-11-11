@@ -3133,9 +3133,9 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduj
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrowanie głównego okna na pozycji zajezdni. Ctrl+klik otwiera nowy podgląd na pozycji zajezdni
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruj główne okno na pozycji stoczni
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruj główne okno na pozycji hangaru
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej. Ctrl+Klik otwiera nowy podgląd na pozycję zajezdni samochodowej
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruj główne okno na pozycji stoczni. Ctrl+Klik otwiera nowy podgląd na pozycję stoczni
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruj główne okno na pozycji hangaru. Ctrl+Klik otwiera nowy podgląd na pozycję hangaru
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Pokaż listę wszystkich pociągów z tą zajezdnia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Pokaż listę wszystkich samochodów z tą zajezdnia w swoich poleceniach
@@ -3210,10 +3210,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymi
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrowanie głównego okna na pozycji pociągu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centruj główne okno na pozycji pojazdu
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centruj główne okno na pozycji statku
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centruj główne okno na pozycji samolotu
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrowanie głównego okna na pozycji pociągu. Ctrl+Klik by podążać za pociągiem w głównym oknie
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centruj główne okno na pozycji pojazdu. Ctrl+Klik by podążać za pojazdem w głównym oknie
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centruj główne okno na pozycji statku. Ctrl+Klik by podążać za statkiem w głównym oknie
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centruj główne okno na pozycji samolotu. Ctrl+Klik by podążać za samolotem w głównym oknie
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do zajezdni
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij pojazd do zajezdni

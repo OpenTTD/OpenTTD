@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Mở tha
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hiện cửa sổ âm thanh/nhạc
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Hiện thông báo/tin tức cuối cùng, hiện tùy chọn thông báo
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông tin vùng đất, bảng lệnh, AI debug, ảnh chụp, nói về OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Chuyển thanh công cụ
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lưu kịch bản, nạp kịch bản, bỏ trình chỉnh sửa kịch bản, thoát
@@ -1366,8 +1367,15 @@ STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Đườ
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Xây trong chế độ dừng game: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Máy bay sẽ không hư (thường xuyên) ở các sân bay nhỏ: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Đổi thời tiết: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Địa hình vừa phải
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Địa hình giá lạnh
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Địa hình cận nhiệt đới
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Địa hình đồ chơi
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Sửa thời gian: {ORANGE}{DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho phép khả năng sửa giá trị sản xuất: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Cách Phối Màu Mới
 
 
 
@@ -1409,6 +1417,7 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Đổi 
 # Network company list added strings
 
 # Network client list
+STR_NETWORK_CLIENTLIST_BAN                                      :Cấm
 
 
 
@@ -1532,6 +1541,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
 
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
 
 
 # SE Map generation
@@ -1704,6 +1714,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Thay tê
 
 # Engine preview window
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY} Nặng: {WEIGHT_S}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {7:FORCE}{}Giá vận hành: {CURRENCY}/yr{}Năng suất: {CARGO}
 
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :Tàu
@@ -2083,6 +2094,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
@@ -2110,4 +2122,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

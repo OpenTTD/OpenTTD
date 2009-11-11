@@ -253,10 +253,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Дълж
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ: {NUM} x {NUM}{}Разлика във височината: {NUM} м
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Население
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Продукция
 STR_SORT_BY_TYPE                                                :Вид
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
@@ -556,7 +557,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Пари
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Заем:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Общо:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Брой превозни средства; това включва автомобили, влакове, кораби и самолети
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Брой превозни средства с приход за миналата година; това включва автомобили, влакове, кораби и самолети
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой станции. Всяка част на станция (напр. ЖП гара, автогара, летище) се брои отделно, даже ако са свързани като една станция
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Печалбата на превозното средство с най-нисък доход (от всички на поне 2 години)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-ниска печалба от последните 12 четвъртини
@@ -2011,6 +2012,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Пост
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Много случайни градове
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Покриване на картата със случайно поставени градове
 
+
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Големина на града:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Малък
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Среден
@@ -3426,10 +3428,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не м�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не може да пратиш кораба в депото...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да изпрати самолета в хангар...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Не може да купиш ЖП машина...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Не може да купи кола...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Не може да купиш кораба...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не може да построи самолет...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Не може да се купи ЖП машина...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Не може да купи превозно стредство...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Не може да се купи кораб...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не може да се купи самолет...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Не може да се преименува влак...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Не може да преименуваш МПС-то...
@@ -3964,4 +3966,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-
