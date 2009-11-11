@@ -119,20 +119,6 @@ struct Pool {
 		}
 
 		/**
-		 * Deletes item with given index.
-		 * @param p Titem memory to release
-		 * @param index index of item
-		 * @note never use this! Only for internal use
-		 *       (called automatically when constructor of Titem uses throw())
-		 */
-		FORCEINLINE void operator delete(void *p, size_t index)
-		{
-			assert(p == Tpool->Get(index));
-			Tpool->FreeItem(index);
-		}
-
-
-		/**
 		 * Allocates space for new Titem at given memory address
 		 * @param size size of Titem
 		 * @param ptr where are we allocating the item?
@@ -152,21 +138,6 @@ struct Pool {
 				assert(ptr != Tpool->data[i]);
 			}
 			return ptr;
-		}
-
-		/**
-		 * Deletes item that was allocated by the function above
-		 * @param p Titem memory to release
-		 * @param ptr parameter given to operator new
-		 * @note never use this! Only for internal use
-		 *       (called automatically when constructor of Titem uses throw())
-		 */
-		FORCEINLINE void operator delete(void *p, void *ptr)
-		{
-			assert(p == ptr);
-			for (size_t i = 0; i < Tpool->first_unused; i++) {
-				assert(ptr != Tpool->data[i]);
-			}
 		}
 
 

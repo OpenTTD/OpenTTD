@@ -125,24 +125,39 @@ public:
 		return new (strlen(text) + 1) GRFText(langid, text);
 	}
 
+	/**
+	 * Helper allocation function to disallow something.
+	 * Don't allow simple 'news'; they wouldn't have enough memory.
+	 * @param size the amount of space not to allocate
+	 */
+	void *operator new(size_t size)
+	{
+		NOT_REACHED();
+	}
+
+	/**
+	 * Free the memory we allocated
+	 * @param p memory to free
+	 */
+	void operator delete(void *p)
+	{
+		free(p);
+	}
 private:
 	GRFText(byte langid_, const char *text_) : next(NULL), langid(langid_)
 	{
 		strcpy(text, text_);
 	}
 
+	/**
+	 * Allocate memory for this class.
+	 * @param size the size of the instance
+	 * @param extra the extra memory for the text
+	 * @return the requested amount of memory for both the instance and the text
+	 */
 	void *operator new(size_t size, size_t extra)
 	{
-		return ::operator new(size + extra);
-	}
-
-public:
-	/* dummy operator delete to silence VC8:
-	 * 'void *GRFText::operator new(size_t,size_t)' : no matching operator delete found;
-	 *     memory will not be freed if initialization throws an exception */
-	void operator delete(void *p, size_t extra)
-	{
-		return ::operator delete(p);
+		return MallocT<byte>(size + extra);
 	}
 
 public:

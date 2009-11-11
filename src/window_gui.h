@@ -345,11 +345,26 @@ public:
 	Window();
 
 	virtual ~Window();
-	/* Don't allow arrays; arrays of Windows are pointless as you need
-	 * to destruct them all at the same time too, which is kinda hard. */
-	FORCEINLINE void *operator new[](size_t size) { NOT_REACHED(); }
-	/* Don't free the window directly; it corrupts the linked list when iterating */
-	FORCEINLINE void operator delete(void *ptr) {}
+
+	/**
+	 * Helper allocation function to disallow something.
+	 * Don't allow arrays; arrays of Windows are pointless as you need
+	 * to destruct them all at the same time too, which is kinda hard.
+	 * @param size the amount of space not to allocate
+	 */
+	FORCEINLINE void *operator new[](size_t size)
+	{
+		NOT_REACHED();
+	}
+
+	/**
+	 * Helper allocation function to disallow something.
+	 * Don't free the window directly; it corrupts the linked list when iterating
+	 * @param ptr the pointer not to free
+	 */
+	FORCEINLINE void operator delete(void *ptr)
+	{
+	}
 
 	uint16 flags4;              ///< Window flags, @see WindowFlags
 	WindowClass window_class;   ///< Window class
