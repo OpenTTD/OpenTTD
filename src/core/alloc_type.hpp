@@ -170,18 +170,12 @@ public:
 	/**
 	 * Memory release for a single class instance.
 	 * @param ptr  the memory to free.
-	 *
-	 * @warning The value of the \a size parameter can only be trusted for
-	 *          classes that have their own (virtual) destructor method.
 	 */
 	FORCEINLINE void operator delete(void *ptr) { free(ptr); }
 
 	/**
 	 * Memory release for an array of class instances.
 	 * @param ptr  the memory to free.
-	 *
-	 * @warning The value of the \a size parameter can only be trusted for
-	 *          classes that have their own (virtual) destructor method.
 	 */
 	FORCEINLINE void operator delete[](void *ptr) { free(ptr); }
 };
