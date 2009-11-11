@@ -173,6 +173,7 @@
 	#if (_MSC_VER < 1400)                   // MSVC 2005 safety checks
 		#error "Only MSVC 2005 or higher are supported. MSVC 2003 and earlier are not! Upgrade your compiler."
 	#endif /* (_MSC_VER < 1400) */
+	#pragma warning(disable: 4291)   // no matching operator delete found; memory will not be freed if initialization throws an exception (reason: our overloaded functions never throw an exception)
 	#pragma warning(disable: 4996)   // 'strdup' was declared deprecated
 	#define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
 	#pragma warning(disable: 6308)   // code analyzer: 'realloc' might return null pointer: assigning null pointer to 't_ptr', which is passed as an argument to 'realloc', will cause the original memory block to be leaked
