@@ -368,8 +368,8 @@ static void PollEvent()
 	int dy = mouse_y - _cursor.pos.y;
 	if (dx != 0 || dy != 0) {
 		if (_cursor.fix_at) {
-			_cursor.delta.x += dx;
-			_cursor.delta.y += dy;
+			_cursor.delta.x = dx;
+			_cursor.delta.y = dy;
 			position_mouse(_cursor.pos.x, _cursor.pos.y);
 		} else {
 			_cursor.delta.x = dx;

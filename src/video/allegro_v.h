@@ -24,7 +24,7 @@ public:
 
 class FVideoDriver_Allegro: public VideoDriverFactory<FVideoDriver_Allegro> {
 public:
-	static const int priority = 5;
+	static const int priority = 4;
 	/* virtual */ const char *GetName() { return "allegro"; }
 	/* virtual */ const char *GetDescription() { return "Allegro Video Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Allegro(); }

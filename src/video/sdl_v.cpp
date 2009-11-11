@@ -334,8 +334,8 @@ static int PollEvent()
 				int dx = ev.motion.x - _cursor.pos.x;
 				int dy = ev.motion.y - _cursor.pos.y;
 				if (dx != 0 || dy != 0) {
-					_cursor.delta.x += dx;
-					_cursor.delta.y += dy;
+					_cursor.delta.x = dx;
+					_cursor.delta.y = dy;
 					SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
 				}
 			} else {
