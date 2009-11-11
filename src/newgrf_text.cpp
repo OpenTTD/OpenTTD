@@ -119,36 +119,36 @@ enum GRFExtendedLanguages {
  * but according to a different lang.
  */
 struct GRFText {
-	public:
-		static GRFText* New(byte langid, const char* text)
-		{
-			return new(strlen(text) + 1) GRFText(langid, text);
-		}
+public:
+	static GRFText *New(byte langid, const char *text)
+	{
+		return new (strlen(text) + 1) GRFText(langid, text);
+	}
 
-	private:
-		GRFText(byte langid_, const char* text_) : next(NULL), langid(langid_)
-		{
-			strcpy(text, text_);
-		}
+private:
+	GRFText(byte langid_, const char *text_) : next(NULL), langid(langid_)
+	{
+		strcpy(text, text_);
+	}
 
-		void *operator new(size_t size, size_t extra)
-		{
-			return ::operator new(size + extra);
-		}
+	void *operator new(size_t size, size_t extra)
+	{
+		return ::operator new(size + extra);
+	}
 
 public:
-		/* dummy operator delete to silence VC8:
-		 * 'void *GRFText::operator new(size_t,size_t)' : no matching operator delete found;
-		 *     memory will not be freed if initialization throws an exception */
-		void operator delete(void *p, size_t extra)
-		{
-			return ::operator delete(p);
-		}
+	/* dummy operator delete to silence VC8:
+	 * 'void *GRFText::operator new(size_t,size_t)' : no matching operator delete found;
+	 *     memory will not be freed if initialization throws an exception */
+	void operator delete(void *p, size_t extra)
+	{
+		return ::operator delete(p);
+	}
 
-	public:
-		GRFText *next;
-		byte langid;
-		char text[];
+public:
+	GRFText *next;
+	byte langid;
+	char text[];
 };
 
 
