@@ -349,7 +349,7 @@ public:
 	 * to destruct them all at the same time too, which is kinda hard. */
 	FORCEINLINE void *operator new[](size_t size) { NOT_REACHED(); }
 	/* Don't free the window directly; it corrupts the linked list when iterating */
-	FORCEINLINE void operator delete(void *ptr, size_t size) {}
+	FORCEINLINE void operator delete(void *ptr) {}
 
 	uint16 flags4;              ///< Window flags, @see WindowFlags
 	WindowClass window_class;   ///< Window class
