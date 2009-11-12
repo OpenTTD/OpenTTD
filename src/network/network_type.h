@@ -90,9 +90,8 @@ enum NetworkAction {
 enum NetworkServerMessage {
 	NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS,        ///< Game paused (not enough players)
 	NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS,      ///< Game unpaused (enough players)
-	NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT,        ///< Game paused (connecting client)
-	NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT,      ///< Game unpaused (client connected)
-	NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL, ///< Game unpaused (client failed to connect)
+	NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT,        ///< Game paused (connecting clients)
+	NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT,      ///< Game unpaused (no connecting clients)
 	NETWORK_SERVER_MESSAGE_END
 };
 

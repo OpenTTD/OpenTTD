@@ -1732,7 +1732,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spil på pause 
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spil ikke længere på pause (nok spillere igen)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spil på pause (tilslutter klient)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spil ikke længere på pause (klient tilsluttet)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spil ikke længere på pause (klient kunne ikke tilsluttes)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlader
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har tilsluttet sig spillet

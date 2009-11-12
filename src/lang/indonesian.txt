@@ -1734,7 +1734,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Permainan Terta
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Permainan Dilanjutkan (pemain cukup)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Permainan Tertahan (menghubungi pemain lainnya)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Permainan Dilanjutkan (pemain telah terhubung)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Permainan Dilanjutkan (gagal menghubungi pemain lainnya)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :pergi
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} telah bergabung

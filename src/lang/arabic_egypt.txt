@@ -1734,7 +1734,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :اللعب مت
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :استعادة اللعب - عدد اللاعبين كافي
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :اللعب متوقف - ربط لاعب
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :الاستمرار باللعب - تم ربط اللاعب
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :الاستمرار باللعب - فشل ربط اللاعب
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :يغادر
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} قد انضم للعبة

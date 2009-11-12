@@ -1733,7 +1733,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Oyun durdu (yet
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Oyun devam ediyor (yeterli oyuncu var)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Oyun durdu (istemci bağlanıyor)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Oyun devam ediyor (istemci bağlandı)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Oyun devam ediyor (istemci bağlanamadı)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ayrılıyor
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} oyuna katıldı

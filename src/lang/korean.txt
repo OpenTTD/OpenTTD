@@ -1732,7 +1732,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :게임 일시�
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :게임 재개됨 (플레이어가 충분히 모였습니다)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :게임 일시정지됨 (클라이언트 연결중)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :게임 재개됨 (클라이언트 연결됨)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :게임 재개됨 (클라이언트가 연결에 실패했습니다)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :떠남
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING}님이 게임에 참여했습니다

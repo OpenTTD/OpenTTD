@@ -1887,7 +1887,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Пауза (н�
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Игра запущена (есть игроки)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Пауза (подключение клиента)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Игра запущена (клиент подключился)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Игра запущена (клиент не смог подключиться)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :покинул
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре

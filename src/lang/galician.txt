@@ -1703,7 +1703,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partida en paus
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partida funcionando (hai suficientes xogadores)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partida en pausa (cliente conectando)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partida funcionando (cliente conectado)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partida funcionando (o cliente non pudio conectar)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saíndo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} uniuse á partida

@@ -1768,7 +1768,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Játék felfüg
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Játék elindítva (van elég játékos)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Játék felfüggesztve (kapcsolódó kliens)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Játék elindítva (a kliens sikeresen csatlakozott)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Játék elindítva (a kliens csatlakozása nem sikerült)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :kilépés
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} csatlakozott a játékhoz

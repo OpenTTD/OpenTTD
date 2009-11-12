@@ -1734,7 +1734,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spel gepauzeerd
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spel hervat (genoeg spelers)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spel gepauzeerd (inkomende client)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spel hervat (client verbonden)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spel hervat (client kon geen verbinding maken)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd

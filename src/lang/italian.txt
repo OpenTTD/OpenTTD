@@ -1736,7 +1736,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partita in paus
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partita ripresa (giocatori sufficienti)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partita in pausa (connessione client in corso)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partita ripresa (client connesso)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partita ripresa (connessione client fallita)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abbandono della partita
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} è entrato nella partita

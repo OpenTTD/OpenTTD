@@ -1719,7 +1719,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spill gepaust (
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spill leeft erëm (genuch Spiller)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spill gepaust (Spiller connectéiert)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spill leeft erëm (Client ass connectéiert)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spill leeft erëm (Client konnt net connectéieren)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :verloossen
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ass dem Spill baigetrueden

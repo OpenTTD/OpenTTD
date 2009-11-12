@@ -1798,7 +1798,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Παύση πα
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Συνέχιση παιχνιδιού (υπάρχουν αρκετοί παίκτες)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Παύση παιχνιδιού (σύνδεση πελάτη)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Συνέχιση παιχνιδιού (πελάτης συνδέθηκε)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Συνέχιση παιχνιδιού (πελάτης απέτυχε να συνδεθεί)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :αποχώρηση
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} συμμετέχει στο παιχνίδι

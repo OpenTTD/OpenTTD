@@ -1692,7 +1692,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :ゲームは一
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :ゲーム停止解除（プレヤー人数十分）
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :ゲームは一時停止（クライアントが接続中）
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :ゲーム停止解除（クライアントが接続済み）
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :ゲーム停止解除（クライアントの接続が失敗）
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} は参加してきました

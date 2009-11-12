@@ -1735,7 +1735,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Juego en pausa 
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Juego en marcha (suficientes jugadores)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Juego detenido (conectado cliente)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Juego en marcha (cliente conectado)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Juego en marcha (cliente falló la conexión)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abandonando
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se ha unido al juego

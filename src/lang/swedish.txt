@@ -1732,7 +1732,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spelet pausat (
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spelet fortsätter (Tillräckligt med spelare)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spelet pausat (Spelare ansluter)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spelet fortsätter (Spelare ansluten)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spelet fortsätter (Misslyckat anslutningsförsök av en spelare)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lämnar
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har gått med i spelet

@@ -2114,7 +2114,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Gra zatrzymana 
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Gra wznowiona (wystarczająca ilość graczy)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Gra zatrzymana (łączenie klienta)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Gra wznowiona (klient połączony)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Gra wznowiona (nieudane połączenie klienta)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :opuszczanie
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} dołączył do gry.

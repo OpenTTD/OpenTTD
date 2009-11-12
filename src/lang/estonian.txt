@@ -1790,7 +1790,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Mäng seisab (p
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Mäng jätkub (piisavalt mängijaid)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Mäng seisab (ühenduv klient)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Mäng jätkub (klient ühendunud)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Mäng jätkub (klient ei ühendunud)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lahkub
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} liitus mänguga

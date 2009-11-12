@@ -1729,7 +1729,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spill satt på 
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spill gjennopptatt (nok spillere)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spill satt på pause (klient kobler seg til)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spill gjennopptatt (klient koblet til)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spill gjenopptatt (klient kunne ikke koble seg til)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlater
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har blitt med i spillet

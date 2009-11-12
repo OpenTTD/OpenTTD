@@ -1733,7 +1733,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Joc suspendat (
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Joc continuat (suficienţi jucători)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Joc suspendat (conectare client)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Joc continuat (client conectat)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Joc continuat (clientul nu a reuşit să se conecteze)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :iese
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat in joc

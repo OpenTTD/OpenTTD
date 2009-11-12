@@ -1787,7 +1787,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Izgra zaustavlj
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Igra nastavljena (dovoljno igrača)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Igra zaustavljena (spajam klijenta)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Igra nastavljena (klijent spojen)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Igra nastavljena (klijent se nije uspio spojiti)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odlazim
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se pridružio igri

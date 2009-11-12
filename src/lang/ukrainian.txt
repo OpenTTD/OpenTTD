@@ -1859,7 +1859,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Гру приз
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Гру продовжено (достатньо гравців)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Гру призупинено (приєднується клієнт)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Гру продовжено (клієнт приєднався)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Гру продовжено (клієнту не вдалося приєднатися)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :виходжу...
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} приєднався до гри

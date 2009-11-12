@@ -1919,7 +1919,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partija pauzira
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partija nastavljena (ima dovoljno igrača)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partija pauzirana (igrač se priključuje)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partija nastavljena (igrač je priključen)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partija nastavljena (igrač nije priključen)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :napušta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se priključio partiji

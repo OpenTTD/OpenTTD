@@ -1722,7 +1722,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Gêm wedi'i sei
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Gêm wedi'i ddadseibio (digon o chwaraewyr)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Gêm wedi'i seibio (cysylltu â chleient)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Gêm wedi'i ddadseibio (wedi cysylltu â chleient)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Gêm wedi'i ddadseibio (wedi methu cysylltu â chleient)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :wrthi'n gadael
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Mae {STRING} wedi ymuno â'r gêm

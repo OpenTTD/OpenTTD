@@ -1734,7 +1734,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Peli pysäytett
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Peliä jatketaan (tarpeeksi pelaajia)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Peli pysäytetty (yhdistävä asiakas)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Peliä jatketaan (asiakas yhdistänyt)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Peliä jatketaan (asiakkaan yhteys epäonnistui)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :poistutaan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} on liittynyt peliin

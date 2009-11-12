@@ -1723,7 +1723,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Leikur í bið 
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Leikur gangsettur (nægilega margir leikmenn)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Leikur í bið (tengi notanda)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Leikur gangsettur (notandi tengdur)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Leikur gangsettur (tenging við notanda slitnaði)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :yfirgefur
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} tengdist leiknum

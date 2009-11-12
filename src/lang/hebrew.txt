@@ -1732,7 +1732,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :(המשחק ה�
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :(המשחק הופשר (יש די משתתפים
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :(המשחק הושהה (משתמש מתחבר
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :(המשחק הופשר (משתמש התחבר
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :(המשחק הופשר (חיבור משתמש נכשל
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :עוזב
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :הצטרף למשחק {STRING} ***

@@ -1717,7 +1717,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Играта е
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Играта продължава (отново има достатъчно играчи)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Играта е на пауза (свързва се нов играч)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Играта продължава (новият играч се свърза)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Играта продължава (новият играч не успя да се свърже)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :напускам
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} се присъедини към играта

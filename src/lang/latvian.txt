@@ -1731,7 +1731,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spēle nopauzē
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spēle atsākta (pietiekams dalībnieku skaits)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spēle nopauzēta (pieslēdzas dalībniekam)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spēle atsākta (dalībnieks pieslēdzies)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spēle atsākta (dalībniekam neizdevās pieslēgties)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei

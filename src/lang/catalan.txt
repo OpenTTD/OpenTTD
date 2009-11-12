@@ -1734,7 +1734,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Joc en pausa (n
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Joc en marxa (hi ha prou jugadors)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Joc en pausa (connectant client)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Joc en marxa (client connectat)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Joc en marxa (el client no s'ha pogut connectar)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :deixant
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} s'ha unit al joc

@@ -1733,7 +1733,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Jogo pausado (f
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Jogo des-pausado (jogadores suficientes)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Jogo pausado (cliente conectando)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Jogo des-pausado (cliente conectado)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Jogo des-pausado (cliente não se conectou)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saindo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} entrou no jogo

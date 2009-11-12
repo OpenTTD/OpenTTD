@@ -1762,7 +1762,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Žaidimas susta
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Žaidimas veikia (Užtenka žaidėjų)
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Žaidimas sustabdytas (Prijungiamas klientas)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Žaidimas veikia (Klientas pajungtas)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Žaidimas tęsiamas (Klientas neprisijungė)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :išeinama
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} prisijungė prie žaidimo
