@@ -16,6 +16,7 @@
 #include "window_func.h"
 #include "textbuf_gui.h"
 #include "network/network.h"
+#include "network/network_func.h"
 #include "company_manager_face.h"
 #include "strings_func.h"
 #include "gfx_func.h"
@@ -329,10 +330,11 @@ static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
 	DoCommandP(0, PM_PAUSED_ERROR, confirmed ? 0 : 1, CMD_PAUSE);
 }
 
-/** Pause/Unpause the game (server-only).
- * Increase or decrease the pause counter. If the counter is zero,
- * the game is unpaused. A counter is used instead of a boolean value
- * to have more control over the game when saving/loading, etc.
+/**
+ * Pause/Unpause the game (server-only).
+ * Set or unset a bit in the pause mode. If pause mode is zero the game is
+ * unpaused. A bitset is used instead of a boolean value/counter to have
+ * more control over the game when saving/loading, etc.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 the pause mode to change
@@ -353,7 +355,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 		case PM_PAUSED_ACTIVE_CLIENTS:
 			if (!_networking) return CMD_ERROR;
 			break;
-#endif
+#endif /* ENABLE_NETWORK */
 
 		default: return CMD_ERROR;
 	}
@@ -366,11 +368,19 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 				AskUnsafeUnpauseCallback
 			);
 		} else {
+#ifdef ENABLE_NETWORK
+			PauseMode prev_mode = _pause_mode;
+#endif /* ENABLE_NETWORK */
+
 			if (p2 == 0) {
 				_pause_mode = _pause_mode & ~p1;
 			} else {
 				_pause_mode = _pause_mode | p1;
 			}
+
+#ifdef ENABLE_NETWORK
+			NetworkHandlePauseChange(prev_mode, (PauseMode)p1);
+#endif /* ENABLE_NETWORK */
 		}
 
 		SetWindowDirty(WC_STATUS_BAR, 0);

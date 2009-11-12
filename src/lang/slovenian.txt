@@ -1758,12 +1758,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :gostitelj zased
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Igra v pavzi (ni dovolj igralcev)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Igra obnovljena (dovolj igralcev)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Igra v pavzi (povezovanje gosta)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Igra obnovljena (gost povezan)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :zapušča
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} pristopa k igri

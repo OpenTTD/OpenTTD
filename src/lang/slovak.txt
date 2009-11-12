@@ -1794,12 +1794,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je plny
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Hra pozastavená (nedostatok hráčov)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Hra spustená (dostatok hráčov)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Hra pozastavená (pripája sa klient)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Hra spustená (klient sa pripojil)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odchádza
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} vstúpil do hry

@@ -1726,12 +1726,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servern är ful
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spelet pausat (Inte tillräckligt med spelare)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spelet fortsätter (Tillräckligt med spelare)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spelet pausat (Spelare ansluter)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spelet fortsätter (Spelare ansluten)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lämnar
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har gått med i spelet

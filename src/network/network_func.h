@@ -17,6 +17,7 @@
 #include "../console_type.h"
 #include "../gfx_type.h"
 #include "../core/smallvec_type.hpp"
+#include "../openttd.h"
 
 #ifdef ENABLE_NETWORK
 
@@ -56,6 +57,7 @@ bool NetworkCompanyIsPassworded(CompanyID company_id);
 bool NetworkMaxCompaniesReached();
 bool NetworkMaxSpectatorsReached();
 void NetworkPrintClients();
+void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode);
 
 /*** Commands ran by the server ***/
 void NetworkServerMonthlyLoop();

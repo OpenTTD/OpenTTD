@@ -86,15 +86,6 @@ enum NetworkAction {
 	NETWORK_ACTION_COMPANY_NEW,
 };
 
-/** Messages the server can give */
-enum NetworkServerMessage {
-	NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS,        ///< Game paused (not enough players)
-	NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS,      ///< Game unpaused (enough players)
-	NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT,        ///< Game paused (connecting clients)
-	NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT,      ///< Game unpaused (no connecting clients)
-	NETWORK_SERVER_MESSAGE_END
-};
-
 enum NetworkErrorCode {
 	NETWORK_ERROR_GENERAL, // Try to use this one like never
 

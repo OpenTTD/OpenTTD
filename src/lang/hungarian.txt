@@ -1762,12 +1762,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :a szerver megte
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Játék felfüggesztve (nincs elég játékos)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Játék elindítva (van elég játékos)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Játék felfüggesztve (kapcsolódó kliens)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Játék elindítva (a kliens sikeresen csatlakozott)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :kilépés
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} csatlakozott a játékhoz

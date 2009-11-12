@@ -1669,12 +1669,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servilo plenas
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Ludo paŭzita (ne sufiĉaj ludantoj)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Ludo malpaŭzita (sufiĉaj ludandoj)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Ludo paŭzita (konektanta kliento)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Ludo malpaŭzita (kliento konektita)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlasanta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ensalutis la ludon

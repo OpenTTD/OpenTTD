@@ -891,7 +891,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 

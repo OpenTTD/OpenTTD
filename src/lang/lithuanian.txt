@@ -1756,12 +1756,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilnas
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Žaidimas sustabdytas (trūksta žaidėjų)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Žaidimas veikia (Užtenka žaidėjų)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Žaidimas sustabdytas (Prijungiamas klientas)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Žaidimas veikia (Klientas pajungtas)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :išeinama
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} prisijungė prie žaidimo

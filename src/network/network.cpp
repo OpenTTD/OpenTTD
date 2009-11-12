@@ -35,6 +35,7 @@
 #include "../landscape_type.h"
 #include "../rev.h"
 #include "../core/pool_func.hpp"
+#include "../gfx_func.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../fileio_func.h"
 #endif /* DEBUG_DUMP_COMMANDS */
@@ -216,11 +217,8 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_se
 	switch (action) {
 		case NETWORK_ACTION_SERVER_MESSAGE:
 			/* Ignore invalid messages */
-			if (data >= NETWORK_SERVER_MESSAGE_END) return;
-
 			strid = STR_NETWORK_SERVER_MESSAGE;
 			colour = CC_DEFAULT;
-			data = STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS + data;
 			break;
 		case NETWORK_ACTION_COMPANY_SPECTATOR:
 			colour = CC_DEFAULT;
@@ -353,6 +351,51 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 }
 
 /**
+ * Handle the pause mode change so we send the right messages to the chat.
+ * @param prev_mode The previous pause mode.
+ * @param changed_mode The pause mode that got changed.
+ */
+void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode)
+{
+	if (!_networking) return;
+
+	switch (changed_mode) {
+		case PM_PAUSED_NORMAL:
+		case PM_PAUSED_JOIN:
+		case PM_PAUSED_ACTIVE_CLIENTS: {
+			bool changed = ((_pause_mode == PM_UNPAUSED) != (prev_mode == PM_UNPAUSED));
+			bool paused = (_pause_mode != PM_UNPAUSED);
+			if (!paused && !changed) return;
+
+			StringID str;
+			if (!changed) {
+				int i = -1;
+				if ((_pause_mode & PM_PAUSED_NORMAL) != PM_UNPAUSED)         SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL);
+				if ((_pause_mode & PM_PAUSED_JOIN) != PM_UNPAUSED)           SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS);
+				if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) != PM_UNPAUSED) SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS);
+				str = STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1 + i;
+			} else {
+				switch (changed_mode) {
+					case PM_PAUSED_NORMAL:         SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL); break;
+					case PM_PAUSED_JOIN:           SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS); break;
+					case PM_PAUSED_ACTIVE_CLIENTS: SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS); break;
+					default: NOT_REACHED();
+				}
+				str = paused ? STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED : STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED;
+			}
+
+			char buffer[DRAW_STRING_BUFFER];
+			GetString(buffer, str, lastof(buffer));
+			NetworkTextMessage(NETWORK_ACTION_SERVER_MESSAGE, CC_DEFAULT, false, NULL, buffer);
+		} break;
+
+		default:
+			return;
+	}
+}
+
+
+/**
  * Counts the number of active clients connected.
  * It has to be in STATUS_ACTIVE and not a spectator
  * @return number of active clients
@@ -380,12 +423,10 @@ static void CheckMinActiveClients()
 		if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) != 0) return;
 
 		DoCommandP(0, PM_PAUSED_ACTIVE_CLIENTS, 1, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS);
 	} else {
 		if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) == 0) return;
 
 		DoCommandP(0, PM_PAUSED_ACTIVE_CLIENTS, 0, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS);
 	}
 }
 
@@ -488,7 +529,6 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && (_pause_mode & PM_PAUSED_JOIN)) {
 		DoCommandP(0, PM_PAUSED_JOIN, 0, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT);
 	}
 
 	if (_network_server) {

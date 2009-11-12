@@ -1729,12 +1729,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Serveur complet
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partie suspendue (pas assez de joueurs)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partie reprise (assez de joueurs)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partie suspendue (connexion d'un client)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partie reprise (client connecté)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :départ
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a rejoint la partie

@@ -1727,12 +1727,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server plin
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Joc suspendat (insuficienţi jucători)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Joc continuat (suficienţi jucători)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Joc suspendat (conectare client)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Joc continuat (client conectat)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :iese
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat in joc

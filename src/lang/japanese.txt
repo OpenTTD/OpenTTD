@@ -1686,12 +1686,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバ満員
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :ゲームは一時停止（プレヤー人数不足）
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :ゲーム停止解除（プレヤー人数十分）
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :ゲームは一時停止（クライアントが接続中）
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :ゲーム停止解除（クライアントが接続済み）
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} は参加してきました

@@ -1726,12 +1726,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :השרת מלא
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :(המשחק הושהה (אין מספיק משתתפים
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :(המשחק הופשר (יש די משתתפים
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :(המשחק הושהה (משתמש מתחבר
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :(המשחק הופשר (משתמש התחבר
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :עוזב
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :הצטרף למשחק {STRING} ***

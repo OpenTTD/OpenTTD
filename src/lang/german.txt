@@ -1729,12 +1729,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Server voll
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spiel angehalten (nicht genug Spieler)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spiel fortgesetzt (genug Spieler)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spiel angehalten (Teilnehmer meldet sich an)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spiel fortgesetzt (Teilnehmer ist angemeldet)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :geht
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ist dem Spiel beigetreten

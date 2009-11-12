@@ -1728,12 +1728,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :خادم ممت
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :اللعب متوقف - ليس هناك عدد لاعبين كافي
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :استعادة اللعب - عدد اللاعبين كافي
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :اللعب متوقف - ربط لاعب
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :الاستمرار باللعب - تم ربط اللاعب
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :يغادر
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} قد انضم للعبة

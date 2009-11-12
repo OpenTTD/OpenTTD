@@ -1728,12 +1728,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :伺服器已滿
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :遊戲暫停 (玩家不足)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :遊戲繼續 (玩家足數)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :遊戲暫停 (鏈入客戶端)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :遊戲繼續 (客戶端鏈入成功)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :離開中
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入遊戲

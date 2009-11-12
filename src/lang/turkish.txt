@@ -1727,12 +1727,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :sunucu dolu
 ############ End of leave-in-this-order
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Oyun durdu (yeterli oyuncu yok)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Oyun devam ediyor (yeterli oyuncu var)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Oyun durdu (istemci bağlanıyor)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Oyun devam ediyor (istemci bağlandı)
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ayrılıyor
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} oyuna katıldı
