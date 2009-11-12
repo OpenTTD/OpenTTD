@@ -1077,7 +1077,7 @@ make_compiler_cflags() {
 
 		if [ $cc_version -ge 110 ]; then
 			# vec report defaults to telling where it did loop vectorisation, which is not very important
-			flags="$flags -vec-report=0"
+			flags="$flags -vec-report=0 -wd873"
 
 			# Use c++0x mode so static_assert() is available
 			cxxflags="$cxxflags -std=c++0x"
