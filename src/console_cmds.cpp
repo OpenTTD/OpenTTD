@@ -491,16 +491,9 @@ DEF_CONSOLE_CMD(ConPauseGame)
 		return true;
 	}
 
-#ifdef ENABLE_NETWORK
-	if (_network_dedicated && _settings_client.network.min_active_clients != 0) {
-		IConsolePrint(CC_WARNING, "Manual pausing is disabled. Set network.min_active_clients to 0 (disable autopausing) to enable manual pausing.");
-		return true;
-	}
-#endif /* ENABLE_NETWORK */
-
-	if (_pause_mode == PM_UNPAUSED) {
+	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
 		DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
-		IConsolePrint(CC_DEFAULT, "Game paused.");
+		if (!_networking) IConsolePrint(CC_DEFAULT, "Game paused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already paused.");
 	}
@@ -515,16 +508,13 @@ DEF_CONSOLE_CMD(ConUnPauseGame)
 		return true;
 	}
 
-#ifdef ENABLE_NETWORK
-	if (_network_dedicated && _settings_client.network.min_active_clients != 0) {
-		IConsolePrint(CC_WARNING, "Manual unpausing is disabled. Set network.min_active_clients to 0 (disable autopausing) to enable manual unpausing.");
-		return true;
-	}
-#endif /* ENABLE_NETWORK */
-
-	if (_pause_mode != PM_UNPAUSED) {
+	if ((_pause_mode & PM_PAUSED_NORMAL) != PM_UNPAUSED) {
 		DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
-		IConsolePrint(CC_DEFAULT, "Game unpaused.");
+		if (!_networking) IConsolePrint(CC_DEFAULT, "Game unpaused.");
+	} else if ((_pause_mode & PM_PAUSED_ERROR) != PM_UNPAUSED) {
+		IConsolePrint(CC_DEFAULT, "Game is in error state and cannot be unpaused via console.");
+	} else if (_pause_mode != PM_UNPAUSED) {
+		IConsolePrint(CC_DEFAULT, "Game cannot be unpaused manually; disable pause_on_join/min_active_clients.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already unpaused.");
 	}
