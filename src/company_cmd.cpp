@@ -89,8 +89,10 @@ void SetLocalCompany(CompanyID new_company)
 	/* company could also be COMPANY_SPECTATOR or OWNER_NONE */
 	assert(Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
 
+#ifdef ENABLE_NETWORK
 	/* Delete the chat window, if you were team chatting. */
 	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
+#endif
 
 	_local_company = new_company;
 
