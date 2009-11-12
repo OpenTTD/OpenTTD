@@ -396,6 +396,21 @@ void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode)
 
 
 /**
+ * Helper function for the pause checkers. If pause is true and the
+ * current pause mode isn't set the game will be paused, if it it false
+ * and the pause mode is set the game will be unpaused. In the other
+ * cases nothing happens to the pause state.
+ * @param pause whether we'd like to pause
+ * @param pm the mode which we would like to pause with
+ */
+static void CheckPauseHelper(bool pause, PauseMode pm)
+{
+	if (pause == ((_pause_mode & pm) != PM_UNPAUSED)) return;
+
+	DoCommandP(0, pm, pause ? 1 : 0, CMD_PAUSE);
+}
+
+/**
  * Counts the number of active clients connected.
  * It has to be in STATUS_ACTIVE and not a spectator
  * @return number of active clients
@@ -414,20 +429,43 @@ static uint NetworkCountActiveClients()
 	return count;
 }
 
-/* Check if the minimum number of active clients has been reached and pause or unpause the game as appropriate */
+/**
+ * Check if the minimum number of active clients has been reached and pause or unpause the game as appropriate
+ */
 static void CheckMinActiveClients()
 {
-	if (!_network_dedicated || _settings_client.network.min_active_clients == 0 || (_pause_mode & PM_PAUSED_ERROR) != 0) return;
-
-	if (NetworkCountActiveClients() < _settings_client.network.min_active_clients) {
-		if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) != 0) return;
-
-		DoCommandP(0, PM_PAUSED_ACTIVE_CLIENTS, 1, CMD_PAUSE);
-	} else {
-		if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) == 0) return;
-
-		DoCommandP(0, PM_PAUSED_ACTIVE_CLIENTS, 0, CMD_PAUSE);
+	if ((_pause_mode & PM_PAUSED_ERROR) != PM_UNPAUSED ||
+			!_network_dedicated ||
+			(_settings_client.network.min_active_clients == 0 && (_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) == PM_UNPAUSED)) {
+		return;
 	}
+	CheckPauseHelper(NetworkCountActiveClients() < _settings_client.network.min_active_clients, PM_PAUSED_ACTIVE_CLIENTS);
+}
+
+/**
+ * Checks whether there is a joining client
+ * @return true iff one client is joining (but not authorizing)
+ */
+static bool NetworkHasJoiningClient()
+{
+	const NetworkClientSocket *cs;
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		if (cs->status >= STATUS_AUTH && cs->status < STATUS_ACTIVE) return true;
+	}
+
+	return false;
+}
+
+/**
+ * Check whether we should pause on join
+ */
+static void CheckPauseOnJoin()
+{
+	if ((_pause_mode & PM_PAUSED_ERROR) != PM_UNPAUSED ||
+			(!_settings_client.network.pause_on_join && (_pause_mode & PM_PAUSED_JOIN) == PM_UNPAUSED)) {
+		return;
+	}
+	CheckPauseHelper(NetworkHasJoiningClient(), PM_PAUSED_JOIN);
 }
 
 /** Converts a string to ip/port/company
@@ -525,11 +563,6 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 	}
 
 	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
-
-	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
-	if (cs->status == STATUS_PRE_ACTIVE && (_pause_mode & PM_PAUSED_JOIN)) {
-		DoCommandP(0, PM_PAUSED_JOIN, 0, CMD_PAUSE);
-	}
 
 	if (_network_server) {
 		/* We just lost one client :( */
@@ -1070,6 +1103,7 @@ void NetworkGameLoop()
 			/* Only check for active clients just before we're going to send out
 			 * the commands so we don't send multiple pause/unpause commands when
 			 * the frame_freq is more than 1 tick. */
+			CheckPauseOnJoin();
 			CheckMinActiveClients();
 		}
 
