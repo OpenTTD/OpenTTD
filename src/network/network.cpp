@@ -377,14 +377,14 @@ static void CheckMinActiveClients()
 	if (!_network_dedicated || _settings_client.network.min_active_clients == 0 || (_pause_mode & PM_PAUSED_ERROR) != 0) return;
 
 	if (NetworkCountActiveClients() < _settings_client.network.min_active_clients) {
-		if ((_pause_mode & PM_PAUSED_NORMAL) != 0) return;
+		if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) != 0) return;
 
-		DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		DoCommandP(0, PM_PAUSED_ACTIVE_CLIENTS, 1, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS);
 	} else {
-		if ((_pause_mode & PM_PAUSED_NORMAL) == 0) return;
+		if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) == 0) return;
 
-		DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+		DoCommandP(0, PM_PAUSED_ACTIVE_CLIENTS, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS);
 	}
 }

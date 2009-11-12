@@ -51,11 +51,12 @@ extern bool _exit_game;
 
 /** Modes of pausing we've got */
 enum PauseMode {
-	PM_UNPAUSED        = 0,      ///< A normal unpaused game
-	PM_PAUSED_NORMAL   = 1 << 0, ///< A game normally paused
-	PM_PAUSED_SAVELOAD = 1 << 1, ///< A game paused for saving/loading
-	PM_PAUSED_JOIN     = 1 << 2, ///< A game paused for 'pause on join'
-	PM_PAUSED_ERROR    = 1 << 3, ///< A game paused because a (critical) error
+	PM_UNPAUSED              = 0,      ///< A normal unpaused game
+	PM_PAUSED_NORMAL         = 1 << 0, ///< A game normally paused
+	PM_PAUSED_SAVELOAD       = 1 << 1, ///< A game paused for saving/loading
+	PM_PAUSED_JOIN           = 1 << 2, ///< A game paused for 'pause_on_join'
+	PM_PAUSED_ERROR          = 1 << 3, ///< A game paused because a (critical) error
+	PM_PAUSED_ACTIVE_CLIENTS = 1 << 4, ///< A game paused for 'min_active_clients'
 };
 DECLARE_ENUM_AS_BIT_SET(PauseMode);
 typedef SimpleTinyEnumT<PauseMode, byte> PauseModeByte;

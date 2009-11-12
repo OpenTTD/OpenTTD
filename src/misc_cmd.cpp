@@ -350,6 +350,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 
 #ifdef ENABLE_NETWORK
 		case PM_PAUSED_JOIN:
+		case PM_PAUSED_ACTIVE_CLIENTS:
 			if (!_networking) return CMD_ERROR;
 			break;
 #endif
