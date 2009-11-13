@@ -16,8 +16,8 @@
 
 /**
  * Finds the end of a bridge in the specified direction starting at a middle tile
- * @param t the bridge tile to find the bridge ramp for
- * @param d the direction to search in
+ * @param tile the bridge tile to find the bridge ramp for
+ * @param dir  the direction to search in
  */
 static TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 {

@@ -88,7 +88,7 @@ assert_compile(sizeof(RgbTriplet) == 3);
  * @param w width in pixels
  * @param h height in pixels
  * @param pixelformat bits per pixel
- * @param paletter colour paletter (for 8bpp mode)
+ * @param palette colour palette (for 8bpp mode)
  * @return was everything ok?
  */
 static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
