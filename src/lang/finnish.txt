@@ -1728,7 +1728,16 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :palvelin täynn
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Peli pysäytetty ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Peli yhä pysäytetty ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Peli yhä pysäytetty ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Peliä jatketaan ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ei tarpeeksi pelaajia
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :yhdistäviä asiakkaita
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuaalinen
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :poistutaan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} on liittynyt peliin
