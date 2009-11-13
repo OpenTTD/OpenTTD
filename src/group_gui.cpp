@@ -336,9 +336,6 @@ public:
 	virtual void OnPaint()
 	{
 		const Owner owner = (Owner)GB(this->window_number, 0, 8);
-		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
-		int max;
-		int i;
 
 		/* If we select the all vehicles, this->list will contain all vehicles of the owner
 		 * else this->list will contain all vehicles which belong to the selected group */
@@ -410,14 +407,15 @@ public:
 
 		/* Draw Matrix Group
 		 * The selected group is drawn in white */
+		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
 		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, STR_GROUP_ALL_TRAINS + this->vehicle_type, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
 		y1 += 13;
 
 		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, STR_GROUP_DEFAULT_TRAINS + this->vehicle_type, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
-		max = min(this->vscroll2.GetPosition() + this->vscroll2.GetCapacity(), this->groups.Length());
-		for (i = this->vscroll2.GetPosition() ; i < max ; ++i) {
+		int max = min(this->vscroll2.GetPosition() + this->vscroll2.GetCapacity(), this->groups.Length());
+		for (int i = this->vscroll2.GetPosition() ; i < max ; ++i) {
 			const Group *g = this->groups[i];
 
 			assert(g->owner == owner);
@@ -583,7 +581,6 @@ public:
 
 			case GRP_WIDGET_LIST_VEHICLE: { // Maxtrix vehicle
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)this->resize.step_height;
-				const Vehicle *v;
 				const VehicleID vindex = this->vehicle_sel;
 
 				this->vehicle_sel = INVALID_VEHICLE;
@@ -596,8 +593,7 @@ public:
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
-				v = this->vehicles[id_v];
-
+				const Vehicle *v = this->vehicles[id_v];
 				if (vindex == v->index) {
 					ShowVehicleViewWindow(v);
 				}
