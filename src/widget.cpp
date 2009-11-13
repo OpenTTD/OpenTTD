@@ -1722,13 +1722,21 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		this->fill_y = this->child->fill_y;
 		this->resize_x = this->child->resize_x;
 		this->resize_y = this->child->resize_y;
+
+		/* Account for the size of the frame's text if that exists */
+		if (w != NULL && this->type == WWT_FRAME) {
+			if (this->index >= 0) w->SetStringParameters(this->index);
+			this->smallest_x = max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
 		Dimension resize  = {this->resize_x, this->resize_y};
 		if (w != NULL) { // A non-NULL window pointer acts as switch to turn dynamic widget size on.
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
 				if (this->index >= 0) w->SetStringParameters(this->index);
-				d = maxdim(d, GetStringBoundingBox(this->widget_data));
+				Dimension background = GetStringBoundingBox(this->widget_data);
+				background.width += (this->type == WWT_FRAME) ? (WD_FRAMETEXT_LEFT + WD_FRAMERECT_RIGHT) : (WD_INSET_LEFT + WD_INSET_RIGHT);
+				d = maxdim(d, background);
 			}
 			if (this->index >= 0) {
 				static const Dimension padding = {0, 0};
