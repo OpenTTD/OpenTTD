@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} Karmel
 STR_QUANTITY_BATTERIES                                          :{COMMA} Batterie{P "" n}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} Plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} Spruddelgedrénks
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2288,13 +2288,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} wärt net mat der TTDPatch vun OpenTTD versioun funktiounéiren.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} as fir  {STRING} Versioun vun TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} as designed fir mat {STRING} benotzt ze gin
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Invaliden Parameter fir {STRING}: Parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} muss firun {STRING} gelueden gin.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} muss no {STRING} gelueden gin.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} brauch OpenTTD Versioun {STRING} oder méi nei.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} wärt net mat der TTDPatch vun OpenTTD versioun funktiounéiren.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} as fir  {STRING} Versioun vun TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} as designed fir mat {STRING} benotzt ze gin
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invaliden Parameter fir {1:STRING}: Parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muss firun {STRING} gelueden gin.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muss no {STRING} gelueden gin.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} brauch OpenTTD Versioun {STRING} oder méi nei.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF Datei déi designed gouf fir ze iwwersetzen
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ze vill NewGRFen gelueden.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{STRING} als statesch NewGRF lueden mat {STRING} kann Desyncs efiirrufen.
@@ -3890,10 +3890,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Weepunkt {TOWN}
 
 STR_UNKNOWN_STATION                                             :onbekannt Statioun
 STR_DEFAULT_SIGN_NAME                                           :Schëld
-STR_COMPANY_SOMEONE                                             :iergendeen{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :iergendeen
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Zuschauer, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Zuschauer, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

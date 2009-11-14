@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} 太妃
 STR_QUANTITY_BATTERIES                                          :{COMMA} 顆電池
 STR_QUANTITY_PLASTIC                                            :{VOLUME} 塑膠
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 杯汽水
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2313,13 +2313,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}錯誤：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}嚴重錯誤：{SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}OpenTTD 已知 {STRING} 跟 TTDPatch 版本不合
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} 只適合用於 TTD 版本 {STRING}
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} 必須跟 {STRING} 一起使用
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP} {STRING} 的參數無效：{STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}載入 {2:STRING} 前必須先載入 {1:STRING}
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 必須要在 {STRING} 之後載入
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 需要 {STRING} 或更新的 OpenTTD 版本
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD 已知 {1:STRING} 跟 TTDPatch 版本不合
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 只適合用於 TTD 版本 {STRING}
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} 必須跟 {STRING} 一起使用
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              : {1:STRING} 的參數無效：{STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入 {2:STRING} 前必須先載入 {1:STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必須要在 {STRING} 之後載入
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要 {STRING} 或更新的 OpenTTD 版本
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多 NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :將 {STRING} 載入為靜態 NewGRF：{STRING} 可能會讓遊戲失去同步
@@ -3932,10 +3932,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 第 {COM
 
 STR_UNKNOWN_STATION                                             :未知車站
 STR_DEFAULT_SIGN_NAME                                           :標誌
-STR_COMPANY_SOMEONE                                             :某人{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :某人
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :旁觀者, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :旁觀者, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

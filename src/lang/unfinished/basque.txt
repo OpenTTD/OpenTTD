@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P y k}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastikoarena
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} edari burbuilatsua {P "" k}
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -210,7 +210,7 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" }
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN

@@ -1723,7 +1723,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 
 STR_DEFAULT_SIGN_NAME                                           :Papan tanda
-STR_COMPANY_SOMEONE                                             :Seseorang{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :Seseorang
 
 
 # Viewport strings

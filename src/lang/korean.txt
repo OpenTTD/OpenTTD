@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT}
 STR_QUANTITY_BATTERIES                                          :배터리 {COMMA}개
 STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME}
 STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
-STR_QUANTITY_N_A                                                :없음{SKIP}
+STR_QUANTITY_N_A                                                :없음
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2311,13 +2311,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING}{G 0 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING}{G 0 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}{STRING}의 부적절한 파라미터: 파라미터 {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING}{G 0 "은" "는"} 반드시 {STRING} 앞에 불러와야 합니다.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING}{G 0 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING}는 OpenTTD {STRING} 버전이나 그 이상이 필요합니다.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}{G 0 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}{G 0 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}의 부적절한 파라미터: 파라미터 {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}{G 0 "은" "는"} 반드시 {STRING} 앞에 불러와야 합니다.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}{G 0 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}는 OpenTTD {STRING} 버전이나 그 이상이 필요합니다.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING}{G 1 "을" "를"} 포함한 정적 NewGRF {0:STRING}{G 0 "을" "를"} 불러오는 것은 비동기화를 일으킬 수 있습니다.
@@ -3929,10 +3929,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :웨이포인트
 
 STR_UNKNOWN_STATION                                             :알수없는 정거장
 STR_DEFAULT_SIGN_NAME                                           :팻말
-STR_COMPANY_SOMEONE                                             :누군가{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :누군가
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :관전자, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :관전자, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

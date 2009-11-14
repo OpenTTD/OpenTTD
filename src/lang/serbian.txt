@@ -304,7 +304,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} karame
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a e a}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastike
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaziran{P o a a} pić{P 0 e a a}
-STR_QUANTITY_N_A                                                :Nepoznato{SKIP}
+STR_QUANTITY_N_A                                                :Nepoznato
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2498,13 +2498,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Greška: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kobno: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} neće raditi sa TTDPatch verzijom.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} je za {STRING} verziju TTD-a.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} je napravljen za korišćenje sa {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neispravan parametar za {STRING}: parametar {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} mora biti učitan pre {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} mora biti učitan posle {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} zahteva {STRING} ili višu verziju OpenTTD-a.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neće raditi sa TTDPatch verzijom.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je za {STRING} verziju TTD-a.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je napravljen za korišćenje sa {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neispravan parametar za {1:STRING}: parametar {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} mora biti učitan pre {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mora biti učitan posle {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} zahteva {STRING} ili višu verziju OpenTTD-a.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fajl nije prilagođen za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše učitanih NewGRF-ova.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanje {STRING} kao statične NewGRF sa {STRING} može da izazove desinhronizacije.
@@ -4127,10 +4127,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Putanja 
 
 STR_UNKNOWN_STATION                                             :nepoznata stanica
 STR_DEFAULT_SIGN_NAME                                           :Znak
-STR_COMPANY_SOMEONE                                             :neko{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :neko
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Posmatrač, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Posmatrač, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

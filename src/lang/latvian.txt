@@ -128,7 +128,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} īrisa
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterijas
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmasu
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} burbuļūdens
-STR_QUANTITY_N_A                                                :Nav info{SKIP}
+STR_QUANTITY_N_A                                                :Nav info
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2304,13 +2304,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdinājums: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nedarbosies kopā ar TTDPatch versiju pēc OpenTTD ziņojuma.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} ir priekš {STRING} TTD versijas.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} ir izgatavots, lai lietotu kopā ar {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Nepareizs parametrs priekš {STRING}: parametrs {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} jābūt ielādētam pirms {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} jābūt ielādētam pēc {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nepieciešama Open TTD versija {STRING} vai labāka.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nedarbosies kopā ar TTDPatch versiju pēc OpenTTD ziņojuma.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir priekš {STRING} TTD versijas.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir izgatavots, lai lietotu kopā ar {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nepareizs parametrs priekš {1:STRING}: parametrs {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} jābūt ielādētam pirms {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} jābūt ielādētam pēc {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nepieciešama Open TTD versija {STRING} vai labāka.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Pārāk daudz NewGRF ir ielādēti.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {STRING} kā statisks NewGRF {STRING} var radīt desinhronizāciju.
@@ -3924,10 +3924,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Kontrolpunkts {
 
 STR_UNKNOWN_STATION                                             :nezināma stacija
 STR_DEFAULT_SIGN_NAME                                           :Zīme
-STR_COMPANY_SOMEONE                                             :kāds{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :kāds
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Skatītājs, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Skatītājs, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

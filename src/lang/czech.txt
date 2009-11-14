@@ -194,7 +194,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} karame
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e e í}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastu
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} limonád{P a y ""}
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2368,13 +2368,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Závažná chyba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} je pro TTD verzi {STRING}.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} je navržen pro práci s {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neplatný parametr pro {STRING}: parametr {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} musí být nahráván před {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} musí být nahráván po {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pro TTD verzi {STRING}.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navržen pro práci s {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parametr pro {1:STRING}: parametr {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí být nahráván před {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí být nahráván po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRING} jako statické grafiky spolu s {STRING} může způsobit chybu synchronizace.
@@ -3986,10 +3986,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Směrování {T
 
 STR_UNKNOWN_STATION                                             :neznámá stanice
 STR_DEFAULT_SIGN_NAME                                           :Nápis
-STR_COMPANY_SOMEONE                                             :někdo{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :někdo
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Pozorovatel, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Pozorovatel, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

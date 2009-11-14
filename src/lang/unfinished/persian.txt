@@ -125,7 +125,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} آب �
 STR_QUANTITY_BATTERIES                                          :{COMMA}باطری{P y ies}
 STR_QUANTITY_PLASTIC                                            :{VOLUME}پلاستیک
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار{P "" s}
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2107,7 +2107,7 @@ STR_FORMAT_GROUP_NAME                                           :گروه {COMMA
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_DEFAULT_SIGN_NAME                                           :علامت
-STR_COMPANY_SOMEONE                                             :یک نفر{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :یک نفر
 
 
 # Viewport strings

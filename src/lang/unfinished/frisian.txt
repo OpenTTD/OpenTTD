@@ -2270,7 +2270,7 @@ STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Kontrôl
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Kontrôlepost #{COMMA}
 
 STR_DEFAULT_SIGN_NAME                                           :Buordsje
-STR_COMPANY_SOMEONE                                             :immen{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :immen
 
 
 # Viewport strings

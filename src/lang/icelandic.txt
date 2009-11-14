@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} af tof
 STR_QUANTITY_BATTERIES                                          :{COMMA} rafhl{P aða öður}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} af plasti
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gosdrykk{P u i}r
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2292,13 +2292,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Villa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Banvænt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} er fyrir {STRING} útgáfu af TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} er hannað til að notast með {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Ógild færibreyta {STRING}: færibreyta {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} verður að hlaðast á undan {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} verður að hlaðast eftir {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er fyrir {STRING} útgáfu af TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er hannað til að notast með {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ógild færibreyta {1:STRING}: færibreyta {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} verður að hlaðast á undan {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} verður að hlaðast eftir {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ef {STRING} er hlaðið sem kyrrstæðu NewGRF ásamt {STRING} gætu orðið hnökrar á keyrslu leiksins.
@@ -3896,10 +3896,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Millistöð {TO
 
 STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_DEFAULT_SIGN_NAME                                           :Skilti
-STR_COMPANY_SOMEONE                                             :einhver{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :einhver
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Áhorfandi, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Áhorfandi, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

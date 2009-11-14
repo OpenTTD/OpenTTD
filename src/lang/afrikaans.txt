@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} van ta
 STR_QUANTITY_BATTERIES                                          :{COMMA} batter{P y ye}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} van plastiek
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} koeldran{P k ke}
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2239,13 +2239,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarskuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fataal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} sal nie met die TTDPatch uitgawe rapporteer deur OpenTTD werk nie.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} is vir die {STRING} uitgawe van TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} is onderwerp om saam met {STRING} gebruik te word
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Ongeldig parameter vir {STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} moet voor {STRING} gelaai word.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} moet na {STRING} gelaai word.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} vereis OpenTTD uitgawe {STRING} of beter.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sal nie met die TTDPatch uitgawe rapporteer deur OpenTTD werk nie.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is vir die {STRING} uitgawe van TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is onderwerp om saam met {STRING} gebruik te word
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ongeldig parameter vir {1:STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} moet voor {STRING} gelaai word.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moet na {STRING} gelaai word.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vereis OpenTTD uitgawe {STRING} of beter.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwagte "sprite".
@@ -3833,10 +3833,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Wegpunt {TOWN} 
 
 STR_UNKNOWN_STATION                                             :onbekende stasie
 STR_DEFAULT_SIGN_NAME                                           :Teken
-STR_COMPANY_SOMEONE                                             :iemand{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :iemand
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Spektator, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Spektator, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

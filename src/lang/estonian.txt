@@ -183,7 +183,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} iirist
 STR_QUANTITY_BATTERIES                                          :{COMMA} patarei{P "" d}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmassi
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} kihisevaid jooke
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2369,13 +2369,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Hoiatus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Viga: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Saatuslik viga: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}OpenTTD väitel {STRING} ei tööta selle TTDPatch osaga.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} on {STRING} TTD osa jaoks.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} on mõeldud kasutamiseks {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}vigane parameeter {STRING} jaoks: parameeter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} peab olema laetud enne {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} peab olema laetud pärast{STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nõuab OpenTTD osa {STRING} või uuemat.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD väitel {1:STRING} ei tööta selle TTDPatch osaga.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on {STRING} TTD osa jaoks.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} on mõeldud kasutamiseks {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :vigane parameeter {1:STRING} jaoks: parameeter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} peab olema laetud enne {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} peab olema laetud pärast{STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõuab OpenTTD osa {STRING} või uuemat.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
@@ -3988,10 +3988,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Meldepunkt {TOW
 
 STR_UNKNOWN_STATION                                             :tundmatu jaam
 STR_DEFAULT_SIGN_NAME                                           :Silt
-STR_COMPANY_SOMEONE                                             :keegi{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :keegi
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Vaatleja, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Vaatleja, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

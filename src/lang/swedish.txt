@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} knäck
 STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plast
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} läsk
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2311,13 +2311,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varning: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} kommer inte att fungera med den TTDPatchversion som rapporterades av OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} är för {STRING}versionen av TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} är designat för att användas med {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Felaktig parameter för {STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} måste laddas innan {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} måste laddas efter {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} kräver OpenTTD version {STRING} eller bättre.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} kommer inte att fungera med den TTDPatchversion som rapporterades av OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} är för {STRING}versionen av TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} är designat för att användas med {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parameter för {1:STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} måste laddas innan {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} måste laddas efter {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kräver OpenTTD version {STRING} eller bättre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laddar {STRING} som statisk NewGRF med {STRING} kan orsaka osynk.
@@ -3929,10 +3929,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Riktmärke {TOW
 
 STR_UNKNOWN_STATION                                             :okänd station
 STR_DEFAULT_SIGN_NAME                                           :Skylt
-STR_COMPANY_SOMEONE                                             :någon{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :någon
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Åskådare, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Åskådare, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

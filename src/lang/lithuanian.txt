@@ -160,7 +160,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} karame
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a os ių}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmasės
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaiv{P usis ieji iųjų} gėrim{P as ai ų}
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2314,13 +2314,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Įspėjimas: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Klaida: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalinė klaida: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} skirtas {STRING} TTD versijai.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} yra pritaikytas naudojimui su {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neteisingas parametras {STRING}: parametras {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} turi būti įkeltas prieš {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} turi būti įkeltas po {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} reikalauja OpenTTD versijos {STRING} ar naujesnės.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} skirtas {STRING} TTD versijai.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} yra pritaikytas naudojimui su {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neteisingas parametras {1:STRING}: parametras {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} turi būti įkeltas prieš {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} turi būti įkeltas po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} reikalauja OpenTTD versijos {STRING} ar naujesnės.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kurį turėjo išversti
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Per daug NewGRF'ų įkelta.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacija.
@@ -3882,10 +3882,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} kontrol�
 
 STR_UNKNOWN_STATION                                             :Nežinoma stotis
 STR_DEFAULT_SIGN_NAME                                           :Ženklas
-STR_COMPANY_SOMEONE                                             :kažkas{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :kažkas
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Stebėtojas, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Stebėtojas, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

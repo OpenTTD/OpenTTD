@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} paristo{P "" a}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} muovia
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sihijuoma{P "" a}
-STR_QUANTITY_N_A                                                :-{SKIP}
+STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2322,13 +2322,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varoitus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Virhe: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Virhe: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ei toimi tämän TTDPatchin version kanssa.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} on TTD:n {STRING} versiota varten.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} ja {STRING} on suunniteltu toimimaan yhdessä
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Virheellinen parametri: {STRING}: {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} tulee ladata ennen kuin {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} tulee ladata {STRING} jälkeen.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} vaatii OpenTTD:n version {STRING} tai uudemman.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ei toimi tämän TTDPatchin version kanssa.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on TTD:n {STRING} versiota varten.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ja {STRING} on suunniteltu toimimaan yhdessä
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Virheellinen parametri: {1:STRING}: {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} tulee ladata ennen kuin {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} tulee ladata {STRING} jälkeen.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vaatii OpenTTD:n version {STRING} tai uudemman.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto jonka se muuntaa
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liian monta NewGRF:ää on ladattu.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :NewGRF:n {STRING} lataaminen staattisena NewGRF:nä {STRING}:n kanssa saattaa aiheuttaa nykimistä.
@@ -3941,10 +3941,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Reittipiste: {T
 
 STR_UNKNOWN_STATION                                             :tuntematon asema
 STR_DEFAULT_SIGN_NAME                                           :Kyltti
-STR_COMPANY_SOMEONE                                             :joku{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :joku
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Katsoja, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Katsoja, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

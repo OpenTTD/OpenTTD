@@ -159,7 +159,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} ζαχ
 STR_QUANTITY_BATTERIES                                          :{COMMA} μπαταρί{P α ες}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} πλαστικού
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} αναψυκτικ{P ό ά}
-STR_QUANTITY_N_A                                                :Μ/Δ{SKIP}
+STR_QUANTITY_N_A                                                :Μ/Δ
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2377,13 +2377,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} δεν θα δουλέψει με την έκδοση του TTDPatch οπώς αναφέρει το OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} είναι για την έκδοση {STRING} του TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Λάθος παράμετρος για το {STRING}: Παράμετρος {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} πρέπει να φόρτωθει πριν από το {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} πρέπει να φόρτωθει μετά από το {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} απαιτεί έκδοση OpenTTD {STRING} ή μεγαλύτερη.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch οπώς αναφέρει το OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} είναι για την έκδοση {STRING} του TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Λάθος παράμετρος για το {1:STRING}: Παράμετρος {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} πρέπει να φόρτωθει πριν από το {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} πρέπει να φόρτωθει μετά από το {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} απαιτεί έκδοση OpenTTD {STRING} ή μεγαλύτερη.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {STRING} ως στατικό NewGRF με {STRING} μπόρει να προκαλέσει αποσυγχρονισμούς.
@@ -4002,10 +4002,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Σημείο κ
 
 STR_UNKNOWN_STATION                                             :άγνωστος σταθμός
 STR_DEFAULT_SIGN_NAME                                           :Πινακίδα
-STR_COMPANY_SOMEONE                                             :κάποιος{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :κάποιος
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Θεατής, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Θεατής, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

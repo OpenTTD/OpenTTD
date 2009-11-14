@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} של �
 STR_QUANTITY_BATTERIES                                          :{P 0 סוללה ""} {COMMA} {P "" סוללות}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} של פלסטיק
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} משקאות מוגזים
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2309,13 +2309,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{SILVER}{STRING}{RED}  : אזהרה
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{SILVER}{STRING}{RED}: שגיאה
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{SILVER}{STRING}{RED} :שגיאה חמורה
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} לא יעבוד עם גרסת ה-TTDPatch שדווחה ע"י OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} היא עבור גרסת {STRING} של TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{0:SKIP}{1:STRING} תוכנן עבור {NBSP}{2:STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}פרמטר לא חוקי עבור {STRING}: פרמטר {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{0:SKIP} {1:STRING} לפני הטענת {NBSP}{2:STRING} יש להטעין את
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{0:SKIP} {1:STRING} לאחר הטענת {NBSP}{2:STRING} יש להטעין את
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} דורש גרסת {STRING} של OpenTTD ומעלה.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} לא יעבוד עם גרסת ה-TTDPatch שדווחה ע"י OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} היא עבור גרסת {STRING} של TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} תוכנן עבור {NBSP}{2:STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :פרמטר לא חוקי עבור {1:STRING}: פרמטר {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} לפני הטענת {NBSP}{2:STRING} יש להטעין את
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} לאחר הטענת {NBSP}{2:STRING} יש להטעין את
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} דורש גרסת {STRING} של OpenTTD ומעלה.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :קובץ השדרוג הגראפי אותו יועד לתרגם
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :יותר מידי קבצי שדרוג גראפי פתוחים בן זמנית
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {STRING} as static NewGRF with {STRING} could cause desyncs.
@@ -3927,10 +3927,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} #{COMMA}
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 STR_DEFAULT_SIGN_NAME                                           :סימניה
-STR_COMPANY_SOMEONE                                             :{SKIP}{SKIP}מישהו
+STR_COMPANY_SOMEONE                                             :מישהו
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{1:STRING} ,{0:COMPANY}
-STR_SAVEGAME_NAME_SPECTATOR                                     :{SKIP}{STRING},צופה
+STR_SAVEGAME_NAME_SPECTATOR                                     :{1:STRING},צופה
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

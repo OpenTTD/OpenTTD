@@ -159,7 +159,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} tejkar
 STR_QUANTITY_BATTERIES                                          :{COMMA} elem
 STR_QUANTITY_PLASTIC                                            :{VOLUME} műanyag
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} szénsavas ital
-STR_QUANTITY_N_A                                                :Nincs{SKIP}
+STR_QUANTITY_N_A                                                :Nincs
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2347,13 +2347,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmeztetés: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} a TTD {STRING} verziójához van.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} úgy lett tervezve, hogy ezzel lesz használva: {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Hibás paraméterérték ehhez: {STRING}: paraméter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} muszáj hogy ezután töltődjön be: {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy ezzel lesz használva: {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {1:STRING}: paraméter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muszáj hogy ezután töltődjön be: {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{STRING} betöltése mint statikus NewGRF {STRING} mellett ütközést okozhat.
@@ -4003,10 +4003,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN}i {COMMA}
 
 STR_UNKNOWN_STATION                                             :ismeretlen állomás
 STR_DEFAULT_SIGN_NAME                                           :Felirat
-STR_COMPANY_SOMEONE                                             :valaki{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :valaki
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Megfigyelő, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Megfigyelő, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

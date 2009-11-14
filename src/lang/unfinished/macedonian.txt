@@ -1336,7 +1336,7 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
-STR_COMPANY_SOMEONE                                             :некој{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :некој
 
 
 # Viewport strings

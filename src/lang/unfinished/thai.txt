@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :ลูกอม
 STR_QUANTITY_BATTERIES                                          :ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME}
 STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -1618,7 +1618,7 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
-STR_COMPANY_SOMEONE                                             :บางคน{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :บางคน
 
 
 # Viewport strings

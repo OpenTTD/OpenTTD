@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} kopi t
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman berdesis
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2313,13 +2313,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Peringatan: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kesalahan: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} tidak akan bekerja dengan versi TTDPatch yang telah dilaporkan oleh OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} untuk TTD versi {STRING}.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} didesain untuk digunakan dengan {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Parameter yang salah untuk {STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} harus dimuat sebelum {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} harus dimuat sesudah {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} membutuhkan OpenTTD versi {STRING} atau yang lebih tinggi.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} tidak akan bekerja dengan versi TTDPatch yang telah dilaporkan oleh OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} untuk TTD versi {STRING}.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} didesain untuk digunakan dengan {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parameter yang salah untuk {1:STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} harus dimuat sebelum {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} harus dimuat sesudah {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} membutuhkan OpenTTD versi {STRING} atau yang lebih tinggi.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Berkas NewGRF telah didesain untuk diterjemahkan
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak berkas NewGRF yang dimuat.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {STRING} secara statis dengan {STRING} dapat menyebabkan de-sinkronisasi.
@@ -3932,10 +3932,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN}
 
 STR_UNKNOWN_STATION                                             :stasiun tidak dikenal
 STR_DEFAULT_SIGN_NAME                                           :Tanda
-STR_COMPANY_SOMEONE                                             :seseorang{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :seseorang
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Penonton, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Penonton, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

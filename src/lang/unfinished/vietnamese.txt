@@ -126,7 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} kẹo 
 STR_QUANTITY_BATTERIES                                          :{COMMA} pin{P y ies}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} chất dẻo
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} đồ uống có ga{P "" s}
-STR_QUANTITY_N_A                                                :N/A{SKIP}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2033,7 +2033,7 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
-STR_COMPANY_SOMEONE                                             :ai đó{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :ai đó
 
 
 # Viewport strings

@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} de car
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterie{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastique
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} boisson{P "" s} gazeuse{P "" s}
-STR_QUANTITY_N_A                                                :N/D{SKIP}
+STR_QUANTITY_N_A                                                :N/D
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2323,13 +2323,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attention{NBSP}: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erreur{NBSP}: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal{NBSP}: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ne fonctionnera pas avec la version de TTDPatch reportée par OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} est pour la version {STRING} de TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} est conçu pour être utilisé avec {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Paramètre invalide pour {STRING}{NBSP}: paramètre {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} doit être chargé avant {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} doit être chargé après {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nécessite OpenTTD version {STRING} ou supérieur.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne fonctionnera pas avec la version de TTDPatch reportée par OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} est pour la version {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} est conçu pour être utilisé avec {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramètre invalide pour {1:STRING}{NBSP}: paramètre {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} doit être chargé avant {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} doit être chargé après {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nécessite OpenTTD version {STRING} ou supérieur.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronistation.
@@ -3942,10 +3942,10 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Point de contr�
 
 STR_UNKNOWN_STATION                                             :station inconnue
 STR_DEFAULT_SIGN_NAME                                           :Panneau
-STR_COMPANY_SOMEONE                                             :quelqu'un{SKIP}{SKIP}
+STR_COMPANY_SOMEONE                                             :quelqu'un
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Spectateur, {SKIP}{STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Spectateur, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
