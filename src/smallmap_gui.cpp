@@ -150,12 +150,12 @@ static int _smallmap_industry_count; ///< Number of used industries
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
-	uint16 colour;     ///< colour of the item on the map
+	uint8 colour;      ///< colour of the item on the map
 	StringID legend;   ///< string corresponding to the coloured item
 	IndustryType type; ///< type of industry
 	bool show_on_map;  ///< for filtering industries, if true is shown on map in colour
 	bool end;          ///< this is the end of the list
-	bool col_break;    ///< perform a break and go one collumn further
+	bool col_break;    ///< perform a break and go one column further
 };
 
 /** Legend text giving the colours to look for on the minimap */
@@ -179,6 +179,7 @@ static const LegendAndColour _legend_vehicles[] = {
 	MK(0xBF, STR_SMALLMAP_LEGENDA_ROAD_VEHICLES),
 	MK(0x98, STR_SMALLMAP_LEGENDA_SHIPS),
 	MK(0x0F, STR_SMALLMAP_LEGENDA_AIRCRAFT),
+
 	MS(0xD7, STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
 	MK(0xB5, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
 	MKEND()
@@ -188,8 +189,8 @@ static const LegendAndColour _legend_routes[] = {
 	MK(0xD7, STR_SMALLMAP_LEGENDA_ROADS),
 	MK(0x0A, STR_SMALLMAP_LEGENDA_RAILROADS),
 	MK(0xB5, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
-	MS(0x56, STR_SMALLMAP_LEGENDA_RAILROAD_STATION),
 
+	MS(0x56, STR_SMALLMAP_LEGENDA_RAILROAD_STATION),
 	MK(0xC2, STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY),
 	MK(0xBF, STR_SMALLMAP_LEGENDA_BUS_STATION),
 	MK(0xB8, STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT),
@@ -204,8 +205,8 @@ static const LegendAndColour _legend_vegetation[] = {
 	MK(0x25, STR_SMALLMAP_LEGENDA_FIELDS),
 	MK(0x57, STR_SMALLMAP_LEGENDA_TREES),
 	MK(0xD0, STR_SMALLMAP_LEGENDA_FOREST),
-	MS(0x0A, STR_SMALLMAP_LEGENDA_ROCKS),
 
+	MS(0x0A, STR_SMALLMAP_LEGENDA_ROCKS),
 	MK(0xC2, STR_SMALLMAP_LEGENDA_DESERT),
 	MK(0x98, STR_SMALLMAP_LEGENDA_SNOW),
 	MK(0xD7, STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
