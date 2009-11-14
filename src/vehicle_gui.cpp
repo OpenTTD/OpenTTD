@@ -1030,7 +1030,7 @@ public:
 				return;
 
 			case VLW_WIDGET_LIST: { // Matrix to show vehicles
-				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / this->resize.step_height;
+				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->pos_y) / this->resize.step_height;
 				const Vehicle *v;
 
 				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds

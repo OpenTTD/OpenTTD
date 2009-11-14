@@ -16,7 +16,6 @@
 
 /** Start of functions regarding vehicle list windows */
 enum {
-	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
 	PLY_WND_PRC__SIZE_OF_ROW_TINY  = 13,  ///< Height of rows in group list
 	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,  ///< Height of rows in train/roadvehicle list
 	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 39,  ///< Height of rows in ship/aircraft list
