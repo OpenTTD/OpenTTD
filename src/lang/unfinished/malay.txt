@@ -452,7 +452,6 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 # Company league window
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
@@ -922,7 +921,6 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Tarikh 
 
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Pilih peta:
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (iklankan)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} pelanggan

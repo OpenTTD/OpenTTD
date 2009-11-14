@@ -537,7 +537,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}詳細
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}（{CURRCOMPACT}／{CURRCOMPACT}）
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}（{COMMA}／{COMMA}）
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}％
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}車両数：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}駅数：
@@ -1494,7 +1493,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}地図�
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}プレイするマップを選択してください
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :新規ランダムゲームを作成
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN／インターネット
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :インターネット（公開）
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}クライアント{NUM}人
@@ -1508,7 +1506,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}最高�
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}サーバ上の傍観者上限を指定します
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}言語：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}サーバ上の主の言語を表示します
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}ゲームを開始
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}ランダムな地図もしくはシナリオを用いて新規ネットワークゲームを開始します

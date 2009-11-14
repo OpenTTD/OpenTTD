@@ -548,7 +548,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Détail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Véhicules{NBSP}:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations{NBSP}:
@@ -1535,7 +1534,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Choisir 
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Sur quelle carte désirez-vous jouer{NBSP}?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Créer une partie aléatoirement
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publier)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
@@ -1549,7 +1547,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spec
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limiter le serveur à un certain nombre de spectateurs
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue utilisée{NBSP}:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Démarrer la partie
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario

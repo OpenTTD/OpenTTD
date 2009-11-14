@@ -549,7 +549,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Dettagli
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veicoli:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stazioni:
@@ -1536,7 +1535,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selezion
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Selezionare la mappa con la quale si desidera giocare
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Crea partita casuale
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (pubblicizza)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client
@@ -1550,7 +1548,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spet
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita il server a un certo numero di spettatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Avvia partita
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Inizia una nuova partita in rete con una mappa casuale o uno scenario

@@ -547,7 +547,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detay
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Araçlar:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}İstasyonlar:
@@ -1534,7 +1533,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Harita s
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hangi haritada oynamak istiyorsun?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Rastgele haritada oyna
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :İnternet (reklam vererek)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} istemci
@@ -1548,7 +1546,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}En fazla
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Sunucudaki izleyici sayısını sınırla
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Konuşulan dil:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Oyunu Başlat
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Rastgele harita ya da senaryoda network oyunu aç

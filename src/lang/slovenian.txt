@@ -583,7 +583,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detajl
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Postaje:
@@ -1566,7 +1565,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Izberi o
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kateri zemljevid želiš igrati?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Ustvari naključno novo igro
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Lokalno omrežje / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (oglašuj)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gost{P "" a i ov}
@@ -1580,7 +1578,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Največj
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omeji strežnik na določeno število opazovalcev
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začni igro
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Poženi novo večigralsko igro na naključnem ozemlju

@@ -541,7 +541,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Allwedd
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Cerbydau:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Gorsafoedd:
@@ -1524,7 +1523,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Dewiswch
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Pa fap hoffech chi chwarae?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Cynhyrchu gêm newydd ar hap
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Rhyngrwyd
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Rhyngrwyd (hysbysebu)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cleient{P "" iau}
@@ -1538,7 +1536,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uchafswm
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}rhoi cyfyngiad penodol ar sawl gwyliwr mae'r gweinydd yn ei ganiatáu
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'w siarad:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Dechrau Gêm
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Dechrau gêm rwydwaith newydd gyda map ar hap neu senario

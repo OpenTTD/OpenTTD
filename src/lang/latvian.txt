@@ -547,7 +547,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliz�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Transportl.:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacijas:
@@ -1533,7 +1532,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Izvēlat
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kuru karti jūs vēlaties spēlēt?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Ģenerēt jaunu spēli pēc gadījuma principa
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internets
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internets (reklamēt)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P s i u}
@@ -1547,7 +1545,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. no
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ierobežo serveri noteiktam novērotāju skaitam
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valodu, kurā runā:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Sākt spēli
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Sāk jaunu tīkla spēli ar nejaušu karti vai scenāriju

@@ -672,7 +672,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дета
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Транспорт:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станції:
@@ -1659,7 +1658,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Вибе
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}На якій карті бажаєте грати?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Генерувати випадкову нову гру
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Локальна/Інтернет
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клієнт{P "" а ів}
@@ -1673,7 +1671,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Обмежує кількість глядачів на сервері
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Почати гру
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Почати нову мережну гру з випадковою картою або сценарієм

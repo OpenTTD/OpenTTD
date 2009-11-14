@@ -611,7 +611,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Λεπτ
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Οχήματα:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Σταθμοί:
@@ -1598,7 +1597,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Επιλ
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Σε ποιό χάρτη θέλετε να παίξετε;
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Δημιουργία τυχαίου νέου παιχνιδιού
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (αναγγελία)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
@@ -1612,7 +1610,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Μέγι
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό θεατών
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ομιλούμενη γλώσσα:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στο διακομιστή
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Έναρξη παιχνιδιού
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Έναρξη νέου δικτυακού παιχνιδιού από τυχαίο χάρτη ή σενάριο

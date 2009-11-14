@@ -580,7 +580,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Részlet
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Járművek:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Állomások:
@@ -1568,7 +1567,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Válassz
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Melyik terképen akarsz játszani?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Véletlenszerű új játék
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Hálózat / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (reklámoz)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens
@@ -1582,7 +1580,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max megf
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}A megfigyelők maximális száma
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt nyelv:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Játék elindítása
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Új hálózati játék kezdése véletlen térképpel vagy saját pályával

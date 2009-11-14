@@ -547,7 +547,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}詳細�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}交通工具：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}車站：
@@ -1534,7 +1533,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}選擇�
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}您想玩哪個地圖？
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :隨機產生新場景
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :區域網路／網際網路
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :網際網路 (廣告)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家
@@ -1548,7 +1546,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}旁觀�
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}限制可加入的旁觀者數量
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}溝通語言：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其他人知道這個伺服器使用的溝通 語言
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}開始遊戲
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}以隨機地圖或場景開始新的連線遊戲

@@ -541,7 +541,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Gefierter:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Statiounen:
@@ -1521,7 +1520,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Kaart wi
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Wéi eng Kaart wëllt der spillen?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generéiert en zoufällegt neit Spill
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (Werben)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Spiller
@@ -1535,7 +1533,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max Zusc
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}D'Unzuel vun den Zuschauer limitéiren
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Geschwaaten Sprooch:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aaner Leit gesin wéi eng Sprooch um Server geschwaat gëtt
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spill starten
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Eng nei Partie iwwert d'Netzwierk starten

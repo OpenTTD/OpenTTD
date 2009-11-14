@@ -544,7 +544,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Подр
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Превозни средства:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станции:
@@ -1519,7 +1518,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Избо
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Коя карта желаете да играете?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Генерирай произволна нова игра
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Интернет
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Интернет (реклама)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" s}
@@ -1533,7 +1531,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничаване на сървъра до определен брой наблюдатели
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Говорим език:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Начало на игра
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Започване на нова мрежова игра от случайна карта или сценарий

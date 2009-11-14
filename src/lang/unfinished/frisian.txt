@@ -483,7 +483,6 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fertsjinste:
 ############ End of order list
@@ -943,11 +942,9 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start in
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spulnamme:
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selektear in lân:
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Ynternet
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} taskôger{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimaal tal taskôgers:
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start Spul
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laad Spul

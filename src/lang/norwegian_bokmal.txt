@@ -546,7 +546,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalj
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kjøretøy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjoner:
@@ -1530,7 +1529,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Velg et 
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hvilket kart vil du spille på?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Lag et tilfeldig spill
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonser)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
@@ -1544,7 +1542,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks ant
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrens tjeneren til et bestemt antall tilskuere
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk de snakker på tjeneren:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spillere skal kunne vite hvilket språk man snakker på denne tjeneren.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spill
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start et nytt nettverksspill på et tilfeldig kart, eller scenario

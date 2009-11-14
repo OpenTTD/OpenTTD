@@ -542,7 +542,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaloj
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veturiloj:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacioj:
@@ -1483,7 +1482,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Elektu m
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kiun mapon vi volas ludi?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generu hazardan novan ludon
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Loka reto / Interreto
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Interreto (reklamu)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
@@ -1497,7 +1495,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spektant
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limigu la servilon al certa kvanto da spektantoj
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata lingvo:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Startu Ludon
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Komencu novan retan ludon de hazarda mapo, aŭ scenaro

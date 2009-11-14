@@ -749,9 +749,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			}
 
 			case SCC_CARGO: { // {CARGO}
-				/* Layout now is:
-				 *   8bit   - cargo type
-				 *   16-bit - cargo count */
+				/* First parameter is cargo type, second parameter is cargo count */
 				CargoID cargo = GetInt32(&argv);
 				StringID cargo_str = (cargo == CT_INVALID) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);

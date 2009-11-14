@@ -581,7 +581,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliai
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Automobiliai:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stotelės:
@@ -1562,7 +1561,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Pasirink
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kuriame žemėlapyje norite žaisti?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Sukurti atsitiktinį naują žaidimą
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Vietinis tinklas/ Internetas
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internetas (visiems)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}
@@ -1576,7 +1574,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Daugiaus
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Riboti serverį iki tam tikro skaičiaus žiurovų
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Kalba:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Kiti žaidėjai žinos kokia kalba kalbama serveryje
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Pradėti žaidimą
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Predėti naują žaidimą tinkle (atsitiktinis žemėlapis ar scenarijus)

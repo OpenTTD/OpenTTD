@@ -464,7 +464,6 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :رئیس جمه
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :ترک اصیل!
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

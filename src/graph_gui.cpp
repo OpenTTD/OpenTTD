@@ -1084,7 +1084,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		/* Draw the score */
 		SetDParam(0, score);
-		DrawString(7, 107, r.top + 6, STR_PERFORMANCE_DETAIL_INT, TC_FROMSTRING, SA_RIGHT);
+		DrawString(7, 107, r.top + 6, STR_BLACK_INT, TC_FROMSTRING, SA_RIGHT);
 
 		/* Calculate the %-bar */
 		byte x = Clamp(val, 0, needed) * 50 / needed;

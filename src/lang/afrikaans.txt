@@ -542,7 +542,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Aanwyse
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuie:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasies:
@@ -1510,7 +1509,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Kies 'n 
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Watter kaart wil jy speel?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Opwek lukraak nuwe speletjie
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (adverteer)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Klient{P "" e}
@@ -1524,7 +1522,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks aan
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk die verskaffer na 'n sekere bedrag van aanskouers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Taal gepraat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ander spelers sal weet watter taal op die verskaffer gepraat is
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Begin Speletjie
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Begin 'n nuwe netwerk spel van 'n lukraak kaart of draaiboek

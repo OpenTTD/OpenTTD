@@ -546,7 +546,6 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vägfordon:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
@@ -1533,7 +1532,6 @@ STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Välj ka
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Vilken karta vill du spela?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Skapa slumpmässigt nytt spel
 
-STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO                     :{BLACK}{STRING}
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publik)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" s}
@@ -1547,7 +1545,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max obse
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begränsa antalet observatörer på servern
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som talas:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
-STR_NETWORK_START_SERVER_LANGUAGE_COMBO                         :{BLACK}{STRING}
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Starta spelet
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
