@@ -335,7 +335,7 @@ struct Window : ZeroedMemoryAllocator {
 	};
 
 protected:
-	void InitializeData(WindowClass cls, const Widget *widget, int window_number);
+	void InitializeData(WindowClass cls, const Widget *widget, int window_number, uint32 desc_flags);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
