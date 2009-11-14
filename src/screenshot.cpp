@@ -91,7 +91,7 @@ assert_compile(sizeof(RgbTriplet) == 3);
  * @param palette colour palette (for 8bpp mode)
  * @return was everything ok?
  */
-static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	uint bpp; // bytes per pixel
 	switch (pixelformat) {
@@ -478,7 +478,7 @@ static const ScreenshotFormat _screenshot_formats[] = {
 #if defined(WITH_PNG)
 	{"PNG", "png", &MakePNGImage},
 #endif
-	{"BMP", "bmp", &MakeBmpImage},
+	{"BMP", "bmp", &MakeBMPImage},
 	{"PCX", "pcx", &MakePCXImage},
 };
 
