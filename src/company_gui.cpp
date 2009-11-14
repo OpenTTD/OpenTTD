@@ -550,8 +550,10 @@ enum SelectCompanyLiveryWindowWidgets {
 	SCLW_WIDGET_MATRIX,
 };
 
+/** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
 private:
+	static const int TEXT_INDENT = 15; ///< Number of pixels to indent the text in each column in the #SCLW_WIDGET_MATRIX to make room for the (coloured) rectangles.
 	uint32 sel;
 	LiveryClass livery_class;
 
@@ -585,64 +587,18 @@ private:
 	}
 
 public:
-	SelectCompanyLiveryWindow(const WindowDesc *desc, CompanyID company) : Window(desc, company)
+	SelectCompanyLiveryWindow(const WindowDesc *desc, CompanyID company) : Window()
 	{
-		this->owner = company;
 		this->livery_class = LC_OTHER;
 		this->sel = 1;
+		this->InitNested(desc, company);
+		this->owner = company;
 		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
-		this->OnInvalidateData();
-		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual void OnPaint()
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
-		LiveryScheme scheme = LS_DEFAULT;
-		int y = 51;
-
-		/* Disable dropdown controls if no scheme is selected */
-		this->SetWidgetDisabledState(SCLW_WIDGET_PRI_COL_DROPDOWN, this->sel == 0);
-		this->SetWidgetDisabledState(SCLW_WIDGET_SEC_COL_DROPDOWN, this->sel == 0);
-
-		if (this->sel != 0) {
-			for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-				if (HasBit(this->sel, scheme)) break;
-			}
-			if (scheme == LS_END) scheme = LS_DEFAULT;
-		}
-
-		SetDParam(0, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1);
-		SetDParam(1, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2);
-
-		this->DrawWidgets();
-
-		for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-			if (_livery_class[scheme] == this->livery_class) {
-				bool sel = HasBit(this->sel, scheme) != 0;
-
-				if (scheme != LS_DEFAULT) {
-					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
-				}
-
-				DrawString(15, 165, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
-
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), 152, y);
-				DrawString(165, 290, y, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
-
-				if (!this->IsWidgetHidden(SCLW_WIDGET_SEC_COL_DROPDOWN)) {
-					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), 277, y);
-					DrawString(290, this->width, y, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
-				}
-
-				y += 14;
-			}
-		}
-	}
-
-	virtual void OnClick(Point pt, int widget)
-	{
-		/* Number of liveries in each class, used to determine the height of the livery window */
+		/* Number of liveries in each class, used to determine the height of the livery matrix widget. */
 		static const byte livery_height[] = {
 			1,
 			13,
@@ -652,32 +608,124 @@ public:
 		};
 
 		switch (widget) {
+			case SCLW_WIDGET_SPACER_DROPDOWN: {
+				/* The matrix widget below needs enough room to print all the schemes. */
+				Dimension d = {0, 0};
+				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + scheme));
+				}
+				size->width = max(size->width, TEXT_INDENT + d.width + WD_FRAMERECT_RIGHT);
+				break;
+			}
+
+			case SCLW_WIDGET_MATRIX:
+				size->height = livery_height[this->livery_class] * (4 + FONT_HEIGHT_NORMAL);
+				this->GetWidget<NWidgetCore>(SCLW_WIDGET_MATRIX)->widget_data = (livery_height[this->livery_class] << MAT_ROW_START) | (1 << MAT_COL_START);
+				break;
+
+			case SCLW_WIDGET_SEC_COL_DROPDOWN:
+				if (!_loaded_newgrf_features.has_2CC) size->width = 0;
+				break;
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		/* Disable dropdown controls if no scheme is selected */
+		this->SetWidgetDisabledState(SCLW_WIDGET_PRI_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(SCLW_WIDGET_SEC_COL_DROPDOWN, this->sel == 0);
+
+		this->DrawWidgets();
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case SCLW_WIDGET_PRI_COL_DROPDOWN:
+			case SCLW_WIDGET_SEC_COL_DROPDOWN: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				LiveryScheme scheme = LS_DEFAULT;
+
+				if (this->sel != 0) {
+					for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
+						if (HasBit(this->sel, scheme)) break;
+					}
+					if (scheme == LS_END) scheme = LS_DEFAULT;
+				}
+				SetDParam(0, STR_COLOUR_DARK_BLUE + ((widget == SCLW_WIDGET_PRI_COL_DROPDOWN) ? c->livery[scheme].colour1 : c->livery[scheme].colour2));
+				break;
+			}
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != SCLW_WIDGET_MATRIX) return;
+
+		/* Horizontal coordinates of scheme name column. */
+		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_SPACER_DROPDOWN);
+		int sch_left = nwi->pos_x;
+		int sch_right = sch_left + nwi->current_x - 1;
+		/* Horizontal coordinates of first dropdown. */
+		nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_PRI_COL_DROPDOWN);
+		int pri_left = nwi->pos_x;
+		int pri_right = pri_left + nwi->current_x - 1;
+		/* Horizontal coordinates of second dropdown. */
+		nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_SEC_COL_DROPDOWN);
+		int sec_left = nwi->pos_x;
+		int sec_right = sec_left + nwi->current_x - 1;
+
+		int y = r.top + 3;
+		const Company *c = Company::Get((CompanyID)this->window_number);
+		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+			if (_livery_class[scheme] == this->livery_class) {
+				bool sel = HasBit(this->sel, scheme) != 0;
+
+				/* Optional check box + scheme name. */
+				if (scheme != LS_DEFAULT) {
+					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, sch_left + WD_FRAMERECT_LEFT, y);
+				}
+				DrawString(sch_left + TEXT_INDENT, sch_right - WD_FRAMERECT_RIGHT, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
+
+				/* Text below the first dropdown. */
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), pri_left + WD_FRAMERECT_LEFT, y);
+				DrawString(pri_left + TEXT_INDENT, pri_right - WD_FRAMERECT_RIGHT, y, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
+
+				/* Text below the second dropdown. */
+				if (sec_right > sec_left) { // Second dropdown has non-zero size.
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), sec_left + WD_FRAMERECT_LEFT, y);
+					DrawString(sec_left + TEXT_INDENT, sec_right - WD_FRAMERECT_RIGHT, y, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
+				}
+
+				y += 4 + FONT_HEIGHT_NORMAL;
+			}
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
 			/* Livery Class buttons */
 			case SCLW_WIDGET_CLASS_GENERAL:
 			case SCLW_WIDGET_CLASS_RAIL:
 			case SCLW_WIDGET_CLASS_ROAD:
 			case SCLW_WIDGET_CLASS_SHIP:
-			case SCLW_WIDGET_CLASS_AIRCRAFT: {
-				LiveryScheme scheme;
-
+			case SCLW_WIDGET_CLASS_AIRCRAFT:
 				this->RaiseWidget(this->livery_class + SCLW_WIDGET_CLASS_GENERAL);
 				this->livery_class = (LiveryClass)(widget - SCLW_WIDGET_CLASS_GENERAL);
-				this->sel = 0;
 				this->LowerWidget(this->livery_class + SCLW_WIDGET_CLASS_GENERAL);
 
 				/* Select the first item in the list */
-				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				this->sel = 0;
+				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 					if (_livery_class[scheme] == this->livery_class) {
 						this->sel = 1 << scheme;
 						break;
 					}
 				}
-				this->height = 49 + livery_height[this->livery_class] * 14;
-				this->widget[SCLW_WIDGET_MATRIX].bottom = this->height - 1;
-				this->widget[SCLW_WIDGET_MATRIX].data = (livery_height[this->livery_class] << MAT_ROW_START) | (1 << MAT_COL_START);
-				MarkWholeScreenDirty();
+
+				this->ReInit();
 				break;
-			}
 
 			case SCLW_WIDGET_PRI_COL_DROPDOWN: // First colour dropdown
 				ShowColourDropDownMenu(SCLW_WIDGET_PRI_COL_DROPDOWN);
@@ -688,10 +736,9 @@ public:
 				break;
 
 			case SCLW_WIDGET_MATRIX: {
-				LiveryScheme scheme;
-				LiveryScheme j = (LiveryScheme)((pt.y - 48) / 14);
+				LiveryScheme j = (LiveryScheme)((pt.y - this->GetWidget<NWidgetBase>(SCLW_WIDGET_MATRIX)->pos_y) / (4 + FONT_HEIGHT_NORMAL));
 
-				for (scheme = LS_BEGIN; scheme <= j; scheme++) {
+				for (LiveryScheme scheme = LS_BEGIN; scheme <= j; scheme++) {
 					if (_livery_class[scheme] != this->livery_class) j++;
 					if (scheme >= LS_END) return;
 				}
@@ -724,57 +771,37 @@ public:
 
 	virtual void OnInvalidateData(int data = 0)
 	{
-		int r = this->widget[_loaded_newgrf_features.has_2CC ? SCLW_WIDGET_SEC_COL_DROPDOWN : SCLW_WIDGET_PRI_COL_DROPDOWN].right;
-		this->SetWidgetHiddenState(SCLW_WIDGET_SEC_COL_DROPDOWN, !_loaded_newgrf_features.has_2CC);
-		this->widget[SCLW_WIDGET_CAPTION].right = r;
-		this->widget[SCLW_WIDGET_SPACER_CLASS].right = r;
-		this->widget[SCLW_WIDGET_MATRIX].right = r;
-		this->width = r + 1;
+		this->ReInit();
 	}
 };
 
 static const NWidgetPart _nested_select_company_livery_widgets [] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCLW_WIDGET_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, SCLW_WIDGET_CAPTION), SetMinimalSize(389, 14), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SCLW_WIDGET_CAPTION), SetMinimalSize(250, 14), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_GENERAL), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_LIVERY_GENERAL_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_RAIL), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TRAINLIST, STR_LIVERY_TRAIN_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_ROAD), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TRUCKLIST, STR_LIVERY_ROAD_VEHICLE_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_SHIP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SHIPLIST, STR_LIVERY_SHIP_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_AIRCRAFT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AIRPLANESLIST, STR_LIVERY_AIRCRAFT_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_CLASS), SetMinimalSize(290, 22), EndContainer(),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_GENERAL), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_LIVERY_GENERAL_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_RAIL), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_TRAINLIST, STR_LIVERY_TRAIN_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_ROAD), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_TRUCKLIST, STR_LIVERY_ROAD_VEHICLE_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_SHIP), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_SHIPLIST, STR_LIVERY_SHIP_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_AIRCRAFT), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_AIRPLANESLIST, STR_LIVERY_AIRCRAFT_TOOLTIP),
+		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_CLASS), SetMinimalSize(90, 22), SetFill(true, true), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_DROPDOWN), SetMinimalSize(150, 12), EndContainer(),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetDataTip(STR_BLACK_STRING, STR_LIVERY_PRIMARY_TOOLTIP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetDataTip(STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO, STR_LIVERY_SECONDARY_TOOLTIP),
+		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_DROPDOWN), SetMinimalSize(150, 12), SetFill(true, true), EndContainer(),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(false, true), SetDataTip(STR_BLACK_STRING, STR_LIVERY_PRIMARY_TOOLTIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(false, true),
+				SetDataTip(STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO, STR_LIVERY_SECONDARY_TOOLTIP),
 	EndContainer(),
-	NWidget(WWT_MATRIX, COLOUR_GREY, SCLW_WIDGET_MATRIX), SetMinimalSize(400, 15), SetDataTip((1 << MAT_ROW_START) | (1 << MAT_COL_START), STR_LIVERY_PANEL_TOOLTIP),
-};
-
-static const Widget _select_company_livery_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW },
-{  WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 399,   0,  13, STR_LIVERY_CAPTION,         STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS },
-{   WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,    STR_LIVERY_GENERAL_TOOLTIP },
-{   WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,  22,  43,  14,  35, SPR_IMG_TRAINLIST,          STR_LIVERY_TRAIN_TOOLTIP },
-{   WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,  44,  65,  14,  35, SPR_IMG_TRUCKLIST,          STR_LIVERY_ROAD_VEHICLE_TOOLTIP },
-{   WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,  66,  87,  14,  35, SPR_IMG_SHIPLIST,           STR_LIVERY_SHIP_TOOLTIP },
-{   WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,  88, 109,  14,  35, SPR_IMG_AIRPLANESLIST,      STR_LIVERY_AIRCRAFT_TOOLTIP },
-{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 110, 399,  14,  35, 0x0,                        STR_NULL },
-{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 149,  36,  47, 0x0,                        STR_NULL },
-{ WWT_DROPDOWN, RESIZE_NONE,  COLOUR_GREY, 150, 274,  36,  47, STR_BLACK_STRING,           STR_LIVERY_PRIMARY_TOOLTIP },
-{ WWT_DROPDOWN, RESIZE_NONE,  COLOUR_GREY, 275, 399,  36,  47, STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO, STR_LIVERY_SECONDARY_TOOLTIP },
-{   WWT_MATRIX, RESIZE_NONE,  COLOUR_GREY,   0, 399,  48,  48 + 1 * 14, (1 << 8) | 1,      STR_LIVERY_PANEL_TOOLTIP },
-{ WIDGETS_END },
+	NWidget(WWT_MATRIX, COLOUR_GREY, SCLW_WIDGET_MATRIX), SetMinimalSize(275, 15), SetFill(true, false), SetDataTip((1 << MAT_ROW_START) | (1 << MAT_COL_START), STR_LIVERY_PANEL_TOOLTIP),
 };
 
 static const WindowDesc _select_company_livery_desc(
-	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
+	WDP_AUTO, WDP_AUTO, 0, 0, 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_select_company_livery_widgets, _nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
+	NULL, _nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
 );
 
 /**
