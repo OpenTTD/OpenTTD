@@ -2792,7 +2792,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nav izv�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Pārtraukt transportlīdzekļu nomaiņu
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospied, lai apturētu atzīmētās lokomatīves aizvietošanu
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aizvietošana: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aizvietošana: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Parslēgties starp dzinēja un vagona aizvietošanas logiem
 STR_REPLACE_ENGINES                                             :Lokomotīves
 STR_REPLACE_WAGONS                                              :Vagoni
@@ -2804,7 +2804,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrisko slie
 STR_REPLACE_MONORAIL_VEHICLES                                   :Viensliežu transportlīdzekļi
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magleva transportlīdzekļi
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Auto-aizvietošana saglabās vilciena garumu, aizvācot vagonus (sākot no priekšas), ja mainot lokomatīvi, tas kļūtu garāks.
 
 # Vehicle view

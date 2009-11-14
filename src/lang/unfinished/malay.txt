@@ -1400,7 +1400,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Kapal Terbang
 
 
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{STRING}
 STR_REPLACE_ENGINES                                             :Enjin
 
 

@@ -2795,7 +2795,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}לא נ�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}הפסק את החלפת הכלים
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}לחץ כאן להפסיק את ההחלפה
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{ORANGE}{SKIP}{SKIP}{STRING}{BLACK} : מחליף
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{ORANGE}{STRING}{BLACK} : מחליף
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}החלף בין חלונות החלפת קרון וקטר
 STR_REPLACE_ENGINES                                             :מנועים/קטרים
 STR_REPLACE_WAGONS                                              :קרונות
@@ -2807,7 +2807,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :רכבות חש
 STR_REPLACE_MONORAIL_VEHICLES                                   :רכבות חד-פס
 STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס-מגנטי
 
-STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{SKIP}{STRING}{BLACK} : הסרת קרונות
+STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{STRING}{BLACK} : הסרת קרונות
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}הסר קרונות מהסוף על מנת לשמור על האורך המקורי של הרכבת
 
 # Vehicle view

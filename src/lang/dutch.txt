@@ -2800,7 +2800,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Geen voe
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het vervangen
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wil vervangen
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen locomotief- en wagonvervangvensters
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
@@ -2812,7 +2812,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische rai
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorailvoertuigen
 STR_REPLACE_MAGLEV_VEHICLES                                     :Zweefrailvoertuigen
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 
 # Vehicle view

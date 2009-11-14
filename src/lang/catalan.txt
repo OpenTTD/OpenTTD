@@ -2800,7 +2800,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Cap vehi
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Para de substituir
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterna entre finestres de substitució de vagons i de motors
 STR_REPLACE_ENGINES                                             :Motors
 STR_REPLACE_WAGONS                                              :Vagons
@@ -2812,7 +2812,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Trens Elèctric
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trens Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Trens Maglev
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 
 # Vehicle view

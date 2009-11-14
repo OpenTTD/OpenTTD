@@ -252,9 +252,9 @@ public:
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: {
 				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				SetDParam(1, STR_CONFIG_SETTING_ON);
+				SetDParam(0, STR_CONFIG_SETTING_ON);
 				Dimension d = GetStringBoundingBox(str);
-				SetDParam(1, STR_CONFIG_SETTING_OFF);
+				SetDParam(0, STR_CONFIG_SETTING_OFF);
 				d = maxdim(d, GetStringBoundingBox(str));
 				d.width += padding.width;
 				d.height += padding.height;
@@ -264,9 +264,9 @@ public:
 
 			case RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE: {
 				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				SetDParam(2, STR_REPLACE_ENGINES);
+				SetDParam(0, STR_REPLACE_ENGINES);
 				Dimension d = GetStringBoundingBox(str);
-				SetDParam(2, STR_REPLACE_WAGONS);
+				SetDParam(0, STR_REPLACE_WAGONS);
 				d = maxdim(d, GetStringBoundingBox(str));
 				d.width += padding.width;
 				d.height += padding.height;
@@ -296,12 +296,12 @@ public:
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: {
 				const Company *c = Company::Get(_local_company);
-				SetDParam(1, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+				SetDParam(0, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				break;
 			}
 
 			case RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE:
-				SetDParam(2, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
+				SetDParam(0, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 				break;
 		}
 	}

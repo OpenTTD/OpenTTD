@@ -2555,7 +2555,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ne elekt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ĉesu Anstataŭi
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premu por ĉesi anstataŭi la maldekstre elektitan maŝinon
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Anstataŭante: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Anstataŭante: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Ŝaltu inter maŝina kaj vagona anstataŭigo
 STR_REPLACE_ENGINES                                             :Maŝinoj
 STR_REPLACE_WAGONS                                              :Vagonoj
@@ -2567,7 +2567,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektraj Relaj 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Unurelaj Veturiloj
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevaj Veturiloj
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonforigo: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonforigo: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la trajno per forigo de vagonoj (defronte), se per nova maŝino la trajno plilongiĝas
 
 # Vehicle view

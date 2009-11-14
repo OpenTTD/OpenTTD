@@ -2797,7 +2797,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}좌측에서 선택한 기관차 종류의 교체를 중지하려면 누르세요
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관차/화물차 교체 창을 번갈아 띄웁니다
 STR_REPLACE_ENGINES                                             :기관차
 STR_REPLACE_WAGONS                                              :화물차
@@ -2809,7 +2809,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :전기 철도
 STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 차량
 STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시에 열차가 기존보다 길어지면 화물차를 제거함으로써 교체시 달라지는 열차의 길이를 같게 조정합니다 (앞쪽부터 시작됨)
 
 # Vehicle view

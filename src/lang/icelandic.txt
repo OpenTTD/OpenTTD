@@ -2772,7 +2772,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Enginn v
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Smelltu til að stöðva skipti á vagntegundinni sem valin er vinstra megin
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skipta á milli útskiptiglugga dráttar- og flutningavagna
 STR_REPLACE_ENGINES                                             :Dráttarvagnar
 STR_REPLACE_WAGONS                                              :Vagnar
@@ -2784,7 +2784,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Rafdrifnir lest
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einteinungsvagnar
 STR_REPLACE_MAGLEV_VEHICLES                                     :Segulsvifvagnar
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
 
 # Vehicle view

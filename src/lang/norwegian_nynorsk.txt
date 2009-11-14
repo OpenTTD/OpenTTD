@@ -2750,7 +2750,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ingen lo
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopp utskiftinga av køyretøy
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikk denne knappen for å avbryte utskiftinga av lokomotivet du har vald på venstresida
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift mellom tog- og vognvindauget
 STR_REPLACE_ENGINES                                             :Motorar
 STR_REPLACE_WAGONS                                              :Vogner
@@ -2762,7 +2762,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriske tog
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monoraillokomotiv
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevlokomotiv
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Lat den automatiske utskiftinga behalde lengda på toget ved å fjerne vogner (frå første vogn), dersom utskiftinga gjer toget lenger.
 
 # Vehicle view

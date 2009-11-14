@@ -2793,7 +2793,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nera paz
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stabdyti tr. priemonių keitimą
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Spustelk, jei nori sustabdyti siuo metu vykdoma keitimo procedura
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pereidinėti tarp garvežių ir vagonų pakeitimo langų
 STR_REPLACE_ENGINES                                             :Varikliai
 STR_REPLACE_WAGONS                                              :Vagonai
@@ -2805,7 +2805,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifikuoti 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vienbegiai traukiniai
 STR_REPLACE_MAGLEV_VEHICLES                                     :„Maglev“ traukiniai
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pasalinimas: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pasalinimas: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant juo priekio), jeigu pakeitus garvežį traukinys pailgėtų.
 
 # Vehicle view

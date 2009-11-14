@@ -2810,7 +2810,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}No hay v
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de reemplazar vehículos
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona este botón si no quieres reemplazar la locomotora seleccionada en la izquierda
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre las ventanas de cambio de vagón y locomotora
 STR_REPLACE_ENGINES                                             :Motores
 STR_REPLACE_WAGONS                                              :Vagones
@@ -2822,7 +2822,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de R
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos Maglev
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagón: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagón: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el cambio automático mantenga la longitud del tren quitando vagones (empezando por adelante), si el cambio de locomotora produce un tren más largo.
 
 # Vehicle view

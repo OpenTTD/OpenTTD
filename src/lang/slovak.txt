@@ -2866,7 +2866,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nie je o
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastavit vymenu vozidiel
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlac toto tlacidlo, ak nechces vymienat typ lokomotivy vybrany v lavom zozname
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prepne medzi oknami na vymenu lokomotiv a vagonov
 STR_REPLACE_ENGINES                                             :Lokomotívy
 STR_REPLACE_WAGONS                                              :Vagonov
@@ -2878,7 +2878,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lok
 STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotiva pre jednokolajovku
 STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotiva pre magneticku drahu
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
 
 # Vehicle view

@@ -2768,7 +2768,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Keen gef
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefierterremplacement
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir Remplacement ze stoppen
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Remplacéiren: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Remplacéiren: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Wagonremplac. Fënster
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagonen
@@ -2780,7 +2780,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Schi
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Gefierer
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Gefierer
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon raushuelen: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon raushuelen: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mecht dass den Autoremplacement d'Lengt vum Zuch behält, andems en Wagonen (vun lénks un) wechhëllt, wann d'Lok den Zuch ze laang mecht.
 
 # Vehicle view

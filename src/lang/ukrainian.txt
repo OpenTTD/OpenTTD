@@ -2934,7 +2934,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Не в�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Зупинити оновлення
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів, що вибрані ліворуч
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключення між вікнами заміни потягів та вагонів.
 STR_REPLACE_ENGINES                                             :Потяги
 STR_REPLACE_WAGONS                                              :Вагони
@@ -2946,7 +2946,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Електри�
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельс
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнітна подушка
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони, зберігаючи довжину потягу (починаючи спереду), якщо оновлення робить поїзд довшим.
 
 # Vehicle view

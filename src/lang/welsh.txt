@@ -2771,7 +2771,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Dim cerb
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Dechrau Disodli Cerbydau
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Gwasgwch i atal disodli'r math injan sydd wedi'i ddewis ar y chwith
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y sgrin ddisodli wagenni a'r un injans.
 STR_REPLACE_ENGINES                                             :Injanau
 STR_REPLACE_WAGONS                                              :Wagenni
@@ -2783,7 +2783,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Cerbydau Rheilf
 STR_REPLACE_MONORAIL_VEHICLES                                   :Cerbydau Monoreilffordd
 STR_REPLACE_MAGLEV_VEHICLES                                     :Cerbydau Maglef
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai disodli'r injan yn gwneud y trên yn hirach.
 
 # Vehicle view

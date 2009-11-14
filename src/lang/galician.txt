@@ -2748,7 +2748,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Non hai 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Substituír Vehículos
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona para parar a substitución do tipo de máquina seleccionada na esquerda
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituíndo: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituíndo: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre as fiestras de substitución de máquinas e vagóns
 STR_REPLACE_ENGINES                                             :Máquinas
 STR_REPLACE_WAGONS                                              :Vagóns
@@ -2760,7 +2760,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de R
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos Monoraíl
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos Maglev
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando polo principio), se ó substituír a máquina o tren é máis longo.
 
 # Vehicle view

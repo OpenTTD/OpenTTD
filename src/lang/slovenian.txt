@@ -2813,7 +2813,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ni izbra
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ustavi menjavo vozil
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisni za zaustavitev zamenjave na levi izbranega tipa lokomotive
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Preklop med okni za menjavo lokomotiv in vagonov
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
@@ -2825,7 +2825,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Električna tir
 STR_REPLACE_MONORAIL_VEHICLES                                   :Enotirna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetna tirna vozila
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranitev vagonov: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranitev vagonov: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala.
 
 # Vehicle view

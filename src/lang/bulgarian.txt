@@ -2763,7 +2763,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Няма
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спиране на замяната
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натиснете за спиране подновяването на избрания в ляво двигател
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяна: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяна: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Превключване между замяна на локомотиви и вагони
 STR_REPLACE_ENGINES                                             :Двигатели
 STR_REPLACE_WAGONS                                              :Вагони
@@ -2775,7 +2775,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Електри�
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорелсови локомотиви
 STR_REPLACE_MAGLEV_VEHICLES                                     :Маглев влакове
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Премахване на вагон: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Премахване на вагон: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Автоматичната замяна ще запази дължината на влака като премахне вагони (започвайки от предните), ако замяната довежда до по-дълъг влак.
 
 # Vehicle view

@@ -2810,7 +2810,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Aucun v�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer sur ce bouton pour arrêter le remplacement du type locomotive sélectionné à gauche
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En remplacement{NBSP}: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En remplacement{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Passer à la fenêtre de remplacement de locomotives/wagons
 STR_REPLACE_ENGINES                                             :Locomotives
 STR_REPLACE_WAGONS                                              :Wagons
@@ -2822,7 +2822,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule élect
 STR_REPLACE_MONORAIL_VEHICLES                                   :Véhicules sur monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules sur Maglev
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon{NBSP}: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}L'autoremplacement conserve la même longueur du train en retirant des wagons (d'abord par la tête), si le remplacement fait en sorte que le train ne devienne plus long.
 
 # Vehicle view

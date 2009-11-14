@@ -2799,7 +2799,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nici un 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicule
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasa aici pentru oprirea inlocuirii motorului selectat in stanga
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã între ferestrele de înlocuire motoare si vagoane
 STR_REPLACE_ENGINES                                             :Motoare
 STR_REPLACE_WAGONS                                              :Vagoane
@@ -2811,7 +2811,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule Electr
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicule Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicule Pernă Magnetică
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
 
 # Vehicle view

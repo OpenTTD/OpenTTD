@@ -2870,7 +2870,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Δεν �
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Σταμάτημα της Αντικατάστασης Οχημάτων
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του επιλεγμένου στα αριστερά τυπου μηχανής
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Αντικατάσταση: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Αντικατάσταση: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλάγη μεταξύ των παραθύρων αντικαταστάσης μηχανών και βαγονιών
 STR_REPLACE_ENGINES                                             :Μηχανές
 STR_REPLACE_WAGONS                                              :Βαγόνια
@@ -2882,7 +2882,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Βαγόνια Maglev
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Επιτρέπει στην αυτομάτη αντικατάσταση να κρατάει το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινωντας από μπροστά), έαν αντικατασταθεί η μηχανή θα κάνετε το τρένο μεγαλύτερο.
 
 # Vehicle view

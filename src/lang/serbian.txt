@@ -2995,7 +2995,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nijedno 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zaustavi Zamenu Vozila
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisnite kako bi se zaustavila zamena vrsta lokomotive označene sa leve strane
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje se: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje se: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebacuje između prikaza zamene lokomotiva i zamene vagona
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
@@ -3007,7 +3007,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrošinska 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Jednošinska Vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetnošinska Vozila
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ukanjanje vagona: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ukanjanje vagona: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko bi se zamenom kompozicija produžila, automatska obnova će ukloniti vagone (sa početka) kako bi se zadržala dužina kompozicije.
 
 # Vehicle view

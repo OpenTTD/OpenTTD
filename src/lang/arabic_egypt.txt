@@ -2800,7 +2800,7 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}لم ي�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK} اوقف تبديل العربات
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK} اضغط لايقاف تبديل المحركات المختارة في اليسار
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK} تبديل:  {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK} تبديل:  {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} بدل بين نافذة استبدال المحركات و العربات
 STR_REPLACE_ENGINES                                             :محركات
 STR_REPLACE_WAGONS                                              :عربات
@@ -2812,7 +2812,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :سكة حديد
 STR_REPLACE_MONORAIL_VEHICLES                                   :عربات احادية السكة
 STR_REPLACE_MAGLEV_VEHICLES                                     :مركبات ممغنطة
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK} ازالة العربات: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK} ازالة العربات: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
 
 # Vehicle view
