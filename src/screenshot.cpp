@@ -31,7 +31,7 @@ static ScreenshotType _screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */
 typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, uint n);
-typedef bool ScreenshotHandlerProc(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
+typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
 
 struct ScreenshotFormat {
 	const char *name;
@@ -91,7 +91,7 @@ assert_compile(sizeof(RgbTriplet) == 3);
  * @param palette colour palette (for 8bpp mode)
  * @return was everything ok?
  */
-static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	uint bpp; // bytes per pixel
 	switch (pixelformat) {
@@ -208,16 +208,16 @@ static bool MakeBmpImage(char *name, ScreenshotCallback *callb, void *userdata, 
 
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
-	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
+	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (const char *)png_get_error_ptr(png_ptr));
 	longjmp(png_ptr->jmpbuf, 1);
 }
 
 static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 {
-	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
+	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (const char *)png_get_error_ptr(png_ptr));
 }
 
-static bool MakePNGImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	png_color rq[256];
 	FILE *f;
@@ -233,7 +233,7 @@ static bool MakePNGImage(char *name, ScreenshotCallback *callb, void *userdata, 
 	f = fopen(name, "wb");
 	if (f == NULL) return false;
 
-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, name, png_my_error, png_my_warning);
+	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, (void *)name, png_my_error, png_my_warning);
 
 	if (png_ptr == NULL) {
 		fclose(f);
@@ -346,7 +346,7 @@ struct PcxHeader {
 };
 assert_compile(sizeof(PcxHeader) == 128);
 
-static bool MakePCXImage(char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	FILE *f;
 	uint maxlines;
@@ -569,7 +569,7 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 	_screen_disable_anim = old_disable_anim;
 }
 
-static char *MakeScreenshotName(const char *ext)
+static const char *MakeScreenshotName(const char *ext)
 {
 	if (_screenshot_name[0] == '\0') {
 		if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_company == COMPANY_SPECTATOR) {
