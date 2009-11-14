@@ -3038,7 +3038,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :صحيح
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :خاطئ
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}القيمة التي يتم مقارنة العربة معها
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}ادخل قيمة للمقارنة معها
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}تجاوز

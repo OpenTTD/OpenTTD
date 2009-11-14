@@ -3038,7 +3038,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is waar
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is niet waar
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}De waarde waartegen het voertuig wordt vergeleken
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Geef waarde voor de vergelijking
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Sla over

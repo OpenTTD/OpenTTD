@@ -3037,7 +3037,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :este adevărat
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :este fals
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Valoarea cu care se compară
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduceţi valoarea de comparat
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Treci la următoarea

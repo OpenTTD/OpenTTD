@@ -3172,7 +3172,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :- так
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :- ні
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Значення, з яким порівнювати дані транспорту
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Введіть значення для порівняння
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Пропуск

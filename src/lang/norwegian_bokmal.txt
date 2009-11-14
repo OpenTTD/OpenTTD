@@ -3032,7 +3032,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er sant
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er usant
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Verdien til å sammenligne kjøretøyets data mot
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv inn verdi til å sammenligne mot
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Hopp over

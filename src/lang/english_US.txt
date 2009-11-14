@@ -3034,7 +3034,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is true
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is false
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}The value to compare the vehicle data against
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Enter value to compare against
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skip

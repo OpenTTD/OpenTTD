@@ -3010,7 +3010,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er satt
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er ósatt
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Gildið sem bera á við gögn farartækis
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skrifa skal tölu til að bera saman við
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Sleppa

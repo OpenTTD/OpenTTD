@@ -3433,7 +3433,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :prawda
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :fałsz
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartość do porównania z danymi pojazdu
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Pomiń

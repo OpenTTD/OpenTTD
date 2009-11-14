@@ -3051,7 +3051,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :dejavno
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nedejavno
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Primerjalna vrednost za podatke vozila
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Vnesi primerjalno vrednost
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskoči

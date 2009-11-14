@@ -3033,7 +3033,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :אמת
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :שקר
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}ערך להשוואה מול נתוני כלי הרכב
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}:הכנס ערך כבסיס להשוואהֿ
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}דלג

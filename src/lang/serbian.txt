@@ -3233,7 +3233,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :potreban
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nepotreban
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vrednost za poređenje sa podatkom o vozilu
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Unos vrednosti za poređenje
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskoči

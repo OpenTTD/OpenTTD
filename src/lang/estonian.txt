@@ -3094,7 +3094,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :on tõene
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :on väär
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Väärtus, millega sõiduki andmeid võrreldakse
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Sisesta väärtus, millega võrrelda
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Jäta vahele

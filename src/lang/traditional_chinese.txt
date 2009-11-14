@@ -3038,7 +3038,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :為是
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :為否
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}與交通工具資料比對的數值
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}輸入想比對的數值
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳過

@@ -3063,7 +3063,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je istinito
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je lažno
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vrijednost s kojim se uspoređuju podaci vozila
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Unesi vrijednost s kojom će se porediti
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskoči

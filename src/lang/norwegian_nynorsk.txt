@@ -2977,7 +2977,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er rett
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er feil
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Verdien som informasjon frå køyretøyet vert samanlikna med
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv inn verdi å samanlikne med
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Hopp over

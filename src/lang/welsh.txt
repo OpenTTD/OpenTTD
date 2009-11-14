@@ -3009,7 +3009,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :yn wir
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :yn anghywir
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK} Y gwerth i gymharu data'r cerbyd yn ei erbyn
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Rhowch y gwerth i'w gymharu'n ei erbyn
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Hepgor

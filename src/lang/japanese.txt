@@ -2961,7 +2961,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :である
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ではない
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}乗り物のデータと比較する値
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}比較に用いる値を入力
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}スキップ

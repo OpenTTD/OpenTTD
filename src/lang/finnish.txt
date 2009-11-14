@@ -3047,7 +3047,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :on tosi
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :on epätosi
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Arvo, johon kulkuneuvon tietoja verrataan
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Syötä arvo, johon verrataan
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Ohita

@@ -3037,7 +3037,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :为是
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :为否
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}要比较车辆的数据值
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}请输入要比较的值
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳过

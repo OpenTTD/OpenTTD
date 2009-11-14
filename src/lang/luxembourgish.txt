@@ -3006,7 +3006,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :as wouer(true)
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :as falsch(false)
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Den Wert deen mat den Gefiertsdaten verglach gëtt
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert anginn fir ze vergläichen
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Iwersprangen

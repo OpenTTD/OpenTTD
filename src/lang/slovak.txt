@@ -3104,7 +3104,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je pravda
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je nepravda
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, s ktorou sa majú porovnat dáta vozidla
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadajte hodnotu voci ktorej sa ma porovnat
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskocit

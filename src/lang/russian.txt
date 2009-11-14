@@ -3207,7 +3207,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :истина
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ложь
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Значение для сравнения с данными транспорта
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Введите значение для сравнения
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Пропуск

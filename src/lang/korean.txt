@@ -3035,7 +3035,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :이 있을 때
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :이 없을 때
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}차량 데이터에 대해 비교하기 위한 값
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}건너뛰기

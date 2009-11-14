@@ -3048,7 +3048,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :wahr
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falsch
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wert der mit Farzeuginformation verglichen wird
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert für den Vergleich eingeben
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Überspringen

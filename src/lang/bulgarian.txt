@@ -2994,7 +2994,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :е правил
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :е неправилно
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Стойност, с която да сравня данните на превозното средство
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Вкарай стойност за сравнение
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Остави

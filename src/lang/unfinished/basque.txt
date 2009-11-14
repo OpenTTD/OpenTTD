@@ -1194,7 +1194,6 @@ STR_ORDER_SELECTED                                              :{RIGHTARROW}{SE
 
 
 
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 
 
 

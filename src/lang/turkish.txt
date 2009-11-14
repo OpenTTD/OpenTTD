@@ -3036,7 +3036,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :doğrudur
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :yanlıştır
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Araç verisi ile karşılaştırılacak değer
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Karşılaştırma yapılacak değeri giriniz
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Atla

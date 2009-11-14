@@ -3030,7 +3030,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ir patiess
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ir nepatiess
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vērtība transporta datu salīdzināšanai pret
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Ievadiet vērtību ar kuru salīdzināsiet
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Izlaist

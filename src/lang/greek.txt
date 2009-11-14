@@ -3108,7 +3108,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :είναι αλ
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :είναι ψευδές
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Η τιμή για να γίνει η σύγκριση με τα δεδομένα του οχήματος
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Δώστε τίμη για να συγκριθεί
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Παράκαμψη

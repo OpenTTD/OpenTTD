@@ -3035,7 +3035,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er sand
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er falsk
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Værdi data skal sammenlignes med
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv værdi der sammenlignes med
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Spring over

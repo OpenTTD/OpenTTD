@@ -3072,7 +3072,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :igaz
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :hamis
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Az érték amihez a jármű egy adatát viszonyítjuk
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Írd be az értéket amihez viszonyítani szeretnél
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Kihagy

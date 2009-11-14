@@ -3035,7 +3035,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :sant
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falskt
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Värde att jämföra fordonsdata mot
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv in värde att jämföra mot
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skippa

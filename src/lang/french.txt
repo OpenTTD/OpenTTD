@@ -3048,7 +3048,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :est vrai
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :est faux
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}La valeur à comparer aux données du véhicule
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Entrer la valeur à comparer
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Suivant

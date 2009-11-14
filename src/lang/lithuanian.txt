@@ -3019,7 +3019,6 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :daugiau arba ly
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :tiesa
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :klaida
 
-STR_ORDER_CONDITIONAL_VALUE                                     :{SKIP}{BLACK}{COMMA}
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite kainą palyginti su
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Praleisti
