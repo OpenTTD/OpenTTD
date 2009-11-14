@@ -571,7 +571,9 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 
 static const char *MakeScreenshotName(const char *ext)
 {
-	if (_screenshot_name[0] == '\0') {
+	bool generate = StrEmpty(_screenshot_name);
+
+	if (generate) {
 		if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_company == COMPANY_SPECTATOR) {
 			strecpy(_screenshot_name, "screenshot", lastof(_screenshot_name));
 		} else {
@@ -590,6 +592,7 @@ static const char *MakeScreenshotName(const char *ext)
 			filename[0] = '\0';
 			break;
 		}
+		if (!generate) break; // allow overwriting of non-automatic filenames
 		if (!FileExists(filename)) break;
 		/* If file exists try another one with same name, but just with a higher index */
 		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%u.%s", serial, ext);
