@@ -119,6 +119,7 @@ const char *GetCurrentLocale(const char *)
 }
 
 
+#ifdef WITH_COCOA
 bool GetClipboardContents(char *buffer, size_t buff_len)
 {
 	NSPasteboard *pb = [ NSPasteboard generalPasteboard ];
@@ -135,3 +136,4 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 
 	return true;
 }
+#endif
