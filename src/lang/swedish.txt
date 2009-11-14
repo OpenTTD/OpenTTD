@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna l
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, AI debug, skärmdumpar, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verktygsrad
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spara scenario, öppna scenario, avbryt scenarioeditor, avsluta
@@ -1647,6 +1648,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt fö
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kasta ut
+STR_NETWORK_CLIENTLIST_BAN                                      :Bannlys
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Ge pengar
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Prata med alla
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Prata med alla i företaget
@@ -1723,7 +1725,16 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servern är ful
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spel pausad ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel fortfarande pausad ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel fortfarande pausad ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel fortfarande pausad ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel opausad ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :inte tillräckligt med spelare
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ansluter klienter
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lämnar
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har gått med i spelet
@@ -2774,6 +2785,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lok
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lok
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Effekt: {POWER}  Max. T.E.: {7:FORCE}{}Löpande kostnad: {CURRENCY}/yr{}Kapacitet: {CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kostnad: {CURRENCY} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO}, {CARGO}{}Körkostnad: {CURRENCY}/år
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kostnad: {CURRENCY} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO}{}Körkostnad: {CURRENCY}/år
 
@@ -3989,6 +4001,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
@@ -4016,4 +4029,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

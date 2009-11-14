@@ -301,7 +301,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Şirketi
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketler ligini göster
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+sol tuş ile grup/araç listesini aç/kapa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele
@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Toplam:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Araç sayısı; araba, tren uçak ve gemiler dahil
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}İstasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçasi ayri olarak sayılir (ör: tren istasyonu, otobüs durağı, havalimanı)
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelirli aracın kârı (2 yildan yasli tüm araçlar için)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelirli aracın kârı (Sadece 2 yıldan yaşlı araçlar için)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrekte en az kârlı aydaki gelir
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrekte en çok kârlı aydaki gelir
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Son 4 çeyrekte taşınan kargo miktar
@@ -2018,9 +2018,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Oyuncuya
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Şehir Yapımı
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Yeni Şehir
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Yeni şehir yarat
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Yeni şehir kur
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Rastgele Şehir
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir yarat
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir kur
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Birçok rastgele şehir
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Haritayı rastgele şehirlerle doldur
 
@@ -4027,4 +4027,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-
