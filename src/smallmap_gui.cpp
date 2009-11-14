@@ -560,7 +560,7 @@ class SmallMapWindow : public Window {
 	 * @param tile_x the tile's X coordinate.
 	 * @return the X coordinate to draw on.
 	 */
-	inline int RemapX(int tile_x)
+	inline int RemapX(int tile_x) const
 	{
 		return tile_x - this->scroll_x / TILE_SIZE;
 	}
@@ -571,7 +571,7 @@ class SmallMapWindow : public Window {
 	 * @param tile_y the tile's Y coordinate.
 	 * @return the Y coordinate to draw on.
 	 */
-	inline int RemapY(int tile_y)
+	inline int RemapY(int tile_y) const
 	{
 		return tile_y - this->scroll_y / TILE_SIZE;
 	}
@@ -590,7 +590,7 @@ class SmallMapWindow : public Window {
 	 * @param proc Pointer to the colour function
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
-	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, Blitter *blitter, GetSmallMapPixels *proc)
+	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, Blitter *blitter, GetSmallMapPixels *proc) const
 	{
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
 		void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
@@ -629,7 +629,7 @@ class SmallMapWindow : public Window {
 	 * @param dpi the part of the smallmap to be drawn into
 	 * @param blitter current blitter
 	 */
-	void DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter)
+	void DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter) const
 	{
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
@@ -678,7 +678,7 @@ class SmallMapWindow : public Window {
 	 * Adds town names to the smallmap.
 	 * @param dpi the part of the smallmap to be drawn into
 	 */
-	void DrawTowns(const DrawPixelInfo *dpi)
+	void DrawTowns(const DrawPixelInfo *dpi) const
 	{
 		const Town *t;
 		FOR_ALL_TOWNS(t) {
@@ -729,7 +729,7 @@ class SmallMapWindow : public Window {
 	/**
 	 * Adds map indicators to the smallmap.
 	 */
-	void DrawMapIndicators()
+	void DrawMapIndicators() const
 	{
 		/* Find main viewport. */
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
@@ -764,7 +764,7 @@ class SmallMapWindow : public Window {
 	 *
 	 * @param dpi pointer to pixel to write onto
 	 */
-	void DrawSmallMap(DrawPixelInfo *dpi)
+	void DrawSmallMap(DrawPixelInfo *dpi) const
 	{
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		DrawPixelInfo *old_dpi;
@@ -1019,7 +1019,7 @@ public:
 				/* If industry type small map*/
 				if (this->map_type == SMT_INDUSTRY) {
 					/* If click on industries label, find right industry type and enable/disable it */
-					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // Label panel
+					const Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // Label panel
 					uint column = (pt.x - 4) / COLUMN_WIDTH;
 					uint line = (pt.y - wi->top - 2) / 6;
 					int rows_per_column = (wi->bottom - wi->top) / 6;
@@ -1137,7 +1137,7 @@ public:
 
 	void SmallMapCenterOnCurrentPos()
 	{
-		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
 		int x = ((vp->virtual_width  - (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
 		int y = ((vp->virtual_height - (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
