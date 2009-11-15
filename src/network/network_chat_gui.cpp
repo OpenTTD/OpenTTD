@@ -546,7 +546,7 @@ static const WindowDesc _chat_window_desc(
 	WDP_CENTER, 0, 320, 14, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
-	NULL, _nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
+	_nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
 );
 
 void ShowNetworkChatQueryWindow(DestType type, int dest)

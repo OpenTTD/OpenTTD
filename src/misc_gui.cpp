@@ -75,7 +75,7 @@ static const WindowDesc _land_info_desc(
 	WDP_AUTO, WDP_AUTO, 0, 0, 0, 0,
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_land_info_widgets, lengthof(_nested_land_info_widgets)
+	_nested_land_info_widgets, lengthof(_nested_land_info_widgets)
 );
 
 class LandInfoWindow : public Window {
@@ -349,7 +349,7 @@ static const WindowDesc _about_desc(
 	WDP_CENTER, WDP_CENTER, 0, 0, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_about_widgets, lengthof(_nested_about_widgets)
+	_nested_about_widgets, lengthof(_nested_about_widgets)
 );
 
 static const char * const _credits[] = {
@@ -509,7 +509,7 @@ static const WindowDesc _errmsg_desc(
 	0, 0, 240, 46, 240, 46, // x/y position is not used.
 	WC_ERRMSG, WC_NONE,
 	WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
+	_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
 );
 
 static const NWidgetPart _nested_errmsg_face_widgets[] = {
@@ -529,7 +529,7 @@ static const WindowDesc _errmsg_face_desc(
 	0, 0, 334, 137, 334, 137, // x/y position is not used.
 	WC_ERRMSG, WC_NONE,
 	WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
+	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
 );
 
 /** Window class for displaying an error message window. */
@@ -776,7 +776,7 @@ static const WindowDesc _tool_tips_desc(
 	100, 100, 0, 0, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
 	0,
-	NULL, _nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
+	_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
 );
 
 /** Window for displaying a tooltip. */
@@ -1459,7 +1459,7 @@ static const WindowDesc _query_string_desc(
 	190, 219, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_query_string_widgets, lengthof(_nested_query_string_widgets)
+	_nested_query_string_widgets, lengthof(_nested_query_string_widgets)
 );
 
 /** Show a query popup window with a textbox in it.
@@ -1614,7 +1614,7 @@ static const WindowDesc _query_desc(
 	WDP_CENTER, WDP_CENTER, 210, 82, 210, 82,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
-	NULL, _nested_query_widgets, lengthof(_nested_query_widgets)
+	_nested_query_widgets, lengthof(_nested_query_widgets)
 );
 
 /** Show a modal confirmation window with standard 'yes' and 'no' buttons
@@ -2062,14 +2062,14 @@ static const WindowDesc _load_dialog_desc(
 	WDP_CENTER, WDP_CENTER, 257, 154, 257, 294,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	NULL, _nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
+	_nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
 );
 
 static const WindowDesc _save_dialog_desc(
 	WDP_CENTER, WDP_CENTER, 257, 180, 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	NULL, _nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)
+	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)
 );
 
 /** These values are used to convert the file/operations mode into a corresponding file type.

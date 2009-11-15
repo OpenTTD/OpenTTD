@@ -664,7 +664,7 @@ static const WindowDesc _company_stations_desc(
 	WDP_AUTO, WDP_AUTO, 358, 162, 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_company_stations_widgets, lengthof(_nested_company_stations_widgets)
+	_nested_company_stations_widgets, lengthof(_nested_company_stations_widgets)
 );
 
 /**
@@ -1113,7 +1113,7 @@ static const WindowDesc _station_view_desc(
 	WDP_AUTO, WDP_AUTO, 249, 110, 249, 110,
 	WC_STATION_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_station_view_widgets, lengthof(_nested_station_view_widgets)
+	_nested_station_view_widgets, lengthof(_nested_station_view_widgets)
 );
 
 /**
@@ -1363,7 +1363,7 @@ static const WindowDesc _select_station_desc(
 	WDP_AUTO, WDP_AUTO, 200, 80, 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	NULL, _nested_select_station_widgets, lengthof(_nested_select_station_widgets)
+	_nested_select_station_widgets, lengthof(_nested_select_station_widgets)
 );
 
 

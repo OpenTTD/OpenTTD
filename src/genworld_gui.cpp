@@ -765,14 +765,14 @@ static const WindowDesc _generate_landscape_desc(
 	WDP_CENTER, WDP_CENTER, 338, 313, 338, 313,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_generate_landscape_widgets, lengthof(_nested_generate_landscape_widgets)
+	_nested_generate_landscape_widgets, lengthof(_nested_generate_landscape_widgets)
 );
 
 static const WindowDesc _heightmap_load_desc(
 	WDP_CENTER, WDP_CENTER, 338, 236, 338, 236,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_heightmap_load_widgets, lengthof(_nested_heightmap_load_widgets)
+	_nested_heightmap_load_widgets, lengthof(_nested_heightmap_load_widgets)
 );
 
 static void _ShowGenerateLandscape(glwp_modes mode)
@@ -1074,7 +1074,7 @@ static const WindowDesc _create_scenario_desc(
 	WDP_CENTER, WDP_CENTER, 338, 170, 338, 170,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_create_scenario_widgets, lengthof(_nested_create_scenario_widgets)
+	_nested_create_scenario_widgets, lengthof(_nested_create_scenario_widgets)
 );
 
 void ShowCreateScenario()
@@ -1109,7 +1109,7 @@ static const WindowDesc _generate_progress_desc(
 	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
+	_nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
 );
 
 struct tp_info {

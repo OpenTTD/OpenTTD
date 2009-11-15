@@ -461,7 +461,7 @@ static const WindowDesc _company_finances_desc(
 	WDP_AUTO, WDP_AUTO, 0, 0, 0, 0,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	NULL, _nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
+	_nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
 );
 
 /** Open the finances window of a company.
@@ -801,7 +801,7 @@ static const WindowDesc _select_company_livery_desc(
 	WDP_AUTO, WDP_AUTO, 0, 0, 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
+	_nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
 );
 
 /**
@@ -1382,7 +1382,7 @@ static const WindowDesc _select_company_manager_face_desc(
 	WDP_AUTO, WDP_AUTO, 190, 163, 190, 163,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	NULL, _nested_select_company_manager_face_widgets, lengthof(_nested_select_company_manager_face_widgets)
+	_nested_select_company_manager_face_widgets, lengthof(_nested_select_company_manager_face_widgets)
 );
 
 /** advanced company manager face selection window description */
@@ -1390,7 +1390,7 @@ static const WindowDesc _select_company_manager_face_adv_desc(
 	WDP_AUTO, WDP_AUTO, 220, 220, 220, 220,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	NULL, _nested_select_company_manager_face_adv_widgets, lengthof(_nested_select_company_manager_face_adv_widgets)
+	_nested_select_company_manager_face_adv_widgets, lengthof(_nested_select_company_manager_face_adv_widgets)
 );
 
 /**
@@ -1425,23 +1425,6 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_SELL_SHARE,
 	CW_WIDGET_COMPANY_PASSWORD,
 	CW_WIDGET_COMPANY_JOIN,
-};
-
-static const Widget _company_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                        STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   359,     0,    13, STR_COMPANY_VIEW_CAPTION,               STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   359,    14,   157, 0x0,                                    STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    89,   158,   169, STR_COMPANY_VIEW_NEW_FACE_BUTTON,       STR_COMPANY_VIEW_NEW_FACE_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    90,   179,   158,   169, STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON,  STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   180,   269,   158,   169, STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   270,   359,   158,   169, STR_COMPANY_VIEW_COMPANY_NAME_BUTTON,   STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,    18,    29, STR_COMPANY_VIEW_VIEW_HQ_BUTTON,        STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,    32,    43, STR_COMPANY_VIEW_RELOCATE_HQ,                        STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   179,   158,   169, STR_COMPANY_VIEW_BUY_SHARE_BUTTON,      STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   180,   359,   158,   169, STR_COMPANY_VIEW_SELL_SHARE_BUTTON,     STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,   138,   149, STR_COMPANY_VIEW_PASSWORD,                   STR_COMPANY_VIEW_PASSWORD_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,   138,   149, STR_COMPANY_VIEW_JOIN,                       STR_COMPANY_VIEW_JOIN_TOOLTIP},
-{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_company_widgets[] = {
@@ -1784,7 +1767,7 @@ static const WindowDesc _company_desc(
 	WDP_AUTO, WDP_AUTO, 360, 170, 360, 170,
 	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_company_widgets, _nested_company_widgets,lengthof(_nested_company_widgets)
+	_nested_company_widgets, lengthof(_nested_company_widgets)
 );
 
 void ShowCompany(CompanyID company)
@@ -1896,7 +1879,7 @@ static const WindowDesc _buy_company_desc(
 	153, 171, 334, 137, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	NULL, _nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
+	_nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
 );
 
 

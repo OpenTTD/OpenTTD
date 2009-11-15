@@ -686,14 +686,14 @@ static WindowDesc _other_group_desc(
 	WDP_AUTO, WDP_AUTO, 460, 194, 460, 246,
 	WC_INVALID, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_group_widgets, lengthof(_nested_group_widgets)
+	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
 const static WindowDesc _train_group_desc(
 	WDP_AUTO, WDP_AUTO, 525, 194, 525, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_group_widgets, lengthof(_nested_group_widgets)
+	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
 void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)

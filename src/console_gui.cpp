@@ -161,7 +161,7 @@ static const WindowDesc _console_window_desc(
 	0, 0, 0, 0, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	0,
-	NULL, _nested_console_window_widgets, lengthof(_nested_console_window_widgets)
+	_nested_console_window_widgets, lengthof(_nested_console_window_widgets)
 );
 
 struct IConsoleWindow : Window

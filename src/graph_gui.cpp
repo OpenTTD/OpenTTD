@@ -143,7 +143,7 @@ static const WindowDesc _graph_legend_desc(
 	WDP_AUTO, WDP_AUTO, 250, 196, 250, 196,
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_graph_legend_widgets, lengthof(_nested_graph_legend_widgets)
+	_nested_graph_legend_widgets, lengthof(_nested_graph_legend_widgets)
 );
 
 static void ShowGraphLegend()
@@ -529,7 +529,7 @@ static const WindowDesc _operating_profit_desc(
 	WDP_AUTO, WDP_AUTO, 576, 174, 576, 174,
 	WC_OPERATING_PROFIT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_operating_profit_widgets, lengthof(_nested_operating_profit_widgets)
+	_nested_operating_profit_widgets, lengthof(_nested_operating_profit_widgets)
 );
 
 
@@ -570,7 +570,7 @@ static const WindowDesc _income_graph_desc(
 	WDP_AUTO, WDP_AUTO, 576, 142, 576, 142,
 	WC_INCOME_GRAPH, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_income_graph_widgets, lengthof(_nested_income_graph_widgets)
+	_nested_income_graph_widgets, lengthof(_nested_income_graph_widgets)
 );
 
 void ShowIncomeGraph()
@@ -608,7 +608,7 @@ static const WindowDesc _delivered_cargo_graph_desc(
 	WDP_AUTO, WDP_AUTO, 576, 142, 576, 142,
 	WC_DELIVERED_CARGO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_delivered_cargo_graph_widgets, lengthof(_nested_delivered_cargo_graph_widgets)
+	_nested_delivered_cargo_graph_widgets, lengthof(_nested_delivered_cargo_graph_widgets)
 );
 
 void ShowDeliveredCargoGraph()
@@ -662,7 +662,7 @@ static const WindowDesc _performance_history_desc(
 	WDP_AUTO, WDP_AUTO, 576, 238, 576, 238,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_performance_history_widgets, lengthof(_nested_performance_history_widgets)
+	_nested_performance_history_widgets, lengthof(_nested_performance_history_widgets)
 );
 
 void ShowPerformanceHistoryGraph()
@@ -700,7 +700,7 @@ static const WindowDesc _company_value_graph_desc(
 	WDP_AUTO, WDP_AUTO, 576, 238, 576, 238,
 	WC_COMPANY_VALUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_company_value_graph_widgets, lengthof(_nested_company_value_graph_widgets)
+	_nested_company_value_graph_widgets, lengthof(_nested_company_value_graph_widgets)
 );
 
 void ShowCompanyValueGraph()
@@ -862,7 +862,7 @@ static const WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, WDP_AUTO, 568, 46, 568, 46,
 	WC_PAYMENT_RATES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_cargo_payment_rates_widgets, lengthof(_nested_cargo_payment_rates_widgets)
+	_nested_cargo_payment_rates_widgets, lengthof(_nested_cargo_payment_rates_widgets)
 );
 
 
@@ -992,7 +992,7 @@ static const WindowDesc _company_league_desc(
 	WDP_AUTO, WDP_AUTO, 400, 167, 400, 167,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	NULL, _nested_company_league_widgets, lengthof(_nested_company_league_widgets)
+	_nested_company_league_widgets, lengthof(_nested_company_league_widgets)
 );
 
 void ShowCompanyLeagueTable()
@@ -1275,7 +1275,7 @@ static const WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, WDP_AUTO, 299, 241, 299, 241,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	NULL, _nested_performance_rating_detail_widgets, lengthof(_nested_performance_rating_detail_widgets)
+	_nested_performance_rating_detail_widgets, lengthof(_nested_performance_rating_detail_widgets)
 );
 
 void ShowPerformanceRatingDetail()

@@ -203,7 +203,7 @@ static const WindowDesc _main_window_desc(
 	0, 0, 0, 0, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	0,
-	NULL, _nested_main_window_widgets, lengthof(_nested_main_window_widgets)
+	_nested_main_window_widgets, lengthof(_nested_main_window_widgets)
 );
 
 struct MainWindow : Window

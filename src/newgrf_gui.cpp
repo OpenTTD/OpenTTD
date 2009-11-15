@@ -491,7 +491,7 @@ static const WindowDesc _newgrf_add_dlg_desc(
 	WDP_CENTER, WDP_CENTER, 0, 0, 306, 347,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	NULL, _nested_newgrf_add_dlg_widgets, lengthof(_nested_newgrf_add_dlg_widgets)
+	_nested_newgrf_add_dlg_widgets, lengthof(_nested_newgrf_add_dlg_widgets)
 );
 
 static GRFPresetList _grf_preset_list;
@@ -1045,7 +1045,7 @@ static const WindowDesc _newgrf_desc(
 	WDP_CENTER, WDP_CENTER, 300, 263, 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	NULL, _nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)
+	_nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)
 );
 
 /** Callback function for the newgrf 'apply changes' confirmation window

@@ -385,7 +385,7 @@ static const WindowDesc _timetable_desc(
 	WDP_AUTO, WDP_AUTO, 400, 130, 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	NULL, _nested_timetable_widgets, lengthof(_nested_timetable_widgets)
+	_nested_timetable_widgets, lengthof(_nested_timetable_widgets)
 );
 
 void ShowTimetableWindow(const Vehicle *v)

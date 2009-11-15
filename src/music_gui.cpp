@@ -413,7 +413,7 @@ static const WindowDesc _music_track_selection_desc(
 	104, 131, 432, 218, 432, 218,
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_music_track_selection_widgets, lengthof(_nested_music_track_selection_widgets)
+	_nested_music_track_selection_widgets, lengthof(_nested_music_track_selection_widgets)
 );
 
 static void ShowMusicTrackSelection()
@@ -675,7 +675,7 @@ static const WindowDesc _music_window_desc(
 	0, 22, 300, 66, 300, 66,
 	WC_MUSIC_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_music_window_widgets, lengthof(_nested_music_window_widgets)
+	_nested_music_window_widgets, lengthof(_nested_music_window_widgets)
 );
 
 void ShowMusicWindow()

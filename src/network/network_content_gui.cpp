@@ -50,7 +50,7 @@ static const WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 350, 85, 350, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
-	NULL, _nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
+	_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
 );
 
 /** Window for showing the download status of content */
@@ -874,7 +874,7 @@ static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, WDP_CENTER, 450, 278, 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	NULL, _nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
+	_nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
 );
 
 /**

@@ -1345,7 +1345,7 @@ static const WindowDesc _orders_train_desc(
 	WDP_AUTO, WDP_AUTO, 384, 100, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_orders_train_widgets, lengthof(_nested_orders_train_widgets)
+	_nested_orders_train_widgets, lengthof(_nested_orders_train_widgets)
 );
 
 /** Nested widget definition for "your" orders (non-train). */
@@ -1409,7 +1409,7 @@ static const WindowDesc _orders_desc(
 	WDP_AUTO, WDP_AUTO, 384, 100, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_orders_widgets, lengthof(_nested_orders_widgets)
+	_nested_orders_widgets, lengthof(_nested_orders_widgets)
 );
 
 /** Nested widget definition for competitor orders. */
@@ -1435,7 +1435,7 @@ static const WindowDesc _other_orders_desc(
 	WDP_AUTO, WDP_AUTO, 384, 86, 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	NULL, _nested_other_orders_widgets, lengthof(_nested_other_orders_widgets)
+	_nested_other_orders_widgets, lengthof(_nested_other_orders_widgets)
 );
 
 void ShowOrdersWindow(const Vehicle *v)

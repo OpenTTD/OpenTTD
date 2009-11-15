@@ -109,7 +109,7 @@ static WindowDesc _normal_news_desc(
 	WDP_CENTER, 476, 430, 170, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	NULL, _nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
+	_nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
 );
 
 /* New vehicles news items. */
@@ -136,7 +136,7 @@ static WindowDesc _vehicle_news_desc(
 	WDP_CENTER, 476, 430, 170, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	NULL, _nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
+	_nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
 );
 
 /* Company news items. */
@@ -167,7 +167,7 @@ static WindowDesc _company_news_desc(
 	WDP_CENTER, 476, 430, 170, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	NULL, _nested_company_news_widgets, lengthof(_nested_company_news_widgets)
+	_nested_company_news_widgets, lengthof(_nested_company_news_widgets)
 );
 
 /* Thin news items. */
@@ -190,7 +190,7 @@ static WindowDesc _thin_news_desc(
 	WDP_CENTER, 476, 430, 130, 430, 130,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	NULL, _nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
+	_nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
 );
 
 /* Small news items. */
@@ -214,7 +214,7 @@ static WindowDesc _small_news_desc(
 	WDP_CENTER, 476, 280, 87, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
-	NULL, _nested_small_news_widgets, lengthof(_nested_small_news_widgets)
+	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
 );
 
 /**
@@ -1023,7 +1023,7 @@ static const WindowDesc _message_history_desc(
 	240, 22, 400, 140, 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	NULL, _nested_message_history, lengthof(_nested_message_history)
+	_nested_message_history, lengthof(_nested_message_history)
 );
 
 /** Display window with news messages history */
@@ -1311,7 +1311,7 @@ static const WindowDesc _message_options_desc(
 	270,  22,  0, 0, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	NULL, _nested_message_options_widgets, lengthof(_nested_message_options_widgets)
+	_nested_message_options_widgets, lengthof(_nested_message_options_widgets)
 );
 
 void ShowMessageOptions()

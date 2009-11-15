@@ -1366,7 +1366,7 @@ static const WindowDesc _toolb_normal_desc(
 	0, 0, 0, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_NO_FOCUS,
-	NULL, _nested_toolbar_normal_widgets, lengthof(_nested_toolbar_normal_widgets)
+	_nested_toolbar_normal_widgets, lengthof(_nested_toolbar_normal_widgets)
 );
 
 
@@ -1589,7 +1589,7 @@ static const WindowDesc _toolb_scen_desc(
 	0, 0, 0, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
-	NULL, _nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets)
+	_nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets)
 );
 
 /* --- Allocating the toolbar --- */

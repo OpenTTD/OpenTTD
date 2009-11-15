@@ -60,7 +60,7 @@ byte _special_mouse_mode;
 
 /** Window description constructor. */
 WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height, int16 def_width, int16 def_height,
-			WindowClass window_class, WindowClass parent_class, uint32 flags, const Widget *widgets,
+			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts, int16 nwid_length)
 {
 	this->left = left;
@@ -72,7 +72,6 @@ WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height,
 	this->cls = window_class;
 	this->parent_cls = parent_class;
 	this->flags = flags;
-	this->widgets = widgets;
 	this->nwid_parts = nwid_parts;
 	this->nwid_length = nwid_length;
 	this->new_widgets = NULL;
@@ -82,9 +81,9 @@ WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height,
 const Widget *WindowDesc::GetWidgets() const
 {
 	if (this->nwid_parts != NULL) {
-		InitializeWidgetArrayFromNestedWidgets(this->nwid_parts, this->nwid_length, this->widgets, &this->new_widgets);
+		InitializeWidgetArrayFromNestedWidgets(this->nwid_parts, this->nwid_length, NULL, &this->new_widgets);
 	}
-	const Widget *wids = (this->new_widgets != NULL) ? this->new_widgets : this->widgets;
+	const Widget *wids = this->new_widgets;
 	assert(wids != NULL);
 	return wids;
 }

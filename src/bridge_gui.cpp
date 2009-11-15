@@ -342,7 +342,7 @@ static const WindowDesc _build_bridge_desc(
 	WDP_AUTO, WDP_AUTO, 200, 114, 200, 114,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
-	NULL, _nested_build_bridge_widgets, lengthof(_nested_build_bridge_widgets)
+	_nested_build_bridge_widgets, lengthof(_nested_build_bridge_widgets)
 );
 
 /**

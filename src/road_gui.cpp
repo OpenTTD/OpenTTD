@@ -666,7 +666,7 @@ static const WindowDesc _build_road_desc(
 	WDP_ALIGN_TBR, 22, 263, 36, 263, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	NULL, _nested_build_road_widgets, lengthof(_nested_build_road_widgets)
+	_nested_build_road_widgets, lengthof(_nested_build_road_widgets)
 );
 
 static const NWidgetPart _nested_build_tramway_widgets[] = {
@@ -704,7 +704,7 @@ static const WindowDesc _build_tramway_desc(
 	WDP_ALIGN_TBR, 22, 241, 36, 241, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	NULL, _nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets)
+	_nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets)
 );
 
 void ShowBuildRoadToolbar(RoadType roadtype)
@@ -746,7 +746,7 @@ static const WindowDesc _build_road_scen_desc(
 	WDP_AUTO, WDP_AUTO, 197, 36, 197, 36,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	NULL, _nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets)
+	_nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets)
 );
 
 void ShowBuildRoadScenToolbar()
@@ -846,7 +846,7 @@ static const WindowDesc _build_road_depot_desc(
 	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	NULL, _nested_build_road_depot_widgets, lengthof(_nested_build_road_depot_widgets)
+	_nested_build_road_depot_widgets, lengthof(_nested_build_road_depot_widgets)
 );
 
 static void ShowRoadDepotPicker(Window *parent)
@@ -1011,7 +1011,7 @@ static const WindowDesc _rv_station_picker_desc(
 	WDP_AUTO, WDP_AUTO, 207, 178, 207, 178,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	NULL, _nested_rv_station_picker_widgets, lengthof(_nested_rv_station_picker_widgets)
+	_nested_rv_station_picker_widgets, lengthof(_nested_rv_station_picker_widgets)
 );
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs)

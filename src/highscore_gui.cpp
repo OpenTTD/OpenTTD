@@ -182,14 +182,14 @@ static const WindowDesc _highscore_desc(
 	0, 0, 641, 481, 641, 481,
 	WC_HIGHSCORE, WC_NONE,
 	0,
-	NULL, _nested_highscore_widgets, lengthof(_nested_highscore_widgets)
+	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
 static const WindowDesc _endgame_desc(
 	0, 0, 641, 481, 641, 481,
 	WC_ENDSCREEN, WC_NONE,
 	0,
-	NULL, _nested_highscore_widgets, lengthof(_nested_highscore_widgets)
+	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
 /** Show the highscore table for a given difficulty. When called from
