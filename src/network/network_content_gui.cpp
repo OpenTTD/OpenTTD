@@ -476,10 +476,12 @@ public:
 	 */
 	void DrawDetails(const Rect &r) const
 	{
-		static const int DETAIL_TITLE_HEIGHT = 50; ///< Number of pixels for the title
 		static const int DETAIL_LEFT         =  5; ///< Number of pixels at the left
 		static const int DETAIL_RIGHT        =  5; ///< Number of pixels at the right
 		static const int DETAIL_TOP          =  5; ///< Number of pixels at the top
+
+		/* Height for the title banner */
+		int DETAIL_TITLE_HEIGHT = 5 * FONT_HEIGHT_NORMAL;
 
 		/* Create the nice grayish rectangle at the details top */
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + DETAIL_TITLE_HEIGHT, 157);
