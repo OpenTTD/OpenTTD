@@ -199,6 +199,9 @@ void Window::RaiseButtons(bool autoraise)
  */
 void Window::SetWidgetDirty(byte widget_index) const
 {
+	/* Sometimes this function is called before the window is even fully initialized */
+	if (this->nested_array == NULL) return;
+
 	this->nested_array[widget_index]->SetDirty(this);
 }
 
