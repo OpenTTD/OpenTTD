@@ -142,24 +142,6 @@ enum WidgetType {
 	WWT_PUSHIMGBTN  = WWT_IMGBTN  | WWB_PUSHBUTTON,
 };
 
-/** Marker for the "end of widgets" in a Window(Desc) widget table. */
-#define WIDGETS_END WWT_LAST, RESIZE_NONE, INVALID_COLOUR, 0, 0, 0, 0, 0, STR_NULL
-
-/**
- * Window widget data structure
- */
-struct Widget {
-	WidgetType type;                  ///< Widget type
-	DisplayFlags display_flags;       ///< Resize direction, alignment, etc. during resizing
-	Colours colour;                   ///< Widget colour, see docs/ottd-colourtext-palette.png
-	int16 left;                       ///< The left edge of the widget
-	int16 right;                      ///< The right edge of the widget
-	int16 top;                        ///< The top edge of the widget
-	int16 bottom;                     ///< The bottom edge of the widget
-	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
-	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
-};
-
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
 enum SizingType {
 	ST_ARRAY,    ///< Initialize nested widget tree to generate a #Widget * array.
@@ -184,7 +166,6 @@ public:
 	virtual void SetupSmallestSize(Window *w, bool init_array) = 0;
 	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
 
-	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
 	virtual void FillNestedArray(NWidgetBase **array, uint length) = 0;
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
@@ -311,7 +292,6 @@ public:
 	inline void SetDisabled(bool disabled);
 	inline bool IsDisabled() const;
 
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 
@@ -393,7 +373,6 @@ public:
 
 	void SetupSmallestSize(Window *w, bool init_array);
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
@@ -439,8 +418,6 @@ public:
 
 	void SetupSmallestSize(Window *w, bool init_array);
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
-
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
 /** Horizontal container that doesn't change the direction of the widgets for RTL languages.
@@ -450,8 +427,6 @@ public:
 	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
-
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
 /** Vertical container.
@@ -462,8 +437,6 @@ public:
 
 	void SetupSmallestSize(Window *w, bool init_array);
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
-
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
 
@@ -474,7 +447,6 @@ public:
 	NWidgetSpacer(int length, int height);
 
 	void SetupSmallestSize(Window *w, bool init_array);
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
@@ -495,7 +467,6 @@ public:
 	void SetupSmallestSize(Window *w, bool init_array);
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
@@ -520,7 +491,6 @@ public:
 	NWidgetViewport(int index);
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
-	/* virtual */ void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
 
@@ -546,8 +516,6 @@ private:
 	static Dimension resizebox_dimension; ///< Cached size of a resizebox widget.
 	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
 };
-
-bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report = true);
 
 /**
  * @defgroup NestedWidgetParts Hierarchical widget parts
@@ -828,7 +796,5 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 }
 
 NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest_index, NWidgetContainer *container = NULL);
-
-const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, Widget **wid_cache);
 
 #endif /* WIDGET_TYPE_H */

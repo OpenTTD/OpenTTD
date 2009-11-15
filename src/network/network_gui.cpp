@@ -207,12 +207,6 @@ public:
 		}
 	}
 
-	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-	{
-		/* We don't need to support the old version anymore! */
-		NOT_REACHED();
-	}
-
 	/* virtual */ void Draw(const Window *w)
 	{
 		int i = 0;

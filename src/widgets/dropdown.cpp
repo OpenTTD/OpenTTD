@@ -326,27 +326,16 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	 * down list window. */
 	Rect wi_rect;
 	Colours wi_colour;
-	if (w->nested_array != NULL) {
-		NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
-		wi_rect.left   = nwi->pos_x;
-		wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
-		wi_rect.top    = nwi->pos_y;
-		wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
-		wi_colour = nwi->colour;
+	NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
+	wi_rect.left   = nwi->pos_x;
+	wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
+	wi_rect.top    = nwi->pos_y;
+	wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
+	wi_colour = nwi->colour;
 
-		if (nwi->type == NWID_BUTTON_DRPDOWN) {
-			nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
-		} else {
-			w->LowerWidget(button);
-		}
+	if (nwi->type == NWID_BUTTON_DRPDOWN) {
+		nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
 	} else {
-		const Widget *wi = &w->widget[button];
-		wi_rect.left   = wi->left;
-		wi_rect.right  = wi->right;
-		wi_rect.top    = wi->top;
-		wi_rect.bottom = wi->bottom;
-		wi_colour = wi->colour;
-
 		w->LowerWidget(button);
 	}
 	w->SetWidgetDirty(button);

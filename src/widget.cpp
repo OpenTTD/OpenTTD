@@ -136,41 +136,6 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 
 /** Special handling for the scrollbar widget type.
  * Handles the special scrolling buttons and other scrolling.
- * @param w  Window on which a scroll was performed.
- * @param wi Pointer to the scrollbar widget.
- * @param x  The X coordinate of the mouse click.
- * @param y  The Y coordinate of the mouse click.
- */
-void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
-{
-	int mi, ma;
-
-	switch (wi->type) {
-		case WWT_SCROLLBAR:
-			/* vertical scroller */
-			mi = wi->top;
-			ma = wi->bottom;
-			break;
-
-		case WWT_SCROLL2BAR:
-			/* 2nd vertical scroller */
-			mi = wi->top;
-			ma = wi->bottom;
-			break;
-
-		case  WWT_HSCROLLBAR:
-			/* horizontal scroller */
-			mi = wi->left;
-			ma = wi->right;
-			break;
-
-		default: NOT_REACHED();
-	}
-	ScrollbarClickPositioning(w, wi->type, x, y, mi, ma);
-}
-
-/** Special handling for the scrollbar widget type.
- * Handles the special scrolling buttons and other scrolling.
  * @param w Window on which a scroll was performed.
  * @param nw Pointer to the scrollbar widget.
  * @param x The X coordinate of the mouse click.
@@ -213,24 +178,8 @@ void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y)
  */
 int GetWidgetFromPos(const Window *w, int x, int y)
 {
-	if (w->nested_root != NULL) {
-		NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
-		return (nw != NULL) ? nw->index : -1;
-	}
-
-	int found_index = -1;
-	/* Go through the widgets and check if we find the widget that the coordinate is inside. */
-	for (uint index = 0; index < w->widget_count; index++) {
-		const Widget *wi = &w->widget[index];
-		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
-
-		if (x >= wi->left && x <= wi->right && y >= wi->top &&  y <= wi->bottom &&
-				!w->IsWidgetHidden(index)) {
-			found_index = index;
-		}
-	}
-
-	return found_index;
+	NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
+	return (nw != NULL) ? nw->index : -1;
 }
 
 /**
@@ -595,122 +544,7 @@ static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, Str
  */
 void Window::DrawWidgets() const
 {
-	if (this->nested_root != NULL) {
-		this->nested_root->Draw(this);
-
-		if (this->flags4 & WF_WHITE_BORDER_MASK) {
-			DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
-		}
-
-		return;
-	}
-
-	const DrawPixelInfo *dpi = _cur_dpi;
-
-	for (uint i = 0; i < this->widget_count; i++) {
-		const Widget *wi = &this->widget[i];
-		bool clicked = this->IsWidgetLowered(i);
-		Rect r;
-
-		if (dpi->left > (r.right = wi->right) ||
-				dpi->left + dpi->width <= (r.left = wi->left) ||
-				dpi->top > (r.bottom = wi->bottom) ||
-				dpi->top + dpi->height <= (r.top = wi->top) ||
-				this->IsWidgetHidden(i)) {
-			continue;
-		}
-
-		switch (wi->type & WWT_MASK) {
-		case WWT_IMGBTN:
-		case WWT_IMGBTN_2:
-			DrawImageButtons(r, wi->type, wi->colour, clicked, wi->data);
-			break;
-
-		case WWT_PANEL:
-			assert(wi->data == 0);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			break;
-
-		case WWT_EDITBOX:
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, FR_LOWERED | FR_DARKENED);
-			break;
-
-		case WWT_TEXTBTN:
-		case WWT_TEXTBTN_2:
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			/* FALL THROUGH */
-
-		case WWT_LABEL:
-			DrawLabel(r, wi->type, clicked, wi->data);
-			break;
-
-		case WWT_TEXT:
-			DrawText(r, (TextColour)wi->colour, wi->data);
-			break;
-
-		case WWT_INSET:
-			DrawInset(r, wi->colour, wi->data);
-			break;
-
-		case WWT_MATRIX:
-			DrawMatrix(r, wi->colour, clicked, wi->data);
-			break;
-
-		/* vertical scrollbar */
-		case WWT_SCROLLBAR:
-			assert(wi->data == 0);
-			DrawVerticalScrollbar(r, wi->colour, (this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
-								(this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE,
-								(this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, &this->vscroll);
-			break;
-
-		case WWT_SCROLL2BAR:
-			assert(wi->data == 0);
-			DrawVerticalScrollbar(r, wi->colour, (this->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
-								(this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2),
-								(this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), &this->vscroll2);
-			break;
-
-		/* horizontal scrollbar */
-		case WWT_HSCROLLBAR:
-			assert(wi->data == 0);
-			DrawHorizontalScrollbar(r, wi->colour, (this->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
-								(this->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
-								(this->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &this->hscroll);
-			break;
-
-		case WWT_FRAME:
-			DrawFrame(r, wi->colour, wi->data);
-			break;
-
-		case WWT_STICKYBOX:
-			assert(wi->data == 0);
-			DrawStickyBox(r, wi->colour, !!(this->flags4 & WF_STICKY));
-			break;
-
-		case WWT_RESIZEBOX:
-			assert(wi->data == 0);
-			DrawResizeBox(r, wi->colour, wi->left < (this->width / 2), !!(this->flags4 & WF_SIZING));
-			break;
-
-		case WWT_CLOSEBOX:
-			DrawCloseBox(r, wi->colour, wi->data);
-			break;
-
-		case WWT_CAPTION:
-			DrawCaption(r, wi->colour, this->owner, wi->data);
-			break;
-
-		case WWT_DROPDOWN:
-			DrawDropdown(r, wi->colour, clicked, wi->data);
-			break;
-		}
-
-		if (this->IsWidgetDisabled(i)) {
-			GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->colour & 0xF][2], FILLRECT_CHECKER);
-		}
-	}
-
+	this->nested_root->Draw(this);
 
 	if (this->flags4 & WF_WHITE_BORDER_MASK) {
 		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
@@ -726,17 +560,13 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 {
 	if (state == SBS_OFF) return;
 
+	assert(this->nested_array != NULL);
+	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	int base, top;
-	if (this->widget != NULL) {
-		base = offset + (_dynlang.text_dir == TD_LTR ? this->widget[widget].right - WD_SORTBUTTON_ARROW_WIDTH : this->widget[widget].left);
-		top = this->widget[widget].top;
-	} else {
-		assert(this->nested_array != NULL);
-		const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
-		base = offset + nwid->pos_x + (_dynlang.text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
-		top = nwid->pos_y;
-	}
+	int base = offset + nwid->pos_x + (_dynlang.text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
+	int top = nwid->pos_y;
+
 	DrawString(base, base + WD_SORTBUTTON_ARROW_WIDTH, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
 }
 
@@ -868,19 +698,6 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, ui
 }
 
 /**
- * @fn void NWidgetBase::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
- * Store all child widgets with a valid index into the widget array.
- * @param widgets     Widget array to store the nested widgets in.
- * @param length      Length of the array.
- * @param left_moving Left edge of the widget may move due to resizing (right edge if \a rtl).
- * @param top_moving  Top edge of the widget may move due to resizing.
- * @param rtl         Adapt for right-to-left languages (position contents of horizontal containers backwards).
- *
- * @note When storing a nested widget, the function should check first that the type in the \a widgets array is #WWT_LAST.
- *       This is used to detect double widget allocations as well as holes in the widget array.
- */
-
-/**
  * @fn void Draw(const Window *w)
  * Draw the widgets of the tree.
  * The function calls #Window::DrawWidget for each widget with a non-negative index, after the widget itself is painted.
@@ -1007,40 +824,6 @@ void NWidgetCore::SetDataTip(uint16 widget_data, StringID tool_tip)
 void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
 {
 	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
-}
-
-void NWidgetCore::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	if (this->index < 0) return;
-
-	assert(this->index < length);
-	Widget *w = widgets + this->index;
-	assert(w->type == WWT_LAST);
-
-	DisplayFlags flags = RESIZE_NONE; // resize flags.
-	/* Compute vertical resizing. */
-	if (top_moving) {
-		flags |= RESIZE_TB; // Only 1 widget can resize in the widget array.
-	} else if (this->resize_y > 0) {
-		flags |= RESIZE_BOTTOM;
-	}
-	/* Compute horizontal resizing. */
-	if (left_moving) {
-		flags |= RESIZE_LR; // Only 1 widget can resize in the widget array.
-	} else if (this->resize_x > 0) {
-		flags |= RESIZE_RIGHT;
-	}
-
-	/* Copy nested widget data into its widget array entry. */
-	w->type = this->type;
-	w->display_flags = flags;
-	w->colour = this->colour;
-	w->left = this->pos_x;
-	w->right = this->pos_x + this->smallest_x - 1;
-	w->top = this->pos_y;
-	w->bottom = this->pos_y + this->smallest_y - 1;
-	w->data = this->widget_data;
-	w->tooltips = this->tool_tip;
 }
 
 NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
@@ -1220,13 +1003,6 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 		uint child_pos_y = child_wid->padding_top + ComputeOffset(child_height,  given_height - child_wid->padding_top - child_wid->padding_bottom);
 
 		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
-	}
-}
-
-void NWidgetStacked::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		child_wid->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
 	}
 }
 
@@ -1432,17 +1208,6 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	}
 }
 
-void NWidgetHorizontal::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	NWidgetBase *child_wid = rtl ? this->tail : this->head;
-	while (child_wid != NULL) {
-		child_wid->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
-		left_moving |= (child_wid->resize_x > 0);
-
-		child_wid = rtl ? child_wid->prev : child_wid->next;
-	}
-}
-
 /** Horizontal left-to-right container widget. */
 NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHorizontal(flags)
 {
@@ -1452,11 +1217,6 @@ NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHo
 void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
 {
 	NWidgetHorizontal::AssignSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y, false);
-}
-
-void NWidgetHorizontalLTR::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	NWidgetHorizontal::StoreWidgets(widgets, length, left_moving, top_moving, false);
 }
 
 /** Vertical container widget. */
@@ -1569,14 +1329,6 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	}
 }
 
-void NWidgetVertical::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		child_wid->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
-		top_moving |= (child_wid->resize_y > 0);
-	}
-}
-
 /**
  * Generic spacer widget.
  * @param length Horizontal size of the spacer widget.
@@ -1596,11 +1348,6 @@ void NWidgetSpacer::SetupSmallestSize(Window *w, bool init_array)
 
 void NWidgetSpacer::FillNestedArray(NWidgetBase **array, uint length)
 {
-}
-
-void NWidgetSpacer::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	/* Spacer widgets are never stored in the widget array. */
 }
 
 void NWidgetSpacer::Draw(const Window *w)
@@ -1728,12 +1475,6 @@ void NWidgetBackground::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	}
 }
 
-void NWidgetBackground::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	NWidgetCore::StoreWidgets(widgets, length, left_moving, top_moving, rtl);
-	if (this->child != NULL) this->child->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
-}
-
 void NWidgetBackground::FillNestedArray(NWidgetBase **array, uint length)
 {
 	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
@@ -1821,11 +1562,6 @@ void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
 	}
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
-}
-
-void NWidgetViewport::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
-{
-	NOT_REACHED();
 }
 
 void NWidgetViewport::Draw(const Window *w)
@@ -2264,44 +2000,6 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
 	}
 }
 
-/**
- * Intialize nested widget tree and convert to widget array.
- * @param nwid Nested widget tree.
- * @param rtl  Direction of the language.
- * @param biggest_index Biggest index used in the nested widget tree.
- * @return Widget array with the converted widgets.
- * @note Caller should release returned widget array with \c free(widgets).
- * @ingroup NestedWidgets
- */
-static Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl, int biggest_index)
-{
-	/* Initialize nested widgets. */
-	nwid->SetupSmallestSize(NULL, false);
-	nwid->AssignSizePosition(ST_ARRAY, 0, 0, nwid->smallest_x, nwid->smallest_y, (nwid->resize_x > 0), (nwid->resize_y > 0), rtl);
-
-	/* Construct a local widget array and initialize all its types to #WWT_LAST. */
-	Widget *widgets = MallocT<Widget>(biggest_index + 2);
-	int i;
-	for (i = 0; i < biggest_index + 2; i++) {
-		widgets[i].type = WWT_LAST;
-	}
-
-	/* Store nested widgets in the array. */
-	nwid->StoreWidgets(widgets, biggest_index + 1, false, false, rtl);
-
-	/* Check that all widgets are used. */
-	for (i = 0; i < biggest_index + 2; i++) {
-		if (widgets[i].type == WWT_LAST) break;
-	}
-	assert(i == biggest_index + 1);
-
-	/* Fill terminating widget */
-	static const Widget last_widget = {WIDGETS_END};
-	widgets[biggest_index + 1] = last_widget;
-
-	return widgets;
-}
-
 /* == Conversion code from NWidgetPart array to NWidgetBase* tree == */
 
 /**
@@ -2514,31 +2212,4 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest
 	if (container == NULL) container = new NWidgetVertical();
 	MakeWidgetTree(parts, count, container, biggest_index);
 	return container;
-}
-
-/**
- * Construct a #Widget array from a nested widget parts array, taking care of all the steps and checks.
- * Also cache the result and use the cache if possible.
- * @param[in] parts        Array with parts of the widgets.
- * @param     parts_length Length of the \a parts array.
- * @param     wid_cache    Pointer to the cache for storing the generated widget array (use \c NULL to prevent caching).
- * @return Cached value if available, otherwise the generated widget array. If \a wid_cache is \c NULL, the caller should free the returned array.
- *
- * @pre Before the first call, \c *wid_cache should be \c NULL.
- * @post The widget array stored in the \c *wid_cache should be free-ed by the caller.
- */
-const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, Widget **wid_cache)
-{
-	const bool rtl = false; // Direction of the language is left-to-right
-
-	if (wid_cache != NULL && *wid_cache != NULL) return *wid_cache;
-
-	assert(parts != NULL && parts_length > 0);
-	int biggest_index = -1;
-	NWidgetContainer *nwid = MakeNWidgets(parts, parts_length, &biggest_index);
-	Widget *gen_wid = InitializeNWidgets(nwid, rtl, biggest_index);
-	delete nwid;
-
-	if (wid_cache != NULL) *wid_cache = gen_wid;
-	return gen_wid;
 }

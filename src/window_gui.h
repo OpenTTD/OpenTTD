@@ -143,9 +143,6 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlags
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
-	mutable Widget *new_widgets;   ///< Widgets generated from #nwid_parts.
-
-	const Widget *GetWidgets() const;
 };
 
 /**
@@ -334,13 +331,11 @@ struct Window : ZeroedMemoryAllocator {
 	};
 
 protected:
-	void InitializeData(WindowClass cls, const Widget *widget, int window_number, uint32 desc_flags);
+	void InitializeData(WindowClass cls, int window_number, uint32 desc_flags);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
-	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
 public:
-	Window(const WindowDesc *desc, WindowNumber number = 0);
 	Window();
 
 	virtual ~Window();
@@ -382,10 +377,7 @@ public:
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
 	ViewportData *viewport;          ///< Pointer to viewport data, if present.
-	Widget *widget;                  ///< Widgets of the window.
-	uint widget_count;               ///< Number of widgets of the window.
 	uint32 desc_flags;               ///< Window/widgets default flags setting. @see WindowDefaultFlag
-	const Widget *focused_widget;    ///< Currently focused widget, or \c NULL if no widget has focus.
 	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c NULL if no nested widget has focus.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
 	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
@@ -414,14 +406,8 @@ public:
 	 */
 	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
 	{
-		if (this->widget != NULL) {
-			assert(widget_index < this->widget_count);
-			SB(this->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
-		}
-		if (this->nested_array != NULL) {
-			assert(widget_index < this->nested_array_size);
-			if (this->nested_array[widget_index] != NULL) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
-		}
+		assert(widget_index < this->nested_array_size);
+		if (this->nested_array[widget_index] != NULL) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
 	}
 
 	/**
@@ -449,54 +435,8 @@ public:
 	 */
 	inline bool IsWidgetDisabled(byte widget_index) const
 	{
-		if (this->nested_array != NULL) {
-			assert(widget_index < this->nested_array_size);
-			return this->GetWidget<NWidgetCore>(widget_index)->IsDisabled();
-		}
-		assert(widget_index < this->widget_count);
-		return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
-	}
-
-	/**
-	 * Sets the hidden/shown status of a widget.
-	 * By default, widgets are visible.
-	 * On certain conditions, they have to be hidden.
-	 * @param widget_index index of this widget in the window
-	 * @param hidden_stat status to use ie. hidden = true, visible = false
-	 */
-	inline void SetWidgetHiddenState(byte widget_index, bool hidden_stat)
-	{
-		assert(widget_index < this->widget_count);
-		SB(this->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
-	}
-
-	/**
-	 * Sets a widget hidden.
-	 * @param widget_index index of this widget in the window
-	 */
-	inline void HideWidget(byte widget_index)
-	{
-		SetWidgetHiddenState(widget_index, true);
-	}
-
-	/**
-	 * Sets a widget visible.
-	 * @param widget_index index of this widget in the window
-	 */
-	inline void ShowWidget(byte widget_index)
-	{
-		SetWidgetHiddenState(widget_index, false);
-	}
-
-	/**
-	 * Gets the visibility of a widget.
-	 * @param widget_index index of this widget in the window
-	 * @return status of the widget ie: hidden = true, visible = false
-	 */
-	inline bool IsWidgetHidden(byte widget_index) const
-	{
-		assert(widget_index < this->widget_count);
-		return HasBit(this->widget[widget_index].display_flags, WIDG_HIDDEN);
+		assert(widget_index < this->nested_array_size);
+		return this->GetWidget<NWidgetCore>(widget_index)->IsDisabled();
 	}
 
 	/**
@@ -506,8 +446,7 @@ public:
 	 */
 	inline bool IsWidgetFocused(byte widget_index) const
 	{
-		return (this->widget != NULL && this->focused_widget == &this->widget[widget_index]) ||
-			(this->nested_focus != NULL && this->nested_focus->index == widget_index);
+		return this->nested_focus != NULL && this->nested_focus->index == widget_index;
 	}
 
 	/**
@@ -528,14 +467,8 @@ public:
 	 */
 	inline void SetWidgetLoweredState(byte widget_index, bool lowered_stat)
 	{
-		if (this->widget != NULL) {
-			assert(widget_index < this->widget_count);
-			SB(this->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
-		}
-		if (this->nested_array != NULL) {
-			assert(widget_index < this->nested_array_size);
-			this->GetWidget<NWidgetCore>(widget_index)->SetLowered(lowered_stat);
-		}
+		assert(widget_index < this->nested_array_size);
+		this->GetWidget<NWidgetCore>(widget_index)->SetLowered(lowered_stat);
 	}
 
 	/**
@@ -544,15 +477,9 @@ public:
 	 */
 	inline void ToggleWidgetLoweredState(byte widget_index)
 	{
-		if (this->widget != NULL) {
-			assert(widget_index < this->widget_count);
-			ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
-		}
-		if (this->nested_array != NULL) {
-			assert(widget_index < this->nested_array_size);
-			bool lowered_state = this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
-			this->GetWidget<NWidgetCore>(widget_index)->SetLowered(!lowered_state);
-		}
+		assert(widget_index < this->nested_array_size);
+		bool lowered_state = this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
+		this->GetWidget<NWidgetCore>(widget_index)->SetLowered(!lowered_state);
 	}
 
 	/**
@@ -580,18 +507,13 @@ public:
 	 */
 	inline bool IsWidgetLowered(byte widget_index) const
 	{
-		if (this->nested_array != NULL) {
-			assert(widget_index < this->nested_array_size);
-			return this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
-		}
-		assert(widget_index < this->widget_count);
-		return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+		assert(widget_index < this->nested_array_size);
+		return this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 	}
 
 	bool SetFocusedWidget(byte widget_index);
 
 	void HandleButtonClick(byte widget);
-	const Widget *GetWidgetOfType(WidgetType widget_type) const;
 
 	void RaiseButtons(bool autoraise = false);
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
@@ -961,7 +883,6 @@ Window *GetCallbackWnd();
 void SetFocusedWindow(Window *w);
 bool EditBoxInGlobalFocus();
 
-void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y);
 
 #endif /* WINDOW_GUI_H */

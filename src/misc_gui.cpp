@@ -1184,8 +1184,7 @@ bool QueryString::HasEditBoxFocus(const Window *w, int wid) const
 {
 	if (w->IsWidgetGloballyFocused(wid)) return true;
 	if (w->window_class != WC_OSK || _focused_window != w->parent) return false;
-	return (w->parent->focused_widget != NULL && w->parent->focused_widget->type == WWT_EDITBOX) ||
-		(w->parent->nested_focus != NULL && w->parent->nested_focus->type == WWT_EDITBOX);
+	return w->parent->nested_focus != NULL && w->parent->nested_focus->type == WWT_EDITBOX;
 }
 
 HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)
@@ -1248,29 +1247,13 @@ void QueryString::HandleEditBox(Window *w, int wid)
 
 void QueryString::DrawEditBox(Window *w, int wid)
 {
-	int left;
-	int right;
-	int top;
-	int bottom;
-	if (w->widget == NULL) {
-		const NWidgetBase *wi = w->GetWidget<NWidgetBase>(wid);
+	const NWidgetBase *wi = w->GetWidget<NWidgetBase>(wid);
 
-		assert((wi->type & WWT_MASK) == WWT_EDITBOX);
-
-		left   = wi->pos_x;
-		right  = wi->pos_x + wi->current_x - 1;
-		top    = wi->pos_y;
-		bottom = wi->pos_y + wi->current_y - 1;
-	} else {
-		const Widget *wi = &w->widget[wid];
-
-		assert((wi->type & WWT_MASK) == WWT_EDITBOX);
-
-		left   = wi->left;
-		right  = wi->right;
-		top    = wi->top;
-		bottom = wi->bottom;
-	}
+	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+	int left   = wi->pos_x;
+	int right  = wi->pos_x + wi->current_x - 1;
+	int top    = wi->pos_y;
+	int bottom = wi->pos_y + wi->current_y - 1;
 
 	GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, 215);
 
