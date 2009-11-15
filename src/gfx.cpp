@@ -557,7 +557,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 
 		ReallyDoDrawString(to_draw, left, top, colour, !truncate);
 		if (underline) {
-			GfxFillRect(left, top + 10, right, top + 10, _string_colourremap[1]);
+			GfxFillRect(left, top + FONT_HEIGHT_NORMAL, right, top + FONT_HEIGHT_NORMAL, _string_colourremap[1]);
 		}
 	}
 
