@@ -2737,12 +2737,12 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informac
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji.
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napisów
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja tekstu napisu
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Idź do następnej tablicy
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Idź do poprzedniej tablicy
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Idź do następnego napisu
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Idź do poprzedniego napisu
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Wpisz nazwę dla znaku
 

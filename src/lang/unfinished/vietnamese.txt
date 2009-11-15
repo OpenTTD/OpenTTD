@@ -1376,7 +1376,23 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho ph�
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Cách Phối Màu Mới
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Hiển thị phối màu chung
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Hiển thị phối màu tàu hỏa
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Hiển thị phối màu xe cơ giới
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Hiển thị phối màu tàu thủy
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Hiển thị phối màu máy bay
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Chọn màu chủ đạo cho bảng phối màu đang chọn
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Chọn màu thứ hai cho bảng phối màu đang chọn
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Chọn một bảng phối màu để sửa, hoặc nhiều bảng phối màu với Ctrl+Click.Click vào bảng để bật/tắt bảng phối
 
+STR_LIVERY_DEFAULT                                              :Chế Phục Tiêu Chuẩn
+STR_LIVERY_STEAM                                                :Động Cơ Hơi Nước
+STR_LIVERY_DIESEL                                               :Động Cơ Diesel
+STR_LIVERY_ELECTRIC                                             :Động Cơ Điện
+STR_LIVERY_MONORAIL                                             :Động Cơ Đơn Ray
+STR_LIVERY_MAGLEV                                               :Động Cơ Ray Đệm
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 
 # Face selection window
 
@@ -1434,6 +1450,14 @@ STR_NETWORK_CLIENTLIST_BAN                                      :Cấm
 
 # Network related errors
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Dừng game ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Game đang dừng ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Game đang dừng ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Game vẫn đang dừng ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Không dừng game ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :không đủ người chơi
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kết nối đến clients
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :tự chọn
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} đã vào trò chơi (Client #{2:NUM})
 
