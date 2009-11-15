@@ -964,6 +964,4 @@ bool EditBoxInGlobalFocus();
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y);
 
-void ResizeWindowForWidget(Window *w, uint widget, int delta_x, int delta_y);
-
 #endif /* WINDOW_GUI_H */
