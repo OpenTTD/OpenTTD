@@ -987,6 +987,17 @@ struct CreateScenarioWindow : public Window
 		}
 	}
 
+	virtual void OnTimeout()
+	{
+		static const int raise_widgets[] = {CSCEN_START_DATE_DOWN, CSCEN_START_DATE_UP, CSCEN_FLAT_LAND_HEIGHT_DOWN, CSCEN_FLAT_LAND_HEIGHT_UP, WIDGET_LIST_END};
+		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
+			if (this->IsWidgetLowered(*widget)) {
+				this->RaiseWidget(*widget);
+				this->SetWidgetDirty(*widget);
+			}
+		}
+	}
+
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
