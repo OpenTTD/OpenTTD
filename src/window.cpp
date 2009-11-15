@@ -1333,8 +1333,8 @@ static bool HandleMouseOver()
 	if (w != NULL) {
 		/* send an event in client coordinates. */
 		Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
-		int widget = w->nested_root->GetWidgetFromPos(pt.x, pt.y)->index;
-		w->OnMouseOver(pt, widget);
+		const NWidgetCore *widget = w->nested_root->GetWidgetFromPos(pt.x, pt.y);
+		if (widget != NULL) w->OnMouseOver(pt, widget->index);
 	}
 
 	/* Mouseover never stops execution */
