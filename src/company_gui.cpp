@@ -303,11 +303,10 @@ struct CompanyFinancesWindow : Window {
 
 	virtual void SetStringParameters(int widget) const
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
 		switch (widget) {
 			case CFW_CAPTION:
-				SetDParam(0, c->index);
-				SetDParam(1, c->index);
+				SetDParam(0, (CompanyID)this->window_number);
+				SetDParam(1, (CompanyID)this->window_number);
 				break;
 
 			case CFW_MAXLOAN_VALUE:
@@ -1688,9 +1687,8 @@ struct CompanyWindow : Window
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == CW_WIDGET_CAPTION) {
-			const Company *c = Company::Get((CompanyID)this->window_number);
-			SetDParam(0, c->index);
-			SetDParam(1, c->index);
+			SetDParam(0, (CompanyID)this->window_number);
+			SetDParam(1, (CompanyID)this->window_number);
 		}
 	}
 
