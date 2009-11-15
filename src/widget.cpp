@@ -1175,9 +1175,8 @@ static inline uint ComputeOffset(uint space, uint max_space)
 
 /**
  * Widgets stacked on top of each other.
- * @param tp Kind of stacking, must be either #NWID_SELECTION or #NWID_LAYERED.
  */
-NWidgetStacked::NWidgetStacked(WidgetType tp) : NWidgetContainer(tp)
+NWidgetStacked::NWidgetStacked() : NWidgetContainer(NWID_SELECTION)
 {
 	this->index = -1;
 }
@@ -1268,21 +1267,15 @@ void NWidgetStacked::Draw(const Window *w)
 {
 	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
 
-	if (this->type == NWID_SELECTION) {
-		int plane = 0;
-		for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
-			if (plane == this->shown_plane) {
-				child_wid->Draw(w);
-				return;
-			}
+	int plane = 0;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
+		if (plane == this->shown_plane) {
+			child_wid->Draw(w);
+			return;
 		}
 	}
 
-	assert(this->type == NWID_LAYERED);
-	/* Render from back to front. */
-	for (NWidgetBase *child_wid = this->tail; child_wid != NULL; child_wid = child_wid->prev) {
-		child_wid->Draw(w);
-	}
+	NOT_REACHED();
 }
 
 NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
@@ -2448,12 +2441,6 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				break;
 			}
 
-			case NWID_LAYERED:
-				if (*dest != NULL) return num_used;
-				*dest = new NWidgetStacked(parts->type);
-				*fill_dest = true;
-				break;
-
 			case WPT_RESIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
 				if (nwrb != NULL) {
@@ -2511,7 +2498,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			case NWID_SELECTION: {
 				if (*dest != NULL) return num_used;
-				NWidgetStacked *nws = new NWidgetStacked(parts->type);
+				NWidgetStacked *nws = new NWidgetStacked();
 				*dest = nws;
 				*fill_dest = true;
 				nws->SetIndex(parts->u.widget.index);
@@ -2567,7 +2554,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 		/* If sub-widget is a container, recursively fill that container. */
 		WidgetType tp = sub_widget->type;
 		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL
-							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION || tp == NWID_LAYERED)) {
+							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION)) {
 			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget, biggest_index);
 			parts += num_used;
 			total_used += num_used;
