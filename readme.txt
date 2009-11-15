@@ -489,6 +489,7 @@ put them in the data/ folder and you're set to go.
 X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
+  Albert Hofkamp (Alberth)       - GUI expert
   Jean-Francois Claeys (Belugas) - GUI, newindustries and more
   Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework

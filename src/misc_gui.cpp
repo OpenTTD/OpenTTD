@@ -357,6 +357,7 @@ static const char * const _credits[] = {
 	"Original graphics by Simon Foster",
 	"",
 	"The OpenTTD team (in alphabetical order):",
+	"  Albert Hofkamp (Alberth) - GUI expert",
 	"  Jean-Francois Claeys (Belugas) - GUI, newindustries and more",
 	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles",
 	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
