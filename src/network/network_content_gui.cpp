@@ -441,12 +441,9 @@ public:
 
 	void DrawMatrix(const Rect &r) const
 	{
-		const int CHECKBOX_LEFT = r.left;
-		const int TYPE_LEFT     = this->GetWidget<NWidgetBase>(NCLWW_TYPE)->pos_x;
-		const int NAME_LEFT     = this->GetWidget<NWidgetBase>(NCLWW_NAME)->pos_x;
-
-		const int TYPE_RIGHT     = NAME_LEFT - 1;
-		const int NAME_RIGHT     = r.right;
+		const NWidgetCore *nwi_checkbox = this->GetWidget<NWidgetCore>(NCLWW_CHECKBOX);
+		const NWidgetCore *nwi_name = this->GetWidget<NWidgetCore>(NCLWW_NAME);
+		const NWidgetCore *nwi_type = this->GetWidget<NWidgetCore>(NCLWW_TYPE);
 
 
 		/* Fill the matrix with the information */
@@ -455,7 +452,7 @@ public:
 		for (ConstContentIterator iter = this->content.Get(this->vscroll.GetPosition()); iter != this->content.End() && cnt < this->vscroll.GetCapacity(); iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
-			if (ci == this->selected) GfxFillRect(CHECKBOX_LEFT + 1, y + 1, NAME_RIGHT - 1, y + this->resize.step_height - 1, 10);
+			if (ci == this->selected) GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->resize.step_height - 1, 10);
 
 			SpriteID sprite;
 			SpriteID pal = PAL_NONE;
@@ -467,12 +464,12 @@ public:
 				case ContentInfo::DOES_NOT_EXIST: sprite = SPR_BLOT; pal = PALETTE_TO_RED;   break;
 				default: NOT_REACHED();
 			}
-			DrawSprite(sprite, pal, CHECKBOX_LEFT + (pal == PAL_NONE ? 3 : 4), y + WD_MATRIX_TOP + (pal == PAL_NONE ? 1 : 0));
+			DrawSprite(sprite, pal, nwi_checkbox->pos_x + (pal == PAL_NONE ? 2 : 3), y + WD_MATRIX_TOP + (pal == PAL_NONE ? 1 : 0));
 
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
-			DrawString(TYPE_LEFT, TYPE_RIGHT, y + WD_MATRIX_TOP, str, TC_BLACK, SA_CENTER);
+			DrawString(nwi_type->pos_x, nwi_type->pos_x + nwi_type->current_x - 1, y + WD_MATRIX_TOP, str, TC_BLACK, SA_CENTER);
 
-			DrawString(NAME_LEFT + 5, NAME_RIGHT, y + WD_MATRIX_TOP, ci->name, TC_BLACK);
+			DrawString(nwi_name->pos_x + WD_FRAMERECT_LEFT, nwi_name->pos_x + nwi_name->current_x - WD_FRAMERECT_RIGHT, y + WD_MATRIX_TOP, ci->name, TC_BLACK);
 			y += this->resize.step_height;
 		}
 	}
