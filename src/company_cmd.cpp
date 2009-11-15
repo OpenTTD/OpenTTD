@@ -76,6 +76,7 @@ void Company::PostDestructor(size_t index)
 {
 	InvalidateWindowData(WC_GRAPH_LEGEND, 0, (int)index);
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, (int)index);
+	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 }
 
 /**
