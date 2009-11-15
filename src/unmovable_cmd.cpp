@@ -344,12 +344,14 @@ static void TileLoop_Unmovable(TileIndex tile)
 	uint level = GetCompanyHQSize(tile) + 1;
 	assert(level < 6);
 
+	StationFinder stations(tile, 2, 2);
+
 	uint r = Random();
 	/* Top town buildings generate 250, so the top HQ type makes 256. */
 	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(tile, 2, 2, CT_PASSENGERS, amt, ST_HEADQUARTERS, GetTileOwner(tile));
+		MoveGoodsToStation(CT_PASSENGERS, amt, ST_HEADQUARTERS, GetTileOwner(tile), stations.GetStations());
 	}
 
 	/* Top town building generates 90, HQ can make up to 196. The
@@ -358,7 +360,7 @@ static void TileLoop_Unmovable(TileIndex tile)
 	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(tile, 2, 2, CT_MAIL, amt, ST_HEADQUARTERS, GetTileOwner(tile));
+		MoveGoodsToStation(CT_MAIL, amt, ST_HEADQUARTERS, GetTileOwner(tile), stations.GetStations());
 	}
 }
 

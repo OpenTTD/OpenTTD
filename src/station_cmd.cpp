@@ -3009,7 +3009,20 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 	}
 }
 
-uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount, SourceType source_type, SourceID source_id)
+/**
+ * Run a tile loop to find stations around a tile, on demand. Cache the result for further requests
+ * @return pointer to a StationList containing all stations found
+ */
+const StationList *StationFinder::GetStations()
+{
+	if (this->tile != INVALID_TILE) {
+		FindStationsAroundTiles(this->tile, this->x_extent, this->y_extent, &this->stations);
+		this->tile = INVALID_TILE;
+	}
+	return &this->stations;
+}
+
+uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (amount == 0) return 0;
@@ -3019,9 +3032,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount,
 	uint best_rating1 = 0; // rating of st1
 	uint best_rating2 = 0; // rating of st2
 
-	StationList all_stations;
-	FindStationsAroundTiles(tile, w, h, &all_stations);
-	for (Station **st_iter = all_stations.Begin(); st_iter != all_stations.End(); ++st_iter) {
+	for (Station * const *st_iter = all_stations->Begin(); st_iter != all_stations->End(); ++st_iter) {
 		Station *st = *st_iter;
 
 		/* Is the station reserved exclusively for somebody else? */

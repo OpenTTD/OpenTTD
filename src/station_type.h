@@ -13,6 +13,7 @@
 #define STATION_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/smallvec_type.hpp"
 #include "tile_type.h"
 
 typedef uint16 StationID;
@@ -113,6 +114,29 @@ struct TileArea {
 	TileIndex tile; ///< The base tile of the area
 	uint8 w;        ///< The width of the area
 	uint8 h;        ///< The height of the area
+};
+
+/** List of stations */
+typedef SmallVector<Station *, 2> StationList;
+
+/**
+ * Structure contains cached list of stations nearby. The list
+ * is created upon first call to GetStations()
+ */
+class StationFinder {
+	StationList stations; ///< List of stations nearby
+	TileIndex tile;       ///< Northern tile of producer, INVALID_TILE when # stations is valid
+	int x_extent;         ///< Width of producer
+	int y_extent;         ///< Height of producer
+public:
+	/**
+	 * Constructs StationFinder
+	 * @param t northern tile
+	 * @param dx width of producer
+	 * @param dy height of producer
+	 */
+	StationFinder(TileIndex t, int dx, int dy) : tile(t), x_extent(dx), y_extent(dy) {}
+	const StationList *GetStations();
 };
 
 #endif /* STATION_TYPE_H */

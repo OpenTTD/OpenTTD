@@ -465,6 +465,8 @@ static void TileLoop_Town(TileIndex tile)
 	Town *t = Town::GetByTile(tile);
 	uint32 r = Random();
 
+	StationFinder stations(tile, 1, 1);
+
 	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
 		for (uint i = 0; i < 256; i++) {
 			uint16 callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, r, house_id, t, tile);
@@ -477,7 +479,7 @@ static void TileLoop_Town(TileIndex tile)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			uint moved = MoveGoodsToStation(tile, 1, 1, cargo, amt, ST_TOWN, t->index);
+			uint moved = MoveGoodsToStation(cargo, amt, ST_TOWN, t->index, stations.GetStations());
 
 			const CargoSpec *cs = CargoSpec::Get(cargo);
 			switch (cs->town_effect) {
@@ -501,7 +503,7 @@ static void TileLoop_Town(TileIndex tile)
 
 			if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 			t->new_max_pass += amt;
-			t->new_act_pass += MoveGoodsToStation(tile, 1, 1, CT_PASSENGERS, amt, ST_TOWN, t->index);
+			t->new_act_pass += MoveGoodsToStation(CT_PASSENGERS, amt, ST_TOWN, t->index, stations.GetStations());
 		}
 
 		if (GB(r, 8, 8) < hs->mail_generation) {
@@ -509,7 +511,7 @@ static void TileLoop_Town(TileIndex tile)
 
 			if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 			t->new_max_mail += amt;
-			t->new_act_mail += MoveGoodsToStation(tile, 1, 1, CT_MAIL, amt, ST_TOWN, t->index);
+			t->new_act_mail += MoveGoodsToStation(CT_MAIL, amt, ST_TOWN, t->index, stations.GetStations());
 		}
 	}
 

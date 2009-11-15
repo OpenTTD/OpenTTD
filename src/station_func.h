@@ -19,11 +19,9 @@
 #include "tile_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
-#include "core/smallvec_type.hpp"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
-typedef SmallVector<Station*, 1> StationList;
 void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList *stations);
 
 void ShowStationViewWindow(StationID station);

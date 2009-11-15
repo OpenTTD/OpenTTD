@@ -507,6 +507,8 @@ static void TransportIndustryGoods(TileIndex tile)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	bool moved_cargo = false;
 
+	StationFinder stations(i->xy, i->width, i->height);
+
 	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
 		uint cw = min(i->produced_cargo_waiting[j], 255);
 		if (cw > indspec->minimal_cargo && i->produced_cargo[j] != CT_INVALID) {
@@ -517,7 +519,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[j], cw, ST_INDUSTRY, i->index);
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, stations.GetStations());
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);
