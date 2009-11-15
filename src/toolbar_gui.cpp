@@ -1385,7 +1385,7 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarScenBuildDocks,
 	ToolbarScenPlantTrees,
 	ToolbarScenPlaceSign,
-	NULL,
+	ToolbarBtn_NULL,
 	NULL,
 	NULL,
 	NULL,
