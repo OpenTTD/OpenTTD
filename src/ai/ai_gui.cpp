@@ -450,6 +450,7 @@ enum AIConfigWindowWidgets {
 	AIC_WIDGET_CLOSEBOX = 0, ///< Close window button
 	AIC_WIDGET_CAPTION,      ///< Window caption
 	AIC_WIDGET_BACKGROUND,   ///< Window background
+	AIC_WIDGET_NUMBER,       ///< Number of AIs
 	AIC_WIDGET_LIST,         ///< List with currently selected AIs
 	AIC_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through the selected AIs
 	AIC_WIDGET_CHANGE,       ///< Select another AI button
@@ -464,7 +465,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, AIC_WIDGET_CAPTION), SetMinimalSize(289, 14), SetDataTip(STR_AI_CONFIG_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, AIC_WIDGET_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 16),
+		NWidget(WWT_EMPTY, COLOUR_MAUVE, AIC_WIDGET_NUMBER), SetMinimalSize(0, 16),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_MATRIX, COLOUR_MAUVE, AIC_WIDGET_LIST), SetMinimalSize(288, 112), SetDataTip(0x801, STR_AI_CONFIG_LIST_TOOLTIP),
 			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, AIC_WIDGET_SCROLLBAR),
@@ -517,9 +518,15 @@ struct AIConfigWindow : public Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget == AIC_WIDGET_LIST) {
-			this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-			size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+		switch (widget) {
+			case AIC_WIDGET_NUMBER:
+				size->height = FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 4;
+				break;
+
+			case AIC_WIDGET_LIST:
+				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				break;
 		}
 	}
 
@@ -532,7 +539,7 @@ struct AIConfigWindow : public Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case AIC_WIDGET_BACKGROUND: {
+			case AIC_WIDGET_NUMBER: {
 				byte max_competitors = _settings_newgame.difficulty.max_no_competitors;
 				DrawArrowButtons(r.left + 10, r.top + 4, COLOUR_YELLOW, this->clicked_button ? 1 + !!this->clicked_increase : 0, max_competitors > 0, max_competitors < MAX_COMPANIES - 1);
 				SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
@@ -564,11 +571,12 @@ struct AIConfigWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case AIC_WIDGET_BACKGROUND: {
+			case AIC_WIDGET_NUMBER: {
 				/* Check if the user clicked on one of the arrows to configure the number of AIs */
-				if (IsInsideBS(pt.x, 10, 20) && IsInsideBS(pt.y, 18, 10)) {
+				NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+				if (IsInsideBS(pt.x, nwid->pos_x + 10, 20) && IsInsideBS(pt.y, nwid->pos_y + 4, 10)) {
 					int new_value;
-					if (pt.x <= 20) {
+					if (pt.x <= (int)nwid->pos_x + 20) {
 						new_value = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
 					} else {
 						new_value = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
