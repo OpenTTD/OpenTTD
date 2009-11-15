@@ -42,7 +42,7 @@ enum TransparencyToolbarWidgets {
 	TTW_WIDGET_END,                      ///< End of toggle buttons.
 
 	/* Panel with buttons for invisibility */
-	TTW_WIDGET_BUTTONS = TTW_WIDGET_END, ///< Panel with 'invisibility' buttons.
+	TTW_WIDGET_BUTTONS,                  ///< Panel with 'invisibility' buttons.
 };
 
 class TransparenciesWindow : public Window
@@ -145,9 +145,10 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_STRUCTURES), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_TRANSMITTER, STR_TRANSPARENT_STRUCTURES_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_CATENARY), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_BUILD_X_ELRAIL, STR_TRANSPARENT_CATENARY_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_LOADING), SetMinimalSize(22, 22), SetFill(false, true), SetDataTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_LOADING_TOOLTIP),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_WIDGET_END), SetFill(true, true), EndContainer(),
 	EndContainer(),
 	/* Panel with 'inivisibility' buttons. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_WIDGET_END), SetMinimalSize(219, 13), SetDataTip(0x0, STR_TRANSPARENT_INVISIBLE_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_WIDGET_BUTTONS), SetMinimalSize(219, 13), SetDataTip(0x0, STR_TRANSPARENT_INVISIBLE_TOOLTIP),
 	EndContainer(),
 };
 
