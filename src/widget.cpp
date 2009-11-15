@@ -2329,50 +2329,6 @@ static Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl, int biggest_index
 	return widgets;
 }
 
-/**
- * Compare two widget arrays with each other, and report differences.
- * @param orig Pointer to original widget array.
- * @param gen  Pointer to generated widget array (from the nested widgets).
- * @param report Report differences to 'misc' debug stream.
- * @return Both widget arrays are equal.
- */
-bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report)
-{
-#define CHECK(var, prn) \
-	if (ow->var != gw->var) { \
-		same = false; \
-		if (report) DEBUG(misc, 1, "index %d, \"" #var "\" field: original " prn ", generated " prn, idx, ow->var, gw->var); \
-	}
-#define CHECK_COORD(var) \
-	if (ow->var != gw->var) { \
-		same = false; \
-		if (report) DEBUG(misc, 1, "index %d, \"" #var "\" field: original %d, generated %d, (difference %d)", idx, ow->var, gw->var, ow->var - gw->var); \
-	}
-
-	bool same = true;
-	for (int idx = 0; ; idx++) {
-		const Widget *ow = orig + idx;
-		const Widget *gw = gen + idx;
-
-		CHECK(type, "%d")
-		CHECK(display_flags, "0x%x")
-		CHECK(colour, "%d")
-		CHECK_COORD(left)
-		CHECK_COORD(right)
-		CHECK_COORD(top)
-		CHECK_COORD(bottom)
-		CHECK(data, "%u")
-		CHECK(tooltips, "%u")
-
-		if (ow->type == WWT_LAST || gw->type == WWT_LAST) break;
-	}
-
-	return same;
-
-#undef CHECK
-#undef CHECK_COORD
-}
-
 /* == Conversion code from NWidgetPart array to NWidgetBase* tree == */
 
 /**
@@ -2592,14 +2548,13 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest
  * Also cache the result and use the cache if possible.
  * @param[in] parts        Array with parts of the widgets.
  * @param     parts_length Length of the \a parts array.
- * @param[in] orig_wid     Pointer to original widget array.
  * @param     wid_cache    Pointer to the cache for storing the generated widget array (use \c NULL to prevent caching).
  * @return Cached value if available, otherwise the generated widget array. If \a wid_cache is \c NULL, the caller should free the returned array.
  *
  * @pre Before the first call, \c *wid_cache should be \c NULL.
  * @post The widget array stored in the \c *wid_cache should be free-ed by the caller.
  */
-const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, const Widget *orig_wid, Widget **wid_cache)
+const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, int parts_length, Widget **wid_cache)
 {
 	const bool rtl = false; // Direction of the language is left-to-right
 
@@ -2609,19 +2564,6 @@ const Widget *InitializeWidgetArrayFromNestedWidgets(const NWidgetPart *parts, i
 	int biggest_index = -1;
 	NWidgetContainer *nwid = MakeNWidgets(parts, parts_length, &biggest_index);
 	Widget *gen_wid = InitializeNWidgets(nwid, rtl, biggest_index);
-
-	if (!rtl && orig_wid) {
-		/* There are two descriptions, compare them.
-		 * Comparing only makes sense when using a left-to-right language.
-		 */
-		bool ok = CompareWidgetArrays(orig_wid, gen_wid, false);
-		if (ok) {
-			DEBUG(misc, 1, "Nested widgets are equal, min-size(%u, %u)", nwid->smallest_x, nwid->smallest_y);
-		} else {
-			DEBUG(misc, 0, "Nested widgets give different results");
-			CompareWidgetArrays(orig_wid, gen_wid, true);
-		}
-	}
 	delete nwid;
 
 	if (wid_cache != NULL) *wid_cache = gen_wid;

@@ -81,7 +81,7 @@ WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height,
 const Widget *WindowDesc::GetWidgets() const
 {
 	if (this->nwid_parts != NULL) {
-		InitializeWidgetArrayFromNestedWidgets(this->nwid_parts, this->nwid_length, NULL, &this->new_widgets);
+		InitializeWidgetArrayFromNestedWidgets(this->nwid_parts, this->nwid_length, &this->new_widgets);
 	}
 	const Widget *wids = this->new_widgets;
 	assert(wids != NULL);
