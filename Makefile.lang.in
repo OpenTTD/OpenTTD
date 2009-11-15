@@ -24,7 +24,7 @@ ifeq ($(LANG_SUPPRESS), yes)
 LANG_ERRORS = >/dev/null 2>&1
 endif
 
-# Make sure endian_host.h is reasable as if it was in the src/ dir
+# Make sure endian_host.h is reachable as if it was in the src/ dir
 CFLAGS_BUILD += -I $(LANG_OBJS_DIR)
 
 ENDIAN_TARGETS := endian_host.h endian_target.h $(ENDIAN_CHECK)
