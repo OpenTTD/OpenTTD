@@ -27,9 +27,9 @@
 	#endif
 #else /* NO_DEBUG_MESSAGES */
 	#if defined(__GNUC__) && (__GNUC__ < 3)
-		#define DEBUG(name, level, args...) if ((level == 0) || ( _debug_ ## name ## _level >= level)) debug(#name, args)
+		#define DEBUG(name, level, args...) if (((level) == 0) || ( _debug_ ## name ## _level >= (level))) debug(#name, args)
 	#else
-		#define DEBUG(name, level, ...) if (level == 0 || _debug_ ## name ## _level >= level) debug(#name, __VA_ARGS__)
+		#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(#name, __VA_ARGS__)
 	#endif
 
 	extern int _debug_ai_level;

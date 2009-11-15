@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2009-10-01
-Release version: 0.7.3
+Last updated:    2009-11-15
+Release version: 0.7.4-RC1
 ------------------------------------------------------------------------
 
 
@@ -62,7 +62,7 @@ reasons why we think that fixing them is infeasible. We might make some
 minor improvements that reduce the scope of these bugs, but we will not
 be able to completely fix them.
 
-Clipping problems
+Clipping problems [FS#119]
 	In some cases sprites are not drawn as one would expect. Examples of
 	this are aircraft that might be hidden below the runway or trees that
 	in some cases are rendered over vehicles.
@@ -80,7 +80,34 @@ Clipping problems
 	leave the Transport Tycoon graphics, which in effect means OpenTTD
 	will not be a Transport Tycoon clone anymore.
 
-Duplicate (station) names after renaming
+Lost trains ignore (block) exit signals [FS#1473]
+	If trains are lost they ignore block exit signals, blocking junctions
+	with presignals. This is caused because the path finders cannot tell
+	where the train needs to go. As such a random direction is chosen at
+	each junction. This causes the trains to occasionally to make choices
+	that are unwanted from a player's point of view.
+	This will not be fixed because lost trains are in almost all cases a
+	network problem, e.g. a train can never reach a specific place. This
+	makes the impact of fixing the bug enormously small against the
+	amount of work needed to write a system that prevents the lost trains
+	from taking the wrong direction.
+
+Forbid 90 degree turns does not work for crossing PBS paths [FS#2737]
+	When you run a train through itself on a X junction with PBS turned on
+	the train will not obey the 'forbid 90 degree turns' setting. This is
+	due to the fact that we can not be sure that the setting was turned
+	off when the track was reserved, which means that we assume it was
+	turned on and that the setting does not hold at the time. We made it
+	this way to allow one to change the setting in-game, but it breaks
+	slightly when you are running your train through itself. Running a
+	train through means that your network is broken and is thus a user
+	error which OpenTTD tries to graciously handle.
+	Fixing this bug means that we need to record whether this particular
+	setting was turned on or off at the time the reservation was made. This
+	means adding quite a bit of data to the savegame for solving an issue
+	that is basically an user error. We think it is not worth the effort.
+
+Duplicate (station) names after renaming [FS#3204]
 	After renaming stations one can create duplicate station names. This
 	is done giving a station the same custom name as another station with
 	an automatically generated name.
@@ -96,29 +123,24 @@ Duplicate (station) names after renaming
 	compared to the other custom names in the same class and not compared
 	to the automatically generated names.
 
-Forbid 90 degree turns does not work for crossing PBS paths
-	When you run a train through itself on a X junction with PBS turned on
-	the train will not obey the 'forbid 90 degree turns' setting. This is
-	due to the fact that we can not be sure that the setting was turned
-	off when the track was reserved, which means that we assume it was
-	turned on and that the setting does not hold at the time. We made it
-	this way to allow one to change the setting in-game, but it breaks
-	slightly when you are running your train through itself. Running a
-	train through means that your network is broken and is thus a user
-	error which OpenTTD tries to graciously handle.
-	Fixing this bug means that we need to record whether this particular
-	setting was turned on or off at the time the reservation was made. This
-	means adding quite a bit of data to the savegame for solving an issue
-	that is basically an user error. We think it is not worth the effort.
+Extreme CPU usage/hangs when using SDL and PulseAudio [FS#3294]
+	OpenTTD can be extremely slow/use a lot of CPU when the sound is
+	played via SDL and then through PulseAudio's ALSA wrapper. Under the
+	same configuration OpenTTD, or rather SDL, might hang when exiting
+	the game. This setup seems to be the default configuration for
+	Ubuntu 9.04 and later. For Ubuntu this issue can be solved by
+	installing the 'libsdl1.2debian-pulseaudio' package from Ubuntu's
+	Universe repository. For other distributions a similar package needs
+	to be installed.
 
-Lost trains ignore (block) exit signals
-	If trains are lost they ignore block exit signals, blocking junctions
-	with presignals. This is caused because the path finders cannot tell
-	where the train needs to go. As such a random direction is chosen at
-	each junction. This causes the trains to occasionally to make choices
-	that are unwanted from a player's point of view.
-	This will not be fixed because lost trains are in almost all cases a
-	network problem, e.g. a train can never reach a specific place. This
-	makes the impact of fixing the bug enormously small against the
-	amount of work needed to write a system that prevents the lost trains
-	from taking the wrong direction.
+OpenTTD not properly resizing with SDL on X [FS#3305]
+	Under some X window managers OpenTTD's window does not properly
+	resize. You will either end up with a black bar at the right/bottom
+	side of the window or you cannot see the right/bottom of the window,
+	e.g you cannot see the status bar. The problem is that OpenTTD does
+	not always receive a resize event from SDL making it impossible for
+	OpenTTD to know that the window was resized; sometimes moving the
+	window will solve the problem.
+	Window managers that are known to exhibit this behaviour are KDE's
+	and GNOME's. With the XFCE's and LXDE's window managers the resize
+	event is sent when the user releases the mouse.
