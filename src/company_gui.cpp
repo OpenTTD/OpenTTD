@@ -1415,14 +1415,19 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_CLOSEBOX = 0,
 	CW_WIDGET_CAPTION,
 	CW_WIDGET_FACE,
+	CW_WIDGET_SELECT_BUTTONS,     ///< Selection widget for the button bar.
 	CW_WIDGET_NEW_FACE,
 	CW_WIDGET_COLOUR_SCHEME,
 	CW_WIDGET_PRESIDENT_NAME,
 	CW_WIDGET_COMPANY_NAME,
 	CW_WIDGET_BUILD_VIEW_HQ,
+	CW_WIDGET_SELECT_RELOCATE,    ///< View/hide the 'Relocate HQ' button.
+	CW_WIDGET_RELOCATE_EMPTY,     ///< Empty widget to hide the relocate HQ button.
 	CW_WIDGET_RELOCATE_HQ,
 	CW_WIDGET_BUY_SHARE,
 	CW_WIDGET_SELL_SHARE,
+	CW_WIDGET_SELECT_MULTIPLAYER, ///< Multiplayer selection panel.
+	CW_WIDGET_MP_EMPTY,
 	CW_WIDGET_COMPANY_PASSWORD,
 	CW_WIDGET_COMPANY_JOIN,
 };
@@ -1440,14 +1445,18 @@ static const NWidgetPart _nested_company_widgets[] = {
 										SetDataTip(STR_COMPANY_VIEW_VIEW_HQ_BUTTON, STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetFill(true, false),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_RELOCATE_HQ), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
-										SetDataTip(STR_COMPANY_VIEW_RELOCATE_HQ, STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_RELOCATE),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_RELOCATE_HQ), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
+											SetDataTip(STR_COMPANY_VIEW_RELOCATE_HQ, STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS),
+			EndContainer(),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_RELOCATE_EMPTY), SetFill(true, true),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 94),
 		/* Multi player buttons. */
-		NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_MP_EMPTY), SetFill(true, true),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SPACER), SetFill(true, false),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
@@ -1462,21 +1471,21 @@ static const NWidgetPart _nested_company_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
 	/* Button bars at the bottom. */
-	NWidget(NWID_SELECTION, INVALID_COLOUR, -1),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetMinimalSize(90, 12),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_BUTTONS),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetMinimalSize(90, 12), SetFill(true, false),
 										SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COLOUR_SCHEME), SetMinimalSize(90, 12),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COLOUR_SCHEME), SetMinimalSize(90, 12), SetFill(true, false),
 										SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON, STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_PRESIDENT_NAME), SetMinimalSize(90, 12),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_PRESIDENT_NAME), SetMinimalSize(90, 12), SetFill(true, false),
 										SetDataTip(STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_NAME), SetMinimalSize(90, 12),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_NAME), SetMinimalSize(90, 12), SetFill(true, false),
 										SetDataTip(STR_COMPANY_VIEW_COMPANY_NAME_BUTTON, STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP),
 		EndContainer(),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_BUY_SHARE), SetMinimalSize(180, 12),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_BUY_SHARE), SetMinimalSize(180, 12), SetFill(true, false),
 										SetDataTip(STR_COMPANY_VIEW_BUY_SHARE_BUTTON, STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_SELL_SHARE), SetMinimalSize(180, 12),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_SELL_SHARE), SetMinimalSize(180, 12), SetFill(true, false),
 										SetDataTip(STR_COMPANY_VIEW_SELL_SHARE_BUTTON, STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
@@ -1559,10 +1568,26 @@ struct CompanyWindow : Window
 {
 	CompanyWindowWidgets query_widget;
 
-	CompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	/** Display planes in the company window. */
+	enum CompanyWindowPlanes {
+		/* Display planes of the #CW_WIDGET_SELECT_MULTIPLAYER selection widget. */
+		CWP_MP_EMPTY = 0, ///< Do not display any multiplayer button.
+		CWP_MP_C_PWD,     ///< Display the company password button.
+		CWP_MP_C_JOIN,    ///< Display the join company button.
+
+		/* Display planes of the #CW_WIDGET_SELECT_RELOCATE selection widget. */
+		CWP_RELOCATE_SHOW = 0, ///< Show the relocate HQ button.
+		CWP_RELOCATE_HIDE,     ///< Hide the relocate HQ button.
+
+		/* Display planes of the #CW_WIDGET_SELECT_BUTTONS selection widget. */
+		CWP_BUTTONS_LOCAL = 0, ///< Buttons of the local company.
+		CWP_BUTTONS_OTHER,     ///< Buttons of the other companies.
+	};
+
+	CompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
+		this->InitNested(desc, window_number);
 		this->owner = (Owner)this->window_number;
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
@@ -1570,18 +1595,39 @@ struct CompanyWindow : Window
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		bool local = this->window_number == _local_company;
 
-		this->SetWidgetHiddenState(CW_WIDGET_NEW_FACE,       !local);
-		this->SetWidgetHiddenState(CW_WIDGET_COLOUR_SCHEME,   !local);
-		this->SetWidgetHiddenState(CW_WIDGET_PRESIDENT_NAME, !local);
-		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_NAME,   !local);
-		this->widget[CW_WIDGET_BUILD_VIEW_HQ].data = (local && c->location_of_HQ == INVALID_TILE) ? STR_COMPANY_VIEW_BUILD_HQ_BUTTON : STR_COMPANY_VIEW_VIEW_HQ_BUTTON;
-		if (local && c->location_of_HQ != INVALID_TILE) this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // HQ is already built.
-		this->SetWidgetDisabledState(CW_WIDGET_BUILD_VIEW_HQ, !local && c->location_of_HQ == INVALID_TILE);
-		this->SetWidgetHiddenState(CW_WIDGET_RELOCATE_HQ,      !local || c->location_of_HQ == INVALID_TILE);
-		this->SetWidgetHiddenState(CW_WIDGET_BUY_SHARE,        local);
-		this->SetWidgetHiddenState(CW_WIDGET_SELL_SHARE,       local);
-		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
-		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_JOIN,     local || !_networking);
+		/* Button bar selection. */
+		int plane = local ? CWP_BUTTONS_LOCAL : CWP_BUTTONS_OTHER;
+		NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
+		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
+		if (plane != wi->shown_plane) {
+			wi->SetDisplayedPlane(plane);
+			this->SetDirty();
+			return;
+		}
+
+		/* Build HQ button handling. */
+		NWidgetCore *wi_core = this->GetWidget<NWidgetCore>(CW_WIDGET_BUILD_VIEW_HQ);
+		wi_core->widget_data = (local && c->location_of_HQ == INVALID_TILE) ? STR_COMPANY_VIEW_BUILD_HQ_BUTTON : STR_COMPANY_VIEW_VIEW_HQ_BUTTON;
+		if (local && c->location_of_HQ != INVALID_TILE) wi_core->type = WWT_PUSHTXTBTN; // HQ is already built.
+		wi_core->SetDisabled(!local && c->location_of_HQ == INVALID_TILE);
+
+		/* Enable/disable 'Relocate HQ' button. */
+		plane = (!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW;
+		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_RELOCATE);
+		if (plane != wi->shown_plane) {
+			wi->SetDisplayedPlane(plane);
+			this->SetDirty();
+			return;
+		}
+
+		/* Multiplayer buttons. */
+		plane = ((!_networking) ? CWP_MP_EMPTY : (local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
+		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_MULTIPLAYER);
+		if (plane != wi->shown_plane) {
+			wi->SetDisplayedPlane(plane);
+			this->SetDirty();
+			return;
+		}
 		this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   c->is_ai);
 
 		if (!local) {
@@ -1603,14 +1649,12 @@ struct CompanyWindow : Window
 			}
 		}
 
-		SetDParam(0, c->index);
-		SetDParam(1, c->index);
-
 		this->DrawWidgets();
 
 #ifdef ENABLE_NETWORK
 		if (_networking && NetworkCompanyIsPassworded(c->index)) {
-			DrawSprite(SPR_LOCK, PAL_NONE, this->widget[CW_WIDGET_COMPANY_JOIN].left - 10, this->widget[CW_WIDGET_COMPANY_JOIN].top + 2);
+			const NWidgetBase *wi = this->GetWidget<NWidgetBase>(CW_WIDGET_COMPANY_JOIN);
+			DrawSprite(SPR_LOCK, PAL_NONE, wi->pos_x - 10, wi->pos_y + 2);
 		}
 #endif /* ENABLE_NETWORK */
 
@@ -1639,6 +1683,15 @@ struct CompanyWindow : Window
 
 		/* Shares list */
 		DrawCompanyOwnerText(c);
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == CW_WIDGET_CAPTION) {
+			const Company *c = Company::Get((CompanyID)this->window_number);
+			SetDParam(0, c->index);
+			SetDParam(1, c->index);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1728,10 +1781,10 @@ struct CompanyWindow : Window
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		if (DoCommandP(tile, 0, 0, CMD_BUILD_COMPANY_HQ | CMD_MSG(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
+		if (DoCommandP(tile, 0, 0, CMD_BUILD_COMPANY_HQ | CMD_MSG(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS))) {
 			ResetObjectToPlace();
-			this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
 			this->RaiseButtons();
+		}
 	}
 
 	virtual void OnPlaceObjectAbort()
