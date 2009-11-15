@@ -381,10 +381,6 @@ public:
 				*size = maxdim(*size, GetStringBoundingBox(STR_CONTENT_FILTER_TITLE));
 				break;
 
-			case NCLWW_FILTER:
-				size->height = FONT_HEIGHT_NORMAL + padding.height;
-				break;
-
 			case NCLWW_TYPE: {
 				Dimension d = *size;
 				for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {

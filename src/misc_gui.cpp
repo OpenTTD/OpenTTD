@@ -1871,10 +1871,6 @@ public:
 				resize->width = 1;
 				break;
 
-			case SLWW_SAVE_OSK_TITLE:
-				size->height = FONT_HEIGHT_NORMAL + padding.height;
-				break;
-
 			case SLWW_BACKGROUND:
 				size->height = 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
