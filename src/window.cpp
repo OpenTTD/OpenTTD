@@ -250,7 +250,8 @@ void Window::RaiseButtons(bool autoraise)
 	}
 	if (this->nested_array != NULL) {
 		for (uint i = 0; i < this->nested_array_size; i++) {
-			if (this->nested_array[i] != NULL && (!autoraise || (this->nested_array[i]->type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
+			if (this->nested_array[i] != NULL && (this->nested_array[i]->type & ~WWB_PUSHBUTTON) < WWT_LAST &&
+					(!autoraise || (this->nested_array[i]->type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->SetWidgetDirty(i);
 			}
