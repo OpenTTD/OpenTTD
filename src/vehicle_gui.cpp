@@ -251,13 +251,17 @@ static void DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uin
 		TextColour colour = (sel == (int)i) ? TC_WHITE : TC_BLACK;
 		RefitOption *refit = &list->items[i];
 
-		/* Draw the cargo name */
-		int last_x = DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, CargoSpec::Get(refit->cargo)->name, colour);
+		/* Get the cargo name */
+		SetDParam(0, CargoSpec::Get(refit->cargo)->name);
 
 		/* If the callback succeeded, draw the cargo suffix */
 		if (refit->value != CALLBACK_FAILED) {
-			DrawString(last_x + 1, r.right - WD_MATRIX_RIGHT, y, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value), colour);
+			SetDParam(1, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value));
+			DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_SPACE_STRING, colour);
+		} else {
+			DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING, colour);
 		}
+
 		y += delta;
 	}
 }
