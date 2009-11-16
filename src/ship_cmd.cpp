@@ -68,9 +68,9 @@ static SpriteID GetShipIcon(EngineID engine)
 	return DIR_W + _ship_sprites[spritenum];
 }
 
-void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
+void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
 {
-	DrawSprite(GetShipIcon(engine), pal, x, y);
+	DrawSprite(GetShipIcon(engine), pal, preferred_x, y);
 }
 
 /** Get the size of the sprite of a ship sprite heading west (used for lists)

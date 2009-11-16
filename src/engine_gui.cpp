@@ -104,7 +104,7 @@ struct EnginePreviewWindow : Window {
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_ENGINE_NAME, TC_BLACK, SA_CENTER);
 		y += FONT_HEIGHT_NORMAL;
 
-		DrawVehicleEngine(this->width >> 1, y + VEHICLE_SPACE / 2, engine, GetEnginePalette(engine, _local_company));
+		DrawVehicleEngine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, this->width >> 1, y + VEHICLE_SPACE / 2, engine, GetEnginePalette(engine, _local_company));
 
 		y += VEHICLE_SPACE;
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
@@ -248,30 +248,32 @@ StringID GetEngineInfoString(EngineID engine)
 
 /**
  * Draw an engine.
- * @param x      Horizontal position to use for drawing the engine.
+ * @param left   Minimum horizontal position to use for drawing the engine
+ * @param right  Maximum horizontal position to use for drawing the engine
+ * @param preferred_x Horizontal position to use for drawing the engine.
  * @param y      Vertical position to use for drawing the engine.
  * @param engine Engine to draw.
  * @param pal    Palette to use for drawing.
  */
-void DrawVehicleEngine(int x, int y, EngineID engine, SpriteID pal)
+void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
 {
 	const Engine *e = Engine::Get(engine);
 
 	switch (e->type) {
 		case VEH_TRAIN:
-			DrawTrainEngine(x, y, engine, pal);
+			DrawTrainEngine(left, right, preferred_x, y, engine, pal);
 			break;
 
 		case VEH_ROAD:
-			DrawRoadVehEngine(x, y, engine, pal);
+			DrawRoadVehEngine(left, right, preferred_x, y, engine, pal);
 			break;
 
 		case VEH_SHIP:
-			DrawShipEngine(x, y, engine, pal);
+			DrawShipEngine(left, right, preferred_x, y, engine, pal);
 			break;
 
 		case VEH_AIRCRAFT:
-			DrawAircraftEngine(x, y, engine, pal);
+			DrawAircraftEngine(left, right, preferred_x, y, engine, pal);
 			break;
 
 		default: NOT_REACHED();

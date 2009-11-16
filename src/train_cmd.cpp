@@ -657,7 +657,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 	return GetDefaultTrainSprite(spritenum, DIR_W);
 }
 
-void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
+void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
 {
 	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
 		int yf = y;
@@ -665,11 +665,11 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 
 		SpriteID spritef = GetRailIcon(engine, false, yf);
 		SpriteID spriter = GetRailIcon(engine, true, yr);
-		DrawSprite(spritef, pal, x - 14, yf);
-		DrawSprite(spriter, pal, x + 15, yr);
+		DrawSprite(spritef, pal, preferred_x - 14, yf);
+		DrawSprite(spriter, pal, preferred_x + 15, yr);
 	} else {
 		SpriteID sprite = GetRailIcon(engine, false, y);
-		DrawSprite(sprite, pal, x, y);
+		DrawSprite(sprite, pal, preferred_x, y);
 	}
 }
 

@@ -198,14 +198,14 @@ static SpriteID GetAircraftIcon(EngineID engine)
 	return DIR_W + _aircraft_sprite[spritenum];
 }
 
-void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
+void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
 {
-	DrawSprite(GetAircraftIcon(engine), pal, x, y);
+	DrawSprite(GetAircraftIcon(engine), pal, preferred_x, y);
 
 	if (!(AircraftVehInfo(engine)->subtype & AIR_CTOL)) {
 		SpriteID rotor_sprite = GetCustomRotorIcon(engine);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, PAL_NONE, x, y - 5);
+		DrawSprite(rotor_sprite, PAL_NONE, preferred_x, y - 5);
 	}
 }
 
