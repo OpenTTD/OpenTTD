@@ -837,9 +837,6 @@ struct BuildVehicleWindow : Window {
 
 		this->FinishInitNested(desc, tile == INVALID_TILE ? (int)type : tile);
 
-		/* Update the scrollbars/matrix 'definitions' */
-		this->OnResize();
-
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */

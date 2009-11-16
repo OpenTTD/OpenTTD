@@ -227,9 +227,6 @@ public:
 
 		this->InitNested(desc, vehicletype);
 
-		/* Update the scrollbars/matrix 'definitions' */
-		this->OnResize();
-
 		this->owner = _local_company;
 		this->sel_group = id_g;
 	}

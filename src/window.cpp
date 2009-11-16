@@ -517,17 +517,8 @@ void Window::ReInit(int rx, int ry)
 	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
 	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
 
-	if (dx == 0 && dy == 0) { // No resize needed.
-		this->SetDirty();
-		if (this->viewport != NULL) {
-			NWidgetViewport *nvp = (NWidgetViewport *)nested_root->GetWidgetOfType(NWID_VIEWPORT);
-			nvp->UpdateViewportCoordinates(this);
-		}
-		return;
-	}
-
-	ResizeWindow(this, dx, dy); // Sets post-resize dirty blocks.
-	this->OnResize(); // Calls NWidgetViewport::UpdateViewportCoordinates()
+	ResizeWindow(this, dx, dy);
+	this->OnResize();
 }
 
 /** Find the Window whose parent pointer points to this window
@@ -901,8 +892,10 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
 
 		ResizeWindow(this, enlarge_x, enlarge_y);
-		this->OnResize();
 	}
+
+	/* Always call OnResize; that way the scrollbars and matrices get initialized */
+	this->OnResize();
 
 	int nx = this->left;
 	int ny = this->top;
