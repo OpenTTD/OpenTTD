@@ -294,7 +294,7 @@ static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType 
 static NWidgetBase *MakeTopKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
-	int key_height = 12;
+	int key_height = FONT_HEIGHT_NORMAL + 2;
 
 	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_CANCEL,    STR_BUTTON_CANCEL,  biggest_index);
 	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_OK,        STR_BUTTON_OK,      biggest_index);
@@ -306,7 +306,7 @@ static NWidgetBase *MakeTopKeys(int *biggest_index)
 static NWidgetBase *MakeNumberKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = 16;
+	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	for (int widnum = OSK_WIDGET_NUMBERS_FIRST; widnum <= OSK_WIDGET_NUMBERS_LAST; widnum++) {
 		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
@@ -318,7 +318,7 @@ static NWidgetBase *MakeNumberKeys(int *biggest_index)
 static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = 16;
+	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	AddKey(hor, key_height, 3, WWT_PUSHIMGBTN, OSK_WIDGET_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
 	for (int widnum = OSK_WIDGET_QWERTY_FIRST; widnum <= OSK_WIDGET_QWERTY_LAST; widnum++) {
@@ -332,7 +332,7 @@ static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = 16;
+	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	AddKey(hor, key_height, 4, WWT_IMGBTN, OSK_WIDGET_CAPS, SPR_OSK_CAPS, biggest_index);
 	for (int widnum = OSK_WIDGET_ASDFG_FIRST; widnum <= OSK_WIDGET_ASDFG_LAST; widnum++) {
@@ -345,7 +345,7 @@ static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = 16;
+	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	AddKey(hor, key_height, 3, WWT_IMGBTN, OSK_WIDGET_SHIFT, SPR_OSK_SHIFT, biggest_index);
 	for (int widnum = OSK_WIDGET_ZXCVB_FIRST; widnum <= OSK_WIDGET_ZXCVB_LAST; widnum++) {
@@ -359,7 +359,7 @@ static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
-	int key_height = 16;
+	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	AddKey(hor, key_height,  8, NWID_SPACER, 0, 0, biggest_index);
 	AddKey(hor, key_height, 13, WWT_PUSHTXTBTN, OSK_WIDGET_SPACE, STR_EMPTY, biggest_index);
