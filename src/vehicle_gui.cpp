@@ -718,12 +718,12 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_SORT_ORDER), SetMinimalSize(81, 12), SetFill(false, true), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_SORT_BY_PULLDOWN), SetMinimalSize(167, 12), SetFill(false, true), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
-		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_TOP_RIGHT), SetMinimalSize(12, 12), SetFill(false, true), SetResize(1, 0),
+		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_TOP_RIGHT), SetMinimalSize(12, 12), SetFill(true, true), SetResize(1, 0),
 		EndContainer(),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 0), SetResize(1,1), // vertical resize step size will be modified
+		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 0), SetFill(true, false),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR), SetMinimalSize(12, 0),
 	EndContainer(),
 
@@ -750,19 +750,26 @@ static const NWidgetPart _nested_vehicle_list[] = {
 static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 {
 	const Order *order;
-	int sel, i = 0;
+	int i = 0;
 
-	sel = v->cur_order_index;
+	int sel = v->cur_order_index;
+	bool rtl = _dynlang.text_dir == TD_RTL;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) DrawString(left - 6, left, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
+		if (sel == 0) {
+			if (rtl) {
+				DrawString(right, right + 6, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
+			} else {
+				DrawString(left - 6, left, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
+			}
+		}
 		sel--;
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
 			DrawString(left, right, y, STR_TINY_BLACK_STATION);
 
-			y += 6;
+			y += FONT_HEIGHT_SMALL;
 			if (++i == 4) break;
 		}
 	}
@@ -796,7 +803,11 @@ static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection
  */
 uint GetVehicleListHeight(VehicleType type, uint divisor)
 {
+	/* Name + vehicle + profit */
 	uint base = GetVehicleHeight(type) + 2 * FONT_HEIGHT_SMALL;
+	/* Drawing of the 4 small orders + profit*/
+	if (type >= VEH_SHIP) base = max(base, 5U * FONT_HEIGHT_SMALL);
+
 	if (divisor == 1) return base;
 
 	/* Make sure the height is dividable by divisor */
