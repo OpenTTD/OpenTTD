@@ -35,6 +35,7 @@
 #include "effectvehicle_func.h"
 #include "gamelog.h"
 #include "network/network.h"
+#include "spritecache.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"
@@ -665,10 +666,17 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 
 		SpriteID spritef = GetRailIcon(engine, false, yf);
 		SpriteID spriter = GetRailIcon(engine, true, yr);
+		const Sprite *real_spritef = GetSprite(spritef, ST_NORMAL);
+		const Sprite *real_spriter = GetSprite(spriter, ST_NORMAL);
+
+		preferred_x = Clamp(preferred_x, left - real_spritef->x_offs + 14, right - real_spriter->width - real_spriter->x_offs - 15);
+
 		DrawSprite(spritef, pal, preferred_x - 14, yf);
 		DrawSprite(spriter, pal, preferred_x + 15, yr);
 	} else {
 		SpriteID sprite = GetRailIcon(engine, false, y);
+		const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+		preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
 		DrawSprite(sprite, pal, preferred_x, y);
 	}
 }

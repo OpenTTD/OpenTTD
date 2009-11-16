@@ -200,7 +200,10 @@ static SpriteID GetAircraftIcon(EngineID engine)
 
 void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
 {
-	DrawSprite(GetAircraftIcon(engine), pal, preferred_x, y);
+	SpriteID sprite = GetAircraftIcon(engine);
+	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+	preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
+	DrawSprite(sprite, pal, preferred_x, y);
 
 	if (!(AircraftVehInfo(engine)->subtype & AIR_CTOL)) {
 		SpriteID rotor_sprite = GetCustomRotorIcon(engine);

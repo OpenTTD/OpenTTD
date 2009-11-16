@@ -70,7 +70,10 @@ static SpriteID GetShipIcon(EngineID engine)
 
 void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
 {
-	DrawSprite(GetShipIcon(engine), pal, preferred_x, y);
+	SpriteID sprite = GetShipIcon(engine);
+	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+	preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
+	DrawSprite(sprite, pal, preferred_x, y);
 }
 
 /** Get the size of the sprite of a ship sprite heading west (used for lists)
