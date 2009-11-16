@@ -239,13 +239,13 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 					Point offset;
 					int width = u->GetDisplayImageWidth(&offset);
 					SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-					DrawSprite(u->GetImage(DIR_W), pal, px + offset.x, y + 6 + offset.y);
+					DrawSprite(u->GetImage(DIR_W), pal, px + offset.x, y + 4 + offset.y);
 					px += width;
 					u = u->Next();
 				} while (u != NULL && u->IsArticulatedPart() && u->cargo_cap == 0);
 
 				px += 2;
-				int py = y + 2;
+				int py = y;
 				switch (det_tab) {
 					default: NOT_REACHED();
 
@@ -264,7 +264,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 						TrainDetailsCapacityTab(v, px, right, py);
 						break;
 				}
-				y += 14;
+				y += WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
 
 				v = u;
 			} else {
@@ -287,19 +287,21 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 		}
 
 		/* draw total cargo tab */
-		DrawString(left, right, y + 2, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
+		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
+		y += WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
+
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
-				y += 14;
 				SetDParam(0, i);            // {CARGO} #1
 				SetDParam(1, act_cargo[i]); // {CARGO} #2
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				SetDParam(4, _settings_game.vehicle.freight_trains);
-				DrawString(left, right, y + 2, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
+				DrawString(left, right, y, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
+				y += WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
 			}
 		}
 		SetDParam(0, feeder_share);
-		DrawString(left, right, y + 15, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+		DrawString(left, right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 	}
 }
