@@ -225,6 +225,8 @@ struct DepotWindow : Window {
 
 	DepotWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window()
 	{
+		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
+
 		this->sel = INVALID_VEHICLE;
 		this->generate_list = true;
 		this->type = type;
@@ -234,7 +236,8 @@ struct DepotWindow : Window {
 		this->FinishInitNested(desc, tile);
 
 		this->owner = GetTileOwner(tile);
-		this->CreateDepotListWindow(type);
+		_backup_orders_tile = 0;
+
 	}
 
 	~DepotWindow()
@@ -591,21 +594,6 @@ struct DepotWindow : Window {
 				this->GetWidget<NWidgetCore>(DEPOT_WIDGET_AUTOREPLACE)->widget_data = SPR_REPLACE_AIRCRAFT;
 				break;
 		}
-	}
-
-	void CreateDepotListWindow(VehicleType type)
-	{
-		_backup_orders_tile = 0;
-
-		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
-
-		/* Set the number of blocks in each direction */
-		this->hscroll.SetCapacity(_resize_cap[type].width);
-		this->vscroll.SetCapacity(_resize_cap[type].height);
-
-		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->widget_data =
-			(this->vscroll.GetCapacity() << MAT_ROW_START) // number of rows to draw on the background
-			+ ((type == VEH_TRAIN ? 1 : this->hscroll.GetCapacity()) << MAT_COL_START); // number of boxes in each row. Trains always have just one
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)

@@ -1464,7 +1464,6 @@ struct GameSettingsWindow : Window {
 
 		this->InitNested(desc, 0);
 
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SETTINGSEL_OPTIONSPANEL)->current_y - SETTINGTREE_TOP_OFFSET - SETTINGTREE_BOTTOM_OFFSET) / this->resize.step_height);
 		this->vscroll.SetCount(_settings_main_page.Length());
 	}
 

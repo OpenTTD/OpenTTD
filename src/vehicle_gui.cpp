@@ -298,7 +298,6 @@ struct RefitWindow : public Window {
 
 		this->FinishInitNested(desc, v->index);
 		this->owner = v->owner;
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(VRW_MATRIX)->current_y / this->resize.step_height);
 
 		this->order = order;
 		this->sel  = -1;
@@ -895,9 +894,6 @@ public:
 		this->FinishInitNested(desc, window_number);
 		this->owner = company;
 
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->current_y / this->resize.step_height);
-		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-
 		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
 
@@ -1307,11 +1303,6 @@ struct VehicleDetailsWindow : Window {
 
 		this->GetWidget<NWidgetCore>(VLD_WIDGET_RENAME_VEHICLE)->tool_tip = STR_VEHICLE_DETAILS_TRAIN_RENAME + v->type;
 
-		if (v->type == VEH_TRAIN) {
-			NWidgetCore *nwi = this->GetWidget<NWidgetCore>(VLD_WIDGET_MATRIX);
-			this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
-			nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-		}
 		this->owner = v->owner;
 		this->tab = TDW_TAB_CARGO;
 	}

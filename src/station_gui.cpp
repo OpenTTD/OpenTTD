@@ -266,7 +266,6 @@ public:
 
 		this->InitNested(desc, window_number);
 		this->owner = (Owner)this->window_number;
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
 
 		for (uint i = 0; i < NUM_CARGO; i++) {
 			const CargoSpec *cs = CargoSpec::Get(i);
@@ -792,8 +791,6 @@ struct StationViewWindow : public Window {
 
 		Owner owner = Station::Get(window_number)->owner;
 		if (owner != OWNER_NONE) this->owner = owner;
-
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SVW_WAITING)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
 
 	~StationViewWindow()
@@ -1280,8 +1277,6 @@ struct SelectStationWindow : Window {
 		this->CreateNestedTree(desc);
 		this->GetWidget<NWidgetCore>(JSW_WIDGET_CAPTION)->widget_data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
 		this->FinishInitNested(desc, 0);
-
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(JSW_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 		this->OnInvalidateData(0);
 	}
 

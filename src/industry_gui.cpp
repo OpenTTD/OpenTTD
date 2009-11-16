@@ -1036,7 +1036,6 @@ public:
 		this->BuildSortIndustriesList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(IDW_INDUSTRY_LIST)->current_y / this->resize.step_height);
 	}
 
 	~IndustryDirectoryWindow()

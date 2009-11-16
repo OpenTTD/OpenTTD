@@ -208,23 +208,6 @@ public:
 		this->vehicle_type = (VehicleType)GB(window_number, 11, 5);
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:
-			case VEH_ROAD:
-				this->vscroll2.SetCapacity(9);
-				this->vscroll.SetCapacity(6);
-				break;
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
-				this->vscroll2.SetCapacity(9);
-				this->vscroll.SetCapacity(4);
-				break;
-		}
-
-		this->GetWidget<NWidgetCore>(GRP_WIDGET_LIST_GROUP)->widget_data = (this->vscroll2.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-		this->GetWidget<NWidgetCore>(GRP_WIDGET_LIST_VEHICLE)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-
-		switch (this->vehicle_type) {
-			default: NOT_REACHED();
 			case VEH_TRAIN:    this->sorting = &_sorting.train;    break;
 			case VEH_ROAD:     this->sorting = &_sorting.roadveh;  break;
 			case VEH_SHIP:     this->sorting = &_sorting.ship;     break;

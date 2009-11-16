@@ -1777,7 +1777,6 @@ public:
 		this->FinishInitNested(desc, 0);
 
 		this->LowerWidget(SLWW_DRIVES_DIRECTORIES_LIST);
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(SLWW_DRIVES_DIRECTORIES_LIST)->current_y / this->resize.step_height);
 
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */

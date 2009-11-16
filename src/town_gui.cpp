@@ -659,7 +659,6 @@ public:
 		this->BuildSortTownList();
 
 		this->InitNested(desc, 0);
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / this->resize.step_height);
 	}
 
 	~TownDirectoryWindow()

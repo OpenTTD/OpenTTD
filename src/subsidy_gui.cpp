@@ -39,7 +39,6 @@ struct SubsidyListWindow : Window {
 	{
 		this->InitNested(desc, window_number);
 		this->OnInvalidateData(0);
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(SLW_PANEL)->current_y / this->resize.step_height);
 	}
 
 	virtual void OnClick(Point pt, int widget)

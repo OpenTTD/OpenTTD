@@ -462,10 +462,6 @@ public:
 		this->servers.SetSortFuncs(this->sorter_funcs);
 		this->servers.ForceRebuild();
 		this->SortNetworkGameList();
-
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(NGWW_MATRIX);
-		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
-		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	~NetworkGameWindow()

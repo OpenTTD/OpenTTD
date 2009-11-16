@@ -143,13 +143,11 @@ public:
 		this->SortBridgeList();
 
 		this->vscroll.SetCount(bl->Length());
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST)->current_y / this->resize.step_height);
 		if (this->last_size < this->vscroll.GetCapacity()) this->last_size = this->vscroll.GetCapacity();
 		if (this->last_size > this->vscroll.GetCount()) this->last_size = this->vscroll.GetCount();
 		/* Resize the bridge selection window if we used a bigger one the last time. */
 		if (this->last_size > this->vscroll.GetCapacity()) {
 			ResizeWindow(this, 0, (this->last_size - this->vscroll.GetCapacity()) * this->resize.step_height);
-			this->vscroll.SetCapacity(this->last_size);
 		}
 		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}

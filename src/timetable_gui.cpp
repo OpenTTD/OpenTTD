@@ -60,7 +60,6 @@ struct TimetableWindow : Window {
 		this->InitNested(desc, window_number);
 		this->owner = this->vehicle->owner;
 		this->sel_index = -1;
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)

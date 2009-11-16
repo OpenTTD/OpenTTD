@@ -95,8 +95,6 @@ struct SignListWindow : Window, SignList {
 	{
 		this->InitNested(desc, window_number);
 
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
-
 		/* Create initial list. */
 		this->signs.ForceRebuild();
 		this->signs.ForceResort();

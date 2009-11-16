@@ -363,9 +363,6 @@ public:
 		this->FilterContentList();
 		this->SortContentList();
 		this->InvalidateData();
-
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(NCLWW_MATRIX)->current_y / this->resize.step_height);
-		this->GetWidget<NWidgetCore>(NCLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	/** Free everything we allocated */

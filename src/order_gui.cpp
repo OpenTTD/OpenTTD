@@ -677,9 +677,6 @@ public:
 		this->selected_order = -1;
 		this->owner = v->owner;
 
-		int num_lines = (this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height;
-		this->vscroll.SetCapacity(num_lines);
-
 		if (_settings_client.gui.quick_goto && v->owner == _local_company) {
 			/* If there are less than 2 station, make Go To active. */
 			int station_orders = 0;

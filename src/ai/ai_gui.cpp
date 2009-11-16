@@ -60,9 +60,7 @@ struct AIListWindow : public Window {
 
 		this->InitNested(desc); // Initializes 'this->line_height' as side effect.
 
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->current_y / this->line_height);
 		this->vscroll.SetCount((int)this->ai_info_list->size() + 1);
-		this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
@@ -277,9 +275,7 @@ struct AISettingsWindow : public Window {
 
 		this->InitNested(desc);  // Initializes 'this->line_height' as side effect.
 
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AIS_WIDGET_BACKGROUND)->current_y / this->line_height);
 		this->vscroll.SetCount((int)this->ai_config->GetConfigList()->size());
-		this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -676,8 +672,6 @@ struct AIDebugWindow : public Window {
 			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
-
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AID_WIDGET_LOG_PANEL)->current_y / this->resize.step_height);
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
