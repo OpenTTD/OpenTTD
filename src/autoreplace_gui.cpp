@@ -28,6 +28,7 @@
 
 #include "table/strings.h"
 
+uint GetEngineListHeight(VehicleType type);
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 
 /** Widget numbers of the autoreplace GUI. */
@@ -226,11 +227,8 @@ public:
 
 		this->InitNested(desc, vehicletype);
 
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(RVW_WIDGET_LEFT_MATRIX)->current_y / this->resize.step_height);
-		this->vscroll2.SetCapacity(this->vscroll.GetCapacity());   // these two are always the same
-
-		this->GetWidget<NWidgetCore>(RVW_WIDGET_LEFT_MATRIX)->widget_data =
-				this->GetWidget<NWidgetCore>(RVW_WIDGET_RIGHT_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		/* Update the scrollbars/matrix 'definitions' */
+		this->OnResize();
 
 		this->owner = _local_company;
 		this->sel_group = id_g;
@@ -241,8 +239,8 @@ public:
 		switch (widget) {
 			case RVW_WIDGET_LEFT_MATRIX:
 			case RVW_WIDGET_RIGHT_MATRIX:
-				resize->height = GetVehicleListHeight((VehicleType)this->window_number);
-				size->height = (resize->height <= 14 ? 8 : 4) * resize->height;
+				resize->height = GetEngineListHeight((VehicleType)this->window_number);
+				size->height = (this->window_number <= VEH_ROAD ? 8 : 4) * resize->height;
 				break;
 
 			case RVW_WIDGET_LEFT_DETAILS:

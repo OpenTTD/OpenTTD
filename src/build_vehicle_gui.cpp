@@ -35,6 +35,16 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+/**
+ * Get the height of a single 'entry' in the engine lists.
+ * @param type the vehicle type to get the height of
+ * @return the height for the entry
+ */
+uint GetEngineListHeight(VehicleType type)
+{
+	return max<uint>(FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM, GetVehicleListHeight(type));
+}
+
 enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_CLOSEBOX = 0,
 	BUILD_VEHICLE_WIDGET_CAPTION,
@@ -678,7 +688,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 
 /** Engine drawing loop
  * @param type Type of vehicle (VEH_*)
- * @param x The left most location of the list
+ * @param l The left most location of the list
  * @param r The right most location of the list
  * @param y The top most location of teh list
  * @param eng_list What engines to draw
@@ -688,38 +698,28 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
+void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
 {
-	byte step_size = GetVehicleListHeight(type);
-	byte x_offset = 0;
-	byte y_offset = 0;
+	static const int sprite_widths[]  = { 60, 60, 76, 67 };
+	static const int sprite_y_offsets[] = { -1, -1, -2, -2 };
 
+	/* Obligatory sanity checks! */
+	assert((uint)type < lengthof(sprite_widths));
+	assert_compile(lengthof(sprite_y_offsets) == lengthof(sprite_widths));
 	assert(max <= eng_list->Length());
 
-	switch (type) {
-		case VEH_TRAIN:
-			x++; // train and road vehicles use the same offset, except trains are one more pixel to the right
-			/* Fallthough */
-		case VEH_ROAD:
-			x += 26;
-			x_offset = 30;
-			y += 2;
-			y_offset = 4;
-			break;
-		case VEH_SHIP:
-			x += 35;
-			x_offset = 40;
-			y += 7;
-			y_offset = 3;
-			break;
-		case VEH_AIRCRAFT:
-			x += 27;
-			x_offset = 33;
-			y += 7;
-			y_offset = 3;
-			break;
-		default: NOT_REACHED();
-	}
+	bool rtl = _dynlang.text_dir == TD_RTL;
+	int step_size = GetEngineListHeight(type);
+	int sprite_width = sprite_widths[type];
+
+	int sprite_x        = (rtl ? r - sprite_width / 2 : l + sprite_width / 2) - 1;
+	int sprite_y_offset = sprite_y_offsets[type] + step_size / 2;
+
+	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT : sprite_width);
+	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT);
+
+	int normal_text_y_offset = (step_size - FONT_HEIGHT_NORMAL) / 2;
+	int small_text_y_offset  = step_size - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1;
 
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = (*eng_list)[min];
@@ -727,11 +727,11 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, engine);
 
 		SetDParam(0, engine);
-		DrawString(x + x_offset, r, y, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK);
-		DrawVehicleEngine(x, y + y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
+		DrawString(text_left, text_right, y + normal_text_y_offset, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK);
+		DrawVehicleEngine(sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
 		if (show_count) {
 			SetDParam(0, num_engines);
-			DrawString(x, r, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
+			DrawString(text_left, text_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
 		}
 	}
 }
@@ -836,6 +836,9 @@ struct BuildVehicleWindow : Window {
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 		this->FinishInitNested(desc, tile == INVALID_TILE ? (int)type : tile);
+
+		/* Update the scrollbars/matrix 'definitions' */
+		this->OnResize();
 
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
@@ -1090,7 +1093,7 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case BUILD_VEHICLE_WIDGET_LIST:
-				resize->height = GetVehicleListHeight(this->vehicle_type);
+				resize->height = GetEngineListHeight(this->vehicle_type);
 				size->height = 3 * resize->height;
 				break;
 
