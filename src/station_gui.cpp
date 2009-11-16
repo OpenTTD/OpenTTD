@@ -328,6 +328,7 @@ public:
 				break;
 
 			case SLW_LIST: {
+				bool rtl = _dynlang.text_dir == TD_RTL;
 				int max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->stations.Length());
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (int i = this->vscroll.GetPosition(); i < max; ++i) { // do until max number of stations of owner
@@ -340,13 +341,25 @@ public:
 
 					SetDParam(0, st->index);
 					SetDParam(1, st->facilities);
-					int x = DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_LIST_STATION) + 5;
+					int x = DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_LIST_STATION);
+					x += rtl ? -5 : 5;
 
 					/* show cargo waiting and station ratings */
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
 						if (!st->goods[j].cargo.Empty()) {
-							StationsWndShowStationRating(x, r.right - WD_FRAMERECT_RIGHT, y, j, st->goods[j].cargo.Count(), st->goods[j].rating);
-							x += 20;
+							/* For RTL we work in exactly the opposite direction. So
+							 * decrement the space needed first, then draw to the left
+							 * instead of drawing to the left and then incrementing
+							 * the space. */
+							if (rtl) {
+								x -= 20;
+								if (x < r.left + WD_FRAMERECT_LEFT) break;
+							}
+							StationsWndShowStationRating(x, x + 16, y, j, st->goods[j].cargo.Count(), st->goods[j].rating);
+							if (!rtl) {
+								x += 20;
+								if (x > r.right - WD_FRAMERECT_RIGHT) break;
+							}
 						}
 					}
 					y += FONT_HEIGHT_NORMAL;
