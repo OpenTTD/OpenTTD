@@ -779,8 +779,8 @@ struct StationViewWindow : public Window {
 
 	/** Height of the #SVW_ACCEPTLIST widget for different views. */
 	enum AcceptListHeight {
-		ALH_RATING  = 130, ///< Height of the cargo ratings view.
-		ALH_ACCEPTS = 30,  ///< Height of the accepted cargo view.
+		ALH_RATING  = 13, ///< Height of the cargo ratings view.
+		ALH_ACCEPTS = 3,  ///< Height of the accepted cargo view.
 	};
 
 	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
@@ -812,7 +812,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case SVW_ACCEPTLIST:
-				size->height = WD_FRAMERECT_TOP + ((this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) ? ALH_ACCEPTS : ALH_RATING) + WD_FRAMERECT_TOP;
+				size->height = WD_FRAMERECT_TOP + ((this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) ? ALH_ACCEPTS : ALH_RATING) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 				break;
 		}
 	}
