@@ -519,6 +519,7 @@ void Window::ReInit(int rx, int ry)
 
 	ResizeWindow(this, dx, dy);
 	this->OnResize();
+	this->SetDirty();
 }
 
 /** Find the Window whose parent pointer points to this window
