@@ -293,7 +293,7 @@ static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType 
 /** Construct the top row keys (cancel, ok, backspace). */
 static NWidgetBase *MakeTopKeys(int *biggest_index)
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetHorizontal *hor = new NWidgetHorizontal();
 	int key_height = 12;
 
 	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_CANCEL,    STR_BUTTON_CANCEL,  biggest_index);
@@ -305,7 +305,7 @@ static NWidgetBase *MakeTopKeys(int *biggest_index)
 /** Construct the row containing the digit keys. */
 static NWidgetBase *MakeNumberKeys(int *biggest_index)
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = 16;
 
 	for (int widnum = OSK_WIDGET_NUMBERS_FIRST; widnum <= OSK_WIDGET_NUMBERS_LAST; widnum++) {
@@ -317,7 +317,7 @@ static NWidgetBase *MakeNumberKeys(int *biggest_index)
 /** Construct the qwerty row keys. */
 static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = 16;
 
 	AddKey(hor, key_height, 3, WWT_PUSHIMGBTN, OSK_WIDGET_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
@@ -331,7 +331,7 @@ static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 /** Construct the asdfg row keys. */
 static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = 16;
 
 	AddKey(hor, key_height, 4, WWT_IMGBTN, OSK_WIDGET_CAPS, SPR_OSK_CAPS, biggest_index);
@@ -344,7 +344,7 @@ static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 /** Construct the zxcvb row keys. */
 static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = 16;
 
 	AddKey(hor, key_height, 3, WWT_IMGBTN, OSK_WIDGET_SHIFT, SPR_OSK_SHIFT, biggest_index);
@@ -358,7 +358,7 @@ static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 /** Construct the spacebar row keys. */
 static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal;
+	NWidgetHorizontal *hor = new NWidgetHorizontal();
 	int key_height = 16;
 
 	AddKey(hor, key_height,  8, NWID_SPACER, 0, 0, biggest_index);
