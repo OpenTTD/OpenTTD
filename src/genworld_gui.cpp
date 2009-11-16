@@ -476,9 +476,14 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case GLAND_HEIGHTMAP_NAME_TEXT:
-				DrawString(r.left, this->width - WD_FRAMERECT_RIGHT, r.top, this->name, TC_ORANGE);
-				break;
+			case GLAND_HEIGHTMAP_NAME_TEXT: {
+				/* Little bit of a hack going on here; just to get the widgets
+				 * spaced without doing much magic. The space we can draw on is
+				 * covered by both the spacer and text widgets, so take their
+				 * outer most boundaries (left and right) as draw locations. */
+				const NWidgetCore *nwi_spacer = this->GetWidget<NWidgetCore>(GLAND_HEIGHTMAP_NAME_SPACER);
+				DrawString(min(r.left, nwi_spacer->pos_x), max<int>(r.right, nwi_spacer->pos_x + nwi_spacer->current_x), r.top, this->name, TC_ORANGE);
+			} break;
 		}
 	}
 
