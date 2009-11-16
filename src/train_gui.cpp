@@ -61,21 +61,22 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 /**
  * Draws an image of a whole train
- * @param v Front vehicle
- * @param x x Position to start at
- * @param y y Position to draw at
+ * @param v         Front vehicle
+ * @param left      The minimum horizontal position
+ * @param right     The maximum horizontal position
+ * @param y         Vertical position to draw at
  * @param selection Selected vehicle to draw a frame around
- * @param max_width Number of pixels space for drawing
- * @param skip Number of pixels to skip at the front (for scrolling)
+ * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_width, int skip)
+void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip)
 {
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	/* Position of highlight box */
 	int highlight_l = 0;
 	int highlight_r = 0;
+	int max_width = right - left + 1;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, x, y, max_width, 14)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, 14)) return;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;

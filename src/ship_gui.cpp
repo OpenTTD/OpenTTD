@@ -19,12 +19,20 @@
 
 #include "table/strings.h"
 
-void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
+/**
+ * Draws an image of a ship
+ * @param v         Front vehicle
+ * @param left      The minimum horizontal position
+ * @param right     The maximum horizontal position
+ * @param y         Vertical position to draw at
+ * @param selection Selected vehicle to draw a frame around
+ */
+void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
 {
-	DrawSprite(v->GetImage(DIR_W), GetVehiclePalette(v), x + 32, y + 10);
+	DrawSprite(v->GetImage(DIR_W), GetVehiclePalette(v), left + 32, y + 10);
 
 	if (v->index == selection) {
-		DrawFrameRect(x - 5, y - 1, x + 67, y + 21, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect(left - 5, y - 1, left + 67, y + 21, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

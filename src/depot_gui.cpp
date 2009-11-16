@@ -263,7 +263,7 @@ struct DepotWindow : Window {
 				free_wagon = u->IsFreeWagon();
 
 				uint x_space = free_wagon ? TRAININFO_DEFAULT_VEHICLE_WIDTH : 0;
-				DrawTrainImage(u, x + 24 + x_space, sprite_y - 1, this->sel, this->hscroll.GetCapacity() - x_space, this->hscroll.GetPosition());
+				DrawTrainImage(u, x + 24 + x_space, x + 24 + this->hscroll.GetCapacity() - 1, sprite_y - 1, this->sel, this->hscroll.GetPosition());
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
 				SetDParam(0, (u->tcache.cached_total_length + 7) / 8);
@@ -271,11 +271,11 @@ struct DepotWindow : Window {
 				break;
 			}
 
-			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, ROADVEHINFO_DEFAULT_VEHICLE_WIDTH); break;
-			case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, this->sel); break;
+			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, x + 24 + ROADVEHINFO_DEFAULT_VEHICLE_WIDTH - 1, sprite_y, this->sel); break;
+			case VEH_SHIP:     DrawShipImage(    v, x + 19, right, sprite_y - 1, this->sel); break;
 			case VEH_AIRCRAFT: {
 				const Sprite *spr = GetSprite(v->GetImage(DIR_W), ST_NORMAL);
-				DrawAircraftImage(v, x + 12,
+				DrawAircraftImage(v, x + 12, right,
 									y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
 									this->sel);
 			} break;

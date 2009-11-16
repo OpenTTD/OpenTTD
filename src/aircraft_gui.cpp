@@ -69,18 +69,26 @@ void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
 }
 
 
-void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
+/**
+ * Draws an image of an aircraft
+ * @param v         Front vehicle
+ * @param left      The minimum horizontal position
+ * @param right     The maximum horizontal position
+ * @param y         Vertical position to draw at
+ * @param selection Selected vehicle to draw a frame around
+ */
+void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
 {
 	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(v->GetImage(DIR_W), pal, x + 25, y + 10);
+	DrawSprite(v->GetImage(DIR_W), pal, left + 25, y + 10);
 	if (v->subtype == AIR_HELICOPTER) {
 		const Aircraft *a = Aircraft::From(v);
 		SpriteID rotor_sprite = GetCustomRotorSprite(a, true);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, PAL_NONE, x + 25, y + 5);
+		DrawSprite(rotor_sprite, PAL_NONE, left + 25, y + 5);
 	}
 	if (v->index == selection) {
-		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect(left - 1, y - 1, left + 58, y + 21, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

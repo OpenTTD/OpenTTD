@@ -777,20 +777,20 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 
 /**
  * Draws an image of a vehicle chain
- * @param v Front vehicle
- * @param x x Position to start at
- * @param y y Position to draw at
+ * @param v         Front vehicle
+ * @param left      The minimum horizontal position
+ * @param right     The maximum horizontal position
+ * @param y         Vertical position to draw at
  * @param selection Selected vehicle to draw a frame around
- * @param max_width Number of pixels space for drawing
- * @param skip Number of pixels to skip at the front (for scrolling)
+ * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width, int skip)
+static void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, int skip)
 {
 	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainImage(Train::From(v), x, y, selection, max_width, skip); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, max_width);     break;
-		case VEH_SHIP:     DrawShipImage(v, x, y, selection);                   break;
-		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);               break;
+		case VEH_TRAIN:    DrawTrainImage(Train::From(v), left, right, y, selection, skip); break;
+		case VEH_ROAD:     DrawRoadVehImage(v, left, right, y, selection);  break;
+		case VEH_SHIP:     DrawShipImage(v, left, right, y, selection);     break;
+		case VEH_AIRCRAFT: DrawAircraftImage(v, left, right, y, selection); break;
 		default: NOT_REACHED();
 	}
 }
@@ -844,7 +844,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
-		DrawVehicleImage(v, text_left, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, text_right - text_left + 1, 0);
+		DrawVehicleImage(v, text_left, text_right, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, 0);
 		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		if (v->name != NULL) {
@@ -1490,7 +1490,7 @@ struct VehicleDetailsWindow : Window {
 
 			case VLD_WIDGET_MIDDLE_DETAILS:
 				/* For other vehicles, at the place of the matrix. */
-				DrawVehicleImage(v, r.left + 3, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, r.right - r.left + 1 - 6, 0);
+				DrawVehicleImage(v, r.left + 3, r.right - 3, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
 				DrawVehicleDetails(v, r.left + 75, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
 				break;
 
