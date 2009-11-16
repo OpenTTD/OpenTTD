@@ -685,10 +685,10 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
  * @param min where to start in the list
  * @param max where in the list to end
  * @param selected_id what engine to highlight as selected, if any
- * @param count_location Offset to print the engine count (used by autoreplace). 0 means it's off
+ * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group)
+void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
 {
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
@@ -728,10 +728,10 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 
 		SetDParam(0, engine);
 		DrawString(x + x_offset, r, y, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK);
-		DrawVehicleEngine(x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
-		if (count_location != 0) {
+		DrawVehicleEngine(x, y + y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
+		if (show_count) {
 			SetDParam(0, num_engines);
-			DrawString(x, count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
+			DrawString(x, r, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
 		}
 	}
 }
@@ -1104,7 +1104,7 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case BUILD_VEHICLE_WIDGET_LIST:
-				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right + WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll.GetPosition(), min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->eng_list.Length()), this->sel_engine, 0, DEFAULT_GROUP);
+				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right + WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll.GetPosition(), min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->eng_list.Length()), this->sel_engine, false, DEFAULT_GROUP);
 				break;
 
 			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:

@@ -28,7 +28,7 @@
 
 #include "table/strings.h"
 
-void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
+void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 
 /** Widget numbers of the autoreplace GUI. */
 enum ReplaceVehicleWindowWidgets {
@@ -334,7 +334,7 @@ public:
 
 				/* Do the actual drawing */
 				DrawEngineList((VehicleType)this->window_number, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP,
-						&this->engines[side], start, end, this->sel_engine[side], side == 0 ? r.right - WD_FRAMERECT_RIGHT : 0, this->sel_group);
+						&this->engines[side], start, end, this->sel_engine[side], side == 0, this->sel_group);
 				break;
 			}
 		}
