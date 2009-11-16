@@ -29,6 +29,7 @@
 #include "network/network.h"
 #include "querystring_gui.h"
 #include "widgets/dropdown_func.h"
+#include "strings_func.h"
 
 #include "table/sprites.h"
 
@@ -499,7 +500,7 @@ void Window::ReInit(int rx, int ry)
 
 	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
 	this->nested_root->SetupSmallestSize(this, false);
-	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
+	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, _dynlang.text_dir == TD_RTL);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
 	this->resize.width  = this->nested_root->smallest_x;
@@ -785,7 +786,7 @@ void Window::InitializeData(WindowClass cls, int window_number, uint32 desc_flag
 		this->nested_root->SetupSmallestSize(this, false);
 	}
 	/* Initialize to smallest size. */
-	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
+	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, _dynlang.text_dir == TD_RTL);
 
 	/* Further set up window properties,
 	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
@@ -1358,7 +1359,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 	assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 	assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
-	w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, false, false, false);
+	w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, false, false, _dynlang.text_dir == TD_RTL);
 	w->width  = w->nested_root->current_x;
 	w->height = w->nested_root->current_y;
 	w->SetDirty();

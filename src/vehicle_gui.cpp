@@ -723,8 +723,8 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 156), SetResize(1,1), // vertical resize step size will be modified
-		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR), SetMinimalSize(12, 156),
+		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 0), SetResize(1,1), // vertical resize step size will be modified
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR), SetMinimalSize(12, 0),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
@@ -789,6 +789,22 @@ static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection
 }
 
 /**
+ * Get the height of a vehicle in the vehicle list GUIs.
+ * @param type    the vehicle type to look at
+ * @param divisor the resulting height must be dividable by this
+ * @return the height
+ */
+uint GetVehicleListHeight(VehicleType type, uint divisor)
+{
+	uint base = GetVehicleHeight(type) + 2 * FONT_HEIGHT_SMALL;
+	if (divisor == 1) return base;
+
+	/* Make sure the height is dividable by divisor */
+	uint rem = base % divisor;
+	return base + (rem == 0 ? 0 : divisor - rem);
+}
+
+/**
  * Draw all the vehicle list items.
  * @param selected_vehicle The vehicle that is to be highlighted.
  * @param line_height      Height of a single item line.
@@ -798,6 +814,16 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 {
 	int left = r.left + WD_MATRIX_LEFT;
 	int right = r.right - WD_MATRIX_RIGHT;
+	bool rtl = _dynlang.text_dir == TD_RTL;
+
+	int text_left  = left  + (rtl ?  0 : 19);
+	int text_right = right - (rtl ? 19 :  0);
+
+	int orderlist_left  = left  + (rtl ?   0 : 138);
+	int orderlist_right = right - (rtl ? 138 :   0);
+
+	int vehicle_button_x = rtl ? right - 8 : left;
+
 	int y = r.top;
 	uint max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->vehicles.Length());
 	for (uint i = this->vscroll.GetPosition(); i < max; ++i) {
@@ -807,20 +833,20 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
-		DrawVehicleImage(v, left + 19, y + 5, selected_vehicle, right - left + 1 - 19, 0);
-		DrawString(left + 19, right, y + line_height - 8, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		DrawVehicleImage(v, text_left, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, text_right - text_left + 1, 0);
+		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		if (v->name != NULL) {
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->index);
-			DrawString(left + 19, right, y, STR_TINY_BLACK_VEHICLE);
+			DrawString(text_left, text_right, y, STR_TINY_BLACK_VEHICLE);
 		} else if (v->group_id != DEFAULT_GROUP) {
 			/* The vehicle has no name, but is member of a group, so print group name */
 			SetDParam(0, v->group_id);
-			DrawString(left + 19, right, y, STR_TINY_GROUP, TC_BLACK);
+			DrawString(text_left, text_right, y, STR_TINY_GROUP, TC_BLACK);
 		}
 
-		if (line_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, left + 138, right, y);
+		if (vehicle_type >= VEH_SHIP) DrawSmallOrderList(v, orderlist_left, orderlist_right, y);
 
 		if (v->IsInDepot()) {
 			str = STR_BLUE_COMMA;
@@ -831,7 +857,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 		SetDParam(0, v->unitnumber);
 		DrawString(left, right, y + 2, str);
 
-		DrawVehicleProfitButton(v, left, y + 13);
+		DrawVehicleProfitButton(v, vehicle_button_x, y + FONT_HEIGHT_NORMAL + 3);
 
 		y += line_height;
 	}
@@ -907,17 +933,17 @@ public:
 		if (widget != VLW_WIDGET_LIST) return;
 
 		resize->width = 0;
+		resize->height = GetVehicleListHeight(this->vehicle_type, 1);
+
 		switch (this->vehicle_type) {
 			case VEH_TRAIN:
 				resize->width = 1;
 				/* Fallthrough */
 			case VEH_ROAD:
-				resize->height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 				size->height = 6 * resize->height;
 				break;
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				resize->height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 				size->height = 4 * resize->height;
 				break;
 			default: NOT_REACHED();
