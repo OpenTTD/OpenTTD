@@ -196,7 +196,7 @@ static void InitBlocksizeForShipAircraft(VehicleType type)
 			_block_sizes[VEH_AIRCRAFT].width = max(74U, max_width);
 			break;
 	}
-	_block_sizes[type].height = max(GetVehicleListHeight(type), max_height);
+	_block_sizes[type].height = max(GetVehicleHeight(type), max_height);
 }
 
 /** Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game.
@@ -204,10 +204,10 @@ static void InitBlocksizeForShipAircraft(VehicleType type)
 void InitDepotWindowBlockSizes()
 {
 	_block_sizes[VEH_TRAIN].width = 1;
-	_block_sizes[VEH_TRAIN].height = GetVehicleListHeight(VEH_TRAIN);
+	_block_sizes[VEH_TRAIN].height = GetVehicleHeight(VEH_TRAIN);
 
 	_block_sizes[VEH_ROAD].width = 56;
-	_block_sizes[VEH_ROAD].height = GetVehicleListHeight(VEH_ROAD);
+	_block_sizes[VEH_ROAD].height = GetVehicleHeight(VEH_ROAD);
 
 	InitBlocksizeForShipAircraft(VEH_SHIP);
 	InitBlocksizeForShipAircraft(VEH_AIRCRAFT);
@@ -255,7 +255,7 @@ struct DepotWindow : Window {
 	void DrawVehicleInDepot(const Vehicle *v, int x, int y, int left, int right) const
 	{
 		bool free_wagon = false;
-		int sprite_y = y + this->resize.step_height - GetVehicleListHeight(v->type);
+		int sprite_y = y + this->resize.step_height - GetVehicleHeight(v->type);
 
 		switch (v->type) {
 			case VEH_TRAIN: {
