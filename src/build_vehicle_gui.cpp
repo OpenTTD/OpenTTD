@@ -1104,7 +1104,7 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case BUILD_VEHICLE_WIDGET_LIST:
-				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right + WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll.GetPosition(), min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->eng_list.Length()), this->sel_engine, false, DEFAULT_GROUP);
+				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll.GetPosition(), min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->eng_list.Length()), this->sel_engine, false, DEFAULT_GROUP);
 				break;
 
 			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
