@@ -61,8 +61,10 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 	int colour = cs->rating_colour;
 	uint w = (minu(amount, units_full) + 5) / 36;
 
+	int height = GetCharacterHeight(FS_SMALL);
+
 	/* Draw total cargo (limited) on station (fits into 16 pixels) */
-	if (w != 0) GfxFillRect(left, y, left + w - 1, y + 6, colour);
+	if (w != 0) GfxFillRect(left, y, left + w - 1, y + height, colour);
 
 	/* Draw a one pixel-wide bar of additional cargo meter, useful
 	 * for stations with only a small amount (<=30) */
@@ -70,14 +72,14 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 		uint rest = amount / 5;
 		if (rest != 0) {
 			w += left;
-			GfxFillRect(w, y + 6 - rest, w, y + 6, colour);
+			GfxFillRect(w, y + height - rest, w, y + height, colour);
 		}
 	}
 
 	DrawString(left + 1, right, y, cs->abbrev, TC_BLACK);
 
 	/* Draw green/red ratings bar (fits into 14 pixels) */
-	y += 8;
+	y += height + 2;
 	GfxFillRect(left + 1, y, left + 14, y, 0xB8);
 	rating = minu(rating, rating_full) / 16;
 	if (rating != 0) GfxFillRect(left + 1, y, left + rating, y, 0xD0);
