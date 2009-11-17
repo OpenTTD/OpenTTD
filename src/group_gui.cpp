@@ -15,7 +15,6 @@
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
-#include "vehicle_gui_base.h"
 #include "vehicle_base.h"
 #include "group.h"
 #include "strings_func.h"
@@ -27,6 +26,7 @@
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "tilehighlight_func.h"
+#include "vehicle_gui_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -100,6 +100,22 @@ void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 w
 
 	GenerateVehicleSortList(&this->vehicles, this->vehicle_type, owner, index, window_type);
 
+	uint unitnumber = 0;
+	for (const Vehicle **v = this->vehicles.Begin(); v != this->vehicles.End(); v++) {
+		unitnumber = max<uint>(unitnumber, (*v)->unitnumber);
+	}
+
+	/* Because 111 is much less wide than e.g. 999 we use the
+	 * wider numbers to determine the width instead of just
+	 * the random number that it seems to be. */
+	if (unitnumber >= 1000) {
+		this->max_unitnumber = 9999;
+	} else if (unitnumber >= 100) {
+		this->max_unitnumber = 999;
+	} else {
+		this->max_unitnumber = 99;
+	}
+
 	this->vehicles.RebuildDone();
 	this->vscroll.SetCount(this->vehicles.Length());
 }
@@ -827,11 +843,13 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int right = r.right - WD_MATRIX_RIGHT;
 	bool rtl = _dynlang.text_dir == TD_RTL;
 
-	int text_left  = left  + (rtl ?  0 : 19);
-	int text_right = right - (rtl ? 19 :  0);
+	SetDParam(0, this->max_unitnumber);
+	int text_offset = GetStringBoundingBox(STR_JUST_INT).width + WD_FRAMERECT_RIGHT;
+	int text_left  = left  + (rtl ?           0 : text_offset);
+	int text_right = right - (rtl ? text_offset :           0);
 
-	int orderlist_left  = left  + (rtl ?   0 : 138);
-	int orderlist_right = right - (rtl ? 138 :   0);
+	int orderlist_left  = left  + (rtl ?                 0 : 120 + text_offset);
+	int orderlist_right = right - (rtl ? 120 + text_offset :                 0);
 
 	int vehicle_button_x = rtl ? right - 8 : left;
 
