@@ -769,21 +769,14 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 	int i = 0;
 
 	int sel = v->cur_order_index;
-	bool rtl = _dynlang.text_dir == TD_RTL;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) {
-			if (rtl) {
-				DrawString(right, right + 6, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
-			} else {
-				DrawString(left - 6, left, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
-			}
-		}
+		if (sel == 0) DrawString(left, right, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
 		sel--;
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
-			DrawString(left, right, y, STR_TINY_BLACK_STATION);
+			DrawString(left + 6, right - 6, y, STR_TINY_BLACK_STATION);
 
 			y += FONT_HEIGHT_SMALL;
 			if (++i == 4) break;
@@ -841,6 +834,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 {
 	int left = r.left + WD_MATRIX_LEFT;
 	int right = r.right - WD_MATRIX_RIGHT;
+	int width = right - left;
 	bool rtl = _dynlang.text_dir == TD_RTL;
 
 	SetDParam(0, this->max_unitnumber);
@@ -848,8 +842,12 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int text_left  = left  + (rtl ?           0 : text_offset);
 	int text_right = right - (rtl ? text_offset :           0);
 
-	int orderlist_left  = left  + (rtl ?                 0 : 120 + text_offset);
-	int orderlist_right = right - (rtl ? 120 + text_offset :                 0);
+	bool show_orderlist = vehicle_type >= VEH_SHIP;
+	int orderlist_left  = left  + (rtl ? 0 : max(100 + text_offset, width / 2));
+	int orderlist_right = right - (rtl ? max(100 + text_offset, width / 2) : 0);
+
+	int image_left  = (rtl && show_orderlist) ? orderlist_right : text_left;
+	int image_right = (!rtl && show_orderlist) ? orderlist_left : text_right;
 
 	int vehicle_button_x = rtl ? right - 8 : left;
 
@@ -862,7 +860,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
-		DrawVehicleImage(v, text_left, text_right, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, 0);
+		DrawVehicleImage(v, image_left, image_right, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, 0);
 		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		if (v->name != NULL) {
@@ -875,7 +873,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 			DrawString(text_left, text_right, y, STR_TINY_GROUP, TC_BLACK);
 		}
 
-		if (vehicle_type >= VEH_SHIP) DrawSmallOrderList(v, orderlist_left, orderlist_right, y);
+		if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y);
 
 		if (v->IsInDepot()) {
 			str = STR_BLUE_COMMA;

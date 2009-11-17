@@ -16,6 +16,7 @@
 #include "vehicle_gui.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "spritecache.h"
 
 #include "table/strings.h"
 
@@ -29,10 +30,19 @@
  */
 void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
 {
-	DrawSprite(v->GetImage(DIR_W), GetVehiclePalette(v), left + 32, y + 10);
+	bool rtl = _dynlang.text_dir == TD_RTL;
+
+	SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W);
+	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+
+	int x = rtl ? right - real_sprite->width - real_sprite->x_offs : left - real_sprite->x_offs;
+
+	DrawSprite(sprite, GetVehiclePalette(v), x, y + 10);
 
 	if (v->index == selection) {
-		DrawFrameRect(left - 5, y - 1, left + 67, y + 21, COLOUR_WHITE, FR_BORDERONLY);
+		x += real_sprite->x_offs;
+		y += real_sprite->y_offs + 10;
+		DrawFrameRect(x - 1, y - 1, x + real_sprite->width + 1, y + real_sprite->height + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

@@ -16,7 +16,7 @@
 
 typedef GUIList<const Vehicle*> GUIVehicleList;
 
-struct BaseVehicleListWindow: public Window {
+struct BaseVehicleListWindow : public Window {
 	GUIVehicleList vehicles;  ///< The list of vehicles
 	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
 	VehicleType vehicle_type; ///< The vehicle type that is sorted

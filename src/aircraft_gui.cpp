@@ -17,6 +17,7 @@
 #include "vehicle_func.h"
 #include "gfx_func.h"
 #include "window_gui.h"
+#include "spritecache.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -79,16 +80,26 @@ void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
  */
 void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
 {
+	bool rtl = _dynlang.text_dir == TD_RTL;
+
+	SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W);
+	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+
+	int x = rtl ? right - real_sprite->width - real_sprite->x_offs : left - real_sprite->x_offs;
+	bool helicopter = v->subtype == AIR_HELICOPTER;
+
 	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(v->GetImage(DIR_W), pal, left + 25, y + 10);
-	if (v->subtype == AIR_HELICOPTER) {
+	DrawSprite(sprite, pal, x, y + 10);
+	if (helicopter) {
 		const Aircraft *a = Aircraft::From(v);
 		SpriteID rotor_sprite = GetCustomRotorSprite(a, true);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, PAL_NONE, left + 25, y + 5);
+		DrawSprite(rotor_sprite, PAL_NONE, x, y + 5);
 	}
 	if (v->index == selection) {
-		DrawFrameRect(left - 1, y - 1, left + 58, y + 21, COLOUR_WHITE, FR_BORDERONLY);
+		x += real_sprite->x_offs;
+		y += real_sprite->y_offs + 10 - (helicopter ? 5 : 0);
+		DrawFrameRect(x - 1, y - 1, x + real_sprite->width + 1, y + real_sprite->height + (helicopter ? 5 : 0) + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

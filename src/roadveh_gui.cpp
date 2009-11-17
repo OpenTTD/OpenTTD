@@ -131,20 +131,26 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
  */
 void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
 {
+	bool rtl = _dynlang.text_dir == TD_RTL;
+	Direction dir = rtl ? DIR_E : DIR_W;
 	const RoadVehicle *u = RoadVehicle::From(v);
+
 	int max_width = right - left + 1;
-	int x_pos = 0;
-	for (; u != NULL && x_pos < max_width; u = u->Next()) {
+	int spent_width = 0;
+	int pos = rtl ? right : left;
+
+	for (; u != NULL && spent_width < max_width; u = u->Next()) {
 		Point offset;
 		int width = u->GetDisplayImageWidth(&offset);
 
 		SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-		DrawSprite(u->GetImage(DIR_W), pal, left + x_pos + offset.x, y + 6 + offset.y);
-		x_pos += width;
+		DrawSprite(u->GetImage(dir), pal, pos + (rtl ? -offset.x : offset.x), y + 6 + offset.y);
+
+		pos += rtl ? -width : width;
 	}
 
 	if (v->index == selection) {
-		DrawFrameRect(left - 1, y - 1, left - 1 + x_pos, y + 12, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect((rtl ? pos : left) - 1, y - 1, (rtl ? pos : right) - 1, y + 12, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

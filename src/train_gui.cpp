@@ -70,6 +70,9 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
  */
 void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip)
 {
+	bool rtl = _dynlang.text_dir == TD_RTL;
+	Direction dir = rtl ? DIR_E : DIR_W;
+
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	/* Position of highlight box */
 	int highlight_l = 0;
@@ -81,29 +84,33 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
-	int px = -skip;
+	int px = rtl ? max_width + skip : -skip;
 	bool sel_articulated = false;
-	for (; v != NULL && px < max_width; v = v->Next()) {
+	for (; v != NULL && (rtl ? px > 0 : px < max_width); v = v->Next()) {
 		Point offset;
 		int width = Train::From(v)->GetDisplayImageWidth(&offset);
 
-		if (px + width > 0) {
+		if (rtl ? px + width > 0 : px - width < max_width) {
 			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-			DrawSprite(v->GetImage(DIR_W), pal, px + offset.x, 7 + offset.y);
+			DrawSprite(v->GetImage(dir), pal, px + (rtl ? -offset.x : offset.x), 7 + offset.y);
 		}
 
 		if (!v->IsArticulatedPart()) sel_articulated = false;
 
 		if (v->index == selection) {
 			/* Set the highlight position */
-			highlight_l = px + 1;
-			highlight_r = px + width + 1;
+			highlight_l = rtl ? px - width + 1 : px + 1;
+			highlight_r = rtl ? px + 1 : px + width + 1;
 			sel_articulated = true;
 		} else if ((_cursor.vehchain && highlight_r != 0) || sel_articulated) {
-			highlight_r += width;
+			if (rtl) {
+				highlight_r += width;
+			} else {
+				highlight_l -= width;
+			}
 		}
 
-		px += width;
+		px += rtl ? -width : width;
 	}
 
 	if (highlight_l != highlight_r) {
