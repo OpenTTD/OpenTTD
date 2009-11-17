@@ -2543,6 +2543,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφά
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Μετονομασία περιοχής σταθμού/φόρτωσης
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της είκονας στη τοποθεσία του σημείου καθοδήγησης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σημείου καθοδήγησης
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της σημαδούρας
@@ -4052,6 +4053,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size

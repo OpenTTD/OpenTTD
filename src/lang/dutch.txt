@@ -1725,7 +1725,16 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server is vol
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spel gepauzeerd ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel nog steeds gepauzeerd ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds gepauzeerd ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel vervolgd ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :niet genoeg spelers
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :cliënten verbinden
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :handleiding
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd
@@ -2470,6 +2479,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Geef all
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem station/laadgebied
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost. Ctrl+Klik opent een nieuw venster op de locatie van de controlepost
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander naam controlepost
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie. Ctrl+Klik opent een nieuw venster op de locatie van de boei
@@ -3973,6 +3983,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size

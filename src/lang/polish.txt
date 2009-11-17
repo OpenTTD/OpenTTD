@@ -1533,7 +1533,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Prędko
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulacja prawego przycisku myszy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klik
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+klik
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Przewijanie lewym przyciskiem myszy: {ORANGE}{STRING}
@@ -2274,7 +2274,7 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnaliz
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę jego typu na wybrany obok. CTRL-klik przełącza wygląd semafor/świetlny.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu. CTRL-przeciągnij aby wypełnić trasę sygnałami.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu. Ctrl+przeciągnij, aby wypełnić trasę sygnałami.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
 
@@ -2393,7 +2393,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj k
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść kamieniste tereny
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Umieść latarnię morską
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj CTRL by usunąć
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj Ctrl, aby usunąć
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Umieść nadajnik
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
@@ -2813,7 +2813,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa stacji - kliknij na nazwie aby wycentrować główny widok na stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Przytrzymaj CTRL aby zaznaczyć więcej niż jedną opcję
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Przytrzymaj Ctrl, aby zaznaczyć więcej niż jedną opcję
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2859,6 +2859,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na pkt. orientacyjnym. Ctrl+klik otwiera nowy podgląd na lokacji pkt. orientacyjnego
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę pkt. orientacyjnego
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na pozycji boi. Ctrl+klik otwiera nowy podgląd na lokacji boi
@@ -3373,7 +3374,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rozkład
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz widok rozkładu jazdy
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - klik na poleceniu aby zaznaczyć. CTRL + klik przenosi do stacji
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - klik na poleceniu, aby zaznaczyć. Ctrl+klik przenosi do stacji
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
@@ -3403,7 +3404,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}}Zmień zachowanie wyładunku podświetlonego rozkazu
 
 STR_ORDER_REFIT                                                 :{BLACK}Przeksztalc
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ladunku do przeksztalcenia. Klikniecie z CTRL usuwa zmiane
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przekształcenia. Ctrl+klik usuwa zmianę
 
 STR_ORDER_SERVICE                                               :{BLACK}Serwis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
@@ -3433,7 +3434,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartoś�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Pomiń
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne zadanie, i rozpocznij kolejne. CTRL + klik pomija aż do zaznaczonego zadania
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne polecenie, i rozpocznij kolejne. Ctrl+klik pomija aż do zaznaczonego polecenia
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
@@ -4404,6 +4405,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size

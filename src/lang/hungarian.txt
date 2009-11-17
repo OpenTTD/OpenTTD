@@ -1878,9 +1878,9 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Egysín�
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev vasút építése
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Sín lerakása
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módón
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módón. A Ctrl billentyű segítségével lehet váltani az építés/rombolás között.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Vasúti remíz építése (vonatok vételére és karbantartására)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra. A Ctrl lenyomásával az ellenőrző pontok egyesíthetőek.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Vasútállomás építése
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése. Ctrl a szemafor/fénysorompó között vált{}Húzással a sínek mentén végig jelzők épülnek. A Ctrl a következő kereszteződésig épít jelzőket{}Ctrl+klikkel válthatod a jelző választás ablak megnyitását
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Vasúti híd építése
@@ -2787,8 +2787,8 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide katt
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide kattintva egy repülőgép másolatát készítheted el. Kattints ide majd a másolandó repülőgépre. Ctrl+kattintás esetén a menetrendet is megoszthatod.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a járműtelepre állítja
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja. Ctrl+kattintás esetén új nézetet nyit a garázs pozíciójára.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja. Ctrl+kattintás esetén új nézetet nyit a dokk pozíciójára.
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}A fő nézetet a hangárra állítja. Ctrl és nyjomás ki nytiya egy uj 'vieport'ot egy hangeren.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Az összes, ezen járműtelepet menetrendszerüen látogató vonat listájának összeállítása

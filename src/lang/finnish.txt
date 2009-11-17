@@ -2479,6 +2479,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näytä 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Nimeä asema/lastausalue
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskitä ruutu reittipisteen sijaintiin. Ctrl+Click avaa uuden näkymäikkunan reittipisteen sijaintiin
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuta reittipisteen nimeä
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä ruutu poijun sijaintiin. Ctrl+Click avaa uuden näkymäikkunan poijun sijaintiin
@@ -3982,6 +3983,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
