@@ -39,6 +39,7 @@
 #include "vehiclelist.h"
 #include "articulated_vehicles.h"
 #include "cargotype.h"
+#include "spritecache.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1292,10 +1293,12 @@ static const NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_MIDDLE_DETAILS), SetMinimalSize(405, 45), EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_BOTTOM_RIGHT),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetFill(false, true),
-					SetDataTip(STR_BLACK_SMALL_ARROW_LEFT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetFill(false, true),
-					SetDataTip(STR_BLACK_SMALL_ARROW_RIGHT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+			NWidget(NWID_HORIZONTAL_LTR),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetFill(false, true),
+						SetDataTip(STR_BLACK_SMALL_ARROW_LEFT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetFill(false, true),
+						SetDataTip(STR_BLACK_SMALL_ARROW_RIGHT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+			EndContainer(),
 			NWidget(WWT_EMPTY, COLOUR_GREY, VLD_WIDGET_SERVICING_INTERVAL), SetFill(true, true),
 		EndContainer(),
 	EndContainer(),
@@ -1316,10 +1319,12 @@ static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_BOTTOM_RIGHT),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetFill(false, true),
-					SetDataTip(STR_BLACK_SMALL_ARROW_LEFT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetFill(false, true),
-					SetDataTip(STR_BLACK_SMALL_ARROW_RIGHT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+			NWidget(NWID_HORIZONTAL_LTR),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetFill(false, true),
+						SetDataTip(STR_BLACK_SMALL_ARROW_LEFT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetFill(false, true),
+						SetDataTip(STR_BLACK_SMALL_ARROW_RIGHT, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+			EndContainer(),
 			NWidget(WWT_EMPTY, COLOUR_GREY, VLD_WIDGET_SERVICING_INTERVAL), SetFill(true, true), SetResize(1, 0),
 		EndContainer(),
 	EndContainer(),
@@ -1504,11 +1509,20 @@ struct VehicleDetailsWindow : Window {
 				DrawVehicleDetails(v, r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, r.top + WD_MATRIX_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
 				break;
 
-			case VLD_WIDGET_MIDDLE_DETAILS:
+			case VLD_WIDGET_MIDDLE_DETAILS: {
 				/* For other vehicles, at the place of the matrix. */
-				DrawVehicleImage(v, r.left + 3, r.right - 3, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
-				DrawVehicleDetails(v, r.left + 75, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
-				break;
+				bool rtl = _dynlang.text_dir == TD_RTL;
+				uint sprite_width = max<uint>(GetSprite(v->GetImage(rtl ? DIR_E : DIR_W), ST_NORMAL)->width, 70U) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+
+				uint text_left  = r.left  + (rtl ? 0 : sprite_width);
+				uint text_right = r.right - (rtl ? sprite_width : 0);
+
+				uint sprite_left  = rtl ? text_right : r.left;
+				uint sprite_right = rtl ? r.right : text_left;
+
+				DrawVehicleImage(v, sprite_left + WD_FRAMERECT_LEFT, sprite_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
+				DrawVehicleDetails(v, text_left + WD_FRAMERECT_LEFT, text_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
+			} break;
 
 			case VLD_WIDGET_SERVICING_INTERVAL:
 				/* Draw service interval text */

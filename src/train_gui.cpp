@@ -236,8 +236,10 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 {
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		Direction dir = rtl ? DIR_E : DIR_W;
 		const Train *u = v;
-		int x = 1;
+		int x = rtl ? right : left;
 		for (;;) {
 			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
 				int px = x;
@@ -247,29 +249,29 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 					Point offset;
 					int width = u->GetDisplayImageWidth(&offset);
 					SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-					DrawSprite(u->GetImage(DIR_W), pal, px + offset.x, y + 4 + offset.y);
-					px += width;
+					DrawSprite(u->GetImage(dir), pal, px + (rtl ? -offset.x : offset.x), y + 4 + offset.y);
+					px += rtl ? -width : width;
 					u = u->Next();
 				} while (u != NULL && u->IsArticulatedPart() && u->cargo_cap == 0);
 
-				px += 2;
+				px += rtl ? -2 : 2;
 				int py = y;
 				switch (det_tab) {
 					default: NOT_REACHED();
 
 					case TDW_TAB_CARGO:
-						TrainDetailsCargoTab(v, px, right, py);
+						TrainDetailsCargoTab(v, rtl ? left : px, rtl ? px : right, py);
 						break;
 
 					case TDW_TAB_INFO:
 						/* Only show name and value for the 'real' part */
 						if (!v->IsArticulatedPart()) {
-							TrainDetailsInfoTab(v, px, right, py);
+							TrainDetailsInfoTab(v, rtl ? left : px, rtl ? px : right, py);
 						}
 						break;
 
 					case TDW_TAB_CAPACITY:
-						TrainDetailsCapacityTab(v, px, right, py);
+						TrainDetailsCapacityTab(v, rtl ? left : px, rtl ? px : right, py);
 						break;
 				}
 				y += WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
