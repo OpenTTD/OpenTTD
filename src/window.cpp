@@ -60,21 +60,19 @@ bool _scrolling_viewport;
 byte _special_mouse_mode;
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(int16 left, int16 top, int16 min_width, int16 min_height, int16 def_width, int16 def_height,
+WindowDesc::WindowDesc(int16 left, int16 top, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length)
+			const NWidgetPart *nwid_parts, int16 nwid_length) :
+	left(left),
+	top(top),
+	default_width(def_width),
+	default_height(def_height),
+	cls(window_class),
+	parent_cls(parent_class),
+	flags(flags),
+	nwid_parts(nwid_parts),
+	nwid_length(nwid_length)
 {
-	this->left = left;
-	this->top = top;
-	this->minimum_width = min_width;
-	this->minimum_height = min_height;
-	this->default_width = def_width;
-	this->default_height = def_height;
-	this->cls = window_class;
-	this->parent_cls = parent_class;
-	this->flags = flags;
-	this->nwid_parts = nwid_parts;
-	this->nwid_length = nwid_length;
 }
 
 WindowDesc::~WindowDesc()

@@ -142,7 +142,7 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 };
 
 static const WindowDesc _waypoint_view_desc(
-	WDP_AUTO, WDP_AUTO, 260, 118, 260, 118,
+	WDP_AUTO, WDP_AUTO, 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_nested_waypoint_view_widgets, lengthof(_nested_waypoint_view_widgets)

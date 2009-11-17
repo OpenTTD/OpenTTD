@@ -153,7 +153,7 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 };
 
 static const WindowDesc _transparency_desc(
-	WDP_ALIGN_TBR, 94, 219, 49, 219, 49,
+	WDP_ALIGN_TBR, 94, 219, 49,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_nested_transparency_widgets, lengthof(_nested_transparency_widgets)

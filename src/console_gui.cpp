@@ -158,7 +158,7 @@ static const struct NWidgetPart _nested_console_window_widgets[] = {
 };
 
 static const WindowDesc _console_window_desc(
-	0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	0,
 	_nested_console_window_widgets, lengthof(_nested_console_window_widgets)

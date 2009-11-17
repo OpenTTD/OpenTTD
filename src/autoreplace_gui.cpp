@@ -520,7 +520,7 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 };
 
 static const WindowDesc _replace_rail_vehicle_desc(
-	WDP_AUTO, WDP_AUTO, 456, 140, 456, 140,
+	WDP_AUTO, WDP_AUTO, 456, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	_nested_replace_rail_vehicle_widgets, lengthof(_nested_replace_rail_vehicle_widgets)
@@ -551,7 +551,7 @@ static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 };
 
 static const WindowDesc _replace_vehicle_desc(
-	WDP_AUTO, WDP_AUTO, 456, 118, 456, 118,
+	WDP_AUTO, WDP_AUTO, 456, 118,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	_nested_replace_vehicle_widgets, lengthof(_nested_replace_vehicle_widgets)

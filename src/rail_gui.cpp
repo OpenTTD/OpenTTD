@@ -859,7 +859,7 @@ static const NWidgetPart _nested_build_rail_widgets[] = {
 };
 
 static const WindowDesc _build_rail_desc(
-	WDP_ALIGN_TBR, 22, 350, 36, 350, 36,
+	WDP_ALIGN_TBR, 22, 350, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
 	_nested_build_rail_widgets, lengthof(_nested_build_rail_widgets)
@@ -1469,7 +1469,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 
 /** High level window description of the default station-build window */
 static const WindowDesc _station_builder_desc(
-	WDP_AUTO, WDP_AUTO, 148, 200, 148, 200,
+	WDP_AUTO, WDP_AUTO, 148, 200,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
 	_nested_station_builder_widgets, lengthof(_nested_station_builder_widgets)
@@ -1477,7 +1477,7 @@ static const WindowDesc _station_builder_desc(
 
 /** High level window description of the newGRF station-build window */
 static const WindowDesc _newstation_builder_desc(
-	WDP_AUTO, WDP_AUTO, 148, 290, 148, 290,
+	WDP_AUTO, WDP_AUTO, 148, 290,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
 	_nested_newstation_builder_widgets, lengthof(_nested_newstation_builder_widgets)
@@ -1684,7 +1684,7 @@ static const NWidgetPart _nested_signal_builder_widgets[] = {
 
 /** Signal selection window description */
 static const WindowDesc _signal_builder_desc(
-	WDP_AUTO, WDP_AUTO, 154, 68, 154, 68,
+	WDP_AUTO, WDP_AUTO, 154, 68,
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_signal_builder_widgets, lengthof(_nested_signal_builder_widgets)
@@ -1777,7 +1777,7 @@ static const NWidgetPart _nested_build_depot_widgets[] = {
 };
 
 static const WindowDesc _build_depot_desc(
-	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
+	WDP_AUTO, WDP_AUTO, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
 	_nested_build_depot_widgets, lengthof(_nested_build_depot_widgets)
@@ -1880,7 +1880,7 @@ static const NWidgetPart _nested_build_waypoint_widgets[] = {
 };
 
 static const WindowDesc _build_waypoint_desc(
-	WDP_AUTO, WDP_AUTO, 344, 92, 344, 92,
+	WDP_AUTO, WDP_AUTO, 344, 92,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
 	_nested_build_waypoint_widgets, lengthof(_nested_build_waypoint_widgets)

@@ -341,7 +341,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 };
 
 static const WindowDesc _terraform_desc(
-	WDP_ALIGN_TBR, 22 + 36, 158, 36, 158, 36,
+	WDP_ALIGN_TBR, 22 + 36, 158, 36,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
 	_nested_terraform_widgets, lengthof(_nested_terraform_widgets)
@@ -774,7 +774,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 };
 
 static const WindowDesc _scen_edit_land_gen_desc(
-	WDP_AUTO, WDP_AUTO, 163, 103, 163, 103,
+	WDP_AUTO, WDP_AUTO, 163, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
 	_nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)

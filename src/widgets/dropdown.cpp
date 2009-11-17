@@ -83,7 +83,7 @@ static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 };
 
 const WindowDesc _dropdown_desc(
-	0, 0, 0, 0, 0, 0, // x/y position not used.
+	0, 0, 0, 0, // x/y position not used.
 	WC_DROPDOWN_MENU, WC_NONE,
 	WDF_DEF_WIDGET,
 	_nested_dropdown_menu_widgets, lengthof(_nested_dropdown_menu_widgets)

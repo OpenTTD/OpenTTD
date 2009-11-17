@@ -125,7 +125,7 @@ static const NWidgetPart _nested_build_industry_widgets[] = {
 
 /** Window definition of the dynamic place industries gui */
 static const WindowDesc _build_industry_desc(
-	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
+	WDP_AUTO, WDP_AUTO, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	_nested_build_industry_widgets, lengthof(_nested_build_industry_widgets)
@@ -820,7 +820,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 
 /** Window definition of the view industy gui */
 static const WindowDesc _industry_view_desc(
-	WDP_AUTO, WDP_AUTO, 260, 120, 260, 120,
+	WDP_AUTO, WDP_AUTO, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_nested_industry_view_widgets, lengthof(_nested_industry_view_widgets)
@@ -1196,7 +1196,7 @@ const StringID IndustryDirectoryWindow::sorter_names[] = {
 
 /** Window definition of the industy directory gui */
 static const WindowDesc _industry_directory_desc(
-	WDP_AUTO, WDP_AUTO, 428, 190, 428, 190,
+	WDP_AUTO, WDP_AUTO, 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_nested_industry_directory_widgets, lengthof(_nested_industry_directory_widgets)
