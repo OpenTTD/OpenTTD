@@ -1232,7 +1232,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 			/* screenshot filename */
 			name = argv[1];
 		} else {
-			/* screenshot argv[1] argv[2] - invalid*/
+			/* screenshot argv[1] argv[2] - invalid */
 			return false;
 		}
 	}

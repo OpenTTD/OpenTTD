@@ -17,10 +17,11 @@ void InitializeScreenshotFormats();
 const char *GetScreenshotFormatDesc(int i);
 void SetScreenshotFormat(int i);
 
+/** Type of requested screenshot */
 enum ScreenshotType {
-	SC_NONE,
-	SC_VIEWPORT,
-	SC_WORLD
+	SC_NONE,     ///< No screenshot requested
+	SC_VIEWPORT, ///< Screenshot of viewport
+	SC_WORLD,    ///< World screenshot
 };
 
 bool MakeScreenshot();
@@ -30,6 +31,7 @@ bool IsScreenshotRequested();
 extern char _screenshot_format_name[8];
 extern uint _num_screenshot_formats;
 extern uint _cur_screenshot_format;
-extern char _screenshot_name[];
+extern char _screenshot_name[128];
+extern char _full_screenshot_name[MAX_PATH];
 
 #endif /* SCREENSHOT_H */

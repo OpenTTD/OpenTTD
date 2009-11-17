@@ -27,6 +27,7 @@ char _screenshot_format_name[8];
 uint _num_screenshot_formats;
 uint _cur_screenshot_format;
 char _screenshot_name[128];
+char _full_screenshot_name[MAX_PATH];
 static ScreenshotType _screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */
@@ -585,20 +586,19 @@ static const char *MakeScreenshotName(const char *ext)
 	size_t len = strlen(_screenshot_name);
 	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
 
-	static char filename[MAX_PATH];
 	for (uint serial = 1;; serial++) {
-		if (snprintf(filename, lengthof(filename), "%s%s", _personal_dir, _screenshot_name) >= (int)lengthof(filename)) {
+		if (snprintf(_full_screenshot_name, lengthof(_full_screenshot_name), "%s%s", _personal_dir, _screenshot_name) >= (int)lengthof(_full_screenshot_name)) {
 			/* We need more characters than MAX_PATH -> end with error */
-			filename[0] = '\0';
+			_full_screenshot_name[0] = '\0';
 			break;
 		}
 		if (!generate) break; // allow overwriting of non-automatic filenames
-		if (!FileExists(filename)) break;
+		if (!FileExists(_full_screenshot_name)) break;
 		/* If file exists try another one with same name, but just with a higher index */
 		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%u.%s", serial, ext);
 	}
 
-	return filename;
+	return _full_screenshot_name;
 }
 
 void RequestScreenshot(ScreenshotType t, const char *name)
