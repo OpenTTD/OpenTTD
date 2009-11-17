@@ -411,6 +411,15 @@ bool AfterLoadGame()
 		/* Restore the signals */
 		ResetSignalHandlers();
 		return false;
+	} else if (!_networking || _network_server) {
+		/* If we are in single player, i.e. not networking, and loading the
+		 * savegame or we are loading the savegame as network server we do
+		 * not want to be bothered by being paused because of the automatic
+		 * reason of a network server, e.g. joining clients or too few
+		 * active clients. Note that resetting these values for a network
+		 * client are very bad because then the client is going to execute
+		 * the game loop when the server is not, i.e. it desyncs. */
+		_pause_mode &= ~PMB_PAUSED_NETWORK;
 	}
 
 	/* in very old versions, size of train stations was stored differently */

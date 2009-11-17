@@ -57,6 +57,9 @@ enum PauseMode {
 	PM_PAUSED_JOIN           = 1 << 2, ///< A game paused for 'pause_on_join'
 	PM_PAUSED_ERROR          = 1 << 3, ///< A game paused because a (critical) error
 	PM_PAUSED_ACTIVE_CLIENTS = 1 << 4, ///< A game paused for 'min_active_clients'
+
+	/* Pause mode bits when paused for network reasons */
+	PMB_PAUSED_NETWORK = PM_PAUSED_ACTIVE_CLIENTS | PM_PAUSED_JOIN,
 };
 DECLARE_ENUM_AS_BIT_SET(PauseMode);
 typedef SimpleTinyEnumT<PauseMode, byte> PauseModeByte;
