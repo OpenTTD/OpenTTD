@@ -35,7 +35,7 @@ enum DownloadStatusWindowWidgets {
 static const NWidgetPart _nested_network_content_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, NCDSWW_CAPTION), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, NCDSWW_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(350, 55),
+		NWidget(NWID_SPACER), SetMinimalSize(350, 0), SetMinimalTextLines(3, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 30),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(125, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCDSWW_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
@@ -139,23 +139,28 @@ public:
 		if (widget != NCDSWW_BACKGROUND) return;
 
 		/* Draw nice progress bar :) */
-		DrawFrameRect(20, 18, 20 + (int)((this->width - 40LL) * this->downloaded_bytes / this->total_bytes), 28, COLOUR_MAUVE, FR_NONE);
+		DrawFrameRect(r.left + 20, r.top + 4, r.left + 20 + (int)((this->width - 40LL) * this->downloaded_bytes / this->total_bytes), r.top + 14, COLOUR_MAUVE, FR_NONE);
 
+		int y = r.top + 20;
 		SetDParam(0, this->downloaded_bytes);
 		SetDParam(1, this->total_bytes);
 		SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
-		DrawString(r.left + 2, r.right - 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_CENTER);
+		DrawString(r.left + 2, r.right - 2, y, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_CENTER);
 
+		StringID str;
 		if (this->downloaded_bytes == this->total_bytes) {
-			DrawString(r.left + 2, r.right - 2, 50, STR_CONTENT_DOWNLOAD_COMPLETE, TC_FROMSTRING, SA_CENTER);
+			str = STR_CONTENT_DOWNLOAD_COMPLETE;
 		} else if (!StrEmpty(this->name)) {
 			SetDParamStr(0, this->name);
 			SetDParam(1, this->downloaded_files);
 			SetDParam(2, this->total_files);
-			DrawStringMultiLine(r.left + 2, r.right - 2, 43, 67, STR_CONTENT_DOWNLOAD_FILE, TC_FROMSTRING, SA_CENTER);
+			str = STR_CONTENT_DOWNLOAD_FILE;
 		} else {
-			DrawString(r.left + 2, r.right - 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_FROMSTRING, SA_CENTER);
+			str = STR_CONTENT_DOWNLOAD_INITIALISE;
 		}
+
+		y += FONT_HEIGHT_NORMAL + 5;
+		DrawStringMultiLine(r.left + 2, r.right - 2, y, y + FONT_HEIGHT_NORMAL * 2, str, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
