@@ -1877,7 +1877,7 @@ public:
 
 			case SLWW_DRIVES_DIRECTORIES_LIST:
 				resize->height = FONT_HEIGHT_NORMAL;
-				size->height = resize->height * 10;
+				size->height = resize->height * 10 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
 		}
 	}
