@@ -30,30 +30,35 @@ static const char *DOWNARROW = "\xEE\x8A\xAA"; ///< String containing a downward
  * @param sb     Scrollbar list data
  * @param top    Top position of the scrollbar (top position of the up-button)
  * @param bottom Bottom position of the scrollbar (bottom position of the down-button)
+ * @param horizontal Whether the scrollbar is horizontal or not
  * @return A Point, with x containing the top coordinate of the draggable part, and
  *                       y containing the bottom coordinate of the draggable part
  */
-static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
+static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bool horizontal)
 {
-	Point pt;
-	int height, count, pos, cap;
-
+	/* Base for reversion */
+	int rev_base = top + bottom;
 	top += 10;   // top    points to just below the up-button
 	bottom -= 9; // bottom points to top of the down-button
 
-	height = (bottom - top);
-
-	pos = sb->GetPosition();
-	count = sb->GetCount();
-	cap = sb->GetCapacity();
+	int height = (bottom - top);
+	int pos = sb->GetPosition();
+	int count = sb->GetCount();
+	int cap = sb->GetCapacity();
 
 	if (count != 0) top += height * pos / count;
 
 	if (cap > count) cap = count;
 	if (count != 0) bottom -= (count - pos - cap) * height / count;
 
-	pt.x = top;
-	pt.y = bottom - 1;
+	Point pt;
+	if (horizontal && _dynlang.text_dir == TD_RTL) {
+		pt.x = rev_base - (bottom - 1);
+		pt.y = rev_base - top;
+	} else {
+		pt.x = top;
+		pt.y = bottom - 1;
+	}
 	return pt;
 }
 
@@ -70,6 +75,7 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 {
 	int pos;
 	Scrollbar *sb;
+	bool rtl = false;
 
 	switch (wtp) {
 		case WWT_SCROLLBAR:
@@ -88,12 +94,13 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 			sb = &w->vscroll2;
 			break;
 
-		case  WWT_HSCROLLBAR:
+		case WWT_HSCROLLBAR:
 			/* horizontal scroller */
 			w->flags4 &= ~WF_SCROLL2;
 			w->flags4 |= WF_HSCROLL;
 			pos = x;
 			sb = &w->hscroll;
+			rtl = _dynlang.text_dir == TD_RTL;
 			break;
 
 		default: NOT_REACHED();
@@ -103,7 +110,7 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 		w->flags4 |= WF_SCROLL_UP;
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
-			sb->UpdatePosition(-1);
+			sb->UpdatePosition(rtl ? 1 : -1);
 		}
 		_left_button_clicked = false;
 	} else if (pos >= ma - 10) {
@@ -112,16 +119,16 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
-			sb->UpdatePosition(1);
+			sb->UpdatePosition(rtl ? -1 : 1);
 		}
 		_left_button_clicked = false;
 	} else {
-		Point pt = HandleScrollbarHittest(sb, mi, ma);
+		Point pt = HandleScrollbarHittest(sb, mi, ma, wtp == WWT_HSCROLLBAR);
 
 		if (pos < pt.x) {
-			sb->UpdatePosition(-sb->GetCapacity());
+			sb->UpdatePosition(rtl ? sb->GetCapacity() : -sb->GetCapacity());
 		} else if (pos > pt.y) {
-			sb->UpdatePosition(sb->GetCapacity());
+			sb->UpdatePosition(rtl ? -sb->GetCapacity() : sb->GetCapacity());
 		} else {
 			_scrollbar_start_pos = pt.x - mi - 9;
 			_scrollbar_size = ma - mi - 23;
@@ -158,7 +165,7 @@ void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y)
 			ma = nw->pos_y + nw->current_y;
 			break;
 
-		case  WWT_HSCROLLBAR:
+		case WWT_HSCROLLBAR:
 			/* horizontal scroller */
 			mi = nw->pos_x;
 			ma = nw->pos_x + nw->current_x;
@@ -357,7 +364,7 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
 	GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
 
-	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom);
+	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
 	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FR_LOWERED : FR_NONE);
 }
 
@@ -392,7 +399,7 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	GfxFillRect(r.left + 10, r.top + 8, r.right - 10, r.top + 8, c2);
 
 	/* draw actual scrollbar */
-	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right);
+	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
 	DrawFrameRect(pt.x, r.top, pt.y, r.bottom, colour, bar_dragged ? FR_LOWERED : FR_NONE);
 }
 

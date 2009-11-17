@@ -1676,10 +1676,12 @@ static bool HandleScrollbarScrolling()
 
 			int i;
 			Scrollbar *sb;
+			bool rtl = false;
 
 			if (w->flags4 & WF_HSCROLL) {
 				sb = &w->hscroll;
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
+				rtl = _dynlang.text_dir == TD_RTL;
 			} else if (w->flags4 & WF_SCROLL2) {
 				sb = &w->vscroll2;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
@@ -1690,6 +1692,7 @@ static bool HandleScrollbarScrolling()
 
 			/* Find the item we want to move to and make sure it's inside bounds. */
 			int pos = min(max(0, i + _scrollbar_start_pos) * sb->GetCount() / _scrollbar_size, max(0, sb->GetCount() - sb->GetCapacity()));
+			if (rtl) pos = sb->GetCount() - sb->GetCapacity() - pos;
 			if (pos != sb->GetPosition()) {
 				sb->SetPosition(pos);
 				w->SetDirty();
