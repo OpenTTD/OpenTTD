@@ -159,12 +159,12 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
 		SetDParam(0, v->engine_type);
 		SetDParam(1, v->value);
-		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE);
+		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE, TC_FROMSTRING, SA_LEFT | SA_STRIP);
 	} else {
 		SetDParam(0, v->engine_type);
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
-		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE);
+		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE, TC_FROMSTRING, SA_LEFT | SA_STRIP);
 	}
 }
 

@@ -40,7 +40,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(left, right, y + y_offset, STR_VEHICLE_INFO_BUILT_VALUE);
+	DrawString(left, right, y + y_offset, STR_VEHICLE_INFO_BUILT_VALUE, TC_FROMSTRING, SA_LEFT | SA_STRIP);
 
 	if (rv->HasArticulatedPart()) {
 		CargoArray max_cargo;
