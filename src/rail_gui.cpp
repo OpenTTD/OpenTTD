@@ -1820,14 +1820,15 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		for (uint i = 0; i < this->hscroll.GetCapacity(); i++) {
 			if (this->hscroll.GetPosition() + i < this->hscroll.GetCount()) {
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.GetPosition() + i);
+				NWidgetBase *nw = this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i);
 
-				int bottom = this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i)->pos_y + this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i)->current_y;
-				DrawWaypointSprite(this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i)->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
+				int bottom = nw->pos_y + nw->current_y;
+				DrawWaypointSprite(nw->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, 0, FILLRECT_CHECKER);
+					GfxFillRect(nw->pos_x + 1, nw->pos_y + 1, nw->pos_x + nw->current_x - 2, bottom - 2, 0, FILLRECT_CHECKER);
 				}
 			}
 		}
