@@ -123,7 +123,6 @@ void CDECL error(const char *s, ...)
 	va_end(va);
 
 	ShowOSErrorBox(buf, true);
-	if (_video_driver != NULL) _video_driver->Stop();
 
 	/* Set the error message for the crash log and then invoke it. */
 	CrashLog::SetErrorMessage(buf);

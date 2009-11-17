@@ -21,6 +21,7 @@ void SetScreenshotFormat(int i);
 enum ScreenshotType {
 	SC_NONE,     ///< No screenshot requested
 	SC_VIEWPORT, ///< Screenshot of viewport
+	SC_RAW,      ///< Raw screenshot from blitter buffer
 	SC_WORLD,    ///< World screenshot
 };
 

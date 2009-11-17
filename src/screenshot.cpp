@@ -644,6 +644,8 @@ bool MakeScreenshot()
 		case SC_VIEWPORT:
 			UndrawMouseCursor();
 			DrawDirtyBlocks();
+			/* FALL THROUGH */
+		case SC_RAW:
 			_screenshot_type = SC_NONE;
 			return MakeSmallScreenshot();
 		case SC_WORLD:

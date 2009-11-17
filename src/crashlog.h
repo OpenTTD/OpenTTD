@@ -155,6 +155,16 @@ public:
 	bool WriteSavegame(char *filename, const char *filename_last) const;
 
 	/**
+	 * Write the (crash) screenshot to a file.
+	 * @note On success the filename will be filled with the full path of the
+	 *       screenshot. Make sure filename is at least \c MAX_PATH big.
+	 * @param filename      Output for the filename of the written file.
+	 * @param filename_last The last position in the filename buffer.
+	 * @return true when the crash screenshot was successfully made.
+	 */
+	bool WriteScreenshot(char *filename, const char *filename_last) const;
+
+	/**
 	 * Makes the crash log, writes it to a file and then subsequently tries
 	 * to make a crash dump and crash savegame. It uses DEBUG to write
 	 * information like paths to the console.

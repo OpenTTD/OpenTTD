@@ -21,6 +21,8 @@
 #include "sound/sound_driver.hpp"
 #include "video/video_driver.hpp"
 #include "saveload/saveload.h"
+#include "screenshot.h"
+#include "gfx_func.h"
 
 #include <squirrel.h>
 #include "ai/ai_info.hpp"
@@ -249,6 +251,17 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 	}
 }
 
+bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
+{
+	/* Don't draw when we have invalid screen size */
+	if (_screen.width < 1 || _screen.height < 1 || _screen.dst_ptr == NULL) return false;
+
+	RequestScreenshot(SC_RAW, "crash");
+	bool res = MakeScreenshot();
+	if (res) strecpy(filename, _full_screenshot_name, filename_last);
+	return res;
+}
+
 bool CrashLog::MakeCrashLog() const
 {
 	/* Don't keep looping logging crashes. */
@@ -290,6 +303,15 @@ bool CrashLog::MakeCrashLog() const
 	} else {
 		ret = false;
 		printf("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
+	}
+
+	printf("Writing crash screenshot...\n");
+	bret = this->WriteScreenshot(filename, lastof(filename));
+	if (bret) {
+		printf("Crash screenshot written to %s. Please add this file to any bug reports.\n\n", filename);
+	} else {
+		ret = false;
+		printf("Writing crash screenshot failed.\n\n");
 	}
 
 	return ret;

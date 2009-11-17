@@ -68,7 +68,8 @@ When you are sure it is not already reported you should:
    forum thread related to that patch pack.
  * Make it reproducible for the developers. In other words, create a savegame
    in which you can reproduce the issue once loaded. It is very useful to give
-   us the crash.dmp, crash.sav and crash.log which are created on crashes.
+   us the crash.dmp, crash.sav, crash.log and crash screenshot which are
+   created on crashes.
  * Check whether the bug is already reported on our bug tracker. This includes
    searching for recently closed bug reports as the bug might already be fixed.
 
