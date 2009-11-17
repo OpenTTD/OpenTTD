@@ -875,6 +875,14 @@ void ShowCargoPaymentRates()
 /* COMPANY LEAGUE TABLE */
 /************************/
 
+/** Widget numbers for the company league window. */
+enum CompanyLeagueWidgets {
+	CLW_CLOSEBOX,
+	CLW_CAPTION,
+	CLW_STICKYBOX,
+	CLW_BACKGROUND,
+};
+
 static const StringID _performance_titles[] = {
 	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
 	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
@@ -941,7 +949,13 @@ public:
 		this->companies.Sort(&PerformanceSorter);
 
 		this->DrawWidgets();
+	}
 
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != CLW_BACKGROUND) return;
+
+		uint y = r.top + WD_FRAMERECT_TOP;
 		for (uint i = 0; i != this->companies.Length(); i++) {
 			const Company *c = this->companies[i];
 			SetDParam(0, i + STR_ORDINAL_NUMBER_1ST);
@@ -949,8 +963,9 @@ public:
 			SetDParam(2, c->index);
 			SetDParam(3, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
 
-			DrawString(2, this->width, 15 + i * 10, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER);
-			DrawCompanyIcon(c->index, 27, 16 + i * 10);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER);
+			DrawCompanyIcon(c->index, 27, y + 1);
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 
@@ -971,21 +986,13 @@ public:
 	}
 };
 
-/** Widget numbers for the company league window. */
-enum CompanyLeagueWidgets {
-	CLW_CLOSEBOX,
-	CLW_CAPTION,
-	CLW_STICKYBOX,
-	CLW_BACKGROUND,
-};
-
 static const NWidgetPart _nested_company_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_COMPANY_LEAGUE_TABLE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKYBOX),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CLW_BACKGROUND), SetMinimalSize(400, 153),
+	NWidget(WWT_PANEL, COLOUR_GREY, CLW_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM),
 };
 
 static const WindowDesc _company_league_desc(
