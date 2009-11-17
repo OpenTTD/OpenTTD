@@ -757,6 +757,17 @@ void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
 }
 
 /**
+ * Set minimal text lines for the widget.
+ * @param min_lines Number of text lines of the widget.
+ * @param spacing   Extra spacing (eg WD_FRAMERECT_TOP + _BOTTOM) of the widget.
+ * @param size      Font size of text.
+ */
+void NWidgetResizeBase::SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size)
+{
+	this->min_y = min_lines * GetCharacterHeight(size) + spacing;
+}
+
+/**
  * Set the filling of the widget from initial size.
  * @param fill_x Allow horizontal filling from initial size.
  * @param fill_y Allow vertical filling from initial size.
@@ -2084,6 +2095,15 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				if (nwrb != NULL) {
 					assert(parts->u.xy.x >= 0 && parts->u.xy.y >= 0);
 					nwrb->SetMinimalSize(parts->u.xy.x, parts->u.xy.y);
+				}
+				break;
+			}
+
+			case WPT_MINTEXTLINES: {
+				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
+				if (nwrb != NULL) {
+					assert(parts->u.text_lines.size >= FS_BEGIN && parts->u.text_lines.size < FS_END);
+					nwrb->SetMinimalTextLines(parts->u.text_lines.lines, parts->u.text_lines.spacing, parts->u.text_lines.size);
 				}
 				break;
 			}

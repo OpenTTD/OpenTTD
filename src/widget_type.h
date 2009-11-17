@@ -125,6 +125,7 @@ enum WidgetType {
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
 	WPT_MINSIZE,      ///< Widget part for specifying minimal size.
+	WPT_MINTEXTLINES, ///< Widget part for specifying minimal number of lines of text.
 	WPT_FILL,         ///< Widget part for specifying fill.
 	WPT_DATATIP,      ///< Widget part for specifying data and tooltip.
 	WPT_PADDING,      ///< Widget part for specifying a padding.
@@ -248,6 +249,7 @@ public:
 	NWidgetResizeBase(WidgetType tp, bool fill_x, bool fill_y);
 
 	void SetMinimalSize(uint min_x, uint min_y);
+	void SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size);
 	void SetFill(bool fill_x, bool fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
@@ -590,6 +592,14 @@ struct NWidgetPartPIP {
 	uint8 pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
 
+/** Widget part for storing minimal text line data.
+ * @ingroup NestedWidgetParts */
+struct NWidgetPartTextLines {
+	uint8 lines;   ///< Number of text lines.
+	uint8 spacing; ///< Extra spacing around lines.
+	FontSize size; ///< Font size of text lines.
+};
+
 /** Pointer to function returning a nested widget.
  * @param biggest_index Pointer to storage for collecting the biggest index used in the nested widget.
  * @return Nested widget (tree).
@@ -607,6 +617,7 @@ struct NWidgetPart {
 		NWidgetPartWidget widget;        ///< Part with a start of a widget.
 		NWidgetPartPaddings padding;     ///< Part with paddings.
 		NWidgetPartPIP pip;              ///< Part with pre/inter/post spaces.
+		NWidgetPartTextLines text_lines; ///< Part with text line data.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
 		NWidContainerFlags cont_flags;   ///< Part with container flags.
 	} u;
@@ -642,6 +653,25 @@ static inline NWidgetPart SetMinimalSize(int16 x, int16 y)
 	part.type = WPT_MINSIZE;
 	part.u.xy.x = x;
 	part.u.xy.y = y;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting the minimal text lines.
+ * @param lines   Number of text lines.
+ * @param spacing Extra spacing required.
+ * @param size    Font size of text.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetMinimalTextLines(uint8 lines, uint8 spacing, FontSize size = FS_NORMAL)
+{
+	NWidgetPart part;
+
+	part.type = WPT_MINTEXTLINES;
+	part.u.text_lines.lines = lines;
+	part.u.text_lines.spacing = spacing;
+	part.u.text_lines.size = size;
 
 	return part;
 }
