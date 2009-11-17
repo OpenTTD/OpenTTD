@@ -100,6 +100,7 @@ enum StringAlignment {
 	SA_RIGHT,     ///< Right align the text
 	SA_MASK  = 3, ///< Mask for base alignment
 	SA_FORCE = 4, ///< Force the alignment, i.e. don't swap for RTL languages.
+	SA_STRIP = 8, ///< Strip the SETX/SETXY commands from the string
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment);
 

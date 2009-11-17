@@ -327,9 +327,10 @@ static UChar *HandleBiDiAndArabicShapes(UChar *buffer)
  * If the string is truncated, add three dots ('...') to show this.
  * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
+ * @param ignore_setxy whether to ignore SETX(Y) or not
  * @return new width of (truncated) string
  */
-static int TruncateString(char *str, int maxw)
+static int TruncateString(char *str, int maxw, bool ignore_setxy)
 {
 	int w = 0;
 	FontSize size = _cur_fontsize;
@@ -353,10 +354,10 @@ static int TruncateString(char *str, int maxw)
 			}
 		} else {
 			if (c == SCC_SETX) {
-				w = *str;
+				if (!ignore_setxy) w = *str;
 				str++;
 			} else if (c == SCC_SETXY) {
-				w = *str;
+				if (!ignore_setxy) w = *str;
 				str += 2;
 			} else if (c == SCC_TINYFONT) {
 				size = FS_SMALL;
@@ -446,7 +447,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	int initial_right = right;
 	int initial_top = top;
 
-	if (truncate) TruncateString(str, right - left + 1);
+	if (truncate) TruncateString(str, right - left + 1, (align & SA_STRIP) == SA_STRIP);
 
 	/*
 	 * To support SETX and SETXY properly with RTL languages we have to
@@ -477,6 +478,14 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		}
 		if (c != SCC_SETX && c != SCC_SETXY) {
 			loc += len;
+			continue;
+		}
+
+		if (align & SA_STRIP) {
+			/* We do not want to keep the SETX(Y)!. It was already copied, so
+			 * remove it and undo the incrementing of the pointer! */
+			*p-- = '\0';
+			loc += len + (c == SCC_SETXY ? 2 : 1);
 			continue;
 		}
 
