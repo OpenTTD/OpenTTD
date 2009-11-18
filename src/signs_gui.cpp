@@ -119,14 +119,19 @@ struct SignListWindow : Window, SignList {
 					return;
 				}
 
+				bool rtl = _dynlang.text_dir == TD_RTL;
+				uint icon_left  = 4 + (rtl ? r.right - this->text_offset : r.left);
+				uint text_left  = r.left + (rtl ? WD_FRAMERECT_LEFT : this->text_offset);
+				uint text_right = r.right - (rtl ? this->text_offset : WD_FRAMERECT_RIGHT);
+
 				/* At least one sign available. */
 				for (uint16 i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->vscroll.GetCount(); i++) {
 					const Sign *si = this->signs[i];
 
-					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, r.left + 4, y + 1);
+					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + 1);
 
 					SetDParam(0, si->index);
-					DrawString(r.left + this->text_offset, r.right - WD_FRAMETEXT_RIGHT, y, STR_SIGN_NAME, TC_YELLOW);
+					DrawString(text_left, text_right, y, STR_SIGN_NAME, TC_YELLOW);
 					y += this->resize.step_height;
 				}
 				break;
