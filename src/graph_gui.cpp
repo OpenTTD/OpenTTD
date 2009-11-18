@@ -270,7 +270,7 @@ protected:
 		 * placed outside the area. */
 		r.top    += 5 + GetCharacterHeight(FS_SMALL) / 2;
 		r.bottom -= (this->month == 0xFF ? 1 : 3) * GetCharacterHeight(FS_SMALL) + 4;
-		r.left   += 5;
+		r.left   += 9;
 		r.right  -= 5;
 
 		/* Start of with a highest_value of twice the height of the graph in pixels.
@@ -312,6 +312,7 @@ protected:
 		y = r.bottom;
 
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+			GfxFillRect(r.left - 3, y, r.left - 1, y, GRAPH_AXIS_LINE_COLOUR);
 			GfxFillRect(r.left, y, r.right, y, grid_colour);
 			y -= y_sep;
 		}
@@ -343,7 +344,7 @@ protected:
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
-			DrawString(r.left - label_width, r.left, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
+			DrawString(r.left - label_width - 4, r.left - 4, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
 
 			y_label -= y_label_separation;
 			y += y_sep;
