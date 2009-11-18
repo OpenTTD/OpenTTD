@@ -73,11 +73,13 @@ struct GraphLegendWindow : Window {
 
 		if (!Company::IsValidID(cid)) return;
 
-		DrawCompanyIcon(cid, r.left + 2, r.top + 2);
+		bool rtl = _dynlang.text_dir == TD_RTL;
+
+		DrawCompanyIcon(cid, rtl ? r.right - 16 : r.left + 2, r.top + 2);
 
 		SetDParam(0, cid);
 		SetDParam(1, cid);
-		DrawString(r.left + 19, r.right - 2, r.top + 1, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
+		DrawString(r.left + (rtl ? WD_FRAMERECT_LEFT : 19), r.right - (rtl ? 19 : WD_FRAMERECT_RIGHT), r.top + 1, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -802,6 +804,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		if (widget < CPW_CARGO_FIRST) return;
 
 		const CargoSpec *cs = CargoSpec::Get(widget - CPW_CARGO_FIRST);
+		bool rtl = _dynlang.text_dir == TD_RTL;
 
 		/* Since the buttons have no text, no images,
 		 * both the text and the coloured box have to be manually painted.
@@ -811,10 +814,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		int x = r.left + WD_FRAMERECT_LEFT;
 		int y = r.top;
 
-		GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
-		GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
+		int rect_x = clk_dif + (rtl ? r.right - 12 : r.left + WD_FRAMERECT_LEFT);
+
+		GfxFillRect(rect_x, y + clk_dif, rect_x + 8, y + 5 + clk_dif, 0);
+		GfxFillRect(rect_x + 1, y + 1 + clk_dif, rect_x + 7, y + 4 + clk_dif, cs->legend_colour);
 		SetDParam(0, cs->name);
-		DrawString(x + 14 + clk_dif, r.right, y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
+		DrawString(rtl ? r.left : x + 14 + clk_dif, (rtl ? r.right - 14 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1011,7 +1016,7 @@ public:
 			SetDParam(3, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
 
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER);
-			DrawCompanyIcon(c->index, 27, y + 1);
+			DrawCompanyIcon(c->index, _dynlang.text_dir == TD_RTL ? r.right - 43 : r.left + 27, y + 1);
 			y += FONT_HEIGHT_NORMAL;
 		}
 	}
