@@ -99,14 +99,14 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 
 		if (v->index == selection) {
 			/* Set the highlight position */
-			highlight_l = rtl ? px - width + 1 : px + 1;
-			highlight_r = rtl ? px + 1 : px + width + 1;
+			highlight_l = rtl ? px - width : px;
+			highlight_r = rtl ? px - 1 : px + width - 1;
 			sel_articulated = true;
 		} else if ((_cursor.vehchain && highlight_r != 0) || sel_articulated) {
 			if (rtl) {
-				highlight_r += width;
-			} else {
 				highlight_l -= width;
+			} else {
+				highlight_r += width;
 			}
 		}
 
