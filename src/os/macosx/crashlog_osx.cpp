@@ -45,8 +45,9 @@ class CrashLogOSX : public CrashLog {
 	/** Signal that has been thrown. */
 	int signum;
 
-	char filename_save[MAX_PATH];  ///< Path of crash.sav
-	char filename_log[MAX_PATH];   ///< Path of crash.log
+	char filename_log[MAX_PATH];        ///< Path of crash.log
+	char filename_save[MAX_PATH];       ///< Path of crash.sav
+	char filename_screenshot[MAX_PATH]; ///< Path of crash.(png|bmp|pcx)
 
 	/* virtual */ char *LogOSVersion(char *buffer, const char *last) const
 	{
@@ -155,6 +156,7 @@ public:
 	{
 		filename_log[0] = '\0';
 		filename_save[0] = '\0';
+		filename_screenshot[0] = '\0';
 	}
 
 	/** Generate the crash log. */
@@ -180,6 +182,12 @@ public:
 			ret = false;
 		}
 
+		printf("Writing crash savegame...\n");
+		if (!this->WriteScreenshot(filename_screenshot, lastof(filename_screenshot))) {
+			filename_screenshot[0] = '\0';
+			ret = false;
+		}
+
 		return ret;
 	}
 
@@ -193,8 +201,8 @@ public:
 		seprintf(message, lastof(message),
 				 "Please send the generated crash information and the last (auto)save to the developers. "
 				 "This will greatly help debugging. The correct place to do this is http://bugs.openttd.org.\n\n"
-				 "Generated file(s):\n%s\n%s",
-				 this->filename_log, this->filename_save);
+				 "Generated file(s):\n%s\n%s\n%s",
+				 this->filename_log, this->filename_save, this->filename_screenshot);
 
 		ShowMacDialog(crash_title, message, "Quit");
 	}
