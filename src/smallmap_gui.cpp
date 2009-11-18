@@ -913,17 +913,23 @@ public:
 			} break;
 
 			case SM_WIDGET_LEGEND: {
+				bool rtl = _dynlang.text_dir == TD_RTL;
 				uint y_org = r.top + WD_FRAMERECT_TOP;
-				uint x = r.left + WD_FRAMERECT_LEFT;
+				uint x = rtl ? r.right - this->column_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT;
 				uint y = y_org;
 				uint i = 0;
 				uint row_height = FONT_HEIGHT_SMALL;
+
+				uint text_left  = rtl ? 0 : LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT;
+				uint text_right = this->column_width - 1 - (rtl ? LEGEND_BLOB_WIDTH + WD_FRAMERECT_RIGHT : 0);
+				uint blob_left  = rtl ? this->column_width - 1 - LEGEND_BLOB_WIDTH : 0;
+				uint blob_right = rtl ? this->column_width - 1 : LEGEND_BLOB_WIDTH;
 
 				for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
 					if (tbl->col_break || i++ >= this->number_of_rows) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
 						* (one "row") to the right. */
-						x += this->column_width;
+						x += rtl ? -this->column_width : this->column_width;
 						y = y_org;
 						i = 0;
 					}
@@ -937,17 +943,17 @@ public:
 						if (!tbl->show_on_map) {
 							/* Simply draw the string, not the black border of the legend colour.
 							 * This will enforce the idea of the disabled item */
-							DrawString(x + LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT, x + this->column_width - 1, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
+							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
 						} else {
-							DrawString(x + LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT, x + this->column_width - 1, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
-							GfxFillRect(x, y + 1, x + LEGEND_BLOB_WIDTH, y + row_height - 1, 0); // Outer border of the legend colour
+							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
+							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
 					} else {
 						/* Anything that is not an industry is using normal process */
-						GfxFillRect(x, y + 1, x + LEGEND_BLOB_WIDTH, y + row_height - 1, 0);
-						DrawString(x + LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT, x + this->column_width - 1, y, tbl->legend);
+						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0);
+						DrawString(x + text_left, x + text_right, y, tbl->legend);
 					}
-					GfxFillRect(x + 1, y + 2, x + LEGEND_BLOB_WIDTH - 1, y + row_height - 2, tbl->colour); // Legend colour
+					GfxFillRect(x + blob_left + 1, y + 2, x + blob_right - 1, y + row_height - 2, tbl->colour); // Legend colour
 
 					y += row_height;
 				}
@@ -1019,8 +1025,13 @@ public:
 				if (this->map_type == SMT_INDUSTRY) {
 					/* If click on industries label, find right industry type and enable/disable it */
 					const NWidgetCore *wi = this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND); // Label panel
-					uint column = (pt.x - WD_FRAMERECT_LEFT) / this->column_width;
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
+					if (line >= this->number_of_rows) break;
+
+					bool rtl = _dynlang.text_dir == TD_RTL;
+					int x = pt.x - wi->pos_x;
+					if (rtl) x = wi->current_x - x;
+					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
 
 					/* Check if click is on industry label*/
 					int industry_pos = (column * this->number_of_rows) + line;
