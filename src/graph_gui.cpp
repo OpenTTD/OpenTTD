@@ -170,9 +170,6 @@ protected:
 		GRAPH_AXIS_LINE_COLOUR  = 215,
 		GRAPH_NUM_MONTHS = 24, ///< Number of months displayed in the graph.
 
-		GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gd_left
-		GRAPH_X_POSITION_SEPARATION = 22,  ///< There are 22 pixels between each X value
-
 		GRAPH_NUM_LINES_Y = 9, ///< How many horizontal lines to draw.
 		/* 9 is convenient as that means the distance between them is the gd_height of the graph / 8,
 		 * which is the same
@@ -196,76 +193,14 @@ protected:
 	uint16 x_values_start;
 	uint16 x_values_increment;
 
-	Rect graph_location;
+	int graph_widget;
 	StringID format_str_y_axis;
 	byte colours[GRAPH_MAX_DATASETS];
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
-	/**
-	 * Actually draw the graph.
-	 * @param r the rectangle of the data field of the graph
-	 */
-	void DrawGraph(Rect &r) const
+	int64 GetHighestValue(int initial_highest_value) const
 	{
-		uint x, y;                       ///< Reused whenever x and y coordinates are needed.
-		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
-		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
-
-		/* the colours and cost array of GraphDrawer must accomodate
-		 * both values for cargo and companies. So if any are higher, quit */
-		assert_compile(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
-		assert(this->num_vert_lines > 0);
-
-		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
-
-		/* The coordinates of the opposite edges of the graph. */
-		assert(r.left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1 == r.right);
-		int height = r.bottom - r.top + 1;
-
-		/* Draw the vertical grid lines. */
-
-		/* Don't draw the first line, as that's where the axis will be. */
-		x = r.left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
-
-		for (int i = 0; i < this->num_vert_lines; i++) {
-			GfxFillRect(x, r.top, x, r.bottom, grid_colour);
-			x += GRAPH_X_POSITION_SEPARATION;
-		}
-
-		/* Draw the horizontal grid lines. */
-		x = r.left + GRAPH_X_POSITION_BEGINNING;
-		y = r.bottom;
-
-		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
-			GfxFillRect(x, y, r.right, y, grid_colour);
-			y -= height / (GRAPH_NUM_LINES_Y - 1);
-		}
-
-		/* Draw the y axis. */
-		GfxFillRect(x, r.top, x, r.bottom, GRAPH_AXIS_LINE_COLOUR);
-
-		/* Find the distance from the gd_top of the graph to the x axis. */
-		x_axis_offset = height;
-
-		/* The graph is currently symmetrical about the x axis. */
-		if (this->has_negative_values) x_axis_offset /= 2;
-
-		/* Draw the x axis. */
-		y = x_axis_offset + r.top;
-		GfxFillRect(x, y, r.right, y, GRAPH_AXIS_LINE_COLOUR);
-
-		/* Find the largest value that will be drawn. */
-		if (this->num_on_x_axis == 0)
-			return;
-
-		assert(this->num_on_x_axis > 0);
-		assert(this->num_dataset > 0);
-
-		/* Start of with a value of twice the gd_height of the graph in pixels. It's a
-		 * bit arbitrary, but it makes the cargo payment graph look a little nicer,
-		 * and prevents division by zero when calculating where the datapoint
-		 * should be drawn. */
-		highest_value = x_axis_offset * 2;
+		OverflowSafeInt64 highest_value = initial_highest_value;
 
 		for (int i = 0; i < this->num_dataset; i++) {
 			if (!HasBit(this->excluded_data, i)) {
@@ -287,6 +222,11 @@ protected:
 		int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
 		if (round_val != 0) highest_value += (GRAPH_NUM_LINES_Y - 1 - round_val);
 
+		return highest_value;
+	}
+
+	uint GetYLabelWidth(int64 highest_value) const
+	{
 		/* draw text strings on the y axis */
 		int64 y_label = highest_value;
 		int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
@@ -295,21 +235,123 @@ protected:
 		 * -highest_value, not highest_value to 0. */
 		if (this->has_negative_values) y_label_separation *= 2;
 
-		x = r.left + GRAPH_X_POSITION_BEGINNING + 1;
-		y = r.top - 3;
+		uint max_width = 0;
 
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
-			DrawString(x - GRAPH_X_POSITION_BEGINNING, x, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
+			Dimension d = GetStringBoundingBox(STR_GRAPH_Y_LABEL);
+			if (d.width > max_width) max_width = d.width;
 
 			y_label -= y_label_separation;
-			y += height / (GRAPH_NUM_LINES_Y - 1);
+		}
+
+		return max_width;
+	}
+
+	/**
+	 * Actually draw the graph.
+	 * @param r the rectangle of the data field of the graph
+	 */
+	void DrawGraph(Rect &r) const
+	{
+		uint x, y;                       ///< Reused whenever x and y coordinates are needed.
+		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
+		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
+
+		/* the colours and cost array of GraphDrawer must accomodate
+		 * both values for cargo and companies. So if any are higher, quit */
+		assert_compile(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
+		assert(this->num_vert_lines > 0);
+
+		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
+
+		/* Rect r will be adjusted to contain just the graph, with labels being
+		 * placed outside the area. */
+		r.top    += 5 + GetCharacterHeight(FS_SMALL) / 2;
+		r.bottom -= (this->month == 0xFF ? 1 : 3) * GetCharacterHeight(FS_SMALL) + 4;
+		r.left   += 5;
+		r.right  -= 5;
+
+		/* Start of with a highest_value of twice the height of the graph in pixels.
+		 * It's a bit arbitrary, but it makes the cargo payment graph look a little
+		 * nicer, and prevents division by zero when calculating where the datapoint
+		 * should be drawn. */
+		highest_value = r.bottom - r.top + 1;
+		if (!this->has_negative_values) highest_value *= 2;
+		highest_value = GetHighestValue(highest_value);
+
+		/* Get width for Y labels */
+		int label_width = GetYLabelWidth(highest_value);
+
+		r.left += label_width;
+
+		int x_sep = (r.right - r.left) / this->num_vert_lines;
+		int y_sep = (r.bottom - r.top) / (GRAPH_NUM_LINES_Y - 1);
+
+		/* Redetermine right and bottom edge of graph to fit with the integer
+		 * separation values. */
+		r.right = r.left + x_sep * this->num_vert_lines;
+		r.bottom = r.top + y_sep * (GRAPH_NUM_LINES_Y - 1);
+
+		/* Where to draw the X axis */
+		x_axis_offset = r.bottom - r.top;
+		if (this->has_negative_values) x_axis_offset /= 2;
+
+		/* Draw the vertical grid lines. */
+
+		/* Don't draw the first line, as that's where the axis will be. */
+		x = r.left + x_sep;
+
+		for (int i = 0; i < this->num_vert_lines; i++) {
+			GfxFillRect(x, r.top, x, r.bottom, grid_colour);
+			x += x_sep;
+		}
+
+		/* Draw the horizontal grid lines. */
+		y = r.bottom;
+
+		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+			GfxFillRect(r.left, y, r.right, y, grid_colour);
+			y -= y_sep;
+		}
+
+		/* Draw the y axis. */
+		GfxFillRect(r.left, r.top, r.left, r.bottom, GRAPH_AXIS_LINE_COLOUR);
+
+		/* Draw the x axis. */
+		y = x_axis_offset + r.top;
+		GfxFillRect(r.left, y, r.right, y, GRAPH_AXIS_LINE_COLOUR);
+
+		/* Find the largest value that will be drawn. */
+		if (this->num_on_x_axis == 0)
+			return;
+
+		assert(this->num_on_x_axis > 0);
+		assert(this->num_dataset > 0);
+
+		/* draw text strings on the y axis */
+		int64 y_label = highest_value;
+		int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
+
+		/* If there are negative values, the graph goes from highest_value to
+		 * -highest_value, not highest_value to 0. */
+		if (this->has_negative_values) y_label_separation *= 2;
+
+		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
+
+		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+			SetDParam(0, this->format_str_y_axis);
+			SetDParam(1, y_label);
+			DrawString(r.left - label_width, r.left, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
+
+			y_label -= y_label_separation;
+			y += y_sep;
 		}
 
 		/* draw strings on the x axis */
 		if (this->month != 0xFF) {
-			x = r.left + GRAPH_X_POSITION_BEGINNING;
+			x = r.left;
 			y = r.bottom + 2;
 			byte month = this->month;
 			Year year  = this->year;
@@ -317,27 +359,27 @@ protected:
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
 				SetDParam(1, month + STR_MONTH_ABBREV_JAN + 2);
 				SetDParam(2, year);
-				DrawStringMultiLine(x, x + GRAPH_X_POSITION_SEPARATION, y, this->height, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, graph_axis_label_colour);
+				DrawStringMultiLine(x, x + x_sep, y, this->height, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, graph_axis_label_colour);
 
 				month += 3;
 				if (month >= 12) {
 					month = 0;
 					year++;
 				}
-				x += GRAPH_X_POSITION_SEPARATION;
+				x += x_sep;
 			}
 		} else {
 			/* Draw the label under the data point rather than on the grid line. */
-			x = r.left + GRAPH_X_POSITION_BEGINNING;
+			x = r.left;
 			y = r.bottom + 2;
 			uint16 label = this->x_values_start;
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, label);
-				DrawString(x + 1, x + GRAPH_X_POSITION_SEPARATION - 1, y, STR_GRAPH_Y_LABEL_NUMBER, graph_axis_label_colour, SA_CENTER);
+				DrawString(x + 1, x + x_sep - 1, y, STR_GRAPH_Y_LABEL_NUMBER, graph_axis_label_colour, SA_CENTER);
 
 				label += this->x_values_increment;
-				x += GRAPH_X_POSITION_SEPARATION;
+				x += x_sep;
 			}
 		}
 
@@ -345,7 +387,7 @@ protected:
 		for (int i = 0; i < this->num_dataset; i++) {
 			if (!HasBit(this->excluded_data, i)) {
 				/* Centre the dot between the grid lines. */
-				x = r.left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
+				x = r.left + (x_sep / 2);
 
 				byte colour  = this->colours[i];
 				uint prev_x = INVALID_DATAPOINT_POS;
@@ -391,25 +433,20 @@ protected:
 						prev_y = INVALID_DATAPOINT_POS;
 					}
 
-					x += GRAPH_X_POSITION_SEPARATION;
+					x += x_sep;
 				}
 			}
 		}
 	}
 
 
-	BaseGraphWindow(int left, int top, int height, bool has_negative_values, StringID format_str_y_axis) :
+	BaseGraphWindow(int widget, bool has_negative_values, StringID format_str_y_axis) :
 			Window(), has_negative_values(has_negative_values),
 			format_str_y_axis(format_str_y_axis)
 	{
 		SetWindowDirty(WC_GRAPH_LEGEND, 0);
 		this->num_vert_lines = 24;
-
-		this->graph_location.left   = left;
-		this->graph_location.right  = left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
-
-		this->graph_location.top    = top;
-		this->graph_location.bottom = top + height - 1;
+		this->graph_widget = widget;
 	}
 
 	void InitializeWindow(const WindowDesc *desc, WindowNumber number)
@@ -425,7 +462,14 @@ public:
 	{
 		this->DrawWidgets();
 
-		this->DrawGraph(this->graph_location);
+		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(this->graph_widget);
+		Rect r;
+		r.left = nwid->pos_x;
+		r.right = nwid->pos_x + nwid->current_x - 1;
+		r.top = nwid->pos_y;
+		r.bottom = nwid->pos_y + nwid->current_y - 1;
+
+		this->DrawGraph(r);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -505,7 +549,7 @@ public:
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(2, 18, 136, true, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_BACKGROUND, true, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -545,7 +589,7 @@ void ShowOperatingProfitGraph()
 
 struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(2, 18, 104, false, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_BACKGROUND, false, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -584,7 +628,7 @@ void ShowIncomeGraph()
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(2, 18, 104, false, STR_JUST_COMMA)
+			BaseGraphWindow(BGW_BACKGROUND, false, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -631,7 +675,7 @@ enum PerformanceHistoryGraphWidgets {
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(2, 18, 200, false, STR_JUST_COMMA)
+			BaseGraphWindow(PHW_BACKGROUND, false, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -676,7 +720,7 @@ void ShowPerformanceHistoryGraph()
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(2, 18, 200, false, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_BACKGROUND, false, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -717,12 +761,15 @@ enum CargoPaymentRatesWidgets {
 	CPW_CLOSEBOX,
 	CPW_CAPTION,
 	CPW_BACKGROUND,
+	CPW_HEADER,
+	CPW_GRAPH,
+	CPW_FOOTER,
 	CPW_CARGO_FIRST,
 };
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(2, 24, 200, false, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(CPW_GRAPH, false, STR_JUST_CURRCOMPACT)
 	{
 		this->num_on_x_axis = 20;
 		this->num_vert_lines = 20;
@@ -734,9 +781,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->OnHundredthTick();
 
 		this->InitNested(desc, window_number);
-
-		this->graph_location.right  = this->graph_location.left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
-		this->graph_location.bottom = this->graph_location.top + (this->height - 38) - 1;
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -770,16 +814,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
 		SetDParam(0, cs->name);
 		DrawString(x + 14 + clk_dif, r.right, y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
-	}
-
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-		this->DrawGraph(this->graph_location);
-
-		DrawString(2 + 46, this->width, this->graph_location.bottom + 8, STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL);
-		DrawString(2 + 84, this->width, this->graph_location.top - 9, STR_GRAPH_CARGO_PAYMENT_RATES_TITLE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -846,14 +880,26 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, CPW_CAPTION), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 128), SetResize(0, 1),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(495, 0), SetFill(false, true),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(true, false),
-					NWidgetFunction(MakeCargoButtons),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(true, true),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(WWT_TEXT, COLOUR_GREY, CPW_HEADER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(true, false),
 			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(false, true),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(true, true),
+				NWidget(NWID_VERTICAL),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(false, false),
+						NWidgetFunction(MakeCargoButtons),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(false, true),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(false, true),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(WWT_TEXT, COLOUR_GREY, CPW_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(true, false),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
