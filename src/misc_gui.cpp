@@ -461,7 +461,7 @@ struct AboutWindow : public Window {
 		/* Show all scrolling _credits */
 		for (uint i = 0; i < lengthof(_credits); i++) {
 			if (y >= r.top + 7 && y < r.bottom - this->line_height) {
-				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, _credits[i], TC_BLACK);
+				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, _credits[i], TC_BLACK, SA_LEFT | SA_FORCE);
 			}
 			y += this->line_height;
 		}
