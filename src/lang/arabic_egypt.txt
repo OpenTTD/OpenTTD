@@ -2776,7 +2776,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :قاطرة سك
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :قاطرة سكة قطار ممغنطة
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK} التكلفة: {CURRENCY} الوزن: {WEIGHT_S} {} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY} / سنة {} السعة: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}التكلفة {CURRENCY} الوزن {WEIGHT_S}{}السرعة {VELOCITY}  Power: {POWER}قوة السحب  {7:FORCE}{}التكلفة التشغيلية {CURRENCY}/سنة{}السعة: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}التكلفة {CURRENCY} الوزن {WEIGHT_S}{}السرعة {VELOCITY}  Power: {POWER}قوة السحب  {7:FORCE}{}التكلفة التشغيلية {4:CURRENCY}/سنة{}السعة: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK} التكلفة {CURRENCY} السرعة القصوى {VELOCITY}{}Capacity السعة {CARGO} {CARGO}{} كلفة التشغيل {CURRENCY} / سنة
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK} التكلفة {CURRENCY} السرعة القصوى {VELOCITY}{} السعة {CARGO}{} كلفة التشغيل {CURRENCY} / سنة
 
