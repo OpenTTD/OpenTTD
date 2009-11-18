@@ -741,17 +741,19 @@ SpriteID GetCargoSprite(CargoID i)
  *
  * @param i type of cargo
  * @param waiting number of waiting units
- * @param x x on-screen coordinate where to start with drawing icons
+ * @param left  left most coordinate to draw on
+ * @param right right most coordinate to draw on
  * @param y y coordinate
  * @param width the width of the view
  */
-static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
+static void DrawCargoIcons(CargoID i, uint waiting, int left, int right, int y)
 {
-	uint num = min((waiting + 5) / 10, width / 10); // maximum is width / 10 icons so it won't overflow
+	uint num = min((waiting + 5) / 10, (right - left) / 10); // maximum is width / 10 icons so it won't overflow
 	if (num == 0) return;
 
 	SpriteID sprite = GetCargoSprite(i);
 
+	int x = _dynlang.text_dir == TD_RTL ? right - num * 10 : left;
 	do {
 		DrawSprite(sprite, PAL_NONE, x, y);
 		x += 10;
@@ -778,6 +780,7 @@ typedef std::list<CargoData> CargoDataList;
 struct StationViewWindow : public Window {
 	uint32 cargo;                 ///< Bitmask of cargo types to expand
 	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
+	uint expand_shrink_width;     ///< The width allocated to the expand/shrink 'button'
 
 	/** Height of the #SVW_ACCEPTLIST widget for different views. */
 	enum AcceptListHeight {
@@ -811,6 +814,7 @@ struct StationViewWindow : public Window {
 			case SVW_WAITING:
 				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM;
+				this->expand_shrink_width = max(GetStringBoundingBox("-").width, GetStringBoundingBox("+").width) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				break;
 
 			case SVW_ACCEPTLIST:
@@ -937,20 +941,27 @@ struct StationViewWindow : public Window {
 			y += FONT_HEIGHT_NORMAL;
 		}
 
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		int text_left    = rtl ? r.left + this->expand_shrink_width : r.left + WD_FRAMERECT_LEFT;
+		int text_right   = rtl ? r.right - WD_FRAMERECT_LEFT : r.right - this->expand_shrink_width;
+		int shrink_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.right - this->expand_shrink_width + WD_FRAMERECT_LEFT;
+		int shrink_right = rtl ? r.left + this->expand_shrink_width - WD_FRAMERECT_RIGHT : r.right - WD_FRAMERECT_RIGHT;
+
+
 		int maxrows = this->vscroll.GetCapacity();
 		for (CargoDataList::const_iterator it = cargolist.begin(); it != cargolist.end() && pos > -maxrows; ++it) {
 			if (--pos < 0) {
 				const CargoData *cd = &(*it);
 				if (cd->source == INVALID_STATION) {
 					/* Heading */
-					DrawCargoIcons(cd->cargo, cd->count, r.left + WD_FRAMERECT_LEFT, y, r.right - r.left - WD_FRAMERECT_LEFT - WD_FRAMERECT_RIGHT);
+					DrawCargoIcons(cd->cargo, cd->count, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y);
 					SetDParam(0, cd->cargo);
 					SetDParam(1, cd->count);
 					if (HasBit(transfers, cd->cargo)) {
 						/* This cargo has transfers waiting so show the expand or shrink 'button' */
 						const char *sym = HasBit(this->cargo, cd->cargo) ? "-" : "+";
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - 10, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
-						DrawString(r.right - 8, r.right, y, sym, TC_YELLOW);
+						DrawString(text_left, text_right, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
+						DrawString(shrink_left, shrink_right, y, sym, TC_YELLOW, SA_RIGHT);
 					} else {
 						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
 					}
@@ -1023,7 +1034,7 @@ struct StationViewWindow : public Window {
 			SetDParam(0, cs->name);
 			SetDParam(2, ToPercent8(ge->rating));
 			SetDParam(1, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
-			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_CARGO_RATING);
+			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT - 6, y, STR_STATION_VIEW_CARGO_RATING);
 			y += FONT_HEIGHT_NORMAL;
 		}
 	}
