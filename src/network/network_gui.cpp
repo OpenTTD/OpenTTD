@@ -1531,6 +1531,15 @@ struct NetworkLobbyWindow : public Window {
 
 	void DrawMatrix(const Rect &r) const
 	{
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint left = r.left + WD_FRAMERECT_LEFT;
+		uint right = r.right - WD_FRAMERECT_RIGHT;
+
+		uint text_left  = left + (rtl ? 20 : 0);
+		uint text_right = right - (rtl ? 0 : 20);
+		uint blob_left  = rtl ? left : right - 10;
+		uint lock_left  = rtl ? left + 10 : right - 20;
+
 		int y = r.top + WD_MATRIX_TOP;
 		/* Draw company list */
 		int pos = this->vscroll.GetPosition();
@@ -1541,12 +1550,12 @@ struct NetworkLobbyWindow : public Window {
 				GfxFillRect(r.left + 1, y - 2, r.right - 1, y + FONT_HEIGHT_NORMAL, 10); // show highlighted item with a different colour
 			}
 
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT - 20, y, this->company_info[company].company_name, TC_BLACK);
-			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, r.right - WD_FRAMERECT_RIGHT - 20, y);
+			DrawString(text_left, text_right, y, this->company_info[company].company_name, TC_BLACK);
+			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, lock_left, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
 			if (this->company_info[company].income >= 0) income = true;
-			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, r.right - WD_FRAMERECT_RIGHT - 10, y);
+			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, blob_left, y);
 
 			pos++;
 			y += this->resize.step_height;
@@ -2042,8 +2051,19 @@ struct NetworkClientListWindow : Window {
 	{
 		if (widget != CLW_PANEL) return;
 
-		int y = r.top + WD_FRAMERECT_TOP;
-		int left = r.left + WD_FRAMERECT_LEFT;
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint y = r.top + WD_FRAMERECT_TOP;
+		uint left = r.left + WD_FRAMERECT_LEFT;
+		uint right = r.right - WD_FRAMERECT_RIGHT;
+		uint type_icon_width = this->server_client_width + this->company_icon_width;
+
+
+		uint type_left  = rtl ? right - this->server_client_width : left;
+		uint type_right = rtl ? right : left + this->server_client_width - 1;
+		uint icon_left  = rtl ? right - type_icon_width + WD_FRAMERECT_LEFT : left + this->server_client_width;
+		uint name_left  = rtl ? left : left + type_icon_width;
+		uint name_right = rtl ? right - type_icon_width : right;
+
 		int i = 0;
 		const NetworkClientInfo *ci;
 		FOR_ALL_CLIENT_INFOS(ci) {
@@ -2056,15 +2076,15 @@ struct NetworkClientListWindow : Window {
 			}
 
 			if (ci->client_id == CLIENT_ID_SERVER) {
-				DrawString(left, left + this->server_client_width, y, STR_NETWORK_SERVER, colour);
+				DrawString(type_left, type_right, y, STR_NETWORK_SERVER, colour);
 			} else {
-				DrawString(left, left + this->server_client_width, y, STR_NETWORK_CLIENT, colour);
+				DrawString(type_left, type_right, y, STR_NETWORK_CLIENT, colour);
 			}
 
 			/* Filter out spectators */
-			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, left + this->server_client_width, y + 1);
+			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, icon_left, y + 1);
 
-			DrawString(left + this->server_client_width + this->company_icon_width, r.right - WD_FRAMERECT_RIGHT, y, ci->client_name, colour);
+			DrawString(name_left, name_right, y, ci->client_name, colour);
 
 			y += FONT_HEIGHT_NORMAL;
 		}
