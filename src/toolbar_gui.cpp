@@ -162,11 +162,12 @@ public:
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		CompanyID company = (CompanyID)result;
+		bool rtl = _dynlang.text_dir == TD_RTL;
 
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		DrawCompanyIcon(company, left + 2, top + 1);
+		DrawCompanyIcon(company, rtl ? right - 16 : left + 2, top + 1);
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -176,7 +177,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + 19, right - 2, top, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(rtl ? left + 2 : left + 19, rtl ? right - 19 : right - 2, top, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
