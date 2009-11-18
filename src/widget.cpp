@@ -418,31 +418,36 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
 
+	/* If the frame has text, adjust the top bar to fit half-way through */
+	int dy1 = 4;
+	if (str != STR_NULL) dy1 = FONT_HEIGHT_NORMAL / 2 - 1;
+	int dy2 = dy1 + 1;
+
 	if (_dynlang.text_dir == TD_LTR) {
 		/* Line from upper left corner to start of text */
-		GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
-		GfxFillRect(r.left + 1, r.top + 5, r.left + 4, r.top + 5, c2);
+		GfxFillRect(r.left, r.top + dy1, r.left + 4, r.top + dy1, c1);
+		GfxFillRect(r.left + 1, r.top + dy2, r.left + 4, r.top + dy2, c2);
 
 		/* Line from end of text to upper right corner */
-		GfxFillRect(x2, r.top + 4, r.right - 1, r.top + 4, c1);
-		GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
+		GfxFillRect(x2, r.top + dy1, r.right - 1, r.top + dy1, c1);
+		GfxFillRect(x2, r.top + dy2, r.right - 2, r.top + dy2, c2);
 	} else {
 		/* Line from upper left corner to start of text */
-		GfxFillRect(r.left, r.top + 4, x2 - 2, r.top + 4, c1);
-		GfxFillRect(r.left + 1, r.top + 5, x2 - 2, r.top + 5, c2);
+		GfxFillRect(r.left, r.top + dy1, x2 - 2, r.top + dy1, c1);
+		GfxFillRect(r.left + 1, r.top + dy2, x2 - 2, r.top + dy2, c2);
 
 		/* Line from end of text to upper right corner */
-		GfxFillRect(r.right - 5, r.top + 4, r.right - 1, r.top + 4, c1);
-		GfxFillRect(r.right - 5, r.top + 5, r.right - 2, r.top + 5, c2);
+		GfxFillRect(r.right - 5, r.top + dy1, r.right - 1, r.top + dy1, c1);
+		GfxFillRect(r.right - 5, r.top + dy2, r.right - 2, r.top + dy2, c2);
 	}
 
 	/* Line from upper left corner to bottom left corner */
-	GfxFillRect(r.left, r.top + 5, r.left, r.bottom - 1, c1);
-	GfxFillRect(r.left + 1, r.top + 6, r.left + 1, r.bottom - 2, c2);
+	GfxFillRect(r.left, r.top + dy2, r.left, r.bottom - 1, c1);
+	GfxFillRect(r.left + 1, r.top + dy2 + 1, r.left + 1, r.bottom - 2, c2);
 
 	/* Line from upper right corner to bottom right corner */
-	GfxFillRect(r.right - 1, r.top + 5, r.right - 1, r.bottom - 2, c1);
-	GfxFillRect(r.right, r.top + 4, r.right, r.bottom - 1, c2);
+	GfxFillRect(r.right - 1, r.top + dy2, r.right - 1, r.bottom - 2, c1);
+	GfxFillRect(r.right, r.top + dy1, r.right, r.bottom - 1, c2);
 
 	GfxFillRect(r.left + 1, r.bottom - 1, r.right - 1, r.bottom - 1, c1);
 	GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
@@ -1458,6 +1463,14 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		if (w != NULL && this->type == WWT_FRAME) {
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			this->smallest_x = max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+			if (this->widget_data != STR_NULL) {
+				/* Adjust child's padding to fit text. We assume that the
+				 * original padding is designed around the 10 pixel high
+				 * sprite font. */
+				int y = FONT_HEIGHT_NORMAL - 10;
+				this->child->padding_top += y;
+				this->smallest_y += y;
+			}
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
