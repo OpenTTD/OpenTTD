@@ -446,6 +446,8 @@ enum AIConfigWindowWidgets {
 	AIC_WIDGET_CLOSEBOX = 0, ///< Close window button
 	AIC_WIDGET_CAPTION,      ///< Window caption
 	AIC_WIDGET_BACKGROUND,   ///< Window background
+	AIC_WIDGET_DECREASE,     ///< Decrease the number of AIs
+	AIC_WIDGET_INCREASE,     ///< Increase the number of AIs
 	AIC_WIDGET_NUMBER,       ///< Number of AIs
 	AIC_WIDGET_LIST,         ///< List with currently selected AIs
 	AIC_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through the selected AIs
@@ -461,7 +463,14 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, AIC_WIDGET_CAPTION), SetMinimalSize(289, 14), SetDataTip(STR_AI_CONFIG_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, AIC_WIDGET_BACKGROUND),
-		NWidget(WWT_EMPTY, COLOUR_MAUVE, AIC_WIDGET_NUMBER), SetMinimalSize(0, 16),
+		NWidget(NWID_VERTICAL), SetPIP(4, 0, 4),
+			NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 10),
+				NWidget(NWID_BUTTON_ARROW, COLOUR_YELLOW, AIC_WIDGET_DECREASE), SetFill(false, true), SetDataTip(AWV_DECREASE, STR_NULL),
+				NWidget(NWID_BUTTON_ARROW, COLOUR_YELLOW, AIC_WIDGET_INCREASE), SetFill(false, true), SetDataTip(AWV_INCREASE, STR_NULL),
+				NWidget(NWID_SPACER), SetMinimalSize(6, 0),
+				NWidget(WWT_TEXT, COLOUR_MAUVE, AIC_WIDGET_NUMBER), SetDataTip(STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS, STR_NULL), SetFill(true, false), SetPadding(1, 0, 0, 0),
+			EndContainer(),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_MATRIX, COLOUR_MAUVE, AIC_WIDGET_LIST), SetMinimalSize(288, 112), SetDataTip(0x801, STR_AI_CONFIG_LIST_TOOLTIP),
 			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, AIC_WIDGET_SCROLLBAR),
@@ -512,13 +521,18 @@ struct AIConfigWindow : public Window {
 		DeleteWindowByClass(WC_AI_SETTINGS);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
 			case AIC_WIDGET_NUMBER:
-				size->height = FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 4;
+				SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
 				break;
+		}
+	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
 			case AIC_WIDGET_LIST:
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
@@ -529,19 +543,11 @@ struct AIConfigWindow : public Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case AIC_WIDGET_NUMBER: {
-				byte max_competitors = _settings_newgame.difficulty.max_no_competitors;
-				DrawArrowButtons(r.left + 10, r.top + 4, COLOUR_YELLOW, this->clicked_button ? 1 + !!this->clicked_increase : 0, max_competitors > 0, max_competitors < MAX_COMPANIES - 1);
-				SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
-				DrawString(r.left + 36, r.right, r.top + 4, STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS);
-				break;
-			}
 			case AIC_WIDGET_LIST: {
 				int y = r.top;
 				for (int i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < MAX_COMPANIES; i++) {
@@ -567,19 +573,16 @@ struct AIConfigWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case AIC_WIDGET_NUMBER: {
-				/* Check if the user clicked on one of the arrows to configure the number of AIs */
-				NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
-				if (IsInsideBS(pt.x, nwid->pos_x + 10, 20) && IsInsideBS(pt.y, nwid->pos_y + 4, 10)) {
-					int new_value;
-					if (pt.x <= (int)nwid->pos_x + 20) {
-						new_value = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
-					} else {
-						new_value = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
-					}
-					IConsoleSetSetting("difficulty.max_no_competitors", new_value);
-					this->SetDirty();
+			case AIC_WIDGET_DECREASE:
+			case AIC_WIDGET_INCREASE: {
+				int new_value;
+				if (widget == AIC_WIDGET_DECREASE) {
+					new_value = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
+				} else {
+					new_value = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
 				}
+				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
+				this->InvalidateData();
 				break;
 			}
 
@@ -618,6 +621,8 @@ struct AIConfigWindow : public Window {
 
 	virtual void OnInvalidateData(int data)
 	{
+		this->SetWidgetDisabledState(AIC_WIDGET_DECREASE, _settings_newgame.difficulty.max_no_competitors == 0);
+		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, _settings_newgame.difficulty.max_no_competitors == MAX_COMPANIES - 1);
 		this->SetWidgetDisabledState(AIC_WIDGET_CHANGE, this->selected_slot == INVALID_COMPANY);
 		this->SetWidgetDisabledState(AIC_WIDGET_CONFIGURE, this->selected_slot == INVALID_COMPANY);
 	}
