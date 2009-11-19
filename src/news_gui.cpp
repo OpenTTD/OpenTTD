@@ -1205,7 +1205,7 @@ static NWidgetBase *MakeButtonsColumn(int *biggest_index)
 	for (int i = 0; i < NT_END; i++) {
 		NWidgetHorizontal *hor = new NWidgetHorizontal;
 		/* [<] button. */
-		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum, SPR_ARROW_LEFT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+		NWidgetLeaf *leaf = new NWidgetLeaf(NWID_BUTTON_ARROW, COLOUR_YELLOW, widnum, AWV_DECREASE, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 		leaf->SetFill(true, true);
 		hor->Add(leaf);
 		/* Label. */
@@ -1213,7 +1213,7 @@ static NWidgetBase *MakeButtonsColumn(int *biggest_index)
 		leaf->SetFill(true, true);
 		hor->Add(leaf);
 		/* [>] button. */
-		leaf = new NWidgetLeaf(WWT_PUSHIMGBTN, COLOUR_YELLOW, widnum + 2, SPR_ARROW_RIGHT, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+		leaf = new NWidgetLeaf(NWID_BUTTON_ARROW, COLOUR_YELLOW, widnum + 2, AWV_INCREASE, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 		leaf->SetFill(true, true);
 		hor->Add(leaf);
 		vert_buttons->Add(hor);
