@@ -270,9 +270,10 @@ struct MusicTrackSelectionWindow : public Window {
 
 				for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 					SetDParam(0, i);
-					SetDParam(2, i);
-					SetDParam(1, SPECSTR_SONGNAME);
-					Dimension d2 = GetStringBoundingBox((i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT);
+					SetDParam(1, 2);
+					SetDParam(2, SPECSTR_SONGNAME);
+					SetDParam(3, i);
+					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
 					d.width = max(d.width, d2.width);
 					d.height += d2.height;
 				}
@@ -292,9 +293,10 @@ struct MusicTrackSelectionWindow : public Window {
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 					SetDParam(0, i);
-					SetDParam(2, i);
-					SetDParam(1, SPECSTR_SONGNAME);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT);
+					SetDParam(1, 2);
+					SetDParam(2, SPECSTR_SONGNAME);
+					SetDParam(3, i);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
 			} break;
@@ -306,9 +308,10 @@ struct MusicTrackSelectionWindow : public Window {
 				for (const byte *p = _playlists[msf.playlist]; *p != 0; p++) {
 					uint i = *p;
 					SetDParam(0, i);
-					SetDParam(1, SPECSTR_SONGNAME);
-					SetDParam(2, i);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (i < 10) ? STR_PLAYLIST_TRACK_SINGLE_DIGIT : STR_PLAYLIST_TRACK_DOUBLE_DIGIT);
+					SetDParam(1, 2);
+					SetDParam(2, SPECSTR_SONGNAME);
+					SetDParam(3, i);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
 			} break;
@@ -516,7 +519,8 @@ struct MusicWindow : public Window {
 				StringID str = STR_MUSIC_TRACK_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 					SetDParam(0, _music_wnd_cursong);
-					str = (_music_wnd_cursong < 10) ? STR_MUSIC_TRACK_SINGLE_DIGIT : STR_MUSIC_TRACK_DOUBLE_DIGIT;
+					SetDParam(0, 2);
+					str = STR_MUSIC_TRACK_DIGIT;
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str);
 			} break;
