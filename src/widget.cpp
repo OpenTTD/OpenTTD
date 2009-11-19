@@ -1695,6 +1695,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_MATRIX:
 		case WWT_EDITBOX:
 		case NWID_BUTTON_DRPDOWN:
+		case NWID_BUTTON_ARROW:
 			this->SetFill(false, false);
 			break;
 
@@ -1823,6 +1824,16 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			size = maxdim(size, d2);
 			break;
 		}
+		case NWID_BUTTON_ARROW: {
+			static const Dimension extra = {WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT,  WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM};
+			padding = &extra;
+			Dimension d2 = maxdim(GetSpriteSize(SPR_ARROW_LEFT), GetSpriteSize(SPR_ARROW_RIGHT));
+			d2.width += extra.width;
+			d2.height += extra.height;
+			size = maxdim(size, d2);
+			break;
+		}
+
 		case WWT_CLOSEBOX: {
 			static const Dimension extra = {WD_CLOSEBOX_LEFT + WD_CLOSEBOX_RIGHT, WD_CLOSEBOX_TOP + WD_CLOSEBOX_BOTTOM};
 			padding = &extra;
@@ -1924,6 +1935,18 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawLabel(r, this->type, clicked, this->widget_data);
 			break;
+
+		case NWID_BUTTON_ARROW: {
+			SpriteID sprite;
+			switch (this->widget_data) {
+				case AWV_DECREASE: sprite = _dynlang.text_dir != TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
+				case AWV_INCREASE: sprite = _dynlang.text_dir == TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
+				case AWV_LEFT:     sprite = SPR_ARROW_LEFT;  break;
+				case AWV_RIGHT:    sprite = SPR_ARROW_RIGHT; break;
+				default: NOT_REACHED();
+			}
+			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite);
+		}
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
@@ -2177,7 +2200,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			default:
 				if (*dest != NULL) return num_used;
-				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DRPDOWN);
+				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DRPDOWN || parts->type == NWID_BUTTON_ARROW);
 				*dest = new NWidgetLeaf(parts->type, parts->u.widget.colour, parts->u.widget.index, 0x0, STR_NULL);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;
