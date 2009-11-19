@@ -515,7 +515,7 @@ static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, Strin
 }
 
 /**
- * Draw a button with a dropdown (#WWT_DROPDOWN and #NWID_BUTTON_DRPDOWN).
+ * Draw a button with a dropdown (#WWT_DROPDOWN and #NWID_BUTTON_DROPDOWN).
  * @param r                Rectangle containing the widget.
  * @param colour           Background colour of the widget.
  * @param clicked_button   The button-part is lowered.
@@ -1694,7 +1694,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_TEXT:
 		case WWT_MATRIX:
 		case WWT_EDITBOX:
-		case NWID_BUTTON_DRPDOWN:
+		case NWID_BUTTON_DROPDOWN:
 		case NWID_BUTTON_ARROW:
 			this->SetFill(false, false);
 			break;
@@ -1876,7 +1876,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			break;
 		}
 		case WWT_DROPDOWN:
-		case NWID_BUTTON_DRPDOWN: {
+		case NWID_BUTTON_DROPDOWN: {
 			static const Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
 			padding = &extra;
 			if (this->index >= 0) w->SetStringParameters(this->index);
@@ -2011,7 +2011,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawDropdown(r, this->colour, clicked, this->widget_data);
 			break;
 
-		case NWID_BUTTON_DRPDOWN:
+		case NWID_BUTTON_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data);
 			break;
@@ -2039,7 +2039,7 @@ Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
 }
 
 /**
- * For a #NWID_BUTTON_DRPDOWN, test whether \a pt refers to the button or to the drop-down.
+ * For a #NWID_BUTTON_DROPDOWN, test whether \a pt refers to the button or to the drop-down.
  * @param pt Point in the widget.
  * @return The point refers to the button.
  *
@@ -2200,7 +2200,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			default:
 				if (*dest != NULL) return num_used;
-				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DRPDOWN || parts->type == NWID_BUTTON_ARROW);
+				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DROPDOWN || parts->type == NWID_BUTTON_ARROW);
 				*dest = new NWidgetLeaf(parts->type, parts->u.widget.colour, parts->u.widget.index, 0x0, STR_NULL);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;

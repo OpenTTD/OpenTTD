@@ -122,14 +122,14 @@ enum WidgetType {
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
 	/* Nested widget types. */
-	NWID_HORIZONTAL,     ///< Horizontal container.
-	NWID_HORIZONTAL_LTR, ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
-	NWID_VERTICAL,       ///< Vertical container.
-	NWID_SPACER,         ///< Invisible widget that takes some space.
-	NWID_SELECTION,      ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
-	NWID_VIEWPORT,       ///< Nested widget containing a viewport.
-	NWID_BUTTON_DRPDOWN, ///< Button with a drop-down.
-	NWID_BUTTON_ARROW,   ///< Button with an arrow
+	NWID_HORIZONTAL,      ///< Horizontal container.
+	NWID_HORIZONTAL_LTR,  ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
+	NWID_VERTICAL,        ///< Vertical container.
+	NWID_SPACER,          ///< Invisible widget that takes some space.
+	NWID_SELECTION,       ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
+	NWID_VIEWPORT,        ///< Nested widget containing a viewport.
+	NWID_BUTTON_DROPDOWN, ///< Button with a drop-down.
+	NWID_BUTTON_ARROW,    ///< Button with an arrow
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
