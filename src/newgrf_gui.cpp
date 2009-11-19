@@ -638,6 +638,12 @@ struct NewGRFWindow : public Window {
 			case SNGRFS_FILE_LIST: {
 				uint y = r.top + WD_MATRIX_TOP;
 
+				bool rtl = _dynlang.text_dir == TD_RTL;
+				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + 25;
+				uint text_right   = rtl ? r.right - 25 : r.right - WD_FRAMERECT_RIGHT;
+				uint square_left  = rtl ? r.right - 15 : r.left + 5;
+				uint warning_left = rtl ? r.right - 30 : r.left + 20;
+
 				int i = 0;
 				for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {
 					if (this->vscroll.IsVisible(i)) {
@@ -667,10 +673,10 @@ struct NewGRFWindow : public Window {
 							}
 						}
 
-						DrawSprite(SPR_SQUARE, pal, r.left + 5, y - 1);
-						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, r.left + 20, y - 1);
-						byte txtoffset = c->error != NULL ? 35 : 25;
-						DrawString(r.left + txtoffset, r.right - WD_FRAMERECT_RIGHT, y, text, this->sel == c ? TC_WHITE : TC_BLACK);
+						DrawSprite(SPR_SQUARE, pal, square_left, y - 1);
+						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y - 1);
+						uint txtoffset = c->error == NULL ? 0 : 10;
+						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), y, text, this->sel == c ? TC_WHITE : TC_BLACK);
 						y += this->resize.step_height;
 					}
 				}
