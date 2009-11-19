@@ -862,12 +862,14 @@ void ShowLastNewsMessage()
 /**
  * Draw an unformatted news message truncated to a maximum length. If
  * length exceeds maximum length it will be postfixed by '...'
- * @param x,y position of the string
+ * @param left  the left most location for the string
+ * @param right the right most location for the string
+ * @param y position of the string
  * @param colour the colour the string will be shown in
  * @param *ni NewsItem being printed
  * @param maxw maximum width of string in pixels
  */
-static void DrawNewsString(int x, int y, TextColour colour, const NewsItem *ni, uint maxw)
+static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
 {
 	char buffer[512], buffer2[512];
 	StringID str;
@@ -899,7 +901,7 @@ static void DrawNewsString(int x, int y, TextColour colour, const NewsItem *ni, 
 
 	*dest = '\0';
 	/* Truncate and show string; postfixed by '...' if neccessary */
-	DrawString(x, x + maxw, y, buffer2, colour);
+	DrawString(left, right, y, buffer2, colour);
 }
 
 /** Widget numbers of the message history window. */
@@ -931,7 +933,7 @@ struct MessageHistoryWindow : Window {
 			this->line_height = FONT_HEIGHT_NORMAL + 2;
 			resize->height = this->line_height;
 
-			SetDParam(0, ConvertYMDToDate(2024, 7, 28));
+			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 12, 30));
 			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
 
 			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
@@ -958,13 +960,16 @@ struct MessageHistoryWindow : Window {
 
 		/* Fill the widget with news items. */
 		int y = r.top + this->top_spacing;
-		const int date_left = r.left + WD_FRAMETEXT_LEFT;       // Left edge of dates
-		const int news_left = date_left + this->date_width + 5; // Left edge of news items
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint date_left  = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width : r.left + WD_FRAMERECT_LEFT;
+		uint date_right = rtl ? r.right - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT + this->date_width;
+		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT;
+		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT : r.right - WD_FRAMERECT_RIGHT;
 		for (int n = this->vscroll.GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
-			DrawString(date_left, news_left, y, STR_SHORT_DATE);
+			DrawString(date_left, date_right, y, STR_SHORT_DATE);
 
-			DrawNewsString(news_left, y, TC_WHITE, ni, r.right - WD_FRAMETEXT_RIGHT - news_left);
+			DrawNewsString(news_left, news_right, y, TC_WHITE, ni);
 			y += this->line_height;
 
 			ni = ni->prev;
