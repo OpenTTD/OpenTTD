@@ -162,16 +162,22 @@ struct CheatWindow : Window {
 		int y = r.top + WD_FRAMERECT_TOP + this->header_height;
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, y, STR_CHEATS_WARNING, TC_FROMSTRING, SA_CENTER);
 
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint box_left    = rtl ? r.right - 12 : r.left + 5;
+		uint button_left = rtl ? r.right - 40 : r.left + 20;
+		uint text_left   = r.left + (rtl ? WD_FRAMERECT_LEFT: 50);
+		uint text_right  = r.right - (rtl ? 50 : WD_FRAMERECT_RIGHT);
+
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
 
-			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, r.left + 5, y + 2);
+			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, box_left, y + 2);
 
 			switch (ce->type) {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawFrameRect(r.left + 20, y + 1, r.left + 30 + 9, y + FONT_HEIGHT_NORMAL - 1, on ? COLOUR_GREEN : COLOUR_RED, on ? FR_LOWERED : FR_NONE);
+					DrawFrameRect(button_left, y + 1, button_left + 20 - 1, y + FONT_HEIGHT_NORMAL - 1, on ? COLOUR_GREEN : COLOUR_RED, on ? FR_LOWERED : FR_NONE);
 					SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				} break;
 
@@ -180,18 +186,19 @@ struct CheatWindow : Window {
 					char buf[512];
 
 					/* Draw [<][>] boxes for settings of an integer-type */
-					DrawArrowButtons(r.left + 20, y, COLOUR_YELLOW, clicked - (i * 2), true, true);
+					DrawArrowButtons(button_left, y, COLOUR_YELLOW, clicked - (i * 2), true, true);
 
 					switch (ce->str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
 
 						/* Draw coloured flag for change company cheat */
-						case STR_CHEAT_CHANGE_COMPANY:
+						case STR_CHEAT_CHANGE_COMPANY: {
 							SetDParam(0, val + 1);
 							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
-							DrawCompanyIcon(_local_company, r.left + 60 + GetStringBoundingBox(buf).width, y + 2);
-							break;
+							uint offset = 10 + GetStringBoundingBox(buf).width;
+							DrawCompanyIcon(_local_company, rtl ? text_right - offset - 10 : text_left + offset, y + 2);
+						} break;
 
 						/* Set correct string for switch climate cheat */
 						case STR_CHEAT_SWITCH_CLIMATE: val += STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE;
@@ -202,7 +209,7 @@ struct CheatWindow : Window {
 				} break;
 			}
 
-			DrawString(r.left + 50, r.right, y + 1, ce->str);
+			DrawString(text_left, text_right, y + 1, ce->str);
 
 			y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 		}
@@ -266,8 +273,11 @@ struct CheatWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		uint btn = (pt.y - this->GetWidget<NWidgetCore>(CW_PANEL)->pos_y - WD_FRAMERECT_TOP - this->header_height) / (FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL);
-		uint x = pt.x;
+		const NWidgetCore *wid = this->GetWidget<NWidgetCore>(CW_PANEL);
+		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - this->header_height) / (FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL);
+		uint x = pt.x - wid->pos_x;
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		if (rtl) x = wid->current_x - x;
 
 		/* Not clicking a button? */
 		if (!IsInsideMM(x, 20, 40) || btn >= lengthof(_cheats_ui)) return;
@@ -289,7 +299,7 @@ struct CheatWindow : Window {
 				value = ce->proc(value + ((x >= 30) ? 1 : -1), (x >= 30) ? 1 : -1);
 
 				/* The first cheat (money), doesn't return a different value. */
-				if (value != oldvalue || btn == 0) this->clicked = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
+				if (value != oldvalue || btn == 0) this->clicked = btn * 2 + 1 + ((x >= 30) != rtl ? 1 : 0);
 				break;
 		}
 
