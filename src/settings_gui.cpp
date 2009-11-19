@@ -1680,8 +1680,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 
 	DrawFrameRect(x,      y + 1, x +  9, y + 9, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
-	DrawString(x,      x +  9, y + 1, STR_BLACK_SMALL_ARROW_LEFT, TC_FROMSTRING, SA_CENTER); // [<]
-	DrawString(x + 10, x + 19, y + 1, STR_BLACK_SMALL_ARROW_RIGHT, TC_FROMSTRING, SA_CENTER); // [>]
+	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, x + WD_IMGBTN_LEFT, y + WD_IMGBTN_TOP);
+	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, x + WD_IMGBTN_LEFT + 10, y + WD_IMGBTN_TOP);
 
 	/* Grey out the buttons that aren't clickable */
 	if (!clickable_left) {
