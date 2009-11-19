@@ -120,19 +120,25 @@ public:
 	void DrawRatings()
 	{
 		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(TWA_RATING_INFO);
-		int left = nwid->pos_x;
-		int right = nwid->pos_x + nwid->current_x - 1;
+		uint left = nwid->pos_x + WD_FRAMERECT_LEFT;
+		uint right = nwid->pos_x + nwid->current_x - 1 - WD_FRAMERECT_RIGHT;
 
 		uint y = nwid->pos_y + WD_FRAMERECT_TOP;
 
-		DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_TOP, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
+		DrawString(left, right, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
 		y += FONT_HEIGHT_NORMAL;
+
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint text_left  = left + (rtl ? 0 : 26);
+		uint text_right = right - (rtl ? 26 : 0);
+		uint icon_left  = rtl ? right - 14 : left;
+		uint blob_left  = rtl ? right - 24 : left + 16;
 
 		/* Draw list of companies */
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, left + WD_FRAMERECT_LEFT, y);
+				DrawCompanyIcon(c->index, icon_left, y);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);
@@ -150,10 +156,10 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) { // red icon for company with exclusive rights
-					DrawSprite(SPR_BLOT, PALETTE_TO_RED, left + WD_FRAMERECT_LEFT + 16, y);
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, blob_left, y);
 				}
 
-				DrawString(left + WD_FRAMERECT_LEFT + 26, right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
+				DrawString(text_left, text_right, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
 				y += FONT_HEIGHT_NORMAL;
 			}
 		}
