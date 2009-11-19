@@ -60,11 +60,13 @@ enum WidgetDrawDistances {
 
 	/* Extra space at top/bottom of text panels */
 	WD_TEXTPANEL_TOP    = 6,    ///< Offset at top to draw above the text
-	WD_TEXTPANEL_BOTTOM = 6,   ///< Offset at bottom to draw below the text
+	WD_TEXTPANEL_BOTTOM = 6,    ///< Offset at bottom to draw below the text
 
 	/* WWT_FRAME */
-	WD_FRAMETEXT_LEFT  = 6,     ///< Left offset of the text of the frame.
-	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
+	WD_FRAMETEXT_LEFT   = 6,    ///< Left offset of the text of the frame.
+	WD_FRAMETEXT_RIGHT  = 6,    ///< Right offset of the text of the frame.
+	WD_FRAMETEXT_TOP    = 6,    ///< Top offset of the text of the frame
+	WD_FRAMETEXT_BOTTOM = 6,    ///< Bottom offset of the text of the frame
 
 	/* WWT_MATRIX */
 	WD_MATRIX_LEFT   = 2,       ///< Offset at left of a matrix cell.

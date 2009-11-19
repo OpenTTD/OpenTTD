@@ -326,7 +326,8 @@ enum AboutWidgets {
 	AW_BACKGROUND,           ///< Background to draw on
 	AW_ABOUT_ORIG_COPYRIGHT, ///< Text with original copyright info
 	AW_ABOUT_VERSION,        ///< OpenTTD version string
-	AW_FRAME,                ///< The scrolling frame with goodies
+	AW_FRAME,                ///< The frame with the scrolling text
+	AW_SCROLLING_TEXT,       ///< The actually scrolling text
 	AW_WEBSITE,              ///< URL of OpenTTD website
 	AW_ABOUT_COPYRIGHT,      ///< OpenTTD copyright info
 };
@@ -339,7 +340,9 @@ static const NWidgetPart _nested_about_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND), SetPIP(4, 2, 4),
 		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_ORIG_COPYRIGHT), SetDataTip(STR_ABOUT_ORIGINAL_COPYRIGHT, STR_NULL),
 		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_VERSION), SetDataTip(STR_ABOUT_VERSION, STR_NULL),
-		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetPadding(0, 5, 1, 5), EndContainer(),
+		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetPadding(0, 5, 1, 5),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, AW_SCROLLING_TEXT),
+		EndContainer(),
 		NWidget(WWT_TEXT, COLOUR_GREY, AW_WEBSITE), SetDataTip(STR_BLACK_RAW_STRING, STR_NULL),
 		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_COPYRIGHT), SetDataTip(STR_ABOUT_COPYRIGHT_OPENTTD, STR_NULL),
 	EndContainer(),
@@ -421,7 +424,7 @@ struct AboutWindow : public Window {
 		this->InitNested(&_about_desc);
 
 		this->counter = 5;
-		this->text_position = this->GetWidget<NWidgetBase>(AW_FRAME)->pos_y + this->GetWidget<NWidgetBase>(AW_FRAME)->current_y;
+		this->text_position = this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->current_y;
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -431,7 +434,7 @@ struct AboutWindow : public Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget != AW_FRAME) return;
+		if (widget != AW_SCROLLING_TEXT) return;
 
 		this->line_height = FONT_HEIGHT_NORMAL;
 
@@ -442,8 +445,6 @@ struct AboutWindow : public Window {
 		for (uint i = 0; i < lengthof(_credits); i++) {
 			d.width = max(d.width, GetStringBoundingBox(_credits[i]).width);
 		}
-		d.width += WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
-
 		*size = maxdim(*size, d);
 	}
 
@@ -454,14 +455,14 @@ struct AboutWindow : public Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != AW_FRAME) return;
+		if (widget != AW_SCROLLING_TEXT) return;
 
 		int y = this->text_position;
 
 		/* Show all scrolling _credits */
 		for (uint i = 0; i < lengthof(_credits); i++) {
 			if (y >= r.top + 7 && y < r.bottom - this->line_height) {
-				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, _credits[i], TC_BLACK, SA_LEFT | SA_FORCE);
+				DrawString(r.left, r.right, y, _credits[i], TC_BLACK, SA_LEFT | SA_FORCE);
 			}
 			y += this->line_height;
 		}
@@ -473,8 +474,8 @@ struct AboutWindow : public Window {
 			this->counter = 5;
 			this->text_position--;
 			/* If the last text has scrolled start a new from the start */
-			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(AW_FRAME)->pos_y - lengthof(_credits) * this->line_height)) {
-				this->text_position = this->GetWidget<NWidgetBase>(AW_FRAME)->pos_y + this->GetWidget<NWidgetBase>(AW_FRAME)->current_y;
+			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
+				this->text_position = this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->current_y;
 			}
 			this->SetDirty();
 		}

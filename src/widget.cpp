@@ -1461,16 +1461,16 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 
 		/* Account for the size of the frame's text if that exists */
 		if (w != NULL && this->type == WWT_FRAME) {
+			this->child->padding_left   = WD_FRAMETEXT_LEFT;
+			this->child->padding_right  = WD_FRAMETEXT_RIGHT;
+			this->child->padding_top    = max((int)WD_FRAMETEXT_TOP, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP / 2 : 0);
+			this->child->padding_bottom = WD_FRAMETEXT_BOTTOM;
+
+			this->smallest_x += this->child->padding_left + this->child->padding_right;
+			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
+
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			this->smallest_x = max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
-			if (this->widget_data != STR_NULL) {
-				/* Adjust child's padding to fit text. We assume that the
-				 * original padding is designed around the 10 pixel high
-				 * sprite font. */
-				int y = FONT_HEIGHT_NORMAL - 10;
-				this->child->padding_top += y;
-				this->smallest_y += y;
-			}
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
