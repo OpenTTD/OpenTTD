@@ -2494,7 +2494,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Adeiladu Pencadlys
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Gweld pencadlys cwmni
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Adeiladu pencadlys cwmni
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ail-leoli pencadlys cwmni
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ailadeiladu pencadlys cwmni mewn man arall am 1% o werth y cwmni
 

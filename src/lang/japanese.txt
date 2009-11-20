@@ -2450,7 +2450,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}（{1:CO
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}本部ビルを建設
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}本部ビルを見る
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}本部ビルを建設／見る
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}本部ビルを移動
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}会社の本部ビルを移動します（価格：会社の価値の１％）
 

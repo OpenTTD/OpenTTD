@@ -2476,7 +2476,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovudkontor
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Sjå hovudkontor
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmaet sitt hovudkontor/sjå firmaet sitt hovudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Omplasser hovudkvarter
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg selskapets hovudkvarter ein annan stad for 1 % av verdien til firmaet
 

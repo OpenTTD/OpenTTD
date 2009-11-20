@@ -2294,7 +2294,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Faru HQ
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vidu HQ
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Konstruu kompanian ĉefkonstruaĵon / vidu kompanian ĉefkonstruaĵon
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Relokigu HQ
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rekonstruu kompanian ĉefkonstruaĵon aliloke por 1% de kompanivaloro
 

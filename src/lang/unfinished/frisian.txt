@@ -1491,7 +1491,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bou haadkantoar
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Sjoch haadkantoar
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bou haadkantoar / sjoch haadkantoar
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nei Gesicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selektear nei gesicht foar de bedriuwslieder

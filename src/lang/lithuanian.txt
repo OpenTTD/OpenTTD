@@ -2515,7 +2515,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Pastatyti firmos bustinę
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Apžiūrėti būstinę
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Statyti/apžiurėti kompanijos bustinę
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Perkelti bustinę
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti kompanijos bustinę kitur už 1% kompanijos vertės
 

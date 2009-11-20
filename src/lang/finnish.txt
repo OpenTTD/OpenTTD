@@ -2531,7 +2531,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Rakenna päämaja
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Näytä päämaja
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Rakenna yhtiön päärakennus / näytä yhtiön päärakennus.
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sijoita päämaja
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, hintana 1{NBSP}% yhtiön arvosta.
 

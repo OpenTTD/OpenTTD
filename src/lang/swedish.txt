@@ -2530,7 +2530,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg Högkvarter
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Visa högkvarter
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg huvudkontor / visa företagets huvudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytta högkvarter
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bygg om högkvarter på annan plats (kostar 1% av företagets värde)
 

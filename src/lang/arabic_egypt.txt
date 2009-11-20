@@ -2521,7 +2521,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE} ( {COMM
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}بناء مقر الشركة الرئيسي
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}عرض مبنى الشركة الئيسي
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}بناء / عرض مبنى الشركة الرئيسي
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}اعادة بناء مقر الشركة
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}اعادة بناء مقر الشركة بمكان آخر و بتكلفة 1% من قيمة الشركة.
 

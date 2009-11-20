@@ -2520,7 +2520,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(%{COMMA
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bina Yap
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Binaya Bak
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Şirket binasi yap / şirket binasina bak
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Binayı Taşı
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Şirket değerinin %1'i karşılığında binanın yerini değiştir
 

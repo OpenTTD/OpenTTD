@@ -1201,7 +1201,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}ساخت ساختمان مرکزی
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}دیدن ساختمان مرکزی
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}ساخت / دیدن ساختمان مرکزی
 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}25% سهام شرکت را بخر

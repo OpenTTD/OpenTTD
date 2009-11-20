@@ -2471,7 +2471,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construír CX
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ve-lo CX
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construír/ver cuartel xeral da compañía
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reposicionar CX
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Recontruí-lo cuartel xeral da compañía en calquer lugar cun custo do 1% do valor da compañía
 

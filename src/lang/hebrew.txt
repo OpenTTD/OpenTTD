@@ -2517,7 +2517,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({1:COMP
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}בנה בניין מטה
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}צפה במטה
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}בנה/צפה במטה החברה
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}שנה מיקום המטה
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}מקם מחדש את מטה החברה תמורת 1% משווי החברה
 

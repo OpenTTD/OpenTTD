@@ -1420,20 +1420,35 @@ static void DoSelectCompanyManagerFace(Window *parent, bool adv, int top, int le
 enum CompanyWindowWidgets {
 	CW_WIDGET_CLOSEBOX = 0,
 	CW_WIDGET_CAPTION,
+	CW_WIDGET_BACKGROUND,
+
 	CW_WIDGET_FACE,
+	CW_WIDGET_FACE_TITLE,
+
+	CW_WIDGET_DESC_INAUGURATION,
+	CW_WIDGET_DESC_COLOUR_SCHEME,
+	CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE,
+	CW_WIDGET_DESC_VEHICLE,
+	CW_WIDGET_DESC_VEHICLE_COUNTS,
+	CW_WIDGET_DESC_COMPANY_VALUE,
+	CW_WIDGET_DESC_OWNERS,
+
 	CW_WIDGET_SELECT_BUTTONS,     ///< Selection widget for the button bar.
 	CW_WIDGET_NEW_FACE,
 	CW_WIDGET_COLOUR_SCHEME,
 	CW_WIDGET_PRESIDENT_NAME,
 	CW_WIDGET_COMPANY_NAME,
-	CW_WIDGET_BUILD_VIEW_HQ,
-	CW_WIDGET_SELECT_RELOCATE,    ///< View/hide the 'Relocate HQ' button.
-	CW_WIDGET_RELOCATE_EMPTY,     ///< Empty widget to hide the relocate HQ button.
-	CW_WIDGET_RELOCATE_HQ,
 	CW_WIDGET_BUY_SHARE,
 	CW_WIDGET_SELL_SHARE,
+
+	CW_WIDGET_SELECT_VIEW_BUILD_HQ,
+	CW_WIDGET_VIEW_HQ,
+	CW_WIDGET_BUILD_HQ,
+
+	CW_WIDGET_SELECT_RELOCATE,    ///< View/hide the 'Relocate HQ' button.
+	CW_WIDGET_RELOCATE_HQ,
+
 	CW_WIDGET_SELECT_MULTIPLAYER, ///< Multiplayer selection panel.
-	CW_WIDGET_MP_EMPTY,
 	CW_WIDGET_COMPANY_PASSWORD,
 	CW_WIDGET_COMPANY_JOIN,
 };
@@ -1443,100 +1458,75 @@ static const NWidgetPart _nested_company_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CW_WIDGET_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CW_WIDGET_FACE),
-		NWidget(NWID_SPACER), SetMinimalSize(360, 4),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetFill(true, false),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_BUILD_VIEW_HQ), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
-										SetDataTip(STR_COMPANY_VIEW_VIEW_HQ_BUTTON, STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_RELOCATE),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(true, false),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_RELOCATE_HQ), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
-											SetDataTip(STR_COMPANY_VIEW_RELOCATE_HQ, STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS),
+	NWidget(WWT_PANEL, COLOUR_GREY, CW_WIDGET_BACKGROUND),
+		NWidget(NWID_HORIZONTAL), SetPIP(4, 6, 4),
+			NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE), SetMinimalSize(91, 120), SetFill(true, false),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE_TITLE), SetFill(true, true), SetMinimalTextLines(2, 0),
 			EndContainer(),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_RELOCATE_EMPTY), SetFill(true, true),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 94),
-		/* Multi player buttons. */
-		NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_MP_EMPTY), SetFill(true, true),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(true, false),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
-										SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_VERTICAL), SetPIP(4, 5, 5),
+						NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_INAUGURATION), SetDataTip(STR_COMPANY_VIEW_INAUGURATED_TITLE, STR_NULL), SetFill(true, false),
+						NWidget(NWID_HORIZONTAL), SetPIP(0, 5, 0),
+							NWidget(WWT_LABEL, COLOUR_GREY, CW_WIDGET_DESC_COLOUR_SCHEME), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE, STR_NULL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE), SetMinimalSize(30, 0), SetFill(false, true),
+							NWidget(NWID_SPACER), SetFill(true, false),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL), SetPIP(0, 4, 0),
+							NWidget(NWID_VERTICAL),
+								NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_VEHICLE), SetDataTip(STR_COMPANY_VIEW_VEHICLES_TITLE, STR_NULL),
+								NWidget(NWID_SPACER), SetFill(false, true),
+							EndContainer(),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_VEHICLE_COUNTS), SetMinimalTextLines(4, 0),
+							NWidget(NWID_SPACER), SetFill(true, false),
+						EndContainer(),
+					EndContainer(),
+					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
+						NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_VIEW_BUILD_HQ),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_VIEW_HQ), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_VIEW_HQ_BUTTON, STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_BUILD_HQ), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_BUILD_HQ_BUTTON, STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_RELOCATE),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_RELOCATE_HQ), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_RELOCATE_HQ, STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS),
+							NWidget(NWID_SPACER), SetMinimalSize(90, 0),
+						EndContainer(),
+						NWidget(NWID_SPACER), SetFill(false, true),
+					EndContainer(),
+				EndContainer(),
+				NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_COMPANY_VALUE), SetDataTip(STR_COMPANY_VIEW_COMPANY_VALUE, STR_NULL), SetFill(true, false),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_VERTICAL), SetPIP(5, 5, 4),
+						NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_OWNERS), SetMinimalTextLines(3, 0),
+						NWidget(NWID_SPACER), SetFill(false, true),
+					EndContainer(),
+					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
+						NWidget(NWID_SPACER), SetMinimalSize(90, 0), SetFill(false, true),
+						/* Multi player buttons. */
+						NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
+							NWidget(NWID_SPACER), SetFill(true, false),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
+						EndContainer(),
+					EndContainer(),
+				EndContainer(),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(true, false),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetMinimalSize(90, 12), SetPadding(0, 4, 0, 0),
-										SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
-			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
 	/* Button bars at the bottom. */
 	NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_BUTTONS),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetMinimalSize(90, 12), SetFill(true, false),
-										SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COLOUR_SCHEME), SetMinimalSize(90, 12), SetFill(true, false),
-										SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON, STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_PRESIDENT_NAME), SetMinimalSize(90, 12), SetFill(true, false),
-										SetDataTip(STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_NAME), SetMinimalSize(90, 12), SetFill(true, false),
-										SetDataTip(STR_COMPANY_VIEW_COMPANY_NAME_BUTTON, STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COLOUR_SCHEME), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON, STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_PRESIDENT_NAME), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_NAME), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_COMPANY_NAME_BUTTON, STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_BUY_SHARE), SetMinimalSize(180, 12), SetFill(true, false),
-										SetDataTip(STR_COMPANY_VIEW_BUY_SHARE_BUTTON, STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_SELL_SHARE), SetMinimalSize(180, 12), SetFill(true, false),
-										SetDataTip(STR_COMPANY_VIEW_SELL_SHARE_BUTTON, STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_BUY_SHARE), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_BUY_SHARE_BUTTON, STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_SELL_SHARE), SetFill(true, false), SetDataTip(STR_COMPANY_VIEW_SELL_SHARE_BUTTON, STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
-
-/**
- * Draws text "Vehicles:" and number of all vehicle types, or "(none)"
- * @param company ID of company to print statistics of
- * @param right the right most location to draw to
- */
-static void DrawCompanyVehiclesAmount(CompanyID company, int right)
-{
-	const int x = 110;
-	int y = 63;
-	uint amounts[] = { 0, 0, 0, 0 };
-
-	DrawString(x, right, y, STR_COMPANY_VIEW_VEHICLES_TITLE);
-
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->owner == company) {
-			if (v->IsPrimaryVehicle()) {
-				assert((size_t)v->type < lengthof(amounts));
-				amounts[v->type]++;
-			}
-		}
-	}
-
-	if (amounts[0] + amounts[1] + amounts[2] + amounts[3] == 0) {
-		DrawString(x + 70, right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
-	} else {
-		static const StringID strings[] = {
-			STR_COMPANY_VIEW_TRAINS, STR_COMPANY_VIEW_ROAD_VEHICLES, STR_COMPANY_VIEW_SHIPS, STR_COMPANY_VIEW_AIRCRAFT
-		};
-		assert_compile(lengthof(amounts) == lengthof(strings));
-
-		for (uint i = 0; i < lengthof(amounts); i++) {
-			if (amounts[i] != 0) {
-				SetDParam(0, amounts[i]);
-				DrawString(x + 70, right, y, strings[i]);
-				y += 10;
-			}
-		}
-	}
-}
 
 int GetAmountOwnedBy(const Company *c, Owner owner)
 {
@@ -1546,26 +1536,10 @@ int GetAmountOwnedBy(const Company *c, Owner owner)
 				 (c->share_owners[3] == owner);
 }
 
-/**
- * Draws list of all companies with shares
- * @param c pointer to the Company structure
- */
-static void DrawCompanyOwnerText(const Company *c)
-{
-	const Company *c2;
-	uint num = 0;
-	const byte height = GetCharacterHeight(FS_NORMAL);
-
-	FOR_ALL_COMPANIES(c2) {
-		uint amt = GetAmountOwnedBy(c, c2->index);
-		if (amt != 0) {
-			SetDParam(0, amt * 25);
-			SetDParam(1, c2->index);
-
-			DrawString(120, 359, (num++) * height + 116, STR_COMPANY_VIEW_SHARES_OWNED_BY);
-		}
-	}
-}
+/** Strings for the company vehicle counts */
+static const StringID _company_view_vehicle_count_strings[] = {
+	STR_COMPANY_VIEW_TRAINS, STR_COMPANY_VIEW_ROAD_VEHICLES, STR_COMPANY_VIEW_SHIPS, STR_COMPANY_VIEW_AIRCRAFT
+};
 
 /**
  * Window with general information about a company
@@ -1580,6 +1554,10 @@ struct CompanyWindow : Window
 		CWP_MP_EMPTY = 0, ///< Do not display any multiplayer button.
 		CWP_MP_C_PWD,     ///< Display the company password button.
 		CWP_MP_C_JOIN,    ///< Display the join company button.
+
+		/* Display planes of the #CW_WIDGET_SELECT_VIEW_BUILD_HQ selection widget. */
+		CWP_VB_VIEW = 0,  ///< Display the view button
+		CWP_VB_BUILD,     ///< Display the build button
 
 		/* Display planes of the #CW_WIDGET_SELECT_RELOCATE selection widget. */
 		CWP_RELOCATE_SHOW = 0, ///< Show the relocate HQ button.
@@ -1604,7 +1582,6 @@ struct CompanyWindow : Window
 		/* Button bar selection. */
 		int plane = local ? CWP_BUTTONS_LOCAL : CWP_BUTTONS_OTHER;
 		NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
-		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
 		if (plane != wi->shown_plane) {
 			wi->SetDisplayedPlane(plane);
 			this->SetDirty();
@@ -1612,10 +1589,15 @@ struct CompanyWindow : Window
 		}
 
 		/* Build HQ button handling. */
-		NWidgetCore *wi_core = this->GetWidget<NWidgetCore>(CW_WIDGET_BUILD_VIEW_HQ);
-		wi_core->widget_data = (local && c->location_of_HQ == INVALID_TILE) ? STR_COMPANY_VIEW_BUILD_HQ_BUTTON : STR_COMPANY_VIEW_VIEW_HQ_BUTTON;
-		if (local && c->location_of_HQ != INVALID_TILE) wi_core->type = WWT_PUSHTXTBTN; // HQ is already built.
-		wi_core->SetDisabled(!local && c->location_of_HQ == INVALID_TILE);
+		plane = (local && c->location_of_HQ == INVALID_TILE) ? CWP_VB_BUILD : CWP_VB_VIEW;
+		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_VIEW_BUILD_HQ);
+		if (plane != wi->shown_plane) {
+			wi->SetDisplayedPlane(plane);
+			this->SetDirty();
+			return;
+		}
+
+		this->SetWidgetDisabledState(CW_WIDGET_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
 
 		/* Enable/disable 'Relocate HQ' button. */
 		plane = (!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW;
@@ -1656,46 +1638,123 @@ struct CompanyWindow : Window
 		}
 
 		this->DrawWidgets();
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case CW_WIDGET_DESC_COMPANY_VALUE:
+				SetDParam(0, INT64_MAX); // Arguably the maximum company value
+				size->width = GetStringBoundingBox(STR_COMPANY_VIEW_COMPANY_VALUE).width;
+				break;
+
+			case CW_WIDGET_DESC_VEHICLE_COUNTS:
+				SetDParam(0, 5000); // Maximum number of vehicles
+				for (uint i = 0; i < lengthof(_company_view_vehicle_count_strings); i++) {
+					size->width = max(size->width, GetStringBoundingBox(_company_view_vehicle_count_strings[i]).width);
+				}
+				break;
+
+			case CW_WIDGET_DESC_OWNERS: {
+				const Company *c2;
+
+				FOR_ALL_COMPANIES(c2) {
+					SetDParam(0, 25);
+					SetDParam(1, c2->index);
+
+					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_SHARES_OWNED_BY).width);
+				}
+			} break;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+		switch (widget) {
+			case CW_WIDGET_FACE:
+				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
+				break;
+
+			case CW_WIDGET_FACE_TITLE:
+				SetDParam(0, c->index);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_CENTER);
+				break;
+
+			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE:
+				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), (r.left + r.right) / 2, r.top + FONT_HEIGHT_NORMAL / 10);
+				break;
+
+			case CW_WIDGET_DESC_VEHICLE_COUNTS: {
+				uint amounts[] = { 0, 0, 0, 0 };
+				int y = r.top;
+
+				const Vehicle *v;
+				FOR_ALL_VEHICLES(v) {
+					if (v->owner == c->index) {
+						if (v->IsPrimaryVehicle()) {
+							assert((size_t)v->type < lengthof(amounts));
+							amounts[v->type]++;
+						}
+					}
+				}
+
+				if (amounts[0] + amounts[1] + amounts[2] + amounts[3] == 0) {
+					DrawString(r.left, r.right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
+				} else {
+					assert_compile(lengthof(amounts) == lengthof(_company_view_vehicle_count_strings));
+
+					for (uint i = 0; i < lengthof(amounts); i++) {
+						if (amounts[i] != 0) {
+							SetDParam(0, amounts[i]);
+							DrawString(r.left, r.right, y, _company_view_vehicle_count_strings[i]);
+							y += FONT_HEIGHT_NORMAL;
+						}
+					}
+				}
+			} break;
+
+			case CW_WIDGET_DESC_OWNERS: {
+				const Company *c2;
+				uint y = r.top;
+
+				FOR_ALL_COMPANIES(c2) {
+					uint amt = GetAmountOwnedBy(c, c2->index);
+					if (amt != 0) {
+						SetDParam(0, amt * 25);
+						SetDParam(1, c2->index);
+
+						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_SHARES_OWNED_BY);
+						y += FONT_HEIGHT_NORMAL;
+					}
+				}
+			} break;
 
 #ifdef ENABLE_NETWORK
-		if (_networking && NetworkCompanyIsPassworded(c->index)) {
-			const NWidgetBase *wi = this->GetWidget<NWidgetBase>(CW_WIDGET_COMPANY_JOIN);
-			DrawSprite(SPR_LOCK, PAL_NONE, wi->pos_x - 10, wi->pos_y + 2);
-		}
+			case CW_WIDGET_COMPANY_PASSWORD:
+				if (_networking && NetworkCompanyIsPassworded(c->index)) {
+					DrawSprite(SPR_LOCK, PAL_NONE, _dynlang.text_dir == TD_RTL ? r.right + 10 : r.left  - 10, r.top + 2);
+				}
+				break;
 #endif /* ENABLE_NETWORK */
-
-		/* Company manager's face */
-		DrawCompanyManagerFace(c->face, c->colour, 2, 16);
-
-		/* "xxx (Manager)" */
-		SetDParam(0, c->index);
-		DrawStringMultiLine(48 - MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 48 + MAX_LENGTH_PRESIDENT_NAME_PIXELS / 2, 135, 157, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_CENTER);
-
-		/* "Inaugurated:" */
-		SetDParam(0, c->inaugurated_year);
-		DrawString(110, this->width, 23, STR_COMPANY_VIEW_INAUGURATED_TITLE);
-
-		/* "Colour scheme:" */
-		DrawString(110, this->width, 43, STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE);
-		/* Draw company-colour bus */
-		DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), 215, 44);
-
-		/* "Vehicles:" */
-		DrawCompanyVehiclesAmount((CompanyID)this->window_number, this->width);
-
-		/* "Company value:" */
-		SetDParam(0, CalculateCompanyValue(c));
-		DrawString(110, this->width, 106, STR_COMPANY_VIEW_COMPANY_VALUE);
-
-		/* Shares list */
-		DrawCompanyOwnerText(c);
+		}
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == CW_WIDGET_CAPTION) {
-			SetDParam(0, (CompanyID)this->window_number);
-			SetDParam(1, (CompanyID)this->window_number);
+		switch (widget) {
+			case CW_WIDGET_CAPTION:
+				SetDParam(0, (CompanyID)this->window_number);
+				SetDParam(1, (CompanyID)this->window_number);
+				break;
+
+			case CW_WIDGET_DESC_INAUGURATION:
+				SetDParam(0, Company::Get((CompanyID)this->window_number)->inaugurated_year);
+				break;
+
+			case CW_WIDGET_DESC_COMPANY_VALUE:
+				SetDParam(0, CalculateCompanyValue(Company::Get((CompanyID)this->window_number)));
+				break;
 		}
 	}
 
@@ -1721,23 +1780,23 @@ struct CompanyWindow : Window
 				ShowQueryString(STR_COMPANY_NAME, STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case CW_WIDGET_BUILD_VIEW_HQ: {
+			case CW_WIDGET_VIEW_HQ: {
 				TileIndex tile = Company::Get((CompanyID)this->window_number)->location_of_HQ;
-				if (tile == INVALID_TILE) {
-					if ((byte)this->window_number != _local_company) return;
-					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
-					SetTileSelectSize(2, 2);
-					this->LowerWidget(CW_WIDGET_BUILD_VIEW_HQ);
-					this->SetWidgetDirty(CW_WIDGET_BUILD_VIEW_HQ);
+				if (_ctrl_pressed) {
+					ShowExtraViewPortWindow(tile);
 				} else {
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(tile);
-					} else {
-						ScrollMainWindowToTile(tile);
-					}
+					ScrollMainWindowToTile(tile);
 				}
 				break;
 			}
+
+			case CW_WIDGET_BUILD_HQ:
+				if ((byte)this->window_number != _local_company) return;
+				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
+				SetTileSelectSize(2, 2);
+				this->LowerWidget(CW_WIDGET_BUILD_HQ);
+				this->SetWidgetDirty(CW_WIDGET_BUILD_HQ);
+				break;
 
 			case CW_WIDGET_RELOCATE_HQ:
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);

@@ -2531,7 +2531,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bouw bedrijfshoofdkwartier
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Bekijk bedrijfshoofdkwartier
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bouw bedrijfshoofdkwartier / bekijk bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verplaats bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde
 

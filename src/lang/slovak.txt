@@ -2587,7 +2587,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Postavit sidlo
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pozriet sidlo
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postavit sidlo spolocnosti / pozriet sidlo spolocnosti
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiestnit sidlo
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sidlo spolocnosti je mozne premiestnit za 1% hodnoty spolocnosti
 

@@ -2495,7 +2495,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byggja HS
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Skoða HS
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byggja höfuðstöðvar fyrirtækisins / skoða höfuðstöðvar fyrirtækisins
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytja HS
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% af verðmæti fyrirtækis
 

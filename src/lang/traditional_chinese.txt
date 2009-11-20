@@ -2530,7 +2530,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}建造總部
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}檢視總部
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}建造／檢視公司總部
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}搬移總部
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}以公司總值的 1% 在其它地方建造新公司總部
 

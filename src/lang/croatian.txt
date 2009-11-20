@@ -2562,7 +2562,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradi sjedište tvrtke
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pogledaj sjedište tvrtke
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Izgradi središte tvrtke / pogledaj sjedište tvrtke
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premjesti sjedište kompanije
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Izgradi sjedište tvrtke negdje drugdje za 1% troška od cjelokupne vrijednosti tvrtke
 

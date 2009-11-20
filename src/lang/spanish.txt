@@ -2532,7 +2532,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir Sede
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver Sede
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir sede de la empresa / ver sede de la empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reubicar Sede
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reubica la sede de la empresa a cualquier otro lugar, con el coste del 1% del valor total de la empresa
 

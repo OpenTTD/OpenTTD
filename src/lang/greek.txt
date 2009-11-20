@@ -2595,7 +2595,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Αρχηγείου
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίστιμο αρχηγείου εταιρίας / προβολή αρχηγείου
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ανοικοδόμηση του αρχηγείου της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας
 

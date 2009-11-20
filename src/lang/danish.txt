@@ -2519,7 +2519,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byg HK
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vis HK
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byg selskabets hovedkvarter / centrer over hovedkvarteret
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flyt hovedkvarter
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flyt selskabets hovedkvarter for 1% af selskabsværdien
 

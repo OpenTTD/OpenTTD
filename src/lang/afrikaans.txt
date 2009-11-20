@@ -2437,7 +2437,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bou HK
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Wys HK
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bou maatskappy hoofkwartiers / wys maatskappy hoofkwartiers
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Beweeg HQ
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbou maatskappy hoofkwartiers elders vir 1% koste van maatskappy waarde
 

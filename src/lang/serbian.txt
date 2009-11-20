@@ -2716,7 +2716,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradnja centrale preduzeća
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Prikaži centralu preduzeća
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Izgradnja i prikaz centrale preduzeća
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli Sedište
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Premesti sedište preduzeća drugde za cenu od 1% vrednosti preduzeća
 

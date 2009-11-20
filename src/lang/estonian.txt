@@ -2577,7 +2577,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Ehita peakorter
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vaata peakorterit
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Ehita ettevõtte peakorter või vii vaade peakorterile
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Liiguta peakorterit
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ehita ettevõtte peakorter mujale 1% firmaväärtuse tasu eest
 

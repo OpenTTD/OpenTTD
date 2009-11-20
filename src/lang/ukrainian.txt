@@ -2655,7 +2655,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Будувати Офіс
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Показати Офіс
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Будувати Офіс/Показати Офіс
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перенести Офіс
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перенесення Офісу в інше місце. Коштує 1% від вартості компанії
 

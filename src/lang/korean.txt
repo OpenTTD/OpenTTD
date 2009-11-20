@@ -2519,7 +2519,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}본사를 건설합니다 / 본사를 봅니다
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 재위치
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격으로 본사를 다른 위치에 재건축합니다.
 

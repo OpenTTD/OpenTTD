@@ -2488,7 +2488,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Построй Централен Офис
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Покажи Централния Офис
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Построй централен офис на компанията / покажи централния офис на компанията
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Преместване ЦК
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Преместване централата на компанията другаде за 1% от стойноста на компанията
 

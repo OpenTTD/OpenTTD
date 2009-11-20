@@ -2518,7 +2518,6 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Build HQ
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}View HQ
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Build company headquarters / view company headquarters
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Relocate HQ
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rebuild company headquarters elsewhere for 1% cost of company value
 
