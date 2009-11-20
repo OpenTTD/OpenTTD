@@ -1100,6 +1100,57 @@ struct PerformanceRatingDetailWindow : Window {
 		this->timeout = DAY_TICKS * 5;
 	}
 
+	uint score_info_left;
+	uint score_info_right;
+	uint bar_left;
+	uint bar_right;
+	uint bar_width;
+	uint bar_height;
+	uint score_detail_left;
+	uint score_detail_right;
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		switch (widget) {
+			case PRW_SCORE_FIRST:
+				this->bar_height = FONT_HEIGHT_NORMAL + 4;
+				size->height = this->bar_height + 2 * WD_MATRIX_TOP;
+
+				uint score_info_width = 0;
+				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
+					score_info_width = max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
+				}
+				SetDParam(0, 1000);
+				score_info_width += GetStringBoundingBox(STR_BLACK_COMMA).width + WD_FRAMERECT_LEFT;
+
+				SetDParam(0, 100);
+				this->bar_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_PERCENT).width + 20; // Wide bars!
+
+				/* At this number we are roughly at the max; it can become wider,
+				 * but then you need at 1000 times more money. At that time you're
+				 * not that interested anymore in the last few digits anyway. */
+				uint max = 999999999; // nine 9s
+				SetDParam(0, max);
+				SetDParam(1, max);
+				uint score_detail_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY).width;
+
+				size->width = 7 + score_info_width + 5 + this->bar_width + 5 + score_detail_width + 7;
+				uint left  = 7;
+				uint right = size->width - 7;
+
+				bool rtl = _dynlang.text_dir == TD_RTL;
+				this->score_info_left  = rtl ? right - score_info_width : left;
+				this->score_info_right = rtl ? right : left + score_info_width;
+
+				this->score_detail_left  = rtl ? left : right - score_detail_width;
+				this->score_detail_right = rtl ? left + score_detail_width : right;
+
+				this->bar_left  = left + (rtl ? score_detail_width : score_info_width) + 5;
+				this->bar_right = this->bar_left + this->bar_width;
+				break;
+		}
+	}
+
 	virtual void OnPaint()
 	{
 		/* Draw standard stuff */
@@ -1139,22 +1190,31 @@ struct PerformanceRatingDetailWindow : Window {
 			needed = SCORE_MAX;
 		}
 
-		DrawString(7, 107, r.top + 6, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
+		uint bar_top  = r.top + WD_MATRIX_TOP;
+		uint text_top = bar_top + 2;
+
+		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
 
 		/* Draw the score */
 		SetDParam(0, score);
-		DrawString(7, 107, r.top + 6, STR_BLACK_INT, TC_FROMSTRING, SA_RIGHT);
+		DrawString(this->score_info_left, this->score_info_right, text_top, STR_BLACK_COMMA, TC_FROMSTRING, SA_RIGHT);
 
 		/* Calculate the %-bar */
-		byte x = Clamp(val, 0, needed) * 50 / needed;
+		uint x = Clamp(val, 0, needed) * this->bar_width / needed;
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		if (rtl) {
+			x = this->bar_right - x;
+		} else {
+			x = this->bar_left + x;
+		}
 
 		/* Draw the bar */
-		if (x !=  0) GfxFillRect(112,     r.top + 4, 112 + x,  r.top + 16, colour_done);
-		if (x != 50) GfxFillRect(112 + x, r.top + 4, 112 + 50, r.top + 16, colour_notdone);
+		if (x != this->bar_left)  GfxFillRect(this->bar_left, bar_top, x, bar_top + this->bar_height, rtl ? colour_notdone : colour_done);
+		if (x != this->bar_right) GfxFillRect(x, bar_top, this->bar_right, bar_top + this->bar_height, rtl ? colour_done : colour_notdone);
 
 		/* Draw it */
 		SetDParam(0, Clamp(val, 0, needed) * 100 / needed);
-		DrawString(112, 162, r.top + 6, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->bar_left, this->bar_right, text_top, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_CENTER);
 
 		/* SCORE_LOAN is inversed */
 		if (score_type == SCORE_LOAN) val = needed - val;
@@ -1169,10 +1229,10 @@ struct PerformanceRatingDetailWindow : Window {
 			case SCORE_MAX_INCOME:
 			case SCORE_MONEY:
 			case SCORE_LOAN:
-				DrawString(167, this->width, r.top + 6, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY);
+				DrawString(this->score_detail_left, this->score_detail_right, text_top, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY);
 				break;
 			default:
-				DrawString(167, this->width, r.top + 6, STR_PERFORMANCE_DETAIL_AMOUNT_INT);
+				DrawString(this->score_detail_left, this->score_detail_right, text_top, STR_PERFORMANCE_DETAIL_AMOUNT_INT);
 		}
 	}
 
@@ -1256,11 +1316,10 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 
 	assert_compile(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
 
-	NWidgetVertical *vert = new NWidgetVertical();
+	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
 	for (int widnum = PRW_SCORE_FIRST; widnum <= PRW_SCORE_LAST; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
-		panel->SetMinimalSize(299, 20);
-		panel->SetFill(false, false);
+		panel->SetFill(true, true);
 		panel->SetDataTip(0x0, performance_tips[widnum - PRW_SCORE_FIRST]);
 		vert->Add(panel);
 	}
