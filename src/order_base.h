@@ -402,11 +402,6 @@ public:
 	void UpdateOrderTimetable(int delta) { this->timetable_duration += delta; }
 
 	/**
-	 * Must be called if the whole timetable is cleared to update internal book keeping.
-	 */
-	void ResetOrderTimetable() { this->timetable_duration = 0; }
-
-	/**
 	 * Free a complete order chain.
 	 * @param keep_orderlist If this is true only delete the orders, otherwise also delete the OrderList.
 	 * @note do not use on "current_order" vehicle orders!
