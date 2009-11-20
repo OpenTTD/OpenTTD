@@ -620,10 +620,9 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
  * <ol>
  * <li> A bottom-up sweep by recursively calling NWidgetBase::SetupSmallestSize() to initialize the smallest size (\e smallest_x, \e smallest_y) and
  *      to propagate filling and resize steps upwards to the root of the tree.
- * <li> A top-down sweep by recursively calling NWidgetBase::AssignSizePosition() with #ST_ARRAY or #ST_SMALLEST to make the smallest sizes consistent over
+ * <li> A top-down sweep by recursively calling NWidgetBase::AssignSizePosition() with #ST_SMALLEST to make the smallest sizes consistent over
  *      the entire tree, and to assign the top-left (\e pos_x, \e pos_y) position of each widget in the tree. This step uses \e fill_x and \e fill_y at each
  *      node in the tree to decide how to fill each widget towards consistent sizes. Also the current size (\e current_x and \e current_y) is set.
- *      For generating a widget array (#ST_ARRAY), resize step sizes are made consistent.
  * <li> After initializing the smallest size in the widget tree with #ST_SMALLEST, the tree can be resized (the current size modified) by calling
  *      NWidgetBase::AssignSizePosition() at the root with #ST_RESIZE and the new size of the window. For proper functioning, the new size should be the smallest
  *      size + a whole number of resize steps in both directions (ie you can only resize in steps of length resize_{x,y} from smallest_{x,y}).
@@ -663,16 +662,14 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
- * @fn void NWidgetBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+ * @fn void NWidgetBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
  * Assign size and position to the widget.
- * @param sizing         Type of resizing to perform.
- * @param x              Horizontal offset of the widget relative to the left edge of the window.
- * @param y              Vertical offset of the widget relative to the top edge of the window.
- * @param given_width    Width allocated to the widget.
- * @param given_height   Height allocated to the widget.
- * @param allow_resize_x Horizontal resizing is allowed (only used when \a sizing is #ST_ARRAY).
- * @param allow_resize_y Vertical resizing is allowed (only used when \a sizing in #ST_ARRAY).
- * @param rtl            Adapt for right-to-left languages (position contents of horizontal containers backwards).
+ * @param sizing       Type of resizing to perform.
+ * @param x            Horizontal offset of the widget relative to the left edge of the window.
+ * @param y            Vertical offset of the widget relative to the top edge of the window.
+ * @param given_width  Width allocated to the widget.
+ * @param given_height Height allocated to the widget.
+ * @param rtl          Adapt for right-to-left languages (position contents of horizontal containers backwards).
  *
  * Afterwards, \e pos_x and \e pos_y contain the top-left position of the widget, \e smallest_x and \e smallest_y contain
  * the smallest size such that all widgets of the window are consistent, and \e current_x and \e current_y contain the current size.
@@ -687,26 +684,22 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
 
 /**
  * Store size and position.
- * @param sizing         Type of resizing to perform.
- * @param x              Horizontal offset of the widget relative to the left edge of the window.
- * @param y              Vertical offset of the widget relative to the top edge of the window.
- * @param given_width    Width allocated to the widget.
- * @param given_height   Height allocated to the widget.
- * @param allow_resize_x Horizontal resizing is allowed (only used when \a sizing is #ST_ARRAY).
- * @param allow_resize_y Vertical resizing is allowed (only used when \a sizing in #ST_ARRAY).
+ * @param sizing       Type of resizing to perform.
+ * @param x            Horizontal offset of the widget relative to the left edge of the window.
+ * @param y            Vertical offset of the widget relative to the top edge of the window.
+ * @param given_width  Width allocated to the widget.
+ * @param given_height Height allocated to the widget.
  */
-inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y)
+inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height)
 {
 	this->pos_x = x;
 	this->pos_y = y;
-	if (sizing == ST_ARRAY || sizing == ST_SMALLEST) {
+	if (sizing == ST_SMALLEST) {
 		this->smallest_x = given_width;
 		this->smallest_y = given_height;
 	}
 	this->current_x = given_width;
 	this->current_y = given_height;
-	if (sizing == ST_ARRAY && !allow_resize_x) this->resize_x = 0;
-	if (sizing == ST_ARRAY && !allow_resize_y) this->resize_y = 0;
 }
 
 /**
@@ -801,9 +794,9 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 	this->resize_y = resize_y;
 }
 
-void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
-	StoreSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y);
+	StoreSizePosition(sizing, x, y, given_width, given_height);
 }
 
 /**
@@ -1009,10 +1002,10 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 	}
 }
 
-void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
-	StoreSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y);
+	StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
 
@@ -1025,7 +1018,7 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
 		uint child_pos_y = child_wid->padding_top + ComputeOffset(child_height,  given_height - child_wid->padding_top - child_wid->padding_bottom);
 
-		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, (this->resize_x > 0), (this->resize_y > 0), rtl);
+		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, rtl);
 	}
 }
 
@@ -1160,12 +1153,12 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	this->pip_pre = this->pip_inter = this->pip_post = 0;
 }
 
-void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
 	uint additional_length = given_width - this->smallest_x; // Additional width given to us.
-	StoreSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y);
+	StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	/* In principle, the additional horizontal space is distributed evenly over the available resizable childs. Due to step sizes, this may not always be feasible.
 	 * To make resizing work as good as possible, first childs with biggest step sizes are done. These may get less due to rounding down.
@@ -1216,16 +1209,14 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 
 	/* Third loop: Compute position and call the child. */
 	uint position = 0; // Place to put next child relative to origin of the container.
-	allow_resize_x = (this->resize_x > 0);
 	NWidgetBase *child_wid = rtl ? this->tail : this->head;
 	while (child_wid != NULL) {
 		uint child_width = child_wid->current_x;
 		uint child_x = x + position + (rtl ? child_wid->padding_right : child_wid->padding_left);
 		uint child_y = y + child_wid->padding_top + ComputeOffset(child_wid->current_y,  given_height - child_wid->padding_top - child_wid->padding_bottom);
 
-		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, allow_resize_x, (this->resize_y > 0), rtl);
+		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
 		position += child_width + child_wid->padding_right + child_wid->padding_left;
-		if (child_wid->resize_x > 0) allow_resize_x = false; // Widget array allows only one child resizing
 
 		child_wid = rtl ? child_wid->prev : child_wid->next;
 	}
@@ -1237,9 +1228,9 @@ NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHo
 	this->type = NWID_HORIZONTAL_LTR;
 }
 
-void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
-	NWidgetHorizontal::AssignSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y, false);
+	NWidgetHorizontal::AssignSizePosition(sizing, x, y, given_width, given_height, false);
 }
 
 /** Vertical container widget. */
@@ -1291,12 +1282,12 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	this->pip_pre = this->pip_inter = this->pip_post = 0;
 }
 
-void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
 	int additional_length = given_height - this->smallest_y; // Additional height given to us.
-	StoreSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y);
+	StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	/* Like the horizontal container, the vertical container also distributes additional height evenly, starting with the childs with the biggest resize steps.
 	 * It also stores computed widths and heights into current_x and current_y values of the child.
@@ -1340,15 +1331,13 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 
 	/* Third loop: Compute position and call the child. */
 	uint position = 0; // Place to put next child relative to origin of the container.
-	allow_resize_y = (this->resize_y > 0);
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		uint child_x = x + (rtl ? child_wid->padding_right : child_wid->padding_left) +
 									ComputeOffset(child_wid->current_x, given_width - child_wid->padding_left - child_wid->padding_right);
 		uint child_height = child_wid->current_y;
 
-		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding_top, child_wid->current_x, child_height, (this->resize_x > 0), allow_resize_y, rtl);
+		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding_top, child_wid->current_x, child_height, rtl);
 		position += child_height + child_wid->padding_top + child_wid->padding_bottom;
-		if (child_wid->resize_y > 0) allow_resize_y = false; // Widget array allows only one child resizing
 	}
 }
 
@@ -1494,15 +1483,15 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 	}
 }
 
-void NWidgetBackground::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+void NWidgetBackground::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
-	StoreSizePosition(sizing, x, y, given_width, given_height, allow_resize_x, allow_resize_y);
+	StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	if (this->child != NULL) {
 		uint x_offset = (rtl ? this->child->padding_right : this->child->padding_left);
 		uint width = given_width - this->child->padding_right - this->child->padding_left;
 		uint height = given_height - this->child->padding_top - this->child->padding_bottom;
-		this->child->AssignSizePosition(sizing, x + x_offset, y + this->child->padding_top, width, height, (this->resize_x > 0), (this->resize_y > 0), rtl);
+		this->child->AssignSizePosition(sizing, x + x_offset, y + this->child->padding_top, width, height, rtl);
 	}
 }
 

@@ -154,7 +154,6 @@ enum WidgetType {
 
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
 enum SizingType {
-	ST_ARRAY,    ///< Initialize nested widget tree to generate a #Widget * array.
 	ST_SMALLEST, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
 	ST_RESIZE,   ///< Resize the nested widget tree.
 };
@@ -174,7 +173,7 @@ public:
 	NWidgetBase(WidgetType tp);
 
 	virtual void SetupSmallestSize(Window *w, bool init_array) = 0;
-	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
+	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) = 0;
 
 	virtual void FillNestedArray(NWidgetBase **array, uint length) = 0;
 
@@ -228,7 +227,7 @@ public:
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget.
 
 protected:
-	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y);
+	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);
 };
 
 /**
@@ -262,7 +261,7 @@ public:
 	void SetFill(bool fill_x, bool fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 
 	uint min_x; ///< Minimal horizontal size of only this widget.
 	uint min_y; ///< Minimal vertical size of only this widget.
@@ -383,7 +382,7 @@ public:
 	void SetIndex(int index);
 
 	void SetupSmallestSize(Window *w, bool init_array);
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
@@ -428,7 +427,7 @@ public:
 	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
 
 	void SetupSmallestSize(Window *w, bool init_array);
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 };
 
 /** Horizontal container that doesn't change the direction of the widgets for RTL languages.
@@ -437,7 +436,7 @@ class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 };
 
 /** Vertical container.
@@ -447,7 +446,7 @@ public:
 	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
 
 	void SetupSmallestSize(Window *w, bool init_array);
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 };
 
 
@@ -476,7 +475,7 @@ public:
 	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
 	void SetupSmallestSize(Window *w, bool init_array);
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 

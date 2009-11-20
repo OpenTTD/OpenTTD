@@ -167,7 +167,7 @@ public:
 		}
 	}
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl)
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 	{
 		assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -198,7 +198,7 @@ public:
 		child_wid = rtl ? this->tail : this->head;
 		while (child_wid != NULL) {
 			if (this->visible[i]) {
-				child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, allow_resize_x, (this->resize_y > 0), rtl);
+				child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, rtl);
 				position += child_wid->current_x;
 			}
 
