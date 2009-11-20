@@ -1646,6 +1646,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}חברה
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :בעט
+STR_NETWORK_CLIENTLIST_BAN                                      :חסימה
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :נתן כסף
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :דבר לכולם
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :דבר לחברה
@@ -1674,6 +1675,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}קבע �
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}שלח
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[קבוצה] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[פרטי] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[לכולם] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[קבוצה] {STRING}: {WHITE}{STRING}
@@ -1721,7 +1723,16 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :השרת מלא
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :המשחק הופסק ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :המשחק עדיין מופסק ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :המשחק עדיין מופסק ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :המשחק עדיין מופסק ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :המשחק הומשך ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :אין מספיק שחקנים
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :מתחבר ללקוחות
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ידני
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :עוזב
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :הצטרף למשחק {STRING} ***
@@ -2223,6 +2234,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}ידני
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK} :סיבוב מפת הגבהים
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK} :שם מפת הגבהים
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}גודל:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}מספר אקראי
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}שנה את גובה קו השלג
@@ -2464,6 +2477,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}הצג �
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :שנה שם של תחנה/אזור טעינה
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}מרכז תצוגה ראשית על מיקום ציון הדרך. Ctrl+לחיצה פותח תצוגה חדשה על מיקום ציון הדרך
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}שנה שם נקודת ציון
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}מרכז תצוגה ראשית על מיקום מצוף. Ctrl+לחיצה פותח חלון תצוגה חדש על מיקום מצוף
@@ -2769,6 +2783,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פ�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_S} :משקל  {NBSP}{0:CURRENCY}  :מחיר {}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY} :עלות תפעולית
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}עלות: {CURRENCY} משקל: {WEIGHT_S}{}מהירות: {VELOCITY}  הספק: {POWER}  מקסימלי T.E.: {7:FORCE}{}עלות תפעולית: {4:CURRENCY}/לשנה{}קיבולת: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}עלות: {CURRENCY} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO}, {CARGO}{}עלות שוטפת: {CURRENCY}/לשנה
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}עלות: {CURRENCY} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO}{}הוצאה שוטפת: {CURRENCY}/לשנה
 
@@ -3965,6 +3980,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3982,6 +3998,7 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
@@ -3989,7 +4006,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -4005,4 +4021,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

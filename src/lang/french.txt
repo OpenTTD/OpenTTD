@@ -2531,7 +2531,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valeur de
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% détenus par {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Const. siège
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construire le siège social
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Voir le siège
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Voir le siège social
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Déménager le QG
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruit le quartier général de la compagnie ailleurs pour le prix de 1% de la valeur de la compagnie
 
