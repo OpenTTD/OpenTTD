@@ -992,20 +992,24 @@ SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
  * appropiate bit in the \a parent_last parameter.
  *
  * @param settings_ptr Pointer to current values of all settings
- * @param base_x       Left-most position in window/panel to start drawing \a first_row
+ * @param left         Left-most position in window/panel to start drawing \a first_row
+ * @param right        Right-most x position to draw strings at.
  * @param base_y       Upper-most position in window/panel to start drawing \a first_row
- * @param max_x        The maximum x position to draw strings add.
  * @param first_row    First row number to draw
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
  * @return Row number of the next row to draw
  */
-uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last)
+uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last)
 {
 	if (cur_row >= max_row) return cur_row;
 
-	int x = base_x;
+	bool rtl = _dynlang.text_dir == TD_RTL;
+	int offset = rtl ? -4 : 4;
+	int level_width = rtl ? -LEVEL_WIDTH : LEVEL_WIDTH;
+
+	int x = rtl ? right : left;
 	int y = base_y;
 	if (cur_row >= first_row) {
 		int colour = _colour_gradient[COLOUR_ORANGE][4];
@@ -1013,29 +1017,29 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int 
 
 		/* Draw vertical for parent nesting levels */
 		for (uint lvl = 0; lvl < this->level; lvl++) {
-			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + 4, y, x + 4, y + SETTING_HEIGHT - 1, colour);
-			x += LEVEL_WIDTH;
+			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + offset, y, x + offset, y + SETTING_HEIGHT - 1, colour);
+			x += level_width;
 		}
 		/* draw own |- prefix */
 		int halfway_y = y + SETTING_HEIGHT / 2;
 		int bottom_y = (flags & SEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
-		GfxDrawLine(x + 4, y, x + 4, bottom_y, colour);
+		GfxDrawLine(x + offset, y, x + offset, bottom_y, colour);
 		/* Small horizontal line from the last vertical line */
-		GfxDrawLine(x + 4, halfway_y, x + LEVEL_WIDTH - 4, halfway_y, colour);
-		x += LEVEL_WIDTH;
+		GfxDrawLine(x + offset, halfway_y, x + level_width - offset, halfway_y, colour);
+		x += level_width;
 	}
 
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			if (cur_row >= first_row) {
-				DrawSetting(settings_ptr, this->d.entry.setting, x, y, max_x, this->flags & SEF_BUTTONS_MASK);
+				DrawSetting(settings_ptr, this->d.entry.setting, rtl ? left : x, rtl ? x : right, y, this->flags & SEF_BUTTONS_MASK);
 			}
 			cur_row++;
 			break;
 		case SEF_SUBTREE_KIND:
 			if (cur_row >= first_row) {
-				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, x, y);
-				DrawString(x + 12, max_x, y, this->d.sub.title);
+				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? x - 8 : x, y + (SETTING_HEIGHT - 11) / 2);
+				DrawString(rtl ? left : x + 12, rtl ? x - 12 : right, y, this->d.sub.title);
 			}
 			cur_row++;
 			if (!this->d.sub.folded) {
@@ -1044,7 +1048,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int base_x, int base_y, int 
 					SetBit(parent_last, this->level); // Add own last-field state
 				}
 
-				cur_row = this->d.sub.page->Draw(settings_ptr, base_x, base_y, max_x, first_row, max_row, cur_row, parent_last);
+				cur_row = this->d.sub.page->Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last);
 			}
 			break;
 		default: NOT_REACHED();
@@ -1069,17 +1073,23 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
  * Private function to draw setting value (button + text + current value)
  * @param settings_ptr Pointer to current values of all settings
  * @param sd           Pointer to value description of setting to draw
- * @param x            Left-most position in window/panel to start drawing
+ * @param left         Left-most position in window/panel to start drawing
+ * @param right        Right-most position in window/panel to draw
  * @param y            Upper-most position in window/panel to start drawing
- * @param max_x        The maximum x position to draw strings add.
  * @param state        State of the left + right arrow buttons to draw for the setting
  */
-void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state)
+void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int left, int right, int y, int state)
 {
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
 	bool editable = true;
 	bool disabled = false;
+
+	bool rtl = _dynlang.text_dir == TD_RTL;
+	uint buttons_left = rtl ? right - 19 : left;
+	uint text_left  = left + (rtl ? 0 : 25);
+	uint text_right = right - (rtl ? 25 : 0);
+	uint button_y = y + (SETTING_HEIGHT - 11) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
 	if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server && !(sdb->flags & SGF_PER_COMPANY)) editable = false;
@@ -1091,7 +1101,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 		/* Draw checkbox for boolean-value either on/off */
 		bool on = (*(bool*)var);
 
-		DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(buttons_left, button_y, buttons_left + 19, button_y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
 		SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
 		int32 value;
@@ -1099,7 +1109,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 		value = (int32)ReadValue(var, sd->save.conv);
 
 		/* Draw [<][>] boxes for settings of an integer-type */
-		DrawArrowButtons(x, y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
+		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
 
 		disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 		if (disabled) {
@@ -1115,7 +1125,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 			SetDParam(1, value);
 		}
 	}
-	DrawString(x + 25, max_x, y, (sdb->str) + disabled);
+	DrawString(text_left, text_right, y, (sdb->str) + disabled);
 }
 
 
@@ -1177,21 +1187,21 @@ SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
  * Then it enables drawing rows while traversing until \a max_row is reached, at which point drawing is terminated.
  *
  * @param settings_ptr Pointer to current values of all settings
- * @param base_x       Left-most position in window/panel to start drawing of each setting row
+ * @param left         Left-most position in window/panel to start drawing of each setting row
+ * @param right        Right-most position in window/panel to draw at
  * @param base_y       Upper-most position in window/panel to start drawing of row number \a first_row
- * @param max_x        The maximum x position to draw strings add.
  * @param first_row    Number of first row to draw
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
  * @return Row number of the next row to draw
  */
-uint SettingsPage::Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last) const
+uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last) const
 {
 	if (cur_row >= max_row) return cur_row;
 
 	for (uint i = 0; i < this->num; i++) {
-		cur_row = this->entries[i].Draw(settings_ptr, base_x, base_y, max_x, first_row, max_row, cur_row, parent_last);
+		cur_row = this->entries[i].Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last);
 		if (cur_row >= max_row) {
 			break;
 		}
@@ -1481,8 +1491,8 @@ struct GameSettingsWindow : Window {
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
-		_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
-				r.right - SETTINGTREE_RIGHT_OFFSET, this->vscroll.GetPosition(), this->vscroll.GetPosition() + this->vscroll.GetCapacity());
+		_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
+				this->vscroll.GetPosition(), this->vscroll.GetPosition() + this->vscroll.GetCapacity());
 	}
 
 	virtual void OnPaint()
@@ -1505,7 +1515,7 @@ struct GameSettingsWindow : Window {
 
 		if (pe == NULL) return;  // Clicked below the last setting of the page
 
-		int x = pt.x - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		int x = (_dynlang.text_dir == TD_RTL ? this->width - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
@@ -1570,7 +1580,7 @@ struct GameSettingsWindow : Window {
 							this->clicked_entry->SetButtons(0);
 						}
 						this->clicked_entry = pe;
-						this->clicked_entry->SetButtons((x >= 10) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
+						this->clicked_entry->SetButtons((x >= 10) != (_dynlang.text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
 						this->flags4 |= WF_TIMEOUT_BEGIN;
 						_left_button_clicked = false;
 					}
@@ -1684,10 +1694,11 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, x + WD_IMGBTN_LEFT + 10, y + WD_IMGBTN_TOP);
 
 	/* Grey out the buttons that aren't clickable */
-	if (!clickable_left) {
+	bool rtl = _dynlang.text_dir == TD_RTL;
+	if (rtl ? !clickable_right : !clickable_left) {
 		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, colour, FILLRECT_CHECKER);
 	}
-	if (!clickable_right) {
+	if (rtl ? !clickable_left : !clickable_right) {
 		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, colour, FILLRECT_CHECKER);
 	}
 }
