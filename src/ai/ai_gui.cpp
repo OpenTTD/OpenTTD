@@ -303,24 +303,32 @@ struct AISettingsWindow : public Window {
 		int i = 0;
 		for (; !this->vscroll.IsVisible(i); i++) it++;
 
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
+		uint value_left   = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
+		uint value_right  = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
+		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 54);
+		uint text_right   = r.right - (rtl ? 54 : WD_FRAMERECT_RIGHT);
+
+
 		int y = r.top;
 		for (; this->vscroll.IsVisible(i) && it != config->GetConfigList()->end(); i++, it++) {
 			int current_value = config->GetSetting((*it).name);
 
-			int x = 0;
+			int x = rtl ? r.right : r.left;
 			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
-				DrawFrameRect(r.left + 4, y  + 2, r.left + 23, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
+				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
 			} else {
-				DrawArrowButtons(r.left + 4, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + !!this->clicked_increase : 0, current_value > (*it).min_value, current_value < (*it).max_value);
+				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, current_value > (*it).min_value, current_value < (*it).max_value);
 				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {
-					x = DrawString(r.left + 28, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, it->labels->Find(current_value)->second, TC_ORANGE);
+					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, it->labels->Find(current_value)->second, TC_ORANGE);
 				} else {
 					SetDParam(0, current_value);
-					x = DrawString(r.left + 28, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, STR_JUST_INT, TC_ORANGE);
+					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, STR_JUST_INT, TC_ORANGE);
 				}
 			}
 
-			DrawString(max(x + 3, 54), r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, (*it).description, TC_LIGHT_BLUE);
+			DrawString(max(rtl ? 0U : x + 3, text_left), min(rtl ? x - 3 : r.right, text_right), y + WD_MATRIX_TOP, (*it).description, TC_LIGHT_BLUE);
 			y += this->line_height;
 		}
 	}
@@ -329,7 +337,8 @@ struct AISettingsWindow : public Window {
 	{
 		switch (widget) {
 			case AIS_WIDGET_BACKGROUND: {
-				int num = (pt.y - this->GetWidget<NWidgetBase>(AIS_WIDGET_BACKGROUND)->pos_y) / this->line_height + this->vscroll.GetPosition();
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(AIS_WIDGET_BACKGROUND);
+				int num = (pt.y - wid->pos_y) / this->line_height + this->vscroll.GetPosition();
 				if (num >= (int)this->ai_config->GetConfigList()->size()) break;
 
 				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
@@ -337,7 +346,9 @@ struct AISettingsWindow : public Window {
 				AIConfigItem config_item = *it;
 				bool bool_item = (config_item.flags & AICONFIG_BOOLEAN) != 0;
 
-				const int x = pt.x - 4;
+				int x = pt.x - wid->pos_x;
+				if (_dynlang.text_dir == TD_RTL) x = wid->current_x - x;
+				x -= 4;
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				if (IsInsideMM(x, 0, 21)) {
 					int new_val = this->ai_config->GetSetting(config_item.name);
