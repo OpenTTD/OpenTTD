@@ -39,14 +39,20 @@ enum TimetableViewWindowWidgets {
 	TTV_RESIZE,
 };
 
-void SetTimetableParams(int param1, int param2, uint32 time)
+/**
+ * Set the timetable parameters in the format as described by the setting.
+ * @param param1 the first DParam to fill
+ * @param param2 the second DParam to fill
+ * @param ticks  the number of ticks to 'draw'
+ */
+void SetTimetableParams(int param1, int param2, Ticks ticks)
 {
 	if (_settings_client.gui.timetable_in_ticks) {
 		SetDParam(param1, STR_TIMETABLE_TICKS);
-		SetDParam(param2, time);
+		SetDParam(param2, ticks);
 	} else {
 		SetDParam(param1, STR_TIMETABLE_DAYS);
-		SetDParam(param2, time / DAY_TICKS);
+		SetDParam(param2, ticks / DAY_TICKS);
 	}
 }
 

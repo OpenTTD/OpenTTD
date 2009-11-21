@@ -19,6 +19,7 @@
 #include "depot_type.h"
 #include "station_type.h"
 #include "vehicle_type.h"
+#include "date_type.h"
 
 typedef Pool<Order, OrderID, 256, 64000> OrderPool;
 typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
@@ -265,7 +266,7 @@ private:
 	uint num_vehicles;              ///< NOSAVE: Number of vehicles that share this order list
 	Vehicle *first_shared;          ///< NOSAVE: pointer to the first vehicle in the shared order chain
 
-	uint timetable_duration;        ///< NOSAVE: Total duration of the order list
+	Ticks timetable_duration;       ///< NOSAVE: Total duration of the order list
 
 public:
 	/** Default constructor producing an invalid order list. */
@@ -384,22 +385,22 @@ public:
 	bool IsCompleteTimetable() const;
 
 	/**
-	 * Gets the total duration of the vehicles timetable or -1 is the timetable is not complete.
-	 * @return total timetable duration or -1 for incomplete timetables
+	 * Gets the total duration of the vehicles timetable or INVALID_TICKS is the timetable is not complete.
+	 * @return total timetable duration or INVALID_TICKS for incomplete timetables
 	 */
-	inline int GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? (int)this->timetable_duration : -1; }
+	inline Ticks GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? this->timetable_duration : INVALID_TICKS; }
 
 	/**
 	 * Gets the known duration of the vehicles timetable even if the timetable is not complete.
 	 * @return known timetable duration
 	 */
-	inline int GetTimetableDurationIncomplete() const { return this->timetable_duration; }
+	inline Ticks GetTimetableDurationIncomplete() const { return this->timetable_duration; }
 
 	/**
 	 * Must be called if an order's timetable is changed to update internal book keeping.
 	 * @param delta By how many ticks has the timetable duration changed
 	 */
-	void UpdateOrderTimetable(int delta) { this->timetable_duration += delta; }
+	void UpdateOrderTimetable(Ticks delta) { this->timetable_duration += delta; }
 
 	/**
 	 * Free a complete order chain.

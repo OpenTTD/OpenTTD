@@ -12,8 +12,10 @@
 #ifndef TIMETABLE_H
 #define TIMETABLE_H
 
+#include "date_type.h"
+
 void ShowTimetableWindow(const Vehicle *v);
 void UpdateVehicleTimetable(Vehicle *v, bool travelling);
-void SetTimetableParams(int param1, int param2, uint32 time);
+void SetTimetableParams(int param1, int param2, Ticks ticks);
 
 #endif /* TIMETABLE_H */
