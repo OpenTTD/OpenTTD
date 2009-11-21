@@ -2910,7 +2910,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Wartość
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% w posiadaniu przez {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Budowa Siedziby
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj siedzibę firmy
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz SG
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobacz siedzibę firmy
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś SG
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główna w innym miejscu za cenę 1% wartości firmy
 
@@ -4428,7 +4430,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

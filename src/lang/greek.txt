@@ -30,36 +30,67 @@ STR_JUST_NOTHING                                                :Τίποτα
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Επιβάτες
+STR_CARGO_PLURAL_PASSENGERS.geniki                              :{G=m}Επιβάτη
 STR_CARGO_PLURAL_COAL                                           :{G=m}Άνθρακες
+STR_CARGO_PLURAL_COAL.geniki                                    :{G=m}Άνθρακα
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Αλληλογραφία
+STR_CARGO_PLURAL_MAIL.geniki                                    :{G=f}Αλληλογραφία
 STR_CARGO_PLURAL_OIL                                            :{G=n}Πετρέλαια
+STR_CARGO_PLURAL_OIL.geniki                                     :{G=n}Πετρελαίου
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Ζώα
+STR_CARGO_PLURAL_LIVESTOCK.geniki                               :Ζώου
 STR_CARGO_PLURAL_GOODS                                          :{G=n}Αγαθά
+STR_CARGO_PLURAL_GOODS.geniki                                   :Αγαθού
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Σιτηρά
+STR_CARGO_PLURAL_GRAIN.geniki                                   :{G=n}Σιτηρού
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Ξυλεία
+STR_CARGO_PLURAL_WOOD.geniki                                    :Ξυλείας
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Σιδηρομεταλλεύματα
+STR_CARGO_PLURAL_IRON_ORE.geniki                                :{G=n}Σιδηρομεταλλεύματος
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Χάλυβες
+STR_CARGO_PLURAL_STEEL.geniki                                   :{G=m}Χάλυβα
 STR_CARGO_PLURAL_VALUABLES                                      :{G=n}Πολύτιμα είδη
+STR_CARGO_PLURAL_VALUABLES.geniki                               :{G=n}Πολύτιμων ειδών
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=n}Μεταλλεύματα Χαλκού
+STR_CARGO_PLURAL_COPPER_ORE.geniki                              :{G=n}Μεταλλεύματος Χαλκόυ
 STR_CARGO_PLURAL_MAIZE                                          :{G=n}Καλαμπόκια
+STR_CARGO_PLURAL_MAIZE.geniki                                   :{G=n}Καλαμποκιού
 STR_CARGO_PLURAL_FRUIT                                          :{G=n}Φρούτα
+STR_CARGO_PLURAL_FRUIT.geniki                                   :Φρούτου
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=n}Διαμάντια
+STR_CARGO_PLURAL_DIAMONDS.geniki                                :Διαμαντιού
 STR_CARGO_PLURAL_FOOD                                           :{G=n}Τρόφιμα
+STR_CARGO_PLURAL_FOOD.geniki                                    :Τροφίμου
 STR_CARGO_PLURAL_PAPER                                          :{G=n}Χαρτιά
-STR_CARGO_PLURAL_GOLD                                           :{G=m}Χρυσοί
+STR_CARGO_PLURAL_PAPER.geniki                                   :Χαρτιού
+STR_CARGO_PLURAL_GOLD                                           :{G=m}Χρυσός
+STR_CARGO_PLURAL_GOLD.geniki                                    :Χρυσού
 STR_CARGO_PLURAL_WATER                                          :{G=n}Νερά
+STR_CARGO_PLURAL_WATER.geniki                                   :Νερού
 STR_CARGO_PLURAL_WHEAT                                          :Σιτάρια
+STR_CARGO_PLURAL_WHEAT.geniki                                   :Σιταριού
 STR_CARGO_PLURAL_RUBBER                                         :{G=n}Λάστιχα
+STR_CARGO_PLURAL_RUBBER.geniki                                  :Λάστιχου
 STR_CARGO_PLURAL_SUGAR                                          :{G=f}Ζάχαρες
+STR_CARGO_PLURAL_SUGAR.geniki                                   :Ζάχαρου
 STR_CARGO_PLURAL_TOYS                                           :{G=n}Παιχνίδια
+STR_CARGO_PLURAL_TOYS.geniki                                    :Παιχνιδιού
 STR_CARGO_PLURAL_CANDY                                          :{G=n}Γλυκίσματα
+STR_CARGO_PLURAL_CANDY.geniki                                   :{G=n}Γλυκίσματος
 STR_CARGO_PLURAL_COLA                                           :{G=f}Κόλα
+STR_CARGO_PLURAL_COLA.geniki                                    :{G=f}Κόλας
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Μαλλιά της γριάς
+STR_CARGO_PLURAL_COTTON_CANDY.geniki                            :{G=n}Μαλλιού της γριάς
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Φυσαλίδες
+STR_CARGO_PLURAL_BUBBLES.geniki                                 :{G=f}Φυδαλίδας
 STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Ζαχαρωτά
+STR_CARGO_PLURAL_TOFFEE.geniki                                  :{G=n}Ζαχαρωτού
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Μπαταρίες
+STR_CARGO_PLURAL_BATTERIES.geniki                               :{G=f}Μπαταρίας
 STR_CARGO_PLURAL_PLASTIC                                        :{G=n}Πλαστικά
+STR_CARGO_PLURAL_PLASTIC.geniki                                 :{G=n}Πλαστικού
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=n}Αναψυκτικά
+STR_CARGO_PLURAL_FIZZY_DRINKS.geniki                            :{G=n}Αναψυκτικού
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -838,10 +869,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στα {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στ{G o η ο} {INDUSTRY} μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
@@ -866,9 +897,9 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κ
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Το νέο {STRING} είναι πλεόν διαθέσιμο!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ένα νέο {STRING} είναι πλεόν διαθέσιμο!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Το νέο {STRING} είναι πλέον διαθέσιμο!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ένα νέο {STRING} είναι πλέον διαθέσιμο!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING} ούτε {STRING}
@@ -2594,7 +2625,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία 
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίσιμο αρχηγείου εταιρίας
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Αρχηγείου
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Προβολή αρχηγείου εταιρίας
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ανοικοδόμηση του αρχηγείου της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας
 
@@ -4076,7 +4109,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

@@ -2532,7 +2532,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valore co
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posseduto dalla {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Costr. sede
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Costruisce la sede della compagnia
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vedi sede
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Visualizza la sede della compagnia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sposta sede
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ricostruisce la sede della compagnia in un altro luogo pagando l'1% del valore della compagnia
 
