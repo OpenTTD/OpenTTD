@@ -283,18 +283,19 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_
 	/* Set the date before loading sprites as some newgrfs check it */
 	SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 
+	InitializeGame(_gw.size_x, _gw.size_y, false, reset_settings);
+	PrepareGenerateWorldProgress();
+
 	/* Load the right landscape stuff */
 	GfxLoadSprites();
 	LoadStringWidthTable();
-
-	InitializeGame(_gw.size_x, _gw.size_y, false, reset_settings);
-	PrepareGenerateWorldProgress();
 
 	/* Re-init the windowing system */
 	ResetWindowSystem();
 
 	/* Create toolbars */
 	SetupColoursAndInitialWindow();
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
 	if (_gw.thread != NULL) {
 		_gw.thread->Join();

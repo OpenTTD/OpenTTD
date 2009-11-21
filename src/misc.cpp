@@ -63,8 +63,6 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	AllocateMap(size_x, size_y);
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
-
 	_pause_mode = PM_UNPAUSED;
 	_fast_forward = 0;
 	_tick_counter = 0;
