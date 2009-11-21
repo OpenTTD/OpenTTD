@@ -770,7 +770,7 @@ void Window::InitializeData(WindowClass cls, int window_number, uint32 desc_flag
 {
 	/* Set up window properties; some of them are needed to set up smallest size below */
 	this->window_class = cls;
-	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
+	this->flags4 |= WF_WHITE_BORDER_MASK; // just opened windows have a white border
 	this->owner = INVALID_OWNER;
 	this->nested_focus = NULL;
 	this->window_number = window_number;
