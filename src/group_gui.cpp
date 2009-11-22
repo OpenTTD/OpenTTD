@@ -262,12 +262,25 @@ public:
 			case GRP_WIDGET_ALL_VEHICLES:
 			case GRP_WIDGET_DEFAULT_VEHICLES:
 				size->height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP;
+				size->width = max(GetStringBoundingBox(STR_GROUP_DEFAULT_TRAINS + this->vehicle_type).width, GetStringBoundingBox(STR_GROUP_ALL_TRAINS + this->vehicle_type).width);
+				size->width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + 8 + 8;
 				break;
 
 			case GRP_WIDGET_LIST_VEHICLE:
 				resize->height = GetVehicleListHeight(this->vehicle_type, FONT_HEIGHT_NORMAL + WD_MATRIX_TOP);
 				size->height = 4 * resize->height;
 				break;
+
+			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
+				static const StringID _dropdown_text[] = {STR_VEHICLE_LIST_REPLACE_VEHICLES, STR_VEHICLE_LIST_SEND_FOR_SERVICING, STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT, STR_GROUP_ADD_SHARED_VEHICLE, STR_GROUP_REMOVE_ALL_VEHICLES};
+				Dimension d = {0, 0};
+				for (const StringID *sid = _dropdown_text; sid != endof(_dropdown_text); sid++) {
+					d = maxdim(d, GetStringBoundingBox(*sid));
+				}
+				d.height += padding.height;
+				d.width  += padding.width;
+				*size = maxdim(*size, d);
+			} break;
 		}
 	}
 
@@ -375,12 +388,12 @@ public:
 	{
 		switch (widget) {
 			case GRP_WIDGET_ALL_VEHICLES:
-				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP + 1,
+				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, r.top + WD_MATRIX_TOP,
 						STR_GROUP_ALL_TRAINS + this->vehicle_type, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 				break;
 
 			case GRP_WIDGET_DEFAULT_VEHICLES:
-				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP + 1,
+				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, r.top + WD_MATRIX_TOP,
 						STR_GROUP_DEFAULT_TRAINS + this->vehicle_type, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 				break;
 
