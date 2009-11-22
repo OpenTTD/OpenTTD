@@ -86,8 +86,8 @@ TextEffectID AddTextEffect(StringID msg, int x, int y, uint16 duration, TextEffe
 	/* Start defining this object */
 	te->string_id = msg;
 	te->duration = duration;
-	te->y = y - 5;
-	te->bottom = y + 5;
+	te->y = y - FONT_HEIGHT_NORMAL / 2;
+	te->bottom = y + FONT_HEIGHT_NORMAL / 2;
 	te->params_1 = GetDParam(0);
 	te->mode = mode;
 
