@@ -934,18 +934,6 @@ static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
 }
 
 /**
- * Compute the offset of a widget due to not entirely using the available space.
- * @param space     Space used by the widget.
- * @param max_space Available space for the widget.
- * @return Offset for centering widget.
- */
-static inline uint ComputeOffset(uint space, uint max_space)
-{
-	if (space >= max_space) return 0;
-	return (max_space - space) / 2;
-}
-
-/**
  * Widgets stacked on top of each other.
  */
 NWidgetStacked::NWidgetStacked() : NWidgetContainer(NWID_SELECTION)
@@ -1010,13 +998,13 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
 
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
+		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
 		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
-		uint child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left) + ComputeOffset(child_width, given_width - child_wid->padding_left - child_wid->padding_right);
+		uint child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
 
-		uint vert_step = child_wid->GetVerticalStepSize(sizing);
+		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
 		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
-		uint child_pos_y = child_wid->padding_top + ComputeOffset(child_height,  given_height - child_wid->padding_top - child_wid->padding_bottom);
+		uint child_pos_y = child_wid->padding_top;
 
 		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, rtl);
 	}
@@ -1183,7 +1171,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 			child_wid->current_x = child_wid->smallest_x;
 		}
 
-		uint vert_step = child_wid->GetVerticalStepSize(sizing);
+		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
 		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
 	}
 
@@ -1213,7 +1201,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	while (child_wid != NULL) {
 		uint child_width = child_wid->current_x;
 		uint child_x = x + position + (rtl ? child_wid->padding_right : child_wid->padding_left);
-		uint child_y = y + child_wid->padding_top + ComputeOffset(child_wid->current_y,  given_height - child_wid->padding_top - child_wid->padding_bottom);
+		uint child_y = y + child_wid->padding_top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
 		position += child_width + child_wid->padding_right + child_wid->padding_left;
@@ -1305,7 +1293,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 			child_wid->current_y = child_wid->smallest_y;
 		}
 
-		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
+		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
 		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
 	}
 
@@ -1332,8 +1320,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	/* Third loop: Compute position and call the child. */
 	uint position = 0; // Place to put next child relative to origin of the container.
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
-		uint child_x = x + (rtl ? child_wid->padding_right : child_wid->padding_left) +
-									ComputeOffset(child_wid->current_x, given_width - child_wid->padding_left - child_wid->padding_right);
+		uint child_x = x + (rtl ? child_wid->padding_right : child_wid->padding_left);
 		uint child_height = child_wid->current_y;
 
 		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding_top, child_wid->current_x, child_height, rtl);
