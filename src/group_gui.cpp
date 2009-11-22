@@ -100,9 +100,9 @@ static const NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		/* left part */
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY_TOP_LEFT), SetMinimalSize(200, 12), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_ALL_VEHICLES), SetMinimalSize(200, 13), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_DEFAULT_VEHICLES), SetMinimalSize(200, 13), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY_TOP_LEFT), SetMinimalTextLines(1, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM), SetFill(1, 0), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_ALL_VEHICLES), SetMinimalSize(200, 13), SetFill(1, 0), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_DEFAULT_VEHICLES), SetMinimalSize(200, 13), SetFill(1, 0), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_MATRIX, COLOUR_GREY, GRP_WIDGET_LIST_GROUP), SetMinimalSize(188, 0), SetDataTip(0x701, STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP),
 						SetFill(1, 0), SetResize(0, 1),
@@ -256,7 +256,7 @@ public:
 				this->tiny_step_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP;
 				resize->height = this->tiny_step_height;
 				/* Minimum height is the height of the list widget minus all and default vehicles and a bit for the bottom bar */
-				size->height =  4 * GetVehicleListHeight(this->vehicle_type, this->tiny_step_height) - 3 * this->tiny_step_height;
+				size->height =  4 * GetVehicleListHeight(this->vehicle_type, this->tiny_step_height) - (this->tiny_step_height > 25 ? 2 : 3) * this->tiny_step_height;
 				break;
 
 			case GRP_WIDGET_ALL_VEHICLES:
