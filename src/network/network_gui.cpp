@@ -1312,6 +1312,17 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		return state;
 	}
 
+	virtual void OnTimeout()
+	{
+		static const int raise_widgets[] = {NSSW_CLIENTS_BTND, NSSW_CLIENTS_BTNU, NSSW_COMPANIES_BTND, NSSW_COMPANIES_BTNU, NSSW_SPECTATORS_BTND, NSSW_SPECTATORS_BTNU, WIDGET_LIST_END};
+		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
+			if (this->IsWidgetLowered(*widget)) {
+				this->RaiseWidget(*widget);
+				this->SetWidgetDirty(*widget);
+			}
+		}
+	}
+
 	virtual void OnQueryTextFinished(char *str)
 	{
 		if (str == NULL) return;
@@ -1371,11 +1382,11 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTND), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTND), SetMinimalSize(12, 12), SetFill(false, true),
 												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_TXT), SetFill(true, false),
 												SetDataTip(STR_NETWORK_START_SERVER_CLIENTS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
 												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
 				EndContainer(),
 
@@ -1383,11 +1394,11 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTND), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTND), SetMinimalSize(12, 12), SetFill(false, true),
 												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_TXT), SetFill(true, false),
 												SetDataTip(STR_NETWORK_START_SERVER_COMPANIES_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
 												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 				EndContainer(),
 
@@ -1395,11 +1406,11 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTND), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTND), SetMinimalSize(12, 12), SetFill(false, true),
 												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_TXT), SetFill(true, false),
 												SetDataTip(STR_NETWORK_START_SERVER_SPECTATORS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
 												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 				EndContainer(),
 
