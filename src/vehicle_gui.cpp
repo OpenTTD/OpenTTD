@@ -741,7 +741,7 @@ static const NWidgetPart _nested_vehicle_list[] = {
 
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 0), SetFill(true, false),
-		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR), SetMinimalSize(12, 0),
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),

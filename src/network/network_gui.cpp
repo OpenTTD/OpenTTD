@@ -951,7 +951,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 							NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NGWW_MATRIX), SetResize(1, 1), SetFill(true, false),
 												SetDataTip(0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT),
 						EndContainer(),
-						NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NGWW_SCROLLBAR), SetFill(false, true),
+						NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NGWW_SCROLLBAR),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0), SetFill(true, true),
 					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED_LABEL), SetFill(true, false),

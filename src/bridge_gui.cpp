@@ -329,7 +329,7 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 
 		/* scrollbar + resize button */
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR), SetFill(false, true),
+			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, BBSW_RESIZEBOX),
 		EndContainer(),
 	EndContainer(),
