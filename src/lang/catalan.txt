@@ -2530,7 +2530,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de 
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propietat de {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir Seu
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construeix seu de la companyia
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Veure Seu
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Veure seu de la companyia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllada la Seu
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu de la companyia a un altre lloc amb el cost d'un 1% del seu valor
 

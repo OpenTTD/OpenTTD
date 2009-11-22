@@ -284,6 +284,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesi znak za filter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu riječ kako bi filtrirali listu
+STR_LIST_FILTER_TITLE                                           :{BLACK}Znak za filter:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izaberi način sortiranja (silazno/uzlazno)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Izaberi kriterij za sortiranje
@@ -317,10 +318,13 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina:
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje:{NUM}x{NUM}Visinska razlika:{NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Stanovništvo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ime
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Stanovništvo
+STR_SORT_BY_NAME                                                :Ime
 STR_SORT_BY_PRODUCTION                                          :Proizvodnja
 STR_SORT_BY_TYPE                                                :Vrsta
 STR_SORT_BY_TRANSPORTED                                         :Prevezeno
@@ -335,6 +339,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrijednost
 STR_SORT_BY_LENGTH                                              :Dužina
 STR_SORT_BY_LIFE_TIME                                           :Preostali životni vijek
+STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje u rasporedu vožnje
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
 STR_SORT_BY_RATING_MIN                                          :Najniža ocjena tereta
@@ -374,6 +379,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvori a
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Pokaži prozor zvuk/glazba
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Pokaži zadnju poruku/vijest, prikaži postavke poruka
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemlji, debug UI, screenshotovi, o OpenTTD-u
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Zamijeni alatne trake
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Snimi scenarij, učitaj scenarij, napusti uređivanje scenarija, završi
@@ -618,9 +624,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Novac:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila; ovo uključuje cestovna vozila, vlakove, brodove i avione
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su ostvarila dobit prošle godine: ovo uključuje cestovna vozila, vlakove, brodove i zrakoplove
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, aerodrom) se računa, čak i ako su spojene kao jedna postaja
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila s najnižim prihodom (od svih vozila starijih od 2 godine)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila s najnižim prihodom (u obzir su uzeta samo vozila starija od dvije godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najvišom dobiti u zadnjih 12 kvartala
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najvišom dobiti u zadnjih 12 kvartala
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Jedinice tereta dostavljene u zadnje četiri četvrtine
@@ -1366,7 +1372,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI postavke
 STR_INTRO_QUIT                                                  :{BLACK}Završi
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru. Ctrl+klik preskače konfiguriranje karte
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitaj spremljenu igru
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pokreni novu igru, koristeći visinsku kartu kao krajolik
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Započni novu igru koristeći proizvoljni scenarij
@@ -1398,6 +1404,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1701,6 +1708,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova tvr
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
+STR_NETWORK_CLIENTLIST_BAN                                      :Zabrana
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Razgovaraj sa svima
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Razgovaraj s tvrtkom
@@ -1729,6 +1737,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Postavi 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Pošalji
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ekipa]:
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Ekipa] {STRING}: {WHITE}{STRING}
@@ -1740,7 +1749,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Nisu pronađeni mrežni uređaji ili je kompajlirano bez ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Niti jedna mrežna igra nije pronađena
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Niti jedna mrežna igra nije pronađena
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Poslužitelj nije odgovorio na zahtjev
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Ne mogu se spojiti zbog razlike u NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Neuspješno usklađivanje mrežne igre
@@ -1754,7 +1763,7 @@ STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Revizij
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Pogrešna zaporka
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Poslužitelj je pun
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Zabranjen ti je pristup ovom poslužitelju
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Izbačen si iz igre
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Izbačen si iz igre
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Na ovome poslužitelju varanje nije dopušteno
 
 ############ Leave those lines in this order!!
@@ -1776,10 +1785,20 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :poslužitelj je
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Igra zaustavljena ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Igra još uvijek zaustavljena ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Igra još uvijek zaustavljena ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Igra je još uvijek zaustavljena ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Igra se nastavlja ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nema dovoljno igrača
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :spajanje klijenata
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ručno
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odlazim
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se pridružio igri
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :{G=female}*** {STRING} se pridružila igri (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se pridružio tvrtci #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se pridružio promatračima
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} je osnovao novu tvrtku (#{2:NUM})
@@ -1886,9 +1905,9 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnj
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradi željezničku prugu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Izgradi željezničku prugu koristeći Autorail način
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Izgradi spremište vlakova (za izgradnju i servisiranje vlakova)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori prugu u čvorište
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradi željezničku postaju
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Izgradi spremište vlakova (za kupnju i servisiranje vlakova)
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori prugu u čvorište. Ctrl omogućava spajanje čvorišta
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradi željezničku postaju. Ctrl omogućava spajanje postaja
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradi željeznički most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi željeznički tunel
@@ -1961,12 +1980,12 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Izgradi 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Izgradi tramvajski dio
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Izgradi cestu koristeći Autoroad način gradnje
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Izgradi tramvajsku prugu koristeći Autotram način gradnje
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Izgradi spremište cestovnih vozila (za izgradnju i servisiranje vozila)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Izgradi spremište tramvajskih vozila (za izgradnju i servisiranje vozila)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Izgradi autobusnu postaju
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Izgradi putničku tramvajsku postaju
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Izgradi pretovarni kamionski terminal
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Izgradi teretnu tramvajsku postaju
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Izgradi spremište cestovnih vozila (za kupnju i servisiranje vozila)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Izgradi spremište tramvajskih vozila (za kupnju i servisiranje vozila)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Izgradi autobusnu postaju. Ctrl omogućava spajanje postaja
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Izgradi putničku tramvajsku postaju. Ctrl omogućava spajanje postaja
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Izgradi pretovarni kamionski terminal. Ctrl omogućava spajanje postaja
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Izgradi teretnu tramvajsku postaju. Ctrl omogućava spajanje postaja
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiviraj/deaktiviraj jednosmjerne ceste
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Izgradi cestovni most
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Izgradi tramvajski most
@@ -1996,8 +2015,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Izgradnj
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni kanali
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Izgradi kanale.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Izgradi brane
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Izgradi spremište brodova (za izgradnju i servisiranje brodova)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Izgradi brodsko pristanište
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Izgradi spremište brodova (za kupnju i servisiranje brodova)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Izgradi brodsko pristanište. Ctrl omogućava spajanje postaja
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Smjesti plutaču koja može biti korištena kao pokazatelj puta
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Izgradi akvadukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Odredi vodeno područje.{}Napravi kanal, osim ako CTRL nije pritisnut na morskom nivou, kada će umjesto toga potopiti okolna područja
@@ -2012,7 +2031,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Pristani
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Zračne luke
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradi zračnu luku
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradi zračnu luku. Ctrl omogućava spajanje postaja
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbor zračne luke
@@ -2069,11 +2088,17 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Jeste li
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stvaranje gradova
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Novi grad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Izgradi novi grad
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Osnuj novi grad
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nasumičan grad
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Izgradi grad na nasumično odabranom pložaju
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Osnuj grad na nasumično odabranom mjestu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mnogo nasumičnih gradova
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popuni kartu nasumično raspoređenim gradovima
+
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ime grada:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Upišite ime grada
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliknite kako bi upisali ime grada
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nasumično ime
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generiraj novo nasumično ime
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Veličina grada:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Malo
@@ -2217,7 +2242,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Zemlja u posjed
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD-u
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Izvorno autorsko pravo {COPYRIGHT} 1995 Chris Sawyer, sva prava pridržana
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD tim
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2009 OpenTTD tim
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spremi igru
@@ -2402,8 +2427,9 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Unesi na
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Gradovi
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ništa -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena gradova - klikni na ime kako bi centrirao pogled na grad
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena gradova - klikni na ime kako bi centrirao pogled na grad. Ctrl+klik otvara novi prozor sa lokacijom grada
 STR_TOWN_POPULATION                                             :{BLACK}Svjetsko stanovništvo: {COMMA}
 
 # Town view window
@@ -2416,7 +2442,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{SETX 20}{ORANGE}{STRING}{BLACK} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{SETX 20}{ORANGE}{CARGO}{BLACK} isporučeno prošli mjesec
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ograničenje buke u gradu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centriraj glavni pogled na lokaciju grada
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centriraj glavni pogled na lokaciju grada. Ctrl+klik otvara novi prozor sa lokacijom grada
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalna samouprava
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Pokaži informacije o lokalnoj samoupravi
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Promijeni ime grada
@@ -2459,13 +2485,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponuđene subvencije za pružanje usluga:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} od {STRING} do {STRING}{YELLOW} (do {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Ništa
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Ništa -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usluge subvencionirane:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} iz {STRING} prema {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni na uslugu za centriranje pogleda na industriju/grad
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni na uslugu za centriranje pogleda na industriju/grad. Ctrl+klik otvara novi prozor sa lokacijom industrije/grada
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaja - klikni na ime kako bi centrirao glavni pogled na postaju
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaja - klikni na ime kako bi centrirao glavni pogled na postaju. Ctrl+klik otvara novi prozor sa lokacijom postaje
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Drži CTRL kako bi odabrao više od jedne stavke
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} postaj{P a e a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2501,7 +2527,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Izvrsno
 STR_CARGO_RATING_OUTSTANDING                                    :Izvanredno
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju postaje
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju postaje. Ctrl+klik otvara novi prozor sa lokacijom postaje
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Promijeni ime postaje
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokaži sve vlakove koji imaju ovu postaju u svom rasporedu
@@ -2512,6 +2538,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikaži
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj postaju/terminal
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Promijeni ime čvorišta
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promijeni ime čvorišta
@@ -2561,7 +2588,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrijednos
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% u vlasništvu {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradi sjedište tvrtke
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Izgradi sjedište tvrtke
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pogledaj sjedište tvrtke
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Pogledaj sjedište tvrtke
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premjesti sjedište kompanije
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Izgradi sjedište tvrtke negdje drugdje za 1% troška od cjelokupne vrijednosti tvrtke
 
@@ -2586,16 +2615,17 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Tražimo
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrije
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ništa -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena industrija - za centriranje pogleda klikni na ime
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena industrija - za centriranje pogleda klikni na ime. Ctrl+klik otvara novi prozor sa lokacijom industrije
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Prošlomjesečna proizvodnja:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% prevezeno)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centriraj glavni pogled na položaj industrije
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centriraj glavni pogled na položaj industrije. Ctrl+klik otvara novi prozor sa lokacijom industrije
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Treba: {YELLOW}{STRING}{STRING}
@@ -2610,7 +2640,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Proizvod
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju (višekratnik broja 8, do 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} vlak{P "" a ova}
@@ -2701,15 +2731,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Popis iz
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Popis izabranih brodova - klikni na brod za informacije
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Popis izabranih zrakoplova - klikni na zrakoplov za informacije
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Izgradi vozilo
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Izgradi vozilo
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Izgradi brod
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Izgradi zrakoplov
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kupi vozilo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kupi vozilo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kupi brod
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kupi zrakoplov
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Izgradi označeni vlak
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Izgradi označeno cestovno vozilo
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Izgradi označeni brod
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Izgradi označeni zrakoplov
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kupi označeni vlak
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kupi označeno cestovno vozilo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kupi označeni brod
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kupi označeni zrakoplov
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Preimenuj
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Preimenuj
@@ -2765,19 +2795,19 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi bro
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Novi zrakoplov
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupi novo željezničko vozilo
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Izgradi novo cestovno vozilo
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Izgradi novi brod
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Izgradi novi zrakoplov
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kupi novo cestovno vozilo
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupi novi brod
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kupi novi zrakoplov
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Kloniraj vlak
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloniraj vozilo
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloniraj brod
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloniraj zrakoplov
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ovo će napraviti kopiju vlaka uključujući sve vagone. Kliknite na ovaj gumb i onda na vlak unutar ili izvan spremišta. CTRL-klik će dijeliti naredbe
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ovo će napraviti kopiju cestovnog vozila. Klikni na ovaj gumb i onda na cestovno vozilo unutar ili izvan spremišta. CTRL+klik će dijeliti naredbe
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ovo će napraviti kopiju broda. Klikni na ovaj gumb i onda na brod unutar ili izvan spremišta. CTRL+klik će dijeliti naredbe
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ovo će napraviti kopiju zrakoplova. Klikni ovaj gumb i onda na zrakoplov unutar ili izvan hangara. Control+klik će dijeliti naredbe
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ovo će kupiti kopiju vlaka uključujući sve vagone. Kliknite na ovaj gumb i onda na vlak unutar ili izvan spremišta. CTRL-klik će dijeliti naredbe
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ovo će kupiti kopiju cestovnog vozila. Klikni na ovaj gumb i onda na cestovno vozilo unutar ili izvan spremišta. CTRL+klik će dijeliti naredbe
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ovo će kupiti kopiju broda. Klikni na ovaj gumb i onda na brod unutar ili izvan spremišta. CTRL+klik će dijeliti naredbe
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ovo će kupiti kopiju zrakoplova. Klikni ovaj gumb i onda na zrakoplov unutar ili izvan hangara. Control+klik će dijeliti naredbe
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centriraj glavni pogled na lokaciju spremišta vlakova
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centriraj glavni pogled na lokaciju spremišta cestovnih vozila
@@ -2848,20 +2878,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centriraj glavni pogled na lokaciju vlaka
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centriraj glavni pogled na lokaciju vozila
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centriraj glavni pogled na lokaciju broda
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK} Centrirajte glavni prozor na lokaciju zrakoplova
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centriranje glavnog prozora na lokaciju vlaka. Ctrl+klik slijedi vlak u glavni prozor
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centriranje glavnog prozora na lokaciju vozila. Ctrl+klik slijedi vozilo u glavni prozor
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centriranje glavnog prozora na lokaciju broda. Ctrl+klik slijedi brod u glavni prozor
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centriranje glavnog prozora na lokaciju zrakoplova. Ctrl+klik slijedi zrakoplov u glavni prozor
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošalji vlak u spremište. CTRL+klik će samo servisirati
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošalji vozilo u spremište. CTRL+klik će samo servisirati
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošalji brod u spremište. CTRL+klik će samo servisirati
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Pošalji zrakoplov u hangar. CTRL+klik će samo servisirati
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ovo će izgraditi kopiju vlaka uključujući sve vagone. Control-klik će dijeliti naredbe
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ovo će izgraditi kopiju cestovnog vozila. Control-clik će dijeliti naredbe
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ovo će izgradi kopiju broda. Control-klik će dijeliti naredbe
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ovo će izgraditi kopiju zrakoplova. Control-klik će dijeliti naredbe
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ovo će kupiti kopiju vlaka uključujući sve vagone. Control-klik će dijeliti naredbe
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ovo će kupiti kopiju cestovnog vozila. Control-klik će dijeliti naredbe
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ovo će kupiti kopiju broda. Control-klik će dijeliti naredbe
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ovo će kupiti kopiju zrakoplova. Control-klik će dijeliti naredbe
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Natjeraj vlak da nastavi bez čekanja signala odobrenja
 
@@ -2873,10 +2903,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prenamij
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Promijeni smjer vlaka
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Natjeraj vozila da se okrene natrag
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Pokaži naredbe vlaka
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Pokaži naredbe vozila
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Pokaži naredbe broda
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Pokaži naredbe zrakoplova
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Pokaži naredbe vlaka. Ctrl+klik za prikazivanje rasporeda vožnje vlaka
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Pokaži naredbe vozila. Ctrl+klik za prikazivanje rasporeda vožnje
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Pokaži naredbe broda. Ctrl+klik za prikazivanje rasporeda plovljenja broda
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Pokaži naredbe zrakoplova. Ctrl+klik za prikazivanje rasporeda letenja zrakoplova
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Pokaži detalje vlaka
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Pokaži detalje cestovnog vozila
@@ -2944,8 +2974,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Prebaci 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servisni interval: {LTBLUE}{COMMA}dana{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisni interval: {LTBLUE}{COMMA}%{BLACK} Zadnji servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećaj servisni interval
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanji servisni interval
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećaj servisni interval za 10. Ctrl+klik povećava servisni interval za 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanji servisni interval za 10. Ctrl+klik smanjuje servisni interval za 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Imenuj vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Imenuj cestovno vozilo
@@ -3494,10 +3524,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nije mog
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nije moguće poslati brod u spremište...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nije moguće poslati zrakoplov u hangar
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nije moguće izgraditi željezničko vozilo...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nije moguće izgraditi cestovno vozilo...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nije moguće izgraditi brod...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nije moguće izgraditi zrakoplov...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nije moguće kupiti željezničko vozilo...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nije moguće kupiti cestovno vozilo...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nije moguće kupiti brod...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nije moguće kupiti zrakoplov...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nije moguće preimenovati vrstu vagona...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nije moguće preimenovati vrstu cestovnog vozila...
@@ -3993,6 +4023,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4010,13 +4041,13 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -4032,4 +4063,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

@@ -2780,7 +2780,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Możliwe działania:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista rzeczy do zrobienia w tym mieście - klik po więcej detali
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Wykonaj
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Wykonaj podświetloną akcję z poniższej listy
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Wykonaj zaznaczone działanie z listy powyżej
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Mała kampania reklamowa
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Średnia kampania reklamowa
@@ -4116,7 +4116,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Ele
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Wagon pasażerski
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Wagon pocztowy
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Wagon na węgiel
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Cysterna
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Cysterna na ropę
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Wagon na żywiec
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Wagon towarowy
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Wagon na ziarno
@@ -4146,7 +4146,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Wagon pasażerski
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Wagon pocztowy
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Wagon na węgiel
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Cysterna
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Cysterna na ropę
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Wagon na żywiec
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Wagon towarowy
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Wagon na ziarno
