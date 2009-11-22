@@ -624,8 +624,16 @@ public:
 				break;
 
 			case SCLW_WIDGET_SEC_COL_DROPDOWN:
-				if (!_loaded_newgrf_features.has_2CC) size->width = 0;
-				break;
+				if (!_loaded_newgrf_features.has_2CC) {
+					size->width = 0;
+					break;
+				}
+				/* Fall through */
+			case SCLW_WIDGET_PRI_COL_DROPDOWN: {
+				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
+					size->width = max(size->width, GetStringBoundingBox(*id).width + 34);
+				}
+			} break;
 		}
 	}
 
