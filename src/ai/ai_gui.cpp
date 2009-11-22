@@ -822,7 +822,7 @@ struct AIDebugWindow : public Window {
 				assert(info != NULL);
 				char name[1024];
 				snprintf(name, sizeof(name), "%s (v%d)", info->GetName(), info->GetVersion());
-				DrawString(r.left + 7, r.right - 7, 47, name, TC_BLACK, SA_CENTER);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, name, TC_BLACK, SA_CENTER);
 				break;
 			}
 			case AID_WIDGET_LOG_PANEL: {
