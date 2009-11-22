@@ -279,6 +279,19 @@ public:
 				*size = maxdim(*size, d);
 				break;
 			}
+
+			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: {
+				Dimension d = {0, 0};
+				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+					const RailtypeInfo *rti = GetRailTypeInfo(rt);
+					/* Skip rail type if it has no label */
+					if (rti->label == 0) continue;
+					d = maxdim(d, GetStringBoundingBox(rti->strings.replace_text));
+				}
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+			} break;
 		}
 	}
 
@@ -317,7 +330,7 @@ public:
 					SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
 				}
 
-				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_BLACK_STRING);
+				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_BLACK_STRING, TC_FROMSTRING, SA_CENTER);
 				break;
 			}
 
