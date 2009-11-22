@@ -376,7 +376,7 @@ public:
 		/* Draw details panels. */
 		for (int side = 0; side < 2; side++) {
 			if (this->sel_engine[side] != INVALID_ENGINE) {
-				NWidgetCore *nwi = this->GetWidget<NWidgetCore>(side == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS);
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS);
 				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
 						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side]);
 				needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);

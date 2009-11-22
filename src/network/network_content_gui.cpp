@@ -439,9 +439,9 @@ public:
 
 	void DrawMatrix(const Rect &r) const
 	{
-		const NWidgetCore *nwi_checkbox = this->GetWidget<NWidgetCore>(NCLWW_CHECKBOX);
-		const NWidgetCore *nwi_name = this->GetWidget<NWidgetCore>(NCLWW_NAME);
-		const NWidgetCore *nwi_type = this->GetWidget<NWidgetCore>(NCLWW_TYPE);
+		const NWidgetBase *nwi_checkbox = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX);
+		const NWidgetBase *nwi_name = this->GetWidget<NWidgetBase>(NCLWW_NAME);
+		const NWidgetBase *nwi_type = this->GetWidget<NWidgetBase>(NCLWW_TYPE);
 
 
 		/* Fill the matrix with the information */
@@ -608,7 +608,7 @@ public:
 				this->selected = *this->content.Get(id_v);
 				this->list_pos = id_v;
 
-				if (pt.x <= (int)(this->GetWidget<NWidgetCore>(NCLWW_CHECKBOX)->pos_y + this->GetWidget<NWidgetCore>(NCLWW_CHECKBOX)->current_y)) {
+				if (pt.x <= (int)(this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX)->pos_y + this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX)->current_y)) {
 					_network_content_client.ToggleSelectedState(this->selected);
 					this->content.ForceResort();
 				}

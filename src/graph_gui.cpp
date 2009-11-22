@@ -465,7 +465,7 @@ public:
 	{
 		this->DrawWidgets();
 
-		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(this->graph_widget);
+		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(this->graph_widget);
 		Rect r;
 		r.left = nwid->pos_x;
 		r.right = nwid->pos_x + nwid->current_x - 1;

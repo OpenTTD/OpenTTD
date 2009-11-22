@@ -273,7 +273,7 @@ struct CheatWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		const NWidgetCore *wid = this->GetWidget<NWidgetCore>(CW_PANEL);
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(CW_PANEL);
 		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - this->header_height) / (FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL);
 		uint x = pt.x - wid->pos_x;
 		bool rtl = _dynlang.text_dir == TD_RTL;

@@ -368,8 +368,8 @@ protected:
 	 */
 	void DrawServerLine(const NetworkGameList *cur_item, uint y, bool highlight) const
 	{
-		const NWidgetCore *nwi_name = this->GetWidget<NWidgetCore>(NGWW_NAME);
-		const NWidgetCore *nwi_info = this->GetWidget<NWidgetCore>(NGWW_INFO);
+		const NWidgetBase *nwi_name = this->GetWidget<NWidgetBase>(NGWW_NAME);
+		const NWidgetBase *nwi_info = this->GetWidget<NWidgetBase>(NGWW_INFO);
 
 		/* show highlighted item with a different colour */
 		if (highlight) GfxFillRect(nwi_name->pos_x + 1, y - 2, nwi_info->pos_x + nwi_info->current_x - 2, y + FONT_HEIGHT_NORMAL - 1, 10);
@@ -381,7 +381,7 @@ protected:
 			const NWidgetServerListHeader *nwi_header = this->GetWidget<NWidgetServerListHeader>(NGWW_HEADER);
 
 			if (nwi_header->IsWidgetVisible(NGWW_CLIENTS)) {
-				const NWidgetCore *nwi_clients = this->GetWidget<NWidgetCore>(NGWW_CLIENTS);
+				const NWidgetBase *nwi_clients = this->GetWidget<NWidgetBase>(NGWW_CLIENTS);
 				SetDParam(0, cur_item->info.clients_on);
 				SetDParam(1, cur_item->info.clients_max);
 				SetDParam(2, cur_item->info.companies_on);
@@ -391,7 +391,7 @@ protected:
 
 			if (nwi_header->IsWidgetVisible(NGWW_MAPSIZE)) {
 				/* map size */
-				const NWidgetCore *nwi_mapsize = this->GetWidget<NWidgetCore>(NGWW_MAPSIZE);
+				const NWidgetBase *nwi_mapsize = this->GetWidget<NWidgetBase>(NGWW_MAPSIZE);
 				SetDParam(0, cur_item->info.map_width);
 				SetDParam(1, cur_item->info.map_height);
 				DrawString(nwi_mapsize->pos_x, nwi_mapsize->pos_x + nwi_mapsize->current_x - 1, y, STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT, TC_FROMSTRING, SA_CENTER);
@@ -399,7 +399,7 @@ protected:
 
 			if (nwi_header->IsWidgetVisible(NGWW_DATE)) {
 				/* current date */
-				const NWidgetCore *nwi_date = this->GetWidget<NWidgetCore>(NGWW_DATE);
+				const NWidgetBase *nwi_date = this->GetWidget<NWidgetBase>(NGWW_DATE);
 				YearMonthDay ymd;
 				ConvertDateToYMD(cur_item->info.game_date, &ymd);
 				SetDParam(0, ymd.year);
@@ -408,7 +408,7 @@ protected:
 
 			if (nwi_header->IsWidgetVisible(NGWW_YEARS)) {
 				/* number of years the game is running */
-				const NWidgetCore *nwi_years = this->GetWidget<NWidgetCore>(NGWW_YEARS);
+				const NWidgetBase *nwi_years = this->GetWidget<NWidgetBase>(NGWW_YEARS);
 				YearMonthDay ymd_cur, ymd_start;
 				ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
 				ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
@@ -694,7 +694,7 @@ public:
 				break;
 
 			case NGWW_MATRIX: { // Matrix to show networkgames
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetCore>(NGWW_MATRIX)->pos_y) / this->resize.step_height;
+				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(NGWW_MATRIX)->pos_y) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
 				id_v += this->vscroll.GetPosition();
@@ -1185,7 +1185,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				break;
 
 			case NSSW_SELMAP: { // Select map
-				int y = (pt.y - this->GetWidget<NWidgetCore>(NSSW_SELMAP)->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(NSSW_SELMAP)->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
 
 				y += this->vscroll.GetPosition();
 				if (y >= this->vscroll.GetCount()) return;
@@ -1645,7 +1645,7 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case NLWW_MATRIX: { // Company list
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetCore>(NLWW_MATRIX)->pos_y) / this->resize.step_height;
+				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(NLWW_MATRIX)->pos_y) / this->resize.step_height;
 
 				if (id_v >= this->vscroll.GetCapacity()) break;
 

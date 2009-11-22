@@ -1016,7 +1016,7 @@ public:
 				/* If industry type small map*/
 				if (this->map_type == SMT_INDUSTRY) {
 					/* If click on industries label, find right industry type and enable/disable it */
-					const NWidgetCore *wi = this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND); // Label panel
+					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND); // Label panel
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 					if (line >= this->number_of_rows) break;
 
@@ -1103,7 +1103,7 @@ public:
 			}
 		}
 
-		const NWidgetCore *wi = this->GetWidget<NWidgetCore>(SM_WIDGET_MAP);
+		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 		int hx = wi->current_x / 2;
 		int hy = wi->current_y / 2;
 		int hvx = hx * -4 + hy * 8;
@@ -1135,7 +1135,7 @@ public:
 	void SmallMapCenterOnCurrentPos()
 	{
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-		const NWidgetCore *wi = this->GetWidget<NWidgetCore>(SM_WIDGET_MAP);
+		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 
 		int x = ((vp->virtual_width  - (int)wi->current_x * TILE_SIZE) / 2 + vp->virtual_left) / 4;
 		int y = ((vp->virtual_height - (int)wi->current_y * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;

@@ -481,7 +481,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				 * spaced without doing much magic. The space we can draw on is
 				 * covered by both the spacer and text widgets, so take their
 				 * outer most boundaries (left and right) as draw locations. */
-				const NWidgetCore *nwi_spacer = this->GetWidget<NWidgetCore>(GLAND_HEIGHTMAP_NAME_SPACER);
+				const NWidgetBase *nwi_spacer = this->GetWidget<NWidgetBase>(GLAND_HEIGHTMAP_NAME_SPACER);
 				DrawString(min(r.left, nwi_spacer->pos_x), max<int>(r.right, nwi_spacer->pos_x + nwi_spacer->current_x), r.top, this->name, TC_ORANGE);
 			} break;
 		}

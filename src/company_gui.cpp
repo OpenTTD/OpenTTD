@@ -413,7 +413,7 @@ struct CompanyFinancesWindow : Window {
 		if (!small) {
 			/* Check that the expenses panel height matches the height needed for the layout. */
 			int type = _settings_client.gui.expenses_layout;
-			if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetCore>(CFW_EXPS_CATEGORY)->current_y) {
+			if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(CFW_EXPS_CATEGORY)->current_y) {
 				this->SetupWidgets();
 				this->ReInit();
 				return;

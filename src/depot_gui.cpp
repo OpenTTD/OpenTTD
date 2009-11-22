@@ -942,13 +942,14 @@ struct DepotWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_y / (int)this->resize.step_height);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX);
+		this->vscroll.SetCapacity(nwi->current_y / (int)this->resize.step_height);
 		if (this->type == VEH_TRAIN) {
-			this->hscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_x - this->header_width - this->count_width);
-			this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+			this->hscroll.SetCapacity(nwi->current_x - this->header_width - this->count_width);
+			nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		} else {
-			this->hscroll.SetCapacity(this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->current_x / (int)this->resize.step_width);
-			this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (this->hscroll.GetCapacity() << MAT_COL_START);
+			this->hscroll.SetCapacity(nwi->current_x / (int)this->resize.step_width);
+			nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (this->hscroll.GetCapacity() << MAT_COL_START);
 		}
 	}
 

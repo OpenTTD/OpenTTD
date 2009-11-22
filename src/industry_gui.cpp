@@ -594,7 +594,7 @@ public:
 	{
 		this->DrawWidgets();
 
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(IVW_INFO);
+		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(IVW_INFO);
 		uint expected = this->DrawInfo(nwi->pos_x, nwi->pos_x + nwi->current_x - 1, nwi->pos_y) - nwi->pos_y;
 		if (expected > nwi->current_y - 1) {
 			this->info_height = expected + 1;
@@ -720,7 +720,7 @@ public:
 				uint x = pt.x;
 				int line = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
 				if (pt.y >= this->production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
-					NWidgetCore *nwi = this->GetWidget<NWidgetCore>(widget);
+					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
 					uint left = nwi->pos_x + WD_FRAMETEXT_LEFT;
 					uint right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
 					if (IsInsideMM(x, left, left + 20) ) {

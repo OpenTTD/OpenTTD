@@ -609,8 +609,9 @@ struct NewGRFWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->current_y / this->resize.step_height);
-		this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST);
+		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void SetStringParameters(int widget) const

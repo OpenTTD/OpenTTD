@@ -1017,7 +1017,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case BUILD_VEHICLE_WIDGET_LIST: {
-				uint i = (pt.y - this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
+				uint i = (pt.y - this->GetWidget<NWidgetBase>(BUILD_VEHICLE_WIDGET_LIST)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
@@ -1124,7 +1124,7 @@ struct BuildVehicleWindow : Window {
 		/* Draw details panels. */
 		for (int side = 0; side < 2; side++) {
 			if (this->sel_engine != INVALID_ENGINE) {
-				NWidgetCore *nwi = this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_PANEL);
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(BUILD_VEHICLE_WIDGET_PANEL);
 				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
 						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine);
 				needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
@@ -1178,8 +1178,9 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST)->current_y) / this->resize.step_height);
-		this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST);
+		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

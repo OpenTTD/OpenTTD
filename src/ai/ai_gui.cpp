@@ -203,8 +203,9 @@ struct AIListWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->current_y / this->line_height);
-		this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(AIL_WIDGET_LIST);
+		this->vscroll.SetCapacity(nwi->current_y / this->line_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -408,8 +409,9 @@ struct AISettingsWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->current_y / this->line_height);
-		this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(AIS_WIDGET_BACKGROUND);
+		this->vscroll.SetCapacity(nwi->current_y / this->line_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnTick()
@@ -520,9 +522,10 @@ struct AIConfigWindow : public Window {
 	{
 		this->InitNested(&_ai_config_desc); // Initializes 'this->line_height' as a side effect.
 		this->selected_slot = INVALID_COMPANY;
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AIC_WIDGET_LIST)->current_y / this->line_height);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(AIC_WIDGET_LIST);
+		this->vscroll.SetCapacity(nwi->current_y / this->line_height);
 		this->vscroll.SetCount(MAX_COMPANIES);
-		this->GetWidget<NWidgetCore>(AIC_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		this->OnInvalidateData(0);
 	}
 

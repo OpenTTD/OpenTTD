@@ -1504,7 +1504,7 @@ struct GameSettingsWindow : Window {
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
-		int y = pt.y - this->GetWidget<NWidgetCore>(widget)->pos_y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
+		int y = pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 		if (y < 0) return;  // Clicked above first entry
 
 		byte btn = this->vscroll.GetPosition() + y / this->resize.step_height;  // Compute which setting is selected
@@ -1767,7 +1767,7 @@ struct CustomCurrencyWindow : Window {
 			case CUSTCURR_SEPARATOR_EDIT:
 			case CUSTCURR_PREFIX_EDIT:
 			case CUSTCURR_SUFFIX_EDIT:
-				size->width  = this->GetWidget<NWidgetCore>(CUSTCURR_RATE_DOWN)->smallest_x + this->GetWidget<NWidgetCore>(CUSTCURR_RATE_UP)->smallest_x;
+				size->width  = this->GetWidget<NWidgetBase>(CUSTCURR_RATE_DOWN)->smallest_x + this->GetWidget<NWidgetBase>(CUSTCURR_RATE_UP)->smallest_x;
 				break;
 
 			/* Make sure the window is wide enough for the widest exchange rate */
