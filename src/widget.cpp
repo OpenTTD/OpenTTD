@@ -1698,7 +1698,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			break;
 
 		case WWT_STICKYBOX:
-			this->SetFill(false, true);
+			this->SetFill(false, false);
 			this->SetMinimalSize(WD_STICKYBOX_WIDTH, 14);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_STICKY);
 			break;

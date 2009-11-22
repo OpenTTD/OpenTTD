@@ -929,7 +929,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 	/* TOP */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NGWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NGWW_CAPTION), SetMinimalSize(439, 14), SetDataTip(STR_NETWORK_SERVER_LIST_CAPTION, STR_NULL), // XXX Add default caption tooltip!
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NGWW_CAPTION), SetDataTip(STR_NETWORK_SERVER_LIST_CAPTION, STR_NULL), // XXX Add default caption tooltip!
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_MAIN),
 		NWidget(NWID_VERTICAL), SetPIP(10, 7, 0),

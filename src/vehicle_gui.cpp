@@ -728,7 +728,7 @@ enum VehicleListWindowWidgets {
 static const NWidgetPart _nested_vehicle_list[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VLW_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, VLW_WIDGET_CAPTION), SetMinimalSize(237, 14), SetDataTip(0x0, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, VLW_WIDGET_CAPTION),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, VLW_WIDGET_STICKY),
 	EndContainer(),
 

@@ -197,8 +197,8 @@ static WindowDesc _thin_news_desc(
 static NWidgetPart _nested_small_news_widgets[] = {
 	/* Caption + close box */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetMinimalSize(269, 14), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
 	EndContainer(),
 
 	/* Main part */
@@ -1008,9 +1008,9 @@ const int MessageHistoryWindow::bottom_spacing = WD_FRAMERECT_BOTTOM;
 
 static const NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, MHW_CLOSEBOX), SetMinimalSize(11, 14), SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, MHW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, MHW_CAPTION), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, MHW_STICKYBOX), SetMinimalSize(12, 14), SetDataTip(0x0, STR_TOOLTIP_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN, MHW_STICKYBOX),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),

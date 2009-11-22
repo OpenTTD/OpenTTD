@@ -94,7 +94,7 @@ static void ShowGroupActionDropdown(Window *w, GroupID gid)
 static const NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL), // Window header
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GRP_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, GRP_WIDGET_CAPTION), SetMinimalSize(437, 14),
+		NWidget(WWT_CAPTION, COLOUR_GREY, GRP_WIDGET_CAPTION),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, GRP_WIDGET_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),

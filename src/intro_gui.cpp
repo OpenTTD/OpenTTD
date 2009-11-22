@@ -153,7 +153,7 @@ struct SelectGameWindow : public Window {
 };
 
 static const NWidgetPart _nested_select_game_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_BROWN, SGI_CLOSE), SetMinimalSize(336, 14), SetDataTip(STR_INTRO_CAPTION, STR_NULL),
+	NWidget(WWT_CAPTION, COLOUR_BROWN, SGI_CLOSE), SetDataTip(STR_INTRO_CAPTION, STR_NULL),
 	NWidget(WWT_PANEL, COLOUR_BROWN, SGI_CAPTION),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
