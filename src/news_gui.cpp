@@ -1018,7 +1018,7 @@ static const NWidgetPart _nested_message_history[] = {
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, MHW_SCROLLBAR), SetFill(false, true), SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST), SetResize(0, 1),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, MHW_RESIZEBOX), SetMinimalSize(12, 12), SetDataTip(0x0, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, MHW_RESIZEBOX),
 		EndContainer(),
 	EndContainer(),
 };

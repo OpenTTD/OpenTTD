@@ -142,7 +142,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_START_ALL), SetMinimalSize(12, 12), SetFill(false, true),
 						SetDataTip(SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(0, 12), SetFill(true, true), SetResize(1, 0), EndContainer(),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, GRP_WIDGET_RESIZE), SetMinimalSize(12, 12), SetFill(false, true),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, GRP_WIDGET_RESIZE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

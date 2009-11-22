@@ -87,7 +87,7 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_VEHICLE_LIST), SetDataTip(0x0, STR_NULL), SetFill(false, true),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_STOP_ALL), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_NULL), SetFill(false, true),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_START_ALL), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_NULL), SetFill(false, true),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, DEPOT_WIDGET_RESIZE), SetFill(false, true),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, DEPOT_WIDGET_RESIZE),
 	EndContainer(),
 };
 

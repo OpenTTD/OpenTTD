@@ -715,7 +715,7 @@ static const NWidgetPart _nested_station_view_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ROADVEHS), SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_PLANES),  SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_SHIPS), SetMinimalSize(14, 12), SetFill(false, true), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SVW_RESIZE), SetFill(false, true),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SVW_RESIZE),
 	EndContainer(),
 };
 

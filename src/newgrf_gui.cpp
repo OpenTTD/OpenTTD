@@ -481,7 +481,7 @@ static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_ADD), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_FILE, STR_NEWGRF_ADD_FILE_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_RESCAN), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_RESCAN_FILES, STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ANGRFW_RESIZE), SetFill(false, true),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ANGRFW_RESIZE),
 	EndContainer(),
 };
 
