@@ -638,6 +638,7 @@ struct NewGRFWindow : public Window {
 		switch (widget) {
 			case SNGRFS_FILE_LIST: {
 				uint y = r.top + WD_MATRIX_TOP;
+				int sprite_offset_y = (FONT_HEIGHT_NORMAL - 10) / 2 - 1;
 
 				bool rtl = _dynlang.text_dir == TD_RTL;
 				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + 25;
@@ -674,8 +675,8 @@ struct NewGRFWindow : public Window {
 							}
 						}
 
-						DrawSprite(SPR_SQUARE, pal, square_left, y - 1);
-						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y - 1);
+						DrawSprite(SPR_SQUARE, pal, square_left, y + sprite_offset_y);
+						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y + sprite_offset_y);
 						uint txtoffset = c->error == NULL ? 0 : 10;
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), y, text, this->sel == c ? TC_WHITE : TC_BLACK);
 						y += this->resize.step_height;
