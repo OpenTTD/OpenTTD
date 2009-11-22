@@ -1375,9 +1375,8 @@ NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int x, int y)
  */
 NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child) : NWidgetCore(tp, colour, true, true, 0x0, STR_NULL)
 {
-	this->SetIndex(index);
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
-	assert(index >= 0);
+	if (index >= 0) this->SetIndex(index);
 	this->child = child;
 }
 
