@@ -2066,6 +2066,7 @@ struct NetworkClientListWindow : Window {
 		if (widget != CLW_PANEL) return;
 
 		bool rtl = _dynlang.text_dir == TD_RTL;
+		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - 10) / 2;
 		uint y = r.top + WD_FRAMERECT_TOP;
 		uint left = r.left + WD_FRAMERECT_LEFT;
 		uint right = r.right - WD_FRAMERECT_RIGHT;
@@ -2096,7 +2097,7 @@ struct NetworkClientListWindow : Window {
 			}
 
 			/* Filter out spectators */
-			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, icon_left, y + 1);
+			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, icon_left, y + icon_y_offset);
 
 			DrawString(name_left, name_right, y, ci->client_name, colour);
 
