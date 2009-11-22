@@ -1080,24 +1080,18 @@ static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign
 	int right = left + dpi->width;
 	int bottom = top + dpi->height;
 
-	switch (dpi->zoom) {
-		case ZOOM_LVL_NORMAL:
-			if (bottom > sign->top &&
-					top    < sign->top + 12 &&
-					right  > sign->left &&
-					left   < sign->left + sign->width_normal) {
-				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != 0 ? sign->width_normal : 0);
-			}
-			break;
+	int sign_height = FONT_HEIGHT_NORMAL + 2;
 
+	switch (dpi->zoom) {
 		case ZOOM_LVL_OUT_2X:
 			right += 2;
 			bottom += 2;
-
+		/* FALL THROUGH */
+		case ZOOM_LVL_NORMAL:
 			if (bottom > sign->top &&
-					top    < sign->top + 24 &&
+					top    < sign->top + ScaleByZoom(sign_height, dpi->zoom) &&
 					right  > sign->left &&
-					left   < sign->left + sign->width_normal * 2) {
+					left   < sign->left + ScaleByZoom(sign->width_normal, dpi->zoom)) {
 				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != 0 ? sign->width_normal : 0);
 			}
 			break;
@@ -1108,7 +1102,7 @@ static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign
 			bottom += ScaleByZoom(1, dpi->zoom) + 1;
 
 			if (bottom > sign->top &&
-					top    < sign->top + ScaleByZoom(12, dpi->zoom) &&
+					top    < sign->top + ScaleByZoom(sign_height, dpi->zoom) &&
 					right  > sign->left &&
 					left   < sign->left + ScaleByZoom(sign->width_small, dpi->zoom)) {
 				int shadow_offset = 0;
@@ -1213,7 +1207,7 @@ void ViewportSign::MarkDirty() const
 		this->left - 6,
 		this->top  - 3,
 		this->left + ScaleByZoom(this->width_normal + 12, ZOOM_LVL_MAX),
-		this->top  + ScaleByZoom(12, ZOOM_LVL_MAX));
+		this->top  + ScaleByZoom(FONT_HEIGHT_NORMAL + 2, ZOOM_LVL_MAX));
 }
 
 static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
@@ -1728,35 +1722,16 @@ void SetSelectionRed(bool b)
  */
 static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const ViewportSign *sign)
 {
-	switch (vp->zoom) {
-		case ZOOM_LVL_NORMAL:
-			x = x - vp->left + vp->virtual_left;
-			y = y - vp->top  + vp->virtual_top;
-			return (y >= sign->top &&
-					y < sign->top + 12 &&
-					x >= sign->left &&
-					x < sign->left + sign->width_normal);
+	int sign_width = (vp->zoom >= ZOOM_LVL_OUT_4X ? sign->width_small : sign->width_normal);
+	int sign_height = FONT_HEIGHT_NORMAL + 2;
 
-		case ZOOM_LVL_OUT_2X:
-			x = (x - vp->left + 1) * 2 + vp->virtual_left;
-			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
-			return (y >= sign->top &&
-					y < sign->top + 24 &&
-					x >= sign->left &&
-					x < sign->left + sign->width_normal * 2);
+	x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
+	y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
 
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
-			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
-
-			return (y >= sign->top &&
-					y < sign->top + ScaleByZoom(12, vp->zoom) &&
-					x >= sign->left &&
-					x < sign->left + ScaleByZoom(sign->width_small, vp->zoom));
-
-		default: NOT_REACHED();
-	}
+	return (y >= sign->top &&
+			y < sign->top + ScaleByZoom(sign_height, vp->zoom) &&
+			x >= sign->left &&
+			x < sign->left + ScaleByZoom(sign_width, vp->zoom));
 }
 
 static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
