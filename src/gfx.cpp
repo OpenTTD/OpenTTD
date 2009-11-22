@@ -49,6 +49,9 @@ int _pal_first_dirty;
 int _pal_count_dirty;
 
 Colour _cur_palette[256];
+
+static int _max_char_height; ///< Cache of the height of the largest font
+static int _max_char_width;  ///< Cache of the width of the largest font
 static byte _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
@@ -956,7 +959,7 @@ switch_colour:;
 	}
 
 check_bounds:
-	if (y + 19 <= dpi->top || dpi->top + dpi->height <= y) {
+	if (y + _max_char_height <= dpi->top || dpi->top + dpi->height <= y) {
 skip_char:;
 		for (;;) {
 			c = *string++;
@@ -973,7 +976,7 @@ skip_cont:;
 		}
 		if (IsPrintable(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
-			if (x + 26 >= dpi->left) {
+			if (x + _max_char_width >= dpi->left) {
 				GfxMainBlitter(GetGlyph(size, c), x, y, BM_COLOUR_REMAP);
 			}
 			x += GetCharacterWidth(size, c);
@@ -1272,22 +1275,20 @@ void DoPaletteAnimations()
 /** Initialize _stringwidth_table cache */
 void LoadStringWidthTable()
 {
-	uint i;
+	_max_char_height = 0;
+	_max_char_width  = 0;
 
-	/* Normal font */
-	for (i = 0; i != 224; i++) {
-		_stringwidth_table[FS_NORMAL][i] = GetGlyphWidth(FS_NORMAL, i + 32);
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		_max_char_height = max<int>(_max_char_height, GetCharacterHeight(fs));
+		for (uint i = 0; i != 224; i++) {
+			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
+			_max_char_width = max<int>(_max_char_width, _stringwidth_table[fs][i]);
+		}
 	}
 
-	/* Small font */
-	for (i = 0; i != 224; i++) {
-		_stringwidth_table[FS_SMALL][i] = GetGlyphWidth(FS_SMALL, i + 32);
-	}
-
-	/* Large font */
-	for (i = 0; i != 224; i++) {
-		_stringwidth_table[FS_LARGE][i] = GetGlyphWidth(FS_LARGE, i + 32);
-	}
+	/* Needed because they need to be 1 more than the widest. */
+	_max_char_height++;
+	_max_char_width++;
 
 	ReInitAllWindows();
 }
