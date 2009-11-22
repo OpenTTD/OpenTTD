@@ -1106,11 +1106,33 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	this->resize_x = 0;   // smallest non-zero child widget resize step.
 	this->resize_y = 1;   // smallest common child resize step.
 
-	/* 1. Forward call, collect biggest nested array index, and longest child length. */
+	/* 1a. Forward call, collect biggest nested array index, and longest/widest child length. */
 	uint longest = 0; // Longest child found.
+	uint max_vert_fill = 0; // Biggest vertical fill step.
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		child_wid->SetupSmallestSize(w, init_array);
 		longest = max(longest, child_wid->smallest_x);
+		max_vert_fill = max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
+		this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+	}
+	/* 1b. Make the container higher if needed to accomadate all childs nicely. */
+	uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
+	uint cur_height = this->smallest_y;
+	while (true) {
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			uint step_size = child_wid->GetVerticalStepSize(ST_SMALLEST);
+			uint child_height = child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+			if (step_size > 1 && child_height < cur_height) { // Small step sizes or already fitting childs are not interesting.
+				uint remainder = (cur_height - child_height) % step_size;
+				if (remainder > 0) { // Child did not fit entirely, widen the container.
+					cur_height += step_size - remainder;
+					assert(cur_height < max_smallest); // Safeguard against infinite height expansion.
+					/* Remaining childs will adapt to the new cur_height, thus speeding up the computation. */
+				}
+			}
+		}
+		if (this->smallest_y == cur_height) break;
+		this->smallest_y = cur_height; // Smallest height got changed, try again.
 	}
 	/* 2. For containers that must maintain equal width, extend child minimal size. */
 	if (this->flags & NC_EQUALSIZE) {
@@ -1128,7 +1150,6 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		}
 
 		this->smallest_x += child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
-		this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 		if (child_wid->fill_x > 0) {
 			if (this->fill_x == 0 || this->fill_x > child_wid->fill_x) this->fill_x = child_wid->fill_x;
 		}
@@ -1237,11 +1258,33 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	this->resize_x = 1;   // smallest common child resize step.
 	this->resize_y = 0;   // smallest non-zero child widget resize step.
 
-	/* 1. Forward call, collect biggest nested array index, and longest child length. */
+	/* 1a. Forward call, collect biggest nested array index, and longest/widest child length. */
 	uint highest = 0; // Highest child found.
+	uint max_hor_fill = 0; // Biggest horizontal fill step.
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		child_wid->SetupSmallestSize(w, init_array);
 		highest = max(highest, child_wid->smallest_y);
+		max_hor_fill = max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
+		this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+	}
+	/* 1b. Make the container wider if needed to accomadate all childs nicely. */
+	uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
+	uint cur_width = this->smallest_x;
+	while (true) {
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			uint step_size = child_wid->GetHorizontalStepSize(ST_SMALLEST);
+			uint child_width = child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
+			if (step_size > 1 && child_width < cur_width) { // Small step sizes or already fitting childs are not interesting.
+				uint remainder = (cur_width - child_width) % step_size;
+				if (remainder > 0) { // Child did not fit entirely, widen the container.
+					cur_width += step_size - remainder;
+					assert(cur_width < max_smallest); // Safeguard against infinite width expansion.
+					/* Remaining childs will adapt to the new cur_width, thus speeding up the computation. */
+				}
+			}
+		}
+		if (this->smallest_x == cur_width) break;
+		this->smallest_x = cur_width; // Smallest width got changed, try again.
 	}
 	/* 2. For containers that must maintain equal width, extend child minimal size. */
 	if (this->flags & NC_EQUALSIZE) {
@@ -1259,7 +1302,6 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		}
 
 		this->smallest_y += child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
-		this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
 		if (child_wid->fill_y > 0) {
 			if (this->fill_y == 0 || this->fill_y > child_wid->fill_y) this->fill_y = child_wid->fill_y;
 		}
