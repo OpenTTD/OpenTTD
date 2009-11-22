@@ -659,6 +659,8 @@ struct DepotWindow : Window {
 					size->width = resize->width * (this->type == VEH_ROAD ? 5 : 3);
 					size->height = resize->height * (this->type == VEH_ROAD ? 5 : 3);
 				}
+				fill->width = resize->width;
+				fill->height = resize->height;
 			} break;
 		}
 	}
