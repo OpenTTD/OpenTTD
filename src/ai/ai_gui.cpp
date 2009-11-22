@@ -483,7 +483,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_MATRIX, COLOUR_MAUVE, AIC_WIDGET_LIST), SetMinimalSize(288, 112), SetDataTip(0x801, STR_AI_CONFIG_LIST_TOOLTIP),
+			NWidget(WWT_MATRIX, COLOUR_MAUVE, AIC_WIDGET_LIST), SetMinimalSize(288, 112), SetFill(true, false), SetDataTip(0x801, STR_AI_CONFIG_LIST_TOOLTIP),
 			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, AIC_WIDGET_SCROLLBAR),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 9),
