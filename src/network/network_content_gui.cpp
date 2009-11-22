@@ -445,6 +445,7 @@ public:
 
 
 		/* Fill the matrix with the information */
+		int sprite_y_offset = WD_MATRIX_TOP + (FONT_HEIGHT_NORMAL - 10) / 2;
 		uint y = r.top;
 		int cnt = 0;
 		for (ConstContentIterator iter = this->content.Get(this->vscroll.GetPosition()); iter != this->content.End() && cnt < this->vscroll.GetCapacity(); iter++, cnt++) {
@@ -462,7 +463,7 @@ public:
 				case ContentInfo::DOES_NOT_EXIST: sprite = SPR_BLOT; pal = PALETTE_TO_RED;   break;
 				default: NOT_REACHED();
 			}
-			DrawSprite(sprite, pal, nwi_checkbox->pos_x + (pal == PAL_NONE ? 2 : 3), y + WD_MATRIX_TOP + (pal == PAL_NONE ? 1 : 0));
+			DrawSprite(sprite, pal, nwi_checkbox->pos_x + (pal == PAL_NONE ? 2 : 3), y + sprite_y_offset + (pal == PAL_NONE ? 1 : 0));
 
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
 			DrawString(nwi_type->pos_x, nwi_type->pos_x + nwi_type->current_x - 1, y + WD_MATRIX_TOP, str, TC_BLACK, SA_CENTER);
