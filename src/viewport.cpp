@@ -1718,194 +1718,99 @@ void SetSelectionRed(bool b)
 	SetSelectionTilesDirty();
 }
 
-
-static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
+/**
+ * Test whether a sign is below the mouse
+ * @param vp the clicked viewport
+ * @param x X position of click
+ * @param y Y position of click
+ * @param sign the sign to check
+ * @return true if the sign was hit
+ */
+static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const ViewportSign *sign)
 {
-	const Town *t;
-
-	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES)) return false;
-
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
 			x = x - vp->left + vp->virtual_left;
 			y = y - vp->top  + vp->virtual_top;
-			FOR_ALL_TOWNS(t) {
-				if (y >= t->sign.top &&
-						y < t->sign.top + 12 &&
-						x >= t->sign.left &&
-						x < t->sign.left + t->sign.width_normal) {
-					ShowTownViewWindow(t->index);
-					return true;
-				}
-			}
-			break;
+			return (y >= sign->top &&
+					y < sign->top + 12 &&
+					x >= sign->left &&
+					x < sign->left + sign->width_normal);
 
 		case ZOOM_LVL_OUT_2X:
 			x = (x - vp->left + 1) * 2 + vp->virtual_left;
 			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
-			FOR_ALL_TOWNS(t) {
-				if (y >= t->sign.top &&
-						y < t->sign.top + 24 &&
-						x >= t->sign.left &&
-						x < t->sign.left + t->sign.width_normal * 2) {
-					ShowTownViewWindow(t->index);
-					return true;
-				}
-			}
-			break;
+			return (y >= sign->top &&
+					y < sign->top + 24 &&
+					x >= sign->left &&
+					x < sign->left + sign->width_normal * 2);
 
 		case ZOOM_LVL_OUT_4X:
 		case ZOOM_LVL_OUT_8X:
 			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
 			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
 
-			FOR_ALL_TOWNS(t) {
-				if (y >= t->sign.top &&
-						y < t->sign.top + ScaleByZoom(12, vp->zoom) &&
-						x >= t->sign.left &&
-						x < t->sign.left + ScaleByZoom(t->sign.width_small, vp->zoom)) {
-					ShowTownViewWindow(t->index);
-					return true;
-				}
-			}
-			break;
+			return (y >= sign->top &&
+					y < sign->top + ScaleByZoom(12, vp->zoom) &&
+					x >= sign->left &&
+					x < sign->left + ScaleByZoom(sign->width_small, vp->zoom));
 
 		default: NOT_REACHED();
+	}
+}
+
+static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
+{
+	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES)) return false;
+
+	const Town *t;
+	FOR_ALL_TOWNS(t) {
+		if (CheckClickOnViewportSign(vp, x, y, &t->sign)) {
+			ShowTownViewWindow(t->index);
+			return true;
+		}
 	}
 
 	return false;
 }
 
-static bool ClickOnStation(const BaseStation *st)
-{
-	/* Check whether the base station is a station or a waypoint */
-	bool is_station = Station::IsExpected(st);
-
-	/* Don't draw if the display options are disabled */
-	if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) return false;
-
-	if (is_station) {
-		ShowStationViewWindow(st->index);
-	} else {
-		ShowWaypointWindow(Waypoint::From(st));
-	}
-	return true;
-}
-
 static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
-	if (!(HasBit(_display_opt, DO_SHOW_STATION_NAMES) || HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)) || IsInvisibilitySet(TO_SIGNS)) {
-		return false;
-	}
+	if (!(HasBit(_display_opt, DO_SHOW_STATION_NAMES) || HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)) || IsInvisibilitySet(TO_SIGNS)) return false;
 
 	const BaseStation *st;
-	bool ret = false;
+	FOR_ALL_BASE_STATIONS(st) {
+		/* Check whether the base station is a station or a waypoint */
+		bool is_station = Station::IsExpected(st);
 
-	switch (vp->zoom) {
-		case ZOOM_LVL_NORMAL:
-			x = x - vp->left + vp->virtual_left;
-			y = y - vp->top  + vp->virtual_top;
-			FOR_ALL_BASE_STATIONS(st) {
-				if (y >= st->sign.top &&
-						y < st->sign.top + 12 &&
-						x >= st->sign.left &&
-						x < st->sign.left + st->sign.width_normal) {
-					ret = ClickOnStation(st);
-					if (ret) break;
-				}
+		/* Don't check if the display options are disabled */
+		if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) continue;
+
+		if (CheckClickOnViewportSign(vp, x, y, &st->sign)) {
+			if (is_station) {
+				ShowStationViewWindow(st->index);
+			} else {
+				ShowWaypointWindow(Waypoint::From(st));
 			}
-			break;
-
-		case ZOOM_LVL_OUT_2X:
-			x = (x - vp->left + 1) * 2 + vp->virtual_left;
-			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
-			FOR_ALL_BASE_STATIONS(st) {
-				if (y >= st->sign.top &&
-						y < st->sign.top + 24 &&
-						x >= st->sign.left &&
-						x < st->sign.left + st->sign.width_normal * 2) {
-					ret = ClickOnStation(st);
-					if (ret) break;
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
-			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
-
-			FOR_ALL_BASE_STATIONS(st) {
-				if (y >= st->sign.top &&
-						y < st->sign.top + ScaleByZoom(12, vp->zoom) &&
-						x >= st->sign.left &&
-						x < st->sign.left + ScaleByZoom(st->sign.width_small, vp->zoom)) {
-					ret = ClickOnStation(st);
-					if (ret) break;
-				}
-			}
-			break;
-
-		default: NOT_REACHED();
+			return true;
+		}
 	}
 
-	return ret;
+	return false;
 }
 
 
 static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
-	const Sign *si;
-
 	/* Signs are turned off, or they are transparent and invisibility is ON, or company is a spectator */
 	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || IsInvisibilitySet(TO_SIGNS) || _current_company == COMPANY_SPECTATOR) return false;
 
-	switch (vp->zoom) {
-		case ZOOM_LVL_NORMAL:
-			x = x - vp->left + vp->virtual_left;
-			y = y - vp->top  + vp->virtual_top;
-			FOR_ALL_SIGNS(si) {
-				if (y >= si->sign.top &&
-						y <  si->sign.top + 12 &&
-						x >= si->sign.left &&
-						x <  si->sign.left + si->sign.width_normal) {
-					HandleClickOnSign(si);
-					return true;
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_2X:
-			x = (x - vp->left + 1) * 2 + vp->virtual_left;
-			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
-			FOR_ALL_SIGNS(si) {
-				if (y >= si->sign.top &&
-						y <  si->sign.top + 24 &&
-						x >= si->sign.left &&
-						x <  si->sign.left + si->sign.width_normal * 2) {
-					HandleClickOnSign(si);
-					return true;
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
-			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
-
-			FOR_ALL_SIGNS(si) {
-				if (y >= si->sign.top &&
-						y <  si->sign.top + ScaleByZoom(12, vp->zoom) &&
-						x >= si->sign.left &&
-						x <  si->sign.left + ScaleByZoom(si->sign.width_small, vp->zoom)) {
-					HandleClickOnSign(si);
-					return true;
-				}
-			}
-			break;
-
-		default: NOT_REACHED();
+	const Sign *si;
+	FOR_ALL_SIGNS(si) {
+		if (CheckClickOnViewportSign(vp, x, y, &si->sign)) {
+			HandleClickOnSign(si);
+			return true;
+		}
 	}
 
 	return false;
