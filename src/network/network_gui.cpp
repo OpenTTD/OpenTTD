@@ -416,6 +416,9 @@ protected:
 				DrawString(nwi_years->pos_x, nwi_years->pos_x + nwi_years->current_x - 1, y, STR_JUST_INT, TC_BLACK, SA_CENTER);
 			}
 
+			/* Align the sprites */
+			y += (FONT_HEIGHT_NORMAL - 10) / 2;
+
 			/* draw a lock if the server is password protected */
 			if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, nwi_info->pos_x + 5, y - 1);
 
@@ -1345,9 +1348,9 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 														SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP),
 				EndContainer(),
 				/* List of playable scenarios. */
-				NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetFill(true, false),
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SELECT_MAP_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_SELECT_MAP, STR_NULL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 6), SetFill(true, false),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NSSW_SELMAP), SetMinimalSize(250, 0), SetFill(true, true), SetDataTip(STR_NULL, STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP), EndContainer(),
 					NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NSSW_SCROLLBAR),
@@ -1555,7 +1558,7 @@ struct NetworkLobbyWindow : public Window {
 
 			/* If the company's income was positive puts a green dot else a red dot */
 			if (this->company_info[company].income >= 0) income = true;
-			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, blob_left, y);
+			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, blob_left, y + (FONT_HEIGHT_NORMAL - 10) / 2);
 
 			pos++;
 			y += this->resize.step_height;

@@ -239,10 +239,10 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 		/* 'exit program' button */
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(104, 0),
+			NWidget(NWID_SPACER), SetFill(true, false),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EXIT), SetMinimalSize(128, 12),
 								SetDataTip(STR_INTRO_QUIT, STR_INTRO_TOOLTIP_QUIT),
-			NWidget(NWID_SPACER), SetMinimalSize(104, 0),
+			NWidget(NWID_SPACER), SetFill(true, false),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
