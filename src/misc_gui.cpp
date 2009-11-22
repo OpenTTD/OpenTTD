@@ -521,8 +521,8 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
-			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetFill(false, true), SetPadding(2, 0, 1, 0),
-			NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetFill(false, true), SetMinimalSize(238, 123),
+			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetFill(0, 1), SetPadding(2, 0, 1, 0),
+			NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetFill(0, 1), SetMinimalSize(238, 123),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1342,7 +1342,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
 		if (widget == QUERY_STR_WIDGET_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
-			this->GetWidget<NWidgetCore>(widget)->SetFill(false, true);
+			this->GetWidget<NWidgetCore>(widget)->SetFill(0, 1);
 			size->width = 0;
 		}
 	}
@@ -1431,12 +1431,12 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetFill(true, true), SetPadding(2, 2, 2, 2),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetFill(true, true), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetFill(true, true), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetFill(true, true), SetDataTip(STR_BUTTON_OK, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_OK, STR_NULL),
 	EndContainer(),
 };
 
@@ -1640,14 +1640,14 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(true, false), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(true, false), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetFill(true, false), SetResize(1, 0), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_FILE_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_INSET, COLOUR_GREY, SLWW_DRIVES_DIRECTORIES_LIST), SetFill(true, true), SetPadding(2, 1, 2, 2),
+				NWidget(WWT_INSET, COLOUR_GREY, SLWW_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 1, 2, 2),
 										SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, SLWW_CONTENT_DOWNLOAD_SEL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_CONTENT_DOWNLOAD), SetResize(1, 0),
@@ -1669,10 +1669,10 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(true, false), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(true, false), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetFill(true, false), SetResize(1, 0), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_FILE_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_INSET, COLOUR_GREY, SLWW_DRIVES_DIRECTORIES_LIST), SetPadding(2, 1, 0, 2),
@@ -1682,12 +1682,12 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 				NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLWW_SCROLLBAR),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, SLWW_SAVE_OSK_TITLE), SetPadding(3, 2, 2, 2), SetFill(true, false), SetResize(1, 0),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, SLWW_SAVE_OSK_TITLE), SetPadding(3, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
 										SetDataTip(STR_SAVELOAD_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_DELETE_SELECTION), SetDataTip(STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP), SetFill(true, false), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SAVE_GAME),        SetDataTip(STR_SAVELOAD_SAVE_BUTTON, STR_SAVELOAD_SAVE_TOOLTIP),     SetFill(true, false), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_DELETE_SELECTION), SetDataTip(STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SAVE_GAME),        SetDataTip(STR_SAVELOAD_SAVE_BUTTON, STR_SAVELOAD_SAVE_TOOLTIP),     SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLWW_RESIZE),
 	EndContainer(),
 };

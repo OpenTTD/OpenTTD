@@ -124,7 +124,7 @@ public:
 	{
 		NWidgetLeaf *leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NAME, STR_NETWORK_SERVER_LIST_GAME_NAME, STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP);
 		leaf->SetResize(1, 0);
-		leaf->SetFill(true, false);
+		leaf->SetFill(1, 0);
 		this->Add(leaf);
 
 		this->Add(new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CLIENTS, STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION, STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP));
@@ -134,7 +134,7 @@ public:
 
 		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
 		leaf->SetMinimalSize(40, 12);
-		leaf->SetFill(false, true);
+		leaf->SetFill(0, 1);
 		this->Add(leaf);
 
 		/* First and last are always visible, the rest is implicitly zeroed */
@@ -149,8 +149,8 @@ public:
 
 		this->smallest_x = this->head->smallest_x + this->tail->smallest_x; // First and last are always shown, rest not
 		this->smallest_y = 0; // Biggest child.
-		this->fill_x = true;
-		this->fill_y = false;
+		this->fill_x = 1;
+		this->fill_y = 0;
 		this->resize_x = 1; // We only resize in this direction
 		this->resize_y = 0; // We never resize in this direction
 
@@ -940,7 +940,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_CONNECTION), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
 				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NGWW_CONN_BTN),
 										SetDataTip(STR_BLACK_STRING, STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP),
-				NWidget(NWID_SPACER), SetFill(true, false), SetResize(1, 0),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_CLIENT_LABEL), SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME, STR_NULL),
 				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NGWW_CLIENT), SetMinimalSize(151, 12),
 										SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE, STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP),
@@ -951,16 +951,16 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 					NWidget(NWID_HORIZONTAL),
 						NWidget(NWID_VERTICAL),
 							NWidgetFunction(MakeResizableHeader),
-							NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NGWW_MATRIX), SetResize(1, 1), SetFill(true, false),
+							NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NGWW_MATRIX), SetResize(1, 1), SetFill(1, 0),
 												SetDataTip(0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT),
 						EndContainer(),
 						NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NGWW_SCROLLBAR),
 					EndContainer(),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0), SetFill(true, true),
-					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED_LABEL), SetFill(true, false),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0), SetFill(1, 1),
+					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED_LABEL), SetFill(1, 0),
 										SetDataTip(STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 0, WD_VSCROLLBAR_WIDTH),
-						NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED), SetFill(true, false), SetResize(1, 0),
+						NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED), SetFill(1, 0), SetResize(1, 0),
 											SetDataTip(0x0, STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST),
 						EndContainer(),
 					EndContainer(),
@@ -968,17 +968,17 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 				/* RIGHT SIDE */
 				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_DETAILS),
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, NGWW_DETAILS_SPACER), SetMinimalSize(140, 155), SetResize(0, 1), SetFill(true, true), // Make sure it's at least this wide
+						NWidget(WWT_EMPTY, INVALID_COLOUR, NGWW_DETAILS_SPACER), SetMinimalSize(140, 155), SetResize(0, 1), SetFill(1, 1), // Make sure it's at least this wide
 						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-							NWidget(NWID_SPACER), SetFill(true, false),
+							NWidget(NWID_SPACER), SetFill(1, 0),
 							NWidget(NWID_SELECTION, INVALID_COLOUR, NGWW_NEWGRF_SEL),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NEWGRF), SetFill(true, false), SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_NULL),
-								NWidget(NWID_SPACER), SetFill(true, false),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NEWGRF), SetFill(1, 0), SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_NULL),
+								NWidget(NWID_SPACER), SetFill(1, 0),
 							EndContainer(),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_JOIN), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_JOIN_GAME, STR_NULL),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_REFRESH), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_JOIN), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_JOIN_GAME, STR_NULL),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_REFRESH), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
 						EndContainer(),
 					EndContainer(),
 				EndContainer(),
@@ -987,15 +987,15 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 7, 4),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_FIND), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_FIND_SERVER, STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_ADD), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_ADD_SERVER, STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_START), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_START_SERVER, STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_FIND), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_FIND_SERVER, STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_ADD), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_ADD_SERVER, STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_START), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_START_SERVER, STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 					EndContainer(),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 6), SetResize(1, 0), SetFill(true, false),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 6), SetResize(1, 0), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(NWID_SPACER), SetFill(false, true),
+					NWidget(NWID_SPACER), SetFill(0, 1),
 					NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE, NGWW_RESIZE),
 				EndContainer(),
 			EndContainer(),
@@ -1355,77 +1355,77 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 				/* Game name widgets */
 				NWidget(NWID_HORIZONTAL), SetPIP(0, 2, 0),
 					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_GAMENAME_LABEL), SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME, STR_NULL),
-					NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NSSW_GAMENAME), SetMinimalSize(10, 12), SetFill(true, false),
+					NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NSSW_GAMENAME), SetMinimalSize(10, 12), SetFill(1, 0),
 														SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP),
 				EndContainer(),
 				/* List of playable scenarios. */
-				NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetFill(true, false),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SELECT_MAP_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_SELECT_MAP, STR_NULL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 6), SetFill(true, false),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SELECT_MAP_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_SELECT_MAP, STR_NULL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 6), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NSSW_SELMAP), SetMinimalSize(250, 0), SetFill(true, true), SetDataTip(STR_NULL, STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP), EndContainer(),
+					NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NSSW_SELMAP), SetMinimalSize(250, 0), SetFill(1, 1), SetDataTip(STR_NULL, STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP), EndContainer(),
 					NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NSSW_SCROLLBAR),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(10, 0, 10),
 				/* Password widgets. */
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_SETPWD), SetFill(true, false),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_SETPWD), SetFill(1, 0),
 														SetDataTip(STR_NETWORK_START_SERVER_SET_PASSWORD, STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP),
 				/* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
-				NWidget(NWID_SPACER), SetFill(true, true),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 1),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_BTN), SetFill(true, false),
+				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_BTN), SetFill(1, 0),
 												SetDataTip(STR_BLACK_STRING, STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTND), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTND), SetMinimalSize(12, 12), SetFill(0, 1),
 												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_TXT), SetFill(true, false),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_TXT), SetFill(1, 0),
 												SetDataTip(STR_NETWORK_START_SERVER_CLIENTS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
-					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTNU), SetMinimalSize(12, 12), SetFill(0, 1),
 												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTND), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTND), SetMinimalSize(12, 12), SetFill(0, 1),
 												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_TXT), SetFill(true, false),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_TXT), SetFill(1, 0),
 												SetDataTip(STR_NETWORK_START_SERVER_COMPANIES_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
-					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTNU), SetMinimalSize(12, 12), SetFill(0, 1),
 												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTND), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTND), SetMinimalSize(12, 12), SetFill(0, 1),
 												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_TXT), SetFill(true, false),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_TXT), SetFill(1, 0),
 												SetDataTip(STR_NETWORK_START_SERVER_SPECTATORS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
-					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTNU), SetMinimalSize(12, 12), SetFill(false, true),
+					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTNU), SetMinimalSize(12, 12), SetFill(0, 1),
 												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_LABEL), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_BTN), SetFill(true, false),
+				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_BTN), SetFill(1, 0),
 												SetDataTip(STR_BLACK_STRING, STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		/* Buttons Start / Load / Cancel. */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 5, 10),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_START), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_START_GAME, STR_NETWORK_START_SERVER_START_GAME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_LOAD), SetFill(true, false), SetDataTip(STR_NETWORK_START_SERVER_LOAD_GAME, STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_CANCEL), SetFill(true, false), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_START), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_START_GAME, STR_NETWORK_START_SERVER_START_GAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_LOAD), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_LOAD_GAME, STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 10),
 	EndContainer(),
@@ -1703,28 +1703,28 @@ static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 10),
 			/* Company list. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_WHITE, NLWW_HEADER), SetMinimalSize(146, 0), SetResize(1, 0), SetFill(true, false), EndContainer(),
-				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NLWW_MATRIX), SetMinimalSize(146, 0), SetResize(1, 1), SetFill(true, true), SetDataTip(0, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_WHITE, NLWW_HEADER), SetMinimalSize(146, 0), SetResize(1, 0), SetFill(1, 0), EndContainer(),
+				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NLWW_MATRIX), SetMinimalSize(146, 0), SetResize(1, 1), SetFill(1, 1), SetDataTip(0, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NLWW_SCROLLBAR),
 			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetResize(0, 1),
 			/* Company info. */
-			NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_DETAILS), SetMinimalSize(232, 0), SetResize(1, 1), SetFill(true, true), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_DETAILS), SetMinimalSize(232, 0), SetResize(1, 1), SetFill(1, 1), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 		/* Buttons. */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 3, 10),
 			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 3, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_JOIN), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_GAME_LOBBY_JOIN_COMPANY, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_NEW), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_GAME_LOBBY_NEW_COMPANY, STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_JOIN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_GAME_LOBBY_JOIN_COMPANY, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_NEW), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_GAME_LOBBY_NEW_COMPANY, STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 3, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_SPECTATE), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_GAME_LOBBY_SPECTATE_GAME, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_REFRESH), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_SPECTATE), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_GAME_LOBBY_SPECTATE_GAME, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_REFRESH), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 3, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_CANCEL), SetResize(1, 0), SetFill(true, false), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-				NWidget(NWID_SPACER), SetFill(true, true),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_CANCEL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 1),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
@@ -2353,15 +2353,15 @@ static const NWidgetPart _nested_network_company_password_window_widgets[] = {
 				NWidget(WWT_EDITBOX, COLOUR_GREY, NCPWW_PASSWORD), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
-				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(NWID_SPACER), SetFill(1, 0),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, NCPWW_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 12),
 											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_CANCEL), SetFill(true, false), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_OK), SetFill(true, false), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_OK), SetFill(1, 0), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
 	EndContainer(),
 };
 

@@ -73,20 +73,20 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 			NWidget(WWT_HSCROLLBAR, COLOUR_GREY, DEPOT_WIDGET_H_SCROLL),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL), SetDataTip(0x0, STR_NULL), SetResize(0, 1), SetFill(false, true),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL_CHAIN), SetDataTip(SPR_SELL_CHAIN_TRAIN, STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP), SetResize(0, 1), SetFill(false, true),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL), SetDataTip(0x0, STR_NULL), SetResize(0, 1), SetFill(0, 1),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL_CHAIN), SetDataTip(SPR_SELL_CHAIN_TRAIN, STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP), SetResize(0, 1), SetFill(0, 1),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL_ALL), SetDataTip(0x0, STR_NULL),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_AUTOREPLACE), SetDataTip(0x0, STR_NULL),
 		EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, DEPOT_WIDGET_V_SCROLL),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_BUILD), SetDataTip(0x0, STR_NULL), SetFill(true, true), SetResize(1, 0),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, DEPOT_WIDGET_CLONE), SetDataTip(0x0, STR_NULL), SetFill(true, true), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_LOCATION), SetDataTip(STR_BUTTON_LOCATION, STR_NULL), SetFill(true, true), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_VEHICLE_LIST), SetDataTip(0x0, STR_NULL), SetFill(false, true),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_STOP_ALL), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_NULL), SetFill(false, true),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_START_ALL), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_NULL), SetFill(false, true),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_BUILD), SetDataTip(0x0, STR_NULL), SetFill(1, 1), SetResize(1, 0),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, DEPOT_WIDGET_CLONE), SetDataTip(0x0, STR_NULL), SetFill(1, 1), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_LOCATION), SetDataTip(STR_BUTTON_LOCATION, STR_NULL), SetFill(1, 1), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_VEHICLE_LIST), SetDataTip(0x0, STR_NULL), SetFill(0, 1),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_STOP_ALL), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_NULL), SetFill(0, 1),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_START_ALL), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_NULL), SetFill(0, 1),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY, DEPOT_WIDGET_RESIZE),
 	EndContainer(),
 };
@@ -551,7 +551,7 @@ struct DepotWindow : Window {
 	 */
 	void SetupWidgetData(VehicleType type)
 	{
-		if (type != VEH_TRAIN) this->GetWidget<NWidgetCore>(DEPOT_WIDGET_SELL_CHAIN)->fill_y = false; // Disable vertical filling of chain-sell widget for non-train windows.
+		if (type != VEH_TRAIN) this->GetWidget<NWidgetCore>(DEPOT_WIDGET_SELL_CHAIN)->fill_y = 0; // Disable vertical filling of chain-sell widget for non-train windows.
 
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_CAPTION)->widget_data   = STR_DEPOT_TRAIN_CAPTION + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_STOP_ALL)->tool_tip     = STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP + type;

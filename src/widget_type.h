@@ -150,8 +150,8 @@ public:
 	virtual void SetDirty(const Window *w) const;
 
 	WidgetType type;      ///< Type of the widget / nested widget.
-	bool fill_x;          ///< Allow horizontal filling from initial size.
-	bool fill_y;          ///< Allow vertical filling from initial size.
+	uint fill_x;          ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
+	uint fill_y;          ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
 	uint resize_x;        ///< Horizontal resize step (\c 0 means not resizable).
 	uint resize_y;        ///< Vertical resize step (\c 0 means not resizable).
 	/* Size of the widget in the smallest window possible.
@@ -184,8 +184,7 @@ protected:
  */
 inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
-	if (sizing == ST_RESIZE) return this->resize_x;
-	return this->fill_x ? 1 : 0;
+	return (sizing == ST_RESIZE) ? this->resize_x : this->fill_x;
 }
 
 /**
@@ -194,19 +193,18 @@ inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
  */
 inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
-	if (sizing == ST_RESIZE) return this->resize_y;
-	return this->fill_y ? 1 : 0;
+	return (sizing == ST_RESIZE) ? this->resize_y : this->fill_y;
 }
 
 /** Base class for a resizable nested widget.
  * @ingroup NestedWidgets */
 class NWidgetResizeBase : public NWidgetBase {
 public:
-	NWidgetResizeBase(WidgetType tp, bool fill_x, bool fill_y);
+	NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y);
 
 	void SetMinimalSize(uint min_x, uint min_y);
 	void SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size);
-	void SetFill(bool fill_x, bool fill_y);
+	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
@@ -240,7 +238,7 @@ DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay);
  * @ingroup NestedWidgets */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, bool def_fill_x, bool def_fill_y, uint16 widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint16 widget_data, StringID tool_tip);
 
 	void SetIndex(int index);
 	void SetDataTip(uint16 widget_data, StringID tool_tip);
@@ -638,13 +636,13 @@ static inline NWidgetPart SetMinimalTextLines(uint8 lines, uint8 spacing, FontSi
  * @param y_fill Allow vertical filling from minimal size.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetFill(bool x_fill, bool y_fill)
+static inline NWidgetPart SetFill(uint fill_x, uint fill_y)
 {
 	NWidgetPart part;
 
 	part.type = WPT_FILL;
-	part.u.xy.x = x_fill;
-	part.u.xy.y = y_fill;
+	part.u.xy.x = fill_x;
+	part.u.xy.y = fill_y;
 
 	return part;
 }

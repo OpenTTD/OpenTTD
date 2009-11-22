@@ -914,8 +914,8 @@ public:
 	{
 		this->smallest_x = 0; // Biggest child
 		this->smallest_y = 0; // Biggest child
-		this->fill_x = true;
-		this->fill_y = false;
+		this->fill_x = 1;
+		this->fill_y = 0;
 		this->resize_x = 1; // We only resize in this direction
 		this->resize_y = 0; // We never resize in this direction
 		this->spacers = 0;

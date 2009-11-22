@@ -118,7 +118,7 @@ static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 	for (int widnum = GLW_FIRST_COMPANY; widnum <= GLW_LAST_COMPANY; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(246, 12);
-		panel->SetFill(false, false);
+		panel->SetFill(0, 0);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(panel);
 	}
@@ -872,7 +872,7 @@ static NWidgetBase *MakeCargoButtons(int *biggest_index)
 		*biggest_index = CPW_CARGO_FIRST + cs->Index();
 		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, *biggest_index, NULL);
 		leaf->tool_tip = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
-		leaf->SetFill(true, false);
+		leaf->SetFill(1, 0);
 		leaf->SetLowered(true);
 		ver->Add(leaf);
 	}
@@ -888,23 +888,23 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 128), SetResize(0, 1),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(NWID_SPACER), SetFill(1, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY, CPW_HEADER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, STR_NULL),
-				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(NWID_SPACER), SetFill(1, 0),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(true, true),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1),
 				NWidget(NWID_VERTICAL),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(false, false),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0),
 						NWidgetFunction(MakeCargoButtons),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(false, true),
+					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
 				EndContainer(),
-				NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(false, true),
+				NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(NWID_SPACER), SetFill(1, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY, CPW_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
-				NWidget(NWID_SPACER), SetFill(true, false),
+				NWidget(NWID_SPACER), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -1319,7 +1319,7 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
 	for (int widnum = PRW_SCORE_FIRST; widnum <= PRW_SCORE_LAST; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
-		panel->SetFill(true, true);
+		panel->SetFill(1, 1);
 		panel->SetDataTip(0x0, performance_tips[widnum - PRW_SCORE_FIRST]);
 		vert->Add(panel);
 	}
@@ -1359,7 +1359,7 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
-		panel->SetFill(true, false);
+		panel->SetFill(1, 0);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		hor->Add(panel);
 		hor_length++;
@@ -1371,7 +1371,7 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
 		NWidgetSpacer *spc = new NWidgetSpacer(0, 0);
 		spc->SetMinimalSize(sprite_size.width, sprite_size.height);
-		spc->SetFill(true, false);
+		spc->SetFill(1, 0);
 		hor->Add(spc);
 	}
 	if (hor != NULL) vert->Add(hor);
