@@ -1064,31 +1064,29 @@ static void ViewportAddLandscape()
 	} while (--height);
 }
 
-
-static void ViewportAddTownNames(DrawPixelInfo *dpi)
+/**
+ * Add a string to draw in the viewport
+ * @param dpi current viewport area
+ * @param sign sign position and dimension
+ * @param string_normal String for normal and 2x zoom level
+ * @param string_small String for 4x and 8x zoom level
+ * @param string_small_shadow Shadow string for 4x and 8x zoom level; or STR_NULL if no shadow
+ * @param colour colour of the sign background; or 0 if transparent
+ */
+static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, uint16 colour = 0)
 {
-	Town *t;
-	int left, top, right, bottom;
-
-	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU)
-		return;
-
-	left = dpi->left;
-	top = dpi->top;
-	right = left + dpi->width;
-	bottom = top + dpi->height;
+	int left = dpi->left;
+	int top = dpi->top;
+	int right = left + dpi->width;
+	int bottom = top + dpi->height;
 
 	switch (dpi->zoom) {
 		case ZOOM_LVL_NORMAL:
-			FOR_ALL_TOWNS(t) {
-				if (bottom > t->sign.top &&
-						top    < t->sign.top + 12 &&
-						right  > t->sign.left &&
-						left   < t->sign.left + t->sign.width_normal) {
-					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-						_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
-						t->index, t->population);
-				}
+			if (bottom > sign->top &&
+					top    < sign->top + 12 &&
+					right  > sign->left &&
+					left   < sign->left + sign->width_normal) {
+				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != 0 ? sign->width_normal : 0);
 			}
 			break;
 
@@ -1096,15 +1094,11 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 			right += 2;
 			bottom += 2;
 
-			FOR_ALL_TOWNS(t) {
-				if (bottom > t->sign.top &&
-						top    < t->sign.top + 24 &&
-						right  > t->sign.left &&
-						left   < t->sign.left + t->sign.width_normal * 2) {
-					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-						_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
-						t->index, t->population);
-				}
+			if (bottom > sign->top &&
+					top    < sign->top + 24 &&
+					right  > sign->left &&
+					left   < sign->left + sign->width_normal * 2) {
+				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != 0 ? sign->width_normal : 0);
 			}
 			break;
 
@@ -1113,14 +1107,17 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 			right += ScaleByZoom(1, dpi->zoom);
 			bottom += ScaleByZoom(1, dpi->zoom) + 1;
 
-			FOR_ALL_TOWNS(t) {
-				if (bottom > t->sign.top &&
-						top    < t->sign.top + ScaleByZoom(12, dpi->zoom) &&
-						right  > t->sign.left &&
-						left   < t->sign.left + ScaleByZoom(t->sign.width_small, dpi->zoom)) {
-					AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_VIEWPORT_TOWN_TINY_BLACK, t->index, 0);
-					AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_VIEWPORT_TOWN_TINY_WHITE, t->index, 0);
+			if (bottom > sign->top &&
+					top    < sign->top + ScaleByZoom(12, dpi->zoom) &&
+					right  > sign->left &&
+					left   < sign->left + ScaleByZoom(sign->width_small, dpi->zoom)) {
+				int shadow_offset = 0;
+				if (string_small_shadow != STR_NULL) {
+					shadow_offset = 4;
+					AddStringToDraw(sign->left + 1 + shadow_offset, sign->top + 1, string_small_shadow, params_1, params_2);
 				}
+				AddStringToDraw(sign->left + 1, sign->top + 1 - shadow_offset, string_small, params_1, params_2,
+						colour, colour != 0 ? sign->width_small | 0x8000 : 0);
 			}
 			break;
 
@@ -1128,138 +1125,51 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	}
 }
 
-
-static void AddStation(const BaseStation *st, bool tiny, uint16 width)
+static void ViewportAddTownNames(DrawPixelInfo *dpi)
 {
-	/* Check whether the base station is a station or a waypoint */
-	bool is_station = Station::IsExpected(st);
+	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU) return;
 
-	/* Don't draw if the display options are disabled */
-	if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) return;
-
-	StringID str = (is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT) + tiny;
-
-	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? 0xE : _company_colours[st->owner], width);
+	const Town *t;
+	FOR_ALL_TOWNS(t) {
+		ViewportAddString(dpi, &t->sign,
+				_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
+				STR_VIEWPORT_TOWN_TINY_WHITE, STR_VIEWPORT_TOWN_TINY_BLACK,
+				t->index, t->population);
+	}
 }
 
 
 static void ViewportAddStationNames(DrawPixelInfo *dpi)
 {
-	if (!(HasBit(_display_opt, DO_SHOW_STATION_NAMES) || HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)) || _game_mode == GM_MENU) {
-		return;
-	}
+	if (!(HasBit(_display_opt, DO_SHOW_STATION_NAMES) || HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)) || _game_mode == GM_MENU) return;
 
-	int left = dpi->left;
-	int top = dpi->top;
-	int right = left + dpi->width;
-	int bottom = top + dpi->height;
 	const BaseStation *st;
+	FOR_ALL_BASE_STATIONS(st) {
+		/* Check whether the base station is a station or a waypoint */
+		bool is_station = Station::IsExpected(st);
 
-	switch (dpi->zoom) {
-		case ZOOM_LVL_NORMAL:
-			FOR_ALL_BASE_STATIONS(st) {
-				if (bottom > st->sign.top &&
-						top    < st->sign.top + 12 &&
-						right  > st->sign.left &&
-						left   < st->sign.left + st->sign.width_normal) {
-					AddStation(st, false, st->sign.width_normal);
-				}
-			}
-			break;
+		/* Don't draw if the display options are disabled */
+		if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) continue;
 
-		case ZOOM_LVL_OUT_2X:
-			right += 2;
-			bottom += 2;
-			FOR_ALL_BASE_STATIONS(st) {
-				if (bottom > st->sign.top &&
-						top    < st->sign.top + 24 &&
-						right  > st->sign.left &&
-						left   < st->sign.left + st->sign.width_normal * 2) {
-					AddStation(st, false, st->sign.width_normal);
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			right += ScaleByZoom(1, dpi->zoom);
-			bottom += ScaleByZoom(1, dpi->zoom) + 1;
-
-			FOR_ALL_BASE_STATIONS(st) {
-				if (bottom > st->sign.top &&
-						top    < st->sign.top + ScaleByZoom(12, dpi->zoom) &&
-						right  > st->sign.left &&
-						left   < st->sign.left + ScaleByZoom(st->sign.width_small, dpi->zoom)) {
-					AddStation(st, true, st->sign.width_small | 0x8000);
-				}
-			}
-			break;
-
-		default: NOT_REACHED();
+		ViewportAddString(dpi, &st->sign,
+				is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT,
+				(is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT) + 1, STR_NULL,
+				st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? 0xE : _company_colours[st->owner]);
 	}
-}
-
-
-static void AddSign(const Sign *si, StringID str, uint16 width)
-{
-	AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->index, 0, (si->owner == OWNER_NONE) ? 14 : _company_colours[si->owner], width);
 }
 
 
 static void ViewportAddSigns(DrawPixelInfo *dpi)
 {
-	const Sign *si;
-	int left, top, right, bottom;
-
 	/* Signs are turned off or are invisible */
 	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || IsInvisibilitySet(TO_SIGNS)) return;
 
-	left = dpi->left;
-	top = dpi->top;
-	right = left + dpi->width;
-	bottom = top + dpi->height;
-
-	switch (dpi->zoom) {
-		case ZOOM_LVL_NORMAL:
-			FOR_ALL_SIGNS(si) {
-				if (bottom > si->sign.top &&
-						top    < si->sign.top + 12 &&
-						right  > si->sign.left &&
-						left   < si->sign.left + si->sign.width_normal) {
-					AddSign(si, STR_WHITE_SIGN, si->sign.width_normal);
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_2X:
-			right += 2;
-			bottom += 2;
-			FOR_ALL_SIGNS(si) {
-				if (bottom > si->sign.top &&
-						top    < si->sign.top + 24 &&
-						right  > si->sign.left &&
-						left   < si->sign.left + si->sign.width_normal * 2) {
-					AddSign(si, STR_WHITE_SIGN, si->sign.width_normal);
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			right += ScaleByZoom(1, dpi->zoom);
-			bottom += ScaleByZoom(1, dpi->zoom) + 1;
-
-			FOR_ALL_SIGNS(si) {
-				if (bottom > si->sign.top &&
-						top    < si->sign.top + ScaleByZoom(12, dpi->zoom) &&
-						right  > si->sign.left &&
-						left   < si->sign.left + ScaleByZoom(si->sign.width_small, dpi->zoom)) {
-					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, si->sign.width_small | 0x8000);
-				}
-			}
-			break;
-
-		default: NOT_REACHED();
+	const Sign *si;
+	FOR_ALL_SIGNS(si) {
+		ViewportAddString(dpi, &si->sign,
+				STR_WHITE_SIGN,
+				IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
+				si->index, 0, (si->owner == OWNER_NONE) ? 14 : _company_colours[si->owner]);
 	}
 }
 
