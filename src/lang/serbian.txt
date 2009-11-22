@@ -2014,10 +2014,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvata
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snadbeva: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Pridruži stanicu
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Pridruži stanicu
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Izgradi zasebnu stanicu
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Spoji putanje
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spoji putanje
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Napravi zasebnu putanju
 
 # Rail construction toolbar

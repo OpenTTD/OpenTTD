@@ -1803,7 +1803,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepté
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liwwerung: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}D'Gare verbannen
+STR_JOIN_STATION_CAPTION                                        :{WHITE}D'Gare verbannen
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Eng separéiert Gare bauen
 
 

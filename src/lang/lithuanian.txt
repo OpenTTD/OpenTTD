@@ -1843,7 +1843,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Priima: 
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tiekia: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Sujungti stotį
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Sujungti stotį
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Statyti perskirtą stotį
 
 

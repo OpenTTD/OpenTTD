@@ -1876,10 +1876,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Võtab v
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tarnib: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Liida jaamale
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Liida jaamale
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Ehita eraldi jaam
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Liida teemärgis
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liida teemärgis
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ehita eraldi teemärgis
 
 # Rail construction toolbar

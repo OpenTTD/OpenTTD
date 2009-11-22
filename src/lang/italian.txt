@@ -1831,10 +1831,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accetta:
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fornisce: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Unisci stazione
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Unisci stazione
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Costruisci stazione separata
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Unisci waypoint
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unisci waypoint
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Costruisci waypoint separato
 
 # Rail construction toolbar

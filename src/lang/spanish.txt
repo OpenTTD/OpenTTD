@@ -1830,10 +1830,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acepta: 
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisiones: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Unir estación
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Unir estación
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir una estación separada
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Unir punto de ruta
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir punto de ruta
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir un punto de ruta separado
 
 # Rail construction toolbar

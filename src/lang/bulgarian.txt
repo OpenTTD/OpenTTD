@@ -1800,7 +1800,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прие
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Запаси: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Присъедини станцията
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Присъедини станцията
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Направи отделна станция
 
 

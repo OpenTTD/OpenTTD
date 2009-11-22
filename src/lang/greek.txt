@@ -1924,10 +1924,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Δέχε
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Προμηθεύει : {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Συνενώση σταθμού
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Συνενώση σταθμού
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Χτίστε ένα ξεχωριστό σταθμό
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Συνένωση σημείου καθοδήγησης
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Συνένωση σημείου καθοδήγησης
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Χτήσιμο ενός ξεχωριστού σημείου καθοδήγησης
 
 # Rail construction toolbar

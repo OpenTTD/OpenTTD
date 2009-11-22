@@ -1768,7 +1768,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入�
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}駅を統合
+STR_JOIN_STATION_CAPTION                                        :{WHITE}駅を統合
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}結合しない
 
 

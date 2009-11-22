@@ -1084,7 +1084,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Levert: 
 
 # Join station window
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Kontrôlepost gearfoegje
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Kontrôlepost gearfoegje
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}In apart kontrôlepost bouwe
 
 # Rail construction toolbar

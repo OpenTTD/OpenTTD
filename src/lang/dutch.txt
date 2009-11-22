@@ -1829,10 +1829,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acceptee
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bied aan: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Station samenvoegen
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Station samenvoegen
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bouw een losstaand station
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Controlepost samenvoegen
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Controlepost samenvoegen
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bouw een losstaande controlepost
 
 # Rail construction toolbar

@@ -1829,10 +1829,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepter
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Leverar: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Slå ihop stationer
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Slå ihop stationer
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bygg en separat station
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Slå ihop riktmärken
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Slå ihop riktmärken
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg ett separat riktmärke
 
 # Rail construction toolbar

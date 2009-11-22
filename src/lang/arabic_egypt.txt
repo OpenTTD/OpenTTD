@@ -1820,10 +1820,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}يقبل
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}الموارد: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK} اربط المحطات
+STR_JOIN_STATION_CAPTION                                        :{WHITE} اربط المحطات
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW} بناء محطة مفصلة
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK} اربط نقطة العبور
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE} اربط نقطة العبور
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW} ابني نقطة عبور مستقلة
 
 # Rail construction toolbar

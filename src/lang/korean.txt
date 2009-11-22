@@ -1830,10 +1830,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: 
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}같은 이름으로 정거장 만들기
+STR_JOIN_STATION_CAPTION                                        :{WHITE}같은 이름으로 정거장 만들기
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}분리된 역을 새로 만들기
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}연결할 웨이포인트
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결할 웨이포인트
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 웨이포인트를 새로 만들기
 
 # Rail construction toolbar

@@ -1829,10 +1829,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaano
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Liitä asema
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Liitä asema
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Rakenna erillinen asema
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Liitä reittipiste
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liitä reittipiste
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Rakenna erillinen reittipiste
 
 # Rail construction toolbar

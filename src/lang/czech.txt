@@ -1880,10 +1880,10 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Přijím
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Poskytuje: {GOLD}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{BLACK}Spojování stanic
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojování stanic
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Postavit samostatnou stanici
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Spojování směrování
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojování směrování
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postavit samostatné směrování
 
 # Rail construction toolbar
