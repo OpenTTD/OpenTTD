@@ -120,6 +120,7 @@ struct SignListWindow : Window, SignList {
 				}
 
 				bool rtl = _dynlang.text_dir == TD_RTL;
+				int sprite_offset_y = (FONT_HEIGHT_NORMAL - 10) / 2 + 1;
 				uint icon_left  = 4 + (rtl ? r.right - this->text_offset : r.left);
 				uint text_left  = r.left + (rtl ? WD_FRAMERECT_LEFT : this->text_offset);
 				uint text_right = r.right - (rtl ? this->text_offset : WD_FRAMERECT_RIGHT);
@@ -128,7 +129,7 @@ struct SignListWindow : Window, SignList {
 				for (uint16 i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->vscroll.GetCount(); i++) {
 					const Sign *si = this->signs[i];
 
-					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + 1);
+					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + sprite_offset_y);
 
 					SetDParam(0, si->index);
 					DrawString(text_left, text_right, y, STR_SIGN_NAME, TC_YELLOW);
@@ -165,12 +166,21 @@ struct SignListWindow : Window, SignList {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget == SLW_LIST) {
-			Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
-			this->text_offset = WD_FRAMETEXT_LEFT + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
-			resize->height = max<uint>(FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_COMPANY_ICON).height);
-			Dimension d = {this->text_offset + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM};
-			*size = maxdim(*size, d);
+		switch (widget) {
+			case SLW_LIST: {
+				Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
+				this->text_offset = WD_FRAMETEXT_LEFT + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
+				resize->height = max<uint>(FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_COMPANY_ICON).height);
+				Dimension d = {this->text_offset + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM};
+				*size = maxdim(*size, d);
+			} break;
+
+			case SLW_CAPTION:
+				SetDParam(0, max<uint>(1000, Sign::GetPoolSize()));
+				*size = GetStringBoundingBox(STR_SIGN_LIST_CAPTION);
+				size->height += padding.height;
+				size->width  += padding.width;
+				break;
 		}
 	}
 
