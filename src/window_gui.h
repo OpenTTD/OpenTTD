@@ -577,9 +577,10 @@ public:
 	 * @param widget  Widget number.
 	 * @param size    Size of the widget.
 	 * @param padding Recommended amount of space between the widget content and the widget edge.
+	 * @param fill    Fill step of the widget.
 	 * @param resize  Resize step of the widget.
 	 */
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize) {}
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) {}
 
 	/**
 	 * Initialize string parameters for a widget.

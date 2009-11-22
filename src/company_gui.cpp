@@ -320,7 +320,7 @@ struct CompanyFinancesWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		int type = _settings_client.gui.expenses_layout;
 		switch (widget) {
@@ -596,7 +596,7 @@ public:
 		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		/* Number of liveries in each class, used to determine the height of the livery matrix widget. */
 		static const byte livery_height[] = {
@@ -1646,7 +1646,7 @@ struct CompanyWindow : Window
 		this->DrawWidgets();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case CW_WIDGET_DESC_COMPANY_VALUE:
@@ -1922,7 +1922,7 @@ struct BuyCompanyWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case BCW_FACE:

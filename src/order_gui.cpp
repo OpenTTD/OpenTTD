@@ -690,7 +690,7 @@ public:
 		this->OnInvalidateData(-2);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case ORDER_WIDGET_TIMETABLE_VIEW:

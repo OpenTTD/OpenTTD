@@ -955,17 +955,17 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 
 	/* Zero size plane selected */
 	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) {
-		this->fill_x = 0;
-		this->fill_y = 0;
-
 		Dimension size = {0, 0};
-		Dimension resize = {0, 0};
 		Dimension padding = {0, 0};
+		Dimension fill = {0, 0};
+		Dimension resize = {0, 0};
 		/* Here we're primarily interested in the value of resize */
-		w->UpdateWidgetSize(this->index, &size, padding, &resize);
+		w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
 
 		this->smallest_x = size.width;
 		this->smallest_y = size.height;
+		this->fill_x = fill.width;
+		this->fill_y = fill.height;
 		this->resize_x = resize.width;
 		this->resize_y = resize.height;
 		return;
@@ -1453,6 +1453,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
+		Dimension fill = {this->fill_x, this->fill_y};
 		Dimension resize  = {this->resize_x, this->resize_y};
 		if (w != NULL) { // A non-NULL window pointer acts as switch to turn dynamic widget size on.
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
@@ -1463,11 +1464,13 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 			}
 			if (this->index >= 0) {
 				static const Dimension padding = {0, 0};
-				w->UpdateWidgetSize(this->index, &d, padding, &resize);
+				w->UpdateWidgetSize(this->index, &d, padding, &fill, &resize);
 			}
 		}
 		this->smallest_x = d.width;
 		this->smallest_y = d.height;
+		this->fill_x = fill.width;
+		this->fill_y = fill.height;
 		this->resize_x = resize.width;
 		this->resize_y = resize.height;
 	}
@@ -1744,6 +1747,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 
 	/* A non-NULL window pointer acts as switch to turn dynamic widget sizing on. */
 	Dimension size = {this->min_x, this->min_y};
+	Dimension fill = {this->fill_x, this->fill_y};
 	Dimension resize = {this->resize_x, this->resize_y};
 	/* Get padding, and update size with the real content size if appropriate. */
 	const Dimension *padding = NULL;
@@ -1869,13 +1873,14 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			NOT_REACHED();
 	}
 
-	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, *padding, &resize);
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, *padding, &fill, &resize);
 
 	this->smallest_x = size.width;
 	this->smallest_y = size.height;
+	this->fill_x = fill.width;
+	this->fill_y = fill.height;
 	this->resize_x = resize.width;
 	this->resize_y = resize.height;
-	/* this->fill_x and this->fill_y are already correct. */
 }
 
 void NWidgetLeaf::Draw(const Window *w)

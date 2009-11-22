@@ -351,7 +351,7 @@ struct RefitWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case VRW_MATRIX:
@@ -956,7 +956,7 @@ public:
 		*this->sorting = this->vehicles.GetListing();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget != VLW_WIDGET_LIST) return;
 
@@ -1361,7 +1361,7 @@ struct VehicleDetailsWindow : Window {
 		this->tab = TDW_TAB_CARGO;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case VLD_WIDGET_TOP_DETAILS:
@@ -1849,7 +1849,7 @@ public:
 		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		switch (widget) {

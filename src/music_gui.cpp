@@ -250,7 +250,7 @@ struct MusicTrackSelectionWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case MTSW_PLAYLIST: {
@@ -462,7 +462,7 @@ struct MusicWindow : public Window {
 		this->SetWidgetLoweredState(MW_SHUFFLE, msf.shuffle);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			/* Make sure that MW_SHUFFLE and MW_PROGRAMME have the same size.

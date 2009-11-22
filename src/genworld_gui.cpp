@@ -411,7 +411,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		const StringID *strs = NULL;
 		switch (widget) {
@@ -901,7 +901,7 @@ struct CreateScenarioWindow : public Window
 		this->DrawWidgets();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		StringID str = STR_JUST_INT;
 		switch (widget) {
@@ -1188,7 +1188,7 @@ struct GenerateProgressWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case GPWW_PROGRESS_BAR: {

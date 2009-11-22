@@ -229,7 +229,7 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case GOW_BASE_GRF_DESCRIPTION:
@@ -569,7 +569,7 @@ public:
 		SetDParam(0, sd->desc.str + value);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		/* Only for the 'descriptions' */
 		int index = widget - GDW_OPTIONS_START;
@@ -1477,7 +1477,7 @@ struct GameSettingsWindow : Window {
 		this->vscroll.SetCount(_settings_main_page.Length());
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
@@ -1760,7 +1760,7 @@ struct CustomCurrencyWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			/* Set the appropriate width for the edit 'buttons' */

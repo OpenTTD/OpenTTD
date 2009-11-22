@@ -231,7 +231,7 @@ public:
 		this->sel_group = id_g;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case RVW_WIDGET_LEFT_MATRIX:

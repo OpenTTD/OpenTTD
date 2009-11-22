@@ -481,7 +481,7 @@ public:
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case NGWW_CONN_BTN:
@@ -1108,7 +1108,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case NSSW_CONNTYPE_BTN:
@@ -1486,7 +1486,7 @@ struct NetworkLobbyWindow : public Window {
 		return COMPANY_FIRST;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case NLWW_HEADER:
@@ -1904,7 +1904,7 @@ struct NetworkClientListPopupWindow : Window {
 		return this->desired_location;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		Dimension d = *size;
 		for (const ClientListAction *action = this->actions.Begin(); action != this->actions.End(); action++) {
@@ -2037,7 +2037,7 @@ struct NetworkClientListWindow : Window {
 		return true;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget != CLW_PANEL) return;
 

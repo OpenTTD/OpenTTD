@@ -612,7 +612,7 @@ struct DepotWindow : Window {
 	uint flag_width;
 	uint flag_height;
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case DEPOT_WIDGET_SELL_CHAIN:
