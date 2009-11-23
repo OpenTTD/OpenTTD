@@ -255,7 +255,7 @@ protected:
 	 * Actually draw the graph.
 	 * @param r the rectangle of the data field of the graph
 	 */
-	void DrawGraph(Rect &r) const
+	void DrawGraph(Rect r) const
 	{
 		uint x, y;                       ///< Reused whenever x and y coordinates are needed.
 		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
@@ -454,25 +454,59 @@ protected:
 
 	void InitializeWindow(const WindowDesc *desc, WindowNumber number)
 	{
-		this->InitNested(desc, number);
-
 		/* Initialise the dataset */
 		this->UpdateStatistics(true);
+
+		this->InitNested(desc, number);
 	}
 
 public:
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
 
-		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(this->graph_widget);
-		Rect r;
-		r.left = nwid->pos_x;
-		r.right = nwid->pos_x + nwid->current_x - 1;
-		r.top = nwid->pos_y;
-		r.bottom = nwid->pos_y + nwid->current_y - 1;
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != this->graph_widget) return;
 
-		this->DrawGraph(r);
+		uint x_label_width = 0;
+
+		if (this->month != 0xFF) {
+			byte month = this->month;
+			Year year  = this->year;
+			for (int i = 0; i < this->num_on_x_axis; i++) {
+				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
+				SetDParam(1, month + STR_MONTH_ABBREV_JAN + 2);
+				SetDParam(2, year);
+				x_label_width = max(x_label_width, GetStringBoundingBox(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH).width);
+
+				month += 3;
+				if (month >= 12) {
+					month = 0;
+					year++;
+				}
+			}
+		} else {
+			/* Draw the label under the data point rather than on the grid line. */
+			SetDParam(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment);
+			x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
+		}
+
+		SetDParam(0, this->format_str_y_axis);
+		SetDParam(1, INT64_MAX);
+		uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
+
+		size->width  = max<uint>(size->width,  5 + y_label_width + this->num_on_x_axis * (x_label_width + 5) + 9);
+		size->height = max<uint>(size->height, 5 + (1 + GRAPH_NUM_LINES_Y * 2 + (this->month != 0xFF ? 3 : 1)) * FONT_HEIGHT_SMALL + 4);
+		size->height = max<uint>(size->height, size->width / 3);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != this->graph_widget) return;
+
+		DrawGraph(r);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -788,7 +822,10 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget < CPW_CARGO_FIRST) return;
+		if (widget < CPW_CARGO_FIRST) {
+			BaseGraphWindow::UpdateWidgetSize(widget, size, padding, fill, resize);
+			return;
+		}
 
 		const CargoSpec *cs = CargoSpec::Get(widget - CPW_CARGO_FIRST);
 		SetDParam(0, cs->name);
@@ -801,7 +838,10 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget < CPW_CARGO_FIRST) return;
+		if (widget < CPW_CARGO_FIRST) {
+			BaseGraphWindow::DrawWidget(r, widget);
+			return;
+		}
 
 		const CargoSpec *cs = CargoSpec::Get(widget - CPW_CARGO_FIRST);
 		bool rtl = _dynlang.text_dir == TD_RTL;
