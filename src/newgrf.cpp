@@ -64,8 +64,9 @@
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
 
+static SmallVector<GRFFile *, 16> _grf_files;
+
 static GRFFile *_cur_grffile;
-static GRFFile *_first_grffile;
 static SpriteID _cur_spriteid;
 static GrfLoadingStage _cur_stage;
 static uint32 _nfo_line;
@@ -218,22 +219,20 @@ static const char *grf_load_string(byte **buf, size_t max_len)
 
 static GRFFile *GetFileByGRFID(uint32 grfid)
 {
-	GRFFile *file;
-
-	for (file = _first_grffile; file != NULL; file = file->next) {
-		if (file->grfid == grfid) break;
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile * const *file = _grf_files.Begin(); file != end; file++) {
+		if ((*file)->grfid == grfid) return *file;
 	}
-	return file;
+	return NULL;
 }
 
 static GRFFile *GetFileByFilename(const char *filename)
 {
-	GRFFile *file;
-
-	for (file = _first_grffile; file != NULL; file = file->next) {
-		if (strcmp(file->filename, filename) == 0) break;
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile * const *file = _grf_files.Begin(); file != end; file++) {
+		if (strcmp((*file)->filename, filename) == 0) return *file;
 	}
-	return file;
+	return NULL;
 }
 
 /** Reset all NewGRFData that was used only while processing data */
@@ -2726,8 +2725,9 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		/* Allocate memory for new sprite group references. */
 		_cur_grffile->spritegroups = ReallocT(_cur_grffile->spritegroups, setid + 1);
 		/* Initialise new space to NULL */
-		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++)
+		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++) {
 			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
+		}
 	}
 
 	switch (type) {
@@ -5430,11 +5430,13 @@ static void InitializeGRFSpecial()
 
 static void ResetCustomStations()
 {
-	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
-		if (file->stations == NULL) continue;
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		StationSpec **&stations = (*file)->stations;
+		if (stations == NULL) continue;
 		for (uint i = 0; i < MAX_STATIONS; i++) {
-			if (file->stations[i] == NULL) continue;
-			StationSpec *statspec = file->stations[i];
+			if (stations[i] == NULL) continue;
+			StationSpec *statspec = stations[i];
 
 			/* Release renderdata, if it wasn't copied from another custom station spec  */
 			if (!statspec->copied_renderdata) {
@@ -5461,33 +5463,38 @@ static void ResetCustomStations()
 		}
 
 		/* Free and reset the station data */
-		free(file->stations);
-		file->stations = NULL;
+		free(stations);
+		stations = NULL;
 	}
 }
 
 static void ResetCustomHouses()
 {
-	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
-		if (file->housespec == NULL) continue;
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		HouseSpec **&housespec = (*file)->housespec;
+		if (housespec == NULL) continue;
 		for (uint i = 0; i < HOUSE_MAX; i++) {
-			free(file->housespec[i]);
+			free(housespec[i]);
 		}
 
-		free(file->housespec);
-		file->housespec = NULL;
+		free(housespec);
+		housespec = NULL;
 	}
 }
 
 static void ResetCustomIndustries()
 {
-	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		IndustrySpec **&industryspec = (*file)->industryspec;
+		IndustryTileSpec **&indtspec = (*file)->indtspec;
+
 		/* We are verifiying both tiles and industries specs loaded from the grf file
 		 * First, let's deal with industryspec */
-		if (file->industryspec != NULL) {
-
+		if (industryspec != NULL) {
 			for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
-				IndustrySpec *ind = file->industryspec[i];
+				IndustrySpec *ind = industryspec[i];
 				if (ind == NULL) continue;
 
 				/* We need to remove the sounds array */
@@ -5509,34 +5516,32 @@ static void ResetCustomIndustries()
 				free(ind);
 			}
 
-			free(file->industryspec);
-			file->industryspec = NULL;
+			free(industryspec);
+			industryspec = NULL;
 		}
 
-		if (file->indtspec == NULL) continue;
+		if (indtspec == NULL) continue;
 		for (uint i = 0; i < NUM_INDUSTRYTILES; i++) {
-			free(file->indtspec[i]);
+			free(indtspec[i]);
 		}
 
-		free(file->indtspec);
-		file->indtspec = NULL;
+		free(indtspec);
+		indtspec = NULL;
 	}
 }
 
 static void ResetNewGRF()
 {
-	GRFFile *next;
-
-	for (GRFFile *f = _first_grffile; f != NULL; f = next) {
-		next = f->next;
-
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		GRFFile *f = *file;
 		free(f->filename);
 		free(f->cargo_list);
 		free(f->railtype_list);
 		free(f);
 	}
 
-	_first_grffile = NULL;
+	_grf_files.Clear();
 	_cur_grffile   = NULL;
 }
 
@@ -5677,13 +5682,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 	newfile->param_end = config->num_params;
 	memcpy(newfile->param, config->param, sizeof(newfile->param));
 
-	if (_first_grffile == NULL) {
-		_cur_grffile = newfile;
-		_first_grffile = newfile;
-	} else {
-		_cur_grffile->next = newfile;
-		_cur_grffile = newfile;
-	}
+	*_grf_files.Append() = _cur_grffile = newfile;
 }
 
 
@@ -5809,17 +5808,19 @@ static void FinaliseHouseArray()
 	 */
 	Year min_year = MAX_YEAR;
 
-	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
-		if (file->housespec == NULL) continue;
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		HouseSpec **&housespec = (*file)->housespec;
+		if (housespec == NULL) continue;
 
 		for (int i = 0; i < HOUSE_MAX; i++) {
-			HouseSpec *hs = file->housespec[i];
+			HouseSpec *hs = housespec[i];
 
 			if (hs == NULL) continue;
 
-			const HouseSpec *next1 = (i + 1 < HOUSE_MAX ? file->housespec[i + 1] : NULL);
-			const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? file->housespec[i + 2] : NULL);
-			const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? file->housespec[i + 3] : NULL);
+			const HouseSpec *next1 = (i + 1 < HOUSE_MAX ? housespec[i + 1] : NULL);
+			const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? housespec[i + 2] : NULL);
+			const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? housespec[i + 3] : NULL);
 
 			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 &&
 						(next1 == NULL || !next1->enabled || (next1->building_flags & BUILDING_HAS_1_TILE) != 0)) ||
@@ -5827,7 +5828,7 @@ static void FinaliseHouseArray()
 						(next2 == NULL || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
 						next3 == NULL || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
 				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", file->filename, hs->local_id);
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", (*file)->filename, hs->local_id);
 				continue;
 			}
 
@@ -5837,7 +5838,7 @@ static void FinaliseHouseArray()
 			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
 					((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
 				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", file->filename, hs->local_id);
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", (*file)->filename, hs->local_id);
 				continue;
 			}
 
@@ -5860,10 +5861,13 @@ static void FinaliseHouseArray()
  * after the file has finished loading. */
 static void FinaliseIndustriesArray()
 {
-	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
-		if (file->industryspec != NULL) {
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		IndustrySpec **&industryspec = (*file)->industryspec;
+		IndustryTileSpec **&indtspec = (*file)->indtspec;
+		if (industryspec != NULL) {
 			for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
-				IndustrySpec *indsp = file->industryspec[i];
+				IndustrySpec *indsp = industryspec[i];
 
 				if (indsp != NULL && indsp->enabled) {
 					StringID strid;
@@ -5898,9 +5902,9 @@ static void FinaliseIndustriesArray()
 			}
 		}
 
-		if (file->indtspec != NULL) {
+		if (indtspec != NULL) {
 			for (int i = 0; i < NUM_INDUSTRYTILES; i++) {
-				IndustryTileSpec *indtsp = file->indtspec[i];
+				IndustryTileSpec *indtsp = indtspec[i];
 				if (indtsp != NULL) {
 					_industile_mngr.SetEntitySpec(indtsp);
 				}

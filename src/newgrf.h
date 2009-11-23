@@ -74,7 +74,6 @@ struct GRFFile {
 	uint32 grfid;
 	uint16 sprite_offset;
 	byte grf_version;
-	GRFFile *next;
 
 	/* A sprite group contains all sprites of a given vehicle (or multiple
 	 * vehicles) when carrying given cargo. It consists of several sprite
