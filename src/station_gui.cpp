@@ -294,6 +294,14 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case SLW_SORTBY: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
 			case SLW_SORTDROPBTN: {
 				Dimension d = {0, 0};
 				for (int i = 0; this->sorter_names[i] != INVALID_STRING_ID; i++) {
@@ -308,6 +316,36 @@ public:
 			case SLW_LIST:
 				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM;
+				break;
+
+			case SLW_TRAIN:
+			case SLW_TRUCK:
+			case SLW_BUS:
+			case SLW_AIRPLANE:
+			case SLW_SHIP:
+				size->height = max<uint>(FONT_HEIGHT_SMALL, 10) + padding.height;
+				break;
+
+			case SLW_CARGOALL:
+			case SLW_FACILALL:
+			case SLW_NOCARGOWAITING: {
+				Dimension d = GetStringBoundingBox(widget == SLW_NOCARGOWAITING ? STR_ABBREV_NONE : STR_ABBREV_ALL);
+				d.width  += padding.width + 2;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
+			default:
+				if (widget >= SLW_CARGOSTART) {
+					const CargoSpec *cs = CargoSpec::Get(widget - SLW_CARGOSTART);
+					if (cs->IsValid()) {
+						Dimension d = GetStringBoundingBox(cs->abbrev);
+						d.width  += padding.width + 2;
+						d.height += padding.height;
+						*size = maxdim(*size, d);
+					}
+				}
 				break;
 		}
 	}
@@ -396,8 +434,8 @@ public:
 					const CargoSpec *cs = CargoSpec::Get(widget - SLW_CARGOSTART);
 					if (cs->IsValid()) {
 						int cg_ofst = HasBit(this->cargo_filter, cs->Index()) ? 2 : 1;
-						GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.left + cg_ofst + 10, r.top + cg_ofst + 7, cs->rating_colour);
-						DrawString(r.left + cg_ofst, r.left + 12 + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_CENTER);
+						GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.right - 2 + cg_ofst, r.bottom - 2 + cg_ofst, cs->rating_colour);
+						DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_CENTER);
 					}
 				}
 				break;
