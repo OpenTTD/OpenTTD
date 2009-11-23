@@ -111,7 +111,28 @@ struct StatusBarWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		size->height = FONT_HEIGHT_NORMAL + padding.height;
+		Dimension d;
+		switch (widget) {
+			case SBW_LEFT:
+				SetDParam(0, MAX_YEAR * DAYS_IN_YEAR);
+				d = GetStringBoundingBox(STR_WHITE_DATE_LONG);
+				break;
+
+			case SBW_RIGHT: {
+				int64 max_money = UINT32_MAX;
+				const Company *c;
+				FOR_ALL_COMPANIES(c) max_money = max<int64>(c->money, max_money);
+				SetDParam(0, 100LL * max_money);
+				d = GetStringBoundingBox(STR_COMPANY_MONEY);
+			} break;
+
+			default:
+				return;
+		}
+
+		d.width += padding.width;
+		d.height += padding.height;
+		*size = maxdim(d, *size);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
