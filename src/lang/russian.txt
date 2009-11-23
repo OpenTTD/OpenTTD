@@ -1878,6 +1878,14 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сервер п
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Игра остановлена ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Игра всё ещё остановлена ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Игра всё ещё остановлена ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Игра всё ещё остановлена ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Игра продолжена ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :недостаточно игроков
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :подключение клиентов
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :вручную
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :покинул
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре
@@ -2331,7 +2339,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Земля в �
 STR_ABOUT_OPENTTD                                               :{WHITE}Об OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Оригинальные авторские права {COPYRIGHT} 1995 Chris Sawyer, Все права защищены
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD v{REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Команда разработчиков OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2009 Команда разработчиков OpenTTD
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Сохранить игру
@@ -2628,6 +2636,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Пока
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Переименовать станцию
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать точку пути в основном окне. Ctrl+клик - показать в дополнительном окне.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать точку пути
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+клик - показать в дополнительном окне.
@@ -2680,7 +2689,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стои�
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% владеет {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Построить штаб
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Построить штаб-квартиру компании
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Осмотреть штаб
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Осмотреть штаб-квартиру компании
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Переместить
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Переместить штаб компании в другом месте за 1% оценочной стоимости капитала компании
 
@@ -4140,6 +4151,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4165,7 +4177,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

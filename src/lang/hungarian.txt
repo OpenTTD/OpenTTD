@@ -2564,7 +2564,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Cég ért
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY} tulajdona)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Székház építése
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Székház építése
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Székház
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Székház megtekintése
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áthelyezése
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A cég székházának újraépítése máshol a cég értékének 1%-áért
 
