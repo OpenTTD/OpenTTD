@@ -500,7 +500,7 @@ struct NewsWindow : Window {
 		int diff = Delta(this->top, y);
 		this->top = y;
 
-		SetDirtyBlocks(this->left, this->top - diff, this->left + this->width, this->top + this->height);
+		SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height + diff);
 	}
 
 private:
