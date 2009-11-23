@@ -812,6 +812,11 @@ void NewsLoop()
 	/* no news item yet */
 	if (_total_news == 0) return;
 
+	/* There is no status bar, so no reason to show news;
+	 * especially important with the end game screen when
+	 * there is no status bar but possible news. */
+	if (FindWindowById(WC_STATUS_BAR, 0) == NULL) return;
+
 	static byte _last_clean_month = 0;
 
 	if (_last_clean_month != _cur_month) {
