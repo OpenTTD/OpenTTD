@@ -48,6 +48,7 @@ enum TownAuthorityWidgets {
 	TWA_SCROLLBAR,
 	TWA_ACTION_INFO,  ///< Additional information about the action.
 	TWA_EXECUTE,      ///< Do-it button.
+	TWA_RESIZE,       ///< Resize the damn window
 };
 
 static const NWidgetPart _nested_town_authority_widgets[] = {
@@ -55,13 +56,16 @@ static const NWidgetPart _nested_town_authority_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TWA_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, TWA_CAPTION), SetDataTip(STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_RATING_INFO), SetMinimalSize(317, 92), SetResize(0, 1), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_RATING_INFO), SetMinimalSize(317, 92), SetResize(1, 1), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, TWA_COMMAND_LIST), SetMinimalSize(305, 52), SetDataTip(0x0, STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, TWA_COMMAND_LIST), SetMinimalSize(305, 52), SetResize(1, 0), SetDataTip(0x0, STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_BROWN, TWA_SCROLLBAR),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_ACTION_INFO), SetMinimalSize(317, 52), EndContainer(),
-	NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_ACTION_INFO), SetMinimalSize(317, 52), SetResize(1, 0), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TWA_RESIZE),
+	EndContainer()
 };
 
 /** Town authority window. */
@@ -128,6 +132,7 @@ public:
 		DrawString(left, right, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
 		y += FONT_HEIGHT_NORMAL;
 
+		int sprite_y_offset = (FONT_HEIGHT_NORMAL - 10) / 2;
 		bool rtl = _dynlang.text_dir == TD_RTL;
 		uint text_left  = left + (rtl ? 0 : 26);
 		uint text_right = right - (rtl ? 26 : 0);
@@ -138,7 +143,7 @@ public:
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, icon_left, y);
+				DrawCompanyIcon(c->index, icon_left, y + sprite_y_offset);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);
@@ -156,7 +161,7 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) { // red icon for company with exclusive rights
-					DrawSprite(SPR_BLOT, PALETTE_TO_RED, blob_left, y);
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, blob_left, y + sprite_y_offset);
 				}
 
 				DrawString(text_left, text_right, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
@@ -232,9 +237,15 @@ public:
 
 			case TWA_COMMAND_LIST:
 				size->height = WD_FRAMERECT_TOP + 5 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				size->width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
+				for (uint i = 0; i < TACT_COUNT; i++ ) {
+					size->width = max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width);
+				}
+				size->width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				break;
 
 			case TWA_RATING_INFO:
+				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = WD_FRAMERECT_TOP + 9 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 				break;
 		}
@@ -275,7 +286,7 @@ public:
 static const WindowDesc _town_authority_desc(
 	WDP_AUTO, WDP_AUTO, 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_nested_town_authority_widgets, lengthof(_nested_town_authority_widgets)
 );
 
