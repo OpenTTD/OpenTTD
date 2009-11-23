@@ -1002,6 +1002,8 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 class CompanyLeagueWindow : public Window {
 private:
 	GUIList<const Company*> companies;
+	uint ordinal_width; ///< The width of the ordinal number
+	uint text_width;    ///< The width of the actual text
 
 	/**
 	 * (Re)Build the company league list
@@ -1048,18 +1050,62 @@ public:
 		if (widget != CLW_BACKGROUND) return;
 
 		uint y = r.top + WD_FRAMERECT_TOP;
+		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - 10) / 2;
+
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint ordinal_left  = rtl ? r.right - WD_FRAMERECT_LEFT - this->ordinal_width : r.left + WD_FRAMERECT_LEFT;
+		uint ordinal_right = rtl ? r.right - WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->ordinal_width;
+		uint icon_left     = r.left + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + (rtl ? this->text_width : this->ordinal_width);
+		uint text_left     = rtl ? r.left + WD_FRAMERECT_LEFT : r.right - WD_FRAMERECT_LEFT - this->text_width;
+		uint text_right    = rtl ? r.left + WD_FRAMERECT_LEFT + this->text_width : r.right - WD_FRAMERECT_LEFT;
+
 		for (uint i = 0; i != this->companies.Length(); i++) {
 			const Company *c = this->companies[i];
-			SetDParam(0, i + STR_ORDINAL_NUMBER_1ST);
-			SetDParam(1, c->index);
-			SetDParam(2, c->index);
-			SetDParam(3, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
+			DrawString(ordinal_left, ordinal_right, y, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
 
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, i == 0 ? STR_COMPANY_LEAGUE_FIRST : STR_COMPANY_LEAGUE_OTHER);
-			DrawCompanyIcon(c->index, _dynlang.text_dir == TD_RTL ? r.right - 43 : r.left + 27, y + 1);
+			DrawCompanyIcon(c->index, icon_left, y + icon_y_offset);
+
+			SetDParam(0, c->index);
+			SetDParam(1, c->index);
+			SetDParam(2, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
+			DrawString(text_left, text_right, y, STR_COMPANY_LEAGUE_COMPANY_NAME);
 			y += FONT_HEIGHT_NORMAL;
 		}
 	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != CLW_BACKGROUND) return;
+
+		this->ordinal_width = 0;
+		for (uint i = 0; i < MAX_COMPANIES; i++) {
+			this->ordinal_width = max(this->ordinal_width, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + i).width);
+		}
+		this->ordinal_width += 5; // Keep some extra spacing
+
+		uint widest_width = 0;
+		uint widest_title = 0;
+		for (uint i = 0; i < lengthof(_performance_titles); i++) {
+			uint width = GetStringBoundingBox(_performance_titles[i]).width;
+			if (width > widest_width) {
+				widest_title = i;
+				widest_width = width;
+			}
+		}
+
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			SetDParam(0, c->index);
+			SetDParam(1, c->index);
+			SetDParam(2, widest_title);
+			widest_width = max(widest_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_NAME).width);
+		}
+
+		this->text_width = widest_width + 30; // Keep some extra spacing
+
+		size->width = WD_FRAMERECT_LEFT + this->ordinal_width + WD_FRAMERECT_RIGHT + 16 + WD_FRAMERECT_LEFT + this->text_width + WD_FRAMERECT_RIGHT;
+	}
+
 
 	virtual void OnTick()
 	{
