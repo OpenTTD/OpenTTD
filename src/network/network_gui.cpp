@@ -2214,6 +2214,31 @@ struct NetworkJoinStatusWindow : Window {
 		DrawFrameRect(r.left + 20, r.top + 5, (int)((this->width - 20) * progress / 100), r.top + 15, COLOUR_MAUVE, FR_NONE);
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != NJSW_BACKGROUND) return;
+
+		size->height = 25 + 2 * FONT_HEIGHT_NORMAL;
+
+		/* Account for the statuses */
+		uint width = 0;
+		for (uint i = 0; i < NETWORK_JOIN_STATUS_END; i++) {
+			width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i).width);
+		}
+
+		/* For the number of waiting (other) players */
+		SetDParam(0, 255);
+		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING).width);
+
+		/* Account for downloading ~ 10 MiB */
+		SetDParam(0, 10000000);
+		SetDParam(1, 10000000);
+		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING).width);
+
+		/* Give a bit more clearing for the widest strings than strictly needed */
+		size->width = width + WD_FRAMERECT_LEFT + WD_FRAMERECT_BOTTOM + 10;
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget == NJSW_CANCELOK) { // Disconnect button
@@ -2236,8 +2261,14 @@ struct NetworkJoinStatusWindow : Window {
 
 static const NWidgetPart _nested_network_join_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, NJSW_CAPTION), SetDataTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_GREY, NJSW_BACKGROUND),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NJSW_CANCELOK), SetMinimalSize(101, 12), SetPadding(55, 74, 4, 75), SetDataTip(STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL),
+	NWidget(WWT_PANEL, COLOUR_GREY, -1),
+		NWidget(WWT_EMPTY, COLOUR_GREY, NJSW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(75, 0), SetFill(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NJSW_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL),
+			NWidget(NWID_SPACER), SetMinimalSize(75, 0), SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 	EndContainer(),
 };
 

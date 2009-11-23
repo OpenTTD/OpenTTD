@@ -60,6 +60,7 @@ enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_REGISTERING,
 
 	NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO,
+	NETWORK_JOIN_STATUS_END,
 };
 
 /** Language ids for server_lang and client_lang. Do NOT modify the order. */
