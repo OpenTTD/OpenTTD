@@ -167,7 +167,7 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		DrawCompanyIcon(company, rtl ? right - 16 : left + 2, top + 1);
+		DrawCompanyIcon(company, rtl ? right - 16 : left + 2, top + 1 + (FONT_HEIGHT_NORMAL - 10) / 2);
 
 		SetDParam(0, company);
 		SetDParam(1, company);
