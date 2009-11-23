@@ -309,6 +309,7 @@ enum TownViewWidgets {
 	TVW_CHANGENAME,
 	TVW_EXPAND,
 	TVW_DELETE,
+	TVW_RESIZE,
 };
 
 /* Town view window. */
@@ -333,8 +334,6 @@ public:
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(TVW_VIEWPORT);
 		nvp->InitializeViewport(this, this->town->xy, ZOOM_LVL_NEWS);
-
-		this->ResizeWindowAsNeeded();
 
 		/* disable renaming town in network games if you are not the server */
 		this->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
@@ -459,7 +458,20 @@ public:
 		}
 	}
 
-	void ResizeWindowAsNeeded()
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		switch (widget) {
+			case TVW_INFOPANEL:
+				size->height = GetDesiredInfoHeight();
+				break;
+		}
+	}
+
+	/**
+	 * Gets the desired height for the information panel.
+	 * @return the desired height in pixels.
+	 */
+	uint GetDesiredInfoHeight() const
 	{
 		uint aimed_height = 3 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
@@ -477,9 +489,15 @@ public:
 
 		if (_settings_game.economy.station_noise_level) aimed_height += FONT_HEIGHT_NORMAL;
 
-		NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(TVW_INFOPANEL);
+		return aimed_height;
+	}
+
+	void ResizeWindowAsNeeded()
+	{
+		const NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(TVW_INFOPANEL);
+		uint aimed_height = GetDesiredInfoHeight();
 		if (aimed_height > nwid_info->current_y || (aimed_height < nwid_info->current_y && nwid_info->current_y > nwid_info->smallest_y)) {
-			ResizeWindow(this, 0, aimed_height - nwid_info->current_y);
+			this->ReInit();
 		}
 	}
 
@@ -514,21 +532,24 @@ static const NWidgetPart _nested_town_game_view_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_VIEWPORTPANEL),
 		NWidget(WWT_INSET, COLOUR_BROWN, TVW_VIEWPORTINSET), SetPadding(2, 2, 2, 2),
-			NWidget(NWID_VIEWPORT, INVALID_COLOUR, TVW_VIEWPORT), SetMinimalSize(254, 86), SetFill(1, 0), SetPadding(1, 1, 1, 1),
+			NWidget(NWID_VIEWPORT, INVALID_COLOUR, TVW_VIEWPORT), SetMinimalSize(254, 86), SetFill(1, 0), SetResize(1, 1), SetPadding(1, 1, 1, 1),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_INFOPANEL), SetMinimalSize(260, 32), SetResize(0, 1), SetFill(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CENTERVIEW), SetMinimalSize(80, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_SHOWAUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetDataTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(80, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_INFOPANEL), SetMinimalSize(260, 32), SetResize(1, 0), SetFill(1, 0), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CENTERVIEW), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_SHOWAUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
+		EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TVW_RESIZE),
 	EndContainer(),
 };
 
 static const WindowDesc _town_game_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, TownViewWindow::TVW_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_nested_town_game_view_widgets, lengthof(_nested_town_game_view_widgets)
 );
 
@@ -541,21 +562,24 @@ static const NWidgetPart _nested_town_editor_view_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_VIEWPORTPANEL),
 		NWidget(WWT_INSET, COLOUR_BROWN, TVW_VIEWPORTINSET), SetPadding(2, 2, 2, 2),
-			NWidget(NWID_VIEWPORT, INVALID_COLOUR, TVW_VIEWPORT), SetMinimalSize(254, 86), SetFill(1, 0), SetPadding(1, 1, 1, 1),
+			NWidget(NWID_VIEWPORT, INVALID_COLOUR, TVW_VIEWPORT), SetMinimalSize(254, 86), SetFill(1, 1), SetResize(1, 1), SetPadding(1, 1, 1, 1),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_INFOPANEL), SetMinimalSize(260, 32), SetResize(0, 1), SetFill(1, 0), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CENTERVIEW), SetMinimalSize(80, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_EXPAND), SetMinimalSize(80, 12), SetFill(1, 1), SetDataTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_DELETE), SetMinimalSize(80, 12), SetFill(1, 1), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_INFOPANEL), SetMinimalSize(260, 32), SetResize(1, 0), SetFill(1, 0), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CENTERVIEW), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_EXPAND), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_DELETE), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
+		EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TVW_RESIZE),
 	EndContainer(),
 };
 
 static const WindowDesc _town_editor_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, TownViewWindow::TVW_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_nested_town_editor_view_widgets, lengthof(_nested_town_editor_view_widgets)
 );
 
