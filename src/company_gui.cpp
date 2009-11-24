@@ -287,13 +287,12 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
  * @todo #money_width should be calculated dynamically.
  */
 struct CompanyFinancesWindow : Window {
-	bool small;       ///< Window is toggled to 'small'.
-	uint money_width; ///< Width needed for displaying all amounts.
+	static Money max_money; ///< The maximum amount of money a company has had this 'run'
+	bool small;             ///< Window is toggled to 'small'.
 
 	CompanyFinancesWindow(const WindowDesc *desc, CompanyID company) : Window()
 	{
 		this->small = false;
-		this->money_width = 86;
 		this->CreateNestedTree(desc);
 		this->SetupWidgets();
 		this->FinishInitNested(desc, company);
@@ -332,14 +331,13 @@ struct CompanyFinancesWindow : Window {
 			case CFW_EXPS_PRICE1:
 			case CFW_EXPS_PRICE2:
 			case CFW_EXPS_PRICE3:
-				size->width  = this->money_width;
 				size->height = _expenses_list_types[type].GetHeight();
-				break;
-
+				/* Fall through */
 			case CFW_BALANCE_VALUE:
 			case CFW_LOAN_VALUE:
 			case CFW_TOTAL_VALUE:
-				size->width  = this->money_width + padding.width;
+				SetDParam(0, CompanyFinancesWindow::max_money);
+				size->width = max(GetStringBoundingBox(STR_FINANCES_NEGATIVE_INCOME).width, GetStringBoundingBox(STR_FINANCES_POSITIVE_INCOME).width) + padding.width;
 				break;
 
 			case CFW_MAXLOAN_GAP:
@@ -454,7 +452,20 @@ struct CompanyFinancesWindow : Window {
 				break;
 		}
 	}
+
+	virtual void OnHundredthTick()
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+		if (c->money > CompanyFinancesWindow::max_money) {
+			CompanyFinancesWindow::max_money = max(c->money * 2, CompanyFinancesWindow::max_money * 4);
+			this->SetupWidgets();
+			this->ReInit();
+		}
+	}
 };
+
+/** First conservative estimate of the maximum amount of money */
+Money CompanyFinancesWindow::max_money = INT32_MAX;
 
 static const WindowDesc _company_finances_desc(
 	WDP_AUTO, WDP_AUTO, 0, 0,
