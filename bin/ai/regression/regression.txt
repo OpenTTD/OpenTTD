@@ -3209,7 +3209,7 @@
     GetCapacity():      31
     GetReliability():   78
     GetMaxSpeed():      56
-    GetPrice():         4920
+    GetPrice():         4921
     GetMaxAge():        4392
     GetRunningCost():   426
     GetPower():         -1
@@ -3335,7 +3335,7 @@
     GetCapacity():      20
     GetReliability():   77
     GetMaxSpeed():      48
-    GetPrice():         4428
+    GetPrice():         4429
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3389,7 +3389,7 @@
     GetCapacity():      22
     GetReliability():   92
     GetMaxSpeed():      48
-    GetPrice():         4715
+    GetPrice():         4716
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3497,7 +3497,7 @@
     GetCapacity():      21
     GetReliability():   98
     GetMaxSpeed():      48
-    GetPrice():         4510
+    GetPrice():         4511
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3551,7 +3551,7 @@
     GetCapacity():      14
     GetReliability():   97
     GetMaxSpeed():      48
-    GetPrice():         4305
+    GetPrice():         4306
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3605,7 +3605,7 @@
     GetCapacity():      14
     GetReliability():   87
     GetMaxSpeed():      48
-    GetPrice():         4387
+    GetPrice():         4388
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3659,7 +3659,7 @@
     GetCapacity():      20
     GetReliability():   97
     GetMaxSpeed():      48
-    GetPrice():         4674
+    GetPrice():         4675
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3713,7 +3713,7 @@
     GetCapacity():      20
     GetReliability():   98
     GetMaxSpeed():      48
-    GetPrice():         4838
+    GetPrice():         4839
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3767,7 +3767,7 @@
     GetCapacity():      22
     GetReliability():   97
     GetMaxSpeed():      48
-    GetPrice():         4961
+    GetPrice():         4962
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3821,7 +3821,7 @@
     GetCapacity():      15
     GetReliability():   82
     GetMaxSpeed():      48
-    GetPrice():         4592
+    GetPrice():         4593
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -3875,7 +3875,7 @@
     GetCapacity():      12
     GetReliability():   76
     GetMaxSpeed():      48
-    GetPrice():         5945
+    GetPrice():         5947
     GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         -1
@@ -4793,7 +4793,7 @@
     GetCapacity():      220
     GetReliability():   99
     GetMaxSpeed():      24
-    GetPrice():         30465
+    GetPrice():         30468
     GetMaxAge():        10980
     GetRunningCost():   2296
     GetPower():         -1
@@ -4829,7 +4829,7 @@
     GetCapacity():      100
     GetReliability():   88
     GetMaxSpeed():      32
-    GetPrice():         18279
+    GetPrice():         18281
     GetMaxAge():        10980
     GetRunningCost():   1476
     GetPower():         -1
@@ -4919,7 +4919,7 @@
     GetCapacity():      160
     GetReliability():   81
     GetMaxSpeed():      24
-    GetPrice():         24372
+    GetPrice():         24375
     GetMaxAge():        10980
     GetRunningCost():   2460
     GetPower():         -1
@@ -5792,17 +5792,17 @@
     126 => 48
     123 => 48
   Price ListDump:
-    153 => 5945
-    147 => 4961
-    116 => 4920
-    144 => 4838
-    126 => 4715
-    141 => 4674
-    150 => 4592
-    132 => 4510
-    123 => 4428
-    138 => 4387
-    135 => 4305
+    153 => 5947
+    147 => 4962
+    116 => 4921
+    144 => 4839
+    126 => 4716
+    141 => 4675
+    150 => 4593
+    132 => 4511
+    123 => 4429
+    138 => 4388
+    135 => 4306
 
 --Group--
   SetAutoReplace():         false
@@ -8316,8 +8316,8 @@
   IsValidVehicle(12):   true
   CloneVehicle():       13
   --Accounting--
-    GetCosts():         11890
-    Should be:          11890
+    GetCosts():         11894
+    Should be:          11894
     ResetCosts():       (null : 0x00000000)
   SellVehicle(13):      true
   IsInDepot():          true
@@ -8329,8 +8329,8 @@
   IsInDepot():          false
   IsStoppedInDepot():   false
   --Accounting--
-    GetCosts():         -5945
-    Should be:          -5945
+    GetCosts():         -5947
+    Should be:          -5947
   GetName():            Road Vehicle 1
   SetName():            true
   GetName():            MyVehicleName
@@ -8346,7 +8346,7 @@
     GetRunningCost():    421
     GetProfitThisYear(): 0
     GetProfitLastYear(): 0
-    GetCurrentValue():   5945
+    GetCurrentValue():   5947
     GetVehicleType():    1
     GetRoadType():       0
     GetCapacity():       12
@@ -8455,10 +8455,10 @@
     12 => 0
   CurrentValue ListDump:
     14 => 30761
-    16 => 30465
+    16 => 30468
     17 => 22265
-    13 => 5945
-    12 => 5945
+    13 => 5947
+    12 => 5947
   VehicleType ListDump:
     14 => 3
     16 => 2
