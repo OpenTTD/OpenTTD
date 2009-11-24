@@ -159,7 +159,9 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 Money Ship::GetRunningCost() const
 {
-	return GetVehicleProperty(this, PROP_SHIP_RUNNING_COST_FACTOR, ShipVehInfo(this->engine_type)->running_cost) * _price[PR_RUNNING_SHIP];
+	const Engine *e = Engine::Get(this->engine_type);
+	uint cost_factor = GetVehicleProperty(this, PROP_SHIP_RUNNING_COST_FACTOR, e->u.ship.running_cost);
+	return GetPrice(PR_RUNNING_SHIP, cost_factor);
 }
 
 void Ship::OnNewDay()

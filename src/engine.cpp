@@ -204,48 +204,71 @@ uint Engine::GetDisplayDefaultCapacity(uint16 *mail_capacity) const
 
 Money Engine::GetRunningCost() const
 {
+	Price base_price;
+	uint cost_factor;
 	switch (this->type) {
-		case VEH_ROAD: {
-			if (this->u.road.running_cost_class == INVALID_PRICE) return 0;
-			return GetEngineProperty(this->index, PROP_ROADVEH_RUNNING_COST_FACTOR, this->u.road.running_cost) * GetPriceByIndex(this->u.road.running_cost_class) >> 8;
-		}
+		case VEH_ROAD:
+			base_price = this->u.road.running_cost_class;
+			if (base_price == INVALID_PRICE) return 0;
+			cost_factor = GetEngineProperty(this->index, PROP_ROADVEH_RUNNING_COST_FACTOR, this->u.road.running_cost);
+			break;
 
-		case VEH_TRAIN: {
-			if (this->u.rail.running_cost_class == INVALID_PRICE) return 0;
-			return GetEngineProperty(this->index, PROP_TRAIN_RUNNING_COST_FACTOR, this->u.rail.running_cost) * GetPriceByIndex(this->u.rail.running_cost_class) >> 8;
-		}
+		case VEH_TRAIN:
+			base_price = this->u.rail.running_cost_class;
+			if (base_price == INVALID_PRICE) return 0;
+			cost_factor = GetEngineProperty(this->index, PROP_TRAIN_RUNNING_COST_FACTOR, this->u.rail.running_cost);
+			break;
 
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, PROP_SHIP_RUNNING_COST_FACTOR, this->u.ship.running_cost) * _price[PR_RUNNING_SHIP] >> 8;
+			base_price = PR_RUNNING_SHIP;
+			cost_factor = GetEngineProperty(this->index, PROP_SHIP_RUNNING_COST_FACTOR, this->u.ship.running_cost);
+			break;
 
 		case VEH_AIRCRAFT:
-			return GetEngineProperty(this->index, PROP_AIRCRAFT_RUNNING_COST_FACTOR, this->u.air.running_cost) * _price[PR_RUNNING_AIRCRAFT] >> 8;
+			base_price = PR_RUNNING_AIRCRAFT;
+			cost_factor = GetEngineProperty(this->index, PROP_AIRCRAFT_RUNNING_COST_FACTOR, this->u.air.running_cost);
+			break;
 
 		default: NOT_REACHED();
 	}
+
+	return GetPrice(base_price, cost_factor, -8);
 }
 
 Money Engine::GetCost() const
 {
+	Price base_price;
+	uint cost_factor;
 	switch (this->type) {
 		case VEH_ROAD:
-			return GetEngineProperty(this->index, PROP_ROADVEH_COST_FACTOR, this->u.road.cost_factor) * (_price[PR_BUILD_VEHICLE_ROAD] >> 3) >> 5;
+			base_price = PR_BUILD_VEHICLE_ROAD;
+			cost_factor = GetEngineProperty(this->index, PROP_ROADVEH_COST_FACTOR, this->u.road.cost_factor);
+			break;
 
 		case VEH_TRAIN:
 			if (this->u.rail.railveh_type == RAILVEH_WAGON) {
-				return (GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor) * _price[PR_BUILD_VEHICLE_WAGON]) >> 8;
+				base_price = PR_BUILD_VEHICLE_WAGON;
+				cost_factor = GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor);
 			} else {
-				return GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor) * (_price[PR_BUILD_VEHICLE_TRAIN] >> 3) >> 5;
+				base_price = PR_BUILD_VEHICLE_TRAIN;
+				cost_factor = GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->u.rail.cost_factor);
 			}
+			break;
 
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, PROP_SHIP_COST_FACTOR, this->u.ship.cost_factor) * (_price[PR_BUILD_VEHICLE_SHIP] >> 3) >> 5;
+			base_price = PR_BUILD_VEHICLE_SHIP;
+			cost_factor = GetEngineProperty(this->index, PROP_SHIP_COST_FACTOR, this->u.ship.cost_factor);
+			break;
 
 		case VEH_AIRCRAFT:
-			return GetEngineProperty(this->index, PROP_AIRCRAFT_COST_FACTOR, this->u.air.cost_factor) * (_price[PR_BUILD_VEHICLE_AIRCRAFT] >> 3) >> 5;
+			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
+			cost_factor = GetEngineProperty(this->index, PROP_AIRCRAFT_COST_FACTOR, this->u.air.cost_factor);
+			break;
 
 		default: NOT_REACHED();
 	}
+
+	return GetPrice(base_price, cost_factor, -8);
 }
 
 /**

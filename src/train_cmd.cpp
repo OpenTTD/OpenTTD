@@ -4443,16 +4443,16 @@ Money Train::GetRunningCost() const
 	const Train *v = this;
 
 	do {
-		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		if (rvi->running_cost_class == INVALID_PRICE) continue;
+		const Engine *e = Engine::Get(v->engine_type);
+		if (e->u.rail.running_cost_class == INVALID_PRICE) continue;
 
-		uint cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, rvi->running_cost);
+		uint cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, e->u.rail.running_cost);
 		if (cost_factor == 0) continue;
 
 		/* Halve running cost for multiheaded parts */
 		if (v->IsMultiheaded()) cost_factor /= 2;
 
-		cost += cost_factor * GetPriceByIndex(rvi->running_cost_class);
+		cost += GetPrice(e->u.rail.running_cost_class, cost_factor);
 	} while ((v = v->GetNextVehicle()) != NULL);
 
 	return cost;

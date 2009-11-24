@@ -262,33 +262,35 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
  */
 static CommandCost GetRefitCost(EngineID engine_type)
 {
-	Money base_cost;
 	ExpensesType expense_type;
 	const Engine *e = Engine::Get(engine_type);
+	Price base_price;
+	uint cost_factor = e->info.refit_cost;
 	switch (e->type) {
 		case VEH_SHIP:
-			base_cost = _price[PR_BUILD_VEHICLE_SHIP];
+			base_price = PR_BUILD_VEHICLE_SHIP;
 			expense_type = EXPENSES_SHIP_RUN;
 			break;
 
 		case VEH_ROAD:
-			base_cost = _price[PR_BUILD_VEHICLE_ROAD];
+			base_price = PR_BUILD_VEHICLE_ROAD;
 			expense_type = EXPENSES_ROADVEH_RUN;
 			break;
 
 		case VEH_AIRCRAFT:
-			base_cost = _price[PR_BUILD_VEHICLE_AIRCRAFT];
+			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
 			expense_type = EXPENSES_AIRCRAFT_RUN;
 			break;
 
 		case VEH_TRAIN:
-			base_cost = 2 * _price[(e->u.rail.railveh_type == RAILVEH_WAGON) ? PR_BUILD_VEHICLE_WAGON : PR_BUILD_VEHICLE_TRAIN];
+			base_price = (e->u.rail.railveh_type == RAILVEH_WAGON) ? PR_BUILD_VEHICLE_WAGON : PR_BUILD_VEHICLE_TRAIN;
+			cost_factor <<= 1;
 			expense_type = EXPENSES_TRAIN_RUN;
 			break;
 
 		default: NOT_REACHED();
 	}
-	return CommandCost(expense_type, (e->info.refit_cost * base_cost) >> 10);
+	return CommandCost(expense_type, GetPrice(base_price, cost_factor, -10));
 }
 
 /**

@@ -788,15 +788,25 @@ void InitializeEconomy()
 }
 
 /**
- * Determine a certain base price with range checking
- * @param index Price of interest
- * @return Base price, or zero if out of range
+ * Determine a certain price
+ * @param index Price base
+ * @param cost_factor Price factor
+ * @param shift Extra bit shifting after the computation
+ * @return Price
  */
-Money GetPriceByIndex(Price index)
+Money GetPrice(Price index, uint cost_factor, int shift)
 {
 	if (index >= PR_END) return 0;
 
-	return _price[index];
+	Money cost = _price[index] * cost_factor;
+
+	if (shift >= 0) {
+		cost <<= shift;
+	} else {
+		cost >>= -shift;
+	}
+
+	return cost;
 }
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)

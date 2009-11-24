@@ -41,7 +41,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 void PrepareUnload(Vehicle *front_v);
 void LoadUnloadStation(Station *st);
 
-Money GetPriceByIndex(Price index);
+Money GetPrice(Price index, uint cost_factor, int shift = 0);
 
 void InitializeEconomy();
 void RecomputePrices();
