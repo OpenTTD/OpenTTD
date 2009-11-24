@@ -2425,11 +2425,9 @@ bool IndustrySpec::IsRawIndustry() const
 
 Money IndustrySpec::GetConstructionCost() const
 {
-	return (_price[PR_BUILD_INDUSTRY] *
-			(_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry() ?
-					this->raw_industry_cost_multiplier :
-					this->cost_multiplier
-			)) >> 8;
+	/* Building raw industries like secondary is more expensive */
+	return (_price[PR_BUILD_INDUSTRY] * this->cost_multiplier) >>
+			((_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry()) ? 5 : 8);
 }
 
 Money IndustrySpec::GetRemovalCost() const
