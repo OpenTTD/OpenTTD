@@ -297,7 +297,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	}
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[PR_TERRAFORM] : (Money)0);
+	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[PR_BUILD_FOUNDATION] : (Money)0);
 }
 
 /* Validate functions for rail building */
@@ -2490,7 +2490,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 		case TRACK_BIT_UPPER: track_corner = CORNER_N; break;
 
 		/* Surface slope must not be changed */
-		default: return (((z_old != z_new) || (tileh_old != tileh_new)) ? CMD_ERROR : CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]));
+		default: return (((z_old != z_new) || (tileh_old != tileh_new)) ? CMD_ERROR : CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]));
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
@@ -2498,7 +2498,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	z_new += GetSlopeZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
 	if (z_old != z_new) return CMD_ERROR;
 
-	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	/* Make the ground dirty, if surface slope has changed */
 	if (tileh_old != tileh_new) {
 		/* If there is flat water on the lower halftile add the cost for clearing it */
@@ -2550,7 +2550,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[PR_CLEAR_WATER] : (Money)0);
 	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
-		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

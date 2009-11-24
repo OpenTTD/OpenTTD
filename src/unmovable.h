@@ -23,8 +23,8 @@ struct UnmovableSpec {
 	uint8 buy_cost_multiplier;
 	uint8 sell_cost_multiplier;
 
-	Money GetRemovalCost() const { return (_price[PR_CLEAR_ROUGH] * this->sell_cost_multiplier); }
-	Money GetBuildingCost() const { return (_price[PR_CLEAR_ROUGH] * this->buy_cost_multiplier); }
+	Money GetRemovalCost() const { return (_price[PR_CLEAR_UNMOVABLE] * this->sell_cost_multiplier); }
+	Money GetBuildingCost() const { return (_price[PR_BUILD_UNMOVABLE] * this->buy_cost_multiplier); }
 
 };
 

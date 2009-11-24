@@ -502,7 +502,7 @@ static CommandCost TerraformTile_Unmovable(TileIndex tile, DoCommandFlag flags, 
 	if (IsOwnedLand(tile) && CheckTileOwnership(tile)) return CommandCost();
 
 	if (AutoslopeEnabled() && (IsStatue(tile) || IsCompanyHQ(tile))) {
-		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

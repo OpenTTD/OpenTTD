@@ -114,6 +114,17 @@ enum Price {
 	PR_RUNNING_ROADVEH,
 	PR_RUNNING_SHIP,
 	PR_BUILD_INDUSTRY,
+	PR_CLEAR_INDUSTRY,
+	PR_BUILD_UNMOVABLE,
+	PR_CLEAR_UNMOVABLE,
+	PR_BUILD_WAYPOINT_RAIL,
+	PR_CLEAR_WAYPOINT_RAIL,
+	PR_BUILD_WAYPOINT_BUOY,
+	PR_CLEAR_WAYPOINT_BUOY,
+	PR_TOWN_ACTION,
+	PR_BUILD_FOUNDATION,
+	PR_BUILD_INDUSTRY_RAW,
+	PR_BUILD_TOWN,
 
 	PR_END,
 	INVALID_PRICE = 0xFF
@@ -157,6 +168,7 @@ struct PriceBaseSpec {
 	Money start_price;      ///< Default value at game start, before adding multipliers.
 	PriceCategory category; ///< Price is affected by certain difficulty settings.
 	uint grf_feature;       ///< GRF Feature, that decides whether price multipliers apply locally or globally. GSF_END if none.
+	Price fallback_price;   ///< Fallback price multiplier for new prices but old grfs.
 };
 
 /** The "steps" in loan size, in British Pounds! */

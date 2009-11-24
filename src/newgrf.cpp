@@ -6217,8 +6217,21 @@ static void FinalisePriceBaseMultipliers()
 		}
 	}
 
-	/* Decide local/global scope of price base multipliers */
+	/* Apply fallback prices */
 	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
+		for (Price p = PR_BEGIN; p < PR_END; p++) {
+			Price fallback_price = _price_base_specs[p].fallback_price;
+			if (fallback_price != INVALID_PRICE && (byte)price_base_multipliers[p] == 0x80) {
+				/* No price multiplier has been set.
+				 * So copy the multiplier from the fallback price, maybe a multiplier was set there. */
+				price_base_multipliers[p] = price_base_multipliers[fallback_price];
+			}
+		}
+	}
+
+	/* Decide local/global scope of price base multipliers */
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
 		for (Price p = PR_BEGIN; p < PR_END; p++) {

@@ -1570,7 +1570,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* multidimensional arrays have to have defined length of non-first dimension */
 	assert_compile(lengthof(price_mult[0]) == 4);
 
-	CommandCost cost(EXPENSES_OTHER, _price[PR_BUILD_INDUSTRY]);
+	CommandCost cost(EXPENSES_OTHER, _price[PR_BUILD_TOWN]);
 	byte mult = price_mult[city][size];
 
 	cost.MultiplyCost(mult);
@@ -2511,7 +2511,6 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 
 		/* Things worth more than this are not shown */
 		Money avail = Company::Get(cid)->money + _price[PR_STATION_VALUE] * 200;
-		Money ref = _price[PR_BUILD_INDUSTRY] >> 8;
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
@@ -2530,7 +2529,7 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, cid))
 				continue;
 
-			if (avail >= _town_action_costs[i] * ref) {
+			if (avail >= _town_action_costs[i] * _price[PR_TOWN_ACTION] >> 8) {
 				buttons |= cur;
 				num++;
 			}
@@ -2558,7 +2557,7 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (!HasBit(GetMaskOfTownActions(NULL, _current_company, t), p2)) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_OTHER, (_price[PR_BUILD_INDUSTRY] >> 8) * _town_action_costs[p2]);
+	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * _town_action_costs[p2] >> 8);
 
 	if (flags & DC_EXEC) {
 		_town_action_proc[p2](t);
@@ -2894,7 +2893,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint 
 				if ((res != 0) && (res != CALLBACK_FAILED)) allow_terraform = false;
 			}
 
-			if (allow_terraform) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+			if (allow_terraform) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 		}
 	}
 

@@ -184,7 +184,7 @@ public:
 		switch (widget) {
 			case TWA_ACTION_INFO:
 				if (this->sel_index != -1) {
-					SetDParam(1, (_price[PR_BUILD_INDUSTRY] >> 8) * _town_action_costs[this->sel_index]);
+					SetDParam(1, _price[PR_TOWN_ACTION] * _town_action_costs[this->sel_index] >> 8);
 					SetDParam(0, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
 					DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
 								STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index);
@@ -223,7 +223,7 @@ public:
 				size->height -= WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				Dimension d = {0, 0};
 				for (int i = 0; i < TACT_COUNT; i++) {
-					SetDParam(1, (_price[PR_BUILD_INDUSTRY] >> 8) * _town_action_costs[i]);
+					SetDParam(1, _price[PR_TOWN_ACTION] * _town_action_costs[i] >> 8);
 					SetDParam(0, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i);
 					d = maxdim(d, GetStringMultiLineBoundingBox(STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + i, *size));
 				}

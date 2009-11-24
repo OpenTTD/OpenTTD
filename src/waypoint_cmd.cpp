@@ -319,7 +319,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, count * _price[PR_BUILD_DEPOT_TRAIN]);
+	return CommandCost(EXPENSES_CONSTRUCTION, count * _price[PR_BUILD_WAYPOINT_RAIL]);
 }
 
 /** Build a buoy.
@@ -366,7 +366,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_WAYPOINT_BUOY]);
 }
 
 /**
@@ -404,7 +404,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 		wp->delete_ctr = 0;
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_STATION_TRUCK]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WAYPOINT_BUOY]);
 }
 
 

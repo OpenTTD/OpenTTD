@@ -2425,14 +2425,14 @@ bool IndustrySpec::IsRawIndustry() const
 
 Money IndustrySpec::GetConstructionCost() const
 {
-	/* Building raw industries like secondary is more expensive */
-	return (_price[PR_BUILD_INDUSTRY] * this->cost_multiplier) >>
-			((_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry()) ? 5 : 8);
+	/* Building raw industries like secondary uses different price base */
+	return (_price[(_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry()) ?
+			PR_BUILD_INDUSTRY_RAW : PR_BUILD_INDUSTRY] * this->cost_multiplier) >> 8;
 }
 
 Money IndustrySpec::GetRemovalCost() const
 {
-	return (_price[PR_CLEAR_HOUSE] * this->removal_cost_multiplier) >> 8;
+	return (_price[PR_CLEAR_INDUSTRY] * this->removal_cost_multiplier) >> 8;
 }
 
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
@@ -2454,10 +2454,10 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, u
 			if (HasBit(itspec->callback_mask, CBM_INDT_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
 				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, Industry::GetByTile(tile), tile);
-				if ((res == 0) || (res == CALLBACK_FAILED)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+				if ((res == 0) || (res == CALLBACK_FAILED)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			} else {
 				/* allow autoslope */
-				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			}
 		}
 	}

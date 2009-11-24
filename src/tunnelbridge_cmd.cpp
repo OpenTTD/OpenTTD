@@ -133,7 +133,7 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 }
 
 /**
@@ -154,7 +154,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 }
 
 bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
@@ -1506,7 +1506,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		}
 
 		/* Surface slope is valid and remains unchanged? */
-		if (!CmdFailed(res) && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+		if (!CmdFailed(res) && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

@@ -699,7 +699,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 			    (HasBit(invalid_dirs, DIAGDIR_NW) && !(tileh & SLOPE_NW))) {
 				return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 			}
-			cost.AddCost(_price[PR_TERRAFORM]);
+			cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 			flat_z += TILE_HEIGHT;
 		}
 
@@ -1375,7 +1375,7 @@ CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint
 	TileArea ta(start, end);
 	SmallVector<Waypoint *, 4> affected_stations;
 
-	return RemoveFromRailBaseStation(ta, affected_stations, flags, _price[PR_CLEAR_DEPOT_TRAIN], HasBit(p2, 0));
+	return RemoveFromRailBaseStation(ta, affected_stations, flags, _price[PR_CLEAR_WAYPOINT_RAIL], HasBit(p2, 0));
 }
 
 
@@ -3257,11 +3257,11 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, ui
 					DiagDirection direction = AxisToDiagDir(GetRailStationAxis(tile));
 					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;
 					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
-					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				}
 
 				case STATION_AIRPORT:
-					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 
 				case STATION_TRUCK:
 				case STATION_BUS: {
@@ -3270,7 +3270,7 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, ui
 					if (IsDriveThroughStopTile(tile)) {
 						if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
 					}
-					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				}
 
 				default: break;

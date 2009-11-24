@@ -313,7 +313,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 			/* If we change the foundation we have to pay for it. */
 			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(pieces) * _price[PR_CLEAR_ROAD] +
-					((GetRoadFoundation(tileh, present) != f) ? _price[PR_TERRAFORM] : (Money)0));
+					((GetRoadFoundation(tileh, present) != f) ? _price[PR_BUILD_FOUNDATION] : (Money)0));
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -401,7 +401,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 		existing |= other;
 
 		if ((existing == ROAD_NONE || existing == *pieces) && IsStraightRoad(*pieces)) {
-			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 		}
 		return CMD_ERROR;
 	}
@@ -433,12 +433,12 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 			if (_settings_game.construction.build_on_slopes) {
 
 				/* If we add foundation we've got to pay for it */
-				if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+				if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 
 				return CommandCost();
 			}
 		} else {
-			if (CountBits(existing) == 1) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+			if (CountBits(existing) == 1) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			return CommandCost();
 		}
 	}
@@ -1608,11 +1608,11 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint 
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {
 			case ROAD_TILE_CROSSING:
-				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				break;
 
 			case ROAD_TILE_DEPOT:
-				if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRoadDepotDirection(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+				if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRoadDepotDirection(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				break;
 
 			case ROAD_TILE_NORMAL: {
@@ -1630,7 +1630,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint 
 						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
 
 						/* The surface slope must not be changed */
-						if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_TERRAFORM]);
+						if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 					}
 				}
 				break;
