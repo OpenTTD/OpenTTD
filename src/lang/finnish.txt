@@ -2528,7 +2528,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Yhtiön a
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}%:n omistus: {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Rakenna päämaja
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Rakenna yhtiön päämaja
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Näytä päämaja
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Näytä yhtiön päämaja
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sijoita päämaja
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, hintana 1{NBSP}% yhtiön arvosta.
 
