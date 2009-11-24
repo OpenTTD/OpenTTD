@@ -1906,67 +1906,7 @@ void RoadVehicle::OnNewDay()
 	}
 
 	/* update destination */
-	if (!(this->vehstatus & VS_STOPPED) && this->current_order.IsType(OT_GOTO_STATION) && !(this->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) && this->slot == NULL && !(this->vehstatus & VS_CRASHED)) {
-		Station *st = Station::Get(this->current_order.GetDestination());
-		RoadStop *rs = st->GetPrimaryRoadStop(this);
-		RoadStop *best = NULL;
-
-		if (rs != NULL) {
-			/* We try to obtain a slot if:
-			 * 1) we're reasonably close to the primary road stop
-			 * or
-			 * 2) we're somewhere close to the station rectangle (to make sure we do assign
-			 *    slots even if the station and its road stops are incredibly spread out)
-			 */
-			if (DistanceManhattan(this->tile, rs->xy) < 16 || st->rect.PtInExtendedRect(TileX(this->tile), TileY(this->tile), 2)) {
-				uint dist, badness;
-				uint minbadness = UINT_MAX;
-
-				DEBUG(ms, 2, "Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
-					this->unitnumber, this->index, st->index, st->xy
-				);
-				/* Now we find the nearest road stop that has a free slot */
-				for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
-					if (rs->num_vehicles >= RoadStop::MAX_VEHICLES) {
-						DEBUG(ms, 4, " stop 0x%X's queue is full, not treating further", rs->xy);
-						continue;
-					}
-					dist = RoadFindPathToStop(this, rs->xy);
-					if (dist == UINT_MAX) {
-						DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);
-						continue;
-					}
-					badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist;
-
-					DEBUG(ms, 4, " stop 0x%X has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
-					DEBUG(ms, 4, " distance is %u", dist);
-					DEBUG(ms, 4, " badness %u", badness);
-
-					if (badness < minbadness) {
-						best = rs;
-						minbadness = badness;
-					}
-				}
-
-				if (best != NULL) {
-					best->num_vehicles++;
-					DEBUG(ms, 3, "Assigned to stop 0x%X", best->xy);
-
-					this->slot = best;
-					this->dest_tile = best->xy;
-					this->slot_age = 14;
-				} else {
-					DEBUG(ms, 3, "Could not find a suitable stop");
-				}
-			} else {
-				DEBUG(ms, 5, "Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%X)",
-						this->unitnumber, this->index, st->index, st->xy);
-			}
-		} else {
-			DEBUG(ms, 4, "No road stop for vehicle %d (index %d) at station %d (0x%X)",
-					this->unitnumber, this->index, st->index, st->xy);
-		}
-	}
+	this->FindRoadStopSlot();
 
 	if (this->running_ticks == 0) return;
 
@@ -1979,6 +1919,77 @@ void RoadVehicle::OnNewDay()
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 	SetWindowClassesDirty(WC_ROADVEH_LIST);
+}
+
+void RoadVehicle::FindRoadStopSlot()
+{
+	if (this->slot != NULL ||
+			(this->vehstatus & (VS_STOPPED | VS_CRASHED)) != 0 ||
+			!this->current_order.IsType(OT_GOTO_STATION) ||
+			(this->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0) {
+		return;
+	}
+
+	Station *st = Station::Get(this->current_order.GetDestination());
+	RoadStop *rs = st->GetPrimaryRoadStop(this);
+	RoadStop *best = NULL;
+
+	if (rs == NULL) {
+		DEBUG(ms, 4, "No road stop for vehicle %d (index %d) at station %d (0x%X)",
+				this->unitnumber, this->index, st->index, st->xy);
+		return;
+	}
+
+	/* We try to obtain a slot if:
+	 * 1) we're reasonably close to the primary road stop
+	 * or
+	 * 2) we're somewhere close to the station rectangle (to make sure we do assign
+	 *    slots even if the station and its road stops are incredibly spread out)
+	 */
+	if (DistanceManhattan(this->tile, rs->xy) < 16 || st->rect.PtInExtendedRect(TileX(this->tile), TileY(this->tile), 2)) {
+		uint dist, badness;
+		uint minbadness = UINT_MAX;
+
+		DEBUG(ms, 2, "Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
+			this->unitnumber, this->index, st->index, st->xy
+		);
+		/* Now we find the nearest road stop that has a free slot */
+		for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
+			if (rs->num_vehicles >= RoadStop::MAX_VEHICLES) {
+				DEBUG(ms, 4, " stop 0x%X's queue is full, not treating further", rs->xy);
+				continue;
+			}
+			dist = RoadFindPathToStop(this, rs->xy);
+			if (dist == UINT_MAX) {
+				DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);
+				continue;
+			}
+			badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist;
+
+			DEBUG(ms, 4, " stop 0x%X has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
+			DEBUG(ms, 4, " distance is %u", dist);
+			DEBUG(ms, 4, " badness %u", badness);
+
+			if (badness < minbadness) {
+				best = rs;
+				minbadness = badness;
+			}
+		}
+
+		if (best != NULL) {
+			best->num_vehicles++;
+			DEBUG(ms, 3, "Assigned to stop 0x%X", best->xy);
+
+			this->slot = best;
+			this->dest_tile = best->xy;
+			this->slot_age = 14;
+		} else {
+			DEBUG(ms, 3, "Could not find a suitable stop");
+		}
+	} else {
+		DEBUG(ms, 5, "Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%X)",
+				this->unitnumber, this->index, st->index, st->xy);
+	}
 }
 
 Trackdir RoadVehicle::GetVehicleTrackdir() const

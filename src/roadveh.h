@@ -130,6 +130,7 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	void FindRoadStopSlot();
 
 	/**
 	 * Check if vehicle is a front engine
