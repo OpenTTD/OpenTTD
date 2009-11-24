@@ -4452,7 +4452,7 @@ Money Train::GetRunningCost() const
 		/* Halve running cost for multiheaded parts */
 		if (v->IsMultiheaded()) cost_factor /= 2;
 
-		cost += GetPrice(e->u.rail.running_cost_class, cost_factor);
+		cost += GetPrice(e->u.rail.running_cost_class, cost_factor, e->grffile);
 	} while ((v = v->GetNextVehicle()) != NULL);
 
 	return cost;

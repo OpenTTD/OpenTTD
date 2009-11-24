@@ -121,6 +121,7 @@ enum Price {
 DECLARE_POSTFIX_INCREMENT(Price)
 
 typedef Money Prices[PR_END];
+typedef int8 PriceMultipliers[PR_END];
 
 enum ExpensesType {
 	EXPENSES_CONSTRUCTION =  0,
@@ -155,6 +156,7 @@ enum PriceCategory {
 struct PriceBaseSpec {
 	Money start_price;      ///< Default value at game start, before adding multipliers.
 	PriceCategory category; ///< Price is affected by certain difficulty settings.
+	uint grf_feature;       ///< GRF Feature, that decides whether price multipliers apply locally or globally. GSF_END if none.
 };
 
 /** The "steps" in loan size, in British Pounds! */

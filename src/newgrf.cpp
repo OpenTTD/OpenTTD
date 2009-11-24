@@ -1668,7 +1668,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 				uint price = gvid + i;
 
 				if (price < PR_END) {
-					SetPriceBaseMultiplier((Price)price, factor - 8);
+					_cur_grffile->price_base_multipliers[price] = min<int>(factor - 8, MAX_PRICE_MODIFIER);
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Price %d out of range, ignoring", price);
 				}
@@ -2480,8 +2480,7 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 
 	/* <00> <feature> <num-props> <num-info> <id> (<property <new-info>)...
 	 *
-	 * B feature       0, 1, 2 or 3 for trains, road vehicles, ships or planes
-	 *                 4 for defining new train station sets
+	 * B feature
 	 * B num-props     how many properties to change per vehicle/station
 	 * B num-info      how many vehicles/stations to change
 	 * E id            ID of first vehicle/station to change, if num-info is
@@ -2489,7 +2488,6 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 	 *                 vehicles/stations will be changed
 	 * B property      what property to change, depends on the feature
 	 * V new-info      new bytes of info (variable size; depends on properties) */
-	/* TODO: Bridges, town houses. */
 
 	static const VCI_Handler handler[] = {
 		/* GSF_TRAIN */        RailVehicleChangeInfo,
@@ -2521,6 +2519,9 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 		if (feature != GSF_CARGOS) grfmsg(1, "FeatureChangeInfo: Unsupported feature %d, skipping", feature);
 		return;
 	}
+
+	/* Mark the feature as used by the grf */
+	SetBit(_cur_grffile->grf_features, feature);
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
@@ -3347,6 +3348,9 @@ static void FeatureMapSpriteGroup(byte *buf, size_t len)
 		AddGenericCallback(feature, _cur_grffile, _cur_grffile->spritegroups[groupid]);
 		return;
 	}
+
+	/* Mark the feature as used by the grf (generic callbacks do not count) */
+	SetBit(_cur_grffile->grf_features, feature);
 
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids", feature, idcount);
 
@@ -5677,6 +5681,11 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 	newfile->traininfo_vehicle_pitch = 0;
 	newfile->traininfo_vehicle_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
+	/* Mark price_base_multipliers as 'not set' */
+	for (Price i = PR_BEGIN; i < PR_END; i++) {
+		newfile->price_base_multipliers[i] = 0x80;
+	}
+
 	/* Copy the initial parameter list */
 	assert_compile(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
 	newfile->param_end = config->num_params;
@@ -6128,6 +6137,109 @@ static void ActivateOldShore()
 	}
 }
 
+/**
+ * Decide whether price base multipliers of grfs shall apply globally or only to the grf specifying them
+ */
+static void FinalisePriceBaseMultipliers()
+{
+	extern const PriceBaseSpec _price_base_specs[];
+	static const uint32 override_features = (1 << GSF_TRAIN) | (1 << GSF_ROAD) | (1 << GSF_SHIP) | (1 << GSF_AIRCRAFT);
+
+	/* Evaluate grf overrides */
+	int num_grfs = _grf_files.Length();
+	int *grf_overrides = AllocaM(int, num_grfs);
+	for (int i = 0; i < num_grfs; i++) {
+		grf_overrides[i] = -1;
+
+		GRFFile *source = _grf_files[i];
+		uint32 override = _grf_id_overrides[source->grfid];
+		if (override == 0) continue;
+
+		GRFFile *dest = GetFileByGRFID(override);
+		if (dest == NULL) continue;
+
+		grf_overrides[i] = _grf_files.FindIndex(dest);
+		assert(grf_overrides[i] >= 0);
+	}
+
+	/* Override features and price base multipliers of earlier loaded grfs */
+	for (int i = 0; i < num_grfs; i++) {
+		if (grf_overrides[i] < 0 || grf_overrides[i] >= i) continue;
+		GRFFile *source = _grf_files[i];
+		GRFFile *dest = _grf_files[grf_overrides[i]];
+
+		uint32 features = (source->grf_features | dest->grf_features) & override_features;
+		source->grf_features |= features;
+		dest->grf_features |= features;
+
+		for (Price p = PR_BEGIN; p < PR_END; p++) {
+			/* No price defined -> nothing to do */
+			if (!HasBit(features, _price_base_specs[p].grf_feature) || (byte)source->price_base_multipliers[p] == 0x80) continue;
+			DEBUG(grf, 3, "'%s' overrides price base multiplier %d of '%s'", source->filename, p, dest->filename);
+			dest->price_base_multipliers[p] = source->price_base_multipliers[p];
+		}
+	}
+
+	/* Propagate features and price base multipliers of afterwards loaded grfs, if none is present yet */
+	for (int i = num_grfs - 1; i >= 0; i--) {
+		if (grf_overrides[i] < 0 || grf_overrides[i] <= i) continue;
+		GRFFile *source = _grf_files[i];
+		GRFFile *dest = _grf_files[grf_overrides[i]];
+
+		uint32 features = (source->grf_features | dest->grf_features) & override_features;
+		source->grf_features |= features;
+		dest->grf_features |= features;
+
+		for (Price p = PR_BEGIN; p < PR_END; p++) {
+			/* Already a price defined -> nothing to do */
+			if (!HasBit(features, _price_base_specs[p].grf_feature) || (byte)dest->price_base_multipliers[p] != 0x80) continue;
+			DEBUG(grf, 3, "Price base multiplier %d from '%s' propagated to '%s'", p, source->filename, dest->filename);
+			dest->price_base_multipliers[p] = source->price_base_multipliers[p];
+		}
+	}
+
+	/* The 'master grf' now have the correct multipliers. Assign them to the 'addon grfs' to make everything consistent. */
+	for (int i = 0; i < num_grfs; i++) {
+		if (grf_overrides[i] < 0) continue;
+		GRFFile *source = _grf_files[i];
+		GRFFile *dest = _grf_files[grf_overrides[i]];
+
+		uint32 features = (source->grf_features | dest->grf_features) & override_features;
+		source->grf_features |= features;
+		dest->grf_features |= features;
+
+		for (Price p = PR_BEGIN; p < PR_END; p++) {
+			if (!HasBit(features, _price_base_specs[p].grf_feature)) continue;
+			if (source->price_base_multipliers[p] != dest->price_base_multipliers[p]) {
+				DEBUG(grf, 3, "Price base multiplier %d from '%s' propagated to '%s'", p, dest->filename, source->filename);
+			}
+			source->price_base_multipliers[p] = dest->price_base_multipliers[p];
+		}
+	}
+
+	/* Decide local/global scope of price base multipliers */
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
+		for (Price p = PR_BEGIN; p < PR_END; p++) {
+			if ((byte)price_base_multipliers[p] == 0x80) {
+				/* No multiplier was set; set it to a neutral value */
+				price_base_multipliers[p] = 0;
+			} else {
+				if (!HasBit((*file)->grf_features, _price_base_specs[p].grf_feature)) {
+					/* The grf does not define any objects of the feature,
+					 * so it must be a difficulty setting. Apply it globally */
+					DEBUG(grf, 3, "'%s' sets global price base multiplier %d", (*file)->filename, p);
+					SetPriceBaseMultiplier(p, price_base_multipliers[p]);
+					price_base_multipliers[p] = 0;
+				} else {
+					DEBUG(grf, 3, "'%s' sets local price base multiplier %d", (*file)->filename, p);
+				}
+			}
+		}
+	}
+}
+
 void InitDepotWindowBlockSizes();
 
 extern void InitGRFTownGeneratorNames();
@@ -6178,6 +6290,8 @@ static void AfterLoadGRFs()
 	}
 
 	SetYearEngineAgingStops();
+
+	FinalisePriceBaseMultipliers();
 
 	/* Deallocate temporary loading data */
 	free(_gted);

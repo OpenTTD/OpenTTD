@@ -109,7 +109,7 @@ int _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
 Money _additional_cash_required;
-static int8 _price_base_multiplier[PR_END];
+static PriceMultipliers _price_base_multiplier;
 
 Money CalculateCompanyValue(const Company *c)
 {
@@ -791,14 +791,16 @@ void InitializeEconomy()
  * Determine a certain price
  * @param index Price base
  * @param cost_factor Price factor
+ * @param grf_file NewGRF to use local price multipliers from.
  * @param shift Extra bit shifting after the computation
  * @return Price
  */
-Money GetPrice(Price index, uint cost_factor, int shift)
+Money GetPrice(Price index, uint cost_factor, const GRFFile *grf_file, int shift)
 {
 	if (index >= PR_END) return 0;
 
 	Money cost = _price[index] * cost_factor;
+	if (grf_file != NULL) shift += grf_file->price_base_multipliers[index];
 
 	if (shift >= 0) {
 		cost <<= shift;

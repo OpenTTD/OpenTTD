@@ -542,7 +542,7 @@ Money Aircraft::GetRunningCost() const
 {
 	const Engine *e = Engine::Get(this->engine_type);
 	uint cost_factor = GetVehicleProperty(this, PROP_AIRCRAFT_RUNNING_COST_FACTOR, e->u.air.running_cost);
-	return GetPrice(PR_RUNNING_AIRCRAFT, cost_factor);
+	return GetPrice(PR_RUNNING_AIRCRAFT, cost_factor, e->grffile);
 }
 
 void Aircraft::OnNewDay()

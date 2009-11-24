@@ -232,7 +232,7 @@ Money Engine::GetRunningCost() const
 		default: NOT_REACHED();
 	}
 
-	return GetPrice(base_price, cost_factor, -8);
+	return GetPrice(base_price, cost_factor, this->grffile, -8);
 }
 
 Money Engine::GetCost() const
@@ -268,7 +268,7 @@ Money Engine::GetCost() const
 		default: NOT_REACHED();
 	}
 
-	return GetPrice(base_price, cost_factor, -8);
+	return GetPrice(base_price, cost_factor, this->grffile, -8);
 }
 
 /**

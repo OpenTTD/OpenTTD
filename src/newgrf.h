@@ -115,6 +115,9 @@ struct GRFFile {
 
 	int traininfo_vehicle_pitch;  ///< Vertical offset for draing train images in depot GUI and vehicle details
 	int traininfo_vehicle_width;  ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
+
+	uint32 grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
+	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
 };
 
 enum ShoreReplacement {
