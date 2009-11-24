@@ -5683,7 +5683,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 	/* Mark price_base_multipliers as 'not set' */
 	for (Price i = PR_BEGIN; i < PR_END; i++) {
-		newfile->price_base_multipliers[i] = 0x80;
+		newfile->price_base_multipliers[i] = INVALID_PRICE_MODIFIER;
 	}
 
 	/* Copy the initial parameter list */
@@ -6174,7 +6174,7 @@ static void FinalisePriceBaseMultipliers()
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* No price defined -> nothing to do */
-			if (!HasBit(features, _price_base_specs[p].grf_feature) || (byte)source->price_base_multipliers[p] == 0x80) continue;
+			if (!HasBit(features, _price_base_specs[p].grf_feature) || source->price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
 			DEBUG(grf, 3, "'%s' overrides price base multiplier %d of '%s'", source->filename, p, dest->filename);
 			dest->price_base_multipliers[p] = source->price_base_multipliers[p];
 		}
@@ -6192,7 +6192,7 @@ static void FinalisePriceBaseMultipliers()
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* Already a price defined -> nothing to do */
-			if (!HasBit(features, _price_base_specs[p].grf_feature) || (byte)dest->price_base_multipliers[p] != 0x80) continue;
+			if (!HasBit(features, _price_base_specs[p].grf_feature) || dest->price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
 			DEBUG(grf, 3, "Price base multiplier %d from '%s' propagated to '%s'", p, source->filename, dest->filename);
 			dest->price_base_multipliers[p] = source->price_base_multipliers[p];
 		}
@@ -6223,7 +6223,7 @@ static void FinalisePriceBaseMultipliers()
 		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			Price fallback_price = _price_base_specs[p].fallback_price;
-			if (fallback_price != INVALID_PRICE && (byte)price_base_multipliers[p] == 0x80) {
+			if (fallback_price != INVALID_PRICE && price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No price multiplier has been set.
 				 * So copy the multiplier from the fallback price, maybe a multiplier was set there. */
 				price_base_multipliers[p] = price_base_multipliers[fallback_price];
@@ -6235,7 +6235,7 @@ static void FinalisePriceBaseMultipliers()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
-			if ((byte)price_base_multipliers[p] == 0x80) {
+			if (price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No multiplier was set; set it to a neutral value */
 				price_base_multipliers[p] = 0;
 			} else {

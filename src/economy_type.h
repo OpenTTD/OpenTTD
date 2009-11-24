@@ -192,6 +192,7 @@ static const uint64 MAX_INFLATION = (1ull << (63 - 32)) - 1;
 enum {
 	MIN_PRICE_MODIFIER = -8,
 	MAX_PRICE_MODIFIER = 16,
+	INVALID_PRICE_MODIFIER = MIN_PRICE_MODIFIER - 1,
 };
 
 struct CargoPayment;
