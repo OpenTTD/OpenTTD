@@ -49,7 +49,7 @@ static const NWidgetPart _nested_network_content_download_status_window_widgets[
 static const WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 350, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
+	WDF_MODAL,
 	_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
 );
 
@@ -871,7 +871,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, WDP_CENTER, 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_UNCLICK_BUTTONS,
 	_nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
 );
 

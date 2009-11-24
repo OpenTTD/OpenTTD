@@ -1360,7 +1360,7 @@ static const NWidgetPart _nested_toolbar_normal_widgets[] = {
 static const WindowDesc _toolb_normal_desc(
 	0, 0, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_NO_FOCUS,
+	WDF_NO_FOCUS,
 	_nested_toolbar_normal_widgets, lengthof(_nested_toolbar_normal_widgets)
 );
 
@@ -1583,7 +1583,7 @@ static const NWidgetPart _nested_toolb_scen_widgets[] = {
 static const WindowDesc _toolb_scen_desc(
 	0, 0, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
+	WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
 	_nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets)
 );
 

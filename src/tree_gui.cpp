@@ -230,7 +230,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 static const WindowDesc _build_trees_desc(
 	WDP_AUTO, WDP_AUTO, 143, 184,
 	WC_BUILD_TREES, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)
 );
 

@@ -491,7 +491,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 static const WindowDesc _game_options_desc(
 	WDP_CENTER, WDP_CENTER, 370, 249,
 	WC_GAME_OPTIONS, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_UNCLICK_BUTTONS,
 	_nested_game_options_widgets, lengthof(_nested_game_options_widgets)
 );
 
@@ -769,7 +769,7 @@ static const NWidgetPart _nested_game_difficulty_widgets[] = {
 static const WindowDesc _game_difficulty_desc(
 	WDP_CENTER, WDP_CENTER, 370, 279,
 	WC_GAME_OPTIONS, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_UNCLICK_BUTTONS,
 	_nested_game_difficulty_widgets, lengthof(_nested_game_difficulty_widgets)
 );
 
@@ -1664,7 +1664,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 static const WindowDesc _settings_selection_desc(
 	WDP_CENTER, WDP_CENTER, 450, 397,
 	WC_GAME_OPTIONS, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	0,
 	_nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
 );
 
@@ -1947,7 +1947,7 @@ static const NWidgetPart _nested_cust_currency_widgets[] = {
 static const WindowDesc _cust_currency_desc(
 	WDP_CENTER, WDP_CENTER, 230, 120,
 	WC_CUSTOM_CURRENCY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_UNCLICK_BUTTONS,
 	_nested_cust_currency_widgets, lengthof(_nested_cust_currency_widgets)
 );
 

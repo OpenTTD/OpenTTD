@@ -286,7 +286,7 @@ public:
 static const WindowDesc _town_authority_desc(
 	WDP_AUTO, WDP_AUTO, 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_UNCLICK_BUTTONS,
 	_nested_town_authority_widgets, lengthof(_nested_town_authority_widgets)
 );
 
@@ -549,7 +549,7 @@ static const NWidgetPart _nested_town_game_view_widgets[] = {
 static const WindowDesc _town_game_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, TownViewWindow::TVW_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	WDF_UNCLICK_BUTTONS,
 	_nested_town_game_view_widgets, lengthof(_nested_town_game_view_widgets)
 );
 
@@ -579,7 +579,7 @@ static const NWidgetPart _nested_town_editor_view_widgets[] = {
 static const WindowDesc _town_editor_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, TownViewWindow::TVW_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	WDF_UNCLICK_BUTTONS,
 	_nested_town_editor_view_widgets, lengthof(_nested_town_editor_view_widgets)
 );
 
@@ -869,7 +869,7 @@ GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
 static const WindowDesc _town_directory_desc(
 	WDP_AUTO, WDP_AUTO, 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	WDF_UNCLICK_BUTTONS,
 	_nested_town_directory_widgets, lengthof(_nested_town_directory_widgets)
 );
 
@@ -1145,7 +1145,7 @@ public:
 static const WindowDesc _found_town_desc(
 	WDP_AUTO, WDP_AUTO, 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_found_town_widgets, lengthof(_nested_found_town_widgets)
 );
 

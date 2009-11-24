@@ -149,17 +149,10 @@ struct WindowDesc : ZeroedMemoryAllocator {
  * Window default widget/window handling flags
  */
 enum WindowDefaultFlag {
-	WDF_STD_TOOLTIPS    =   1 << 0, ///< use standard routine when displaying tooltips
-	WDF_DEF_WIDGET      =   1 << 1, ///< Default widget control for some widgets in the on click event, @see DispatchLeftClickEvent()
-	WDF_STD_BTN         =   1 << 2, ///< Default handling for close and titlebar widgets (the widgets with type WWT_CLOSEBOX and WWT_CAPTION).
-	WDF_CONSTRUCTION    =   1 << 3, ///< This window is used for construction; close it whenever changing company.
-
-	WDF_UNCLICK_BUTTONS =   1 << 4, ///< Unclick buttons when the window event times out
-	WDF_STICKY_BUTTON   =   1 << 5, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget with type WWT_STICKYBOX).
-	WDF_RESIZABLE       =   1 << 6, ///< Window can be resized
-	WDF_MODAL           =   1 << 7, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
-
-	WDF_NO_FOCUS        =   1 << 8, ///< This window won't get focus/make any other window lose focus when click
+	WDF_CONSTRUCTION    =   1 << 0, ///< This window is used for construction; close it whenever changing company.
+	WDF_UNCLICK_BUTTONS =   1 << 1, ///< Unclick buttons when the window event times out
+	WDF_MODAL           =   1 << 2, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
+	WDF_NO_FOCUS        =   1 << 3, ///< This window won't get focus/make any other window lose focus when click
 };
 
 /**

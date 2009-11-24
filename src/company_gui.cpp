@@ -470,7 +470,7 @@ Money CompanyFinancesWindow::max_money = INT32_MAX;
 static const WindowDesc _company_finances_desc(
 	WDP_AUTO, WDP_AUTO, 0, 0,
 	WC_FINANCES, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_UNCLICK_BUTTONS,
 	_nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
 );
 
@@ -825,7 +825,7 @@ static const NWidgetPart _nested_select_company_livery_widgets [] = {
 static const WindowDesc _select_company_livery_desc(
 	WDP_AUTO, WDP_AUTO, 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	0,
 	_nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
 );
 
@@ -1404,7 +1404,7 @@ public:
 static const WindowDesc _select_company_manager_face_desc(
 	WDP_AUTO, WDP_AUTO, 190, 163,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_select_company_manager_face_widgets, lengthof(_nested_select_company_manager_face_widgets)
 );
 
@@ -1412,7 +1412,7 @@ static const WindowDesc _select_company_manager_face_desc(
 static const WindowDesc _select_company_manager_face_adv_desc(
 	WDP_AUTO, WDP_AUTO, 220, 220,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_select_company_manager_face_adv_widgets, lengthof(_nested_select_company_manager_face_adv_widgets)
 );
 
@@ -1900,7 +1900,7 @@ struct CompanyWindow : Window
 static const WindowDesc _company_desc(
 	WDP_AUTO, WDP_AUTO, 360, 170,
 	WC_COMPANY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_UNCLICK_BUTTONS,
 	_nested_company_widgets, lengthof(_nested_company_widgets)
 );
 
@@ -2012,7 +2012,7 @@ static const NWidgetPart _nested_buy_company_widgets[] = {
 static const WindowDesc _buy_company_desc(
 	153, 171, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
 );
 

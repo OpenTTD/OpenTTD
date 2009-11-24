@@ -1341,7 +1341,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 static const WindowDesc _orders_train_desc(
 	WDP_AUTO, WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	0,
 	_nested_orders_train_widgets, lengthof(_nested_orders_train_widgets)
 );
 
@@ -1405,7 +1405,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 static const WindowDesc _orders_desc(
 	WDP_AUTO, WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	0,
 	_nested_orders_widgets, lengthof(_nested_orders_widgets)
 );
 
@@ -1431,7 +1431,7 @@ static const NWidgetPart _nested_other_orders_widgets[] = {
 static const WindowDesc _other_orders_desc(
 	WDP_AUTO, WDP_AUTO, 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE | WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_other_orders_widgets, lengthof(_nested_other_orders_widgets)
 );
 
