@@ -120,8 +120,6 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 /** Names of the add a newgrf window widgets. */
 enum AddNewGRFWindowWidgets {
-	ANGRFW_CLOSEBOX = 0,
-	ANGRFW_CAPTION,
 	ANGRFW_FILTER_PANEL,
 	ANGRFW_FILTER_TITLE,
 	ANGRFW_FILTER,
@@ -131,7 +129,6 @@ enum AddNewGRFWindowWidgets {
 	ANGRFW_GRF_INFO,
 	ANGRFW_ADD,
 	ANGRFW_RESCAN,
-	ANGRFW_RESIZE,
 };
 
 /**
@@ -460,8 +457,8 @@ NewGRFAddWindow::GUIGRFConfigList::FilterFunction * const NewGRFAddWindow::filte
 
 static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, ANGRFW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, ANGRFW_CAPTION), SetDataTip(STR_NEWGRF_ADD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_NEWGRF_ADD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_FILTER_PANEL), SetResize(1, 0),
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0), SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
@@ -481,7 +478,7 @@ static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_ADD), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_FILE, STR_NEWGRF_ADD_FILE_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ANGRFW_RESCAN), SetMinimalSize(147, 12), SetResize(1, 0), SetDataTip(STR_NEWGRF_ADD_RESCAN_FILES, STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ANGRFW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -516,8 +513,6 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed);
 
 /** Names of the manage newgrfs window widgets. */
 enum ShowNewGRFStateWidgets {
-	SNGRFS_CLOSEBOX = 0,
-	SNGRFS_CAPTION,
 	SNGRFS_BACKGROUND1,
 	SNGRFS_PRESET_LIST,
 	SNGRFS_PRESET_SAVE,
@@ -534,7 +529,6 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_TOGGLE_PALETTE,
 	SNGRFS_APPLY_CHANGES,
 	SNGRFS_CONTENT_DOWNLOAD,
-	SNGRFS_RESIZE,
 };
 
 /**
@@ -1011,8 +1005,8 @@ struct NewGRFWindow : public Window {
 /* Widget definition of the manage newgrfs window */
 static const NWidgetPart _nested_newgrf_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, SNGRFS_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, SNGRFS_CAPTION), SetDataTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, SNGRFS_BACKGROUND1),
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 10, 2, 10),
@@ -1043,7 +1037,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, SNGRFS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, SNGRFS_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
 

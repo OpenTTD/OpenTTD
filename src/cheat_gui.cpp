@@ -133,15 +133,13 @@ static const CheatEntry _cheats_ui[] = {
 
 /* Names of the cheat window widgets. */
 enum CheatWidgets {
-	CW_CLOSEBOX,
-	CW_CAPTION,
 	CW_PANEL,
 };
 
 static const NWidgetPart _nested_cheat_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CW_CAPTION), SetDataTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CW_PANEL), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
 };

@@ -33,15 +33,12 @@
 
 /** Enum referring to the widgets of the AI list window */
 enum AIListWindowWidgets {
-	AIL_WIDGET_CLOSEBOX = 0,     ///< Close window button
-	AIL_WIDGET_CAPTION,          ///< Window caption
 	AIL_WIDGET_LIST,             ///< The matrix with all available AIs
 	AIL_WIDGET_SCROLLBAR,        ///< Scrollbar next to the AI list
 	AIL_WIDGET_INFO_BG,          ///< Panel to draw some AI information on
 	AIL_WIDGET_ACCEPT,           ///< Accept button
 	AIL_WIDGET_CANCEL,           ///< Cancel button
 	AIL_WIDGET_CONTENT_DOWNLOAD, ///< Download content button
-	AIL_WIDGET_RESIZE,           ///< Resize button
 };
 
 /**
@@ -211,8 +208,8 @@ struct AIListWindow : public Window {
 
 static const NWidgetPart _nested_ai_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, AIL_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, AIL_WIDGET_CAPTION), SetDataTip(STR_AI_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_AI_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_MAUVE, AIL_WIDGET_LIST), SetMinimalSize(188, 112), SetFill(1, 1), SetResize(1, 1), SetDataTip(0x501, STR_AI_LIST_TOOLTIP),
@@ -226,7 +223,7 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIL_WIDGET_CONTENT_DOWNLOAD), SetMinimalSize(188, 12), SetResize(1, 0), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, AIL_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
 
@@ -246,13 +243,10 @@ static void ShowAIListWindow(CompanyID slot)
 
 /** Enum referring to the widgets of the AI settings window */
 enum AISettingsWindowWidgest {
-	AIS_WIDGET_CLOSEBOX = 0, ///< Close window button
-	AIS_WIDGET_CAPTION,      ///< Window caption
 	AIS_WIDGET_BACKGROUND,   ///< Panel to draw the settings on
 	AIS_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through all settings
 	AIS_WIDGET_ACCEPT,       ///< Accept button
 	AIS_WIDGET_RESET,        ///< Reset button
-	AIS_WIDGET_RESIZE,       ///< Resize button
 };
 
 /**
@@ -425,8 +419,8 @@ struct AISettingsWindow : public Window {
 
 static const NWidgetPart _nested_ai_settings_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, AIS_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, AIS_WIDGET_CAPTION), SetDataTip(STR_AI_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_AI_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_MAUVE, AIS_WIDGET_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x501, STR_NULL),
@@ -437,7 +431,7 @@ static const NWidgetPart _nested_ai_settings_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIS_WIDGET_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIS_WIDGET_RESET), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_SETTINGS_RESET, STR_NULL),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, AIS_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
 
@@ -458,8 +452,6 @@ static void ShowAISettingsWindow(CompanyID slot)
 
 /** Enum referring to the widgets of the AI config window */
 enum AIConfigWindowWidgets {
-	AIC_WIDGET_CLOSEBOX = 0, ///< Close window button
-	AIC_WIDGET_CAPTION,      ///< Window caption
 	AIC_WIDGET_BACKGROUND,   ///< Window background
 	AIC_WIDGET_DECREASE,     ///< Decrease the number of AIs
 	AIC_WIDGET_INCREASE,     ///< Increase the number of AIs
@@ -469,13 +461,12 @@ enum AIConfigWindowWidgets {
 	AIC_WIDGET_CHANGE,       ///< Select another AI button
 	AIC_WIDGET_CONFIGURE,    ///< Change AI settings button
 	AIC_WIDGET_CLOSE,        ///< Close window button
-	AIC_WIDGET_RESIZE,       ///< Resize button
 };
 
 static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, AIC_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, AIC_WIDGET_CAPTION), SetDataTip(STR_AI_CONFIG_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, AIC_WIDGET_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(4, 0, 4),
@@ -660,9 +651,6 @@ void ShowAIConfigWindow()
 
 /** Enum referring to the widgets of the AI debug window */
 enum AIDebugWindowWidgets {
-	AID_WIDGET_CLOSEBOX = 0,
-	AID_WIDGET_CAPTION,
-	AID_WIDGET_STICKY,
 	AID_WIDGET_VIEW,
 	AID_WIDGET_NAME_TEXT,
 	AID_WIDGET_RELOAD_TOGGLE,
@@ -670,7 +658,6 @@ enum AIDebugWindowWidgets {
 	AID_WIDGET_SCROLLBAR,
 	AID_WIDGET_COMPANY_BUTTON_START,
 	AID_WIDGET_COMPANY_BUTTON_END = AID_WIDGET_COMPANY_BUTTON_START + 14,
-	AID_WIDGET_RESIZE,
 };
 
 /**
@@ -911,9 +898,9 @@ CompanyID AIDebugWindow::ai_debug_company = INVALID_COMPANY;
 
 static const NWidgetPart _nested_ai_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, AID_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, AID_WIDGET_CAPTION), SetDataTip(STR_AI_DEBUG, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, AID_WIDGET_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_AI_DEBUG, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_VIEW),
 		NWidget(NWID_HORIZONTAL),
@@ -966,7 +953,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, AID_WIDGET_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY, AID_WIDGET_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
 };

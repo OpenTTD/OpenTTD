@@ -285,14 +285,12 @@ static void DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uin
 
 /** Widget numbers of the vehicle refit window. */
 enum VehicleRefitWidgets {
-	VRW_CLOSEBOX,
 	VRW_CAPTION,
 	VRW_SELECTHEADER,
 	VRW_MATRIX,
 	VRW_SCROLLBAR,
 	VRW_INFOPANEL,
 	VRW_REFITBUTTON,
-	VRW_RESIZEBOX,
 };
 
 /** Refit cargo window. */
@@ -430,7 +428,7 @@ struct RefitWindow : public Window {
 
 static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VRW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VRW_CAPTION), SetDataTip(STR_REFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_TEXTBTN, COLOUR_GREY, VRW_SELECTHEADER), SetDataTip(STR_REFIT_TITLE, STR_NULL), SetResize(1, 0),
@@ -442,7 +440,7 @@ static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, VRW_INFOPANEL), SetMinimalTextLines(2, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VRW_REFITBUTTON), SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VRW_RESIZEBOX),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -704,9 +702,7 @@ void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 }
 
 enum VehicleListWindowWidgets {
-	VLW_WIDGET_CLOSEBOX = 0,
 	VLW_WIDGET_CAPTION,
-	VLW_WIDGET_STICKY,
 	VLW_WIDGET_SORT_ORDER,
 	VLW_WIDGET_SORT_BY_PULLDOWN,
 	VLW_WIDGET_EMPTY_TOP_RIGHT,
@@ -719,14 +715,13 @@ enum VehicleListWindowWidgets {
 	VLW_WIDGET_STOP_ALL,
 	VLW_WIDGET_START_ALL,
 	VLW_WIDGET_EMPTY_BOTTOM_RIGHT,
-	VLW_WIDGET_RESIZE,
 };
 
 static const NWidgetPart _nested_vehicle_list[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VLW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VLW_WIDGET_CAPTION),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, VLW_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
@@ -757,7 +752,7 @@ static const NWidgetPart _nested_vehicle_list[] = {
 			/* Widget to be shown for other companies hiding the previous 5 widgets. */
 			NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_OTHER_COMPANY_FILLER), SetFill(1, 1), SetResize(1, 0), EndContainer(),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VLW_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -1254,10 +1249,8 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
 
 /** Constants of vehicle details widget indices */
 enum VehicleDetailsWindowWidgets {
-	VLD_WIDGET_CLOSEBOX = 0,
 	VLD_WIDGET_CAPTION,
 	VLD_WIDGET_RENAME_VEHICLE,
-	VLD_WIDGET_STICKY,
 	VLD_WIDGET_TOP_DETAILS,
 	VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
 	VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
@@ -1269,7 +1262,6 @@ enum VehicleDetailsWindowWidgets {
 	VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
 	VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
 	VLD_WIDGET_DETAILS_TOTAL_CARGO,
-	VLD_WIDGET_RESIZE,
 };
 
 assert_compile(VLD_WIDGET_DETAILS_CARGO_CARRIED    == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_CARGO   );
@@ -1280,10 +1272,10 @@ assert_compile(VLD_WIDGET_DETAILS_TOTAL_CARGO      == VLD_WIDGET_DETAILS_CARGO_C
 /** Vehicle details widgets (other than train). */
 static const NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VLD_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VLD_WIDGET_CAPTION), SetDataTip(STR_VEHICLE_DETAILS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_RENAME_VEHICLE), SetMinimalSize(40, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_VEHICLE_NAME_BUTTON, STR_NULL /* filled in later */),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, VLD_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_TOP_DETAILS), SetMinimalSize(405, 42), SetResize(1, 0), EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_MIDDLE_DETAILS), SetMinimalSize(405, 45), SetResize(1, 0), EndContainer(),
@@ -1293,17 +1285,17 @@ static const NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
 		NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetFill(0, 1),
 				SetDataTip(AWV_INCREASE, STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_SERVICING_INTERVAL), SetFill(1, 1), SetResize(1, 0), EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VLD_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
 /** Train details widgets. */
 static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VLD_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VLD_WIDGET_CAPTION), SetDataTip(STR_VEHICLE_DETAILS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_RENAME_VEHICLE), SetMinimalSize(40, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_VEHICLE_NAME_BUTTON, STR_NULL /* filled in later */),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, VLD_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_TOP_DETAILS), SetResize(1, 0), SetMinimalSize(405, 42), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1326,7 +1318,7 @@ static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 				SetDataTip(STR_VEHICLE_DETAIL_TAB_CAPACITIES, STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DETAILS_TOTAL_CARGO), SetMinimalSize(99, 12),
 				SetDataTip(STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VLD_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -1634,9 +1626,9 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 /** Vehicle view widgets. */
 static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VVW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VVW_WIDGET_CAPTION), SetDataTip(STR_VEHICLE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, VVW_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, VVW_WIDGET_PANEL),
@@ -1665,7 +1657,7 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHBTN, COLOUR_GREY, VVW_WIDGET_START_STOP_VEH), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 0), SetFill(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, VVW_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 

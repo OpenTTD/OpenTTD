@@ -56,13 +56,11 @@ void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 /* Names of the build bridge selection window */
 enum BuildBridgeSelectionWidgets {
-	BBSW_CLOSEBOX = 0,
 	BBSW_CAPTION,
 	BBSW_DROPDOWN_ORDER,
 	BBSW_DROPDOWN_CRITERIA,
 	BBSW_BRIDGE_LIST,
 	BBSW_SCROLLBAR,
-	BBSW_RESIZEBOX
 };
 
 class BuildBridgeWindow : public Window {
@@ -312,7 +310,7 @@ const StringID BuildBridgeWindow::sorter_names[] = {
 static const NWidgetPart _nested_build_bridge_widgets[] = {
 	/* Header */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BBSW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BBSW_CAPTION), SetDataTip(STR_SELECT_RAIL_BRIDGE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 
@@ -330,7 +328,7 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 		/* scrollbar + resize button */
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, BBSW_RESIZEBOX),
+			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 		EndContainer(),
 	EndContainer(),
 };

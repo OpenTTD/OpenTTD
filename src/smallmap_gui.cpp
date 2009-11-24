@@ -32,9 +32,7 @@
 
 /** Widget numbers of the small map window. */
 enum SmallMapWindowWidgets {
-	SM_WIDGET_CLOSEBOX,
 	SM_WIDGET_CAPTION,
-	SM_WIDGET_STICKYBOX,
 	SM_WIDGET_MAP_BORDER,
 	SM_WIDGET_MAP,
 	SM_WIDGET_LEGEND,
@@ -51,14 +49,13 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_SELECTINDUSTRIES,
 	SM_WIDGET_ENABLEINDUSTRIES,
 	SM_WIDGET_DISABLEINDUSTRIES,
-	SM_WIDGET_RESIZEBOX,
 };
 
 static const NWidgetPart _nested_smallmap_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, SM_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, SM_WIDGET_CAPTION), SetDataTip(STR_SMALLMAP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, SM_WIDGET_STICKYBOX),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	/* Small map display. */
 	NWidget(WWT_PANEL, COLOUR_BROWN, SM_WIDGET_MAP_BORDER),
@@ -99,7 +96,7 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, SM_WIDGET_RESIZEBOX),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
 

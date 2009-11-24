@@ -241,9 +241,6 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 
 /** Enum referring to the widgets of the build road toolbar */
 enum RoadToolbarWidgets {
-	RTW_CLOSEBOX = 0,
-	RTW_CAPTION,
-	RTW_STICKY,
 	RTW_ROAD_X,
 	RTW_ROAD_Y,
 	RTW_AUTOROAD,
@@ -632,9 +629,9 @@ struct BuildRoadToolbarWindow : Window {
 
 static const NWidgetPart _nested_build_road_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, RTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, RTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_ROAD_X),
@@ -672,9 +669,9 @@ static const WindowDesc _build_road_desc(
 
 static const NWidgetPart _nested_build_tramway_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, RTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, RTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_ROAD_X),
@@ -720,9 +717,9 @@ void ShowBuildRoadToolbar(RoadType roadtype)
 
 static const NWidgetPart _nested_build_road_scen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, RTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, RTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_ROAD_X),
@@ -760,7 +757,6 @@ void ShowBuildRoadScenToolbar()
 
 /** Enum referring to the widgets of the build road depot window */
 enum BuildRoadDepotWidgets {
-	BRDW_CLOSEBOX = 0,
 	BRDW_CAPTION,
 	BRDW_BACKGROUND,
 	BRDW_DEPOT_NE,
@@ -817,7 +813,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 
 static const NWidgetPart _nested_build_road_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRDW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRDW_CAPTION), SetDataTip(STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRDW_BACKGROUND),
@@ -859,7 +855,6 @@ static void ShowRoadDepotPicker(Window *parent)
 
 /** Enum referring to the widgets of the build road station window */
 enum BuildRoadStationWidgets {
-	BRSW_CLOSEBOX = 0,
 	BRSW_CAPTION,
 	BRSW_BACKGROUND,
 	BRSW_STATION_NE,
@@ -978,7 +973,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 /** Widget definition of the build road station window */
 static const NWidgetPart _nested_rv_station_picker_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRSW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION,  COLOUR_DARK_GREEN, BRSW_CAPTION),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),

@@ -122,10 +122,8 @@ static const ExpensesList _expenses_list_types[] = {
 
 /** Widgets of the company finances windows. */
 enum CompanyFinancesWindowWidgets {
-	CFW_CLOSEBOX = 0,  ///< Close the window
 	CFW_CAPTION,       ///< Caption of the window
 	CFW_TOGGLE_SIZE,   ///< Toggle windows size
-	CFW_STICKY,        ///< Sticky button
 	CFW_EXPS_PANEL,    ///< Panel for expenses
 	CFW_SEL_PANEL,     ///< Select panel or nothing
 	CFW_EXPS_CATEGORY, ///< Column for expenses category strings
@@ -233,10 +231,10 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 
 static const NWidgetPart _nested_company_finances_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CFW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, CFW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_PANEL),
 		NWidget(WWT_PANEL, COLOUR_GREY, CFW_EXPS_PANEL),
@@ -547,7 +545,6 @@ public:
 
 /** Widgets of the select company livery window. */
 enum SelectCompanyLiveryWindowWidgets {
-	SCLW_WIDGET_CLOSE,
 	SCLW_WIDGET_CAPTION,
 	SCLW_WIDGET_CLASS_GENERAL,
 	SCLW_WIDGET_CLASS_RAIL,
@@ -802,7 +799,7 @@ public:
 
 static const NWidgetPart _nested_select_company_livery_widgets [] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCLW_WIDGET_CLOSE),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SCLW_WIDGET_CAPTION), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -879,7 +876,6 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, int colour, int x, int y)
  * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
  */
 enum SelectCompanyManagerFaceWidgets {
-	SCMFW_WIDGET_CLOSEBOX = 0,
 	SCMFW_WIDGET_CAPTION,
 	SCMFW_WIDGET_TOGGLE_LARGE_SMALL,
 	SCMFW_WIDGET_SELECT_FACE,
@@ -934,7 +930,7 @@ enum SelectCompanyManagerFaceWidgets {
 /** Nested widget description for the normal/simple company manager face selection dialog */
 static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCMFW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SCMFW_WIDGET_CAPTION), SetDataTip(STR_FACE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_IMGBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_FACE_ADVANCED_TOOLTIP),
 	EndContainer(),
@@ -965,7 +961,7 @@ static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 /** Nested widget description for the advanced company manager face selection dialog */
 static const NWidgetPart _nested_select_company_manager_face_adv_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SCMFW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SCMFW_WIDGET_CAPTION), SetDataTip(STR_FACE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_IMGBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL), SetMinimalSize(15, 14), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_FACE_SIMPLE_TOOLTIP),
 	EndContainer(),
@@ -1435,7 +1431,6 @@ static void DoSelectCompanyManagerFace(Window *parent, bool adv, int top, int le
 
 /** Names of the widgets of the #CompanyWindow. Keep them in the same order as in the widget array */
 enum CompanyWindowWidgets {
-	CW_WIDGET_CLOSEBOX = 0,
 	CW_WIDGET_CAPTION,
 	CW_WIDGET_BACKGROUND,
 
@@ -1472,7 +1467,7 @@ enum CompanyWindowWidgets {
 
 static const NWidgetPart _nested_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CW_WIDGET_BACKGROUND),
@@ -1913,7 +1908,6 @@ void ShowCompany(CompanyID company)
 
 /** widget numbers of the #BuyCompanyWindow. */
 enum BuyCompanyWidgets {
-	BCW_CLOSEBOX,
 	BCW_CAPTION,
 	BCW_BACKGROUND,
 	BCW_FACE,
@@ -1992,7 +1986,7 @@ struct BuyCompanyWindow : Window {
 
 static const NWidgetPart _nested_buy_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, BCW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, BCW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, BCW_BACKGROUND),

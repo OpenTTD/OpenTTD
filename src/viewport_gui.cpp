@@ -23,9 +23,7 @@
 
 /** Widget numbers of the extra viewport window. */
 enum ExtraViewportWindowWidgets {
-	EVW_CLOSE,
 	EVW_CAPTION,
-	EVW_STICKY,
 	EVW_BACKGROUND,
 	EVW_VIEWPORT,
 	EVW_ZOOMIN,
@@ -33,15 +31,14 @@ enum ExtraViewportWindowWidgets {
 	EVW_MAIN_TO_VIEW,
 	EVW_VIEW_TO_MAIN,
 	EVW_SPACER,
-	EVW_RESIZE,
 };
 
 /* Extra ViewPort Window Stuff */
 static const NWidgetPart _nested_extra_view_port_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, EVW_CLOSE),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, EVW_CAPTION), SetDataTip(STR_EXTRA_VIEW_PORT_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, EVW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, EVW_BACKGROUND),
 		NWidget(NWID_VIEWPORT, INVALID_COLOUR, EVW_VIEWPORT), SetPadding(2, 2, 2, 2), SetResize(1, 1), SetFill(1, 1),
@@ -58,7 +55,7 @@ static const NWidgetPart _nested_extra_view_port_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, EVW_SPACER), SetFill(1, 1), SetResize(1, 0), EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, EVW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 

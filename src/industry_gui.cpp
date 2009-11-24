@@ -97,19 +97,16 @@ static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, cons
 
 /** Names of the widgets of the dynamic place industries gui */
 enum DynamicPlaceIndustriesWidgets {
-	DPIW_CLOSEBOX = 0,
-	DPIW_CAPTION,
 	DPIW_MATRIX_WIDGET,
 	DPIW_SCROLLBAR,
 	DPIW_INFOPANEL,
 	DPIW_FUND_WIDGET,
-	DPIW_RESIZE_WIDGET,
 };
 
 static const NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DPIW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DPIW_CAPTION), SetDataTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, DPIW_MATRIX_WIDGET), SetDataTip(0x801, STR_FUND_INDUSTRY_SELECTION_TOOLTIP), SetFill(1, 0), SetResize(1, 1),
@@ -119,7 +116,7 @@ static const NWidgetPart _nested_build_industry_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, DPIW_FUND_WIDGET), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_NULL),
-		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, DPIW_RESIZE_WIDGET),
+		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 };
 
@@ -556,16 +553,13 @@ static inline bool IsProductionAlterable(const Industry *i)
 
 /** Names of the widgets of the view industry gui */
 enum IndustryViewWidgets {
-	IVW_CLOSEBOX = 0,
 	IVW_CAPTION,
-	IVW_STICKY,
 	IVW_BACKGROUND,
 	IVW_INSET,
 	IVW_VIEWPORT,
 	IVW_INFO,
 	IVW_GOTO,
 	IVW_SPACER,
-	IVW_RESIZE,
 };
 
 class IndustryViewWindow : public Window
@@ -800,9 +794,9 @@ static void UpdateIndustryProduction(Industry *i)
 /** Widget definition of the view industy gui */
 static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_CREAM, IVW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_CREAM),
 		NWidget(WWT_CAPTION, COLOUR_CREAM, IVW_CAPTION), SetDataTip(STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_CREAM, IVW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_CREAM),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_BACKGROUND),
 		NWidget(WWT_INSET, COLOUR_CREAM, IVW_INSET), SetPadding(2, 2, 2, 2),
@@ -814,7 +808,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetMinimalSize(130, 12), SetDataTip(STR_BUTTON_LOCATION, STR_INDUSTRY_VIEW_LOCATION_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_CREAM, IVW_SPACER), /*SetMinimalSize(118, 12),*/ SetResize(1, 0), EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_CREAM, IVW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_CREAM),
 	EndContainer(),
 };
 
@@ -833,23 +827,19 @@ void ShowIndustryViewWindow(int industry)
 
 /** Names of the widgets of the industry directory gui */
 enum IndustryDirectoryWidgets {
-	IDW_CLOSEBOX = 0,
-	IDW_CAPTION,
-	IDW_STICKY,
 	IDW_DROPDOWN_ORDER,
 	IDW_DROPDOWN_CRITERIA,
 	IDW_SPACER,
 	IDW_INDUSTRY_LIST,
 	IDW_SCROLLBAR,
-	IDW_RESIZE,
 };
 
 /** Widget definition of the industy directory gui */
 static const NWidgetPart _nested_industry_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, IDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, IDW_CAPTION), SetDataTip(STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, IDW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
@@ -864,7 +854,7 @@ static const NWidgetPart _nested_industry_directory_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, IDW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, IDW_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 		EndContainer(),
 	EndContainer(),
 };

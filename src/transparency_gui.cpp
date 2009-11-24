@@ -24,10 +24,6 @@ TransparencyOptionBits _invisibility_opt;
 
 /** Widget numbers of the transparency window. */
 enum TransparencyToolbarWidgets {
-	TTW_WIDGET_CLOSEBOX,                 ///< Closebox.
-	TTW_WIDGET_CAPTION,                  ///< Titlebar caption.
-	TTW_WIDGET_STICKYBOX,                ///< Stickybox.
-
 	/* Button row. */
 	TTW_WIDGET_BEGIN,                    ///< First toggle button.
 	TTW_WIDGET_SIGNS = TTW_WIDGET_BEGIN, ///< Signs background transparency toggle button.
@@ -131,9 +127,9 @@ public:
 
 static const NWidgetPart _nested_transparency_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TTW_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, TTW_WIDGET_CAPTION), SetDataTip(STR_TRANSPARENCY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, TTW_WIDGET_STICKYBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_TRANSPARENCY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_SIGNS), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_TRANSPARENT_SIGNS_TOOLTIP),

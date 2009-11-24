@@ -26,14 +26,13 @@
 
 /** Widgets used by this window */
 enum DownloadStatusWindowWidgets {
-	NCDSWW_CAPTION,    ///< Caption of the window
 	NCDSWW_BACKGROUND, ///< Background
 	NCDSWW_CANCELOK,   ///< Cancel/OK button
 };
 
 /** Nested widgets for the download window. */
 static const NWidgetPart _nested_network_content_download_status_window_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, NCDSWW_CAPTION), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, NCDSWW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(350, 0), SetMinimalTextLines(3, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 30),
 		NWidget(NWID_HORIZONTAL),
@@ -192,8 +191,6 @@ public:
 
 /** Widgets of the content list window. */
 enum NetworkContentListWindowWidgets {
-	NCLWW_CLOSE,         ///< Close 'X' button
-	NCLWW_CAPTION,       ///< Caption of the window
 	NCLWW_BACKGROUND,    ///< Resize button
 
 	NCLWW_FILTER_CAPT,   ///< Caption for the filter editbox
@@ -213,8 +210,6 @@ enum NetworkContentListWindowWidgets {
 	NCLWW_UNSELECT,      ///< 'Unselect all' button
 	NCLWW_CANCEL,        ///< 'Cancel' button
 	NCLWW_DOWNLOAD,      ///< 'Download' button
-
-	NCLWW_RESIZE,        ///< Resize button
 
 	NCLWW_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons.
 };
@@ -808,8 +803,8 @@ NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentL
 
 static const NWidgetPart _nested_network_content_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NCLWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NCLWW_CAPTION), SetDataTip(STR_CONTENT_TITLE, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_CONTENT_TITLE, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
@@ -862,7 +857,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE, NCLWW_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE),
 		EndContainer(),
 	EndContainer(),
 };

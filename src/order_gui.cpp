@@ -36,10 +36,8 @@
 
 /** Widget numbers of the order window. */
 enum OrderWindowWidgets {
-	ORDER_WIDGET_CLOSEBOX = 0,
 	ORDER_WIDGET_CAPTION,
 	ORDER_WIDGET_TIMETABLE_VIEW,
-	ORDER_WIDGET_STICKY,
 	ORDER_WIDGET_ORDER_LIST,
 	ORDER_WIDGET_SCROLLBAR,
 	ORDER_WIDGET_SKIP,
@@ -58,7 +56,6 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_SEL_TOP_RIGHT,  ///< #NWID_SELECTION widget for right part of the top row of the 'your train' order window.
 	ORDER_WIDGET_SEL_TOP_ROW,    ///< #NWID_SELECTION widget for the top row of the 'your non-trains' order window.
 	ORDER_WIDGET_SHARED_ORDER_LIST,
-	ORDER_WIDGET_RESIZE,
 };
 
 /** Order load types that could be given to station orders. */
@@ -1285,10 +1282,10 @@ public:
 /** Nested widget definition for "your" train orders. */
 static const NWidgetPart _nested_orders_train_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, ORDER_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14), SetDataTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, ORDER_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, ORDER_WIDGET_ORDER_LIST), SetMinimalSize(372, 62), SetDataTip(0x0, STR_ORDERS_LIST_TOOLTIP), SetResize(1, 1), EndContainer(),
@@ -1334,7 +1331,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 			NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO), SetMinimalSize(124, 12), SetFill(1, 0),
 													SetDataTip(STR_ORDERS_GO_TO_BUTTON, STR_ORDERS_GO_TO_TOOLTIP), SetResize(1, 0),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -1348,10 +1345,10 @@ static const WindowDesc _orders_train_desc(
 /** Nested widget definition for "your" orders (non-train). */
 static const NWidgetPart _nested_orders_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, ORDER_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14), SetDataTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, ORDER_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, ORDER_WIDGET_ORDER_LIST), SetMinimalSize(372, 62), SetDataTip(0x0, STR_ORDERS_LIST_TOOLTIP), SetResize(1, 1), EndContainer(),
@@ -1398,7 +1395,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 											SetDataTip(STR_ORDERS_DELETE_BUTTON, STR_ORDERS_DELETE_TOOLTIP), SetResize(1, 0),
 		NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO), SetMinimalSize(124, 12), SetFill(1, 0),
 											SetDataTip(STR_ORDERS_GO_TO_BUTTON, STR_ORDERS_GO_TO_TOOLTIP), SetResize(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -1413,16 +1410,16 @@ static const WindowDesc _orders_desc(
 static const NWidgetPart _nested_other_orders_widgets[] = {
 	NWidget(NWID_VERTICAL),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_CLOSEBOX, COLOUR_GREY, ORDER_WIDGET_CLOSEBOX),
+			NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 			NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14), SetDataTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
-			NWidget(WWT_STICKYBOX, COLOUR_GREY, ORDER_WIDGET_STICKY),
+			NWidget(WWT_STICKYBOX, COLOUR_GREY),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_PANEL, COLOUR_GREY, ORDER_WIDGET_ORDER_LIST), SetMinimalSize(372, 72), SetDataTip(0x0, STR_ORDERS_LIST_TOOLTIP), SetResize(1, 1), EndContainer(),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_SCROLLBAR, COLOUR_GREY, ORDER_WIDGET_SCROLLBAR),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

@@ -44,8 +44,6 @@ StringID GetEngineCategoryName(EngineID engine)
 
 /** Widgets used for the engine preview window */
 enum EnginePreviewWidgets {
-	EPW_CLOSE,      ///< Close button
-	EPW_CAPTION,    ///< Title bar/caption
 	EPW_BACKGROUND, ///< Background
 	EPW_QUESTION,   ///< The container for the question
 	EPW_NO,         ///< No button
@@ -54,8 +52,8 @@ enum EnginePreviewWidgets {
 
 static const NWidgetPart _nested_engine_preview_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, EPW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, EPW_CAPTION), SetDataTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, EPW_BACKGROUND),
 		NWidget(WWT_EMPTY, INVALID_COLOUR, EPW_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),

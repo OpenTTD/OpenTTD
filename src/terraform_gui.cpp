@@ -191,9 +191,6 @@ static void PlaceProc_LevelLand(TileIndex tile)
 
 /** Enum referring to the widgets of the terraform toolbar */
 enum TerraformToolbarWidgets {
-	TTW_CLOSEBOX = 0,                     ///< Close window button
-	TTW_CAPTION,                          ///< Window caption
-	TTW_STICKY,                           ///< Sticky window button
 	TTW_SEPERATOR,                        ///< Thin seperator line between level land button and demolish button
 	TTW_BUTTONS_START,                    ///< Start of pushable buttons
 	TTW_LOWER_LAND = TTW_BUTTONS_START,   ///< Lower land button
@@ -315,9 +312,9 @@ struct TerraformToolbarWindow : Window {
 
 static const NWidgetPart _nested_terraform_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, TTW_CAPTION), SetDataTip(STR_LANDSCAPING_TOOLBAR, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, TTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_LANDSCAPING_TOOLBAR, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LOWER_LAND), SetMinimalSize(22,22),
@@ -493,10 +490,7 @@ static const int8 _multi_terraform_coords[][2] = {
 /** Enum referring to the widgets of the editor terraform toolbar */
 enum EditorTerraformToolbarWidgets {
 	ETTW_START = 0,                        ///< Used for iterations
-	ETTW_CLOSEBOX = ETTW_START,            ///< Close window button
-	ETTW_CAPTION,                          ///< Window caption
-	ETTW_STICKY,                           ///< Sticky window button
-	ETTW_BACKGROUND,                       ///< Background of the lower part of the window
+	ETTW_BACKGROUND = ETTW_START,          ///< Background of the lower part of the window
 	ETTW_DOTS,                             ///< Invisible widget for rendering the terraform size on.
 	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
 	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
@@ -515,9 +509,9 @@ enum EditorTerraformToolbarWidgets {
 
 static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, ETTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, ETTW_CAPTION), SetDataTip(STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, ETTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, ETTW_BACKGROUND),
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 2, 7, 2),

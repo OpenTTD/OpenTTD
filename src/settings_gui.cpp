@@ -103,8 +103,6 @@ static int GetCurRes()
 
 /** Widgets of the game options menu */
 enum GameOptionsWidgets {
-	GOW_CLOSEBOX = 0,        ///< Close the window
-	GOW_CAPTION,             ///< Caption of the window
 	GOW_BACKGROUND,          ///< Background of the window
 	GOW_CURRENCY_FRAME,      ///< Frame of the currency dropdown
 	GOW_CURRENCY_DROPDOWN,   ///< Currency dropdown
@@ -429,8 +427,8 @@ struct GameOptionsWindow : Window {
 
 static const NWidgetPart _nested_game_options_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GOW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, GOW_CAPTION), SetDataTip(STR_GAME_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, GOW_BACKGROUND), SetPIP(6, 6, 10),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 10, 10),
@@ -507,7 +505,6 @@ extern void StartupEconomy();
 
 /* Names of the game difficulty settings window */
 enum GameDifficultyWidgets {
-	GDW_CAPTION,
 	GDW_UPPER_BG,
 	GDW_LVL_EASY,
 	GDW_LVL_MEDIUM,
@@ -732,7 +729,7 @@ static NWidgetBase *MakeDifficultyOptionsWidgets(int *biggest_index)
 
 /** Widget definition for the game difficulty settings window */
 static const NWidgetPart _nested_game_difficulty_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_MAUVE, GDW_CAPTION), SetDataTip(STR_DIFFICULTY_LEVEL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_DIFFICULTY_LEVEL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_UPPER_BG),
 		NWidget(NWID_VERTICAL), SetPIP(2, 0, 2),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 0, 10),
@@ -1437,11 +1434,8 @@ static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_ma
 
 /** Widget numbers of settings window */
 enum GameSettingsWidgets {
-	SETTINGSEL_CLOSEBOX,     ///< Close box at top-left
-	SETTINGSEL_CAPTION,      ///< Title bar
 	SETTINGSEL_OPTIONSPANEL, ///< Panel widget containing the option lists
 	SETTINGSEL_SCROLLBAR,    ///< Scrollbar
-	SETTINGSEL_RESIZE,       ///< Resize button
 };
 
 struct GameSettingsWindow : Window {
@@ -1649,14 +1643,14 @@ GameSettings *GameSettingsWindow::settings_ptr = NULL;
 
 static const NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE, SETTINGSEL_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, SETTINGSEL_CAPTION), SetDataTip(STR_CONFIG_SETTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_CONFIG_SETTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_MAUVE, SETTINGSEL_OPTIONSPANEL), SetMinimalSize(400, 174), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SETTINGSEL_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, SETTINGSEL_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1705,8 +1699,6 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 
 /** Widget numbers of the custom currency window. */
 enum CustomCurrencyWidgets {
-	CUSTCURR_CLOSEBOX,
-	CUSTCURR_CAPTION,
 	CUSTCURR_BACKGROUND,
 
 	CUSTCURR_RATE_DOWN,
@@ -1906,8 +1898,8 @@ struct CustomCurrencyWindow : Window {
 
 static const NWidgetPart _nested_cust_currency_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CUSTCURR_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CUSTCURR_CAPTION), SetDataTip(STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CUSTCURR_BACKGROUND),
 		NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(7, 3, 0),

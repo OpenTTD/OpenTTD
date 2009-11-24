@@ -911,12 +911,9 @@ static void DrawNewsString(uint left, uint right, int y, TextColour colour, cons
 
 /** Widget numbers of the message history window. */
 enum MessageHistoryWidgets {
-	MHW_CLOSEBOX,
-	MHW_CAPTION,
 	MHW_STICKYBOX,
 	MHW_BACKGROUND,
 	MHW_SCROLLBAR,
-	MHW_RESIZEBOX,
 };
 
 struct MessageHistoryWindow : Window {
@@ -1013,9 +1010,9 @@ const int MessageHistoryWindow::bottom_spacing = WD_FRAMERECT_BOTTOM;
 
 static const NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, MHW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, MHW_CAPTION), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, MHW_STICKYBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
@@ -1023,7 +1020,7 @@ static const NWidgetPart _nested_message_history[] = {
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, MHW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, MHW_RESIZEBOX),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1057,8 +1054,6 @@ enum MessageOptionsSpace {
 
 /** Message options widget numbers. */
 enum MessageOptionWidgets {
-	WIDGET_NEWSOPT_CLOSEBOX,          ///< Close box.
-	WIDGET_NEWSOPT_CAPTION,           ///< Caption.
 	WIDGET_NEWSOPT_BACKGROUND,        ///< Background widget.
 	WIDGET_NEWSOPT_LABEL,             ///< Top label.
 	WIDGET_NEWSOPT_DROP_SUMMARY,      ///< Dropdown that adjusts at once the level for all settings.
@@ -1296,8 +1291,8 @@ static NWidgetBase *MakeDescriptionColumn(int *biggest_index)
 
 static const NWidgetPart _nested_message_options_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, WIDGET_NEWSOPT_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WIDGET_NEWSOPT_CAPTION), SetDataTip(STR_NEWS_MESSAGE_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_NEWS_MESSAGE_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WIDGET_NEWSOPT_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),

@@ -41,9 +41,7 @@
 
 /* Names of the widgets. Keep them in the same order as in the widget array */
 enum DepotWindowWidgets {
-	DEPOT_WIDGET_CLOSEBOX = 0,
 	DEPOT_WIDGET_CAPTION,
-	DEPOT_WIDGET_STICKY,
 	DEPOT_WIDGET_SELL,
 	DEPOT_WIDGET_SELL_CHAIN,
 	DEPOT_WIDGET_SELL_ALL,
@@ -57,15 +55,14 @@ enum DepotWindowWidgets {
 	DEPOT_WIDGET_VEHICLE_LIST,
 	DEPOT_WIDGET_STOP_ALL,
 	DEPOT_WIDGET_START_ALL,
-	DEPOT_WIDGET_RESIZE,
 };
 
 /** Nested widget definition for train depots. */
 static const NWidgetPart _nested_train_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, DEPOT_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, DEPOT_WIDGET_CAPTION),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, DEPOT_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
@@ -87,7 +84,7 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_VEHICLE_LIST), SetDataTip(0x0, STR_NULL), SetFill(0, 1),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_STOP_ALL), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_NULL), SetFill(0, 1),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_START_ALL), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_NULL), SetFill(0, 1),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, DEPOT_WIDGET_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 

@@ -80,12 +80,9 @@ const Sign *SignList::last_sign = NULL;
 
 /** Enum referring to the widgets of the sign list window */
 enum SignListWidgets {
-	SLW_CLOSEBOX = 0,
 	SLW_CAPTION,
-	SLW_STICKY,
 	SLW_LIST,
 	SLW_SCROLLBAR,
-	SLW_RESIZE,
 };
 
 struct SignListWindow : Window, SignList {
@@ -201,16 +198,16 @@ struct SignListWindow : Window, SignList {
 
 static const NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SLW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SLW_CAPTION), SetDataTip(STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, SLW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(WD_FRAMETEXT_LEFT + 16 + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, 50),
 							SetResize(1, 10), SetFill(1, 0), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLW_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
 };
@@ -243,7 +240,6 @@ static bool RenameSign(SignID index, const char *text)
 
 /** Widget numbers of the query sign edit window. */
 enum QueryEditSignWidgets {
-	QUERY_EDIT_SIGN_WIDGET_CLOSEBOX,
 	QUERY_EDIT_SIGN_WIDGET_CAPTION,
 	QUERY_EDIT_SIGN_WIDGET_PANEL,
 	QUERY_EDIT_SIGN_WIDGET_TEXT,
@@ -397,7 +393,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 static const NWidgetPart _nested_query_sign_edit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_PANEL),

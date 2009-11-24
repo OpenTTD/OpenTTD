@@ -286,9 +286,7 @@ static void PlaceRail_AutoSignals(TileIndex tile)
 
 /** Enum referring to the widgets of the build rail toolbar */
 enum RailToolbarWidgets {
-	RTW_CLOSEBOX = 0,
 	RTW_CAPTION,
-	RTW_STICKY,
 	RTW_SPACER,
 	RTW_BUILD_NS,
 	RTW_BUILD_X,
@@ -819,9 +817,9 @@ struct BuildRailToolbarWindow : Window {
 
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, RTW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, RTW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_NS),
@@ -892,7 +890,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	}
 
 	_remove_button_clicked = false;
-	if (w != NULL && button >= RTW_CLOSEBOX) {
+	if (w != NULL && button >= 0) {
 		_rail_build_button_data[button].click_proc(w);
 		w->UpdateRemoveWidgetStatus(button + RTW_BUILD_NS);
 	}
@@ -918,8 +916,6 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 /** Enum referring to the widgets of the rail stations window */
 enum BuildRailStationWidgets {
-	BRSW_CLOSEBOX = 0,
-	BRSW_CAPTION,
 	BRSW_BACKGROUND,
 
 	BRSW_ORIENT_LABEL, ///< Text label 'Orientation'.
@@ -1355,8 +1351,8 @@ public:
 
 static const NWidgetPart _nested_station_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRSW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRSW_CAPTION), SetDataTip(STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
 		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_ORIENT_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetPadding(1, 2, 0, 2),
@@ -1408,8 +1404,8 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 
 static const NWidgetPart _nested_newstation_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRSW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRSW_CAPTION), SetDataTip(STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
 		/* begin newstations gui additions. */
@@ -1495,8 +1491,6 @@ static void ShowStationBuilder(Window *parent)
 
 /** Enum referring to the widgets of the signal window */
 enum BuildSignalWidgets {
-	BSW_CLOSEBOX = 0,
-	BSW_CAPTION,
 	BSW_SEMAPHORE_NORM,
 	BSW_SEMAPHORE_ENTRY,
 	BSW_SEMAPHORE_EXIT,
@@ -1648,8 +1642,8 @@ public:
 /** Nested widget definition of the build signal window */
 static const NWidgetPart _nested_signal_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BSW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BSW_CAPTION), SetDataTip(STR_BUILD_SIGNAL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_BUILD_SIGNAL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_VERTICAL, NC_EQUALSIZE),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -1700,8 +1694,6 @@ static void ShowSignalBuilder(Window *parent)
 
 /** Enum referring to the widgets of the build rail depot window */
 enum BuildRailDepotWidgets {
-	BRDW_CLOSEBOX = 0,
-	BRDW_CAPTION,
 	BRDW_BACKGROUND,
 	BRDW_DEPOT_NE,
 	BRDW_DEPOT_SE,
@@ -1748,8 +1740,8 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 /** Nested widget definition of the build rail depot window */
 static const NWidgetPart _nested_build_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRDW_CAPTION), SetDataTip(STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRDW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
@@ -1790,8 +1782,6 @@ static void ShowBuildTrainDepotPicker(Window *parent)
 
 /** Enum referring to the widgets of the build NewGRF rail waypoint window */
 enum BuildRailWaypointWidgets {
-	BRWW_CLOSEBOX = 0,
-	BRWW_CAPTION,
 	BRWW_BACKGROUND,
 	BRWW_WAYPOINT_1,
 	BRWW_WAYPOINT_2,
@@ -1862,8 +1852,8 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 /** Nested widget definition for the build NewGRF rail waypoint window */
 static const NWidgetPart _nested_build_waypoint_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRWW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRWW_CAPTION), SetDataTip(STR_WAYPOINT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_WAYPOINT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),

@@ -91,10 +91,6 @@ static void PlaceDocks_Aqueduct(TileIndex tile)
 
 /** Enum referring to the widgets of the build dock toolbar */
 enum DockToolbarWidgets {
-	DTW_BEGIN = 0,                 ///< Start of toolbar widgets
-	DTW_CLOSEBOX = DTW_BEGIN,      ///< Close window button
-	DTW_CAPTION,                   ///< Window caption
-	DTW_STICKY,                    ///< Sticky window button
 	DTW_BUTTONS_BEGIN,             ///< Begin of clickable buttons (except seperating panel)
 	DTW_CANAL = DTW_BUTTONS_BEGIN, ///< Build canal button
 	DTW_LOCK,                      ///< Build lock button
@@ -268,9 +264,9 @@ struct BuildDocksToolbarWindow : Window {
  */
 static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DTW_CAPTION), SetDataTip(STR_WATERWAYS_TOOLBAR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, DTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_WATERWAYS_TOOLBAR_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL_LTR),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP),
@@ -305,9 +301,9 @@ void ShowBuildDocksToolbar()
  */
 static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, DTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, DTW_CAPTION), SetDataTip(STR_WATERWAYS_TOOLBAR_CAPTION_SE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, DTW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_WATERWAYS_TOOLBAR_CAPTION_SE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP),
@@ -334,8 +330,6 @@ void ShowBuildDocksScenToolbar()
 
 /** Widget numbers of the build-dock GUI. */
 enum BuildDockStationWidgets {
-	BDSW_CLOSE,      ///< Closebox.
-	BDSW_CAPTION,    ///< Titlebar.
 	BDSW_BACKGROUND, ///< Background panel.
 	BDSW_LT_OFF,     ///< 'Off' button of coverage high light.
 	BDSW_LT_ON,      ///< 'On' button of coverage high light.
@@ -403,8 +397,8 @@ public:
 /** Nested widget parts of a build dock station window. */
 static const NWidgetPart _nested_build_dock_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BDSW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDSW_CAPTION), SetDataTip(STR_STATION_BUILD_DOCK_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_DOCK_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDSW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
@@ -431,8 +425,6 @@ static void ShowBuildDockStationPicker(Window *parent)
 
 /** Widgets for the build ship depot window. */
 enum BuildDockDepotWidgets {
-	BDDW_CLOSE,
-	BDDW_CAPTION,
 	BDDW_BACKGROUND,
 	BDDW_X,
 	BDDW_Y,
@@ -485,8 +477,8 @@ public:
 
 static const NWidgetPart _nested_build_docks_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BDDW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BDDW_CAPTION), SetDataTip(STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDDW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),

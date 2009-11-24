@@ -41,19 +41,17 @@ typedef GUIList<const Town*> GUITownList;
 
 /** Widget numbers of the town authority window. */
 enum TownAuthorityWidgets {
-	TWA_CLOSEBOX,
 	TWA_CAPTION,
 	TWA_RATING_INFO,  ///< Overview with ratings for each company.
 	TWA_COMMAND_LIST, ///< List of commands for the player.
 	TWA_SCROLLBAR,
 	TWA_ACTION_INFO,  ///< Additional information about the action.
 	TWA_EXECUTE,      ///< Do-it button.
-	TWA_RESIZE,       ///< Resize the damn window
 };
 
 static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TWA_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, TWA_CAPTION), SetDataTip(STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_RATING_INFO), SetMinimalSize(317, 92), SetResize(1, 1), EndContainer(),
@@ -64,7 +62,7 @@ static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, TWA_ACTION_INFO), SetMinimalSize(317, 52), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TWA_EXECUTE),  SetMinimalSize(317, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TWA_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer()
 };
 
@@ -297,9 +295,7 @@ static void ShowTownAuthorityWindow(uint town)
 
 /** Widget numbers of the town view window. */
 enum TownViewWidgets {
-	TVW_CLOSEBOX,
 	TVW_CAPTION,
-	TVW_STICKY,
 	TVW_VIEWPORTPANEL,
 	TVW_VIEWPORTINSET,
 	TVW_VIEWPORT,
@@ -309,7 +305,6 @@ enum TownViewWidgets {
 	TVW_CHANGENAME,
 	TVW_EXPAND,
 	TVW_DELETE,
-	TVW_RESIZE,
 };
 
 /* Town view window. */
@@ -526,9 +521,9 @@ public:
 
 static const NWidgetPart _nested_town_game_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TVW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, TVW_CAPTION), SetDataTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, TVW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_VIEWPORTPANEL),
 		NWidget(WWT_INSET, COLOUR_BROWN, TVW_VIEWPORTINSET), SetPadding(2, 2, 2, 2),
@@ -542,7 +537,7 @@ static const NWidgetPart _nested_town_game_view_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_SHOWAUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TVW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
 
@@ -555,10 +550,10 @@ static const WindowDesc _town_game_view_desc(
 
 static const NWidgetPart _nested_town_editor_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TVW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, TVW_CAPTION), SetDataTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(76, 14), SetDataTip(STR_BUTTON_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, TVW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_VIEWPORTPANEL),
 		NWidget(WWT_INSET, COLOUR_BROWN, TVW_VIEWPORTINSET), SetPadding(2, 2, 2, 2),
@@ -572,7 +567,7 @@ static const NWidgetPart _nested_town_editor_view_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_EXPAND), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_EXPAND_BUTTON, STR_TOWN_VIEW_EXPAND_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_DELETE), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TVW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
 
@@ -594,23 +589,19 @@ void ShowTownViewWindow(TownID town)
 
 /** Widget numbers of town directory window. */
 enum TownDirectoryWidgets {
-	TDW_CLOSEBOX,
-	TDW_CAPTION,
-	TDW_STICKYBOX,
 	TDW_SORTNAME,
 	TDW_SORTPOPULATION,
 	TDW_CENTERTOWN,
 	TDW_SCROLLBAR,
 	TDW_BOTTOM_PANEL,
 	TDW_BOTTOM_TEXT,
-	TDW_RESIZEBOX,
 };
 
 static const NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TDW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, TDW_CAPTION), SetDataTip(STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN, TDW_STICKYBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
@@ -626,7 +617,7 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, TDW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, TDW_RESIZEBOX),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 		EndContainer(),
 	EndContainer(),
 };
@@ -894,9 +885,6 @@ void CcFoundRandomTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 /** Widget numbers of town scenario editor window. */
 enum TownScenarioEditorWidgets {
-	TSEW_CLOSEBOX,
-	TSEW_CAPTION,
-	TSEW_STICKYBOX,
 	TSEW_BACKGROUND,
 	TSEW_NEWTOWN,
 	TSEW_RANDOMTOWN,
@@ -920,9 +908,9 @@ enum TownScenarioEditorWidgets {
 
 static const NWidgetPart _nested_found_town_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TSEW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, TSEW_CAPTION), SetDataTip(STR_FOUND_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, TSEW_STICKYBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_FOUND_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	/* Construct new town(s) buttons. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TSEW_BACKGROUND),

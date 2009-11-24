@@ -34,9 +34,7 @@
 typedef GUIList<const Group*> GUIGroupList;
 
 enum GroupListWidgets {
-	GRP_WIDGET_CLOSEBOX = 0,
 	GRP_WIDGET_CAPTION,
-	GRP_WIDGET_STICKY,
 	GRP_WIDGET_SORT_BY_ORDER,
 	GRP_WIDGET_SORT_BY_DROPDOWN,
 	GRP_WIDGET_EMPTY_TOP_RIGHT,
@@ -48,7 +46,6 @@ enum GroupListWidgets {
 	GRP_WIDGET_STOP_ALL,
 	GRP_WIDGET_START_ALL,
 	GRP_WIDGET_EMPTY_BOTTOM_RIGHT,
-	GRP_WIDGET_RESIZE,
 
 	GRP_WIDGET_EMPTY_TOP_LEFT,
 	GRP_WIDGET_ALL_VEHICLES,
@@ -93,9 +90,9 @@ static void ShowGroupActionDropdown(Window *w, GroupID gid)
 
 static const NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL), // Window header
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GRP_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, GRP_WIDGET_CAPTION),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, GRP_WIDGET_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		/* left part */
@@ -142,7 +139,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_START_ALL), SetMinimalSize(12, 12), SetFill(0, 1),
 						SetDataTip(SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(0, 12), SetFill(1, 1), SetResize(1, 0), EndContainer(),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, GRP_WIDGET_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

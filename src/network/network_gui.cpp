@@ -73,8 +73,6 @@ void UpdateNetworkGameWindow(bool unselect)
 
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
 enum NetworkGameWindowWidgets {
-	NGWW_CLOSE,         ///< Close 'X' button
-	NGWW_CAPTION,       ///< Caption of the window
 	NGWW_MAIN,          ///< Main panel
 
 	NGWW_CONNECTION,    ///< Label in front of connection droplist
@@ -107,8 +105,6 @@ enum NetworkGameWindowWidgets {
 	NGWW_ADD,           ///< 'Add server' button
 	NGWW_START,         ///< 'Start server' button
 	NGWW_CANCEL,        ///< 'Cancel' button
-
-	NGWW_RESIZE,        ///< Resize button
 };
 
 typedef GUIList<NetworkGameList*> GUIGameServerList;
@@ -931,8 +927,8 @@ static NWidgetBase *MakeResizableHeader(int *biggest_index)
 static const NWidgetPart _nested_network_game_widgets[] = {
 	/* TOP */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NGWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NGWW_CAPTION), SetDataTip(STR_NETWORK_SERVER_LIST_CAPTION, STR_NULL), // XXX Add default caption tooltip!
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_NETWORK_SERVER_LIST_CAPTION, STR_NULL), // XXX Add default caption tooltip!
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_MAIN),
 		NWidget(NWID_VERTICAL), SetPIP(10, 7, 0),
@@ -996,7 +992,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_SPACER), SetFill(0, 1),
-					NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE, NGWW_RESIZE),
+					NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
@@ -1029,8 +1025,6 @@ void ShowNetworkGameWindow()
 
 /** Enum for NetworkStartServerWindow, referring to _network_start_server_window_widgets */
 enum NetworkStartServerWidgets {
-	NSSW_CLOSE,             ///< Close 'X' button
-	NSSW_CAPTION,
 	NSSW_BACKGROUND,
 	NSSW_GAMENAME_LABEL,
 	NSSW_GAMENAME,          ///< Background for editbox to set game name
@@ -1173,7 +1167,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	{
 		this->field = widget;
 		switch (widget) {
-			case NSSW_CLOSE:  // Close 'X'
 			case NSSW_CANCEL: // Cancel button
 				ShowNetworkGameWindow();
 				break;
@@ -1346,8 +1339,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NSSW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NSSW_CAPTION), SetDataTip(STR_NETWORK_START_SERVER_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_NETWORK_START_SERVER_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NSSW_BACKGROUND),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 8, 10),
@@ -1447,8 +1440,6 @@ static void ShowNetworkStartServerWindow()
 
 /** Enum for NetworkLobbyWindow, referring to _network_lobby_window_widgets */
 enum NetworkLobbyWindowWidgets {
-	NLWW_CLOSE,      ///< Close 'X' button
-	NLWW_CAPTION,    ///< Titlebar
 	NLWW_BACKGROUND, ///< Background panel
 	NLWW_TEXT,       ///< Heading text
 	NLWW_HEADER,     ///< Header above list of companies
@@ -1639,7 +1630,6 @@ struct NetworkLobbyWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case NLWW_CLOSE:    // Close 'X'
 			case NLWW_CANCEL:   // Cancel button
 				ShowNetworkGameWindow();
 				break;
@@ -1694,8 +1684,8 @@ struct NetworkLobbyWindow : public Window {
 
 static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NLWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NLWW_CAPTION), SetDataTip(STR_NETWORK_GAME_LOBBY_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_NETWORK_GAME_LOBBY_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_BACKGROUND),
 		NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NLWW_TEXT), SetDataTip(STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN, STR_NULL), SetResize(1, 0), SetPadding(10, 10, 0, 10),
@@ -1975,17 +1965,14 @@ static void PopupClientList(int client_no, int x, int y)
 
 /** Widget numbers of the client list window. */
 enum ClientListWidgets {
-	CLW_CLOSE,
-	CLW_CAPTION,
-	CLW_STICKY,
 	CLW_PANEL,
 };
 
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKY),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CLW_PANEL), SetMinimalSize(250, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 1), EndContainer(),
 };
@@ -2168,7 +2155,6 @@ uint32 _network_join_bytes_total;
 
 /** Widgets used for the join status window. */
 enum NetworkJoinStatusWidgets {
-	NJSW_CAPTION,    ///< Caption of the window
 	NJSW_BACKGROUND, ///< Background
 	NJSW_CANCELOK,   ///< Cancel/OK button
 };
@@ -2260,8 +2246,8 @@ struct NetworkJoinStatusWindow : Window {
 };
 
 static const NWidgetPart _nested_network_join_status_window_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, NJSW_CAPTION), SetDataTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_GREY, -1),
+	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EMPTY, COLOUR_GREY, NJSW_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(75, 0), SetFill(1, 0),
@@ -2288,8 +2274,6 @@ void ShowJoinStatusWindow()
 
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
 enum NetworkCompanyPasswordWindowWidgets {
-	NCPWW_CLOSE,                    ///< Close 'X' button
-	NCPWW_CAPTION,                  ///< Caption of the whole window
 	NCPWW_BACKGROUND,               ///< The background of the interface
 	NCPWW_LABEL,                    ///< Label in front of the password field
 	NCPWW_PASSWORD,                 ///< Input field for the password
@@ -2375,8 +2359,8 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 
 static const NWidgetPart _nested_network_company_password_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, NCPWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, NCPWW_CAPTION), SetDataTip(STR_COMPANY_PASSWORD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_COMPANY_PASSWORD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, NCPWW_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(5, 5, 5),

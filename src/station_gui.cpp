@@ -89,12 +89,9 @@ typedef GUIList<const Station*> GUIStationList;
 
 /** Enum for CompanyStations, referring to _company_stations_widgets */
 enum StationListWidgets {
-	SLW_CLOSEBOX =  0,  ///< Close window button
 	SLW_CAPTION,        ///< Window caption
-	SLW_STICKY,         ///< Sticky button
 	SLW_LIST,           ///< The main panel, list of stations
 	SLW_SCROLLBAR,      ///< Scrollbar next to the main panel
-	SLW_RESIZE,         ///< Resize button
 
 	SLW_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station
 	SLW_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop
@@ -681,9 +678,9 @@ static NWidgetBase *CargoWidgets(int *biggest_index)
 
 static const NWidgetPart _nested_company_stations_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SLW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SLW_CAPTION), SetDataTip(STR_STATION_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, SLW_STICKY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_TRAIN), SetMinimalSize(14, 11), SetDataTip(STR_TRAIN, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE), SetFill(0, 1),
@@ -707,7 +704,7 @@ static const NWidgetPart _nested_company_stations_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(346, 125), SetResize(1, 10), SetDataTip(0x0, STR_STATION_LIST_TOOLTIP), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLW_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
 };
@@ -733,9 +730,9 @@ void ShowCompanyStations(CompanyID company)
 
 static const NWidgetPart _nested_station_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SVW_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SVW_CAPTION), SetDataTip(STR_STATION_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY, SVW_STICKYBOX),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, SVW_WAITING), SetMinimalSize(237, 52), SetResize(1, 10), EndContainer(),
@@ -753,7 +750,7 @@ static const NWidgetPart _nested_station_view_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ROADVEHS), SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_PLANES),  SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_SHIPS), SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SVW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -1290,23 +1287,21 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 }
 
 enum JoinStationWidgets {
-	JSW_WIDGET_CLOSEBOX = 0,
 	JSW_WIDGET_CAPTION,
 	JSW_PANEL,
 	JSW_SCROLLBAR,
-	JSW_RESIZEBOX,
 };
 
 static const NWidgetPart _nested_select_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, JSW_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, JSW_WIDGET_CAPTION), SetDataTip(STR_JOIN_STATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, JSW_PANEL), SetResize(1, 0), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, JSW_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, JSW_RESIZEBOX),
+			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 		EndContainer(),
 	EndContainer(),
 };

@@ -206,8 +206,6 @@ static void SelectPlaylist(byte list)
 }
 
 enum MusicTrackSelectionWidgets {
-	MTSW_CLOSE,
-	MTSW_CAPTION,
 	MTSW_BACKGROUND,
 	MTSW_TRACKLIST,
 	MTSW_LIST_LEFT,
@@ -378,8 +376,8 @@ struct MusicTrackSelectionWindow : public Window {
 
 static const NWidgetPart _nested_music_track_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, MTSW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, MTSW_CAPTION), SetDataTip(STR_PLAYLIST_MUSIC_PROGRAM_SELECTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_PLAYLIST_MUSIC_PROGRAM_SELECTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, MTSW_BACKGROUND),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
@@ -425,8 +423,6 @@ static void ShowMusicTrackSelection()
 }
 
 enum MusicWidgets {
-	MW_CLOSE,
-	MW_CAPTION,
 	MW_PREV,
 	MW_NEXT,
 	MW_STOP,
@@ -639,8 +635,8 @@ struct MusicWindow : public Window {
 
 static const NWidgetPart _nested_music_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, MW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, MW_CAPTION), SetDataTip(STR_MUSIC_JAZZ_JUKEBOX_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_MUSIC_JAZZ_JUKEBOX_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),

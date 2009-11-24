@@ -56,8 +56,6 @@ static inline void SetNewLandscapeType(byte landscape)
 }
 
 enum GenerateLandscapeWindowWidgets {
-	GLAND_CLOSEBOX,
-	GLAND_TITLEBAR,
 	GLAND_BACKGROUND,
 
 	GLAND_TEMPERATE,
@@ -124,8 +122,8 @@ enum GenerateLandscapeWindowWidgets {
 
 static const NWidgetPart _nested_generate_landscape_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, GLAND_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, GLAND_TITLEBAR), SetDataTip(STR_MAPGEN_WORLD_GENERATION_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_MAPGEN_WORLD_GENERATION_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, GLAND_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 10),
@@ -235,8 +233,8 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 static const NWidgetPart _nested_heightmap_load_widgets[] = {
 	/* Window header. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, GLAND_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, GLAND_TITLEBAR), SetDataTip(STR_MAPGEN_WORLD_GENERATION_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_MAPGEN_WORLD_GENERATION_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, GLAND_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 10),
@@ -831,8 +829,6 @@ void StartNewGameWithoutGUI(uint seed)
 
 /** Widget numbers of the create scenario window. */
 enum CreateScenarioWindowWidgets {
-	CSCEN_CLOSEBOX,               ///< Close button.
-	CSCEN_CAPTION,                ///< Title bar.
 	CSCEN_BACKGROUND,             ///< Background panel.
 	CSCEN_TEMPERATE,              ///< Select temperate landscape style.
 	CSCEN_ARCTIC,                 ///< Select arctic landscape style.
@@ -1036,8 +1032,8 @@ struct CreateScenarioWindow : public Window
 
 static const NWidgetPart _nested_create_scenario_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, CSCEN_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, CSCEN_CAPTION), SetDataTip(STR_SE_MAPGEN_CAPTION, STR_NULL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_SE_MAPGEN_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, CSCEN_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 10),
@@ -1100,7 +1096,6 @@ void ShowCreateScenario()
 }
 
 enum GenerationProgressWindowWidgets {
-	GPWW_CAPTION,
 	GPWW_BACKGROUND,
 	GPWW_PROGRESS_BAR,
 	GPWW_PROGRESS_TEXT,
@@ -1108,7 +1103,7 @@ enum GenerationProgressWindowWidgets {
 };
 
 static const NWidgetPart _nested_generate_progress_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, GPWW_CAPTION), SetDataTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, GPWW_BACKGROUND),
 		NWidget(NWID_HORIZONTAL), SetPIP(20, 0, 20),
 			NWidget(NWID_VERTICAL), SetPIP(11, 8, 11),

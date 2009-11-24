@@ -58,15 +58,13 @@ int _caret_timer;
 
 /** Widgets for the land info window. */
 enum LandInfoWidgets {
-	LIW_CLOSE,      ///< Close the window
-	LIW_CAPTION,    ///< Title bar of the window
 	LIW_BACKGROUND, ///< Background to draw on
 };
 
 static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, LIW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, LIW_CAPTION), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), EndContainer(),
 };
@@ -321,8 +319,6 @@ void PlaceLandBlockInfo()
 
 /** Widgets for the land info window. */
 enum AboutWidgets {
-	AW_CLOSE,                ///< Close the window
-	AW_CAPTION,              ///< Title bar of the window
 	AW_BACKGROUND,           ///< Background to draw on
 	AW_ABOUT_ORIG_COPYRIGHT, ///< Text with original copyright info
 	AW_ABOUT_VERSION,        ///< OpenTTD version string
@@ -334,8 +330,8 @@ enum AboutWidgets {
 
 static const NWidgetPart _nested_about_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, AW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, AW_CAPTION), SetDataTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND), SetPIP(4, 2, 4),
 		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_ORIG_COPYRIGHT), SetDataTip(STR_ABOUT_ORIGINAL_COPYRIGHT, STR_NULL),
@@ -490,7 +486,6 @@ void ShowAboutWindow()
 
 /** Widgets of the error message windows */
 enum ErrorMessageWidgets {
-	EMW_CLOSE = 0,
 	EMW_CAPTION,
 	EMW_PANEL,
 	EMW_FACE,
@@ -499,7 +494,7 @@ enum ErrorMessageWidgets {
 
 static const NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
@@ -516,7 +511,7 @@ static const WindowDesc _errmsg_desc(
 
 static const NWidgetPart _nested_errmsg_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_RED, EMW_CLOSE),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
@@ -1304,7 +1299,6 @@ void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
 
 /** Widget of the string query window. */
 enum QueryStringWidgets {
-	QUERY_STR_WIDGET_CLOSEBOX,
 	QUERY_STR_WIDGET_CAPTION,
 	QUERY_STR_WIDGET_BACKGROUND,
 	QUERY_STR_WIDGET_TEXT,
@@ -1427,7 +1421,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_STR_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
@@ -1465,7 +1459,6 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, uint maxwidth
 
 
 enum QueryWidgets {
-	QUERY_WIDGET_CLOSEBOX,
 	QUERY_WIDGET_CAPTION,
 	QUERY_WIDGET_BACKGROUND,
 	QUERY_WIDGET_TEXT,
@@ -1583,7 +1576,7 @@ struct QueryWindow : public Window {
 
 static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_RED, QUERY_WIDGET_CLOSEBOX),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, QUERY_WIDGET_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND), SetPIP(8, 15, 8),
@@ -1617,7 +1610,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 
 
 enum SaveLoadWindowWidgets {
-	SLWW_CLOSE = 0,
 	SLWW_WINDOWTITLE,
 	SLWW_SORT_BYNAME,
 	SLWW_SORT_BYDATE,
@@ -1630,13 +1622,12 @@ enum SaveLoadWindowWidgets {
 	SLWW_SAVE_OSK_TITLE,       ///< only available for save operations
 	SLWW_DELETE_SELECTION,     ///< same in here
 	SLWW_SAVE_GAME,            ///< not to mention in here too
-	SLWW_RESIZE,
 	SLWW_CONTENT_DOWNLOAD_SEL, ///< Selection 'stack' to 'hide' the content download
 };
 
 static const NWidgetPart _nested_load_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SLWW_CLOSE),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -1657,7 +1648,7 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SLWW_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
 				NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLWW_SCROLLBAR),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLWW_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -1665,7 +1656,7 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 
 static const NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, SLWW_CLOSE),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -1688,7 +1679,7 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_DELETE_SELECTION), SetDataTip(STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SAVE_GAME),        SetDataTip(STR_SAVELOAD_SAVE_BUTTON, STR_SAVELOAD_SAVE_TOOLTIP),     SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY, SLWW_RESIZE),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
