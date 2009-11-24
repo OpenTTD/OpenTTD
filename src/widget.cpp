@@ -848,7 +848,7 @@ NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
 }
 
 /**
- * @fn Scrollbar *NWidgetCore::FindScrollbar(Window *w, bool allow_next = true)
+ * @fn Scrollbar *NWidgetCore::FindScrollbar(Window *w, bool allow_next = true) const
  * Find the scrollbar of the widget through the Window::nested_array.
  * @param w          Window containing the widgets and the scrollbar,
  * @param allow_next Search may be extended to the next widget.
@@ -1587,10 +1587,10 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 	return nwid;
 }
 
-Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next)
+Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next) const
 {
 	if (this->index > 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
-		NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
+		const NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;
@@ -1637,7 +1637,7 @@ void NWidgetViewport::Draw(const Window *w)
 	}
 }
 
-Scrollbar *NWidgetViewport::FindScrollbar(Window *w, bool allow_next)
+Scrollbar *NWidgetViewport::FindScrollbar(Window *w, bool allow_next) const
 {
 	return NULL;
 }
@@ -2053,13 +2053,13 @@ void NWidgetLeaf::Draw(const Window *w)
 	}
 }
 
-Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
+Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next) const
 {
 	if (this->type == WWT_SCROLLBAR) return &w->vscroll;
 	if (this->type == WWT_SCROLL2BAR) return &w->vscroll2;
 
 	if (this->index > 0 && allow_next && (uint)(this->index) + 1 < w->nested_array_size) {
-		NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
+		const NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;

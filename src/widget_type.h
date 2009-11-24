@@ -251,7 +251,7 @@ public:
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 
-	virtual Scrollbar *FindScrollbar(Window *w, bool allow_next = true) = 0;
+	virtual Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const = 0;
 
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
@@ -428,7 +428,7 @@ public:
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 	/* virtual */ NWidgetBase *GetWidgetOfType(WidgetType tp);
-	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
+	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const;
 
 private:
 	NWidgetPIPContainer *child; ///< Child widget.
@@ -448,7 +448,7 @@ public:
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
-	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
+	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const;
 
 	void InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom);
 	void UpdateViewportCoordinates(Window *w);
@@ -462,7 +462,7 @@ public:
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
-	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
+	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const;
 
 	bool ButtonHit(const Point &pt);
 
