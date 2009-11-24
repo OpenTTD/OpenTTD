@@ -124,7 +124,6 @@ static const ExpensesList _expenses_list_types[] = {
 enum CompanyFinancesWindowWidgets {
 	CFW_CAPTION,       ///< Caption of the window
 	CFW_TOGGLE_SIZE,   ///< Toggle windows size
-	CFW_EXPS_PANEL,    ///< Panel for expenses
 	CFW_SEL_PANEL,     ///< Select panel or nothing
 	CFW_EXPS_CATEGORY, ///< Column for expenses category strings
 	CFW_EXPS_PRICE1,   ///< Column for year Y-2 expenses
@@ -132,8 +131,6 @@ enum CompanyFinancesWindowWidgets {
 	CFW_EXPS_PRICE3,   ///< Column for year Y expenses
 	CFW_TOTAL_PANEL,   ///< Panel for totals
 	CFW_SEL_MAXLOAN,   ///< Selection of maxloan column
-	CFW_BALANCE_TITLE, ///< 'Bank balance' title
-	CFW_LOAN_TITLE,    ///< 'Loan' title
 	CFW_BALANCE_VALUE, ///< Bank balance value
 	CFW_LOAN_VALUE,    ///< Loan
 	CFW_LOAN_LINE,     ///< Line for summing bank balance and loan
@@ -237,7 +234,7 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_PANEL),
-		NWidget(WWT_PANEL, COLOUR_GREY, CFW_EXPS_PANEL),
+		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT), SetPIP(0, 9, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY), SetMinimalSize(120, 0), SetFill(0, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1), SetMinimalSize(86, 0), SetFill(0, 0),
@@ -246,11 +243,11 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CFW_TOTAL_PANEL),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT),
 			NWidget(NWID_VERTICAL), // Vertical column with 'bank balance', 'loan'
-				NWidget(WWT_TEXT, COLOUR_GREY, CFW_BALANCE_TITLE), SetDataTip(STR_FINANCES_BANK_BALANCE_TITLE, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, CFW_LOAN_TITLE), SetDataTip(STR_FINANCES_LOAN_TITLE, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_BANK_BALANCE_TITLE, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_LOAN_TITLE, STR_NULL), SetFill(1, 0),
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetFill(0, 0), SetMinimalSize(30, 0),
@@ -551,7 +548,6 @@ enum SelectCompanyLiveryWindowWidgets {
 	SCLW_WIDGET_CLASS_ROAD,
 	SCLW_WIDGET_CLASS_SHIP,
 	SCLW_WIDGET_CLASS_AIRCRAFT,
-	SCLW_WIDGET_SPACER_CLASS,
 	SCLW_WIDGET_SPACER_DROPDOWN,
 	SCLW_WIDGET_PRI_COL_DROPDOWN,
 	SCLW_WIDGET_SEC_COL_DROPDOWN,
@@ -808,7 +804,7 @@ static const NWidgetPart _nested_select_company_livery_widgets [] = {
 		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_ROAD), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRUCKLIST, STR_LIVERY_ROAD_VEHICLE_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_SHIP), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIPLIST, STR_LIVERY_SHIP_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_AIRCRAFT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AIRPLANESLIST, STR_LIVERY_AIRCRAFT_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_CLASS), SetMinimalSize(90, 22), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(90, 22), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_DROPDOWN), SetMinimalSize(150, 12), SetFill(1, 1), EndContainer(),
@@ -1432,7 +1428,6 @@ static void DoSelectCompanyManagerFace(Window *parent, bool adv, int top, int le
 /** Names of the widgets of the #CompanyWindow. Keep them in the same order as in the widget array */
 enum CompanyWindowWidgets {
 	CW_WIDGET_CAPTION,
-	CW_WIDGET_BACKGROUND,
 
 	CW_WIDGET_FACE,
 	CW_WIDGET_FACE_TITLE,
@@ -1470,7 +1465,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CW_WIDGET_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPIP(4, 6, 4),
 			NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE), SetMinimalSize(91, 120), SetFill(1, 0),
@@ -1909,7 +1904,6 @@ void ShowCompany(CompanyID company)
 /** widget numbers of the #BuyCompanyWindow. */
 enum BuyCompanyWidgets {
 	BCW_CAPTION,
-	BCW_BACKGROUND,
 	BCW_FACE,
 	BCW_QUESTION,
 	BCW_NO,
@@ -1989,7 +1983,7 @@ static const NWidgetPart _nested_buy_company_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, BCW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, BCW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
 		NWidget(NWID_VERTICAL), SetPIP(8, 8, 8),
 			NWidget(NWID_HORIZONTAL), SetPIP(8, 10, 8),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, BCW_FACE), SetFill(0, 1),

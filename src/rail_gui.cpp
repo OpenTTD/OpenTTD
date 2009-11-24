@@ -287,7 +287,6 @@ static void PlaceRail_AutoSignals(TileIndex tile)
 /** Enum referring to the widgets of the build rail toolbar */
 enum RailToolbarWidgets {
 	RTW_CAPTION,
-	RTW_SPACER,
 	RTW_BUILD_NS,
 	RTW_BUILD_X,
 	RTW_BUILD_EW,
@@ -833,7 +832,7 @@ static const NWidgetPart _nested_build_rail_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_AUTORAIL),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AUTORAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL),
 
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, RTW_SPACER), SetMinimalSize(4, 22), SetDataTip(0x0, STR_NULL), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), SetDataTip(0x0, STR_NULL), EndContainer(),
 
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_DEMOLISH),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
@@ -918,13 +917,11 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 enum BuildRailStationWidgets {
 	BRSW_BACKGROUND,
 
-	BRSW_ORIENT_LABEL, ///< Text label 'Orientation'.
 	BRSW_PLATFORM_DIR_X,
 	BRSW_PLATFORM_DIR_Y,
 
-	BRSW_PLATFORM_NUM_LABEL, ///< Text label 'Number of platforms'
-	BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_NUM_LABEL,
-	BRSW_PLATFORM_NUM_1,
+	BRSW_PLATFORM_NUM_BEGIN,
+	BRSW_PLATFORM_NUM_1 = BRSW_PLATFORM_NUM_BEGIN,
 	BRSW_PLATFORM_NUM_2,
 	BRSW_PLATFORM_NUM_3,
 	BRSW_PLATFORM_NUM_4,
@@ -932,9 +929,8 @@ enum BuildRailStationWidgets {
 	BRSW_PLATFORM_NUM_6,
 	BRSW_PLATFORM_NUM_7,
 
-	BRSW_PLATFORM_LEN_LABEL, ///< Text label 'Platform length'
-	BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_LEN_LABEL,
-	BRSW_PLATFORM_LEN_1,
+	BRSW_PLATFORM_LEN_BEGIN,
+	BRSW_PLATFORM_LEN_1 = BRSW_PLATFORM_LEN_BEGIN,
 	BRSW_PLATFORM_LEN_2,
 	BRSW_PLATFORM_LEN_3,
 	BRSW_PLATFORM_LEN_4,
@@ -944,7 +940,6 @@ enum BuildRailStationWidgets {
 
 	BRSW_PLATFORM_DRAG_N_DROP,
 
-	BRSW_HIGHLIGHT_LABEL, ///< Text label 'Coverage area highlight'
 	BRSW_HIGHLIGHT_OFF,
 	BRSW_HIGHLIGHT_ON,
 
@@ -1355,7 +1350,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_ORIENT_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetPadding(1, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetPadding(1, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetFill(1, 0),
 			NWidget(WWT_PANEL, COLOUR_GREY, BRSW_PLATFORM_DIR_X), SetMinimalSize(66, 48), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
@@ -1363,7 +1358,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, BRSW_PLATFORM_DIR_Y), SetMinimalSize(66, 48), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_PLATFORM_NUM_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL), SetPadding(2, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL), SetPadding(2, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL), SetPIP(22, 0, 21),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_1), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_1, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_2), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_2, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
@@ -1373,7 +1368,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_6), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_6, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_7), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_7, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_PLATFORM_LEN_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_PLATFORM_LENGTH, STR_NULL), SetPadding(2, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_PLATFORM_LENGTH, STR_NULL), SetPadding(2, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL), SetPIP(22, 0, 21),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_LEN_1), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_1, STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_LEN_2), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_2, STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP),
@@ -1389,7 +1384,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_DRAG_N_DROP), SetMinimalSize(75, 12), SetDataTip(STR_STATION_BUILD_DRAG_DROP, STR_STATION_BUILD_DRAG_DROP_TOOLTIP),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_HIGHLIGHT_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetPadding(3, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetPadding(3, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_HIGHLIGHT_OFF), SetMinimalSize(60, 12),
@@ -1416,7 +1411,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 		/* end newstations gui additions. */
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_ORIENT_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetPadding(1, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetPadding(1, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetFill(1, 0),
 			NWidget(WWT_PANEL, COLOUR_GREY, BRSW_PLATFORM_DIR_X), SetMinimalSize(66, 48), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
@@ -1424,7 +1419,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, BRSW_PLATFORM_DIR_Y), SetMinimalSize(66, 48), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_PLATFORM_NUM_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL), SetPadding(2, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL), SetPadding(2, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL), SetPIP(22, 0, 21),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_1), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_1, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_2), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_2, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
@@ -1434,7 +1429,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_6), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_6, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_7), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_7, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_PLATFORM_LEN_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_PLATFORM_LENGTH, STR_NULL), SetPadding(2, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_PLATFORM_LENGTH, STR_NULL), SetPadding(2, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL), SetPIP(22, 0, 21),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_LEN_1), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_1, STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_LEN_2), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_2, STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP),
@@ -1450,7 +1445,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_DRAG_N_DROP), SetMinimalSize(75, 12), SetDataTip(STR_STATION_BUILD_DRAG_DROP, STR_STATION_BUILD_DRAG_DROP_TOOLTIP),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_HIGHLIGHT_LABEL), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetPadding(3, 2, 0, 2),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetPadding(3, 2, 0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_HIGHLIGHT_OFF), SetMinimalSize(60, 12),
@@ -1694,7 +1689,6 @@ static void ShowSignalBuilder(Window *parent)
 
 /** Enum referring to the widgets of the build rail depot window */
 enum BuildRailDepotWidgets {
-	BRDW_BACKGROUND,
 	BRDW_DEPOT_NE,
 	BRDW_DEPOT_SE,
 	BRDW_DEPOT_SW,
@@ -1743,7 +1737,7 @@ static const NWidgetPart _nested_build_depot_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRDW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL_LTR),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
@@ -1782,7 +1776,6 @@ static void ShowBuildTrainDepotPicker(Window *parent)
 
 /** Enum referring to the widgets of the build NewGRF rail waypoint window */
 enum BuildRailWaypointWidgets {
-	BRWW_BACKGROUND,
 	BRWW_WAYPOINT_1,
 	BRWW_WAYPOINT_2,
 	BRWW_WAYPOINT_3,
@@ -1855,7 +1848,7 @@ static const NWidgetPart _nested_build_waypoint_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_WAYPOINT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_1), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),

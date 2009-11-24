@@ -758,7 +758,6 @@ void ShowBuildRoadScenToolbar()
 /** Enum referring to the widgets of the build road depot window */
 enum BuildRoadDepotWidgets {
 	BRDW_CAPTION,
-	BRDW_BACKGROUND,
 	BRDW_DEPOT_NE,
 	BRDW_DEPOT_SE,
 	BRDW_DEPOT_SW,
@@ -816,7 +815,7 @@ static const NWidgetPart _nested_build_road_depot_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRDW_CAPTION), SetDataTip(STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRDW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL_LTR),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),

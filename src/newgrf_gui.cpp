@@ -120,10 +120,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 /** Names of the add a newgrf window widgets. */
 enum AddNewGRFWindowWidgets {
-	ANGRFW_FILTER_PANEL,
-	ANGRFW_FILTER_TITLE,
 	ANGRFW_FILTER,
-	ANGRFW_BACKGROUND,
 	ANGRFW_GRF_LIST,
 	ANGRFW_SCROLLBAR,
 	ANGRFW_GRF_INFO,
@@ -460,14 +457,14 @@ static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_NEWGRF_ADD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_FILTER_PANEL), SetResize(1, 0),
+	NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0),
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0), SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
-			NWidget(WWT_TEXT, COLOUR_GREY, ANGRFW_FILTER_TITLE), SetFill(0, 1), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
+			NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
 			NWidget(WWT_EDITBOX, COLOUR_GREY, ANGRFW_FILTER), SetFill(1, 0), SetMinimalSize(100, 12), SetResize(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, ANGRFW_BACKGROUND),
+		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(WWT_INSET, COLOUR_GREY, ANGRFW_GRF_LIST), SetMinimalSize(290, 1), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, ANGRFW_SCROLLBAR),
@@ -513,11 +510,9 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed);
 
 /** Names of the manage newgrfs window widgets. */
 enum ShowNewGRFStateWidgets {
-	SNGRFS_BACKGROUND1,
 	SNGRFS_PRESET_LIST,
 	SNGRFS_PRESET_SAVE,
 	SNGRFS_PRESET_DELETE,
-	SNGRFS_BACKGROUND2,
 	SNGRFS_ADD,
 	SNGRFS_REMOVE,
 	SNGRFS_MOVE_UP,
@@ -1008,7 +1003,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, SNGRFS_BACKGROUND1),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 10, 2, 10),
 			NWidget(WWT_DROPDOWN, COLOUR_YELLOW, SNGRFS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -1017,7 +1012,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, SNGRFS_BACKGROUND2),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 10, 2, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_ADD), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_NEWGRF_SETTINGS_ADD, STR_NEWGRF_SETTINGS_ADD_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_REMOVE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),

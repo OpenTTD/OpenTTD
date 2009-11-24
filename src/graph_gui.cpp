@@ -1140,8 +1140,6 @@ void ShowCompanyLeagueTable()
 
 /** Widget numbers of the performance rating details window. */
 enum PerformanceRatingDetailsWidgets {
-	PRW_BACKGROUND,
-
 	PRW_SCORE_FIRST,
 	PRW_SCORE_LAST = PRW_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1,
 
@@ -1456,7 +1454,7 @@ static const NWidgetPart _nested_performance_rating_detail_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, PRW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidgetFunction(MakeCompanyButtonRows), SetPadding(0, 1, 1, 2),
 	EndContainer(),
 	NWidgetFunction(MakePerformanceDetailPanels),

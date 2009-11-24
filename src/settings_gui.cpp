@@ -104,29 +104,18 @@ static int GetCurRes()
 /** Widgets of the game options menu */
 enum GameOptionsWidgets {
 	GOW_BACKGROUND,          ///< Background of the window
-	GOW_CURRENCY_FRAME,      ///< Frame of the currency dropdown
 	GOW_CURRENCY_DROPDOWN,   ///< Currency dropdown
-	GOW_DISTANCE_FRAME,      ///< Measuring unit frame
 	GOW_DISTANCE_DROPDOWN,   ///< Measuring unit dropdown
-	GOW_ROADSIDE_FRAME,      ///< Road side frame
 	GOW_ROADSIDE_DROPDOWN,   ///< Dropdown to select the road side (to set the right side ;))
-	GOW_TOWNNAME_FRAME,      ///< Frame for the town name dropdown
 	GOW_TOWNNAME_DROPDOWN,   ///< Town name dropdown
-	GOW_AUTOSAVE_FRAME,      ///< Frame for autosave
 	GOW_AUTOSAVE_DROPDOWN,   ///< Dropdown to say how often to autosave
-	GOW_LANG_FRAME,          ///< Language dropdown frame
 	GOW_LANG_DROPDOWN,       ///< Language dropdown
-	GOW_RESOLUTION_FRAME,    ///< Frame for the dropdown for the resolution
 	GOW_RESOLUTION_DROPDOWN, ///< Dropdown for the resolution
-	GOW_FULLSCREEN_LABEL,    ///< Text (right) to the fullscreen button
 	GOW_FULLSCREEN_BUTTON,   ///< Toggle fullscreen
-	GOW_SCREENSHOT_FRAME,    ///< Frame for the screenshot type
 	GOW_SCREENSHOT_DROPDOWN, ///< Select the screenshot type... please use PNG!
-	GOW_BASE_GRF_FRAME,      ///< Base GRF selection frame
 	GOW_BASE_GRF_DROPDOWN,   ///< Use to select a base GRF
 	GOW_BASE_GRF_STATUS,     ///< Info about missing files etc.
 	GOW_BASE_GRF_DESCRIPTION,///< Description of selected base GRF
-	GOW_BASE_SFX_FRAME,      ///< Base SFX selection frame
 	GOW_BASE_SFX_DROPDOWN,   ///< Use to select a base SFX
 	GOW_BASE_SFX_DESCRIPTION,///< Description of selected base SFX
 };
@@ -433,42 +422,42 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, GOW_BACKGROUND), SetPIP(6, 6, 10),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 10, 10),
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_CURRENCY_FRAME), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_ROADSIDE_FRAME), SetDataTip(STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_ROADSIDE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_AUTOSAVE_FRAME), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_RESOLUTION_FRAME), SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_RESOLUTION_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 3, 0),
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_TEXT, COLOUR_GREY, GOW_FULLSCREEN_LABEL), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, GOW_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_DISTANCE_FRAME), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_FRAME, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_DISTANCE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_TOWNNAME_FRAME), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_LANG_FRAME), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_SCREENSHOT_FRAME), SetDataTip(STR_GAME_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 1),
 			EndContainer(),
 		EndContainer(),
 
-		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_GAME_OPTIONS_BASE_GRF, STR_NULL), SetPadding(0, 10, 0, 10),
+		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_GRF, STR_NULL), SetPadding(0, 10, 0, 10),
 			NWidget(NWID_HORIZONTAL), SetPIP(00, 30, 0),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
@@ -476,7 +465,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 0, 0),
 		EndContainer(),
 
-		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_SFX_FRAME), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL), SetPadding(0, 10, 0, 10),
+		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL), SetPadding(0, 10, 0, 10),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_SFX_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP),
 				NWidget(NWID_SPACER), SetFill(1, 0),
@@ -505,14 +494,11 @@ extern void StartupEconomy();
 
 /* Names of the game difficulty settings window */
 enum GameDifficultyWidgets {
-	GDW_UPPER_BG,
 	GDW_LVL_EASY,
 	GDW_LVL_MEDIUM,
 	GDW_LVL_HARD,
 	GDW_LVL_CUSTOM,
 	GDW_HIGHSCORE,
-	GDW_SETTING_BG,
-	GDW_LOWER_BG,
 	GDW_ACCEPT,
 	GDW_CANCEL,
 
@@ -730,7 +716,7 @@ static NWidgetBase *MakeDifficultyOptionsWidgets(int *biggest_index)
 /** Widget definition for the game difficulty settings window */
 static const NWidgetPart _nested_game_difficulty_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_DIFFICULTY_LEVEL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_UPPER_BG),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_VERTICAL), SetPIP(2, 0, 2),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 0, 10),
 				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, GDW_LVL_EASY), SetDataTip(STR_DIFFICULTY_LEVEL_EASY, STR_NULL), SetFill(1, 0),
@@ -743,14 +729,14 @@ static const NWidgetPart _nested_game_difficulty_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_SETTING_BG),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_VERTICAL), SetPIP(3, 0, 1),
 			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
 				NWidgetFunction(MakeDifficultyOptionsWidgets),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GDW_LOWER_BG),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_VERTICAL), SetPIP(2, 0, 2),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 0, 10),
 				NWidget(NWID_SPACER), SetFill(1, 0),
@@ -1699,8 +1685,6 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 
 /** Widget numbers of the custom currency window. */
 enum CustomCurrencyWidgets {
-	CUSTCURR_BACKGROUND,
-
 	CUSTCURR_RATE_DOWN,
 	CUSTCURR_RATE_UP,
 	CUSTCURR_RATE,
@@ -1901,7 +1885,7 @@ static const NWidgetPart _nested_cust_currency_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CUSTCURR_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(7, 3, 0),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 5),
 				NWidget(NWID_BUTTON_ARROW, COLOUR_YELLOW, CUSTCURR_RATE_DOWN), SetDataTip(AWV_DECREASE, STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP),

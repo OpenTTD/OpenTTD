@@ -33,7 +33,6 @@ enum TimetableViewWindowWidgets {
 	TTV_CLEAR_TIME,
 	TTV_RESET_LATENESS,
 	TTV_AUTOFILL,
-	TTV_EMPTY,
 };
 
 /**
@@ -371,7 +370,7 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CLEAR_TIME), SetMinimalSize(110, 12), SetDataTip(STR_TIMETABLE_CLEAR_TIME, STR_TIMETABLE_CLEAR_TIME_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_RESET_LATENESS), SetMinimalSize(118, 12), SetDataTip(STR_TIMETABLE_RESET_LATENESS, STR_TIMETABLE_RESET_LATENESS_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_AUTOFILL), SetMinimalSize(50, 12), SetDataTip(STR_TIMETABLE_AUTOFILL, STR_TIMETABLE_AUTOFILL_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_GREY, TTV_EMPTY), SetMinimalSize(0, 12), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(0, 12), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_RESIZEBOX,COLOUR_GREY),
 	EndContainer(),
 };

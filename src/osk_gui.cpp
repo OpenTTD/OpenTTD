@@ -23,9 +23,7 @@
 /** Widget numbers of the on-screen keyboard (OSK) window. */
 enum OskWidgets {
 	OSK_WIDGET_CAPTION,         ///< Title bar.
-	OSK_WIDGET_TEXT_BACKGROUND, ///< Background around the edit box.
 	OSK_WIDGET_TEXT,            ///< Edit box.
-	OSK_WIDGET_KEYS_BACKGROUND, ///< Background of the keys.
 	OSK_WIDGET_CANCEL,          ///< Cancel key.
 	OSK_WIDGET_OK,              ///< Ok key.
 	OSK_WIDGET_BACKSPACE,       ///< Backspace key.
@@ -372,10 +370,10 @@ static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 
 static const NWidgetPart _nested_osk_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, OSK_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
-	NWidget(WWT_PANEL, COLOUR_GREY, OSK_WIDGET_TEXT_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, OSK_WIDGET_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, OSK_WIDGET_KEYS_BACKGROUND), SetPIP(5, 2, 3),
+	NWidget(WWT_PANEL, COLOUR_GREY), SetPIP(5, 2, 3),
 		NWidgetFunction(MakeTopKeys), SetPadding(0, 3, 0, 3),
 		NWidgetFunction(MakeNumberKeys), SetPadding(0, 3, 0, 3),
 		NWidgetFunction(MakeQwertyKeys), SetPadding(0, 3, 0, 3),

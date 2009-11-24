@@ -206,8 +206,6 @@ static void SelectPlaylist(byte list)
 }
 
 enum MusicTrackSelectionWidgets {
-	MTSW_BACKGROUND,
-	MTSW_TRACKLIST,
 	MTSW_LIST_LEFT,
 	MTSW_PLAYLIST,
 	MTSW_LIST_RIGHT,
@@ -379,11 +377,11 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_PLAYLIST_MUSIC_PROGRAM_SELECTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, MTSW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
 			/* Left panel. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_GREY, MTSW_TRACKLIST), SetDataTip(STR_PLAYLIST_TRACK_INDEX, STR_NULL),
+				NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_PLAYLIST_TRACK_INDEX, STR_NULL),
 				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),

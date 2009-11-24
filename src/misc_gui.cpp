@@ -319,13 +319,8 @@ void PlaceLandBlockInfo()
 
 /** Widgets for the land info window. */
 enum AboutWidgets {
-	AW_BACKGROUND,           ///< Background to draw on
-	AW_ABOUT_ORIG_COPYRIGHT, ///< Text with original copyright info
-	AW_ABOUT_VERSION,        ///< OpenTTD version string
-	AW_FRAME,                ///< The frame with the scrolling text
 	AW_SCROLLING_TEXT,       ///< The actually scrolling text
 	AW_WEBSITE,              ///< URL of OpenTTD website
-	AW_ABOUT_COPYRIGHT,      ///< OpenTTD copyright info
 };
 
 static const NWidgetPart _nested_about_widgets[] = {
@@ -333,14 +328,14 @@ static const NWidgetPart _nested_about_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, AW_BACKGROUND), SetPIP(4, 2, 4),
-		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_ORIG_COPYRIGHT), SetDataTip(STR_ABOUT_ORIGINAL_COPYRIGHT, STR_NULL),
-		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_VERSION), SetDataTip(STR_ABOUT_VERSION, STR_NULL),
-		NWidget(WWT_FRAME, COLOUR_GREY, AW_FRAME), SetPadding(0, 5, 1, 5),
+	NWidget(WWT_PANEL, COLOUR_GREY), SetPIP(4, 2, 4),
+		NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_ABOUT_ORIGINAL_COPYRIGHT, STR_NULL),
+		NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_ABOUT_VERSION, STR_NULL),
+		NWidget(WWT_FRAME, COLOUR_GREY), SetPadding(0, 5, 1, 5),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, AW_SCROLLING_TEXT),
 		EndContainer(),
 		NWidget(WWT_TEXT, COLOUR_GREY, AW_WEBSITE), SetDataTip(STR_BLACK_RAW_STRING, STR_NULL),
-		NWidget(WWT_TEXT, COLOUR_GREY, AW_ABOUT_COPYRIGHT), SetDataTip(STR_ABOUT_COPYRIGHT_OPENTTD, STR_NULL),
+		NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_ABOUT_COPYRIGHT_OPENTTD, STR_NULL),
 	EndContainer(),
 };
 
@@ -487,7 +482,6 @@ void ShowAboutWindow()
 /** Widgets of the error message windows */
 enum ErrorMessageWidgets {
 	EMW_CAPTION,
-	EMW_PANEL,
 	EMW_FACE,
 	EMW_MESSAGE,
 };
@@ -497,7 +491,7 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
+	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetPadding(0, 2, 0, 2), SetMinimalSize(236, 32),
 	EndContainer(),
 };
@@ -514,7 +508,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED, EMW_PANEL),
+	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
 			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetFill(0, 1), SetPadding(2, 0, 1, 0),
 			NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetFill(0, 1), SetMinimalSize(238, 123),
@@ -1300,7 +1294,6 @@ void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
 /** Widget of the string query window. */
 enum QueryStringWidgets {
 	QUERY_STR_WIDGET_CAPTION,
-	QUERY_STR_WIDGET_BACKGROUND,
 	QUERY_STR_WIDGET_TEXT,
 	QUERY_STR_WIDGET_DEFAULT,
 	QUERY_STR_WIDGET_CANCEL,
@@ -1424,7 +1417,7 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -1460,7 +1453,6 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, uint maxwidth
 
 enum QueryWidgets {
 	QUERY_WIDGET_CAPTION,
-	QUERY_WIDGET_BACKGROUND,
 	QUERY_WIDGET_TEXT,
 	QUERY_WIDGET_NO,
 	QUERY_WIDGET_YES
@@ -1579,7 +1571,7 @@ static const NWidgetPart _nested_query_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, QUERY_WIDGET_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND), SetPIP(8, 15, 8),
+	NWidget(WWT_PANEL, COLOUR_RED), SetPIP(8, 15, 8),
 		NWidget(WWT_TEXT, COLOUR_RED, QUERY_WIDGET_TEXT), SetMinimalSize(200, 12),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(20, 29, 20),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_NO, STR_NULL),

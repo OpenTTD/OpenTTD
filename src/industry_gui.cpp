@@ -554,12 +554,9 @@ static inline bool IsProductionAlterable(const Industry *i)
 /** Names of the widgets of the view industry gui */
 enum IndustryViewWidgets {
 	IVW_CAPTION,
-	IVW_BACKGROUND,
-	IVW_INSET,
 	IVW_VIEWPORT,
 	IVW_INFO,
 	IVW_GOTO,
-	IVW_SPACER,
 };
 
 class IndustryViewWindow : public Window
@@ -798,8 +795,8 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_CREAM, IVW_CAPTION), SetDataTip(STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_CREAM),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_BACKGROUND),
-		NWidget(WWT_INSET, COLOUR_CREAM, IVW_INSET), SetPadding(2, 2, 2, 2),
+	NWidget(WWT_PANEL, COLOUR_CREAM),
+		NWidget(WWT_INSET, COLOUR_CREAM), SetPadding(2, 2, 2, 2),
 			NWidget(NWID_VIEWPORT, INVALID_COLOUR, IVW_VIEWPORT), SetMinimalSize(254, 86), SetFill(1, 0), SetPadding(1, 1, 1, 1), SetResize(1, 1),
 		EndContainer(),
 	EndContainer(),
@@ -807,7 +804,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetMinimalSize(130, 12), SetDataTip(STR_BUTTON_LOCATION, STR_INDUSTRY_VIEW_LOCATION_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_CREAM, IVW_SPACER), /*SetMinimalSize(118, 12),*/ SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_CREAM), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_CREAM),
 	EndContainer(),
 };
@@ -829,7 +826,6 @@ void ShowIndustryViewWindow(int industry)
 enum IndustryDirectoryWidgets {
 	IDW_DROPDOWN_ORDER,
 	IDW_DROPDOWN_CRITERIA,
-	IDW_SPACER,
 	IDW_INDUSTRY_LIST,
 	IDW_SCROLLBAR,
 };
@@ -846,11 +842,9 @@ static const NWidgetPart _nested_industry_directory_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_BROWN, IDW_DROPDOWN_ORDER), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
 				NWidget(WWT_DROPDOWN, COLOUR_BROWN, IDW_DROPDOWN_CRITERIA), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIAP),
-				NWidget(WWT_PANEL, COLOUR_BROWN, IDW_SPACER), SetResize(1, 0),
-				EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN, IDW_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1),
-			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_BROWN, IDW_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, IDW_SCROLLBAR),

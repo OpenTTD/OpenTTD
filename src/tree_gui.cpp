@@ -27,7 +27,6 @@ void PlaceTreesRandomly();
 
 /** Widget definitions for the build trees window. */
 enum BuildTreesWidgets {
-	BTW_BACKGROUND,
 	BTW_TYPE_11,
 	BTW_TYPE_12,
 	BTW_TYPE_13,
@@ -168,7 +167,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_PLANT_TREE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BTW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),

@@ -94,7 +94,6 @@ enum DockToolbarWidgets {
 	DTW_BUTTONS_BEGIN,             ///< Begin of clickable buttons (except seperating panel)
 	DTW_CANAL = DTW_BUTTONS_BEGIN, ///< Build canal button
 	DTW_LOCK,                      ///< Build lock button
-	DTW_SEPERATOR,                 ///< Seperating panel between lock and demolish
 	DTW_DEMOLISH,                  ///< Demolish aka dynamite button
 	DTW_DEPOT,                     ///< Build depot button
 	DTW_STATION,                   ///< Build station button
@@ -155,7 +154,6 @@ typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Canal,
 	BuildDocksClick_Lock,
-	NULL,
 	BuildDocksClick_Demolish,
 	BuildDocksClick_Depot,
 	BuildDocksClick_Dock,
@@ -184,7 +182,7 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget >= DTW_BUTTONS_BEGIN && widget != DTW_SEPERATOR) _build_docks_button_proc[widget - DTW_BUTTONS_BEGIN](this);
+		if (widget >= DTW_BUTTONS_BEGIN) _build_docks_button_proc[widget - DTW_BUTTONS_BEGIN](this);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -271,7 +269,7 @@ static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL_LTR),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DTW_SEPERATOR), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEPOT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_STATION), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DOCK, STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP),
@@ -308,7 +306,7 @@ static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DTW_SEPERATOR), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_RIVER), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_RIVER, STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUILD_AQUEDUCT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),

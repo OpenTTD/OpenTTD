@@ -100,14 +100,11 @@ enum StationListWidgets {
 	SLW_SHIP,           ///< 'SHIP' button - list only facilities where is a dock
 	SLW_FACILALL,       ///< 'ALL' button - list all facilities
 
-	SLW_PAN_BETWEEN,    ///< Small panel between list of types of ficilities and list of cargo types
 	SLW_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting
 	SLW_CARGOALL,       ///< 'ALL' button - list all stations
-	SLW_PAN_RIGHT,      ///< Panel right of list of cargo types
 
 	SLW_SORTBY,         ///< 'Sort by' button - reverse sort direction
 	SLW_SORTDROPBTN,    ///< Dropdown button
-	SLW_PAN_SORT_RIGHT, ///< Panel right of sorting options
 
 	SLW_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
 };
@@ -689,16 +686,16 @@ static const NWidgetPart _nested_company_stations_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_AIRPLANE), SetMinimalSize(14, 11), SetDataTip(STR_PLANE, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE), SetFill(0, 1),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_SHIP), SetMinimalSize(14, 11), SetDataTip(STR_SHIP, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE), SetFill(0, 1),
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_FACILALL), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_SELECT_ALL_FACILITIES), SetFill(0, 1), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_PAN_BETWEEN), SetMinimalSize(5, 11), SetDataTip(0x0, STR_NULL), SetFill(0, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(5, 11), SetFill(0, 1), EndContainer(),
 		NWidgetFunction(CargoWidgets),
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_NOCARGOWAITING), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_NO_WAITING_CARGO), SetFill(0, 1), EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_CARGOALL), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_SELECT_ALL_TYPES), SetFill(0, 1), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_PAN_RIGHT), SetDataTip(0x0, STR_NULL), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetDataTip(0x0, STR_NULL), SetResize(1, 0), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_SORTBY), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, SLW_SORTDROPBTN), SetMinimalSize(163, 12), SetDataTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_CRITERIAP), // widget_data gets overwritten.
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_PAN_SORT_RIGHT), SetDataTip(0x0, STR_NULL), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetDataTip(0x0, STR_NULL), SetResize(1, 0), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(346, 125), SetResize(1, 10), SetDataTip(0x0, STR_STATION_LIST_TOOLTIP), EndContainer(),

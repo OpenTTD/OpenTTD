@@ -36,7 +36,6 @@ static inline void SetNewLandscapeType(byte landscape)
 }
 
 enum SelectGameIntroWidgets {
-	SGI_BACKGROUND,
 	SGI_GENERATE_GAME,
 	SGI_LOAD_GAME,
 	SGI_PLAY_SCENARIO,
@@ -153,8 +152,7 @@ struct SelectGameWindow : public Window {
 
 static const NWidgetPart _nested_select_game_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_INTRO_CAPTION, STR_NULL),
-	NWidget(WWT_PANEL, COLOUR_BROWN, SGI_BACKGROUND),
-
+	NWidget(WWT_PANEL, COLOUR_BROWN),
 	NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 
 	/* 'generate game' and 'load game' buttons */

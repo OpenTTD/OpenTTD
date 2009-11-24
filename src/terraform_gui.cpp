@@ -191,7 +191,6 @@ static void PlaceProc_LevelLand(TileIndex tile)
 
 /** Enum referring to the widgets of the terraform toolbar */
 enum TerraformToolbarWidgets {
-	TTW_SEPERATOR,                        ///< Thin seperator line between level land button and demolish button
 	TTW_BUTTONS_START,                    ///< Start of pushable buttons
 	TTW_LOWER_LAND = TTW_BUTTONS_START,   ///< Lower land button
 	TTW_RAISE_LAND,                       ///< Raise land button
@@ -324,7 +323,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LEVEL_LAND), SetMinimalSize(22,22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LANDSCAPING_LEVEL_LAND_TOOLTIP),
 
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_SEPERATOR), SetMinimalSize(4, 22), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), EndContainer(),
 
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_DEMOLISH), SetMinimalSize(22,22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
@@ -490,8 +489,7 @@ static const int8 _multi_terraform_coords[][2] = {
 /** Enum referring to the widgets of the editor terraform toolbar */
 enum EditorTerraformToolbarWidgets {
 	ETTW_START = 0,                        ///< Used for iterations
-	ETTW_BACKGROUND = ETTW_START,          ///< Background of the lower part of the window
-	ETTW_DOTS,                             ///< Invisible widget for rendering the terraform size on.
+	ETTW_DOTS = ETTW_START,                ///< Invisible widget for rendering the terraform size on.
 	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
 	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
 	ETTW_LOWER_LAND,                       ///< Lower land button
@@ -513,7 +511,7 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, ETTW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 2, 7, 2),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_DEMOLISH), SetMinimalSize(22, 22),

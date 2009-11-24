@@ -52,7 +52,6 @@ static void PlaceAirport(TileIndex tile)
 enum {
 	ATW_AIRPORT,
 	ATW_DEMOLISH,
-	ATW_SPACER,
 };
 
 
@@ -142,7 +141,7 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_AIRPORT), SetFill(0, 1), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, ATW_SPACER), SetMinimalSize(4, 22), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), SetFill(1, 1), EndContainer(),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_DEMOLISH), SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 	EndContainer(),
 };
@@ -164,16 +163,6 @@ void ShowBuildAirToolbar()
 
 /** Airport widgets in the airport picker window. */
 enum AirportPickerWidgets {
-	/* Panels and labels. */
-	BAW_SMALL_AIRPORTS_PANEL,
-	BAW_SMALL_AIRPORTS_LABEL,
-	BAW_LARGE_AIRPORTS_PANEL,
-	BAW_LARGE_AIRPORTS_LABEL,
-	BAW_HUB_AIRPORTS_PANEL,
-	BAW_HUB_AIRPORTS_LABEL,
-	BAW_HELIPORTS_PANEL,
-	BAW_HELIPORTS_LABEL,
-	BAW_BOTTOMPANEL,
 	/* Airport selection buttons. */
 	BAW_SMALL_AIRPORT,
 	BAW_CITY_AIRPORT,
@@ -184,10 +173,10 @@ enum AirportPickerWidgets {
 	BAW_HELIDEPOT,
 	BAW_INTERCONTINENTAL_AIRPORT,
 	BAW_HELISTATION,
-	/* Coverage. */
+
+	BAW_BOTTOMPANEL,
 	BAW_BTN_DONTHILIGHT,
 	BAW_BTN_DOHILIGHT,
-	BAW_COVERAGE_LABEL,
 
 	BAW_LAST_AIRPORT = BAW_HELISTATION,
 	BAW_AIRPORT_COUNT = BAW_LAST_AIRPORT - BAW_SMALL_AIRPORT + 1,
@@ -300,8 +289,8 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_AIRPORT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	/* Small airports. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_SMALL_AIRPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_SMALL_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS, STR_NULL),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
@@ -315,8 +304,8 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	/* Large airports. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_LARGE_AIRPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_LARGE_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS, STR_NULL),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
@@ -330,8 +319,8 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	/* Hub airports. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_HUB_AIRPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_HUB_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS, STR_NULL),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
@@ -345,8 +334,8 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	/* Heliports. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_HELIPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_HELIPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_HELIPORTS, STR_NULL),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_AIRPORT_HELIPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
@@ -363,7 +352,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 	EndContainer(),
 	/* Bottom panel. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_BOTTOMPANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_COVERAGE_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(14, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
