@@ -39,7 +39,8 @@
 
 /* static */ Money AIIndustryType::GetConstructionCost(IndustryType industry_type)
 {
-	if (!IsValidIndustryType(industry_type)) return false;
+	if (!IsValidIndustryType(industry_type)) return -1;
+	if (::GetIndustrySpec(industry_type)->IsRawIndustry() && _settings_game.construction.raw_industry_construction == 0) return -1;
 
 	return ::GetIndustrySpec(industry_type)->GetConstructionCost();
 }

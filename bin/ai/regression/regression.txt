@@ -6934,7 +6934,7 @@
     Id:                      9
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   747070
+    GetConstructionCost():   -1
     GetName():               Farm
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6944,7 +6944,7 @@
     Id:                      5
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   747070
+    GetConstructionCost():   -1
     GetName():               Oil Rig
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6964,7 +6964,7 @@
     Id:                      11
     IsRawIndustry():         true
     ProductionCanIncrease(): false
-    GetConstructionCost():   747070
+    GetConstructionCost():   -1
     GetName():               Oil Wells
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -6984,7 +6984,7 @@
     Id:                      3
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   747070
+    GetConstructionCost():   -1
     GetName():               Forest
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -7004,7 +7004,7 @@
     Id:                      18
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   747070
+    GetConstructionCost():   -1
     GetName():               Iron Ore Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
@@ -7014,7 +7014,7 @@
     Id:                      0
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   747070
+    GetConstructionCost():   -1
     GetName():               Coal Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
