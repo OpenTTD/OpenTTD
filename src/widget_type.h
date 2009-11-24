@@ -737,7 +737,7 @@ static inline NWidgetPart SetPIP(uint8 pre, uint8 inter, uint8 post)
  *       Child widgets must have a index bigger than the parent index.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
+static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx = -1)
 {
 	NWidgetPart part;
 

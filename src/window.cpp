@@ -228,105 +228,107 @@ static void StartWindowSizing(Window *w, bool to_left);
  */
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
-	int widget_index = 0;
-	if (w->desc_flags & WDF_DEF_WIDGET) {
-		const NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
-		widget_index = (nw != NULL) ? nw->index : -1;
-		WidgetType widget_type = (widget_index >= 0) ? nw->type : WWT_EMPTY;
+	const NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
+	WidgetType widget_type = (nw != NULL) ? nw->type : WWT_EMPTY;
 
-		bool focused_widget_changed = false;
-		/* If clicked on a window that previously did dot have focus */
-		if (_focused_window != w &&
-				(w->desc_flags & WDF_NO_FOCUS) == 0 &&           // Don't lose focus to toolbars
-				!((w->desc_flags & WDF_STD_BTN) && widget_type == WWT_CLOSEBOX)) { // Don't change focused window if 'X' (close button) was clicked
-			focused_widget_changed = true;
-			if (_focused_window != NULL) {
-				_focused_window->OnFocusLost();
+	bool focused_widget_changed = false;
+	/* If clicked on a window that previously did dot have focus */
+	if (_focused_window != w &&                 // We already have focus, right?
+			(w->desc_flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbars
+			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
+		focused_widget_changed = true;
+		if (_focused_window != NULL) {
+			_focused_window->OnFocusLost();
 
-				/* The window that lost focus may have had opened a OSK, window so close it, unless the user has clicked on the OSK window. */
-				if (w->window_class != WC_OSK) DeleteWindowById(WC_OSK, 0);
-			}
-			SetFocusedWindow(w);
-			w->OnFocus();
+			/* The window that lost focus may have had opened a OSK, window so close it, unless the user has clicked on the OSK window. */
+			if (w->window_class != WC_OSK) DeleteWindowById(WC_OSK, 0);
+		}
+		SetFocusedWindow(w);
+		w->OnFocus();
+	}
+
+	if (nw == NULL) return; // exit if clicked outside of widgets
+
+	/* don't allow any interaction if the button has been disabled */
+	if (nw->IsDisabled()) return;
+
+	int widget_index = nw->index; ///< Index of the widget
+
+	/* Clicked on a widget that is not disabled.
+	 * So unless the clicked widget is the caption bar, change focus to this widget */
+	if (widget_type != WWT_CAPTION) {
+		/* Close the OSK window if a edit box loses focus */
+		if ((w->nested_root != NULL && w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX &&
+					w->nested_focus != nw && w->window_class != WC_OSK)) {
+			DeleteWindowById(WC_OSK, 0);
 		}
 
-		if (widget_index < 0) return; // exit if clicked outside of widgets
+		/* focused_widget_changed is 'now' only true if the window this widget
+		 * is in gained focus. In that case it must remain true, also if the
+		 * local widget focus did not change. As such it's the logical-or of
+		 * both changed states.
+		 *
+		 * If this is not preserved, then the OSK window would be opened when
+		 * a user has the edit box focused and then click on another window and
+		 * then back again on the edit box (to type some text).
+		 */
+		focused_widget_changed |= w->SetFocusedWidget(widget_index);
+	}
 
-		/* don't allow any interaction if the button has been disabled */
-		if (w->IsWidgetDisabled(widget_index)) return;
+	/* Close any child drop down menus. If the button pressed was the drop down
+	 * list's own button, then we should not process the click any further. */
+	if (HideDropDownMenu(w) == widget_index && widget_index >= 0) return;
 
-		/* Clicked on a widget that is not disabled.
-		 * So unless the clicked widget is the caption bar, change focus to this widget */
-		if (widget_type != WWT_CAPTION) {
-			/* Close the OSK window if a edit box loses focus */
-			if ((w->nested_root != NULL && w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX &&
-						w->nested_focus != nw && w->window_class != WC_OSK)) {
-				DeleteWindowById(WC_OSK, 0);
-			}
+	switch (widget_type) {
+		/* special widget handling for buttons*/
+		case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
+		case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
+		case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
+			w->HandleButtonClick(widget_index);
+			break;
 
-			/* focused_widget_changed is 'now' only true if the window this widget
-			 * is in gained focus. In that case it must remain true, also if the
-			 * local widget focus did not change. As such it's the logical-or of
-			 * both changed states.
-			 *
-			 * If this is not preserved, then the OSK window would be opened when
-			 * a user has the edit box focused and then click on another window and
-			 * then back again on the edit box (to type some text).
-			 */
-			focused_widget_changed |= w->SetFocusedWidget(widget_index);
-		}
-
-		if (widget_type & WWB_PUSHBUTTON) {
-			/* special widget handling for buttons*/
-			switch (widget_type) {
-				default: NOT_REACHED();
-				case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
-				case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
-				case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
-					w->HandleButtonClick(widget_index);
-					break;
-			}
-		} else if (widget_type == WWT_SCROLLBAR || widget_type == WWT_SCROLL2BAR || widget_type == WWT_HSCROLLBAR) {
+		case WWT_SCROLLBAR:
+		case WWT_SCROLL2BAR:
+		case WWT_HSCROLLBAR:
 			ScrollbarClickHandler(w, nw, x, y);
-		} else if (widget_type == WWT_EDITBOX && !focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
-			/* Open the OSK window if clicked on an edit box */
-			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
-			if (qs != NULL) {
-				qs->OnOpenOSKWindow(widget_index);
+			break;
+
+		case WWT_EDITBOX:
+			if (!focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
+				/* Open the OSK window if clicked on an edit box */
+				QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
+				if (qs != NULL) {
+					qs->OnOpenOSKWindow(widget_index);
+				}
 			}
-		}
+			break;
 
-		/* Close any child drop down menus. If the button pressed was the drop down
-		 * list's own button, then we should not process the click any further. */
-		if (HideDropDownMenu(w) == widget_index) return;
+		case WWT_CLOSEBOX: // 'X'
+			delete w;
+			return;
 
-		if (w->desc_flags & WDF_STD_BTN) {
-			if (widget_type == WWT_CLOSEBOX) { // 'X'
-				delete w;
-				return;
-			}
+		case WWT_CAPTION: // 'Title bar'
+			StartWindowDrag(w);
+			return;
 
-			if (widget_type == WWT_CAPTION) { // 'Title bar'
-				StartWindowDrag(w);
-				return;
-			}
-		}
-
-		if ((w->desc_flags & WDF_RESIZABLE) && widget_type == WWT_RESIZEBOX) {
+		case WWT_RESIZEBOX:
 			/* When the resize widget is on the left size of the window
 			 * we assume that that button is used to resize to the left. */
-			int left_pos = nw->pos_x;
-			StartWindowSizing(w, left_pos < (w->width / 2));
-			w->SetWidgetDirty(widget_index);
+			StartWindowSizing(w, (int)nw->pos_x < (w->width / 2));
+			nw->SetDirty(w);
 			return;
-		}
 
-		if ((w->desc_flags & WDF_STICKY_BUTTON) && widget_type == WWT_STICKYBOX) {
+		case WWT_STICKYBOX:
 			w->flags4 ^= WF_STICKY;
-			w->SetWidgetDirty(widget_index);
+			nw->SetDirty(w);
 			return;
-		}
+
+		default:
+			break;
 	}
+
+	/* Widget has no index, so the window is not interested in it. */
+	if (widget_index < 0) return;
 
 	Point pt = { x, y };
 
@@ -345,39 +347,36 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
  */
 static void DispatchRightClickEvent(Window *w, int x, int y)
 {
-	int widget = 0;
+	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
 
-	/* default tooltips handler? */
-	if (w->desc_flags & WDF_STD_TOOLTIPS) {
-		NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
-		if (wid == NULL || wid->index < 0) return;
-		widget = wid->index;
-		StringID tooltip = wid->tool_tip;
+	/* No widget to handle */
+	if (wid == NULL) return;
 
-		if (tooltip != 0) {
-			GuiShowTooltips(tooltip);
-			return;
-		}
+	/* Show the tooltip if there is any */
+	if (wid->tool_tip != 0) {
+		GuiShowTooltips(wid->tool_tip);
+		return;
 	}
 
+	/* Widget has no index, so the window is not interested in it. */
+	if (wid->index < 0) return;
+
 	Point pt = { x, y };
-	w->OnRightClick(pt, widget);
+	w->OnRightClick(pt, wid->index);
 }
 
 /**
  * Dispatch the mousewheel-action to the window.
  * The window will scroll any compatible scrollbars if the mouse is pointed over the bar or its contents
  * @param w Window
- * @param widget the widget where the scrollwheel was used
+ * @param nwid the widget where the scrollwheel was used
  * @param wheel scroll up or down
  */
-static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
+static void DispatchMouseWheelEvent(Window *w, const NWidgetCore *nwid, int wheel)
 {
-	if (widget < 0) return;
+	if (nwid == NULL) return;
 
-	Scrollbar *sb = NULL;
-	if (w->nested_array != NULL && (uint)widget < w->nested_array_size) sb = w->GetWidget<NWidgetCore>(widget)->FindScrollbar(w);
-
+	Scrollbar *sb = nwid->FindScrollbar(w);
 	if (sb != NULL && sb->GetCount() > sb->GetCapacity()) {
 		sb->UpdatePosition(wheel);
 		w->SetDirty();
@@ -604,7 +603,6 @@ void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
 {
 	Window *w = FindWindowById(cls, number);
 	if (force || w == NULL ||
-			(w->desc_flags & WDF_STICKY_BUTTON) == 0 ||
 			(w->flags4 & WF_STICKY) == 0) {
 		delete w;
 	}
@@ -2001,7 +1999,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 		}
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
-		if (vp == NULL) DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
+		if (vp == NULL) DispatchMouseWheelEvent(w, w->nested_root->GetWidgetFromPos(x - w->left, y - w->top), mousewheel);
 	}
 
 	if (vp != NULL) {
