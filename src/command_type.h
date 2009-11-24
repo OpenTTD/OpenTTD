@@ -243,7 +243,6 @@ enum {
 	CMD_BUY_COMPANY,                  ///< buy a company which is bankrupt
 
 	CMD_FOUND_TOWN,                   ///< found a town
-
 	CMD_RENAME_TOWN,                  ///< rename a town
 	CMD_DO_TOWN_ACTION,               ///< do a action from the town detail window (like advertises or bribe)
 

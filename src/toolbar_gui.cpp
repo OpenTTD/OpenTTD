@@ -405,12 +405,17 @@ static void MenuClickMap(int index)
 
 static void ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_TOWNDIRECTORY, STR_TOWN_MENU_TOWN_DIRECTORY, 1);
+	PopupMainToolbMenu(w, TBN_TOWNDIRECTORY, STR_TOWN_MENU_TOWN_DIRECTORY, (_settings_game.economy.found_town == TF_FORBIDDEN) ? 1 : 2);
 }
 
 static void MenuClickTown(int index)
 {
-	ShowTownDirectory();
+	switch (index) {
+		case 0: ShowTownDirectory(); break;
+		case 1: // setting could be changed when the dropdown was open
+			if (_settings_game.economy.found_town != TF_FORBIDDEN) ShowFoundTownWindow();
+			break;
+	}
 }
 
 /* --- Subidies button menu --- */

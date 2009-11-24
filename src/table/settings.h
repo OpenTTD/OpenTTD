@@ -23,6 +23,7 @@ static bool UpdateConsists(int32 p1);
 static bool CheckInterval(int32 p1);
 static bool TrainAccelerationModelChanged(int32 p1);
 static bool DragSignalsDensityChanged(int32);
+static bool TownFoundingChanged(int32 p1);
 static bool DifficultyReset(int32 level);
 static bool DifficultyChange(int32);
 static bool DifficultyNoiseChange(int32 i);
@@ -364,8 +365,9 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, construction.longbridges,                                            0,NN,  true,                    STR_CONFIG_SETTING_LONGBRIDGES,            NULL),
 	    SDT_BOOL(GameSettings, construction.signal_side,                                            N,NN,  true,                    STR_CONFIG_SETTING_SIGNALSIDE,             RedrawScreen),
 	    SDT_BOOL(GameSettings, station.never_expire_airports,                                       0,NN, false,                    STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS,  NULL),
-	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_ORIGINAL,TL_BEGIN,NUM_TLS-1,1, STR_CONFIG_SETTING_TOWN_LAYOUT,     NULL),
+	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_ORIGINAL,TL_BEGIN,NUM_TLS - 1, 1, STR_CONFIG_SETTING_TOWN_LAYOUT,  TownFoundingChanged),
 	SDT_CONDBOOL(GameSettings, economy.allow_town_roads,                       113, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_TOWN_ROADS,       NULL),
+	 SDT_CONDVAR(GameSettings, economy.found_town,                   SLE_UINT8,128, SL_MAX_VERSION, 0,MS,TF_FORBIDDEN,TF_BEGIN,TF_END - 1, 1, STR_CONFIG_SETTING_TOWN_FOUNDING, TownFoundingChanged),
 
 	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_SETTING_FORBID_90_DEG,          NULL),

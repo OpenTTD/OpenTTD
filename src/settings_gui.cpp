@@ -1298,6 +1298,7 @@ static SettingEntry _settings_economy_towns[] = {
 	SettingEntry("economy.exclusive_rights"),
 	SettingEntry("economy.town_layout"),
 	SettingEntry("economy.allow_town_roads"),
+	SettingEntry("economy.found_town"),
 	SettingEntry("economy.mod_road_rebuild"),
 	SettingEntry("economy.town_growth_rate"),
 	SettingEntry("economy.larger_towns"),

@@ -87,9 +87,19 @@ enum TownLayout {
 
 	NUM_TLS,             ///< Number of town layouts
 };
-
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<TownLayout, byte> TownLayoutByte; // typedefing-enumification of TownLayout
+
+/** Town founding setting values */
+enum TownFounding {
+	TF_BEGIN = 0,     ///< Used for iterations and limit testing
+	TF_FORBIDDEN = 0, ///< Forbidden
+	TF_ALLOWED,       ///< Allowed
+	TF_CUSTOM_LAYOUT, ///< Allowed, with custom town layout
+	TF_END,           ///< Used for iterations and limit testing
+};
+/** It needs to be 8bits, because we save and load it as such */
+typedef SimpleTinyEnumT<TownFounding, byte> TownFoundingByte;
 
 enum {
 	MAX_LENGTH_TOWN_NAME_BYTES  =  31, ///< The maximum length of a town name in bytes including '\0'

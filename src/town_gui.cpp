@@ -991,7 +991,7 @@ public:
 		this->InitNested(desc, window_number);
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
 		this->RandomTownName();
-		this->UpdateButtons();
+		this->UpdateButtons(true);
 	}
 
 	void RandomTownName()
@@ -1010,8 +1010,15 @@ public:
 		this->SetWidgetDirty(TSEW_TOWNNAME_EDITBOX);
 	}
 
-	void UpdateButtons()
+	void UpdateButtons(bool check_availability)
 	{
+		if (check_availability && _game_mode != GM_EDITOR) {
+			this->SetWidgetsDisabledState(true, TSEW_RANDOMTOWN, TSEW_MANYRANDOMTOWNS, TSEW_SIZE_LARGE, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_settings_game.economy.found_town != TF_CUSTOM_LAYOUT,
+					TSEW_LAYOUT_ORIGINAL, TSEW_LAYOUT_BETTER, TSEW_LAYOUT_GRID2, TSEW_LAYOUT_GRID3, TSEW_LAYOUT_RANDOM, WIDGET_LIST_END);
+			if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) town_layout = _settings_game.economy.town_layout;
+		}
+
 		for (int i = TSEW_SIZE_SMALL; i <= TSEW_SIZE_RANDOM; i++) {
 			this->SetWidgetLoweredState(i, i == TSEW_SIZE_SMALL + this->town_size);
 		}
@@ -1080,7 +1087,7 @@ public:
 
 			case TSEW_SIZE_SMALL: case TSEW_SIZE_MEDIUM: case TSEW_SIZE_LARGE: case TSEW_SIZE_RANDOM:
 				this->town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
-				this->UpdateButtons();
+				this->UpdateButtons(false);
 				break;
 
 			case TSEW_CITY:
@@ -1092,7 +1099,7 @@ public:
 			case TSEW_LAYOUT_ORIGINAL: case TSEW_LAYOUT_BETTER: case TSEW_LAYOUT_GRID2:
 			case TSEW_LAYOUT_GRID3: case TSEW_LAYOUT_RANDOM:
 				this->town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
-				this->UpdateButtons();
+				this->UpdateButtons(false);
 				break;
 		}
 	}
@@ -1124,7 +1131,12 @@ public:
 	virtual void OnPlaceObjectAbort()
 	{
 		this->RaiseButtons();
-		this->UpdateButtons();
+		this->UpdateButtons(false);
+	}
+
+	virtual void OnInvalidateData(int)
+	{
+		this->UpdateButtons(true);
 	}
 };
 

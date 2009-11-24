@@ -1458,7 +1458,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 
 	int x = (int)size * 16 + 3;
 	if (size == TS_RANDOM) x = (Random() & 0xF) + 8;
-	if (city) x *= _settings_game.economy.initial_city_size;
+	if (city && _game_mode == GM_EDITOR) x *= _settings_game.economy.initial_city_size;
 
 	t->num_houses += x;
 	UpdateTownRadius(t);
@@ -1515,9 +1515,8 @@ static bool IsUniqueTownName(const char *name)
 	return true;
 }
 
-/** Create a new town.
- * This obviously only works in the scenario editor. Function not removed
- * as it might be possible in the future to fund your own town :)
+/**
+ * Create a new town.
  * @param tile coordinates where town is built
  * @param flags type of operation
  * @param p1  0..1 size of the town (@see TownSize)
@@ -1530,9 +1529,6 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	/* Only in the scenario editor */
-	if (_game_mode != GM_EDITOR) return CMD_ERROR;
-
 	TownSize size = (TownSize)GB(p1, 0, 2);
 	bool city = HasBit(p1, 2);
 	TownLayout layout = (TownLayout)GB(p1, 3, 3);
@@ -1542,6 +1538,16 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (size > TS_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
+
+	/* Some things are allowed only in the scenario editor */
+	if (_game_mode != GM_EDITOR) {
+		if (_settings_game.economy.found_town == TF_FORBIDDEN) return CMD_ERROR;
+		if (size == TS_LARGE) return CMD_ERROR;
+		if (random) return CMD_ERROR;
+		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
+			return CMD_ERROR;
+		}
+	}
 
 	if (StrEmpty(text)) {
 		/* If supplied name is empty, townnameparts has to generate unique automatic name */
@@ -1555,10 +1561,23 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Allocate town struct */
 	if (!Town::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_TOWNS);
 
-	CommandCost cost(EXPENSES_OTHER);
 	if (!random) {
-		cost = TownCanBePlacedHere(tile);
-		if (CmdFailed(cost)) return cost;
+		CommandCost ret = TownCanBePlacedHere(tile);
+		if (CmdFailed(ret)) return ret;
+	}
+
+	static const byte price_mult[][TS_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
+	/* multidimensional arrays have to have defined length of non-first dimension */
+	assert_compile(lengthof(price_mult[0]) == 4);
+
+	CommandCost cost(EXPENSES_OTHER, _price[PR_BUILD_INDUSTRY]);
+	byte mult = price_mult[city][size];
+
+	cost.MultiplyCost(mult);
+
+	if (cost.GetCost() > GetAvailableMoneyForCommand()) {
+		_additional_cash_required = cost.GetCost();
+		return CommandCost(EXPENSES_OTHER);
 	}
 
 	/* Create the town */
@@ -1579,9 +1598,24 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
+
 		if (t != NULL && !StrEmpty(text)) {
 			t->name = strdup(text);
 			t->UpdateVirtCoord();
+		}
+
+		if (_game_mode != GM_EDITOR) {
+			/* 't' can't be NULL since 'random' is false outside scenedit */
+			assert(!random);
+			char company_name[MAX_LENGTH_COMPANY_NAME_BYTES];
+			SetDParam(0, _current_company);
+			GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+			char *cn = strdup(company_name);
+			SetDParamStr(0, cn);
+			SetDParam(1, t->index);
+
+			AddNewsItem(STR_NEWS_NEW_TOWN, NS_INDUSTRY_OPEN, NR_TILE, tile, NR_NONE, UINT32_MAX, cn);
 		}
 	}
 	return cost;

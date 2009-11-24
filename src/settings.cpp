@@ -753,6 +753,17 @@ static bool DragSignalsDensityChanged(int32)
 	return true;
 }
 
+static bool TownFoundingChanged(int32 p1)
+{
+	if (_game_mode != GM_EDITOR && _settings_game.economy.found_town == TF_FORBIDDEN) {
+		DeleteWindowById(WC_FOUND_TOWN, 0);
+		return true;
+	}
+	InvalidateWindowData(WC_FOUND_TOWN, 0);
+	return true;
+}
+
+
 /*
  * A: competitors
  * B: competitor start time. Deprecated since savegame version 110.
