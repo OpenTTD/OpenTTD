@@ -1411,6 +1411,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				rv->state = _road_exit_tunnel_state[dir];
 				rv->frame = _road_exit_tunnel_frame[dir];
 				rv->vehstatus &= ~VS_HIDDEN;
+				rv->FindRoadStopSlot();
 				return VETSB_ENTERED_WORMHOLE;
 			}
 		}
