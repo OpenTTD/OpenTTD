@@ -1317,7 +1317,7 @@ static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
 	   STR_NEWS_INDUSTRY_CLOSURE_GENERAL,    STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL,   STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL),
 
 	MI(_tile_table_bank,                       0, NULL,
-	   1544, 0xA6666666,                       7, 0, 0, 0,    0, 0, 0, 0,         15,
+	   255,  0xA6666666,                       7, 0, 0, 0,    0, 0, 0, 0,         15,
 	   IT_BANK_TEMP,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_VALUABLES,   6, CT_INVALID,       0, 5,
 	   CT_VALUABLES,   0, CT_INVALID,       0, CT_INVALID,     0,
