@@ -579,7 +579,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}自訂二
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}背景音樂音量
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}音效音量
-STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}最小  '  '  ' '  '  '  最大
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------

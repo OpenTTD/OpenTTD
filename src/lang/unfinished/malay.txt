@@ -463,7 +463,6 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Lorong Ezy
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Kekuatan muzik
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Kekuatan Kesan Bunyi
-STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------

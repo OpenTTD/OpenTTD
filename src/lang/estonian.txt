@@ -635,7 +635,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Omatehtud 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muusika helitugevus
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektide helitugevus
-STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}Vähim  '  '  ' '  '  '  Suurim
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
