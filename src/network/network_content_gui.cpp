@@ -757,6 +757,8 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
+		if (this->content.NeedRebuild()) this->BuildContentList();
+
 		/* To sum all the bytes we intend to download */
 		this->filesize_sum = 0;
 		bool show_select_all = false;
