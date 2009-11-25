@@ -3139,6 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}This tim
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}This vehicle is currently running on time
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}This vehicle is currently running {STRING1} late
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}This vehicle is currently running {STRING1} early
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}This timetable has not yet started
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}This timetable will start at {STRING1}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start date
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Select a date as starting point of this timetable
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take

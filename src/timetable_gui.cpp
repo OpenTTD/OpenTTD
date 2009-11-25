@@ -21,7 +21,10 @@
 #include "gfx_func.h"
 #include "company_func.h"
 #include "date_func.h"
+#include "date_gui.h"
+#include "vehicle_gui.h"
 
+#include "table/sprites.h"
 #include "table/strings.h"
 
 enum TimetableViewWindowWidgets {
@@ -32,11 +35,13 @@ enum TimetableViewWindowWidgets {
 	TTV_ARRIVAL_DEPARTURE_PANEL,      ///< Panel with the expected/scheduled arrivals
 	TTV_SCROLLBAR,
 	TTV_SUMMARY_PANEL,
+	TTV_START_DATE,
 	TTV_CHANGE_TIME,
 	TTV_CLEAR_TIME,
 	TTV_RESET_LATENESS,
 	TTV_AUTOFILL,
 	TTV_EXPECTED,                    ///< Toggle between expected and scheduled arrivals
+	TTV_SHARED_ORDER_LIST,           ///< Show the shared order list
 	TTV_ARRIVAL_DEPARTURE_SELECTION, ///< Disable/hide the arrival departure panel
 	TTV_EXPECTED_SELECTION,          ///< Disable/hide the expected selection button
 };
@@ -147,6 +152,17 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 		sum += order->travel_time;
 		table[i].arrival = sum;
 	}
+}
+
+
+/**
+ * Callback for when a time has been chosen to start the time table
+ * @param window the window related to the setting of the date
+ * @param date the actually chosen date
+ */
+static void ChangeTimetableStartCallback(const Window *w, Date date)
+{
+	DoCommandP(0, w->window_number, date, CMD_SET_TIMETABLE_START | CMD_MSG(STR_ERROR_CAN_T_TIMETABLE_VEHICLE));
 }
 
 
@@ -303,6 +319,7 @@ struct TimetableWindow : Window {
 
 			this->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
 			this->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
+			this->SetWidgetDisabledState(TTV_SHARED_ORDER_LIST, !v->IsOrderListShared());
 
 			this->EnableWidget(TTV_RESET_LATENESS);
 			this->EnableWidget(TTV_AUTOFILL);
@@ -311,6 +328,7 @@ struct TimetableWindow : Window {
 			this->DisableWidget(TTV_CLEAR_TIME);
 			this->DisableWidget(TTV_RESET_LATENESS);
 			this->DisableWidget(TTV_AUTOFILL);
+			this->DisableWidget(TTV_SHARED_ORDER_LIST);
 		}
 
 		this->SetWidgetLoweredState(TTV_AUTOFILL, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
@@ -436,7 +454,17 @@ struct TimetableWindow : Window {
 				}
 				y += FONT_HEIGHT_NORMAL;
 
-				if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
+				if (v->timetable_start != 0) {
+					/* We are running towards the first station so we can start the
+					 * timetable at the given time. */
+					SetDParam(0, STR_JUST_DATE_TINY);
+					SetDParam(1, v->timetable_start);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_STATUS_START_AT);
+				} else if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
+					/* We aren't running on a timetable yet, so how can we be "on time"
+					 * when we aren't even "on service"/"on duty"? */
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_STATUS_NOT_STARTED);
+				} else if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_STATUS_ON_TIME);
 				} else {
 					SetTimetableParams(0, 1, abs(v->lateness_counter));
@@ -472,6 +500,10 @@ struct TimetableWindow : Window {
 				this->DeleteChildWindows();
 				this->sel_index = (selected == INVALID_ORDER || selected == this->sel_index) ? -1 : selected;
 			} break;
+
+			case TTV_START_DATE: // Change the date that the timetable starts.
+				ShowSetDateWindow(this, v->index, _date, _cur_year, _cur_year + 15, ChangeTimetableStartCallback);
+				break;
 
 			case TTV_CHANGE_TIME: { // "Wait For" button.
 				int selected = this->sel_index;
@@ -514,6 +546,10 @@ struct TimetableWindow : Window {
 			case TTV_EXPECTED:
 				this->show_expected = !this->show_expected;
 				break;
+
+			case TTV_SHARED_ORDER_LIST:
+				ShowVehicleListWindow(v);
+				break;
 		}
 
 		this->SetDirty();
@@ -546,9 +582,8 @@ struct TimetableWindow : Window {
 	 */
 	void UpdateSelectionStates()
 	{
-		int plane = _settings_client.gui.timetable_arrival_departure ? 0 : STACKED_SELECTION_ZERO_SIZE;
-		this->GetWidget<NWidgetStacked>(TTV_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(plane);
-		this->GetWidget<NWidgetStacked>(TTV_EXPECTED_SELECTION)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetStacked>(TTV_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : STACKED_SELECTION_ZERO_SIZE);
+		this->GetWidget<NWidgetStacked>(TTV_EXPECTED_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : 1);
 	}
 };
 
@@ -569,14 +604,27 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, TTV_SUMMARY_PANEL), SetMinimalSize(400, 22), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CHANGE_TIME), SetMinimalSize(110, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_CHANGE_TIME, STR_TIMETABLE_WAIT_TIME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CLEAR_TIME), SetMinimalSize(110, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_CLEAR_TIME, STR_TIMETABLE_CLEAR_TIME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_RESET_LATENESS), SetMinimalSize(118, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_RESET_LATENESS, STR_TIMETABLE_RESET_LATENESS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_AUTOFILL), SetMinimalSize(50, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_AUTOFILL, STR_TIMETABLE_AUTOFILL_TOOLTIP),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, TTV_EXPECTED_SELECTION),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_EXPECTED), SetMinimalSize(50, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_TIMETABLE_EXPECTED_TOOLTIP),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CHANGE_TIME), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_CHANGE_TIME, STR_TIMETABLE_WAIT_TIME_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CLEAR_TIME), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_CLEAR_TIME, STR_TIMETABLE_CLEAR_TIME_TOOLTIP),
+			EndContainer(),
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_START_DATE), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_STARTING_DATE, STR_TIMETABLE_STARTING_DATE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_RESET_LATENESS), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_RESET_LATENESS, STR_TIMETABLE_RESET_LATENESS_TOOLTIP),
+			EndContainer(),
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_AUTOFILL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_AUTOFILL, STR_TIMETABLE_AUTOFILL_TOOLTIP),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, TTV_EXPECTED_SELECTION),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_EXPECTED), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_TIMETABLE_EXPECTED_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 0), EndContainer(),
+				EndContainer(),
+			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX,COLOUR_GREY),
+		NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TTV_SHARED_ORDER_LIST), SetDataTip(SPR_SHARED_ORDERS_ICON, STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+		EndContainer(),
 	EndContainer(),
 };
 
