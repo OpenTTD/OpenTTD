@@ -67,7 +67,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	VehicleID veh = GB(p1, 0, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	VehicleOrderID order_number = GB(p1, 16, 8);
 	Order *order = v->GetOrder(order_number);
@@ -127,10 +127,11 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	VehicleID veh = GB(p1, 0, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->lateness_counter = 0;
+		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 	}
 
 	return CommandCost();
@@ -156,7 +157,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	VehicleID veh = GB(p1, 0, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (HasBit(p2, 0)) {
