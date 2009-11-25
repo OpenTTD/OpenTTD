@@ -138,6 +138,7 @@ console_internal.h
 console_type.h
 currency.h
 date_func.h
+date_gui.h
 date_type.h
 debug.h
 video/dedicated_v.h
@@ -374,6 +375,7 @@ build_vehicle_gui.cpp
 cheat_gui.cpp
 company_gui.cpp
 console_gui.cpp
+date_gui.cpp
 depot_gui.cpp
 dock_gui.cpp
 engine_gui.cpp

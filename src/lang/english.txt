@@ -3168,6 +3168,16 @@ STR_TIMETABLE_DEPARTURE_EARLY                                   :D:{SETX 30}{GRE
 STR_TIMETABLE_DEPARTURE_LATE                                    :D:{SETX 30}{RED}{STRING1}
 #####
 
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Set date
+STR_DATE_SET_DATE                                               :{BLACK}Set date
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Use the selected date as starting date for the timetable
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Select day
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Select month
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Select year
+
+
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name of the AI
