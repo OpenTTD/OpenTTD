@@ -140,22 +140,13 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
  */
 Date ConvertYMDToDate(Year year, Month month, Day day)
 {
-	/*
-	 * Each passed leap year adds one day to the 'day count'.
-	 *
-	 * A special case for the year 0 as no year has been passed,
-	 * but '(year - 1) / 4' does not yield '-1' to counteract the
-	 * '+1' at the end of the formula as divisions round to zero.
-	 */
-	int nr_of_leap_years = (year == 0) ? 0 : ((year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400 + 1);
-
 	/* Day-offset in a leap year */
 	int days = _accum_days_for_month[month] + day - 1;
 
 	/* Account for the missing of the 29th of February in non-leap years */
 	if (!IsLeapYear(year) && days >= ACCUM_MAR) days--;
 
-	return year * DAYS_IN_YEAR + nr_of_leap_years + days;
+	return DAYS_TILL(year) + days;
 }
 
 /** Functions used by the IncreaseDate function */
