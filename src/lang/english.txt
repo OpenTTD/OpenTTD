@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Own company
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All companies
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Show arrival and departure in timetables: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING1}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal Rail
@@ -3150,6 +3151,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset th
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (Ctrl+Click to try to keep waiting times)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
+
+### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :A:{SETX 30}{STRING1}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :A:{SETX 30}{GREEN}{STRING1}
+STR_TIMETABLE_ARRIVAL_LATE                                      :A:{SETX 30}{RED}{STRING1}
+#####
+
+### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :D:{SETX 30}{STRING1}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :D:{SETX 30}{GREEN}{STRING1}
+STR_TIMETABLE_DEPARTURE_LATE                                    :D:{SETX 30}{RED}{STRING1}
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug

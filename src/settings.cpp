@@ -763,6 +763,11 @@ static bool TownFoundingChanged(int32 p1)
 	return true;
 }
 
+static bool InvalidateVehTimetableWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_VEHICLE_TIMETABLE, -2);
+	return true;
+}
 
 /*
  * A: competitors

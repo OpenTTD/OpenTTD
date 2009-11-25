@@ -20,6 +20,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
+#include "date_func.h"
 
 #include "table/strings.h"
 
@@ -27,12 +28,23 @@ enum TimetableViewWindowWidgets {
 	TTV_CAPTION,
 	TTV_ORDER_VIEW,
 	TTV_TIMETABLE_PANEL,
+	TTV_FAKE_SCROLLBAR,               ///< So the timetable panel 'sees' the scrollbar too
+	TTV_ARRIVAL_DEPARTURE_PANEL,      ///< Panel with the expected/scheduled arrivals
 	TTV_SCROLLBAR,
 	TTV_SUMMARY_PANEL,
 	TTV_CHANGE_TIME,
 	TTV_CLEAR_TIME,
 	TTV_RESET_LATENESS,
 	TTV_AUTOFILL,
+	TTV_EXPECTED,                    ///< Toggle between expected and scheduled arrivals
+	TTV_ARRIVAL_DEPARTURE_SELECTION, ///< Disable/hide the arrival departure panel
+	TTV_EXPECTED_SELECTION,          ///< Disable/hide the expected selection button
+};
+
+/** Container for the arrival/departure dates of a vehicle */
+struct TimetableArrivalDeparture {
+	Ticks arrival;   ///< The arrival time
+	Ticks departure; ///< The departure time
 };
 
 /**
@@ -52,21 +64,137 @@ void SetTimetableParams(int param1, int param2, Ticks ticks)
 	}
 }
 
+/**
+ * Sets the arrival or departure string and parameters.
+ * @param param1 the first DParam to fill
+ * @param param2 the second DParam to fill
+ * @param ticks  the number of ticks to 'draw'
+ */
+static void SetArrivalDepartParams(int param1, int param2, Ticks ticks)
+{
+	SetDParam(param1, STR_JUST_DATE_TINY);
+	SetDParam(param2, _date + (ticks / DAY_TICKS));
+}
+
+/**
+ * Check whether it is possible to determine how long the order takes.
+ * @param order the order to check.
+ * @param travelling whether we are interested in the travel or the wait part.
+ * @return true if the travel/wait time can be used.
+ */
+static bool CanDetermineTimeTaken(const Order *order, bool travelling)
+{
+	/* Current order is conditional */
+	if (order->IsType(OT_CONDITIONAL)) return false;
+	/* No travel time and we have not already finished travelling */
+	if (travelling && order->travel_time == 0) return false;
+	/* No wait time but we are loading at this timetabled station */
+	if (!travelling && order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) return false;
+
+	return true;
+}
+
+
+/**
+ * Fill the table with arrivals and departures
+ * @param v Vehicle which must have at least 2 orders.
+ * @param start order index to start at
+ * @param travelling Are we still in the travelling part of the start order
+ * @param table Fill in arrival and departures including intermediate orders
+ * @param offset Add this value to result and all arrivals and departures
+ */
+static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID start, bool travelling, TimetableArrivalDeparture *table, Ticks offset)
+{
+	assert(table != NULL);
+	assert(v->GetNumOrders() >= 2);
+	assert(start < v->GetNumOrders());
+
+	Ticks sum = offset;
+	VehicleOrderID i = start;
+	const Order *order = v->GetOrder(i);
+
+	/* Pre-initialize with unknown time */
+	for (int i = 0; i < v->GetNumOrders(); ++i) {
+		table[i].arrival = table[i].departure = INVALID_TICKS;
+	}
+
+	/* Cyclically loop over all orders until we reach the current one again.
+	 * As we may start at the current order, do a post-checking loop */
+	do {
+		if (travelling || i != start) {
+			if (!CanDetermineTimeTaken(order, true)) return;
+			sum += order->travel_time;
+			table[i].arrival = sum;
+		}
+
+		if (!CanDetermineTimeTaken(order, false)) return;
+		sum += order->wait_time;
+		table[i].departure = sum;
+
+		++i;
+		order = order->next;
+		if (i >= v->GetNumOrders()) {
+			i = 0;
+			assert(order == NULL);
+			order = v->orders.list->GetFirstOrder();
+		}
+	} while (i != start);
+
+	/* When loading at a scheduled station we still have to treat the
+	 * travelling part of the first order. */
+	if (!travelling) {
+		if (!CanDetermineTimeTaken(order, true)) return;
+		sum += order->travel_time;
+		table[i].arrival = sum;
+	}
+}
+
+
 struct TimetableWindow : Window {
 	int sel_index;
 	const Vehicle *vehicle; ///< Vehicle monitored by the window.
+	bool show_expected;     ///< Whether we show expected arrival or scheduled
 
-	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) :
+			Window(),
+			sel_index(-1),
+			vehicle(Vehicle::Get(window_number)),
+			show_expected(true)
 	{
-		this->vehicle = Vehicle::Get(window_number);
-		this->InitNested(desc, window_number);
+		this->CreateNestedTree(desc);
+		this->UpdateSelectionStates();
+		this->FinishInitNested(desc, window_number);
+
 		this->owner = this->vehicle->owner;
-		this->sel_index = -1;
+	}
+
+	/**
+	 * Build the arrival-departure list for a given vehicle
+	 * @param v the vehicle to make the list for
+	 * @param table the table to fill
+	 * @return if next arrival will be early
+	 */
+	static bool BuildArrivalDepartureList(const Vehicle *v, TimetableArrivalDeparture *table)
+	{
+		assert(HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED));
+
+		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType() == ONSF_STOP_EVERYWHERE);
+		Ticks start_time = _date_fract - v->current_order_time;
+
+		FillTimetableArrivalDepartureTable(v, v->cur_order_index % v->GetNumOrders(), travelling, table, start_time);
+
+		return (travelling && v->lateness_counter < 0);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case TTV_ARRIVAL_DEPARTURE_PANEL:
+				SetDParam(0, STR_JUST_DATE_TINY);
+				SetDParam(1, MAX_YEAR * DAYS_IN_YEAR);
+				size->width = GetStringBoundingBox(STR_TIMETABLE_ARRIVAL).width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				/* fall through */
+			case TTV_ARRIVAL_DEPARTURE_SELECTION:
 			case TTV_TIMETABLE_PANEL:
 				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = WD_FRAMERECT_TOP + 8 * resize->height + WD_FRAMERECT_BOTTOM;
@@ -103,6 +231,11 @@ struct TimetableWindow : Window {
 
 				this->DeleteChildWindows();
 				this->sel_index = -1;
+				break;
+
+			case -2:
+				this->UpdateSelectionStates();
+				this->ReInit();
 				break;
 
 			default: {
@@ -187,7 +320,10 @@ struct TimetableWindow : Window {
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == TTV_CAPTION) SetDParam(0, this->vehicle->index);
+		switch (widget) {
+			case TTV_CAPTION: SetDParam(0, this->vehicle->index); break;
+			case TTV_EXPECTED: SetDParam(0, this->show_expected ? STR_TIMETABLE_EXPECTED : STR_TIMETABLE_SCHEDULED); break;
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -240,6 +376,55 @@ struct TimetableWindow : Window {
 				}
 				break;
 			}
+
+			case TTV_ARRIVAL_DEPARTURE_PANEL: {
+				/* Arrival and departure times are handled in an all-or-nothing approach,
+				 * i.e. are only shown if we can calculate all times.
+				 * Excluding order lists with only one order makes some things easier.
+				 */
+				Ticks total_time = v->orders.list != NULL ? v->orders.list->GetTimetableDurationIncomplete() : 0;
+				if (total_time <= 0 || v->GetNumOrders() <= 1 || !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) break;
+
+				TimetableArrivalDeparture *arr_dep = AllocaM(TimetableArrivalDeparture, v->GetNumOrders());
+				const VehicleOrderID cur_order = v->cur_order_index % v->GetNumOrders();
+
+				VehicleOrderID earlyID = BuildArrivalDepartureList(v, arr_dep) ? cur_order : (VehicleOrderID)INVALID_VEH_ORDER_ID;
+
+				int y = r.top + WD_FRAMERECT_TOP;
+
+				Ticks offset;
+				StringID str_offset;
+				if (this->show_expected && v->lateness_counter > DAY_TICKS) {
+					offset = 0;
+					str_offset = STR_TIMETABLE_ARRIVAL_LATE - STR_TIMETABLE_ARRIVAL;
+				} else {
+					offset = -v->lateness_counter;
+					str_offset = 0;
+				}
+
+				for (int i = this->vscroll.GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
+					/* Don't draw anything if it extends past the end of the window. */
+					if (!this->vscroll.IsVisible(i)) break;
+
+					if (i % 2 == 0) {
+						if (arr_dep[i / 2].arrival != INVALID_TICKS) {
+							if (this->show_expected && i / 2 == earlyID) {
+								SetArrivalDepartParams(0, 1, arr_dep[i / 2].arrival);
+								DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_ARRIVAL_EARLY, i == selected ? TC_WHITE : TC_BLACK);
+							} else {
+								SetArrivalDepartParams(0, 1, arr_dep[i / 2].arrival + offset);
+								DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_ARRIVAL + str_offset, i == selected ? TC_WHITE : TC_BLACK);
+							}
+						}
+					} else {
+						if (arr_dep[i / 2].departure != INVALID_TICKS) {
+							SetArrivalDepartParams(0, 1, arr_dep[i/2].departure + offset);
+							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_DEPARTURE + str_offset, i == selected ? TC_WHITE : TC_BLACK);
+						}
+					}
+					y += FONT_HEIGHT_NORMAL;
+				}
+			} break;
 
 			case TTV_SUMMARY_PANEL: {
 				int y = r.top + WD_FRAMERECT_TOP;
@@ -325,6 +510,10 @@ struct TimetableWindow : Window {
 				if (_ctrl_pressed) SetBit(p2, 1);
 				DoCommandP(0, v->index, p2, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_ERROR_CAN_T_TIMETABLE_VEHICLE));
 			} break;
+
+			case TTV_EXPECTED:
+				this->show_expected = !this->show_expected;
+				break;
 		}
 
 		this->SetDirty();
@@ -351,6 +540,16 @@ struct TimetableWindow : Window {
 		/* Update the scroll bar */
 		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
 	}
+
+	/**
+	 * Update the selection state of the arrival/departure data
+	 */
+	void UpdateSelectionStates()
+	{
+		int plane = _settings_client.gui.timetable_arrival_departure ? 0 : STACKED_SELECTION_ZERO_SIZE;
+		this->GetWidget<NWidgetStacked>(TTV_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetStacked>(TTV_EXPECTED_SELECTION)->SetDisplayedPlane(plane);
+	}
 };
 
 static const NWidgetPart _nested_timetable_widgets[] = {
@@ -362,15 +561,21 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, TTV_TIMETABLE_PANEL), SetMinimalSize(388, 82), SetResize(1, 10), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), EndContainer(),
+		NWidget(WWT_SCROLLBAR, COLOUR_GREY, TTV_FAKE_SCROLLBAR), SetMinimalSize(0, 0), // Hack so the timetable panel can 'use' the scrollbar too
+		NWidget(NWID_SELECTION, INVALID_COLOUR, TTV_ARRIVAL_DEPARTURE_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, TTV_ARRIVAL_DEPARTURE_PANEL), SetMinimalSize(110, 0), SetFill(0, 1), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), EndContainer(),
+		EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, TTV_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, TTV_SUMMARY_PANEL), SetMinimalSize(400, 22), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CHANGE_TIME), SetMinimalSize(110, 12), SetDataTip(STR_TIMETABLE_CHANGE_TIME, STR_TIMETABLE_WAIT_TIME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CLEAR_TIME), SetMinimalSize(110, 12), SetDataTip(STR_TIMETABLE_CLEAR_TIME, STR_TIMETABLE_CLEAR_TIME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_RESET_LATENESS), SetMinimalSize(118, 12), SetDataTip(STR_TIMETABLE_RESET_LATENESS, STR_TIMETABLE_RESET_LATENESS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_AUTOFILL), SetMinimalSize(50, 12), SetDataTip(STR_TIMETABLE_AUTOFILL, STR_TIMETABLE_AUTOFILL_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(0, 12), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CHANGE_TIME), SetMinimalSize(110, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_CHANGE_TIME, STR_TIMETABLE_WAIT_TIME_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_CLEAR_TIME), SetMinimalSize(110, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_CLEAR_TIME, STR_TIMETABLE_CLEAR_TIME_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_RESET_LATENESS), SetMinimalSize(118, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_RESET_LATENESS, STR_TIMETABLE_RESET_LATENESS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_AUTOFILL), SetMinimalSize(50, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_TIMETABLE_AUTOFILL, STR_TIMETABLE_AUTOFILL_TOOLTIP),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, TTV_EXPECTED_SELECTION),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, TTV_EXPECTED), SetMinimalSize(50, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_TIMETABLE_EXPECTED_TOOLTIP),
+		EndContainer(),
 		NWidget(WWT_RESIZEBOX,COLOUR_GREY),
 	EndContainer(),
 };

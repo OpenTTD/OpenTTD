@@ -33,6 +33,7 @@ static int32 CheckNoiseToleranceLevel(const char *value);
 static bool CheckFreeformEdges(int32 p1);
 static bool ChangeDynamicEngines(int32 p1);
 static bool StationCatchmentChanged(int32 p1);
+static bool InvalidateVehTimetableWindow(int32 p1);
 
 #ifdef ENABLE_NETWORK
 static bool UpdateClientName(int32 p1);
@@ -549,7 +550,8 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(gui.scrollwheel_multiplier,    SLE_UINT8, S,  0,     5,        1,       15, 1, STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER,      NULL),
 	 SDTC_BOOL(gui.pause_on_newgame,                     S,  0, false,                        STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME,           NULL),
 	  SDTC_VAR(gui.advanced_vehicle_list,     SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS,      NULL),
-	 SDTC_BOOL(gui.timetable_in_ticks,                   S,  0, false,                        STR_CONFIG_SETTING_TIMETABLE_IN_TICKS,          NULL),
+	 SDTC_BOOL(gui.timetable_in_ticks,                   S,  0, false,                        STR_CONFIG_SETTING_TIMETABLE_IN_TICKS,          InvalidateVehTimetableWindow),
+	 SDTC_BOOL(gui.timetable_arrival_departure,          S,  0,  true,                        STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE, InvalidateVehTimetableWindow),
 	 SDTC_BOOL(gui.quick_goto,                           S,  0, false,                        STR_CONFIG_SETTING_QUICKGOTO,                   NULL),
 	  SDTC_VAR(gui.loading_indicators,        SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_LOADING_INDICATORS,          RedrawScreen),
 	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     4,        0,        6, 0, STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE,           NULL),

@@ -1238,6 +1238,7 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry("gui.pause_on_newgame"),
 	SettingEntry("gui.advanced_vehicle_list"),
 	SettingEntry("gui.timetable_in_ticks"),
+	SettingEntry("gui.timetable_arrival_departure"),
 	SettingEntry("gui.quick_goto"),
 	SettingEntry("gui.default_rail_type"),
 	SettingEntry("gui.always_build_infrastructure"),
