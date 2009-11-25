@@ -105,6 +105,7 @@ public:
 	/* Used for timetabling. */
 	uint32 current_order_time;     ///< How many ticks have passed since this order started.
 	int32 lateness_counter;        ///< How many ticks late (or early if negative) this vehicle is.
+	Date timetable_start;          ///< When the vehicle is supposed to start the timetable.
 
 	/* Boundaries for the current position in the world and a next hash link.
 	 * NOSAVE: All of those can be updated with VehiclePositionChanged() */

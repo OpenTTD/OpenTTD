@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "functions.h"
+#include "date_func.h"
 #include "window_func.h"
 #include "vehicle_base.h"
 
@@ -138,6 +139,38 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 }
 
 /**
+ * Set the start date of the timetable.
+ * @param tile Not used.
+ * @param flags Operation to perform.
+ * @param p1 Vehicle id.
+ * @param p2 The timetable start date in ticks.
+ */
+CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (!_settings_game.order.timetabling) return CMD_ERROR;
+
+	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 16));
+	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
+	Date start_date = (Date)p2;
+	if (start_date < 0 || start_date > MAX_DAY) return CMD_ERROR;
+	if (start_date - _date > 15 * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (_date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		v->lateness_counter = 0;
+		ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
+		v->timetable_start = start_date;
+
+		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+	}
+
+	return CommandCost();
+}
+
+
+/**
  * Start or stop filling the timetable automatically from the time the vehicle
  * actually takes to complete it. When starting to autofill the current times
  * are cleared and the timetable will start again from scratch.
@@ -170,6 +203,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			/* Overwrite waiting times only if they got longer */
 			if (HasBit(p2, 1)) SetBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 
+			v->timetable_start = 0;
 			v->lateness_counter = 0;
 		} else {
 			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
@@ -200,11 +234,21 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	bool just_started = false;
 
-	/* Make sure the timetable only starts when the vehicle reaches the first
-	 * order, not when travelling from the depot to the first station. */
-	if (v->cur_order_index == 0 && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
+	/* This vehicle is arriving at the first destination in the timetable. */
+	if (v->cur_order_index == 0 && travelling) {
+		/* If the start date hasn't been set, or it was set automatically when
+		 * the vehicle last arrived at the first destination, update it to the
+		 * current time. Otherwise set the late counter appropriately to when
+		 * the vehicle should have arrived. */
+		just_started = !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
+
+		if (v->timetable_start != 0) {
+			v->lateness_counter = (_date - v->timetable_start) * DAY_TICKS + _date_fract;
+			v->timetable_start = 0;
+		}
+
 		SetBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
-		just_started = true;
+		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 	}
 
 	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;

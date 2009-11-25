@@ -198,6 +198,7 @@ DEF_COMMAND(CmdMoveOrder);
 DEF_COMMAND(CmdChangeTimetable);
 DEF_COMMAND(CmdSetVehicleOnTime);
 DEF_COMMAND(CmdAutofillTimetable);
+DEF_COMMAND(CmdSetTimetableStart);
 #undef DEF_COMMAND
 
 /**
@@ -343,6 +344,7 @@ static const Command _command_proc_table[] = {
 	{CmdChangeTimetable,                            0}, // CMD_CHANGE_TIMETABLE
 	{CmdSetVehicleOnTime,                           0}, // CMD_SET_VEHICLE_ON_TIME
 	{CmdAutofillTimetable,                          0}, // CMD_AUTOFILL_TIMETABLE
+	{CmdSetTimetableStart,                          0}, // CMD_SET_TIMETABLE_START
 };
 
 /*!

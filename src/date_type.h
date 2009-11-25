@@ -75,7 +75,7 @@ enum {
 #define MAX_YEAR 5000000
 
 /** The number of days till the last day */
-#define MAX_DAY DAYS_TILL(MAX_YEAR + 1) - 1
+#define MAX_DAY (DAYS_TILL(MAX_YEAR + 1) - 1)
 
 typedef int32  Date;      ///< The type to store our dates in
 typedef uint16 DateFract; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
