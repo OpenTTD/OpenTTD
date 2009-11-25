@@ -368,7 +368,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vista extra
 STR_MAP_MENU_SIGN_LIST                                          :Llista de senyals
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directori de Poblacions
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencions
@@ -579,6 +580,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Opcional 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volum de la música
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volum dels efectes
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -756,6 +760,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} comença la construcció prop de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ha estat absorbida per {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(President)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nou/nova {STRING} en construcció prop de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}S'està plantant un nou {STRING} prop de {TOWN}!
@@ -3139,6 +3144,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseteja
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge (CTRL+clic per intentar mantenir els temps d'espera)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuració IA

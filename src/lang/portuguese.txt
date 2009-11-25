@@ -368,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Visualizador ex
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
@@ -579,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personaliz. 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume da Música
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume dos efeitos
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -756,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} inicia construção em {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} foi comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} subsidiou a construção da nova cidade de {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nova {STRING} em construção em {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} está a ser plantada em {TOWN}!
@@ -1234,6 +1241,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ao acaso
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}As cidades têm permissão para construir estradas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir que a cidade controle o nível de ruído dos aeroportos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundar cidades no jogo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, estrutura personalizada da cidade
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -3139,6 +3150,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Limpar o
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto pr.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem (CTRL-clique para tentar manter os tempos de espera)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuração da IA

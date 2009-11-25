@@ -368,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Lisänäkymä
 STR_MAP_MENU_SIGN_LIST                                          :Kylttilista
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Kaupunkihakemisto
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Perusta kaupunki
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tuet
@@ -579,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Oma 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musiikin voimakkuus
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Äänitehosteiden voimakkuus
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -756,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} aloittaa rakentamisen kaupugin {TOWN} lähistölle!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Yhtiön {STRING} on ottanut haltuun {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(pääjohtaja)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} rahoitti uuden kaupungin, {TOWN}, rakentamista!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
@@ -1170,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma yhtiö
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Aikataulut ajoneuvoille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Näytä saapuminen ja lähtö aikatauluissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Nopea kulkuneuvon käskyjen luominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Oletusraidetyyppi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
@@ -1234,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :satunnainen
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kaupungit saavat rakentaa teitä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Käytä kaupunkien hallitsemaa melutasoa lentokentille: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Kaupunkien perustaminen pelissä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :kielletty
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :sallittu
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :sallittu, oma kaupugin kaava
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vasen
@@ -3139,6 +3151,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollaa m
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaattinen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä aikataulu automaattisesti seuraavan matkan arvoilla (Ctrl+Click: yritä säilyttää odotusajat)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Odotettu
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulussa
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaihda odotetun ja aikataulun välillä
+
+### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :S:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :S:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :S:{SETX 30}{RED}{STRING}
+#####
+
+### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :L:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :L:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :L:{SETX 30}{RED}{STRING}
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys

@@ -432,7 +432,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Πρόσθετ�
 STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Καταλογος πόλεων
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Ιδρύση πόλης
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Χρηματοδοτήσεις
@@ -855,6 +857,8 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Διευθυντής)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} χορηγός εταιρία στη κατασκεύη της νέας πόλης {TOWN}!
+
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Νέ{G ος α ο} {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
 
@@ -1268,6 +1272,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Η εταιρί
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Όλες οι εταιρίες
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ενεργοποίηση δρομολογίων για τα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Κανονική Σιδηροτροχιά
@@ -1332,6 +1337,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3x
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ιδρύση πολέων στο παιχνίδι: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπεται
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Αριστερά
@@ -3243,6 +3252,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Επαν
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Αυτόματη πλήρωση
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Συμπληρώστε το δρομολόγιο αυτόματα με τιμές από το επόμενο ταξίδι (Ctrl+κλικ για να προσπαθήσει να κρατήσει τους χρόνους αναμονής)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Αναμενόμενη
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Προγραμματισμένη
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλάγη μεταξύ αναμένομενης και προγραμματισμένης
+
+### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :ΑΦΙΞ:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :ΑΦΙΞ:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :ΑΦΙΞ:{SETX 30}{RED}{STRING}
+#####
+
+### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :ΑΝΑΧ:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :ΑΝΑΧ:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :ΑΝΑΧ:{SETX 30}{RED}{STRING}
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI

@@ -369,7 +369,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Zusatzansicht
 STR_MAP_MENU_SIGN_LIST                                          :Schilderliste
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Städteverzeichnis
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Stadt gründen
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventionen
@@ -580,6 +582,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Benutzerdef. 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musiklautstärke
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Soundlautstärke
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -757,6 +762,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} startet bei {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} wurde von {STRING} übernommen!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manager)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} finanziert die Gründung der Stadt {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
@@ -1235,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3×3-Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zufällig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Städten das Bauen von Straßen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Stadt kontrolliert Lärmbelastung der Flughäfen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Städte im Spiel gründen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboten
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :erlaubt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :erlaubt mit wählbarem Straßenbauplan
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position der Werkzeugleiste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
@@ -3140,6 +3151,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspät
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zeiten automatisch bei der nächsten Fahrt eintragen (Mit Strg+Klick wird versucht, die aktuellen Wartezeiten beizubehalten)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}KI Debug

@@ -369,7 +369,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Punto de vista 
 STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de pueblos
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Fundar pueblo
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
@@ -760,6 +762,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} comienza su construcción cerca de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ha sido comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} patrocina la construcción del nuevo pueblo {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuevo {STRING} bajo construcción cerca de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuevo {STRING} está siendo plantado cerca de {TOWN}!
@@ -1238,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir que los pueblos construyan carreteras: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir al pueblo controlar el nivel de ruido de los aeropuertos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundar pueblos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, patrón de carreteras personalizado
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Izquierda
@@ -3143,6 +3151,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajusta
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Click para tratar de mantener los tiempos de espera))
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuración de la IA

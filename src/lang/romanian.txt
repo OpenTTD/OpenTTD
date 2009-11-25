@@ -368,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ecran supliment
 STR_MAP_MENU_SIGN_LIST                                          :Lista de semne
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista oraşelor (F5)
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Fondează oraş
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii (F6)
@@ -579,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personale 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volumul muzicii
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volumul efectelor sonore
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -756,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} şi-a stabilit sediul lângă {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} a fost preluată de {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Preşedinte)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponsorizat fondarea unui nou oras {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Un nou obiectiv industrial ({STRING}) se construieşte lângă {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}O nouă {STRING} se plantează lângă {TOWN}!
@@ -1234,6 +1241,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grila 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Oraşele pot construi drumuri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permite controlarea nivelului de zgomot din aeroport de către oras: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Crearea oraşelor în joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, layout particularizat al oraşului
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :stânga
@@ -2475,6 +2486,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afiseaza
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Redenumeşte staţia
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click deshide o fereastra cu locaţia punctului de tranzit
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimba numele haltei
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează fereastra principală pe locaţia balizei. Ctrl+Click deshide o fereastra cu locaţia balizei
@@ -2527,7 +2539,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valoarea 
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% deţinute de {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Constr. sediu
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construieşte sediul companiei
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vezi sediul
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vezi sediul companiei
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mută sediu
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Mută sediul companiei (costa 1% din valoarea companiei)
 
@@ -3136,6 +3150,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinitia
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completează automat tabela cu timpi cu valorile pentru urmatoarea călătorie (CTRL-clic pentru a încerca să păstraţi timpii de aşteptare)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depanare IA
@@ -3977,6 +3998,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4002,7 +4024,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

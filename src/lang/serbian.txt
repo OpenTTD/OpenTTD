@@ -546,7 +546,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatno glediš
 STR_MAP_MENU_SIGN_LIST                                          :Lista Znakova
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis naselja
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Osnivanje naselja
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
@@ -757,6 +759,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Lični raspored 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Jačina muzike
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Jačina ambijenta
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}Tiho
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}Glasno
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -941,6 +946,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} počinje sa gradnjom blizu naselja {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} je preuzeto od strane preduzeća {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(vlasnik)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} je sponzorisao izgradnju novog naselja {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Novi {STRING} je u izgradnji kod naselja {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} je posađena kod naselja {TOWN}!
@@ -1419,6 +1426,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Naseljima je dozvoljeno da grade kolovoze: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Osnivanje naselja u toku partije: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozvoljeno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zaseban plan gradnje
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Lokacija glavne trake sa alatima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Levo
@@ -3334,6 +3345,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Poništa
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatsko popunjavanje
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjava raspored sa vrednostima iz sledećeg putovanja (Ctrl+Klik za zadržavanje vremena čekanja)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Korekcija veštačke inteligencije

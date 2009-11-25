@@ -369,7 +369,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vue supplément
 STR_MAP_MENU_SIGN_LIST                                          :Liste des panneaux
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Annuaire des villes
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Fonder une ville
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventions
@@ -580,6 +582,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personnalisé 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume Musique
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume Effets Sonores
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -757,6 +762,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} commence à construire près de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} a été rachetée par {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Président)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} en construction près de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} s'implante près de {TOWN}!
@@ -1235,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Autoriser la construction des routes par les villes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fonder des villes en cours de jeu{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :interdit
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :autorisé
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :autorisé, agencement des routes personnalisé
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :À gauche
@@ -3140,6 +3151,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remet à
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA

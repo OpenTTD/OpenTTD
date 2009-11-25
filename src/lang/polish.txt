@@ -747,7 +747,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatkowy podgl
 STR_MAP_MENU_SIGN_LIST                                          :Lista napisów
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista miast
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Ufunduj miasto
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydia
@@ -1139,6 +1141,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} rozpoczyna budowę niedaleko {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} zostało przejęte przez {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezes)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponsoruje konstrukcję nowego miasta {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Rozpoczęto budowę nowe{G go j go} {STRING.d} blisko {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Now{G y a e} {STRING} został{G 0 "" a o} posadzon{G 0 y a e} blisko {TOWN}!
@@ -1553,6 +1557,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Dla własnej fi
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Dla wszystkich firm
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Uaktywnij rozkłady jazdy pojazdów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokazuj rozkłady jazdy w tickach, a nie w dniach: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Show arrival and departure in timetables: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Szybkie tworzenie poleceń pojazdu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Domyślny typ torowiska (w nowej grze/po wczytaniu gry): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normalne
@@ -1617,6 +1622,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :siatka 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :losowo
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Miasta mogą budować drogi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Pozwól miastom kontrolować poziom hałasu dla lotnisk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakładanie miast w grze: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabronione
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozwolone
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :zezwalaj, dowolny układ miasta
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozycja głównego paska narzędzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Z lewej strony
@@ -3528,6 +3537,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj 
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnego wyjazdu (CTRL-klik by spróbować utrzymać czasy oczekiwania))
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
+
+### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :A:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :A:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :A:{SETX 30}{RED}{STRING}
+#####
+
+### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :D:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :D:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :D:{SETX 30}{RED}{STRING}
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Odpluskwianie SI

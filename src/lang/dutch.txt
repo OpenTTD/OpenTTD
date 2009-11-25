@@ -368,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra kijkvenst
 STR_MAP_MENU_SIGN_LIST                                          :Bordenlijst
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Dorp stichten
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
@@ -579,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Aangepast 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muziekvolume
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Geluidsvolume
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -756,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} begint werkzaamheden bij {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} is overgenomen door {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Directeur)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} gesponsorde constructie van een nieuw dorp {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nieuw {STRING} in aanbouw bij {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nieuw {STRING} in aanplant bij {TOWN}!
@@ -1234,6 +1241,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :willekeurig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Steden mogen wegen bouwen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Geluidsniveaucontrole door steden voor vliegvelden toestaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Dorp stichten in spel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboden
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toestaan
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toestaan, eigen dorp layout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
@@ -2528,7 +2539,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Bedrijfsw
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% eigendom van {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bouw bedrijfshoofdkwartier
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bouw bedrijfshoofdkwartier
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Bekijk bedrijfshoofdkwartier
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Toon bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verplaats bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde
 
@@ -3137,6 +3150,13 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aanvullen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
+
+
+### Do not separate or reorder ###
+#####
+
+### Do not separate or reorder ###
+#####
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
