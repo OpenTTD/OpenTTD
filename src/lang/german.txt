@@ -1178,6 +1178,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigene Firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle Firmen
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Fahrpläne für Fahrzeuge aktivieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeitpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zeige Ankunft und Abfahrt im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnelle Erzeugung von Aufträgen für Fahrzeuge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Gleistyp bei Spielbeginn/geladenem Spiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normales Gleis
@@ -3139,6 +3140,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dieser F
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Das Fahrzeug ist derzeit pünktlich.
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dieses Fahrzeug hat {STRING} Verspätung
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dieses Fahrzeug ist {STRING} zu früh
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dieser Fahrplan ist noch nicht gültig
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dieser Fahrplan tritt ab {STRING} in Kraft
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Anfangsdatum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wähle ein Anfangsdatum für den Fahrplan
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zeit ändern
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahmen für den markierten Auftrag ändern
@@ -3152,12 +3158,31 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspät
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zeiten automatisch bei der nächsten Fahrt eintragen (Mit Strg+Klick wird versucht, die aktuellen Wartezeiten beizubehalten)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Voraussichtlich
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geplant
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Umschalten zwischen erwarteter Ankunftszeit und Fahrplan
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :Ankunft:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :Ankunft:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :Ankunft:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :Abfahrt:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :Abfahrt:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :Abfahrt:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Datum auswählen
+STR_DATE_SET_DATE                                               :{BLACK}Datum auswählen
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Setze den Fahrplan ab dem gewählten Datum in Kraft
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Tag auswählen
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Monat auswählen
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jahr auswählen
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}KI Debug

@@ -1178,6 +1178,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propia empresa
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Todas las empresas
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activar horarios para vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horario en ticks en vez de en dias: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar salidas y llegadas en en horarios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creación rápida de órdenes para vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Rail por defecto (juego nuevo/cargar juego): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Rail normal
@@ -3140,6 +3141,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veh
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está actualmente retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente {STRING} adelantado
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Horario
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tomar una orden marcada
 
@@ -3152,12 +3154,25 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajusta
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Click para tratar de mantener los tiempos de espera))
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre esperado y programado
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :Ll:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :Ll:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :Ll:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :S:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :S:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :S:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuración de la IA

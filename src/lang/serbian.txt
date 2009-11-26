@@ -1362,6 +1362,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Samo za sopstve
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Za sva preduzeća
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Omogućiti red vožnje vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikazati red vožnje u diskretnim otkucajima: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Prikazivanje polaska i dolaska u rasporedima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Zadržati aktivno 'Idi do' dugme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Podešena vrsta pruge (posle učitavanja/nove partije): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Klasična Pruga
@@ -3333,6 +3334,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Za zavr�
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Vozilo trenutno ide po rasporedu
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vozilo trenutno kasni za {STRING} od rasporeda
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Vozilo trenutno žuri za {STRING} od rasporeda
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj raspored još nije počeo
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj raspored počinje {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Datum početka
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izbor datuma kao vreme početaka rasporeda
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promena Vremena
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Menjanje količine vremena za koje će obeležena naredba trajati
@@ -3346,12 +3352,31 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Poništa
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatsko popunjavanje
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjava raspored sa vrednostima iz sledećeg putovanja (Ctrl+Klik za zadržavanje vremena čekanja)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Očekivano
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Po planu
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prebacivanje između prikaza očekivanog i po planu
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :D:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :D:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :D:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :P:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :P:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :P:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Postavljanje datuma
+STR_DATE_SET_DATE                                               :{BLACK}Postavi datum
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Koristi izabrani datum kao početni datum ovog rasporeda
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Izbor dana
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Izbor meseca
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izbor godine
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Korekcija veštačke inteligencije

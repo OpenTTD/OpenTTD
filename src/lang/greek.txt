@@ -3241,6 +3241,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Αυτό
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Αυτό το όχημα εχει καθυστερήσει κατά {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα αυτό τρέχει {STRING} αργά
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλάζει ο χρόνος που παίρνει η επιλεγμένη επιλογή για να εκτελεστεί
 
@@ -3268,6 +3269,10 @@ STR_TIMETABLE_DEPARTURE                                         :ΑΝΑΧ:{SETX 
 STR_TIMETABLE_DEPARTURE_EARLY                                   :ΑΝΑΧ:{SETX 30}{GREEN}{STRING}
 STR_TIMETABLE_DEPARTURE_LATE                                    :ΑΝΑΧ:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI

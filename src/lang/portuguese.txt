@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Própria empres
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activar plano de horários para veículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez dias: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar chegada e partida nos horários: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Criação rápida de ordens de veiculos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Linha Normal
@@ -2785,7 +2786,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projectámos um novo {STRING} - gostaria de ter um ano de exclusividade de uso deste veículo, de modo a que possamos avaliar a sua performance antes de o disponibilizar para todos ?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projectámos um novo modelo de {STRING} - gostaria de ter um ano de exclusividade de uso deste veículo, de modo a que possamos avaliar a sua performance antes de o disponibilizar globalmente?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotiva ferroviária
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :veículo de estrada
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
@@ -3138,6 +3139,10 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este hor
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veículo está actualmente a andar a horas
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este veículo está presentemente atrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este veículo está presentemente adiantado {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horário ainda não começou
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horário começa a {STRING}
+
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleccione uma data como ponto de partida deste horário
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda o espaço de tempo que a ordem seleccionada deve durar
@@ -3151,12 +3156,29 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Limpar o
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto pr.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem (CTRL-clique para tentar manter os tempos de espera)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Marcado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterne entre tempo esperado e marcado
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :C:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :C:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :C:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :P:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :P:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :P:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Use a data seleccionada como ponto de partida do horário
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Seleccione um dia
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Seleccione um mês
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccione um ano
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuração da IA

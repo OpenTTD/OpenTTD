@@ -370,7 +370,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Mini visuale ex
 STR_MAP_MENU_SIGN_LIST                                          :Elenco cartelli
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Elenco città
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Fonda città
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
@@ -581,6 +583,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personale 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume musica
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume effetti
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -758,6 +763,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}La {STRING} inizia a costruire vicino a {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}La {STRING} è stata rilevata dalla {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}La {STRING} finanzia la costruzione della nuova cittadina di {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o a} {STRING} piantat{G 0 o a} vicino a {TOWN}!
@@ -1172,6 +1179,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propria compagn
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tutte le compagnie
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Abilita la definizione di tabelle orarie per i veicoli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra le tabelle orarie in tick piuttosto che in giorni: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra gli arrivi e le partenze nelle tabelle orarie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creazione rapida degli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Ferrovia predefinita (a inizio/ripresa partita): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Ferrovia normale
@@ -1236,6 +1244,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Griglia 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Casuale
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permetti alle città di costruire strade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Consenti controllo rumore aeroporti da parte delle città: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fondazione città durante la partita: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non permessa
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permessa
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permessa, disposizione strade personalizzata
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sinistra
@@ -3130,6 +3142,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Il veico
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Il veicolo viaggia con un ritardo di {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Il veicolo viaggia con un anticipo di {STRING}
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato
 
@@ -3141,6 +3154,26 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera i
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio (CTRL-clic per cercare di mantenere i tempi di attesa)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Atteso
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programmato
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna fra la visualizzazione degli orari attesi e degli orari programmati
+
+### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :A:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :A:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :A:{SETX 30}{RED}{STRING}
+#####
+
+### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :P:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :P:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :P:{SETX 30}{RED}{STRING}
+#####
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Debug IA

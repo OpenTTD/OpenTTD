@@ -3139,6 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Aikataul
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ajoneuvo on aikataulussa
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ajoneuvo on {STRING} myöhässä
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ajoneuvo on {STRING} etuajassa
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tämä aikataulu ei ole vielä alkanut
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tämä aikataulu alkaa {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aloituspäivä
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse tämän aikataulun alkamispäivä
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää
@@ -3167,6 +3172,16 @@ STR_TIMETABLE_DEPARTURE                                         :L:{SETX 30}{STR
 STR_TIMETABLE_DEPARTURE_EARLY                                   :L:{SETX 30}{GREEN}{STRING}
 STR_TIMETABLE_DEPARTURE_LATE                                    :L:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Aseta päivämäärä
+STR_DATE_SET_DATE                                               :{BLACK}Aseta päivämäärä
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Käytä valittua päivää aikataulun aloituspäivänä
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Valitse päivä
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Valitse kuukausi
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Valitse vuosi
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys

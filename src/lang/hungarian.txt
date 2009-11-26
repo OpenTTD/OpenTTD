@@ -1211,6 +1211,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Saját vállala
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Minden vállalat
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Indulás és érkezés megjelenítése a menetrendekben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Gyors menetrend-készítés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett vasúti pályatipus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normál vasúti pálya
@@ -3173,6 +3174,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ez a já
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ez a jármű jelenleg {STRING} késéssel közlekedik
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ez a jármű jelenleg {STRING}pal korábban közlekedik
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt menetrend-sor végrehajtási idejét változtatja meg
 
@@ -3191,6 +3193,10 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetren
 
 ### Do not separate or reorder ###
 #####
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés

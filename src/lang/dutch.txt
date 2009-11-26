@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigen bedrijf
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle bedrijven
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activeer dienstregeling voor voertuigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankomst en vertrektijden in reisschema: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snel voertuigorders maken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standaard spoorsoort (bij nieuw of opgeslagen spel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normaal spoor
@@ -3138,6 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dit tijd
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit voertuig loopt op schema
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dit voertuig heeft {STRING} vertraging
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit voertuig is {STRING} te vroeg
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dit reisschema is nog niet gestart
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dit reisschema begint bij {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Kies een datum als startpunt voor dit reisschema
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de hoeveelheid tijd die de geselecteerde opdracht mag innemen
@@ -3151,12 +3157,31 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aanvullen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schema
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Wissel tussen verwacht and schema
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_ARRIVAL                                           :A:{SETX 30}{STRING}
+STR_TIMETABLE_ARRIVAL_EARLY                                     :A:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_ARRIVAL_LATE                                      :A:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
+STR_TIMETABLE_DEPARTURE                                         :D:{SETX 30}{STRING}
+STR_TIMETABLE_DEPARTURE_EARLY                                   :D:{SETX 30}{GREEN}{STRING}
+STR_TIMETABLE_DEPARTURE_LATE                                    :D:{SETX 30}{RED}{STRING}
 #####
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Datum vastleggen
+STR_DATE_SET_DATE                                               :{BLACK}Datum vastleggen
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Gebruik de geselecteerde datum als startdatum voor het reisschema
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Kies dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Kies maand
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Kies jaar
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
