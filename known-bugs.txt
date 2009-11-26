@@ -62,6 +62,17 @@ reasons why we think that fixing them is infeasible. We might make some
 minor improvements that reduce the scope of these bugs, but we will not
 be able to completely fix them.
 
+No suitable AI can be found
+	If you have no AIs and an AI is started the so-called 'dummy' AI will
+	be loaded. This AI does nothing but writing a message on the AI debug
+	window and showing a red warning. There are basically two solutions
+	for this problem: you must change the settings so no AI is started,
+	this is done in the difficulty settings window. The other solution is
+	acquiring (downloading) some AI. The easiest way to do this is via
+	the "Check Online Content" button in the main (intro) menu or via
+	"AI Settings" -> "Select AI" -> "Check Online Content" which is also
+	accessed via the main menu.
+
 Clipping problems [FS#119]
 	In some cases sprites are not drawn as one would expect. Examples of
 	this are aircraft that might be hidden below the runway or trees that
