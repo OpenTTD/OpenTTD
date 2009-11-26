@@ -175,6 +175,15 @@ If you want savegames and screenshots in the directory where the OpenTTD binary
 resides, simply have your config file in that location. But if you remove this
 config file, savegames will still be in this directory (see notes in section 4.2)
 
+OpenTTD comes without AIs, so if you want to play with AIs you have to download
+them. The easiest way is via the "Check Online Content" button in the main menu.
+You can select some AIs that you think are compatible with your playing style.
+Another way is manually downloading the AIs from the forum although then you
+need to make sure that you install all the required AI libraries too; they get
+automatically selected (and downloaded) if you get the AIs via the "Check
+Online Content". If you do not have an AI but have configured OpenTTD to start
+an AI a message will be shown that the 'dummy' AI has been started.
+
 4.1) (Required) 3rd party files:
 ---- ---------------------------
 
@@ -489,6 +498,7 @@ put them in the data/ folder and you're set to go.
 X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
+  Albert Hofkamp (Alberth)       - GUI expert
   Jean-Francois Claeys (Belugas) - GUI, newindustries and more
   Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework

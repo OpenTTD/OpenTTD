@@ -71,6 +71,7 @@ set_default() {
 	with_freetype="1"
 	with_fontconfig="1"
 	with_icu="1"
+	static_icu="0"
 	with_psp_config="1"
 	with_threads="1"
 	with_distcc="1"
@@ -137,6 +138,7 @@ set_default() {
 		with_freetype
 		with_fontconfig
 		with_icu
+		static_icu
 		with_psp_config
 		with_threads
 		with_distcc
@@ -334,6 +336,10 @@ detect_params() {
 			--with-libicu)                with_icu="2";;
 			--without-libicu)             with_icu="0";;
 			--with-libicu=*)              with_icu="$optarg";;
+			--static-icu)                 static_icu="1";;
+			--static-icu=*)               static_icu="$optarg";;
+			--static-libicu)              static_icu="1";;
+			--static-libicu=*)            static_icu="$optarg";;
 
 			--with-psp-config)            with_psp_config="2";;
 			--without-psp-config)         with_psp_config="0";;
@@ -1302,7 +1308,11 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS `$icu_config --cppflags | tr '\n\r' '  '`"
 
 		# Some icu-configs have the 'feature' of not adding a space where others do add the space
-		LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly | tr '\n\r' '  '`"
+		if [ "$static_icu" != "0" ]; then
+			LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly | tr '\n\r' '  ' | sed s/licu/lsicu/g`"
+		else
+			LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly | tr '\n\r' '  '`"
+		fi
 	fi
 
 
@@ -2845,6 +2855,8 @@ showhelp() {
 	echo "  --with-fontconfig[=pkg-config fontconfig]"
 	echo "                                 enables fontconfig support"
 	echo "  --with-icu[=icu-config]        enables icu (used for right-to-left support)"
+	echo "  --static-icu                   try to link statically (libsicu instead of"
+	echo "                                 libicu; can fail as the new name is guessed)"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
 	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"

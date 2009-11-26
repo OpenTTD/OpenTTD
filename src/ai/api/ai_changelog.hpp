@@ -14,6 +14,10 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 0.7.4
+ *
+ * No changes
+ *
  * \b 0.7.3
  *
  * API additions:
@@ -29,7 +33,7 @@
  * \li AIs are now killed when they execute a DoCommand or Sleep at a time
  *     they are not allowed to do so.
  * \li When the API requests a string as parameter you can give every squirrel
- *     type and it'll be converted to a string
+ *     type and it will be converted to a string
  * \li AIs can create subclasses of API classes and use API constants as part
  *     of their own constants
  *
