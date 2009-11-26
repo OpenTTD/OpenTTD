@@ -69,6 +69,20 @@
  *     longer bound to stations used for first delivery, any station can be
  *     used for loading and unloading as long as cargo is transfered from
  *     source to destination.
+ * \li Make AIEngine:CanRefitCargo() not report refittability to mail by
+ *     default for aircraft. It is not necessarily true. This means that even
+ *     if the aircraft can carry mail (as secondary cargo) it does not return
+ *     true if the aircraft cannot carry it as its only cargo.
+ * \li Improve behaviour of (AIEngine|AIEventEnginePreview)::GetCargoType()
+ *     and AIEngine::CanRefitCargo() for articulated vehicles. For
+ *     CanRefitCargo true is returned if at least one part can be refitted.
+ *     For GetCargoType the first most used cargo type is returned.
+ * \li AIIndustryType::GetConstructionCost() now returns -1 if the industry is
+ *     neither buildable nor prospectable.
+ *
+ * \b 0.7.4
+ *
+ * No changes
  *
  * \b 0.7.3
  *
@@ -85,7 +99,7 @@
  * \li AIs are now killed when they execute a DoCommand or Sleep at a time
  *     they are not allowed to do so.
  * \li When the API requests a string as parameter you can give every squirrel
- *     type and it'll be converted to a string
+ *     type and it will be converted to a string
  * \li AIs can create subclasses of API classes and use API constants as part
  *     of their own constants
  *
