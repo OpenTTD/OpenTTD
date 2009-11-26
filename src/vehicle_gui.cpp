@@ -753,16 +753,16 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 };
 
-static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
+static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, VehicleOrderID start = 0)
 {
-	const Order *order;
+	const Order *order = v->GetOrder(start);
+	if (order == NULL) return;
+
 	int i = 0;
+	VehicleOrderID oid = start;
 
-	int sel = v->cur_order_index;
-
-	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) DrawString(left, right, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
-		sel--;
+	do {
+		if (oid == v->cur_order_index) DrawString(left, right, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
@@ -771,7 +771,14 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 			y += FONT_HEIGHT_SMALL;
 			if (++i == 4) break;
 		}
-	}
+
+		oid++;
+		order = order->next;
+		if (order == NULL) {
+			order = v->orders.list->GetFirstOrder();
+			oid = 0;
+		}
+	} while (oid != start);
 }
 
 /**
@@ -863,7 +870,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 			DrawString(text_left, text_right, y, STR_TINY_GROUP, TC_BLACK);
 		}
 
-		if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y);
+		if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y, v->cur_order_index);
 
 		if (v->IsInDepot()) {
 			str = STR_BLUE_COMMA;
