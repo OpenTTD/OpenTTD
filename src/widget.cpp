@@ -1589,7 +1589,7 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 
 Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next) const
 {
-	if (this->index > 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
+	if (this->index >= 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
 		const NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
@@ -2058,7 +2058,7 @@ Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next) const
 	if (this->type == WWT_SCROLLBAR) return &w->vscroll;
 	if (this->type == WWT_SCROLL2BAR) return &w->vscroll2;
 
-	if (this->index > 0 && allow_next && (uint)(this->index) + 1 < w->nested_array_size) {
+	if (this->index >= 0 && allow_next && (uint)(this->index) + 1 < w->nested_array_size) {
 		const NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
