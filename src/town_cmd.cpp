@@ -1402,8 +1402,9 @@ void UpdateTownMaxPass(Town *t)
  * @param size Parameter for size determination
  * @param city whether to build a city or town
  * @param layout the (road) layout of the town
+ * @param manual was the town placed manually?
  */
-static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
+static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout, bool manual)
 {
 	t->xy = tile;
 	t->num_houses = 0;
@@ -1458,7 +1459,8 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 
 	int x = (int)size * 16 + 3;
 	if (size == TS_RANDOM) x = (Random() & 0xF) + 8;
-	if (city && _game_mode == GM_EDITOR) x *= _settings_game.economy.initial_city_size;
+	/* Don't create huge cities when founding town in-game */
+	if (city && (!manual || _game_mode == GM_EDITOR)) x *= _settings_game.economy.initial_city_size;
 
 	t->num_houses += x;
 	UpdateTownRadius(t);
@@ -1594,7 +1596,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			}
 		} else {
 			t = new Town(tile);
-			DoCreateTown(t, tile, townnameparts, size, city, layout);
+			DoCreateTown(t, tile, townnameparts, size, city, layout, true);
 		}
 		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
@@ -1756,7 +1758,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
 
-		DoCreateTown(t, tile, townnameparts, size, city, layout);
+		DoCreateTown(t, tile, townnameparts, size, city, layout, false);
 
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
