@@ -127,9 +127,9 @@ public:
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		if (checked) {
-			DrawString(left + 2, right - 2, top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
+			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
-		DrawString(left + 2, right - 2, top, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -167,7 +167,7 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		DrawCompanyIcon(company, rtl ? right - 16 : left + 2, top + 1 + (FONT_HEIGHT_NORMAL - 10) / 2);
+		DrawCompanyIcon(company, rtl ? right - 14 - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + 1 + (FONT_HEIGHT_NORMAL - 10) / 2);
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -177,7 +177,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(rtl ? left + 2 : left + 19, rtl ? right - 19 : right - 2, top, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 17), right - WD_FRAMERECT_RIGHT - (rtl ? 17 : 0), top, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 

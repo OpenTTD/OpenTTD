@@ -37,7 +37,7 @@ uint DropDownListStringItem::Width() const
 
 void DropDownListStringItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {
-	DrawString(left + 2, right - 2, top, this->String(), sel ? TC_WHITE : TC_BLACK);
+	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
 StringID DropDownListParamStringItem::String() const
@@ -53,7 +53,7 @@ uint DropDownListCharStringItem::Width() const
 
 void DropDownListCharStringItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {
-	DrawString(left + 2, right - 2, top, this->string, sel ? TC_WHITE : TC_BLACK);
+	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->string, sel ? TC_WHITE : TC_BLACK);
 }
 
 /**
