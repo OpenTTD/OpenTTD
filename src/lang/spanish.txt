@@ -3159,15 +3159,9 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programa
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre esperado y programado
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_ARRIVAL                                           :Ll:{SETX 30}{STRING}
-STR_TIMETABLE_ARRIVAL_EARLY                                     :Ll:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_ARRIVAL_LATE                                      :Ll:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_DEPARTURE                                         :S:{SETX 30}{STRING}
-STR_TIMETABLE_DEPARTURE_EARLY                                   :S:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_DEPARTURE_LATE                                    :S:{SETX 30}{RED}{STRING}
 #####
 
 

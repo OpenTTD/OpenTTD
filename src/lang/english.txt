@@ -3161,17 +3161,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
 
-### Do not separate or reorder ###
-STR_TIMETABLE_ARRIVAL                                           :A:{SETX 30}{STRING1}
-STR_TIMETABLE_ARRIVAL_EARLY                                     :A:{SETX 30}{GREEN}{STRING1}
-STR_TIMETABLE_ARRIVAL_LATE                                      :A:{SETX 30}{RED}{STRING1}
-#####
-
-### Do not separate or reorder ###
-STR_TIMETABLE_DEPARTURE                                         :D:{SETX 30}{STRING1}
-STR_TIMETABLE_DEPARTURE_EARLY                                   :D:{SETX 30}{GREEN}{STRING1}
-STR_TIMETABLE_DEPARTURE_LATE                                    :D:{SETX 30}{RED}{STRING1}
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -4047,6 +4038,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{RAW_STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

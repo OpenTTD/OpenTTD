@@ -3259,15 +3259,9 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Προγ
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλάγη μεταξύ αναμένομενης και προγραμματισμένης
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_ARRIVAL                                           :ΑΦΙΞ:{SETX 30}{STRING}
-STR_TIMETABLE_ARRIVAL_EARLY                                     :ΑΦΙΞ:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_ARRIVAL_LATE                                      :ΑΦΙΞ:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_DEPARTURE                                         :ΑΝΑΧ:{SETX 30}{STRING}
-STR_TIMETABLE_DEPARTURE_EARLY                                   :ΑΝΑΧ:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_DEPARTURE_LATE                                    :ΑΝΑΧ:{SETX 30}{RED}{STRING}
 #####
 
 

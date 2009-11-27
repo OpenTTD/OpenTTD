@@ -170,6 +170,8 @@ struct TimetableWindow : Window {
 	int sel_index;
 	const Vehicle *vehicle; ///< Vehicle monitored by the window.
 	bool show_expected;     ///< Whether we show expected arrival or scheduled
+	uint deparr_time_width; ///< The width of the departure/arrival time
+	uint deparr_abbr_width; ///< The width of the departure/arrival abbreviation
 
 	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) :
 			Window(),
@@ -206,9 +208,10 @@ struct TimetableWindow : Window {
 	{
 		switch (widget) {
 			case TTV_ARRIVAL_DEPARTURE_PANEL:
-				SetDParam(0, STR_JUST_DATE_TINY);
-				SetDParam(1, MAX_YEAR * DAYS_IN_YEAR);
-				size->width = GetStringBoundingBox(STR_TIMETABLE_ARRIVAL).width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				SetDParam(0, MAX_YEAR * DAYS_IN_YEAR);
+				this->deparr_time_width = GetStringBoundingBox(STR_JUST_DATE_TINY).width;
+				this->deparr_abbr_width = max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_ABBREVIATION).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_ABBREVIATION).width);
+				this->width = WD_FRAMERECT_LEFT + this->deparr_abbr_width + 10 + this->deparr_time_width + WD_FRAMERECT_RIGHT;
 				/* fall through */
 			case TTV_ARRIVAL_DEPARTURE_SELECTION:
 			case TTV_TIMETABLE_PANEL:
@@ -410,15 +413,14 @@ struct TimetableWindow : Window {
 
 				int y = r.top + WD_FRAMERECT_TOP;
 
-				Ticks offset;
-				StringID str_offset;
-				if (this->show_expected && v->lateness_counter > DAY_TICKS) {
-					offset = 0;
-					str_offset = STR_TIMETABLE_ARRIVAL_LATE - STR_TIMETABLE_ARRIVAL;
-				} else {
-					offset = -v->lateness_counter;
-					str_offset = 0;
-				}
+				bool show_late = this->show_expected && v->lateness_counter > DAY_TICKS;
+				Ticks offset = show_late ? 0 : -v->lateness_counter;
+
+				bool rtl = _dynlang.text_dir == TD_RTL;
+				int abbr_left  = rtl ? r.right - WD_FRAMERECT_RIGHT - this->deparr_abbr_width : r.left + WD_FRAMERECT_LEFT;
+				int abbr_right = rtl ? r.right - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT + this->deparr_abbr_width;
+				int time_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.right - WD_FRAMERECT_RIGHT - this->deparr_time_width;
+				int time_right = rtl ? r.left + WD_FRAMERECT_LEFT + this->deparr_time_width : r.right - WD_FRAMERECT_RIGHT;
 
 				for (int i = this->vscroll.GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
 					/* Don't draw anything if it extends past the end of the window. */
@@ -426,18 +428,20 @@ struct TimetableWindow : Window {
 
 					if (i % 2 == 0) {
 						if (arr_dep[i / 2].arrival != INVALID_TICKS) {
+							DrawString(abbr_left, abbr_right, y, STR_TIMETABLE_ARRIVAL_ABBREVIATION, i == selected ? TC_WHITE : TC_BLACK);
 							if (this->show_expected && i / 2 == earlyID) {
 								SetArrivalDepartParams(0, 1, arr_dep[i / 2].arrival);
-								DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_ARRIVAL_EARLY, i == selected ? TC_WHITE : TC_BLACK);
+								DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_GREEN_STRING, i == selected ? TC_WHITE : TC_BLACK);
 							} else {
 								SetArrivalDepartParams(0, 1, arr_dep[i / 2].arrival + offset);
-								DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_ARRIVAL + str_offset, i == selected ? TC_WHITE : TC_BLACK);
+								DrawString(time_left, time_right, y, show_late ? STR_RED_STRING : STR_JUST_STRING, i == selected ? TC_WHITE : TC_BLACK);
 							}
 						}
 					} else {
 						if (arr_dep[i / 2].departure != INVALID_TICKS) {
+							DrawString(abbr_left, abbr_right, y, STR_TIMETABLE_DEPARTURE_ABBREVIATION, i == selected ? TC_WHITE : TC_BLACK);
 							SetArrivalDepartParams(0, 1, arr_dep[i/2].departure + offset);
-							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TIMETABLE_DEPARTURE + str_offset, i == selected ? TC_WHITE : TC_BLACK);
+							DrawString(time_left, time_right, y, show_late ? STR_RED_STRING : STR_JUST_STRING, i == selected ? TC_WHITE : TC_BLACK);
 						}
 					}
 					y += FONT_HEIGHT_NORMAL;

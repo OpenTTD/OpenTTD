@@ -3162,15 +3162,9 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataul
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaihda odotetun ja aikataulun välillä
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_ARRIVAL                                           :S:{SETX 30}{STRING}
-STR_TIMETABLE_ARRIVAL_EARLY                                     :S:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_ARRIVAL_LATE                                      :S:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_DEPARTURE                                         :L:{SETX 30}{STRING}
-STR_TIMETABLE_DEPARTURE_EARLY                                   :L:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_DEPARTURE_LATE                                    :L:{SETX 30}{RED}{STRING}
 #####
 
 

@@ -3163,15 +3163,9 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geplant
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Umschalten zwischen erwarteter Ankunftszeit und Fahrplan
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_ARRIVAL                                           :Ankunft:{SETX 30}{STRING}
-STR_TIMETABLE_ARRIVAL_EARLY                                     :Ankunft:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_ARRIVAL_LATE                                      :Ankunft:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_DEPARTURE                                         :Abfahrt:{SETX 30}{STRING}
-STR_TIMETABLE_DEPARTURE_EARLY                                   :Abfahrt:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_DEPARTURE_LATE                                    :Abfahrt:{SETX 30}{RED}{STRING}
 #####
 
 

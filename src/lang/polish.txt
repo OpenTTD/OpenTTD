@@ -3543,15 +3543,9 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schedule
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_ARRIVAL                                           :A:{SETX 30}{STRING}
-STR_TIMETABLE_ARRIVAL_EARLY                                     :A:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_ARRIVAL_LATE                                      :A:{SETX 30}{RED}{STRING}
 #####
 
 ### Do not separate or reorder ###
-STR_TIMETABLE_DEPARTURE                                         :D:{SETX 30}{STRING}
-STR_TIMETABLE_DEPARTURE_EARLY                                   :D:{SETX 30}{GREEN}{STRING}
-STR_TIMETABLE_DEPARTURE_LATE                                    :D:{SETX 30}{RED}{STRING}
 #####
 
 # AI debug window
