@@ -346,14 +346,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Niveau de Diffi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configuration Avancée
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres Newgrf
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Afficher le nom des villes
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Afficher le nom des stations
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Afficher les points de contrôle
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Afficher les panneaux
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animation complète
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Détails maximums
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Édifices transparents
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Nom de station transparent
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afficher le nom des stations
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afficher les points de contrôle
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afficher les panneaux
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation complète
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Détails maximums
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Édifices transparents
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nom de station transparent
 ############ range ends here
 
 ############ range for file menu starts

@@ -378,14 +378,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nehézségi be�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Haladó beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Átlátszósági beállítások
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Városnevek mutatása
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Állomásnevek mutatása
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ellenőrző pontok mutatása
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Feliratok mutatása
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Teljes animáció
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Minden részlet
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Átlátszó épületek
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Állomásnevek keret nélkül
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Városnevek mutatása
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Állomásnevek mutatása
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ellenőrző pontok mutatása
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Feliratok mutatása
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Teljes animáció
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Minden részlet
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Átlátszó épületek
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Állomásnevek keret nélkül
 ############ range ends here
 
 ############ range for file menu starts

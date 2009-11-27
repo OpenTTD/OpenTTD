@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :進階設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}顯示市鎮名稱
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}顯示車站／機場／碼頭名稱
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}顯示號誌站名稱
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}顯示標誌
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}完整動畫
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}完整細節
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}視野穿透建築物
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}半透明車站標籤
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :顯示市鎮名稱
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :顯示車站／機場／碼頭名稱
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :顯示號誌站名稱
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
+STR_SETTINGS_MENU_FULL_ANIMATION                                :完整動畫
+STR_SETTINGS_MENU_FULL_DETAIL                                   :完整細節
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :視野穿透建築物
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :半透明車站標籤
 ############ range ends here
 
 ############ range for file menu starts

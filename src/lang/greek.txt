@@ -409,14 +409,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσε�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Εμφάνιση ονομάτων πόλεων
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Εμφάνιση ονομάτων σταθμών
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Εμφάνιση ονομάτων σημείων καθοδήγησης
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Εμφάνιση πινακίδων
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Πλήρες animation
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Πλήρης λεπτομέρειες
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Διαφανή κτίρια
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Διαφανές ταμπέλες σταθμών
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Εμφάνιση ονομάτων σταθμών
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Εμφάνιση ονομάτων σημείων καθοδήγησης
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Εμφάνιση πινακίδων
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Πλήρες animation
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Πλήρης λεπτομέρειες
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Διαφανή κτίρια
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διαφανές ταμπέλες σταθμών
 ############ range ends here
 
 ############ range for file menu starts

@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF inställningar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Genomskinlighetsinställningar
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Stadsnamn visas
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stationsnamn visas
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Riktmärken visas
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skyltar visas
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Full animation
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Full detaljnivå
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Genomskinliga byggnader
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Genomskinliga stationsskyltar
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamn visas
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Riktmärken visas
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skyltar visas
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animation
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Full detaljnivå
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Genomskinliga byggnader
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Genomskinliga stationsskyltar
 ############ range ends here
 
 ############ range for file menu starts

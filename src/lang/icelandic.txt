@@ -340,14 +340,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Erfiðleikastig
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Þróaðri stillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Bæjanöfn sýnd
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stöðvarnöfn sýnd
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Millistöðvar sýndar
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skilti sýnd
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Fullar myndhreyfingar
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Full nákvæmni
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Gegnsæjar byggingar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Gegnsæ stöðvanöfn
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bæjanöfn sýnd
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stöðvarnöfn sýnd
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Millistöðvar sýndar
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skilti sýnd
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Fullar myndhreyfingar
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Full nákvæmni
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gegnsæjar byggingar
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gegnsæ stöðvanöfn
 ############ range ends here
 
 ############ range for file menu starts

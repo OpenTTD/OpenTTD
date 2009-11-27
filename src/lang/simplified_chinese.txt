@@ -344,14 +344,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :难度设定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :高级设置
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}显示城镇名称
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}显示车站名称
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}显示路点
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}显示标志
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}完全动画
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}完全细节
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}透明建筑
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}透明车站标志
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :显示城镇名称
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :显示车站名称
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :显示路点
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :显示标志
+STR_SETTINGS_MENU_FULL_ANIMATION                                :完全动画
+STR_SETTINGS_MENU_FULL_DETAIL                                   :完全细节
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :透明建筑
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :透明车站标志
 ############ range ends here
 
 ############ range for file menu starts

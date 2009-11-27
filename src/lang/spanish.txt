@@ -346,14 +346,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configuración 
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opciones avanzadas
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Ver nombres de pueblos
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Ver nombres de estaciones
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ver puntos de ruta
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Ver carteles
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animación completa
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detalle completo
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edificios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Carteles transparentes
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de pueblos
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Ver nombres de estaciones
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ver puntos de ruta
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Ver carteles
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animación completa
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalle completo
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificios transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Carteles transparentes
 ############ range ends here
 
 ############ range for file menu starts

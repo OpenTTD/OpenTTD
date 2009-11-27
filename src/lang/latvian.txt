@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības pak�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildus opcijas
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF opcijas
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības uzstādījumi
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Rādīt pilsētu nosaukumus
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Rādīt staciju nosaukumus
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Rādīt maršruta punktu nosaukumus
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Rādīt zīmes
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Pilna animācija
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Visas detaļas
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Caurspīdīgas ēkas
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Caurspidīgas staciju zīmes
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsētu nosaukumus
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rādīt staciju nosaukumus
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rādīt maršruta punktu nosaukumus
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rādīt zīmes
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Pilna animācija
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Visas detaļas
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Caurspīdīgas ēkas
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspidīgas staciju zīmes
 ############ range ends here
 
 ############ range for file menu starts

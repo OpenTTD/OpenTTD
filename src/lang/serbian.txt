@@ -523,14 +523,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje te
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Detaljna podešavanja
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Prikazana imena naselja
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Prikazana imena stanica
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Prikazana imena putanja
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Prikazani znakovi
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Puna animacija
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Svi detalji
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparentne zgrade
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparentni znakovi stanica
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikazana imena naselja
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Prikazana imena stanica
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Prikazana imena putanja
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Prikazani znakovi
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Puna animacija
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Svi detalji
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparentne zgrade
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentni znakovi stanica
 ############ range ends here
 
 ############ range for file menu starts

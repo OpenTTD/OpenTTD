@@ -724,14 +724,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ustawienia trud
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ustawienia zaawanasowane
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Wyświetlanie nazw miast
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Wyświetlanie nazw stacji
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wyświetlanie nazw pkt. orientacyjnych
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Wyświetlanie napisów
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Pełna animacja
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Wszystkie detale
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Przezroczyste budynki
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Przezroczyste nazwy stacji
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw pkt. orientacyjnych
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełna animacja
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Wszystkie detale
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Przezroczyste budynki
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przezroczyste nazwy stacji
 ############ range ends here
 
 ############ range for file menu starts

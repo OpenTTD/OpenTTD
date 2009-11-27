@@ -411,14 +411,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavení obt�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pokročilé nastavení
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavení grafik
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavení průhlednosti
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Zobrazení jmen měst
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Zobrazení jmen stanic
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Zobrazení jmen směrování
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Zobrazení popisků
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Plné animace
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Plné detaily
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Průhledné budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Průhledná jména stanic
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobrazení jmen měst
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobrazení jmen stanic
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobrazení jmen směrování
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobrazení popisků
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Plné animace
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Plné detaily
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Průhledné budovy
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Průhledná jména stanic
 ############ range ends here
 
 ############ range for file menu starts

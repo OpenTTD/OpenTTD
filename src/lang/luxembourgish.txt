@@ -339,14 +339,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwieregkeetsa
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweidert Astellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenz Optiounen
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Stiednimm ugewisen
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Statiounennimm ugewisen
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Weepunkteb unweisen
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Schëlder ugewisen
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Ganz Animatiounen
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Ganz Detailer
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparent Gebaier
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparent Statiounsschëlder
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stiednimm ugewisen
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Statiounennimm ugewisen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Weepunkteb unweisen
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schëlder ugewisen
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Ganz Animatiounen
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Ganz Detailer
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparent Gebaier
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Statiounsschëlder
 ############ range ends here
 
 ############ range for file menu starts

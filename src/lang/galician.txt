@@ -338,14 +338,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configuración 
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opcións avanzadas
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcións de Transparencia
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Amosar nomes de cidades
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Amosar nomes de estacións
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Amosar puntos de ruta
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Amosa-los sinais
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animación completa
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detalle completo
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edificios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Sinais de estación transparentes
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Amosar nomes de cidades
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Amosar nomes de estacións
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Amosar puntos de ruta
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Amosa-los sinais
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animación completa
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalle completo
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificios transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais de estación transparentes
 ############ range ends here
 
 ############ range for file menu starts

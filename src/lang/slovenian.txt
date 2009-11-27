@@ -381,14 +381,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavitve tež
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne nastavitve
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Imena mest prikazana
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Imena postaj prikazana
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Prikazane točke poti
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Sporočila prikazana
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Popolne animacije
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Vse podrobnosti
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Prosojne stavbe
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Prosojni napisi postaj
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prikazana
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Imena postaj prikazana
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Prikazane točke poti
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Sporočila prikazana
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Popolne animacije
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Vse podrobnosti
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prosojne stavbe
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prosojni napisi postaj
 ############ range ends here
 
 ############ range for file menu starts

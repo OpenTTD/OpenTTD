@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :הגדרות ק
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :הגדרות מתקדמות
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :הגדרות GRF חדש
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :אפשרויות שקיפות
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}שמות ערים
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}שמות תחנות
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}שמות נקודות ציון מוצגים
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}סימניות
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}אנימציה מלאה
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}פרטים מלאים
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}בניינים שקופים
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}הסתר שלטי תחנות
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :שמות ערים
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :שמות תחנות
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :שמות נקודות ציון מוצגים
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :סימניות
+STR_SETTINGS_MENU_FULL_ANIMATION                                :אנימציה מלאה
+STR_SETTINGS_MENU_FULL_DETAIL                                   :פרטים מלאים
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :בניינים שקופים
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :הסתר שלטי תחנות
 ############ range ends here
 
 ############ range for file menu starts

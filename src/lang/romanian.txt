@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificul
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setari avansate
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setari Newgrf
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiuni transparenţă
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Afişează numele oraşelor
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Afişează numele staţiilor
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Afisare nume puncte de tranzit
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Afişează semnele de pe hartă
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animaţie completă
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detalii grafice complete
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Peisaj transparent (X)
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Nume staţii transparent
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afişează numele oraşelor
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afişează numele staţiilor
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afisare nume puncte de tranzit
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afişează semnele de pe hartă
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animaţie completă
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalii grafice complete
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Peisaj transparent (X)
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nume staţii transparent
 ############ range ends here
 
 ############ range for file menu starts

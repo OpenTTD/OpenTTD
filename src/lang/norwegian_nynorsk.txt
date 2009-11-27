@@ -338,14 +338,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskegrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte alternativ
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Instillingar for ny grafikk
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjennomsiktigheitsinnstillingar
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Vis namn på by
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Vis namn på stasjon
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Vis kontrollpunkt
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Vis skilt
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Full animasjon
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Maksimalt med detaljar
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Gjennomsiktige bygningar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Gjennomsiktige stasjonsnamn
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Vis namn på by
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Vis namn på stasjon
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Vis kontrollpunkt
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Vis skilt
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animasjon
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Maksimalt med detaljar
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjennomsiktige bygningar
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige stasjonsnamn
 ############ range ends here
 
 ############ range for file menu starts

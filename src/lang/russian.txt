@@ -470,14 +470,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Настрой�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Расширенные настройки
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Показ названий городов
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Показ названий станций
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Показ имён точек пути
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Показ знаков
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Полная анимация
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Полная детализация
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Прозрачные здания
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Прозрачный фон названий станций
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показ названий городов
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показ названий станций
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показ имён точек пути
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показ знаков
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Полная анимация
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Полная детализация
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрачные здания
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачный фон названий станций
 ############ range ends here
 
 ############ range for file menu starts

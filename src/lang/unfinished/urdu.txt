@@ -181,9 +181,9 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکل
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}آبادیوں کے نام دکھائے جائیں
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}اڈوں کے نام دکھائے جائیں
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}اشارے دکھائے جائیں
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :اڈوں کے نام دکھائے جائیں
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :اشارے دکھائے جائیں
 ############ range ends here
 
 ############ range for file menu starts

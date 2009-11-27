@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Paràmetres de 
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Paràmetres avançats
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Mostra els noms de les poblacions
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Mostra els noms de les estacions
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Mostra els punts de control
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Mostra les senyals
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animació completa
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detall complet
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edificis Transparents
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Signes d'estació transparents
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra els noms de les estacions
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra els punts de control
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra les senyals
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animació completa
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Detall complet
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificis Transparents
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Signes d'estació transparents
 ############ range ends here
 
 ############ range for file menu starts

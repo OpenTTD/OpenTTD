@@ -401,14 +401,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Raskusastme sea
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Täpsemad seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF seadistused
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse valikud
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Näidatavad linnanimed
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Näidatavad jaamanimed
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Näidatavad meldepunktid
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Näidatavad sildid
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Täielik animeerimine
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Kõik täpsustused
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Läbipaistvad hooned
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Läbinähtavad jaama nimesildid
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Näidatavad jaamanimed
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Näidatavad meldepunktid
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Näidatavad sildid
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Täielik animeerimine
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Kõik täpsustused
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Läbipaistvad hooned
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läbinähtavad jaama nimesildid
 ############ range ends here
 
 ############ range for file menu starts

@@ -343,14 +343,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Опции за
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Настройки за напреднали
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf настройки
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Опций на прозрачност
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Показване имената на градовете
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Показване имената на станциите
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Пътни точки са показани
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Показване на табелите
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Пълна анимация
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Пълни подробности
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Прозрачни сгради
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Прозрачни табели на станциите
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показване имената на градовете
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показване имената на станциите
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Пътни точки са показани
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показване на табелите
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Пълна анимация
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Пълни подробности
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрачни сгради
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачни табели на станциите
 ############ range ends here
 
 ############ range for file menu starts

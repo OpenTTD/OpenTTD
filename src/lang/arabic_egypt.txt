@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :خيارات ا
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعدادات متقدمة
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات جرافيك جديده
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :خيارات الشفافية
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}عرض اسماء المدن
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}عرض اسماء المحطات
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12} عرض نقاط العبور
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}عرض العلامات
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}تأثيرات متحركة كاملة
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}كل التفاصيل
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}مباني شفافة
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}اسماء المحطات شفافة
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :عرض اسماء المدن
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :عرض اسماء المحطات
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           : عرض نقاط العبور
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :عرض العلامات
+STR_SETTINGS_MENU_FULL_ANIMATION                                :تأثيرات متحركة كاملة
+STR_SETTINGS_MENU_FULL_DETAIL                                   :كل التفاصيل
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :مباني شفافة
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :اسماء المحطات شفافة
 ############ range ends here
 
 ############ range for file menu starts

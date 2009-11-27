@@ -346,14 +346,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}도시 이름을 표시함
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}역 이름을 표시함
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}웨이포인트 이름을 표시함
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}팻말을 표시함
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}완전한 애니메이션
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}아주 상세하게
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}건물 안 보이기
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}역명판 감추기
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :역 이름을 표시함
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :웨이포인트 이름을 표시함
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :팻말을 표시함
+STR_SETTINGS_MENU_FULL_ANIMATION                                :완전한 애니메이션
+STR_SETTINGS_MENU_FULL_DETAIL                                   :아주 상세하게
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :건물 안 보이기
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :역명판 감추기
 ############ range ends here
 
 ############ range for file menu starts

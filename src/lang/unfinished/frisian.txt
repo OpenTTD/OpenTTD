@@ -310,13 +310,13 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ôfslúte
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Stêd nammen sjen litte
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stasjon nammen sjen litte
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Nammen fan kontrôleposten sjen litte
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Buordsjes sjen litte
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Folle animaasje
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Folle detail
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Trochsichtige gebouwen
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stêd nammen sjen litte
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stasjon nammen sjen litte
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nammen fan kontrôleposten sjen litte
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Buordsjes sjen litte
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Folle animaasje
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Folle detail
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Trochsichtige gebouwen
 ############ range ends here
 
 ############ range for file menu starts

@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukse
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysvalinnat
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Kaupunkien nimet näkyvissä
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Asemien nimet näkyvissä
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Reittipisteitten nimet näkyvissä
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Kyltit näkyvissä
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Täysi animointi
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Kaikki yksityiskohdat
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Läpinäkyvät rakennukset
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Läpinäkyvät asemakyltit
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Asemien nimet näkyvissä
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Reittipisteitten nimet näkyvissä
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Kyltit näkyvissä
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Täysi animointi
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Kaikki yksityiskohdat
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Läpinäkyvät rakennukset
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läpinäkyvät asemakyltit
 ############ range ends here
 
 ############ range for file menu starts

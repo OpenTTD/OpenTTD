@@ -336,14 +336,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :パッチ設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :半透明設定
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}市町村名を表示
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}駅名を表示
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}通過点を標示
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}標示を表示
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}高級のアニメーション
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}高級の画像
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}建物を半透明で表示
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}標示を半透明で表示
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :市町村名を表示
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :駅名を表示
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :通過点を標示
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :標示を表示
+STR_SETTINGS_MENU_FULL_ANIMATION                                :高級のアニメーション
+STR_SETTINGS_MENU_FULL_DETAIL                                   :高級の画像
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :建物を半透明で表示
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :標示を半透明で表示
 ############ range ends here
 
 ############ range for file menu starts

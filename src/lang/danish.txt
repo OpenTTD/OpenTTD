@@ -344,14 +344,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sværhedsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerede indstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Bynavne vist
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stationsnavne vist
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Kontrolsteder vist
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skilte vist
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Fuld animation
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Fuld detalje
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Gennemsigtige bygninger
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Gennemsigtige stationsskilte
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Kontrolsteder vist
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skilte vist
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Fuld animation
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Fuld detalje
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gennemsigtige bygninger
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gennemsigtige stationsskilte
 ############ range ends here
 
 ############ range for file menu starts

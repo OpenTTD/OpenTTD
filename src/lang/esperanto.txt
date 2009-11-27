@@ -341,14 +341,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Malfacilec-agor
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancitaj agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Urbonomoj montriĝas
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Staciaj nomoj montriĝas
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Montru nomojn de vojpunktoj
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Afiŝoj montriĝas
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Plena animado
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Plenaj detaloj
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Travideblaj konstruaĵoj
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Travideblaj staciaj afiŝoj
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Staciaj nomoj montriĝas
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Montru nomojn de vojpunktoj
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afiŝoj montriĝas
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Plena animado
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Plenaj detaloj
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Travideblaj konstruaĵoj
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Travideblaj staciaj afiŝoj
 ############ range ends here
 
 ############ range for file menu starts

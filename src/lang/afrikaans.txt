@@ -341,14 +341,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moelikheid stel
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gevorderde stellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Deursigtigheid opsies
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Dorp name vertoon
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stasie name vertoon
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wegpunte vertoon
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Tekens vertoon
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Volle animasie
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Volle besonderhede
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Deurskynende geboue
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Deurskynend stasie tekens
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dorp name vertoon
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stasie name vertoon
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunte vertoon
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tekens vertoon
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Volle animasie
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Volle besonderhede
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Deurskynende geboue
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Deurskynend stasie tekens
 ############ range ends here
 
 ############ range for file menu starts

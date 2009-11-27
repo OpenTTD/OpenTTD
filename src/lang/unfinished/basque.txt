@@ -344,14 +344,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarp
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia aukerak
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Herri izen erakutsiak
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Geltoki izen erakutsiak
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ibilbide izen erakutsiak
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Erakutsitako kartelak
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animazio betea
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Xehetasun betea
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Eraikin transparenteak
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Geltoki kartel transparenteak
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izen erakutsiak
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Geltoki izen erakutsiak
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ibilbide izen erakutsiak
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Erakutsitako kartelak
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animazio betea
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Xehetasun betea
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Eraikin transparenteak
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Geltoki kartel transparenteak
 ############ range ends here
 
 ############ range for file menu starts

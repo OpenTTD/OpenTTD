@@ -408,14 +408,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Rozšírené nastavenia
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie newgrf
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehladnosti
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Zobrazit nazvy miest
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Zobrazit nazvy stanic
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Zobrazit navigacne body
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Zobrazit popisy
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Plna animacia
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Plne detaily
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Priesvitne budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparentne nazvy stanic
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobrazit nazvy miest
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobrazit nazvy stanic
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobrazit navigacne body
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobrazit popisy
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Plna animacia
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Plne detaily
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitne budovy
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentne nazvy stanic
 ############ range ends here
 
 ############ range for file menu starts

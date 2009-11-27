@@ -410,14 +410,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Postavke težin
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne postavke
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke NewGRF-a
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Postavke prozirnosti
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Prikaži imena gradova
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Prikaži imena postaja
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Imena čvorišta su prikazana
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Prikaži znakove
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Sve animacije
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Svi detalji
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Prozirne građevine
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Prozirni znakovi postaja
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikaži imena gradova
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Prikaži imena postaja
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Imena čvorišta su prikazana
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Prikaži znakove
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Sve animacije
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Svi detalji
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prozirne građevine
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prozirni znakovi postaja
 ############ range ends here
 
 ############ range for file menu starts

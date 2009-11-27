@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Pengaturan ting
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pengaturan lanjutan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Nama kota ditampilkan
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Nama stasiun ditampilkan
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Tampilkan daftar waypoint
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Tanda ditampilkan
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animasi penuh
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detail penuh
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Bangunan tembus pandang
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparasikan palang stasiun
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nama kota ditampilkan
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Nama stasiun ditampilkan
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Tampilkan daftar waypoint
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tanda ditampilkan
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animasi penuh
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Detail penuh
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan tembus pandang
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparasikan palang stasiun
 ############ range ends here
 
 ############ range for file menu starts

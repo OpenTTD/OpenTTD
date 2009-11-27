@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zorluk Ayarlar�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gelişmiş ayarlar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf ayarları
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Şehir isimlerini göster
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}İstasyon isimlerini göster
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Yolimlerini göster
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Tabelaları göster
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Tüm animasyonlar
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Tam detay
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Şeffaf binalar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparan istasyon tabelaları
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimlerini göster
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :İstasyon isimlerini göster
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Yolimlerini göster
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tabelaları göster
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Tüm animasyonlar
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Tam detay
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Şeffaf binalar
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparan istasyon tabelaları
 ############ range ends here
 
 ############ range for file menu starts

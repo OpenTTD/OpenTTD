@@ -296,13 +296,13 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Tetapan kesukar
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lebih tetapan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pilihan penembusan
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Paparkan nama bandar
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Paparkan nama stesyen
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Paparkan tanda
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animasi penuh
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Perincian penuh
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Bangunan-bangunan telus
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Nama stesen ditembusi
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Paparkan nama bandar
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Paparkan nama stesyen
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Paparkan tanda
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animasi penuh
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Perincian penuh
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan-bangunan telus
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nama stesen ditembusi
 ############ range ends here
 
 ############ range for file menu starts

@@ -345,14 +345,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgr
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Geef plaatsnamen weer
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Geef stationsnamen weer
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Geef controlepostnamen weer
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Borden tonen
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Alle animatie
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Alle details
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparante gebouwen
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparant stationsbord
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Geef plaatsnamen weer
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Geef stationsnamen weer
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Geef controlepostnamen weer
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Borden tonen
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Alle animatie
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Alle details
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparante gebouwen
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparant stationsbord
 ############ range ends here
 
 ############ range for file menu starts

@@ -346,14 +346,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwierigkeitsg
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweiterte Einstellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Städtenamen anzeigen
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stationsnamen anzeigen
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wegpunktnamen anzeigen
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Schilder anzeigen
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Vollständige Animation
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Vollständige Detailansicht
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparenz für Gebäude
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Transparenz für Stationsnamen
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunktnamen anzeigen
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schilder anzeigen
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Vollständige Animation
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Vollständige Detailansicht
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparenz für Gebäude
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparenz für Stationsnamen
 ############ range ends here
 
 ############ range for file menu starts

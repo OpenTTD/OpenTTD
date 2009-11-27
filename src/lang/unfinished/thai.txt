@@ -342,14 +342,14 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :กำหนด
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :กำหนดค่าขั้นสูง
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ตัวเลือกค่าโปร่งใส
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}แสดงชื่อเมือง
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}แสดงชื่อสถานี
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}แสดงจุดผ่าน
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}แสดงป้าย
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}ภาพเคลื่อนไหวเต็มที่
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}รายละเอียดเต็มที่
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}สิ่งก่อสร้างแบบโปร่งใส
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}ป้ายสถานีแบบโปร่งใส
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :แสดงชื่อเมือง
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :แสดงชื่อสถานี
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :แสดงจุดผ่าน
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :แสดงป้าย
+STR_SETTINGS_MENU_FULL_ANIMATION                                :ภาพเคลื่อนไหวเต็มที่
+STR_SETTINGS_MENU_FULL_DETAIL                                   :รายละเอียดเต็มที่
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :สิ่งก่อสร้างแบบโปร่งใส
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ป้ายสถานีแบบโปร่งใส
 ############ range ends here
 
 ############ range for file menu starts

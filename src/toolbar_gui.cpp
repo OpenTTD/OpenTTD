@@ -117,19 +117,29 @@ enum ToolbarScenEditorWidgets {
  * Drop down list entry for showing a checked/unchecked toggle item.
  */
 class DropDownListCheckedItem : public DropDownListStringItem {
+	uint checkmark_width;
 public:
 	bool checked;
 
-	DropDownListCheckedItem(StringID string, int result, bool masked, bool checked) : DropDownListStringItem(string, result, masked), checked(checked) {}
+	DropDownListCheckedItem(StringID string, int result, bool masked, bool checked) : DropDownListStringItem(string, result, masked), checked(checked)
+	{
+		this->checkmark_width = GetStringBoundingBox(STR_JUST_CHECKMARK).width + 3;
+	}
 
 	virtual ~DropDownListCheckedItem() {}
 
+	uint Width() const
+	{
+		return DropDownListStringItem::Width() + checkmark_width;
+	}
+
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
+		bool rtl = _dynlang.text_dir == TD_RTL;
 		if (checked) {
 			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
-		DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : checkmark_width), right - WD_FRAMERECT_RIGHT - (rtl ? checkmark_width : 0), top, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 

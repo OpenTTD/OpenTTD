@@ -306,12 +306,12 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}نام شهرها نشان داده شود
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}نام ایستگاه ها نشان داده شود
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}علامت ها نشان داده شوند
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}انیمیشن کامل
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}جزعیات کامل
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}ساختمان های نامرئی
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :نام شهرها نشان داده شود
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :نام ایستگاه ها نشان داده شود
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :علامت ها نشان داده شوند
+STR_SETTINGS_MENU_FULL_ANIMATION                                :انیمیشن کامل
+STR_SETTINGS_MENU_FULL_DETAIL                                   :جزعیات کامل
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :ساختمان های نامرئی
 ############ range ends here
 
 ############ range for file menu starts
