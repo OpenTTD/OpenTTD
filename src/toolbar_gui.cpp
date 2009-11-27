@@ -130,16 +130,16 @@ public:
 
 	uint Width() const
 	{
-		return DropDownListStringItem::Width() + checkmark_width;
+		return DropDownListStringItem::Width() + this->checkmark_width;
 	}
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		bool rtl = _dynlang.text_dir == TD_RTL;
-		if (checked) {
+		if (this->checked) {
 			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : checkmark_width), right - WD_FRAMERECT_RIGHT - (rtl ? checkmark_width : 0), top, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : this->checkmark_width), right - WD_FRAMERECT_RIGHT - (rtl ? this->checkmark_width : 0), top, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -162,7 +162,7 @@ public:
 	uint Width() const
 	{
 		char buffer[512];
-		CompanyID company = (CompanyID)result;
+		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
 		GetString(buffer, STR_COMPANY_NAME_COMPANY_NUM, lastof(buffer));
@@ -171,7 +171,7 @@ public:
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
-		CompanyID company = (CompanyID)result;
+		CompanyID company = (CompanyID)this->result;
 		bool rtl = _dynlang.text_dir == TD_RTL;
 
 		/* It's possible the company is deleted while the dropdown is open */
