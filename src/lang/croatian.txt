@@ -342,6 +342,7 @@ STR_SORT_BY_LIFE_TIME                                           :Preostali živo
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje u rasporedu vožnje
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
+STR_SORT_BY_RATING_MAX                                          :Najveća ocjena tereta
 STR_SORT_BY_RATING_MIN                                          :Najniža ocjena tereta
 STR_SORT_BY_ENGINE_ID                                           :MotorID(standardno sortiranje)
 STR_SORT_BY_COST                                                :Cijena
@@ -365,10 +366,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tablicu lige tvrtki
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiraj izgradnju nove industrije
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži popis vlakova u vlasništvu tvrtke
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži popis cestovnih vozila u vlasništvu tvrtke
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaž popis brodova u vlasništvu tvrtke
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži popis zrakoplova u vlasništvu tvrtke
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži popis vlakova u vlasništvu tvrtke. Ctrl+klik aktivira otvaranje grupe/liste vozila.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži popis cestovnih vozila u vlasništvu tvrtke. Ctrl+klik određuje otvaranje grupe/liste vozila.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaž popis brodova u vlasništvu tvrtke. Ctrl+klik određuje otvaranje grupe/liste vozila.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži popis zrakoplova u vlasništvu tvrtke. Ctrl+klik određuje otvaranje grupe/liste vozila.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Približi pogled
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Udalji pogled
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Izgradi željezničku prugu
@@ -433,7 +434,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatni pogled
 STR_MAP_MENU_SIGN_LIST                                          :Popis znakova
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis gradova
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Osnuj grad
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
@@ -624,7 +627,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su ostvarila dobit prošle godine: ovo uključuje cestovna vozila, vlakove, brodove i zrakoplove
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, aerodrom) se računa, čak i ako su spojene kao jedna postaja
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno održavanih dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, zračna luka) se računa, čak i ako su spojene kao jedna postaja
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila s najnižim prihodom (u obzir su uzeta samo vozila starija od dvije godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najvišom dobiti u zadnjih 12 kvartala
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najvišom dobiti u zadnjih 12 kvartala
@@ -644,6 +647,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Proizvoljno 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Glasnoća glazbe
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Glasnoća zvukova
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -822,6 +828,8 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} je preuzeta od strane tvrtke {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Direktor)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponzorira izgradnju novoga grada {TOWN}!
+
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Započela je izgradnja nove {STRING.gen} u blizini grada {TOWN}a!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} trenutno se sadi blizu grada {TOWN}a!
 
@@ -994,7 +1002,9 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni 
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi osnovni grafički set za igru
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnom grafičkom setu
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set osnovnih zvukova
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Odaberite osnovni set zvukova
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o setu osnovnih zvukova
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspješan prelazak na prikaz na cijelom ekranu
 
@@ -1232,6 +1242,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Vlastita tvrtka
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Sve tvrtke
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Omogući red vožnje za vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokaži raspored u otkucajima rađe nego u danima: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Prikazuj dolaske i odlaske u voznim redovima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Brzo kreiranje naredbi vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Inicijalna vrsta pruge (poslije nove igre/podizanja igre): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normalna pruga
@@ -1296,6 +1307,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nasumično
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Gradovi mogu graditi ceste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogući određivanje razine buke za zračne luke od strane gradova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Osnivanje gradova tijekom igre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozvoljeno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, proizvoljan raspored grada
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Položaj glavne alatne trake: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Lijevo
@@ -1901,15 +1916,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnj
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Izgradnja jednotračne željeznice
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnja MagLeva
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradi željezničku prugu
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Izgradi željezničku prugu koristeći Autorail način
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradi željezničku prugu. Ctrl aktivira izgradnju/uklanjanje prilikom gradnje željeznice.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Izgradi željezničku prugu koristeći Autorail način. Ctrl aktivira izgradnju/uklanjanje prilikom gradnje željeznice.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Izgradi spremište vlakova (za kupnju i servisiranje vlakova)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori prugu u čvorište. Ctrl omogućava spajanje čvorišta
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradi željezničku postaju. Ctrl omogućava spajanje postaja
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale. Ctrl aktivira semafore/svjetlosne signale{}Povlačenjem će se izgraditi signali uzduž ravnog dijela pruge. Ctrl će izgraditi signale do sljedećeg križanja.{}Ctrl+klik aktivira otvaranje prozora za odabir signala
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradi željeznički most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi željeznički tunel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge i znakova
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, znakova, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadogradi vrstu pruge
 
 # Rail depot construction window
@@ -1974,10 +1989,10 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cjevni, silikon
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Izgradnja ceste
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Izgradnja tramvaja
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Izgradi dio ceste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Izgradi tramvajski dio
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Izgradi cestu koristeći Autoroad način gradnje
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Izgradi tramvajsku prugu koristeći Autotram način gradnje
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Izgradi dio ceste. Ctrl aktivira izgradnju/uklanjanje prilikom gradnje ceste.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Izgradi tramvajski dio. Ctrl aktivira izgradnju/uklanjanje prilikom gradnje tramvajske pruge.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Izgradi cestu koristeći Autoroad način gradnje. Ctrl aktivira izgradnju/uklanjanje prilikom gradnje ceste.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Izgradi tramvajsku prugu koristeći Autotram način gradnje. Ctrl aktivira izgradnju/uklanjanje prilikom gradnje tramvajske pruge.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Izgradi spremište cestovnih vozila (za kupnju i servisiranje vozila)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Izgradi spremište tramvajskih vozila (za kupnju i servisiranje vozila)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Izgradi autobusnu postaju. Ctrl omogućava spajanje postaja
@@ -2807,10 +2822,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ovo će 
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ovo će kupiti kopiju broda. Klikni na ovaj gumb i onda na brod unutar ili izvan spremišta. CTRL+klik će dijeliti naredbe
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ovo će kupiti kopiju zrakoplova. Klikni ovaj gumb i onda na zrakoplov unutar ili izvan hangara. Control+klik će dijeliti naredbe
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centriraj glavni pogled na lokaciju spremišta vlakova
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centriraj glavni pogled na lokaciju spremišta cestovnih vozila
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju spremišta brodova
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centriraj glavni pogled na lokaciju hangara
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centriraj glavni pogled na lokaciju spremišta vlakova. Ctrl+klik otvara novi prozor s pogledom na lokaciju spremišta vlakova.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centriraj glavni pogled na lokaciju spremišta cestovnih vozila. Ctrl+klik otvara novi prozor s pogledom na lokaciju spremišta cestovnih vozila.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju spremišta brodova. Ctrl+klik otvara novi prozor s pogledom na lokaciju spremišta brodova.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centriraj glavni pogled na lokaciju hangara. Ctrl+klik otvara novi prozor s pogledom na lokaciju hangara.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Daje popis svih vlakova koji imaju trenutno spremište među svojim naredbama
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Daje popis svih cestovnih vozila koje imaju trenutno spremište među svojim naredbama
@@ -3097,7 +3112,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg spremišta
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
 STR_ORDER_CONDITIONAL                                           :Uvjetovani skok na naredbu
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Umetni novu naredbu prije odabrane naredbe, ili dodaj na kraj liste
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Umetni novu naredbu prije odabrane naredbe, ili dodaj na kraj liste. Ctrl će zadati naredbe za postaju 'puni ukrcaj bilo kojeg tereta', za čvorište 'non-stop' i za spremište 'servisiraj'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ubaci naprednu naredbu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaži sva vozila koja dijele ovaj raspored.
@@ -3170,6 +3185,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ovaj ras
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ovo vozilo vozi na vrijeme
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ovo vozilo trenutačno {STRING} kasni
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ovo vozilo je stiglo {STRING} ranije
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj vozni red još nije započeo
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj će vozni red početi u {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Početni datum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Odaberi početni datum za ovaj vozni red.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promijeni vrijeme
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promijeni količinu vremena koju bi označena naredba trebala uzeti
@@ -3182,6 +3202,21 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetira
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatsko punjenje
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automatski popuni raspored s vrijednostima iz sljedećeg putovanja (CTRL-klik kako bi pokušali spremiti i vremena čekanja)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Očekivano
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Raspoređeno
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prebaci između očekivanog i rasporeda
+
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Odredi datum
+STR_DATE_SET_DATE                                               :{BLACK}Odredi datum
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Upotrijebi odabrani datum kao početni datum za vozni red
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Odaberi dan
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Odaberi mjesec
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Odaberi godinu
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI

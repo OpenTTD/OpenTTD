@@ -368,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nytt vyfönster
 STR_MAP_MENU_SIGN_LIST                                          :Skyltlista
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista med städer
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Grunda stad
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventioner
@@ -579,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personlig 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikvolym
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effektvolym
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -756,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} börjar bygga nära {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} har tagits över av {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(VD)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} har sponsrat byggnationen av nya staden {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ny {STRING} under konstruktion nära {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ny {STRING} planteras nära {TOWN}!
@@ -1170,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget företag
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alla företag
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Aktivera Tidtabeller för fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Visa inkommande och avgående i tidtabeller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snabbskapande av fordonsorder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard järnvägsräls (efter nytt/laddat spel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal Järnvägsräls
@@ -1234,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slumpmässig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Städer tillåts bygga vägar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillåt stadskontrollerade bullernivåer för flygplatser: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunda städer i spelet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :förbjuden
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillåten
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillåten, vanlig stads-layout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vänster
@@ -2178,7 +2190,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Mark som ägs a
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 Chris Sawyer, Alla rättigheter reserverade
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD-teamet
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2009 OpenTTD-teamet
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spara spel
@@ -2475,6 +2487,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Visa all
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Byt namn på station
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera vyn på riktmärket. Ctrl+Musklick öppnar en ny vy över riktmärkets läge
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på riktmärke
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera vyn på bojen. Ctrl+Musklick öppnar en ny vy över bojens läge
@@ -2527,7 +2540,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Företage
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% ägs av {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg Högkvarter
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg företagets huvudkontor
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Visa högkvarter
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vy av företagets huvudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytta högkvarter
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bygg om högkvarter på annan plats (kostar 1% av företagets värde)
 
@@ -3124,6 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna ti
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Detta fordon kör enligt tidtabellen
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Detta fordon är för tillfället {STRING} sen
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Detta fordon är för tillfället {STRING} tidig
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Den här tidtabellen har inte startat ännu
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Den här tidtabellen kommer starta {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Välj ett datum som startpunkt för den här tidtabellen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra tid som den markerade ordern bör ta
@@ -3136,6 +3156,21 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollstä
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofyll
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i tidtabellen automatiskt med värden från nästa resa (Ctrl+klick för att försöka behålla väntetiderna)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Förväntat
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schemalagt
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ändra mellan förväntat och schemalagt
+
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Välj datum
+STR_DATE_SET_DATE                                               :{BLACK}Välj datum
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Använd valt datum som startpunkt för den här tidtabellen
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Välj dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Välj månad
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Välj år
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare
@@ -3977,6 +4012,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4002,7 +4038,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

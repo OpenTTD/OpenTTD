@@ -3140,7 +3140,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos ho
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en hora
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está actualmente retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente {STRING} adelantado
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario no ha comenzado
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario empezará en {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una fecha como fecha de inicio de este horario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Horario
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tomar una orden marcada
@@ -3158,14 +3162,17 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre esperado y programado
 
-### Do not separate or reorder ###
-#####
-
-### Do not separate or reorder ###
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ll:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Seleccionar fecha
+STR_DATE_SET_DATE                                               :{BLACK}Seleccionar fecha
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar la fecha seleccionada como punto de inicio del horario
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecciona dia
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecciona mes
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecciona año
 
 
 # AI debug window
@@ -4032,6 +4039,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

@@ -3173,7 +3173,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ezen men
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ez a jármű jelenleg pontosan közlekedik
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ez a jármű jelenleg {STRING} késéssel közlekedik
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ez a jármű jelenleg {STRING}pal korábban közlekedik
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}A menetrend még nincs megkezdve
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}A menetrend megkezdésének dátuma {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Indulás dátuma
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Válaszd ki a menetrend kezdetének dátumát
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt menetrend-sor végrehajtási idejét változtatja meg
@@ -3184,18 +3188,24 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijel�
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Késés nullázása
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autokitölt
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatikus kitöltés
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetrend automatikus kitöltése a következő út értékeivel (CTRL-lal megtartja a várakozási időket)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Várható
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Tervezett
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Váltás a várható és a tervezett időpontok között
 
-### Do not separate or reorder ###
-#####
-
-### Do not separate or reorder ###
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :É:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :I:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Dátum beállítása
+STR_DATE_SET_DATE                                               :{BLACK}Dátum beállítása
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}A kiválasztott dátum beállítása a menetrend kezdeti időpontjának
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Válassz napot
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Válassz hónapot
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Válassz évet
 
 
 # AI debug window
@@ -4099,6 +4109,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

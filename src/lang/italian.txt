@@ -2088,7 +2088,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Proprietario tranvia: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietario ferrovia: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autorità locale: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nessuno
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nessuna
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Costruito il: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Categoria stazione: {LTBLUE}{STRING}
@@ -2861,10 +2861,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Riadatta
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverte la direzione del treno
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Fa fare un'inversione al veicolo
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra gli ordini del treno. CTRL+clic mostra la tabella tabella oraria.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra gli ordini del veicolo. CTRL+clic mostra la tabella tabella oraria.
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra gli ordini della nave. CTRL+clic mostra la tabella tabella oraria.
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra gli ordini dell'aeromobile. CTRL+clic mostra la tabella tabella oraria.
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra gli ordini del treno. CTRL+clic mostra la tabella oraria.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra gli ordini del veicolo. CTRL+clic mostra la tabella oraria.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra gli ordini della nave. CTRL+clic mostra la tabella oraria.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra gli ordini dell'aeromobile. CTRL+clic mostra la tabella oraria.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra i dettagli sul treno
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra i dettagli sull'automezzo
@@ -3135,13 +3135,17 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaggia per {
 STR_TIMETABLE_DAYS                                              :{COMMA} giorn{P o i}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Questi ordini richiedono {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Questi ordini richiedono almeno {STRING} (non tutti i tempi specificati)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Gli ordini richiedono complessivamente {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Gli ordini richiedono almeno {STRING} (non tutti i tempi specificati)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Il veicolo viaggia in orario
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Il veicolo viaggia con un ritardo di {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Il veicolo viaggia con un anticipo di {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Il viaggio non è ancora iniziato
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Il viaggio inizierà in data {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data iniziale
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleziona una data come punto di partenza della tabella oraria
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato
@@ -3155,18 +3159,19 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera i
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio (CTRL-clic per cercare di mantenere i tempi di attesa)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Atteso
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programmato
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari attesi
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna fra la visualizzazione degli orari attesi e degli orari programmati
 
-### Do not separate or reorder ###
-#####
-
-### Do not separate or reorder ###
-#####
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Impostazione data
+STR_DATE_SET_DATE                                               :{BLACK}Imposta
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usa la data selezionata come punto di partenza della tabella oraria
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Seleziona il giorno
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Seleziona il mese
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleziona l'anno
 
 
 # AI debug window

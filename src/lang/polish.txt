@@ -700,7 +700,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapis sc
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor scenariuszy
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Zmień datę początkową do tyłu o 1 rok
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Zmień datę początkawą do przodu o 1 rok
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Zmień datę początkową do przodu o 1 rok
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Wyświetl mapę, listę miast
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tworzenie krajobrazu
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tworzenie miast
@@ -3525,6 +3525,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ten pojazd podróżuje teraz zgodnie z rozkładem jazdy
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ten pojazd jest teraz spóźniony o {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ten pojazd spieszy się teraz o {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ten rozkład jazdy jeszcze się nie rozpoczął
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ten rozkład jazdy rozpocznie się {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data początkowa
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wybierz datę początkową tego rozkładu jazdy
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
@@ -3542,11 +3547,16 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
 
-### Do not separate or reorder ###
-#####
 
-### Do not separate or reorder ###
-#####
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Ustaw datę
+STR_DATE_SET_DATE                                               :{BLACK}Ustaw datę
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Użyj wybranej daty jako datę rozpoczęcia rozkładu jazdy
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Wybierz dzień
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Wybierz miesiąc
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Wybierz rok
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Odpluskwianie SI

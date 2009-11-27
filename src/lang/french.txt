@@ -1178,6 +1178,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propre compagni
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Toutes les compagnies
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activer les horaires pour les véhicules{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Afficher l'horaire en ticks plutôt qu'en jours{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afficher l'arrivée et le départ dans les horaires{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Création rapide des ordres de véhicule{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Type de rail par défaut (après nouvelle partie/chargement){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Rail normal
@@ -3139,6 +3140,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Cet hora
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ce véhicule est à l'heure
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ce véhicule est en retard de {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ce véhicule est en avance de {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cet horaire n'a pas encore démarré
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Cet horaire démarrera à {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de départ
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Sélectionner une date comme point de départ de cet horaire
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre séléctionné
@@ -3152,12 +3158,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remet à
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Attendu
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planifié
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Basculer entre attendu et planifié
 
-### Do not separate or reorder ###
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
-### Do not separate or reorder ###
-#####
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Définir la date
+STR_DATE_SET_DATE                                               :{BLACK}Définir la date
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Utiliser la date sélectionnée comme date de départ pour l'horaire
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Sélectionner le jour
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Sélectionner le mois
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Sélectionner l'année
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA
@@ -4023,6 +4039,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

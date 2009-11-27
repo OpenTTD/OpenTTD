@@ -3142,6 +3142,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este ve�
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horário ainda não começou
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horário começa a {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de início
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleccione uma data como ponto de partida deste horário
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar Tempo
@@ -3160,14 +3161,11 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Marcado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterne entre tempo esperado e marcado
 
-### Do not separate or reorder ###
-#####
-
-### Do not separate or reorder ###
-#####
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Marcar data
+STR_DATE_SET_DATE                                               :{BLACK}Marcar data
 STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Use a data seleccionada como ponto de partida do horário
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Seleccione um dia
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Seleccione um mês
