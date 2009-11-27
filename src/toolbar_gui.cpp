@@ -147,10 +147,14 @@ public:
  * Drop down list entry for showing a company entry, with companies 'blob'.
  */
 class DropDownListCompanyItem : public DropDownListItem {
+	uint icon_width;
 public:
 	bool greyed;
 
-	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed) {}
+	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed)
+	{
+		this->icon_width = GetSpriteSize(SPR_COMPANY_ICON).width;
+	}
 
 	virtual ~DropDownListCompanyItem() {}
 
@@ -161,12 +165,10 @@ public:
 
 	uint Width() const
 	{
-		char buffer[512];
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		GetString(buffer, STR_COMPANY_NAME_COMPANY_NUM, lastof(buffer));
-		return GetStringBoundingBox(buffer).width + 19;
+		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_width + 3;
 	}
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
@@ -177,7 +179,7 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		DrawCompanyIcon(company, rtl ? right - 14 - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + 1 + (FONT_HEIGHT_NORMAL - 10) / 2);
+		DrawCompanyIcon(company, rtl ? right - this->icon_width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + 1 + (FONT_HEIGHT_NORMAL - 10) / 2);
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -187,7 +189,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 17), right - WD_FRAMERECT_RIGHT - (rtl ? 17 : 0), top, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 3 + this->icon_width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_width : 0), top, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
