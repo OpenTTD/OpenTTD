@@ -229,7 +229,7 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 
 /* Window definition for the ai list window. */
 static const WindowDesc _ai_list_desc(
-	WDP_CENTER, WDP_CENTER, 200, 234,
+	WDP_CENTER, 200, 234,
 	WC_AI_LIST, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_ai_list_widgets, lengthof(_nested_ai_list_widgets)
@@ -437,7 +437,7 @@ static const NWidgetPart _nested_ai_settings_widgets[] = {
 
 /* Window definition for the AI settings window. */
 static const WindowDesc _ai_settings_desc(
-	WDP_CENTER, WDP_CENTER, 500, 208,
+	WDP_CENTER, 500, 208,
 	WC_AI_SETTINGS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_ai_settings_widgets, lengthof(_nested_ai_settings_widgets)
@@ -493,7 +493,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 
 /* Window definition for the configure AI window. */
 static const WindowDesc _ai_config_desc(
-	WDP_CENTER, WDP_CENTER, 300, 172,
+	WDP_CENTER, 300, 172,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_ai_config_widgets, lengthof(_nested_ai_config_widgets)
@@ -959,7 +959,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 };
 
 static const WindowDesc _ai_debug_desc(
-	WDP_AUTO, WDP_AUTO, 299, 241,
+	WDP_AUTO, 299, 241,
 	WC_AI_DEBUG, WC_NONE,
 	0,
 	_nested_ai_debug_widgets, lengthof(_nested_ai_debug_widgets)

@@ -481,7 +481,7 @@ static const NWidgetPart _nested_newgrf_add_dlg_widgets[] = {
 
 /* Window definition for the add a newgrf window */
 static const WindowDesc _newgrf_add_dlg_desc(
-	WDP_CENTER, WDP_CENTER, 306, 347,
+	WDP_CENTER, 306, 347,
 	WC_SAVELOAD, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_newgrf_add_dlg_widgets, lengthof(_nested_newgrf_add_dlg_widgets)
@@ -1038,7 +1038,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 
 /* Window definition of the manage newgrfs window */
 static const WindowDesc _newgrf_desc(
-	WDP_CENTER, WDP_CENTER, 300, 263,
+	WDP_CENTER, 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)

@@ -147,7 +147,7 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 };
 
 static const WindowDesc _air_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, WDP_ALIGN_TOOLBAR, 64, 36,
+	WDP_ALIGN_TOOLBAR, 64, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_air_toolbar_widgets, lengthof(_nested_air_toolbar_widgets)
@@ -368,7 +368,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 };
 
 static const WindowDesc _build_airport_desc(
-	WDP_AUTO, WDP_AUTO, 148, 245,
+	WDP_AUTO, 148, 245,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_airport_widgets, lengthof(_nested_build_airport_widgets)

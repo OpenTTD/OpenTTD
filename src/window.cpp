@@ -60,11 +60,10 @@ bool _scrolling_viewport;
 byte _special_mouse_mode;
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(int16 left, int16 top, int16 def_width, int16 def_height,
+WindowDesc::WindowDesc(WindowPosition def_pos, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts, int16 nwid_length) :
-	left(left),
-	top(top),
+	default_pos(def_pos),
 	default_width(def_width),
 	default_height(def_height),
 	cls(window_class),
@@ -1099,39 +1098,28 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 			pt.x = (_screen.width + 10 - default_width) - 20;
 		}
 		pt.y = w->top + ((desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) ? w->height : 10);
-	} else {
-		switch (desc->left) {
-			case WDP_ALIGN_TOOLBAR: // Align to the toolbar
-				return GetToolbarAlignedWindowPosition(default_width);
+		return pt;
+	}
 
-			case WDP_AUTO: // Find a good automatic position for the window
-				return GetAutoPlacePosition(default_width, default_height);
+	switch (desc->default_pos) {
+		case WDP_ALIGN_TOOLBAR: // Align to the toolbar
+			return GetToolbarAlignedWindowPosition(default_width);
 
-			case WDP_CENTER: // Centre the window horizontally
-				pt.x = (_screen.width - default_width) / 2;
-				break;
+		case WDP_AUTO: // Find a good automatic position for the window
+			return GetAutoPlacePosition(default_width, default_height);
 
-			default:
-				pt.x = desc->left;
-				if (pt.x < 0) pt.x += _screen.width; // negative is from right of the screen
-		}
+		case WDP_CENTER: // Centre the window horizontally
+			pt.x = (_screen.width - default_width) / 2;
+			pt.y = (_screen.height - default_height) / 2;
+			break;
 
-		switch (desc->top) {
-			case WDP_CENTER: // Centre the window vertically
-				pt.y = (_screen.height - default_height) / 2;
-				break;
+		case WDP_MANUAL:
+			pt.x = 0;
+			pt.y = 0;
+			break;
 
-			/* WDP_AUTO sets the position at once and is controlled by desc->left.
-			 * Both left and top must be set to WDP_AUTO. Same for toolbar alignment. */
-			case WDP_AUTO:
-			case WDP_ALIGN_TOOLBAR:
-				NOT_REACHED();
-
-			default:
-				pt.y = desc->top;
-				if (pt.y < 0) pt.y += _screen.height; // negative is from bottom of the screen
-				break;
-		}
+		default:
+			NOT_REACHED();
 	}
 
 	return pt;

@@ -445,7 +445,7 @@ static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 };
 
 static const WindowDesc _vehicle_refit_desc(
-	WDP_AUTO, WDP_AUTO, 240, 174,
+	WDP_AUTO, 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_vehicle_refit_widgets, lengthof(_nested_vehicle_refit_widgets)
@@ -1191,7 +1191,7 @@ public:
 };
 
 static WindowDesc _vehicle_list_desc(
-	WDP_AUTO, WDP_AUTO, 260, 246,
+	WDP_AUTO, 260, 246,
 	WC_INVALID, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_vehicle_list, lengthof(_nested_vehicle_list)
@@ -1602,7 +1602,7 @@ struct VehicleDetailsWindow : Window {
 
 /** Vehicle details window descriptor. */
 static const WindowDesc _train_vehicle_details_desc(
-	WDP_AUTO, WDP_AUTO, 405, 178,
+	WDP_AUTO, 405, 178,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_UNCLICK_BUTTONS,
 	_nested_train_vehicle_details_widgets, lengthof(_nested_train_vehicle_details_widgets)
@@ -1610,7 +1610,7 @@ static const WindowDesc _train_vehicle_details_desc(
 
 /** Vehicle details window descriptor for other vehicles than a train. */
 static const WindowDesc _nontrain_vehicle_details_desc(
-	WDP_AUTO, WDP_AUTO, 405, 113,
+	WDP_AUTO, 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_UNCLICK_BUTTONS,
 	_nested_nontrain_vehicle_details_widgets, lengthof(_nested_nontrain_vehicle_details_widgets)
@@ -1667,7 +1667,7 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 
 /** Vehicle view window descriptor for all vehicles but trains. */
 static const WindowDesc _vehicle_view_desc(
-	WDP_AUTO, WDP_AUTO, 250, 116,
+	WDP_AUTO, 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
@@ -1677,7 +1677,7 @@ static const WindowDesc _vehicle_view_desc(
  *  default_height are different for train view.
  */
 static const WindowDesc _train_view_desc(
-	WDP_AUTO, WDP_AUTO, 250, 134,
+	WDP_AUTO, 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)

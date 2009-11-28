@@ -335,7 +335,7 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 
 /* Window definition for the rail bridge selection window */
 static const WindowDesc _build_bridge_desc(
-	WDP_AUTO, WDP_AUTO, 200, 114,
+	WDP_AUTO, 200, 114,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_bridge_widgets, lengthof(_nested_build_bridge_widgets)

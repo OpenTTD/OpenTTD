@@ -106,7 +106,7 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 };
 
 static const WindowDesc _normal_news_desc(
-	WDP_MANUAL, WDP_MANUAL, 430, 170,
+	WDP_MANUAL, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
@@ -133,7 +133,7 @@ static const NWidgetPart _nested_vehicle_news_widgets[] = {
 };
 
 static const WindowDesc _vehicle_news_desc(
-	WDP_MANUAL, WDP_MANUAL, 430, 170,
+	WDP_MANUAL, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
@@ -164,7 +164,7 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 };
 
 static const WindowDesc _company_news_desc(
-	WDP_MANUAL, WDP_MANUAL, 430, 170,
+	WDP_MANUAL, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_company_news_widgets, lengthof(_nested_company_news_widgets)
@@ -187,7 +187,7 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 };
 
 static const WindowDesc _thin_news_desc(
-	WDP_MANUAL, WDP_MANUAL, 430, 130,
+	WDP_MANUAL, 430, 130,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
@@ -211,7 +211,7 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 };
 
 static const WindowDesc _small_news_desc(
-	WDP_MANUAL, WDP_MANUAL, 280, 87,
+	WDP_MANUAL, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
@@ -1030,7 +1030,7 @@ static const NWidgetPart _nested_message_history[] = {
 };
 
 static const WindowDesc _message_history_desc(
-	WDP_AUTO, WDP_AUTO, 400, 140,
+	WDP_AUTO, 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_message_history, lengthof(_nested_message_history)
@@ -1316,7 +1316,7 @@ static const NWidgetPart _nested_message_options_widgets[] = {
 };
 
 static const WindowDesc _message_options_desc(
-	WDP_AUTO, WDP_AUTO, 0, 0,
+	WDP_AUTO, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_message_options_widgets, lengthof(_nested_message_options_widgets)

@@ -70,7 +70,7 @@ static const NWidgetPart _nested_land_info_widgets[] = {
 };
 
 static const WindowDesc _land_info_desc(
-	WDP_AUTO, WDP_AUTO, 0, 0,
+	WDP_AUTO, 0, 0,
 	WC_LAND_INFO, WC_NONE,
 	0,
 	_nested_land_info_widgets, lengthof(_nested_land_info_widgets)
@@ -340,7 +340,7 @@ static const NWidgetPart _nested_about_widgets[] = {
 };
 
 static const WindowDesc _about_desc(
-	WDP_CENTER, WDP_CENTER, 0, 0,
+	WDP_CENTER, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_about_widgets, lengthof(_nested_about_widgets)
@@ -497,7 +497,7 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 };
 
 static const WindowDesc _errmsg_desc(
-	WDP_MANUAL, WDP_MANUAL, 240, 46,
+	WDP_MANUAL, 240, 46,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
@@ -517,7 +517,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 };
 
 static const WindowDesc _errmsg_face_desc(
-	WDP_MANUAL, WDP_MANUAL, 334, 137,
+	WDP_MANUAL, 334, 137,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
@@ -764,7 +764,7 @@ static const NWidgetPart _nested_tooltips_widgets[] = {
 };
 
 static const WindowDesc _tool_tips_desc(
-	WDP_MANUAL, WDP_MANUAL, 0, 0, // Coordinates and sizes are not used,
+	WDP_MANUAL, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
 	0,
 	_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
@@ -1428,7 +1428,7 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 };
 
 static const WindowDesc _query_string_desc(
-	WDP_AUTO, WDP_AUTO, 260, 42,
+	WDP_AUTO, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	0,
 	_nested_query_string_widgets, lengthof(_nested_query_string_widgets)
@@ -1581,7 +1581,7 @@ static const NWidgetPart _nested_query_widgets[] = {
 };
 
 static const WindowDesc _query_desc(
-	WDP_CENTER, WDP_CENTER, 210, 82,
+	WDP_CENTER, 210, 82,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_UNCLICK_BUTTONS | WDF_MODAL,
 	_nested_query_widgets, lengthof(_nested_query_widgets)
@@ -2022,14 +2022,14 @@ public:
 };
 
 static const WindowDesc _load_dialog_desc(
-	WDP_CENTER, WDP_CENTER, 257, 294,
+	WDP_CENTER, 257, 294,
 	WC_SAVELOAD, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
 );
 
 static const WindowDesc _save_dialog_desc(
-	WDP_CENTER, WDP_CENTER, 257, 320,
+	WDP_CENTER, 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)

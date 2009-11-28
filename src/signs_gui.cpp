@@ -213,7 +213,7 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 };
 
 static const WindowDesc _sign_list_desc(
-	WDP_AUTO, WDP_AUTO, 358, 138,
+	WDP_AUTO, 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	0,
 	_nested_sign_list_widgets, lengthof(_nested_sign_list_widgets)
@@ -408,7 +408,7 @@ static const NWidgetPart _nested_query_sign_edit_widgets[] = {
 };
 
 static const WindowDesc _query_sign_edit_desc(
-	WDP_AUTO, WDP_AUTO, 260, 42,
+	WDP_AUTO, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_CONSTRUCTION | WDF_UNCLICK_BUTTONS,
 	_nested_query_sign_edit_widgets, lengthof(_nested_query_sign_edit_widgets)

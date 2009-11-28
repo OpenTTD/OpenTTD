@@ -1000,7 +1000,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 };
 
 static const WindowDesc _network_game_window_desc(
-	WDP_CENTER, WDP_CENTER, 1000, 730,
+	WDP_CENTER, 1000, 730,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_network_game_widgets, lengthof(_nested_network_game_widgets)
@@ -1425,7 +1425,7 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 };
 
 static const WindowDesc _network_start_server_window_desc(
-	WDP_CENTER, WDP_CENTER, 420, 244,
+	WDP_CENTER, 420, 244,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_network_start_server_window_widgets, lengthof(_nested_network_start_server_window_widgets)
@@ -1722,7 +1722,7 @@ static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 };
 
 static const WindowDesc _network_lobby_window_desc(
-	WDP_CENTER, WDP_CENTER, 0, 0,
+	WDP_CENTER, 0, 0,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_network_lobby_window_widgets, lengthof(_nested_network_lobby_window_widgets)
@@ -1765,7 +1765,7 @@ static const NWidgetPart _nested_client_list_popup_widgets[] = {
 };
 
 static const WindowDesc _client_list_popup_desc(
-	WDP_AUTO, WDP_AUTO, 150, 1,
+	WDP_AUTO, 150, 1,
 	WC_TOOLBAR_MENU, WC_CLIENT_LIST,
 	0,
 	_nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets)
@@ -1978,7 +1978,7 @@ static const NWidgetPart _nested_client_list_widgets[] = {
 };
 
 static const WindowDesc _client_list_desc(
-	WDP_AUTO, WDP_AUTO, 250, 16,
+	WDP_AUTO, 250, 16,
 	WC_CLIENT_LIST, WC_NONE,
 	0,
 	_nested_client_list_widgets, lengthof(_nested_client_list_widgets)
@@ -2259,7 +2259,7 @@ static const NWidgetPart _nested_network_join_status_window_widgets[] = {
 };
 
 static const WindowDesc _network_join_status_window_desc(
-	WDP_CENTER, WDP_CENTER, 250, 85,
+	WDP_CENTER, 250, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
 	_nested_network_join_status_window_widgets, lengthof(_nested_network_join_status_window_widgets)
@@ -2382,7 +2382,7 @@ static const NWidgetPart _nested_network_company_password_window_widgets[] = {
 };
 
 static const WindowDesc _network_company_password_window_desc(
-	WDP_AUTO, WDP_AUTO, 300, 63,
+	WDP_AUTO, 300, 63,
 	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_network_company_password_window_widgets, lengthof(_nested_network_company_password_window_widgets)

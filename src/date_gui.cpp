@@ -210,7 +210,7 @@ static const NWidgetPart _nested_set_date_widgets[] = {
 };
 
 static const WindowDesc _set_date_desc(
-	WDP_CENTER, WDP_CENTER, 0, 0,
+	WDP_CENTER, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_set_date_widgets, lengthof(_nested_set_date_widgets)

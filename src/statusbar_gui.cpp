@@ -235,7 +235,7 @@ static const NWidgetPart _nested_main_status_widgets[] = {
 };
 
 static const WindowDesc _main_status_desc(
-	WDP_MANUAL, WDP_MANUAL, 640, 12,
+	WDP_MANUAL, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
 	_nested_main_status_widgets, lengthof(_nested_main_status_widgets)

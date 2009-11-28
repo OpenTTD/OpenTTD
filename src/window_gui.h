@@ -123,19 +123,29 @@ extern Window *_z_front_window;
 extern Window *_z_back_window;
 extern Window *_focused_window;
 
+
+/** How do we the window to be placed? */
+enum WindowPosition {
+	WDP_MANUAL,        ///< Manually align the window (so no automatic location finding)
+	WDP_AUTO,          ///< Find a place automatically
+	WDP_CENTER,        ///< Center the window
+	WDP_ALIGN_TOOLBAR, ///< Align toward the toolbar
+};
+
+Point GetToolbarAlignedWindowPosition(int window_width);
+
 /**
  * High level window description
  */
 struct WindowDesc : ZeroedMemoryAllocator {
 
-	WindowDesc(int16 left, int16 top, int16 def_width, int16 def_height,
+	WindowDesc(WindowPosition default_pos, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts = NULL, int16 nwid_length = 0);
 
 	~WindowDesc();
 
-	int16 left;                    ///< Prefered x position of left edge of the window. @see WindowDefaultPosition()
-	int16 top;                     ///< Prefered y position of the top of the window. @see WindowDefaultPosition()
+	WindowPosition default_pos;    ///< Prefered position of the window. @see WindowPosition()
 	int16 default_width;           ///< Prefered initial width of the window.
 	int16 default_height;          ///< Prefered initial height of the window.
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
@@ -154,18 +164,6 @@ enum WindowDefaultFlag {
 	WDF_MODAL           =   1 << 2, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
 	WDF_NO_FOCUS        =   1 << 3, ///< This window won't get focus/make any other window lose focus when click
 };
-
-/**
- * Special values for 'left' and 'top' to cause a specific placement
- */
-enum WindowDefaultPosition {
-	WDP_MANUAL,             ///< Manually align the window (so no automatic location finding)
-	WDP_AUTO          = -1, ///< Find a place automatically
-	WDP_CENTER        = -2, ///< Center the window (left/right or top/bottom)
-	WDP_ALIGN_TOOLBAR = -3, ///< Align to the main toolbar
-};
-
-Point GetToolbarAlignedWindowPosition(int window_width);
 
 /**
  * Scrollbar data structure

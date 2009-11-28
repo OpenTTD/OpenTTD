@@ -121,7 +121,7 @@ struct EnginePreviewWindow : Window {
 };
 
 static const WindowDesc _engine_preview_desc(
-	WDP_CENTER, WDP_CENTER, 300, 192,
+	WDP_CENTER, 300, 192,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_engine_preview_widgets, lengthof(_nested_engine_preview_widgets)
