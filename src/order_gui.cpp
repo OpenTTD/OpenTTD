@@ -195,7 +195,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	SpriteID sprite = rtl ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT;
 	Dimension sprite_size = GetSpriteSize(sprite);
 	if (v->cur_order_index == order_index) {
-		DrawSprite(sprite, PAL_NONE, rtl ? right - sprite_size.width : left, y + (FONT_HEIGHT_NORMAL - sprite_size.height) / 2);
+		DrawSprite(sprite, PAL_NONE, rtl ? right - sprite_size.width : left, y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
 	}
 
 	SetDParam(0, order_index + 1);
