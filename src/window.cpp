@@ -1101,14 +1101,8 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 		pt.y = w->top + ((desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) ? w->height : 10);
 	} else {
 		switch (desc->left) {
-			case WDP_ALIGN_TBR: // Align the right side with the top toolbar
-				w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-				pt.x = (w->left + w->width) - default_width;
-				break;
-
-			case WDP_ALIGN_TBL: // Align the left side with the top toolbar
-				pt.x = FindWindowById(WC_MAIN_TOOLBAR, 0)->left;
-				break;
+			case WDP_ALIGN_TOOLBAR: // Align to the toolbar
+				return GetToolbarAlignedWindowPosition(default_width);
 
 			case WDP_AUTO: // Find a good automatic position for the window
 				return GetAutoPlacePosition(default_width, default_height);
@@ -1128,11 +1122,10 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 				break;
 
 			/* WDP_AUTO sets the position at once and is controlled by desc->left.
-			 * Both left and top must be set to WDP_AUTO */
+			 * Both left and top must be set to WDP_AUTO. Same for toolbar alignment. */
 			case WDP_AUTO:
+			case WDP_ALIGN_TOOLBAR:
 				NOT_REACHED();
-				assert(desc->left == WDP_AUTO && desc->top != WDP_AUTO);
-				/* fallthrough */
 
 			default:
 				pt.y = desc->top;

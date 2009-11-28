@@ -147,7 +147,7 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 };
 
 static const WindowDesc _air_toolbar_desc(
-	WDP_ALIGN_TBR, 22, 64, 36,
+	WDP_ALIGN_TOOLBAR, WDP_ALIGN_TOOLBAR, 64, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_air_toolbar_widgets, lengthof(_nested_air_toolbar_widgets)

@@ -856,7 +856,7 @@ static const NWidgetPart _nested_build_rail_widgets[] = {
 };
 
 static const WindowDesc _build_rail_desc(
-	WDP_ALIGN_TBR, 22, 350, 36,
+	WDP_ALIGN_TOOLBAR, WDP_ALIGN_TOOLBAR, 350, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_rail_widgets, lengthof(_nested_build_rail_widgets)

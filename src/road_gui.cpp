@@ -661,7 +661,7 @@ static const NWidgetPart _nested_build_road_widgets[] = {
 };
 
 static const WindowDesc _build_road_desc(
-	WDP_ALIGN_TBR, 22, 263, 36,
+	WDP_ALIGN_TOOLBAR, WDP_ALIGN_TOOLBAR, 263, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_road_widgets, lengthof(_nested_build_road_widgets)
@@ -700,7 +700,7 @@ static const NWidgetPart _nested_build_tramway_widgets[] = {
 };
 
 static const WindowDesc _build_tramway_desc(
-	WDP_ALIGN_TBR, 22, 241, 36,
+	WDP_ALIGN_TOOLBAR, WDP_ALIGN_TOOLBAR, 241, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets)

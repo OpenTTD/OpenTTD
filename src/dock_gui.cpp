@@ -279,7 +279,7 @@ static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 };
 
 static const WindowDesc _build_docks_toolbar_desc(
-	WDP_ALIGN_TBR, 22, 160, 36,
+	WDP_ALIGN_TOOLBAR, WDP_ALIGN_TOOLBAR, 160, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_docks_toolbar_widgets, lengthof(_nested_build_docks_toolbar_widgets)
