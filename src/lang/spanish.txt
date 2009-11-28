@@ -2999,6 +2999,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horarios
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar a la vista de horarios
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes - click en orden para resaltarla
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fin de pedidos - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fin de órdenes compartidas - -

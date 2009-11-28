@@ -369,6 +369,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Llista de senya
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directori de Poblacions
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Funda poble
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -761,6 +762,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ha estat absorbida per {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(President)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} ha patrocinat la construcció d'un nou poble {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nou/nova {STRING} en construcció prop de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}S'està plantant un nou {STRING} prop de {TOWN}!
@@ -1175,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Pròpia company
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Totes les companyies
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Habilita horaris dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra l'arribada i la sortida als horaris: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creació ràpida d'ordres per a vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipus de via predeterminada (en un joc nou/joc desat): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Via Normal
@@ -1239,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatori
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Els pobles poden construir carreteres: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permet a la ciutat controlar el nivell de soroll dels aeroports: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundant pobles al joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibit
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permès
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permès, disposició de poble personalitzada
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerra
@@ -2991,6 +2998,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horari
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Commuta a la vista d'horaris
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una per seleccionar-la
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fi d'Ordres - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fi d'Ordres Compartides - -
@@ -3130,6 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}L'horari
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Actualment aquest vehicle és puntual
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Actualment aquest vehicle va {STRING} tard
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Actualment aquest vehicle va {STRING} d'hora
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Aquest horari encara no ha començat
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Aquest horari començarpa a {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de partida
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una data com a punt de partida d'aquest horari
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la quantitat de temps que l'ordre marcada hauria de prendre
@@ -3143,12 +3157,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseteja
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge (CTRL+clic per intentar mantenir els temps d'espera)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperat
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Canvia entre esperat i planificat
 
-### Do not separate or reorder ###
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
-### Do not separate or reorder ###
-#####
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Estableix data
+STR_DATE_SET_DATE                                               :{BLACK}Estableix data
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Utilitza la data seleccionada com a data de partida d'aquest horari
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecciona dia
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecciona mes
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecciona any
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuració IA
@@ -4014,6 +4038,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

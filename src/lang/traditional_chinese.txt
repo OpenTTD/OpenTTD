@@ -368,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :打開新視野
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮目錄
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :興建市鎮
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
@@ -759,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} 開始在 {TOWN} 附近建造！
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} 被 {STRING} 收購！
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(經理)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} 贊助新市鎮「{TOWN}」的興建！
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新的 {STRING} 正在 {TOWN} 附近建造中！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新的 {STRING} 正在 {TOWN} 附近種植中！
@@ -1173,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自家公司
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :所有公司
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}啟用交通工具時刻表：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}顯示時刻表排定的到離時間：{ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立交通工具調度命令：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :傳統鐵路
@@ -1237,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}市鎮可以興建道路：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}於遊戲中興建新市鎮：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允許，可自訂市鎮道路配置
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :靠左
@@ -2989,6 +2998,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}時刻�
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切換至時刻表檢視模式
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令清單 - 點選可選擇該指令，按住 CTRL 點選可跳到車站位置
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令結束 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享指令結束 - -
@@ -3128,6 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時�
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此交通工具目前準點
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此交通工具目前慢了 {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}此交通工具目前早了 {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此時刻表尚未實施
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此時刻表實施日期為 {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}實施日期
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}選擇此時刻表開始實施日期
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}變更時刻
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改變目前選定命令所需的時間
@@ -3140,6 +3156,21 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤�
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間編寫時刻表 (按住 CTRL 可保持等待時間)
+
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}已排定時刻表
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :到:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :開:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}設定日期
+STR_DATE_SET_DATE                                               :{BLACK}設定日期
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}使用所選的日期作為時刻表的實施日期
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}選擇日期
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}選擇月份
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}選擇年份
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI 除錯
@@ -4005,6 +4036,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

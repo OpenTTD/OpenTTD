@@ -3000,6 +3000,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Orario
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Passa alla visualizzazione della tabella oraria
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista degli ordini - fare clic su un ordine per selezionarlo e CTRL+clic per portarsi sulla stazione corrispondente
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fine degli ordini - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fine degli ordini condivisi - -
@@ -3161,6 +3163,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari at
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna fra la visualizzazione degli orari attesi e degli orari programmati
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:
 
 
 # Date window (for timetable)
@@ -4036,6 +4040,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

@@ -730,8 +730,8 @@ STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie n
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełna animacja
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Wszystkie detale
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Przezroczyste budynki
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przezroczyste nazwy stacji
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Przeźroczyste budynki
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przeźroczyste nazwy stacji
 ############ range ends here
 
 ############ range for file menu starts
@@ -3384,6 +3384,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rozkład
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz widok rozkładu jazdy
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - klik na poleceniu, aby zaznaczyć. Ctrl+klik przenosi do stacji
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Koniec poleceń - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec współdzielonych poleceń - -
@@ -3545,6 +3547,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -4456,6 +4460,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
