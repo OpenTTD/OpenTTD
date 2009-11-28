@@ -324,9 +324,11 @@ struct TimetableWindow : Window {
 			this->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
 			this->SetWidgetDisabledState(TTV_SHARED_ORDER_LIST, !v->IsOrderListShared());
 
+			this->EnableWidget(TTV_START_DATE);
 			this->EnableWidget(TTV_RESET_LATENESS);
 			this->EnableWidget(TTV_AUTOFILL);
 		} else {
+			this->DisableWidget(TTV_START_DATE);
 			this->DisableWidget(TTV_CHANGE_TIME);
 			this->DisableWidget(TTV_CLEAR_TIME);
 			this->DisableWidget(TTV_RESET_LATENESS);
