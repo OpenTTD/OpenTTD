@@ -2973,11 +2973,9 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Plano de
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Exibe o plano de horário
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a selecionar
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fim de Ordens - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - Fim de Ordens Compartilhadas - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Compartilhadas - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Sem parar
@@ -3100,9 +3098,9 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Alternar
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Plano de horário - selecione uma ordem clicando nela
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Não viajar
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viajar (não progamado)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viajar para {STRING}
+STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não progamado)
+STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}

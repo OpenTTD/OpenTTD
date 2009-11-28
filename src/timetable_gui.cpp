@@ -361,13 +361,18 @@ struct TimetableWindow : Window {
 				VehicleOrderID order_id = (i + 1) / 2;
 				bool final_order = false;
 
+				bool rtl = _dynlang.text_dir == TD_RTL;
+				SetDParam(0, 99);
+				int index_column_width = GetStringBoundingBox(STR_ORDER_INDEX).width + GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + 3;
+				int middle = rtl ? r.right - WD_FRAMERECT_RIGHT - index_column_width : r.left + WD_FRAMERECT_LEFT + index_column_width;
+
 				const Order *order = v->GetOrder(order_id);
 				while (order != NULL) {
 					/* Don't draw anything if it extends past the end of the window. */
 					if (!this->vscroll.IsVisible(i)) break;
 
 					if (i % 2 == 0) {
-						DrawOrderString(v, order, order_id, y, i == selected, true, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT);
+						DrawOrderString(v, order, order_id, y, i == selected, true, r.left + WD_FRAMERECT_LEFT, middle, r.right - WD_FRAMERECT_RIGHT);
 
 						order_id++;
 
@@ -389,7 +394,7 @@ struct TimetableWindow : Window {
 							string = STR_TIMETABLE_TRAVEL_FOR;
 						}
 
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
+						DrawString(rtl ? r.left + WD_FRAMERECT_LEFT : middle, rtl ? middle : r.right - WD_FRAMERECT_LEFT, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
 
 						if (final_order) break;
 					}

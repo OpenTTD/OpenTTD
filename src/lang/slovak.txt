@@ -3040,11 +3040,9 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}CP
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prepnút na zobrazenie cestovného poriadku
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Zoznam prikazov - kliknut na prikaz pre oznacenie
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Koniec prikazov - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - Koniec zdielanych prikazov - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Koniec prikazov - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec zdielanych prikazov - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -3167,9 +3165,9 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Prepnút
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Cestovný poriadok - kliknite na príkaz pre jeho oznacenie
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Necestuj
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Cesta (neurcený cas)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Cesta do {STRING}
+STR_TIMETABLE_NO_TRAVEL                                         :Necestuj
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
+STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a cestuj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ni ní}

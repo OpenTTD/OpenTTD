@@ -1461,10 +1461,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تعمی
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورات)
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - پایان دستورات - -
+STR_ORDERS_END_OF_ORDERS                                        :- - پایان دستورات - -
 
 # Order bottom buttons
 

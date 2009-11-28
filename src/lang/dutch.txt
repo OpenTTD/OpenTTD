@@ -2998,11 +2998,9 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Dienstre
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Schakel naar de dienstregeling
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlijst - klik op een order om deze te selecteren. Ctrl+klik gaat naar het station
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Einde van orders - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - Einde gedeelde orders - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Einde van orders - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Einde gedeelde orders - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -3125,9 +3123,9 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Ga naar 
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een opdracht om het te selecteren
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Niet rijden
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (geen dienstregeling)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis naar {STRING}
+STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
+STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijdt naar {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}

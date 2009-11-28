@@ -47,7 +47,7 @@ bool ProcessOrders(Vehicle *v);
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0);
 VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v);
 
-void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int left, int right);
+void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int left, int middle, int right);
 
 #define MIN_SERVINT_PERCENT  5
 #define MAX_SERVINT_PERCENT 90

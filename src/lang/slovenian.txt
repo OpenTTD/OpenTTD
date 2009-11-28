@@ -2987,11 +2987,9 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Časovna
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Preklop na pogled časovnih tabel
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+klik prikaže postajo
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Konec ukazov - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - Konec ukazov v skupni rabi - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Konec ukazov - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Konec ukazov v skupni rabi - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -3114,9 +3112,9 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Preklop 
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Časovna tabela - clikni na ukaz za ga označit.
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Brez potovanja
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Potovanje (brez časovnih tabel)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Potuj za {STRING}
+STR_TIMETABLE_NO_TRAVEL                                         :Brez potovanja
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez časovnih tabel)
+STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :s potovanjem za {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva i i}

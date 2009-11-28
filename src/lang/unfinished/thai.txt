@@ -1403,7 +1403,7 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}ปร�
 # Order view
 
 
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
 
 # Order bottom buttons
 

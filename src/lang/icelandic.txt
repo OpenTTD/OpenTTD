@@ -2946,11 +2946,9 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Áætlun
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skipta yfir í áætlanasýn
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Áætlun - smelltu til að velja stöð. CTRL + músartakki færir sjónarhorn að stöðinni
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Endi skipana - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - Endi sameiginlegra skipana - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Endi skipana - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Endi sameiginlegra skipana - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Hraðleið
@@ -3073,9 +3071,9 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Skipta y
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Áætlun - smelltu á skipun til að velja hana.
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Engin ferðalög
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Ferðalag (ekki sett í áætlun)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Ferðast í {STRING}
+STR_TIMETABLE_NO_TRAVEL                                         :Engin ferðalög
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
+STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og bíða í {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og ferðast í {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" a}
