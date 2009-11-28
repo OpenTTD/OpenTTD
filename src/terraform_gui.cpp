@@ -31,6 +31,7 @@
 #include "tree_map.h"
 #include "landscape_type.h"
 #include "tilehighlight_func.h"
+#include "strings_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -288,6 +289,13 @@ struct TerraformToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	{
+		Point pt = GetToolbarAlignedWindowPosition(sm_width);
+		pt.y += sm_height;
+		return pt;
+	}
+
 	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
 	{
 		if (pt.x != -1) {
@@ -337,7 +345,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 };
 
 static const WindowDesc _terraform_desc(
-	WDP_ALIGN_TBR, 22 + 36, 158, 36,
+	WDP_MANUAL, WDP_MANUAL, 158, 36,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_terraform_widgets, lengthof(_nested_terraform_widgets)
@@ -354,15 +362,14 @@ Window *ShowTerraformToolbar(Window *link)
 		w = FindWindowById(WC_SCEN_LAND_GEN, 0);
 		if (w == NULL) return NULL;
 	} else {
-		w->top = 22;
+		w->top -= w->height;
 		w->SetDirty();
 	}
 
 	/* Align the terraform toolbar under the main toolbar and put the linked
-	 * toolbar to left of it
-	 */
+	 * toolbar to left/right of it */
+	link->left = w->left + (_dynlang.text_dir == TD_RTL ? w->width : -link->width);
 	link->top  = w->top;
-	link->left = w->left - link->width;
 	link->SetDirty();
 
 	return w;

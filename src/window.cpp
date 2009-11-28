@@ -1052,6 +1052,20 @@ restart:
 }
 
 /**
+ * Computer the position of the top-left corner of a window to be opened right
+ * under the toolbar.
+ * @param window_width the width of the window to get the position for
+ * @return Coordinate of the top-left corner of the new window.
+ */
+Point GetToolbarAlignedWindowPosition(int window_width)
+{
+	const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+	assert(w != NULL);
+	Point pt = { _dynlang.text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
+	return pt;
+}
+
+/**
  * Compute the position of the top-left corner of a new window that is opened.
  *
  * By default position a child window at an offset of 10/10 of its parent.
@@ -1071,7 +1085,7 @@ restart:
 static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 {
 	Point pt;
-	Window *w;
+	const Window *w;
 
 	int16 default_width  = max(desc->default_width,  sm_width);
 	int16 default_height = max(desc->default_height, sm_height);

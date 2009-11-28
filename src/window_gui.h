@@ -166,6 +166,8 @@ enum WindowDefaultPosition {
 	WDP_ALIGN_TBL = -4, ///< Align the left side of the window with the left side of the main toolbar
 };
 
+Point GetToolbarAlignedWindowPosition(int window_width);
+
 /**
  * Scrollbar data structure
  */

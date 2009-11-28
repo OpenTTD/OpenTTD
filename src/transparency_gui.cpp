@@ -117,6 +117,13 @@ public:
 		}
 	}
 
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	{
+		Point pt = GetToolbarAlignedWindowPosition(sm_width);
+		pt.y += 2 * (sm_height - this->GetWidget<NWidgetBase>(TTW_WIDGET_BUTTONS)->current_y);
+		return pt;
+	}
+
 	virtual void OnInvalidateData(int data)
 	{
 		for (uint i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
@@ -149,7 +156,7 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 };
 
 static const WindowDesc _transparency_desc(
-	WDP_ALIGN_TBR, 94, 219, 49,
+	WDP_MANUAL, WDP_MANUAL, 219, 49,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	0,
 	_nested_transparency_widgets, lengthof(_nested_transparency_widgets)
