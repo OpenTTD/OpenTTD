@@ -2100,7 +2100,7 @@ static const NWidgetPart _nested_buy_company_widgets[] = {
 };
 
 static const WindowDesc _buy_company_desc(
-	153, 171, 334, 137,
+	WDP_AUTO, WDP_AUTO, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)

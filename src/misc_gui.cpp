@@ -1428,7 +1428,7 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 };
 
 static const WindowDesc _query_string_desc(
-	190, 219, 260, 42,
+	WDP_AUTO, WDP_AUTO, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
 	0,
 	_nested_query_string_widgets, lengthof(_nested_query_string_widgets)

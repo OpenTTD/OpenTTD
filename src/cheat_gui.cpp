@@ -316,7 +316,7 @@ struct CheatWindow : Window {
 };
 
 static const WindowDesc _cheats_desc(
-	240, 22, 0, 0,
+	WDP_AUTO, WDP_AUTO, 0, 0,
 	WC_CHEATS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_cheat_widgets, lengthof(_nested_cheat_widgets)
