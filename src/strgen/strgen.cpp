@@ -239,30 +239,6 @@ static void EmitSingleChar(char *buf, int value)
 }
 
 
-static void EmitSetX(char *buf, int value)
-{
-	char *err;
-	int x = strtol(buf, &err, 0);
-	if (*err != '\0') error("SetX param invalid");
-	PutUtf8(SCC_SETX);
-	PutByte((byte)x);
-}
-
-
-static void EmitSetXY(char *buf, int value)
-{
-	char *err;
-
-	int x = strtol(buf, &err, 0);
-	if (*err != ' ') error("SetXY param invalid");
-	int y = strtol(err + 1, &err, 0);
-	if (*err != 0) error("SetXY param invalid");
-
-	PutUtf8(SCC_SETXY);
-	PutByte((byte)x);
-	PutByte((byte)y);
-}
-
 /* The plural specifier looks like
  * {NUM} {PLURAL -1 passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
 
@@ -1228,11 +1204,7 @@ int CDECL main(int argc, char *argv[])
 						break;
 
 					default:
-						if (cs->proc == EmitSetX) {
-							flags = '1'; // Command needs one parameter
-						} else if (cs->proc == EmitSetXY) {
-							flags = '2'; // Command needs two parameters
-						} else if (cs->proc == EmitGender) {
+						if (cs->proc == EmitGender) {
 							flags = 'g'; // Command needs number of parameters defined by number of genders
 						} else if (cs->proc == EmitPlural) {
 							flags = 'p'; // Command needs number of parameters defined by plural value
