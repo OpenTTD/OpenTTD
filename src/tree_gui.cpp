@@ -225,7 +225,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 };
 
 static const WindowDesc _build_trees_desc(
-	WDP_AUTO, 143, 184,
+	WDP_AUTO, 0, 0,
 	WC_BUILD_TREES, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)

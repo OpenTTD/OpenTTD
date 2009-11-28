@@ -744,14 +744,14 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 };
 
 static const WindowDesc _generate_landscape_desc(
-	WDP_CENTER, 338, 313,
+	WDP_CENTER, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_generate_landscape_widgets, lengthof(_nested_generate_landscape_widgets)
 );
 
 static const WindowDesc _heightmap_load_desc(
-	WDP_CENTER, 338, 236,
+	WDP_CENTER, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_heightmap_load_widgets, lengthof(_nested_heightmap_load_widgets)
@@ -1057,7 +1057,7 @@ static const NWidgetPart _nested_create_scenario_widgets[] = {
 };
 
 static const WindowDesc _create_scenario_desc(
-	WDP_CENTER, 338, 170,
+	WDP_CENTER, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_create_scenario_widgets, lengthof(_nested_create_scenario_widgets)
@@ -1090,7 +1090,7 @@ static const NWidgetPart _nested_generate_progress_widgets[] = {
 
 
 static const WindowDesc _generate_progress_desc(
-	WDP_CENTER, 181, 97,
+	WDP_CENTER, 0, 0,
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)

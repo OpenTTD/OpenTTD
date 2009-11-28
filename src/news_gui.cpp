@@ -106,7 +106,7 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 };
 
 static const WindowDesc _normal_news_desc(
-	WDP_MANUAL, 430, 170,
+	WDP_MANUAL, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
@@ -133,7 +133,7 @@ static const NWidgetPart _nested_vehicle_news_widgets[] = {
 };
 
 static const WindowDesc _vehicle_news_desc(
-	WDP_MANUAL, 430, 170,
+	WDP_MANUAL, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
@@ -164,7 +164,7 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 };
 
 static const WindowDesc _company_news_desc(
-	WDP_MANUAL, 430, 170,
+	WDP_MANUAL, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_company_news_widgets, lengthof(_nested_company_news_widgets)
@@ -187,7 +187,7 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 };
 
 static const WindowDesc _thin_news_desc(
-	WDP_MANUAL, 430, 130,
+	WDP_MANUAL, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
@@ -211,7 +211,7 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 };
 
 static const WindowDesc _small_news_desc(
-	WDP_MANUAL, 280, 87,
+	WDP_MANUAL, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)

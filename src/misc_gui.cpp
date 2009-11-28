@@ -497,7 +497,7 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 };
 
 static const WindowDesc _errmsg_desc(
-	WDP_MANUAL, 240, 46,
+	WDP_MANUAL, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
@@ -517,7 +517,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 };
 
 static const WindowDesc _errmsg_face_desc(
-	WDP_MANUAL, 334, 137,
+	WDP_MANUAL, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
@@ -1428,7 +1428,7 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 };
 
 static const WindowDesc _query_string_desc(
-	WDP_AUTO, 260, 42,
+	WDP_AUTO, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	0,
 	_nested_query_string_widgets, lengthof(_nested_query_string_widgets)
@@ -1581,7 +1581,7 @@ static const NWidgetPart _nested_query_widgets[] = {
 };
 
 static const WindowDesc _query_desc(
-	WDP_CENTER, 210, 82,
+	WDP_CENTER, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_UNCLICK_BUTTONS | WDF_MODAL,
 	_nested_query_widgets, lengthof(_nested_query_widgets)

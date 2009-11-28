@@ -476,7 +476,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 };
 
 static const WindowDesc _game_options_desc(
-	WDP_CENTER, 370, 249,
+	WDP_CENTER, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_game_options_widgets, lengthof(_nested_game_options_widgets)
@@ -750,7 +750,7 @@ static const NWidgetPart _nested_game_difficulty_widgets[] = {
 
 /** Window definition for the game difficulty settings window */
 static const WindowDesc _game_difficulty_desc(
-	WDP_CENTER, 370, 279,
+	WDP_CENTER, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_game_difficulty_widgets, lengthof(_nested_game_difficulty_widgets)
@@ -1923,7 +1923,7 @@ static const NWidgetPart _nested_cust_currency_widgets[] = {
 };
 
 static const WindowDesc _cust_currency_desc(
-	WDP_CENTER, 230, 120,
+	WDP_CENTER, 0, 0,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_cust_currency_widgets, lengthof(_nested_cust_currency_widgets)

@@ -179,14 +179,14 @@ static const NWidgetPart _nested_highscore_widgets[] = {
 };
 
 static const WindowDesc _highscore_desc(
-	WDP_MANUAL, 641, 481,
+	WDP_MANUAL, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	0,
 	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
 static const WindowDesc _endgame_desc(
-	WDP_MANUAL, 641, 481,
+	WDP_MANUAL, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	0,
 	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)

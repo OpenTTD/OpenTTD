@@ -140,7 +140,7 @@ static const NWidgetPart _nested_graph_legend_widgets[] = {
 };
 
 static const WindowDesc _graph_legend_desc(
-	WDP_AUTO, 250, 196,
+	WDP_AUTO, 0, 0,
 	WC_GRAPH_LEGEND, WC_NONE,
 	0,
 	_nested_graph_legend_widgets, lengthof(_nested_graph_legend_widgets)
@@ -603,7 +603,7 @@ static const NWidgetPart _nested_operating_profit_widgets[] = {
 };
 
 static const WindowDesc _operating_profit_desc(
-	WDP_AUTO, 576, 174,
+	WDP_AUTO, 0, 0,
 	WC_OPERATING_PROFIT, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_operating_profit_widgets, lengthof(_nested_operating_profit_widgets)
@@ -644,7 +644,7 @@ static const NWidgetPart _nested_income_graph_widgets[] = {
 
 
 static const WindowDesc _income_graph_desc(
-	WDP_AUTO, 576, 142,
+	WDP_AUTO, 0, 0,
 	WC_INCOME_GRAPH, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_income_graph_widgets, lengthof(_nested_income_graph_widgets)
@@ -682,7 +682,7 @@ static const NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 };
 
 static const WindowDesc _delivered_cargo_graph_desc(
-	WDP_AUTO, 576, 142,
+	WDP_AUTO, 0, 0,
 	WC_DELIVERED_CARGO, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_delivered_cargo_graph_widgets, lengthof(_nested_delivered_cargo_graph_widgets)
@@ -734,7 +734,7 @@ static const NWidgetPart _nested_performance_history_widgets[] = {
 };
 
 static const WindowDesc _performance_history_desc(
-	WDP_AUTO, 576, 238,
+	WDP_AUTO, 0, 0,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_performance_history_widgets, lengthof(_nested_performance_history_widgets)
@@ -772,7 +772,7 @@ static const NWidgetPart _nested_company_value_graph_widgets[] = {
 };
 
 static const WindowDesc _company_value_graph_desc(
-	WDP_AUTO, 576, 238,
+	WDP_AUTO, 0, 0,
 	WC_COMPANY_VALUE, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_company_value_graph_widgets, lengthof(_nested_company_value_graph_widgets)
@@ -943,7 +943,7 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 };
 
 static const WindowDesc _cargo_payment_rates_desc(
-	WDP_AUTO, 568, 46,
+	WDP_AUTO, 0, 0,
 	WC_PAYMENT_RATES, WC_NONE,
 	0,
 	_nested_cargo_payment_rates_widgets, lengthof(_nested_cargo_payment_rates_widgets)
@@ -1123,7 +1123,7 @@ static const NWidgetPart _nested_company_league_widgets[] = {
 };
 
 static const WindowDesc _company_league_desc(
-	WDP_AUTO, 400, 167,
+	WDP_AUTO, 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
 	_nested_company_league_widgets, lengthof(_nested_company_league_widgets)
@@ -1461,7 +1461,7 @@ static const NWidgetPart _nested_performance_rating_detail_widgets[] = {
 };
 
 static const WindowDesc _performance_rating_detail_desc(
-	WDP_AUTO, 299, 241,
+	WDP_AUTO, 0, 0,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	0,
 	_nested_performance_rating_detail_widgets, lengthof(_nested_performance_rating_detail_widgets)

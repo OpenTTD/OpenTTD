@@ -493,7 +493,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 
 /* Window definition for the configure AI window. */
 static const WindowDesc _ai_config_desc(
-	WDP_CENTER, 300, 172,
+	WDP_CENTER, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_ai_config_widgets, lengthof(_nested_ai_config_widgets)

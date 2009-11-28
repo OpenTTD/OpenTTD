@@ -279,7 +279,7 @@ static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 };
 
 static const WindowDesc _build_docks_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, 160, 36,
+	WDP_ALIGN_TOOLBAR, 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_docks_toolbar_widgets, lengthof(_nested_build_docks_toolbar_widgets)
@@ -315,7 +315,7 @@ static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 
 /** Window definition for the build docks in scenario editor window. */
 static const WindowDesc _build_docks_scen_toolbar_desc(
-	WDP_AUTO, 115, 36,
+	WDP_AUTO, 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_docks_scen_toolbar_widgets, lengthof(_nested_build_docks_scen_toolbar_widgets)
@@ -410,7 +410,7 @@ static const NWidgetPart _nested_build_dock_station_widgets[] = {
 };
 
 static const WindowDesc _build_dock_station_desc(
-	WDP_AUTO, 148, 75,
+	WDP_AUTO, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_dock_station_widgets, lengthof(_nested_build_dock_station_widgets)
@@ -494,7 +494,7 @@ static const NWidgetPart _nested_build_docks_depot_widgets[] = {
 };
 
 static const WindowDesc _build_docks_depot_desc(
-	WDP_AUTO, 204, 86,
+	WDP_AUTO, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_docks_depot_widgets, lengthof(_nested_build_docks_depot_widgets)
