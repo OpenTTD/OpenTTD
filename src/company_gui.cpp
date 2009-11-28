@@ -886,6 +886,18 @@ enum SelectCompanyManagerFaceWidgets {
 	SCMFW_WIDGET_LOAD,
 	SCMFW_WIDGET_FACECODE,
 	SCMFW_WIDGET_SAVE,
+	SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT,
+	SCMFW_WIDGET_TIE_EARRING_TEXT,
+	SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT,
+	SCMFW_WIDGET_HAS_GLASSES_TEXT,
+	SCMFW_WIDGET_HAIR_TEXT,
+	SCMFW_WIDGET_EYEBROWS_TEXT,
+	SCMFW_WIDGET_EYECOLOUR_TEXT,
+	SCMFW_WIDGET_GLASSES_TEXT,
+	SCMFW_WIDGET_NOSE_TEXT,
+	SCMFW_WIDGET_CHIN_TEXT,
+	SCMFW_WIDGET_JACKET_TEXT,
+	SCMFW_WIDGET_COLLAR_TEXT,
 	SCMFW_WIDGET_ETHNICITY_EUR,
 	SCMFW_WIDGET_ETHNICITY_AFR,
 	SCMFW_WIDGET_HAS_MOUSTACHE_EARRING,
@@ -920,7 +932,6 @@ enum SelectCompanyManagerFaceWidgets {
 	SCMFW_WIDGET_GLASSES_L,
 	SCMFW_WIDGET_GLASSES,
 	SCMFW_WIDGET_GLASSES_R,
-	SCMFW_WIDGET_LABELS,
 };
 
 /** Nested widget description for the normal/simple company manager face selection dialog */
@@ -994,57 +1005,72 @@ static const NWidgetPart _nested_select_company_manager_face_adv_widgets[] = {
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_EMPTY, COLOUR_GREY, SCMFW_WIDGET_LABELS), SetMinimalSize(75, 146), SetPadding(0, 4, 0, 1),
 					NWidget(NWID_VERTICAL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_MOUSTACHE_EARRING), SetMinimalSize(43, 12), SetDataTip(STR_EMPTY, STR_FACE_MOUSTACHE_EARRING_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_GLASSES), SetMinimalSize(43, 12), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP),
-						NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_MOUSTACHE_EARRING), SetMinimalSize(43, 12), SetDataTip(STR_EMPTY, STR_FACE_MOUSTACHE_EARRING_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_HAS_GLASSES_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_GLASSES), SetMinimalSize(43, 12), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetFill(1, 0),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_HAIR_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_HAIR_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_HAIR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_HAIR_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_HAIR_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_HAIR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_EYEBROWS_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_EYEBROWS_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_EYEBROWS_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_EYEBROWS_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_EYECOLOUR_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_EYECOLOUR_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_GLASSES_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_GLASSES_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_GLASSES_TOOLTIP_2),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP_2),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_GLASSES_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_GLASSES_TOOLTIP_2),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_NOSE_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_NOSE_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_NOSE_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_NOSE_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_NOSE_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_NOSE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_CHIN_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_CHIN_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_CHIN_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_CHIN_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_CHIN_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_CHIN_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_JACKET_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_JACKET_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_JACKET_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_JACKET_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_JACKET_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_JACKET_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_COLLAR_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_COLLAR_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_COLLAR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_COLLAR_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_COLLAR_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_COLLAR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_TIE_EARRING_TEXT), SetFill(1, 0),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING_L), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_FACE_TIE_EARRING_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING), SetMinimalSize(25, 12), SetDataTip(STR_EMPTY, STR_FACE_TIE_EARRING_TOOLTIP),
 							NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING_R), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_FACE_TIE_EARRING_TOOLTIP),
@@ -1072,22 +1098,21 @@ class SelectCompanyManagerFaceWindow : public Window
 	bool is_female;     ///< Female face.
 	bool is_moust_male; ///< Male face with a moustache.
 
+	static const StringID PART_TEXTS_IS_FEMALE[];
+	static const StringID PART_TEXTS[];
+
 	/**
 	 * Draw dynamic a label to the left of the button and a value in the button
 	 *
 	 * @param widget_index   index of this widget in the window
-	 * @param str            the label which will be draw
 	 * @param val            the value which will be draw
 	 * @param is_bool_widget is it a bool button
 	 */
-	void DrawFaceStringLabel(byte widget_index, StringID str, uint8 val, bool is_bool_widget) const
+	void DrawFaceStringLabel(byte widget_index, uint8 val, bool is_bool_widget) const
 	{
-		/* Write the label in gold (0x2) to the left of the button. */
-		const NWidgetBase *nwi_labels = this->GetWidget<NWidgetBase>(SCMFW_WIDGET_LABELS);
+		StringID str;
 		const NWidgetCore *nwi_widget = this->GetWidget<NWidgetCore>(widget_index);
-		DrawString(nwi_labels->pos_x, nwi_labels->pos_x + nwi_labels->current_x, nwi_widget->pos_y + 1, str, TC_GOLD, SA_RIGHT);
-
-		if (!this->IsWidgetDisabled(widget_index)) {
+		if (!nwi_widget->IsDisabled()) {
 			if (is_bool_widget) {
 				/* if it a bool button write yes or no */
 				str = (val != 0) ? STR_FACE_YES : STR_FACE_NO;
@@ -1125,6 +1150,40 @@ public:
 		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
 			this->top = top;
 			this->left = left;
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		switch (widget) {
+			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT:
+			case SCMFW_WIDGET_TIE_EARRING_TEXT: {
+				int offset = (widget - SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT) * 2;
+				*size = maxdim(GetStringBoundingBox(PART_TEXTS_IS_FEMALE[offset]), GetStringBoundingBox(PART_TEXTS_IS_FEMALE[offset + 1]));
+				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				break;
+			}
+
+			case SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT:
+				*size = maxdim(GetStringBoundingBox(STR_FACE_LIPS), GetStringBoundingBox(STR_FACE_MOUSTACHE));
+				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				break;
+
+			case SCMFW_WIDGET_HAS_GLASSES_TEXT:
+			case SCMFW_WIDGET_HAIR_TEXT:
+			case SCMFW_WIDGET_EYEBROWS_TEXT:
+			case SCMFW_WIDGET_EYECOLOUR_TEXT:
+			case SCMFW_WIDGET_GLASSES_TEXT:
+			case SCMFW_WIDGET_NOSE_TEXT:
+			case SCMFW_WIDGET_CHIN_TEXT:
+			case SCMFW_WIDGET_JACKET_TEXT:
+			case SCMFW_WIDGET_COLLAR_TEXT:
+				*size = GetStringBoundingBox(PART_TEXTS[widget - SCMFW_WIDGET_HAS_GLASSES_TEXT]);
+				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				break;
 		}
 	}
 
@@ -1193,64 +1252,88 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
+			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT:
+			case SCMFW_WIDGET_TIE_EARRING_TEXT: {
+				StringID str = PART_TEXTS_IS_FEMALE[(widget - SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT) * 2 + this->is_female];
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_GOLD, SA_RIGHT);
+				break;
+			}
+
+			case SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT:
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, (this->is_moust_male) ? STR_FACE_MOUSTACHE : STR_FACE_LIPS, TC_GOLD, SA_RIGHT);
+				break;
+
+			case SCMFW_WIDGET_HAS_GLASSES_TEXT:
+			case SCMFW_WIDGET_HAIR_TEXT:
+			case SCMFW_WIDGET_EYEBROWS_TEXT:
+			case SCMFW_WIDGET_EYECOLOUR_TEXT:
+			case SCMFW_WIDGET_GLASSES_TEXT:
+			case SCMFW_WIDGET_NOSE_TEXT:
+			case SCMFW_WIDGET_CHIN_TEXT:
+			case SCMFW_WIDGET_JACKET_TEXT:
+			case SCMFW_WIDGET_COLLAR_TEXT:
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, PART_TEXTS[widget - SCMFW_WIDGET_HAS_GLASSES_TEXT], TC_GOLD, SA_RIGHT);
+				break;
+
+
 			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING:
 				if (this->is_female) { /* Only for female faces */
-					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_EARRING,   GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
+					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
 				} else { /* Only for male faces */
-					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true);
+					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true);
 				}
 				break;
 
 			case SCMFW_WIDGET_TIE_EARRING:
 				if (this->is_female) { /* Only for female faces */
-					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING,           STR_FACE_EARRING,   GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING,     this->ge), false);
+					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
 				} else { /* Only for male faces */
-					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING,           STR_FACE_TIE,       GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING,     this->ge), false);
+					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
 				}
 				break;
 
 			case SCMFW_WIDGET_LIPS_MOUSTACHE:
 				if (this->is_moust_male) { /* Only for male faces with moustache */
-					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE,       this->ge), false);
+					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE, this->ge), false);
 				} else { /* Only for female faces or male faces without moustache */
-					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_LIPS,      GetCompanyManagerFaceBits(this->face, CMFV_LIPS,            this->ge), false);
+					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_LIPS,      this->ge), false);
 				}
 				break;
 
 			case SCMFW_WIDGET_HAS_GLASSES:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_GLASSES, STR_FACE_GLASSES,   GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true );
+				this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_GLASSES, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true );
 				break;
 
 			case SCMFW_WIDGET_HAIR:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_HAIR,        STR_FACE_HAIR,      GetCompanyManagerFaceBits(this->face, CMFV_HAIR,        this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_HAIR,        GetCompanyManagerFaceBits(this->face, CMFV_HAIR,        this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_EYEBROWS:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_EYEBROWS,    STR_FACE_EYEBROWS,  GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,    this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_EYEBROWS,    GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,    this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_EYECOLOUR:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_EYECOLOUR,   STR_FACE_EYECOLOUR, GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,  this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_EYECOLOUR,   GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,  this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_GLASSES:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_GLASSES,     STR_FACE_GLASSES,   GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,     this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_GLASSES,     GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,     this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_NOSE:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_NOSE,        STR_FACE_NOSE,      GetCompanyManagerFaceBits(this->face, CMFV_NOSE,        this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_NOSE,        GetCompanyManagerFaceBits(this->face, CMFV_NOSE,        this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_CHIN:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_CHIN,        STR_FACE_CHIN,      GetCompanyManagerFaceBits(this->face, CMFV_CHIN,        this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_CHIN,        GetCompanyManagerFaceBits(this->face, CMFV_CHIN,        this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_JACKET:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_JACKET,      STR_FACE_JACKET,    GetCompanyManagerFaceBits(this->face, CMFV_JACKET,      this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_JACKET,      GetCompanyManagerFaceBits(this->face, CMFV_JACKET,      this->ge), false);
 				break;
 
 			case SCMFW_WIDGET_COLLAR:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_COLLAR,      STR_FACE_COLLAR,    GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_COLLAR,      GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
 				break;
 
 			case SCMFM_WIDGET_FACE:
@@ -1390,6 +1473,25 @@ public:
 			ShowErrorMessage(STR_FACE_FACECODE_ERR, INVALID_STRING_ID, 0, 0);
 		}
 	}
+};
+
+/** Both text values of parts of the face that depend on the #is_female boolean value. */
+const StringID SelectCompanyManagerFaceWindow::PART_TEXTS_IS_FEMALE[] = {
+	STR_FACE_MOUSTACHE, STR_FACE_EARRING, // SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT
+	STR_FACE_TIE,       STR_FACE_EARRING, // SCMFW_WIDGET_TIE_EARRING_TEXT
+};
+
+/** Textual names for parts of the face. */
+const StringID SelectCompanyManagerFaceWindow::PART_TEXTS[] = {
+	STR_FACE_GLASSES,   // SCMFW_WIDGET_HAS_GLASSES_TEXT
+	STR_FACE_HAIR,      // SCMFW_WIDGET_HAIR_TEXT
+	STR_FACE_EYEBROWS,  // SCMFW_WIDGET_EYEBROWS_TEXT
+	STR_FACE_EYECOLOUR, // SCMFW_WIDGET_EYECOLOUR_TEXT
+	STR_FACE_GLASSES,   // SCMFW_WIDGET_GLASSES_TEXT
+	STR_FACE_NOSE,      // SCMFW_WIDGET_NOSE_TEXT
+	STR_FACE_CHIN,      // SCMFW_WIDGET_CHIN_TEXT
+	STR_FACE_JACKET,    // SCMFW_WIDGET_JACKET_TEXT
+	STR_FACE_COLLAR,    // SCMFW_WIDGET_COLLAR_TEXT
 };
 
 /** normal/simple company manager face selection window description */
