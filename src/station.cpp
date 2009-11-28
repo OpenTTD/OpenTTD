@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "company_func.h"
-#include "newgrf_cargo.h"
 #include "cargotype.h"
 #include "roadveh.h"
 #include "functions.h"

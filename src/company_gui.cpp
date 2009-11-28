@@ -20,7 +20,6 @@
 #include "network/network.h"
 #include "network/network_gui.h"
 #include "network/network_func.h"
-#include "sprite.h"
 #include "economy_func.h"
 #include "vehicle_base.h"
 #include "newgrf.h"

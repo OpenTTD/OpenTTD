@@ -16,7 +16,6 @@
 #include "../window_func.h"
 #include "dropdown_type.h"
 
-#include "table/strings.h"
 
 void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {

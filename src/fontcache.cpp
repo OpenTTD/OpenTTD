@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "fontcache.h"
 #include "blitter/factory.hpp"
-#include "gfx_func.h"
 #include "core/math_func.hpp"
 
 #include "table/sprites.h"

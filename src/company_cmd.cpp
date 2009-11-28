@@ -10,7 +10,6 @@
 /** @file company_cmd.cpp Handling of companies. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "engine_base.h"
 #include "company_func.h"
 #include "company_gui.h"
@@ -31,7 +30,6 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "rail.h"
-#include "sprite.h"
 #include "core/pool_func.hpp"
 #include "settings_func.h"
 

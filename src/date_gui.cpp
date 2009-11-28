@@ -10,7 +10,6 @@
 /** @file date_gui.cpp Graphical selection of a date. */
 
 #include "stdafx.h"
-#include "core/math_func.hpp"
 #include "strings_func.h"
 #include "date_func.h"
 #include "gfx_func.h"
@@ -19,7 +18,6 @@
 #include "date_gui.h"
 
 #include "widgets/dropdown_type.h"
-#include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
 

@@ -10,8 +10,6 @@
 /** @file strings_sl.cpp Code handling saving and loading of strings */
 
 #include "../stdafx.h"
-#include "../core/alloc_func.hpp"
-#include "../core/math_func.hpp"
 #include "../string_func.h"
 #include "saveload_internal.h"
 

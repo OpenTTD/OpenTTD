@@ -16,7 +16,6 @@
 #include "aircraft.h"
 #include "newgrf.h"
 #include "newgrf_engine.h"
-#include "newgrf_cargo.h"
 #include "group.h"
 #include "strings_func.h"
 #include "gfx_func.h"

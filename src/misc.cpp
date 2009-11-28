@@ -10,7 +10,6 @@
 /** @file misc.cpp Misc functions that shouldn't be here. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "news_func.h"
 #include "variables.h"
@@ -27,7 +26,6 @@
 #include "network/network_func.h"
 #include "window_func.h"
 
-#include "table/sprites.h"
 
 extern TileIndex _cur_tileloop_tile;
 extern void MakeNewgameSettingsLive();

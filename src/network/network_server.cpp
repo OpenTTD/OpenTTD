@@ -28,7 +28,6 @@
 #include "../company_func.h"
 #include "../company_gui.h"
 #include "../window_func.h"
-#include "../openttd.h"
 #include "../cargotype.h"
 
 #include "table/strings.h"

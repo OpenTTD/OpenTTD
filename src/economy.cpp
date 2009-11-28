@@ -10,7 +10,6 @@
 /** @file economy.cpp Handling of the economy. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "tile_cmd.h"
 #include "company_func.h"
 #include "command_func.h"

@@ -13,7 +13,6 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "../openttd.h"
 #include "../strings_func.h"
 #include "../command_func.h"
 #include "../date_func.h"

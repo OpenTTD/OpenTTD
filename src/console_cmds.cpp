@@ -10,7 +10,6 @@
 /** @file console_cmds.cpp Implementation of the console hooks. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "console_internal.h"
 #include "debug.h"
 #include "engine_func.h"

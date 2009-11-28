@@ -14,7 +14,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
-#include "../../openttd.h"
 
 #include "../network_internal.h"
 #include "../../core/pool_func.hpp"

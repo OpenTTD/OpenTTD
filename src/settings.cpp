@@ -23,7 +23,6 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "currency.h"
 #include "screenshot.h"
 #include "variables.h"

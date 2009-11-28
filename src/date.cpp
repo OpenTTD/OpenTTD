@@ -10,7 +10,6 @@
 /** @file date.cpp Handling of dates in our native format and transforming them to something human readable. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "variables.h"
 #include "network/network.h"
 #include "network/network_func.h"

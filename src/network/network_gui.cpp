@@ -11,7 +11,6 @@
 
 #ifdef ENABLE_NETWORK
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../strings_func.h"
 #include "../date_func.h"
 #include "../fios.h"

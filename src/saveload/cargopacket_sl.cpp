@@ -10,7 +10,6 @@
 /** @file cargopacket_sl.cpp Code handling saving and loading of cargo packets */
 
 #include "../stdafx.h"
-#include "../cargopacket.h"
 #include "../vehicle_base.h"
 #include "../station_base.h"
 

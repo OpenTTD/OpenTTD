@@ -15,7 +15,6 @@
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "zoom_func.h"
-#include "debug.h"
 #include "strings_func.h"
 #include "transparency.h"
 

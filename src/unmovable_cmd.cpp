@@ -16,7 +16,6 @@
 #include "viewport_func.h"
 #include "company_base.h"
 #include "town.h"
-#include "sprite.h"
 #include "bridge_map.h"
 #include "genworld.h"
 #include "autoslope.h"

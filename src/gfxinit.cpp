@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "spritecache.h"
 #include "fios.h"
 #include "newgrf.h"
 #include "3rdparty/md5/md5.h"

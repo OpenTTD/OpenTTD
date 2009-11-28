@@ -15,7 +15,6 @@
 #include "variables.h"
 #undef VARDEF
 
-#include "openttd.h"
 
 #include "blitter/factory.hpp"
 #include "sound/sound_driver.hpp"
@@ -59,9 +58,7 @@
 #include "rev.h"
 #include "highscore.h"
 #include "thread/thread.h"
-#include "base_station_base.h"
 #include "station_base.h"
-#include "airport.h"
 #include "crashlog.h"
 
 #include "newgrf_commons.h"

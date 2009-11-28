@@ -14,7 +14,6 @@
 #include "../ai_instance.hpp"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
-#include "../../core/alloc_func.hpp"
 #include "../../economy_func.h"
 #include "../../date_func.h"
 

@@ -13,7 +13,6 @@
 #include "ai_cargo.hpp"
 #include "../../company_func.h"
 #include "../../strings_func.h"
-#include "../../vehicle_func.h"
 #include "../../settings_type.h"
 #include "../../rail.h"
 #include "../../engine_base.h"

@@ -10,7 +10,6 @@
 /** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "gfx_func.h"
 #include "variables.h"
 #include "fontcache.h"

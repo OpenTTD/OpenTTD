@@ -13,7 +13,6 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../openttd.h"
 #include "network_internal.h"
 #include "network_gui.h"
 #include "../saveload/saveload.h"

@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../order_base.h"
-#include "../core/alloc_func.hpp"
 #include "../settings_type.h"
 
 #include "saveload.h"

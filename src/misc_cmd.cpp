@@ -10,7 +10,6 @@
 /** @file misc_cmd.cpp Some misc functions that are better fitted in other files, but never got moved there... */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "window_func.h"
@@ -22,7 +21,6 @@
 #include "gfx_func.h"
 #include "functions.h"
 #include "vehicle_func.h"
-#include "string_func.h"
 #include "company_func.h"
 #include "company_gui.h"
 #include "vehicle_base.h"
