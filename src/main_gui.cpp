@@ -200,7 +200,7 @@ static const struct NWidgetPart _nested_main_window_widgets[] = {
 };
 
 static const WindowDesc _main_window_desc(
-	0, 0, 0, 0,
+	WDP_MANUAL, WDP_MANUAL, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	0,
 	_nested_main_window_widgets, lengthof(_nested_main_window_widgets)

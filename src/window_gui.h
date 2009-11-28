@@ -159,6 +159,7 @@ enum WindowDefaultFlag {
  * Special values for 'left' and 'top' to cause a specific placement
  */
 enum WindowDefaultPosition {
+	WDP_MANUAL,         ///< Manually align the window (so no automatic location finding)
 	WDP_AUTO      = -1, ///< Find a place automatically
 	WDP_CENTER    = -2, ///< Center the window (left/right or top/bottom)
 	WDP_ALIGN_TBR = -3, ///< Align the right side of the window with the right side of the main toolbar

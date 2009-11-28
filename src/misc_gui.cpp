@@ -497,7 +497,7 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 };
 
 static const WindowDesc _errmsg_desc(
-	0, 0, 240, 46, // x/y position is not used.
+	WDP_MANUAL, WDP_MANUAL, 240, 46,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
@@ -517,7 +517,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 };
 
 static const WindowDesc _errmsg_face_desc(
-	0, 0, 334, 137, // x/y position is not used.
+	WDP_MANUAL, WDP_MANUAL, 334, 137,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
@@ -764,7 +764,7 @@ static const NWidgetPart _nested_tooltips_widgets[] = {
 };
 
 static const WindowDesc _tool_tips_desc(
-	100, 100, 0, 0, // Coordinates and sizes are not used,
+	WDP_MANUAL, WDP_MANUAL, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
 	0,
 	_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)

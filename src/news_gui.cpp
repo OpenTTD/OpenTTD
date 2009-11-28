@@ -105,8 +105,8 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _normal_news_desc(
-	WDP_CENTER, 476, 430, 170,
+static const WindowDesc _normal_news_desc(
+	WDP_MANUAL, WDP_MANUAL, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
@@ -132,8 +132,8 @@ static const NWidgetPart _nested_vehicle_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _vehicle_news_desc(
-	WDP_CENTER, 476, 430, 170,
+static const WindowDesc _vehicle_news_desc(
+	WDP_MANUAL, WDP_MANUAL, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
@@ -163,8 +163,8 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _company_news_desc(
-	WDP_CENTER, 476, 430, 170,
+static const WindowDesc _company_news_desc(
+	WDP_MANUAL, WDP_MANUAL, 430, 170,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_company_news_widgets, lengthof(_nested_company_news_widgets)
@@ -186,15 +186,15 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _thin_news_desc(
-	WDP_CENTER, 476, 430, 130,
+static const WindowDesc _thin_news_desc(
+	WDP_MANUAL, WDP_MANUAL, 430, 130,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
 );
 
 /* Small news items. */
-static NWidgetPart _nested_small_news_widgets[] = {
+static const NWidgetPart _nested_small_news_widgets[] = {
 	/* Caption + close box */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX),
@@ -210,8 +210,8 @@ static NWidgetPart _nested_small_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _small_news_desc(
-	WDP_CENTER, 476, 280, 87,
+static const WindowDesc _small_news_desc(
+	WDP_MANUAL, WDP_MANUAL, 280, 87,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
@@ -221,9 +221,9 @@ static WindowDesc _small_news_desc(
  * Data common to all news items of a given subtype (structure)
  */
 struct NewsSubtypeData {
-	NewsType type;         ///< News category @see NewsType
-	NewsFlag flags;        ///< Initial NewsFlags bits @see NewsFlag
-	WindowDesc *desc;      ///< Window description for displaying this news.
+	NewsType type;          ///< News category @see NewsType
+	NewsFlag flags;         ///< Initial NewsFlags bits @see NewsFlag
+	const WindowDesc *desc; ///< Window description for displaying this news.
 };
 
 /**
@@ -337,6 +337,12 @@ struct NewsWindow : Window {
 		GfxFillRect(r.right, r.top,    r.right, r.bottom, 0xD7);
 		GfxFillRect(r.left,  r.top,    r.right, r.top,    0xD7);
 		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, 0xD7);
+	}
+
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	{
+		Point pt = { (_screen.width - max(sm_width, desc->default_width)) / 2, _screen.height };
+		return pt;
 	}
 
 	virtual void OnPaint()
@@ -560,9 +566,7 @@ static void ShowNewspaper(NewsItem *ni)
 	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
 	if (sound != 0) SndPlayFx(sound);
 
-	WindowDesc *desc = _news_subtype_data[ni->subtype].desc;
-	desc->top = _screen.height;
-	new NewsWindow(desc, ni);
+	new NewsWindow(_news_subtype_data[ni->subtype].desc, ni);
 }
 
 /** Show news item in the ticker */
