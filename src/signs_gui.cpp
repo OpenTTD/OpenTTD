@@ -173,7 +173,7 @@ struct SignListWindow : Window, SignList {
 			} break;
 
 			case SLW_CAPTION:
-				SetDParam(0, max<uint>(1000, Sign::GetPoolSize()));
+				SetDParam(0, max<size_t>(1000, Sign::GetPoolSize()));
 				*size = GetStringBoundingBox(STR_SIGN_LIST_CAPTION);
 				size->height += padding.height;
 				size->width  += padding.width;

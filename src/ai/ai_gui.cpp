@@ -310,7 +310,7 @@ struct AISettingsWindow : public Window {
 		for (; this->vscroll.IsVisible(i) && it != config->GetConfigList()->end(); i++, it++) {
 			int current_value = config->GetSetting((*it).name);
 
-			int x = rtl ? r.right : r.left;
+			uint x = rtl ? r.right : r.left;
 			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
 				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
 			} else {

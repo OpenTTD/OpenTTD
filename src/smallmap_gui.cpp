@@ -917,7 +917,7 @@ public:
 					if (tbl->col_break || i++ >= this->number_of_rows) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
 						* (one "row") to the right. */
-						x += rtl ? -this->column_width : this->column_width;
+						x += rtl ? -(int)this->column_width : this->column_width;
 						y = y_org;
 						i = 0;
 					}
