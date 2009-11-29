@@ -491,6 +491,7 @@ void Window::ReInit(int rx, int ry)
 	int window_width  = this->width;
 	int window_height = this->height;
 
+	this->OnInit();
 	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
 	this->nested_root->SetupSmallestSize(this, false);
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _dynlang.text_dir == TD_RTL);
@@ -786,7 +787,8 @@ void Window::InitializeData(WindowClass cls, int window_number, uint32 desc_flag
 	this->window_number = window_number;
 	this->desc_flags = desc_flags;
 
-	/* If available, initialize nested widget tree. */
+	this->OnInit();
+	/* Initialize nested widget tree. */
 	if (this->nested_array == NULL) {
 		this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
 		this->nested_root->SetupSmallestSize(this, true);

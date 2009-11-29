@@ -535,6 +535,12 @@ public:
 	/*** Event handling ***/
 
 	/**
+	 * Notification that the nested widget tree gets initialized. The event can be used to perform general computations.
+	 * @note #nested_root and/or #nested_array (normally accessed via #GetWidget()) may not exist during this call.
+	 */
+	virtual void OnInit() { }
+
+	/**
 	 * Compute the initial position of the window.
 	 * @param *desc         The pointer to the WindowDesc of the window to create.
 	 * @param sm_width      Smallest width of the window.
