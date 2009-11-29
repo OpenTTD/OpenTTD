@@ -2631,9 +2631,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Раху
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Позика
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. позика: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Позичити {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Позичити {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Збільшити розмір позики
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Повернути {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Повернути {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Повернути частину позики
 
 # Company view

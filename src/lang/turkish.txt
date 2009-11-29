@@ -2496,9 +2496,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banka He
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredi
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Azami Kredi: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Ödünç al {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Ödünç al {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Borcu arttır. Ctrl+Tık alınabilen en yüksek borcu alır.
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Öde {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Öde {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Krediyi kısmen öde. Ctrl+Tık ödenebildiği kadar öder.
 
 # Company view

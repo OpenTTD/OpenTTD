@@ -2520,9 +2520,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Kontosta
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredit
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximaler Kredit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{SKIP}{SKIP}{CURRENCY} leihen
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY} leihen
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Kredit aufnehmen. Strg+Klick, um maximalen Kredit aufzunehmen
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{SKIP}{SKIP}{CURRENCY} zurückzahlen
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY} zurückzahlen
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Kredit abzahlen. Strg+Klick, um die größtmögliche Summe zurückzuzahlen
 
 # Company view

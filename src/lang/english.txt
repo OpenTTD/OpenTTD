@@ -2519,9 +2519,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank Bal
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Loan
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Loan: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click borrows as much as possible
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click repays as much loan as possible
 
 # Company view

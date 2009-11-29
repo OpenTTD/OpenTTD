@@ -2519,9 +2519,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanç 
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstec
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstec Màxim: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Demana {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Demana {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenta l'import del préstec Ctrl+Clic per demanar tants diners com sigui possible
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Amortitza {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Amortitza {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Amortitza part del préstec. Ctrl+Clic per tornar tants diners com sigui possible
 
 # Company view

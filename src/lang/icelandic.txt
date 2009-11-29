@@ -2471,9 +2471,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankainn
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lán
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Hámarkslán:  {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Taka lán {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Taka lán {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auka lán
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Borga lán {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Borga lán {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga til baka hluta af láni
 
 # Company view

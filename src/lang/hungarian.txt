@@ -2553,9 +2553,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banki eg
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kölcsön
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. kölcsön: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Kölcsönkér {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Kölcsönkér {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Kölcsön növelése. Ctrl+klikkeléssel amennyivel csak lehet
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Visszafizet {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Visszafizet {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}A kölcsön egy részének törlesztése. Ctrl+klikkeléssel amennyivel csak lehet
 
 # Company view

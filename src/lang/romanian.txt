@@ -2518,9 +2518,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanţ�
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Credite
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Limită credit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Împrumută {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Împrumută {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Împrumută o nouă sumă de bani. Ctrl-click pentru a împrumuta suma maximă posibilă
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Plăteşte înapoi {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Plăteşte înapoi {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Plăteşte înapoi o parte din credite. Ctrl-click pentru a plăti cât de mult permit finanţele
 
 # Company view

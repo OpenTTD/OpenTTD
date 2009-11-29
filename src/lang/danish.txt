@@ -2495,9 +2495,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank bal
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. lån: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lån {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lån {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Forøg lånet. Ctrl+Klik låner så meget som muligt
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Tilbagebetal {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Tilbagebetal {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Tilbagebetal en del af lånet. Ctrl+Klik betaler så meget af lånet tilbage som muligt
 
 # Company view

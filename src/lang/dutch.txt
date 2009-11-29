@@ -2519,9 +2519,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksald
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max lening: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+Klik om zoveel als mogelijk te lenen.
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betaal {SKIP}{SKIP}{CURRENCY} terug
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betaal {CURRENCY} terug
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug. Ctrl+Klik om zoveel als mogelijk terug te betalen.
 
 # Company view

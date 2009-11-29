@@ -308,7 +308,7 @@ struct CompanyFinancesWindow : Window {
 
 			case CFW_INCREASE_LOAN:
 			case CFW_REPAY_LOAN:
-				SetDParam(2, LOAN_INTERVAL);
+				SetDParam(0, LOAN_INTERVAL);
 				break;
 		}
 	}

@@ -2470,9 +2470,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balans B
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Benthyciad
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Uchafswm Benthyciad:  {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Benthyg {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Benthyg {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Cynyddu maint y benthyciad
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ad-dalu {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ad-dalu {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Ad-dalu rhan o'r benthycid
 
 # Company view

@@ -2496,9 +2496,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks lån: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låne mer ({SKIP}{SKIP}{CURRENCY})
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låne mer ({CURRENCY})
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Lån mer. Ctrl+Click tar opp maksimalt lån.
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betale tilbake ({SKIP}{SKIP}{CURRENCY})
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betale tilbake ({CURRENCY})
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betal tilbake en del av lånet. Ctrl+Click betaler ned så mye som mulig.
 
 # Company view

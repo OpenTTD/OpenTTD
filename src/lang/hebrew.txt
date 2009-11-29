@@ -2507,9 +2507,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}חשבו
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}הלוואה
 STR_FINANCES_MAX_LOAN                                           :{BLACK}{CURRENCY}{WHITE} : הלוואה מירבית
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{SKIP}{SKIP}{CURRENCY} {BLACK}לווה
+STR_FINANCES_BORROW_BUTTON                                      :{CURRENCY} {BLACK}לווה
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}הגדל את ההלוואה. Ctrl+לחיצה מלווה ככל שניתן
-STR_FINANCES_REPAY_BUTTON                                       :{SKIP}{SKIP}{CURRENCY} {BLACK}החזר
+STR_FINANCES_REPAY_BUTTON                                       :{CURRENCY} {BLACK}החזר
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}פרע חלק מההלוואה.Ctrl+לחיצה פורע ככל שניתן
 
 # Company view

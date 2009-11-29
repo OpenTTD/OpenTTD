@@ -2557,9 +2557,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Stav na 
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Půjčka
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. půjčka: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Půjčit {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Půjčit {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Půjčit si více
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrátit {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrátit {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Splatit část dluhu
 
 # Company view

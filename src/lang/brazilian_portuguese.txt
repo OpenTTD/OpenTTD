@@ -2497,9 +2497,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanço
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Empréstimo
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Empréstimo Máximo: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Pedir empréstimo. Ctrl+Clique pede o máximo possível
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte do empréstimo. Ctrl+Clique paga o máximo possível
 
 # Company view

@@ -1471,9 +1471,9 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totaal:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Jild
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Liening
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lien {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lien {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Lien mear jild. Ctrl+Klik om it maksimale te lienen
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betelje {SKIP}{SKIP}{CURRENCY} werom
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betelje {CURRENCY} werom
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betelje in diel fan de liening werom. Ctrl+Klik om it maksimale werom te beteljen
 
 # Company view

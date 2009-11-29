@@ -2519,9 +2519,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksald
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maxlån: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Öka lånets storlek. Ctrl + Klick lånar så mycket som möjligt
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Återbetala {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Återbetala {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Återbetala en del av lånet. Ctrl+Klick återbetalar så mycket som möjligt
 
 # Company view

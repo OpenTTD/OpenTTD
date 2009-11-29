@@ -2580,9 +2580,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankovna
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Zajam
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks zajam: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pozajmi {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pozajmi {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Povećaj iznos zajma. Ctrl+klik posuđuje najveći mogući iznos
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Otplati {SKIP}{SKIP}{CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Otplati {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Otplati dio zajma
 
 # Company view

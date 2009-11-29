@@ -2508,9 +2508,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}소유�
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}대출
 STR_FINANCES_MAX_LOAN                                           :{WHITE}최대 대출: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{SKIP}{SKIP}{CURRENCY} 빌리기
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY} 빌리기
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}돈을 빌립니다. Ctrl+클릭하면 빌릴 수 있는만큼 빌립니다
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{SKIP}{SKIP}{CURRENCY} 갚기
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY} 갚기
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}돈을 갚습니다. Ctrl+클릭하시면 갚을 수 있는 만큼 갚습니다
 
 # Company view
