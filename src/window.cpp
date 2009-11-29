@@ -485,8 +485,6 @@ void Window::SetDirty() const
  */
 void Window::ReInit(int rx, int ry)
 {
-	if (this->nested_root == NULL) return; // Only nested widget windows can re-initialize.
-
 	this->SetDirty(); // Mark whole current window as dirty.
 
 	/* Save current size. */
@@ -800,14 +798,13 @@ void Window::InitializeData(WindowClass cls, int window_number, uint32 desc_flag
 
 	/* Further set up window properties,
 	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
-	this->resize.step_width  = (this->nested_root != NULL) ? this->nested_root->resize_x : 1;
-	this->resize.step_height = (this->nested_root != NULL) ? this->nested_root->resize_y : 1;
+	this->resize.step_width  = this->nested_root->resize_x;
+	this->resize.step_height = this->nested_root->resize_y;
 
 	/* Give focus to the opened window unless it is the OSK window or a text box
 	 * of focused window has focus (so we don't interrupt typing). But if the new
 	 * window has a text box, then take focus anyway. */
-	bool has_editbox = this->nested_root != NULL && this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL;
-	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || has_editbox)) SetFocusedWindow(this);
+	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL)) SetFocusedWindow(this);
 
 	/* Hacky way of specifying always-on-top windows. These windows are
 	 * always above other windows because they are moved below them.
@@ -1585,11 +1582,10 @@ static bool HandleWindowDragging()
 				x = _cursor.pos.x - _drag_delta.x;
 			}
 
-			if (w->nested_root != NULL) {
-				/* Nested widgets also allow resize.step_width and/or resize.step_height to become 0 which means no resize is possible. */
-				if (w->resize.step_width  == 0) x = 0;
-				if (w->resize.step_height == 0) y = 0;
-			}
+			/* resize.step_width and/or resize.step_height may be 0, which means no resize is possible. */
+			if (w->resize.step_width  == 0) x = 0;
+			if (w->resize.step_height == 0) y = 0;
+
 			/* X and Y has to go by step.. calculate it.
 			 * The cast to int is necessary else x/y are implicitly casted to
 			 * unsigned int, which won't work. */
