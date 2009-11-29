@@ -1121,7 +1121,8 @@ struct MessageOptionsWindow : Window {
 
 	virtual void OnInit()
 	{
-		this->dim_message_opt = {0, 0};
+		this->dim_message_opt.width  = 0;
+		this->dim_message_opt.height = 0;
 		for (const StringID *str = message_opt; *str != INVALID_STRING_ID; str++) this->dim_message_opt = maxdim(this->dim_message_opt, GetStringBoundingBox(*str));
 	}
 
