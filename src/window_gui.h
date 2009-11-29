@@ -510,7 +510,6 @@ public:
 
 	void RaiseButtons(bool autoraise = false);
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
-	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
 	void SetWidgetDirty(byte widget_index) const;
 
