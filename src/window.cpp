@@ -257,8 +257,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 	 * So unless the clicked widget is the caption bar, change focus to this widget */
 	if (widget_type != WWT_CAPTION) {
 		/* Close the OSK window if a edit box loses focus */
-		if ((w->nested_root != NULL && w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX &&
-					w->nested_focus != nw && w->window_class != WC_OSK)) {
+		if (w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX && w->nested_focus != nw && w->window_class != WC_OSK) {
 			DeleteWindowById(WC_OSK, 0);
 		}
 
