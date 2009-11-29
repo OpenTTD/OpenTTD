@@ -1174,7 +1174,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			 * row that are being moved. */
 			if (HasBit(p2, 0)) {
 				const Train *u;
-				for (u = src_head; u != src && u != NULL; u = u->GetNextVehicle()) {
+				/* CheckTrainStoppedInDepot() does counts dual-headed engines only once, so also do it here */
+				for (u = src_head; u != src && u != NULL; u = u->GetNextUnit()) {
 					src_len--;
 				}
 			} else {
@@ -1326,7 +1327,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		/* If we move the front Engine and if the second vehicle is not an engine
 		   add the whole vehicle to the DEFAULT_GROUP */
 		if (src->IsFrontEngine() && !IsDefaultGroupID(src->group_id)) {
-			Train *v = src->GetNextVehicle();
+			Train *v = src->GetNextUnit();
 
 			if (v != NULL && v->IsEngine()) {
 				v->group_id   = src->group_id;
@@ -1520,7 +1521,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			/* 2. We are selling the front vehicle, some special action might be required
 			 * here, so take attention */
 			if (v == first) {
-				Train *new_f = first->GetNextVehicle();
+				Train *new_f = first->GetNextUnit();
 
 				/* 2.2 If there are wagons present after the deleted front engine, check
 				 * if the second wagon (which will be first) is an engine. If it is one,
