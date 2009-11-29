@@ -122,28 +122,52 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 	_cur_dpi = old_dpi;
 }
 
+/** Helper struct for the cargo details information */
+struct CargoSummaryItem {
+	CargoID cargo;    ///< The cargo that is carried
+	StringID subtype; ///< STR_EMPTY if none
+	uint capacity;    ///< Amount that can be carried
+	uint amount;      ///< Amount that is carried
+	StationID source; ///< One of the source stations
+
+	/** Used by CargoSummary::Find() and similiar functions */
+	FORCEINLINE bool operator != (const CargoSummaryItem &other) const
+	{
+		return this->cargo != other.cargo || this->subtype != other.subtype;
+	}
+};
+
+enum {
+	TRAIN_DETAILS_MIN_INDENT = 32, ///< Minimum indent level in the train details window
+	TRAIN_DETAILS_MAX_INDENT = 72, ///< Maximum indent level in the train details window; wider than this and we start on a new line
+};
+
+/** Container for the cargo summary information. */
+typedef SmallVector<CargoSummaryItem, 2> CargoSummary;
+/** Reused container of cargo details */
+static CargoSummary _cargo_summary;
+
 /**
  * Draw the details cargo tab for the given vehicle at the given position
  *
- * @param v     current vehicle
+ * @param item  Data to draw
  * @param left  The left most coordinate to draw
  * @param right The right most coordinate to draw
  * @param y     The y coordinate
  */
-static void TrainDetailsCargoTab(const Vehicle *v, int left, int right, int y)
+static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int right, int y)
 {
-	if (v->cargo_cap != 0) {
-		StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
+	StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 
-		if (!v->cargo.Empty()) {
-			SetDParam(0, v->cargo_type);
-			SetDParam(1, v->cargo.Count());
-			SetDParam(2, v->cargo.Source());
-			SetDParam(3, _settings_game.vehicle.freight_trains);
-			str = FreightWagonMult(v->cargo_type) > 1 ? STR_VEHICLE_DETAILS_CARGO_FROM_MULT : STR_VEHICLE_DETAILS_CARGO_FROM;
-		}
-		DrawString(left, right, y, str);
+	if (item->amount > 0) {
+		SetDParam(0, item->cargo);
+		SetDParam(1, item->amount);
+		SetDParam(2, item->source);
+		SetDParam(3, _settings_game.vehicle.freight_trains);
+		str = FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_DETAILS_CARGO_FROM_MULT : STR_VEHICLE_DETAILS_CARGO_FROM;
 	}
+
+	DrawString(left, right, y, str);
 }
 
 /**
@@ -171,20 +195,65 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 /**
  * Draw the details capacity tab for the given vehicle at the given position
  *
- * @param v     current vehicle
+ * @param item  Data to draw
  * @param left  The left most coordinate to draw
  * @param right The right most coordinate to draw
  * @param y     The y coordinate
  */
-static void TrainDetailsCapacityTab(const Vehicle *v, int left, int right, int y)
+static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int right, int y)
 {
-	if (v->cargo_cap != 0) {
-		SetDParam(0, v->cargo_type);
-		SetDParam(1, v->cargo_cap);
-		SetDParam(4, GetCargoSubtypeText(v));
-		SetDParam(5, _settings_game.vehicle.freight_trains);
-		DrawString(left, right, y, FreightWagonMult(v->cargo_type) > 1 ? STR_VEHICLE_INFO_CAPACITY_MULT : STR_VEHICLE_INFO_CAPACITY);
-	}
+	SetDParam(0, item->cargo);
+	SetDParam(1, item->capacity);
+	SetDParam(4, item->subtype);
+	SetDParam(5, _settings_game.vehicle.freight_trains);
+	DrawString(left, right, y, FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_INFO_CAPACITY_MULT : STR_VEHICLE_INFO_CAPACITY);
+}
+
+/**
+ * Collects the cargo transportet
+ * @param v Vehicle to process
+ * @param summary Space for the result
+ */
+static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *summary)
+{
+	summary->Clear();
+	do {
+		if (v->cargo_cap == 0) continue;
+
+		CargoSummaryItem new_item;
+		new_item.cargo = v->cargo_type;
+		new_item.subtype = GetCargoSubtypeText(v);
+
+		CargoSummaryItem *item = summary->Find(new_item);
+		if (item == summary->End()) {
+			item = summary->Append();
+			item->cargo = new_item.cargo;
+			item->subtype = new_item.subtype;
+			item->capacity = 0;
+			item->amount = 0;
+			item->source = INVALID_STATION;
+		}
+
+		item->capacity += v->cargo_cap;
+		item->amount += v->cargo.Count();
+		if (item->source == INVALID_STATION) item->source = v->cargo.Source();
+	} while ((v = v->Next()) != NULL && v->IsArticulatedPart());
+}
+
+/**
+ * Get the length of an articulated vehicle.
+ * @param v the vehicle to get the length of.
+ * @return the length in pixels.
+ */
+static uint GetLengthOfArticulatedVehicle(const Train *v)
+{
+	uint length = 0;
+
+	do {
+		length += v->GetDisplayImageWidth();
+	} while ((v = v->Next()) != NULL && v->IsArticulatedPart());
+
+	return length;
 }
 
 /**
@@ -213,8 +282,12 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		}
 		num++; // needs one more because first line is description string
 	} else {
-		for (const Train *v = Train::Get(veh_id); v != NULL; v = v->Next()) {
-			if (!v->IsArticulatedPart() || v->cargo_cap != 0) num++;
+		for (const Train *v = Train::Get(veh_id); v != NULL; v = v->GetNextVehicle()) {
+			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
+			num += max(1u, _cargo_summary.Length());
+
+			uint length = GetLengthOfArticulatedVehicle(v);
+			if (length > TRAIN_DETAILS_MAX_INDENT) num++;
 		}
 	}
 
@@ -238,53 +311,70 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 	if (det_tab != TDW_TAB_TOTALS) {
 		bool rtl = _dynlang.text_dir == TD_RTL;
 		Direction dir = rtl ? DIR_E : DIR_W;
-		const Train *u = v;
 		int x = rtl ? right : left;
 		int sprite_y_offset = 4 + (FONT_HEIGHT_NORMAL - 10) / 2;
-		for (;;) {
-			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
-				int px = x;
+		int line_height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
+		for (; v != NULL && vscroll_pos > -vscroll_cap; v = v->GetNextVehicle()) {
+			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
 
-				u = v;
-				do {
-					Point offset;
-					int width = u->GetDisplayImageWidth(&offset);
-					SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-					DrawSprite(u->GetImage(dir), pal, px + (rtl ? -offset.x : offset.x), y + sprite_y_offset + offset.y);
-					px += rtl ? -width : width;
-					u = u->Next();
-				} while (u != NULL && u->IsArticulatedPart() && u->cargo_cap == 0);
-
-				px += rtl ? -2 : 2;
-				int py = y;
-				switch (det_tab) {
-					default: NOT_REACHED();
-
-					case TDW_TAB_CARGO:
-						TrainDetailsCargoTab(v, rtl ? left : px, rtl ? px : right, py);
-						break;
-
-					case TDW_TAB_INFO:
-						/* Only show name and value for the 'real' part */
-						if (!v->IsArticulatedPart()) {
-							TrainDetailsInfoTab(v, rtl ? left : px, rtl ? px : right, py);
-						}
-						break;
-
-					case TDW_TAB_CAPACITY:
-						TrainDetailsCapacityTab(v, rtl ? left : px, rtl ? px : right, py);
-						break;
+			/* Draw sprites */
+			int dx = 0;
+			int px = x;
+			const Train *u = v;
+			do {
+				Point offset;
+				int width = u->GetDisplayImageWidth(&offset);
+				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
+					SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+					DrawSprite(u->GetImage(dir), pal, px + (rtl ? -offset.x : offset.x), y - line_height * vscroll_pos + sprite_y_offset + offset.y);
 				}
-				y += WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
+				px += rtl ? -width : width;
+				dx += width;
+				u = u->Next();
+			} while (u != NULL && u->IsArticulatedPart());
 
-				v = u;
-			} else {
-				/* Move to the next line */
-				do {
-					v = v->Next();
-				} while (v != NULL && v->IsArticulatedPart() && v->cargo_cap == 0);
+			bool separate_sprite_row = (dx > TRAIN_DETAILS_MAX_INDENT);
+			if (separate_sprite_row) {
+				vscroll_pos--;
+				dx = 0;
 			}
-			if (v == NULL) return;
+
+			uint num_lines = max(1u, _cargo_summary.Length());
+			for (uint i = 0; i < num_lines; i++) {
+				int sprite_width = max<int>(dx, TRAIN_DETAILS_MIN_INDENT) + 3;
+				int data_left  = left + (rtl ? 0 : sprite_width);
+				int data_right = right - (rtl ? sprite_width : 0);
+				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
+					int py = y - line_height * vscroll_pos;
+					if (i > 0 || separate_sprite_row) {
+						if (vscroll_pos != 0) GfxFillRect(left, py - WD_MATRIX_TOP - 1, right, py - WD_MATRIX_TOP, _colour_gradient[COLOUR_GREY][5]);
+					}
+					switch (det_tab) {
+						case TDW_TAB_CARGO:
+							if (i < _cargo_summary.Length()) {
+								TrainDetailsCargoTab(&_cargo_summary[i], data_left, data_right, py);
+							} else {
+								DrawString(data_left, data_right, py, STR_QUANTITY_N_A, TC_LIGHT_BLUE);
+							}
+							break;
+
+						case TDW_TAB_INFO:
+							if (i == 0) TrainDetailsInfoTab(v, data_left, data_right, py);
+							break;
+
+						case TDW_TAB_CAPACITY:
+							if (i < _cargo_summary.Length()) {
+								TrainDetailsCapacityTab(&_cargo_summary[i], data_left, data_right, py);
+							} else {
+								DrawString(data_left, data_right, py, STR_VEHICLE_INFO_NO_CAPACITY);
+							}
+							break;
+
+						default: NOT_REACHED();
+					}
+				}
+				vscroll_pos--;
+			}
 		}
 	} else {
 		CargoArray act_cargo;
