@@ -1110,7 +1110,7 @@ struct StationViewWindow : public Window {
 					nwi->SetDataTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP); // Switch to ratings view.
 					height_change = ALH_ACCEPTS - ALH_RATING;
 				}
-				this->ReInit(0, height_change);
+				this->ReInit(0, height_change * FONT_HEIGHT_NORMAL);
 				break;
 			}
 
