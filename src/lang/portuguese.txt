@@ -1039,8 +1039,8 @@ STR_ECONOMY_FLUCTUATING                                         :Flutuante
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :No fim da linha e em estações
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Só no fim da linha
 
-STR_DISASTERS_OFF                                               :Off
-STR_DISASTERS_ON                                                :On
+STR_DISASTERS_OFF                                               :Desligado
+STR_DISASTERS_ON                                                :Ligado
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
@@ -2998,6 +2998,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horário
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a vista de horário
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a seleccionar
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Partilhadas - -
@@ -3152,7 +3154,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Apagar o
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Apagar Contad. Atraso
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Limpar o contador de atraso, para que o veículo passe a estar a horas
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto pr.
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto preench.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem (CTRL-clique para tentar manter os tempos de espera)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado

@@ -3032,6 +3032,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Menetren
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Átkapcsolás menetrendi nézetre
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Menetrend vége - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Megosztott menetrend vége - -

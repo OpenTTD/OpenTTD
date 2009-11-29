@@ -493,7 +493,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окн�
 STR_MAP_MENU_SIGN_LIST                                          :Список меток
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Основать город
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
@@ -716,6 +718,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Пользоват. 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Громкость музыки
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Громкость звука
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}МИН
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}МАКС
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -900,6 +905,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} начинает строительство около г.{NBSP}{TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} выкуплена {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Директор)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}Компания «{STRING}» профинансировала основание города {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Новое предприятие! {STRING} стро{G 0 и и и я}тся возле г.{NBSP}{TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Новое предприятие! {STRING} заложен{G 0 "" а о ы} возле г.{NBSP}{TOWN}!
@@ -1323,6 +1330,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :у своего
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :у всего транспорта
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Использовать расписание для транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показывать расписание в «тиках», а не днях: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показывать время прибытия и отправления в графиках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Быстрое создание заданий транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип рельсов по умолчанию (после старта/загрузки): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :обычные
@@ -1387,6 +1395,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решётко�
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случайно
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Городам разрешено строить дороги: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума аэропортов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Строительство городов в игре: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запрещено
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :слева
@@ -3155,6 +3167,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Расп
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Просмотр расписания
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Показ списка заданий - щёлкните для выделения. Если зажать Ctrl - обзор станции.
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Конец заданий - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец общих заданий - -
@@ -3295,6 +3309,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт опаздывает на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт опережает график на {STRING}
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
 
@@ -3306,6 +3321,17 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбро
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить график автоматически по мере движения. Ctrl+клик, чтобы не менять время ожидания.
+
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :О:
+
+
+# Date window (for timetable)
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Выбор дня
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Выбор месяца
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Выбор года
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Отладка ИИ
@@ -4171,6 +4197,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

@@ -2999,6 +2999,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Fahrplan
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Zur Fahrplanansicht wechseln
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste - zum Markieren hier anklicken. Strg+Klick springt zum Bahnhof
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Ende der Aufträge - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Ende des gemeinsam genutzten Fahrplans - -

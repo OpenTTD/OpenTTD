@@ -2501,10 +2501,10 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Menot/tu
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Rakentaminen
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Uudet ajoneuvot
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Junien käyttökust.
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autojen käyttökust.
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lentokoneiden käyttökust.
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivojen käyttökust.
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Junien käyttökustannukset
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autojen käyttökustannukset
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lentokoneiden käyttökustannukset
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivojen käyttökustannukset
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Omaisuudenhallinta
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Junien tulot
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ajoneuvojen tulot
@@ -2998,6 +2998,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Aikataul
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näytä aikataulu
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Aikataulu - napsauta määräystä korostaaksesi.
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - aikataulun loppu - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - jaetun aikataulun loppu - -
@@ -3156,7 +3158,7 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaat
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä aikataulu automaattisesti seuraavan matkan arvoilla (Ctrl+Click: yritä säilyttää odotusajat)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Odotettu
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulussa
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulu
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaihda odotetun ja aikataulun välillä
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :S:

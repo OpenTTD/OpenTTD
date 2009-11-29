@@ -368,7 +368,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Viewport ekstra
 STR_MAP_MENU_SIGN_LIST                                          :Daftar Tanda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Daftar kota
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
@@ -756,6 +757,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} memulai pembangunan di dekat {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} telah diambil alih oleh {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Pimpinan)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ada pembangunan {STRING} baru di dekat {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} baru sedang ditanam di dekat {TOWN}!
@@ -2986,6 +2988,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Jadwal
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Tampilkan daftar jadwal keberangkatan
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Daftar perintah - klik pada perintah untuk menandainya. CTRL + klik ke stasiun
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Akhir Perintah - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Akhir Perintah Bersama - -
@@ -3126,6 +3130,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kendaraa
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kendaraaan ini berjalan terlambat {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kendaraaan ini berjalan lebih awal {STRING}
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih
 
@@ -3137,6 +3142,12 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalik
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-klik agar waktu tinggalnya tetap)
+
+
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
@@ -4002,6 +4013,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

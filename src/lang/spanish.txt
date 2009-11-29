@@ -2678,7 +2678,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformable a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T Máxima: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículo - click en vehículo para información
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos - click en vehículo para información
@@ -3131,7 +3131,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin hora
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :y estancia en {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar por {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} días{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} señal{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
