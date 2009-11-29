@@ -547,8 +547,6 @@ public:
 	 * @param sm_height     Smallest height of the window.
 	 * @param window_number The window number of the new window.
 	 * @return Initial position of the top-left corner of the window.
-	 *
-	 * @note Due to the way C++ works, only windows with nested widgets can usefully override this function.
 	 */
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number);
 
@@ -602,14 +600,14 @@ public:
 	 * A key has been pressed.
 	 * @param key     the Unicode value of the key.
 	 * @param keycode the untranslated key code including shift state.
-	 * @return ES_HANDLED if the key press has been handled and no other
+	 * @return #ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode) { return ES_NOT_HANDLED; }
 
 	/**
 	 * The state of the control key has changed
-	 * @return ES_HANDLED if the change has been handled and no other
+	 * @return #ES_HANDLED if the change has been handled and no other
 	 *         window should receive the event.
 	 */
 	virtual EventState OnCTRLStateChange() { return ES_NOT_HANDLED; }
