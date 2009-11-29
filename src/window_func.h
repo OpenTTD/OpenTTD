@@ -16,6 +16,7 @@
 #include "company_type.h"
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
+Window *FindWindowByClass(WindowClass cls);
 void ChangeWindowOwner(Owner old_owner, Owner new_owner);
 
 void ResizeWindow(Window *w, int x, int y);

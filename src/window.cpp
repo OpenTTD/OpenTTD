@@ -593,6 +593,22 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 }
 
 /**
+ * Find any window by its class. Useful when searching for a window that uses
+ * the window number as a WindowType, like WC_SEND_NETWORK_MSG.
+ * @param cls Window class
+ * @return Pointer to the found window, or \c NULL if not available
+ */
+Window *FindWindowByClass(WindowClass cls)
+{
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		if (w->window_class == cls) return w;
+	}
+
+	return NULL;
+}
+
+/**
  * Delete a window by its class and window number (if it is open).
  * @param cls Window class
  * @param number Number of the window within the window class
@@ -807,7 +823,7 @@ void Window::InitializeData(WindowClass cls, int window_number, uint32 desc_flag
 		if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) w = w->z_back;
 		if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) w = w->z_back;
 		if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) w = w->z_back;
-		if (FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL) w = w->z_back;
+		if (FindWindowByClass(WC_SEND_NETWORK_MSG) != NULL) w = w->z_back;
 
 		if (w == NULL) {
 			_z_back_window->z_front = this;

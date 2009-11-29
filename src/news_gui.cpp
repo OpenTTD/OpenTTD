@@ -287,7 +287,7 @@ struct NewsWindow : Window {
 	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(), ni(ni)
 	{
 		NewsWindow::duration = 555;
-		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
+		const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
 		this->chat_height = (w != NULL) ? w->height : 0;
 		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
 
