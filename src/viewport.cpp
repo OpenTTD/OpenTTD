@@ -57,7 +57,7 @@ ZoomLevel _saved_scrollpos_zoom;
 
 struct StringSpriteToDraw {
 	StringID string;
-	uint16 colour;
+	Colours colour;
 	int32 x;
 	int32 y;
 	uint64 params[2];
@@ -777,7 +777,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 }
 
 /* Returns a StringSpriteToDraw */
-void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, uint16 colour, uint16 width)
+void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, Colours colour, uint16 width)
 {
 	StringSpriteToDraw *ss = _vd.string_sprites_to_draw.Append();
 	ss->string = string;
@@ -1073,7 +1073,7 @@ static void ViewportAddLandscape()
  * @param string_small_shadow Shadow string for 4x and 8x zoom level; or STR_NULL if no shadow
  * @param colour colour of the sign background; or 0 if transparent
  */
-static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, uint16 colour = 0)
+static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, Colours colour = INVALID_COLOUR)
 {
 	int left = dpi->left;
 	int top = dpi->top;
@@ -1092,7 +1092,7 @@ static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign
 					top    < sign->top + ScaleByZoom(sign_height, dpi->zoom) &&
 					right  > sign->left &&
 					left   < sign->left + ScaleByZoom(sign->width_normal, dpi->zoom)) {
-				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != 0 ? sign->width_normal : 0);
+				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != INVALID_COLOUR ? sign->width_normal : 0);
 			}
 			break;
 
@@ -1111,7 +1111,7 @@ static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign
 					AddStringToDraw(sign->left + 1 + shadow_offset, sign->top + 1, string_small_shadow, params_1, params_2);
 				}
 				AddStringToDraw(sign->left + 1, sign->top + 1 - shadow_offset, string_small, params_1, params_2,
-						colour, colour != 0 ? sign->width_small | 0x8000 : 0);
+						colour, colour != INVALID_COLOUR ? sign->width_small | 0x8000 : 0);
 			}
 			break;
 
@@ -1148,7 +1148,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 		ViewportAddString(dpi, &st->sign,
 				is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT,
 				(is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT) + 1, STR_NULL,
-				st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? 0xE : _company_colours[st->owner]);
+				st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
 	}
 }
 
@@ -1163,7 +1163,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 		ViewportAddString(dpi, &si->sign,
 				STR_WHITE_SIGN,
 				IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
-				si->index, 0, (si->owner == OWNER_NONE) ? 14 : _company_colours[si->owner]);
+				si->index, 0, (si->owner == OWNER_NONE) ? COLOUR_GREY : _company_colours[si->owner]);
 	}
 }
 
@@ -1357,7 +1357,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
 			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
 				DrawFrameRect(
-					x - 1, y - 1, x + 1 + w, bottom, (Colours)ss->colour,
+					x - 1, y - 1, x + 1 + w, bottom, ss->colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
 				);
 			}
