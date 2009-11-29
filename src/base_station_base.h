@@ -217,7 +217,7 @@ struct SpecializedStation : public BaseStation {
 	 */
 	static FORCEINLINE T *GetIfValid(size_t index)
 	{
-		return IsValidID(index) ? Get(index) : NULL ;
+		return IsValidID(index) ? Get(index) : NULL;
 	}
 
 	/**

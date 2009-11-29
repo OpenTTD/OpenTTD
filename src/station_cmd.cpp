@@ -1108,7 +1108,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 						FreeTrainTrackReservation(v);
 						*affected_vehicles.Append() = v;
 						if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
-						for (; v->Next() != NULL; v = v->Next()) ;
+						for (; v->Next() != NULL; v = v->Next()) { }
 						if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
 					}
 				}
@@ -1148,7 +1148,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 			Train *v = affected_vehicles[i];
 			if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 			TryPathReserve(v, true, true);
-			for (; v->Next() != NULL; v = v->Next()) ;
+			for (; v->Next() != NULL; v = v->Next()) { }
 			if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 		}
 
@@ -1269,7 +1269,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 					FreeTrainTrackReservation(v);
 					if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
 					Vehicle *temp = v;
-					for (; temp->Next() != NULL; temp = temp->Next()) ;
+					for (; temp->Next() != NULL; temp = temp->Next()) { }
 					if (IsRailStationTile(temp->tile)) SetRailStationPlatformReservation(temp->tile, TrackdirToExitdir(ReverseTrackdir(temp->GetVehicleTrackdir())), false);
 				}
 			}
@@ -1289,7 +1289,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 				/* Restore station reservation. */
 				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 				TryPathReserve(v, true, true);
-				for (; v->Next() != NULL; v = v->Next()) ;
+				for (; v->Next() != NULL; v = v->Next()) { }
 				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 			}
 		}

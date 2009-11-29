@@ -392,7 +392,7 @@ public:
 			case GRP_WIDGET_LIST_GROUP: {
 				int y1 = r.top + WD_FRAMERECT_TOP + 1;
 				int max = min(this->vscroll2.GetPosition() + this->vscroll2.GetCapacity(), this->groups.Length());
-				for (int i = this->vscroll2.GetPosition() ; i < max ; ++i) {
+				for (int i = this->vscroll2.GetPosition(); i < max; ++i) {
 					const Group *g = this->groups[i];
 
 					assert(g->owner == this->owner);

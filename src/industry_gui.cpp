@@ -399,7 +399,7 @@ public:
 		switch (widget) {
 			case DPIW_MATRIX_WIDGET: {
 				const IndustrySpec *indsp;
-				int y = (pt.y - this->GetWidget<NWidgetBase>(DPIW_MATRIX_WIDGET)->pos_y) / this->resize.step_height + this->vscroll.GetPosition() ;
+				int y = (pt.y - this->GetWidget<NWidgetBase>(DPIW_MATRIX_WIDGET)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
 
 				if (y >= 0 && y < count) { // Is it within the boundaries of available data?
 					this->selected_index = y;

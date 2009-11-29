@@ -200,7 +200,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 	if (det_tab == TDW_TAB_TOTALS) { // Total cargo tab
 		CargoArray act_cargo;
 		CargoArray max_cargo;
-		for (const Vehicle *v = Vehicle::Get(veh_id) ; v != NULL ; v = v->Next()) {
+		for (const Vehicle *v = Vehicle::Get(veh_id); v != NULL; v = v->Next()) {
 			act_cargo[v->cargo_type] += v->cargo.Count();
 			max_cargo[v->cargo_type] += v->cargo_cap;
 		}
@@ -213,7 +213,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		}
 		num++; // needs one more because first line is description string
 	} else {
-		for (const Train *v = Train::Get(veh_id) ; v != NULL ; v = v->Next()) {
+		for (const Train *v = Train::Get(veh_id); v != NULL; v = v->Next()) {
 			if (!v->IsArticulatedPart() || v->cargo_cap != 0) num++;
 		}
 	}
@@ -291,7 +291,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 		CargoArray max_cargo;
 		Money feeder_share = 0;
 
-		for (const Vehicle *u = v; u != NULL ; u = u->Next()) {
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			act_cargo[u->cargo_type] += u->cargo.Count();
 			max_cargo[u->cargo_type] += u->cargo_cap;
 			feeder_share             += u->cargo.FeederShare();
