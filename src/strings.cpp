@@ -801,10 +801,6 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				break;
 			}
 
-			case SCC_SKIP: // {SKIP}
-				argv++;
-				break;
-
 			/* This sets up the gender for the string.
 			 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
 			case SCC_GENDER_INDEX: // {GENDER 0}

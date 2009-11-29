@@ -68,7 +68,6 @@ enum StringControlCode {
 	SCC_STRING4,
 	SCC_STRING5,
 
-	SCC_SKIP,
 	SCC_STRING,
 	SCC_COMMA,
 	SCC_NUM,
