@@ -136,7 +136,7 @@ public:
 };
 
 /** The signals we want our crash handler to handle. */
-static const int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS };
+static const int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL };
 
 /**
  * Entry point for the crash handler.
