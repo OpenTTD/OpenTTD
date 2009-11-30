@@ -2933,6 +2933,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Winst di
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech sinds vorig jaar: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capaciteit: {LTBLUE}Geen
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capaciteit: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capaciteit: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capaciteit: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2998,6 +2999,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Dienstre
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Schakel naar de dienstregeling
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlijst - klik op een order om deze te selecteren. Ctrl+klik gaat naar het station
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Einde van orders - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Einde gedeelde orders - -
@@ -3159,11 +3162,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schema
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Wissel tussen verwacht and schema
 
-### Do not separate or reorder ###
-#####
-
-### Do not separate or reorder ###
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
 
 
 # Date window (for timetable)
@@ -4039,6 +4039,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

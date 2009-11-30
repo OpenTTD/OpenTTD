@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_GRAIN                                          :Cereais
 STR_CARGO_PLURAL_WOOD                                           :Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :Minério de Ferro
 STR_CARGO_PLURAL_STEEL                                          :Aço
-STR_CARGO_PLURAL_VALUABLES                                      :Bens Valiosos
+STR_CARGO_PLURAL_VALUABLES                                      :Valores
 STR_CARGO_PLURAL_COPPER_ORE                                     :Minério de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :Milho
 STR_CARGO_PLURAL_FRUIT                                          :Fruta
@@ -2933,6 +2933,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro ne
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde o último serviço: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacidade: {LTBLUE}Nenhuma
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacidade: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacidade: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacidade: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3641,7 +3642,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Abastecimento d
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Depósito de Água
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :Quinta
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Fábrica de Madeiras
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Serração
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Floresta de Algodão Doce
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Doces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Campo de Baterias

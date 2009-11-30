@@ -364,7 +364,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra gesigswe
 STR_MAP_MENU_SIGN_LIST                                          :Teken lys
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Dorp gids
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidieë
@@ -574,6 +575,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Op Bestelling 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musiek Volume
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effek Volume
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -752,6 +756,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} is deur {STRING} oorgevat!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Bestuurder)
 
+
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuwe {STRING} onder opbou naby {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuwe {STRING} word naby {TOWN} beplant!
 
@@ -772,6 +777,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insek vervuiling oorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produksie by {INDUSTRY} verminder {COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wag in depot
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} wag in depot
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wag in depot
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wag in die vliegtuig hangar
@@ -1045,6 +1051,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Laattoe
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Laattoe meer realisties grootte opvanggebied: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Toelaat verwydering van meer stad-besite paaie, bruge, ens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ontsper gebou van baie lang treine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein versnelling model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Oorspronklik
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisties
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING} {LTBLUE} (benodig NPF)
@@ -1155,6 +1162,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eie maatskappy
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle maatskappye
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ontsper timetabling vir voertuie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon rooster in ticks liewer as dae: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankoms en vertrek in tydroosters: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Verstek spoor tipe (na nuwe spel/spel laai): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Gewone Spoor
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifiseerde Spoor
@@ -1214,6 +1222,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :lukraak
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Dorpe toegelaat om paaie te bou: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbode
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toegelaat
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
@@ -1317,6 +1327,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1642,6 +1653,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Stel maa
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Stuur
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Span] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privaat] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}: {WHITE}{STRING}
@@ -1689,7 +1701,9 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :verskaffer vol
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nie genoeg spelers
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :verlaat
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} het by die spel aangesluit
@@ -2096,7 +2110,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Maatskappy-besi
 STR_ABOUT_OPENTTD                                               :{WHITE}Oor OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Oorspronklike kopiereg {COPYRIGHT} 1995 Chris Sawyer, Alle regte voorbehou
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD uitgawe {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Die OpenTTD span
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2009 Die OpenTTD span
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spaar Speletjie
@@ -2146,6 +2160,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vryeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Lukraak
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Lukraak
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Hoogtekaart rotasie:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Hoogtekaart name:
@@ -2261,6 +2276,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vermis 
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dit verander voertuig lengte vier '{1:ENGINE}' wanneer die nie in diensstasie is nie.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' wat aan '{COMPANY}' behoort het 'n onaanvaarbare lengte. Dit is heel waarskeinlik veroorsaak deur probleme met NewGRFs. Speeletjie mag uit  sinkrone gaan of  hang.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' verskaf foutiewe inligting.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
@@ -2384,6 +2400,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Toon all
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem stasie/laai area
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander wegpunt name
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander baken naam
 
@@ -2434,7 +2451,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Maatskapp
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit by {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bou HK
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bou maatskappy hoofkantore
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Wys HK
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vertoon maatskappy hoofkantore
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Beweeg HQ
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbou maatskappy hoofkwartiers elders vir 1% koste van maatskappy waarde
 
@@ -2819,6 +2838,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY} (vorige jaar: {CURRENCY})
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Geen
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasiteit: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasiteit: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2884,6 +2904,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rooster
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skakel na die rooster uitsig
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Opdraglys - kliek op 'n opdrag om dit te verlig. CTRL + kliek senter op stasie
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Einde van Opdrae - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Einde van Gedeel Opdrae - -
@@ -3022,6 +3044,10 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Die roos
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Die voertuig loop tans op tyd
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Die voertuig loop tans {STRING} laat
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Die voertuig loop tans {STRING} vroeg
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Hierdie tydrooster sal begin by {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begin datum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selekteer 'n datum as beginpunt van die tydrooster
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander Tyd
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander die bedrag van tyd die verlig opdrag moes vat
@@ -3034,6 +3060,19 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel 
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Outovul
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die tydtabel outomaties in met die waardes van die volgende reis (CTRL-linker muis om die wagtyd te probeer hou)
+
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geskeduleer
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
+
+
+# Date window (for timetable)
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Gebruik geselekteerde datum as begindatum vir die tydrooster
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selekteer dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selekteer maand
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selekteer jaar
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI ontfout
@@ -3867,6 +3906,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3884,14 +3924,16 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -3907,4 +3949,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

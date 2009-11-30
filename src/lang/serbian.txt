@@ -3128,6 +3128,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ovogodi�
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarova od poslednjeg servisa: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Nosivost: {LTBLUE}Nula
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Nosivost: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Nosivost: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Nosivost: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3193,6 +3194,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Raspored
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prelazi na raspored
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Spisak naredbi - klikom se obeležava naredba. Sa Ctrl+Klik se prelazi na lokaciju stanice
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Kraj Naredbi - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Kraj Zajedničkih Naredbi - -

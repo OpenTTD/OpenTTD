@@ -2519,7 +2519,7 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Tilin sa
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Laina
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Laina enimmillään: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lainaa {CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Ota lainaa {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Ota lisää lainaa. Ctrl+Click lisää lainaa niin paljon kuin mahdollista
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Lyhennä lainaa {CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Lyhennä lainaa. Ctrl+Click lyhentää lainaa niin paljon kuin mahdollista
@@ -2933,6 +2933,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto t
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteetti: {LTBLUE}-
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3001,8 +3002,8 @@ STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Aikataul
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - aikataulun loppu - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - jaetun aikataulun loppu - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Aikataulun loppu - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jaetun aikataulun loppu - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Nonstop

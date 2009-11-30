@@ -301,9 +301,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vis graf
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vis selskabsoversigten
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiér opførelse af ny industri
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vis liste over selskabets tog. Ctrl+klik åbner/lukker guppe/køretøjs listen
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis liste over selskabets køretøjer
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vis liste over selskabets skibe
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vis liste over selskabets fly
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis liste over selskabets køretøjer. Ctrl-Klik åbner/lukker gruppe/køretøjslisten.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vis liste over selskabets skibe. Ctrl-Klik åbner/lukker gruppe/køretøjslisten.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vis liste over selskabets fly. Ctrl+Klik åbner gruppe/køretøjslisten.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom skærmen ind
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom skærmen ud
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Byg jernbanespor
@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åbn lan
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikvindue
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis seneste besked/nyhedsrapport, vis beskedvalg
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information, konsol, debug af kunstig intelligens, tag billede, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift værktøjslinier
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Gem scenarie, hent scenarie, forlad scenarie editoren, afslut
@@ -367,7 +368,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nyt lokalitetsv
 STR_MAP_MENU_SIGN_LIST                                          :Liste over skilte
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversigt
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Stift by
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tilskudsordninger
@@ -555,10 +558,10 @@ STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Aflevere
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Last:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Penge:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
-STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}I alt:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. banegård, rutebilstation, lufthavn) tæller med, selvom de er sammensat som én station
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal af køretøjer der gav afkast sidste år; dette inkludere vejkøretøjer, tog, skibe og fly
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antallet af sidst servicerede stationer. Alle dele af en station (f.eks. banegård, rutebilstation, lufthavn) tæller med, selvom de er sammensat som én station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Afkast for køretøjet med laveste indkomst (af alle køretøjer ældre end 2 år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Indkomst i måneden med det laveste afkast i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Indkomst i måneden med det højeste afkast i de sidste 12 kvartaler
@@ -578,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Custom 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musik lydstyrke
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effekt lydstyrke
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -693,7 +699,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGEM
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GEMMER SPIL  *  *
 
 # News message history
-STR_MESSAGE_HISTORY                                             :{WHITE}Tidligere beskeder
+STR_MESSAGE_HISTORY                                             :{WHITE}Beskedhistorik
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste over seneste nyheder
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
@@ -755,6 +761,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} starter konstruktion i nærheden af {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} er blevet overtaget af {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Direktør)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} har sponsoreret stiftelsen af en ny by, {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ny {STRING} under opførelse tæt på {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ny {STRING} bliver plantet tæt på {TOWN}!
@@ -821,7 +829,7 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Hent lokalitet fra global visning
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Hent lokalitet fra global visning til dette vindue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Sæt global
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
 
@@ -959,7 +967,7 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skift ti
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift brugerdefineret møntfods parametre
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift brugerdefinerede møntfodsparametre
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Sværhedsgrad
@@ -1169,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Slå køreplaner for transportmidler til: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og afgang i tidsplaner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hurtig oprettelse af køretøjsordrer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard skinnetype (efter nyt spil/hentet spil): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal jernbane
@@ -1233,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfældig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byer kan bygge veje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillad byer at fastsætte støjgrænser for lufthavne: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}At stifte byer i selve spillet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikke tilladt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tilladt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tilladt, tilpasset by-layout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
@@ -1307,7 +1320,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek onl
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Computerspiller-indstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Hent et gemt spil
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start et nyt spil med et højdekort som landskab
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start et nyt spil med et brugerdefineret scenarie
@@ -1353,7 +1366,7 @@ STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbokse viser, om du har brugt denne snydefunktion før
-STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Husk at dette vil blive husket i al evighed.
+STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Tænk lige på at dette vil blive husket i al evighed.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firmaet: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
@@ -1643,6 +1656,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nyt firm
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Smid ud
+STR_NETWORK_CLIENTLIST_BAN                                      :Ban (Forvis spiller)
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Giv penge
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tal til alle
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Tal til selskab
@@ -1719,7 +1733,16 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveren er ful
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spillet er pauset ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spillet er stadig pauset ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spillet er stadig pauset. ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spillet er stadig pauset. ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spillet er sat igang ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ikke nok spillere
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :forbinder klienter
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuelt
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlader
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har tilsluttet sig spillet
@@ -1828,16 +1851,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektris
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorailkonstruktion
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnetskinnekonstruktion
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Byg jernbane
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jernbane med auto-jernbane-værktøj
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg en remise (til at bygge og servicere tog)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ændre jernbane til kontrolsted
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg banegård
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg signaler
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byg bro
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byg tunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem bygning/fjernelse af jernbaneskinner og signaler
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/opgrader typen af jernbane
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Byg jernbane. Ctrl muliggør at bygge/fjerne elementer i togkonstruktion
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jernbane med auto-jernbane-værktøj. Ctrl muliggør at bygge/fjerne elementer i togkonstruktion
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg remise (til køb og servicering af tog)
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ændre jernbane til kontrolsted. Ctrl tillader sammenslutning af waypoints
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg jernbanegård. Ctrl tillader sammenslutning af stationer.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg jernbanesignaler. Ctrl+Klik skifter mellem semaforer/lyssignaler.{}Hvis musen trækkes langs sporet bygges signaler ned af en lige side af sporet. Ctrl bygger signaler indtil næste kryds.{}Ctrl-Klik åbner/lukker signal-vælgeren.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byg togbro
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byg togtunnel
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem bygning/fjernelse af jernbaneskinner, signaler, waypoints og stationer. Hvis Ctrl holdes nede fjernes også togspor fra waypoints og stationer.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/opgradér typen af jernbane
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Retning af remise
@@ -1901,16 +1924,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Rørformet bro,
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vejkonstruktion
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Sporvejskonstruktion
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Byg en sektion vej
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Byg sporvejssektion
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Byg vejsektion ved hjælp af 'Auto-vej'
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Byg sporvejssektion ved hjælp af 'Auto-sporvej'
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byg værksted (til bygning og servicering af vejkøretøjer)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Byg sporvognsremise (til konstruktion og service af vogne)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byg rutebilstation
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Byg passager-sporvognsstation
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byg fragtcentral
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Byg fragt-sporvognsstation
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Byg vejsektion. Ctrl muliggør at bygge/fjerne elementer i vejkonstruktion
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Byg sporvejssektion. Ctrl muliggør at bygge/fjerne elementer i sporvejkonstruktion
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Byg vejsektion ved hjælp af 'Auto-vej'. Ctrl muliggør at bygge/fjerne elementer i vejkonstruktion
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Byg sporvejssektion ved hjælp af 'Auto-sporvej'. Ctrl muliggør at bygge/fjerne elementer i sporvognskonstruktion
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byg køretøjsværksted (til køb og servicering af vejkøretøjer)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Byg sporvognsremise (til køb og service af vogne)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byg rutebilstation. Ctrl tillader at sammenslutte stationer
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Byg passager-sporvognsstation. Ctrl tillader at sammenslutte stationer
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byg fragtcentral. Ctrl tillader at sammenslutte stationer
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Byg fragt-sporvognsstation. Ctrl tillader at sammenslutte stationer
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiver/Deaktiver ensrettede veje
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Byg bro
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Byg sporvejsbro
@@ -1940,8 +1963,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygning 
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vandveje
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Byg kanaler.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Byg sluser
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Byg skibsdok (til bygning og servicering af skibe)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byg havn
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Byg skibsdok (til køb og servicering af skibe)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byg havn. Ctrl tillader at sammenslutte stationer
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsbøje, kan bruges som yderligere navigationspunkt
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Byg akvædukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definer vandområde.{}Lav en kanal, med mindre CTRL-tasten bruges ved havniveau, da omgivelserne i stedet vil blive oversvømmet
@@ -1956,7 +1979,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Havn
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lufthavne
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byg en lufthavn
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byg en lufthavn. Ctrl tillader at sammenslutte stationer
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Valg af lufthavn
@@ -2167,7 +2190,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Land ejet af se
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheder reserveret
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD teamet
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2009 OpenTTD teamet
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Gem spil
@@ -2355,7 +2378,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indtast 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byer
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen. Ctrl+Klik åbner et nyt vindue ved byens lokalitet
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
 
 # Town view window
@@ -2368,7 +2391,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nødvend
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} krævet
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} leveret seneste måned
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Støjgrænse i byen: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skærmen over byens lokalitet
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skærmen over byens lokalitet. Ctrl+Klik åbner et nyt vindue ved byens lokalitet
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Myndigheder
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Vis information om de lokale myndigheder
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ændre navnet på byen
@@ -2414,10 +2437,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ingen -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tilskudsordninger der allerede er vundet:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, indtil {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnavne - klik på et navn for at centrere skærmen over stationen
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnavne - klik på et navn for at centrere skærmen over stationen. Ctrl+Klik åbner et nyt vindue ved stationens lokalitet
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold Ctrl nede for at vælge mere end en ting
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stationer
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2453,7 +2476,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Fortrinlig
 STR_CARGO_RATING_OUTSTANDING                                    :Enestående
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer skærmen over stationens lokalitet
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer skærmen over stationens lokalitet. Ctrl+Klik åbner et nyt vindue ved stationens lokalitet.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ændre stationens navn
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Vis alle toge, som har denne station i deres ruteplan
@@ -2464,9 +2487,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Omdøb stationen/fragtcentralen
 
 # Waypoint/buoy view window
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over vejpunktets lokalitet
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over vejpunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved waypointets lokalitet.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb kontrolsted
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skræmen over bøjens lokalitet
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skræmen over bøjens lokalitet. Ctrl+Klik åbner et nyt vindue ved bøjens lokalitet.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ændre navnet på bøjen
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb kontrolsted
@@ -2516,7 +2540,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Selskabsv
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% ejes af {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byg HK
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byg selskabets hovedkvarter
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vis HK
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis selskabets hovedkvarter
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flyt hovedkvarter
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flyt selskabets hovedkvarter for 1% af selskabsværdien
 
@@ -2545,13 +2571,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transporteret)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporteret)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavne - klik på navn for at centrere visningen over en industri
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavne - klik på navn for at centrere visningen over en industri. Ctrl+Klik åbner et nyt vindue ved industriens lokalitet.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktion sidste måned:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transporteret)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer skærmen over industriens lokalitet
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer skærmen over industriens lokalitet. Ctrl+Klik åbner et nyt vindue ved industriens lokalitet.
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Kræver: {YELLOW}{STRING}{STRING}
@@ -2658,15 +2684,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liste ov
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skibstypeliste - klik på skibstype for information
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flytypeliste - klik på en flytype for mere information
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Byg køretøj
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Byg køretøj
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Byg skib
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Byg et fly
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Køb køretøj
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Køb køretøj
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Køb skib
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Køb et fly
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Byg det markerede lokomotiv/togvogn
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Byg det markerede køretøj
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Byg det markerede skib
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Byg det markerede fly
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Køb det markerede lokomotiv/togvogn
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Køb det markerede køretøj
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Køb det markerede skib
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Køb det markerede fly
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Omdøb
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Omdøb
@@ -2721,25 +2747,25 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nye kør
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nye skibe
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nyt fly
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Byg nyt tog/togvogn
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Byg nyt køretøj
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Byg nyt skib
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Byg nyt fly
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Køb nyt tog/togvogn
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Køb nyt køretøj
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Køb nyt skib
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Køb nyt fly
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klon tog
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klon køretøj
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klon skib
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon fly
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Klik på denne knap, så på et tog indeni eller udenfor remisen. CTRL-klik vil dele ordrer
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil bygge en kopi af køretøjet. Klik på denne knap, så på et køretøj indeni eller udenfor værkstedet. CTRL-klik vil dele ordrer
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så, på et skib indeni eller udenfor dokken. CTRL-klik vil dele ordrer
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. CTRL-klik vil dele ordrer
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Klik på denne knap og så på et tog indeni eller udenfor remisen. CTRL-klik vil dele ordrer
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil købe en kopi af køretøjet. Klik på denne knap og så på et køretøj indeni eller udenfor værkstedet. CTRL-klik vil dele ordrer
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil købe en kopi af skibet. Klik på denne knap og så på et skib indeni eller udenfor dokken. CTRL-klik vil dele ordrer
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil købe en kopi af et fly. Klik på denne knap og så på et fly indeni eller udenfor hangaren. CTRL-klik vil dele ordrer
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer skærmen over remisens lokalitet
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over værkstedets lokalitet
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer skærmen over skibsdokkens lokalitet
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer skærmen over hangarens lokalitet
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer skærmen over remisens lokalitet. Ctrl+Klik åbner et nyt vindue ved remisens lokalitet.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over værkstedets lokalitet. Ctrl+Klik åbner et nyt vindue ved køretøjsværkstedets lokalitet.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer skærmen over skibsdokkens lokalitet. Ctrl+Klik åbner et nyt vindue ved skibsdokkens lokalitet.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrér skærmen over hangarens lokalitet. Ctrl+Klik åbner et nyt vindue ved hangarens lokalitet.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Vis en liste over alle tog med denne remise i ordrelisten
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Vis liste over alle køretøjer med dette værksted i ordrelisten
@@ -2769,6 +2795,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillokomot
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnetskinnelokomotiv
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Hestekræfter: {POWER}  Maks. Trækkraft: {7:FORCE}{}Driftsomkostning: {4:CURRENCY}/år{}Kapacitet: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Pris: {CURRENCY} Maks. hast.: {VELOCITY}{}Kapacitet: {CARGO}, {CARGO}{}Driftsomkostninger: {CURRENCY}/år
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Pris: {CURRENCY} Maks. hast.: {VELOCITY}{}Kapacitet: {CARGO}{}Driftsomkostninger: {CURRENCY}/år
 
@@ -2807,20 +2834,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få auto
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over togets lokalitet
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrer skærmen over køretøjets lokalitet
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer skærmen over skibets lokalitet
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer skærmen over flyets lokalitet
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrér skærmen over togets lokalitet. Ctrl-Klik vil følge toget i hovedvinduet
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrér skærmen over køretøjets lokalitet. Ctrl-Klik vil følge køretøjet i hovedvinduet
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrér skærmen over skibets lokalitet. Ctrl-Klik vil følge skibet i hovedvinduet
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrér skærmen over flyets lokalitet. Ctrl+Klik vil følge flyet i hovedvinduet
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til remise. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køretøjet til værksted. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. CTRL-klik vil dele ordrer
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil bygge en kopi af vejkøretøjet. CTRL-klik vil dele ordrer
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil bygge en kopi af skibet. CTRL-klik vil dele ordrer
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil bygge en kopi af et fly. CTRL-klik vil dele ordrer
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. CTRL-klik vil dele ordrer
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil købe en kopi af vejkøretøjet. CTRL-klik vil dele ordrer
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil købe en kopi af skibet. CTRL-klik vil dele ordrer
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil købe en kopi af et fly. CTRL-klik vil dele ordrer
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 
@@ -2832,10 +2859,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ombyg fl
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vend retningen af toget
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tving køretøjet til at vende
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Vis togets ordrer
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Vis køretøjets ordrer
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vis skibets ordrer
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis flyets ordrer
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Vis togets ordrer. Ctrl+Klik for at vise togets tidsplan.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Vis køretøjets ordrer. Ctrl+Klik for at vise køretøjets tidsplan.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vis skibets ordrer. Ctrl+Klik for at vise skibets tidsplan.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis flyets ordrer. Ctrl+Klik for at vise flyets tidsplan
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis køretøjets detaljer
@@ -2906,6 +2933,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskud
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitet: {LTBLUE}Ingen
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacitet: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitet: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2914,8 +2942,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi a
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Forøg serviceintervallet
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sænk serviceintervallet
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Forøg serviceintervallet med 10. Ctrl+Klik forøger serviceintervallet med 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sænk serviceintervallet med 10. Ctrl+Klik nedsætter serviceintervallet med 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Giv toget et navn
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Giv køretøjet et navn
@@ -2971,6 +2999,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Kørepla
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skift til køreplan-visning
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klik på en ordre for at markere den. CTRL-klik for at centrere skærmen over stationen
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slut på ordrer - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slut på delt ordreliste - -
@@ -3110,6 +3140,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denne k�
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette transportmiddel kommer til tiden
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette transportmiddel er nu {STRING} forsinket
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette transportmiddel er nu {STRING} foran køreplanen
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne tidsplan er endnu ikke begyndt.
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Denne tidsplan vil starte på {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vælg dato som startpunkt for denne tidsplan.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre hvor lang tid den markerede ordre skal tage
@@ -3122,6 +3157,23 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil 
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-udfyld
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld automatisk tidsplanen med tider for den næste tur (CTRL-klik for at forsøge at bevare ventetider)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Forventet
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift mellem forventet og planlagt tidsplan
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Afg:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Sæt dato
+STR_DATE_SET_DATE                                               :{BLACK}Sæt startdato
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Brug valgte dato som tidsplanens startdato
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Vælg dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Vælg måned
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vælg år
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Computerspiller-debug
@@ -3464,10 +3516,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikke
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan ikke sende skibet til dok...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikke sende flyet til en hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan ikke bygge jernbanekøretøj...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan ikke bygge køretøj...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan ikke bygge skibet...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikke bygge fly...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan ikke købe jernbanekøretøj...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan ikke købe køretøj...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan ikke købe skibet...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikke købe flyet...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikke omdøbe køretøjstypen...
@@ -3963,6 +4015,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3980,14 +4033,16 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -4003,4 +4058,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-
