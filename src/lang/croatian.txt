@@ -1901,7 +1901,7 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Isključ
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Uključeno
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nemoj označiti područje koje pokriva željeno mjesto
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Označi područje koje pokriva željeno mjesto
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvaća: {GOLD.aku}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvaća: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zalihe: {GOLD}
 
 # Join station window
@@ -2524,7 +2524,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvaća
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži popis tereta koji se prihvaća
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvaća: {WHITE.aku}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvaća: {WHITE}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocjene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaži ocjene postaje
