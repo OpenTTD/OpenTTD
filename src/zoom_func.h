@@ -7,8 +7,6 @@
 
 #include "zoom_type.h"
 
-extern ZoomLevel _saved_scrollpos_zoom;
-
 /**
  * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_NORMAL)
  * When shifting right, value is rounded up

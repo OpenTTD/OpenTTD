@@ -37,4 +37,6 @@ enum ZoomLevel {
 };
 DECLARE_POSTFIX_INCREMENT(ZoomLevel)
 
+typedef SimpleTinyEnumT<ZoomLevel, byte> ZoomLevelByte;
+
 #endif /* ZOOM_TYPE_H */

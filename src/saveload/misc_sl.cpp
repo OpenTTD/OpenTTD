@@ -23,6 +23,7 @@ extern TileIndex _cur_tileloop_tile;
 /* Keep track of current game position */
 int _saved_scrollpos_x;
 int _saved_scrollpos_y;
+ZoomLevelByte _saved_scrollpos_zoom;
 
 void SaveViewportBeforeSaveGame()
 {
@@ -45,7 +46,7 @@ void ResetViewportAfterLoadGame()
 	w->viewport->dest_scrollpos_y = _saved_scrollpos_y;
 
 	ViewPort *vp = w->viewport;
-	vp->zoom = min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp->zoom = min<ZoomLevel>(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 

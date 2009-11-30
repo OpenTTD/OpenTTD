@@ -45,7 +45,6 @@
 
 PlaceProc *_place_proc;
 Point _tile_fract_coords;
-ZoomLevel _saved_scrollpos_zoom;
 
 struct StringSpriteToDraw {
 	StringID string;

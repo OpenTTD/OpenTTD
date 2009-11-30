@@ -1,3 +1,9 @@
+0.7.4 (2009-12-01)
+------------------------------------------------------------------------
+- Fix: Endianness issue with saving the zoom level [FS#3333] (r18351)
+- Fix: [NewGRF] When starting a new game the values of action D variable 13 were incorrect [FS#3324] (r18207)
+
+
 0.7.4-RC1 (2009-11-15)
 ------------------------------------------------------------------------
 - Change: Prefer extmidi over allegro midi and allegro over null driver [FS#3272] (r17875)
