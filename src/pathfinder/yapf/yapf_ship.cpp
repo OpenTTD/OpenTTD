@@ -9,7 +9,7 @@
 
 /** @file yapf_ship.cpp Implementation of YAPF for ships. */
 
-#include "../stdafx.h"
+#include "../../stdafx.h"
 
 #include "yapf.hpp"
 

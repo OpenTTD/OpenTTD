@@ -25,7 +25,7 @@
 #include "newgrf_cargo.h"
 #include "newgrf_station.h"
 #include "newgrf_commons.h"
-#include "yapf/yapf.h"
+#include "pathfinder/yapf/yapf.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "variables.h"
 #include "autoslope.h"

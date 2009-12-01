@@ -17,7 +17,7 @@
 #include "command_func.h"
 #include "engine_base.h"
 #include "depot_base.h"
-#include "yapf/yapf.h"
+#include "pathfinder/yapf/yapf.h"
 #include "newgrf_engine.h"
 #include "landscape_type.h"
 #include "newgrf_commons.h"

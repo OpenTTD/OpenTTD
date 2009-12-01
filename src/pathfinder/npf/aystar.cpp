@@ -25,9 +25,9 @@
  * should call clear() yourself!
  */
 
-#include "stdafx.h"
+#include "../../stdafx.h"
+#include "../../core/alloc_func.hpp"
 #include "aystar.h"
-#include "core/alloc_func.hpp"
 
 int _aystar_stats_open_size;
 int _aystar_stats_closed_size;

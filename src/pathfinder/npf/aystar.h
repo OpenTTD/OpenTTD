@@ -19,8 +19,8 @@
 #define AYSTAR_H
 
 #include "queue.h"
-#include "tile_type.h"
-#include "track_type.h"
+#include "../../tile_type.h"
+#include "../../track_type.h"
 
 //#define AYSTAR_DEBUG
 enum {

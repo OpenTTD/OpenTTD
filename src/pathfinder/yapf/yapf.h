@@ -12,11 +12,11 @@
 #ifndef  YAPF_H
 #define  YAPF_H
 
-#include "../debug.h"
-#include "../depot_type.h"
-#include "../direction_type.h"
-#include "../station_type.h"
-#include "../pbs.h"
+#include "../../debug.h"
+#include "../../depot_type.h"
+#include "../../direction_type.h"
+#include "../../station_type.h"
+#include "../../pbs.h"
 
 /** Finds the best path for given ship.
  * @param v        the ship that needs to find a path

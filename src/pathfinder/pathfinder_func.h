@@ -7,18 +7,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file pathfind.h The oldest pathfinder that's supported. */
+/** @file pathfinder_func.h General functions related to pathfinders. */
 
-#ifndef PATHFIND_H
-#define PATHFIND_H
+#ifndef PATHFINDER_FUNC_H
+#define PATHFINDER_FUNC_H
 
-#include "direction_type.h"
-#include "station_base.h"
-#include "waypoint_base.h"
-
-typedef bool TPFEnumProc(TileIndex tile, void *data, Trackdir trackdir, uint length);
-
-void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TPFEnumProc *enum_proc, void *data);
+#include "../station_base.h"
+#include "../waypoint_base.h"
 
 /**
  * Calculates the tile of given station that is closest to a given tile
@@ -51,4 +46,4 @@ static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile
 	return TileXY(x, y);
 }
 
-#endif /* PATHFIND_H */
+#endif /* PATHFINDER_FUNC_H */

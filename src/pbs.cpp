@@ -7,11 +7,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file pbs.cpp */
+/** @file pbs.cpp PBS support routines */
+
 #include "stdafx.h"
 #include "functions.h"
 #include "vehicle_func.h"
-#include "yapf/follow_track.hpp"
+#include "pathfinder/yapf/follow_track.hpp"
 
 /**
  * Get the reserved trackbits for any tile, regardless of type.

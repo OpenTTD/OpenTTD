@@ -13,14 +13,14 @@
 #define NPF_H
 
 #include "aystar.h"
-#include "station_type.h"
-#include "rail_type.h"
-#include "company_type.h"
-#include "vehicle_type.h"
-#include "tile_type.h"
-#include "track_type.h"
-#include "core/bitmath_func.hpp"
-#include "transport_type.h"
+#include "../../station_type.h"
+#include "../../rail_type.h"
+#include "../../company_type.h"
+#include "../../vehicle_type.h"
+#include "../../tile_type.h"
+#include "../../track_type.h"
+#include "../../core/bitmath_func.hpp"
+#include "../../transport_type.h"
 
 /* mowing grass */
 enum {

@@ -9,13 +9,13 @@
 
 /** @file yapf_rail.cpp The rail pathfinding. */
 
-#include "../stdafx.h"
+#include "../../stdafx.h"
 
 #include "yapf.hpp"
 #include "yapf_node_rail.hpp"
 #include "yapf_costrail.hpp"
 #include "yapf_destrail.hpp"
-#include "../functions.h"
+#include "../../functions.h"
 
 #define DEBUG_YAPF_CACHE 0
 

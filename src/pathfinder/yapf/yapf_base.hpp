@@ -12,8 +12,8 @@
 #ifndef  YAPF_BASE_HPP
 #define  YAPF_BASE_HPP
 
-#include "../debug.h"
-#include "../settings_type.h"
+#include "../../debug.h"
+#include "../../settings_type.h"
 
 extern int _total_pf_time_us;
 

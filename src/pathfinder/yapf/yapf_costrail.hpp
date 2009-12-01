@@ -12,7 +12,7 @@
 #ifndef  YAPF_COSTRAIL_HPP
 #define  YAPF_COSTRAIL_HPP
 
-#include "../pbs.h"
+#include "../../pbs.h"
 
 template <class Types>
 class CYapfCostRailT

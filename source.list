@@ -3,7 +3,6 @@ airport.cpp
 animated_tile.cpp
 articulated_vehicles.cpp
 autoreplace.cpp
-aystar.cpp
 bmp.cpp
 callback_table.cpp
 cargopacket.cpp
@@ -45,12 +44,9 @@ network/network_content.cpp
 network/network_gamelist.cpp
 network/network_server.cpp
 network/network_udp.cpp
-npf.cpp
 openttd.cpp
 os_timer.cpp
-pathfind.cpp
 pbs.cpp
-queue.cpp
 rail.cpp
 rev.cpp
 road.cpp
@@ -111,7 +107,6 @@ autoreplace_func.h
 autoreplace_gui.h
 autoreplace_type.h
 autoslope.h
-aystar.h
 base_media_base.h
 base_media_func.h
 base_station_base.h
@@ -223,7 +218,6 @@ newgrf_townname.h
 news_func.h
 news_gui.h
 news_type.h
-npf.h
 music/null_m.h
 sound/null_s.h
 video/null_v.h
@@ -231,10 +225,8 @@ openttd.h
 order_base.h
 order_func.h
 order_type.h
-pathfind.h
 pbs.h
 querystring_gui.h
-queue.h
 rail.h
 rail_gui.h
 rail_type.h
@@ -821,23 +813,36 @@ network/core/tcp_game.h
 network/core/udp.cpp
 network/core/udp.h
 
+# Pathfinder
+pathfinder/opf/opf_ship.cpp
+pathfinder/opf/opf_ship.h
+pathfinder/pathfinder_func.h
+
+# NPF
+pathfinder/npf/aystar.cpp
+pathfinder/npf/aystar.h
+pathfinder/npf/queue.cpp
+pathfinder/npf/queue.h
+pathfinder/npf/npf.cpp
+pathfinder/npf/npf.h
+
 # YAPF
-yapf/follow_track.hpp
-yapf/nodelist.hpp
-yapf/yapf.h
-yapf/yapf.hpp
-yapf/yapf_base.hpp
-yapf/yapf_common.hpp
-yapf/yapf_costbase.hpp
-yapf/yapf_costcache.hpp
-yapf/yapf_costrail.hpp
-yapf/yapf_destrail.hpp
-yapf/yapf_node.hpp
-yapf/yapf_node_rail.hpp
-yapf/yapf_node_road.hpp
-yapf/yapf_rail.cpp
-yapf/yapf_road.cpp
-yapf/yapf_ship.cpp
+pathfinder/yapf/follow_track.hpp
+pathfinder/yapf/nodelist.hpp
+pathfinder/yapf/yapf.h
+pathfinder/yapf/yapf.hpp
+pathfinder/yapf/yapf_base.hpp
+pathfinder/yapf/yapf_common.hpp
+pathfinder/yapf/yapf_costbase.hpp
+pathfinder/yapf/yapf_costcache.hpp
+pathfinder/yapf/yapf_costrail.hpp
+pathfinder/yapf/yapf_destrail.hpp
+pathfinder/yapf/yapf_node.hpp
+pathfinder/yapf/yapf_node_rail.hpp
+pathfinder/yapf/yapf_node_road.hpp
+pathfinder/yapf/yapf_rail.cpp
+pathfinder/yapf/yapf_road.cpp
+pathfinder/yapf/yapf_ship.cpp
 
 # Video
 video/dedicated_v.cpp

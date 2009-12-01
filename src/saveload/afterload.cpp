@@ -25,7 +25,7 @@
 #include "../clear_map.h"
 #include "../vehicle_func.h"
 #include "../newgrf_station.h"
-#include "../yapf/yapf.hpp"
+#include "../pathfinder/yapf/yapf.hpp"
 #include "../elrail_func.h"
 #include "../signs_func.h"
 #include "../aircraft.h"

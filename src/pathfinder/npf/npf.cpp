@@ -9,18 +9,18 @@
 
 /** @file npf.cpp Implementation of the NPF pathfinder. */
 
-#include "stdafx.h"
+#include "../../stdafx.h"
+#include "../../debug.h"
+#include "../../landscape.h"
+#include "../../depot_base.h"
+#include "../../network/network.h"
+#include "../../tunnelbridge_map.h"
+#include "../../functions.h"
+#include "../../tunnelbridge.h"
+#include "../../pbs.h"
+#include "../../train.h"
+#include "../pathfinder_func.h"
 #include "npf.h"
-#include "debug.h"
-#include "landscape.h"
-#include "depot_base.h"
-#include "network/network.h"
-#include "tunnelbridge_map.h"
-#include "functions.h"
-#include "tunnelbridge.h"
-#include "pbs.h"
-#include "pathfind.h"
-#include "train.h"
 
 static AyStar _npf_aystar;
 
