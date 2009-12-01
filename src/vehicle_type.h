@@ -48,8 +48,7 @@ static const VehicleID INVALID_VEHICLE = 0xFFFF; ///< Constant representing a no
 
 /** Pathfinding option states */
 enum {
-	VPF_OPF  = 0, ///< The Original PathFinder
-	VPF_NTP  = 0, ///< New Train Pathfinder, replacing OPF for trains
+	VPF_OPF  = 0, ///< The Original PathFinder (only for ships)
 	VPF_NPF  = 1, ///< New PathFinder
 	VPF_YAPF = 2, ///< Yet Another PathFinder
 };

@@ -381,8 +381,8 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, pf.yapf.road_use_yapf,                           28,             86, 0, 0,  true,                    STR_NULL,                                  NULL),
 	SDT_CONDBOOL(GameSettings, pf.yapf.rail_use_yapf,                           28,             86, 0, 0,  true,                    STR_NULL,                                  NULL),
 
-	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_trains,             SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS,  NULL),
-	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_roadvehs,           SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES, NULL),
+	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_trains,             SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     1,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS,  NULL),
+	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_roadvehs,           SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     1,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES, NULL),
 	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_ships,              SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    0,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS,   NULL),
 
 	    SDT_BOOL(GameSettings, vehicle.never_expire_vehicles,                                       0,NN, false,                    STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES,  NULL),

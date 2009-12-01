@@ -2149,20 +2149,6 @@ struct TrainFindDepotData {
 	bool reverse;
 };
 
-static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int track, uint length)
-{
-	if (IsTileType(tile, MP_RAILWAY) &&
-			IsTileOwner(tile, tfdd->owner) &&
-			IsRailDepot(tile)) {
-		/* approximate number of tiles by dividing by DIAG_FACTOR */
-		tfdd->best_length = length / DIAG_FACTOR;
-		tfdd->tile = tile;
-		return true;
-	}
-
-	return false;
-}
-
 /** returns the tile of a depot to goto to. The given vehicle must not be
  * crashed! */
 static TrainFindDepotData FindClosestTrainDepot(Train *v, int max_distance)
@@ -2188,10 +2174,7 @@ static TrainFindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 
 	tfdd.best_length = UINT_MAX;
 
-	uint8 pathfinder = _settings_game.pf.pathfinder_for_trains;
-	if ((_settings_game.pf.reserve_paths || HasReservedTracks(v->tile, v->track)) && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
-
-	switch (pathfinder) {
+	switch (_settings_game.pf.pathfinder_for_trains) {
 		case VPF_YAPF: { // YAPF
 			bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
 			tfdd.best_length = found ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
@@ -2217,17 +2200,7 @@ static TrainFindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 		} break;
 
 		default:
-		case VPF_NTP: { // NTP
-			/* search in the forward direction first. */
-			DiagDirection i = TrainExitDir(v->direction, v->track);
-			NewTrainPathfind(v->tile, 0, v->compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
-			if (tfdd.best_length == UINT_MAX) {
-				tfdd.reverse = true;
-				/* search in backwards direction */
-				i = TrainExitDir(ReverseDir(v->direction), v->track);
-				NewTrainPathfind(v->tile, 0, v->compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
-			}
-		} break;
+			NOT_REACHED();
 	}
 
 	return tfdd;
@@ -2395,7 +2368,7 @@ static void CheckNextTrainTile(Train *v)
 			if (HasPbsSignalOnTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) {
 				/* If the next tile is a PBS signal, try to make a reservation. */
 				TrackBits tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
-				if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) {
+				if (_settings_game.pf.forbid_90_deg) {
 					tracks &= ~TrackCrossesTracks(TrackdirToTrack(ft.m_old_td));
 				}
 				ChooseTrainTrack(v, ft.m_new_tile, ft.m_exitdir, tracks, false, NULL, false);
@@ -2562,50 +2535,6 @@ void FreeTrainTrackReservation(const Train *v, TileIndex origin, Trackdir orig_t
 	}
 }
 
-/** Check for station tiles */
-struct TrainTrackFollowerData {
-	TileIndex dest_coords;
-	StationID station_index; ///< station index we're heading for
-	uint best_bird_dist;
-	uint best_track_dist;
-	TrackdirByte best_track;
-};
-
-static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, Trackdir track, uint length)
-{
-	/* heading for nowhere? */
-	if (ttfd->dest_coords == 0) return false;
-
-	/* did we reach the final station? */
-	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) || (
-				IsRailStationTile(tile) &&
-				GetStationIndex(tile) == ttfd->station_index
-			)) {
-		/* We do not check for dest_coords if we have a station_index,
-		 * because in that case the dest_coords are just an
-		 * approximation of where the station is */
-
-		/* found station */
-		ttfd->best_track = track;
-		ttfd->best_bird_dist = 0;
-		return true;
-	} else {
-		/* didn't find station, keep track of the best path so far. */
-		uint dist = DistanceManhattan(tile, ttfd->dest_coords);
-		if (dist < ttfd->best_bird_dist) {
-			ttfd->best_bird_dist = dist;
-			ttfd->best_track = track;
-		}
-		return false;
-	}
-}
-
-static void FillWithStationData(TrainTrackFollowerData *fd, const Vehicle *v)
-{
-	fd->dest_coords = v->dest_tile;
-	fd->station_index = v->current_order.IsType(OT_GOTO_STATION) ? v->current_order.GetDestination() : INVALID_STATION;
-}
-
 static const byte _initial_tile_subcoord[6][4][3] = {
 {{ 15, 8, 1 }, { 0, 0, 0 }, { 0, 8, 5 }, { 0,  0, 0 }},
 {{  0, 0, 0 }, { 8, 0, 3 }, { 0, 0, 0 }, { 8, 15, 7 }},
@@ -2614,17 +2543,6 @@ static const byte _initial_tile_subcoord[6][4][3] = {
 {{ 15, 7, 0 }, { 8, 0, 4 }, { 0, 0, 0 }, { 0,  0, 0 }},
 {{  0, 0, 0 }, { 0, 0, 0 }, { 0, 8, 4 }, { 7, 15, 0 }},
 };
-
-static const byte _search_directions[6][4] = {
-	{ 0, 9, 2, 9 }, ///< track 1
-	{ 9, 1, 9, 3 }, ///< track 2
-	{ 9, 0, 3, 9 }, ///< track upper
-	{ 1, 9, 9, 2 }, ///< track lower
-	{ 3, 2, 9, 9 }, ///< track left
-	{ 9, 9, 1, 0 }, ///< track right
-};
-
-static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
 
 /**
  * Perform pathfinding for a train.
@@ -2648,10 +2566,7 @@ static Track DoTrainPathfind(Train *v, TileIndex tile, DiagDirection enterdir, T
 
 	if (path_not_found) *path_not_found = false;
 
-	uint8 pathfinder = _settings_game.pf.pathfinder_for_trains;
-	if (do_track_reservation && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
-
-	switch (pathfinder) {
+	switch (_settings_game.pf.pathfinder_for_trains) {
 		case VPF_YAPF: { // YAPF
 			Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, path_not_found, do_track_reservation, dest);
 			if (trackdir != INVALID_TRACKDIR) {
@@ -2698,33 +2613,7 @@ static Track DoTrainPathfind(Train *v, TileIndex tile, DiagDirection enterdir, T
 		} break;
 
 		default:
-		case VPF_NTP: { // NTP
-			void *perf = NpfBeginInterval();
-
-			TrainTrackFollowerData fd;
-			FillWithStationData(&fd, v);
-
-			/* New train pathfinding */
-			fd.best_bird_dist = UINT_MAX;
-			fd.best_track_dist = UINT_MAX;
-			fd.best_track = INVALID_TRACKDIR;
-
-			NewTrainPathfind(tile - TileOffsByDiagDir(enterdir), v->dest_tile,
-				v->compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
-
-			/* check whether the path was found or only 'guessed' */
-			if (fd.best_bird_dist != 0 && path_not_found != NULL) *path_not_found = true;
-
-			if (fd.best_track == INVALID_TRACKDIR) {
-				/* blaha */
-				best_track = FindFirstTrack(tracks);
-			} else {
-				best_track = TrackdirToTrack(fd.best_track);
-			}
-
-			int time = NpfEndInterval(perf);
-			DEBUG(yapf, 4, "[NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
-		} break;
+			NOT_REACHED();
 	}
 
 #ifdef PF_BENCHMARK
@@ -2741,7 +2630,6 @@ static Track DoTrainPathfind(Train *v, TileIndex tile, DiagDirection enterdir, T
  */
 static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks, DiagDirection *enterdir)
 {
-	bool no_90deg_turns = _settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg;
 	PBSTileInfo origin = FollowTrainReservation(v);
 
 	CFollowTrackRail ft(v);
@@ -2754,7 +2642,7 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 			if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) break;
 		}
 
-		if (no_90deg_turns) {
+		if (_settings_game.pf.forbid_90_deg) {
 			ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(ft.m_old_td);
 			if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) break;
 		}
@@ -2783,8 +2671,8 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		tile = ft.m_new_tile;
 		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
 
-		if (IsSafeWaitingPosition(v, tile, cur_td, true, no_90deg_turns)) {
-			bool wp_free = IsWaitingPositionFree(v, tile, cur_td, no_90deg_turns);
+		if (IsSafeWaitingPosition(v, tile, cur_td, true, _settings_game.pf.forbid_90_deg)) {
+			bool wp_free = IsWaitingPositionFree(v, tile, cur_td, _settings_game.pf.forbid_90_deg);
 			if (!(wp_free && TryReserveRailTrack(tile, TrackdirToTrack(cur_td)))) break;
 			/* Safe position is all good, path valid and okay. */
 			return PBSTileInfo(tile, cur_td, true);
@@ -2806,7 +2694,7 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 	while (tile != stopped || cur_td != stopped_td) {
 		if (!ft.Follow(tile, cur_td)) break;
 
-		if (no_90deg_turns) {
+		if (_settings_game.pf.forbid_90_deg) {
 			ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(ft.m_old_td);
 			assert(ft.m_new_td_bits != TRACKDIR_BIT_NONE);
 		}
@@ -3056,7 +2944,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 		DiagDirection exitdir = TrackdirToExitdir(res_dest.trackdir);
 		TileIndex     next_tile = TileAddByDiagDir(res_dest.tile, exitdir);
 		TrackBits     reachable = TrackdirBitsToTrackBits((TrackdirBits)(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0))) & DiagdirReachesTracks(exitdir);
-		if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) {
+		if (_settings_game.pf.forbid_90_deg) {
 			reachable &= ~TrackCrossesTracks(TrackdirToTrack(res_dest.trackdir));
 		}
 
@@ -3161,7 +3049,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	TileIndex     new_tile = TileAddByDiagDir(origin.tile, exitdir);
 	TrackBits     reachable = TrackdirBitsToTrackBits(TrackStatusToTrackdirBits(GetTileTrackStatus(new_tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTrackdirs(exitdir));
 
-	if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) reachable &= ~TrackCrossesTracks(TrackdirToTrack(origin.trackdir));
+	if (_settings_game.pf.forbid_90_deg) reachable &= ~TrackCrossesTracks(TrackdirToTrack(origin.trackdir));
 
 	bool res_made = false;
 	ChooseTrainTrack(v, new_tile, exitdir, reachable, true, &res_made, mark_as_stuck);
@@ -3189,14 +3077,11 @@ static bool CheckReverseTrain(Train *v)
 		return false;
 	}
 
-	uint reverse_best = 0;
-
 	assert(v->track);
 
 	switch (_settings_game.pf.pathfinder_for_trains) {
 		case VPF_YAPF: // YAPF
-			reverse_best = YapfCheckReverseTrain(v);
-			break;
+			return YapfCheckReverseTrain(v);
 
 		case VPF_NPF: { // NPF
 			NPFFindStationOrTileData fstd;
@@ -3211,77 +3096,13 @@ static bool CheckReverseTrain(Train *v)
 			assert(trackdir_rev != INVALID_TRACKDIR);
 
 			ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes);
-			if (ftd.best_bird_dist != 0) {
-				/* We didn't find anything, just keep on going straight ahead */
-				reverse_best = false;
-			} else {
-				if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) {
-					reverse_best = true;
-				} else {
-					reverse_best = false;
-				}
-			}
+			/* If we didn't find anything, just keep on going straight ahead, otherwise take the reverse flag */
+			return ftd.best_bird_dist != 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
 		} break;
 
 		default:
-		case VPF_NTP: { // NTP
-			TrainTrackFollowerData fd;
-			FillWithStationData(&fd, v);
-
-			int i = _search_directions[FindFirstTrack(v->track)][DirToDiagDir(v->direction)];
-
-			int best_track = -1;
-			uint reverse = 0;
-			uint best_bird_dist  = 0;
-			uint best_track_dist = 0;
-
-			for (;;) {
-				fd.best_bird_dist = UINT_MAX;
-				fd.best_track_dist = UINT_MAX;
-
-				NewTrainPathfind(v->tile, v->dest_tile, v->compatible_railtypes, (DiagDirection)(reverse ^ i), (NTPEnumProc*)NtpCallbFindStation, &fd);
-
-				if (best_track != -1) {
-					if (best_bird_dist != 0) {
-						if (fd.best_bird_dist != 0) {
-							/* neither reached the destination, pick the one with the smallest bird dist */
-							if (fd.best_bird_dist > best_bird_dist) goto bad;
-							if (fd.best_bird_dist < best_bird_dist) goto good;
-						} else {
-							/* we found the destination for the first time */
-							goto good;
-						}
-					} else {
-						if (fd.best_bird_dist != 0) {
-							/* didn't find destination, but we've found the destination previously */
-							goto bad;
-						} else {
-							/* both old & new reached the destination, compare track length */
-							if (fd.best_track_dist > best_track_dist) goto bad;
-							if (fd.best_track_dist < best_track_dist) goto good;
-						}
-					}
-
-					/* if we reach this position, there's two paths of equal value so far.
-					 * pick one randomly. */
-					int r = GB(Random(), 0, 8);
-					if (_pick_track_table[i] == (v->direction & 3)) r += 80;
-					if (_pick_track_table[best_track] == (v->direction & 3)) r -= 80;
-					if (r <= 127) goto bad;
-				}
-good:;
-				best_track = i;
-				best_bird_dist = fd.best_bird_dist;
-				best_track_dist = fd.best_track_dist;
-				reverse_best = reverse;
-bad:;
-				if (reverse != 0) break;
-				reverse = 2;
-			}
-		} break;
+			NOT_REACHED();
 	}
-
-	return reverse_best != 0;
 }
 
 TileIndex Train::GetOrderStationLocation(StationID station)
@@ -3714,7 +3535,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 				TrackBits red_signals = TrackdirBitsToTrackBits(TrackStatusToRedSignals(ts) & reachable_trackdirs);
 
 				TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
-				if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg && prev == NULL) {
+				if (_settings_game.pf.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
 					bits &= ~TrackCrossesTracks(FindFirstTrack(v->track));
@@ -4279,7 +4100,7 @@ static bool TrainCheckIfLineEnds(Train *v)
 
 	/* mask unreachable track bits if we are forbidden to do 90deg turns */
 	TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
-	if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) {
+	if (_settings_game.pf.forbid_90_deg) {
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->track));
 	}
 

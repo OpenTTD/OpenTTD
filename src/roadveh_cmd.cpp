@@ -375,21 +375,6 @@ static const DiagDirection _road_pf_directions[] = {
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, INVALID_DIAGDIR, INVALID_DIAGDIR
 };
 
-static bool EnumRoadSignalFindDepot(TileIndex tile, void *data, Trackdir trackdir, uint length)
-{
-	RoadFindDepotData *rfdd = (RoadFindDepotData*)data;
-
-	tile += TileOffsByDiagDir(_road_pf_directions[trackdir]);
-
-	if (IsRoadDepotTile(tile) &&
-			IsTileOwner(tile, rfdd->owner) &&
-			length < rfdd->best_length) {
-		rfdd->best_length = length;
-		rfdd->tile = tile;
-	}
-	return false;
-}
-
 static RoadFindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance)
 {
 	RoadFindDepotData rfdd;
@@ -422,12 +407,7 @@ static RoadFindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_dist
 		} break;
 
 		default:
-		case VPF_OPF: // OPF
-			/* search in all directions */
-			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-				FollowTrack(v->tile, PATHFIND_FLAGS_NONE, TRANSPORT_ROAD, v->compatible_roadtypes, d, EnumRoadSignalFindDepot, NULL, &rfdd);
-			}
-			break;
+			NOT_REACHED();
 	}
 
 	return rfdd; // Target not found
@@ -992,29 +972,8 @@ static int PickRandomBit(uint bits)
 	return i;
 }
 
-struct FindRoadToChooseData {
-	TileIndex dest;
-	uint maxtracklen;
-	uint mindist;
-};
-
-static bool EnumRoadTrackFindDist(TileIndex tile, void *data, Trackdir trackdir, uint length)
-{
-	FindRoadToChooseData *frd = (FindRoadToChooseData*)data;
-	uint dist = DistanceManhattan(tile, frd->dest);
-
-	if (dist <= frd->mindist) {
-		if (dist != frd->mindist || length < frd->maxtracklen) {
-			frd->maxtracklen = length;
-		}
-		frd->mindist = dist;
-	}
-	return false;
-}
-
 static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
-
 	void *perf = NpfBeginInterval();
 	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, sub_type, owner, railtypes);
 	int t = NpfEndInterval(perf);
@@ -1035,7 +994,6 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 #define return_track(x) { best_track = (Trackdir)x; goto found_best_track; }
 
 	TileIndex desttile;
-	FindRoadToChooseData frd;
 	Trackdir best_track;
 
 	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->compatible_roadtypes);
@@ -1141,52 +1099,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 		} break;
 
 		default:
-		case VPF_OPF: { // OPF
-			DiagDirection dir;
-
-			if (IsTileType(desttile, MP_ROAD)) {
-				if (IsRoadDepot(desttile)) {
-					dir = GetRoadDepotDirection(desttile);
-					goto do_it;
-				}
-			} else if (IsTileType(desttile, MP_STATION)) {
-				/* For drive-through stops we can head for the actual station tile */
-				if (IsStandardRoadStopTile(desttile)) {
-					dir = GetRoadStopDir(desttile);
-do_it:;
-					/* When we are heading for a depot or station, we just
-					 * pretend we are heading for the tile in front, we'll
-					 * see from there */
-					desttile += TileOffsByDiagDir(dir);
-					if (desttile == tile && (trackdirs & _road_exit_dir_to_incoming_trackdirs[dir])) {
-						/* If we are already in front of the
-						 * station/depot and we can get in from here,
-						 * we enter */
-						return_track(FindFirstBit2x64(trackdirs & _road_exit_dir_to_incoming_trackdirs[dir]));
-					}
-				}
-			}
-			/* Do some pathfinding */
-			frd.dest = desttile;
-
-			best_track = INVALID_TRACKDIR;
-			uint best_dist = UINT_MAX;
-			uint best_maxlen = UINT_MAX;
-			uint bitmask = (uint)trackdirs;
-			uint i;
-			FOR_EACH_SET_BIT(i, bitmask) {
-				if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
-				frd.maxtracklen = UINT_MAX;
-				frd.mindist = UINT_MAX;
-				FollowTrack(tile, PATHFIND_FLAGS_NONE, TRANSPORT_ROAD, v->compatible_roadtypes, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
-
-				if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen)) {
-					best_dist = frd.mindist;
-					best_maxlen = frd.maxtracklen;
-					best_track = (Trackdir)i;
-				}
-			}
-		} break;
+			NOT_REACHED();
 	}
 
 found_best_track:;
