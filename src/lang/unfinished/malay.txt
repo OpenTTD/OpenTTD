@@ -819,7 +819,6 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stesen
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Tidak dicadangkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 
 

@@ -1101,7 +1101,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 			if (sdb->flags & SGF_CURRENCY) {
 				SetDParam(0, STR_JUST_CURRENCY);
 			} else if (sdb->flags & SGF_MULTISTRING) {
-				SetDParam(0, sdb->str + value + 1);
+				SetDParam(0, sdb->str - sdb->min + value + 1);
 			} else {
 				SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_JUST_INT : STR_JUST_COMMA);
 			}

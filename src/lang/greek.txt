@@ -1380,11 +1380,9 @@ STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλ�
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθοδος δρομολόγησης για τρένα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Δεν συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Μέθοδος δρομολόγησης για οχήματα δρόμου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Original {RED}(Δεν συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Μέθοδος δρομολόγησης για πλοία: {ORANGE}{STRING}
