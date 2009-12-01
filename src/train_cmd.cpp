@@ -4098,7 +4098,6 @@ static bool HandleCrashedTrain(Train *v)
 	if (state >= 4440 && !(v->tick_counter & 0x1F)) {
 		bool ret = v->Next() != NULL;
 		DeleteLastWagon(v);
-		SetWindowDirty(WC_REPLACE_VEHICLE, (v->group_id << 16) | VEH_TRAIN);
 		return ret;
 	}
 
