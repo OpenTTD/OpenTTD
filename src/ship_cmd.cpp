@@ -42,13 +42,6 @@
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
-static const TrackBits _ship_sometracks[4] = {
-	TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_LEFT,  // 0x19, // DIAGDIR_NE
-	TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_LEFT,  // 0x16, // DIAGDIR_SE
-	TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT, // 0x25, // DIAGDIR_SW
-	TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_RIGHT, // 0x2A, // DIAGDIR_NW
-};
-
 static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
 {
 	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
@@ -312,10 +305,10 @@ static void CheckShipLeaveDepot(Ship *v)
 	Axis axis = GetShipDepotAxis(tile);
 
 	/* Check first (north) side */
-	if (_ship_sometracks[axis] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
+	if (DiagdirReachesTracks((DiagDirection)axis) & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
 		v->direction = ReverseDir(AxisToDirection(axis));
 	/* Check second (south) side */
-	} else if (_ship_sometracks[axis + 2] & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
+	} else if (DiagdirReachesTracks((DiagDirection)(axis + 2)) & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
 		v->direction = AxisToDirection(axis);
 	} else {
 		return;
@@ -507,7 +500,7 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 			Track track;
 
 			/* Let's find out how far it would be if we would reverse first */
-			TrackBits b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagDir(enterdir)] & v->state;
+			TrackBits b = GetTileShipTrackStatus(tile2) & DiagdirReachesTracks(ReverseDiagDir(enterdir)) & v->state;
 
 			uint distr = UINT_MAX; // distance if we reversed
 			if (b != 0) {
@@ -546,9 +539,9 @@ static Direction ShipGetNewDirection(Vehicle *v, int x, int y)
 	return _new_vehicle_direction_table[offs];
 }
 
-static inline TrackBits GetAvailShipTracks(TileIndex tile, int dir)
+static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
 {
-	return GetTileShipTrackStatus(tile) & _ship_sometracks[dir];
+	return GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
 }
 
 static const byte _ship_subcoord[4][6][3] = {
