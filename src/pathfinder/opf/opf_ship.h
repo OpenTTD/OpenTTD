@@ -12,10 +12,6 @@
 #ifndef OPF_SHIP_H
 #define OPF_SHIP_H
 
-#include "../../direction_type.h"
-
-typedef bool TPFEnumProc(TileIndex tile, void *data, Trackdir trackdir, uint length);
-
-void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TPFEnumProc *enum_proc, void *data);
+Track OPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
 
 #endif /* OPF_SHIP_H */

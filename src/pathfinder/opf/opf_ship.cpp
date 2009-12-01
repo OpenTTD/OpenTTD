@@ -12,8 +12,9 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../tunnelbridge_map.h"
-#include "../../core/alloc_type.hpp"
 #include "../../tunnelbridge.h"
+#include "../../ship.h"
+#include "../../core/random_func.hpp"
 #include "opf_ship.h"
 
 struct RememberData {
@@ -23,11 +24,31 @@ struct RememberData {
 };
 
 struct TrackPathFinder {
-	TPFEnumProc *enum_proc;
-	void *userdata;
+	TileIndex skiptile;
+	TileIndex dest_coords;
+	uint best_bird_dist;
+	uint best_length;
 	RememberData rd;
 	TrackdirByte the_dir;
 };
+
+static bool ShipTrackFollower(TileIndex tile, TrackPathFinder *pfs, uint length)
+{
+	/* Found dest? */
+	if (tile == pfs->dest_coords) {
+		pfs->best_bird_dist = 0;
+
+		pfs->best_length = minu(pfs->best_length, length);
+		return true;
+	}
+
+	/* Skip this tile in the calculation */
+	if (tile != pfs->skiptile) {
+		pfs->best_bird_dist = minu(pfs->best_bird_dist, DistanceMaxPlusManhattan(pfs->dest_coords, tile));
+	}
+
+	return false;
+}
 
 static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection direction)
 {
@@ -54,8 +75,7 @@ static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection dire
 	 * tile, and then this tile will be in the sentinel row/col, so GetTileTrackStatus will fail. */
 	tile = TILE_MASK(tile + TileOffsByDiagDir(direction));
 
-	if (++tpf->rd.cur_length > 50)
-		return;
+	if (++tpf->rd.cur_length > 50) return;
 
 	TrackBits bits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0)) & DiagdirReachesTracks(direction);
 	if (bits == TRACK_BIT_NONE) return;
@@ -79,29 +99,109 @@ static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection dire
 
 		tpf->the_dir = TrackEnterdirToTrackdir(track, direction);
 
-		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length)) {
+		if (!ShipTrackFollower(tile, tpf, tpf->rd.cur_length)) {
 			TPFModeShip(tpf, tile, TrackdirToExitdir(tpf->the_dir));
 		}
 
 		tpf->rd = rd;
 	} while (bits != TRACK_BIT_NONE);
-
 }
 
-void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TPFEnumProc *enum_proc, void *data)
+static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPathFinder *tpf)
 {
 	assert(IsValidDiagDirection(direction));
 
-	SmallStackSafeStackAlloc<TrackPathFinder, 1> tpf;
-
 	/* initialize path finder variables */
-	tpf->userdata = data;
-	tpf->enum_proc = enum_proc;
-
 	tpf->rd.cur_length = 0;
 	tpf->rd.depth = 0;
 	tpf->rd.last_choosen_track = INVALID_TRACK;
 
-	tpf->enum_proc(tile, data, INVALID_TRACKDIR, 0);
+	ShipTrackFollower(tile, tpf, 0);
 	TPFModeShip(tpf, tile, direction);
+}
+
+static const byte _ship_search_directions[6][4] = {
+	{ 0, 9, 2, 9 },
+	{ 9, 1, 9, 3 },
+	{ 9, 0, 3, 9 },
+	{ 1, 9, 9, 2 },
+	{ 3, 2, 9, 9 },
+	{ 9, 9, 1, 0 },
+};
+
+static const byte _pick_shiptrack_table[6] = {1, 3, 2, 2, 0, 0};
+
+static uint FindShipTrack(Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, Track *track)
+{
+	TrackPathFinder pfs;
+	uint best_bird_dist = 0;
+	uint best_length    = 0;
+	byte ship_dir = v->direction & 3;
+
+	pfs.dest_coords = v->dest_tile;
+	pfs.skiptile = skiptile;
+
+	Track best_track = INVALID_TRACK;
+
+	do {
+		Track i = RemoveFirstTrack(&bits);
+
+		pfs.best_bird_dist = UINT_MAX;
+		pfs.best_length = UINT_MAX;
+
+		OPFShipFollowTrack(tile, (DiagDirection)_ship_search_directions[i][dir], &pfs);
+
+		if (best_track != INVALID_TRACK) {
+			if (pfs.best_bird_dist != 0) {
+				/* neither reached the destination, pick the one with the smallest bird dist */
+				if (pfs.best_bird_dist > best_bird_dist) goto bad;
+				if (pfs.best_bird_dist < best_bird_dist) goto good;
+			} else {
+				if (pfs.best_length > best_length) goto bad;
+				if (pfs.best_length < best_length) goto good;
+			}
+
+			/* if we reach this position, there's two paths of equal value so far.
+			 * pick one randomly. */
+			uint r = GB(Random(), 0, 8);
+			if (_pick_shiptrack_table[i] == ship_dir) r += 80;
+			if (_pick_shiptrack_table[best_track] == ship_dir) r -= 80;
+			if (r <= 127) goto bad;
+		}
+good:;
+		best_track = i;
+		best_bird_dist = pfs.best_bird_dist;
+		best_length = pfs.best_length;
+bad:;
+
+	} while (bits != 0);
+
+	*track = best_track;
+	return best_bird_dist;
+}
+
+/** returns the track to choose on the next tile, or -1 when it's better to
+ * reverse. The tile given is the tile we are about to enter, enterdir is the
+ * direction in which we are entering the tile */
+Track OPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+{
+	assert(IsValidDiagDirection(enterdir));
+
+	TileIndex tile2 = TILE_ADD(tile, -TileOffsByDiagDir(enterdir));
+	Track track;
+
+	/* Let's find out how far it would be if we would reverse first */
+	TrackBits b = TrackStatusToTrackBits(GetTileTrackStatus(tile2, TRANSPORT_WATER, 0)) & DiagdirReachesTracks(ReverseDiagDir(enterdir)) & v->state;
+
+	uint distr = UINT_MAX; // distance if we reversed
+	if (b != 0) {
+		distr = FindShipTrack(v, tile2, ReverseDiagDir(enterdir), b, tile, &track);
+		if (distr != UINT_MAX) distr++; // penalty for reversing
+	}
+
+	/* And if we would not reverse? */
+	uint dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
+
+	if (dist <= distr) return track;
+	return INVALID_TRACK; // We could better reverse
 }
