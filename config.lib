@@ -48,6 +48,7 @@ set_default() {
 	enable_debug="0"
 	enable_desync_debug="0"
 	enable_profiling="0"
+	enable_lto="0"
 	enable_dedicated="0"
 	enable_network="1"
 	enable_static="1"
@@ -117,6 +118,7 @@ set_default() {
 		enable_debug
 		enable_desync_debug
 		enable_profiling
+		enable_lto
 		enable_dedicated
 		enable_network
 		enable_static
@@ -264,6 +266,10 @@ detect_params() {
 			--enable-desync-debug=*)      enable_desync_debug="$optarg";;
 			--enable-profiling)           enable_profiling="1";;
 			--enable-profiling=*)         enable_profiling="$optarg";;
+			--enable-lto)                 enable_lto="1";;
+			--enable-lto=*)               enable_lto="$optarg";;
+			--enable-ipo)                 enable_lto="1";;
+			--enable-ipo=*)               enable_lto="$optarg";;
 			--enable-dedicated)           enable_dedicated="1";;
 			--enable-dedicated=*)         enable_dedicated="$optarg";;
 			--enable-network=*)           enable_network="$optarg";;
@@ -595,6 +601,21 @@ check_params() {
 
 		sleep 5
 	fi
+
+	if [ "$enable_lto" != "0" ]; then
+		has_lto=`($cxx_build -dumpspecs 2>&1 | grep '\%{flto}') || ($cxx_build -help ipo 2>&1 | grep '\-ipo')`
+		if [ -n "$has_lto" ]; then
+			log 1 "using link time optimization... yes"
+		else
+			enable_lto="0"
+			log 1 "using link time optimization... no"
+			log 1 "WARNING: you selected link time optimization but it is not found."
+			sleep 5
+		fi
+	else
+		log 1 "using link time optimization... no"
+	fi
+
 
 	if [ "$os" != "OSX" ] && [ "$with_osx_sysroot" != "0" ]; then
 		if [ "$with_osx_sysroot" = "1" ]; then
@@ -1088,6 +1109,13 @@ make_compiler_cflags() {
 			# Use c++0x mode so static_assert() is available
 			cxxflags="$cxxflags -std=c++0x"
 		fi
+
+		has_ipo=`$1 -help ipo | grep '\-ipo'`
+		if [ "$enable_lto" != "0" ] && [ -n "$has_ipo" ]; then
+			# Use IPO (only if we see IPO exists and is requested)
+			flags="$flags -ipo"
+			ldflags="$ldflags -ipo $CFLAGS"
+		fi
 	else
 		# Enable some things only for certain GCC versions
 		cc_version=`$1 -dumpversion | cut -c 1,3`
@@ -1113,6 +1141,7 @@ make_compiler_cflags() {
 			#  break anything. So disable strict-aliasing to make the
 			#  compiler all happy.
 			flags="$flags -fno-strict-aliasing"
+			ldflags="$ldflags -fno-strict-aliasing"
 			# Warn about casting-out 'const' with regular C-style cast.
 			#  The preferred way is const_cast<>() which doesn't warn.
 			flags="$flags -Wcast-qual"
@@ -1124,12 +1153,23 @@ make_compiler_cflags() {
 			# sure that they will not happen. It furthermore complains
 			# about it's own optimized code in some places.
 			flags="$flags -fno-strict-overflow"
+			ldflags="$ldflags -fno-strict-overflow"
 		fi
 
 		if [ $cc_version -ge 43 ]; then
 			# Use gnu++0x mode so static_assert() is available.
 			# Don't use c++0x, it breaks mingw (with gcc 4.4.0).
 			cxxflags="$cxxflags -std=gnu++0x"
+		fi
+
+		if [ $cc_version -ge 45 ]; then
+			# Only GCC 4.5+ has (possibly) LTO
+			has_lto=`$1 -dumpspecs | grep '\%{flto}'`
+			if [ "$enable_lto" != "0" ] && [ -n "$has_lto" ]; then
+				# Use LTO only if we see LTO exists and is requested
+				flags="$flags -flto"
+				ldflags="$ldflags -flto $CFLAGS"
+			fi
 		fi
 
 		has_rdynamic=`$1 -dumpspecs | grep rdynamic`
@@ -1153,13 +1193,18 @@ make_cflags_and_ldflags() {
 	# LDFLAGS for BUILD
 	LDFLAGS_BUILD=""
 	# General CFlags for HOST
-	CFLAGS="$CFLAGS -D$os"
+	CFLAGS="$CFLAGS"
 	# Special CXXFlags for HOST
 	CXXFLAGS="$CXXFLAGS"
 	# Libs to compile. In fact this is just LDFLAGS
 	LIBS="-lstdc++"
 	# LDFLAGS used for HOST
 	LDFLAGS="$LDFLAGS"
+
+	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$CXXFLAGS_BUILD" "CXXFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD"
+	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$CXXFLAGS" "CXXFLAGS" "$LDFLAGS" "LDFLAGS"
+
+	CFLAGS="$CFLAGS -D$os"
 
 	if [ $enable_debug = 0 ]; then
 		# No debug, add default stuff
@@ -1174,6 +1219,7 @@ make_cflags_and_ldflags() {
 			fi
 
 			CFLAGS="-O2 -fomit-frame-pointer $CFLAGS"
+			LDFLAGS="-O2 -fomit-frame-pointer $LDFLAGS"
 		fi
 	else
 		OBJS_SUBDIR="debug"
@@ -1187,6 +1233,7 @@ make_cflags_and_ldflags() {
 		fi
 		if [ $enable_debug -ge 2 ]; then
 			CFLAGS="$CFLAGS -fno-inline"
+			LDFLAGS="$LDFLAGS -fno-inline"
 		fi
 		if [ $enable_debug -ge 3 ]; then
 			CFLAGS="$CFLAGS -O0"
@@ -1203,9 +1250,6 @@ make_cflags_and_ldflags() {
 	if [ "$with_threads" = "0" ]; then
 		CFLAGS="$CFLAGS -DNO_THREADS"
 	fi
-
-	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$CXXFLAGS_BUILD" "CXXFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD"
-	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$CXXFLAGS" "CXXFLAGS" "$LDFLAGS" "LDFLAGS"
 
 	if [ "`echo $1 | cut -c 1-3`" != "icc" ]; then
 		if [ "$os" = "CYGWIN" ]; then
@@ -3037,6 +3081,8 @@ showhelp() {
 	echo "  --enable-debug[=LVL]           enable debug-mode (LVL=[0123], 0 is release)"
 	echo "  --enable-desync-debug=[LVL]    enable desync debug options (LVL=[012], 0 is none"
 	echo "  --enable-profiling             enables profiling"
+	echo "  --enable-lto                   enables GCC's Link Time Optimization (LTO)/ICC's"
+	echo "                                 Interprocedural Optimization if available"
 	echo "  --enable-dedicated             compile a dedicated server (without video)"
 	echo "  --enable-static                enable static compile (doesn't work for"
 	echo "                                 all HOSTs)"
