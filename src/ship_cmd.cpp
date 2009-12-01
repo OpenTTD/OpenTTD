@@ -16,7 +16,7 @@
 #include "command_func.h"
 #include "news_func.h"
 #include "company_func.h"
-#include "pathfinder/npf/npf.h"
+#include "pathfinder/npf/npf_func.h"
 #include "depot_base.h"
 #include "station_base.h"
 #include "vehicle_gui.h"
@@ -99,17 +99,7 @@ SpriteID Ship::GetImage(Direction direction) const
 
 static const Depot *FindClosestShipDepot(const Vehicle *v)
 {
-	if (_settings_game.pf.pathfinder_for_ships == VPF_NPF) { // NPF is used
-		Trackdir trackdir = v->GetVehicleTrackdir();
-		NPFFoundTargetData ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
-
-		if (ftd.best_bird_dist == 0) return Depot::GetByTile(ftd.node.tile); // Found target
-
-		return NULL; // Did not find target
-	}
-
-	/* OPF or YAPF - find the closest depot */
-
+	/* Find the closest depot */
 	const Depot *depot;
 	const Depot *best_depot = NULL;
 	uint best_dist = UINT_MAX;
@@ -369,16 +359,6 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 }
 
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, Owner owner, RailTypes railtypes)
-{
-
-	void *perf = NpfBeginInterval();
-	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, 0, owner, railtypes);
-	int t = NpfEndInterval(perf);
-	DEBUG(yapf, 4, "[NPFW] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
-	return ret;
-}
-
 /** returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
@@ -387,33 +367,11 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 	assert(IsValidDiagDirection(enterdir));
 
 	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_YAPF: { // YAPF
-			Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
-			if (trackdir != INVALID_TRACKDIR) return TrackdirToTrack(trackdir);
-		} break;
-
-		case VPF_NPF: { // NPF
-			NPFFindStationOrTileData fstd;
-			Trackdir trackdir = v->GetVehicleTrackdir();
-			assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
-
-			NPFFillWithOrderData(&fstd, v);
-
-			NPFFoundTargetData ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPES);
-
-			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
-			 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
-			 * we did not find our target, but ftd.best_trackdir contains the direction leading
-			 * to the tile closest to our target. */
-			if (ftd.best_trackdir != 0xff) return TrackdirToTrack(ftd.best_trackdir); // TODO: Wrapper function?
-		} break;
-
-		default: NOT_REACHED();
-
 		case VPF_OPF: return OPFShipChooseTrack(v, tile, enterdir, tracks);
+		case VPF_NPF: return NPFShipChooseTrack(v, tile, enterdir, tracks);
+		case VPF_YAPF: return YapfChooseShipTrack(v, tile, enterdir, tracks);
+		default: NOT_REACHED();
 	}
-
-	return INVALID_TRACK; // We could better reverse
 }
 
 static const Direction _new_vehicle_direction_table[] = {

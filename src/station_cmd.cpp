@@ -43,6 +43,8 @@
 #include "roadstop_base.h"
 #include "waypoint_base.h"
 #include "waypoint_func.h"
+#include "pbs.h"
+#include "debug.h"
 
 #include "table/strings.h"
 

@@ -38,6 +38,7 @@
 #include "cheat_type.h"
 #include "elrail_func.h"
 #include "landscape_type.h"
+#include "pbs.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

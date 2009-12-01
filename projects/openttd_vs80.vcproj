@@ -472,10 +472,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\aystar.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\bmp.cpp"
 				>
 			</File>
@@ -640,10 +636,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\npf.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\openttd.cpp"
 				>
 			</File>
@@ -652,15 +644,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\pathfind.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\pbs.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\queue.cpp"
 				>
 			</File>
 			<File
@@ -805,10 +789,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\autoslope.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\aystar.h"
 				>
 			</File>
 			<File
@@ -1256,10 +1236,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\npf.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\music\null_m.h"
 				>
 			</File>
@@ -1288,19 +1264,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\pathfind.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\pbs.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\querystring_gui.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\queue.h"
 				>
 			</File>
 			<File
@@ -3481,70 +3449,118 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Pathfinder"
+			>
+			<File
+				RelativePath=".\..\src\pathfinder\opf\opf_ship.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\opf\opf_ship.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\pathfinder_func.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="NPF"
+			>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\aystar.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\aystar.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\queue.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\queue.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\npf.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\npf.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\npf_func.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="YAPF"
 			>
 			<File
-				RelativePath=".\..\src\yapf\follow_track.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\follow_track.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\nodelist.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\nodelist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf.h"
+				RelativePath=".\..\src\pathfinder\yapf\yapf.h"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_base.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_base.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_common.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_common.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_costbase.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_costbase.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_costcache.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_costcache.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_costrail.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_costrail.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_destrail.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_destrail.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_node.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_node.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_node_rail.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_node_rail.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_node_road.hpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_node_road.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_rail.cpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_rail.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_road.cpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_road.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_ship.cpp"
+				RelativePath=".\..\src\pathfinder\yapf\yapf_ship.cpp"
 				>
 			</File>
 		</Filter>

@@ -24,6 +24,7 @@
 #include "../../landscape.h"
 #include "yapf.h"
 #include "../pathfinder_func.h"
+#include "../../pbs.h"
 #include "../../waypoint_base.h"
 #include "../../debug.h"
 #include "../../settings_type.h"

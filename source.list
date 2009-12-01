@@ -825,6 +825,7 @@ pathfinder/npf/queue.cpp
 pathfinder/npf/queue.h
 pathfinder/npf/npf.cpp
 pathfinder/npf/npf.h
+pathfinder/npf/npf_func.h
 
 # YAPF
 pathfinder/yapf/follow_track.hpp

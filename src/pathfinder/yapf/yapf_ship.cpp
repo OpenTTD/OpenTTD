@@ -167,7 +167,7 @@ struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , C
 struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
-Trackdir YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	/* default is YAPF type 2 */
 	typedef Trackdir (*PfnChooseShipTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits);
@@ -181,7 +181,7 @@ Trackdir YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
 	}
 
 	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks);
-	return td_ret;
+	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
 
 /** performance measurement helper */

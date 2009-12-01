@@ -37,6 +37,7 @@
 #include "roadstop_base.h"
 #include "cargotype.h"
 #include "spritecache.h"
+#include "debug.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

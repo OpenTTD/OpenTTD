@@ -19,6 +19,7 @@
 #include "../../tunnelbridge.h"
 #include "../../pbs.h"
 #include "../../train.h"
+#include "../../ship.h"
 #include "../pathfinder_func.h"
 #include "npf.h"
 
@@ -1117,4 +1118,24 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reser
 	}
 	fstd->reserve_path = reserve_path;
 	fstd->v = v;
+}
+
+/*** Ships ***/
+
+Track NPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+{
+	NPFFindStationOrTileData fstd;
+	Trackdir trackdir = v->GetVehicleTrackdir();
+	assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
+
+	NPFFillWithOrderData(&fstd, v);
+
+	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
+
+	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+		* the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+		* we did not find our target, but ftd.best_trackdir contains the direction leading
+		* to the tile closest to our target. */
+	if (ftd.best_trackdir == 0xff) return INVALID_TRACK;
+	return TrackdirToTrack(ftd.best_trackdir);
 }
