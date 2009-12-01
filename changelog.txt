@@ -1,3 +1,35 @@
+0.7.4 (2009-12-01)
+------------------------------------------------------------------------
+- Fix: Endianness issue with saving the zoom level [FS#3333] (r18351)
+- Fix: [NewGRF] When starting a new game the values of action D variable 13 were incorrect [FS#3324] (r18207)
+
+
+0.7.4-RC1 (2009-11-15)
+------------------------------------------------------------------------
+- Change: Prefer extmidi over allegro midi and allegro over null driver [FS#3272] (r17875)
+- Change: [NewGRF] Apply default refitmasks only when the NewGRF did not set any of the three refittability properties (xor mask, positive classes, negative classes) (r17663)
+- Fix: Crash when an articulated RV is turning on a drive through road station that gets forcefully (bankrupt) removed [FS#3310] (r18049)
+- Fix: GCC 4.5 compiling (r18045)
+- Fix: AIs failed to load their data from savegames by crashing them when they tried [FS#3290] (r18038)
+- Fix: Screen jumped a bit for at least SDL and Allegro when right-click-dragging (r18030)
+- Fix: [NewGRF] Improve parsing of RIFF data. Skip unknown chunks and check chunk sizes (r17999)
+- Fix: When you start giving money (input window for amount), then get moved to spectators and you click 'Ok' a crash would occur (r17953)
+- Fix: Use 24bpp BMP format instead of 32bpp for screenshots. Saves space and is supported by more image viewers (r17943)
+- Fix: Close BMP file when making screenshot fails (r17941)
+- Fix: Deadlock when trying to create screenshot with too long name (including path) (r17936)
+- Fix: Crash when closing NewGRF parameter window with no NewGRF selected [FS#3291] (r17922)
+- Fix: 32bpp BMP screenshots were in wrong colours on big endian machines and broken when screen width was not a multiple of 4 (r17910, r17909)
+- Fix: Uninitialised values in some paths of loading TTO savegames [FS#3288] (r17908)
+- Fix: Make the plane speed setting unchangeable in network games because it can be read by NewGRFs on game load and thus if it changes cause desyncs (r17902)
+- Fix: [NewGRF] 'subtract-in' is also signed for production callback version 0 (r17857)
+- Fix: [NewGRF] _date_fract runs from 0 to 73 since r2041. Variable 0x09 should not (r17824)
+- Fix: Do not fail hard when no soundcard could be detected; just fall back on the null-driver [FS#3268] (r17788)
+- Fix: CJK languages do not have spaces, so for adding newlines (multi line strings) we need to (properly) handle the case when there are no spaces instead of truncating the string [FS#3264] (r17772)
+- Fix: Powernaut Helicopter got wrong 'load amount' (r17758)
+- Fix: [NewGRF] 'last_value' and 'reseed' are shared between procedure and main chain, 'scope' and 'count' are not (r17672)
+- Fix: Count only active clients (not those waiting for map download) when checking min_active_clients limit (r16506)
+
+
 0.7.3 (2009-10-01)
 ------------------------------------------------------------------------
 - Fix: [NewGRF] Crash when trying to build an industry that has no industry layout defined [FS#3233] (r17638, r17633)
@@ -14,12 +46,12 @@
 - Fix: Assertion triggered when the second vehicle in a 101+ (or 11+ if mammoth trains is disabled) vehicle free wagon chain is an engine and the first vehicle is moved to another chain [FS#3208] (r17576)
 - Fix: [NewGRF] Memory leak when viewing the NewGRF settings of a server (r17563)
 - Fix: [NewGRF] The NewGRF settings of (remote) network games did not get properly updated when the NewGRFs were rescanned causing reading of freed data [FS#2972] (r17562)
-- Fix: [NewGRF] Close the "Add NewGRF" window when you close the "NewGRF Settings" window. The add window has a pointer to the settings which means that not deleting it would cause dereferencing an already freed pointer [FS#3206] (r17559)
+- Fix: [NewGRF] Close the 'Add NewGRF' window when you close the 'NewGRF Settings' window. The add window has a pointer to the settings which means that not deleting it would cause dereferencing an already freed pointer [FS#3206] (r17559)
 - Fix: Vehicles waiting for their time table did not load anymore after their initial load was completed [FS#3201] (r17551)
 - Fix: Aircraft were given an unfair advantage in station rating calculations (r17550)
 - Fix: [NewGRF] Sign extending of profit calculation did not work (r17546)
-- Fix: [NoAI] AIs had "infinite" time when running code from the global scope [FS#3202] (r17545)
-- Fix: [NoAI] Crash when doing commands in the "global" scope [FS#3202] (r17544)
+- Fix: [NoAI] AIs had 'infinite' time when running code from the global scope [FS#3202] (r17545)
+- Fix: [NoAI] Crash when doing commands in the 'global' scope [FS#3202] (r17544)
 
 
 0.7.3-RC1 (2009-09-13)

@@ -1,7 +1,7 @@
 !define APPNAME "OpenTTD"   ; Define application name
 !define APPVERSION "0.8.0"  ; Define application version
 !define APPVERSIONINTERNAL "0.8.0.0" ; Define application version in X.X.X.X
-!define INSTALLERVERSION 65 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define INSTALLERVERSION 71 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !include ${VERSION_INCLUDE}
 
 !define APPURLLINK "http://www.openttd.org"
