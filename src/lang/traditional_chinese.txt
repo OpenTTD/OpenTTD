@@ -3097,7 +3097,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_FULL_LOAD                                             :(滿載)
 STR_ORDER_FULL_LOAD_ANY                                         :(滿載任一種類客貨)
 STR_ORDER_NO_LOAD                                               :(不裝載)
-STR_ORDER_UNLOAD                                                :(裝卸客貨)
+STR_ORDER_UNLOAD                                                :(卸載後裝載客貨)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(卸載後等待滿載)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(卸載後等待任一種類滿載)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(卸載後空車離開)

@@ -317,7 +317,7 @@ STR_SORT_BY_POWER                                               :Telj.
 STR_SORT_BY_INTRO_DATE                                          :Bevezetési dátum
 STR_SORT_BY_RUNNING_COST                                        :Üzemeltetési k.
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Telj./Üzemeltetési k.
-STR_SORT_BY_CARGO_CAPACITY                                      :Teherkapacitás
+STR_SORT_BY_CARGO_CAPACITY                                      :Szállítási kapacitás
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése
@@ -1100,7 +1100,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90°-os kanyart: {ORANGE}{STRING} {LTBLUE}(nem NTP-vel)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telepakolása (egyidejű helyett): {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telerakodása (egyidejű helyett): {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön áru az állomásra: {ORANGE}{STRING}
@@ -2909,7 +2909,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuáli
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuális repülőgépesemény - kattints ide a repülőgép elindításához/megállításához
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Felpakol / Lepakol
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Berakodás / Kirakodás
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Indul
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Balesetet szenvedett!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Lerobbant
@@ -3047,19 +3047,19 @@ STR_ORDER_GO_VIA                                                :Via - Megállá
 STR_ORDER_GO_NON_STOP_VIA                                       :Nonstop via - Megállás nélkül menj és hajts át
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijelölt célpont megközelítésének és a megállási-áthajtási szokásainak beállítása
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Telepakol bármelyikből
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :felpakol, ha lehetséges
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :telepakol mindent
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :telepakol bármelyikből
-STR_ORDER_DROP_NO_LOADING                                       :nem vesz fel semmit
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a felpakolási szokások beállítása
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Telerakodás bármiből
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Berakodás, ha lehetséges
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Telerakodás mindenből
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Telerakodás bármiből
+STR_ORDER_DROP_NO_LOADING                                       :Nincs berakodás
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a berakodási szokások beállítása
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Mindent lepakol
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :lepakol, ha elfogad
-STR_ORDER_DROP_UNLOAD                                           :mindent lepakol
-STR_ORDER_DROP_TRANSFER                                         :odaszállít
-STR_ORDER_DROP_NO_UNLOADING                                     :nem pakol le
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakolási szokások beállítása
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Teljes kirakodás
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kirakodás ha fogadott
+STR_ORDER_DROP_UNLOAD                                           :Teljes kirakodás
+STR_ORDER_DROP_TRANSFER                                         :Elszállítás
+STR_ORDER_DROP_NO_UNLOADING                                     :Nincs kirakodás
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a kirakodási szokások beállítása
 
 STR_ORDER_REFIT                                                 :{BLACK}Átalakít
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Válaszd ki minek a szállítására álljunk át. Ctrl+kattintással eltávolítod az átalakítási utasítást.
@@ -3131,17 +3131,17 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_FULL_LOAD                                             :(mindenből teljes rakományra vár)
 STR_ORDER_FULL_LOAD_ANY                                         :(bármiből teljes rakományra vár)
 STR_ORDER_NO_LOAD                                               :(nem vesz fel rakományt)
-STR_ORDER_UNLOAD                                                :(lepakol és felvesz rakományt)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(lepakol és mindenből teljes rakományra vár)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(lepakol és bármiből teljes rakományra vár)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(lepakol és üresen továbbmegy)
-STR_ORDER_TRANSFER                                              :(odaszállít és felvesz rakományt)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(odaszállít és mindenből teljes rakományra vár)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(odaszállít és bármiből teljes rakományra vár)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(odaszállít és üresen továbbmegy)
-STR_ORDER_NO_UNLOAD                                             :(nem pakol le, csak felvesz rakományt)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(nem pakol le, mindenből teljes rakományra vár)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nem pakol le, bármiből teljes rakományra vár)
+STR_ORDER_UNLOAD                                                :(Kirakodás és rakományfelvétel)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lerakodás és mindenből teljes rakományra várakozás)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lerakodás és bármiből teljes rakományra várakozás)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Lerakodás és üresen indulás)
+STR_ORDER_TRANSFER                                              :(Elszállítás és rakományfelvétel)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Elszállítás és mindenből teljes rakományra várakozás)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Elszállítés és bármiből teljes rakományra várakozás)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Elszállítés és üresen indulás)
+STR_ORDER_NO_UNLOAD                                             :(Ki nem rakodás és rakományfelvétel)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ki nem rakodás és mindenből teljes rakományra várakozás)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ki nem rakodás és bármiből teljes rakományra várakozás)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[közeli vég]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[közép]
