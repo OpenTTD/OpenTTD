@@ -1242,20 +1242,20 @@ void DoPaletteAnimations()
 	if (_use_palette == PAL_DOS) {
 		/* Dark blue water DOS */
 		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
-		j = EXTR(320, 5);
-		for (i = 0; i != 5; i++) {
+		j = EXTR(320, EPV_CYCLES_DARK_WATER);
+		for (i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
 			*palette_pos++ = s[j];
 			j++;
-			if (j == 5) j = 0;
+			if (j == EPV_CYCLES_DARK_WATER) j = 0;
 		}
 
 		/* Glittery water DOS */
 		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
-		j = EXTR(128, 15);
-		for (i = 0; i != 5; i++) {
+		j = EXTR(128, EPV_CYCLES_GLITTER_WATER);
+		for (i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
 			*palette_pos++ = s[j];
 			j += 3;
-			if (j >= 15) j -= 15;
+			if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
 		}
 	}
 
