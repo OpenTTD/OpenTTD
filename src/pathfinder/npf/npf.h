@@ -33,10 +33,12 @@ enum {
 
 /* Meant to be stored in AyStar.targetdata */
 struct NPFFindStationOrTileData {
-	TileIndex dest_coords;   ///< An indication of where the station is, for heuristic purposes, or the target tile
-	StationID station_index; ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
-	bool      reserve_path;  ///< Indicates whether the found path should be reserved
-	const Vehicle *v;        ///< The vehicle we are pathfinding for
+	TileIndex dest_coords;    ///< An indication of where the station is, for heuristic purposes, or the target tile
+	StationID station_index;  ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
+	bool reserve_path;        ///< Indicates whether the found path should be reserved
+	StationType station_type; ///< The type of station we're heading for
+	bool not_articulated;     ///< The (road) vehicle is not articulated
+	const Vehicle *v;         ///< The vehicle we are pathfinding for
 };
 
 /* Indices into AyStar.userdata[] */

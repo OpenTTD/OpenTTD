@@ -21,6 +21,7 @@
 #include "../../roadveh.h"
 #include "../../ship.h"
 #include "../../train.h"
+#include "../../roadstop_base.h"
 #include "../pathfinder_func.h"
 #include "../pathfinder_type.h"
 #include "npf.h"
@@ -104,8 +105,8 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, Open
 	uint dist;
 
 	/* for train-stations, we are going to aim for the closest station tile */
-	if (as->user_data[NPF_TYPE] == TRANSPORT_RAIL && fstd->station_index != INVALID_STATION)
-		to = CalcClosestStationTile(fstd->station_index, from, STATION_RAIL);
+	if (as->user_data[NPF_TYPE] != TRANSPORT_WATER && fstd->station_index != INVALID_STATION)
+		to = CalcClosestStationTile(fstd->station_index, from, fstd->station_type);
 
 	if (as->user_data[NPF_TYPE] == TRANSPORT_ROAD) {
 		/* Since roads only have diagonal pieces, we use manhattan distance here */
@@ -279,11 +280,13 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 			if (IsLevelCrossing(tile)) cost += _settings_game.pf.npf.npf_crossing_penalty;
 			break;
 
-		case MP_STATION:
+		case MP_STATION: {
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for drive-through road stops */
 			if (IsDriveThroughStopTile(tile)) cost += _settings_game.pf.npf.npf_road_drive_through_penalty;
-			break;
+			RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
+			cost += 8 * NPF_TILE_LENGTH * ((!rs->IsFreeBay(0)) + (!rs->IsFreeBay(1)));
+		} break;
 
 		default:
 			break;
@@ -447,16 +450,14 @@ static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
 	AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
-	/* If GetNeighbours said we could get here, we assume the station type
-	 * is correct */
-	if (
-		(fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) || // We've found the tile, or
-		(IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) // the station
-	) {
-		return AYSTAR_FOUND_END_NODE;
-	} else {
-		return AYSTAR_DONE;
+	if (fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) return AYSTAR_FOUND_END_NODE;
+
+	if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) {
+		if (fstd->station_type == STATION_RAIL) return AYSTAR_FOUND_END_NODE;
+		/* Only if it is a valid station *and* we can stop there */
+		if (GetStationType(tile) == fstd->station_type && (fstd->not_articulated || IsDriveThroughStopTile(tile))) return AYSTAR_FOUND_END_NODE;
 	}
+	return AYSTAR_DONE;
 }
 
 /**
@@ -1086,10 +1087,13 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool
 	 * dest_tile, not just any stop of that station.
 	 * So only for train orders to stations we fill fstd->station_index, for all
 	 * others only dest_coords */
-	if (v->type == VEH_TRAIN && (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT))) {
+	if (v->type != VEH_SHIP && (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT))) {
+		assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
 		fstd->station_index = v->current_order.GetDestination();
-		/* Let's take the closest tile of the station as our target for trains */
-		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile, STATION_RAIL);
+		fstd->station_type = (v->type == VEH_TRAIN) ? STATION_RAIL : (RoadVehicle::From(v)->IsBus() ? STATION_BUS : STATION_TRUCK);
+		fstd->not_articulated = v->type == VEH_ROAD && !RoadVehicle::From(v)->HasArticulatedPart();
+		/* Let's take the closest tile of the station as our target for vehicles */
+		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile, fstd->station_type);
 	} else {
 		fstd->dest_coords = v->dest_tile;
 		fstd->station_index = INVALID_STATION;

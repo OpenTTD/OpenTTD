@@ -66,11 +66,11 @@ protected:
 					}
 					break;
 
-				case MP_STATION:
-					if (IsDriveThroughStopTile(tile)) {
-						cost += Yapf().PfGetSettings().road_stop_penalty;
-					}
-					break;
+				case MP_STATION: {
+					if (IsDriveThroughStopTile(tile)) cost += Yapf().PfGetSettings().road_stop_penalty;
+					RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
+					cost += 8 * YAPF_TILE_LENGTH * ((!rs->IsFreeBay(0)) + (!rs->IsFreeBay(1)));
+				} break;
 
 				default:
 					break;
@@ -268,12 +268,24 @@ public:
 protected:
 	TileIndex    m_destTile;
 	TrackdirBits m_destTrackdirs;
+	StationID    m_dest_station;
+	bool         m_bus;
+	bool         m_non_artic;
 
 public:
 	void SetDestination(const RoadVehicle *v)
 	{
-		m_destTile      = v->dest_tile;
-		m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_ROAD, v->compatible_roadtypes));
+		if (v->current_order.IsType(OT_GOTO_STATION)) {
+			m_dest_station  = v->current_order.GetDestination();
+			m_bus           = v->IsBus();
+			m_destTile      = CalcClosestStationTile(m_dest_station, v->tile, m_bus ? STATION_BUS : STATION_TRUCK);
+			m_non_artic     = !v->HasArticulatedPart();
+			m_destTrackdirs = INVALID_TRACKDIR_BIT;
+		} else {
+			m_dest_station  = INVALID_STATION;
+			m_destTile      = v->dest_tile;
+			m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_ROAD, v->compatible_roadtypes));
+		}
 	}
 
 protected:
@@ -292,6 +304,13 @@ public:
 
 	FORCEINLINE bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
+		if (m_dest_station != INVALID_STATION) {
+			return IsTileType(tile, MP_STATION) &&
+				GetStationIndex(tile) == m_dest_station &&
+				(m_bus ? IsBusStop(tile) : IsTruckStop(tile)) &&
+				(m_non_artic || IsDriveThroughStopTile(tile));
+		}
+
 		return tile == m_destTile && ((m_destTrackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
 	}
 
