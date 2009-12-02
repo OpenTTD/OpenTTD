@@ -271,10 +271,10 @@ protected:
 	TrackdirBits m_destTrackdirs;
 
 public:
-	void SetDestination(TileIndex tile, TrackdirBits trackdirs)
+	void SetDestination(const RoadVehicle *v)
 	{
-		m_destTile = tile;
-		m_destTrackdirs = trackdirs;
+		m_destTile      = v->dest_tile;
+		m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_ROAD, v->compatible_roadtypes));
 	}
 
 protected:
@@ -288,8 +288,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
-		bool bDest = (n.m_segment_last_tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(n.m_segment_last_td)) != TRACKDIR_BIT_NONE);
-		return bDest;
+		return PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
 	}
 
 	FORCEINLINE bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
@@ -382,13 +381,9 @@ public:
 		/* select reachable trackdirs only */
 		src_trackdirs &= DiagdirReachesTrackdirs(enterdir);
 
-		/* get available trackdirs on the destination tile */
-		TileIndex dest_tile = v->dest_tile;
-		TrackdirBits dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(dest_tile, TRANSPORT_ROAD, v->compatible_roadtypes));
-
 		/* set origin and destination nodes */
 		Yapf().SetOrigin(src_tile, src_trackdirs);
-		Yapf().SetDestination(dest_tile, dest_trackdirs);
+		Yapf().SetDestination(v);
 
 		/* find the best path */
 		Yapf().FindPath(v);
@@ -426,10 +421,8 @@ public:
 
 		if (!SetOriginFromVehiclePos(v)) return UINT_MAX;
 
-		/* set destination tile, trackdir
-		 *   get available trackdirs on the destination tile */
-		TrackdirBits dst_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(dst_tile, TRANSPORT_ROAD, v->compatible_roadtypes));
-		Yapf().SetDestination(dst_tile, dst_td_bits);
+		/* get available trackdirs on the destination tile */
+		Yapf().SetDestination(v);
 
 		/* if path not found - return distance = UINT_MAX */
 		uint dist = UINT_MAX;
