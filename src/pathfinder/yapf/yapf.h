@@ -105,15 +105,6 @@ bool YapfTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir td, b
 /** Use this function to notify YAPF that track layout (or signal configuration) has change */
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track);
 
-/** performance measurement helpers */
-void *NpfBeginInterval();
-int NpfEndInterval(void *perf);
-
-
-extern int _aystar_stats_open_size;
-extern int _aystar_stats_closed_size;
-
-
 /** Base tile length units */
 enum {
 	YAPF_TILE_LENGTH = 100,

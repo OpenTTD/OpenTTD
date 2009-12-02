@@ -185,21 +185,3 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
-
-/** performance measurement helper */
-void *NpfBeginInterval()
-{
-	CPerformanceTimer& perf = *new CPerformanceTimer;
-	perf.Start();
-	return &perf;
-}
-
-/** performance measurement helper */
-int NpfEndInterval(void *vperf)
-{
-	CPerformanceTimer& perf = *(CPerformanceTimer*)vperf;
-	perf.Stop();
-	int t = perf.Get(1000000);
-	delete &perf;
-	return t;
-}

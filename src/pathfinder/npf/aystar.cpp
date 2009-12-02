@@ -29,8 +29,8 @@
 #include "../../core/alloc_func.hpp"
 #include "aystar.h"
 
-int _aystar_stats_open_size;
-int _aystar_stats_closed_size;
+static int _aystar_stats_open_size;
+static int _aystar_stats_closed_size;
 
 /* This looks in the Hash if a node exists in ClosedList
  *  If so, it returns the PathNode, else NULL */
