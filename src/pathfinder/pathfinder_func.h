@@ -21,19 +21,23 @@
  * as defined by its tile are (st->train_station)
  * @param station The station to calculate the distance to
  * @param tile The tile from where to calculate the distance
+ * @param station_type the station type to get the closest tile of
+ * @note for simplification STATION_RAIL is also used for waypoints!
  * @return The closest station tile to the given tile.
  */
-static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
+static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, StationType station_type)
 {
 	const BaseStation *st = BaseStation::Get(station);
+	TileArea ta;
+	st->GetTileArea(&ta, station_type);
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
-	if (st->train_station.tile == INVALID_TILE) return st->xy;
+	if (ta.tile == INVALID_TILE) return st->xy;
 
-	uint minx = TileX(st->train_station.tile);  // topmost corner of station
-	uint miny = TileY(st->train_station.tile);
-	uint maxx = minx + st->train_station.w - 1; // lowermost corner of station
-	uint maxy = miny + st->train_station.h - 1;
+	uint minx = TileX(ta.tile);  // topmost corner of station
+	uint miny = TileY(ta.tile);
+	uint maxx = minx + ta.w - 1; // lowermost corner of station
+	uint maxy = miny + ta.h - 1;
 
 	/* we are going the aim for the x coordinate of the closest corner
 	 * but if we are between those coordinates, we will aim for our own x coordinate */

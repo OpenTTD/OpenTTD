@@ -105,7 +105,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, Open
 
 	/* for train-stations, we are going to aim for the closest station tile */
 	if (as->user_data[NPF_TYPE] == TRANSPORT_RAIL && fstd->station_index != INVALID_STATION)
-		to = CalcClosestStationTile(fstd->station_index, from);
+		to = CalcClosestStationTile(fstd->station_index, from, STATION_RAIL);
 
 	if (as->user_data[NPF_TYPE] == TRANSPORT_ROAD) {
 		/* Since roads only have diagonal pieces, we use manhattan distance here */
@@ -1089,7 +1089,7 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool
 	if (v->type == VEH_TRAIN && (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT))) {
 		fstd->station_index = v->current_order.GetDestination();
 		/* Let's take the closest tile of the station as our target for trains */
-		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile);
+		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile, STATION_RAIL);
 	} else {
 		fstd->dest_coords = v->dest_tile;
 		fstd->station_index = INVALID_STATION;
