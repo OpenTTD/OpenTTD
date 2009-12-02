@@ -105,20 +105,4 @@ bool YapfTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir td, b
 /** Use this function to notify YAPF that track layout (or signal configuration) has change */
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track);
 
-/** Base tile length units */
-enum {
-	YAPF_TILE_LENGTH = 100,
-	YAPF_TILE_CORNER_LENGTH = 71,
-
-	/**
-	 * This penalty is the equivalent of "infite", which means that paths that
-	 * get this penalty will be chosen, but only if there is no other route
-	 * without it. Be careful with not applying this penalty to often, or the
-	 * total path cost might overflow..
-	 * For now, this is just a Very Big Penalty, we might actually implement
-	 * this in a nicer way :-)
-	 */
-	YAPF_INFINITE_PENALTY = 1000 * YAPF_TILE_LENGTH,
-};
-
 #endif /* YAPF_H */

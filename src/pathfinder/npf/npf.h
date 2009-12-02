@@ -31,24 +31,6 @@ enum {
 	NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1
 };
 
-/* For new pathfinding. Define here so it is globally available without having
- * to include npf.h */
-enum {
-	NPF_TILE_LENGTH = 100
-};
-
-enum {
-	/**
-	 * This penalty is the equivalent of "infite", which means that paths that
-	 * get this penalty will be chosen, but only if there is no other route
-	 * without it. Be careful with not applying this penalty to often, or the
-	 * total path cost might overflow..
-	 * For now, this is just a Very Big Penalty, we might actually implement
-	 * this in a nicer way :-)
-	 */
-	NPF_INFINITE_PENALTY = 1000 * NPF_TILE_LENGTH
-};
-
 /* Meant to be stored in AyStar.targetdata */
 struct NPFFindStationOrTileData {
 	TileIndex dest_coords;   ///< An indication of where the station is, for heuristic purposes, or the target tile
