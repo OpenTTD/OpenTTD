@@ -12,6 +12,10 @@
 #ifndef NPF_FUNC_H
 #define NPF_FUNC_H
 
+#include "../../track_type.h"
+#include "../../direction_type.h"
+#include "../pathfinder_type.h"
+
 /**
  * Finds the best path for given ship using NPF.
  * @param v        the ship that needs to find a path
@@ -21,5 +25,46 @@
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
 Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
+
+/**
+ * Used when user sends train to the nearest depot or if train needs servicing using NPF
+ * @param v            train that needs to go to some depot
+ * @param max_distance max distance (number of track tiles) from the current train position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_distance
+ *                     was reached and no depot was seen)
+ * @return             the data about the depot
+ */
+FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_distance);
+
+/**
+ * Try to extend the reserved path of a train to the nearest safe tile using NPF.
+ *
+ * @param v    The train that needs to find a safe tile.
+ * @param tile Last tile of the current reserved path.
+ * @param td   Last trackdir of the current reserved path.
+ * @param override_railtype Should all physically compatible railtypes be searched, even if the vehicle can't run on them on its own?
+ * @return True if the path could be extended to a safe tile.
+ */
+bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir td, bool override_railtype);
+
+/**
+ * Returns true if it is better to reverse the train before leaving station using NPF.
+ * @param v the train leaving the station
+ * @return true if reversing is better
+ */
+bool NPFTrainCheckReverse(const Train *v);
+
+/**
+ * Finds the best path for given train using NPF.
+ * @param v        the train that needs to find a path
+ * @param tile     the tile to find the path from (should be next tile the train is about to enter)
+ * @param enterdir diagonal direction which the RV will enter this new tile from
+ * @param tracks   available trackdirs on the new tile (to choose from)
+ * @param path_not_found [out] true is returned if no path can be found (returned Trackdir is only a 'guess')
+ * @param reserve_track indicates whether YAPF should try to reserve the found path
+ * @param target   [out] the target tile of the reservation, free is set to true if path was reserved
+ * @return         the best track for next turn
+ */
+Track NPFTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, struct PBSTileInfo *target);
 
 #endif /* NPF_FUNC_H */

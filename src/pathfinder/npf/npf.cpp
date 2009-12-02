@@ -21,6 +21,7 @@
 #include "../../train.h"
 #include "../../ship.h"
 #include "../pathfinder_func.h"
+#include "../pathfinder_type.h"
 #include "npf.h"
 
 static AyStar _npf_aystar;
@@ -1059,30 +1060,6 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	return best_result;
 }
 
-NPFFoundTargetData NPFRouteToSafeTile(const Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype)
-{
-	assert(v->type == VEH_TRAIN);
-
-	NPFFindStationOrTileData fstd;
-	fstd.v = v;
-	fstd.reserve_path = true;
-
-	AyStarNode start1;
-	start1.tile = tile;
-	/* We set this in case the target is also the start tile, we will just
-	 * return a not found then */
-	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
-	start1.direction = trackdir;
-	NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true);
-
-	RailTypes railtypes = v->compatible_railtypes;
-	if (override_railtype) railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
-
-	/* perform a breadth first search. Target is NULL,
-	 * since we are just looking for any safe tile...*/
-	return NPFRouteInternal(&start1, true, NULL, false, &fstd, NPFFindSafeTile, NPFCalcZero, TRANSPORT_RAIL, 0, v->owner, railtypes, 0);
-}
-
 void InitializeNPF()
 {
 	static bool first_init = true;
@@ -1137,5 +1114,100 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
 	if (ftd.best_trackdir == 0xff) return INVALID_TRACK;
+	return TrackdirToTrack(ftd.best_trackdir);
+}
+
+/*** Trains ***/
+
+FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_distance)
+{
+	const Train *last = v->Last();
+	Trackdir trackdir = v->GetVehicleTrackdir();
+	Trackdir trackdir_rev = ReverseTrackdir(last->GetVehicleTrackdir());
+
+	assert(trackdir != INVALID_TRACKDIR);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes, NPF_INFINITE_PENALTY);
+	if (ftd.best_bird_dist != 0) FindDepotData();
+
+	/* Found target */
+	/* Our caller expects a number of tiles, so we just approximate that
+	 * number by this. It might not be completely what we want, but it will
+	 * work for now :-) We can possibly change this when the old pathfinder
+	 * is removed. */
+	return FindDepotData(ftd.node.tile, ftd.best_path_dist / NPF_TILE_LENGTH, NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE));
+}
+
+bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype)
+{
+	assert(v->type == VEH_TRAIN);
+
+	NPFFindStationOrTileData fstd;
+	fstd.v = v;
+	fstd.reserve_path = true;
+
+	AyStarNode start1;
+	start1.tile = tile;
+	/* We set this in case the target is also the start tile, we will just
+	 * return a not found then */
+	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
+	start1.direction = trackdir;
+	NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true);
+
+	RailTypes railtypes = v->compatible_railtypes;
+	if (override_railtype) railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
+
+	/* perform a breadth first search. Target is NULL,
+	 * since we are just looking for any safe tile...*/
+	return NPFRouteInternal(&start1, true, NULL, false, &fstd, NPFFindSafeTile, NPFCalcZero, TRANSPORT_RAIL, 0, v->owner, railtypes, 0).res_okay;
+}
+
+bool NPFTrainCheckReverse(const Train *v)
+{
+	NPFFindStationOrTileData fstd;
+	NPFFoundTargetData ftd;
+	const Train *last = v->Last();
+
+	NPFFillWithOrderData(&fstd, v);
+
+	Trackdir trackdir = v->GetVehicleTrackdir();
+	Trackdir trackdir_rev = ReverseTrackdir(last->GetVehicleTrackdir());
+	assert(trackdir != INVALID_TRACKDIR);
+	assert(trackdir_rev != INVALID_TRACKDIR);
+
+	ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes);
+	/* If we didn't find anything, just keep on going straight ahead, otherwise take the reverse flag */
+	return ftd.best_bird_dist != 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
+}
+
+Track NPFTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, struct PBSTileInfo *target)
+{
+	NPFFindStationOrTileData fstd;
+	NPFFillWithOrderData(&fstd, v, reserve_track);
+
+	PBSTileInfo origin = FollowTrainReservation(v);
+	assert(IsValidTrackdir(origin.trackdir));
+
+	NPFFoundTargetData ftd = NPFRouteToStationOrTile(origin.tile, origin.trackdir, true, &fstd, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes);
+
+	if (target != NULL) {
+		target->tile = ftd.node.tile;
+		target->trackdir = (Trackdir)ftd.node.direction;
+		target->okay = ftd.res_okay;
+	}
+
+	if (ftd.best_trackdir == INVALID_TRACKDIR) {
+		/* We are already at our target. Just do something
+		 * @todo maybe display error?
+		 * @todo: go straight ahead if possible? */
+		if (path_not_found) *path_not_found = false;
+		return FindFirstTrack(tracks);
+	}
+
+	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+	 * we did not find our target, but ftd.best_trackdir contains the direction leading
+	 * to the tile closest to our target. */
+	if (path_not_found != NULL) *path_not_found = (ftd.best_bird_dist != 0);
+	/* Discard enterdir information, making it a normal track */
 	return TrackdirToTrack(ftd.best_trackdir);
 }

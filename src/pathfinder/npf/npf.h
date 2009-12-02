@@ -38,7 +38,8 @@ enum {
 };
 
 enum {
-	/** This penalty is the equivalent of "inifite", which means that paths that
+	/**
+	 * This penalty is the equivalent of "infite", which means that paths that
 	 * get this penalty will be chosen, but only if there is no other route
 	 * without it. Be careful with not applying this penalty to often, or the
 	 * total path cost might overflow..
@@ -118,12 +119,6 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir t
 /* Search by trying each depot in order of Manhattan Distance. Good for lots
  * of choices and accurate heuristics, such as water. */
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
-
-/**
- * Search for any safe tile using a breadth first search and try to reserve a path.
- */
-NPFFoundTargetData NPFRouteToSafeTile(const struct Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype);
-
 
 void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path = false);
 
