@@ -397,12 +397,12 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
 			return;
 
 		case STATION_TRUCK:
-			ta->tile = this->truck_stops != NULL ? this->truck_stops->xy : INVALID_TILE;
-			break;
+			*ta = this->truck_station;
+			return;
 
 		case STATION_BUS:
-			ta->tile = this->bus_stops != NULL ? this->bus_stops->xy : INVALID_TILE;
-			break;
+			*ta = this->bus_station;
+			return;
 
 		case STATION_DOCK:
 		case STATION_OILRIG:
@@ -1212,7 +1212,7 @@ restart:
 			}
 		}
 	} else {
-		ta.tile = INVALID_TILE;
+		ta.Clear();
 	}
 
 	st->train_station = ta;
@@ -1427,9 +1427,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 	if (flags & DC_EXEC) {
 		st->rect.AfterRemoveRect(st, st->train_station.tile, st->train_station.w, st->train_station.h);
 
-		st->train_station.tile = INVALID_TILE;
-		st->train_station.w = 0;
-		st->train_station.h = 0;
+		st->train_station.Clear();
 
 		st->facilities &= ~FACIL_TRAIN;
 
@@ -1626,6 +1624,12 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		RoadStop **currstop = FindRoadStopSpot(type, st);
 		*currstop = road_stop;
 
+		if (type) {
+			st->truck_station.Add(tile);
+		} else {
+			st->bus_station.Add(tile);
+		}
+
 		/* initialize an empty station */
 		st->AddFacility((type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP, tile);
 
@@ -1735,6 +1739,15 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		st->UpdateVirtCoord();
 		st->RecomputeIndustriesNear();
 		DeleteStationIfEmpty(st);
+
+		/* Update the tile area of the truck/bus stop */
+		if (is_truck) {
+			st->truck_station.Clear();
+			for (const RoadStop *rs = st->truck_stops; rs != NULL; rs = rs->next) st->truck_station.Add(rs->xy);
+		} else {
+			st->bus_station.Clear();
+			for (const RoadStop *rs = st->bus_stops; rs != NULL; rs = rs->next) st->bus_station.Add(rs->xy);
+		}
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[is_truck ? PR_CLEAR_STATION_TRUCK : PR_CLEAR_STATION_BUS]);

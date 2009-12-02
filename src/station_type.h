@@ -114,6 +114,22 @@ struct TileArea {
 	TileIndex tile; ///< The base tile of the area
 	uint8 w;        ///< The width of the area
 	uint8 h;        ///< The height of the area
+
+	/**
+	 * Add a single tile to a tile area; enlarge if needed.
+	 * @param to_add The tile to add
+	 */
+	void Add(TileIndex to_add);
+
+	/**
+	 * Clears the 'tile area', i.e. make the tile invalid.
+	 */
+	void Clear()
+	{
+		this->tile = INVALID_TILE;
+		this->w    = 0;
+		this->h    = 0;
+	}
 };
 
 /** List of stations */

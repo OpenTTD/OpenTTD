@@ -98,6 +98,12 @@ void AfterLoadStations()
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx, NULL);
 		}
 
+		if (Station::IsExpected(st)) {
+			Station *sta = Station::From(st);
+			for (const RoadStop *rs = sta->bus_stops; rs != NULL; rs = rs->next) sta->bus_station.Add(rs->xy);
+			for (const RoadStop *rs = sta->truck_stops; rs != NULL; rs = rs->next) sta->truck_station.Add(rs->xy);
+		}
+
 		StationUpdateAnimTriggers(st);
 	}
 }

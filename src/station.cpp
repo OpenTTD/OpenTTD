@@ -38,6 +38,8 @@ BaseStation::~BaseStation()
 
 Station::Station(TileIndex tile) :
 	SpecializedStation<Station, false>(tile),
+	bus_station(INVALID_TILE, 0, 0),
+	truck_station(INVALID_TILE, 0, 0),
 	airport_tile(INVALID_TILE),
 	dock_tile(INVALID_TILE),
 	indtype(IT_INVALID),
@@ -505,6 +507,33 @@ TileArea::TileArea(TileIndex start, TileIndex end)
 
 	if (sx > ex) Swap(sx, ex);
 	if (sy > ey) Swap(sy, ey);
+
+	this->tile = TileXY(sx, sy);
+	this->w    = ex - sx + 1;
+	this->h    = ey - sy + 1;
+}
+
+void TileArea::Add(TileIndex to_add)
+{
+	if (this->tile == INVALID_TILE) {
+		this->tile = to_add;
+		this->w = 1;
+		this->h = 1;
+		return;
+	}
+
+	uint sx = TileX(this->tile);
+	uint sy = TileY(this->tile);
+	uint ex = sx + this->w - 1;
+	uint ey = sy + this->h - 1;
+
+	uint ax = TileX(to_add);
+	uint ay = TileY(to_add);
+
+	sx = min(ax, sx);
+	sy = min(ay, sy);
+	ex = max(ax, ex);
+	ey = max(ay, ey);
 
 	this->tile = TileXY(sx, sy);
 	this->w    = ex - sx + 1;

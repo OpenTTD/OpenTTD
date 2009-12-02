@@ -67,7 +67,10 @@ public:
 	}
 
 	RoadStop *bus_stops;    ///< All the road stops
+	TileArea bus_station;   ///< Tile area the bus 'station' part covers
 	RoadStop *truck_stops;  ///< All the truck stops
+	TileArea truck_station; ///< Tile area the truck 'station' part covers
+
 	TileIndex airport_tile; ///< The location of the airport
 	TileIndex dock_tile;    ///< The location of the dock
 
