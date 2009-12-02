@@ -16,7 +16,7 @@
 #include "bridge_map.h"
 #include "town.h"
 #include "waypoint_base.h"
-#include "pathfinder/yapf/yapf.h"
+#include "pathfinder/yapf/yapf_cache.h"
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"

@@ -25,7 +25,7 @@
 #include "ship.h"
 #include "roadveh.h"
 #include "water_map.h"
-#include "pathfinder/yapf/yapf.h"
+#include "pathfinder/yapf/yapf_cache.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"

@@ -817,6 +817,7 @@ network/core/udp.h
 pathfinder/opf/opf_ship.cpp
 pathfinder/opf/opf_ship.h
 pathfinder/pathfinder_func.h
+pathfinder/pathfinder_type.h
 
 # NPF
 pathfinder/npf/aystar.cpp
@@ -833,6 +834,7 @@ pathfinder/yapf/nodelist.hpp
 pathfinder/yapf/yapf.h
 pathfinder/yapf/yapf.hpp
 pathfinder/yapf/yapf_base.hpp
+pathfinder/yapf/yapf_cache.h
 pathfinder/yapf/yapf_common.hpp
 pathfinder/yapf/yapf_costbase.hpp
 pathfinder/yapf/yapf_costcache.hpp
