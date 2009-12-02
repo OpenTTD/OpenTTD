@@ -496,7 +496,6 @@ void Vehicle::PreDestructor()
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
-	if (this->type == VEH_ROAD) ClearSlot(RoadVehicle::From(this));
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
 		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);

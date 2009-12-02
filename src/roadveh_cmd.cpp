@@ -14,7 +14,6 @@
 #include "roadveh.h"
 #include "command_func.h"
 #include "news_func.h"
-#include "pathfinder/npf/npf.h"
 #include "pathfinder/npf/npf_func.h"
 #include "station_base.h"
 #include "company_func.h"
@@ -313,20 +312,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	return cost;
 }
 
-void ClearSlot(RoadVehicle *v)
-{
-	RoadStop *rs = v->slot;
-	if (v->slot == NULL) return;
-
-	v->slot = NULL;
-	v->slot_age = 0;
-
-	assert(rs->num_vehicles != 0);
-	rs->num_vehicles--;
-
-	DEBUG(ms, 3, "Clearing slot at 0x%X", rs->xy);
-}
-
 bool RoadVehicle::IsStoppedInDepot() const
 {
 	TileIndex tile = this->tile;
@@ -572,8 +557,6 @@ static void RoadVehCrash(RoadVehicle *v)
 		MarkSingleVehicleDirty(u);
 	}
 
-	ClearSlot(v);
-
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 
 	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
@@ -645,14 +628,14 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 {
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
-	TileIndex dest;
-	if (YapfFindNearestRoadVehicleCompatibleStop(this, station, &dest)) {
-		return dest;
-	} else {
+	const Station *st = Station::Get(station);
+	if (!CanVehicleUseStation(this, st)) {
 		/* There is no stop left at the station, so don't even TRY to go there */
 		this->IncrementOrderIndex();
 		return 0;
 	}
+
+	return st->xy;
 }
 
 static void StartRoadVehSound(const RoadVehicle *v)
@@ -1039,28 +1022,6 @@ found_best_track:;
 	if (HasBit(red_signals, best_track)) return INVALID_TRACKDIR;
 
 	return best_track;
-}
-
-static uint RoadFindPathToStop(const RoadVehicle *v, TileIndex tile)
-{
-	if (_settings_game.pf.pathfinder_for_roadvehs == VPF_YAPF) {
-		/* use YAPF */
-		return YapfRoadVehDistanceToTile(v, tile);
-	}
-
-	/* use NPF */
-	Trackdir trackdir = v->GetVehicleTrackdir();
-	assert(trackdir != INVALID_TRACKDIR);
-
-	NPFFindStationOrTileData fstd;
-	fstd.dest_coords = tile;
-	fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
-
-	uint dist = NPFRouteToStationOrTile(v->tile, trackdir, false, &fstd, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES).best_path_dist;
-	/* change units from NPF_TILE_LENGTH to # of tiles */
-	if (dist != UINT_MAX) dist = (dist + NPF_TILE_LENGTH - 1) / NPF_TILE_LENGTH;
-
-	return dist;
 }
 
 struct RoadDriveEntry {
@@ -1520,13 +1481,9 @@ again:
 				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
 					RoadStop *rs_n = RoadStop::GetByTile(next_tile, type);
 
-					if (rs_n->IsFreeBay(HasBit(v->state, RVS_USING_SECOND_BAY)) && rs_n->num_vehicles < RoadStop::MAX_VEHICLES) {
+					if (rs_n->IsFreeBay(HasBit(v->state, RVS_USING_SECOND_BAY))) {
 						/* Bay in next stop along is free - use it */
-						ClearSlot(v);
-						rs_n->num_vehicles++;
-						v->slot = rs_n;
 						v->dest_tile = rs_n->xy;
-						v->slot_age = 14;
 
 						v->frame++;
 						RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, false));
@@ -1552,36 +1509,9 @@ again:
 				return false;
 			}
 			v->current_order.Free();
-			ClearSlot(v);
 		}
 
 		if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(true);
-
-		if (rs == v->slot) {
-			/* We are leaving the correct station */
-			ClearSlot(v);
-		} else if (v->slot != NULL) {
-			/* We are leaving the wrong station
-			 * XXX The question is .. what to do? Actually we shouldn't be here
-			 * but I guess we need to clear the slot */
-			DEBUG(ms, 0, "Vehicle %d (index %d) arrived at wrong stop", v->unitnumber, v->index);
-			if (v->tile != v->dest_tile) {
-				DEBUG(ms, 2, " current tile 0x%X is not destination tile 0x%X. Route problem", v->tile, v->dest_tile);
-			}
-			if (v->dest_tile != v->slot->xy) {
-				DEBUG(ms, 2, " stop tile 0x%X is not destination tile 0x%X. Multistop desync", v->slot->xy, v->dest_tile);
-			}
-			if (!v->current_order.IsType(OT_GOTO_STATION)) {
-				DEBUG(ms, 2, " current order type (%d) is not OT_GOTO_STATION", v->current_order.GetType());
-			} else {
-				if (v->current_order.GetDestination() != st->index)
-					DEBUG(ms, 2, " current station %d is not target station in current_order.station (%d)",
-							st->index, v->current_order.GetDestination());
-			}
-
-			DEBUG(ms, 2, " force a slot clearing");
-			ClearSlot(v);
-		}
 
 		StartRoadVehSound(v);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
@@ -1597,7 +1527,6 @@ again:
 
 	if (v->current_order.IsType(OT_LEAVESTATION) && IsDriveThroughStopTile(v->tile)) {
 		v->current_order.Free();
-		ClearSlot(v);
 	}
 
 	/* Move to next frame unless vehicle arrived at a stop position
@@ -1696,7 +1625,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	static const uint MAX_ACCEPTABLE_DEPOT_DIST = 16;
 
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->slot != NULL || Company::Get(v->owner)->settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
+	if (Company::Get(v->owner)->settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
@@ -1724,7 +1653,6 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	}
 
 	if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
-	ClearSlot(v);
 
 	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = rfdd.tile;
@@ -1743,16 +1671,6 @@ void RoadVehicle::OnNewDay()
 
 	CheckOrders(this);
 
-	/* Current slot has expired */
-	if (this->current_order.IsType(OT_GOTO_STATION) && this->slot != NULL && this->slot_age-- == 0) {
-		DEBUG(ms, 3, "Slot expired for vehicle %d (index %d) at stop 0x%X",
-			this->unitnumber, this->index, this->slot->xy);
-		ClearSlot(this);
-	}
-
-	/* update destination */
-	this->FindRoadStopSlot();
-
 	if (this->running_ticks == 0) return;
 
 	CommandCost cost(EXPENSES_ROADVEH_RUN, this->GetRunningCost() * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
@@ -1764,77 +1682,6 @@ void RoadVehicle::OnNewDay()
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 	SetWindowClassesDirty(WC_ROADVEH_LIST);
-}
-
-void RoadVehicle::FindRoadStopSlot()
-{
-	if (this->slot != NULL ||
-			(this->vehstatus & (VS_STOPPED | VS_CRASHED)) != 0 ||
-			!this->current_order.IsType(OT_GOTO_STATION) ||
-			(this->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0) {
-		return;
-	}
-
-	Station *st = Station::Get(this->current_order.GetDestination());
-	RoadStop *rs = st->GetPrimaryRoadStop(this);
-	RoadStop *best = NULL;
-
-	if (rs == NULL) {
-		DEBUG(ms, 4, "No road stop for vehicle %d (index %d) at station %d (0x%X)",
-				this->unitnumber, this->index, st->index, st->xy);
-		return;
-	}
-
-	/* We try to obtain a slot if:
-	 * 1) we're reasonably close to the primary road stop
-	 * or
-	 * 2) we're somewhere close to the station rectangle (to make sure we do assign
-	 *    slots even if the station and its road stops are incredibly spread out)
-	 */
-	if (DistanceManhattan(this->tile, rs->xy) < 16 || st->rect.PtInExtendedRect(TileX(this->tile), TileY(this->tile), 2)) {
-		uint dist, badness;
-		uint minbadness = UINT_MAX;
-
-		DEBUG(ms, 2, "Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
-			this->unitnumber, this->index, st->index, st->xy
-		);
-		/* Now we find the nearest road stop that has a free slot */
-		for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
-			if (rs->num_vehicles >= RoadStop::MAX_VEHICLES) {
-				DEBUG(ms, 4, " stop 0x%X's queue is full, not treating further", rs->xy);
-				continue;
-			}
-			dist = RoadFindPathToStop(this, rs->xy);
-			if (dist == UINT_MAX) {
-				DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);
-				continue;
-			}
-			badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist;
-
-			DEBUG(ms, 4, " stop 0x%X has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
-			DEBUG(ms, 4, " distance is %u", dist);
-			DEBUG(ms, 4, " badness %u", badness);
-
-			if (badness < minbadness) {
-				best = rs;
-				minbadness = badness;
-			}
-		}
-
-		if (best != NULL) {
-			best->num_vehicles++;
-			DEBUG(ms, 3, "Assigned to stop 0x%X", best->xy);
-
-			this->slot = best;
-			this->dest_tile = best->xy;
-			this->slot_age = 14;
-		} else {
-			DEBUG(ms, 3, "Could not find a suitable stop");
-		}
-	} else {
-		DEBUG(ms, 5, "Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%X)",
-				this->unitnumber, this->index, st->index, st->xy);
-	}
 }
 
 Trackdir RoadVehicle::GetVehicleTrackdir() const

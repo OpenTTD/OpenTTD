@@ -102,8 +102,6 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	byte overtaking_ctr;
 	uint16 crashed_ctr;
 	byte reverse_ctr;
-	struct RoadStop *slot;
-	byte slot_age;
 
 	RoadType roadtype;
 	RoadTypes compatible_roadtypes;
@@ -130,7 +128,6 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
-	void FindRoadStopSlot();
 
 	bool IsBus() const;
 

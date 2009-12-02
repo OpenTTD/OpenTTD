@@ -49,21 +49,6 @@ Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDi
  */
 Track YapfTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, struct PBSTileInfo *target);
 
-/** Used by RV multistop feature to find the nearest road stop that has a free slot.
- * @param v      RV (its current tile will be the origin)
- * @param tile   destination tile
- * @return       distance from origin tile to the destination (number of road tiles) or UINT_MAX if path not found
- */
-uint YapfRoadVehDistanceToTile(const RoadVehicle *v, TileIndex tile);
-
-/** Used to determinine the closest reachable compatible road stop for a given vehicle.
- * @param v            vehicle that needs to go to the road stop
- * @param station      the station the road stop must belong to
- * @param stop_tile    receives the stop tile if a stop was found
- * @return             true if stop was found.
- */
-bool YapfFindNearestRoadVehicleCompatibleStop(const RoadVehicle *v, StationID station, TileIndex *stop_tile);
-
 /**
  * Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing using YAPF.
  * @param v            vehicle that needs to go to some depot

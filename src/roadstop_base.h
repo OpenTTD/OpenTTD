@@ -29,11 +29,9 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	};
 
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
-	static const uint MAX_VEHICLES    = 64;  ///< The maximum number of vehicles that can allocate a slot to this roadstop
 
 	TileIndex        xy;                    ///< Position on the map
 	byte             status;                ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
-	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
 	struct RoadStop  *next;                 ///< Next stop of the given type at this station
 
 	/** Initializes a RoadStop */

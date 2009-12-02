@@ -1088,13 +1088,6 @@ bool AfterLoadGame()
 		RoadVehicle *rv;
 		FOR_ALL_ROADVEHICLES(rv) {
 			rv->vehstatus &= ~0x40;
-			rv->slot = NULL;
-			rv->slot_age = 0;
-		}
-	} else {
-		RoadVehicle *rv;
-		FOR_ALL_ROADVEHICLES(rv) {
-			if (rv->slot != NULL) rv->slot->num_vehicles++;
 		}
 	}
 

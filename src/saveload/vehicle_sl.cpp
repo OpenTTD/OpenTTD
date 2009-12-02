@@ -558,9 +558,9 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		     SLE_VAR(RoadVehicle, crashed_ctr,          SLE_UINT16),
 		     SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
 
-		 SLE_CONDREF(RoadVehicle, slot,                 REF_ROADSTOPS,                6, SL_MAX_VERSION),
-		SLE_CONDNULL(1,                                                               6, SL_MAX_VERSION),
-		 SLE_CONDVAR(RoadVehicle, slot_age,             SLE_UINT8,                    6, SL_MAX_VERSION),
+		SLE_CONDNULL(2,                                                               6,  68),
+		SLE_CONDNULL(4,                                                              69, 130),
+		SLE_CONDNULL(2,                                                               6, 130),
 		/* reserve extra space in savegame here. (currently 16 bytes) */
 		SLE_CONDNULL(16,                                                              2, SL_MAX_VERSION),
 

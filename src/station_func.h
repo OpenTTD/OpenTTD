@@ -40,8 +40,6 @@ bool HasStationInUse(StationID station, CompanyID company);
 RoadStop *GetRoadStopByTile(TileIndex tile, RoadStopType type);
 uint GetNumRoadStops(const Station *st, RoadStopType type);
 
-void ClearSlot(struct RoadVehicle *v);
-
 void DeleteOilRig(TileIndex t);
 
 /* Check if a rail station tile is traversable. */
