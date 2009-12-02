@@ -24,7 +24,60 @@
 #include "../../roadstop_base.h"
 #include "../pathfinder_func.h"
 #include "../pathfinder_type.h"
-#include "npf.h"
+#include "aystar.h"
+
+enum {
+	NPF_HASH_BITS = 12, ///< The size of the hash used in pathfinding. Just changing this value should be sufficient to change the hash size. Should be an even value.
+	/* Do no change below values */
+	NPF_HASH_SIZE = 1 << NPF_HASH_BITS,
+	NPF_HASH_HALFBITS = NPF_HASH_BITS / 2,
+	NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1
+};
+
+/* Meant to be stored in AyStar.targetdata */
+struct NPFFindStationOrTileData {
+	TileIndex dest_coords;    ///< An indication of where the station is, for heuristic purposes, or the target tile
+	StationID station_index;  ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
+	bool reserve_path;        ///< Indicates whether the found path should be reserved
+	StationType station_type; ///< The type of station we're heading for
+	bool not_articulated;     ///< The (road) vehicle is not articulated
+	const Vehicle *v;         ///< The vehicle we are pathfinding for
+};
+
+/* Indices into AyStar.userdata[] */
+enum {
+	NPF_TYPE = 0,  ///< Contains a TransportTypes value
+	NPF_SUB_TYPE,  ///< Contains the sub transport type
+	NPF_OWNER,     ///< Contains an Owner value
+	NPF_RAILTYPES, ///< Contains a bitmask the compatible RailTypes of the engine when NPF_TYPE == TRANSPORT_RAIL. Unused otherwise.
+};
+
+/* Indices into AyStarNode.userdata[] */
+enum {
+	NPF_TRACKDIR_CHOICE = 0, ///< The trackdir chosen to get here
+	NPF_NODE_FLAGS,
+};
+
+/* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
+enum NPFNodeFlag {
+	NPF_FLAG_SEEN_SIGNAL,       ///< Used to mark that a signal was seen on the way, for rail only
+	NPF_FLAG_2ND_SIGNAL,        ///< Used to mark that two signals were seen, rail only
+	NPF_FLAG_3RD_SIGNAL,        ///< Used to mark that three signals were seen, rail only
+	NPF_FLAG_REVERSE,           ///< Used to mark that this node was reached from the second start node, if applicable
+	NPF_FLAG_LAST_SIGNAL_RED,   ///< Used to mark that the last signal on this path was red
+	NPF_FLAG_IGNORE_START_TILE, ///< Used to mark that the start tile is invalid, and searching should start from the second tile on
+	NPF_FLAG_TARGET_RESERVED,   ///< Used to mark that the possible reservation target is already reserved
+	NPF_FLAG_IGNORE_RESERVED,   ///< Used to mark that reserved tiles should be considered impassable
+};
+
+/* Meant to be stored in AyStar.userpath */
+struct NPFFoundTargetData {
+	uint best_bird_dist;    ///< The best heuristic found. Is 0 if the target was found
+	uint best_path_dist;    ///< The shortest path. Is UINT_MAX if no path is found
+	Trackdir best_trackdir; ///< The trackdir that leads to the shortest path/closest birds dist
+	AyStarNode node;        ///< The node within the target the search led us to
+	bool res_okay;          ///< True if a path reservation could be made
+};
 
 static AyStar _npf_aystar;
 
@@ -37,6 +90,22 @@ static const uint _trackdir_length[TRACKDIR_END] = {
 	0, 0,
 	NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH
 };
+
+/**
+ * Returns the current value of the given flag on the given AyStarNode.
+ */
+static inline bool NPFGetFlag(const AyStarNode *node, NPFNodeFlag flag)
+{
+	return HasBit(node->user_data[NPF_NODE_FLAGS], flag);
+}
+
+/**
+ * Sets the given flag on the given AyStarNode to the given value.
+ */
+static inline void NPFSetFlag(AyStarNode *node, NPFNodeFlag flag, bool value)
+{
+	SB(node->user_data[NPF_NODE_FLAGS], flag, 1, value);
+}
 
 /**
  * Calculates the minimum distance traveled to get from t0 to t1 when only
@@ -918,7 +987,10 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	return result;
 }
 
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
+/* Will search as below, but with two start nodes, the second being the
+ * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
+ * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
+static NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -935,12 +1007,22 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir track
 	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, sub_type, owner, railtypes, 0);
 }
 
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
+/* Will search from the given tile and direction, for a route to the given
+ * station for the given transport type. See the declaration of
+ * NPFFoundTargetData above for the meaning of the result. */
+static NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 	return NPFRouteToStationOrTileTwoWay(tile, trackdir, ignore_start_tile, INVALID_TILE, INVALID_TRACKDIR, false, target, type, sub_type, owner, railtypes);
 }
 
-NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty)
+/* Search using breadth first. Good for little track choice and inaccurate
+ * heuristic, such as railway/road with two start nodes, the second being the reverse. Call
+ * NPFGetBit(result.node, NPF_FLAG_REVERSE) to see from which node the path
+ * orginated. All pathfs from the second node will have the given
+ * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
+ * tile).
+ */
+static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -957,111 +1039,6 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir t
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
 	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, NULL, NPFFindDepot, NPFCalcZero, type, sub_type, owner, railtypes, reverse_penalty);
-}
-
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
-{
-	return NPFRouteToDepotBreadthFirstTwoWay(tile, trackdir, ignore_start_tile, INVALID_TILE, INVALID_TRACKDIR, false, type, sub_type, owner, railtypes, 0);
-}
-
-NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
-{
-	/* Okay, what we're gonna do. First, we look at all depots, calculate
-	 * the manhatten distance to get to each depot. We then sort them by
-	 * distance. We start by trying to plan a route to the closest, then
-	 * the next closest, etc. We stop when the best route we have found so
-	 * far, is shorter than the manhattan distance. This will obviously
-	 * always find the closest depot. It will probably be most efficient
-	 * for ships, since the heuristic will not be to far off then. I hope.
-	 */
-	Queue depots;
-	int r;
-	NPFFoundTargetData best_result = {UINT_MAX, UINT_MAX, INVALID_TRACKDIR, {INVALID_TILE, INVALID_TRACKDIR, {0, 0}}, false};
-	NPFFoundTargetData result;
-	NPFFindStationOrTileData target;
-	AyStarNode start;
-	Depot *current;
-	Depot *depot;
-
-	init_InsSort(&depots);
-	/* Okay, let's find all depots that we can use first */
-	FOR_ALL_DEPOTS(depot) {
-		/* Check if this is really a valid depot, it is of the needed type and
-		 * owner */
-		if (IsDepotTypeTile(depot->xy, type) && IsTileOwner(depot->xy, owner))
-			/* If so, let's add it to the queue, sorted by distance */
-			depots.push(&depots, depot, DistanceManhattan(tile, depot->xy));
-	}
-
-	/* Now, let's initialise the aystar */
-
-	/* Initialize procs */
-	_npf_aystar.CalculateH = NPFCalcStationOrTileHeuristic;
-	_npf_aystar.EndNodeCheck = NPFFindStationOrTile;
-	_npf_aystar.FoundEndNode = NPFSaveTargetData;
-	_npf_aystar.GetNeighbours = NPFFollowTrack;
-	switch (type) {
-		default: NOT_REACHED();
-		case TRANSPORT_RAIL:  _npf_aystar.CalculateG = NPFRailPathCost;  break;
-		case TRANSPORT_ROAD:  _npf_aystar.CalculateG = NPFRoadPathCost;  break;
-		case TRANSPORT_WATER: _npf_aystar.CalculateG = NPFWaterPathCost; break;
-	}
-
-	/* Initialize target */
-	target.station_index = INVALID_STATION; // We will initialize dest_coords inside the loop below
-	_npf_aystar.user_target = &target;
-
-	/* Initialize user_data */
-	_npf_aystar.user_data[NPF_TYPE] = type;
-	_npf_aystar.user_data[NPF_SUB_TYPE] = sub_type;
-	_npf_aystar.user_data[NPF_OWNER] = owner;
-
-	/* Initialize Start Node */
-	start.tile = tile;
-	start.direction = trackdir; // We will initialize user_data inside the loop below
-
-	/* Initialize Result */
-	_npf_aystar.user_path = &result;
-	best_result.best_path_dist = UINT_MAX;
-	best_result.best_bird_dist = UINT_MAX;
-
-	/* Just iterate the depots in order of increasing distance */
-	while ((current = (Depot*)depots.pop(&depots))) {
-		/* Check to see if we already have a path shorter than this
-		 * depot's manhattan distance. HACK: We call DistanceManhattan
-		 * again, we should probably modify the queue to give us that
-		 * value... */
-		if ( DistanceManhattan(tile, current->xy * NPF_TILE_LENGTH) > best_result.best_path_dist)
-			break;
-
-		/* Initialize Start Node
-		 * We set this in case the target is also the start tile, we will just
-		 * return a not found then */
-		start.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
-		start.user_data[NPF_NODE_FLAGS] = 0;
-		NPFSetFlag(&start, NPF_FLAG_IGNORE_START_TILE, ignore_start_tile);
-		_npf_aystar.addstart(&_npf_aystar, &start, 0);
-
-		/* Initialize result */
-		result.best_bird_dist = UINT_MAX;
-		result.best_path_dist = UINT_MAX;
-		result.best_trackdir = INVALID_TRACKDIR;
-
-		/* Initialize target */
-		target.dest_coords = current->xy;
-
-		/* GO! */
-		r = AyStarMain_Main(&_npf_aystar);
-		assert(r != AYSTAR_STILL_BUSY);
-
-		/* This depot is closer */
-		if (result.best_path_dist < best_result.best_path_dist)
-			best_result = result;
-	}
-	if (result.best_bird_dist != 0) {
-		DEBUG(npf, 1, "Could not find route to any depot from tile 0x%X.", tile);
-	}
-	return best_result;
 }
 
 void InitializeNPF()
@@ -1081,7 +1058,7 @@ void InitializeNPF()
 	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
 }
 
-void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path)
+static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path = false)
 {
 	/* Ships don't really reach their stations, but the tile in front. So don't
 	 * save the station id for ships. For roadvehs we don't store it either,
