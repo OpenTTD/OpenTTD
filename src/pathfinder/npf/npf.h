@@ -125,7 +125,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 NPFFoundTargetData NPFRouteToSafeTile(const struct Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype);
 
 
-void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reserve_path = false);
+void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path = false);
 
 
 /*

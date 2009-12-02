@@ -131,7 +131,7 @@ static const byte _ship_search_directions[6][4] = {
 
 static const byte _pick_shiptrack_table[6] = {1, 3, 2, 2, 0, 0};
 
-static uint FindShipTrack(Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, Track *track)
+static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, Track *track)
 {
 	TrackPathFinder pfs;
 	uint best_bird_dist = 0;
@@ -183,7 +183,7 @@ bad:;
 /** returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
-Track OPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	assert(IsValidDiagDirection(enterdir));
 

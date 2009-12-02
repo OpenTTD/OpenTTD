@@ -1100,7 +1100,7 @@ void InitializeNPF()
 	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
 }
 
-void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reserve_path)
+void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path)
 {
 	/* Ships don't really reach their stations, but the tile in front. So don't
 	 * save the station id for ships. For roadvehs we don't store it either,
@@ -1122,7 +1122,7 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reser
 
 /*** Ships ***/
 
-Track NPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	NPFFindStationOrTileData fstd;
 	Trackdir trackdir = v->GetVehicleTrackdir();

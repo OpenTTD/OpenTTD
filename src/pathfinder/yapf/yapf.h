@@ -23,7 +23,7 @@
  * @param tracks   available tracks on the new tile (to choose from)
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
+Track YapfChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
 
 /** Finds the best path for given road vehicle.
  * @param v        the RV that needs to find a path

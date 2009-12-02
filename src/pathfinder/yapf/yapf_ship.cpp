@@ -10,6 +10,7 @@
 /** @file yapf_ship.cpp Implementation of YAPF for ships. */
 
 #include "../../stdafx.h"
+#include "../../ship.h"
 
 #include "yapf.hpp"
 
@@ -48,7 +49,7 @@ public:
 		return 'w';
 	}
 
-	static Trackdir ChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 	{
 		/* handle special case - when next tile is destination tile */
 		if (tile == v->dest_tile) {
@@ -167,10 +168,10 @@ struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , C
 struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
-Track YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track YapfChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	/* default is YAPF type 2 */
-	typedef Trackdir (*PfnChooseShipTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits);
+	typedef Trackdir (*PfnChooseShipTrack)(const Ship*, TileIndex, DiagDirection, TrackBits);
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
 
 	/* check if non-default YAPF type needed */

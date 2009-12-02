@@ -20,6 +20,6 @@
  * @param tracks   available tracks on the new tile (to choose from)
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track OPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
+Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
 
 #endif /* OPF_SHIP_H */
