@@ -453,7 +453,9 @@ static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
 	if (fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) return AYSTAR_FOUND_END_NODE;
 
 	if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) {
-		if (fstd->station_type == STATION_RAIL) return AYSTAR_FOUND_END_NODE;
+		if (fstd->v->type == VEH_TRAIN) return AYSTAR_FOUND_END_NODE;
+
+		assert(fstd->v->type == VEH_ROAD);
 		/* Only if it is a valid station *and* we can stop there */
 		if (GetStationType(tile) == fstd->station_type && (fstd->not_articulated || IsDriveThroughStopTile(tile))) return AYSTAR_FOUND_END_NODE;
 	}
@@ -1090,7 +1092,7 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool
 	if (v->type != VEH_SHIP && (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT))) {
 		assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
 		fstd->station_index = v->current_order.GetDestination();
-		fstd->station_type = (v->type == VEH_TRAIN) ? STATION_RAIL : (RoadVehicle::From(v)->IsBus() ? STATION_BUS : STATION_TRUCK);
+		fstd->station_type = (v->type == VEH_TRAIN) ? (v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT) : (RoadVehicle::From(v)->IsBus() ? STATION_BUS : STATION_TRUCK);
 		fstd->not_articulated = v->type == VEH_ROAD && !RoadVehicle::From(v)->HasArticulatedPart();
 		/* Let's take the closest tile of the station as our target for vehicles */
 		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile, fstd->station_type);

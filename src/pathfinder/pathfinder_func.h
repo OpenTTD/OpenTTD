@@ -22,7 +22,6 @@
  * @param station The station to calculate the distance to
  * @param tile The tile from where to calculate the distance
  * @param station_type the station type to get the closest tile of
- * @note for simplification STATION_RAIL is also used for waypoints!
  * @return The closest station tile to the given tile.
  */
 static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, StationType station_type)
