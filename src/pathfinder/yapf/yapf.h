@@ -15,7 +15,8 @@
 #include "../../direction_type.h"
 #include "../../station_type.h"
 
-/** Finds the best path for given ship.
+/**
+ * Finds the best path for given ship using YAPF.
  * @param v        the ship that needs to find a path
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
  * @param enterdir diagonal direction which the ship will enter this new tile from

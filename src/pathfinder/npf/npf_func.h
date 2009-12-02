@@ -12,6 +12,14 @@
 #ifndef NPF_FUNC_H
 #define NPF_FUNC_H
 
+/**
+ * Finds the best path for given ship using NPF.
+ * @param v        the ship that needs to find a path
+ * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
+ * @param enterdir diagonal direction which the ship will enter this new tile from
+ * @param tracks   available tracks on the new tile (to choose from)
+ * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
+ */
 Track NPFShipChooseTrack(class Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
 
 #endif /* NPF_FUNC_H */

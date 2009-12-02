@@ -1133,9 +1133,9 @@ Track NPFShipChooseTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackB
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
-		* the direction we need to take to get there, if ftd.best_bird_dist is not 0,
-		* we did not find our target, but ftd.best_trackdir contains the direction leading
-		* to the tile closest to our target. */
+	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+	 * we did not find our target, but ftd.best_trackdir contains the direction leading
+	 * to the tile closest to our target. */
 	if (ftd.best_trackdir == 0xff) return INVALID_TRACK;
 	return TrackdirToTrack(ftd.best_trackdir);
 }
