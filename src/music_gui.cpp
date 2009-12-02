@@ -35,15 +35,15 @@ static byte _playlist_all[] = {
 };
 
 static byte _playlist_old_style[] = {
-	1, 8, 2, 9, 14, 15, 19, 13, 0
+	2, 9, 3, 10, 15, 16, 20, 14, 0
 };
 
 static byte _playlist_new_style[] = {
-	6, 11, 10, 17, 21, 18, 5, 0
+	7, 12, 11, 18, 22, 19, 6, 0
 };
 
 static byte _playlist_ezy_street[] = {
-	12, 7, 16, 3, 20, 4, 0
+	13, 8, 17, 4, 21, 5, 0
 };
 
 static byte * const _playlists[] = {
