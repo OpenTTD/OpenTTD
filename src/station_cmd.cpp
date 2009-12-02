@@ -2648,9 +2648,8 @@ static bool ClickTile_Station(TileIndex tile)
 
 static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
-	StationID station_id = GetStationIndex(tile);
-
 	if (v->type == VEH_TRAIN) {
+		StationID station_id = GetStationIndex(tile);
 		if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
 		if (!IsRailStation(tile) || !Train::From(v)->IsFrontEngine()) return VETSB_CONTINUE;
 
@@ -2688,42 +2687,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
 			if (IsRoadStop(tile) && rv->IsRoadVehFront()) {
 				/* Attempt to allocate a parking bay in a road stop */
-				RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
-
-				if (IsDriveThroughStopTile(tile)) {
-					if (!rv->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
-
-					/* Vehicles entering a drive-through stop from the 'normal' side use first bay (bay 0). */
-					byte side = ((DirToDiagDir(rv->direction) == ReverseDiagDir(GetRoadStopDir(tile))) == (rv->overtaking == 0)) ? 0 : 1;
-
-					if (!rs->IsFreeBay(side)) return VETSB_CANNOT_ENTER;
-
-					/* Check if the vehicle is stopping at this road stop */
-					if (GetRoadStopType(tile) == (rv->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
-							rv->current_order.GetDestination() == GetStationIndex(tile)) {
-						SetBit(rv->state, RVS_IS_STOPPING);
-						rs->AllocateDriveThroughBay(side);
-					}
-
-					/* Indicate if vehicle is using second bay. */
-					if (side == 1) SetBit(rv->state, RVS_USING_SECOND_BAY);
-					/* Indicate a drive-through stop */
-					SetBit(rv->state, RVS_IN_DT_ROAD_STOP);
-					return VETSB_CONTINUE;
-				}
-
-				/* For normal (non drive-through) road stops
-				 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
-				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || rv->HasArticulatedPart()) return VETSB_CANNOT_ENTER;
-
-				SetBit(rv->state, RVS_IN_ROAD_STOP);
-
-				/* Allocate a bay and update the road state */
-				uint bay_nr = rs->AllocateBay();
-				SB(rv->state, RVS_USING_SECOND_BAY, 1, bay_nr);
-
-				/* Mark the station entrace as busy */
-				rs->SetEntranceBusy(true);
+				return RoadStop::GetByTile(tile, GetRoadStopType(tile))->Enter(rv) ? VETSB_CONTINUE : VETSB_CANNOT_ENTER;
 			}
 		}
 	}

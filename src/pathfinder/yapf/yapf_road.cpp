@@ -10,10 +10,9 @@
 /** @file yapf_road.cpp The road pathfinding. */
 
 #include "../../stdafx.h"
-#include "../../roadstop_base.h"
-
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"
+#include "../../roadstop_base.h"
 
 
 template <class Types>

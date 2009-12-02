@@ -465,13 +465,7 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
 
 static void ClearCrashedStation(RoadVehicle *v)
 {
-	RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));
-
-	/* Mark the station entrance as not busy */
-	rs->SetEntranceBusy(false);
-
-	/* Free the parking bay */
-	rs->FreeBay(HasBit(v->state, RVS_USING_SECOND_BAY));
+	RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 }
 
 static void DeleteLastRoadVeh(RoadVehicle *v)
@@ -1317,17 +1311,7 @@ again:
 				v->cur_speed = 0;
 				return false;
 			}
-			if (IsRoadStop(v->tile)) {
-				RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));
-
-				/* Vehicle is leaving a road stop tile, mark bay as free
-				 * For drive-through stops, only do it if the vehicle stopped here */
-				if (IsStandardRoadStopTile(v->tile) || HasBit(v->state, RVS_IS_STOPPING)) {
-					rs->FreeBay(HasBit(v->state, RVS_USING_SECOND_BAY));
-					ClrBit(v->state, RVS_IS_STOPPING);
-				}
-				if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(false);
-			}
+			if (IsRoadStop(v->tile)) RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 		}
 
 		if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {

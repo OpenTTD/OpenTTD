@@ -63,6 +63,32 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	}
 
 	/**
+	 * Checks whether the entrance of the road stop is occupied by a vehicle
+	 * @return is entrance busy?
+	 */
+	FORCEINLINE bool IsEntranceBusy() const
+	{
+		return HasBit(this->status, RSSFB_ENTRY_BUSY);
+	}
+
+	/**
+	 * Makes an entrance occupied or free
+	 * @param busy if true, marks busy; free otherwise
+	 */
+	FORCEINLINE void SetEntranceBusy(bool busy)
+	{
+		SB(this->status, RSSFB_ENTRY_BUSY, 1, busy);
+	}
+
+	void Leave(RoadVehicle *rv);
+	bool Enter(RoadVehicle *rv);
+
+	RoadStop *GetNextRoadStop(const struct RoadVehicle *v) const;
+
+	static RoadStop *GetByTile(TileIndex tile, RoadStopType type);
+
+private:
+	/**
 	 * Allocates a bay
 	 * @return the allocated bay number
 	 * @pre this->HasFreeBay()
@@ -98,29 +124,6 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		assert(nr < RSSFB_BAY_COUNT);
 		SetBit(this->status, nr);
 	}
-
-
-	/**
-	 * Checks whether the entrance of the road stop is occupied by a vehicle
-	 * @return is entrance busy?
-	 */
-	FORCEINLINE bool IsEntranceBusy() const
-	{
-		return HasBit(this->status, RSSFB_ENTRY_BUSY);
-	}
-
-	/**
-	 * Makes an entrance occupied or free
-	 * @param busy if true, marks busy; free otherwise
-	 */
-	FORCEINLINE void SetEntranceBusy(bool busy)
-	{
-		SB(this->status, RSSFB_ENTRY_BUSY, 1, busy);
-	}
-
-	RoadStop *GetNextRoadStop(const struct RoadVehicle *v) const;
-
-	static RoadStop *GetByTile(TileIndex tile, RoadStopType type);
 };
 
 #define FOR_ALL_ROADSTOPS_FROM(var, start) FOR_ALL_ITEMS_FROM(RoadStop, roadstop_index, var, start)
