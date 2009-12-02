@@ -1063,7 +1063,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Erittä
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Alkuperäinen
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistinen
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Junat ja laivat: ei 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (ei NTP:n kanssa)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Junat ja laivat: ei 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (ei OPF:n kanssa)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}

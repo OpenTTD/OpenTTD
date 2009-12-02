@@ -2226,7 +2226,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgene
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Gewässermenge:
-STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Weichheit:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gleichmäßigkeit:
 STR_MAPGEN_GENERATE                                             :{WHITE}Erzeugen
 
 # Strings for map borders at game generation
@@ -2268,8 +2268,8 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Spielfel
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Soll die Spielfeldgenerierung wirklich abgebrochen werden?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% abgeschlossen
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Spielfeldgenerierung
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Baumerzeugung
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Spielfeld wird erzeugt
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bäume werden erzeugt
 STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Unbewegliche Objekte werden erzeugt
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Raue, felsige Landschaft wird erzeugt
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spiel wird vorbereitet
@@ -2279,13 +2279,13 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wi
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Gespeicherte Voreinstellung aus Liste auswählen
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Set speichern
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Voreinstellung speichern
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Aktuelle Liste als Voreinstellung speichern
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Name der Voreinstellung
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Set löschen
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Voreinstellung löschen
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ausgewählte Voreinstellung löschen
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Hinzufügen
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Eine neue NewGRF-Datei zur Liste hinzufügen
+STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Eine weitere NewGRF-Datei zur Liste hinzufügen
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Entfernen
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Die ausgewählte NewGRF-Datei von der Liste entfernen
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Nach oben
@@ -2295,7 +2295,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Die ausg
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eine Liste der installierten NewGRF-Dateien. Zum Ändern der Parameter Datei auswählen
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameter setzen
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palette ändern
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Farbpalette ändern
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Farbpalette des ausgewählten NewGRF ändern.{}Nutze dieses, wenn die Grafiken des NewGRF im Spiel pink dargestellt werden
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Übernehmen
 
@@ -2305,7 +2305,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Versuche
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dateiname: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}NewGRF-ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5-Summe: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Farbpalette: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Keine Informationen verfügbar
@@ -2371,7 +2371,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schildte
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Zum nächsten Schild wechseln
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Zum vorherigen Schild wechseln
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Einen Namen für dieses Schild eingeben
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Text für dieses Schild eingeben
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städte
@@ -2446,7 +2446,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Keine -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alle Anlagen auswählen
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Alle Frachtarten auswählen (einschließlich keine Fracht)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Alle Frachtarten auswählen (einschließlich keiner Fracht)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Keine Fracht im Wartezustand
 
 # Station view window
@@ -2542,7 +2542,7 @@ STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Firmensi
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Firmensitz bauen
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Firmensitz
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Firmensitz anzeigen
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}verlegen
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verlegen
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neues Gesicht
