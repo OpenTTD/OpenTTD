@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "company_func.h"
-#include "cargotype.h"
 #include "roadveh.h"
 #include "functions.h"
 #include "window_func.h"
@@ -119,7 +118,7 @@ void BaseStation::PostDestructor(size_t index)
  */
 RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 {
-	RoadStop *rs = this->GetPrimaryRoadStop(IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK);
+	RoadStop *rs = this->GetPrimaryRoadStop(v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK);
 
 	for (; rs != NULL; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */

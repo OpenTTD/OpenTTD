@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "../../roadstop_base.h"
-#include "../../cargotype.h"
 
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"
@@ -209,7 +208,7 @@ public:
 	{
 		m_dest_station = sid;
 		m_destTile     = destTile;
-		m_bus          = IsCargoInClass(v->cargo_type, CC_PASSENGERS);
+		m_bus          = v->IsBus();
 		m_non_artic    = !v->HasArticulatedPart();
 	}
 

@@ -15,7 +15,6 @@
 #include "company_func.h"
 #include "news_func.h"
 #include "vehicle_gui.h"
-#include "cargotype.h"
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
@@ -1140,7 +1139,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			}
 
 			/* Trucks can't share orders with busses (and visa versa) */
-			if (src->type == VEH_ROAD && IsCargoInClass(src->cargo_type, CC_PASSENGERS) != IsCargoInClass(dst->cargo_type, CC_PASSENGERS)) {
+			if (src->type == VEH_ROAD && RoadVehicle::From(src)->IsBus() != RoadVehicle::From(dst)->IsBus()) {
 				return CMD_ERROR;
 			}
 

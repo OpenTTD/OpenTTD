@@ -132,6 +132,8 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 	void FindRoadStopSlot();
 
+	bool IsBus() const;
+
 	/**
 	 * Check if vehicle is a front engine
 	 * @return Returns true if vehicle is a front engine

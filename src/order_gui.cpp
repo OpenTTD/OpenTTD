@@ -17,6 +17,7 @@
 #include "depot_base.h"
 #include "vehicle_base.h"
 #include "vehicle_gui.h"
+#include "roadveh.h"
 #include "timetable.h"
 #include "cargotype.h"
 #include "strings_func.h"
@@ -379,7 +380,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			(facil = FACIL_DOCK, v->type == VEH_SHIP) ||
 			(facil = FACIL_TRAIN, v->type == VEH_TRAIN) ||
 			(facil = FACIL_AIRPORT, v->type == VEH_AIRCRAFT) ||
-			(facil = FACIL_BUS_STOP, v->type == VEH_ROAD && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) ||
+			(facil = FACIL_BUS_STOP, v->type == VEH_ROAD && RoadVehicle::From(v)->IsBus()) ||
 			(facil = FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st_index);

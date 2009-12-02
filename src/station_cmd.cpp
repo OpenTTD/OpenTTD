@@ -2699,7 +2699,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 					if (!rs->IsFreeBay(side)) return VETSB_CANNOT_ENTER;
 
 					/* Check if the vehicle is stopping at this road stop */
-					if (GetRoadStopType(tile) == (IsCargoInClass(rv->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
+					if (GetRoadStopType(tile) == (rv->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 							rv->current_order.GetDestination() == GetStationIndex(tile)) {
 						SetBit(rv->state, RVS_IS_STOPPING);
 						rs->AllocateDriveThroughBay(side);

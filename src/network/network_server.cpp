@@ -28,7 +28,7 @@
 #include "../company_func.h"
 #include "../company_gui.h"
 #include "../window_func.h"
-#include "../cargotype.h"
+#include "../roadveh.h"
 
 #include "table/strings.h"
 
@@ -1368,7 +1368,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 		byte type = 0;
 		switch (v->type) {
 			case VEH_TRAIN: type = 0; break;
-			case VEH_ROAD: type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? 2 : 1; break;
+			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? 2 : 1; break;
 			case VEH_AIRCRAFT: type = 3; break;
 			case VEH_SHIP: type = 4; break;
 			default: continue;

@@ -82,6 +82,17 @@ static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
 };
 
+
+/**
+ * Check whether a roadvehicle is a bus
+ * @return true if bus
+ */
+bool RoadVehicle::IsBus() const
+{
+	assert(this->IsRoadVehFront());
+	return IsCargoInClass(this->cargo_type, CC_PASSENGERS);
+}
+
 /**
  * Get the width of a road vehicle image in the GUI.
  * @param offset Additional offset for positioning the sprite; set to NULL if not needed
@@ -729,7 +740,7 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 
 static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 {
-	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
+	if (v->IsBus()) {
 		/* Check if station was ever visited before */
 		if (!(st->had_vehicle_of_type & HVOT_BUS)) {
 			st->had_vehicle_of_type |= HVOT_BUS;
@@ -960,7 +971,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 			trackdirs = TRACKDIR_BIT_NONE;
 		} else {
 			/* Our station */
-			RoadStopType rstype = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK;
+			RoadStopType rstype = v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK;
 
 			if (GetRoadStopType(tile) != rstype) {
 				/* Wrong station type */
@@ -1489,7 +1500,7 @@ again:
 			(IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
 			v->owner == GetTileOwner(v->tile) &&
-			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
+			GetRoadStopType(v->tile) == (v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 			v->frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
 		RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));
@@ -1503,7 +1514,7 @@ again:
 
 			if (IsDriveThroughStopTile(v->tile)) {
 				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
-				RoadStopType type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK;
+				RoadStopType type = v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK;
 
 				/* Check if next inline bay is free */
 				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
