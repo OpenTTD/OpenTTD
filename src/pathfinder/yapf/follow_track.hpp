@@ -20,7 +20,7 @@
 /** Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport
  *  types w/ or w/o 90-deg turns allowed */
-template <TransportType Ttr_type_, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
+template <TransportType Ttr_type_, typename VehicleType, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
 struct CFollowTrackT
 {
 	enum ErrorCode {
@@ -32,7 +32,7 @@ struct CFollowTrackT
 		EC_RESERVED,
 	};
 
-	const Vehicle      *m_veh;           ///< moving vehicle
+	const VehicleType  *m_veh;           ///< moving vehicle
 	Owner               m_veh_owner;     ///< owner of the vehicle
 	TileIndex           m_old_tile;      ///< the origin (vehicle moved from) before move
 	Trackdir            m_old_td;        ///< the trackdir (the vehicle was on) before move
@@ -47,7 +47,7 @@ struct CFollowTrackT
 	CPerformanceTimer  *m_pPerf;
 	RailTypes           m_railtypes;
 
-	FORCEINLINE CFollowTrackT(const Vehicle *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
+	FORCEINLINE CFollowTrackT(const VehicleType *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
 	{
 		Init(v, railtype_override, pPerf);
 	}
@@ -58,7 +58,7 @@ struct CFollowTrackT
 		Init(o, railtype_override, pPerf);
 	}
 
-	FORCEINLINE void Init(const Vehicle *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	FORCEINLINE void Init(const VehicleType *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
@@ -437,15 +437,15 @@ public:
 	}
 };
 
-typedef CFollowTrackT<TRANSPORT_WATER, true > CFollowTrackWater;
-typedef CFollowTrackT<TRANSPORT_ROAD , true > CFollowTrackRoad;
-typedef CFollowTrackT<TRANSPORT_RAIL , true > CFollowTrackRail;
+typedef CFollowTrackT<TRANSPORT_WATER, Ship,        true > CFollowTrackWater;
+typedef CFollowTrackT<TRANSPORT_ROAD,  RoadVehicle, true > CFollowTrackRoad;
+typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       true > CFollowTrackRail;
 
-typedef CFollowTrackT<TRANSPORT_WATER, false> CFollowTrackWaterNo90;
-typedef CFollowTrackT<TRANSPORT_ROAD , false> CFollowTrackRoadNo90;
-typedef CFollowTrackT<TRANSPORT_RAIL , false> CFollowTrackRailNo90;
+typedef CFollowTrackT<TRANSPORT_WATER, Ship,        false> CFollowTrackWaterNo90;
+typedef CFollowTrackT<TRANSPORT_ROAD,  RoadVehicle, false> CFollowTrackRoadNo90;
+typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       false> CFollowTrackRailNo90;
 
-typedef CFollowTrackT<TRANSPORT_RAIL , true , true> CFollowTrackFreeRail;
-typedef CFollowTrackT<TRANSPORT_RAIL , false, true> CFollowTrackFreeRailNo90;
+typedef CFollowTrackT<TRANSPORT_RAIL, Train, true,  true > CFollowTrackFreeRail;
+typedef CFollowTrackT<TRANSPORT_RAIL, Train, false, true > CFollowTrackFreeRailNo90;
 
 #endif /* FOLLOW_TRACK_HPP */

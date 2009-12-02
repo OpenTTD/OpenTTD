@@ -32,7 +32,7 @@ Track YapfChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
  * @param enterdir diagonal direction which the RV will enter this new tile from
  * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir);
+Trackdir YapfChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir);
 
 /**
  * Finds the best path for given train using YAPF.
@@ -52,7 +52,7 @@ Track YapfTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdi
  * @param tile   destination tile
  * @return       distance from origin tile to the destination (number of road tiles) or UINT_MAX if path not found
  */
-uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile);
+uint YapfRoadVehDistanceToTile(const RoadVehicle *v, TileIndex tile);
 
 /** Used to determinine the closest reachable compatible road stop for a given vehicle.
  * @param v            vehicle that needs to go to the road stop
@@ -70,7 +70,7 @@ bool YapfFindNearestRoadVehicleCompatibleStop(const RoadVehicle *v, StationID st
  * @param depot_tile   receives the depot tile if depot was found
  * @return             true if depot was found.
  */
-bool YapfFindNearestRoadDepot(const Vehicle *v, int max_distance, TileIndex *depot_tile);
+bool YapfFindNearestRoadDepot(const RoadVehicle *v, int max_distance, TileIndex *depot_tile);
 
 /**
  * Used when user sends train to the nearest depot or if train needs servicing using YAPF.

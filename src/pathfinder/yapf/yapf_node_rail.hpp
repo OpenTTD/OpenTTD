@@ -243,7 +243,7 @@ struct CYapfRailNodeT
 	}
 
 	template <class Tbase, class Tfunc, class Tpf>
-	bool IterateTiles(const Vehicle *v, Tpf &yapf, Tbase &obj, bool (Tfunc::*func)(TileIndex, Trackdir)) const
+	bool IterateTiles(const Train *v, Tpf &yapf, Tbase &obj, bool (Tfunc::*func)(TileIndex, Trackdir)) const
 	{
 		typename Tbase::TrackFollower ft(v, yapf.GetCompatibleRailTypes());
 		TileIndex cur = base::GetTile();

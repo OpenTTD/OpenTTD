@@ -18,10 +18,10 @@ protected:
 	RailTypes m_compatible_railtypes;
 
 public:
-	void SetDestination(const Vehicle *v, bool override_rail_type = false)
+	void SetDestination(const Train *v, bool override_rail_type = false)
 	{
-		m_compatible_railtypes = Train::From(v)->compatible_railtypes;
-		if (override_rail_type) m_compatible_railtypes |= GetRailTypeInfo(Train::From(v)->railtype)->compatible_railtypes;
+		m_compatible_railtypes = v->compatible_railtypes;
+		if (override_rail_type) m_compatible_railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
 	}
 
 	bool IsCompatibleRailType(RailType rt)
@@ -98,8 +98,8 @@ public:
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		return
-			IsSafeWaitingPosition(Train::From(Yapf().GetVehicle()), tile, td, true, !TrackFollower::Allow90degTurns()) &&
-			IsWaitingPositionFree(Train::From(Yapf().GetVehicle()), tile, td, !TrackFollower::Allow90degTurns());
+			IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns()) &&
+			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, !TrackFollower::Allow90degTurns());
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
@@ -132,7 +132,7 @@ protected:
 	}
 
 public:
-	void SetDestination(const Vehicle *v)
+	void SetDestination(const Train *v)
 	{
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:

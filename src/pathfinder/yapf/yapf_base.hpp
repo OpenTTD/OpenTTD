@@ -52,6 +52,7 @@ public:
 	typedef typename Types::Tpf Tpf;           ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
 	typedef typename Types::NodeList NodeList; ///< our node list
+	typedef typename Types::VehicleType VehicleType; ///< the type of vehicle
 	typedef typename NodeList::Titem Node;     ///< this will be our node type
 	typedef typename Node::Key Key;            ///< key to hash tables
 
@@ -62,7 +63,7 @@ protected:
 	Node                *m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
 	const YAPFSettings  *m_settings;           ///< current settings (_settings_game.yapf)
 	int                  m_max_search_nodes;   ///< maximum number of nodes we are allowed to visit before we give up
-	const Vehicle       *m_veh;                ///< vehicle that we are trying to drive
+	const VehicleType   *m_veh;                ///< vehicle that we are trying to drive
 
 	int                  m_stats_cost_calcs;   ///< stats - how many node's costs were calculated
 	int                  m_stats_cache_hits;   ///< stats - how many node's costs were reused from cache
@@ -114,7 +115,7 @@ public:
 	 *      - or the open list is empty (no route to destination).
 	 *      - or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
 	 * @return true if the path was found */
-	inline bool FindPath(const Vehicle *v)
+	inline bool FindPath(const VehicleType *v)
 	{
 		m_veh = v;
 
@@ -291,7 +292,7 @@ public:
 		m_nodes.InsertOpenNode(n);
 	}
 
-	const Vehicle * GetVehicle() const
+	const VehicleType * GetVehicle() const
 	{
 		return m_veh;
 	}

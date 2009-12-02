@@ -251,11 +251,11 @@ public:
 	FORCEINLINE int PlatformLengthPenalty(int platform_length)
 	{
 		int cost = 0;
-		const Vehicle *v = Yapf().GetVehicle();
+		const Train *v = Yapf().GetVehicle();
 		assert(v != NULL);
 		assert(v->type == VEH_TRAIN);
-		assert(Train::From(v)->tcache.cached_total_length != 0);
-		int missing_platform_length = (Train::From(v)->tcache.cached_total_length + TILE_SIZE - 1) / TILE_SIZE - platform_length;
+		assert(v->tcache.cached_total_length != 0);
+		int missing_platform_length = (v->tcache.cached_total_length + TILE_SIZE - 1) / TILE_SIZE - platform_length;
 		if (missing_platform_length < 0) {
 			/* apply penalty for longer platform than needed */
 			cost += Yapf().PfGetSettings().rail_longer_platform_penalty + Yapf().PfGetSettings().rail_longer_platform_per_tile_penalty * -missing_platform_length;
@@ -322,7 +322,7 @@ public:
 		int segment_entry_cost = 0;
 		int segment_cost = 0;
 
-		const Vehicle *v = Yapf().GetVehicle();
+		const Train *v = Yapf().GetVehicle();
 
 		/* start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment */
 		TILE cur(n.m_key.m_tile, n.m_key.m_td);

@@ -151,6 +151,7 @@ struct CYapfShip_TypesT
 	typedef Ttrack_follower                   TrackFollower;
 	/** node list type */
 	typedef Tnode_list                        NodeList;
+	typedef Ship                              VehicleType;
 	/** pathfinder components (modules) */
 	typedef CYapfBaseT<Types>                 PfBase;        // base pathfinder class
 	typedef CYapfFollowShipT<Types>           PfFollow;      // node follower
