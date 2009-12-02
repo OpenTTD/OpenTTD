@@ -369,7 +369,7 @@ static Track ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterd
 	switch (_settings_game.pf.pathfinder_for_ships) {
 		case VPF_OPF: return OPFShipChooseTrack(v, tile, enterdir, tracks);
 		case VPF_NPF: return NPFShipChooseTrack(v, tile, enterdir, tracks);
-		case VPF_YAPF: return YapfChooseShipTrack(v, tile, enterdir, tracks);
+		case VPF_YAPF: return YapfShipChooseTrack(v, tile, enterdir, tracks);
 		default: NOT_REACHED();
 	}
 }

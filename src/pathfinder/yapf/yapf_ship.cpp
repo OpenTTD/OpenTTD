@@ -169,7 +169,7 @@ struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , C
 struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
-Track YapfChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	/* default is YAPF type 2 */
 	typedef Trackdir (*PfnChooseShipTrack)(const Ship*, TileIndex, DiagDirection, TrackBits);

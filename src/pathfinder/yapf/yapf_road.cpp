@@ -539,7 +539,7 @@ struct CYapfRoadAnyRoadVehicleCompatibleStopOfGivenStation1 : CYapfT<CYapfRoad_T
 struct CYapfRoadAnyRoadVehicleCompatibleStopOfGivenStation2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyRoadVehicleCompatibleStopOfGivenStation2, CRoadNodeListExitDir , CYapfDestinationAnyRoadVehicleCompatibleStopOfGivenStationT> > {};
 
 
-Trackdir YapfChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir)
+Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
 {
 	/* default is YAPF type 2 */
 	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection);
@@ -551,7 +551,7 @@ Trackdir YapfChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection
 	}
 
 	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir);
-	return td_ret;
+	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit2x64(trackdirs);
 }
 
 uint YapfRoadVehDistanceToTile(const RoadVehicle *v, TileIndex tile)
@@ -575,21 +575,12 @@ uint YapfRoadVehDistanceToTile(const RoadVehicle *v, TileIndex tile)
 	return dist;
 }
 
-bool YapfFindNearestRoadDepot(const RoadVehicle *v, int max_distance, TileIndex *depot_tile)
+FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance)
 {
-	*depot_tile = INVALID_TILE;
-
 	TileIndex tile = v->tile;
 	Trackdir trackdir = v->GetVehicleTrackdir();
 	if ((TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, v->compatible_roadtypes)) & TrackdirToTrackdirBits(trackdir)) == 0) {
-		return false;
-	}
-
-	/* handle the case when our vehicle is already in the depot tile */
-	if (IsRoadDepotTile(tile)) {
-		/* only what we need to return is the Depot* */
-		*depot_tile = tile;
-		return true;
+		return FindDepotData();
 	}
 
 	/* default is YAPF type 2 */
@@ -601,7 +592,9 @@ bool YapfFindNearestRoadDepot(const RoadVehicle *v, int max_distance, TileIndex 
 		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir, allow 90-deg
 	}
 
-	bool ret = pfnFindNearestDepot(v, tile, trackdir, max_distance, depot_tile);
+	FindDepotData fdd;
+	bool ret = pfnFindNearestDepot(v, tile, trackdir, max_distance, &fdd.tile);
+	fdd.best_length = ret ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
 	return ret;
 }
 

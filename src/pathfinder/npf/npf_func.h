@@ -17,6 +17,26 @@
 #include "../pathfinder_type.h"
 
 /**
+ * Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing using NPF.
+ * @param v            vehicle that needs to go to some depot
+ * @param max_distance max distance (number of track tiles) from the current vehicle position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_distance
+ *                     was reached and no depot was seen)
+ * @return             the data about the depot
+ */
+FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance);
+
+/**
+ * Finds the best path for given road vehicle using NPF.
+ * @param v         the RV that needs to find a path
+ * @param tile      the tile to find the path from (should be next tile the RV is about to enter)
+ * @param enterdir  diagonal direction which the RV will enter this new tile from
+ * @param trackdirs available trackdirs on the new tile (to choose from)
+ * @return          the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
+ */
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs);
+
+/**
  * Finds the best path for given ship using NPF.
  * @param v        the ship that needs to find a path
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)

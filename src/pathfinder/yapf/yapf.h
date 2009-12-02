@@ -24,15 +24,17 @@
  * @param tracks   available tracks on the new tile (to choose from)
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track YapfChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
+Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
 
-/** Finds the best path for given road vehicle.
- * @param v        the RV that needs to find a path
- * @param tile     the tile to find the path from (should be next tile the RV is about to enter)
- * @param enterdir diagonal direction which the RV will enter this new tile from
- * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
+/**
+ * Finds the best path for given road vehicle using YAPF.
+ * @param v         the RV that needs to find a path
+ * @param tile      the tile to find the path from (should be next tile the RV is about to enter)
+ * @param enterdir  diagonal direction which the RV will enter this new tile from
+ * @param trackdirs available trackdirs on the new tile (to choose from)
+ * @return          the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir);
+Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs);
 
 /**
  * Finds the best path for given train using YAPF.
@@ -62,15 +64,15 @@ uint YapfRoadVehDistanceToTile(const RoadVehicle *v, TileIndex tile);
  */
 bool YapfFindNearestRoadVehicleCompatibleStop(const RoadVehicle *v, StationID station, TileIndex *stop_tile);
 
-/** Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing.
+/**
+ * Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing using YAPF.
  * @param v            vehicle that needs to go to some depot
  * @param max_distance max distance (number of track tiles) from the current vehicle position
  *                     (used also as optimization - the pathfinder can stop path finding if max_distance
  *                     was reached and no depot was seen)
- * @param depot_tile   receives the depot tile if depot was found
- * @return             true if depot was found.
+ * @return             the data about the depot
  */
-bool YapfFindNearestRoadDepot(const RoadVehicle *v, int max_distance, TileIndex *depot_tile);
+FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance);
 
 /**
  * Used when user sends train to the nearest depot or if train needs servicing using YAPF.

@@ -18,8 +18,9 @@
 #include "../../functions.h"
 #include "../../tunnelbridge.h"
 #include "../../pbs.h"
-#include "../../train.h"
+#include "../../roadveh.h"
 #include "../../ship.h"
+#include "../../train.h"
 #include "../pathfinder_func.h"
 #include "../pathfinder_type.h"
 #include "npf.h"
@@ -1097,6 +1098,46 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool
 	fstd->v = v;
 }
 
+/*** Road vehicles ***/
+
+FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance)
+{
+	Trackdir trackdir = v->GetVehicleTrackdir();
+
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
+
+	if (ftd.best_bird_dist != 0) return FindDepotData();
+
+	/* Found target */
+	/* Our caller expects a number of tiles, so we just approximate that
+	 * number by this. It might not be completely what we want, but it will
+	 * work for now :-) We can possibly change this when the old pathfinder
+	 * is removed. */
+	return FindDepotData(ftd.node.tile, ftd.best_path_dist / NPF_TILE_LENGTH);
+}
+
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
+{
+	NPFFindStationOrTileData fstd;
+
+	NPFFillWithOrderData(&fstd, v);
+	Trackdir trackdir = DiagDirToDiagTrackdir(enterdir);
+
+	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES);
+	if (ftd.best_trackdir == INVALID_TRACKDIR) {
+		/* We are already at our target. Just do something
+		 * @todo: maybe display error?
+		 * @todo: go straight ahead if possible? */
+		return (Trackdir)FindFirstBit2x64(trackdirs);
+	}
+
+	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+	 * we did not find our target, but ftd.best_trackdir contains the direction leading
+	 * to the tile closest to our target. */
+	return ftd.best_trackdir;
+}
+
 /*** Ships ***/
 
 Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
@@ -1127,7 +1168,7 @@ FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_distance)
 
 	assert(trackdir != INVALID_TRACKDIR);
 	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes, NPF_INFINITE_PENALTY);
-	if (ftd.best_bird_dist != 0) FindDepotData();
+	if (ftd.best_bird_dist != 0) return FindDepotData();
 
 	/* Found target */
 	/* Our caller expects a number of tiles, so we just approximate that

@@ -15,6 +15,7 @@
 #include "command_func.h"
 #include "news_func.h"
 #include "pathfinder/npf/npf.h"
+#include "pathfinder/npf/npf_func.h"
 #include "station_base.h"
 #include "company_func.h"
 #include "vehicle_gui.h"
@@ -74,15 +75,6 @@ static const TrackdirBits _road_enter_dir_to_reachable_trackdirs[DIAGDIR_END] = 
 
 static const Trackdir _road_reverse_table[DIAGDIR_END] = {
 	TRACKDIR_RVREV_NE, TRACKDIR_RVREV_SE, TRACKDIR_RVREV_SW, TRACKDIR_RVREV_NW
-};
-
-/** 'Convert' the DiagDirection where a road vehicle should exit to
- * the trackdirs it can use to drive to the exit direction*/
-static const TrackdirBits _road_exit_dir_to_incoming_trackdirs[DIAGDIR_END] = {
-	TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_X_SW    | TRACKDIR_BIT_LEFT_S,
-	TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_Y_NW,
-	TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_X_NE,
-	TRACKDIR_BIT_RIGHT_S | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_Y_SE
 };
 
 /** Converts the exit direction of a depot to trackdir the vehicle is going to drive to */
@@ -365,58 +357,21 @@ CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return ret;
 }
 
-struct RoadFindDepotData {
-	uint best_length;
-	TileIndex tile;
-	OwnerByte owner;
-};
-
-static const DiagDirection _road_pf_directions[] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, INVALID_DIAGDIR, INVALID_DIAGDIR,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, INVALID_DIAGDIR, INVALID_DIAGDIR
-};
-
-static RoadFindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance)
+static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance)
 {
-	RoadFindDepotData rfdd;
-	rfdd.owner = v->owner;
-
-	if (IsRoadDepotTile(v->tile)) {
-		rfdd.tile = v->tile;
-		rfdd.best_length = 0;
-		return rfdd;
-	}
-
-	rfdd.best_length = UINT_MAX;
+	if (IsRoadDepotTile(v->tile)) return FindDepotData(v->tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_YAPF: { // YAPF
-			bool found = YapfFindNearestRoadDepot(v, max_distance, &rfdd.tile);
-			rfdd.best_length = found ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
-		} break;
+		case VPF_NPF: return NPFRoadVehicleFindNearestDepot(v, max_distance);
+		case VPF_YAPF: return YapfRoadVehicleFindNearestDepot(v, max_distance);
 
-		case VPF_NPF: { // NPF
-			/* See where we are now */
-			Trackdir trackdir = v->GetVehicleTrackdir();
-
-			NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
-
-			if (ftd.best_bird_dist == 0) {
-				rfdd.tile = ftd.node.tile;
-				rfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
-			}
-		} break;
-
-		default:
-			NOT_REACHED();
+		default: NOT_REACHED();
 	}
-
-	return rfdd; // Target not found
 }
 
 bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
-	RoadFindDepotData rfdd = FindClosestRoadDepot(this, 0);
+	FindDepotData rfdd = FindClosestRoadDepot(this, 0);
 	if (rfdd.best_length == UINT_MAX) return false;
 
 	if (location    != NULL) *location    = rfdd.tile;
@@ -973,15 +928,6 @@ static int PickRandomBit(uint bits)
 	return i;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
-{
-	void *perf = NpfBeginInterval();
-	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, sub_type, owner, railtypes);
-	int t = NpfEndInterval(perf);
-	DEBUG(yapf, 4, "[NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
-	return ret;
-}
-
 /**
  * Returns direction to for a road vehicle to take or
  * INVALID_TRACKDIR if the direction is currently blocked
@@ -1071,36 +1017,10 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	}
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_YAPF: { // YAPF
-			Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
-			if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
-			return_track(PickRandomBit(trackdirs));
-		} break;
+		case VPF_NPF: return_track(NPFRoadVehicleChooseTrack(v, tile, enterdir, trackdirs));
+		case VPF_YAPF: return_track(YapfRoadVehicleChooseTrack(v, tile, enterdir, trackdirs));
 
-		case VPF_NPF: { // NPF
-			NPFFindStationOrTileData fstd;
-
-			NPFFillWithOrderData(&fstd, v);
-			Trackdir trackdir = DiagDirToDiagTrackdir(enterdir);
-			/* debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir); */
-
-			NPFFoundTargetData ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES);
-			if (ftd.best_trackdir == INVALID_TRACKDIR) {
-				/* We are already at our target. Just do something
-				 * @todo: maybe display error?
-				 * @todo: go straight ahead if possible? */
-				return_track(FindFirstBit2x64(trackdirs));
-			} else {
-				/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
-				 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
-				 * we did not find our target, but ftd.best_trackdir contains the direction leading
-				 * to the tile closest to our target. */
-				return_track(ftd.best_trackdir);
-			}
-		} break;
-
-		default:
-			NOT_REACHED();
+		default: NOT_REACHED();
 	}
 
 found_best_track:;
@@ -1771,7 +1691,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 		return;
 	}
 
-	RoadFindDepotData rfdd = FindClosestRoadDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
+	FindDepotData rfdd = FindClosestRoadDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
 	/* Only go to the depot if it is not too far out of our way. */
 	if (rfdd.best_length == UINT_MAX || rfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
