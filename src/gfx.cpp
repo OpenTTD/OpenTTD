@@ -70,7 +70,7 @@ static ReusableBuffer<uint8> _cursor_backup;
  */
 static Rect _invalid_rect;
 static const byte *_colour_remap_ptr;
-static byte _string_colourremap[3];
+static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures, that ST_FONT sprites only use colours 0 to 2.
 
 enum {
 	DIRTY_BLOCK_HEIGHT   = 8,
