@@ -593,19 +593,23 @@ void VideoDriver_SDL::MainLoop()
 				CheckPaletteAnim();
 				pal_tick = 1;
 			}
-
-			/* End of the critical part. */
-			if (_draw_threaded && !IsGeneratingWorld()) {
-				_draw_mutex->SendSignal();
-			} else {
-				/* Oh, we didn't have threads, then just draw unthreaded */
-				DrawSurfaceToScreen();
-			}
 		} else {
 			/* Release the thread while sleeping */
 			if (_draw_threaded) _draw_mutex->EndCritical();
 			CSleep(1);
 			if (_draw_threaded) _draw_mutex->BeginCritical();
+
+			_screen.dst_ptr = _sdl_screen->pixels;
+			NetworkDrawChatMessage();
+			DrawMouseCursor();
+		}
+
+		/* End of the critical part. */
+		if (_draw_threaded && !IsGeneratingWorld()) {
+			_draw_mutex->SendSignal();
+		} else {
+			/* Oh, we didn't have threads, then just draw unthreaded */
+			DrawSurfaceToScreen();
 		}
 	}
 
