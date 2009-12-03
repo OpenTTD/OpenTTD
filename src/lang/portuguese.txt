@@ -42,7 +42,7 @@ STR_CARGO_PLURAL_COPPER_ORE                                     :Minério de Cob
 STR_CARGO_PLURAL_MAIZE                                          :Milho
 STR_CARGO_PLURAL_FRUIT                                          :Fruta
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamantes
-STR_CARGO_PLURAL_FOOD                                           :Comida
+STR_CARGO_PLURAL_FOOD                                           :Alimentos
 STR_CARGO_PLURAL_PAPER                                          :Papel
 STR_CARGO_PLURAL_GOLD                                           :Ouro
 STR_CARGO_PLURAL_WATER                                          :Água
@@ -76,7 +76,7 @@ STR_CARGO_SINGULAR_COPPER_ORE                                   :Minério de Cob
 STR_CARGO_SINGULAR_MAIZE                                        :Milho
 STR_CARGO_SINGULAR_FRUIT                                        :Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamantes
-STR_CARGO_SINGULAR_FOOD                                         :Comida
+STR_CARGO_SINGULAR_FOOD                                         :Alimentos
 STR_CARGO_SINGULAR_PAPER                                        :Papel
 STR_CARGO_SINGULAR_GOLD                                         :Ouro
 STR_CARGO_SINGULAR_WATER                                        :Água
@@ -110,7 +110,7 @@ STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de min
 STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho
 STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta
 STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
-STR_QUANTITY_FOOD                                               :{WEIGHT} de comida
+STR_QUANTITY_FOOD                                               :{WEIGHT} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT} de papel
 STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME} de água
@@ -145,7 +145,7 @@ STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
 STR_ABBREV_MAIZE                                                :{TINYFONT}ML
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}CM
+STR_ABBREV_FOOD                                                 :{TINYFONT}AL
 STR_ABBREV_PAPER                                                :{TINYFONT}PP
 STR_ABBREV_GOLD                                                 :{TINYFONT}OU
 STR_ABBREV_WATER                                                :{TINYFONT}AG
@@ -3733,7 +3733,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagão de Madei
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Vagão de Minério de Ferro
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagão de Aço
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Vagão Blindado
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagão de Comida
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagão Alimentar
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagão de Papel
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Vagão de Minério de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Cisterna de Água
@@ -3763,7 +3763,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Vagão de Madei
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Vagão de Minério de Ferro
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagão de Aço
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Vagão Blindado
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagão de Comida
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagão Alimentar
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Vagão de Papel
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Vagão de Minério de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Cisterna de Água
@@ -3795,7 +3795,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Vagão de Madei
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Vagão de Minério de Ferro
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Vagão de Aço
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Vagão Blindado
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagão de Comida
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagão Alimentar
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Vagão de Papel
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Vagão de Minério de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Cisterna de Água
@@ -3851,9 +3851,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camião de Aço
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Camião Blindado Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Camião Blindado Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Camião Blindado Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Camião de Comida Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Camião de Comida Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Camião de Comida Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Camião Alimentar Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Camião Alimentar Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Camião Alimentar Chippy
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camião de Papel Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camião de Papel Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camião de Papel MPS

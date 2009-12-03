@@ -1063,7 +1063,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permite
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelul de acceleratie al trenurilor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistic
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor si navelor sa faca intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (necesita NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (nu funcţionează cu OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Uneşte gările alăturate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite contopirea (unirea) staţiilor neînvecinate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Foloseste algoritm incarcare imbunatatit: {ORANGE}{STRING}
@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propria compani
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Toate companiile
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Foloseste orarul pentru vehicule: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Arata orarul per programari, nu per zile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afişează plecările şi sosirile în orare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creare rapidă a ordinelor pentru vehicule: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipul implicit de sina (dupa joc nou/incarcare joc): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Sina normala
@@ -2930,6 +2931,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit p
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacitate: {LTBLUE}Nimic
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacitate: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacitate: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacitate: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2995,6 +2997,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Orar
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Comuta in modul de vizualizare orar
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+clic poziţionează ecranul pe staţie
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Sfârşitul comenzilor - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Sfârşitul comenzilor sincronizate - -
@@ -3134,6 +3138,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest or
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Acest vehicul se incadreaza in timp
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vehiculul are întârziere de {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Momentan, acest vehicul si-a devansat programul {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Acest orar nu a început încă
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Acest orar va începe la {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dată pornire
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Alege o dată de pornire pentru acestu orar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifica timpul
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată pentru comanda selectată
@@ -3147,12 +3156,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinitia
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completează automat tabela cu timpi cu valorile pentru urmatoarea călătorie (CTRL-clic pentru a încerca să păstraţi timpii de aşteptare)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Estimat
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Comută între estimare şi orar
 
-### Do not separate or reorder ###
-#####
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
-### Do not separate or reorder ###
-#####
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Setează data
+STR_DATE_SET_DATE                                               :{BLACK}Setează data
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Foloseşte data selectată ca dată de pornire pentru acest orar
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Alege ziua
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Alege luna
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Alege anul
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depanare IA
@@ -4018,6 +4037,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
