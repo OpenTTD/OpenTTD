@@ -53,7 +53,7 @@ RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
 void RoadStop::Leave(RoadVehicle *rv)
 {
 	/* Vehicle is leaving a road stop tile, mark bay as free
-		* For drive-through stops, only do it if the vehicle stopped here */
+	 * For drive-through stops, only do it if the vehicle stopped here */
 	if (IsStandardRoadStopTile(rv->tile) || HasBit(rv->state, RVS_IS_STOPPING)) {
 		this->FreeBay(HasBit(rv->state, RVS_USING_SECOND_BAY));
 		ClrBit(rv->state, RVS_IS_STOPPING);
@@ -70,7 +70,7 @@ bool RoadStop::Enter(RoadVehicle *rv)
 {
 	if (IsStandardRoadStopTile(this->xy)) {
 		/* For normal (non drive-through) road stops
-			* Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
+		 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
 		if (this->IsEntranceBusy() || !this->HasFreeBay() || rv->HasArticulatedPart()) return false;
 
 		SetBit(rv->state, RVS_IN_ROAD_STOP);
