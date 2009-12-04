@@ -312,8 +312,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}興建�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}興建機場
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打開地形工具列、提升／降低地面、 植樹等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}顯示音效／背景音樂視窗
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}顯示上次訊息／新聞報告、顯示訊息 選項
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊，操控介面，人工智慧調試，截圖， 關於 OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}顯示上次訊息／新聞報告、顯示訊息選項
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊、主控台、AI 除錯、螢幕抓圖、關於 OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}切換工具列
 
 # Extra tooltips for the scenario editor toolbar
@@ -752,7 +752,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}洪水！{}至少 {COMMA} 人失蹤，在洪水後宣告死亡
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}運輸公司有麻煩了！
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} 將被拍賣或宣告破產，除非盡快提昇效率！
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}除非盡快提昇營運績效，否則 {STRING} 將被拍賣或宣告破產！
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}運輸公司合併！
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} 被 {STRING} 以 {CURRENCY} 收購！
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}破產！
@@ -762,7 +762,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} 被 {STRING} 收購！
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(經理)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} 贊助新市鎮「{TOWN}」的興建！
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} 出資贊助新市鎮「{TOWN}」的興建！
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新的 {STRING} 正在 {TOWN} 附近建造中！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新的 {STRING} 正在 {TOWN} 附近種植中！
@@ -800,11 +800,11 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} 即將退役
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} 應當馬上退役
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 應馬上退役並替換新車
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 無法尋得路徑
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 找不到路徑繼續前進
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的盈利是 {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} 因重載失敗而停止
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} 因改裝失敗而停止
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}無法自動更新 {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} 問世了！
@@ -1389,7 +1389,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}顯示�
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}顯示飛機配色
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選擇所選配色的主色調
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選擇所選配色的副色調
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}選擇要修改的配色，按住 CTRL 可同時選擇多種配色，勾選方框可 切換是否使用配色
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}選擇要修改的配色，按住 CTRL 可同時選擇多種配色，勾選方框可切換是否使用配色
 
 STR_LIVERY_DEFAULT                                              :標準配色
 STR_LIVERY_STEAM                                                :蒸汽機車
@@ -1532,9 +1532,9 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}輸入�
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}開始新的多人遊戲
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}遊戲名稱：
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲名稱會顯示在其他玩家多人遊戲 的遊戲清單中
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲名稱會顯示在其他玩家多人遊戲的遊戲清單中
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定密碼
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用 密碼保護遊戲
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}選擇地圖：
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}您想玩哪個地圖？
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :隨機產生新場景
@@ -1543,7 +1543,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :區域網路／
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :網際網路 (廣告)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}用戶端上限：
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇連線人數上限，但不是每個名額 都要有人連線
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇連線人數上限，但不是每個名額都要有人連線
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} 公司
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}公司上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}限制伺服器可以建立的公司數量
@@ -1551,7 +1551,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM}旁
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}旁觀者上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}限制可加入的旁觀者數量
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}溝通語言：
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其他人知道這個伺服器使用的溝通 語言
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其他人知道這個伺服器使用的溝通語言
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}開始遊戲
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}以隨機地圖或場景開始新的連線遊戲
@@ -1604,7 +1604,7 @@ STR_NETWORK_LANG_LATVIAN                                        :拉脫維亞語
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}多人遊戲大廳
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}準備加入：{ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}列出遊戲内所有公司。若公司還有 空位的話您可以加入現有公司，或是 創立新公司
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}列出遊戲内所有公司。若公司還有空位的話您可以加入現有公司，或是創立新公司
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}公司資訊
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}公司名稱：{WHITE}{STRING}
@@ -1671,13 +1671,13 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不要�
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}為公司設定新的密碼
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}公司密碼
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}預設公司密碼
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}使用此密碼當作未來新公司的預設 密碼
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}使用此密碼當作未來新公司的預設密碼
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}加入
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}加入並操控此公司
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}密碼
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}以密碼保護您的公司，避免其他玩家 隨意接手
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}以密碼保護您的公司，避免其他玩家隨意接手
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}設定公司密碼
 
 # Network chat
@@ -1887,19 +1887,19 @@ STR_STATION_CLASS_WAYP                                          :號誌站
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}號誌選擇
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞號誌 (懸臂){}當路網中有多列列車時，為了避免 發生相撞意外就必須設置號誌
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口號誌 (懸臂){}當綠燈亮時，代表此號誌後有一個 以上的出口號誌呈現綠燈，否則將會 亮紅燈
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口號誌 (懸臂){}與閉塞號誌類似，但它還會負責觸發 前頭的入口號誌及組合號誌
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}組合號誌 (懸臂){}組合號誌同時具有入口／出口號誌的 特性，這可讓玩家設置一卡車的預告 號誌
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}路徑號誌 (懸臂){}路徑號誌可在列車能找到前往下個 安全停車點的路徑的前提下，容許 多列列車進入同一個閉塞區間。標準 路徑號誌可以從號誌後方穿過
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}單向路徑號誌 (懸臂){}路徑號誌可在列車能找到前往下個 安全停車點的路徑的前提下，容許 多列列車進入同一個閉塞區間。單向 路徑號誌無法從號誌後方穿過
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}閉塞號誌 (電氣){}當路網中有多列列車時，為了避免 發生相撞意外就必須設置號誌
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口號誌 (電氣){}當綠燈亮時，代表此號誌後有一個 以上的出口號誌呈現綠燈，否則將會 亮紅燈
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口號誌 (電氣){}與閉塞號誌類似，但它還會負責觸發 前頭的入口號誌及組合號誌
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}組合號誌 (電氣){}組合號誌同時具有入口／出口號誌的 特性，這可讓玩家設置一卡車的預告 號誌
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個 安全停車點的路徑的前提下，容許 多列列車進入同一個閉塞區間。標準 路徑號誌可以從號誌後方穿過
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}單向路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個 安全停車點的路徑的前提下，容許 多列列車進入同一個閉塞區間。單向 路徑號誌無法從號誌後方穿過
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}當選取時，點選到的現有號誌將會 轉換成面板上所選取的類型及風格； 若按住 CTRL 則只會變更風格
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞號誌 (懸臂){}當路網中有多列列車時，為了避免發生相撞意外就必須設置號誌
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口號誌 (懸臂){}當綠燈亮時，代表此號誌後有一個以上的出口號誌呈現綠燈，否則將會亮紅燈
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口號誌 (懸臂){}與閉塞號誌類似，但它還會負責觸發前頭的入口號誌及組合號誌
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}組合號誌 (懸臂){}組合號誌同時具有入口／出口號誌的特性，這可讓玩家設置一卡車的預告號誌
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}路徑號誌 (懸臂){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許 多列列車進入同一個閉塞區間。標準路徑號誌可以從號誌後方穿過
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}單向路徑號誌 (懸臂){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。單向路徑號誌無法從號誌後方穿過
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}閉塞號誌 (電氣){}當路網中有多列列車時，為了避免發生相撞意外就必須設置號誌
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口號誌 (電氣){}當綠燈亮時，代表此號誌後有一個以上的出口號誌呈現綠燈，否則將會亮紅燈
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口號誌 (電氣){}與閉塞號誌類似，但它還會負責觸發前頭的入口號誌及組合號誌
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}組合號誌 (電氣){}組合號誌同時具有入口／出口號誌的特性，這可讓玩家設置一卡車的預告號誌
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。標準路徑號誌可以從號誌後方穿過
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}單向路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。單向路徑號誌無法從號誌後方穿過
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}當選取時，點選到的現有號誌將會轉換成面板上所選取的類型及風格；若按住 CTRL 則只會變更風格
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}變更等距號誌拖曳間隔
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}減少 (拉近)
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加 (拉遠)
@@ -2295,7 +2295,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}列出�
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}設定參數
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切換色盤
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切換所選 NewGRF 的色盤。{}若是該 NewGRF 檔在遊戲中看起來是一片橘色， 您可以試試這麼做以解決問題
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切換所選 NewGRF 的色盤。{}若是該 NewGRF 檔在遊戲中看起來是一片橘色，您可以試試這麼做以解決問題
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}儲存變動
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}線上尋找遺失的內容
@@ -2354,9 +2354,9 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}缺少�
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暫停可能會讓 OpenTTD 當掉，請不要回報之後的當機情形。{}您真的要取消暫停嗎？
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」 的行為可能會造成失去同步或當機
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」的行為可能會造成失去同步或當機
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」所擁有的列車 「{0:VEHICLE}」長度無效。 這個錯誤可能是 NewGRFs 有問題所致， 遊戲可能會無法同步或當機
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」所擁有的列車「{0:VEHICLE}」長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中「{1:ENGINE}」的貨物／改裝資訊和購買後的資訊不同。 這可能會導致自動更新／取代時無法正確的改裝交通工具。
@@ -2419,13 +2419,13 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :出資建造新
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬運輸權
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}出資重建城內道路網。將對往後六個月的道路運輸造成可觀 的衝擊。{}費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}建造雕像紀念您的公司。{} 花費：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}在此市鎮內建造新的商業建築。{} 費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}購買此市鎮一年的專屬運輸權。地方政府將只讓乘客與貨物 使用您的運輸服務。{} 費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}出資重建市鎮內道路網。將對往後六個月的道路運輸造成可觀的衝擊。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}建造雕像紀念您的公司。{}花費：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}在此市鎮內建造新的商業建築。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}購買此市鎮一年的專屬運輸權。地方政府將只讓乘客與貨物使用您的運輸服務。{}費用：{CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}費用：{CURRENCY}
 
 # Subsidies window
@@ -2637,11 +2637,11 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分組的車
 STR_GROUP_DEFAULT_SHIPS                                         :未分組的船舶
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分組的飛機
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}群組 - 點選群組顯示其中的交通工具 清單
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}群組 - 點選群組顯示其中的交通工具清單
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}點選可建立群組
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}移除所選群組
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}為群組重新命名
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}點選可保護此群組排除在全域自動替 換設定之外
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}點選可保護此群組排除在全域自動替換設定之外
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共享交通工具
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有交通工具
@@ -2755,10 +2755,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}複製�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}複製船舶
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}複製飛機
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}這會購買一列相同的列車， 包含所有車廂， 按下按鈕之後再點選機廠内外的其他列車。 按住 CTRL 點選還可共享指令
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}這會購買一部相同的車輛， 按下按鈕之後再點選於車庫内或外的車輛， 按住 CTRL 點選還可共享指令
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}這會購買一艘相同的船舶， 按下按鈕之後再點選船塢内或外的船舶， 按住 CTRL 點選還可共享指令
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}這會購買一架相同的飛機， 按下此鈕之後再點選機棚内或外的飛機， 按住 CTRL 點選還可共享指令
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}這會購買一列相同的列車，包含所有車廂，按下按鈕之後再點選機廠内外的其他列車，按住 CTRL 點選還可共享指令
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}這會購買一部相同的車輛，按下按鈕之後再點選於車庫内或外的車輛，按住 CTRL 點選還可共享指令
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}這會購買一艘相同的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}這會購買一架相同的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵路機廠置於畫面中央。 按住 Ctrl 點選可於鐵路機廠位置開啟新視窗視野
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車庫置於畫面中央。 按住 Ctrl 點選可於車庫位置開啟新視窗視野
@@ -2768,7 +2768,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機�
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}取得所有命令内有這個機廠的列車
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}取得所有命令内有這個車庫的車輛
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}取得所有命令内有這個船塢的船舶
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}取得所有命令内有這個機場機棚的 飛機
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}取得所有命令内有這個機場機棚的飛機
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}點選可停止機廠内所有列車
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}點選可停止車庫内所有汽車
@@ -2842,10 +2842,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}將車�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}將船舶送往船塢，按住 CTRL 點選則只做維護
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}將飛機送到機棚，按住 CTRL 點選則只做維護
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}這會購買一列相同的列車， 包含所有車廂， 按住 CTRL 點選還可共享指令
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}這會購買一列相同的列車，包含所有車廂，按住 CTRL 點選還可共享指令
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}這會將購買一部相同的車輛，按住 CTRL 點選還可共享指令
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}這會購買一艘相同的船舶， 按住 CTRL 點選還可共享指令
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}這會購買一架相同的飛機， 按住 CTRL 點選還可共享指令
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}這會購買一艘相同的船舶，按住 CTRL 點選還可共享指令
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}這會購買一架相同的飛機，按住 CTRL 點選還可共享指令
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}強制列車前進，不等待號誌允許
 
@@ -3026,7 +3026,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :不卸載
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}變更選取指令的卸載行為
 
 STR_ORDER_REFIT                                                 :{BLACK}改裝
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}選擇這個指令要改裝的貨物種類， 按住 CTRL 點選可移除改裝指令
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}選擇這個指令要改裝的貨物種類，按住 CTRL 點選可移除改裝指令
 
 STR_ORDER_SERVICE                                               :{BLACK}維護
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :總是進行
@@ -3056,7 +3056,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}與交�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}輸入想比對的數值
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳過
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}跳過目前的命令，從下一個開始，CTRL + 左鍵 可直接跳至所選的命令
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}跳過目前的命令並從下個命令開始。 按住 Ctrl 點選可直接跳至所選的命令
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}刪除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}刪除選定指令
@@ -3065,7 +3065,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的機廠
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的機棚
 STR_ORDER_CONDITIONAL                                           :條件式跳躍指令
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在最後新增指令。按住 Ctrl 於車站時可直接設為「滿載任一種類客貨」， 於號誌站時則為「直達」， 於機廠時則為「維護」
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在最後新增指令。按住 Ctrl 於車站時可直接設為「滿載任一種類客貨」，於號誌站時則為「直達」，於機廠時則為「維護」
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}插入進階指令
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共用這份指令的交通工具
@@ -3151,10 +3151,10 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除�
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除目前選定命令所設定的時間
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}歸零誤點／慢分
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤點／慢分歸零，如此交通工具將會 準時抵達
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤點／慢分歸零，如此交通工具將會準時抵達
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間編寫時刻表 (按住 CTRL 可保持等待時間)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間排定時刻表 (按住 CTRL 可保持等待時間)
 
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}已排定時刻表
 
