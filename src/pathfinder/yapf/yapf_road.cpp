@@ -485,5 +485,5 @@ FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_dist
 	FindDepotData fdd;
 	bool ret = pfnFindNearestDepot(v, tile, trackdir, max_distance, &fdd.tile);
 	fdd.best_length = ret ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
-	return ret;
+	return fdd;
 }
