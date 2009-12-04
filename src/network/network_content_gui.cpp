@@ -110,7 +110,6 @@ public:
 					/* Yes... these are the NewGRF windows */
 					InvalidateWindowClassesData(WC_SAVELOAD);
 					InvalidateWindowData(WC_GAME_OPTIONS, 0, 1);
-					InvalidateWindowData(WC_NETWORK_WINDOW, 1, 2);
 					break;
 
 				case CONTENT_TYPE_SCENARIO:
@@ -125,6 +124,8 @@ public:
 			}
 		}
 
+		/* Always invalidate the download window; tell it we are going to be gone */
+		InvalidateWindowData(WC_NETWORK_WINDOW, 1, 2);
 		_network_content_client.RemoveCallback(this);
 	}
 
@@ -781,7 +782,8 @@ public:
 			}
 		}
 
-		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, this->filesize_sum == 0 || FindWindowById(WC_NETWORK_STATUS_WINDOW, 0) != NULL);
+		/* If data == 2 then the status window caused this OnInvalidate */
+		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, this->filesize_sum == 0 || (FindWindowById(WC_NETWORK_STATUS_WINDOW, 0) != NULL && data != 2));
 		this->SetWidgetDisabledState(NCLWW_UNSELECT, this->filesize_sum == 0);
 		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
