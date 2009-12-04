@@ -1470,8 +1470,8 @@ again:
 			if (IsDriveThroughStopTile(v->tile)) {
 				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
 
-				/* Check if next inline bay is free */
-				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile)) {
+				/* Check if next inline bay is free and has compatible road. */
+				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile) && (GetRoadTypes(next_tile) & v->compatible_roadtypes) != 0) {
 					v->frame++;
 					RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, false));
 					return true;
