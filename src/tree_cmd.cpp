@@ -457,16 +457,8 @@ static void DrawTile_Trees(TileInfo *ti)
 	/* Do not draw trees when the invisible trees setting is set */
 	if (IsInvisibilitySet(TO_TREES)) return;
 
-	uint16 tmp = ti->x;
-
-	tmp = ROR(tmp, 2);
-	tmp -= ti->y;
-	tmp = ROR(tmp, 3);
-	tmp -= ti->x;
-	tmp = ROR(tmp, 1);
-	tmp += ti->y;
-
-	uint index = GB(tmp, 6, 2) + (GetTreeType(ti->tile) << 2);
+	uint tmp = CountBits(ti->tile + ti->x + ti->y);
+	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
 
 	/* different tree styles above one of the grounds */
 	if (GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT &&
@@ -478,7 +470,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	assert(index < lengthof(_tree_layout_sprite));
 
 	const PalSpriteID *s = _tree_layout_sprite[index];
-	const TreePos *d = _tree_layout_xy[GB(tmp, 4, 2)];
+	const TreePos *d = _tree_layout_xy[GB(tmp, 2, 2)];
 
 	/* combine trees into one sprite object */
 	StartSpriteCombine();
