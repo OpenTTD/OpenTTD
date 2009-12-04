@@ -784,75 +784,71 @@ static void FloodVehicles(TileIndex tile)
 
 static void FloodVehicle(Vehicle *v)
 {
-	if (!(v->vehstatus & VS_CRASHED)) {
-		uint16 pass = 0;
+	if ((v->vehstatus & VS_CRASHED) != 0) return;
+	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_AIRCRAFT) return;
 
-		if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_AIRCRAFT) {
-			if (v->type == VEH_AIRCRAFT) {
-				/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
-				 * because that's always the shadow. Except for the heliport, because
-				 * that station has a big z_offset for the aircraft. */
-				if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
-				const Station *st = Station::GetByTile(v->tile);
-				const AirportFTAClass *airport = st->Airport();
+	if (v->type == VEH_AIRCRAFT) {
+		/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
+			* because that's always the shadow. Except for the heliport, because
+			* that station has a big z_offset for the aircraft. */
+		if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
+		const Station *st = Station::GetByTile(v->tile);
+		const AirportFTAClass *airport = st->Airport();
 
-				if (v->z_pos != airport->delta_z + 1) return;
+		if (v->z_pos != airport->delta_z + 1) return;
+	} else {
+		v = v->First();
+	}
+
+	uint pass = 0;
+	/* crash all wagons, and count passengers */
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
+		if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
+		u->vehstatus |= VS_CRASHED;
+		MarkSingleVehicleDirty(u);
+	}
+
+	switch (v->type) {
+		default: NOT_REACHED();
+		case VEH_TRAIN: {
+			Train *t = Train::From(v);
+			if (t->IsFrontEngine()) {
+				pass += 4; // driver
+				/* FreeTrainTrackReservation() calls GetVehicleTrackdir() that doesn't like crashed vehicles.
+					* In this case, v->direction matches v->u.rail.track, so we can do this (it wasn't crashed before) */
+				t->vehstatus &= ~VS_CRASHED;
+				if (!HasBit(t->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(t);
+				t->vehstatus |= VS_CRASHED;
 			}
-
-			if (v->type != VEH_AIRCRAFT) v = v->First();
-
-			/* crash all wagons, and count passengers */
-			for (Vehicle *u = v; u != NULL; u = u->Next()) {
-				if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
-				u->vehstatus |= VS_CRASHED;
-				MarkSingleVehicleDirty(u);
-			}
-
-			switch (v->type) {
-				default: NOT_REACHED();
-				case VEH_TRAIN: {
-					Train *t = Train::From(v);
-					if (t->IsFrontEngine()) {
-						pass += 4; // driver
-						/* FreeTrainTrackReservation() calls GetVehicleTrackdir() that doesn't like crashed vehicles.
-						 * In this case, v->direction matches v->u.rail.track, so we can do this (it wasn't crashed before) */
-						t->vehstatus &= ~VS_CRASHED;
-						if (!HasBit(t->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(t);
-						t->vehstatus |= VS_CRASHED;
-					}
-					t->crash_anim_pos = 4000; // max 4440, disappear pretty fast
-					InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-					break;
-				}
-
-				case VEH_ROAD: {
-					RoadVehicle *rv = RoadVehicle::From(v);
-					if (rv->IsRoadVehFront()) pass += 1; // driver
-					rv->crashed_ctr = 2000; // max 2220, disappear pretty fast
-					InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-				} break;
-
-				case VEH_AIRCRAFT:
-					pass += 2; // driver
-					Aircraft::From(v)->crashed_counter = 9000; // max 10000, disappear pretty fast
-					InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
-					break;
-			}
-		} else {
-			return;
+			t->crash_anim_pos = 4000; // max 4440, disappear pretty fast
+			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
+			break;
 		}
 
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+		case VEH_ROAD: {
+			RoadVehicle *rv = RoadVehicle::From(v);
+			if (rv->IsRoadVehFront()) pass += 1; // driver
+			rv->crashed_ctr = 2000; // max 2220, disappear pretty fast
+			InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
+		} break;
 
-		AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
-		SetDParam(0, pass);
-		AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE,
-			NS_ACCIDENT,
-			v->index);
-		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
-		SndPlayVehicleFx(SND_12_EXPLOSION, v);
+		case VEH_AIRCRAFT:
+			pass += 2; // driver
+			Aircraft::From(v)->crashed_counter = 9000; // max 10000, disappear pretty fast
+			InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
+			break;
 	}
+
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
+	SetDParam(0, pass);
+	AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE,
+		NS_ACCIDENT,
+		v->index);
+	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
+	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 /**
