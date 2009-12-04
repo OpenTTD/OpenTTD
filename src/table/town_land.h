@@ -1814,19 +1814,19 @@ assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 /** House specifications from original data */
 static const HouseSpec _original_house_specs[] = {
 	/**
-	 *                                                              remove_rating_decrease
-	 *                                                               |    mail_generation
-	 *     min_year                                                  |    |    1st CargoID acceptance
-	 *     |         max_year                                        |    |    |    2nd CargoID acceptance
-	 *     |         |    population                                 |    |    |    |    3th CargoID acceptance
-	 *     |         |    |    removal_cost                          |    |    |    |    |
-	 *     |         |    |    |    building_name                    |    |    |    |    |
-	 *     |         |    |    |    |                                |    |    |    |    |
-	 *     |         |    |    |    |                                |    |    |    |    |
-	 * +-building_flags   |    |    |                                |    |    |    |    |
-	 * +-building_availability |    |                                |    |    |    |    |
-	 * +-cargoID accepted |    |    |                                |    |    |    |    |
-	 * |   |         |    |    |    |                                |    |    |    |    | */
+	 *                                                                              remove_rating_decrease
+	 *                                                                              |    mail_generation
+	 *     min_year                                                                 |    |    1st CargoID acceptance
+	 *     |         max_year                                                       |    |    |    2nd CargoID acceptance
+	 *     |         |    population                                                |    |    |    |    3th CargoID acceptance
+	 *     |         |    |    removal_cost                                         |    |    |    |    |
+	 *     |         |    |    |    building_name                                   |    |    |    |    |
+	 *     |         |    |    |    |                                               |    |    |    |    |
+	 *     |         |    |    |    |                                               |    |    |    |    |
+	 * +-building_flags   |    |    |                                               |    |    |    |    |
+	 * +-building_availability |    |                                               |    |    |    |    |
+	 * +-cargoID accepted |    |    |                                               |    |    |    |    |
+	 * |   |         |    |    |    |                                               |    |    |    |    | */
 	MS(1963, MAX_YEAR, 187, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  70,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
