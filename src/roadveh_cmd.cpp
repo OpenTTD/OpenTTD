@@ -537,21 +537,17 @@ static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 			v : NULL;
 }
 
+uint RoadVehicle::Crash(bool flooded)
+{
+	uint pass = Vehicle::Crash(flooded);
+	if (this->IsRoadVehFront()) pass += 1; // driver
+	this->crashed_ctr = flooded ? 2000 : 1; // max 2220, disappear pretty fast when flooded
+	return pass;
+}
+
 static void RoadVehCrash(RoadVehicle *v)
 {
-	uint16 pass = 1;
-
-	v->crashed_ctr++;
-
-	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
-
-		u->vehstatus |= VS_CRASHED;
-
-		MarkSingleVehicleDirty(u);
-	}
-
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	uint pass = v->Crash();
 
 	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
 

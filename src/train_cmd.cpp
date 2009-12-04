@@ -3188,56 +3188,34 @@ void Train::ReserveTrackUnderConsist() const
 	}
 }
 
-static void SetVehicleCrashed(Train *v)
+uint Train::Crash(bool flooded)
 {
-	if (v->crash_anim_pos != 0) return;
+	uint pass = 0;
+	if (this->IsFrontEngine()) {
+		pass += 4; // driver
 
-	if (v->IsFrontEngine()) {
 		/* Remove the reserved path in front of the train if it is not stuck.
 		 * Also clear all reserved tracks the train is currently on. */
-		if (!HasBit(v->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(v);
-		for (const Train *u = v; u != NULL; u = u->Next()) {
-			ClearPathReservation(u, u->tile, u->GetVehicleTrackdir());
-			if (IsTileType(u->tile, MP_TUNNELBRIDGE)) {
+		if (!HasBit(this->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(this);
+		for (const Train *v = this; v != NULL; v = v->Next()) {
+			ClearPathReservation(v, v->tile, v->GetVehicleTrackdir());
+			if (IsTileType(v->tile, MP_TUNNELBRIDGE)) {
 				/* ClearPathReservation will not free the wormhole exit
 				 * if the train has just entered the wormhole. */
-				SetTunnelBridgeReservation(GetOtherTunnelBridgeEnd(u->tile), false);
+				SetTunnelBridgeReservation(GetOtherTunnelBridgeEnd(v->tile), false);
 			}
 		}
+
+		/* we may need to update crossing we were approaching,
+		* but must be updated after the train has been marked crashed */
+		TileIndex crossing = TrainApproachingCrossingTile(this);
+		if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
 	}
 
-	/* we may need to update crossing we were approaching */
-	TileIndex crossing = TrainApproachingCrossingTile(v);
+	pass += Vehicle::Crash(flooded);
 
-	v->crash_anim_pos++;
-
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-
-	if (v->track == TRACK_BIT_DEPOT) {
-		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-	}
-
-	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-
-	for (; v != NULL; v = v->Next()) {
-		v->vehstatus |= VS_CRASHED;
-		MarkSingleVehicleDirty(v);
-	}
-
-	/* must be updated after the train has been marked crashed */
-	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
-}
-
-static uint CountPassengersInTrain(const Train *v)
-{
-	uint num = 0;
-
-	for (; v != NULL; v = v->Next()) {
-		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) num += v->cargo.Count();
-	}
-
-	return num;
+	this->crash_anim_pos = flooded ? 4000 : 1; // max 4440, disappear pretty fast when flooded
+	return pass;
 }
 
 /**
@@ -3252,10 +3230,7 @@ static uint TrainCrashed(Train *v)
 
 	/* do not crash train twice */
 	if (!(v->vehstatus & VS_CRASHED)) {
-		/* two drivers + passengers */
-		num = 2 + CountPassengersInTrain(v);
-
-		SetVehicleCrashed(v);
+		num = v->Crash();
 		AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_TRAIN));
 	}
 

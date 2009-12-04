@@ -102,6 +102,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	bool Tick();
 	void OnNewDay();
+	uint Crash(bool flooded = false);
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 

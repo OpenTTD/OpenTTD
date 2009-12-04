@@ -324,6 +324,13 @@ public:
 	virtual void OnNewDay() {};
 
 	/**
+	 * Crash the (whole) vehicle chain.
+	 * @param flooded whether the cause of the crash is flooding or not.
+	 * @return the number of lost souls.
+	 */
+	virtual uint Crash(bool flooded = false);
+
+	/**
 	 * Update vehicle sprite- and position caches
 	 * @param moved Was the vehicle moved?
 	 * @param turned Did the vehicle direction change?

@@ -340,18 +340,13 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		if (z <= u->z_pos && (u->vehstatus & VS_HIDDEN) == 0) {
 			v->age++;
 			if (u->crashed_ctr == 0) {
-				u->crashed_ctr++;
+				u->Crash();
 
 				AddVehicleNewsItem(STR_NEWS_DISASTER_SMALL_UFO,
 					NS_ACCIDENT,
 					u->index); // delete the news, when the roadvehicle is gone
 
 				AI::NewEvent(u->owner, new AIEventVehicleCrashed(u->index, u->tile, AIEventVehicleCrashed::CRASH_RV_UFO));
-
-				for (Vehicle *w = u; w != NULL; w = w->Next()) {
-					w->vehstatus |= VS_CRASHED;
-					MarkSingleVehicleDirty(w);
-				}
 			}
 		}
 

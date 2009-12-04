@@ -789,8 +789,8 @@ static void FloodVehicle(Vehicle *v)
 
 	if (v->type == VEH_AIRCRAFT) {
 		/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
-			* because that's always the shadow. Except for the heliport, because
-			* that station has a big z_offset for the aircraft. */
+		 * because that's always the shadow. Except for the heliport, because
+		 * that station has a big z_offset for the aircraft. */
 		if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
 		const Station *st = Station::GetByTile(v->tile);
 		const AirportFTAClass *airport = st->Airport();
@@ -800,47 +800,7 @@ static void FloodVehicle(Vehicle *v)
 		v = v->First();
 	}
 
-	uint pass = 0;
-	/* crash all wagons, and count passengers */
-	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
-		u->vehstatus |= VS_CRASHED;
-		MarkSingleVehicleDirty(u);
-	}
-
-	switch (v->type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN: {
-			Train *t = Train::From(v);
-			if (t->IsFrontEngine()) {
-				pass += 4; // driver
-				/* FreeTrainTrackReservation() calls GetVehicleTrackdir() that doesn't like crashed vehicles.
-					* In this case, v->direction matches v->u.rail.track, so we can do this (it wasn't crashed before) */
-				t->vehstatus &= ~VS_CRASHED;
-				if (!HasBit(t->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(t);
-				t->vehstatus |= VS_CRASHED;
-			}
-			t->crash_anim_pos = 4000; // max 4440, disappear pretty fast
-			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-			break;
-		}
-
-		case VEH_ROAD: {
-			RoadVehicle *rv = RoadVehicle::From(v);
-			if (rv->IsRoadVehFront()) pass += 1; // driver
-			rv->crashed_ctr = 2000; // max 2220, disappear pretty fast
-			InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-		} break;
-
-		case VEH_AIRCRAFT:
-			pass += 2; // driver
-			Aircraft::From(v)->crashed_counter = 9000; // max 10000, disappear pretty fast
-			InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
-			break;
-	}
-
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+	uint pass = v->Crash(true);
 
 	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
 	SetDParam(0, pass);

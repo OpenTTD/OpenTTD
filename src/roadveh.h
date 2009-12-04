@@ -125,6 +125,7 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	bool IsStoppedInDepot() const;
 	bool Tick();
 	void OnNewDay();
+	uint Crash(bool flooded = false);
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);

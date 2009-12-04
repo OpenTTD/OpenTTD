@@ -112,6 +112,29 @@ bool Vehicle::NeedsAutomaticServicing() const
 	return NeedsServicing();
 }
 
+uint Vehicle::Crash(bool flooded)
+{
+	assert((this->vehstatus & VS_CRASHED) == 0);
+	assert(this->Previous() == NULL); // IsPrimaryVehicle fails for free-wagon-chains
+
+	uint pass = 0;
+	/* crash all wagons, and count passengers */
+	for (Vehicle *v = this; v != NULL; v = v->Next()) {
+		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.Count();
+		v->vehstatus |= VS_CRASHED;
+		MarkSingleVehicleDirty(v);
+	}
+
+	/* Dirty some windows */
+	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+	SetWindowDirty(WC_VEHICLE_DEPOT, this->tile);
+
+	return pass;
+}
+
+
 /**
  * Displays a "NewGrf Bug" error message for a engine, and pauses the game if not networking.
  * @param engine The engine that caused the problem

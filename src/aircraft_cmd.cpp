@@ -1238,19 +1238,21 @@ void Aircraft::MarkDirty()
 	if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
 }
 
+
+uint Aircraft::Crash(bool flooded)
+{
+	uint pass = Vehicle::Crash(flooded) + 2; // pilots
+	this->crashed_counter = flooded ? 9000 : 0; // max 10000, disappear pretty fast when flooded
+
+	return pass;
+}
+
 static void CrashAirplane(Aircraft *v)
 {
-	v->vehstatus |= VS_CRASHED;
-	v->crashed_counter = 0;
-
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 
-	v->MarkDirty();
-	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-
-	uint amt = 2;
-	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) amt += v->cargo.Count();
-	SetDParam(0, amt);
+	uint pass = v->Crash();
+	SetDParam(0, pass);
 
 	v->cargo.Truncate(0);
 	v->Next()->cargo.Truncate(0);
