@@ -263,7 +263,7 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	AMD(  197,   24, AMED_NOSPDCLAMP | AMED_TAKEOFF,  DIR_N ), // 35 Take off
 	AMD(  254,   84, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 36 Flying to landing position in air
 	AMD(  117,  168, AMED_NOSPDCLAMP | AMED_LAND,     DIR_N ), // 37 Going down for land
-	AMD(    3,  168, AMED_NOSPDCLAMP | AMED_BRAKE,    DIR_N ), // 38 Just landed, brake until end of runway
+	AMD(    8,  168, AMED_NOSPDCLAMP | AMED_BRAKE,    DIR_N ), // 38 Just landed, brake until end of runway
 	AMD(    8,  168, 0,                               DIR_N ), // 39 Just landed, turn around and taxi
 	AMD(    8,  144, 0,                               DIR_NW), // 40 Taxi from runway
 	AMD(    8,  128, 0,                               DIR_NW), // 41 Taxi from runway
