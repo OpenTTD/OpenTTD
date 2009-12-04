@@ -351,10 +351,21 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 
 		case MP_STATION: {
 			cost = NPF_TILE_LENGTH;
-			/* Increase the cost for drive-through road stops */
-			if (IsDriveThroughStopTile(tile)) cost += _settings_game.pf.npf.npf_road_drive_through_penalty;
-			RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
-			cost += 8 * NPF_TILE_LENGTH * ((!rs->IsFreeBay(0)) + (!rs->IsFreeBay(1)));
+			const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
+			if (IsDriveThroughStopTile(tile)) {
+				/* Increase the cost for drive-through road stops */
+				cost += _settings_game.pf.npf.npf_road_drive_through_penalty;
+				DiagDirection dir = TrackdirToExitdir(current->direction);
+				if (!RoadStop::IsDriveThroughRoadStopContinuation(tile, tile - TileOffsByDiagDir(dir))) {
+					/* When we're the first road stop in a 'queue' of them we increase
+					 * cost based on the fill percentage of the whole queue. */
+					const RoadStop::Entry *entry = rs->GetEntry(dir);
+					cost += entry->GetOccupied() * _settings_game.pf.npf.npf_road_dt_occupied_penalty / entry->GetLength();
+				}
+			} else {
+				/* Increase cost for filled road stops */
+				cost += _settings_game.pf.npf.npf_road_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
+			}
 		} break;
 
 		default:

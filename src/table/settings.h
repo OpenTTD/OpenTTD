@@ -473,6 +473,8 @@ const SettingDesc _settings[] = {
 	     SDT_VAR(GameSettings, pf.npf.npf_road_curve_penalty,                  SLE_UINT,                     0, 0, 1,                         0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_crossing_penalty,                    SLE_UINT,                     0, 0, (  3 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.npf.npf_road_drive_through_penalty,          SLE_UINT, 47, SL_MAX_VERSION, 0, 0, (  8 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.npf.npf_road_dt_occupied_penalty,            SLE_UINT,130, SL_MAX_VERSION, 0, 0, (  8 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.npf.npf_road_bay_occupied_penalty,           SLE_UINT,130, SL_MAX_VERSION, 0, 0, ( 15 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 
 
 	SDT_CONDBOOL(GameSettings, pf.yapf.disable_node_optimization,                        28, SL_MAX_VERSION, 0, 0, false,                                    STR_NULL,         NULL),
@@ -504,6 +506,8 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, pf.yapf.road_curve_penalty,                     SLE_UINT, 33, SL_MAX_VERSION, 0, 0,     1 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.road_crossing_penalty,                  SLE_UINT, 33, SL_MAX_VERSION, 0, 0,     3 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.road_stop_penalty,                      SLE_UINT, 47, SL_MAX_VERSION, 0, 0,     8 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.yapf.road_stop_occupied_penalty,             SLE_UINT,130, SL_MAX_VERSION, 0, 0,     8 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.yapf.road_stop_bay_occupied_penalty,         SLE_UINT,130, SL_MAX_VERSION, 0, 0,    15 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 
 	 SDT_CONDVAR(GameSettings, game_creation.land_generator,                  SLE_UINT8, 30, SL_MAX_VERSION, 0,MS,     1,                     0,       1, 0, STR_CONFIG_SETTING_LAND_GENERATOR,        NULL),
 	 SDT_CONDVAR(GameSettings, game_creation.oil_refinery_limit,              SLE_UINT8, 30, SL_MAX_VERSION, 0, 0,    32,                    12,      48, 0, STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE, NULL),

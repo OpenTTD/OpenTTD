@@ -1096,6 +1096,16 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 	} else {
+		/* Temporary strict checking of the road stop cache entries */
+		const RoadStop *rs;
+		FOR_ALL_ROADSTOPS(rs) {
+			if (IsStandardRoadStopTile(rs->xy)) continue;
+
+			assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
+			rs->GetEntry(DIAGDIR_NE)->CheckIntegrity(rs);
+			rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
+		}
+
 		if (_debug_desync_level > 1) {
 			Vehicle *v;
 			FOR_ALL_VEHICLES(v) {

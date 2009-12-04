@@ -223,6 +223,8 @@ struct NPFSettings {
 	uint32 npf_road_curve_penalty;           ///< the penalty for curves
 	uint32 npf_crossing_penalty;             ///< the penalty for level crossings
 	uint32 npf_road_drive_through_penalty;   ///< the penalty for going through a drive-through road stop
+	uint32 npf_road_dt_occupied_penalty;     ///< the penalty multiplied by the fill percentage of a drive-through road stop
+	uint32 npf_road_bay_occupied_penalty;    ///< the penalty multiplied by the fill percentage of a road bay
 };
 
 /** Settings related to the yet another pathfinder. */
@@ -236,6 +238,8 @@ struct YAPFSettings {
 	uint32 road_curve_penalty;               ///< penalty for curves
 	uint32 road_crossing_penalty;            ///< penalty for level crossing
 	uint32 road_stop_penalty;                ///< penalty for going through a drive-through road stop
+	uint32 road_stop_occupied_penalty;       ///< penalty multiplied by the fill percentage of a drive-through road stop
+	uint32 road_stop_bay_occupied_penalty;   ///< penalty multiplied by the fill percentage of a road bay
 	bool   rail_firstred_twoway_eol;         ///< treat first red two-way signal as dead end
 	uint32 rail_firstred_penalty;            ///< penalty for first red signal
 	uint32 rail_firstred_exit_penalty;       ///< penalty for first red exit signal

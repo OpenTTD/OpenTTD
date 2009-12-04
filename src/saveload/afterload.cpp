@@ -1360,7 +1360,7 @@ bool AfterLoadGame()
 		RoadVehicle *rv;
 		FOR_ALL_ROADVEHICLES(rv) {
 			if (rv->state == 250 || rv->state == 251) {
-				SetBit(rv->state, RVS_IS_STOPPING);
+				SetBit(rv->state, 2);
 			}
 		}
 	}
@@ -1959,6 +1959,8 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Road stops is 'only' updating some caches */
+	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
 
 	GamelogPrintDebug(1);

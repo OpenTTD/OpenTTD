@@ -1638,6 +1638,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		RoadStopType rs_type = type ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 		if (is_drive_through) {
 			MakeDriveThroughRoadStop(tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts, (Axis)p1);
+			road_stop->MakeDriveThrough();
 		} else {
 			MakeRoadStop(tile, st->owner, st->index, rs_type, rts, (DiagDirection)p1);
 		}
@@ -1721,6 +1722,13 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 			pred->next = cur_stop->next;
 		}
 
+		if (IsDriveThroughStopTile(tile)) {
+			/* Clears the tile for us */
+			cur_stop->ClearDriveThrough();
+		} else {
+			DoClearSquare(tile);
+		}
+
 		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
 		delete cur_stop;
 
@@ -1733,7 +1741,6 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 			}
 		}
 
-		DoClearSquare(tile);
 		st->rect.AfterRemoveTile(st, tile);
 
 		st->UpdateVirtCoord();

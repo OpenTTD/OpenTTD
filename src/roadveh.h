@@ -39,7 +39,6 @@ enum RoadVehicleStates {
 
 	/* Bit numbers */
 	RVS_USING_SECOND_BAY         =    1,                      ///< Only used while in a road stop
-	RVS_IS_STOPPING              =    2,                      ///< Only used for drive-through stops. Vehicle will stop here
 	RVS_DRIVE_SIDE               =    4,                      ///< Only used when retrieving move data
 	RVS_IN_ROAD_STOP             =    5,                      ///< The vehicle is in a road stop
 	RVS_IN_DT_ROAD_STOP          =    6,                      ///< The vehicle is in a drive-through road stop
@@ -70,7 +69,7 @@ enum {
 	RVC_START_FRAME_AFTER_LONG_TRAM        = 21,
 	RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16,
 	/* Stop frame for a vehicle in a drive-through stop */
-	RVC_DRIVE_THROUGH_STOP_FRAME           =  7,
+	RVC_DRIVE_THROUGH_STOP_FRAME           = 11,
 	RVC_DEPOT_STOP_FRAME                   = 11,
 };
 

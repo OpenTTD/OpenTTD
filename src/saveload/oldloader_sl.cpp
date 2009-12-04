@@ -190,7 +190,7 @@ void FixOldVehicles()
 		if (v->type == VEH_ROAD) {
 			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->state != RVSB_IN_DEPOT && rv->state != RVSB_WORMHOLE) {
-				ClrBit(rv->state, RVS_IS_STOPPING);
+				ClrBit(rv->state, 2);
 			}
 		}
 

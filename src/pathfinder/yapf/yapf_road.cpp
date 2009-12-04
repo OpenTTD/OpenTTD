@@ -66,9 +66,21 @@ protected:
 					break;
 
 				case MP_STATION: {
-					if (IsDriveThroughStopTile(tile)) cost += Yapf().PfGetSettings().road_stop_penalty;
-					RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
-					cost += 8 * YAPF_TILE_LENGTH * ((!rs->IsFreeBay(0)) + (!rs->IsFreeBay(1)));
+					const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
+					if (IsDriveThroughStopTile(tile)) {
+						/* Increase the cost for drive-through road stops */
+						cost += Yapf().PfGetSettings().road_stop_penalty;
+						DiagDirection dir = TrackdirToExitdir(trackdir);
+						if (!RoadStop::IsDriveThroughRoadStopContinuation(tile, tile - TileOffsByDiagDir(dir))) {
+							/* When we're the first road stop in a 'queue' of them we increase
+							 * cost based on the fill percentage of the whole queue. */
+							const RoadStop::Entry *entry = rs->GetEntry(dir);
+							cost += entry->GetOccupied() * Yapf().PfGetSettings().road_stop_occupied_penalty / entry->GetLength();
+						}
+					} else {
+						/* Increase cost for filled road stops */
+						cost += Yapf().PfGetSettings().road_stop_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
+					}
 				} break;
 
 				default:

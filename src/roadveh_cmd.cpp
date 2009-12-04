@@ -463,18 +463,14 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
 	this->z_extent      = 6;
 }
 
-static void ClearCrashedStation(RoadVehicle *v)
-{
-	RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
-}
-
 static void DeleteLastRoadVeh(RoadVehicle *v)
 {
 	Vehicle *u = v;
 	for (; v->Next() != NULL; v = v->Next()) u = v;
 	u->SetNext(NULL);
 
-	if (IsTileType(v->tile, MP_STATION)) ClearCrashedStation(v);
+	/* Only leave the road stop when we're really gone. */
+	if (IsInsideMM(v->state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 
 	delete v;
 }
@@ -540,7 +536,14 @@ static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 uint RoadVehicle::Crash(bool flooded)
 {
 	uint pass = Vehicle::Crash(flooded);
-	if (this->IsRoadVehFront()) pass += 1; // driver
+	if (this->IsRoadVehFront()) {
+		pass += 1; // driver
+
+		/* If we're in a drive through road stop we ought to leave it */
+		if (IsInsideMM(this->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END)) {
+			RoadStop::GetByTile(this->tile, GetRoadStopType(this->tile))->Leave(this);
+		}
+	}
 	this->crashed_ctr = flooded ? 2000 : 1; // max 2220, disappear pretty fast when flooded
 	return pass;
 }
@@ -1413,6 +1416,17 @@ again:
 			/* There is a vehicle in front overtake it if possible */
 			if (v->overtaking == 0) RoadVehCheckOvertake(v, u);
 			if (v->overtaking == 0) v->cur_speed = u->cur_speed;
+
+			/* In case an RV is stopped in a road stop, why not try to load? */
+			if (v->cur_speed == 0 && IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
+					v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
+					v->owner == GetTileOwner(v->tile) && !v->current_order.IsType(OT_LEAVESTATION) &&
+					GetRoadStopType(v->tile) == (v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK)) {
+				Station *st = Station::GetByTile(v->tile);
+				v->last_station_visited = st->index;
+				RoadVehArrivesAt(v, st);
+				v->BeginLoading();
+			}
 			return false;
 		}
 	}
@@ -1455,20 +1469,12 @@ again:
 
 			if (IsDriveThroughStopTile(v->tile)) {
 				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
-				RoadStopType type = v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK;
 
 				/* Check if next inline bay is free */
-				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
-					RoadStop *rs_n = RoadStop::GetByTile(next_tile, type);
-
-					if (rs_n->IsFreeBay(HasBit(v->state, RVS_USING_SECOND_BAY))) {
-						/* Bay in next stop along is free - use it */
-						v->dest_tile = rs_n->xy;
-
-						v->frame++;
-						RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, false));
-						return true;
-					}
+				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile)) {
+					v->frame++;
+					RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, false));
+					return true;
 				}
 			}
 

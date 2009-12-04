@@ -15,6 +15,7 @@
 #include "../roadstop_base.h"
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
+#include "../station_map.h"
 
 #include "saveload.h"
 #include "table/strings.h"
@@ -105,6 +106,25 @@ void AfterLoadStations()
 		}
 
 		StationUpdateAnimTriggers(st);
+	}
+}
+
+/**
+ * (Re)building of road stop caches after loading a savegame.
+ */
+void AfterLoadRoadStops()
+{
+	/* First construct the drive through entries */
+	RoadStop *rs;
+	FOR_ALL_ROADSTOPS(rs) {
+		if (IsDriveThroughStopTile(rs->xy)) rs->MakeDriveThrough();
+	}
+	/* And then rebuild the data in those entries */
+	FOR_ALL_ROADSTOPS(rs) {
+		if (!HasBit(rs->status, RoadStop::RSSFB_BASE_ENTRY)) continue;
+
+		rs->GetEntry(DIAGDIR_NE)->Rebuild(rs);
+		rs->GetEntry(DIAGDIR_NW)->Rebuild(rs);
 	}
 }
 
