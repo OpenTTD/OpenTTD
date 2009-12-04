@@ -71,18 +71,6 @@ bool IsHangar(TileIndex t)
 	return false;
 }
 
-static uint GetNumRoadStopsInStation(const Station *st, RoadStopType type)
-{
-	uint num = 0;
-
-	assert(st != NULL);
-	for (const RoadStop *rs = st->GetPrimaryRoadStop(type); rs != NULL; rs = rs->next) {
-		num++;
-	}
-
-	return num;
-}
-
 /**
  * Look for a station around the given tile area.
  * @param ta the area to search over
@@ -1588,11 +1576,6 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	/* give us a road stop in the list, and check if something went wrong */
 	if (!RoadStop::CanAllocateItem()) return_cmd_error(type ? STR_ERROR_TOO_MANY_TRUCK_STOPS : STR_ERROR_TOO_MANY_BUS_STOPS);
-
-	if (st != NULL &&
-			GetNumRoadStopsInStation(st, ROADSTOP_BUS) + GetNumRoadStopsInStation(st, ROADSTOP_TRUCK) >= RoadStop::LIMIT) {
-		return_cmd_error(type ? STR_ERROR_TOO_MANY_TRUCK_STOPS : STR_ERROR_TOO_MANY_BUS_STOPS);
-	}
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {

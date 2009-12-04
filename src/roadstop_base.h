@@ -65,11 +65,9 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		void Rebuild(const RoadStop *rs, int side = -1);
 	};
 
-	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
-
-	TileIndex        xy;                    ///< Position on the map
-	byte             status;                ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
-	struct RoadStop  *next;                 ///< Next stop of the given type at this station
+	TileIndex       xy;     ///< Position on the map
+	byte            status; ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
+	struct RoadStop *next;  ///< Next stop of the given type at this station
 
 	/** Initializes a RoadStop */
 	FORCEINLINE RoadStop(TileIndex tile = INVALID_TILE) :
