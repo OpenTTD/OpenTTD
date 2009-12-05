@@ -113,6 +113,8 @@ struct CargoSpec {
 		return &CargoSpec::array[index];
 	}
 
+	SpriteID GetCargoIcon() const;
+
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
 
@@ -123,8 +125,6 @@ extern uint32 _cargo_mask;
 
 /* Set up the default cargo types for the given landscape type */
 void SetupCargoForClimate(LandscapeID l);
-/* Get the cargo icon for a given cargo ID */
-SpriteID GetCargoSprite(CargoID i);
 /* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);

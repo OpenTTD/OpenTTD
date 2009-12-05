@@ -25,7 +25,6 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "widgets/dropdown_func.h"
-#include "newgrf_cargo.h"
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "tilehighlight_func.h"
@@ -751,23 +750,6 @@ static const NWidgetPart _nested_station_view_widgets[] = {
 	EndContainer(),
 };
 
-SpriteID GetCargoSprite(CargoID i)
-{
-	const CargoSpec *cs = CargoSpec::Get(i);
-	SpriteID sprite;
-
-	if (cs->sprite == 0xFFFF) {
-		/* A value of 0xFFFF indicates we should draw a custom icon */
-		sprite = GetCustomCargoSprite(cs);
-	} else {
-		sprite = cs->sprite;
-	}
-
-	if (sprite == 0) sprite = SPR_CARGO_GOODS;
-
-	return sprite;
-}
-
 /**
  * Draws icons of waiting cargo in the StationView window
  *
@@ -783,7 +765,7 @@ static void DrawCargoIcons(CargoID i, uint waiting, int left, int right, int y)
 	uint num = min((waiting + 5) / 10, (right - left) / 10); // maximum is width / 10 icons so it won't overflow
 	if (num == 0) return;
 
-	SpriteID sprite = GetCargoSprite(i);
+	SpriteID sprite = CargoSpec::Get(i)->GetCargoIcon();
 
 	int x = _dynlang.text_dir == TD_RTL ? right - num * 10 : left;
 	do {

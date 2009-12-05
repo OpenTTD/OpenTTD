@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "cargotype.h"
 #include "core/bitmath_func.hpp"
+#include "newgrf_cargo.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -87,5 +88,21 @@ CargoID GetCargoIDByBitnum(uint8 bitnum)
 
 	/* No matching label was found, so it is invalid */
 	return CT_INVALID;
+}
+
+/** Get sprite for showing cargo of this type.
+ * @return Sprite number to use.
+ */
+SpriteID CargoSpec::GetCargoIcon() const
+{
+	SpriteID sprite = this->sprite;
+	if (sprite == 0xFFFF) {
+		/* A value of 0xFFFF indicates we should draw a custom icon */
+		sprite = GetCustomCargoSprite(this);
+	}
+
+	if (sprite == 0) sprite = SPR_CARGO_GOODS;
+
+	return sprite;
 }
 
