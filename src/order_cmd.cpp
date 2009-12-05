@@ -553,10 +553,12 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				default: return CMD_ERROR;
 
 				case VEH_TRAIN:
+					if (!(wp->facilities & FACIL_TRAIN)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
 					if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 					break;
 
 				case VEH_SHIP:
+					if (!(wp->facilities & FACIL_DOCK)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
 					if (!CheckOwnership(wp->owner) && wp->owner != OWNER_NONE) return CMD_ERROR;
 					break;
 			}
