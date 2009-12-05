@@ -9,8 +9,10 @@
 
 /** @file cargo_const.h Table of all default cargo types */
 
+/** Construction macro for a #CargoSpec structure. */
 #define MK(bt, label, c, e, f, g, h, fr, te, ks1, ks2, ks3, ks4, ks5, l, m) \
 		{bt, label, c, c, e, f, {g, h}, fr, te, 0, 0, ks1, ks2, ks3, ks4, ks5, l, m, NULL, NULL, 0}
+/** Cargo types available by default. */
 static const CargoSpec _default_cargo[] = {
 	MK(  0, 'PASS', 152,  1, 3185,  0,  24, false, TE_PASSENGERS,
 		STR_CARGO_PLURAL_PASSENGERS,     STR_CARGO_SINGULAR_PASSENGER,      STR_PASSENGERS, STR_QUANTITY_PASSENGERS,   STR_ABBREV_PASSENGERS,
@@ -161,7 +163,7 @@ static const CargoSpec _default_cargo[] = {
 };
 
 
-/* Table of which cargo types are available in each climate, by default */
+/** Table of cargo types available in each climate, by default */
 static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][12] = {
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'GRAI', 'WOOD', 'IORE', 'STEL', 'VALU',     33, },
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'WHEA', 'WOOD',     34, 'PAPR', 'GOLD', 'FOOD', },

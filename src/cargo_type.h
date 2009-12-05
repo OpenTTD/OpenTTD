@@ -14,6 +14,11 @@
 
 #include "core/enum_type.hpp"
 
+/**
+ * Cargo slots to indicate a cargo type within a game.
+ * Numbers are re-used between different climates.
+ * @see CargoTypes
+ */
 typedef byte CargoID;
 
 /** Available types of cargo */
@@ -58,33 +63,41 @@ enum CargoTypes {
 	CT_PLASTIC      = 10,
 	CT_FIZZY_DRINKS = 11,
 
-	NUM_CARGO       = 32,
+	NUM_CARGO       = 32,   ///< Maximal number of cargo types in a game.
 
-	CT_NO_REFIT     = 0xFE,
-	CT_INVALID      = 0xFF
+	CT_NO_REFIT     = 0xFE, ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-new).
+	CT_INVALID      = 0xFF, ///< Invalid cargo type.
 };
 
 /** Class for storing amounts of cargo */
 struct CargoArray {
 private:
-	uint amount[NUM_CARGO];
+	uint amount[NUM_CARGO]; ///< Amount of each type of cargo.
 
 public:
+	/** Default constructor. */
 	FORCEINLINE CargoArray()
 	{
 		this->Clear();
 	}
 
+	/** Reset all entries. */
 	FORCEINLINE void Clear()
 	{
 		memset(this->amount, 0, sizeof(this->amount));
 	}
 
+	/** Read/write access to an amount of a specific cargo type.
+	 * @param cargo Cargo type to access.
+	 */
 	FORCEINLINE uint &operator[](CargoID cargo)
 	{
 		return this->amount[cargo];
 	}
 
+	/** Read-only access to an amount of a specific cargo type.
+	 * @param cargo Cargo type to access.
+	 */
 	FORCEINLINE const uint &operator[](CargoID cargo) const
 	{
 		return this->amount[cargo];

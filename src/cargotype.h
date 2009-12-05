@@ -18,17 +18,20 @@
 #include "strings_type.h"
 #include "landscape_type.h"
 
+/** Globally unique label of a cargo type. */
 typedef uint32 CargoLabel;
 
+/** Town growth effect when delivering cargo. */
 enum TownEffect {
-	TE_NONE,
-	TE_PASSENGERS,
-	TE_MAIL,
-	TE_GOODS,
-	TE_WATER,
-	TE_FOOD,
+	TE_NONE,       ///< Cargo has no effect.
+	TE_PASSENGERS, ///< Cargo behaves passenger-like.
+	TE_MAIL,       ///< Cargo behaves mail-like.
+	TE_GOODS,      ///< Cargo behaves goods/candy-like.
+	TE_WATER,      ///< Cargo behaves water-like.
+	TE_FOOD,       ///< Cargo behaves food/fizzy-drinks-like.
 };
 
+/** Cargo classes. */
 enum CargoClass {
 	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified
 	CC_PASSENGERS   = 1 <<  0, ///< Passengers
@@ -44,32 +47,33 @@ enum CargoClass {
 	CC_SPECIAL      = 1 << 15  ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
-static const byte INVALID_CARGO = 0xFF;
+static const byte INVALID_CARGO = 0xFF; ///< Constant representing invalid cargo
 
+/** Specification of a cargo type. */
 struct CargoSpec {
-	uint8 bitnum;
-	CargoLabel label;
+	uint8 bitnum;                    ///< Cargo bit number, is #INVALID_CARGO for a non-used spec.
+	CargoLabel label;                ///< Unique label of the cargo type.
 	uint8 legend_colour;
 	uint8 rating_colour;
-	uint8 weight;
+	uint8 weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16 initial_payment;
 	uint8 transit_days[2];
 
-	bool is_freight;
-	TownEffect town_effect; ///< The effect this cargo type has on towns
-	uint16 multipliertowngrowth;
-	uint8 callback_mask;         ///< Bitmask of cargo callbacks that have to be called
+	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
+	TownEffect town_effect;          ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
+	uint16 multipliertowngrowth;     ///< Size of the effect.
+	uint8 callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
-	StringID name;
-	StringID name_single;
-	StringID units_volume;
-	StringID quantifier;
-	StringID abbrev;
+	StringID name;                   ///< Name of this type of cargo.
+	StringID name_single;            ///< Name of a single entity of this type of cargo.
+	StringID units_volume;           ///< Name of a single unit of cargo of this type.
+	StringID quantifier;             ///< Text for multiple units of cargo of this type.
+	StringID abbrev;                 ///< Two letter abbreviation for this cargo type.
 
-	SpriteID sprite;
+	SpriteID sprite;                 ///< Icon to display this cargo type, may be \c 0xFFF (which means to resolve an action123 chain).
 
-	uint16 classes;
-	const struct GRFFile *grffile;   ///< NewGRF where 'group' belongs to
+	uint16 classes;                  ///< Classes of this cargo type. @see CargoClass
+	const struct GRFFile *grffile;   ///< NewGRF where #group belongs to.
 	const struct SpriteGroup *group;
 
 	Money current_payment;
@@ -123,12 +127,15 @@ private:
 
 extern uint32 _cargo_mask;
 
-/* Set up the default cargo types for the given landscape type */
 void SetupCargoForClimate(LandscapeID l);
-/* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);
 
+/** Does cargo \a c have cargo class \a cc?
+ * @param c  Cargo type.
+ * @param cc Cargo class.
+ * @return The type fits in the class.
+ */
 static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 {
 	return (CargoSpec::Get(c)->classes & cc) != 0;
