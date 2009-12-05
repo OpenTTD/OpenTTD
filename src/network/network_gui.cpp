@@ -2030,13 +2030,13 @@ struct NetworkClientListWindow : Window {
 		this->server_client_width = max(GetStringBoundingBox(STR_NETWORK_SERVER).width, GetStringBoundingBox(STR_NETWORK_CLIENT).width) + WD_FRAMERECT_RIGHT;
 		this->company_icon_width = GetSpriteSize(SPR_COMPANY_ICON).width + WD_FRAMERECT_LEFT;
 
-		uint width = 200; // Default width
+		uint width = 100; // Default width
 		const NetworkClientInfo *ci;
 		FOR_ALL_CLIENT_INFOS(ci) {
 			width = max(width, GetStringBoundingBox(ci->client_name).width);
 		}
 
-		size->width = WD_FRAMERECT_LEFT + this->server_client_width + this->company_icon_width + WD_FRAMERECT_RIGHT;
+		size->width = WD_FRAMERECT_LEFT + this->server_client_width + this->company_icon_width + width + WD_FRAMERECT_RIGHT;
 	}
 
 	virtual void OnPaint()
