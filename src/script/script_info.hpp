@@ -25,6 +25,7 @@ public:
 		description(NULL),
 		date(NULL),
 		instance_name(NULL),
+		version(0),
 		url(NULL)
 	{}
 	~ScriptFileInfo();

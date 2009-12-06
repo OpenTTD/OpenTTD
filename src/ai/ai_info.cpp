@@ -131,6 +131,13 @@ bool AIInfo::GetSettings()
 	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, -1);
 }
 
+AIInfo::AIInfo() :
+	min_loadable_version(0),
+	use_as_random(false),
+	api_version(NULL)
+{
+}
+
 AIInfo::~AIInfo()
 {
 	/* Free all allocated strings */

@@ -58,6 +58,7 @@ class AIInfo : public AIFileInfo {
 public:
 	static const char *GetClassName() { return "AIInfo"; }
 
+	AIInfo();
 	~AIInfo();
 
 	/**
