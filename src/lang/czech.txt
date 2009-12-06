@@ -435,6 +435,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Seznam popisků
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Seznam měst
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Založit město
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -827,6 +828,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} byla převzata {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezident)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}Společnost {STRING} zaplatila výstavbu nového města {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} se staví poblíž města {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nový {STRING} se vysazuje poblíž města {TOWN}!
@@ -997,10 +999,13 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formát 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Zvolit formát screenshotů
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvolte základní sadu grafiky
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky.
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chybějící{P "" "" ch}/poškozen{P ý é ých} soubor{P "" y ů}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě grafiky
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základní sada zvuků
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Zvol základní sadu zvuků.
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě zvuků
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Selhalo přepnutí na celou obrazovku
 
@@ -1124,7 +1129,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Povolit
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerace vlaků: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :původní
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistický
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (nefunguje s NTP (New Train Pathfinder), zastaralým hledačem cesty)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (nefunguje s OFP, původním hledačem cesty pro lodě)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Umožnit spojení nesousedících stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Použít vylepšený algoritmus nakládání: {ORANGE}{STRING}
@@ -1302,6 +1307,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodně
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Města smějí stavět silnice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Umožnit městům ovlivňovat hlukový limit pro letiště: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakládání měst během hry: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázáno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :povoleno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povoleno s výběrem rozložení a velikosti města
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Umístění hlavní lišty: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlevo
@@ -1370,11 +1379,11 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnost
 STR_INTRO_DIFFICULTY                                            :{BLACK}Obtížnost ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pokročilé nastavení
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavení grafik
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Nabídnout on-line obsah
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat součásti
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Nastavení AI
 STR_INTRO_QUIT                                                  :{BLACK}Ukončit
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrát hru
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Začít novou hru s krajinou vytvořenou z výškové mapy
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Hrát novou hru ze scénáře
@@ -1786,6 +1795,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :na serveru je p
 
 # Network related errors
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nedostatek hráčů
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odpojování
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} jde hrát
@@ -1801,7 +1811,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server u
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Stahování obsahu
+STR_CONTENT_TITLE                                               :{WHITE}Součásti ke stažení
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Druh
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Druh obsahu
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Název
@@ -1843,6 +1853,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Knihovna pro AI
 STR_CONTENT_TYPE_SCENARIO                                       :Scénář
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Výšková mapa
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Základní zvuk
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Obsah se stahuje...
@@ -1893,12 +1904,12 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Výstavb
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Výstavba monorailu
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Výstavba maglevu
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Položit koleje
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Budovat koleje použitím režimu Autokoleje
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Položit koleje. Pomocí Ctrl přehodíš režim stavba/odstraňování.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Pokládat koleje v libovolném směru. Pomocí Ctrl přehodíš režim stavba/odstraňování.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Postavit železniční depo (pro nákup a servis vlaků)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Postavit na trati směrování
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Postavit nádraží
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Postavit semafory
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Postavit nádraží. Pomocí Ctrl ho připojíš k jinému.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Umístit návěstidla. Pomocí Ctrl vybereš mezi mechanickými a světelnými.{}Tažením umístíš návěstidla na rovném úseku tratě a s Ctrl až do dalšího křížení.{}Kliknutím na tlačítko s Ctrl otevřeš okno s výběrem návěstidel.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postavit železniční most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postavit železniční tunel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Přepnout režim stavba/odstranění pro koleje a semafory. Při stisku Ctrl odebere také koleje
@@ -1966,16 +1977,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Potrubní, kře
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Výstavba silnic
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Výstavba tramvajové tratě
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Postavit silnici
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Položit kus kolejí pro tramvaje
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Postavit úsek silnice pomocí módu Autoroad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Postavit úsek tramvajové tratě pomocí módu Autoroad
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Postavit silnici. Pomocí Ctrl přehodíš režim stavba/odstraňování.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Položit koleje pro tramvaj. Pomocí Ctrl přehodíš režim stavba/odstraňování.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Postavit úsek silnice v libovolném směru. Pomocí Ctrl přehodíš režim stavba/odstraňování.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Položit koleje pro tramvaj v libovolném směru. Pomocí Ctrl přehodíš režim stavba/odstraňování.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Postavit garáž (pro nákup a servis vozidel)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Vystavět tramvajové depo (na kupování a servis tramvají)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postavit autobusovou stanici
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postavit tramvajovou stanici pro cestující
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postavit nákladovou rampu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit nákladní tramvajovou stanici
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postavit stanici autobusů. Pomocí Ctrl ji připojíš k jiné.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postavit stanici tramvaje pro cestující. Pomocí Ctrl ji připojíš k jiné.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postavit nákladovou rampu. Pomocí Ctrl ji připojíš k jiné.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit nákladní stanici tramvají. S Ctrl ji připojíš k jiné.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Stavět nebo nestavět jednosměrné silnice
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Postavit silniční most
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Postavit tramvajový most
@@ -2006,7 +2017,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodní k
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Vytvořit průplav
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Stavět zdymadlo
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postavit lodní depo (na nákup a servis lodí)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postavit přístavní molo
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postavit přístavní molo. Pomocí Ctrl ho připojíš k jinému.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umístit bójku použitelnou pro navádění
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postavit akvadukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vytvořit vodní plochu.{}Pokud není držen CTRL, vytvoří se na úrovni moře průplav; v opačném případě se zaplaví ostatní dílky
@@ -2021,7 +2032,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Přísta
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Letiště
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit letiště
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit letiště. Pomocí Ctrl ho připojíš k jinému.
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Výběr letiště
@@ -2078,7 +2089,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Opravdu 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generování měst
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nové město
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Vytvoř nové město
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Založit nové město
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Náhodné město
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Vybuduj město na náhodné pozici
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Hodně náhodných měst
@@ -2414,7 +2425,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadej n�
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Města
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - stiskni na jménu města pro pohled na město
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - pohled na město zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled.
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
 
 # Town view window
@@ -2470,13 +2481,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotace
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Nabídnuté dotace pro službu:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING.big} z {STRING} do {STRING}{YELLOW} (do {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Nic
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Nic -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Již přiznané dotace:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING.big} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klepni na dotaci pro zobrazení města/průmyslu
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknutím na dotaci zaměříš pohled na průmysl/město. Při stisknutém Ctrl otevřeš nový pohled.
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jména stanic - kliknutím na jméno stanice se na ni přesune pohled
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jména stanic - pohled na stanici zaměříš kliknutím na její jméno. Při stisknutém Ctrl otevřeš nový pohled.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Podržením Ctrl můžeš označit více položek
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2604,7 +2615,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Průmysl
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% přepraveno)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% přepraveno)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Názvy průmyslu - na průmysl se podíváš kliknutím na jeho jméno
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Název průmyslu - pohled na něj zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2897,10 +2908,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Přestav
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Otočit vlak
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otoč vozidlo
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ukaž příkazy vlaku
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ukaž příkazy vozidla
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ukázat příkazy lodi
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ukázat příkazy letadla
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ukázat příkazy vlaku. S Ctrl zobrazíš jízdní řád.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ukázat příkazy vozidla. S Ctrl zobrazíš jízdní řád.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ukázat příkazy lodi. S Ctrl zobrazíš jízdní řád.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ukázat příkazy letadla. S Ctrl zobrazíš jízdní řád.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Ukázat detaily vlaku
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ukaž detaily silničního vozidla
@@ -2971,6 +2982,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošn�
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacita: {LTBLUE}nic
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2979,8 +2991,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Podíl z
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval servisů: {LTBLUE}{COMMA} d{P en ny ní}{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval servisů: {LTBLUE}{COMMA}%{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Prodloužit interval servisů
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zkrátit interval servisů
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Prodloužit interval servisů o 10. S Ctrl o 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zkrátit interval servisů o 10. S Ctrl o 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pojmenovat vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Přejmenovat silniční vozidlo
@@ -3176,6 +3188,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Vozidlo 
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vozidlo má {STRING} zpoždění
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Vozidlo jede {STRING} napřed
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Změnit čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu
 
@@ -3189,11 +3202,10 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automati
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automaticky vyplň rozvrh hodnotami z následující cesty (Ctrl+klik pro zachování vyčkávací doby)
 
 
-### Do not separate or reorder ###
-#####
 
-### Do not separate or reorder ###
-#####
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Ladění AI
@@ -3201,6 +3213,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Název A
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Nebyla nalezena žádná AI.{}Tato AI je výchozí a nedělá vůbec nic.{}Spoustu AI ale můžeš stáhnout v "Stahování součástí".
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno na ladění AI je dostupné pouze na serveru
 
@@ -4055,6 +4068,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

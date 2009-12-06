@@ -787,7 +787,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 在車庫等待中
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在車庫待命
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船塢待命
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在機庫待命
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在機棚待命
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1076,8 +1076,8 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}變更�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需探勘
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}每個市鎮可擁有多個同類型工業：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}同類型工業興建距離不受限制：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}每個市鎮可擁有多個同類工業：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}同類工業興建距離不受限制：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永遠於狀態列顯示長日期格式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
@@ -1179,7 +1179,7 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}啟用�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}顯示時刻表排定的到離時間：{ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立交通工具調度命令：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌種類 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :傳統鐵路
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :電氣化鐵路
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :單軌
@@ -1216,7 +1216,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}船舶�
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}船舶預設維護間隔：{ORANGE}關閉
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}關閉運具故障後也不自動維護：{ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}開啟列車車廂速限：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}停用電氣化鐵道：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}停用電氣化鐵路：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色報紙登場年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}開始年份：{ORANGE}{STRING}
@@ -1225,7 +1225,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允許�
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖拉時每隔：{ORANGE}{STRING} 格自動建造號誌
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}自動在指定年份前建造懸臂號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}啟用號誌介面：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}預設的號誌類型：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}預設的號誌種類：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :閉塞號誌
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :路徑號誌
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :單向路徑號誌
@@ -1371,7 +1371,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}無敵�
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}允許隧道互相交叉：{ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}可在暫停時興建：{ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}噴射機不會 (經常) 在小機場墜毀：{ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}切換場景類型：{ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}切換場景氣候：{ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :溫帶
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :寒帶
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亞熱帶
@@ -1757,8 +1757,8 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} 伺服�
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}內容下載中
-STR_CONTENT_TYPE_CAPTION                                        :{BLACK}類型
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}內容類型
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}種類
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}內容種類
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名稱
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}內容名稱
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}按一下項目查看詳細資訊{}勾選前面的方塊可選擇是否下載
@@ -1778,12 +1778,12 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}你已�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}此項目因相依性而被自動選擇下載
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}你已下載過此項目
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}此未知內容無法於 OpenTTD 中下載
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}這是用以替換現有的 {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}這是現有 {STRING} 的更新版
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}名稱：{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}版本：{WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}敘述：{WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}網址：{WHITE}{STRING}
-STR_CONTENT_DETAIL_TYPE                                         :{SILVER}類型：{WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}種類：{WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}下載大小：{WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}因與下列內容關聯而被選擇：{WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}相依性：{WHITE}{STRING}
@@ -1899,7 +1899,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口�
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}組合號誌 (電氣){}組合號誌同時具有入口／出口號誌的特性，這可讓玩家設置一卡車的預告號誌
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。標準路徑號誌可以從號誌後方穿過
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}單向路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。單向路徑號誌無法從號誌後方穿過
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}當選取時，點選到的現有號誌將會轉換成面板上所選取的類型及風格；若按住 CTRL 則只會變更風格
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}當選取時，點選到的現有號誌將會轉換成面板上所選取的種類及風格；若按住 CTRL 則只會變更風格
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}變更等距號誌拖曳間隔
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}減少 (拉近)
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加 (拉遠)
@@ -1981,7 +1981,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}興建�
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}選擇機場
-STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}選擇機場大小／類型
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}選擇機場大小／種類
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}小機場
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}城市機場
@@ -2087,8 +2087,8 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :無
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建於：{LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}車站等級：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}車站類型：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}車站風格：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}車站種類：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接收貨物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2673,7 +2673,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}費用�
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{CARGO}，{CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 載重：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改裝成：{GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物類型
+STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物種類
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}除了
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 
@@ -2698,13 +2698,13 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}更名
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}更名
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}修改列車的名稱
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}為車輛類型更名
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}重新命名船舶類型
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}重新命名車輛種類
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}重新命名船舶種類
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}重新命名飛機種類
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車類型
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}為車輛類型更名
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重新命名船舶類型
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車種類
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重新命名車輛種類
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重新命名船舶種類
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重新命名飛機種類
 
 # Depot window
@@ -2805,7 +2805,7 @@ STR_REPLACE_VEHICLE_SHIP                                        :船舶
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :飛機
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}選擇要替換的車頭種類
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}選擇您想替換左方選定車頭的新車頭類型
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}選擇您想替換左方選定車頭的新車頭種類
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}開始替換交通工具
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}按下之後就會開始將左方選定的車頭替換成右方指定的車頭
@@ -2819,7 +2819,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}在車�
 STR_REPLACE_ENGINES                                             :車頭
 STR_REPLACE_WAGONS                                              :車廂
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}選擇您要替換車頭的軌道類型
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}選擇您要替換車頭的軌道種類
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}顯示左方的車頭要替換成哪種車頭
 STR_REPLACE_RAIL_VEHICLES                                       :列車
 STR_REPLACE_ELRAIL_VEHICLES                                     :電氣化列車
@@ -3407,14 +3407,14 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車�
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}無法調轉車輛方向...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}無法迴轉由多節車廂組成的車輛
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :軌道類型不相容
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :軌道種類不相容
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}無法移動車輛...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}後端車頭一定要跟著前端車頭
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到前往附近機廠的路徑
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}找不到附近的車庫
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :錯誤的機廠類型
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :錯誤的機廠種類
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} 將在替換後過長
@@ -3488,7 +3488,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法�
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}前方有列車
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有汽車
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有車輛
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}前方有船舶
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}前方有飛機
 
@@ -3512,17 +3512,17 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法�
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}無法將船舶送到船塢...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}無法將飛機送回機棚...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}無法購買鐵道列車...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}無法購買列車...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}無法購買車輛
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}無法購買船舶...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}無法購買飛機...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}無法修改列車類型名稱...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}無法為車輛類型更名...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}無法重新命名船舶類型
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}無法重新命名列車種類...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}無法重新命名車輛種類...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}無法重新命名船舶種類
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}無法重新命名飛機種類...
 
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}無法出售鐵道車輛...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}無法出售列車...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}無法出售車輛...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}無法出售船舶...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}無法出售飛機...

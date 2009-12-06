@@ -431,7 +431,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dalsi pohlad
 STR_MAP_MENU_SIGN_LIST                                          :Zoznam popisov
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Zoznam miest
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotacie
@@ -822,6 +823,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} zacina stavat nedaleko mesta {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} bola kupena spolocnostou {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezident)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} sa zacina stavat nedaleko mesta {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} sa vysadza nedaleko mesta {TOWN}!
@@ -3177,6 +3179,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Na dokon
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Toto vozidlo ide presne
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Toto vozidlo mešká {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Toto vozidlo ide {STRING} skor
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tento cestovný poriadok ešte nezačal
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tento cestovný poriadok začne {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začiatočný dátum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vyberte dátum ako začiatočný bod tohto cestovného poriadku
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmenit cas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmenit dlžku trvania oznaceného príkazu
@@ -3189,6 +3196,22 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetnú
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň časový plán automaticky s hodnotami z nasledujúcej trasy (CTRL-klik - pokúsiť sa udržať čakacie doby)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Čakať
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Naplánovaný
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi čakaním a cestovným poriadkom
+
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Nastaviť dátum
+STR_DATE_SET_DATE                                               :{BLACK}Nastaviť dátum
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Vybrať označený dátum za začiatočný pre tento cestovný poriadok
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Vyberte deň
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Vyberte mesiac
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vyberte rok
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI debugovanie
@@ -4054,7 +4077,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -4070,4 +4092,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

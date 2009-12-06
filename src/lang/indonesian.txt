@@ -3145,6 +3145,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadw
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Set Tanggal
 
 
 # AI debug window

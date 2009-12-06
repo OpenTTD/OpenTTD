@@ -1216,7 +1216,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Раз�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель ускорения поезда: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Оригин.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалист.
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Запретить 90-градусные повороты на ж/д и море: {ORANGE}{STRING} {LTBLUE} (NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Запретить 90-градусные повороты на ж/д и море: {ORANGE}{STRING} {LTBLUE} (не для OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Объединять рядом построенные ж/д станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Разрешить объединение не примыкающих друг к другу станций: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Использовать улучшенный алгоритм загрузки: {ORANGE}{STRING}
@@ -3100,6 +3100,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Приб
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего осмотра: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмкость: {LTBLUE}отсутствует
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ёмкость: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ёмкость: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмкость: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3306,7 +3307,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Движ
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот транспорт приходит вовремя
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт опаздывает на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт опережает график на {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}График движения ещё не установлен
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Отсчёт времени начнётся с {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Начальная дата
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Изменить дату начала расчёта графика движения
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
@@ -3320,12 +3325,17 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбро
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить график автоматически по мере движения. Ctrl+клик, чтобы не менять время ожидания.
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Ожидаемое время
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Расписание
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :О:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Выбрать дату
+STR_DATE_SET_DATE                                               :{BLACK}Установить
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Установить дату начала расчёта графика движения
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Выбор дня
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Выбор месяца
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Выбор года

@@ -1097,7 +1097,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Óriás
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90°-os kanyart: {ORANGE}{STRING} {LTBLUE}(nem NTP-vel)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE}(nem OPF-fell)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telerakodása (egyidejű helyett): {ORANGE}{STRING}
@@ -1325,7 +1325,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Útvona
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvonalkereső hajókhoz: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti {BLUE}(Ajánlott)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti (OPF) {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ellenjavallt)
 
