@@ -342,6 +342,20 @@ public:
 		if (widget == TVW_CAPTION) SetDParam(0, this->town->index);
 	}
 
+	/**
+	 * Determines the first cargo with a certain town effect
+	 * @param effect Town effect of interest
+	 * @return first active cargo slot with that effect
+	 */
+	const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect) const
+	{
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			if (cs->town_effect == effect) return cs;
+		}
+		return NULL;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != TVW_INFOPANEL) return;
@@ -380,21 +394,13 @@ public:
 			uint cargo_text_left = r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : 20);
 			uint cargo_text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? 20 : 0);
 
-			CargoID first_food_cargo = CT_INVALID;
-			StringID food_name = STR_CARGO_PLURAL_FOOD;
-			CargoID first_water_cargo = CT_INVALID;
-			StringID water_name = STR_CARGO_PLURAL_WATER;
-			for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-				const CargoSpec *cs = CargoSpec::Get(cid);
-				if (first_food_cargo == CT_INVALID && cs->town_effect == TE_FOOD) {
-					first_food_cargo = cid;
-					food_name = cs->name;
-				}
-				if (first_water_cargo == CT_INVALID && cs->town_effect == TE_WATER) {
-					first_water_cargo = cid;
-					water_name = cs->name;
-				}
-			}
+			const CargoSpec *food = FindFirstCargoWithTownEffect(TE_FOOD);
+			CargoID first_food_cargo = (food != NULL) ? food->Index() : (CargoID)CT_INVALID;
+			StringID food_name       = (food != NULL) ? food->name    : STR_CARGO_PLURAL_FOOD;
+
+			const CargoSpec *water = FindFirstCargoWithTownEffect(TE_WATER);
+			CargoID first_water_cargo = (water != NULL) ? water->Index() : (CargoID)CT_INVALID;
+			StringID water_name       = (water != NULL) ? water->name    : STR_CARGO_PLURAL_WATER;
 
 			if (first_food_cargo != CT_INVALID && this->town->act_food > 0) {
 				SetDParam(0, first_food_cargo);
