@@ -326,7 +326,7 @@ struct DepotWindow : Window {
 		maxval = min(this->vehicle_list.Length() + this->wagon_list.Length(), (this->vscroll.GetPosition() * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
 
 		/* draw the train wagons, that do not have an engine in front */
-		for (; num < maxval; num++, y += 14) {
+		for (; num < maxval; num++, y += this->resize.step_height) {
 			const Vehicle *v = this->wagon_list[num - this->vehicle_list.Length()];
 			this->DrawVehicleInDepot(v, r.left, r.right, y);
 		}
