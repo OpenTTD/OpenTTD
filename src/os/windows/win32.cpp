@@ -311,23 +311,72 @@ void CreateConsole()
 #endif
 }
 
+/** Temporary pointer to get the help message to the window */
+static const char *_help_msg;
+
+/** Callback function to handle the window */
+static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (msg) {
+		case WM_INITDIALOG: {
+			char help_msg[8192];
+			const char *p = _help_msg;
+			char *q = help_msg;
+			while (q != lastof(help_msg) && *p != '\0') {
+				if (*p == '\n') {
+					*q++ = '\r';
+					if (q == lastof(help_msg)) {
+						q[-1] = '\0';
+						break;
+					}
+				}
+				*q++ = *p++;
+			}
+			*q = '\0';
+#if defined(UNICODE)
+			/* We need to put the text in a seperate buffer because the default
+			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
+			wchar_t help_msgW[8192];
+#endif
+			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(help_msg, help_msgW, lengthof(help_msgW)));
+			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
+		} return TRUE;
+
+		case WM_COMMAND:
+			if (wParam == 12) ExitProcess(0);
+			return TRUE;
+		case WM_CLOSE:
+			ExitProcess(0);
+	}
+
+	return FALSE;
+}
+
 void ShowInfo(const char *str)
 {
 	if (_has_console) {
 		fprintf(stderr, "%s\n", str);
 	} else {
 		bool old;
-#if defined(UNICODE)
-		/* We need to put the text in a seperate buffer because the default
-		 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
-		wchar_t help_msgW[8192];
-#endif
 		ReleaseCapture();
 		_left_button_clicked = _left_button_down = false;
 
 		old = MyShowCursor(true);
-		if (MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
-			CreateConsole();
+		if (strlen(str) > 2048) {
+			/* The minimum length of the help message is 2048. Other messages sent via
+			 * ShowInfo are much shorter, or so long they need this way of displaying
+			 * them anyway. */
+			_help_msg = str;
+			DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(101), NULL, HelpDialogFunc);
+		} else {
+#if defined(UNICODE)
+			/* We need to put the text in a seperate buffer because the default
+			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
+			wchar_t help_msgW[8192];
+#endif
+			if (MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
+				CreateConsole();
+			}
 		}
 		MyShowCursor(old);
 	}
