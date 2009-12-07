@@ -149,7 +149,7 @@ $(OBJS_MM:%.o=%.d): %.d: $(SRC_DIR)/%.mm $(FILE_DEP)
 	$(Q)$(CC_HOST) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
 
 $(OBJS_RC:%.o=%.d): %.d: $(SRC_DIR)/%.rc $(FILE_DEP)
-	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.mm=%.mm)'
+	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.rc=%.rc)'
 	$(Q)touch $@
 
 else
@@ -242,7 +242,7 @@ $(OBJS_MM): %.o: $(SRC_DIR)/%.mm $(DEP_MASK) $(FILE_DEP)
 
 $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(E) '$(STAGE) Compiling resource $(<:$(SRC_DIR)/%.rc=%.rc)'
-	$(Q)$(WINDRES) -o $@ -I $(MEDIA_DIR) $<
+	$(Q)$(WINDRES) -o $@ -I `basename $<` $<
 
 $(BIN_DIR)/$(TTD): $(TTD)
 	$(Q)cp $< $@
