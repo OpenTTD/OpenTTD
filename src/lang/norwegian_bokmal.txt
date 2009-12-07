@@ -367,7 +367,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra vindu
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidier
@@ -755,6 +756,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} starter bygging i nærheten av {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} har blitt kjøpt opp av {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Sjef)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ny {STRING} under bygging i nærheten av {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ny {STRING} plantes i nærheten av {TOWN}!
@@ -2907,6 +2909,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profitt 
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelighet: {LTBLUE}{COMMA}%  {BLACK}Havarier siden siste service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitet: {LTBLUE}Ingen
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasitet: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasitet: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2972,6 +2975,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tidstabe
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Bytt til tidstabellvisning
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - trykk på en ordre for å velge den
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slutt på ordre - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slutt på delte ordre - -
@@ -3112,6 +3117,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette kj
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette kjøretøyet er {STRING} for sent ute
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette kjøretøyet er {STRING} for tidlig ute
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Skift Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Endre varigheten for valgte ordre
 
@@ -3123,6 +3130,19 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nullstil
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll automatisk
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut timetabellene automatisk med verdiene fra neste tur (CTRL-klikk for å prøve å beholde ventetider)
+
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Avg:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Velg dato
+STR_DATE_SET_DATE                                               :{BLACK}Velg dato
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Velg dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Velg måned
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
@@ -3986,6 +4006,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

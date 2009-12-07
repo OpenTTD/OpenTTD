@@ -3828,9 +3828,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Camión c
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Camión correo
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Camión correo
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Camión correo
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Cisterna de aceites
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Cisterna de aceites
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Cisterna de aceites
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Cisterna de petróleo
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Cisterna de petróleo
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Cisterna de petróleo
 STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Camión de ganado
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Camión de ganado
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Camión de ganado

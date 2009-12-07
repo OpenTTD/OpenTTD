@@ -1054,7 +1054,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階�
 STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
 STR_CONFIG_SETTING_DISABLED                                     :關閉
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}於狀態列顯示速度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}於狀態列顯示交通工具速度：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}可在斜坡及岸邊興建：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或是軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
