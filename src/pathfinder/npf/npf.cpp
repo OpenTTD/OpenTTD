@@ -24,6 +24,7 @@
 #include "../../roadstop_base.h"
 #include "../pathfinder_func.h"
 #include "../pathfinder_type.h"
+#include "../follow_track.hpp"
 #include "aystar.h"
 
 enum {
@@ -419,6 +420,38 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 			 * this penalty exactly once, on its end tile (if it's a station) and it
 			 * will therefore not make a difference. */
 			cost = NPF_TILE_LENGTH + _settings_game.pf.npf.npf_rail_station_penalty;
+
+			if (IsRailWaypoint(tile)) {
+				NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
+				if (fstd->v->current_order.IsType(OT_GOTO_WAYPOINT) && GetStationIndex(tile) == fstd->v->current_order.GetDestination()) {
+					/* This waypoint is our destination; maybe this isn't an unreserved
+					 * one, so check that and if so see that as the last signal being
+					 * red. This way waypoints near stations should work better. */
+					const Train *train = Train::From(fstd->v);
+					CFollowTrackRail ft(train);
+					TileIndex t = tile;
+					Trackdir td = trackdir;
+					while (ft.Follow(t, td)) {
+						assert(t != ft.m_new_tile);
+						t = ft.m_new_tile;
+						if (KillFirstBit(ft.m_new_td_bits) != TRACKDIR_BIT_NONE) {
+							/* We encountered a junction; it's going to be too complex to
+							 * handle this perfectly, so just bail out. There is no simple
+							 * free path, so try the other possibilities. */
+							td = INVALID_TRACKDIR;
+							break;
+						}
+						td = RemoveFirstTrackdir(&ft.m_new_td_bits);
+						/* If this is a safe waiting position we're done searching for it */
+						if (IsSafeWaitingPosition(train, t, td, true, _settings_game.pf.forbid_90_deg)) break;
+					}
+					if (td == INVALID_TRACKDIR ||
+							!IsSafeWaitingPosition(train, t, td, true, _settings_game.pf.forbid_90_deg) ||
+							!IsWaitingPositionFree(train, t, td, _settings_game.pf.forbid_90_deg)) {
+						cost += _settings_game.pf.npf.npf_rail_lastred_penalty;
+					}
+				}
+			}
 			break;
 
 		default:
