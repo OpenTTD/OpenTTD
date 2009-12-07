@@ -3449,6 +3449,10 @@
 			Name="Pathfinder"
 			>
 			<File
+				RelativePath=".\..\src\pathfinder\follow_track.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\pathfinder\opf\opf_ship.cpp"
 				>
 			</File>
@@ -3462,6 +3466,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\pathfinder\pathfinder_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\pf_performance_timer.hpp"
 				>
 			</File>
 		</Filter>
@@ -3489,10 +3497,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\pathfinder\npf\npf.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\pathfinder\npf\npf_func.h"
 				>
 			</File>
@@ -3500,10 +3504,6 @@
 		<Filter
 			Name="YAPF"
 			>
-			<File
-				RelativePath=".\..\src\pathfinder\yapf\follow_track.hpp"
-				>
-			</File>
 			<File
 				RelativePath=".\..\src\pathfinder\yapf\nodelist.hpp"
 				>

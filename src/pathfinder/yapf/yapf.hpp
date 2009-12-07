@@ -12,100 +12,10 @@
 #ifndef  YAPF_HPP
 #define  YAPF_HPP
 
-#include "../../openttd.h"
-#include "../../vehicle_base.h"
-#include "../../road_map.h"
-#include "../../tunnel_map.h"
-#include "../../bridge_map.h"
-#include "../../tunnelbridge_map.h"
-#include "../../bridge.h"
-#include "../../station_map.h"
-#include "../../tile_cmd.h"
 #include "../../landscape.h"
-#include "yapf.h"
 #include "../pathfinder_func.h"
-#include "../../pbs.h"
-#include "../../waypoint_base.h"
-#include "../../debug.h"
-#include "../../settings_type.h"
-#include "../../tunnelbridge.h"
-
-extern uint64 ottd_rdtsc();
-
-#include <limits.h>
-#include <new>
-
-#if defined(_WIN32) || defined(_WIN64)
-#  include <windows.h>
-#else
-#  include <time.h>
-#endif
-
-struct CPerformanceTimer
-{
-	int64    m_start;
-	int64    m_acc;
-
-	CPerformanceTimer() : m_start(0), m_acc(0) {}
-
-	FORCEINLINE void Start()
-	{
-		m_start = QueryTime();
-	}
-
-	FORCEINLINE void Stop()
-	{
-		m_acc += QueryTime() - m_start;
-	}
-
-	FORCEINLINE int Get(int64 coef)
-	{
-		return (int)(m_acc * coef / QueryFrequency());
-	}
-
-	FORCEINLINE int64 QueryTime()
-	{
-		return ottd_rdtsc();
-	}
-
-	FORCEINLINE int64 QueryFrequency()
-	{
-		return ((int64)2200 * 1000000);
-	}
-};
-
-struct CPerfStartReal
-{
-	CPerformanceTimer *m_pperf;
-
-	FORCEINLINE CPerfStartReal(CPerformanceTimer& perf) : m_pperf(&perf)
-	{
-		if (m_pperf != NULL) m_pperf->Start();
-	}
-
-	FORCEINLINE ~CPerfStartReal()
-	{
-		Stop();
-	}
-
-	FORCEINLINE void Stop()
-	{
-		if (m_pperf != NULL) {
-			m_pperf->Stop();
-			m_pperf = NULL;
-		}
-	}
-};
-
-struct CPerfStartFake
-{
-	FORCEINLINE CPerfStartFake(CPerformanceTimer& perf) {}
-	FORCEINLINE ~CPerfStartFake() {}
-	FORCEINLINE void Stop() {}
-};
-
-typedef CPerfStartFake CPerfStart;
-
+#include "../pf_performance_timer.hpp"
+#include "yapf.h"
 
 //#undef FORCEINLINE
 //#define FORCEINLINE inline
@@ -119,7 +29,7 @@ typedef CPerfStartFake CPerfStart;
 #include "../../misc/binaryheap.hpp"
 #include "../../misc/dbg_helpers.h"
 #include "nodelist.hpp"
-#include "follow_track.hpp"
+#include "../follow_track.hpp"
 #include "yapf_base.hpp"
 #include "yapf_node.hpp"
 #include "yapf_common.hpp"

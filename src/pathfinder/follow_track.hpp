@@ -12,10 +12,14 @@
 #ifndef  FOLLOW_TRACK_HPP
 #define  FOLLOW_TRACK_HPP
 
-#include "yapf.hpp"
-#include "../../depot_map.h"
-#include "../../roadveh.h"
-#include "../../train.h"
+#include "../depot_map.h"
+#include "../pbs.h"
+#include "../roadveh.h"
+#include "../station_base.h"
+#include "../train.h"
+#include "../tunnelbridge.h"
+#include "../tunnelbridge_map.h"
+#include "pf_performance_timer.hpp"
 
 /** Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport

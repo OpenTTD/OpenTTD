@@ -814,10 +814,12 @@ network/core/udp.cpp
 network/core/udp.h
 
 # Pathfinder
+pathfinder/follow_track.hpp
 pathfinder/opf/opf_ship.cpp
 pathfinder/opf/opf_ship.h
 pathfinder/pathfinder_func.h
 pathfinder/pathfinder_type.h
+pathfinder/pf_performance_timer.hpp
 
 # NPF
 pathfinder/npf/aystar.cpp
@@ -825,11 +827,9 @@ pathfinder/npf/aystar.h
 pathfinder/npf/queue.cpp
 pathfinder/npf/queue.h
 pathfinder/npf/npf.cpp
-pathfinder/npf/npf.h
 pathfinder/npf/npf_func.h
 
 # YAPF
-pathfinder/yapf/follow_track.hpp
 pathfinder/yapf/nodelist.hpp
 pathfinder/yapf/yapf.h
 pathfinder/yapf/yapf.hpp
