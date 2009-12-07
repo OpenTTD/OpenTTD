@@ -492,10 +492,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\crashlog.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\command.cpp"
 				>
 			</File>
@@ -505,6 +501,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\console_cmds.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\crashlog.cpp"
 				>
 			</File>
 			<File
@@ -840,10 +840,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\crashlog.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\command_func.h"
 				>
 			</File>
@@ -885,6 +881,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\console_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\crashlog.h"
 				>
 			</File>
 			<File
@@ -1500,15 +1500,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\town_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\townname_func.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\townname_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\town_type.h"
 				>
 			</File>
 			<File
@@ -2272,11 +2272,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\table\townname.h"
+				RelativePath=".\..\src\table\town_land.h"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\table\town_land.h"
+				RelativePath=".\..\src\table\townname.h"
 				>
 			</File>
 			<File
@@ -3488,19 +3488,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\pathfinder\npf\queue.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\pathfinder\npf\queue.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\pathfinder\npf\npf.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\pathfinder\npf\npf_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\queue.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\npf\queue.h"
 				>
 			</File>
 		</Filter>
