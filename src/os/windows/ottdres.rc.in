@@ -39,7 +39,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-100                     ICON    DISCARDABLE     "../media/openttd.ico"
+100                     ICON    DISCARDABLE     "../../../media/openttd.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -84,7 +84,7 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "Comments", "This program is licensed under the GNU General Public License.\0"
+            VALUE "Comments", "This program is licensed under the GNU General Public License version 2.\0"
             VALUE "CompanyName", "OpenTTD Development Team\0"
             VALUE "FileDescription", "OpenTTD\0"
             VALUE "FileVersion", "Development !!VERSION!!\0"
