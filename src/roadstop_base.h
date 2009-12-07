@@ -36,7 +36,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		int occupied;    ///< The amount of occupied stop in tile 'units'
 
 	public:
-		friend class RoadStop; ///< Oh yeah, the road stop may play with me.
+		friend struct RoadStop; ///< Oh yeah, the road stop may play with me.
 
 		/** Create an entry */
 		Entry() : length(0), occupied(0) {}
