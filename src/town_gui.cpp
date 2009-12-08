@@ -374,10 +374,12 @@ public:
 		SetDParam(1, this->town->max_mail);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX);
 
+		StringID required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED;
 		uint cargo_needed_for_growth = 0;
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC:
 				if (TilePixelHeight(this->town->xy) >= LowestSnowLine()) cargo_needed_for_growth = 1;
+				if (TilePixelHeight(this->town->xy) < GetSnowLine()) required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER;
 				break;
 
 			case LT_TROPIC:
@@ -408,7 +410,7 @@ public:
 				DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
 			} else {
 				SetDParam(0, food_name);
-				DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED);
+				DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, required_text);
 			}
 
 			if (cargo_needed_for_growth > 1) {
@@ -418,7 +420,7 @@ public:
 					DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
 				} else {
 					SetDParam(0, water_name);
-					DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED);
+					DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, required_text);
 				}
 			}
 		}

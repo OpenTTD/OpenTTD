@@ -255,6 +255,9 @@ static void OnNewDay()
 
 	SetWindowWidgetDirty(WC_STATUS_BAR, 0, 0);
 	EnginesDailyLoop();
+
+	/* Refresh after possible snowline change */
+	SetWindowClassesDirty(WC_TOWN_VIEW);
 }
 
 /**
