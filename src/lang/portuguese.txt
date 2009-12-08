@@ -2208,7 +2208,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guardar 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduza um nome para o jogo gravado
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Geração do mundo
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Gerador do mundo
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Dim. do mapa:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de cidades:

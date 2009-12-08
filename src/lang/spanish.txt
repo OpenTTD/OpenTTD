@@ -1098,7 +1098,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite construir paradas sobre carreteras de pueblo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir pasar por los stops de carreteras de los competidores: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor  de multiples NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Permitir múltiples NewGRFs de vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Este cambio no es posible cuando tiene vehículos
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeropuertos nunca caducan: {ORANGE}{STRING}
@@ -2781,7 +2781,7 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Pulsa pa
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Pulsa para arrancar todos los barcos dentro del depósito
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Pulsa para arrancar todas las aeronaves dentro del hangar
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas a vender todos los vehículos que tienes en el depósito.  ¿Estás seguro?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estás a punto de vender todos los vehículos en el depósito. ¿Estás seguro?.
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
