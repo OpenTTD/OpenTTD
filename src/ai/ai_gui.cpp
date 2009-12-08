@@ -594,10 +594,7 @@ struct AIConfigWindow : public Window {
 			}
 
 			case AIC_WIDGET_LIST: { // Select a slot
-				uint slot = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height + this->vscroll.GetPosition();
-
-				if (slot == 0 || slot > _settings_newgame.difficulty.max_no_competitors) slot = INVALID_COMPANY;
-				this->selected_slot = (CompanyID)slot;
+				this->selected_slot = (CompanyID)((pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height + this->vscroll.GetPosition());
 				this->InvalidateData();
 				break;
 			}
@@ -628,6 +625,10 @@ struct AIConfigWindow : public Window {
 
 	virtual void OnInvalidateData(int data)
 	{
+		if (this->selected_slot == 0 || this->selected_slot > _settings_newgame.difficulty.max_no_competitors) {
+			this->selected_slot = INVALID_COMPANY;
+		}
+
 		this->SetWidgetDisabledState(AIC_WIDGET_DECREASE, _settings_newgame.difficulty.max_no_competitors == 0);
 		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, _settings_newgame.difficulty.max_no_competitors == MAX_COMPANIES - 1);
 		this->SetWidgetDisabledState(AIC_WIDGET_CHANGE, this->selected_slot == INVALID_COMPANY);
