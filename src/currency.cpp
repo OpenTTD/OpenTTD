@@ -41,7 +41,7 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{ 2850, "", 2002,      "",             " L.",        1, STR_GAME_OPTIONS_CURRENCY_ITL    }, ///< italian lira
 	{    3, "", 2002,      "NLG ",         "",           0, STR_GAME_OPTIONS_CURRENCY_NLG    }, ///< dutch gulden
 	{   12, "", CF_NOEURO, "",             " Kr",        1, STR_GAME_OPTIONS_CURRENCY_NOK    }, ///< norwegian krone
-	{    6, "", CF_NOEURO, "",             " zl",        1, STR_GAME_OPTIONS_CURRENCY_PLN    }, ///< polish zloty
+	{    6, "", CF_NOEURO, "",             " z\xC5\x82", 1, STR_GAME_OPTIONS_CURRENCY_PLN    }, ///< polish zloty
 	{    5, "", CF_NOEURO, "",             " Lei",       1, STR_GAME_OPTIONS_CURRENCY_RON    }, ///< romanian Lei
 	{   50, "", CF_NOEURO, "",             " p",         1, STR_GAME_OPTIONS_CURRENCY_RUR    }, ///< russian rouble
 	{  352, "", 2007,      "",             " SIT",       1, STR_GAME_OPTIONS_CURRENCY_SIT    }, ///< slovenian tolar
