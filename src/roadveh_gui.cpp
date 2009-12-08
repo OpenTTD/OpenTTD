@@ -147,7 +147,7 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 		DrawSprite(u->GetImage(dir), pal, pos + (rtl ? -offset.x : offset.x), y + 6 + offset.y);
 
 		pos += rtl ? -width : width;
-		spent_width += max_width;
+		spent_width += width;
 	}
 
 	if (v->index == selection) {
