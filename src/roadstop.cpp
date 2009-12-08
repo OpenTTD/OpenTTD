@@ -289,7 +289,9 @@ void RoadStop::Entry::Leave(const RoadVehicle *rv)
  */
 void RoadStop::Entry::Enter(const RoadVehicle *rv)
 {
-	assert(this->occupied < this->length);
+	/* we cannot assert on this->occupied < this->length because of the
+	 * remote possibility that RVs are running through eachother when
+	 * trying to prevention an infinite jam. */
 	this->occupied += rv->rcache.cached_veh_length;
 }
 
