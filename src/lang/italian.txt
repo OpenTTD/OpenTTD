@@ -1833,7 +1833,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Rendi gl
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Evidenzia area coperta
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Non evidenziare  l'area di copertura del sito proposto
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Non evidenziare l'area di copertura del sito proposto
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Evidenzia l'area di copertura del sito proposto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accetta: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fornisce: {GOLD}
@@ -2357,7 +2357,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire d
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Le caratteristiche del NewGRF '{0:STRING}' possono causare errori di sincronizzazione e/o crash.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}La lunghezza dei veicoli  '{1:ENGINE}' può cambiare al di fuori dei depositi.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}La lunghezza dei veicoli '{1:ENGINE}' può cambiare al di fuori dei depositi.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
@@ -2388,7 +2388,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Popolazi
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passeggeri il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posta il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carichi richiesti per la crescita della città:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :Richiesto: {ORANGE}{STRING}{BLACK}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} richiesto
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} richesto in inverno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :Consegnato il mese scorso: {ORANGE}{CARGO}{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della città. CTRL+clic la mostra in una mini visuale.

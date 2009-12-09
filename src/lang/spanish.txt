@@ -1497,7 +1497,7 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Número 
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versión del servidor, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Pulse en un juego de la lista para seleccionarlo
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}El servidor al que has estado conectado la última vez:
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servidor al que has estado conectado la última vez:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Pulsa para seleccionar el servidor al que has jugado la última vez
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JUEGO

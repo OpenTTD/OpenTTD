@@ -765,18 +765,18 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} finanziert die Gründung der Stadt {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Neue{G 0:2 r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Neue{G 0:2 r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} gibt baldige Schließung bekannt!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Wegen fehlender Rohstoffe kündigt {STRING} die baldige Schließung an!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Wegen Holzmangel gibt {STRING} die baldige Schließung bekannt!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} {G 0 gibt gibt gibt geben} baldige Schließung bekannt!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Wegen fehlender Rohstoffe {G 0:2 kündigt kündigt kündigt kündigen} {STRING} die baldige Schließung an!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Wegen Holzmangel {G 0:2 gibt gibt gibt geben} {STRING} die baldige Schließung bekannt!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europäische Währungsunion!{}{}Der Euro wird einzige Währung für alltägliche Zahlungsvorgänge.
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BLACK}{BIGFONT}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_NEWS_END_OF_RECESSION                                       :{BLACK}{BIGFONT}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} erhöht die Produktion!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} {G 0 erhöht erhöht erhöht erhöhen} die Produktion!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Neue Kohlevorkommen bei {INDUSTRY} gefunden!{}Förderung verdoppelt!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Neue Ölfunde bei {INDUSTRY}!{}Förderung wird vermutlich verdoppelt!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Neue Getreideanbaumethoden bei {INDUSTRY} werden Erträge verdoppeln!
@@ -2388,6 +2388,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagie
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Postsäcke letzten Monat: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Für Stadtwachstum benötigte Fracht:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} benötigt
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} im Winter benötigt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} angeliefert im letzten Monat
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lärmbelastung in der Stadt: {ORANGE}{COMMA}{BLACK}  Grenzwert: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Stadt scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Stadt

@@ -368,7 +368,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Cổng nhìn b�
 STR_MAP_MENU_SIGN_LIST                                          :Danh sách ký hiệu
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thị trấn
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tiền trợ cấp
@@ -756,6 +757,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} đang được xây dựng gần thị trấn {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} đã bị kiểm soát bởi {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Giám Đốc)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Cụm công nghiệp {STRING} đang xây dựng gần thị trấn {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Cụm công nghiệp {STRING} đã được lên kế hoạch gần thị trấn {TOWN}!
@@ -1234,6 +1236,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :ô 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ngẫu nhiên
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Thị trấn được quyền xây đường sá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Cho phép thị trấn kiểm tra độ ồn của sân bay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :cho phép
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :cho phép, tùy chọn bố trí thị trấn
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Vị trí của thanh công cụ chính: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Trái
@@ -1387,9 +1391,36 @@ STR_LIVERY_MONORAIL                                             :Động Cơ Đ�
 STR_LIVERY_MAGLEV                                               :Động Cơ Ray Đệm
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Toa Hành Khách (Hơi Nước)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Toa Hành Khách (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Toa Hành Khách (Điện)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Toa Hành Khách (Ray Đơn)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Toa Hành Khách (Ray Đệm)
+STR_LIVERY_FREIGHT_WAGON                                        :Toa Chở Hàng
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Xe Tải
+STR_LIVERY_PASSENGER_SHIP                                       :Phà Chở Khách
+STR_LIVERY_FREIGHT_SHIP                                         :Thuyền Chở Hàng
+STR_LIVERY_HELICOPTER                                           :Trực Thăng
+STR_LIVERY_SMALL_PLANE                                          :Máy Bay Nhỏ
+STR_LIVERY_LARGE_PLANE                                          :Máy Bay Lớn
+STR_LIVERY_PASSENGER_TRAM                                       :Tàu Khách Điện
+STR_LIVERY_FREIGHT_TRAM                                         :Tàu Hàng Điện
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}Chọn Vẻ Mặt
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bỏ qua lựa chọn vẻ mặt
+STR_FACE_OK_TOOLTIP                                             :{BLACK}Lựa chọn vẻ mặt mới
 
+STR_FACE_MALE_BUTTON                                            :{BLACK}Nam
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Chọn vẻ mặt nam
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nữ
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Chọn vẻ mặt nữ
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Vẻ Mặt Mới
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Tự động tạo vẻ mặt mới
+STR_FACE_ADVANCED                                               :{BLACK}Cấp Cao
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Tùy chọn vẻ mặt cấp cao.
+STR_FACE_SIMPLE                                                 :{BLACK}Đơn giản
 
 # Network server list
 
@@ -1874,6 +1905,13 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn x
 
 
 
+
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
 
 
@@ -2115,7 +2153,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åpne ve
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikkinnstillinger
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis siste melding/nyhet, vis meldingsinnstillinger
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om felt, konsoll, AI feilsøking, skjermdumper, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Bytt verktøylinjer
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lagre scenario, laste inn scenario, forlate redigeringsprogrammet, avslutte
@@ -368,6 +369,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Grunnlegg by
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -579,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Egendefinert 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikkvolum
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Lydeffektvolum
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -757,6 +762,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} har blitt kjøpt opp av {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Sjef)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponset byggingen av den nye byen {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ny {STRING} under bygging i nærheten av {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ny {STRING} plantes i nærheten av {TOWN}!
@@ -931,6 +937,8 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg gra
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/korrupt fil{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om grafikksettet
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Originalt lydsett
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Velg hvilket sett med lyder du vil bruke
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligere informasjon om originale lyder
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjerm modus mislykkes
@@ -1055,7 +1063,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjons type: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90-graders svinger: {ORANGE}{STRING} {LTBLUE} (trenger NGR)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90-graders svinger: {ORANGE}{STRING} {LTBLUE} (ikke med OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå sammen stasjoner som bygges ved siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillat sammenslåing av stasjoner som ikke ligger rett ved siden av hverandre {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Bruk forbedret lastingsalgoritme: {ORANGE}{STRING}
@@ -1169,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Slå på tidstabeller for kjøretøyer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis tidstabell i antall tikk heller enn i dager: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og avgang i timetabeller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rask opprettelse av kjøretøyordre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard jernbanetype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Vanlig jernbane
@@ -1233,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byer har tillatelse til å bygge veier: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat bykontrollert lydnivå for flyplasser: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunnlegging av byer i spillet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :forbudt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillatt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillatt, egendefinert oppsett av by
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovedverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
@@ -1337,6 +1350,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1640,6 +1654,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt fir
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
+STR_NETWORK_CLIENTLIST_BAN                                      :Bannlys
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gi penger
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Snakk til alle
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Snakk til firma
@@ -1716,8 +1731,13 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveren er ful
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spill satt på pause ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spillet står ennå på pause ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spillet står ennå på pause ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spillet står ennå på pause ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spillet fortsetter ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ikke nok spillere
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kobler til klienter
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
@@ -2367,6 +2387,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasje
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Godsbehov for byekspansjon:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} påkrevd
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nødvendig om vinteren
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levert sist måned
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lyd grense i by: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentrer bildet rundt byen. Ctrl+Click åpner i nytt vindu
@@ -2465,6 +2486,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Finn all
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre navnet til stasjon/lasteterminal
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vis kontrollpunktets gjeldende posisjon. Ctrl+Click åpner i nytt vindu
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Endre kontrollpunkt navn
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vis bøyens gjeldende posisjon. Ctrl+Click åpner i nytt vindu.
@@ -2772,6 +2794,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}  Maks. trekkraft.: {7:FORCE}{}Vedlikehold: {4:CURRENCY}/år{}Kapasitet: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kostnad: {CURRENCY} Max. Hastighet: {VELOCITY}{}Kapasitet: {CARGO}, {CARGO}{}Løpende kostnader: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kostnad: {CURRENCY} Maksfart: {VELOCITY}{}Kapasitet: {CARGO}{}Driftskostnader: {CURRENCY}/yr
 
@@ -3116,8 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette kjøretøyet går på tid
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette kjøretøyet er {STRING} for sent ute
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette kjøretøyet er {STRING} for tidlig ute
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne tidstabellen har ikke blitt startet enda
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Denne tidstabellen vil bli startet {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Velg en dato som startpunkt for denne tidstabellen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Skift Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Endre varigheten for valgte ordre
@@ -3131,6 +3157,9 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nullstil
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll automatisk
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut timetabellene automatisk med verdiene fra neste tur (CTRL-klikk for å prøve å beholde ventetider)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Ventet
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Bytt mellom ventet og planlagt
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Avg:
@@ -3139,6 +3168,7 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Avg:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Velg dato
 STR_DATE_SET_DATE                                               :{BLACK}Velg dato
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Bruk den valgte datoen som startpunkt for tidstabellen
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Velg dag
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Velg måned
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
@@ -3353,6 +3383,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Må rive
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Må rive eksisterende flyplass først
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenser til flere enn ett eksisterende kontrollpunkt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For nær et annet kontrollpunkt
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge kontrollpunkt for tog her...
@@ -3983,6 +4014,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size

@@ -359,7 +359,7 @@ STR_TOOLTIP_STICKY                                              :{BLACK}Игно
 STR_TOOLTIP_RESIZE                                              :{BLACK}Нажмите и тащите для изменения размера окна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Большое/маленькое окно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка вверх/вниз
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка  влево/вправо
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка влево/вправо
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Полная очистка прямоугольного участка земли
 
 # Query window
@@ -2546,6 +2546,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пасс
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Почты за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, необходимый для роста города:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} требу{G 0 е е е ю}тся
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} требуется зимой
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} доставлено в прошлом месяце
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать город в основном окне. Ctrl+клик - показать в дополнительном окне.
