@@ -67,7 +67,7 @@ static FORCEINLINE T min(const T a, const T b)
  */
 static FORCEINLINE int min(const int a, const int b)
 {
-	return (a < b) ? a : b;
+	return min<int>(a, b);
 }
 
 /**
@@ -81,7 +81,7 @@ static FORCEINLINE int min(const int a, const int b)
  */
 static FORCEINLINE uint minu(const uint a, const uint b)
 {
-	return (a < b) ? a : b;
+	return min<uint>(a, b);
 }
 
 /**
@@ -131,6 +131,31 @@ static FORCEINLINE T *AlignPtr(T *x, uint n)
 }
 
 /**
+ * Clamp a value between an interval.
+ *
+ * This function returns a value which is between the given interval of
+ * min and max. If the given value is in this interval the value itself
+ * is returned otherwise the border of the interval is returned, according
+ * which side of the interval was 'left'.
+ *
+ * @note The min value must be less or equal of max or you get some
+ *       unexpected results.
+ * @param a The value to clamp/truncate.
+ * @param min The minimum of the interval.
+ * @param max the maximum of the interval.
+ * @returns A value between min and max which is closest to a.
+ * @see ClampU(uint, uint, uint)
+ * @see Clamp(int, int, int)
+ */
+template <typename T>
+static FORCEINLINE T Clamp(const T a, const T min, const T max)
+{
+	if (a <= min) return min;
+	if (a >= max) return max;
+	return a;
+}
+
+/**
  * Clamp an integer between an interval.
  *
  * This function returns a value which is between the given interval of
@@ -148,9 +173,7 @@ static FORCEINLINE T *AlignPtr(T *x, uint n)
  */
 static FORCEINLINE int Clamp(const int a, const int min, const int max)
 {
-	if (a <= min) return min;
-	if (a >= max) return max;
-	return a;
+	return Clamp<int>(a, min, max);
 }
 
 /**
@@ -171,9 +194,7 @@ static FORCEINLINE int Clamp(const int a, const int min, const int max)
  */
 static FORCEINLINE uint ClampU(const uint a, const uint min, const uint max)
 {
-	if (a <= min) return min;
-	if (a >= max) return max;
-	return a;
+	return Clamp<uint>(a, min, max);
 }
 
 /**
@@ -192,9 +213,7 @@ static FORCEINLINE uint ClampU(const uint a, const uint min, const uint max)
  */
 static FORCEINLINE int32 ClampToI32(const int64 a)
 {
-	if (a <= INT32_MIN) return INT32_MIN;
-	if (a >= INT32_MAX) return INT32_MAX;
-	return (int32)a;
+	return (int32)Clamp<int64>(a, INT32_MIN, INT32_MAX);
 }
 
 /**
@@ -206,7 +225,7 @@ static FORCEINLINE int32 ClampToI32(const int64 a)
  */
 static FORCEINLINE uint16 ClampToU16(const uint64 a)
 {
-	return (uint16)(a <= UINT16_MAX ? a : UINT16_MAX);
+	return (uint16)min<uint64>(a, UINT16_MAX);
 }
 
 /**
