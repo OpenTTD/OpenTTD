@@ -731,35 +731,29 @@ struct AIDebugWindow : public Window {
 
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			/* Background is grey by default, will be changed to red for dead AIs */
-			this->GetWidget<NWidgetCore>(i + AID_WIDGET_COMPANY_BUTTON_START)->colour = COLOUR_GREY;
+			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + AID_WIDGET_COMPANY_BUTTON_START);
+			bool dirty = false;
 
-			const Company *c = Company::GetIfValid(i);
-			if (c == NULL || !c->is_ai) {
-				/* Check if we have the company as an active company */
-				if (!this->IsWidgetDisabled(i + AID_WIDGET_COMPANY_BUTTON_START)) {
-					/* Bah, company gone :( */
-					this->DisableWidget(i + AID_WIDGET_COMPANY_BUTTON_START);
-
-					/* We need a repaint */
-					this->SetDirty();
-				}
-				continue;
+			bool valid = Company::IsValidAiID(i);
+			bool disabled = !valid;
+			if (button->IsDisabled() != disabled) {
+				/* Invalid/non-AI companies have button disabled */
+				button->SetDisabled(disabled);
+				dirty = true;
 			}
 
-			/* Mark dead AIs by red background */
-			if (c->ai_instance->IsDead()) {
-				this->GetWidget<NWidgetCore>(i + AID_WIDGET_COMPANY_BUTTON_START)->colour = COLOUR_RED;
+			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
+			Colours colour = dead ? COLOUR_RED : COLOUR_GREY;
+			if (button->colour != colour) {
+				/* Mark dead AIs by red background */
+				button->colour = colour;
+				dirty = true;
 			}
 
-			/* Check if we have the company marked as inactive */
-			if (this->IsWidgetDisabled(i + AID_WIDGET_COMPANY_BUTTON_START)) {
-				/* New AI! Yippie :p */
-				this->EnableWidget(i + AID_WIDGET_COMPANY_BUTTON_START);
-
-				/* We need a repaint */
-				this->SetDirty();
-			}
+			/* Do we need a repaint? */
+			if (dirty) this->SetDirty();
+			/* Draw company icon only for valid AI companies */
+			if (!valid) continue;
 
 			byte offset = (i == ai_debug_company) ? 1 : 0;
 			DrawCompanyIcon(i, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_x + 11 + offset, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
