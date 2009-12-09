@@ -765,8 +765,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} finanziert die Gründung der Stadt {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Neue{G 0:2 r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Neue{G 0:2 r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} {G 0 gibt gibt gibt geben} baldige Schließung bekannt!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Wegen fehlender Rohstoffe {G 0:2 kündigt kündigt kündigt kündigen} {STRING} die baldige Schließung an!
