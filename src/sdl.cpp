@@ -57,6 +57,7 @@ static const char sdl_files[] =
 	M("SDL_SetColorKey")
 	M("SDL_WM_SetIcon")
 	M("SDL_MapRGB")
+	M("SDL_VideoModeOK")
 	M("SDL_Linked_Version")
 	M("")
 ;
