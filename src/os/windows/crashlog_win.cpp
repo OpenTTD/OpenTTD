@@ -20,6 +20,7 @@
 #include "../../gamelog.h"
 
 #include <windows.h>
+#include <signal.h>
 
 /**
  * Windows implementation for the crash logger.
@@ -407,6 +408,11 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 extern "C" void *_get_safe_esp();
 #endif
 
+static void CDECL CustomAbort(int signal)
+{
+	RaiseException(0xE1212012, 0, 0, NULL);
+}
+
 /* static */ void CrashLog::InitialiseCrashLog()
 {
 #if defined(_MSC_VER)
@@ -421,6 +427,12 @@ extern "C" void *_get_safe_esp();
 	asm("movl %esp, __safe_esp");
 #endif
 
+	/* SIGABRT is not an unhandled exception, so we need to intercept it. */
+	signal(SIGABRT, CustomAbort);
+#if defined(_MSC_VER)
+	/* Don't show abort message as we will get the crashlog window anyway. */
+	_set_abort_behavior(0, _WRITE_ABORT_MSG);
+#endif
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
 
