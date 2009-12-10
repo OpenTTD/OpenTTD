@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2009-12-01
-Release version: 0.7.4
+Last updated:    2009-12-10
+Release version: 0.8.0
 ------------------------------------------------------------------------
 
 
@@ -38,21 +38,14 @@ and that the nightlies and next major release will not have that bug.
 - 3194	[OSX] Full screen 'strobing' on some Mac OS X 10.6
 - 3190	[OSX] Compiling fails on some Mac OS X 10.6
 - 3159	[NewGRF] Autoreplace resets (or does not keep) value of variable F2
-- 3057	Road vehicle sometimes 'forget' the need for servicing
-- 3040	Not all alternatives are always shown in the "Join station" list
 - 2955	With path signals depots are less likely to be visited
 - 2891	Ignore signal does not keep the train running when in path signalled block till the next signal
-- 2769	No offer for buying bankrupt AIs
 - 2616	[NewGRF] Cloning creates vehicles with invalid subcargos
 - 2613	[NewGRF] House property 15 does not work
 - 2585	[OSX] OS' mouse pointer showing
 - 2484	[OSX] Cannot enter CJK characters
-- 2427	Vehicle owner gets paid for whole cargo feeder share
-- 1944	Road vehicles not picking empty drive through platform
 - 1762	Strange Autoreplace behaviour
-- 1495	Long vehicles might block multistop drive through stations
 - 1140	[OSX] Not smooth moving map with touchpad
-- 1072	Text overflows in several windows
 
 
 3) Known bugs that will not be solved:
@@ -102,6 +95,17 @@ Lost trains ignore (block) exit signals [FS#1473]
 	makes the impact of fixing the bug enormously small against the
 	amount of work needed to write a system that prevents the lost trains
 	from taking the wrong direction.
+
+Vehicle owner of last transfer leg gets paid for all [FS#2427]
+	When you make a transfer system that switches vehicle owners. This
+	is only possible with 'industry stations', e.g. the oil rig station
+	the owner of the vehicle that does the final delivery gets paid for
+	the whole trip. It is not shared amongst the different vehicle
+	owners that have participated in transporting the cargo.
+	This sharing is not done because it would enormously increase the
+	memory and CPU usage in big games for something that is happening
+	in only one corner case. We think it is not worth the effort until
+	sharing of stations is an official feature.
 
 Forbid 90 degree turns does not work for crossing PBS paths [FS#2737]
 	When you run a train through itself on a X junction with PBS turned on
