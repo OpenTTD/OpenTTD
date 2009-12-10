@@ -1168,7 +1168,7 @@ make_compiler_cflags() {
 			if [ "$enable_lto" != "0" ] && [ -n "$has_lto" ]; then
 				# Use LTO only if we see LTO exists and is requested
 				flags="$flags -flto"
-				ldflags="$ldflags -flto $CFLAGS"
+				ldflags="$ldflags -flto $2"
 			fi
 		fi
 
