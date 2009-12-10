@@ -111,10 +111,10 @@ STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
 STR_QUANTITY_DIAMONDS                                           :{COMMA} kantong intan
 STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
-STR_QUANTITY_PAPER                                              :{WEIGHT}  kertas
+STR_QUANTITY_PAPER                                              :{WEIGHT} kertas
 STR_QUANTITY_GOLD                                               :{COMMA} kantong emas
 STR_QUANTITY_WATER                                              :{VOLUME} air
-STR_QUANTITY_WHEAT                                              :{WEIGHT}  gandum
+STR_QUANTITY_WHEAT                                              :{WEIGHT} gandum
 STR_QUANTITY_RUBBER                                             :{VOLUME} karet
 STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
 STR_QUANTITY_TOYS                                               :{COMMA} mainan
@@ -291,7 +291,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hentikan
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Percepat maju waktu permainan
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Pilihan
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Simpan, batalkan, keluar permainan
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Tampilkan peta,  tambahan viewport atau daftar pengenal
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Tampilkan peta, tambahan viewport atau daftar pengenal
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Tampilkan daftar kota
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tampilkan subsidi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Tampilkan daftar stasiun perusahaan
@@ -369,6 +369,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Daftar Tanda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Daftar kota
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Bangun Kota
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -580,6 +581,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Bebas 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume Musik
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume Efek
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -758,6 +762,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} telah diambil alih oleh {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Pimpinan)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} menjadi sponsor pembangunan kota baru {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ada pembangunan {STRING} baru di dekat {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} baru sedang ditanam di dekat {TOWN}!
@@ -1172,6 +1177,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Perusahaan send
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua perusahaan
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Aktifkan penjadwalan untuk kendaraan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Penjadwalan menggunakan satuan titik , bukan satuan hari: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Tampilkan keberangkatan dan kedatangan pada jadwal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Buat perintah kendaraan cepat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Jenis rel saat baru bermain/memuat permainan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Rel normal
@@ -1236,6 +1242,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kotak 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :acak
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kota mengijinkan untuk membuat jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ijinkan kota mengatur tingkat kebisingan bandara : {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Mendirikan kota pada permainan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :dilarang
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :diijinkan
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :diijinkan, rancangan kota dapat diubah sesuai kebiasaan
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisi toolbar utama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kiri
@@ -1427,7 +1437,7 @@ STR_FACE_FACECODE                                               :{BLACK}Wajah pe
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat/ubah nomer wajah pemain
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat/ubah nomer wajah pemain
 STR_FACE_FACECODE_SET                                           :{WHITE}Kode jumlah wajah baru telah diatur.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - haruslah angka antara  0 dan 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - haruslah angka antara 0 dan 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kesukaanmu
 STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai kesukaanmu ke dalam berkas config OpenTTD.
@@ -1768,7 +1778,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Anda me
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Keterkaitan ini terpilih untuk diunduh
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sudah dimiliki
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Konten ini tidak diketahui dan tidak dapat diunduh di OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah penggantian dari  {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah penggantian dari {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nama: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versi: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Deskripsi: {WHITE}{STRING}
@@ -1928,7 +1938,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Membangu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Membangun terowongan
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Membangun terowongan trem
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bangun/Bongkar konstruksi jalanan
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Membangun/bongkar  konstruksi rel trem
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Membangun/bongkar konstruksi jalur trem
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Depo kendaraan
@@ -2335,7 +2345,7 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multip
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Apakah anda yakin utk menerapkan perubahan pada permainan yang sedang berjalan?{}Ini dapat membuat OpenTTD berhenti mendadak
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak dapat menambahkan: GRF ID  sudah ada
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak dapat menambahkan: GRF ID sudah ada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Berkas yang cocok tidak diketemukan (GRF kompatibel telah dimuat)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF kompatibel telah dimuat untuk berkas yang hilang
@@ -2377,6 +2387,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Penumpan
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Dokumen bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo untuk pertumbuhan kota:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{BLACK} Butuh {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} dibutuhkan saat musim dingin
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{BLACK} Bulan lalu terima {ORANGE}{CARGO}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
@@ -2798,7 +2809,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pilih je
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pilih jenis mesin yang ingin digunakan sebagai pengganti mesin terpilih di sisi kiri
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulai Mengganti
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tekan untuk memulai penggantian jenis kendaraan terpilih  di sisi kiri dengan di sisi kanan
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tekan untuk memulai penggantian jenis kendaraan terpilih di sisi kiri dengan di sisi kanan
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Tidak Mengganti
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Tidak Ada Kendaraan yang dipilih
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Berhenti Mengganti
@@ -2921,6 +2932,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntung
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Rusak sejak perbaikkan terakhir : {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3127,7 +3139,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Total du
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kendaraan ini berjalan tepat waktu
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kendaraaan ini berjalan terlambat {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kendaraaan ini berjalan lebih awal {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Jadwal masih belum dimulai
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Jadwal ini akan dimulai pada {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tanggal mulai
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pilih tanggal sebagai titik awal jadwal ini
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih
@@ -3141,11 +3157,21 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalik
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-klik agar waktu tinggalnya tetap)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Harapan
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadwalkan
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ubah antara harapan dan jadwal
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Set Tanggal
+STR_DATE_SET_DATE                                               :{BLACK}Set tanggal
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Gunakan tanggal terpilih sebagai tanggal mulai jadwal ini
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Pilih hari
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Pilih bulan
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pilih tahun
 
 
 # AI debug window
@@ -3401,7 +3427,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(batas min. uan
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Kombinasi rel yang tidak mungkin
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tidak tersedia rel yang sesuai
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Harus membongkar rel  terlebih dahulu
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Harus membongkar rel terlebih dahulu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Jalan satu arah atau ada yang menghalangi
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tidak dapat membangun sinyal disini
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tidak dapat membangun jalur rel disini

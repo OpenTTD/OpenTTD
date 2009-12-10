@@ -3328,6 +3328,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запо
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Ожидаемое время
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Расписание
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Переключение между графиком движения и ожидаемым временем прибытия/отправления
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :О:
