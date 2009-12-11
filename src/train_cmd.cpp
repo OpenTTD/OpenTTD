@@ -1150,6 +1150,38 @@ static CommandCost CheckNewTrainLength(const Train *dst_head, const Train *src_h
 	return CommandCost();
 }
 
+/**
+ * Check/validate whether we may actually build a new train
+ * @param dst        The destination for the to be moved vehicle
+ * @param src        The to be moved vehicle
+ * @param move_chain Whether to move all vehicles after src or not
+ * @param flags      Any command flags given to CmdMoveRailVehicle
+ * @return possible error of this command.
+ */
+static CommandCost CheckNewTrain(const Train *dst, Train *src, bool move_chain, DoCommandFlag flags)
+{
+	/* Moving a loco to a new line?, then we need to assign a unitnumber. */
+	if (dst == NULL && !src->IsFrontEngine() && src->IsEngine()) {
+		UnitID unit_num = GetFreeUnitNumber(VEH_TRAIN);
+		if (unit_num > _settings_game.vehicle.max_trains) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+
+		if (flags & DC_EXEC) src->unitnumber = unit_num;
+	}
+
+	/* When we move the front vehicle, the second vehicle might need a unitnumber.
+	 * We do not need to assign that here because there will be a second call to
+	 * CmdMoveRailVehicle to make the new train which will then go through the
+	 * unitnumber setting procedure described above. */
+	if (!move_chain && (src->IsFreeWagon() || (src->IsFrontEngine() && dst == NULL))) {
+		const Train *second = src->GetNextUnit();
+		if (second != NULL && second->IsEngine() && GetFreeUnitNumber(VEH_TRAIN) > _settings_game.vehicle.max_trains) {
+			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+		}
+	}
+
+	return CommandCost();
+}
+
 /** Move a rail vehicle around inside the depot.
  * @param tile unused
  * @param flags type of operation
@@ -1165,6 +1197,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 {
 	VehicleID s = GB(p1, 0, 16);
 	VehicleID d = GB(p1, 16, 16);
+	bool move_chain = HasBit(p2, 0);
 
 	Train *src = Train::GetIfValid(s);
 	if (src == NULL || !CheckOwnership(src->owner)) return CMD_ERROR;
@@ -1208,7 +1241,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (src->IsRearDualheaded()) return_cmd_error(STR_ERROR_REAR_ENGINE_FOLLOW_FRONT);
 
 	/* when moving all wagons, we can't have the same src_head and dst_head */
-	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
+	if (move_chain && src_head == dst_head) return CommandCost();
 
 	if ((flags & DC_AUTOREPLACE) == 0) {
 		/* If the autoreplace flag is set we already are sure about
@@ -1216,25 +1249,14 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		 * cannot add more units to a chain. As such it will never
 		 * create a too long vehicle and thus there is no need to
 		 * do the length checks for autoreplace. */
-		CommandCost ret = CheckNewTrainLength(dst_head, src_head, src, HasBit(p2, 0));
+		CommandCost ret = CheckNewTrainLength(dst_head, src_head, src, move_chain);
 		if (ret.Failed()) return ret;
-	}
 
-	/* moving a loco to a new line?, then we need to assign a unitnumber. */
-	if (dst == NULL && !src->IsFrontEngine() && src->IsEngine()) {
-		UnitID unit_num = ((flags & DC_AUTOREPLACE) != 0 ? 0 : GetFreeUnitNumber(VEH_TRAIN));
-		if (unit_num > _settings_game.vehicle.max_trains)
-			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-
-		if (flags & DC_EXEC) src->unitnumber = unit_num;
-	}
-
-	/* When we move the front vehicle, the second vehicle might need a unitnumber */
-	if (!HasBit(p2, 0) && (src->IsFreeWagon() || (src->IsFrontEngine() && dst == NULL)) && (flags & DC_AUTOREPLACE) == 0) {
-		Train *second = src->GetNextUnit();
-		if (second != NULL && second->IsEngine() && GetFreeUnitNumber(VEH_TRAIN) > _settings_game.vehicle.max_trains) {
-			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-		}
+		/* If the autoreplace flag is set we do not need to test for
+		 * a new unit number because we are not going to create a
+		 * new train. As such this can be skipped for autoreplace. */
+		ret = CheckNewTrain(dst, src, move_chain, flags);
+		if (ret.Failed()) return ret;
 	}
 
 	/*
@@ -1318,7 +1340,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			}
 
 			/* Only check further wagons if told to move the chain */
-			if (!HasBit(p2, 0)) break;
+			if (!move_chain) break;
 
 			/*
 			 * Adding a next wagon to the chain so we can test the other wagons.
@@ -1358,7 +1380,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			}
 		}
 
-		if (HasBit(p2, 0)) {
+		if (move_chain) {
 			/* unlink ALL wagons */
 			if (src != src_head) {
 				Train *v = src_head;
