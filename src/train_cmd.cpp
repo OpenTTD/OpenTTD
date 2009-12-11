@@ -966,7 +966,10 @@ int CheckTrainInDepot(const Train *v, bool needs_to_be_stopped)
 	TileIndex tile = v->tile;
 
 	/* check if stopped in a depot */
-	if (!IsRailDepotTile(tile) || v->cur_speed != 0) return -1;
+	if (!IsRailDepotTile(tile) || v->cur_speed != 0 ||
+			(needs_to_be_stopped && v->IsFrontEngine() && !(v->vehstatus & VS_STOPPED))) {
+		return -1;
+	}
 
 	int count = 0;
 	for (; v != NULL; v = v->Next()) {
@@ -976,25 +979,10 @@ int CheckTrainInDepot(const Train *v, bool needs_to_be_stopped)
 		 *
 		 * Also skip counting rear ends of multiheaded engines */
 		if (!v->IsArticulatedPart() && !v->IsRearDualheaded()) count++;
-		if (v->track != TRACK_BIT_DEPOT || v->tile != tile ||
-				(v->IsFrontEngine() && needs_to_be_stopped && !(v->vehstatus & VS_STOPPED))) {
-			return -1;
-		}
+		if (v->track != TRACK_BIT_DEPOT || v->tile != tile) return -1;
 	}
 
 	return count;
-}
-
-/* Used to check if the train is inside the depot and verifying that the VS_STOPPED flag is set */
-int CheckTrainStoppedInDepot(const Train *v)
-{
-	return CheckTrainInDepot(v, true);
-}
-
-/* Used to check if the train is inside the depot, but not checking the VS_STOPPED flag */
-inline bool CheckTrainIsInsideDepot(const Train *v)
-{
-	return CheckTrainInDepot(v, false) > 0;
 }
 
 /**
@@ -1092,11 +1080,11 @@ static void NormaliseTrainConsist(Train *v)
 static CommandCost CheckNewTrainLength(const Train *dst_head, const Train *src_head, const Train *src, bool move_chain)
 {
 	/* Check if all vehicles in the source train are stopped inside a depot. */
-	int src_len = CheckTrainStoppedInDepot(src_head);
+	int src_len = CheckTrainInDepot(src_head, true);
 	if (src_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 
 	/* Check if all vehicles in the destination train are stopped inside a depot. */
-	int dst_len = dst_head != NULL ? CheckTrainStoppedInDepot(dst_head) : 0;
+	int dst_len = dst_head != NULL ? CheckTrainInDepot(dst_head, true) : 0;
 	if (dst_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 
 	/* Determine the maximum length of trains. */
@@ -1137,7 +1125,7 @@ static CommandCost CheckNewTrainLength(const Train *dst_head, const Train *src_h
 	/* We are moving between rows, so only count the wagons from the source
 	 * row that are being moved. */
 	if (move_chain) {
-		/* CheckTrainStoppedInDepot() counts units. */
+		/* CheckTrainInDepot() counts units. */
 		for (const Train *u = src_head; u != src && u != NULL; u = u->GetNextUnit()) src_len--;
 	} else {
 		/* If moving only one vehicle, just count that. */
@@ -1544,7 +1532,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	Train *first = v->First();
 
 	/* make sure the vehicle is stopped in the depot */
-	if (CheckTrainStoppedInDepot(first) < 0) {
+	if (!first->IsStoppedInDepot()) {
 		return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 	}
 
@@ -2102,7 +2090,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 
 		Train *front = v->First();
 		/* make sure the vehicle is stopped in the depot */
-		if (CheckTrainStoppedInDepot(front) < 0) {
+		if (!front->IsStoppedInDepot()) {
 			return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
 		}
 
@@ -2178,7 +2166,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	Train *v = Train::GetIfValid(p1);
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */

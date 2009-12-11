@@ -152,7 +152,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 
 		if (!vehicle_list_window) {
 			if (vehicle_type == VEH_TRAIN) {
-				if (CheckTrainInDepot(Train::From(v), false) == -1) continue;
+				if (!Train::From(v)->IsInDepot()) continue;
 			} else {
 				if (!(v->vehstatus & VS_HIDDEN)) continue;
 			}

@@ -50,7 +50,6 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
 byte FreightWagonMult(CargoID cargo);
 
 int CheckTrainInDepot(const Train *v, bool needs_to_be_stopped);
-int CheckTrainStoppedInDepot(const Train *v);
 void UpdateTrainAcceleration(Train *v);
 void CheckTrainsLengths();
 
@@ -133,7 +132,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	Money GetRunningCost() const;
 	int GetDisplayImageWidth(Point *offset = NULL) const;
 	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
-	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }
+	bool IsStoppedInDepot() const { return CheckTrainInDepot(this, true) != -1; }
 	bool Tick();
 	void OnNewDay();
 	uint Crash(bool flooded = false);
