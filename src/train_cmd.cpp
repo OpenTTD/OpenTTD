@@ -1085,6 +1085,71 @@ static void NormaliseTrainConsist(Train *v)
 	}
 }
 
+/**
+ * Check/validate the new train length
+ * @param dst_head   The destination chain of the to be moved vehicle
+ * @param src_head   The source chain of the to be moved vehicle
+ * @param src        The to be moved vehicle
+ * @param move_chain Whether to move all vehicles after src or not
+ * @return possible error of this command.
+ */
+static CommandCost CheckNewTrainLength(const Train *dst_head, const Train *src_head, const Train *src, bool move_chain)
+{
+	/* Check if all vehicles in the source train are stopped inside a depot. */
+	int src_len = CheckTrainStoppedInDepot(src_head);
+	if (src_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
+
+	/* Check if all vehicles in the destination train are stopped inside a depot. */
+	int dst_len = dst_head != NULL ? CheckTrainStoppedInDepot(dst_head) : 0;
+	if (dst_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
+
+	/* Determine the maximum length of trains. */
+	int max_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
+
+	/* If the length of both the source and destination combined is
+	 * within the maximum length for trains there is no need for any
+	 * complex calculations. All and any combination of vehicles
+	 * will be within the required lengths. */
+	if (src_len + dst_len <= max_len) return CommandCost();
+
+	if (!move_chain && !src_head->IsFrontEngine() && src_head == src && (src_len - 1) > max_len) {
+		/* Moving of a *single* non-engine at the front of the chain,
+		 * i.e. a free wagon list. If the next unit is an engine a new
+		 * train will be created instead of removing a vehicle from a
+		 * free chain. The newly created train may not be too long. */
+		const Train *u = src_head->GetNextUnit();
+		if (u != NULL && u->IsEngine()) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+	}
+
+	/* If we're only moving within the train. The 'only' corner case that
+	 * needs to be checked for this is that no new vehicle is created.
+	 * This is done in above here. */
+	if (src_head == dst_head) return CommandCost();
+
+	/* Going to make a new vehicle chain, but it is going to be a wagon
+	 * chain or we are going to add vehicles to a free wagon chain.
+	 * That chain does not have a limitation on its length.
+	 * NOTE that this cannot be done earlier in case the first vehicle
+	 * is removed from a free wagon chain and the second is an engine;
+	 * the new train in the source chain needs to be checked. */
+	if (dst_head == NULL ? !src->IsEngine() : !dst_head->IsFrontEngine()) {
+		return CommandCost();
+	}
+
+	/* We are moving between rows, so only count the wagons from the source
+	 * row that are being moved. */
+	if (move_chain) {
+		/* CheckTrainStoppedInDepot() counts units. */
+		for (const Train *u = src_head; u != src && u != NULL; u = u->GetNextUnit()) src_len--;
+	} else {
+		/* If moving only one vehicle, just count that. */
+		src_len = 1;
+	}
+
+	if (src_len + dst_len > max_len) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+	return CommandCost();
+}
+
 /** Move a rail vehicle around inside the depot.
  * @param tile unused
  * @param flags type of operation
@@ -1145,58 +1210,14 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	/* when moving all wagons, we can't have the same src_head and dst_head */
 	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
 
-	/* check if all vehicles in the source train are stopped inside a depot. */
-	int src_len = CheckTrainStoppedInDepot(src_head);
-	if (src_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
-
 	if ((flags & DC_AUTOREPLACE) == 0) {
-		/* Check whether there are more than 'max_len' train units (articulated parts and rear heads do not count) in the new chain */
-		int max_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
-
-		/* check the destination row if the source and destination aren't the same. */
-		if (src_head != dst_head) {
-			int dst_len = 0;
-
-			if (dst_head != NULL) {
-				/* check if all vehicles in the dest train are stopped. */
-				dst_len = CheckTrainStoppedInDepot(dst_head);
-				if (dst_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
-			}
-
-			if (src_head == src && !HasBit(p2, 0)) {
-				/* Moving of a *single* vehicle at the front of the train.
-				 * If the next vehicle is an engine a new train will be created
-				 * instead of removing a vehicle from a free chain. The newly
-				 * created train may not be too long. */
-				const Train *u = src_head->GetNextVehicle();
-				if (u != NULL && u->IsEngine() && (src_len - 1) > max_len) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
-			}
-
-			/* We are moving between rows, so only count the wagons from the source
-			 * row that are being moved. */
-			if (HasBit(p2, 0)) {
-				const Train *u;
-				/* CheckTrainStoppedInDepot() does counts dual-headed engines only once, so also do it here */
-				for (u = src_head; u != src && u != NULL; u = u->GetNextUnit()) {
-					src_len--;
-				}
-			} else {
-				/* If moving only one vehicle, just count that. */
-				src_len = 1;
-			}
-
-			if (src_len + dst_len > max_len) {
-				/* Abort if we're adding too many wagons to a train. */
-				if (dst_head != NULL && dst_head->IsFrontEngine()) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
-				/* Abort if we're making a train on a new row. */
-				if (dst_head == NULL && src->IsEngine()) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
-			}
-		} else {
-			/* Abort if we're creating a new train on an existing row. */
-			if (src_len > max_len && src == src_head && src_head->GetNextVehicle()->IsEngine()) {
-				return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
-			}
-		}
+		/* If the autoreplace flag is set we already are sure about
+		 * the fact that the vehicle is stopped. Autoreplace also
+		 * cannot add more units to a chain. As such it will never
+		 * create a too long vehicle and thus there is no need to
+		 * do the length checks for autoreplace. */
+		CommandCost ret = CheckNewTrainLength(dst_head, src_head, src, HasBit(p2, 0));
+		if (ret.Failed()) return ret;
 	}
 
 	/* moving a loco to a new line?, then we need to assign a unitnumber. */
