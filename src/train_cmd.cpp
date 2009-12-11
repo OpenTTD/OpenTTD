@@ -1402,9 +1402,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		if (move_chain) {
 			/* unlink ALL wagons */
 			if (src != src_head) {
-				Train *v = src_head;
-				while (v->GetNextVehicle() != src) v = v->GetNextVehicle();
-				v->GetLastEnginePart()->SetNext(NULL);
+				src->Previous()->SetNext(NULL);
 			} else {
 				InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile); // We removed a line
 				src_head = NULL;
@@ -1463,8 +1461,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			{
 				Train *v;
 
-				for (v = src; v->GetNextVehicle() != NULL; v = v->GetNextVehicle()) {}
-				v->GetLastEnginePart()->SetNext(dst->Next());
+				for (v = src; v->Next() != NULL; v = v->Next()) {}
+				v->SetNext(dst->Next());
 			}
 			dst->SetNext(src);
 		}
