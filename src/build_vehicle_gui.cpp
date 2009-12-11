@@ -758,8 +758,6 @@ struct BuildVehicleWindow : Window {
 		this->vehicle_type = type;
 		this->window_number = tile == INVALID_TILE ? (int)type : tile;
 
-		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
-
 		this->sel_engine      = INVALID_ENGINE;
 
 		this->sort_criteria         = _last_sort_criteria[type];
@@ -834,6 +832,8 @@ struct BuildVehicleWindow : Window {
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 		this->FinishInitNested(desc, tile == INVALID_TILE ? (int)type : tile);
+
+		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
