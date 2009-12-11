@@ -1182,6 +1182,128 @@ static CommandCost CheckNewTrain(const Train *dst, Train *src, bool move_chain, 
 	return CommandCost();
 }
 
+/**
+ * Check/validate the new train(s)
+ * @param dst_head   The destination chain of the to be moved vehicle
+ * @param dst        The destination for the to be moved vehicle
+ * @param src_head   The source chain of the to be moved vehicle
+ * @param src        The to be moved vehicle
+ * @param move_chain Whether to move all vehicles after src or not
+ * @return possible error of this command.
+ */
+static CommandCost CheckNewTrainValidity(Train *dst_head, Train *dst, Train *src_head, Train *src, bool move_chain)
+{
+	/*
+	 * Check whether the vehicles in the source chain are in the destination
+	 * chain. This can easily be done by checking whether the first vehicle
+	 * of the source chain is in the destination chain as the Next/Previous
+	 * pointers always make a doubly linked list of it where the assumption
+	 * v->Next()->Previous() == v holds (assuming v->Next() != NULL).
+	 */
+	bool src_in_dst = false;
+	for (Train *v = dst_head; !src_in_dst && v != NULL; v = v->Next()) src_in_dst = v == src;
+
+	/*
+	 * If the source chain is in the destination chain then the user is
+	 * only reordering the vehicles, thus not attaching a new vehicle.
+	 * Therefor the 'allow wagon attach' callback does not need to be
+	 * called. If it would be called strange things would happen because
+	 * one 'attaches' an already 'attached' vehicle causing more trouble
+	 * than it actually solves (infinite loops and such).
+	 */
+	if (dst_head == NULL || src_in_dst) return CommandCost();
+
+	/* Forget everything, as everything is going to change */
+	src->InvalidateNewGRFCacheOfChain();
+	dst->InvalidateNewGRFCacheOfChain();
+
+	/*
+	 * When performing the 'allow wagon attach' callback, we have to check
+	 * that for each and every wagon, not only the first one. This means
+	 * that we have to test one wagon, attach it to the train and then test
+	 * the next wagon till we have reached the end. We have to restore it
+	 * to the state it was before we 'tried' attaching the train when the
+	 * attaching fails or succeeds because we are not 'only' doing this
+	 * in the DC_EXEC state.
+	 */
+	Train *dst_tail = dst_head;
+	while (dst_tail->Next() != NULL) dst_tail = dst_tail->Next();
+
+	Train *orig_tail = dst_tail;
+	Train *next_to_attach = src;
+	Train *src_previous = src->Previous();
+
+	while (next_to_attach != NULL) {
+		/* Don't check callback for articulated or rear dual headed parts */
+		if (!next_to_attach->IsArticulatedPart() && !next_to_attach->IsRearDualheaded()) {
+			/* Back up and clear the first_engine data to avoid using wagon override group */
+			EngineID first_engine = next_to_attach->tcache.first_engine;
+			next_to_attach->tcache.first_engine = INVALID_ENGINE;
+
+			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
+
+			/* Restore original first_engine data */
+			next_to_attach->tcache.first_engine = first_engine;
+
+			/* We do not want to remember any cached variables from the test run */
+			next_to_attach->InvalidateNewGRFCache();
+			dst_head->InvalidateNewGRFCache();
+
+			if (callback != CALLBACK_FAILED) {
+				StringID error = STR_NULL;
+
+				if (callback == 0xFD) error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
+				if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
+
+				if (error != STR_NULL) {
+					/*
+					 * The attaching is not allowed. In this case 'next_to_attach'
+					 * can contain some vehicles of the 'source' and the destination
+					 * train can have some too. We 'just' add the to-be added wagons
+					 * to the chain and then split it where it was previously
+					 * separated, i.e. the tail of the original destination train.
+					 * Furthermore the 'previous' link of the original source vehicle needs
+					 * to be restored, otherwise the train goes missing in the depot.
+					 */
+					dst_tail->SetNext(next_to_attach);
+					orig_tail->SetNext(NULL);
+					if (src_previous != NULL) src_previous->SetNext(src);
+
+					return_cmd_error(error);
+				}
+			}
+		}
+
+		/* Only check further wagons if told to move the chain */
+		if (!move_chain) break;
+
+		/*
+		 * Adding a next wagon to the chain so we can test the other wagons.
+		 * First 'take' the first wagon from 'next_to_attach' and move it
+		 * to the next wagon. Then add that to the tail of the destination
+		 * train and update the tail with the new vehicle.
+		 */
+		Train *to_add = next_to_attach;
+		next_to_attach = next_to_attach->Next();
+
+		to_add->SetNext(NULL);
+		dst_tail->SetNext(to_add);
+		dst_tail = dst_tail->Next();
+	}
+
+	/*
+	 * When we reach this the attaching is allowed. It also means that the
+	 * chain of vehicles to attach is empty, so we do not need to merge that.
+	 * This means only the splitting needs to be done.
+	 * Furthermore the 'previous' link of the original source vehicle needs
+	 * to be restored, otherwise the train goes missing in the depot.
+	 */
+	orig_tail->SetNext(NULL);
+	if (src_previous != NULL) src_previous->SetNext(src);
+
+	return CommandCost();
+}
+
 /** Move a rail vehicle around inside the depot.
  * @param tile unused
  * @param flags type of operation
@@ -1257,114 +1379,13 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		 * new train. As such this can be skipped for autoreplace. */
 		ret = CheckNewTrain(dst, src, move_chain, flags);
 		if (ret.Failed()) return ret;
-	}
 
-	/*
-	 * Check whether the vehicles in the source chain are in the destination
-	 * chain. This can easily be done by checking whether the first vehicle
-	 * of the source chain is in the destination chain as the Next/Previous
-	 * pointers always make a doubly linked list of it where the assumption
-	 * v->Next()->Previous() == v holds (assuming v->Next() != NULL).
-	 */
-	bool src_in_dst = false;
-	for (Train *v = dst_head; !src_in_dst && v != NULL; v = v->Next()) src_in_dst = v == src;
-
-	/*
-	 * If the source chain is in the destination chain then the user is
-	 * only reordering the vehicles, thus not attaching a new vehicle.
-	 * Therefor the 'allow wagon attach' callback does not need to be
-	 * called. If it would be called strange things would happen because
-	 * one 'attaches' an already 'attached' vehicle causing more trouble
-	 * than it actually solves (infinite loops and such).
-	 */
-	if (dst_head != NULL && !src_in_dst && (flags & DC_AUTOREPLACE) == 0) {
-		/* Forget everything, as everything is going to change */
-		src->InvalidateNewGRFCacheOfChain();
-		dst->InvalidateNewGRFCacheOfChain();
-
-		/*
-		 * When performing the 'allow wagon attach' callback, we have to check
-		 * that for each and every wagon, not only the first one. This means
-		 * that we have to test one wagon, attach it to the train and then test
-		 * the next wagon till we have reached the end. We have to restore it
-		 * to the state it was before we 'tried' attaching the train when the
-		 * attaching fails or succeeds because we are not 'only' doing this
-		 * in the DC_EXEC state.
-		 */
-		Train *dst_tail = dst_head;
-		while (dst_tail->Next() != NULL) dst_tail = dst_tail->Next();
-
-		Train *orig_tail = dst_tail;
-		Train *next_to_attach = src;
-		Train *src_previous = src->Previous();
-
-		while (next_to_attach != NULL) {
-			/* Don't check callback for articulated or rear dual headed parts */
-			if (!next_to_attach->IsArticulatedPart() && !next_to_attach->IsRearDualheaded()) {
-				/* Back up and clear the first_engine data to avoid using wagon override group */
-				EngineID first_engine = next_to_attach->tcache.first_engine;
-				next_to_attach->tcache.first_engine = INVALID_ENGINE;
-
-				uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
-
-				/* Restore original first_engine data */
-				next_to_attach->tcache.first_engine = first_engine;
-
-				/* We do not want to remember any cached variables from the test run */
-				next_to_attach->InvalidateNewGRFCache();
-				dst_head->InvalidateNewGRFCache();
-
-				if (callback != CALLBACK_FAILED) {
-					StringID error = STR_NULL;
-
-					if (callback == 0xFD) error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
-					if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
-
-					if (error != STR_NULL) {
-						/*
-						 * The attaching is not allowed. In this case 'next_to_attach'
-						 * can contain some vehicles of the 'source' and the destination
-						 * train can have some too. We 'just' add the to-be added wagons
-						 * to the chain and then split it where it was previously
-						 * separated, i.e. the tail of the original destination train.
-						 * Furthermore the 'previous' link of the original source vehicle needs
-						 * to be restored, otherwise the train goes missing in the depot.
-						 */
-						dst_tail->SetNext(next_to_attach);
-						orig_tail->SetNext(NULL);
-						if (src_previous != NULL) src_previous->SetNext(src);
-
-						return_cmd_error(error);
-					}
-				}
-			}
-
-			/* Only check further wagons if told to move the chain */
-			if (!move_chain) break;
-
-			/*
-			 * Adding a next wagon to the chain so we can test the other wagons.
-			 * First 'take' the first wagon from 'next_to_attach' and move it
-			 * to the next wagon. Then add that to the tail of the destination
-			 * train and update the tail with the new vehicle.
-			 */
-			Train *to_add = next_to_attach;
-			next_to_attach = next_to_attach->Next();
-
-			to_add->SetNext(NULL);
-			dst_tail->SetNext(to_add);
-			dst_tail = dst_tail->Next();
-		}
-
-		/*
-		 * When we reach this the attaching is allowed. It also means that the
-		 * chain of vehicles to attach is empty, so we do not need to merge that.
-		 * This means only the splitting needs to be done.
-		 * Furthermore the 'previous' link of the original source vehicle needs
-		 * to be restored, otherwise the train goes missing in the depot.
-		 */
-		orig_tail->SetNext(NULL);
-		if (src_previous != NULL) src_previous->SetNext(src);
+		/* If the autoreplace flag is set we do not need to test for
+		 * the validity because we are going to revert the train to
+		 * its original state. As we can assume the original state
+		 * was correct this can be skipped for autoreplace. */
+		ret = CheckNewTrainValidity(dst_head, dst, src_head, src, move_chain);
+		if (ret.Failed()) return ret;
 	}
 
 	/* do it? */
