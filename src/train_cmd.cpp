@@ -705,19 +705,6 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 	}
 
 	if (flags & DC_EXEC) {
-		Vehicle *u = NULL;
-
-		Train *w;
-		FOR_ALL_TRAINS(w) {
-			/* do not connect new wagon with crashed/flooded consists */
-			if (w->tile == tile && w->IsFreeWagon() &&
-					w->engine_type == engine &&
-					!(w->vehstatus & VS_CRASHED)) {
-				u = w->Last();
-				break;
-			}
-		}
-
 		Train *v = new Train();
 		v->spritenum = rvi->image_index;
 
@@ -742,12 +729,8 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 //		v->subtype = 0;
 		v->SetWagon();
 
-		if (u != NULL) {
-			u->SetNext(v);
-		} else {
-			v->SetFreeWagon();
-			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		}
+		v->SetFreeWagon();
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
 		v->cargo_type = e->GetDefaultCargoType();
 //		v->cargo_subtype = 0;
@@ -778,6 +761,18 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		Company::Get(_current_company)->num_engines[engine]++;
 
 		CheckConsistencyOfArticulatedVehicle(v);
+
+		/* Try to connect the vehicle to one of free chains of wagons. */
+		Train *w;
+		FOR_ALL_TRAINS(w) {
+			/* do not connect new wagon with crashed/flooded consists */
+			if (w->tile == tile && w->IsFreeWagon() &&
+					w->engine_type == engine &&
+					!(w->vehstatus & VS_CRASHED)) {
+				DoCommand(0, v->index | (w->Last()->index << 16), 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				break;
+			}
+		}
 	}
 
 	return value;
