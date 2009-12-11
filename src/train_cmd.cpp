@@ -1112,7 +1112,9 @@ static CommandCost CheckNewTrainLength(const Train *dst_head, const Train *src_h
 	 * will be within the required lengths. */
 	if (src_len + dst_len <= max_len) return CommandCost();
 
-	if (!move_chain && !src_head->IsFrontEngine() && src_head == src && (src_len - 1) > max_len) {
+	if (!move_chain && !src_head->IsFrontEngine() && src_head == src &&
+			/* First case moving within, second is make a new one */
+			(src_head == dst_head ? src_len : src_len - 1) > max_len) {
 		/* Moving of a *single* non-engine at the front of the chain,
 		 * i.e. a free wagon list. If the next unit is an engine a new
 		 * train will be created instead of removing a vehicle from a
