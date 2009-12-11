@@ -1421,6 +1421,9 @@ STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Tự đ�
 STR_FACE_ADVANCED                                               :{BLACK}Cấp Cao
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Tùy chọn vẻ mặt cấp cao.
 STR_FACE_SIMPLE                                                 :{BLACK}Đơn giản
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Trình chọn vẻ mặt đơn giản.
+STR_FACE_LOAD                                                   :{BLACK}Nạp
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Chọn vẻ mặt ưa thích
 
 # Network server list
 

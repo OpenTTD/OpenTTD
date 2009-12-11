@@ -1645,14 +1645,14 @@ STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Promena 
 STR_FACE_NOSE                                                   :Nos:
 STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Promena nos
 STR_FACE_LIPS                                                   :Usna:
-STR_FACE_MOUSTACHE                                              :Brk:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Promena usna ili brk
+STR_FACE_MOUSTACHE                                              :Brkovi:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Promena usna ili brkova
 STR_FACE_CHIN                                                   :Brada:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Promena brada
-STR_FACE_JACKET                                                 :Jakna:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Promena jakna
-STR_FACE_COLLAR                                                 :Ovratnik:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Promena ovratnik
+STR_FACE_JACKET                                                 :Sako:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Menja dezen sakoa
+STR_FACE_COLLAR                                                 :Kragna:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Menja dezen kragne
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Minđuše:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promena kravate ili minđuša

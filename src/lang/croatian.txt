@@ -41,18 +41,18 @@ STR_CARGO_PLURAL_LIVESTOCK                                      :Domaće životi
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :domaćih životinja
 STR_CARGO_PLURAL_GOODS                                          :Roba
 STR_CARGO_PLURAL_GOODS.gen                                      :robe
-STR_CARGO_PLURAL_GRAIN                                          :Žitarice
+STR_CARGO_PLURAL_GRAIN                                          :Žito
 STR_CARGO_PLURAL_GRAIN.gen                                      :žita
 STR_CARGO_PLURAL_WOOD                                           :Drvo
 STR_CARGO_PLURAL_WOOD.gen                                       :drva
 STR_CARGO_PLURAL_IRON_ORE                                       :Željezna ruda
-STR_CARGO_PLURAL_IRON_ORE.gen                                   :željeza
-STR_CARGO_PLURAL_STEEL                                          :Ćelik
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :željezne rude
+STR_CARGO_PLURAL_STEEL                                          :Čelik
 STR_CARGO_PLURAL_STEEL.gen                                      :čelika
 STR_CARGO_PLURAL_VALUABLES                                      :Dragocjenosti
 STR_CARGO_PLURAL_VALUABLES.gen                                  :dragocjenosti
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bakrena ruda
-STR_CARGO_PLURAL_COPPER_ORE.gen                                 :bakra
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :bakrene rude
 STR_CARGO_PLURAL_MAIZE                                          :Kukuruz
 STR_CARGO_PLURAL_MAIZE.gen                                      :kukuruza
 STR_CARGO_PLURAL_FRUIT                                          :Voće
@@ -81,7 +81,7 @@ STR_CARGO_PLURAL_COLA                                           :Cola
 STR_CARGO_PLURAL_COLA.gen                                       :cole
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Šećerna vuna
 STR_CARGO_PLURAL_COTTON_CANDY.gen                               :šećerne vune
-STR_CARGO_PLURAL_BUBBLES                                        :Mjehurići
+STR_CARGO_PLURAL_BUBBLES                                        :Baloni
 STR_CARGO_PLURAL_BUBBLES.gen                                    :balona
 STR_CARGO_PLURAL_TOFFEE                                         :Mliječne karamele
 STR_CARGO_PLURAL_TOFFEE.gen                                     :mliječne karamele
@@ -99,68 +99,98 @@ STR_CARGO_SINGULAR_PASSENGER.gen                                :putnika
 STR_CARGO_SINGULAR_PASSENGER.aku                                :putnika
 STR_CARGO_SINGULAR_COAL                                         :Ugljen
 STR_CARGO_SINGULAR_COAL.gen                                     :ugljena
+STR_CARGO_SINGULAR_COAL.aku                                     :ugljen
 STR_CARGO_SINGULAR_MAIL                                         :Pošta
 STR_CARGO_SINGULAR_MAIL.gen                                     :pošte
+STR_CARGO_SINGULAR_MAIL.aku                                     :poštu
 STR_CARGO_SINGULAR_OIL                                          :Nafta
 STR_CARGO_SINGULAR_OIL.gen                                      :nafte
+STR_CARGO_SINGULAR_OIL.aku                                      :naftu
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Domaće životinje
 STR_CARGO_SINGULAR_LIVESTOCK.gen                                :domaćih životinja
+STR_CARGO_SINGULAR_LIVESTOCK.aku                                :domaće životinje
 STR_CARGO_SINGULAR_GOODS                                        :Roba
 STR_CARGO_SINGULAR_GOODS.gen                                    :robe
-STR_CARGO_SINGULAR_GRAIN                                        :Žitarice
+STR_CARGO_SINGULAR_GOODS.aku                                    :robu
+STR_CARGO_SINGULAR_GRAIN                                        :Žito
 STR_CARGO_SINGULAR_GRAIN.gen                                    :žita
+STR_CARGO_SINGULAR_GRAIN.aku                                    :žito
 STR_CARGO_SINGULAR_WOOD                                         :Drvo
 STR_CARGO_SINGULAR_WOOD.gen                                     :drva
+STR_CARGO_SINGULAR_WOOD.aku                                     :drvo
 STR_CARGO_SINGULAR_IRON_ORE                                     :Željezna ruda
-STR_CARGO_SINGULAR_IRON_ORE.gen                                 :željeza
+STR_CARGO_SINGULAR_IRON_ORE.gen                                 :željezne rude
+STR_CARGO_SINGULAR_IRON_ORE.aku                                 :željeznu rudu
 STR_CARGO_SINGULAR_STEEL                                        :Čelik
 STR_CARGO_SINGULAR_STEEL.gen                                    :čelika
+STR_CARGO_SINGULAR_STEEL.aku                                    :čelik
 STR_CARGO_SINGULAR_VALUABLES                                    :Dragocjenosti
 STR_CARGO_SINGULAR_VALUABLES.gen                                :dragocjenosti
+STR_CARGO_SINGULAR_VALUABLES.aku                                :dragocjenosti
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Bakrena ruda
-STR_CARGO_SINGULAR_COPPER_ORE.gen                               :bakra
+STR_CARGO_SINGULAR_COPPER_ORE.gen                               :bakrene rude
+STR_CARGO_SINGULAR_COPPER_ORE.aku                               :bakrenu rudu
 STR_CARGO_SINGULAR_MAIZE                                        :Kukuruz
 STR_CARGO_SINGULAR_MAIZE.gen                                    :kukuruza
+STR_CARGO_SINGULAR_MAIZE.aku                                    :kukuruz
 STR_CARGO_SINGULAR_FRUIT                                        :Voće
 STR_CARGO_SINGULAR_FRUIT.gen                                    :voća
+STR_CARGO_SINGULAR_FRUIT.aku                                    :voće
 STR_CARGO_SINGULAR_DIAMOND                                      :Dijamant
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :dijamanata
+STR_CARGO_SINGULAR_DIAMOND.aku                                  :dijamant
 STR_CARGO_SINGULAR_FOOD                                         :Hrana
 STR_CARGO_SINGULAR_FOOD.gen                                     :hrane
+STR_CARGO_SINGULAR_FOOD.aku                                     :hranu
 STR_CARGO_SINGULAR_PAPER                                        :Papir
 STR_CARGO_SINGULAR_PAPER.gen                                    :papira
+STR_CARGO_SINGULAR_PAPER.aku                                    :papir
 STR_CARGO_SINGULAR_GOLD                                         :Zlato
 STR_CARGO_SINGULAR_GOLD.gen                                     :zlata
+STR_CARGO_SINGULAR_GOLD.aku                                     :zlato
 STR_CARGO_SINGULAR_WATER                                        :Voda
 STR_CARGO_SINGULAR_WATER.gen                                    :vode
+STR_CARGO_SINGULAR_WATER.aku                                    :vodu
 STR_CARGO_SINGULAR_WHEAT                                        :Pšenica
 STR_CARGO_SINGULAR_WHEAT.gen                                    :pšenice
+STR_CARGO_SINGULAR_WHEAT.aku                                    :pšenicu
 STR_CARGO_SINGULAR_RUBBER                                       :Guma
 STR_CARGO_SINGULAR_RUBBER.gen                                   :gume
+STR_CARGO_SINGULAR_RUBBER.aku                                   :gumu
 STR_CARGO_SINGULAR_SUGAR                                        :Šećer
 STR_CARGO_SINGULAR_SUGAR.gen                                    :šećera
+STR_CARGO_SINGULAR_SUGAR.aku                                    :šećer
 STR_CARGO_SINGULAR_TOY                                          :Igračka
 STR_CARGO_SINGULAR_TOY.gen                                      :igračaka
+STR_CARGO_SINGULAR_TOY.aku                                      :igračku
 STR_CARGO_SINGULAR_CANDY                                        :Slatkiš
 STR_CARGO_SINGULAR_CANDY.gen                                    :slatkiša
+STR_CARGO_SINGULAR_CANDY.aku                                    :slatkiš
 STR_CARGO_SINGULAR_COLA                                         :Cola
 STR_CARGO_SINGULAR_COLA.gen                                     :cole
+STR_CARGO_SINGULAR_COLA.aku                                     :colu
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Šećerna vuna
 STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :šećerne vune
-STR_CARGO_SINGULAR_BUBBLE                                       :Mjehurić
+STR_CARGO_SINGULAR_COTTON_CANDY.aku                             :šećernu vunu
+STR_CARGO_SINGULAR_BUBBLE                                       :Balon
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :balona
+STR_CARGO_SINGULAR_BUBBLE.aku                                   :balon
 STR_CARGO_SINGULAR_TOFFEE                                       :Mliječna karamela
 STR_CARGO_SINGULAR_TOFFEE.gen                                   :mliječne karamele
+STR_CARGO_SINGULAR_TOFFEE.aku                                   :mliječnu karamelu
 STR_CARGO_SINGULAR_BATTERY                                      :Baterija
 STR_CARGO_SINGULAR_BATTERY.gen                                  :baterija
+STR_CARGO_SINGULAR_BATTERY.aku                                  :bateriju
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastika
 STR_CARGO_SINGULAR_PLASTIC.gen                                  :plastike
+STR_CARGO_SINGULAR_PLASTIC.aku                                  :plastiku
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gazirano piće
 STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :gaziranog pića
+STR_CARGO_SINGULAR_FIZZY_DRINK.aku                              :gazirano piće
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} putni{P k ka ka}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
 STR_QUANTITY_COAL                                               :{WEIGHT} ugljena
 STR_QUANTITY_MAIL                                               :{COMMA} poštansk{P a e ih} vreć{P a e a}
 STR_QUANTITY_OIL                                                :{VOLUME} nafte
@@ -168,10 +198,10 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
 STR_QUANTITY_GRAIN                                              :{WEIGHT} žita
 STR_QUANTITY_WOOD                                               :{WEIGHT} drveta
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} željeza
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} željezne rude
 STR_QUANTITY_STEEL                                              :{WEIGHT} čelika
 STR_QUANTITY_VALUABLES                                          :{COMMA} vreć{P a e a} s vrijednostima
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bakra
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bakrene rude
 STR_QUANTITY_MAIZE                                              :{WEIGHT} kukuruza
 STR_QUANTITY_FRUIT                                              :{WEIGHT} voća
 STR_QUANTITY_DIAMONDS                                           :{COMMA} vreć{P a e a} dijamanata
@@ -200,21 +230,21 @@ STR_ABBREV_COAL                                                 :{TINYFONT}UG
 STR_ABBREV_MAIL                                                 :{TINYFONT}PT
 STR_ABBREV_OIL                                                  :{TINYFONT}NF
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}DŽ
-STR_ABBREV_GOODS                                                :{TINYFONT}AU
+STR_ABBREV_GOODS                                                :{TINYFONT}RB
 STR_ABBREV_GRAIN                                                :{TINYFONT}ŽT
 STR_ABBREV_WOOD                                                 :{TINYFONT}DV
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}FE
 STR_ABBREV_STEEL                                                :{TINYFONT}ČL
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}DC
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CU
 STR_ABBREV_MAIZE                                                :{TINYFONT}KK
-STR_ABBREV_FRUIT                                                :{TINYFONT}VO
+STR_ABBREV_FRUIT                                                :{TINYFONT}VĆ
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
 STR_ABBREV_FOOD                                                 :{TINYFONT}HN
 STR_ABBREV_PAPER                                                :{TINYFONT}PR
 STR_ABBREV_GOLD                                                 :{TINYFONT}AU
 STR_ABBREV_WATER                                                :{TINYFONT}VO
-STR_ABBREV_WHEAT                                                :{TINYFONT}ŽT
+STR_ABBREV_WHEAT                                                :{TINYFONT}PŠ
 STR_ABBREV_RUBBER                                               :{TINYFONT}GM
 STR_ABBREV_SUGAR                                                :{TINYFONT}ŠĆ
 STR_ABBREV_TOYS                                                 :{TINYFONT}IG
@@ -288,7 +318,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Znak za 
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izaberi način sortiranja (silazno/uzlazno)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Izaberi kriterij za sortiranje
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Odaberite kriterij filtriranja
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Odaberi kriterij filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj prema
 STR_BUTTON_LOCATION                                             :{BLACK}Lokacija
 STR_BUTTON_RENAME                                               :{BLACK}Preimenuj
@@ -312,10 +342,10 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
-STR_MEASURE_LENGTH                                              :{BLACK}Dužina:{NUM}
-STR_MEASURE_AREA                                                :{BLACK}Područje:{NUM}x{NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina:{NUM}{}Visinska razlika:{NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje:{NUM}x{NUM}Visinska razlika:{NUM} m
+STR_MEASURE_LENGTH                                              :{BLACK}Dužina: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Područje: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina: {NUM}{}Visinska razlika: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje: {NUM} x {NUM}{}Visinska razlika: {NUM} m
 
 
 # These are used in buttons
@@ -333,7 +363,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Dobit prošle g
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Dobit ove godine
 STR_SORT_BY_AGE                                                 :Godine
 STR_SORT_BY_RELIABILITY                                         :Pouzdanost
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Ukupna nosivost po vrsti tereta
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Ukupna nosivost prema vrsti tereta
 STR_SORT_BY_MAX_SPEED                                           :Maksimalna brzina
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrijednost
@@ -342,9 +372,9 @@ STR_SORT_BY_LIFE_TIME                                           :Preostali živo
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje voznog reda
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
-STR_SORT_BY_RATING_MAX                                          :Najveća ocjena tereta
+STR_SORT_BY_RATING_MAX                                          :Najviša ocjena tereta
 STR_SORT_BY_RATING_MIN                                          :Najniža ocjena tereta
-STR_SORT_BY_ENGINE_ID                                           :MotorID(standardno sortiranje)
+STR_SORT_BY_ENGINE_ID                                           :MotorID (standardno sortiranje)
 STR_SORT_BY_COST                                                :Cijena
 STR_SORT_BY_POWER                                               :Snaga
 STR_SORT_BY_INTRO_DATE                                          :Datum početka
@@ -376,14 +406,14 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Izgradi 
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Izgradi ceste
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Izgradi pristaništa za brodove
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradi zračne luke
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvori alatnu traku za snižavanje/povećavanje, sadnju drveća, itd.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Pokaži prozor zvuk/glazba
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Pokaži zadnju poruku/vijest, prikaži postavke poruka
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemlji, debug UI, screenshotovi, o OpenTTD-u
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvori alatnu traku za krajolik kako bi spustio/izdignuo zemlju, posadio drveće, itd.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Pokaži prozor za zvuk/glazbu
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Pokaži zadnju poruku/vijest, pokaži postavke poruka
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemlji, konzola, debug UI, snimke ekrana, o OpenTTD-u
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Promijeni alatne trake
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Snimi scenarij, učitaj scenarij, napusti uređivanje scenarija, završi
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spremi scenarij, učitaj scenarij, napusti uređivanje scenarija, završi
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Uređivanje scenarija
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomakni početni datum 1 godinu unatrag
@@ -398,7 +428,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavi 
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Spremi scenarij
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj secenarij
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenarij
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku kartu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Završi s uređivanjem
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -409,7 +439,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Završi
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Postavke igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Postavke težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne postavke
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke NewGRF-a
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke za NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Postavke prozirnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikaži imena gradova
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Prikaži imena postaja
@@ -2453,6 +2483,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Putnika 
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pošte prošli mjesec: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Potrebno tereta za rast grada:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} potrebno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebno zimi
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} isporučeno prošli mjesec
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ograničenje buke u gradu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centriraj glavni pogled na lokaciju grada. Ctrl+klik otvara novi prozor sa lokacijom grada
@@ -3715,7 +3746,7 @@ STR_INDUSTRY_NAME_TOY_SHOP                                      :Trgovina igrač
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Tvornica igračaka
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Izvorni plastike
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Tvornica gaziranih pića
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generator mjehurića
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generator balona
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Iskop mliječne karamele
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Rudnik šećera
 

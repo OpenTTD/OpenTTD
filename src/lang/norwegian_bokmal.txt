@@ -57,7 +57,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :Bobler
 STR_CARGO_PLURAL_TOFFEE                                         :Karamell
 STR_CARGO_PLURAL_BATTERIES                                      :Batterier
 STR_CARGO_PLURAL_PLASTIC                                        :Plast
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Brus
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Mineralvann
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -91,7 +91,7 @@ STR_CARGO_SINGULAR_BUBBLE                                       :Boble
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamell
 STR_CARGO_SINGULAR_BATTERY                                      :Batteri
 STR_CARGO_SINGULAR_PLASTIC                                      :Plast
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Brus
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Mineralvann
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -125,7 +125,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamell
 STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plast
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} brus
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} mineralvann
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -268,14 +268,14 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fortjeneste i �
 STR_SORT_BY_AGE                                                 :Alder
 STR_SORT_BY_RELIABILITY                                         :Pålitelighet
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapasitet per varetype
-STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
+STR_SORT_BY_MAX_SPEED                                           :Maksimal hastighet
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_LIFE_TIME                                           :Gjenværende levetid
-STR_SORT_BY_TIMETABLE_DELAY                                     :Forsinkelse i forhold til timeplan
+STR_SORT_BY_TIMETABLE_DELAY                                     :Forsinkelse i forhold til tidstabell
 STR_SORT_BY_FACILITY                                            :Stasjonstype
-STR_SORT_BY_WAITING                                             :Verdi av ventende last
+STR_SORT_BY_WAITING                                             :Verdi på ventende gods
 STR_SORT_BY_RATING_MAX                                          :Høyeste godskvalitet
 STR_SORT_BY_RATING_MIN                                          :Laveste godskvalitet
 STR_SORT_BY_ENGINE_ID                                           :MaskinID (klassisk type)
@@ -284,14 +284,14 @@ STR_SORT_BY_POWER                                               :Kraft
 STR_SORT_BY_INTRO_DATE                                          :Introduksjonsdato
 STR_SORT_BY_RUNNING_COST                                        :Driftskostnad
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftskostnad
-STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapasitet
+STR_SORT_BY_CARGO_CAPACITY                                      :Godskapasitet
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Spol fremover
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Innstillinger
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre spill, avbryt spillet, avslutte
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kart
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kart, ekstra vindu eller skiltliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vis byoversikt
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis subsidier
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vis liste over firmaets stasjoner
@@ -299,11 +299,11 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vis firm
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vis firmaets generelle data
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vis grafer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vis firmarangeringstabell
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansier bygging av ny industri
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vis liste over firmaets tog
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis liste over firmaets biler
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vis liste over firmaets skip
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vis liste over firmaets fly
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansier bygging av ny industri eller vis liste over industrier
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vis liste over firmaets tog. Ctrl+klikk viser/skjuler gruppe-/kjøretøylisten
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis liste over firmaets lastebiler/busser. Ctrl+klikk viser/skjuler gruppe-/kjøretøylisten
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vis liste over firmaets skip. Ctrl+klikk viser/skjuler gruppe-/kjøretøylisten
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vis liste over firmaets fly. Ctrl+klikk viser/skjuler gruppe-/kjøretøylisten
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom inn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom ut
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg jernbanespor
@@ -343,7 +343,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskelighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte innstillinger
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Innstillinger for ny grafikk
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Innstillinger for NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Vis bynavn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Vis stasjonsnavn
@@ -397,18 +397,18 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansier ny in
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Bygg jernbane
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bygg elektrifisert jernbane
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bygg elektrisk jernbane
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Bygg monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bygg maglev
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bygg vei
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Trikkesporkonstruksjon
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bygg trikkespor
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Kanal konstruksjon
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygg kanal
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -436,7 +436,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI feilsøking
-STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 ############ range ends here
@@ -511,10 +511,10 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Overskuddsgraf
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Fortjenestegraf
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inntektsgraf
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Antall varer levert
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvudering av firma (maks poeng=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av firma (maks poeng=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdi
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
@@ -551,7 +551,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NB
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kjøretøy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjoner:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profitt:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fortjeneste:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inntekt:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. inntekt:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Levert:
@@ -560,13 +560,13 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Penger:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antall kjøretøy. Dette inkluderer kjøretøy, tog, skip og flymaskiner.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antall stasjonsdeler. Hver del av en stasjon (eks. tog stasjon, bussholdeplass, flyplass) er talt, selv om de er tilkoblet til en stasjon.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitten av kjøretøyene med lavest inntekt (kjøretøy eldre enn 2 år)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Penger tjent i måneden med lavest gevinst av de 12 siste kvartalene
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Penger tjent i måneden med høyest gevinst i de siste 12 kvartalene
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Enheter med frakt levert i de siste fire kvartalene.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Typer av frakt levert i de siste fire kvartalene.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antall kjøretøy med positiv fortjeneste i fjor. Dette inkluderer lastebiler/busser, tog, skip og fly.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antall stasjonsdeler. Hver del av en stasjon (f.eks. togstasjon, bussholdeplass, flyplass) er medregnet, selv om de er tilkoblet en stasjon.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Fortjenesten til kjøretøyet med lavest inntekt (kun kjøretøy eldre enn 2 år er medregnet)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Inntekt i den måneden med minst fortjeneste de siste 12 kvartalene
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Inntekt i den måneden med størst fortjeneste de siste 12 kvartalene
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Vareenheter levert de siste fire kvartalene.
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Antall varetyper levert det siste kvartalet.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Hvor mye penger dette firmaet har i banken
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Størrelsen på firmaets lån
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totale poeng av mulige poeng
@@ -598,18 +598,18 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stopp mu
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start musikken
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Dra for å endre volum på musikk og lydeffekter
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Velg alle spor
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Velg 'old style music'-program
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Velg 'new style music'-program
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Velg 'Ezy style music'-program
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Velg 'Egendefinert 1'-program
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Velg 'Egendefinert 2'-program
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Velg programmet 'gamle slagere'
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Velg programmet 'nye godbiter'
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Velg programmet 'Ezy Street'
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Velg programmet 'Egendefinert 1'
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Velg programmet 'Egendefinert 2'
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skru tilfeldig program av/på
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vis musikkspormeny
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikkprogram
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Sporregister
+STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Sporliste
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Tøm
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Lagre

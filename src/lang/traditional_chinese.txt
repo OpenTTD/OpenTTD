@@ -2387,6 +2387,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}上月�
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月郵件：{ORANGE}{COMMA}{BLACK}  最多：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}市鎮成長還需貨物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{BLACK}還需要 {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 必須是冬天
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{BLACK}上個月已運送 {ORANGE}{CARGO}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面中央。 按住 Ctrl 點選可於市鎮位置開啟新視窗視野
@@ -3156,7 +3157,9 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤�
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間排定時刻表 (按住 CTRL 可保持等待時間)
 
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}已排定時刻表
+STR_TIMETABLE_EXPECTED                                          :{BLACK}實際時間
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定時間
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切換顯示實際時間或表定時間
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :到:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :開:
