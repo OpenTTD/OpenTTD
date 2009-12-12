@@ -1372,7 +1372,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (move_chain && src_head == dst_head) return CommandCost();
 
 	/* When moving a multiheaded part to be place after itself, bail out. */
-	if (!move_chain && dst->IsRearDualheaded() && src == dst->other_multiheaded_part) return CommandCost();
+	if (!move_chain && dst != NULL && dst->IsRearDualheaded() && src == dst->other_multiheaded_part) return CommandCost();
 
 	/* Check if all vehicles in the source train are stopped inside a depot. */
 	if (!src_head->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
@@ -1444,11 +1444,23 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
 
+			/* We are going to be move to another train. So we
+			 * are no part of this group anymore. In case we
+			 * are not moving group... well, then we do not need
+			 * to move. */
+			if (dst_head != NULL && dst_head != src) DecreaseGroupNumVehicle(src->group_id);
+
 			/* Delete orders, group stuff and the unit number as we're not the
 			 * front of any vehicle anymore. */
 			DeleteVehicleOrders(src);
 			RemoveVehicleFromGroup(src);
 			src->unitnumber = 0;
+		}
+
+		/* We weren't a front engine but are becoming one. So
+		 * we should be put in the default group. */
+		if (original_src_head != src && dst_head == src) {
+			SetTrainGroupID(src, DEFAULT_GROUP);
 		}
 
 		/* Handle 'new engine' part of cases #1b, #2b, #3b, #4b and #5 in NormaliseTrainHead. */
