@@ -980,35 +980,6 @@ int CheckTrainInDepot(const Train *v, bool needs_to_be_stopped)
 	return count;
 }
 
-/**
- * Unlink a rail wagon from the consist.
- * @param v Vehicle to remove.
- * @param first The first vehicle of the consist.
- * @return The first vehicle of the consist.
- */
-static Train *UnlinkWagon(Train *v, Train *first)
-{
-	/* unlinking the first vehicle of the chain? */
-	if (v == first) {
-		v = v->GetNextVehicle();
-		if (v == NULL) return NULL;
-
-		if (v->IsWagon()) v->SetFreeWagon();
-
-		/* First can be an articulated engine, meaning GetNextVehicle() isn't
-		 * v->Next(). Thus set the next vehicle of the last articulated part
-		 * and the last articulated part is just before the next vehicle (v). */
-		v->Previous()->SetNext(NULL);
-
-		return v;
-	}
-
-	Train *u;
-	for (u = first; u->GetNextVehicle() != v; u = u->GetNextVehicle()) {}
-	u->GetLastEnginePart()->SetNext(v->GetNextVehicle());
-	return first;
-}
-
 static Train *FindGoodVehiclePos(const Train *src)
 {
 	EngineID eng = src->engine_type;
@@ -1027,41 +998,6 @@ static Train *FindGoodVehiclePos(const Train *src)
 	}
 
 	return NULL;
-}
-
-/*
- * add a vehicle v behind vehicle dest
- * use this function since it sets flags as needed
- */
-static void AddWagonToConsist(Train *v, Train *dest)
-{
-	UnlinkWagon(v, v->First());
-	if (dest == NULL) return;
-
-	Train *next = dest->Next();
-	v->SetNext(NULL);
-	dest->SetNext(v);
-	v->SetNext(next);
-	v->ClearFreeWagon();
-	v->ClearFrontEngine();
-}
-
-/*
- * move around on the train so rear engines are placed correctly according to the other engines
- * always call with the front engine
- */
-static void NormaliseTrainConsist(Train *v)
-{
-	for (; v != NULL; v = v->GetNextVehicle()) {
-		if (!v->IsMultiheaded() || !v->IsEngine()) continue;
-
-		/* make sure that there are no free cars before next engine */
-		Train *u;
-		for (u = v; u->Next() != NULL && !u->Next()->IsEngine(); u = u->Next()) {}
-
-		if (u == v->other_multiheaded_part) continue;
-		AddWagonToConsist(v->other_multiheaded_part, u);
-	}
 }
 
 /** Helper type for lists/vectors of trains */
@@ -1546,7 +1482,9 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	Train *v = Train::GetIfValid(p1);
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (p2 > 1) return CMD_ERROR;
+
+	/* Sell a chain of vehicles or not? */
+	bool sell_chain = HasBit(p2, 0);
 
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
 
@@ -1560,145 +1498,63 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (v->IsRearDualheaded()) return_cmd_error(STR_ERROR_REAR_ENGINE_FOLLOW_FRONT);
 
-	if (flags & DC_EXEC) {
-		if (v == first && first->IsFrontEngine()) {
-			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
-			DeleteWindowById(WC_VEHICLE_ORDERS, first->index);
-			DeleteWindowById(WC_VEHICLE_REFIT, first->index);
-			DeleteWindowById(WC_VEHICLE_DETAILS, first->index);
-			DeleteWindowById(WC_VEHICLE_TIMETABLE, first->index);
-		}
-		SetWindowDirty(WC_VEHICLE_DEPOT, first->tile);
-		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
+	/* First make a backup of the order of the train. That way we can do
+	 * whatever we want with the order and later on easily revert. */
+	TrainList original;
+	MakeTrainBackup(original, first);
+
+	/* We need to keep track of the new head and the head of what we're going to sell. */
+	Train *new_head = first;
+	Train *sell_head = NULL;
+
+	/* Split the train in the wanted way. */
+	ArrangeTrains(&sell_head, NULL, &new_head, v, sell_chain);
+
+	/* We don't need to validate the second train; it's going to be sold. */
+	CommandCost ret = ValidateTrains(NULL, NULL, first, new_head);
+	if (ret.Failed()) {
+		/* Restore the train we had. */
+		RestoreTrainBackup(original);
+		return ret;
 	}
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
-	switch (p2) {
-		case 0: { // Delete given wagon
-			bool switch_engine = false;    // update second wagon to engine?
+	for (Train *t = sell_head; t != NULL; t = t->Next()) cost.AddCost(-t->value);
 
-			/* 1. Delete the engine, if it is dualheaded also delete the matching
-			 * rear engine of the loco (from the point of deletion onwards) */
-			Train *rear = (v->IsMultiheaded() &&
-				v->IsEngine()) ? v->other_multiheaded_part : NULL;
+	/* do it? */
+	if (flags & DC_EXEC) {
+		/* First normalise the sub types of the chain. */
+		NormaliseSubtypes(new_head);
 
-			if (rear != NULL) {
-				cost.AddCost(-rear->value);
-				if (flags & DC_EXEC) {
-					UnlinkWagon(rear, first);
-					delete rear;
-				}
-			}
+		if (v == first && v->IsEngine() && !sell_chain && new_head != NULL && new_head->IsFrontEngine()) {
+			/* We are selling the front engine. In this case we want to
+			 * 'give' the order, unitnumber and such to the new head. */
+			new_head->orders.list = first->orders.list;
+			new_head->AddToShared(first);
+			DeleteVehicleOrders(first);
 
-			/* 2. We are selling the front vehicle, some special action might be required
-			 * here, so take attention */
-			if (v == first) {
-				Train *new_f = first->GetNextUnit();
+			/* Copy other important data from the front engine */
+			new_head->CopyVehicleConfigAndStatistics(first);
+			IncreaseGroupNumVehicle(new_head->group_id);
 
-				/* 2.2 If there are wagons present after the deleted front engine, check
-				 * if the second wagon (which will be first) is an engine. If it is one,
-				 * promote it as a new train, retaining the unitnumber, orders */
-				if (new_f != NULL && new_f->IsEngine()) {
-					if (first->IsEngine()) {
-						/* Let the new front engine take over the setup of the old engine */
-						switch_engine = true;
+			/* If we deleted a window then open a new one for the 'new' train */
+			if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_head);
+		}
 
-						if (flags & DC_EXEC) {
-							/* Make sure the group counts stay correct. */
-							new_f->group_id        = first->group_id;
-							first->group_id        = DEFAULT_GROUP;
+		/* We need to update the information about the train. */
+		NormaliseTrainHead(new_head);
 
-							/* Copy orders (by sharing) */
-							new_f->orders.list     = first->orders.list;
-							new_f->AddToShared(first);
-							DeleteVehicleOrders(first);
+		/* We are undoubtedly changing something in the depot and train list. */
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 
-							/* Copy other important data from the front engine */
-							new_f->CopyVehicleConfigAndStatistics(first);
-
-							/* If we deleted a window then open a new one for the 'new' train */
-							if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_f);
-						}
-					} else {
-						/* We are selling a free wagon, and construct a new train at the same time.
-						 * This needs lots of extra checks (e.g. train limit), which are done by first moving
-						 * the remaining vehicles to a new row */
-						cost.AddCost(DoCommand(0, new_f->index | INVALID_VEHICLE << 16, 1, flags, CMD_MOVE_RAIL_VEHICLE));
-						if (cost.Failed()) return cost;
-					}
-				}
-			}
-
-			/* 3. Delete the requested wagon */
-			cost.AddCost(-v->value);
-			if (flags & DC_EXEC) {
-				first = UnlinkWagon(v, first);
-				delete v;
-
-				/* 4 If the second wagon was an engine, update it to front_engine
-				 * which UnlinkWagon() has changed to TS_Free_Car */
-				if (switch_engine) first->SetFrontEngine();
-
-				/* 5. If the train still exists, update its acceleration, window, etc. */
-				if (first != NULL) {
-					NormaliseTrainConsist(first);
-					TrainConsistChanged(first, false);
-					UpdateTrainGroupID(first);
-					if (first->IsFrontEngine()) SetWindowDirty(WC_VEHICLE_REFIT, first->index);
-				}
-
-			}
-		} break;
-		case 1: { // Delete wagon and all wagons after it given certain criteria
-			/* Start deleting every vehicle after the selected one
-			 * If we encounter a matching rear-engine to a front-engine
-			 * earlier in the chain (before deletion), leave it alone */
-			for (Train *tmp; v != NULL; v = tmp) {
-				tmp = v->GetNextVehicle();
-
-				if (v->IsMultiheaded()) {
-					if (v->IsEngine()) {
-						/* We got a front engine of a multiheaded set. Now we will sell the rear end too */
-						Train *rear = v->other_multiheaded_part;
-
-						if (rear != NULL) {
-							cost.AddCost(-rear->value);
-
-							/* If this is a multiheaded vehicle with nothing
-							 * between the parts, tmp will be pointing to the
-							 * rear part, which is unlinked from the train and
-							 * deleted here. However, because tmp has already
-							 * been set it needs to be updated now so that the
-							 * loop never sees the rear part. */
-							if (tmp == rear) tmp = tmp->GetNextVehicle();
-
-							if (flags & DC_EXEC) {
-								first = UnlinkWagon(rear, first);
-								delete rear;
-							}
-						}
-					} else if (v->other_multiheaded_part != NULL) {
-						/* The front to this engine is earlier in this train. Do nothing */
-						continue;
-					}
-				}
-
-				cost.AddCost(-v->value);
-				if (flags & DC_EXEC) {
-					first = UnlinkWagon(v, first);
-					delete v;
-				}
-			}
-
-			/* 3. If it is still a valid train after selling, update its acceleration and cached values */
-			if ((flags & DC_EXEC) && first != NULL) {
-				NormaliseTrainConsist(first);
-				TrainConsistChanged(first, false);
-				UpdateTrainGroupID(first);
-				SetWindowDirty(WC_VEHICLE_REFIT, first->index);
-			}
-		} break;
+		/* Actually delete the sold 'goods' */
+		delete sell_head;
+	} else {
+		/* We don't want to execute what we're just tried. */
+		RestoreTrainBackup(original);
 	}
+
 	return cost;
 }
 
