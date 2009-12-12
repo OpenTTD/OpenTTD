@@ -397,6 +397,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 /* static */ bool AIOrder::SkipToOrder(VehicleID vehicle_id, OrderPosition next_order)
 {
+	next_order = AIOrder::ResolveOrderPosition(vehicle_id, next_order);
+
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, next_order));
 
 	return AIObject::DoCommand(0, vehicle_id, next_order, CMD_SKIP_TO_ORDER);

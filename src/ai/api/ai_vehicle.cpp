@@ -195,11 +195,7 @@
 
 /* static */ bool AIVehicle::SkipToVehicleOrder(VehicleID vehicle_id, AIOrder::OrderPosition order_position)
 {
-	order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
-
-	EnforcePrecondition(false, AIOrder::IsValidVehicleOrder(vehicle_id, order_position));
-
-	return AIObject::DoCommand(0, vehicle_id, order_position, CMD_SKIP_TO_ORDER);
+	return AIOrder::SkipToOrder(vehicle_id, order_position);
 }
 
 /* static */ bool AIVehicle::ReverseVehicle(VehicleID vehicle_id)
