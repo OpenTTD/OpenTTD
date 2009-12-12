@@ -1616,6 +1616,8 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 void Vehicle::SetNext(Vehicle *next)
 {
+	assert(this != next);
+
 	if (this->next != NULL) {
 		/* We had an old next vehicle. Update the first and previous pointers */
 		for (Vehicle *v = this->next; v != NULL; v = v->Next()) {
