@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "functions.h"
 #include "landscape.h"
 #include "company_func.h"
 #include "variables.h"
@@ -283,6 +284,9 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_
 	/* Load the right landscape stuff */
 	GfxLoadSprites();
 	LoadStringWidthTable();
+
+	/* Initialise cargo payment */
+	InitializeLandscapeVariables(false);
 
 	/* Re-init the windowing system */
 	ResetWindowSystem();
