@@ -1064,225 +1064,314 @@ static void NormaliseTrainConsist(Train *v)
 	}
 }
 
+/** Helper type for lists/vectors of trains */
+typedef SmallVector<Train *, 16> TrainList;
+
 /**
- * Check/validate the new train length
- * @param dst_head   The destination chain of the to be moved vehicle
- * @param src_head   The source chain of the to be moved vehicle
- * @param src        The to be moved vehicle
- * @param move_chain Whether to move all vehicles after src or not
- * @return possible error of this command.
+ * Make a backup of a train into a train list.
+ * @param list to make the backup in
+ * @param t    the train to make the backup of
  */
-static CommandCost CheckNewTrainLength(const Train *dst_head, const Train *src_head, const Train *src, bool move_chain)
+static void MakeTrainBackup(TrainList &list, Train *t)
 {
-	/* Check if all vehicles in the source train are stopped inside a depot. */
-	int src_len = CheckTrainInDepot(src_head, true);
-	if (src_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
+	for (; t != NULL; t = t->Next()) *list.Append() = t;
+}
 
-	/* Check if all vehicles in the destination train are stopped inside a depot. */
-	int dst_len = dst_head != NULL ? CheckTrainInDepot(dst_head, true) : 0;
-	if (dst_len < 0) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
+/**
+ * Restore the train from the backup list.
+ * @param list the train to restore.
+ */
+static void RestoreTrainBackup(TrainList &list)
+{
+	/* No train, nothing to do. */
+	if (list.Length() == 0) return;
 
-	/* Determine the maximum length of trains. */
-	int max_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
+	Train *prev = NULL;
+	/* Iterate over the list and rebuild it. */
+	for (Train **iter = list.Begin(); iter != list.End(); iter++) {
+		Train *t = *iter;
+		if (prev != NULL) {
+			prev->SetNext(t);
+		} else if (t->Previous() != NULL) {
+			/* Make sure the head of the train is always the first in the chain. */
+			t->Previous()->SetNext(NULL);
+		}
+		prev = t;
+	}
+}
 
-	/* If the length of both the source and destination combined is
-	 * within the maximum length for trains there is no need for any
-	 * complex calculations. All and any combination of vehicles
-	 * will be within the required lengths. */
-	if (src_len + dst_len <= max_len) return CommandCost();
+/**
+ * Remove the given wagon from it's consist.
+ * @param part the part of the train to remove.
+ * @param chain whether to remove the whole chain.
+ */
+static void RemoveFromConsist(Train *part, bool chain = false)
+{
+	Train *tail = chain ? part->Last() : part->GetLastEnginePart();
 
-	if (!move_chain && !src_head->IsFrontEngine() && src_head == src &&
-			/* First case moving within, second is make a new one */
-			(src_head == dst_head ? src_len : src_len - 1) > max_len) {
-		/* Moving of a *single* non-engine at the front of the chain,
-		 * i.e. a free wagon list. If the next unit is an engine a new
-		 * train will be created instead of removing a vehicle from a
-		 * free chain. The newly created train may not be too long. */
-		const Train *u = src_head->GetNextUnit();
-		if (u != NULL && u->IsEngine()) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+	/* Unlink at the front, but make it point to the next
+	 * vehicle after the to be remove part. */
+	if (part->Previous() != NULL) part->Previous()->SetNext(tail->Next());
+
+	/* Unlink at the back */
+	tail->SetNext(NULL);
+}
+
+/**
+ * Inserts a chain into the train at dst.
+ * @param dst   the place where to append after.
+ * @param chain the chain to actually add.
+ */
+static void InsertInConsist(Train *dst, Train *chain)
+{
+	/* We do not want to add something in the middle of an articulated part. */
+	assert(dst->Next() == NULL || !dst->Next()->IsArticulatedPart());
+
+	chain->Last()->SetNext(dst->Next());
+	dst->SetNext(chain);
+}
+
+/**
+ * Normalise the dual heads in the train, i.e. if one is
+ * missing move that one to this train.
+ * @param t the train to normalise.
+ */
+static void NormaliseDualHeads(Train *t)
+{
+	for (; t != NULL; t = t->GetNextVehicle()) {
+		if (!t->IsMultiheaded() || !t->IsEngine()) continue;
+
+		/* Make sure that there are no free cars before next engine */
+		Train *u;
+		for (u = t; u->Next() != NULL && !u->Next()->IsEngine(); u = u->Next()) {}
+
+		if (u == t->other_multiheaded_part) continue;
+
+		/* Remove the part from the 'wrong' train */
+		RemoveFromConsist(t->other_multiheaded_part);
+		/* And add it to the 'right' train */
+		InsertInConsist(u, t->other_multiheaded_part);
+	}
+}
+
+/**
+ * Normalise the sub types of the parts in this chain.
+ * @param chain the chain to normalise.
+ */
+static void NormaliseSubtypes(Train *chain)
+{
+	/* Nothing to do */
+	if (chain == NULL) return;
+
+	/* We must be the first in the chain. */
+	assert(chain->Previous() == NULL);
+
+	/* Set the appropirate bits for the first in the chain. */
+	if (chain->IsWagon()) {
+		chain->SetFreeWagon();
+	} else {
+		assert(chain->IsEngine());
+		chain->SetFrontEngine();
 	}
 
-	/* If we're only moving within the train. The 'only' corner case that
-	 * needs to be checked for this is that no new vehicle is created.
-	 * This is done in above here. */
-	if (src_head == dst_head) return CommandCost();
+	/* Now clear the bits for the rest of the chain */
+	for (Train *t = chain->Next(); t != NULL; t = t->Next()) {
+		t->ClearFreeWagon();
+		t->ClearFrontEngine();
+	}
+}
 
-	/* Going to make a new vehicle chain, but it is going to be a wagon
-	 * chain or we are going to add vehicles to a free wagon chain.
-	 * That chain does not have a limitation on its length.
-	 * NOTE that this cannot be done earlier in case the first vehicle
-	 * is removed from a free wagon chain and the second is an engine;
-	 * the new train in the source chain needs to be checked. */
-	if (dst_head == NULL ? !src->IsEngine() : !dst_head->IsFrontEngine()) {
+/**
+ * Check/validate whether we may actually build a new train.
+ * @note All vehicles are/were 'heads' of their chains.
+ * @param original_dst The original destination chain.
+ * @param dst          The destination chain after constructing the train.
+ * @param original_dst The original source chain.
+ * @param dst          The source chain after constructing the train.
+ * @return possible error of this command.
+ */
+static CommandCost CheckNewTrain(Train *original_dst, Train *dst, Train *original_src, Train *src)
+{
+	/* Just add 'new' engines and substract the original ones.
+	 * If that's less than or equal to 0 we can be sure we did
+	 * not add any engines (read: trains) along the way. */
+	if ((src          != NULL && src->IsEngine()          ? 1 : 0) +
+			(dst          != NULL && dst->IsEngine()          ? 1 : 0) -
+			(original_src != NULL && original_src->IsEngine() ? 1 : 0) -
+			(original_dst != NULL && original_dst->IsEngine() ? 1 : 0) <= 0) {
 		return CommandCost();
 	}
 
-	/* We are moving between rows, so only count the wagons from the source
-	 * row that are being moved. */
-	if (move_chain) {
-		/* CheckTrainInDepot() counts units. */
-		for (const Train *u = src_head; u != src && u != NULL; u = u->GetNextUnit()) src_len--;
-	} else {
-		/* If moving only one vehicle, just count that. */
-		src_len = 1;
-	}
+	/* Get a free unit number and check whether it's within the bounds.
+	 * There will always be a maximum of one new train. */
+	if (GetFreeUnitNumber(VEH_TRAIN) <= _settings_game.vehicle.max_trains) return CommandCost();
 
-	if (src_len + dst_len > max_len) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
-	return CommandCost();
+	return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 }
 
 /**
- * Check/validate whether we may actually build a new train
- * @param dst        The destination for the to be moved vehicle
- * @param src        The to be moved vehicle
- * @param move_chain Whether to move all vehicles after src or not
- * @param flags      Any command flags given to CmdMoveRailVehicle
+ * Check whether the train parts can be attached.
+ * @param t the train to check
  * @return possible error of this command.
  */
-static CommandCost CheckNewTrain(const Train *dst, Train *src, bool move_chain, DoCommandFlag flags)
+static CommandCost CheckTrainAttachment(Train *t)
 {
-	/* Moving a loco to a new line?, then we need to assign a unitnumber. */
-	if (dst == NULL && !src->IsFrontEngine() && src->IsEngine()) {
-		UnitID unit_num = GetFreeUnitNumber(VEH_TRAIN);
-		if (unit_num > _settings_game.vehicle.max_trains) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+	/* No multi-part train, no need to check. */
+	if (t == NULL || t->Next() == NULL || !t->IsEngine()) return CommandCost();
 
-		if (flags & DC_EXEC) src->unitnumber = unit_num;
-	}
+	/* The maximum length for a train. For each part we decrease this by one
+	 * and if the result is negative the train is simply too long. */
+	int allowed_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
 
-	/* When we move the front vehicle, the second vehicle might need a unitnumber.
-	 * We do not need to assign that here because there will be a second call to
-	 * CmdMoveRailVehicle to make the new train which will then go through the
-	 * unitnumber setting procedure described above. */
-	if (!move_chain && (src->IsFreeWagon() || (src->IsFrontEngine() && dst == NULL))) {
-		const Train *second = src->GetNextUnit();
-		if (second != NULL && second->IsEngine() && GetFreeUnitNumber(VEH_TRAIN) > _settings_game.vehicle.max_trains) {
-			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-		}
-	}
+	Train *head = t;
+	Train *prev = t;
 
-	return CommandCost();
-}
+	/* Break the prev -> t link so it always holds within the loop. */
+	t = t->Next();
+	allowed_len--;
+	prev->SetNext(NULL);
 
-/**
- * Check/validate the new train(s)
- * @param dst_head   The destination chain of the to be moved vehicle
- * @param dst        The destination for the to be moved vehicle
- * @param src_head   The source chain of the to be moved vehicle
- * @param src        The to be moved vehicle
- * @param move_chain Whether to move all vehicles after src or not
- * @return possible error of this command.
- */
-static CommandCost CheckNewTrainValidity(Train *dst_head, Train *dst, Train *src_head, Train *src, bool move_chain)
-{
-	/*
-	 * Check whether the vehicles in the source chain are in the destination
-	 * chain. This can easily be done by checking whether the first vehicle
-	 * of the source chain is in the destination chain as the Next/Previous
-	 * pointers always make a doubly linked list of it where the assumption
-	 * v->Next()->Previous() == v holds (assuming v->Next() != NULL).
-	 */
-	bool src_in_dst = false;
-	for (Train *v = dst_head; !src_in_dst && v != NULL; v = v->Next()) src_in_dst = v == src;
+	/* Make sure the cache is cleared. */
+	head->InvalidateNewGRFCache();
 
-	/*
-	 * If the source chain is in the destination chain then the user is
-	 * only reordering the vehicles, thus not attaching a new vehicle.
-	 * Therefor the 'allow wagon attach' callback does not need to be
-	 * called. If it would be called strange things would happen because
-	 * one 'attaches' an already 'attached' vehicle causing more trouble
-	 * than it actually solves (infinite loops and such).
-	 */
-	if (dst_head == NULL || src_in_dst) return CommandCost();
+	while (t != NULL) {
+		Train *next = t->Next();
 
-	/* Forget everything, as everything is going to change */
-	src->InvalidateNewGRFCacheOfChain();
-	dst->InvalidateNewGRFCacheOfChain();
+		/* Unlink the to-be-added piece; it is already unlinked from the previous
+		 * part due to the fact that the prev -> t link is broken. */
+		t->SetNext(NULL);
 
-	/*
-	 * When performing the 'allow wagon attach' callback, we have to check
-	 * that for each and every wagon, not only the first one. This means
-	 * that we have to test one wagon, attach it to the train and then test
-	 * the next wagon till we have reached the end. We have to restore it
-	 * to the state it was before we 'tried' attaching the train when the
-	 * attaching fails or succeeds because we are not 'only' doing this
-	 * in the DC_EXEC state.
-	 */
-	Train *dst_tail = dst_head;
-	while (dst_tail->Next() != NULL) dst_tail = dst_tail->Next();
-
-	Train *orig_tail = dst_tail;
-	Train *next_to_attach = src;
-	Train *src_previous = src->Previous();
-
-	while (next_to_attach != NULL) {
 		/* Don't check callback for articulated or rear dual headed parts */
-		if (!next_to_attach->IsArticulatedPart() && !next_to_attach->IsRearDualheaded()) {
-			/* Back up and clear the first_engine data to avoid using wagon override group */
-			EngineID first_engine = next_to_attach->tcache.first_engine;
-			next_to_attach->tcache.first_engine = INVALID_ENGINE;
+		if (!t->IsArticulatedPart() && !t->IsRearDualheaded()) {
+			allowed_len--; // We do not count articulated parts and rear heads either.
 
-			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
+			/* Back up and clear the first_engine data to avoid using wagon override group */
+			EngineID first_engine = t->tcache.first_engine;
+			t->tcache.first_engine = INVALID_ENGINE;
+
+			/* We don't want the cache to interfere. head's cache is cleared before
+			 * the loop and after each callback does not need to be cleared here. */
+			t->InvalidateNewGRFCache();
+
+			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, head->engine_type, t, head);
 
 			/* Restore original first_engine data */
-			next_to_attach->tcache.first_engine = first_engine;
+			t->tcache.first_engine = first_engine;
 
 			/* We do not want to remember any cached variables from the test run */
-			next_to_attach->InvalidateNewGRFCache();
-			dst_head->InvalidateNewGRFCache();
+			t->InvalidateNewGRFCache();
+			head->InvalidateNewGRFCache();
 
 			if (callback != CALLBACK_FAILED) {
+				/* A failing callback means everything is okay */
 				StringID error = STR_NULL;
 
 				if (callback == 0xFD) error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
-				if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
+				if (callback  < 0xFD) error = GetGRFStringID(GetEngineGRFID(head->engine_type), 0xD000 + callback);
 
-				if (error != STR_NULL) {
-					/*
-					 * The attaching is not allowed. In this case 'next_to_attach'
-					 * can contain some vehicles of the 'source' and the destination
-					 * train can have some too. We 'just' add the to-be added wagons
-					 * to the chain and then split it where it was previously
-					 * separated, i.e. the tail of the original destination train.
-					 * Furthermore the 'previous' link of the original source vehicle needs
-					 * to be restored, otherwise the train goes missing in the depot.
-					 */
-					dst_tail->SetNext(next_to_attach);
-					orig_tail->SetNext(NULL);
-					if (src_previous != NULL) src_previous->SetNext(src);
-
-					return_cmd_error(error);
-				}
+				if (error != STR_NULL) return_cmd_error(error);
 			}
 		}
 
-		/* Only check further wagons if told to move the chain */
-		if (!move_chain) break;
-
-		/*
-		 * Adding a next wagon to the chain so we can test the other wagons.
-		 * First 'take' the first wagon from 'next_to_attach' and move it
-		 * to the next wagon. Then add that to the tail of the destination
-		 * train and update the tail with the new vehicle.
-		 */
-		Train *to_add = next_to_attach;
-		next_to_attach = next_to_attach->Next();
-
-		to_add->SetNext(NULL);
-		dst_tail->SetNext(to_add);
-		dst_tail = dst_tail->Next();
+		/* And link it to the new part. */
+		prev->SetNext(t);
+		prev = t;
+		t = next;
 	}
 
-	/*
-	 * When we reach this the attaching is allowed. It also means that the
-	 * chain of vehicles to attach is empty, so we do not need to merge that.
-	 * This means only the splitting needs to be done.
-	 * Furthermore the 'previous' link of the original source vehicle needs
-	 * to be restored, otherwise the train goes missing in the depot.
-	 */
-	orig_tail->SetNext(NULL);
-	if (src_previous != NULL) src_previous->SetNext(src);
-
+	if (allowed_len <= 0) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
 	return CommandCost();
+}
+
+/**
+ * Validate whether we are going to create valid trains.
+ * @note All vehicles are/were 'heads' of their chains.
+ * @param original_dst The original destination chain.
+ * @param dst          The destination chain after constructing the train.
+ * @param original_dst The original source chain.
+ * @param dst          The source chain after constructing the train.
+ * @return possible error of this command.
+ */
+static CommandCost ValidateTrains(Train *original_dst, Train *dst, Train *original_src, Train *src)
+{
+	/* Check whether we may actually construct the trains. */
+	CommandCost ret = CheckTrainAttachment(src);
+	if (ret.Failed()) return ret;
+	ret = CheckTrainAttachment(dst);
+	if (ret.Failed()) return ret;
+
+	/* Check whether we need to build a new train. */
+	return CheckNewTrain(original_dst, dst, original_src, src);
+}
+
+/**
+ * Arrange the trains in the wanted way.
+ * @param dst_head   The destination chain of the to be moved vehicle.
+ * @param dst        The destination for the to be moved vehicle.
+ * @param src_head   The source chain of the to be moved vehicle.
+ * @param src        The to be moved vehicle.
+ * @param move_chain Whether to move all vehicles after src or not.
+ */
+static void ArrangeTrains(Train **dst_head, Train *dst, Train **src_head, Train *src, bool move_chain)
+{
+	/* First determine the front of the two resulting trains */
+	if (*src_head == *dst_head) {
+		/* If we aren't moving part(s) to a new train, we are just moving the
+		 * front back and there is not destination head. */
+		*dst_head = NULL;
+	} else if (*dst_head == NULL) {
+		/* If we are moving to a new train the head of the move train would become
+		 * the head of the new vehicle. */
+		*dst_head = src;
+	}
+
+	if (src == *src_head) {
+		/* If we are moving the front of a train then we are, in effect, creating
+		 * a new head for the train. Point to that. Unless we are moving the whole
+		 * train in which case there is not 'source' train anymore.
+		 * In case we are a multiheaded part we want the complete thing to come
+		 * with us, so src->GetNextUnit(), however... when we are e.g. a wagon
+		 * that is followed by a rear multihead we do not want to include that. */
+		*src_head = move_chain ? NULL :
+				(src->IsMultiheaded() ? src->GetNextUnit() : src->GetNextVehicle());
+	}
+
+	/* Now it's just simply removing the part that we are going to move from the
+	 * source train and *if* the destination is a not a new train add the chain
+	 * at the destination location. */
+	RemoveFromConsist(src, move_chain);
+	if (*dst_head != src) InsertInConsist(dst, src);
+
+	/* Now normalise the dual heads, that is move the dual heads around in such
+	 * a way that the head and rear of a dual head are in the same train */
+	NormaliseDualHeads(*src_head);
+	NormaliseDualHeads(*dst_head);
+}
+
+/**
+ * Normalise the head of the train again, i.e. that is tell the world that
+ * we have changed and update all kinds of variables.
+ * @param head the train to update.
+ */
+static void NormaliseTrainHead(Train *head)
+{
+	/* Not much to do! */
+	if (head == NULL) return;
+
+	/* Tell the 'world' the train changed. */
+	TrainConsistChanged(head, false);
+	UpdateTrainGroupID(head);
+
+	/* Not a front engine, i.e. a free wagon chain. No need to do more. */
+	if (!head->IsFrontEngine()) return;
+
+	/* Update the refit button and window */
+	SetWindowDirty(WC_VEHICLE_REFIT, head->index);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, head->index, VVW_WIDGET_REFIT_VEH);
+
+	/* If we don't have a unit number yet, set one. */
+	if (head->unitnumber != 0) return;
+	head->unitnumber = GetFreeUnitNumber(VEH_TRAIN);
 }
 
 /** Move a rail vehicle around inside the depot.
@@ -1346,156 +1435,94 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	/* when moving all wagons, we can't have the same src_head and dst_head */
 	if (move_chain && src_head == dst_head) return CommandCost();
 
+	/* Check if all vehicles in the source train are stopped inside a depot. */
+	if (!src_head->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
+
+	/* Check if all vehicles in the destination train are stopped inside a depot. */
+	if (dst_head != NULL && !dst_head->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
+
+	/* First make a backup of the order of the trains. That way we can do
+	 * whatever we want with the order and later on easily revert. */
+	TrainList original_src;
+	TrainList original_dst;
+
+	MakeTrainBackup(original_src, src_head);
+	MakeTrainBackup(original_dst, dst_head);
+
+	/* Also make backup of the original heads as ArrangeTrains can change them.
+	 * For the destination head we do not care if it is the same as the source
+	 * head because in that case it's just a copy. */
+	Train *original_src_head = src_head;
+	Train *original_dst_head = (dst_head == src_head ? NULL : dst_head);
+
+	/* (Re)arrange the trains in the wanted arrangement. */
+	ArrangeTrains(&dst_head, dst, &src_head, src, move_chain);
+
 	if ((flags & DC_AUTOREPLACE) == 0) {
-		/* If the autoreplace flag is set we already are sure about
-		 * the fact that the vehicle is stopped. Autoreplace also
-		 * cannot add more units to a chain. As such it will never
-		 * create a too long vehicle and thus there is no need to
-		 * do the length checks for autoreplace. */
-		CommandCost ret = CheckNewTrainLength(dst_head, src_head, src, move_chain);
-		if (ret.Failed()) return ret;
-
-		/* If the autoreplace flag is set we do not need to test for
-		 * a new unit number because we are not going to create a
-		 * new train. As such this can be skipped for autoreplace. */
-		ret = CheckNewTrain(dst, src, move_chain, flags);
-		if (ret.Failed()) return ret;
-
-		/* If the autoreplace flag is set we do not need to test for
-		 * the validity because we are going to revert the train to
-		 * its original state. As we can assume the original state
-		 * was correct this can be skipped for autoreplace. */
-		ret = CheckNewTrainValidity(dst_head, dst, src_head, src, move_chain);
-		if (ret.Failed()) return ret;
+		/* If the autoreplace flag is set we do not need to test for the validity
+		 * because we are going to revert the train to its original state. As we
+		 * assume the original state was correct autoreplace can skip this. */
+		CommandCost ret = ValidateTrains(original_dst_head, dst_head, original_src_head, src_head);
+		if (ret.Failed()) {
+			/* Restore the train we had. */
+			RestoreTrainBackup(original_src);
+			RestoreTrainBackup(original_dst);
+			return ret;
+		}
 	}
 
 	/* do it? */
 	if (flags & DC_EXEC) {
-		/* If we move the front Engine and if the second vehicle is not an engine
-		   add the whole vehicle to the DEFAULT_GROUP */
-		if (src->IsFrontEngine() && !IsDefaultGroupID(src->group_id)) {
-			Train *v = src->GetNextUnit();
+		/* First normalise the sub types of the chains. */
+		NormaliseSubtypes(src_head);
+		NormaliseSubtypes(dst_head);
 
-			if (v != NULL && v->IsEngine()) {
-				v->group_id   = src->group_id;
-				src->group_id = DEFAULT_GROUP;
-			}
+		/* There are 14 different cases:
+		 *  1) front engine gets moved to a new train, it stays a front engine.
+		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     c) there is no 'next' part, nothing else happens
+		 *  2) front engine gets moved to another train, it is not a front engine anymore
+		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     c) there is no 'next' part, nothing else happens
+		 *  3) front engine gets moved to later in the current train, it is not an engine anymore.
+		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *  4) free wagon gets moved
+		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     c) there is no 'next' part, nothing else happens
+		 *  5) non front engine gets moved and becomes a new train, nothing else happens
+		 *  6) non front engine gets moved within a train / to another train, nothing hapens
+		 *  7) wagon gets moved, nothing happens
+		 */
+		if (src == original_src_head && src->IsEngine() && !src->IsFrontEngine()) {
+			/* Cases #2 and #3: the front engine gets trashed. */
+			DeleteWindowById(WC_VEHICLE_VIEW, src->index);
+			DeleteWindowById(WC_VEHICLE_ORDERS, src->index);
+			DeleteWindowById(WC_VEHICLE_REFIT, src->index);
+			DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
+			DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
+
+			/* Delete orders, group stuff and the unit number as we're not the
+			 * front of any vehicle anymore. */
+			DeleteVehicleOrders(src);
+			RemoveVehicleFromGroup(src);
+			src->unitnumber = 0;
 		}
 
-		if (move_chain) {
-			/* unlink ALL wagons */
-			if (src != src_head) {
-				src->Previous()->SetNext(NULL);
-			} else {
-				InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile); // We removed a line
-				src_head = NULL;
-			}
-		} else {
-			/* if moving within the same chain, dont use dst_head as it may get invalidated */
-			if (src_head == dst_head) dst_head = NULL;
-			/* unlink single wagon from linked list */
-			src_head = UnlinkWagon(src, src_head);
-			src->GetLastEnginePart()->SetNext(NULL);
-		}
+		/* Handle 'new engine' part of cases #1b, #2b, #3b, #4b and #5 in NormaliseTrainHead. */
+		NormaliseTrainHead(src_head);
+		NormaliseTrainHead(dst_head);
 
-		if (dst == NULL) {
-			/* We make a new line in the depot, so we know already that we invalidate the window data */
-			InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
-
-			/* move the train to an empty line. for locomotives, we set the type to TS_Front. for wagons, 4. */
-			if (src->IsEngine()) {
-				if (!src->IsFrontEngine()) {
-					/* setting the type to 0 also involves setting up the orders field. */
-					src->SetFrontEngine();
-					assert(src->orders.list == NULL);
-
-					/* Decrease the engines number of the src engine_type */
-					if (!IsDefaultGroupID(src->group_id) && Group::IsValidID(src->group_id)) {
-						Group::Get(src->group_id)->num_engines[src->engine_type]--;
-					}
-
-					/* If we move an engine to a new line affect it to the DEFAULT_GROUP */
-					src->group_id = DEFAULT_GROUP;
-				}
-			} else {
-				src->SetFreeWagon();
-			}
-			dst_head = src;
-		} else {
-			if (src->IsFrontEngine()) {
-				/* the vehicle was previously a loco. need to free the order list and delete vehicle windows etc. */
-				DeleteWindowById(WC_VEHICLE_VIEW, src->index);
-				DeleteWindowById(WC_VEHICLE_ORDERS, src->index);
-				DeleteWindowById(WC_VEHICLE_REFIT, src->index);
-				DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
-				DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
-				DeleteVehicleOrders(src);
-				RemoveVehicleFromGroup(src);
-			}
-
-			if (src->IsFrontEngine() || src->IsFreeWagon()) {
-				InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
-				src->ClearFrontEngine();
-				src->ClearFreeWagon();
-				src->unitnumber = 0; // doesn't occupy a unitnumber anymore.
-			}
-
-			/* link in the wagon(s) in the chain. */
-			{
-				Train *v;
-
-				for (v = src; v->Next() != NULL; v = v->Next()) {}
-				v->SetNext(dst->Next());
-			}
-			dst->SetNext(src);
-		}
-
-		if (src->other_multiheaded_part != NULL) {
-			if (src->other_multiheaded_part == src_head) {
-				src_head = src_head->Next();
-			}
-			AddWagonToConsist(src->other_multiheaded_part, src);
-		}
-
-		/* If there is an engine behind first_engine we moved away, it should become new first_engine
-		 * To do this, CmdMoveRailVehicle must be called once more
-		 * we can't loop forever here because next time we reach this line we will have a front engine */
-		if (src_head != NULL && !src_head->IsFrontEngine() && src_head->IsEngine()) {
-			/* As in CmdMoveRailVehicle src_head->group_id will be equal to DEFAULT_GROUP
-			 * we need to save the group and reaffect it to src_head */
-			const GroupID tmp_g = src_head->group_id;
-			CmdMoveRailVehicle(0, flags, src_head->index | (INVALID_VEHICLE << 16), 1, text);
-			SetTrainGroupID(src_head, tmp_g);
-			src_head = NULL; // don't do anything more to this train since the new call will do it
-		}
-
-		if (src_head != NULL) {
-			NormaliseTrainConsist(src_head);
-			TrainConsistChanged(src_head, false);
-			UpdateTrainGroupID(src_head);
-			if (src_head->IsFrontEngine()) {
-				/* Update the refit button and window */
-				SetWindowDirty(WC_VEHICLE_REFIT, src_head->index);
-				SetWindowWidgetDirty(WC_VEHICLE_VIEW, src_head->index, VVW_WIDGET_REFIT_VEH);
-			}
-			/* Update the depot window */
-			SetWindowDirty(WC_VEHICLE_DEPOT, src_head->tile);
-		}
-
-		if (dst_head != NULL) {
-			NormaliseTrainConsist(dst_head);
-			TrainConsistChanged(dst_head, false);
-			UpdateTrainGroupID(dst_head);
-			if (dst_head->IsFrontEngine()) {
-				/* Update the refit button and window */
-				SetWindowWidgetDirty(WC_VEHICLE_VIEW, dst_head->index, VVW_WIDGET_REFIT_VEH);
-				SetWindowDirty(WC_VEHICLE_REFIT, dst_head->index);
-			}
-			/* Update the depot window */
-			SetWindowDirty(WC_VEHICLE_DEPOT, dst_head->tile);
-		}
-
+		/* We are undoubtedly changing something in the depot and train list. */
+		InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
+	} else {
+		/* We don't want to execute what we're just tried. */
+		RestoreTrainBackup(original_src);
+		RestoreTrainBackup(original_dst);
 	}
 
 	return CommandCost();
