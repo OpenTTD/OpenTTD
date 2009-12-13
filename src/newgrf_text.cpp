@@ -91,7 +91,7 @@ StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
 }
 
 /**
- * Explains the newgrf shift bit positionning.
+ * Explains the newgrf shift bit positioning.
  * the grf base will not be used in order to find the string, but rather for
  * jumping from standard langID scheme to the new one.
  */

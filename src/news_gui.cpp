@@ -658,7 +658,7 @@ static void MoveToNextItem()
  * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleteing the news when the object is deleted.
  * @param free_data Pointer to data that must be freed once the news message is cleared
  *
- * @see NewsSubype
+ * @see NewsSubtype
  */
 void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, void *free_data)
 {

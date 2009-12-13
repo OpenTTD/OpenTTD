@@ -632,8 +632,8 @@ static inline NWidgetPart SetMinimalTextLines(uint8 lines, uint8 spacing, FontSi
 
 /**
  * Widget part function for setting filling.
- * @param x_fill Allow horizontal filling from minimal size.
- * @param y_fill Allow vertical filling from minimal size.
+ * @param fill_x Horizontal filling step from minimal size.
+ * @param fill_y Vertical filling step from minimal size.
  * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart SetFill(uint fill_x, uint fill_y)
@@ -750,7 +750,7 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx = -1)
 
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
- * @param tp         Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, or #NWID_LAYERED.
+ * @param tp         Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, or #NWID_SELECTION.
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL(_LTR) and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */

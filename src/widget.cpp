@@ -702,7 +702,7 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, ui
 }
 
 /**
- * @fn void Draw(const Window *w)
+ * @fn void NWidgetBase::Draw(const Window *w)
  * Draw the widgets of the tree.
  * The function calls #Window::DrawWidget for each widget with a non-negative index, after the widget itself is painted.
  * @param w Window that owns the tree.
