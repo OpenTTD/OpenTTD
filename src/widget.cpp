@@ -1775,19 +1775,11 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 
 void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 {
-	if (w == NULL) { // Conversion to widget array.
-		this->smallest_x = this->min_x;
-		this->smallest_y = this->min_y;
-		/* All other data is already at the right place. */
-		return;
-	}
-
 	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
 		assert(w->nested_array_size > (uint)this->index);
 		w->nested_array[this->index] = this;
 	}
 
-	/* A non-NULL window pointer acts as switch to turn dynamic widget sizing on. */
 	Dimension size = {this->min_x, this->min_y};
 	Dimension fill = {this->fill_x, this->fill_y};
 	Dimension resize = {this->resize_x, this->resize_y};
