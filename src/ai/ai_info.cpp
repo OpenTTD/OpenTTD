@@ -162,6 +162,12 @@ bool AIFileInfo::CheckMethod(const char *name) const
 	return 0;
 }
 
+AIInfo::AIInfo() :
+	min_loadable_version(0),
+	use_as_random(false)
+{
+}
+
 AIInfo::~AIInfo()
 {
 	/* Free all allocated strings */

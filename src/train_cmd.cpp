@@ -965,10 +965,6 @@ static void AddWagonToConsist(Vehicle *v, Vehicle *dest)
  */
 static void NormaliseTrainConsist(Vehicle *v)
 {
-	if (IsFreeWagon(v)) return;
-
-	assert(IsFrontEngine(v));
-
 	for (; v != NULL; v = GetNextVehicle(v)) {
 		if (!IsMultiheaded(v) || !IsTrainEngine(v)) continue;
 

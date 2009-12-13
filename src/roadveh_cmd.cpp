@@ -736,7 +736,7 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 	return NULL;
 }
 
-static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, Direction dir)
+static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, Direction dir, bool update_blocked_ctr = true)
 {
 	RoadVehFindData rvf;
 	Vehicle *front = v->First();
@@ -765,7 +765,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, Direction dir)
 		return NULL;
 	}
 
-	if (++front->u.road.blocked_ctr > 1480) return NULL;
+	if (update_blocked_ctr && ++front->u.road.blocked_ctr > 1480) return NULL;
 
 	return rvf.best;
 }
@@ -1227,7 +1227,7 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 	int y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
 
 	if (first) {
-		if (RoadVehFindCloseTo(v, x, y, v->direction) != NULL) return true;
+		if (RoadVehFindCloseTo(v, x, y, v->direction, false) != NULL) return true;
 
 		VehicleServiceInDepot(v);
 

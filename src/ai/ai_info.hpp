@@ -41,7 +41,7 @@ public:
 	friend class AIInfo;
 	friend class AILibrary;
 
-	AIFileInfo() : SQ_instance(NULL), main_script(NULL), author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL), url(NULL) {};
+	AIFileInfo() : SQ_instance(NULL), main_script(NULL), author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL), version(0), url(NULL) {};
 	~AIFileInfo();
 
 	/**
@@ -123,6 +123,7 @@ class AIInfo : public AIFileInfo {
 public:
 	static const char *GetClassName() { return "AIInfo"; }
 
+	AIInfo();
 	~AIInfo();
 
 	/**
