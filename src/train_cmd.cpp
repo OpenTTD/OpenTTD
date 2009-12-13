@@ -1441,8 +1441,13 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			/* We are going to be move to another train. So we
 			 * are no part of this group anymore. In case we
 			 * are not moving group... well, then we do not need
-			 * to move. */
-			if (dst_head != NULL && dst_head != src) DecreaseGroupNumVehicle(src->group_id);
+			 * to move.
+			 * Or we are moving to later in the train and our
+			 * new head isn't a front engine anymore.
+			 */
+			if (dst_head != NULL ? dst_head != src : !src_head->IsFrontEngine()) {
+				DecreaseGroupNumVehicle(src->group_id);
+			}
 
 			/* Delete orders, group stuff and the unit number as we're not the
 			 * front of any vehicle anymore. */

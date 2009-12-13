@@ -373,7 +373,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 {
 	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g)) return;
 
-	assert(v->IsFrontEngine());
+	assert(v->IsFrontEngine() || IsDefaultGroupID(new_g));
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
