@@ -107,7 +107,7 @@ struct GraphLegendWindow : Window {
  * Construct a vertical list of buttons, one for each company.
  * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @return Panel with company buttons.
- * @postcond \c *biggest_index contains the largest used index in the tree.
+ * @post \c *biggest_index contains the largest used index in the tree.
  */
 static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 {
@@ -1375,7 +1375,7 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 /** Make a vertical list of panels for outputting score details.
  * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @return Panel with performance details.
- * @postcond \c *biggest_index contains the largest used index in the tree.
+ * @post \c *biggest_index contains the largest used index in the tree.
  */
 static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 {
@@ -1409,7 +1409,7 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
  * Make a number of rows with button-like graphics, for enabling/disabling each company.
  * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @return Panel with rows of company buttons.
- * @postcond \c *biggest_index contains the largest used index in the tree.
+ * @post \c *biggest_index contains the largest used index in the tree.
  */
 static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 {

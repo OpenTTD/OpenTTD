@@ -557,7 +557,7 @@ struct NWidgetPartTextLines {
 /** Pointer to function returning a nested widget.
  * @param biggest_index Pointer to storage for collecting the biggest index used in the nested widget.
  * @return Nested widget (tree).
- * @postcond \c *biggest_index must contain the value of the biggest index in the returned tree.
+ * @post \c *biggest_index must contain the value of the biggest index in the returned tree.
  */
 typedef NWidgetBase *NWidgetFunctionType(int *biggest_index);
 

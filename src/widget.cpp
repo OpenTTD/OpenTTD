@@ -2089,7 +2089,7 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
  * @param fill_dest Fill the composed widget with child widgets.
  * @param biggest_index Pointer to biggest nested widget index in the tree encountered so far.
  * @return Number of widget part elements used to compose the widget.
- * @precond \c biggest_index != NULL.
+ * @pre \c biggest_index != NULL.
  */
 static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, bool *fill_dest, int *biggest_index)
 {
@@ -2237,7 +2237,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
  * @param parent Container to use for storing the child widgets.
  * @param biggest_index Pointer to biggest nested widget index in the tree.
  * @return Number of widget part elements used to fill the container.
- * @postcond \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
+ * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
 static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *parent, int *biggest_index)
 {
