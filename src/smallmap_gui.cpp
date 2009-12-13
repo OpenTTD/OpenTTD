@@ -509,8 +509,11 @@ class SmallMapWindow : public Window {
 	static SmallMapType map_type; ///< Currently displayed legends.
 	static bool show_towns;       ///< Display town names in the smallmap.
 
-	static const uint LEGEND_BLOB_WIDTH = 8; ///< Width of the coloured blob in front of a line text in the #SM_WIDGET_LEGEND widget.
-	uint column_width;   ///< Width of a column in the #SM_WIDGET_LEGEND widget.
+	static const uint LEGEND_BLOB_WIDTH = 8;              ///< Width of the coloured blob in front of a line text in the #SM_WIDGET_LEGEND widget.
+	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #SM_WIDGET_LEGEND widget for the #SMT_INDUSTRY legend.
+	uint min_number_of_columns;    ///< Minimal number of columns in  legends.
+	uint min_number_of_fixed_rows; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
+	uint column_width;             ///< Width of a column in the #SM_WIDGET_LEGEND widget.
 	uint number_of_rows; ///< Number of rows in a column in the #SM_WIDGET_LEGEND widget.
 
 	int32 scroll_x;
@@ -857,7 +860,11 @@ public:
 	virtual void OnInit()
 	{
 		uint min_width = 0;
+		this->min_number_of_columns = INDUSTRY_MIN_NUMBER_OF_COLUMNS;
+		this->min_number_of_fixed_rows = 0;
 		for (uint i = 0; i < lengthof(_legend_table); i++) {
+			uint height = 0;
+			uint num_columns = 1;
 			for (const LegendAndColour *tbl = _legend_table[i]; !tbl->end; ++tbl) {
 				StringID str;
 				if (i == SMT_INDUSTRY) {
@@ -865,10 +872,18 @@ public:
 					SetDParam(1, IndustryPool::MAX_SIZE);
 					str = STR_SMALLMAP_INDUSTRY;
 				} else {
+					if (tbl->col_break) {
+						this->min_number_of_fixed_rows = max(this->min_number_of_fixed_rows, height);
+						height = 0;
+						num_columns++;
+					}
+					height++;
 					str = tbl->legend;
 				}
 				min_width = max(GetStringBoundingBox(str).width, min_width);
 			}
+			this->min_number_of_fixed_rows = max(this->min_number_of_fixed_rows, height);
+			this->min_number_of_columns = max(this->min_number_of_columns, num_columns);
 		}
 
 		/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
@@ -879,26 +894,10 @@ public:
 	{
 		if (widget != SM_WIDGET_LEGEND) return;
 
-		/* Count minimal number of rows needed for the legends with fixed layout (all except the industry legend). */
-		uint min_height = 0;
-		for (uint i = 0; i < lengthof(_legend_table); i++) {
-			if (i != SMT_INDUSTRY) {
-				uint height = 0;
-				for (const LegendAndColour *tbl = _legend_table[i]; !tbl->end; ++tbl) {
-					if (tbl->col_break) {
-						min_height = max(min_height, height);
-						height = 0;
-					}
-					height++;
-				}
-				min_height = max(min_height, height);
-			}
-		}
-
-		/* The number of columns is always two, but if the it's wide enough there may be more columns */
-		uint columns = max(2U, (size->width - WD_FRAMERECT_LEFT) / this->column_width);
+		/* The number of columns may grow beyond the minimally required if the widget is wide enough. */
+		uint columns = max(this->min_number_of_columns, (size->width - WD_FRAMERECT_LEFT) / this->column_width);
 		/* The number of rows is always the minimum, otherwise it depends on the number of industries */
-		this->number_of_rows = max(min_height, (_smallmap_industry_count + columns - 1) / columns);
+		this->number_of_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + columns - 1) / columns);
 
 		size->width  = max(columns * this->column_width + WD_FRAMERECT_LEFT, size->width);
 		size->height = max(this->number_of_rows * FONT_HEIGHT_SMALL + WD_FRAMERECT_TOP + 1 + WD_FRAMERECT_BOTTOM, size->height);
