@@ -514,7 +514,6 @@ class SmallMapWindow : public Window {
 	uint min_number_of_columns;    ///< Minimal number of columns in  legends.
 	uint min_number_of_fixed_rows; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
 	uint column_width;             ///< Width of a column in the #SM_WIDGET_LEGEND widget.
-	uint number_of_rows; ///< Number of rows in a column in the #SM_WIDGET_LEGEND widget.
 
 	int32 scroll_x;
 	int32 scroll_y;
@@ -848,6 +847,14 @@ public:
 		this->SmallMapCenterOnCurrentPos();
 	}
 
+	/** Return number of columns that can be displayed in \a width pixels.
+	 * @return Number of columns to display.
+	 */
+	inline uint GetNumberColumnsLegend(uint width) const
+	{
+		return width / this->column_width;
+	}
+
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
@@ -897,10 +904,10 @@ public:
 		/* The number of columns may grow beyond the minimally required if the widget is wide enough. */
 		uint columns = max(this->min_number_of_columns, (size->width - WD_FRAMERECT_LEFT) / this->column_width);
 		/* The number of rows is always the minimum, otherwise it depends on the number of industries */
-		this->number_of_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + columns - 1) / columns);
+		uint number_of_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + columns - 1) / columns);
 
 		size->width  = max(columns * this->column_width + WD_FRAMERECT_LEFT, size->width);
-		size->height = max(this->number_of_rows * FONT_HEIGHT_SMALL + WD_FRAMERECT_TOP + 1 + WD_FRAMERECT_BOTTOM, size->height);
+		size->height = max(number_of_rows * FONT_HEIGHT_SMALL + WD_FRAMERECT_TOP + 1 + WD_FRAMERECT_BOTTOM, size->height);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -913,11 +920,13 @@ public:
 			} break;
 
 			case SM_WIDGET_LEGEND: {
+				uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
+				uint number_of_rows = max(this->map_type == SMT_INDUSTRY ? (_smallmap_industry_count + columns - 1) / columns : 0, this->min_number_of_fixed_rows);
 				bool rtl = _dynlang.text_dir == TD_RTL;
 				uint y_org = r.top + WD_FRAMERECT_TOP;
 				uint x = rtl ? r.right - this->column_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT;
 				uint y = y_org;
-				uint i = 0;
+				uint i = 0; // Row counter for industry legend.
 				uint row_height = FONT_HEIGHT_SMALL;
 
 				uint text_left  = rtl ? 0 : LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT;
@@ -926,16 +935,16 @@ public:
 				uint blob_right = rtl ? this->column_width - 1 : LEGEND_BLOB_WIDTH;
 
 				for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
-					if (tbl->col_break || i++ >= this->number_of_rows) {
+					if (tbl->col_break || (this->map_type == SMT_INDUSTRY && i++ >= number_of_rows)) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
 						 * (one "row") to the right. */
 						x += rtl ? -(int)this->column_width : this->column_width;
 						y = y_org;
-						i = 0;
+						i = 1;
 					}
 
 					if (this->map_type == SMT_INDUSTRY) {
-						/* Industry name must be formated, since it's not in tiny font in the specs.
+						/* Industry name must be formatted, since it's not in tiny font in the specs.
 						 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
 						SetDParam(0, tbl->legend);
 						assert(tbl->type < NUM_INDUSTRYTYPES);
@@ -1026,7 +1035,9 @@ public:
 					/* If click on industries label, find right industry type and enable/disable it */
 					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND); // Label panel
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
-					if (line >= this->number_of_rows) break;
+					uint columns = this->GetNumberColumnsLegend(wi->current_x);
+					uint number_of_rows = max((_smallmap_industry_count + columns - 1) / columns, this->min_number_of_fixed_rows);
+					if (line >= number_of_rows) break;
 
 					bool rtl = _dynlang.text_dir == TD_RTL;
 					int x = pt.x - wi->pos_x;
@@ -1034,7 +1045,7 @@ public:
 					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
 
 					/* Check if click is on industry label*/
-					int industry_pos = (column * this->number_of_rows) + line;
+					int industry_pos = (column * number_of_rows) + line;
 					if (industry_pos < _smallmap_industry_count) {
 						_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
 					}
