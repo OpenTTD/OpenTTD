@@ -188,8 +188,6 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
-extern void UpdateAllStationVirtCoords();
-
 /** Widgets of the main window. */
 enum MainWindowWidgets {
 	MW_VIEWPORT, ///< Main window viewport.
@@ -293,7 +291,7 @@ struct MainWindow : Window
 				break;
 
 			case '2' | WKC_ALT: // Update the coordinates of all station signs
-				UpdateAllStationVirtCoords();
+				UpdateAllVirtCoords();
 				break;
 #endif
 

@@ -70,6 +70,8 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant = false);
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
 bool ScrollMainWindowTo(int x, int y, int z = -1, bool instant = false);
 
+void UpdateAllVirtCoords();
+
 extern Point _tile_fract_coords;
 
 #endif /* VIEWPORT_FUNC_H */

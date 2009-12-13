@@ -32,6 +32,7 @@
 #include "base_media_base.h"
 #include "company_base.h"
 #include "company_func.h"
+#include "viewport_func.h"
 #include <map>
 
 #include "table/sprites.h"
@@ -380,7 +381,7 @@ struct GameOptionsWindow : Window {
 			case GOW_LANG_DROPDOWN: // Change interface language
 				ReadLanguagePack(index);
 				CheckForMissingGlyphsInLoadedLanguagePack();
-				UpdateAllStationVirtCoords();
+				UpdateAllVirtCoords();
 				ReInitAllWindows();
 				break;
 

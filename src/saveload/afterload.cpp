@@ -210,6 +210,16 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 }
 
 /**
+ * Update the viewport coordinates of all signs.
+ */
+void UpdateAllVirtCoords()
+{
+	UpdateAllStationVirtCoords();
+	UpdateAllSignVirtCoords();
+	UpdateAllTownVirtCoords();
+}
+
+/**
  * Initialization of the windows and several kinds of caches.
  * This is not done directly in AfterLoadGame because these
  * functions require that all saveload conversions have been
@@ -224,12 +234,9 @@ static void InitializeWindowsAndCaches()
 	ResetWindowSystem();
 	SetupColoursAndInitialWindow();
 
-	ResetViewportAfterLoadGame();
-
 	/* Update coordinates of the signs. */
-	UpdateAllStationVirtCoords();
-	UpdateAllSignVirtCoords();
-	UpdateAllTownVirtCoords();
+	UpdateAllVirtCoords();
+	ResetViewportAfterLoadGame();
 
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
