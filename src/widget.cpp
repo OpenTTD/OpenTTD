@@ -651,11 +651,11 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  *
  * The smallest size of a widget is the smallest size that a widget needs to
  * display itself properly. In addition, filling and resizing of the widget are computed.
- * If \a w is not \c NULL, the function calls #Window::UpdateWidgetSize for each leaf widget and
+ * The function calls #Window::UpdateWidgetSize for each leaf widget and
  * background widget without child with a non-negative index.
  *
- * @param w Optional window owning the widget.
- * @param init_array Initialize the \c w->nested_array as well. Should only be set if \a w != NULL.
+ * @param w          Window owning the widget.
+ * @param init_array Initialize the \c w->nested_array.
  *
  * @note After the computation, the results can be queried by accessing the #smallest_x and #smallest_y data members of the widget.
  */
