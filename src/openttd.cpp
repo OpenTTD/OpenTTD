@@ -607,7 +607,7 @@ int ttd_main(int argc, char *argv[])
 	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = strdup(BaseSounds::ini_set);
 	if (!BaseSounds::SetSet(sounds_set)) {
 		StrEmpty(sounds_set) ?
-			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD.") :
+			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.") :
 			usererror("Failed to select requested sounds set '%s'", sounds_set);
 	}
 	free(sounds_set);
@@ -615,7 +615,7 @@ int ttd_main(int argc, char *argv[])
 	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
 	if (!BaseGraphics::SetSet(graphics_set)) {
 		StrEmpty(graphics_set) ?
-			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
+			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 4.1 of readme.txt.") :
 			usererror("Failed to select requested graphics set '%s'", graphics_set);
 	}
 	free(graphics_set);

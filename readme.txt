@@ -19,9 +19,8 @@ Table of Contents:
 7.0) Compiling
  * 7.1) Required/optional libraries
 8.0) Translating
- * 8.1 Guidelines
- * 8.2 Translation
- * 8.3 Previewing
+ * 8.1 Translation
+ * 8.2 Previewing
 9.0) Troubleshooting
 X.X) Credits
 
@@ -191,33 +190,46 @@ an AI a message will be shown that the 'dummy' AI has been started.
 Before you run OpenTTD, you need to put the game's data files into a data/
 directory which can be located in various places addressed in the following
 section.
-As OpenTTD makes use of the original TTD artwork you will need the files listed
-below, which you can find on a Transport Tycoon Deluxe CD-ROM.
-The Windows installer optionally can copy these files from that CD-ROM.
 
-List of the required files:
-	- sample.cat
-	- trg1r.grf
-	- trgcr.grf
-	- trghr.grf
-	- trgir.grf
-	- trgtr.grf
-
-Alternatively you can use the TTD GRF files from the DOS version:
-	- TRG1.GRF
-	- TRGC.GRF
-	- TRGH.GRF
-	- TRGI.GRF
-	- TRGT.GRF
-
-If you want the TTD music, copy the gm/ folder from the Windows version
-of TTD to your OpenTTD folder (not your data folder - also explained in
-the following sections).
+For OpenTTD you need to acquire some third party data files. For this you have
+the choice of using the original Transport Tycoon Deluxe data files or a set
+of free data files.
 
 Do NOT copy files included with OpenTTD into "shared" directories (explained in
 the following sections) as sooner or later you will run into graphical glitches
 when using other versions of the game.
 
+4.1.1) Free graphics and sound files
+------ -----------------------------
+The free data files, split into OpenGFX for graphics and OpenSFX for sounds
+can be found at:
+ - http://bundles.openttdcoop.org/opengfx/releases/ for OpenGFX
+ - http://bundles.openttdcoop.org/opensfx/releases/ for OpenSFX
+Please follow the readme of these packages about the installation procedure.
+The Windows installer can optionally download and install these packages.
+
+4.1.2) Original Transport Tycoon Deluxe graphics and sound files
+------ ---------------------------------------------------------
+If you want to play with the original Transport Tycoon Deluxe data files you
+have to copy the data files from the CD-ROM into the data/ directory. It does
+not matter whether you copy them from the DOS or Windows version of Transport
+Tycoon Deluxe. The Windows install can optionally copy these files.
+You need to copy the following files:
+ - sample.cat
+ - trg1r.grf or TRG1.GRF
+ - trgcr.grf or TRGC.GRF
+ - trghr.grf or TRGH.GRF
+ - trgir.grf or TRGI.GRF
+ - trgtr.grf or TRGT.GRF
+
+4.1.3) Original Transport Tycoon Deluxe music
+------ --------------------------------------
+If you want the TTD music, copy the gm/ folder from the Windows version
+of TTD to your OpenTTD folder (not your data folder - also explained in
+the following sections). The music from the DOS version does not work.
+
+4.1.4) AIs
+------ ---
 If you want AIs use the in-game content downloader. If for some reason that is
 not possible or you want to use an AI that has not been uploaded to the content
 download system download the tar file and place it in the ai/ directory. If the
@@ -419,15 +431,11 @@ simply follow the guidelines in the FAQ of the translator website.
 If for some reason the website is down for a longer period of time, the
 information below might be of help.
 
-8.1) Guidelines:
----- -------------------
-Here are some translation guidelines which you should follow closely.
+Please contact the translations manager (http://www.openttd.org/contact)
+before beginning the translation process! This avoids double work, as
+someone else may have already started translating to the same language.
 
-    * Please contact the development team before beginning the translation
-      process! This avoids double work, as someone else may have already
-      started translating to the same language.
-
-8.2) Translation:
+8.1) Translation:
 ---- -------------------
 So, now that you've notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
@@ -445,7 +453,7 @@ Note: Do not alter the following parts of the file:
     * Lines beginning with ## (such as ##id), other than the first two lines of
       the file
 
-8.3) Previewing:
+8.2) Previewing:
 ---- -------------------
 In order to view the translation in the game, you need to compile your language
 file with the strgen utility. You can download the precompiled strgen from:
