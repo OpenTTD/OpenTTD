@@ -367,7 +367,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Bista extra
 STR_MAP_MENU_SIGN_LIST                                          :Kartel zerrenda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Herri direktorioa
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Hiria aurkitua
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidioak
@@ -562,6 +564,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Entregat
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Entregatutako karga tipo zenbakia azkeneko laudenean
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Konpania honek duen dirua bankuan
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Konpania honek hartu duen dirua mailegutan
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punto gehienak puntu posibleak kontatu gabe
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
@@ -573,16 +576,29 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Pertsonalizatua 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikaren Bolumena
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektuen Bolumena
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Pista
 STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titulua
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Nahasi
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programatu
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Selekzioko aurreko kantara joan
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Selekzioko hurrengo kantara joan
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Musika jotzen gelditu
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Musika jotzen hasi
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Mugitu barrak musikaren eta soinu efektuak ezartzeko
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'Kanta guztiak' programa selekzionatu
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'Estilo zaharra' programa aukeratu
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'Estilo berria' programa aukeratu
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street musika estiloa' programa aukeratu
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Pertsonala 1' (erabiltzaileak aukeratutakoa) programa aukeratu
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Pertsonala 2' (erabiltzaileak aukeratutakoa) programa aukeratu
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Erakutsi kanten selekzio leihoa
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
@@ -591,9 +607,13 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLAC
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programatu - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Garbitu
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Gorde
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Uneko programa ezabatu (Perstonala1 edo Pertsonala2 bakarrik)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Musikaren ezarpenak gorde
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Musika kantan click egin uneko programari gehitzeko (Perstonala1 edo Perstonala2 bakarrik)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Musika kantan clik egin uneko programatik ezabatzeko (Perstonala1 edo Pertsonala2 bakarrik)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top companiak {NUM}{}({STRING} Nibela lortu dutenak)
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negozio gizona
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresarioa
@@ -656,6 +676,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Basamortua
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Elurra
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Minimapa uneko posizioan zentratu
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dena desgaitu
@@ -676,6 +697,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mezua
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mezu Aukerak
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Mezu mota guztiak aldatu: Bat ere ez/Sumarioa/Denak-era
 STR_NEWS_MESSAGES_OFF                                           :Off
 STR_NEWS_MESSAGES_SUMMARY                                       :Sumarioa
 STR_NEWS_MESSAGES_FULL                                          :Betea
@@ -695,6 +717,7 @@ STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen del lehenengo autobusa!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo kamioia!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenego tranvia!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heldu den lehen tranvia!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{}{STATION}era heltzen den lehenengo itsasontzia!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo hegazkina!
 
@@ -702,6 +725,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Errepideko Garraio baten eztanda!{}Gidaria tren batekin kolisionatu eta gero hiltzen da
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Errepideko Garraio Baten Eztanda!{}{COMMA} hiltzen dira trenarekin kolisionatu eta gero
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Hegazkin Istripua!{}{COMMA} hiltzen dira {STATION}ean
+
 
 
 
@@ -1017,6 +1041,7 @@ STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Neguan beharrezkoa
 
 
 
@@ -1211,6 +1236,13 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+
+
+
+
+
+
+# Date window (for timetable)
 
 
 # AI debug window
@@ -1412,7 +1444,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -1428,4 +1459,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

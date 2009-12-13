@@ -2387,6 +2387,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Călăto
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Colete poştale luna trecută: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Transporturi necesare dezvoltării oraşului:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} necesare
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necesare iarna
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} livrat luna trecută
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează imaginea pe locaţia oraşului. Ctrl+Click deshide o fereastra cu locaţia oraşului
@@ -2820,7 +2821,7 @@ STR_REPLACE_ENGINES                                             :Motoare
 STR_REPLACE_WAGONS                                              :Vagoane
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care să înlocuieşti motoarele
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arata care va fi  inlocuitorul motorului selectat in stanga
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arată locomotiva ceva înlocui locomotiva selectată în stânga
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicule feroviare
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule Electrificate pe Sine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicule Monorail

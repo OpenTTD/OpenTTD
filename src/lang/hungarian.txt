@@ -471,7 +471,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás kon
 STR_ABOUT_MENU_AI_DEBUG                                         :MI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Óriás képmentés (Ctrl+G)
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az  'OpenTTD'-ről
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -740,7 +740,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Üzenet
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Üzenetek beállításai
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Összes üzenettípus beállítása (be/rövid/ki)
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Összes üzenettípus beállítása (ki / kivonat / teljes)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Figyelmeztető hang lejátszása rövid üzenetnél
 STR_NEWS_MESSAGES_OFF                                           :Ki
 STR_NEWS_MESSAGES_SUMMARY                                       :Kivonat
@@ -2596,7 +2596,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% elad
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :A vállalat neve
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Az elnök neve
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Cégünk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY}  céget {CURRENCY}-ért?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Cégünk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY} céget {CURRENCY}-ért?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gazdasági épületek
@@ -2707,7 +2707,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható:  {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállítmány típusra
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}

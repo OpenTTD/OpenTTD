@@ -2482,6 +2482,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Επιβ
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Αλληλογραφία τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Εμπορεύματα που χρειάζονται για την ανάπτυξη της πόλης:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} απαιτείται
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} απαιτείται τον χειμώνα
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} παραδόθηκε τον τελευταίο μήνα
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της πόλης
