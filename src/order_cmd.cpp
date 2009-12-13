@@ -1094,9 +1094,8 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				return CMD_ERROR;
 
 			/* Trucks can't share orders with busses (and visa versa) */
-			if (src->type == VEH_ROAD) {
-				if (src->cargo_type != dst->cargo_type && (IsCargoInClass(src->cargo_type, CC_PASSENGERS) || IsCargoInClass(dst->cargo_type, CC_PASSENGERS)))
-					return CMD_ERROR;
+			if (src->type == VEH_ROAD && IsCargoInClass(src->cargo_type, CC_PASSENGERS) != IsCargoInClass(dst->cargo_type, CC_PASSENGERS)) {
+				return CMD_ERROR;
 			}
 
 			/* Is the vehicle already in the shared list? */
