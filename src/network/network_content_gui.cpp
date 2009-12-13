@@ -751,6 +751,7 @@ public:
 		if (!success) {
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_CONNECT, INVALID_STRING_ID, 0, 0);
 			delete this;
+			return;
 		}
 
 		this->InvalidateData();
