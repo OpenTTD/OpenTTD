@@ -35,8 +35,7 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_CAPTION,
 	SM_WIDGET_MAP_BORDER,
 	SM_WIDGET_MAP,
-	SM_WIDGET_LEGEND,
-	SM_WIDGET_BUTTONSPANEL,
+	SM_WIDGET_LEGEND, ///< Display of smallmap legend.
 	SM_WIDGET_CONTOUR,
 	SM_WIDGET_VEHICLES,
 	SM_WIDGET_INDUSTRIES,
@@ -49,56 +48,6 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_ENABLEINDUSTRIES,
 	SM_WIDGET_DISABLEINDUSTRIES,
 };
-
-static const NWidgetPart _nested_smallmap_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, SM_WIDGET_CAPTION), SetDataTip(STR_SMALLMAP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
-	EndContainer(),
-	/* Small map display. */
-	NWidget(WWT_PANEL, COLOUR_BROWN, SM_WIDGET_MAP_BORDER),
-		NWidget(WWT_INSET, COLOUR_BROWN, SM_WIDGET_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
-	EndContainer(),
-	/* Panel. */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, SM_WIDGET_LEGEND), SetMinimalSize(262, 44), SetResize(1, 0), EndContainer(),
-		NWidget(NWID_VERTICAL),
-			/* Top button row. */
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_CENTERMAP), SetDataTip(SPR_IMG_SMALLMAP, STR_SMALLMAP_CENTER),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_CONTOUR), SetDataTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEHICLES), SetDataTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_INDUSTRIES), SetDataTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP),
-			EndContainer(),
-			/* Bottom button row. */
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_TOGGLETOWNNAME), SetDataTip(SPR_IMG_TOWN, STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_ROUTES), SetDataTip(SPR_IMG_SHOW_ROUTES, STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEGETATION), SetDataTip(SPR_IMG_PLANTTREES, STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP),
-				NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_OWNERS), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN, SM_WIDGET_BUTTONSPANEL), SetFill(1, 1), EndContainer(),
-		EndContainer(),
-	EndContainer(),
-	/* Bottom button row and resize box. */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECTINDUSTRIES),
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetMinimalSize(100, 12), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetMinimalSize(100, 12), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
-					EndContainer(),
-					NWidget(NWID_SPACER), SetFill(1, 1),
-				EndContainer(),
-				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			EndContainer(),
-		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
-	EndContainer(),
-};
-
 
 static int _smallmap_industry_count; ///< Number of used industries
 
@@ -847,12 +796,39 @@ public:
 		this->SmallMapCenterOnCurrentPos();
 	}
 
+	/** Compute maximal required height of the legends.
+	 * @return Maximally needed height for displaying the smallmap legends in pixels.
+	 */
+	inline uint GetMaxLegendHeight() const
+	{
+		uint num_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + this->min_number_of_columns - 1) / this->min_number_of_columns);
+		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
+	}
+
+	/** Compute minimal required width of the legends.
+	 * @return Minimally needed width for displaying the smallmap legends in pixels.
+	 */
+	inline uint GetMinLegendWidth() const
+	{
+		return WD_FRAMERECT_LEFT + this->min_number_of_columns * this->column_width;
+	}
+
 	/** Return number of columns that can be displayed in \a width pixels.
 	 * @return Number of columns to display.
 	 */
 	inline uint GetNumberColumnsLegend(uint width) const
 	{
 		return width / this->column_width;
+	}
+
+	/** Compute height given a width.
+	 * @return Needed height for displaying the smallmap legends in pixels.
+	 */
+	uint GetLegendHeight(uint width) const
+	{
+		uint num_columns = this->GetNumberColumnsLegend(width);
+		uint num_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + num_columns - 1) / num_columns);
+		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -895,19 +871,6 @@ public:
 
 		/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
 		this->column_width = min_width + LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-	}
-
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
-	{
-		if (widget != SM_WIDGET_LEGEND) return;
-
-		/* The number of columns may grow beyond the minimally required if the widget is wide enough. */
-		uint columns = max(this->min_number_of_columns, (size->width - WD_FRAMERECT_LEFT) / this->column_width);
-		/* The number of rows is always the minimum, otherwise it depends on the number of industries */
-		uint number_of_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + columns - 1) / columns);
-
-		size->width  = max(columns * this->column_width + WD_FRAMERECT_LEFT, size->width);
-		size->height = max(number_of_rows * FONT_HEIGHT_SMALL + WD_FRAMERECT_TOP + 1 + WD_FRAMERECT_BOTTOM, size->height);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -1166,6 +1129,147 @@ public:
 
 SmallMapWindow::SmallMapType SmallMapWindow::map_type = SMT_CONTOUR;
 bool SmallMapWindow::show_towns = true;
+
+/**
+ * Custom container class for displaying smallmap with a vertically resizing legend panel.
+ * The legend panel has a smallest height that depends on its width. Standard containers cannot handle this case.
+ *
+ * @note The container assumes it has two childs, the first is the display, the second is the bar with legends and selection image buttons.
+ *       Both childs should be both horizontally and vertically resizable and horizontally fillable.
+ *       The bar should have a minimal size with a zero-size legends display. Child padding is not supported.
+ */
+class NWidgetSmallmapDisplay : public NWidgetContainer {
+	const SmallMapWindow *smallmap_window; ///< Window manager instance.
+public:
+	NWidgetSmallmapDisplay() : NWidgetContainer(NWID_VERTICAL)
+	{
+		this->smallmap_window = NULL;
+	}
+
+	virtual void SetupSmallestSize(Window *w, bool init_array)
+	{
+		NWidgetBase *display = this->head;
+		NWidgetBase *bar = display->next;
+
+		display->SetupSmallestSize(w, init_array);
+		bar->SetupSmallestSize(w, init_array);
+
+		this->smallmap_window = dynamic_cast<SmallMapWindow *>(w);
+		this->smallest_x = max(display->smallest_x, bar->smallest_x + smallmap_window->GetMinLegendWidth());
+		this->smallest_y = display->smallest_y + max(bar->smallest_y, smallmap_window->GetMaxLegendHeight());
+		this->fill_x = max(display->fill_x, bar->fill_x);
+		this->fill_y = (display->fill_y == 0 && bar->fill_y == 0) ? 0 : min(display->fill_y, bar->fill_y);
+		this->resize_x = max(display->resize_x, bar->resize_x);
+		this->resize_y = min(display->resize_y, bar->resize_y);
+	}
+
+	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+	{
+		this->pos_x = x;
+		this->pos_y = y;
+		this->current_x = given_width;
+		this->current_y = given_height;
+
+		NWidgetBase *display = this->head;
+		NWidgetBase *bar = display->next;
+
+		if (sizing == ST_SMALLEST) {
+			this->smallest_x = given_width;
+			this->smallest_y = given_height;
+			/* Make display and bar exactly equal to their minimal size. */
+			display->AssignSizePosition(ST_SMALLEST, x, y, display->smallest_x, display->smallest_y, rtl);
+			bar->AssignSizePosition(ST_SMALLEST, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
+		}
+
+		uint bar_height = max(bar->smallest_y, this->smallmap_window->GetLegendHeight(given_width - bar->smallest_x));
+		uint display_height = given_height - bar_height;
+		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
+		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
+	}
+
+	virtual NWidgetCore *GetWidgetFromPos(int x, int y)
+	{
+		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			NWidgetCore *widget = child_wid->GetWidgetFromPos(x, y);
+			if (widget != NULL) return widget;
+		}
+		return NULL;
+	}
+
+	virtual void Draw(const Window *w)
+	{
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) child_wid->Draw(w);
+	}
+};
+
+/** Widget parts of the smallmap display. */
+static const NWidgetPart _nested_smallmap_display[] = {
+	NWidget(WWT_PANEL, COLOUR_BROWN, SM_WIDGET_MAP_BORDER),
+		NWidget(WWT_INSET, COLOUR_BROWN, SM_WIDGET_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
+	EndContainer(),
+};
+
+/** Widget parts of the smallmap legend bar + image buttons. */
+static const NWidgetPart _nested_smallmap_bar[] = {
+	NWidget(WWT_PANEL, COLOUR_BROWN),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, SM_WIDGET_LEGEND), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				/* Top button row. */
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_CENTERMAP), SetDataTip(SPR_IMG_SMALLMAP, STR_SMALLMAP_CENTER),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_CONTOUR), SetDataTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEHICLES), SetDataTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_INDUSTRIES), SetDataTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP),
+				EndContainer(),
+				/* Bottom button row. */
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_TOGGLETOWNNAME), SetDataTip(SPR_IMG_TOWN, STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_ROUTES), SetDataTip(SPR_IMG_SHOW_ROUTES, STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEGETATION), SetDataTip(SPR_IMG_PLANTTREES, STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_OWNERS), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetResize(0, 1),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+static NWidgetBase *SmallMapDisplay(int *biggest_index)
+{
+	NWidgetContainer *map_display = new NWidgetSmallmapDisplay;
+
+	MakeNWidgets(_nested_smallmap_display, lengthof(_nested_smallmap_display), biggest_index, map_display);
+	MakeNWidgets(_nested_smallmap_bar, lengthof(_nested_smallmap_bar), biggest_index, map_display);
+	return map_display;
+}
+
+
+static const NWidgetPart _nested_smallmap_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, SM_WIDGET_CAPTION), SetDataTip(STR_SMALLMAP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+	EndContainer(),
+	NWidgetFunction(SmallMapDisplay), // Smallmap display and legend bar + image buttons.
+	/* Bottom button row and resize box. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_BROWN),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECTINDUSTRIES),
+					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetMinimalSize(100, 12), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
+						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetMinimalSize(100, 12), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
+					EndContainer(),
+					NWidget(NWID_SPACER), SetFill(1, 1),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+			EndContainer(),
+		EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+	EndContainer(),
+};
 
 static const WindowDesc _smallmap_desc(
 	WDP_AUTO, 446, 314,
