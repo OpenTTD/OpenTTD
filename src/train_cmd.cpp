@@ -2093,8 +2093,8 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 	if (IsRailDepotTile(origin.tile)) return FindDepotData(origin.tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainFindNearestDepot(v, max_distance);
-		case VPF_YAPF: return YapfTrainFindNearestDepot(v, max_distance);
+		case VPF_NPF: return NPFTrainFindNearestDepot(v, _settings_game.pf.npf.maximum_go_to_depot_penalty);
+		case VPF_YAPF: return YapfTrainFindNearestDepot(v, _settings_game.pf.yapf.maximum_go_to_depot_penalty);
 
 		default: NOT_REACHED();
 	}
@@ -4100,17 +4100,22 @@ bool Train::Tick()
 
 static void CheckIfTrainNeedsService(Train *v)
 {
-	static const uint MAX_ACCEPTABLE_DEPOT_DIST = 16;
-
 	if (Company::Get(v->owner)->settings.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
 
-	FindDepotData tfdd = FindClosestTrainDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
+	uint max_penalty;
+	switch (_settings_game.pf.pathfinder_for_trains) {
+		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
+		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
+		default: NOT_REACHED();
+	}
+
+	FindDepotData tfdd = FindClosestTrainDepot(v, max_penalty);
 	/* Only go to the depot if it is not too far out of our way. */
-	if (tfdd.best_length == UINT_MAX || tfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
+	if (tfdd.best_length == UINT_MAX || tfdd.best_length > max_penalty) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal

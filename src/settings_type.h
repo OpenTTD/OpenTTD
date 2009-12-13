@@ -208,6 +208,7 @@ struct NPFSettings {
 	 * of not being perfect anymore.
 	 */
 	uint32 npf_max_search_nodes;
+	uint32 maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
 
 	uint32 npf_rail_firstred_penalty;        ///< the penalty for when the first signal is red (and it is not an exit or combo signal)
 	uint32 npf_rail_firstred_exit_penalty;   ///< the penalty for when the first signal is red (and it is an exit or combo signal)
@@ -231,6 +232,7 @@ struct NPFSettings {
 struct YAPFSettings {
 	bool   disable_node_optimization;        ///< whether to use exit-dir instead of trackdir in node key
 	uint32 max_search_nodes;                 ///< stop path-finding when this number of nodes visited
+	uint32 maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
 	bool   ship_use_yapf;                    ///< use YAPF for ships
 	bool   road_use_yapf;                    ///< use YAPF for road
 	bool   rail_use_yapf;                    ///< use YAPF for rail

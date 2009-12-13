@@ -43,7 +43,7 @@ static const int YAPF_INFINITE_PENALTY = 1000 * YAPF_TILE_LENGTH;
  */
 struct FindDepotData {
 	TileIndex tile;   ///< The tile of the depot
-	uint best_length; ///< The distance towards the depot, or UINT_MAX if not found
+	uint best_length; ///< The distance towards the depot in penalty, or UINT_MAX if not found
 	bool reverse;     ///< True if reversing is necessary for the train to get to this depot
 
 	/**

@@ -358,8 +358,8 @@ static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance
 	if (IsRoadDepotTile(v->tile)) return FindDepotData(v->tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF: return NPFRoadVehicleFindNearestDepot(v, max_distance);
-		case VPF_YAPF: return YapfRoadVehicleFindNearestDepot(v, max_distance);
+		case VPF_NPF: return NPFRoadVehicleFindNearestDepot(v, _settings_game.pf.npf.maximum_go_to_depot_penalty);
+		case VPF_YAPF: return YapfRoadVehicleFindNearestDepot(v, _settings_game.pf.yapf.maximum_go_to_depot_penalty);
 
 		default: NOT_REACHED();
 	}
@@ -1608,8 +1608,6 @@ bool RoadVehicle::Tick()
 
 static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 {
-	static const uint MAX_ACCEPTABLE_DEPOT_DIST = 16;
-
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
 	if (Company::Get(v->owner)->settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
@@ -1617,9 +1615,16 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 		return;
 	}
 
-	FindDepotData rfdd = FindClosestRoadDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
+	uint max_penalty;
+	switch (_settings_game.pf.pathfinder_for_roadvehs) {
+		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
+		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
+		default: NOT_REACHED();
+	}
+
+	FindDepotData rfdd = FindClosestRoadDepot(v, max_penalty);
 	/* Only go to the depot if it is not too far out of our way. */
-	if (rfdd.best_length == UINT_MAX || rfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
+	if (rfdd.best_length == UINT_MAX || rfdd.best_length > max_penalty) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal

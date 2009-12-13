@@ -19,12 +19,12 @@
 /**
  * Used when user sends road vehicle to the nearest depot or if road vehicle needs servicing using NPF.
  * @param v            vehicle that needs to go to some depot
- * @param max_distance max distance (number of track tiles) from the current vehicle position
- *                     (used also as optimization - the pathfinder can stop path finding if max_distance
+ * @param max_penalty  max distance (in pathfinder penalty) from the current vehicle position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_penalty
  *                     was reached and no depot was seen)
  * @return             the data about the depot
  */
-FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance);
+FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penalty);
 
 /**
  * Finds the best path for given road vehicle using NPF.
@@ -49,12 +49,12 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 /**
  * Used when user sends train to the nearest depot or if train needs servicing using NPF
  * @param v            train that needs to go to some depot
- * @param max_distance max distance (number of track tiles) from the current train position
- *                     (used also as optimization - the pathfinder can stop path finding if max_distance
+ * @param max_penalty  max max_penalty (in pathfinder penalty) from the current train position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_penalty
  *                     was reached and no depot was seen)
  * @return             the data about the depot
  */
-FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_distance);
+FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty);
 
 /**
  * Try to extend the reserved path of a train to the nearest safe tile using NPF.

@@ -1127,7 +1127,7 @@ static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *
 
 /*** Road vehicles ***/
 
-FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance)
+FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penalty)
 {
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
@@ -1140,7 +1140,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_dista
 	 * number by this. It might not be completely what we want, but it will
 	 * work for now :-) We can possibly change this when the old pathfinder
 	 * is removed. */
-	return FindDepotData(ftd.node.tile, ftd.best_path_dist / NPF_TILE_LENGTH);
+	return FindDepotData(ftd.node.tile, ftd.best_path_dist);
 }
 
 Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
@@ -1187,7 +1187,7 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 
 /*** Trains ***/
 
-FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_distance)
+FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)
 {
 	const Train *last = v->Last();
 	Trackdir trackdir = v->GetVehicleTrackdir();
@@ -1202,7 +1202,7 @@ FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_distance)
 	 * number by this. It might not be completely what we want, but it will
 	 * work for now :-) We can possibly change this when the old pathfinder
 	 * is removed. */
-	return FindDepotData(ftd.node.tile, ftd.best_path_dist / NPF_TILE_LENGTH, NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE));
+	return FindDepotData(ftd.node.tile, ftd.best_path_dist, NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE));
 }
 
 bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir trackdir, bool override_railtype)
