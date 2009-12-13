@@ -233,7 +233,9 @@ static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
 {
 	FindTrainOnTrackInfo *info = (FindTrainOnTrackInfo *)data;
 
-	if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) && HasBit((TrackBits)v->u.rail.track, TrackdirToTrack(info->res.trackdir))) {
+	if (v->type != VEH_TRAIN || (v->vehstatus & VS_CRASHED)) return NULL;
+
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE || HasBit((TrackBits)v->u.rail.track, TrackdirToTrack(info->res.trackdir))) {
 		v = v->First();
 
 		/* ALWAYS return the lowest ID (anti-desync!) */

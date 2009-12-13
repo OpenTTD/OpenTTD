@@ -3154,6 +3154,9 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
  */
 static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 {
+	/* Yeah... water can always remove stops, right? */
+	if (_current_company == OWNER_WATER) return true;
+
 	Owner road_owner = _current_company;
 	Owner tram_owner = _current_company;
 

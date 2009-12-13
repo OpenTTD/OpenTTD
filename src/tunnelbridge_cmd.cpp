@@ -248,6 +248,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	if (transport_type != TRANSPORT_WATER) {
 		/* set and test bridge length, availability */
 		if (!CheckBridge_Stuff(bridge_type, bridge_len, flags)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+	} else {
+		if (bridge_len > (_settings_game.construction.longbridges ? 100U : 16U)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 	}
 
 	/* retrieve landscape height and ensure it's on land */
