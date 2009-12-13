@@ -954,30 +954,24 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 }
 
 
-/* Check if all the wagons of the given train are in a depot, returns the
- * number of cars (including loco) then. If not it returns -1 */
-int CheckTrainInDepot(const Train *v, bool needs_to_be_stopped)
+bool Train::IsInDepot() const
 {
-	TileIndex tile = v->tile;
+	/* Is the front engine stationary in the depot? */
+	if (!IsRailDepotTile(this->tile) || this->cur_speed != 0) return false;
 
-	/* check if stopped in a depot */
-	if (!IsRailDepotTile(tile) || v->cur_speed != 0 ||
-			(needs_to_be_stopped && v->IsFrontEngine() && !(v->vehstatus & VS_STOPPED))) {
-		return -1;
+	/* Check whether the rest is also already trying to enter the depot. */
+	for (const Train *v = this; v != NULL; v = v->Next()) {
+		if (v->track != TRACK_BIT_DEPOT || v->tile != this->tile) return false;
 	}
 
-	int count = 0;
-	for (; v != NULL; v = v->Next()) {
-		/* This count is used by the depot code to determine the number of engines
-		 * in the consist. Exclude articulated parts so that autoreplacing to
-		 * engines with more articulated parts than before works correctly.
-		 *
-		 * Also skip counting rear ends of multiheaded engines */
-		if (!v->IsArticulatedPart() && !v->IsRearDualheaded()) count++;
-		if (v->track != TRACK_BIT_DEPOT || v->tile != tile) return -1;
-	}
+	return true;
+}
 
-	return count;
+bool Train::IsStoppedInDepot() const
+{
+	/* Are we stopped? Ofcourse wagons don't really care... */
+	if (this->IsFrontEngine() && !(this->vehstatus & VS_STOPPED)) return false;
+	return this->IsInDepot();
 }
 
 static Train *FindGoodVehiclePos(const Train *src)

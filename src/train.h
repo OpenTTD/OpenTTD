@@ -49,7 +49,6 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 byte FreightWagonMult(CargoID cargo);
 
-int CheckTrainInDepot(const Train *v, bool needs_to_be_stopped);
 void UpdateTrainAcceleration(Train *v);
 void CheckTrainsLengths();
 
@@ -131,8 +130,8 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	int GetDisplayMaxSpeed() const { return this->tcache.cached_max_speed; }
 	Money GetRunningCost() const;
 	int GetDisplayImageWidth(Point *offset = NULL) const;
-	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
-	bool IsStoppedInDepot() const { return CheckTrainInDepot(this, true) != -1; }
+	bool IsInDepot() const;
+	bool IsStoppedInDepot() const;
 	bool Tick();
 	void OnNewDay();
 	uint Crash(bool flooded = false);
