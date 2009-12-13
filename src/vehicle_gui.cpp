@@ -156,6 +156,9 @@ static void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	DrawSprite(SPR_BLOT, pal, x, y);
 }
 
+/** Maximum number of refit cycles we try, to prevent infinite loops. */
+static const int MAX_REFIT_CYCLE = 16;
+
 struct RefitOption {
 	CargoID cargo;
 	byte subtype;
@@ -200,11 +203,15 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 				u->cargo_type = cid;
 
-				for (refit_cyc = 0; refit_cyc < 16 && num_lines < max_lines; refit_cyc++) {
+				for (refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE && num_lines < max_lines; refit_cyc++) {
 					bool duplicate = false;
 					uint16 callback;
 
 					u->cargo_subtype = refit_cyc;
+
+					/* Make sure we don't pick up anything cached. */
+					u->First()->InvalidateNewGRFCache();
+					u->InvalidateNewGRFCache();
 					callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, u->engine_type, u);
 
 					if (callback == 0xFF) callback = CALLBACK_FAILED;
@@ -227,6 +234,10 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				/* Reset the vehicle's cargo type */
 				u->cargo_type    = temp_cargo;
 				u->cargo_subtype = temp_subtype;
+
+				/* And make sure we haven't tainted the cache */
+				u->First()->InvalidateNewGRFCache();
+				u->InvalidateNewGRFCache();
 			} else {
 				/* No cargo suffix callback -- use no subtype */
 				bool duplicate = false;
