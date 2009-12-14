@@ -105,9 +105,9 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 /* City Airport (large) 6x6 */
 static const AirportMovingData _airport_moving_data_town[] = {
 	AMD(   85,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
-	AMD(   85,   27, 0,                               DIR_N ), // 01 Taxi to right outside depot
+	AMD(   85,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
 	AMD(   26,   41, AMED_EXACTPOS,                   DIR_SW), // 02 Terminal 1
-	AMD(   56,   20, AMED_EXACTPOS,                   DIR_SE), // 03 Terminal 2
+	AMD(   56,   22, AMED_EXACTPOS,                   DIR_SE), // 03 Terminal 2
 	AMD(   38,    8, AMED_EXACTPOS,                   DIR_SW), // 04 Terminal 3
 	AMD(   65,    6, 0,                               DIR_N ), // 05 Taxi to right in infront of terminal 2/3
 	AMD(   80,   27, 0,                               DIR_N ), // 06 Taxiway terminals 2-3
@@ -139,13 +139,13 @@ static const AirportMovingData _airport_moving_data_town[] = {
 /* Metropolitan Airport (metropolitan) - 2 runways */
 static const AirportMovingData _airport_moving_data_metropolitan[27] = {
 	AMD(   85,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
-	AMD(   85,   27, 0,                               DIR_N ), // 01 Taxi to right outside depot
+	AMD(   85,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
 	AMD(   26,   41, AMED_EXACTPOS,                   DIR_SW), // 02 Terminal 1
-	AMD(   56,   20, AMED_EXACTPOS,                   DIR_SE), // 03 Terminal 2
+	AMD(   56,   22, AMED_EXACTPOS,                   DIR_SE), // 03 Terminal 2
 	AMD(   38,    8, AMED_EXACTPOS,                   DIR_SW), // 04 Terminal 3
 	AMD(   65,    6, 0,                               DIR_N ), // 05 Taxi to right in infront of terminal 2/3
-	AMD(   70,   33, 0,                               DIR_N ), // 06 Taxiway terminals 2-3
-	AMD(   44,   58, 0,                               DIR_N ), // 07 Taxi to Airport center
+	AMD(   80,   27, 0,                               DIR_N ), // 06 Taxiway terminals 2-3
+	AMD(   49,   58, 0,                               DIR_N ), // 07 Taxi to Airport center
 	AMD(   72,   58, 0,                               DIR_N ), // 08 Towards takeoff
 	AMD(   72,   69, 0,                               DIR_N ), // 09 Taxi to runway (takeoff)
 	AMD(   89,   69, AMED_EXACTPOS,                   DIR_NE), // 10 Taxi to start of runway (takeoff)
@@ -156,7 +156,7 @@ static const AirportMovingData _airport_moving_data_metropolitan[27] = {
 	AMD(    3,   85, AMED_NOSPDCLAMP | AMED_BRAKE,    DIR_N ), // 15 Just landed, brake until end of runway
 	AMD(   21,   85, 0,                               DIR_N ), // 16 Just landed, turn around and taxi 1 square
 	AMD(   21,   69, 0,                               DIR_N ), // 17 On Runway-out taxiing to In-Way
-	AMD(   21,   54, AMED_EXACTPOS,                   DIR_SW), // 18 Taxi from runway to crossing
+	AMD(   21,   58, AMED_EXACTPOS,                   DIR_SW), // 18 Taxi from runway to crossing
 	AMD(    1,  193, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 19 Fly around waiting for a landing spot (north-east)
 	AMD(    1,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 20 Fly around waiting for a landing spot (north-west)
 	AMD(  257,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 21 Fly around waiting for a landing spot (south-west)
@@ -225,10 +225,10 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 
 /* Intercontinental Airport - 4 runways, 8 terminals, 2 dedicated helipads */
 static const AirportMovingData _airport_moving_data_intercontinental[77] = {
-	AMD(    7,   87, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar 1
-	AMD(  135,   72, AMED_EXACTPOS,                   DIR_SE), // 01 In Hangar 2
-	AMD(    7,  104, 0,                               DIR_N ), // 02 Taxi to right outside depot 1
-	AMD(  135,   88, 0,                               DIR_N ), // 03 Taxi to right outside depot 2
+	AMD(    8,   87, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar 1
+	AMD(  136,   72, AMED_EXACTPOS,                   DIR_SE), // 01 In Hangar 2
+	AMD(    8,  104, 0,                               DIR_N ), // 02 Taxi to right outside depot 1
+	AMD(  136,   88, 0,                               DIR_N ), // 03 Taxi to right outside depot 2
 	AMD(   56,  120, AMED_EXACTPOS,                   DIR_W ), // 04 Terminal 1
 	AMD(   56,  104, AMED_EXACTPOS,                   DIR_SW), // 05 Terminal 2
 	AMD(   56,   88, AMED_EXACTPOS,                   DIR_SW), // 06 Terminal 3
@@ -267,7 +267,7 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	AMD(    8,  168, 0,                               DIR_N ), // 39 Just landed, turn around and taxi
 	AMD(    8,  144, 0,                               DIR_NW), // 40 Taxi from runway
 	AMD(    8,  128, 0,                               DIR_NW), // 41 Taxi from runway
-	AMD(    8,  120, AMED_EXACTPOS,                   DIR_SW), // 42 Airport entrance
+	AMD(    8,  120, AMED_EXACTPOS,                   DIR_NW), // 42 Airport entrance
 	AMD(   56,  344, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 43 Fly around waiting for a landing spot (north-east)
 	AMD( -200,   88, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 44 Fly around waiting for a landing spot (north-west)
 	AMD(   56, -168, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 45 Fly around waiting for a landing spot (south-west)
@@ -496,10 +496,10 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	{  0, HANGAR, NOTHING_block, 1 }, { 0, TAKEOFF, OUT_WAY_block, 1 }, { 0, 0, 0, 1 },
 	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, 0, 0, 7 }, // for all else, go to 7
 	{  2, TERM1, TERM1_block, 7 }, { 2, TAKEOFF, OUT_WAY_block, 7 }, { 2, 0, 0, 7 },
-	{  3, TERM2, TERM2_block, 5 }, { 3, TAKEOFF, OUT_WAY_block, 5 }, { 3, 0, 0, 5 },
+	{  3, TERM2, TERM2_block, 5 }, { 3, TAKEOFF, OUT_WAY_block, 6 }, { 3, 0, 0, 6 },
 	{  4, TERM3, TERM3_block, 5 }, { 4, TAKEOFF, OUT_WAY_block, 5 }, { 4, 0, 0, 5 },
 	{  5, 255, TAXIWAY_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TERM3, TERM3_block, 4 }, { 5, 0, 0, 6 },
-	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, 0, 5 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, 0, 0, 7 },
+	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, TERM2_block, 3 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, 0, 0, 7 },
 	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, OUT_WAY_block, 8 }, { 7, HELITAKEOFF, 0, 22 }, { 7, HANGAR, 0, 1 }, { 7, 0, 0, 6 },
 	{  8, 0, OUT_WAY_block, 9 },
 	{  9, 0, RUNWAY_IN_OUT_block, 10 },
@@ -537,10 +537,10 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{  0, HANGAR, NOTHING_block, 1 },
 	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, 0, 0, 7 }, // for all else, go to 7
 	{  2, TERM1, TERM1_block, 7 },
-	{  3, TERM2, TERM2_block, 5 },
+	{  3, TERM2, TERM2_block, 6 },
 	{  4, TERM3, TERM3_block, 5 },
 	{  5, 255, TAXIWAY_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TERM3, TERM3_block, 4 }, { 5, 0, 0, 6 },
-	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, 0, 5 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, 0, 0, 7 },
+	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, TERM2_block, 3 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, 0, 0, 7 },
 	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, 0, 8 }, { 7, HELITAKEOFF, 0, 23 }, { 7, HANGAR, 0, 1 }, { 7, 0, 0, 6 },
 	{  8, 0, OUT_WAY_block, 9 },
 	{  9, 0, RUNWAY_OUT_block, 10 },
@@ -642,7 +642,7 @@ static const AirportFTAbuildup _airport_fta_intercontinental[] = {
 	{  0, HANGAR, NOTHING_block, 2 }, { 0, 255, HANGAR1_AREA_block | TERM_GROUP1_block, 0 }, { 0, 255, HANGAR1_AREA_block | TERM_GROUP1_block, 1 }, { 0, TAKEOFF, HANGAR1_AREA_block | TERM_GROUP1_block, 2 }, { 0, 0, 0, 2 },
 	{  1, HANGAR, NOTHING_block, 3 }, { 1, 255, HANGAR2_AREA_block, 1 }, { 1, 255, HANGAR2_AREA_block, 0 }, { 1, 0, 0, 3 },
 	{  2, 255, HANGAR1_AREA_block, 0 }, { 2, 255, TERM_GROUP1_block, 0 }, { 2, 255, TERM_GROUP1_block, 1 }, { 2, HANGAR, 0, 0 }, { 2, TAKEOFF, TERM_GROUP1_block, 27 }, { 2, TERM5, 0, 26 }, { 2, TERM6, 0, 26 }, { 2, TERM7, 0, 26 }, { 2, TERM8, 0, 26 }, { 2, HELIPAD1, 0, 26 }, { 2, HELIPAD2, 0, 26 }, { 2, HELITAKEOFF, 0, 74 }, { 2, 0, 0, 27 },
-	{  3, 255, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, HELITAKEOFF, 0, 75 }, { 3, 0, 0, 20 },
+	{  3, 255, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, HELITAKEOFF, 0, 75 }, {3, TAKEOFF, 0, 59}, { 3, 0, 0, 20 },
 	{  4, TERM1, TERM1_block, 26 }, { 4, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 26 }, { 4, 0, 0, 26 },
 	{  5, TERM2, TERM2_block, 27 }, { 5, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 27 }, { 5, 0, 0, 27 },
 	{  6, TERM3, TERM3_block, 28 }, { 6, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 28 }, { 6, 0, 0, 28 },
