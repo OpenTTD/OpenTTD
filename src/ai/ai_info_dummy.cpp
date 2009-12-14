@@ -63,6 +63,15 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 	char error_message[1024];
 	GetString(error_message, STR_ERROR_AI_NO_AI_FOUND, lastof(error_message));
 
+	/* Make escapes for all quotes and slashes. */
+	char safe_error_message[1024];
+	char *q = safe_error_message;
+	for (const char *p = error_message; *p != '\0' && q < lastof(safe_error_message) - 2; p++, q++) {
+		if (*p == '"' || *p == '\\') *q++ = '\\';
+		*q = *p;
+	}
+	*q = '\0';
+
 	/* 2) We construct the AI's code. This is done by merging a header, body and footer */
 	char dummy_script[4096];
 	char *dp = dummy_script;
@@ -71,7 +80,7 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 	/* As special trick we need to split the error message on newlines and
 	 * emit each newline as a separate error printing string. */
 	char *newline;
-	char *p = error_message;
+	char *p = safe_error_message;
 	do {
 		newline = strchr(p, '\n');
 		if (newline != NULL) *newline = '\0';
