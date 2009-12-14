@@ -711,6 +711,7 @@ public:
 		if (!success) {
 			ShowErrorMessage(INVALID_STRING_ID, STR_CONTENT_ERROR_COULD_NOT_CONNECT, 0, 0);
 			delete this;
+			return;
 		}
 
 		this->SetDirty();

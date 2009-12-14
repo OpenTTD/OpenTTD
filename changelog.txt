@@ -1,3 +1,24 @@
+0.7.5-RC1 (2009-12-14)
+------------------------------------------------------------------------
+- Add: Some missing latin-ish characters from the OpenGFX set (r18431)
+- Change [FS#3349]: Recolour the bubble generator just like any other industry (r18409)
+- Fix: Read after free in case no network connection could be made with the content server (r18493)
+- Fix: [NewGRF] Initialisation of cargo payment was broken for NewGRF cargos [FS#3344] (r18475)
+- Fix: [NoAI] AIOrder::SkipToOrder did not properly resolve ORDER_CURRENT (r18471)
+- Fix: When moving a wagon and only the last part of a dual headed engine you could split the dual headed engine over two vehicles (r18462)
+- Fix: [Windows] Forgot to load the symbol from SDL.dll (r18439)
+- Fix: Do not run the 'jam protection' for vehicles in a depot [FS#3360] (r18428)
+- Fix: [Windows] the help window would be too large in some cases [FS#3327] (r18424)
+- Fix: Under some circumstances a pointer could be left untouched and then freed. Make sure this does not happen by ensuring it starts out as NULL instead of 'garbage' [FS#3298] (r18418)
+- Fix: On slopes the original and better road layouts did not check their minimum distance requirements [FS#3332] (r18415)
+- Fix: Aqueducts were not influenced by the 'long bridges' setting [FS#3338] (r18407)
+- Fix: Drive through road stops did not get flooded (r18401)
+- Fix: [YAPP] Trains on bridges were not found, when searching for the origin of a reservation [FS#3345] (r18392)
+- Fix: (Invalid) GRFs could trigger invalid reads (r18391)
+- Fix: One could not share orders between buses carrying different cargos (r18380)
+- Fix: Off-by-one in the preconfigured music lists [FS#3339] (r18369)
+
+
 0.7.4 (2009-12-01)
 ------------------------------------------------------------------------
 - Fix: Endianness issue with saving the zoom level [FS#3333] (r18351)
