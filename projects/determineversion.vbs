@@ -32,6 +32,7 @@ Sub UpdateFiles(version)
 		modified = Mid(version, InStrRev(version, Chr(9)) + 1)
 		version  = Mid(version, 1, InStr(version, Chr(9)) - 1)
 	Else
+		version = "0.7.5-RC1"
 		revision = 0
 		modified = 1
 	End If
