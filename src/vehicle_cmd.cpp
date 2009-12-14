@@ -536,8 +536,10 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			if (flags & DC_EXEC) {
 				assert(w != NULL);
 
-				if (w->cargo_type != v->cargo_type || w->cargo_subtype != v->cargo_subtype) {
-					CommandCost cost = DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8) | 1U << 16, flags, GetCmdRefitVeh(v));
+				/* Find out what's the best sub type */
+				byte subtype = GetBestFittingSubType(v, w);
+				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
+					CommandCost cost = DoCommand(0, w->index, v->cargo_type | (subtype << 8) | 1U << 16, flags, GetCmdRefitVeh(v));
 					if (CmdSucceeded(cost)) total_cost.AddCost(cost);
 				}
 

@@ -159,6 +159,69 @@ static void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 /** Maximum number of refit cycles we try, to prevent infinite loops. */
 static const int MAX_REFIT_CYCLE = 16;
 
+/**
+ * Get the best fitting subtype when 'cloning'/'replacing' v_from with v_for.
+ * Assuming they are going to carry the same cargo ofcourse!
+ * @param v_from the vehicle to match the subtype from
+ * @param v_for  the vehicle to get the subtype for
+ * @return the best sub type
+ */
+byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
+{
+	const Engine *e_from = Engine::Get(v_from->engine_type);
+	const Engine *e_for  = Engine::Get(v_for->engine_type);
+
+	/* If one them doesn't carry cargo, there's no need to find a sub type */
+	if (!e_from->CanCarryCargo() || !e_for->CanCarryCargo()) return 0;
+
+	if (!HasBit(e_from->info.callback_mask, CBM_VEHICLE_CARGO_SUFFIX) ||
+			!HasBit(e_for->info.callback_mask,  CBM_VEHICLE_CARGO_SUFFIX)) {
+		/* One of the engines doesn't have cargo suffixes, i.e. sub types. */
+		return 0;
+	}
+
+	/* It has to be possible for v_for to carry the cargo of v_from. */
+	assert(HasBit(e_for->info.refit_mask, v_from->cargo_type));
+
+	StringID expected_string = GetCargoSubtypeText(v_from);
+
+	CargoID old_cargo_type = v_for->cargo_type;
+	byte old_cargo_subtype = v_for->cargo_subtype;
+	byte ret_refit_cyc = 0;
+
+	/* Set the 'destination' cargo */
+	v_for->cargo_type = v_from->cargo_type;
+
+	/* Cycle through the refits */
+	for (byte refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
+		v_for->cargo_subtype = refit_cyc;
+
+		/* Make sure we don't pick up anything cached. */
+		v_for->First()->InvalidateNewGRFCache();
+		v_for->InvalidateNewGRFCache();
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v_for->engine_type, v_for);
+
+		if (callback == 0xFF) callback = CALLBACK_FAILED;
+		if (callback == CALLBACK_FAILED) break;
+
+		if (GetCargoSubtypeText(v_for) != expected_string) continue;
+
+		/* We found something matching. */
+		ret_refit_cyc = refit_cyc;
+		break;
+	}
+
+	/* Reset the vehicle's cargo type */
+	v_for->cargo_type    = old_cargo_type;
+	v_for->cargo_subtype = old_cargo_subtype;
+
+	/* Make sure we don't taint the vehicle. */
+	v_for->First()->InvalidateNewGRFCache();
+	v_for->InvalidateNewGRFCache();
+
+	return ret_refit_cyc;
+}
+
 struct RefitOption {
 	CargoID cargo;
 	byte subtype;
