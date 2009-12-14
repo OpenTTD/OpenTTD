@@ -3904,7 +3904,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :'משאית ב�
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :'מיכלית נפט 'אם-פי-אס
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :'מיכלית נפט 'סי-אס בע”מ
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :מעבורת נוסעים 'MPS'
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :'מעבורת נוסעים "אף-אף-פי
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :מעבורת נוסעים 'FFP'
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :'רחפת 'באקוול 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :'מעבורת נוסעים 'צו'גר צ'וג
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :'מעבורת נוסעים 'שיברשייק

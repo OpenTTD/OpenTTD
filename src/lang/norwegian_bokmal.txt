@@ -288,9 +288,9 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Godskapasitet
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Spol fremover
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Øk hastigheten på spillet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Innstillinger
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre spill, avbryt spillet, avslutte
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre spillet, avbryt spillet, avslutte
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kart, ekstra vindu eller skiltliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vis byoversikt
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis subsidier
@@ -307,19 +307,19 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vis grup
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom inn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom ut
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg jernbanespor
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bygg vei
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bygg veier
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg kaier
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg flyplasser
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åpne verktøylinjen for å heve/senke land, plante trær, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikkinnstillinger
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis siste melding/nyhet, vis meldingsinnstillinger
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om felt, konsoll, AI feilsøking, skjermdumper, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om felt, konsoll, AI-feilsøking, skjermdumper, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Bytt verktøylinjer
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lagre scenario, laste inn scenario, forlate redigeringsprogrammet, avslutte
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarioredigerer
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Rediger scenario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flytt startdatoen tilbake ett år
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flytt startdatoen frem ett år
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vis kart og byoversikt
@@ -435,7 +435,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere meldi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om felt
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
-STR_ABOUT_MENU_AI_DEBUG                                         :AI feilsøking
+STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
@@ -520,13 +520,13 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaver
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti enheter (eller 10,000 liter) over en distanse på 20 ruter
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for en bestemt varetype
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vis/skjul graf for en bestemt varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte ytelsesmålinger
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Vis oversikt over firmagrafvalg
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Firmagrafvalg
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Trykk her for å vise/skjule et firma
 
 # Company league window
@@ -1049,7 +1049,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handlingen endret vanskelighetsgraden til egendefinert
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte Innstillinger
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillinger
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -1058,7 +1058,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Vis kj�
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillat bygging på skråninger og i vannkanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillat landskapsendring under bygninger, spor, etc.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning flere veier, broer etc. eid av byene: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning av flere veier, broer etc. eid av byene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog : {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
@@ -1071,7 +1071,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last kj
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til en stasjon kun hvis det er etterspørsel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange broer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillat 'gå til jernbanestall'-ordre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillat 'gå til depot'-ordre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for manuell primærindustri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre næringer
@@ -1082,7 +1082,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vis all
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignaler på samme side som kjøreretningen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Vis regnskap ved nyttår: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'direkte' som standard: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nye togordrer stopper som standard ved {ORANGE}{STRING}{LTBLUE} av plattformen
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nye togordre stopper som standard ved {ORANGE}{STRING}{LTBLUE} av plattformen
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :begynnelsen
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
@@ -1103,7 +1103,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det er i
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lufthavner utgår aldri: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Vis en advarsel hvis et tog har kjørt seg vill: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordrer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men ekskluder stoppede kjøretøy
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :alle kjøretøy
@@ -1112,7 +1112,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kjøret
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Bytt automatisk ut kjøretøy når det blir gammelt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Bytt automatisk ut kjøretøy når det er {ORANGE}{STRING}{LTBLUE}{NBSP}måneder før/etter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for automatisk fornying av kjøretøy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varighet til feilmelding: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varighet for feilmeldinger: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Vis byers innbyggertall i tittelfeltet: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
@@ -1167,7 +1167,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatisk ved start av nytt spill: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk den avanserte kjøretøyslisten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert kjøretøyliste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget firma
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firmaer
@@ -1221,7 +1221,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Deaktiv
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Farge i avisen kommer i: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start spillet i år: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jevn økonomi (flere mindre endringer): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat aksjekjøp i andre selskaper: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat aksjekjøp i andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved dra-og-slipp, plasser signal på hver {ORANGE}{STRING}. rute
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå på signalgrensesnittet: {ORANGE}{STRING}
@@ -1307,15 +1307,15 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spi
 STR_INTRO_LOAD_GAME                                             :{BLACK}Last inn spill
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spill scenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spill høydekart
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario Editor
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Rediger scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Flerspiller
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spillinnstillinger
 STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskelighetsgrad ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte Innstillinger
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Instillinger
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter innhold på nettet
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI instillinger
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start nytt spill. Ctrl+klikk hopper over kartkonfigurering
@@ -2001,7 +2001,7 @@ STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopt
 STR_STATION_BUILD_NOISE                                         :{BLACK}Lyd generert: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsarbeid
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsverktøy
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Senk et hjørne av et landstykke
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hev et hjørne av et landstykke
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jevn ut land
@@ -3175,7 +3175,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
+STR_AI_DEBUG                                                    :{WHITE}AI-feilsøking
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navnet til AIen
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
@@ -3551,8 +3551,8 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikke
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Flyet er i luften
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ikke plass til flere ordrer
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}For mange ordrer
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ikke plass til flere ordre
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}For mange ordre
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kan ikke sette inn ny ordre...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Kan ikke slette denne ordren...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kan ikke endre denne ordren...
