@@ -86,3 +86,8 @@ AIRail.RemoveRailStationTileRect <- function(tile, tile2)
 {
 	return AIRail.RemoveRailStationTileRectangle(tile, tile2, false);
 }
+
+AIVehicle.SkipToVehicleOrder <- function(vehicle_id, order_position)
+{
+	return AIOrder.SkipToOrder(vehicle_id, order_position);
+}

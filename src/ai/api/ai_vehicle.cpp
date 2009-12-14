@@ -193,11 +193,6 @@
 	return AIObject::DoCommand(0, vehicle_id, 0, CMD_START_STOP_VEHICLE);
 }
 
-/* static */ bool AIVehicle::SkipToVehicleOrder(VehicleID vehicle_id, AIOrder::OrderPosition order_position)
-{
-	return AIOrder::SkipToOrder(vehicle_id, order_position);
-}
-
 /* static */ bool AIVehicle::ReverseVehicle(VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));

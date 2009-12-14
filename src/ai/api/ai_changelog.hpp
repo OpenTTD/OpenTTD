@@ -44,6 +44,7 @@
  * \li AISubsidy::GetDestination, use AISubsidy::GetDestinationIndex instead
  * \li AITile::GetHeight, use AITile::GetMinHeight/GetMaxHeight/GetCornerHeight instead
  * \li AITown::GetMaxProduction, use AITown::GetLastMonthProduction instead
+ * \li AIVehicle::SkipToVehicleOrder, use AIOrder::SkipToOrder instead
  * \li AIWaypoint::WAYPOINT_INVALID, use AIBaseStation::STATION_INVALID instead
  *
  * Other changes:

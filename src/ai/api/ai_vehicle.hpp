@@ -460,15 +460,6 @@ public:
 	static bool StartStopVehicle(VehicleID vehicle_id);
 
 	/**
-	 * Skips the current order of the given vehicle.
-	 * @param vehicle_id The vehicle to skip the order for.
-	 * @param order_position The selected order to which we want to skip.
-	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @return True if and only if the order has been skipped.
-	 */
-	static bool SkipToVehicleOrder(VehicleID vehicle_id, AIOrder::OrderPosition order_position);
-
-	/**
 	 * Turn the given vehicle so it'll drive the other way.
 	 * @param vehicle_id The vehicle to turn.
 	 * @pre IsValidVehicle(vehicle_id).

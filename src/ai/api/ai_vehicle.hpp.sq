@@ -143,7 +143,6 @@ void SQAIVehicle_Register(Squirrel *engine)
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SendVehicleToDepot,             "SendVehicleToDepot",             2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SendVehicleToDepotForServicing, "SendVehicleToDepotForServicing", 2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::StartStopVehicle,               "StartStopVehicle",               2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SkipToVehicleOrder,             "SkipToVehicleOrder",             3, ".ii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::ReverseVehicle,                 "ReverseVehicle",                 2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetCapacity,                    "GetCapacity",                    3, ".ii");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetLength,                      "GetLength",                      2, ".i");
