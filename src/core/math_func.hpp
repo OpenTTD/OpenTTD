@@ -150,6 +150,7 @@ static FORCEINLINE T *AlignPtr(T *x, uint n)
 template <typename T>
 static FORCEINLINE T Clamp(const T a, const T min, const T max)
 {
+	assert(min <= max);
 	if (a <= min) return min;
 	if (a >= max) return max;
 	return a;
