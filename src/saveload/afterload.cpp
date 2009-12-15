@@ -261,6 +261,7 @@ static void InitializeWindowsAndCaches()
 	UpdateAirportsNoise();
 
 	CheckTrainsLengths();
+	ShowNewGRFError();
 }
 
 typedef void (CDECL *SignalHandlerPointer)(int);

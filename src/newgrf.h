@@ -147,5 +147,6 @@ bool HasGrfMiscBit(GrfMiscBit bit);
 bool GetGlobalVariable(byte param, uint32 *value);
 
 StringID MapGRFStringID(uint32 grfid, StringID str);
+void ShowNewGRFError();
 
 #endif /* NEWGRF_H */

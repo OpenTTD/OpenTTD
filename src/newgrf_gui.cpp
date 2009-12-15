@@ -26,6 +26,29 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+/**
+ * Show the first NewGRF error we can find.
+ */
+void ShowNewGRFError()
+{
+	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		/* We only want to show fatal errors */
+		if (c->error == NULL || c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL) continue;
+
+		SetDParam   (0, c->error->custom_message == NULL ? c->error->message : STR_JUST_RAW_STRING);
+		SetDParamStr(1, c->error->custom_message);
+		SetDParam   (2, STR_JUST_RAW_STRING);
+		SetDParamStr(3, c->filename);
+		SetDParam   (4, STR_JUST_RAW_STRING);
+		SetDParamStr(5, c->error->data);
+		for (uint i = 0; i < c->error->num_params; i++) {
+			SetDParam(6 + i, c->error->param_value[i]);
+		}
+		ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, 0, 0, true);
+		break;
+	}
+}
+
 /** Parse an integerlist string and set each found value
  * @param p the string to be parsed. Each element in the list is seperated by a
  * comma or a space character

@@ -32,6 +32,7 @@
 #include "saveload/saveload.h"
 #include "void_map.h"
 #include "town.h"
+#include "newgrf.h"
 
 #include "table/sprites.h"
 
@@ -167,6 +168,8 @@ static void _GenerateWorld(void *arg)
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
 		CleanupGeneration();
+
+		ShowNewGRFError();
 
 		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 		DEBUG(desync, 1, "new_map: %i\n", _settings_game.game_creation.generation_seed);
