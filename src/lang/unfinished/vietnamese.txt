@@ -1424,6 +1424,9 @@ STR_FACE_SIMPLE                                                 :{BLACK}Đơn gi
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Trình chọn vẻ mặt đơn giản.
 STR_FACE_LOAD                                                   :{BLACK}Nạp
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Chọn vẻ mặt ưa thích
+STR_FACE_LOAD_DONE                                              :{WHITE}Vẻ mặt ưa thích đã được nạp từ file thiết lập của OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Vẻ mặt thứ.
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Xem và/hoặc sửa số vẻ mặt
 
 # Network server list
 

@@ -2359,6 +2359,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmeztetés: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Végzetes NewGRF hiba történt: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy ezzel lesz használva: {STRING}
@@ -3593,9 +3594,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nem mód
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Úticél mozgatása nem lehetséges...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nem lehet átugrani a jelenlegi úticélt...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nem lehet a kiválasztott úticélra ugrani...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}...a jármű nem tud az összes állomásra menni
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}...a jármű nem tud a megadott állomásra menni
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra menni
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}...a jármű nem tud az összes állomásra eljutni
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}...a jármű nem tud a megadott állomásra eljutni
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra eljutni
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nem lehet megosztani a menetrendet...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nem lehet másolni a menetrendet...
