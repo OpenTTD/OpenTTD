@@ -188,7 +188,7 @@ SectionEnd
 Section "Download OpenGFX (free graphics set)" Section3
 	SetOverwrite try
 
-	NSISdl::download "http://binaries.openttd.org/installer/opengfx-${OPENGFX_BASE_VERSION}.tar.7z" "$INSTDIR\data\opengfx.tar.7z"
+	NSISdl::download "http://binaries.openttd.org/installer/opengfx-${OPENGFX_BASE_VERSION}.7z" "$INSTDIR\data\opengfx.7z"
 	Pop $R0 ;Get the return value
 	StrCmp $R0 "success" +3
 		MessageBox MB_OK "Downloading of OpenGFX failed"
@@ -196,9 +196,9 @@ Section "Download OpenGFX (free graphics set)" Section3
 
 	; Let's extract the files
 	SetOutPath "$INSTDIR\data\"
-	NSIS7z::Extract "$INSTDIR\data\opengfx.tar.7z"
+	NSIS7z::Extract "$INSTDIR\data\opengfx.7z"
 
-	Delete "$INSTDIR\data\opengfx.tar.7z"
+	Delete "$INSTDIR\data\opengfx.7z"
 	SetOutPath "$INSTDIR\"
 Done:
 
@@ -209,7 +209,7 @@ SectionEnd
 Section "Download OpenSFX (free sound set)" Section4
 	SetOverwrite try
 
-	NSISdl::download "http://binaries.openttd.org/installer/opensfx-${OPENSFX_BASE_VERSION}.tar.7z" "$INSTDIR\data\opensfx.tar.7z"
+	NSISdl::download "http://binaries.openttd.org/installer/opensfx-${OPENSFX_BASE_VERSION}.7z" "$INSTDIR\data\opensfx.7z"
 	Pop $R0 ;Get the return value
 	StrCmp $R0 "success" +3
 		MessageBox MB_OK "Downloading of OpenSFX failed"
@@ -217,9 +217,9 @@ Section "Download OpenSFX (free sound set)" Section4
 
 	; Let's extract the files
 	SetOutPath "$INSTDIR\data\"
-	NSIS7z::Extract "$INSTDIR\data\opensfx.tar.7z"
+	NSIS7z::Extract "$INSTDIR\data\opensfx.7z"
 
-	Delete "$INSTDIR\data\opensfx.tar.7z"
+	Delete "$INSTDIR\data\opensfx.7z"
 	SetOutPath "$INSTDIR\"
 Done:
 
@@ -230,7 +230,7 @@ SectionEnd
 Section "Download NoSound (free sound set)" Section5
 	SetOverwrite try
 
-	NSISdl::download "http://binaries.openttd.org/installer/nosound-${NOSOUND_BASE_VERSION}.tar.7z" "$INSTDIR\data\nosound.tar.7z"
+	NSISdl::download "http://binaries.openttd.org/installer/nosound-${NOSOUND_BASE_VERSION}.7z" "$INSTDIR\data\nosound.7z"
 	Pop $R0 ;Get the return value
 	StrCmp $R0 "success" +3
 		MessageBox MB_OK "Downloading of NoSound failed"
@@ -238,9 +238,9 @@ Section "Download NoSound (free sound set)" Section5
 
 	; Let's extract the files
 	SetOutPath "$INSTDIR\data\"
-	NSIS7z::Extract "$INSTDIR\data\nosound.tar.7z"
+	NSIS7z::Extract "$INSTDIR\data\nosound.7z"
 
-	Delete "$INSTDIR\data\nosound.tar.7z"
+	Delete "$INSTDIR\data\nosound.7z"
 	SetOutPath "$INSTDIR\"
 Done:
 
@@ -383,10 +383,13 @@ Section "Uninstall"
 	; Music
 	Delete "$INSTDIR\gm\*.gm"
 
-	; Downloaded OpenGFX/OpenSFX
-	Delete "$INSTDIR\data\opengfx-*.tar"
-	Delete "$INSTDIR\data\opensfx-*.tar"
-	Delete "$INSTDIR\data\nosound-*.tar"
+	; Downloaded OpenGFX/OpenSFX/NoSound
+	Delete "$INSTDIR\data\opengfx\*"
+	RMDir  "$INSTDIR\data\opengfx"
+	Delete "$INSTDIR\data\opensfx\*"
+	RMDir  "$INSTDIR\data\opensfx"
+	Delete "$INSTDIR\data\nosound\*"
+	RMDir  "$INSTDIR\data\nosound"
 
 	; Language files
 	Delete "$INSTDIR\lang\*.lng"
@@ -397,9 +400,11 @@ Section "Uninstall"
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"
 	RMDir "$SMPROGRAMS\$SHORTCUTS"
+	RMDir "$INSTDIR\ai"
+	RMDir "$INSTDIR\data"
 	RMDir "$INSTDIR\gm"
 	RMDir "$INSTDIR\lang"
-	RMDir "$INSTDIR\data"
+	RMDir "$INSTDIR\scripts"
 	RMDir "$INSTDIR"
 
 SectionEnd
