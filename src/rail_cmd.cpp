@@ -1804,8 +1804,8 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 	/* Draw track pieces individually for junction tiles */
 	if (junction) {
-		if (track & TRACK_BIT_X)     DrawGroundSprite(rti->base_sprites.single_y, PAL_NONE);
-		if (track & TRACK_BIT_Y)     DrawGroundSprite(rti->base_sprites.single_x, PAL_NONE);
+		if (track & TRACK_BIT_X)     DrawGroundSprite(rti->base_sprites.single_x, PAL_NONE);
+		if (track & TRACK_BIT_Y)     DrawGroundSprite(rti->base_sprites.single_y, PAL_NONE);
 		if (track & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n, PAL_NONE);
 		if (track & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s, PAL_NONE);
 		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w, PAL_NONE);
@@ -1818,14 +1818,14 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		TrackBits pbs = GetRailReservationTrackBits(ti->tile) & track;
 		if (pbs & TRACK_BIT_X) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
-				DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
+				DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
 			} else {
 				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
 			}
 		}
 		if (pbs & TRACK_BIT_Y) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
-				DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
+				DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
 			} else {
 				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
 			}
@@ -1959,8 +1959,8 @@ static void DrawTile_Track(TileInfo *ti)
 		/* PBS debugging, draw reserved tracks darker */
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
 			switch (GetRailDepotDirection(ti->tile)) {
-				case DIAGDIR_SW: DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH); break;
-				case DIAGDIR_SE: DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH); break;
+				case DIAGDIR_SW: DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH); break;
+				case DIAGDIR_SE: DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH); break;
 				default: break;
 			}
 		}

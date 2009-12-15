@@ -911,7 +911,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* PBS debugging, draw reserved tracks darker */
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && (transport_type == TRANSPORT_RAIL && HasTunnelBridgeReservation(ti->tile))) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-			DrawGroundSprite(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
+			DrawGroundSprite(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH);
 		}
 
 		if (transport_type == TRANSPORT_ROAD) {
@@ -997,7 +997,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && transport_type == TRANSPORT_RAIL && HasTunnelBridgeReservation(ti->tile)) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
-				AddSortableSpriteToDraw(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 8);
+				AddSortableSpriteToDraw(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 8);
 			} else {
 				AddSortableSpriteToDraw(rti->base_sprites.single_sloped + tunnelbridge_direction, PALETTE_CRASH, ti->x, ti->y, 16, 16, 8, ti->z);
 			}

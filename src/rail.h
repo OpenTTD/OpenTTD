@@ -54,8 +54,8 @@ struct RailtypeInfo {
 		SpriteID track_y;      ///< single piece of rail in Y direction, with ground
 		SpriteID track_ns;     ///< two pieces of rail in North and South corner (East-West direction)
 		SpriteID ground;       ///< ground sprite for a 3-way switch
+		SpriteID single_x;     ///< single piece of rail in X direction, without ground
 		SpriteID single_y;     ///< single piece of rail in Y direction, without ground
-		SpriteID single_x;     ///< single piece of rail in X direction
 		SpriteID single_n;     ///< single piece of rail in the northern corner
 		SpriteID single_s;     ///< single piece of rail in the southern corner
 		SpriteID single_e;     ///< single piece of rail in the eastern corner

@@ -306,8 +306,8 @@ enum Sprites {
 
 	SPR_ORIGINAL_SIGNALS_BASE   = 1275,
 
-	SPR_RAIL_SINGLE_Y           = 1005,
-	SPR_RAIL_SINGLE_X           = 1006,
+	SPR_RAIL_SINGLE_X           = 1005,
+	SPR_RAIL_SINGLE_Y           = 1006,
 	SPR_RAIL_SINGLE_NORTH       = 1007,
 	SPR_RAIL_SINGLE_SOUTH       = 1008,
 	SPR_RAIL_SINGLE_EAST        = 1009,
@@ -342,8 +342,8 @@ enum Sprites {
 	SPR_RAIL_ROOF_GLASS_Y_TILE_A      = 1084,
 	SPR_RAIL_ROOF_GLASS_X_TILE_B      = 1085, // second half of the roof glass
 	SPR_RAIL_ROOF_GLASS_Y_TILE_B      = 1086,
-	SPR_MONO_SINGLE_Y                 = 1087,
-	SPR_MONO_SINGLE_X                 = 1088,
+	SPR_MONO_SINGLE_X                 = 1087,
+	SPR_MONO_SINGLE_Y                 = 1088,
 	SPR_MONO_SINGLE_NORTH             = 1089,
 	SPR_MONO_SINGLE_SOUTH             = 1090,
 	SPR_MONO_SINGLE_EAST              = 1091,
@@ -351,8 +351,8 @@ enum Sprites {
 	SPR_MONO_TRACK_Y                  = 1093,
 	SPR_MONO_TRACK_BASE               = 1100,
 	SPR_MONO_TRACK_N_S                = 1117,
-	SPR_MGLV_SINGLE_Y                 = 1169,
-	SPR_MGLV_SINGLE_X                 = 1170,
+	SPR_MGLV_SINGLE_X                 = 1169,
+	SPR_MGLV_SINGLE_Y                 = 1170,
 	SPR_MGLV_SINGLE_NORTH             = 1171,
 	SPR_MGLV_SINGLE_SOUTH             = 1172,
 	SPR_MGLV_SINGLE_EAST              = 1173,
