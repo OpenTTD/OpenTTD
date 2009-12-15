@@ -231,7 +231,7 @@ public:
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
 
 					char cargo_suffix[3][512];
-					GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
+					GetAllCargoSuffixes(0, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
 					StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 					byte p = 0;
 					SetDParam(0, STR_JUST_NOTHING);
@@ -245,7 +245,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(str));
 
 					/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
-					GetAllCargoSuffixes(3, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
+					GetAllCargoSuffixes(3, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
 					str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
 					p = 0;
 					SetDParam(0, STR_JUST_NOTHING);
