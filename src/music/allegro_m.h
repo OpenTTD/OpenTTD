@@ -32,7 +32,15 @@ public:
 
 class FMusicDriver_Allegro: public MusicDriverFactory<FMusicDriver_Allegro> {
 public:
+#if !defined(WITH_SDL) && defined(WITH_ALLEGRO)
+	/* If SDL is not compiled in but Allegro is, chances are quite big
+	 * that Allegro is going to be used. Then favour this sound driver
+	 * over extmidi because with extmidi we get crashes. */
+	static const int priority = 9;
+#else
 	static const int priority = 2;
+#endif
+
 	/* virtual */ const char *GetName() { return "allegro"; }
 	/* virtual */ const char *GetDescription() { return "Allegro MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Allegro(); }

@@ -12,6 +12,8 @@
 #ifndef __MORPHOS__
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../sound/sound_driver.hpp"
+#include "../video/video_driver.hpp"
 #include "extmidi.h"
 #include <fcntl.h>
 #include <sys/types.h>
@@ -29,6 +31,11 @@ static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
 const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 {
+	if (strcmp(_video_driver->GetName(), "allegro") == 0 ||
+			strcmp(_sound_driver->GetName(), "allegro") == 0) {
+		return "the extmidi driver does not work when Allegro is loaded.";
+	}
+
 	const char *command = GetDriverParam(parm, "cmd");
 	if (StrEmpty(command)) command = EXTERNAL_PLAYER;
 

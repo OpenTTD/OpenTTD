@@ -642,15 +642,6 @@ int ttd_main(int argc, char *argv[])
 	}
 	free(sounddriver);
 
-	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
-	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
-	if (_music_driver == NULL) {
-		StrEmpty(musicdriver) ?
-			usererror("Failed to autoprobe music driver") :
-			usererror("Failed to select requested music driver '%s'", musicdriver);
-	}
-	free(musicdriver);
-
 	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = strdup(_ini_videodriver);
 	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
@@ -659,6 +650,15 @@ int ttd_main(int argc, char *argv[])
 			usererror("Failed to select requested video driver '%s'", videodriver);
 	}
 	free(videodriver);
+
+	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
+	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
+	if (_music_driver == NULL) {
+		StrEmpty(musicdriver) ?
+			usererror("Failed to autoprobe music driver") :
+			usererror("Failed to select requested music driver '%s'", musicdriver);
+	}
+	free(musicdriver);
 
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 	/* Initialize the zoom level of the screen to normal */
