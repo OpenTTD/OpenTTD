@@ -103,6 +103,7 @@ enum OrderDepotActionFlags {
 	ODATFB_HALT          = 1 << 0, ///< Service the vehicle and then halt it.
 	ODATFB_NEAREST_DEPOT = 1 << 1, ///< Send the vehicle to the nearest depot.
 };
+DECLARE_ENUM_AS_BIT_SET(OrderDepotActionFlags);
 
 /**
  * Variables (of a vehicle) to 'cause' skipping on.

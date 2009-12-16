@@ -120,7 +120,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 /* static */ bool AIOrder::AreOrderFlagsValid(TileIndex destination, AIOrderFlags order_flags)
 {
-	switch (::GetOrderTypeByTile(destination)) {
+	OrderType ot = (order_flags & AIOF_GOTO_NEAREST_DEPOT) ? OT_GOTO_DEPOT : ::GetOrderTypeByTile(destination);
+	switch (ot) {
 		case OT_GOTO_STATION:
 			return (order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_UNLOAD_FLAGS | AIOF_LOAD_FLAGS)) == 0 &&
 					/* Test the different mutual exclusive flags. */
@@ -221,6 +222,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		case OT_GOTO_DEPOT:
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) order_flags |= AIOF_SERVICE_IF_NEEDED;
 			if (order->GetDepotActionType() & ODATFB_HALT) order_flags |= AIOF_STOP_IN_DEPOT;
+			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) order_flags |= AIOF_GOTO_NEAREST_DEPOT;
 			break;
 
 		case OT_GOTO_STATION:
@@ -335,19 +337,25 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
 	Order order;
-	switch (::GetOrderTypeByTile(destination)) {
+	OrderType ot = (order_flags & AIOF_GOTO_NEAREST_DEPOT) ? OT_GOTO_DEPOT : ::GetOrderTypeByTile(destination);
+	switch (ot) {
 		case OT_GOTO_DEPOT: {
 			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & AIOF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
 			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & AIOF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
+			if (order_flags & AIOF_GOTO_NEAREST_DEPOT) odaf |= ODATFB_NEAREST_DEPOT;
 			OrderNonStopFlags onsf = (OrderNonStopFlags)((order_flags & AIOF_NON_STOP_INTERMEDIATE) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
-			/* Check explicitly if the order is to a station (for aircraft) or
-			 * to a depot (other vehicle types). */
-			if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
-				if (!::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
+			if (order_flags & AIOF_GOTO_NEAREST_DEPOT) {
+				order.MakeGoToDepot(0, odtf, onsf, odaf);
 			} else {
-				if (::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetDepotIndex(destination), odtf, onsf, odaf);
+				/* Check explicitly if the order is to a station (for aircraft) or
+				 * to a depot (other vehicle types). */
+				if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
+					if (!::IsTileType(destination, MP_STATION)) return false;
+					order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
+				} else {
+					if (::IsTileType(destination, MP_STATION)) return false;
+					order.MakeGoToDepot(::GetDepotIndex(destination), odtf, onsf, odaf);
+				}
 			}
 			break;
 		}

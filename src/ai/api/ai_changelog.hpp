@@ -23,6 +23,7 @@
  * \li AIBuoyList
  * \li AIEventCompanyAskMerger
  * \li AIIndustry::GetLastMonthTransportedPercentage
+ * \li AIOrder::AIOF_GOTO_NEAREST_DEPOT
  * \li AIRail::RemoveRailStationTileRectangle
  * \li AIRail::RemoveRailWaypointTileRectangle
  * \li AISubsidy::SubsidyParticipantType
