@@ -2896,13 +2896,13 @@ static void NewSpriteGroup(byte *buf, size_t len)
 
 				case GSF_TOWNHOUSE:
 				case GSF_INDUSTRYTILES: {
-					byte sprites     = _cur_grffile->spriteset_numents;
-					byte num_sprites = max((uint8)1, type);
+					byte num_sprite_sets      = _cur_grffile->spriteset_numents;
+					byte num_building_sprites = max((uint8)1, type);
 					uint i;
 
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
 					act_group = group;
-					group->num_sprites = sprites;
+					group->num_building_stages = num_sprite_sets;
 					group->dts = CallocT<DrawTileSprites>(1);
 
 					/* Groundsprite */
@@ -2915,14 +2915,14 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					if (HasBit(group->dts->ground.pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
-						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->dts->ground.sprite, 0, 14) * sprites;
+						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->dts->ground.sprite, 0, 14) * num_sprite_sets;
 						SB(group->dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
 						ClrBit(group->dts->ground.pal, 15);
 					}
 
-					group->dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);
+					group->dts->seq = CallocT<DrawTileSeqStruct>(num_building_sprites + 1);
 
-					for (i = 0; i < num_sprites; i++) {
+					for (i = 0; i < num_building_sprites; i++) {
 						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts->seq[i]);
 
 						seq->image.sprite = grf_load_word(&buf);
@@ -2935,7 +2935,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 						if (HasBit(seq->image.pal, 15)) {
 							/* Bit 31 set means this is a custom sprite, so rewrite it to the
 							 * last spriteset defined. */
-							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image.sprite, 0, 14) * sprites;
+							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image.sprite, 0, 14) * num_sprite_sets;
 							SB(seq->image.sprite, 0, SPRITE_WIDTH, sprite);
 							ClrBit(seq->image.pal, 15);
 						}

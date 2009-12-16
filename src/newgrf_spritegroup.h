@@ -270,7 +270,7 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
 	~TileLayoutSpriteGroup();
 
-	byte num_sprites; ///< Number of sprites in the spriteset, used for loading stages
+	byte num_building_stages;    ///< Number of building stages to show for this house/industry tile
 	struct DrawTileSprites *dts;
 };
 
