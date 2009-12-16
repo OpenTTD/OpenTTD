@@ -446,6 +446,8 @@ enum AIConfigWindowWidgets {
 	AIC_WIDGET_NUMBER,       ///< Number of AIs
 	AIC_WIDGET_LIST,         ///< List with currently selected AIs
 	AIC_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through the selected AIs
+	AIC_WIDGET_MOVE_UP,      ///< Move up button
+	AIC_WIDGET_MOVE_DOWN,    ///< Move down button
 	AIC_WIDGET_CHANGE,       ///< Select another AI button
 	AIC_WIDGET_CONFIGURE,    ///< Change AI settings button
 	AIC_WIDGET_CLOSE,        ///< Close window button
@@ -458,12 +460,16 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, AIC_WIDGET_BACKGROUND),
-		NWidget(NWID_VERTICAL), SetPIP(4, 0, 4),
+		NWidget(NWID_VERTICAL), SetPIP(4, 4, 4),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 10),
 				NWidget(NWID_BUTTON_ARROW, COLOUR_YELLOW, AIC_WIDGET_DECREASE), SetFill(0, 1), SetDataTip(AWV_DECREASE, STR_NULL),
 				NWidget(NWID_BUTTON_ARROW, COLOUR_YELLOW, AIC_WIDGET_INCREASE), SetFill(0, 1), SetDataTip(AWV_INCREASE, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(6, 0),
 				NWidget(WWT_TEXT, COLOUR_MAUVE, AIC_WIDGET_NUMBER), SetDataTip(STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS, STR_NULL), SetFill(1, 0), SetPadding(1, 0, 0, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 0, 10),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_MOVE_UP), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_CONFIG_MOVE_UP, STR_AI_CONFIG_MOVE_UP_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_MOVE_DOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_CONFIG_MOVE_DOWN, STR_AI_CONFIG_MOVE_DOWN_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
@@ -588,6 +594,22 @@ struct AIConfigWindow : public Window {
 				break;
 			}
 
+			case AIC_WIDGET_MOVE_UP:
+				if (this->selected_slot > 1) {
+					Swap(_settings_newgame.ai_config[this->selected_slot], _settings_newgame.ai_config[this->selected_slot - 1]);
+					this->selected_slot--;
+					this->InvalidateData();
+				}
+				break;
+
+			case AIC_WIDGET_MOVE_DOWN:
+				if (this->selected_slot < _settings_newgame.difficulty.max_no_competitors) {
+					Swap(_settings_newgame.ai_config[this->selected_slot], _settings_newgame.ai_config[this->selected_slot + 1]);
+					this->selected_slot++;
+					this->InvalidateData();
+				}
+				break;
+
 			case AIC_WIDGET_CHANGE:  // choose other AI
 				ShowAIListWindow((CompanyID)this->selected_slot);
 				break;
@@ -632,6 +654,8 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, _settings_newgame.difficulty.max_no_competitors == MAX_COMPANIES - 1);
 		this->SetWidgetDisabledState(AIC_WIDGET_CHANGE, this->selected_slot == INVALID_COMPANY);
 		this->SetWidgetDisabledState(AIC_WIDGET_CONFIGURE, this->selected_slot == INVALID_COMPANY);
+		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_UP, this->selected_slot == INVALID_COMPANY || this->selected_slot == 1);
+		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || this->selected_slot == _settings_newgame.difficulty.max_no_competitors);
 	}
 
 	virtual void OnTick()

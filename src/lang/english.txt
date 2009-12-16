@@ -3191,6 +3191,11 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}All AIs 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
 STR_AI_CONFIG_RANDOM_AI                                         :Random AI
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Move Up
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move selected AI up in the list
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Move Down
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move selected AI down in the list
+
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Select AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configure
