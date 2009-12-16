@@ -1967,6 +1967,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* The behaviour of force_proceed has been changed. Now
+	 * it counts signals instead of some random time out. */
+	if (CheckSavegameVersion(131)) {
+		Train *t;
+		FOR_ALL_TRAINS(t) {
+			t->force_proceed = min<byte>(t->force_proceed, 1);
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

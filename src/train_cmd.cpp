@@ -1990,6 +1990,9 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 			ToggleBit(v->flags, VRF_REVERSE_DIRECTION);
 			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+			/* We cancel any 'skip signal at dangers' here */
+			v->force_proceed = 0;
+			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		}
 	} else {
 		/* turn the whole train around */
@@ -2006,6 +2009,10 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 					v->LeaveStation();
 				}
 			}
+
+			/* We cancel any 'skip signal at dangers' here */
+			v->force_proceed = 0;
+			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 			if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && v->cur_speed != 0) {
 				ToggleBit(v->flags, VRF_REVERSING);
@@ -2033,7 +2040,15 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	Train *t = Train::GetIfValid(p1);
 	if (t == NULL || !CheckOwnership(t->owner)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) t->force_proceed = 0x50;
+	if (flags & DC_EXEC) {
+		/* If we are forced to proceed, cancel that order.
+		 * If we are marked stuck we would want to force the train
+		 * to proceed to the next signal. In the other cases we
+		 * would like to pass the signal at danger and run till the
+		 * next signal we encounter. */
+		t->force_proceed = t->force_proceed == 2 ? 0 : HasBit(t->flags, VRF_TRAIN_STUCK) || t->IsInDepot() ? 1 : 2;
+		SetWindowDirty(WC_VEHICLE_VIEW, t->index);
+	}
 
 	return CommandCost();
 }
@@ -3348,6 +3363,21 @@ static void TrainController(Train *v, Vehicle *nomove)
 					chosen_track = TrackToTrackBits(ChooseTrainTrack(v, gp.new_tile, enterdir, bits, false, NULL, true));
 					assert(chosen_track & (bits | GetReservedTrackbits(gp.new_tile)));
 
+					if (v->force_proceed != 0 && IsPlainRailTile(gp.new_tile) && HasSignals(gp.new_tile)) {
+						/* For each signal we find decrease the counter by one.
+						 * We start at two, so the first signal we pass decreases
+						 * this to one, then if we reach the next signal it is
+						 * decreased to zero and we won't pass that new signal. */
+						Trackdir dir = FindFirstTrackdir(trackdirbits);
+						if (GetSignalType(gp.new_tile, TrackdirToTrack(dir)) != SIGTYPE_PBS ||
+								!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(dir))) {
+							/* However, we do not want to be stopped by PBS signals
+							 * entered via the back. */
+							v->force_proceed--;
+							SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+						}
+					}
+
 					/* Check if it's a red signal and that force proceed is not clicked. */
 					if ((red_signals & chosen_track) && v->force_proceed == 0) {
 						/* In front of a red signal */
@@ -3921,7 +3951,6 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	if (v->force_proceed != 0) {
-		v->force_proceed--;
 		ClrBit(v->flags, VRF_TRAIN_STUCK);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
@@ -4006,6 +4035,8 @@ static bool TrainLocoHandler(Train *v, bool mode)
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
 	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && (v->vehstatus & VS_STOPPED)) {
+		/* If we manually stopped, we're not force-proceeding anymore. */
+		v->force_proceed = 0;
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
