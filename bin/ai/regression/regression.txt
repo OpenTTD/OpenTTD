@@ -8488,14 +8488,37 @@
   GetOrderCount():       0
   GetOrderDestination(): -1
   AreOrderFlagsValid():  true
+  AreOrderFlagsValid():  false
+  AreOrderFlagsValid():  true
+  AreOrderFlagsValid():  true
+  AreOrderFlagsValid():  true
+  AreOrderFlagsValid():  true
+  IsValidConditionalOrder(): true
+  IsValidConditionalOrder(): false
+  IsValidConditionalOrder(): true
+  IsValidConditionalOrder(): false
   IsValidVehicleOrder(): false
+  IsGotoStationOrder():  false
+  IsGotoDepotOrder():    false
+  IsGotoWaypointOrder(): false
+  IsConditionalOrder():  false
+  IsCurrentOrderPartOfOrderList(): false
   GetOrderFlags():       65535
   AppendOrder():         true
   InsertOrder():         true
   GetOrderCount():       2
   IsValidVehicleOrder(): true
+  IsGotoStationOrder():  true
+  IsGotoDepotOrder():    false
+  IsGotoWaypointOrder(): false
+  IsConditionalOrder():  false
+  IsCurrentOrderPartOfOrderList(): false
+  GetOrderFlags():       8
+  GetOrderFlags():       8
+  GetOrderJumpTo():      -1
   RemoveOrder():         true
   SetOrderFlags():       true
+  GetOrderFlags():       64
   GetOrderDestination(): 33411
   CopyOrders():          false
   CopyOrders():          true
