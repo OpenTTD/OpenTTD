@@ -251,10 +251,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Hyd: {NU
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ardal: {NUM} x {NUM}{}Gwahaniaeth uchder: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poblogaeth
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Enw
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dyddiad
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Cynyrch
 STR_SORT_BY_TYPE                                                :Math
 STR_SORT_BY_TRANSPORTED                                         :Wedi'i gludo
@@ -362,7 +363,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ffenestr Olygfa
 STR_MAP_MENU_SIGN_LIST                                          :Rhestr Arwyddion
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Cyfeiriadur Trefi
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Cymorthdaliadau
@@ -751,6 +753,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Mae {STRING} wedi cael ei brynu gan {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manager)
 
+
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} newydd wrthi'n cael ei adeiladu wrth {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} newydd wrthi'n cael ei phlannu wrth {TOWN}!
 
@@ -869,7 +872,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cerbydau Ffordd
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Dewiswch ar ba ochr i'r ffordd y dylai cerbydau yrru
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gyrru ar y chwith
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gyrru ar y chwith
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gyrru ar y dde
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Enwau Trefi
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Dewis arddull yr enwau trefi
@@ -2003,6 +2006,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Adeiladu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Llawer o drefi ar hap
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Gorchuddio'r map gyda threfi wedi'i lleoli ar hap
 
+
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Maint tref:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Bach
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Canolig
@@ -3083,6 +3087,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Mae'r ce
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Mae'r cerbyd hwn yn rhedeg {STRING} yn hwyr ar hyn o bryd
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Mae'r cerbyd hwn yn rhedeg {STRING} yn gynnar ar hyn o bryd
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Newid Amser
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd
 
@@ -3094,6 +3099,12 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod 
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Awtolenwi
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch yr amserlen yn awtomatig gyda gwerthoedd o'r daith nesaf (Ctrl+Clic er mwyn ceisio cadw amserau aros)
+
+
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Dadfygio AI
@@ -3109,6 +3120,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Ffurfwed
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Pob AIau a gaiff eu llwytho ar gyfer y gem nesaf
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Chwaraewr dynol
 STR_AI_CONFIG_RANDOM_AI                                         :AI ar hap
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Dewis AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Llwytho AI arall
@@ -3950,7 +3962,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -3966,4 +3977,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

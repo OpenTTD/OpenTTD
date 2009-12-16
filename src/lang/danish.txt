@@ -1063,7 +1063,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Aktiver
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodel for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (skal bruge NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (ikke med OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsningsalgoritme: {ORANGE}{STRING}
@@ -2325,6 +2325,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fejl: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-fejl er opstået: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versionen rapporteret af OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er beregnet til {STRING}-versionen af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er designet til brug sammen med {STRING}
@@ -2387,6 +2388,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passager
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nødvendig godsmængde for at byen kan vokse:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} krævet
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} kræves om vinteren
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} leveret seneste måned
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Støjgrænse i byen: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skærmen over byens lokalitet. Ctrl+Klik åbner et nyt vindue ved byens lokalitet
@@ -3188,6 +3190,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Computer
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle computerstyrede spillere der vil blive indlæst i næste spil
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfældig computerspiller
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vælg computerspiller
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs en anden computerspiller

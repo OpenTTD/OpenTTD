@@ -3286,6 +3286,7 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Sve UI k
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudski igrač
 STR_AI_CONFIG_RANDOM_AI                                         :Nasumična UI
 
+
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Izaberi UI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitaj drugu UI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfiguriraj

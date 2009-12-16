@@ -2705,6 +2705,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Błąd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Błąd krytyczny: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Pojawił się błąd krytyczny NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} jest przeznaczony dla TTD wersji {STRING}.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} jest zaprojektowany do użycia z {STRING}
@@ -3449,7 +3450,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedz do najblizszej zajezdni
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedź do najbliższej zajezdni
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'
@@ -3465,7 +3466,7 @@ STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Obsluga non-stop w
 
 STR_ORDER_NEAREST_DEPOT                                         :najbliższy
-STR_ORDER_NEAREST_HANGAR                                        :najblizszy hangar
+STR_ORDER_NEAREST_HANGAR                                        :najbliższy hangar
 STR_ORDER_TRAIN_DEPOT                                           :Zajezdni kolejowej
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Zajezdni samochodowej
 STR_ORDER_SHIP_DEPOT                                            :Doku
@@ -3473,7 +3474,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangaru
 
-STR_ORDER_REFIT_ORDER                                           :(Przeksztalc na {STRING})
+STR_ORDER_REFIT_ORDER                                           :(Przekształć na {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remontuj w {STRING} i zatrzymaj)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
@@ -3494,9 +3495,9 @@ STR_ORDER_NO_UNLOAD                                             :(Nie rozładowu
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełen załadunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełen załadunek któregoś z towarów)
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[blisko końca]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[bliższy koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[daleko od końca]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[dalszy koniec]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do rozkazu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
@@ -3575,6 +3576,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Wszystkie SI, które będą załadowane w następnej grze
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
 STR_AI_CONFIG_RANDOM_AI                                         :Losowe SI
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Wybierz SI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Wczytaj kolejne SI

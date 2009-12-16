@@ -2387,7 +2387,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagie
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vracht nodig voor groei dorp:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} nodig
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} noodzakleijk in de winter
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} noodzakelijk in de winter
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} afgelopen maand afgeleverd
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van het dorp. Ctrl+Klik opent een nieuw venster op de locatie van het dorp
@@ -3189,6 +3189,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Confi
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI's die in het volgende spel geladen zullen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecteer AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laad andere AI

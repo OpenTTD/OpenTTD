@@ -321,8 +321,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Alternar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Guardar escenario, cargar escenario, cargar escenario, abandonar editor, salir
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de escenarios
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retrocede la fecha de inicio en 1 año
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avanza la fecha de inicio en 1 año
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retrocede la fecha de inicio en un año
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avanza la fecha de inicio en un año
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Mostrar mapa, guía de pueblos
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generación de paisaje
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Creación de pueblos
@@ -2216,8 +2216,8 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de p
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de industrias:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura línea nieve:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover la línea de nieve una arriba
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover la línea de nieve una abajo
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover la línea de nieve hacia arriba
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover la línea de nieve hacia abajo
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Semilla Aleatoria:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Pulsa para introducir la semilla aleatoria
 STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
@@ -2256,8 +2256,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Tierra l
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar una tierra llana
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tierra aleatoria
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura tierra llana:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mueve la altura de la tierra llana uno abajo
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mueve la altura de la tierra llana uno arriba
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mueve la altura de la tierra llana hacia abajo
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mueve la altura de la tierra llana hacia arriba
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambia la altura de la tierra llana
 
@@ -3191,6 +3191,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Configur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Todas las IAs que serán cargadas en la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador Humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover hacia arriba
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover la IA seleccionada hacia arriba
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mover hacia abajo
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover la IA seleccionada hacia abajo
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Seleccionar IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar otra IA

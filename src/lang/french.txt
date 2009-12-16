@@ -3192,6 +3192,11 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Toutes l
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur Humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Déplacer vers le haut
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Déplacer l'IA sélectionnée vers le haut
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Déplacer vers le bas
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Déplacer l'IA sélectionnée vers le bas
+
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Sélection IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger une autre IA
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurer
