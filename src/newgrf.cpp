@@ -2249,14 +2249,26 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 			case 0x0A: { // Set industry layout(s)
 				indsp->num_table = grf_load_byte(&buf); // Number of layaouts
-				uint32 defsize = grf_load_dword(&buf);  // Total size of the definition
+				/* We read the total size in bytes, but we can't rely on the
+				 * newgrf to provide a sane value. First assume the value is
+				 * sane but later on we make sure we enlarge the array if the
+				 * newgrf contains more data. Each tile uses either 3 or 5
+				 * bytes, so to play it safe we assume 3. */
+				uint32 def_num_tiles = grf_load_dword(&buf) / 3 + 1;
 				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(indsp->num_table); // Table with tiles to compose an industry
-				IndustryTileTable *itt = CallocT<IndustryTileTable>(defsize); // Temporary array to read the tile layouts from the GRF
-				int size;
+				IndustryTileTable *itt = CallocT<IndustryTileTable>(def_num_tiles); // Temporary array to read the tile layouts from the GRF
+				uint size;
 				const IndustryTileTable *copy_from;
 
 				for (byte j = 0; j < indsp->num_table; j++) {
-					for (int k = 0;; k++) {
+					for (uint k = 0;; k++) {
+						if (k >= def_num_tiles) {
+							grfmsg(3, "IndustriesChangeInfo: Incorrect size for industry tile layout definition for industry %u.", indid);
+							/* Size reported by newgrf was not big enough so enlarge the array. */
+							def_num_tiles *= 2;
+							itt = ReallocT<IndustryTileTable>(itt, def_num_tiles);
+						}
+
 						itt[k].ti.x = grf_load_byte(&buf); // Offsets from northermost tile
 
 						if (itt[k].ti.x == 0xFE && k == 0) {
