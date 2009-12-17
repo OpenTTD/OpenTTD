@@ -1247,6 +1247,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toestaan, eigen dorp layout
 
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midden
@@ -2325,6 +2326,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritiek: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF fout is ontstaan: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie, gerapporteerd door OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor de {STRING} versie van TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is ontwikkeld voor {STRING}
@@ -3190,6 +3192,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI'
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Verplaats Omhoog
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Verplaats geselecteerde AI omhoog in de lijst
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Verplaats Omlaag
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Verplaats de geselecteerde AI naar omlaag in de lijst
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecteer AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laad andere AI

@@ -1281,6 +1281,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :tiltott
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :megengedett
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :megengedett, egyéni városelrendezés
 
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Balra
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Középen
@@ -2883,7 +2884,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ide katt
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ezzel egy hajó másolatát készítheted el. Ctrl+klikkel a menetrendet is megoszthatod
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ezzel a repülőgép másolatát készítheted el. Ctrl+klikkel a menetrendet is megoszthatod.
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}A vonat rákényszerítése a továbbhaladást tiltó jelzés mellett való elhaladásra
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}A vonat rákényszerítése a megállj jelzés meghaladására
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}A vonat átalakítása másfajta áru szállítására
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Teherautó átalakítása hogy mást is tudjon szállítani
@@ -3224,6 +3225,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}MI beál
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Az összes MI, ami be lesz töltve a következő játékban
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Játékos
 STR_AI_CONFIG_RANDOM_AI                                         :Véletlenszerűen választott MI
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mozgatás Fel
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Kiválasztott MI mozgatása felfelé a listában
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mozgatás Le
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Kiválasztott MI mozgatása lefelé a listában
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}MI kiválasztása
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Másik MI betöltése
@@ -3577,7 +3583,7 @@ STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}A megsem
 STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Nem lehetséges a megsemmisült jármű átalakítása...
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem indíthatod el a vonatot veszélyben...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem haladhatja meg a vonat a megállj jelzést...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nem fordíthatod meg a vonatot...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Ennek a vágányszakasznak nincs felsővezetéke, a vonat nem tud indulni
 

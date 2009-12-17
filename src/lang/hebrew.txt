@@ -87,7 +87,7 @@ STR_CARGO_SINGULAR_SUGAR                                        :סוכר
 STR_CARGO_SINGULAR_TOY                                          :צעצוע
 STR_CARGO_SINGULAR_CANDY                                        :ממתק
 STR_CARGO_SINGULAR_COLA                                         :קולה
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :שערות סבתא
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :צמר גפן מתוק
 STR_CARGO_SINGULAR_BUBBLE                                       :בועה
 STR_CARGO_SINGULAR_TOFFEE                                       :טופי
 STR_CARGO_SINGULAR_BATTERY                                      :סוללה
@@ -121,7 +121,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} של �
 STR_QUANTITY_TOYS                                               :{P 0 צעצוע ""} {COMMA} {P "" צעצועים}
 STR_QUANTITY_SWEETS                                             :{P 0 שק ""} {COMMA} {P "" שקים} של ממתקים
 STR_QUANTITY_COLA                                               :{VOLUME} של קולה
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} של שערות סבתא
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} של צמר גפן מתוק
 STR_QUANTITY_BUBBLES                                            :{P 0 בועה ""} {COMMA} {P "" בועות}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} של טופי
 STR_QUANTITY_BATTERIES                                          :{P 0 סוללה ""} {COMMA} {P "" סוללות}
@@ -1248,6 +1248,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :אסור
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :מותר
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :מותר, מתווה עיר מותאם אישית
 
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{ORANGE}{STRING}{LTBLUE} :מיקום הסרגל העיקרי
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :שמאל
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :מרכז
@@ -1438,7 +1439,7 @@ STR_FACE_FACECODE                                               :{BLACK}תוי �
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}צפה/שנה מספר סידורי של תוי הפנים
 STR_FACE_FACECODE_CAPTION                                       ::{WHITE}צפה/שנה מספר סידורי של תוי הפנים
 STR_FACE_FACECODE_SET                                           :{WHITE}המפר הסידורי של תוי הפנים הוחלף
-STR_FACE_FACECODE_ERR                                           :{WHITE}?אל תגזים – פשוט בחר מספר בין אחד למיליון, טוב
+STR_FACE_FACECODE_ERR                                           :{WHITE}לא ניתן לקבוע מספר פנים של השחקן - חייב להיות מספר בין 0 ל-4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}שמור
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}שמור את הפנים לקובץ
 STR_FACE_SAVE_DONE                                              :{WHITE}פנים אלה ישמרו כהעדפה אישית שלך בקובץ ההגדרות של המשחק
@@ -2326,6 +2327,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}אזהרה: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{SILVER}{STRING}{RED}: שגיאה
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{SILVER}{STRING}{RED} :שגיאה חמורה
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}התרחשה שגיאה קריטית ב-NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} לא יעבוד עם גרסת ה-TTDPatch שדווחה ע"י OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} היא עבור גרסת {STRING} של TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} תוכנן עבור {NBSP}{2:STRING}
@@ -3191,6 +3193,11 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}כל ה�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי
 STR_AI_CONFIG_RANDOM_AI                                         :בינה מלאכותית אקראית
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}הזז מעלה
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}הזז את ה-AI הנבחר מעלה ברשימה
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}הזז מטה
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}הזז את ה-AI הנבחר למטה ברשימה
+
 STR_AI_CONFIG_CHANGE                                            :{BLACK}בחר בינה מלאכותית
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}טען בינה מלאכותית נוספת
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}שנה הגדרות
@@ -3643,7 +3650,7 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :מגדל מים
 STR_INDUSTRY_NAME_FACTORY_2                                     :מפעל
 STR_INDUSTRY_NAME_FARM_2                                        :חווה
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :מנסרת עץ
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :יער שערות סבתא
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :יער צמר גפן מתוק
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :מפעל ממתקים
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :חוות סוללות
 STR_INDUSTRY_NAME_COLA_WELLS                                    :בארות קולה
@@ -3699,11 +3706,11 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} תחנ
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :(קירבי-פאול' (קיטור'
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :(אם-גי-אס' 250 (דיזל'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :(פלודיפוט' (קיטור'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :(פוורנאוט' (קיטור'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :(מייטי מובר' (קיטור'
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :'פלודיפוט' (קיטור)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :'פאוורנאוט' (קיטור)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :'מייטי מובר' (קיטור)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :(פלודיפוט' (דיזל'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :(פוורנאוט' (דיזל'
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :'פאוורנאוט' (דיזל)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :(וויילס' 2-8-0 (קיטור'
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :(צ'ייני' ג'ובילי (קיטור'
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :(גינזו' אי-4 (קיטור'
@@ -3742,7 +3749,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :קרון מים
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :קרון פירות
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :קרון גומי
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :קרון סוכר
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :קרון שערות-סבתא
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :קרון צמר גפן מתוק
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :קרון טופי
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :קרון בועות
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :קרון קולה
@@ -3753,7 +3760,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :קרון משק
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :קרון פלסטיק
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :(חשמלי) 'X2001'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :(מילניום זיד -1' (חשמלי'
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :'ויזזוואאוו זיד-99'
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :'ויזזוואאוו זד-99'
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :קרון נוסעים
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :קרון דואר
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :קרון פחם
@@ -3772,7 +3779,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :קרון מים
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :קרון פירות
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :קרון גומי
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :קרון סוכר
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :קרון שערות-סבתא
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :קרון צמר גפן מתוק
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :קרון טופי
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :קרון בועות
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :קרון קולה
@@ -3804,7 +3811,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :קרון מים
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :קרון פירות
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :קרון גומי
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :קרון סוכר
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :קרון שערות-סבתא
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :קרון צמר גפן מתוק
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :קרון טופי
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :קרון בועות
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :קרון קולה
@@ -3827,8 +3834,8 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :'משאית ד�
 STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :'משאית דואר 'ריינארד
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :'משאית דואר 'פרי
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :משאית סופר-דואר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :'משאית דואר 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :'משאית דואר 'וויזוואוו
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :משאית דואר 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :משאית דואר 'וויזוואוו'
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :'מיכלית נפט 'וויטקומב
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :'מיכלית נפט 'פוסטר
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :'מיכלית נפט פרי
@@ -3871,36 +3878,36 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :'משאית פ�
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :'משאית גומי 'באלוג
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :'משאית גומי 'יו-איץ'-אל
 STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :'משאית גומי 'אר-אם-טי
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :'משאית סוכר 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :'משאית סוכר 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :'משאית סוכר 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :'משאית קולה 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :'משאית קולה 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :'משאית קולה 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :'משאית שערות סבתא 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :'משאית שערות סבתא 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :'משאית שערות סבתא 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :'משאית טופי 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :'משאית טופי 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :'משאית טופי 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :'משאית צעצועים 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :'משאית צעצועים 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :'משאית צעצועים 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :'משאית ממתקים 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :משאית ממתקים 'פוורנאוט'
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :'משאית ממתקים 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :'משאית סוללות 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :'משאית סוללות 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :'משאית סוללות 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :'משאית משקאות תוססים 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :'משאית משקאות תוססים 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :'משאית משקאות תוססים 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :'משאית פלסטיק 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :'משאית פלסטיק 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :'משאית פלסטיק 'וויזוואוו
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :'משאית בועות 'מייטי מובר
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :'משאית בועות 'פוורנאוט
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :'משאית בועות 'וויזוואוו
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :משאית סוכר 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :משאית סוכר 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :משאית סוכר 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :משאית קולה 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :משאית קולה 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :משאית קולה 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :משאית צמר גפן מתוק 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :משאית צמר גפן מתוק 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :משאית צמר גפן מתוק 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :משאית טופי 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :משאית טופי 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :משאית טופי 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :משאית צעצועים 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :משאית צעצועים 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :משאית צעצועים 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :משאית ממתקים 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :משאית ממתקים 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :משאית ממתקים 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :משאית סוללות 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :משאית סוללות 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :משאית סוללות 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :משאית משקאות תוססים 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :משאית משקאות תוססים 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :משאית משקאות תוססים 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :משאית פלסטיק 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :משאית פלסטיק 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :משאית פלסטיק 'וויזוואוו'
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :משאית בועות 'מייטי מובר'
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :משאית בועות 'פאוורנאוט'
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :משאית בועות 'וויזוואוו'
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :'מיכלית נפט 'אם-פי-אס
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :'מיכלית נפט 'סי-אס בע”מ
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :מעבורת נוסעים 'MPS'
@@ -3910,8 +3917,8 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :'מעבורת �
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :'מעבורת נוסעים 'שיברשייק
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :'ספינת משא 'יאט
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :'ספינת משא 'באקוול'
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :'ספינת משא 'מייטי מובר
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :'ספינת משא 'פוורנאוט
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :ספינת משא 'מייטי מובר'
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :ספינת משא 'פאוורנאוט'
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :'סמפסון יו-52'
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :'קולמן קאונט'
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :'אף-אף-פי דארט'
@@ -3952,7 +3959,7 @@ STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :'ג'וגארפ�
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :'פלאשבאנג וייזר'
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :'הליקופטר 'טריקריו
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :'הליקופטר 'גורו אקס-2
-STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :'הליקופטר 'פוורנאוט
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :הליקופטר 'פאוורנאוט'
 
 ##id 0x8800
 # Formatting of some strings
