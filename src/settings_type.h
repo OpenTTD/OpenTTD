@@ -182,6 +182,7 @@ struct ConstructionSettings {
 	bool   road_stop_on_competitor_road;     ///< allow building of drive-through road stops on roads owned by competitors
 	uint8  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
+	uint8  extra_tree_placement;             ///< (dis)allow building extra trees in-game
 };
 
 /** Settings related to the AI. */

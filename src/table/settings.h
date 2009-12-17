@@ -523,6 +523,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, construction.freeform_edges,                             111, SL_MAX_VERSION, 0, 0,  true,                                    STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES, CheckFreeformEdges),
 	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      16, 0, STR_NULL,                                 NULL),
 	 SDT_CONDVAR(GameSettings, game_creation.custom_town_number,             SLE_UINT16,115, SL_MAX_VERSION, 0, 0,     1,                     1,    5000, 0, STR_NULL,                                 NULL),
+	 SDT_CONDVAR(GameSettings, construction.extra_tree_placement,             SLE_UINT8,132, SL_MAX_VERSION, 0,MS,     2,                     0,       2, 0, STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT,  NULL),
 
  SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, NULL, NULL),
  SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, _locale_units,                       STR_NULL, NULL, NULL),

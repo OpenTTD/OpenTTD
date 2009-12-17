@@ -1247,6 +1247,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :forbidden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :allowed
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :allowed, custom town layout
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}In game placement of trees: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :none {RED}(breaks lumber mill)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :only in rain forests
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :everywhere
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Left
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre

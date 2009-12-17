@@ -45,6 +45,14 @@ enum TreePlacer {
 	TP_IMPROVED, ///< A 'improved' algorithm
 };
 
+/** Where to place trees while in-game? */
+enum ExtraTreePlacement {
+	ETP_NONE,       ///< Place trees on no tiles
+	ETP_RAINFOREST, ///< Place trees only on rainforest tiles
+	ETP_ALL,        ///< Place trees on all tiles
+};
+
+
 /**
  * Tests if a tile can be converted to MP_TREES
  * This is true for clear ground without farms or rocks.
@@ -662,6 +670,13 @@ static void TileLoop_Trees(TileIndex tile)
 						/* FALL THROUGH */
 
 					case 2: { // add a neighbouring tree
+						/* Don't plant extra trees if that's not allowed. */
+						if ((_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
+								_settings_game.construction.extra_tree_placement == ETP_NONE :
+								_settings_game.construction.extra_tree_placement != ETP_ALL) {
+							break;
+						}
+
 						TreeType treetype = GetTreeType(tile);
 
 						tile += TileOffsByDir((Direction)(Random() & 7));
@@ -711,6 +726,9 @@ static void TileLoop_Trees(TileIndex tile)
 
 void OnTick_Trees()
 {
+	/* Don't place trees if that's not allowed */
+	if (_settings_game.construction.extra_tree_placement == ETP_NONE) return;
+
 	uint32 r;
 	TileIndex tile;
 	TreeType tree;
@@ -724,7 +742,7 @@ void OnTick_Trees()
 	}
 
 	/* byte underflow */
-	if (--_trees_tick_ctr != 0) return;
+	if (--_trees_tick_ctr != 0 || _settings_game.construction.extra_tree_placement != ETP_ALL) return;
 
 	/* place a tree at a random spot */
 	r = Random();
