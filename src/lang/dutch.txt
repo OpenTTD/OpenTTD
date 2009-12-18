@@ -1247,6 +1247,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toestaan, eigen dorp layout
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}In spel plaatsing van bomen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(breekt houtzagerij)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :alleen in regenwoud
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overal
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links

@@ -1249,6 +1249,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permessa, disposizione strade personalizzata
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Collocazione di alberi durante la partita: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nessuna {RED}(funzionamento errato segherie)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :solo nelle foreste pluviali
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ovunque
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sinistra
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
@@ -2290,9 +2295,9 @@ STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Aggiunge
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Rimuovi
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Rimuove il file NewGRF selezionato dall'elenco
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Sposta su
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Sposta su il file NewGRF selezionato nell'elenco
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Sposta il file NewGRF selezionato più in alto nell'elenco
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Sposta giù
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Sposta giù il file NewGRF selezionato nell'elenco
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Sposta il file NewGRF selezionato più in basso nell'elenco
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Elenco dei file NewGRF installati. Fare clic su un file per cambiarne i parametri
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Imposta parametri
@@ -2327,6 +2332,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attenzione: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Errore: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Errore fatale: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Si è verificato un errore fatale NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funziona con la versione di TTDPatch riferita da OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} è per la versione {STRING} di TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} è progettato per essere usato con {STRING}
@@ -3191,6 +3197,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Configur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Lista delle IA che saranno caricate nella prossima partita
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Giocatore umano
 STR_AI_CONFIG_RANDOM_AI                                         :IA casuale
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Sposta su
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Sposta l'IA selezionata più in alto nell'elenco
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Sposta giù
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Sposta l'IA selezionata più in basso nell'elenco
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Scegli IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Sceglie un'altra IA da caricare

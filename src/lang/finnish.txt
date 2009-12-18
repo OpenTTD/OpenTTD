@@ -738,8 +738,8 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Junaonnettomuus!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Tasoristeysturma!{}Kuljettaja kuolee junan ja auton törmäyksen jälkeisessä tulipallossa
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Tasoristeysturma!{}{COMMA} kuolee junan ja auton törmäyksen jälkeisessä tulipallossa
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa
 
@@ -749,7 +749,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN}: Tehdas tuhoutunut epäilyttävissä olosuhteissa!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}{TOWN}: 'UFO' laskeutuu!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}{TOWN}: Hiilikaivoksen sortuma aiheuttaa tuhoa!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Tulvia!{}Ainakin {COMMA} oletettavasti kadoksissa tai kuollut tappavan tulvan jälkeen!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Tulvia!{}Ainakin {COMMA} kadoksissa tai oletettavasti menehtynyt tappavassa tulvassa!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Kuljetusyhtiö vaikeuksissa!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} myydään tai julistetaan konkurssiin, ellei suorituskyky lisäänny pian!
@@ -767,7 +767,7 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING}: sulkeminen uhkaavan lähellä!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING}: alasajo aloitetaan välittömästi!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING}: toimitusongelmista johtuen sulkeminen uhkaavan lähellä!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING}: puiden puutteesta johtuen sulkeminen uhkaavan lähellä!
 
@@ -834,7 +834,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Liitä n
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Liitä sijainti tästä näkymästä päänäkymään
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin Asetukset
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin asetukset
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta.
 
@@ -947,9 +947,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuv
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Vähennä valuuttasi määrää yhdelle Punnalle (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lisää valuuttasi määrää yhdelle Punnalle (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Aseta vaihtokurssi valuutallesi yhdelle Punnalle (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Vähennä valuuttasi määrää yhdelle punnalle (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lisää valuuttasi määrää yhdelle punnalle (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Aseta vaihtokurssi valuutallesi yhdelle punnalle (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Välimerkki: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Valitse välimerkki valuutallesi
@@ -961,7 +961,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Valitse 
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Vaihda euroon: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Vaihda euroon: {ORANGE}ei koskaan
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Valitse vuosi, jona vaihdetaan euroon
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Valitse vuosi euroon siirtymiselle
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Vaihda euroon aikaisemmin
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Vaihda euroon myöhemmin
 
@@ -1247,6 +1247,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :kielletty
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :sallittu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :sallittu, oma kaupugin kaava
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Puiden istutus pelissä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ei ollenkaan {RED}(rikkoo sahan)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :vain sademetsiin
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vasen
@@ -1441,7 +1445,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Uusi kas
 STR_FACE_FACECODE_ERR                                           :{WHITE}Pelaajan kasvojen numeroa ei voitu asettaa - arvon on oltaa numeerinen arvo väliltä 0-4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Tallenna
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tallenna suosikkikasvot
-STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvota tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
+STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
 STR_FACE_EUROPEAN                                               :{BLACK}Eurooppalainen
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Valitse eurooppalaisia kasvoja
 STR_FACE_AFRICAN                                                :{BLACK}Afrikkalainen
@@ -1513,7 +1517,7 @@ STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Salasan
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}PALVELIN KIINNI
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}PALVELIN TÄYNNÄ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIO EI TÄSMÄÄ
-STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF EI TÄSMÄÄ
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF-ASETUKSET EIVÄT TÄSMÄÄ
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liity peliin
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Päivitä
@@ -1651,7 +1655,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö o
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Asiakaslista
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Katsele
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uusi Yhtiö
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uusi yhtiö
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
@@ -1877,7 +1881,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Raiteide
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Valitse asemalaiturien määrä rautatieasemalle.
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Asemalaiturin pituus
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Valitse rautatieaseman pituus.
-STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vedä & Pudota
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vedä ja pudota
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Rakenna asema vetämällä ja pudottamalla.
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Valitse asemaluokka
@@ -2003,8 +2007,8 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Aiheutet
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Maastonmuokkaus
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Madalla ruudun kulmausta.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Korota ruudun kulmausta.
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Laske maanpintaa.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nosta maanpintaa.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Tasoita maata
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Osta maata tulevaa käyttöä varten.
 
@@ -2027,7 +2031,7 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pienenn�
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Luo satunnainen maa
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Luo uusi skenaario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Nollaa maasto
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Poista kaikki pelaaja-omisteiset tontit kartalta
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Poista kaikki pelaajien omistamat tontit kartalta
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Nollaa maasto
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko varmasti poistaa kaikki pelaaja-omisteiset tontit?
@@ -2142,7 +2146,7 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Sademetsää
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktuksia
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Rautatieasema
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Lentokonesuoja
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Lentokonehalli
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lentokenttä
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lastauslaituri
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Linja-autoasema
@@ -2222,7 +2226,7 @@ STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Satunnai
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikkaa antaaksesi satunnaisluku-siemen
 STR_MAPGEN_RANDOM                                               :{BLACK}Satunnainen
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Vaihda maaston luomisessa käytettävä satunnaisluku-siemen
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maageneraattori:
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastogeneraattori:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden algoritmi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
@@ -2264,7 +2268,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Vaihda t
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Maailmaa luodaan...
 STR_GENERATION_ABORT                                            :{BLACK}Peruuta
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Keskeytä maan luominen
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Keskeytä maailman luominen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatko varmasti keskeyttää maan luomisen?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% valmiina
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
@@ -2417,7 +2421,7 @@ STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pieni mainoskam
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Keskikokoinen mainoskampanja
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Suuri mainoskampanja
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Rahoita paikallista tienrakentamista
-STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Rakenna patsas yhtiön omistajasta
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Rakenna yhtiön omistajan patsas
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahoita uusia rakennuksia
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta yksinoikeudet kuljetuksiin
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Lahjo viranomaisia
@@ -2545,12 +2549,12 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Rakenna 
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Näytä päämaja
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Näytä yhtiön päämaja
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sijoita päämaja
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, hintana 1{NBSP}% yhtiön arvosta.
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, kustannus 1{NBSP}% yhtiön arvosta.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Uudet kasvot
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Valitse uudet kasvot pääjohtajalle.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Väriteema
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Muuta yhtiön ajoneuvoammattikuntaa.
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Muuta yhtiön ajoneuvojen väritystä
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Yhtiön nimi
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Muuta yhtiön nimeä.
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Pääjohtajan nimi
@@ -2587,7 +2591,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Tarvitse
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Rahti odottaa käsittelyä:
+STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Käsittelyä odottava rahti:
 STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
@@ -2608,10 +2612,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lentokon
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Voittoa tänä vuonna: {CURRENCY} (viime vuonna: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Käytett. Junat
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Käytett. Ajoneuvot
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Käytett. Laivat
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Käytett. Ilma-alukset
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Käytett. junat
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Käytett. ajoneuvot
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Käytett. laivat
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Käytett. ilma-alukset
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Näytä lista saatavilla olevista moottorityypeistä tälle ajoneuvotyypille.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Muokkaa listaa
@@ -2657,7 +2661,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Uusi sä
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Uusi yksiraidejuna
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Uusi MagLev-juna
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Uudet Junat
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Uudet junat
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Uusia ajoneuvoja
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Uusia laivoja
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Uusi lentokone
@@ -2672,7 +2676,7 @@ STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunnite
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kulu: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kustannus: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
@@ -2746,7 +2750,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Korvaa k
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uusia liikennevälineitä
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Uusia ajoneuvoja
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia laivoja
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uusi lentokone
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uusia lentokoneita
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Osta uusi yksikkö.
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Osta uusi ajoneuvo.
@@ -2824,13 +2828,13 @@ STR_REPLACE_WAGONS                                              :Vaunut
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
-STR_REPLACE_RAIL_VEHICLES                                       :Rautatiejunat
+STR_REPLACE_RAIL_VEHICLES                                       :Junat
 STR_REPLACE_ELRAIL_VEHICLES                                     :Sähköjunat
 STR_REPLACE_MONORAIL_VEHICLES                                   :Yksiraiteiset
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-junat
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvaus pitäköön junan vakiopituisena poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3009,9 +3013,9 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jaetun aika
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Nonstop
 STR_ORDER_GO_TO                                                 :Mene
-STR_ORDER_GO_NON_STOP_TO                                        :Mene pysäyksettä
+STR_ORDER_GO_NON_STOP_TO                                        :Mene pysähtymättä
 STR_ORDER_GO_VIA                                                :Mene kautta
-STR_ORDER_GO_NON_STOP_VIA                                       :Mene pysäyksettä kautta
+STR_ORDER_GO_NON_STOP_VIA                                       :Mene pysähtymättä kautta
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Muuta korostetun määräyksen pysähtymiskäyttäytymistä
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Lastaa täyteen mikä tahansa rahtityyppi
@@ -3110,9 +3114,9 @@ STR_ORDER_NO_UNLOAD                                             :(Ei lastin purk
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purkua, mutta odota uuden lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[loppuun]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[aivan loppuun]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[loppupäähän]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hyppää määräykseen {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Hyppää määräykseen {COMMA}, kun {STRING} {STRING} {COMMA}
@@ -3192,9 +3196,9 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Kaikki s
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja
 STR_AI_CONFIG_RANDOM_AI                                         :Sattumanvarainen tekoäly
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Siirrä Ylöspäin
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Siirrä ylöspäin
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Siirrä valittua tekoälyä ylöspäin listalla
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Siirrä Alaspäin
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Siirrä alaspäin
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Siirrä valittua tekoälyä alaspäin listalla
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Valitse tekoäly

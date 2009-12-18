@@ -1248,6 +1248,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikkje tillate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillate, eigendefinert by-layout
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskogen
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :over alt
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midtstilt
@@ -3189,6 +3192,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfi
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI som vil bli lasta i neste spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
 STR_AI_CONFIG_RANDOM_AI                                         :Vilkårleg AI
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vel AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Last endå ein AI

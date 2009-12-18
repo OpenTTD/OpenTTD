@@ -1248,6 +1248,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, patrón de carreteras personalizado
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Crecimiento de árboles durante el juego: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ninguno {RED}(rompe aserradero subtropical)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :solo en selva
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Izquierda
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro

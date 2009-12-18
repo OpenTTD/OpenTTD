@@ -1627,6 +1627,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabronione
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozwolone
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :zezwalaj, dowolny układ miasta
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Rozmieszczenie drzew w grze: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :brak {RED}(przerywa pracę tartaku)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tylko w lasach deszczowych
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :wszędzie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozycja głównego paska narzędzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Z lewej strony

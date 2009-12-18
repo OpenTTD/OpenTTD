@@ -1432,6 +1432,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozvoljeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zaseban plan gradnje
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Rasejavanje drveća tokom partije: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikakvo {RED}(onesposobljava rad drvnih kombinata)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo u tropskim šumama
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :svugde
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Lokacija glavne trake sa alatima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Levo
