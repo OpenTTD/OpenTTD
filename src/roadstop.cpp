@@ -279,7 +279,7 @@ bool RoadStop::Enter(RoadVehicle *rv)
  */
 void RoadStop::Entry::Leave(const RoadVehicle *rv)
 {
-	this->occupied -= rv->rcache.cached_veh_length;
+	this->occupied -= rv->rcache.cached_total_length;
 	assert(this->occupied >= 0);
 }
 
@@ -292,7 +292,7 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
 	/* we cannot assert on this->occupied < this->length because of the
 	 * remote possibility that RVs are running through eachother when
 	 * trying to prevention an infinite jam. */
-	this->occupied += rv->rcache.cached_veh_length;
+	this->occupied += rv->rcache.cached_total_length;
 }
 
 /**
@@ -368,7 +368,7 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 
 	this->occupied = 0;
 	for (RVList::iterator it = rserh.vehicles.begin(); it != rserh.vehicles.end(); it++) {
-		this->occupied += (*it)->rcache.cached_veh_length;
+		this->occupied += (*it)->rcache.cached_total_length;
 	}
 }
 

@@ -169,6 +169,8 @@ void RoadVehUpdateCache(RoadVehicle *v)
 
 	v->InvalidateNewGRFCacheOfChain();
 
+	v->rcache.cached_total_length = 0;
+
 	for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
 		/* Check the v->first cache. */
 		assert(u->First() == v);
@@ -178,6 +180,7 @@ void RoadVehUpdateCache(RoadVehicle *v)
 
 		/* Update the length of the vehicle. */
 		u->rcache.cached_veh_length = GetRoadVehLength(u);
+		v->rcache.cached_total_length += u->rcache.cached_veh_length;
 
 		/* Invalidate the vehicle colour map */
 		u->colourmap = PAL_NONE;
