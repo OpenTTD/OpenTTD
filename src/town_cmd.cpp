@@ -1566,13 +1566,13 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	cost.MultiplyCost(mult);
 
-	if (cost.GetCost() > GetAvailableMoneyForCommand()) {
-		_additional_cash_required = cost.GetCost();
-		return CommandCost(EXPENSES_OTHER);
-	}
-
 	/* Create the town */
 	if (flags & DC_EXEC) {
+		if (cost.GetCost() > GetAvailableMoneyForCommand()) {
+			_additional_cash_required = cost.GetCost();
+			return CommandCost(EXPENSES_OTHER);
+		}
+
 		_generating_world = true;
 		UpdateNearestTownForRoadTiles(true);
 		Town *t;
