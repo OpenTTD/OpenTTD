@@ -1374,46 +1374,6 @@ void AircraftLeaveHangar(Aircraft *v)
 	SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 }
 
-/** Checks if an aircraft should head towards a hangar because it needs replacement
- * @param *v the vehicle to test
- * @return true if the aircraft should head towards a hangar
- */
-static inline bool CheckSendAircraftToHangarForReplacement(const Vehicle *v)
-{
-	EngineID new_engine;
-	Company *c = Company::Get(v->owner);
-
-	if (VehicleHasDepotOrders(v)) return false; // The aircraft will end up in the hangar eventually on it's own
-
-	new_engine = EngineReplacementForCompany(c, v->engine_type, v->group_id);
-
-	if (new_engine == INVALID_ENGINE) {
-		/* There is no autoreplace assigned to this EngineID so we will set it to renew to the same type if needed */
-		new_engine = v->engine_type;
-
-		if (!v->NeedsAutorenewing(c)) {
-			/* No need to replace the aircraft */
-			return false;
-		}
-	}
-
-	if (!HasBit(Engine::Get(new_engine)->company_avail, v->owner)) {
-		/* Engine is not buildable anymore */
-		return false;
-	}
-
-	if (c->money < (c->settings.engine_renew_money + (2 * DoCommand(0, new_engine, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT).GetCost()))) {
-		/* We lack enough money to request the replacement right away.
-		 * We want 2*(the price of the new vehicle) and not looking at the value of the vehicle we are going to sell.
-		 * The reason is that we don't want to send a whole lot of vehicles to the hangars when we only have enough money to replace a single one.
-		 * Remember this happens in the background so the user can't stop this. */
-		return false;
-	}
-
-	/* We found no reason NOT to send the aircraft to a hangar so we will send it there at once */
-	return true;
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 ///////////////////   AIRCRAFT MOVEMENT SCHEME  ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -1555,7 +1515,7 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass 
 	AircraftNextAirportPos_and_Order(v);
 
 	/* Send the helicopter to a hangar if needed for replacement */
-	if (CheckSendAircraftToHangarForReplacement(v)) {
+	if (v->NeedsAutomaticServicing()) {
 		_current_company = v->owner;
 		DoCommand(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		_current_company = OWNER_NONE;
@@ -1607,7 +1567,7 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *apc
 	AircraftLandAirplane(v);  // maybe crash airplane
 
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
-	if (CheckSendAircraftToHangarForReplacement(v)) {
+	if (v->NeedsAutomaticServicing()) {
 		_current_company = v->owner;
 		DoCommand(v->tile, v->index, DEPOT_SERVICE, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		_current_company = OWNER_NONE;
