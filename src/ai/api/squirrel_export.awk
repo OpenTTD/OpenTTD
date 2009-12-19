@@ -349,7 +349,7 @@ BEGIN {
 }
 
 # Add a const (non-enum) value
-/^[ 	]*static const \w+ \w+ = \(?\w*\)?\w+;/ {
+/^[ 	]*static const \w+ \w+ = -?\(?\w*\)?\w+;/ {
 	const_size++
 	const_value[const_size] = $4
 	next
