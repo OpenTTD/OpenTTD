@@ -141,7 +141,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	WindowDesc(WindowPosition default_pos, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts = NULL, int16 nwid_length = 0);
+			const NWidgetPart *nwid_parts, int16 nwid_length);
 
 	~WindowDesc();
 
