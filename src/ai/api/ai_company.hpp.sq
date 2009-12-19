@@ -32,10 +32,10 @@ void SQAICompany_Register(Squirrel *engine)
 	SQAICompany.PreRegister(engine);
 	SQAICompany.AddConstructor<void (AICompany::*)(), 1>(engine, "x");
 
-	SQAICompany.DefSQConst(engine, AICompany::COMPANY_INVALID, "COMPANY_INVALID");
 	SQAICompany.DefSQConst(engine, AICompany::COMPANY_FIRST,   "COMPANY_FIRST");
 	SQAICompany.DefSQConst(engine, AICompany::COMPANY_LAST,    "COMPANY_LAST");
 	SQAICompany.DefSQConst(engine, AICompany::COMPANY_SELF,    "COMPANY_SELF");
+	SQAICompany.DefSQConst(engine, AICompany::COMPANY_INVALID, "COMPANY_INVALID");
 	SQAICompany.DefSQConst(engine, AICompany::GENDER_MALE,     "GENDER_MALE");
 	SQAICompany.DefSQConst(engine, AICompany::GENDER_FEMALE,   "GENDER_FEMALE");
 	SQAICompany.DefSQConst(engine, AICompany::GENDER_INVALID,  "GENDER_INVALID");

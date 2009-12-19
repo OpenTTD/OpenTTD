@@ -9,6 +9,7 @@
 
 /** @file ai_station.cpp Implementation of AIStation. */
 
+#include "../../stdafx.h"
 #include "ai_station.hpp"
 #include "ai_cargo.hpp"
 #include "ai_map.hpp"

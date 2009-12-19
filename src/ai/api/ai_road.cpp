@@ -9,6 +9,7 @@
 
 /** @file ai_road.cpp Implementation of AIRoad. */
 
+#include "../../stdafx.h"
 #include "ai_map.hpp"
 #include "ai_station.hpp"
 #include "ai_cargo.hpp"

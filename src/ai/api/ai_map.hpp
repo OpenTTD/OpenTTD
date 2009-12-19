@@ -13,15 +13,14 @@
 #define AI_MAP_HPP
 
 #include "ai_object.hpp"
+#include "../../tile_type.h"
 
 /**
  * Class that handles all map related functions.
  */
 class AIMap : public AIObject {
 public:
-#ifdef DEFINE_SCRIPT_FILES
 	static const int TILE_INVALID = (int)INVALID_TILE; //!< Invalid TileIndex.
-#endif /* DEFINE_SCRIPT_FILES */
 #ifdef DOXYGEN_SKIP
 	const static TileIndex TILE_INVALID; //!< Invalid TileIndex.
 #endif /* DOXYGEN_SKIP */

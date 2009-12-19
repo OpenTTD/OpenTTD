@@ -21,8 +21,6 @@
 #include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
 
-#define DEFINE_SCRIPT_FILES
-
 #include "ai_config.hpp"
 #include "ai_storage.hpp"
 #include "ai_instance.hpp"
@@ -81,8 +79,6 @@
 #include "api/ai_vehiclelist.hpp.sq"
 #include "api/ai_waypoint.hpp.sq"
 #include "api/ai_waypointlist.hpp.sq"
-
-#undef DEFINE_SCRIPT_FILES
 
 #include "../fileio_func.h"
 

@@ -23,14 +23,10 @@ public:
 
 	/** Different constants related to CompanyID. */
 	enum CompanyID {
-		COMPANY_INVALID = -1, //!< An invalid company.
-
-#ifdef DEFINE_SCRIPT_FILES
-		COMPANY_FIRST   = 0, //!< The first available company.
+		COMPANY_FIRST   = 0,               //!< The first available company.
 		COMPANY_LAST    = ::MAX_COMPANIES, //!< The last available company.
-#endif /* DEFINE_SCRIPT_FILES */
-
-		COMPANY_SELF    = 254, //!< Constant that gets resolved to the correct company index for your company.
+		COMPANY_SELF    = 254,             //!< Constant that gets resolved to the correct company index for your company.
+		COMPANY_INVALID = -1,              //!< An invalid company.
 	};
 
 	/** Possible genders for company presidents. */

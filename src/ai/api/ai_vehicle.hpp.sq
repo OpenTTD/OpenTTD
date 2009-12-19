@@ -52,7 +52,6 @@ void SQAIVehicle_Register(Squirrel *engine)
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_WATER,                         "VT_WATER");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_AIR,                           "VT_AIR");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_INVALID,                       "VT_INVALID");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_INVALID,                  "VEHICLE_INVALID");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_RUNNING,                       "VS_RUNNING");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_STOPPED,                       "VS_STOPPED");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_IN_DEPOT,                      "VS_IN_DEPOT");
@@ -60,6 +59,8 @@ void SQAIVehicle_Register(Squirrel *engine)
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_BROKEN,                        "VS_BROKEN");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_CRASHED,                       "VS_CRASHED");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_INVALID,                       "VS_INVALID");
+
+	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_INVALID, "VEHICLE_INVALID");
 
 	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME,                           AIVehicle::ERR_VEHICLE_TOO_MANY);
 	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_AVAILABLE,                              AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);

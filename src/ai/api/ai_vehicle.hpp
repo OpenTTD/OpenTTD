@@ -80,10 +80,6 @@ public:
 		VT_WATER,          //!< Water type vehicle.
 		VT_AIR,            //!< Air type vehicle.
 		VT_INVALID = 0xFF, //!< Invalid vehicle type.
-
-#ifdef DEFINE_SCRIPT_FILES
-		VEHICLE_INVALID = -1, //!< Invalid VehicleID.
-#endif /* DEFINE_SCRIPT_FILES */
 	};
 
 	/**
@@ -99,6 +95,8 @@ public:
 
 		VS_INVALID = 0xFF, //!< An invalid vehicle state.
 	};
+
+	static const int VEHICLE_INVALID = -1; //!< Invalid VehicleID.
 
 	/**
 	 * Checks whether the given vehicle is valid and owned by you.
