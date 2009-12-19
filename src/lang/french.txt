@@ -1040,7 +1040,6 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Très plat
 STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Collines
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montagneux
-STR_TERRAIN_TYPE_MIXED                                          :Mixte
 
 STR_ECONOMY_STEADY                                              :Stable
 STR_ECONOMY_FLUCTUATING                                         :Fluctuant

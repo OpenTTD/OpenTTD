@@ -1040,7 +1040,6 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Sehr flach
 STR_TERRAIN_TYPE_FLAT                                           :Flach
 STR_TERRAIN_TYPE_HILLY                                          :Hügelig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
-STR_TERRAIN_TYPE_MIXED                                          :Gemischt
 
 STR_ECONOMY_STEADY                                              :Ruhig
 STR_ECONOMY_FLUCTUATING                                         :Schwankend
