@@ -768,17 +768,6 @@ void HandleExitGameRequest()
 	}
 }
 
-static void ShowScreenshotResult(bool b)
-{
-	if (b) {
-		SetDParamStr(0, _screenshot_name);
-		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, 0, 0);
-	} else {
-		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, 0, 0);
-	}
-
-}
-
 static void MakeNewGameDone()
 {
 	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
@@ -1238,9 +1227,6 @@ void GameLoop()
 		DoAutosave();
 		RedrawAutosave();
 	}
-
-	/* make a screenshot? */
-	if (IsScreenshotRequested()) ShowScreenshotResult(MakeScreenshot());
 
 	/* switch game mode? */
 	if (_switch_mode != SM_NONE) {

@@ -262,8 +262,7 @@ bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
 	/* Don't draw when we have invalid screen size */
 	if (_screen.width < 1 || _screen.height < 1 || _screen.dst_ptr == NULL) return false;
 
-	RequestScreenshot(SC_RAW, "crash");
-	bool res = MakeScreenshot();
+	bool res = MakeScreenshot(SC_RAW, "crash");
 	if (res) strecpy(filename, _full_screenshot_name, filename_last);
 	return res;
 }

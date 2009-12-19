@@ -21,6 +21,10 @@
 #include "map_func.h"
 #include "saveload/saveload.h"
 #include "company_func.h"
+#include "strings_func.h"
+#include "gui.h"
+
+#include "table/strings.h"
 
 
 char _screenshot_format_name[8];
@@ -28,7 +32,6 @@ uint _num_screenshot_formats;
 uint _cur_screenshot_format;
 char _screenshot_name[128];
 char _full_screenshot_name[MAX_PATH];
-static ScreenshotType _screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */
 typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, uint n);
@@ -493,7 +496,6 @@ void InitializeScreenshotFormats()
 		}
 	_cur_screenshot_format = j;
 	_num_screenshot_formats = lengthof(_screenshot_formats);
-	_screenshot_type = SC_NONE;
 }
 
 const char *GetScreenshotFormatDesc(int i)
@@ -601,18 +603,6 @@ static const char *MakeScreenshotName(const char *ext)
 	return _full_screenshot_name;
 }
 
-void RequestScreenshot(ScreenshotType t, const char *name)
-{
-	_screenshot_type = t;
-	_screenshot_name[0] = '\0';
-	if (name != NULL) strecpy(_screenshot_name, name, lastof(_screenshot_name));
-}
-
-bool IsScreenshotRequested()
-{
-	return (_screenshot_type != SC_NONE);
-}
-
 static bool MakeSmallScreenshot()
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
@@ -638,19 +628,41 @@ static bool MakeWorldScreenshot()
 	return sf->proc(MakeScreenshotName(sf->extension), LargeWorldCallback, &vp, vp.width, vp.height, BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette);
 }
 
-bool MakeScreenshot()
+/**
+ * Make an actual screenshot.
+ * @param t    the type of screenshot to make.
+ * @param name the name to give to the screenshot.
+ * @return true iff the screenshow was made succesfully
+ */
+bool MakeScreenshot(ScreenshotType t, const char *name)
 {
-	switch (_screenshot_type) {
+	_screenshot_name[0] = '\0';
+	if (name != NULL) strecpy(_screenshot_name, name, lastof(_screenshot_name));
+
+	bool ret;
+	switch (t) {
 		case SC_VIEWPORT:
 			UndrawMouseCursor();
 			DrawDirtyBlocks();
 			/* FALL THROUGH */
 		case SC_RAW:
-			_screenshot_type = SC_NONE;
-			return MakeSmallScreenshot();
+			ret = MakeSmallScreenshot();
+			break;
+
 		case SC_WORLD:
-			_screenshot_type = SC_NONE;
-			return MakeWorldScreenshot();
-		default: return false;
+			ret = MakeWorldScreenshot();
+			break;
+
+		default:
+			NOT_REACHED();
 	}
+
+	if (ret) {
+		SetDParamStr(0, _screenshot_name);
+		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, 0, 0);
+	} else {
+		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, 0, 0);
+	}
+
+	return ret;
 }
