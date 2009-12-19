@@ -929,22 +929,22 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 {
 	assert(num_pieces > 0);
 
-	/* Update company statistics */
-	company->cur_economy.delivered_cargo += num_pieces;
-	SetBit(company->cargo_types, cargo_type);
-
 	const Station *st = Station::Get(dest);
-
-	/* Increase town's counter for some special goods types */
-	const CargoSpec *cs = CargoSpec::Get(cargo_type);
-	if (cs->town_effect == TE_FOOD) st->town->new_act_food += num_pieces;
-	if (cs->town_effect == TE_WATER) st->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
 	uint accepted = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src_type == ST_INDUSTRY ? src : INVALID_INDUSTRY);
 
 	/* If this cargo type is always accepted, accept all */
 	if (HasBit(st->always_accepted, cargo_type)) accepted = num_pieces;
+
+	/* Update company statistics */
+	company->cur_economy.delivered_cargo += accepted;
+	if (accepted > 0) SetBit(company->cargo_types, cargo_type);
+
+	/* Increase town's counter for some special goods types */
+	const CargoSpec *cs = CargoSpec::Get(cargo_type);
+	if (cs->town_effect == TE_FOOD) st->town->new_act_food += accepted;
+	if (cs->town_effect == TE_WATER) st->town->new_act_water += accepted;
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);
