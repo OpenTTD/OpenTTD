@@ -59,7 +59,7 @@ enum {
 	NPF_NODE_FLAGS,
 };
 
-/* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
+/* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFSetFlag() and NPFGetFlag() to use them. */
 enum NPFNodeFlag {
 	NPF_FLAG_SEEN_SIGNAL,       ///< Used to mark that a signal was seen on the way, for rail only
 	NPF_FLAG_2ND_SIGNAL,        ///< Used to mark that two signals were seen, rail only
@@ -1033,7 +1033,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 
 /* Will search as below, but with two start nodes, the second being the
  * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
- * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
+ * direction was taken (NPFGetFlag(result.node, NPF_FLAG_REVERSE)) */
 static NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 	AyStarNode start1;
@@ -1061,7 +1061,7 @@ static NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir track
 
 /* Search using breadth first. Good for little track choice and inaccurate
  * heuristic, such as railway/road with two start nodes, the second being the reverse. Call
- * NPFGetBit(result.node, NPF_FLAG_REVERSE) to see from which node the path
+ * NPFGetFlag(result.node, NPF_FLAG_REVERSE) to see from which node the path
  * orginated. All pathfs from the second node will have the given
  * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
  * tile).
