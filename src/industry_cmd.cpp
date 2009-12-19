@@ -1687,7 +1687,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
 
-	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NONE, it, type)) return NULL;
+	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
 	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
@@ -1699,7 +1699,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 
 	if (flags & DC_EXEC) {
 		Industry *i = new Industry(tile);
-		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
+		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER | DC_EXEC, it, type);
 		DoCreateNewIndustry(i, tile, type, it, itspec_index, t, OWNER_NONE, founder);
 
 		return i;
