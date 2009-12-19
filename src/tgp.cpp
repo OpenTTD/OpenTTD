@@ -510,6 +510,141 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 	}
 }
 
+/* Additional map variety is provided by applying different curve maps
+ * to different parts of the map. A randomized low resolution grid contains
+ * which curve map to use on each part of the make. This filtered non-linearly
+ * to smooth out transitions between curves, so each tile could have between
+ * 100% of one map applied or 25% of four maps.
+ *
+ * The curve maps define different land styles, i.e. lakes, low-lands, hills
+ * and mountain ranges, although these are dependent on the landscape style
+ * chosen as well.
+ *
+ * The level parameter dictates the resolution of the grid. A low resolution
+ * grid will result in larger continuous areas of a land style, a higher
+ * resolution grid splits the style into smaller areas.
+ *
+ * At this point in map generation, all height data has been normalized to 0
+ * to 239.
+ */
+struct control_point_t {
+	height_t x;
+	height_t y;
+};
+
+struct control_point_list_t {
+	size_t length;
+	const control_point_t *list;
+};
+
+static const control_point_t _curve_map_1[] = {
+	{ 0, 0 }, { 48, 24 }, { 192, 32 }, { 240, 96 }
+};
+
+static const control_point_t _curve_map_2[] = {
+	{ 0, 0 }, { 16, 24 }, { 128, 32 }, { 192, 64 }, { 240, 144 }
+};
+
+static const control_point_t _curve_map_3[] = {
+	{ 0, 0 }, { 16, 24 }, { 128, 64 }, { 192, 144 }, { 240, 192 }
+};
+
+static const control_point_t _curve_map_4[] = {
+	{ 0, 0 }, { 16, 24 }, { 96, 72 }, { 160, 192 }, { 220, 239 }, { 240, 239 }
+};
+
+static const control_point_list_t _curve_maps[] = {
+	{ lengthof(_curve_map_1), _curve_map_1 },
+	{ lengthof(_curve_map_2), _curve_map_2 },
+	{ lengthof(_curve_map_3), _curve_map_3 },
+	{ lengthof(_curve_map_4), _curve_map_4 },
+};
+
+static void HeightMapCurves(uint level)
+{
+	height_t ht[lengthof(_curve_maps)];
+
+	/* Set up a grid to choose curve maps based on location */
+	uint sx = Clamp(1 << level, 2, 32);
+	uint sy = Clamp(1 << level, 2, 32);
+	byte *c = (byte *)alloca(sx * sy);
+
+	for (uint i = 0; i < sx * sy; i++) {
+		c[i] = Random() % lengthof(_curve_maps);
+	}
+
+	/* Apply curves */
+	for (uint x = 0; x < _height_map.size_x; x++) {
+
+		/* Get our X grid positions and bi-linear ratio */
+		float fx = (float)(sx * x) / _height_map.size_x + 0.5f;
+		uint x1 = fx;
+		uint x2 = x1;
+		float xr = 2.0f * (fx - x1) - 1.0f;
+		xr = sin(xr * M_PI_2);
+		xr = sin(xr * M_PI_2);
+		xr = 0.5f * (xr + 1.0f);
+		float xri = 1.0f - xr;
+
+		if (x1 > 0) {
+			x1--;
+			if (x2 >= sx) x2--;
+		}
+
+		for (uint y = 0; y < _height_map.size_y; y++) {
+
+			/* Get our Y grid position and bi-linear ratio */
+			float fy = (float)(sy * y) / _height_map.size_y + 0.5f;
+			uint y1 = fy;
+			uint y2 = y1;
+			float yr = 2.0f * (fy - y1) - 1.0f;
+			yr = sin(yr * M_PI_2);
+			yr = sin(yr * M_PI_2);
+			yr = 0.5f * (yr + 1.0f);
+			float yri = 1.0f - yr;
+
+			if (y1 > 0) {
+				y1--;
+				if (y2 >= sy) y2--;
+			}
+
+			uint corner_a = c[x1 + sx * y1];
+			uint corner_b = c[x1 + sx * y2];
+			uint corner_c = c[x2 + sx * y1];
+			uint corner_d = c[x2 + sx * y2];
+
+			/* Bitmask of which curve maps are chosen, so that we do not bother
+			 * calculating a curve which won't be used. */
+			uint corner_bits = 0;
+			corner_bits |= 1 << corner_a;
+			corner_bits |= 1 << corner_b;
+			corner_bits |= 1 << corner_c;
+			corner_bits |= 1 << corner_d;
+
+			height_t *h = &_height_map.height(x, y);
+
+			/* Apply all curve maps that are used on this tile. */
+			for (uint t = 0; t < lengthof(_curve_maps); t++) {
+				if (!HasBit(corner_bits, t)) continue;
+
+				const control_point_t *cm = _curve_maps[t].list;
+				for (uint i = 0; i < _curve_maps[t].length - 1; i++) {
+					const control_point_t &p1 = cm[i];
+					const control_point_t &p2 = cm[i + 1];
+
+					if (*h >= p1.x && *h < p2.x) {
+						ht[t] = p1.y + (*h - p1.x) * (p2.y - p1.y) / (p2.x - p1.x);
+						break;
+					}
+				}
+			}
+
+			/* Apply interpolation of curve map results. */
+			*h = (ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr;
+		}
+	}
+}
+
 /** Adjusts heights in height map to contain required amount of water tiles */
 static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_new)
 {
@@ -728,6 +863,11 @@ static void HeightMapNormalize()
 	HeightMapSmoothSlopes(roughness);
 
 	HeightMapSineTransform(12, h_max_new);
+
+	if (_settings_game.game_creation.variety > 0) {
+		HeightMapCurves(_settings_game.game_creation.variety);
+	}
+
 	HeightMapSmoothSlopes(16);
 }
 

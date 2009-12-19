@@ -1008,6 +1008,9 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :High
 STR_NUM_CUSTOM                                                  :Custom
 
+STR_NUM_MEDIUM                                                  :Medium
+STR_NUM_VERY_HIGH                                               :Very High
+
 STR_AI_SPEED_VERY_SLOW                                          :Very Slow
 STR_AI_SPEED_SLOW                                               :Slow
 STR_AI_SPEED_MEDIUM                                             :Medium
@@ -1032,6 +1035,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Very Flat
 STR_TERRAIN_TYPE_FLAT                                           :Flat
 STR_TERRAIN_TYPE_HILLY                                          :Hilly
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mountainous
+STR_TERRAIN_TYPE_MIXED                                          :Mixed
 
 STR_ECONOMY_STEADY                                              :Steady
 STR_ECONOMY_FLUCTUATING                                         :Fluctuating
@@ -2231,6 +2235,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tree alg
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sea level:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Smoothness:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variety distribution:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generate
 
 # Strings for map borders at game generation

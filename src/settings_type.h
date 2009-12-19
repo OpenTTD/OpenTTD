@@ -169,6 +169,7 @@ struct GameCreationSettings {
 	byte   snow_line;                        ///< the snowline level in this game
 	byte   water_borders;                    ///< bitset of the borders that are water
 	uint16 custom_town_number;               ///< manually entered number of towns
+	byte   variety;                          ///< variety level applied to TGP
 };
 
 /** Settings related to construction in-game */
