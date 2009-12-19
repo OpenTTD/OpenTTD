@@ -866,24 +866,22 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	new TooltipsWindow(str, paramcount, params, use_left_mouse_button);
 }
 
-
-static int DrawStationCoverageText(const CargoArray &cargos,
-	int left, int right, int top, StationCoverageType sct, bool supplies)
+/**
+ * Draw a (multi)line of cargos seperated by commas, and prefixed with a string.
+ * @param cargo_mask Mask of cargos to include in the list.
+ * @param r          Rectangle to draw the cargos in.
+ * @param prefix     String to use as prefix for the list of cargos.
+ * @return Bottom position of the last line used for drawing the cargos.
+ */
+int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 {
 	bool first = true;
-
 	char string[512];
-	char *b = InlineString(string, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
+	char *b = InlineString(string, prefix);
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
-		switch (sct) {
-			case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
-			case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
-			case SCT_ALL: break;
-			default: NOT_REACHED();
-		}
-		if (cargos[i] >= (supplies ? 1U : 8U)) {
+		if (HasBit(cargo_mask, i)) {
 			if (first) {
 				first = false;
 			} else {
@@ -904,7 +902,7 @@ static int DrawStationCoverageText(const CargoArray &cargos,
 	assert(b < endof(string));
 
 	SetDParamStr(0, string);
-	return DrawStringMultiLine(left, right, top, INT32_MAX, STR_JUST_RAW_STRING);
+	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING);
 }
 
 /**
@@ -927,7 +925,20 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 		} else {
 			cargos = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		}
-		return DrawStationCoverageText(cargos, left, right, top, sct, supplies);
+
+		/* Convert cargo counts to a set of cargo bits, and draw the result. */
+		uint32 cargo_mask = 0;
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			switch (sct) {
+				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
+				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
+				case SCT_ALL: break;
+				default: NOT_REACHED();
+			}
+			if (cargos[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
+		}
+		Rect r = {left, top, right, INT32_MAX};
+		return DrawCargoListText(cargo_mask, r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
 	}
 
 	return top;

@@ -39,6 +39,8 @@ enum StationCoverageType {
 	SCT_ALL,                 ///< Draw all cargos.
 };
 
+/* misc_gui.cpp */
+int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix);
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies);
 void CheckRedrawStationCoverage(const Window *w);
 
