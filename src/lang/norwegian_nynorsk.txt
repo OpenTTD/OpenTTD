@@ -1009,6 +1009,7 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Høgt
 STR_NUM_CUSTOM                                                  :Eigendefinert
 
+
 STR_AI_SPEED_VERY_SLOW                                          :Særs seint
 STR_AI_SPEED_SLOW                                               :Seint
 STR_AI_SPEED_MEDIUM                                             :Middels
@@ -1248,6 +1249,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikkje tillate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillate, eigendefinert by-layout
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plassering av tre i spelet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(øydelegg sagbruk)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskogen
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :over alt
 
@@ -1649,7 +1652,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble frå
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tenaren er beskytta. Skriv inn passord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta.  Skriv inn eit passord
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta. Skriv inn passord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liste over klientar
@@ -2329,6 +2332,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Åtvaring: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ein fatal NewGRF-feil har oppstått: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} vil ikkje virke med den TTDPatch versjonen som OpenTTD oppgjer
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for {STRING} utgåva av TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laga for å brukast saman med {STRING}
@@ -2391,6 +2395,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasje
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post førre månad: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Frakt naudsynt for folketalsauke:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} naudsynt
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} naudsynt om vinteren
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levert forrige månad
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentrer biletet på byen. Ctrl+klikk syner byen i eit nytt vindauge
@@ -3060,7 +3065,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Verdien 
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv inn verdi å samanlikne med
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Hopp over
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hopp over gjedande ordre, og start neste.  CTRL + klikk hopper til valde ordre
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hopp over gjedande ordre, og start neste. CTRL + klikk hopper til valt ordre
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Slett
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Slett den valde ordren
@@ -3193,6 +3198,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
 STR_AI_CONFIG_RANDOM_AI                                         :Vilkårleg AI
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytt oppover
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytt valt AI oppover lista
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flytt nedover
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytt valt AI nedover i lista
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vel AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Last endå ein AI

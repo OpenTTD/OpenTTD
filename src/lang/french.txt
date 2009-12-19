@@ -1009,6 +1009,13 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Élevé
 STR_NUM_CUSTOM                                                  :Personnalisé
 
+STR_VARIETY_NONE                                                :Aucune
+STR_VARIETY_VERY_LOW                                            :Très basse
+STR_VARIETY_LOW                                                 :Basse
+STR_VARIETY_MEDIUM                                              :Moyenne
+STR_VARIETY_HIGH                                                :Élevée
+STR_VARIETY_VERY_HIGH                                           :Très élevée
+
 STR_AI_SPEED_VERY_SLOW                                          :Très Lent
 STR_AI_SPEED_SLOW                                               :Lent
 STR_AI_SPEED_MEDIUM                                             :Moyen
@@ -1033,6 +1040,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Très plat
 STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Collines
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montagneux
+STR_TERRAIN_TYPE_MIXED                                          :Mixte
 
 STR_ECONOMY_STEADY                                              :Stable
 STR_ECONOMY_FLUCTUATING                                         :Fluctuant
@@ -2232,6 +2240,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ajout de
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Niveau de la mer{NBSP}:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lissage{NBSP}:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variété de distribution{NBSP}:
 STR_MAPGEN_GENERATE                                             :{WHITE}Créer
 
 # Strings for map borders at game generation

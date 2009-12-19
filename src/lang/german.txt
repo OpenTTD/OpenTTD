@@ -1009,6 +1009,13 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Hoch
 STR_NUM_CUSTOM                                                  :Eigene
 
+STR_VARIETY_NONE                                                :Minimal
+STR_VARIETY_VERY_LOW                                            :Sehr klein
+STR_VARIETY_LOW                                                 :Klein
+STR_VARIETY_MEDIUM                                              :Mittel
+STR_VARIETY_HIGH                                                :Groß
+STR_VARIETY_VERY_HIGH                                           :Sehr groß
+
 STR_AI_SPEED_VERY_SLOW                                          :Sehr langsam
 STR_AI_SPEED_SLOW                                               :Langsam
 STR_AI_SPEED_MEDIUM                                             :Mittel
@@ -1033,6 +1040,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Sehr flach
 STR_TERRAIN_TYPE_FLAT                                           :Flach
 STR_TERRAIN_TYPE_HILLY                                          :Hügelig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
+STR_TERRAIN_TYPE_MIXED                                          :Gemischt
 
 STR_ECONOMY_STEADY                                              :Ruhig
 STR_ECONOMY_FLUCTUATING                                         :Schwankend
@@ -2232,6 +2240,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgo
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Gewässermenge:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gleichmäßigkeit:
+STR_MAPGEN_VARIETY                                              :{BLACK}Größe der Geländeformen:
 STR_MAPGEN_GENERATE                                             :{WHITE}Erzeugen
 
 # Strings for map borders at game generation

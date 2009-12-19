@@ -1103,6 +1103,7 @@ STR_NUM_NORMAL                                                  :Κανονικ�
 STR_NUM_HIGH                                                    :Υψηλό
 STR_NUM_CUSTOM                                                  :Προσαρμοσμέν{G ος η ο}
 
+
 STR_AI_SPEED_VERY_SLOW                                          :Πολύ αργό
 STR_AI_SPEED_SLOW                                               :Αργό
 STR_AI_SPEED_MEDIUM                                             :Μέτριο
@@ -1341,6 +1342,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ιδρ�
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Τοποθέτηση δέντρω εντός παιχνιδιού: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε δάση
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Αριστερά
@@ -3290,6 +3295,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμ
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Όλα τα AI θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Επιλόγη AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φορτώστε ένα άλλο AI

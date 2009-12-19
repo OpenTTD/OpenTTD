@@ -1003,6 +1003,7 @@ STR_NUM_NORMAL                                                  :Thường
 STR_NUM_HIGH                                                    :Cao
 STR_NUM_CUSTOM                                                  :Tự Chỉnh
 
+
 STR_AI_SPEED_VERY_SLOW                                          :Chậm Nhất
 STR_AI_SPEED_SLOW                                               :Chậm
 STR_AI_SPEED_MEDIUM                                             :Trung Bình
@@ -1238,6 +1239,9 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Thị t
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Cho phép thị trấn kiểm tra độ ồn của sân bay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :cho phép
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :cho phép, tùy chọn bố trí thị trấn
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :chỉ trong rừng nhiệt đới
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mọi nơi
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Vị trí của thanh công cụ chính: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Trái
@@ -1922,6 +1926,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn x
 
 
 # AI configuration window
+
 
 
 # Available AIs window

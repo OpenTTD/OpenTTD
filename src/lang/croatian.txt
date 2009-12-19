@@ -1104,6 +1104,7 @@ STR_NUM_NORMAL                                                  :Normalno
 STR_NUM_HIGH                                                    :Visoko
 STR_NUM_CUSTOM                                                  :Proizvoljno
 
+
 STR_AI_SPEED_VERY_SLOW                                          :Vrlo sporo
 STR_AI_SPEED_SLOW                                               :Sporo
 STR_AI_SPEED_MEDIUM                                             :Umjereno
