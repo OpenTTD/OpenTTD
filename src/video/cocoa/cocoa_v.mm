@@ -194,6 +194,7 @@ void QZ_GameSizeChanged()
 	_screen.width = _cocoa_subdriver->GetWidth();
 	_screen.height = _cocoa_subdriver->GetHeight();
 	_screen.pitch = _cocoa_subdriver->GetWidth();
+	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 	_fullscreen = _cocoa_subdriver->IsFullscreen();
 
 	GameSizeChanged();

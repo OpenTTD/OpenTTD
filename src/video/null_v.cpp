@@ -21,6 +21,7 @@ const char *VideoDriver_Null::Start(const char * const *parm)
 	this->ticks = GetDriverParamInt(parm, "ticks", 1000);
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
+	_screen.dst_ptr = NULL;
 	ScreenSizeChanged();
 
 	/* Do not render, nor blit */
@@ -39,7 +40,6 @@ void VideoDriver_Null::MainLoop()
 
 	for (i = 0; i < this->ticks; i++) {
 		GameLoop();
-		_screen.dst_ptr = NULL;
 		UpdateWindows();
 	}
 }

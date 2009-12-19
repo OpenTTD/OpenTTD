@@ -603,7 +603,6 @@ void QZ_GameLoop()
 	uint32 st = 0;
 #endif
 
-	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 	DisplaySplashImage();
 	QZ_CheckPaletteAnim();
 	_cocoa_subdriver->Draw(true);
@@ -611,7 +610,6 @@ void QZ_GameLoop()
 
 	for (int i = 0; i < 2; i++) GameLoop();
 
-	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 	UpdateWindows();
 	QZ_CheckPaletteAnim();
 	_cocoa_subdriver->Draw();
@@ -651,7 +649,6 @@ void QZ_GameLoop()
 
 			GameLoop();
 
-			_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 			UpdateWindows();
 			if (++pal_tick > 4) {
 				QZ_CheckPaletteAnim();
@@ -666,7 +663,6 @@ void QZ_GameLoop()
 #ifdef _DEBUG
 			st += GetTick() - st0;
 #endif
-			_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 			_cocoa_subdriver->Draw();

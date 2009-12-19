@@ -249,6 +249,7 @@ static bool CreateMainSurface(uint w, uint h)
 	_screen.width = newscreen->w;
 	_screen.height = newscreen->h;
 	_screen.pitch = newscreen->pitch / (bpp / 8);
+	_screen.dst_ptr = newscreen->pixels;
 	_sdl_screen = newscreen;
 	InitPalette();
 
@@ -587,7 +588,6 @@ void VideoDriver_SDL::MainLoop()
 
 			if (_draw_threaded) _draw_mutex->BeginCritical();
 
-			_screen.dst_ptr = _sdl_screen->pixels;
 			UpdateWindows();
 			if (++pal_tick > 4) {
 				CheckPaletteAnim();
@@ -599,7 +599,6 @@ void VideoDriver_SDL::MainLoop()
 			CSleep(1);
 			if (_draw_threaded) _draw_mutex->BeginCritical();
 
-			_screen.dst_ptr = _sdl_screen->pixels;
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}

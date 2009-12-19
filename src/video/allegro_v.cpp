@@ -211,9 +211,10 @@ static bool CreateMainSurface(uint w, uint h)
 	_screen.width = _allegro_screen->w;
 	_screen.height = _allegro_screen->h;
 	_screen.pitch = ((byte*)screen->line[1] - (byte*)screen->line[0]) / (bpp / 8);
+	_screen.dst_ptr = _allegro_screen->line[0];
 
 	/* Initialise the screen so we don't blit garbage to the screen */
-	memset(_allegro_screen->line[0], 0, _screen.height * _screen.pitch);
+	memset(_screen.dst_ptr, 0, _screen.height * _screen.pitch);
 
 	/* Set the mouse at the place where we expect it */
 	poll_mouse();
@@ -520,7 +521,6 @@ void VideoDriver_Allegro::MainLoop()
 
 			GameLoop();
 
-			_screen.dst_ptr = _allegro_screen->line[0];
 			UpdateWindows();
 			if (++pal_tick > 4) {
 				CheckPaletteAnim();
@@ -529,7 +529,6 @@ void VideoDriver_Allegro::MainLoop()
 			DrawSurfaceToScreen();
 		} else {
 			CSleep(1);
-			_screen.dst_ptr = _allegro_screen->line[0];
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 			DrawSurfaceToScreen();

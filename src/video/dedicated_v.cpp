@@ -145,6 +145,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
+	_screen.dst_ptr = _dedicated_video_mem;
 	ScreenSizeChanged();
 
 #if defined(WINCE)
@@ -302,7 +303,6 @@ void VideoDriver_Dedicated::MainLoop()
 			next_tick = cur_ticks + 30;
 
 			GameLoop();
-			_screen.dst_ptr = _dedicated_video_mem;
 			UpdateWindows();
 		}
 		CSleep(1);
