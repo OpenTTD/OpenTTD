@@ -996,37 +996,14 @@ struct StationViewWindow : public Window {
 	 */
 	void DrawAcceptedCargo(const Rect &r) const
 	{
-		char string[512];
-		char *b = string;
-		bool first = true;
-
-		b = InlineString(b, STR_STATION_VIEW_ACCEPTS_CARGO);
-
 		const Station *st = Station::Get(this->window_number);
+
+		uint32 cargo_mask = 0;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
-			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
-				if (first) {
-					first = false;
-				} else {
-					/* Add a comma if this is not the first item */
-					*b++ = ',';
-					*b++ = ' ';
-				}
-				b = InlineString(b, CargoSpec::Get(i)->name);
-			}
+			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) SetBit(cargo_mask, i);
 		}
-
-		/* If first is still true then no cargo is accepted */
-		if (first) b = InlineString(b, STR_JUST_NOTHING);
-
-		*b = '\0';
-
-		/* Make sure we detect any buffer overflow */
-		assert(b < endof(string));
-
-		SetDParamStr(0, string);
-		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, STR_JUST_RAW_STRING);
+		Rect s = {r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, r.bottom - WD_FRAMERECT_BOTTOM};
+		DrawCargoListText(cargo_mask, s, STR_STATION_VIEW_ACCEPTS_CARGO);
 	}
 
 	/** Draw cargo ratings in the #SVW_ACCEPTLIST widget.
