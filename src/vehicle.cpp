@@ -45,6 +45,7 @@
 #include "network/network.h"
 #include "core/pool_func.hpp"
 #include "economy_base.h"
+#include "articulated_vehicles.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -96,7 +97,8 @@ bool Vehicle::NeedsServicing() const
 	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
 
 	/* Are we ready for the next service cycle? */
-	if (Company::Get(this->owner)->settings.vehicle.servint_ispercent ?
+	const Company *c = Company::Get(this->owner);
+	if (c->settings.vehicle.servint_ispercent ?
 			(this->reliability >= Engine::Get(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
 			(this->date_of_last_service + this->service_interval >= _date)) {
 		return false;
@@ -109,9 +111,33 @@ bool Vehicle::NeedsServicing() const
 		return true;
 	}
 
-	/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
-	 * Note: If servicing is enabled, we postpone replacement till next service. */
-	return EngineHasReplacementForCompany(Company::Get(this->owner), this->engine_type, this->group_id);
+	/* Test whether there is some pending autoreplace.
+	 * Note: We do this after the service-interval test.
+	 * There are a lot more reasons for autoreplace to fail than we can test here reasonably. */
+	bool pending_replace = false;
+	Money needed_money = c->settings.engine_renew_money;
+	if (needed_money > c->money) return false;
+
+	const Vehicle *v = this;
+	do {
+		EngineID new_engine = EngineReplacementForCompany(c, v->engine_type, v->group_id);
+		/* Check engine availability */
+		if (new_engine != INVALID_ENGINE && HasBit(Engine::Get(new_engine)->company_avail, v->owner)) {
+			/* Check refittability */
+			CargoID cargo_type = CT_INVALID;
+			if (!IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type) && cargo_type != CT_INVALID &&
+					HasBit(GetIntersectionOfArticulatedRefitMasks(new_engine, true), cargo_type)) {
+				/* Check money.
+				 * We want 2*(the price of the new vehicle) without looking at the value of the vehicle we are going to sell. */
+				pending_replace = true;
+				needed_money += 2 * Engine::Get(new_engine)->GetCost();
+				if (needed_money > c->money) break;
+			}
+		}
+		v = (v->type == VEH_TRAIN) ? Train::From(v)->GetNextUnit() : NULL;
+	} while (v != NULL);
+
+	return pending_replace && needed_money <= c->money;
 }
 
 bool Vehicle::NeedsAutomaticServicing() const
