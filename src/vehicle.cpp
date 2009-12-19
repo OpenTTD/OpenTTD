@@ -1558,7 +1558,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 	if (this->IsStoppedInDepot()) return CMD_ERROR;
 
 	if (this->current_order.IsType(OT_GOTO_DEPOT)) {
-		bool halt_in_depot = this->current_order.GetDepotActionType() & ODATFB_HALT;
+		bool halt_in_depot = (this->current_order.GetDepotActionType() & ODATFB_HALT) != 0;
 		if (!!(command & DEPOT_SERVICE) == halt_in_depot) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
