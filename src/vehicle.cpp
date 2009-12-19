@@ -91,17 +91,27 @@ void VehicleServiceInDepot(Vehicle *v)
 
 bool Vehicle::NeedsServicing() const
 {
+	/* Stopped or crashed vehicles will not move, as such making unmovable
+	 * vehicles to go for service is lame. */
 	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
 
-	if (_settings_game.order.no_servicing_if_no_breakdowns && _settings_game.difficulty.vehicle_breakdowns == 0) {
-		/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
-		 * Note: If servicing is enabled, we postpone replacement till next service. */
-		return EngineHasReplacementForCompany(Company::Get(this->owner), this->engine_type, this->group_id);
+	/* Are we ready for the next service cycle? */
+	if (Company::Get(this->owner)->settings.vehicle.servint_ispercent ?
+			(this->reliability >= Engine::Get(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
+			(this->date_of_last_service + this->service_interval >= _date)) {
+		return false;
 	}
 
-	return Company::Get(this->owner)->settings.vehicle.servint_ispercent ?
-		(this->reliability < Engine::Get(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
-		(this->date_of_last_service + this->service_interval < _date);
+	/* If we're servicing anyway, because we have not disabled servicing when
+	 * there are no breakdowns or we are playing with breakdowns, bail out. */
+	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
+			_settings_game.difficulty.vehicle_breakdowns != 0) {
+		return true;
+	}
+
+	/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
+	 * Note: If servicing is enabled, we postpone replacement till next service. */
+	return EngineHasReplacementForCompany(Company::Get(this->owner), this->engine_type, this->group_id);
 }
 
 bool Vehicle::NeedsAutomaticServicing() const
