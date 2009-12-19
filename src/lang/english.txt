@@ -1039,7 +1039,6 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Very Flat
 STR_TERRAIN_TYPE_FLAT                                           :Flat
 STR_TERRAIN_TYPE_HILLY                                          :Hilly
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mountainous
-STR_TERRAIN_TYPE_MIXED                                          :Mixed
 
 STR_ECONOMY_STEADY                                              :Steady
 STR_ECONOMY_FLUCTUATING                                         :Fluctuating
