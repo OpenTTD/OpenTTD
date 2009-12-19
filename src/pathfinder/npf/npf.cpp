@@ -66,6 +66,7 @@ enum NPFNodeFlag {
 	NPF_FLAG_3RD_SIGNAL,        ///< Used to mark that three signals were seen, rail only
 	NPF_FLAG_REVERSE,           ///< Used to mark that this node was reached from the second start node, if applicable
 	NPF_FLAG_LAST_SIGNAL_RED,   ///< Used to mark that the last signal on this path was red
+	NPF_FLAG_LAST_SIGNAL_BLOCK, ///< Used to mark that the last signal on this path was a block signal
 	NPF_FLAG_IGNORE_START_TILE, ///< Used to mark that the start tile is invalid, and searching should start from the second tile on
 	NPF_FLAG_TARGET_RESERVED,   ///< Used to mark that the possible reservation target is already reserved
 	NPF_FLAG_IGNORE_RESERVED,   ///< Used to mark that reserved tiles should be considered impassable
@@ -272,7 +273,7 @@ static uint NPFReservedTrackCost(AyStarNode *current)
 	TrackBits track = TrackToTrackBits(TrackdirToTrack(current->direction));
 	TrackBits res = GetReservedTrackbits(tile);
 
-	if (NPFGetFlag(current, NPF_FLAG_3RD_SIGNAL) || ((res & track) == TRACK_BIT_NONE && !TracksOverlap(res | track))) return 0;
+	if (NPFGetFlag(current, NPF_FLAG_3RD_SIGNAL) || NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_BLOCK) || ((res & track) == TRACK_BIT_NONE && !TracksOverlap(res | track))) return 0;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		DiagDirection exitdir = TrackdirToExitdir(current->direction);
@@ -463,6 +464,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 	/* Check for signals */
 	if (IsTileType(tile, MP_RAILWAY)) {
 		if (HasSignalOnTrackdir(tile, trackdir)) {
+			SignalType sigtype = GetSignalType(tile, TrackdirToTrack(trackdir));
 			/* Ordinary track with signals */
 			if (GetSignalStateByTrackdir(tile, trackdir) == SIGNAL_STATE_RED) {
 				/* Signal facing us is red */
@@ -471,7 +473,6 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 					 * encounter, if it is red */
 
 					/* Is this a presignal exit or combo? */
-					SignalType sigtype = GetSignalType(tile, TrackdirToTrack(trackdir));
 					if (!IsPbsSignal(sigtype)) {
 						if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO) {
 							/* Penalise exit and combo signals differently (heavier) */
@@ -496,6 +497,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 			} else {
 				NPFSetFlag(current, NPF_FLAG_SEEN_SIGNAL, true);
 			}
+			NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_BLOCK, !IsPbsSignal(sigtype));
 		}
 
 		if (HasPbsSignalOnTrackdir(tile, ReverseTrackdir(trackdir)) && !NPFGetFlag(current, NPF_FLAG_3RD_SIGNAL)) {

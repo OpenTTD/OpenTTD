@@ -169,6 +169,7 @@ public:
 	FORCEINLINE int ReservationCost(Node& n, TileIndex tile, Trackdir trackdir, int skipped)
 	{
 		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.Size() / 2) return 0;
+		if (!IsPbsSignal(n.m_last_signal_type)) return 0;
 
 		if (IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
 			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1);
@@ -194,6 +195,10 @@ public:
 			} else {
 				if (has_signal_along) {
 					SignalState sig_state = GetSignalStateByTrackdir(tile, trackdir);
+					SignalType sig_type = GetSignalType(tile, TrackdirToTrack(trackdir));
+
+					n.m_last_signal_type = sig_type;
+
 					/* cache the look-ahead polynomial constant only if we didn't pass more signals than the look-ahead limit is */
 					int look_ahead_cost = (n.m_num_signals_passed < m_sig_look_ahead_costs.Size()) ? m_sig_look_ahead_costs.Data()[n.m_num_signals_passed] : 0;
 					if (sig_state != SIGNAL_STATE_RED) {
@@ -205,7 +210,6 @@ public:
 							cost -= look_ahead_cost;
 						}
 					} else {
-						SignalType sig_type = GetSignalType(tile, TrackdirToTrack(trackdir));
 						/* we have a red signal in our direction
 						 * was it first signal which is two-way? */
 						if (!IsPbsSignal(sig_type) && Yapf().TreatFirstRedTwoWaySignalAsEOL() && n.flags_u.flags_s.m_choice_seen && has_signal_against && n.m_num_signals_passed == 0) {
@@ -389,11 +393,12 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			/* Slope cost. */
 			segment_cost += Yapf().SlopeCost(cur.tile, cur.td);
 
+			/* Signal cost (routine can modify segment data). */
+			segment_cost += Yapf().SignalCost(n, cur.tile, cur.td);
+
 			/* Reserved tiles. */
 			segment_cost += Yapf().ReservationCost(n, cur.tile, cur.td, tf->m_tiles_skipped);
 
-			/* Signal cost (routine can modify segment data). */
-			segment_cost += Yapf().SignalCost(n, cur.tile, cur.td);
 			end_segment_reason = segment.m_end_segment_reason;
 
 			/* Tests for 'potential target' reasons to close the segment. */

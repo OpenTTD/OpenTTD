@@ -206,6 +206,7 @@ struct CYapfRailNodeT
 		} flags_s;
 	} flags_u;
 	SignalType        m_last_red_signal_type;
+	SignalType        m_last_signal_type;
 
 	FORCEINLINE void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
@@ -215,10 +216,22 @@ struct CYapfRailNodeT
 			m_num_signals_passed      = 0;
 			flags_u.m_inherited_flags = 0;
 			m_last_red_signal_type    = SIGTYPE_NORMAL;
+			/* We use PBS as initial signal type because if we are in
+			 * a PBS section and need to route, i.e. we're at a safe
+			 * waiting point of a station, we need to account for the
+			 * reservation costs. If we are in a normal block then we
+			 * should be alone in there and as such the reservation
+			 * costs should be 0 anyway. If there would be another
+			 * train in the block, i.e. passing signals at danger
+			 * then avoiding that train with help of the reservation
+			 * costs is not a bad thing, actually it would probably
+			 * be a good thing to do. */
+			m_last_signal_type        = SIGTYPE_PBS;
 		} else {
 			m_num_signals_passed      = parent->m_num_signals_passed;
 			flags_u.m_inherited_flags = parent->flags_u.m_inherited_flags;
 			m_last_red_signal_type    = parent->m_last_red_signal_type;
+			m_last_signal_type        = parent->m_last_signal_type;
 		}
 		flags_u.flags_s.m_choice_seen |= is_choice;
 	}
