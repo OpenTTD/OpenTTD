@@ -518,7 +518,6 @@ table/water_land.h
 3rdparty/minilzo/minilzo.h
 
 # Script
-script/fake_squirrel_types.hpp
 script/script_info.cpp
 script/script_info.hpp
 script/script_scanner.cpp

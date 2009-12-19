@@ -2340,10 +2340,6 @@
 			Name="Script"
 			>
 			<File
-				RelativePath=".\..\src\script\fake_squirrel_types.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\script\script_info.cpp"
 				>
 			</File>
