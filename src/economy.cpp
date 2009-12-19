@@ -1135,7 +1135,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	int unloading_time = 0;
 	Vehicle *u = v;
-	int result = 0;
+	bool dirty_vehicle = false;
+	bool dirty_station = false;
 
 	bool completely_emptied = true;
 	bool anything_unloaded = false;
@@ -1175,7 +1176,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				/* The cargo has reached it's final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo<StationCargoList>(NULL, amount_unloaded, VehicleCargoList::MTA_FINAL_DELIVERY, payment, last_visited);
 
-				result |= 1;
+				dirty_vehicle = true;
 				accepted = true;
 			}
 
@@ -1188,7 +1189,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded, u->current_order.GetUnloadType() & OUFB_TRANSFER ? VehicleCargoList::MTA_TRANSFER : VehicleCargoList::MTA_UNLOAD, payment);
 				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
 
-				result |= 2;
+				dirty_vehicle = dirty_station = true;
 			} else if (!accepted) {
 				/* The order changed while unloading (unset unload/transfer) or the
 				 * station does not accept our goods. */
@@ -1279,7 +1280,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			unloading_time += cap;
 
-			result |= 2;
+			dirty_vehicle = dirty_station = true;
 		}
 
 		if (v->cargo.Count() >= v->cargo_cap) {
@@ -1367,14 +1368,14 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		TriggerVehicle(v, VEHICLE_TRIGGER_EMPTY);
 	}
 
-	if (result != 0) {
+	if (dirty_vehicle) {
 		SetWindowDirty(GetWindowClassForVehicleType(v->type), v->owner);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-
-		st->MarkTilesDirty(true);
 		v->MarkDirty();
-
-		if (result & 2) SetWindowDirty(WC_STATION_VIEW, last_visited);
+	}
+	if (dirty_station) {
+		st->MarkTilesDirty(true);
+		SetWindowDirty(WC_STATION_VIEW, last_visited);
 	}
 }
 
