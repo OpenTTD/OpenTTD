@@ -2107,8 +2107,8 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 	if (IsRailDepotTile(origin.tile)) return FindDepotData(origin.tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainFindNearestDepot(v, _settings_game.pf.npf.maximum_go_to_depot_penalty);
-		case VPF_YAPF: return YapfTrainFindNearestDepot(v, _settings_game.pf.yapf.maximum_go_to_depot_penalty);
+		case VPF_NPF: return NPFTrainFindNearestDepot(v, max_distance);
+		case VPF_YAPF: return YapfTrainFindNearestDepot(v, max_distance);
 
 		default: NOT_REACHED();
 	}

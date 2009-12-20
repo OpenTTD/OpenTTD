@@ -97,12 +97,17 @@ SpriteID Ship::GetImage(Direction direction) const
 	return _ship_sprites[spritenum] + direction;
 }
 
-static const Depot *FindClosestShipDepot(const Vehicle *v)
+static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 {
 	/* Find the closest depot */
 	const Depot *depot;
 	const Depot *best_depot = NULL;
-	uint best_dist = UINT_MAX;
+	/* If we don't have a maximum distance, i.e. distance = 0,
+	 * we want to find any depot so the best distance of no
+	 * depot must be more than any correct distance. On the
+	 * other hand if we have set a maximum distance, any depot
+	 * further away than max_distance can safely be ignored. */
+	uint best_dist = max_distance == 0 ? UINT_MAX : max_distance + 1;
 
 	FOR_ALL_DEPOTS(depot) {
 		TileIndex tile = depot->xy;
@@ -134,9 +139,9 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		default: NOT_REACHED();
 	}
 
-	const Depot *depot = FindClosestShipDepot(v);
+	const Depot *depot = FindClosestShipDepot(v, max_distance);
 
-	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > max_distance) {
+	if (depot == NULL) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			v->current_order.MakeDummy();
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
@@ -724,7 +729,7 @@ CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p
 
 bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
-	const Depot *depot = FindClosestShipDepot(this);
+	const Depot *depot = FindClosestShipDepot(this, 0);
 
 	if (depot == NULL) return false;
 
