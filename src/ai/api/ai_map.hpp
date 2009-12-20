@@ -21,9 +21,6 @@
 class AIMap : public AIObject {
 public:
 	static const int TILE_INVALID = (int)INVALID_TILE; //!< Invalid TileIndex.
-#ifdef DOXYGEN_SKIP
-	const static TileIndex TILE_INVALID; //!< Invalid TileIndex.
-#endif /* DOXYGEN_SKIP */
 
 	static const char *GetClassName() { return "AIMap"; }
 
