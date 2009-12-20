@@ -730,7 +730,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(NCLWW_MATRIX)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, NCLWW_MATRIX);
 		this->GetWidget<NWidgetCore>(NCLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 

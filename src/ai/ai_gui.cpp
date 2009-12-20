@@ -906,7 +906,7 @@ struct AIDebugWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(AID_WIDGET_LOG_PANEL)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, AID_WIDGET_LOG_PANEL);
 	}
 };
 

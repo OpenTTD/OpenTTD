@@ -297,7 +297,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(ANGRFW_GRF_LIST)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, ANGRFW_GRF_LIST);
 	}
 
 	virtual void OnPaint()
@@ -621,9 +621,8 @@ struct NewGRFWindow : public Window {
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST);
-		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
-		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.SetCapacityFromWidget(this, SNGRFS_FILE_LIST);
+		this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -970,7 +969,7 @@ struct NewGRFWindow : public Window {
 
 				for (c = this->list, i = 0; c != NULL; c = c->next, i++) {}
 
-				this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST)->current_y) / this->resize.step_height);
+				this->vscroll.SetCapacityFromWidget(this, SNGRFS_FILE_LIST);
 				this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 				this->vscroll.SetCount(i);
 				break;

@@ -158,7 +158,7 @@ struct SignListWindow : Window, SignList {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)

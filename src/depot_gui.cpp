@@ -941,12 +941,12 @@ struct DepotWindow : Window {
 	virtual void OnResize()
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX);
-		this->vscroll.SetCapacity(nwi->current_y / (int)this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, DEPOT_WIDGET_MATRIX);
 		if (this->type == VEH_TRAIN) {
 			this->hscroll.SetCapacity(nwi->current_x - this->header_width - this->count_width);
 			nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		} else {
-			this->hscroll.SetCapacity(nwi->current_x / (int)this->resize.step_width);
+			this->hscroll.SetCapacityFromWidget(this, DEPOT_WIDGET_MATRIX);
 			nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (this->hscroll.GetCapacity() << MAT_COL_START);
 		}
 	}

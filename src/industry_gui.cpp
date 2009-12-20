@@ -445,7 +445,7 @@ public:
 	virtual void OnResize()
 	{
 		/* Adjust the number of items in the matrix depending of the resize */
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(DPIW_MATRIX_WIDGET)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, DPIW_MATRIX_WIDGET);
 		this->GetWidget<NWidgetCore>(DPIW_MATRIX_WIDGET)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
@@ -1138,7 +1138,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(IDW_INDUSTRY_LIST)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, IDW_INDUSTRY_LIST);
 	}
 
 	virtual void OnHundredthTick()

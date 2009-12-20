@@ -280,7 +280,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, BBSW_BRIDGE_LIST);
 		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		this->last_size = max(this->vscroll.GetCapacity(), this->last_size);

@@ -2023,7 +2023,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(SLWW_DRIVES_DIRECTORIES_LIST)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, SLWW_DRIVES_DIRECTORIES_LIST);
 	}
 
 	virtual void OnInvalidateData(int data)

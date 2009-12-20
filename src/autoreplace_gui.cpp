@@ -480,8 +480,8 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(RVW_WIDGET_LEFT_MATRIX)->current_y / this->resize.step_height);
-		this->vscroll2.SetCapacity(this->GetWidget<NWidgetBase>(RVW_WIDGET_RIGHT_MATRIX)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, RVW_WIDGET_LEFT_MATRIX);
+		this->vscroll2.SetCapacityFromWidget(this, RVW_WIDGET_RIGHT_MATRIX);
 
 		this->GetWidget<NWidgetCore>(RVW_WIDGET_LEFT_MATRIX)->widget_data =
 				this->GetWidget<NWidgetCore>(RVW_WIDGET_RIGHT_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);

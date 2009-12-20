@@ -845,7 +845,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(TDW_CENTERTOWN)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, TDW_CENTERTOWN);
 	}
 
 	virtual void OnInvalidateData(int data)

@@ -895,9 +895,8 @@ public:
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(NGWW_MATRIX);
-		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
-		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.SetCapacityFromWidget(this, NGWW_MATRIX);
+		this->GetWidget<NWidgetCore>(NGWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -1673,9 +1672,8 @@ struct NetworkLobbyWindow : public Window {
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(NLWW_MATRIX);
-		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
-		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.SetCapacityFromWidget(this, NLWW_MATRIX);
+		this->GetWidget<NWidgetCore>(NLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

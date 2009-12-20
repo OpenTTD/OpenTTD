@@ -604,7 +604,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SLW_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
+		this->vscroll.SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -1118,7 +1118,7 @@ struct StationViewWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(SVW_WAITING)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, SVW_WAITING, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 };
 
@@ -1359,7 +1359,7 @@ struct SelectStationWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(JSW_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, JSW_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void OnInvalidateData(int data)

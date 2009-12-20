@@ -585,7 +585,7 @@ struct TimetableWindow : Window {
 	virtual void OnResize()
 	{
 		/* Update the scroll bar */
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, TTV_TIMETABLE_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	/**

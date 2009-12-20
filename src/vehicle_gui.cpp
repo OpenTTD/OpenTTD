@@ -494,9 +494,8 @@ struct RefitWindow : public Window {
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(VRW_MATRIX);
-		this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
-		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll.SetCapacityFromWidget(this, VRW_MATRIX);
+		this->GetWidget<NWidgetCore>(VRW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -1243,7 +1242,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, VLW_WIDGET_LIST);
 		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
@@ -1683,7 +1682,7 @@ struct VehicleDetailsWindow : Window {
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(VLD_WIDGET_MATRIX);
 		if (nwi != NULL) {
-			this->vscroll.SetCapacity(nwi->current_y / this->resize.step_height);
+			this->vscroll.SetCapacityFromWidget(this, VLD_WIDGET_MATRIX);
 			nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		}
 	}

@@ -79,6 +79,23 @@ WindowDesc::~WindowDesc()
 }
 
 /**
+ * Set capacity of visible elements from the size and resize properties of a widget.
+ * @param w       Window.
+ * @param widget  Widget with size and resize properties.
+ * @param padding Padding to subtract from the size.
+ * @note Updates the position if needed.
+ */
+void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
+{
+	NWidgetBase *nwid = w->GetWidget<NWidgetBase>(widget);
+	if (this->is_vertical) {
+		this->SetCapacity(((int)nwid->current_y - padding) / (int)nwid->resize_y);
+	} else {
+		this->SetCapacity(((int)nwid->current_x - padding) / (int)nwid->resize_x);
+	}
+}
+
+/**
  * Set the window that has the focus
  * @param w The window to set the focus on
  */

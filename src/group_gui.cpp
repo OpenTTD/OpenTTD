@@ -596,7 +596,7 @@ public:
 		nwi->widget_data = (this->vscroll2.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		nwi = this->GetWidget<NWidgetCore>(GRP_WIDGET_LIST_VEHICLE);
-		this->vscroll.SetCapacity(this->GetWidget<NWidgetBase>(GRP_WIDGET_LIST_VEHICLE)->current_y / this->resize.step_height);
+		this->vscroll.SetCapacityFromWidget(this, GRP_WIDGET_LIST_VEHICLE);
 		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 

@@ -247,6 +247,8 @@ public:
 		if (this->cap + this->pos > this->count) this->pos = max(0, this->count - this->cap);
 	}
 
+	void SetCapacityFromWidget(Window *w, int widget, int padding = 0);
+
 	/**
 	 * Sets the position of the first visible element
 	 * @param position the position of the element
