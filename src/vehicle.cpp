@@ -125,9 +125,20 @@ bool Vehicle::NeedsServicing() const
 		if (new_engine == INVALID_ENGINE || !HasBit(Engine::Get(new_engine)->company_avail, v->owner)) continue;
 
 		/* Check refittability */
-		CargoID cargo_type = CT_INVALID;
-		if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type) || cargo_type == CT_INVALID ||
-				!HasBit(GetIntersectionOfArticulatedRefitMasks(new_engine, true), cargo_type)) continue;
+		uint32 available_cargo_types, union_mask;
+		GetArticulatedRefitMasks(new_engine, true, &union_mask, &available_cargo_types);
+		/* Is there anything to refit? */
+		if (union_mask != 0) {
+			CargoID cargo_type;
+			/* We cannot refit to mixed cargos in an automated way */
+			if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type)) continue;
+
+			/* Did the old vehicle carry anything? */
+			if (cargo_type != CT_INVALID) {
+				/* We can't refit the vehicle to carry the cargo we want */
+				if (!HasBit(available_cargo_types, cargo_type)) continue;
+			}
+		}
 
 		/* Check money.
 		 * We want 2*(the price of the new vehicle) without looking at the value of the vehicle we are going to sell. */
