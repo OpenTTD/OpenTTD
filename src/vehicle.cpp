@@ -118,26 +118,25 @@ bool Vehicle::NeedsServicing() const
 	Money needed_money = c->settings.engine_renew_money;
 	if (needed_money > c->money) return false;
 
-	const Vehicle *v = this;
-	do {
+	for (const Vehicle *v = this; v != NULL; v = (v->type == VEH_TRAIN) ? Train::From(v)->GetNextUnit() : NULL) {
 		EngineID new_engine = EngineReplacementForCompany(c, v->engine_type, v->group_id);
-		/* Check engine availability */
-		if (new_engine != INVALID_ENGINE && HasBit(Engine::Get(new_engine)->company_avail, v->owner)) {
-			/* Check refittability */
-			CargoID cargo_type = CT_INVALID;
-			if (!IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type) && cargo_type != CT_INVALID &&
-					HasBit(GetIntersectionOfArticulatedRefitMasks(new_engine, true), cargo_type)) {
-				/* Check money.
-				 * We want 2*(the price of the new vehicle) without looking at the value of the vehicle we are going to sell. */
-				pending_replace = true;
-				needed_money += 2 * Engine::Get(new_engine)->GetCost();
-				if (needed_money > c->money) break;
-			}
-		}
-		v = (v->type == VEH_TRAIN) ? Train::From(v)->GetNextUnit() : NULL;
-	} while (v != NULL);
 
-	return pending_replace && needed_money <= c->money;
+		/* Check engine availability */
+		if (new_engine == INVALID_ENGINE || !HasBit(Engine::Get(new_engine)->company_avail, v->owner)) continue;
+
+		/* Check refittability */
+		CargoID cargo_type = CT_INVALID;
+		if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type) || cargo_type == CT_INVALID ||
+				!HasBit(GetIntersectionOfArticulatedRefitMasks(new_engine, true), cargo_type)) continue;
+
+		/* Check money.
+		 * We want 2*(the price of the new vehicle) without looking at the value of the vehicle we are going to sell. */
+		pending_replace = true;
+		needed_money += 2 * Engine::Get(new_engine)->GetCost();
+		if (needed_money > c->money) return false;
+	}
+
+	return pending_replace;
 }
 
 bool Vehicle::NeedsAutomaticServicing() const
