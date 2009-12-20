@@ -170,10 +170,16 @@ enum WindowDefaultFlag {
  */
 class Scrollbar {
 private:
-	uint16 count;  ///< Number of elements in the list
-	uint16 cap;    ///< Number of visible elements of the scroll bar
-	uint16 pos;    ///< Index of first visible item of the list
+	const bool is_vertical; ///< Scrollbar has vertical orientation.
+	uint16 count;           ///< Number of elements in the list.
+	uint16 cap;             ///< Number of visible elements of the scroll bar.
+	uint16 pos;             ///< Index of first visible item of the list.
+
 public:
+	Scrollbar(bool is_vertical) : is_vertical(is_vertical)
+	{
+	}
+
 	/**
 	 * Gets the number of elements in the list
 	 * @return the number of elements

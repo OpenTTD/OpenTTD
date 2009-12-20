@@ -1190,7 +1190,7 @@ void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 }
 
 /** Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class. */
-Window::Window()
+Window::Window() : hscroll(false), vscroll(true), vscroll2(true)
 {
 }
 
