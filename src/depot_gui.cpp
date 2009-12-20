@@ -631,15 +631,14 @@ struct DepotWindow : Window {
 					this->count_width = 0;
 				}
 
-				SetDParam(0, 999);
-				Dimension unumber = GetStringBoundingBox(STR_BLACK_COMMA);
+				Dimension unumber = { GetDigitWidth() * 4, FONT_HEIGHT_NORMAL };
 				const Sprite *spr = GetSprite(SPR_FLAG_VEH_STOPPED, ST_NORMAL);
 				this->flag_width  = spr->width + WD_FRAMERECT_RIGHT;
 				this->flag_height = spr->height;
 
 				if (this->type == VEH_TRAIN || this->type == VEH_ROAD) {
 					min_height = max<uint>(unumber.height + WD_MATRIX_TOP, spr->height);
-					this->header_width = unumber.width + this->flag_width;
+					this->header_width = unumber.width + this->flag_width + WD_FRAMERECT_LEFT;
 				} else {
 					min_height = unumber.height + spr->height + WD_MATRIX_TOP + WD_PAR_VSEP_NORMAL + WD_MATRIX_BOTTOM;
 					this->header_width = max<uint>(unumber.width, this->flag_width) + WD_FRAMERECT_RIGHT;

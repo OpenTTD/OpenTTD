@@ -1306,6 +1306,20 @@ byte GetCharacterWidth(FontSize size, WChar key)
 	return GetGlyphWidth(size, key);
 }
 
+/**
+ * Return the maximum width of single digit.
+ * @param size  Font of the digit
+ * @return Width of the digit.
+ */
+byte GetDigitWidth(FontSize size)
+{
+	byte width = 0;
+	for (char c = '0'; c <= '9'; c++) {
+		width = max(GetCharacterWidth(size, c), width);
+	}
+	return width;
+}
+
 
 void ScreenSizeChanged()
 {

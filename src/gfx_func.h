@@ -160,6 +160,7 @@ bool ToggleFullScreen(bool fs);
 extern FontSize _cur_fontsize; ///< Currently selected font.
 
 byte GetCharacterWidth(FontSize size, uint32 key);
+byte GetDigitWidth(FontSize size = FS_NORMAL);
 
 /**
  * Get height of a character for a given font size.
