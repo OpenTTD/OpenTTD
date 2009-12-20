@@ -110,11 +110,11 @@ void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 w
 	 * wider numbers to determine the width instead of just
 	 * the random number that it seems to be. */
 	if (unitnumber >= 1000) {
-		this->max_unitnumber = 9999;
+		this->unitnumber_digits = 4;
 	} else if (unitnumber >= 100) {
-		this->max_unitnumber = 999;
+		this->unitnumber_digits = 3;
 	} else {
-		this->max_unitnumber = 99;
+		this->unitnumber_digits = 2;
 	}
 
 	this->vehicles.RebuildDone();
@@ -908,8 +908,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int width = right - left;
 	bool rtl = _dynlang.text_dir == TD_RTL;
 
-	SetDParam(0, this->max_unitnumber);
-	int text_offset = GetStringBoundingBox(STR_JUST_INT).width + WD_FRAMERECT_RIGHT;
+	int text_offset = GetDigitWidth() * this->unitnumber_digits + WD_FRAMERECT_RIGHT;
 	int text_left  = left  + (rtl ?           0 : text_offset);
 	int text_right = right - (rtl ? text_offset :           0);
 

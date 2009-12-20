@@ -20,7 +20,7 @@ struct BaseVehicleListWindow : public Window {
 	GUIVehicleList vehicles;  ///< The list of vehicles
 	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
 	VehicleType vehicle_type; ///< The vehicle type that is sorted
-	UnitID max_unitnumber;    ///< The maximum UnitID
+	byte unitnumber_digits;   ///< The number of digits of the highest unit number
 
 	static const StringID vehicle_sorter_names[];
 	static GUIVehicleList::SortFunction * const vehicle_sorter_funcs[];
