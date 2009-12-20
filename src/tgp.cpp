@@ -578,7 +578,7 @@ static void HeightMapCurves(uint level)
 
 		/* Get our X grid positions and bi-linear ratio */
 		float fx = (float)(sx * x) / _height_map.size_x + 0.5f;
-		uint x1 = fx;
+		uint x1 = (uint)fx;
 		uint x2 = x1;
 		float xr = 2.0f * (fx - x1) - 1.0f;
 		xr = sin(xr * M_PI_2);
@@ -595,7 +595,7 @@ static void HeightMapCurves(uint level)
 
 			/* Get our Y grid position and bi-linear ratio */
 			float fy = (float)(sy * y) / _height_map.size_y + 0.5f;
-			uint y1 = fy;
+			uint y1 = (uint)fy;
 			uint y2 = y1;
 			float yr = 2.0f * (fy - y1) - 1.0f;
 			yr = sin(yr * M_PI_2);
@@ -640,7 +640,7 @@ static void HeightMapCurves(uint level)
 			}
 
 			/* Apply interpolation of curve map results. */
-			*h = (ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr;
+			*h = (height_t)((ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr);
 		}
 	}
 }
