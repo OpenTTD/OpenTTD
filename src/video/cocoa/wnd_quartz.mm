@@ -167,6 +167,8 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 		if (CMGetSystemProfile(&sysProfile) == noErr) {
 			colorSpace = CGColorSpaceCreateWithPlatformColorSpace(sysProfile);
 			CMCloseProfile(sysProfile);
+		} else {
+			colorSpace = CGColorSpaceCreateDeviceRGB();
 		}
 
 		if (colorSpace == NULL) error("Could not get system colour space. You might need to recalibrate your monitor.");
