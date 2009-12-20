@@ -293,8 +293,6 @@ public:
  * Data structure for resizing a window
  */
 struct ResizeInfo {
-	uint width;       ///< Minimum allowed width of the window
-	uint height;      ///< Minimum allowed height of the window
 	uint step_width;  ///< Step-size of width resize changes
 	uint step_height; ///< Step-size of height resize changes
 };

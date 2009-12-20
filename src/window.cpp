@@ -514,8 +514,6 @@ void Window::ReInit(int rx, int ry)
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _dynlang.text_dir == TD_RTL);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
-	this->resize.width  = this->nested_root->smallest_x;
-	this->resize.height = this->nested_root->smallest_y;
 	this->resize.step_width  = this->nested_root->resize_x;
 	this->resize.step_height = this->nested_root->resize_y;
 
@@ -879,8 +877,6 @@ void Window::InitializePositionSize(int x, int y, int sm_width, int sm_height)
 	this->top = y;
 	this->width = sm_width;
 	this->height = sm_height;
-	this->resize.width = sm_width;
-	this->resize.height = sm_height;
 }
 
 /**
@@ -1611,12 +1607,12 @@ static bool HandleWindowDragging()
 			if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
 			if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
 
-			/* Check if we don't go below the minimum set size */
-			if ((int)w->width + x < (int)w->resize.width) {
-				x = w->resize.width - w->width;
+			/* Check that we don't go below the minimum set size */
+			if ((int)w->width + x < (int)w->nested_root->smallest_x) {
+				x = w->nested_root->smallest_x - w->width;
 			}
-			if ((int)w->height + y < (int)w->resize.height) {
-				y = w->resize.height - w->height;
+			if ((int)w->height + y < (int)w->nested_root->smallest_y) {
+				y = w->nested_root->smallest_y - w->height;
 			}
 
 			/* Window already on size */
