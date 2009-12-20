@@ -181,6 +181,11 @@ void ResetIndustries();
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 
+/**
+ * Do industry gfx ID translation for NewGRFs.
+ * @param gfx the type to get the override for.
+ * @return the gfx to actually work with.
+ */
 static inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 {
 	/* the 0xFF should be GFX_WATERTILE_SPECIALCHECK but for reasons of include mess,

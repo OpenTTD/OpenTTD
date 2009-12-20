@@ -119,6 +119,13 @@ static inline void SetIndustryConstructionStage(TileIndex tile, byte value)
 	SB(_m[tile].m1, 0, 2, value);
 }
 
+/**
+ * Get the industry graphics ID for the given industry tile as
+ * stored in the without translation.
+ * @param t the tile to get the gfx for
+ * @pre IsTileType(t, MP_INDUSTRY)
+ * @return the gfx ID
+ */
 static inline IndustryGfx GetCleanIndustryGfx(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
