@@ -56,7 +56,7 @@ enum Sprites {
 
 	/* Extra graphic spritenumbers */
 	SPR_OPENTTD_BASE     = 4896,
-	OPENTTD_SPRITE_COUNT = 151,
+	OPENTTD_SPRITE_COUNT = 153,
 
 	/* Halftile-selection sprites */
 	SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE,
@@ -71,6 +71,8 @@ enum Sprites {
 	SPR_WARNING_SIGN       = SPR_OPENTTD_BASE + 43, // warning sign (shown if there are any newgrf errors)
 	SPR_WINDOW_RESIZE_RIGHT= SPR_OPENTTD_BASE + 44, // resize icon to the right
 	SPR_WINDOW_RESIZE_LEFT = SPR_OPENTTD_BASE + 149, // resize icon to the left
+	SPR_WINDOW_SHADE       = SPR_OPENTTD_BASE + 151, // shade the window icon
+	SPR_WINDOW_UNSHADE     = SPR_OPENTTD_BASE + 152, // unshade the window icon
 	SPR_IMG_PLAY_MUSIC_RTL = SPR_OPENTTD_BASE + 150, // play music button, but then for RTL users
 	/* Arrow icons pointing in all 4 directions */
 	SPR_ARROW_DOWN         = SPR_OPENTTD_BASE + 45,
