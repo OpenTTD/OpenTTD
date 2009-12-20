@@ -242,7 +242,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_RANDOM_SEED, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TREE_PLACER, STR_NULL), SetFill(1, 1),
-				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_VARIETY, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_HEIGHTMAP_ROTATION, STR_NULL), SetFill(1, 1),
 			EndContainer(),
 			/* Widgets at the right of the labels. */
@@ -258,7 +257,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_INDUSTRY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 				NWidget(WWT_EDITBOX, COLOUR_WHITE, GLAND_RANDOM_EDITBOX), SetDataTip(STR_MAPGEN_RANDOM_SEED_OSKTITLE, STR_MAPGEN_RANDOM_SEED_HELP), SetFill(1, 1),
 				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_TREE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_VARIETY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_HEIGHTMAP_ROTATION_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(0, 4, 0),
