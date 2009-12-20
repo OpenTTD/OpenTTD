@@ -42,16 +42,26 @@ static inline void SetTownIndex(TileIndex t, TownID index)
 
 /**
  * Get the type of this house, which is an index into the house spec array
- * Since m4 is only a byte and we want to support 512 houses, we use the bit 6
- * of m3 as an additional bit to house type.
+ * without doing any NewGRF related translations.
+ * @param t the tile
+ * @pre IsTileType(t, MP_HOUSE)
+ * @return house type
+ */
+static inline HouseID GetCleanHouseType(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	return _m[t].m4 | (GB(_m[t].m3, 6, 1) << 8);
+}
+
+/**
+ * Get the type of this house, which is an index into the house spec array
  * @param t the tile
  * @pre IsTileType(t, MP_HOUSE)
  * @return house type
  */
 static inline HouseID GetHouseType(TileIndex t)
 {
-	assert(IsTileType(t, MP_HOUSE));
-	return _m[t].m4 | (GB(_m[t].m3, 6, 1) << 8);
+	return GetTranslatedHouseID(GetCleanHouseType(t));
 }
 
 /**

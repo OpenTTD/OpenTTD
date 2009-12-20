@@ -137,4 +137,15 @@ struct HouseSpec {
 	}
 };
 
+/**
+ * Do HouseID translation for NewGRFs.
+ * @param hid the HouseID to get the override for.
+ * @return the HouseID to actually work with.
+ */
+static inline HouseID GetTranslatedHouseID(HouseID hid)
+{
+	const HouseSpec *hs = HouseSpec::Get(hid);
+	return hs->override == INVALID_HOUSE_ID ? hid : hs->override;
+}
+
 #endif /* HOUSE_H */

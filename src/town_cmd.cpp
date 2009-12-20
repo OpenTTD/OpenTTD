@@ -2094,7 +2094,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		const HouseSpec *hs = HouseSpec::Get(i);
 
 		/* Verify that the candidate house spec matches the current tile status */
-		if ((~hs->building_availability & bitmask) != 0 || !hs->enabled) continue;
+		if ((~hs->building_availability & bitmask) != 0 || !hs->enabled || hs->override != INVALID_HOUSE_ID) continue;
 
 		/* Don't let these counters overflow. Global counters are 32bit, there will never be that many houses. */
 		if (hs->class_id != HOUSE_NO_CLASS) {
@@ -2132,13 +2132,9 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 		const HouseSpec *hs = HouseSpec::Get(house);
 
-		if (_loaded_newgrf_features.has_newhouses) {
-			if (hs->override != 0) {
-				house = hs->override;
-				hs = HouseSpec::Get(house);
-			}
-
-			if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world && _game_mode != GM_EDITOR) continue;
+		if (_loaded_newgrf_features.has_newhouses && !_generating_world &&
+				_game_mode != GM_EDITOR && (hs->extra_flags & BUILDING_IS_HISTORICAL) != 0) {
+			continue;
 		}
 
 		if (_cur_year < hs->min_year || _cur_year > hs->max_year) continue;
