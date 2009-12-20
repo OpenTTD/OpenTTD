@@ -862,7 +862,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	if (v->roadtype == ROADTYPE_TRAM) return;
 
 	/* Don't overtake in stations */
-	if (IsTileType(v->tile, MP_STATION)) return;
+	if (IsTileType(v->tile, MP_STATION) || IsTileType(u->tile, MP_STATION)) return;
 
 	/* For now, articulated road vehicles can't overtake anything. */
 	if (v->HasArticulatedPart()) return;
