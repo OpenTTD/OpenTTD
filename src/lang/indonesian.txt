@@ -1008,6 +1008,13 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Padat
 STR_NUM_CUSTOM                                                  :Bebas
 
+STR_VARIETY_NONE                                                :Tidak ada
+STR_VARIETY_VERY_LOW                                            :Sangat rendah
+STR_VARIETY_LOW                                                 :Rendah
+STR_VARIETY_MEDIUM                                              :Sedang
+STR_VARIETY_HIGH                                                :Tinggi
+STR_VARIETY_VERY_HIGH                                           :Sangat tinggi
+
 STR_AI_SPEED_VERY_SLOW                                          :Sangat lambat
 STR_AI_SPEED_SLOW                                               :Lambat
 STR_AI_SPEED_MEDIUM                                             :Sedang
@@ -1246,6 +1253,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Mendiri
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :dilarang
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :diijinkan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :diijinkan, rancangan kota dapat diubah sesuai kebiasaan
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya pada hutan hujan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :dimanapun
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisi toolbar utama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kiri
@@ -2226,6 +2236,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Area perairan:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Kehalusan:
+STR_MAPGEN_VARIETY                                              :{BLACK}Macam penyebaran:
 STR_MAPGEN_GENERATE                                             :{WHITE}Buat Peta
 
 # Strings for map borders at game generation
@@ -3189,6 +3200,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Semua AI yang akan dimuat pada permainan selanjutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Pilih AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat AI lainnya

@@ -1193,6 +1193,13 @@ STR_NUM_NORMAL                                                  :Normalan
 STR_NUM_HIGH                                                    :Veliki
 STR_NUM_CUSTOM                                                  :Podešen
 
+STR_VARIETY_NONE                                                :Neizmenjena
+STR_VARIETY_VERY_LOW                                            :Veoma Mala
+STR_VARIETY_LOW                                                 :Mala
+STR_VARIETY_MEDIUM                                              :Srednja
+STR_VARIETY_HIGH                                                :Velika
+STR_VARIETY_VERY_HIGH                                           :Veoma Velika
+
 STR_AI_SPEED_VERY_SLOW                                          :jako spora
 STR_AI_SPEED_SLOW                                               :spora
 STR_AI_SPEED_MEDIUM                                             :srednja
@@ -2416,6 +2423,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorita
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivo mora:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Postepenost:
+STR_MAPGEN_VARIETY                                              :{BLACK}Raznolikost:
 STR_MAPGEN_GENERATE                                             :{WHITE}Napravi
 
 # Strings for map borders at game generation

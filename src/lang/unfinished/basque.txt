@@ -703,11 +703,15 @@ STR_NEWS_MESSAGES_SUMMARY                                       :Sumarioa
 STR_NEWS_MESSAGES_FULL                                          :Betea
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Mezu motak:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Lehenengo garraioaren etorrera jokalariaren geltokira
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Lehenengo garraioaren etorrera lehiakidearen geltokira
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Akzidenteak / desastreak
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Konpaniako informazioa
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Industrien zabalerak
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Industrien itxierak
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomia aldaketak
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produkzio aldaketak konpaniagatik zerbitzatutako industriatan
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produkzio aldaketak lehiakidearen(en) zerbitzatutako industriatan
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}OBeste indutria produkzio aldaketak
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Garraio berriak
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidioak
@@ -789,6 +793,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 
 
 
+
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
@@ -801,6 +806,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 
 # Advanced settings window
+
 
 
 
@@ -1249,6 +1255,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # AI configuration window
+
 
 
 # Available AIs window

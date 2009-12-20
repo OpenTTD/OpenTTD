@@ -1042,6 +1042,13 @@ STR_NUM_NORMAL                                                  :Normál
 STR_NUM_HIGH                                                    :Sok
 STR_NUM_CUSTOM                                                  :Saját
 
+STR_VARIETY_NONE                                                :Nincs
+STR_VARIETY_VERY_LOW                                            :Nagyon alacsony
+STR_VARIETY_LOW                                                 :Alacsony
+STR_VARIETY_MEDIUM                                              :Közepes
+STR_VARIETY_HIGH                                                :Magas
+STR_VARIETY_VERY_HIGH                                           :Nagyon magas
+
 STR_AI_SPEED_VERY_SLOW                                          :Nagyon lassú
 STR_AI_SPEED_SLOW                                               :Lassú
 STR_AI_SPEED_MEDIUM                                             :Közepes
@@ -2265,6 +2272,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algor
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Tengerszint:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Simaság:
+STR_MAPGEN_VARIETY                                              :{BLACK}Változatosság eloszlása:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generál
 
 # Strings for map borders at game generation

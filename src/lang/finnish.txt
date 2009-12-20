@@ -1008,6 +1008,13 @@ STR_NUM_NORMAL                                                  :Normaali
 STR_NUM_HIGH                                                    :Korkea
 STR_NUM_CUSTOM                                                  :Oma
 
+STR_VARIETY_NONE                                                :Ei yhtään
+STR_VARIETY_VERY_LOW                                            :Erittäin vähän
+STR_VARIETY_LOW                                                 :Vähän
+STR_VARIETY_MEDIUM                                              :Keskisuuri
+STR_VARIETY_HIGH                                                :Korkea
+STR_VARIETY_VERY_HIGH                                           :Erittäin korkea
+
 STR_AI_SPEED_VERY_SLOW                                          :Hyvin hidas
 STR_AI_SPEED_SLOW                                               :Hidas
 STR_AI_SPEED_MEDIUM                                             :Keskitaso
@@ -2231,6 +2238,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden a
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasaisuus:
+STR_MAPGEN_VARIETY                                              :{BLACK}Vaihtelun hajautus:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generoi
 
 # Strings for map borders at game generation

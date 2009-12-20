@@ -1008,6 +1008,13 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizado
 
+STR_VARIETY_NONE                                                :Nenhuma
+STR_VARIETY_VERY_LOW                                            :Muito Baixa
+STR_VARIETY_LOW                                                 :Baixa
+STR_VARIETY_MEDIUM                                              :Média
+STR_VARIETY_HIGH                                                :Alta
+STR_VARIETY_VERY_HIGH                                           :Muito Alta
+
 STR_AI_SPEED_VERY_SLOW                                          :Muito Lento
 STR_AI_SPEED_SLOW                                               :Lento
 STR_AI_SPEED_MEDIUM                                             :Médio
@@ -2227,6 +2234,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Colocaç
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variedade da distribuição:
 STR_MAPGEN_GENERATE                                             :{WHITE}Criar
 
 # Strings for map borders at game generation
