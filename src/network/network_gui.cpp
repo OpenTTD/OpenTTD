@@ -451,10 +451,8 @@ public:
 		UpdateNetworkGameWindow(true);
 
 		this->field = NGWW_CLIENT;
-		this->server = NULL;
-		this->list_pos = SLP_INVALID;
-
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
+		this->server = this->last_joined;
 
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
