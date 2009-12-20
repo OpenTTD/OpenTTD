@@ -120,7 +120,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	font_namep = MallocT<TCHAR>(MAX_PATH);
 	MB_TO_WIDE_BUFFER(font_name, font_namep, MAX_PATH * sizeof(TCHAR));
 #else
-	font_namep = (char*)font_name; // only cast because in unicode pointer is not const
+	font_namep = const_cast<char *>(font_name); // only cast because in unicode pointer is not const
 #endif
 
 	for (index = 0;; index++) {
