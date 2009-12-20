@@ -148,6 +148,33 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 }
 
 /**
+ * Merges the refit_masks of all articulated parts.
+ * @param engine the first part
+ * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
+ * @param union_mask returns bit mask of CargoIDs which are a refit option for at least one articulated part
+ * @param intersection_mask returns bit mask of CargoIDs which are a refit option for every articulated part (with default capacity > 0)
+ */
+void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, uint32 *union_mask, uint32 *intersection_mask)
+{
+	const Engine *e = Engine::Get(engine);
+	uint32 veh_cargos = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
+	*union_mask = veh_cargos;
+	*intersection_mask = (veh_cargos != 0) ? veh_cargos : UINT32_MAX;
+
+	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return;
+	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
+
+	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
+		EngineID artic_engine = GetNextArticPart(i, engine);
+		if (artic_engine == INVALID_ENGINE) break;
+
+		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);;
+		*union_mask |= veh_cargos;
+		if (veh_cargos != 0) *intersection_mask &= veh_cargos;
+	}
+}
+
+/**
  * Ors the refit_masks of all articulated parts.
  * @param engine the first part
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
@@ -155,21 +182,9 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
  */
 uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
 {
-	const Engine *e = Engine::Get(engine);
-	uint32 cargos = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
-
-	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return cargos;
-
-	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
-
-	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		EngineID artic_engine = GetNextArticPart(i, engine);
-		if (artic_engine == INVALID_ENGINE) break;
-
-		cargos |= GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
-	}
-
-	return cargos;
+	uint32 union_mask, intersection_mask;
+	GetArticulatedRefitMasks(engine, include_initial_cargo_type, &union_mask, &intersection_mask);
+	return union_mask;
 }
 
 /**
@@ -180,25 +195,9 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_car
  */
 uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
 {
-	const Engine *e = Engine::Get(engine);
-	uint32 cargos = UINT32_MAX;
-
-	uint32 veh_cargos = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
-	if (veh_cargos != 0) cargos &= veh_cargos;
-
-	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return cargos;
-
-	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargos;
-
-	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		EngineID artic_engine = GetNextArticPart(i, engine);
-		if (artic_engine == INVALID_ENGINE) break;
-
-		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
-		if (veh_cargos != 0) cargos &= veh_cargos;
-	}
-
-	return cargos;
+	uint32 union_mask, intersection_mask;
+	GetArticulatedRefitMasks(engine, include_initial_cargo_type, &union_mask, &intersection_mask);
+	return intersection_mask;
 }
 
 
@@ -253,8 +252,8 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 {
 	const Engine *engine = Engine::Get(v->engine_type);
 
-	uint32 purchase_refit_union = GetUnionOfArticulatedRefitMasks(v->engine_type, true);
-	uint32 purchase_refit_intersection = GetIntersectionOfArticulatedRefitMasks(v->engine_type, true);
+	uint32 purchase_refit_union, purchase_refit_intersection;
+	GetArticulatedRefitMasks(v->engine_type, true, &purchase_refit_union, &purchase_refit_intersection);
 	CargoArray purchase_default_capacity = GetCapacityOfArticulatedParts(v->engine_type);
 
 	uint32 real_refit_union = 0;

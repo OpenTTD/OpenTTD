@@ -18,6 +18,7 @@
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window);
 CargoArray GetCapacityOfArticulatedParts(EngineID engine);
 void AddArticulatedParts(Vehicle *first);
+void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, uint32 *union_mask, uint32 *intersection_mask);
 uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type);
 uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type);
 bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *cargo_type);
