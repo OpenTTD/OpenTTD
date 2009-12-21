@@ -68,6 +68,9 @@ enum {
 /** The absolute minimum & maximum years in OTTD */
 #define MIN_YEAR 0
 
+/** The default starting year */
+#define DEF_START_YEAR 1950
+
 /**
  * MAX_YEAR, nicely rounded value of the number of years that can
  * be encoded in a single 32 bits date, about 2^31 / 366 years.
