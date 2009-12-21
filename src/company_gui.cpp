@@ -230,6 +230,7 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_PANEL),
@@ -402,28 +403,30 @@ struct CompanyFinancesWindow : Window {
 
 	virtual void OnPaint()
 	{
-		if (!small) {
-			/* Check that the expenses panel height matches the height needed for the layout. */
-			int type = _settings_client.gui.expenses_layout;
-			if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(CFW_EXPS_CATEGORY)->current_y) {
+		if (!this->IsShaded()) {
+			if (!small) {
+				/* Check that the expenses panel height matches the height needed for the layout. */
+				int type = _settings_client.gui.expenses_layout;
+				if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(CFW_EXPS_CATEGORY)->current_y) {
+					this->SetupWidgets();
+					this->ReInit();
+					return;
+				}
+			}
+
+			/* Check that the loan buttons are shown only when the user owns the company. */
+			CompanyID company = (CompanyID)this->window_number;
+			int req_plane = (company != _local_company) ? STACKED_SELECTION_ZERO_SIZE : 0;
+			if (req_plane != this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->shown_plane) {
 				this->SetupWidgets();
 				this->ReInit();
 				return;
 			}
-		}
 
-		/* Check that the loan buttons are shown only when the user owns the company. */
-		CompanyID company = (CompanyID)this->window_number;
-		int req_plane = (company != _local_company) ? STACKED_SELECTION_ZERO_SIZE : 0;
-		if (req_plane != this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->shown_plane) {
-			this->SetupWidgets();
-			this->ReInit();
-			return;
+			const Company *c = Company::Get(company);
+			this->SetWidgetDisabledState(CFW_INCREASE_LOAN, c->current_loan == _economy.max_loan); // Borrow button only shows when there is any more money to loan.
+			this->SetWidgetDisabledState(CFW_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
 		}
-
-		const Company *c = Company::Get(company);
-		this->SetWidgetDisabledState(CFW_INCREASE_LOAN, c->current_loan == _economy.max_loan); // Borrow button only shows when there is any more money to loan.
-		this->SetWidgetDisabledState(CFW_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
 
 		this->DrawWidgets();
 	}
@@ -1590,6 +1593,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, CW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -1713,44 +1717,46 @@ struct CompanyWindow : Window
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		bool local = this->window_number == _local_company;
 
-		/* Button bar selection. */
-		int plane = local ? CWP_BUTTONS_LOCAL : CWP_BUTTONS_OTHER;
-		NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
-		if (plane != wi->shown_plane) {
-			wi->SetDisplayedPlane(plane);
-			this->SetDirty();
-			return;
-		}
+		if (!this->IsShaded()) {
+			/* Button bar selection. */
+			int plane = local ? CWP_BUTTONS_LOCAL : CWP_BUTTONS_OTHER;
+			NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
+			if (plane != wi->shown_plane) {
+				wi->SetDisplayedPlane(plane);
+				this->SetDirty();
+				return;
+			}
 
-		/* Build HQ button handling. */
-		plane = (local && c->location_of_HQ == INVALID_TILE) ? CWP_VB_BUILD : CWP_VB_VIEW;
-		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_VIEW_BUILD_HQ);
-		if (plane != wi->shown_plane) {
-			wi->SetDisplayedPlane(plane);
-			this->SetDirty();
-			return;
-		}
+			/* Build HQ button handling. */
+			plane = (local && c->location_of_HQ == INVALID_TILE) ? CWP_VB_BUILD : CWP_VB_VIEW;
+			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_VIEW_BUILD_HQ);
+			if (plane != wi->shown_plane) {
+				wi->SetDisplayedPlane(plane);
+				this->SetDirty();
+				return;
+			}
 
-		this->SetWidgetDisabledState(CW_WIDGET_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
+			this->SetWidgetDisabledState(CW_WIDGET_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
 
-		/* Enable/disable 'Relocate HQ' button. */
-		plane = (!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW;
-		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_RELOCATE);
-		if (plane != wi->shown_plane) {
-			wi->SetDisplayedPlane(plane);
-			this->SetDirty();
-			return;
-		}
+			/* Enable/disable 'Relocate HQ' button. */
+			plane = (!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW;
+			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_RELOCATE);
+			if (plane != wi->shown_plane) {
+				wi->SetDisplayedPlane(plane);
+				this->SetDirty();
+				return;
+			}
 
-		/* Multiplayer buttons. */
-		plane = ((!_networking) ? CWP_MP_EMPTY : (local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
-		wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_MULTIPLAYER);
-		if (plane != wi->shown_plane) {
-			wi->SetDisplayedPlane(plane);
-			this->SetDirty();
-			return;
+			/* Multiplayer buttons. */
+			plane = ((!_networking) ? CWP_MP_EMPTY : (local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
+			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_MULTIPLAYER);
+			if (plane != wi->shown_plane) {
+				wi->SetDisplayedPlane(plane);
+				this->SetDirty();
+				return;
+			}
+			this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   c->is_ai);
 		}
-		this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   c->is_ai);
 
 		if (!local) {
 			if (_settings_game.economy.allow_shares) { // Shares are allowed
