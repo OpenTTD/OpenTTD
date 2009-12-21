@@ -1601,7 +1601,11 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next) const
 {
 	if (this->index >= 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
-		const NWidgetCore *next_wid = w->GetWidget<NWidgetCore>(this->index + 1);
+		/* GetWidget ensures that the widget is of the given type.
+		 * As we might have cases where the next widget in the array
+		 * is a non-Core widget (e.g. NWID_SELECTION) we first get
+		 * the base class and then dynamic_cast that. */
+		const NWidgetCore *next_wid = dynamic_cast<NWidgetCore>(w->GetWidget<NWidgetBase>(this->index + 1));
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;
