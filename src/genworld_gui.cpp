@@ -732,27 +732,36 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 	virtual void OnQueryTextFinished(char *str)
 	{
+		int32 value;
 		if (!StrEmpty(str)) {
-			int32 value = atoi(str);
-
+			value = atoi(str);
+		} else {
+			/* An empty string means revert to the default */
 			switch (this->widget_id) {
-				case GLAND_START_DATE_TEXT:
-					this->SetWidgetDirty(GLAND_START_DATE_TEXT);
-					_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
-					break;
-
-				case GLAND_SNOW_LEVEL_TEXT:
-					this->SetWidgetDirty(GLAND_SNOW_LEVEL_TEXT);
-					_settings_newgame.game_creation.snow_line_height = Clamp(value, MIN_SNOWLINE_HEIGHT, MAX_SNOWLINE_HEIGHT);
-					break;
-
-				case GLAND_TOWN_PULLDOWN:
-					_settings_newgame.game_creation.custom_town_number = Clamp(value, 1, CUSTOM_TOWN_MAX_NUMBER);
-					break;
+				case GLAND_START_DATE_TEXT: value = DEF_START_YEAR; break;
+				case GLAND_SNOW_LEVEL_TEXT: value = DEF_SNOWLINE_HEIGHT; break;
+				case GLAND_TOWN_PULLDOWN:   value = 1; break; // There's not really a default
+				default: NOT_REACHED();
 			}
-
-			this->SetDirty();
 		}
+
+		switch (this->widget_id) {
+			case GLAND_START_DATE_TEXT:
+				this->SetWidgetDirty(GLAND_START_DATE_TEXT);
+				_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+				break;
+
+			case GLAND_SNOW_LEVEL_TEXT:
+				this->SetWidgetDirty(GLAND_SNOW_LEVEL_TEXT);
+				_settings_newgame.game_creation.snow_line_height = Clamp(value, MIN_SNOWLINE_HEIGHT, MAX_SNOWLINE_HEIGHT);
+				break;
+
+			case GLAND_TOWN_PULLDOWN:
+				_settings_newgame.game_creation.custom_town_number = Clamp(value, 1, CUSTOM_TOWN_MAX_NUMBER);
+				break;
+		}
+
+		this->SetDirty();
 	}
 };
 
