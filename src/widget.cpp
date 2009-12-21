@@ -2339,3 +2339,55 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest
 	MakeWidgetTree(parts, count, &cont_ptr, biggest_index);
 	return container;
 }
+
+/** Make a nested widget tree for a window from a parts array. Besides loading, it inserts a shading selection widget
+ * between the title bar and the window body if the first widget in the parts array looks like a title bar (it is a horizontal
+ * container with a caption widget) and has a shade box widget.
+ * @param parts Array with parts of the widgets.
+ * @param count Length of the \a parts array.
+ * @param biggest_index Pointer to biggest nested widget index collected in the tree.
+ * @param [out] shade_select Pointer to the inserted shade selection widget (\c NULL if not unserted).
+ * @return Root of the nested widget tree, a vertical container containing the entire GUI.
+ * @ingroup NestedWidgetParts
+ * @pre \c biggest_index != NULL
+ * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
+ */
+NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int *biggest_index, NWidgetStacked **shade_select)
+{
+	*biggest_index = -1;
+
+	/* Read the first widget recursively from the array. */
+	NWidgetBase *nwid = NULL;
+	int num_used = MakeWidgetTree(parts, count, &nwid, biggest_index);
+	assert(nwid != NULL);
+	parts += num_used;
+	count -= num_used;
+
+	NWidgetContainer *root = new NWidgetVertical;
+	root->Add(nwid);
+	if (count == 0) { // There is no body at all.
+		*shade_select = NULL;
+		return root;
+	}
+
+	/* If the first widget looks like a titlebar, treat it as such.
+	 * If it has a shading box, silently add a shade selection widget in the tree. */
+	NWidgetHorizontal *hor_cont = dynamic_cast<NWidgetHorizontal *>(nwid);
+	NWidgetContainer *body;
+	if (hor_cont != NULL && hor_cont->GetWidgetOfType(WWT_CAPTION) != NULL && hor_cont->GetWidgetOfType(WWT_SHADEBOX) != NULL) {
+		*shade_select = new NWidgetStacked;
+		root->Add(*shade_select);
+		body = new NWidgetVertical;
+		(*shade_select)->Add(body);
+	} else {
+		*shade_select = NULL;
+		body = root;
+	}
+
+	/* Load the remaining parts into 'body'. */
+	int biggest2 = -1;
+	MakeNWidgets(parts, count, &biggest2, body);
+
+	*biggest_index = max(*biggest_index, biggest2);
+	return root;
+}

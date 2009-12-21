@@ -1206,8 +1206,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 void Window::CreateNestedTree(const WindowDesc *desc, bool fill_nested)
 {
 	int biggest_index = -1;
-	NWidgetBase *nested_root = MakeNWidgets(desc->nwid_parts, desc->nwid_length, &biggest_index);
-	this->nested_root = nested_root;
+	this->nested_root = MakeWindowNWidgetTree(desc->nwid_parts, desc->nwid_length, &biggest_index, &this->shade_select);
 	this->nested_array_size = (uint)(biggest_index + 1);
 
 	if (fill_nested) {
