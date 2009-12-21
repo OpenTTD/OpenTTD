@@ -333,6 +333,11 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			nw->SetDirty(w);
 			return;
 
+		case WWT_SHADEBOX:
+			nw->SetDirty(w);
+			w->SetShaded(!w->IsShaded());
+			return;
+
 		case WWT_STICKYBOX:
 			w->flags4 ^= WF_STICKY;
 			nw->SetDirty(w);
@@ -391,6 +396,13 @@ static void DispatchMouseWheelEvent(Window *w, const NWidgetCore *nwid, int whee
 {
 	if (nwid == NULL) return;
 
+	/* Using wheel on caption/shade-box shades or unshades the window. */
+	if (nwid->type == WWT_CAPTION || nwid->type == WWT_SHADEBOX) {
+		w->SetShaded(!w->IsShaded());
+		return;
+	}
+
+	/* Scroll the widget attached to the scrollbar. */
 	Scrollbar *sb = nwid->FindScrollbar(w);
 	if (sb != NULL && sb->GetCount() > sb->GetCapacity()) {
 		sb->UpdatePosition(wheel);
@@ -530,6 +542,30 @@ void Window::ReInit(int rx, int ry)
 	ResizeWindow(this, dx, dy);
 	this->OnResize();
 	this->SetDirty();
+}
+
+/** Set the shaded state of the window to \a make_shaded.
+ * @param make_shaded If \c true, shade the window (roll up until just the title bar is visible), else unshade/unroll the window to its original size.
+ * @note The method uses #Window::ReInit(), thus after the call, the whole window should be considered changed.
+ */
+void Window::SetShaded(bool make_shaded)
+{
+	if (this->shade_select == NULL) return;
+
+	int desired = make_shaded ? STACKED_SELECTION_ZERO_SIZE : 0;
+	if (this->shade_select->shown_plane != desired) {
+		if (make_shaded) {
+			this->unshaded_size.width  = this->width;
+			this->unshaded_size.height = this->height;
+			this->shade_select->SetDisplayedPlane(desired);
+			this->ReInit();
+		} else {
+			this->shade_select->SetDisplayedPlane(desired);
+			int dx = ((int)this->unshaded_size.width  > this->width)  ? (int)this->unshaded_size.width  - this->width  : 0;
+			int dy = ((int)this->unshaded_size.height > this->height) ? (int)this->unshaded_size.height - this->height : 0;
+			this->ReInit(dx, dy);
+		}
+	}
 }
 
 /** Find the Window whose parent pointer points to this window
@@ -711,8 +747,8 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 
 static void BringWindowToFront(Window *w);
 
-/** Find a window and make it the top-window on the screen. The window
- * gets a white border for a brief period of time to visualize its "activation"
+/** Find a window and make it the top-window on the screen.
+ * The window gets unshaded if it was shaded, and a white border is drawn at its edges for a brief period of time to visualize its "activation".
  * @param cls WindowClass of the window to activate
  * @param number WindowNumber of the window to activate
  * @return a pointer to the window thus activated */
@@ -721,6 +757,8 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 	Window *w = FindWindowById(cls, number);
 
 	if (w != NULL) {
+		if (w->IsShaded()) w->SetShaded(false); // Restore original window size if it was shaded.
+
 		w->flags4 |= WF_WHITE_BORDER_MASK;
 		BringWindowToFront(w);
 		w->SetDirty();
@@ -1787,6 +1825,14 @@ static bool MaybeBringWindowToFront(Window *w)
 		return true;
 	}
 
+	/* Use unshaded window size rather than current size for shaded windows. */
+	int w_width  = w->width;
+	int w_height = w->height;
+	if (w->IsShaded()) {
+		w_width  = w->unshaded_size.width;
+		w_height = w->unshaded_size.height;
+	}
+
 	Window *u;
 	FOR_ALL_WINDOWS_FROM_BACK_FROM(u, w->z_front) {
 		/* A modal child will prevent the activation of the parent window */
@@ -1804,9 +1850,9 @@ static bool MaybeBringWindowToFront(Window *w)
 		}
 
 		/* Window sizes don't interfere, leave z-order alone */
-		if (w->left + w->width <= u->left ||
+		if (w->left + w_width <= u->left ||
 				u->left + u->width <= w->left ||
-				w->top  + w->height <= u->top ||
+				w->top  + w_height <= u->top ||
 				u->top + u->height <= w->top) {
 			continue;
 		}
@@ -2233,7 +2279,8 @@ void UpdateWindows()
 	DrawDirtyBlocks();
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->viewport != NULL) UpdateViewportPosition(w);
+		/* Update viewport only if window is not shaded. */
+		if (w->viewport != NULL && !w->IsShaded()) UpdateViewportPosition(w);
 	}
 	NetworkDrawChatMessage();
 	/* Redraw mouse cursor in case it was hidden */

@@ -74,6 +74,13 @@ enum WidgetDrawDistances {
 	WD_MATRIX_TOP    = 3,       ///< Offset at top of a matrix cell.
 	WD_MATRIX_BOTTOM = 1,       ///< Offset at bottom of a matrix cell.
 
+	/* WWT_SHADEBOX */
+	WD_SHADEBOX_WIDTH  = 12,    ///< Width of a standard shade box widget.
+	WD_SHADEBOX_LEFT   = 2,     ///< Left offset of shade sprite.
+	WD_SHADEBOX_RIGHT  = 2,     ///< Right offset of shade sprite.
+	WD_SHADEBOX_TOP    = 3,     ///< Top offset of shade sprite.
+	WD_SHADEBOX_BOTTOM = 3,     ///< Bottom offset of shade sprite.
+
 	/* WWT_STICKYBOX */
 	WD_STICKYBOX_WIDTH  = 12,   ///< Width of a standard sticky box widget.
 	WD_STICKYBOX_LEFT   = 2,    ///< Left offset of sticky sprite.
@@ -381,6 +388,8 @@ public:
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
 	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
 	uint nested_array_size;          ///< Size of the nested array.
+	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c NULL, window cannot shade.
+	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
 
 	Window *parent;                  ///< Parent window.
 	Window *z_front;                 ///< The window in front of us in z-order.
@@ -527,6 +536,14 @@ public:
 
 	void SetDirty() const;
 	void ReInit(int rx = 0, int ry = 0);
+
+	/** Is window shaded currently? */
+	inline bool IsShaded() const
+	{
+		return this->shade_select != NULL && this->shade_select->shown_plane == STACKED_SELECTION_ZERO_SIZE;
+	}
+
+	void SetShaded(bool make_shaded);
 
 	/**
 	 * Mark this window's data as invalid (in need of re-computing)

@@ -453,6 +453,18 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
 }
 
 /**
+ * Draw a shade box.
+ * @param r       Rectangle of the box.
+ * @param colour  Colour of the shade box.
+ * @param clicked Box is lowered.
+ */
+static inline void DrawShadeBox(const Rect &r, Colours colour, bool clicked)
+{
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	DrawSprite((clicked) ? SPR_WINDOW_SHADE : SPR_WINDOW_UNSHADE, PAL_NONE, r.left + WD_SHADEBOX_LEFT + clicked, r.top + WD_SHADEBOX_TOP + clicked);
+}
+
+/**
  * Draw a sticky box.
  * @param r       Rectangle of the box.
  * @param colour  Colour of the sticky box.
@@ -1673,11 +1685,13 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 /** Reset the cached dimensions. */
 /* static */ void NWidgetLeaf::InvalidateDimensionCache()
 {
+	shadebox_dimension.width  = shadebox_dimension.height  = 0;
 	stickybox_dimension.width = stickybox_dimension.height = 0;
 	resizebox_dimension.width = resizebox_dimension.height = 0;
 	closebox_dimension.width  = closebox_dimension.height  = 0;
 }
 
+Dimension NWidgetLeaf::shadebox_dimension  = {0, 0};
 Dimension NWidgetLeaf::stickybox_dimension = {0, 0};
 Dimension NWidgetLeaf::resizebox_dimension = {0, 0};
 Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
@@ -1692,7 +1706,7 @@ Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
  */
 NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
 {
-	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
+	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);
 	this->SetMinimalSize(0, 0);
 	this->SetResize(0, 0);
@@ -1751,6 +1765,12 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_STICKY);
 			break;
 
+		case WWT_SHADEBOX:
+			this->SetFill(0, 0);
+			this->SetMinimalSize(WD_SHADEBOX_TOP, 14);
+			this->SetDataTip(STR_NULL, STR_TOOLTIP_SHADE);
+			break;
+
 		case WWT_RESIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WD_RESIZEBOX_WIDTH, 12);
@@ -1797,6 +1817,17 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_MATRIX: {
 			static const Dimension extra = {WD_MATRIX_LEFT + WD_MATRIX_RIGHT, WD_MATRIX_TOP + WD_MATRIX_BOTTOM};
 			padding = &extra;
+			break;
+		}
+		case WWT_SHADEBOX: {
+			static const Dimension extra = {WD_SHADEBOX_LEFT + WD_SHADEBOX_RIGHT, WD_SHADEBOX_TOP + WD_SHADEBOX_BOTTOM};
+			padding = &extra;
+			if (NWidgetLeaf::shadebox_dimension.width == 0) {
+				NWidgetLeaf::shadebox_dimension = maxdim(GetSpriteSize(SPR_WINDOW_SHADE), GetSpriteSize(SPR_WINDOW_UNSHADE));
+				NWidgetLeaf::shadebox_dimension.width += extra.width;
+				NWidgetLeaf::shadebox_dimension.height += extra.height;
+			}
+			size = maxdim(size, NWidgetLeaf::shadebox_dimension);
 			break;
 		}
 		case WWT_STICKYBOX: {
@@ -2008,6 +2039,11 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
 								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
 								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &w->hscroll);
+			break;
+
+		case WWT_SHADEBOX:
+			assert(this->widget_data == 0);
+			DrawShadeBox(r, this->colour, w->IsShaded());
 			break;
 
 		case WWT_STICKYBOX:

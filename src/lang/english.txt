@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Rename
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window
+STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - Only show the titlebar
 STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable by the 'Close All Windows' key
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size

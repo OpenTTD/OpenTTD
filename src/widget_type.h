@@ -61,6 +61,7 @@ enum WidgetType {
 	WWT_CAPTION,    ///< Window caption (window title between closebox and stickybox)
 
 	WWT_HSCROLLBAR, ///< Horizontal scrollbar
+	WWT_SHADEBOX,   ///< Shade box (at top-right of a window, between caption and stickybox)
 	WWT_STICKYBOX,  ///< Sticky box (normally at top-right of a window)
 	WWT_SCROLL2BAR, ///< 2nd vertical scrollbar
 	WWT_RESIZEBOX,  ///< Resize box (normally at bottom-right of a window)
@@ -468,6 +469,7 @@ public:
 
 	static void InvalidateDimensionCache();
 private:
+	static Dimension shadebox_dimension;  ///< Cached size of a shadebox widget.
 	static Dimension stickybox_dimension; ///< Cached size of a stickybox widget.
 	static Dimension resizebox_dimension; ///< Cached size of a resizebox widget.
 	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
