@@ -1008,6 +1008,13 @@ STR_NUM_NORMAL                                                  :Normalt
 STR_NUM_HIGH                                                    :Høyt
 STR_NUM_CUSTOM                                                  :Egendefinert
 
+STR_VARIETY_NONE                                                :Ingen
+STR_VARIETY_VERY_LOW                                            :Veldig lav
+STR_VARIETY_LOW                                                 :Lav
+STR_VARIETY_MEDIUM                                              :Middels
+STR_VARIETY_HIGH                                                :Høy
+STR_VARIETY_VERY_HIGH                                           :Veldig høy
+
 STR_AI_SPEED_VERY_SLOW                                          :Veldig treg
 STR_AI_SPEED_SLOW                                               :Treg
 STR_AI_SPEED_MEDIUM                                             :Middels
@@ -2231,6 +2238,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgor
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havnivå:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jevnhet:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variasjonsspredning:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generer
 
 # Strings for map borders at game generation

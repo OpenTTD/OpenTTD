@@ -369,7 +369,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
 STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :도시 목록
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :도시 건설
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
@@ -580,6 +582,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}사용자 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}음량
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}효과 음량
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}최소
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}최대
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -757,6 +762,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(매니저)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING}는 새로운 도시 {TOWN}을(를) 건설했습니다!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
@@ -1002,6 +1009,13 @@ STR_NUM_NORMAL                                                  :보통
 STR_NUM_HIGH                                                    :높음
 STR_NUM_CUSTOM                                                  :사용자
 
+STR_VARIETY_NONE                                                :없음(미설정)
+STR_VARIETY_VERY_LOW                                            :매우 낮음
+STR_VARIETY_LOW                                                 :낮음
+STR_VARIETY_MEDIUM                                              :중간
+STR_VARIETY_HIGH                                                :높음
+STR_VARIETY_VERY_HIGH                                           :매우 높음
+
 STR_AI_SPEED_VERY_SLOW                                          :매우 느림
 STR_AI_SPEED_SLOW                                               :느림
 STR_AI_SPEED_MEDIUM                                             :보통
@@ -1171,6 +1185,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :소유한 회�
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}시간표에서 출발일과 도착일 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}빠른 행선지 설정: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}철도 형식 기본값 설정 (게임 시작/불러온 후): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
@@ -1235,6 +1250,15 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :무작위
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}도시 스스로의 도로 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}도시가 공항에서 나오는 소음을 제한하도록 함: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}게임 도중에 도시 건설: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :금지
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :허용
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도시 레이아웃 선택가능.
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}게임도중 자동으로 나무 심기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :불가능 {RED}(제재소에 의해 벌목)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만 가능
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :모든 지역에서 가능
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :왼쪽
@@ -2215,6 +2239,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}나무 �
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}해수면:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}지표면을 깎는 방식:
+STR_MAPGEN_VARIETY                                              :{BLACK}산세 험준도:
 STR_MAPGEN_GENERATE                                             :{WHITE}만들기
 
 # Strings for map borders at game generation
@@ -2314,6 +2339,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}치명적인 NewGRF 오류가 발생했습니다: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}{G 0 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}{G 0 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
@@ -2376,6 +2402,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}지난�
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요함
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :냉대 기후에서 {ORANGE}{STRING}{BLACK}가 필요합니다.
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK}{G 0 "이" "가"} 지난달에 수송됨
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치의 새로운 뷰포트를 엽니다.
@@ -2920,6 +2947,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 �
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}수송량: {LTBLUE}없음
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}수송량: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}수송량: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송량: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2985,6 +3013,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}시간�
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}시간표 보기 전환
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다.
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 경로의 끝 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 경로의 끝 - -
@@ -3124,6 +3154,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시�
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 현재 제시간에 운행하고 있습니다
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}이 차량은 현재 {STRING} 빨리 운행하고 있습니다
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시간표는 아직 시작되지 않았습니다.
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시간표는 {STRING}에 시작될 것입니다.
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로가 대기하고 있을 시간 변경
@@ -3136,6 +3171,23 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 �
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동채움
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 여행에서 얻어진 값으로 시간표를 자동으로 채웁니다 (CTRL-클릭하여 대기 시간을 유지합니다)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}예정일 기준
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}운행 기준을 도착 예정일 기준과 도착 예정 소요시간 기준 중에서 선택.
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :도착:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :출발:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}날짜 설정
+STR_DATE_SET_DATE                                               :{BLACK}날짜 설정
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}선택한 날짜를 시간표 시작 날짜로 사용합니다.
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}일(日) 선택
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}월(月) 선택
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}연(年)도 선택
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI 디버그
@@ -3152,6 +3204,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}인공�
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}다음 게임부터 모든 인공지능을 불러옵니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
 STR_AI_CONFIG_RANDOM_AI                                         :무작위 인공지능
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}위로 이동
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}선택된 AI를 항목의 위로 이동시킴.
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}아래로 이동
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}선택된 AI를 항목의 아래로 이동시킴.
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}인공지능 선택
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 인공지능 불러오기
@@ -4001,6 +4058,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

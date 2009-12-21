@@ -1008,6 +1008,13 @@ STR_NUM_NORMAL                                                  :Normaal
 STR_NUM_HIGH                                                    :Hoog
 STR_NUM_CUSTOM                                                  :Aangepast
 
+STR_VARIETY_NONE                                                :Geen
+STR_VARIETY_VERY_LOW                                            :Heel Laag
+STR_VARIETY_LOW                                                 :Laag
+STR_VARIETY_MEDIUM                                              :Gemiddeld
+STR_VARIETY_HIGH                                                :Hoog
+STR_VARIETY_VERY_HIGH                                           :Heel Hoog
+
 STR_AI_SPEED_VERY_SLOW                                          :Erg langzaam
 STR_AI_SPEED_SLOW                                               :Langzaam
 STR_AI_SPEED_MEDIUM                                             :Gemiddeld
@@ -2231,6 +2238,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgor
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zeeniveau:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variëteit distributie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maak aan
 
 # Strings for map borders at game generation

@@ -1008,6 +1008,13 @@ STR_NUM_NORMAL                                                  :normal
 STR_NUM_HIGH                                                    :ridicat
 STR_NUM_CUSTOM                                                  :Propriu
 
+STR_VARIETY_NONE                                                :Nimic
+STR_VARIETY_VERY_LOW                                            :Fooarte mic
+STR_VARIETY_LOW                                                 :Mic
+STR_VARIETY_MEDIUM                                              :Mediu
+STR_VARIETY_HIGH                                                :Mare
+STR_VARIETY_VERY_HIGH                                           :Foarte mare
+
 STR_AI_SPEED_VERY_SLOW                                          :foarte încet
 STR_AI_SPEED_SLOW                                               :încet
 STR_AI_SPEED_MEDIUM                                             :mediu
@@ -1246,6 +1253,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Crearea
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, layout particularizat al oraşului
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :doar în pădurile tropicale
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :stânga
@@ -2325,6 +2335,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atentie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O erorare fatală NewGRF a avut loc: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nu va functiona cu versiunea TTDPatch raportata de OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} este pentru versiunea {STRING} a TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} este conceput pentru a fi folosit cu {STRING}
@@ -3189,6 +3200,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Configur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Toate IA care vor fi încărcate la următorul joc
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jucator uman
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleator
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}În sus
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mută IA selectată sus în listă
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}În jos
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mută IA selectată jos în listă
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selectează IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Încarcă alt IA

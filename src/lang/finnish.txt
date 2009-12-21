@@ -527,7 +527,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä 
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Selite yhtiön kuvaajiin
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Napsauta tässä laittaaksesi yhtiön merkinnän graafissa päälle/pois.
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Napsauta tätä vaihtaaksesi yhtiön merkinnän kuvaajassa päälle/pois.
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Yhtiökilpataulukko
