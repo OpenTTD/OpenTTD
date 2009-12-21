@@ -181,7 +181,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
 	}
 
 	/* It has to be possible for v_for to carry the cargo of v_from. */
-	assert(HasBit(e_for->info.refit_mask, v_from->cargo_type));
+	if (!HasBit(e_for->info.refit_mask, v_from->cargo_type)) return 0;
 
 	StringID expected_string = GetCargoSubtypeText(v_from);
 
