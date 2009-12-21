@@ -2270,17 +2270,18 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
  * Build a nested widget tree by recursively filling containers with nested widgets read from their parts.
  * @param parts  Array with parts of the nested widgets.
  * @param count  Length of the \a parts array.
- * @param parent Container to use for storing the child widgets.
+ * @param parent Pointer or container to use for storing the child widgets (*parent == NULL or *parent == container or background widget).
  * @param biggest_index Pointer to biggest nested widget index in the tree.
  * @return Number of widget part elements used to fill the container.
  * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
-static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *parent, int *biggest_index)
+static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase **parent, int *biggest_index)
 {
-	/* Given parent must be either a #NWidgetContainer or a #NWidgetBackground object. */
-	NWidgetContainer *nwid_cont = dynamic_cast<NWidgetContainer *>(parent);
-	NWidgetBackground *nwid_parent = dynamic_cast<NWidgetBackground *>(parent);
-	assert((nwid_cont != NULL && nwid_parent == NULL) || (nwid_cont == NULL && nwid_parent != NULL));
+	/* If *parent == NULL, only the first widget is read and returned. Otherwise, *parent must point to either
+	 * a #NWidgetContainer or a #NWidgetBackground object, and parts are added as much as possible. */
+	NWidgetContainer *nwid_cont = dynamic_cast<NWidgetContainer *>(*parent);
+	NWidgetBackground *nwid_parent = dynamic_cast<NWidgetBackground *>(*parent);
+	assert(*parent == NULL || (nwid_cont != NULL && nwid_parent == NULL) || (nwid_cont == NULL && nwid_parent != NULL));
 
 	int total_used = 0;
 	while (true) {
@@ -2293,17 +2294,22 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 		/* Break out of loop when end reached */
 		if (sub_widget == NULL) break;
 
-		/* Add sub_widget to parent container. */
-		if (nwid_cont) nwid_cont->Add(sub_widget);
-		if (nwid_parent) nwid_parent->Add(sub_widget);
-
 		/* If sub-widget is a container, recursively fill that container. */
 		WidgetType tp = sub_widget->type;
 		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL
 							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION)) {
-			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget, biggest_index);
+			NWidgetBase *sub_ptr = sub_widget;
+			int num_used = MakeWidgetTree(parts, count - total_used, &sub_ptr, biggest_index);
 			parts += num_used;
 			total_used += num_used;
+		}
+
+		/* Add sub_widget to parent container if available, otherwise return the widget to the caller. */
+		if (nwid_cont) nwid_cont->Add(sub_widget);
+		if (nwid_parent) nwid_parent->Add(sub_widget);
+		if (!nwid_cont && !nwid_parent) {
+			*parent = sub_widget;
+			return total_used;
 		}
 	}
 
@@ -2329,6 +2335,7 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest
 {
 	*biggest_index = -1;
 	if (container == NULL) container = new NWidgetVertical();
-	MakeWidgetTree(parts, count, container, biggest_index);
+	NWidgetBase *cont_ptr = container;
+	MakeWidgetTree(parts, count, &cont_ptr, biggest_index);
 	return container;
 }
