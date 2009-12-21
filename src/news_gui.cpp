@@ -34,7 +34,7 @@
 
 #include "table/strings.h"
 
-NewsItem _statusbar_news_item;
+const NewsItem *_statusbar_news_item = NULL;
 bool _news_ticker_sound; ///< Make a ticker sound when a news item is published.
 
 static uint MIN_NEWS_AMOUNT = 30;           ///< prefered minimum amount of news messages
@@ -46,10 +46,10 @@ static NewsItem *_latest_news = NULL;       ///< tail of news items queue
  * Users can force an item by accessing the history or "last message".
  * If the message being shown was forced by the user, a pointer is stored
  * in _forced_news. Otherwise, \a _forced_news variable is NULL. */
-static NewsItem *_forced_news = NULL;       ///< item the user has asked for
+static const NewsItem *_forced_news = NULL;       ///< item the user has asked for
 
 /** Current news item (last item shown regularly). */
-static NewsItem *_current_news = NULL;
+static const NewsItem *_current_news = NULL;
 
 
 /**
@@ -281,10 +281,10 @@ assert_compile(lengthof(_news_type_data) == NT_END);
 struct NewsWindow : Window {
 	uint16 chat_height;   ///< Height of the chat window.
 	uint16 status_height; ///< Height of the status bar window
-	NewsItem *ni;         ///< News item to display.
+	const NewsItem *ni;   ///< News item to display.
 	static uint duration; ///< Remaining time for showing current news message (may only be accessed while a news item is displayed).
 
-	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(), ni(ni)
+	NewsWindow(const WindowDesc *desc, const NewsItem *ni) : Window(), ni(ni)
 	{
 		NewsWindow::duration = 555;
 		const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
@@ -561,7 +561,7 @@ private:
 
 
 /** Open up an own newspaper window for the news item */
-static void ShowNewspaper(NewsItem *ni)
+static void ShowNewspaper(const NewsItem *ni)
 {
 	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
 	if (sound != 0) SndPlayFx(sound);
@@ -574,7 +574,7 @@ static void ShowTicker(const NewsItem *ni)
 {
 	if (_news_ticker_sound) SndPlayFx(SND_16_MORSE);
 
-	_statusbar_news_item = *ni;
+	_statusbar_news_item = ni;
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);
 }
 
@@ -592,6 +592,7 @@ void InitNewsItemStructs()
 	_latest_news = NULL;
 	_forced_news = NULL;
 	_current_news = NULL;
+	_statusbar_news_item = NULL;
 	NewsWindow::duration = 0;
 }
 
@@ -601,7 +602,7 @@ void InitNewsItemStructs()
  */
 static bool ReadyForNextItem()
 {
-	NewsItem *ni = _forced_news == NULL ? _current_news : _forced_news;
+	const NewsItem *ni = _forced_news == NULL ? _current_news : _forced_news;
 	if (ni == NULL) return true;
 
 	/* Ticker message
@@ -621,11 +622,12 @@ static void MoveToNextItem()
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
 	_forced_news = NULL;
+	_statusbar_news_item = NULL;
 
 	/* if we're not at the last item, then move on */
 	if (_current_news != _latest_news) {
 		_current_news = (_current_news == NULL) ? _oldest_news : _current_news->next;
-		NewsItem *ni = _current_news;
+		const NewsItem *ni = _current_news;
 		const NewsType type = _news_subtype_data[ni->subtype].type;
 
 		/* check the date, don't show too old items */
@@ -832,7 +834,7 @@ void NewsLoop()
 }
 
 /** Do a forced show of a specific message */
-static void ShowNewsMessage(NewsItem *ni)
+static void ShowNewsMessage(const NewsItem *ni)
 {
 	assert(_total_news != 0);
 
