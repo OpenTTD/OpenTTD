@@ -32,10 +32,18 @@ struct ViewPort {
 	ZoomLevel zoom;
 };
 
+/** Margings for the viewport sign */
+enum ViewportSignMargin {
+	VPSM_LEFT   = 1, ///< Left margin
+	VPSM_RIGHT  = 1, ///< Right margin
+	VPSM_TOP    = 1, ///< Top margin
+	VPSM_BOTTOM = 1, ///< Bottom margin
+};
+
 /** Location information about a sign as seen on the viewport */
 struct ViewportSign {
-	int32 left; ///< The left most position of the sign
-	int32 top;  ///< THe top of the sign
+	int32 center;        ///< The center position of the sign
+	int32 top;           ///< The top of the sign
 	uint16 width_normal; ///< The width when not zoomed out (normal font)
 	uint16 width_small;  ///< The width when zoomed out (small font)
 

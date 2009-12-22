@@ -775,9 +775,9 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 	_vd.last_child = &cs->next;
 }
 
-/* Returns a StringSpriteToDraw */
-void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, Colours colour, uint16 width)
+static void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, Colours colour, uint16 width)
 {
+	assert(width != 0);
 	StringSpriteToDraw *ss = _vd.string_sprites_to_draw.Append();
 	ss->string = string;
 	ss->x = x;
@@ -1066,55 +1066,42 @@ static void ViewportAddLandscape()
 /**
  * Add a string to draw in the viewport
  * @param dpi current viewport area
+ * @param small_from Zoomlevel from when the small font should be used
  * @param sign sign position and dimension
  * @param string_normal String for normal and 2x zoom level
  * @param string_small String for 4x and 8x zoom level
  * @param string_small_shadow Shadow string for 4x and 8x zoom level; or STR_NULL if no shadow
  * @param colour colour of the sign background; or 0 if transparent
  */
-static void ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, Colours colour = INVALID_COLOUR)
+void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, Colours colour)
 {
-	int left = dpi->left;
-	int top = dpi->top;
-	int right = left + dpi->width;
+	bool small = dpi->zoom >= small_from;
+
+	int left   = dpi->left;
+	int top    = dpi->top;
+	int right  = left + dpi->width;
 	int bottom = top + dpi->height;
 
-	int sign_height = FONT_HEIGHT_NORMAL + 2;
+	int sign_height     = ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM, dpi->zoom);
+	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, dpi->zoom);
 
-	switch (dpi->zoom) {
-		case ZOOM_LVL_OUT_2X:
-			right += 2;
-			bottom += 2;
-		/* FALL THROUGH */
-		case ZOOM_LVL_NORMAL:
-			if (bottom > sign->top &&
-					top    < sign->top + ScaleByZoom(sign_height, dpi->zoom) &&
-					right  > sign->left &&
-					left   < sign->left + ScaleByZoom(sign->width_normal, dpi->zoom)) {
-				AddStringToDraw(sign->left + 1, sign->top + 1, string_normal, params_1, params_2, colour, colour != INVALID_COLOUR ? sign->width_normal : 0);
-			}
-			break;
+	if (bottom < sign->top &&
+			top    > sign->top + sign_height &&
+			right  < sign->center - sign_half_width &&
+			left   > sign->center + sign_half_width) {
+		return;
+	}
 
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			right += ScaleByZoom(1, dpi->zoom);
-			bottom += ScaleByZoom(1, dpi->zoom) + 1;
-
-			if (bottom > sign->top &&
-					top    < sign->top + ScaleByZoom(sign_height, dpi->zoom) &&
-					right  > sign->left &&
-					left   < sign->left + ScaleByZoom(sign->width_small, dpi->zoom)) {
-				int shadow_offset = 0;
-				if (string_small_shadow != STR_NULL) {
-					shadow_offset = 4;
-					AddStringToDraw(sign->left + 1 + shadow_offset, sign->top + 1, string_small_shadow, params_1, params_2);
-				}
-				AddStringToDraw(sign->left + 1, sign->top + 1 - shadow_offset, string_small, params_1, params_2,
-						colour, colour != INVALID_COLOUR ? sign->width_small | 0x8000 : 0);
-			}
-			break;
-
-		default: NOT_REACHED();
+	if (!small) {
+		AddStringToDraw(sign->center - sign_half_width, sign->top, string_normal, params_1, params_2, colour, sign->width_normal);
+	} else {
+		int shadow_offset = 0;
+		if (string_small_shadow != STR_NULL) {
+			shadow_offset = 4;
+			AddStringToDraw(sign->center - sign_half_width + shadow_offset, sign->top, string_small_shadow, params_1, params_2, INVALID_COLOUR, sign->width_small);
+		}
+		AddStringToDraw(sign->center - sign_half_width, sign->top - shadow_offset, string_small, params_1, params_2,
+				colour, sign->width_small | 0x8000);
 	}
 }
 
@@ -1124,7 +1111,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 	const Town *t;
 	FOR_ALL_TOWNS(t) {
-		ViewportAddString(dpi, &t->sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &t->sign,
 				_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
 				STR_VIEWPORT_TOWN_TINY_WHITE, STR_VIEWPORT_TOWN_TINY_BLACK,
 				t->index, t->population);
@@ -1144,7 +1131,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 		/* Don't draw if the display options are disabled */
 		if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) continue;
 
-		ViewportAddString(dpi, &st->sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
 				is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT,
 				(is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT) + 1, STR_NULL,
 				st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
@@ -1159,7 +1146,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 
 	const Sign *si;
 	FOR_ALL_SIGNS(si) {
-		ViewportAddString(dpi, &si->sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &si->sign,
 				STR_WHITE_SIGN,
 				IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
 				si->index, 0, (si->owner == OWNER_NONE) ? COLOUR_GREY : _company_colours[si->owner]);
@@ -1181,12 +1168,12 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
-	this->width_normal = GetStringBoundingBox(buffer).width;
-	this->left = center - this->width_normal / 2;
+	this->width_normal = VPSM_LEFT + Align(GetStringBoundingBox(buffer).width, 2) + VPSM_RIGHT;
+	this->center = center;
 
 	/* zoomed out version */
 	_cur_fontsize = FS_SMALL;
-	this->width_small = GetStringBoundingBox(buffer).width;
+	this->width_small = VPSM_LEFT + Align(GetStringBoundingBox(buffer).width, 2) + VPSM_RIGHT;
 	_cur_fontsize = FS_NORMAL;
 
 	this->MarkDirty();
@@ -1201,12 +1188,13 @@ void ViewportSign::MarkDirty() const
 {
 	/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
 	 *  and there is no way for us to know which is the biggest. So make the
-	 *  biggest area dirty, and we are safe for sure. */
+	 *  biggest area dirty, and we are safe for sure.
+	 * We also add 1 to make sure the whole thing is redrawn. */
 	MarkAllViewportsDirty(
-		this->left - 6,
-		this->top  - 3,
-		this->left + ScaleByZoom(this->width_normal + 12, ZOOM_LVL_MAX),
-		this->top  + ScaleByZoom(FONT_HEIGHT_NORMAL + 2, ZOOM_LVL_MAX));
+		this->center - ScaleByZoom(this->width_normal / 2 + 1, ZOOM_LVL_MAX),
+		this->top    - ScaleByZoom(1, ZOOM_LVL_MAX),
+		this->center + ScaleByZoom(this->width_normal / 2 + 1, ZOOM_LVL_MAX),
+		this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, ZOOM_LVL_MAX));
 }
 
 static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
@@ -1335,12 +1323,12 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		int w = GB(ss->width, 0, 15);
 		int x = UnScaleByZoom(ss->x, zoom);
 		int y = UnScaleByZoom(ss->y, zoom);
-		int bottom = y + (small ? FONT_HEIGHT_SMALL : FONT_HEIGHT_NORMAL);
+		int h = VPSM_TOP + (small ? FONT_HEIGHT_SMALL : FONT_HEIGHT_NORMAL) + VPSM_BOTTOM;
 
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
 
-		if (w != 0) {
+		if (ss->colour != INVALID_COLOUR) {
 			/* Do not draw signs nor station names if they are set invisible */
 			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
 
@@ -1356,19 +1344,13 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
 			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
 				DrawFrameRect(
-					x - 1, y - 1, x + 1 + w, bottom, ss->colour,
+					x, y, x + w, y + h, ss->colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
 				);
 			}
-
-			if (small) y -= 1;
-		} else {
-			char buffer[DRAW_STRING_BUFFER];
-			GetString(buffer, ss->string, lastof(buffer));
-			w = GetStringBoundingBox(buffer).width;
 		}
 
-		DrawString(x, x + w - 1, y, ss->string, colour, SA_CENTER);
+		DrawString(x + VPSM_LEFT, x + w - 1 - VPSM_RIGHT, y + VPSM_TOP, ss->string, colour, SA_CENTER);
 	}
 }
 
@@ -1721,16 +1703,18 @@ void SetSelectionRed(bool b)
  */
 static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const ViewportSign *sign)
 {
-	int sign_width = (vp->zoom >= ZOOM_LVL_OUT_4X ? sign->width_small : sign->width_normal);
-	int sign_height = FONT_HEIGHT_NORMAL + 2;
+	bool small = (vp->zoom >= ZOOM_LVL_OUT_4X);
+	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, vp->zoom);
+	int sign_height = ScaleByZoom(VPSM_TOP + (small ? FONT_HEIGHT_SMALL : FONT_HEIGHT_NORMAL) + VPSM_BOTTOM, vp->zoom);
 
-	x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
-	y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
+	x = ScaleByZoom(x - vp->left, vp->zoom) + vp->virtual_left;
+	y = ScaleByZoom(y - vp->top, vp->zoom) + vp->virtual_top;
 
-	return (y >= sign->top &&
-			y < sign->top + ScaleByZoom(sign_height, vp->zoom) &&
-			x >= sign->left &&
-			x < sign->left + ScaleByZoom(sign_width, vp->zoom));
+	return
+			y >= sign->top &&
+			y <  sign->top + sign_height &&
+			x >= sign->center - sign_half_width &&
+			x <  sign->center + sign_half_width;
 }
 
 static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
