@@ -24,6 +24,17 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+/**
+ * Get the name of the song.
+ * @param index of the song.
+ * @return the name of the song.
+ */
+static const char *GetSongName(int index)
+{
+	return _origin_songs_specs[index].song_name;
+}
+
+
 static byte _music_wnd_cursong;
 static bool _song_is_active;
 static byte _cur_playlist[NUM_SONGS_PLAYLIST];
@@ -267,8 +278,7 @@ struct MusicTrackSelectionWindow : public Window {
 				for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 					SetDParam(0, i);
 					SetDParam(1, 2);
-					SetDParam(2, SPECSTR_SONGNAME);
-					SetDParam(3, i);
+					SetDParamStr(2, GetSongName(i - 1));
 					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
 					d.width = max(d.width, d2.width);
 					d.height += d2.height;
@@ -290,8 +300,7 @@ struct MusicTrackSelectionWindow : public Window {
 				for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 					SetDParam(0, i);
 					SetDParam(1, 2);
-					SetDParam(2, SPECSTR_SONGNAME);
-					SetDParam(3, i);
+					SetDParamStr(2, GetSongName(i - 1));
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
@@ -305,8 +314,7 @@ struct MusicTrackSelectionWindow : public Window {
 					uint i = *p;
 					SetDParam(0, i);
 					SetDParam(1, 2);
-					SetDParam(2, SPECSTR_SONGNAME);
-					SetDParam(3, i);
+					SetDParamStr(2, GetSongName(i - 1));
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
@@ -477,8 +485,7 @@ struct MusicWindow : public Window {
 			case MW_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
 				for (int i = 0; i < NUM_SONGS_AVAILABLE; i++) {
-					SetDParam(0, SPECSTR_SONGNAME);
-					SetDParam(1, i);
+					SetDParamStr(0, GetSongName(i));
 					d = maxdim(d, GetStringBoundingBox(STR_MUSIC_TITLE_NAME));
 				}
 				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
@@ -528,8 +535,7 @@ struct MusicWindow : public Window {
 				StringID str = STR_MUSIC_TITLE_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 					str = STR_MUSIC_TITLE_NAME;
-					SetDParam(0, SPECSTR_SONGNAME);
-					SetDParam(1, _music_wnd_cursong);
+					SetDParamStr(0, GetSongName(_music_wnd_cursong - 1));
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_CENTER);
 			} break;

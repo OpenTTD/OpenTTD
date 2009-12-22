@@ -84,7 +84,6 @@ enum SpecialStrings {
 
 	SPECSTR_ANDCO_NAME         = 0x70E6,
 	SPECSTR_PRESIDENT_NAME     = 0x70E7,
-	SPECSTR_SONGNAME           = 0x70E8,
 
 	/* reserve MAX_LANG strings for the *.lng files */
 	SPECSTR_LANGUAGE_START     = 0x7100,

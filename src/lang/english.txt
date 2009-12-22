@@ -588,7 +588,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLAC
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING1}"
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{RAW_STRING}"
 STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Track
 STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Title
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Shuffle
@@ -609,7 +609,7 @@ STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Show mus
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Music Programme Selection
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING1}"
+STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{RAW_STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Track Index
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programme - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Clear
