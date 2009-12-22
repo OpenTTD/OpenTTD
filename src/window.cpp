@@ -552,13 +552,13 @@ void Window::SetShaded(bool make_shaded)
 {
 	if (this->shade_select == NULL) return;
 
-	int desired = make_shaded ? SZSP_NONE : 0;
+	int desired = make_shaded ? SZSP_HORIZONTAL : 0;
 	if (this->shade_select->shown_plane != desired) {
 		if (make_shaded) {
 			this->unshaded_size.width  = this->width;
 			this->unshaded_size.height = this->height;
 			this->shade_select->SetDisplayedPlane(desired);
-			this->ReInit();
+			this->ReInit(0, -this->height);
 		} else {
 			this->shade_select->SetDisplayedPlane(desired);
 			int dx = ((int)this->unshaded_size.width  > this->width)  ? (int)this->unshaded_size.width  - this->width  : 0;
