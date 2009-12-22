@@ -971,7 +971,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 		Dimension fill = {0, 0};
 		Dimension resize = {0, 0};
 		/* Here we're primarily interested in the value of resize */
-		w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+		if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
 
 		this->smallest_x = size.width;
 		this->smallest_y = size.height;

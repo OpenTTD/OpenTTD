@@ -1057,7 +1057,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_NON_STOP:
-				if (GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
+				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Nonstop(-1);
 				} else {
 					const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
@@ -1067,7 +1067,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_GOTO:
-				if (GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
+				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Goto(0);
 				} else {
 					ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, 0, ORDER_WIDGET_GOTO, 0, 0);
@@ -1075,7 +1075,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_FULL_LOAD:
-				if (GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
+				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_FullLoad(-1);
 				} else {
 					ShowDropDownMenu(this, _order_full_load_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), ORDER_WIDGET_FULL_LOAD, 0, 2);
@@ -1083,7 +1083,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_UNLOAD:
-				if (GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
+				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Unload(-1);
 				} else {
 					ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), ORDER_WIDGET_UNLOAD, 0, 8);
@@ -1095,7 +1095,7 @@ public:
 				break;
 
 			case ORDER_WIDGET_SERVICE:
-				if (GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
+				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Service(-1);
 				} else {
 					ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())), ORDER_WIDGET_SERVICE, 0, 0);

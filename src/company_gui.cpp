@@ -392,7 +392,7 @@ struct CompanyFinancesWindow : Window {
 	 */
 	void SetupWidgets()
 	{
-		int plane = small ? STACKED_SELECTION_ZERO_SIZE : 0;
+		int plane = this->small ? STACKED_SELECTION_ZERO_SIZE : 0;
 		this->GetWidget<NWidgetStacked>(CFW_SEL_PANEL)->SetDisplayedPlane(plane);
 		this->GetWidget<NWidgetStacked>(CFW_SEL_MAXLOAN)->SetDisplayedPlane(plane);
 
@@ -404,7 +404,7 @@ struct CompanyFinancesWindow : Window {
 	virtual void OnPaint()
 	{
 		if (!this->IsShaded()) {
-			if (!small) {
+			if (!this->small) {
 				/* Check that the expenses panel height matches the height needed for the layout. */
 				int type = _settings_client.gui.expenses_layout;
 				if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(CFW_EXPS_CATEGORY)->current_y) {
