@@ -392,12 +392,12 @@ struct CompanyFinancesWindow : Window {
 	 */
 	void SetupWidgets()
 	{
-		int plane = this->small ? STACKED_SELECTION_ZERO_SIZE : 0;
+		int plane = this->small ? SZSP_NONE : 0;
 		this->GetWidget<NWidgetStacked>(CFW_SEL_PANEL)->SetDisplayedPlane(plane);
 		this->GetWidget<NWidgetStacked>(CFW_SEL_MAXLOAN)->SetDisplayedPlane(plane);
 
 		CompanyID company = (CompanyID)this->window_number;
-		plane = (company != _local_company) ? STACKED_SELECTION_ZERO_SIZE : 0;
+		plane = (company != _local_company) ? SZSP_NONE : 0;
 		this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->SetDisplayedPlane(plane);
 	}
 
@@ -416,7 +416,7 @@ struct CompanyFinancesWindow : Window {
 
 			/* Check that the loan buttons are shown only when the user owns the company. */
 			CompanyID company = (CompanyID)this->window_number;
-			int req_plane = (company != _local_company) ? STACKED_SELECTION_ZERO_SIZE : 0;
+			int req_plane = (company != _local_company) ? SZSP_NONE : 0;
 			if (req_plane != this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->shown_plane) {
 				this->SetupWidgets();
 				this->ReInit();
@@ -1143,9 +1143,9 @@ public:
 	 */
 	void SelectDisplayPlanes(bool advanced)
 	{
-		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_LOADSAVE)->SetDisplayedPlane(advanced ? 0 : STACKED_SELECTION_ZERO_SIZE);
-		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_PARTS)->SetDisplayedPlane(advanced ? 0 : STACKED_SELECTION_ZERO_SIZE);
-		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_MALEFEMALE)->SetDisplayedPlane(advanced ? STACKED_SELECTION_ZERO_SIZE : 0);
+		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_LOADSAVE)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_PARTS)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_MALEFEMALE)->SetDisplayedPlane(advanced ? SZSP_NONE : 0);
 		this->GetWidget<NWidgetCore>(SCMFW_WIDGET_RANDOM_NEW_FACE)->widget_data = advanced ? STR_MAPGEN_RANDOM : STR_FACE_NEW_FACE_BUTTON;
 
 		NWidgetCore *wi = this->GetWidget<NWidgetCore>(SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON);

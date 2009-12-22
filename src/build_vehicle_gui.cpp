@@ -817,7 +817,7 @@ struct BuildVehicleWindow : Window {
 
 		/* If we are just viewing the list of vehicles, we do not need the Build button.
 		 * So we just hide it, and enlarge the Rename buton by the now vacant place. */
-		if (this->listview_mode) this->GetWidget<NWidgetStacked>(BUILD_VEHICLE_WIDGET_BUILD_SEL)->SetDisplayedPlane(STACKED_SELECTION_ZERO_SIZE);
+		if (this->listview_mode) this->GetWidget<NWidgetStacked>(BUILD_VEHICLE_WIDGET_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST);
 		widget->tool_tip = STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + type;

@@ -312,15 +312,23 @@ protected:
 	NWidgetBase *tail; ///< Pointer to last widget in container.
 };
 
-static const int STACKED_SELECTION_ZERO_SIZE = INT_MAX; ///< Display plane value for getting a zero-size widget.
+/** Display planes with zero size for #NWidgetStacked. */
+enum StackedZeroSizePlanes {
+	SZSP_VERTICAL = INT_MAX / 2, ///< Display plane with zero size horizontally, and filling and resizing vertically.
+	SZSP_HORIZONTAL,             ///< Display plane with zero size vertically, and filling and resizing horizontally.
+	SZSP_NONE,                   ///< Display plane with zero size in both directions (none filling and resizing).
+
+	SZSP_BEGIN = SZSP_VERTICAL,  ///< First zero-size plane.
+};
 
 /** Stacked widgets, widgets all occupying the same space in the window.
  * #NWID_SELECTION allows for selecting one of several panels (planes) to tbe displayed. All planes must have the same size.
  * Since all planes are also initialized, switching between different planes can be done while the window is displayed.
  *
- * There is also a special plane #STACKED_SELECTION_ZERO_SIZE which always has zero size, and is not resizable or fillable. It is used to make all child
- * planes of the widget disappear. Unlike the regular display planes, switching from or to the #STACKED_SELECTION_ZERO_SIZE plane means that a
- * #Windows::ReInit() is needed to re-initialize the window.
+ * There are also a number of special planes (defined in #StackedZeroSizePlanes) that have zero size in one direction (and are stretchable in
+ * the other direction) or have zero size in both directions. They are used to make all child planes of the widget disappear.
+ * Unlike switching between the regular display planes (that all have the same size), switching from or to one of the zero-sized planes means that
+ * a #Windows::ReInit() is needed to re-initialize the window since its size changes.
  */
 class NWidgetStacked : public NWidgetContainer {
 public:

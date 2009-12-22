@@ -540,7 +540,7 @@ public:
 	/** Is window shaded currently? */
 	inline bool IsShaded() const
 	{
-		return this->shade_select != NULL && this->shade_select->shown_plane == STACKED_SELECTION_ZERO_SIZE;
+		return this->shade_select != NULL && this->shade_select->shown_plane == SZSP_NONE;
 	}
 
 	void SetShaded(bool make_shaded);

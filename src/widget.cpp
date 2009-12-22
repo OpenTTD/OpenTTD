@@ -965,11 +965,11 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 	}
 
 	/* Zero size plane selected */
-	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) {
-		Dimension size = {0, 0};
+	if (this->shown_plane >= SZSP_BEGIN) {
+		Dimension size    = {0, 0};
 		Dimension padding = {0, 0};
-		Dimension fill = {0, 0};
-		Dimension resize = {0, 0};
+		Dimension fill    = {(this->shown_plane == SZSP_HORIZONTAL), (this->shown_plane == SZSP_VERTICAL)};
+		Dimension resize  = {(this->shown_plane == SZSP_HORIZONTAL), (this->shown_plane == SZSP_VERTICAL)};
 		/* Here we're primarily interested in the value of resize */
 		if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
 
@@ -1006,7 +1006,7 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 	StoreSizePosition(sizing, x, y, given_width, given_height);
 
-	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
+	if (this->shown_plane >= SZSP_BEGIN) return;
 
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
@@ -1029,7 +1029,7 @@ void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
 
 void NWidgetStacked::Draw(const Window *w)
 {
-	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return;
+	if (this->shown_plane >= SZSP_BEGIN) return;
 
 	int plane = 0;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; plane++, child_wid = child_wid->next) {
@@ -1044,7 +1044,7 @@ void NWidgetStacked::Draw(const Window *w)
 
 NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 {
-	if (this->shown_plane == STACKED_SELECTION_ZERO_SIZE) return NULL;
+	if (this->shown_plane >= SZSP_BEGIN) return NULL;
 
 	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
 	int plane = 0;

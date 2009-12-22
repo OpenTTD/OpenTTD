@@ -552,7 +552,7 @@ void Window::SetShaded(bool make_shaded)
 {
 	if (this->shade_select == NULL) return;
 
-	int desired = make_shaded ? STACKED_SELECTION_ZERO_SIZE : 0;
+	int desired = make_shaded ? SZSP_NONE : 0;
 	if (this->shade_select->shown_plane != desired) {
 		if (make_shaded) {
 			this->unshaded_size.width  = this->width;

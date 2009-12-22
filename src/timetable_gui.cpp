@@ -593,7 +593,7 @@ struct TimetableWindow : Window {
 	 */
 	void UpdateSelectionStates()
 	{
-		this->GetWidget<NWidgetStacked>(TTV_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : STACKED_SELECTION_ZERO_SIZE);
+		this->GetWidget<NWidgetStacked>(TTV_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : SZSP_NONE);
 		this->GetWidget<NWidgetStacked>(TTV_EXPECTED_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : 1);
 	}
 };

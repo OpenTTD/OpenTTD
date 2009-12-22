@@ -1766,7 +1766,7 @@ public:
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 240);
 
 		this->CreateNestedTree(desc);
-		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(SLWW_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(STACKED_SELECTION_ZERO_SIZE);
+		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(SLWW_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetCore>(SLWW_WINDOWTITLE)->widget_data = saveload_captions[mode];
 
 		this->FinishInitNested(desc, 0);
@@ -1862,10 +1862,6 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case SLWW_CONTENT_DOWNLOAD_SEL:
-				resize->width = 1;
-				break;
-
 			case SLWW_BACKGROUND:
 				size->height = 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
