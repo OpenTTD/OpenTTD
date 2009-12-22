@@ -491,6 +491,8 @@ private:
 	 */
 	int GetOrderFromPt(int y)
 	{
+		if (this->vehicle->owner != _local_company) return INVALID_ORDER; // Selection is not possible at orders of a competitor.
+
 		int sel = (y - this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
 		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
@@ -929,6 +931,7 @@ public:
 
 	virtual void OnPaint()
 	{
+		if (this->vehicle->owner != _local_company) this->selected_order = -1; // Disable selection any selected row at a competitor order window.
 		this->DrawWidgets();
 	}
 
