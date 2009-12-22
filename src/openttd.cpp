@@ -1023,6 +1023,8 @@ void SwitchToMode(SwitchMode new_mode)
 			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
+				/* Cancel the saveload pausing */
+				DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
 			} else {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
