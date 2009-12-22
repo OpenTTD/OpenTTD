@@ -491,8 +491,6 @@ private:
 	 */
 	int GetOrderFromPt(int y)
 	{
-		if (this->vehicle->owner != _local_company) return INVALID_ORDER; // Selection is not possible at orders of a competitor.
-
 		int sel = (y - this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
 		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
@@ -1026,7 +1024,7 @@ public:
 				this->DeleteChildWindows();
 				HideDropDownMenu(this);
 
-				if (sel == INVALID_ORDER) {
+				if (sel == INVALID_ORDER || this->vehicle->owner != _local_company) {
 					/* Deselect clicked order */
 					this->selected_order = -1;
 				} else if (sel == this->selected_order) {
