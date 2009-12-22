@@ -491,7 +491,8 @@ private:
 	 */
 	int GetOrderFromPt(int y)
 	{
-		int sel = (y - this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
+		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST);
+		int sel = (y - nwid->pos_y - WD_FRAMERECT_TOP) / nwid->resize_y; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
 		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
 
@@ -943,6 +944,7 @@ public:
 		int middle = rtl ? r.right - WD_FRAMETEXT_RIGHT - index_column_width : r.left + WD_FRAMETEXT_LEFT + index_column_width;
 
 		int y = r.top + WD_FRAMERECT_TOP;
+		int line_height = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->resize_y;
 
 		int i = this->vscroll.GetPosition();
 		const Order *order = this->vehicle->GetOrder(i);
@@ -952,7 +954,7 @@ public:
 			if (!this->vscroll.IsVisible(i)) break;
 
 			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, r.left + WD_FRAMETEXT_LEFT, middle, r.right - WD_FRAMETEXT_RIGHT);
-			y += this->resize.step_height;
+			y += line_height;
 
 			i++;
 			order = order->next;
