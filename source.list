@@ -184,7 +184,6 @@ livery.h
 map_func.h
 map_type.h
 mixer.h
-music.h
 network/network.h
 network/network_base.h
 network/network_client.h

@@ -104,21 +104,24 @@ static int GetCurRes()
 
 /** Widgets of the game options menu */
 enum GameOptionsWidgets {
-	GOW_BACKGROUND,          ///< Background of the window
-	GOW_CURRENCY_DROPDOWN,   ///< Currency dropdown
-	GOW_DISTANCE_DROPDOWN,   ///< Measuring unit dropdown
-	GOW_ROADSIDE_DROPDOWN,   ///< Dropdown to select the road side (to set the right side ;))
-	GOW_TOWNNAME_DROPDOWN,   ///< Town name dropdown
-	GOW_AUTOSAVE_DROPDOWN,   ///< Dropdown to say how often to autosave
-	GOW_LANG_DROPDOWN,       ///< Language dropdown
-	GOW_RESOLUTION_DROPDOWN, ///< Dropdown for the resolution
-	GOW_FULLSCREEN_BUTTON,   ///< Toggle fullscreen
-	GOW_SCREENSHOT_DROPDOWN, ///< Select the screenshot type... please use PNG!
-	GOW_BASE_GRF_DROPDOWN,   ///< Use to select a base GRF
-	GOW_BASE_GRF_STATUS,     ///< Info about missing files etc.
-	GOW_BASE_GRF_DESCRIPTION,///< Description of selected base GRF
-	GOW_BASE_SFX_DROPDOWN,   ///< Use to select a base SFX
-	GOW_BASE_SFX_DESCRIPTION,///< Description of selected base SFX
+	GOW_BACKGROUND,             ///< Background of the window
+	GOW_CURRENCY_DROPDOWN,      ///< Currency dropdown
+	GOW_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown
+	GOW_ROADSIDE_DROPDOWN,      ///< Dropdown to select the road side (to set the right side ;))
+	GOW_TOWNNAME_DROPDOWN,      ///< Town name dropdown
+	GOW_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave
+	GOW_LANG_DROPDOWN,          ///< Language dropdown
+	GOW_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution
+	GOW_FULLSCREEN_BUTTON,      ///< Toggle fullscreen
+	GOW_SCREENSHOT_DROPDOWN,    ///< Select the screenshot type... please use PNG!
+	GOW_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF
+	GOW_BASE_GRF_STATUS,        ///< Info about missing files etc.
+	GOW_BASE_GRF_DESCRIPTION,   ///< Description of selected base GRF
+	GOW_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX
+	GOW_BASE_SFX_DESCRIPTION,   ///< Description of selected base SFX
+	GOW_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set
+	GOW_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
+	GOW_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set
 };
 
 /**
@@ -194,6 +197,8 @@ struct GameOptionsWindow : Window {
 			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case GOW_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
 			case GOW_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
+			case GOW_BASE_MUSIC_DROPDOWN: SetDParamStr(0, BaseMusic::GetUsedSet()->name); break;
+			case GOW_BASE_MUSIC_STATUS:   SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
 		}
 	}
 
@@ -212,6 +217,11 @@ struct GameOptionsWindow : Window {
 
 			case GOW_BASE_SFX_DESCRIPTION:
 				SetDParamStr(0, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				break;
+
+			case GOW_BASE_MUSIC_DESCRIPTION:
+				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
 				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
 				break;
 		}
@@ -244,6 +254,25 @@ struct GameOptionsWindow : Window {
 				for (int i = 0; i < BaseSounds::GetNumSets(); i++) {
 					SetDParamStr(0, BaseSounds::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
 					size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
+				}
+				break;
+
+			case GOW_BASE_MUSIC_DESCRIPTION:
+				/* Find the biggest description for the default size. */
+				for (int i = 0; i < BaseMusic::GetNumSets(); i++) {
+					SetDParamStr(0, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+					size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
+				}
+				break;
+
+			case GOW_BASE_MUSIC_STATUS:
+				/* Find the biggest description for the default size. */
+				for (int i = 0; i < BaseMusic::GetNumSets(); i++) {
+					uint invalid_files = BaseMusic::GetSet(i)->GetNumInvalid();
+					if (invalid_files == 0) continue;
+
+					SetDParam(0, invalid_files);
+					*size = maxdim(*size, GetStringBoundingBox(STR_GAME_OPTIONS_BASE_MUSIC_STATUS));
 				}
 				break;
 		}
@@ -319,6 +348,10 @@ struct GameOptionsWindow : Window {
 
 			case GOW_BASE_SFX_DROPDOWN:
 				ShowSetMenu<BaseSounds>(this, GOW_BASE_SFX_DROPDOWN);
+				break;
+
+			case GOW_BASE_MUSIC_DROPDOWN:
+				ShowSetMenu<BaseMusic>(this, GOW_BASE_MUSIC_DROPDOWN);
 				break;
 		}
 	}
@@ -403,6 +436,10 @@ struct GameOptionsWindow : Window {
 			case GOW_BASE_SFX_DROPDOWN:
 				this->SetMediaSet<BaseSounds>(index);
 				break;
+
+			case GOW_BASE_MUSIC_DROPDOWN:
+				this->SetMediaSet<BaseMusic>(index);
+				break;
 		}
 	}
 
@@ -412,6 +449,9 @@ struct GameOptionsWindow : Window {
 
 		bool missing_files = BaseGraphics::GetUsedSet()->GetNumMissing() == 0;
 		this->GetWidget<NWidgetCore>(GOW_BASE_GRF_STATUS)->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL);
+
+		missing_files = BaseMusic::GetUsedSet()->GetNumInvalid() == 0;
+		this->GetWidget<NWidgetCore>(GOW_BASE_MUSIC_STATUS)->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_MUSIC_STATUS, STR_NULL);
 	}
 };
 
@@ -459,7 +499,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		EndContainer(),
 
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_GRF, STR_NULL), SetPadding(0, 10, 0, 10),
-			NWidget(NWID_HORIZONTAL), SetPIP(00, 30, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
 			EndContainer(),
@@ -472,6 +512,14 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(NWID_SPACER), SetFill(1, 0),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_SFX_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 0, 0),
+		EndContainer(),
+
+		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_MUSIC, STR_NULL), SetPadding(0, 10, 0, 10),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_MUSIC_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_MUSIC_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_MUSIC_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 0, 0),
 		EndContainer(),
 	EndContainer(),
 };

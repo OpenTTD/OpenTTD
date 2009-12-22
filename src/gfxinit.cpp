@@ -118,7 +118,7 @@ void CheckExternalFiles()
 		/* Not all files were loaded succesfully, see which ones */
 		add_pos += seprintf(add_pos, last, "Trying to load graphics set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one. See section 4.1 of readme.txt.\n\nThe following files are corrupted or missing:\n", used_set->name);
 		for (uint i = 0; i < GraphicsSet::NUM_FILES; i++) {
-			MD5File::ChecksumResult res = used_set->files[i].CheckMD5();
+			MD5File::ChecksumResult res = used_set->files[i].CheckMD5(DATA_DIR);
 			if (res != MD5File::CR_MATCH) add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", used_set->files[i].filename, res == MD5File::CR_MISMATCH ? "corrupt" : "missing", used_set->files[i].missing_warning);
 		}
 		add_pos += seprintf(add_pos, last, "\n");
@@ -131,7 +131,7 @@ void CheckExternalFiles()
 		assert_compile(SoundsSet::NUM_FILES == 1);
 		/* No need to loop each file, as long as there is only a single
 		 * sound file. */
-		add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", sounds_set->files->filename, sounds_set->files->CheckMD5() == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
+		add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", sounds_set->files->filename, sounds_set->files->CheckMD5(DATA_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
 	}
 
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
@@ -206,7 +206,7 @@ void GfxLoadSprites()
 
 bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path)
 {
-	bool ret = this->BaseSet<GraphicsSet, MAX_GFT>::FillSetDetails(ini, path);
+	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, DATA_DIR>::FillSetDetails(ini, path);
 	if (ret) {
 		IniGroup *metadata = ini->GetGroup("metadata");
 		IniItem *item;
@@ -220,15 +220,16 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path)
 
 /**
  * Calculate and check the MD5 hash of the supplied filename.
+ * @param subdir The sub directory to get the files from
  * @return
  *  CR_MATCH if the MD5 hash matches
  *  CR_MISMATCH if the MD5 does not match
  *  CR_NO_FILE if the file misses
  */
-MD5File::ChecksumResult MD5File::CheckMD5() const
+MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir) const
 {
 	size_t size;
-	FILE *f = FioFOpenFile(this->filename, "rb", DATA_DIR, &size);
+	FILE *f = FioFOpenFile(this->filename, "rb", subdir, &size);
 
 	if (f == NULL) return CR_NO_FILE;
 
@@ -252,8 +253,8 @@ MD5File::ChecksumResult MD5File::CheckMD5() const
 static const char * const _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
 /** Implementation */
-template <class T, size_t Tnum_files>
-/* static */ const char * const *BaseSet<T, Tnum_files>::file_names = _graphics_file_names;
+template <class T, size_t Tnum_files, Subdirectory Tsubdir>
+/* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _graphics_file_names;
 
 extern void UpdateNewGRFConfigPalette();
 

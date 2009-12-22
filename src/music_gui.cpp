@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "fileio_func.h"
-#include "music.h"
+#include "base_media_base.h"
 #include "music/music_driver.hpp"
 #include "window_gui.h"
 #include "strings_func.h"
@@ -20,6 +20,7 @@
 #include "sound_func.h"
 #include "gfx_func.h"
 #include "core/random_func.hpp"
+#include "gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -31,32 +32,40 @@
  */
 static const char *GetSongName(int index)
 {
-	return _origin_songs_specs[index].song_name;
+	return BaseMusic::GetUsedSet()->song_name[index];
 }
 
+/**
+ * Get the track number of the song.
+ * @param index of the song.
+ * @return the track number of the song.
+ */
+static int GetTrackNumber(int index)
+{
+	return BaseMusic::GetUsedSet()->track_nr[index];
+}
 
-static byte _music_wnd_cursong;
-static bool _song_is_active;
-static byte _cur_playlist[NUM_SONGS_PLAYLIST];
+/** The currently played song */
+static byte _music_wnd_cursong = 1;
+/** Whether a song is currently played */
+static bool _song_is_active = false;
 
+/** Indices of the songs in the current playlist */
+static byte _cur_playlist[NUM_SONGS_PLAYLIST + 1];
 
+/** Indices of all songs */
+static byte _playlist_all[NUM_SONGS_AVAILABLE + 1];
+/** Indices of all old style songs */
+static byte _playlist_old_style[NUM_SONGS_CLASS + 1];
+/** Indices of all new style songs */
+static byte _playlist_new_style[NUM_SONGS_CLASS + 1];
+/** Indices of all ezy street songs */
+static byte _playlist_ezy_street[NUM_SONGS_CLASS + 1];
 
-static byte _playlist_all[] = {
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 0
-};
+assert_compile(lengthof(msf.custom_1) == NUM_SONGS_PLAYLIST + 1);
+assert_compile(lengthof(msf.custom_2) == NUM_SONGS_PLAYLIST + 1);
 
-static byte _playlist_old_style[] = {
-	2, 9, 3, 10, 15, 16, 20, 14, 0
-};
-
-static byte _playlist_new_style[] = {
-	7, 12, 11, 18, 22, 19, 6, 0
-};
-
-static byte _playlist_ezy_street[] = {
-	13, 8, 17, 4, 21, 5, 0
-};
-
+/** The different playlists that can be played. */
 static byte * const _playlists[] = {
 	_playlist_all,
 	_playlist_old_style,
@@ -65,6 +74,57 @@ static byte * const _playlists[] = {
 	msf.custom_1,
 	msf.custom_2,
 };
+
+/**
+ * Validate a playlist.
+ * @param playlist the playlist to validate
+ */
+void ValidatePlaylist(byte *playlist)
+{
+	while (*playlist != 0) {
+		if (*playlist <= BaseMusic::GetUsedSet()->num_available) {
+			playlist++;
+			continue;
+		}
+		for (byte *p = playlist; *p != 0; p++) {
+			p[0] = p[1];
+		}
+	}
+}
+
+/** Initialize the playlists */
+void InitializeMusic()
+{
+	uint j = 0;
+	for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
+		if (StrEmpty(GetSongName(i))) continue;
+		_playlist_all[j++] = i + 1;
+	}
+	/* Terminate the list */
+	_playlist_all[j] = 0;
+
+	/* Now make the 'styled' playlists */
+	for (uint k = 0; k < NUM_SONG_CLASSES; k++) {
+		j = 0;
+		for (uint i = 0; i < NUM_SONGS_CLASS; i++) {
+			int id = k * NUM_SONGS_CLASS + i + 1;
+			if (StrEmpty(GetSongName(id))) continue;
+			_playlists[k + 1][j++] = id + 1;
+		}
+		/* Terminate the list */
+		_playlists[k + 1][j] = 0;
+	}
+
+	ValidatePlaylist(msf.custom_1);
+	ValidatePlaylist(msf.custom_2);
+
+	if (BaseMusic::GetUsedSet()->num_available < _music_wnd_cursong) {
+		/* If there are less songs than the currently played song,
+		 * just pause and reset to no song. */
+		_music_wnd_cursong = 0;
+		_song_is_active = false;
+	}
+}
 
 static void SkipToPrevSong()
 {
@@ -112,13 +172,15 @@ static void DoPlaySong()
 {
 	char filename[MAX_PATH];
 	FioFindFullPath(filename, lengthof(filename), GM_DIR,
-			_origin_songs_specs[_music_wnd_cursong - 1].filename);
+			BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename);
 	_music_driver->PlaySong(filename);
+	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 
 static void DoStopMusic()
 {
 	_music_driver->StopSong();
+	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 
 static void SelectSongToPlay()
@@ -128,9 +190,10 @@ static void SelectSongToPlay()
 
 	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
+		const char *filename = BaseMusic::GetUsedSet()->files[_playlists[msf.playlist][i] - 1].filename;
 		/* We are now checking for the existence of that file prior
 		 * to add it to the list of available songs */
-		if (FioCheckFileExists(_origin_songs_specs[_playlists[msf.playlist][i] - 1].filename, GM_DIR)) {
+		if (!StrEmpty(filename) && FioCheckFileExists(filename, GM_DIR)) {
 			_cur_playlist[j] = _playlists[msf.playlist][i];
 			j++;
 		}
@@ -275,10 +338,13 @@ struct MusicTrackSelectionWindow : public Window {
 			case MTSW_LIST_LEFT: case MTSW_LIST_RIGHT: {
 				Dimension d = {0, 0};
 
-				for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
-					SetDParam(0, i);
+				for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
+					const char *song_name = GetSongName(i);
+					if (StrEmpty(song_name)) continue;
+
+					SetDParam(0, GetTrackNumber(i));
 					SetDParam(1, 2);
-					SetDParamStr(2, GetSongName(i - 1));
+					SetDParamStr(2, GetSongName(i));
 					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
 					d.width = max(d.width, d2.width);
 					d.height += d2.height;
@@ -297,10 +363,13 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (uint i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
-					SetDParam(0, i);
+				for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
+					const char *song_name = GetSongName(i);
+					if (StrEmpty(song_name)) continue;
+
+					SetDParam(0, GetTrackNumber(i));
 					SetDParam(1, 2);
-					SetDParamStr(2, GetSongName(i - 1));
+					SetDParamStr(2, song_name);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
@@ -311,10 +380,10 @@ struct MusicTrackSelectionWindow : public Window {
 
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (const byte *p = _playlists[msf.playlist]; *p != 0; p++) {
-					uint i = *p;
-					SetDParam(0, i);
+					uint i = *p - 1;
+					SetDParam(0, GetTrackNumber(i));
 					SetDParam(1, 2);
-					SetDParamStr(2, GetSongName(i - 1));
+					SetDParamStr(2, GetSongName(i));
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
@@ -334,12 +403,18 @@ struct MusicTrackSelectionWindow : public Window {
 				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / FONT_HEIGHT_SMALL;
 
 				if (msf.playlist < 4) return;
-				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
+				if (!IsInsideMM(y, 0, BaseMusic::GetUsedSet()->num_available)) return;
 
 				byte *p = _playlists[msf.playlist];
 				for (uint i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					if (p[i] == 0) {
-						p[i] = y + 1;
+						/* Find the actual song number */
+						for (uint j = 0; j < NUM_SONGS_AVAILABLE; j++) {
+							if (GetTrackNumber(j) == y + 1) {
+								p[i] = j + 1;
+								break;
+							}
+						}
 						p[i + 1] = 0;
 						this->SetDirty();
 						SelectSongToPlay();
@@ -352,7 +427,7 @@ struct MusicTrackSelectionWindow : public Window {
 				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / FONT_HEIGHT_SMALL;
 
 				if (msf.playlist < 4) return;
-				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
+				if (!IsInsideMM(y, 0, NUM_SONGS_PLAYLIST)) return;
 
 				byte *p = _playlists[msf.playlist];
 				for (uint i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
@@ -364,7 +439,7 @@ struct MusicTrackSelectionWindow : public Window {
 			} break;
 
 			case MTSW_CLEAR: // clear
-				_playlists[msf.playlist][0] = 0;
+				for (uint i = 0; _playlists[msf.playlist][i] != 0; i++) _playlists[msf.playlist][i] = 0;
 				this->SetDirty();
 				StopMusic();
 				SelectSongToPlay();
@@ -484,7 +559,7 @@ struct MusicWindow : public Window {
 
 			case MW_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
-				for (int i = 0; i < NUM_SONGS_AVAILABLE; i++) {
+				for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
 					SetDParamStr(0, GetSongName(i));
 					d = maxdim(d, GetStringBoundingBox(STR_MUSIC_TITLE_NAME));
 				}
@@ -523,7 +598,7 @@ struct MusicWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, 0);
 				StringID str = STR_MUSIC_TRACK_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
-					SetDParam(0, _music_wnd_cursong);
+					SetDParam(0, GetTrackNumber(_music_wnd_cursong - 1));
 					SetDParam(1, 2);
 					str = STR_MUSIC_TRACK_DIGIT;
 				}
@@ -727,5 +802,6 @@ static const WindowDesc _music_window_desc(
 
 void ShowMusicWindow()
 {
+	if (BaseMusic::GetUsedSet()->num_available == 0) ShowErrorMessage(STR_ERROR_NO_SONGS, INVALID_STRING_ID, 0, 0);
 	AllocateWindowDescFront<MusicWindow>(&_music_window_desc, 0);
 }

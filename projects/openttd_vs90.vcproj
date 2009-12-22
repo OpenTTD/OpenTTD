@@ -1097,10 +1097,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\music.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\network\network.h"
 				>
 			</File>

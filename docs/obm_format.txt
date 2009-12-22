@@ -1,0 +1,106 @@
+;
+; Example file for the OpenTTD Base Music replacement sets.
+; This file consists of basically two different parts:
+;  * metadata
+;  * information about the files/songs
+;
+; Metadata contains information about the name and version
+; of the music set.
+;
+; == Getting started ==
+; - you can't add comments after values
+; - you have to fill the MD5 checksum for each file
+; - you may not miss any of the metadata or files items
+; - `openttd -h` lists all music replacement sets it found to be correct
+; - `openttd -d grf=1` shows warnings/errors when parsing an .obm file
+; - `openttd -M <name>` starts OpenTTD with the given set (case sensitive)
+; - adding `musicset = <name>` to the misc section of openttd.cfg makes
+;   OpenTTD start with that sound set by default
+; - there is a command line tool for all platforms called md5sum that can
+;   create the MD5 checksum you need.
+; - all files specified in this file are search relatively to the path where
+;   this file is found, i.e. if the sound files are in a subdir you have
+;   to add that subdir to the names in this file to! It will NOT search for
+;   a file named like specified in here.
+
+[metadata]
+; the name of the pack, preferably less than 16 characters
+name         = example
+; the short name (4 characters), used to identify this set
+shortname    = XMPL
+; the version of this sound set (read as single integer)
+version      = 0
+; a fairly short description of the set
+; By adding '.<iso code>' you can translate the description.
+; Note that OpenTTD first tries the full ISO code, then the first
+; two characters and then uses the fallback (no '.<iso code>').
+; The ISO code matching is case sensitive!
+; So en_US will be used for en_GB if no en_GB translation is added.
+; As a result the below example has 'howdie' for en_US and en_GB but
+; 'foo' for all other languages.
+description  = foo
+description.en_US = howdie
+
+; The files section lists the files that replace songs.
+; The file names are case sensitive.
+; You can have empty file names; in that case no song will be loaded
+; for that 'entry'.
+[files]
+; The theme song for OpenTTD
+theme = THEME_SONG.GM
+; The songs in the 'old style' category
+old_0 =
+old_1 =
+old_2 =
+old_3 =
+old_4 =
+old_5 =
+old_6 =
+old_7 =
+old_8 =
+old_9 =
+; The songs in the 'new style' category
+new_0 =
+new_1 =
+new_2 =
+new_3 =
+new_4 =
+new_5 =
+new_6 =
+new_7 =
+new_8 =
+new_9 =
+; The songs in the 'ezy street' category
+ezy_0 =
+ezy_1 =
+ezy_2 =
+ezy_3 =
+ezy_4 =
+ezy_5 =
+ezy_6 =
+ezy_7 =
+ezy_8 =
+ezy_9 =
+
+; The names section lists the song names for the given file name.
+; Note that the list of files is case sensitive. Each file listed in the
+; files section must be listed here with it's song name, otherwise you
+; will get a lot of warnings when starting OpenTTD.
+[names]
+THEME_SONG.GM = Tycoon DELUXE Theme
+
+; The md5s section lists the MD5 checksum for the files that replace them.
+; Note that the list of files is case sensitive. Each file listed in the
+; files section must be listed here with it's MD5 checksum, otherwise you
+; will get a lot of warnings when starting OpenTTD.
+[md5s]
+THEME_SONG.GM = 45cfec1b9d8c7a0ad45e755833cbf221
+
+; The origin section provides the possibility to put and extra line into
+; the warning that a file is missing/corrupt. This can be used to tell
+; them where to find it. It works on the filename specified in the
+; files section and if that is not found it will fall back to the default
+; as shown below here.
+[origin]
+default       = You can find it on your Transport Tycoon Deluxe CD-ROM.
+THEME_SONG.GM  = You can find it also on your Transport Tycoon Deluxe CD-ROM.

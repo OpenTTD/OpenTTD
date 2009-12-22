@@ -14,6 +14,7 @@
 
 #include "fileio_func.h"
 #include "core/smallmap_type.hpp"
+#include "gfx_type.h"
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
 struct IniFile;
@@ -32,20 +33,24 @@ struct MD5File {
 	uint8 hash[16];              ///< md5 sum of the file
 	const char *missing_warning; ///< warning when this file is missing
 
-	ChecksumResult CheckMD5() const;
+	ChecksumResult CheckMD5(Subdirectory subdir) const;
 };
 
 /**
  * Information about a single base set.
  * @tparam T the real class we're going to be
  * @tparam Tnum_files the number of files in the set
+ * @tparam Tsubdir the subdirectory where to find the files
  */
-template <class T, size_t Tnum_files>
+template <class T, size_t Tnum_files, Subdirectory Tsubdir>
 struct BaseSet {
 	typedef SmallMap<const char *, const char *> TranslatedStrings;
 
 	/** Number of files in this set */
 	static const size_t NUM_FILES = Tnum_files;
+
+	/** The sub directory to search for the files */
+	static const Subdirectory SUBDIR = Tsubdir;
 
 	/** Internal names of the files in this set. */
 	static const char * const *file_names;
@@ -163,7 +168,7 @@ public:
 	static uint FindSets()
 	{
 		BaseMedia<Tbase_set> fs;
-		return fs.Scan(GetExtension(), DATA_DIR);
+		return fs.Scan(GetExtension(), Tbase_set::SUBDIR);
 	}
 
 	/**
@@ -226,7 +231,7 @@ enum GraphicsFileType {
 };
 
 /** All data of a graphics set. */
-struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT> {
+struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, DATA_DIR> {
 	PaletteType palette;       ///< Palette of this graphics set
 
 	bool FillSetDetails(struct IniFile *ini, const char *path);
@@ -242,11 +247,36 @@ public:
 };
 
 /** All data of a sounds set. */
-struct SoundsSet : BaseSet<SoundsSet, 1> {
+struct SoundsSet : BaseSet<SoundsSet, 1, DATA_DIR> {
 };
 
 /** All data/functions related with replacing the base sounds */
 class BaseSounds : public BaseMedia<SoundsSet> {
+public:
+};
+
+/** Maximum number of songs in the 'class' playlists. */
+static const uint NUM_SONGS_CLASS     = 10;
+/** Number of classes for songs */
+static const uint NUM_SONG_CLASSES    = 3;
+/** Maximum number of songs in the full playlist; theme song + the classes */
+static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
+
+/** Maximum number of songs in the (custom) playlist */
+static const uint NUM_SONGS_PLAYLIST  = 32;
+
+/** All data of a music set. */
+struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR> {
+	/** The name of the different songs. */
+	char song_name[NUM_SONGS_AVAILABLE][32];
+	byte track_nr[NUM_SONGS_AVAILABLE];
+	byte num_available;
+
+	bool FillSetDetails(struct IniFile *ini, const char *path);
+};
+
+/** All data/functions related with replacing the base music */
+class BaseMusic : public BaseMedia<MusicSet> {
 public:
 };
 

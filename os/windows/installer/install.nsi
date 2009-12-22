@@ -123,6 +123,10 @@ Section "!OpenTTD" Section1
 	File ${PATH_ROOT}bin\data\*.obs
 	File ${PATH_ROOT}bin\data\opntitle.dat
 
+	; Copy the music base metadata files
+	SetOutPath "$INSTDIR\gm\"
+	File ${PATH_ROOT}bin\gm\*.obm
+
 	; Copy the scripts
 	SetOutPath "$INSTDIR\scripts\"
 	File ${PATH_ROOT}bin\scripts\*.*
@@ -396,6 +400,10 @@ Section "Uninstall"
 
 	; Scripts
 	Delete "$INSTDIR\scripts\*.*"
+
+	; Base sets for music
+	Delete "$INSTDIR\gm\orig_mus.obm"
+	Delete "$INSTDIR\gm\no_sound.obm"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"

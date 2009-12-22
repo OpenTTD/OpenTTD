@@ -10,31 +10,85 @@
 /** @file music.cpp The songs that OpenTTD knows. */
 
 #include "stdafx.h"
-#include "music.h"
+#include "debug.h"
 
-const SongSpecs _origin_songs_specs[] = {
-	{"gm_tt00.gm", "Tycoon DELUXE Theme"},
-	{"gm_tt02.gm", "Easy Driver"},
-	{"gm_tt03.gm", "Little Red Diesel"},
-	{"gm_tt17.gm", "Cruise Control"},
-	{"gm_tt07.gm", "Don't Walk!"},
-	{"gm_tt09.gm", "Fell Apart On Me"},
-	{"gm_tt04.gm", "City Groove"},
-	{"gm_tt19.gm", "Funk Central"},
-	{"gm_tt06.gm", "Stoke It"},
-	{"gm_tt12.gm", "Road Hog"},
-	{"gm_tt05.gm", "Aliens Ate My Railway"},
-	{"gm_tt01.gm", "Snarl Up"},
-	{"gm_tt18.gm", "Stroll On"},
-	{"gm_tt10.gm", "Can't Get There From Here"},
-	{"gm_tt08.gm", "Sawyer's Tune"},
-	{"gm_tt13.gm", "Hold That Train!"},
-	{"gm_tt21.gm", "Movin' On"},
-	{"gm_tt15.gm", "Goss Groove"},
-	{"gm_tt16.gm", "Small Town"},
-	{"gm_tt14.gm", "Broomer's Oil Rag"},
-	{"gm_tt20.gm", "Jammit"},
-	{"gm_tt11.gm", "Hard Drivin'"},
+/* The type of set we're replacing */
+#define SET_TYPE "music"
+#include "base_media_func.h"
+
+INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<MusicSet>, MusicSet)
+
+/** Names corresponding to the music set's files */
+static const char * const _music_file_names[] = {
+	"theme",
+	"old_0", "old_1", "old_2", "old_3", "old_4", "old_5", "old_6", "old_7", "old_8", "old_9",
+	"new_0", "new_1", "new_2", "new_3", "new_4", "new_5", "new_6", "new_7", "new_8", "new_9",
+	"ezy_0", "ezy_1", "ezy_2", "ezy_3", "ezy_4", "ezy_5", "ezy_6", "ezy_7", "ezy_8", "ezy_9",
 };
+assert_compile(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
 
-assert_compile(NUM_SONGS_AVAILABLE == lengthof(_origin_songs_specs));
+template <class T, size_t Tnum_files, Subdirectory Tsubdir>
+/* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _music_file_names;
+
+template <class Tbase_set>
+/* static */ const char *BaseMedia<Tbase_set>::GetExtension()
+{
+	return ".obm"; // OpenTTD Base Music
+}
+
+template <class Tbase_set>
+/* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
+{
+	if (BaseMedia<Tbase_set>::used_set != NULL) return true;
+
+	const Tbase_set *best = NULL;
+	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
+		if (best == NULL ||
+				best->valid_files < c->valid_files ||
+				(best->valid_files == c->valid_files &&
+					(best->shortname == c->shortname && best->version < c->version))) {
+			best = c;
+		}
+	}
+
+	BaseMedia<Tbase_set>::used_set = best;
+	return BaseMedia<Tbase_set>::used_set != NULL;
+}
+
+/**
+ * Try to read a single piece of metadata and return false if it doesn't exist.
+ * @param name the name of the item to fetch.
+ */
+#define fetch_name(name) \
+	item = metadata->GetItem(name, false); \
+	if (item == NULL || strlen(item->value) == 0) { \
+		DEBUG(grf, 0, "Base " SET_TYPE "set detail loading: %s field missing", name); \
+		return false; \
+	}
+
+bool MusicSet::FillSetDetails(IniFile *ini, const char *path)
+{
+	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR>::FillSetDetails(ini, path);
+	if (ret) {
+		this->num_available = 0;
+		IniGroup *names = ini->GetGroup("names");
+		for (uint i = 0, j = 1; i < lengthof(this->song_name); i++) {
+			const char *filename = this->files[i].filename;
+			if (names == NULL || StrEmpty(filename)) {
+				this->song_name[i][0] = '\0';
+				continue;
+			}
+
+			IniItem *item = names->GetItem(filename, false);
+			if (item == NULL || strlen(item->value) == 0) {
+				DEBUG(grf, 0, "Base music set song name missing: %s", filename);
+				return false;
+			}
+
+			strecpy(this->song_name[i], item->value, lastof(this->song_name[i]));
+			this->track_nr[i] = j++;
+			this->num_available++;
+		}
+	}
+	return true;
+}

@@ -31,6 +31,7 @@ enum ContentType {
 	CONTENT_TYPE_SCENARIO      = 5, ///< The content consists of a scenario
 	CONTENT_TYPE_HEIGHTMAP     = 6, ///< The content consists of a heightmap
 	CONTENT_TYPE_BASE_SOUNDS   = 7, ///< The content consists of base sounds
+	CONTENT_TYPE_BASE_MUSIC    = 8, ///< The content consists of base music
 	CONTENT_TYPE_END,               ///< Helper to mark the end of the types
 };
 

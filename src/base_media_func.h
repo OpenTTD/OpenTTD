@@ -28,8 +28,8 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::availab
 		return false; \
 	}
 
-template <class T, size_t Tnum_files>
-bool BaseSet<T, Tnum_files>::FillSetDetails(IniFile *ini, const char *path)
+template <class T, size_t Tnum_files, Subdirectory Tsubdir>
+bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path)
 {
 	memset(this, 0, sizeof(*this));
 
@@ -64,13 +64,21 @@ bool BaseSet<T, Tnum_files>::FillSetDetails(IniFile *ini, const char *path)
 	for (uint i = 0; i < Tnum_files; i++) {
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
-		item = files->GetItem(BaseSet<T, Tnum_files>::file_names[i], false);
+		item = files->GetItem(BaseSet<T, Tnum_files, Tsubdir>::file_names[i], false);
 		if (item == NULL) {
-			DEBUG(grf, 0, "No " SET_TYPE " file for: %s", BaseSet<T, Tnum_files>::file_names[i]);
+			DEBUG(grf, 0, "No " SET_TYPE " file for: %s", BaseSet<T, Tnum_files, Tsubdir>::file_names[i]);
 			return false;
 		}
 
 		const char *filename = item->value;
+		if (filename == NULL) {
+			file->filename = NULL;
+			/* If we list no file, that file must be valid */
+			this->valid_files++;
+			this->found_files++;
+			continue;
+		}
+
 		file->filename = str_fmt("%s%s", path, filename);
 
 		/* Then find the MD5 checksum */
@@ -100,7 +108,7 @@ bool BaseSet<T, Tnum_files>::FillSetDetails(IniFile *ini, const char *path)
 		}
 
 		/* Then find the warning message when the file's missing */
-		item = origin->GetItem(filename, false);
+		item = filename == NULL ? NULL : origin->GetItem(filename, false);
 		if (item == NULL) item = origin->GetItem("default", false);
 		if (item == NULL) {
 			DEBUG(grf, 1, "No origin warning message specified for: %s", filename);
@@ -109,7 +117,7 @@ bool BaseSet<T, Tnum_files>::FillSetDetails(IniFile *ini, const char *path)
 			file->missing_warning = strdup(item->value);
 		}
 
-		switch (file->CheckMD5()) {
+		switch (file->CheckMD5(Tsubdir)) {
 			case MD5File::CR_MATCH:
 				this->valid_files++;
 				/* FALL THROUGH */
