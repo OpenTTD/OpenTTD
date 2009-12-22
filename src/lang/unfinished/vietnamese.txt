@@ -1003,6 +1003,12 @@ STR_NUM_NORMAL                                                  :Thường
 STR_NUM_HIGH                                                    :Cao
 STR_NUM_CUSTOM                                                  :Tự Chỉnh
 
+STR_VARIETY_NONE                                                :Không
+STR_VARIETY_VERY_LOW                                            :Rất Thấp
+STR_VARIETY_LOW                                                 :Thấp
+STR_VARIETY_MEDIUM                                              :Vừa
+STR_VARIETY_HIGH                                                :Cao
+STR_VARIETY_VERY_HIGH                                           :Rất Cao
 
 STR_AI_SPEED_VERY_SLOW                                          :Chậm Nhất
 STR_AI_SPEED_SLOW                                               :Chậm

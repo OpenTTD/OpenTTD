@@ -262,6 +262,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Átnevez
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Az ablak bezárása
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Az ablak címsora - húzd ezt a mozgatáshoz
+STR_TOOLTIP_SHADE                                               :{BLACK}Ablak összecsukása - csak a címsor látszódjon
 STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha a DEL billentyűvel az összes ablakot bezatjuk
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás

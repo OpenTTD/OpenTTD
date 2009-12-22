@@ -407,6 +407,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Preimenu
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zatvori prozor
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov - povucite mišem da biste pomerili prozor
+STR_TOOLTIP_SHADE                                               :{BLACK}Zamotaj prozor - Prikazuje se samo naslov
 STR_TOOLTIP_STICKY                                              :{BLACK}Pridenite kako bi ovaj prozor ostao otvoren prilikom pritiska na dugme za zatvaranje svih prozora
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pritisnite i povucite kako bi prozor promenio veličinu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Izbor velikog/malog prozora

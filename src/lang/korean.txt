@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}이름 �
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
+STR_TOOLTIP_SHADE                                               :{BLACK}윈도우 숨기기 - 타이틀바만 표시
 STR_TOOLTIP_STICKY                                              :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
 STR_TOOLTIP_RESIZE                                              :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}대형/소형 창 크기 토글
@@ -763,7 +764,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(매니저)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING}는 새로운 도시 {TOWN}을(를) 건설했습니다!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
@@ -1255,7 +1256,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :금지
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :허용
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도시 레이아웃 선택가능.
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}게임도중 자동으로 나무 심기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}게임도중 나무가 자동적으로 번식: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :불가능 {RED}(제재소에 의해 벌목)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만 가능
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :모든 지역에서 가능
@@ -3174,7 +3175,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 �
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}예정일 기준
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}운행 기준을 도착 예정일 기준과 도착 예정 소요시간 기준 중에서 선택.
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 준수 기준을 도착 예정일 기준과 도착 예정 소요시간 기준 중에서 선택.
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :도착:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :출발:
@@ -3186,7 +3187,7 @@ STR_DATE_SET_DATE                                               :{BLACK}날짜 �
 STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}선택한 날짜를 시간표 시작 날짜로 사용합니다.
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}일(日) 선택
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}월(月) 선택
-STR_DATE_YEAR_TOOLTIP                                           :{BLACK}연(年)도 선택
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}년(年) 선택
 
 
 # AI debug window

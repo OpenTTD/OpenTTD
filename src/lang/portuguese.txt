@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
+STR_TOOLTIP_SHADE                                               :{BLACK}Sombrear Janela - Apenas mostra a barra de título
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -1254,6 +1255,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, estrutura personalizada da cidade
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Colocação de árvores no jogo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nenhum {RED}(destroi serração)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :apenas em florestas húmidas
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :em todo o lado
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda

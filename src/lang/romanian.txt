@@ -63,7 +63,7 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :sucuri
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :călător
 STR_CARGO_SINGULAR_COAL                                         :cărbune
-STR_CARGO_SINGULAR_MAIL                                         :colete poştale
+STR_CARGO_SINGULAR_MAIL                                         :colet poştal
 STR_CARGO_SINGULAR_OIL                                          :petrol
 STR_CARGO_SINGULAR_LIVESTOCK                                    :animale
 STR_CARGO_SINGULAR_GOODS                                        :bunuri
@@ -95,16 +95,16 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :suc
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} cãlãtor{P "" i}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} călător{P "" i}
 STR_QUANTITY_COAL                                               :{WEIGHT} de cărbune
-STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" i} cu colete postale
+STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" i} cu colete poştale
 STR_QUANTITY_OIL                                                :{VOLUME} de petrol
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} animal{P "" e}
 STR_QUANTITY_GOODS                                              :{COMMA} pachet{P "" e} de bunuri
 STR_QUANTITY_GRAIN                                              :{WEIGHT} de cereale
 STR_QUANTITY_WOOD                                               :{WEIGHT} de lemne
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minereu de fier
-STR_QUANTITY_STEEL                                              :{WEIGHT} de otel
+STR_QUANTITY_STEEL                                              :{WEIGHT} de oţel
 STR_QUANTITY_VALUABLES                                          :{COMMA} cuti{P e i} de valori
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minereu de cupru
 STR_QUANTITY_MAIZE                                              :{WEIGHT} de porumb
@@ -113,15 +113,15 @@ STR_QUANTITY_DIAMONDS                                           :{COMMA} sac{P "
 STR_QUANTITY_FOOD                                               :{WEIGHT} de alimente
 STR_QUANTITY_PAPER                                              :{WEIGHT} de hârtie
 STR_QUANTITY_GOLD                                               :{COMMA} sac{P "" i} cu aur
-STR_QUANTITY_WATER                                              :{VOLUME} de apã
+STR_QUANTITY_WATER                                              :{VOLUME} de apă
 STR_QUANTITY_WHEAT                                              :{WEIGHT} de grâu
 STR_QUANTITY_RUBBER                                             :{VOLUME} de cauciuc
-STR_QUANTITY_SUGAR                                              :{WEIGHT} de zahãr
-STR_QUANTITY_TOYS                                               :{COMMA} sac{P "" i} cu jucãrii
+STR_QUANTITY_SUGAR                                              :{WEIGHT} de zahăr
+STR_QUANTITY_TOYS                                               :{COMMA} sac{P "" i} cu jucării
 STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" i} cu bomboane
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de vatã de zahãr
-STR_QUANTITY_BUBBLES                                            :{COMMA} balonas{P "" e}
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de vată de zahăr
+STR_QUANTITY_BUBBLES                                            :{COMMA} balonaş{P "" e}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramel
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastic
@@ -179,7 +179,7 @@ STR_COLOUR_DARK_BLUE                                            :Albastru închi
 STR_COLOUR_PALE_GREEN                                           :Verde pal
 STR_COLOUR_PINK                                                 :Roz
 STR_COLOUR_YELLOW                                               :Galben
-STR_COLOUR_RED                                                  :Rosu
+STR_COLOUR_RED                                                  :Roşu
 STR_COLOUR_LIGHT_BLUE                                           :Albastru deschis
 STR_COLOUR_GREEN                                                :Verde
 STR_COLOUR_DARK_GREEN                                           :Verde închis
@@ -220,20 +220,21 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeţi ordinea de sortare ascendentă/descendentă
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Alege criteriul de sortare
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selectează criteriul de filtrare
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordonează
-STR_BUTTON_LOCATION                                             :{BLACK}Locatie
+STR_BUTTON_LOCATION                                             :{BLACK}Locaţie
 STR_BUTTON_RENAME                                               :{BLACK}Nume nou
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
-STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
-STR_TOOLTIP_RESIZE                                              :{BLACK}Apasa si trage pentru redimensionarea ferestrei
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru mărimea ferestrei
+STR_TOOLTIP_SHADE                                               :{BLACK}Fereastra "shade" - Afişează doar bara de titlu
+STR_TOOLTIP_STICKY                                              :{BLACK}Previne închiderea acestei ferestre de către tasta 'Închide toate ferestrele'
+STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă şi trage pentru redimensionarea ferestrei
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - defilează în listă sus/jos
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - stanga/dreapta
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - stânga/dreapta
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrăţel de teren
 
 # Query window
@@ -253,75 +254,75 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafa�
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populatia
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaţia
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nume
-STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datã
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dată
 # These are used in dropdowns
 STR_SORT_BY_POPULATION                                          :Populaţie
 STR_SORT_BY_NAME                                                :Nume
-STR_SORT_BY_PRODUCTION                                          :Productie
+STR_SORT_BY_PRODUCTION                                          :Producţie
 STR_SORT_BY_TYPE                                                :Tip
 STR_SORT_BY_TRANSPORTED                                         :Transportat
-STR_SORT_BY_NUMBER                                              :Numar
+STR_SORT_BY_NUMBER                                              :Număr
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit anul trecut
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit anul acesta
 STR_SORT_BY_AGE                                                 :Vechime
 STR_SORT_BY_RELIABILITY                                         :Eficienţă
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacitatea totala in functie de incarcatura
-STR_SORT_BY_MAX_SPEED                                           :Viteza maxima
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacitatea totală în funcţie de încărcătură
+STR_SORT_BY_MAX_SPEED                                           :Viteza maximă
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valoare
 STR_SORT_BY_LENGTH                                              :Lungime
 STR_SORT_BY_LIFE_TIME                                           :Durată de viaţă rămasă
-STR_SORT_BY_TIMETABLE_DELAY                                     :Înârzieri
-STR_SORT_BY_FACILITY                                            :Tipul de statie
+STR_SORT_BY_TIMETABLE_DELAY                                     :Întârzieri
+STR_SORT_BY_FACILITY                                            :Tipul de staţie
 STR_SORT_BY_WAITING                                             :Valoarea mărfii în aşteptare
 STR_SORT_BY_RATING_MAX                                          :Cel mai mare rating
 STR_SORT_BY_RATING_MIN                                          :Cel mai mic rating
 STR_SORT_BY_ENGINE_ID                                           :IDMotor (model clasic)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Putere
-STR_SORT_BY_INTRO_DATE                                          :Data lansarii
+STR_SORT_BY_INTRO_DATE                                          :Data lansării
 STR_SORT_BY_RUNNING_COST                                        :Cost exploatare
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cost exploatare/putere
-STR_SORT_BY_CARGO_CAPACITY                                      :Capacitate incarcatura
+STR_SORT_BY_CARGO_CAPACITY                                      :Capacitate încărcătură
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauză joc (F1)
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Măreşte viteza de trecere a timpului (TAB)
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optiuni
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvare/abandon/iesire joc
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afişează harta (F4)
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Afişează lista cu oraşele de pe hartă (F5)
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afişează subvenţiile (F6)
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauză joc
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Măreşte viteza de trecere a timpului
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opţiuni
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvare/abandon/ieşire joc
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afişează harta
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Afişează lista cu oraşele de pe hartă
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afişează subvenţiile
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Afişează lista cu staţiile companiei
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Afişează informaţii financiare ale companiei
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Afişează informaţiile financiare ale companiei
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Afişează date generale despre companie
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afişează grafice
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Afişează clasamentul companiilor
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listează sau fondează obiectivele industriale
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afisează o listă cu trenurile companiei. Ctrl+Click alternează deschiderea lista grupurilor
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afişează lista cu autovehiculele companiei. Ctrl-Click comută deschiderea listei cu grupuri/vehicule
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afişează lista cu navele companiei. Ctrl-Click comută deschiderea listei cu grupuri/vehicule
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afişează lista cu aeronavele companiei. Ctrl-Click comută deschiderea listei cu grupuri/ vehicule
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afişează lista cu trenurile companiei. Ctrl+Click alternează deschiderea listei cu grupuri/vehicule
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afişează lista cu autovehiculele companiei. Ctrl+Click alternează deschiderea listei cu grupuri/vehicule
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afişează lista cu navele companiei. Ctrl+Click alternează deschiderea listei cu grupuri/vehicule
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afişează lista cu aeronavele companiei. Ctrl+Click alternează deschiderea listei cu grupuri/vehicule
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Măreşte imaginea
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Micşorează imaginea
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construieşte căi ferate
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construieste drumuri
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construieste porturi
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construieste aeroporturi
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Afiseaza instrumentele pentru modelarea terenului, plantarea copacilor, etc.
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construieşte drumuri
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construieşte porturi
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construieşte aeroporturi
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Afişează instrumentele pentru modelarea terenului, plantarea copacilor, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Afişează fereastra pentru configurarea sunetului/muzicii
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afiseaza ultimul mesaj (ultima stire) si optiunile pentru mesaje
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatii despre teren, consola, depanare IA, capturi ecran, despre OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afişează ultimul mesaj (ultima ştire), opţiunile pentru mesaje
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informaţii despre teren, consolă, depanare IA, capturi ecran, despre OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Comută bara de unelte
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvează/încarcă scenariu, abandonează editorul, ieşire din joc
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de scenarii
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Schimbă data de start cu un an în urmă
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Schimbă data de start înainte cu un an
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Schimbă data de start cu un an înapoi
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Schimbă data de start cu un an înainte
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Afişează harta, lista cu oraşe
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generare peisaj
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generare oras
@@ -333,61 +334,61 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plaseaz�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvează scenariul
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Încarcă scenariu
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Incarca harta de inaltimi
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Încarcă harta de înălţimi
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ieşire din editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului (F2)
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificultate
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setari avansate
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setari Newgrf
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiuni transparenţă
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setări avansate
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opţiuni transparenţă
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afişează numele oraşelor
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afişează numele staţiilor
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afisare nume puncte de tranzit
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afişare nume puncte de tranzit
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afişează semnele de pe hartă
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animaţie completă
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalii grafice complete
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Peisaj transparent (X)
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Peisaj transparent
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nume staţii transparent
 ############ range ends here
 
 ############ range for file menu starts
-STR_FILE_MENU_SAVE_GAME                                         :Salvează jocul (F3)
+STR_FILE_MENU_SAVE_GAME                                         :Salvează jocul
 STR_FILE_MENU_LOAD_GAME                                         :Încarcă joc
-STR_FILE_MENU_QUIT_GAME                                         :Iesire în meniul principal
-STR_FILE_MENU_EXIT                                              :Iesire din joc
+STR_FILE_MENU_QUIT_GAME                                         :Ieşire în meniul principal
+STR_FILE_MENU_EXIT                                              :Ieşire din joc
 ############ range ends here
 
 ############ range for map menu starts
-STR_MAP_MENU_MAP_OF_WORLD                                       :Harta lumii (F4)
+STR_MAP_MENU_MAP_OF_WORLD                                       :Harta lumii
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ecran suplimentar
 STR_MAP_MENU_SIGN_LIST                                          :Lista de semne
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista oraşelor (F5)
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista oraşelor
 ############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Fondează oraş
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
-STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii (F6)
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Profitul operational
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Profitul operaţional
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Venituri
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Număr încărcături livrate
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Evolutia performantei
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Evoluţia performanţei
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valoarea companiei
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăţilor pe încărcături
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Clasamentul companiilor
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating de performantã detaliat
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating de performanţă detaliat
 ############ range ends here
 
 ############ range for industry menu starts
@@ -408,7 +409,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcţie tr
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Constructie rute acvatice
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcţie rute acvatice
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -426,18 +427,18 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sunet/muzică
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima stire
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Setari mesaje
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima ştire
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Setări mesaje
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor mesaje
 ############ range ends here
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii despre teren
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consola On/Off
-STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţa Artificială
-STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta (Ctrl-G)
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
+STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială
+STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
 ############ range ends here
 
@@ -504,7 +505,7 @@ STR_MONTH_DEC                                                   :decembrie
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legenda
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legendă
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Afişează legenda graficelor
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -520,7 +521,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valorile
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Preţurile transportului de călători şi mărfuri
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Zile în tranzit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului pentru marfă
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afişează detaliile ratingului performanţei
@@ -550,26 +551,26 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicule:
-STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Statii:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Staţii:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profit minim:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Venit minim:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Venit maxim:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Livrãri:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Livrări:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Mărfuri:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Cont curent:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Credite:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numãrul de vehicule profitabile anul precedent. Include autovehicule, trenuri, nave si aeronave
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numãrul statiilor. Se numãrã fiecare componentã în cazul unor statii compuse din gãri, aeroporturi, porturi, statii de autobuz, etc.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile anul precedent. Include autovehicule, trenuri, nave şi aeronave
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse din gări, aeroporturi, porturi, staţii de autobuz, etc.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obtinutã în luna cu cel mai mic profit din ultimele 36 de luni.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obtinutã în luna cu cel mai mare profit din ultimele 36 de luni.
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Numãrul de încãrcãturi transportate în ultimele 12 luni.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipuri de mãrfuri transportate în ultimele 3 luni.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Balanta curentã
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în luna cu cel mai mic profit din ultimele 36 de luni.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în luna cu cel mai mare profit din ultimele 36 de luni.
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Numărul de încărcături transportate în ultimele 12 luni.
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipuri de mărfuri transportate în ultimele 3 luni.
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Balanţa curentă
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Ponderea creditelor
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punctajul total din numãrul maxim posibil
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punctajul total din numărul maxim posibil
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Tonomatul cu jazz
@@ -592,47 +593,47 @@ STR_MUSIC_TRACK                                                 :{TINYFONT}{BLAC
 STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titlul
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Aleator
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sări la piesa precedentă din selecţie
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sări la piesa următoare din selecţie
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Opreste muzica
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Porneste muzica
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Foloseste aceste indicatoare pentru a regla volumul muzicii si al efectelor sonore
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selecteaza programul 'toate melodiile'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selecteaza programul 'oldies'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecteaza programul 'modern'
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sari la piesa precedentă din selecţie
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sari la piesa următoare din selecţie
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Opreşte muzica
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Porneşte muzica
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Foloseşte aceste indicatoare pentru a regla volumul muzicii şi al efectelor sonore
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selectează programul 'toate melodiile'
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selectează programul 'oldies'
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selectează programul 'modern'
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selectează programul muzical 'Ezy Street'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecteaza programul personal 1
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecteaza programul personal 2
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selectează programul personal 1
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selectează programul personal 2
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Comutator pentru amestecarea melodiilor (da/nu)
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afiseaza fereastra pentru selectia melodiilor
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afişeaza fereastra pentru selecţia melodiilor
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Programare piese muzicale
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Lista melodiilor
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Sterge
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Salveaza
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Sterge programul curent (doar pentru cele personale)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Salveaza setarile pentru muzica
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clic pe o melodie pentru a o adauga în programul personal curent
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Apasa pe pista audio pentru a o elimina din programul actual (doar Custom1 sau Custom2)
+STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Şterge
+STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Salvează
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Şterge programul curent (doar pentru cele personale)
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Salvează setările pentru muzică
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clic pe o melodie pentru a o adaugă în programul personal curent
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Apasă pe pista audio pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Primele companii care au atins {NUM}{}(Nivelul {STRING})
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Clasamentul companiilor in {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Clasamentul companiilor în {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Om de afaceri
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Întreprinzător
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrias
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriaş
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalist
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnatul Secolului
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} a dobandit titlul de '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} al {COMPANY} dobandeste titlul de '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} a dobândit titlul de '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} al {COMPANY} dobândeşte titlul de '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Harta - {STRING}
@@ -641,7 +642,7 @@ STR_SMALLMAP_TYPE_CONTOURS                                      :Relief
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehicule
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
 STR_SMALLMAP_TYPE_ROUTES                                        :Rute
-STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetatie
+STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetaţie
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietari
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Arată relieful pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Arată vehiculele pe hartă
@@ -685,7 +686,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Zăpadă
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Afişează/Ascunde numele oraşelor pe hartă
-STR_SMALLMAP_CENTER                                             :{BLACK}Centreaza harta mica la pozitia actuala
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrează harta mică la poziţia actuală
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dezactivează toate
@@ -694,9 +695,9 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activeaz
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Re-afişează ultimul mesaj
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUZĂ  (F1) *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUZĂ  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SALVARE AUTOMATĂ
-STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVARE JOC *  *
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVARE JOC  *  *
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia mesajelor
@@ -705,29 +706,29 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Optiuni mesaje
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opţiuni mesaje
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Setare pentru tipurile de mesaje (da/nu/rezumat)
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sunet pentru mesajele-stiri
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sunet pentru mesajele-ştiri
 STR_NEWS_MESSAGES_OFF                                           :Oprit
 STR_NEWS_MESSAGES_SUMMARY                                       :Pe scurt
 STR_NEWS_MESSAGES_FULL                                          :Pe larg
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Tipuri mesaje:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Sosirea primului vehicul la una din statiile tale
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sosirea primului vehicul la una din statiile competitorilor
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidente/dezastre
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informatii despre companie
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Sosirea primului vehicul la una din staţiile tale
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sosirea primului vehicul la una din staţiile competitorilor
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidente / dezastre
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informaţii despre companie
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Inaugurare industrii
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Inchidere industrii
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Schimbari economice
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Schimbările de producţie ale industriilor partenere cu compania
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Închidere industrii
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Schimbări economice
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Schimbări de producţie ale industriilor partenere cu compania
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Schimbări de producţie ale industriilor partenere cu concurenţa
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Alte schimbări în producţia industrială
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Sugestii / informatii despre vehiculele companiei
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Sugestii / informaţii despre vehiculele companiei
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Vehicule noi
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Schimbari ale acceptarii marfurilor
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventii
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informatii generale
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Schimbări ale acceptării marfurilor
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvenţii
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informaţii generale
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Cetăţenii sărbătoresc {}sosirea primului tren la {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Cetăţenii sărbătoresc{}Sosirea primului autobuz la {STATION}!
@@ -1254,6 +1255,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, layout particularizat al oraşului
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Poziţionarea copacilor în joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nici unul {RED}(afectează producţia fabricii de cherestea)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :doar în pădurile tropicale
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 
@@ -2236,6 +2239,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivelul marii:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Netezime:
+STR_MAPGEN_VARIETY                                              :{BLACK}Distribuţia varietăţii:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genereaza
 
 # Strings for map borders at game generation
