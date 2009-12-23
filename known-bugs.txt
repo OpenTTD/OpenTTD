@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2009-12-10
-Release version: 0.8.0
+Last updated:    2009-12-24
+Release version: 1.0.0-beta1
 ------------------------------------------------------------------------
 
 
@@ -34,17 +34,10 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
-- 3198	[OSX] "Could not get system colour space" error on some Mac OS X 10.6
-- 3194	[OSX] Full screen 'strobing' on some Mac OS X 10.6
-- 3190	[OSX] Compiling fails on some Mac OS X 10.6
-- 3159	[NewGRF] Autoreplace resets (or does not keep) value of variable F2
-- 2955	With path signals depots are less likely to be visited
-- 2891	Ignore signal does not keep the train running when in path signalled block till the next signal
-- 2616	[NewGRF] Cloning creates vehicles with invalid subcargos
-- 2613	[NewGRF] House property 15 does not work
+- 3194	[OSX] Full screen strobing/flickering
+- 2782	[OSX] Port hopelessly outdated
 - 2585	[OSX] OS' mouse pointer showing
 - 2484	[OSX] Cannot enter CJK characters
-- 1762	Strange Autoreplace behaviour
 - 1140	[OSX] Not smooth moving map with touchpad
 
 

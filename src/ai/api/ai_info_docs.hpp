@@ -148,7 +148,7 @@ public:
 	 *
 	 * Valid return values are:
 	 * - "0.7"
-	 * - "0.8"
+	 * - "1.0"
 	 *
 	 * @return The version this AI is compatible with.
 	 * @note This function is optional.
