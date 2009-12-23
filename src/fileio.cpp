@@ -272,6 +272,13 @@ char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char 
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioGetFullPath(buf, buflen, sp, subdir, filename);
 		if (FileExists(buf)) break;
+#if !defined(WIN32)
+		/* Be, as opening files, aware that sometimes the filename
+		 * might be in uppercase when it is in lowercase on the
+		 * disk. Ofcourse Windows doesn't care about casing. */
+		strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1));
+		if (FileExists(buf)) break;
+#endif
 	}
 
 	return buf;
@@ -968,7 +975,7 @@ void DeterminePaths(const char *exe)
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, DATA_DIR, AI_DIR, AI_LIBRARY_DIR };
+	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, DATA_DIR, AI_DIR, AI_LIBRARY_DIR, GM_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
 		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);
