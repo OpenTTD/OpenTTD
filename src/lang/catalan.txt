@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Reanomen
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra - arrossega això per moure la finestra
+STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra - Mostra només la barra de títol
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Prem i arrossega per canviar la mida de la finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercanvia mida gran/petita de finestra
@@ -606,6 +607,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Control de programa aleatori actiu/inactiu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra la finestra de selecció de pistes de música
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selecció del Programa de Música
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -941,6 +943,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Joc de s
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un joc de sons bàsics a utilitzar
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació additional sobre el joc de sons bàsics
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El mode en pantalla completa ha fallat
 
 # Custom currency window
@@ -1008,7 +1011,14 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alt
 STR_NUM_CUSTOM                                                  :Personalitzat
 
-STR_AI_SPEED_VERY_SLOW                                          :Molt lent
+STR_VARIETY_NONE                                                :Cap
+STR_VARIETY_VERY_LOW                                            :Molt Baix
+STR_VARIETY_LOW                                                 :Baix
+STR_VARIETY_MEDIUM                                              :Mitjà
+STR_VARIETY_HIGH                                                :Alt
+STR_VARIETY_VERY_HIGH                                           :Molt Alt
+
+STR_AI_SPEED_VERY_SLOW                                          :Molt Lent
 STR_AI_SPEED_SLOW                                               :Lent
 STR_AI_SPEED_MEDIUM                                             :Mitjà
 STR_AI_SPEED_FAST                                               :Ràpid
@@ -1247,6 +1257,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibit
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permès
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permès, disposició de poble personalitzada
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Situació dels arbres al joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :cap {RED}(inhabilita la fusteria)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les selves tropicals
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerra
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre
@@ -1260,7 +1275,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Cap
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ràpida
-STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt ràpida
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt Ràpida
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}1 de cada {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador de mida de ciutat inicial: {ORANGE}{STRING}
@@ -2226,6 +2241,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivell del mar:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Planitut:
+STR_MAPGEN_VARIETY                                              :{BLACK}Distribució de la varietat:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
 
 # Strings for map borders at game generation
@@ -2325,6 +2341,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ha passat un error fatal d'un NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} és per la versió {STRING} de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} està dissenyat per ser utilitzat amb {STRING}
@@ -3190,6 +3207,11 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Totes le
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatòria
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mou Amunt
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mou la IA selecionada amunt a la llista
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou Avall
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mou la IA selecionada avall a la llista
+
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecciona IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carrega una altra IA
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
@@ -3618,7 +3640,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banc-Guardiola 
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carbó
 STR_INDUSTRY_NAME_POWER_STATION                                 :Central Tèrmica
-STR_INDUSTRY_NAME_SAWMILL                                       :Serradora
+STR_INDUSTRY_NAME_SAWMILL                                       :Serralleria
 STR_INDUSTRY_NAME_FOREST                                        :Bosc
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refineria de Petroli
 STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma Petrolífera
@@ -3641,7 +3663,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Sortidor d'Aigu
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre d'Aigua
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fàbrica
 STR_INDUSTRY_NAME_FARM_2                                        :Granja
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Cabana de Fusta
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Fusteria
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosc de Cotó de Sucre
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fàbrica de Dolços
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Piles

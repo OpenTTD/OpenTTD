@@ -985,6 +985,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Wybierz 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Losowe odtwarzanie wł./wył.
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Pokaż okno wyboru ścieżek
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Został wybrany zestaw muzyki bez utworów. Żaden utwór nie będzie odtwarzany
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Wybór Programu
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -1320,6 +1322,10 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkow
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Podstawowy zestaw dźwięków
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Wybierz podstawowy zestaw dźwięków do użycia
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o zestawie podstawowych dźwięków
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Podstawowy zestaw muzyki
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wybierz podstawowy zestaw muzyki do użycia
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatkowe informacje o muzyce podstawowej
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomienie trybu pełnoekranowego nie powiodło się
 
@@ -2191,6 +2197,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteka SI
 STR_CONTENT_TYPE_SCENARIO                                       :Scenariusz
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa wysokościowa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Podstawowe dźwięki
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Podstawowa muzyka
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ściąganie...

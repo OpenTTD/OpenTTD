@@ -607,6 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selectee
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programmashuffle aan/uit
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Toon nummerkeuzescherm
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Een muziek set zonder leidjes is gekozen. Er zal geen muziek worden gespeeld
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Muziekprogrammakeuze
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -941,6 +943,11 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvulle
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basisgeluideffectenset
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kies de te gebruiken basisgeluidenset
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvullende informatie over de basisgeluidenset
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis muziek set
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kies de te gebruiken basis muziek set
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} corrupt{P "" e} bestand{P "" en}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basis muziek set
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Volledigschermmodus is mislukt
 
@@ -1812,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :AI-bibliotheek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtemap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basisgeluiden
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Basis muziek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Inhoud binnenhalen...

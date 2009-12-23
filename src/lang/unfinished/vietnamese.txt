@@ -602,6 +602,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Chọn k
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Bật/tắt chơi nhạc ngẫu nhiên
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Hiện cửa số chọn bài nhạc
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Chọn Kiểu Chơi Nhạc
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -936,6 +937,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất bại khi bật chế độ fullscreen
 
 # Custom currency window
@@ -1065,7 +1067,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bật c
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Kiểu tăng tốc của tàu hỏa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Gốc
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Thật
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cấm tàu hỏa và tàu thủy quay 90 độ: {ORANGE}{STRING} {LTBLUE} (vô hiệu với NTD)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cấm tàu hỏa và tàu thủy quay 90 độ: {ORANGE}{STRING} {LTBLUE} (vô hiệu với OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Nhập ga xe lửa xây kế nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép nhập trạm không kế nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử dụng thuật toán chất hàng cải tiến: {ORANGE}{STRING}

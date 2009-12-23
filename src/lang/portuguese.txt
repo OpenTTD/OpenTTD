@@ -229,7 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
-STR_TOOLTIP_SHADE                                               :{BLACK}Sombrear Janela - Apenas mostra a barra de título
+STR_TOOLTIP_SHADE                                               :{BLACK}Encolher Janela - Apenas mostra a barra de título
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -607,6 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ligar/Desligar programa aleatório
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar janela de selecção de faixas de música
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Um conjunto de música vazio foi seleccionado. Nenhuma música vai ser tocada.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Programação Musical
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} '{STRING}'
@@ -941,6 +943,11 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informa�
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleccione o conjunto de sons base a usar
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre o conjunto de sons base
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de música base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccione o conjunto de música base a usar
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ficheiro corrompido{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de música base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de ecrã inteiro falhou
 
@@ -1812,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Livraria IA
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}A descarregar conteúdo...

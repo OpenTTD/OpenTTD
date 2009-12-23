@@ -640,6 +640,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}A 'Sajá
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}A műsor megkeverése be/ki
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}A zenekiválasztó ablak megjelenítése
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Egy zeneszámokat nem tartalmazó zenei beállítás lett kiválasztva. A játékban nem lesz zene.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Zenei műsor kiválasztása
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -968,13 +970,18 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Képment
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kiválaszthatod melyik grafikus alapcsomagot szeretnéd használni
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Kiegészítő információ az alap grafikus szettről
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Válaszd ki melyik alap grafikai beállítást szeretnéd használni
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl{P "" ok}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}További információk az alap grafikai beállításokról
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Hang alapcsomag
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Válaszd ki a használandó alap hang szettet
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Válaszd ki melyik alap hangbeállítást szeretnéd használni
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}További információk az alap hang szettről
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Alap zenei beállítás
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Válaszd ki melyik alap zenei beállítást szeretnéd használni
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} hibás fájl{P "" ok}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}További információk az alap zenei beállításokról
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljesképernyős módra váltás sikertelen
 
@@ -1846,6 +1853,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :MI könyvtár
 STR_CONTENT_TYPE_SCENARIO                                       :Térkép
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Magasságtérkép
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Alap hangok
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Alap zene
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Tartalom letöltése...

@@ -608,6 +608,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Choisir 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Active/Désactive le mode aléatoire
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afficher la fenêtre de sélection de pistes
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Un ensemble de musique vide a été choisis. Aucune musique ne sera jouée.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Sélection du Programme Musical
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -942,6 +944,11 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informat
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sons de base
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Choisir les sons de base à utiliser
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Information additionnelle sur les sons de base
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musique de base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Choisir la musique de base à utiliser
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fichier{P "" s} corrompu{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Information additionnelle sur la musique de base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Échec du mode plein écran
 
@@ -1813,6 +1820,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Bibliothèque I
 STR_CONTENT_TYPE_SCENARIO                                       :Scénario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Carte d'altitude
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons de base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musique de base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléchargement du contenu...

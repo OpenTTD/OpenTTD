@@ -608,6 +608,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'사용�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}무작위 재생 켜기/끄기
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}음악 트랙 선택창 보이기
 
+STR_ERROR_NO_SONGS                                              :{WHITE}음악 세트에 노래가 없습니다. 노래가 연주되지 않을 것입니다.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}음악 프로그램 선택
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -942,6 +944,10 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 �
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 사운드 세트
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}사용할 기본 사운드 세트를 선택하시오
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 사운드 세트에 대한 추가 정보
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 음악 세트
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용할 기본 음악 세트를 선택하세요
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 음악 세트에 대한 추가 정보
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
 
@@ -1813,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 �
 STR_CONTENT_TYPE_SCENARIO                                       :시나리오
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :기본 사운드
+STR_CONTENT_TYPE_BASE_MUSIC                                     :기본 음악
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}콘텐츠 다운로드...
