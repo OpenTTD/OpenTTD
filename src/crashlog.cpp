@@ -86,6 +86,7 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			" Graphics set: %s\n"
 			" Language:     %s\n"
 			" Music driver: %s\n"
+			" Music set:    %s\n"
 			" Sound driver: %s\n"
 			" Sound set:    %s\n"
 			" Video driver: %s\n\n",
@@ -93,6 +94,7 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			BaseGraphics::GetUsedSet() == NULL ? "none" : BaseGraphics::GetUsedSet()->name,
 			StrEmpty(_dynlang.curr_file) ? "none" : _dynlang.curr_file,
 			_music_driver == NULL ? "none" : _music_driver->GetName(),
+			BaseMusic::GetUsedSet() == NULL ? "none" : BaseMusic::GetUsedSet()->name,
 			_sound_driver == NULL ? "none" : _sound_driver->GetName(),
 			BaseSounds::GetUsedSet() == NULL ? "none" : BaseSounds::GetUsedSet()->name,
 			_video_driver == NULL ? "none" : _video_driver->GetName()
