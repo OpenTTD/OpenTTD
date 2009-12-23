@@ -1596,13 +1596,24 @@ uint16 GetServiceIntervalClamped(uint interval, CompanyID company_id)
  * Check if a vehicle has any valid orders
  *
  * @return false if there are no valid orders
+ * @note Conditional orders are not considered valid destination orders
  *
  */
 static bool CheckForValidOrders(const Vehicle *v)
 {
 	const Order *order;
 
-	FOR_VEHICLE_ORDERS(v, order) if (!order->IsType(OT_DUMMY)) return true;
+	FOR_VEHICLE_ORDERS(v, order) {
+		switch (order->GetType()) {
+			case OT_GOTO_STATION:
+			case OT_GOTO_DEPOT:
+			case OT_GOTO_WAYPOINT:
+				return true;
+
+			default:
+				break;
+		}
+	}
 
 	return false;
 }
@@ -1784,7 +1795,7 @@ bool ProcessOrders(Vehicle *v)
 	const Order *order = v->GetOrder(v->cur_order_index);
 
 	/* If no order, do nothing. */
-	if (order == NULL || (v->type == VEH_AIRCRAFT && order->IsType(OT_DUMMY) && !CheckForValidOrders(v))) {
+	if (order == NULL || (v->type == VEH_AIRCRAFT && !CheckForValidOrders(v))) {
 		if (v->type == VEH_AIRCRAFT) {
 			/* Aircraft do something vastly different here, so handle separately */
 			extern void HandleMissingAircraftOrders(Aircraft *v);
