@@ -1119,20 +1119,22 @@ struct BuildVehicleWindow : Window {
 
 		this->DrawWidgets();
 
-		int needed_height = this->details_height;
-		/* Draw details panels. */
-		for (int side = 0; side < 2; side++) {
-			if (this->sel_engine != INVALID_ENGINE) {
-				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(BUILD_VEHICLE_WIDGET_PANEL);
-				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
-						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine);
-				needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+		if (!this->IsShaded()) {
+			int needed_height = this->details_height;
+			/* Draw details panels. */
+			for (int side = 0; side < 2; side++) {
+				if (this->sel_engine != INVALID_ENGINE) {
+					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(BUILD_VEHICLE_WIDGET_PANEL);
+					int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
+							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine);
+					needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+				}
 			}
-		}
-		if (!this->IsShaded() && needed_height != this->details_height) { // Details window are not high enough, enlarge them.
-			this->details_height = needed_height;
-			this->ReInit();
-			return;
+			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
+				this->details_height = needed_height;
+				this->ReInit();
+				return;
+			}
 		}
 	}
 
