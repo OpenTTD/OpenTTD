@@ -2033,7 +2033,6 @@ static void HandleKeyScrolling()
 
 static void MouseLoop(MouseClick click, int mousewheel)
 {
-	DecreaseWindowCounters();
 	HandlePlacePresize();
 	UpdateTileSelection();
 
@@ -2237,6 +2236,8 @@ void InputLoop()
 		}
 		free(w);
 	}
+
+	DecreaseWindowCounters();
 
 	if (_input_events_this_tick != 0) {
 		/* The input loop is called only once per GameLoop() - so we can clear the counter here */
