@@ -1085,10 +1085,10 @@ void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const Vie
 	int sign_height     = ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM, dpi->zoom);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, dpi->zoom);
 
-	if (bottom < sign->top &&
-			top    > sign->top + sign_height &&
-			right  < sign->center - sign_half_width &&
-			left   > sign->center + sign_half_width) {
+	if (bottom < sign->top ||
+			top   > sign->top + sign_height ||
+			right < sign->center - sign_half_width ||
+			left  > sign->center + sign_half_width) {
 		return;
 	}
 
