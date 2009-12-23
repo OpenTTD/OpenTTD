@@ -522,6 +522,10 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 		return;
 	}
 
+	/* When we're parsing conditional orders and the like
+	 * we don't want to consider going to a depot too. */
+	if (!v->current_order.IsType(OT_GOTO_DEPOT) && !v->current_order.IsType(OT_GOTO_STATION)) return;
+
 	const Station *st = Station::Get(v->current_order.GetDestination());
 
 	assert(st != NULL);
