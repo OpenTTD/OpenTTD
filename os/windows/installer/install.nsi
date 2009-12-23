@@ -285,7 +285,7 @@ SectionEnd
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section1} "Minimal OpenTTD installation in English. You need at least one of the game graphics and sound sets installed."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section6} "Translations of OpenTTD."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section3} "Download the free OpenGFX game graphics set. This download is about 3 MiB."
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section4} "Download the free OpenSFX game sound set. This download is about 7 MiB."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section4} "Download the free OpenSFX game sound set. This download is about 10 MiB."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section5} "Download the free NoSound game sound set. You will not hear anything with this. This download is about 7 KiB."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics and sounds from the Transport Tycoon Deluxe CD."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
@@ -402,8 +402,8 @@ Section "Uninstall"
 	Delete "$INSTDIR\scripts\*.*"
 
 	; Base sets for music
-	Delete "$INSTDIR\gm\orig_mus.obm"
-	Delete "$INSTDIR\gm\no_sound.obm"
+	Delete "$INSTDIR\gm\orig_win.obm"
+	Delete "$INSTDIR\gm\no_music.obm"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"
