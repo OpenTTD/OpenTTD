@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Rinomina
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Chiude la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titolo della finestra - trascinarlo per muovere la finestra
+STR_TOOLTIP_SHADE                                               :{BLACK}Comprimi finestra - Mostra solo il titolo
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca questa finestra in modo che non venga chiusa quando si preme il tasto 'Chiudi tutte le finestre'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fare clic e trascinare per ridimensionare questa finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra
@@ -608,6 +609,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selezion
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Attiva/disattiva la riproduzione in ordine casuale
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra la finestra di selezione dei brani musicali
 
+STR_ERROR_NO_SONGS                                              :{WHITE}È stato selezionato un pacchetto musicale senza brani. Non sarà possibile avviare la musica.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selezione programma musicale
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -943,6 +946,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pacchett
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleziona il pacchetto sonoro di base da utilizzare
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sul pacchetto sonoro di base
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pacchetto musicale di base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleziona il pacchetto musicale di base da utilizzare
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file corrott{P o i}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informazioni aggiuntive sul pacchetto musicale di base
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Attivazione modalità schermo intero fallita
 
 # Custom currency window
@@ -1009,6 +1017,13 @@ STR_NUM_LOW                                                     :Basso
 STR_NUM_NORMAL                                                  :Normale
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizzati
+
+STR_VARIETY_NONE                                                :Nessuna
+STR_VARIETY_VERY_LOW                                            :Molto bassa
+STR_VARIETY_LOW                                                 :Bassa
+STR_VARIETY_MEDIUM                                              :Media
+STR_VARIETY_HIGH                                                :Alta
+STR_VARIETY_VERY_HIGH                                           :Molto alta
 
 STR_AI_SPEED_VERY_SLOW                                          :Molto lenta
 STR_AI_SPEED_SLOW                                               :Lenta
@@ -1806,6 +1821,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Libreria I
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Suoni base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musica base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Download dei contenuti...
@@ -2221,7 +2237,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numero città:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero industrie:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altezza nevi:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altezza delle nevi:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sposta in su di uno l'altezza delle nevi perenni
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sposta in giù di uno l'altezza delle nevi perenni
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Seme casuale:
@@ -2233,6 +2249,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Livello del mare:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Levigatezza:
+STR_MAPGEN_VARIETY                                              :{BLACK}Varietà del terreno:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
 
 # Strings for map borders at game generation

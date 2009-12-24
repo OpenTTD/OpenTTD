@@ -980,7 +980,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}További
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Alap zenei beállítás
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Válaszd ki melyik alap zenei beállítást szeretnéd használni
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} hibás fájl{P "" ok}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} hibás fájl
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}További információk az alap zenei beállításokról
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljesképernyős módra váltás sikertelen

@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 �
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 음악 세트
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용할 기본 음악 세트를 선택하세요
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일{P "" "들"}이 손상되었습니다.
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 음악 세트에 대한 추가 정보
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패

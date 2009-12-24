@@ -608,6 +608,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zufällige Wiedergabe an/aus
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zeige Musiktitelauswahl
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Ein Musikset ohne Songs wurde ausgewählt. Es wird keine Musik gespielt werden
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musik-Programmauswahl
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -942,6 +944,11 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Zusatzin
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basissounds
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Zu benutzendes Set an Basissounds auswählen
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Zusatzinformationen zu den Basissounds
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikset
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Ein Musikset auswählen
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fehlerhafte Datei{P "" en}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Zusätzliche Informationen über das Musikset
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Vollbildmodus nicht möglich
 
@@ -1813,6 +1820,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=w}KI-Bibliot
 STR_CONTENT_TYPE_SCENARIO                                       :{G=n}Szenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=w}Reliefkarte
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basissound
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musikset
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lade Erweiterungen herunter...

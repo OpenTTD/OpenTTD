@@ -1275,28 +1275,28 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distan�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}dezactivată
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limita ferestrelor (non-lipicioase): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limita ferestrelor (non-lipicioase): {ORANGE}dezactivată
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Viteza de dezvoltare a orasului: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Viteza de dezvoltare a oraşului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Deloc
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lentă
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normală
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapidă
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Foarte rapidă
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporţia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}1 din {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporţia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}nici unul
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporţia oraşelor care se vor dezvolta de două ori mai repede: {ORANGE}1 din {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporţia oraşelor care se vor dezvolta de două ori mai repede: {ORANGE}nici unul
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator iniţial dimensiune oras: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Elimina elementele de drum absurde pe durata constructiei drumului: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Elimină elementele de drum absurde pe durata construcţiei drumului: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaţă
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcţie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicule
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Statii
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Staţii
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economie
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenti
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Setări vizuale
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacţiune
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Semnale (semafoare)
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Operare marfă
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucatori virtuali
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Reînnoire automată
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Service
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
@@ -1315,8 +1315,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nerecomandat)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Marimea X a hartii: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Marimea Y a hartii: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Mărimea X a hărţii: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Mărimea Y a hărţii: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -1327,13 +1327,13 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Joc nou
 STR_INTRO_LOAD_GAME                                             :{BLACK}Încarcă joc
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Joacă scenariu
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Hartă topografică
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor harta
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor hartă
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Optiuni
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opţiuni
 STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultate: {STRING}
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setari avansate
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setari NewGRF
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setări avansate
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Setări Inteligenţă Artificială
 STR_INTRO_QUIT                                                  :{BLACK}Ieşire
@@ -1341,7 +1341,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Ieşire
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou. Ctrl+Click pentru a sări peste fereastra de configuraţie a harţii
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Încarcă un joc salvat
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Începe un joc nou folosind o hartă topografică pentru generarea terenului
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Începerea unui joc nou folosind un scenariu deja existent
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Începe un joc nou folosind un scenariu deja existent
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Creează un joc/scenariu propriu
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Începe un joc multiplayer
 
@@ -1352,10 +1352,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege pe
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afişează opţiunile jocului
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afişează opţiunile pentru alegerea dificultăţii
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afiseaza setarile avansate
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setarile NewGRF
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afişează setările avansate
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afişează setarile pentru Inteligenţa Artificială
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afişează setările pentru Inteligenţa Artificială
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
 
 # Quit window
@@ -1377,46 +1377,46 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Iesire din joc
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ieşire din joc
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Eşti sigur că vrei să renunţi la acest joc?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
+STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Eşti sigur că vrei să renunţi la acest scenariu?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
 STR_CHEATS_TOOLTIP                                              :{BLACK}Bifa vă indică dacă aţi folosit anterior acest cheat
 STR_CHEATS_WARNING                                              :{BLACK}Atenţie! Eşti pe cale să-ţi trădezi colegii de joc! Nu uita că această ruşine va rămâne înregistrată pentru totdeauna!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Măreşte fondurile cu {CURRENCY}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joaca ca, compania: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joacă drept compania: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii şi lucruri amovibile): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construieşte în modul pauză: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioanele cu reacţie nu se vor prăbuşi (frecvent) pe aeroporturile mici: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioanele cu reacţie nu se vor prăbuşi (frecvent) pe aeroporturile mici: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Schimbă peisajul: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :peisajul temperat
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :peisajul sub-arctic
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :peisajul sub-tropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :peisajul 'tara jucãriilor'
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :peisajul 'ţara jucăriilor'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbă data: {ORANGE}{DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activeaza accesul la valorile de productie: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activează accesul la valorile de producţie: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Schemă culori nouă
+STR_LIVERY_CAPTION                                              :{WHITE}Schemă de culori nouă
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Afiseaza schemele generale de culori
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Arata schemele de culori pentru trenuri
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Arata schemele de culori pentru autovehiculele rutiere
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Arata schemele de culori pentru vase
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Arata schemele de culori pentru avioane
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Afişează schemele generale de culori
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Arată schemele de culori pentru trenuri
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Arată schemele de culori pentru autovehiculele rutiere
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Arată schemele de culori pentru vase
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Arată schemele de culori pentru avioane
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Alege culoarea primară pentru schema selectată
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Alege culoarea secundară pentru schema selectată
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Alege o schemă de culori pentru modificare sau mai multe scheme, folosind Ctrl+clic. Apasă pe căsuţă pentru a comuta schema
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Alege o schemă de culori pentru modificare sau mai multe scheme, folosind Ctrl+Click. Apasă pe căsuţă pentru a comuta schema
 
 STR_LIVERY_DEFAULT                                              :Uniforma standard
-STR_LIVERY_STEAM                                                :Motor cu abur
-STR_LIVERY_DIESEL                                               :Motor diesel
-STR_LIVERY_ELECTRIC                                             :Motor electric
-STR_LIVERY_MONORAIL                                             :Motor monosina
-STR_LIVERY_MAGLEV                                               :Motor Pernă Magnetică
+STR_LIVERY_STEAM                                                :Locomotivă cu abur
+STR_LIVERY_DIESEL                                               :Locomotivă diesel
+STR_LIVERY_ELECTRIC                                             :Locomotivă electric
+STR_LIVERY_MONORAIL                                             :Locomotivă monosină
+STR_LIVERY_MAGLEV                                               :Locomotivă pernă magnetică
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagon călători (Aburi)
@@ -1424,20 +1424,20 @@ STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagon călător
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagon călători (Electric)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagon călători (Monoşină)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagon călători (Pernă Mag.)
-STR_LIVERY_FREIGHT_WAGON                                        :Vagon de marfa
-STR_LIVERY_BUS                                                  :Autobus
+STR_LIVERY_FREIGHT_WAGON                                        :Vagon de marfă
+STR_LIVERY_BUS                                                  :Autobuz
 STR_LIVERY_TRUCK                                                :Camion
-STR_LIVERY_PASSENGER_SHIP                                       :Bac
+STR_LIVERY_PASSENGER_SHIP                                       :Ferry pasageri
 STR_LIVERY_FREIGHT_SHIP                                         :Vas comercial
 STR_LIVERY_HELICOPTER                                           :Elicopter
-STR_LIVERY_SMALL_PLANE                                          :Aeroplan mic
-STR_LIVERY_LARGE_PLANE                                          :Aeroplan mare
-STR_LIVERY_PASSENGER_TRAM                                       :Tramvai calatori
-STR_LIVERY_FREIGHT_TRAM                                         :Tramvai marfa
+STR_LIVERY_SMALL_PLANE                                          :Aeronavă mică
+STR_LIVERY_LARGE_PLANE                                          :Aeronavă mare
+STR_LIVERY_PASSENGER_TRAM                                       :Tramvai călători
+STR_LIVERY_FREIGHT_TRAM                                         :Tramvai marfă
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Alegerea pozei
-STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anulează alegerea unei noi poze
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anulează alegerea unei poze noi
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acceptă poza selectată
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Bărbat
@@ -1447,50 +1447,50 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Alege fi
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Poză nouă
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generează poză aleatoare
 STR_FACE_ADVANCED                                               :{BLACK}Avansat
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selectie avansata a fetei.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selecţie avansată a feţei.
 STR_FACE_SIMPLE                                                 :{BLACK}Simplu
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selectie simplă a fetei.
-STR_FACE_LOAD                                                   :{BLACK}Incarcare
-STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Incarca o fata preferata
-STR_FACE_LOAD_DONE                                              :{WHITE}Fata dvs. preferata a fost incarcata din fisierul de configurare al OpenTTD.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecţie simplă a feţei.
+STR_FACE_LOAD                                                   :{BLACK}Încărcare
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Încarcă o faţă preferată
+STR_FACE_LOAD_DONE                                              :{WHITE}Faţa dvs. preferată a fost încărcată din fişierul de configurare al OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Nr. faţă jucător
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vizualizeaza si/sau seteaza numarul fetei pentru jucator
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vizualizeaza si/sau seteaza numărul fetei pentru jucator
-STR_FACE_FACECODE_SET                                           :{WHITE}Noul cod numeric pentru fata a fost stabilit.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nu am putut stabili numarul de fata al jucatorului - trebuie sa fie un numar intre 0 si 4.294.967.295!
-STR_FACE_SAVE                                                   :{BLACK}Salveaza
-STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salveaza fata preferata
-STR_FACE_SAVE_DONE                                              :{WHITE}Aceasta fata va fi salvata ca fata preferata în fisierul de configurare al OpenTTD.
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vizualizează şi/sau setează numărul feţei pentru jucător
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vizualizează şi/sau setează numărul feţei pentru jucător
+STR_FACE_FACECODE_SET                                           :{WHITE}Noul cod numeric pentru faţă a fost stabilit.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nu am putut stabili numărul de faţă al jucătorului - trebuie să fie un număr între 0 şi 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Salvează
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvează faţa preferată
+STR_FACE_SAVE_DONE                                              :{WHITE}Această faţă va fi salvată ca faţa preferată în fişierul de configurare al OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}European
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Alege feţe europene
 STR_FACE_AFRICAN                                                :{BLACK}African
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Alege feţe africane
 STR_FACE_YES                                                    :Da
 STR_FACE_NO                                                     :Nu
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Permite mustata sau cercei
-STR_FACE_HAIR                                                   :Par:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Schimba parul
-STR_FACE_EYEBROWS                                               :Sprancene:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Schimba sprancenele
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Permite mustaţă sau cercei
+STR_FACE_HAIR                                                   :Păr:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Schimbă părul
+STR_FACE_EYEBROWS                                               :Sprâncene:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Schimbă sprâncenele
 STR_FACE_EYECOLOUR                                              :Culoare ochi:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Schimba culoarea ochilor
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Schimbă culoarea ochilor
 STR_FACE_GLASSES                                                :Ochelari:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Permite ochelari
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Schimba ochelari
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Schimbă ochelari
 STR_FACE_NOSE                                                   :Nas:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Schimba nasul
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Schimbă nasul
 STR_FACE_LIPS                                                   :Buze:
-STR_FACE_MOUSTACHE                                              :Mustata:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Schimba buzele sau mustata
-STR_FACE_CHIN                                                   :Barbie:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Schimba barbia
+STR_FACE_MOUSTACHE                                              :Mustaţă:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Schimbă buzele sau mustaţa
+STR_FACE_CHIN                                                   :Bărbie:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Schimbă bărbia
 STR_FACE_JACKET                                                 :Haină:
 STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Schimbă haina
 STR_FACE_COLLAR                                                 :Guler:
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Schimbă gulerul
 STR_FACE_TIE                                                    :Cravata:
 STR_FACE_EARRING                                                :Cercei:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimba cravata sau cerceii
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -1507,12 +1507,12 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clienţi
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clienţi online / Nr. max. clienţi{}Companii online / Nr. max. companii
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Dimensiune harta
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Dimensiunea hartii jocului{}Clic pentru sortarea dupa zona
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Dimensiune hartă
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Dimensiunea hărţii jocului{}Clic pentru sortarea după suprafaţă
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
-STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data curenta
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data curentă
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Ani
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Numbarul de ani{}de cand ruleaza jocul
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Numărul de ani{}de când rulează jocul
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Limba, versiunea serverului, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clic pe un joc din listă pentru a-l selecta
@@ -1523,27 +1523,27 @@ STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clienţi: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Limba: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Tileset: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Marimea hartii: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mărimea hărţii: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versiune server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serverului: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de început: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data curentă: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protejat cu parola!
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protejat cu parolă!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER PLIN
-STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIUNE DIFERITA
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIUNE DIFERITĂ
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEPOTRIVIRE NEWGRF
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Intră în joc
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualizeaza serverul
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualizeaza informatiile despre server
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualizează serverul
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualizează informaţiile despre server
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Caută server
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Caută un server în reţea
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adaugă un server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adaugă un server pe lista care va fi verificată pentru jocuri active
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Porneste serverul
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Porneste un server propriu
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Porneşte serverul
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Porneşte un server propriu
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduceţi-vă numele dvs.
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Introdu IP-ul serverului
@@ -1553,15 +1553,15 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Începe 
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nume joc:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Numele jocului va fi afişat celorlalţi jucători în meniul de selectare al jocurilor multiplayer
-STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parola
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejeazã-ti jocul cu o parolã dacã nu vrei sã intre jucãtori neautorizati
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parolă
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejează-ţi jocul cu o parolă dacă nu vrei să intre jucători neautorizaţi
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Alege o hartă:
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Ce hartă doreşti să joci?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generează o hartă aleatoare
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (fă reclamă)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" i}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P t ţi}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P ie ii}
@@ -1574,48 +1574,48 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vo
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Începe jocul
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Incarca joc
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Reia un joc multiplayer salvat anterior (asigură-te că s-au conectat jucatorii corespunzători)
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Începe un joc nou în reţea cu o hartă aleatoare sau într-un scenariu
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Încarcă joc
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Reia un joc multiplayer salvat anterior (asigură-te că te-ai conectat cu jucătorul corespunzător)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduceţi un nume pentru joc
 
 # Network game languages
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Oricare
-STR_NETWORK_LANG_ENGLISH                                        :Engleza
-STR_NETWORK_LANG_GERMAN                                         :Germana
-STR_NETWORK_LANG_FRENCH                                         :Franceza
-STR_NETWORK_LANG_BRAZILIAN                                      :Braziliana
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgara
-STR_NETWORK_LANG_CHINESE                                        :Chineza
-STR_NETWORK_LANG_CZECH                                          :Ceha
-STR_NETWORK_LANG_DANISH                                         :Daneza
-STR_NETWORK_LANG_DUTCH                                          :Olandeza
+STR_NETWORK_LANG_ENGLISH                                        :Engleză
+STR_NETWORK_LANG_GERMAN                                         :Germană
+STR_NETWORK_LANG_FRENCH                                         :Franceză
+STR_NETWORK_LANG_BRAZILIAN                                      :Braziliană
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgară
+STR_NETWORK_LANG_CHINESE                                        :Chineză
+STR_NETWORK_LANG_CZECH                                          :Cehă
+STR_NETWORK_LANG_DANISH                                         :Daneză
+STR_NETWORK_LANG_DUTCH                                          :Olandeză
 STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finlandeza
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungara
-STR_NETWORK_LANG_ICELANDIC                                      :Islandeza
-STR_NETWORK_LANG_ITALIAN                                        :Italiana
-STR_NETWORK_LANG_JAPANESE                                       :Japoneza
-STR_NETWORK_LANG_KOREAN                                         :Coreana
-STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniana
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvegiana
-STR_NETWORK_LANG_POLISH                                         :Poloneza
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugheza
-STR_NETWORK_LANG_ROMANIAN                                       :Româna
-STR_NETWORK_LANG_RUSSIAN                                        :Rusa
-STR_NETWORK_LANG_SLOVAK                                         :Slovaca
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
-STR_NETWORK_LANG_SPANISH                                        :Spaniola
-STR_NETWORK_LANG_SWEDISH                                        :Suedeza
-STR_NETWORK_LANG_TURKISH                                        :Turca
-STR_NETWORK_LANG_UKRAINIAN                                      :Ucrainiana
+STR_NETWORK_LANG_FINNISH                                        :Finlandeză
+STR_NETWORK_LANG_HUNGARIAN                                      :Maghiară
+STR_NETWORK_LANG_ICELANDIC                                      :Islandeză
+STR_NETWORK_LANG_ITALIAN                                        :Italiană
+STR_NETWORK_LANG_JAPANESE                                       :Japoneză
+STR_NETWORK_LANG_KOREAN                                         :Coreană
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniană
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvegiană
+STR_NETWORK_LANG_POLISH                                         :Poloneză
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugheză
+STR_NETWORK_LANG_ROMANIAN                                       :Română
+STR_NETWORK_LANG_RUSSIAN                                        :Rusă
+STR_NETWORK_LANG_SLOVAK                                         :Slovacă
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenă
+STR_NETWORK_LANG_SPANISH                                        :Spaniolă
+STR_NETWORK_LANG_SWEDISH                                        :Suedeză
+STR_NETWORK_LANG_TURKISH                                        :Turcă
+STR_NETWORK_LANG_UKRAINIAN                                      :Ucrainiană
 STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :Croată
 STR_NETWORK_LANG_CATALAN                                        :Catalană
 STR_NETWORK_LANG_ESTONIAN                                       :Estonă
-STR_NETWORK_LANG_GALICIAN                                       :Galician
+STR_NETWORK_LANG_GALICIAN                                       :Galiciană
 STR_NETWORK_LANG_GREEK                                          :Greacă
 STR_NETWORK_LANG_LATVIAN                                        :Letonă
 ############ End of leave-in-this-order
@@ -1624,7 +1624,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letonă
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Chatul jocului multiplayer
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}În pregătire pentru joc: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista companiilor din jocul curent. Poti colabora cu o companie sau sa infiintezi una
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista companiilor din jocul curent. Poţi colabora cu o companie sau să infiinţezi una
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO COMPANIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Numele companiei: {WHITE}{STRING}
@@ -1652,12 +1652,12 @@ STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Conectar
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectare..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizare..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Aşteptaţi..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descărcare harta..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descărcare hartă..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Prelucrare date..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Înregistrare...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare info joc..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare info companie..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare informaţii joc..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare informaţii companie..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} clien{P t ţi} înaintea noastră
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} descărcaţi până acum
@@ -1665,7 +1665,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deconectare
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protejat. Introdu parola
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie protejata. Introdu parola
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie protejată. Introdu parola
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clienţi
@@ -1691,44 +1691,44 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola i
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Schimbarea parolei pentru companie
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Parola pentru companie
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Parola implicită pentru companie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Foloseste implicit parola acestei comanii pentru cele nou create
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Foloseşte implicit parola acestei comanii pentru cele nou create
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Intră
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Intră in joc ca membru al aceste companii
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Intră în joc ca membru al acestei companii
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Parola
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protejeaza-ti compania cu o parola pentru a preveni accesul neautorizat.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protejează-ţi compania cu o parolă pentru a preveni accesul neautorizat.
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Alege parola companiei
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Trimite
-STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Echipă] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Mesaj privat] {STRING}:
-STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Toţi] :
 
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Mesaj privat] pentru {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu textul pentru chat in retea
+STR_NETWORK_CHAT_COMPANY                                        :[Echipă] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Echipă] Către {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Mesaj privat] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Mesaj privat] Către {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Toţi] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu textul pentru chat în retea
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nu am detectat o placă de reţea sau jocul a fost compilat fără ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nu am găsit niciun joc în reţea
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serverul nu a răspuns cererii
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nu m-am putut conecta din cauza unei nepotriviri NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizarea jocului în reţea a eşuat.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Conexiunea jocului în reţea a fost întreruptă.
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nu am reuşit să încarc jocul salvat.
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nu pot porni serverul.
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nu pot efectua conectarea.
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Conexiunea #{NUM} a expirat.
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Eroare de protocol. Conexiunea a fost închisă.
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versiunea acestui client este diferită de cea a serverului.
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Parolă greşită.
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Serverul este plin
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Acessul tău este interzis pe acest server
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizarea jocului în reţea a eşuat
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Conexiunea jocului în reţea a fost întreruptă
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nu am reuşit să încarc jocul salvat
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Serverul nu a putut fi pornit
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nu pot efectua conectarea
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Conexiunea #{NUM} a expirat
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Eroare de protocol. Conexiunea a fost închisă
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versiunea acestui client este diferită de cea a serverului
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Parolă greşită
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serverul este plin
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Accesul tău este interzis pe acest server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ai fost dat afară din joc
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat-urile nu sunt permise pe acest server
 
@@ -1743,7 +1743,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :neautorizat
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primit pachet ciudat
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versiune incorectă
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nume folosit deja
-STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :parola greşită
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :parolă incorectă
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :Id de companie gresit in DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :dat afară de pe server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a încercat să folosească un cheat
@@ -1763,7 +1763,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectare clien
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :iese
-STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat in joc
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat în joc
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} a intrat în joc (Clientul #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} a intrat în compania #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a intrat ca spectator
@@ -1772,8 +1772,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a 
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} şi-a schimbat numele în {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a dat companiei tale {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ai dat {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a inchis conexiunea
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Va rugam asteptati...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a închis conexiunea
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm aşteptaţi...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descărcare resurse online
@@ -1802,13 +1802,13 @@ STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Acestă
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nume: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versiune: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descriere: {WHITE}{STRING}
-STR_CONTENT_DETAIL_URL                                          :{SILVER}Pagină: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tip: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Mărime: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Dimensiune: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selectat datorită: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependinţe: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etichete: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD a fost compilat fară suport "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD a fost compilat fără suport "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... descărcarea resurselor nu este posibilă!
 
 # Order of these is important!
@@ -1824,29 +1824,29 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :Muzică de baz�
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarc resursele...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicit fişierele...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Se descarcă {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Se descarcă {STRING} ({NUM} din {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descărcare completă
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} din {BYTES} descărcaţi ({NUM}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Conectare la server eşuată...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descărcare eşuată
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexiune pierdută
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexiune întreruptă
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fişierul nu poate fi scris
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Fişierul descărcat nu a putut fi decompresat
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Optiuni transparenţă
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută transparenţa pentru semnele de statii. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comută transparenta pentru arbori. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comută transparenţa pentru case. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comută transparenţa pentru industrii. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comuta transparenta pentru construibile, precum statii, depouri, indicatoare si linii electrificate. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comută transparenţa pentru poduri. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută transparenţa pentru structuri gen faruri şi antene. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+clic pentru blocare.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Comută transparenţa pentru indicatorii de încarcare. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Seteaza obiectele ca invizibile în loc de transparente
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută transparenţa pentru semnele de staţii. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comută transparenţa pentru arbori. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comută transparenţa pentru case. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comută transparenţa pentru industrii. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comută transparenţa pentru construibile, precum staţii, depouri, indicatoare şi linii electrificate. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comută transparenţa pentru poduri. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută transparenţa pentru structuri gen faruri şi antene. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Comută transparenţa pentru indicatorii de încarcare. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setează obiectele ca invizibile în loc de transparente
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
@@ -1866,7 +1866,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constru
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construcţie cale ferată
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcţie Cale Ferată Electrificată
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcţie cale ferată electrificată
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construcţie monoşină
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construcţie pernă magnetică
 
@@ -1875,10 +1875,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construieşte un depou feroviar (pentru achiziţie şi service de trenuri)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în punct de tranzit. Ctrl permite alipirea punctelor de tranzit distante
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construieşte gară. Ctrl permite alipirea staţiilor distante
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semafoare feroviare. Ctrl comută între semafoare-semnale{}Trage cu mouse-ul pentru a construi semnale automat pe o porţiune de şină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncţiune{}Ctrl-Click comută deschiderea ferestrei de selectie a tipului semnalului
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semnale feroviare. Ctrl comută între semafoare/semnale electrice{}Trage cu mouse-ul pentru a construi semnale automat pe o porţiune de şină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncţiune{}Ctrl+Click comută deschiderea ferestrei de selectie a tipului semnalului
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construieşte pod de cale ferată
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl-Click înlătură şinele din punctele de tranzit si staţii
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi staţii
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteşte tipul de cale ferată
 
 # Rail depot construction window
@@ -1895,23 +1895,23 @@ STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientar
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Alege orientarea gării
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Număr de linii
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Alege numărul de linii al gării
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lungimea liniilor
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Alege lungimea liniilor gării
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lungimea platformei
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Alege lungimea platformei gării
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construieste o statie prin drag & drop
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construieşte o staţie prin drag & drop
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Alege o clasă de staţii pentru afişare
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Alege tipul de staţie pentru construcţie
 
-STR_STATION_CLASS_DFLT                                          :Statie implicitã
-STR_STATION_CLASS_WAYP                                          :Punct itinerar
+STR_STATION_CLASS_DFLT                                          :Staţie implicită
+STR_STATION_CLASS_WAYP                                          :Punct de tranzit
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere Semnal
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere semnal
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Semnal standard (semafor){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cat exista unul sau mai multe semnale verzi de iesire din sectiunea urmatoare a caii ferate. Altfel indica rosu.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieşire (semafor){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrari şi combinate.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comporta atat ca semnal de intrare si iesire. Acest lucru permite constructiile "arborilor" mari de presemnalizare.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieşire (semafor){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrare şi cele combinate.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comportă atât ca semnal de intrare cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Semnal (semafor){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Semnal de sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur pentru oprire. Semnalele de sens unic nu pot fi parcurse în sens opus.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Semnal standard (electric){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.

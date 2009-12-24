@@ -608,6 +608,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Encender/apagar mezclador
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar ventana de selección de pistas musicales
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Se ha seleccionado un conjunto de música sin canciones. No se reproducirá música
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selección del programa de música
