@@ -2913,7 +2913,12 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	}
 
 	if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
-		v->time_counter = 0;
+		/* This might be called when a train is loading. At that time the counter
+		 * is (mis)used (or rather PBS misuses it) for determining how long to wait
+		 * till going to the next load cycle. If that number is set to 0 the wait
+		 * for loading will be 65535 ticks, which is not what we want. Actually, We
+		 * do not want to reset the waiting period during loading in any case. */
+		if (!v->current_order.IsType(OT_LOADING)) v->time_counter = 0;
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 	ClrBit(v->flags, VRF_TRAIN_STUCK);
