@@ -54,7 +54,7 @@ public:
 	/**
 	 * Remove all items from the list and free allocated memory.
 	 */
-	void Reset()
+	FORCEINLINE void Reset()
 	{
 		this->items = 0;
 		this->capacity = 0;
@@ -76,6 +76,7 @@ public:
 
 	/**
 	 * Append an item and return it.
+	 * @return pointer to newly allocated item
 	 */
 	FORCEINLINE T *Append()
 	{
@@ -144,7 +145,8 @@ public:
 		return this->Find(item) != this->End();
 	}
 
-	/** Removes given item from this map
+	/**
+	 * Removes given item from this vector
 	 * @param item item to remove
 	 * @note it has to be pointer to item in this map. It is overwritten by the last item.
 	 */
@@ -223,6 +225,7 @@ public:
 	 */
 	FORCEINLINE const T *Get(uint index) const
 	{
+		assert(index < this->items);
 		return &this->data[index];
 	}
 
@@ -234,6 +237,7 @@ public:
 	 */
 	FORCEINLINE T *Get(uint index)
 	{
+		assert(index < this->items);
 		return &this->data[index];
 	}
 
@@ -245,6 +249,7 @@ public:
 	 */
 	FORCEINLINE const T &operator[](uint index) const
 	{
+		assert(index < this->items);
 		return this->data[index];
 	}
 
@@ -256,6 +261,7 @@ public:
 	 */
 	FORCEINLINE T &operator[](uint index)
 	{
+		assert(index < this->items);
 		return this->data[index];
 	}
 };
