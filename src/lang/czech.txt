@@ -1298,7 +1298,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Barevn�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Počáteční datum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé změny ekonomiky (více menších změn): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat návěstidla každ{P ý é ých}: {ORANGE}{STRING} díl{P ek ky ků}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat návěstidla každ{P 0 ý é ých}: {ORANGE}{STRING} díl{P ek ky ků}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu návěstidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Výchozí typ návěstidla: {ORANGE}{STRING}
