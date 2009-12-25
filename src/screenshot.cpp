@@ -30,7 +30,7 @@
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
 uint _cur_screenshot_format;
-char _screenshot_name[128];
+static char _screenshot_name[128];
 char _full_screenshot_name[MAX_PATH];
 
 /* called by the ScreenShot proc to generate screenshot lines. */
@@ -636,15 +636,21 @@ static bool MakeWorldScreenshot()
  */
 bool MakeScreenshot(ScreenshotType t, const char *name)
 {
+	if (t == SC_VIEWPORT) {
+		/* First draw the dirty parts of the screen and only then change the name
+		 * of the screenshot. This way the screenshot will always show the name
+		 * of the previous screenshot in the 'succesful' message instead of the
+		 * name of the new screenshot (or an empty name). */
+		UndrawMouseCursor();
+		DrawDirtyBlocks();
+	}
+
 	_screenshot_name[0] = '\0';
 	if (name != NULL) strecpy(_screenshot_name, name, lastof(_screenshot_name));
 
 	bool ret;
 	switch (t) {
 		case SC_VIEWPORT:
-			UndrawMouseCursor();
-			DrawDirtyBlocks();
-			/* FALL THROUGH */
 		case SC_RAW:
 			ret = MakeSmallScreenshot();
 			break;
