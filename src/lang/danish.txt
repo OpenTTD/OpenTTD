@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Omdøb
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Luk vindue
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vinduestitel - træk her for at flytte vinduet
+STR_TOOLTIP_SHADE                                               :{BLACK}Oprul vindue - Vis kun titellinien
 STR_TOOLTIP_STICKY                                              :{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skift mellem stort/lille vindue
@@ -304,8 +305,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vis list
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis liste over selskabets køretøjer. Ctrl-Klik åbner/lukker gruppe/køretøjslisten.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vis liste over selskabets skibe. Ctrl-Klik åbner/lukker gruppe/køretøjslisten.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vis liste over selskabets fly. Ctrl+Klik åbner gruppe/køretøjslisten.
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom skærmen ind
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom skærmen ud
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom ind
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom ud
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Byg jernbanespor
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Byg veje
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byg havne
@@ -606,6 +607,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Select '
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Tilfældig afspilning til/fra
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vis vinduet med musiknummervalg
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikprogram Valg
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -831,7 +833,7 @@ STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalite
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Hent lokalitet fra global visning til dette vindue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Sæt global
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Sæt lokaliteten af det globale vindue til den samme som dette vindue
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spilvalg
@@ -941,6 +943,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-ly
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vælg basis-lydsættet der skal bruges
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Mere information om basis-lydsættet
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismusik-sæt
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} beskadiget fil{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fuldskærmstilstand fejlede
 
 # Custom currency window
@@ -1007,6 +1014,13 @@ STR_NUM_LOW                                                     :Lav
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Høj
 STR_NUM_CUSTOM                                                  :Brugerdefineret
+
+STR_VARIETY_NONE                                                :Ingen
+STR_VARIETY_VERY_LOW                                            :Meget lav
+STR_VARIETY_LOW                                                 :Lav
+STR_VARIETY_MEDIUM                                              :Mellem
+STR_VARIETY_HIGH                                                :Høj
+STR_VARIETY_VERY_HIGH                                           :Meget høj
 
 STR_AI_SPEED_VERY_SLOW                                          :Meget langsom
 STR_AI_SPEED_SLOW                                               :Langsom
@@ -1109,7 +1123,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men udelad 
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :af alle køretøjer
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et køretøjs indtjening er negativ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af gamle køretøjer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Forny automatisk køretøj {ORANGE}{STRING}{LTBLUE} md. før/efter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. kontanter før automatisk køretøjsfornyelse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
@@ -1246,6 +1260,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}At stif
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikke tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tilladt, tilpasset by-layout
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Placering af træer i spillet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskove
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :alle steder
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
@@ -1799,6 +1817,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Computerspiller
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarie
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Højdekort
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basislyde
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismusik
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloader indhold...
@@ -2807,7 +2826,7 @@ STR_REPLACE_VEHICLE_SHIP                                        :Skib
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fly
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vælg en køretøjstype, som du ønsker udskiftet
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker benyttet i stedet for den type, du  har valgt i venste side
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker benyttet i stedet for den type, du har valgt i venste side
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for at begynde at udskifte køretøjstypen til venstre med køretøjstypen til højre
@@ -3300,7 +3319,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Udgravning ville skade en tunnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Allerede ved havoverfladen
-STR_ERROR_TOO_HIGH                                              :{WHITE}For højt
+STR_ERROR_TOO_HIGH                                              :{WHITE}... for højt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede fladt
 
 # Company related errors

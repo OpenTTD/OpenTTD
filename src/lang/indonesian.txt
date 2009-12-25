@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Ubah nam
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Judul Jendela - klik dan tahan disini untuk memindahkan jendela
+STR_TOOLTIP_SHADE                                               :{BLACK}Tipiskan jendela - Hanya tampilkan judulnya
 STR_TOOLTIP_STICKY                                              :{BLACK}Catat jendela ini agar tidak tertutup saat di beri perintah "Tutup Semua Jendela"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan Geser untuk mengubah ukuran jendela ini.
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tandai besar/kecil ukuran jendela
@@ -606,6 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Pilih 'B
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Acak/Urut program
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Tampilkan jendela pemilihan judul musik
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Set Musik tanpa lagu telah dipilih. Tidak ada lagu yang akan dimainkan.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Pilihan program Musik
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -941,6 +944,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set suar
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pilih set suara dasar yang digunakan
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informasi tambahan tentang set suara dasar
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set Musik Dasar
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih musik dasar yang akan digunakan
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} berkas rusak
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informasi tambahan tentang musik dasar
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus layar penuh gagal
 
 # Custom currency window
@@ -1254,6 +1262,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :dilarang
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :diijinkan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :diijinkan, rancangan kota dapat diubah sesuai kebiasaan
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Penempatan pohon dalam permainan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :tidak ada {RED}(memotong Pabrik Pengolahan Kayu Gelondongan)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya pada hutan hujan
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :dimanapun
 
@@ -1809,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Perpustakaan AI
 STR_CONTENT_TYPE_SCENARIO                                       :Skenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Peta Ketinggian
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Suara dasar
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musik dasar
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Mengunduh konten...
@@ -2336,6 +2347,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Peringatan: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kesalahan: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kesalahan fatal NewGRF telah terjadi: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} tidak akan bekerja dengan versi TTDPatch yang telah dilaporkan oleh OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} untuk TTD versi {STRING}.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} didesain untuk digunakan dengan {STRING}
@@ -3201,6 +3213,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Semua AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Naikkan
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan AI terpilih dalam daftar
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Turunkan
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI terpilih dalam daftar
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Pilih AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat AI lainnya

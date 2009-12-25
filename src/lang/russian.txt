@@ -355,6 +355,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Пере
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - для перемещения окна тащить за него
+STR_TOOLTIP_SHADE                                               :{BLACK}Свернуть окно, оставив заголовок
 STR_TOOLTIP_STICKY                                              :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна»
 STR_TOOLTIP_RESIZE                                              :{BLACK}Нажмите и тащите для изменения размера окна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Большое/маленькое окно
@@ -743,6 +744,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбо
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./Выкл. случайный выбор программы
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Показать окно выбора музыкальных треков
 
+STR_ERROR_NO_SONGS                                              :{WHITE}В выбранном музыкальном наборе отсутствует музыка.
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбор программы воспроизведения
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
@@ -1081,10 +1084,15 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбр
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о базовом наборе графики
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Основной набор звуков
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базовый набор звуков
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Выберите основной набор звуков для использования
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP.m                             :{BLACK}Выберите основной набор звуков
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о наборе основных звуков
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базовый набор музыки
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выберите базовый набор музыки
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреждённы{P й х х} файл{P 0 "" а ов}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дополнительная информация о наборе базовой музыки
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой полноэкранного режима
 
@@ -1156,6 +1164,13 @@ STR_NUM_LOW                                                     :Малое
 STR_NUM_NORMAL                                                  :Среднее
 STR_NUM_HIGH                                                    :Большое
 STR_NUM_CUSTOM                                                  :Указанное
+
+STR_VARIETY_NONE                                                :Нет
+STR_VARIETY_VERY_LOW                                            :Очень низкое
+STR_VARIETY_LOW                                                 :Низкое
+STR_VARIETY_MEDIUM                                              :Среднее
+STR_VARIETY_HIGH                                                :Большое
+STR_VARIETY_VERY_HIGH                                           :Очень большое
 
 STR_AI_SPEED_VERY_SLOW                                          :Очень медленная
 STR_AI_SPEED_SLOW                                               :Медленная
@@ -1399,6 +1414,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Стр�
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запрещено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Высадка деревьев в игре: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :отключена {RED}(лесопилки не смогут работать)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :только в лесах
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :везде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :слева
@@ -1958,6 +1978,7 @@ STR_CONTENT_TYPE_SCENARIO.acc                                   :{G=m}сцена
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Карта высот
 STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :{G=f}карту высот
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Основные звуки
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Музыка
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загрузка контента...
@@ -2385,6 +2406,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Гене
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество воды:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкость:
+STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразие ландшафта:
 STR_MAPGEN_GENERATE                                             :{WHITE}Создать
 
 # Strings for map borders at game generation
@@ -2484,6 +2506,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Ошибка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Критическая ошибка: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ошибка при работе с NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} не будет работать с версией TTDPatch, сообщенной OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Файл {1:STRING} требует {STRING}-версию TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} сделан для использования совместно с {STRING}
@@ -3358,6 +3381,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Конф
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}ИИ, которые будут использоваться в игре
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Человек
 STR_AI_CONFIG_RANDOM_AI                                         :Случ. ИИ
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Выбор ИИ
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузить другой ИИ
