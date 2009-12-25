@@ -64,6 +64,7 @@ enum SaveLoadAction {
 	SLA_LOAD, ///< loading
 	SLA_SAVE, ///< saving
 	SLA_PTRS, ///< fixing pointers
+	SLA_NULL, ///< null all pointers (on loading error)
 };
 
 enum NeedLength {
@@ -106,6 +107,32 @@ struct SaveLoadParams {
 
 static SaveLoadParams _sl;
 
+/** Null all pointers (convert index -> NULL) */
+static void SlNullPointers()
+{
+	const ChunkHandler *ch;
+	const ChunkHandler * const *chsc;
+
+	_sl.action = SLA_NULL;
+
+	DEBUG(sl, 1, "Nulling pointers");
+
+	for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
+		while (true) {
+			if (ch->ptrs_proc != NULL) {
+				DEBUG(sl, 2, "Nulling pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
+				ch->ptrs_proc();
+			}
+			if (ch->flags & CH_LAST) break;
+			ch++;
+		}
+	}
+
+	DEBUG(sl, 1, "All pointers nulled");
+
+	assert(_sl.action == SLA_NULL);
+}
+
 /** Error handler, calls longjmp to simulate an exception.
  * @todo this was used to have a central place to handle errors, but it is
  * pretty ugly, and seriously interferes with any multithreaded approaches */
@@ -114,6 +141,11 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 	_sl.error_str = string;
 	free(_sl.extra_msg);
 	_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
+	/* We have to NULL all pointers here; we might be in a state where
+	 * the pointers are actually filled with indices, which means that
+	 * when we access them during cleaning the pool dereferences of
+	 * those indices will be made with segmentation faults as result. */
+	SlNullPointers();
 	throw std::exception();
 }
 
@@ -570,6 +602,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			break;
 		}
 		case SLA_PTRS: break;
+		case SLA_NULL: break;
 		default: NOT_REACHED();
 	}
 }
@@ -678,6 +711,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			break;
 		}
 		case SLA_PTRS: break;
+		case SLA_NULL: break;
 		default: NOT_REACHED();
 	}
 }
@@ -700,7 +734,7 @@ static inline size_t SlCalcArrayLen(size_t length, VarType conv)
  */
 void SlArray(void *array, size_t length, VarType conv)
 {
-	if (_sl.action == SLA_PTRS) return;
+	if (_sl.action == SLA_PTRS || _sl.action == SLA_NULL) return;
 
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
@@ -811,6 +845,9 @@ static void SlList(void *list, SLRefType conv)
 			}
 			break;
 		}
+		case SLA_NULL:
+			l->clear();
+			break;
 		default: NOT_REACHED();
 	}
 }
@@ -912,6 +949,9 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 						case SLA_PTRS:
 							*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
 							break;
+						case SLA_NULL:
+							*(void **)ptr = NULL;
+							break;
 						default: NOT_REACHED();
 					}
 					break;
@@ -932,6 +972,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 				case SLA_SAVE: SlWriteByte(sld->version_to); break;
 				case SLA_LOAD: *(byte *)ptr = sld->version_from; break;
 				case SLA_PTRS: break;
+				case SLA_NULL: break;
 				default: NOT_REACHED();
 			}
 			break;
@@ -1146,8 +1187,6 @@ static void SlLoadChunks()
 	}
 }
 
-static const char *_sl_ptrs_error; ///< error message if there was an error during fixing pointers, NULL otherwise
-
 /** Fix all pointers (convert index -> pointer) */
 static void SlFixPointers()
 {
@@ -1155,7 +1194,6 @@ static void SlFixPointers()
 	const ChunkHandler * const *chsc;
 
 	_sl.action = SLA_PTRS;
-	_sl_ptrs_error = NULL;
 
 	DEBUG(sl, 1, "Fixing pointers");
 
@@ -1170,9 +1208,6 @@ static void SlFixPointers()
 			ch++;
 		}
 	}
-
-	/* We need to fix all possible pointers even if there were invalid ones. This way pool cleaning will work fine. */
-	if (_sl_ptrs_error != NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, _sl_ptrs_error);
 
 	DEBUG(sl, 1, "All pointers fixed");
 
@@ -1537,55 +1572,41 @@ static void *IntToReference(size_t index, SLRefType rt)
 	switch (rt) {
 		case REF_ORDERLIST:
 			if (OrderList::IsValidID(index)) return OrderList::Get(index);
-			_sl_ptrs_error = "Referencing invalid OrderList";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid OrderList");
 
 		case REF_ORDER:
 			if (Order::IsValidID(index)) return Order::Get(index);
 			/* in old versions, invalid order was used to mark end of order list */
 			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
-			_sl_ptrs_error = "Referencing invalid Order";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Order");
 
 		case REF_VEHICLE_OLD:
 		case REF_VEHICLE:
 			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
-			_sl_ptrs_error = "Referencing invalid Vehicle";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Vehicle");
 
 		case REF_STATION:
 			if (Station::IsValidID(index)) return Station::Get(index);
-			_sl_ptrs_error = "Referencing invalid Station";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Station");
 
 		case REF_TOWN:
 			if (Town::IsValidID(index)) return Town::Get(index);
-			_sl_ptrs_error = "Referencing invalid Town";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Town");
 
 		case REF_ROADSTOPS:
 			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
-			_sl_ptrs_error = "Referencing invalid RoadStop";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid RoadStop");
 
 		case REF_ENGINE_RENEWS:
 			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
-			_sl_ptrs_error = "Referencing invalid EngineRenew";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid EngineRenew");
 
 		case REF_CARGO_PACKET:
 			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
-			_sl_ptrs_error = "Referencing invalid CargoPacket";
-			break;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid CargoPacket");
 
 		default: NOT_REACHED();
 	}
-
-	/* Print a debug message about each invalid reference */
-	DEBUG(sl, 1, "%s (index = " PRINTF_SIZE ")", _sl_ptrs_error, index);
-
-	/* Return NULL for broken savegames */
-	return NULL;
 }
 
 /** The format for a reader/writer type of a savegame */
