@@ -23,9 +23,9 @@
 
 /** Container for all information about a text effect */
 struct TextEffect : public ViewportSign{
-	StringID string_id;  ///< String to draw for the text effect, if INVALID_STRING_ID then it's not valid
-	uint16 duration;     ///< How long the text effect should stay
 	uint64 params_1;     ///< DParam parameter
+	StringID string_id;  ///< String to draw for the text effect, if INVALID_STRING_ID then it's not valid
+	uint8 duration;      ///< How long the text effect should stay, in ticks (applies only when mode == TE_RISING)
 	TextEffectMode mode; ///< Type of text effect
 
 	/** Reset the text effect */
@@ -40,7 +40,7 @@ struct TextEffect : public ViewportSign{
 static SmallVector<struct TextEffect, 32> _text_effects; ///< Text effects are stored there
 
 /* Text Effects */
-TextEffectID AddTextEffect(StringID msg, int center, int y, uint16 duration, TextEffectMode mode)
+TextEffectID AddTextEffect(StringID msg, int center, int y, uint8 duration, TextEffectMode mode)
 {
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
@@ -80,25 +80,21 @@ void RemoveTextEffect(TextEffectID te_id)
 	_text_effects[te_id].Reset();
 }
 
-static void MoveTextEffect(TextEffect *te)
-{
-	/* Never expire for duration of 0xFFFF */
-	if (te->duration == 0xFFFF) return;
-	if (te->duration < 8) {
-		te->Reset();
-	} else {
-		te->duration -= 8;
-		te->MarkDirty();
-		te->top--;
-		te->MarkDirty();
-	}
-}
-
 void MoveAllTextEffects()
 {
 	const TextEffect *end = _text_effects.End();
 	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
-		if (te->string_id != INVALID_STRING_ID && te->mode == TE_RISING) MoveTextEffect(te);
+		if (te->string_id == INVALID_STRING_ID) continue;
+		if (te->mode != TE_RISING) continue;
+
+		if (te->duration-- == 0) {
+			te->Reset();
+			continue;
+		}
+
+		te->MarkDirty();
+		te->top--;
+		te->MarkDirty();
 	}
 }
 
