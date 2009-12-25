@@ -228,7 +228,6 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	buffer += seprintf(buffer, last, "Registers:\n");
 #ifdef _M_AMD64
 	buffer += seprintf(buffer, last,
-		"Registers:\n"
 		" RAX: %.16llX RBX: %.16llX RCX: %.16llX RDX: %.16llX\n"
 		" RSI: %.16llX RDI: %.16llX RBP: %.16llX RSP: %.16llX\n"
 		" R8:  %.16llX R9:  %.16llX R10: %.16llX R11: %.16llX\n"
