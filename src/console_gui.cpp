@@ -145,7 +145,7 @@ static void IConsoleClearCommand()
 static inline void IConsoleResetHistoryPos() {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
 
 
-static void IConsoleHistoryAdd(const char *cmd);
+static const char *IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
 /** Widgets of the console window. */
@@ -279,13 +279,13 @@ struct IConsoleWindow : Window
 				IConsoleSwitch();
 				break;
 
-			case WKC_RETURN: case WKC_NUM_ENTER:
+			case WKC_RETURN: case WKC_NUM_ENTER: {
 				IConsolePrintF(CC_COMMAND, "] %s", _iconsole_cmdline.buf);
-				IConsoleHistoryAdd(_iconsole_cmdline.buf);
-
-				IConsoleCmdExec(_iconsole_cmdline.buf);
+				const char *cmd = IConsoleHistoryAdd(_iconsole_cmdline.buf);
 				IConsoleClearCommand();
-				break;
+
+				if (cmd != NULL) IConsoleCmdExec(cmd);
+			} break;
 
 			case WKC_CTRL | WKC_RETURN:
 				_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
@@ -412,14 +412,15 @@ void IConsoleClose() {if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();}
  * Add the entered line into the history so you can look it back
  * scroll, etc. Put it to the beginning as it is the latest text
  * @param cmd Text to be entered into the 'history'
+ * @return the command to execute
  */
-static void IConsoleHistoryAdd(const char *cmd)
+static const char *IConsoleHistoryAdd(const char *cmd)
 {
 	/* Strip all spaces at the begin */
 	while (IsWhitespace(*cmd)) cmd++;
 
 	/* Do not put empty command in history */
-	if (StrEmpty(cmd)) return;
+	if (StrEmpty(cmd)) return NULL;
 
 	/* Do not put in history if command is same as previous */
 	if (_iconsole_history[0] == NULL || strcmp(_iconsole_history[0], cmd) != 0) {
@@ -430,6 +431,7 @@ static void IConsoleHistoryAdd(const char *cmd)
 
 	/* Reset the history position */
 	IConsoleResetHistoryPos();
+	return _iconsole_history[0];
 }
 
 /**
