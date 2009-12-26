@@ -87,6 +87,10 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 			proc = BaseGraphics::HasSet;
 			break;
 
+		case CONTENT_TYPE_BASE_MUSIC:
+			proc = BaseMusic::HasSet;
+			break;
+
 		case CONTENT_TYPE_BASE_SOUNDS:
 			proc = BaseSounds::HasSet;
 			break;
@@ -158,6 +162,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 {
 	if (type == CONTENT_TYPE_END) {
 		this->RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		this->RequestContentList(CONTENT_TYPE_BASE_MUSIC);
 		this->RequestContentList(CONTENT_TYPE_BASE_SOUNDS);
 		this->RequestContentList(CONTENT_TYPE_SCENARIO);
 		this->RequestContentList(CONTENT_TYPE_HEIGHTMAP);
@@ -300,6 +305,7 @@ static char *GetFullFilename(const ContentInfo *ci, bool compressed)
 	switch (ci->type) {
 		default: return NULL;
 		case CONTENT_TYPE_BASE_GRAPHICS: dir = DATA_DIR;       break;
+		case CONTENT_TYPE_BASE_MUSIC:    dir = GM_DIR;         break;
 		case CONTENT_TYPE_BASE_SOUNDS:   dir = DATA_DIR;       break;
 		case CONTENT_TYPE_NEWGRF:        dir = DATA_DIR;       break;
 		case CONTENT_TYPE_AI:            dir = AI_DIR;         break;
