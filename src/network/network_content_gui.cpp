@@ -435,6 +435,9 @@ public:
 
 	void DrawMatrix(const Rect &r) const
 	{
+		/* Is there something to do? */
+		if (this->content.Length() == 0) return;
+
 		const NWidgetBase *nwi_checkbox = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX);
 		const NWidgetBase *nwi_name = this->GetWidget<NWidgetBase>(NCLWW_NAME);
 		const NWidgetBase *nwi_type = this->GetWidget<NWidgetBase>(NCLWW_TYPE);
