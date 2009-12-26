@@ -607,6 +607,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Control de programa aleatori actiu/inactiu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra la finestra de selecció de pistes de música
 
+STR_ERROR_NO_SONGS                                              :{WHITE}S'ha seleccionat un joc de música sense cançons. No es reproduiran cançons
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selecció del Programa de Música
@@ -943,6 +944,10 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Joc de s
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un joc de sons bàsics a utilitzar
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació additional sobre el joc de sons bàsics
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Joc de música base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el joc de música base a utilitzar
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fitxer{P "" s} corromput{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació adicional sobre el joc de música base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El mode en pantalla completa ha fallat
 
@@ -1814,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Llibreria IA
 STR_CONTENT_TYPE_SCENARIO                                       :Escenari
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa d'alçades
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons bàsics
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarregant contingut...

@@ -423,7 +423,7 @@ STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plasser skilt
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/music
+STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/musikk
 ############ range ends here
 
 ############ range for message menu starts
@@ -606,6 +606,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vel 'Eig
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vel 'Eigendefinert 2'-program
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skru tilfeldig program av/på
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Syne musikkspormeny
+
+STR_ERROR_NO_SONGS                                              :{WHITE}Eit basismusikk-sett utan songar har blitt valt. Ingen songar vil bli spelt
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikkprogram
@@ -942,6 +944,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-ly
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel basis-lydsett som skal nyttast
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basis-lydsettet
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismusikk-sett
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel basismusikk som skal nyttast
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} øydelagd fil{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggsinformasjon om basis-musikksettet
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
 
 # Custom currency window
@@ -1009,6 +1016,12 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Høgt
 STR_NUM_CUSTOM                                                  :Eigendefinert
 
+STR_VARIETY_NONE                                                :Ingen
+STR_VARIETY_VERY_LOW                                            :Særs lågt
+STR_VARIETY_LOW                                                 :Låg
+STR_VARIETY_MEDIUM                                              :Middels
+STR_VARIETY_HIGH                                                :Høgt
+STR_VARIETY_VERY_HIGH                                           :Særs høgt
 
 STR_AI_SPEED_VERY_SLOW                                          :Særs seint
 STR_AI_SPEED_SLOW                                               :Seint
@@ -1806,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :AI bibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Høgdekart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basislydar
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismusikk
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lastar ned innhald...
@@ -2474,7 +2488,7 @@ STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Forferdeleg
-STR_CARGO_RATING_VERY_POOR                                      :Skralt
+STR_CARGO_RATING_VERY_POOR                                      :Særs skralt
 STR_CARGO_RATING_POOR                                           :Dårleg
 STR_CARGO_RATING_MEDIOCRE                                       :Middels
 STR_CARGO_RATING_GOOD                                           :God
@@ -3582,7 +3596,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for l
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikkje lage rutetabell for køyretøyet
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Køyretøy kan berre venta på stasjonar
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Køyretøy kan kun venta på stasjonar
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette køyretøyet stoppar ikkje på denne stasjonen
 
 # Sign related errors

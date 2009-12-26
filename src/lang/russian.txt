@@ -3382,6 +3382,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}ИИ, к
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Человек
 STR_AI_CONFIG_RANDOM_AI                                         :Случ. ИИ
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Вверх
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Переместить этот модуль ИИ вверх по списку
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Вниз
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Переместить этот модуль ИИ вниз по списку
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Выбор ИИ
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузить другой ИИ
