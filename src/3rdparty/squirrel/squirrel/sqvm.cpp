@@ -334,12 +334,8 @@ bool SQVM::StartCall(SQClosure *closure,SQInteger target,SQInteger args,SQIntege
 	SQInteger nargs = args;
 	if (paramssize != nargs) {
 		SQInteger ndef = func->_ndefaultparams;
-		if(ndef && nargs < paramssize) {
-			SQInteger diff = paramssize - nargs;
-			if (diff > ndef) {
-				Raise_Error(_SC("wrong number of parameters"));
-				return false;
-			}
+		SQInteger diff;
+		if(ndef && nargs < paramssize && (diff = paramssize - nargs) <= ndef) {
 			for(SQInteger n = ndef - diff; n < ndef; n++) {
 				_stack._vals[stackbase + (nargs++)] = closure->_defaultparams[n];
 			}
