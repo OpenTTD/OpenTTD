@@ -225,7 +225,8 @@ public:
 	 */
 	FORCEINLINE const T *Get(uint index) const
 	{
-		assert(index < this->items);
+		/* Allow access to the 'first invalid' item */
+		assert(index <= this->items);
 		return &this->data[index];
 	}
 
@@ -237,7 +238,8 @@ public:
 	 */
 	FORCEINLINE T *Get(uint index)
 	{
-		assert(index < this->items);
+		/* Allow access to the 'first invalid' item */
+		assert(index <= this->items);
 		return &this->data[index];
 	}
 
