@@ -46,6 +46,7 @@
 #include "core/pool_func.hpp"
 #include "economy_base.h"
 #include "articulated_vehicles.h"
+#include "roadstop_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -571,6 +572,15 @@ void Vehicle::PreDestructor()
 		if (st != NULL) {
 			const AirportFTA *layout = st->Airport()->layout;
 			CLRBITS(st->airport_flags, layout[a->previous_pos].block | layout[a->pos].block);
+		}
+	}
+
+
+	if (this->type == VEH_ROAD && this->IsPrimaryVehicle()) {
+		RoadVehicle *v = RoadVehicle::From(this);
+		if (!(v->vehstatus & VS_CRASHED) && IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END)) {
+			/* Leave the drive through roadstop, when you have not already left it. */
+			RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 		}
 	}
 
