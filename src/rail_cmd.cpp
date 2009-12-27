@@ -973,7 +973,13 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		MarkTileDirtyByTile(tile);
 		AddTrackToSignalBuffer(tile, track, _current_company);
 		YapfNotifyTrackLayoutChange(tile, track);
-		if (v != NULL) TryPathReserve(v, true);
+		if (v != NULL) {
+			/* Extend the train's path if it's not stopped or loading, or not at a safe position. */
+			if (!(((v->vehstatus & VS_STOPPED) && v->cur_speed == 0) || v->current_order.IsType(OT_LOADING)) ||
+					!IsSafeWaitingPosition(v, v->tile, v->GetVehicleTrackdir(), true, _settings_game.pf.forbid_90_deg)) {
+				TryPathReserve(v, true);
+			}
+		}
 	}
 
 	return cost;
@@ -1214,6 +1220,18 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 		Train *v = NULL;
 		if (HasReservedTracks(tile, TrackToTrackBits(track))) {
 			v = GetTrainForReservation(tile, track);
+		} else if (IsPbsSignal(GetSignalType(tile, track))) {
+			/* PBS signal, might be the end of a path reservation. */
+			Trackdir td = TrackToTrackdir(track);
+			for (int i = 0; v == NULL && i < 2; i++, td = ReverseTrackdir(td)) {
+				/* Only test the active signal side. */
+				if (!HasSignalOnTrackdir(tile, ReverseTrackdir(td))) continue;
+				TileIndex next = TileAddByDiagDir(tile, TrackdirToExitdir(td));
+				TrackBits tracks = TrackdirBitsToTrackBits(TrackdirReachesTrackdirs(td));
+				if (HasReservedTracks(next, tracks)) {
+					v = GetTrainForReservation(next, TrackBitsToTrack(GetReservedTrackbits(next) & tracks));
+				}
+			}
 		}
 		SetPresentSignals(tile, GetPresentSignals(tile) & ~SignalOnTrack(track));
 
