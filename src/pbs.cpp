@@ -369,8 +369,14 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 	if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) return include_line_end;
 
 	if (ft.m_new_td_bits != TRACKDIR_BIT_NONE && KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
+		Trackdir td = FindFirstTrackdir(ft.m_new_td_bits);
 		/* PBS signal on next trackdir? Safe position. */
-		if (HasPbsSignalOnTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) return true;
+		if (HasPbsSignalOnTrackdir(ft.m_new_tile, td)) return true;
+		/* One-way PBS signal against us? Safe if end-of-line is allowed. */
+		if (IsTileType(ft.m_new_tile, MP_RAILWAY) && HasSignalOnTrackdir(ft.m_new_tile, ReverseTrackdir(td)) &&
+				GetSignalType(ft.m_new_tile, TrackdirToTrack(td)) == SIGTYPE_PBS_ONEWAY) {
+			return include_line_end;
+		}
 	}
 
 	return false;
