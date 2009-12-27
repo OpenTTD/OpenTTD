@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Gje nytt
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindauge
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tittel på vindauget - dra for å flytte vindauget
+STR_TOOLTIP_SHADE                                               :{BLACK}Minimer vindauget - Vis kun tittelfeltet
 STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vindauget mot 'Lukk alle vindauge'-knappen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre storleiken på vindauget
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Byt mellom stor/liten storleik på vindauga
@@ -1507,7 +1508,7 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Klientar
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klientar på nett / maks. antal klientar{}Firma på nett / maks. antal firma
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartstørrelse
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartstorleik
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Spelets kartstorleik{}Klikk for å sortere etter område
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dato
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Aktuell dato
@@ -1758,7 +1759,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spelet er framl
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spelet er framleis pausa ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spelet er framleis pausa ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spelet held fram ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ikke nok spillere
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ikkje nok spelarar
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kobler til klienter
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -1791,7 +1792,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke-/namn-filter
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Last ned valt innhald
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total nedlastingsstorleik: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INNHALDSINFORMASJON
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikkje valt at dette skal lastast ned
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Du har valt dette for nedlasting
@@ -1804,7 +1805,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versjon
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Omtale: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Størrelse: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedlastingsstorleik: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald på grunn av: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Avheng av: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Merker: {WHITE}{STRING}
@@ -2042,7 +2043,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser 
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plasser fyrtårn
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Trykk og held inne CTRL for å fjerne det
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plasser radiosendar
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Øk storleiken på landarealet som skal hevast/senkast
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Auk landarealet som skal senkast/hevast
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Mink storleiken på landarealet som skal hevast/senkast
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfeldig landskap
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Lag eit nytt scenario
@@ -2247,6 +2248,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgor
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havflate:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Glattleik:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variasjonsdistrubusjon:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generer
 
 # Strings for map borders at game generation

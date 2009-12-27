@@ -1079,7 +1079,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}매우 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :오리지널 (언덕을 오를 때 속도 감속)
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :현실적으로 (급커브에서 속도 감속)
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (NPF 필요)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (OPF로 불가)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}

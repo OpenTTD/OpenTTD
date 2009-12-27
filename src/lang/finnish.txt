@@ -345,7 +345,7 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin asetukset
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukset
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysvalinnat
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Asemien nimet näkyvissä
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Reittipisteitten nimet näkyvissä
@@ -1836,7 +1836,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... tied
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ei voitu purkaa ladattua tiedostoa
 
 # Transparency settings window
-STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läpinäkyvyysvalinnat
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läpinäkyvyysasetukset
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Muuta asemakylttien läpinäkyvyyttä. Ctrl+Click lukitaksesi.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Muuta puiden läpinäkyvyyttä. Ctrl+Click lukitaksesi.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Muuta talojen läpinäkyvyyttä. Ctrl+Click lukitaksesi.
@@ -1875,7 +1875,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna veturitalli (junien ostamista ja huoltoa varten).
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi. Ctrl liittää reittipisteet
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl liittää asemat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valoopastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valo-opastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, reittipisteiden, asemien ja opastimien rakentaminen/poisto päälle/pois.

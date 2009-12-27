@@ -1476,11 +1476,49 @@ STR_FACE_EYECOLOUR                                              :Màu mắt:
 STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Thay đổi màu mắt
 STR_FACE_GLASSES                                                :Mắt kính:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Chọn mắt kính
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Thay đổi mắt kính
+STR_FACE_NOSE                                                   :Mũi:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Thay đổi mũi
+STR_FACE_LIPS                                                   :Môi:
+STR_FACE_MOUSTACHE                                              :Ria mép:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Thay đổi môi hoặc ria mép
+STR_FACE_CHIN                                                   :Cằm:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Thay đổi cằm
+STR_FACE_JACKET                                                 :Áo Jacket:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Thay đổi áo Jacket
+STR_FACE_COLLAR                                                 :Cổ áo:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Thay đổi cổ áo
+STR_FACE_TIE                                                    :Cà vạt:
+STR_FACE_EARRING                                                :Bông tai:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Nhiều người chơi
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Kết nối:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Lựa chọn chơi game nối mạng internet hặc nối mạng nội bộ (LAN)
+STR_NETWORK_SERVER_LIST_LAN                                     :Mạng nội bộ
+STR_NETWORK_SERVER_LIST_INTERNET                                :Mạng internet
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Tên người chơi:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Đây là tên khác mà người chơi sẽ nhận ra bạn
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Tên
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Tên trong trò chơi
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Máy con
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Máy con trực tuyến / Máy con tối đa{}Máy chủ trực tuyến / máy chủ tối đa
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kích thước bản đồ
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kích thước bản đồ trong game{}Nhấn vào đây để sắp xếp theo diện tích
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Ngày
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Ngày hiện tại
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Năm
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Ngôn ngữ, phiên bản server, etc.
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Chọn một game trong danh sách
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server bạn đã vào lần trước:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Chọn server bạn đã chơi lần trước
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}THÔNG TIN GAME
 
 
 
@@ -1975,6 +2013,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn x
 
 
 # AI configuration window
+STR_AI_CONFIG_RANDOM_AI                                         :AI Ngẫu Nhiên
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Di chuyển lên trên
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách
