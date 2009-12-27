@@ -688,6 +688,8 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_TREE_PULLDOWN:          _settings_newgame.game_creation.tree_placer = index; break;
 			case GLAND_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 			case GLAND_VARIETY_PULLDOWN:       _settings_newgame.game_creation.variety = index; break;
+			case GLAND_LANDSCAPE_PULLDOWN:     _settings_newgame.game_creation.land_generator = index; break;
+			case GLAND_HEIGHTMAP_ROTATION_PULLDOWN: _settings_newgame.game_creation.heightmap_rotation = index; break;
 
 			case GLAND_TOWN_PULLDOWN:
 				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
@@ -700,15 +702,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			case GLAND_INDUSTRY_PULLDOWN:
 				IConsoleSetSetting("difficulty.number_industries", index);
-				break;
-
-			case GLAND_LANDSCAPE_PULLDOWN:
-			/* case GLAND_HEIGHTMAP_PULLDOWN: */
-				if (mode == GLWP_HEIGHTMAP) {
-					_settings_newgame.game_creation.heightmap_rotation = index;
-				} else {
-					_settings_newgame.game_creation.land_generator = index;
-				}
 				break;
 
 			case GLAND_TERRAIN_PULLDOWN: {
