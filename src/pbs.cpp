@@ -262,7 +262,7 @@ static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
  * @param train_on_res Is set to a train we might encounter
  * @returns The last tile of the reservation or the current train tile if no reservation present.
  */
-PBSTileInfo FollowTrainReservation(const Train *v, bool *train_on_res)
+PBSTileInfo FollowTrainReservation(const Train *v, Vehicle **train_on_res)
 {
 	assert(v->type == VEH_TRAIN);
 
@@ -274,7 +274,21 @@ PBSTileInfo FollowTrainReservation(const Train *v, bool *train_on_res)
 	FindTrainOnTrackInfo ftoti;
 	ftoti.res = FollowReservation(v->owner, GetRailTypeInfo(v->railtype)->compatible_railtypes, tile, trackdir);
 	ftoti.res.okay = IsSafeWaitingPosition(v, ftoti.res.tile, ftoti.res.trackdir, true, _settings_game.pf.forbid_90_deg);
-	if (train_on_res != NULL) *train_on_res = HasVehicleOnPos(ftoti.res.tile, &ftoti, FindTrainOnTrackEnum);
+	if (train_on_res != NULL) {
+		FindVehicleOnPos(ftoti.res.tile, &ftoti, FindTrainOnTrackEnum);
+		if (ftoti.best != NULL) *train_on_res = ftoti.best->First();
+		if (*train_on_res == NULL && IsRailStationTile(ftoti.res.tile)) {
+			/* The target tile is a rail station. The track follower
+			 * has stopped on the last platform tile where we haven't
+			 * found a train. Also check all previous platform tiles
+			 * for a possible train. */
+			TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(ftoti.res.trackdir)));
+			for (TileIndex st_tile = ftoti.res.tile + diff; *train_on_res == NULL && IsCompatibleTrainStationTile(st_tile, ftoti.res.tile); st_tile += diff) {
+				FindVehicleOnPos(st_tile, &ftoti, FindTrainOnTrackEnum);
+				if (ftoti.best != NULL) *train_on_res = ftoti.best->First();
+			}
+		}
+	}
 	return ftoti.res;
 }
 
