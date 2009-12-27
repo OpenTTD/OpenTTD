@@ -1139,8 +1139,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);  // black background of maps list
 
 		for (uint pos = this->vscroll.GetPosition(); pos < _fios_items.Length() + 1; pos++) {
-			const FiosItem *item = _fios_items.Get(pos - 1);
-			if (item == this->map || (pos == 0 && this->map == NULL)) {
+			const FiosItem *item = (pos == 0) ? NULL : _fios_items.Get(pos - 1);
+			if (item == this->map) { // this->map == NULL for first item
 				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, 155); // show highlighted item with a different colour
 			}
 
