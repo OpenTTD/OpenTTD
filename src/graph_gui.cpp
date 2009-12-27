@@ -1100,7 +1100,7 @@ public:
 		FOR_ALL_COMPANIES(c) {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
-			SetDParam(2, widest_title);
+			SetDParam(2, _performance_titles[widest_title]);
 			widest_width = max(widest_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_NAME).width);
 		}
 
