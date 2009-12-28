@@ -929,8 +929,8 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Koko näyttö
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa.
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ruudun erottelukyky
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse ruudun erottelukyky.
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Näytön tarkkuus
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse käytettävä näytön tarkkuus
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Kuvakaappauksen muoto
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Valitse kuvankaappauksen muoto.
@@ -1078,7 +1078,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Erittä
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Alkuperäinen
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistinen
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Junat ja laivat: ei 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (ei OPF:n kanssa)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}90-asteen käännökset kielletty junilta ja laivoilta: {ORANGE}{STRING} {LTBLUE} (ei OPF:n kanssa)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
@@ -1284,7 +1284,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Kaksinkertaisella nopeudella kasvavien kaupunkien osuus: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Kaksinkertaisella nopeudella kasvavien kaupunkien osuus: {ORANGE}0
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kasvukerroin alussa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Poista järjettömät tie-elementit tienrakennuksen aikana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Poista turhat tie-elementit tienrakennuksen aikana: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Käyttöliittymä
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Rakentaminen
@@ -2808,7 +2808,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet my
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti ajoneuvovalmistajalta
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} - oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme, miten tuote suoriutuu, ennen kuin julkistamme sen yleiseen käyttöön?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} - oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturin
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lentokoneen

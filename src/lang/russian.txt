@@ -3380,7 +3380,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Окн�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфигурация ИИ
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}ИИ, которые будут использоваться в игре
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Человек
-STR_AI_CONFIG_RANDOM_AI                                         :Случ. ИИ
+STR_AI_CONFIG_RANDOM_AI                                         :Случайный ИИ
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Вверх
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Переместить этот модуль ИИ вверх по списку
