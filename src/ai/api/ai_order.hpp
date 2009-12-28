@@ -67,7 +67,7 @@ public:
 		/** Stop in the depot instead of only go there for servicing; only for depots. */
 		AIOF_STOP_IN_DEPOT     = 1 << 3,
 		/** Go to nearest depot. */
-		AIOF_GOTO_NEAREST_DEPOT = 1 << 4,
+		AIOF_GOTO_NEAREST_DEPOT = 1 << 8,
 
 		/** All flags related to non-stop settings. */
 		AIOF_NON_STOP_FLAGS    = AIOF_NON_STOP_INTERMEDIATE | AIOF_NON_STOP_DESTINATION,
