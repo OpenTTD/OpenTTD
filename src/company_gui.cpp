@@ -1599,7 +1599,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPIP(4, 6, 4),
 			NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE), SetMinimalSize(91, 120), SetFill(1, 0),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE), SetMinimalSize(92, 119), SetFill(1, 0),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE_TITLE), SetFill(1, 1), SetMinimalTextLines(2, 0),
 			EndContainer(),
 			NWidget(NWID_VERTICAL),

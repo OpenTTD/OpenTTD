@@ -510,7 +510,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
-			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(91, 120), SetFill(0, 1), SetPadding(2, 0, 1, 0),
+			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(92, 119), SetFill(0, 1), SetPadding(2, 0, 1, 0),
 			NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetFill(0, 1), SetMinimalSize(238, 123),
 		EndContainer(),
 	EndContainer(),
