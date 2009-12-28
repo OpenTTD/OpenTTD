@@ -765,10 +765,11 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		/* Try to connect the vehicle to one of free chains of wagons. */
 		Train *w;
 		FOR_ALL_TRAINS(w) {
-			/* do not connect new wagon with crashed/flooded consists */
-			if (w->tile == tile && w->IsFreeWagon() &&
-					w->engine_type == engine &&
-					!(w->vehstatus & VS_CRASHED)) {
+			if (w->tile == tile &&              ///< Same depot
+					w->IsFreeWagon() &&             ///< A free wagon chain
+					w->engine_type == engine &&     ///< Same type
+					w->First() != v &&              ///< Don't connect to ourself
+					!(w->vehstatus & VS_CRASHED)) { ///< Not crashed/flooded
 				DoCommand(0, v->index | (w->Last()->index << 16), 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				break;
 			}
