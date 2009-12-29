@@ -2957,8 +2957,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilit
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK}Construit{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacité{NBSP}: {LTBLUE}Aucune
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}{4:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY}
