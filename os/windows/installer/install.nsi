@@ -30,7 +30,7 @@ SetCompressor LZMA
 ; Version Info
 Var AddWinPrePopulate
 VIProductVersion "${APPVERSIONINTERNAL}"
-VIAddVersionKey "ProductName" "OpenTTD Installer ${APPBITS} bits for Windows ${EXTRA_VERSION}"
+VIAddVersionKey "ProductName" "OpenTTD ${APPBITS}-bit Installer for Windows ${EXTRA_VERSION}"
 VIAddVersionKey "Comments" "Installs ${APPNAMEANDVERSION}"
 VIAddVersionKey "CompanyName" "OpenTTD Developers"
 VIAddVersionKey "FileDescription" "Installs ${APPNAMEANDVERSION}"
@@ -39,7 +39,7 @@ VIAddVersionKey "InternalName" "InstOpenTTD-${APPARCH}"
 VIAddVersionKey "FileVersion" "${APPVERSION}-${APPARCH}"
 VIAddVersionKey "LegalCopyright" " "
 ; Main Install settings
-Name "${APPNAMEANDVERSION} ${APPBITS} bits for Windows ${EXTRA_VERSION}"
+Name "${APPNAMEANDVERSION} ${APPBITS}-bit for Windows ${EXTRA_VERSION}"
 
 ; NOTE: Keep trailing backslash!
 InstallDirRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Install Folder"
@@ -83,7 +83,7 @@ Page custom SelectCDEnter SelectCDExit ": TTD folder"
 !define MUI_FINISHPAGE_TITLE_3LINES
 !define MUI_FINISHPAGE_RUN_TEXT "Run ${APPNAMEANDVERSION} now!"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
-!define MUI_FINISHPAGE_LINK "Visit the OpenTTD site for latest news, FAQs and downloads"
+!define MUI_FINISHPAGE_LINK "Visit the OpenTTD site for the latest news, FAQs and downloads"
 !define MUI_FINISHPAGE_LINK_LOCATION "${APPURLLINK}"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
@@ -467,7 +467,7 @@ DosCD:
 	IfFileExists $CDDRIVE\TRGI.GRF "" NoCD
 	IfFileExists $CDDRIVE\SAMPLE.CAT hasCD NoCD
 NoCD:
-	MessageBox MB_OK "Setup cannot continue without the Transport Tycoon Deluxe Location!"
+	MessageBox MB_OK "Setup cannot continue without the Transport Tycoon Deluxe location!"
 	Abort
 hasCD:
 FunctionEnd
@@ -495,12 +495,12 @@ Function CheckProcessorArchitecture
 	IntCmp $R0 64 Win64 0
 	ClearErrors
 	IntCmp ${APPBITS} 64 0 Done
-	MessageBox MB_OKCANCEL|MB_ICONSTOP "You want to install the 64 bits OpenTTD on a 32 bits Operating System. This is not going to work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_OKCANCEL|MB_ICONSTOP "You are trying to install the 64-bit OpenTTD on a 32-bit operating system. This is not going to work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 	GoTo Done
 Win64:
 	ClearErrors
 	IntCmp ${APPBITS} 64 Done 0
-	MessageBox MB_OKCANCEL|MB_ICONINFORMATION "You want to install the 32 bits OpenTTD on a 64 bits Operating System. This is not adviced, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_OKCANCEL|MB_ICONINFORMATION "You are trying to install the 32-bit OpenTTD on a 64-bit operating system. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 	GoTo Done
 Abort:
 	Quit
@@ -516,12 +516,12 @@ Function CheckWindowsVersion
 	StrCmp $R0 "win9x" 0 WinNT
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" Done 0
-	MessageBox MB_OKCANCEL|MB_ICONSTOP "You want to install the Windows 2000, XP and Vista version on Windows 95, 98 or ME. This is will not work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_OKCANCEL|MB_ICONSTOP "You are trying to install the Windows 2000, XP and Vista version on Windows 95, 98 or ME. This is will not work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 	GoTo Done
 WinNT:
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" 0 Done
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You want to install the Windows 95, 98 and ME version on Windows 2000, XP or Vista. This is not adviced, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98 and ME version on Windows 2000, XP or Vista. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 Abort:
 	Quit
 Done:
@@ -569,7 +569,7 @@ VersionsAreEqual:
 	ReadRegStr $UninstallString HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "UninstallString"
 	IfFileExists "$UninstallString" "" FinishCallback
 	MessageBox MB_YESNO|MB_ICONQUESTION \
-		"Setup detected ${APPNAMEANDVERSION} on your system. That's the version this program will install.$\n \
+		"Setup detected ${APPNAMEANDVERSION} on your system. This is the same version that this program will install.$\n \
 		Are you trying to uninstall it?" \
 		IDYES DoUninstall IDNO FinishCallback
 DoUninstall: ; You have the same version as this installer.  This allows you to uninstall.
