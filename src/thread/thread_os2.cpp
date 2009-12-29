@@ -94,16 +94,19 @@ private:
 class ThreadMutex_OS2 : public ThreadMutex {
 private:
 	HMTX mutex;
+	HEV event;
 
 public:
 	ThreadMutex_OS2()
 	{
 		DosCreateMutexSem(NULL, &mutex, 0, FALSE);
+		DosCreateEventSem(NULL, &event, 0, FALSE);
 	}
 
 	/* virtual */ ~ThreadMutex_OS2()
 	{
 		DosCloseMutexSem(mutex);
+		DosCloseEventSem(event);
 	}
 
 	/* virtual */ void BeginCritical()
@@ -114,6 +117,18 @@ public:
 	/* virtual */ void EndCritical()
 	{
 		DosReleaseMutexSem(mutex);
+	}
+
+	/* virtual */ void WaitForSignal()
+	{
+		this->EndCritical();
+		DosWaitEventSem(event, SEM_INDEFINITE_WAIT);
+		this->BeginCritical();
+	}
+
+	/* virtual */ void SendSignal()
+	{
+		DosPostEventSem(event);
 	}
 };
 
