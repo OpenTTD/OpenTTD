@@ -607,7 +607,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Control de programa aleatori actiu/inactiu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra la finestra de selecció de pistes de música
 
-STR_ERROR_NO_SONGS                                              :{WHITE}S'ha seleccionat un joc de música sense cançons. No es reproduiran cançons
+STR_ERROR_NO_SONGS                                              :{WHITE}S'ha seleccionat un conjunt de músiques sense cançons. No es reproduiran cançons
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selecció del Programa de Música
@@ -940,14 +940,14 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccio
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arxiu{P "" s} faltant{P "" s}/corromput{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el conjunt de gràfics bàsics
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Joc de sons bàsics
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un joc de sons bàsics a utilitzar
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunt de sons bàsics
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons bàsics a utilitzar
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació additional sobre el joc de sons bàsics
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Joc de música base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el joc de música base a utilitzar
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt de músiques base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el conjunt de músiques base a utilitzar
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fitxer{P "" s} corromput{P "" s}
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació adicional sobre el joc de música base
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació adicional sobre el conjunt de músiques base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El mode en pantalla completa ha fallat
 
@@ -1549,7 +1549,7 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Posa el 
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Entra l'adreça IP del servidor
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Inicia un nou joc multijugador
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Inicia un joc multijugador nou
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nom del joc:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}El nom del joc es mostrarà a altres jugadors en el menú de selecció de joc multijugador
@@ -2224,7 +2224,7 @@ STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nom actu
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Esborra
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Esborra el joc desat actualment seleccionat
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Desa
-STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Desa el joc actual, usant el nom seleccionat
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Desa el joc actual, utilitzant el nom seleccionat
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Posa el nom pel joc desat
 
@@ -3263,9 +3263,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingresso
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}S'està desant el joc,{}espera a que acabi l'operació!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ha fallat el desat automàtic
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible llegir la unitat de disc
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Desat del Joc erroni{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Desat del joc erroni{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible esborrar l'arxiu
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Càrrega del Joc errònia{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Càrrega del joc errònia{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error Intern: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :El joc desat està trencat - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :El joc desat està fet amb una versió més moderna

@@ -1552,8 +1552,31 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Gõ đ�
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Bắt đầu game mới nhiều người chơi
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Tên trò chơi:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên của game sẽ được hiển thị trong bảng chọn game nhiều người chơi
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
+STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Chọn bản đồ:
+STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Bạn muốn chơi bản đồ nào?
+STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Khởi tạo ngẫu nhiên game mới
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (lên list)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy con{P "" s}
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máy con tối đa:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số máy con tối đa. Không cần thiết phải vào đầy
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} công ty{P y ies}
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Số công ty tối đa:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Giới hạn số công ty trong server
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} người xem{P "" s}
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Số người xem tối đa:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Giới hạn số người xem trong server
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ngôn ngữ trò chuyện:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Những người chơi sẽ biết ngôn ngữ dùng để trao đổi trong server
 
+STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Chạy Game
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Bắt đầu game mạng từ một bản đồ ngẫu nhiên, hoặc kich bản
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nạp Game
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Tiếp tục một game đã được lưu (chắc chắn rằng đã kết nối với đúng người)
 
 
 # Network game languages

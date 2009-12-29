@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Byt namn
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng fönster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret
+STR_TOOLTIP_SHADE                                               :{BLACK}Dölj fönster - Visa bara namnlisten
 STR_TOOLTIP_STICKY                                              :{BLACK}Markera detta fönster så att det finns kvar även fast man använder 'Stäng alla fönster' knappen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka och dra för att förstora fönstret
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
@@ -606,6 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Välj sp
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Växla slumpning av/på
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Visa fönstret för val av musikspår
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Ett musikpaket utan låtar har valts. Ingen musik kommer att spelas
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikprogram
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -941,6 +944,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundlju
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj grundljudspaket att använda
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om grundljudpaketet
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpaket valt
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket att använda
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fil{P "" er} korrupt{P "" a}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskärmsläge misslyckades
 
 # Custom currency window
@@ -1007,6 +1015,13 @@ STR_NUM_LOW                                                     :Låg
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Hög
 STR_NUM_CUSTOM                                                  :Egna
+
+STR_VARIETY_NONE                                                :Inget
+STR_VARIETY_VERY_LOW                                            :Väldigt låg
+STR_VARIETY_LOW                                                 :Låg
+STR_VARIETY_MEDIUM                                              :Medium
+STR_VARIETY_HIGH                                                :Hög
+STR_VARIETY_VERY_HIGH                                           :Väldigt Hög
 
 STR_AI_SPEED_VERY_SLOW                                          :Väldigt långsam
 STR_AI_SPEED_SLOW                                               :Långsam
@@ -1246,6 +1261,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunda 
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :förbjuden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillåten, vanlig stads-layout
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Spelläges placering av träd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :inga {RED}(förstör sågverk)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bara i regnskogar
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vänster
@@ -1799,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Datorspelarbibl
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Höjdkarta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Ljudpaket
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musikpaket
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laddar ned innehåll...
@@ -2226,6 +2247,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Träd Al
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havsnivå
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jämnhet:
+STR_MAPGEN_VARIETY                                              :{BLACK}Varierad distribution:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generera
 
 # Strings for map borders at game generation
@@ -2325,6 +2347,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varning: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ett fatalt NewGRF fel har uppkommit: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} kommer inte att fungera med den TTDPatchversion som rapporterades av OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} är för {STRING}versionen av TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} är designat för att användas med {STRING}
@@ -2355,7 +2378,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausni
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{STRING}' kommer troligen orsaka desynkronisering och/eller krascher.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för  '{1:ENGINE}' utanför en depå.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för '{1:ENGINE}' utanför en depå.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{STRING}' ger felaktig information.
@@ -2387,6 +2410,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passager
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post förra månaden: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Fraktgods behövs för ortens tillväxt:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} nödvändlig
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krävs under vintern
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levererat den senaste månaden
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Bullernivågräns i stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera vyn på staden. Ctrl+Musklick öppnar en ny vy över stadens läge
@@ -2931,6 +2955,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Vinst de
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste servicen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitet: {LTBLUE}Ingen
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacitet: {LTBLUE}{CARGO}{4:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitet: {LTBLUE}{CARGO}{4:STRING} (x{5:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2996,6 +3021,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tidtabel
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Ändra till tidtabellsvy
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlista - klicka på order för att markera det
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slut på order - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slut på delade order - -
@@ -3157,6 +3184,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Förvän
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schemalagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ändra mellan förväntat och schemalagt
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -3183,6 +3212,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alla datorspelare som kommer laddas nästa spelomgång
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mänsklig spelare
 STR_AI_CONFIG_RANDOM_AI                                         :Slumpa datorspelare
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytta upp
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytta upp vald AI i listan
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flytta ner
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytta ner vald AI i listan
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Välj datorspelare
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ladda en annan datorspelare
@@ -4032,6 +4066,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Gi nytt 
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindu
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vindustittel - dra her for å flytte vindu
+STR_TOOLTIP_SHADE                                               :{BLACK}Skyggevindu - Vis kun tittelfeltet
 STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre størrelsen på vinduet
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bytte mellom stor/liten vindustørrelse
@@ -606,6 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Velg pro
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skru tilfeldig program av/på
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vis musikkspormeny
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Et musikksett uten sanger er valgt. Ingen sanger vil bli avspilt
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikkprogram
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -940,6 +943,11 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggs
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lydsett
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Velg lydsett som skal brukes
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligere informasjon om originale lyder
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikksett
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg musikksett som skal brukes
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ødelagt fil{P "" er}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermmodus mislyktes
 
@@ -1811,6 +1819,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :AI-bibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Høydekart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Originale lyder
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Original musikk
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laster ned innhold...
