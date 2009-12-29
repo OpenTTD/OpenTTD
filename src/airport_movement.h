@@ -137,7 +137,7 @@ static const AirportMovingData _airport_moving_data_town[] = {
 };
 
 /* Metropolitan Airport (metropolitan) - 2 runways */
-static const AirportMovingData _airport_moving_data_metropolitan[27] = {
+static const AirportMovingData _airport_moving_data_metropolitan[28] = {
 	AMD(   85,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   85,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
 	AMD(   26,   41, AMED_EXACTPOS,                   DIR_SW), // 02 Terminal 1
@@ -165,6 +165,7 @@ static const AirportMovingData _airport_moving_data_metropolitan[27] = {
 	AMD(   44,   63, AMED_HELI_RAISE,                 DIR_N ), // 24 Helicopter takeoff
 	AMD(   15,   54, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 25 Get in position above landing spot helicopter
 	AMD(   15,   54, AMED_HELI_LOWER,                 DIR_N ), // 26 Helicopter landing
+	AMD(   21,   58, AMED_EXACTPOS,                   DIR_SW), // 27 Transitions after landing to on-ground movement
 };
 
 /* International Airport (international) - 2 runways, 6 terminals, dedicated helipod */
@@ -554,7 +555,7 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{ 15, 0, RUNWAY_IN_block, 16 },
 	{ 16, 255, RUNWAY_IN_block, 0 }, { 16, ENDLANDING, IN_WAY_block, 17 },
 	{ 17, 255, RUNWAY_OUT_block, 0 }, { 17, ENDLANDING, IN_WAY_block, 18 },
-	{ 18, ENDLANDING, IN_WAY_block, 7 },
+	{ 18, ENDLANDING, IN_WAY_block, 27 },
 	/* In Air */
 	{ 19, 0, NOTHING_block, 20 },
 	{ 20, 0, NOTHING_block, 21 },
@@ -565,6 +566,7 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{ 24, HELITAKEOFF, NOTHING_block, 0 },
 	{ 25, HELILANDING, IN_WAY_block, 26 },
 	{ 26, HELIENDLANDING, IN_WAY_block, 18 },
+	{ 27, 255, TAXIWAY_BUSY_block, 27 }, { 27, TERM1, TERM1_block, 2 }, { 27, 0, 0, 7 },
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
