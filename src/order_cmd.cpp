@@ -1415,20 +1415,6 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 }
 
 
-static TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
-{
-	if (!CanVehicleUseStation(v, st)) return INVALID_TILE;
-
-	switch (v->type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:     return st->train_station.tile;
-		case VEH_AIRCRAFT:  return st->airport_tile;
-		case VEH_SHIP:      return st->dock_tile;
-		case VEH_ROAD:      return st->GetPrimaryRoadStop(RoadVehicle::From(v))->xy;
-	}
-}
-
-
 /**
  *
  * Check the orders of a vehicle, to see if there are invalid orders and stuff
@@ -1467,10 +1453,9 @@ void CheckOrders(const Vehicle *v)
 			/* Does station have a load-bay for this vehicle? */
 			if (order->IsType(OT_GOTO_STATION)) {
 				const Station *st = Station::Get(order->GetDestination());
-				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
-				if (required_tile == INVALID_TILE) problem_type = 3;
+				if (!CanVehicleUseStation(v, st)) problem_type = 3;
 			}
 		}
 
