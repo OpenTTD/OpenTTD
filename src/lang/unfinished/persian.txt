@@ -231,10 +231,11 @@ STR_BUTTON_OK                                                   :{BLACK}تایی
 # Measurement tooltip
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}جمعیت
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :تولید
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :منتقل شده
@@ -272,7 +273,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}اطلا
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}نمودار ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}جدول رده بندی شرکت ها را نشان می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}نمایش لیست قطار های شرکت
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}نمایش لیست قطار های شرکت، Ctrl+Click نمابش را بین گروه ها و قطار ها تغییر می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}نمایش لیست ماشین های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}نمایش لیست کشتی های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}نمایش لیست هواپیماهای شرکت
@@ -325,7 +326,8 @@ STR_FILE_MENU_EXIT                                              :خروج
 STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 ############ range ends here
@@ -486,6 +488,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}آهنگ
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}توقف موسیقی
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}پخش موسیقی
 
+
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}شماره ی آهنگ
@@ -587,6 +590,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} توسط {STRING} خریداری شد!
 
+
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
 
@@ -661,6 +665,7 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطل�
 
 
 
+
 # Custom currency window
 
 
@@ -698,7 +703,9 @@ STR_NUM_CUSTOM                                                  :انتخابی
 
 
 
+
 # Advanced settings window
+
 
 
 
@@ -998,6 +1005,7 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}شهر �
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ساختن شهر جدید
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}شهر صادفی
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}شهری در مکانی تصادفی بساز
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}اندازه ی شهر :
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}کوچک
@@ -1500,8 +1508,15 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد
 
 
 
+
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}پاک کردن زمان
 
+
+
+
+
+
+# Date window (for timetable)
 
 
 # AI debug window
@@ -1517,6 +1532,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}تنظی
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}همه هوشهای مصنوعی که در بازی بعد بازگشایی می شوند
 STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آدمیزاد
 STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}انتخاب هوش مصنوعی
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}باز گشایی یک هوش مصنوعی دیگر
@@ -2165,7 +2181,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -2181,4 +2196,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

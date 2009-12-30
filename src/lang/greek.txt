@@ -293,6 +293,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Μετο
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλείσιμο παραθύρου
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε για να το μετακινήσετε
+STR_TOOLTIP_SHADE                                               :{BLACK}Σκίαση παραθύρου - Εμφάνιση μόνο της μπάρας τιτλου
 STR_TOOLTIP_STICKY                                              :{BLACK}Σημείωση αυτού του παραθύρου να μην κλείνει από το πλήκτρο 'Κλείσιμο Παραθύρων'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
@@ -701,6 +702,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Επιλ
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Ένα σετ μουσικής επιλέχτηκε χωρίς τραγούδια. Κανένα τραγούδι δεν θα παιχτεί
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Επιλογή Μουσικού Προγράμματος
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -1036,6 +1039,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Σετ �
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Επιλέξτε τους βασικούς ήχους που θα χρησιμοποιήσετε
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με τους βασικούς ήχους
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Βασικό σετ μουσικής
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλέξτε το βασικό σετ μουσικής για χρήση
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} κατεστραμμέν{P ο α} αρχεί{P ο α}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Κατάσταση Πλήρης Οθόνης απέτυχε
 
 # Custom currency window
@@ -1103,6 +1111,12 @@ STR_NUM_NORMAL                                                  :Κανονικ�
 STR_NUM_HIGH                                                    :Υψηλό
 STR_NUM_CUSTOM                                                  :Προσαρμοσμέν{G ος η ο}
 
+STR_VARIETY_NONE                                                :Καθόλου
+STR_VARIETY_VERY_LOW                                            :Πολύ Χαμηλό
+STR_VARIETY_LOW                                                 :Χαμηλό
+STR_VARIETY_MEDIUM                                              :Μέτριο
+STR_VARIETY_HIGH                                                :Υψηλό
+STR_VARIETY_VERY_HIGH                                           :Πολύ Υψηλό
 
 STR_AI_SPEED_VERY_SLOW                                          :Πολύ αργό
 STR_AI_SPEED_SLOW                                               :Αργό
@@ -1344,6 +1358,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπ�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Τοποθέτηση δέντρω εντός παιχνιδιού: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(Καταστρέφει το ξυλουργείο)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε δάση
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
@@ -1899,6 +1914,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Βιβλιοθ�
 STR_CONTENT_TYPE_SCENARIO                                       :Σενάριο
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Χάρτης Υψομετρίας
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Βασικοί ήχοι
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Βασική μουσική
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Κατέβασμα περιεχόμενου...
@@ -2326,6 +2342,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγό
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Επίπεδο θάλασσας:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Ομαλότητα:
+STR_MAPGEN_VARIETY                                              :{BLACK}Διανομή ποικιλομορφίας:
 STR_MAPGEN_GENERATE                                             :{WHITE}Δημιουργία
 
 # Strings for map borders at game generation
@@ -2425,6 +2442,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ένα καταστροφικό λάθος για τα NewGRF έχει συμβεί: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch οπώς αναφέρει το OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} είναι για την έκδοση {STRING} του TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}
@@ -3296,6 +3314,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Όλα �
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση πάνω
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση του επιλεγμένου AI πάνω στη λίστη
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση κάτω
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά του επιλεγμένου AI κάτω στη λίστα
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Επιλόγη AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φορτώστε ένα άλλο AI

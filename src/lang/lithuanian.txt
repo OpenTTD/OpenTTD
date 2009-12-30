@@ -334,10 +334,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rodyti p
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rodyti diagramas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Transporto kompanijų vertinimas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansuoti pramonės įmonės statybas
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rodyti traukinių sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rodyti automobilių sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rodyti laivų sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Rodyti lėktuvų sąrašą
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rodyti kompanijos traukinių sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rodyti kompanijos automobilių sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rodyti kompanijos laivų sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Rodyti kompanijos lėktuvų sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Priartinti vaizdą
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Nutolinti vaizdą
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tiesti geležinkelius
@@ -346,8 +346,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Statyti 
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Statyti oro uostus
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atidaro žemės tvarkymo įrankių juostą, skirtą pakelti/nuleisti žemės lygiui, sodinti medžius ir t.t.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rodyti garso/muzikos nustatymus
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rodyti paskutinę žinutę/naujieną, rodyti žinučių nustatymus
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Žemės ploto informacija
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rodyti paskutinę žinutę/naujienų pranešimus, rodyti žinučių nustatymus
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Žemės ploto informacija, konsolė, AI debug, ekrano nuotraukos, apie OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Perjungti įrankines
 
 # Extra tooltips for the scenario editor toolbar
@@ -402,7 +402,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildomas per�
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Įkurti miestą
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
@@ -429,7 +431,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansuoti nauj
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Geležinkelio statyba
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifikuoto Geležinkelio statyba
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifikuoto geležinkelio statyba
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Vienbėgio geležinkelio statyba
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :„Maglev“ statyba
 ############ range ends here
@@ -466,10 +468,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zinuciu istorij
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Žemės ploto informacija
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolė
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Perjungti konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Fotografuoti ekrano vaizdą (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Fotografuoti viso ekrano vaizdą (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Fotografuoti viso ekrano vaizdą (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Apie „OpenTTD“
 ############ range ends here
 
@@ -613,6 +615,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Speciali 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muzikos garsas
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektų garsas
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -634,6 +639,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Parinkti
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Parinkti „Speciali 2“ (vartotojo sukurtą) programą
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programos „Atsitiktiniai takeliai“ įj./išj.
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Rodyti muzikos takelių pasirinkimo langą
+
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Muzikos programos pasirinkimas
@@ -790,6 +796,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} pradeda statybas prie {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} buvo perimta {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Valdytojas)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Statomas naujas {STRING} netoli miesto: {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Sodinamas naujas {STRING} netoli miesto: {TOWN}!
@@ -967,11 +974,15 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Baziniai
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Pasirinkite, kurį bazinių garsų rinkinį naudoti
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Papildoma informacija apie bazinių garsų rinkinį
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Bazinė muzika
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pasirinkti naudojimui bazinę muziką
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildoma informacija apie bazinę muziką
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Viso ekrano nustatymas nepavyko
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
+STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiutą
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Sumažinti valiutos kiekį vienu svaru (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Padidinti valiutos kiekį vienu svaru (£)
@@ -980,18 +991,18 @@ STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Nustatyt
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Nustatyti daliklį jūsų valiutai
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nustatyti prifix'ą valiutai
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Priešdėlis: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nustatyti prefiksą valiutai
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Nustatyti suffix'a valiutai
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pereiti prie Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Pereiti prie Euro: {ORANGE}niekada
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Kelintais metais pereiti prie Euro?
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Kuriais metais pereiti prie Euro?
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Pereiti prie Euro anksčiau
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Pereiti prie Euro vėliau
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perziura: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Peržiūra: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 
@@ -1010,8 +1021,8 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Išsaugo
 
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalus priešininkų skaičius: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Miestų gausumas žemėlapyje: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Gamyklų gausumas žemėlapyje: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Miestų kiekis žemėlapyje: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Gamyklų kiekis žemėlapyje: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimali paskola: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Pradinis palūkanų procentas: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Išlaidų transporto priem. eksploatacijai lygis: {ORANGE}{STRING}
@@ -1022,7 +1033,7 @@ STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Statyb�
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Vietovės tipas: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Vandens telkinių gausa: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Traukiniai apsisuka: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Traukiniai apsisukimas: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Nelaimės, katastrofos: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Miesto valdžios požiūris į aplinkos pertvarkymą: {ORANGE}{STRING}
 ############ range for difficulty settings ends
@@ -1033,6 +1044,13 @@ STR_NUM_LOW                                                     :Žemas
 STR_NUM_NORMAL                                                  :Vidutinis
 STR_NUM_HIGH                                                    :Aukštas
 STR_NUM_CUSTOM                                                  :Tinkintas
+
+STR_VARIETY_NONE                                                :Nieko
+STR_VARIETY_VERY_LOW                                            :Labai mažas
+STR_VARIETY_LOW                                                 :Žemas
+STR_VARIETY_MEDIUM                                              :Vidutinis
+STR_VARIETY_HIGH                                                :Aukštas
+STR_VARIETY_VERY_HIGH                                           :Labai aukštas
 
 STR_AI_SPEED_VERY_SLOW                                          :Labai lėtas
 STR_AI_SPEED_SLOW                                               :Lėtas
@@ -1069,10 +1087,10 @@ STR_DISASTERS_OFF                                               :Išjungta
 STR_DISASTERS_ON                                                :Įjungta
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
-STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiskas
+STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
 
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Sis veiksmas pakeite sunkumo lygi i specialu
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis veiksmas pakeitė sunkumo lygį į specialų
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
@@ -1082,14 +1100,14 @@ STR_CONFIG_SETTING_ON                                           :Įjungta
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Rodyti tr. priemonės greitį statuso eilutėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leisti statyti pastatus pakrantėse ir ant šlaitų: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljefą po pastatais, begiais, ir t.t.. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Leisti statyti ypac ilgus traukinius: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Leisti statyti ypač ilgus traukinius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Traukinių įsibėgėjimo nustatymas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalus
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistiškas
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Drausti traukiniams/laivams suktis 90 laips.kampu: {ORANGE}{STRING} {LTBLUE} (reik. NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Drausti traukiniams/laivams pasisukti 90 laips.kampu: {ORANGE}{STRING} {LTBLUE} (be OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Leisti sujungti greta pastatytas stoteles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Leidžia sujungti stoteles, kurios nėra šalia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Naudoti patobulintą krovimo algoritmą: {ORANGE}{STRING}
@@ -1264,6 +1282,9 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :atsitiktinis
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Miestams leidžiama tiesti kelius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Leisti miestams kontroliuoti oro uostų triukšmo lygį: {ORANGE}{STRING}
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose miškuose
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrindinės įrankių juostos pozicija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kairėje
@@ -1680,7 +1701,7 @@ STR_NETWORK_SERVER                                              :Serveris
 STR_NETWORK_CLIENT                                              :Žaidėjas
 STR_NETWORK_SPECTATORS                                          :Stebėtojai
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Įveskite kiekį pinigų, kuriuos norite gauti
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Įveskite kiekį pinigų, kurį norite gauti
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neišsaugotas įvestas slaptažodis
@@ -1805,6 +1826,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :DI biblioteka
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarijus
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Baziniai garsai
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Bazinė muzika
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Siunčiamas turinys...
@@ -2235,7 +2257,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Lygi zem
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Sukurti lygią žemę
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Atsitiktinis reljefas
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Lygumos aukstis:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Pakeisk aukštį lygumos vienu zemyn
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Pakeisti lygumos aukštį vienu žemyn
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Pakelti lygios zemes lygi vienu lygiu
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Keisti lygumos auksti
@@ -2776,19 +2798,19 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lėktuvas
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pasirink tr. priemones tipa, kuriuo reikes keisti
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pasirink tr. priemones tipa, kuria bus keiciamos pasirinktos tr. priemones
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradeti tr. priemonių keitimą
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Spustelk, jei nori pradeti pazymeto tipo tr. priemoniu keitimo procedura
-STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nekeiciama
-STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nera pazymeta nei viena tr. priemone
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradėti tr. priemonių keitimą
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Spustelk, jei nori pradėti pažymėto tipo tr. priemonių keitimo procedūrą
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nekeičiama
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nėra pažymėta nei viena tr. priemonė
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stabdyti tr. priemonių keitimą
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Spustelk, jei nori sustabdyti siuo metu vykdoma keitimo procedura
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Spustelk, jei nori sustabdyti šiuo metu vykdomą keitimo procedūrą
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima: {ORANGE}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keičiama: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pereidinėti tarp garvežių ir vagonų pakeitimo langų
 STR_REPLACE_ENGINES                                             :Varikliai
 STR_REPLACE_WAGONS                                              :Vagonai
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pasirink norimu keisti traukiniu begiu tipa
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pasirinti norimų keisti traukinių bėgių tipą
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
 STR_REPLACE_RAIL_VEHICLES                                       :Paprasti traukiniai
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifikuoti Traukiniai
@@ -3082,6 +3104,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Transpor
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Transporto priemonė vėluoja {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Transporto priemonė skuba {STRING}
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti laiką
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ištrinti laiką
@@ -3089,6 +3112,12 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ištrint
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Paleisti vėlavimo skaitiklį
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto užpildymas
+
+
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}DI Derinimas
@@ -3103,6 +3132,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Nusta
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Visi DI bus įkelti į sekantį žaidimą
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
 STR_AI_CONFIG_RANDOM_AI                                         :Atsitiktinis DI
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Pasirinkti AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Įkelti kitą AI
@@ -3585,6 +3615,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} oro uo
 STR_SV_STNAME_OILFIELD                                          :{STRING} Naftos Platforma
 STR_SV_STNAME_MINES                                             :{STRING} Kasyklos
 STR_SV_STNAME_DOCKS                                             :{STRING} Dokai
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Kreivoji
 STR_SV_STNAME_SIDINGS                                           :{STRING} Apylanka
@@ -3862,6 +3894,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Plūduras
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Plūduras #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Kompanija {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupė {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
@@ -3914,6 +3948,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3931,14 +3966,16 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -3954,4 +3991,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

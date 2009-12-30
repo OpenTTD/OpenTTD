@@ -342,7 +342,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Verlaat
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Speletjie opsies
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spel opsies
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moelikheid stellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gevorderde stellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
@@ -1539,11 +1539,11 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Verbind 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Vervris verskaffer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Vervris die verskaffer inligting
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Versoek verskaffer
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Soek bediener
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Versoek netwerk vir 'n verskaffer
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Byvoeg Bediender
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg bediender by
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voeg 'n verskaffer tot die lys wat sal altyd wees gemerk vir loopende speletjies.
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Begin verskaffer
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Begin bediener
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Begin u eie verskaffer
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Tik in jou naam
@@ -1574,9 +1574,9 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk d
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Taal gepraat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ander spelers sal weet watter taal op die verskaffer gepraat is
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Begin Speletjie
+STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Begin Spel
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Begin 'n nuwe netwerk spel van 'n lukraak kaart of draaiboek
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laai Speletjie
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laai Spel
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat 'n vroeër gespaar multispeler speletjie (wees seker om te konnekteer as die korrekte speler)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tik 'n naam in vir die netwerk speeletjie
@@ -1657,7 +1657,7 @@ STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) La
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verwerk Data...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreer...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haal speletjie informasie...
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haal spel informasie...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haal maatskappy informasie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Klient{P "" e} voor jou
@@ -1913,7 +1913,8 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sei
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangs-Sein (semafoor){}Groen so lank as daar een of meer groen uitgang-siene is van enige agtervolgende treinspoorgedeelte is. Anderste is dit rooi.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang-Sein (semafoor){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinasie-Sein (semafoor){}Die combinasie-sein is net 'n ingang- en uitgang-sein op dieselfde tyd. Die laat jou toe om groot "bome" van voor-seine te bou.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Een-rigting pad sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie  van die agterkant verby gevat word nie.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Een-rigting pad sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Een-rigting pad sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein verander{}Wanneer geselekteer is, 'n kliek askei op die sein sal die sein verander na die geselekteerde sein tiepe en waarde, CTRL-kliek sal die bestaande waarde tokkel.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Sein sleep digtheid
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verminder sein sleep digtheid
@@ -2204,8 +2205,8 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2009 Die OpenTTD span
 
 # Save/load game/scenario
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spaar Speletjie
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Laai Speletjie
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spaar Spel
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Laai Spel
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Stoor Draaiboek
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laai Draaiboek
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laai Hoogtekaart
@@ -2356,7 +2357,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Versigtig!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy is besig om veranderings op 'n tans gebruikte speletjie te doen. Dit kan OpenTTD beskadig. {}Is jy heeltemal seker ?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy is opad om veranderings te maak op tans loopende spel. Dit kan OpenTTD lat staak. {}Is jy heeltemal seker ?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan nie lêer voeg: duplikaat GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Gelyke lêer nie gevind nie (versoenbaar GRF gelaai)
@@ -3237,7 +3238,7 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Speletji
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Onbekwaam om lêer te uitvee
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Speletjie Laai Misluk{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne fout: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Gebreek spaarspeletjie - {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Gebreekte gespaarde spel - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spaarspeletjie is gemaak met nuwer uitgawe
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Lêer nie leesbare
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Lêer nie skryfbaar

@@ -127,6 +127,7 @@ STR_COLOUR_WHITE                                                :سفید
 
 
 # Common window strings
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}ترتیب کا طریقہ منتخب کریں
 STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
@@ -195,7 +196,8 @@ STR_FILE_MENU_EXIT                                              :باہر نکل
 
 ############ range for map menu starts
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 ############ range ends here
@@ -256,6 +258,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی
 
 # Music window
 
+
 # Playlist window
 
 # Highscore window
@@ -307,6 +310,7 @@ STR_NEWS_MESSAGES_FULL                                          :مکمل
 
 
 
+
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -332,6 +336,7 @@ STR_NEWS_MESSAGES_FULL                                          :مکمل
 
 ############ start of townname region
 ############ end of townname region
+
 
 
 
@@ -369,7 +374,9 @@ STR_NEWS_MESSAGES_FULL                                          :مکمل
 
 
 
+
 # Advanced settings window
+
 
 
 
@@ -537,6 +544,7 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین
 
 
 # Town generation window (SE)
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}شہر کا حجم:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{G=m}{BLACK}چھوٹا
@@ -803,10 +811,18 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 
+
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
 
 
 # AI configuration window
+
 
 
 # Available AIs window
@@ -881,12 +897,31 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل کے دونوں کنارے زمین پر ہونے چاہییں
 
 # Tunnel related errors
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}یہاں سورنگ نہئ بنا سکتے
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}سورنگ یہاں سے شروع نہئں کر سکتے
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE} پہلے سورنگ ختم کرئں
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}دوسری سورنگ بئچ مین ہے
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}سورنگ نقشے سے بائر نکل جاے گی
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}سورنگ کے دوسرے حصے کی طرف روکاوٹ ہے
 
 # Unmovable related errors
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}کوئی عمارت یا چیذ راستے مین ہے
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}کمپنی کا مرکزی دفتر راستے مین ہے
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}آپ یہ زمین نہی خرید سکتے
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...یہ آپ ہی کی ملکیت ہے
 
 # Group related errors
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}یہ گروہ تشکیل نہں دے سکتے
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}یہ گروہ ختم نہں سکتے
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}نام تبدیل نہں سکتے
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}اس گروہ سے تمام گاڑیاں نہیں نکال سکتے
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}اس گروہ مین گاڑی شامل نہیں سکتے
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}ریل گاڑی راستے مین ہے
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}سڑک کی گاڑی راستے مین ہے
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}کشتی راستے مین ہے
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}ہوایی جہاز راستے مین ہے
 
 
 
@@ -998,7 +1033,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}۱
@@ -1012,4 +1046,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-
