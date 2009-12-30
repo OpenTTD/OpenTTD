@@ -156,30 +156,34 @@ void TileLoopClearHelper(TileIndex tile)
 }
 
 
-/* convert into snowy tiles */
+/** Convert to or from snowy tiles. */
 static void TileLoopClearAlps(TileIndex tile)
 {
 	int k = GetTileZ(tile) - GetSnowLine() + TILE_HEIGHT;
 
-	if (k < 0) { // well below the snow line
+	if (k < 0) {
+		/* Below the snow line, do nothing if no snow. */
 		if (!IsClearGround(tile, CLEAR_SNOW)) return;
-		if (GetClearDensity(tile) == 0) SetClearGroundDensity(tile, CLEAR_GRASS, 3);
 	} else {
+		/* At or above the snow line, make snow tile if needed. */
 		if (!IsClearGround(tile, CLEAR_SNOW)) {
 			SetClearGroundDensity(tile, CLEAR_SNOW, 0);
-		} else {
-			uint density = min((uint)k / TILE_HEIGHT, 3);
-
-			if (GetClearDensity(tile) < density) {
-				AddClearDensity(tile, 1);
-			} else if (GetClearDensity(tile) > density) {
-				AddClearDensity(tile, -1);
-			} else {
-				return;
-			}
+			MarkTileDirtyByTile(tile);
+			return;
 		}
 	}
+	/* Update snow density. */
+	uint curent_density = GetClearDensity(tile);
+	uint req_density = (k < 0) ? 0u : min((uint)k / TILE_HEIGHT, 3);
 
+	if (curent_density < req_density) {
+		AddClearDensity(tile, 1);
+	} else if (curent_density > req_density) {
+		AddClearDensity(tile, -1);
+	} else {
+		/* Density at the required level. */
+		if (k < 0) SetClearGroundDensity(tile, CLEAR_GRASS, 3);
+	}
 	MarkTileDirtyByTile(tile);
 }
 
