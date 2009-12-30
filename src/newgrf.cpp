@@ -4371,6 +4371,9 @@ static void GRFLoadError(byte *buf, size_t len)
 		len -= (strlen(data) + 1);
 
 		error->data = TranslateTTDPatchCodes(_cur_grffile->grfid, data);
+	} else {
+		grfmsg(7, "GRFLoadError: No message data supplied.");
+		error->data = strdup("");
 	}
 
 	/* Only two parameter numbers can be used in the string. */
