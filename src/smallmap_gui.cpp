@@ -47,6 +47,7 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_SELECTINDUSTRIES,
 	SM_WIDGET_ENABLEINDUSTRIES,
 	SM_WIDGET_DISABLEINDUSTRIES,
+	SM_WIDGET_SHOW_HEIGHT,
 };
 
 static int _smallmap_industry_count; ///< Number of used industries
@@ -141,6 +142,8 @@ static const LegendAndColour _legend_land_owners[] = {
 static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 /* For connecting industry type to position in industries list(small map legend) */
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
+/** Show heightmap in industry mode of smallmap window. */
+static bool _smallmap_industry_show_heightmap;
 
 /**
  * Fills an array for the industries legends.
@@ -307,11 +310,11 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 			return GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour * 0x01010101;
 		} else {
 			/* Otherwise, return the colour of the clear tiles, which will make it disappear */
-			return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[MP_CLEAR]);
+			t = MP_CLEAR;
 		}
 	}
 
-	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
+	return ApplyMask(_smallmap_industry_show_heightmap ? _map_height_bits[TileHeight(tile)] : MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
 /**
@@ -775,6 +778,9 @@ public:
 		this->InitNested(desc, window_number);
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
+		_smallmap_industry_show_heightmap = false;
+		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
+
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
@@ -1024,6 +1030,12 @@ public:
 				this->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
 				this->SetDirty();
 				break;
+
+			case SM_WIDGET_SHOW_HEIGHT: // Enable/disable showing of heightmap.
+				_smallmap_industry_show_heightmap = !_smallmap_industry_show_heightmap;
+				this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
+				this->SetDirty();
+				break;
 		}
 	}
 
@@ -1245,8 +1257,9 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECTINDUSTRIES),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetMinimalSize(100, 12), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetMinimalSize(100, 12), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
+						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
+						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
+						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_SHOW_HEIGHT), SetDataTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetFill(1, 1),
 				EndContainer(),
