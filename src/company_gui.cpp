@@ -437,7 +437,13 @@ struct CompanyFinancesWindow : Window {
 			case CFW_TOGGLE_SIZE: // toggle size
 				this->small = !this->small;
 				this->SetupWidgets();
-				this->ReInit();
+				if (this->IsShaded()) {
+					/* Finances window is not resizable, so size hints given during unshading have no effect
+					 * on the changed appearance of the window. */
+					this->SetShaded(false);
+				} else {
+					this->ReInit();
+				}
 				break;
 
 			case CFW_INCREASE_LOAN: // increase loan
