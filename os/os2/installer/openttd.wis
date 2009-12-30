@@ -1,0 +1,106 @@
+<WARPIN>
+<HEAD>
+<TITLE>OpenTTD</TITLE>
+
+<!-- Please remember to increment the build number for each package
+     when releasing a new stable version, particularly if there are
+     also release candidates sharing the major/minor versions:
+
+     e.g., 0\7\1\16279 for 0.7.1-RC1,
+           0\7\1\16365 for 0.7.1-RC2,
+           0\7\1\16540 for 0.7.1 final
+-->
+
+<PCK INDEX="1"
+      PACKAGEID="OpenTTD\OpenTTD\OpenTTD\1\0\0\18862"
+      TARGET="$(WARPIN_DEFAULTAPPSPATH)\OpenTTD"
+      SELECT
+      TITLE="OpenTTD"
+      LONGFILENAMES
+      BASE
+      >OpenTTD is an open source transport simulation game</PCK>
+
+<PCK INDEX="2"
+      PACKAGEID="OpenTTD\OpenTTD\Downloader\1\0\0\18862"
+      TARGET="$(WARPIN_DEFAULTAPPSPATH)\OpenTTD"
+      SELECT
+      TITLE="Download tools"
+      REQUIRES=1
+      FIXED
+      >Tools required for downloading the OpenGFX/SFX packs</PCK>
+
+<PCK INDEX="3"
+      PACKAGEID="OpenTTD\OpenTTD\OpenGFX\1\0\0\18862"
+      TARGET="$(WARPIN_DEFAULTAPPSPATH)\OpenTTD"
+      SELECT
+      TITLE="OpenGFX"
+      LONGFILENAMES
+      REQUIRES=2
+      EXECUTE="$(3)\download_opengfx.cmd | $(1) $(/1)"
+      DEEXECUTE="$(3)\remove_opengfx.cmd | $(1) $(/1)"
+      FIXED
+      >Downloads the OpenGFX graphics pack for OpenTTD</PCK>
+
+<PCK INDEX="4"
+      PACKAGEID="OpenTTD\OpenTTD\OpenSFX\1\0\0\18862"
+      TARGET="$(WARPIN_DEFAULTAPPSPATH)\OpenTTD"
+      SELECT
+      TITLE="OpenSFX"
+      LONGFILENAMES
+      REQUIRES=2
+      EXECUTE="$(4)\download_opensfx.cmd | $(1) $(/1)"
+      DEEXECUTE="$(4)\remove_opensfx.cmd | $(1) $(/1)"
+      FIXED
+      >Downloads the OpenSFX sound effects pack for OpenTTD</PCK>
+
+<PCK INDEX="5"
+      PACKAGEID="OpenTTD\OpenTTD\NoSound\1\0\0\18862"
+      TARGET="$(WARPIN_DEFAULTAPPSPATH)\OpenTTD"
+      SELECT
+      TITLE="NoSound"
+      LONGFILENAMES
+      REQUIRES=2
+      EXECUTE="$(5)\download_nosound.cmd | $(1) $(/1)"
+      DEEXECUTE="$(5)\remove_nosound.cmd | $(1) $(/1)"
+      FIXED
+      >Downloads the NoSound pack for OpenTTD, to disable sound effects</PCK>
+
+</HEAD>
+
+<BODY>
+<!-- page 1: introductory page -->
+<PAGE INDEX="1" TYPE="README">
+<NEXTBUTTON TARGET=2>~Next</NEXTBUTTON>
+<README EXTRACTFROMPCK="1">README.TXT</README>
+<TEXT>Welcome to the OpenTTD installer. This program will install OpenTTD 1.0 on your system. Before we begin the installation process, please take a moment to read the following document.
+
+Select "Next" to continue, or "Cancel" to abort installation.</TEXT>
+</PAGE>
+
+<!-- page 2: licence page -->
+<PAGE INDEX="2" TYPE="README">
+<NEXTBUTTON TARGET=3>~Next</NEXTBUTTON>
+<README EXTRACTFROMPCK="1">COPYING</README>
+<TEXT>OpenTTD is licenced under the GNU General Public License. The text of the licence is below.
+
+Select "Next" if you agree to this licence.
+Select "Cancel" to abort installation.</TEXT>
+</PAGE>
+
+<!-- The TYPE=CONTAINER will list the packages which can be installed. -->
+<PAGE INDEX="3" TYPE="CONTAINER">
+<NEXTBUTTON TARGET="4">~Next</NEXTBUTTON>
+<TEXT>On this page, you may choose which components to install. If you don't own Transport Tycoon Deluxe, you will need to download OpenGFX (3MiB) and OpenSFX (10MiB).</TEXT>
+</PAGE>
+
+<!-- Display another TEXT page to inform the user
+         that installation will begin. We use the TARGET=0
+        with the NEXTBUTTON tag which starts installation. -->
+
+<PAGE INDEX="4" TYPE="TEXT">
+<NEXTBUTTON TARGET="0">I~nstall</NEXTBUTTON>
+<TEXT>
+Press "Install" to begin installing OpenTTD.</TEXT>
+</PAGE>
+</BODY>
+</WARPIN>
