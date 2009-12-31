@@ -384,7 +384,7 @@ STR_NEWS_MENU_MESSAGE_SETTINGS                                  :تنظیمات 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_AI_DEBUG                                         :رفع اشکالات هوش مصنوعی
 STR_ABOUT_MENU_SCREENSHOT                                       :(Ctrl-S) تصویر از بازی
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :(Ctrl-G) نصویر از دنیا
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :(Ctrl-G) تصویر از دنیا
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
 ############ range ends here
 

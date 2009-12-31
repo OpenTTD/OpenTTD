@@ -229,6 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}更名
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉視窗
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
+STR_TOOLTIP_SHADE                                               :{BLACK}陰影視窗 - 只顯示標題列
 STR_TOOLTIP_STICKY                                              :{BLACK}「關閉所有視窗」不會關閉本視窗
 STR_TOOLTIP_RESIZE                                              :{BLACK}點選並拖曳可縮放視窗大小
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
@@ -606,6 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}選擇�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}開關播放清單亂序播放
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}於選擇視窗顯示樂軌
 
+STR_ERROR_NO_SONGS                                              :{WHITE}已選擇不含音樂的音樂集，不會播放任何音樂
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}背景音樂播放清單選擇
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM}「{STRING}」
@@ -690,6 +693,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部關閉
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部打開
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}顯示高度
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}地圖不顯示任何工業
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}地圖顯示所有工業
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}切換高度圖顯示
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}顯示上次訊息／新聞報告
@@ -932,14 +939,19 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇�
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}畫面擷取檔案格式
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}選擇畫面擷取檔案格式
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基礎圖形集
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基礎圖形集
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎圖形集的額外資訊
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本圖形集的額外資訊
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基礎音效組
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}選擇要使用的基礎音效集
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}關於基礎音效集的額外資訊
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基本音效集
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}選擇要使用的基本音效集
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本音效集的額外資訊
+
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}選擇要使用的基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} 檔案已損毀
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}關於基本音樂集的額外資訊
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}無法切換全螢幕模式
 
@@ -1008,6 +1020,13 @@ STR_NUM_NORMAL                                                  :普通
 STR_NUM_HIGH                                                    :高
 STR_NUM_CUSTOM                                                  :自訂
 
+STR_VARIETY_NONE                                                :無
+STR_VARIETY_VERY_LOW                                            :非常低
+STR_VARIETY_LOW                                                 :低
+STR_VARIETY_MEDIUM                                              :中
+STR_VARIETY_HIGH                                                :高
+STR_VARIETY_VERY_HIGH                                           :非常高
+
 STR_AI_SPEED_VERY_SLOW                                          :非常慢
 STR_AI_SPEED_SLOW                                               :慢
 STR_AI_SPEED_MEDIUM                                             :普通
@@ -1063,6 +1082,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}提高�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :原版
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :真實
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車最大坡度 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列車及船舶直角轉向：{ORANGE}{STRING} {LTBLUE} (OPF 模式下不適用)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允許將不相鄰的車站與附近的車站結合：{ORANGE}{STRING}
@@ -1246,6 +1266,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}於遊�
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允許，可自訂市鎮道路配置
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}遊戲中產生樹木的地點：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :不產生 {RED}(伐木場會停止運作)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :只在雨林區產生
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :到處產生
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :靠左
@@ -1792,13 +1817,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 不支援內容下載功能！
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基礎圖形
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基本圖形
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 函式庫
 STR_CONTENT_TYPE_SCENARIO                                       :場景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度圖
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :基礎音效
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :基本音效
+STR_CONTENT_TYPE_BASE_MUSIC                                     :基本音樂
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下載內容中...
@@ -2226,6 +2252,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}植樹�
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海平面：
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
+STR_MAPGEN_VARIETY                                              :{BLACK}地形起伏分佈：
 STR_MAPGEN_GENERATE                                             :{WHITE}產生
 
 # Strings for map borders at game generation
@@ -2325,6 +2352,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}錯誤：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}嚴重錯誤：{SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF 發生嚴重錯誤的處理方式：{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD 已知 {1:STRING} 跟 TTDPatch 版本不合
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 只適合用於 TTD 版本 {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} 必須跟 {STRING} 一起使用
@@ -3189,6 +3217,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 組�
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}所有 AI 會在下次開始遊戲時載入
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人類玩家
 STR_AI_CONFIG_RANDOM_AI                                         :隨機 AI
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}向上移
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}向上移動所選的 AI
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}向下移
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}向下移動所選的 AI
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}選擇 AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}載入其他 AI

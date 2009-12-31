@@ -923,9 +923,24 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}سڑک �
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}کشتی راستے مین ہے
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}ہوایی جہاز راستے مین ہے
 
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}مال گاڑی نہیں تبدیل کر سکتے
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}ٹرک نہیں تبدیل کر سکتے
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}کشتی نہیں تبدیل کر سکتے
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}ہوایی نہیں تبدیل کر سکتے
 
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}ریل گاڑی کا نام نہیں رکھ سکتے
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE} گاڑی کا نام نہیں رکھ سکتے
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}بہری جہاز کا نام نہیں رکھ سکتے
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}ھوائی جہاز کا نام نہیں رکھ سکتے
 
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}ریل گاڑی چلا / روک نہیں سکتے
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}گاڑی چلا / روک نہیں سکتے
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}بہری جہاز چلا/روک نہیں سکتے
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}ھوائی جہاز چلا/روک نہیں سکتے
 
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}گاڑی کو اڈے نہیں بہیج سکتے
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}بہری جہاز کو اڈے نہیں بہیج سکتے
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}ھوائی جہاز کو اڈے نہیں بہیج سکتے
 
 
 

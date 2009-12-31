@@ -760,6 +760,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Vypnout všechny
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Zapnout všechny
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Zobrazit výšku
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Nezobrazit na mapě žádný průmysl
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Zobrazit na mapě veškerý průmysl
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Zapnout zobrazení výškové mapy
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Ukázat poslední zprávu nebo článek

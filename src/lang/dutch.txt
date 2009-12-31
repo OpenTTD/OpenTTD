@@ -693,6 +693,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles uitschakelen
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles inschakelen
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Toon hoogte
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Toon geen bedrijven op de kaart
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Toon alle bedrijven op de kaart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Schakel tonen van hoogte
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Laat laatste (nieuws)bericht zien
@@ -1078,6 +1082,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Zeer la
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein acceleratie model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Origineel
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingshoek voor treinen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied treinen en schepen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (onmogelijk met OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Niet direct aaneensluitende stations samenvoegen toestaan: {ORANGE}{STRING}

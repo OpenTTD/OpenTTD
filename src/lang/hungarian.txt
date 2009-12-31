@@ -727,6 +727,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bekapcsol mind
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mutasd a magasságot
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne mutasd az ipari létesítményeket a térképen
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mutasd az összes ipari létesítményt a térképen
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép ki/bekapcsolása
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Utolsó üzenet vagy újsághír megmutatása
@@ -1112,6 +1116,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Óriás
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lejtő meredeksége vonatoknak: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE}(nem OPF-fell)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}

@@ -263,6 +263,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Pervadin
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Uždaryti langą
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango pavadinimas - už jo tempiant galima judinti langą
+STR_TOOLTIP_SHADE                                               :{BLACK}Lango šešėlis - Rodyti tik lango antraštėje
 STR_TOOLTIP_STICKY                                              :{BLACK}Pažymėti šį langą kaip neuždaromą komandos 'Uždaryti visus langus' pagalba (arba 'Delete' klavišas)
 STR_TOOLTIP_RESIZE                                              :{BLACK}Spragtelk ir trauk, jei nori pakeisti lango dydį
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pakeisti lango dydį
@@ -640,6 +641,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Parinkti
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programos „Atsitiktiniai takeliai“ įj./išj.
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Rodyti muzikos takelių pasirinkimo langą
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Pasirinkta muzikos rinkinys be dainų. Dainos nebus grojamos
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Muzikos programos pasirinkimas
@@ -725,6 +727,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Išjungti visas
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Įjungti visas
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Sniego aukštis
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Žemėlapyje nerodyti industrijų
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Žemėlapyje rodyti visas industrijas
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Rodyti arba slėpti heightmap
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Parodyti paskutinę žinutę ar spaudos pranešimą
@@ -1177,6 +1183,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Prieš laikrod�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pagal laikrodžio rodyklę
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Aukštis skiriamas „lygiaus scenarijaus“ žemėlapiui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Leisti keisti reljefą žemėlapio kraštuose: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas ar daugiau blokų šiauriniame krašte yra ne tušti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Didž. stoties plotis: {ORANGE}{STRING} {RED}Dėmesio: Aukšti parametrai lėtina žaidimą
@@ -2253,21 +2260,21 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti p
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenarijaus tipas
-STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Lygi zeme
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Lygi žemė
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Sukurti lygią žemę
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Atsitiktinis reljefas
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Lygumos aukstis:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Lygumos aukštis:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Pakeisti lygumos aukštį vienu žemyn
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Pakelti lygios zemes lygi vienu lygiu
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Pakelti žemės lygį vienu aukščiu
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Keisti lygumos auksti
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Keisti lygumos aukštį
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Pasaulis generuojamas...
 STR_GENERATION_ABORT                                            :{BLACK}Sustabdyti
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Sustabdyti pasaulio generavimą
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ar jus tikrai norite sustabdyti generavimą?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% pabaigta
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% užbaigta
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaulio generacija
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Medžių generacija
@@ -2298,7 +2305,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Įdiegt�
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nustatyti parametrus
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Kaitalioti paletę
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Kaitalioja parinkto NewGRF paletę.{}Darykite jei pajungta grafika nuspalvinta rožine spalva
-STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Įvykdyti pakeitimus
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Pritaikyti pakeitimus
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Rasti ieškomą turinį tinkle
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Patikrinti trukstamą turinį  internete
@@ -2319,7 +2326,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Įveskit
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Prieinami Papild. grafikos failai
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Pridėti prie pažymėjimo
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Įtraukti pažymėtus Papild. grafikos failus į jūsų nustatymus
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Atnaujinti sąrašą
+STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Nuskaityti dar kartą failus
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Atnaujinti prieinamų Papild. grafikos failų sąrašą
 
 # NewGRF (self) generated warnings/errors
