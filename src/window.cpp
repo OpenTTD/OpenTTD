@@ -133,6 +133,18 @@ bool EditBoxInGlobalFocus()
 }
 
 /**
+ * Makes no widget on this window have focus. The function however doesn't change which window has focus.
+ */
+void Window::UnfocusFocusedWidget()
+{
+	if (this->nested_focus != NULL) {
+		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
+		this->nested_focus->SetDirty(this);
+		this->nested_focus = NULL;
+	}
+}
+
+/**
  * Set focus within this window to the given widget. The function however doesn't change which window has focus.
  * @param widget_index Index of the widget in the window to set the focus to.
  * @return Focus has changed.

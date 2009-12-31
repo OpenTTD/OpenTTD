@@ -519,6 +519,7 @@ public:
 		return this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 	}
 
+	void UnfocusFocusedWidget();
 	bool SetFocusedWidget(byte widget_index);
 
 	void HandleButtonClick(byte widget);
