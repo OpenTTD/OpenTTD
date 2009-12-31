@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "crashlog.h"
 #include "gamelog.h"
+#include "date_func.h"
 #include "map_func.h"
 #include "rev.h"
 #include "strings_func.h"
@@ -205,7 +206,11 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 {
 	time_t cur_time = time(NULL);
 	buffer += seprintf(buffer, last, "*** OpenTTD Crash Report ***\n\n");
-	buffer += seprintf(buffer, last, "Crash at: %s\n", asctime(gmtime(&cur_time)));
+	buffer += seprintf(buffer, last, "Crash at: %s", asctime(gmtime(&cur_time)));
+
+	YearMonthDay ymd;
+	ConvertDateToYMD(_date, &ymd);
+	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, _date_fract);
 
 	buffer = this->LogError(buffer, last, CrashLog::message);
 	buffer = this->LogOpenTTDVersion(buffer, last);
