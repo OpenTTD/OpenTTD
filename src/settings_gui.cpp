@@ -1427,6 +1427,7 @@ static SettingsPage _settings_vehicles_servicing_page = {_settings_vehicles_serv
 
 static SettingEntry _settings_vehicles_trains[] = {
 	SettingEntry("vehicle.train_acceleration_model"),
+	SettingEntry("vehicle.train_slope_steepness"),
 	SettingEntry("vehicle.mammoth_trains"),
 	SettingEntry("gui.lost_train_warn"),
 	SettingEntry("vehicle.wagon_speed_limits"),

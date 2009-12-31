@@ -523,9 +523,9 @@ static int GetTrainAcceleration(Train *v, bool mode)
 		if (u->track == TRACK_BIT_DEPOT) max_speed = min(max_speed, 61);
 
 		if (HasBit(u->flags, VRF_GOINGUP)) {
-			incl += u->tcache.cached_veh_weight * 60; // 3% slope, quite a bit actually
+			incl += u->tcache.cached_veh_weight * 20 * _settings_game.vehicle.train_slope_steepness;
 		} else if (HasBit(u->flags, VRF_GOINGDOWN)) {
-			incl -= u->tcache.cached_veh_weight * 60;
+			incl -= u->tcache.cached_veh_weight * 20 * _settings_game.vehicle.train_slope_steepness;
 		}
 	}
 
