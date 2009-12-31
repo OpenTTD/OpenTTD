@@ -78,12 +78,6 @@ struct RgbQuad {
 };
 assert_compile(sizeof(RgbQuad) == 4);
 
-/** Pixel data in 24bpp BMP */
-struct RgbTriplet {
-	byte b, g, r;
-};
-assert_compile(sizeof(RgbTriplet) == 3);
-
 /**
  * Generic .BMP writer
  * @param name file name including extension
@@ -182,11 +176,11 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 				/* Convert from 'native' 32bpp to BMP-like 24bpp.
 				 * Works for both big and little endian machines */
 				Colour *src = ((Colour *)buff) + n * w;
-				RgbTriplet *dst = (RgbTriplet *)line;
+				byte *dst = line;
 				for (uint i = 0; i < w; i++) {
-					dst[i].r = src[i].r;
-					dst[i].g = src[i].g;
-					dst[i].b = src[i].b;
+					dst[i * 3    ] = src[i].b;
+					dst[i * 3 + 1] = src[i].g;
+					dst[i * 3 + 2] = src[i].r;
 				}
 			}
 			/* Write to file */
