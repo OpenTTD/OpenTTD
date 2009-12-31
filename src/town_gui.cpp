@@ -1008,6 +1008,7 @@ public:
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
 		this->RandomTownName();
 		this->UpdateButtons(true);
+		this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
 	}
 
 	void RandomTownName()
@@ -1022,7 +1023,6 @@ public:
 		UpdateTextBufferSize(&this->text);
 		UpdateOSKOriginalText(this, TSEW_TOWNNAME_EDITBOX);
 
-		this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
 		this->SetWidgetDirty(TSEW_TOWNNAME_EDITBOX);
 	}
 
@@ -1087,6 +1087,7 @@ public:
 
 			case TSEW_TOWNNAME_RANDOM:
 				this->RandomTownName();
+				this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
 				break;
 
 			case TSEW_MANYRANDOMTOWNS:
@@ -1135,7 +1136,9 @@ public:
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state;
-		this->HandleEditBoxKey(TSEW_TOWNNAME_EDITBOX, key, keycode, state);
+		if (this->HandleEditBoxKey(TSEW_TOWNNAME_EDITBOX, key, keycode, state) == HEBR_CANCEL) {
+			this->UnfocusFocusedWidget();
+		}
 		return state;
 	}
 
