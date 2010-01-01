@@ -2357,7 +2357,7 @@
 - Fix: Saving or loading a map doesnt pauses the game anymore
 - Fix: Some bridge part is not displayed transparent in transparent mode
 - Fix: Starting with -r option allows all resolutions
-- Fix: The pathfinder no longer sees rail with an other owner as a possible route
+- Fix: The pathfinder no longer sees rail with another owner as a possible route
 - Fix: Unable to select other screenshot format in Game Option
 - Fix: Unwanted town renaming
 - Fix: Vehicles slow down under bridge if the track is on a foundation

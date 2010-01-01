@@ -383,7 +383,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			item++;
 
 			if (_chat_tab_completion_active) {
-				/* We are pressing TAB again on the same name, is there an other name
+				/* We are pressing TAB again on the same name, is there another name
 				 *  that starts with this? */
 				if (!second_scan) {
 					size_t offset;

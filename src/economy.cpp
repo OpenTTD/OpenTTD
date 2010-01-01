@@ -304,7 +304,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				if (c->share_owners[i] == old_owner) {
 					/* Sell his shares */
 					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
-					/* Because we are in a DoCommand, we can't just execute an other one and
+					/* Because we are in a DoCommand, we can't just execute another one and
 					 *  expect the money to be removed. We need to do it ourself! */
 					SubtractMoneyFromCompany(res);
 				}
@@ -318,7 +318,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			if (_current_company != INVALID_OWNER) {
 				/* Sell the shares */
 				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
-				/* Because we are in a DoCommand, we can't just execute an other one and
+				/* Because we are in a DoCommand, we can't just execute another one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromCompany(res);
 			}

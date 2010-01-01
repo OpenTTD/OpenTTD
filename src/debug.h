@@ -72,7 +72,7 @@ const char *GetDebugString();
  * Is the correct usage for multiple TIC() / TOC() calls.
  *
  * TIC() / TOC() creates it's own block, so make sure not the mangle
- *  it with an other block.
+ *  it with another block.
  **/
 #define TIC() {\
 	extern uint64 ottd_rdtsc();\

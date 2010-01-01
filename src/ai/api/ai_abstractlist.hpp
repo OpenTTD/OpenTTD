@@ -141,7 +141,7 @@ public:
 	void Sort(SorterType sorter, bool ascending);
 
 	/**
-	 * Add one list to an other one.
+	 * Add one list to another one.
 	 * @param list The list that will be added to the caller.
 	 * @post The list to be added ('list') stays unmodified.
 	 * @note All added items keep their value as it was in 'list'.

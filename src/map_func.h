@@ -238,7 +238,7 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	 * Adds to tiles together.
 	 *
 	 * @param x One tile
-	 * @param y An other tile to add
+	 * @param y Another tile to add
 	 * @return The resulting tile(index)
 	 */
 	#define TILE_ADD(x,y) ((x) + (y))

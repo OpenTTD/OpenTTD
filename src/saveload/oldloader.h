@@ -124,7 +124,7 @@ static inline uint32 ReadUint32(LoadgameState *ls)
  *  - OCL_VAR: load 'type' to a global var
  *  - OCL_END: every struct must end with this
  *  - OCL_NULL: read 'amount' of bytes and send them to /dev/null or something
- *  - OCL_CHUNK: load an other proc to load a part of the savegame, 'amount' times
+ *  - OCL_CHUNK: load another proc to load a part of the savegame, 'amount' times
  *  - OCL_ASSERT: to check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;)
  */
 #define OCL_SVAR(type, base, offset)         { type,                 1,    NULL, (uint)cpp_offsetof(base, offset), NULL }

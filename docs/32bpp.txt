@@ -27,7 +27,7 @@ OpenTTD palette. Upon load of the PNG, the mask is loaded too, and overrides
 the RGB (not the Alpha) of the original PNG image, and replacing it with a
 8bpp color remapped and converted to 32bpp.
 
-An other thing that OpenTTD needs in your png, is 2 tEXt chunks: x_offs and
+Another thing that OpenTTD needs in your png, is 2 tEXt chunks: x_offs and
 y_offs. This to define the x- and y-offset, of course. Use the tool we supply
 to add this information. Sadly enough most graphical editors trashes those
 chunks upon save, so you have to readd it every time you save your image.

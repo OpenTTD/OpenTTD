@@ -1186,7 +1186,7 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
  */
 void ViewportSign::MarkDirty() const
 {
-	/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
+	/* We use ZOOM_LVL_MAX here, as every viewport can have another zoom,
 	 *  and there is no way for us to know which is the biggest. So make the
 	 *  biggest area dirty, and we are safe for sure.
 	 * We also add 1 to make sure the whole thing is redrawn. */

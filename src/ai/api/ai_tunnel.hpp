@@ -36,7 +36,7 @@ public:
 		/** The start tile must slope either North, South, West or East */
 		ERR_TUNNEL_START_SITE_UNSUITABLE,            // [STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL]
 
-		/** An other tunnel is in the way */
+		/** Another tunnel is in the way */
 		ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY,        // [STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY]
 
 		/** Unable to excavate land at the end to create the tunnel's exit */

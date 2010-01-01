@@ -94,7 +94,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 	sprite->AllocateData(sprite->width * sprite->height);
 
-	/* When there are transparency pixels, this format has an other trick.. decode it */
+	/* When there are transparency pixels, this format has another trick.. decode it */
 	if (type & 0x08) {
 		for (int y = 0; y < sprite->height; y++) {
 			bool last_item = false;

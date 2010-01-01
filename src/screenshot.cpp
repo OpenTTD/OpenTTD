@@ -353,7 +353,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	bool success;
 
 	if (pixelformat == 32) {
-		DEBUG(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick an other format.");
+		DEBUG(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
 		return false;
 	}
 	if (pixelformat != 8 || w == 0)

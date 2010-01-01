@@ -131,8 +131,8 @@ static void Load_ORDR()
 		size_t len = SlGetFieldLength();
 
 		if (CheckSavegameVersion(5)) {
-			/* Pre-version 5 had an other layout for orders
-			    (uint16 instead of uint32) */
+			/* Pre-version 5 had another layout for orders
+			 * (uint16 instead of uint32) */
 			len /= sizeof(uint16);
 			uint16 *orders = MallocT<uint16>(len + 1);
 

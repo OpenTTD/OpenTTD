@@ -37,7 +37,7 @@ public:
 	static SQInteger max(HSQUIRRELVM vm);
 
 	/**
-	 * Load an other file on runtime.
+	 * Load another file on runtime.
 	 * @note This is always loaded on the root-level, no matter where you call this.
 	 * @note The filename is always relative from the script it is called from. Absolute calls are NOT allowed!
 	 */

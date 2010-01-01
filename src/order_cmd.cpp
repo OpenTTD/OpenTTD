@@ -189,7 +189,7 @@ void InvalidateVehicleOrder(const Vehicle *v, int data)
 
 /**
  *
- * Assign data to an order (from an other order)
+ * Assign data to an order (from another order)
  *   This function makes sure that the index is maintained correctly
  *
  */
@@ -1110,7 +1110,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-/** Clone/share/copy an order-list of an other vehicle.
+/** Clone/share/copy an order-list of another vehicle.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
