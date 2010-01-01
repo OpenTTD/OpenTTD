@@ -1062,23 +1062,19 @@ void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrig
 	ETileArea area = ETileArea(st, tile, tas[trigger]);
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (uint y = 0; y < area.h; y++) {
-		for (uint x = 0; x < area.w; x++) {
-			if (st->TileBelongsToRailStation(area.tile)) {
-				const StationSpec *ss = GetStationSpec(area.tile);
-				if (ss != NULL && HasBit(ss->anim_triggers, trigger)) {
-					CargoID cargo;
-					if (cargo_type == CT_INVALID) {
-						cargo = CT_INVALID;
-					} else {
-						cargo = GetReverseCargoTranslation(cargo_type, ss->grffile);
-					}
-					ChangeStationAnimationFrame(ss, st, area.tile, random_bits, trigger, cargo);
+	TILE_LOOP(tile, area.w, area.h, area.tile) {
+		if (st->TileBelongsToRailStation(tile)) {
+			const StationSpec *ss = GetStationSpec(tile);
+			if (ss != NULL && HasBit(ss->anim_triggers, trigger)) {
+				CargoID cargo;
+				if (cargo_type == CT_INVALID) {
+					cargo = CT_INVALID;
+				} else {
+					cargo = GetReverseCargoTranslation(cargo_type, ss->grffile);
 				}
+				ChangeStationAnimationFrame(ss, st, tile, random_bits, trigger, cargo);
 			}
-			area.tile += TileDiffXY(1, 0);
 		}
-		area.tile += TileDiffXY(-area.w, 1);
 	}
 }
 
