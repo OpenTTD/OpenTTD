@@ -394,7 +394,6 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
 
 		case STATION_DOCK:
 		case STATION_OILRIG:
-		case STATION_BUOY:
 			ta->tile = this->dock_tile;
 			break;
 
