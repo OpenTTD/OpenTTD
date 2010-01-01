@@ -818,6 +818,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Вимкнути всі
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Показувати всі
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Показати висоту
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Не показувати промисловість на карті
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Показати усю промисловість на карті
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Вкл./відкл. карту висот
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Показує останнє повідомлення або новини
@@ -1203,6 +1207,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Буд�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель прискорення поїзда: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Оригінальна
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалістична
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутизна схилу для поїздів {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Заборонити поїздам і кораблям повертати на 90 град.: {ORANGE}{STRING} {LTBLUE} (не з OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Будувати суміжні залізничні станції: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дозволити об'єднувати не безпосередньо суміжні станції: {ORANGE}{STRING}
