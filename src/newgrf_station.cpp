@@ -73,8 +73,6 @@ struct ETileArea : TileArea {
 
 			case TA_WHOLE:
 				st->GetTileArea(this, Station::IsExpected(st) ? STATION_RAIL : STATION_WAYPOINT);
-				this->w++;
-				this->h++;
 				break;
 		}
 	}
