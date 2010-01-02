@@ -92,13 +92,6 @@ enum {
 	CH_TYPE_MASK    =  3,
 	CH_LAST         =  8,
 	CH_AUTO_LENGTH  = 16,
-
-	CH_PRI_0          = 0 << 4,
-	CH_PRI_1          = 1 << 4,
-	CH_PRI_2          = 2 << 4,
-	CH_PRI_3          = 3 << 4,
-	CH_PRI_SHL        = 4,
-	CH_NUM_PRI_LEVELS = 4,
 };
 
 /** VarTypes is the general bitmasked magic type that tells us

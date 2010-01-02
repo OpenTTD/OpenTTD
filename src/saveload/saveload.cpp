@@ -1189,17 +1189,12 @@ static void SlSaveChunks()
 {
 	const ChunkHandler *ch;
 	const ChunkHandler * const *chsc;
-	uint p;
 
-	for (p = 0; p != CH_NUM_PRI_LEVELS; p++) {
-		for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
-			while (true) {
-				if (((ch->flags >> CH_PRI_SHL) & (CH_NUM_PRI_LEVELS - 1)) == p)
-					SlSaveChunk(ch);
-				if (ch->flags & CH_LAST)
-					break;
-				ch++;
-			}
+	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
+		while (true) {
+			SlSaveChunk(ch);
+			if (ch->flags & CH_LAST) break;
+			ch++;
 		}
 	}
 
