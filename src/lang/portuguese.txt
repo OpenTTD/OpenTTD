@@ -1092,7 +1092,7 @@ STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaç
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permitir a construção de pontes muito longas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permitir ordens de ir para o depósito: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método manual de construção de indústrias primárias: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método de construção de indústrias primárias: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecção
@@ -3651,7 +3651,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mealheiro
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carvão
 STR_INDUSTRY_NAME_POWER_STATION                                 :Central Eléctrica
-STR_INDUSTRY_NAME_SAWMILL                                       :Carpintaria
+STR_INDUSTRY_NAME_SAWMILL                                       :Oficina de Carpintaria
 STR_INDUSTRY_NAME_FOREST                                        :Floresta
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinaria de Petróleo
 STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma Petrolífera

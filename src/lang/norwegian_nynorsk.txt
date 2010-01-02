@@ -694,6 +694,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Deaktiver alle
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktiver alle
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Syne høgd
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ikkje syne industriar på kart
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Syne alle industriar på kart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Byt vising av høgdekart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Syne siste melding eller nyhende
@@ -936,14 +940,14 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel skje
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermdump
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel kva format skjermdumpen skal lagrast i
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikksett
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel basis-grafikksett som skal nyttast
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafikk-sett
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel basisgrafikk-sett som skal nyttast
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd fil{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basis-grafikksettet
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-lydsett
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel basis-lydsett som skal nyttast
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basis-lydsettet
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basislyd-sett
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel basislyd-sett som skal nyttast
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basislyd-settet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismusikk-sett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel basismusikk som skal nyttast
@@ -2210,7 +2214,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Feltet eigast a
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opphaveleg opphavsbeskytta av {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheiter reservert
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2010 OpenTTD-teamet
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 OpenTTD-teamet
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lagre spel

@@ -1917,21 +1917,21 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Semnal s
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieşire (semafor){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrare şi cele combinate.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comportă atât ca semnal de intrare cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Semnal (semafor){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Semnal de sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur pentru oprire. Semnalele de sens unic nu pot fi parcurse în sens opus.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Semnal standard (electric){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Semnal de intrare (electric){}Verde atat timp cat exista unul sau mai multe semnale de iesire in sectiunea urmatoare a caii ferate. Altfel indica rosu.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Semnal de ieşire (electric){}Se comporta în acelasi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la intrări şi presemnalizatoare combinate.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Semnal combinat (electric){}Semnalul combinat se comporta atat ca semnalul de intrare si iesire. Acest lucru permite construirea "arborilor" mari de presemnalizare.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Semnal (electric){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Semnal de sens unic (electric){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalul de sens unic nu poate fi parcurs în sens opus.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversie semnal{}Cand este selectat, click-ul pe un semafor existent îl va converti in tipul si varianta selectată de semnalizare, iar CTRL-click va comuta varianta existenta.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Semnal de cale (semafor){}Un semnal de cale va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire. Semnalele standard de cale permit trecerea din ambele sensuri.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Semnal de cale cu sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur de oprire. Semnalele de cale cu sens unic permit trecerea intr-un singur sens.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Semnal standard (electric){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Semnal de intrare (electric){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Semnal de ieşire (electric){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrare şi cele combinate.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Semnal combinat (electric){}Semnalul combinat se comportă atât ca semnal de intrare cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Semnal de cale (electric){}Un semnal de cale va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire. Semnalele standard de cale permit trecerea din ambele sensuri.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Semnal de cale cu sens unic (electric){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur de oprire. Semnalele de cale cu sens unic permit trecerea intr-un singur sens.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversie semnal{}Când este selectat, click-ul pe un semafor existent îl va converti în tipul şi varianta selectată de semnalizare, iar Ctrl+Click va comuta varianta existentă.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densitatea semnalelor plasate prin tragerea cu mouse-ul
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Scade densitatea semnalului de tractare
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Mareste densitatea semnalului de tractare
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Scade densitatea semnalelor plasate prin tragerea cu mouse-ul
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte densitatea semnalelor plasate prin tragerea cu mouse-ul
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege podul de cale ferată
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege pod de cale ferată
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Alege pod rutier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - clic pe podul selectat pentru a-l construi
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1947,51 +1947,51 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular (silico
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcţii rutiere
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcţie Tramvai
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcţie tramvai
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construieşte secţiune de şosea. Ctrl comută construirea/eliminarea şoselei
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construcieşte şină de tramvai. Ctrl comută construirea/eliminarea şinei
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construieste sectiune de sosea folosind modul Auto-sosea. Ctrl comută construirea/eliminarea şoselei
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construieste sectiune de sina de tramvai folosind modul Auto-tramvai. Ctrl comută construirea/eliminarea şinei
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construieşte şină de tramvai. Ctrl comută construirea/eliminarea şinei
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construieşte secţiune de şosea folosind modul Auto-şosea. Ctrl comută construirea/eliminarea şoselei
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construieşte secţiune de şină de tramvai folosind modul Auto-tramvai. Ctrl comută construirea/eliminarea şinei
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construieşte o autobază (pentru achiziţie şi service vehicule)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construieste depou tramvaie (pentru achiziţii si service vehicule)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construieşte depou tramvaie (pentru achiziţie şi service vehicule)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construieşte staţie de autobuz. Ctrl permite alipirea staţiilor distante
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construieste statie de tramvai pentru calatori. Ctrl permite alipirea staţiilor distante
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construieşte staţie de tramvai pentru călători. Ctrl permite alipirea staţiilor distante
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construieşte platformă pentru camioane. Ctrl permite alipirea staţiilor distante
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construieste statie de transport marfar. Ctrl permite alipirea staţiilor distante
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construieşte staţie pentru tramvai de marfă. Ctrl permite alipirea staţiilor distante
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activare/Dezactivare sensuri unice
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construieşte pod rutier
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construieşte pod pentru tramvaie
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construieşte tunel rutier
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construieşte tunel pentru tramvaie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Comutator pentru construcţie/înlăturare şosele
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Comută construcţie/eliminare pentru şine de tramvai
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Comută construcţie/înlăturare pentru şine de tramvai
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientarea autobazei
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Alege orientarea autobazei
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientarea Depoului de Tramvaie
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientarea depoului de tramvaie
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Alege orientarea depoului de tramvaie
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientarea staţiei
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientarea staţiei de autobuz
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Alege orientarea staţiei de autobuz
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientarea platformei de camioane
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientarea platformei pentru camioane
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Alege orientarea platformei pentru camioane
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientarea staţiei de tramvai pentru călători
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Alege orientarea staţiei de tramvai
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Alege orientarea staţiei de tramvai pentru călători
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientarea staţiei de tramvai pentru marfă
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Alege orientarea platformei de tramvai
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Alege orientarea staţiei de tramvai pentru marfă
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcţie rute acvatice
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Rute acvatice
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construieşte canale
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construieşte ecluză
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru achiziţionare si service nave)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru achiziţionare şi service nave)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construieşte port. Ctrl permite alipirea staţiilor distante
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Amplasează o baliză ce poate fi utilizată pentru direcţionare
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieste apeduct
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineşte zona apei.{}Creează un canal, mai puţin când Ctrl este apăsat la nivelul mării, când va inunda, in loc, imprejurimile
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieşte apeduct
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineşte zona apei.{}Creează un canal, excepţie când Ctrl este apăsat la nivelul mării, ce va determina inundarea împrejurimilor
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Amplasează râuri.
 
 # Ship depot construction window
@@ -2012,12 +2012,12 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Alege ti
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Mic
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Orăşenesc
 STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internaţional
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Navetist
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helidrom
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Hangar elicoptere
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Baza elicoptere
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Bază elicoptere
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeroporturi mici
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeroporturi mari
@@ -2029,7 +2029,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Zgomot g
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modificare peisaj
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Scade altitudinea unui punct de teren
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Măreşte altitudinea unui punct de teren
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Creşte altitudinea unui punct de teren
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelează terenul
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Cumpără teren pentru folosire ulterioară
 
@@ -2037,7 +2037,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Cumpăr�
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbori
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori din specii aleatoare
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planteazã arbori din diverse specii la întâmplare
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantează arbori din diverse specii la întâmplare
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbori aleatori
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantează aleator arbori pe uscat
 
@@ -2050,21 +2050,21 @@ STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plaseaz�
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Măreşte aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Micşorează aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generează teren aleator
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Creeaza o harta noua
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Creează o hartă nouă
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Resetează peisajul
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Elimina de pe harta toate proprietatile detinute de jucatori
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Elimină de pe hartă toate proprietăţile deţinute de jucători
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Resetare peisaj
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Esti sigur ca vrei sa elimini toate proprietatile detinute de jucatori?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Eşti sigur că vrei să elimini toate proprietăţile deţinute de jucători?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generare oras
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Oras nou
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construieste un oras nou
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generare oraş
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Oraş nou
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construieşte un oraş nou
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Oraş aleator
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construieşte un oraş într-o locaţie aleatoare
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mai multe orase aleatoare
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Umple harta cu orase generate aleator
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mai multe oraşe aleatoare
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Umple harta cu oraşe generate aleator
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nume oraş:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introdu numele oraşului
@@ -2095,7 +2095,7 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Alege in
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Multe industrii aleatoare
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Umple harta cu industrii generate aleator
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY}
-STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecteaza
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectează
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieste
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanteaza
 

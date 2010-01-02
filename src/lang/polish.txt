@@ -608,6 +608,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Zmień n
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij aby przesunąć okno
+STR_TOOLTIP_SHADE                                               :{BLACK}Zwęź okno - pokaż tylko nagłówek
 STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacza to okno jako niezamykane dla funkcji 'Zamknij wszystkie okna'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz duży/mały rozmiar okna
@@ -1072,6 +1073,9 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Wyłącz wszystko
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Włącz wszystko
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Pokaż wysokość
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Nie pokazuj przedsiębiorstw na mapie
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Pokaż wszystkie przedsiębiorstwa na mapie
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaż ostatnią wiadomość lub ogłoszenie
