@@ -105,15 +105,16 @@ static void MakeDefaultWaypointName(Waypoint *wp)
  * Find a deleted waypoint close to a tile.
  * @param tile to search from
  * @param str  the string to get the 'type' of
+ * @param cid previous owner of the waypoint
  * @return the deleted nearby waypoint
  */
-static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str)
+static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str, CompanyID cid)
 {
 	Waypoint *wp, *best = NULL;
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (!wp->IsInUse() && wp->string_id == str && (wp->owner == _current_company || wp->owner == OWNER_NONE)) {
+		if (!wp->IsInUse() && wp->string_id == str && wp->owner == cid) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {
@@ -256,18 +257,18 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	TileIndex center_tile = start_tile + (count / 2) * offset;
-	if (wp == NULL && reuse) wp = FindDeletedWaypointCloseTo(center_tile, STR_SV_STNAME_WAYPOINT);
+	if (wp == NULL && reuse) wp = FindDeletedWaypointCloseTo(center_tile, STR_SV_STNAME_WAYPOINT, _current_company);
 
 	if (wp != NULL) {
-		/* Reuse an existing station. */
+		/* Reuse an existing waypoint. */
 		if (wp->owner != _current_company) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT);
 
-		/* check if we want to expanding an already existing station? */
+		/* check if we want to expand an already existing waypoint? */
 		if (wp->train_station.tile != INVALID_TILE && !CanExpandRailStation(wp, new_location, axis)) return CMD_ERROR;
 
 		if (!wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
-		/* allocate and initialize new station */
+		/* allocate and initialize new waypoint */
 		if (!Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 	}
 
@@ -338,7 +339,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
-	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY);
+	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY, OWNER_NONE);
 	if (wp == NULL && !Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
