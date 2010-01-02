@@ -32,22 +32,22 @@
 
 /** Widget numbers of the small map window. */
 enum SmallMapWindowWidgets {
-	SM_WIDGET_CAPTION,
-	SM_WIDGET_MAP_BORDER,
-	SM_WIDGET_MAP,
-	SM_WIDGET_LEGEND, ///< Display of smallmap legend.
-	SM_WIDGET_CONTOUR,
-	SM_WIDGET_VEHICLES,
-	SM_WIDGET_INDUSTRIES,
-	SM_WIDGET_ROUTES,
-	SM_WIDGET_VEGETATION,
-	SM_WIDGET_OWNERS,
-	SM_WIDGET_CENTERMAP,
-	SM_WIDGET_TOGGLETOWNNAME,
-	SM_WIDGET_SELECTINDUSTRIES,
-	SM_WIDGET_ENABLEINDUSTRIES,
-	SM_WIDGET_DISABLEINDUSTRIES,
-	SM_WIDGET_SHOW_HEIGHT,
+	SM_WIDGET_CAPTION,           ///< Caption widget.
+	SM_WIDGET_MAP_BORDER,        ///< Border around the smallmap.
+	SM_WIDGET_MAP,               ///< Panel containing the smallmap.
+	SM_WIDGET_LEGEND,            ///< Bottom panel to display smallmap legends.
+	SM_WIDGET_CONTOUR,           ///< Button to select the contour view (height map).
+	SM_WIDGET_VEHICLES,          ///< Button to select the vehicles view.
+	SM_WIDGET_INDUSTRIES,        ///< Button to select the industries view.
+	SM_WIDGET_ROUTES,            ///< Button to select the routes view.
+	SM_WIDGET_VEGETATION,        ///< Button to select the vegetation view.
+	SM_WIDGET_OWNERS,            ///< Button to select the owners view.
+	SM_WIDGET_CENTERMAP,         ///< Button to move smallmap center to main window center.
+	SM_WIDGET_TOGGLETOWNNAME,    ///< Toggle button to display town names.
+	SM_WIDGET_SELECTINDUSTRIES,  ///< Selection widget for the buttons at the industry mode.
+	SM_WIDGET_ENABLEINDUSTRIES,  ///< Button to enable display of all industries.
+	SM_WIDGET_DISABLEINDUSTRIES, ///< Button to disable display of all industries.
+	SM_WIDGET_SHOW_HEIGHT,       ///< Show heightmap toggle button.
 };
 
 static int _smallmap_industry_count; ///< Number of used industries
@@ -220,33 +220,35 @@ static inline uint32 ApplyMask(uint32 colour, const AndOr *mask)
 }
 
 
+/** Colour masks for "Contour" and "Routes" modes. */
 static const AndOr _smallmap_contours_andor[] = {
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0x98989898), MKCOLOUR(0x00000000)},
-	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)},
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)},
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_CLEAR
+	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)}, // MP_RAILWAY
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_ROAD
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_HOUSE
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TREES
+	{MKCOLOUR(0x98989898), MKCOLOUR(0x00000000)}, // MP_STATION
+	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)}, // MP_WATER
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_VOID
+	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)}, // MP_INDUSTRY
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TUNNELBRIDGE
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_UNMOVABLE
 	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)},
 };
 
+/** Colour masks for "Vehicles", "Industry", and "Vegetation" modes. */
 static const AndOr _smallmap_vehicles_andor[] = {
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
-	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)},
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)},
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)},
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_CLEAR
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_RAILWAY
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_ROAD
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_HOUSE
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TREES
+	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_STATION
+	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)}, // MP_WATER
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_VOID
+	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)}, // MP_INDUSTRY
+	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TUNNELBRIDGE
+	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_UNMOVABLE
 	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
 };
 
@@ -354,6 +356,12 @@ static const uint32 _vegetation_clear_bits[] = {
 	MKCOLOUR(0x54545454), ///< unused
 };
 
+/**
+ * Return the colour a tile would be displayed with in the smallmap in mode "Vegetation".
+ *
+ * @param tile The tile of which we would like to get the colour.
+ * @return The colour of tile  in the smallmap in mode "Vegetation"
+ */
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
@@ -417,6 +425,7 @@ static const uint32 _smallmap_mask_right[] = {
 
 /* Each tile has 4 x pixels and 1 y pixel */
 
+/** Holds function pointers to determine tile colour in the smallmap for each smallmap mode. */
 static GetSmallMapPixels * const _smallmap_draw_procs[] = {
 	GetSmallMapContoursPixels,
 	GetSmallMapVehiclesPixels,
@@ -426,6 +435,7 @@ static GetSmallMapPixels * const _smallmap_draw_procs[] = {
 	GetSmallMapOwnerPixels,
 };
 
+/** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleTypeByte. */
 static const byte _vehicle_type_colours[6] = {
 	184, 191, 152, 15, 215, 184
 };
