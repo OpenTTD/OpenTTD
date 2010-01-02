@@ -34,12 +34,14 @@
  * \li AISubsidy::GetDestinationIndex
  * \li AITown::GetLastMonthTransportedPercentage
  * \li AIVehicleList_Depot
+ * \li Some error messages to AIWaypoint
  *
  * API removals:
  * \li AIOrder::ChangeOrder, use AIOrder::SetOrderFlags instead
  * \li AIRail::RemoveRailStationTileRect, use AIRail::RemoveRailStationTileRectangle instead
  * \li AIRail::RemoveRailWaypoint, use AIRail::RemoveRailWaypointTileRectangle instead
  * \li AISign::GetMaxSignID, use AISignList instead
+ * \li AIStation::ERR_STATION_TOO_LARGE, use AIError::ERR_STATION_TOO_SPREAD_OUT instead
  * \li AISubsidy::SourceIsTown, use AISubsidy::GetSourceType instead
  * \li AISubsidy::GetSource, use AISubsidy::GetSourceIndex instead
  * \li AISubsidy::DestinationIsTown, use AISubsidy::GetDestinationType instead

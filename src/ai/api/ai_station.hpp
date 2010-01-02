@@ -31,9 +31,6 @@ public:
 		/** Base for station related errors */
 		ERR_STATION_BASE = AIError::ERR_CAT_STATION << AIError::ERR_CAT_BIT_SIZE,
 
-		/** The station size exceeds the station spread */
-		ERR_STATION_TOO_LARGE,                    // [STR_ERROR_STATION_TOO_SPREAD_OUT]
-
 		/** The station is build too close to another station, airport or dock */
 		ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT, STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION, STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK]
 
@@ -41,7 +38,7 @@ public:
 		ERR_STATION_TOO_MANY_STATIONS,            // [STR_ERROR_TOO_MANY_STATIONS_LOADING, STR_ERROR_TOO_MANY_TRUCK_STOPS, STR_ERROR_TOO_MANY_BUS_STOPS]
 
 		/** There are too many stations, airports of docks in a town */
-		ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    // []
+		ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    // [STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT]
 	};
 
 	/**

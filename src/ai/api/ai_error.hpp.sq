@@ -44,6 +44,7 @@ void SQAIError_Register(Squirrel *engine)
 	SQAIError.DefSQConst(engine, AIError::ERR_CAT_ROAD,                     "ERR_CAT_ROAD");
 	SQAIError.DefSQConst(engine, AIError::ERR_CAT_ORDER,                    "ERR_CAT_ORDER");
 	SQAIError.DefSQConst(engine, AIError::ERR_CAT_MARINE,                   "ERR_CAT_MARINE");
+	SQAIError.DefSQConst(engine, AIError::ERR_CAT_WAYPOINT,                 "ERR_CAT_WAYPOINT");
 	SQAIError.DefSQConst(engine, AIError::ERR_CAT_BIT_SIZE,                 "ERR_CAT_BIT_SIZE");
 	SQAIError.DefSQConst(engine, AIError::ERR_NONE,                         "ERR_NONE");
 	SQAIError.DefSQConst(engine, AIError::ERR_UNKNOWN,                      "ERR_UNKNOWN");

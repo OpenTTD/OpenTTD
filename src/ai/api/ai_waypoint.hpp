@@ -24,6 +24,20 @@ public:
 	static const char *GetClassName() { return "AIWaypoint"; }
 
 	/**
+	 * All waypoint related error messages.
+	 */
+	enum ErrorMessages {
+		/** Base for waypoint related errors */
+		ERR_WAYPOINT_BASE = AIError::ERR_CAT_WAYPOINT << AIError::ERR_CAT_BIT_SIZE,
+
+		/** The waypoint is build too close to another waypoint */
+		ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT]
+
+		/** The waypoint would join more then one existing waypoint together. */
+		ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS,    // [STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING]
+	};
+
+	/**
 	 * Checks whether the given waypoint is valid and owned by you.
 	 * @param waypoint_id The waypoint to check.
 	 * @return True if and only if the waypoint is valid.
