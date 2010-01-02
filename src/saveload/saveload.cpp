@@ -159,26 +159,27 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	NULL,
 };
 
+/**
+ * Iterate over all chunk handlers.
+ * @param ch the chunk handler iterator
+ */
+#define FOR_ALL_CHUNK_HANDLERS(ch) \
+	for (const ChunkHandler * const *chsc = _chunk_handlers; *chsc != NULL; chsc++) \
+		for (const ChunkHandler *ch = *chsc; ch != NULL; ch = (ch->flags & CH_LAST) ? NULL : ch + 1)
+
 static SaveLoadParams _sl;
 
 /** Null all pointers (convert index -> NULL) */
 static void SlNullPointers()
 {
-	const ChunkHandler *ch;
-	const ChunkHandler * const *chsc;
-
 	_sl.action = SLA_NULL;
 
 	DEBUG(sl, 1, "Nulling pointers");
 
-	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
-		while (true) {
-			if (ch->ptrs_proc != NULL) {
-				DEBUG(sl, 2, "Nulling pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
-				ch->ptrs_proc();
-			}
-			if (ch->flags & CH_LAST) break;
-			ch++;
+	FOR_ALL_CHUNK_HANDLERS(ch) {
+		if (ch->ptrs_proc != NULL) {
+			DEBUG(sl, 2, "Nulling pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
+			ch->ptrs_proc();
 		}
 	}
 
@@ -1187,15 +1188,8 @@ static void SlSaveChunk(const ChunkHandler *ch)
 /** Save all chunks */
 static void SlSaveChunks()
 {
-	const ChunkHandler *ch;
-	const ChunkHandler * const *chsc;
-
-	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
-		while (true) {
-			SlSaveChunk(ch);
-			if (ch->flags & CH_LAST) break;
-			ch++;
-		}
+	FOR_ALL_CHUNK_HANDLERS(ch) {
+		SlSaveChunk(ch);
 	}
 
 	/* Terminator */
@@ -1209,15 +1203,7 @@ static void SlSaveChunks()
  */
 static const ChunkHandler *SlFindChunkHandler(uint32 id)
 {
-	const ChunkHandler *ch;
-	const ChunkHandler *const *chsc;
-	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
-		for (;;) {
-			if (ch->id == id) return ch;
-			if (ch->flags & CH_LAST) break;
-			ch++;
-		}
-	}
+	FOR_ALL_CHUNK_HANDLERS(ch) if (ch->id == id) return ch;
 	return NULL;
 }
 
@@ -1239,22 +1225,14 @@ static void SlLoadChunks()
 /** Fix all pointers (convert index -> pointer) */
 static void SlFixPointers()
 {
-	const ChunkHandler *ch;
-	const ChunkHandler * const *chsc;
-
 	_sl.action = SLA_PTRS;
 
 	DEBUG(sl, 1, "Fixing pointers");
 
-	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
-		while (true) {
-			if (ch->ptrs_proc != NULL) {
-				DEBUG(sl, 2, "Fixing pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
-				ch->ptrs_proc();
-			}
-			if (ch->flags & CH_LAST)
-				break;
-			ch++;
+	FOR_ALL_CHUNK_HANDLERS(ch) {
+		if (ch->ptrs_proc != NULL) {
+			DEBUG(sl, 2, "Fixing pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
+			ch->ptrs_proc();
 		}
 	}
 
