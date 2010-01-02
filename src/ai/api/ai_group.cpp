@@ -114,7 +114,7 @@
 /* static */ bool AIGroup::SetAutoReplace(GroupID group_id, EngineID engine_id_old, EngineID engine_id_new)
 {
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_ALL);
-	EnforcePrecondition(false, AIEngine::IsValidEngine(engine_id_new));
+	EnforcePrecondition(false, AIEngine::IsBuildable(engine_id_new));
 
 	return AIObject::DoCommand(0, group_id << 16, (engine_id_new << 16) | engine_id_old, CMD_SET_AUTOREPLACE);
 }

@@ -300,7 +300,7 @@ public:
 	 * @param engine_id The engine to use for this vehicle.
 	 * @pre The tile at depot has a depot that can build the engine and
 	 *   is owned by you.
-	 * @pre IsValidEngine(engine_id).
+	 * @pre AIEngine::IsBuildable(engine_id).
 	 * @exception AIVehicle::ERR_VEHICLE_TOO_MANY
 	 * @exception AIVehicle::ERR_VEHICLE_BUILD_DISABLED
 	 * @exception AIVehicle::ERR_VEHICLE_WRONG_DEPOT

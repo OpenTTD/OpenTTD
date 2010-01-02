@@ -12,6 +12,7 @@
 #include "ai_engine.hpp"
 #include "ai_cargo.hpp"
 #include "../../company_func.h"
+#include "../../company_base.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
 #include "../../rail.h"
@@ -20,6 +21,13 @@
 #include "table/strings.h"
 
 /* static */ bool AIEngine::IsValidEngine(EngineID engine_id)
+{
+	const Engine *e = ::Engine::GetIfValid(engine_id);
+	return e != NULL && (HasBit(e->company_avail, _current_company) || ::Company::Get(_current_company)->num_engines[engine_id] > 0);
+
+}
+
+/* static */ bool AIEngine::IsBuildable(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
 	return e != NULL && HasBit(e->company_avail, _current_company);

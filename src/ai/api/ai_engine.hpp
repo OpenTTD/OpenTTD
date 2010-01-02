@@ -26,11 +26,19 @@ public:
 	static const char *GetClassName() { return "AIEngine"; }
 
 	/**
-	 * Checks whether the given engine type is valid and buildable by you.
+	 * Checks whether the given engine type is valid. An engine is valid if you
+	 * have at least one vehicle of this engine or it's currently buildable.
 	 * @param engine_id The engine to check.
 	 * @return True if and only if the engine type is valid.
 	 */
 	static bool IsValidEngine(EngineID engine_id);
+
+	/**
+	 * Checks whether the given engine type is buildable by you.
+	 * @param engine_id The engine to check.
+	 * @return True if and only if the engine type is buildable.
+	 */
+	static bool IsBuildable(EngineID engine_id);
 
 	/**
 	 * Get the name of an engine.

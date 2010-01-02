@@ -64,7 +64,7 @@
 
 /* static */ VehicleID AIVehicle::BuildVehicle(TileIndex depot, EngineID engine_id)
 {
-	EnforcePrecondition(INVALID_VEHICLE, AIEngine::IsValidEngine(engine_id));
+	EnforcePrecondition(INVALID_VEHICLE, AIEngine::IsBuildable(engine_id));
 
 	::VehicleType type = ::Engine::Get(engine_id)->type;
 

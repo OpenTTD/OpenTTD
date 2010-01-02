@@ -21,6 +21,7 @@
  * API additions:
  * \li AIBaseStation
  * \li AIBuoyList
+ * \li AIEngine::IsBuildable
  * \li AIEventCompanyAskMerger
  * \li AIIndustry::GetLastMonthTransportedPercentage
  * \li AIOrder::AIOF_GOTO_NEAREST_DEPOT
@@ -81,6 +82,10 @@
  *     For GetCargoType the first most used cargo type is returned.
  * \li AIIndustryType::GetConstructionCost() now returns -1 if the industry is
  *     neither buildable nor prospectable.
+ * \li AIEngine::IsValidEngine will now return true if you have at least one
+ *     vehicle of that type in your company, regardless if it's still buildable
+ *     or not. AIEngine::IsBuildable returns only true when you can actually
+ *     build an engine.
  *
  * \b 0.7.5
  *

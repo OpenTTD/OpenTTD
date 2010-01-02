@@ -91,3 +91,162 @@ AIVehicle.SkipToVehicleOrder <- function(vehicle_id, order_position)
 {
 	return AIOrder.SkipToOrder(vehicle_id, order_position);
 }
+
+AIEngine.IsValidEngine <- function(engine_id)
+{
+	return AIEngine.IsBuildable(engine_id);
+}
+
+AIEngine._GetName <- AIEngine.GetName;
+AIEngine.GetName <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return null;
+	return AIEngine._GetName(engine_id);
+}
+
+AIEngine._GetCargoType <- AIEngine.GetCargoType;
+AIEngine.GetCargoType <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return 255;
+	return AIEngine._GetCargoType(engine_id);
+}
+
+AIEngine._CanRefitCargo <- AIEngine.CanRefitCargo;
+AIEngine.CanRefitCargo <- function(engine_id, cargo_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return false;
+	return AIEngine._CanRefitCargo(engine_id, cargo_id);
+}
+
+AIEngine._CanPullCargo <- AIEngine.CanPullCargo;
+AIEngine.CanPullCargo <- function(engine_id, cargo_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return false;
+	return AIEngine._CanPullCargo(engine_id, cargo_id);
+}
+
+AIEngine._GetCapacity <- AIEngine.GetCapacity;
+AIEngine.GetCapacity <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetCapacity(engine_id);
+}
+
+AIEngine._GetReliability <- AIEngine.GetReliability;
+AIEngine.GetReliability <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetReliability(engine_id);
+}
+
+AIEngine._GetMaxSpeed <- AIEngine.GetMaxSpeed;
+AIEngine.GetMaxSpeed <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetMaxSpeed(engine_id);
+}
+
+AIEngine._GetPrice <- AIEngine.GetPrice;
+AIEngine.GetPrice <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetPrice(engine_id);
+}
+
+AIEngine._GetMaxAge <- AIEngine.GetMaxAge;
+AIEngine.GetMaxAge <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetMaxAge(engine_id);
+}
+
+AIEngine._GetRunningCost <- AIEngine.GetRunningCost;
+AIEngine.GetRunningCost <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetRunningCost(engine_id);
+}
+
+AIEngine._GetPower <- AIEngine.GetPower;
+AIEngine.GetPower <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetPower(engine_id);
+}
+
+AIEngine._GetWeight <- AIEngine.GetWeight;
+AIEngine.GetWeight <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetWeight(engine_id);
+}
+
+AIEngine._GetMaxTractiveEffort <- AIEngine.GetMaxTractiveEffort;
+AIEngine.GetMaxTractiveEffort <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetMaxTractiveEffort(engine_id);
+}
+
+AIEngine._GetDesignDate <- AIEngine.GetDesignDate;
+AIEngine.GetDesignDate <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetDesignDate(engine_id);
+}
+
+AIEngine._GetVehicleType <- AIEngine.GetVehicleType;
+AIEngine.GetVehicleType <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return AIVehicle.VT_INVALID;
+	return AIEngine._GetVehicleType(engine_id);
+}
+
+AIEngine._IsWagon <- AIEngine.IsWagon;
+AIEngine.IsWagon <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return false;
+	return AIEngine._IsWagon(engine_id);
+}
+
+AIEngine._CanRunOnRail <- AIEngine.CanRunOnRail;
+AIEngine.CanRunOnRail <- function(engine_id, track_rail_type)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return false;
+	return AIEngine._CanRunOnRail(engine_id, track_rail_type);
+}
+
+AIEngine._HasPowerOnRail <- AIEngine.HasPowerOnRail;
+AIEngine.HasPowerOnRail <- function(engine_id, track_rail_type)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return false;
+	return AIEngine._HasPowerOnRail(engine_id, track_rail_type);
+}
+
+AIEngine._GetRoadType <- AIEngine.GetRoadType;
+AIEngine.GetRoadType <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return AIRoad.ROADTYPE_INVALID;
+	return AIEngine._GetRoadType(engine_id);
+}
+
+AIEngine._GetRailType <- AIEngine.GetRailType;
+AIEngine.GetRailType <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return AIRail.RAILTYPE_INVALID;
+	return AIEngine._GetRailType(engine_id);
+}
+
+AIEngine._IsArticulated <- AIEngine.IsArticulated;
+AIEngine.IsArticulated <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return false;
+	return AIEngine._IsArticulated(engine_id);
+}
+
+AIEngine._GetPlaneType <- AIEngine.GetPlaneType;
+AIEngine.GetPlaneType <- function(engine_id)
+{
+	if (!AIEngine.IsBuildable(engine_id)) return -1;
+	return AIEngine._GetPlaneType(engine_id);
+}

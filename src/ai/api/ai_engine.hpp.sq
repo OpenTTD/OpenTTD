@@ -27,6 +27,7 @@ void SQAIEngine_Register(Squirrel *engine)
 	SQAIEngine.AddConstructor<void (AIEngine::*)(), 1>(engine, "x");
 
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsValidEngine,        "IsValidEngine",        2, ".i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsBuildable,          "IsBuildable",          2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetName,              "GetName",              2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCargoType,         "GetCargoType",         2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRefitCargo,        "CanRefitCargo",        3, ".ii");
