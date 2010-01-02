@@ -62,6 +62,29 @@ struct EndGameHighScoreBaseWindow : Window {
 	{
 		delete this;
 	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			/* Keys for telling we want to go on */
+			case WKC_RETURN:
+			case WKC_ESC:
+			case WKC_SPACE:
+				delete this;
+				return ES_HANDLED;
+
+			/* Allow CTRL-Q to work like ALT-F4 in all cases */
+			case 'Q' | WKC_CTRL:
+			case 'Q' | WKC_META:
+				return ES_NOT_HANDLED;
+
+			default:
+				/* We want to handle all keys; we don't want windows in
+				 * the background to open. Especially the ones that do
+				 * locate themselves based on the status-/toolbars. */
+				return ES_HANDLED;
+		}
+	}
 };
 
 /** End game window shown at the end of the game */
