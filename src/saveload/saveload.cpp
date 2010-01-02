@@ -88,8 +88,6 @@ struct SaveLoadParams {
 	WriterProc *write_bytes;             ///< savegame writer function
 	ReaderProc *read_bytes;              ///< savegame loader function
 
-	const ChunkHandler * const *chs;     ///< the chunk of data that is being processed atm (vehicles, signs, etc.)
-
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
 	 * to be flushed to file (save) or to final place (load) when full. */
 	byte *bufp, *bufe;                   ///< bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
@@ -105,6 +103,62 @@ struct SaveLoadParams {
 	char *extra_msg;                     ///< the error message
 };
 
+/* these define the chunks */
+extern const ChunkHandler _gamelog_chunk_handlers[];
+extern const ChunkHandler _map_chunk_handlers[];
+extern const ChunkHandler _misc_chunk_handlers[];
+extern const ChunkHandler _name_chunk_handlers[];
+extern const ChunkHandler _cheat_chunk_handlers[] ;
+extern const ChunkHandler _setting_chunk_handlers[];
+extern const ChunkHandler _company_chunk_handlers[];
+extern const ChunkHandler _engine_chunk_handlers[];
+extern const ChunkHandler _veh_chunk_handlers[];
+extern const ChunkHandler _waypoint_chunk_handlers[];
+extern const ChunkHandler _depot_chunk_handlers[];
+extern const ChunkHandler _order_chunk_handlers[];
+extern const ChunkHandler _town_chunk_handlers[];
+extern const ChunkHandler _sign_chunk_handlers[];
+extern const ChunkHandler _station_chunk_handlers[];
+extern const ChunkHandler _industry_chunk_handlers[];
+extern const ChunkHandler _economy_chunk_handlers[];
+extern const ChunkHandler _subsidy_chunk_handlers[];
+extern const ChunkHandler _ai_chunk_handlers[];
+extern const ChunkHandler _animated_tile_chunk_handlers[];
+extern const ChunkHandler _newgrf_chunk_handlers[];
+extern const ChunkHandler _group_chunk_handlers[];
+extern const ChunkHandler _cargopacket_chunk_handlers[];
+extern const ChunkHandler _autoreplace_chunk_handlers[];
+extern const ChunkHandler _labelmaps_chunk_handlers[];
+
+static const ChunkHandler * const _chunk_handlers[] = {
+	_gamelog_chunk_handlers,
+	_map_chunk_handlers,
+	_misc_chunk_handlers,
+	_name_chunk_handlers,
+	_cheat_chunk_handlers,
+	_setting_chunk_handlers,
+	_veh_chunk_handlers,
+	_waypoint_chunk_handlers,
+	_depot_chunk_handlers,
+	_order_chunk_handlers,
+	_industry_chunk_handlers,
+	_economy_chunk_handlers,
+	_subsidy_chunk_handlers,
+	_engine_chunk_handlers,
+	_town_chunk_handlers,
+	_sign_chunk_handlers,
+	_station_chunk_handlers,
+	_company_chunk_handlers,
+	_ai_chunk_handlers,
+	_animated_tile_chunk_handlers,
+	_newgrf_chunk_handlers,
+	_group_chunk_handlers,
+	_cargopacket_chunk_handlers,
+	_autoreplace_chunk_handlers,
+	_labelmaps_chunk_handlers,
+	NULL,
+};
+
 static SaveLoadParams _sl;
 
 /** Null all pointers (convert index -> NULL) */
@@ -117,7 +171,7 @@ static void SlNullPointers()
 
 	DEBUG(sl, 1, "Nulling pointers");
 
-	for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
+	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
 		while (true) {
 			if (ch->ptrs_proc != NULL) {
 				DEBUG(sl, 2, "Nulling pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
@@ -1138,7 +1192,7 @@ static void SlSaveChunks()
 	uint p;
 
 	for (p = 0; p != CH_NUM_PRI_LEVELS; p++) {
-		for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
+		for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
 			while (true) {
 				if (((ch->flags >> CH_PRI_SHL) & (CH_NUM_PRI_LEVELS - 1)) == p)
 					SlSaveChunk(ch);
@@ -1162,7 +1216,7 @@ static const ChunkHandler *SlFindChunkHandler(uint32 id)
 {
 	const ChunkHandler *ch;
 	const ChunkHandler *const *chsc;
-	for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
+	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
 		for (;;) {
 			if (ch->id == id) return ch;
 			if (ch->flags & CH_LAST) break;
@@ -1197,7 +1251,7 @@ static void SlFixPointers()
 
 	DEBUG(sl, 1, "Fixing pointers");
 
-	for (chsc = _sl.chs; (ch = *chsc++) != NULL;) {
+	for (chsc = _chunk_handlers; (ch = *chsc++) != NULL;) {
 		while (true) {
 			if (ch->ptrs_proc != NULL) {
 				DEBUG(sl, 2, "Fixing pointers for %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);
@@ -1453,62 +1507,6 @@ static void UninitWriteZlib()
 /*******************************************
  ************* END OF CODE *****************
  *******************************************/
-
-/* these define the chunks */
-extern const ChunkHandler _gamelog_chunk_handlers[];
-extern const ChunkHandler _map_chunk_handlers[];
-extern const ChunkHandler _misc_chunk_handlers[];
-extern const ChunkHandler _name_chunk_handlers[];
-extern const ChunkHandler _cheat_chunk_handlers[] ;
-extern const ChunkHandler _setting_chunk_handlers[];
-extern const ChunkHandler _company_chunk_handlers[];
-extern const ChunkHandler _engine_chunk_handlers[];
-extern const ChunkHandler _veh_chunk_handlers[];
-extern const ChunkHandler _waypoint_chunk_handlers[];
-extern const ChunkHandler _depot_chunk_handlers[];
-extern const ChunkHandler _order_chunk_handlers[];
-extern const ChunkHandler _town_chunk_handlers[];
-extern const ChunkHandler _sign_chunk_handlers[];
-extern const ChunkHandler _station_chunk_handlers[];
-extern const ChunkHandler _industry_chunk_handlers[];
-extern const ChunkHandler _economy_chunk_handlers[];
-extern const ChunkHandler _subsidy_chunk_handlers[];
-extern const ChunkHandler _ai_chunk_handlers[];
-extern const ChunkHandler _animated_tile_chunk_handlers[];
-extern const ChunkHandler _newgrf_chunk_handlers[];
-extern const ChunkHandler _group_chunk_handlers[];
-extern const ChunkHandler _cargopacket_chunk_handlers[];
-extern const ChunkHandler _autoreplace_chunk_handlers[];
-extern const ChunkHandler _labelmaps_chunk_handlers[];
-
-static const ChunkHandler * const _chunk_handlers[] = {
-	_gamelog_chunk_handlers,
-	_map_chunk_handlers,
-	_misc_chunk_handlers,
-	_name_chunk_handlers,
-	_cheat_chunk_handlers,
-	_setting_chunk_handlers,
-	_veh_chunk_handlers,
-	_waypoint_chunk_handlers,
-	_depot_chunk_handlers,
-	_order_chunk_handlers,
-	_industry_chunk_handlers,
-	_economy_chunk_handlers,
-	_subsidy_chunk_handlers,
-	_engine_chunk_handlers,
-	_town_chunk_handlers,
-	_sign_chunk_handlers,
-	_station_chunk_handlers,
-	_company_chunk_handlers,
-	_ai_chunk_handlers,
-	_animated_tile_chunk_handlers,
-	_newgrf_chunk_handlers,
-	_group_chunk_handlers,
-	_cargopacket_chunk_handlers,
-	_autoreplace_chunk_handlers,
-	_labelmaps_chunk_handlers,
-	NULL,
-};
 
 /**
  * Pointers cannot be saved to a savegame, so this functions gets
@@ -1851,7 +1849,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		_sl.bufe = _sl.bufp = NULL;
 		_sl.offs_base = 0;
 		_sl.action = (mode != 0) ? SLA_SAVE : SLA_LOAD;
-		_sl.chs = _chunk_handlers;
 
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
