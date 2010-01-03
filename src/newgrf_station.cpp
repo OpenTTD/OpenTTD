@@ -742,6 +742,20 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Bas
 }
 
 
+SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+
+	NewStationResolver(&object, statspec, st, tile);
+	object.callback_param1 = 2; // Indicate we are resolving the foundation sprites
+
+	group = ResolveStation(&object);
+	if (group == NULL || group->type != SGT_RESULT) return 0;
+	return group->GetResult() + GetRegister(0x100);
+}
+
+
 uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const BaseStation *st, TileIndex tile)
 {
 	const SpriteGroup *group;

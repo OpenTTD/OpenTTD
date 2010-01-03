@@ -139,6 +139,7 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
  * for variational sprite groups. */
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile);
 SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile);
+SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile);
 uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const BaseStation *st, TileIndex tile);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */

@@ -2316,10 +2316,6 @@ static void DrawTile_Station(TileInfo *ti)
 		palette = PALETTE_TO_GREY;
 	}
 
-	/* don't show foundation for docks */
-	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile))
-		DrawFoundation(ti, FOUNDATION_LEVELED);
-
 	if (IsCustomStationSpecIndex(ti->tile)) {
 		/* look for customization */
 		st = BaseStation::GetByTile(ti->tile);
@@ -2344,6 +2340,61 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
 
+	/* don't show foundation for docks */
+	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile)) {
+		if (statspec != NULL && HasBit(statspec->flags, SSF_CUSTOM_FOUNDATIONS)) {
+			/* Station has custom foundations. */
+			SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile);
+
+			if (HasBit(statspec->flags, SSF_EXTENDED_FOUNDATIONS)) {
+				/* Station provides extended foundations. */
+
+				static const uint8 foundation_parts[] = {
+					0, 0, 0, 0, // Invalid,  Invalid,   Invalid,   SLOPE_SW
+					0, 1, 2, 3, // Invalid,  SLOPE_EW,  SLOPE_SE,  SLOPE_WSE
+					0, 4, 5, 6, // Invalid,  SLOPE_NW,  SLOPE_NS,  SLOPE_NWS
+					7, 8, 9     // SLOPE_NE, SLOPE_ENW, SLOPE_SEN
+				};
+
+				AddSortableSpriteToDraw(image + foundation_parts[ti->tileh], PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
+			} else {
+				/* Draw simple foundations, built up from 8 possible foundation sprites. */
+
+				/* Each set bit represents one of the eight composite sprites to be drawn.
+				 * 'Invalid' entries will not drawn but are included for completeness. */
+				static const uint8 composite_foundation_parts[] = {
+					/* Invalid  (00000000), Invalid   (11010001), Invalid   (11100100), SLOPE_SW  (11100000) */
+					   0x00,                0xD1,                 0xE4,                 0xE0,
+					/* Invalid  (11001010), SLOPE_EW  (11001001), SLOPE_SE  (11000100), SLOPE_WSE (11000000) */
+					   0xCA,                0xC9,                 0xC4,                 0xC0,
+					/* Invalid  (11010010), SLOPE_NW  (10010001), SLOPE_NS  (11100100), SLOPE_NWS (10100000) */
+					   0xD2,                0x91,                 0xE4,                 0xA0,
+					/* SLOPE_NE (01001010), SLOPE_ENW (00001001), SLOPE_SEN (01000100) */
+					   0x4A,                0x09,                 0x44
+				};
+
+				uint8 parts = composite_foundation_parts[ti->tileh];
+
+				/* If foundations continue beyond the tile's upper sides then
+				 * mask out the last two pieces. */
+				uint z;
+				Slope slope = GetFoundationSlope(ti->tile, &z);
+				if (!HasFoundationNW(ti->tile, slope, z)) ClrBit(parts, 6);
+				if (!HasFoundationNE(ti->tile, slope, z)) ClrBit(parts, 7);
+
+				for (int i = 0; i < 8; i++) {
+					if (HasBit(parts, i)) {
+						AddSortableSpriteToDraw(image + i, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
+					}
+				}
+			}
+
+			OffsetGroundSprite(31, 1);
+			ti->z += ApplyFoundationToSlope(FOUNDATION_LEVELED, &ti->tileh);
+		} else {
+			DrawFoundation(ti, FOUNDATION_LEVELED);
+		}
+	}
 
 	if (IsBuoy(ti->tile) || IsDock(ti->tile) || (IsOilRig(ti->tile) && GetWaterClass(ti->tile) != WATER_CLASS_INVALID)) {
 		if (ti->tileh == SLOPE_FLAT) {

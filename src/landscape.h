@@ -58,6 +58,8 @@ static inline Point RemapCoords2(int x, int y)
 
 uint ApplyFoundationToSlope(Foundation f, Slope *s);
 void DrawFoundation(TileInfo *ti, Foundation f);
+bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here);
+bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here);
 
 void DoClearSquare(TileIndex tile);
 void RunTileLoop();

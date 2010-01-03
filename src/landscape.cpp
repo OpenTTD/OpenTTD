@@ -338,7 +338,7 @@ Slope GetFoundationSlope(TileIndex tile, uint *z)
 }
 
 
-static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
+bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 {
 	uint z;
 
@@ -355,7 +355,7 @@ static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 }
 
 
-static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
+bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 {
 	uint z;
 
