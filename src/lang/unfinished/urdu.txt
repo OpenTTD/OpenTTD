@@ -97,6 +97,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشر
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
+STR_QUANTITY_OIL                                                :{VOLUME}خام تیل
 
 # Two letter abbreviation of cargo name
 
@@ -938,16 +939,28 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}گاڑی
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}بہری جہاز چلا/روک نہیں سکتے
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}ھوائی جہاز چلا/روک نہیں سکتے
 
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}ریل گاڑی کو اڈے نہیں بہیج سکتے
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}گاڑی کو اڈے نہیں بہیج سکتے
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}بہری جہاز کو اڈے نہیں بہیج سکتے
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}ھوائی جہاز کو اڈے نہیں بہیج سکتے
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE} ریل گاڑی نہیں خرید سکتے
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE} گاڑی نہیں خرید سکتے
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}ریل گاڑی نہیں خرید سکتے
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}ھوائی جہاز نہیں خرید سکتے
 
 
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}ھوائی جہاز فروخت نہیں کر سکتے
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE} گاڑی دستیاب نہیں ھے
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE} گاڑی دستیاب نہیں ھے
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}بہری جہاز دستیاب نہیں ھے
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت کا دورانیہ تبدیل نہین کرسکتے
 
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}تباہ شدہ گاڑی فروخت نہیں کرسکتے
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}یہ گاڑی تباہ ھو چکی ھے
 
 # Specific vehicle errors
 

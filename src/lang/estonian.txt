@@ -286,6 +286,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Nimevahe
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulge aken
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Akna pealkiri. Liigutamiseks lohista seda hiirega.
+STR_TOOLTIP_SHADE                                               :{BLACK}Akna peitmine - Näidatakse ainult pealkirjariba
 STR_TOOLTIP_STICKY                                              :{BLACK}Keela selle akna sulgemine 'Sulge kõik aknad' nupu klõpsamisel
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliki ja venita, et akna suurust muuta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Lülita aken suureks/väikseks
@@ -371,6 +372,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maastiku
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näita heli/muusika akent
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, kuva teadete valikud
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-ala andmed
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tööriistaribade vahetamine
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Kaardi salvestamine, kaardi laadimine, kaarditegemisest lahkumine, mängust väljumine
@@ -424,7 +426,9 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Lisa vaateaken
 STR_MAP_MENU_SIGN_LIST                                          :Siltide nimekiri
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Linnanimistu
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Raja linn
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Toetused
@@ -635,6 +639,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Omatehtud 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muusika helitugevus
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektide helitugevus
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}VÄHIM
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}SUURIM
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -656,6 +663,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vali 'om
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vali 'omatehtud 2' programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Lülita lugude segamine sisse ja välja
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näita muusikalugude valimise akent
+
+STR_ERROR_NO_SONGS                                              :{WHITE}Valitud muusikakomplekt ei sisalda ühtegi lugu. Ühtegi lugu ei esitata
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Muusikaprogrammi valimine
@@ -741,6 +750,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kõik välja
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Kõik sisse
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Kõrguse näitamine
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Kaardil tööstuseid ei näidata
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Kaardil kõikide tööstuste näitamine
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Kõrguskaardi näitamise vahetamine
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Näita viimast teadet
@@ -812,6 +825,8 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}Ettevõte {STRING} alustas linna {TOWN} lähedal ehitustöid!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} võeti üle ettevõtte {STRING} poolt!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(President)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} rahastas uue linna {TOWN} rajamist!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Uus {STRING} on linna {TOWN} lähedal ehitamisel!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Uus {STRING} on istutatud linna {TOWN} lähedale!
@@ -990,6 +1005,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Põhihel
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vali kasutatavad põhihelid
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Täiendav teave põhihelikomplekti kohta
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Põhimuusikakomplekt
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vali kasutatav põhimuusikakomplekt
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} viga{P "ne" "sed"} fail{P "" "id"}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisateave põhimuusikakomplekti kohta
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekraanrežiim ebaõnnestus
 
 # Custom currency window
@@ -1056,6 +1076,13 @@ STR_NUM_LOW                                                     :Madal
 STR_NUM_NORMAL                                                  :Harilik
 STR_NUM_HIGH                                                    :Kõrge
 STR_NUM_CUSTOM                                                  :Omatehtud
+
+STR_VARIETY_NONE                                                :Pole
+STR_VARIETY_VERY_LOW                                            :Väga madal
+STR_VARIETY_LOW                                                 :Madal
+STR_VARIETY_MEDIUM                                              :Keskmine
+STR_VARIETY_HIGH                                                :Kõrge
+STR_VARIETY_VERY_HIGH                                           :Väga kõrge
 
 STR_AI_SPEED_VERY_SLOW                                          :Väga aeglane
 STR_AI_SPEED_SLOW                                               :Aeglane
@@ -1226,6 +1253,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma ettevõtel
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Igal ettevõttel
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Sõiduplaanide määramine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Sõiduplaanis kasutatakse päevade asemel tiksumist: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Saabumiste ja väljumiste näitamine sõiduplaanis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Sõidukikäskude kiirloomine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Algne rööbastee liik (mängu alustamisel/laadimisel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Tavaline rööbastee
@@ -1290,6 +1318,15 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :suvaline
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Linnapoolne teedeehitus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Lennujaamade mürapiirangud linnades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Linnade rajamine keset mängu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :keelatud
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :lubatud
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :lubatud, koos linnaskeemi valimisega
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Puude lisamine keset mängu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :mitte kuhugi {RED}(saeveski ei saa töötada)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :ainult vihmametsadesse
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :igale poole
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vasakul
@@ -1775,7 +1812,15 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server on täis
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Mäng seisatud ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Mäng on endiselt seisatud ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Mäng on endiselt seisatud ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Mäng on endiselt seisatud ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Mäng jätkub ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pole piisavalt mängijaid
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :klientide ühendamine
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lahkub
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} liitus mänguga
@@ -1834,6 +1879,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Tehismõistuse 
 STR_CONTENT_TYPE_SCENARIO                                       :Stsenaarium
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Kõrguskaart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Põhihelid
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Põhimuusika
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Sisu allalaadimine...
@@ -2360,6 +2406,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Hoiatus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Viga: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Saatuslik viga: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Esines raske NewGRF-i tõrge: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD väitel {1:STRING} ei tööta selle TTDPatch osaga.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on {STRING} TTD osa jaoks.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} on mõeldud kasutamiseks {STRING}
@@ -2422,6 +2469,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Reisijai
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posti eelmisel kuul: {ORANGE}{COMMA}{BLACK}  Enim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Veoseid linna kasvamiseks:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} vajalik
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} on talvel vajalik
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} toimetatud eelmisel kuul
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapiirang linnas: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vaate viimine linnale
@@ -2520,6 +2568,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näita k
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jaama nime vahetamine
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskenda vaade teemärgisel. Ctrl+klikk avab teemärgisel uue vaate
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuda meldepunkti nime
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade poile. Ctrl+klikk avab poil uue vaate
@@ -2572,7 +2621,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmavä�
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Ehita peakorter
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Ehita ettevõtte peakorter
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vaata peakorterit
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ettevõtte peakorteri vaatamine
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Liiguta peakorterit
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ehita ettevõtte peakorter mujale 1% firmaväärtuse tasu eest
 
@@ -2963,6 +3014,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Kasum se
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Valmistatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Mahutavus: {LTBLUE}Pole
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kandevõime: {LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kandevõime: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kandevõime: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3028,6 +3080,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Sõidupl
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näita sõiduplaani
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Sihtpunktide nimekiri. Valimiseks klõpsa sihtpunktil. CTRL + klikk keskendab vaateakna jaama peale.
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Sihtpunktide lõpp - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud sihtpunktide lõpp - -
@@ -3167,6 +3221,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Selle s�
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Sõiduk on graafikus
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}See sõiduk on {STRING} hiljaks jäämas
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}See sõiduk on {STRING} varajane
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Sõiduplaani pole veel alustatud
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Sõiduplaani alustatakse {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Alustuskuupäev
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vali sõiduplaani alguskuupäev
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, kaua esile tõstetud sihtpunkti peale aega peaks kuluma
@@ -3179,6 +3238,23 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida liiniplaan järgmise sõidu andmetega (Ctrl+klõps säilitamaks ooteaegu)
+
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plaanis
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatav ja plaan
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :S:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Määra kuupäev
+STR_DATE_SET_DATE                                               :{BLACK}Määra kuupäev
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Kasuta sõiduplaani alguskuupäevana
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Vali päev
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Vali kuu
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vali aasta
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Tehismõistuse debug
@@ -3195,6 +3271,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Tehismõ
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Kõik järgmises mängus laaditavad tehismõistused
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
 STR_AI_CONFIG_RANDOM_AI                                         :Suvaline tehismõistus
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Liigutamine ülespoole
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Valitud tehismõistuse liigutamine loendis ülespoole
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Liigutamine allapoole
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Valitud tehismõistuse liigutamine loendis allapoole
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vali tehismõistus
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laadi teine tehismõistus
@@ -4020,6 +4101,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4037,14 +4119,16 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -4060,4 +4144,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

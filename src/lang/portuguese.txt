@@ -3669,7 +3669,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banco
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de Diamantes
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de Ferro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantação de Fruta
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantação de Árvores da Borracha
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantação de Árvores-da-borracha
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Abastecimento de Água
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Depósito de Água
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
