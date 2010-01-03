@@ -135,11 +135,28 @@ Extreme CPU usage/hangs when using SDL and PulseAudio [FS#3294]
 	OpenTTD can be extremely slow/use a lot of CPU when the sound is
 	played via SDL and then through PulseAudio's ALSA wrapper. Under the
 	same configuration OpenTTD, or rather SDL, might hang when exiting
-	the game. This setup seems to be the default configuration for
-	Ubuntu 9.04 and later. For Ubuntu this issue can be solved by
-	installing the 'libsdl1.2debian-pulseaudio' package from Ubuntu's
-	Universe repository. For other distributions a similar package needs
-	to be installed.
+	the game. This problem is seen most in Ubuntu 9.04 and higher.
+
+	This is because recent versions of the PulseAudio sound server are
+	configured to use timer-based audio scheduling rather than
+	interrupt-based audio scheduling. Configuring PulseAudio to force
+	use of interrupt-based scheduling may resolve sound problems for
+	some users. Under recent versions of Ubuntu Linux (9.04 and higher)
+	this can be accomplished by changing the following line in the
+	/etc/pulsa/default.pa file:
+		load-module module-udev-detect
+	to
+		load-module module-udev-detect tsched=0
+	Note that PulseAudio must be restarted for changes to take effect.
+	Older versions of PulseAudio may use the module-hal-detect module
+	instead. Adding tsched=0 to the end of that line will have a similar
+	effect.
+
+	Another possible solution is selecting the "pulse" backend of SDL
+	by either using "SDL_AUDIODRIVER=pulse openttd" at the command
+	prompt or installing the 'libsdl1.2debian-pulseaudio' package from
+	Ubuntu's Universe repository. For other distributions a similar
+	package needs to be installed.
 
 OpenTTD not properly resizing with SDL on X [FS#3305]
 	Under some X window managers OpenTTD's window does not properly
