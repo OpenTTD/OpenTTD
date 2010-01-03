@@ -154,7 +154,7 @@ Industry::~Industry()
 				 * become watery, but be on the safe side an always remote it. */
 				DeleteAnimatedTile(tile_cur);
 
-				MarkTileDirtyByTile(tile);
+				MarkTileDirtyByTile(tile_cur);
 			}
 		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
