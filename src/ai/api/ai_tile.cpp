@@ -17,6 +17,7 @@
 #include "../../road_map.h"
 #include "../../water_map.h"
 #include "../../clear_map.h"
+#include "../../tree_map.h"
 #include "../../town.h"
 #include "../../landscape.h"
 
@@ -68,7 +69,8 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::IsCoast(tile);
+	return (::IsTileType(tile, MP_WATER) && ::IsCoast(tile)) ||
+		(::IsTileType(tile, MP_TREES) && ::GetTreeGround(tile) == TREE_GROUND_SHORE);
 }
 
 /* static */ bool AITile::IsStationTile(TileIndex tile)

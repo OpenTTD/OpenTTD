@@ -140,7 +140,8 @@ public:
 	 * @param tile The tile to check.
 	 * @pre AIMap::IsValidTile(tile).
 	 * @return True if and only if the tile is a coast tile.
-	 * @note Building on coast tiles in general is more expensive.
+	 * @note Building on coast tiles in general is more expensive. This is not
+	 *  true if there are also trees on the tile, see #HasTreeOnTile.
 	 */
 	static bool IsCoastTile(TileIndex tile);
 
