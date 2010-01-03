@@ -1184,7 +1184,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 				pal = PALETTE_TO_TRANSPARENT;
 			}
 
-			DrawGroundSpriteAt(image, pal, x, y, z);
+			DrawGroundSpriteAt(image, pal, x - ti->x, y - ti->y, z - ti->z);
 		}
 	} else if (_settings_client.gui.bridge_pillars) {
 		/* draw pillars below for high bridges */

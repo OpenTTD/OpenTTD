@@ -46,7 +46,7 @@ static inline void MaxZoomInOut(int how, Window *w)
 void OffsetGroundSprite(int x, int y);
 
 void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub = NULL, int extra_offs_x = 0, int extra_offs_y = 0);
-void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub = NULL, int extra_offs_x = 0, int extra_offs_y = 0);
+void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, int z, const SubSprite *sub = NULL, int extra_offs_x = 0, int extra_offs_y = 0);
 void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent = false, int bb_offset_x = 0, int bb_offset_y = 0, int bb_offset_z = 0, const SubSprite *sub = NULL);
 void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent = false, const SubSprite *sub = NULL);
 void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2 = 0, Colours colour = INVALID_COLOUR);

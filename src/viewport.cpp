@@ -467,7 +467,7 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
 }
 
 /**
- * Draws a ground sprite at a specific world-coordinate.
+ * Shedules a tile sprite for drawing.
  *
  * @param image the image to draw.
  * @param pal the provided palette.
@@ -477,9 +477,8 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
  * @param sub Only draw a part of the sprite.
  * @param extra_offs_x Pixel X offset for the sprite position.
  * @param extra_offs_y Pixel Y offset for the sprite position.
- *
  */
-void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
+static void AddTileSpriteToDraw(SpriteID image, SpriteID pal, int32 x, int32 y, int z, const SubSprite *sub = NULL, int extra_offs_x = 0, int extra_offs_y = 0)
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
@@ -521,6 +520,32 @@ static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSp
 }
 
 /**
+ * Draws a ground sprite at a specific world-coordinate relative to the current tile.
+ * If the current tile is drawn on top of a foundation the sprite is added as child sprite to the "foundation"-ParentSprite.
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param x position x (world coordinates) of the sprite relative to current tile.
+ * @param y position y (world coordinates) of the sprite relative to current tile.
+ * @param z position z (world coordinates) of the sprite relative to current tile.
+ * @param sub Only draw a part of the sprite.
+ * @param extra_offs_x Pixel X offset for the sprite position.
+ * @param extra_offs_y Pixel Y offset for the sprite position.
+ */
+void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, int z, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
+{
+	/* Switch to first foundation part, if no foundation was drawn */
+	if (_vd.foundation_part == FOUNDATION_PART_NONE) _vd.foundation_part = FOUNDATION_PART_NORMAL;
+
+	if (_vd.foundation[_vd.foundation_part] != -1) {
+		Point pt = RemapCoords(x, y, z);
+		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, pt.x + extra_offs_x, pt.y + extra_offs_y);
+	} else {
+		AddTileSpriteToDraw(image, pal, _cur_ti->x + x, _cur_ti->y + y, _cur_ti->z + z, sub, extra_offs_x, extra_offs_y);
+	}
+}
+
+/**
  * Draws a ground sprite for the current tile.
  * If the current tile is drawn on top of a foundation the sprite is added as child sprite to the "foundation"-ParentSprite.
  *
@@ -532,16 +557,8 @@ static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSp
  */
 void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
 {
-	/* Switch to first foundation part, if no foundation was drawn */
-	if (_vd.foundation_part == FOUNDATION_PART_NONE) _vd.foundation_part = FOUNDATION_PART_NORMAL;
-
-	if (_vd.foundation[_vd.foundation_part] != -1) {
-		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, extra_offs_x, extra_offs_y);
-	} else {
-		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z, sub, extra_offs_x, extra_offs_y);
-	}
+	DrawGroundSpriteAt(image, pal, 0, 0, 0, sub, extra_offs_x, extra_offs_y);
 }
-
 
 /**
  * Called when a foundation has been drawn for the current tile.
@@ -805,7 +822,7 @@ static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti
 	/* FIXME: This is not totally valid for some autorail highlights, that extent over the edges of the tile. */
 	if (_vd.foundation[foundation_part] == -1) {
 		/* draw on real ground */
-		DrawGroundSpriteAt(image, pal, ti->x, ti->y, ti->z + z_offset);
+		AddTileSpriteToDraw(image, pal, ti->x, ti->y, ti->z + z_offset);
 	} else {
 		/* draw on top of foundation */
 		AddChildSpriteToFoundation(image, pal, NULL, foundation_part, 0, -z_offset);
@@ -1024,7 +1041,7 @@ static void ViewportAddLandscape()
 					if (x_cur == ((int)MapMaxX() - 1) * TILE_SIZE || y_cur == ((int)MapMaxY() - 1) * TILE_SIZE) {
 						uint maxh = max<uint>(TileHeight(tile), 1);
 						for (uint h = 0; h < maxh; h++) {
-							DrawGroundSpriteAt(SPR_SHADOW_CELL, PAL_NONE, ti.x, ti.y, h * TILE_HEIGHT);
+							AddTileSpriteToDraw(SPR_SHADOW_CELL, PAL_NONE, ti.x, ti.y, h * TILE_HEIGHT);
 						}
 					}
 

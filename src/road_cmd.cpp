@@ -1126,7 +1126,7 @@ static void DrawRoadBits(TileInfo *ti)
 	if (road != ROAD_NONE) {
 		DisallowedRoadDirections drd = GetDisallowedRoadDirections(ti->tile);
 		if (drd != DRD_NONE) {
-			DrawRoadDetail(SPR_ONEWAY_BASE + drd - 1 + ((road == ROAD_X) ? 0 : 3), ti, 8, 8, 0);
+			DrawGroundSpriteAt(SPR_ONEWAY_BASE + drd - 1 + ((road == ROAD_X) ? 0 : 3), PAL_NONE, 8, 8, GetPartialZ(8, 8, ti->tileh));
 		}
 	}
 
