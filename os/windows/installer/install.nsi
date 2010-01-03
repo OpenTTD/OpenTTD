@@ -131,6 +131,14 @@ Section "!OpenTTD" Section1
 	SetOutPath "$INSTDIR\scripts\"
 	File ${PATH_ROOT}bin\scripts\*.*
 
+	; Copy some documention files
+	SetOutPath "$INSTDIR\docs\"
+	File ${PATH_ROOT}docs\obg_format.txt
+	File ${PATH_ROOT}docs\obm_format.txt
+	File ${PATH_ROOT}docs\obs_format.txt
+	File ${PATH_ROOT}docs\multiplayer.txt
+	File ${PATH_ROOT}docs\32bpp.txt
+
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
 
@@ -401,6 +409,9 @@ Section "Uninstall"
 	; Scripts
 	Delete "$INSTDIR\scripts\*.*"
 
+	; Documentation
+	Delete "$INSTDIR\docs\*.*"
+
 	; Base sets for music
 	Delete "$INSTDIR\gm\orig_win.obm"
 	Delete "$INSTDIR\gm\no_music.obm"
@@ -413,6 +424,7 @@ Section "Uninstall"
 	RMDir "$INSTDIR\gm"
 	RMDir "$INSTDIR\lang"
 	RMDir "$INSTDIR\scripts"
+	RMDir "$INSTDIR\docs"
 	RMDir "$INSTDIR"
 
 SectionEnd
