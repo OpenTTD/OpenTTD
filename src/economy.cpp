@@ -1068,6 +1068,8 @@ Money CargoPayment::PayTransfer(const CargoPacket *cp, uint count)
 		cp->DaysInTransit(),
 		this->ct);
 
+	profit = profit * _settings_game.economy.feeder_payment_share / 100;
+
 	this->visual_profit += profit; // accumulate transfer profits for whole vehicle
 	return profit; // account for the (virtual) profit already made for the cargo packet
 }

@@ -434,6 +434,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDNULL(                                                            4,  0, 104),
 	    SDT_BOOL(GameSettings, economy.smooth_economy,                                              0, 0,  true,                    STR_CONFIG_SETTING_SMOOTH_ECONOMY,         NULL),
 	    SDT_BOOL(GameSettings, economy.allow_shares,                                                0, 0, false,                    STR_CONFIG_SETTING_ALLOW_SHARES,           NULL),
+	 SDT_CONDVAR(GameSettings, economy.feeder_payment_share,         SLE_UINT8,134, SL_MAX_VERSION, 0, 0,    75,     0,     100, 0, STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE,   NULL),
 	 SDT_CONDVAR(GameSettings, economy.town_growth_rate,             SLE_UINT8, 54, SL_MAX_VERSION, 0, MS,    2,     0,       4, 0, STR_CONFIG_SETTING_TOWN_GROWTH,            NULL),
 	 SDT_CONDVAR(GameSettings, economy.larger_towns,                 SLE_UINT8, 54, SL_MAX_VERSION, 0, D0,    4,     0,     255, 1, STR_CONFIG_SETTING_LARGER_TOWNS,           NULL),
 	 SDT_CONDVAR(GameSettings, economy.initial_city_size,            SLE_UINT8, 56, SL_MAX_VERSION, 0, 0,     2,     1,      10, 1, STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER,   NULL),

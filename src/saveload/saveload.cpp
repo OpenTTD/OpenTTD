@@ -47,7 +47,7 @@
 
 #include "saveload_internal.h"
 
-extern const uint16 SAVEGAME_VERSION = 133;
+extern const uint16 SAVEGAME_VERSION = 134;
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
