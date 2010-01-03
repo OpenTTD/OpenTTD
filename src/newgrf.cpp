@@ -3863,7 +3863,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 
 		default:
 			/* GRF Parameter */
-			if (param < 0x80) return _cur_grffile->param[param];
+			if (param < 0x80) return _cur_grffile->GetParam(param);
 
 			/* In-game variable. */
 			grfmsg(1, "Unsupported in-game variable 0x%02X", param);
@@ -4380,7 +4380,7 @@ static void GRFLoadError(byte *buf, size_t len)
 	uint i = 0;
 	for (; i < 2 && len > 0; i++) {
 		uint param_number = grf_load_byte(&buf);
-		error->param_value[i] = (param_number < _cur_grffile->param_end ? _cur_grffile->param[param_number] : 0);
+		error->param_value[i] = _cur_grffile->GetParam(param_number);
 		len--;
 	}
 	error->num_params = i;
@@ -4493,11 +4493,11 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 
 	if (op == 6) {
 		/* Return GRFID of set that reserved ID */
-		return grm[_cur_grffile->param[target]];
+		return grm[_cur_grffile->GetParam(target)];
 	}
 
 	/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
-	if (op == 2 || op == 3) start = _cur_grffile->param[target];
+	if (op == 2 || op == 3) start = _cur_grffile->GetParam(target);
 
 	for (uint i = start; i < num_ids; i++) {
 		if (grm[i] == 0) {
@@ -4631,7 +4631,7 @@ static void ParamSet(byte *buf, size_t len)
 								switch (op) {
 									case 2:
 									case 3:
-										src1 = _cur_grffile->param[target];
+										src1 = _cur_grffile->GetParam(target);
 										break;
 
 									default:
@@ -4680,10 +4680,10 @@ static void ParamSet(byte *buf, size_t len)
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
 				src1 = 0;
-			} else if (file == NULL || src1 >= file->param_end || (c != NULL && c->status == GCS_DISABLED)) {
+			} else if (file == NULL || (c != NULL && c->status == GCS_DISABLED)) {
 				src1 = 0;
 			} else {
-				src1 = file->param[src1];
+				src1 = file->GetParam(src1);
 			}
 		}
 	} else {
@@ -4829,6 +4829,7 @@ static void ParamSet(byte *buf, size_t len)
 		default:
 			if (target < 0x80) {
 				_cur_grffile->param[target] = res;
+				/* param is zeroed by default */
 				if (target + 1U > _cur_grffile->param_end) _cur_grffile->param_end = target + 1;
 			} else {
 				grfmsg(7, "ParamSet: Skipping unknown target 0x%02X", target);
@@ -5700,10 +5701,16 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 		newfile->price_base_multipliers[i] = INVALID_PRICE_MODIFIER;
 	}
 
-	/* Copy the initial parameter list */
+	/* Copy the initial parameter list
+	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
 	assert_compile(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
+	memset(newfile->param, 0, sizeof(newfile->param));
+
+	assert(config->num_params <= lengthof(config->param));
 	newfile->param_end = config->num_params;
-	memcpy(newfile->param, config->param, sizeof(newfile->param));
+	if (newfile->param_end > 0) {
+		MemCpyT(newfile->param, config->param, newfile->param_end);
+	}
 
 	*_grf_files.Append() = _cur_grffile = newfile;
 }

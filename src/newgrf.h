@@ -118,6 +118,15 @@ struct GRFFile {
 
 	uint32 grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
 	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
+
+	/** Get GRF Parameter with range checking */
+	uint32 GetParam(uint number) const
+	{
+		/* Note: We implicitly test for number < lengthof(this->param) and return 0 for invalid parameters.
+		 *       In fact this is the more important test, as param is zeroed anyway. */
+		assert(this->param_end <= lengthof(this->param));
+		return (number < this->param_end) ? this->param[number] : 0;
+	}
 };
 
 enum ShoreReplacement {
