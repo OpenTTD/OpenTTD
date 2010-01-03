@@ -1,5 +1,5 @@
 Compiling OpenTTD using Microsoft Visual C++
-January 2, 2007
+Last updated: 2010-01-03
 --------------------------------------------
 PLEASE READ THE ENTIRE DOCUMENT BEFORE DOING ANY ACTUAL CHANGES!!
 
@@ -10,7 +10,7 @@ OpenTTD includes projects for MSVC 2005.NET and MSVC 2008.NET. Both will
 compile out of the box, providing you have the required libraries/headers;
 which ones, see below. There is no support for VS6 or MSVC 2002, or
 MSVC 2003.NET. You are therefore strongly encouraged to either upgrade to
-MSVC 2005 Express (free) or use GCC.
+MSVC 2008 Express (free) or use GCC.
 
 
 1) REQUIRED FILES
@@ -36,16 +36,16 @@ You need an SVN-client to download the source from subversion:
 2) INCLUDES AND LIBRARIES
 -------------------------
 Put the newly downloaded files in the VC lib\ and include\ directories; where
-"C:\Program Files\Microsoft Visual Studio 8\VC" is your location of Visual C.
+"C:\Program Files\Microsoft Visual Studio 9.0\VC" is your location of Visual C.
 If you are compiling for an x64 system, use the include\ and lib\ directories
 from the win64/ folder.
 
 	* openttd-useful.zip\include\*
 	* afxresh.h
-	to >	C:\Program Files\Microsoft Visual Studio 8\VC\Include
+	to >	C:\Program Files\Microsoft Visual Studio 9.0\VC\Include
 
 	* openttd-useful.zip\lib\*
-	to >	C:\Program Files\Microsoft Visual Studio 8\VC\Lib
+	to >	C:\Program Files\Microsoft Visual Studio 9.0\VC\Lib
 
 Custom directories might be recommended, check 2.2)
 
@@ -76,14 +76,7 @@ list, above all others, otherwise compilation will most likely fail!!
 
 3) TTD GRAPHICS FILES
 ---------------------
-Copy the following files from Transport Tycoon Deluxe to the bin/data folder
-
-	* sample.cat
-	* trg1r.grf
-	* trgcr.grf
-	* trghr.grf
-	* trgir.grf
-	* trgtr.grf
+See section 4.1 of readme.txt for the required 3rdparty files and how to install them.
 
 
 4) COMPILING
@@ -112,4 +105,4 @@ to ask about reasons; or just wait. The problem will most likely solve itself
 within a few days as the problem is noticed and fixed.
 
 An up-to-date version of this README can be found on the wiki:
-http://wiki.openttd.org/index.php/MicrosoftVisualCExpress
+http://wiki.openttd.org/Microsoft_Visual_C%2B%2B_2008_Express_Editions
