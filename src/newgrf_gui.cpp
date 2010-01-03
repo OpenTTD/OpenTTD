@@ -216,7 +216,12 @@ private:
 	void SortGrfList()
 	{
 		if (!this->grfs.Sort()) return;
+		this->UpdateListPosition();
+	}
 
+	/** Update selection position. */
+	void UpdateListPosition()
+	{
 		/* update list position */
 		if (this->sel != NULL) {
 			this->sel_pos = this->grfs.FindIndex(this->sel);
@@ -239,6 +244,7 @@ private:
 	void FilterGrfList()
 	{
 		if (!this->grfs.Filter(this->edit_str_buf)) return;
+		this->UpdateListPosition();
 	}
 
 	/** Make sure that the currently selected grf is within the visible part of the list */
