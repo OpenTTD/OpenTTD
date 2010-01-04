@@ -58,6 +58,7 @@ enum TreeGround {
 	TREE_GROUND_ROUGH       = 1, ///< some rough tile
 	TREE_GROUND_SNOW_DESERT = 2, ///< a desert or snow tile, depend on landscape
 	TREE_GROUND_SHORE       = 3, ///< shore
+	TREE_GROUND_ROUGH_SNOW  = 4, ///< a snow tile that is rough underneed
 };
 
 
@@ -91,7 +92,7 @@ static inline TreeType GetTreeType(TileIndex t)
 static inline TreeGround GetTreeGround(TileIndex t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return (TreeGround)GB(_m[t].m2, 4, 2);
+	return (TreeGround)GB(_m[t].m2, 6, 3);
 }
 
 /**
@@ -116,7 +117,7 @@ static inline TreeGround GetTreeGround(TileIndex t)
 static inline uint GetTreeDensity(TileIndex t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return GB(_m[t].m2, 6, 2);
+	return GB(_m[t].m2, 4, 2);
 }
 
 /**
@@ -133,8 +134,8 @@ static inline uint GetTreeDensity(TileIndex t)
 static inline void SetTreeGroundDensity(TileIndex t, TreeGround g, uint d)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	SB(_m[t].m2, 4, 2, g);
-	SB(_m[t].m2, 6, 2, d);
+	SB(_m[t].m2, 4, 2, d);
+	SB(_m[t].m2, 6, 3, g);
 }
 
 /**
@@ -277,7 +278,7 @@ static inline void MakeTree(TileIndex t, TreeType type, uint count, uint growth,
 {
 	SetTileType(t, MP_TREES);
 	SetTileOwner(t, OWNER_NONE);
-	_m[t].m2 = density << 6 | ground << 4 | 0;
+	_m[t].m2 = ground << 6 | density << 4 | 0;
 	_m[t].m3 = type;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	_m[t].m5 = count << 6 | growth;

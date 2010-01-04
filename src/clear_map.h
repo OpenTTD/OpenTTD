@@ -29,6 +29,30 @@ enum ClearGround {
 
 
 /**
+ * Test if a tile is covered with snow.
+ * @param t the tile to check
+ * @pre IsTileType(t, MP_CLEAR)
+ * @return whether the tile is covered with snow.
+ */
+static inline bool IsSnowTile(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR));
+	return HasBit(_m[t].m3, 4);
+}
+
+/**
+ * Get the type of clear tile but never return CLEAR_SNOW.
+ * @param t the tile to get the clear ground type of
+ * @pre IsTileType(t, MP_CLEAR)
+ * @return the ground type
+ */
+static inline ClearGround GetRawClearGround(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR));
+	return (ClearGround)GB(_m[t].m5, 2, 3);
+}
+
+/**
  * Get the type of clear tile.
  * @param t the tile to get the clear ground type of
  * @pre IsTileType(t, MP_CLEAR)
@@ -36,8 +60,8 @@ enum ClearGround {
  */
 static inline ClearGround GetClearGround(TileIndex t)
 {
-	assert(IsTileType(t, MP_CLEAR));
-	return (ClearGround)GB(_m[t].m5, 2, 3);
+	if (IsSnowTile(t)) return CLEAR_SNOW;
+	return GetRawClearGround(t);
 }
 
 /**
@@ -74,6 +98,18 @@ static inline void AddClearDensity(TileIndex t, int d)
 {
 	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
 	_m[t].m5 += d;
+}
+
+/**
+ * Set the density of a non-field clear tile.
+ * @param t the tile to set the density of
+ * @param d the new density
+ * @pre IsTileType(t, MP_CLEAR)
+ */
+static inline void SetClearDensity(TileIndex t, uint d)
+{
+	assert(IsTileType(t, MP_CLEAR));
+	SB(_m[t].m5, 0, 2, d);
 }
 
 
@@ -267,6 +303,34 @@ static inline void MakeField(TileIndex t, uint field_type, IndustryID industry)
 	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
+}
+
+/**
+ * Make a snow tile.
+ * @param t the tile to make snowy
+ * @pre GetClearGround(t) != CLEAR_SNOW
+ */
+static inline void MakeSnow(TileIndex t)
+{
+	assert(GetClearGround(t) != CLEAR_SNOW);
+	SetBit(_m[t].m3, 4);
+	if (GetClearGround(t) == CLEAR_FIELDS) {
+		SetClearGroundDensity(t, CLEAR_GRASS, 0);
+	} else {
+		SetClearDensity(t, 0);
+	}
+}
+
+/**
+ * Clear the snow from a tile and return it to it's previous type.
+ * @param t the tile to clear of snow
+ * @pre GetClearGround(t) == CLEAR_SNOW
+ */
+static inline void ClearSnow(TileIndex t)
+{
+	assert(GetClearGround(t) == CLEAR_SNOW);
+	ClrBit(_m[t].m3, 4);
+	SetClearDensity(t, 3);
 }
 
 #endif /* CLEAR_MAP_H */

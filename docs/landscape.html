@@ -11,12 +11,13 @@
 <body>
 
  <h3><a name="Landscape">Landscape</a></h3>
- <p>Seven attributes (counting &quot;<span style="font-weight: bold;">type_height</span>&quot;) hold the informations about a tile.<BR>
+ <p>Eight attributes (counting &quot;<span style="font-weight: bold;">type_height</span>&quot;) hold the informations about a tile.<BR>
   These attributes are referred to as
   "<span style="font-weight: bold;">type_height</span>",
   "<span style="font-weight: bold;">m1</span>", "<span style="font-weight: bold;">m2</span>",
   "<span style="font-weight: bold;">m3</span>", "<span style="font-weight: bold;">m4</span>",
-  "<span style="font-weight: bold;">m5</span>" and "<span style="font-weight: bold;">m6</span>".<BR>
+  "<span style="font-weight: bold;">m5</span>", "<span style="font-weight: bold;">m6</span>"
+  and "<span style="font-weight: bold;">m7</span>".<BR>
   The most important value is the class of a tile, stored in the upper 4 bits
   of the <span style="font-weight: bold;">type_height</span> attribute. The lower 4 bits are used to encode the height and
   slope data.
@@ -80,6 +81,7 @@
      <li>m1: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)</li>
      <li>m2: see fields</li>
      <li>m3 bits 3..0: see fields</li>
+     <li>m3 bit 4: set if the tile is covered with snow</li>
      <li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none)</li>
      <li>m4 bits 4..2: same as 7..5, but for the SE border</li>
      <li>m5 bits 7..5: update counter, incremented on every periodic processing for tile types,
@@ -722,8 +724,7 @@
    <td>
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
-     <li>m2 bits 7..6: ground density
-     <li>m2 bits 5..4: ground
+     <li>m2 bits 8..6: ground
       <table>
 
        <tr>
@@ -745,8 +746,14 @@
         <td align=left><tt>3</tt>&nbsp; </td>
         <td>on shore (density must be 3)</td>
        </tr>
+
+       <tr>
+        <td align=left><tt>4</tt>&nbsp; </td>
+        <td>on snow with rough land underneed</td>
+       </tr>
       </table>
      </li>
+     <li>m2 bits 5..4: ground density</li>
      <li>m2 bits 3..0: update counter, incremented on every periodic processing.<br>
           on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
      <li>m3 bits 7..0: type of trees:

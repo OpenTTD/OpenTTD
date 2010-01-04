@@ -120,7 +120,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 
 			case MP_TREES:
 				/* trees on shore */
-				has_water |= (GetTreeGround(neighbour) == TREE_GROUND_SHORE);
+				has_water |= (GB(_m[neighbour].m2, 4, 2) == TREE_GROUND_SHORE);
 				break;
 
 			default: break;
@@ -1437,8 +1437,8 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(81)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (GetTileType(t) == MP_TREES) {
-				TreeGround groundType = GetTreeGround(t);
-				if (groundType != TREE_GROUND_SNOW_DESERT) SetTreeGroundDensity(t, groundType, 3);
+				TreeGround groundType = (TreeGround)GB(_m[t].m2, 4, 2);
+				if (groundType != TREE_GROUND_SNOW_DESERT) SB(_m[t].m2, 6, 2, 3);
 			}
 		}
 	}
@@ -1973,6 +1973,27 @@ bool AfterLoadGame()
 		Train *t;
 		FOR_ALL_TRAINS(t) {
 			t->force_proceed = min<byte>(t->force_proceed, 1);
+		}
+	}
+
+	/* The bits for the tree ground and tree density have
+	 * been swapped (m2 bits 7..6 and 5..4. */
+	if (CheckSavegameVersion(135)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_CLEAR)) {
+				if (GetRawClearGround(t) == CLEAR_SNOW) {
+					SetClearGroundDensity(t, CLEAR_GRASS, GetClearDensity(t));
+					SetBit(_m[t].m3, 4);
+				} else {
+					ClrBit(_m[t].m3, 4);
+				}
+			}
+			if (IsTileType(t, MP_TREES)) {
+				uint density = GB(_m[t].m2, 6, 2);
+				uint ground = GB(_m[t].m2, 4, 2);
+				uint counter = GB(_m[t].m2, 0, 4);
+				_m[t].m2 = ground << 6 | density << 4 | counter;
+			}
 		}
 	}
 

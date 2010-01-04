@@ -158,11 +158,11 @@ static void TileLoopClearAlps(TileIndex tile)
 
 	if (k < 0) {
 		/* Below the snow line, do nothing if no snow. */
-		if (!IsClearGround(tile, CLEAR_SNOW)) return;
+		if (!IsSnowTile(tile)) return;
 	} else {
 		/* At or above the snow line, make snow tile if needed. */
-		if (!IsClearGround(tile, CLEAR_SNOW)) {
-			SetClearGroundDensity(tile, CLEAR_SNOW, 0);
+		if (!IsSnowTile(tile)) {
+			MakeSnow(tile);
 			MarkTileDirtyByTile(tile);
 			return;
 		}
@@ -177,7 +177,7 @@ static void TileLoopClearAlps(TileIndex tile)
 		AddClearDensity(tile, -1);
 	} else {
 		/* Density at the required level. */
-		if (k < 0) SetClearGroundDensity(tile, CLEAR_GRASS, 3);
+		if (k < 0) ClearSnow(tile);
 	}
 	MarkTileDirtyByTile(tile);
 }

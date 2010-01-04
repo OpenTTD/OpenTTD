@@ -68,7 +68,7 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
 
 		case MP_CLEAR:
-			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
+			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && GetRawClearGround(tile) != CLEAR_ROCKS &&
 			       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
 
 		default: return false;
@@ -101,10 +101,12 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, uint
 
 		case MP_CLEAR:
 			switch (GetClearGround(tile)) {
-				case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       density = GetClearDensity(tile); break;
-				case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;                                        break;
-				default:           ground = TREE_GROUND_SNOW_DESERT; density = GetClearDensity(tile); break;
+				case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       break;
+				case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;       break;
+				case CLEAR_SNOW:   ground = GetRawClearGround(tile) == CLEAR_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT; break;
+				default:           ground = TREE_GROUND_SNOW_DESERT; break;
 			}
+			if (GetClearGround(tile) != CLEAR_ROUGH) density = GetClearDensity(tile);
 			break;
 
 		default: NOT_REACHED();
@@ -163,7 +165,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 
 		/* Rerandomize ground, if neither snow nor shore */
 		TreeGround ground = GetTreeGround(tile);
-		if (ground != TREE_GROUND_SNOW_DESERT && ground != TREE_GROUND_SHORE) {
+		if (ground != TREE_GROUND_SNOW_DESERT && ground != TREE_GROUND_ROUGH_SNOW && ground != TREE_GROUND_SHORE) {
 			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
 		}
 
@@ -469,7 +471,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
 
 	/* different tree styles above one of the grounds */
-	if (GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT &&
+	if ((GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(ti->tile) == TREE_GROUND_ROUGH_SNOW) &&
 			GetTreeDensity(ti->tile) >= 2 &&
 			IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
 		index += 164 - (TREE_SUB_ARCTIC << 2);
@@ -599,14 +601,19 @@ static void TileLoopTreesAlps(TileIndex tile)
 	int k = GetTileZ(tile) - GetSnowLine() + TILE_HEIGHT;
 
 	if (k < 0) {
-		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) return;
-		SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3);
+		switch (GetTreeGround(tile)) {
+			case TREE_GROUND_SNOW_DESERT: SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3); break;
+			case TREE_GROUND_ROUGH_SNOW:  SetTreeGroundDensity(tile, TREE_GROUND_ROUGH, 3); break;
+			default: return;
+		}
 	} else {
 		uint density = min((uint)k / TILE_HEIGHT, 3);
 
-		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT ||
-				GetTreeDensity(tile) != density) {
-			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, density);
+		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT && GetTreeGround(tile) != TREE_GROUND_ROUGH_SNOW) {
+			TreeGround tg = GetTreeGround(tile) == TREE_GROUND_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
+			SetTreeGroundDensity(tile, tg, density);
+		} else if (GetTreeDensity(tile) != density) {
+			SetTreeGroundDensity(tile, GetTreeGround(tile), density);
 		} else {
 			if (GetTreeDensity(tile) == 3) {
 				uint32 r = Random();
@@ -709,8 +716,17 @@ static void TileLoop_Trees(TileIndex tile)
 					case TREE_GROUND_SHORE: MakeShore(tile); break;
 					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
+					case TREE_GROUND_ROUGH_SNOW:
+						MakeClear(tile, CLEAR_ROUGH, 3);
+						MakeSnow(tile);
+						break;
 					default: // snow or desert
-						MakeClear(tile, _settings_game.game_creation.landscape == LT_TROPIC ? CLEAR_DESERT : CLEAR_SNOW, GetTreeDensity(tile));
+						if (_settings_game.game_creation.landscape == LT_TROPIC) {
+							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
+						} else {
+							MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile));
+							MakeSnow(tile);
+						}
 						break;
 				}
 			}
