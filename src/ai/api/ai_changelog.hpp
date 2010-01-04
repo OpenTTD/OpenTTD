@@ -20,7 +20,6 @@
  *
  * API additions:
  * \li AIBaseStation
- * \li AIBuoyList
  * \li AIEngine::IsBuildable
  * \li AIEventCompanyAskMerger
  * \li AIIndustry::GetLastMonthTransportedPercentage
@@ -34,6 +33,8 @@
  * \li AISubsidy::GetDestinationIndex
  * \li AITown::GetLastMonthTransportedPercentage
  * \li AIVehicleList_Depot
+ * \li AIWaypoint::WaypointType
+ * \li AIWaypoint::HasWaypointType
  * \li Some error messages to AIWaypoint
  *
  * API removals:
@@ -59,6 +60,8 @@
  *     AIBaseStation, but can still be used as AIStation.GetConstructionDate
  * \li WaypointID was replaced by StationID. All WaypointIDs from previous
  *     savegames are invalid. Use STATION_INVALID instead of WAYPOINT_INVALID
+ * \li AIWaypointList constructor now needs a WaypointType similiar to AIStationList,
+ *     it can also handle buoys.
  * \li AIVehicleList_Station now also works for waypoints
  * \li Stations can be build over rail without signals that is in the right
  *     direction for the to-be built station. It will also convert the rail if

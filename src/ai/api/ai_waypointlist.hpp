@@ -13,6 +13,7 @@
 #define AI_WAYPOINTLIST_HPP
 
 #include "ai_abstractlist.hpp"
+#include "ai_waypoint.hpp"
 
 /**
  * Creates a list of waypoints of which you are the owner.
@@ -22,7 +23,10 @@ class AIWaypointList : public AIAbstractList {
 public:
 	static const char *GetClassName() { return "AIWaypointList"; }
 
-	AIWaypointList();
+	/**
+	 * @param waypoint_type The type of waypoint to make a list of waypoints for.
+	 */
+	AIWaypointList(AIWaypoint::WaypointType waypoint_type);
 };
 
 /**

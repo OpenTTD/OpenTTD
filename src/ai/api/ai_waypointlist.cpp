@@ -15,11 +15,12 @@
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"
 
-AIWaypointList::AIWaypointList()
+AIWaypointList::AIWaypointList(AIWaypoint::WaypointType waypoint_type)
 {
 	const Waypoint *wp;
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->facilities & FACIL_TRAIN && wp->owner == _current_company) this->AddItem(wp->index);
+		if ((wp->facilities & waypoint_type) &&
+				(wp->owner == _current_company || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
 	}
 }
 

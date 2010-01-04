@@ -24,7 +24,7 @@ void SQAIWaypointList_Register(Squirrel *engine)
 {
 	DefSQClass <AIWaypointList> SQAIWaypointList("AIWaypointList");
 	SQAIWaypointList.PreRegister(engine, "AIAbstractList");
-	SQAIWaypointList.AddConstructor<void (AIWaypointList::*)(), 1>(engine, "x");
+	SQAIWaypointList.AddConstructor<void (AIWaypointList::*)(AIWaypoint::WaypointType waypoint_type), 2>(engine, "xi");
 
 	SQAIWaypointList.PostRegister(engine);
 }

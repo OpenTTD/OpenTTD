@@ -805,13 +805,17 @@ function Regression::Marine()
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32127));
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
-	local list = AIBuoyList();
+	local list = AIWaypointList(AIWaypoint.WAYPOINT_BUOY);
 	print("");
-	print("--AIBuoyList--");
+	print("--AIWaypointList(BUOY)--");
 	print("  Count():             " + list.Count());
 	print("  Location ListDump:");
 	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
-		print("    " + i);
+		print("    " + AIWaypoint.GetLocation(i));
+	}
+	print("  HasWaypointType:");
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
 	}
 	print("");
 

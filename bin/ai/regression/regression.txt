@@ -7100,10 +7100,12 @@
   IsCanalTile():        true
   GetBankBalance():     1999951154
 
---AIBuoyList--
+--AIWaypointList(BUOY)--
   Count():             1
   Location ListDump:
     28481
+  HasWaypointType:
+    false  true  false
 
   RemoveWaterDepot():   true
   RemoveDock():         true

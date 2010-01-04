@@ -35,7 +35,6 @@
 #include "api/ai_basestation.hpp.sq"
 #include "api/ai_bridge.hpp.sq"
 #include "api/ai_bridgelist.hpp.sq"
-#include "api/ai_buoylist.hpp.sq"
 #include "api/ai_cargo.hpp.sq"
 #include "api/ai_cargolist.hpp.sq"
 #include "api/ai_company.hpp.sq"
@@ -177,7 +176,6 @@ void AIInstance::RegisterAPI()
 	SQAIBridge_Register(this->engine);
 	SQAIBridgeList_Register(this->engine);
 	SQAIBridgeList_Length_Register(this->engine);
-	SQAIBuoyList_Register(this->engine);
 	SQAICargo_Register(this->engine);
 	SQAICargoList_Register(this->engine);
 	SQAICargoList_IndustryAccepting_Register(this->engine);

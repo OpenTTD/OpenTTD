@@ -11,18 +11,27 @@
 
 #include "ai_waypoint.hpp"
 #include "ai_rail.hpp"
+#include "ai_marine.hpp"
 #include "../../company_func.h"
 #include "../../waypoint_base.h"
 
 /* static */ bool AIWaypoint::IsValidWaypoint(StationID waypoint_id)
 {
 	const Waypoint *wp = ::Waypoint::GetIfValid(waypoint_id);
-	return wp != NULL && wp->owner == _current_company;
+	return wp != NULL && (wp->owner == _current_company || wp->owner == OWNER_NONE);
 }
 
 /* static */ StationID AIWaypoint::GetWaypointID(TileIndex tile)
 {
-	if (!AIRail::IsRailWaypointTile(tile)) return STATION_INVALID;
+	if (!AIRail::IsRailWaypointTile(tile) && !AIMarine::IsBuoyTile(tile)) return STATION_INVALID;
 
 	return ::GetStationIndex(tile);
+}
+
+/* static */ bool AIWaypoint::HasWaypointType(StationID waypoint_id, WaypointType waypoint_type)
+{
+	if (!IsValidWaypoint(waypoint_id)) return false;
+	if (CountBits(waypoint_type) != 1) return false;
+
+	return (::Waypoint::Get(waypoint_id)->facilities & waypoint_type) != 0;
 }

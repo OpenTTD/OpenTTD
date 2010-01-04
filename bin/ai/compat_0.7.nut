@@ -250,3 +250,11 @@ AIEngine.GetPlaneType <- function(engine_id)
 	if (!AIEngine.IsBuildable(engine_id)) return -1;
 	return AIEngine._GetPlaneType(engine_id);
 }
+
+_AIWaypointList <- AIWaypointList;
+class AIWaypointList extends _AIWaypointList {
+	constructor()
+	{
+		::_AIWaypointList.constructor(AIWaypoint.WAYPOINT_RAIL);
+	}
+}

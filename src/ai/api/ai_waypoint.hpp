@@ -24,6 +24,16 @@ public:
 	static const char *GetClassName() { return "AIWaypoint"; }
 
 	/**
+	 * Type of waypoints known in the game.
+	 */
+	enum WaypointType {
+		/* Values are important, as they represent the internal state of the game. */
+		WAYPOINT_RAIL      = 0x01, //!< Rail waypoint
+		WAYPOINT_BUOY      = 0x10, //!< Buoy
+		WAYPOINT_ANY       = 0x11, //!< All waypoint types
+	};
+
+	/**
 	 * All waypoint related error messages.
 	 */
 	enum ErrorMessages {
@@ -51,6 +61,16 @@ public:
 	 * @return StationID of the waypoint.
 	 */
 	static StationID GetWaypointID(TileIndex tile);
+
+	/**
+	 * Check if any part of the waypoint contains a waypoint of the type waypoint_type
+	 * @param waypoint_id The waypoint to look at.
+	 * @param waypoint_type The WaypointType to look for.
+	 * @return True if the waypoint has a waypoint part of the type waypoint_type.
+	 */
+	static bool HasWaypointType(StationID waypoint_id, WaypointType waypoint_type);
 };
+
+DECLARE_ENUM_AS_BIT_SET(AIWaypoint::WaypointType);
 
 #endif /* AI_WAYPOINT_HPP */

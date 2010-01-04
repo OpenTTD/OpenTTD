@@ -597,7 +597,6 @@ ai/api/ai_base.hpp
 ai/api/ai_basestation.hpp
 ai/api/ai_bridge.hpp
 ai/api/ai_bridgelist.hpp
-ai/api/ai_buoylist.hpp
 ai/api/ai_cargo.hpp
 ai/api/ai_cargolist.hpp
 ai/api/ai_changelog.hpp
@@ -654,7 +653,6 @@ ai/api/ai_base.cpp
 ai/api/ai_basestation.cpp
 ai/api/ai_bridge.cpp
 ai/api/ai_bridgelist.cpp
-ai/api/ai_buoylist.cpp
 ai/api/ai_cargo.cpp
 ai/api/ai_cargolist.cpp
 ai/api/ai_company.cpp
