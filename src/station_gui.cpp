@@ -1211,7 +1211,7 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 	_deleted_stations_nearby.Clear();
 
 	/* Check the inside, to return, if we sit on another station */
-	TILE_LOOP(t, ta.w, ta.h, ta.tile) {
+	TILE_AREA_LOOP(t, ta) {
 		if (t < MapSize() && IsTileType(t, MP_STATION) && T::IsValidID(GetStationIndex(t))) return T::GetByTile(t);
 	}
 

@@ -144,7 +144,7 @@ Industry::~Industry()
 	 * This means that we do not have to clear tiles either. */
 	if (this->location.w == 0) return;
 
-	TILE_LOOP(tile_cur, this->location.w, this->location.h, this->location.tile) {
+	TILE_AREA_LOOP(tile_cur, this->location) {
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
 				/* MakeWaterKeepingClass() can also handle 'land' */

@@ -1223,7 +1223,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
 	/* Do the action for every tile into the area */
-	TILE_LOOP(tile, ta.w, ta.h, ta.tile) {
+	TILE_AREA_LOOP(tile, ta) {
 		/* Make sure the specified tile is a rail station */
 		if (!HasStationTileRail(tile)) continue;
 
@@ -1388,7 +1388,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	/* clear all areas of the station */
-	TILE_LOOP(tile, ta.w, ta.h, ta.tile) {
+	TILE_AREA_LOOP(tile, ta) {
 		/* for nonuniform stations, only remove tiles that are actually train station tiles */
 		if (!st->TileBelongsToRailStation(tile)) continue;
 

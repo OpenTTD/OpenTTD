@@ -162,7 +162,7 @@
 	if (!HasHeliport(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	TILE_LOOP(tile_cur, ind->location.w, ind->location.h, ind->location.tile) {
+	TILE_AREA_LOOP(tile_cur, ind->location) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}
@@ -184,7 +184,7 @@
 	if (!HasDock(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	TILE_LOOP(tile_cur, ind->location.w, ind->location.h, ind->location.tile) {
+	TILE_AREA_LOOP(tile_cur, ind->location) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}

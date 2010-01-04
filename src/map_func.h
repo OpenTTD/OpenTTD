@@ -348,6 +348,16 @@ uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the ma
 		for (uint cur_w = (w); cur_w > 0; --cur_w, var++)
 
 /**
+ * A loop which iterates over the tiles of a TileArea
+ *
+ * This macro starts 2 nested loops which iterates over a square of tiles.
+ *
+ * @param var The name of the variable which contains the current tile
+ * @param ta  The tile area to search over
+ */
+#define TILE_AREA_LOOP(var, ta) TILE_LOOP(var, ta.w, ta.h, ta.tile)
+
+/**
  * Convert a DiagDirection to a TileIndexDiff
  *
  * @param dir The DiagDirection
