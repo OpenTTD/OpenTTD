@@ -1590,6 +1590,7 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_SELECT_RELOCATE,    ///< View/hide the 'Relocate HQ' button.
 	CW_WIDGET_RELOCATE_HQ,
 
+	CW_WIDGET_HAS_PASSWORD,       ///< Draw a lock when the company has a password
 	CW_WIDGET_SELECT_MULTIPLAYER, ///< Multiplayer selection panel.
 	CW_WIDGET_COMPANY_PASSWORD,
 	CW_WIDGET_COMPANY_JOIN,
@@ -1647,10 +1648,13 @@ static const NWidgetPart _nested_company_widgets[] = {
 					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
 						NWidget(NWID_SPACER), SetMinimalSize(90, 0), SetFill(0, 1),
 						/* Multi player buttons. */
-						NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
-							NWidget(NWID_SPACER), SetFill(1, 0),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_EMPTY, COLOUR_GREY, CW_WIDGET_HAS_PASSWORD),
+							NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
+								NWidget(NWID_SPACER), SetFill(1, 0),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
+							EndContainer(),
 						EndContainer(),
 					EndContainer(),
 				EndContainer(),
@@ -1811,6 +1815,12 @@ struct CompanyWindow : Window
 					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_SHARES_OWNED_BY).width);
 				}
 			} break;
+
+#ifdef ENABLE_NETWORK
+			case CW_WIDGET_HAS_PASSWORD:
+				*size = maxdim(*size, GetSpriteSize(SPR_LOCK));
+				break;
+#endif /* ENABLE_NETWORK */
 		}
 	}
 
@@ -1877,9 +1887,9 @@ struct CompanyWindow : Window
 			} break;
 
 #ifdef ENABLE_NETWORK
-			case CW_WIDGET_COMPANY_PASSWORD:
+			case CW_WIDGET_HAS_PASSWORD:
 				if (_networking && NetworkCompanyIsPassworded(c->index)) {
-					DrawSprite(SPR_LOCK, PAL_NONE, _dynlang.text_dir == TD_RTL ? r.right + 10 : r.left  - 10, r.top + 2);
+					DrawSprite(SPR_LOCK, PAL_NONE, r.left, r.top);
 				}
 				break;
 #endif /* ENABLE_NETWORK */
