@@ -63,7 +63,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 {
 	suffix[0] = '\0';
 	if (HasBit(indspec->callback_mask, CBM_IND_CARGO_SUFFIX)) {
-		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, const_cast<Industry *>(ind), ind_type, (cst != CST_FUND) ? ind->xy : INVALID_TILE);
+		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, const_cast<Industry *>(ind), ind_type, (cst != CST_FUND) ? ind->location.tile : INVALID_TILE);
 		if (GB(callback, 0, 8) != 0xFF) {
 			PrepareTextRefStackUsage(6);
 			GetString(suffix, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), suffix_last);
@@ -580,7 +580,7 @@ public:
 
 		this->InitNested(desc, window_number);
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
-		nvp->InitializeViewport(this, Industry::Get(window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+		nvp->InitializeViewport(this, Industry::Get(window_number)->location.tile + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
 	}
 
 	virtual void OnPaint()
@@ -674,7 +674,7 @@ public:
 
 		/* Get the extra message for the GUI */
 		if (HasBit(ind->callback_mask, CBM_IND_WINDOW_MORE_TEXT)) {
-			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
+			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->location.tile);
 			if (callback_res != CALLBACK_FAILED) {
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
 				if (message != STR_NULL && message != STR_UNDEFINED) {
@@ -747,9 +747,9 @@ public:
 			case IVW_GOTO:
 				i = Industry::Get(this->window_number);
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
+					ShowExtraViewPortWindow(i->location.tile + TileDiffXY(1, 1));
 				} else {
-					ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
+					ScrollMainWindowToTile(i->location.tile + TileDiffXY(1, 1));
 				}
 				break;
 		}
@@ -1124,9 +1124,9 @@ public:
 				p = y + this->vscroll.GetPosition();
 				if (p < this->industries.Length()) {
 					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(this->industries[p]->xy);
+						ShowExtraViewPortWindow(this->industries[p]->location.tile);
 					} else {
-						ScrollMainWindowToTile(this->industries[p]->xy);
+						ScrollMainWindowToTile(this->industries[p]->location.tile);
 					}
 				}
 			} break;

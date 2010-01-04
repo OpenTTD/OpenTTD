@@ -236,7 +236,7 @@ static Subsidy *FindSubsidyCargoRoute()
 		/* Only want big towns */
 		if (t->population < SUBSIDY_CARGO_MIN_POPULATION) return NULL;
 
-		if (DistanceManhattan(i->xy, t->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
+		if (DistanceManhattan(i->location.tile, t->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
 
 		dst = t->index;
 	} else {
@@ -252,7 +252,7 @@ static Subsidy *FindSubsidyCargoRoute()
 			return NULL;
 		}
 
-		if (DistanceManhattan(i->xy, i2->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
+		if (DistanceManhattan(i->location.tile, i2->location.tile) > SUBSIDY_MAX_DISTANCE) return NULL;
 
 		dst = i2->index;
 	}

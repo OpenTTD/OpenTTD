@@ -22,6 +22,7 @@
 #include "tile_type.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
+#include "tilearea_type.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
@@ -33,9 +34,7 @@ extern IndustryPool _industry_pool;
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	typedef PersistentStorageArray<uint32, 16> PersistentStorage;
 
-	TileIndex xy;                       ///< coordinates of the primary tile the industry is built one
-	byte width;
-	byte height;
+	TileArea location;                  ///< Location of the industry
 	const Town *town;                   ///< Nearest town
 	CargoID produced_cargo[2];          ///< 2 production cargo slots
 	uint16 produced_cargo_waiting[2];   ///< amount of cargo produced per cargo
@@ -69,7 +68,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	PersistentStorage psa;              ///< Persistent storage for NewGRF industries.
 
-	Industry(TileIndex tile = INVALID_TILE) : xy(tile) {}
+	Industry(TileIndex tile = INVALID_TILE) : location(tile, 0, 0) {}
 	~Industry();
 
 	/**

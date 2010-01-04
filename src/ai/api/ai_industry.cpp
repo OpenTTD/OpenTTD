@@ -115,7 +115,7 @@
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 
-	return ::Industry::Get(industry_id)->xy;
+	return ::Industry::Get(industry_id)->location.tile;
 }
 
 /* static */ int32 AIIndustry::GetAmountOfStationsAround(IndustryID industry_id)
@@ -124,7 +124,7 @@
 
 	Industry *ind = ::Industry::Get(industry_id);
 	StationList stations;
-	::FindStationsAroundTiles(TileArea(ind->xy, ind->width, ind->height), &stations);
+	::FindStationsAroundTiles(ind->location, &stations);
 	return (int32)stations.Length();
 }
 
@@ -162,7 +162,7 @@
 	if (!HasHeliport(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy) {
+	TILE_LOOP(tile_cur, ind->location.w, ind->location.h, ind->location.tile) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}
@@ -184,7 +184,7 @@
 	if (!HasDock(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy) {
+	TILE_LOOP(tile_cur, ind->location.w, ind->location.h, ind->location.tile) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}

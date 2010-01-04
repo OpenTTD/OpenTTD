@@ -896,7 +896,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 
 		/* Check if industry temporarily refuses acceptance */
 		if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {
-			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
+			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->location.tile);
 			if (res == 0) continue;
 		}
 

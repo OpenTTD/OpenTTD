@@ -17,10 +17,10 @@
 #include "saveload.h"
 
 static const SaveLoad _industry_desc[] = {
-	SLE_CONDVAR(Industry, xy,                         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
-	SLE_CONDVAR(Industry, xy,                         SLE_UINT32,                  6, SL_MAX_VERSION),
-	    SLE_VAR(Industry, width,                      SLE_UINT8),
-	    SLE_VAR(Industry, height,                     SLE_UINT8),
+	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Industry, location.tile,              SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(Industry, location.w,                 SLE_UINT8),
+	    SLE_VAR(Industry, location.h,                 SLE_UINT8),
 	    SLE_REF(Industry, town,                       REF_TOWN),
 	SLE_CONDNULL( 2, 0, 60),       ///< used to be industry's produced_cargo
 	SLE_CONDARR(Industry, produced_cargo,             SLE_UINT8,  2,              78, SL_MAX_VERSION),

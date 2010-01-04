@@ -86,7 +86,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x42: return GetTownRadiusGroup(ClosestTownFromTile(tile, UINT_MAX), tile);
 
 		/* Relative position */
-		case 0x43: return GetRelativePosition(tile, inds->xy);
+		case 0x43: return GetRelativePosition(tile, inds->location.tile);
 
 		/* Animation frame. Like house variable 46 but can contain anything 0..FF. */
 		case 0x44: return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryAnimationState(tile) : 0;
@@ -271,8 +271,8 @@ bool PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, 
 {
 	Industry ind;
 	ind.index = INVALID_INDUSTRY;
-	ind.xy = ind_base_tile;
-	ind.width = 0;
+	ind.location.tile = ind_base_tile;
+	ind.location.w = 0;
 	ind.type = type;
 
 	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, itspec_index, gfx, &ind, ind_tile);
@@ -396,7 +396,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 {
 	bool ret = true;
 	uint32 random = Random();
-	TILE_LOOP(tile, ind->width, ind->height, ind->xy) {
+	TILE_LOOP(tile, ind->location.w, ind->location.h, ind->location.tile) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
 			if (StartStopIndustryTileAnimation(tile, iat, random)) {
 				SB(random, 0, 16, Random());
@@ -441,7 +441,7 @@ void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
 
 void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 {
-	TILE_LOOP(tile, ind->width, ind->height, ind->xy) {
+	TILE_LOOP(tile, ind->location.w, ind->location.h, ind->location.tile) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
 			DoTriggerIndustryTile(tile, trigger, ind);
 		}

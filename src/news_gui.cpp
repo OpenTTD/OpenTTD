@@ -63,7 +63,7 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
 	switch (reftype) {
 		case NR_TILE:     return (TileIndex)ref;
 		case NR_STATION:  return Station::Get((StationID)ref)->xy;
-		case NR_INDUSTRY: return Industry::Get((IndustryID)ref)->xy + TileDiffXY(1, 1);
+		case NR_INDUSTRY: return Industry::Get((IndustryID)ref)->location.tile + TileDiffXY(1, 1);
 		case NR_TOWN:     return Town::Get((TownID)ref)->xy;
 		default:          return INVALID_TILE;
 	}

@@ -92,7 +92,7 @@ static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Indust
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->type != type || i == current) continue;
 
-		best_dist = min(best_dist, DistanceManhattan(tile, i->xy));
+		best_dist = min(best_dist, DistanceManhattan(tile, i->location.tile));
 	}
 
 	return best_dist;
@@ -132,7 +132,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 	if (layout_filter == 0) {
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */
-		closest_dist = GetClosestIndustry(current->xy, ind_index, current);
+		closest_dist = GetClosestIndustry(current->location.tile, ind_index, current);
 		count = GetIndustryTypeCount(ind_index);
 	} else {
 		/* Count only those who match the same industry type and layout filter
@@ -140,7 +140,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		const Industry *i;
 		FOR_ALL_INDUSTRIES(i) {
 			if (i->type == ind_index && i != current && i->selected_layout == layout_filter) {
-				closest_dist = min(closest_dist, DistanceManhattan(current->xy, i->xy));
+				closest_dist = min(closest_dist, DistanceManhattan(current->location.tile, i->location.tile));
 				count++;
 			}
 		}
@@ -235,7 +235,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x46: return industry->construction_date; // Date when built - long format - (in days)
 
 		/* Get industry ID at offset param */
-		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), industry);
+		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->location.tile), industry);
 
 		/* Get random tile bits at offset param */
 		case 0x61:
@@ -269,15 +269,15 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x7C: return industry->psa.Get(parameter);
 
 		/* Industry structure access*/
-		case 0x80: return industry->xy;
-		case 0x81: return GB(industry->xy, 8, 8);
+		case 0x80: return industry->location.tile;
+		case 0x81: return GB(industry->location.tile, 8, 8);
 		/* Pointer to the town the industry is associated with */
 		case 0x82: return industry->town->index;
 		case 0x83:
 		case 0x84:
 		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
-		case 0x86: return industry->width;
-		case 0x87: return industry->height;// xy dimensions
+		case 0x86: return industry->location.w;
+		case 0x87: return industry->location.h;// xy dimensions
 
 		case 0x88:
 		case 0x89: return industry->produced_cargo[variable - 0x88];
@@ -455,8 +455,8 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 
 	Industry ind;
 	ind.index = INVALID_INDUSTRY;
-	ind.xy = tile;
-	ind.width = 0;
+	ind.location.tile = tile;
+	ind.location.w = 0;
 	ind.type = type;
 	ind.selected_layout = itspec_index;
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);
@@ -516,7 +516,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 {
 	const IndustrySpec *spec = GetIndustrySpec(ind->type);
 	ResolverObject object;
-	NewIndustryResolver(&object, ind->xy, ind, ind->type);
+	NewIndustryResolver(&object, ind->location.tile, ind, ind->type);
 	if ((spec->behaviour & INDUSTRYBEH_PRODCALLBACK_RANDOM) != 0) object.callback_param1 = Random();
 	int multiplier = 1;
 	if ((spec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) multiplier = ind->prod_level;

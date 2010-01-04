@@ -401,8 +401,8 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 	if (v->current_order.GetDestination() == 2) {
 		if (GB(v->tick_counter, 0, 2) == 0) {
 			Industry *i = Industry::Get(v->dest_tile); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
-			int x = TileX(i->xy) * TILE_SIZE;
-			int y = TileY(i->xy) * TILE_SIZE;
+			int x = TileX(i->location.tile) * TILE_SIZE;
+			int y = TileY(i->location.tile) * TILE_SIZE;
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
@@ -423,7 +423,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 
 			SetDParam(0, i->town->index);
 			AddIndustryNewsItem(news_message, NS_ACCIDENT, i->index); // delete the news, when the industry closes
-			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
+			SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
 		int x = v->x_pos - (15 * TILE_SIZE);
@@ -742,7 +742,7 @@ static void Disaster_Airplane_Init()
 
 	/* Start from the bottom (south side) of the map */
 	int x = (MapSizeX() + 9) * TILE_SIZE - 1;
-	int y = TileY(found->xy) * TILE_SIZE + 37;
+	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_AIRPLANE);
 
@@ -772,7 +772,7 @@ static void Disaster_Helicopter_Init()
 	DisasterVehicle *v = new DisasterVehicle();
 
 	int x = -16 * TILE_SIZE;
-	int y = TileY(found->xy) * TILE_SIZE + 37;
+	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_HELICOPTER);
 
@@ -861,10 +861,10 @@ static void Disaster_CoalMine_Init()
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE,
-					NS_ACCIDENT, NR_TILE, i->xy + TileDiffXY(1, 1)); // keep the news, even when the mine closes
+					NS_ACCIDENT, NR_TILE, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
 
 				{
-					TileIndex tile = i->xy;
+					TileIndex tile = i->location.tile;
 					TileIndexDiff step = TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));
 
 					for (uint n = 0; n < 30; n++) {

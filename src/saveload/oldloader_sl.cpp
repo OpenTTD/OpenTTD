@@ -776,10 +776,10 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 }
 
 static const OldChunks industry_chunk[] = {
-	OCL_SVAR(   OC_TILE, Industry, xy ),
+	OCL_SVAR(   OC_TILE, Industry, location.tile ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
-	OCL_SVAR(  OC_UINT8, Industry, width ),
-	OCL_SVAR(  OC_UINT8, Industry, height ),
+	OCL_SVAR(  OC_UINT8, Industry, location.w ),
+	OCL_SVAR(  OC_UINT8, Industry, location.h ),
 	OCL_NULL( 2 ),  ///< used to be industry's produced_cargo
 
 	OCL_SVAR( OC_TTD | OC_UINT16, Industry, produced_cargo_waiting[0] ),
@@ -825,7 +825,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	Industry *i = new (num) Industry();
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
-	if (i->xy != 0) {
+	if (i->location.tile != 0) {
 		i->town = Town::Get(RemapTownIndex(_old_town_index));
 
 		if (_savegame_type == SGT_TTO) {

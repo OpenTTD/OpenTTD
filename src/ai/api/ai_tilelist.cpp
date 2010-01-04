@@ -86,7 +86,7 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius)) {
+	TILE_LOOP(cur_tile, i->location.w + radius * 2, i->location.h+ radius * 2, i->location.tile - ::TileDiffXY(radius, radius)) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
@@ -123,7 +123,7 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius)) {
+	TILE_LOOP(cur_tile, i->location.w + radius * 2, i->location.h+ radius * 2, i->location.tile - ::TileDiffXY(radius, radius)) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
