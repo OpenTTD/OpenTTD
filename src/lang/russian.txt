@@ -391,7 +391,7 @@ STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Вывоз
 STR_SORT_BY_NUMBER                                              :Номер
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прибыль в прошлом году
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прибыль в этом году
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прибыль в текущем году
 STR_SORT_BY_AGE                                                 :Возраст
 STR_SORT_BY_RELIABILITY                                         :Надёжность
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Вместимость груза
@@ -1399,7 +1399,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Раз�
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке светофоров линией, ставить кажд{P 1 ую ые ые}: {ORANGE}{STRING} клет{P 1 ку ки ок}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню выбора сигналов: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигнала по умолчанию: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигналов по умолчанию: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :обычные
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :маршрутные
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :одностор. маршрутные

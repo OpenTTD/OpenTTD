@@ -1242,6 +1242,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Värill
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Aloitusvuosi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Tasainen talous (enemmän pieniä muutoksia): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Tuotoista syöttöjärjestelmiin maksettava osuus: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna oletuksena siipiopastimia ennen vuotta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Käytä graafista opastinkäyttöliittymää: {ORANGE}{STRING}
@@ -2252,7 +2253,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden a
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasaisuus:
-STR_MAPGEN_VARIETY                                              :{BLACK}Vaihtelun hajautus:
+STR_MAPGEN_VARIETY                                              :{BLACK}Vaihtelu:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generoi
 
 # Strings for map borders at game generation

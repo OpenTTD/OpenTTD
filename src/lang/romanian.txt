@@ -1242,6 +1242,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Ştiril
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Anul de început al jocului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Economie cu schimbãri de productie mai reduse, dar mai frecvente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite cumpărarea de acţiuni de la alte companii: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procentul din profitul final care va fi plătit intermediarilor: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasarea automată a semnalelor la fiecare: {ORANGE}{STRING} pătrăţele
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieşte automat semafoare înainte de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activare GUI pentru semnale: {ORANGE}{STRING}
