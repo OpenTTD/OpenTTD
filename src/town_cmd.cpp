@@ -465,7 +465,7 @@ static void TileLoop_Town(TileIndex tile)
 	Town *t = Town::GetByTile(tile);
 	uint32 r = Random();
 
-	StationFinder stations(tile, 1, 1);
+	StationFinder stations(TileArea(tile, 1, 1));
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
 		for (uint i = 0; i < 256; i++) {

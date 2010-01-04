@@ -3035,7 +3035,7 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 const StationList *StationFinder::GetStations()
 {
 	if (this->tile != INVALID_TILE) {
-		FindStationsAroundTiles(this->tile, this->x_extent, this->y_extent, &this->stations);
+		FindStationsAroundTiles(this->tile, this->w, this->h, &this->stations);
 		this->tile = INVALID_TILE;
 	}
 	return &this->stations;

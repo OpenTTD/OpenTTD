@@ -343,7 +343,7 @@ static void TileLoop_Unmovable(TileIndex tile)
 	uint level = GetCompanyHQSize(tile) + 1;
 	assert(level < 6);
 
-	StationFinder stations(tile, 2, 2);
+	StationFinder stations(TileArea(tile, 2, 2));
 
 	uint r = Random();
 	/* Top town buildings generate 250, so the top HQ type makes 256. */

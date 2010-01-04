@@ -99,19 +99,14 @@ typedef SmallVector<Station *, 2> StationList;
  * Structure contains cached list of stations nearby. The list
  * is created upon first call to GetStations()
  */
-class StationFinder {
+class StationFinder : TileArea {
 	StationList stations; ///< List of stations nearby
-	TileIndex tile;       ///< Northern tile of producer, INVALID_TILE when # stations is valid
-	int x_extent;         ///< Width of producer
-	int y_extent;         ///< Height of producer
 public:
 	/**
 	 * Constructs StationFinder
-	 * @param t northern tile
-	 * @param dx width of producer
-	 * @param dy height of producer
+	 * @param area the area to search from
 	 */
-	StationFinder(TileIndex t, int dx, int dy) : tile(t), x_extent(dx), y_extent(dy) {}
+	StationFinder(const TileArea &area) : TileArea(area) {}
 	const StationList *GetStations();
 };
 
