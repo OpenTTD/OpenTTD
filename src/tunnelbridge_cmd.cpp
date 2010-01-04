@@ -589,7 +589,7 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 			if (road_owner == OWNER_NONE || road_owner == OWNER_TOWN) road_owner = _current_company;
 			if (tram_owner == OWNER_NONE) tram_owner = _current_company;
 
-			return CheckOwnership(road_owner) && CheckOwnership(tram_owner);
+			return CheckOwnership(road_owner, tile) && CheckOwnership(tram_owner, tile);
 		}
 
 		case TRANSPORT_RAIL:

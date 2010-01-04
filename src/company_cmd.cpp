@@ -210,6 +210,12 @@ void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
 	if (cost != 0) SubtractMoneyFromAnyCompany(c, CommandCost(cst.GetExpensesType(), cost));
 }
 
+/**
+ * Set the right DParams to get the name of an owner.
+ * @param owner the owner to get the name of.
+ * @param tile  optional tile to get the right town.
+ * @pre if tile == 0, then owner can't be OWNER_TOWN.
+ */
 void GetNameOfOwner(Owner owner, TileIndex tile)
 {
 	SetDParam(2, owner);
@@ -222,6 +228,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 			SetDParam(1, owner);
 		}
 	} else {
+		assert(tile != 0);
 		const Town *t = ClosestTownFromTile(tile, UINT_MAX);
 
 		SetDParam(0, STR_TOWN_NAME);
@@ -230,16 +237,32 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 }
 
 
-bool CheckOwnership(Owner owner)
+/**
+ * Check whether the current owner owns something.
+ * If that isn't the case an appropriate error will be given.
+ * @param owner the owner of the thing to check.
+ * @param tile  optional tile to get the right town.
+ * @pre if tile == 0 then the owner can't be OWNER_TOWN.
+ * @return true iff it's owned by the current company.
+ */
+bool CheckOwnership(Owner owner, TileIndex tile)
 {
 	assert(owner < OWNER_END);
+	assert(owner != OWNER_TOWN || tile != 0);
 
 	if (owner == _current_company) return true;
 	_error_message = STR_ERROR_OWNED_BY;
-	GetNameOfOwner(owner, 0);
+	GetNameOfOwner(owner, tile);
 	return false;
 }
 
+/**
+ * Check whether the current owner owns the stuff on
+ * the given tile.  If that isn't the case an
+ * appropriate error will be given.
+ * @param tile the tile to check.
+ * @return true iff it's owned by the current company.
+ */
 bool CheckTileOwnership(TileIndex tile)
 {
 	Owner owner = GetTileOwner(tile);

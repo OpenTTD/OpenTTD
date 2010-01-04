@@ -503,7 +503,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 							if (crossing) return_cmd_error(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 
 							Owner owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-							if (owner != OWNER_NONE && !CheckOwnership(owner)) return CMD_ERROR;
+							if (owner != OWNER_NONE && !CheckOwnership(owner, tile)) return CMD_ERROR;
 
 							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
