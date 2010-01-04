@@ -2355,11 +2355,11 @@ STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {S
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}치명적인 NewGRF 오류가 발생했습니다: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}{G 0 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}{G 0 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}{G 1 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}{G 1 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}의 부적절한 파라미터: 파라미터 {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}{G 0 "은" "는"} 반드시 {STRING} 앞에 불러와야 합니다.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}{G 0 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}{G 1 "은" "는"} 반드시 {STRING} 앞에 불러와야 합니다.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}{G 1 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}는 OpenTTD {STRING} 버전이나 그 이상이 필요합니다.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.

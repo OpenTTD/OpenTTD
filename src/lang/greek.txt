@@ -1113,7 +1113,7 @@ STR_NUM_VERY_LOW                                                :Πολύ χαμ
 STR_NUM_LOW                                                     :Χαμηλό
 STR_NUM_NORMAL                                                  :Κανονικό
 STR_NUM_HIGH                                                    :Υψηλό
-STR_NUM_CUSTOM                                                  :Προσαρμοσμέν{G ος η ο}
+STR_NUM_CUSTOM                                                  :Προσαρμοσμένος
 
 STR_VARIETY_NONE                                                :Καθόλου
 STR_VARIETY_VERY_LOW                                            :Πολύ Χαμηλό
@@ -2531,7 +2531,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Διαθέσιμες πράξεις:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Λίστα πραγμάτων που πρέπει να γίνουν σε αυτή την πόλη - κάντε κλικ στο αντικείμενο για πληροφορίες
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Κάνε το
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Διενέργεια της επιλεγμένης πράξης στην παραπάνω λίστα
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Διενέργεια της επιλεγμέ�ης πράξης στην παραπάνω λίστα
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Μικρή διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Μεσαία διαφημιστική καμπάνια

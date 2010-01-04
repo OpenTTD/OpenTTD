@@ -1829,8 +1829,8 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :pogrešna reviz
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ime se već koristi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :pogrešna zaporka
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :krivi id tvrtke u DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :izbačen{G "" a o} od strane poslužitelja
-STR_NETWORK_ERROR_CLIENT_CHEATER                                :je pokuša{G o la lo} varati
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :izbačen od strane poslužitelja
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :je pokušao varati
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :poslužitelj je pun
 ############ End of leave-in-this-order
 

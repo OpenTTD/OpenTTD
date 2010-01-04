@@ -965,7 +965,11 @@ static int TranslateArgumentIdx(int argidx, int offset)
 	}
 	const CmdStruct *cs = _cur_pcs.cmd[argidx];
 	if (cs != NULL && cs->consumes <= offset) {
-		error("invalid argidx offset %d:%d\n", argidx, offset);
+		error("invalid argidx offset %d:%d", argidx, offset);
+	}
+
+	if (_cur_pcs.cmd[argidx] == NULL) {
+		error("no command for this argidx %d", argidx);
 	}
 
 	for (int i = sum = 0; i < argidx; i++) {
