@@ -197,6 +197,8 @@ void QZ_GameSizeChanged()
 	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
 	_fullscreen = _cocoa_subdriver->IsFullscreen();
 
+	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+
 	GameSizeChanged();
 }
 

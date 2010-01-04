@@ -200,6 +200,11 @@ public:
 	 */
 	virtual int GetBytesPerPixel() = 0;
 
+	/**
+	 * Post resize event
+	 */
+	virtual void PostResize() { };
+
 	virtual ~Blitter() { }
 };
 

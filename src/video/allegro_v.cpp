@@ -221,6 +221,8 @@ static bool CreateMainSurface(uint w, uint h)
 	_cursor.pos.x = mouse_x;
 	_cursor.pos.y = mouse_y;
 
+	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+
 	InitPalette();
 
 	char caption[32];

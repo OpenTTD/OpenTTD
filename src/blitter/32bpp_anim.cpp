@@ -202,14 +202,6 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		return;
 	}
 
-	if (_screen.width != this->anim_buf_width || _screen.height != this->anim_buf_height) {
-		/* The size of the screen changed; we can assume we can wipe all data from our buffer */
-		free(this->anim_buf);
-		this->anim_buf = CallocT<uint8>(_screen.width * _screen.height);
-		this->anim_buf_width = _screen.width;
-		this->anim_buf_height = _screen.height;
-	}
-
 	switch (mode) {
 		default: NOT_REACHED();
 		case BM_NORMAL:       Draw<BM_NORMAL>      (bp, zoom); return;
@@ -447,4 +439,15 @@ void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 Blitter::PaletteAnimation Blitter_32bppAnim::UsePaletteAnimation()
 {
 	return Blitter::PALETTE_ANIMATION_BLITTER;
+}
+
+void Blitter_32bppAnim::PostResize()
+{
+	if (_screen.width != this->anim_buf_width || _screen.height != this->anim_buf_height) {
+		/* The size of the screen changed; we can assume we can wipe all data from our buffer */
+		free(this->anim_buf);
+		this->anim_buf = CallocT<uint8>(_screen.width * _screen.height);
+		this->anim_buf_width = _screen.width;
+		this->anim_buf_height = _screen.height;
+	}
 }

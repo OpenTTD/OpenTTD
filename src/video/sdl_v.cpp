@@ -251,6 +251,9 @@ static bool CreateMainSurface(uint w, uint h)
 	_screen.pitch = newscreen->pitch / (bpp / 8);
 	_screen.dst_ptr = newscreen->pixels;
 	_sdl_screen = newscreen;
+
+	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+
 	InitPalette();
 
 	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);

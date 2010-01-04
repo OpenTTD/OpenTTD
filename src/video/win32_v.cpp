@@ -160,6 +160,9 @@ static void ClientSizeChanged(int w, int h)
 		/* mark all palette colors dirty */
 		_pal_first_dirty = 0;
 		_pal_count_dirty = 256;
+
+		BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+
 		GameSizeChanged();
 
 		/* redraw screen */
@@ -302,6 +305,9 @@ static bool MakeWindow(bool full_screen)
 			ShowWindow(_wnd.main_wnd, showstyle);
 		}
 	}
+
+	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+
 	GameSizeChanged(); // invalidate all windows, force redraw
 	return true; // the request succedded
 }

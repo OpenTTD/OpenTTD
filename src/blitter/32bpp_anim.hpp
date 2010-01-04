@@ -42,6 +42,7 @@ public:
 
 	/* virtual */ const char *GetName() { return "32bpp-anim"; }
 	/* virtual */ int GetBytesPerPixel() { return 5; }
+	/* virtual */ void PostResize();
 
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 };
