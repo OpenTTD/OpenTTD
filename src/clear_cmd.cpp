@@ -177,7 +177,8 @@ static void TileLoopClearAlps(TileIndex tile)
 		AddClearDensity(tile, -1);
 	} else {
 		/* Density at the required level. */
-		if (k < 0) ClearSnow(tile);
+		if (k >= 0) return;
+		ClearSnow(tile);
 	}
 	MarkTileDirtyByTile(tile);
 }
