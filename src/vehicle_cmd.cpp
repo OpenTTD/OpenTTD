@@ -307,13 +307,11 @@ CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_s
 {
 	CommandCost cost(v->GetExpenseType(false));
 	uint total_capacity = 0;
-	bool success = false;
 
 	v->InvalidateNewGRFCacheOfChain();
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!e->CanCarryCargo() || !HasBit(e->info.refit_mask, new_cid)) continue;
-		success = true;
 
 		/* Back up the vehicle's cargo type */
 		CargoID temp_cid = v->cargo_type;
@@ -347,7 +345,7 @@ CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_s
 	}
 
 	_returned_refit_capacity = total_capacity;
-	return success ? cost : CMD_ERROR;
+	return cost;
 }
 
 /** Test if a name is unique among vehicle names.
