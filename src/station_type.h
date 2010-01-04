@@ -15,6 +15,7 @@
 #include "core/enum_type.hpp"
 #include "core/smallvec_type.hpp"
 #include "tile_type.h"
+#include "tilearea_type.h"
 
 typedef uint16 StationID;
 typedef uint16 RoadStopID;
@@ -89,47 +90,6 @@ enum CatchmentArea {
 enum {
 	MAX_LENGTH_STATION_NAME_BYTES  =  31, ///< The maximum length of a station name in bytes including '\0'
 	MAX_LENGTH_STATION_NAME_PIXELS = 180, ///< The maximum length of a station name in pixels
-};
-
-/** Represents the covered area of e.g. a rail station */
-struct TileArea {
-	/** Just construct this tile area */
-	TileArea() {}
-
-	/**
-	 * Construct this tile area with some set values
-	 * @param tile the base tile
-	 * @param w the width
-	 * @param h the height
-	 */
-	TileArea(TileIndex tile, uint8 w, uint8 h) : tile(tile), w(w), h(h) {}
-
-	/**
-	 * Construct this tile area based on two points.
-	 * @param start the start of the area
-	 * @param end   the end of the area
-	 */
-	TileArea(TileIndex start, TileIndex end);
-
-	TileIndex tile; ///< The base tile of the area
-	uint8 w;        ///< The width of the area
-	uint8 h;        ///< The height of the area
-
-	/**
-	 * Add a single tile to a tile area; enlarge if needed.
-	 * @param to_add The tile to add
-	 */
-	void Add(TileIndex to_add);
-
-	/**
-	 * Clears the 'tile area', i.e. make the tile invalid.
-	 */
-	void Clear()
-	{
-		this->tile = INVALID_TILE;
-		this->w    = 0;
-		this->h    = 0;
-	}
 };
 
 /** List of stations */

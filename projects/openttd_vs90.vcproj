@@ -1465,6 +1465,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tilearea_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\tile_cmd.h"
 				>
 			</File>

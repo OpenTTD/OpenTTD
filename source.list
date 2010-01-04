@@ -276,6 +276,7 @@ terraform_gui.h
 textbuf_gui.h
 texteff.hpp
 tgp.h
+tilearea_type.h
 tile_cmd.h
 tile_type.h
 tilehighlight_func.h
