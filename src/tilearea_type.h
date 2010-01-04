@@ -53,6 +53,13 @@ struct TileArea {
 		this->w    = 0;
 		this->h    = 0;
 	}
+
+	/**
+	 * Does this tile area intersect with another?
+	 * @param ta the other tile area to check against.
+	 * @return true if they intersect.
+	 */
+	bool Intersects(const TileArea &ta) const;
 };
 
 #endif /* TILEAREA_TYPE_H */

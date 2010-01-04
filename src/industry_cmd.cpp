@@ -924,16 +924,6 @@ static TrackStatus GetTileTrackStatus_Industry(TileIndex tile, TransportType mod
 	return 0;
 }
 
-static void AddProducedCargo_Industry(TileIndex tile, CargoArray &produced)
-{
-	const Industry *i = Industry::GetByTile(tile);
-
-	for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
-		CargoID cargo = i->produced_cargo[j];
-		if (cargo != CT_INVALID) produced[cargo]++;
-	}
-}
-
 static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* If the founder merges, the industry was created by the merged company */
@@ -2468,7 +2458,7 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 	AnimateTile_Industry,        // animate_tile_proc
 	TileLoop_Industry,           // tile_loop_proc
 	ChangeTileOwner_Industry,    // change_tile_owner_proc
-	AddProducedCargo_Industry,   // add_produced_cargo_proc
+	NULL,                        // add_produced_cargo_proc
 	NULL,                        // vehicle_enter_tile_proc
 	GetFoundation_Industry,      // get_foundation_proc
 	TerraformTile_Industry,      // terraform_tile_proc

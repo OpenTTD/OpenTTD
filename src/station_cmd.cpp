@@ -485,10 +485,25 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 	assert(w > 0);
 	assert(h > 0);
 
-	for (int yc = y1; yc != y2; yc++) {
-		for (int xc = x1; xc != x2; xc++) {
-			TileIndex tile = TileXY(xc, yc);
-			AddProducedCargo(tile, produced);
+	TileArea ta(TileXY(x1, y1), TileXY(x2 - 1, y2 - 1));
+
+	/* Loop over all tiles to get the produced cargo of
+	 * everything except industries */
+	TILE_AREA_LOOP(tile, ta) AddProducedCargo(tile, produced);
+
+	/* Loop over the industries. They produce cargo for
+	 * anything that is within 'rad' from their bounding
+	 * box. As such if you have e.g. a oil well the tile
+	 * area loop might not hit an industry tile while
+	 * the industry would produce cargo for the station.
+	 */
+	const Industry *i;
+	FOR_ALL_INDUSTRIES(i) {
+		if (!ta.Intersects(i->location)) continue;
+
+		for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
+			CargoID cargo = i->produced_cargo[j];
+			if (cargo != CT_INVALID) produced[cargo]++;
 		}
 	}
 

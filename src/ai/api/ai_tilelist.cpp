@@ -90,13 +90,11 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 	const Industry *i = ::Industry::Get(industry_id);
 
 	/* Check if this industry produces anything */
-	{
-		bool cargo_produces = false;
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (i->produced_cargo[j] != CT_INVALID) cargo_produces = true;
-		}
-		if (!cargo_produces) return;
+	bool cargo_produces = false;
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] != CT_INVALID) cargo_produces = true;
 	}
+	if (!cargo_produces) return;
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
@@ -104,17 +102,6 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
-
-		/* Only add the tile if it produces the cargo (a bug in OpenTTD makes this
-		 *  inconsitance). */
-		CargoArray produced = ::GetProductionAroundTiles(cur_tile, 1, 1, radius);
-		{
-			bool cargo_produces = false;
-			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-				if (i->produced_cargo[j] != CT_INVALID && produced[i->produced_cargo[j]] != 0) cargo_produces = true;
-			}
-			if (!cargo_produces) continue;
-		}
 
 		this->AddTile(cur_tile);
 	}

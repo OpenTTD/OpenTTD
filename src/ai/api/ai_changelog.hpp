@@ -91,6 +91,12 @@
  *     vehicle of that type in your company, regardless if it's still buildable
  *     or not. AIEngine::IsBuildable returns only true when you can actually
  *     build an engine.
+ * \li AITile::GetCargoProduction will now return the number of producers,
+ *     including houses instead the number of producing tiles. This means that
+ *     also industries that do not have a tile within the radius, but where
+ *     the search bounding box and the industry's bounding box intersect, are
+ *     counted. Previously these industries (and their cargos), although they
+ *     produced cargo for a station at the given location, were not returned.
  *
  * \b 0.7.5
  *

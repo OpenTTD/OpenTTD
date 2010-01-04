@@ -309,9 +309,8 @@ public:
 	static int32 GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
 
 	/**
-	 * Checks how many tiles in the radius produces this cargo.
-	 *  It creates a radius around the tile, and adds up all tiles that produce
-	 *  this cargo.
+	 * Checks how many producers in the radius produces this cargo.
+	 *  It creates a radius around the tile, and counts all producer of this cargo.
 	 * @param tile The tile to check on.
 	 * @param cargo_type The cargo to check the production of.
 	 * @param width The width of the station.
@@ -321,8 +320,7 @@ public:
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.
-	 * @return The tiles that produce this cargo within radius of the tile.
-	 * @note Town(houses) are not included in the value.
+	 * @return The number of producers that produce this cargo within radius of the tile.
 	 */
 	static int32 GetCargoProduction(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
 
