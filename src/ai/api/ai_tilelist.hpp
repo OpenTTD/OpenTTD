@@ -23,16 +23,6 @@ class AITileList : public AIAbstractList {
 public:
 	static const char *GetClassName() { return "AITileList"; }
 
-private:
-	/**
-	 * Make sure t1.x is smaller than t2.x and t1.y is smaller than t2.y.
-	 * They are swapped to ensure they are after calling this function.
-	 * @param t1 one of the corners of the rectangle.
-	 * @param t2 the other corner of the rectangle.
-	 */
-	void FixRectangleSpan(TileIndex &t1, TileIndex &t2);
-
-public:
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.
 	 * @param tile_from One corner of the tiles to add.

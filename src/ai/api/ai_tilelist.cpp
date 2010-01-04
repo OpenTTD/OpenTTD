@@ -14,32 +14,13 @@
 #include "../../industry.h"
 #include "../../station_base.h"
 
-void AITileList::FixRectangleSpan(TileIndex &t1, TileIndex &t2)
-{
-	uint x1 = ::TileX(t1);
-	uint x2 = ::TileX(t2);
-
-	uint y1 = ::TileY(t1);
-	uint y2 = ::TileY(t2);
-
-	if (x1 >= x2) ::Swap(x1, x2);
-	if (y1 >= y2) ::Swap(y1, y2);
-
-	t1 = ::TileXY(x1, y1);
-	t2 = ::TileXY(x2, y2);
-}
-
 void AITileList::AddRectangle(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return;
 	if (!::IsValidTile(t2)) return;
 
-	this->FixRectangleSpan(t1, t2);
-
-	uint w = TileX(t2) - TileX(t1) + 1;
-	uint h = TileY(t2) - TileY(t1) + 1;
-
-	TILE_LOOP(t, w, h, t1) this->AddItem(t);
+	TileArea ta(t1, t2);
+	TILE_AREA_LOOP(t, ta) this->AddItem(t);
 }
 
 void AITileList::AddTile(TileIndex tile)
@@ -54,12 +35,8 @@ void AITileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 	if (!::IsValidTile(t1)) return;
 	if (!::IsValidTile(t2)) return;
 
-	this->FixRectangleSpan(t1, t2);
-
-	uint w = TileX(t2) - TileX(t1) + 1;
-	uint h = TileY(t2) - TileY(t1) + 1;
-
-	TILE_LOOP(t, w, h, t1) this->RemoveItem(t);
+	TileArea ta(t1, t2);
+	TILE_AREA_LOOP(t, ta) this->RemoveItem(t);
 }
 
 void AITileList::RemoveTile(TileIndex tile)
