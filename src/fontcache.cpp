@@ -1004,7 +1004,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	}
 
 	new_glyph.sprite = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
-	new_glyph.width  = (slot->advance.x >> 6) + (size != FS_NORMAL);
+	new_glyph.width  = slot->advance.x >> 6;
 
 	SetGlyphPtr(size, key, &new_glyph);
 
