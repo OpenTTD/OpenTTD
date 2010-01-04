@@ -345,98 +345,84 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
-	int ex;
-	int ey;
-	int sx, sy, x, y;
 
 	if (p2 >= MapSize()) return CMD_ERROR;
 	/* Check the tree type. It can be random or some valid value within the current climate */
 	if (p1 != UINT_MAX && p1 - _tree_base_by_landscape[_settings_game.game_creation.landscape] >= _tree_count_by_landscape[_settings_game.game_creation.landscape]) return CMD_ERROR;
 
-	/* make sure sx,sy are smaller than ex, ey */
-	ex = TileX(tile);
-	ey = TileY(tile);
-	sx = TileX(p2);
-	sy = TileY(p2);
-	if (ex < sx) Swap(ex, sx);
-	if (ey < sy) Swap(ey, sy);
+	TileArea ta(tile, p2);
+	TILE_AREA_LOOP(tile, ta) {
+		switch (GetTileType(tile)) {
+			case MP_TREES:
+				/* no more space for trees? */
+				if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 4) {
+					msg = STR_ERROR_TREE_ALREADY_HERE;
+					continue;
+				}
 
-	for (x = sx; x <= ex; x++) {
-		for (y = sy; y <= ey; y++) {
-			TileIndex tile = TileXY(x, y);
+				if (flags & DC_EXEC) {
+					AddTreeCount(tile, 1);
+					MarkTileDirtyByTile(tile);
+				}
+				/* 2x as expensive to add more trees to an existing tile */
+				cost.AddCost(_price[PR_BUILD_TREES] * 2);
+				break;
 
-			switch (GetTileType(tile)) {
-				case MP_TREES:
-					/* no more space for trees? */
-					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 4) {
-						msg = STR_ERROR_TREE_ALREADY_HERE;
-						continue;
-					}
-
-					if (flags & DC_EXEC) {
-						AddTreeCount(tile, 1);
-						MarkTileDirtyByTile(tile);
-					}
-					/* 2x as expensive to add more trees to an existing tile */
-					cost.AddCost(_price[PR_BUILD_TREES] * 2);
-					break;
-
-				case MP_WATER:
-					if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL))) {
-						msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
-						continue;
-					}
-				/* FALL THROUGH */
-				case MP_CLEAR:
-					if (IsBridgeAbove(tile)) {
-						msg = STR_ERROR_SITE_UNSUITABLE;
-						continue;
-					}
-
-					if (IsTileType(tile, MP_CLEAR)) {
-						/* Remove fields or rocks. Note that the ground will get barrened */
-						switch (GetClearGround(tile)) {
-							case CLEAR_FIELDS:
-							case CLEAR_ROCKS: {
-								CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-								if (CmdFailed(ret)) return ret;
-								cost.AddCost(ret);
-								break;
-							}
-
-							default: break;
-						}
-					}
-
-					if (_game_mode != GM_EDITOR && Company::IsValidID(_current_company)) {
-						Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-						if (t != NULL) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM, flags);
-					}
-
-					if (flags & DC_EXEC) {
-						TreeType treetype;
-
-						treetype = (TreeType)p1;
-						if (treetype == TREE_INVALID) {
-							treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
-							if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
-						}
-
-						/* Plant full grown trees in scenario editor */
-						PlantTreesOnTile(tile, treetype, 0, _game_mode == GM_EDITOR ? 3 : 0);
-						MarkTileDirtyByTile(tile);
-
-						/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
-						if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
-							SetTropicZone(tile, TROPICZONE_RAINFOREST);
-					}
-					cost.AddCost(_price[PR_BUILD_TREES]);
-					break;
-
-				default:
+			case MP_WATER:
+				if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL))) {
+					msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
+					continue;
+				}
+			/* FALL THROUGH */
+			case MP_CLEAR:
+				if (IsBridgeAbove(tile)) {
 					msg = STR_ERROR_SITE_UNSUITABLE;
-					break;
-			}
+					continue;
+				}
+
+				if (IsTileType(tile, MP_CLEAR)) {
+					/* Remove fields or rocks. Note that the ground will get barrened */
+					switch (GetClearGround(tile)) {
+						case CLEAR_FIELDS:
+						case CLEAR_ROCKS: {
+							CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+							if (CmdFailed(ret)) return ret;
+							cost.AddCost(ret);
+							break;
+						}
+
+						default: break;
+					}
+				}
+
+				if (_game_mode != GM_EDITOR && Company::IsValidID(_current_company)) {
+					Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+					if (t != NULL) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM, flags);
+				}
+
+				if (flags & DC_EXEC) {
+					TreeType treetype;
+
+					treetype = (TreeType)p1;
+					if (treetype == TREE_INVALID) {
+						treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
+						if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
+					}
+
+					/* Plant full grown trees in scenario editor */
+					PlantTreesOnTile(tile, treetype, 0, _game_mode == GM_EDITOR ? 3 : 0);
+					MarkTileDirtyByTile(tile);
+
+					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
+					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
+						SetTropicZone(tile, TROPICZONE_RAINFOREST);
+				}
+				cost.AddCost(_price[PR_BUILD_TREES]);
+				break;
+
+			default:
+				msg = STR_ERROR_SITE_UNSUITABLE;
+				break;
 		}
 	}
 

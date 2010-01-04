@@ -50,21 +50,12 @@ void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 /** Scenario editor command that generates desert areas */
 static void GenerateDesertArea(TileIndex end, TileIndex start)
 {
-	int size_x, size_y;
-	int sx = TileX(start);
-	int sy = TileY(start);
-	int ex = TileX(end);
-	int ey = TileY(end);
-
 	if (_game_mode != GM_EDITOR) return;
 
-	if (ex < sx) Swap(ex, sx);
-	if (ey < sy) Swap(ey, sy);
-	size_x = (ex - sx) + 1;
-	size_y = (ey - sy) + 1;
-
 	_generating_world = true;
-	TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+
+	TileArea ta(start, end);
+	TILE_AREA_LOOP(tile, ta) {
 		SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_NORMAL : TROPICZONE_DESERT);
 		DoCommandP(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 		MarkTileDirtyByTile(tile);
@@ -75,21 +66,12 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 /** Scenario editor command that generates rocky areas */
 static void GenerateRockyArea(TileIndex end, TileIndex start)
 {
-	int size_x, size_y;
-	bool success = false;
-	int sx = TileX(start);
-	int sy = TileY(start);
-	int ex = TileX(end);
-	int ey = TileY(end);
-
 	if (_game_mode != GM_EDITOR) return;
 
-	if (ex < sx) Swap(ex, sx);
-	if (ey < sy) Swap(ey, sy);
-	size_x = (ex - sx) + 1;
-	size_y = (ey - sy) + 1;
+	bool success = false;
+	TileArea ta(start, end);
 
-	TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+	TILE_AREA_LOOP(tile, ta) {
 		switch (GetTileType(tile)) {
 			case MP_TREES:
 				if (GetTreeGround(tile) == TREE_GROUND_SHORE) continue;

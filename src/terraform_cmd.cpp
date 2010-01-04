@@ -378,25 +378,14 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
 	if (p2 == 0) _error_message = STR_ERROR_ALREADY_LEVELLED;
 
-	/* make sure sx,sy are smaller than ex,ey */
-	int ex = TileX(tile);
-	int ey = TileY(tile);
-	int sx = TileX(p1);
-	int sy = TileY(p1);
-	if (ex < sx) Swap(ex, sx);
-	if (ey < sy) Swap(ey, sy);
-	tile = TileXY(sx, sy);
-
-	int size_x = ex - sx + 1;
-	int size_y = ey - sy + 1;
-
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	TILE_LOOP(tile2, size_x, size_y, tile) {
-		uint curh = TileHeight(tile2);
+	TileArea ta(tile, p1);
+	TILE_AREA_LOOP(tile, ta) {
+		uint curh = TileHeight(tile);
 		while (curh != h) {
-			CommandCost ret = DoCommand(tile2, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
+			CommandCost ret = DoCommand(tile, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (CmdFailed(ret)) break;
 
 			if (flags & DC_EXEC) {
@@ -405,7 +394,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					_additional_cash_required = ret.GetCost();
 					return cost;
 				}
-				DoCommand(tile2, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
+				DoCommand(tile, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 			}
 
 			cost.AddCost(ret);
