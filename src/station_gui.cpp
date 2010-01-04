@@ -1336,7 +1336,7 @@ struct SelectStationWindow : Window {
 	{
 		if (widget != JSW_PANEL) return;
 
-		uint32 st_index = (pt.y - this->GetWidget<NWidgetBase>(JSW_PANEL)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
+		uint32 st_index = (pt.y - this->GetWidget<NWidgetBase>(JSW_PANEL)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height + this->vscroll.GetPosition();
 		bool distant_join = (st_index > 0);
 		if (distant_join) st_index--;
 
