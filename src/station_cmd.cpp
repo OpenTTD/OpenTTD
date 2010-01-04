@@ -2997,19 +2997,17 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 /**
  * Find all stations around a rectangular producer (industry, house, headquarter, ...)
  *
- * @param tile North tile of producer
- * @param w_prod X extent of producer
- * @param h_prod Y extent of producer
+ * @param location The location/area of the producer
  * @param stations The list to store the stations in
  */
-void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList *stations)
+void FindStationsAroundTiles(const TileArea &location, StationList *stations)
 {
 	/* area to search = producer plus station catchment radius */
 	int max_rad = (_settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED);
 
-	for (int dy = -max_rad; dy < h_prod + max_rad; dy++) {
-		for (int dx = -max_rad; dx < w_prod + max_rad; dx++) {
-			TileIndex cur_tile = TileAddWrap(tile, dx, dy);
+	for (int dy = -max_rad; dy < location.h + max_rad; dy++) {
+		for (int dx = -max_rad; dx < location.w + max_rad; dx++) {
+			TileIndex cur_tile = TileAddWrap(location.tile, dx, dy);
 			if (cur_tile == INVALID_TILE || !IsTileType(cur_tile, MP_STATION)) continue;
 
 			Station *st = Station::GetByTile(cur_tile);
@@ -3017,7 +3015,7 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 
 			if (_settings_game.station.modified_catchment) {
 				int rad = st->GetCatchmentRadius();
-				if (dx < -rad || dx >= rad + w_prod || dy < -rad || dy >= rad + h_prod) continue;
+				if (dx < -rad || dx >= rad + location.w || dy < -rad || dy >= rad + location.h) continue;
 			}
 
 			/* Insert the station in the set. This will fail if it has
@@ -3035,7 +3033,7 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 const StationList *StationFinder::GetStations()
 {
 	if (this->tile != INVALID_TILE) {
-		FindStationsAroundTiles(this->tile, this->w, this->h, &this->stations);
+		FindStationsAroundTiles(*this, &this->stations);
 		this->tile = INVALID_TILE;
 	}
 	return &this->stations;

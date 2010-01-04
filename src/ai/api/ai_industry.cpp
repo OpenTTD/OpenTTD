@@ -124,7 +124,7 @@
 
 	Industry *ind = ::Industry::Get(industry_id);
 	StationList stations;
-	::FindStationsAroundTiles(ind->xy, ind->width, ind->height, &stations);
+	::FindStationsAroundTiles(TileArea(ind->xy, ind->width, ind->height), &stations);
 	return (int32)stations.Length();
 }
 

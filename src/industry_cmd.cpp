@@ -2066,7 +2066,7 @@ static int WhoCanServiceIndustry(Industry *ind)
 {
 	/* Find all stations within reach of the industry */
 	StationList stations;
-	FindStationsAroundTiles(ind->xy, ind->width, ind->height, &stations);
+	FindStationsAroundTiles(TileArea(ind->xy, ind->width, ind->height), &stations);
 
 	if (stations.Length() == 0) return 0; // No stations found at all => nobody services
 
