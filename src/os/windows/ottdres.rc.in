@@ -79,8 +79,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,!!REVISION!!
- PRODUCTVERSION 1,0,0,!!REVISION!!
+ FILEVERSION 1,0,0,18735
+ PRODUCTVERSION 1,0,0,18735
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -98,14 +98,14 @@ BEGIN
             VALUE "Comments", "This program is licensed under the GNU General Public License version 2.\0"
             VALUE "CompanyName", "OpenTTD Development Team\0"
             VALUE "FileDescription", "OpenTTD\0"
-            VALUE "FileVersion", "Development !!VERSION!!\0"
+            VALUE "FileVersion", "1.0.0-beta2\0"
             VALUE "InternalName", "openttd\0"
             VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-2010. All Rights Reserved.\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "openttd.exe\0"
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "OpenTTD\0"
-            VALUE "ProductVersion", "Development !!VERSION!!\0"
+            VALUE "ProductVersion", "1.0.0-beta2\0"
             VALUE "SpecialBuild", "-\0"
         END
     END

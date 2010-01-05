@@ -11,7 +11,7 @@ log() {
 }
 
 set_default() {
-	released_version=""
+	released_version="1.0.0-beta2"
 
 	ignore_extra_parameters="0"
 	# We set all kinds of defaults for params. Later on the user can override
