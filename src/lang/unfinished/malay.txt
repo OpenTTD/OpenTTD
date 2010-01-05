@@ -21,6 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(string tiada kandungan)
 STR_JUST_NOTHING                                                :Tiada
 
 # Cargo related strings
@@ -50,7 +51,7 @@ STR_CARGO_PLURAL_RUBBER                                         :Getah
 STR_CARGO_PLURAL_SUGAR                                          :Gula
 STR_CARGO_PLURAL_TOYS                                           :Mainan
 STR_CARGO_PLURAL_CANDY                                          :Gula-gula
-STR_CARGO_PLURAL_COLA                                           :Kola
+STR_CARGO_PLURAL_COLA                                           :Minuman Kola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Gula kapas
 STR_CARGO_PLURAL_BUBBLES                                        :Buih
 STR_CARGO_PLURAL_TOFFEE                                         :Tofi
@@ -84,8 +85,8 @@ STR_CARGO_SINGULAR_RUBBER                                       :Getah
 STR_CARGO_SINGULAR_SUGAR                                        :Gula
 STR_CARGO_SINGULAR_TOY                                          :Mainan
 STR_CARGO_SINGULAR_CANDY                                        :Gula-gula
-STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Candyfloss
+STR_CARGO_SINGULAR_COLA                                         :Minuman Kola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Gula-gula Kapas
 STR_CARGO_SINGULAR_BUBBLE                                       :Buih
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Bateri
@@ -94,11 +95,11 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Bergas
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang
 STR_QUANTITY_COAL                                               :{WEIGHT} arang batu
-STR_QUANTITY_MAIL                                               :{COMMA} bag{P "" s} surat
+STR_QUANTITY_MAIL                                               :{COMMA} beg surat
 STR_QUANTITY_OIL                                                :{VOLUME} minyak
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} of livestock
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} ekor ternakan
 STR_QUANTITY_GOODS                                              :{COMMA} kotak mengandungi barang-barang
 STR_QUANTITY_GRAIN                                              :{WEIGHT} bijirin
 STR_QUANTITY_WOOD                                               :{WEIGHT} kayu
@@ -108,7 +109,7 @@ STR_QUANTITY_VALUABLES                                          :{COMMA} beg men
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bijih tembaga
 STR_QUANTITY_MAIZE                                              :{WEIGHT} jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
-STR_QUANTITY_DIAMONDS                                           :{COMMA} beg mengandungi berlian
+STR_QUANTITY_DIAMONDS                                           :{COMMA} beg berlian
 STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
 STR_QUANTITY_PAPER                                              :{WEIGHT} kertas
 STR_QUANTITY_GOLD                                               :{COMMA} beg mengandungi emas
@@ -118,13 +119,14 @@ STR_QUANTITY_RUBBER                                             :{VOLUME} getah
 STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
 STR_QUANTITY_TOYS                                               :{COMMA} mainan
 STR_QUANTITY_SWEETS                                             :{COMMA} beg mengandungi gula-gula
-STR_QUANTITY_COLA                                               :{VOLUME} kola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} gula kapas
-STR_QUANTITY_BUBBLES                                            :{COMMA} buih
+STR_QUANTITY_COLA                                               :{VOLUME} minuman kola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} gula-gula kapas
+STR_QUANTITY_BUBBLES                                            :{COMMA} buih-buihan
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} tofi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman bergas
+STR_QUANTITY_N_A                                                :Tiada
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -132,20 +134,35 @@ STR_ABBREV_PASSENGERS                                           :{TINYFONT}PEN
 STR_ABBREV_COAL                                                 :{TINYFONT}BA
 STR_ABBREV_MAIL                                                 :{TINYFONT}SR
 STR_ABBREV_OIL                                                  :{TINYFONT}MI
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
 STR_ABBREV_GOODS                                                :{TINYFONT}BR
+STR_ABBREV_GRAIN                                                :{TINYFONT}GR
 STR_ABBREV_WOOD                                                 :{TINYFONT}KA
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
 STR_ABBREV_STEEL                                                :{TINYFONT}BS
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
+STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
 STR_ABBREV_FRUIT                                                :{TINYFONT}BU
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
 STR_ABBREV_FOOD                                                 :{TINYFONT}MK
 STR_ABBREV_PAPER                                                :{TINYFONT}KR
 STR_ABBREV_GOLD                                                 :{TINYFONT}EM
 STR_ABBREV_WATER                                                :{TINYFONT}AR
+STR_ABBREV_WHEAT                                                :{TINYFONT}WH
 STR_ABBREV_RUBBER                                               :{TINYFONT}GT
 STR_ABBREV_SUGAR                                                :{TINYFONT}GU
 STR_ABBREV_TOYS                                                 :{TINYFONT}MA
+STR_ABBREV_SWEETS                                               :{TINYFONT}SW
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :penumpang
@@ -199,7 +216,11 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan filter string
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk filter senarai
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih bentuk susunan (menurun/menaik)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pilih kriteria aturan
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pilih kriteria tapisan
 STR_BUTTON_SORT_BY                                              :{BLACK}Menyusun mengikuti
@@ -207,25 +228,38 @@ STR_BUTTON_LOCATION                                             :{BLACK}Lokasi
 STR_BUTTON_RENAME                                               :{BLACK}Tukar Nama
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tajuk tetingkap - seret ini untuk pindahkan tetingkap
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tajuk tetingkap - seret untuk menggerakkan tetingkap
+STR_TOOLTIP_SHADE                                               :{BLACK}Mampatkan tetingkap - Hanya titlebar akan dipaparkan
+STR_TOOLTIP_STICKY                                              :{BLACK} Tandakan tetingkap ini sebagai tidak boleh ditutup dengan menggunakan kunci 'Padamkan Semua Tetingkap'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan seret untuk mengubah saiz tetingkap
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar penatal - Menatal senarai atas/bawah
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tukar di antara tetingkap bersaiz besar/kecil
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - gerakkan senarai ke atas/bawah
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - gerakkan senarai ke kiri/kanan
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Runtuhkan bangunan dll. atas sebuah tanah
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}Lazim
 STR_BUTTON_CANCEL                                               :{BLACK}Batal
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Ukuran panjang: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Ukuran kawasan: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Ukuran panjang: {NUM}{}Perbezaan ketinggian: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ukuran kawasan: {NUM} x {NUM}{}Perbezaan ketinggian: {NUM} m
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Bilangan Penduduk
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Jumlah Penduduk
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarikh
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Jumlah penduduk
+STR_SORT_BY_NAME                                                :Nama
 STR_SORT_BY_PRODUCTION                                          :Pengeluaran
 STR_SORT_BY_TYPE                                                :Jenis
 STR_SORT_BY_TRANSPORTED                                         :Telah dihantarkan
@@ -233,27 +267,35 @@ STR_SORT_BY_NUMBER                                              :Nombor
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Keuntungan tahun lepas
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Keuntungan tahunan
 STR_SORT_BY_AGE                                                 :Umur
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Jumlah keupayaan untuk setiap jenis kargo
+STR_SORT_BY_RELIABILITY                                         :Reliabiliti
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Jumlah muatan untuk setiap jenis kargo
 STR_SORT_BY_MAX_SPEED                                           :Kelajuan Maksima
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Baki masa hayat
+STR_SORT_BY_TIMETABLE_DELAY                                     :Penangguhan dalam jadual
 STR_SORT_BY_FACILITY                                            :Jenis stesen
+STR_SORT_BY_WAITING                                             :Nilai kargo yang sedang menunggu
+STR_SORT_BY_RATING_MAX                                          :Penarafan kargo tertinggi
+STR_SORT_BY_RATING_MIN                                          :Penarafan kargo terendah
 STR_SORT_BY_ENGINE_ID                                           :ID Enjin (susunan klasik)
 STR_SORT_BY_COST                                                :Kos
 STR_SORT_BY_POWER                                               :Tenaga
 STR_SORT_BY_INTRO_DATE                                          :Tarikh Pengenalan
+STR_SORT_BY_RUNNING_COST                                        :Kos Pengendalian
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kuasa/Kos Pengendalian
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasiti Kargo
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Henti Sebentar Permainan
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rancakkan permainan
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Pilihan
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Simpan Permainan, Tinggalkan Permainan, Keluar
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Papar peta, pandangan lebih atau senarai tanda
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Papar direktori bandar
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tunjukkan subsidi
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Senaraikan stesen-stesen syarikat.
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Paparkan subsidi yang tersedia
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Senaraikan stesen-stesen syarikat
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Papar maklumat kewangan syarikat
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Paparkan maklumat umum syarikat
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Papar graf
@@ -267,11 +309,13 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Membesar
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Mengecilkan pandangan
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bina landasan keretapi
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bina jalan
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bina limbungan kapal
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bina pelabuhan kapal
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bina lapangan kapal terbang
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Tunjukkan tingkap bunyi/musik
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Paparkan toolbar lanskap untuk menaikkan/menurunkan tanah, menanam pokok, dan sebagainya
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Paparkan tetingkap bunyi/muzik
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Paparkan mesej akhir/repot berita, paparkan pilihan mesej
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maklumat kawasan tanah
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maklumat kawasan tanah, konsol, AI debug, tangkap skrin, tentang OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tukarkan toolbar
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Simpan senario, muat senario, Meninggal penyunting senario, Keluar
@@ -284,12 +328,13 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Pembentu
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pembentukan bandar
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Pembentukan industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pembinaan jalan
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Tanam pokok
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Tanamkan pokok-pokok
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Letak tanda
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Simpan senario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Muat Senario
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Muatkan heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Hentikan penyunting
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Berhenti
@@ -302,12 +347,13 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lebih tetapan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pilihan penembusan
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Paparkan nama bandar
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Paparkan nama stesyen
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Paparkan tanda
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Paparkan nama stesen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Paparkan nama tandatuju
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Paparkan papan-papan tanda
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animasi penuh
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Perincian penuh
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan-bangunan telus
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nama stesen ditembusi
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Teluskan nama-nama stesen
 ############ range ends here
 
 ############ range for file menu starts
@@ -319,10 +365,12 @@ STR_FILE_MENU_EXIT                                              :Keluar
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Tetingkap pandangan ekstra
 STR_MAP_MENU_SIGN_LIST                                          :Senarai isyarat
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Direktori Bandar
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Senarai Nama Bandar
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Binakan bandar
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -333,13 +381,14 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf keuntungan operasi
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf Pendapatan
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf Penghantaran Kargo
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Graf Prestasi
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf Nilai Syarikat
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bayaran Kargo
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Graf sejarah prestasi
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf nilai syarikat
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kadar bayaran kargo
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Jadual liga syarikat
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Penarafan prestasi secara terperinci
 ############ range ends here
 
 ############ range for industry menu starts
@@ -348,35 +397,46 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Biaya industri 
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Pembinaan landasan keretapi
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Pembinaan landasan keretapi berelektrik
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Pembinaan landasan monorel
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Pembinaan landasan maglev
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Pembinaan jalanraya
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Pembinaan landasan tram
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Pembinaan tali air
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Pembinaan lapangan terbang
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Pemindaan lanskap
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Tanam pokok-pokok
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Letakkan papan tanda
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :Bunyi/musik
+STR_TOOLBAR_SOUND_MUSIC                                         :Bunyi/muzik
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Utusan/laporan berita terakhir
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Seting mesej
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Sejarah Pesanan
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Pesanan/laporan berita terkini
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Tetapan Pesanan
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Pesanan sebelumnya
 ############ range ends here
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi kawasan tanah
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Togolkan konsol
-STR_ABOUT_MENU_AI_DEBUG                                         :Debug AI
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Papar atau padamkan konsol
+STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkap gambar skrin (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tangkap gambar skrin besar (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
@@ -445,67 +505,125 @@ STR_MONTH_DEC                                                   :Desember
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Kunci
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Paparkan kunci kepada graf
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf Keuntungan Operasi
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf Pendapatan
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unit kargo yang telah dihantar
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Skor prestasi syarikat (skor maksimum=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Nilai syarikat
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kadar Bayaran Kargo
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Jumlah hari dalam perjalanan
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Bayaran untuk hantaran 10 unit (atau 10,000 liter) kargo sejauh 20 petak
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Papar atau padamkan graf kargo
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Paparkan penarafan prestasi secara terperinci
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Kunci graf syarikat
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik untuk papar atau padam pencatatan syarikat pada graf
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Jadual Liga Syarikat
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Drebar
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Pengurus Lalulintas
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Penyelaras Pengangkutan
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Penyelia Jalanraya
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Pengarah
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Ketua Eksekutif
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Pengerusi
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presiden
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Taikun
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Penarafan prestasi terperinci
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Terperinci
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kenderaan:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stesen-stesen:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Keuntungan Min.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Pendapatan min.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Pendapatan maks.:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Jumlah hantaran:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Kargo:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Wang:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pinjaman:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Jumlah:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Jumlah kenderaan yang meraih keuntungan pada tahun lepas; ini termasuk kenderaan jalanraya, keretapi, kapal dan kapal terbang
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jumlah bahagian stesen yang diservis. Setiap bahagian stesen (contohnya: stesen keretapi, stesen bas, lapangan terbang) termasuk kira, walaupun semuanya disambungkan menjadi satu stesen
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Keuntungan kenderaan yang mempunyai pendapatan terendah (hanya kenderaan yang berumur lebih daripada dua tahun termasuk kira)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Jumlah wang yang masuk dalam sebulan dengan keuntungan terendah dalam 12 suku tahun yang lepas
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Jumlah wang yang masuk dalam sebulan dengan keuntungan tertinggi dalam 12 suku tahun yang lepas
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unit-unit kargo yang dihantar dalam 4 suku tahun yang lepas
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Jumlah jenis kargo yang dihantar dalam suku tahun yang lepas
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jumlah wang syarikat ini mempunyai dalam bank
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Jumlah wang syarikat ini yang telah dipinjam
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Jumlah markah daripada markah yang boleh diperolehi
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Peti muzik Jaz
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Pemain muzik Jazz
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Semua
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Cara Lama
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Gaya baru
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Lorong Ezy
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Kekuatan muzik
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Kekuatan Kesan Bunyi
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Gaya Lama
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Gaya Baru
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Pilihan Diri 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Pilihan Diri 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volum Muzik
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volum Kesan Bunyi
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Tajuk
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Trek
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Kocok
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Lompat ke lagu sebelumnya
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Lompat ke lagu seterusnya
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Henti muzik
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Main muzik
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tarik pengelincir untuk penentuan muzik dan kesan bunyi
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Pilih program 'semua trek'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Pilih program 'muzik gaya lama'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Pilih program 'muzik gaya baru'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Pilih program 'Muzik gaya Ezy Street'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Pilih program 'Custom 1' (pilihan pengguna)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Pilih program 'Custom 2' (pilihan pengguna)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Togol program kocok buka/tutup
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Paparkan tingkap pilihan trek muzik
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Lagu
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Tajuk Lagu
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Rambang
+STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Rancangan
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Tukar kepada lagu sebelumnya dalam pilihan
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Tukar kepada lagu seterusnya dalam pilihan
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Hentikan muzik
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Mainkan muzik
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tarik pengelincir untuk menentukan volum muzik dan kesan bunyi
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Pilih rancangan 'semua lagu'
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Pilih rancangan 'muzik gaya lama'
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Pilih rancangan 'muzik gaya baru'
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Pilih rancangan 'muzik gaya Ezy Street'
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Pilih rancangan 'Pilihan Diri 1'
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Pilih rancangan 'Pilihan Diri 2'
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Mainkan muzik secara rambang atau tidak
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Paparkan tetingkap pilihan lagu
 
 STR_ERROR_NO_SONGS                                              :{WHITE}Set muzik yang tidak mengandungi lagu telah dipilih. Tiada lagu yang akan dimainkan
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Pilihan program muzik
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Pilihan Rancangan Muzik
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indeks Trek
+STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indeks Lagu
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Bersih
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Simpan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Batal progam semasa (Custom1 atau Custom2 sahaja)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpan seting muzik
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik atas trek muzik untuk menambahkan ke program semasa (Custom1 atau Custom2 sahaja)
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpankan setting muzik
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pada lagu untuk memasukkan ke dalam rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada lagu untuk mengeluarkan daripada rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Jadual Liga Syarikat dalam {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ahli perniagaan
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Usahawan
@@ -537,7 +655,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Tunjukka
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Jalan
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Landasan Keretapi
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stesyen/Lapangan Terbang/Dermaga
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stesyen/Lapangan Terbang/Pelabuhan
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bangunan/Industri
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Kenderaan
 STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
@@ -555,35 +673,40 @@ STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Tempat Pemunggahan Barang
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Stesen Bas
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Lapangan Terbang/Helikopter
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Dermaga
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Pelabuhan
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Tanah Tidak Rata
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Tanah Berumput
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Tanah Lapang
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Padang
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Pokok
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Pokok-pokok
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Batu
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Air
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Tidak Ada Pemilik
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Bandar
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Bandar-bandar
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industri
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Padang Pasir
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Salji
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Togol nama kota dalam peta
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Papar atau padamkan nama bandar dalam peta
+STR_SMALLMAP_CENTER                                             :{BLACK}Pusatkan peta kecil ke tempat semasa
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Nyahaktifkan semua
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktifkan semua
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Paparkan ketinggian
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Jangan paparkan industri dalam peta
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Senaraikan semua industri dalam peta
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Papar atau padamkan heightmap
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tunjukkan utusan atau laporan berita terakhir
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Paparkan mesej atau laporan berita terakhir
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DIHENTIKAN  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPANAN AUTOMATIK
-STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SIMPAN PERMAINAN  *  *
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SEDANG SIMPAN PERMAINAN  *  *
 
 # News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}Pesanan Sebelumnya
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
@@ -598,13 +721,13 @@ STR_NEWS_MESSAGES_FULL                                          :Penuh
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Jenis Pesanan:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ketibaan kenderaan di stesen pemain
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ketibaan kenderaan di stesen pesaing
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Kemalangan
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Kemalangan / malapetaka
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Maklumat syarikat
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Buka industri
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Tutup industri
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Perubahan ekonomi
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Pengubaran pengeluaran industri ditugas oleh syarikat
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Pengubaran pengeluaran industri ditugas oleh pesaingan
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Perubahan pengeluaran industri-industri yang diservis oleh syarikat
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Perubahan pengeluaran industri-industri yang diservis oleh pesaing
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Pengubaran pengeluaran industri lain
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Nasihat/informasi atas kenderaan syarikat
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Kenderaan baru
@@ -612,36 +735,91 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Penukar
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Maklumat umum
 
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Rakyat meraikan ketibaan{}kapal pertama di {STATION}!
+
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Kemalangan Keretapi!{}{COMMA} maut dalam kebakaran
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Kemalangan Jalanraya!{}Pemandu nahas dilanggar keretapi
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Kemalangan Jalanraya!{}{COMMA} maut dilanggar keretapi
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Terhempas!{}{COMMA} maut di {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Terhempas!{}Pesawat kehabisan minyak, {COMMA} maut
+
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Kemalangan Zeppelin di {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Kenderaan musnah dilanggar 'UFO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Letupan di kilang penapisan minyak berhampiran {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Kecurigaan apabila kilang dimusnahkan berhampiran {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' mendarat berhampiran {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Tanah runtuh di lombong batu arang berhampiran {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Banjir!{}Seramai {COMMA} hilang, dianggap lemas selepas banjir kilat!
+
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Syarikat pengangkutan dalam bahaya!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} akan dilelong atau diisytihar bankrup tidak lama lagi jika prestasi tidak meningkat!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Syarikat-syarikat pengangkutan bergabung!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} telah dijual kepada {STRING} untuk {CURRENCY}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrup!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} telah ditutup oleh pihak kreditor dan semua aset dijual!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Syarikat pengangkutan baru dilancarkan!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} memulakan pembinaan berhampiran {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} telah diambil alih oleh {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Pengurus)
+
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} membiaya pembinaan bandar baru {TOWN}!
 
 
 
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Persatuan Kewangan Eropah!{}{}Matawang Euro diperkenalkan sebagai matawang utama untuk urusniaga harian di negara anda!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Kegawatan Ekonomi Sedunia!{}{}Pakar kewangan bimbang ekonomi semakin teruk!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Ekonomi Pulih!{}{}Peningkatan dalam perdagangan memberi keyakinan kepada industri!
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} meningkatkan pengeluaran!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Batu arang berlebihan dijumpai di {INDUSTRY}!{}Pengeluaran dijangka berganda dua!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Minyak berlebihan dijumpai di {INDUSTRY}!{}Pengeluaran dijangka berganda dua!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Kaedah pertanian moden dikenalkan di {INDUSTRY}. Pengeluaran dijangka berganda dua!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Pengeluaran {STRING} di {INDUSTRY} meningkat {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Pengeluaran {INDUSTRY} menurun 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Serangan serangga di {INDUSTRY} menyebabkan huru-hara!{}Pengeluaran menurun 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Pengeluaran {STRING} di {INDUSTRY} menurun {COMMA}%!
 
-
-
-
-
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depoh
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di depoh
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} sedang menunggu di depoh
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} sedang menunggu di hangar
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} mempunyai terlalu sedikit arahan dalam jadual
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} mempunyai arahan yang tidak sah
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} mempunyai arahan berganda
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} mempunyai stesen yang tidak sah dalam arahannya
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} menjadi semakin lama
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} menjadi terlalu lama
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} menjadi terlalu lama dan memerlukan penggantian dengan segera
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} semakin usang
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} terlalu usang
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} terlalu usang dan memerlukan penggantian segera
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak boleh mencari arah jalan untuk teruskan jalan
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} telah hilang jalan.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :Keuntungan {WHITE}{VEHICLE} pada tahun lepas ialah {CURRENCY}
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti kerana arahan arahan pengubahsuian gagal
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Pembaharuan automatik gagal dengan {VEHICLE}{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} baru kini boleh dibeli!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} baru kini boleh boleh dibeli!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} kini menerima {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} kini menerima {STRING} dan {STRING}
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Tempoh tawaran subsidi tamat:{}{}{STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidi ditarik:{}{}Servis {STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidi servis ditawarkan:{}{}Servis {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun daripada pihak berkuasa tempatan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING} ke {STRING} akan dibayar tambahan 50% untuk tahun hadapan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING} ke {STRING} akan dibayar dua kali ganda untuk tahun hadapan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING} ke {STRING} akan dibayar tiga kali ganda untuk tahun hadapan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STRING} ke {STRING} akan dibayar empat kali ganda untuk tahun hadapan!
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Kesesakan lalulintas di {TOWN}!{}{}Rancangan pembinaan semula jalanraya dibiayai oleh {STRING} akan menyeksa pemandu kenderaan selama 6 bulan!
 
 # Extra view window
 
@@ -670,7 +848,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrik
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kenderaan tanah
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kenderaan Jalanraya
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih laluan memandu kenderaan sebelah kiri atau kanan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Memandu di kiri
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Memandu di kanan
@@ -725,7 +903,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pilih fo
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fail hilang/rosak{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fail hilang/rosak
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set bunyi asas
@@ -734,10 +912,10 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set muzik asas
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih set muzik asas yang akan digunakan
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fail korup{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fail sudah rosak
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat lebih tentang set muzik asas
 
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skrin penuh gagal
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skrin penuh gagal dilakukan
 
 # Custom currency window
 
@@ -782,13 +960,13 @@ STR_NUM_CUSTOM                                                  :Custom
 
 STR_CONFIG_SETTING_OFF                                          :Matikan
 STR_CONFIG_SETTING_ON                                           :Hidupkan
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Papar status kelajuan kerderaan di bar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan membina di pantai dan cerun: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Dibenar membina keretapi panjang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Paparkan status kelajuan kenderaan di status bar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan pembinaan di tepi pantai dan cerun bukit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Benarkan pembinaan keretapi yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecerunan bukit untuk keretapi {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Membenarkan bina jambatan panjang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Benarkan pembinaan jambatan yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
@@ -797,6 +975,9 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lapanga
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ya, tetapi kecuali kenderaan rencat
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Gunakan pembaharuan automatik apabila kenderaan usang : {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Lakukan pembaharuan automatik apabila kenderaan {ORANGE}{STRING}{LTBLUE} bulan sebelum/selepas umur maks
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Wang minimum yang diperlukan untuk pembaharuan automatik: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
 
@@ -824,22 +1005,24 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 
 
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Berita berwarna muncul pada tahun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Peratusan untuk kaki keuntungan yang akan dibayar dalam sistem feeder: {ORANGE}{STRING}%
 
 
 
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Kanan
-STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Kosong
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Tiada
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lambat
-STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
-STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Cepat
-STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Biasa
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Pantas
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sangat pantas
 
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stesen
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Pembaharuan Automatik
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 
@@ -860,16 +1043,16 @@ STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulakan permainan baru. Ctrl+Klik akan melangkaui konfigurasi peta
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Muat permainan yang tersimpan
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Mulakan permainan baru, dengan mengunnakan senario custom
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Membentuk dunia permananan/senario custom
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mulakan permainan ramai pemain
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Mulakan permainan baru dengan mengunakan senario sendiri
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Bentukkan dunia permainanan/senario sendiri
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mulakan permainan berbilang pemain
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Pilih lanskap 'khatulistiwa'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Pilih lanskap 'temperate'
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK} Pilih lanskap 'sub-artik'
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pilih lanskap 'sub-tropical'
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih lanskap 'dunia permainan'
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Papar pilihan permainan
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Paparkan pilihan permainan
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Papar pilihan kesukaran
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar 'OpenTTD'
 
@@ -898,6 +1081,7 @@ STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Anda pa
 # Cheat window
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat tersebut: {ORANGE}{COMMA}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Tukar iklim: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap temperate
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tukar tarikh: {ORANGE}{DATE_SHORT}
 
 # Livery window
@@ -1011,6 +1195,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambungan terhi
 
 # Content downloading window
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pengingkatan
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter tag/nama:
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bunyi asas
@@ -1023,7 +1208,7 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :Muzik asas
 # Transparency settings window
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Mati
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Tiada
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Hidup
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-berkalan: {GOLD}
@@ -1033,8 +1218,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-
 
 # Rail construction toolbar
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bina stesen kereta api
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bina isyarat kereta api
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bina stesen keretapi. Ctrl untuk menghubungkan stesen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bina isyarat keretapi. Ctrl untuk menukar antara semafor/isyarat lampu{}Tarik untuk membina isyarat sepanjang landasan yang lurus. Ctrl untuk membina isyarat sehingga persimpangan{}Ctrl+Klik untuk memapar atau memadam tetingkap pilihan isyarat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bina jambatan kereta api
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bina terowong kereta api
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Menukarkan/Meningkatkan jenis landasan
@@ -1045,10 +1230,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Menukark
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Pilihan Stesen Keretapi
-STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orentasi
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Penghalaan
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Bilangan landasan
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Pilihkan bilangan platform untuk stesen keretapi
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Panjang platform
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Kepanjangan platform
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilihkan panjang stesen keretapi
 
 
@@ -1061,10 +1246,10 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Pilihkan
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pembinaan Jalan
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bina stesen bas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bina stesen trem penumpang
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bina ruang punggah lori
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Build freight tram station
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bina stesen bas. Ctrl untuk menghubungkan stesen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bina stesen trem penumpang. Ctrl untuk menghubungkan stesen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bina ruang punggah lori. Ctrl untuk menghubungkan stesen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bina ruang punggah tram. Ctrl untuk menghubungkan stesen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Hidupkan/Matikan jalan raya sehala
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bina jambatan jalan raya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bina jambatan trem
@@ -1080,16 +1265,17 @@ STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientas
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bina terusan.
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bina pelabuhan kapal. Ctrl untuk menghubungkan stesen
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Letak dan gunakan pelampung sebagai tandatuju
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Letak sungai.
 
 # Ship depot construction window
 
 # Dock construction window
-STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Perlabuhan
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Pelabuhan
 
 # Airport toolbar
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bina Lapangan Terbang
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bina lapangan terbang. Ctrl untuk menghubungkan stesen
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilihan Lapangan Kapal Terbang
@@ -1104,9 +1290,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Meninggi
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk kegunaan masa hadapan
 
 # Tree planting window (last two for SE only)
-STR_PLANT_TREE_CAPTION                                          :{WHITE}Pokok
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Pokok-pokok
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Sila pilihkan jenis pokok untuk ditanam
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Pokok rawak
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tanam pokok secara rawak
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Tanam pokok-pokok secara rawak atas lanskap
 
 # Land generation window (SE)
@@ -1118,22 +1304,22 @@ STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Letak al
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunkan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Hasilkan secara rawak
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Membentuk lanskap semula
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Bentukkan lanskap semula
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Keluarkan semua harta pemain dari peta
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Membentuk lanskap semula
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Bentukkan lanskap semula
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Anda pasti untuk membuang semua harta milik pemain?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pembentukan Bandar
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Bandar Baru
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Binakan bandar baru
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Bandar Secara Rawak
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bina bandar secara rawak
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Bina Bandar Secara Rawak
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bina bandar di tempat yang rawak
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Banyak bandar rawak
 
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Saiz bandar
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Saiz bandar:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Kecil
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Sederhana
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Besar
@@ -1190,7 +1376,7 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Hutan rimba
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stesen keretapi
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lapangan kapal terbang
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Stesen bas
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Perlabuhan kapal
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Pelabuhan kapal
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Pelampung
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Air
@@ -1209,7 +1395,7 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Depot kapal
 STR_ABOUT_OPENTTD                                               :{WHITE}Tentang OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hakcipta terpelihara{COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versi {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2010 The OpenTTD team
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Simpan Senario
@@ -1248,6 +1434,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Amaran!
 
 # NewGRF 'it's broken' warnings
 
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Maklumat kargo/pengubahsuaian untuk '{1:ENGINE}' berbeza daripada senarai pembelian selepas dibina. Ini mungkin akan menyebabkan pembaharuan/penggantian automatik gagal diubahsuai dengan betul.
 
 # Sign list window
 
@@ -1256,15 +1443,15 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Gubarkan
 
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bandar
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bandar-bandar
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama Bandar-bandar - klik nama bandar untuk pandang ke pusat bandar
-STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Senarai bandar - klik nama bandar untuk memusatkan pandangan ke bandar. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi bandar
+STR_TOWN_POPULATION                                             :{BLACK}Jumlah penduduk dunia: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Bandar raya)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Penduduk: {ORANGE}{COMMA}{BLACK}  Rumah: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Bandaraya)
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Jumlah penduduk: {ORANGE}{COMMA}{BLACK}  Rumah: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Penumpang bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Suart bulan lepas: {ORANGE}{COMMA}{BLACK}  mak: {ORANGE}{COMMA}
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Majlis tempatan
@@ -1273,8 +1460,8 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Tukar na
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Kembangkan
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Besarkan saiz bandar
-STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Buang
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Buang bandar ini sepenuhnya
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Musnahkan
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Musnahkan bandar ini sepenuhnya
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Namakan Bandar
 
@@ -1292,7 +1479,7 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Membeli hak pen
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk mendapatkan pandangan tengah pada industri/bandar
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk mendapatkan pandangan tengah pada industri/bandar. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi bandar
 
 # Station list window
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua kemudahan
@@ -1313,7 +1500,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima
 ############ range for rating starts
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Tengahkan pandangan utama kepada lokasi stesen
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Pusatkan pandangan utama ke lokasi stesen. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi stesen
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Tukarkan nama stesen
 
 
@@ -1379,6 +1566,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Kumpulan
 
 
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Muatan: {GOLD}{CARGO}, {CARGO}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ubahsuai kepada: {GOLD}
 
 
 
@@ -1433,6 +1621,7 @@ STR_REPLACE_ENGINES                                             :Enjin
 
 
 
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ubahsuai kapal supaya boleh membawa kargo berlainan jenis
 
 
 
@@ -1478,9 +1667,11 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Jumlah K
 
 
 # Vehicle refit
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ubahsuai)
 
 
 
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ubahsuai kapal untuk jenis kargo yang dipilih
 
 # Order view
 
@@ -1553,12 +1744,13 @@ STR_AI_LIST_URL                                                 :{BLACK}URL: {ST
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Kos: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Kos: {CURRENCY}
+STR_INCOME_FLOAT_COST                                           :{RED}Harga: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Kos Jangkaan: {CURRENCY}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Untung Jangkaan: {CURRENCY}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Penyimpanan sedang berjalan,{}sila tunggu sehingga selesai!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Penyimpanan sedang berlaku,{}sila tunggu sehingga selesai!
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Penyimpanan automatik gagal dilakukan
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail tidak boleh dibaca
 
 # Map generation messages
@@ -1579,12 +1771,12 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Keluar p
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Terlalu hampir ke tepi peta
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Tidak cukup wang - memerlukan {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Memerlukan tanah rata
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak boleh lakukan....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak boleh lakukan...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bangunan mesti diruntuhkan dahulu
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak boleh bersihkan kawasan....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...kawasan tidak sesuai
-STR_ERROR_OWNED_BY                                              :{WHITE}...dimiliki oleh {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...kawasan sudah dimiliki oleh syarikat lain
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak boleh lapangkan...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... kawasan tidak sesuai
+STR_ERROR_OWNED_BY                                              :{WHITE}... dimiliki oleh {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... kawasan dimiliki oleh syarikat lain
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} majlis tempatan tidak membenarkannya
@@ -1598,9 +1790,9 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} m
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak boleh bina bandar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Tidak boleh menamakan semula bandar...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak boleh membina bandar di sini...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...terlalu hampir kepada hujung peta
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...terlalu hampir kepada bandar lain
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...terlalu banyak bandar
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu hampir ke hujung peta
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu hampir ke bandar lain
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... bandar terlalu banyak
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...ruang tidak mencukupi di dalam peta
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Advanced Settings->Economy->Towns.
 
@@ -1608,22 +1800,23 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar i
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak boleh menjana industri..
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak boleh bina {STRING} di sini...
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...mesti membangunkan bandar dahulu
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...hanya satu dibenarkan untuk setiap bandar
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya boleh dibina di bandar dengan populasi lebih atau sama dengan 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya boleh dibina di kawasan hutan
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...hanya boleh dibina di kawasan gurun
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...Hanya boleh dibina di bandar
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... hanya satu dibenarkan untuk setiap bandar
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya boleh dibina di bandar dengan jumlah penduduk sekurang-kurangnya 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya boleh dibina di kawasan hutan
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... hanya boleh dibina di kawasan gurun
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya boleh dibina di bandar
 
 # Station construction related errors
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tidak boleh membina pelabuhan di sini...
 
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu rapat dengan perlabuhan lain
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu hampir dengan pelabuhan lain
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tidak boleh membuang stesen bas...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak boleh membuang stesen lori...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tidak boleh musnahkan stesen bas...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak boleh musnahkan stesen lori...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Tidak boleh membuang stesen trem penumpang...
 
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Perlabuhan mesti dirobohkan dahulu
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Pelabuhan mesti dirobohkan dahulu
 
 # Waypoint related errors
 
@@ -1648,14 +1841,14 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tidak bo
 
 # Waterway construction errors
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tidak boleh letak sungai di sini...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...mesti dibina atas air
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Tidak boleh dibina atas air
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mesti dibina di permukaan air
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... tidak boleh dibina di permukaan air
 
 # Tree related errors
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Tidak boleh menanam pokok di sini...
 
 # Bridge related errors
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... penghujung kedua-dua jambatan mesti berada atas tanah
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua-dua penghujung jambatan mesti berada di atas tanah
 
 # Tunnel related errors
 
@@ -1665,6 +1858,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... peng
 
 # Generic vehicle errors
 
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kapal tidak boleh diubahsuai...
 
 
 
@@ -1672,10 +1866,10 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... peng
 
 
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Kenderaan tidak boleh didapati sekarang
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Kenderaan tidak boleh didapati sekarang
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kapal tidak boleh didapati sekarang
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Kapal terbang tidak boleh didapati sekarang
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Kenderaan tidak sedia
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Kenderaan tidak sedia
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kapal tidak sedia
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Kapal terbang tidak sedia
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kenderaan dalam permainan
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar jarak waktu perkhidmatan...
@@ -1687,12 +1881,12 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak bo
 
 # Order related errors
 
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh daripada destinasi sebelumnya
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... terlalu jauh dari destinasi sebelumnya
 
 # Timetable related errors
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...terlalu banyak papan tanda
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... papan tanda terlalu banyak
 
 ##id 0x2000
 # Town building names
@@ -1701,10 +1895,10 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Bangunan pejaba
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Bangunan pangsapuri kecil
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Gereja
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Bangunan pejabat besar
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Rumah
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Rumah-rumah bandar
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
-STR_TOWN_BUILDING_NAME_STATUE_1                                 :Patung
-STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Air Pancur
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :Tugu
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Pancuran Air
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Taman
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Bangunan pejabat
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Kedai dan pejabat
@@ -1712,7 +1906,7 @@ STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Bangunan pejaba
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Gudang
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Bangunan pejabat
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadium
-STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Rumah usang
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Rumah lama
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Pangsapuri
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Kedai-kedai dan pejabat-pejabat
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Kedai-kedai dan pejabat-pejabat
@@ -1721,25 +1915,90 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadium
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Pejabat
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Rumah
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Panggung Wayang
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Pusat beli-belah
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Pusat membeli-belah
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Khemah Teepee
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Rumah Teko
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Rumah Tabung
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_COAL_MINE                                     :Lombong Batu Arang
+STR_INDUSTRY_NAME_POWER_STATION                                 :Stesen Janakuasa
+STR_INDUSTRY_NAME_SAWMILL                                       :Kilang Papan
 STR_INDUSTRY_NAME_FOREST                                        :Hutan
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Kilang Penapisan Minyak
+STR_INDUSTRY_NAME_OIL_RIG                                       :Pelantar Minyak
 STR_INDUSTRY_NAME_FACTORY                                       :Kilang
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :Kilang Pencetak
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Kilang Keluli
+STR_INDUSTRY_NAME_FARM                                          :Ladang Pertanian
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Lombong Bijih Tembaga
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Perigi Minyak
+STR_INDUSTRY_NAME_BANK                                          :Bank
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Kilang Pemprosesan Makanan
+STR_INDUSTRY_NAME_PAPER_MILL                                    :Kilang Kertas
+STR_INDUSTRY_NAME_GOLD_MINE                                     :Lombong Emas
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Lombong Berlian
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Lombong Bijih Besi
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Ladang Buah-buahan
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Ladang Getah
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Sumber Air
+STR_INDUSTRY_NAME_WATER_TOWER                                   :Menara Tangki Air
+STR_INDUSTRY_NAME_FACTORY_2                                     :Kilang
+STR_INDUSTRY_NAME_FARM_2                                        :Ladang Pertanian
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Kilang Kayu Balak
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Ladang Gula-gula Kapas
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Kilang Gula-gula Kapas
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Ladang Bateri
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Telaga Minuman Kola
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Kedai Mainan
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Kilang Mainan
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Pancuran Plastik
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Kilang Minuman Bergas
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Penjana Buih
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Kuari Tofi
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Lombong Gula
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Tiada nama
 STR_SV_TRAIN_NAME                                               :Keratapi {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Kenderaan {COMMA}
 STR_SV_SHIP_NAME                                                :Kapal {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Pesawat Udara {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Utara
+STR_SV_STNAME_SOUTH                                             :{STRING} Selatan
+STR_SV_STNAME_EAST                                              :{STRING} Timur
+STR_SV_STNAME_WEST                                              :{STRING} Barat
+STR_SV_STNAME_CENTRAL                                           :Kota {STRING}
+STR_SV_STNAME_TRANSFER                                          :Simpang {STRING}
+STR_SV_STNAME_HALT                                              :Hentian {STRING}
+STR_SV_STNAME_VALLEY                                            :Lembah {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Bukit {STRING}
+STR_SV_STNAME_WOODS                                             :Ladang {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Pesisiran {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Taman {STRING}
+STR_SV_STNAME_AIRPORT                                           :Lapangan Terbang {STRING}
+STR_SV_STNAME_OILFIELD                                          :Pelantar Minyak {STRING}
+STR_SV_STNAME_MINES                                             :Lombong {STRING}
+STR_SV_STNAME_DOCKS                                             :Pelabuhan {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :{STRING} Jaya
+STR_SV_STNAME_SIDINGS                                           :Hulu {STRING}
+STR_SV_STNAME_BRANCH                                            :{STRING} Baru
+STR_SV_STNAME_UPPER                                             :{STRING} Dalam
+STR_SV_STNAME_LOWER                                             :{STRING} Luar
+STR_SV_STNAME_HELIPORT                                          :Helipad {STRING}
+STR_SV_STNAME_FOREST                                            :Kampung {STRING}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stesen #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -1747,6 +2006,97 @@ STR_SV_STNAME_BUOY                                              :{STRING}
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Lori Air Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Lori Air Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Lori Air MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Lori Getah Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Lori Getah Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Lori Buah-buahan Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Lori Getah Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Lori Getah Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Lori Getah RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Lori Gula MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Lori Gula Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Lori Gula Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Lori Minuman Kola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Lori Minuman Kola Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Lori Minuman Kola Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Lori Gula-gula Kapas MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Lori Gula-gula Kapas Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Lori Gula-gula Kapas Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Lori Tofi MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Lori Tofi Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Lori Tofi Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Van Mainan MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Van Mainan Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Van Mainan Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Lori Gula-gula MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Lori Gula-gula Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Lori Gula-gula Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Lori Bateri MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Lori Bateri Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Lori Bateri Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Lori Minuman Bergas MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Lori Minuman Bergas Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Lori Minuman Bergas Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Lori Plastik MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Lori Plastik Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Lori Plastic Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Lori Buih MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Lori Buih Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Lori Buih Wizzowow
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Kapal Minyak MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Kapal Minyak CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Feri Penumpang MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Kapal Penumpang FFP
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Feri Penumpang Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Feri Penumpang Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Kapal kargo Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Kapal kargo Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Kapal kargo Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Kapal kargo Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Helikopter Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Helikopter Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Helikopter Powernaut
 
 ##id 0x8800
 # Formatting of some strings
@@ -1765,7 +2115,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Tandatuj
 
 STR_UNKNOWN_STATION                                             :stesen tidak diketahui
 STR_DEFAULT_SIGN_NAME                                           :Papan tanda
-STR_COMPANY_SOMEONE                                             :Seseorang
+STR_COMPANY_SOMEONE                                             :seseorang
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Penonton, {1:STRING}

@@ -1396,6 +1396,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цве�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Год начала игры: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (частые, небольшие изменения): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Часть прибыли, начисляемая за частичную перевозку: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке светофоров линией, ставить кажд{P 0 ую ые ые}: {ORANGE}{STRING} клет{P ку ки ок}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню выбора сигналов: {ORANGE}{STRING}

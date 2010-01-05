@@ -2635,7 +2635,7 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lentokon
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Voittoa tänä vuonna: {CURRENCY} (viime vuonna: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Käytett. junat
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Käytettävissä olevat junat
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Käytett. ajoneuvot
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Käytett. laivat
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Käytett. ilma-alukset
@@ -2643,7 +2643,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Näytä 
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Muokkaa listaa
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Ohjaa kaikkia listan ajoneuvoja
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Korvaa liikenneväl.
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Korvaa liikennevälineitä
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Lähetä huoltoon
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Lähetä varikolle
@@ -2837,7 +2837,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lentokone
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Valitse korvattava veturityyppi.
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korv.
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korvaaminen
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei korvata
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei liikennevälinettä valittuna
