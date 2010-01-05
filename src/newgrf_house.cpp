@@ -308,6 +308,39 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 
 		/* Distance test for some house types */
 		case 0x65: return GetDistanceFromNearbyHouse(parameter, tile, object->u.house.house_id);
+
+		/* Class and ID of nearby house tile */
+		case 0x66: {
+			TileIndex testtile = GetNearbyTile(parameter, tile);
+			if (!IsTileType(testtile, MP_HOUSE)) return 0xFFFFFFFF;
+			HouseSpec *hs = HouseSpec::Get(GetHouseType(testtile));
+			/* Information about the grf local classid if the house has a class */
+			uint houseclass = 0;
+			if (hs->class_id != HOUSE_NO_CLASS) {
+				houseclass = (hs->grffile == object->grffile ? 1 : 2) << 8;
+				houseclass |= _class_mapping[hs->class_id].class_id;
+			}
+			/* old house type or grf-local houseid */
+			uint local_houseid = 0;
+			if (house_id < NEW_HOUSE_OFFSET) {
+				local_houseid = house_id;
+			} else {
+				local_houseid = (hs->grffile == object->grffile ? 1 : 2) << 8;
+				local_houseid |= hs->local_id;
+			}
+			return houseclass << 16 | local_houseid;
+		}
+
+		/* GRFID of nearby house tile */
+		case 0x67: {
+			TileIndex testtile = GetNearbyTile(parameter, tile);
+			if (!IsTileType(testtile, MP_HOUSE)) return 0xFFFFFFFF;
+			HouseID house_id = GetHouseType(testtile);
+			if (house_id < NEW_HOUSE_OFFSET) return 0;
+			/* Checking the grffile information via HouseSpec doesn't work
+			 * in case the newgrf was removed. */
+			return _house_mngr.mapping_ID[house_id].grfid;
+		}
 	}
 
 	DEBUG(grf, 1, "Unhandled house property 0x%X", variable);

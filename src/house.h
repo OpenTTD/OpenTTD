@@ -113,7 +113,7 @@ struct HouseSpec {
 	byte random_colour[4];             ///< 4 "random" colours
 	byte probability;                  ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags;       ///< some more flags
-	HouseClassID class_id;             ///< defines the class this house has (grf file based) @See HouseGetVariable, prop 0x44
+	HouseClassID class_id;             ///< defines the class this house has (not grf file based)
 	byte animation_frames;             ///< number of animation frames
 	byte animation_speed;              ///< amount of time between each of those frames
 	byte processing_time;              ///< Periodic refresh multiplier
