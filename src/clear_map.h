@@ -310,14 +310,14 @@ static inline void MakeField(TileIndex t, uint field_type, IndustryID industry)
  * @param t the tile to make snowy
  * @pre GetClearGround(t) != CLEAR_SNOW
  */
-static inline void MakeSnow(TileIndex t)
+static inline void MakeSnow(TileIndex t, uint density = 0)
 {
 	assert(GetClearGround(t) != CLEAR_SNOW);
 	SetBit(_m[t].m3, 4);
 	if (GetClearGround(t) == CLEAR_FIELDS) {
-		SetClearGroundDensity(t, CLEAR_GRASS, 0);
+		SetClearGroundDensity(t, CLEAR_GRASS, density);
 	} else {
-		SetClearDensity(t, 0);
+		SetClearDensity(t, density);
 	}
 }
 

@@ -702,16 +702,19 @@ static void TileLoop_Trees(TileIndex tile)
 					case TREE_GROUND_SHORE: MakeShore(tile); break;
 					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
-					case TREE_GROUND_ROUGH_SNOW:
+					case TREE_GROUND_ROUGH_SNOW: {
+						uint density = GetTreeDensity(tile);
 						MakeClear(tile, CLEAR_ROUGH, 3);
-						MakeSnow(tile);
+						MakeSnow(tile, density);
 						break;
+					}
 					default: // snow or desert
 						if (_settings_game.game_creation.landscape == LT_TROPIC) {
 							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
 						} else {
-							MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile));
-							MakeSnow(tile);
+							uint density = GetTreeDensity(tile);
+							MakeClear(tile, CLEAR_GRASS, 3);
+							MakeSnow(tile, density);
 						}
 						break;
 				}
