@@ -15,10 +15,8 @@
 #include "newgrf_text.h"
 #include "saveload/saveload.h"
 #include "gui.h"
-#include "station_gui.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "station_func.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "town.h"
@@ -864,92 +862,6 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 	if (str == STR_NULL) return;
 
 	new TooltipsWindow(str, paramcount, params, use_left_mouse_button);
-}
-
-/**
- * Draw a (multi)line of cargos seperated by commas, and prefixed with a string.
- * @param cargo_mask Mask of cargos to include in the list.
- * @param r          Rectangle to draw the cargos in.
- * @param prefix     String to use as prefix for the list of cargos.
- * @return Bottom position of the last line used for drawing the cargos.
- */
-int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
-{
-	bool first = true;
-	char string[512];
-	char *b = InlineString(string, prefix);
-
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
-		if (HasBit(cargo_mask, i)) {
-			if (first) {
-				first = false;
-			} else {
-				/* Add a comma if this is not the first item */
-				*b++ = ',';
-				*b++ = ' ';
-			}
-			b = InlineString(b, CargoSpec::Get(i)->name);
-		}
-	}
-
-	/* If first is still true then no cargo is accepted */
-	if (first) b = InlineString(b, STR_JUST_NOTHING);
-
-	*b = '\0';
-
-	/* Make sure we detect any buffer overflow */
-	assert(b < endof(string));
-
-	SetDParamStr(0, string);
-	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING);
-}
-
-/**
- * Calculates and draws the accepted or supplied cargo around the selected tile(s)
- * @param left x position where the string is to be drawn
- * @param right the right most position to draw on
- * @param top y position where the string is to be drawn
- * @param sct which type of cargo is to be displayed (passengers/non-passengers)
- * @param rad radius around selected tile(s) to be searched
- * @param supplies if supplied cargos should be drawn, else accepted cargos
- * @return Returns the y value below the string that was drawn
- */
-int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
-{
-	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	if (tile < MapSize()) {
-		CargoArray cargos;
-		if (supplies) {
-			cargos = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
-		} else {
-			cargos = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
-		}
-
-		/* Convert cargo counts to a set of cargo bits, and draw the result. */
-		uint32 cargo_mask = 0;
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			switch (sct) {
-				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
-				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
-				case SCT_ALL: break;
-				default: NOT_REACHED();
-			}
-			if (cargos[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
-		}
-		Rect r = {left, top, right, INT32_MAX};
-		return DrawCargoListText(cargo_mask, r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
-	}
-
-	return top;
-}
-
-void CheckRedrawStationCoverage(const Window *w)
-{
-	if (_thd.dirty & 1) {
-		_thd.dirty &= ~1;
-		w->SetDirty();
-	}
 }
 
 /* Delete a character at the caret position in a text buf.
