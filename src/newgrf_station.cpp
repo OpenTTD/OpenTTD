@@ -477,7 +477,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 
 			Slope tileh = GetTileSlope(tile, NULL);
-			bool swap = (axis == AXIS_Y && HasBit(tileh, SLOPE_W) != HasBit(tileh, SLOPE_E));
+			bool swap = (axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
 			return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
 		}
