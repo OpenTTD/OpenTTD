@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2009-12-24
-Release version: 1.0.0-beta1
+Last updated:    2010-01-05
+Release version: 1.0.0-beta2
 ------------------------------------------------------------------------
 
 
@@ -34,6 +34,7 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
+- 3447	[OSX] SDL port is unuseable
 - 3194	[OSX] Full screen strobing/flickering
 - 2782	[OSX] Port hopelessly outdated
 - 2585	[OSX] OS' mouse pointer showing

@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2009-12-24
-Release version: 1.0.0
+Last updated:    2010-01-05
+Release version: 1.0.0-beta2
 ------------------------------------------------------------------------
 
 
@@ -148,7 +148,7 @@ are:
   DOS                  - Allegro
   FreeBSD              - SDL
   Linux                - SDL or Allegro
-  MacOS X (universal)  - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
+  MacOS X (universal)  - Cocoa video and sound drivers
   MorphOS              - SDL
   OpenBSD              - SDL
   OS/2                 - SDL
