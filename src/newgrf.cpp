@@ -1560,7 +1560,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byt
 				break;
 
 			case 0x14: // House callback mask
-				housespec->callback_mask = grf_load_byte(&buf);
+				housespec->callback_mask |= grf_load_byte(&buf);
 				break;
 
 			case 0x15: { // House override byte
