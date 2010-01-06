@@ -1228,8 +1228,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}{STRING} dias
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de serviço predefinido para veículos de estrada: {ORANGE}{STRING} dias
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de serviço predefinido para veículos de estrada: {ORANGE}desactivado
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de serviço predefinido para v. de estrada: {ORANGE}{STRING} dias
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de serviço predefinido para v. de estrada: {ORANGE}desactivado
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}{STRING} dias
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}desactivado
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}{STRING} dias
@@ -1242,6 +1242,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Noticia
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar economia regular (alterações menores): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite comprar acções de outras empresas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentagem do lucro total a pagar em transferências: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
@@ -1289,7 +1290,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}1 em {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}Nenhuma
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador inicial para dimensão da metrópole: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Remover partes absurdas durante a construção de estradas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Remover partes absurdas durante a constr. de estradas: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção

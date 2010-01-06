@@ -1242,6 +1242,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Kleuren
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Beginjaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Vloeiende economie inschakelen (meer, kleinere veranderingen): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentage van de winst die wordt betaald een deelleveringen in transfer systemen: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semafoorseinen voor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein-GUI: {ORANGE}{STRING}

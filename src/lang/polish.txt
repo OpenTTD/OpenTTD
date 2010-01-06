@@ -1076,6 +1076,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Włącz 
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Pokaż wysokość
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Nie pokazuj przedsiębiorstw na mapie
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Pokaż wszystkie przedsiębiorstwa na mapie
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Przełącz wyświetlanie mapy wysokości
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaż ostatnią wiadomość lub ogłoszenie
@@ -2142,7 +2143,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Gra nadal wstrz
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Gra wznowiona ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :za mało graczy
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :łączenie klientów
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :"ręczny"
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ręczny
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :opuszczanie
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} dołączył do gry.
@@ -3958,9 +3959,9 @@ STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Nie moż
 STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Nie można umieścić ponownie zniszczonego pojazdu...
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepościć pociągu za sygnał, niebezpieczeństwo...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepuścić pociągu za sygnał, niebezpieczeństwo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
-STR_ERROR_TRAIN_START_NO_CATENARY                               :Ta trasa nie jest zelektryfikowana, więc pociąg nie wystartuje
+STR_ERROR_TRAIN_START_NO_CATENARY                               :Ta trasa nie jest zelektryfikowana, więc pociąg nie może ruszyć
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nie można zawrócić pojazdu...
 

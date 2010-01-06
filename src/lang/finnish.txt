@@ -2636,9 +2636,9 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lentokon
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Voittoa tänä vuonna: {CURRENCY} (viime vuonna: {CURRENCY})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Käytettävissä olevat junat
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Käytett. ajoneuvot
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Käytett. laivat
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Käytett. ilma-alukset
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Käytettävissä olevat ajoneuvot
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Käytettävissä olevat laivat
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Käytettävissä olevat ilma-alukset
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Näytä lista saatavilla olevista moottorityypeistä tälle ajoneuvotyypille.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Muokkaa listaa

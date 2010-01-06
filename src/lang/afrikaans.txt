@@ -302,9 +302,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vertoon 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vertoon grafieke
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vertoon maatskappy liga tabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Konsolideer konstruksie van nuwe nywerheid
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vertoon lys van maatskappy se treine
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vertoon lys van maatskappy se pad voertuie
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vertoon lys van maatskappy se skepe
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vertoon lys van maatskappy se treine. Ctrl+Kliek tokkel die opening van die groep/voertuig lys
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vertoon lys van maatskappy se pad voertuie. Ctrl+Kliek tokkel die opening van die groep/voertuig lys
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vertoon lys van maatskappy se skepe. Ctrl+Kliek tokkel die opening van die groep/voertuig lys
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vertoon lys van maatskappy se vliegtuie. Ctrl+Kliek tokkel die opening van die groep/voertuig lys
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Vergroot die skerm
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Verklein die skerm
@@ -694,6 +694,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sper alle
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ontsper alle
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vertoon hoogte
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Moet nie enige nywerheide op die kaart vertoon
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Vertoon alle nywerheide op die kaart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Tokkel vertooning van hoogtekaart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Wys laaste boodskap of nuus verslag
@@ -1079,6 +1083,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ontsper
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein versnelling model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Oorspronklik
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisties
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hoë steil die helling is vir treine {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING} {LTBLUE} (benodig NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}sluit aan trein stasies gebou naby mekaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Laat toe dat stasies lanks mekaar gebind kan word: {ORANGE}{STRING}
@@ -1192,7 +1197,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Af
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eie maatskappy
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle maatskappye
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ontsper timetabling vir voertuie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon rooster in ticks liewer as dae: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vertoon rooster in tike liewer as dae: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankoms en vertrek in tydroosters: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Vinnige skepping van voertuig opdragte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Verstek spoor tipe (na nuwe spel/spel laai): {ORANGE}{STRING}
@@ -1238,6 +1243,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Gekleur
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Jaar om te begin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ontsper versag ekonomie (meer, kleiner veranderings): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Laat die koop van aandeele van ander maatskappye toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentasie van dir seksie wins om te betaal in voor stelsels: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Wanneer sleep, plaas seine elke: {ORANGE}{STRING} teel(e)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Outomaties bou semaphores voor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Stel in staak die sein GUI: {ORANGE}{STRING}
@@ -1813,14 +1819,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... aflaai van inhoud is nie moentlik nie!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basis grafika
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basis grafike
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI biblioteek
 STR_CONTENT_TYPE_SCENARIO                                       :Draaiboek
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogte kaart
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basiese klanke
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Musiek basis
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basis klanke
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Basis musiek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laai inhoud af...
@@ -1913,7 +1919,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sei
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangs-Sein (semafoor){}Groen so lank as daar een of meer groen uitgang-siene is van enige agtervolgende treinspoorgedeelte is. Anderste is dit rooi.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang-Sein (semafoor){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinasie-Sein (semafoor){}Die combinasie-sein is net 'n ingang- en uitgang-sein op dieselfde tyd. Die laat jou toe om groot "bome" van voor-seine te bou.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pad Sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Standaarde pad seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Een-rigting pad sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Sein (elektries){}Heirde is die mees basiese tipe sein, wat net een trein in 'n block op 'n tyd toelaat.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangs-Sein (elektries){}Groen so lank as daar een of meer groen uitgang-siene is van enige agtervolgende treinspoorgedeelte is. Anderste is dit rooi.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgang-Sein (elektries){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinasie-Sein (elektries){}Die combinasie-sein is net 'n ingang- en uitgang-sein op dieselfde tyd. Die laat jou toe om groot "bome" van voor-seine te bou.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pad Sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Standaarde pad seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Een-rigting pad sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein verander{}Wanneer geselekteer is, 'n kliek askei op die sein sal die sein verander na die geselekteerde sein tiepe en waarde, CTRL-kliek sal die bestaande waarde tokkel.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Sein sleep digtheid
@@ -2069,6 +2081,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Groot
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Lukraak
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Kies dorp groote
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stede groei viniger as gewone dorpe{}Afhangende van stellings, is hulle grooter waneer hulle gestig word
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Straat uitleg van dorp:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Kies straat uitleg ingebruik vir dorp
@@ -2092,6 +2105,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonds
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Koste om skoon te maak: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Koste om skoon te maak: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Wins waneer skoon maak: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eienaar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Pad eienaar: {LTBLUE}{STRING}
@@ -2354,6 +2368,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwagte "spr
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Aksie 0 waarde.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvoldoende ID te gebruik.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat veelvuldige Aksie 8 inskrywings.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Versigtig!
@@ -2429,9 +2444,9 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Befonds nuwe ge
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koop eksklusief vervoer regte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Omkoop die plaaslike raad
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Inwy 'n klein plaaslik advertering veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}  Prys: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Inwy 'n medium plaaslik advertering veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}  Prys: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Inwy 'n groot plaaslik advertering veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}  Prys: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begin 'n klein plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Begin 'n middlemaatige plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begin 'n groot plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Fonds die herkonstruksie van die stedelik pad netwerk. Veroorsaak aansienlike skeuring to pad verkeer vir op tot 6 maande.{}  Prys: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Bou 'n standbeeld in eer van u maatskappy.{} Prys: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Fonds die bou van nuwe kommersieel geboue in die stad.{}  Prys: {CURRENCY}
@@ -2862,10 +2877,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Hestel v
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Omkeer rigting van trein
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forseer voertuig om te draai om
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon trein se opdrae
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon voertuig se opdrae
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Wys skip se opdrae
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Toon vliegtuig se opdrae
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Vertoon trein se opdrae. Ctrl+Kliek om die trein se rooster te wys
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Vertoon voertuig se opdrae. Ctrl+Kliek om die voertuig se rooster te wys
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vertoon skip se opdrae. Ctrl+Kliek om die skip se rooster te wys
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vertoon vliegtuig se opdrae. Ctrl+Kliek om die vliegtuig se rooster te wys
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Toon trein besonderhede
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Wys pad voertuig aanwyse
@@ -2881,6 +2896,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Huidige 
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laai / Aflaai
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Verlaat
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Botsing!
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Teenspoed
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestop
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Ophou
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ophou, {VELOCITY}
@@ -2922,6 +2938,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benaam p
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Benaam skip
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Benaam vliegtuig
 
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Lopende kostes: {LTBLUE}{CURRENCY}/yr
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar re} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})
@@ -3036,6 +3053,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Diens indien no
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sprong die opdraag tensy 'n diens nodig is
 
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig besonderheide om sprong op te baseer
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Vrag persentasie
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betroubaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimum spoed
@@ -3123,10 +3141,10 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Bevele
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Verander na die bevel lys
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - kliek op 'n opdrag om dit te verlig
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - kliek op 'n opdrag om dit te selekteer
 
 STR_TIMETABLE_NO_TRAVEL                                         :Geen reis
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie gerooster nie)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie op rooster nie)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en bly vir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en reis vir {STRING}
@@ -3139,10 +3157,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Die roos
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Die voertuig loop tans op tyd
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Die voertuig loop tans {STRING} laat
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Die voertuig loop tans {STRING} vroeg
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Heirde rooster het nog nie begin nie
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Hierdie tydrooster sal begin by {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begin datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selekteer 'n datum as beginpunt van die tydrooster
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selekteer 'n datum as beginpunt van die rooster
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander Tyd
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander die bedrag van tyd die verlig opdrag moes vat
@@ -3154,15 +3173,19 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Herstel 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die  voertuig op tyd is
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Outovul
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die tydtabel outomaties in met die waardes van die volgende reis (CTRL-linker muis om die wagtyd te probeer hou)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die rooster outomaties in met die waardes van die volgende reis (CTRL-Kliek om die wagtyd te probeer hou)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Word vervag
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geskeduleer
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Verander tussen verwag en skedule
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Verander datum
+STR_DATE_SET_DATE                                               :{BLACK}Verander datum
 STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Gebruik geselekteerde datum as begindatum vir die tydrooster
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selekteer dag
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selekteer maand
@@ -3246,6 +3269,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integritei
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Speeletjie was gesoor in 'n weergawe sonder trem toelaating. Alle tremme was verwyder.
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaart generasie het gestaak...{}... geen geskikde plekke vir dorpe was gevind nie
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...daar is geen dorp in die draaiboek
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan nie landskap van PNG laai nie...
@@ -3286,6 +3310,7 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING}
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} plaaslike raad weier om dit te toelaat
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} plaaslike raad weier om nog 'n lighawe te bou in hierdie stad
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} plaaslikke raad weier toestemming vir lughawes omdat die dorp oor geraas bekommer
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Jou omkooping onderneeming is deur
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}'n streek navorser uitgevind
 
@@ -3379,6 +3404,8 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Moet eer
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Moet eers lughawe afbreek
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grens aan meer as een bestande wegwyser
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Te naby aan 'n ander wegwyser
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kanie nie trein wegpunt hier bou nie...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan nie baken hier plaas nie...
@@ -3494,7 +3521,7 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Skip kan
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Vliegtuig kan nie herstel word nie...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Trein kan nie benaam word nie...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Pad voertuig kan nie benaam word nie...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan nie pad voertuig 'n naam gee nie...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan nie skip benaam nie...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Vliegtuig kan nie benaam word nie...
 
@@ -3560,7 +3587,7 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan nie 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te ver van vorige destinasie
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan nie rooster voertuig nie...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan nie voertuig 'n rooster gee nie...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuie kan slegs by stasies wag.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Die voertuig stop nie by die stasie nie.
 
