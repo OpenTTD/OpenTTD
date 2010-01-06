@@ -2397,11 +2397,13 @@ static void DrawTile_Station(TileInfo *ti)
 				if (!HasFoundationNW(ti->tile, slope, z)) ClrBit(parts, 6);
 				if (!HasFoundationNE(ti->tile, slope, z)) ClrBit(parts, 7);
 
+				StartSpriteCombine();
 				for (int i = 0; i < 8; i++) {
 					if (HasBit(parts, i)) {
 						AddSortableSpriteToDraw(image + i, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
 					}
 				}
+				EndSpriteCombine();
 			}
 
 			OffsetGroundSprite(31, 1);
