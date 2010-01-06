@@ -1,5 +1,5 @@
 ##name Afrikaans
-##ownname Conray
+##ownname Afrikaans
 ##isocode af_ZA
 ##plural 0
 ##textdir ltr
