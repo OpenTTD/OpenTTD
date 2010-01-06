@@ -237,6 +237,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 	/* Find next item */
 	item = NetworkGameListAddItem(*client_addr);
 
+	ClearGRFConfigList(&item->info.grfconfig);
 	this->Recv_NetworkGameInfo(p, &item->info);
 
 	item->info.compatible = true;
