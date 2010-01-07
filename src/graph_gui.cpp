@@ -822,6 +822,13 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->OnHundredthTick();
 
 		this->InitNested(desc, window_number);
+
+		int i = 0;
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			this->SetWidgetLoweredState(CPW_CARGO_FIRST + i, !HasBit(_legend_excluded_cargo, i));
+			i++;
+		}
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
