@@ -170,20 +170,17 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 	uint16 mail_capacity;
 	uint capacity = e->GetDisplayDefaultCapacity(&mail_capacity);
 
+	SetDParam(0, e->GetCost());
+	SetDParam(1, e->GetDisplayMaxSpeed());
+	SetDParam(2, cargo);
+	SetDParam(3, capacity);
+
 	if (mail_capacity > 0) {
-		SetDParam(0, e->GetCost());
-		SetDParam(1, e->GetDisplayMaxSpeed());
-		SetDParam(2, cargo);
-		SetDParam(3, capacity);
 		SetDParam(4, CT_MAIL);
 		SetDParam(5, mail_capacity);
 		SetDParam(6, e->GetRunningCost());
 		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST;
 	} else {
-		SetDParam(0, e->GetCost());
-		SetDParam(1, e->GetDisplayMaxSpeed());
-		SetDParam(2, cargo);
-		SetDParam(3, capacity);
 		SetDParam(4, e->GetRunningCost());
 		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST;
 	}
