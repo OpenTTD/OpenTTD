@@ -815,7 +815,23 @@ struct AIDebugWindow : public Window {
 			}
 		}
 		this->last_vscroll_pos = this->vscroll.GetPosition();
+	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case AID_WIDGET_NAME_TEXT:
+				if (ai_debug_company == INVALID_COMPANY || !Company::IsValidAiID(ai_debug_company)) {
+					SetDParam(0, STR_EMPTY);
+				} else {
+					const AIInfo *info = Company::Get(ai_debug_company)->ai_info;
+					assert(info != NULL);
+					SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
+					SetDParamStr(1, info->GetName());
+					SetDParam(2, info->GetVersion());
+				}
+				break;
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -823,15 +839,6 @@ struct AIDebugWindow : public Window {
 		if (ai_debug_company == INVALID_COMPANY) return;
 
 		switch (widget) {
-			case AID_WIDGET_NAME_TEXT: {
-				/* Draw the AI name */
-				AIInfo *info = Company::Get(ai_debug_company)->ai_info;
-				assert(info != NULL);
-				char name[1024];
-				snprintf(name, sizeof(name), "%s (v%d)", info->GetName(), info->GetVersion());
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, name, TC_BLACK, SA_CENTER);
-				break;
-			}
 			case AID_WIDGET_LOG_PANEL: {
 				CompanyID old_company = _current_company;
 				_current_company = ai_debug_company;
@@ -965,8 +972,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetMinimalSize(150, 20), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_NAME_TOOLTIP),
-		EndContainer(),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetMinimalSize(150, 20), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(149, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),

@@ -3205,6 +3205,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Select y
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{RAW_STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Kill the AI, reload the script, and restart the AI
