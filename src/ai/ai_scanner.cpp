@@ -245,10 +245,10 @@ void AIScanner::RegisterAI(AIInfo *info)
 	}
 }
 
-AIInfo *AIScanner::SelectRandomAI()
+AIInfo *AIScanner::SelectRandomAI() const
 {
 	uint num_random_ais = 0;
-	for (AIInfoList::iterator it = this->info_single_list.begin(); it != this->info_single_list.end(); it++) {
+	for (AIInfoList::const_iterator it = this->info_single_list.begin(); it != this->info_single_list.end(); it++) {
 		if (it->second->UseAsRandomAI()) num_random_ais++;
 	}
 
@@ -266,7 +266,7 @@ AIInfo *AIScanner::SelectRandomAI()
 	}
 
 	/* Find the Nth item from the array */
-	AIInfoList::iterator it = this->info_single_list.begin();
+	AIInfoList::const_iterator it = this->info_single_list.begin();
 	while (!it->second->UseAsRandomAI()) it++;
 	for (; pos > 0; pos--) {
 		it++;
@@ -323,10 +323,10 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 	return info;
 }
 
-char *AIScanner::GetAIConsoleList(char *p, const char *last)
+char *AIScanner::GetAIConsoleList(char *p, const char *last) const
 {
 	p += seprintf(p, last, "List of AIs:\n");
-	AIInfoList::iterator it = this->info_list.begin();
+	AIInfoList::const_iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
 		AIInfo *i = (*it).second;
 		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());

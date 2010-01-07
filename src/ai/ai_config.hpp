@@ -48,7 +48,7 @@ public:
 	/**
 	 * Get the AIInfo linked to this AIConfig.
 	 */
-	class AIInfo *GetInfo();
+	class AIInfo *GetInfo() const;
 
 	/**
 	 * Get the config list for this AIConfig.
@@ -67,7 +67,7 @@ public:
 	 * @return The (default) value of the setting, or -1 if the setting was not
 	 *  found.
 	 */
-	int GetSetting(const char *name);
+	int GetSetting(const char *name) const;
 
 	/**
 	 * Set the value of a setting for this config.
@@ -87,17 +87,17 @@ public:
 	/**
 	 * Is this config attached to an AI?
 	 */
-	bool HasAI();
+	bool HasAI() const;
 
 	/**
 	 * Get the name of the AI.
 	 */
-	const char *GetName();
+	const char *GetName() const;
 
 	/**
 	 * Get the version of the AI.
 	 */
-	int GetVersion();
+	int GetVersion() const;
 
 	/**
 	 * Convert a string which is stored in the config file or savegames to
@@ -109,7 +109,7 @@ public:
 	 * Convert the custom settings to a string that can be stored in the config
 	 *  file or savegames.
 	 */
-	void SettingsToString(char *string, size_t size);
+	void SettingsToString(char *string, size_t size) const;
 
 private:
 	const char *name;

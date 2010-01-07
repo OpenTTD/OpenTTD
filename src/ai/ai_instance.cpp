@@ -391,7 +391,7 @@ void AIInstance::GameLoop()
 	}
 }
 
-void AIInstance::CollectGarbage()
+void AIInstance::CollectGarbage() const
 {
 	if (this->is_started && !this->IsDead()) this->engine->CollectGarbage();
 }

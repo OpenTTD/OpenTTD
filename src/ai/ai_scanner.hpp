@@ -41,7 +41,7 @@ public:
 	/**
 	 * Select a Random AI.
 	 */
-	class AIInfo *SelectRandomAI();
+	class AIInfo *SelectRandomAI() const;
 
 	/**
 	 * Find an AI by name.
@@ -51,7 +51,7 @@ public:
 	/**
 	 * Get the list of available AIs for the console.
 	 */
-	char *GetAIConsoleList(char *p, const char *last);
+	char *GetAIConsoleList(char *p, const char *last) const;
 
 	/**
 	 * Get the list of all registered AIs.

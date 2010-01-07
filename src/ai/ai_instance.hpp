@@ -70,7 +70,7 @@ public:
 	/**
 	 * Let the VM collect any garbage.
 	 */
-	void CollectGarbage();
+	void CollectGarbage() const;
 
 	/**
 	 * Get the storage of this AI.
@@ -105,7 +105,7 @@ public:
 	/**
 	 * Return the "this AI died" value
 	 */
-	inline bool IsDead() { return this->is_dead; }
+	inline bool IsDead() const { return this->is_dead; }
 
 	/**
 	 * Call the AI Save function and save all data in the savegame.
