@@ -3206,7 +3206,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :{G=f}lokomotywę MagLev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY} Masa: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {7:FORCE}{}Koszty użytkowania: {4:CURRENCY}/rok{}Pojemność: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY} Masa: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszty użytkowania: {4:CURRENCY}/rok{}Pojemność: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosztuje: {CURRENCY} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO}, {CARGO}{}Koszt używania: {CURRENCY}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koszt: {CURRENCY} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO}{}Koszt utrzymania: {CURRENCY}/rok
 

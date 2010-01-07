@@ -2837,7 +2837,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednokolajova l
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magneticka lokomotiva
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Hmotnosť: {WEIGHT_S}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {7:FORCE}{}Prevádzkové náklady: {4:CURRENCY}/yr{}Kapacita: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Hmotnosť: {WEIGHT_S}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {6:FORCE}{}Prevádzkové náklady: {4:CURRENCY}/yr{}Kapacita: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY} Max. Rýchlost: {VELOCITY}{}Kapacita: {CARGO}, {CARGO}{}Prevádzkové náklady: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY} Max. Rýchlosť: {VELOCITY}{}Kapacita: {CARGO}{}Prevádzkové náklady: {CURRENCY}/yr
 

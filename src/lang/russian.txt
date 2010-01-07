@@ -2989,7 +2989,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магнито�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магниторельсового локомотива
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY}/год{}Ёмкость: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {7:FORCE}{}Стоимость обслуж.: {4:CURRENCY}/год{}Ёмкость: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY}/год{}Ёмкость: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цена: {CURRENCY} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO}, {CARGO}{}Стоимость обслуживания: {CURRENCY}/год
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO}{}Стоимость обслуж.: {CURRENCY}/год
 

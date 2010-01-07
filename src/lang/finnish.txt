@@ -2823,7 +2823,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen v
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kulu: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. Vetovoima: {7:FORCE}{}Käyttökustannukset: {4:CURRENCY}/v{}Kapasiteetti: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. Vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY}/v{}Kapasiteetti: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Hinta: {CURRENCY} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO}, {CARGO}{}Käyttökustannukset: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Hinta: {CURRENCY} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO}{}Käyttökustannukset: {CURRENCY}/yr
 

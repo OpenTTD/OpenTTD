@@ -2791,7 +2791,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbegis lokom
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :„Maglev“ lokomotyvas
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY}/metus{}Talpa: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {7:FORCE}{}Einamosios išlaidos: {4:CURRENCY}/yr{}Talpa: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {6:FORCE}{}Einamosios išlaidos: {4:CURRENCY}/yr{}Talpa: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kaina: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO}, {CARGO}{}Važiavimo kaina: {CURRENCY}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kaina: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO}{}Važiavimo kaina: {CURRENCY}/yr
 

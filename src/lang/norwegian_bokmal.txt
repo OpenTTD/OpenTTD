@@ -2822,7 +2822,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft: {POWER}  Maks. trekkraft: {7:FORCE}{}Vedlikehold: {4:CURRENCY}/år{}Kapasitet: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft: {POWER}  Maks. trekkraft: {6:FORCE}{}Vedlikehold: {4:CURRENCY}/år{}Kapasitet: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kostnad: {CURRENCY} Maks. hastighet: {VELOCITY}{}Kapasitet: {CARGO}, {CARGO}{}Driftskostnader: {CURRENCY}/år
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kostnad: {CURRENCY} Maks. hastighet: {VELOCITY}{}Kapasitet: {CARGO}{}Driftskostnader: {CURRENCY}/år
 

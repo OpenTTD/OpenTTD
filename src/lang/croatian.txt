@@ -2899,7 +2899,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednotračna ž
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotiva
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cijena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY} Snaga: {POWER}{}Trošak uporabe: {CURRENCY}/god{}Kapacitet: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Trošak: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Maks. T.E.: {7:FORCE}{}Trošak uporabe: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Trošak: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Maks. T.E.: {6:FORCE}{}Trošak uporabe: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Trošak: {CURRENCY} Maks. brzina: {VELOCITY}{}Nosivost: {CARGO}, {CARGO}{}Trošak uporabe: {CURRENCY}/god
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Trošak: {CURRENCY} Maks. brzina: {VELOCITY}{}Nosivost: {CARGO}{}Trošak uporabe: {CURRENCY}/god
 

@@ -2948,7 +2948,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорел�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :поїзд на магнітній подушці
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Вартість: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}  Макс. тяга: {7:FORCE}{}Вартість експлуатації: {4:CURRENCY}/рік{}Місткість: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Вартість: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}  Макс. тяга: {6:FORCE}{}Вартість експлуатації: {4:CURRENCY}/рік{}Місткість: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Вартість: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}, {CARGO}{}Вартість експлуатації: {CURRENCY}/рік
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Вартість: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}{}Вартість експлуатації: {CURRENCY}/рік
 

@@ -3008,7 +3008,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednopružno ž
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :megnetno žel. vučno vozilo
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY}/god.{}Nosivost: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {7:FORCE}{}Cena Održavanja: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO}, {CARGO}{}Cena Održavanja: {CURRENCY}/god.
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO}{}Cena Održavanja: {CURRENCY}/god.
 

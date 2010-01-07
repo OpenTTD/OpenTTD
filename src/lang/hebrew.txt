@@ -2797,7 +2797,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פ�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_S} :משקל  {NBSP}{0:CURRENCY}  :מחיר {}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY} :עלות תפעולית
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}עלות: {CURRENCY} משקל: {WEIGHT_S}{}מהירות: {VELOCITY}  הספק: {POWER}  מקסימלי T.E.: {7:FORCE}{}עלות תפעולית: {4:CURRENCY}/לשנה{}קיבולת: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}עלות: {CURRENCY} משקל: {WEIGHT_S}{}מהירות: {VELOCITY}  הספק: {POWER}  מקסימלי T.E.: {6:FORCE}{}עלות תפעולית: {4:CURRENCY}/לשנה{}קיבולת: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}עלות: {CURRENCY} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO}, {CARGO}{}עלות שוטפת: {CURRENCY}/לשנה
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}עלות: {CURRENCY} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO}{}הוצאה שוטפת: {CURRENCY}/לשנה
 
