@@ -368,7 +368,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Visualizador ex
 STR_MAP_MENU_SIGN_LIST                                          :Lista de placas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
@@ -601,6 +602,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecion
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar exibir/ocultar programação aleatória
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibe a janela de seleção de faixas de música
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Programação Musical
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} '{STRING}'
@@ -756,6 +758,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} inicia construção em {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} foi comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G o a} {STRING} em construção em {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G o a} {STRING} sendo plantada em {TOWN}!
@@ -934,6 +937,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set de s
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione o set de gráficos a ser utilizado
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informações sobr o set de sons base
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Falha no modo de tela cheia
 
 # Custom currency window
@@ -1000,6 +1004,7 @@ STR_NUM_LOW                                                     :Baixo
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizado
+
 
 STR_AI_SPEED_VERY_SLOW                                          :Muito Lento
 STR_AI_SPEED_SLOW                                               :Lento
@@ -1234,6 +1239,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir cidades construir novas ruas?: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir controle de ruído de aeronaves pelas cidades: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -3051,7 +3057,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção se
 
 STR_ORDER_NEAREST_DEPOT                                         :mais próximo
 STR_ORDER_NEAREST_HANGAR                                        :hangar mais próximo
-STR_ORDER_TRAIN_DEPOT                                           :Deósito de Trem
+STR_ORDER_TRAIN_DEPOT                                           :Depósito de Trem
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de Veículos
 STR_ORDER_SHIP_DEPOT                                            :Depósito de Navios
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
@@ -3111,6 +3117,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Esse ve�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Esse veículo está {STRING} atrasado
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Esse veículo está {STRING} adiantado
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar horário
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda a quantidade de tempo que a ordem deverá levar
 
@@ -3122,6 +3129,12 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseta o
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autopreencher
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche automaticamente com os valores da próxima viagem. (CTRL-clique para tentar manter os intervalos de espera)
+
+
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Debug da IA
@@ -3138,6 +3151,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Configur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Todas as IA's que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador Humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Randômica
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecionar IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outra IA
@@ -3987,7 +4001,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

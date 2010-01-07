@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_GRAIN                                          :Bijirin
 STR_CARGO_PLURAL_WOOD                                           :Kayu
 STR_CARGO_PLURAL_IRON_ORE                                       :Bijih Besi
 STR_CARGO_PLURAL_STEEL                                          :Keluli
-STR_CARGO_PLURAL_VALUABLES                                      :Barangan berharga
+STR_CARGO_PLURAL_VALUABLES                                      :Barangan Berharga
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bijih tembaga
 STR_CARGO_PLURAL_MAIZE                                          :Jagung
 STR_CARGO_PLURAL_FRUIT                                          :Buah-buahan
@@ -71,7 +71,7 @@ STR_CARGO_SINGULAR_GRAIN                                        :Bijirin
 STR_CARGO_SINGULAR_WOOD                                         :Kayu Balak
 STR_CARGO_SINGULAR_IRON_ORE                                     :Bijih Besi
 STR_CARGO_SINGULAR_STEEL                                        :Keluli
-STR_CARGO_SINGULAR_VALUABLES                                    :Barangan Berharga
+STR_CARGO_SINGULAR_VALUABLES                                    :Barang Berharga
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Bijih Tembaga
 STR_CARGO_SINGULAR_MAIZE                                        :Jagung
 STR_CARGO_SINGULAR_FRUIT                                        :Buah-buahan
@@ -105,7 +105,7 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} bijiri
 STR_QUANTITY_WOOD                                               :{WEIGHT} kayu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} bijih besi
 STR_QUANTITY_STEEL                                              :{WEIGHT} keluli
-STR_QUANTITY_VALUABLES                                          :{COMMA} beg mengandungi barangan berharga
+STR_QUANTITY_VALUABLES                                          :{COMMA} beg barangan berharga
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bijih tembaga
 STR_QUANTITY_MAIZE                                              :{WEIGHT} jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
@@ -216,13 +216,13 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan filter string
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk filter senarai
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan string saringan
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring senarai
+STR_LIST_FILTER_TITLE                                           :{BLACK}String saringan:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih bentuk susunan (menurun/menaik)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pilih kriteria aturan
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pilih kriteria tapisan
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pilih kriteria penyaringan
 STR_BUTTON_SORT_BY                                              :{BLACK}Menyusun mengikuti
 STR_BUTTON_LOCATION                                             :{BLACK}Lokasi
 STR_BUTTON_RENAME                                               :{BLACK}Tukar Nama
@@ -292,7 +292,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Henti Se
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rancakkan permainan
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Pilihan
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Simpan Permainan, Tinggalkan Permainan, Keluar
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Paparkan peta, tetingkap pandangan ekstra atau senarai papan tanda
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Paparkan peta, tetingkap pemandangan ekstra atau senarai papan tanda
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Papar direktori bandar
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Paparkan subsidi yang tersedia
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Senaraikan stesen-stesen syarikat
@@ -306,7 +306,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Senaraik
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Senaraikan kapal-kapal syarikat. Ctrl+Klik untuk menukar antara kumpulan/kenderaan
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Senaraikan pesawat-pesawat syarikat. Ctrl+Klik untuk menukar antara kumpulan/kenderaan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Membesarkan pemandangan
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Mengecilkan pandangan
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Tarik pemandangan ke luar
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bina landasan keretapi
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bina jalan
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bina pelabuhan kapal
@@ -365,7 +365,7 @@ STR_FILE_MENU_EXIT                                              :Keluar
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Tetingkap pandangan ekstra
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Tetingkap pemandangan ekstra
 STR_MAP_MENU_SIGN_LIST                                          :Senarai papan tanda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Senarai Nama Bandar
@@ -617,7 +617,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLAC
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Bersih
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Simpan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Batal progam semasa (Custom1 atau Custom2 sahaja)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpankan setting muzik
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpankan tetapan muzik
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pada lagu untuk memasukkan ke dalam rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada lagu untuk mengeluarkan daripada rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 
@@ -646,7 +646,7 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industri
 STR_SMALLMAP_TYPE_ROUTES                                        :Laluan
 STR_SMALLMAP_TYPE_VEGETATION                                    :Tumbuhan
 STR_SMALLMAP_TYPE_OWNERS                                        :Pemilik
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Tunjukan bentuk muka bumi
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Paparkan bentuk rupa bumi di peta
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Tunjukkan kenderaan di peta
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Tunjukkan industri di peta
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Tunjukkan laluan kenderaan di peta
@@ -664,7 +664,7 @@ STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
 STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Keretapi
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Kenderaan Darat
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Kenderaan Jalanraya
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Kapal
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Pesawat
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Laluan Pengangkutan
@@ -834,11 +834,11 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Kesesakan lalulintas di {TOWN}!{}{}Rancangan pembinaan semula jalanraya dibiayai oleh {STRING} akan menyeksa pemandu kenderaan selama 6 bulan!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tetingkap pandangan {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Salin ke tetingkap pandangan
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Salin lokasi pandangan global kepada tetingkap pandangan ini
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampal daripada tetingkap pandangan
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap pandangan ini kepada pandangan global
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tetingkap pemandangan {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Salin ke tetingkap pemandangan
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Salin lokasi pemandangan global kepada tetingkap pemandangan ini
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampal daripada tetingkap pemandangan
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap pemandangan ini kepada pemandangan global
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan Permainan
@@ -895,7 +895,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nama ban
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pilih tema untuk nama bandar
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inggeris (Original)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inggeris (Asal)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :French
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :German
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inggeris (Additional)
@@ -928,7 +928,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Setiap 6 bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Setiap 12 bulan
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih bahasa hubungan untuk digunakan
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih bahasa antaramuka yang ingin digunakan
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Skrin Penuh
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
@@ -1055,8 +1055,8 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergunung
 STR_ECONOMY_STEADY                                              :Stabil
 STR_ECONOMY_FLUCTUATING                                         :Naik turun
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Di penghujung landasan, dan di stesen
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Di penghujung landasan sahaja
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Di hujung landasan, dan di stesen
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Di hujung landasan sahaja
 
 STR_DISASTERS_OFF                                               :Tiada
 STR_DISASTERS_ON                                                :Ada
@@ -1075,9 +1075,9 @@ STR_CONFIG_SETTING_ON                                           :Hidupkan
 STR_CONFIG_SETTING_DISABLED                                     :tiada
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Paparkan status kelajuan kenderaan di status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan pembinaan di tepi pantai dan cerun bukit: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Izinkan pengubahsuaian tanah di bawah bangunan, landasan, dan sbgnya (autocerun): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Izinkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Izinkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Benarkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Benarkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Benarkan pembinaan keretapi yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pecutan keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asal
@@ -1085,44 +1085,62 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistik
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecerunan bukit untuk keretapi {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sambungkan stesen keretapi yang dibina bersebelahan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Izinkan penyambungan stesen yang tidak bersebelahan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Benarkan penyambungan stesen yang tidak bersebelahan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma muatan yang diperbaiki: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Muatkan kenderaan sedikit demi sedikit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Hantarkan kargo ke stesen hanya jika ada permintaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Benarkan pembinaan jambatan yang sangat panjang: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Izinkan arahan pergi ke depoh: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Benarkan arahan pergi ke depoh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Cara pembinaan manual industri utama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :tiada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :mencari gali
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Izinkan pelbagai industri sejenis di setiap bandar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industri sejenis boleh dibina berhampiran sesama: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Benarkan pelbagai industri sejenis di setiap bandar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industri sejenis boleh dibina berhampiran satu sama lain: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Sentiasa paparkan tarikh panjang di status bar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Paparkan signal di sebelah pemandu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Paparkan isyarat di sebelah pemandu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Paparkan tetingkap kewangan setiap penghujung tahun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Arahan baru ialah 'tanpa henti' secara automatik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Arahan keretapi baru berhenti secara automatik di pletfom {ORANGE}{STRING}{LTBLUE}
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :berhampiran penghujung
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :berhampiran hujung
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah-tengah
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :penghujung
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :hujung sekali
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Perbarisan kenderaan jalanraya (dengan kesan kuantum): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Gerakkan pemandangan apabila tetikus di sempadan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Benarkan pihak berkuasa dirasuah: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Benarkan pembelian hak pengangkutan eksklusif: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Benarkan menghantar wang ke syarikat lain: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stesen tidak seragam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pengganda keberatan tambang muatan untuk simulasi keretapi berat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kelajuan pesawat: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Benarkan hentian pandu-lalu di jalan bandar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Benarkan hentian pandu-lalu di jalan yang dimiliki oleh pesaing: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Benarkan membina stesen yang bersebelahan stesen lain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Izinkan berbilang set enjin NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Benarkan berbilang set enjin NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Menukar tetapan ini adalah mustahil apabila terdapat kenderaan.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lapangan terbang tidak akan tamat tempohnya: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Beri amaran jika keretapi sesat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kaji semula arahan kenderaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ya, tetapi kecuali kenderaan rencat
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :semua kenderaan
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Beri amaran jika pendapatan kenderaan adalah negatif: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kenderaan tidak akan tamat tempohnya: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Gunakan pembaharuan automatik apabila kenderaan usang : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Lakukan pembaharuan automatik apabila kenderaan {ORANGE}{STRING}{LTBLUE} bulan sebelum/selepas umur maks
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Wang minimum yang diperlukan untuk pembaharuan automatik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Tempoh pesanan kesilapan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Paparkan jumlah penduduk dalam label nama bandar: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Janaan tanah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Asal
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Jarak maks dari hujung peta untuk Kilang Penapisan Minyak {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Ketinggian garis salji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kekasaran rupa bumi (TerraGenesis sahaja) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat Licin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Licin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
@@ -1135,18 +1153,21 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Putaran
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Lawan jam
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Tahap ketinggian peta senario rata: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}:Izinkan pengubahsuaian tanah di petak di penghujung peta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}:Benarkan pengubahsuaian tanah di petak di hujung peta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Satu atau lebih petak di bucu utara tidak kosong
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Satu atau lebih petak di salah satu bucu bukan air
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Keluasan maks stesen: {ORANGE}{STRING} {RED}Amaran: Ketetapan tinggi akan melembabkan permainan
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Serviskan helikopter di helipad secara automatik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kaitkan toolbar lanskap kepada toolbar keretapi/jalanraya/air/lapangan terbang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Arah skrol terbalik: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Skrol pandangan yang licin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Skrol tetingkap pemandangan yang licin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Paparkan bantuan ukuran ketika menggunakan alat binaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Paparkan seragam syarikat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Tiada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Syarikat sendiri
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua syarikat
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Gunakan chat pasukan dengan <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Gunakan perbincangan pasukan dengan <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Kegunaan roda skrol: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Membesarkan peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skrol peta
@@ -1174,7 +1195,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gunakan
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Matikan
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Syarikat Sendiri
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua syarikat
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Izinkan penjadualan untuk kenderaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Benarkan penjadualan untuk kenderaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Paparkan jadual menggunakan tanda rait dan bukan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Paparkan ketibaan dan pelepasan dalam jadual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Pewujudan pantas arahan kenderaan: {ORANGE}{STRING}
@@ -1201,20 +1222,20 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Nafikan
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Nafikan pesawat untuk komputer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Nafikan kapal untuk komputer: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Benarkan AIs dalam multiplayer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Benarkan AI dalam permainan pemain berbilang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes sebelum AI digantung: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Tempoh waktu servis dalam peratusan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Tempoh servis biasa untuk keretapi: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Tempoh servis biasa untuk keretapi: {ORANGE}tiada
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Tempoh servis biasa untuk kenderaan jalanraya: {ORANGE}{STRING} hari/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Tempoh servis biasa untuk keretapi: {ORANGE}tiada
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Tempoh servis biasa untuk kenderaan jalanraya: {ORANGE}tiada
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Tempoh servis biasa untuk pesawat: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Tempoh servis biasa untuk pesawat: {ORANGE}tiada
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Tempoh servis biasa untuk kapal: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Tempoh servis biasa untuk kapal: {ORANGE}tiada
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Servis tidak diperlukan apabila kerosakan kenderaan ditetapkan kepada tiada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Izinkan had kelajuan untuk gerabak: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Benarkan had kelajuan untuk gerabak: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Tiada landasan elektrik: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Berita berwarna muncul pada tahun: {ORANGE}{STRING}
@@ -1222,35 +1243,88 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Tahun p
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Gunakan ekonomi licin (perubahan yang lebih kecil): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Benarkan membeli saham syarikat lain: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Peratusan untuk kaki keuntungan yang akan dibayar dalam sistem feeder: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Apabila menyeret, letakkan signal setiap: {ORANGE}{STRING} petak(s)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Apabila menyeret, letakkan isyarat setiap: {ORANGE}{STRING} petak(s)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bina semafor secara automatik sebelum: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Gunakan GUI signal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Jenis signal yang dibina secara automatik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Gunakan GUI isyarat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Jenis isyarat yang dibina secara automatik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Isyarat blok
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Isyarat lorong
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Isyarat lorong sehala
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Kitar semua jenis isyarat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Isyarat blok sahaja
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Isyarat lorong sahaja
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Susunan jalan untuk bandar baru: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :asal
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :jalan yang lebih baik
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grid 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grid 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :rambang
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Bandar dibenarkan membina jalanraya: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Benarkan kadar kebunyian yang dikawal oleh bandar untuk lapangan terbang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Pembinaan bandar dalam permainan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :tidak dibenarkan
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dibenarkan
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dibenarkan, susunan bandar sendiri
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Peletakan pokok-pokok dalam permainan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :tiada {RED}(kilang kayu balak tidak akan berfungsi)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya di hutan hujan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :merata tempat
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Kedudukan toolbar utama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kiri
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Tengah
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Kanan
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}tiada
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Had lembut tetingkap (tidak melekat): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Had lembut tetingkap (tidak melekat): {ORANGE}tiada
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kelajuaan pertumbuhan bandar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Tiada
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lambat
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Biasa
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Pantas
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sangat pantas
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Nisbah bandar yang akan menjadi bandaraya: {ORANGE}1 dalam {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Nisbah bandar yang akan menjadi bandaraya: {ORANGE}Tiada
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Pengganda awal saiz bandar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Buang elemen jalan yang tidak masuk akal daripada pembinaan jalanraya: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Antaramuka (Interface)
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stesen
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Pilihan paparan
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksi
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Isyarat
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Pengendalian kargo
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Pembaharuan Automatik
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Keretapi
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bandar-bandar
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri-industri
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari laluan untuk keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Disyorkan)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pencari laluan untuk kenderaan jalanraya: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Disyorkan)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari laluan untuk kapal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Asal {BLUE}(Disyorkan)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tidak disyorkan)
 
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Saiz-X peta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Saiz-Y peta: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1258,31 +1332,41 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Permainan Baru
 STR_INTRO_LOAD_GAME                                             :{BLACK}Buka Permainan
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Main Senario
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Main Heightmap
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pengarang Senario
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Ramai pemain
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Pemain berbilang
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pilihan Permainan
 STR_INTRO_DIFFICULTY                                            :{BLACK}Kesukaran ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Tetapan Lanjutan
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Tetapan NewGRF
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Periksa Kandungan Atas Talian
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Tetapan AI
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulakan permainan baru. Ctrl+Klik akan melangkaui konfigurasi peta
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Buka permainan yang tersimpan
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Mulakan permainan baru, dengan menggunakan heightmap sebagai lanskap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Mulakan permainan baru dengan mengunakan senario sendiri
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Bentukkan dunia permainanan/senario sendiri
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mulakan permainan berbilang pemain
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mulakan permainan pemain berbilang
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Pilih lanskap 'temperate'
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK} Pilih lanskap 'sub-artik'
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pilih lanskap 'sub-tropical'
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih lanskap 'dunia permainan'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Pilih lanskap gaya 'temperate'
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK} Pilih lanskap gaya 'subartik'
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pilih lanskap gaya 'subtropik'
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih lanskap gaya 'alam permainan'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Paparkan pilihan permainan
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Papar pilihan kesukaran
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Papar tetapan lanjutan
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Papar tetapan NewGRF
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Periksa kandungan baru atau yang telah dikemaskini untuk dimuat turun
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Papar tetapan AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar 'OpenTTD'
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Keluar
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Anda pasti mahu keluar dari OpenTTD dan kembali ke {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Pastikah anda untuk keluar dari OpenTTD dan kembali ke {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Ya
 STR_QUIT_NO                                                     :{BLACK}Tidak
 
@@ -1292,6 +1376,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1299,22 +1384,52 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Anda pasti mahu meninggalkan permainan ini?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Anda pasti mahu meninggalkan senario ini?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Pastikah anda untuk keluar permainan ini?
+STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Pastikah anda untuk keluar senario ini?
 
 # Cheat window
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat tersebut: {ORANGE}{COMMA}
+STR_CHEATS                                                      :{WHITE}Penipuan (Cheats)
+STR_CHEATS_TOOLTIP                                              :{BLACK}Kotak bertanda menunjukkan anda pernah menggunakan penipuan (cheats) ini
+STR_CHEATS_WARNING                                              :{BLACK}Amaran! Anda akan mengkhianati rakan-rakan pesaing anda. Perbuatan yang mengaibkan ini tidak akan dilupakan selama-lamanya.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Tambahkan wang sebanyak {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Jentolak ajaib (industri dan objek lain yang biasanya tidak boleh dibuang, kini boleh dibuang): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowong boleh bersilang: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bina sewaktu dalam permainan dihentikan: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat jet tidak akan (sentiasa) terhempas di lapangan terbang kecil: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Tukar iklim: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap temperate
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lanskap subartik
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lanskap subtropik
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lanskap alam permainan
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tukar tarikh: {ORANGE}{DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Bolehkan pengubahsuaian nilai-nilai pengeluaran: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Skim Warna Baru
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Paparkan skim warna am
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Paparkan skim warna keretapi
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Paparkan skim warna kenderaan jalanraya
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Paparkan skim warna kapal
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Paparkan skim warna pesawat
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pilih warna pertama untuk skim yang dipilih
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pilih warna kedua untuk skim yang dipilih
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pilih skim warna untuk menukarkanya atau berbilang skim dengan Ctrl+Klik. Klik kotak untuk menukarkan pakaian skim ini
 
 STR_LIVERY_DEFAULT                                              :Seragaman Biasa
+STR_LIVERY_STEAM                                                :Enjin Stim
+STR_LIVERY_DIESEL                                               :Enjin Disel
+STR_LIVERY_ELECTRIC                                             :Enjin Elektrik
+STR_LIVERY_MONORAIL                                             :Enjin Monorel
+STR_LIVERY_MAGLEV                                               :Enjin Maglev
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Gerabak Penumpang (Stim)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Gerabak Penumpang (Disel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Gerabak Penumpang (Elektrik)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Gerabak Penumpang (Monorel)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Gerabak Penumpang (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Gerabak Tambang Muatan
 STR_LIVERY_BUS                                                  :Bas
 STR_LIVERY_TRUCK                                                :Lori
@@ -1327,34 +1442,149 @@ STR_LIVERY_PASSENGER_TRAM                                       :Trem Penumpang
 STR_LIVERY_FREIGHT_TRAM                                         :Trem Tambang Muatan
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}Pilihan Wajah
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Batal pilihan wajah baru
+STR_FACE_OK_TOOLTIP                                             :{BLACK}Terima pilihan wajah baru
 
+STR_FACE_MALE_BUTTON                                            :{BLACK}Lelaki
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pilih wajah lelaki
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}Perempuan
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Pilih wajah perempuan
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Wajah Baru
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Janakan wajah secara rambang
+STR_FACE_ADVANCED                                               :{BLACK}Lanjutan
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Pilihan wajah lanjutan.
+STR_FACE_SIMPLE                                                 :{BLACK}Mudah
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Pilihan wajah mudah.
+STR_FACE_LOAD                                                   :{BLACK}Buka
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Buka wajah kegemaran anda
+STR_FACE_LOAD_DONE                                              :{WHITE}Wajah kegemaran anda telah dibuka daripada fail config OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pandang dan/atau tetapkan nombor wajah pemain
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pandang dan/atau tetapkan nombor wajah pemain
+STR_FACE_FACECODE_SET                                           :{WHITE}Kod baru nombor wajah telah ditetapkan.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat menetapkan nombor wajah pemain - nombor mesti di antara 0 dan 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Simpan
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kegemaran anda
+STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpankan sebagai kegemaran anda dalam fail config OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}Eropah
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pilih wajah eropah
+STR_FACE_AFRICAN                                                :{BLACK}Afrika
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah afrika
+STR_FACE_YES                                                    :Ya
 STR_FACE_NO                                                     :Tidak
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Benarkan misai atau anting-anting
+STR_FACE_HAIR                                                   :Rambut:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Tukar rambut
+STR_FACE_EYEBROWS                                               :Bulu kening:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Tukar bulu kening
+STR_FACE_EYECOLOUR                                              :Warna mata:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Tukar warna mata
+STR_FACE_GLASSES                                                :Cermin mata:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Pakaikan cermin mata
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Tukar cermin mata
+STR_FACE_NOSE                                                   :Hidung:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Tukar hidung
+STR_FACE_LIPS                                                   :Bibir:
+STR_FACE_MOUSTACHE                                              :Misai:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Tukar bibir atau misai
+STR_FACE_CHIN                                                   :Dagu:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Tukar dagu
+STR_FACE_JACKET                                                 :Jaket:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Tukar jaket
+STR_FACE_COLLAR                                                 :Kolar:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Tukar kolar
+STR_FACE_TIE                                                    :Tali leher:
+STR_FACE_EARRING                                                :Anting-anting:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tukar tali leher atau anting-anting
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Pemain berbilang
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Sambungan:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Pilih di antara permainan internet atau permainan Local Area Network (LAN)
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nama pemain:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pemain lain akan kenal anda dengan nama ini
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nama
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Name permainan
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Klien
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klien tersambung / klient maks{}Syarikat tersambung / syarikat maks
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Saiz peta
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Saiz peta permainan{}Klik untuk menyusun mengikut kawasan
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tarikh
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Tarikh semasa
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Tahun
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Jumlah tahun{}permainan ini sudah berjalan
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, versi pelayan, dan sebagainya
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik salah satu permainan dalam senarai untuk memilihnya
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Pelayan yang disambung anda sebelum ini:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik untuk memilih pelayan yang anda main sebelum ini
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MAKLUMAT PERMAINAN
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Bahasa: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Setpetak (Tileset): {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Saiz peta: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versi pelayan: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Alamat pelayan: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Tarikh permulaan: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Tarikh sekarang: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Dilindungi kata laluan!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}PELAYAN DI LUAR TALIAN (OFFLINE)
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}PELAYAN PENUH
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSI TIDAK SAMA
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF TIDAK SAMA
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Sertai permainan
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Kemaskini
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Kemaskini maklumat pelayan
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Cari pelayan
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cari rangkaian untuk pelayan
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Tambah pelayan
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Memasukkan pelayan ke dalam senarai yang sentiasa akan disemak untuk permainan yang sedang berjalan.
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Mulakan pelayan
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Mulakan pelayan sendiri
 
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Masukkan nama anda
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Masukkan alamat hos
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Mulakan permainan baru berbilang pemain
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nama permainan:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama permainan akan dipaparkan kepada pemain lain dalam menu pilihan permainan berbilang pemain
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Tetapkan kata laluan
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan anda dengan kata laluan jika anda tidak mahu ianya diakses awam
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Pilih peta:
+STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Peta yang manakah anda mahu main?
+STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Janakan permainan baru secara rambang
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (iklankan)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} pelanggan
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Klien maks:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tentukan bilangan klien maks. Tidak perlu semua slot diisi
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} syarikat
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks syarikat:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Hadkan bilangan syarikat dalam pelayan
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} penyaksi
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks penyaksi:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Hadkan bilangan penyaksi dalam pelayan
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa yang digunakan:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain lain akan tahu bahasa apa yang digunakan di pelayan ini
 
+STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Mulakan permainan
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulakan permainan baru di peta rambang, atau senario
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Buka Permainan
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Sambung permainan berbilang pemain yang tersimpan terlebih dahulu (pastikan anda menyambung sebagai pemain yang betul)
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama untuk permainan rangkaian
 
 # Network game languages
 ############ Leave those lines in this order!!
@@ -1362,77 +1592,236 @@ STR_NETWORK_LANG_ANY                                            :Mana-mana
 STR_NETWORK_LANG_ENGLISH                                        :Inggeris
 STR_NETWORK_LANG_GERMAN                                         :Jerman
 STR_NETWORK_LANG_FRENCH                                         :Perancis
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgaria
 STR_NETWORK_LANG_CHINESE                                        :Cina
+STR_NETWORK_LANG_CZECH                                          :Czech
+STR_NETWORK_LANG_DANISH                                         :Denmark
 STR_NETWORK_LANG_DUTCH                                          :Belanda
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finland
+STR_NETWORK_LANG_HUNGARIAN                                      :Hungary
+STR_NETWORK_LANG_ICELANDIC                                      :Iceland
+STR_NETWORK_LANG_ITALIAN                                        :Itali
+STR_NETWORK_LANG_JAPANESE                                       :Jepun
+STR_NETWORK_LANG_KOREAN                                         :Korea
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituania
+STR_NETWORK_LANG_NORWEGIAN                                      :Norway
+STR_NETWORK_LANG_POLISH                                         :Poland
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugis
+STR_NETWORK_LANG_ROMANIAN                                       :Romania
+STR_NETWORK_LANG_RUSSIAN                                        :Rusia
+STR_NETWORK_LANG_SLOVAK                                         :Slovak
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenia
+STR_NETWORK_LANG_SPANISH                                        :Sepanyol
+STR_NETWORK_LANG_SWEDISH                                        :Sweden
+STR_NETWORK_LANG_TURKISH                                        :Turki
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrain
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Croatia
+STR_NETWORK_LANG_CATALAN                                        :Catalan
+STR_NETWORK_LANG_ESTONIAN                                       :Estonia
+STR_NETWORK_LANG_GALICIAN                                       :Galician
+STR_NETWORK_LANG_GREEK                                          :Yunani
+STR_NETWORK_LANG_LATVIAN                                        :Latvia
 ############ End of leave-in-this-order
 
 # Network game lobby
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Ruang tunggu berbilang pemain
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Sedang bersedia untuk menyambung: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Senarai semua syarikat yang sedang beroperasi. Anda boleh sertai salah satu syarikat atau mulakan syarikat yang baru jika ada slot kosong
 
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}MAKLUMAT SYARIKAT
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nama syarikat: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Ditubuhkan: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Nilai syarikat: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Baki sekarang: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Pendapatan tahun lepas: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Prestasi: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Kenderaan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stesen-stesen: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Pemain: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Syarikat baru
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Mulakan syarikat baru
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Saksikan permainan
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Saksikan permainan sebagai seorang penyaksi
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Sertai syarikat
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Bantu mengurus syarikat ini
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Menyambung...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Menyambung..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Memberi kebenaran..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Sedang menunggu..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Sedang memuat turun peta..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Sedang memproses data..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Sedang mendaftar..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Sedang memperolehi maklumat permainan..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Sedang memperolehi maklumat syarikat..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klien dihadapan anda
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} dimuat turun setakat ini
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Terputus
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Pelayan dilindungi. Masukkan kata laluan
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Syarikat ini dilindungi. Masukkan kata laluan
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Senarai klien
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Saksi
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Syarikat baru
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :Tendang
+STR_NETWORK_CLIENTLIST_BAN                                      :Larang
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Beri wang
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Cakap kepada semua
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Cakap kepada syarikat
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Pesanan peribadi
 
+STR_NETWORK_SERVER                                              :Pelayan
+STR_NETWORK_CLIENT                                              :Klien
+STR_NETWORK_SPECTATORS                                          :Penyaksi
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah wang anda hendak memberikan
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata laluan ini
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Berikan syarikat kata laluan yang baru
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kata laluan syarikat
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Kata laluan syarikat yang tersedia
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gunakan kata laluan syarikat ini sebagai yang tersedia untuk syarikat baru
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}Sertai
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Sertai dan main sebagai syarikat ini
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata laluan
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Lindungi syarikat anda dengan kata laluan untuk mengelak daripada penyertaan pengguna tanpa izin.
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Tetapkan kata laluan syarikat
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Hantar
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Pasukan] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Peribadi] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Semua] :
 
+STR_NETWORK_CHAT_COMPANY                                        :[Pasukan] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Pasukan] Kepada {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Peribadi] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Peribadi] Kepada {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Semua] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Masukkan teks untuk perbincangan rangkaian
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Alat rangkaian tidak dijumpa atau dikumpul tanpa ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Tidak boleh jumpa permainan rangkaian
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Pelayan itu tidak menjawabkan permohonan ini
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Tidak boleh sambung kerana NewGRF yang tidak sama
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Permainan rangkaan telah dihilang
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinkronisasi permainan rangkaian gagal
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Sambungan permainan rangkaian terputus
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Simpanan permainan tidak dapat dibuka
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Tidak boleh memulakan pelayan ini
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Tidak boleh bersambung
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Penyambungan #{NUM} 'timed out'
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Kesilapan protokol telah dikesan dan penyambungan ditutup
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versi klien ini tidak padan dengan versi pelayan
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Kata laluan salah
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Pelayan ini penuh
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Anda telah dilarang daripada main di pelayan ini
 STR_NETWORK_ERROR_KICKED                                        :{WHITE} Anda telah ditendang keluar daripada permainan ini
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Penipuan (Cheats) tidak dibenarkan di pelayan ini
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :kesilapan am
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :kesilapan sinkronisasi (desync)
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :tidak boleh membuka peta
-STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambungan terhilang
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambungan terputus
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :kesilapan protokol
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF tidak padan
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :tiada kebenaran
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :paket yang ganjil telah diterima
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versi yang salah
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nama sudah digunakan
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :kata laluan salah
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :salah syarikat dalam DoCommand
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :ditendang oleh pelayan
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :cuba menggunakan penipuan (cheats)
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :pelayan penuh
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dihentikan ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih dihentikan ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan bersambung ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pemain tidak mencukupi
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menyambungkan klien
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :sedang tinggalkan permainan
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} telah menyertai permainan ini
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} telah menyertai permainan ini (Klien #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} telah menyertai syarikat #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} telah menjadi penyaksi
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} telah menubuhkan syarikat baru (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sudah meninggalkan permainan ini ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah menukar namanya kepada {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi syarikat anda {2:CURRENCY}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda memberi {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Pelayan telah menutup sesi ini
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Pelayan sedang dimulakan semula...{}Harap bersabar...
 
 # Content downloading window
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pengingkatan
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter tag/nama:
+STR_CONTENT_TITLE                                               :{WHITE}Kandungan sedang dimuat turun
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Jenis
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Jenis kandungan
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nama
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nama kandungan
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klik di garisan untuk melihat butiran{}Tandakan kotak supaya dipilih untuk dimuat turun
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pilih semua
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Tandakan semua kandungan untuk dimuat turun
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih peningkatan (upgrades)
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Saringan tag/nama:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Muat turun
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Mulai muat turun kandungan yang ditanda
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}MAKLUMAT KANDUNGAN
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Kandungan ini tidak diketahui dan tidak boleh dimuat turunkan ke OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini ialah penggantian untuk {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nama: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versi: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Penerangan: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Jenis: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Saiz download: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Dipilih kerana: {WHITE}{STRING}
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafik asas
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_SCENARIO                                       :Senario
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bunyi asas
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Muzik asas
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Meminta fail-fail...
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tidak boleh menyambung ke pelayan kontent...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... sambungan hilang
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail tidak boleh ditulis
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Pilihan transparansi
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Teluskan sistem aliran elektrik atau tidak. Ctrl+Klik untuk mengunci.
 
 # Base for station construction window(s)
@@ -1442,10 +1831,13 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-berkalan: {GOLD}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabungkan stesen
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bina stesen asingan
 
 
 # Rail construction toolbar
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bina rel. Ctrl mengaktifkan bina/buang untuk pembinaan kereta api
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bina stesen keretapi. Ctrl untuk menghubungkan stesen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bina isyarat keretapi. Ctrl untuk menukar antara semafor/isyarat lampu{}Tarik untuk membina isyarat sepanjang landasan yang lurus. Ctrl untuk membina isyarat sehingga persimpangan{}Ctrl+Klik untuk memapar atau memadam tetingkap pilihan isyarat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bina jambatan keretapi
@@ -1462,7 +1854,7 @@ STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Penghala
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Bilangan landasan
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Pilihkan bilangan platform untuk stesen keretapi
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Kepanjangan platform
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilihkan panjang stesen keretapi
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilih kepanjangan stesen keretapi
 
 
 
@@ -1483,18 +1875,20 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bina jam
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bina jambatan trem
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bina terowong jalan raya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bina terowong trem
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Togol bina/buang untuk pembinaan jalan raya
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bina atau musnah untuk pembinaan landasan trem
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bina atau buang untuk untuk pembinaan jalan raya
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bina atau buang untuk pembinaan landasan trem
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientasi Depot Kenderaan Jalan
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Penghalaan Depoh Kenderaan Jalanraya
 
 # Road vehicle station construction window
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bina terusan.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bina kunci air
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bina pelabuhan kapal. Ctrl untuk menghubungkan stesen
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Letak dan gunakan pelampung sebagai tandatuju
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bina akueduk
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Letak sungai.
 
 # Ship depot construction window
@@ -1520,31 +1914,31 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pokok-pokok
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Sila pilihkan jenis pokok untuk ditanam
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tanam pokok secara rawak
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Tanam pokok-pokok secara rawak atas lanskap
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tanam pokok secara rambang
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Tanam pokok-pokok secara rambang atas lanskap
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pembentukan Tanah
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Letak kawasan batu-batu atas lanskap
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Letak rumah api
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun {}Tekan dan kekalkan CTRL untuk menanggalkannya
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun {}Tekan dan kekalkan CTRL untuk membuangkannya
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Letak alat pemancar
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunkan penyebaran kawasan tanah untuk dinaikkan/diturunkan
-STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Hasilkan secara rawak
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Janakan tanah secara rambang
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Bentukkan lanskap semula
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Keluarkan semua harta pemain dari peta
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Bentukkan lanskap semula
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Pastikah and untuk membuang semua harta milik pemain?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Pastikah anda untuk membuang semua harta milik pemain?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pembentukan Bandar
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Bandar Baru
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Binakan bandar baru
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Bina Bandar Secara Rawak
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bina bandar di tempat yang rawak
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Banyak bandar rawak
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Bina Bandar Secara Rambang
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bina bandar di tempat yang rambang
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Banyak bandar rambang
 
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Saiz bandar:
@@ -1561,16 +1955,16 @@ STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Asal
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Jalan raya lebih baik
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grid 2x2
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Grid 3x3
-STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Rawak
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Rambang
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Biaya industri baru
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Many industri rawak
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Banyak industri rambang
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maklumat Kawasan Tanah
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Harga untuk membersihkan: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Harga untuk membersihkan: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Kos untuk lapangkan: {LTBLUE}N/A
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Kos untuk lapangkan: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Tidak diperolehi
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Pemilik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Pemilik jalan: {LTBLUE}{STRING}
@@ -1592,7 +1986,7 @@ STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalan
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan berlampu
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Jalan dibarisi pokok
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depot kenderaan jalan
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Simpangan jalan/landasan
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Jalanraya/lintasan keretapi
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Landasan trem
 
 # Houses come directly from their building names
@@ -1617,12 +2011,13 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Depot kapal
 
 
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akueduk
 
 STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Ibu pejabat syarikat
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Tentang OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hakcipta terpelihara{COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hakcipta asal {COPYRIGHT} 1995 Chris Sawyer, Hakcipta terpelihara
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versi {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2010 The OpenTTD team
 
@@ -1674,7 +2069,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tukarkan
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bandar-bandar
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Senarai bandar - klik nama bandar untuk memusatkan pandangan ke bandar. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi bandar
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Senarai bandar - klik nama bandar untuk memusatkan pemandangan ke bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 STR_TOWN_POPULATION                                             :{BLACK}Jumlah penduduk dunia: {COMMA}
 
 # Town view window
@@ -1708,7 +2103,7 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Membeli hak pen
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk memusatkan pandangan kepada industri/bandar. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi bandar
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk memusatkan pemandangan kepada industri/bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 
 # Station list window
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua kemudahan
@@ -1729,13 +2124,13 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima
 ############ range for rating starts
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Pusatkan pandangan utama ke lokasi stesen. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi stesen
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Pusatkan pemandangan utama ke lokasi stesen. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi stesen
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Tukarkan nama stesen
 
 
 
 # Waypoint/buoy view window
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Tengahkan pandangan utama kepada lokasi pelampung. Ctrl+Klik untuk membuka tetingkap pandangan di lokasi pelampung
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama kepada lokasi pelampung. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi pelampung
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Tukar nama pelampung
 
 
@@ -1773,7 +2168,7 @@ STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Kenderaa
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Kapal sedia ada
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pesawat sedia ada
 
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Kendali senarai
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uruskan senarai
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Hantar arahan pada semua kenderaan didalam senarai
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Tukar kenderaan
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Hantar untuk Diservis
@@ -1821,7 +2216,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ubahsuai
 
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua keretapi di dalam depoh
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik untuk menghentikan semua kenderaan di dalam depot
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik untuk menghentikan semua kenderaan jalanraya di dalam depoh
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klik untuk menghentikan semua kapal di dalam depoh
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klik untuk menghentikan semua pesawat di dalam hangar
 
@@ -1957,38 +2352,81 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaa
 
 
 # AI debug window
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 
 
 # AI configuration window
 
 
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat AI yang lain
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Aturcara
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Aturcara parameter AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Ai yang tersedia
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk pilih AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Penulis: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versi: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
+STR_AI_LIST_ACCEPT                                              :{BLACK}Terima
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih AI yang diserlahkan
+STR_AI_LIST_CANCEL                                              :{BLACK}Batal
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan ubah AI
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
+STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
+STR_AI_SETTINGS_RESET                                           :{BLACK}Semula
 
 # Vehicle loading indicators
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Kos: {CURRENCY}
 STR_INCOME_FLOAT_COST                                           :{RED}Harga: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Kos Jangkaan: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Untung Jangkaan: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Pendapatan: {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pendapatan: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Pindahkan: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Pindahkan: {CURRENCY}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Jangkaan Kos: {CURRENCY}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Jangkaan Keuntungan: {CURRENCY}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Penyimpanan sedang berlaku,{}sila tunggu sehingga selesai!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Penyimpanan automatik gagal dilakukan
+STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Gagal dalam membaca cakera
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Penyimpanan Permainan Gagal{}{STRING}
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Tidak boleh membuang fail
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Pembukaan Permainan Gagal{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Kesilapan dalaman: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Simpanan permainan yang rosak - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Simpanan permainan ini telah dibuat dengan versi yang lebih baru
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail tidak boleh dibaca
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fail tidak boleh ditulis
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan ketulusan data gagal
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Permainan ini telah disimpan dengan versi yang tidak mempunyai sokongan trem. Semua trem telah dibuang.
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Janaan peta dibatalkan...{}... tiada lokasi bandar yang sesuai
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... senario ini tidak mempunyai bandar
 
+STR_ERROR_PNGMAP                                                :{WHITE}Tidak boleh membuka lanskap daripada PNG...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fail tidak dapat dijumpa.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tidak dapat menukar jenis imej. Imej PNG 8 atau 24-bit diperlukan.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... ada kesilapan. Maaf ya. (mungkin fail rosak)
 
+STR_ERROR_BMPMAP                                                :{WHITE}Tidak boleh membuka lanskap daripada BMP...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tidak dapat menukar jenis imej.
 
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Amaran skala
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Menukar saiz source map dengan terlalu banyak tidak disyorkan. Teruskan janaan?
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Tangkapan skrin berjaya disimpan sebagai '{STRING}'
@@ -2003,95 +2441,206 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Keluar p
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Terlalu hampir ke tepi peta
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Wang tidak mencukupi - {CURRENCY} diperlukan
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tanah rata diperlukan
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tanah mencerun ke arah yang salah
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak boleh lakukan...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bangunan mesti diruntuhkan dahulu
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak boleh lapangkan...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... kawasan tidak sesuai
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... sudah dibina
 STR_ERROR_OWNED_BY                                              :{WHITE}... dimiliki oleh {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... kawasan dimiliki oleh syarikat lain
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama mesti unik
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} menghalang
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} majlis tempatan tidak membenarkannya
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Pihak berkuasa {TOWN} tidak boleh membenarkan satu lagi lapangan terbang dibina di bandar ini
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Pihak berkuasa {TOWN} tidak membenarkan pembinaan lapangan terbang kerana khuatir dengan pencemaran bunyi
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cubaan anda telah
+STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ditangkap oleh penyiasat Badan Pencegah Rasuah
 
 # Leveling errors
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat ditinggikan...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat direndahkan...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat diratakan...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Penggalian akan merosakkan terowong
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... sudah berada di paras laut
+STR_ERROR_TOO_HIGH                                              :{WHITE}... terlalu tinggi
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... sudah rata
 
 # Company related errors
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nama syarikat tidak dapat ditukar...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nama pengurus tidak boleh ditukar...
 
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... saiz pinjaman maksimum yang dibenarkan ialah {CURRENCY}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tidak boleh meminjam wang lagi...
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tiada pinjaman untuk dibayar semula
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} diperlukan
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak boleh membayar semula pinjaman...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak boleh memberi wang yang dipinjamkan oleh bank...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Tidak boleh beli syarikat ini...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ibu pejabat syarikat tidak dapat dibina...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Tidak boleh beli 25% saham dalam syarikat ini...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Tidak boleh jual 25% saham dalam syarikat ini...
+STR_ERROR_PROTECTED                                             :{WHITE}Syarikat ini tidak cukup berusia untuk berpasaran saham...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak boleh bina bandar
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nama bandar tidak boleh ditukar...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nama bandar tidak dapat ditukar...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak boleh membina bandar di sini...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu hampir ke hujung peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu hampir ke bandar lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... bandar terlalu banyak
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...ruang tidak mencukupi di dalam peta
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Advanced Settings->Economy->Towns.
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Kerja jalanraya sedang berjalan
 
 # Industry related errors
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak boleh menjana industri..
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak boleh menjana industri...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak boleh bina {STRING} di sini...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Industri jenis ini tidak dapat dibina di sini...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... terlalu hampir dengan industri lain
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...mesti membangunkan bandar dahulu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... hanya satu dibenarkan untuk setiap bandar
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya boleh dibina di bandar dengan jumlah penduduk sekurang-kurangnya 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya boleh dibina di kawasan hutan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... hanya boleh dibina di kawasan gurun
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya boleh dibina di bandar
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... hanya boleh diletak berhampiran sempadan peta
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... hutan hanya boleh ditanam di atas paras garisan salji
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Pelabuhan tidak boleh dibina di sini...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Stesen keretapi tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Stesen bas tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Stesen lori tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Stesen penumpang trem tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Stesen tambang muatan trem tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Pelabuhan tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lapangan terbang tidak dapat dibina di sini...
 
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Lebih daripada satu stesen/kawasan muatan bersempadanan
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stesen terlalu meluas
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... stesen yang tidak seragam tidak dibenarkan
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlampau stesen/kawasan muatan
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlampau banyak bahagian-bahagian stesen keretapi
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlampau banyak stesen bas
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Terlampau banyak stesen lori
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Terlalu hampir dengan stesen keretapi lain
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Terlalu hampir dengan stesen/kawasan muatan lain
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu hampir dengan pelabuhan lain
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu hampir dengan lapangan terbang lain
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nama stesen tidak dapat ditukar...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... jalanraya ini dimiliki oleh bandar
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... jalanraya menghala ke arah yang salah
 
 # Station destruction related errors
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Bahagian stesen ini tidak dapat dibuang...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Stesen keretapi mesti dirobohkan dahulu
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tidak boleh musnahkan stesen bas...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak boleh musnahkan stesen lori...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Tidak boleh musnahkan stesen trem penumpang...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Tidak boleh musnahkan stesen trem tambang muatan...
 
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Stesen keretapi mesti dirobohkan dahulu
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Stesen bas mesti dirobohkan dahulu
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Stesen lori mesti dirobohkan dahulu
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Stesen penumpang trem mesti dirobohkan dahulu
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Stesen tambang muatan trem mesti dirobohkan dahulu
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Pelabuhan mesti dirobohkan dahulu
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lapangan terbang mesti dirobohkan dahulu
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Lebih daripada satu tandatuju bersempadanan
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Terlalu hampir dengan tandatuju lain
 
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Pelampung tidak boleh diletak di sini...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Tandatuju keretapi tidak dapat dibina di sini...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Pelampung tidak dapat diletak di sini...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nama tandatuju tidak dapat ditukar...
 
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tandatuju keretapi tidak dapat dibuang di sini...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Tandatuju keretapi mesti dibuang terlebih dahulu
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... pelampung menghalang
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... pelampung sedang diguna!
 
 # Depot related errors
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Depoh keretapi tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Depoh kenderaan jalanraya tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Depoh trem tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Depoh kapal tidak dapat dibina di sini...
 
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Keretapi mesti dihentikan di dalam depoh
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mesti dihentikan di dalam depoh kenderaan jalanraya
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal mesti dihentikan di dalam depoh
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Pesawat mesti dihentikan di dalam hangar
 
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Keretapi hanya boleh diubah apabila dihentikan di dalam depoh
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Keretapi terlalu panjang
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kenderaan tidak boleh ditukar arah...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kenderaan berbilang unit tidak dapat diubah arah...
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Landasan tidak secocok
 
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kenderaan tidak dapat digerakkan...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Enjin di belakang sentiasa akan mengikuti enjin depan
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Laluan ke depoh terdekat tidak dapat dijumpa
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Depoh terdekat tidak dapat dikesan
 
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis depoh salah
 
 # Autoreplace related errors
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} terlalu panjang selepas diganti
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Peraturan penggantian/pembaharuan automatik tidak ditetapkan.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(had wang)
 
 # Rail construction errors
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Gabungan landasan yang mustahil
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tiada landasan keretapi yang sesuai
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Landasan keretapi mesti dibuang terlebih dahulu
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Jalanraya adalah sehala atau dihalang
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Isyarat tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Landasan keretapi tidak dapat dibina di sini...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Landasan keretapi tidak dapat dibuang...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Isyarat tidak dapat dibuang dari sini...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Isyarat tidak dapat ditukar di sini...
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tidak boleh tukar jenis landasan di sini...
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Jalanraya mesti dibuang dahulu
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... tidak boleh ada persimpangan di jalan sehala
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Jalanraya tidak dapat dibina di sini...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Landasan trem tidak dapat dibina di sini...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Jalanraya tidak dapat dibuang dari sini...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Landasan trem tidak dapat dibuang dari sini...
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Terusan tidak dapat di bina di sini...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kunci air tidak dapat dibina di sini...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tidak boleh letak sungai di sini...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mesti dibina di permukaan air
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... tidak boleh dibina di permukaan air
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Terusan mesti dirobohkan dahulu
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akueduk tidak dapat dibina di sini...
 
 # Tree related errors
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Pokok tidak boleh ditanam di sini...
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... sudah ada pokok di sini
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Pokok tidak dapat ditanam di sini...
 
 # Bridge related errors
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Jambatan tidak dapat dibina di sini...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Jambatan mesti dirobohkan dahulu
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Tidak boleh mula dan tamat di petak yang sama
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Kedua-dua kepala jambatan bukan pada paras yang sama
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Jambatan terlalu rendah untuk rupa bumi ini
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Mula dan penghujung mesti pada garisan yang sama
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua-dua penghujung jambatan mesti berada di atas tanah
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Mula dan hujung mesti pada garisan yang sama
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua-dua kepala jambatan mesti berada di atas tanah
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Terowong tidak dapat dibina di sini...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Tapak tidak sesuai untuk pintu masuk terowong
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Terowong mesti dimusnahkan dahulu
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Terowong mesti dirobohkan dahulu
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Terdapat sebuah lagi terowong menghalang
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Penghujung terowong akan keluar di luar peta
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tanah tidak dapat dikorek untuk pembinaan penghujung terowong
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Hujung terowong akan keluar di luar batasan peta
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tanah tidak dapat dikorek untuk pembinaan hujung terowong
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objek sedang menghalang
@@ -2154,13 +2703,13 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kapal ti
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Pesawat tidak sedia
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kenderaan dalam permainan
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar jarak waktu perkhidmatan...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar tempoh perkhidmatan...
 
 STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Kenderaan yang dimusnah tidak dapat dijual...
 STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Kenderaan yang dimusnah tidak boleh diubahsuai...
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Keretapi tidak boleh melanggar signal kerana kemungkinan bahaya...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Keretapi tidak boleh melanggar isyarat kerana terdapat kemungkinan bahaya...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Keretapi tidak boleh ditukar arah...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Landasan tidak mempunyai sistem aliran elektrik, oleh itu keretapi tidak dapat bergerak
 
@@ -2174,7 +2723,7 @@ STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Arahan t
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Arahan baru tidak dapat dimasukkan...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Arahan tidak boleh dibuang...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Arahan tidak boleh diubahsuai...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Tidak boleh susun semula arahan ini...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Tidak boleh menyusun semula arahan ini...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Tidak boleh langkau ke arahan semasa...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Tidak boleh langkau ke arahan tersebut...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kenderaan tidak boleh pergi ke semua stesen
@@ -2192,9 +2741,9 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kenderaa
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... papan tanda terlalu banyak
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Papan tanda tidak boleh diletak di sini...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nama papan tanda tidak boleh ditukar...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Papan tanda tidak boleh dibuang...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Papan tanda tidak dapat diletak di sini...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nama papan tanda tidak dapat ditukar...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Papan tanda tidak dapat dibuang...
 
 ##id 0x2000
 # Town building names
@@ -2591,7 +3140,7 @@ STR_DEFAULT_SIGN_NAME                                           :Papan tanda
 STR_COMPANY_SOMEONE                                             :seseorang
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Penonton, {1:STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Penyaksi, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

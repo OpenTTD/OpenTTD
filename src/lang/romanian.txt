@@ -3205,6 +3205,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Alege an
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depanare IA
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Numele Inteligenţei Artificiale
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA

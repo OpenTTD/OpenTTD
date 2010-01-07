@@ -3204,6 +3204,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Välj å
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namn på datorspelaren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ladda om datorspelaren
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppa datorspelaren, ladda om scriptet och starta sedan om datorspelaren
