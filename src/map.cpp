@@ -245,9 +245,9 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, v
 		 * separately, as the pattern of uneven sides requires to go around the center */
 		if (proc(*tile, user_data)) return true;
 
-		/* If tile test is not successful, get one tile down and left,
+		/* If tile test is not successful, get one tile up,
 		 * ready for a test in first circle around center tile */
-		*tile = TILE_ADD(*tile, TileOffsByDir(DIR_W));
+		*tile = TILE_ADD(*tile, TileOffsByDir(DIR_N));
 		return CircularTileSearch(tile, size / 2, 1, 1, proc, user_data);
 	} else {
 		return CircularTileSearch(tile, size / 2, 0, 0, proc, user_data);
@@ -261,7 +261,8 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, v
  * without a hole, set either h or w to zero.
  * Every tile will be tested by means of the callback function proc,
  * which will determine if yes or no the given tile meets criteria of search.
- * @param tile to start the search from. Upon completion, it will return the tile matching the search
+ * @param tile to start the search from. Upon completion, it will return the tile matching the search.
+ *  This tile should be directly north of the hole (if any).
  * @param radius How many tiles to search outwards. Note: This is a radius and thus different
  *                from the size parameter of the other CircularTileSearch function, which is a diameter.
  * @param w the width of the inner rectangle
