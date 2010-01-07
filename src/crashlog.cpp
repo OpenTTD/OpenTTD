@@ -138,6 +138,9 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 #	include "sdl.h"
 #	include <SDL.h>
 #endif /* WITH_SDL */
+#ifdef WITH_ZLIB
+# include <zlib.h>
+#endif
 
 char *CrashLog::LogLibraries(char *buffer, const char *last) const
 {
@@ -184,6 +187,10 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 		buffer += seprintf(buffer, last, " SDL:        %d.%d.%d\n", v->major, v->minor, v->patch);
 	}
 #endif /* WITH_SDL */
+
+#ifdef WITH_ZLIB
+	buffer += seprintf(buffer, last, " Zlib:       %s\n", zlibVersion());
+#endif
 
 	buffer += seprintf(buffer, last, "\n");
 	return buffer;
