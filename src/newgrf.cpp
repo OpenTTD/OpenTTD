@@ -2908,13 +2908,15 @@ static void NewSpriteGroup(byte *buf, size_t len)
 
 				case GSF_TOWNHOUSE:
 				case GSF_INDUSTRYTILES: {
-					byte num_sprite_sets      = _cur_grffile->spriteset_numents;
+					byte num_spriteset_ents   = _cur_grffile->spriteset_numents;
+					byte num_spritesets       = _cur_grffile->spriteset_numsets;
 					byte num_building_sprites = max((uint8)1, type);
 					uint i;
 
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
 					act_group = group;
-					group->num_building_stages = num_sprite_sets;
+					/* num_building_stages should be 1, if we are only using non-custom sprites */
+					group->num_building_stages = max((uint8)1, num_spriteset_ents);
 					group->dts = CallocT<DrawTileSprites>(1);
 
 					/* Groundsprite */
@@ -2927,9 +2929,16 @@ static void NewSpriteGroup(byte *buf, size_t len)
 					if (HasBit(group->dts->ground.pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
-						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->dts->ground.sprite, 0, 14) * num_sprite_sets;
-						SB(group->dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
-						ClrBit(group->dts->ground.pal, 15);
+						uint spriteset = GB(group->dts->ground.sprite, 0, 14);
+						if (num_spriteset_ents == 0 || spriteset >= num_spritesets) {
+							grfmsg(1, "NewSpriteGroup: Spritelayout uses undefined custom spriteset %d", spriteset);
+							group->dts->ground.sprite = SPR_IMG_QUERY;
+							group->dts->ground.pal = PAL_NONE;
+						} else {
+							SpriteID sprite = _cur_grffile->spriteset_start + spriteset * num_spriteset_ents;
+							SB(group->dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
+							ClrBit(group->dts->ground.pal, 15);
+						}
 					}
 
 					group->dts->seq = CallocT<DrawTileSeqStruct>(num_building_sprites + 1);
@@ -2947,9 +2956,16 @@ static void NewSpriteGroup(byte *buf, size_t len)
 						if (HasBit(seq->image.pal, 15)) {
 							/* Bit 31 set means this is a custom sprite, so rewrite it to the
 							 * last spriteset defined. */
-							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image.sprite, 0, 14) * num_sprite_sets;
-							SB(seq->image.sprite, 0, SPRITE_WIDTH, sprite);
-							ClrBit(seq->image.pal, 15);
+							uint spriteset = GB(seq->image.sprite, 0, 14);
+							if (num_spriteset_ents == 0 || spriteset >= num_spritesets) {
+								grfmsg(1, "NewSpriteGroup: Spritelayout uses undefined custom spriteset %d", spriteset);
+								seq->image.sprite = SPR_IMG_QUERY;
+								seq->image.pal = PAL_NONE;
+							} else {
+								SpriteID sprite = _cur_grffile->spriteset_start + spriteset * num_spriteset_ents;
+								SB(seq->image.sprite, 0, SPRITE_WIDTH, sprite);
+								ClrBit(seq->image.pal, 15);
+							}
 						}
 
 						if (type > 0) {

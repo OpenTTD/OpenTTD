@@ -472,11 +472,11 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	NewHouseResolver(&object, house_id, ti->tile, Town::GetByTile(ti->tile));
 
 	group = SpriteGroup::Resolve(hs->spritegroup, &object);
-	const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-	if (group == NULL || group->type != SGT_TILELAYOUT || tlgroup->num_building_stages == 0) {
+	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		return;
 	} else {
 		/* Limit the building stage to the number of stages supplied. */
+		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 		byte stage = GetHouseBuildingStage(ti->tile);
 		stage = Clamp(stage - 4 + tlgroup->num_building_stages, 0, tlgroup->num_building_stages - 1);
 		DrawTileLayout(ti, tlgroup, stage, house_id);
