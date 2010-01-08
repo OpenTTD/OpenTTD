@@ -3183,7 +3183,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (uint i = 0; i < idcount; i++) {
-			StationSpec *statspec = _cur_grffile->stations[stations[i]];
+			StationSpec *statspec = _cur_grffile->stations == NULL ? NULL : _cur_grffile->stations[stations[i]];
 
 			if (statspec == NULL) {
 				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
@@ -3198,7 +3198,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		StationSpec *statspec = _cur_grffile->stations[stations[i]];
+		StationSpec *statspec = _cur_grffile->stations == NULL ? NULL : _cur_grffile->stations[stations[i]];
 
 		if (statspec == NULL) {
 			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
@@ -3227,6 +3227,11 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
+	if (_cur_grffile->housespec == NULL) {
+		grfmsg(1, "TownHouseMapSpriteGroup: No houses defined, skipping");
+		return;
+	}
+
 	for (uint i = 0; i < idcount; i++) {
 		HouseSpec *hs = _cur_grffile->housespec[houses[i]];
 
@@ -3253,6 +3258,11 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
+	if (_cur_grffile->industryspec == NULL) {
+		grfmsg(1, "IndustryMapSpriteGroup: No industries defined, skipping");
+		return;
+	}
+
 	for (uint i = 0; i < idcount; i++) {
 		IndustrySpec *indsp = _cur_grffile->industryspec[industries[i]];
 
@@ -3278,6 +3288,11 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
+
+	if (_cur_grffile->indtspec == NULL) {
+		grfmsg(1, "IndustrytileMapSpriteGroup: No industry tiles defined, skipping");
+		return;
+	}
 
 	for (uint i = 0; i < idcount; i++) {
 		IndustryTileSpec *indtsp = _cur_grffile->indtspec[indtiles[i]];
