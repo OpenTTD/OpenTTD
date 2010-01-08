@@ -15,6 +15,9 @@
 #define NEWGRF_COMMONS_H
 
 #include "core/bitmath_func.hpp"
+#include "tile_cmd.h"
+#include "transparency.h"
+#include "sprite.h"
 
 #include "table/sprites.h"
 
@@ -145,5 +148,7 @@ static inline SpriteID GroundSpritePaletteTransform(SpriteID image, SpriteID pal
 		return PAL_NONE;
 	}
 }
+
+void DrawTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, byte stage, SpriteID default_palette);
 
 #endif /* NEWGRF_COMMONS_H */

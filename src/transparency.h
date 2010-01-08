@@ -13,6 +13,7 @@
 #define TRANSPARENCY_H
 
 #include "gfx_func.h"
+#include "openttd.h"
 
 /**
  * Transparency option bits: which position in _transparency_opt stands for which transparency.

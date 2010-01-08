@@ -19,6 +19,7 @@
 #include "newgrf_commons.h"
 #include "station_map.h"
 #include "tree_map.h"
+#include "viewport_func.h"
 #include "core/mem_func.hpp"
 
 /** Constructor of generic class
@@ -321,4 +322,43 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 	Slope tileh = GetTileSlope(tile, &z);
 	byte terrain_type = GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
+}
+
+/**
+ * Draws a building including all subsprites on a tile.
+ * @param ti The tile to draw on
+ * @param dts Sprite and subsprites to draw
+ * @param to The transparancy bit that toggles drawing of these sprites
+ * @param stage The construction stage (0-3)
+ * @param default_palette The default recolour sprite to use (typically company colour resp. random industry/house colour)
+ */
+void DrawTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, byte stage, SpriteID default_palette)
+{
+	const DrawTileSeqStruct *dtss;
+	foreach_draw_tile_seq(dtss, dts->seq) {
+		if (GB(dtss->image.sprite, 0, SPRITE_WIDTH) == 0) continue;
+
+		SpriteID image = dtss->image.sprite;
+		SpriteID pal   = dtss->image.pal;
+
+		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
+		if (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
+
+		if (IS_CUSTOM_SPRITE(image)) image += stage;
+
+		pal = SpriteLayoutPaletteTransform(image, pal, default_palette);
+
+		if ((byte)dtss->delta_z != 0x80) {
+			AddSortableSpriteToDraw(
+				image, pal,
+				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+				dtss->size_x, dtss->size_y,
+				dtss->size_z, ti->z + dtss->delta_z,
+				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to)
+			);
+		} else {
+			/* For industries and houses delta_x and delta_y are unsigned */
+			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
+		}
+	}
 }
