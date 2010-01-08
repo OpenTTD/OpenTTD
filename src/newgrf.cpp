@@ -4168,7 +4168,7 @@ static void SkipIf(byte *buf, size_t len)
 		_skip_sprites = -1;
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
-		if (_cur_grfconfig->status != GCS_ACTIVATED) {
+		if (_cur_grfconfig->status != (_cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED)) {
 			_cur_grfconfig->status = GCS_DISABLED;
 			ClearTemporaryNewGRFData(_cur_grffile);
 		}
