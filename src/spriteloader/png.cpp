@@ -28,7 +28,7 @@ static void PNGAPI png_my_read(png_structp png_ptr, png_bytep data, png_size_t l
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
 	DEBUG(sprite, 0, "ERROR (libpng): %s - %s", message, (char *)png_get_error_ptr(png_ptr));
-	longjmp(png_ptr->jmpbuf, 1);
+	longjmp(png_jmpbuf(png_ptr), 1);
 }
 
 static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
@@ -105,8 +105,8 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 			if (strcmp("y_offs", text_ptr[i].key) == 0) sprite->y_offs = strtol(text_ptr[i].text, NULL, 0);
 		}
 
-		sprite->height = info_ptr->height;
-		sprite->width  = info_ptr->width;
+		sprite->height = png_get_image_height(png_ptr, info_ptr);
+		sprite->width  = png_get_image_width(png_ptr, info_ptr);
 		sprite->AllocateData(sprite->width * sprite->height);
 	}
 
@@ -139,14 +139,14 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		pixelsize = sizeof(uint8);
 	}
 
-	png_bytep row_pointer = AllocaM(png_byte, info_ptr->width * pixelsize);
+	png_bytep row_pointer = AllocaM(png_byte, png_get_image_width(png_ptr, info_ptr) * pixelsize);
 
-	for (i = 0; i < info_ptr->height; i++) {
+	for (i = 0; i < png_get_image_height(png_ptr, info_ptr); i++) {
 		png_read_row(png_ptr, row_pointer, NULL);
 
-		dst = sprite->data + i * info_ptr->width;
+		dst = sprite->data + i * png_get_image_width(png_ptr, info_ptr);
 
-		for (uint x = 0; x < info_ptr->width; x++) {
+		for (uint x = 0; x < png_get_image_width(png_ptr, info_ptr); x++) {
 			if (mask) {
 				if (row_pointer[x * sizeof(uint8)] != 0) {
 					dst[x].r = 0;

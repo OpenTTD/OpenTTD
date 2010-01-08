@@ -49,7 +49,7 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
 	png_bytep *row_pointers = NULL;
 
 	/* Get palette and convert it to grayscale */
-	if (info_ptr->color_type == PNG_COLOR_TYPE_PALETTE) {
+	if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE) {
 		int i;
 		int palette_size;
 		png_color *palette;
@@ -77,14 +77,14 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
 	row_pointers = png_get_rows(png_ptr, info_ptr);
 
 	/* Read the raw image data and convert in 8-bit grayscale */
-	for (x = 0; x < info_ptr->width; x++) {
-		for (y = 0; y < info_ptr->height; y++) {
-			byte *pixel = &map[y * info_ptr->width + x];
-			uint x_offset = x * info_ptr->channels;
+	for (x = 0; x < png_get_image_width(png_ptr, info_ptr); x++) {
+		for (y = 0; y < png_get_image_height(png_ptr, info_ptr); y++) {
+			byte *pixel = &map[y * png_get_image_width(png_ptr, info_ptr) + x];
+			uint x_offset = x * png_get_channels(png_ptr, info_ptr);
 
-			if (info_ptr->color_type == PNG_COLOR_TYPE_PALETTE) {
+			if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE) {
 				*pixel = gray_palette[row_pointers[y][x_offset]];
-			} else if (info_ptr->channels == 3) {
+			} else if (png_get_channels(png_ptr, info_ptr) == 3) {
 				*pixel = RGBToGrayscale(row_pointers[y][x_offset + 0],
 						row_pointers[y][x_offset + 1], row_pointers[y][x_offset + 2]);
 			} else {
@@ -135,7 +135,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 
 	/* Maps of wrong colour-depth are not used.
 	 * (this should have been taken care of by stripping alpha and 16-bit samples on load) */
-	if ((info_ptr->channels != 1) && (info_ptr->channels != 3) && (info_ptr->bit_depth != 8)) {
+	if ((png_get_channels(png_ptr, info_ptr) != 1) && (png_get_channels(png_ptr, info_ptr) != 3) && (png_get_bit_depth(png_ptr, info_ptr) != 8)) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_IMAGE_TYPE, 0, 0);
 		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
@@ -143,12 +143,12 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	}
 
 	if (map != NULL) {
-		*map = MallocT<byte>(info_ptr->width * info_ptr->height);
+		*map = MallocT<byte>(png_get_image_width(png_ptr, info_ptr) * png_get_image_height(png_ptr, info_ptr));
 		ReadHeightmapPNGImageData(*map, png_ptr, info_ptr);
 	}
 
-	*x = info_ptr->width;
-	*y = info_ptr->height;
+	*x = png_get_image_width(png_ptr, info_ptr);
+	*y = png_get_image_height(png_ptr, info_ptr);
 
 	fclose(fp);
 	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
