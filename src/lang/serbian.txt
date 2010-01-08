@@ -3400,6 +3400,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izbor go
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Korekcija veštačke inteligencije
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naziv VI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je

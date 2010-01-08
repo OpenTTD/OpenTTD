@@ -297,6 +297,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Přejmen
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavřít okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulek okna - tahej pro posun okna
+STR_TOOLTIP_SHADE                                               :{BLACK}Minimalizovat okno - Zobrazit pouze záhlaví okna
 STR_TOOLTIP_STICKY                                              :{BLACK}Označit toto okno, aby se nedalo zavřít klávesou pro zavření všech oken
 STR_TOOLTIP_RESIZE                                              :{BLACK}Velikost okna změníš uchopením a táhnutím zde
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Přepnout velké/malé okno
@@ -1087,12 +1088,18 @@ STR_NUM_NORMAL                                                  :střední
 STR_NUM_HIGH                                                    :vysoké
 STR_NUM_CUSTOM                                                  :vlastní
 
+STR_VARIETY_NONE                                                :žádná
+STR_VARIETY_VERY_LOW                                            :velmi nízká
+STR_VARIETY_LOW                                                 :nízká
+STR_VARIETY_MEDIUM                                              :střední
+STR_VARIETY_HIGH                                                :vysoká
+STR_VARIETY_VERY_HIGH                                           :velmi vysoká
 
 STR_AI_SPEED_VERY_SLOW                                          :velmi nízká
 STR_AI_SPEED_SLOW                                               :nízká
 STR_AI_SPEED_MEDIUM                                             :střední
 STR_AI_SPEED_FAST                                               :vysoká
-STR_AI_SPEED_VERY_FAST                                          :velmi vysoká
+STR_AI_SPEED_VERY_FAST                                          :velmi rychlá
 
 STR_SEA_LEVEL_VERY_LOW                                          :velmi nízká
 STR_SEA_LEVEL_LOW                                               :nízká
@@ -2312,6 +2319,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Sázení
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ krajiny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Četnost jezer:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Členitost krajiny:
+STR_MAPGEN_VARIETY                                              :{BLACK}Rozmanitost terénu:
 STR_MAPGEN_GENERATE                                             :{WHITE}Vytvořit
 
 # Strings for map borders at game generation
@@ -3157,7 +3165,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Jet do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jet do nejbližšího depa
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Jet do nejbližšího hangáru
 STR_ORDER_CONDITIONAL                                           :Podmíněné přeskočení příkazu
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložit nový příkaz před označený příkaz nebo na konec seznamu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložit nový příkaz před označený příkaz, nebo přidat na konec seznamu. Ctrl přidá příkaz pro stanici jako 'plně naložit cokoliv', pro směrování na trati jako 'bez zastavení' a pro depo jako 'údržba'.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Vložit složitější příkaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Zobrazit všechny prostředky se stejným jízdním řádem
@@ -3267,6 +3275,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vybrat r
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Ladění AI
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Název AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI

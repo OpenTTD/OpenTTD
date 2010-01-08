@@ -693,6 +693,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Tắt tất cả
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bật tất cả
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Không hiện khu công nghiệp trên bản đồ
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Hiện tất cả khu công nghiệp trên bản đồ
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Hiện thông điệp hoặc tin tức cuối cùng

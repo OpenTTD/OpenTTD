@@ -3206,6 +3206,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}년(年)
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI 디버그
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI의 이름
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다

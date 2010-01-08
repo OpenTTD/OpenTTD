@@ -3205,6 +3205,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccio
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuração da IA
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Terminar a IA, recarrega o script e reinicia a IA

@@ -3375,6 +3375,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Выбо
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Отладка ИИ
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Имя ИИ
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить ИИ
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Удалить ИИ, перезагрузить скрипт и перезапустить ИИ
