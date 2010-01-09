@@ -979,7 +979,7 @@ static bool AircraftController(Aircraft *v)
 	count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
 	if (count == 0) return false;
 
-	if (v->time_counter != 0) v->time_counter--;
+	if (v->turn_counter != 0) v->turn_counter--;
 
 	do {
 
@@ -1003,13 +1003,13 @@ static bool AircraftController(Aircraft *v)
 			Direction newdir = GetDirectionTowards(v, x + amd->x, y + amd->y);
 			if (newdir != v->direction) {
 				if (amd->flag & AMED_SLOWTURN && v->number_consecutive_turns < 8 && v->subtype == AIR_AIRCRAFT) {
-					if (v->time_counter == 0 || newdir == v->last_direction) {
+					if (v->turn_counter == 0 || newdir == v->last_direction) {
 						if (newdir == v->last_direction) {
 							v->number_consecutive_turns = 0;
 						} else {
 							v->number_consecutive_turns++;
 						}
-						v->time_counter = 2 * _settings_game.vehicle.plane_speed;
+						v->turn_counter = 2 * _settings_game.vehicle.plane_speed;
 						v->last_direction = v->direction;
 						v->direction = newdir;
 					}

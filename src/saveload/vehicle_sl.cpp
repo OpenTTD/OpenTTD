@@ -495,7 +495,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, build_year,            SLE_FILE_U8 | SLE_VAR_I32,    0,  30),
 		 SLE_CONDVAR(Vehicle, build_year,            SLE_INT32,                   31, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, time_counter,          SLE_UINT16),
+		     SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
 		SLEG_CONDVAR(         _cargo_paid_for,       SLE_UINT16,                  45, SL_MAX_VERSION),
 		 SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT8,                   40, SL_MAX_VERSION),
 
@@ -539,6 +539,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   2,  99),
 		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 100, SL_MAX_VERSION),
 		SLE_CONDNULL(2, 2, 59),
+
+		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 136, SL_MAX_VERSION),
 
 		SLE_CONDNULL(2, 2, 19),
 		/* reserve extra space in savegame here. (currently 11 bytes) */
@@ -592,6 +594,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Aircraft, previous_pos,          SLE_UINT8,                    2, SL_MAX_VERSION),
 		 SLE_CONDVAR(Aircraft, last_direction,        SLE_UINT8,                    2, SL_MAX_VERSION),
 		 SLE_CONDVAR(Aircraft, number_consecutive_turns, SLE_UINT8,                 2, SL_MAX_VERSION),
+
+		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  136, SL_MAX_VERSION),
 
 		/* reserve extra space in savegame here. (currently 13 bytes) */
 		SLE_CONDNULL(13,                                                           2, SL_MAX_VERSION),

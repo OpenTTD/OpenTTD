@@ -998,7 +998,7 @@ void VehicleEnterDepot(Vehicle *v)
 			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
 
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
-			t->time_counter = 0;
+			t->wait_counter = 0;
 			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
 			TrainConsistChanged(t, true);
 			break;

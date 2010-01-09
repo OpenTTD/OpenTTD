@@ -1997,6 +1997,19 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Wait counter and load/unload ticks got split. */
+	if (CheckSavegameVersion(136)) {
+		Aircraft *a;
+		FOR_ALL_AIRCRAFT(a) {
+			a->turn_counter = a->current_order.IsType(OT_LOADING) ? 0 : a->load_unload_ticks;
+		}
+
+		Train *t;
+		FOR_ALL_TRAINS(t) {
+			t->wait_counter = t->current_order.IsType(OT_LOADING) ? 0 : t->load_unload_ticks;
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

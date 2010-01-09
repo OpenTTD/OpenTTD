@@ -85,6 +85,9 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	DirectionByte last_direction;
 	byte number_consecutive_turns;
 
+	/** Ticks between each turn to prevent > 45 degree turns. */
+	byte turn_counter;
+
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Aircraft() : SpecializedVehicle<Aircraft, VEH_AIRCRAFT>() {}
 	/** We want to 'destruct' the right class. */
