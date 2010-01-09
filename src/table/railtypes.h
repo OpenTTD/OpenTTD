@@ -81,6 +81,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		8,
 
+		/* accelration type */
+		0,
+
 		/* rail type label */
 		'RAIL',
 	},
@@ -153,6 +156,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		12,
 
+		/* acceleration type */
+		0,
+
 		/* rail type label */
 		'ELRL',
 	},
@@ -221,6 +227,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		16,
 
+		/* acceleration type */
+		1,
+
 		/* rail type label */
 		'MONO',
 	},
@@ -288,6 +297,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* cost multiplier */
 		24,
+
+		/* acceleration type */
+		2,
 
 		/* rail type label */
 		'MGLV',

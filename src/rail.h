@@ -142,6 +142,11 @@ struct RailtypeInfo {
 	uint8 cost_multiplier;
 
 	/**
+	 * Acceleration type of this rail type
+	 */
+	uint8 acceleration_type;
+
+	/**
 	 * Unique 32 bit rail type identifier
 	 */
 	RailTypeLabel label;

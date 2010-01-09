@@ -531,10 +531,12 @@ static int GetTrainAcceleration(Train *v, bool mode)
 
 	v->max_speed = max_speed;
 
+	bool maglev = GetRailTypeInfo(v->railtype)->acceleration_type == 2;
+
 	const int area = 120;
 	const int friction = 35; //[1e-3]
 	int resistance;
-	if (v->railtype != RAILTYPE_MAGLEV) {
+	if (!maglev) {
 		resistance = 13 * mass / 10;
 		resistance += 60 * num;
 		resistance += friction * mass * speed / 1000;
@@ -548,24 +550,17 @@ static int GetTrainAcceleration(Train *v, bool mode)
 	const int max_te = v->tcache.cached_max_te; // [N]
 	int force;
 	if (speed > 0) {
-		switch (v->railtype) {
-			case RAILTYPE_RAIL:
-			case RAILTYPE_ELECTRIC:
-			case RAILTYPE_MONO:
-				force = power / speed; //[N]
-				force *= 22;
-				force /= 10;
-				if (mode == AM_ACCEL && force > max_te) force = max_te;
-				break;
-
-			default: NOT_REACHED();
-			case RAILTYPE_MAGLEV:
-				force = power / 25;
-				break;
+		if (!maglev) {
+			force = power / speed; //[N]
+			force *= 22;
+			force /= 10;
+			if (mode == AM_ACCEL && force > max_te) force = max_te;
+		} else {
+			force = power / 25;
 		}
 	} else {
 		/* "kickoff" acceleration */
-		force = (mode == AM_ACCEL && v->railtype != RAILTYPE_MAGLEV) ? min(max_te, power) : power;
+		force = (mode == AM_ACCEL && !maglev) ? min(max_te, power) : power;
 		force = max(force, (mass * 8) + resistance);
 	}
 
