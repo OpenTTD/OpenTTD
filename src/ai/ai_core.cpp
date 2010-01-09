@@ -32,19 +32,20 @@
 	return !_networking || (_network_server && _settings_game.ai.ai_in_multiplayer);
 }
 
-/* static */ void AI::StartNew(CompanyID company)
+/* static */ void AI::StartNew(CompanyID company, bool rerandomise_ai)
 {
 	assert(Company::IsValidID(company));
 
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
 
-	AIInfo *info = AIConfig::GetConfig(company)->GetInfo();
-	if (info == NULL) {
+	AIConfig *config = AIConfig::GetConfig(company);
+	AIInfo *info = config->GetInfo();
+	if (info == NULL || (rerandomise_ai && config->IsRandomAI())) {
 		info = AI::ai_scanner->SelectRandomAI();
 		assert(info != NULL);
 		/* Load default data and store the name in the settings */
-		AIConfig::GetConfig(company)->ChangeAI(info->GetName());
+		config->ChangeAI(info->GetName(), -1, true);
 	}
 
 	_current_company = company;

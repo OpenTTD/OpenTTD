@@ -16,12 +16,13 @@
 #include "ai.hpp"
 #include "ai_config.hpp"
 
-void AIConfig::ChangeAI(const char *name, int version)
+void AIConfig::ChangeAI(const char *name, int version, bool is_random_ai)
 {
 	free((void *)this->name);
 	this->name = (name == NULL) ? NULL : strdup(name);
 	this->info = (name == NULL) ? NULL : AI::FindInfo(this->name, version);
 	this->version = (info == NULL) ? -1 : info->GetVersion();
+	this->is_random_ai = is_random_ai;
 	if (this->config_list != NULL) delete this->config_list;
 	this->config_list = (info == NULL) ? NULL : new AIConfigItemList();
 	if (this->config_list != NULL) this->config_list->push_back(_start_date_config);
@@ -56,6 +57,7 @@ AIConfig::AIConfig(const AIConfig *config)
 	this->info = config->info;
 	this->version = config->version;
 	this->config_list = NULL;
+	this->is_random_ai = config->is_random_ai;
 
 	for (SettingValueList::const_iterator it = config->settings.begin(); it != config->settings.end(); it++) {
 		this->settings[strdup((*it).first)] = (*it).second;
@@ -165,6 +167,11 @@ void AIConfig::AddRandomDeviation()
 bool AIConfig::HasAI() const
 {
 	return this->info != NULL;
+}
+
+bool AIConfig::IsRandomAI() const
+{
+	return this->is_random_ai;
 }
 
 const char *AIConfig::GetName() const

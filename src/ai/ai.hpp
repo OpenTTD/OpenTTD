@@ -45,8 +45,9 @@ public:
 	/**
 	 * Start a new AI company.
 	 * @param company At which slot the AI company should start.
+	 * @param rerandomise_ai Whether to rerandomise the configured AI.
 	 */
-	static void StartNew(CompanyID company);
+	static void StartNew(CompanyID company, bool rerandomise_ai = true);
 
 	/**
 	 * Called every game-tick to let AIs do something.

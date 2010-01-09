@@ -25,7 +25,8 @@ public:
 		name(NULL),
 		version(-1),
 		info(NULL),
-		config_list(NULL)
+		config_list(NULL),
+		is_random_ai(false)
 	{}
 	AIConfig(const AIConfig *config);
 	~AIConfig();
@@ -34,8 +35,9 @@ public:
 	 * Set another AI to be loaded in this slot.
 	 * @param name The name of the AI.
 	 * @param version The version of the AI to load, or -1 of latest.
+	 * @param is_random Is the AI chosen randomly?
 	 */
-	void ChangeAI(const char *name, int version = -1);
+	void ChangeAI(const char *name, int version = -1, bool is_random = false);
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This
@@ -90,6 +92,11 @@ public:
 	bool HasAI() const;
 
 	/**
+	 * Is the current AI a randomly chosen AI?
+	 */
+	bool IsRandomAI() const;
+
+	/**
 	 * Get the name of the AI.
 	 */
 	const char *GetName() const;
@@ -117,6 +124,7 @@ private:
 	class AIInfo *info;
 	SettingValueList settings;
 	AIConfigItemList *config_list;
+	bool is_random_ai;
 };
 
 #endif /* AI_CONFIG_HPP */

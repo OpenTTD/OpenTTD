@@ -22,12 +22,14 @@
 static char _ai_saveload_name[64];
 static int  _ai_saveload_version;
 static char _ai_saveload_settings[1024];
+static bool _ai_saveload_is_random;
 
 static const SaveLoad _ai_company[] = {
-	SLEG_STR(_ai_saveload_name,        SLE_STRB),
-	SLEG_STR(_ai_saveload_settings,    SLE_STRB),
-	SLEG_CONDVAR(_ai_saveload_version, SLE_UINT32, 108, SL_MAX_VERSION),
-	SLE_END()
+	    SLEG_STR(_ai_saveload_name,        SLE_STRB),
+	    SLEG_STR(_ai_saveload_settings,    SLE_STRB),
+	SLEG_CONDVAR(_ai_saveload_version,   SLE_UINT32, 108, SL_MAX_VERSION),
+	SLEG_CONDVAR(_ai_saveload_is_random,   SLE_BOOL, 136, SL_MAX_VERSION),
+	     SLE_END()
 };
 
 static void SaveReal_AIPL(int *index_ptr)
@@ -44,6 +46,7 @@ static void SaveReal_AIPL(int *index_ptr)
 		_ai_saveload_version = -1;
 	}
 
+	_ai_saveload_is_random = config->IsRandomAI();
 	_ai_saveload_settings[0] = '\0';
 	config->SettingsToString(_ai_saveload_settings, lengthof(_ai_saveload_settings));
 
@@ -72,13 +75,13 @@ static void Load_AIPL()
 		AIConfig *config = AIConfig::GetConfig(index);
 		if (StrEmpty(_ai_saveload_name)) {
 			/* A random AI. */
-			config->ChangeAI(NULL);
+			config->ChangeAI(NULL, -1, true);
 		} else {
-			config->ChangeAI(_ai_saveload_name, _ai_saveload_version);
+			config->ChangeAI(_ai_saveload_name, _ai_saveload_version, _ai_saveload_is_random);
 			if (!config->HasAI()) {
 				/* No version of the AI available that can load the data. Try to load the
 				 * latest version of the AI instead. */
-				config->ChangeAI(_ai_saveload_name, -1);
+				config->ChangeAI(_ai_saveload_name, -1, _ai_saveload_is_random);
 				if (!config->HasAI()) {
 					if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
 						DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
@@ -101,7 +104,7 @@ static void Load_AIPL()
 
 		/* Start the AI directly if it was active in the savegame */
 		if (Company::IsValidAiID(index)) {
-			AI::StartNew(index);
+			AI::StartNew(index, false);
 			AI::Load(index, _ai_saveload_version);
 		}
 	}
