@@ -1310,6 +1310,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Barevn�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Počáteční datum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé změny ekonomiky (více menších změn): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Podíl ze zisku pro částečné dopravní (při překládce): {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat návěstidla každ{P 0 ý é ých}: {ORANGE}{STRING} díl{P ek ky ků}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu návěstidel: {ORANGE}{STRING}
@@ -1833,6 +1834,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Hra stále poza
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Hra obnovena ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nedostatek hráčů
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :připojuji klienty
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuál
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odpojování
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} jde hrát
@@ -2469,6 +2471,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadej n�
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Města
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - pohled na město zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled.
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
@@ -2660,6 +2663,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Hledáme
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Průmysl
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nic -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% přepraveno)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% přepraveno)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

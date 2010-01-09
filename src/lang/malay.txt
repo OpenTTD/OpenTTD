@@ -269,7 +269,7 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :Keuntungan tahu
 STR_SORT_BY_AGE                                                 :Umur
 STR_SORT_BY_RELIABILITY                                         :Reliabiliti
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Jumlah muatan untuk setiap jenis kargo
-STR_SORT_BY_MAX_SPEED                                           :Kelajuan Maksima
+STR_SORT_BY_MAX_SPEED                                           :Kelajuan maksimum
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
@@ -2460,9 +2460,20 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidi yang ditawarkan untuk perkhidmatan:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} (sebelum {DATE_SHORT})
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Tiada -
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Perkhidmatan yang telah disubsidikan:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} ({COMPANY}{YELLOW}, sehingga {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk memusatkan pemandangan kepada industri/bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 
 # Station list window
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan di stesen. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi stesen
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan dan kekalkan Ctrl untuk memilih lebih daripada satu butiran
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stesen
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
+STR_STATION_LIST_NONE                                           :{YELLOW}- Tiada -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua kemudahan
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Pilih semua kargo (termasuk kargo tiada menunggu)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tiada kargo menunggu
@@ -2477,46 +2488,150 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Terima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tunjukkan senarai kargo yang diterima
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}
 
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafan
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Paparkan penarafan stesen
+STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Penarafan tempatan untuk perkhidmatan pengangkutan:
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
+STR_CARGO_RATING_APPALLING                                      :Dahsyat
+STR_CARGO_RATING_VERY_POOR                                      :Sangat Teruk
+STR_CARGO_RATING_POOR                                           :Teruk
+STR_CARGO_RATING_MEDIOCRE                                       :Sederhana
+STR_CARGO_RATING_GOOD                                           :Baik
+STR_CARGO_RATING_VERY_GOOD                                      :Sangat Baik
+STR_CARGO_RATING_EXCELLENT                                      :Cemerlang
+STR_CARGO_RATING_OUTSTANDING                                    :Mengkagumkan
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Pusatkan pemandangan utama ke lokasi stesen. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi stesen
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Tukarkan nama stesen
 
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Paparkan semua keretapi yang mengandungi stesen ini dalam jadual mereka
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Paparkan semua kenderaan jalanraya yang mengandungi stesen ini dalam jadual mereka
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Paparkan semua pesawat yang mengandungi lapangan terbang ini dalam jadual mereka
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Paparkan semua kapal yang mengandungi stesen ini dalam jadual mereka
 
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Namakan semula stesen/ruang punggahan
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Pusatkan pemandangan utama ke lokasi tandatuju. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi tandatuju
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Tukar nama tandatuju
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama ke lokasi pelampung. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi pelampung
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Tukar nama pelampung
 
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Tukar nama tandatuju
 
 # Finances window
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Kewangan {BLACK}{COMPANYNUM}
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Perbelanjaan/Pendapatan
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Pembinaan
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Kenderaan Baru
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Kos Pengendalian Keretapi
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kos Pengendalian Kend. Jalan
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Kos Pengendalian Pesawat
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kos Pengendalian Kapal
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Penyelenggaraan Hartanah
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Pendapatan Keretapi
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Pendapatan Kend. Jalan
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Pendapatan Pesawat
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Pendapatan Kapal
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Bunga Pinjaman
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}Lain-lain
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Jumlah:
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Baki Bank
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {CURRENCY}
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tinggikan nilai pinjaman. Ctrl+Klik untuk meminjam sebanyak mungkin
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Bayar semula {CURRENCY}
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bayar semula sebahagian pinjaman. Ctrl+Klik untuk membayar semula sebanyak mungkin
 
 # Company view
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Pengurus)
 
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Ditubuhkan: {WHITE}{NUM}
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Skim Warna:
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Kenderaan:
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} kenderaan
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} kenderaan jalanraya
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} pesawat
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} kapal-kapal
+STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Tiada
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Nilai syarikat: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% dimiliki oleh {COMPANY})
 
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bina Ibu Pejabat
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bina ibu pejabat syarikat
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lihat Ibu Pejabat
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Lihat ibu pejabat syarikat
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Tempatkan semula ibu pejabat
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bina semula ibu pejabat syarikat di tempat lain dengan kos 1% nilai syarikat
 
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Wajah Baru
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wajah baru untuk pengurus
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Skim Warna
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Tukar seragaman kenderaan syarikat
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nama Syarikat
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Tukar nama syarikat
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nama Pengurus
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Tukar nama pengurus
 
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham dalam syarikat ini
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham dalam syarikat ini
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham dalam syarikat ini
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham dalam syarikat ini
 
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Syarikat
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pengurus
 
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami sedang mencari syarikat pengangkutan yang boleh mengambil alih syarikat kami.{}{}Adakah anda ingin membeli {COMPANY} untuk {CURRENCY}?
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tiada -
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% dihantar)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% dihantar)
+STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama industri - klik pada nama untuk memusatkan pemandangan di industri. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi industri
 
 # Industry view
+STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Pengeluaran bulan lepas:
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% dihantar)
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Pusatkan pemandangan utama ke lokasi industri. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi industri
 
 ############ range for requires starts
+STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Kargo yang sedang menunggu untuk diproses:
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Mengeluarkan: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Mengeluarkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ubah pengeluaran (gandaan 8, sehingga 2040)
 
 # Vehicle lists
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Keretapi
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Kenderaan Jalanraya
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Kapal
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Pesawat
 
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Keretapi - klik atas keretapi untuk maklumat
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Kenderaan jalanraya - klik atas kenderaan untuk maklumat
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kapal - klik atas kapal untuk maklumat
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat - klik atas pesawat untuk maklumat
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Keuntungan tahun ini: {CURRENCY} (tahun lalu: {CURRENCY})
 
@@ -2524,6 +2639,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Keretapi
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Kenderaan sedia ada
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Kapal sedia ada
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pesawat sedia ada
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Senaraikan rekabentuk enjin yang tersedia untuk jenis kenderaan ini.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uruskan senarai
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Hantar arahan pada semua kenderaan didalam senarai
@@ -2538,8 +2654,13 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Hantar ke Hanga
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua kenderaan di dalam senarai
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klik untuk memulakan semua kenderaan di dalam senarai
 
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Arahan yang dikongsi {COMMA} Kenderaan
 
 # Group window
+STR_GROUP_ALL_TRAINS                                            :Semua keretapi
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Semua kenderaan jalanraya
+STR_GROUP_ALL_SHIPS                                             :Semua kapal
+STR_GROUP_ALL_AIRCRAFTS                                         :Semua kapal
 
 STR_GROUP_DEFAULT_TRAINS                                        :Keretapi yang belum berkumpulan
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Kenderaan jalanraya yang belum berkumpulan
@@ -2547,34 +2668,137 @@ STR_GROUP_DEFAULT_SHIPS                                         :Kapal yang belu
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Pesawat yang belum berkumpulan
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Kumpulan - klik sebuah kumpulan untuk menaraikan semua kenderaan di dalam kumpulan
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik untuk mewujudkan kumpulan
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Padam kumpulan yang terpilih
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Tukar nama kumpulan yang terpilih
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk menghalang daripada kumpulan ini digantikan secara automatik
 
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Tambah kenderaan berkongsi
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Buang semua kenderaan
 
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Namakan semula kenderaan
 
 # Build vehicle window
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Keretapi Baru
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Keretapi Elektrik Baru
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Monorel Baru
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Maglev Baru
 
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Keretapi Baru
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Kenderaan Jalanraya Baru
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Kapal Baru
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Pesawat Baru
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kelajuan: {GOLD}{VELOCITY}{BLACK} Kuasa: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kelajuan: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kos Pengendalian: {GOLD}{CURRENCY}/tahun
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiti: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_REFITTABLE                                    :(boleh diubahsuai)
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Direka: {GOLD}{NUM}{BLACK} Jangkahayat: {GOLD}{COMMA} tahun
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Reliabiliti Maks: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Kos: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S} ({WEIGHT_S})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Kelajuan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Muatan: {GOLD}{CARGO}, {CARGO}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Gerabak Berkuasa: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ubahsuai kepada: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
+STR_PURCHASE_INFO_ALL_BUT                                       :Semua kecuali {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Usaha Penarikan Maks.: {GOLD}{FORCE}
 
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Senarai pilihan keretapi - Klik atas kenderaan untuk maklumat
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Senarai pilihan kenderaan jalanraya - klik atas kenderaan untuk maklumat
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Senarai pilihan kapal - klik atas kapal untuk maklumat
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Senarai pilihan pesawat - klik atas pesawat untuk maklumat
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Beli Kenderaan
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Beli Kenderaan
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kapal
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli gerabak keretapi yang terpilih
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Beli kenderaan jalanraya yang terpilih
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Beli kapal yang terpilih
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pesawat yang terpilih
 
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Namakan semula
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Namakan semula
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Namakan semula
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Namakan semula
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Namakan semula jenis keretapi
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Namakan semula jenis kenderaan jalanraya
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Namakan semula jenis kapal
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Namakan semula pesawat
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Namakan semula jenis keretapi
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Namakan semula jenis kenderaan jalanraya
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Namakan semula jenis kapal
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Namakan semula jenis pesawat
 
 # Depot window
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Depoh Keretapi
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Depoh Kenderaan Jalanraya
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depoh Kapal
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kenderaan{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Keretapi - klik atas keretapi untuk maklumat, seret gerabak untuk tambah/buang daripada keretapi
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kenderaan - klik atas kenderaan untuk maklumat
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik atas kapal untuk maklumat
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik atas pesawat untuk maklumat
 
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Seret gerabak keretapi ke sini untuk menjualkannya
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Seret kenderaan jalanraya ke sini untuk menjualkannya
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Seret kapal ke sini untuk menjualkannya
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Seret pesawat ke sini untuk menjualkannya
 
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Seret enjin keretapi ke sini untuk menjualkan semua gerabak keretapi itu
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Jual semua keretapi dalam depoh
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Jual semua kenderaan jalanraya dalam depoh
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Jual semua kapal dalam depoh
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Jual semua pesawat dalam hangar
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Gantikan keretapi dalam depoh secara automatik
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Gantikan kenderaan jalanraya dalam depoh secara automatik
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Gantikan kenderaan kapal dalam depoh secara automatik
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Gantikan pesawat dalam depoh secara automatik
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Kenderaan Baru
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kenderaan Baru
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kapal Baru
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Pesawat Baru
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Beli gerabak keretapi baru
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Beli kenderaan jalanraya baru
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Beli kapal baru
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Beli pesawat baru
 
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonkan Train
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonkan Kenderaan
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonkan Kapal
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonkan Pesawat
 
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Perbuatan ini akan menyalin sebuah keretapi termasuk semua gerabaknya. Klik butang ini dan kemudian di keretapi di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Perbuatan ini akan menyalin kenderaan jalanraya. Klik butang ini dan kemudian di kenderaan jalanraya di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Perbuatan ini akan menyalin sebuah kapal. Klik butang ini dan kemudian di kapal di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Perbuatan ini akan menyalin sebuah pesawat. Klik butang ini dan kemudian di pesawat di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
 
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Pusatkan pemandangan utama ke lokasi depoh keretapi. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi depoh keretapi
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Pusatkan pemandangan utama ke lokasi depoh kenderaan jalanraya. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi depoh kenderaan jalanraya
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Pusatkan pemandangan utama ke lokasi kapal. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi depoh kapal
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Pusatkan pemandangan utama ke lokasi hangar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi hangar
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Senaraikan semua keretapi yang mengandungi depoh ini dalam arahan mereka
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Senaraikan semua kenderaan jalanraya yang mengandungi depoh ini dalam arahan mereka
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Senaraikan semua kapal yang mengandungi depoh ini dalam arahan mereka
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Senaraikan semua pesawat yang mengandungi hangar ini dalam arahan mereka
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua keretapi di dalam depoh
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik untuk menghentikan semua kenderaan jalanraya di dalam depoh
@@ -2586,8 +2810,10 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klik unt
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik untuk menggerakkan semua kapal di dalam depoh
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klik untuk menggerakkan semua pesawat di dalam hangar
 
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kenderaan dalam depoh. Pastikah anda?
 
 # Engine preview window
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesanan daripada pengusaha kenderaan
 
 
 # Autoreplace window

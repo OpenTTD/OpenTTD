@@ -161,7 +161,7 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FR
-STR_ABBREV_NONE                                                 :{TINYFONT}NEE
+STR_ABBREV_NONE                                                 :{TINYFONT}GEEN
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
 
 # 'Mode' of transport for cargoes
@@ -170,7 +170,7 @@ STR_BAGS                                                        :zakken
 STR_TONS                                                        :ton
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :stuks
-STR_CRATES                                                      :kratten
+STR_CRATES                                                      :pallets
 STR_RES_OTHER                                                   :anders
 STR_NOTHING                                                     :
 
@@ -197,9 +197,9 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/u
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
-STR_UNITS_POWER_METRIC                                          :{COMMA}pk
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} pk
+STR_UNITS_POWER_METRIC                                          :{COMMA} pk
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
@@ -210,14 +210,14 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Geef het filter op
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilters kan worden in de lijst
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilterd kan worden in de lijst
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter tekst:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
@@ -229,11 +229,11 @@ STR_BUTTON_RENAME                                               :{BLACK}Hernoem
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sluit venster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vensternaam - sleep om venster te verplaatsen
-STR_TOOLTIP_SHADE                                               :{BLACK}Schaduw venster - Toon alleen de titelbalk
+STR_TOOLTIP_SHADE                                               :{BLACK}Klap venster in - Toon alleen de titelbalk
 STR_TOOLTIP_STICKY                                              :{BLACK}Markeer dit venster als niet-sluitbaar door de 'Sluit alle vensters'-knop
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en sleep om dit venster van grootte te veranderen
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakel tussen groot/klein venster
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbalk - scroll door de lijst
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - verschuift de lijst verticaal
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - verschuift de lijst naar links/rechts
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land
 
@@ -279,12 +279,12 @@ STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Waarde van wachtende vracht
 STR_SORT_BY_RATING_MAX                                          :Hoogste vrachtwaardering
 STR_SORT_BY_RATING_MIN                                          :Laagste vrachtwaardering
-STR_SORT_BY_ENGINE_ID                                           :Motor-ID (klassieke soort)
+STR_SORT_BY_ENGINE_ID                                           :Voertuig-ID (klassieke sortering)
 STR_SORT_BY_COST                                                :Kosten
-STR_SORT_BY_POWER                                               :Kracht
+STR_SORT_BY_POWER                                               :Vermogen
 STR_SORT_BY_INTRO_DATE                                          :Introductiedatum
-STR_SORT_BY_RUNNING_COST                                        :Operatiekosten
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kracht/Operatiekosten
+STR_SORT_BY_RUNNING_COST                                        :Operationele kosten
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Operationele kosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Vrachtcapaciteit
 
 # Tooltips for the main toolbar
@@ -292,22 +292,22 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzeer 
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Verhoog de spelsnelheid
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, spel stoppen, afsluiten
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Toon kaart
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Toon dorpenlijst
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Toon kaart, extra kijkvenster of bordenlijst
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Toon stedenlijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Toon subsidies
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Toon lijst met stations van het bedrijf
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Toon financiële informatie van het bedrijf
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Toon algemene informatie van het bedrijf
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Toon financiële informatie over het bedrijf
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Toon algemene informatie over het bedrijf
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Toon grafieken
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Toon bedrijfscompetitietabel
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betaal plaatsing van nieuwe industrie
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Toon lijst met treinen van het bedrijf. Ctrl+klik schakelt het openen van de normale/geavanceerde voertuigenlijst
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bekostig de bouw van nieuwe industrie of toon lijst van alle industrieën
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Toon lijst met treinen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Toon lijst met wegvoertuigen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Toon lijst met schepen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Toon lijst met vliegtuigen van het bedrijf. Ctrl+klik wisselt tussen het openen van de groep/voertuig lijst
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Toon lijst met vliegtuigen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Inzoomen
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uitzoomen
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bouw spoor
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bouw spoorwegen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bouw wegen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bouw havens
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bouw vliegvelden
@@ -323,7 +323,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario-editor
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Verplaats startdatum 1 jaar terug
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Verplaats startdatum 1 jaar vooruit
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Toon kaart, dorpenlijst
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Toon kaart, stedenlijst
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschapsontwikkeling
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadsontwikkeling
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrie-ontwikkeling
@@ -344,16 +344,16 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgraad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf instellingen
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Geef plaatsnamen weer
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Geef stationsnamen weer
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Geef controlepostnamen weer
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Borden tonen
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Toon plaatsnamen
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Toon stationsnamen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Toon controlepostnamen
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Toon borden
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Alle animatie
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Alle details
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparante gebouwen
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparant stationsbord
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante stationsborden
 ############ range ends here
 
 ############ range for file menu starts
@@ -370,7 +370,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Bordenlijst
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :Dorp stichten
+STR_TOWN_MENU_FOUND_TOWN                                        :Sticht een stad
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -378,42 +378,42 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Winstgrafiek
-STR_GRAPH_MENU_INCOME_GRAPH                                     :Inkomstengrafiek
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Afgeleverdeladinggrafiek
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestatiegrafiek
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Bedrijfswaardegrafiek
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ladingsprijzen
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafiek van operationele winst
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafiek van inkomsten
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafiek van afgeleverde vracht
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafiek van prestatiegeschiedenis
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafiek van bedrijfswaarde
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Vrachtprijzen
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bedrijfscompetitietabel
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Gedetaileerde prestatiewaarde
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Gedetailleerde prestatiescore
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielijst
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Subsidieer nieuwe industrie
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Bekostig nieuwe industrie
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorwegconstructie
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Geëlektrificeerdespoorwegconstructie
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorailspoorwegconstructie
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Zweefspoorwegconstructie
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Bouw spoorwegen
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bouw geëlektrificeerde spoorwegen
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Bouw monorail-spoorweg
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bouw magneetzweeftrein-spoorweg
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Wegenbouw
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramrailaanleg
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bouw wegen
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bouw tramwegen
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Kanaalconstructie
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bouw waterwegen
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Vliegveldbouw
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bouw vliegvelden
 ############ range ends here
 
 ############ range for landscaping menu starts
@@ -433,7 +433,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschi
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Info over blok land
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Schakel console aan/uit
 STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
@@ -506,25 +506,25 @@ STR_MONTH_DEC                                                   :December
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legenda
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Laat grafieklegenda zien
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Toon legenda bij deze grafiek
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Bedrijfswinstgrafiek
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inkomstengrafiek
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheden van goederen afgeleverd
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafiek van operationele winst
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafiek van inkomsten
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aantal eenheden afgeleverde vracht
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedrijfsprestatiescore (maximale score=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedrijfswaarde
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingsverhouding vracht
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrachtprijzen
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dagen onderweg
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling voor het leveren van 10 eenheden (of 10,000 liter) aan vracht over een afstand van 20 vakjes
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schakel grafiek voor vrachttype aan/uit
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Toon gedetaileerde prestatiewaarderingen
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Toon gedetailleerde prestatiescores
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda voor bedrijfsgrafieken
@@ -544,7 +544,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detail van de prestatiewaarde
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Gedetailleerde prestatiescore
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -556,18 +556,18 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. win
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkomen:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. inkomen:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Afgeleverd:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Lading:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Vracht:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuigen met winst in het afgelopen jaar. Dit is inclusief wegvoertuigen, treinen, schepen en vliegtuigen.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijjk onderhouden stationsonderdelen. Elke deel van een station (b.v. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze zijn verbonden met een station
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst van de voertuigen met het laagste inkomen (van alle voertuigen ouder dan 2 jaar)
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijk bezochte stationsonderdelen. Elke deel van een station (bijv. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze zijn verbonden met één station
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst van het voertuig met het laagste inkomen (van alle voertuigen ouder dan 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdient in de maand met de laagste winst van de afgelopen 12 kwartalen
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid aan geld die is verdient in de maand met de hoogste winst van de afgelopen 12 kwartalen
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Het aantal eenheden aan goederen dat is bezorgd in de afgelopen vier kwartalen
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Typen goederen dat zijn bezorgd in het laatste kwartaal
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdiend in de maand met de hoogste winst van de afgelopen 12 kwartalen
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Het aantal eenheden aan vracht dat in de afgelopen vier kwartalen is afgeleverd
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Aantal soorten vracht die in het laatste kwartaal zijn afgeleverd
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Hoeveelheid contant geld
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}De hoeveelheid geld die dit bedrijf leent
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totaal aantal punten uit de mogelijke punten
@@ -599,8 +599,8 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop muz
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start muziek
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Gebruik de schuifbalken om het volume aan te passen
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selecteer 'alle nummers'-programma
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selecteer 'oudestijl-muziek'-programma
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecteer 'nieuwestijl-muziek'-programma
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selecteer 'oude stijl-muziek'-programma
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecteer 'nieuwe stijl-muziek'-programma
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Kies 'Ezy Street-stijl-muziek'-programma
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecteer 'Aangepast1'-programma
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecteer 'Aangepast2'-programma

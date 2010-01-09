@@ -3205,6 +3205,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Valitse 
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tekoälyn nimi
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
