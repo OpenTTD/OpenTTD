@@ -156,8 +156,8 @@ static void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	DrawSprite(SPR_BLOT, pal, x, y);
 }
 
-/** Maximum number of refit cycles we try, to prevent infinite loops. */
-static const int MAX_REFIT_CYCLE = 16;
+/** Maximum number of refit cycles we try, to prevent infinite loops. And we store only a byte anyway */
+static const uint MAX_REFIT_CYCLE = 256;
 
 /**
  * Get the best fitting subtype when 'cloning'/'replacing' v_from with v_for.
@@ -193,7 +193,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
 	v_for->cargo_type = v_from->cargo_type;
 
 	/* Cycle through the refits */
-	for (byte refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
+	for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
 		v_for->cargo_subtype = refit_cyc;
 
 		/* Make sure we don't pick up anything cached. */
@@ -262,11 +262,10 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				 * changed to test the cargo & subtype... */
 				CargoID temp_cargo = u->cargo_type;
 				byte temp_subtype  = u->cargo_subtype;
-				byte refit_cyc;
 
 				u->cargo_type = cid;
 
-				for (refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE && num_lines < max_lines; refit_cyc++) {
+				for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE && num_lines < max_lines; refit_cyc++) {
 					bool duplicate = false;
 					uint16 callback;
 
