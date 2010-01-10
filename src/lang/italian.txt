@@ -566,8 +566,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numero di veicoli che hanno realizzato un profitto lo scorso anno; include automezzi, treni, navi e aeromobili
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numero di blocchi stazione serviti di recente. Sono contate tutte le parti di una stazione (es. stazione ferroviaria, stazione autobus, aeroporto), anche se connesse insieme a formare un'unica stazione
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitto del veicolo con l'incasso minore (sono considerati solo i veicoli più vecchi di due anni)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel mese con il minimo profitto degli ultimi 12 trimestri
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel mese con il massimo profitto degli ultimi 12 trimestri
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il minimo profitto degli ultimi 12 trimestri
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il massimo profitto degli ultimi 12 trimestri
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unità di merce consegnate negli ultimi quattro trimestri
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipi di merci consegnati nell'ultimo trimestre
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ammontare di denaro di questa compagnia in banca

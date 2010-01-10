@@ -564,8 +564,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}I alt:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal af køretøjer der gav afkast sidste år; dette inkludere vejkøretøjer, tog, skibe og fly
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antallet af sidst servicerede stationer. Alle dele af en station (f.eks. banegård, rutebilstation, lufthavn) tæller med, selvom de er sammensat som én station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Afkast for køretøjet med laveste indkomst (af alle køretøjer ældre end 2 år)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Indkomst i måneden med det laveste afkast i de sidste 12 kvartaler
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Indkomst i måneden med det højeste afkast i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Indkomst i kvartallet med det laveste afkast i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Indkomst i kvartallet med det højeste afkast i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Antal enheder fragtet i de sidste 4 kvartaler
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Antallet af lasttyper fragtet i sidste kvartal
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Kapital denne virksomhed har i banken
@@ -693,6 +693,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Slå alle fra
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Slå alle til
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vis højde
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Vis ingen industrier på kortet
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Vis alle industrier på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Slå visning af højdekort til/fra
