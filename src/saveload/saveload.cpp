@@ -1246,13 +1246,14 @@ static void SlFixPointers()
  *******************************************/
 
 #ifdef WITH_LZO
-#define LZO_SIZE 8192
-
 #include <lzo/lzo1x.h>
+
+/** Buffer size for the LZO compressor */
+static const uint LZO_BUFFER_SIZE = 8192;
 
 static size_t ReadLZO()
 {
-	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
+	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 64 + 16 + 3 + 8];
 	uint32 tmp[2];
 	uint32 size;
 	lzo_uint len;
@@ -1285,7 +1286,7 @@ static size_t ReadLZO()
  * len bytes will be written, p and l will be updated to reflect the next buffer. */
 static void WriteLZO(size_t size)
 {
-	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
+	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 64 + 16 + 3 + 8];
 	byte wrkmem[sizeof(byte*) * 4096];
 	lzo_uint outlen;
 
@@ -1297,8 +1298,8 @@ static void WriteLZO(size_t size)
 
 static bool InitLZO(byte compression)
 {
-	_sl.bufsize = LZO_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_SIZE);
+	_sl.bufsize = LZO_BUFFER_SIZE;
+	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_BUFFER_SIZE);
 	return true;
 }
 
@@ -1312,9 +1313,13 @@ static void UninitLZO()
 /*********************************************
  ******** START OF NOCOMP CODE (uncompressed)*
  *********************************************/
+
+/** Buffer size used for the uncompressing 'compressor' */
+static const uint NOCOMP_BUFFER_SIZE = 8192;
+
 static size_t ReadNoComp()
 {
-	return fread(_sl.buf, 1, LZO_SIZE, _sl.fh);
+	return fread(_sl.buf, 1, NOCOMP_BUFFER_SIZE, _sl.fh);
 }
 
 static void WriteNoComp(size_t size)
@@ -1324,8 +1329,8 @@ static void WriteNoComp(size_t size)
 
 static bool InitNoComp(byte compression)
 {
-	_sl.bufsize = LZO_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_SIZE);
+	_sl.bufsize = NOCOMP_BUFFER_SIZE;
+	_sl.buf = _sl.buf_ori = MallocT<byte>(NOCOMP_BUFFER_SIZE);
 	return true;
 }
 
@@ -1384,6 +1389,9 @@ static bool InitMem()
 #if defined(WITH_ZLIB)
 #include <zlib.h>
 
+/** Buffer size for the LZO compressor */
+static const uint ZLIB_BUFFER_SIZE = 8192;
+
 static z_stream _z;
 
 static bool InitReadZlib(byte compression)
@@ -1391,8 +1399,8 @@ static bool InitReadZlib(byte compression)
 	memset(&_z, 0, sizeof(_z));
 	if (inflateInit(&_z) != Z_OK) return false;
 
-	_sl.bufsize = 4096;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(4096 + 4096); // also contains fread buffer
+	_sl.bufsize = ZLIB_BUFFER_SIZE;
+	_sl.buf = _sl.buf_ori = MallocT<byte>(ZLIB_BUFFER_SIZE + ZLIB_BUFFER_SIZE); // also contains fread buffer
 	return true;
 }
 
@@ -1401,12 +1409,12 @@ static size_t ReadZlib()
 	int r;
 
 	_z.next_out = _sl.buf;
-	_z.avail_out = 4096;
+	_z.avail_out = ZLIB_BUFFER_SIZE;
 
 	do {
 		/* read more bytes from the file? */
 		if (_z.avail_in == 0) {
-			_z.avail_in = (uint)fread(_z.next_in = _sl.buf + 4096, 1, 4096, _sl.fh);
+			_z.avail_in = (uint)fread(_z.next_in = _sl.buf + ZLIB_BUFFER_SIZE, 1, ZLIB_BUFFER_SIZE, _sl.fh);
 		}
 
 		/* inflate the data */
@@ -1417,7 +1425,7 @@ static size_t ReadZlib()
 		if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "inflate() failed");
 	} while (_z.avail_out);
 
-	return 4096 - _z.avail_out;
+	return ZLIB_BUFFER_SIZE - _z.avail_out;
 }
 
 static void UninitReadZlib()
@@ -1431,14 +1439,14 @@ static bool InitWriteZlib(byte compression)
 	memset(&_z, 0, sizeof(_z));
 	if (deflateInit(&_z, compression) != Z_OK) return false;
 
-	_sl.bufsize = 4096;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(4096);
+	_sl.bufsize = ZLIB_BUFFER_SIZE;
+	_sl.buf = _sl.buf_ori = MallocT<byte>(ZLIB_BUFFER_SIZE);
 	return true;
 }
 
 static void WriteZlibLoop(z_streamp z, byte *p, size_t len, int mode)
 {
-	byte buf[1024]; // output buffer
+	byte buf[ZLIB_BUFFER_SIZE]; // output buffer
 	int r;
 	uint n;
 	z->next_in = p;
