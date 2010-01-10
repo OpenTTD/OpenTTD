@@ -222,7 +222,7 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 	}
 
 	/* Check what the callback wants us to do */
-	if (GetDoCommandMode() != NULL && !GetDoCommandMode()(tile, p1, p2, cmd, res)) {
+	if (GetDoCommandMode() != NULL && !GetDoCommandMode()()) {
 		IncreaseDoCommandCosts(res.GetCost());
 		return true;
 	}

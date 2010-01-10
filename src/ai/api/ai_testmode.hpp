@@ -35,7 +35,7 @@ protected:
 	/**
 	 * The callback proc for Testing mode.
 	 */
-	static bool ModeProc(TileIndex tile, uint32 p1, uint32 p2, uint procc, CommandCost costs);
+	static bool ModeProc();
 
 public:
 	/**

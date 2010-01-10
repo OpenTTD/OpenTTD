@@ -15,7 +15,7 @@
 #include "../../company_func.h"
 #include "../ai_instance.hpp"
 
-bool AIExecMode::ModeProc(TileIndex tile, uint32 p1, uint32 p2, uint procc, CommandCost costs)
+bool AIExecMode::ModeProc()
 {
 	/* In execution mode we only return 'true', telling the DoCommand it
 	 *  should continue with the real execution of the command. */

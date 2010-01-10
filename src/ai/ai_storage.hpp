@@ -26,7 +26,7 @@
 /**
  * The callback function for Mode-classes.
  */
-typedef bool (AIModeProc)(TileIndex tile, uint32 p1, uint32 p2, uint procc, CommandCost costs);
+typedef bool (AIModeProc)();
 
 /**
  * The storage for each AI. It keeps track of important information.
