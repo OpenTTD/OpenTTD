@@ -1295,7 +1295,7 @@ static void WriteLZO(size_t size)
 	if (fwrite(out, outlen + sizeof(uint32) * 2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
 
-static bool InitLZO()
+static bool InitLZO(byte compression)
 {
 	_sl.bufsize = LZO_SIZE;
 	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_SIZE);
@@ -1322,7 +1322,7 @@ static void WriteNoComp(size_t size)
 	if (fwrite(_sl.buf, 1, size, _sl.fh) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
 
-static bool InitNoComp()
+static bool InitNoComp(byte compression)
 {
 	_sl.bufsize = LZO_SIZE;
 	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_SIZE);
@@ -1386,7 +1386,7 @@ static bool InitMem()
 
 static z_stream _z;
 
-static bool InitReadZlib()
+static bool InitReadZlib(byte compression)
 {
 	memset(&_z, 0, sizeof(_z));
 	if (inflateInit(&_z) != Z_OK) return false;
@@ -1426,10 +1426,10 @@ static void UninitReadZlib()
 	free(_sl.buf_ori);
 }
 
-static bool InitWriteZlib()
+static bool InitWriteZlib(byte compression)
 {
 	memset(&_z, 0, sizeof(_z));
-	if (deflateInit(&_z, 6) != Z_OK) return false;
+	if (deflateInit(&_z, compression) != Z_OK) return false;
 
 	_sl.bufsize = 4096;
 	_sl.buf = _sl.buf_ori = MallocT<byte>(4096);
@@ -1586,29 +1586,33 @@ static void *IntToReference(size_t index, SLRefType rt)
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
-	const char *name;           ///< name of the compressor/decompressor (debug-only)
-	uint32 tag;                 ///< the 4-letter tag by which it is identified in the savegame
+	const char *name;                     ///< name of the compressor/decompressor (debug-only)
+	uint32 tag;                           ///< the 4-letter tag by which it is identified in the savegame
 
-	bool (*init_read)();        ///< function executed upon initalization of the loader
-	ReaderProc *reader;         ///< function that loads the data from the file
-	void (*uninit_read)();      ///< function executed when reading is finished
+	bool (*init_read)(byte compression);  ///< function executed upon initalization of the loader
+	ReaderProc *reader;                   ///< function that loads the data from the file
+	void (*uninit_read)();                ///< function executed when reading is finished
 
-	bool (*init_write)();       ///< function executed upon intialization of the saver
-	WriterProc *writer;         ///< function that saves the data to the file
-	void (*uninit_write)();     ///< function executed when writing is done
+	bool (*init_write)(byte compression); ///< function executed upon intialization of the saver
+	WriterProc *writer;                   ///< function that saves the data to the file
+	void (*uninit_write)();               ///< function executed when writing is done
+
+	byte min_compression;                 ///< the minimum compression level of this format
+	byte default_compression;             ///< the default compression level of this format
+	byte max_compression;                 ///< the maximum compression level of this format
 };
 
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
-	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO},
+	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO,       0, 0, 0},
 #else
-	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL},
+	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
 #endif
-	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp},
+	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp,    0, 0, 0},
 #if defined(WITH_ZLIB)
-	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib},
+	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib, 0, 6, 9},
 #else
-	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL},
+	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
 #endif
 };
 
@@ -1616,9 +1620,10 @@ static const SaveLoadFormat _saveload_formats[] = {
  * Return the savegameformat of the game. Whether it was created with ZLIB compression
  * uncompressed, or another type
  * @param s Name of the savegame format. If NULL it picks the first available one
+ * @param compression_level Output for telling what compression level we want.
  * @return Pointer to SaveLoadFormat struct giving all characteristics of this type of savegame
  */
-static const SaveLoadFormat *GetSavegameFormat(const char *s)
+static const SaveLoadFormat *GetSavegameFormat(char *s, byte *compression_level)
 {
 	const SaveLoadFormat *def = lastof(_saveload_formats);
 
@@ -1626,14 +1631,39 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 	while (!def->init_write) def--;
 
 	if (!StrEmpty(s)) {
+		/* Get the ":..." of the compression level out of the way */
+		char *complevel = strrchr(s, ':');
+		if (complevel != NULL) *complevel = '\0';
+
 		for (const SaveLoadFormat *slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
 			if (slf->init_write != NULL && strcmp(s, slf->name) == 0) {
+				*compression_level = slf->default_compression;
+				if (complevel != NULL) {
+					/* There is a compression level in the string.
+					 * First restore the : we removed to do proper name matching,
+					 * then move the the begin of the actual version. */
+					*complevel = ':';
+					complevel++;
+
+					/* Get the version and determine whether all went fine. */
+					char *end;
+					long level = strtol(complevel, &end, 10);
+					if (end == complevel || level != Clamp(level, slf->min_compression, slf->max_compression)) {
+						ShowInfoF("Compression level '%s' is not valid.", complevel);
+					} else {
+						*compression_level = level;
+					}
+				}
 				return slf;
 			}
 		}
 
 		ShowInfoF("Savegame format '%s' is not available. Reverting to '%s'.", s, def->name);
+
+		/* Restore the string by adding the : back */
+		if (complevel != NULL) *complevel = ':';
 	}
+	*compression_level = def->default_compression;
 	return def;
 }
 
@@ -1707,13 +1737,14 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
 	_sl.excpt_uninit = NULL;
 	try {
-		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
+		byte compression;
+		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format, &compression);
 
 		/* We have written our stuff to memory, now write it to file! */
 		uint32 hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
 		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 
-		if (!fmt->init_write()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+		if (!fmt->init_write(compression)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 
 		{
 			uint i;
@@ -1901,7 +1932,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
 			}
 
-			if (!fmt->init_read()) {
+			if (!fmt->init_read(0)) {
 				char err_str[64];
 				snprintf(err_str, lengthof(err_str), "Initializing loader '%s' failed", fmt->name);
 				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
