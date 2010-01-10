@@ -1599,7 +1599,6 @@ struct SaveLoadFormat {
 };
 
 static const SaveLoadFormat _saveload_formats[] = {
-	{"memory", 0,                NULL,         NULL,       NULL,           InitMem,       WriteMem,    UnInitMem},
 #if defined(WITH_LZO)
 	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO},
 #else
@@ -1737,7 +1736,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		fmt->uninit_write();
 		if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
-		GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
+		UnInitMem();
 		fclose(_sl.fh);
 
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
@@ -1786,7 +1785,6 @@ void WaitTillSaved()
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, bool threaded)
 {
 	uint32 hdr[2];
-	const SaveLoadFormat *fmt;
 
 	/* An instance of saving is already active, so don't go saving again */
 	if (_ts.saveinprogress && mode == SL_SAVE) {
@@ -1835,14 +1833,10 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
 		if (mode == SL_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %s\n", filename);
-			fmt = GetSavegameFormat("memory"); // write to memory
 
-			_sl.write_bytes = fmt->writer;
-			_sl.excpt_uninit = fmt->uninit_write;
-			if (!fmt->init_write()) {
-				DEBUG(sl, 0, "Initializing writer '%s' failed.", fmt->name);
-				return AbortSaveLoad();
-			}
+			_sl.write_bytes = WriteMem;
+			_sl.excpt_uninit = UnInitMem;
+			InitMem();
 
 			_sl_version = SAVEGAME_VERSION;
 
@@ -1869,7 +1863,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 			/* see if we have any loader for this type. */
-			for (fmt = _saveload_formats; ; fmt++) {
+			const SaveLoadFormat *fmt = _saveload_formats;
+			for (;;) {
 				/* No loader found, treat as version 0 and use LZO format */
 				if (fmt == endof(_saveload_formats)) {
 					DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
@@ -1896,6 +1891,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 					if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
 					break;
 				}
+
+				fmt++;
 			}
 
 			_sl.read_bytes = fmt->reader;
