@@ -3,7 +3,7 @@ Section: contrib/games
 Priority: optional
 Maintainer: Matthijs Kooijman <matthijs@stdin.nl>
 Uploaders: Jordi Mallach <jordi@debian.org>
-Build-Depends: debhelper (>= 4.0.0), libsdl-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev
+Build-Depends: debhelper (>= 4.0.0), libsdl-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev, liblzo2-dev
 Standards-Version: 3.7.3
 Vcs-Browser: http://svn.debian.org/wsvn/collab-maint/deb-maint/openttd/trunk/
 Vcs-Svn: svn://svn.debian.org/svn/collab-maint/deb-maint/openttd/trunk

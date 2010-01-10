@@ -511,12 +511,6 @@ table/water_land.h
 3rdparty/md5/md5.cpp
 3rdparty/md5/md5.h
 
-# MiniLZO
-3rdparty/minilzo/lzoconf.h
-3rdparty/minilzo/lzodefs.h
-3rdparty/minilzo/minilzo.c
-3rdparty/minilzo/minilzo.h
-
 # Script
 script/script_info.cpp
 script/script_info.hpp

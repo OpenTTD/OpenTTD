@@ -388,7 +388,6 @@ static const char * const _credits[] = {
 	"  Richard Kempton (richK) - additional airports, initial TGP implementation",
 	"",
 	"  Alberto Demichelis - Squirrel scripting language \xC2\xA9 2003-2008",
-	"  Markus F.X.J. Oberhumer - (Mini)LZO for loading old savegames \xC2\xA9 1996-2008",
 	"  L. Peter Deutsch - MD5 implementation \xC2\xA9 1999, 2000, 2002",
 	"  Michael Blunck - Pre-Signals and Semaphores \xC2\xA9 2003",
 	"  George - Canal/Lock graphics \xC2\xA9 2003-2004",

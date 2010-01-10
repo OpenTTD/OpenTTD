@@ -134,6 +134,9 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 #ifdef WITH_ICU
 #	include <unicode/uversion.h>
 #endif /* WITH_ICU */
+#ifdef WITH_LZO
+#include <lzo/lzo1x.h>
+#endif
 #ifdef WITH_SDL
 #	include "sdl.h"
 #	include <SDL.h>
@@ -172,6 +175,10 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	u_versionToString(ver, buf);
 	buffer += seprintf(buffer, last, " ICU:        %s\n", buf);
 #endif /* WITH_ICU */
+
+#ifdef WITH_LZO
+	buffer += seprintf(buffer, last, " LZO:        %s\n", lzo_version_string());
+#endif
 
 #ifdef WITH_PNG
 	buffer += seprintf(buffer, last, " PNG:        %s\n", png_get_libpng_ver(NULL));

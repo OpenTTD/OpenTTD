@@ -410,6 +410,7 @@ DOS:
 The following libraries are used by OpenTTD for:
   - libSDL/liballegro: hardware access (video, sound, mouse)
   - zlib: (de)compressing of savegames
+  - liblzo2: (de)compressing of old (pre 0.3.0) savegames
   - libpng: making screenshots and loading heightmaps
   - libfreetype: loading generic fonts and rendering them
   - libfontconfig: searching for fonts, resolving font names to actual fonts
@@ -546,7 +547,6 @@ Thanks to:
   Christian Rosentreter (tokai)  - MorphOS / AmigaOS port
   Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
   Alberto Demichelis             - Squirrel scripting language
-  Markus F.X.J. Oberhumer        - MiniLZO for loading old savegames
   L. Peter Deutsch               - MD5 implementation
   Michael Blunck                 - For revolutionizing TTD with awesome graphics
   George                         - Canal graphics

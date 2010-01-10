@@ -1244,9 +1244,11 @@ static void SlFixPointers()
 /*******************************************
  ********** START OF LZO CODE **************
  *******************************************/
+
+#ifdef WITH_LZO
 #define LZO_SIZE 8192
 
-#include "../3rdparty/minilzo/minilzo.h"
+#include <lzo/lzo1x.h>
 
 static size_t ReadLZO()
 {
@@ -1304,6 +1306,8 @@ static void UninitLZO()
 {
 	free(_sl.buf_ori);
 }
+
+#endif /* WITH_LZO */
 
 /*********************************************
  ******** START OF NOCOMP CODE (uncompressed)*
@@ -1596,7 +1600,11 @@ struct SaveLoadFormat {
 
 static const SaveLoadFormat _saveload_formats[] = {
 	{"memory", 0,                NULL,         NULL,       NULL,           InitMem,       WriteMem,    UnInitMem},
+#if defined(WITH_LZO)
 	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO},
+#else
+	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL},
+#endif
 	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp},
 #if defined(WITH_ZLIB)
 	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib},

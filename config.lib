@@ -67,6 +67,7 @@ set_default() {
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
+	with_lzo2="1"
 	with_png="1"
 	enable_builtin_depend="1"
 	with_makedepend="0"
@@ -136,6 +137,7 @@ set_default() {
 		with_sdl
 		with_cocoa
 		with_zlib
+		with_lzo2
 		with_png
 		enable_builtin_depend
 		with_makedepend
@@ -318,6 +320,13 @@ detect_params() {
 			--with-zlib)                  with_zlib="2";;
 			--without-zlib)               with_zlib="0";;
 			--with-zlib=*)                with_zlib="$optarg";;
+
+			--with-lzo2)                  with_lzo2="2";;
+			--without-lzo2)               with_lzo2="0";;
+			--with-lzo2=*)                with_lzo2="$optarg";;
+			--with-liblzo2)               with_lzo2="2";;
+			--without-liblzo2)            with_lzo2="0";;
+			--with-liblzo2=*)             with_lzo2="$optarg";;
 
 			--with-png)                   with_png="2";;
 			--without-png)                with_png="0";;
@@ -740,6 +749,22 @@ check_params() {
 		else
 			log 1 "configure: error: no zlib detected"
 			log 1 " If you want to compile without zlib use --without-zlib as parameter"
+			exit
+		fi
+	fi
+
+	pre_detect_with_lzo2=$with_lzo2
+	detect_lzo2
+
+	if [ "$with_lzo2" = "0" ] || [ -z "$lzo2" ]; then
+		log 1 "WARNING: liblzo2 was not detected or disabled"
+		log 1 "WARNING: OpenTTD doesn't require liblzo2, but it does mean that"
+		log 1 "WARNING: loading old savegames/scenarios will be disabled."
+		if [ "$pre_detect_with_lzo2" = "0" ]; then
+			log 1 "WARNING: We strongly suggest you to install liblzo2."
+		else
+			log 1 "configure: error: no liblzo2 detected"
+			log 1 " If you want to compile without liblzo2 use --without-liblzo2 as parameter"
 			exit
 		fi
 	fi
@@ -1388,6 +1413,15 @@ make_cflags_and_ldflags() {
 			LIBS="$LIBS -lz"
 		fi
 		CFLAGS="$CFLAGS -DWITH_ZLIB"
+	fi
+
+	if [ "$with_lzo2" != "0" ]; then
+		if [ "$enable_static" != "0" ] && [ "$os" != "OSX" ]; then
+			LIBS="$LIBS $lzo2"
+		else
+			LIBS="$LIBS -llzo2"
+		fi
+		CFLAGS="$CFLAGS -DWITH_LZO"
 	fi
 
 	# 64bit machines need -D_SQ64
@@ -2236,10 +2270,11 @@ detect_library() {
 	# $1 - config-param ($with_zlib value)
 	# $2 - library name ('zlib', sets $zlib)
 	# $3 - static library name (libz.a)
-	# $4 - header name (zlib.h)
-	# $5 - force static (if non-empty)
+	# $4 - header directory ()
+	# $5 - header name (zlib.h)
+	# $6 - force static (if non-empty)
 
-	if [ -n "$5" ]; then force_static="1"; fi
+	if [ -n "$6" ]; then force_static="1"; fi
 
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$1" = "0" ]; then
@@ -2252,15 +2287,15 @@ detect_library() {
 	log 2 "detecting $2"
 
 	if [ "$1" = "1" ] || [ "$1" = "" ] || [ "$1" = "2" ]; then
-		eval "$2=`ls -1 /usr/include/*.h 2>/dev/null | egrep \"\/$4\$\"`"
+		eval "$2=`ls -1 /usr/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
 		eval "res=\$$2"
 		if [ -z "$res" ]; then
-			log 2 "  trying /usr/include/$4... no"
-			eval "$2=`ls -1 /usr/local/include/*.h 2>/dev/null | egrep \"\/$4\$\"`"
+			log 2 "  trying /usr/include/$4$5... no"
+			eval "$2=`ls -1 /usr/local/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
 		fi
 		eval "res=\$$2"
 		if [ -z "$res" ]; then
-			log 2 "  trying /usr/local/include/$4... no"
+			log 2 "  trying /usr/local/include/$4$5... no"
 		fi
 
 		eval "res=\$$2"
@@ -2323,11 +2358,15 @@ detect_library() {
 }
 
 detect_zlib() {
-	detect_library "$with_zlib" "zlib" "libz.a" "zlib.h"
+	detect_library "$with_zlib" "zlib" "libz.a" "" "zlib.h"
+}
+
+detect_lzo2() {
+	detect_library "$with_lzo2" "lzo2" "liblzo2.a" "lzo/" "lzo1x.h"
 }
 
 detect_libtimidity() {
-	detect_library "$with_libtimidity" "libtimidity" "libtimidity.a" "timidity.h"
+	detect_library "$with_libtimidity" "libtimidity" "" "libtimidity.a" "timidity.h"
 }
 
 detect_png() {
@@ -3113,6 +3152,7 @@ showhelp() {
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
 	echo "  --with-sdl[=sdl-config]        enables SDL video driver support"
 	echo "  --with-zlib[=zlib.a]           enables zlib support"
+	echo "  --with-liblzo2[=liblzo2.a]     enables liblzo2 support"
 	echo "  --with-png[=libpng-config]     enables libpng support"
 	echo "  --with-freetype[=freetype-config]"
 	echo "                                 enables libfreetype support"
