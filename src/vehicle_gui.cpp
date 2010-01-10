@@ -222,37 +222,43 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
 	return ret_refit_cyc;
 }
 
+/** Option to refit a vehicle chain */
 struct RefitOption {
-	CargoID cargo;
-	byte subtype;
-	uint16 value;
-	EngineID engine;
+	CargoID cargo;    ///< Cargo to refit to
+	byte subtype;     ///< Subcargo to use
+	uint16 value;     ///< GRF-local String to display for the cargo
+	EngineID engine;  ///< Engine for which to resolve #value
+
+	FORCEINLINE bool operator != (const RefitOption &other) const
+	{
+		return other.cargo != this->cargo || other.subtype != this->subtype;
+	}
 };
 
-struct RefitList {
-	uint num_lines;     ///< Number of #items.
-	RefitOption *items;
-};
+typedef SmallVector<RefitOption, 32> RefitList;
 
-static RefitList *BuildRefitList(const Vehicle *v)
+/**
+ * Collects all (cargo, subcargo) refit-options of a vehicle chain
+ * @param v front vehicle
+ * @param refit_list container to store result
+ */
+static void BuildRefitList(const Vehicle *v, RefitList *refit_list)
 {
-	uint max_lines = 256;
-	RefitOption *refit = CallocT<RefitOption>(max_lines);
-	RefitList *list = CallocT<RefitList>(1);
+	refit_list->Clear();
 	Vehicle *u = const_cast<Vehicle *>(v);
-	uint num_lines = 0;
-	uint i;
 
 	do {
 		const Engine *e = Engine::Get(u->engine_type);
 		uint32 cmask = e->info.refit_mask;
 		byte callback_mask = e->info.callback_mask;
 
-		/* Skip this engine if it has no capacity */
-		if (u->cargo_cap == 0) continue;
+		/* Skip this engine if it does not carry anything */
+		if (!e->CanCarryCargo()) continue;
 
 		/* Loop through all cargos in the refit mask */
-		for (CargoID cid = 0; cid < NUM_CARGO && num_lines < max_lines; cid++) {
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			CargoID cid = cs->Index();
 			/* Skip cargo type if it's not listed */
 			if (!HasBit(cmask, cid)) continue;
 
@@ -265,32 +271,23 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 				u->cargo_type = cid;
 
-				for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE && num_lines < max_lines; refit_cyc++) {
-					bool duplicate = false;
-					uint16 callback;
-
+				for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
 					u->cargo_subtype = refit_cyc;
 
 					/* Make sure we don't pick up anything cached. */
 					u->First()->InvalidateNewGRFCache();
 					u->InvalidateNewGRFCache();
-					callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, u->engine_type, u);
+					uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, u->engine_type, u);
 
 					if (callback == 0xFF) callback = CALLBACK_FAILED;
 					if (refit_cyc != 0 && callback == CALLBACK_FAILED) break;
 
-					/* Check if this cargo and subtype combination are listed */
-					for (i = 0; i < num_lines && !duplicate; i++) {
-						if (refit[i].cargo == cid && refit[i].value == callback) duplicate = true;
-					}
-
-					if (duplicate) continue;
-
-					refit[num_lines].cargo   = cid;
-					refit[num_lines].subtype = refit_cyc;
-					refit[num_lines].value   = callback;
-					refit[num_lines].engine  = u->engine_type;
-					num_lines++;
+					RefitOption option;
+					option.cargo   = cid;
+					option.subtype = refit_cyc;
+					option.value   = callback;
+					option.engine  = u->engine_type;
+					refit_list->Include(option);
 				}
 
 				/* Reset the vehicle's cargo type */
@@ -302,27 +299,15 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				u->InvalidateNewGRFCache();
 			} else {
 				/* No cargo suffix callback -- use no subtype */
-				bool duplicate = false;
-
-				for (i = 0; i < num_lines && !duplicate; i++) {
-					if (refit[i].cargo == cid && refit[i].value == CALLBACK_FAILED) duplicate = true;
-				}
-
-				if (!duplicate) {
-					refit[num_lines].cargo   = cid;
-					refit[num_lines].subtype = 0;
-					refit[num_lines].value   = CALLBACK_FAILED;
-					refit[num_lines].engine  = INVALID_ENGINE;
-					num_lines++;
-				}
+				RefitOption option;
+				option.cargo   = cid;
+				option.subtype = 0;
+				option.value   = CALLBACK_FAILED;
+				option.engine  = INVALID_ENGINE;
+				refit_list->Include(option);
 			}
 		}
-	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (u = u->Next()) != NULL && num_lines < max_lines);
-
-	list->num_lines = num_lines;
-	list->items = refit;
-
-	return list;
+	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (u = u->Next()) != NULL);
 }
 
 /** Draw the list of available refit options for a consist and highlight the selected refit option (if any).
@@ -333,13 +318,13 @@ static RefitList *BuildRefitList(const Vehicle *v)
  * @param delta Step height in caller window
  * @param r     Rectangle of the matrix widget.
  */
-static void DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta, const Rect &r)
+static void DrawVehicleRefitWindow(const RefitList &list, int sel, uint pos, uint rows, uint delta, const Rect &r)
 {
 	uint y = r.top + WD_MATRIX_TOP;
 	/* Draw the list, and find the selected cargo (by its position in list) */
-	for (uint i = pos; i < pos + rows && i < list->num_lines; i++) {
+	for (uint i = pos; i < pos + rows && i < list.Length(); i++) {
 		TextColour colour = (sel == (int)i) ? TC_WHITE : TC_BLACK;
-		RefitOption *refit = &list->items[i];
+		const RefitOption *refit = &list[i];
 
 		/* Get the cargo name */
 		SetDParam(0, CargoSpec::Get(refit->cargo)->name);
@@ -370,7 +355,7 @@ enum VehicleRefitWidgets {
 struct RefitWindow : public Window {
 	int sel;              ///< Index in refit options, \c -1 if nothing is selected.
 	RefitOption *cargo;   ///< Refit option selected by \v sel.
-	RefitList *list;      ///< List of cargo types available for refitting.
+	RefitList list;       ///< List of cargo types available for refitting.
 	uint length;          ///< For trains, the number of vehicles.
 	VehicleOrderID order; ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 
@@ -389,15 +374,9 @@ struct RefitWindow : public Window {
 
 		this->order = order;
 		this->sel  = -1;
-		this->list = BuildRefitList(v);
+		BuildRefitList(v, &this->list);
 		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
-		this->vscroll.SetCount(this->list->num_lines);
-	}
-
-	~RefitWindow()
-	{
-		free(this->list->items);
-		free(this->list);
+		this->vscroll.SetCount(this->list.Length());
 	}
 
 	virtual void OnPaint()
@@ -409,16 +388,14 @@ struct RefitWindow : public Window {
 
 			if (length != this->length) {
 				/* Consist length has changed, so rebuild the refit list */
-				free(this->list->items);
-				free(this->list);
-				this->list = BuildRefitList(v);
+				BuildRefitList(v, &this->list);
 				this->length = length;
 			}
 		}
 
-		this->vscroll.SetCount(this->list->num_lines);
+		this->vscroll.SetCount(this->list.Length());
 
-		this->cargo = (this->sel >= 0 && this->sel < (int)this->list->num_lines) ? &this->list->items[this->sel] : NULL;
+		this->cargo = (this->sel >= 0 && this->sel < (int)this->list.Length()) ? &this->list[this->sel] : NULL;
 		this->DrawWidgets();
 	}
 
