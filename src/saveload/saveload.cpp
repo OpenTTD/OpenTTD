@@ -1613,23 +1613,23 @@ static const SaveLoadFormat _saveload_formats[] = {
 };
 
 /**
- * Return the savegameformat of the game. Whether it was create with ZLIB compression
+ * Return the savegameformat of the game. Whether it was created with ZLIB compression
  * uncompressed, or another type
  * @param s Name of the savegame format. If NULL it picks the first available one
  * @return Pointer to SaveLoadFormat struct giving all characteristics of this type of savegame
  */
 static const SaveLoadFormat *GetSavegameFormat(const char *s)
 {
-	const SaveLoadFormat *def = endof(_saveload_formats) - 1;
+	const SaveLoadFormat *def = lastof(_saveload_formats);
 
 	/* find default savegame format, the highest one with which files can be written */
 	while (!def->init_write) def--;
 
-	if (s != NULL && s[0] != '\0') {
-		const SaveLoadFormat *slf;
-		for (slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
-			if (slf->init_write != NULL && strcmp(s, slf->name) == 0)
+	if (!StrEmpty(s)) {
+		for (const SaveLoadFormat *slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
+			if (slf->init_write != NULL && strcmp(s, slf->name) == 0) {
 				return slf;
+			}
 		}
 
 		ShowInfoF("Savegame format '%s' is not available. Reverting to '%s'.", s, def->name);
@@ -1705,16 +1705,12 @@ static void SaveFileError()
  */
 static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
-	const SaveLoadFormat *fmt;
-	uint32 hdr[2];
-
 	_sl.excpt_uninit = NULL;
 	try {
-		fmt = GetSavegameFormat(_savegame_format);
+		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
 
 		/* We have written our stuff to memory, now write it to file! */
-		hdr[0] = fmt->tag;
-		hdr[1] = TO_BE32(SAVEGAME_VERSION << 16);
+		uint32 hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
 		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 
 		if (!fmt->init_write()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
