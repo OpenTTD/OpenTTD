@@ -31,175 +31,163 @@
 
 StringID _error_message;
 
-/**
- * Helper macro to define the header of all command handler macros.
- *
- * This macro create the function header for a given command handler function, as
- * all command handler functions got the parameters from the #CommandProc callback
- * type.
- *
- * @param yyyy The desired function name of the new command handler function.
- */
-#define DEF_COMMAND(yyyy) CommandCost yyyy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandProc CmdBuildRailroadTrack;
+CommandProc CmdRemoveRailroadTrack;
+CommandProc CmdBuildSingleRail;
+CommandProc CmdRemoveSingleRail;
 
-DEF_COMMAND(CmdBuildRailroadTrack);
-DEF_COMMAND(CmdRemoveRailroadTrack);
-DEF_COMMAND(CmdBuildSingleRail);
-DEF_COMMAND(CmdRemoveSingleRail);
+CommandProc CmdLandscapeClear;
 
-DEF_COMMAND(CmdLandscapeClear);
+CommandProc CmdBuildBridge;
 
-DEF_COMMAND(CmdBuildBridge);
+CommandProc CmdBuildRailStation;
+CommandProc CmdRemoveFromRailStation;
+CommandProc CmdConvertRail;
 
-DEF_COMMAND(CmdBuildRailStation);
-DEF_COMMAND(CmdRemoveFromRailStation);
-DEF_COMMAND(CmdConvertRail);
+CommandProc CmdBuildSingleSignal;
+CommandProc CmdRemoveSingleSignal;
 
-DEF_COMMAND(CmdBuildSingleSignal);
-DEF_COMMAND(CmdRemoveSingleSignal);
+CommandProc CmdTerraformLand;
 
-DEF_COMMAND(CmdTerraformLand);
+CommandProc CmdPurchaseLandArea;
+CommandProc CmdSellLandArea;
 
-DEF_COMMAND(CmdPurchaseLandArea);
-DEF_COMMAND(CmdSellLandArea);
+CommandProc CmdBuildTunnel;
 
-DEF_COMMAND(CmdBuildTunnel);
+CommandProc CmdBuildTrainDepot;
+CommandProc CmdBuildRailWaypoint;
+CommandProc CmdRenameWaypoint;
+CommandProc CmdRemoveFromRailWaypoint;
 
-DEF_COMMAND(CmdBuildTrainDepot);
-DEF_COMMAND(CmdBuildRailWaypoint);
-DEF_COMMAND(CmdRenameWaypoint);
-DEF_COMMAND(CmdRemoveFromRailWaypoint);
+CommandProc CmdBuildRoadStop;
+CommandProc CmdRemoveRoadStop;
 
-DEF_COMMAND(CmdBuildRoadStop);
-DEF_COMMAND(CmdRemoveRoadStop);
+CommandProc CmdBuildLongRoad;
+CommandProc CmdRemoveLongRoad;
+CommandProc CmdBuildRoad;
+CommandProc CmdRemoveRoad;
 
-DEF_COMMAND(CmdBuildLongRoad);
-DEF_COMMAND(CmdRemoveLongRoad);
-DEF_COMMAND(CmdBuildRoad);
-DEF_COMMAND(CmdRemoveRoad);
+CommandProc CmdBuildRoadDepot;
 
-DEF_COMMAND(CmdBuildRoadDepot);
+CommandProc CmdBuildAirport;
 
-DEF_COMMAND(CmdBuildAirport);
+CommandProc CmdBuildDock;
 
-DEF_COMMAND(CmdBuildDock);
+CommandProc CmdBuildShipDepot;
 
-DEF_COMMAND(CmdBuildShipDepot);
+CommandProc CmdBuildBuoy;
 
-DEF_COMMAND(CmdBuildBuoy);
+CommandProc CmdPlantTree;
 
-DEF_COMMAND(CmdPlantTree);
+CommandProc CmdBuildRailVehicle;
+CommandProc CmdMoveRailVehicle;
 
-DEF_COMMAND(CmdBuildRailVehicle);
-DEF_COMMAND(CmdMoveRailVehicle);
+CommandProc CmdSellRailWagon;
 
-DEF_COMMAND(CmdSellRailWagon);
+CommandProc CmdSendTrainToDepot;
+CommandProc CmdForceTrainProceed;
+CommandProc CmdReverseTrainDirection;
 
-DEF_COMMAND(CmdSendTrainToDepot);
-DEF_COMMAND(CmdForceTrainProceed);
-DEF_COMMAND(CmdReverseTrainDirection);
+CommandProc CmdModifyOrder;
+CommandProc CmdSkipToOrder;
+CommandProc CmdDeleteOrder;
+CommandProc CmdInsertOrder;
+CommandProc CmdChangeServiceInt;
+CommandProc CmdRestoreOrderIndex;
 
-DEF_COMMAND(CmdModifyOrder);
-DEF_COMMAND(CmdSkipToOrder);
-DEF_COMMAND(CmdDeleteOrder);
-DEF_COMMAND(CmdInsertOrder);
-DEF_COMMAND(CmdChangeServiceInt);
-DEF_COMMAND(CmdRestoreOrderIndex);
+CommandProc CmdBuildIndustry;
 
-DEF_COMMAND(CmdBuildIndustry);
+CommandProc CmdBuildCompanyHQ;
+CommandProc CmdSetCompanyManagerFace;
+CommandProc CmdSetCompanyColour;
 
-DEF_COMMAND(CmdBuildCompanyHQ);
-DEF_COMMAND(CmdSetCompanyManagerFace);
-DEF_COMMAND(CmdSetCompanyColour);
+CommandProc CmdIncreaseLoan;
+CommandProc CmdDecreaseLoan;
 
-DEF_COMMAND(CmdIncreaseLoan);
-DEF_COMMAND(CmdDecreaseLoan);
+CommandProc CmdWantEnginePreview;
 
-DEF_COMMAND(CmdWantEnginePreview);
+CommandProc CmdRenameVehicle;
+CommandProc CmdRenameEngine;
 
-DEF_COMMAND(CmdRenameVehicle);
-DEF_COMMAND(CmdRenameEngine);
+CommandProc CmdRenameCompany;
+CommandProc CmdRenamePresident;
 
-DEF_COMMAND(CmdRenameCompany);
-DEF_COMMAND(CmdRenamePresident);
+CommandProc CmdRenameStation;
 
-DEF_COMMAND(CmdRenameStation);
+CommandProc CmdSellAircraft;
+CommandProc CmdBuildAircraft;
+CommandProc CmdSendAircraftToHangar;
+CommandProc CmdRefitAircraft;
 
-DEF_COMMAND(CmdSellAircraft);
-DEF_COMMAND(CmdBuildAircraft);
-DEF_COMMAND(CmdSendAircraftToHangar);
-DEF_COMMAND(CmdRefitAircraft);
+CommandProc CmdPlaceSign;
+CommandProc CmdRenameSign;
 
-DEF_COMMAND(CmdPlaceSign);
-DEF_COMMAND(CmdRenameSign);
+CommandProc CmdBuildRoadVeh;
+CommandProc CmdSellRoadVeh;
+CommandProc CmdSendRoadVehToDepot;
+CommandProc CmdTurnRoadVeh;
+CommandProc CmdRefitRoadVeh;
 
-DEF_COMMAND(CmdBuildRoadVeh);
-DEF_COMMAND(CmdSellRoadVeh);
-DEF_COMMAND(CmdSendRoadVehToDepot);
-DEF_COMMAND(CmdTurnRoadVeh);
-DEF_COMMAND(CmdRefitRoadVeh);
+CommandProc CmdPause;
 
-DEF_COMMAND(CmdPause);
+CommandProc CmdBuyShareInCompany;
+CommandProc CmdSellShareInCompany;
+CommandProc CmdBuyCompany;
 
-DEF_COMMAND(CmdBuyShareInCompany);
-DEF_COMMAND(CmdSellShareInCompany);
-DEF_COMMAND(CmdBuyCompany);
+CommandProc CmdFoundTown;
 
-DEF_COMMAND(CmdFoundTown);
+CommandProc CmdRenameTown;
+CommandProc CmdDoTownAction;
 
-DEF_COMMAND(CmdRenameTown);
-DEF_COMMAND(CmdDoTownAction);
+CommandProc CmdChangeSetting;
+CommandProc CmdChangeCompanySetting;
 
-DEF_COMMAND(CmdChangeSetting);
-DEF_COMMAND(CmdChangeCompanySetting);
+CommandProc CmdSellShip;
+CommandProc CmdBuildShip;
+CommandProc CmdSendShipToDepot;
+CommandProc CmdRefitShip;
 
-DEF_COMMAND(CmdSellShip);
-DEF_COMMAND(CmdBuildShip);
-DEF_COMMAND(CmdSendShipToDepot);
-DEF_COMMAND(CmdRefitShip);
+CommandProc CmdOrderRefit;
+CommandProc CmdCloneOrder;
 
-DEF_COMMAND(CmdOrderRefit);
-DEF_COMMAND(CmdCloneOrder);
+CommandProc CmdClearArea;
 
-DEF_COMMAND(CmdClearArea);
+CommandProc CmdGiveMoney;
+CommandProc CmdMoneyCheat;
+CommandProc CmdBuildCanal;
+CommandProc CmdBuildLock;
 
-DEF_COMMAND(CmdGiveMoney);
-DEF_COMMAND(CmdMoneyCheat);
-DEF_COMMAND(CmdBuildCanal);
-DEF_COMMAND(CmdBuildLock);
+CommandProc CmdCompanyCtrl;
 
-DEF_COMMAND(CmdCompanyCtrl);
+CommandProc CmdLevelLand;
 
-DEF_COMMAND(CmdLevelLand);
+CommandProc CmdRefitRailVehicle;
 
-DEF_COMMAND(CmdRefitRailVehicle);
+CommandProc CmdBuildSignalTrack;
+CommandProc CmdRemoveSignalTrack;
 
-DEF_COMMAND(CmdBuildSignalTrack);
-DEF_COMMAND(CmdRemoveSignalTrack);
+CommandProc CmdSetAutoReplace;
 
-DEF_COMMAND(CmdSetAutoReplace);
+CommandProc CmdCloneVehicle;
+CommandProc CmdStartStopVehicle;
+CommandProc CmdMassStartStopVehicle;
+CommandProc CmdAutoreplaceVehicle;
+CommandProc CmdDepotSellAllVehicles;
+CommandProc CmdDepotMassAutoReplace;
 
-DEF_COMMAND(CmdCloneVehicle);
-DEF_COMMAND(CmdStartStopVehicle);
-DEF_COMMAND(CmdMassStartStopVehicle);
-DEF_COMMAND(CmdAutoreplaceVehicle);
-DEF_COMMAND(CmdDepotSellAllVehicles);
-DEF_COMMAND(CmdDepotMassAutoReplace);
+CommandProc CmdCreateGroup;
+CommandProc CmdRenameGroup;
+CommandProc CmdDeleteGroup;
+CommandProc CmdAddVehicleGroup;
+CommandProc CmdAddSharedVehicleGroup;
+CommandProc CmdRemoveAllVehiclesGroup;
+CommandProc CmdSetGroupReplaceProtection;
 
-DEF_COMMAND(CmdCreateGroup);
-DEF_COMMAND(CmdRenameGroup);
-DEF_COMMAND(CmdDeleteGroup);
-DEF_COMMAND(CmdAddVehicleGroup);
-DEF_COMMAND(CmdAddSharedVehicleGroup);
-DEF_COMMAND(CmdRemoveAllVehiclesGroup);
-DEF_COMMAND(CmdSetGroupReplaceProtection);
-
-DEF_COMMAND(CmdMoveOrder);
-DEF_COMMAND(CmdChangeTimetable);
-DEF_COMMAND(CmdSetVehicleOnTime);
-DEF_COMMAND(CmdAutofillTimetable);
-DEF_COMMAND(CmdSetTimetableStart);
-#undef DEF_COMMAND
+CommandProc CmdMoveOrder;
+CommandProc CmdChangeTimetable;
+CommandProc CmdSetVehicleOnTime;
+CommandProc CmdAutofillTimetable;
+CommandProc CmdSetTimetableStart;
 
 /**
  * The master command table
