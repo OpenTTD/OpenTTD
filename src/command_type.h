@@ -108,6 +108,17 @@ public:
 	}
 
 	/**
+	 * Makes this CommandCost behave like an error command.
+	 * @param mesasge the error message.
+	 */
+	void MakeError(StringID message)
+	{
+		assert(message != INVALID_STRING_ID);
+		this->success = false;
+		this->message = message;
+	}
+
+	/**
 	 * Returns the error message of a command
 	 * @return the error message, if succeeded INVALID_STRING_ID
 	 */

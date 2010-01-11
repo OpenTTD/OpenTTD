@@ -588,7 +588,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			/* The vehicle has already been bought, so now it must be sold again. */
 			DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
 		}
-		return CMD_ERROR;
+		return total_cost;
 	}
 
 	return total_cost;

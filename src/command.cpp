@@ -424,14 +424,12 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 		res = proc(tile, flags & ~DC_EXEC, p1, p2, text);
 		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
-			res.SetGlobalErrorMessage();
 			goto error;
 		}
 
 		if (_docommand_recursive == 1 &&
 				!(flags & DC_QUERY_COST) &&
 				!(flags & DC_BANKRUPT) &&
-				res.GetCost() != 0 &&
 				!CheckCompanyHasMoney(res)) {
 			goto error;
 		}
@@ -446,8 +444,8 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 	 * themselves to the cost object at some point */
 	res = proc(tile, flags, p1, p2, text);
 	if (CmdFailed(res)) {
-		res.SetGlobalErrorMessage();
 error:
+		res.SetGlobalErrorMessage();
 		_docommand_recursive--;
 		return CMD_ERROR;
 	}
@@ -579,7 +577,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 			goto show_error;
 		}
 		/* no money? Only check if notest is off */
-		if (!notest && res.GetCost() != 0 && !CheckCompanyHasMoney(res)) goto show_error;
+		if (!notest && res.GetCost() != 0 && !CheckCompanyHasMoney(res)) {
+			res.SetGlobalErrorMessage();
+			goto show_error;
+		}
 	}
 
 #ifdef ENABLE_NETWORK

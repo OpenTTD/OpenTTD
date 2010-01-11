@@ -156,13 +156,13 @@ void InvalidateCompanyWindows(const Company *company)
 	SetWindowDirty(WC_FINANCES, cid);
 }
 
-bool CheckCompanyHasMoney(CommandCost cost)
+bool CheckCompanyHasMoney(CommandCost &cost)
 {
 	if (cost.GetCost() > 0) {
 		const Company *c = Company::GetIfValid(_current_company);
 		if (c != NULL && cost.GetCost() > c->money) {
 			SetDParam(0, cost.GetCost());
-			_error_message = STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY;
+			cost.MakeError(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
 			return false;
 		}
 	}
