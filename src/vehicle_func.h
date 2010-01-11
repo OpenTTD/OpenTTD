@@ -65,8 +65,6 @@ void VehicleEnterDepot(Vehicle *v);
 
 bool CanBuildVehicleInfrastructure(VehicleType type);
 
-void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2);
-
 /** Position information of a vehicle after it moved */
 struct GetNewVehiclePosResult {
 	int x, y;  ///< x and y position of the vehicle after moving

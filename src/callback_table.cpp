@@ -11,57 +11,11 @@
 
 #include "stdafx.h"
 #include "callback_table.h"
-#include "command_type.h"
+#include "command_func.h"
 
 /* If you add a callback for DoCommandP, also add the callback in here
  *   see below for the full list!
  * If you don't do it, it won't work across the network!! */
-
-/* ai/ai_core.cpp */
-CommandCallback CcAI;
-
-/* airport_gui.cpp */
-CommandCallback CcBuildAirport;
-
-/* bridge_gui.cpp */
-CommandCallback CcBuildBridge;
-
-/* dock_gui.cpp */
-CommandCallback CcBuildDocks;
-CommandCallback CcBuildCanal;
-
-/* depot_gui.cpp */
-CommandCallback CcCloneVehicle;
-
-/* group_gui.cpp */
-CommandCallback CcCreateGroup;
-
-/* main_gui.cpp */
-CommandCallback CcPlaySound10;
-CommandCallback CcPlaceSign;
-CommandCallback CcTerraform;
-CommandCallback CcGiveMoney;
-
-/* rail_gui.cpp */
-CommandCallback CcPlaySound1E;
-CommandCallback CcRailDepot;
-CommandCallback CcStation;
-CommandCallback CcBuildRailTunnel;
-
-/* road_gui.cpp */
-CommandCallback CcPlaySound1D;
-CommandCallback CcBuildRoadTunnel;
-CommandCallback CcRoadDepot;
-
-/* train_gui.cpp */
-CommandCallback CcBuildWagon;
-
-/* town_gui.cpp */
-CommandCallback CcFoundTown;
-CommandCallback CcFoundRandomTown;
-
-/* vehicle_gui.cpp */
-CommandCallback CcBuildPrimaryVehicle;
 
 CommandCallback * const _callback_table[] = {
 	/* 0x00 */ NULL,

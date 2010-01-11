@@ -31,12 +31,12 @@ static byte _selected_airport_type;
 static void ShowBuildAirportPicker(Window *parent);
 
 
-void CcBuildAirport(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		SndPlayTileFx(SND_1F_SPLAT, tile);
-		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	}
+	if (result.Failed()) return;
+
+	SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
 static void PlaceAirport(TileIndex tile)

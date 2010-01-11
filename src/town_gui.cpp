@@ -885,17 +885,17 @@ void ShowTownDirectory()
 	new TownDirectoryWindow(&_town_directory_desc);
 }
 
-void CcFoundTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcFoundTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		SndPlayTileFx(SND_1F_SPLAT, tile);
-		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	}
+	if (result.Failed()) return;
+
+	SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcFoundRandomTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcFoundRandomTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
+	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
 }
 
 /** Widget numbers of town scenario editor window. */

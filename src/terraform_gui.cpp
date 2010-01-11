@@ -36,9 +36,9 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcTerraform(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
+	if (result.Succeeded()) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 	} else {
 		extern TileIndex _terraform_err_tile;
@@ -144,8 +144,6 @@ static const uint16 _terraform_keycodes[] = {
 	'I',
 	'O',
 };
-
-void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 static void PlaceProc_BuyLand(TileIndex tile)
 {

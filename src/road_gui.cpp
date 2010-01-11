@@ -62,9 +62,9 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound1D(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaySound1D(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (result.Succeeded()) SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
 /**
@@ -119,9 +119,9 @@ static void PlaceRoad_Bridge(TileIndex tile)
 }
 
 
-void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildRoadTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
+	if (result.Succeeded()) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	} else {
@@ -191,16 +191,16 @@ static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 	}
 }
 
-void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
-		SndPlayTileFx(SND_1F_SPLAT, tile);
-		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-		BuildRoadOutsideStation(tile, dir);
-		/* For a drive-through road stop build connecting road for other entrance */
-		if (HasBit(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
-	}
+	if (result.Failed()) return;
+
+	DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
+	SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+	BuildRoadOutsideStation(tile, dir);
+	/* For a drive-through road stop build connecting road for other entrance */
+	if (HasBit(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
 }
 
 static void PlaceRoad_Depot(TileIndex tile)

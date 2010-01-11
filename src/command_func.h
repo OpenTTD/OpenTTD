@@ -107,6 +107,52 @@ static inline DoCommandFlag CommandFlagsToDCFlags(uint cmd_flags)
 	return flags;
 }
 
+/*** All command callbacks that exist ***/
+
+/* ai/ai_core.cpp */
+CommandCallback CcAI;
+
+/* airport_gui.cpp */
+CommandCallback CcBuildAirport;
+
+/* bridge_gui.cpp */
+CommandCallback CcBuildBridge;
+
+/* dock_gui.cpp */
+CommandCallback CcBuildDocks;
+CommandCallback CcBuildCanal;
+
+/* depot_gui.cpp */
+CommandCallback CcCloneVehicle;
+
+/* group_gui.cpp */
+CommandCallback CcCreateGroup;
+
+/* main_gui.cpp */
+CommandCallback CcPlaySound10;
+CommandCallback CcPlaceSign;
+CommandCallback CcTerraform;
+CommandCallback CcGiveMoney;
+
+/* rail_gui.cpp */
+CommandCallback CcPlaySound1E;
+CommandCallback CcRailDepot;
+CommandCallback CcStation;
+CommandCallback CcBuildRailTunnel;
+
+/* road_gui.cpp */
+CommandCallback CcPlaySound1D;
+CommandCallback CcBuildRoadTunnel;
+CommandCallback CcRoadDepot;
+
+/* train_gui.cpp */
+CommandCallback CcBuildWagon;
+
+/* town_gui.cpp */
+CommandCallback CcFoundTown;
+CommandCallback CcFoundRandomTown;
+
+/* vehicle_gui.cpp */
 CommandCallback CcBuildPrimaryVehicle;
 
 #endif /* COMMAND_FUNC_H */

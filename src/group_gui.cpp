@@ -485,7 +485,6 @@ public:
 			}
 
 			case GRP_WIDGET_CREATE_GROUP: { // Create a new group
-				extern void CcCreateGroup(bool success, TileIndex tile, uint32 p1, uint32 p2);
 				DoCommandP(0, this->vehicle_type, 0, CMD_CREATE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_CREATE), CcCreateGroup);
 				break;
 			}
@@ -725,9 +724,9 @@ static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner o
  * @param p2 unused
  * @see CmdCreateGroup
  */
-void CcCreateGroup(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (!success) return;
+	if (result.Failed()) return;
 	assert(p1 <= VEH_AIRCRAFT);
 
 	VehicleGroupWindow *w = FindVehicleGroupWindow((VehicleType)p1, _current_company);

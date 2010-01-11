@@ -21,8 +21,6 @@
 #include "transport_type.h"
 
 /* main_gui.cpp */
-void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
-void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void HandleOnEditText(const char *str);
 void InitializeGUI();
 

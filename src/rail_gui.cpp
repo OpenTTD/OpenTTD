@@ -66,9 +66,9 @@ static void ShowBuildWaypointPicker(Window *parent);
 static void ShowStationBuilder(Window *parent);
 static void ShowSignalBuilder(Window *parent);
 
-void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaySound1E(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) SndPlayTileFx(SND_20_SPLAT_2, tile);
+	if (result.Succeeded()) SndPlayTileFx(SND_20_SPLAT_2, tile);
 }
 
 static void GenericPlaceRail(TileIndex tile, int cmd)
@@ -128,21 +128,21 @@ static const uint16 _place_depot_extra[12] = {
 };
 
 
-void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcRailDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		DiagDirection dir = (DiagDirection)p2;
+	if (result.Failed()) return;
 
-		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+	DiagDirection dir = (DiagDirection)p2;
 
-		tile += TileOffsByDiagDir(dir);
+	SndPlayTileFx(SND_20_SPLAT_2, tile);
+	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
-		if (IsTileType(tile, MP_RAILWAY)) {
-			PlaceExtraDepotRail(tile, _place_depot_extra[dir]);
-			PlaceExtraDepotRail(tile, _place_depot_extra[dir + 4]);
-			PlaceExtraDepotRail(tile, _place_depot_extra[dir + 8]);
-		}
+	tile += TileOffsByDiagDir(dir);
+
+	if (IsTileType(tile, MP_RAILWAY)) {
+		PlaceExtraDepotRail(tile, _place_depot_extra[dir]);
+		PlaceExtraDepotRail(tile, _place_depot_extra[dir + 4]);
+		PlaceExtraDepotRail(tile, _place_depot_extra[dir + 8]);
 	}
 }
 
@@ -171,13 +171,13 @@ static void PlaceRail_Waypoint(TileIndex tile)
 	}
 }
 
-void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcStation(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		/* Only close the station builder window if the default station and non persistent building is chosen. */
-		if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0 && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	}
+	if (result.Failed()) return;
+
+	SndPlayTileFx(SND_20_SPLAT_2, tile);
+	/* Only close the station builder window if the default station and non persistent building is chosen. */
+	if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0 && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
 static void PlaceRail_Station(TileIndex tile)
@@ -258,9 +258,9 @@ static void PlaceRail_Bridge(TileIndex tile)
 }
 
 /** Command callback for building a tunnel */
-void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildRailTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
+	if (result.Succeeded()) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	} else {

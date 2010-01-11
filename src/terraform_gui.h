@@ -14,8 +14,6 @@
 
 #include "window_type.h"
 
-void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
-
 Window *ShowTerraformToolbar(Window *link = NULL);
 void ShowTerraformToolbarWithTool(uint16 key, uint16 keycode);
 Window *ShowEditorTerraformToolbar();

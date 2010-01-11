@@ -23,9 +23,9 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (!success) return;
+	if (result.Failed()) return;
 
 	/* find a locomotive in the depot. */
 	const Vehicle *found = NULL;

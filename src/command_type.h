@@ -392,13 +392,13 @@ struct Command {
  * are from the #CommandProc callback type. The boolean parameter indicates if the
  * command succeeded or failed.
  *
- * @param success If the command succeeded or not.
+ * @param result The result of the executed command
  * @param tile The tile of the command action
  * @param p1 Additional data of the command
  * @param p1 Additional data of the command
  * @see CommandProc
  */
-typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
+typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2);
 
 /**
  * Structure for buffering the build command when selecting a station to join.

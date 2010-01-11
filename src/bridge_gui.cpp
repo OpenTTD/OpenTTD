@@ -44,14 +44,14 @@ typedef GUIList<BuildBridgeData> GUIBridgeList;
 /**
  * Callback executed after a build Bridge CMD has been called
  *
- * @param success True if the build succeded
+ * @param result Whether the build succeded
  * @param tile The tile where the command has been executed
  * @param p1 not used
  * @param p2 not used
  */
-void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildBridge(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, tile);
+	if (result.Succeeded()) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, tile);
 }
 
 /* Names of the build bridge selection window */

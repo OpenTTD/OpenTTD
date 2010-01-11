@@ -635,7 +635,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 
 	_docommand_recursive = 0;
 
-	if (callback) callback(true, tile, p1, p2);
+	if (callback) callback(res2, tile, p1, p2);
 	ClearStorageChanges(true);
 	return true;
 
@@ -648,7 +648,7 @@ show_error:
 callb_err:
 	_docommand_recursive = 0;
 
-	if (callback) callback(false, tile, p1, p2);
+	if (callback) callback(CMD_ERROR, tile, p1, p2);
 	ClearStorageChanges(false);
 	return false;
 }

@@ -20,8 +20,6 @@
 typedef std::map<const char *, class AIInfo *, StringCompare> AIInfoList;
 
 
-void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2);
-
 class AI {
 public:
 	/**

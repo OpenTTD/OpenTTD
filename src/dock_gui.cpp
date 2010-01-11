@@ -35,17 +35,17 @@ static void ShowBuildDocksDepotPicker(Window *parent);
 
 static Axis _ship_depot_direction;
 
-void CcBuildDocks(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildDocks(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		SndPlayTileFx(SND_02_SPLAT, tile);
-		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	}
+	if (result.Failed()) return;
+
+	SndPlayTileFx(SND_02_SPLAT, tile);
+	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildCanal(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) SndPlayTileFx(SND_02_SPLAT, tile);
+	if (result.Succeeded()) SndPlayTileFx(SND_02_SPLAT, tile);
 }
 
 
@@ -218,7 +218,6 @@ struct BuildDocksToolbarWindow : Window {
 			switch (select_proc) {
 				case DDSP_BUILD_BRIDGE:
 					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-					extern void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2);
 					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE), CcBuildBridge);
 
 				case DDSP_DEMOLISH_AREA:

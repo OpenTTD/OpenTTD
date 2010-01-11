@@ -43,10 +43,10 @@
 static int _rename_id = 1;
 static int _rename_what = -1;
 
-void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcGiveMoney(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 #ifdef ENABLE_NETWORK
-	if (!success || !_settings_game.economy.give_money) return;
+	if (result.Failed() || !_settings_game.economy.give_money) return;
 
 	/* Inform the company of the action of one of it's clients (controllers). */
 	char msg[64];
@@ -112,9 +112,9 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyl
 }
 
 
-void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaySound10(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) SndPlayTileFx(SND_12_EXPLOSION, tile);
+	if (result.Succeeded()) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
 
 #ifdef ENABLE_NETWORK

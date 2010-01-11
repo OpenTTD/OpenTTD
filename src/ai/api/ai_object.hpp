@@ -36,7 +36,7 @@ typedef bool (AIModeProc)();
  *   command processing, and command-validation checks.
  */
 class AIObject : public SimpleCountedObject {
-friend void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2);
+friend void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2);
 friend class AIInstance;
 protected:
 	/**

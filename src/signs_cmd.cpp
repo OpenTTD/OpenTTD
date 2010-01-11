@@ -105,17 +105,17 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 /**
  * Callback function that is called after a sign is placed
- * @param success of the operation
+ * @param result of the operation
  * @param tile unused
  * @param p1 unused
  * @param p2 unused
  */
-void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		ShowRenameSignWindow(Sign::Get(_new_sign_id));
-		ResetObjectToPlace();
-	}
+	if (result.Failed()) return;
+
+	ShowRenameSignWindow(Sign::Get(_new_sign_id));
+	ResetObjectToPlace();
 }
 
 /**
