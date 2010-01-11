@@ -4,7 +4,6 @@ animated_tile.cpp
 articulated_vehicles.cpp
 autoreplace.cpp
 bmp.cpp
-callback_table.cpp
 cargopacket.cpp
 cargotype.cpp
 cheat.cpp
@@ -112,7 +111,6 @@ base_media_func.h
 base_station_base.h
 bmp.h
 bridge.h
-callback_table.h
 cargo_type.h
 cargopacket.h
 cargotype.h

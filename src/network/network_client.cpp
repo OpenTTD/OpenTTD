@@ -233,7 +233,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 	 *    uint32: P2
 	 *    uint32: Tile
 	 *    string: text
-	 *    uint8:  CallBackID (see callback_table.c)
+	 *    uint8:  CallBackID
 	 */
 
 	Packet *p = new Packet(PACKET_CLIENT_COMMAND);

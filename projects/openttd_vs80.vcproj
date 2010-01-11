@@ -476,10 +476,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\callback_table.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\cargopacket.cpp"
 				>
 			</File>
@@ -809,10 +805,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\bridge.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\callback_table.h"
 				>
 			</File>
 			<File

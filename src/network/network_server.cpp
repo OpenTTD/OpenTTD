@@ -480,7 +480,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, co
 	 *    uint32: P2
 	 *    uint32: Tile
 	 *    string: text
-	 *    uint8:  CallBackID (see callback_table.c)
+	 *    uint8:  CallBackID
 	 *    uint32: Frame of execution
 	 */
 

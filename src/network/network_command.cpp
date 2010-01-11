@@ -16,8 +16,34 @@
 #include "network_internal.h"
 #include "network_client.h"
 #include "../command_func.h"
-#include "../callback_table.h"
 #include "../company_func.h"
+
+/** Table with all the callbacks we'll use for conversion*/
+static const CommandCallback * const _callback_table[] = {
+	/* 0x00 */ NULL,
+	/* 0x01 */ CcBuildPrimaryVehicle,
+	/* 0x02 */ CcBuildAirport,
+	/* 0x03 */ CcBuildBridge,
+	/* 0x04 */ CcBuildCanal,
+	/* 0x05 */ CcBuildDocks,
+	/* 0x06 */ CcFoundTown,
+	/* 0x07 */ CcBuildRoadTunnel,
+	/* 0x08 */ CcBuildRailTunnel,
+	/* 0x09 */ CcBuildWagon,
+	/* 0x0A */ CcRoadDepot,
+	/* 0x0B */ CcRailDepot,
+	/* 0x0C */ CcPlaceSign,
+	/* 0x0D */ CcPlaySound10,
+	/* 0x0E */ CcPlaySound1D,
+	/* 0x0F */ CcPlaySound1E,
+	/* 0x10 */ CcStation,
+	/* 0x11 */ CcTerraform,
+	/* 0x12 */ CcAI,
+	/* 0x13 */ CcCloneVehicle,
+	/* 0x14 */ CcGiveMoney,
+	/* 0x15 */ CcCreateGroup,
+	/* 0x16 */ CcFoundRandomTown,
+};
 
 /** Local queue of packets */
 static CommandPacket *_local_command_queue = NULL;
@@ -158,7 +184,7 @@ const char *NetworkClientSocket::Recv_Command(Packet *p, CommandPacket *cp)
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
 	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "offline only command";
 	if ((cp->cmd & CMD_FLAGS_MASK) != 0)        return "invalid command flag";
-	if (callback > _callback_table_count)       return "invalid callback";
+	if (callback > lengthof(_callback_table))   return "invalid callback";
 
 	cp->callback = _callback_table[callback];
 	return NULL;
@@ -179,11 +205,11 @@ void NetworkClientSocket::Send_Command(Packet *p, const CommandPacket *cp)
 	p->Send_string(cp->text);
 
 	byte callback = 0;
-	while (callback < _callback_table_count && _callback_table[callback] != cp->callback) {
+	while (callback < lengthof(_callback_table) && _callback_table[callback] != cp->callback) {
 		callback++;
 	}
 
-	if (callback == _callback_table_count) {
+	if (callback == lengthof(_callback_table)) {
 		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", cp->callback);
 		callback = 0; // _callback_table[0] == NULL
 	}
