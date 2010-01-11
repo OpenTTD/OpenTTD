@@ -589,7 +589,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	 * send it to the command-queue and abort execution
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
-		NetworkSend_Command(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text);
+		NetworkSend_Command(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text, _current_company);
 		_docommand_recursive = 0;
 		ClearStorageChanges(false);
 		return true;

@@ -13,6 +13,7 @@
 #define COMMAND_FUNC_H
 
 #include "command_type.h"
+#include "company_type.h"
 
 /**
  * Checks if a command failes.
@@ -70,11 +71,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 bool DoCommandP(const CommandContainer *container, bool my_cmd = true);
 
 #ifdef ENABLE_NETWORK
-
 /**
  * Send a command over the network
  */
-void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text);
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company);
 #endif /* ENABLE_NETWORK */
 
 extern Money _additional_cash_required;

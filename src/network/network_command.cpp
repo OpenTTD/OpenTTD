@@ -78,13 +78,14 @@ void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs)
  * @param cmd The command to execute (a CMD_* value)
  * @param callback A callback function to call after the command is finished
  * @param text The text to pass
+ * @param company The company that wants to send the command
  */
-void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text)
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company)
 {
 	assert((cmd & CMD_FLAGS_MASK) == 0);
 
 	CommandPacket c;
-	c.company  = _local_company;
+	c.company  = company;
 	c.next     = NULL;
 	c.tile     = tile;
 	c.p1       = p1;

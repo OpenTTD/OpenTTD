@@ -486,7 +486,7 @@ static void MenuClickCompany(int index)
 				if (_network_server) {
 					DoCommandP(0, 0, _network_own_client_id, CMD_COMPANY_CTRL);
 				} else {
-					NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL);
+					NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
 				}
 				return;
 

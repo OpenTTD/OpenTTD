@@ -230,12 +230,7 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 #ifdef ENABLE_NETWORK
 	/* Send the command */
 	if (_networking) {
-		/* NetworkSend_Command needs _local_company to be set correctly, so
-		 * adjust it, and put it back right after the function */
-		CompanyID old_company = _local_company;
-		_local_company = _current_company;
-		::NetworkSend_Command(tile, p1, p2, cmd, CcAI, text);
-		_local_company = old_company;
+		::NetworkSend_Command(tile, p1, p2, cmd, CcAI, text, _current_company);
 		SetLastCost(res.GetCost());
 
 		/* Suspend the AI till the command is really executed */
