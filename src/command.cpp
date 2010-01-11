@@ -500,23 +500,90 @@ bool DoCommandP(const CommandContainer *container, bool my_cmd)
  */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd)
 {
-	assert(_docommand_recursive == 0);
+	/* Cost estimation is generally only done when the
+	 * local user presses shift while doing somthing.
+	 * However, in case of incoming network commands,
+	 * map generation of the pause button we do want
+	 * to execute. */
+	bool estimate_only = _shift_pressed && IsLocalCompany() &&
+			!IsGeneratingWorld() &&
+			!(cmd & CMD_NETWORK_COMMAND) &&
+			(cmd & CMD_ID_MASK) != CMD_PAUSE;
 
-	CommandCost res, res2;
+	/* We're only sending the command, so don't do
+	 * fancy things for 'success'. */
+	bool only_sending = _networking && !(cmd & CMD_NETWORK_COMMAND);
 
+	/* Where to show the message? */
 	int x = TileX(tile) * TILE_SIZE;
 	int y = TileY(tile) * TILE_SIZE;
 
+	CommandCost res = DoCommandPInternal(tile, p1, p2, cmd, callback, text, my_cmd, estimate_only);
+	if (CmdFailed(res)) {
+		res.SetGlobalErrorMessage();
+
+		/* Only show the error when it's for us. */
+		StringID error_part1 = GB(cmd, 16, 16);
+		if (estimate_only || (IsLocalCompany() && error_part1 != 0 && my_cmd)) {
+			ShowErrorMessage(error_part1, _error_message, x, y);
+		}
+	} else if (estimate_only) {
+		ShowEstimatedCostOrIncome(res.GetCost(), x, y);
+	} else if (!only_sending && res.GetCost() != 0 && tile != 0 && IsLocalCompany() && _game_mode != GM_EDITOR) {
+		/* Only show the cost animation when we did actually
+		 * execute the command, i.e. we're not sending it to
+		 * the server, when it has cost the local company
+		 * something. Furthermore in the editor there is no
+		 * concept of cost, so don't show it there either. */
+		ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res.GetCost());
+	}
+
+	if (!estimate_only && !only_sending && callback != NULL) {
+		callback(res, tile, p1, p2);
+	}
+
+	return CmdSucceeded(res);
+}
+
+
+/**
+ * Helper to deduplicate the code for returning.
+ * @param cmd   the command cost to return.
+ * @param clear whether to keep the storage changes or not.
+ */
+#define return_dcpi(cmd, clear) { _docommand_recursive = 0; ClearStorageChanges(clear); return cmd; }
+
+/*!
+ * Helper function for the toplevel network safe docommand function for the current company.
+ *
+ * @param tile The tile to perform a command on (see #CommandProc)
+ * @param p1 Additional data for the command (see #CommandProc)
+ * @param p2 Additional data for the command (see #CommandProc)
+ * @param cmd The command to execute (a CMD_* value)
+ * @param callback A callback function to call after the command is finished
+ * @param text The text to pass
+ * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
+ * @param estimate_only whether to give only the estimate or also execute the command
+ * @return the command cost of this function.
+ */
+CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd, bool estimate_only)
+{
+	/* Prevent recursion; it gives a mess over the network */
+	assert(_docommand_recursive == 0);
+	_docommand_recursive = 1;
+
+	/* Reset the state. */
 	_error_message = INVALID_STRING_ID;
-	StringID error_part1 = GB(cmd, 16, 16);
 	_additional_cash_required = 0;
 
-	/* get pointer to command handler */
+	/* Get pointer to command handler */
 	byte cmd_id = cmd & CMD_ID_MASK;
 	assert(cmd_id < lengthof(_command_proc_table));
 
 	CommandProc *proc = _command_proc_table[cmd_id].proc;
-	if (proc == NULL) return false;
+	/* Shouldn't happen, but you never know when someone adds
+	 * NULLs to the _command_proc_table. */
+	assert(proc != NULL);
 
 	/* Command flags are used internally */
 	uint cmd_flags = GetCommandFlags(cmd);
@@ -524,7 +591,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	DoCommandFlag flags = CommandFlagsToDCFlags(cmd_flags);
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
+	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return_dcpi(CMD_ERROR, false);
 
 	/* Always execute server and spectator commands as spectator */
 	if (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) _current_company = COMPANY_SPECTATOR;
@@ -535,51 +602,40 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
 	if (_game_mode == GM_NORMAL && (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0 && !Company::IsValidID(_current_company)) {
-		if (my_cmd) ShowErrorMessage(error_part1, _error_message, x, y);
-		return false;
+		return_dcpi(CMD_ERROR, false);
 	}
 
-	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
+	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
+	bool skip_test = _networking && (cmd & CMD_NO_TEST_IF_IN_NETWORK) != 0;
 
-	_docommand_recursive = 1;
-
-	/* cost estimation only? */
-	if (!IsGeneratingWorld() &&
-			_shift_pressed &&
-			IsLocalCompany() &&
-			!(cmd & CMD_NETWORK_COMMAND) &&
-			cmd_id != CMD_PAUSE) {
-		/* estimate the cost. */
+	/* Do we need to do a test run?
+	 * Basically we need to always do this, except when
+	 * the no-test-in-network flag is giving and we're
+	 * in a network game (e.g. restoring orders would
+	 * fail this test because the first order does not
+	 * exist yet when inserting the second, giving that
+	 * a wrong insert location and ignoring the command
+	 * and thus breaking restoring). However, when we
+	 * just want to do cost estimation we don't care
+	 * because it's only done once anyway. */
+	CommandCost res;
+	if (estimate_only || !skip_test) {
+		/* Test the command. */
 		SetTownRatingTestMode(true);
 		res = proc(tile, flags, p1, p2, text);
 		SetTownRatingTestMode(false);
-		if (CmdFailed(res)) {
-			res.SetGlobalErrorMessage();
-			ShowErrorMessage(error_part1, _error_message, x, y);
-		} else {
-			ShowEstimatedCostOrIncome(res.GetCost(), x, y);
-		}
 
-		_docommand_recursive = 0;
-		ClearStorageChanges(false);
-		return false;
-	}
-
-
-	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
-		/* first test if the command can be executed. */
-		SetTownRatingTestMode(true);
-		res = proc(tile, flags, p1, p2, text);
-		SetTownRatingTestMode(false);
+		/* Make sure we're not messing things up here. */
 		assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
-		if (CmdFailed(res)) {
-			res.SetGlobalErrorMessage();
-			goto show_error;
-		}
-		/* no money? Only check if notest is off */
-		if (!notest && res.GetCost() != 0 && !CheckCompanyHasMoney(res)) {
-			res.SetGlobalErrorMessage();
-			goto show_error;
+
+		/* If the command fails, we're doing an estimate
+		 * or the player does not have enough money
+		 * (unless it's a command where the test and
+		 * execution phase might return different costs)
+		 * we bail out here. */
+		if (CmdFailed(res) || estimate_only ||
+				(!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
+			return_dcpi(res, false);
 		}
 	}
 
@@ -590,12 +646,39 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
 		NetworkSend_Command(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text, _current_company);
-		_docommand_recursive = 0;
-		ClearStorageChanges(false);
-		return true;
+
+		/* Don't return anything special here; no error, no costs.
+		 * This way it's not handled by DoCommand and only the
+		 * actual execution of the command causes messages. Also
+		 * reset the storages as we've not executed the command. */
+		return_dcpi(CommandCost(), false);
 	}
 #endif /* ENABLE_NETWORK */
 	DEBUG(desync, 1, "cmd: %08x; %08x; %1x; %06x; %08x; %08x; %04x; %s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text);
+
+	/* Actually try and execute the command. If no cost-type is given
+	 * use the construction one */
+	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
+
+	/* Make sure nothing bad happened, like changing the current company. */
+	assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
+
+	/* If the test and execution can differ, or we skipped the test
+	 * we have to check the return of the command. Otherwise we can
+	 * check whether the test and execution have yielded the same
+	 * result, i.e. cost and error state are the same. */
+	if (!test_and_exec_can_differ && !skip_test) {
+		assert(res.GetCost() == res2.GetCost() && CmdFailed(res) == CmdFailed(res2)); // sanity check
+	} else if (CmdFailed(res2)) {
+		return_dcpi(res2, false);
+	}
+
+	/* If we're needing more money and we haven't done
+	 * anything yet, ask for the money! */
+	if (_additional_cash_required != 0 && res2.GetCost() == 0) {
+		SetDParam(0, _additional_cash_required);
+		return_dcpi(CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY), false);
+	}
 
 	/* update last build coordinate of company. */
 	if (tile != 0) {
@@ -603,56 +686,14 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		if (c != NULL) c->last_build_coordinate = tile;
 	}
 
-	/* Actually try and execute the command. If no cost-type is given
-	 * use the construction one */
-	res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
-
-	assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
-
-	/* If notest is on, it means the result of the test can be different than
-	 *  the real command.. so ignore the test */
-	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
-		assert(res.GetCost() == res2.GetCost() && CmdFailed(res) == CmdFailed(res2)); // sanity check
-	} else {
-		if (CmdFailed(res2)) {
-			res2.SetGlobalErrorMessage();
-			goto show_error;
-		}
-	}
-
 	SubtractMoneyFromCompany(res2);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
-	if (IsLocalCompany() && _game_mode != GM_EDITOR) {
-		if (res2.GetCost() != 0 && tile != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
-		if (_additional_cash_required != 0) {
-			SetDParam(0, _additional_cash_required);
-			if (my_cmd) ShowErrorMessage(error_part1, STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, x, y);
-			if (res2.GetCost() == 0) goto callb_err;
-		}
-	}
-
-	_docommand_recursive = 0;
-
-	if (callback) callback(res2, tile, p1, p2);
-	ClearStorageChanges(true);
-	return true;
-
-show_error:
-	/* show error message if the command fails? */
-	if (IsLocalCompany() && error_part1 != 0 && my_cmd) {
-		ShowErrorMessage(error_part1, _error_message, x, y);
-	}
-
-callb_err:
-	_docommand_recursive = 0;
-
-	if (callback) callback(CMD_ERROR, tile, p1, p2);
-	ClearStorageChanges(false);
-	return false;
+	return_dcpi(res2, true);
 }
+#undef return_dcpi
 
 
 CommandCost CommandCost::AddCost(CommandCost ret)
