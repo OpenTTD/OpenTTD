@@ -205,49 +205,39 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 		throw AI_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
-	CommandCost res;
-
 	/* Set the default callback to return a true/false result of the DoCommand */
 	if (callback == NULL) callback = &AIInstance::DoCommandReturn;
 
-	/* Make sure the last error is reset, so we don't give faulty warnings */
-	SetLastError(AIError::ERR_NONE);
+	/* Are we only interested in the estimate costs? */
+	bool estimate_only = GetDoCommandMode() != NULL && !GetDoCommandMode()();
 
-	/* First, do a test-run to see if we can do this */
-	res = ::DoCommand(tile, p1, p2, CommandFlagsToDCFlags(GetCommandFlags(cmd)), cmd, text);
-	/* The command failed, so return */
+	/* Try to perform the command. */
+	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, _networking ? CcAI : NULL, text, false, estimate_only);
+
+	/* We failed; set the error and bail out */
 	if (::CmdFailed(res)) {
+		res.SetGlobalErrorMessage();
 		SetLastError(AIError::StringToError(_error_message));
 		return false;
 	}
 
-	/* Check what the callback wants us to do */
-	if (GetDoCommandMode() != NULL && !GetDoCommandMode()()) {
+	/* No error, then clear it. */
+	SetLastError(AIError::ERR_NONE);
+
+	/* Estimates, update the cost for the estimate and be done */
+	if (estimate_only) {
 		IncreaseDoCommandCosts(res.GetCost());
 		return true;
 	}
 
-#ifdef ENABLE_NETWORK
-	/* Send the command */
-	if (_networking) {
-		::NetworkSend_Command(tile, p1, p2, cmd, CcAI, text, _current_company);
-		SetLastCost(res.GetCost());
+	/* Costs of this operation. */
+	SetLastCost(res.GetCost());
+	SetLastCommandRes(true);
 
-		/* Suspend the AI till the command is really executed */
+	if (_networking) {
+		/* Suspend the AI till the command is really executed. */
 		throw AI_VMSuspend(-(int)GetDoCommandDelay(), callback);
 	} else {
-#else
-	{
-#endif
-		/* For SinglePlayer we execute the command immediatly */
-		if (!::DoCommandP(tile, p1, p2, cmd, NULL, text)) res = CMD_ERROR;
-		SetLastCommandRes(!::CmdFailed(res));
-
-		if (::CmdFailed(res)) {
-			SetLastError(AIError::StringToError(_error_message));
-			return false;
-		}
-		SetLastCost(res.GetCost());
 		IncreaseDoCommandCosts(res.GetCost());
 
 		/* Suspend the AI player for 1+ ticks, so it simulates multiplayer. This
