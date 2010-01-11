@@ -46,19 +46,6 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	}
 }
 
-void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	const Vehicle *v;
-	if (!success) return;
-
-	v = Vehicle::Get(_new_vehicle_id);
-	if (v->tile == _backup_orders_tile) {
-		_backup_orders_tile = 0;
-		RestoreVehicleOrders(v);
-	}
-	ShowVehicleViewWindow(v);
-}
-
 /**
  * Draw the details for the given vehicle at the given position
  *

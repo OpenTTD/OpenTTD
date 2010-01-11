@@ -102,23 +102,3 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 		DrawFrameRect(x - 1, y - 1, x + real_sprite->width + 1, y + real_sprite->height + (helicopter ? 5 : 0) + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
-
-/**
- * This is the Callback method after the construction attempt of an aircraft
- * @param success indicates completion (or not) of the operation
- * @param tile of depot where aircraft is built
- * @param p1 unused
- * @param p2 unused
- */
-void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	if (success) {
-		const Vehicle *v = Vehicle::Get(_new_vehicle_id);
-
-		if (v->tile == _backup_orders_tile) {
-			_backup_orders_tile = 0;
-			RestoreVehicleOrders(v);
-		}
-		ShowVehicleViewWindow(v);
-	}
-}

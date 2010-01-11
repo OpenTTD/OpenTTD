@@ -44,7 +44,6 @@ enum VehicleRailFlags {
 	VRF_TRAIN_STUCK    = 8,
 };
 
-void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 byte FreightWagonMult(CargoID cargo);

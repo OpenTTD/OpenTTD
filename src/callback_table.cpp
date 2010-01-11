@@ -17,8 +17,8 @@
  *   see below for the full list!
  * If you don't do it, it won't work across the network!! */
 
-/* aircraft_gui.cpp */
-CommandCallback CcBuildAircraft;
+/* ai/ai_core.cpp */
+CommandCallback CcAI;
 
 /* airport_gui.cpp */
 CommandCallback CcBuildAirport;
@@ -32,6 +32,9 @@ CommandCallback CcBuildCanal;
 
 /* depot_gui.cpp */
 CommandCallback CcCloneVehicle;
+
+/* group_gui.cpp */
+CommandCallback CcCreateGroup;
 
 /* main_gui.cpp */
 CommandCallback CcPlaySound10;
@@ -50,53 +53,40 @@ CommandCallback CcPlaySound1D;
 CommandCallback CcBuildRoadTunnel;
 CommandCallback CcRoadDepot;
 
-/* roadveh_gui.cpp */
-CommandCallback CcBuildRoadVeh;
-
-/* ship_gui.cpp */
-CommandCallback CcBuildShip;
-
 /* train_gui.cpp */
 CommandCallback CcBuildWagon;
-CommandCallback CcBuildLoco;
 
 /* town_gui.cpp */
 CommandCallback CcFoundTown;
 CommandCallback CcFoundRandomTown;
 
-/* group_gui.cpp */
-CommandCallback CcCreateGroup;
-
-/* ai/ai_core.cpp */
-CommandCallback CcAI;
+/* vehicle_gui.cpp */
+CommandCallback CcBuildPrimaryVehicle;
 
 CommandCallback * const _callback_table[] = {
 	/* 0x00 */ NULL,
-	/* 0x01 */ CcBuildAircraft,
+	/* 0x01 */ CcBuildPrimaryVehicle,
 	/* 0x02 */ CcBuildAirport,
 	/* 0x03 */ CcBuildBridge,
 	/* 0x04 */ CcBuildCanal,
 	/* 0x05 */ CcBuildDocks,
-	/* 0x06 */ CcBuildLoco,
-	/* 0x07 */ CcBuildRoadVeh,
-	/* 0x08 */ CcBuildShip,
-	/* 0x09 */ CcFoundTown,
-	/* 0x0A */ CcBuildRoadTunnel,
-	/* 0x0B */ CcBuildRailTunnel,
-	/* 0x0C */ CcBuildWagon,
-	/* 0x0D */ CcRoadDepot,
-	/* 0x0E */ CcRailDepot,
-	/* 0x0F */ CcPlaceSign,
-	/* 0x10 */ CcPlaySound10,
-	/* 0x11 */ CcPlaySound1D,
-	/* 0x12 */ CcPlaySound1E,
-	/* 0x13 */ CcStation,
-	/* 0x14 */ CcTerraform,
-	/* 0x15 */ CcAI,
-	/* 0x16 */ CcCloneVehicle,
-	/* 0x17 */ CcGiveMoney,
-	/* 0x18 */ CcCreateGroup,
-	/* 0x19 */ CcFoundRandomTown,
+	/* 0x06 */ CcFoundTown,
+	/* 0x07 */ CcBuildRoadTunnel,
+	/* 0x08 */ CcBuildRailTunnel,
+	/* 0x09 */ CcBuildWagon,
+	/* 0x0A */ CcRoadDepot,
+	/* 0x0B */ CcRailDepot,
+	/* 0x0C */ CcPlaceSign,
+	/* 0x0D */ CcPlaySound10,
+	/* 0x0E */ CcPlaySound1D,
+	/* 0x0F */ CcPlaySound1E,
+	/* 0x10 */ CcStation,
+	/* 0x11 */ CcTerraform,
+	/* 0x12 */ CcAI,
+	/* 0x13 */ CcCloneVehicle,
+	/* 0x14 */ CcGiveMoney,
+	/* 0x15 */ CcCreateGroup,
+	/* 0x16 */ CcFoundRandomTown,
 };
 
 const int _callback_table_count = lengthof(_callback_table);

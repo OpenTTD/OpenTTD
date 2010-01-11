@@ -154,17 +154,3 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 		DrawFrameRect((rtl ? pos : left) - 1, y - 1, (rtl ? pos : right) - 1, y + 12, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
-
-void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	const Vehicle *v;
-
-	if (!success) return;
-
-	v = Vehicle::Get(_new_vehicle_id);
-	if (v->tile == _backup_orders_tile) {
-		_backup_orders_tile = 0;
-		RestoreVehicleOrders(v);
-	}
-	ShowVehicleViewWindow(v);
-}

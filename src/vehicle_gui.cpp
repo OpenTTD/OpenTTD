@@ -2141,3 +2141,23 @@ void StopGlobalFollowVehicle(const Vehicle *v)
 		w->viewport->follow_vehicle = INVALID_VEHICLE;
 	}
 }
+
+
+/**
+ * This is the Callback method after the construction attempt of a primary vehicle
+ * @param success indicates completion (or not) of the operation
+ * @param tile unused
+ * @param p1 unused
+ * @param p2 unused
+ */
+void CcBuildPrimaryVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (!success) return;
+
+	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
+	if (v->tile == _backup_orders_tile) {
+		_backup_orders_tile = 0;
+		RestoreVehicleOrders(v);
+	}
+	ShowVehicleViewWindow(v);
+}

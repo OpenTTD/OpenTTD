@@ -107,4 +107,6 @@ static inline DoCommandFlag CommandFlagsToDCFlags(uint cmd_flags)
 	return flags;
 }
 
+CommandCallback CcBuildPrimaryVehicle;
+
 #endif /* COMMAND_FUNC_H */

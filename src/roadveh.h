@@ -79,8 +79,6 @@ enum RoadVehicleSubType {
 };
 
 
-void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);
-
 void RoadVehUpdateCache(RoadVehicle *v);
 
 /** Cached oftenly queried (NewGRF) values */

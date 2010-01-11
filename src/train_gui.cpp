@@ -47,18 +47,6 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	if (!success) return;
-
-	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
-	if (tile == _backup_orders_tile) {
-		_backup_orders_tile = 0;
-		RestoreVehicleOrders(v);
-	}
-	ShowVehicleViewWindow(v);
-}
-
 /**
  * Draws an image of a whole train
  * @param v         Front vehicle
