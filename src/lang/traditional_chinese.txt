@@ -3204,6 +3204,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}選擇�
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI 除錯
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI 名稱
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI

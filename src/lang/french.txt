@@ -566,7 +566,7 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre d
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si elles sont connectées à une seule station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le quadrimestre ayant le plus bas profit des 12 derniers.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le mois ayant le plus haut profit des trois dernières années.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le quadrimestre ayant le plus haut profit des 12 derniers.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unités de cargo livrées durant les 4 derniers trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Types de cargo livrés durant le dernier trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantité d'argent disponible.
