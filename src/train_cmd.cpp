@@ -2851,20 +2851,6 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 		}
 	}
 
-	/* Special check if we are in front of a two-sided conventional signal. */
-	DiagDirection dir = TrainExitDir(v->direction, v->track);
-	TileIndex next_tile = TileAddByDiagDir(v->tile, dir);
-	if (IsTileType(next_tile, MP_RAILWAY) && HasReservedTracks(next_tile, DiagdirReachesTracks(dir))) {
-		/* Can have only one reserved trackdir. */
-		Trackdir td = FindFirstTrackdir(TrackBitsToTrackdirBits(GetReservedTrackbits(next_tile)) & DiagdirReachesTrackdirs(dir));
-		if (HasSignalOnTrackdir(next_tile, td) && HasSignalOnTrackdir(next_tile, ReverseTrackdir(td)) &&
-				!IsPbsSignal(GetSignalType(next_tile, TrackdirToTrack(td)))) {
-			/* Signal already reserved, is not ours. */
-			if (mark_as_stuck) MarkTrainAsStuck(v);
-			return false;
-		}
-	}
-
 	Vehicle *other_train = NULL;
 	PBSTileInfo origin = FollowTrainReservation(v, &other_train);
 	/* The path we are driving on is alread blocked by some other train.
