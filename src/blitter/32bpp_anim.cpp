@@ -308,11 +308,15 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 	assert(video >= _screen.dst_ptr && video <= (uint32 *)_screen.dst_ptr + _screen.width + _screen.height * _screen.pitch);
 	uint32 *dst = (uint32 *)video;
 	uint32 *usrc = (uint32 *)src;
-	uint8 *anim_line;
+	uint8 *anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
 
-	anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
+	int count = (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
 
 	for (; height > 0; height--) {
+		/* We need to keep those for palette animation. */
+		uint32 *dst_pal = dst;
+		uint8 *anim_pal = anim_line;
+
 		memcpy(dst, usrc, width * sizeof(uint32));
 		usrc += width;
 		dst += _screen.pitch;
@@ -320,10 +324,24 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		memcpy(anim_line, usrc, width * sizeof(uint8));
 		usrc = (uint32 *)((uint8 *)usrc + width);
 		anim_line += this->anim_buf_width;
-	}
 
-	/* We update the palette (or the pixels that do animation) immediatly, to avoid graphical glitches */
-	this->PaletteAnimate(PALETTE_ANIM_SIZE_START, (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN);
+		/* Okay, it is *very* likely that the image we stored is using
+		 * the wrong palette animated colours. There are two things we
+		 * can do to fix this. The first is simply reviewing the whole
+		 * screen after we copied the buffer, i.e. run PaletteAnimate,
+		 * however that forces a full screen redraw which is expensive
+		 * for just the cursor. This just copies the implementation of
+		 * palette animation, much cheaper though slightly nastier. */
+		for (int i = 0; i < width; i++) {
+			uint colour = *anim_pal;
+			if (IsInsideBS(colour, PALETTE_ANIM_SIZE_START, count)) {
+				/* Update this pixel */
+				*dst_pal = LookupColourInPalette(colour);
+			}
+			dst_pal++;
+			anim_pal++;
+		}
+	}
 }
 
 void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, int height)
