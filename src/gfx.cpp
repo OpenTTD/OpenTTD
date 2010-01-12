@@ -20,6 +20,7 @@
 #include "strings_func.h"
 #include "settings_type.h"
 #include "landscape_type.h"
+#include "network/network.h"
 #include "network/network_func.h"
 #include "thread/thread.h"
 #include "window_func.h"
@@ -88,7 +89,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 	if (_cursor.visible) UndrawMouseCursor();
 
 #ifdef ENABLE_NETWORK
-	NetworkUndrawChatMessage();
+	if (_networking) NetworkUndrawChatMessage();
 #endif /* ENABLE_NETWORK */
 
 	blitter->ScrollBuffer(_screen.dst_ptr, left, top, width, height, xo, yo);
@@ -1422,7 +1423,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	}
 
 #ifdef ENABLE_NETWORK
-	NetworkUndrawChatMessage();
+	if (_networking) NetworkUndrawChatMessage();
 #endif /* ENABLE_NETWORK */
 
 	DrawOverlappedWindowForAll(left, top, right, bottom);
