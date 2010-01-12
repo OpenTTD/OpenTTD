@@ -29,8 +29,6 @@ static FVideoDriver_SDL iFVideoDriver_SDL;
 
 static SDL_Surface *_sdl_screen;
 static bool _all_modes;
-/** Flag used to determine if _cursor.fix_at has changed. */
-static bool _last_fix_at;
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -374,22 +372,12 @@ static int PollEvent()
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
 			if (_cursor.fix_at) {
-				int dx;
-				int dy;
-				if (_last_fix_at) {
-					dx = ev.motion.x - _screen.width / 2;
-					dy = ev.motion.y - _screen.height / 2;
-				} else {
-					/* Mouse hasn't been warped yet, so our movement is
-					 * relative to the old position. */
-					dx = ev.motion.x - _cursor.pos.x;
-					dy = ev.motion.y - _cursor.pos.y;
-					_last_fix_at = true;
-				}
+				int dx = ev.motion.x - _cursor.pos.x;
+				int dy = ev.motion.y - _cursor.pos.y;
 				if (dx != 0 || dy != 0) {
 					_cursor.delta.x = dx;
 					_cursor.delta.y = dy;
-					SDL_CALL SDL_WarpMouse(_screen.width / 2, _screen.height / 2);
+					SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
 				}
 			} else {
 				_cursor.delta.x = ev.motion.x - _cursor.pos.x;
@@ -436,13 +424,6 @@ static int PollEvent()
 				_right_button_down = false;
 			}
 			HandleMouseEvents();
-
-			if (_cursor.fix_at != _last_fix_at) {
-				/* Mouse fixing changed during a mouse button up event, so it
-				 * must have been released. */
-				_last_fix_at = false;
-				SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
-			}
 			break;
 
 		case SDL_ACTIVEEVENT:
