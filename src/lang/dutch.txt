@@ -1390,13 +1390,13 @@ STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Weet je
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Keuzevakjes geven aan of je deze cheat eerder hebt gebruikt
-STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
+STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je medespelers te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Verander klimaat: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gematigd landschap
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarctisch landschap
@@ -1408,32 +1408,32 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sta aan
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nieuw kleurenschema
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Laat de algemene kleurschema's zien
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Laat treinkleurschema's zien
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Laat wegvoertuigkleurschema's zien
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Laat schipkleurschema's zien
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Laat vliegtuigkleurschema's zien
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Toon algemene kleurenschema's
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Toon kleurenschema's voor treinen
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Toon kleurenschema's voor wegvoertuigen
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Toon kleurenschema's voor schepen
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Toon kleurenschema's voor vliegtuigen
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Kies de hoofdkleur voor het geselecteerde schema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies de tweede kleur voor het geselecteerde schema
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Kies een kleurschema om te wijzigen, of meerdere schema's met Ctrl+klik. Klik in het venster het gebruik van het kleurschema te kiezen
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Kies een kleurenschema om te wijzigen, of meerdere schema's met Ctrl+klik. Vink de keuzevakjes aan/uit om het gebruik van het schema aan/uit te zetten
 
-STR_LIVERY_DEFAULT                                              :Standaard Logo
+STR_LIVERY_DEFAULT                                              :Standaard kleurenschema
 STR_LIVERY_STEAM                                                :Stoomlocomotief
 STR_LIVERY_DIESEL                                               :Diesellocomotief
 STR_LIVERY_ELECTRIC                                             :Elektrische locomotief
 STR_LIVERY_MONORAIL                                             :Monorail-locomotief
-STR_LIVERY_MAGLEV                                               :Zweeflocomotief
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_MAGLEV                                               :Zweeftrein-locomotief
+STR_LIVERY_DMU                                                  :Dieseltreinstel
+STR_LIVERY_EMU                                                  :Elektrisch treinstel
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagierswagon (Stoom)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagierswagon (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierswagon (Elektrisch)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagierswagon (Monorail)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagierswagon (Zweef)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagierswagon (Zweeftrein)
 STR_LIVERY_FREIGHT_WAGON                                        :Vrachtwagon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Vrachtwagen
-STR_LIVERY_PASSENGER_SHIP                                       :Passagiersboot
+STR_LIVERY_PASSENGER_SHIP                                       :Passagiersschip
 STR_LIVERY_FREIGHT_SHIP                                         :Vrachtschip
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Klein Vliegtuig
@@ -1458,30 +1458,30 @@ STR_FACE_SIMPLE                                                 :{BLACK}Eenvoudi
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudige gezichtskeuze.
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laad favoriet gezicht
-STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht geladen van het OpenTTD-configuratiebestand.
-STR_FACE_FACECODE                                               :{BLACK}Spelergezichtsnummer.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Bekijk en/of bewaar spelergezichtsnummer
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijken en/of bewaar gezichtnummer
+STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht is geladen uit het OpenTTD-configuratiebestand.
+STR_FACE_FACECODE                                               :{BLACK}Gezichtsnummer
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Bekijk en/of bewaar gezichtsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijk en/of bewaar gezichtsnummer
 STR_FACE_FACECODE_SET                                           :{WHITE}Nieuwe gezichtsnummercode is opgeslagen.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer niet bewaren - het moet een nummer zijn tussen 0 en 4.294.967.295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer niet bewaren - het moet een getal zijn tussen 0 en 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sla favoriet gezicht op
 STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt zal worden opgeslagen als jouw favoriet in het OpenTTD-configuratiebestand.
-STR_FACE_EUROPEAN                                               :{BLACK}Europeaan
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies Europeaans gezicht
-STR_FACE_AFRICAN                                                :{BLACK}Afrikaan
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Kies Afrikaans gezicht
+STR_FACE_EUROPEAN                                               :{BLACK}Europeaans
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecteer Europeaanse gezichten
+STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecteer Afrikaanse gezichten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activeer snor of oorbel
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Geef het gezicht een snor of oorbel
 STR_FACE_HAIR                                                   :Haar:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Verander haar
 STR_FACE_EYEBROWS                                               :Wenkbrauwen:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Verander wenkbrauwen
-STR_FACE_EYECOLOUR                                              :Kleur ogen
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Verander kleur ogen
+STR_FACE_EYECOLOUR                                              :Oogkleur:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Verander oogkleur
 STR_FACE_GLASSES                                                :Bril:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Brillen aan
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Geef het gezicht een bril
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Verander bril
 STR_FACE_NOSE                                                   :Neus:
 STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Verander neus
@@ -1499,10 +1499,10 @@ STR_FACE_EARRING                                                :Oorbel:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander das of oorbel
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netwerkspel
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Verbinding:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Kies tussen een internetspel of een lokaalnetwerkspel
-STR_NETWORK_SERVER_LIST_LAN                                     :Netwerk
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Kies tussen een internetspel of een spel op het lokale netwerk (LAN)
+STR_NETWORK_SERVER_LIST_LAN                                     :Netwerk (LAN)
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelersnaam:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dit is de naam waarmee andere spelers je herkennen
@@ -1514,11 +1514,11 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Spelers
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Spelers online / spelers maximaal{}Bedrijven online / bedrijven maximaal
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kaartgrootte
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kaartgrootte van het spel{}Klik om te sorteren per gebied
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kaartgrootte van het spel{}Klik om te sorteren op oppervlakte
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Huidige datum
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Jaren
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Aantal jaren{}het spel draait
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Aantal jaren{}dat het spel draait
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Taal, serverversie, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik op een spel uit de lijst om deze te selecteren
@@ -1545,22 +1545,22 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ververs 
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ververs de informatie over deze server
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Server zoeken
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Zoeken naar een netwerkserver
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Zoek op het netwerk naar een server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg server toe
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start eigen server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Vul je naam in
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}IP-adres van de server invoeren
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Voer het IP-adres van de server in
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start nieuw spel
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start nieuw multiplayer spel
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spelnaam:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayer spelselectie menu
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayer-spelselectie menu
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Kies wachtwoord
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bescherm je spel met een wachtwoord als je niet wil dat andere mensen meespelen
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bescherm je spel met een wachtwoord als je niet wilt dat deze algemeen toegankelijk is
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selecteer een kaart:
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Op welke kaart wil je spelen?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Genereer willekeurig nieuw spel
@@ -1582,7 +1582,7 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere s
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laad spel
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat een eerder opgeslagen netwerkspel (wees er zeker van dat je verbind als de juiste speler)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat een eerder opgeslagen netwerkspel (wees er zeker van dat je verbindt als de juiste speler)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Geef de naam van het netwerk spel
 
@@ -1648,7 +1648,7 @@ STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nieuw be
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Start een nieuw bedrijf
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Bekijk spel
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Bekijk het spel als een toeschouwer
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Dit bedrijf
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Meedoen met dit bedrijf
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Help met het beheren van dit bedrijf
 
 # Network connecting window
@@ -1659,19 +1659,19 @@ STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Ve
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Inloggen...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Wachten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Downloaden kaart...
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verwerken data...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verwerken gegevens...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreren...
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ophalen spelinformatie...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ophalen bedrijfsinformatie...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} speler{P "" s} voor ons
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} speler{P "" s} voor je
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} opgehaald
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Verbreek verbinding
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in.
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in.
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spelerslijst
@@ -1680,7 +1680,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw be
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Schop uit het spel
-STR_NETWORK_CLIENTLIST_BAN                                      :Bannen
+STR_NETWORK_CLIENTLIST_BAN                                      :Verban uit het spel
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geef geld
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Praat met iedereen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Praat met het bedrijf
@@ -1688,9 +1688,9 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Praat met deze 
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Speler
-STR_NETWORK_SPECTATORS                                          :Toeschouwer
+STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Geef de hoeveelheid geld die je wilt geven in
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Voer de hoeveelheid geld die je wilt geven in
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sla het ingegeven wachtwoord niet op
@@ -1703,7 +1703,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gebruik 
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Doe mee
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Doe mee en speel als dit bedrijf
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wachtwoord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet geautoriseerde personen niet mee kunnen doen.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet-geautoriseerde personen niet mee kunnen doen.
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Geef bedrijfswachtwoord op
 
 # Network chat
@@ -1714,19 +1714,19 @@ STR_NETWORK_CHAT_ALL_CAPTION                                    :[Iedereen] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_CLIENT                                         :[Prive] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Prive] Aan {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Privé] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privé] Aan {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Geef de tekst voor de netwerk-chat
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kon geen enkel netwerkspel vinden
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}De server beantwoorde het verzoek niet
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kan geen verbinding maken, je hebt niet dezelfde NewGRF files als de server
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netwerkspelsynchronisatie mislukt.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netwerkspelverbinding kwijt
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kon server-opgeslagen spel niet laden
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}De server beantwoordde het verzoek niet
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kan geen verbinding maken, je hebt niet dezelfde NewGRF bestanden als de server
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synchronisatie van netwerkspel mislukt
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Verbinding met netwerkspel kwijt
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kon opgeslagen spel niet laden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Kan server niet starten
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kan geen verbinding maken
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbinding #{NUM} duurde te lang
@@ -1744,14 +1744,14 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desynchronisati
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kan kaart niet laden
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :verbinding verbroken
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protocolfout
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Niet gelijke NewGRF-instelling
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Ongelijke NewGRF-instelling
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :niet toegestaan
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :raar pakket ontvangen
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :foute revisie
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam al in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fout spelwachtwoord
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerde bedrijfs-id in DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :geschopt door server
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerd bedrijfsnummer in verstuurd commando
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :eruit geschopt door server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :probeerde vals te spelen
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server is vol
 ############ End of leave-in-this-order
@@ -1765,12 +1765,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel vervolgd ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :niet genoeg spelers
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :cliënten verbinden
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :handleiding
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :spelers maken verbinding
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :handmatig
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} is het spel ingekomen (Speler #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} heeft zich bij het spel gevoegd (Speler #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} heeft zich gevoegd bij bedrijf #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} kijkt nu toe
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} heeft een nieuw bedrijf opgericht (#{2:NUM})
@@ -1784,23 +1784,23 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} De serv
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download extra content
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type van de gegevens
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type van de content
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
-STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Naam van de gegevens
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klik op een lijn voor details{}Gebruik het selectievak om te selecteren voor downloaden
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Naam van de content
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klik op een regel voor details{}Gebruik het selectievakje om het te selecteren om te downloaden
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecteer alles
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Laat alle content downloaden
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Markeer alle content om te downloaden
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecteer updates
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer alle updates voor bestaande content om te downloaden
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Laat alle content niet downloaden
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markeer alle content om niet te downloaden
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloaden van geselecteerde gegevens
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloaden van geselecteerde content
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale downloadgrootte: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}GEGEVENS INFO
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt gekozen dit niet te downloaden
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Je hebt gekozen om dit te downloaden
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}CONTENT INFO
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt ervoor gekozen om dit niet te downloaden
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Je hebt ervoor gekozen om dit te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Deze afhankelijkheid is geselecteerd om te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dit heb je al
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Deze gegevens zijn onbekend en kunnen niet gedownload worden in OpenTTD
