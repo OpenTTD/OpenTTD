@@ -147,6 +147,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	_screen.height = _cur_resolution.height;
 	_screen.dst_ptr = _dedicated_video_mem;
 	ScreenSizeChanged();
+	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
 
 #if defined(WINCE)
 	/* WinCE doesn't support console stuff */
