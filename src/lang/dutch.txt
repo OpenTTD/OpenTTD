@@ -300,7 +300,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Toon fin
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Toon algemene informatie over het bedrijf
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Toon grafieken
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Toon bedrijfscompetitietabel
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bekostig de bouw van nieuwe industrie of toon lijst van alle industrieën
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betaal de bouw van nieuwe industrie of toon lijst van alle industrieën
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Toon lijst met treinen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Toon lijst met wegvoertuigen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Toon lijst met schepen van het bedrijf. Ctrl+klik wisselt tussen groep/voertuig lijst
@@ -393,7 +393,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Gedetailleerde 
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielijst
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Bekostig nieuwe industrie
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Betaal nieuwe industrie
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -674,7 +674,7 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Bushalte
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Vliegveld/Heliplatform
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Haven
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Woestenij
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Ruw land
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Grasland
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Braakliggend land
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Velden
@@ -1287,8 +1287,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langzaam
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Heel snel
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Verhouding van dorpen die steden worden: {ORANGE}1 in {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Verhouding van dorpen die steden worden: {ORANGE}Niet
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Verhouding van steden die groeisteden worden: {ORANGE}1 in {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Verhouding van steden die groeisteden worden: {ORANGE}Niet
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Stadsgroei-indicator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Verwijder rare weg-elementen tijdens het repareren van de weg: {ORANGE}{STRING}
 
@@ -1803,7 +1803,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Je hebt ervoor gekozen om dit te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Deze afhankelijkheid is geselecteerd om te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dit heb je al
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Deze gegevens zijn onbekend en kunnen niet gedownload worden in OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Deze content is onbekend en kan niet gedownload worden in OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dit is een vervanging voor een bestaande {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Naam: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versie: {WHITE}{STRING}
@@ -1823,36 +1823,36 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI-bibliotheek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtemap
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtekaart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basisgeluiden
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Basis muziek
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismuziek
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Inhoud binnenhalen...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Verzoek verzenden bestanden...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Aan het binnenhalen {STRING} ({NUM} of {NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Binnenhalen is klaar
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} van {BYTES} binnengehaald ({NUM} %)
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Content aan het downloaden...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Bestanden aan het opvragen...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Aan het downloaden: {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Downloaden is klaar
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} van {BYTES} gedownload ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kon geen verbinding maken met inhoudsserver...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kon geen verbinding maken met de contentserver...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Downloaden mislukt...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verloren
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verbroken
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... bestand niet schrijfbaar
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon binnengehaald bestand niet uitpakken
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon gedownload bestand niet uitpakken
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Doorzichtigheidsopties
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Wissel doorzichtigheid voor stationsnamen. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Wissel doorzichtigheid voor bomen. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Wissel doorzichtigheid voor huizen. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Wissel doorzichtigheid voor industrieën. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots en controleposten. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Wissel doorzichtigheid voor bruggen. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtorens en antennes. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Wissel doorzichtigheid voor bovenleidingen. Ctrl+klik voor onthouden.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Wissel doorzichtigheid voor laadindicatoren. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Zet object op onzichtbaar in plaats van doorzichtig
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Schakel transparantie voor stationsnamen aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Schakel transparantie voor bomen aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel transparantie voor huizen aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals voortorens en antennes aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Dekkingsgebied markeren
@@ -1861,7 +1861,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aan
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Markeer het dekkingsgebied van de voorgestelde locatie niet
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Markeer het dekkingsgebied van de voorgestelde locatie
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepteert: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bied aan: {GOLD}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Biedt aan: {GOLD}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Station samenvoegen
@@ -1871,42 +1871,42 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Controle
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bouw een losstaande controlepost
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Spoorwegconstructie
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Geëlectrificeerdespoorwegconstructie
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorailspoorwegconstructie
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Zweefspoorwegconstructie
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bouw spoorwegen
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Bouw geëlektrificeerde spoorwegen
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Bouw monorail-spoorwegen
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Bouw magneetzweeftrein-spoorwegen
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Plaats spoor. Ctrl wisselt tussen bouwen/verwijderen van het spoor
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bouw spoor met de Autorail-methode. Ctrl wisselt tussen bouwen/verwijderen van het spoor
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bouw treindepot (om treinen te kopen en te onderhouden)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteer spoor naar controlepost. Ctrl om controlepost samen te voegen
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bouw treinstation. Ctrl om stations samen te voegen
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen. Ctrl wisselt tussen semaphore/licht seinen{}Slepen, plaatsen seinen langs een recht stuk spoor. Ctrl bouwd sienen tot de volgende wissel{}Ctrl+Klik wisselt tussen het openen van het seinen keuzescherm
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteer spoor naar controlepost. Houd Ctrl ingedrukt om samen te voegen met andere controlepost
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bouw treinstation. Houd Ctrl ingedrukt om samen te voegen met ander station
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen. Ctrl wisselt tussen armseinen en lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+Klik schakelt het openen van het keuzescherm voor seinen aan/uit
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bouw spoorbrug
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen bij spoor- en seinaanleg. Ctrl+klik behoud het spoor bij verwijderen van tussenstops en stations
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen van sporen, seinen, controleposten en stations. Houd Ctrl ingedrukt om ook het spoor van controleposten en stations te verwijderen.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander spoortype
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Treindepotrichting
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Richting van treindepot
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecteer richting van treindepot
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Controlepost
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selecteer controleposttype
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selecteer type controlepost
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Stationskeuze
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Richting
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Kies richting van treinstation
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Aantal sporen
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecteer aantal platforms voor station
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platformlengte
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecteer aantal perrons voor station
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Perronlengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecteer lengte van station
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slepen
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bouw een station door te slepen
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecteer een stationstype
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecteer een stationsklasse om weer te geven
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecteer het type station om te bouwen
 
 STR_STATION_CLASS_DFLT                                          :Standaardstation
@@ -1914,51 +1914,51 @@ STR_STATION_CLASS_WAYP                                          :Controleposten
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinkeuze
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standaard sein (semafoor){}Seinen zijn nodig om te voorkomen dat treinen botsen bij een netwerk met meer dan een trein.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Beginsein (semafoor){}Groen zolang als er een of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (semafoor){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combinatie-seinen te sturen.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinatiesein (semafoor){}Het combinatiesein gedraagt zicht als zowel Ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routeseinen (semafoor){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (semafoor){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein, dat slechts een trein tegelijk in hetzelfde blok toelaat.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (semafoor){}Groen zolang als er een of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (armsein){}Gedraagt zich hetzelfde als een gewoon bloksein, maar is nodig om ingangs- en combinatieseinen te sturen.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinatiesein (armsein){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangssein. Zo kun je grote netwerken van beginseinen maken.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routesein (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in het volgende traject. Anders is deze rood.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Als geselecteerd zal door te klikken op een bestaand seintype het sein worden omgebouwd naar het geselecteerde seintype en varianten, Ctrl+klik schakelt tussen de bestaande varianten.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Seinsleepdichtheid
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verklein seinsleepdichtheid
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Vergroot seinsleepdichtheid
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Indien geselecteerd, zal door te klikken op een bestaand sein deze worden omgebouwd naar het geselecteerde seintype en variant, Ctrl+klik verandert de bestaande variant (armsein/elektrisch).
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dichtheid van seinen bij het slepen
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verklein dichtheid van seinen bij het slepen
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Vergroot dichtheid van seinen bij het slepen
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Kies spoorbrug
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Kies brug
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Kies type spoorbrug
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Kies type brug
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brugkeuze - klik op de gewenste brug om die te bouwen
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hang, Staal
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vlak, Staal
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Koker, Staal
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Staal
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hang, Beton
 STR_BRIDGE_NAME_WOODEN                                          :Hout
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Koker, Staal
-STR_BRIDGE_TUBULAR_SILICON                                      :Koker, Silicium
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Buis, Staal
+STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silicium
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Wegenbouw
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramrailaanleg
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bouw wegen
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bouw tramwegen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bouw weg. Ctrl wisselt tussen bouwen/verwijderen van de weg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bouw tramrails. Ctrl wisselt tussen bouwen/verwijderen van tramrails
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bouw weg met de Autoroad-methode. Ctrl wisselt tussen bouwen/verwijderen van de weg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bouw tramrails met de Autotram-methode. Ctrl wisselt tussen bouwen/verwijderen van tramrails
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bouw garage (voor het kopen en onderhoud van wegvoertuigen)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bouw tramdepot (voor het kopen en onderhoud van trams)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bouw bushalte. Met Ctrl kunnen stations worden samengevoegd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bouw passagiertramhalte. Met Ctrl kunnen stations worden samengevoegd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bouw vrachtwagenlaadhal. Met Ctrl kunnen stations worden samengevoegd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bouw vrachttramhalte. Met Ctrl kunnen stations worden samengevoegd
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bouw bushalte. Houd Ctrl ingedrukt om samen te voegen met ander station
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bouw passagiertramhalte. Houd Ctrl ingedrukt om samen te voegen met ander station
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bouw vrachtwagenlaadhal. Houd Ctrl ingedrukt om samen te voegen met ander station
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bouw vrachttramhalte. Houd Ctrl ingedrukt om samen te voegen met ander station
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activeer/Deactiveer eenrichtingsverkeer
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bouw brug voor wegvoertuigen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bouw brug voor tramrails
@@ -1968,35 +1968,35 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Kies tus
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Kies tussen bouwen en verwijderen bij tramrailaanleg
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garagerichting
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Richting van garage
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecteer richting van garage
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramdepotrichting
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Richting van tramdepot
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecteer richting van tramdepot
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bushalterichting
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Richting van bushalte
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecteer richting van bushalte
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Vrachtwagenlaadhalrichting
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Richting van vrachtwagenlaadhal
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecteer richting van vrachtwagenlaadhal
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passagierstramrichting
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Richting van passagierstramhalte
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecteer richting van passagierstramhalte
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Vrachttramrichting
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Richting van vrachttramhalte
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecteer richting van vrachttramhalte
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Kanaalaanleg
-STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalen
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bouw van waterwegen
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterwegen
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bouw kanalen.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bouw sluis
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw dok (voor het kopen en onderhoud van schepen)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw dok. Met Ctrl kunnen stations worden samengevoegd
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw haven. Houd Ctrl ingedrukt om samen te voegen met ander station
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaats boei, kan gebruikt worden voor extra tussenstops
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bouw aquaduct
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definieer watergebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definieer watergebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zeeniveau, dan zal de omgeving overstromen
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Leg rivieren aan.
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Dokrichting
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Richting van dok
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Selecteer richting van dok
 
 # Dock construction window
@@ -2004,10 +2004,10 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Haven
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Vliegvelden
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bouw vliegveld. Met Ctrl kunnen stations worden samengevoegd
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bouw vliegveld. Houd Ctrl ingedrukt om samen te voegen met ander station
 
 # Airport construction window
-STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Vliegveldkeuze
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Keuze van vliegveld
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Kies grootte en type van vliegveld
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
@@ -2023,64 +2023,64 @@ STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopt
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kleine vliegvelden
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Grote vliegvelden
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centraal vliegveld
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter vliegveld
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter-vliegvelden
 
-STR_STATION_BUILD_NOISE                                         :{BLACK}Maakt geluid: {GOLD}{COMMA}
+STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidsoverlast: {GOLD}{COMMA}
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land egaliseren
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een boom om te planten
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige boomsoorten
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurig type
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een soort boom om te planten
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Verspreid bomen willekeurig over de kaart
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaats steenachtige gebieden op de kaart
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaats rotsachtige gebieden op de kaart
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plaats vuurtoren
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definieer woestijngebied.{}Gebruik Ctrl om het te verwijderen
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plaats radiomast
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot het stuk land om te verhogen/verlagen
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein het stuk land om te verhogen/verlagen
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot de landoppervlakte om te verhogen/verlagen
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer willekeurig land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Maak nieuw scenario aan
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Verwijder landschap
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Verwijderd alle eigendommen van een speler van de kaart
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Verwijder alle eigendommen van een speler van de kaart
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Verwijder landschap
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je zeker dat je alle eigendommen van een speler van de kaart wilt verwijderen?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Dorpsontwikkeling
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuw dorp
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuw dorp
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurig dorp
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sticht dorp op willekeurige locatie
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadsontwikkeling
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuwe stad
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurige stad
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sticht stad op willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Bedek de kaart met willekeurig geplaatste steden
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Dorpsnaam:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Typ dorpsnaam
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik om dorpsnaam in te geven
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Plaatsnaam:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Geef plaatsnaam op
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik om plaatsnaam in te geven
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Willekeurige naam
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genereer willekeurige nieuwe naam
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Stadsgrootte:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Klein
-STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Middelmatig
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Gemiddeld
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Groot
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Willekeurig
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Kies dorpsgrootte
-STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Steden groeien sneller dan gewone dorpen{}Afhankelijk van instellingen, zijn ze groter als ze gemaakt worden
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Kies stadsgrootte
+STR_FOUND_TOWN_CITY                                             :{BLACK}Groeistad
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Groeisteden groeien sneller dan gewone steden{}Afhankelijk van de instellingen kunnen ze ook groter zijn als ze gesticht worden
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Wegpatroon
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Kies het wegpatroon voor deze stad
@@ -2092,7 +2092,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Willekeu
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Betaal nieuwe industrie
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Kies de aangewezen industrie van de lijst
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Kies de industrie die je wilt laten bouwen uit de lijst
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Veel willekeurige industrieën
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kosten: {YELLOW}{CURRENCY}
@@ -2104,12 +2104,12 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Investee
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landinformatie
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Sloopkosten: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Omzet na verwijdering: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Opbrengst bij verwijdering: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :(geen)
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigenaar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Wegeigenaar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramspooreigenaar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Spooreigenaar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Eigenaar van weg: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigenaar van tramrails: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigenaar van spoorweg: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2117,37 +2117,37 @@ STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde goederen: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde vracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rotsen
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Ruw land
-STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Onbegroeid land
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Braakliggend land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akkers
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Sneeuw
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestijn
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoor
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoor met normale seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoor met blokseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Spoor met beginseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Spoor met uitgangseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Spoor met uitgangsseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Spoor met combinatieseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Spoor met routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Spoor met eenrichtingsrouteseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoor met normale en beginseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoor met normale en uitgangssignalen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoor met normale en combinatiesignalen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Spoor met normale en routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Spoor met normale en eenrichtingsrouteseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoor met begin- en uitgangssignalen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoor met begin- en combinatiesignalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoor met blok- en beginseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoor met blok- en uitgangsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoor met blok- en combinatieseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Spoor met blok- en routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Spoor met blok- en eenrichtingsrouteseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoor met begin- en uitgangsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoor met begin- en combinatieseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Spoor met begin- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Spoor met begin- en eenrichtingsrouteseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoor met uitgangs- en combinatiesignalen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoor met uitgangs- en combinatieseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Spoor met uitgangs- en routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Spoor met begin- en eenrichtingsrouteseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Spoor met uitgangs- en eenrichtingsrouteseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Spoor met combinatie- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Spoor met combinatie- en eenrichtingsrouteseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Spoor met route- en eenrichtingsrouteseinen
@@ -2157,14 +2157,14 @@ STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Weg
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Weg met straatlantaarns
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Weg met bomenrij
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garage
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Gelijkvloerse weg-spoorwegkruising
-STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramspoor
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Gelijkvloerse overweg
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramrails
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (in aanbouw)
 
 STR_LAI_TREE_NAME_TREES                                         :Bomen
-STR_LAI_TREE_NAME_RAINFOREST                                    :Tropisch bos
+STR_LAI_TREE_NAME_RAINFOREST                                    :Regenwoud
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactusplanten
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Treinstation
@@ -2180,7 +2180,7 @@ STR_LAI_WATER_DESCRIPTION_WATER                                 :Water
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanaal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Sluis
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rivier
-STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kust of rivierbed
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kust of rivieroever
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dok
 
 # Industries come directly from their industry names
@@ -2188,25 +2188,25 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dok
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Spoortunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Wegtunnel
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangende spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stalen spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantilever spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Gewapend betonnen hangende spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen spoorbrug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Kokervormige spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangbrug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stalen kokerbrug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantileverbrug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hangbrug van gewapend beton (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten brug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen brug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Buisvormige brug (spoor)
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangende wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stalen vlakke wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen cantilever wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Gewapend betonnen hangende wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen wegbrug
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Kokervormige wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangbrug (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stalen kokerbrug (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen cantileverbrug (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Hangbrug van gewapend beton (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten brug (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen brug (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Buisvormige brug (weg)
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aquaduct
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Zender
+STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Radiomast
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Vuurtoren
 STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Bedrijfshoofdkwartier
 STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Terrein in bedrijfseigendom
@@ -2221,7 +2221,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spel Opslaan
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spel Laden
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Scenario Opslaan
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario Openen
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario Laden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hoogtekaart
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar-/laadmap te gaan
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vrij
@@ -2232,32 +2232,32 @@ STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Verwijde
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Opslaan
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sla het huidige spel op onder de gekozen naam
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Typ een naam voor het op te slaan spel
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Voer een naam in voor het spel dat moet worden opgeslagen
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wereldontwikkeling
-STR_MAPGEN_MAPSIZE                                              :{BLACK}Mapgrootte:
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaartgrootte:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal industrieën:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwlijn:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwlijnhoogte één omhoog
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwlijnhoogte één omlaag
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwgrens:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwgrens één omhoog
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwgrens één omlaag
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Willekeurig getal:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik voor een willekeurig getal
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om een willekeurig getal in te voeren
 STR_MAPGEN_RANDOM                                               :{BLACK}Willekeurig maken
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Wijzig het willekeurige getal voor terreinontwikkeling
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Wijzig het willekeurige getal dat gebruikt wordt om het landschap te genereren
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zeeniveau:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
-STR_MAPGEN_VARIETY                                              :{BLACK}Variëteit distributie:
+STR_MAPGEN_VARIETY                                              :{BLACK}Landschapsvariatie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maak aan
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Mapranden:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaartranden:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noordwest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Noordoost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Zuidoost
@@ -2268,28 +2268,28 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Willekeu
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Willekeurig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmatig
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Aantal graden hoogtekaart:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Hoogtekaartnaam:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotatie van hoogtekaart:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naam van hoogtekaart:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Geef een willekeurige seed op
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander hoogte van sneeuwlijn
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander begin jaar
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Voer een willekeurig getal in
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander hoogte van sneeuwgrens
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander beginjaar
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenariotype
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Vlak land
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer een vlakke kaart
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Willekeurig land
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van platte grond:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Maak de hoogte van plat land één lager
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Maak de hoogte van plat land één hoger
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van vlak land:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Maak de hoogte van vlak land één lager
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Maak de hoogte van vlak land één hoger
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander hoogte van vlak land
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Wereld ontwikkelen
+STR_GENERATION_WORLD                                            :{WHITE}Bezig met wereldontwikkeling...
 STR_GENERATION_ABORT                                            :{BLACK}Stop
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Stop Wereldontwikkeling
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je zeker dat je de actie wilt stoppen?
@@ -2297,7 +2297,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Onverplaatsbare ontwikkeling
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel aan het configureren
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met vlakken
@@ -2314,11 +2314,11 @@ STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Verwijde
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Toevoegen
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Voeg een NewGRF-bestand toe aan te lijst
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Verwijderen
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Verwijder de geselecteerde NewGRF-bestanden van de lijst
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Verwijder het geselecteerde NewGRF-bestand van de lijst
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naar Boven
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar boven
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar boven in de lijst
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar Beneden
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden in de lijst
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
@@ -2326,8 +2326,8 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet om
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerde NewGRF-bestand.{}Gebruik deze mogelijkheid als de afbeeldingen van dit NewGRF-bestand er paars uit zien in het spel
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Wijzigingen doorvoeren
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Zoek ontbrekende inhoud online
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Controleer of de ontbrekende inhoud online te vinden is
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Zoek ontbrekende content online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kijk of de ontbrekende content online te vinden is
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF-ID: {SILVER}{STRING}
@@ -2352,43 +2352,43 @@ STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Werk de 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritiek: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF fout is ontstaan: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie, gerapporteerd door OpenTTD.
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale fout: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF-fout is ontstaan: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie die is opgegeven door OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor de {STRING} versie van TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is ontwikkeld voor {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ongeldige parameter voor {1:STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} moet geladen zijn voor {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moet geladen zijn na {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} heeft OpenTTD versie {STRING} of beter nodig.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF-bestand is bedoelt voor het vertalen van
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF-bestand die het probeert te vertalen
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn te veel NewGRFs geladen.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} als statisch NewGRF met {STRING} kan desyncs veroorzaken.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden van {STRING} als statische NewGRF met {STRING} kan desynchronisatiefouten (desyncs) veroorzaken.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte afbeelding
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Action 0-waarde.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende 'Action 0'-eigenschap.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere Action 8-elementen.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8'-elementen.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit dan OpenTTD laten crashen.{}Weet je het heel zeker?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit dan OpenTTD laten vastlopen.{}Weet je het heel zeker?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF-ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibel GRF geladen)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibele GRF geladen)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF-bestand(en) zijn uitgeschakeld
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF-bestand(en)
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekend(e) GRF-bestand(en)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Het spel vervolgen kan OpenTTD laten vastlopen. Rapporteer geen bugs als het spel vastloopt.{}Weet je zeker dat je het spel wilt vervolgen?
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desyncs en/of crashes veroorzaken.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' wanneer niet in een depot.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen metNewGRFs. Het spel kan desync krijgen of crash.
+STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen met NewGRFs. Het spel kan desynchroniseren of vastlopen.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' geeft onjuiste informatie.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door autovernieuw/-vervang
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback.
 
 # Sign list window
@@ -2405,31 +2405,31 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de plaats. Ctrl+klik opend een nieuw venster
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+klik opent een nieuw kijkvenster
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Groeistad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Bevolking: {ORANGE}{COMMA}{BLACK}  Huizen: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagiers afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vracht nodig voor groei dorp:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} nodig
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vracht nodig voor groei van stad:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} noodzakelijk
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} noodzakelijk in de winter
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} afgelopen maand afgeleverd
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van het dorp. Ctrl+Klik opent een nieuw venster op de locatie van het dorp
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+Klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Geef informatie over de gemeente weer
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hernoem plaats
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Vergroot
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Vergroot dorp
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Vergroot stadsgrootte
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Verwijder
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Verwijder dit hele dorp
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Verwijder deze hele stad
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Hernoem dorp
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Hernoem stad
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}'s gemeenteraad
@@ -2438,7 +2438,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Mogelijkheden:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lijst met dingen die mogelijk zijn in dit dorp - klik op een item voor meer details
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Doe het
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Voer de geselecteerde actie uit in de bovenstaande lijst
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Voer de actie uit die in de bovenstaande lijst is geselecteerd
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kleine reclamecampagne
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Middelgrote reclamecampagne
@@ -2449,14 +2449,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Betaal nieuwe g
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koop exclusieve transportrechten
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Koop de gemeenteraad om
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begin een kleine reclamecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Begin een middelgrote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begin een grote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Betaal een vernieuwing van het wegdek. Veroorzaakt merkbare verstoring van het wegverkeer tot 6 maanden.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begin een kleine reclamecampagne, om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Begin een middelgrote advertentiecampagne, om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begin een grote advertentiecampagne, om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Betaal een vernieuwing van het wegennetwerk. Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Bouw een standbeeld ter ere van jouw bedrijf.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Betaal de bouw van nieuwe commerciële gebouwen in het dorp.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Betaal de bouw van nieuwe commerciële gebouwen in de stad.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en vracht aleeen toe om jouw stations te gebruiken.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen, met het gevaar van een strenge sanctie, wanneer je gepakt wordt.{}Kosten: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
