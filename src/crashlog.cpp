@@ -24,10 +24,12 @@
 #include "saveload/saveload.h"
 #include "screenshot.h"
 #include "gfx_func.h"
+#include "network/network.h"
 
 #include <squirrel.h>
 #include "ai/ai_info.hpp"
 #include "company_base.h"
+#include "company_func.h"
 
 #include <time.h>
 
@@ -88,6 +90,7 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			" Language:     %s\n"
 			" Music driver: %s\n"
 			" Music set:    %s\n"
+			" Network:      %s\n"
 			" Sound driver: %s\n"
 			" Sound set:    %s\n"
 			" Video driver: %s\n\n",
@@ -96,12 +99,13 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			StrEmpty(_dynlang.curr_file) ? "none" : _dynlang.curr_file,
 			_music_driver == NULL ? "none" : _music_driver->GetName(),
 			BaseMusic::GetUsedSet() == NULL ? "none" : BaseMusic::GetUsedSet()->name,
+			_networking ? (_network_server ? "server" : "client") : "no",
 			_sound_driver == NULL ? "none" : _sound_driver->GetName(),
 			BaseSounds::GetUsedSet() == NULL ? "none" : BaseSounds::GetUsedSet()->name,
 			_video_driver == NULL ? "none" : _video_driver->GetName()
 	);
 
-	buffer += seprintf(buffer, last, "AI Configuration:\n");
+	buffer += seprintf(buffer, last, "AI Configuration (local: %i):\n", (int)_local_company);
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->ai_info == NULL) {
