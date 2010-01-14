@@ -141,7 +141,7 @@ bool Packet::CanReadFromPacket(uint bytes_to_read)
 
 	/* Check if variable is within packet-size */
 	if (this->pos + bytes_to_read > this->size) {
-		this->cs->CloseConnection();
+		this->cs->NetworkSocketHandler::CloseConnection();
 		return false;
 	}
 
