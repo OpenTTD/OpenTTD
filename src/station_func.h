@@ -19,6 +19,7 @@
 #include "tile_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
+#include "transparency.h"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
@@ -34,6 +35,8 @@ void UpdateStationAcceptance(Station *st, bool show_msg);
 
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
+
+void DrawStationTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 relocation, SpriteID default_palette);
 
 bool HasStationInUse(StationID station, CompanyID company);
 

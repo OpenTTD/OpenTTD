@@ -1944,8 +1944,6 @@ static void DrawTile_Track(TileInfo *ti)
 	} else {
 		/* draw depot */
 		const DrawTileSprites *dts;
-		const DrawTileSeqStruct *dtss;
-		uint32 relocation;
 		SpriteID pal = PAL_NONE;
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
@@ -1956,8 +1954,6 @@ static void DrawTile_Track(TileInfo *ti)
 		} else {
 			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
 		}
-
-		relocation = rti->total_offset;
 
 		image = dts->ground.sprite;
 		if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
@@ -1985,37 +1981,8 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
-		foreach_draw_tile_seq(dtss, dts->seq) {
-			SpriteID image = dtss->image.sprite;
-			SpriteID pal   = dtss->image.pal;
-
-			/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
-			if (IsInvisibilitySet(TO_BUILDINGS) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
-
-			/* Unlike stations, our default waypoint has no variation for
-			 * different railtype, so don't use the railtype offset if
-			 * no relocation is set */
-			if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
-				image += rti->total_offset;
-			} else {
-				image += relocation;
-			}
-
-			pal = SpriteLayoutPaletteTransform(image, pal, _drawtile_track_palette);
-
-			if ((byte)dtss->delta_z != 0x80) {
-				AddSortableSpriteToDraw(
-					image, pal,
-					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-					dtss->size_x, dtss->size_y,
-					dtss->size_z, ti->z + dtss->delta_z,
-					!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS)
-				);
-			} else {
-				/* For stations and original spritelayouts delta_x and delta_y are signed */
-				AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS));
-			}
-		}
+		/* No NewGRF depots, so no relocation */
+		DrawStationTileSeq(ti, dts, TO_BUILDINGS, rti->total_offset, 0, _drawtile_track_palette);
 	}
 	DrawBridgeMiddle(ti);
 }

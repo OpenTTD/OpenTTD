@@ -2457,12 +2457,26 @@ static void DrawTile_Station(TileInfo *ti)
 		total_offset = 0;
 	}
 
-	const DrawTileSeqStruct *dtss;
-	foreach_draw_tile_seq(dtss, t->seq) {
+	DrawStationTileSeq(ti, t, TO_BUILDINGS, total_offset, relocation, palette);
+}
+
+/**
+ * Draws a station, waypoint or depot including all subsprites on a tile.
+ * @param ti The tile to draw on
+ * @param dts Sprite and subsprites to draw
+ * @param to The transparancy bit that toggles drawing of these sprites
+ * @param total_offset Sprite-Offset between the current railtype and normal rail
+ * @param relocation Sprite-Offset for NewGRF defined stations
+ * @param default_palette The default recolour sprite to use (typically company colour)
+ */
+void DrawStationTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 relocation, SpriteID default_palette)
+{
+ 	const DrawTileSeqStruct *dtss;
+	foreach_draw_tile_seq(dtss, dts->seq) {
 		SpriteID image = dtss->image.sprite;
 
 		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
-		if (IsInvisibilitySet(TO_BUILDINGS) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
+		if (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
 
 		if (relocation == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += total_offset;
@@ -2470,7 +2484,7 @@ static void DrawTile_Station(TileInfo *ti)
 			image += relocation;
 		}
 
-		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, palette);
+		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(
@@ -2478,11 +2492,11 @@ static void DrawTile_Station(TileInfo *ti)
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z,
-				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS)
+				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to)
 			);
 		} else {
 			/* For stations and original spritelayouts delta_x and delta_y are signed */
-			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS));
+			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
 		}
 	}
 }

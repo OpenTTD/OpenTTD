@@ -14,6 +14,7 @@
 
 #include "gfx_func.h"
 #include "openttd.h"
+#include "core/bitmath_func.hpp"
 
 /**
  * Transparency option bits: which position in _transparency_opt stands for which transparency.
