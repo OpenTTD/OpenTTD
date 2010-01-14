@@ -571,6 +571,8 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 		SetWindowDirty(WC_CLIENT_LIST, 0);
 	}
 
+	cs->Send_Packets(true);
+
 	delete cs->GetInfo();
 	delete cs;
 }

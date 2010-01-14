@@ -38,7 +38,7 @@ public:
 
 	virtual NetworkRecvStatus CloseConnection(bool error = true);
 	void Send_Packet(Packet *packet);
-	bool Send_Packets();
+	bool Send_Packets(bool closing_down = false);
 	bool IsPacketQueueEmpty();
 
 	Packet *Recv_Packet();

@@ -81,8 +81,9 @@ void NetworkTCPSocketHandler::Send_Packet(Packet *packet)
  *   2) the OS reports back that it can not send any more
  *      data right now (full network-buffer, it happens ;))
  *   3) sending took too long
+ * @param closing_down Whether we are closing down the connection.
  */
-bool NetworkTCPSocketHandler::Send_Packets()
+bool NetworkTCPSocketHandler::Send_Packets(bool closing_down)
 {
 	ssize_t res;
 	Packet *p;
@@ -98,15 +99,17 @@ bool NetworkTCPSocketHandler::Send_Packets()
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
 				/* Something went wrong.. close client! */
-				DEBUG(net, 0, "send failed with error %d", err);
-				this->CloseConnection();
+				if (!closing_down) {
+					DEBUG(net, 0, "send failed with error %d", err);
+					this->CloseConnection();
+				}
 				return false;
 			}
 			return true;
 		}
 		if (res == 0) {
 			/* Client/server has left us :( */
-			this->CloseConnection();
+			if (!closing_down) this->CloseConnection();
 			return false;
 		}
 
