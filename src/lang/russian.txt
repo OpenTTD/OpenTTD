@@ -702,8 +702,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всег
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Общее количество прибыльных транспортных средств
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибыль транспорта с самым низким доходом (среди транспортных средств старше 2-х лет)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Доход в квартале с наименьшей прибылью (за последние 12 кварталов)
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Доход в квартале с наибольшей прибылью (за последние 12 кварталов)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наибольший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Кол-во груза, доставленного за последние 4 квартала
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Количество типов груза, доставленного за последний квартал
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Количество денег на банковском счету компании
