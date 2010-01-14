@@ -189,6 +189,13 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 	 */
 
 	Packet *p = new Packet(PACKET_CLIENT_GETMAP);
+	/* Send the OpenTTD version to the server, let it validate it too.
+	 * But only do it for stable releases because of those we are sure
+	 * that everybody has the same NewGRF version. For trunk and the
+	 * branches we make tarballs of the OpenTTDs compiled from tarball
+	 * will have the lower bits set to 0. As such they would become
+	 * incompatible, which we would like to prevent by this. */
+	if (HasBit(_openttd_newgrf_version, 19)) p->Send_uint32(_openttd_newgrf_version);
 	MY_CLIENT->Send_Packet(p);
 }
 

@@ -29,6 +29,7 @@
 #include "../company_gui.h"
 #include "../window_func.h"
 #include "../roadveh.h"
+#include "../rev.h"
 
 #include "table/strings.h"
 
@@ -775,6 +776,27 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 {
 	NetworkClientSocket *new_cs;
+
+	/* Do an extra version match. We told the client our version already,
+	 * lets confirm that the client isn't lieing to us.
+	 * But only do it for stable releases because of those we are sure
+	 * that everybody has the same NewGRF version. For trunk and the
+	 * branches we make tarballs of the OpenTTDs compiled from tarball
+	 * will have the lower bits set to 0. As such they would become
+	 * incompatible, which we would like to prevent by this. */
+	if (HasBit(_openttd_newgrf_version, 19)) {
+		if (_openttd_newgrf_version != p->Recv_uint32()) {
+			/* The version we get from the client differs, it must have the
+			 * wrong version. The client must be wrong. */
+			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+			return NETWORK_RECV_STATUS_OKAY;
+		}
+	} else if (p->size != 3) {
+		/* We received a packet from a version that claims to be stable.
+		 * That shouldn't happen. The client must be wrong. */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return NETWORK_RECV_STATUS_OKAY;
+	}
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
