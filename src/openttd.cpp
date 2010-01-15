@@ -826,10 +826,7 @@ static void MakeNewGame(bool from_heightmap, bool reset_settings)
 	_game_mode = GM_NORMAL;
 
 	ResetGRFConfig(true);
-	_engine_mngr.ResetToDefaultMapping();
-	_house_mngr.ResetMapping();
-	_industile_mngr.ResetMapping();
-	_industry_mngr.ResetMapping();
+	InitializeDynamicVariables();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
 	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y, reset_settings);
