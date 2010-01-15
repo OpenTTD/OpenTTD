@@ -381,12 +381,7 @@ public:
 					}
 
 					/* Copy GRF details from scanned list */
-					GRFConfig *c = CallocT<GRFConfig>(1);
-					*c = *src;
-					c->filename = strdup(src->filename);
-					if (src->name      != NULL) c->name      = strdup(src->name);
-					if (src->info      != NULL) c->info      = strdup(src->info);
-					c->next = NULL;
+					GRFConfig *c = DuplicateGRFConfig(src);
 
 					/* Append GRF config to configuration list */
 					*list = c;

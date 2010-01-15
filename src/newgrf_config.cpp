@@ -125,6 +125,31 @@ void ClearGRFConfigList(GRFConfig **config)
 }
 
 
+/**
+ * Make a deep copy of a GRFConfig.
+ * @param c the grfconfig to copy
+ * @return A pointer to a new grfconfig that's a copy of the original
+ */
+GRFConfig *DuplicateGRFConfig(const GRFConfig *c)
+{
+	GRFConfig *config = MallocT<GRFConfig>(1);
+	*config = *c;
+
+	if (c->filename != NULL) config->filename = strdup(c->filename);
+	if (c->name     != NULL) config->name = strdup(c->name);
+	if (c->info     != NULL) config->info = strdup(c->info);
+	if (c->error    != NULL) {
+		config->error = MallocT<GRFError>(1);
+		memcpy(config->error, c->error, sizeof(GRFError));
+		if (c->error->data           != NULL) config->error->data = strdup(c->error->data);
+		if (c->error->custom_message != NULL) config->error->custom_message = strdup(c->error->custom_message);
+	}
+
+	ClrBit(config->flags, GCF_COPY);
+
+	return config;
+}
+
 /** Copy a GRF Config list
  * @param dst pointer to destination list
  * @param src pointer to source list values
@@ -135,19 +160,7 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 	/* Clear destination as it will be overwritten */
 	ClearGRFConfigList(dst);
 	for (; src != NULL; src = src->next) {
-		GRFConfig *c = CallocT<GRFConfig>(1);
-		*c = *src;
-		if (src->filename  != NULL) c->filename  = strdup(src->filename);
-		if (src->name      != NULL) c->name      = strdup(src->name);
-		if (src->info      != NULL) c->info      = strdup(src->info);
-		if (src->error     != NULL) {
-			c->error = CallocT<GRFError>(1);
-			memcpy(c->error, src->error, sizeof(GRFError));
-			if (src->error->data != NULL) c->error->data = strdup(src->error->data);
-			if (src->error->custom_message != NULL) c->error->custom_message = strdup(src->error->custom_message);
-		}
-
-		ClrBit(c->flags, GCF_COPY);
+		GRFConfig *c = DuplicateGRFConfig(src);
 
 		ClrBit(c->flags, GCF_INIT_ONLY);
 		if (init_only) SetBit(c->flags, GCF_INIT_ONLY);
@@ -335,10 +348,7 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
 	if (!added) {
 		/* File couldn't be opened, or is either not a NewGRF or is a
 		 * 'system' NewGRF or it's already known, so forget about it. */
-		free(c->filename);
-		free(c->name);
-		free(c->info);
-		free(c);
+		ClearGRFConfig(&c);
 	}
 
 	return added;

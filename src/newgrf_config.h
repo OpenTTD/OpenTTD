@@ -100,6 +100,7 @@ void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList();
 bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
+GRFConfig *DuplicateGRFConfig(const GRFConfig *c);
 
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
