@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "strings_type.h"
 #include "industry.h"
 #include "newgrf.h"
 #include "newgrf_industries.h"
@@ -24,6 +23,7 @@
 #include "command_func.h"
 #include "gui.h"
 #include "strings_func.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 

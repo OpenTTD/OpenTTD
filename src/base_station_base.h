@@ -12,12 +12,7 @@
 #ifndef BASE_STATION_BASE_H
 #define BASE_STATION_BASE_H
 
-#include "station_type.h"
 #include "core/pool_type.hpp"
-#include "town_type.h"
-#include "strings_type.h"
-#include "date_type.h"
-#include "company_type.h"
 #include "viewport_type.h"
 #include "station_map.h"
 

@@ -15,7 +15,6 @@
 #include "station_gui.h"
 #include "terraform_gui.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "command_func.h"
 #include "waypoint_func.h"
 #include "newgrf_station.h"
@@ -30,6 +29,7 @@
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "spritecache.h"
+#include "core/geometry_func.hpp"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"

@@ -14,6 +14,7 @@
 
 #include "saveload/saveload.h"
 #include "settings_type.h"
+#include "strings_type.h"
 
 /** Convention/Type of settings. This is then further specified if necessary
  * with the SLE_ (SLE_VAR/SLE_FILE) enums in saveload.h

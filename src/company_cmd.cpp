@@ -34,6 +34,7 @@
 #include "settings_func.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
+#include "sprite.h"
 
 #include "table/strings.h"
 

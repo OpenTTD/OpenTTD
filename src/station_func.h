@@ -16,10 +16,9 @@
 #include "sprite.h"
 #include "rail_type.h"
 #include "road_type.h"
-#include "tile_type.h"
 #include "cargo_type.h"
-#include "vehicle_type.h"
 #include "transparency.h"
+#include "company_type.h"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 

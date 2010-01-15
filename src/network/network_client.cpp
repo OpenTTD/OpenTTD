@@ -26,6 +26,8 @@
 #include "../company_base.h"
 #include "../company_gui.h"
 #include "../rev.h"
+#include "network.h"
+#include "network_base.h"
 
 #include "table/strings.h"
 

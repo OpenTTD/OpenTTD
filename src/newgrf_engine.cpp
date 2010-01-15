@@ -24,6 +24,8 @@
 #include "aircraft.h"
 #include "core/smallmap_type.hpp"
 #include "station_base.h"
+#include "engine_base.h"
+#include "company_base.h"
 
 struct WagonOverride {
 	EngineID *train_id;

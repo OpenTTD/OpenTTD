@@ -12,9 +12,6 @@
 #ifndef DEPOT_MAP_H
 #define DEPOT_MAP_H
 
-#include "road_map.h"
-#include "rail_map.h"
-#include "water_map.h"
 #include "station_map.h"
 
 /**

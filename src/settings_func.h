@@ -13,6 +13,7 @@
 #define SETTINGS_FUNC_H
 
 #include "core/smallvec_type.hpp"
+#include "company_type.h"
 
 void IConsoleSetSetting(const char *name, const char *value);
 void IConsoleSetSetting(const char *name, int32 value);

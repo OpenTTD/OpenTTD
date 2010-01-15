@@ -34,6 +34,7 @@
 #include "gamelog.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
+#include "console_func.h"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"

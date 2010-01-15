@@ -22,6 +22,7 @@
 #include "../functions.h"
 #include "../thread/thread.h"
 #include "../genworld.h"
+#include "../core/random_func.hpp"
 #include "sdl_v.h"
 #include <SDL.h>
 

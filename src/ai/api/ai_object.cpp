@@ -14,8 +14,6 @@
 #include "../../script/squirrel.hpp"
 #include "../../company_base.h"
 
-#include "table/strings.h"
-#include "../ai.hpp"
 #include "../ai_storage.hpp"
 #include "../ai_instance.hpp"
 #include "ai_error.hpp"

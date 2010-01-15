@@ -16,8 +16,8 @@
 #include "network_type.h"
 #include "../console_type.h"
 #include "../gfx_type.h"
-#include "../core/smallvec_type.hpp"
 #include "../openttd.h"
+#include "../company_type.h"
 
 #ifdef ENABLE_NETWORK
 

@@ -12,9 +12,7 @@
 #ifndef HIGHSCORE_H
 #define HIGHSCORE_H
 
-#include "stdafx.h"
 #include "strings_type.h"
-#include "core/math_func.hpp"
 #include "company_type.h"
 
 struct HighScore {

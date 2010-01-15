@@ -14,7 +14,6 @@
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../strings_func.h"
-#include "../../settings_type.h"
 #include "../../rail.h"
 #include "../../engine_base.h"
 #include "../../articulated_vehicles.h"

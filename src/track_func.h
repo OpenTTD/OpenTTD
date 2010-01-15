@@ -14,7 +14,6 @@
 
 #include "core/bitmath_func.hpp"
 #include "track_type.h"
-#include "direction_type.h"
 #include "slope_func.h"
 
 /**

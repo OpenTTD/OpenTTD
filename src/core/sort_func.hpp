@@ -12,8 +12,6 @@
 #ifndef SORT_FUNC_HPP
 #define SORT_FUNC_HPP
 
-#include <stdlib.h>
-#include "math_func.hpp"
 #include "mem_func.hpp"
 
 /**

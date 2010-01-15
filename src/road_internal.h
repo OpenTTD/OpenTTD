@@ -13,6 +13,7 @@
 #define ROAD_INTERNAL_H
 
 #include "tile_cmd.h"
+#include "road_type.h"
 
 /**
  * Clean up unneccesary RoadBits of a planed tile.

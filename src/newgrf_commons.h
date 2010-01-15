@@ -14,7 +14,6 @@
 #ifndef NEWGRF_COMMONS_H
 #define NEWGRF_COMMONS_H
 
-#include "core/bitmath_func.hpp"
 #include "tile_cmd.h"
 #include "transparency.h"
 #include "sprite.h"

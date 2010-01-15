@@ -10,13 +10,9 @@
 /** @file texteff.cpp Handling of text effects. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "strings_type.h"
 #include "texteff.hpp"
-#include "core/bitmath_func.hpp"
 #include "transparency.h"
 #include "strings_func.h"
-#include "core/alloc_func.hpp"
 #include "core/smallvec_type.hpp"
 #include "viewport_func.h"
 #include "settings_type.h"

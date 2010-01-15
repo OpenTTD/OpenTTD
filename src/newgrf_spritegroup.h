@@ -13,8 +13,6 @@
 #define NEWGRF_SPRITEGROUP_H
 
 #include "town_type.h"
-#include "industry_type.h"
-#include "core/bitmath_func.hpp"
 #include "gfx_type.h"
 #include "engine_type.h"
 #include "tile_type.h"

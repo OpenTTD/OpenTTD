@@ -12,17 +12,10 @@
 #ifndef TILE_CMD_H
 #define TILE_CMD_H
 
-#include "slope_type.h"
-#include "tile_type.h"
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "cargo_type.h"
-#include "strings_type.h"
-#include "date_type.h"
-#include "company_type.h"
-#include "direction_type.h"
 #include "track_type.h"
-#include "transport_type.h"
 #include "tile_map.h"
 
 /** The returned bits of VehicleEnterTile. */

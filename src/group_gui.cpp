@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "window_gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
@@ -21,12 +20,13 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
-#include "gfx_func.h"
 #include "company_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "tilehighlight_func.h"
 #include "vehicle_gui_base.h"
+#include "core/geometry_func.hpp"
+#include "company_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

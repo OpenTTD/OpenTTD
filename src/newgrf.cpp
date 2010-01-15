@@ -13,7 +13,6 @@
 
 #include <stdarg.h>
 
-#include "openttd.h"
 #include "debug.h"
 #include "fileio_func.h"
 #include "engine_func.h"
@@ -26,6 +25,7 @@
 #include "fontcache.h"
 #include "currency.h"
 #include "landscape.h"
+#include "newgrf.h"
 #include "newgrf_cargo.h"
 #include "newgrf_house.h"
 #include "newgrf_sound.h"
@@ -39,7 +39,6 @@
 #include "fios.h"
 #include "rail.h"
 #include "strings_func.h"
-#include "gfx_func.h"
 #include "date_func.h"
 #include "string_func.h"
 #include "network/network.h"

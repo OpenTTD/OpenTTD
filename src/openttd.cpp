@@ -60,6 +60,10 @@
 #include "thread/thread.h"
 #include "station_base.h"
 #include "crashlog.h"
+#include "company_base.h"
+#include "engine_base.h"
+#include "engine_func.h"
+#include "core/random_func.hpp"
 
 #include "newgrf_commons.h"
 

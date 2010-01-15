@@ -10,17 +10,14 @@
 /** @file vehicle_gui.cpp The base GUI for all vehicles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
 #include "company_func.h"
 #include "gui.h"
-#include "window_gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
 #include "vehicle_gui_base.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "waypoint_base.h"
@@ -40,6 +37,10 @@
 #include "articulated_vehicles.h"
 #include "cargotype.h"
 #include "spritecache.h"
+#include "core/geometry_func.hpp"
+#include "company_base.h"
+#include "engine_base.h"
+#include "engine_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

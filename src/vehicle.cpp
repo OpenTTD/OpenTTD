@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "gui.h"
-#include "openttd.h"
 #include "debug.h"
 #include "roadveh.h"
 #include "ship.h"
@@ -47,6 +46,9 @@
 #include "economy_base.h"
 #include "articulated_vehicles.h"
 #include "roadstop_base.h"
+#include "core/random_func.hpp"
+#include "engine_base.h"
+#include "newgrf.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

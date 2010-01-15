@@ -12,13 +12,13 @@
 #ifndef INDUSTRYTYPE_H
 #define INDUSTRYTYPE_H
 
-#include "core/enum_type.hpp"
 #include "economy_type.h"
 #include "map_type.h"
 #include "slope_type.h"
 #include "industry_type.h"
 #include "landscape_type.h"
-#include "tile_type.h"
+#include "strings_type.h"
+#include "cargo_type.h"
 
 enum {
 	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table

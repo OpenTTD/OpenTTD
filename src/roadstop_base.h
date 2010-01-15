@@ -15,6 +15,8 @@
 #include "station_type.h"
 #include "core/pool_type.hpp"
 #include "core/bitmath_func.hpp"
+#include "direction_type.h"
+#include "vehicle_type.h"
 
 typedef Pool<RoadStop, RoadStopID, 32, 64000> RoadStopPool;
 extern RoadStopPool _roadstop_pool;

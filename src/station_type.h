@@ -14,7 +14,6 @@
 
 #include "core/enum_type.hpp"
 #include "core/smallvec_type.hpp"
-#include "tile_type.h"
 #include "tilearea_type.h"
 
 typedef uint16 StationID;

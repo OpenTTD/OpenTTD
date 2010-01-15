@@ -16,7 +16,6 @@
 #include "vehicle_type.h"
 #include "tile_type.h"
 #include "group_type.h"
-#include "date_type.h"
 #include "company_type.h"
 
 struct BackuppedOrders {

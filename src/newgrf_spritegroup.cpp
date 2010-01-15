@@ -13,6 +13,7 @@
 #include "newgrf.h"
 #include "newgrf_spritegroup.h"
 #include "sprite.h"
+#include "core/bitmath_func.hpp"
 #include "core/pool_func.hpp"
 
 SpriteGroupPool _spritegroup_pool("SpriteGroup");

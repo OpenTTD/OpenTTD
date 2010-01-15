@@ -12,6 +12,10 @@
 #ifndef WATER_H
 #define WATER_H
 
+#include "tile_type.h"
+#include "company_type.h"
+#include "slope_type.h"
+
 void TileLoop_Water(TileIndex tile);
 bool FloodHalftile(TileIndex t);
 void DoFloodTile(TileIndex target);

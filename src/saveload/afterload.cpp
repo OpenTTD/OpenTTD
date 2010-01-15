@@ -15,7 +15,6 @@
 #include "../depot_base.h"
 #include "../window_func.h"
 #include "../fios.h"
-#include "../gamelog.h"
 #include "../gamelog_internal.h"
 #include "../network/network.h"
 #include "../gfxinit.h"
@@ -23,8 +22,6 @@
 #include "../industry.h"
 #include "../clear_map.h"
 #include "../vehicle_func.h"
-#include "../newgrf_station.h"
-#include "../openttd.h"
 #include "../debug.h"
 #include "../string_func.h"
 #include "../date_func.h"
@@ -49,6 +46,10 @@
 #include "../animated_tile_func.h"
 #include "../subsidy_base.h"
 #include "../subsidy_func.h"
+#include "../company_base.h"
+#include "../newgrf.h"
+#include "../engine_base.h"
+#include "../engine_func.h"
 
 #include "table/strings.h"
 

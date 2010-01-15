@@ -12,7 +12,6 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "../company_type.h"
 
 #ifdef ENABLE_NETWORK
 

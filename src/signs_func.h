@@ -13,6 +13,7 @@
 #define SIGNS_FUNC_H
 
 #include "signs_type.h"
+#include "tile_type.h"
 
 extern SignID _new_sign_id;
 

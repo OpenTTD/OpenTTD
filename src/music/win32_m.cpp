@@ -10,6 +10,7 @@
 /** @file win32_m.cpp Music playback for Windows. */
 
 #include "../stdafx.h"
+#include "../string_func.h"
 #include "win32_m.h"
 #include <windows.h>
 #include <mmsystem.h>

@@ -54,7 +54,6 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "station_map.h"
 #include "viewport_func.h"
 #include "landscape.h"
@@ -64,6 +63,7 @@
 #include "tunnelbridge.h"
 #include "elrail_func.h"
 #include "engine_base.h"
+#include "company_base.h"
 
 #include "table/sprites.h"
 #include "table/elrail_data.h"

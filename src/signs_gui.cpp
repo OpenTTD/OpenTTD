@@ -24,6 +24,7 @@
 #include "querystring_gui.h"
 #include "sortlist_type.h"
 #include "string_func.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

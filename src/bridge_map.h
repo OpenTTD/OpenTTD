@@ -12,9 +12,6 @@
 #ifndef BRIDGE_MAP_H
 #define BRIDGE_MAP_H
 
-#include "direction_func.h"
-#include "rail_type.h"
-#include "transport_type.h"
 #include "road_map.h"
 #include "bridge.h"
 

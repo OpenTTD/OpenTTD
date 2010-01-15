@@ -24,8 +24,10 @@
 #include "../querystring_gui.h"
 #include "../town.h"
 #include "../window_func.h"
-#include "network_internal.h"
+#include "../core/geometry_func.hpp"
+#include "network.h"
 #include "network_client.h"
+#include "network_base.h"
 
 #include "table/strings.h"
 

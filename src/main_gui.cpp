@@ -10,7 +10,6 @@
 /** @file main_gui.cpp Handling of the main viewport. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "currency.h"
 #include "spritecache.h"
 #include "window_gui.h"

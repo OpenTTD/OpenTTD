@@ -12,7 +12,7 @@
 #ifndef TUNNELBRIDGE_H
 #define TUNNELBRIDGE_H
 
-#include "tile_type.h"
+#include "map_func.h"
 
 /**
  * Calculates the length of a tunnel or a bridge (without end tiles)

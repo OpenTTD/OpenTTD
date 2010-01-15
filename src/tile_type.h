@@ -12,7 +12,6 @@
 #ifndef TILE_TYPE_H
 #define TILE_TYPE_H
 
-#include "core/enum_type.hpp"
 
 enum {
 	TILE_SIZE      = 16,            ///< Tiles are 16x16 "units" in size

@@ -13,7 +13,6 @@
 #define INDUSTRY_MAP_H
 
 #include "industrytype.h"
-#include "tile_map.h"
 #include "water_map.h"
 
 

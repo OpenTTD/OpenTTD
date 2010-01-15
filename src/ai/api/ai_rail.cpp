@@ -16,6 +16,7 @@
 #include "../../debug.h"
 #include "../../station_base.h"
 #include "../../company_func.h"
+#include "../../newgrf.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
 

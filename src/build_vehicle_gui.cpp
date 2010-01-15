@@ -9,10 +9,9 @@
 
 /** @file build_vehicle_gui.cpp GUI for building vehicles. */
 
-#include "train.h"
-#include "roadveh.h"
-#include "ship.h"
-#include "aircraft.h"
+#include "stdafx.h"
+#include "engine_base.h"
+#include "engine_func.h"
 #include "station_base.h"
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
@@ -26,9 +25,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
-#include "gfx_func.h"
 #include "widgets/dropdown_func.h"
-#include "window_gui.h"
 #include "engine_gui.h"
 #include "cargotype.h"
 

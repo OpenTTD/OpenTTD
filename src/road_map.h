@@ -15,7 +15,6 @@
 #include "track_func.h"
 #include "depot_type.h"
 #include "rail_type.h"
-#include "town_type.h"
 #include "road_func.h"
 #include "tile_map.h"
 

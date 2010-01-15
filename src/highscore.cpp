@@ -9,6 +9,7 @@
 
 /** @file highscore.cpp Definition of functions used for highscore handling */
 
+#include "stdafx.h"
 #include "highscore.h"
 #include "company_base.h"
 #include "company_func.h"

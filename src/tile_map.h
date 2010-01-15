@@ -12,9 +12,7 @@
 #ifndef TILE_MAP_H
 #define TILE_MAP_H
 
-#include "tile_type.h"
 #include "slope_type.h"
-#include "company_type.h"
 #include "map_func.h"
 #include "core/bitmath_func.hpp"
 #include "settings_type.h"

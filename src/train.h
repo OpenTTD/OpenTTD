@@ -12,8 +12,6 @@
 #ifndef TRAIN_H
 #define TRAIN_H
 
-#include "stdafx.h"
-#include "core/bitmath_func.hpp"
 #include "vehicle_base.h"
 
 struct Train;

@@ -14,7 +14,6 @@
 #include <squirrel.h>
 #include "../script/squirrel.hpp"
 #include "../script/squirrel_helper.hpp"
-#include "ai.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 #include "../settings_type.h"

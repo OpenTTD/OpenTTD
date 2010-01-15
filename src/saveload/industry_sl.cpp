@@ -10,7 +10,6 @@
 /** @file industry_sl.cpp Code handling saving and loading of industries */
 
 #include "../stdafx.h"
-#include "../strings_type.h"
 #include "../industry.h"
 #include "../newgrf_commons.h"
 

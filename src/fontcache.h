@@ -12,7 +12,6 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
-#include "gfx_type.h"
 #include "spritecache.h"
 
 /** Get the SpriteID mapped to the given font size and key */

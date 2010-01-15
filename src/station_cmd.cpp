@@ -10,7 +10,6 @@
 /** @file station_cmd.cpp Handling of station tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "aircraft.h"
 #include "bridge_map.h"
 #include "cmd_helper.h"
@@ -45,6 +44,9 @@
 #include "waypoint_func.h"
 #include "pbs.h"
 #include "debug.h"
+#include "core/random_func.hpp"
+#include "company_base.h"
+#include "newgrf.h"
 
 #include "table/strings.h"
 

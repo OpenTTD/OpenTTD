@@ -13,13 +13,13 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "network_internal.h"
 #include "network_client.h"
+#include "network.h"
 #include "../command_func.h"
 #include "../company_func.h"
 
 /** Table with all the callbacks we'll use for conversion*/
-static const CommandCallback * const _callback_table[] = {
+static CommandCallback * const _callback_table[] = {
 	/* 0x00 */ NULL,
 	/* 0x01 */ CcBuildPrimaryVehicle,
 	/* 0x02 */ CcBuildAirport,

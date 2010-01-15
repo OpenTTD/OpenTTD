@@ -10,7 +10,6 @@
 /** @file subsidy_gui.cpp GUI for subsidies. */
 
 #include "stdafx.h"
-#include "strings_type.h"
 #include "industry.h"
 #include "town.h"
 #include "window_gui.h"
@@ -21,6 +20,7 @@
 #include "gui.h"
 #include "subsidy_func.h"
 #include "subsidy_base.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 

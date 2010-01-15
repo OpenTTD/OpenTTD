@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "gui.h"
-#include "window_gui.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "bridge.h"
@@ -22,6 +21,7 @@
 #include "tunnelbridge.h"
 #include "sortlist_type.h"
 #include "widgets/dropdown_func.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 

@@ -14,7 +14,6 @@
 #include "newgrf.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "gfx_func.h"
 #include "gamelog.h"
 #include "settings_func.h"
 #include "widgets/dropdown_type.h"
@@ -22,6 +21,7 @@
 #include "network/network_content.h"
 #include "sortlist_type.h"
 #include "querystring_gui.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -12,6 +12,11 @@
 #ifndef OPF_SHIP_H
 #define OPF_SHIP_H
 
+#include "../../direction_type.h"
+#include "../../tile_type.h"
+#include "../../track_type.h"
+#include "../../vehicle_type.h"
+
 /**
  * Finds the best path for given ship using OPF.
  * @param v        the ship that needs to find a path

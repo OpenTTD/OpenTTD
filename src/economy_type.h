@@ -14,7 +14,6 @@
 
 #include "core/overflowsafe_type.hpp"
 #include "core/enum_type.hpp"
-#include "cargo_type.h"
 
 typedef OverflowSafeInt64 Money;
 

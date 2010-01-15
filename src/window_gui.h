@@ -12,13 +12,10 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include "core/geometry_func.hpp"
 #include "core/math_func.hpp"
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "company_type.h"
-#include "core/alloc_type.hpp"
-#include "window_type.h"
 #include "tile_type.h"
 #include "widget_type.h"
 

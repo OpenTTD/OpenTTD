@@ -10,13 +10,13 @@
 /** @file widget.cpp Handling of the default/simple widgets. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "company_func.h"
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "zoom_func.h"
 #include "strings_func.h"
 #include "transparency.h"
+#include "core/geometry_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

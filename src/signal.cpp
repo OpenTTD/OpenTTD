@@ -16,6 +16,7 @@
 #include "vehicle_func.h"
 #include "functions.h"
 #include "train.h"
+#include "company_base.h"
 
 
 /** these are the maximums used for updating signal blocks */

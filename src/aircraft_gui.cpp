@@ -15,7 +15,6 @@
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "gfx_func.h"
 #include "window_gui.h"
 #include "spritecache.h"
 

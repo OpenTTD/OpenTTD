@@ -17,7 +17,7 @@
 #include "order_type.h"
 #include "station_type.h"
 #include "engine_type.h"
-#include "tile_type.h"
+#include "company_type.h"
 
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent);
 

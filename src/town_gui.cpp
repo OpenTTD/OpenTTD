@@ -33,6 +33,7 @@
 #include "window_func.h"
 #include "townname_func.h"
 #include "townname_type.h"
+#include "core/geometry_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

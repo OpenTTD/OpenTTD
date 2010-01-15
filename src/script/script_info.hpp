@@ -12,6 +12,7 @@
 #ifndef SCRIPT_INFO
 #define SCRIPT_INFO
 
+#include <squirrel.h>
 #include "../misc/countedptr.hpp"
 
 class ScriptFileInfo : public SimpleCountedObject {

@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../window_gui.h"
 #include "../strings_func.h"
-#include "../gfx_func.h"
 #include "../window_func.h"
 #include "dropdown_type.h"
 

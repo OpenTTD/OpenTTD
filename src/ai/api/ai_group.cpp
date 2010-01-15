@@ -16,7 +16,6 @@
 #include "../../group.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../command_func.h"
 #include "../../autoreplace_func.h"
 #include "../../settings_func.h"
 #include "table/strings.h"

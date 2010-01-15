@@ -22,6 +22,7 @@
 #include "../../roadveh.h"
 #include "../../train.h"
 #include "../../vehicle_func.h"
+#include "../../engine_base.h"
 #include "table/strings.h"
 
 /* static */ bool AIVehicle::IsValidVehicle(VehicleID vehicle_id)

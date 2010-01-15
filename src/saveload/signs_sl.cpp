@@ -10,7 +10,6 @@
 /** @file signs_sl.cpp Code handling saving and loading of economy data */
 
 #include "../stdafx.h"
-#include "../company_func.h"
 #include "../signs_base.h"
 
 #include "saveload.h"

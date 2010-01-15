@@ -12,9 +12,8 @@
 #ifndef UNMOVABLE_H
 #define UNMOVABLE_H
 
-#include "unmovable_map.h"
-#include "economy_type.h"
 #include "economy_func.h"
+#include "strings_type.h"
 
 void UpdateCompanyHQ(Company *c, uint score);
 

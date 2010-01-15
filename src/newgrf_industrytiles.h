@@ -12,6 +12,11 @@
 #ifndef NEWGRF_INDUSTRYTILES_H
 #define NEWGRF_INDUSTRYTILES_H
 
+#include "tile_cmd.h"
+#include "industry_type.h"
+#include "newgrf_callbacks.h"
+#include "core/random_func.hpp"
+
 enum IndustryAnimationTrigger {
 	IAT_CONSTRUCTION_STATE_CHANGE,
 	IAT_TILELOOP,

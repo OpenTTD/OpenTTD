@@ -12,8 +12,10 @@
 #ifndef AUTOREPLACE_FUNC_H
 #define AUTOREPLACE_FUNC_H
 
-#include "autoreplace_type.h"
+#include "command_type.h"
 #include "company_base.h"
+#include "engine_type.h"
+#include "group_type.h"
 
 /**
  * Remove all engine replacement settings for the company.

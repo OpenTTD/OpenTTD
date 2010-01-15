@@ -12,12 +12,15 @@
 #ifndef DBG_HELPERS_H
 #define DBG_HELPERS_H
 
-#include <new>
 #include <map>
 #include <stack>
 
-#include "blob.hpp"
 #include "str.hpp"
+
+#include "../direction_type.h"
+#include "../signal_type.h"
+#include "../tile_type.h"
+#include "../track_type.h"
 
 /** Helper template class that provides C array length and item type */
 template <typename T> struct ArrayT;

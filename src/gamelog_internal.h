@@ -13,6 +13,7 @@
 #define GAMELOG_INTERNAL_H
 
 #include "network/core/config.h"
+#include "gamelog.h"
 
 /** Type of logged change */
 enum GamelogChangeType {

@@ -10,12 +10,10 @@
 /** @file pathfind.cpp Implementation of the oldest supported pathfinder. */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
 #include "../../tunnelbridge_map.h"
 #include "../../tunnelbridge.h"
 #include "../../ship.h"
 #include "../../core/random_func.hpp"
-#include "opf_ship.h"
 
 struct RememberData {
 	uint16 cur_length;

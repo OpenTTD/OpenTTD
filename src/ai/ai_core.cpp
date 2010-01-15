@@ -17,7 +17,6 @@
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../command_func.h"
-#include "ai.hpp"
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"

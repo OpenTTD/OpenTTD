@@ -26,7 +26,7 @@
 #include "roadveh.h"
 #include "station_base.h"
 #include "waypoint_base.h"
-#include "roadstop_base.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 

@@ -9,6 +9,8 @@
 
 /** @file depot_gui.cpp The GUI for depots. */
 
+#include "stdafx.h"
+#include "engine_base.h"
 #include "train.h"
 #include "ship.h"
 #include "aircraft.h"
@@ -16,7 +18,6 @@
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "command_func.h"
 #include "depot_base.h"
 #include "vehicle_gui.h"

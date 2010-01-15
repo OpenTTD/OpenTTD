@@ -41,6 +41,8 @@
 #include "effectvehicle_func.h"
 #include "roadveh.h"
 #include "ai/ai.hpp"
+#include "company_base.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

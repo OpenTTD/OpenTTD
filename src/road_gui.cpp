@@ -10,15 +10,12 @@
 /** @file road_gui.cpp GUI for building roads. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "command_func.h"
-#include "road_type.h"
 #include "road_cmd.h"
 #include "road_map.h"
 #include "station_func.h"

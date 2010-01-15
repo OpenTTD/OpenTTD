@@ -14,6 +14,7 @@
 
 #include "base.hpp"
 #include "../core/bitmath_func.hpp"
+#include "../gfx_func.h"
 
 class Blitter_32bppBase : public Blitter {
 public:

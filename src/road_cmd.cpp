@@ -10,7 +10,6 @@
 /** @file road_cmd.cpp Commands related to road tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "cmd_helper.h"
 #include "road_internal.h"
 #include "landscape.h"
@@ -30,9 +29,12 @@
 #include "cheat_type.h"
 #include "functions.h"
 #include "effectvehicle_func.h"
+#include "effectvehicle_base.h"
 #include "elrail_func.h"
 #include "roadveh.h"
 #include "town.h"
+#include "company_base.h"
+#include "core/random_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "gui.h"
-#include "window_gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "viewport_func.h"
@@ -31,6 +30,8 @@
 #include "sortlist_type.h"
 #include "widgets/dropdown_func.h"
 #include "company_base.h"
+#include "core/geometry_func.hpp"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

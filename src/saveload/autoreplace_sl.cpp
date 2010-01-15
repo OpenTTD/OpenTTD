@@ -10,8 +10,6 @@
 /** @file autoreplace_sl.cpp Code handling saving and loading of autoreplace rules */
 
 #include "../stdafx.h"
-#include "../engine_type.h"
-#include "../group_type.h"
 #include "../autoreplace_base.h"
 
 #include "saveload.h"

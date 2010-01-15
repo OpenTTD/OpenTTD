@@ -10,7 +10,6 @@
 /** @file spritecache.cpp Caching of sprites. */
 
 #include "stdafx.h"
-#include "gfx_type.h"
 #include "fileio_func.h"
 #include "spriteloader/grf.hpp"
 #include "gfx_func.h"

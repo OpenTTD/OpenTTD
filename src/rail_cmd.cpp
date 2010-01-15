@@ -10,7 +10,6 @@
 /** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "cmd_helper.h"
 #include "landscape.h"
 #include "viewport_func.h"
@@ -34,6 +33,7 @@
 #include "elrail_func.h"
 #include "town.h"
 #include "pbs.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"

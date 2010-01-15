@@ -13,6 +13,8 @@
 #define ENGINE_H
 
 #include "engine_type.h"
+#include "vehicle_type.h"
+#include "company_type.h"
 
 void SetupEngines();
 void StartupEngines();

@@ -10,7 +10,6 @@
 /** @file strings.cpp Handling of translated strings. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "currency.h"
 #include "station_base.h"
 #include "town.h"
@@ -29,11 +28,11 @@
 #include "core/endian_func.hpp"
 #include "date_func.h"
 #include "vehicle_base.h"
-#include "video/video_driver.hpp"
 #include "engine_base.h"
 #include "strgen/strgen.h"
-#include "gfx_func.h"
 #include "townname_func.h"
+#include "string_func.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"

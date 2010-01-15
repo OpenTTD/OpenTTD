@@ -14,6 +14,8 @@
 
 #include "core/pool_type.hpp"
 #include "autoreplace_type.h"
+#include "engine_type.h"
+#include "group_type.h"
 
 typedef uint16 EngineRenewID;
 

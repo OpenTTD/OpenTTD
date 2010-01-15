@@ -13,7 +13,6 @@
 #include "functions.h"
 #include "vehicle_func.h"
 #include "pathfinder/follow_track.hpp"
-//#include "depot_map.h"
 
 /**
  * Get the reserved trackbits for any tile, regardless of type.

@@ -12,13 +12,13 @@
 #ifndef  FOLLOW_TRACK_HPP
 #define  FOLLOW_TRACK_HPP
 
-#include "../depot_map.h"
 #include "../pbs.h"
 #include "../roadveh.h"
 #include "../station_base.h"
 #include "../train.h"
 #include "../tunnelbridge.h"
 #include "../tunnelbridge_map.h"
+#include "../depot_map.h"
 #include "pf_performance_timer.hpp"
 
 /** Track follower helper template class (can serve pathfinders and vehicle

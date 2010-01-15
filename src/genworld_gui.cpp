@@ -23,7 +23,6 @@
 #include "sound_func.h"
 #include "fios.h"
 #include "string_func.h"
-#include "gfx_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "landscape_type.h"
@@ -31,6 +30,8 @@
 #include "town.h"
 #include "thread/thread.h"
 #include "settings_func.h"
+#include "core/geometry_func.hpp"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

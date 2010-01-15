@@ -12,7 +12,6 @@
 #ifdef WITH_PNG
 
 #include "../stdafx.h"
-#include "../gfx_func.h"
 #include "../fileio_func.h"
 #include "../debug.h"
 #include "png.hpp"

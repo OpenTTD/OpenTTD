@@ -13,6 +13,7 @@
 #define TIMETABLE_H
 
 #include "date_type.h"
+#include "vehicle_type.h"
 
 void ShowTimetableWindow(const Vehicle *v);
 void UpdateVehicleTimetable(Vehicle *v, bool travelling);

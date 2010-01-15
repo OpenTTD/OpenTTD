@@ -18,16 +18,13 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../debug.h"
 #include "../gfx_func.h"
 #include "../variables.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
-#include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
 #include "../functions.h"
-#include "../texteff.hpp"
 #include "allegro_v.h"
 #include <allegro.h>
 

@@ -14,7 +14,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "network/network.h"
@@ -28,6 +27,9 @@
 #include "date_func.h"
 #include "widgets/dropdown_type.h"
 #include "tilehighlight_func.h"
+#include "sprite.h"
+#include "company_base.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 

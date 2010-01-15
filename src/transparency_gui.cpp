@@ -10,7 +10,6 @@
 /** @file transparency_gui.cpp The transparency GUI. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "window_gui.h"
 #include "transparency.h"
 #include "sound_func.h"

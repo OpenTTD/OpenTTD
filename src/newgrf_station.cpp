@@ -23,13 +23,14 @@
 #include "newgrf_sound.h"
 #include "town.h"
 #include "newgrf_town.h"
-#include "gfx_func.h"
 #include "date_func.h"
 #include "company_func.h"
 #include "animated_tile_func.h"
 #include "functions.h"
 #include "tunnelbridge_map.h"
 #include "spritecache.h"
+#include "newgrf.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 

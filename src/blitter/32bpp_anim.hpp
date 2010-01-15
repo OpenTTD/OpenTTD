@@ -13,7 +13,6 @@
 #define BLITTER_32BPP_ANIM_HPP
 
 #include "32bpp_optimized.hpp"
-#include "factory.hpp"
 
 class Blitter_32bppAnim : public Blitter_32bppOptimized {
 private:

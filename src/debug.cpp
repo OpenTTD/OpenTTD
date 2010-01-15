@@ -14,13 +14,13 @@
 #include "console_func.h"
 #include "debug.h"
 #include "string_func.h"
-#include "network/core/core.h"
 #include "fileio_func.h"
 #include "settings_type.h"
 
 #include <time.h>
 
 #if defined(ENABLE_NETWORK)
+#include "network/core/os_abstraction.h"
 SOCKET _debug_socket = INVALID_SOCKET;
 #endif /* ENABLE_NETWORK */
 

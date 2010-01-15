@@ -14,6 +14,7 @@
 
 #include "../core/alloc_func.hpp"
 #include "../core/mem_func.hpp"
+#include <new>
 
 /** Base class for simple binary blobs.
  *  Item is byte.

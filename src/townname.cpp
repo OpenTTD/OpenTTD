@@ -15,6 +15,7 @@
 #include "town.h"
 #include "core/alloc_func.hpp"
 #include "strings_func.h"
+#include "core/random_func.hpp"
 
 #include "table/townname.h"
 

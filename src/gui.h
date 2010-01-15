@@ -12,7 +12,6 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "window_type.h"
 #include "vehicle_type.h"
 #include "gfx_type.h"
 #include "economy_type.h"

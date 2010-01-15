@@ -14,7 +14,6 @@
 
 #include "direction_type.h"
 #include "map_type.h"
-#include "tile_type.h"
 #include "date_type.h"
 
 /** Current limits for airports */

@@ -14,7 +14,6 @@
 
 #include "core/enum_type.hpp"
 #include "core/string_compare_type.hpp"
-#include "string_func.h"
 #include <map>
 
 const char *GetDriverParam(const char * const *parm, const char *name);

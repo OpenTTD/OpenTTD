@@ -14,6 +14,7 @@
 #include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../industry.h"
+#include "../../core/random_func.hpp"
 
 /* static */ bool AIIndustryType::IsValidIndustryType(IndustryType industry_type)
 {

@@ -12,6 +12,7 @@
 #ifndef  FIXEDSIZEARRAY_HPP
 #define  FIXEDSIZEARRAY_HPP
 
+#include "../core/alloc_func.hpp"
 
 /** fixed size array
  *  Upon construction it preallocates fixed size block of memory

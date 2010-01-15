@@ -12,7 +12,6 @@
 #ifndef PATHFINDER_FUNC_H
 #define PATHFINDER_FUNC_H
 
-#include "../station_base.h"
 #include "../waypoint_base.h"
 
 /**

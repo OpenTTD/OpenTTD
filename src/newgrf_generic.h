@@ -12,6 +12,9 @@
 #ifndef NEWGRF_GENERIC_H
 #define NEWGRF_GENERIC_H
 
+#include "cargo_type.h"
+#include "industry_type.h"
+
 enum AIConstructionEvent {
 	AICE_TRAIN_CHECK_RAIL_ENGINE     = 0x00, ///< Check if we should build an engine
 	AICE_TRAIN_CHECK_ELRAIL_ENGINE   = 0x01,

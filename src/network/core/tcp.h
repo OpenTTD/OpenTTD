@@ -14,9 +14,7 @@
 #ifndef NETWORK_CORE_TCP_H
 #define NETWORK_CORE_TCP_H
 
-#include "os_abstraction.h"
 #include "address.h"
-#include "core.h"
 #include "packet.h"
 
 #ifdef ENABLE_NETWORK

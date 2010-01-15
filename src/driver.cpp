@@ -14,6 +14,7 @@
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"
+#include "string_func.h"
 
 VideoDriver *_video_driver;
 char *_ini_videodriver;

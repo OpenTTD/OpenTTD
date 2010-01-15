@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "fileio_func.h"
 #include "base_media_base.h"
 #include "music/music_driver.hpp"
 #include "window_gui.h"
@@ -21,6 +20,8 @@
 #include "gfx_func.h"
 #include "core/random_func.hpp"
 #include "gui.h"
+#include "core/geometry_func.hpp"
+#include "string_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

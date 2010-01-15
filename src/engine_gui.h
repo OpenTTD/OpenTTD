@@ -12,7 +12,9 @@
 #ifndef ENGINE_GUI_H
 #define ENGINE_GUI_H
 
+#include "engine_type.h"
 #include "sortlist_type.h"
+#include "gfx_type.h"
 
 typedef GUIList<EngineID, CargoID> GUIEngineList;
 

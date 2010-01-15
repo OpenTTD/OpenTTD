@@ -12,6 +12,8 @@
 #ifndef TREE_MAP_H
 #define TREE_MAP_H
 
+#include "tile_map.h"
+
 /**
  * List of tree types along all landscape types.
  *

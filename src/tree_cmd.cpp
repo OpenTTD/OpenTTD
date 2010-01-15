@@ -10,7 +10,6 @@
 /** @file tree_cmd.cpp Handling of tree tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "clear_map.h"
 #include "landscape.h"
 #include "tree_map.h"
@@ -28,6 +27,7 @@
 #include "water.h"
 #include "landscape_type.h"
 #include "company_base.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -18,6 +18,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "settings_type.h"
+#include "console_func.h"
 #include "rev.h"
 
 

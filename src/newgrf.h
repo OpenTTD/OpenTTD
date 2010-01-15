@@ -12,7 +12,6 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
-#include "town_type.h"
 #include "newgrf_config.h"
 #include "cargotype.h"
 #include "industry_type.h"

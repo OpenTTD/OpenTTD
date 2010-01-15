@@ -15,10 +15,7 @@
 #include "base_station_base.h"
 #include "airport.h"
 #include "cargopacket.h"
-#include "cargo_type.h"
 #include "industry_type.h"
-#include "core/geometry_type.hpp"
-#include <list>
 
 typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
 extern StationPool _station_pool;

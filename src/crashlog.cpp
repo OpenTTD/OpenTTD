@@ -26,12 +26,10 @@
 #include "gfx_func.h"
 #include "network/network.h"
 
-#include <squirrel.h>
 #include "ai/ai_info.hpp"
 #include "company_base.h"
 #include "company_func.h"
 
-#include <time.h>
 
 /* static */ const char *CrashLog::message = NULL;
 /* static */ char *CrashLog::gamelog_buffer = NULL;

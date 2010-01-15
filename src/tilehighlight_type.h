@@ -13,9 +13,9 @@
 #define TILEHIGHLIGHT_TYPE_H
 
 #include "core/geometry_type.hpp"
-#include "zoom_type.h"
 #include "window_type.h"
 #include "tile_type.h"
+#include "viewport_type.h"
 
 /** Highlighting draw styles */
 enum HighLightStyle {

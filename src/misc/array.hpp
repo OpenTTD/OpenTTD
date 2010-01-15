@@ -13,6 +13,7 @@
 #define  ARRAY_HPP
 
 #include "fixedsizearray.hpp"
+#include "str.hpp"
 
 /** Flexible array with size limit. Implemented as fixed size
  *  array of fixed size arrays */

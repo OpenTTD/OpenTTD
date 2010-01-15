@@ -12,7 +12,6 @@
 #ifndef UNMOVABLE_MAP_H
 #define UNMOVABLE_MAP_H
 
-#include "core/bitmath_func.hpp"
 #include "tile_map.h"
 
 /** Types of unmovable structure */

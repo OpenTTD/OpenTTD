@@ -21,7 +21,6 @@
  * </ol>
  */
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../debug.h"
 #include "../station_base.h"
 #include "../thread/thread.h"
@@ -30,7 +29,6 @@
 #include "../variables.h"
 #include "../window_func.h"
 #include "../strings_func.h"
-#include "../gfx_func.h"
 #include "../core/endian_func.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
@@ -42,6 +40,7 @@
 #include "../gamelog.h"
 #include "../string_func.h"
 #include "../engine_base.h"
+#include "../company_base.h"
 
 #include "table/strings.h"
 

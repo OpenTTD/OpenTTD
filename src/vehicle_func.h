@@ -12,16 +12,14 @@
 #ifndef VEHICLE_FUNC_H
 #define VEHICLE_FUNC_H
 
-#include "tile_type.h"
-#include "strings_type.h"
 #include "gfx_type.h"
 #include "direction_type.h"
-#include "cargo_type.h"
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "transport_type.h"
 #include "newgrf_config.h"
+#include "company_type.h"
 
 #define is_custom_sprite(x) (x >= 0xFD)
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)

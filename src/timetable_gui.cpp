@@ -23,6 +23,7 @@
 #include "date_func.h"
 #include "date_gui.h"
 #include "vehicle_gui.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

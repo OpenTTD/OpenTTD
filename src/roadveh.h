@@ -13,9 +13,7 @@
 #define ROADVEH_H
 
 #include "vehicle_base.h"
-#include "engine_func.h"
-#include "engine_base.h"
-#include "economy_func.h"
+#include "road_type.h"
 
 struct RoadVehicle;
 

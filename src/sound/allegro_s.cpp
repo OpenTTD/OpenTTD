@@ -13,7 +13,6 @@
 
 #include "../stdafx.h"
 
-#include "../driver.h"
 #include "../mixer.h"
 #include "../debug.h"
 #include "allegro_s.h"

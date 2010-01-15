@@ -13,7 +13,6 @@
 #define GFX_TYPE_H
 
 #include "core/endian_type.hpp"
-#include "core/enum_type.hpp"
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
 

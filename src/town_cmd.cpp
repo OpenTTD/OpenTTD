@@ -10,8 +10,6 @@
 /** @file town_cmd.cpp Handling of town tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "road_type.h"
 #include "road_internal.h" /* Cleaning up road bits */
 #include "road_cmd.h"
 #include "landscape.h"
@@ -30,7 +28,6 @@
 #include "newgrf_commons.h"
 #include "newgrf_text.h"
 #include "autoslope.h"
-#include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -46,6 +43,7 @@
 #include "town.h"
 #include "townname_func.h"
 #include "townname_type.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/town_land.h"

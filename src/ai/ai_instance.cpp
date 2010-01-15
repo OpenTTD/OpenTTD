@@ -11,10 +11,8 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../vehicle_base.h"
 #include "../saveload/saveload.h"
 #include "../gui.h"
-#include "table/strings.h"
 
 #include <squirrel.h>
 #include "../script/squirrel.hpp"
@@ -79,6 +77,7 @@
 #include "api/ai_waypoint.hpp.sq"
 #include "api/ai_waypointlist.hpp.sq"
 
+#include "../company_base.h"
 #include "../fileio_func.h"
 
 AIStorage::~AIStorage()

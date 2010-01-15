@@ -29,6 +29,7 @@
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
 #include "animated_tile_func.h"
+#include "core/random_func.hpp"
 
 #include "table/sprites.h"
 

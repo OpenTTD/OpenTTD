@@ -12,8 +12,10 @@
 #ifndef AI_SCANNER_HPP
 #define AI_SCANNER_HPP
 
+#include <squirrel.h>
 #include "../script/script_scanner.hpp"
 #include "../core/string_compare_type.hpp"
+#include "ai.hpp"
 #include <map>
 
 class AIScanner : public ScriptScanner {

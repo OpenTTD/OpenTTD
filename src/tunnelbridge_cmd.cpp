@@ -13,7 +13,6 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "rail_map.h"
 #include "landscape.h"
 #include "unmovable_map.h"
@@ -39,6 +38,8 @@
 #include "elrail_func.h"
 #include "landscape_type.h"
 #include "pbs.h"
+#include "company_base.h"
+#include "engine_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

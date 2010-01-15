@@ -10,10 +10,8 @@
 /** @file station_gui.cpp The GUI for stations. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
 #include "gui.h"
-#include "window_gui.h"
 #include "textbuf_gui.h"
 #include "company_func.h"
 #include "command_func.h"
@@ -23,13 +21,13 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "widgets/dropdown_func.h"
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "sortlist_type.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

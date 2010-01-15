@@ -15,6 +15,7 @@
 #include <map>
 #include "ai_info.hpp"
 #include "../core/string_compare_type.hpp"
+#include "../company_type.h"
 
 class AIConfig {
 private:

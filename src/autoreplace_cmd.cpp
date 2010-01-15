@@ -20,6 +20,7 @@
 #include "functions.h"
 #include "autoreplace_func.h"
 #include "articulated_vehicles.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 

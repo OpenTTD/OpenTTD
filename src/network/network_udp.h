@@ -14,6 +14,8 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "core/address.h"
+
 void NetworkUDPInitialize();
 void NetworkUDPSearchGame();
 void NetworkUDPQueryMasterServer();

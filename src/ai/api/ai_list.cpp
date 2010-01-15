@@ -9,7 +9,6 @@
 
 /** @file ai_list.cpp Implementation of AIList. */
 
-#include <squirrel.h>
 #include "ai_list.hpp"
 
 void AIList::AddItem(int32 item, int32 value)

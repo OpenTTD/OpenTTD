@@ -10,7 +10,6 @@
 /** @file ai_testmode.cpp Implementation of AITestMode. */
 
 #include "ai_testmode.hpp"
-#include "../../command_type.h"
 #include "../../company_base.h"
 #include "../../company_func.h"
 #include "../ai_instance.hpp"

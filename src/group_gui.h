@@ -12,6 +12,7 @@
 #ifndef GROUP_GUI_H
 #define GROUP_GUI_H
 
+#include "company_type.h"
 #include "vehicle_type.h"
 
 void ShowCompanyGroup(CompanyID company, VehicleType veh);

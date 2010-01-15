@@ -12,6 +12,8 @@
 #ifndef AI_INSTANCE_HPP
 #define AI_INSTANCE_HPP
 
+#include <squirrel.h>
+
 /**
  * The callback function when an AI suspends.
  */

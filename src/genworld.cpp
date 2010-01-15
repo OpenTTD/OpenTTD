@@ -33,6 +33,7 @@
 #include "void_map.h"
 #include "town.h"
 #include "newgrf.h"
+#include "core/random_func.hpp"
 
 #include "table/sprites.h"
 

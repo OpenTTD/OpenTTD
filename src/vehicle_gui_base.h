@@ -13,6 +13,7 @@
 #define VEHICLE_GUI_BASE_H
 
 #include "sortlist_type.h"
+#include "window_gui.h"
 
 typedef GUIList<const Vehicle*> GUIVehicleList;
 

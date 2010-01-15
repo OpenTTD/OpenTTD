@@ -19,6 +19,7 @@
 #include "../base_media_base.h"
 #include "../sortlist_type.h"
 #include "../querystring_gui.h"
+#include "../core/geometry_func.hpp"
 #include  "network_content.h"
 
 #include "table/strings.h"

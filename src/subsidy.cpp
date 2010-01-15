@@ -22,6 +22,7 @@
 #include "subsidy_base.h"
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 

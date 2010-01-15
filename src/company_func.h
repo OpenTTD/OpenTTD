@@ -12,10 +12,8 @@
 #ifndef COMPANY_FUNC_H
 #define COMPANY_FUNC_H
 
-#include "core/math_func.hpp"
 #include "company_type.h"
 #include "tile_type.h"
-#include "strings_type.h"
 #include "gfx_type.h"
 
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);

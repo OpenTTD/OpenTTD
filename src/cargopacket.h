@@ -14,7 +14,6 @@
 
 #include "core/pool_type.hpp"
 #include "economy_type.h"
-#include "tile_type.h"
 #include "station_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"

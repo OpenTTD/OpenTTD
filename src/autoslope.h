@@ -12,10 +12,11 @@
 #ifndef AUTOSLOPE_H
 #define AUTOSLOPE_H
 
-#include "settings_type.h"
 #include "company_func.h"
 #include "depot_func.h"
 #include "slope_func.h"
+#include "tile_map.h"
+#include "openttd.h"
 
 /**
  * Autoslope check for tiles with an entrance on an edge.

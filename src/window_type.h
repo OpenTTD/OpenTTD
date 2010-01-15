@@ -12,7 +12,6 @@
 #ifndef WINDOW_TYPE_H
 #define WINDOW_TYPE_H
 
-#include "core/enum_type.hpp"
 
 /**
  * Window classes

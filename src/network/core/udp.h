@@ -71,12 +71,9 @@
 #ifndef NETWORK_CORE_UDP_H
 #define NETWORK_CORE_UDP_H
 
-#include "os_abstraction.h"
 #include "address.h"
-#include "core.h"
 #include "game.h"
 #include "packet.h"
-#include "../../debug.h"
 
 #ifdef ENABLE_NETWORK
 

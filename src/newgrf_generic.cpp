@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "newgrf.h"
 #include "newgrf_spritegroup.h"
+#include "core/bitmath_func.hpp"
 #include <list>
 
 

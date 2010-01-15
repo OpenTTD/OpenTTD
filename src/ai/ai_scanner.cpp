@@ -19,7 +19,6 @@
 #include "../script/squirrel.hpp"
 #include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
-#include "ai.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 #include "api/ai_controller.hpp"

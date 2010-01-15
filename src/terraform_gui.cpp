@@ -10,7 +10,6 @@
 /** @file terraform_gui.cpp GUI related to terraforming the map. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "clear_map.h"
 #include "company_func.h"
 #include "company_base.h"
@@ -18,7 +17,6 @@
 #include "window_gui.h"
 #include "window_func.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "command_func.h"
 #include "signs_func.h"
 #include "variables.h"

@@ -10,12 +10,10 @@
 /** @file newgrf_canal.cpp Implementation of NewGRF canals. */
 
 #include "stdafx.h"
-#include "tile_type.h"
 #include "debug.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_canal.h"
-#include "tile_map.h"
 #include "water_map.h"
 
 

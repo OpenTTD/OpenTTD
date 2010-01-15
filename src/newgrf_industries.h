@@ -12,7 +12,6 @@
 #ifndef NEWGRF_INDUSTRIES_H
 #define NEWGRF_INDUSTRIES_H
 
-#include "industry_type.h"
 #include "newgrf_spritegroup.h"
 
 /** When should the industry(tile) be triggered for random bits? */

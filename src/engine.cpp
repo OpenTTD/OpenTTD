@@ -18,7 +18,6 @@
 #include "newgrf_engine.h"
 #include "group.h"
 #include "strings_func.h"
-#include "gfx_func.h"
 #include "core/random_func.hpp"
 #include "window_func.h"
 #include "date_func.h"
@@ -27,6 +26,9 @@
 #include "ai/ai.hpp"
 #include "core/pool_func.hpp"
 #include "engine_gui.h"
+#include "engine_func.h"
+#include "engine_base.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 #include "table/engines.h"

@@ -10,7 +10,6 @@
 /** @file water_cmd.cpp Handling of water tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "cmd_helper.h"
 #include "landscape.h"
 #include "viewport_func.h"
@@ -19,17 +18,11 @@
 #include "news_func.h"
 #include "depot_base.h"
 #include "depot_func.h"
-#include "vehicle_gui.h"
-#include "train.h"
-#include "roadveh.h"
 #include "water.h"
 #include "industry_map.h"
-#include "cargotype.h"
 #include "newgrf_canal.h"
-#include "transparency.h"
 #include "strings_func.h"
 #include "functions.h"
-#include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "company_func.h"
@@ -40,6 +33,7 @@
 #include "tunnelbridge_map.h"
 #include "station_base.h"
 #include "ai/ai.hpp"
+#include "core/random_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

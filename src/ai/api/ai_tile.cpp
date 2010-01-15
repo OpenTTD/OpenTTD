@@ -14,7 +14,6 @@
 #include "ai_town.hpp"
 #include "../../station_func.h"
 #include "../../company_func.h"
-#include "../../road_map.h"
 #include "../../water_map.h"
 #include "../../clear_map.h"
 #include "../../tree_map.h"

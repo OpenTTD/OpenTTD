@@ -16,7 +16,6 @@
 #include "variables.h"
 #include "string_func.h"
 #include "settings_type.h"
-#include "gamelog.h"
 #include "gamelog_internal.h"
 #include "console_func.h"
 #include "debug.h"

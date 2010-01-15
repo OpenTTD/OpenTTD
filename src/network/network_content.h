@@ -13,7 +13,6 @@
 #define NETWORK_CONTENT_H
 
 #include "core/tcp_content.h"
-#include "../core/smallvec_type.hpp"
 
 #if defined(ENABLE_NETWORK)
 

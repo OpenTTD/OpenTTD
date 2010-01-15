@@ -57,10 +57,11 @@
 #include "gamelog.h"
 #include "settings_func.h"
 #include "ini_type.h"
-#include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "newgrf.h"
 #include "ship.h"
+#include "company_base.h"
+#include "engine_base.h"
 
 #include "void_map.h"
 #include "station_base.h"

@@ -26,7 +26,6 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "viewport_func.h"
 #include "station_base.h"
@@ -38,7 +37,6 @@
 #include "vehicle_base.h"
 #include "vehicle_gui.h"
 #include "blitter/factory.hpp"
-#include "transparency.h"
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "vehicle_func.h"

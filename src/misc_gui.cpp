@@ -33,6 +33,7 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 

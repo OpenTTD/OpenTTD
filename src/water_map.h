@@ -14,6 +14,7 @@
 
 #include "core/math_func.hpp"
 #include "depot_type.h"
+#include "tile_map.h"
 
 enum WaterTileType {
 	WATER_TILE_CLEAR,

@@ -17,7 +17,6 @@
 #include "window_gui.h"
 #include "tree_map.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "town.h"
 #include "blitter/factory.hpp"
 #include "tunnelbridge_map.h"
@@ -26,6 +25,7 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "window_func.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

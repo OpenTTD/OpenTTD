@@ -10,7 +10,6 @@
 /** @file ai_execmode.cpp Implementation of AIExecMode. */
 
 #include "ai_execmode.hpp"
-#include "../../command_type.h"
 #include "../../company_base.h"
 #include "../../company_func.h"
 #include "../ai_instance.hpp"

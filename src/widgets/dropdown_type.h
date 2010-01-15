@@ -13,6 +13,7 @@
 #define WIDGETS_DROPDOWN_TYPE_H
 
 #include "../window_type.h"
+#include "../gfx_func.h"
 #include <list>
 
 /**

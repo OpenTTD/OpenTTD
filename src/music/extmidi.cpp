@@ -12,6 +12,7 @@
 #ifndef __MORPHOS__
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../string_func.h"
 #include "../sound/sound_driver.hpp"
 #include "../video/video_driver.hpp"
 #include "extmidi.h"

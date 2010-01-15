@@ -10,7 +10,6 @@
 /** @file industry_cmd.cpp Handling of industry tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "clear_map.h"
 #include "industry.h"
 #include "station_base.h"
@@ -30,7 +29,6 @@
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "autoslope.h"
-#include "transparency.h"
 #include "water.h"
 #include "strings_func.h"
 #include "functions.h"
@@ -40,6 +38,7 @@
 #include "sound_func.h"
 #include "animated_tile_func.h"
 #include "effectvehicle_func.h"
+#include "effectvehicle_base.h"
 #include "ai/ai.hpp"
 #include "core/pool_func.hpp"
 #include "subsidy_func.h"

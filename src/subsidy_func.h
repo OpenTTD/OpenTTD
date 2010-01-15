@@ -14,9 +14,8 @@
 
 #include "core/geometry_type.hpp"
 #include "station_type.h"
-#include "town_type.h"
-#include "industry_type.h"
 #include "company_type.h"
+#include "cargo_type.h"
 
 Pair SetupSubsidyDecodeParam(const struct Subsidy *s, bool mode);
 void DeleteSubsidyWith(SourceType type, SourceID index);

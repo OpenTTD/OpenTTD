@@ -13,9 +13,6 @@
 #define SHIP_H
 
 #include "vehicle_base.h"
-#include "engine_func.h"
-#include "engine_base.h"
-#include "economy_func.h"
 
 void RecalcShipStuff(Vehicle *v);
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height);

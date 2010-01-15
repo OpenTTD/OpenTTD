@@ -22,6 +22,7 @@
 #include "company_func.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
+#include "station_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

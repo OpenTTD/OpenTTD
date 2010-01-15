@@ -10,12 +10,9 @@
 /** @file order_gui.cpp GUI related to orders. */
 
 #include "stdafx.h"
-#include "window_gui.h"
 #include "command_func.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "depot_base.h"
-#include "vehicle_base.h"
 #include "vehicle_gui.h"
 #include "roadveh.h"
 #include "timetable.h"
@@ -31,6 +28,7 @@
 #include "network/network.h"
 #include "station_base.h"
 #include "waypoint_base.h"
+#include "core/geometry_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

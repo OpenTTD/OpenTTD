@@ -13,6 +13,7 @@
 #define OLDLOADER_H
 
 #include "saveload.h"
+#include "../tile_type.h"
 
 enum {
 	BUFFER_SIZE = 4096,

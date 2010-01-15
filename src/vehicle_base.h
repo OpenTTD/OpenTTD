@@ -12,20 +12,12 @@
 #ifndef VEHICLE_BASE_H
 #define VEHICLE_BASE_H
 
-#include "vehicle_type.h"
 #include "track_type.h"
-#include "cargo_type.h"
 #include "direction_type.h"
-#include "gfx_type.h"
 #include "command_type.h"
-#include "date_type.h"
-#include "company_base.h"
-#include "company_type.h"
-#include "core/pool_type.hpp"
 #include "order_base.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
-#include "group_type.h"
 #include "engine_type.h"
 #include "order_func.h"
 #include "transport_type.h"

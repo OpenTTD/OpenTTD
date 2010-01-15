@@ -10,7 +10,6 @@
 /** @file unmovable_cmd.cpp Handling of unmovable tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "command_func.h"
 #include "viewport_func.h"
@@ -28,6 +27,9 @@
 #include "landscape_type.h"
 #include "unmovable.h"
 #include "cargopacket.h"
+#include "sprite.h"
+#include "core/random_func.hpp"
+#include "unmovable_map.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

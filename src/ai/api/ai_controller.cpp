@@ -13,9 +13,7 @@
 #include "../../string_func.h"
 #include "../../company_base.h"
 #include "../../rev.h"
-#include "table/strings.h"
 
-#include "../ai.hpp"
 #include "ai_controller.hpp"
 #include "../ai_storage.hpp"
 #include "../ai_instance.hpp"

@@ -10,7 +10,6 @@
 /** @file gfxinit.cpp Initializing of the (GRF) graphics. */
 
 #include "stdafx.h"
-#include "debug.h"
 #include "fios.h"
 #include "newgrf.h"
 #include "3rdparty/md5/md5.h"

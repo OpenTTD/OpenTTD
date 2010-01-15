@@ -15,7 +15,6 @@
 #include "../roadstop_base.h"
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
-#include "../station_map.h"
 
 #include "saveload.h"
 #include "table/strings.h"

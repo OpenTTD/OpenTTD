@@ -22,6 +22,7 @@
 #include "date_func.h"
 #include "gfx_func.h"
 #include "sortlist_type.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

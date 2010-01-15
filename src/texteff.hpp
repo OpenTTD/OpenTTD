@@ -13,6 +13,7 @@
 #define TEXTEFF_HPP
 
 #include "gfx_type.h"
+#include "strings_type.h"
 
 /**
  * Text effect modes.

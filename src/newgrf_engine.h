@@ -15,6 +15,9 @@
 #include "direction_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_properties.h"
+#include "vehicle_type.h"
+#include "engine_type.h"
+#include "gfx_type.h"
 
 enum {
 	TRAININFO_DEFAULT_VEHICLE_WIDTH = 29,

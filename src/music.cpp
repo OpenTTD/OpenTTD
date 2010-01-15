@@ -10,7 +10,6 @@
 /** @file music.cpp The songs that OpenTTD knows. */
 
 #include "stdafx.h"
-#include "debug.h"
 
 /* The type of set we're replacing */
 #define SET_TYPE "music"

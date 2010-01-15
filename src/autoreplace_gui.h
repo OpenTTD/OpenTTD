@@ -12,6 +12,8 @@
 #ifndef AUTOREPLACE_GUI_H
 #define AUTOREPLACE_GUI_H
 
+#include "engine_type.h"
+#include "group_type.h"
 #include "vehicle_type.h"
 
 /**

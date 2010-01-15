@@ -21,6 +21,7 @@
 #include "economy_func.h"
 #include "viewport_func.h"
 #include "water.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

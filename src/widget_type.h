@@ -12,9 +12,11 @@
 #ifndef WIDGET_TYPE_H
 #define WIDGET_TYPE_H
 
+#include "core/alloc_type.hpp"
 #include "core/bitmath_func.hpp"
 #include "strings_type.h"
 #include "gfx_type.h"
+#include "window_type.h"
 
 enum {
 	WIDGET_LIST_END = -1, ///< indicate the end of widgets' list for vararg functions

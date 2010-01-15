@@ -13,13 +13,7 @@
 #define INDUSTRY_H
 
 #include "core/pool_type.hpp"
-#include "core/random_func.hpp"
 #include "newgrf_storage.h"
-#include "cargo_type.h"
-#include "economy_type.h"
-#include "map_type.h"
-#include "industry_type.h"
-#include "tile_type.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
 #include "tilearea_type.h"

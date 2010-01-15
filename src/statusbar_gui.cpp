@@ -25,6 +25,7 @@
 #include "variables.h"
 #include "window_func.h"
 #include "statusbar_gui.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

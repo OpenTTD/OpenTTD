@@ -9,7 +9,6 @@
 
 /** @file ai_abstractlist.cpp Implementation of AIAbstractList. */
 
-#include <squirrel.h>
 #include "ai_abstractlist.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"

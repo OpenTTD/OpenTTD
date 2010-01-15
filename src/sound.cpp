@@ -16,7 +16,6 @@
 #include "fios.h"
 #include "window_gui.h"
 #include "vehicle_base.h"
-#include "debug.h"
 
 /* The type of set we're replacing */
 #define SET_TYPE "sounds"

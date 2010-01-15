@@ -10,24 +10,22 @@
 /** @file newgrf_house.cpp Implementation of NewGRF houses. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "variables.h"
 #include "debug.h"
 #include "viewport_func.h"
 #include "landscape.h"
-#include "sprite.h"
 #include "newgrf.h"
 #include "newgrf_house.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 #include "newgrf_sound.h"
 #include "newgrf_commons.h"
-#include "transparency.h"
 #include "functions.h"
 #include "company_func.h"
 #include "animated_tile_func.h"
 #include "company_base.h"
 #include "town.h"
+#include "core/random_func.hpp"
 
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

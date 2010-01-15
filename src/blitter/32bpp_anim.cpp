@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../core/math_func.hpp"
-#include "../gfx_func.h"
 #include "../video/video_driver.hpp"
 #include "32bpp_anim.hpp"
 

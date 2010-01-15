@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "roadveh.h"
-#include "gfx_func.h"
 #include "news_func.h"
 #include "airport.h"
 #include "command_func.h"
@@ -27,6 +26,7 @@
 #include "string_func.h"
 #include "depot_map.h"
 #include "vehiclelist.h"
+#include "engine_base.h"
 
 #include "table/strings.h"
 

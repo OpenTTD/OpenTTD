@@ -12,12 +12,9 @@
 #ifndef COMPANY_BASE_H
 #define COMPANY_BASE_H
 
-#include "company_type.h"
 #include "core/pool_type.hpp"
 #include "road_type.h"
 #include "rail_type.h"
-#include "date_type.h"
-#include "engine_type.h"
 #include "livery.h"
 #include "autoreplace_type.h"
 #include "economy_type.h"

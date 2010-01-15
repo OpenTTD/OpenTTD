@@ -14,8 +14,6 @@
 
 #include "station_map.h"
 #include "vehicle_base.h"
-#include "engine_func.h"
-#include "engine_base.h"
 
 struct Aircraft;
 

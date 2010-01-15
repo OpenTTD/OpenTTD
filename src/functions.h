@@ -12,8 +12,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "core/random_func.hpp"
-#include "command_type.h"
 #include "tile_cmd.h"
 
 /* clear_land.cpp */

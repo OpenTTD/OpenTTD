@@ -12,6 +12,9 @@
 #ifndef DATE_GUI_H
 #define DATE_GUI_H
 
+#include "date_type.h"
+#include "window_type.h"
+
 /**
  * Callback for when a date has been chosen
  * @param w the window that sends the callback

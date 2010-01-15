@@ -15,6 +15,7 @@
 
 #include "../../stdafx.h"
 
+#include "../network.h"
 #include "../network_internal.h"
 #include "../../core/pool_func.hpp"
 

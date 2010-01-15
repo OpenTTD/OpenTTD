@@ -9,7 +9,6 @@
 
 /** @file ai_map.cpp Implementation of AIMap. */
 
-#include "../../stdafx.h"
 #include "ai_map.hpp"
 #include "../../tile_map.h"
 

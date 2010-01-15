@@ -30,6 +30,7 @@
 #include "querystring_gui.h"
 #include "widgets/dropdown_func.h"
 #include "strings_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 

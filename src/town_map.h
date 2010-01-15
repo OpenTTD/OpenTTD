@@ -13,7 +13,6 @@
 #define TOWN_MAP_H
 
 #include "road_map.h"
-#include "town_type.h"
 #include "house.h"
 
 /**

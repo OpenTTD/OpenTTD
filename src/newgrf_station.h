@@ -12,14 +12,13 @@
 #ifndef NEWGRF_STATION_H
 #define NEWGRF_STATION_H
 
-#include "engine_type.h"
 #include "newgrf_callbacks.h"
-#include "tile_type.h"
-#include "station_type.h"
-#include "strings_type.h"
 #include "sprite.h"
 #include "direction_type.h"
-#include "newgrf.h"
+#include "cargo_type.h"
+#include "strings_type.h"
+#include "station_type.h"
+#include "rail_type.h"
 
 enum StationClassID {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value

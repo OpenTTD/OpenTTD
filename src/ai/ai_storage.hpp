@@ -19,8 +19,10 @@
 #include "../signs_func.h"
 #include "../tunnelbridge.h"
 #include "../vehicle_func.h"
+#include "../road_type.h"
 #include "../group.h"
 
+#include "table/strings.h"
 #include <vector>
 
 /**

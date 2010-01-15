@@ -12,16 +12,11 @@
 #ifndef ECONOMY_FUNC_H
 #define ECONOMY_FUNC_H
 
-#include "core/geometry_type.hpp"
 #include "economy_type.h"
+#include "station_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
-#include "tile_type.h"
-#include "town_type.h"
-#include "industry_type.h"
 #include "company_type.h"
-#include "station_type.h"
-#include "station_func.h"
 
 void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(Price price, int factor);

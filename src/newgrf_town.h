@@ -12,6 +12,8 @@
 #ifndef NEWGRF_TOWN_H
 #define NEWGRF_TOWN_H
 
+#include "town_type.h"
+
 /* Currently there is no direct town resolver; we only need to get town
  * variable results from inside stations, house tiles and industry tiles. */
 

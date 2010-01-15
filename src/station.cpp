@@ -23,6 +23,7 @@
 #include "station_base.h"
 #include "roadstop_base.h"
 #include "industry.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 

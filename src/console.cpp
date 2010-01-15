@@ -14,6 +14,7 @@
 #include "network/network.h"
 #include "network/network_func.h"
 #include "debug.h"
+#include "console_func.h"
 
 #include <stdarg.h>
 

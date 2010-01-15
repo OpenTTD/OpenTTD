@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
-#include "../gfx_func.h"
 #include "../core/math_func.hpp"
 #include "32bpp_optimized.hpp"
 

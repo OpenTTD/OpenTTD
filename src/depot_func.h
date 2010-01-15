@@ -12,7 +12,6 @@
 #ifndef DEPOT_FUNC_H
 #define DEPOT_FUNC_H
 
-#include "depot_type.h"
 #include "tile_type.h"
 #include "vehicle_type.h"
 #include "direction_type.h"

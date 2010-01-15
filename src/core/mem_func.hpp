@@ -12,7 +12,6 @@
 #ifndef MEM_FUNC_HPP
 #define MEM_FUNC_HPP
 
-#include <string.h>
 #include "math_func.hpp"
 
 /**

@@ -20,7 +20,7 @@
 #include "../viewport_func.h"
 #include "../gfx_func.h"
 #include "../company_base.h"
-#include "../town.h"
+#include "../core/random_func.hpp"
 
 #include "saveload.h"
 

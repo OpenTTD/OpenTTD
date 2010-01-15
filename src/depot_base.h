@@ -12,10 +12,8 @@
 #ifndef DEPOT_BASE_H
 #define DEPOT_BASE_H
 
-#include "tile_type.h"
 #include "depot_map.h"
 #include "core/pool_type.hpp"
-#include "town_type.h"
 
 typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
 extern DepotPool _depot_pool;

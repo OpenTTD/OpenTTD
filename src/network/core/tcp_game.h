@@ -16,7 +16,7 @@
 
 #include "os_abstraction.h"
 #include "tcp.h"
-#include "packet.h"
+#include "../network_type.h"
 #include "../../core/pool_type.hpp"
 
 #ifdef ENABLE_NETWORK

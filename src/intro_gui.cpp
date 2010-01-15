@@ -25,6 +25,7 @@
 #include "functions.h"
 #include "ai/ai_gui.hpp"
 #include "gfx_func.h"
+#include "core/geometry_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

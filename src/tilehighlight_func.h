@@ -13,8 +13,6 @@
 #define TILEHIGHLIGHT_FUNC_H
 
 #include "gfx_type.h"
-#include "window_type.h"
-#include "viewport_type.h"
 #include "tilehighlight_type.h"
 
 typedef void PlaceProc(TileIndex tile);

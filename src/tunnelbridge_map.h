@@ -12,13 +12,8 @@
 #ifndef TUNNELBRIDGE_MAP_H
 #define TUNNELBRIDGE_MAP_H
 
-#include "direction_func.h"
-#include "core/bitmath_func.hpp"
-#include "tile_map.h"
 #include "bridge_map.h"
 #include "tunnel_map.h"
-#include "transport_type.h"
-#include "track_func.h"
 
 
 /**

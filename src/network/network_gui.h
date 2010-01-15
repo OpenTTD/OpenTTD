@@ -12,6 +12,8 @@
 #ifndef NETWORK_GUI_H
 #define NETWORK_GUI_H
 
+#include "../company_type.h"
+#include "../economy_type.h"
 #include "../window_type.h"
 #include "network_type.h"
 

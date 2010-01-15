@@ -12,7 +12,7 @@
 #ifndef CONSOLE_INTERNAL_H
 #define CONSOLE_INTERNAL_H
 
-#include "console_func.h"
+#include "console_type.h"
 
 enum {
 	ICON_CMDLN_SIZE     = 1024, ///< maximum length of a typed in command

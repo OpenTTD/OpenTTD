@@ -13,6 +13,7 @@
 #define SPRITELOADER_HPP
 
 #include "../core/alloc_type.hpp"
+#include "../gfx_type.h"
 
 class SpriteLoader {
 public:

@@ -14,6 +14,7 @@
 
 #include "sound_type.h"
 #include "tile_type.h"
+#include "vehicle_type.h"
 
 enum VehicleSoundEvent {
 	VSE_START        = 1,

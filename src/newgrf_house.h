@@ -12,7 +12,6 @@
 #ifndef NEWGRF_HOUSE_H
 #define NEWGRF_HOUSE_H
 
-#include "town_type.h"
 #include "newgrf_callbacks.h"
 #include "tile_cmd.h"
 #include "house_type.h"

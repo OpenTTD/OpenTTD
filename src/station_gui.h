@@ -13,7 +13,8 @@
 #define STATION_GUI_H
 
 #include "command_type.h"
-#include "station_type.h"
+#include "tilearea_type.h"
+#include "window_type.h"
 
 /** Enum for StationView, referring to _station_view_widgets and _station_view_expanded_widgets */
 enum StationViewWidgets {

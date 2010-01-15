@@ -12,8 +12,9 @@
 #ifndef ENGINE_BASE_H
 #define ENGINE_BASE_H
 
+#include "company_type.h"
 #include "engine_type.h"
-#include "economy_type.h"
+#include "vehicle_type.h"
 #include "core/pool_type.hpp"
 #include "core/smallvec_type.hpp"
 

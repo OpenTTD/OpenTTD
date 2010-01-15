@@ -10,7 +10,6 @@
 /** @file economy.cpp Handling of the economy. */
 
 #include "stdafx.h"
-#include "tile_cmd.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "industry.h"
@@ -36,7 +35,6 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "gfx_func.h"
 #include "autoreplace_func.h"
 #include "company_gui.h"
 #include "signs_base.h"
@@ -46,6 +44,8 @@
 #include "waypoint_base.h"
 #include "economy_base.h"
 #include "core/pool_func.hpp"
+#include "newgrf.h"
+#include "engine_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

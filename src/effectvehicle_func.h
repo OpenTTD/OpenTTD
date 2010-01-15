@@ -12,7 +12,7 @@
 #ifndef EFFECTVEHICLE_FUNC_H
 #define EFFECTVEHICLE_FUNC_H
 
-#include "effectvehicle_base.h"
+#include "vehicle_type.h"
 
 /** Effect vehicle types */
 enum EffectVehicleType {

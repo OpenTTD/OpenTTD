@@ -15,6 +15,7 @@
 
 #include "../../stdafx.h"
 #include "../../date_func.h"
+#include "../../debug.h"
 #include "udp.h"
 
 /**

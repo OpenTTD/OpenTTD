@@ -10,7 +10,6 @@
 /** @file gamelog_sl.cpp Code handling saving and loading of gamelog data */
 
 #include "../stdafx.h"
-#include "../gamelog.h"
 #include "../gamelog_internal.h"
 #include "../core/alloc_func.hpp"
 

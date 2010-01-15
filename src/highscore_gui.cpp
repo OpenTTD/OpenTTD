@@ -9,6 +9,7 @@
 
 /** @file highscore_gui.cpp Definition of the HighScore and EndGame windows */
 
+#include "stdafx.h"
 #include "highscore.h"
 #include "table/strings.h"
 #include "gfx_func.h"
