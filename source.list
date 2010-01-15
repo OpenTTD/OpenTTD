@@ -98,7 +98,6 @@ window.cpp
 #end
 aircraft.h
 airport.h
-airport_movement.h
 animated_tile_func.h
 articulated_vehicles.h
 autoreplace_base.h
@@ -473,6 +472,7 @@ saveload/vehicle_sl.cpp
 saveload/waypoint_sl.cpp
 
 # Tables
+table/airport_movement.h
 table/animcursors.h
 table/autorail.h
 table/bridge_land.h

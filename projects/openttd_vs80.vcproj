@@ -756,10 +756,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\airport_movement.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\animated_tile_func.h"
 				>
 			</File>
@@ -2171,6 +2167,10 @@
 		<Filter
 			Name="Tables"
 			>
+			<File
+				RelativePath=".\..\src\table\airport_movement.h"
+				>
+			</File>
 			<File
 				RelativePath=".\..\src\table\animcursors.h"
 				>

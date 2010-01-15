@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "airport.h"
-#include "airport_movement.h"
+#include "table/airport_movement.h"
 #include "core/alloc_func.hpp"
 #include "date_func.h"
 #include "settings_type.h"
