@@ -20,6 +20,7 @@ void SdlClose(uint32 x);
 #endif
 
 #ifdef DYNAMICALLY_LOADED_SDL
+	#include <SDL.h>
 
 	struct SDLProcs {
 		int (SDLCALL *SDL_Init)(Uint32);
