@@ -22,7 +22,7 @@ static FSoundDriver_Allegro iFSoundDriver_Allegro;
 /** The stream we are writing too */
 static AUDIOSTREAM *_stream = NULL;
 /** The number of samples in the buffer */
-static const int BUFFER_SIZE = 4096;
+static int _buffer_size;
 
 void SoundDriver_Allegro::MainLoop()
 {
@@ -34,11 +34,11 @@ void SoundDriver_Allegro::MainLoop()
 	if (data == NULL) return;
 
 	/* Mix the samples */
-	MxMixSamples(data, BUFFER_SIZE);
+	MxMixSamples(data, _buffer_size);
 
 	/* Allegro sound is always unsigned, so we need to correct that */
 	uint16 *snd = (uint16*)data;
-	for (int i = 0; i < BUFFER_SIZE * 2; i++) snd[i] ^= 0x8000;
+	for (int i = 0; i < _buffer_size * 2; i++) snd[i] ^= 0x8000;
 
 	/* Tell we've filled the stream */
 	free_audio_stream_buffer(_stream);
@@ -68,8 +68,10 @@ const char *SoundDriver_Allegro::Start(const char * const *parm)
 		return "No sound card found";
 	}
 
-	_stream = play_audio_stream(BUFFER_SIZE, 16, true, 44100, 255, 128);
-	MxInitialize(44100);
+	int hz = GetDriverParamInt(parm, "hz", 44100);
+	_buffer_size = GetDriverParamInt(parm, "samples", 1024) * hz / 11025;
+	_stream = play_audio_stream(_buffer_size, 16, true, hz, 255, 128);
+	MxInitialize(hz);
 	return NULL;
 }
 
