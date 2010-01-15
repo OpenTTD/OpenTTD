@@ -1163,7 +1163,7 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Mantene
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la barra de paisaje a la barra de construcción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}El scroll de ratón mueve la vista en dirección opuesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Scroll de vista suavizado: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Muestra medidas con las herramientras construcción: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar medidas con las herramientras de construcción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Ver estaciones de la empresa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propia empresa
