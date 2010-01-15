@@ -81,7 +81,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		8,
 
-		/* accelration type */
+		/* acceleration type */
 		0,
 
 		/* rail type label */
