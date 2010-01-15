@@ -2012,8 +2012,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Select s
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Small
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}City
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan airport
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International airport
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Commuter
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
