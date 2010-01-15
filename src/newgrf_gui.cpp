@@ -382,6 +382,7 @@ public:
 
 					/* Copy GRF details from scanned list */
 					GRFConfig *c = DuplicateGRFConfig(src);
+					c->next = NULL;
 
 					/* Append GRF config to configuration list */
 					*list = c;
