@@ -125,6 +125,7 @@ enum AirportTiles {
 #include "table/airport_defaults.h"
 
 AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR};
+AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR};
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use

@@ -63,6 +63,7 @@ struct AirportSpec {
 
 	static AirportSpec *Get(byte type)
 	{
+		if (type == AT_OILRIG) return &oilrig;
 		assert(type < NUM_AIRPORTS);
 		extern AirportSpec _origin_airport_specs[NUM_AIRPORTS];
 		return &_origin_airport_specs[type];
@@ -71,6 +72,7 @@ struct AirportSpec {
 	bool IsAvailable() const;
 
 	static AirportSpec dummy;
+	static AirportSpec oilrig;
 };
 
 
