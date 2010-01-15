@@ -1002,7 +1002,7 @@ void VehicleEnterDepot(Vehicle *v)
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
 			t->wait_counter = 0;
 			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
-			TrainConsistChanged(t, true);
+			t->ConsistChanged(true);
 			break;
 		}
 

@@ -44,18 +44,12 @@ enum VehicleRailFlags {
 
 byte FreightWagonMult(CargoID cargo);
 
-void UpdateTrainAcceleration(Train *v);
 void CheckTrainsLengths();
 
 void FreeTrainTrackReservation(const Train *v, TileIndex origin = INVALID_TILE, Trackdir orig_td = INVALID_TRACKDIR);
 bool TryPathReserve(Train *v, bool mark_as_stuck = false, bool first_tile_okay = false);
 
 int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, int *station_ahead, int *station_length);
-
-void TrainConsistChanged(Train *v, bool same_length);
-void TrainPowerChanged(Train *v);
-int GetTrainCurveSpeedLimit(Train *v);
-Money GetTrainRunningCost(const Train *v);
 
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
@@ -138,6 +132,14 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 
 	void ReserveTrackUnderConsist() const;
+
+	int GetCurveSpeedLimit() const;
+
+	void ConsistChanged(bool same_length);
+	void CargoChanged();
+	void PowerChanged();
+
+	void UpdateAcceleration();
 
 	/**
 	 * enum to handle train subtypes

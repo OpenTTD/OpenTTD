@@ -91,14 +91,15 @@ byte FreightWagonMult(CargoID cargo)
 
 /**
  * Recalculates the cached total power of a train. Should be called when the consist is changed
- * @param v First vehicle of the consist.
  */
-void TrainPowerChanged(Train *v)
+void Train::PowerChanged()
 {
+	assert(this->First() == this);
+
 	uint32 total_power = 0;
 	uint32 max_te = 0;
 
-	for (const Train *u = v; u != NULL; u = u->Next()) {
+	for (const Train *u = this; u != NULL; u = u->Next()) {
 		RailType railtype = GetRailType(u->tile);
 
 		/* Power is not added for articulated parts */
@@ -120,19 +121,19 @@ void TrainPowerChanged(Train *v)
 			}
 		}
 
-		if (HasBit(u->flags, VRF_POWEREDWAGON) && HasPowerOnRail(v->railtype, railtype)) {
+		if (HasBit(u->flags, VRF_POWEREDWAGON) && HasPowerOnRail(this->railtype, railtype)) {
 			total_power += RailVehInfo(u->tcache.first_engine)->pow_wag_power;
 		}
 	}
 
-	if (v->tcache.cached_power != total_power || v->tcache.cached_max_te != max_te) {
+	if (this->tcache.cached_power != total_power || this->tcache.cached_max_te != max_te) {
 		/* If it has no power (no catenary), stop the train */
-		if (total_power == 0) v->vehstatus |= VS_STOPPED;
+		if (total_power == 0) this->vehstatus |= VS_STOPPED;
 
-		v->tcache.cached_power = total_power;
-		v->tcache.cached_max_te = max_te;
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		this->tcache.cached_power = total_power;
+		this->tcache.cached_max_te = max_te;
+		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -142,11 +143,12 @@ void TrainPowerChanged(Train *v)
  * the consist changes.
  * @param v First vehicle of the consist.
  */
-static void TrainCargoChanged(Train *v)
+void Train::CargoChanged()
 {
+	assert(this->First() == this);
 	uint32 weight = 0;
 
-	for (Train *u = v; u != NULL; u = u->Next()) {
+	for (Train *u = this; u != NULL; u = u->Next()) {
 		uint32 vweight = CargoSpec::Get(u->cargo_type)->weight * u->cargo.Count() * FreightWagonMult(u->cargo_type) / 16;
 
 		/* Vehicle weight is not added for articulated parts. */
@@ -168,10 +170,10 @@ static void TrainCargoChanged(Train *v)
 	}
 
 	/* store consist weight in cache */
-	v->tcache.cached_weight = weight;
+	this->tcache.cached_weight = weight;
 
 	/* Now update train power (tractive effort is dependent on weight) */
-	TrainPowerChanged(v);
+	this->PowerChanged();
 }
 
 
@@ -218,48 +220,47 @@ void CheckTrainsLengths()
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
  * to/removed from the chain, and when the game is loaded.
  * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
- * @param v First vehicle of the chain.
  * @param same_length should length of vehicles stay the same?
  */
-void TrainConsistChanged(Train *v, bool same_length)
+void Train::ConsistChanged(bool same_length)
 {
 	uint16 max_speed = UINT16_MAX;
 
-	assert(v->IsFrontEngine() || v->IsFreeWagon());
+	assert(this->IsFrontEngine() || this->IsFreeWagon());
 
-	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
-	EngineID first_engine = v->IsFrontEngine() ? v->engine_type : INVALID_ENGINE;
-	v->tcache.cached_total_length = 0;
-	v->compatible_railtypes = RAILTYPES_NONE;
+	const RailVehicleInfo *rvi_v = RailVehInfo(this->engine_type);
+	EngineID first_engine = this->IsFrontEngine() ? this->engine_type : INVALID_ENGINE;
+	this->tcache.cached_total_length = 0;
+	this->compatible_railtypes = RAILTYPES_NONE;
 
 	bool train_can_tilt = true;
 
-	for (Train *u = v; u != NULL; u = u->Next()) {
+	for (Train *u = this; u != NULL; u = u->Next()) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
-		/* Check the v->first cache. */
-		assert(u->First() == v);
+		/* Check the this->first cache. */
+		assert(u->First() == this);
 
 		/* update the 'first engine' */
-		u->tcache.first_engine = v == u ? INVALID_ENGINE : first_engine;
+		u->tcache.first_engine = this == u ? INVALID_ENGINE : first_engine;
 		u->railtype = rvi_u->railtype;
 
 		if (u->IsEngine()) first_engine = u->engine_type;
 
 		/* Set user defined data to its default value */
 		u->tcache.user_def_data = rvi_u->user_def_data;
-		v->InvalidateNewGRFCache();
+		this->InvalidateNewGRFCache();
 		u->InvalidateNewGRFCache();
 	}
 
-	for (Train *u = v; u != NULL; u = u->Next()) {
+	for (Train *u = this; u != NULL; u = u->Next()) {
 		/* Update user defined data (must be done before other properties) */
 		u->tcache.user_def_data = GetVehicleProperty(u, PROP_TRAIN_USER_DATA, u->tcache.user_def_data);
-		v->InvalidateNewGRFCache();
+		this->InvalidateNewGRFCache();
 		u->InvalidateNewGRFCache();
 	}
 
-	for (Train *u = v; u != NULL; u = u->Next()) {
+	for (Train *u = this; u != NULL; u = u->Next()) {
 		const Engine *e_u = Engine::Get(u->engine_type);
 		const RailVehicleInfo *rvi_u = &e_u->u.rail;
 
@@ -305,7 +306,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 			/* Do not count powered wagons for the compatible railtypes, as wagons always
 			   have railtype normal */
 			if (rvi_u->power > 0) {
-				v->compatible_railtypes |= GetRailTypeInfo(u->railtype)->powered_railtypes;
+				this->compatible_railtypes |= GetRailTypeInfo(u->railtype)->powered_railtypes;
 			}
 
 			/* Some electric engines can be allowed to run on normal rail. It happens to all
@@ -338,22 +339,22 @@ void TrainConsistChanged(Train *v, bool same_length)
 		/* update vehicle length? */
 		if (!same_length) u->tcache.cached_veh_length = veh_len;
 
-		v->tcache.cached_total_length += u->tcache.cached_veh_length;
-		v->InvalidateNewGRFCache();
+		this->tcache.cached_total_length += u->tcache.cached_veh_length;
+		this->InvalidateNewGRFCache();
 		u->InvalidateNewGRFCache();
 	}
 
 	/* store consist weight/max speed in cache */
-	v->tcache.cached_max_speed = max_speed;
-	v->tcache.cached_tilt = train_can_tilt;
-	v->tcache.cached_max_curve_speed = GetTrainCurveSpeedLimit(v);
+	this->tcache.cached_max_speed = max_speed;
+	this->tcache.cached_tilt = train_can_tilt;
+	this->tcache.cached_max_curve_speed = this->GetCurveSpeedLimit();
 
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
-	TrainCargoChanged(v);
+	this->CargoChanged();
 
-	if (v->IsFrontEngine()) {
-		UpdateTrainAcceleration(v);
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+	if (this->IsFrontEngine()) {
+		this->UpdateAcceleration();
+		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 	}
 }
 
@@ -414,11 +415,12 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 /**
  * Computes train speed limit caused by curves
- * @param v first vehicle of consist
  * @return imposed speed limit
  */
-int GetTrainCurveSpeedLimit(Train *v)
+int Train::GetCurveSpeedLimit() const
 {
+	assert(this->First() == this);
+
 	static const int absolute_max_speed = UINT16_MAX;
 	int max_speed = absolute_max_speed;
 
@@ -431,7 +433,7 @@ int GetTrainCurveSpeedLimit(Train *v)
 	int sum = 0;
 	int pos = 0;
 	int lastpos = -1;
-	for (const Vehicle *u = v; u->Next() != NULL; u = u->Next(), pos++) {
+	for (const Vehicle *u = this; u->Next() != NULL; u = u->Next(), pos++) {
 		Direction this_dir = u->direction;
 		Direction next_dir = u->Next()->direction;
 
@@ -468,10 +470,10 @@ int GetTrainCurveSpeedLimit(Train *v)
 
 	if (max_speed != absolute_max_speed) {
 		/* Apply the engine's rail type curve speed advantage, if it slowed by curves */
-		const RailtypeInfo *rti = GetRailTypeInfo(v->railtype);
+		const RailtypeInfo *rti = GetRailTypeInfo(this->railtype);
 		max_speed += (max_speed / 2) * rti->curve_speed;
 
-		if (v->tcache.cached_tilt) {
+		if (this->tcache.cached_tilt) {
 			/* Apply max_speed bonus of 20% for a tilting train */
 			max_speed += max_speed / 5;
 		}
@@ -484,7 +486,7 @@ int GetTrainCurveSpeedLimit(Train *v)
 static int GetTrainAcceleration(Train *v, bool mode)
 {
 	int max_speed = v->tcache.cached_max_curve_speed;
-	assert(max_speed == GetTrainCurveSpeedLimit(v)); // safety check, will be removed later
+	assert(max_speed == v->GetCurveSpeedLimit());
 	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
 
 	if (IsRailStationTile(v->tile) && v->IsFrontEngine()) {
@@ -574,16 +576,16 @@ static int GetTrainAcceleration(Train *v, bool mode)
 	}
 }
 
-void UpdateTrainAcceleration(Train *v)
+void Train::UpdateAcceleration()
 {
-	assert(v->IsFrontEngine());
+	assert(this->IsFrontEngine());
 
-	v->max_speed = v->tcache.cached_max_speed;
+	this->max_speed = this->tcache.cached_max_speed;
 
-	uint power = v->tcache.cached_power;
-	uint weight = v->tcache.cached_weight;
+	uint power = this->tcache.cached_power;
+	uint weight = this->tcache.cached_weight;
 	assert(weight != 0);
-	v->acceleration = Clamp(power / weight * 4, 1, 255);
+	this->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
 /**
@@ -749,7 +751,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		_new_vehicle_id = v->index;
 
 		VehicleMove(v, false);
-		TrainConsistChanged(v->First(), false);
+		v->First()->ConsistChanged(false);
 		UpdateTrainGroupID(v->First());
 
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
@@ -930,7 +932,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			AddArticulatedParts(v);
 		}
 
-		TrainConsistChanged(v, false);
+		v->ConsistChanged(false);
 		UpdateTrainGroupID(v);
 
 		if (!HasBit(p2, 1) && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
@@ -1288,7 +1290,7 @@ static void NormaliseTrainHead(Train *head)
 	if (head == NULL) return;
 
 	/* Tell the 'world' the train changed. */
-	TrainConsistChanged(head, false);
+	head->ConsistChanged(false);
 	UpdateTrainGroupID(head);
 
 	/* Not a front engine, i.e. a free wagon chain. No need to do more. */
@@ -1692,7 +1694,7 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 	}
 
 	/* Update train's power incase tiles were different rail type */
-	TrainPowerChanged(v);
+	v->PowerChanged();
 }
 
 
@@ -1909,7 +1911,7 @@ static void ReverseTrainDirection(Train *v)
 	ClrBit(v->flags, VRF_REVERSING);
 
 	/* recalculate cached data */
-	TrainConsistChanged(v, true);
+	v->ConsistChanged(true);
 
 	/* update all images */
 	for (Vehicle *u = v; u != NULL; u = u->Next()) u->UpdateViewport(false, false);
@@ -2080,7 +2082,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	/* Update the train's cached variables */
 	if (flags & DC_EXEC) {
 		Train *front = v->First();
-		TrainConsistChanged(front, false);
+		front->ConsistChanged(false);
 		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
@@ -2350,7 +2352,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	v->cur_image = v->GetImage(v->direction);
 	VehicleMove(v, false);
 	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
-	UpdateTrainAcceleration(v);
+	v->UpdateAcceleration();
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
 	return false;
@@ -2943,8 +2945,8 @@ void Train::MarkDirty()
 	} while ((v = v->Next()) != NULL);
 
 	/* need to update acceleration and cached values since the goods on the train changed. */
-	TrainCargoChanged(this);
-	UpdateTrainAcceleration(this);
+	this->CargoChanged();
+	this->UpdateAcceleration();
 }
 
 /**
@@ -3463,7 +3465,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
-						TrainPowerChanged(v->First());
+						v->First()->PowerChanged();
 					}
 
 					v->track = chosen_track;
@@ -3568,7 +3570,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 		if (v->IsFrontEngine() && v->tick_counter % _settings_game.pf.path_backoff_interval == 0) CheckNextTrainTile(v);
 	}
 
-	if (direction_changed) first->tcache.cached_max_curve_speed = GetTrainCurveSpeedLimit(first);
+	if (direction_changed) first->tcache.cached_max_curve_speed = first->GetCurveSpeedLimit();
 
 	return;
 
@@ -3624,7 +3626,7 @@ static void DeleteLastWagon(Train *v)
 
 	if (first != v) {
 		/* Recalculate cached train properties */
-		TrainConsistChanged(first, false);
+		first->ConsistChanged(false);
 		/* Update the depot window if the first vehicle is in depot -
 		 * if v == first, then it is updated in PreDestructor() */
 		if (first->track == TRACK_BIT_DEPOT) {

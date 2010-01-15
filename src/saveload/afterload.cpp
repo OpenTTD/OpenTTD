@@ -1042,7 +1042,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_TRAINS(v) {
-			if (v->IsFrontEngine() || v->IsFreeWagon()) TrainConsistChanged(v, true);
+			if (v->IsFrontEngine() || v->IsFreeWagon()) v->ConsistChanged(true);
 		}
 
 	}

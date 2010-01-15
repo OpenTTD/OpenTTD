@@ -1140,7 +1140,7 @@ void StateGameLoop()
 						length = 0;
 						for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
 
-						TrainConsistChanged(t, true);
+						t->ConsistChanged(true);
 
 						length = 0;
 						for (Train *u = t; u != NULL; u = u->Next()) {
