@@ -66,6 +66,12 @@ public:
 		return GetAirport(airport_type);
 	}
 
+	const AirportSpec *GetAirportSpec() const
+	{
+		if (airport_tile == INVALID_TILE) return &AirportSpec::dummy;
+		return AirportSpec::Get(this->airport_type);
+	}
+
 	RoadStop *bus_stops;    ///< All the road stops
 	TileArea bus_station;   ///< Tile area the bus 'station' part covers
 	RoadStop *truck_stops;  ///< All the truck stops

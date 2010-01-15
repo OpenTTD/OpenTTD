@@ -732,10 +732,10 @@ static void FloodVehicles(TileIndex tile)
 
 	if (IsTileType(tile, MP_STATION) && IsAirport(tile)) {
 		const Station *st = Station::GetByTile(tile);
-		const AirportFTAClass *airport = st->Airport();
-		z = 1 + airport->delta_z;
-		for (uint x = 0; x < airport->size_x; x++) {
-			for (uint y = 0; y < airport->size_y; y++) {
+		const AirportSpec *as = st->GetAirportSpec();
+		z = 1 + st->Airport()->delta_z;
+		for (uint x = 0; x < as->size_x; x++) {
+			for (uint y = 0; y < as->size_y; y++) {
 				tile = TILE_ADDXY(st->airport_tile, x, y);
 				FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 			}

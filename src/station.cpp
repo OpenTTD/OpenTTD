@@ -222,7 +222,7 @@ uint Station::GetCatchmentRadius() const
 		if (this->truck_stops        != NULL)         ret = max<uint>(ret, CA_TRUCK);
 		if (this->train_station.tile != INVALID_TILE) ret = max<uint>(ret, CA_TRAIN);
 		if (this->dock_tile          != INVALID_TILE) ret = max<uint>(ret, CA_DOCK);
-		if (this->airport_tile       != INVALID_TILE) ret = max<uint>(ret, this->Airport()->catchment);
+		if (this->airport_tile       != INVALID_TILE) ret = max<uint>(ret, this->GetAirportSpec()->catchment);
 	} else {
 		if (this->bus_stops != NULL || this->truck_stops != NULL || this->train_station.tile != INVALID_TILE || this->dock_tile != INVALID_TILE || this->airport_tile != INVALID_TILE) {
 			ret = CA_UNMODIFIED;

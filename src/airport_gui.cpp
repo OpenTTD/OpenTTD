@@ -202,8 +202,8 @@ public:
 	{
 		this->DrawWidgets();
 
-		const AirportFTAClass *airport = GetAirport(_selected_airport_type);
-		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+		const AirportSpec *as = AirportSpec::Get(_selected_airport_type);
+		int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 
 		uint16 top = this->GetWidget<NWidgetBase>(BAW_BTN_DOHILIGHT)->pos_y + this->GetWidget<NWidgetBase>(BAW_BTN_DOHILIGHT)->current_y + WD_PAR_VSEP_NORMAL;
 		NWidgetBase *panel_nwi = this->GetWidget<NWidgetBase>(BAW_BOTTOMPANEL);
@@ -212,7 +212,7 @@ public:
 		/* only show the station (airport) noise, if the noise option is activated */
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
-			SetDParam(0, airport->noise_level);
+			SetDParam(0, as->noise_level);
 			DrawString(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_STATION_BUILD_NOISE);
 			top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 		}
@@ -232,10 +232,10 @@ public:
 		_selected_airport_type = airport_id;
 		this->LowerWidget(airport_id + BAW_SMALL_AIRPORT);
 
-		const AirportFTAClass *airport = GetAirport(airport_id);
-		SetTileSelectSize(airport->size_x, airport->size_y);
+		const AirportSpec *as = AirportSpec::Get(airport_id);
+		SetTileSelectSize(as->size_x, as->size_y);
 
-		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+		int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 		if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		this->SetDirty();
@@ -243,16 +243,16 @@ public:
 
 	virtual void OnInvalidateData(int data = 0)
 	{
-		if (!GetAirport(_selected_airport_type)->IsAvailable()) {
+		if (!AirportSpec::Get(_selected_airport_type)->IsAvailable()) {
 			for (int i = 0; i < BAW_AIRPORT_COUNT; i++) {
-				if (GetAirport(i)->IsAvailable()) {
+				if (AirportSpec::Get(i)->IsAvailable()) {
 					this->SelectOtherAirport(i);
 					break;
 				}
 			}
 		}
 		for (int i = 0; i < BAW_AIRPORT_COUNT; i++) {
-			this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !GetAirport(i)->IsAvailable());
+			this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !AirportSpec::Get(i)->IsAvailable());
 		}
 	}
 

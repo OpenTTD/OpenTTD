@@ -510,7 +510,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 					if (st == NULL || !CheckOwnership(st->owner) ||
 							!CanVehicleUseStation(v, st) ||
-							st->Airport()->nof_depots == 0) {
+							st->GetAirportSpec()->nof_depots == 0) {
 						return CMD_ERROR;
 					}
 				} else {

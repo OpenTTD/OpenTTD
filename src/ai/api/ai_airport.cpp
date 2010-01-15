@@ -17,7 +17,7 @@
 
 /* static */ bool AIAirport::IsValidAirportType(AirportType type)
 {
-	return IsAirportInformationAvailable(type) && ::GetAirport(type)->IsAvailable();
+	return IsAirportInformationAvailable(type) && ::AirportSpec::Get(type)->IsAvailable();
 }
 
 /* static */ bool AIAirport::IsAirportInformationAvailable(AirportType type)
@@ -29,8 +29,8 @@
 {
 	if (!IsValidAirportType(type)) return -1;
 
-	const AirportFTAClass *afc = ::GetAirport(type);
-	return _price[PR_BUILD_STATION_AIRPORT] * afc->size_x * afc->size_y;
+	const AirportSpec *as = ::AirportSpec::Get(type);
+	return _price[PR_BUILD_STATION_AIRPORT] * as->size_x * as->size_y;
 }
 
 /* static */ bool AIAirport::IsHangarTile(TileIndex tile)
@@ -51,21 +51,21 @@
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return ::GetAirport(type)->size_x;
+	return ::AirportSpec::Get(type)->size_x;
 }
 
 /* static */ int32 AIAirport::GetAirportHeight(AirportType type)
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return ::GetAirport(type)->size_y;
+	return ::AirportSpec::Get(type)->size_y;
 }
 
 /* static */ int32 AIAirport::GetAirportCoverageRadius(AirportType type)
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return _settings_game.station.modified_catchment ? ::GetAirport(type)->catchment : (uint)CA_UNMODIFIED;
+	return _settings_game.station.modified_catchment ? ::AirportSpec::Get(type)->catchment : (uint)CA_UNMODIFIED;
 }
 
 /* static */ bool AIAirport::BuildAirport(TileIndex tile, AirportType type, StationID station_id)
@@ -96,7 +96,7 @@
 	if (st->owner != _current_company) return -1;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return -1;
 
-	return st->Airport()->nof_depots;
+	return st->GetAirportSpec()->nof_depots;
 }
 
 /* static */ TileIndex AIAirport::GetHangarOfAirport(TileIndex tile)
@@ -109,7 +109,7 @@
 	if (st->owner != _current_company) return INVALID_TILE;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return INVALID_TILE;
 
-	return ::ToTileIndexDiff(st->Airport()->airport_depots[0]) + st->airport_tile;
+	return ::ToTileIndexDiff(st->GetAirportSpec()->depot_table[0]) + st->airport_tile;
 }
 
 /* static */ AIAirport::AirportType AIAirport::GetAirportType(TileIndex tile)
@@ -126,16 +126,16 @@
 
 /* static */ int AIAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
 {
-	extern Town *AirportGetNearestTown(const AirportFTAClass *afc, TileIndex airport_tile);
-	extern uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_tile, TileIndex tile);
+	extern Town *AirportGetNearestTown(const AirportSpec *as, TileIndex airport_tile);
+	extern uint8 GetAirportNoiseLevelForTown(const AirportSpec *as, TileIndex town_tile, TileIndex tile);
 
 	if (!::IsValidTile(tile)) return -1;
 	if (!IsValidAirportType(type)) return -1;
 
 	if (_settings_game.economy.station_noise_level) {
-		const AirportFTAClass *afc = ::GetAirport(type);
-		const Town *t = AirportGetNearestTown(afc, tile);
-		return GetAirportNoiseLevelForTown(afc, t->xy, tile);
+		const AirportSpec *as = ::AirportSpec::Get(type);
+		const Town *t = AirportGetNearestTown(as, tile);
+		return GetAirportNoiseLevelForTown(as, t->xy, tile);
 	}
 
 	return 1;
@@ -143,10 +143,10 @@
 
 /* static */ TownID AIAirport::GetNearestTown(TileIndex tile, AirportType type)
 {
-	extern Town *AirportGetNearestTown(const AirportFTAClass *afc, TileIndex airport_tile);
+	extern Town *AirportGetNearestTown(const AirportSpec *as, TileIndex airport_tile);
 
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
 
-	return AirportGetNearestTown(GetAirport(type), tile)->index;
+	return AirportGetNearestTown(AirportSpec::Get(type), tile)->index;
 }

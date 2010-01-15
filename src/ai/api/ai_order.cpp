@@ -181,9 +181,9 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			if (v->type != VEH_AIRCRAFT) return ::Depot::Get(order->GetDestination())->xy;
 			/* Aircraft's hangars are referenced by StationID, not DepotID */
 			const Station *st = ::Station::Get(order->GetDestination());
-			const AirportFTAClass *airport = st->Airport();
-			if (airport == NULL || airport->nof_depots == 0) return INVALID_TILE;
-			return st->airport_tile + ::ToTileIndexDiff(st->Airport()->airport_depots[0]);
+			const AirportSpec *as = st->GetAirportSpec();
+			if (as == NULL || as->nof_depots == 0) return INVALID_TILE;
+			return st->airport_tile + ::ToTileIndexDiff(as->depot_table[0]);
 		}
 
 		case OT_GOTO_STATION: {
@@ -200,8 +200,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			} else if (st->truck_stops != NULL) {
 				return st->truck_stops->xy;
 			} else if (st->airport_tile != INVALID_TILE) {
-				const AirportFTAClass *fta = st->Airport();
-				TILE_LOOP(tile, fta->size_x, fta->size_y, st->airport_tile) {
+				const AirportSpec *as = st->GetAirportSpec();
+				TILE_LOOP(tile, as->size_x, as->size_y, st->airport_tile) {
 					if (!::IsHangar(tile)) return tile;
 				}
 			}

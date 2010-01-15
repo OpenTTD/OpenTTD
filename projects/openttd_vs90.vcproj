@@ -2165,6 +2165,10 @@
 			Name="Tables"
 			>
 			<File
+				RelativePath=".\..\src\table\airport_defaults.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\airport_movement.h"
 				>
 			</File>

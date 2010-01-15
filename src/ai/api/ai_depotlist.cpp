@@ -29,9 +29,9 @@ AIDepotList::AIDepotList(AITile::TransportType transport_type)
 			const Station *st;
 			FOR_ALL_STATIONS(st) {
 				if (st->owner == ::_current_company) {
-					const AirportFTAClass *afc = st->Airport();
-					for (uint i = 0; i < afc->nof_depots; i++) {
-						this->AddItem(st->airport_tile + ToTileIndexDiff(afc->airport_depots[i]));
+					const AirportSpec *as = st->GetAirportSpec();
+					for (uint i = 0; i < as->nof_depots; i++) {
+						this->AddItem(st->airport_tile + ToTileIndexDiff(as->depot_table[i]));
 					}
 				}
 			}
