@@ -1223,28 +1223,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(dts->ground.sprite, PAL_NONE);
-
-			/* End now if buildings are invisible */
-			if (IsInvisibilitySet(TO_BUILDINGS)) break;
-
-			for (const DrawTileSeqStruct *dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
-				SpriteID image = dtss->image.sprite;
-				SpriteID pal;
-
-				if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOUR)) {
-					pal = palette;
-				} else {
-					pal = PAL_NONE;
-				}
-
-				AddSortableSpriteToDraw(
-					image, pal,
-					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-					dtss->size_x, dtss->size_y,
-					dtss->size_z, ti->z,
-					IsTransparencySet(TO_BUILDINGS)
-				);
-			}
+			DrawCommonTileSeq(ti, dts, TO_BUILDINGS, 0, 0, palette);
 			break;
 		}
 	}
@@ -1260,13 +1239,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	y += 17;
 
 	DrawSprite(dts->ground.sprite, PAL_NONE, x, y);
-
-	for (const DrawTileSeqStruct *dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
-		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		SpriteID image = dtss->image.sprite;
-
-		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOUR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
-	}
+	DrawCommonTileSeqInGUI(x, y, dts, 0, 0, palette);
 }
 
 /**
