@@ -2013,7 +2013,7 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Choix du
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Petit
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Urbain
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Aéroport métropolitain
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Métropolitain
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}de Banlieue
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
