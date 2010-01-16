@@ -19,16 +19,26 @@
  *  array of fixed size arrays */
 template <class T, uint B = 1024, uint N = B>
 class SmallArray {
-public:
+protected:
 	typedef FixedSizeArray<T, B> SubArray; ///< inner array
 	typedef FixedSizeArray<SubArray, N> SuperArray; ///< outer array
 
-protected:
-	SuperArray data; ///< array of arrays of items
-
-public:
 	static const uint Tcapacity = B * N; ///< total max number of items
 
+	SuperArray data; ///< array of arrays of items
+
+	/** return first sub-array with free space for new item */
+	FORCEINLINE SubArray& FirstFreeSubArray()
+	{
+		uint super_size = data.Length();
+		if (super_size > 0) {
+			SubArray& s = data[super_size - 1];
+			if (!s.IsFull()) return s;
+		}
+		return data.AppendC();
+	}
+
+public:
 	/** implicit constructor */
 	FORCEINLINE SmallArray() { }
 	/** Clear (destroy) all items */
@@ -45,16 +55,6 @@ public:
 	FORCEINLINE bool IsEmpty() { return data.IsEmpty(); }
 	/** return true if array is full */
 	FORCEINLINE bool IsFull() { return data.IsFull() && data[N - 1].IsFull(); }
-	/** return first sub-array with free space for new item */
-	FORCEINLINE SubArray& FirstFreeSubArray()
-	{
-		uint super_size = data.Length();
-		if (super_size > 0) {
-			SubArray& s = data[super_size - 1];
-			if (!s.IsFull()) return s;
-		}
-		return data.AppendC();
-	}
 	/** allocate but not construct new item */
 	FORCEINLINE T& Append() { return FirstFreeSubArray().Append(); }
 	/** allocate and construct new item */

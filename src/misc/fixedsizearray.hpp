@@ -20,10 +20,7 @@
  *  is delayed. */
 template <class T, uint C>
 struct FixedSizeArray {
-	/** the only member of fixed size array is pointer to the block
-	 *  of C array of items. Header can be found on the offset -sizeof(ArrayHeader). */
-	T *data;
-
+protected:
 	/** header for fixed size array */
 	struct ArrayHeader
 	{
@@ -35,6 +32,20 @@ struct FixedSizeArray {
 	static const uint Tsize = sizeof(T);                // size of item
 	static const uint HeaderSize = sizeof(ArrayHeader); // size of header
 
+	/** the only member of fixed size array is pointer to the block
+	 *  of C array of items. Header can be found on the offset -sizeof(ArrayHeader). */
+	T *data;
+
+	/** return reference to the array header (non-const) */
+	FORCEINLINE ArrayHeader& Hdr() { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
+	/** return reference to the array header (const) */
+	FORCEINLINE const ArrayHeader& Hdr() const { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
+	/** return reference to the block reference counter */
+	FORCEINLINE uint& RefCnt() { return Hdr().reference_count; }
+	/** return reference to number of used items */
+	FORCEINLINE uint& SizeRef() { return Hdr().items; }
+
+public:
 	/** Default constructor. Preallocate space for items and header, then initialize header. */
 	FixedSizeArray()
 	{
@@ -75,16 +86,6 @@ struct FixedSizeArray {
 		SizeRef() = 0;
 	}
 
-protected:
-	/** return reference to the array header (non-const) */
-	FORCEINLINE ArrayHeader& Hdr() { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
-	/** return reference to the array header (const) */
-	FORCEINLINE const ArrayHeader& Hdr() const { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
-	/** return reference to the block reference counter */
-	FORCEINLINE uint& RefCnt() { return Hdr().reference_count; }
-	/** return reference to number of used items */
-	FORCEINLINE uint& SizeRef() { return Hdr().items; }
-public:
 	/** return number of used items */
 	FORCEINLINE uint Length() const { return Hdr().items; }
 	/** return true if array is full */
