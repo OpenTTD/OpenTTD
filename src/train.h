@@ -139,6 +139,8 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	void CargoChanged();
 	void PowerChanged();
 
+	int UpdateSpeed();
+
 	void UpdateAcceleration();
 
 	/**

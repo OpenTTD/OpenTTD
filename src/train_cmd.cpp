@@ -141,7 +141,6 @@ void Train::PowerChanged()
 /**
  * Recalculates the cached weight of a train and its vehicles. Should be called each time the cargo on
  * the consist changes.
- * @param v First vehicle of the consist.
  */
 void Train::CargoChanged()
 {
@@ -2956,34 +2955,33 @@ void Train::MarkDirty()
  * where n is the number of straight (long) tracks the train can
  * traverse. This means that moving along a straight track costs 256
  * "speed" and a diagonal track costs 192 "speed".
- * @param v The vehicle to update the speed of.
  * @return distance to drive.
  */
-static int UpdateTrainSpeed(Train *v)
+int Train::UpdateSpeed()
 {
 	uint accel;
 
-	if ((v->vehstatus & VS_STOPPED) || HasBit(v->flags, VRF_REVERSING) || HasBit(v->flags, VRF_TRAIN_STUCK)) {
+	if ((this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK)) {
 		switch (_settings_game.vehicle.train_acceleration_model) {
 			default: NOT_REACHED();
-			case TAM_ORIGINAL:  accel = v->acceleration * -4; break;
-			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_BRAKE); break;
+			case TAM_ORIGINAL:  accel = this->acceleration * -4; break;
+			case TAM_REALISTIC: accel = GetTrainAcceleration(this, AM_BRAKE); break;
 		}
 	} else {
 		switch (_settings_game.vehicle.train_acceleration_model) {
 			default: NOT_REACHED();
-			case TAM_ORIGINAL:  accel = v->acceleration * 2; break;
-			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_ACCEL); break;
+			case TAM_ORIGINAL:  accel = this->acceleration * 2; break;
+			case TAM_REALISTIC: accel = GetTrainAcceleration(this, AM_ACCEL); break;
 		}
 	}
 
-	uint spd = v->subspeed + accel;
-	v->subspeed = (byte)spd;
+	uint spd = this->subspeed + accel;
+	this->subspeed = (byte)spd;
 	{
-		int tempmax = v->max_speed;
-		if (v->cur_speed > v->max_speed)
-			tempmax = v->cur_speed - (v->cur_speed / 10) - 1;
-		v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
+		int tempmax = this->max_speed;
+		if (this->cur_speed > this->max_speed)
+			tempmax = this->cur_speed - (this->cur_speed / 10) - 1;
+		this->cur_speed = spd = Clamp(this->cur_speed + ((int)spd >> 8), 0, tempmax);
 	}
 
 	/* Scale speed by 3/4. Previously this was only done when the train was
@@ -2995,12 +2993,12 @@ static int UpdateTrainSpeed(Train *v)
 	 *
 	 * The scaling is done in this direction and not by multiplying the amount
 	 * to be subtracted by 4/3 so that the leftover speed can be saved in a
-	 * byte in v->progress.
+	 * byte in this->progress.
 	 */
 	int scaled_spd = spd * 3 >> 2;
 
-	scaled_spd += v->progress;
-	v->progress = 0; // set later in TrainLocoHandler or TrainController
+	scaled_spd += this->progress;
+	this->progress = 0; // set later in TrainLocoHandler or TrainController
 	return scaled_spd;
 }
 
@@ -4015,7 +4013,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		return true;
 	}
 
-	int j = UpdateTrainSpeed(v);
+	int j = v->UpdateSpeed();
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
 	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && (v->vehstatus & VS_STOPPED)) {

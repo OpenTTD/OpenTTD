@@ -1279,7 +1279,7 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
 	if (v->type != VEH_TRAIN) return NULL;
 
-	/* Similiar checks as in TrainPowerChanged() */
+	/* Similar checks as in Train::PowerChanged() */
 
 	Train *t = Train::From(v);
 	if (t->IsArticulatedPart()) return NULL;
