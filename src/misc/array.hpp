@@ -17,70 +17,70 @@
 
 /** Flexible array with size limit. Implemented as fixed size
  *  array of fixed size arrays */
-template <class Titem_, int Tblock_size_ = 1024, int Tnum_blocks_ = Tblock_size_>
-class CArrayT {
+template <class T, int B = 1024, int N = B>
+class SmallArray {
 public:
-	typedef Titem_ Titem; ///< Titem is now visible from outside
-	typedef CFixedSizeArrayT<Titem_, Tblock_size_> CSubArray; ///< inner array
-	typedef CFixedSizeArrayT<CSubArray, Tnum_blocks_> CSuperArray; ///< outer array
+	typedef T Titem; ///< Titem is now visible from outside
+	typedef FixedSizeArray<T, B> SubArray; ///< inner array
+	typedef FixedSizeArray<SubArray, N> SuperArray; ///< outer array
 
 protected:
-	CSuperArray     m_a; ///< array of arrays of items
+	SuperArray data; ///< array of arrays of items
 
 public:
-	static const int Tblock_size = Tblock_size_; ///< block size is now visible from outside
-	static const int Tnum_blocks = Tnum_blocks_; ///< number of blocks is now visible from outside
-	static const int Tcapacity   = Tblock_size * Tnum_blocks; ///< total max number of items
+	static const int Tblock_size = B; ///< block size is now visible from outside
+	static const int Tnum_blocks = N; ///< number of blocks is now visible from outside
+	static const int Tcapacity = B * N; ///< total max number of items
 
 	/** implicit constructor */
-	FORCEINLINE CArrayT() { }
+	FORCEINLINE SmallArray() { }
 	/** Clear (destroy) all items */
-	FORCEINLINE void Clear() {m_a.Clear();}
+	FORCEINLINE void Clear() {data.Clear();}
 	/** Return actual number of items */
-	FORCEINLINE int Size() const
+	FORCEINLINE int Length() const
 	{
-		int super_size = m_a.Size();
+		int super_size = data.Length();
 		if (super_size == 0) return 0;
-		int sub_size = m_a[super_size - 1].Size();
+		int sub_size = data[super_size - 1].Length();
 		return (super_size - 1) * Tblock_size + sub_size;
 	}
 	/** return true if array is empty */
-	FORCEINLINE bool IsEmpty() { return m_a.IsEmpty(); }
+	FORCEINLINE bool IsEmpty() { return data.IsEmpty(); }
 	/** return true if array is full */
-	FORCEINLINE bool IsFull() { return m_a.IsFull() && m_a[Tnum_blocks - 1].IsFull(); }
+	FORCEINLINE bool IsFull() { return data.IsFull() && data[Tnum_blocks - 1].IsFull(); }
 	/** return first sub-array with free space for new item */
-	FORCEINLINE CSubArray& FirstFreeSubArray()
+	FORCEINLINE SubArray& FirstFreeSubArray()
 	{
-		int super_size = m_a.Size();
+		int super_size = data.Length();
 		if (super_size > 0) {
-			CSubArray& sa = m_a[super_size - 1];
-			if (!sa.IsFull()) return sa;
+			SubArray& s = data[super_size - 1];
+			if (!s.IsFull()) return s;
 		}
-		return m_a.Add();
+		return data.AppendC();
 	}
 	/** allocate but not construct new item */
-	FORCEINLINE Titem_& AddNC() { return FirstFreeSubArray().AddNC(); }
+	FORCEINLINE T& Append() { return FirstFreeSubArray().Append(); }
 	/** allocate and construct new item */
-	FORCEINLINE Titem_& Add()   { return FirstFreeSubArray().Add(); }
+	FORCEINLINE T& AppendC() { return FirstFreeSubArray().AppendC(); }
 	/** indexed access (non-const) */
-	FORCEINLINE Titem& operator [] (int idx)
+	FORCEINLINE Titem& operator [] (int index)
 	{
-		CSubArray& sa = m_a[idx / Tblock_size];
-		Titem& item   = sa [idx % Tblock_size];
+		SubArray& s = data[index / Tblock_size];
+		Titem& item = s[index % Tblock_size];
 		return item;
 	}
 	/** indexed access (const) */
-	FORCEINLINE const Titem& operator [] (int idx) const
+	FORCEINLINE const Titem& operator [] (int index) const
 	{
-		const CSubArray& sa = m_a[idx / Tblock_size];
-		const Titem& item   = sa [idx % Tblock_size];
+		const SubArray& s = data[index / Tblock_size];
+		const Titem& item = s[index % Tblock_size];
 		return item;
 	}
 
 	template <typename D> void Dump(D &dmp) const
 	{
 		dmp.WriteLine("capacity = %d", Tcapacity);
-		int num_items = Size();
+		int num_items = Length();
 		dmp.WriteLine("num_items = %d", num_items);
 		CStrA name;
 		for (int i = 0; i < num_items; i++) {

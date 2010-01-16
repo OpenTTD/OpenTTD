@@ -53,7 +53,7 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
 	typedef typename CachedData::Key CacheKey;
-	typedef CArrayT<CachedData> LocalCache;
+	typedef SmallArray<CachedData> LocalCache;
 
 protected:
 	LocalCache      m_local_cache;
@@ -70,7 +70,7 @@ public:
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		CacheKey key(n.GetKey());
-		Yapf().ConnectNodeToCachedData(n, *new (&m_local_cache.AddNC()) CachedData(key));
+		Yapf().ConnectNodeToCachedData(n, *new (&m_local_cache.Append()) CachedData(key));
 		return false;
 	}
 
@@ -113,7 +113,7 @@ struct CSegmentCostCacheT
 	enum {c_hash_bits = 14};
 
 	typedef CHashTableT<Tsegment, c_hash_bits> HashTable;
-	typedef CArrayT<Tsegment> Heap;
+	typedef SmallArray<Tsegment> Heap;
 	typedef typename Tsegment::Key Key;    ///< key to hash table
 
 	HashTable    m_map;
@@ -133,7 +133,7 @@ struct CSegmentCostCacheT
 		Tsegment *item = m_map.Find(key);
 		if (item == NULL) {
 			*found = false;
-			item = new (&m_heap.AddNC()) Tsegment(key);
+			item = new (&m_heap.Append()) Tsegment(key);
 			m_map.Push(*item);
 		} else {
 			*found = true;

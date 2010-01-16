@@ -27,7 +27,7 @@ public:
 	/** make Titem_::Key a property of HashTable */
 	typedef typename Titem_::Key Key;
 	/** type that we will use as item container */
-	typedef CArrayT<Titem_, 65536, 256> CItemArray;
+	typedef SmallArray<Titem_, 65536, 256> CItemArray;
 	/** how pointers to open nodes will be stored */
 	typedef CHashTableT<Titem_, Thash_bits_open_  > COpenList;
 	/** how pointers to closed nodes will be stored */
@@ -74,7 +74,7 @@ public:
 	/** allocate new data item from m_arr */
 	FORCEINLINE Titem_ *CreateNewNode()
 	{
-		if (m_new_node == NULL) m_new_node = &m_arr.Add();
+		if (m_new_node == NULL) m_new_node = &m_arr.AppendC();
 		return m_new_node;
 	}
 
@@ -152,7 +152,7 @@ public:
 		return item;
 	}
 
-	FORCEINLINE int TotalCount() {return m_arr.Size();}
+	FORCEINLINE int TotalCount() {return m_arr.Length();}
 	FORCEINLINE Titem_& ItemAt(int idx) {return m_arr[idx];}
 
 	template <class D> void Dump(D &dmp) const
