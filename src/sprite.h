@@ -13,6 +13,9 @@
 #define SPRITE_H
 
 #include "gfx_type.h"
+#include "transparency.h"
+
+#include "table/sprites.h"
 
 #define GENERAL_SPRITE_COLOUR(colour) ((colour) + PALETTE_RECOLOUR_START)
 #define COMPANY_SPRITE_COLOUR(owner) (GENERAL_SPRITE_COLOUR(_company_colours[owner]))
@@ -65,6 +68,47 @@ struct DrawBuildingsTileStruct {
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
+void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette);
+
 bool SkipSpriteData(byte type, uint16 num);
+
+/**
+ * Applies PALETTE_MODIFIER_TRANSPARENT and PALETTE_MODIFIER_COLOUR to a palette entry of a sprite layout entry
+ * @Note for ground sprites use #GroundSpritePaletteTransform
+ * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
+ *       when to use the default palette.
+ *
+ * @param image The sprite to draw
+ * @param pal The palette from the sprite layout
+ * @param default_pal The default recolour sprite to use (typically company colour resp. random industry/house colour)
+ * @return The palette to use
+ */
+static inline SpriteID SpriteLayoutPaletteTransform(SpriteID image, SpriteID pal, SpriteID default_pal)
+{
+	if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOUR)) {
+		return (pal != 0 ? pal : default_pal);
+	} else {
+		return PAL_NONE;
+	}
+}
+
+/**
+ * Applies PALETTE_MODIFIER_COLOUR to a palette entry of a ground sprite
+ * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
+ *       when to use the default palette.
+ *
+ * @param image The sprite to draw
+ * @param pal The palette from the sprite layout
+ * @param default_pal The default recolour sprite to use (typically company colour resp. random industry/house colour)
+ * @return The palette to use
+ */
+static inline SpriteID GroundSpritePaletteTransform(SpriteID image, SpriteID pal, SpriteID default_pal)
+{
+	if (HasBit(image, PALETTE_MODIFIER_COLOUR)) {
+		return (pal != 0 ? pal : default_pal);
+	} else {
+		return PAL_NONE;
+	}
+}
 
 #endif /* SPRITE_H */

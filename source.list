@@ -58,6 +58,7 @@ settings.cpp
 signal.cpp
 signs.cpp
 sound.cpp
+sprite.cpp
 spritecache.cpp
 station.cpp
 string.cpp

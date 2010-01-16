@@ -681,6 +681,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\sprite.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\spritecache.cpp"
 				>
 			</File>

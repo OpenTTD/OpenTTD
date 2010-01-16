@@ -19,7 +19,6 @@
 #include "pathfinder/yapf/yapf_cache.h"
 #include "newgrf_engine.h"
 #include "landscape_type.h"
-#include "newgrf_commons.h"
 #include "train.h"
 #include "variables.h"
 #include "autoslope.h"
@@ -1982,7 +1981,7 @@ static void DrawTile_Track(TileInfo *ti)
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
 		/* No NewGRF depots, so no relocation */
-		DrawStationTileSeq(ti, dts, TO_BUILDINGS, rti->total_offset, 0, _drawtile_track_palette);
+		DrawCommonTileSeq(ti, dts, TO_BUILDINGS, rti->total_offset, 0, _drawtile_track_palette);
 	}
 	DrawBridgeMiddle(ti);
 }
