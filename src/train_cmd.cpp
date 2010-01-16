@@ -98,36 +98,25 @@ void Train::PowerChanged()
 
 	uint32 total_power = 0;
 	uint32 max_te = 0;
+	uint32 number_of_parts = 0;
 
 	for (const Train *u = this; u != NULL; u = u->Next()) {
-		RailType railtype = GetRailType(u->tile);
+		uint32 current_power = u->GetPower();
+		total_power += current_power;
 
-		/* Power is not added for articulated parts */
-		if (!u->IsArticulatedPart()) {
-			bool engine_has_power = HasPowerOnRail(u->railtype, railtype);
-
-			const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
-
-			if (engine_has_power) {
-				uint16 power = GetVehicleProperty(u, PROP_TRAIN_POWER, rvi_u->power);
-				if (power != 0) {
-					/* Halve power for multiheaded parts */
-					if (u->IsMultiheaded()) power /= 2;
-
-					total_power += power;
-					/* Tractive effort in (tonnes * 1000 * 10 =) N */
-					max_te += (u->tcache.cached_veh_weight * 10000 * GetVehicleProperty(u, PROP_TRAIN_TRACTIVE_EFFORT, rvi_u->tractive_effort)) / 256;
-				}
-			}
-		}
-
-		if (HasBit(u->flags, VRF_POWEREDWAGON) && HasPowerOnRail(this->railtype, railtype)) {
-			total_power += RailVehInfo(u->tcache.first_engine)->pow_wag_power;
-		}
+		/* Only powered parts add tractive effort */
+		if (current_power > 0) max_te += u->GetWeight() * u->GetTractiveEffort();
+		total_power += u->GetPoweredPartPower(this);
+		number_of_parts++;
 	}
 
+	this->tcache.cached_axle_resistance = 60 * number_of_parts;
+	this->tcache.cached_air_drag = 20 + 3 * number_of_parts;
+
+	max_te *= 10000; // Tractive effort in (tonnes * 1000 * 10 =) N
+	max_te /= 256;   // Tractive effort is a [0-255] coefficient
 	if (this->tcache.cached_power != total_power || this->tcache.cached_max_te != max_te) {
-		/* If it has no power (no catenary), stop the train */
+		/* Stop the vehicle if it has no power */
 		if (total_power == 0) this->vehstatus |= VS_STOPPED;
 
 		this->tcache.cached_power = total_power;
@@ -148,24 +137,9 @@ void Train::CargoChanged()
 	uint32 weight = 0;
 
 	for (Train *u = this; u != NULL; u = u->Next()) {
-		uint32 vweight = CargoSpec::Get(u->cargo_type)->weight * u->cargo.Count() * FreightWagonMult(u->cargo_type) / 16;
-
-		/* Vehicle weight is not added for articulated parts. */
-		if (!u->IsArticulatedPart()) {
-			/* vehicle weight is the sum of the weight of the vehicle and the weight of its cargo */
-			vweight += GetVehicleProperty(u, PROP_TRAIN_WEIGHT, RailVehInfo(u->engine_type)->weight);
-		}
-
-		/* powered wagons have extra weight added */
-		if (HasBit(u->flags, VRF_POWEREDWAGON)) {
-			vweight += RailVehInfo(u->tcache.first_engine)->pow_wag_weight;
-		}
-
-		/* consist weight is the sum of the weight of all vehicles in the consist */
-		weight += vweight;
-
-		/* store vehicle weight in cache */
-		u->tcache.cached_veh_weight = vweight;
+		uint32 current_weight = u->GetWeight();
+		weight += current_weight;
+		u->tcache.cached_slope_resistance = current_weight * 20 * _settings_game.vehicle.train_slope_steepness; //1% slope * slope steepness
 	}
 
 	/* store consist weight in cache */
@@ -357,11 +331,6 @@ void Train::ConsistChanged(bool same_length)
 	}
 }
 
-enum AccelType {
-	AM_ACCEL,
-	AM_BRAKE
-};
-
 /**
  * Get the stop location of (the center) of the front vehicle of a train at
  * a platform of a station.
@@ -481,19 +450,21 @@ int Train::GetCurveSpeedLimit() const
 	return max_speed;
 }
 
-/** new acceleration*/
-static int GetTrainAcceleration(Train *v, bool mode)
+/**
+ * Calculates the maximum speed of the vehicle under its current conditions.
+ * @return Maximum speed of the vehicle.
+ */
+int Train::GetCurrentMaxSpeed() const
 {
-	int max_speed = v->tcache.cached_max_curve_speed;
-	assert(max_speed == v->GetCurveSpeedLimit());
-	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
+	int max_speed = this->tcache.cached_max_curve_speed;
+	assert(max_speed == this->GetCurveSpeedLimit());
 
-	if (IsRailStationTile(v->tile) && v->IsFrontEngine()) {
-		StationID sid = GetStationIndex(v->tile);
-		if (v->current_order.ShouldStopAtStation(v, sid)) {
+	if (IsRailStationTile(this->tile)) {
+		StationID sid = GetStationIndex(this->tile);
+		if (this->current_order.ShouldStopAtStation(this, sid)) {
 			int station_ahead;
 			int station_length;
-			int stop_at = GetTrainStopLocation(sid, v->tile, v, &station_ahead, &station_length);
+			int stop_at = GetTrainStopLocation(sid, this->tile, this, &station_ahead, &station_length);
 
 			/* The distance to go is whatever is still ahead of the train minus the
 			 * distance from the train's stop location to the end of the platform */
@@ -502,9 +473,9 @@ static int GetTrainAcceleration(Train *v, bool mode)
 			if (distance_to_go > 0) {
 				int st_max_speed = 120;
 
-				int delta_v = v->cur_speed / (distance_to_go + 1);
-				if (v->max_speed > (v->cur_speed - delta_v)) {
-					st_max_speed = v->cur_speed - (delta_v / 10);
+				int delta_v = this->cur_speed / (distance_to_go + 1);
+				if (this->max_speed > (this->cur_speed - delta_v)) {
+					st_max_speed = this->cur_speed - (delta_v / 10);
 				}
 
 				st_max_speed = max(st_max_speed, 25 * distance_to_go);
@@ -513,45 +484,52 @@ static int GetTrainAcceleration(Train *v, bool mode)
 		}
 	}
 
-	int mass = v->tcache.cached_weight;
-	int power = v->tcache.cached_power * 746;
-	max_speed = min(max_speed, v->tcache.cached_max_speed);
-
-	int num = 0; // number of vehicles, change this into the number of axles later
-	int incl = 0;
-	int drag_coeff = 20; //[1e-4]
-	for (const Train *u = v; u != NULL; u = u->Next()) {
-		num++;
-		drag_coeff += 3;
-
-		if (u->track == TRACK_BIT_DEPOT) max_speed = min(max_speed, 61);
-
-		if (HasBit(u->flags, VRF_GOINGUP)) {
-			incl += u->tcache.cached_veh_weight * 20 * _settings_game.vehicle.train_slope_steepness;
-		} else if (HasBit(u->flags, VRF_GOINGDOWN)) {
-			incl -= u->tcache.cached_veh_weight * 20 * _settings_game.vehicle.train_slope_steepness;
+	for (const Train *u = this; u != NULL; u = u->Next()) {
+		if (u->track == TRACK_BIT_DEPOT) {
+			max_speed = min(max_speed, 61);
+			break;
 		}
 	}
 
-	v->max_speed = max_speed;
+	return min(max_speed, this->tcache.cached_max_speed);
+}
 
-	bool maglev = GetRailTypeInfo(v->railtype)->acceleration_type == 2;
+/**
+ * Calculates the acceleration of the vehicle under its current conditions.
+ * @return Current acceleration of the vehicle.
+ */
+
+int Train::GetAcceleration() const
+{
+	int32 speed = this->GetCurrentSpeed();
+
+	/* Weight is stored in tonnes */
+	int32 mass = this->tcache.cached_weight;
+
+	/* Power is stored in HP, we need it in watts. */
+	int32 power = this->tcache.cached_power * 746;
+
+	int32 resistance = 0;
+
+	bool maglev = this->GetAccelerationType() == 2;
 
 	const int area = 120;
-	const int friction = 35; //[1e-3]
-	int resistance;
 	if (!maglev) {
-		resistance = 13 * mass / 10;
-		resistance += 60 * num;
-		resistance += friction * mass * speed / 1000;
-		resistance += (area * drag_coeff * speed * speed) / 10000;
+		resistance = (13 * mass) / 10;
+		resistance += this->tcache.cached_axle_resistance;
+		resistance += (this->GetRollingFriction() * mass * speed) / 1000;
+		resistance += (area * this->tcache.cached_air_drag * speed * speed) / 10000;
 	} else {
-		resistance = (area * (drag_coeff / 2) * speed * speed) / 10000;
+		resistance += (area * this->tcache.cached_air_drag * speed * speed) / 20000;
 	}
-	resistance += incl;
+
+	resistance += this->GetSlopeResistance();
 	resistance *= 4; //[N]
 
-	const int max_te = v->tcache.cached_max_te; // [N]
+	/* This value allows to know if the vehicle is accelerating or braking. */
+	AccelType mode = this->GetAccelerationStatus();
+
+	const int max_te = this->tcache.cached_max_te; // [N]
 	int force;
 	if (speed > 0) {
 		if (!maglev) {
@@ -2961,19 +2939,14 @@ int Train::UpdateSpeed()
 {
 	uint accel;
 
-	if ((this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK)) {
-		switch (_settings_game.vehicle.train_acceleration_model) {
-			default: NOT_REACHED();
-			case TAM_ORIGINAL:  accel = this->acceleration * -4; break;
-			case TAM_REALISTIC: accel = GetTrainAcceleration(this, AM_BRAKE); break;
-		}
-	} else {
-		switch (_settings_game.vehicle.train_acceleration_model) {
-			default: NOT_REACHED();
-			case TAM_ORIGINAL:  accel = this->acceleration * 2; break;
-			case TAM_REALISTIC: accel = GetTrainAcceleration(this, AM_ACCEL); break;
-		}
-	}
+	switch (_settings_game.vehicle.train_acceleration_model) {
+		default: NOT_REACHED();
+		case TAM_ORIGINAL: accel = this->acceleration * (this->GetAccelerationStatus() == AM_BRAKE) ? -4 : 2; break;
+		case TAM_REALISTIC:
+			this->max_speed = this->GetCurrentMaxSpeed();
+			accel = this->GetAcceleration();
+			break;
+ 	}
 
 	uint spd = this->subspeed + accel;
 	this->subspeed = (byte)spd;

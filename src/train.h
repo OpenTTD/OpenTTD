@@ -13,6 +13,11 @@
 #define TRAIN_H
 
 #include "vehicle_base.h"
+#include "newgrf_engine.h"
+#include "cargotype.h"
+#include "rail.h"
+#include "engine_base.h"
+#include "rail_map.h"
 
 struct Train;
 
@@ -59,15 +64,17 @@ struct TrainCache {
 	uint16 last_speed; // NOSAVE: only used in UI
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint32 cached_power;        ///< total power of the consist.
-	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
-	uint8 cached_veh_length;    ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
-	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
+	uint32 cached_power;            ///< total power of the consist.
+	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle
+	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle
+	uint16 cached_total_length;     ///< Length of the whole train, valid only for first engine.
+	uint8 cached_veh_length;        ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
+	bool cached_tilt;               ///< train can tilt; feature provides a bonus in curves
 
 	/* cached values, recalculated when the cargo on a train changes (in addition to the conditions above) */
-	uint32 cached_weight;     ///< total weight of the consist.
-	uint32 cached_veh_weight; ///< weight of the vehicle.
-	uint32 cached_max_te;     ///< max tractive effort of consist
+	uint32 cached_weight;           ///< total weight of the consist.
+	uint32 cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope
+	uint32 cached_max_te;           ///< max tractive effort of consist
 
 	/* cached max. speed / acceleration data */
 	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
@@ -84,6 +91,12 @@ struct TrainCache {
 	byte user_def_data;
 
 	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
+};
+
+/** What type of acceleration should we do? */
+enum AccelType {
+	AM_ACCEL, ///< We want to go faster, if possible ofcourse
+	AM_BRAKE  ///< We want to stop
 };
 
 /**
@@ -142,6 +155,9 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	int UpdateSpeed();
 
 	void UpdateAcceleration();
+
+	int GetCurrentMaxSpeed() const;
+	int GetAcceleration() const;
 
 	/**
 	 * enum to handle train subtypes
@@ -359,6 +375,124 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 		if (v != NULL && v->IsRearDualheaded()) v = v->GetPrevVehicle();
 
 		return v;
+	}
+
+
+protected: /* These functions should not be called outside acceleration code. */
+
+	/**
+	 * Allows to know the power value that this vehicle will use.
+	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
+	 */
+	FORCEINLINE uint16 GetPower() const
+	{
+		/* Power is not added for articulated parts */
+		if (!this->IsArticulatedPart() && HasPowerOnRail(this->railtype, GetRailType(this->tile))) {
+			uint16 power = GetVehicleProperty(this, PROP_TRAIN_POWER, RailVehInfo(this->engine_type)->power);
+			/* Halve power for multiheaded parts */
+			if (this->IsMultiheaded()) power /= 2;
+			return power;
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Returns a value if this articulated part is powered.
+	 * @return Power value from the articulated part in HP, or zero if it is not powered.
+	 */
+	FORCEINLINE uint16 GetPoweredPartPower(const Train *head) const
+	{
+		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(head->tile))) {
+			return RailVehInfo(this->tcache.first_engine)->pow_wag_power;
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Allows to know the weight value that this vehicle will use.
+	 * @return Weight value from the engine in tonnes.
+	 */
+	FORCEINLINE uint16 GetWeight() const
+	{
+		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.Count() * FreightWagonMult(this->cargo_type)) / 16;
+
+		/* Vehicle weight is not added for articulated parts. */
+		if (!this->IsArticulatedPart()) {
+			weight += GetVehicleProperty(this, PROP_TRAIN_WEIGHT, RailVehInfo(this->engine_type)->weight);
+		}
+
+		/* Powered wagons have extra weight added. */
+		if (HasBit(this->flags, VRF_POWEREDWAGON)) {
+			weight += RailVehInfo(this->tcache.first_engine)->pow_wag_weight;
+		}
+
+		return weight;
+	}
+
+	/**
+	 * Allows to know the tractive effort value that this vehicle will use.
+	 * @return Tractive effort value from the engine.
+	 */
+	FORCEINLINE byte GetTractiveEffort() const
+	{
+		return GetVehicleProperty(this, PROP_TRAIN_TRACTIVE_EFFORT, RailVehInfo(this->engine_type)->tractive_effort);
+	}
+
+	/**
+	 * Checks the current acceleration status of this vehicle.
+	 * @return Acceleration status.
+	 */
+	FORCEINLINE AccelType GetAccelerationStatus() const
+	{
+		return (this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AM_BRAKE : AM_ACCEL;
+	}
+
+	/**
+	 * Calculates the current speed of this vehicle.
+	 * @return Current speed in mph.
+	 */
+	FORCEINLINE uint16 GetCurrentSpeed() const
+	{
+		return this->cur_speed * 10 / 16;
+	}
+
+	/**
+	 * Returns the rolling friction coefficient of this vehicle.
+	 * @return Rolling friction coefficient in [1e-3].
+	 */
+	FORCEINLINE uint32 GetRollingFriction() const
+	{
+		return 35;
+	}
+
+	/**
+	 * Calculates the total slope resistance for this vehicle.
+	 * @return Slope resistance.
+	 */
+	FORCEINLINE int32 GetSlopeResistance() const
+	{
+		int32 incl = 0;
+
+		for (const Train *u = this; u != NULL; u = u->Next()) {
+			if (HasBit(u->flags, VRF_GOINGUP)) {
+				incl += u->tcache.cached_slope_resistance;
+			} else if (HasBit(u->flags, VRF_GOINGDOWN)) {
+				incl -= u->tcache.cached_slope_resistance;
+			}
+		}
+
+		return incl;
+	}
+
+	/**
+	 * Allows to know the acceleration type of a vehicle.
+	 * @return Acceleration type of the vehicle.
+	 */
+	FORCEINLINE int GetAccelerationType() const
+	{
+		return GetRailTypeInfo(this->railtype)->acceleration_type;
 	}
 };
 

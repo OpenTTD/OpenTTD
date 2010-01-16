@@ -745,6 +745,21 @@ static bool TrainAccelerationModelChanged(int32 p1)
 	return true;
 }
 
+/**
+ * This function updates the train acceleration cache after a steepness change.
+ * @param p1 Callback parameter.
+ * @return Always true.
+ */
+static bool TrainSlopeSteepnessChanged(int32 p1)
+{
+	Train *t;
+	FOR_ALL_TRAINS(t) {
+		if (t->IsFrontEngine()) t->CargoChanged();
+	}
+
+	return true;
+}
+
 static bool DragSignalsDensityChanged(int32)
 {
 	InvalidateWindowData(WC_BUILD_SIGNAL, 0);
