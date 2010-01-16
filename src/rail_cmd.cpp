@@ -1986,28 +1986,20 @@ static void DrawTile_Track(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-
-static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStruct *dtss, uint32 offset)
-{
-	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
-
-	DrawSprite(ground, PAL_NONE, x, y);
-	for (; dtss->image.sprite != 0; dtss++) {
-		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		SpriteID image = dtss->image.sprite + offset;
-
-		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOUR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
-	}
-}
-
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
 	SpriteID image = dts->ground.sprite;
 	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
 
+	x += 33;
+	y += 17;
+
 	if (image != SPR_FLAT_GRASS_TILE) image += offset;
-	DrawTileSequence(x + 33, y + 17, image, dts->seq, offset);
+	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
+
+	DrawSprite(image, PAL_NONE, x, y);
+	DrawCommonTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
 
 static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)

@@ -2476,11 +2476,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground.sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);
 	}
 
-	const DrawTileSeqStruct *dtss;
-	foreach_draw_tile_seq(dtss, t->seq) {
-		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		DrawSprite(dtss->image.sprite + total_offset, pal, x + pt.x, y + pt.y);
-	}
+	DrawCommonTileSeqInGUI(x, y, t, total_offset, 0, pal);
 }
 
 static uint GetSlopeZ_Station(TileIndex tile, uint x, uint y)

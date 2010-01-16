@@ -13,6 +13,8 @@
 #include "sprite.h"
 #include "tile_cmd.h"
 #include "viewport_func.h"
+#include "landscape.h"
+#include "spritecache.h"
 
 #include "table/sprites.h"
 
@@ -53,6 +55,44 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		} else {
 			/* For stations and original spritelayouts delta_x and delta_y are signed */
 			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
+		}
+	}
+}
+
+/**
+ * Draws a tile sprite sequence in the GUI
+ * @param x X position to draw to
+ * @param y Y position to draw to
+ * @param dts Sprite and subsprites to draw
+ * @param orig_offset Sprite-Offset for original sprites
+ * @param newgrf_offset Sprite-Offset for NewGRF defined sprites
+ * @param default_palette The default recolour sprite to use (typically company colour)
+ */
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette)
+{
+	const DrawTileSeqStruct *dtss;
+	Point child_offset = {0, 0};
+
+	foreach_draw_tile_seq(dtss, dts->seq) {
+		SpriteID image = dtss->image.sprite;
+		if (newgrf_offset == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
+			image += orig_offset;
+		} else {
+			image += newgrf_offset;
+		}
+
+		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
+
+		if ((byte)dtss->delta_z != 0x80) {
+			Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
+			DrawSprite(image, pal, x + pt.x, y + pt.y);
+
+			const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
+			child_offset.x = pt.x + spr->x_offs;
+			child_offset.y = pt.y + spr->y_offs;
+		} else {
+			/* For stations and original spritelayouts delta_x and delta_y are signed */
+			DrawSprite(image, pal, x + child_offset.x + dtss->delta_x, y + child_offset.y + dtss->delta_y);
 		}
 	}
 }

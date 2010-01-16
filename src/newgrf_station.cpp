@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "variables.h"
-#include "landscape.h"
 #include "debug.h"
 #include "station_base.h"
 #include "waypoint_base.h"
@@ -28,7 +27,6 @@
 #include "animated_tile_func.h"
 #include "functions.h"
 #include "tunnelbridge_map.h"
-#include "spritecache.h"
 #include "newgrf.h"
 #include "core/random_func.hpp"
 
@@ -880,17 +878,14 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 {
 	const StationSpec *statspec;
 	const DrawTileSprites *sprites;
-	const DrawTileSeqStruct *seq;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-	SpriteID relocation;
-	SpriteID image;
 	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	uint tile = 2;
 
 	statspec = GetCustomStationSpec(sclass, station);
 	if (statspec == NULL) return false;
 
-	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
+	uint relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
 
 	if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
 		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, NULL, INVALID_TILE);
@@ -903,7 +898,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
 	}
 
-	image = sprites->ground.sprite;
+	SpriteID image = sprites->ground.sprite;
 	SpriteID pal = sprites->ground.pal;
 	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
@@ -914,30 +909,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
 
-	Point child_offset = {0, 0};
-
-	foreach_draw_tile_seq(seq, sprites->seq) {
-		image = seq->image.sprite;
-		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
-			image += rti->total_offset;
-		} else {
-			image += relocation;
-		}
-
-		pal = SpriteLayoutPaletteTransform(image, seq->image.pal, palette);
-
-		if ((byte)seq->delta_z != 0x80) {
-			Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
-			DrawSprite(image, pal, x + pt.x, y + pt.y);
-
-			const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
-			child_offset.x = pt.x + spr->x_offs;
-			child_offset.y = pt.y + spr->y_offs;
-		} else {
-			/* For stations and original spritelayouts delta_x and delta_y are signed */
-			DrawSprite(image, pal, x + child_offset.x + seq->delta_x, y + child_offset.y + seq->delta_y);
-		}
-	}
+	DrawCommonTileSeqInGUI(x, y, sprites, rti->total_offset, relocation, palette);
 
 	return true;
 }
