@@ -57,21 +57,15 @@ static int RateConversion(T *b, int frac_pos)
 
 static void mix_int16(MixerChannel *sc, int16 *buffer, uint samples)
 {
-	int16 *b;
-	uint32 frac_pos;
-	uint32 frac_speed;
-	int volume_left;
-	int volume_right;
-
 	if (samples > sc->samples_left) samples = sc->samples_left;
 	sc->samples_left -= samples;
 	assert(samples > 0);
 
-	b = (int16*)sc->memory + sc->pos;
-	frac_pos = sc->frac_pos;
-	frac_speed = sc->frac_speed;
-	volume_left = sc->volume_left;
-	volume_right = sc->volume_right;
+	const int16 *b = (const int16 *)sc->memory + sc->pos;
+	uint32 frac_pos = sc->frac_pos;
+	uint32 frac_speed = sc->frac_speed;
+	int volume_left = sc->volume_left;
+	int volume_right = sc->volume_right;
 
 	if (frac_speed == 0x10000) {
 		/* Special case when frac_speed is 0x10000 */
@@ -94,26 +88,20 @@ static void mix_int16(MixerChannel *sc, int16 *buffer, uint samples)
 	}
 
 	sc->frac_pos = frac_pos;
-	sc->pos = b - (int16*)sc->memory;
+	sc->pos = b - (const int16 *)sc->memory;
 }
 
 static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 {
-	int8 *b;
-	uint32 frac_pos;
-	uint32 frac_speed;
-	int volume_left;
-	int volume_right;
-
 	if (samples > sc->samples_left) samples = sc->samples_left;
 	sc->samples_left -= samples;
 	assert(samples > 0);
 
-	b = sc->memory + sc->pos;
-	frac_pos = sc->frac_pos;
-	frac_speed = sc->frac_speed;
-	volume_left = sc->volume_left;
-	volume_right = sc->volume_right;
+	const int8 *b = sc->memory + sc->pos;
+	uint32 frac_pos = sc->frac_pos;
+	uint32 frac_speed = sc->frac_speed;
+	int volume_left = sc->volume_left;
+	int volume_right = sc->volume_right;
 
 	if (frac_speed == 0x10000) {
 		/* Special case when frac_speed is 0x10000 */
