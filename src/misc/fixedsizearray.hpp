@@ -78,8 +78,10 @@ public:
 	/** Clear (destroy) all items */
 	FORCEINLINE void Clear()
 	{
-		/* walk through all allocated items backward and destroy them */
-		for (T *pItem = &data[Length() - 1]; pItem >= data; pItem--) {
+		/* Walk through all allocated items backward and destroy them
+		 * Note: this->Length() can be zero. In that case data[this->Length() - 1] is evaluated unsigned
+		 *       on some compilers with some architectures. (e.g. gcc with x86) */
+		for (T *pItem = this->data + this->Length() - 1; pItem >= this->data; pItem--) {
 			pItem->~T();
 		}
 		/* number of items become zero */
