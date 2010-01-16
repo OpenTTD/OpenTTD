@@ -17,10 +17,9 @@
 
 /** Flexible array with size limit. Implemented as fixed size
  *  array of fixed size arrays */
-template <class T, int B = 1024, int N = B>
+template <class T, uint B = 1024, uint N = B>
 class SmallArray {
 public:
-	typedef T Titem; ///< Titem is now visible from outside
 	typedef FixedSizeArray<T, B> SubArray; ///< inner array
 	typedef FixedSizeArray<SubArray, N> SuperArray; ///< outer array
 
@@ -28,30 +27,28 @@ protected:
 	SuperArray data; ///< array of arrays of items
 
 public:
-	static const int Tblock_size = B; ///< block size is now visible from outside
-	static const int Tnum_blocks = N; ///< number of blocks is now visible from outside
-	static const int Tcapacity = B * N; ///< total max number of items
+	static const uint Tcapacity = B * N; ///< total max number of items
 
 	/** implicit constructor */
 	FORCEINLINE SmallArray() { }
 	/** Clear (destroy) all items */
 	FORCEINLINE void Clear() {data.Clear();}
 	/** Return actual number of items */
-	FORCEINLINE int Length() const
+	FORCEINLINE uint Length() const
 	{
-		int super_size = data.Length();
+		uint super_size = data.Length();
 		if (super_size == 0) return 0;
-		int sub_size = data[super_size - 1].Length();
-		return (super_size - 1) * Tblock_size + sub_size;
+		uint sub_size = data[super_size - 1].Length();
+		return (super_size - 1) * B + sub_size;
 	}
 	/** return true if array is empty */
 	FORCEINLINE bool IsEmpty() { return data.IsEmpty(); }
 	/** return true if array is full */
-	FORCEINLINE bool IsFull() { return data.IsFull() && data[Tnum_blocks - 1].IsFull(); }
+	FORCEINLINE bool IsFull() { return data.IsFull() && data[N - 1].IsFull(); }
 	/** return first sub-array with free space for new item */
 	FORCEINLINE SubArray& FirstFreeSubArray()
 	{
-		int super_size = data.Length();
+		uint super_size = data.Length();
 		if (super_size > 0) {
 			SubArray& s = data[super_size - 1];
 			if (!s.IsFull()) return s;
@@ -63,28 +60,28 @@ public:
 	/** allocate and construct new item */
 	FORCEINLINE T& AppendC() { return FirstFreeSubArray().AppendC(); }
 	/** indexed access (non-const) */
-	FORCEINLINE Titem& operator [] (int index)
+	FORCEINLINE T& operator [] (uint index)
 	{
-		SubArray& s = data[index / Tblock_size];
-		Titem& item = s[index % Tblock_size];
+		const SubArray& s = data[index / B];
+		T& item = s[index % B];
 		return item;
 	}
 	/** indexed access (const) */
-	FORCEINLINE const Titem& operator [] (int index) const
+	FORCEINLINE const T& operator [] (uint index) const
 	{
-		const SubArray& s = data[index / Tblock_size];
-		const Titem& item = s[index % Tblock_size];
+		const SubArray& s = data[index / B];
+		const T& item = s[index % B];
 		return item;
 	}
 
 	template <typename D> void Dump(D &dmp) const
 	{
 		dmp.WriteLine("capacity = %d", Tcapacity);
-		int num_items = Length();
+		uint num_items = Length();
 		dmp.WriteLine("num_items = %d", num_items);
 		CStrA name;
-		for (int i = 0; i < num_items; i++) {
-			const Titem& item = (*this)[i];
+		for (uint i = 0; i < num_items; i++) {
+			const T& item = (*this)[i];
 			name.Format("item[%d]", i);
 			dmp.WriteStructT(name.Data(), &item);
 		}

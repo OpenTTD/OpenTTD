@@ -18,7 +18,7 @@
  *  Upon construction it preallocates fixed size block of memory
  *  for all items, but doesn't construct them. Item's construction
  *  is delayed. */
-template <class T, int C>
+template <class T, uint C>
 struct FixedSizeArray {
 	/** the only member of fixed size array is pointer to the block
 	 *  of C array of items. Header can be found on the offset -sizeof(ArrayHeader). */
@@ -27,22 +27,19 @@ struct FixedSizeArray {
 	/** header for fixed size array */
 	struct ArrayHeader
 	{
-		int items;           ///< number of items in the array
-		int reference_count; ///< block reference counter (used by copy constructor and by destructor)
+		uint items;           ///< number of items in the array
+		uint reference_count; ///< block reference counter (used by copy constructor and by destructor)
 	};
 
-	/* make types and constants visible from outside */
-	typedef T Titem; // type of array item
-
-	static const int Tcapacity = C;                    // the array capacity (maximum size)
-	static const int Tsize = sizeof(T);                // size of item
-	static const int HeaderSize = sizeof(ArrayHeader); // size of header
+	/* make constants visible from outside */
+	static const uint Tsize = sizeof(T);                // size of item
+	static const uint HeaderSize = sizeof(ArrayHeader); // size of header
 
 	/** Default constructor. Preallocate space for items and header, then initialize header. */
 	FixedSizeArray()
 	{
 		/* allocate block for header + items (don't construct items) */
-		data = (Titem*)((MallocT<int8>(HeaderSize + Tcapacity * Tsize)) + HeaderSize);
+		data = (T*)((MallocT<byte>(HeaderSize + C * Tsize)) + HeaderSize);
 		SizeRef() = 0; // initial number of items
 		RefCnt() = 1; // initial reference counter
 	}
@@ -63,7 +60,7 @@ struct FixedSizeArray {
 
 		Clear();
 		/* free the memory block occupied by items */
-		free(((int8*)data) - HeaderSize);
+		free(((byte*)data) - HeaderSize);
 		data = NULL;
 	}
 
@@ -71,7 +68,7 @@ struct FixedSizeArray {
 	FORCEINLINE void Clear()
 	{
 		/* walk through all allocated items backward and destroy them */
-		for (Titem *pItem = &data[Length() - 1]; pItem >= data; pItem--) {
+		for (T *pItem = &data[Length() - 1]; pItem >= data; pItem--) {
 			pItem->~T();
 		}
 		/* number of items become zero */
@@ -80,30 +77,30 @@ struct FixedSizeArray {
 
 protected:
 	/** return reference to the array header (non-const) */
-	FORCEINLINE ArrayHeader& Hdr() { return *(ArrayHeader*)(((int8*)data) - HeaderSize); }
+	FORCEINLINE ArrayHeader& Hdr() { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
 	/** return reference to the array header (const) */
-	FORCEINLINE const ArrayHeader& Hdr() const { return *(ArrayHeader*)(((int8*)data) - HeaderSize); }
+	FORCEINLINE const ArrayHeader& Hdr() const { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
 	/** return reference to the block reference counter */
-	FORCEINLINE int& RefCnt() { return Hdr().reference_count; }
+	FORCEINLINE uint& RefCnt() { return Hdr().reference_count; }
 	/** return reference to number of used items */
-	FORCEINLINE int& SizeRef() { return Hdr().items; }
+	FORCEINLINE uint& SizeRef() { return Hdr().items; }
 public:
 	/** return number of used items */
-	FORCEINLINE int Length() const { return Hdr().items; }
+	FORCEINLINE uint Length() const { return Hdr().items; }
 	/** return true if array is full */
-	FORCEINLINE bool IsFull() const { return Length() >= Tcapacity; };
+	FORCEINLINE bool IsFull() const { return Length() >= C; };
 	/** return true if array is empty */
 	FORCEINLINE bool IsEmpty() const { return Length() <= 0; };
 	/** index validation */
-	FORCEINLINE void CheckIdx(int index) const { assert(index >= 0); assert(index < Length()); }
+	FORCEINLINE void CheckIdx(uint index) const { assert(index < Length()); }
 	/** add (allocate), but don't construct item */
-	FORCEINLINE Titem& Append() { assert(!IsFull()); return data[SizeRef()++]; }
+	FORCEINLINE T& Append() { assert(!IsFull()); return data[SizeRef()++]; }
 	/** add and construct item using default constructor */
-	FORCEINLINE Titem& AppendC() { Titem& item = Append(); new(&item)Titem; return item; }
+	FORCEINLINE T& AppendC() { T& item = Append(); new(&item)T; return item; }
 	/** return item by index (non-const version) */
-	FORCEINLINE Titem& operator [] (int index) { CheckIdx(index); return data[index]; }
+	FORCEINLINE T& operator [] (uint index) { CheckIdx(index); return data[index]; }
 	/** return item by index (const version) */
-	FORCEINLINE const Titem& operator [] (int index) const { CheckIdx(index); return data[index]; }
+	FORCEINLINE const T& operator [] (uint index) const { CheckIdx(index); return data[index]; }
 };
 
 #endif /* FIXEDSIZEARRAY_HPP */
