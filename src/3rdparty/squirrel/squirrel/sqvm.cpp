@@ -436,7 +436,7 @@ bool SQVM::LOCAL_INC(SQInteger op,SQObjectPtr &target, SQObjectPtr &a, SQObjectP
 
 bool SQVM::PLOCAL_INC(SQInteger op,SQObjectPtr &target, SQObjectPtr &a, SQObjectPtr &incr)
 {
- 	SQObjectPtr trg;
+	SQObjectPtr trg;
 	_RET_ON_FAIL(ARITH_OP( op , trg, a, incr));
 	target = a;
 	a = trg;

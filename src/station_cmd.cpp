@@ -2470,7 +2470,7 @@ static void DrawTile_Station(TileInfo *ti)
  */
 void DrawStationTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 relocation, SpriteID default_palette)
 {
- 	const DrawTileSeqStruct *dtss;
+	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		SpriteID image = dtss->image.sprite;
 

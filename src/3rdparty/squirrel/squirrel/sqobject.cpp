@@ -201,7 +201,7 @@ const SQChar* SQFunctionProto::GetLocal(SQVM *vm,SQUnsignedInteger stackbase,SQU
 	SQUnsignedInteger nvars=_nlocalvarinfos;
 	const SQChar *res=NULL;
 	if(nvars>=nseq){
- 		for(SQUnsignedInteger i=0;i<nvars;i++){
+		for(SQUnsignedInteger i=0;i<nvars;i++){
 			if(_localvarinfos[i]._start_op<=nop && _localvarinfos[i]._end_op>=nop)
 			{
 				if(nseq==0){
