@@ -19,6 +19,9 @@
 #ifdef WIN32
 #include <windows.h>
 #else
+#ifdef OPENBSD
+#include <unistd.h>
+#endif
 #include <pwd.h>
 #endif
 #include <sys/stat.h>

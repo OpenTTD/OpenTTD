@@ -127,6 +127,9 @@ static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
 
 /* UNIX stuff */
 #if defined(UNIX) && !defined(__OS2__)
+#	if defined(OPENBSD)
+#		define AI_ADDRCONFIG 0
+#	endif
 #	define SOCKET int
 #	define INVALID_SOCKET -1
 #	if !defined(__MORPHOS__) && !defined(__AMIGA__)
