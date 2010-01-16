@@ -33,6 +33,7 @@ struct MixerChannel {
 
 static MixerChannel _channels[8];
 static uint32 _play_rate = 11025;
+static uint32 _max_size = UINT_MAX;
 
 /**
  * The theoretical maximum volume for a single sound sample. Multiple sound
@@ -172,15 +173,15 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, boo
 
 	mc->frac_speed = (rate << 16) / _play_rate;
 
+	if (is16bit) size /= 2;
+
 	/* adjust the magnitude to prevent overflow */
-	while (size & ~0xFFFF) {
+	while (size >= _max_size) {
 		size >>= 1;
 		rate = (rate >> 1) + 1;
 	}
 
-	int div = is16bit ? 2 : 1;
-
-	mc->samples_left = (uint)size * _play_rate / rate / div;
+	mc->samples_left = (uint)size * _play_rate / rate;
 	mc->is16bit = is16bit;
 }
 
@@ -200,5 +201,6 @@ void MxActivateChannel(MixerChannel *mc)
 bool MxInitialize(uint rate)
 {
 	_play_rate = rate;
+	_max_size  = UINT_MAX / _play_rate;
 	return true;
 }
