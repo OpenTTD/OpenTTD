@@ -92,16 +92,14 @@ public:
 	FORCEINLINE bool IsFull() const { return Length() >= C; };
 	/** return true if array is empty */
 	FORCEINLINE bool IsEmpty() const { return Length() <= 0; };
-	/** index validation */
-	FORCEINLINE void CheckIdx(uint index) const { assert(index < Length()); }
 	/** add (allocate), but don't construct item */
 	FORCEINLINE T& Append() { assert(!IsFull()); return data[SizeRef()++]; }
 	/** add and construct item using default constructor */
 	FORCEINLINE T& AppendC() { T& item = Append(); new(&item)T; return item; }
 	/** return item by index (non-const version) */
-	FORCEINLINE T& operator [] (uint index) { CheckIdx(index); return data[index]; }
+	FORCEINLINE T& operator [] (uint index) { assert(index < Length()); return data[index]; }
 	/** return item by index (const version) */
-	FORCEINLINE const T& operator [] (uint index) const { CheckIdx(index); return data[index]; }
+	FORCEINLINE const T& operator [] (uint index) const { assert(index < Length()); return data[index]; }
 };
 
 #endif /* FIXEDSIZEARRAY_HPP */
