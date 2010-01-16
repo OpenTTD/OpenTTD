@@ -74,7 +74,7 @@ public:
 	/** allocate new data item from m_arr */
 	FORCEINLINE Titem_ *CreateNewNode()
 	{
-		if (m_new_node == NULL) m_new_node = &m_arr.AppendC();
+		if (m_new_node == NULL) m_new_node = m_arr.AppendC();
 		return m_new_node;
 	}
 

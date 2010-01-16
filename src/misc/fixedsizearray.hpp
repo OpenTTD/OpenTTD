@@ -93,9 +93,9 @@ public:
 	/** return true if array is empty */
 	FORCEINLINE bool IsEmpty() const { return Length() <= 0; };
 	/** add (allocate), but don't construct item */
-	FORCEINLINE T& Append() { assert(!IsFull()); return data[SizeRef()++]; }
+	FORCEINLINE T *Append() { assert(!IsFull()); return &data[SizeRef()++]; }
 	/** add and construct item using default constructor */
-	FORCEINLINE T& AppendC() { T& item = Append(); new(&item)T; return item; }
+	FORCEINLINE T *AppendC() { T *item = Append(); new(item)T; return item; }
 	/** return item by index (non-const version) */
 	FORCEINLINE T& operator [] (uint index) { assert(index < Length()); return data[index]; }
 	/** return item by index (const version) */

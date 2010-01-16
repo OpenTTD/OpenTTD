@@ -35,7 +35,7 @@ protected:
 			SubArray& s = data[super_size - 1];
 			if (!s.IsFull()) return s;
 		}
-		return data.AppendC();
+		return *data.AppendC();
 	}
 
 public:
@@ -56,9 +56,9 @@ public:
 	/** return true if array is full */
 	FORCEINLINE bool IsFull() { return data.IsFull() && data[N - 1].IsFull(); }
 	/** allocate but not construct new item */
-	FORCEINLINE T& Append() { return FirstFreeSubArray().Append(); }
+	FORCEINLINE T *Append() { return FirstFreeSubArray().Append(); }
 	/** allocate and construct new item */
-	FORCEINLINE T& AppendC() { return FirstFreeSubArray().AppendC(); }
+	FORCEINLINE T *AppendC() { return FirstFreeSubArray().AppendC(); }
 	/** indexed access (non-const) */
 	FORCEINLINE T& operator [] (uint index)
 	{

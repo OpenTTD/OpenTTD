@@ -70,7 +70,7 @@ public:
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		CacheKey key(n.GetKey());
-		Yapf().ConnectNodeToCachedData(n, *new (&m_local_cache.Append()) CachedData(key));
+		Yapf().ConnectNodeToCachedData(n, *new (m_local_cache.Append()) CachedData(key));
 		return false;
 	}
 
@@ -133,7 +133,7 @@ struct CSegmentCostCacheT
 		Tsegment *item = m_map.Find(key);
 		if (item == NULL) {
 			*found = false;
-			item = new (&m_heap.Append()) Tsegment(key);
+			item = new (m_heap.Append()) Tsegment(key);
 			m_map.Push(*item);
 		} else {
 			*found = true;
