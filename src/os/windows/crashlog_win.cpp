@@ -18,6 +18,7 @@
 #include "../../fileio_func.h"
 #include "../../strings_func.h"
 #include "../../gamelog.h"
+#include "../../saveload/saveload.h"
 
 #include <windows.h>
 #include <signal.h>
@@ -375,6 +376,15 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			_T("A serious fault condition occured in the game. The game will shut down.\n")
 			_T("As you loaded an emergency savegame no crash information will be generated.\n");
 		MessageBox(NULL, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		ExitProcess(3);
+	}
+
+	if (SaveloadCrashWithMissingNewGRFs()) {
+		static const TCHAR _saveload_crash[] =
+			_T("A serious fault condition occured in the game. The game will shut down.\n")
+			_T("As you loaded an savegame for which you do not have the required NewGRFs\n")
+			_T("no crash information will be generated.\n");
+		MessageBox(NULL, _saveload_crash, _T("Fatal Application Failure"), MB_ICONERROR);
 		ExitProcess(3);
 	}
 

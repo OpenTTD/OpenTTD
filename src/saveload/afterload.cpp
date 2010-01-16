@@ -311,6 +311,19 @@ static const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig *c)
 	return c;
 }
 
+/** Was the saveload crash because of missing NewGRFs? */
+static bool _saveload_crash_with_missing_newgrfs = false;
+
+/**
+ * Did loading the savegame cause a crash? If so,
+ * were NewGRFs missing?
+ * @return when the saveload crashed due to missing NewGRFs.
+ */
+bool SaveloadCrashWithMissingNewGRFs()
+{
+	return _saveload_crash_with_missing_newgrfs;
+}
+
 /**
  * Signal handler used to give a user a more useful report for crashes during
  * the savegame loading process; especially when there's problems with the
@@ -342,11 +355,13 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			char buf[40];
 			md5sumToString(buf, lastof(buf), replaced->md5sum);
 			p += seprintf(p, lastof(buffer), "NewGRF %08X (checksum %s) not found.\n  Loaded NewGRF \"%s\" with same GRF ID instead.\n", BSWAP32(c->grfid), buf, c->filename);
+			_saveload_crash_with_missing_newgrfs = true;
 		}
 		if (c->status == GCS_NOT_FOUND) {
 			char buf[40];
 			md5sumToString(buf, lastof(buf), c->md5sum);
 			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s.\n", BSWAP32(c->grfid), c->filename, buf);
+			_saveload_crash_with_missing_newgrfs = true;
 		}
 	}
 

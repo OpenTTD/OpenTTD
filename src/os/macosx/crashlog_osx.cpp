@@ -13,6 +13,7 @@
 #include "../../crashlog.h"
 #include "../../string_func.h"
 #include "../../gamelog.h"
+#include "../../saveload/saveload.h"
 #include "macos.h"
 
 #include <errno.h>
@@ -226,6 +227,13 @@ void CDECL HandleCrash(int signum)
 	if (GamelogTestEmergency()) {
 		ShowMacDialog("A serious fault condition occured in the game. The game will shut down.",
 				"As you loaded an emergency savegame no crash information will be generated.\n",
+				"Quit");
+		abort();
+	}
+
+	if (SaveloadCrashWithMissingNewGRFs()) {
+		ShowMacDialog("A serious fault condition occured in the game. The game will shut down.",
+				"As you loaded an savegame for which you do not have the required NewGRFs no crash information will be generated.\n",
 				"Quit");
 		abort();
 	}
