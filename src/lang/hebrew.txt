@@ -3965,7 +3965,7 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :הליקופט�
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{2:NUM} ב{1:STRING} {LRM}{0:STRING}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} מצוף
