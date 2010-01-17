@@ -2941,7 +2941,7 @@ int Train::UpdateSpeed()
 
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
-		case TAM_ORIGINAL: accel = this->acceleration * (this->GetAccelerationStatus() == AM_BRAKE) ? -4 : 2; break;
+		case TAM_ORIGINAL: accel = this->acceleration * (this->GetAccelerationStatus() == AM_BRAKE ? -4 : 2); break;
 		case TAM_REALISTIC:
 			this->max_speed = this->GetCurrentMaxSpeed();
 			accel = this->GetAcceleration();
