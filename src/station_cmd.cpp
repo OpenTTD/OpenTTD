@@ -2596,15 +2596,8 @@ static void TileLoop_Station(TileIndex tile)
 	 * hardcoded.....not good */
 	switch (GetStationType(tile)) {
 		case STATION_AIRPORT:
-			switch (GetStationGfx(tile)) {
-				case GFX_RADAR_LARGE_FIRST:
-				case GFX_WINDSACK_FIRST : // for small airport
-				case GFX_RADAR_INTERNATIONAL_FIRST:
-				case GFX_RADAR_METROPOLITAN_FIRST:
-				case GFX_RADAR_DISTRICTWE_FIRST: // radar district W-E airport
-				case GFX_WINDSACK_INTERCON_FIRST : // for intercontinental airport
-					AddAnimatedTile(tile);
-					break;
+			if (AirportTileSpec::Get(GetStationGfx(tile))->anim_next != AIRPORTTILE_NOANIM) {
+				AddAnimatedTile(tile);
 			}
 			break;
 
@@ -2623,35 +2616,17 @@ static void TileLoop_Station(TileIndex tile)
 
 static void AnimateTile_Station(TileIndex tile)
 {
-	struct AnimData {
-		StationGfx from; // first sprite
-		StationGfx to;   // last sprite
-		byte delay;
-	};
-
-	static const AnimData data[] = {
-		{ GFX_RADAR_LARGE_FIRST,         GFX_RADAR_LARGE_LAST,         3 },
-		{ GFX_WINDSACK_FIRST,            GFX_WINDSACK_LAST,            1 },
-		{ GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_INTERNATIONAL_LAST, 3 },
-		{ GFX_RADAR_METROPOLITAN_FIRST,  GFX_RADAR_METROPOLITAN_LAST,  3 },
-		{ GFX_RADAR_DISTRICTWE_FIRST,    GFX_RADAR_DISTRICTWE_LAST,    3 },
-		{ GFX_WINDSACK_INTERCON_FIRST,   GFX_WINDSACK_INTERCON_LAST,   1 }
-	};
-
 	if (HasStationRail(tile)) {
 		AnimateStationTile(tile);
 		return;
 	}
 
-	StationGfx gfx = GetStationGfx(tile);
-
-	for (const AnimData *i = data; i != endof(data); i++) {
-		if (i->from <= gfx && gfx <= i->to) {
-			if ((_tick_counter & i->delay) == 0) {
-				SetStationGfx(tile, gfx < i->to ? gfx + 1 : i->from);
-				MarkTileDirtyByTile(tile);
-			}
-			break;
+	if (IsAirport(tile)) {
+		const AirportTileSpec *ats = AirportTileSpec::Get(GetStationGfx(tile));
+		uint16 mask = (1 << ats->animation_speed) - 1;
+		if (ats->anim_next != AIRPORTTILE_NOANIM && (_tick_counter & mask) == 0) {
+			SetStationGfx(tile, ats->anim_next);
+			MarkTileDirtyByTile(tile);
 		}
 	}
 }

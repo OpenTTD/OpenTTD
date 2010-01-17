@@ -21,6 +21,11 @@ enum {
 	MAX_TERMINALS =  10, ///< maximum number of terminals per airport
 	MAX_HELIPADS  =   4, ///< maximum number of helipads per airport
 	MAX_ELEMENTS  = 255, ///< maximum number of aircraft positions at airport
+	NUM_AIRPORTTILES = 144, ///< total number of airport tiles
+};
+
+enum {
+	AIRPORTTILE_NOANIM    = 0xFF, ///< flag to mark airport tiles as having no animation
 };
 
 /** Airport types */
@@ -61,13 +66,7 @@ struct AirportSpec {
 	Year min_year;                         ///< first year the airport is available
 	Year max_year;                         ///< last year the airport is available
 
-	static AirportSpec *Get(byte type)
-	{
-		if (type == AT_OILRIG) return &oilrig;
-		assert(type < NUM_AIRPORTS);
-		extern AirportSpec _origin_airport_specs[NUM_AIRPORTS];
-		return &_origin_airport_specs[type];
-	}
+	static const AirportSpec *Get(byte type);
 
 	bool IsAvailable() const;
 
@@ -75,6 +74,16 @@ struct AirportSpec {
 	static AirportSpec oilrig;
 };
 
+
+/**
+ * Defines the data structure of each indivudual tile of an airport.
+ */
+struct AirportTileSpec {
+	StationGfx anim_next;                 ///< Next StationGfx in an animation
+	uint8 animation_speed;                ///< The speed of the animation
+
+	static const AirportTileSpec *Get(StationGfx gfx);
+};
 
 enum {
 	AMED_NOSPDCLAMP = 1 << 0,

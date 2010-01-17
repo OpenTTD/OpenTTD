@@ -2173,6 +2173,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\airporttiles.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\airport_movement.h"
 				>
 			</File>
