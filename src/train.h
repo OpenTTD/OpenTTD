@@ -93,10 +93,10 @@ struct TrainCache {
 	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
 };
 
-/** What type of acceleration should we do? */
-enum AccelType {
-	AM_ACCEL, ///< We want to go faster, if possible ofcourse
-	AM_BRAKE  ///< We want to stop
+/** What is the status of our acceleration? */
+enum AccelStatus {
+	AS_ACCEL, ///< We want to go faster, if possible ofcourse
+	AS_BRAKE  ///< We want to stop
 };
 
 /**
@@ -444,9 +444,9 @@ protected: /* These functions should not be called outside acceleration code. */
 	 * Checks the current acceleration status of this vehicle.
 	 * @return Acceleration status.
 	 */
-	FORCEINLINE AccelType GetAccelerationStatus() const
+	FORCEINLINE AccelStatus GetAccelerationStatus() const
 	{
-		return (this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AM_BRAKE : AM_ACCEL;
+		return (this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AS_BRAKE : AS_ACCEL;
 	}
 
 	/**

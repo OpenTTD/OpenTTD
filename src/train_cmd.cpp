@@ -527,7 +527,7 @@ int Train::GetAcceleration() const
 	resistance *= 4; //[N]
 
 	/* This value allows to know if the vehicle is accelerating or braking. */
-	AccelType mode = this->GetAccelerationStatus();
+	AccelStatus mode = this->GetAccelerationStatus();
 
 	const int max_te = this->tcache.cached_max_te; // [N]
 	int force;
@@ -536,17 +536,17 @@ int Train::GetAcceleration() const
 			force = power / speed; //[N]
 			force *= 22;
 			force /= 10;
-			if (mode == AM_ACCEL && force > max_te) force = max_te;
+			if (mode == AS_ACCEL && force > max_te) force = max_te;
 		} else {
 			force = power / 25;
 		}
 	} else {
 		/* "kickoff" acceleration */
-		force = (mode == AM_ACCEL && !maglev) ? min(max_te, power) : power;
+		force = (mode == AS_ACCEL && !maglev) ? min(max_te, power) : power;
 		force = max(force, (mass * 8) + resistance);
 	}
 
-	if (mode == AM_ACCEL) {
+	if (mode == AS_ACCEL) {
 		return (force - resistance) / (mass * 2);
 	} else {
 		return min(-force - resistance, -10000) / mass;
@@ -2941,7 +2941,7 @@ int Train::UpdateSpeed()
 
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
-		case TAM_ORIGINAL: accel = this->acceleration * (this->GetAccelerationStatus() == AM_BRAKE ? -4 : 2); break;
+		case TAM_ORIGINAL: accel = this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2); break;
 		case TAM_REALISTIC:
 			this->max_speed = this->GetCurrentMaxSpeed();
 			accel = this->GetAcceleration();
