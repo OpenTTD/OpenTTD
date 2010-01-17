@@ -2455,7 +2455,7 @@ static void DrawTile_Station(TileInfo *ti)
 		total_offset = 0;
 	}
 
-	DrawCommonTileSeq(ti, t, TO_BUILDINGS, total_offset, relocation, palette);
+	DrawRailTileSeq(ti, t, TO_BUILDINGS, total_offset, relocation, palette);
 }
 
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
@@ -2477,7 +2477,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	}
 
 	/* Default waypoint has no railtype specific sprites */
-	DrawCommonTileSeqInGUI(x, y, t, st == STATION_WAYPOINT ? 0 : total_offset, 0, pal);
+	DrawRailTileSeqInGUI(x, y, t, st == STATION_WAYPOINT ? 0 : total_offset, 0, pal);
 }
 
 static uint GetSlopeZ_Station(TileIndex tile, uint x, uint y)

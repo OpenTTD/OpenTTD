@@ -59,10 +59,53 @@ struct DrawBuildingsTileStruct {
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
-void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette);
-void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette);
+void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned);
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned);
 
-bool SkipSpriteData(byte type, uint16 num);
+/**
+ * Draw tile sprite sequence on tile with railroad specifics.
+ * @param total_offset Spriteoffset from normal rail to current railtype.
+ * @param newgrf_offset Startsprite of the Action1 to use.
+ */
+static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 newgrf_offset, SpriteID default_palette)
+{
+	DrawCommonTileSeq(ti, dts, to, total_offset, newgrf_offset, default_palette, false);
+}
+
+/**
+ * Draw tile sprite sequence in GUI with railroad specifics.
+ * @param total_offset Spriteoffset from normal rail to current railtype.
+ * @param newgrf_offset Startsprite of the Action1 to use.
+ */
+static inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 total_offset, uint32 newgrf_offset, SpriteID default_palette)
+{
+	DrawCommonTileSeqInGUI(x, y, dts, total_offset, newgrf_offset, default_palette, false);
+}
+
+/**
+ * Draw TTD sprite sequence on tile.
+ */
+static inline void DrawOrigTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, SpriteID default_palette)
+{
+	DrawCommonTileSeq(ti, dts, to, 0, 0, default_palette, false);
+}
+
+/**
+ * Draw TTD sprite sequence in GUI.
+ */
+static inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts, SpriteID default_palette)
+{
+	DrawCommonTileSeqInGUI(x, y, dts, 0, 0, default_palette, false);
+}
+
+/**
+ * Draw NewGRF industrytile or house sprite layout
+ * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
+ */
+static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, uint32 stage, SpriteID default_palette)
+{
+	DrawCommonTileSeq(ti, dts, to, 0, stage, default_palette, true);
+}
 
 /**
  * Applies PALETTE_MODIFIER_TRANSPARENT and PALETTE_MODIFIER_COLOUR to a palette entry of a sprite layout entry

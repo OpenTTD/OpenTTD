@@ -44,6 +44,7 @@ void GfxInitSpriteMem();
 void IncreaseSpriteLRU();
 
 bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id);
+bool SkipSpriteData(byte type, uint16 num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
 #endif /* SPRITECACHE_H */

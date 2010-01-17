@@ -36,7 +36,6 @@
 #include "company_base.h"
 #include "core/random_func.hpp"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**
@@ -1223,7 +1222,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(dts->ground.sprite, PAL_NONE);
-			DrawCommonTileSeq(ti, dts, TO_BUILDINGS, 0, 0, palette);
+			DrawOrigTileSeq(ti, dts, TO_BUILDINGS, palette);
 			break;
 		}
 	}
@@ -1239,7 +1238,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	y += 17;
 
 	DrawSprite(dts->ground.sprite, PAL_NONE, x, y);
-	DrawCommonTileSeqInGUI(x, y, dts, 0, 0, palette);
+	DrawOrigTileSeqInGUI(x, y, dts, palette);
 }
 
 /**

@@ -26,6 +26,7 @@
 #include "company_base.h"
 #include "town.h"
 #include "core/random_func.hpp"
+#include "sprite.h"
 
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
@@ -421,7 +422,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 	}
 
-	DrawTileSeq(ti, dts, TO_HOUSES, stage, palette);
+	DrawNewGRFTileSeq(ti, dts, TO_HOUSES, stage, palette);
 }
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id)

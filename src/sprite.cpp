@@ -26,12 +26,16 @@
  * @param orig_offset Sprite-Offset for original sprites
  * @param newgrf_offset Sprite-Offset for NewGRF defined sprites
  * @param default_palette The default recolour sprite to use (typically company colour)
+ * @param child_offset_is_unsigned Whether child sprite offsets are interpreted signed or unsigned
  */
-void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette)
+void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned)
 {
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		SpriteID image = dtss->image.sprite;
+
+		/* TTD sprite 0 means no sprite */
+		if (GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) continue;
 
 		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
 		if (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
@@ -49,8 +53,9 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to)
 			);
 		} else {
-			/* For stations and original spritelayouts delta_x and delta_y are signed */
-			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
+			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
+			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
+			AddChildSpriteScreen(image, pal, offs_x, offs_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
 		}
 	}
 }
@@ -63,14 +68,19 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
  * @param orig_offset Sprite-Offset for original sprites
  * @param newgrf_offset Sprite-Offset for NewGRF defined sprites
  * @param default_palette The default recolour sprite to use (typically company colour)
+ * @param child_offset_is_unsigned Whether child sprite offsets are interpreted signed or unsigned
  */
-void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette)
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned)
 {
 	const DrawTileSeqStruct *dtss;
 	Point child_offset = {0, 0};
 
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		SpriteID image = dtss->image.sprite;
+
+		/* TTD sprite 0 means no sprite */
+		if (GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) continue;
+
 		image += (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? newgrf_offset : orig_offset);
 
 		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
@@ -83,8 +93,9 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 			child_offset.x = pt.x + spr->x_offs;
 			child_offset.y = pt.y + spr->y_offs;
 		} else {
-			/* For stations and original spritelayouts delta_x and delta_y are signed */
-			DrawSprite(image, pal, x + child_offset.x + dtss->delta_x, y + child_offset.y + dtss->delta_y);
+			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
+			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
+			DrawSprite(image, pal, x + child_offset.x + offs_x, y + child_offset.y + offs_y);
 		}
 	}
 }

@@ -35,6 +35,7 @@
 #include "company_base.h"
 
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "table/railtypes.h"
 #include "table/track_land.h"
 
@@ -1981,7 +1982,7 @@ static void DrawTile_Track(TileInfo *ti)
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
 		/* No NewGRF depots, so no relocation */
-		DrawCommonTileSeq(ti, dts, TO_BUILDINGS, rti->total_offset, 0, _drawtile_track_palette);
+		DrawRailTileSeq(ti, dts, TO_BUILDINGS, rti->total_offset, 0, _drawtile_track_palette);
 	}
 	DrawBridgeMiddle(ti);
 }
@@ -1999,7 +2000,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 
 	DrawSprite(image, PAL_NONE, x, y);
-	DrawCommonTileSeqInGUI(x, y, dts, offset, 0, palette);
+	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
 
 static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)

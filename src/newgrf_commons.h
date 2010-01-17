@@ -15,8 +15,6 @@
 #define NEWGRF_COMMONS_H
 
 #include "tile_cmd.h"
-#include "transparency.h"
-#include "sprite.h"
 
 /**
  * Maps an entity id stored on the map to a GRF file.
@@ -106,7 +104,5 @@ extern IndustryTileOverrideManager _industile_mngr;
 uint32 GetTerrainType(TileIndex tile);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
-
-void DrawTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, byte stage, SpriteID default_palette);
 
 #endif /* NEWGRF_COMMONS_H */

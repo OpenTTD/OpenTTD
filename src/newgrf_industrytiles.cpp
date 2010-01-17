@@ -26,6 +26,7 @@
 #include "command_func.h"
 #include "animated_tile_func.h"
 #include "water.h"
+#include "sprite.h"
 
 #include "table/strings.h"
 
@@ -185,7 +186,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGro
 		}
 	}
 
-	DrawTileSeq(ti, dts, TO_INDUSTRIES, stage, GENERAL_SPRITE_COLOUR(rnd_colour));
+	DrawNewGRFTileSeq(ti, dts, TO_INDUSTRIES, stage, GENERAL_SPRITE_COLOUR(rnd_colour));
 }
 
 uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)
