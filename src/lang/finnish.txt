@@ -2014,7 +2014,7 @@ STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pieni
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Kaupunki
 STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Suurkaupungin
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Kansainvälinen
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Lähiliikennekenttä
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Lähiliikenne
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Mannertenvälinen
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterikenttä
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterihalli

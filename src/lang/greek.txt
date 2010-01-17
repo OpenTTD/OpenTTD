@@ -3304,6 +3304,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Επιλ
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Το όνομα του AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI

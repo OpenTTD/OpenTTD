@@ -2011,7 +2011,7 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vel stor
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Liten
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}By
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolflyplass
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Storbyflyplass
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasjonal flyplass
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendler
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
