@@ -860,11 +860,11 @@ void GenerateLandscape(byte mode)
 	static const int gwp_desert_amount = 4 + 8;
 
 	if (mode == GW_HEIGHTMAP) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings_game.game_creation.landscape == LT_TROPIC) ? 1 + gwp_desert_amount : 1);
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings_game.game_creation.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
 		LoadHeightmap(_file_to_saveload.name);
 		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings_game.game_creation.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings_game.game_creation.landscape == LT_TROPIC) ? 5 + gwp_desert_amount : 5);
 		GenerateTerrainPerlin();
 	} else {
 		if (_settings_game.construction.freeform_edges) {
@@ -874,47 +874,41 @@ void GenerateLandscape(byte mode)
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC: {
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
-
 				uint32 r = Random();
 
 				for (uint i = ScaleByMapSize(GB(r, 0, 7) + 950); i != 0; --i) {
 					GenerateTerrain(2, 0);
 				}
-				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 				uint flag = GB(r, 7, 2) | 4;
 				for (uint i = ScaleByMapSize(GB(r, 9, 7) + 450); i != 0; --i) {
 					GenerateTerrain(4, flag);
 				}
-				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 			} break;
 
 			case LT_TROPIC: {
-				SetGeneratingWorldProgress(GWP_LANDSCAPE, 3 + gwp_desert_amount);
+				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2 + gwp_desert_amount);
 
 				uint32 r = Random();
 
 				for (uint i = ScaleByMapSize(GB(r, 0, 7) + 170); i != 0; --i) {
 					GenerateTerrain(0, 0);
 				}
-				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 				uint flag = GB(r, 7, 2) | 4;
 				for (uint i = ScaleByMapSize(GB(r, 9, 8) + 1700); i != 0; --i) {
 					GenerateTerrain(0, flag);
 				}
-				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 				flag ^= 2;
 
 				for (uint i = ScaleByMapSize(GB(r, 17, 7) + 410); i != 0; --i) {
 					GenerateTerrain(3, flag);
 				}
-				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 			} break;
 
 			default: {
-				SetGeneratingWorldProgress(GWP_LANDSCAPE, 1);
+				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
 
 				uint32 r = Random();
 
@@ -922,13 +916,16 @@ void GenerateLandscape(byte mode)
 				for (; i != 0; --i) {
 					GenerateTerrain(_settings_game.difficulty.terrain_type, 0);
 				}
-				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 			} break;
 		}
 	}
 
+	/* Do not call IncreaseGeneratingWorldProgress() before FixSlopes(),
+	 * it allows screen redraw. Drawing of broken slopes crashes the game */
 	FixSlopes();
+	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 	ConvertGroundTilesIntoWaterTiles();
+	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 	if (_settings_game.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();
 }

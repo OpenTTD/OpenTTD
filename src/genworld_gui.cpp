@@ -1250,6 +1250,7 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 	if (total == 0) {
 		assert(_tp.cls == _generation_class_table[cls]);
 		_tp.current += progress;
+		assert(_tp.current <= _tp.total);
 	} else {
 		_tp.cls   = _generation_class_table[cls];
 		_tp.current = progress;
