@@ -2946,7 +2946,7 @@ int Train::UpdateSpeed()
 			this->max_speed = this->GetCurrentMaxSpeed();
 			accel = this->GetAcceleration();
 			break;
- 	}
+	}
 
 	uint spd = this->subspeed + accel;
 	this->subspeed = (byte)spd;

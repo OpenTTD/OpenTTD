@@ -2476,7 +2476,8 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground.sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);
 	}
 
-	DrawCommonTileSeqInGUI(x, y, t, total_offset, 0, pal);
+	/* Default waypoint has no railtype specific sprites */
+	DrawCommonTileSeqInGUI(x, y, t, st == STATION_WAYPOINT ? 0 : total_offset, 0, pal);
 }
 
 static uint GetSlopeZ_Station(TileIndex tile, uint x, uint y)
