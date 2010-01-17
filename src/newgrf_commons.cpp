@@ -339,14 +339,15 @@ void DrawTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOpt
 		if (GB(dtss->image.sprite, 0, SPRITE_WIDTH) == 0) continue;
 
 		SpriteID image = dtss->image.sprite;
-		SpriteID pal   = dtss->image.pal;
 
 		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
 		if (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
 
-		if (IS_CUSTOM_SPRITE(image)) image += stage;
+		if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
+			image += stage;
+		}
 
-		pal = SpriteLayoutPaletteTransform(image, pal, default_palette);
+		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(

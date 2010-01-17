@@ -20,15 +20,6 @@
 #define GENERAL_SPRITE_COLOUR(colour) ((colour) + PALETTE_RECOLOUR_START)
 #define COMPANY_SPRITE_COLOUR(owner) (GENERAL_SPRITE_COLOUR(_company_colours[owner]))
 
-/**
- * Whether a sprite comes from the original graphics files or a new grf file
- * (either supplied by OpenTTD or supplied by the user).
- *
- * @param sprite The sprite to check
- * @return True if it is a new sprite, or false if it is original.
- */
-#define IS_CUSTOM_SPRITE(sprite) ((sprite) >= SPR_SIGNALS_BASE)
-
 /* The following describes bunch of sprites to be drawn together in a single 3D
  * bounding box. Used especially for various multi-sprite buildings (like
  * depots or stations): */

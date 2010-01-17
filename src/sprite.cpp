@@ -36,7 +36,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
 		if (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
 
-		if (newgrf_offset == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
+		if (newgrf_offset == 0 || !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 			image += orig_offset;
 		} else {
 			image += newgrf_offset;
@@ -75,7 +75,7 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		SpriteID image = dtss->image.sprite;
-		if (newgrf_offset == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
+		if (newgrf_offset == 0 || !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 			image += orig_offset;
 		} else {
 			image += newgrf_offset;

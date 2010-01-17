@@ -1139,8 +1139,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 					dts->ground.pal = grf_load_word(&buf);
 					if (dts->ground.sprite == 0) continue;
 					if (HasBit(dts->ground.pal, 15)) {
+						/* Use sprite from Action 1 */
 						ClrBit(dts->ground.pal, 15);
-						SetBit(dts->ground.sprite, SPRITE_MODIFIER_USE_OFFSET);
+						SetBit(dts->ground.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 					}
 
 					MapSpriteMappingRecolour(&dts->ground);
@@ -1160,10 +1161,11 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 						dtss->image.sprite = grf_load_word(&buf);
 						dtss->image.pal = grf_load_word(&buf);
 
-						/* Remap flags as ours collide */
 						if (HasBit(dtss->image.pal, 15)) {
 							ClrBit(dtss->image.pal, 15);
-							SetBit(dtss->image.sprite, SPRITE_MODIFIER_USE_OFFSET);
+						} else {
+							/* Use sprite from Action 1 (yes, this is inverse to above) */
+							SetBit(dtss->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 						}
 
 						MapSpriteMappingRecolour(&dtss->image);
@@ -2937,6 +2939,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 							SpriteID sprite = _cur_grffile->spriteset_start + spriteset * num_spriteset_ents;
 							SB(group->dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
 							ClrBit(group->dts->ground.pal, 15);
+							SetBit(group->dts->ground.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 						}
 					}
 
@@ -2964,6 +2967,7 @@ static void NewSpriteGroup(byte *buf, size_t len)
 								SpriteID sprite = _cur_grffile->spriteset_start + spriteset * num_spriteset_ents;
 								SB(seq->image.sprite, 0, SPRITE_WIDTH, sprite);
 								ClrBit(seq->image.pal, 15);
+								SetBit(seq->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 							}
 						}
 

@@ -2427,7 +2427,7 @@ static void DrawTile_Station(TileInfo *ti)
 	} else {
 		SpriteID image = t->ground.sprite;
 		SpriteID pal   = t->ground.pal;
-		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
+		if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 			image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 			image += custom_ground_offset;
 		} else {

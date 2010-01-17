@@ -1419,7 +1419,7 @@ enum AnimCursors {
 enum SpriteSetup {
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
 	RECOLOUR_BIT = 30,          ///< toggles recolouring in the sprite
-	OFFSET_BIT = 29,
+	CUSTOM_BIT = 29,
 	OPAQUE_BIT = 28,
 
 	PALETTE_WIDTH = 24,         ///< number of bits of the sprite containing the recolour palette
@@ -1435,7 +1435,8 @@ enum SpriteSetup {
  * @see SpriteSetup
  */
 enum Modifiers {
-	SPRITE_MODIFIER_USE_OFFSET    = OFFSET_BIT,
+	/** Set when a sprite originates from an Action 1 */
+	SPRITE_MODIFIER_CUSTOM_SPRITE = CUSTOM_BIT,
 	/** Set when a sprite must not ever be displayed transparently */
 	SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT,
 	/** when a sprite is to be displayed transparently, this bit needs to be set. */

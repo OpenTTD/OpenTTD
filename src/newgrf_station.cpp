@@ -900,7 +900,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	SpriteID image = sprites->ground.sprite;
 	SpriteID pal = sprites->ground.pal;
-	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
+	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
 		image += rti->custom_ground_offset;
 	} else {

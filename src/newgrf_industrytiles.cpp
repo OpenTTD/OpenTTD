@@ -173,7 +173,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGro
 	SpriteID image = dts->ground.sprite;
 	SpriteID pal   = dts->ground.pal;
 
-	if (IS_CUSTOM_SPRITE(image)) image += stage;
+	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) {
 		/* If the ground sprite is the default flat water sprite, draw also canal/river borders
