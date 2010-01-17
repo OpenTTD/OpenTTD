@@ -1112,7 +1112,7 @@ static const WindowDesc _generate_progress_desc(
 	_nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
 );
 
-struct tp_info {
+struct GenWorldStatus {
 	uint percent;
 	StringID cls;
 	uint current;
@@ -1120,9 +1120,9 @@ struct tp_info {
 	int timer;
 };
 
-static tp_info _tp;
+static GenWorldStatus _gws;
 
-static const StringID _generation_class_table[GWP_CLASS_COUNT]  = {
+static const StringID _generation_class_table[]  = {
 	STR_GENERATION_WORLD_GENERATION,
 	STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION,
 	STR_GENERATION_CLEARING_TILES,
@@ -1134,6 +1134,7 @@ static const StringID _generation_class_table[GWP_CLASS_COUNT]  = {
 	STR_GENERATION_PREPARING_TILELOOP,
 	STR_GENERATION_PREPARING_GAME
 };
+assert_compile(lengthof(_generation_class_table) == GWP_CLASS_COUNT);
 
 
 static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
@@ -1198,18 +1199,18 @@ struct GenerateProgressWindow : public Window {
 			case GPWW_PROGRESS_BAR:
 				/* Draw the % complete with a bar and a text */
 				DrawFrameRect(r.left, r.top, r.right, r.bottom, COLOUR_GREY, FR_BORDERONLY);
-				DrawFrameRect(r.left + 1, r.top + 1, (int)((r.right - r.left - 2) * _tp.percent / 100) + r.left + 1, r.bottom - 1, COLOUR_MAUVE, FR_NONE);
-				SetDParam(0, _tp.percent);
+				DrawFrameRect(r.left + 1, r.top + 1, (int)((r.right - r.left - 2) * _gws.percent / 100) + r.left + 1, r.bottom - 1, COLOUR_MAUVE, FR_NONE);
+				SetDParam(0, _gws.percent);
 				DrawString(r.left, r.right, r.top + 5, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case GPWW_PROGRESS_TEXT:
 				/* Tell which class we are generating */
-				DrawString(r.left, r.right, r.top, _tp.cls, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left, r.right, r.top, _gws.cls, TC_FROMSTRING, SA_CENTER);
 
 				/* And say where we are in that class */
-				SetDParam(0, _tp.current);
-				SetDParam(1, _tp.total);
+				SetDParam(0, _gws.current);
+				SetDParam(1, _gws.total);
 				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_CENTER);
 		}
 	}
@@ -1220,11 +1221,11 @@ struct GenerateProgressWindow : public Window {
  */
 void PrepareGenerateWorldProgress()
 {
-	_tp.cls   = STR_GENERATION_WORLD_GENERATION;
-	_tp.current = 0;
-	_tp.total   = 0;
-	_tp.percent = 0;
-	_tp.timer   = 0; // Forces to paint the progress window immediatelly
+	_gws.cls     = STR_GENERATION_WORLD_GENERATION;
+	_gws.current = 0;
+	_gws.total   = 0;
+	_gws.percent = 0;
+	_gws.timer   = 0; // Forces to paint the progress window immediatelly
 }
 
 /**
@@ -1236,7 +1237,7 @@ void ShowGenerateWorldProgress()
 	new GenerateProgressWindow();
 }
 
-static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total)
+static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uint total)
 {
 	static const int percent_table[GWP_CLASS_COUNT + 1] = {0, 5, 15, 20, 40, 60, 65, 80, 85, 99, 100 };
 
@@ -1248,36 +1249,36 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 	if (IsGeneratingWorldAborted()) HandleGeneratingWorldAbortion();
 
 	if (total == 0) {
-		assert(_tp.cls == _generation_class_table[cls]);
-		_tp.current += progress;
-		assert(_tp.current <= _tp.total);
+		assert(_gws.cls == _generation_class_table[cls]);
+		_gws.current += progress;
+		assert(_gws.current <= _gws.total);
 	} else {
-		_tp.cls   = _generation_class_table[cls];
-		_tp.current = progress;
-		_tp.total   = total;
-		_tp.percent = percent_table[cls];
+		_gws.cls     = _generation_class_table[cls];
+		_gws.current = progress;
+		_gws.total   = total;
+		_gws.percent = percent_table[cls];
 	}
 
 	/* Don't update the screen too often. So update it once in every once in a while... */
-	if (!_network_dedicated && _tp.timer != 0 && _realtime_tick - _tp.timer < GENWORLD_REDRAW_TIMEOUT) return;
+	if (!_network_dedicated && _gws.timer != 0 && _realtime_tick - _gws.timer < GENWORLD_REDRAW_TIMEOUT) return;
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
-	_tp.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_tp.current == 0 ? 0 : _tp.current - 1) / _tp.total;
+	_gws.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_gws.current == 0 ? 0 : _gws.current - 1) / _gws.total;
 
 	if (_network_dedicated) {
 		static uint last_percent = 0;
 
 		/* Never display 0% */
-		if (_tp.percent == 0) return;
+		if (_gws.percent == 0) return;
 		/* Reset if percent is lower than the last recorded */
-		if (_tp.percent < last_percent) last_percent = 0;
+		if (_gws.percent < last_percent) last_percent = 0;
 		/* Display every 5%, but 6% is also very valid.. just not smaller steps than 5% */
-		if (_tp.percent % 5 != 0 && _tp.percent <= last_percent + 5) return;
+		if (_gws.percent % 5 != 0 && _gws.percent <= last_percent + 5) return;
 		/* Never show steps smaller than 2%, even if it is a mod 5% */
-		if (_tp.percent <= last_percent + 2) return;
+		if (_gws.percent <= last_percent + 2) return;
 
-		DEBUG(net, 1, "Map generation percentage complete: %d", _tp.percent);
-		last_percent = _tp.percent;
+		DEBUG(net, 1, "Map generation percentage complete: %d", _gws.percent);
+		last_percent = _gws.percent;
 
 		/* Don't continue as dedicated never has a thread running */
 		return;
@@ -1295,7 +1296,7 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 	_genworld_mapgen_mutex->BeginCritical();
 	_genworld_paint_mutex->EndCritical();
 
-	_tp.timer = _realtime_tick;
+	_gws.timer = _realtime_tick;
 }
 
 /**
@@ -1306,7 +1307,7 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
  * Warning: this function isn't clever. Don't go from class 4 to 3. Go upwards, always.
  *  Also, progress works if total is zero, total works if progress is zero.
  */
-void SetGeneratingWorldProgress(gwp_class cls, uint total)
+void SetGeneratingWorldProgress(GenWorldProgress cls, uint total)
 {
 	if (total == 0) return;
 
@@ -1320,7 +1321,7 @@ void SetGeneratingWorldProgress(gwp_class cls, uint total)
  * Warning: this function isn't clever. Don't go from class 4 to 3. Go upwards, always.
  *  Also, progress works if total is zero, total works if progress is zero.
  */
-void IncreaseGeneratingWorldProgress(gwp_class cls)
+void IncreaseGeneratingWorldProgress(GenWorldProgress cls)
 {
 	/* In fact the param 'class' isn't needed.. but for some security reasons, we want it around */
 	_SetGeneratingWorldProgress(cls, 1, 0);

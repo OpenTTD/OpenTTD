@@ -28,31 +28,31 @@ enum {
 };
 
 /* Modes for GenerateWorld */
-enum GenerateWorldMode {
-	GW_NEWGAME   = 0,    ///< Generate a map for a new game
-	GW_EMPTY     = 1,    ///< Generate an empty map (sea-level)
-	GW_RANDOM    = 2,    ///< Generate a random map for SE
-	GW_HEIGHTMAP = 3,    ///< Generate a newgame from a heightmap
+enum GenWorldMode {
+	GWM_NEWGAME   = 0, ///< Generate a map for a new game
+	GWM_EMPTY     = 1, ///< Generate an empty map (sea-level)
+	GWM_RANDOM    = 2, ///< Generate a random map for SE
+	GWM_HEIGHTMAP = 3, ///< Generate a newgame from a heightmap
 };
 
-typedef void gw_done_proc();
-typedef void gw_abort_proc();
+typedef void GWDoneProc();
+typedef void GWAbortProc();
 
-struct gw_info {
+struct GenWorldInfo {
 	bool active;           ///< Is generating world active
 	bool abort;            ///< Whether to abort the thread ASAP
 	bool quit_thread;      ///< Do we want to quit the active thread
 	bool threaded;         ///< Whether we run _GenerateWorld threaded
-	GenerateWorldMode mode;///< What mode are we making a world in
+	GenWorldMode mode;     ///< What mode are we making a world in
 	CompanyID lc;          ///< The local_company before generating
 	uint size_x;           ///< X-size of the map
 	uint size_y;           ///< Y-size of the map
-	gw_done_proc *proc;    ///< Proc that is called when done (can be NULL)
-	gw_abort_proc *abortp; ///< Proc that is called when aborting (can be NULL)
+	GWDoneProc *proc;      ///< Proc that is called when done (can be NULL)
+	GWAbortProc *abortp;   ///< Proc that is called when aborting (can be NULL)
 	class ThreadObject *thread; ///< The thread we are in (can be NULL)
 };
 
-enum gwp_class {
+enum GenWorldProgress {
 	GWP_MAP_INIT,    ///< Initialize/allocate the map, start economy
 	GWP_LANDSCAPE,   ///< Create the landscape
 	GWP_ROUGH_ROCKY, ///< Make rough and rocky areas
@@ -71,24 +71,23 @@ enum gwp_class {
  */
 static inline bool IsGeneratingWorld()
 {
-	extern gw_info _gw;
-
+	extern GenWorldInfo _gw;
 	return _gw.active;
 }
 
 /* genworld.cpp */
 bool IsGenerateWorldThreaded();
-void GenerateWorldSetCallback(gw_done_proc *proc);
-void GenerateWorldSetAbortCallback(gw_abort_proc *proc);
+void GenerateWorldSetCallback(GWDoneProc *proc);
+void GenerateWorldSetAbortCallback(GWAbortProc *proc);
 void WaitTillGeneratedWorld();
-void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_settings = true);
+void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_settings = true);
 void AbortGeneratingWorld();
 bool IsGeneratingWorldAborted();
 void HandleGeneratingWorldAbortion();
 
 /* genworld_gui.cpp */
-void SetGeneratingWorldProgress(gwp_class cls, uint total);
-void IncreaseGeneratingWorldProgress(gwp_class cls);
+void SetGeneratingWorldProgress(GenWorldProgress cls, uint total);
+void IncreaseGeneratingWorldProgress(GenWorldProgress cls);
 void PrepareGenerateWorldProgress();
 void ShowGenerateWorldProgress();
 void StartNewGameWithoutGUI(uint seed);

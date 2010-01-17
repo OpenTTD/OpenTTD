@@ -48,11 +48,11 @@ void StartupDisasters();
 
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings);
 
-/* Please only use this variable in genworld.h and genworld.c and
+/* Please only use this variable in genworld.h and genworld.cpp and
  *  nowhere else. For speed improvements we need it to be global, but
  *  in no way the meaning of it is to use it anywhere else besides
- *  in the genworld.h and genworld.c! -- TrueLight */
-gw_info _gw;
+ *  in the genworld.h and genworld.cpp! -- TrueLight */
+GenWorldInfo _gw;
 
 /** Rights for the map generation */
 ThreadMutex *_genworld_mapgen_mutex = ThreadMutex::New();
@@ -108,7 +108,7 @@ static void _GenerateWorld(void *arg)
 		StartupEconomy();
 
 		/* Don't generate landscape items when in the scenario editor. */
-		if (_gw.mode == GW_EMPTY) {
+		if (_gw.mode == GWM_EMPTY) {
 			SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
 
 			/* Make sure the tiles at the north border are void tiles if needed. */
@@ -150,7 +150,7 @@ static void _GenerateWorld(void *arg)
 		_generating_world = false;
 
 		/* No need to run the tile loop in the scenario editor. */
-		if (_gw.mode != GW_EMPTY) {
+		if (_gw.mode != GWM_EMPTY) {
 			uint i;
 
 			SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
@@ -192,7 +192,7 @@ static void _GenerateWorld(void *arg)
  * Set here the function, if any, that you want to be called when landscape
  *  generation is done.
  */
-void GenerateWorldSetCallback(gw_done_proc *proc)
+void GenerateWorldSetCallback(GWDoneProc *proc)
 {
 	_gw.proc = proc;
 }
@@ -201,7 +201,7 @@ void GenerateWorldSetCallback(gw_done_proc *proc)
  * Set here the function, if any, that you want to be called when landscape
  *  generation is aborted.
  */
-void GenerateWorldSetAbortCallback(gw_abort_proc *proc)
+void GenerateWorldSetAbortCallback(GWAbortProc *proc)
 {
 	_gw.abortp = proc;
 }
@@ -266,7 +266,7 @@ void HandleGeneratingWorldAbortion()
  * @param size_y The Y-size of the map.
  * @param reset_settings Whether to reset the game configuration (used for restart)
  */
-void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_settings)
+void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_settings)
 {
 	if (_gw.active) return;
 	_gw.mode   = mode;
@@ -308,7 +308,7 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y, bool reset_
 	}
 
 	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0 ||
-	    !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
+			!ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_genworld_mapgen_mutex->EndCritical();

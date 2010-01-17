@@ -368,7 +368,7 @@ static void LoadIntroGame()
 
 	/* Load the default opening screen savegame */
 	if (SaveOrLoad("opntitle.dat", SL_LOAD, DATA_DIR) != SL_OK) {
-		GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
+		GenerateWorld(GWM_EMPTY, 64, 64); // if failed loading, make empty world.
 		WaitTillGeneratedWorld();
 		SetLocalCompany(COMPANY_SPECTATOR);
 	} else {
@@ -721,7 +721,7 @@ int ttd_main(int argc, char *argv[])
 	_genworld_paint_mutex->BeginCritical();
 	_genworld_mapgen_mutex->BeginCritical();
 
-	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
+	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();
 
 	CheckForMissingGlyphsInLoadedLanguagePack();
@@ -833,7 +833,7 @@ static void MakeNewGame(bool from_heightmap, bool reset_settings)
 	InitializeDynamicVariables();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
-	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y, reset_settings);
+	GenerateWorld(from_heightmap ? GWM_HEIGHTMAP : GWM_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y, reset_settings);
 }
 
 static void MakeNewEditorWorldDone()
@@ -848,7 +848,7 @@ static void MakeNewEditorWorld()
 	ResetGRFConfig(true);
 
 	GenerateWorldSetCallback(&MakeNewEditorWorldDone);
-	GenerateWorld(GW_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
+	GenerateWorld(GWM_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 }
 
 void StartupCompanies();
@@ -1033,7 +1033,7 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
 			SetLocalCompany(OWNER_NONE);
 
-			GenerateWorld(GW_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
+			GenerateWorld(GWM_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			MarkWholeScreenDirty();
 			break;
 
@@ -1066,7 +1066,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_GENRANDLAND: // Generate random land within scenario editor
 			SetLocalCompany(OWNER_NONE);
-			GenerateWorld(GW_RANDOM, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
+			GenerateWorld(GWM_RANDOM, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			/* XXX: set date */
 			MarkWholeScreenDirty();
 			break;
