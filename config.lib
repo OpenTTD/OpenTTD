@@ -2366,7 +2366,7 @@ detect_lzo2() {
 }
 
 detect_libtimidity() {
-	detect_library "$with_libtimidity" "libtimidity" "" "libtimidity.a" "timidity.h"
+	detect_library "$with_libtimidity" "libtimidity" "libtimidity.a" "" "timidity.h"
 }
 
 detect_png() {
