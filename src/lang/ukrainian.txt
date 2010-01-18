@@ -2137,8 +2137,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Вибе
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Малий
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Міський
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Столичний аеропорт
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Міжнародний аеропорт
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Столичний
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Міжнародний
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Приміський
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Міжконтинентальний
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Гелікопорт

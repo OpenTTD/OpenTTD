@@ -2534,7 +2534,7 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Coste ope
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste operación Vehículos
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Coste operación Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Coste operación Barcos
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantenimiento de inmuebles
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantenimiento de Propiedades
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingresos Trenes
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingresos Vehículos
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingresos Aeronaves

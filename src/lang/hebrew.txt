@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}שנה �
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}סגור חלון
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}כותרת החלון - גרור להזזה
+STR_TOOLTIP_SHADE                                               :{BLACK}הצל חלון - הצג רק את שורת הכותרת
 STR_TOOLTIP_STICKY                                              :{BLACK}'סמן חלון זה כחלון מוגן מפני מקש 'סגור את כל החלונות
 STR_TOOLTIP_RESIZE                                              :{BLACK}לחץ ומשוך כדי לשנות את גודל החלון
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}החלף בין גודל חלון קטן/גדול
@@ -334,7 +335,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}מקם �
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :שמור תרחיש
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :טען תרחיש
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :טען מפת גובה
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :טען מפת גבהים
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :צא מהעורך
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
@@ -607,6 +608,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}(בחר 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}עירבוב תוכניות פועל/כבוי
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}הצג את חלון בחירת המנגינה
 
+STR_ERROR_NO_SONGS                                              :{WHITE}נבחרה ערכת מוזיקה ללא שירים. לא יושמעו שירים
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}בחירת תכנית מנגינה
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -620,7 +623,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}החברות שהגיעו {NUM}{}({STRING} לרמת)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}חמשת החברות שהגיעו לרמת {NUM}{}){STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}טבלת ליגה של חברות ב {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}.{COMMA}
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :איש עסקים
@@ -691,6 +694,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}({1:N
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}השתק את כולן
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}הצג את כולן
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}הצג גובה
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}אל תציג תעשיות על המפה
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}הצג את כל התעשיות על המפה
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}שנה מצב הצגה של מפת גבהים
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}הצג הודעה או חדשות אחרונים
@@ -781,7 +788,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}מאגרי נפט חדשים נמצאו ב-{INDUSTRY}!{}צפויה הכפלה בתפוקה!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}!!!צפויות להביא להכפלת התפוקה {INDUSTRY} שיטות גידול מתקדמות ב
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} התפוקה ב-{INDUSTRY} עלתה ב-{COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}קטנה ב 50% {INDUSTRY} תפוקת
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :תפוקת {BIGFONT}{BLACK}{INDUSTRY} ירדה ב-50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}מגיפת מזיקים ב-{INDUSTRY}!{} התפוקה ירדה ב-50%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} ייצור חודשי ב {INDUSTRY} ירד ב{COMMA}%!
 
@@ -942,6 +949,11 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ערכת
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}בחר את ערכת הצלילים הבסיסיים לשימוש
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הצלילים הבסיסיים
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ערכת מוזיקת בסיס
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}בחר בערכת מוזיקת הבסיס לשימוש
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} קובץ פגום{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}מידע נוסף אודות ערכת המוזיקה הבסיסית
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל בשינויי למסך מלא
 
 # Custom currency window
@@ -1009,6 +1021,13 @@ STR_NUM_NORMAL                                                  :רגיל
 STR_NUM_HIGH                                                    :גבוה
 STR_NUM_CUSTOM                                                  :אחר
 
+STR_VARIETY_NONE                                                :ללא
+STR_VARIETY_VERY_LOW                                            :נמוך מאוד
+STR_VARIETY_LOW                                                 :נמוך
+STR_VARIETY_MEDIUM                                              :בינוני
+STR_VARIETY_HIGH                                                :גבוה
+STR_VARIETY_VERY_HIGH                                           :גבוה מאוד
+
 STR_AI_SPEED_VERY_SLOW                                          :איטי ביותר
 STR_AI_SPEED_SLOW                                               :איטי
 STR_AI_SPEED_MEDIUM                                             :בינוני
@@ -1064,6 +1083,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}אפש�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{ORANGE}{STRING}{LTBLUE} :מודל האצת רכבות
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :מקורי
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :מציאותי
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}תלילות מדרון עבור רכבות {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}אסור על רכבות וספינות לבצע פניות של 90 מעלות: {ORANGE}{STRING} {LTBLUE} (not with OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}אפשר חיבור של תחנות שנבנות ליד תחנה קיימת: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{ORANGE}{STRING}{LTBLUE} :אפשר חיבור בין תחנות שאינן צמודות זו לזו
@@ -1130,7 +1150,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}אלג�
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :בכלל לא
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :מקורי
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :משופר
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}סיבוב מפת גובה: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}סיבוב מפת גבהים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :נגד כיוון השעון
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :בכיוון השעון
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{ORANGE}{STRING}{LTBLUE} :עומק הקרקע עבור מפה שטוחה
@@ -1163,8 +1183,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}גלילה בלחיצה שמאלית: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}השתמש {ORANGE}{STRING}{LTBLUE} במבנה התאריך בשביל שמות קבצי השמירה.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (דצמבר 31 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (12-31-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (31 בדצמבר 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}עצור משחק אוטומטית אחרי התחלת משחק חדש: {ORANGE}{STRING}
@@ -1223,6 +1243,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{ORANGE}{STRING
 STR_CONFIG_SETTING_STARTING_YEAR                                :{ORANGE}{STRING}{LTBLUE} :שנת התחלה
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}אפשר כלכלה עדינה (יותר, שינויים קטנים יותר): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}אפשר קניית מניות מחברות אחרות: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}אחוז הרווח לתשלום במערכות ההזנה {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{ORANGE}משבצ(ו)ת {STRING}{LTBLUE} :בעת גרירה, הצג רמזורים בכל
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{ORANGE}{STRING}{LTBLUE} :בנה רמזורים מכאניים לפני
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{ORANGE}{STRING}{LTBLUE} :אפשר ממשק ויזואלי עבור רמזורים
@@ -1248,6 +1269,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :אסור
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :מותר
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :מותר, מתווה עיר מותאם אישית
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}מיקום עצים במהלך המשחק: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ללא {RED}(שובר מנסרת עץ)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :רק ביערות גשם
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :בכל מקום
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{ORANGE}{STRING}{LTBLUE} :מיקום הסרגל העיקרי
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :שמאל
@@ -1308,7 +1333,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}משחק חדש
 STR_INTRO_LOAD_GAME                                             :{BLACK}טען משחק
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}שחק תרחיש
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}שחק במפת גובה
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}שחק במפת גבהים
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}עורך השלבים
 STR_INTRO_MULTIPLAYER                                           :{BLACK}משחק מרובה שחקנים
 
@@ -1322,7 +1347,7 @@ STR_INTRO_QUIT                                                  :{BLACK}צא
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}טען משחק שמור
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}התחל משחק חדש בשימוש מפת גובה כנוף.
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}התחל משחק חדש בשימוש מפת גבהים כנוף.
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}התחל משחק חדש עם תרחיש מותאם אישית
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}צור עולם/תרחיש מותאמים אישית
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}התחל משחק מרובה משתתפים
@@ -1342,7 +1367,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}צא
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}?{STRING} אתה בטוח שברצונך לצאת ולחזור ל
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}אתה בטוח שברצונך לצאת ולחזור ל{STRING}?
 STR_QUIT_YES                                                    :{BLACK}כן
 STR_QUIT_NO                                                     :{BLACK}לא
 
@@ -1361,7 +1386,7 @@ STR_OSNAME_SUNOS                                                :סולריס
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}עזוב משחק
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}?האם אתה בטוח שברצונך לעזוב את המשחק
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}?האם אתה בטוח שברצונך לצאת משלב זה
+STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}האם אתה בטוח שברצונך לצאת משלב זה?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}(cheats) טריקים
@@ -1767,7 +1792,7 @@ STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK} לחץ 
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK} בחר הכל
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK} בחר את כל התכנים להורדה
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} בחר שידרוגים
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} בחר רת כל התכנים המהווים שדרוג לבחירה קיימת
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} בחר את כל התכנים המהווים שדרוג לבחירה קיימת
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} בטל בחירה
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} בטל את כל הבחירות להורדה
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}סינון תוית\שם:
@@ -1801,6 +1826,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :ספריית ב
 STR_CONTENT_TYPE_SCENARIO                                       :תרחיש
 STR_CONTENT_TYPE_HEIGHTMAP                                      :מפת גבהים
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :צלילים בסיסיים
+STR_CONTENT_TYPE_BASE_MUSIC                                     :מוזיקת בסיס
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}מוריד תוכן...
@@ -2197,7 +2223,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}שמור
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}טען משחק
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}שמור תרחיש
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}טען תרחיש
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}טען מפת גובה
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}טען מפת גבהים
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}לחץ כאן כדי לעבור לתיקית בחירת מחדל של שמירות
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}בתים פנויים {BYTES}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}רשימה של כוננים, תיקיות וקובצי משחקים שמורים
@@ -2228,6 +2254,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגו
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK} :כמות ימים/אגמים
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} :חלקלקות
+STR_MAPGEN_VARIETY                                              :{BLACK}הפצה מגוונת:
 STR_MAPGEN_GENERATE                                             :{WHITE}יצירת קרקע
 
 # Strings for map borders at game generation
@@ -3179,6 +3206,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}בחר �
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}דה-באג לבינה מלאכותית
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}שם הבינה המלאכותית
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
@@ -3626,7 +3654,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :בנק דן-ח�
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :מכרה פחם
 STR_INDUSTRY_NAME_POWER_STATION                                 :תחנת חשמל
-STR_INDUSTRY_NAME_SAWMILL                                       :מנסרה
+STR_INDUSTRY_NAME_SAWMILL                                       :מנסרת עץ
 STR_INDUSTRY_NAME_FOREST                                        :יער
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :בית זיקוק
 STR_INDUSTRY_NAME_OIL_RIG                                       :אסדת קידוח נפט
