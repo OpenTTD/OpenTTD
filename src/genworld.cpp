@@ -48,10 +48,12 @@ void StartupDisasters();
 
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings);
 
-/* Please only use this variable in genworld.h and genworld.cpp and
+/**
+ * Please only use this variable in genworld.h and genworld.cpp and
  *  nowhere else. For speed improvements we need it to be global, but
  *  in no way the meaning of it is to use it anywhere else besides
- *  in the genworld.h and genworld.cpp! -- TrueLight */
+ *  in the genworld.h and genworld.cpp! -- TrueLight
+ */
 GenWorldInfo _gw;
 
 /** Rights for the map generation */
@@ -61,6 +63,7 @@ ThreadMutex *_genworld_paint_mutex = ThreadMutex::New();
 
 /**
  * Tells if the world generation is done in a thread or not.
+ * @return the 'threaded' status
  */
 bool IsGenerateWorldThreaded()
 {
@@ -91,7 +94,7 @@ static void CleanupGeneration()
 /**
  * The internal, real, generate function.
  */
-static void _GenerateWorld(void *arg)
+static void _GenerateWorld(void *)
 {
 	try {
 		_generating_world = true;
@@ -190,7 +193,8 @@ static void _GenerateWorld(void *arg)
 
 /**
  * Set here the function, if any, that you want to be called when landscape
- *  generation is done.
+ * generation is done.
+ * @param proc callback procedure
  */
 void GenerateWorldSetCallback(GWDoneProc *proc)
 {
@@ -199,7 +203,8 @@ void GenerateWorldSetCallback(GWDoneProc *proc)
 
 /**
  * Set here the function, if any, that you want to be called when landscape
- *  generation is aborted.
+ * generation is aborted.
+ * @param proc callback procedure
  */
 void GenerateWorldSetAbortCallback(GWAbortProc *proc)
 {
@@ -208,7 +213,7 @@ void GenerateWorldSetAbortCallback(GWAbortProc *proc)
 
 /**
  * This will wait for the thread to finish up his work. It will not continue
- *  till the work is done.
+ * till the work is done.
  */
 void WaitTillGeneratedWorld()
 {
@@ -235,6 +240,7 @@ void AbortGeneratingWorld()
 
 /**
  * Is the generation being aborted?
+ * @return the 'aborted' status
  */
 bool IsGeneratingWorldAborted()
 {
@@ -261,7 +267,7 @@ void HandleGeneratingWorldAbortion()
 
 /**
  * Generate a world.
- * @param mode The mode of world generation (see GenerateWorldModes).
+ * @param mode The mode of world generation (see GenWorldMode).
  * @param size_x The X-size of the map.
  * @param size_y The Y-size of the map.
  * @param reset_settings Whether to reset the game configuration (used for restart)

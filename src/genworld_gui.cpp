@@ -40,15 +40,18 @@
  * In what 'mode' the GenerateLandscapeWindowProc is.
  */
 enum GenenerateLandscapeWindowMode {
-	GLWM_GENERATE,
-	GLWM_HEIGHTMAP,
-	GLWM_SCENARIO,
-	GLWM_END
+	GLWM_GENERATE,  ///< Generate new game
+	GLWM_HEIGHTMAP, ///< Load from heightmap
+	GLWM_SCENARIO,  ///< Generate flat land
 };
 
 extern void SwitchToMode(SwitchMode new_mode);
 extern void MakeNewgameSettingsLive();
 
+/**
+ * Changes landscape type and sets genworld window dirty
+ * @param landscape new landscape type
+ */
 static inline void SetNewLandscapeType(byte landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
@@ -56,51 +59,53 @@ static inline void SetNewLandscapeType(byte landscape)
 	SetWindowClassesDirty(WC_GENERATE_LANDSCAPE);
 }
 
+/** Widgets of GenerateLandscapeWindow */
 enum GenerateLandscapeWindowWidgets {
-	GLAND_TEMPERATE,
-	GLAND_ARCTIC,
-	GLAND_TROPICAL,
-	GLAND_TOYLAND,
+	GLAND_TEMPERATE,          ///< Button with icon "Temperate"
+	GLAND_ARCTIC,             ///< Button with icon "Arctic"
+	GLAND_TROPICAL,           ///< Button with icon "Tropical"
+	GLAND_TOYLAND,            ///< Button with icon "Toyland"
 
-	GLAND_MAPSIZE_X_PULLDOWN,
-	GLAND_MAPSIZE_Y_PULLDOWN,
+	GLAND_MAPSIZE_X_PULLDOWN, ///< Dropdown 'map X size'
+	GLAND_MAPSIZE_Y_PULLDOWN, ///< Dropdown 'map Y size'
 
-	GLAND_TOWN_PULLDOWN,
-	GLAND_INDUSTRY_PULLDOWN,
+	GLAND_TOWN_PULLDOWN,      ///< Dropdown 'No. of towns'
+	GLAND_INDUSTRY_PULLDOWN,  ///< Dropdown 'No. of industries'
 
-	GLAND_RANDOM_EDITBOX,
-	GLAND_RANDOM_BUTTON,
+	GLAND_RANDOM_EDITBOX,     ///< 'Random seed' editbox
+	GLAND_RANDOM_BUTTON,      ///< 'Randomise' button
 
-	GLAND_GENERATE_BUTTON,
+	GLAND_GENERATE_BUTTON,    ///< 'Generate' button
 
-	GLAND_START_DATE_DOWN,
-	GLAND_START_DATE_TEXT,
-	GLAND_START_DATE_UP,
+	GLAND_START_DATE_DOWN,    ///< Decrease start year
+	GLAND_START_DATE_TEXT,    ///< Start year
+	GLAND_START_DATE_UP,      ///< Increase start year
 
-	GLAND_SNOW_LEVEL_DOWN,
-	GLAND_SNOW_LEVEL_TEXT,
-	GLAND_SNOW_LEVEL_UP,
+	GLAND_SNOW_LEVEL_DOWN,    ///< Docrease snow level
+	GLAND_SNOW_LEVEL_TEXT,    ///< Snow level
+	GLAND_SNOW_LEVEL_UP,      ///< Increase snow level
 
-	GLAND_TREE_PULLDOWN,
-	GLAND_LANDSCAPE_PULLDOWN,
-	GLAND_HEIGHTMAP_NAME_TEXT,
-	GLAND_HEIGHTMAP_NAME_SPACER,
-	GLAND_HEIGHTMAP_SIZE_TEXT,
-	GLAND_HEIGHTMAP_ROTATION_PULLDOWN,
+	GLAND_TREE_PULLDOWN,      ///< Dropdown 'Tree algorithm'
+	GLAND_LANDSCAPE_PULLDOWN, ///< Dropdown 'Land generator'
 
-	GLAND_TERRAIN_PULLDOWN,
-	GLAND_WATER_PULLDOWN,
-	GLAND_SMOOTHNESS_PULLDOWN,
-	GLAND_VARIETY_PULLDOWN,
+	GLAND_HEIGHTMAP_NAME_TEXT,         ///< Heightmap name
+	GLAND_HEIGHTMAP_NAME_SPACER,       ///< Spacer used for aligning items in the second column nicely
+	GLAND_HEIGHTMAP_SIZE_TEXT,         ///< Size of heightmap
+	GLAND_HEIGHTMAP_ROTATION_PULLDOWN, ///< Dropdown 'Heightmap rotation'
 
-	GLAND_BORDER_TYPES,
-	GLAND_BORDERS_RANDOM,
-	GLAND_WATER_NW,
-	GLAND_WATER_NE,
-	GLAND_WATER_SE,
-	GLAND_WATER_SW,
+	GLAND_TERRAIN_PULLDOWN,    ///< Dropdown 'Terrain type'
+	GLAND_WATER_PULLDOWN,      ///< Dropdown 'Sea level'
+	GLAND_SMOOTHNESS_PULLDOWN, ///< Dropdown 'Smoothness'
+	GLAND_VARIETY_PULLDOWN,    ///< Dropdown 'Variety distribution'
+
+	GLAND_BORDERS_RANDOM,      ///< 'Random'/'Manual' borders
+	GLAND_WATER_NW,            ///< NW 'Water'/'Freeform'
+	GLAND_WATER_NE,            ///< NE 'Water'/'Freeform'
+	GLAND_WATER_SE,            ///< SE 'Water'/'Freeform'
+	GLAND_WATER_SW,            ///< SW 'Water'/'Freeform'
 };
 
+/** Widgets of GenerateLandscapeWindow when generating world */
 static const NWidgetPart _nested_generate_landscape_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -133,7 +138,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_SEA_LAKES, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TREE_PLACER, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_VARIETY, STR_NULL), SetFill(1, 1),
-					NWidget(WWT_TEXT, COLOUR_ORANGE, GLAND_BORDER_TYPES), SetDataTip(STR_MAPGEN_BORDER_TYPE, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_BORDER_TYPE, STR_NULL), SetFill(1, 1),
 				EndContainer(),
 				/* Widgets at the right of the labels. */
 				NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
@@ -213,6 +218,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 	EndContainer(),
 };
 
+/** Widgets of GenerateLandscapeWindow when loading heightmap */
 static const NWidgetPart _nested_heightmap_load_widgets[] = {
 	/* Window header. */
 	NWidget(NWID_HORIZONTAL),

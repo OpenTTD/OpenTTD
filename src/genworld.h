@@ -14,11 +14,10 @@
 
 #include "company_type.h"
 
-/*
- * Order of these enums has to be the same as in lang/english.txt
- * Otherwise you will get inconsistent behaviour.
- */
+/** Constants related to world generation */
 enum {
+	/* Order of these enums has to be the same as in lang/english.txt
+	 * Otherwise you will get inconsistent behaviour. */
 	LG_ORIGINAL     = 0,  ///< The original landscape generator
 	LG_TERRAGENESIS = 1,  ///< TerraGenesis Perlin landscape generator
 
@@ -27,7 +26,7 @@ enum {
 	GENWORLD_REDRAW_TIMEOUT = 200, ///< Timeout between redraws
 };
 
-/* Modes for GenerateWorld */
+/** Modes for GenerateWorld */
 enum GenWorldMode {
 	GWM_NEWGAME   = 0, ///< Generate a map for a new game
 	GWM_EMPTY     = 1, ///< Generate an empty map (sea-level)
@@ -35,9 +34,10 @@ enum GenWorldMode {
 	GWM_HEIGHTMAP = 3, ///< Generate a newgame from a heightmap
 };
 
-typedef void GWDoneProc();
-typedef void GWAbortProc();
+typedef void GWDoneProc();  ///< Procedure called when the genworld process finishes
+typedef void GWAbortProc(); ///< Called when genworld is aborted
 
+/** Properties of current genworld process */
 struct GenWorldInfo {
 	bool active;           ///< Is generating world active
 	bool abort;            ///< Whether to abort the thread ASAP
@@ -52,6 +52,7 @@ struct GenWorldInfo {
 	class ThreadObject *thread; ///< The thread we are in (can be NULL)
 };
 
+/** Current stage of world generation process */
 enum GenWorldProgress {
 	GWP_MAP_INIT,    ///< Initialize/allocate the map, start economy
 	GWP_LANDSCAPE,   ///< Create the landscape
@@ -68,6 +69,7 @@ enum GenWorldProgress {
 
 /**
  * Check if we are currently in the process of generating a world.
+ * @return are we generating world?
  */
 static inline bool IsGeneratingWorld()
 {
