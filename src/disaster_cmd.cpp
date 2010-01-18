@@ -209,9 +209,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE);
 
 		} else if (v->current_order.GetDestination() == 0) {
-			if (IsValidTile(v->tile) &&
-					IsTileType(v->tile, MP_STATION) &&
-					IsAirport(v->tile)) {
+			if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 				v->current_order.SetDestination(1);
 				v->age = 0;
 
@@ -234,9 +232,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 	if (v->current_order.GetDestination() > 2) {
 		if (++v->age <= 13320) return true;
 
-		if (IsValidTile(v->tile) &&
-				IsTileType(v->tile, MP_STATION) &&
-				IsAirport(v->tile)) {
+		if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 			Station *st = Station::GetByTile(v->tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 			AI::NewEvent(GetTileOwner(v->tile), new AIEventDisasterZeppelinerCleared(st->index));
@@ -274,9 +270,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		v->age = 0;
 	}
 
-	if (IsValidTile(v->tile) &&
-			IsTileType(v->tile, MP_STATION) &&
-			IsAirport(v->tile)) {
+	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 		SETBITS(Station::GetByTile(v->tile)->airport_flags, RUNWAY_IN_block);
 	}
 

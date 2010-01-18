@@ -724,7 +724,7 @@ static void FloodVehicles(TileIndex tile)
 {
 	byte z = 0;
 
-	if (IsTileType(tile, MP_STATION) && IsAirport(tile)) {
+	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);
 		const AirportSpec *as = st->GetAirportSpec();
 		z = 1 + st->Airport()->delta_z;
@@ -773,7 +773,7 @@ static void FloodVehicle(Vehicle *v)
 		/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
 		 * because that's always the shadow. Except for the heliport, because
 		 * that station has a big z_offset for the aircraft. */
-		if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
+		if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) return;
 		const Station *st = Station::GetByTile(v->tile);
 		const AirportFTAClass *airport = st->Airport();
 
