@@ -109,7 +109,7 @@
 	if (st->owner != _current_company) return INVALID_TILE;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return INVALID_TILE;
 
-	return ::ToTileIndexDiff(st->GetAirportSpec()->depot_table[0]) + st->airport_tile;
+	return st->GetHangarTile(0);
 }
 
 /* static */ AIAirport::AirportType AIAirport::GetAirportType(TileIndex tile)

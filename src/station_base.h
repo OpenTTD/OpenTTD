@@ -121,9 +121,16 @@ public:
 		return IsRailStationTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
-	/* virtual */ FORCEINLINE bool TileBelongsToAirport(TileIndex tile) const
+	FORCEINLINE bool TileBelongsToAirport(TileIndex tile) const
 	{
 		return IsAirportTile(tile) && GetStationIndex(tile) == this->index;
+	}
+
+	FORCEINLINE TileIndex GetHangarTile(uint hangar_num) const
+	{
+		assert(this->airport_tile != INVALID_TILE);
+		assert(hangar_num < this->GetAirportSpec()->nof_depots);
+		return this->airport_tile + ToTileIndexDiff(this->GetAirportSpec()->depot_table[hangar_num]);
 	}
 
 	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;

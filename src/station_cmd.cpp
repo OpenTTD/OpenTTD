@@ -66,7 +66,7 @@ bool IsHangar(TileIndex t)
 	const AirportSpec *as = st->GetAirportSpec();
 
 	for (uint i = 0; i < as->nof_depots; i++) {
-		if (st->airport_tile + ToTileIndexDiff(as->depot_table[i]) == t) return true;
+		if (st->GetHangarTile(i) == t) return true;
 	}
 
 	return false;
@@ -2090,7 +2090,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	if (flags & DC_EXEC) {
 		for (uint i = 0; i < as->nof_depots; ++i) {
 			DeleteWindowById(
-				WC_VEHICLE_DEPOT, tile + ToTileIndexDiff(as->depot_table[i])
+				WC_VEHICLE_DEPOT, st->GetHangarTile(i)
 			);
 		}
 

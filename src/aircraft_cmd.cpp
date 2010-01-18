@@ -334,11 +334,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		 * of all depots, it is simple */
 		for (uint i = 0;; i++) {
 			const Station *st = Station::GetByTile(tile);
-			const AirportSpec *as = st->GetAirportSpec();
 			const AirportFTAClass *apc = st->Airport();
 
-			assert(i != as->nof_depots);
-			if (st->airport_tile + ToTileIndexDiff(as->depot_table[i]) == tile) {
+			if (st->GetHangarTile(i) == tile) {
 				assert(apc->layout[i].heading == HANGAR);
 				v->pos = apc->layout[i].position;
 				break;
