@@ -30,7 +30,6 @@ static bool DifficultyChange(int32);
 static bool DifficultyNoiseChange(int32 i);
 static bool CheckRoadSide(int p1);
 static int32 ConvertLandscape(const char *value);
-static int32 CheckNoiseToleranceLevel(const char *value);
 static bool CheckFreeformEdges(int32 p1);
 static bool ChangeDynamicEngines(int32 p1);
 static bool StationCatchmentChanged(int32 p1);
@@ -147,8 +146,6 @@ static bool UpdateClientConfigValues(int32 p1);
 	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, NULL, from, to)
 #define SDT_LIST(base, var, type, flags, guiflags, def, str, proc)\
 	SDT_CONDLIST(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
-#define SDT_CONDLISTO(base, var, length, type, from, to, flags, guiflags, def, str, proc, load)\
-	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, length, def, 0, 0, 0, NULL, str, proc, load, from, to)
 
 #define SDT_CONDSTR(base, var, type, from, to, flags, guiflags, def, str, proc)\
 	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, NULL, from, to)
@@ -453,7 +450,9 @@ const SettingDesc _settings[] = {
 	     SDT_VAR(GameSettings, economy.dist_local_authority,         SLE_UINT8,                     0, 0,    20,     5,      60, 0, STR_NULL,                                  NULL),
 	     SDT_VAR(GameSettings, pf.wait_oneway_signal,                SLE_UINT8,                     0, 0,    15,     2,     255, 0, STR_NULL,                                  NULL),
 	     SDT_VAR(GameSettings, pf.wait_twoway_signal,                SLE_UINT8,                     0, 0,    41,     2,     255, 0, STR_NULL,                                  NULL),
-	SDT_CONDLISTO(GameSettings, economy.town_noise_population, 3,   SLE_UINT16, 96, SL_MAX_VERSION, 0,D0, "800,2000,4000",          STR_NULL,                                  NULL, CheckNoiseToleranceLevel),
+	 SDT_CONDVAR(GameSettings, economy.town_noise_population[0],    SLE_UINT16, 96, SL_MAX_VERSION, 0, 0,   800,   200,   65535, 0, STR_NULL,                                  NULL),
+	 SDT_CONDVAR(GameSettings, economy.town_noise_population[1],    SLE_UINT16, 96, SL_MAX_VERSION, 0, 0,  2000,   400,   65535, 0, STR_NULL,                                  NULL),
+	 SDT_CONDVAR(GameSettings, economy.town_noise_population[2],    SLE_UINT16, 96, SL_MAX_VERSION, 0, 0,  4000,   800,   65535, 0, STR_NULL,                                  NULL),
 
 	 SDT_CONDVAR(GameSettings, pf.wait_for_pbs_path,                 SLE_UINT8,100, SL_MAX_VERSION, 0, 0,    30,     2,     255, 0, STR_NULL,                                  NULL),
 	SDT_CONDBOOL(GameSettings, pf.reserve_paths,                               100, SL_MAX_VERSION, 0, 0, false,                    STR_NULL,                                  NULL),
@@ -468,7 +467,7 @@ const SettingDesc _settings[] = {
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_lastred_penalty,                SLE_UINT,                     0, 0, ( 10 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_station_penalty,                SLE_UINT,                     0, 0, (  1 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_slope_penalty,                  SLE_UINT,                     0, 0, (  1 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
-	     SDT_VAR(GameSettings, pf.npf.npf_rail_curve_penalty,                  SLE_UINT,                     0, 0, (  1 * NPF_TILE_LENGTH),    0,  100000, 0, STR_NULL,         NULL),
+	     SDT_VAR(GameSettings, pf.npf.npf_rail_curve_penalty,                  SLE_UINT,                     0, 0, (  1 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_depot_reverse_penalty,          SLE_UINT,                     0, 0, ( 50 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.npf.npf_rail_pbs_cross_penalty,              SLE_UINT,100, SL_MAX_VERSION, 0, 0, (  3 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.npf.npf_rail_pbs_signal_back_penalty,        SLE_UINT,100, SL_MAX_VERSION, 0, 0, ( 15 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),

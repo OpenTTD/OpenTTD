@@ -896,21 +896,6 @@ static int32 ConvertLandscape(const char *value)
 	return lookup_oneofmany("normal|hilly|desert|candy", value);
 }
 
-/**
- * Check for decent values been supplied by the user for the noise tolerance setting.
- * The primary idea is to avoid division by zero in game mode.
- * The secondary idea is to make it so the values will be somewhat sane and that towns will
- * not be overcrowed with airports.  It would be easy to abuse such a feature
- * So basically, 200, 400, 800 are the lowest allowed values */
-static int32 CheckNoiseToleranceLevel(const char *value)
-{
-	GameSettings *s = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
-	for (uint16 i = 0; i < lengthof(s->economy.town_noise_population); i++) {
-		s->economy.town_noise_population[i] = max(uint16(200 * (i + 1)), s->economy.town_noise_population[i]);
-	}
-	return 0;
-}
-
 static bool CheckFreeformEdges(int32 p1)
 {
 	if (_game_mode == GM_MENU) return true;
