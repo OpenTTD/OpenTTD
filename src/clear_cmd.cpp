@@ -64,13 +64,18 @@ void DrawHillyLandTile(const TileInfo *ti)
 
 void DrawClearLandFence(const TileInfo *ti)
 {
+	bool fence_sw = GetFenceSW(ti->tile) != 0;
+	bool fence_se = GetFenceSE(ti->tile) != 0;
+
+	if (!fence_sw && !fence_se) return;
+
 	int z = GetSlopeZInCorner(ti->tileh, CORNER_S);
 
-	if (GetFenceSW(ti->tile) != 0) {
+	if (fence_sw) {
 		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh_sw[ti->tileh], PAL_NONE, 0, 0, z);
 	}
 
-	if (GetFenceSE(ti->tile) != 0) {
+	if (fence_se) {
 		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_se[ti->tileh], PAL_NONE, 0, 0, z);
 	}
 }
