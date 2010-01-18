@@ -39,11 +39,11 @@
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.
  */
-enum glwp_modes {
-	GLWP_GENERATE,
-	GLWP_HEIGHTMAP,
-	GLWP_SCENARIO,
-	GLWP_END
+enum GenenerateLandscapeWindowMode {
+	GLWM_GENERATE,
+	GLWM_HEIGHTMAP,
+	GLWM_SCENARIO,
+	GLWM_END
 };
 
 extern void SwitchToMode(SwitchMode new_mode);
@@ -291,7 +291,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 	EndContainer(),
 };
 
-static void StartGeneratingLandscape(glwp_modes mode)
+static void StartGeneratingLandscape(GenenerateLandscapeWindowMode mode)
 {
 	DeleteAllNonVitalWindows();
 
@@ -301,16 +301,16 @@ static void StartGeneratingLandscape(glwp_modes mode)
 
 	SndPlayFx(SND_15_BEEP);
 	switch (mode) {
-		case GLWP_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
-		case GLWP_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
-		case GLWP_SCENARIO:  _switch_mode = SM_EDITOR; break;
+		case GLWM_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
+		case GLWM_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
+		case GLWM_SCENARIO:  _switch_mode = SM_EDITOR; break;
 		default: NOT_REACHED();
 	}
 }
 
 static void LandscapeGenerationCallback(Window *w, bool confirmed)
 {
-	if (confirmed) StartGeneratingLandscape((glwp_modes)w->window_number);
+	if (confirmed) StartGeneratingLandscape((GenenerateLandscapeWindowMode)w->window_number);
 }
 
 static DropDownList *BuildMapsizeDropDown()
@@ -341,7 +341,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	uint x;
 	uint y;
 	char name[64];
-	glwp_modes mode;
+	GenenerateLandscapeWindowMode mode;
 
 	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : QueryStringBaseWindow(11)
 	{
@@ -356,7 +356,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->caption = STR_NULL;
 		this->afilter = CS_NUMERAL;
 
-		this->mode = (glwp_modes)this->window_number;
+		this->mode = (GenenerateLandscapeWindowMode)this->window_number;
 	}
 
 
@@ -474,7 +474,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	virtual void OnPaint()
 	{
 		/* You can't select smoothness / non-water borders if not terragenesis */
-		if (mode == GLWP_GENERATE) {
+		if (mode == GLWM_GENERATE) {
 			this->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _settings_newgame.game_creation.land_generator == 0);
 			this->SetWidgetDisabledState(GLAND_VARIETY_PULLDOWN, _settings_newgame.game_creation.land_generator == 0);
 			this->SetWidgetDisabledState(GLAND_BORDERS_RANDOM, _settings_newgame.game_creation.land_generator == 0 || !_settings_newgame.construction.freeform_edges);
@@ -550,7 +550,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_GENERATE_BUTTON: // Generate
 				MakeNewgameSettingsLive();
 
-				if (mode == GLWP_HEIGHTMAP &&
+				if (mode == GLWM_HEIGHTMAP &&
 						(this->x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						this->x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
 						this->y * 2 < (1U << _settings_newgame.game_creation.map_y) ||
@@ -773,7 +773,7 @@ static const WindowDesc _heightmap_load_desc(
 	_nested_heightmap_load_widgets, lengthof(_nested_heightmap_load_widgets)
 );
 
-static void _ShowGenerateLandscape(glwp_modes mode)
+static void _ShowGenerateLandscape(GenenerateLandscapeWindowMode mode)
 {
 	uint x = 0;
 	uint y = 0;
@@ -783,14 +783,14 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 	/* Always give a new seed if not editor */
 	if (_game_mode != GM_EDITOR) _settings_newgame.game_creation.generation_seed = InteractiveRandom();
 
-	if (mode == GLWP_HEIGHTMAP) {
+	if (mode == GLWM_HEIGHTMAP) {
 		/* If the function returns negative, it means there was a problem loading the heightmap */
 		if (!GetHeightmapDimensions(_file_to_saveload.name, &x, &y)) return;
 	}
 
-	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
+	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>((mode == GLWM_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
 
-	if (mode == GLWP_HEIGHTMAP) {
+	if (mode == GLWM_HEIGHTMAP) {
 		w->x = x;
 		w->y = y;
 		strecpy(w->name, _file_to_saveload.title, lastof(w->name));
@@ -801,17 +801,17 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 
 void ShowGenerateLandscape()
 {
-	_ShowGenerateLandscape(GLWP_GENERATE);
+	_ShowGenerateLandscape(GLWM_GENERATE);
 }
 
 void ShowHeightmapLoad()
 {
-	_ShowGenerateLandscape(GLWP_HEIGHTMAP);
+	_ShowGenerateLandscape(GLWM_HEIGHTMAP);
 }
 
 void StartScenarioEditor()
 {
-	StartGeneratingLandscape(GLWP_SCENARIO);
+	StartGeneratingLandscape(GLWM_SCENARIO);
 }
 
 void StartNewGameWithoutGUI(uint seed)
@@ -819,7 +819,7 @@ void StartNewGameWithoutGUI(uint seed)
 	/* GenerateWorld takes care of the possible GENERATE_NEW_SEED value in 'seed' */
 	_settings_newgame.game_creation.generation_seed = seed;
 
-	StartGeneratingLandscape(GLWP_GENERATE);
+	StartGeneratingLandscape(GLWM_GENERATE);
 }
 
 /** Widget numbers of the create scenario window. */
@@ -933,7 +933,7 @@ struct CreateScenarioWindow : public Window
 				break;
 
 			case CSCEN_EMPTY_WORLD: // Empty world / flat world
-				StartGeneratingLandscape(GLWP_SCENARIO);
+				StartGeneratingLandscape(GLWM_SCENARIO);
 				break;
 
 			case CSCEN_RANDOM_WORLD: // Generate
@@ -1082,7 +1082,7 @@ static const WindowDesc _create_scenario_desc(
 void ShowCreateScenario()
 {
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
-	new CreateScenarioWindow(&_create_scenario_desc, GLWP_SCENARIO);
+	new CreateScenarioWindow(&_create_scenario_desc, GLWM_SCENARIO);
 }
 
 enum GenerationProgressWindowWidgets {
