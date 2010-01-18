@@ -67,7 +67,7 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	real_filename = ReallocT(real_filename, scstrlen(real_filename) + scstrlen(filename) + 1);
 	scstrcat(real_filename, filename);
 	/* Tars dislike opening files with '/' on Windows.. so convert it to '\\' ;) */
-	char *filen = strdup(FS2OTTD(real_filename));
+	char *filen = strdup(SQ2OTTD(real_filename));
 #if (PATHSEPCHAR != '/')
 	for (char *n = filen; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
 #endif

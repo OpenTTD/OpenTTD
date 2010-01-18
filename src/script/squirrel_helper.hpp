@@ -87,8 +87,8 @@ namespace SQConvert {
 	template <> inline int Return<int64>       (HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, ClampToI32(res)); return 1; }
 	template <> inline int Return<Money>       (HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, ClampToI32(res)); return 1; }
 	template <> inline int Return<bool>        (HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; }
-	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, OTTD2FS(res), -1); free(res); } return 1; }
-	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, OTTD2FS(res), -1); } return 1; }
+	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, OTTD2SQ(res), -1); free(res); } return 1; }
+	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, OTTD2SQ(res), -1); } return 1; }
 	template <> inline int Return<void *>      (HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; }
 
 	/**
@@ -109,7 +109,7 @@ namespace SQConvert {
 		sq_tostring(vm, index);
 		const SQChar *tmp;
 		sq_getstring(vm, -1, &tmp);
-		char *tmp_str = strdup(FS2OTTD(tmp));
+		char *tmp_str = strdup(SQ2OTTD(tmp));
 		sq_poptop(vm);
 		*ptr->Append() = (void *)tmp_str;
 		str_validate(tmp_str, tmp_str + strlen(tmp_str));
@@ -763,7 +763,7 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		sq_pushstring(vm, OTTD2FS(Tcls::GetClassName()), -1);
+		sq_pushstring(vm, OTTD2SQ(Tcls::GetClassName()), -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
 		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, _SC("class method is non-static"));
@@ -805,7 +805,7 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		sq_pushstring(vm, OTTD2FS(Tcls::GetClassName()), -1);
+		sq_pushstring(vm, OTTD2SQ(Tcls::GetClassName()), -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
 		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, _SC("class method is non-static"));

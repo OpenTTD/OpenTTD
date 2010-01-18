@@ -94,7 +94,7 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 	/* 3) We translate the error message in the character format that Squirrel wants.
 	 *    We can use the fact that the wchar string printing also uses %s to print
 	 *    old style char strings, which is what was generated during the script generation. */
-	const SQChar *sq_dummy_script = OTTD2FS(dummy_script);
+	const SQChar *sq_dummy_script = OTTD2SQ(dummy_script);
 
 	/* And finally we load and run the script */
 	sq_pushroottable(vm);

@@ -242,10 +242,14 @@
 
 		const char *FS2OTTD(const TCHAR *name);
 		const TCHAR *OTTD2FS(const char *name);
+		#define SQ2OTTD(name) FS2OTTD(name)
+		#define OTTD2SQ(name) OTTD2FS(name)
 	#else
 		#define fopen(file, mode) fopen(OTTD2FS(file), mode)
 		const char *FS2OTTD(const char *name);
 		const char *OTTD2FS(const char *name);
+		#define SQ2OTTD(name) (name)
+		#define OTTD2SQ(name) (name)
 	#endif /* WIN32 */
 #endif /* STRGEN */
 

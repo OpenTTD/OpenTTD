@@ -173,12 +173,12 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
 		const SQChar *sqkey;
 		if (SQ_FAILED(sq_getstring(vm, -2, &sqkey))) return SQ_ERROR;
-		const char *key = FS2OTTD(sqkey);
+		const char *key = SQ2OTTD(sqkey);
 
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
-			char *name = strdup(FS2OTTD(sqvalue));
+			char *name = strdup(SQ2OTTD(sqvalue));
 			char *s;
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
@@ -189,7 +189,7 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (strcmp(key, "description") == 0) {
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
-			config.description = strdup(FS2OTTD(sqdescription));
+			config.description = strdup(SQ2OTTD(sqdescription));
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
 			SQInteger res;
@@ -274,7 +274,7 @@ SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
 {
 	const SQChar *sq_setting_name;
 	if (SQ_FAILED(sq_getstring(vm, -2, &sq_setting_name))) return SQ_ERROR;
-	const char *setting_name = FS2OTTD(sq_setting_name);
+	const char *setting_name = SQ2OTTD(sq_setting_name);
 
 	AIConfigItem *config = NULL;
 	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
@@ -300,9 +300,9 @@ SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
 		if (SQ_FAILED(sq_getstring(vm, -1, &sq_label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
-		const char *key_string = FS2OTTD(sq_key);
+		const char *key_string = SQ2OTTD(sq_key);
 		int key = atoi(key_string + 1);
-		const char *label = FS2OTTD(sq_label);
+		const char *label = SQ2OTTD(sq_label);
 
 		if (config->labels->Find(key) == config->labels->End()) config->labels->Insert(key, strdup(label));
 
