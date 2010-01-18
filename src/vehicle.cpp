@@ -1057,7 +1057,7 @@ void VehicleEnterDepot(Vehicle *v)
 			_current_company = v->owner;
 			CommandCost cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
 
-			if (CmdFailed(cost)) {
+			if (cost.Failed()) {
 				_vehicles_to_autoreplace[v] = false;
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */

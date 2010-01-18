@@ -1219,7 +1219,7 @@ void HandleMissingAircraftOrders(Aircraft *v)
 		ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		_current_company = old_company;
 
-		if (CmdFailed(ret)) CrashAirplane(v);
+		if (ret.Failed()) CrashAirplane(v);
 	} else if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
 		v->current_order.Free();
 	}

@@ -748,14 +748,14 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 
 				if (tracks == TRACK_BIT_NONE && track == expected_track) {
 					CommandCost ret = DoCommand(tile_cur, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
-					if (CmdFailed(ret)) return ret;
+					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 					/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
 					continue;
 				}
 			}
 			CommandCost ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (CmdFailed(ret)) return ret;
+			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 		}
 	}
@@ -1009,12 +1009,12 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	 * for detail info, see:
 	 * https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365 */
 	CommandCost ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
-	if (CmdFailed(ret)) return ret;
+	if (ret.Failed()) return ret;
 	CommandCost cost(EXPENSES_CONSTRUCTION, ret.GetCost() + (numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
 
 	Station *st = NULL;
 	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
-	if (CmdFailed(ret)) return ret;
+	if (ret.Failed()) return ret;
 
 	/* See if there is a deleted station close to us. */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile_org);
@@ -1079,7 +1079,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		 * It should never return CMD_ERROR.. but you never know ;)
 		 * (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags) */
 		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
-		if (CmdFailed(ret)) return ret;
+		if (ret.Failed()) return ret;
 
 		st->train_station = new_location;
 		st->AddFacility(FACIL_TRAIN, new_location.tile);
@@ -1578,13 +1578,13 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	CommandCost cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL, !build_over_road);
-	if (CmdFailed(cost)) return cost;
+	if (cost.Failed()) return cost;
 	uint roadbits_to_build = CountBits(rts) * 2 - num_roadbits;
 	cost.AddCost(_price[PR_BUILD_ROAD] * roadbits_to_build);
 
 	Station *st = NULL;
 	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 5), TileArea(tile, 1, 1), &st);
-	if (CmdFailed(ret)) return ret;
+	if (ret.Failed()) return ret;
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -1783,7 +1783,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	CommandCost ret = RemoveRoadStop(tile, flags);
 
 	/* If the stop was a drive-through stop replace the road */
-	if ((flags & DC_EXEC) && CmdSucceeded(ret) && is_drive_through) {
+	if ((flags & DC_EXEC) && ret.Succeeded() && is_drive_through) {
 		/* Rebuild the drive throuhg road stop. As a road stop can only be
 		 * removed by the owner of the roadstop, _current_company is the
 		 * owner of the road stop. */
@@ -1935,7 +1935,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	CommandCost cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
-	if (CmdFailed(cost)) return cost;
+	if (cost.Failed()) return cost;
 
 	/* Go get the final noise level, that is base noise minus factor from distance to town center */
 	Town *nearest = AirportGetNearestTown(as, tile);
@@ -1967,7 +1967,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	Station *st = NULL;
 	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, w, h), &st);
-	if (CmdFailed(ret)) return ret;
+	if (ret.Failed()) return ret;
 
 	/* Distant join */
 	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
@@ -2178,7 +2178,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (CmdFailed(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR))) return CMD_ERROR;
+	if (DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR).Failed()) return CMD_ERROR;
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
@@ -2191,7 +2191,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
 
-	if (CmdFailed(DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR))) return CMD_ERROR;
+	if (DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR).Failed()) return CMD_ERROR;
 
 	tile_cur += TileOffsByDiagDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
@@ -2203,7 +2203,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0),
 			TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 					_dock_w_chk[direction], _dock_h_chk[direction]), &st);
-	if (CmdFailed(ret)) return ret;
+	if (ret.Failed()) return ret;
 
 	/* Distant join */
 	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);

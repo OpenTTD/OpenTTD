@@ -114,7 +114,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	CommandCost cost(EXPENSES_PROPERTY);
 
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
-	if (CmdFailed(cost)) return cost;
+	if (cost.Failed()) return cost;
 
 	if (c->location_of_HQ != INVALID_TILE) { // Moving HQ
 		cost.AddCost(DestroyCompanyHQ(_current_company, flags));
@@ -152,7 +152,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 
 	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(cost)) return CMD_ERROR;
+	if (cost.Failed()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		MakeOwnedLand(tile, _current_company);

@@ -121,7 +121,7 @@
 	if (!AICargo::IsValidCargo(cargo)) return -1;
 
 	CommandCost res = ::DoCommand(0, vehicle_id, cargo, DC_QUERY_COST, GetCmdRefitVeh(::Vehicle::Get(vehicle_id)));
-	return CmdSucceeded(res) ? _returned_refit_capacity : -1;
+	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 
 /* static */ bool AIVehicle::RefitVehicle(VehicleID vehicle_id, CargoID cargo)

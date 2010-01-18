@@ -763,8 +763,8 @@ static void NormalizeTrainVehInDepot(const Train *u)
 	FOR_ALL_TRAINS(v) {
 		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {
-			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
-					CMD_MOVE_RAIL_VEHICLE)))
+			if (DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
+					CMD_MOVE_RAIL_VEHICLE).Failed())
 				break;
 		}
 	}

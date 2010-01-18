@@ -218,7 +218,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 				/* Terraform the neighboured corner. The resulting height difference should be 1. */
 				height_diff += (height_diff < 0 ? 1 : -1);
 				CommandCost cost = TerraformTileHeight(ts, tile, r + height_diff);
-				if (CmdFailed(cost)) return cost;
+				if (cost.Failed()) return cost;
 				total_cost.AddCost(cost);
 			}
 		}
@@ -249,28 +249,28 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if ((p1 & SLOPE_W) != 0 && tile + TileDiffXY(1, 0) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(1, 0);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (CmdFailed(cost)) return cost;
+		if (cost.Failed()) return cost;
 		total_cost.AddCost(cost);
 	}
 
 	if ((p1 & SLOPE_S) != 0 && tile + TileDiffXY(1, 1) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(1, 1);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (CmdFailed(cost)) return cost;
+		if (cost.Failed()) return cost;
 		total_cost.AddCost(cost);
 	}
 
 	if ((p1 & SLOPE_E) != 0 && tile + TileDiffXY(0, 1) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(0, 1);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (CmdFailed(cost)) return cost;
+		if (cost.Failed()) return cost;
 		total_cost.AddCost(cost);
 	}
 
 	if ((p1 & SLOPE_N) != 0) {
 		TileIndex t = tile + TileDiffXY(0, 0);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (CmdFailed(cost)) return cost;
+		if (cost.Failed()) return cost;
 		total_cost.AddCost(cost);
 	}
 
@@ -319,7 +319,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			if (_game_mode == GM_EDITOR) _generating_world = true; // used to create green terraformed land
 			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO, z_min * TILE_HEIGHT, tileh);
 			_generating_world = curr_gen;
-			if (CmdFailed(cost)) {
+			if (cost.Failed()) {
 				_terraform_err_tile = tile;
 				return cost;
 			}
@@ -386,7 +386,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		uint curh = TileHeight(tile);
 		while (curh != h) {
 			CommandCost ret = DoCommand(tile, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
-			if (CmdFailed(ret)) break;
+			if (ret.Failed()) break;
 
 			if (flags & DC_EXEC) {
 				money -= ret.GetCost();

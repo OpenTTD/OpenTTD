@@ -213,7 +213,7 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, _networking ? CcAI : NULL, text, false, estimate_only);
 
 	/* We failed; set the error and bail out */
-	if (::CmdFailed(res)) {
+	if (res.Failed()) {
 		res.SetGlobalErrorMessage();
 		SetLastError(AIError::StringToError(_error_message));
 		return false;

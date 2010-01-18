@@ -386,7 +386,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	CommandCost ret = DoCommand(end, start, type, DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
 	GUIBridgeList *bl = NULL;
-	if (CmdFailed(ret)) {
+	if (ret.Failed()) {
 		errmsg = _error_message;
 	} else {
 		/* check which bridges can be built */

@@ -160,7 +160,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 
 		CommandCost ret = DoCommand(tile, v->index, 0, flags, CMD_START_STOP_VEHICLE);
 
-		if (CmdSucceeded(ret)) {
+		if (ret.Succeeded()) {
 			return_value = CommandCost();
 			/* We know that the command is valid for at least one vehicle.
 			 * If we haven't set DC_EXEC, then there is no point in continueing because it will be valid */
@@ -192,7 +192,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 
 	for (uint i = 0; i < list.Length(); i++) {
 		CommandCost ret = DoCommand(tile, list[i]->index, 1, flags, sell_command);
-		if (CmdSucceeded(ret)) cost.AddCost(ret);
+		if (ret.Succeeded()) cost.AddCost(ret);
 	}
 
 	if (cost.GetCost() == 0) return CMD_ERROR; // no vehicles to sell
@@ -232,7 +232,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 
 		CommandCost ret = DoCommand(0, v->index, 0, flags, CMD_AUTOREPLACE_VEHICLE);
 
-		if (CmdSucceeded(ret)) {
+		if (ret.Succeeded()) {
 			did_something = true;
 			cost.AddCost(ret);
 		} else {
@@ -473,7 +473,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		CommandCost cost = DoCommand(tile, v->engine_type, build_argument, build_flags, GetCmdBuildVeh(v));
 		build_argument = 3; // ensure that we only assign a number to the first engine
 
-		if (CmdFailed(cost)) {
+		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
 			if (w_front != NULL) DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
 			return cost;
@@ -492,7 +492,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				/* this s a train car
 				 * add this unit to the end of the train */
 				CommandCost result = DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
-				if (CmdFailed(result)) {
+				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
 					DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
@@ -538,7 +538,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				byte subtype = GetBestFittingSubType(v, w);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
 					CommandCost cost = DoCommand(0, w->index, v->cargo_type | (subtype << 8) | 1U << 16, flags, GetCmdRefitVeh(v));
-					if (CmdSucceeded(cost)) total_cost.AddCost(cost);
+					if (cost.Succeeded()) total_cost.AddCost(cost);
 				}
 
 				if (w->type == VEH_TRAIN && Train::From(w)->HasArticulatedPart()) {
@@ -619,7 +619,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 		 * In this case we know that at least one vehicle can be sent to a depot
 		 * and we will issue the command. We can now safely quit the loop, knowing
 		 * it will succeed at least once. With DC_EXEC we really need to send them to the depot */
-		if (CmdSucceeded(ret) && !(flags & DC_EXEC)) {
+		if (ret.Succeeded() && !(flags & DC_EXEC)) {
 			return CommandCost();
 		}
 	}

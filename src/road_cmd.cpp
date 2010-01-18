@@ -599,7 +599,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		default: {
 do_clear:;
 			CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (CmdFailed(ret)) return ret;
+			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 		} break;
 	}
@@ -609,7 +609,7 @@ do_clear:;
 		CommandCost ret = CheckRoadSlope(tileh, &pieces, existing, other_bits);
 		/* Return an error if we need to build a foundation (ret != 0) but the
 		 * current setting is turned off */
-		if (CmdFailed(ret) || (ret.GetCost() != 0 && !_settings_game.construction.build_on_slopes)) {
+		if (ret.Failed() || (ret.GetCost() != 0 && !_settings_game.construction.build_on_slopes)) {
 			return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		}
 		cost.AddCost(ret);
@@ -758,7 +758,7 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 
 		_error_message = INVALID_STRING_ID;
 		CommandCost ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
-		if (CmdFailed(ret)) {
+		if (ret.Failed()) {
 			if (_error_message != STR_ERROR_ALREADY_BUILT) break;
 		} else {
 			had_success = true;
@@ -835,7 +835,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1
 		/* try to remove the halves. */
 		if (bits != 0) {
 			CommandCost ret = RemoveRoad(tile, flags & ~DC_EXEC, bits, rt, true);
-			if (CmdSucceeded(ret)) {
+			if (ret.Succeeded()) {
 				if (flags & DC_EXEC) {
 					money -= ret.GetCost();
 					if (money < 0) {
@@ -885,7 +885,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	CommandCost cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(cost)) return CMD_ERROR;
+	if (cost.Failed()) return CMD_ERROR;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
@@ -928,7 +928,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					if (HasBit(rts, rt)) {
 						CommandCost tmp_ret = RemoveRoad(tile, flags, GetRoadBits(tile, rt), rt, true);
-						if (CmdFailed(tmp_ret)) return tmp_ret;
+						if (tmp_ret.Failed()) return tmp_ret;
 						ret.AddCost(tmp_ret);
 					}
 				}
@@ -949,7 +949,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 			do {
 				if (HasBit(rts, rt)) {
 					CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rt, false);
-					if (CmdFailed(tmp_ret)) return tmp_ret;
+					if (tmp_ret.Failed()) return tmp_ret;
 					ret.AddCost(tmp_ret);
 				}
 			} while (rt-- != ROADTYPE_ROAD);
@@ -1596,7 +1596,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint 
 				RoadBits bits = GetAllRoadBits(tile);
 				RoadBits bits_copy = bits;
 				/* Check if the slope-road_bits combination is valid at all, i.e. it is safe to call GetRoadFoundation(). */
-				if (!CmdFailed(CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE))) {
+				if (CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE).Succeeded()) {
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {
 						uint z_old;

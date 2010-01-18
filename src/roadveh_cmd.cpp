@@ -1156,7 +1156,7 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadBits r)
 	CommandCost ret = DoCommand(t, ROADTYPE_TRAM << 4 | r, 0, DC_NONE, CMD_BUILD_ROAD);
 
 	_current_company = original_company;
-	return CmdSucceeded(ret);
+	return ret.Succeeded();
 }
 
 static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)

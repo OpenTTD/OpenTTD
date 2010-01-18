@@ -386,7 +386,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 						case CLEAR_FIELDS:
 						case CLEAR_ROCKS: {
 							CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-							if (CmdFailed(ret)) return ret;
+							if (ret.Failed()) return ret;
 							cost.AddCost(ret);
 							break;
 						}

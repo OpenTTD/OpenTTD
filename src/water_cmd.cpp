@@ -126,9 +126,9 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
+	if (ret.Failed()) return CMD_ERROR;
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
+	if (ret.Failed()) return CMD_ERROR;
 
 	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
@@ -198,14 +198,14 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 
 	/* middle tile */
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
+	if (ret.Failed()) return CMD_ERROR;
 
 	delta = TileOffsByDiagDir(dir);
 	/* lower tile */
 	WaterClass wc_lower = IsWaterTile(tile - delta) ? GetWaterClass(tile - delta) : WATER_CLASS_CANAL;
 
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
+	if (ret.Failed()) return CMD_ERROR;
 	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
@@ -214,7 +214,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WATER_CLASS_CANAL;
 
 	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
+	if (ret.Failed()) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
@@ -313,7 +313,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || p2 == 1)) continue;
 
 		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return ret;
+		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
 		if (flags & DC_EXEC) {
@@ -868,7 +868,7 @@ void DoFloodTile(TileIndex target)
 				}
 			/* FALL THROUGH */
 			case MP_CLEAR:
-				if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+				if (DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
 					flooded = true;
@@ -883,7 +883,7 @@ void DoFloodTile(TileIndex target)
 		FloodVehicles(target);
 
 		/* flood flat tile */
-		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+		if (DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 			MakeSea(target);
 			MarkTileDirtyByTile(target);
 			flooded = true;
@@ -933,7 +933,7 @@ static void DoDryUp(TileIndex tile)
 		case MP_WATER:
 			assert(IsCoast(tile));
 
-			if (CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+			if (DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 				MakeClear(tile, CLEAR_GRASS, 3);
 				MarkTileDirtyByTile(tile);
 			}

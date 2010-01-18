@@ -306,20 +306,20 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		/* Try and clear the start landscape */
 		CommandCost ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return ret;
+		if (ret.Failed()) return ret;
 		cost = ret;
 
-		if (CmdFailed(terraform_cost_north) || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes))
+		if (terraform_cost_north.Failed() || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_north);
 
 		/* Try and clear the end landscape */
 		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return ret;
+		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
 		/* false - end tile slope check */
-		if (CmdFailed(terraform_cost_south) || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes))
+		if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_south);
 
@@ -379,7 +379,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	not_valid_below:;
 					/* try and clear the middle landscape */
 					ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-					if (CmdFailed(ret)) return ret;
+					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 					break;
 			}
@@ -482,7 +482,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	if (IsWaterTile(start_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 	CommandCost ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return ret;
+	if (ret.Failed()) return ret;
 
 	/* XXX - do NOT change 'ret' in the loop, as it is used as the price
 	 * for the clearing of the entrance of the tunnel. Assigning it to
@@ -544,13 +544,13 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		 *       the tree on end_tile.
 		 */
 		ret = DoCommand(end_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
+		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
-		if (CmdFailed(ret)) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
+		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 	} else {
 		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return ret;
+		if (ret.Failed()) return ret;
 	}
 	cost.AddCost(_price[PR_BUILD_TUNNEL]);
 	cost.AddCost(ret);
@@ -1319,7 +1319,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	if (new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
 	} else {
-		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR))) {
+		if (DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR).Failed()) {
 			/* When clearing the bridge/tunnel failed there are still vehicles on/in
 			 * the bridge/tunnel. As all *our* vehicles are already removed, they
 			 * must be of another owner. Therefore this can't be rail tunnel/bridge.
@@ -1509,7 +1509,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		}
 
 		/* Surface slope is valid and remains unchanged? */
-		if (!CmdFailed(res) && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

@@ -1333,13 +1333,13 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
 				CompanyID old_company = _current_company;
 				_current_company = OWNER_TOWN;
-				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR));
+				bool not_clearable = DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR).Failed();
 				_current_company = old_company;
 
 				if (not_clearable) return false;
 			} else {
 				/* Clear the tiles, but do not affect town ratings */
-				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR));
+				bool not_clearable = DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR).Failed();
 
 				if (not_clearable) return false;
 			}
@@ -1451,7 +1451,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
-			if (CmdFailed(DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) {
+			if (DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND).Failed()) {
 				_current_company = old_company;
 				return false;
 			}

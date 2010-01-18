@@ -629,7 +629,7 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	for (int x = sx; x <= ex; ++x) {
 		for (int y = sy; y <= ey; ++y) {
 			CommandCost ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			if (CmdFailed(ret)) continue;
+			if (ret.Failed()) continue;
 			success = true;
 
 			if (flags & DC_EXEC) {

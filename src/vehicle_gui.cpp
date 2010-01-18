@@ -426,7 +426,7 @@ struct RefitWindow : public Window {
 				if (this->cargo != NULL) {
 					Vehicle *v = Vehicle::Get(this->window_number);
 					CommandCost cost = DoCommand(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
-					if (CmdSucceeded(cost)) {
+					if (cost.Succeeded()) {
 						SetDParam(0, this->cargo->cargo);
 						SetDParam(1, _returned_refit_capacity);
 						SetDParam(2, cost.GetCost());

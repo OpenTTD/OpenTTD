@@ -16,30 +16,6 @@
 #include "company_type.h"
 
 /**
- * Checks if a command failes.
- *
- * As you see the parameter is not a command but the return value of a command,
- * the CommandCost class. This function checks if the command executed by
- * the CommandProc function failed and returns true if it does.
- *
- * @param cost The return value of a CommandProc call
- * @return true if the command failes
- * @see CmdSucceded
- */
-static inline bool CmdFailed(CommandCost cost) { return cost.Failed(); }
-
-/**
- * Checks if a command succeeded.
- *
- * As #CmdFailed this function checks if a command succeeded
- *
- * @param cost The return value of a CommandProc call
- * @return true if the command succeeded
- * @see CmdSucceeded
- */
-static inline bool CmdSucceeded(CommandCost cost) { return cost.Succeeded(); }
-
-/**
  * Define a default return value for a failed command.
  *
  * This variable contains a CommandCost object with is declared as "failed".
