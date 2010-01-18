@@ -184,6 +184,16 @@ static inline bool IsAirport(TileIndex t)
 	return GetStationType(t) == STATION_AIRPORT;
 }
 
+/**
+ * Is this tile a station tile and an airport tile?
+ * @param t the tile to get the information from
+ * @return true if and only if the tile is an airport
+ */
+static inline bool IsAirportTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && IsAirport(t);
+}
+
 bool IsHangar(TileIndex t);
 
 /**

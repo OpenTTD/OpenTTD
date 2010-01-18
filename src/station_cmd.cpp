@@ -2066,7 +2066,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	int w = as->size_x;
 	int h = as->size_y;
 
-	CommandCost cost(EXPENSES_CONSTRUCTION, w * h * _price[PR_CLEAR_STATION_AIRPORT]);
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	const Aircraft *a;
 	FOR_ALL_AIRCRAFT(a) {
@@ -2076,6 +2076,10 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	TILE_LOOP(tile_cur, w, h, tile) {
 		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
+
+		if (!st->TileBelongsToAirport(tile_cur)) continue;
+
+		cost.AddCost(_price[PR_CLEAR_STATION_AIRPORT]);
 
 		if (flags & DC_EXEC) {
 			DeleteAnimatedTile(tile_cur);
