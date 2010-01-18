@@ -43,10 +43,10 @@ class CrashLogUnix : public CrashLog {
 
 		return buffer + seprintf(buffer, last,
 				"Operating system:\n"
-				" Name:    %s\n"
-				" Release: %s\n"
-				" Version: %s\n"
-				" Machine: %s\n\n",
+				" Name:     %s\n"
+				" Release:  %s\n"
+				" Version:  %s\n"
+				" Machine:  %s\n",
 				name.sysname,
 				name.release,
 				name.version,

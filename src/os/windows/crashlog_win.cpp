@@ -78,18 +78,12 @@ public:
 
 	return buffer + seprintf(buffer, last,
 			"Operating system:\n"
-			" Name:    Windows\n"
-			" Release: %d.%d.%d (%s)\n"
-			" MSVC:    %s\n\n",
+			" Name:     Windows\n"
+			" Release:  %d.%d.%d (%s)\n",
 			(int)os.dwMajorVersion,
 			(int)os.dwMinorVersion,
 			(int)os.dwBuildNumber,
-			os.szCSDVersion,
-#if defined(_MSC_VER)
-			"Yes"
-#else
-			"No"
-#endif
+			os.szCSDVersion
 	);
 
 }

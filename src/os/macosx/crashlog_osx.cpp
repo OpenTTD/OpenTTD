@@ -59,10 +59,10 @@ class CrashLogOSX : public CrashLog {
 
 		return buffer + seprintf(buffer, last,
 				"Operating system:\n"
-				" Name:    Mac OS X\n"
-				" Release: %d.%d.%d\n"
-				" Machine: %s\n"
-				" Min Ver: %d\n\n",
+				" Name:     Mac OS X\n"
+				" Release:  %d.%d.%d\n"
+				" Machine:  %s\n"
+				" Min Ver:  %d\n",
 				ver_maj, ver_min, ver_bug,
 				arch != NULL ? arch->description : "unknown",
 				MAC_OS_X_VERSION_MIN_REQUIRED

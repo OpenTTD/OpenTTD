@@ -41,6 +41,14 @@ protected:
 	virtual char *LogOSVersion(char *buffer, const char *last) const = 0;
 
 	/**
+	 * Writes compiler (and its version, if available) to the buffer.
+	 * @param buffer The begin where to write at.
+	 * @param last   The last position in the buffer to write to.
+	 * @return the position of the \c '\0' character after the buffer.
+	 */
+	virtual char *LogCompiler(char *buffer, const char *last) const;
+
+	/**
 	 * Writes actually encountered error to the buffer.
 	 * @param buffer  The begin where to write at.
 	 * @param last    The last position in the buffer to write to.
