@@ -1177,6 +1177,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επι�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (οχι με OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Συνένωση σταθμών τρένων χτισμένων δίπλα σε άλλο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
