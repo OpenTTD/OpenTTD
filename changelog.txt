@@ -1,3 +1,41 @@
+1.0.0-beta3 (2010-01-21)
+------------------------------------------------------------------------
+- Feature: Make building (long) roads work like building rail; build upon the first obstruction instead of failing totally [FS#3318] (r18803)
+- Feature: Allow user customisable compression levels for the zlib compression (r18772)
+- Feature: [NoAI] Rerandomise AIs on reloading (via the debug window) when they were randomly chosen [FS#3095] (r18763)
+- Feature: [NewGRF] Implement VarAction2Houses variables 66 and 67 (r18736)
+- Change: [SDL/Allegro] Make the number of samples/frequency runtime configurable (r18821, r18820)
+- Change: Be consistent with airport naming [FS#3493] (r18819)
+- Change: [NewGRF] Consider callback 19 only broken after subcargos 0 to 255 have been used, instead of stopping at 15 (r18774)
+- Change: Replace MiniLZO with the real library (r18769)
+- Fix: Town noise population settings could not be changed in-game [FS#3532] (r18864)
+- Fix: Do not pass AI strings through iconv [FS#3544] (r18862)
+- Fix: Do not do screen redraw when the landscape contains broken slopes [FS#3540] (r18850)
+- Fix: Default-waypoint was drawn incorrectly for monorail and maglev in the waypoint picker (r18841)
+- Fix: In some cases error messages were not properly sent to the client before closing the connection. As a result the client would say 'connection lost' when the cause was something completely different (r18801)
+- Fix: In some cases with invalid packets one can crash OpenTTD (r18800)
+- Fix: [SDL] Possible deadlock when killing OpenTTD while starting it [FS#3521] (r18796)
+- Fix: When copying an 'image' back into the buffer the 32bpp anim blitter triggered palette check of the whole window instead of only the part the got copied back [FS#3504] (r18791)
+- Fix: Viewport could jump under high CPU load [FS#3515] (r18790)
+- Fix: Crash when getting the tooltip of the industry amount in the world generation window [FS#3516] (r18787)
+- Fix: [NoAI] NoAI's custom implementation of DoCommandP has several flaws (not masking of bits, not resetting town authority updates on checks/estimates, ...). Let it use DoCommandPInternal, DoCommandP without showing error messages and such, instead [FS#3507] (r18786)
+- Fix: [NoAI] AIs did update their last cost incorrectly in network games if the cost of the DC_EXEC phase differed from the ~DC_EXEC phase (r18781)
+- Fix: [YAPP] Remove a special check for two-sided signals when reserving a path as this causes trains to get stuck in front of them [FS#3483] (r18778)
+- Fix: Assertions because the unloading and signal wait counter got into eachother's way [FS#3422] (r18764)
+- Fix: [NewGRF] Spritelayouts do not need an Action 1 if only using default sprites [FS#3497] (r18761)
+- Fix: [NewGRF] Action 9 did not properly detect whether an Action 8 was encountered already [FS#3500] (r18760)
+- Fix: [NewGRF] Do not segfault when a NewGRF contains an Action 2 and Action 3 but no Action 0 (r18759)
+- Fix: [NewGRF] CircularTileSearch skipped a few tiles close to the starting tile, as a result some NewGRF houses could be placed too close together [FS#3495] (r18755)
+- Fix: The cargo payment button states were not properly set on opening the window [FS#3492] (r18750)
+- Fix: [NoAI] The AI's name and version in the debug panel was not properly centered [FS#3491] (r18749)
+- Fix: Clear the cached NewGRFs of a server when receiving a reply instead of when requesting the information. With slow/unstable network connections it would look like the NewGRF settings button went randomly missing [FS#3489] (r18746)
+- Fix: Do not toggle the sticky- and shading-button twice per mouseclick when clicking fast [FS#3487] (r18744)
+- Fix: [NewGRF] House prop 1D was trashed when a NewGRF contains prop 14 after prop 1D (r18742)
+- Fix: Building trees on snow with rocks underneed caused an assert [FS#3501] (r18739)
+- Fix: When a tree died while there was snow the amount of snow on the tile changed (r18738)
+- Fix: [NewGRF] VarAction2Station variable 67 was not swapped properly for orientation (r18737)
+
+
 1.0.0-beta2 (2010-01-05)
 ------------------------------------------------------------------------
 - Feature: Do not delete the rough/rocky status of a tile when it is covered by snow, this allows rocky tiles under snow if you have a variable snowline (r18719)
@@ -5,7 +43,7 @@
 - Feature: Allow virtually paying a percentage of the leg profit in feeder chains. This to give the user a better chance to get a feeder system without 'losses' (r18703)
 - Feature: Configurable slope steepness for trains from 0% to 10%, default is 3% as before [FS#3459] (r18674)
 - Feature: Allow contour-map to be shown with coloured industries in smallmap [FS#567] (r18665)
-- Add [NoAI]: AIEngine::IsBuildable to check if you can build a certain engine (r18687)
+- Add: [NoAI] AIEngine::IsBuildable to check if you can build a certain engine (r18687)
 - Change: [NoAI] Merge buoy and waypoint functions (r18725)
 - Change: [NoAI] AIEngine::IsValidEngine will now also return true when you have at least one vehicle of that type even if you cannot build it anymore (r18687)
 - Change: Update Squirrel from 2.2.3 to 2.2.4 (r18639)
@@ -28,7 +66,7 @@
 - Fix: [NewGRF] Tile area of waypoints was not correctly given to NewGRFs in case of multi tile waypoints (r18679)
 - Fix: [NewGRF] If an action B did not have a 'data' string but would print it OpenTTD would segfault [FS#3452] (r18671)
 - Fix: Update all tiles when snowline height changes in larger steps than one tile [FS#3455] (r18670)
-- Fix: [NoAI] crash when trying to get the order destination of a 'nearest depot' order [FS#3454] (r18667)
+- Fix: [NoAI] Crash when trying to get the order destination of a 'nearest depot' order [FS#3454] (r18667)
 - Fix: Aircraft on the metropolitan airport took a long route to the closest loading pad [FS#3169] (r18661)
 - Fix: [NewGRF] Wrong strings drawn for cargo subtype in vehicle details [FS#3443] (r18658)
 - Fix: When trying to attach a wagon to an existing free wagon chain, do not attach it to itself [FS#3442] (r18653)
@@ -55,7 +93,7 @@
 - Feature: Add the possibility to not make new tree tiles in-game (r18522)
 - Feature: Moving of AIs in the AI configuration window [FS#3359] (r18516)
 - Feature: Make maximum pathfinder penalties for finding depots customisable, also increase it slightly to 20 tiles worth of penalties (r18481)
-- Feature: [strgen] Allow G and P to 'select' substrings of STRINGn for getting their gender (r18444)
+- Feature: [Strgen] Allow G and P to 'select' substrings of STRINGn for getting their gender (r18444)
 - Feature: Make penalty for road stop occupancy user configurable (r18404)
 - Feature: Fully scalable, by font size and content, GUI and improved right-to-left language support [FS#1905] (r15800-r18350)
 - Feature: Set the start time of a timetable (r18294)
@@ -119,7 +157,7 @@
 - Change: Make pause on join pause during the whole joining (including download) phase [FS#3287] (r18054)
 - Change: Prefer extmidi over allegro midi and allegro over null driver [FS#3272] (r17875)
 - Change: Several improvements to the performance of CargoPackets/CargoLists; time spent in those functions reduces by 55-85% (r17840, r17836, r17818, r17814, r17812, r17801, r17736, r17735, r17733, r17731, r17730)
-- Change: [SDL] make 'update the video card'-process asynchronious. Improvements of 2%-25% (real time) during fast forward on dual core/hyperthreading-enabled CPUs (r17776)
+- Change: [SDL] Make 'update the video card'-process asynchronious. Improvements of 2%-25% (real time) during fast forward on dual core/hyperthreading-enabled CPUs (r17776)
 - Change: [NoAI] Make AIEngine:CanRefitCargo() not report refittability to Mail by default for aircraft. It is not necessarily true, and the special case of carrying both passenger&mail is better handled by AIs themself than by the API (r17719)
 - Change: [OSX] Do not use deprecated methods/undocumented functions [FS#1411] (r17712, r17711)
 - Change: Make SDL's video driver more likely to be loaded than Allegro's video driver; SDL seems to perform better (r17583)
@@ -202,7 +240,7 @@
 - Fix: When moving a wagon and only the last part of a dual headed engine you could split the dual headed engine over two vehicles. This could be used to crash servers [CVE-2009-4007] (r18462)
 - Fix: [Windows] Forgot to load the symbol from SDL.dll (r18439)
 - Fix: Do not run the 'jam protection' for vehicles in a depot [FS#3360] (r18428)
-- Fix: [Windows] the help window would be too large in some cases [FS#3327] (r18424)
+- Fix: [Windows] The help window would be too large in some cases [FS#3327] (r18424)
 - Fix: Under some circumstances a pointer could be left untouched and then freed. Make sure this does not happen by ensuring it starts out as NULL instead of 'garbage' [FS#3298] (r18418)
 - Fix: On slopes the original and better road layouts did not check their minimum distance requirements [FS#3332] (r18415)
 - Fix: Aqueducts were not influenced by the 'long bridges' setting [FS#3338] (r18407)
@@ -350,7 +388,7 @@
 0.7.2-RC2 (2009-07-21)
 ------------------------------------------------------------------------
 - Fix: When marking trains stuck do not reset the unload/stuck counter when the vehicle is unloading. It will be automatically reset once the vehicle wants to leave the station [FS#3038] (r16901)
-- Fix: [NoAI]: Small errors in the API documentation [FS#3037] (r16865)
+- Fix: [NoAI] Small errors in the API documentation [FS#3037] (r16865)
 - Fix: Savegames from before 0.4 would get their waypoint 'index' messed up (r16854)
 - Fix: Cargo payments were not destroyed when a vehicle was destructed. This only happened when you crashed a vehicle while it was unloading [FS#3032, FS#3046] (r16801)
 
@@ -366,7 +404,7 @@
 - Fix: Houses would not get build on the map edge [FS#3025] (r16795)
 - Fix: Audio playback rate was fixed at 11025Hz regardless of the rate specified to the audio driver, resulting in incorrect playback speed. It is still preferable to use 11025Hz output rate if possible as OpenTTD's sample rate converter is very low quality (r16784)
 - Fix: Do not use the same error message for turning around road vehicles and flipping parts of trains in the depot [FS#3019] (r16772)
-- Fix: The win32 and win64 binary packages would not get their readme converted to DOS line endings (r16769)
+- Fix: [Windows] The binary packages would not get their readme converted to DOS line endings (r16769)
 - Fix: [NoAI] AITile::GetCargoProduction/Acceptance did not accept a radius of 0 anymore (r16767)
 - Fix: In the refit window the 'Select cargo type to carry' line always showed the ship refit tooltip [FS#3018] (r16757)
 - Fix: When loading a savegame Engine::grffile might be left NULL in certain cases (dynamic_engines enabled, articulated vehicle with only wagon-override action3s) (r16737)
@@ -535,7 +573,7 @@
 0.7.0-RC2 (2009-03-23)
 ------------------------------------------------------------------------
 - Change: [NewGRF] Expose GRF ID of engines in var action property 0x25 (r15739)
-- Fix: Some (newer) GCCs have trouble compiling the Win32 specific part of fontcache.cpp; jumps across variable declarations [FS#2752] (r15818)
+- Fix: Some (newer) GCCs have trouble compiling the Windows specific part of fontcache.cpp; jumps across variable declarations [FS#2752] (r15818)
 - Fix: When sorting on cost do not sort on the running cost [FS#2749] (r15778)
 - Fix: Do not show the message about reporting an AI crash for the dummy AI (r15774)
 - Fix: Number of active clients was not always properly updated [FS#2475] (r15773)
@@ -590,7 +628,7 @@
 - Fix: Undeterministic file sorting when the date is equal for all files [FS#2716] (r15657)
 - Fix: Changing vehicle.dynamic_engines when there are already vehicles can cause crashes (r15656, r15586)
 - Fix: Only ever call any vehicle callbacks after the whole articulated engine has been built (except 0x16) (r15654)
-- Fix: new (this) is seldom a good idea as destructors of member variables are not run causing memory leaks [FS#2706] (r15652)
+- Fix: C++'s new (this) is seldom a good idea as destructors of member variables are not run causing memory leaks [FS#2706] (r15652)
 - Fix: [OSX] Hack around an OSX stupidity in < 10.4 w.r.t. signals by not having any signal handling support for OSX < 10.4 (r15648)
 - Fix: Add an EngineOverrideManager to give the term 'compatible NewGRF' again some sense and to not crash because of trivial changes [FS#2612] (r15645)
 - Fix: Closing a network connection twice in the case that sending packets starts failing while disconnecting [FS#2710] (r15644)
@@ -612,8 +650,8 @@
 - Fix: Crash when saving a preset with unknown NewGRFs [FS#2646] (r15561)
 - Fix: The font width cache was not updated when changing fonts causing the font spacing to be off when changing fonts in-game (auto font detection) (r15557)
 - Fix: -v null crashing in 2051 due to trying to show the high score of the spectator (r15554)
-- Fix: [NoAI] crash when setting a depot order to the southern part of a ship depot [FS#2656] (r15551)
-- Fix: keep_all_autosave was ignored for dedicated servers/spectators [FS#2651] (r15546)
+- Fix: [NoAI] Crash when setting a depot order to the southern part of a ship depot [FS#2656] (r15551)
+- Fix: The keep_all_autosave setting was ignored for dedicated servers/spectators [FS#2651] (r15546)
 - Fix: If a buoy was placed directly in front of a dock, that dock was seen as a buoy and thus skipped once within 3 tiles [FS#2653] (r15545)
 - Fix: Extracting downloaded content did not work for Windows if one uses a non-ASCII path [FS#2650] (r15544)
 - Fix: [NewGRF] When articulated parts have no available default cargo, use the cargo type of the first part for livery selection [FS#2617] (r15541)
@@ -671,7 +709,7 @@
 - Feature: Double click to join selected server/company (r14209)
 - Feature: Allow both the German as well as non-German toyland graphics as 'correct' and official graphics (r14197)
 - Feature: Allow people to create their own base graphics easily and without requiring code changes (r14197)
-- Feature: [NewGRF]: Add support for property 0x13 for Bridges. In other words, one can now specifies a 16 bits cost multiplier (r14172)
+- Feature: [NewGRF] Add support for property 0x13 for Bridges. In other words, one can now specifies a 16 bits cost multiplier (r14172)
 - Feature: Make it possible to choose between the DOS and Windows graphics packs while retaining the possibility to override the palette (r14151)
 - Feature: Increase the size of the console backlog. Now it'll only remove backlog items when there are more than a threshold and when they are there longer than (another) threshold (r14056)
 - Feature: Make it possible to filter list_patches output like it's done for other list_* console commands (r14041)
@@ -782,7 +820,7 @@
 - Fix: Moving the first vehicle of a train elsewhere might require a new unitnumber for the remaining chain which might not be available (r14384)
 - Fix: Trams jumping when reversing on a single trambit (like caused during road construction reworks) or when (manually) reversing in a corner [FS#1852] (r14371)
 - Fix: Multiheaded parts in free wagon chains were not connected (could cause desyncs) (r14366, r14362)
-- Fix: [Win32] Some keypress combinations could be handled twice [FS#2206] (r14363)
+- Fix: [Windows] Some keypress combinations could be handled twice [FS#2206] (r14363)
 - Fix: The ownership of roadtiles was not properly set for very old savegames (including TTD's) making it impossible to remove some pieces of road [FS#2311] (r14359)
 - Fix: Desync due to randomly ordered vehicle hash by flooding and road vehicle overtake/following (r14356, r14258)
 - Fix: Signs were not updated on company bankruptcy/sell, and thus could have the colour of invalid player (r14348)
@@ -815,7 +853,7 @@
 - Fix: Incorrect cargo weights (r14144)
 - Fix: GetSlopeZ() gets a virtual coordinate, not a tile (r14139)
 - Fix: Close the 'manage vehicles' dropdown once the number of vehicles in the list reaches 0 [FS#2249] (r14133)
-- Fix: [strgen] Changing order of parameters {X:...} did not work for strings including some {StringY} (r14111)
+- Fix: [Strgen] Changing order of parameters {X:...} did not work for strings including some {StringY} (r14111)
 - Fix: Desync due to bubbles in toyland (r14110)
 - Fix: Make NewGRF action 0x06's changes persistent over the several loading stages [FS#1986] (r14102)
 - Fix: Make the 'Transfer Credit' display aware of the entire consist, not only the first vehicle (r14098)
@@ -826,7 +864,7 @@
 - Fix: NewGRF callback 23 did not use the NewGRF compatible text stack [FS#2224] (r14058)
 - Fix: NewGRF text stack's 'push word' did not move the data around properly (r14057)
 - Fix: Long strings in the edit box would cause OpenTTD to stop drawing the string. This is especially noticable with low resolutions and the chat input box (r14054)
-- Fix: [OSX] changed the condition for selecting 8 or 32 bpp blitter by default. Now we will pick 32 bpp if no 8 bpp fullscreen resolutions are available on the main display (the one with the dock) (r14032)
+- Fix: [OSX] Changed the condition for selecting 8 or 32 bpp blitter by default. Now we will pick 32 bpp if no 8 bpp fullscreen resolutions are available on the main display (the one with the dock) (r14032)
 - Fix: Crash when the AI tries to find the depot of an airport that does not have a depot [FS#2190] (r13999)
 - Fix: MSVC cannot handle changed files in the prebuild event, so make the version determination a separate subproject [FS#2004] (r13998)
 - Fix: The dedicated console removed any character that was not a printable ASCII character instead. Now it allows UTF8 formated strings too [FS#2189] (r13992)
@@ -959,7 +997,7 @@
 - Fix: Infinite loop in case your compiler decides that enums are unsigned by default (r12622)
 - Fix: The convert signal button disallowed signal dragging when the signal GUI was closed (r12577)
 - Fix: Binding to a specific IP could cause OpenTTD to not register properly with the masterserver if one has multiple external interfaces (r12574)
-- Fix: min() has 32bit arguments, clamping of 64bit values did not work (r12572)
+- Fix: The function min() has 32bit arguments, clamping of 64bit values did not work (r12572)
 - Fix: Towns could not terraform when inflation rised terraform prices enough (r12564)
 - Fix: Do not affect town rating change by the order in which we examine stations (r12561)
 - Fix: Redraw the signal GUI when the signal drag density changes in the patch settings and vice versa (r12553)
@@ -991,7 +1029,7 @@
 - Fix: Refresh vehicle details window when cached values are updated (r12378)
 - Fix: Set cached value for vehicle property 25 before other cached values [FS#1854] (r12377)
 - Fix: Do not close a dropmenu when clicking on a dropdown widget (r12374)
-- Fix: win32 music driver fails if path is too long or if containing non-latin chars [FS#1849] (r12373, r12372)
+- Fix: Windows music driver fails if path is too long or if containing non-latin chars [FS#1849] (r12373, r12372)
 - Fix: Do not let window hide behind the main toolbar after resizing the screen [FS#1823] (r12371)
 - Fix: Close language drop down when parent window is clicked/closed [FS#1853] (r12370)
 - Fix: Reset train speed limits when _patches.realistic_acceleration changes (r12369)
@@ -1027,7 +1065,7 @@
 - Fix: YAPF and NTP did not apply penalty for uphill tracks on steep slopes (r12313)
 - Fix: Restore timetable from backupped orders and add group ID to the backup [FS#1549] (r12296)
 - Fix: Do not draw trees nor lamps between tram tracks (r12290) [FS#1807]
-- Fix: [Win32] Do not create save dir on install (r12269)
+- Fix: [Windows] Do not create save dir on install (r12269)
 - Fix: Autoreplace did not update vehicle index for timetable window [FS#1805] (r12261)
 - Fix: GetProductionAroundTiles() may fail if only the second production slot exists (r12258)
 - Fix: Town variables 0x9E to 0xAD (company ratings) returned wrong values (r12247)
@@ -1148,14 +1186,14 @@
 - Fix: Do not allow modifying roadbits when other roadtypes would need different foundation (r11953)
 - Fix: Loading of very old savegames was broken (r11951)
 - Fix: Slope detection of bridge ramps. Helps YAPF and Trolly (r11946)
-- Fix: FileExists() failed for non latin paths (win32) (r11945)
+- Fix: [Windows] FileExists() failed for non latin paths (r11945)
 - Fix: Allow building drive-through road/tram stops at road/tram track that has no owner (r11944)
 - Fix: 'BRIDGE_TOO_LOW_FOR_TERRAIN'-check was wrong for steep slopes (r11936)
 - Fix: [Autoreplace] Single to dualhead locomotive replacefailed when player had enough money to replace and refit one but not enough to refit the last one as well [FS#1624] (r11929)
 - Fix: [Autoreplace] Autoreplace could refit train engines to the wrong cargo type if the old engine had no cargo capacity and the new one had (r11928)
 - Fix: Loading old, pre savegame version 2, savegames (r11925)
 - Fix: AI was reading wrong tile slope while building road bridge (r11917)
-- Fix: set correctly crossing state after train reversal, train leaving crossing, train crash (r11900)
+- Fix: Set correctly crossing state after train reversal, train leaving crossing, train crash (r11900)
 - Fix: Segmentation faults/wrong frees due uninitialized memory in the AI [FS#1658] (r11887)
 - Fix: Assert when trying to remove rail from a house or industry tile [FS#1663,FS#1665-6-7-8,FS#1680,FS#1686-7-8 FS#1715 FS#1742 FS#1771 FS#1776](r11883)
 - Fix: Crash in MP in vehicle group window if the currently selected group is deleted by another player (r11878)
@@ -1420,7 +1458,7 @@
 - Fix: Clone vehicles will no longer refit for free (r9689)
 - Fix: Improved loading does not use a huge amount of processing power anymore when having a lot of trains [FS#423] (r9683)
 - Fix: Truncate the NewGRF information text in the NewGRF GUI if it is too long (r9449)
-- Fix: Cancel in password queries reduces amount of players in the network game when they have not joined the game yet [FS#688] r9378
+- Fix: Cancel in password queries reduces amount of players in the network game when they have not joined the game yet [FS#688] (r9378)
 - Fix: If all news-setting buttons show 'full', make the ALL-button show 'full' too (r9137)
 - Fix: Open and close messages now have their own setting, so you can hide economy changes, but do show open/close of industries [FS#525] (r9097)
 - Fix: Do not make owner signs transparent, as then you loose the information who it owns [FS#637] (r9067)
@@ -1438,8 +1476,8 @@
 - Fix: Rail vehicles can no longer enter tunnels or bridgeheads with wrong railtype (r7976)
 - Fix: When path finding onto a bridge or tunnel end from previous tile (but not warping from the opposite end) check the enter direction. This fixes signal setting if a rail ends on the top of a tunnel end (r7718)
 - Fix: When following path for signals, do not skip back to the previous tile, as for tunnels and bridge ends the entering direction is wrong (r7717)
-- Fix: [YAPF] suppress 'Train is lost' message if path finding ended on the first two-way red signal due to YAPF.rail_firstred_twoway_eol option (r7628)
-- Fix: [OPF] signal update was incorrectly propagated (r7620)
+- Fix: [YAPF] Suppress 'Train is lost' message if path finding ended on the first two-way red signal due to YAPF.rail_firstred_twoway_eol option (r7628)
+- Fix: [OPF] Signal update was incorrectly propagated (r7620)
 
 
 0.5.3 (2007-09-15)
@@ -1484,7 +1522,7 @@
 0.5.3-RC1 (2007-06-28)
 ------------------------------------------------------------------------
 - Feature: Make the client list window (for network games) stickyable (r10293)
-- Feature: console command to get the current game date (r10137)
+- Feature: Console command to get the current game date (r10137)
 - Fix: Waypoints could be renamed when you are not the owner (r10368)
 - Fix: Smooth economy did not close primary industries and it allowed increasing of production of industries that should not have rising productions (r10348, r10347, r10290)
 - Fix: Acceleration for trains on slopes is not calculated properly [FS#786] (r10344, r10317)
@@ -1544,7 +1582,7 @@
 - Fix: Only non dedicated servers cannot have 0 players [FS#765] (r9785)
 - Fix: Remove arbitrary limit on length of NewGRF strings (r9775)
 - Fix: [NewGRF] Ignore axis-bit of station tile layouts [FS#756] (r9758)
-- Fix: [win32] Dead key and open/close console (r9728)
+- Fix: [Windows] Dead key and open/close console (r9728)
 - Fix: When you have closed the 'Load game'/'New game' windows which you started from the 'start server' menu, you should not start a server when starting a new game [SF#1244842] (r9757)
 - Fix: Trains were lost after autorenewal/autoreplace [FS#732] (r9753)
 - Fix: Stop flooded towns from building roads on water [FS#598] (r9743)
@@ -1579,8 +1617,8 @@
 
 0.5.1-RC2 (2007-03-23)
 ------------------------------------------------------------------------
-- Fix: crashes when the chatbox would be drawn outside of the main window [FS#701] (r9420)
-- Fix: reading out of an array caused a segmentation fault [FS#694] (r9394)
+- Fix: Crashes when the chatbox would be drawn outside of the main window [FS#701] (r9420)
+- Fix: Reading out of an array caused a segmentation fault [FS#694] (r9394)
 
 
 0.5.1-RC1 (2007-03-20)
@@ -1602,7 +1640,7 @@
 - Fix: Difficulty level button was not selected when opening the difficulty window (r9117)
 - Fix: The wrong catenary wires were drawn for tunnel entrances [FS#612] (r9077)
 - Fix: The intercontinental airport used 'T-junction' runway sprites when there is no exit in the middle of the runway as in the city airport [FS#529] (r9076)
-- Fix: [win] dedicated console now does not need an extra 'enter' to fully quit [FS#459] (r9074)
+- Fix: [Windows] Dedicated console now does not need an extra 'enter' to fully quit [FS#459] (r9074)
 - Fix: Take over companies properly in multiplayer games [FS#459] (r9071)
 - Fix: When a bribe failed and you have not picked up cargo yet, you would never be able to do so for a given station [FS#404] (r9070)
 - Fix: Do not keep on scrolling for non-numeric values in settings, but require reclick [FS#663] (r9064)
@@ -1612,12 +1650,12 @@
 - Fix: Play the correct engine sound based on the engine type instead of the sprite (r9009)
 - Fix: New locomotive names were not announced in the news, it said 'new railway locomotive available - railway locomotive' [FS#581] (r9000, r9001)
 - Fix: [NewGRF] Do not select a disabled platform length/number of track count when going out of drag-drop mode [FS#450] (r8999)
-- Fix: [win] Resolution doubled in cfg file when fullscreen mode used [FS#642] (r8994)
+- Fix: [Windows] Resolution doubled in cfg file when fullscreen mode used [FS#642] (r8994)
 - Fix: The industry list should also be (re)set when the number of industries is 0 [FS#656] (r8980)
-- Fix: [win] Possible buffer overflow if unicode text is pasted into an input box and needs trimming (r8975)
-- Fix: [win] Support compilation with the Vista Platform SDK (r8974)
+- Fix: [Windows] Possible buffer overflow if unicode text is pasted into an input box and needs trimming (r8975)
+- Fix: [Windows] Support compilation with the Vista Platform SDK (r8974)
 - Fix: Crash on loading savegames with GRFs that do not have their GRF info/name set (r8955)
-- Fix: [NewGRF] support for vehicle variable 48 was wrong (r8943)
+- Fix: [NewGRF] Support for vehicle variable 48 was wrong (r8943)
 
 
 0.5.0 (2007-02-27)
@@ -1676,10 +1714,10 @@
 ------------------------------------------------------------------------
 - Codechange: Add Lithuanian language as an official translation (r7806)
 - Fix: The configure script did not work work for dash, a sh compatible shell [FS#485] (r7893)
-- Fix: [OSX] control + enter no longer fullscreens, interfered with team-chat (r7886)
+- Fix: [OSX] Control + enter no longer fullscreens, interfered with team-chat (r7886)
 - Fix: Offset engines/wagons by half width in details window; fixes overflowing for display (r7864)
 - Fix: [OSX] Remove incorrect debug message about missing grf files (r7766)
-- Fix: [sdl] sometimes ALT-TAB could trigger the fast forward (r7727)
+- Fix: [SDL] Sometimes ALT-TAB could trigger the fast forward (r7727)
 
 
 0.5.0-RC2 (2006-12-31)
@@ -1715,7 +1753,7 @@
 - Feature: Allow towns to be built on top of trees in the scenario editor [FS#396] (r7152)
 - Feature: Allow over-building of compatible railtypes, i.e. normal and electrified rail. If building electrified rail, normal rail is upgraded for you (at a cost) (r7106)
 - Feature: Additional positioning for long dropdown lists with scrollbar support if dropdown list would not fit (r7086)
-- Feature: [win32] Remember the window size between restarts when quit in fullscreen mode (r7061)
+- Feature: [Windows] Remember the window size between restarts when quit in fullscreen mode (r7061)
 - Feature: Increase the chatbuffer of chat messages, messages longer than the graphical box will be wrapped to a new line (r6956)
 - Feature: Allow typing longer text than visible for an editbox; it will scroll properly now (r6954)
 - Feature: Allow spectators to team-speak to eachother (r6933)
@@ -1746,7 +1784,7 @@
 - Feature: Possibility to generate scenarios by importing heightmaps. It can be in PNG or BMP format
 - Feature: New (optional) landscape generator based on TerraGenesis Perlin noise with GUI, progress bar and fine-tuning options (r5946)
 - Feature: Filter for textboxes to only allow input of certain patterns (like numbers only) (r5944)
-- Feature: [win32] Remember the maximized state of the game window and restore on start [FS#234] (r5874)
+- Feature: [Windows] Remember the maximized state of the game window and restore on start [FS#234] (r5874)
 - Feature: Add an icon to the SDL openttd executable (r5872)
 - Feature: Also allow horizontal and vertical rails on steep slopes (r5864)
 - Feature: Allow building of (certain) rails, roads and bridge ramps on steep sloped tiles (r5833)
@@ -1789,10 +1827,10 @@
 - Codechange: Remove the 'unsorted' vehicle sorter, because it's plain useless (r6270)
 - Codechange: Remove MSVC6 support. The compiler was too stupid and too many workarounds were needed. Please switch to mingw or VC2005++ express (r5286)
 - Codechange: Allow a switch in Makefile.config to disable threads in OpenTTD (r5978)
-- Codechange: [win32] Add native x64 target to VS2005 project files (r5813)
-- Codechange: [win32]The exception dialog showed the last modification-date of win32.c instead of the last compilation-date (r5801)
+- Codechange: [Windows] Add native x64 target to VS2005 project files (r5813)
+- Codechange: [Windows] The exception dialog showed the last modification-date of win32.c instead of the last compilation-date (r5801)
 - Codechange: Add owner attribute to canals and locks. This makes them more useful in multiplayer games, as only the owner can delete them. Does not affect usage (r5084)
-- Codechange: Add MSVC2005 support, project and solution files are in the _vs80.* files (r4581)
+- Codechange: [Windows] Add MSVC2005 support, project and solution files are in the _vs80.* files (r4581)
 - Codechange: [OSX] Shark (Xcode's profiling tool) can now relate CPU usage to lines (r3611)
 - Codechange: Rewrite the multistop slot assignment system. More resource-friendly, several slot-assignment improvements (r3730, r4259)
 - Codechange: Completely remove the deprecated -p parameter (is superseded by -n) (r3508)
@@ -1834,7 +1872,7 @@
 - Fix: Disable main toolbar buttons showing company list drop downs when there are no companies [FS#356] (r6695)
 - Fix: Autoreplace can now use the money for selling the old vehicle to build the new one (r6640)
 - Fix: A loop-hole that allowed docks to be built regardless of town authority rating (r6477)
-- Fix: [win32] The dedicated server could overwrite the keyboard input buffer before it was handled by OpenTTD (r6449)
+- Fix: [Windows] The dedicated server could overwrite the keyboard input buffer before it was handled by OpenTTD (r6449)
 - Fix: Reset the location of the last sound as that location can be outside the map when you are loading another, (smaller) map (r6437)
 - Fix: Show an error message when executing 'scrollto x' with x < 0 or >= MapSize() instead of asserting later on [FS#340] (r6435)
 - Fix: Station catchment area persists after switching tools [FS#136] (r6368)
@@ -1908,7 +1946,7 @@
 - Fix: Crash when sorting an empty server list
 - Fix: The build-tree window button defaulted to a place-push-button on opening where no treetype is selected
 - Fix: Game crashes when cloning/autoreplace reaches train-limit
-- Fix: [NTP] properly check for railtypes on non-plain-rail-tiles
+- Fix: [NTP] Properly check for railtypes on non-plain-rail-tiles
 - Fix: Trains could enter certain sloped rail tiles under bridges with incompatible rail type
 - Fix: Ensure the map memory is cleared after it is allocated. This fixes random deserts that sometimes occurred
 - Fix: Some weird behaviour with tile selection near bridges
@@ -1928,9 +1966,9 @@
 - Fix: Removing roads on crossings was done without a check for ownership
 - Fix: [Autoreplace] Fix drawing of train list for outdated engines
 - Fix: Malicious clients/servers could crash the game [CVE-2006-1999, CVE-2006-1998]
-- Fix: [Autoreplace] allow replacement of wagons even when the engine fails to be replaced
+- Fix: [Autoreplace] Allow replacement of wagons even when the engine fails to be replaced
 - Fix: Certain operations involving trains inside a depot could cause a crash
-- Fix: [Autoreplace] cost for refitting a new vehicle is added to the cost animation (player always paid for it, it just was not shown)
+- Fix: [Autoreplace] Cost for refitting a new vehicle is added to the cost animation (player always paid for it, it just was not shown)
 - Fix: [OSX] Save/Load issues solved for OSX 10.3.9 universal binaries
 - Fix: Illegal servers in the master-server list could kick the client back to the main menu, effectively making Multiplayer impossible
 - Fix: [NPF] Do not mark tiles when debugging in multiplayer, this will cause desyncs
@@ -1940,7 +1978,7 @@
 0.4.7 (2006-03-26)
 ------------------------------------------------------------------------
 - Feature: [OSX] Add support for triple-binaries (PPC, PPC970, i386) (r4102)
-- Fix: [OSX] crash when going to fullscreen (r4100)
+- Fix: [OSX] Crash when going to fullscreen (r4100)
 - Fix: Allow unused wagons to have their first cache set. Fixes faulty cache-warning message and noticably speeds up depot operations (r4094)
 - Fix: [NPF] Trains & busses were unable to find a route when leaving a depot or bus stop (r4072)
 
@@ -1948,12 +1986,12 @@
 0.4.6 (2006-03-22)
 ------------------------------------------------------------------------
 
-- Codechange: [win32] Show the revision in crash.txt and enable the button to show the crash text in the crash-window (r3965)
+- Codechange: [Windows] Show the revision in crash.txt and enable the button to show the crash text in the crash-window (r3965)
 - Codechange: Add additional linker information to release builds to help figure out crashes more easily (r3526)
 - Fix: [OSX] Cannot save game if name contains german umlauts (loading savegames with certain chars still look odd) [SF#1157244] (r4038)
-- Fix: [OSX] major speedup for PPC fullscreen (r4034)
+- Fix: [OSX] Major speedup for PPC fullscreen (r4034)
 - Fix: [Makefile] Make sure the ICON_DIR gets created before copying files there (r4032)
-- Fix: [win32] Change compiler settings to use the multithreaded CRT. This prevents certain crashes on multi-threaded machines (r4031)
+- Fix: [Windows] Change compiler settings to use the multithreaded CRT. This prevents certain crashes on multi-threaded machines (r4031)
 - Fix: [NPF] Road vehicles planning through the back of depots and stations [SF#1453646] (r4029)
 - Fix: Use the title of a savegame in the saveload dialog-editbox (r4018)
 - Fix: Improper resolution written to the configuration file when exiting from fullscreen (r4017)
@@ -1973,11 +2011,11 @@
 - Fix: The tooltips for raising and lowering land buttons in the scenario editor are interchanged [FS#61] (r3959)
 - Fix: Correctly restore the roadside after roadworks are finished (r3957)
 - Fix: [Multistop] Check the status of the destination road stop instead of a station's first road stop. This only has effect with road vehicle queuing disabled (r3956)
-- Fix: validate the setting of max_companies/spectators through the console (r3955)
+- Fix: Validate the setting of max_companies/spectators through the console (r3955)
 - Fix: Improve game-load times (r3954)
 - Fix: On loading a game, GetPlayerRailtypes() did not account for the fact that vehicles are introduced a year after their introduction date. This will also relieve possible (rare) network desyncs (r3952)
 - Fix: Restore plural forms of cargo types for several languages (r3951)
-- Fix: [win32] Add directives to allow Visual Studio 2005 compilation (r3950)
+- Fix: [Windows] Add directives to allow Visual Studio 2005 compilation (r3950)
 - Fix: Crash in string code with openbsd/zaurus; alignment issues [SF#1415782] (r3948)
 
 
@@ -1994,10 +2032,10 @@
 - Feature: New display option: 'transparent station signs' (r2438)
 - Feature: You can now give transfer order to set up feeder systems (r2441)
 - Feature: Removing tracks with the 'remove' tool, automatically removes signals on the tracks (r2469)
-- Feature: [localisation] Allow changing the order of parameters in translated strings (r2573)
-- Feature: [localisation] New way to specify plural forms (r2592)
-- Feature: [localisation] Support genders (r2594)
-- Feature: [localisation] Support cases (r2597)
+- Feature: [Localisation] Allow changing the order of parameters in translated strings (r2573)
+- Feature: [Localisation] New way to specify plural forms (r2592)
+- Feature: [Localisation] Support genders (r2594)
+- Feature: [Localisation] Support cases (r2597)
 - Feature: Add support for truncating strings to a given (pixel) length (r2607)
 - Feature: Overhaul DirectMusic MIDI backend, remove 'experimental' status (r2712)
 - Feature: Change the driver probing algorithm: Use the first music/sound/video which succeeds initialising instead of bailing out after the first. No need to specify -snull if no soundcard is present anymore (r2728)
@@ -2005,7 +2043,7 @@
 - Feature: Clone vehicles (r2764)
 - Feature: When starting without a config file determine the language on basis of the current locale (r2777)
 - Feature: [NewGRF] Add support for 'extended bytes' (r2872)
-- Feature: [localisation] Major step twoards ISO-8859-15: Implement missing characters (r2879)
+- Feature: [Localisation] Major step twoards ISO-8859-15: Implement missing characters (r2879)
 - Feature: Implement the console command rm to remove savegames (r2941)
 - Feature: Danish town names (r2957)
 - Feature: Menu option to toggle console (r2958)
@@ -2041,9 +2079,9 @@
 - Fix: Refitting to a cargo which is already carried by some vehicles takes their capacities into account for display (r2365)
 - Fix: Add 'multihead' TTDPatch option to OpenTTD NewGRF flags-emulation (r2368)
 - Fix: Make install tried to install scenarios in the (non-existing) personal dir when USE_HOMEDIR is specified (r2371)
-- Fix: [console] update the example scripts in the scripts/ directory to reflect the new console functionality (r2372)
-- Fix: [console] any line starting with a '#' is a comment so ignore it (r2372)
-- Fix: [console] The special variables whose value can only be set by a custom process should, also print out their newly set value there (r2372)
+- Fix: [Console] Update the example scripts in the scripts/ directory to reflect the new console functionality (r2372)
+- Fix: [Console] Any line starting with a '#' is a comment so ignore it (r2372)
+- Fix: [Console] The special variables whose value can only be set by a custom process should, also print out their newly set value there (r2372)
 - Fix: [NewGRF] Ignore action 0 prop 0x20 (air drag) (r2377)
 - Fix: [NewGRF] Further property stubs, help prevents subsequent incorrect reading of NewGRF data (r2378)
 - Fix: Build year for mail compartment of planes was not set correctly, affected station ratings (r2380)
@@ -2051,7 +2089,7 @@
 - Fix: Check the airport type when building an airport (r2382)
 - Fix: Monkey-testing turned up some command crashes (r2383)
 - Fix: Check selling land and setting player colour. Also an extra map-bounds check for terraforming (r2384)
-- Fix: [realistic accel] Very slow trains no longer get an increase in maximum speed when part of them is in a depot (r2388)
+- Fix: [Realistic acceleration] Very slow trains no longer get an increase in maximum speed when part of them is in a depot (r2388)
 - Fix: [NewGRF] Load power for dual-headed engines correctly (r2400)
 - Fix: [NewGRF] When resolving callbacks, dont ignore wagon overrides (r2410)
 - Fix: Station ratings are not affected by speed limits from realistic acceleration anymore (r2411)
@@ -2065,7 +2103,7 @@
 - Fix: Using the mouse wheel could lead to a crash if mouse was not over a widget (r2530)
 - Fix: Blinking 'lock' gfx in multiplayer games (r2548)
 - Fix: Remove original train pathfinder. Enhanced old pathfinder (r2553)
-- Fix: Spaces in the path to the MIDI files caused the win32 MIDI player to fail (r2563)
+- Fix: Spaces in the path to the MIDI files caused the Windows MIDI player to fail (r2563)
 - Fix: Set server map name to the loaded name of the game/scenario (r2610)
 - Fix: Improve the old pathfinder. Changed it to A* instead of Dijkstra. Benchmark shows that NTP is now around 10x faster than NPF (r2635)
 - Fix: Correctly save and load company_value, it's 64 bits wide, not 32 bits (r2684)
@@ -2078,11 +2116,11 @@
 - Fix: Return a proper version number, when testing the TTDPatch version in the SkipIf action (r2862)
 - Fix: Change the way NewGRFs are loaded, this saves quite some sprite slots - about 2000 for DBSetXL for example (r2868)
 - Fix: Several format string vulnerabilities and buffer overflows in the network code [CVE-2005-2764, CVE-2005-2763] (r2899)
-- Fix: fixed issue where autorenewed vehicles did not get all stats updated (r2912)
+- Fix: Fixed issue where autorenewed vehicles did not get all stats updated (r2912)
 - Fix: Exit the child of the extmidi backend with _exit() instead of exit(), because we do not want any atexit handlers - especially flushing output streams - to run, if exec() fails (r2938)
 - Fix: Server crash with 'say'-command (r2950)
-- Fix: Fix win32 midi volume level control which did not work (r2960)
-- Fix: [OSX] quitting the game no longer leaves a process behind that eats all the CPU power (r3281)
+- Fix: Fix Windows midi volume level control which did not work (r2960)
+- Fix: [OSX] Quitting the game no longer leaves a process behind that eats all the CPU power (r3281)
 - Fix: Fix for UFO-broken waypoint [SF#1216203] (r2961)
 - Fix: [NewGRF] Include missing grf feature canal
 - Fix: [NewGRF] Add bounds checking to VehicleChangeInfo for vehicles
@@ -2137,8 +2175,8 @@
 ------------------------------------------------------------------------
 
 - Feature: Add 'clear' command and CTRL+L to empty console window
-- Feature: add the possibility to print out the current debug-level
-- Fix: [MacOSX] default path for midi player on mac is now correct again
+- Feature: Add the possibility to print out the current debug-level
+- Fix: [MacOSX] Default path for midi player on mac is now correct again
 - Fix: Updated makefile for FreeBSD
 - Fix: Text overflows in about box
 - Fix: Link error while compiling as dedicated server
@@ -2170,30 +2208,30 @@
 - Feature: Saving vehicle sorting criteria for each vehicle type [SF#1093261]
 - Feature: Resizable orders GUI [SF#1107690]
 - Feature: Focus keyboard on input-box in Multiplayer Menu [SF#1166978]
-- Feature: terrain hotkeys nonfunctional in scenario editor (D,Q,W,E,R,T,Y,U fltr) [SF#1174313]
+- Feature: Terrain hotkeys nonfunctional in scenario editor (D,Q,W,E,R,T,Y,U fltr) [SF#1174313]
 - Feature: Complete rework of console and new commands like ls, save, load, help, etc
 - Feature: Signs are shown in the colour of the player who created them
 - Feature: Add cheat option to set production of raw-material industries in game
 - Feature: Replace trian GUI remembers railtype selected from the dropdown menu
 - Feature: Improved Autoreplace
-- Feature: many more smaller features :D
+- Feature: <any more smaller features :D
 - Fix: A wrong error message was displayed when trying to [SF#1108618]
 - Fix: Game does not crash any more when a NewGRF file does not exist [SF#1110407]
 - Fix: Clearing land for free by reallocating HQ [SF#1112469]
 - Fix: Clearing land for free by reallocating HQ [SF#1112469]
-- Fix: crash when accessing hi-scores in editor, it is now disabled [SF#1113037]
+- Fix: Crash when accessing hi-scores in editor, it is now disabled [SF#1113037]
 - Fix: Game no longer crashes when right-clicking a disabled Full Load button [SF#1113399]
 - Fix: Dedicated server boots again [SF#1114100]
 - Fix: Game crashed sometimes when there were no industries in the map [SF#1114950]
 - Fix: In the main menu, when starting a new game while the load game dialog is open, openttd asserts [SF#1115200]
-- Fix: non-stop orders are no longer accidently skipped [SF#1117538]
+- Fix: Non-stop orders are no longer accidently skipped [SF#1117538]
 - Fix: Generate the correct smoke type for diesel trains [SF#1116619]
 - Fix: Max passengers / mail variables are now 32 bit [SF#1119308]
 - Fix: Better test if a string actually contains any console command [SF#1109400]
 - Fix: 'Play scenario' now loads game options and difficulty, 'Load game' starts game with user-selected values [SF#1108637]
-- Fix: carriages of NewGRFs can be refitted again [SF#1143587]
+- Fix: Carriages of NewGRFs can be refitted again [SF#1143587]
 - Fix: Production values of temperate-climate banks can now be altered [SF#1117730]
-- Fix: openttd: ship_cmd.c:642 ... Assertion failed. Mapwrap fixed in ship_cmd.c (was implicitely ok before biggermaps) [SF#1118810]
+- Fix: Mapwrap fixed in ship_cmd.c (was implicitely ok before biggermaps) [SF#1118810]
 - Fix: Assertion error on kick. When a company is cleaned all its windows need to be closed. For global vehicle lists, the no-staiton index of -1 was not taken into account [SF#1117327]
 - Fix: Speeding up when pressing ALT+TAB (Windows) [SF#1114261]
 - Fix: Signals dissaper after typing text and pressing enter!. Signs in Scenario Editor have no owner so ignore that [SF#1149403]
@@ -2203,11 +2241,11 @@
 - Fix: Crash with german umlauts in station names [SF#1155696]
 - Fix: Segmentation fault when loading savegame, out of bounds array check [SF#1158618]
 - Fix: Autosave ignoring settings [SF#1149487]
-- Fix: Infinite access for A:\ (win32). Patch [1171208]. Only requery drive(s) if the user changes a directory, also surpress the OS error box that pops up on some windows machines [SF#1024703]
+- Fix: [Windows] Infinite access for A:\. Only requery drive(s) if the user changes a directory, also supress the OS error box that pops up on some windows machines [SF#1024703]
 - Fix: Create Lake and draggable Create Desert tools [SF#1095110]
 - Fix: Trains 'Go to depot' button: click twice skip to next order [SF#1172878]
 - Fix: Engine power not updated w/auto replace' autoreplace now forces an update of the cache [SF#1146215]
-- Fix: Path displaying as 'C:\\' in saveload window win32-only [SF#1173690]
+- Fix: [Windows] Path displaying as 'C:\\' [SF#1173690]
 - Fix: Click & drag removal of road assertion fail [SF#1179892]
 - Fix: Max loan always in euros, use _opt_ptr instead of _opt [SF#1174237]
 - Fix: AI orders its vehicles to a competitor's truck stop [SF#1184201]
@@ -2219,15 +2257,15 @@
 - Fix: No HQ present for competitor, disable 'View HQ' button [SF#1187613]
 - Fix: Pre-signal stays red when there is only a single exit signal [SF#1193048]
 - Fix: Train in tunnel is not properly detected by signal code [SF#1185176]
-- Fix: [NewGRF] rotors of custom helicopters are displayed correctly in the hangar window
+- Fix: [NewGRF] Rotors of custom helicopters are displayed correctly in the hangar window
 - Fix: Scenario Editor now handles human-made roads better (try to build a city layout before placing the city, finally that works very nice)
-- Fix: [NewGRF] helicopters are correctly recognized
-- Fix: [Autoreplace] made sure that planes only show planes in replace GUI and helicopters only show helicopters
+- Fix: [NewGRF] Helicopters are correctly recognized
+- Fix: [Autoreplace] Made sure that planes only show planes in replace GUI and helicopters only show helicopters
 - Fix: Crash when generating tropical maps
 - Fix: [Autoreplace] Cheaters can no longer exploit autoreplace to get vehicles, that's not invented yet
 - Fix: [Autoreplace] Fixed a stupid bug introduced in r1687, that made a crash if anybody tried to autoreplace anything but an aircraft
 - Fix: Expand railroad stations beyond maximum spread
-- Fix: [Autoreplace] fixed a typo that could prevent autoreplaced aircraft from automatically go to a hangar
+- Fix: [Autoreplace] Fixed a typo that could prevent autoreplaced aircraft from automatically go to a hangar
 - Fix: Hacked clients can no longer be used to build vehicles that are not available yet
 - Fix: Minimum profit of vehicles was calculated wrong for Performance Rating
 - Fix: No longer a station where you only unload is bad for your town-rating
@@ -2238,38 +2276,38 @@
 
 0.3.6 (2005-01-24)
 ------------------------------------------------------------------------
-- Feature: resizable windows. All useful windows are already made resizable
-- Feature: highscore chart (accessible from the difficulty window) with top5 companies for a given difficulty (select the difficulty in the menu)
-- Feature: endgame score on 1 jan 2051 where you are added to the highscore if sufficiently large points have been accumulated. Game is paused while
+- Feature: Resizable windows. All useful windows are already made resizable
+- Feature: Highscore chart (accessible from the difficulty window) with top5 companies for a given difficulty (select the difficulty in the menu)
+- Feature: Endgame score on 1 jan 2051 where you are added to the highscore if sufficiently large points have been accumulated. Game is paused while
 - Feature: Visually enhanced autorail placing
 - Feature: Autoreplace Vehicles (accessible from the vehicle lists)
 - Feature: A counter to tell how many engines you have of each type to the autoreplace vehicle windows
 - Feature: A display for the total map population to the town display
-- Feature: [network] RCon (Remote console)
-- Feature: hotkeys for dock and airport toolbar (see http://wiki.openttd.org/index.php/Hotkeys)
-- Feature: [Network] banning system (mostly tnx to guru3) A server can ban people via ClientList using 'ban', 'unban', 'banlist'
-- Feature: [Network] server can now pause and unpause a game through the console. Use 'pause' and 'unpause'
+- Feature: [Network] RCon (Remote console)
+- Feature: Hotkeys for dock and airport toolbar (see http://wiki.openttd.org/index.php/Hotkeys)
+- Feature: [Network] Banning system (mostly tnx to guru3) A server can ban people via ClientList using 'ban', 'unban', 'banlist'
+- Feature: [Network] Server can now pause and unpause a game through the console. Use 'pause' and 'unpause'
 - Feature: [OS/2] OS/2 support is now finished (Fixes for networking, file selection, keyboard input, plus many other minor issues)
 - Feature: [SDL] Show revision number in window title
 - Feature: [Unix] Check which gcc version is present and only set available compiler flags
 - Feature: [Windows] CTRL+V (Paste) now works on all editboxes. This includes 'Add Server', chat, etc
-- Feature: [Windows] dedicated server is now functioning correctly
+- Feature: [Windows] Dedicated server is now functioning correctly
 - Feature: Addded keyboard shortcuts for the order window
 - Feature: Aircraft refit options have been restricted to 'sane' values
-- Feature: allows setting the production values of the rawmaterial producing industries in the editor
-- Feature: console support for loading maps. Use 'load', 'list_files' and 'goto_dir' to navigate and load games
+- Feature: Allows setting the production values of the rawmaterial producing industries in the editor
+- Feature: Console support for loading maps. Use 'load', 'list_files' and 'goto_dir' to navigate and load games
 - Feature: Display server port in the multiplayer game info window
-- Feature: dynamite in landscaping toolbar (hotkey 'D')
+- Feature: Dynamite in landscaping toolbar (hotkey 'D')
 - Feature: Improved Network Lobby GUI with a green dot if company income is positive (else red dot) and lock icon if company is password protected
 - Feature: Make ottd compile on Zeta
 - Feature: MD5 hash check for TTD files
 - Feature: New companies receive a 5-year protection period against buying-up
-- Feature: norwegian townnames
+- Feature: Norwegian townnames
 - Feature: Order Checking is only execute for ONE vehicle in an order-share system
 - Feature: Passengers aircraft now ignore the amount of mail for 'full load any' options
-- Feature: place multiple accepting industies nearby in the editor mode if the appropriate patches are set
-- Feature: population in label of the town (patch setting)
-- Feature: scrolling credits list (in alphabetical order)
+- Feature: Place multiple accepting industies nearby in the editor mode if the appropriate patches are set
+- Feature: Population in label of the town (patch setting)
+- Feature: Scrolling credits list (in alphabetical order)
 - Feature: Train window now shows the number of vehicles per row
 - Feature: Swiss town-names [SF#1039061]
 - Feature: Adding 16:10 resolutions for mainly laptops [SF#1090950]
@@ -2284,78 +2322,78 @@
 - Fix: Slopes under high bridges were not flooded [SF#1090495]
 - Fix: In scenario editor, when trees are placed randomly, they are no longer placed on farmland [SF#1092473]
 - Fix: On create, the scrollbar of the server-list was not updated [SF#1092661]
-- Fix: placing rocks in scenario editor. You can place rocks on trees and vice versa [SF#1092707]
+- Fix: Placing rocks in scenario editor. You can place rocks on trees and vice versa [SF#1092707]
 - Fix: Drive side in new games. Setting the driver side is possible during the game until someone buys road vehicles. In networked games only the server can change it [SF#1093200]
-- Fix: no more glitches with many maps in the scenario list when creating server [SF#1093466]
+- Fix: No more glitches with many maps in the scenario list when creating server [SF#1093466]
 - Fix: Dissappearing rocks in Scenario Editor [SF#1093485]
 - Fix: Toolbars accessible via keyboard in spectator mode [SF#1094092]
 - Fix: When all stations in an aircraft's order list are demolished, the plane eventually crashes (running out of fuel) [SF#1095020]
 - Fix: Servers list now also saves the port [SF#1095143]
 - Fix: Crash when all vehicles from a vehicles per station list had been removed [SF#1098553]
-- Fix: starting year patch goes out of range. Clamped year between 1920-2090 [SF#1099101]
+- Fix: Starting year patch goes out of range. Clamped year between 1920-2090 [SF#1099101]
 - Fix: Bug Fix - Vehicle Lists not updated at Acqusition [SF#1099225]
 - Fix: Game crashes after the click on Rename (see also Bug 10992). There was no check for non-selected engine [SF#1099451]
-- Fix: wrong tooltip for place desert button [SF#1100736]
-- Fix: fast forward in main menu [SF#1100767]
+- Fix: Wrong tooltip for place desert button [SF#1100736]
+- Fix: Fast forward in main menu [SF#1100767]
 - Fix: Crash if generating land while industry window is open. This also happened for towns and the land information window [SF#1101179]
 - Fix: Configure Patches window text overflow [SF#1101906]
-- Fix: console in dedicated server [SF#1101963]
+- Fix: Console in dedicated server [SF#1101963]
 - Fix: Game crashed when clicking 'new face' or 'company color' twice [SF#1102275]
 - Fix: Vehicle lists are now redrawn when a vehicle arrives in a depot. Station-specific vehicle lists are now redrawn daily as well (not only the master list) [SF#1099535, SF#1102776]
-- Fix: font size changing. Dedicated server did not have code filtering, 'tab' could result in bigger fonts [SF#1103113]
+- Fix: Font size changing. Dedicated server did not have code filtering, 'tab' could result in bigger fonts [SF#1103113]
 - Fix: Order Check messages are now validated before displayed [SF#1103187]
 - Fix: Railroad tracks on slopes were not flooded [SF#1103301]
 - Fix: Crashed trains do not initiate the lost vehicle message anymore [SF#1104350]
 - Fix: On horizontal/vertical tracks you are also charged for building/removing signals on the parallel track on the same tile [SF#110452]
 - Fix: Aircraft in hangar messages are now revalidated before display [SF#1104969]
 - Fix: Destroyed train locks crossings [SF#1105112]
-- Fix: upgrade rail fails when train under bridge [SF#1105281]
+- Fix: Upgrade rail fails when train under bridge [SF#1105281]
 - Fix: Trains do not think they're on a slope any more while they drive around in a tunnel [SF#1105959]
 - Fix: Buoys can now only be removed if no ship has it in their schedule. (This makes buoys more useable in multiplayer games again, as buoys cannot be deleted by other players if they are used.) [SF#1105963]
 - Fix: Graph's keys get confused [SF#1106354]
-- Fix: placing signals with 2x1 drags is treated as placing a single signal [SF#1106930]
-- Fix: console ignoring return character occasionally [SF#1107350]
+- Fix: Placing signals with 2x1 drags is treated as placing a single signal [SF#1106930]
+- Fix: Console ignoring return character occasionally [SF#1107350]
 - Fix: Scenario creation bug; engines are of correct year when scenario is saved [SF#1108008]
-- Fix: little red box in scenario editor [SF#1092474]
-- Fix: scrolling through console sometimes crashed the whole game [SF#1099197]
+- Fix: Little red box in scenario editor [SF#1092474]
+- Fix: Scrolling through console sometimes crashed the whole game [SF#1099197]
 - Fix: Catchment area with drag&drop stations [SF#1099209]
 - Fix: [Network] 'kick 1' did crash dedicated servers
 - Fix: [Network] A server no longer crashes when a client sends an invalid DoCommand, but drops the client instead
 - Fix: [Network] Added packet protection. No longer a client or server
 - Fix: [Network] Bug in bind system. Advertising failed on systems with more then 1 ip, and server_bind active to one of them
 - Fix: [Network] Disabled 'money-cheat' (read: bug which could give people a lot of money)
-- Fix: [SDL] now the binary never links to SDL if DEDICATED is set
-- Fix: [Windows] somehow mousewheel was disabled on windows using SDL; reenabled again
-- Fix: a modified client could try to replace a vehicle to an invalid engine ID and crash the server
-- Fix: autoreplace vehicle lists are now redrawn when a new vehicle becomes available
+- Fix: [SDL] Now the binary never links to SDL if DEDICATED is set
+- Fix: [Windows] Somehow mousewheel was disabled on windows using SDL; reenabled again
+- Fix: A modified client could try to replace a vehicle to an invalid engine ID and crash the server
+- Fix: Autoreplace vehicle lists are now redrawn when a new vehicle becomes available
 - Fix: Buy Vehicle GUI now shows HPs bigger than 32000 correctly
 - Fix: Console alias, load_game functionality and load fix
-- Fix: correct error message for when trying to build a railroad station over a bus/truck/etc-station
+- Fix: Correct error message for when trying to build a railroad station over a bus/truck/etc-station
 - Fix: Correct landscaping buttons in monorail and maglev toolbars
-- Fix: dedicated server also writes to log file if active
+- Fix: Dedicated server also writes to log file if active
 - Fix: Desert-landscape does no longer crash
 - Fix: Expand town is a bit more agressive
-- Fix: finally zooming in/out always works
-- Fix: fixed chat-bug (that from a certain moment, nobody could talk)
-- Fix: fixed weight for double-head trains and with that the acceleration (now maglev lvl4 can reach their top speed, and are faster than lvl3)
+- Fix: Finally zooming in/out always works
+- Fix: Fixed chat-bug (that from a certain moment, nobody could talk)
+- Fix: Fixed weight for double-head trains and with that the acceleration (now maglev lvl4 can reach their top speed, and are faster than lvl3)
 - Fix: Full-Loading trains no longer get 'lost' after a while
 - Fix: Graphs were not updated correctly when one graph with a certain selection was already open and another graph window was opened
-- Fix: in multiplayer clientlist can only be opened once
+- Fix: In multiplayer clientlist can only be opened once
 - Fix: Loan does not count against the company value
-- Fix: nasty bug where one could build one station OVER the other
+- Fix: Nasty bug where one could build one station OVER the other
 - Fix: No crash when creating a game with New English town names any more
-- Fix: now helicopters will use a hangar in schedule to be replaced in, even if they are only set to service there. Since helicopters are serviced at helipads, they will only go there if they needs to be replaced or renewed. They will also use a hangar in an airport in the schedule if needed
-- Fix: only a server can rename a town in a MP game
-- Fix: really old maps do load again
+- Fix: Now helicopters will use a hangar in schedule to be replaced in, even if they are only set to service there. Since helicopters are serviced at helipads, they will only go there if they needs to be replaced or renewed. They will also use a hangar in an airport in the schedule if needed
+- Fix: Only a server can rename a town in a MP game
+- Fix: Really old maps do load again
 - Fix: Refit engine button is now disabled when cargo capacity equals zero
-- Fix: server issue where some company names were wrong
+- Fix: Server issue where some company names were wrong
 - Fix: Ship Vehicle Lists are now redrawn correctly
-- Fix: signal stays red if a track is removed
-- Fix: solve AI related order-problem
-- Fix: starting openttd with -g <invalid_name> now acts normal
+- Fix: Signal stays red if a track is removed
+- Fix: Solve AI related order-problem
+- Fix: Starting openttd with -g <invalid_name> now acts normal
 - Fix: The cost for an autorenew was not always send to the right player ;)
 - Fix: Autorenewing multiheaded train engines now costs the correct amount. Used to be twice the correct price
-- Fix: the scrollbar in the network gui (server list) now updates when scrolling
+- Fix: The scrollbar in the network gui (server list) now updates when scrolling
 - Fix: Train crashes should no longer desync the game
 - Fix: When deleting an order, the next pointer was not cleared, resulting in some unusual behavoir from time to time
 - Fix: You can now also delete automatically found servers by pressing 'del'
@@ -2381,7 +2419,7 @@
 - Feature: Game compiles under BEOS_SERVER
 - Feature: Game compiles under OS/2 (no network-support)
 - Feature: OpenTTD runs with the grf files of the DOS version
-- Feature: [Big Endian computers, which are mac and MorphOS]: are able to load savegames by TTD(Patch)
+- Feature: [Big Endian computers, which are mac and MorphOS] Load savegames by TTD(Patch)
 - Add: 'l' openes the landscaping toolbar globally
 - Add: Make the town sometimes build streets on slopes
 - Add: Manpage
@@ -2549,10 +2587,10 @@
 - Fix: [Makefile] Fixed issue where sdl-config was needed even on systems without SDL
 - Fix: [SDL] Performance fix fo palette animation and mouse jumping
 - Fix: [SDL] Same resolution was displayed more than once in game options
-- Fix: [SDL] Smoother mouse and performance fix, like in Win32
+- Fix: [SDL] Smoother mouse and performance fix, like in the Windows video driver
 - Fix: Wrong trains you can buy with scenarios [SF#963056]
 - Fix: Minimap crash [SF#972087]
-- Fix: Bug in '[a] weird non-uniform stations handling' [SF#972247]
+- Fix: Bug in 'weird non-uniform stations handling' [SF#972247]
 - Fix: Parent_list was too small [SF#976583]
 - Fix: Memoryleak in parent_list [SF#981934]
 - Fix: Max_loan in editor bug [SF#982666]
@@ -2579,8 +2617,8 @@
 - Fix: Scenario editor pause bug [SF#1007630]
 - Fix: Signals not updated after ClearTunnel Bug [SF#1008605, SF#985920]
 - Fix: Too many save games prevented loading [SF#1009385]
-- Fix: problem with transferred cargo crashes game [SF#1009567]
-- Fix: build in pause is now a cheat instead of a patch [SF#1009621]
+- Fix: Problem with transferred cargo crashes game [SF#1009567]
+- Fix: Build in pause is now a cheat instead of a patch [SF#1009621]
 - Fix: Wrong multihead selling [SF#1009631]
 - Fix: Turning on the magic bulldozer removes oil rigs [SF#1010833]
 - Fix: Drunk pilot [SF#1012086]
@@ -2616,7 +2654,7 @@
 - Feature: Added support for 64 bit CPUs
 - Feature: Added water quantity level 'very low', which is the default for easy mode now
 - Feature: Realistic acceleration turned on, train must first slow down and stop before it can reverse
-- Feature: [MorphOS]: Various small improvement to make the the game feel more native
+- Feature: [MorphOS] Various small improvement to make the the game feel more native
 - Feature: Alt + f now toggles full screen (alt + enter still works)
 - Feature: [OSX] Command + q shows the quit window and command + f or enter toggles full screen (alt and control still works too)
 - Feature: Autorenew, autorenews vehicles if enabled
@@ -2853,11 +2891,11 @@
 - Feature: Clicking on the money brings up finances
 - Feature: [OSX] Distribution now uses Apples package system for easier updates
 - Feature: [OSX] Application is now a proper bundle application
-- Change: Use save/ as save folder on win32
+- Change: [Windows] Use save/ as save folder
 - Change: Moved date in news window
 - Change: Do not check if tiles around the clicked station is a station in order gui
 - Change: Keep checkpoint button down after placing
-- Change: Moved disk devices to bottom of list on win32
+- Change: [Windows] Moved disk devices to bottom of list
 - Change: Changed speedkey from Shift to Tab
 - Change: Enhanced patches window with pages
 - Change: Do not slow down trains as much on hills
@@ -2920,7 +2958,7 @@
 - Feature: Road and rail removal by dragging a selection
 - Feature: News item for 'train is unprofitable'
 - Feature: News item for 'train is lost'
-- Feature: [Win32] Double size mode (Ctrl-d to toggle)
+- Feature: [Windows] Double size mode (Ctrl-d to toggle)
 - Feature: 'Multiple similar industries in close proximity' option
 - Feature: 'Multiple industries per down' option
 - Feature: 'Crossing tunnels' option
@@ -2964,7 +3002,7 @@
 
 0.1.4 (2004-03-25)
 ------------------------------------------------------------------------
-- Feature: Crash submit system on win32
+- Feature: Crash submit system on Windows
 - Feature: Autosave
 - Feature: In-game resolution selection via settings window
 - Feature: Dutch town names
@@ -3027,8 +3065,8 @@
 
 0.1.2 (2004-03-15)
 ------------------------------------------------------------------------
-- Feature: Mouse wheel can be used to zoom in out on win32
-- Feature: Implemented some support for resizing the window dynamically in win32
+- Feature: Mouse wheel can be used to zoom in out on Windows
+- Feature: Implemented some support for resizing the window dynamically in Windows
 - Fix: Tunnel mouse icon for maglev and monorail
 
 
@@ -3038,7 +3076,7 @@
 - Feature: Center windows properly in higher resolutions
 - Feature: Command line -g flag now optionally takes a game to load
 - Add: External MIDI driver for Unix version
-- Add: DirectMusic driver for Win32 version
+- Add: DirectMusic driver for Windows version
 - Add: 'build tracks on slopes' feature
 - Fix: Problem where directories were not displayed under Linux
 - Fix: Colors in map window for routes
