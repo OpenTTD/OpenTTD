@@ -742,8 +742,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su imala dobit prošle godine; ovo uključuje drumska, železnička vozila, brodove i letilice
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno servisiranih delova stanica. Posebno se broji svaki deo (npr. železničko, autobusko stajalište ili aerodrom) stanice.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila sa najmanjim prihodom (samo vozila starijih od 2 godine)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina novca zarađena u mesecu sa najmanjom dobiti u proteklih 12 tromesečja
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Količina novca zarađena u mesecu sa najvećom dobiti u proteklih 12 tromesečja
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najmanjom dobiti u proteklih 12 tromesečja
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najvećom dobiti u proteklih 12 tromesečja
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Jedinica tereta dostavljenih u proteklih četiri tromesečja
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Broj vrsta tereta dostavljenih u proteklom tromesečju
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Količina novca koje ovo preduzeće ima u banci
