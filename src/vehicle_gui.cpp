@@ -232,7 +232,7 @@ struct RefitOption {
 
 	FORCEINLINE bool operator != (const RefitOption &other) const
 	{
-		return other.cargo != this->cargo || other.subtype != this->subtype;
+		return other.cargo != this->cargo || other.value != this->value;
 	}
 };
 
