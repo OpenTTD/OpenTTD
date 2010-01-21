@@ -13,7 +13,7 @@
 #include "../gfx_func.h"
 #include "8bpp_base.hpp"
 
-void Blitter_8bppBase::DrawColourMappingRect(void *dst, int width, int height, int pal)
+void Blitter_8bppBase::DrawColourMappingRect(void *dst, int width, int height, PaletteID pal)
 {
 	const uint8 *ctab = GetNonSprite(pal, ST_RECOLOUR) + 1;
 

@@ -28,7 +28,7 @@ public:
 	{}
 
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	/* virtual */ void DrawColourMappingRect(void *dst, int width, int height, int pal);
+	/* virtual */ void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal);
 	/* virtual */ void SetPixel(void *video, int x, int y, uint8 colour);
 	/* virtual */ void SetPixelIfEmpty(void *video, int x, int y, uint8 colour);
 	/* virtual */ void DrawRect(void *video, int width, int height, uint8 colour);
