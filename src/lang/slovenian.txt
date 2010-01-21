@@ -1284,6 +1284,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Barvni 
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Začetno leto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Omogoči gladko ekonomijo (več manjših sprememb): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dovoli kupovanje delnic od drugih podjetij: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Odstotek profita, ki se plača na prestopnih prevozih: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsakih: {ORANGE}{STRING} ploščic
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Samodejno postavi semaforje pred: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogoči vmesnik signalov: {ORANGE}{STRING}
@@ -2918,7 +2919,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}To bo ku
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}To bo kupilo kopijo ladje. Ctrl+Klik skopira tudi navodila
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}To bo kupilo kopijo letala. Ctrl+Klik skopira tudi navodila
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prisili vlak, naj nadaljuje brez čakanja semaforjev
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prisili vlak, naj nadaljuje brez čakanja signalov
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Predelaj vlak za tovor druge vrste
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Predelaj vozilo za prevoz druge vrste tovora
@@ -3251,6 +3252,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so navoljo preko 'Prenosa vsebin'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}okno UI čiščenja je na voljo samo za strežnik
 
@@ -3504,10 +3506,10 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemogoč
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ni primernih tračnic
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprej odstrani tračnice
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je enosmerna ali blokirana
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemogoča gradnja semaforjev ...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemogoča gradnja signalov...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemogoča gradnja tirov ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemogoča odstranitev tirov ...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemogoča odstranitev semaforjev ...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemogoča odstranitev signalov...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nemogoča sprememba vrste signalov tukaj...
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ni mogoče spremeniti tipa železnice tukaj ...
@@ -3617,7 +3619,7 @@ STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Nemogoča predelava uničenega vozila...
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo semaforjev ...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ni mogoče spremeniti smeri vlaka ...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Ta proga nima napetostnih vodov, zato vlak ne more z mesta
 
