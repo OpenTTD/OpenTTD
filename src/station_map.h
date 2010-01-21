@@ -401,7 +401,7 @@ static inline TileIndexDiffC GetDockOffset(TileIndex t)
 
 static inline bool IsCustomStationSpecIndex(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
+	assert(HasStationTileRail(t));
 	return _m[t].m4 != 0;
 }
 

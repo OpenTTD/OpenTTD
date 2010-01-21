@@ -2309,20 +2309,42 @@ static void DrawTile_Station(TileInfo *ti)
 	RoadTypes roadtypes;
 	int32 total_offset;
 	int32 custom_ground_offset;
+	uint32 relocation = 0;
+	const BaseStation *st = NULL;
+	const StationSpec *statspec = NULL;
 
 	if (HasStationRail(ti->tile)) {
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 		roadtypes = ROADTYPES_NONE;
 		total_offset = rti->total_offset;
 		custom_ground_offset = rti->custom_ground_offset;
+
+		if (IsCustomStationSpecIndex(ti->tile)) {
+			/* look for customization */
+			st = BaseStation::GetByTile(ti->tile);
+			statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
+
+			if (statspec != NULL) {
+				uint tile = GetStationGfx(ti->tile);
+
+				relocation = GetCustomStationRelocation(statspec, st, ti->tile);
+
+				if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
+					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
+					if (callback != CALLBACK_FAILED) tile = (callback & ~1) + GetRailStationAxis(ti->tile);
+				}
+
+				/* Ensure the chosen tile layout is valid for this custom station */
+				if (statspec->renderdata != NULL) {
+					t = &statspec->renderdata[tile < statspec->tiles ? tile : (uint)GetRailStationAxis(ti->tile)];
+				}
+			}
+		}
 	} else {
 		roadtypes = IsRoadStop(ti->tile) ? GetRoadTypes(ti->tile) : ROADTYPES_NONE;
 		total_offset = 0;
 		custom_ground_offset = 0;
 	}
-	uint32 relocation = 0;
-	const BaseStation *st = NULL;
-	const StationSpec *statspec = NULL;
 	Owner owner = GetTileOwner(ti->tile);
 
 	PaletteID palette;
@@ -2331,28 +2353,6 @@ static void DrawTile_Station(TileInfo *ti)
 	} else {
 		/* Some stations are not owner by a company, namely oil rigs */
 		palette = PALETTE_TO_GREY;
-	}
-
-	if (IsCustomStationSpecIndex(ti->tile)) {
-		/* look for customization */
-		st = BaseStation::GetByTile(ti->tile);
-		statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
-
-		if (statspec != NULL) {
-			uint tile = GetStationGfx(ti->tile);
-
-			relocation = GetCustomStationRelocation(statspec, st, ti->tile);
-
-			if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
-				uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
-				if (callback != CALLBACK_FAILED) tile = (callback & ~1) + GetRailStationAxis(ti->tile);
-			}
-
-			/* Ensure the chosen tile layout is valid for this custom station */
-			if (statspec->renderdata != NULL) {
-				t = &statspec->renderdata[tile < statspec->tiles ? tile : (uint)GetRailStationAxis(ti->tile)];
-			}
-		}
 	}
 
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
