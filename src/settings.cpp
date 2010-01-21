@@ -58,6 +58,7 @@
 #include "settings_func.h"
 #include "ini_type.h"
 #include "ai/ai_config.hpp"
+#include "ai/ai.hpp"
 #include "newgrf.h"
 #include "ship.h"
 #include "company_base.h"
@@ -849,6 +850,11 @@ static bool DifficultyChange(int32)
 		SetWindowClassesDirty(WC_SELECT_GAME);
 	} else {
 		_settings_game.difficulty.diff_level = 3;
+	}
+
+	if (((_game_mode == GM_MENU) ? _settings_newgame.difficulty : _settings_game.difficulty).max_no_competitors != 0 &&
+			AI::GetInfoList()->size() == 0 && (!_networking || _network_server)) {
+		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, 0, 0, true);
 	}
 
 	/* If we are a network-client, update the difficult setting (if it is open).

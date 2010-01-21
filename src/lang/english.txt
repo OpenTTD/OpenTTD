@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}This action changed the difficulty level to custom
 
 # Advanced settings window
