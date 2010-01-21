@@ -42,7 +42,7 @@ static uint32 last_ack_frame;
 /** One bit of 'entropy' used to generate a salt for the company passwords. */
 static uint32 _password_game_seed;
 /** The other bit of 'entropy' used to generate a salt for the company passwords. */
-static char _password_server_unique_id[NETWORK_UNIQUE_ID_LENGTH];
+static char _password_server_id[NETWORK_SERVER_ID_LENGTH];
 
 /** Maximum number of companies of the currently joined server. */
 static uint8 _network_server_max_companies;
@@ -57,8 +57,8 @@ const char *_network_join_server_password = NULL;
 /** Company password from -P argument */
 const char *_network_join_company_password = NULL;
 
-/** Make sure the unique ID length is the same as a md5 hash. */
-assert_compile(NETWORK_UNIQUE_ID_LENGTH == 16 * 2 + 1);
+/** Make sure the server ID length is the same as a md5 hash. */
+assert_compile(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
 
 /**
  * Generates a hashed password for the company name.
@@ -69,16 +69,16 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 {
 	if (StrEmpty(password)) return password;
 
-	char salted_password[NETWORK_UNIQUE_ID_LENGTH];
+	char salted_password[NETWORK_SERVER_ID_LENGTH];
 
 	memset(salted_password, 0, sizeof(salted_password));
 	snprintf(salted_password, sizeof(salted_password), "%s", password);
-	/* Add the game seed and the server's unique ID as the salt. */
-	for (uint i = 0; i < NETWORK_UNIQUE_ID_LENGTH - 1; i++) salted_password[i] ^= _password_server_unique_id[i] ^ (_password_game_seed >> i);
+	/* Add the game seed and the server's ID as the salt. */
+	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) salted_password[i] ^= _password_server_id[i] ^ (_password_game_seed >> i);
 
 	Md5 checksum;
 	uint8 digest[16];
-	static char hashed_password[NETWORK_UNIQUE_ID_LENGTH];
+	static char hashed_password[NETWORK_SERVER_ID_LENGTH];
 
 	/* Generate the MD5 hash */
 	checksum.Append((const uint8*)salted_password, sizeof(salted_password) - 1);
@@ -96,7 +96,7 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 void HashCurrentCompanyPassword(const char *password)
 {
 	_password_game_seed = _settings_game.game_creation.generation_seed;
-	strecpy(_password_server_unique_id, _settings_client.network.network_id, lastof(_password_server_unique_id));
+	strecpy(_password_server_id, _settings_client.network.network_id, lastof(_password_server_id));
 
 	const char *new_pw = GenerateCompanyPasswordHash(password);
 	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
@@ -138,7 +138,6 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	 *    String: Client Name (max NETWORK_NAME_LENGTH)
 	 *    uint8:  Play as Company id (1..MAX_COMPANIES)
 	 *    uint8:  Language ID
-	 *    String: Unique id to find the client back in server-listing
 	 */
 
 	Packet *p;
@@ -150,7 +149,6 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
-	p->Send_string(_settings_client.network.network_id);
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -532,7 +530,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 		case NETWORK_COMPANY_PASSWORD:
 			/* Initialize the password hash salting variables. */
 			_password_game_seed = p->Recv_uint32();
-			p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
+			p->Recv_string(_password_server_id, sizeof(_password_server_id));
 			if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 			password = _network_join_company_password;
 			/* FALL THROUGH */
@@ -554,7 +552,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 
 	/* Initialize the password hash salting variables, even if they were previously. */
 	_password_game_seed = p->Recv_uint32();
-	p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
+	p->Recv_string(_password_server_id, sizeof(_password_server_id));
 
 	/* Start receiving the map */
 	SEND_COMMAND(PACKET_CLIENT_GETMAP)();

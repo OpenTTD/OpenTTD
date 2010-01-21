@@ -851,7 +851,6 @@ static void NetworkInitGameInfo()
 	ci->client_address = NetworkAddress((sockaddr*)&sock, sizeof(sock));
 
 	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
-	strecpy(ci->unique_id, _settings_client.network.network_id, lastof(ci->unique_id));
 }
 
 bool NetworkServerStart()
@@ -1146,7 +1145,7 @@ void NetworkGameLoop()
 	NetworkSend();
 }
 
-static void NetworkGenerateUniqueId()
+static void NetworkGenerateServerId()
 {
 	Md5 checksum;
 	uint8 digest[16];
@@ -1154,7 +1153,7 @@ static void NetworkGenerateUniqueId()
 	char coding_string[NETWORK_NAME_LENGTH];
 	int di;
 
-	snprintf(coding_string, sizeof(coding_string), "%d%s", (uint)Random(), "OpenTTD Unique ID");
+	snprintf(coding_string, sizeof(coding_string), "%d%s", (uint)Random(), "OpenTTD Server ID");
 
 	/* Generate the MD5 hash */
 	checksum.Append((const uint8*)coding_string, strlen(coding_string));
@@ -1164,7 +1163,7 @@ static void NetworkGenerateUniqueId()
 		sprintf(hex_output + di * 2, "%02x", digest[di]);
 	}
 
-	/* _network_unique_id is our id */
+	/* _settings_client.network.network_id is our id */
 	snprintf(_settings_client.network.network_id, sizeof(_settings_client.network.network_id), "%s", hex_output);
 }
 
@@ -1197,8 +1196,8 @@ void NetworkStartUp()
 	_network_need_advertise = true;
 	_network_advertise_retries = 0;
 
-	/* Generate an unique id when there is none yet */
-	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateUniqueId();
+	/* Generate an server id when there is none yet */
+	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateServerId();
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
 

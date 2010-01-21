@@ -658,7 +658,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	}
 
 	char name[NETWORK_CLIENT_NAME_LENGTH];
-	char unique_id[NETWORK_UNIQUE_ID_LENGTH];
 	NetworkClientInfo *ci;
 	CompanyID playas;
 	NetworkLanguage client_lang;
@@ -676,7 +675,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	p->Recv_string(name, sizeof(name));
 	playas = (Owner)p->Recv_uint8();
 	client_lang = (NetworkLanguage)p->Recv_uint8();
-	p->Recv_string(unique_id, sizeof(unique_id));
 
 	if (cs->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
@@ -714,7 +712,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	ci = cs->GetInfo();
 
 	strecpy(ci->client_name, name, lastof(ci->client_name));
-	strecpy(ci->unique_id, unique_id, lastof(ci->unique_id));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
 
@@ -1733,10 +1730,10 @@ void NetworkServerShowStatusToConsole()
 		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
-		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
+		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-			GetClientIP(ci), ci->unique_id);
+			GetClientIP(ci));
 	}
 }
 

@@ -133,7 +133,7 @@ struct NetworkSettings {
 	char   client_name[NETWORK_CLIENT_NAME_LENGTH];       ///< name of the player (as client)
 	char   default_company_pass[NETWORK_PASSWORD_LENGTH]; ///< default password for new companies in encrypted form
 	char   connect_to_ip[NETWORK_HOSTNAME_LENGTH];        ///< default for the "Add server" query
-	char   network_id[NETWORK_UNIQUE_ID_LENGTH];          ///< semi-unique ID of the client
+	char   network_id[NETWORK_SERVER_ID_LENGTH];          ///< network ID for servers
 	bool   autoclean_companies;                           ///< automatically remove companies that are not in use
 	uint8  autoclean_unprotected;                         ///< remove passwordless companies after this many months
 	uint8  autoclean_protected;                           ///< remove the password from passworded companies after this many months

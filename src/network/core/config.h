@@ -36,9 +36,9 @@ enum {
 	NETWORK_NAME_LENGTH           =   80, ///< The maximum length of the server name and map name, in bytes including '\0'
 	NETWORK_COMPANY_NAME_LENGTH   =   31, ///< The maximum length of the company name, in bytes including '\0'
 	NETWORK_HOSTNAME_LENGTH       =   80, ///< The maximum length of the host name, in bytes including '\0'
-	NETWORK_UNIQUE_ID_LENGTH      =   33, ///< The maximum length of the unique id of the clients, in bytes including '\0'
+	NETWORK_SERVER_ID_LENGTH      =   33, ///< The maximum length of the network id of the servers, in bytes including '\0'
 	NETWORK_REVISION_LENGTH       =   15, ///< The maximum length of the revision, in bytes including '\0'
-	NETWORK_PASSWORD_LENGTH       =   33, ///< The maximum length of the password, in bytes including '\0' (must be >= NETWORK_UNIQUE_ID_LENGTH)
+	NETWORK_PASSWORD_LENGTH       =   33, ///< The maximum length of the password, in bytes including '\0' (must be >= NETWORK_SERVER_ID_LENGTH)
 	NETWORK_CLIENTS_LENGTH        =  200, ///< The maximum length for the list of clients that controls a company, in bytes including '\0'
 	NETWORK_CLIENT_NAME_LENGTH    =   25, ///< The maximum length of a client's name, in bytes including '\0'
 	NETWORK_RCONCOMMAND_LENGTH    =  500, ///< The maximum length of a rconsole command, in bytes including '\0'
