@@ -972,7 +972,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetMinimalSize(150, 20), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(149, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -986,7 +986,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 };
 
 static const WindowDesc _ai_debug_desc(
-	WDP_AUTO, 299, 241,
+	WDP_AUTO, 600, 450,
 	WC_AI_DEBUG, WC_NONE,
 	0,
 	_nested_ai_debug_widgets, lengthof(_nested_ai_debug_widgets)
