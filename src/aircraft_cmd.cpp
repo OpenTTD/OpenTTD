@@ -531,10 +531,8 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 
 	assert(st != NULL);
 
-	/* only goto depot if the target airport has terminals (eg. it is airport) */
-	if (st->airport_tile != INVALID_TILE && st->Airport()->terminals != NULL) {
-//		printf("targetairport = %d, st->index = %d\n", v->targetairport, st->index);
-//		v->targetairport = st->index;
+	/* only goto depot if the target airport has a depot */
+	if (st->GetAirportSpec()->nof_depots > 0 && CanVehicleUseStation(v, st)) {
 		v->current_order.MakeGoToDepot(st->index, ODTFB_SERVICE);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	} else if (v->current_order.IsType(OT_GOTO_DEPOT)) {
