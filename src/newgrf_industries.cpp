@@ -43,12 +43,15 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
 	return _industry_mngr.GetID(GB(grf_type, 0, 6), grf_id);
 }
 
-/** Make an analysis of a tile and check for its belonging to the same
+/**
+ * Make an analysis of a tile and check for its belonging to the same
  * industry, and/or the same grf file
  * @param tile TileIndex of the tile to query
  * @param i Industry to which to compare the tile to
- * @return value encoded as per NFO specs */
-uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i)
+ * @param cur_grfid GRFID of the current callback chain
+ * @return value encoded as per NFO specs
+ */
+uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32 cur_grfid)
 {
 	if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) != i->index) {
 		/* No industry and/or the tile does not have the same industry as the one we match it with */
@@ -57,17 +60,16 @@ uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i)
 
 	IndustryGfx gfx = GetCleanIndustryGfx(tile);
 	const IndustryTileSpec *indtsp = GetIndustryTileSpec(gfx);
-	const IndustrySpec *indold = GetIndustrySpec(i->type);
 
 	if (gfx < NEW_INDUSTRYOFFSET) { // Does it belongs to an old type?
 		/* It is an old tile.  We have to see if it's been overriden */
 		if (indtsp->grf_prop.override == INVALID_INDUSTRYTILE) { // has it been overridden?
 			return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
 		}
-		/* Not overriden */
+		/* Overriden */
 		const IndustryTileSpec *tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override);
 
-		if (tile_ovr->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) {
+		if (tile_ovr->grf_prop.grffile->grfid == cur_grfid) {
 			return tile_ovr->grf_prop.local_id; // same grf file
 		} else {
 			return 0xFFFE; // not the same grf file
@@ -75,7 +77,7 @@ uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i)
 	}
 	/* Not an 'old type' tile */
 	if (indtsp->grf_prop.spritegroup != NULL) { // tile has a spritegroup ?
-		if (indtsp->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) { // same industry, same grf ?
+		if (indtsp->grf_prop.grffile->grfid == cur_grfid) { // same industry, same grf ?
 			return indtsp->grf_prop.local_id;
 		} else {
 			return 0xFFFE; // Defined in another grf file
@@ -235,7 +237,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x46: return industry->construction_date; // Date when built - long format - (in days)
 
 		/* Get industry ID at offset param */
-		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->location.tile), industry);
+		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->location.tile), industry, object->grffile->grfid);
 
 		/* Get random tile bits at offset param */
 		case 0x61:

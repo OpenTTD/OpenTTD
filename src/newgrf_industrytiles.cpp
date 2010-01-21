@@ -100,7 +100,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 			return UINT_MAX;
 
 		/* Get industry tile ID at offset */
-		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, tile), inds);
+		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, tile), inds, object->grffile->grfid);
 	}
 
 	DEBUG(grf, 1, "Unhandled industry tile property 0x%X", variable);
