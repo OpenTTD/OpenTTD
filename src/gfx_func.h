@@ -91,7 +91,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 Dimension GetSpriteSize(SpriteID sprid);
-void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
+void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = NULL);
 
 /** How to align the to-be drawn text. */
 enum StringAlignment {
@@ -149,7 +149,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 /* window.cpp */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
-void SetMouseCursor(SpriteID sprite, SpriteID pal);
+void SetMouseCursor(CursorID cursor, PaletteID pal);
 void SetAnimatedMouseCursor(const AnimCursor *table);
 void CursorTick();
 bool ChangeResInGame(int w, int h);

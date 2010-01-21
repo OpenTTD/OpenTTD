@@ -145,7 +145,7 @@ SpriteID RoadVehicle::GetImage(Direction direction) const
 	return sprite;
 }
 
-void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
+void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
 {
 	SpriteID sprite = GetRoadVehIcon(engine);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);

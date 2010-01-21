@@ -80,7 +80,7 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 		int width = Train::From(v)->GetDisplayImageWidth(&offset);
 
 		if (rtl ? px + width > 0 : px - width < max_width) {
-			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+			PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 			DrawSprite(v->GetImage(dir), pal, px + (rtl ? -offset.x : offset.x), 7 + offset.y);
 		}
 
@@ -314,7 +314,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				Point offset;
 				int width = u->GetDisplayImageWidth(&offset);
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
-					SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+					PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 					DrawSprite(u->GetImage(dir), pal, px + (rtl ? -offset.x : offset.x), y - line_height * vscroll_pos + sprite_y_offset + offset.y);
 				}
 				px += rtl ? -width : width;

@@ -28,7 +28,7 @@
  * @param default_palette The default recolour sprite to use (typically company colour)
  * @param child_offset_is_unsigned Whether child sprite offsets are interpreted signed or unsigned
  */
-void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned)
+void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, dts->seq) {
@@ -42,7 +42,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 
 		image += (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? newgrf_offset : orig_offset);
 
-		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
+		PaletteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(
@@ -70,7 +70,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
  * @param default_palette The default recolour sprite to use (typically company colour)
  * @param child_offset_is_unsigned Whether child sprite offsets are interpreted signed or unsigned
  */
-void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned)
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
 	const DrawTileSeqStruct *dtss;
 	Point child_offset = {0, 0};
@@ -83,7 +83,7 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 
 		image += (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? newgrf_offset : orig_offset);
 
-		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
+		PaletteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
 			Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);

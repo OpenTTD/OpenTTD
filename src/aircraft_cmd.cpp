@@ -200,7 +200,7 @@ static SpriteID GetAircraftIcon(EngineID engine)
 	return DIR_W + _aircraft_sprite[spritenum];
 }
 
-void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
+void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
 {
 	SpriteID sprite = GetAircraftIcon(engine);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);

@@ -16,14 +16,15 @@
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
 
-typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colourtables
+typedef uint32 SpriteID;  ///< The number of a sprite, without mapping bits and colourtables
+typedef uint32 PaletteID; ///< The number of the palette
+typedef uint32 CursorID;  ///< The number of the cursor (sprite)
 
 /** Combination of a palette sprite and a 'real' sprite */
 struct PalSpriteID {
 	SpriteID sprite;  ///< The 'real' sprite
-	SpriteID pal;     ///< The palette (use \c PAL_NONE) if not needed)
+	PaletteID pal;    ///< The palette (use \c PAL_NONE) if not needed)
 };
-typedef int32 CursorID;
 
 enum WindowKeyCodes {
 	WKC_SHIFT = 0x8000,
@@ -113,8 +114,8 @@ struct CursorVars {
 	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
 	int short_vehicle_offset;     ///< offset of the X for short vehicles
-	SpriteID sprite; ///< current image of cursor
-	SpriteID pal;
+	CursorID sprite; ///< current image of cursor
+	PaletteID pal;
 
 	int wheel;       ///< mouse wheel movement
 

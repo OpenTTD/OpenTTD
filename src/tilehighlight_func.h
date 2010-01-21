@@ -20,8 +20,8 @@ void PlaceProc_DemolishArea(TileIndex tile);
 bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile);
 
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyle mode, PlaceProc *placeproc);
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, HighLightStyle mode, Window *w);
-void SetObjectToPlace(CursorID icon, SpriteID pal, HighLightStyle mode, WindowClass window_class, WindowNumber window_num);
+void SetObjectToPlaceWnd(CursorID icon, PaletteID pal, HighLightStyle mode, Window *w);
+void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowClass window_class, WindowNumber window_num);
 void ResetObjectToPlace();
 
 void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method);

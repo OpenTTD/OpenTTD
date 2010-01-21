@@ -1028,7 +1028,7 @@ Dimension GetSpriteSize(SpriteID sprid)
  * @param y    Top coordinate of image
  * @param sub  If available, draw only specified part of the sprite
  */
-void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub)
+void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub)
 {
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
@@ -1645,7 +1645,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 	return true;
 }
 
-static void SetCursorSprite(SpriteID cursor, SpriteID pal)
+static void SetCursorSprite(CursorID cursor, PaletteID pal)
 {
 	CursorVars *cv = &_cursor;
 	const Sprite *p;
@@ -1682,7 +1682,7 @@ void CursorTick()
 		SwitchAnimatedCursor();
 }
 
-void SetMouseCursor(SpriteID sprite, SpriteID pal)
+void SetMouseCursor(CursorID sprite, PaletteID pal)
 {
 	/* Turn off animation */
 	_cursor.animate_timeout = 0;

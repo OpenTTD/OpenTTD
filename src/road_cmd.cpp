@@ -1087,7 +1087,7 @@ static void DrawRoadBits(TileInfo *ti)
 	RoadBits tram = GetRoadBits(ti->tile, ROADTYPE_TRAM);
 
 	SpriteID image = 0;
-	SpriteID pal = PAL_NONE;
+	PaletteID pal = PAL_NONE;
 
 	if (ti->tileh != SLOPE_FLAT) {
 		DrawFoundation(ti, GetRoadFoundation(ti->tileh, road | tram));
@@ -1176,7 +1176,7 @@ static void DrawTile_Road(TileInfo *ti)
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 			SpriteID image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.crossing;
-			SpriteID pal = PAL_NONE;
+			PaletteID pal = PAL_NONE;
 
 			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
 			if (IsCrossingBarred(ti->tile)) image += 2;
@@ -1212,7 +1212,7 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_DEPOT: {
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			SpriteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
+			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
 			const DrawTileSprites *dts;
 			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
@@ -1231,7 +1231,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
-	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *dts = (rt == ROADTYPE_TRAM) ? &_tram_depot[dir] : &_road_depot[dir];
 
 	x += 33;

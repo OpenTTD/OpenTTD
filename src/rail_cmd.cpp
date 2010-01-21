@@ -1757,7 +1757,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	/* DrawFoundation modifies ti */
 
 	SpriteID image;
-	SpriteID pal = PAL_NONE;
+	PaletteID pal = PAL_NONE;
 	const SubSprite *sub = NULL;
 	bool junction = false;
 
@@ -1944,7 +1944,7 @@ static void DrawTile_Track(TileInfo *ti)
 	} else {
 		/* draw depot */
 		const DrawTileSprites *dts;
-		SpriteID pal = PAL_NONE;
+		PaletteID pal = PAL_NONE;
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
@@ -1997,7 +1997,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	y += 17;
 
 	if (image != SPR_FLAT_GRASS_TILE) image += offset;
-	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 
 	DrawSprite(image, PAL_NONE, x, y);
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);

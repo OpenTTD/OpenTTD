@@ -879,7 +879,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	const StationSpec *statspec;
 	const DrawTileSprites *sprites;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-	SpriteID palette = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	uint tile = 2;
 
 	statspec = GetCustomStationSpec(sclass, station);
@@ -899,7 +899,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	}
 
 	SpriteID image = sprites->ground.sprite;
-	SpriteID pal = sprites->ground.pal;
+	PaletteID pal = sprites->ground.pal;
 	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
 		image += rti->custom_ground_offset;

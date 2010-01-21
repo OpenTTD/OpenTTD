@@ -663,7 +663,7 @@ struct NewGRFWindow : public Window {
 				for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {
 					if (this->vscroll.IsVisible(i)) {
 						const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
-						SpriteID pal;
+						PaletteID pal;
 
 						/* Pick a colour */
 						switch (c->status) {

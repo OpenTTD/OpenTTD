@@ -59,15 +59,15 @@ struct DrawBuildingsTileStruct {
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
-void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned);
-void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, SpriteID default_palette, bool child_offset_is_unsigned);
+void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
 
 /**
  * Draw tile sprite sequence on tile with railroad specifics.
  * @param total_offset Spriteoffset from normal rail to current railtype.
  * @param newgrf_offset Startsprite of the Action1 to use.
  */
-static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 newgrf_offset, SpriteID default_palette)
+static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 newgrf_offset, PaletteID default_palette)
 {
 	DrawCommonTileSeq(ti, dts, to, total_offset, newgrf_offset, default_palette, false);
 }
@@ -77,7 +77,7 @@ static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSpri
  * @param total_offset Spriteoffset from normal rail to current railtype.
  * @param newgrf_offset Startsprite of the Action1 to use.
  */
-static inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 total_offset, uint32 newgrf_offset, SpriteID default_palette)
+static inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 total_offset, uint32 newgrf_offset, PaletteID default_palette)
 {
 	DrawCommonTileSeqInGUI(x, y, dts, total_offset, newgrf_offset, default_palette, false);
 }
@@ -85,7 +85,7 @@ static inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts
 /**
  * Draw TTD sprite sequence on tile.
  */
-static inline void DrawOrigTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, SpriteID default_palette)
+static inline void DrawOrigTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, PaletteID default_palette)
 {
 	DrawCommonTileSeq(ti, dts, to, 0, 0, default_palette, false);
 }
@@ -93,7 +93,7 @@ static inline void DrawOrigTileSeq(const struct TileInfo *ti, const DrawTileSpri
 /**
  * Draw TTD sprite sequence in GUI.
  */
-static inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts, SpriteID default_palette)
+static inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts, PaletteID default_palette)
 {
 	DrawCommonTileSeqInGUI(x, y, dts, 0, 0, default_palette, false);
 }
@@ -102,7 +102,7 @@ static inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts
  * Draw NewGRF industrytile or house sprite layout
  * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
  */
-static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, uint32 stage, SpriteID default_palette)
+static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, uint32 stage, PaletteID default_palette)
 {
 	DrawCommonTileSeq(ti, dts, to, 0, stage, default_palette, true);
 }
@@ -118,7 +118,7 @@ static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSp
  * @param default_pal The default recolour sprite to use (typically company colour resp. random industry/house colour)
  * @return The palette to use
  */
-static inline SpriteID SpriteLayoutPaletteTransform(SpriteID image, SpriteID pal, SpriteID default_pal)
+static inline PaletteID SpriteLayoutPaletteTransform(SpriteID image, PaletteID pal, PaletteID default_pal)
 {
 	if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOUR)) {
 		return (pal != 0 ? pal : default_pal);
@@ -137,7 +137,7 @@ static inline SpriteID SpriteLayoutPaletteTransform(SpriteID image, SpriteID pal
  * @param default_pal The default recolour sprite to use (typically company colour resp. random industry/house colour)
  * @return The palette to use
  */
-static inline SpriteID GroundSpritePaletteTransform(SpriteID image, SpriteID pal, SpriteID default_pal)
+static inline PaletteID GroundSpritePaletteTransform(SpriteID image, PaletteID pal, PaletteID default_pal)
 {
 	if (HasBit(image, PALETTE_MODIFIER_COLOUR)) {
 		return (pal != 0 ? pal : default_pal);

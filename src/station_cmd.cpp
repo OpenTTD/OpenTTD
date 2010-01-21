@@ -2325,7 +2325,7 @@ static void DrawTile_Station(TileInfo *ti)
 	const StationSpec *statspec = NULL;
 	Owner owner = GetTileOwner(ti->tile);
 
-	SpriteID palette;
+	PaletteID palette;
 	if (Company::IsValidID(owner)) {
 		palette = COMPANY_SPRITE_COLOUR(owner);
 	} else {
@@ -2430,7 +2430,7 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 	} else {
 		SpriteID image = t->ground.sprite;
-		SpriteID pal   = t->ground.pal;
+		PaletteID pal  = t->ground.pal;
 		if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 			image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 			image += custom_ground_offset;
@@ -2465,7 +2465,7 @@ static void DrawTile_Station(TileInfo *ti)
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
 {
 	int32 total_offset = 0;
-	SpriteID pal = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID pal = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *t = &_station_display_datas[st][image];
 
 	if (railtype != INVALID_RAILTYPE) {

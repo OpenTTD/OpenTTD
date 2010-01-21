@@ -143,7 +143,7 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 		Point offset;
 		int width = u->GetDisplayImageWidth(&offset);
 
-		SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
+		PaletteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
 		DrawSprite(u->GetImage(dir), pal, pos + (rtl ? -offset.x : offset.x), y + 6 + offset.y);
 
 		pos += rtl ? -width : width;

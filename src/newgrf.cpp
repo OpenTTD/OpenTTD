@@ -1389,7 +1389,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, byte 
 
 					for (byte sprite = 0; sprite < 32; sprite++) {
 						SpriteID image = grf_load_word(&buf);
-						SpriteID pal   = grf_load_word(&buf);
+						PaletteID pal  = grf_load_word(&buf);
 
 						bridge->sprite_table[tableid][sprite].sprite = image;
 						bridge->sprite_table[tableid][sprite].pal    = pal;

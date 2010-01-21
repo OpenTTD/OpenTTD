@@ -311,7 +311,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 	const DrawBuildingsTileStruct *dits;
 	SpriteID image;
-	SpriteID pal;
+	PaletteID pal;
 
 	/* Retrieve pointer to the draw industry tile struct */
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {

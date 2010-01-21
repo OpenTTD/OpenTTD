@@ -65,7 +65,7 @@ static SpriteID GetShipIcon(EngineID engine)
 	return DIR_W + _ship_sprites[spritenum];
 }
 
-void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
+void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
 {
 	SpriteID sprite = GetShipIcon(engine);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);

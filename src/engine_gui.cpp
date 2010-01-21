@@ -248,7 +248,7 @@ StringID GetEngineInfoString(EngineID engine)
  * @param engine Engine to draw.
  * @param pal    Palette to use for drawing.
  */
-void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, SpriteID pal)
+void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
 {
 	const Engine *e = Engine::Get(engine);
 
