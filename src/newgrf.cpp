@@ -2344,6 +2344,9 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 						}
 					}
 				} catch (...) {
+					for (int i = 0; i < indsp->num_table; i++) {
+						free(tile_table[i]);
+					}
 					free(tile_table);
 					free(itt);
 					throw;
