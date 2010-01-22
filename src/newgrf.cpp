@@ -105,7 +105,7 @@ public:
 
 	FORCEINLINE size_t Remaining() const
 	{
-		return (int)(end - data);
+		return end - data;
 	}
 
 	FORCEINLINE bool HasData() const
