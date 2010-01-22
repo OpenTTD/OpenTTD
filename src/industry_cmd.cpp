@@ -310,8 +310,6 @@ static void DrawTile_Industry(TileInfo *ti)
 	Industry *ind = Industry::GetByTile(ti->tile);
 	const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 	const DrawBuildingsTileStruct *dits;
-	SpriteID image;
-	PaletteID pal;
 
 	/* Retrieve pointer to the draw industry tile struct */
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
@@ -336,12 +334,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			GetIndustryAnimationState(ti->tile) & INDUSTRY_COMPLETED :
 			GetIndustryConstructionStage(ti->tile))];
 
-	image = dits->ground.sprite;
-	if (HasBit(image, PALETTE_MODIFIER_COLOUR) && dits->ground.pal == PAL_NONE) {
-		pal = GENERAL_SPRITE_COLOUR(ind->random_colour);
-	} else {
-		pal = dits->ground.pal;
-	}
+	SpriteID image = dits->ground.sprite;
 
 	/* DrawFoundation() modifes ti->z and ti->tileh */
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
@@ -351,7 +344,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	if (image == SPR_FLAT_WATER_TILE && IsIndustryTileOnWater(ti->tile)) {
 		DrawWaterClassGround(ti);
 	} else {
-		DrawGroundSprite(image, pal);
+		DrawGroundSprite(image, GroundSpritePaletteTransform(image, dits->ground.pal, GENERAL_SPRITE_COLOUR(ind->random_colour)));
 	}
 
 	/* If industries are transparent and invisible, do not draw the upper part */
@@ -360,8 +353,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
 	if (image != 0) {
-		AddSortableSpriteToDraw(image,
-			(HasBit(image, PALETTE_MODIFIER_COLOUR) && dits->building.pal == PAL_NONE) ? GENERAL_SPRITE_COLOUR(ind->random_colour) : dits->building.pal,
+		AddSortableSpriteToDraw(image, SpriteLayoutPaletteTransform(image, dits->building.pal, GENERAL_SPRITE_COLOUR(ind->random_colour)),
 			ti->x + dits->subtile_x,
 			ti->y + dits->subtile_y,
 			dits->width,
