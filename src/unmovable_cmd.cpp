@@ -187,14 +187,13 @@ static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
 
 static void DrawTile_Unmovable(TileInfo *ti)
 {
-
+	DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
 	switch (GetUnmovableType(ti->tile)) {
 		default: NOT_REACHED();
 		case UNMOVABLE_TRANSMITTER:
 		case UNMOVABLE_LIGHTHOUSE: {
 			const DrawTileSeqStruct *dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];
 
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 			DrawClearLandTile(ti, 2);
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;
@@ -208,9 +207,6 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		}
 
 		case UNMOVABLE_STATUE:
-			/* This should prevent statues from sinking into the ground when on a slope. */
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
-
 			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;
@@ -230,7 +226,6 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 		case UNMOVABLE_HQ:{
 			assert(IsCompanyHQ(ti->tile));
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
